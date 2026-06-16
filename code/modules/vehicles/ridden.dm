@@ -13,7 +13,7 @@
 		if(!inserted_key)
 			. += span_notice("Coloque uma chave dentro dela clicando nela com a chave.")
 		else
-			. += span_notice("Alt-click[src]para remover a chave.")
+			. += span_notice("Alt-click [src] para remover a chave.")
 
 /obj/vehicle/ridden/generate_action_type(actiontype)
 	var/datum/action/vehicle/ridden/A = ..()
@@ -33,9 +33,9 @@
 	if(!key_type || is_key(inserted_key) || !is_key(tool))
 		return NONE
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool]Parece estar preso à sua mão!"))
+		to_chat(user, span_warning("[tool] Parece estar preso à sua mão!"))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você insere\the [tool]em\the [src]."))
+	to_chat(user, span_notice("Você insere\the [tool] em\the [src]."))
 	if(inserted_key) //just in case there's an invalid key
 		inserted_key.forceMove(drop_location())
 	inserted_key = tool
@@ -45,9 +45,9 @@
 	if(!inserted_key)
 		return CLICK_ACTION_BLOCKING
 	if(!is_occupant(user))
-		to_chat(user, span_warning("Você deve estar montando o[src]Para remover[src]A chave!"))
+		to_chat(user, span_warning("Você deve estar montando o [src] Para remover [src] A chave!"))
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("Você tira.\the [inserted_key]De\the [src]."))
+	to_chat(user, span_notice("Você tira.\the [inserted_key] De\the [src]."))
 	user.put_in_hands(inserted_key)
 	inserted_key = null
 	return CLICK_ACTION_SUCCESS

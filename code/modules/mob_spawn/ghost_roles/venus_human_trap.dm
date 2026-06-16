@@ -52,6 +52,6 @@
 		return FALSE
 	if(!ready)
 		if(!silent)
-			to_chat(user, span_warning("\The [src]Ainda não deu frutos!"))
+			to_chat(user, span_warning("\The [src] Ainda não deu frutos!"))
 		return FALSE
 	return TRUE

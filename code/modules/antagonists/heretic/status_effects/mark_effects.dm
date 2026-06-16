@@ -166,9 +166,9 @@
 
 	var/mob/thrower = throw_args[4]
 	if(istype(thrower))
-		to_chat(thrower, span_hypnophrase("Uma força de outro mundo impede que você jogue[source]Fora[get_area_name(locked_to)]!"))
+		to_chat(thrower, span_hypnophrase("Uma força de outro mundo impede que você jogue [source] Fora [get_area_name(locked_to)]!"))
 
-	to_chat(source, span_hypnophrase("Uma força de outro mundo impede que você seja expulso de[get_area_name(locked_to)]!"))
+	to_chat(source, span_hypnophrase("Uma força de outro mundo impede que você seja expulso de [get_area_name(locked_to)]!"))
 
 	return COMPONENT_CANCEL_THROW
 

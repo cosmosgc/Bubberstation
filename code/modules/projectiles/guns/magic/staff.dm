@@ -468,7 +468,7 @@
 	. = ..()
 	playsound(user, fire_sound, 50, TRUE)
 	user.unequip_everything()
-	user.visible_message(span_suicide("[user]encolhe em nada!"), span_suicide("Você não encolhe em nada!"))
+	user.visible_message(span_suicide("[user] encolhe em nada!"), span_suicide("Você não encolhe em nada!"))
 	user.Stun(20 SECONDS, ignore_canstun = TRUE)
 	user.set_suicide(TRUE)
 	user.ghostize()

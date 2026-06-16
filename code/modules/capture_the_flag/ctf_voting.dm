@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(ctf_voting_controllers)
 		volunteers.Cut()
 		toggle_id_ctf(activated_id = game_id)
 	else
-		to_chat(user, span_notice("CTF foi solicitado.[volunteer_count]/[CTF_REQUIRED_PLAYERS]Prontos."))
+		to_chat(user, span_notice("CTF foi solicitado.[volunteer_count]/[CTF_REQUIRED_PLAYERS] Prontos."))
 
 /// Removes an existing vote for user.
 /datum/ctf_voting_controller/proc/unvote(mob/user)

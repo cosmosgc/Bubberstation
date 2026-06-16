@@ -85,15 +85,15 @@
 
 /obj/structure/reflector/screwdriver_act(mob/living/user, obj/item/tool)
 	can_rotate = !can_rotate
-	to_chat(user, span_notice("Você.[can_rotate ? "unlock" : "lock"] [src]É a rotação."))
+	to_chat(user, span_notice("Você.[can_rotate ? "unlock" : "lock"] [src] É a rotação."))
 	tool.play_tool_sound(src)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/reflector/wrench_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		to_chat(user, span_warning("Sem solda[src]Do chão primeiro!"))
+		to_chat(user, span_warning("Sem solda [src] Do chão primeiro!"))
 		return ITEM_INTERACT_SUCCESS
-	user.visible_message(span_notice("[user]Começa a desmontar[src]."), span_notice("Você começa a desmontar[src]..."))
+	user.visible_message(span_notice("[user] Começa a desmontar [src]."), span_notice("Você começa a desmontar [src]..."))
 	if(!tool.use_tool(src, user, 8 SECONDS, volume=50))
 		return ITEM_INTERACT_BLOCKING
 	to_chat(user, span_notice("Você desmonta.[src]."))
@@ -107,26 +107,26 @@
 	if(!tool.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_BLOCKING
 	if(atom_integrity < max_integrity)
-		user.visible_message(span_notice("[user]Começa a reparar.[src]."),
-							span_notice("Você começa a reparar[src]..."),
+		user.visible_message(span_notice("[user] Começa a reparar.[src]."),
+							span_notice("Você começa a reparar [src]..."),
 							span_hear("Você ouve solda."))
 		if(tool.use_tool(src, user, 4 SECONDS, volume=40))
 			atom_integrity = max_integrity
-			user.visible_message(span_notice("[user]Reparos[src]."), 								span_notice("Você termina de consertar.[src]."))
+			user.visible_message(span_notice("[user] Reparos [src]."), 								span_notice("Você termina de consertar.[src]."))
 	else if(!anchored)
-		user.visible_message(span_notice("[user]começa a soldar[src]Para o chão."),
-							span_notice("Você começa a soldar[src]Para o chão..."),
+		user.visible_message(span_notice("[user] começa a soldar [src] Para o chão."),
+							span_notice("Você começa a soldar [src] Para o chão..."),
 							span_hear("Você ouve solda."))
 		if (tool.use_tool(src, user, 2 SECONDS, volume=50))
 			set_anchored(TRUE)
-			to_chat(user, span_notice("Você solda[src]Para o chão."))
+			to_chat(user, span_notice("Você solda [src] Para o chão."))
 	else
-		user.visible_message(span_notice("[user]Começa a cortar[src]Livre do chão."),
-							span_notice("Você começa a cortar[src]Livre do chão..."),
+		user.visible_message(span_notice("[user] Começa a cortar [src] Livre do chão."),
+							span_notice("Você começa a cortar [src] Livre do chão..."),
 							span_hear("Você ouve solda."))
 		if (tool.use_tool(src, user, 2 SECONDS, volume=50))
 			set_anchored(FALSE)
-			to_chat(user, span_notice("Você cortou.[src]Livre do chão."))
+			to_chat(user, span_notice("Você cortou.[src] Livre do chão."))
 
 	return ITEM_INTERACT_SUCCESS
 

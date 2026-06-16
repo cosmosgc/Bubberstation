@@ -12,7 +12,7 @@
 	AddComponent(/datum/component/container_item/tank_holder, "holder_skub", FALSE)
 
 /obj/item/skub/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]se declarou como anti-skub! O gambá os destrói!"))
+	user.visible_message(span_suicide("[user] se declarou como anti-skub! O gambá os destrói!"))
 	user.gib(DROP_ALL_REMAINS)
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE, -1)
 	return MANUAL_SUICIDE

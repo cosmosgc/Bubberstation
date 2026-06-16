@@ -29,24 +29,24 @@
 		if(WIRE_MOTOR1, WIRE_MOTOR2)
 			if(is_cut(WIRE_MOTOR1) && is_cut(WIRE_MOTOR2))
 				ADD_TRAIT(mule, TRAIT_IMMOBILIZED, MOTOR_LACK_TRAIT)
-				holder.audible_message(span_hear("Os motores de[mule]Vá em silêncio."), null,  1)
+				holder.audible_message(span_hear("Os motores de [mule] Vá em silêncio."), null,  1)
 			else if(HAS_TRAIT_FROM(mule, TRAIT_IMMOBILIZED, MOTOR_LACK_TRAIT))
 				REMOVE_TRAIT(mule, TRAIT_IMMOBILIZED, MOTOR_LACK_TRAIT)
-				holder.audible_message(span_hear("Os motores de[mule]Viva a vida!"), null,  1)
+				holder.audible_message(span_hear("Os motores de [mule] Viva a vida!"), null,  1)
 
 			if(is_cut(WIRE_MOTOR1))
 				mule.set_varspeed(FAST_MOTOR_SPEED)
-				holder.audible_message(span_hear("Os motores de[mule]Rápido!"), null,  1)
+				holder.audible_message(span_hear("Os motores de [mule] Rápido!"), null,  1)
 			else if(is_cut(WIRE_MOTOR2))
 				mule.set_varspeed(AVERAGE_MOTOR_SPEED)
-				holder.audible_message(span_hear("Os motores de[mule]Whir."), null,  1)
+				holder.audible_message(span_hear("Os motores de [mule] Whir."), null,  1)
 			else
 				mule.set_varspeed(SLOW_MOTOR_SPEED)
-				holder.audible_message(span_hear("Os motores de[mule]Mexa-se suavemente."), null,  1)
+				holder.audible_message(span_hear("Os motores de [mule] Mexa-se suavemente."), null,  1)
 		if(WIRE_AVOIDANCE)
 			if (!isnull(source))
 				log_combat(source, mule, "[is_cut(WIRE_AVOIDANCE) ? "cut" : "mended"] the MULE safety wire of")
-				holder.audible_message(span_hear("Algo dentro[mule]Clicks sinistros!"), null,  1)
+				holder.audible_message(span_hear("Algo dentro [mule] Clicks sinistros!"), null,  1)
 
 /datum/wires/mulebot/on_pulse(wire)
 	var/mob/living/simple_animal/bot/mulebot/mule = holder
@@ -54,16 +54,16 @@
 		return //logically mulebots can't flash and beep if they don't have power.
 	switch(wire)
 		if(WIRE_POWER1, WIRE_POWER2)
-			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))]A luz de carga pisca."))
+			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))] A luz de carga pisca."))
 		if(WIRE_AVOIDANCE)
-			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))]As luzes externas piscam brevemente."))
+			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))] As luzes externas piscam brevemente."))
 			flick("[mule.base_icon]1", mule)
 		if(WIRE_LOADCHECK)
-			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))]A plataforma de carga não funciona."))
+			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))] A plataforma de carga não funciona."))
 		if(WIRE_MOTOR1, WIRE_MOTOR2)
-			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))]O motor de tração chora brevemente."))
+			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))] O motor de tração chora brevemente."))
 		else
-			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))]Você ouve um barulho de rádio."))
+			holder.visible_message(span_notice("[icon2html(mule, viewers(holder))] Você ouve um barulho de rádio."))
 
 #undef FAST_MOTOR_SPEED
 #undef AVERAGE_MOTOR_SPEED

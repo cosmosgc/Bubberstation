@@ -28,10 +28,10 @@
 
 /obj/machinery/plate_press/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!is_operational)
-		to_chat(user, span_warning("[src]Tem que ser para fazer isso!"))
+		to_chat(user, span_warning("[src] Tem que ser para fazer isso!"))
 		return FALSE
 	if(current_plate)
-		to_chat(user, span_warning("[src]Já tem um prato!"))
+		to_chat(user, span_warning("[src] Já tem um prato!"))
 		return FALSE
 	if(istype(I, /obj/item/stack/license_plates/empty))
 		var/obj/item/stack/license_plates/empty/plate = I

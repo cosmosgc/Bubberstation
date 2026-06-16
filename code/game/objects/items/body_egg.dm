@@ -9,7 +9,7 @@
 
 /obj/item/organ/body_egg/on_find(mob/living/finder)
 	..()
-	to_chat(finder, span_warning("Você encontrou um organismo alienígena desconhecido em[owner]'s[zone]!"))
+	to_chat(finder, span_warning("Você encontrou um organismo alienígena desconhecido em [owner]'s [zone]!"))
 
 /obj/item/organ/body_egg/feel_for_damage(self_aware)
 	// keep these stealthy for now, revisit later

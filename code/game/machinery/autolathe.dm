@@ -470,7 +470,7 @@
 		balloon_alert(user, "Feche o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user]começa a carregar\the [tool]em\the [src]..."),
+	user.visible_message(span_notice("[user] começa a carregar\the [tool] em\the [src]..."),
 		balloon_alert(user, "Carregando design..."),
 		span_hear("Você ouve a conversa de um drive flexível."))
 	busy = TRUE

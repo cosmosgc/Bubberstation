@@ -32,7 +32,7 @@
 		if(!moving)
 			I.play_tool_sound(src)
 			if(contents.len)
-				user.visible_message(span_notice("[user]Vazios.\the [src]."), span_notice("Você está vazio.\the [src]."))
+				user.visible_message(span_notice("[user] Vazios.\the [src]."), span_notice("Você está vazio.\the [src]."))
 				empty_pod()
 			else
 				deconstruct(TRUE)
@@ -155,7 +155,7 @@
 	var/list/savedcontents = contents.Copy()
 	var/saveddir = dir
 	var/turf/destination = get_edge_target_turf(src,saveddir)
-	visible_message(span_warning("[src]Ejeta suas entranhas para fora!"))
+	visible_message(span_warning("[src] Ejeta suas entranhas para fora!"))
 	deconstruct(FALSE)//we automatically deconstruct the pod
 	for(var/i in savedcontents)
 		var/atom/movable/AM = i

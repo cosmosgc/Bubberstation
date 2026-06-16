@@ -18,7 +18,7 @@ Reproductive extracts:
 
 /obj/item/slimecross/reproductive/examine()
 	. = ..()
-	. += span_danger("Parece ter comido.[length(contents)]Cubo de Macaco[p_s()]")
+	. += span_danger("Parece ter comido.[length(contents)] Cubo de Macaco [p_s()]")
 
 /obj/item/slimecross/reproductive/Initialize(mapload)
 	. = ..()
@@ -30,11 +30,11 @@ Reproductive extracts:
 		return NONE
 
 	if((last_produce + cooldown) > world.time)
-		to_chat(user, span_warning("[src]Ainda está digerindo!"))
+		to_chat(user, span_warning("[src] Ainda está digerindo!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(length(contents) >= feedAmount) //if for some reason the contents are full, but it didnt digest, attempt to digest again
-		to_chat(user, span_warning("[src]Parece estar cheio, mas não está digerindo! Talvez cutucá-lo o estimulou a digerir."))
+		to_chat(user, span_warning("[src] Parece estar cheio, mas não está digerindo! Talvez cutucá-lo o estimulou a digerir."))
 		slime_storage?.processCubes(user)
 		return ITEM_INTERACT_BLOCKING
 
@@ -44,7 +44,7 @@ Reproductive extracts:
 		if(!inserted.len)
 			to_chat(user, span_warning("Não há cubos de macaco na bolsa biológica!"))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você se alimenta.[length(inserted)]Cubo de macaco[length(inserted) > 1 ? "s" : ""]Para[src]E pulsa suavemente."))
+		to_chat(user, span_notice("Você se alimenta.[length(inserted)] Cubo de macaco[length(inserted) > 1 ? "s" : ""]Para [src] E pulsa suavemente."))
 		playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
 		slime_storage?.processCubes(user)
 		return ITEM_INTERACT_SUCCESS
@@ -53,10 +53,10 @@ Reproductive extracts:
 		return NONE
 
 	if(!atom_storage?.attempt_insert(tool, user, override = TRUE, force = STORAGE_FULLY_LOCKED))
-		to_chat(user, span_notice("O[src]Rejeita.[tool]!")) //in case it fails to insert for whatever reason you get feedback
+		to_chat(user, span_notice("O [src] Rejeita.[tool]!")) //in case it fails to insert for whatever reason you get feedback
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Você se alimenta.[tool]Para[src]E pulsa suavemente."))
+	to_chat(user, span_notice("Você se alimenta.[tool] Para [src] E pulsa suavemente."))
 	slime_storage?.processCubes(user)
 	playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
 	return ITEM_INTERACT_SUCCESS

@@ -40,7 +40,7 @@
 		return
 	if(break_clock(break_sound = 'sound/effects/magic/clockwork/ark_activation.ogg'))
 		user.visible_message(
-			span_warning("[user]Esmaga.\the [src]Tão difícil que para de quebrar!"),
+			span_warning("[user] Esmaga.\the [src] Tão difícil que para de quebrar!"),
 			span_bolddanger("Não suporto mais essa máquina estúpida! Cale a boca!"),
 			span_notice("Você ouve batidas repetidas!"),
 		)

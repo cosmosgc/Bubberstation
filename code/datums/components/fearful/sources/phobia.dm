@@ -134,7 +134,7 @@
 	COOLDOWN_START(src, scare_cooldown, 12 SECONDS)
 	var/message = pick("spooks you to the bone", "shakes you up", "terrifies you", "sends you into a panic", "sends chills down your spine")
 	if(istext(reason))
-		to_chat(owner, span_bolddanger("Audição[span_phobia(reason)] [message]!"))
+		to_chat(owner, span_bolddanger("Audição [span_phobia(reason)] [message]!"))
 		owner.add_mood_event("phobia_minor", /datum/mood_event/startled)
 		// Because this is called from a signal and not the main process, we need to add the buildup by hand
 		if (component.terror_buildup < TERROR_BUILDUP_PASSIVE_MAXIMUM)

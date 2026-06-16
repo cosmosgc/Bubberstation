@@ -87,7 +87,7 @@
 		return TRUE
 
 	playsound(src, 'sound/items/tools/welder2.ogg', 100, TRUE)
-	to_chat(user, span_notice("Você começa a cortar o chão soldado[src]..."))
+	to_chat(user, span_notice("Você começa a cortar o chão soldado [src]..."))
 	if(I.use_tool(src, user, 20))
 		to_chat(user, span_notice("Você corta o chão.[src]."))
 		stored.forceMove(loc)
@@ -143,7 +143,7 @@
 		stored.forceMove(loc)
 		transfer_fingerprints_to(stored)
 		stored = null
-		visible_message(span_warning("[src]é arrancado do chão!"))
+		visible_message(span_warning("[src] é arrancado do chão!"))
 		qdel(src)
 
 /obj/structure/disposaloutlet/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
@@ -152,7 +152,7 @@
 		stored.forceMove(loc)
 		transfer_fingerprints_to(stored)
 		stored = null
-		visible_message(span_warning("[src]é arrancado do chão!"))
+		visible_message(span_warning("[src] é arrancado do chão!"))
 		qdel(src)
 
 #undef EJECT_SPEED_SLOW

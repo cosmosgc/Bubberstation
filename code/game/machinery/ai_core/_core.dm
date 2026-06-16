@@ -107,7 +107,7 @@
 				var/accept_laws = TRUE
 				if(core_mmi.laws.id != DEFAULT_AI_LAWID || !core_mmi.brainmob || !core_mmi.brainmob?.mind)
 					accept_laws = FALSE
-				. += span_notice("Há um<b>slot</b>para um painel de vidro reforçado,[AI_CORE_BRAIN(core_mmi)]Poderia ser<b>Invadido</b>Fora.[accept_laws ? " A law module can be <b>swiped</b> across." : ""]")
+				. += span_notice("Há um<b>slot</b>para um painel de vidro reforçado,[AI_CORE_BRAIN(core_mmi)] Poderia ser<b>Invadido</b>Fora.[accept_laws ? " A law module can be <b>swiped</b> across." : ""]")
 		if(CORE_STATE_GLASSED)
 			. += span_notice("O monitor.[core_mmi?.brainmob?.mind && !suicide_check() ? "and neural interface " : ""]Pode ser<b>Está ferrado.</b>O painel pode ser...<b>Invadido</b>Fora.")
 		if(CORE_STATE_FINISHED)
@@ -231,10 +231,10 @@ That prevents a few funky behaviors.
 		return
 	if(core_mmi && core_mmi.brainmob)
 		if(core_mmi.brainmob.mind)
-			to_chat(user, span_warning("[src]Já contém uma mente ativa!"))
+			to_chat(user, span_warning("[src] Já contém uma mente ativa!"))
 			return
 		else if(suicide_check())
-			to_chat(user, span_warning("[AI_CORE_BRAIN(core_mmi)]Instalado em[src]é completamente inútil!"))
+			to_chat(user, span_warning("[AI_CORE_BRAIN(core_mmi)] Instalado em [src] é completamente inútil!"))
 			return
 	//Transferring a carded AI to a core.
 	if(interaction == AI_TRANS_FROM_CARD)

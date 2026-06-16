@@ -368,7 +368,7 @@ Difficulty: Hard
 		B.damage = 30
 	animate(src, alpha = 0, time = 2, easing = SINE_EASING|EASE_OUT) //fade out
 	SLEEP_CHECK_DEATH(1, src)
-	visible_message(span_hierophant_warning("[src]Desapareça!"))
+	visible_message(span_hierophant_warning("[src] Desapareça!"))
 	ADD_TRAIT(src, TRAIT_UNDENSE, VANISHING_TRAIT)
 	SLEEP_CHECK_DEATH(2, src)
 	forceMove(T)
@@ -376,7 +376,7 @@ Difficulty: Hard
 	animate(src, alpha = 255, time = 2, easing = SINE_EASING|EASE_IN) //fade IN
 	SLEEP_CHECK_DEATH(1, src)
 	REMOVE_TRAIT(src, TRAIT_UNDENSE, VANISHING_TRAIT)
-	visible_message(span_hierophant_warning("[src]Desvanece-se!"))
+	visible_message(span_hierophant_warning("[src] Desvanece-se!"))
 	SLEEP_CHECK_DEATH(1, src) //at this point the blasts we made detonate
 	blinking = FALSE
 
@@ -441,14 +441,14 @@ Difficulty: Hard
 	set_stat(DEAD)
 	blinking = TRUE //we do a fancy animation, release a huge burst(), and leave our staff.
 	visible_message(span_hierophant("\"Srmxmexmrk wipj-hiwxvygx wiuyirgi...\""))
-	visible_message(span_hierophant_warning("[src]encolhe, liberando uma enorme explosão de energia!"))
+	visible_message(span_hierophant_warning("[src] encolhe, liberando uma enorme explosão de energia!"))
 	hierophant_burst(null, get_turf(src), 10)
 	set_stat(CONSCIOUS) // deathgasp won't run if dead, stupid
 	..()
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/celebrate_kill(mob/living/L)
 	visible_message(span_hierophant_warning("\"[pick(kill_phrases)]\""))
-	visible_message(span_hierophant_warning("[src]Absorva[L]A força vital!"),span_userdanger("Você absorve[L]A força vital, restaurando sua saúde!"))
+	visible_message(span_hierophant_warning("[src] Absorva [L] A força vital!"),span_userdanger("Você absorve [L] A força vital, restaurando sua saúde!"))
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/CanAttack(atom/the_target)
 	. = ..()
@@ -717,7 +717,7 @@ Difficulty: Hard
 		if(L.client)
 			flash_color(L.client, "#660099", 1)
 		playsound(L,'sound/items/weapons/sear.ogg', 50, TRUE, -4)
-		to_chat(L, span_userdanger("Você é atingido por um[name]!"))
+		to_chat(L, span_userdanger("Você é atingido por um [name]!"))
 		var/limb_to_hit = L.get_bodypart(L.get_random_valid_zone(even_weights = TRUE))
 		var/armor = L.run_armor_check(limb_to_hit, MELEE, "Your armor absorbs [src]!", "Your armor blocks part of [src]!", FALSE, 50, "Your armor was penetrated by [src]!")
 		L.apply_damage(damage, BURN, limb_to_hit, armor, wound_bonus=CANT_WOUND)
@@ -739,7 +739,7 @@ Difficulty: Hard
 			var/mob/living/occupant = O
 			if(friendly_fire_check && caster?.faction_check_atom(occupant))
 				continue
-			to_chat(occupant, span_userdanger("Sua[M.name]é atingido por um[name]!"))
+			to_chat(occupant, span_userdanger("Sua [M.name] é atingido por um [name]!"))
 			playsound(M,'sound/items/weapons/sear.ogg', 50, TRUE, -4)
 			M.take_damage(damage, BURN, 0, 0)
 
@@ -773,7 +773,7 @@ Difficulty: Hard
 			if(do_after(user, 5 SECONDS, target = src))
 				playsound(src,'sound/effects/magic/blind.ogg', 100, TRUE, -4)
 				new /obj/effect/temp_visual/hierophant/telegraph/teleport(get_turf(src), user)
-				to_chat(user, span_hierophant_warning("Você coleciona[src]Voltando ao clube!"))
+				to_chat(user, span_hierophant_warning("Você coleciona [src] Voltando ao clube!"))
 				club.beacon = null
 				club.update_appearance(UPDATE_ICON_STATE)
 				user.update_mob_action_buttons()

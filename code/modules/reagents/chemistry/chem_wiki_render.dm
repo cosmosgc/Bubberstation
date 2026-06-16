@@ -24,13 +24,13 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 	for(var/name in names)
 		var/datum/reagent/reagent = GLOB.chemical_reagents_list[get_chem_id(name)]
 		if(!reagent)
-			to_chat(user, "Não foi possível encontrar[name]Saltando.")
+			to_chat(user, "Não foi possível encontrar [name] Saltando.")
 			continue
 		//Get reaction
 		var/list/reactions = GLOB.chemical_reactions_list_product_index[reagent.type]
 
 		if(!length(reactions))
-			to_chat(user, "Não foi possível encontrar[name]Reação! Continuando assim mesmo.")
+			to_chat(user, "Não foi possível encontrar [name] Reação! Continuando assim mesmo.")
 			var/single_parse = generate_chemwiki_line(reagent, null)
 			text2file(single_parse, "[GLOB.log_directory]/chem_parse.txt")
 			continue
@@ -138,7 +138,7 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 				else if (sum_change < 0)
 					outstring += "\n<br>H+ producing"
 			else
-				to_chat(usr, "[reaction]Não tem volumes válidos de produto e reagente! Por favor, diga a Fermi.")
+				to_chat(usr, "[reaction] Não tem volumes válidos de produto e reagente! Por favor, diga a Fermi.")
 		else
 			if(reaction.H_ion_release > 0)
 				outstring += "\n<br>H+ consuming"
@@ -148,7 +148,7 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 		//container
 		if(reaction.required_container)
 			var/list/names = splittext("[reaction.required_container]", "/")
-			var/container_name = "[names[names.len]] [names[names.len-1]]"
+			var/container_name = "[names [names.len]] [names [names.len-1]]"
 			container_name = replacetext(container_name, "_", " ")
 			outstring += "\n<br>[container_name]"
 

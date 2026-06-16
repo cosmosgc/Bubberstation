@@ -132,15 +132,15 @@
 /obj/machinery/atmospherics/components/unary/thermomachine/examine(mob/user)
 	. = ..()
 	. += span_notice("Com o painel aberto:")
-	. += span_notice("-Use uma chave com o botão esquerdo para girar[src]e clique com o botão direito para desancorá-lo.")
+	. += span_notice("-Use uma chave com o botão esquerdo para girar [src] e clique com o botão direito para desancorá-lo.")
 	. += span_notice("Use uma multitool com clique esquerdo para mudar a camada de tubulação e clique direito para mudar a cor da tubulação.")
 	. += span_notice(" -[EXAMINE_HINT("AltClick")]para o ciclo entre as faixas temperadas.")
 	. += span_notice(" -[EXAMINE_HINT("CtrlClick")]Ligar/desligar.")
-	. += span_notice("O termostato está definido para[target_temperature]K ([(T0C-target_temperature)*-1]C).")
+	. += span_notice("O termostato está definido para [target_temperature] K ([(T0C-target_temperature)*-1] C).")
 
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("Capacidade de calor em<b>[heat_capacity]Joules per Kelvin</b>.")
-		. += span_notice("Faixa de temperatura<b>[min_temperature]K...[max_temperature]K ([(T0C-min_temperature)*-1]C-[(T0C-max_temperature)*-1]C)</b>.")
+		. += span_notice("Capacidade de calor em<b>[heat_capacity] Joules per Kelvin</b>.")
+		. += span_notice("Faixa de temperatura<b>[min_temperature] K...[max_temperature] K ([(T0C-min_temperature)*-1] C-[(T0C-max_temperature)*-1] C)</b>.")
 
 /obj/machinery/atmospherics/components/unary/thermomachine/click_alt(mob/living/user)
 	if(panel_open)
@@ -155,7 +155,7 @@
 		target_temperature = T20C
 
 	investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "temperatura reiniciada para[target_temperature]K.")
+	balloon_alert(user, "temperatura reiniciada para [target_temperature] K.")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -216,7 +216,7 @@
 		balloon_alert(user, "Abra o painel!")
 		return ITEM_INTERACT_SUCCESS
 	piping_layer = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
-	to_chat(user, span_notice("Você muda o circuito para a camada[piping_layer]."))
+	to_chat(user, span_notice("Você muda o circuito para a camada [piping_layer]."))
 	if(anchored)
 		reconnect_nodes()
 	update_appearance(UPDATE_ICON)
@@ -228,8 +228,8 @@
 		return ITEM_INTERACT_SUCCESS
 	color_index = (color_index >= GLOB.pipe_paint_colors.len) ? (color_index = 1) : (color_index = 1 + color_index)
 	set_pipe_color(GLOB.pipe_paint_colors[GLOB.pipe_paint_colors[color_index]])
-	visible_message(span_notice("[user]Preparar.[src]É a cor do tubo para[GLOB.pipe_color_name[pipe_color]]."), ignored_mobs = user)
-	to_chat(user, span_notice("Você está pronto.[src]É a cor do tubo para[GLOB.pipe_color_name[pipe_color]]."))
+	visible_message(span_notice("[user] Preparar.[src] É a cor do tubo para [GLOB.pipe_color_name[pipe_color]]."), ignored_mobs = user)
+	to_chat(user, span_notice("Você está pronto.[src] É a cor do tubo para [GLOB.pipe_color_name[pipe_color]]."))
 	if(anchored)
 		reconnect_nodes()
 	update_appearance(UPDATE_ICON)

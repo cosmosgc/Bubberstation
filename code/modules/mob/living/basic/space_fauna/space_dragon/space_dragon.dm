@@ -223,7 +223,7 @@
 	if (QDELETED(food) || food.loc == src)
 		return FALSE
 	playsound(src, 'sound/effects/magic/demon_attack1.ogg', 60, TRUE)
-	visible_message(span_boldwarning("[src]Andorinhas[food]Inteiro!"))
+	visible_message(span_boldwarning("[src] Andorinhas [food] Inteiro!"))
 	food.extinguish_mob() // It's wet in there, and our food is likely to be on fire. Let's be decent and not husk them.
 	food.forceMove(src)
 	return TRUE
@@ -240,24 +240,24 @@
 			fish_left = initial(fish_left) //prevent begin_sharkify from being called again by eating another fish.
 	adjust_health(round(-health_recovered, 1))
 	playsound(src, 'sound/effects/magic/demon_attack1.ogg', 40, TRUE)
-	visible_message(span_boldwarning("[src]Andorinhas[fish]Inteiro!"))
+	visible_message(span_boldwarning("[src] Andorinhas [fish] Inteiro!"))
 	if(HAS_TRAIT(fish, TRAIT_YUCKY_FISH))
 		balloon_alert(src, "Nojento!")
-		to_chat(src, span_warning("Isso.[fish.name]Tem um gosto horrível, sente que está prestes a vomitar..."))
+		to_chat(src, span_warning("Isso.[fish.name] Tem um gosto horrível, sente que está prestes a vomitar..."))
 		addtimer(CALLBACK(src, PROC_REF(barf_contents)), 3 SECONDS)
 	qdel(fish)
 
 /mob/living/basic/space_dragon/proc/begin_sharkify()
 	do_jitter_animation(300)
 	addtimer(CALLBACK(src, PROC_REF(sharkify)), 1.2 SECONDS)
-	visible_message(span_warning("[src]Começa a sofrer mutação!"))
+	visible_message(span_warning("[src] Começa a sofrer mutação!"))
 
 /mob/living/basic/space_dragon/proc/barf_contents()
 	if(stat == DEAD)
 		return
 	new /obj/effect/decal/cleanable/vomit(loc)
 	playsound(src, 'sound/effects/splat.ogg', vol = 50, vary = TRUE)
-	visible_message(span_danger("[src]Vomite tudo o que comeu até agora!"))
+	visible_message(span_danger("[src] Vomite tudo o que comeu até agora!"))
 	for(var/atom/movable/eaten in src)
 		if(HAS_TRAIT(eaten, TRAIT_NOT_BARFABLE))
 			continue
@@ -282,7 +282,7 @@
 		return
 	new /obj/effect/decal/cleanable/vomit(loc)
 	playsound(src, 'sound/effects/splat.ogg', vol = 50, vary = TRUE)
-	visible_message(span_danger("[src]Vomite.[eaten]!"))
+	visible_message(span_danger("[src] Vomite.[eaten]!"))
 	eaten.forceMove(loc)
 	eaten.Paralyze(5 SECONDS)
 

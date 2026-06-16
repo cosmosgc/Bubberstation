@@ -106,7 +106,7 @@
 		return
 	eater.dna.add_mutation(new_mutation, MUTATION_SOURCE_HEART_EATER)
 	healing_heart(eater)
-	to_chat(eater, span_warning("Este coração não é bom para você. Você agora tem[new_mutation.name]Mutação."))
+	to_chat(eater, span_warning("Este coração não é bom para você. Você agora tem [new_mutation.name] Mutação."))
 
 ///Heart eater give also strong healing from hearts.
 /datum/component/heart_eater/proc/healing_heart(mob/living/carbon/human/eater)

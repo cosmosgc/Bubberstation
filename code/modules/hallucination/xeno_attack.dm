@@ -55,7 +55,7 @@
 		qdel(src)
 		return
 
-	to_chat(hallucinator, span_notice("[fake_xeno.name]Começa a subir no sistema de ventilação..."))
+	to_chat(hallucinator, span_notice("[fake_xeno.name] Começa a subir no sistema de ventilação..."))
 	addtimer(CALLBACK(src, PROC_REF(disappear), fake_xeno), 3 SECONDS)
 
 /// Disappears into the vent, ending the hallucination.
@@ -63,7 +63,7 @@
 	if(QDELETED(src))
 		return
 	if(!QDELETED(fake_xeno))
-		to_chat(hallucinator, span_notice("[fake_xeno.name]Entra nos dutos de ventilação!"))
+		to_chat(hallucinator, span_notice("[fake_xeno.name] Entra nos dutos de ventilação!"))
 
 	qdel(src)
 
@@ -86,8 +86,8 @@
 		return
 	hit_living.Paralyze(10 SECONDS)
 	hit_living.visible_message(
-		span_warning("[hit_living]Esfrega-se."),
-		span_userdanger("[name]Ataca sobre você!"),
+		span_warning("[hit_living] Esfrega-se."),
+		span_userdanger("[name] Ataca sobre você!"),
 	)
 
 /// Sets our icon to look like we're leaping.

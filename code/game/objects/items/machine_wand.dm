@@ -46,7 +46,7 @@
 /obj/item/machine_remote/examine(mob/user)
 	. = ..()
 	if(controlling_machine_or_bot)
-		. += span_notice("Está controlando.[controlling_machine_or_bot]Use na mão para interagir com ele.")
+		. += span_notice("Está controlando.[controlling_machine_or_bot] Use na mão para interagir com ele.")
 
 /obj/item/machine_remote/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(controlling_machine_or_bot)

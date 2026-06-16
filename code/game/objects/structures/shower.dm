@@ -100,7 +100,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	if(has_water_reclaimer)
 		. += span_notice("Um reciclador de água está instalado. Parece que você poderia tirá-lo.")
 	. += span_info("O modo de chuveiro atual é[span_bold(GLOB.shower_mode_descriptions["[mode]"])].") // BUBBER EDIT CHANGE - Showers have infinite water - Original: "O desligamento automático está programado para[GLOB.shower_mode_descriptions["[mode]"]]."
-	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume]Líquidos restantes.")
+	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume] Líquidos restantes.")
 
 /obj/machinery/shower/Destroy()
 	QDEL_NULL(soundloop)
@@ -114,7 +114,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 
 	intended_on = !intended_on
 	if(!update_actually_on(intended_on))
-		balloon_alert(user, "[src]Está seco!")
+		balloon_alert(user, "[src] Está seco!")
 		return FALSE
 
 	balloon_alert(user, "Virado.[intended_on ? "on" : "off"]")
@@ -125,7 +125,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	. = ..()
 
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("A temperatura da água parece ser[current_temperature]."))
+	to_chat(user, span_notice("A temperatura da água parece ser [current_temperature]."))
 	return TRUE
 
 /obj/machinery/shower/plunger_act(obj/item/plunger/attacking_plunger, mob/living/user, reinforced)
@@ -173,7 +173,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	tool.play_tool_sound(src)
 	has_water_reclaimer = FALSE
 	new/obj/item/stock_parts/water_recycler(get_turf(loc))
-	to_chat(user, span_notice("Você remove o recuperador de água de[src]"))
+	to_chat(user, span_notice("Você remove o recuperador de água de [src]"))
 	return TRUE
 
 /obj/machinery/shower/screwdriver_act(mob/living/user, obj/item/I)
@@ -187,7 +187,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 				current_temperature = SHOWER_BOILING
 			if(SHOWER_BOILING)
 				current_temperature = SHOWER_NORMAL
-		user.visible_message(span_notice("[user]Ajusta o chuveiro com\the [I]."), span_notice("Você ajustar o chuveiro com\the [I]para[current_temperature]temperatura."))
+		user.visible_message(span_notice("[user] Ajusta o chuveiro com\the [I]."), span_notice("Você ajustar o chuveiro com\the [I] para [current_temperature] temperatura."))
 		user.log_message("has wrenched a shower to [current_temperature].", LOG_ATTACK)
 		add_hiddenprint(user)
 	handle_mist()
@@ -381,11 +381,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 
 	if(current_temperature == SHOWER_FREEZING)
 		living.adjust_bodytemperature(-80, 80)
-		to_chat(living, span_warning("[src]Está congelando!"))
+		to_chat(living, span_warning("[src] Está congelando!"))
 	else if(current_temperature == SHOWER_BOILING)
 		living.adjust_bodytemperature(35, 0, 500)
 		living.adjust_fire_loss(5)
-		to_chat(living, span_danger("[src]Está queimando!"))
+		to_chat(living, span_danger("[src] Está queimando!"))
 
 
 /obj/structure/showerframe

@@ -556,7 +556,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		return
 	scanner.computer_ref = WEAKREF(src)
 	balloon_alert(user, "Escâner conectado")
-	audible_message(span_hear("[src]Vamos sair com um blip baixo e curto."))
+	audible_message(span_hear("[src] Vamos sair com um blip baixo e curto."))
 
 /obj/machinery/computer/libraryconsole/bookmanagement/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!density || obj_flags & EMAGGED)
@@ -580,7 +580,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	can_spawn_lore = FALSE
 	new /obj/item/melee/cultblade/dagger(get_turf(src))
 	to_chat(user, span_warning("Sua sanidade mal suporta os segundos passados na janela do cofre. A única coisa que te lembra disso quando para de procurar é uma adaga sinistra sentada na mesa. Você nem se lembra de onde veio..."))
-	user.visible_message(span_warning("[user]Olha para a tela em branco por alguns momentos,[user.p_their()]expressão congelada no medo. Quando[user.p_they()]Finalmente acordar[user.p_s()]um partido dele,[user.p_they()]Veja.[user.p_s()]Muito mais velho."), vision_distance = 2)
+	user.visible_message(span_warning("[user] Olha para a tela em branco por alguns momentos,[user.p_their()] expressão congelada no medo. Quando [user.p_they()] Finalmente acordar [user.p_s()] um partido dele,[user.p_they()] Veja.[user.p_s()] Muito mais velho."), vision_distance = 2)
 	if(ishuman(user))
 		var/mob/living/carbon/human/fool = user
 		fool.age = clamp(fool.age + 10, AGE_MIN, AGE_MAX) //Fuck you
@@ -679,7 +679,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 			fill.set_author(author, trusted = TRUE)
 			fill.set_content(content, trusted = TRUE)
 			printed_book.gen_random_icon_state()
-			visible_message(span_notice("[src]A impressora canta enquanto produz um livro completamente encadernado. Como fez isso?"))
+			visible_message(span_notice("[src] A impressora canta enquanto produz um livro completamente encadernado. Como fez isso?"))
 			log_paper("[key_name(usr)] has printed \"[title]\" (id: [id]) by [author] from a book management console.")
 		break
 	qdel(query_library_print)
@@ -825,8 +825,8 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 	if(!user.transferItemToLoc(draw_from, src))
 		return
 
-	user.visible_message(span_notice("[user]carrega algum papel em[src]."), span_notice("Você carrega algum papel em[src]."))
-	audible_message(span_hear("[src]começa a cantarolar enquanto aquece seus tambores de impressão."))
+	user.visible_message(span_notice("[user] carrega algum papel em [src]."), span_notice("Você carrega algum papel em [src]."))
+	audible_message(span_hear("[src] começa a cantarolar enquanto aquece seus tambores de impressão."))
 	busy = TRUE
 	playsound(src, 'sound/machines/printer.ogg', 50)
 	flick("binder1", src)
@@ -841,7 +841,7 @@ GLOBAL_VAR_INIT(library_table_modified, 0)
 		draw_from.forceMove(drop_location())
 		return
 
-	visible_message(span_notice("[src]Equanto imprime e liga um novo livro."))
+	visible_message(span_notice("[src] Equanto imprime e liga um novo livro."))
 	var/obj/item/book/bound_book = new(loc)
 	bound_book.book_data.set_content_using_paper(draw_from)
 	bound_book.book_data.set_author(scanned_name, trusted = FALSE)

@@ -194,7 +194,7 @@
 	if(!istype(user_tongue, /obj/item/organ/tongue/fly))
 		return
 	playsound(get_turf(src), 'sound/items/drink.ogg', 50, TRUE) //slurp
-	as_human.visible_message(span_alert("[as_human]estende um pequeno probóscide para dentro da piscina de vômito, chupando-o com um som sufocante."))
+	as_human.visible_message(span_alert("[as_human] estende um pequeno probóscide para dentro da piscina de vômito, chupando-o com um som sufocante."))
 	lazy_init_reagents()?.trans_to(as_human, reagents.total_volume, transferred_by = user, methods = INGEST)
 	qdel(src)
 
@@ -285,7 +285,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
 	if(!isnull(oldname))
-		desc = "Os tristes restos do que costumava ser[oldname]"
+		desc = "Os tristes restos do que costumava ser [oldname]"
 	. = ..()
 
 /obj/effect/decal/cleanable/glitter

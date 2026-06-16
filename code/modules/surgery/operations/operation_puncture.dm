@@ -33,9 +33,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a realinhar os vasos sanguíneos rasgados em[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a realinhar os vasos sanguíneos rasgados[FORMAT_LIMB_OWNER(limb)]Com[tool]."),
-		span_notice("[surgeon]começa a realinhar os vasos sanguíneos rasgados[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a realinhar os vasos sanguíneos rasgados em [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a realinhar os vasos sanguíneos rasgados [FORMAT_LIMB_OWNER(limb)] Com [tool]."),
+		span_notice("[surgeon] começa a realinhar os vasos sanguíneos rasgados [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a horrible stabbing pain in your [limb.plaintext_zone]!")
 
@@ -48,9 +48,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_notice("Você realinha com sucesso o último dos vasos sanguíneos rasgados em[FORMAT_LIMB_OWNER(limb)]."),
-			span_notice("[surgeon]Com sucesso realinha o último dos vasos sanguíneos rasgados em[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-			span_notice("[surgeon]Com sucesso realinha o último dos vasos sanguíneos rasgados em[FORMAT_LIMB_OWNER(limb)]!"),
+			span_notice("Você realinha com sucesso o último dos vasos sanguíneos rasgados em [FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("[surgeon] Com sucesso realinha o último dos vasos sanguíneos rasgados em [FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+			span_notice("[surgeon] Com sucesso realinha o último dos vasos sanguíneos rasgados em [FORMAT_LIMB_OWNER(limb)]!"),
 		)
 		return
 
@@ -58,18 +58,18 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você realinha com sucesso alguns dos vasos sanguíneos em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]com sucesso realinha alguns dos vasos sanguíneos em[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-		span_notice("[surgeon]com sucesso realinha alguns dos vasos sanguíneos em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você realinha com sucesso alguns dos vasos sanguíneos em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] com sucesso realinha alguns dos vasos sanguíneos em [FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+		span_notice("[surgeon] com sucesso realinha alguns dos vasos sanguíneos em [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/repair_puncture/on_failure(obj/item/bodypart/limb, mob/living/surgeon, tool, list/operation_args)
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você bate alguns dos vasos sanguíneos dentro[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Bate com alguns dos vasos sanguíneos.[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-		span_notice("[surgeon]Bate com alguns dos vasos sanguíneos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você bate alguns dos vasos sanguíneos dentro [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Bate com alguns dos vasos sanguíneos.[FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+		span_notice("[surgeon] Bate com alguns dos vasos sanguíneos.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	limb.receive_damage(rand(4, 8), wound_bonus = 10, sharpness = SHARP_EDGED, damage_source = tool)
 
@@ -120,9 +120,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a selar os vasos sanguíneos realinhados[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a selar os vasos sanguíneos realinhados em[FORMAT_LIMB_OWNER(limb)]Com[tool]."),
-		span_notice("[surgeon]Começa a selar os vasos sanguíneos realinhados em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a selar os vasos sanguíneos realinhados [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a selar os vasos sanguíneos realinhados em [FORMAT_LIMB_OWNER(limb)] Com [tool]."),
+		span_notice("[surgeon] Começa a selar os vasos sanguíneos realinhados em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a burning sensation in your [limb.plaintext_zone]!")
 
@@ -135,8 +135,8 @@
 			surgeon,
 			limb.owner,
 			span_notice("Você selou com sucesso o último dos vasos sanguíneos rompidos.[FORMAT_LIMB_OWNER(limb)]."),
-			span_notice("[surgeon]com sucesso sela o último dos vasos sanguíneos rompidos[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-			span_notice("[surgeon]com sucesso sela o último dos vasos sanguíneos rompidos[FORMAT_LIMB_OWNER(limb)]!"),
+			span_notice("[surgeon] com sucesso sela o último dos vasos sanguíneos rompidos [FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+			span_notice("[surgeon] com sucesso sela o último dos vasos sanguíneos rompidos [FORMAT_LIMB_OWNER(limb)]!"),
 		)
 		return
 
@@ -144,7 +144,7 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você selou com sucesso alguns dos vasos sanguíneos[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]com sucesso sela alguns dos vasos sanguíneos em[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-		span_notice("[surgeon]com sucesso sela alguns dos vasos sanguíneos em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você selou com sucesso alguns dos vasos sanguíneos [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] com sucesso sela alguns dos vasos sanguíneos em [FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+		span_notice("[surgeon] com sucesso sela alguns dos vasos sanguíneos em [FORMAT_LIMB_OWNER(limb)]!"),
 	)

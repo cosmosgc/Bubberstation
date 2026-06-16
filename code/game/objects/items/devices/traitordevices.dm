@@ -85,7 +85,7 @@ effective or pretty fucking useless.
 
 	var/mob/living/carbon/human/human_target = interacting_with
 	if(istype(human_target) && !used && SSradiation.wearing_rad_protected_clothing(human_target)) //intentionally not checking for TRAIT_RADIMMUNE here so that tatortot can still fuck up and waste their cooldown.
-		to_chat(user, span_warning("[interacting_with]A roupa é totalmente protetora.[interacting_with.p_them()]De irradiação!"))
+		to_chat(user, span_warning("[interacting_with] A roupa é totalmente protetora.[interacting_with.p_them()] De irradiação!"))
 		return . | ITEM_INTERACT_BLOCKING
 
 	if(!used)
@@ -95,7 +95,7 @@ effective or pretty fucking useless.
 		icon_state = "health1"
 		addtimer(VARSET_CALLBACK(src, used, FALSE), cooldown)
 		addtimer(VARSET_CALLBACK(src, icon_state, "health"), cooldown)
-		to_chat(user, span_warning("Com sucesso irradiado[interacting_with]."))
+		to_chat(user, span_warning("Com sucesso irradiado [interacting_with]."))
 		addtimer(CALLBACK(src, PROC_REF(radiation_aftereffect), interacting_with, intensity), (intensity+(wavelength*4))*5)
 		return . | ITEM_INTERACT_SUCCESS
 

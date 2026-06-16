@@ -114,7 +114,7 @@
 		if (GUILLOTINE_BLADE_RAISED)
 			if (LAZYLEN(buckled_mobs))
 				if (user.combat_mode)
-					user.visible_message(span_warning("[user]Começa a puxar a alavanca!"),
+					user.visible_message(span_warning("[user] Começa a puxar a alavanca!"),
 						                 span_warning("Você começa a puxar a alavanca."))
 					current_action = GUILLOTINE_ACTION_INUSE
 
@@ -200,7 +200,7 @@
 				blade_status = GUILLOTINE_BLADE_SHARPENING
 				if(do_after(user, 0.7 SECONDS, target = src))
 					blade_status = GUILLOTINE_BLADE_RAISED
-					user.visible_message(span_notice("[user]Afia a grande lâmina da guilhotina."),
+					user.visible_message(span_notice("[user] Afia a grande lâmina da guilhotina."),
 						                 span_notice("Você afia a grande lâmina da guilhotina."))
 					blade_sharpness += 1
 					playsound(src, 'sound/items/unsheath.ogg', 100, TRUE)
@@ -219,11 +219,11 @@
 
 /obj/structure/guillotine/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	if (!anchored)
-		to_chat(usr, span_warning("[src]Precisa ser puxado para o chão!"))
+		to_chat(usr, span_warning("[src] Precisa ser puxado para o chão!"))
 		return FALSE
 
 	if (!ishuman(M))
-		to_chat(usr, span_warning("Não parece[M.p_they()]Pode caber bem nisso!"))
+		to_chat(usr, span_warning("Não parece [M.p_they()] Pode caber bem nisso!"))
 		return FALSE // Can't decapitate non-humans
 
 	if (blade_status != GUILLOTINE_BLADE_RAISED)

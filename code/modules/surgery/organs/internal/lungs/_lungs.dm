@@ -780,7 +780,7 @@
 			breath_effect_prob = 25
 		if(breath_temperature < cold_level_1_threshold)
 			if(prob(sqrt(breath_effect_prob) * 4))
-				to_chat(breather, span_warning("Você sente[cold_message]em seu[name]!"))
+				to_chat(breather, span_warning("Você sente [cold_message] em seu [name]!"))
 				if(prob(50))
 					breather.emote("shiver")
 			if(prob(breath_effect_prob))
@@ -806,7 +806,7 @@
 			heat_message_prob = 25
 		if(breath_temperature > heat_level_1_threshold)
 			if(prob(sqrt(heat_message_prob) * 4))
-				to_chat(breather, span_warning("Você sente[hot_message]em seu[name]!"))
+				to_chat(breather, span_warning("Você sente [hot_message] em seu [name]!"))
 
 	// The air you breathe out should match your body temperature
 	breath.temperature = breather.bodytemperature
@@ -857,7 +857,7 @@
 		if(do_i_cough)
 			owner.emote("cough")
 	if(organ_flags & ORGAN_FAILING && owner.stat == CONSCIOUS)
-		owner.visible_message(span_danger("[owner]Pega.[owner.p_their()]garganta, lutando pela respiração!"), span_userdanger("De repente você sente que não consegue respirar!"))
+		owner.visible_message(span_danger("[owner] Pega.[owner.p_their()] garganta, lutando pela respiração!"), span_userdanger("De repente você sente que não consegue respirar!"))
 		failed = TRUE
 
 /obj/item/organ/lungs/get_availability(datum/species/owner_species, mob/living/owner_mob)
@@ -904,7 +904,7 @@
 
 /// by default, returns the lungs' breath_noise var as a notice. called when stethoscope is used on chest, uses the return as a message for stethoscope user.
 /obj/item/organ/lungs/proc/hear_breath_noise(mob/living/hearer)
-	return span_notice("[owner.p_Their()]pulmões emitem[breath_noise].")
+	return span_notice("[owner.p_Their()] pulmões emitem [breath_noise].")
 
 #define SMOKER_ORGAN_HEALTH (STANDARD_ORGAN_THRESHOLD * 0.75)
 #define SMOKER_LUNG_HEALING (STANDARD_ORGAN_HEALING * 0.75)
@@ -1003,7 +1003,7 @@
 	AddElement(/datum/element/dangerous_organ_removal, /*surgical = */ TRUE)
 
 /obj/item/organ/lungs/cybernetic/surplus/hear_breath_noise(mob/living/hearer)
-	return span_danger("[owner.p_Their()]pulmões emitem[breath_noise].")
+	return span_danger("[owner.p_Their()] pulmões emitem [breath_noise].")
 
 /obj/item/organ/lungs/ghost
 	name = "ghost lungs"

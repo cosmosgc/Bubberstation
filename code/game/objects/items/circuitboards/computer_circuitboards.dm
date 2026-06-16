@@ -335,7 +335,7 @@
 		if(slot_themes[theme_name] == build_path)
 			current_theme = theme_name
 			break
-	. += span_info("[src]está definido para o[current_theme]Tema. Pode usar uma chave de fenda para reconfigurar.")
+	. += span_info("[src] está definido para o [current_theme] Tema. Pode usar uma chave de fenda para reconfigurar.")
 
 /obj/item/circuitboard/computer/slot_machine/screwdriver_act(mob/living/user, obj/item/tool)
 	if(obj_flags & EMAGGED)
@@ -346,7 +346,7 @@
 	if(isnull(choice))
 		return ITEM_INTERACT_BLOCKING
 	build_path = slot_themes[choice]
-	to_chat(user, span_notice("Você colocou o tabuleiro para o[choice]Tema."))
+	to_chat(user, span_notice("Você colocou o tabuleiro para o [choice] Tema."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/circuitboard/computer/slot_machine/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -413,7 +413,7 @@
 
 /obj/item/circuitboard/computer/tram_controls/multitool_act(mob/living/user)
 	split_mode = !split_mode
-	to_chat(user, span_notice("[src]Posicionamento definido para[split_mode ? "split window" : "normal window"]."))
+	to_chat(user, span_notice("[src] Posicionamento definido para[split_mode ? "split window" : "normal window"]."))
 	return TRUE
 
 /obj/item/circuitboard/computer/terminal
@@ -516,8 +516,8 @@
 		locked = !locked
 		balloon_alert(user, locked ? "trancado" : "destrancado")
 		user.visible_message(
-			message = span_notice("\The [user] unlock[user.p_s()] \the [src] with \the [attacking_item]."),
-			self_message = span_notice("Você abre.\the [src]Com\the [attacking_item]."),
+			message = span_notice("\The [user] unlock [user.p_s()] \the [src] with \the [attacking_item]."),
+			self_message = span_notice("Você abre.\the [src] Com\the [attacking_item]."),
 			blind_message = span_hear("Você ouve um bip suave."),
 		)
 	else
@@ -628,7 +628,7 @@
 
 	contraband = TRUE
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("Você se ajusta.[src]Roteamento e espectro receptor, desbloqueando suprimentos específicos e contrabando."))
+	to_chat(user, span_notice("Você se ajusta.[src] Roteamento e espectro receptor, desbloqueando suprimentos específicos e contrabando."))
 	return TRUE
 
 /obj/item/circuitboard/computer/cargo/configure_machine(obj/machinery/computer/cargo/machine)

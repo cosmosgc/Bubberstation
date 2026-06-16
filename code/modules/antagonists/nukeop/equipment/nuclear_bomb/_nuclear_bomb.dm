@@ -82,7 +82,7 @@ GLOBAL_VAR(station_nuke_source)
 		if(NUKESTATE_WELDED)
 			. += span_notice("A placa interna foi cortada e pode ser<b>Arrancou.</b>.")
 		if(NUKESTATE_CORE_EXPOSED)
-			. += span_danger("A câmara interna está exposta, revelando[core]Paráfora!")
+			. += span_danger("A câmara interna está exposta, revelando [core] Paráfora!")
 			. += span_notice("A placa interna danificada cobrindo a câmara interna pode ser substituída por alguns<b>Ferro.</b>.")
 		if(NUKESTATE_CORE_REMOVED)
 			. += span_notice("A câmara interna está exposta, mas está vazia.")
@@ -95,7 +95,7 @@ GLOBAL_VAR(station_nuke_source)
 		if(NUKE_OFF_UNLOCKED)
 			. += span_notice("O dispositivo está pronto para a contagem regressiva da detonação.")
 		if(NUKE_ON_TIMING)
-			. += span_danger("Há[get_time_left()]segundos até a detonação.")
+			. += span_danger("Há [get_time_left()] segundos até a detonação.")
 		if(NUKE_ON_EXPLODING)
 			. += span_bolddanger("Está em processo de explosão. Talvez rever seus assuntos esteja em ordem.")
 
@@ -123,21 +123,21 @@ GLOBAL_VAR(station_nuke_source)
 	switch(deconstruction_state)
 		if(NUKESTATE_INTACT)
 			if(istype(weapon, /obj/item/screwdriver/nuke))
-				to_chat(user, span_notice("Você começa a remover[src]Os parafusos fazem dor frontal..."))
+				to_chat(user, span_notice("Você começa a remover [src] Os parafusos fazem dor frontal..."))
 				if(!weapon.use_tool(src, user, 6 SECONDS, volume = 100))
 					return TRUE
 				deconstruction_state = NUKESTATE_UNSCREWED
-				to_chat(user, span_notice("Você remove os parafusos de[src]É o painel frontal."))
+				to_chat(user, span_notice("Você remove os parafusos de [src] É o painel frontal."))
 				update_appearance()
 				return TRUE
 
 		if(NUKESTATE_UNSCREWED)
 			if(istype(weapon, /obj/item/screwdriver/nuke))
-				to_chat(user, span_notice("Você começa a transar[src]O painel frontal está de volta em..."))
+				to_chat(user, span_notice("Você começa a transar [src] O painel frontal está de volta em..."))
 				if(!weapon.use_tool(src, user, 8 SECONDS, volume = 100))
 					return TRUE
 				deconstruction_state = NUKESTATE_INTACT
-				to_chat(user, span_notice("Você fode.[src]O painel frontal está de volta ao lugar."))
+				to_chat(user, span_notice("Você fode.[src] O painel frontal está de volta ao lugar."))
 				deconstruction_state = NUKESTATE_INTACT
 				update_appearance()
 				return TRUE
@@ -146,10 +146,10 @@ GLOBAL_VAR(station_nuke_source)
 			if(weapon.tool_behaviour == TOOL_WELDER)
 				if(!weapon.tool_start_check(user, amount = 1))
 					return TRUE
-				to_chat(user, span_notice("Você começa a cortar[src]Uma praça internacional..."))
+				to_chat(user, span_notice("Você começa a cortar [src] Uma praça internacional..."))
 				if(!weapon.use_tool(src, user, 8 SECONDS, volume=100))
 					return TRUE
-				to_chat(user, span_notice("Você cortou.[src]É o prato interno."))
+				to_chat(user, span_notice("Você cortou.[src] É o prato interno."))
 				deconstruction_state = NUKESTATE_WELDED
 				update_appearance()
 				return TRUE
@@ -157,26 +157,26 @@ GLOBAL_VAR(station_nuke_source)
 		if(NUKESTATE_CORE_EXPOSED)
 			if(istype(weapon, /obj/item/nuke_core_container))
 				var/obj/item/nuke_core_container/core_box = weapon
-				to_chat(user, span_notice("Você começa a carregar o núcleo de plutônio em[core_box]..."))
+				to_chat(user, span_notice("Você começa a carregar o núcleo de plutônio em [core_box]..."))
 				if(!do_after(user, 5 SECONDS, target = src, hidden = TRUE))
 					return TRUE
 				if(core_box.load(core, user))
-					to_chat(user, span_notice("Você carrega o núcleo de plutônio em[core_box]."))
+					to_chat(user, span_notice("Você carrega o núcleo de plutônio em [core_box]."))
 					deconstruction_state = NUKESTATE_CORE_REMOVED
 					update_appearance()
 					core = null
 				else
-					to_chat(user, span_warning("Você não consegue carregar o núcleo de plutônio em[core_box]. [core_box]Já foi usado!"))
+					to_chat(user, span_warning("Você não consegue carregar o núcleo de plutônio em [core_box]. [core_box] Já foi usado!"))
 				return TRUE
 
 			if(istype(weapon, /obj/item/stack/sheet/iron))
 				if(!weapon.tool_start_check(user, amount = 20))
 					return TRUE
 
-				to_chat(user, span_notice("Você começa a reparar[src]Uma placa de metal interior..."))
+				to_chat(user, span_notice("Você começa a reparar [src] Uma placa de metal interior..."))
 				if(!weapon.use_tool(src, user, 10 SECONDS, amount = 20))
 					return TRUE
-				to_chat(user, span_notice("Você conserta.[src]A placa de metal interior. A radiação está contida."))
+				to_chat(user, span_notice("Você conserta.[src] A placa de metal interior. A radiação está contida."))
 				deconstruction_state = NUKESTATE_PANEL_REMOVED
 				STOP_PROCESSING(SSobj, core)
 				update_appearance()
@@ -185,24 +185,24 @@ GLOBAL_VAR(station_nuke_source)
 		if(NUKESTATE_CORE_REMOVED)
 			if(astype(weapon, /obj/item/nuke_core_container)?.core && !istype(weapon, /obj/item/nuke_core_container/supermatter))
 				var/obj/item/nuke_core_container/core_box = weapon
-				to_chat(user, span_notice("Você abre[core_box]e começar a colocar[core_box.core]Em[src]A câmara interna..."))
+				to_chat(user, span_notice("Você abre [core_box] e começar a colocar [core_box.core] Em [src] A câmara interna..."))
 				if(!do_after(user, 15 SECONDS, src))
 					return TRUE
 				core_box.core.forceMove(src)
 				core = core_box.core
-				to_chat(user, span_notice("Seu lugar.[core_box.core]Em[src]A câmara interna."))
+				to_chat(user, span_notice("Seu lugar.[core_box.core] Em [src] A câmara interna."))
 				deconstruction_state = NUKESTATE_CORE_EXPOSED
 				update_appearance()
 				core_box.icon_state = core_box::icon_state
 				core_box.core = null
 				return TRUE
 			if(istype(weapon, /obj/item/nuke_core) && !istype(weapon, /obj/item/nuke_core/supermatter_sliver))
-				to_chat(user, span_notice("Você começa a colocar[weapon]Em[src]A câmara interna..."))
+				to_chat(user, span_notice("Você começa a colocar [weapon] Em [src] A câmara interna..."))
 				if(!do_after(user, 6 SECONDS, src))
 					return TRUE
 				weapon.forceMove(src)
 				core = weapon
-				to_chat(user, span_notice("Seu lugar.[weapon]Em[src]A câmara interna."))
+				to_chat(user, span_notice("Seu lugar.[weapon] Em [src] A câmara interna."))
 				deconstruction_state = NUKESTATE_CORE_EXPOSED
 				update_appearance()
 				return TRUE
@@ -212,32 +212,32 @@ GLOBAL_VAR(station_nuke_source)
 /obj/machinery/nuclearbomb/crowbar_act(mob/user, obj/item/tool)
 	switch(deconstruction_state)
 		if(NUKESTATE_UNSCREWED)
-			to_chat(user, span_notice("Você começa a remover[src]O painel da frente..."))
+			to_chat(user, span_notice("Você começa a remover [src] O painel da frente..."))
 			if(!tool.use_tool(src, user, 30, volume=100))
 				return TRUE
-			to_chat(user, span_notice("Você tira.[src]É o painel frontal."))
+			to_chat(user, span_notice("Você tira.[src] É o painel frontal."))
 			deconstruction_state = NUKESTATE_PANEL_REMOVED
 			update_appearance()
 			return TRUE
 		if(NUKESTATE_WELDED)
-			to_chat(user, span_notice("Você começa a bisbilhotar[src]Uma praça internacional..."))
+			to_chat(user, span_notice("Você começa a bisbilhotar [src] Uma praça internacional..."))
 			if(!tool.use_tool(src, user, 30, volume=100))
 				return TRUE
 			if(core)
-				to_chat(user, span_notice("Você vai embora.[src]É o prato interno. Você pode ver o brilho verde do núcleo!"))
+				to_chat(user, span_notice("Você vai embora.[src] É o prato interno. Você pode ver o brilho verde do núcleo!"))
 				deconstruction_state = NUKESTATE_CORE_EXPOSED
 				START_PROCESSING(SSobj, core)
 			else
-				to_chat(user, span_notice("Você vai embora.[src]É o prato interno. A câmara interior está vazia, exceto por algumas manchas de cerveja."))
+				to_chat(user, span_notice("Você vai embora.[src] É o prato interno. A câmara interior está vazia, exceto por algumas manchas de cerveja."))
 				deconstruction_state = NUKESTATE_CORE_REMOVED
 			update_appearance()
 			new /obj/item/stack/sheet/iron(loc, 15)
 			return TRUE
 		if(NUKESTATE_PANEL_REMOVED)
-			to_chat(user, span_notice("Você começa a alavancar[src]O painel interno está de volta ao lugar..."))
+			to_chat(user, span_notice("Você começa a alavancar [src] O painel interno está de volta ao lugar..."))
 			if(!tool.use_tool(src, user, 30, volume = 100))
 				return TRUE
-			to_chat(user, span_notice("Você alavanca.[src]O painel interno está de volta ao lugar."))
+			to_chat(user, span_notice("Você alavanca.[src] O painel interno está de volta ao lugar."))
 			deconstruction_state = NUKESTATE_UNSCREWED
 			update_appearance()
 			return TRUE
@@ -246,7 +246,7 @@ GLOBAL_VAR(station_nuke_source)
 /obj/machinery/nuclearbomb/attack_hand_secondary(mob/user, list/modifiers)
 	if(deconstruction_state != NUKESTATE_CORE_EXPOSED)
 		return ..()
-	to_chat(user, span_danger("Você não pode segurar[core]Com suas próprias mãos!"))
+	to_chat(user, span_danger("Você não pode segurar [core] Com suas próprias mãos!"))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/nuclearbomb/can_interact(mob/user)
@@ -710,14 +710,14 @@ GLOBAL_VAR(station_nuke_source)
 	if(istype(gibbed.loc, /obj/structure/closet/secure_closet/freezer))
 		var/obj/structure/closet/secure_closet/freezer/freezer = gibbed.loc
 		if(!freezer.jones)
-			to_chat(gibbed, span_bolddanger("Você se segura[freezer]Como[source]Sai. Feliz, como[freezer]é forrado por chumbo, você sobrevive."))
+			to_chat(gibbed, span_bolddanger("Você se segura [freezer] Como [source] Sai. Feliz, como [freezer] é forrado por chumbo, você sobrevive."))
 			freezer.jones = TRUE
 			return FALSE
 
 	if(gibbed.stat == DEAD)
 		return FALSE
 
-	to_chat(gibbed, span_userdanger("Você está despedaçado em átomos por[source]!"))
+	to_chat(gibbed, span_userdanger("Você está despedaçado em átomos por [source]!"))
 	gibbed.investigate_log("has been gibbed by a nuclear blast.", INVESTIGATE_DEATHS)
 	gibbed.gib(DROP_ALL_REMAINS)
 	return TRUE

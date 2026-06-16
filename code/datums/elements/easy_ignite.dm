@@ -30,7 +30,7 @@
 /datum/element/easy_ignite/proc/ignite(atom/igniting, mob/user)
 	var/delete_after = TRUE
 
-	igniting.visible_message(span_warning("[igniting]Pegar[igniting.p_es()]Fogo!"), span_warning("Você se incendia!"))
+	igniting.visible_message(span_warning("[igniting] Pegar [igniting.p_es()] Fogo!"), span_warning("Você se incendia!"))
 	new /obj/effect/hotspot(isturf(igniting) ? igniting : igniting.loc)
 
 	if(isturf(igniting))
@@ -93,14 +93,14 @@
 /datum/element/easy_ignite/proc/item_ignition(obj/item/source, obj/item/tool, mob/user)
 	if(tool.get_temperature() >= required_temp)
 		source.visible_message(
-			span_warning("[user]Arde.[source]com[tool]!"),
-			span_warning("Você acende.[source]com[tool]!"),
+			span_warning("[user] Arde.[source] com [tool]!"),
+			span_warning("Você acende.[source] com [tool]!"),
 		)
 		ignite(source, user)
 		return TRUE
 
 	source.visible_message(
-		span_warning("[user]Tenta acender[source]com[tool]!"),
-		span_warning("Você tenta incendiar[source]com[tool]Mas não está quente o suficiente!"),
+		span_warning("[user] Tenta acender [source] com [tool]!"),
+		span_warning("Você tenta incendiar [source] com [tool] Mas não está quente o suficiente!"),
 	)
 	return FALSE

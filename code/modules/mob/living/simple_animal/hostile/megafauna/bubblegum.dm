@@ -201,7 +201,7 @@ Difficulty: Hard
 	SLEEP_CHECK_DEATH(4, src)
 	for(var/mob/living/L in T)
 		if(!faction_check_atom(L))
-			to_chat(L, span_userdanger("[src]Render você!"))
+			to_chat(L, span_userdanger("[src] Render você!"))
 			playsound(T, attack_sound, 100, TRUE, -1)
 			var/limb_to_hit = L.get_bodypart(L.get_random_valid_zone(even_weights = TRUE))
 			L.apply_damage(10, BRUTE, limb_to_hit, L.run_armor_check(limb_to_hit, MELEE, null, null, armour_penetration), wound_bonus = CANT_WOUND)
@@ -218,7 +218,7 @@ Difficulty: Hard
 	for(var/mob/living/L in T)
 		if(!faction_check_atom(L))
 			if(L.stat != CONSCIOUS)
-				to_chat(L, span_userdanger("[src]te arrasta pelo sangue!"))
+				to_chat(L, span_userdanger("[src] te arrasta pelo sangue!"))
 				playsound(T, 'sound/effects/magic/enter_blood.ogg', 100, TRUE, -1)
 				var/turf/targetturf = get_step(src, dir)
 				L.forceMove(targetturf)
@@ -297,7 +297,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/projectile_hit(obj/projectile/hitting_projectile, def_zone, piercing_hit, blocked)
 	if(BUBBLEGUM_IS_ENRAGED)
-		visible_message(span_danger("[src]desviou o[hitting_projectile]! [p_They()]Não pode ser atingido com as armas enquanto enfurecido!"), span_userdanger("Você desvia o projétil!"))
+		visible_message(span_danger("[src] desviou o [hitting_projectile]! [p_They()] Não pode ser atingido com as armas enquanto enfurecido!"), span_userdanger("Você desvia o projétil!"))
 		playsound(src, SFX_BULLET_MISS, 300, TRUE)
 		return BULLET_ACT_BLOCK
 	return ..()

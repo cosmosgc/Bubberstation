@@ -64,7 +64,7 @@
 		if(SPECIAL_ATTACK_UTILITY)
 			special_attack_type_message = "um movimento de utilidade, que cura o usuário e danifica o oponente."
 		if(SPECIAL_ATTACK_OTHER)
-			special_attack_type_message = "Um movimento especial, que[special_attack_type_message]"
+			special_attack_type_message = "Um movimento especial, que [special_attack_type_message]"
 		else
 			special_attack_type_message = "Um movimento misterioso, nem eu sei."
 
@@ -88,11 +88,11 @@
 
 	if(!attacker) //if there's no attacker, then attacker_controller IS the attacker
 		if(!in_range(src, attacker_controller))
-			attacker_controller.visible_message(span_suicide("[attacker_controller]Está correndo de[src]Ó covarde!"))
+			attacker_controller.visible_message(span_suicide("[attacker_controller] Está correndo de [src] Ó covarde!"))
 			return FALSE
 	else // if there's an attacker, we can procede as normal
 		if(!in_range(src, attacker)) //and the two toys aren't next to each other, the battle ends
-			attacker_controller.visible_message(span_notice("[attacker]E[src]Separados, terminando uma batalha."), 								span_notice("[attacker]E[src]Separados, terminando uma batalha."))
+			attacker_controller.visible_message(span_notice("[attacker] E [src] Separados, terminando uma batalha."), 								span_notice("[attacker] E [src] Separados, terminando uma batalha."))
 			return FALSE
 
 		//dead men tell no tales, incapacitated men fight no fights
@@ -100,7 +100,7 @@
 			return FALSE
 		//if the attacker_controller isn't next to the attacking toy (and doesn't have telekinesis), the battle ends
 		if(!in_range(attacker, attacker_controller) && !(attacker_controller.dna.check_mutation(/datum/mutation/telekinesis)))
-			attacker_controller.visible_message(span_notice("[attacker_controller.name]Separados de[attacker]Terminando uma batalha."), 								span_notice("Você se separa de[attacker]Terminando uma batalha."))
+			attacker_controller.visible_message(span_notice("[attacker_controller.name] Separados de [attacker] Terminando uma batalha."), 								span_notice("Você se separa de [attacker] Terminando uma batalha."))
 			return FALSE
 
 		//if it's PVP and the opponent is not next to the defending(src) toy (and doesn't have telekinesis), the battle ends
@@ -108,12 +108,12 @@
 			if(opponent.incapacitated)
 				return FALSE
 			if(!in_range(src, opponent) && !(opponent.dna.check_mutation(/datum/mutation/telekinesis)))
-				opponent.visible_message(span_notice("[opponent.name]Separados de[src]Terminando uma batalha."), 							span_notice("Você se separa de[src]Terminando uma batalha."))
+				opponent.visible_message(span_notice("[opponent.name] Separados de [src] Terminando uma batalha."), 							span_notice("Você se separa de [src] Terminando uma batalha."))
 				return FALSE
 		//if it's not PVP and the attacker_controller isn't next to the defending toy (and doesn't have telekinesis), the battle ends
 		else
 			if (!in_range(src, attacker_controller) && !(attacker_controller.dna.check_mutation(/datum/mutation/telekinesis)))
-				attacker_controller.visible_message(span_notice("[attacker_controller.name]Separados de[src]E[attacker]Terminando uma batalha."), 									span_notice("Vocês se separam.[attacker]E[src]Terminando uma batalha."))
+				attacker_controller.visible_message(span_notice("[attacker_controller.name] Separados de [src] E [attacker] Terminando uma batalha."), 									span_notice("Vocês se separam.[attacker] E [src] Terminando uma batalha."))
 				return FALSE
 
 	//if all that is good, then we can sleep peacefully
@@ -123,7 +123,7 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/mecha/attack_self(mob/user)
 	if(timer < world.time)
-		to_chat(user, span_notice("Você brinca com[src]."))
+		to_chat(user, span_notice("Você brinca com [src]."))
 		timer = world.time + cooldown
 		if(!quiet)
 			playsound(user, 'sound/vehicles/mecha/mechstep.ogg', 20, TRUE)
@@ -174,8 +174,8 @@
 					return
 
 		//extend the offer of battle to the other mech
-		to_chat(user, span_notice("Você oferece batalha para[target.name]!"))
-		to_chat(target, span_notice("<b>[user.name]quer luter com[user.p_their()] [name]!</b> <i>Atacá-los com um brinquedo mech para iniciar o combate.</i>"))
+		to_chat(user, span_notice("Você oferece batalha para [target.name]!"))
+		to_chat(target, span_notice("<b>[user.name] quer luter com [user.p_their()] [name]!</b> <i>Atacá-los com um brinquedo mech para iniciar o combate.</i>"))
 		wants_to_battle = TRUE
 		addtimer(CALLBACK(src, PROC_REF(withdraw_offer), user), 6 SECONDS)
 		return
@@ -187,7 +187,7 @@
  */
 /obj/item/toy/mecha/attack_tk(mob/user)
 	if(timer < world.time)
-		to_chat(user, span_notice("Você joga telecinicamente com[src]."))
+		to_chat(user, span_notice("Você joga telecinicamente com [src]."))
 		timer = world.time + cooldown
 		if(!quiet)
 			playsound(user, 'sound/vehicles/mecha/mechstep.ogg', 20, TRUE)
@@ -210,10 +210,10 @@
  */
 /obj/item/toy/mecha/suicide_act(mob/living/carbon/user)
 	if(in_combat)
-		to_chat(user, span_notice("[src]Está em batalha, deixe terminar primeiro."))
+		to_chat(user, span_notice("[src] Está em batalha, deixe terminar primeiro."))
 		return
 
-	user.visible_message(span_suicide("[user]Começa uma luta.[user.p_they()]Não pode vencer com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa uma luta.[user.p_they()] Não pode vencer com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 
 	in_combat = TRUE
 	sleep(1.5 SECONDS)
@@ -251,15 +251,15 @@
 
 /obj/item/toy/mecha/examine()
 	. = ..()
-	. += span_notice("O ataque especial deste brinquedo é[special_attack_cry], [special_attack_type_message]")
+	. += span_notice("O ataque especial deste brinquedo é [special_attack_cry], [special_attack_type_message]")
 	if(in_combat)
-		. += span_notice("Este brinquedo tem uma saúde máxima de[max_combat_health]Atualmente, é[combat_health].")
+		. += span_notice("Este brinquedo tem uma saúde máxima de [max_combat_health] Atualmente, é [combat_health].")
 		. += span_notice("Sua luz de movimento especial é[special_attack_cooldown? "flashing red." : "green and is ready!"]")
 	else
-		. += span_notice("Este brinquedo tem uma saúde máxima de[max_combat_health].")
+		. += span_notice("Este brinquedo tem uma saúde máxima de [max_combat_health].")
 
 	if(wins || losses)
-		. += span_notice("Este brinquedo tem[wins]Ganha, e[losses]Perdas.")
+		. += span_notice("Este brinquedo tem [wins] Ganha, e [losses] Perdas.")
 
 /obj/item/toy/mecha/can_speak(allow_mimes)
 	return !quiet && ..()
@@ -279,7 +279,7 @@
  */
 /obj/item/toy/mecha/proc/mecha_brawl(obj/item/toy/mecha/attacker, mob/living/carbon/attacker_controller, mob/living/carbon/opponent)
 	//A GOOD DAY FOR A SWELL BATTLE!
-	attacker_controller.visible_message(span_danger("[attacker_controller.name]Colide.[attacker]Com[src]Parece que estão se preparando para uma briga!"), 						span_danger("Você colide.[attacker]Em[src]Despertando uma batalha feroz!"), 						span_hear("Você ouve plástico duro batendo em plástico duro."), COMBAT_MESSAGE_RANGE)
+	attacker_controller.visible_message(span_danger("[attacker_controller.name] Colide.[attacker] Com [src] Parece que estão se preparando para uma briga!"), 						span_danger("Você colide.[attacker] Em [src] Despertando uma batalha feroz!"), 						span_hear("Você ouve plástico duro batendo em plástico duro."), COMBAT_MESSAGE_RANGE)
 
 	/// Who's in control of the defender (src)?
 	var/mob/living/carbon/src_controller = (opponent)? opponent : attacker_controller
@@ -301,11 +301,11 @@
 
 		//before we do anything - deal with charged attacks
 		if(special_attack_charged)
-			src_controller.visible_message(span_danger("[src]Você é especial!"), 							span_danger("Você solta[src]Ataque especial!"))
+			src_controller.visible_message(span_danger("[src] Você é especial!"), 							span_danger("Você solta [src] Ataque especial!"))
 			special_attack_move(attacker)
 		else if(attacker.special_attack_charged)
 
-			attacker_controller.visible_message(span_danger("[attacker]Você é especial!"), 								span_danger("Você solta[attacker]Ataque especial!"))
+			attacker_controller.visible_message(span_danger("[attacker] Você é especial!"), 								span_danger("Você solta [attacker] Ataque especial!"))
 			attacker.special_attack_move(src)
 		else
 			//process the cooldowns
@@ -319,16 +319,16 @@
 				if(1 to 3) //attacker wins
 					if(attacker.special_attack_cooldown == 0 && attacker.combat_health <= round(attacker.max_combat_health/3)) //if health is less than 1/3 and special off CD, use it
 						attacker.special_attack_charged = TRUE
-						attacker_controller.visible_message(span_danger("[attacker]Começa o ataque especial!"), 											span_danger("Você começa a carregar[attacker]Ataque especial!"))
+						attacker_controller.visible_message(span_danger("[attacker] Começa o ataque especial!"), 											span_danger("Você começa a carregar [attacker] Ataque especial!"))
 					else //just attack
 						attacker.SpinAnimation(5, 0)
 						playsound(attacker, 'sound/vehicles/mecha/mechstep.ogg', 30, TRUE)
 						combat_health--
-						attacker_controller.visible_message(span_danger("[attacker]Devasta[src]!"), 											span_danger("Seu carro.[attacker]Em[src]!"), 											span_hear("Você ouve plástico duro batendo em plástico duro."), COMBAT_MESSAGE_RANGE)
+						attacker_controller.visible_message(span_danger("[attacker] Devasta [src]!"), 											span_danger("Seu carro.[attacker] Em [src]!"), 											span_hear("Você ouve plástico duro batendo em plástico duro."), COMBAT_MESSAGE_RANGE)
 						if(prob(5))
 							combat_health--
 							playsound(src, 'sound/effects/meteorimpact.ogg', 20, TRUE)
-							attacker_controller.visible_message(span_boldwarning("...e aterra uma explosão!"), 												span_boldwarning("...e você pousa um golpe CRIPPLING em[src]!"), null, COMBAT_MESSAGE_RANGE)
+							attacker_controller.visible_message(span_boldwarning("...e aterra uma explosão!"), 												span_boldwarning("...e você pousa um golpe CRIPPLING em [src]!"), null, COMBAT_MESSAGE_RANGE)
 
 				if(4) //both lose
 					attacker.SpinAnimation(5, 0)
@@ -338,31 +338,31 @@
 					do_sparks(2, FALSE, src)
 					do_sparks(2, FALSE, attacker)
 					if(prob(50))
-						attacker_controller.visible_message(span_danger("[attacker]E[src]choque dramaticamente, causando faíscas para voar!"), 											span_danger("[attacker]E[src]choque dramaticamente, causando faíscas para voar!"), 											span_hear("Você ouve plástico duro esfregando em plástico duro."), COMBAT_MESSAGE_RANGE)
+						attacker_controller.visible_message(span_danger("[attacker] E [src] choque dramaticamente, causando faíscas para voar!"), 											span_danger("[attacker] E [src] choque dramaticamente, causando faíscas para voar!"), 											span_hear("Você ouve plástico duro esfregando em plástico duro."), COMBAT_MESSAGE_RANGE)
 					else
-						src_controller.visible_message(span_danger("[src]E[attacker]choque dramaticamente, causando faíscas para voar!"), 										span_danger("[src]E[attacker]choque dramaticamente, causando faíscas para voar!"), 										span_hear("Você ouve plástico duro esfregando em plástico duro."), COMBAT_MESSAGE_RANGE)
+						src_controller.visible_message(span_danger("[src] E [attacker] choque dramaticamente, causando faíscas para voar!"), 										span_danger("[src] E [attacker] choque dramaticamente, causando faíscas para voar!"), 										span_hear("Você ouve plástico duro esfregando em plástico duro."), COMBAT_MESSAGE_RANGE)
 				if(5) //both win
 					playsound(attacker, 'sound/items/weapons/parry.ogg', 20, TRUE)
 					if(prob(50))
-						attacker_controller.visible_message(span_danger("[src]O ato se desvia de[attacker]."), 											span_danger("[src]O ato se desvia de[attacker]."), 											span_hear("Você ouve plástico duro saltando de plástico duro."), COMBAT_MESSAGE_RANGE)
+						attacker_controller.visible_message(span_danger("[src] O ato se desvia de [attacker]."), 											span_danger("[src] O ato se desvia de [attacker]."), 											span_hear("Você ouve plástico duro saltando de plástico duro."), COMBAT_MESSAGE_RANGE)
 					else
-						src_controller.visible_message(span_danger("[attacker]O ato se desvia de[src]."), 										span_danger("[attacker]O ato se desvia de[src]."), 										span_hear("Você ouve plástico duro saltando de plástico duro."), COMBAT_MESSAGE_RANGE)
+						src_controller.visible_message(span_danger("[attacker] O ato se desvia de [src]."), 										span_danger("[attacker] O ato se desvia de [src]."), 										span_hear("Você ouve plástico duro saltando de plástico duro."), COMBAT_MESSAGE_RANGE)
 
 				if(6 to 8) //defender wins
 					if(special_attack_cooldown == 0 && combat_health <= round(max_combat_health/3)) //if health is less than 1/3 and special off CD, use it
 						special_attack_charged = TRUE
-						src_controller.visible_message(span_danger("[src]Começa o ataque especial!"), 										span_danger("Você começa a carregar[src]Ataque especial!"))
+						src_controller.visible_message(span_danger("[src] Começa o ataque especial!"), 										span_danger("Você começa a carregar [src] Ataque especial!"))
 					else //just attack
 						SpinAnimation(5, 0)
 						playsound(src, 'sound/vehicles/mecha/mechstep.ogg', 30, TRUE)
 						attacker.combat_health--
-						src_controller.visible_message(span_danger("[src]Esmaga.[attacker]!"), 										span_danger("Você quebra[src]Em[attacker]!"), 										span_hear("Você ouve plástico duro quebrando plástico duro."), COMBAT_MESSAGE_RANGE)
+						src_controller.visible_message(span_danger("[src] Esmaga.[attacker]!"), 										span_danger("Você quebra [src] Em [attacker]!"), 										span_hear("Você ouve plástico duro quebrando plástico duro."), COMBAT_MESSAGE_RANGE)
 						if(prob(5))
 							attacker.combat_health--
 							playsound(attacker, 'sound/effects/meteorimpact.ogg', 20, TRUE)
-							src_controller.visible_message(span_boldwarning("...e aterra uma explosão!"), 											span_boldwarning("...e você pousa um golpe CRIPPLING em[attacker]!"), null, COMBAT_MESSAGE_RANGE)
+							src_controller.visible_message(span_boldwarning("...e aterra uma explosão!"), 											span_boldwarning("...e você pousa um golpe CRIPPLING em [attacker]!"), null, COMBAT_MESSAGE_RANGE)
 				else
-					attacker_controller.visible_message(span_notice("[src]E[attacker]Fique por preto estranhamente."), 										span_notice("Você não sabe o que fazer agora."))
+					attacker_controller.visible_message(span_notice("[src] E [attacker] Fique por preto estranhamente."), 										span_notice("Você não sabe o que fazer agora."))
 
 		battle_length++
 		sleep(0.5 SECONDS)
@@ -372,21 +372,21 @@
 
 	if(attacker.combat_health <= 0 && combat_health <= 0) //both lose
 		playsound(src, 'sound/machines/warning-buzzer.ogg', 20, TRUE)
-		attacker_controller.visible_message(span_boldnotice("Destruição mutualmente garantida![src]E[attacker]Os dois acabam destruídos!"), 							span_boldnotice("Ambos.[src]E[attacker]Estão destruídos!"))
+		attacker_controller.visible_message(span_boldnotice("Destruição mutualmente garantida![src] E [attacker] Os dois acabam destruídos!"), 							span_boldnotice("Ambos.[src] E [attacker] Estão destruídos!"))
 	else if(attacker.combat_health <= 0) //src wins
 		wins++
 		attacker.losses++
 		playsound(attacker, 'sound/effects/light_flicker.ogg', 20, TRUE)
-		attacker_controller.visible_message(span_notice("[attacker]Se desfaz!"), 							span_notice("[attacker]Se desfaz!"), null, COMBAT_MESSAGE_RANGE)
+		attacker_controller.visible_message(span_notice("[attacker] Se desfaz!"), 							span_notice("[attacker] Se desfaz!"), null, COMBAT_MESSAGE_RANGE)
 		say("[pick(winlines)]")
-		src_controller.visible_message(span_notice("[src]Destrui.[attacker]E sai vitorioso!"), 						span_notice("Você levanta.[src]Vitoriosamente acabado.[attacker]!"))
+		src_controller.visible_message(span_notice("[src] Destrui.[attacker] E sai vitorioso!"), 						span_notice("Você levanta.[src] Vitoriosamente acabado.[attacker]!"))
 	else if (combat_health <= 0) //attacker wins
 		attacker.wins++
 		losses++
 		playsound(src, 'sound/effects/light_flicker.ogg', 20, TRUE)
-		src_controller.visible_message(span_notice("[src]Colapsos!"), 						span_notice("[src]Colapsos!"), null, COMBAT_MESSAGE_RANGE)
+		src_controller.visible_message(span_notice("[src] Colapsos!"), 						span_notice("[src] Colapsos!"), null, COMBAT_MESSAGE_RANGE)
 		attacker.say("[pick(winlines)]")
-		attacker_controller.visible_message(span_notice("[attacker]Derruba.[src]E sai vitorioso!"), 							"[span_notice("You raise up [attacker] proudly over [src]")]!")
+		attacker_controller.visible_message(span_notice("[attacker] Derruba.[src] E sai vitorioso!"), 							"[span_notice("You raise up [attacker] proudly over [src]")]!")
 	else //both win?
 		say("NEXT TIME.")
 		//don't want to make this a one sided conversation
@@ -413,20 +413,20 @@
  */
 /obj/item/toy/mecha/proc/check_battle_start(mob/living/carbon/user, obj/item/toy/mecha/attacker, mob/living/carbon/target)
 	if(attacker?.in_combat)
-		to_chat(user, span_notice("[target?target.p_their() : "Your" ] [attacker.name]está em combate."))
-		to_chat(target, span_notice("Sua[attacker.name]está em combate."))
+		to_chat(user, span_notice("[target?target.p_their() : "Your" ] [attacker.name] está em combate."))
+		to_chat(target, span_notice("Sua [attacker.name] está em combate."))
 		return FALSE
 	if(in_combat)
-		to_chat(user, span_notice("Sua[name]está em combate."))
-		to_chat(target, span_notice("[user.p_their()] [name]está em combate."))
+		to_chat(user, span_notice("Sua [name] está em combate."))
+		to_chat(target, span_notice("[user.p_their()] [name] está em combate."))
 		return FALSE
 	if(attacker && attacker.timer > world.time)
-		to_chat(user, span_notice("[target?target.p_their() : "Your" ] [attacker.name]Não está pronto para a batalha."))
-		to_chat(target, span_notice("Sua[attacker.name]Não está pronto para a batalha."))
+		to_chat(user, span_notice("[target?target.p_their() : "Your" ] [attacker.name] Não está pronto para a batalha."))
+		to_chat(target, span_notice("Sua [attacker.name] Não está pronto para a batalha."))
 		return FALSE
 	if(timer > world.time)
-		to_chat(user, span_notice("Sua[name]Não está pronto para a batalha."))
-		to_chat(target, span_notice("[user.p_their()] [name]Não está pronto para a batalha."))
+		to_chat(user, span_notice("Sua [name] Não está pronto para a batalha."))
+		to_chat(target, span_notice("[user.p_their()] [name] Não está pronto para a batalha."))
 		return FALSE
 
 	return TRUE
@@ -468,7 +468,7 @@
  * * victim - the toy being hit by the super special move (doesn't necessarily need to be used)
  */
 /obj/item/toy/mecha/proc/super_special_attack(obj/item/toy/mecha/victim)
-	visible_message(span_notice("[src]Faz um giro legal."))
+	visible_message(span_notice("[src] Faz um giro legal."))
 
 /obj/item/toy/mecha/ripley
 	name = "toy Ripley MK-I"

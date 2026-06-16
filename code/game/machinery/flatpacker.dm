@@ -71,7 +71,7 @@
 		return
 
 	. += span_notice("A exibição de status diz:")
-	. += span_notice("Capaz de fazer as malas.<b>Tier[max_part_tier]</b>.")
+	. += span_notice("Capaz de fazer as malas.<b>Tier [max_part_tier]</b>.")
 	. += span_notice("Armazenando até<b>[materials.max_amount]</b>Unidades materiais.")
 	. += span_notice("Consumo de material em<b>[creation_efficiency * 100]%</b>.")
 
@@ -91,7 +91,7 @@
 			if(length(to_insert))
 				. += span_warning("Os seguintes componentes devem ser inseridos à mão antes da embalagem:")
 				for(var/component_name in to_insert)
-					. += span_warning("[component_name]: [to_insert[component_name]].")
+					. += span_warning("[component_name]: [to_insert [component_name]].")
 
 /obj/machinery/flatpacker/update_overlays()
 	. = ..()
@@ -247,7 +247,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("[attacking_item]Está preso na mão!"))
+			to_chat(user, span_warning("[attacking_item] Está preso na mão!"))
 			return ITEM_INTERACT_BLOCKING
 
 		LAZYADD(flatpacked_components, attacking_item)

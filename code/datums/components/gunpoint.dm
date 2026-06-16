@@ -51,9 +51,9 @@
 	var/distance = max(get_dist(shooter, target), 1) // treat 0 distance as adjacent
 	var/distance_description = (distance <= 1 ? "point blank " : "")
 
-	shooter.visible_message(span_danger("[shooter]Objetivos[weapon] [distance_description]Em[target]!"),
-		span_danger("Você aponta[weapon] [distance_description]Em[target]!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter]Objetivos[weapon] [distance_description]Você!"))
+	shooter.visible_message(span_danger("[shooter] Objetivos [weapon] [distance_description] Em [target]!"),
+		span_danger("Você aponta [weapon] [distance_description] Em [target]!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[shooter] Objetivos [weapon] [distance_description] Você!"))
 
 	shooter.Immobilize(0.75 SECONDS / distance)
 	if(!HAS_TRAIT(target, TRAIT_NOFEAR_HOLDUPS))
@@ -107,8 +107,8 @@
 	if(A != target)
 		return
 	var/mob/living/shooter = parent
-	shooter.visible_message(span_danger("[shooter]Esbarra.[target]e desfaz-se[shooter.p_their()]Apontar!"), 		span_danger("Você esbarra em[target]Estragar sua mira!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter]Esbarra em você e falha[shooter.p_their()]Apontar!"))
+	shooter.visible_message(span_danger("[shooter] Esbarra.[target] e desfaz-se [shooter.p_their()] Apontar!"), 		span_danger("Você esbarra em [target] Estragar sua mira!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[shooter] Esbarra em você e falha [shooter.p_their()] Apontar!"))
 	qdel(src)
 
 ///If the shooter shoves or grabs the target, cancel the holdup to avoid cheesing and forcing the charged shot
@@ -117,8 +117,8 @@
 
 	if(T != target || LAZYACCESS(modifiers, RIGHT_CLICK))
 		return
-	shooter.visible_message(span_danger("[shooter]Esbarra.[target]e desfaz-se[shooter.p_their()]Apontar!"), 		span_danger("Você esbarra em[target]Estragar sua mira!"), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter]Esbarra em você e falha[shooter.p_their()]Apontar!"))
+	shooter.visible_message(span_danger("[shooter] Esbarra.[target] e desfaz-se [shooter.p_their()] Apontar!"), 		span_danger("Você esbarra em [target] Estragar sua mira!"), ignored_mobs = target)
+	to_chat(target, span_userdanger("[shooter] Esbarra em você e falha [shooter.p_their()] Apontar!"))
 	qdel(src)
 
 ///Update the damage multiplier for whatever stage we're entering into
@@ -127,13 +127,13 @@
 		return
 	stage = new_stage
 	if(stage == 2)
-		to_chat(parent, span_danger("Você está firme.[weapon]Vamos.[target]."))
-		to_chat(target, span_userdanger("[parent]Tem permanecido[weapon]Em você!"))
+		to_chat(parent, span_danger("Você está firme.[weapon] Vamos.[target]."))
+		to_chat(target, span_userdanger("[parent] Tem permanecido [weapon] Em você!"))
 		damage_mult = GUNPOINT_MULT_STAGE_2
 		addtimer(CALLBACK(src, PROC_REF(update_stage), 3), GUNPOINT_DELAY_STAGE_3)
 	else if(stage == 3)
-		to_chat(parent, span_danger("Você está totalmente estável.[weapon]Vamos.[target]."))
-		to_chat(target, span_userdanger("[parent]Está totalmente estável.[weapon]Em você!"))
+		to_chat(parent, span_danger("Você está totalmente estável.[weapon] Vamos.[target]."))
+		to_chat(target, span_userdanger("[parent] Está totalmente estável.[weapon] Em você!"))
 		damage_mult = GUNPOINT_MULT_STAGE_3
 
 ///Cancel the holdup if the shooter moves out of sight or out of range of the target
@@ -179,8 +179,8 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/shooter = parent
-	shooter.visible_message(span_danger("[shooter]Quebras.[shooter.p_their()]Apontar em[target]!"), 		span_danger("Você não está mais mirando.[weapon]Em[target]."), ignored_mobs = target)
-	to_chat(target, span_userdanger("[shooter]Quebras.[shooter.p_their()]Aponte em você!"))
+	shooter.visible_message(span_danger("[shooter] Quebras.[shooter.p_their()] Apontar em [target]!"), 		span_danger("Você não está mais mirando.[weapon] Em [target]."), ignored_mobs = target)
+	to_chat(target, span_userdanger("[shooter] Quebras.[shooter.p_their()] Aponte em você!"))
 	qdel(src)
 
 ///If the shooter is hit by an attack, they have a 50% chance to flinch and fire. If it hit the arm holding the trigger, it's an 80% chance to fire instead
@@ -202,7 +202,7 @@
 
 	if(prob(flinch_chance))
 		source.visible_message(
-			span_danger("[source]Vagabundos!"),
+			span_danger("[source] Vagabundos!"),
 			span_danger("Você vacilou!"),
 		)
 		INVOKE_ASYNC(src, PROC_REF(trigger_reaction))
@@ -211,24 +211,24 @@
 /datum/component/gunpoint/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(user in viewers(target))
-		examine_list += span_boldwarning("[parent] [parent.p_are()]Segurando[target]com uma arma apontada com[weapon]!")
+		examine_list += span_boldwarning("[parent] [parent.p_are()] Segurando [target] com uma arma apontada com [weapon]!")
 
 ///Shows if the examine target is being held at gunpoint
 /datum/component/gunpoint/proc/examine_target(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(user in viewers(parent))
-		examine_list += span_boldwarning("[target] [target.p_are()]Sendo mandado soluçar a mira de uma arma por[parent]!")
+		examine_list += span_boldwarning("[target] [target.p_are()] Sendo mandado soluçar a mira de uma arma por [parent]!")
 
 ///Prevents bumping the shooter to break gunpoint since shove does that
 /datum/component/gunpoint/proc/block_bumps_parent(mob/bumped, mob/living/bumper)
 	SIGNAL_HANDLER
-	to_chat(bumper, span_warning("[bumped] [bumped.p_are()]Segurando[target]Sob a mira de uma arma, você não pode passar."))
+	to_chat(bumper, span_warning("[bumped] [bumped.p_are()] Segurando [target] Sob a mira de uma arma, você não pode passar."))
 	return COMPONENT_LIVING_BLOCK_PRE_MOB_BUMP
 
 ///Prevents bumping the target by an ally to cheese and force the charged shot
 /datum/component/gunpoint/proc/block_bumps_target(mob/bumped, mob/living/bumper)
 	SIGNAL_HANDLER
-	to_chat(bumper, span_warning("[bumped] [bumped.p_are()]sendo mantido sob a mira de uma arma, não é sábio empurrar[bumped.p_them()]!"))
+	to_chat(bumper, span_warning("[bumped] [bumped.p_are()] sendo mantido sob a mira de uma arma, não é sábio empurrar [bumped.p_them()]!"))
 	return COMPONENT_LIVING_BLOCK_PRE_MOB_BUMP
 
 #undef GUNPOINT_DELAY_STAGE_2

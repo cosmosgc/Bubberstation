@@ -109,7 +109,7 @@
 		limbs_to_consume -= list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 	consumed_limb = H.get_bodypart(pick(limbs_to_consume))
 	consumed_limb.drop_limb()
-	to_chat(H, span_userdanger("Sua[consumed_limb]é atraído de volta para seu corpo, incapaz de manter sua forma!"))
+	to_chat(H, span_userdanger("Sua [consumed_limb] é atraído de volta para seu corpo, incapaz de manter sua forma!"))
 	qdel(consumed_limb)
 	H.adjust_blood_volume(20 * H.physiology.blood_regen_mod)
 
@@ -137,7 +137,7 @@
 		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 		SPECIES_PERK_ICON = "tint",
 		SPECIES_PERK_NAME = "Jelly Blood",
-		SPECIES_PERK_DESC = "[plural_form]não tem sangue, mas em vez disso tem tóxico[initial(blood_type.reagent_type.name)]Geleia é extremamente importante, pois perdê-la fará você perder membros. Ter geléia baixa dificultará o tratamento médico.",
+		SPECIES_PERK_DESC = "[plural_form] não tem sangue, mas em vez disso tem tóxico [initial(blood_type.reagent_type.name)] Geleia é extremamente importante, pois perdê-la fará você perder membros. Ter geléia baixa dificultará o tratamento médico.",
 	))
 
 	return to_add
@@ -294,7 +294,7 @@
 		return
 	CHECK_DNA_AND_SPECIES(H)
 	H.visible_message(
-		span_notice("[owner]ganha um olhar de concentração enquanto está perfeitamente imóvel."),
+		span_notice("[owner] ganha um olhar de concentração enquanto está perfeitamente imóvel."),
 		span_notice("Você se concentra em mover seu corpo enquanto está perfeitamente parado..."),
 	)
 
@@ -345,7 +345,7 @@
 	H.transfer_quirk_datums(spare)
 	H.mind.transfer_to(spare)
 	spare.visible_message(
-		span_warning("[H]Distorcer como um novo corpo.\"Saia.\"De[H.p_them()]."),
+		span_warning("[H] Distorcer como um novo corpo.\"Saia.\"De [H.p_them()]."),
 		span_notice("...e depois de um momento de desordenação, você está além de si mesmo!"),
 	)
 
@@ -483,13 +483,13 @@
 	if(!can_swap(dupe)) //sanity check
 		return
 	if(M.current.stat == CONSCIOUS)
-		M.current.visible_message(span_notice("[M.current]Para de se mover e começa a olhar vagamente para o espaço."),
+		M.current.visible_message(span_notice("[M.current] Para de se mover e começa a olhar vagamente para o espaço."),
 			span_notice("Pare de mover esse corpo..."))
 	else
 		to_chat(M.current, span_notice("Você abandona este corpo..."))
 	M.current.transfer_quirk_datums(dupe)
 	M.transfer_to(dupe)
-	dupe.visible_message(span_notice("[dupe]Pisca e olha ao redor."), span_notice("...e mova este em vez disso."))
+	dupe.visible_message(span_notice("[dupe] Pisca e olha ao redor."), span_notice("...e mova este em vez disso."))
 
 
 ///////////////////////////////////LUMINESCENTS//////////////////////////////////////////
@@ -617,7 +617,7 @@
 			to_remove.forceMove(human_owner.drop_location())
 
 		species.current_extract = null
-		human_owner.balloon_alert(human_owner, "[to_remove.name]Ejetado")
+		human_owner.balloon_alert(human_owner, "[to_remove.name] Ejetado")
 
 	else
 		var/obj/item/slime_extract/to_integrate = human_owner.get_active_held_item()
@@ -628,7 +628,7 @@
 			return
 		to_integrate.forceMove(human_owner)
 		species.current_extract = to_integrate
-		human_owner.balloon_alert(human_owner, "[to_integrate.name]consumado")
+		human_owner.balloon_alert(human_owner, "[to_integrate.name] consumado")
 
 	for(var/datum/action/to_update as anything in species.luminescent_actions)
 		to_update.build_all_button_icons()
@@ -739,19 +739,19 @@
 	if(isnull(msg) || telepath.stat == DEAD || !is_species(telepath, /datum/species/jelly/stargazer))
 		return
 	if(!(recipient in oview(telepath)))
-		to_chat(telepath, span_warning("Você não pode ver.[recipient]Mais!"))
+		to_chat(telepath, span_warning("Você não pode ver.[recipient] Mais!"))
 		return
 	if(recipient.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-		to_chat(telepath, span_warning("Enquanto você alcança[recipient]Você é parado por um bloqueio mental. Parece que você foi frustrado."))
+		to_chat(telepath, span_warning("Enquanto você alcança [recipient] Você é parado por um bloqueio mental. Parece que você foi frustrado."))
 		return
 	//BUBBER EDIT ADDITION START -  Telepathy Block Quirk
 	if(HAS_TRAIT(recipient, TRAIT_PSIONIC_DAMPENER))
-		to_chat(telepath, span_warning("Enquanto você alcança[recipient]Você é parado por um bloqueio mental."))
+		to_chat(telepath, span_warning("Enquanto você alcança [recipient] Você é parado por um bloqueio mental."))
 		return
 	//BUBBER EDIT ADDITION END
 	log_directed_talk(telepath, recipient, msg, LOG_SAY, "slime telepathy")
 	to_chat(recipient, "[span_notice("You hear an alien voice in your head... ")]<font color=#008CA2>[msg]</font>")
-	to_chat(telepath, span_notice("Você disse telepaticamente:\"[msg]\"Para[recipient]"))
+	to_chat(telepath, span_notice("Você disse telepaticamente:\"[msg]\"Para [recipient]"))
 	for(var/dead in GLOB.dead_mob_list)
 		if(!isobserver(dead))
 			continue
@@ -798,12 +798,12 @@
 		to_chat(owner, span_warning("Eles estão mortos!"))
 		return
 
-	to_chat(owner, span_notice("Você começa a ligar[living_target]A mente da sua..."))
+	to_chat(owner, span_notice("Você começa a ligar [living_target] A mente da sua..."))
 	to_chat(living_target, span_warning("Você sente uma presença estranha em sua mente..."))
 	currently_linking = TRUE
 
 	if(!do_after(owner, 6 SECONDS, target = living_target, extra_checks = CALLBACK(src, PROC_REF(while_link_callback), living_target)))
-		to_chat(owner, span_warning("Você não consegue se conectar.[living_target]Um mente."))
+		to_chat(owner, span_warning("Você não consegue se conectar.[living_target] Um mente."))
 		to_chat(living_target, span_warning("A presença estrangeira deixa sua mente."))
 		currently_linking = FALSE
 		return
@@ -814,7 +814,7 @@
 
 	var/datum/component/mind_linker/linker = target
 	if(!linker.link_mob(living_target))
-		to_chat(owner, span_warning("Você não consegue se conectar.[living_target]Um mente."))
+		to_chat(owner, span_warning("Você não consegue se conectar.[living_target] Um mente."))
 		to_chat(living_target, span_warning("A presença estrangeira deixa sua mente."))
 
 

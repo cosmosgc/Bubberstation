@@ -60,7 +60,7 @@
 /datum/component/toggle_icon/proc/on_examine(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("Alt-clique em[source]Para alternar o[toggle_noun].")
+	examine_list += span_notice("Alt-clique em [source] Para alternar o [toggle_noun].")
 
 /*
  * Signal proc for COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM.

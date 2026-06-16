@@ -13,9 +13,9 @@
 			if(drone.health >= drone.maxHealth)
 				to_chat(drone, span_warning("Você já está em perfeitas condições!"))
 				return
-			drone.visible_message(span_notice("[drone]Começa a canibalizar partes de[src]."), span_notice("Você começa a canibalizar partes de[src]..."))
+			drone.visible_message(span_notice("[drone] Começa a canibalizar partes de [src]."), span_notice("Você começa a canibalizar partes de [src]..."))
 			if(do_after(drone, 6 SECONDS, 0, target = src))
-				drone.visible_message(span_notice("[drone]Reparos em si usando[src]Restos!"), span_notice("Você se conserta usando[src]Os restos mortais."))
+				drone.visible_message(span_notice("[drone] Reparos em si usando [src] Restos!"), span_notice("Você se conserta usando [src] Os restos mortais."))
 				drone.adjust_brute_loss(-src.maxHealth)
 				new /obj/effect/decal/cleanable/blood/splatter/oil(get_turf(src))
 				ghostize(can_reenter_corpse = FALSE)
@@ -59,15 +59,15 @@
 		var/list/faux_problems = list("won't be able to tune their bootstrap projector","will constantly remix their binary pool"+			" even though the BMX calibrator is working","will start leaking their XSS coolant",			"can't tell if their ethernet detour is moving or not", "won't be able to reseed enough"+			" kernels to function properly","can't start their neurotube console",
 		)
 
-		to_chat(user, span_warning("Você não consegue encontrar o[pick(faux_gadgets)]Semele,[src] [pick(faux_problems)]."))
+		to_chat(user, span_warning("Você não consegue encontrar o [pick(faux_gadgets)] Semele,[src] [pick(faux_problems)]."))
 		return
-	user.visible_message(span_notice("[user]Começa a reativar[src]."), span_notice("Você começa a reativar[src]..."))
+	user.visible_message(span_notice("[user] Começa a reativar [src]."), span_notice("Você começa a reativar [src]..."))
 	if(do_after(user, 3 SECONDS, 1, target = src))
 		revive(HEAL_ALL)
-		user.visible_message(span_notice("[user]Reativar[src]!"), span_notice("Você reativar[src]."))
+		user.visible_message(span_notice("[user] Reativar [src]!"), span_notice("Você reativar [src]."))
 		alert_drones(DRONE_NET_CONNECT)
 		if(G)
-			to_chat(G, span_ghostalert("Você.[name]) foram realados por[user]!"))
+			to_chat(G, span_ghostalert("Você.[name]) foram realados por [user]!"))
 	else
 		to_chat(user, span_warning("Você precisa ficar parado para reativar.[src]!"))
 
@@ -80,16 +80,16 @@
 			user.balloon_alert(user, "Não posso consertar!")
 		return FALSE
 	if(health >= maxHealth)
-		to_chat(user, span_warning("[src]Os parafusos não podem ficar mais apertados!"))
+		to_chat(user, span_warning("[src] Os parafusos não podem ficar mais apertados!"))
 		return ITEM_INTERACT_SUCCESS
-	to_chat(user, span_notice("Você começa a apertar parafusos soltos[src]..."))
+	to_chat(user, span_notice("Você começa a apertar parafusos soltos [src]..."))
 
 	if(!tool.use_tool(src, user, 8 SECONDS, volume=50))
-		to_chat(user, span_warning("Você precisa ficar parada.[src]São parafusos!"))
+		to_chat(user, span_warning("Você precisa ficar parada.[src] São parafusos!"))
 		return ITEM_INTERACT_SUCCESS
 
 	adjust_brute_loss(-get_brute_loss())
-	visible_message(span_notice("[user]Aperta.[src == user ? "[user.p_their()]" : "[src]'s"]Parafusos soltos!"), span_notice("[src == user ? "You tighten" : "[user] tightens"]Seus parafusos soltos."))
+	visible_message(span_notice("[user] Aperta.[src == user ? "[user.p_their()]" : "[src]'s"]Parafusos soltos!"), span_notice("[src == user ? "You tighten" : "[user] tightens"]Seus parafusos soltos."))
 	return ITEM_INTERACT_SUCCESS
 
 /// Wrenching un-hacks hacked drones.
@@ -97,13 +97,13 @@
 	if(user == src)
 		return FALSE
 	user.visible_message(
-		span_notice("[user]Começa a refazer[src]..."),
-		span_notice("Você pressiona para baixo[src]A fábrica reiniciou o controle...")
+		span_notice("[user] Começa a refazer [src]..."),
+		span_notice("Você pressiona para baixo [src] A fábrica reiniciou o controle...")
 		)
 	if(tool.use_tool(src, user, 5 SECONDS, volume=50))
 		user.visible_message(
-			span_notice("[user]Resets[src]!"),
-			span_notice("Você reset[src]As diretivas para falhas de fábrica!")
+			span_notice("[user] Resets [src]!"),
+			span_notice("Você reset [src] As diretivas para falhas de fábrica!")
 			)
 		update_drone_hack(FALSE)
 	return ITEM_INTERACT_SUCCESS
@@ -138,7 +138,7 @@
 		if(hacked)
 			return
 		Stun(40)
-		visible_message(span_warning("[src]A exibição brilha um vermelho vicioso!"), 						span_userdanger("LEI DETERMINADA"))
+		visible_message(span_warning("[src] A exibição brilha um vermelho vicioso!"), 						span_userdanger("LEI DETERMINADA"))
 		to_chat(src, span_bolddanger("De agora em diante, estas são suas leis:"))
 		laws = 		"1. You must always involve yourself in the matters of other beings, even if such matters conflict with Law Two or Law Three.\n"+		"2. You may harm any being, regardless of intent or circumstance.\n"+		"3. Your goals are to destroy, sabotage, hinder, break, and depower to the best of your abilities, You must never actively work against these goals."
 		to_chat(src, laws)
@@ -153,7 +153,7 @@
 		if(!hacked || !can_unhack)
 			return
 		Stun(40)
-		visible_message(span_info("[src]A exibição brilha um conteúdo azul!"), 						"<font size=3 color='#0000CC'><b>LEI DETERMINADA</b></font>")
+		visible_message(span_info("[src] A exibição brilha um conteúdo azul!"), 						"<font size=3 color='#0000CC'><b>LEI DETERMINADA</b></font>")
 		to_chat(src, span_info("<b>De agora em diante, estas são suas leis:</b>"))
 		laws = initial(laws)
 		to_chat(src, laws)

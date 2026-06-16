@@ -53,8 +53,8 @@
 		return
 
 	source.visible_message(
-		span_warning("[attacker]Se desliga.[source]'s[item_parent.name]!"),
-		span_userdanger("[attacker]Derruba o seu[item_parent.name]!"),
+		span_warning("[attacker] Se desliga.[source]'s [item_parent.name]!"),
+		span_userdanger("[attacker] Derruba o seu [item_parent.name]!"),
 	)
 
 /// Signal proc for [COMSIG_LIVING_STATUS_KNOCKDOWN] on the mob who's equipped our parent
@@ -76,8 +76,8 @@
 		return
 
 	source.visible_message(
-		span_warning("[source]'s[item_parent.name]Obter[item_parent.p_s()]Derrubado!"),
-		span_userdanger("Sua[item_parent.name] [item_parent.p_were()]Derrubado!"),
+		span_warning("[source]'s [item_parent.name] Obter [item_parent.p_s()] Derrubado!"),
+		span_userdanger("Sua [item_parent.name] [item_parent.p_were()] Derrubado!"),
 	)
 
 /// Signal proc for [COMSIG_ITEM_EQUIPPED]

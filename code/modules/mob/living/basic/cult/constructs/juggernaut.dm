@@ -44,8 +44,8 @@
 
 	apply_damage(hitting_projectile.damage * 0.5, hitting_projectile.damage_type)
 	visible_message(
-		span_danger("\The [hitting_projectile]é refletido por[src]A concha blindada!"),
-		span_userdanger("\The [hitting_projectile]é refletido pela sua concha blindada!"),
+		span_danger("\The [hitting_projectile] é refletido por [src] A concha blindada!"),
+		span_userdanger("\The [hitting_projectile] é refletido pela sua concha blindada!"),
 	)
 
 	hitting_projectile.reflect(src)

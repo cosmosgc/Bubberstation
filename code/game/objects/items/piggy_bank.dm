@@ -138,7 +138,7 @@
 	else if(!user.transferItemToLoc(item, src))
 		balloon_alert(user, "Preso em suas mãos!")
 	else
-		balloon_alert(user, "Inserido[creds_value]Credos.")
+		balloon_alert(user, "Inserido [creds_value] Credos.")
 		sanitize_piggy_bank_contents_len()
 	return TRUE
 

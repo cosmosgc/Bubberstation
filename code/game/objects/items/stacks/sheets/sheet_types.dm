@@ -77,14 +77,14 @@ GLOBAL_LIST_INIT(metal_recipes, list ( 	new/datum/stack_recipe("stool", /obj/str
 	. += GLOB.metal_recipes
 
 /obj/item/stack/sheet/iron/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a bater[user.p_them()]ego sobre a cabeça com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a bater [user.p_them()] ego sobre a cabeça com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/stack/sheet/iron/welder_act(mob/living/user, obj/item/tool)
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/rods/two/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name]em forma[src]em barras de chão com[tool]."),
+			span_notice("[user.name] em forma [src] em barras de chão com [tool]."),
 			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( 	new/datum/stack_recipe("stool", /obj/str
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/tile/iron/four/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name]em forma[src]em telhas do chão com[tool]."),
+			span_notice("[user.name] em forma [src] em telhas do chão com [tool]."),
 			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( 	new/datum/stack_recipe("stool", /obj/str
 				cost = recipe.req_amount
 				break
 	if(get_amount() < cost)
-		user.balloon_alert(user, "Necessidade[cost]Folhas de metal!")
+		user.balloon_alert(user, "Necessidade [cost] Folhas de metal!")
 		return ITEM_INTERACT_BLOCKING
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/construction, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Construction Skill
 	if(!do_after(user, time * skill_modifier, build_on))
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( 	new/datum/stack_recipe("wooden sandals", 
 	var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(user.zone_selected))
 	if(affecting && IS_PEG_LIMB(affecting))
 		if(user == target)
-			user.visible_message(span_notice("[user]Começam a consertar[affecting.name]."), span_notice("Você começa a consertar[target == user ? "your" : "[target]'s"] [affecting.name]."))
+			user.visible_message(span_notice("[user] Começam a consertar [affecting.name]."), span_notice("Você começa a consertar[target == user ? "your" : "[target]'s"] [affecting.name]."))
 			if(!do_after(user, 5 SECONDS, target))
 				return ITEM_INTERACT_FAILURE
 		if(target.item_heal(user, brute_heal = 15, burn_heal = 15, heal_message_brute = "splintering", heal_message_burn = "charring", required_bodytype = BODYTYPE_PEG))

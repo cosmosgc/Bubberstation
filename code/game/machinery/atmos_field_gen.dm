@@ -85,7 +85,7 @@
 	if(locked)
 		. += span_boldwarning("LOCKED")
 		return
-	. += span_notice("Comprimento máximo do campo:[max_range]Azulejos.")
+	. += span_notice("Comprimento máximo do campo:[max_range] Azulejos.")
 	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
 	if(panel_open)
 		. += span_notice("Pode ser.[EXAMINE_HINT("pried")]Separados.")

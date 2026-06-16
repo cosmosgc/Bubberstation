@@ -66,7 +66,7 @@
 		. += "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining."
 		. += span_info("Você pode usar um<b>Pé de cabra.</b>para remover todos os módulos ou<b>botão direito</b>com uma mão vazia para remover uma específica.")
 		for(var/obj/item/borg/upgrade/modkit/modkit_upgrade as anything in modkits)
-			. += span_notice("Há\a [modkit_upgrade]Estalado, usando<b>[modkit_upgrade.cost]%</b>Capacidade.")
+			. += span_notice("Há\a [modkit_upgrade] Estalado, usando<b>[modkit_upgrade.cost]%</b>Capacidade.")
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/crowbar_act(mob/living/user, obj/item/I)
 	. = TRUE
@@ -271,7 +271,7 @@
 			continue
 		var/armor = living_mob.run_armor_check(def_zone, armor_flag, armour_penetration = armour_penetration)
 		living_mob.apply_damage(damage, damage_type, def_zone, armor)
-		to_chat(living_mob, span_userdanger("Você é atingido por um[name]!"))
+		to_chat(living_mob, span_userdanger("Você é atingido por um [name]!"))
 
 //Modkits
 /obj/item/borg/upgrade/modkit
@@ -478,7 +478,7 @@
 
 			var/armor = living_mob.run_armor_check(kinetic_blast.def_zone, kinetic_blast.armor_flag, armour_penetration = kinetic_blast.armour_penetration)
 			living_mob.apply_damage(kinetic_blast.damage*modifier, kinetic_blast.damage_type, kinetic_blast.def_zone, armor)
-			to_chat(living_mob, span_userdanger("Você é atingido por um[kinetic_blast.name]!"))
+			to_chat(living_mob, span_userdanger("Você é atingido por um [kinetic_blast.name]!"))
 
 /obj/item/borg/upgrade/modkit/aoe/turfs
 	name = "mining explosion"

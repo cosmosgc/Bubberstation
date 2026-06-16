@@ -45,9 +45,9 @@
 			if(can_displace)
 				. += span_notice("Os parafusos são<b>Estrangulada.</b>Nenhum lugar.")
 		if(GIRDER_DISPLACED)
-			. += span_notice("Os parafusos são<i>Afrouxado.</i>, mas o<b>Parafusos.</b>estão segurando[src]Juntas.")
+			. += span_notice("Os parafusos são<i>Afrouxado.</i>, mas o<b>Parafusos.</b>estão segurando [src] Juntas.")
 		if(GIRDER_TRAM)
-			. += span_notice("[src]é projetado para uso de bonde. Desconstruído com uma chave de fenda!")
+			. += span_notice("[src] é projetado para uso de bonde. Desconstruído com uma chave de fenda!")
 	if (can_weld_apart)
 		. += span_notice("O quadro parece fraco o suficiente para ser<b>Soldado.</b>Separados.")
 	else

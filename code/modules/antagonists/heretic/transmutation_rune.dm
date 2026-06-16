@@ -168,7 +168,7 @@
 		// Let them know it screwed up
 		loc.balloon_alert(user, "O ritual falhou, componentes perdoados!")
 		// Then let them know what they're missing
-		to_chat(user, span_hierophant_warning("Você está desaparecido.[english_list(what_are_we_missing)]Para completar o ritual\"[ritual.name]\"."))
+		to_chat(user, span_hierophant_warning("Você está desaparecido.[english_list(what_are_we_missing)] Para completar o ritual\"[ritual.name]\"."))
 		return FALSE
 
 	//Everything's good, proceed and collect from the available stacks what's needed if needed.

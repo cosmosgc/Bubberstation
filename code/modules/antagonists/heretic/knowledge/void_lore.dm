@@ -285,8 +285,8 @@
 		return NONE
 
 	ascended_heretic.visible_message(
-		span_danger("A tempestade vazia ao redor[ascended_heretic]Desvios[hitting_projectile]!"),
-		span_userdanger("A tempestade vazia te protege de[hitting_projectile]!"),
+		span_danger("A tempestade vazia ao redor [ascended_heretic] Desvios [hitting_projectile]!"),
+		span_userdanger("A tempestade vazia te protege de [hitting_projectile]!"),
 	)
 	playsound(ascended_heretic, SFX_VOID_DEFLECT, 75, TRUE)
 	hitting_projectile.firer = ascended_heretic

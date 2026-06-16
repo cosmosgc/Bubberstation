@@ -67,7 +67,7 @@
 	if(!(computer.hardware_flag & PROGRAM_CONSOLE))
 		return
 	if(computer.stored_paper < CANVAS_PAPER_COST)
-		to_chat(usr, span_notice("Erro de impressão: sua impressora precisa pelo menos[CANVAS_PAPER_COST]Papel para imprimir uma tela."))
+		to_chat(usr, span_notice("Erro de impressão: sua impressora precisa pelo menos [CANVAS_PAPER_COST] Papel para imprimir uma tela."))
 		return
 
 	//canvas printing!
@@ -78,7 +78,7 @@
 		to_chat(usr, span_notice("Erro de impressão: um erro desconhecido ocorreu."))
 		return
 	computer.stored_paper -= CANVAS_PAPER_COST
-	to_chat(usr, span_notice("Você imprimiu[chosen_portrait.title]em uma tela nova."))
+	to_chat(usr, span_notice("Você imprimiu [chosen_portrait.title] em uma tela nova."))
 	playsound(computer.physical, 'sound/machines/printer.ogg', 100, TRUE)
 
 /datum/computer_file/program/portrait_printer/proc/download_painting(selected_painting)
@@ -86,6 +86,6 @@
 	var/icon/portrait_icon = chosen_portrait.get_icon()
 	var/datum/computer_file/image/image_file = new(portrait_icon, display_name = chosen_portrait.title, source_photo_or_painting = chosen_portrait)
 	if(!computer.store_file(image_file, usr))
-		to_chat(usr, span_notice("Não foi possível baixar[chosen_portrait.title].[/datum/computer_file/image::filetype]."))
+		to_chat(usr, span_notice("Não foi possível baixar [chosen_portrait.title].[/datum/computer_file/image::filetype]."))
 		return
 	to_chat(usr, span_notice("Transferido.[chosen_portrait.title].[/datum/computer_file/image::filetype]."))

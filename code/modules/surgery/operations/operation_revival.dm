@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você se prepara para dar[patient]O cérebro a faísca da vida com[tool]."),
-		span_notice("[surgeon]Prepare-se para dar[patient]O cérebro a faísca da vida com[tool]."),
-		span_notice("[surgeon]Prepare-se para dar[patient]O cérebro é a faísca da vida."),
+		span_notice("Você se prepara para dar [patient] O cérebro a faísca da vida com [tool]."),
+		span_notice("[surgeon] Prepare-se para dar [patient] O cérebro a faísca da vida com [tool]."),
+		span_notice("[surgeon] Prepare-se para dar [patient] O cérebro é a faísca da vida."),
 	)
 	patient.notify_revival("Someone is trying to zap your brain.", source = patient)
 
@@ -71,9 +71,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você choca com sucesso.[patient]O cérebro com[tool]..."),
-		span_notice("[surgeon]Tenho que ir.[patient]O cérebro com[tool]..."),
-		span_notice("[surgeon]Tenho que ir.[patient]O cérebro..."),
+		span_notice("Você choca com sucesso.[patient] O cérebro com [tool]..."),
+		span_notice("[surgeon] Tenho que ir.[patient] O cérebro com [tool]..."),
+		span_notice("[surgeon] Tenho que ir.[patient] O cérebro..."),
 	)
 	patient.grab_ghost()
 	patient.adjust_oxy_loss(-50)
@@ -88,7 +88,7 @@
 
 /// Called when you have been successfully raised from the dead
 /datum/surgery_operation/basic/revival/proc/on_revived(mob/living/surgeon, mob/living/patient)
-	patient.visible_message(span_notice("...[patient]Acorde, vivo e consciente!"))
+	patient.visible_message(span_notice("...[patient] Acorde, vivo e consciente!"))
 	patient.emote("gasp")
 	if(HAS_MIND_TRAIT(surgeon, TRAIT_MORBID)) // Contrary to their typical hatred of resurrection, it wouldn't be very thematic if morbid people didn't love playing god
 		surgeon.add_mood_event("morbid_revival_success", /datum/mood_event/morbid_revival_success)
@@ -96,16 +96,16 @@
 
 /// Called when revival fails
 /datum/surgery_operation/basic/revival/proc/on_no_revive(mob/living/surgeon, mob/living/patient)
-	patient.visible_message(span_warning("...[patient.p_they()]convulsão[patient.p_s()], então minta[patient.p_s()]Ainda."))
+	patient.visible_message(span_warning("...[patient.p_they()] convulsão [patient.p_s()], então minta [patient.p_s()] Ainda."))
 	patient.adjust_organ_loss(ORGAN_SLOT_BRAIN, 50, 199) // MAD SCIENCE
 
 /datum/surgery_operation/basic/revival/on_failure(mob/living/patient, mob/living/surgeon, obj/item/tool, list/operation_args)
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Você choca.[patient]O cérebro com[tool], mas[patient.p_they()]Não reaja."),
-		span_warning("[surgeon]Choques.[patient]O cérebro com[tool], mas[patient.p_they()]Não reaja."),
-		span_warning("[surgeon]Choques.[patient]O cérebro com[tool], mas[patient.p_they()]Não reaja."),
+		span_warning("Você choca.[patient] O cérebro com [tool], mas [patient.p_they()] Não reaja."),
+		span_warning("[surgeon] Choques.[patient] O cérebro com [tool], mas [patient.p_they()] Não reaja."),
+		span_warning("[surgeon] Choques.[patient] O cérebro com [tool], mas [patient.p_they()] Não reaja."),
 	)
 
 /datum/surgery_operation/basic/revival/mechanic

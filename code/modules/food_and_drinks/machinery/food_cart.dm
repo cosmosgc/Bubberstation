@@ -53,7 +53,7 @@
 /obj/machinery/food_cart/proc/pack_up()
 	if(!unpacked)
 		return
-	visible_message(span_notice("[src]Retrai todos os componentes desempacotados."))
+	visible_message(span_notice("[src] Retrai todos os componentes desempacotados."))
 	for(var/o in packed_things)
 		var/obj/object = o
 		UnregisterSignal(object, COMSIG_MOVABLE_MOVED)
@@ -67,7 +67,7 @@
 	if(!check_setup_place())
 		to_chat(user, span_warning("Não há espaço para desfazer as malas aqui! Lugares ruins estavam marcados em vermelho."))
 		return
-	visible_message(span_notice("[src]se expande para uma posição completa."))
+	visible_message(span_notice("[src] se expande para uma posição completa."))
 	set_anchored(TRUE)
 	var/iteration = 1
 	var/turf/grabbed_turf = get_step(get_turf(src), EAST)
@@ -82,7 +82,7 @@
 /obj/machinery/food_cart/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("[src]Está completamente preso."))
+		to_chat(user, span_warning("[src] Está completamente preso."))
 		return
 	var/obj/item/card/id/id_card = user.get_idcard(hand_first = TRUE)
 	if(!check_access(id_card))
@@ -90,7 +90,7 @@
 		return
 	to_chat(user, span_notice("Você tenta[unpacked ? "pack up" :"unpack"] [src]..."))
 	if(!do_after(user, 5 SECONDS, src))
-		to_chat(user, span_warning("Sua[unpacked ? "" :"un"]Embalagem de[src]Foi interrompido!"))
+		to_chat(user, span_warning("Sua[unpacked ? "" :"un"]Embalagem de [src] Foi interrompido!"))
 		return
 	if(unpacked)
 		pack_up()

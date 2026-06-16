@@ -24,7 +24,7 @@
 /obj/singularity/dark_matter/examine(mob/user)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, initial_explosion_immunity))
-		. += span_warning("Protegido pela matéria escura,[src]Parece ser imune a explosões para[DisplayTimeText(COOLDOWN_TIMELEFT(src, initial_explosion_immunity))].")
+		. += span_warning("Protegido pela matéria escura,[src] Parece ser imune a explosões para [DisplayTimeText(COOLDOWN_TIMELEFT(src, initial_explosion_immunity))].")
 	if(consumed_supermatter)
 		. += span_userdanger("É HUngerS")
 	else

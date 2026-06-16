@@ -57,10 +57,10 @@
 
 /obj/item/hierophant_club/suicide_act(mob/living/user)
 	say("Xverwpsgexmrk...", forced = "hierophant club suicide")
-	user.visible_message(span_suicide("[user]Segura.[src]Para o ar! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Segura.[src] Para o ar! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	new/obj/effect/temp_visual/hierophant/telegraph(get_turf(user))
 	playsound(user,'sound/machines/airlock/airlockopen.ogg', 75, TRUE)
-	user.visible_message(span_hierophant_warning("[user]Desapareça, deixando[user.p_their()]pertences atrás!"))
+	user.visible_message(span_hierophant_warning("[user] Desapareça, deixando [user.p_their()] pertences atrás!"))
 	for (var/obj/item/user_item as anything in user.get_all_gear(FALSE, FALSE))
 		user.dropItemToGround(user_item)
 	for (var/turf/blast_turf as anything in RANGE_TURFS(1, user))
@@ -124,7 +124,7 @@
 	var/turf/user_turf = get_turf(user)
 	teleporting = TRUE
 	user.update_mob_action_buttons()
-	user.visible_message(span_hierophant_warning("[user]começa a brilhar levemente..."), span_hierophant_warning("Você começa a canalizar[src]Ó poder..."))
+	user.visible_message(span_hierophant_warning("[user] começa a brilhar levemente..."), span_hierophant_warning("Você começa a canalizar [src] Ó poder..."))
 	beacon.icon_state = "hierophant_tele_on"
 	var/obj/effect/temp_visual/hierophant/telegraph/edge/user_telegraph = new /obj/effect/temp_visual/hierophant/telegraph/edge(user_turf)
 	var/obj/effect/temp_visual/hierophant/telegraph/edge/beacon_telegraph = new /obj/effect/temp_visual/hierophant/telegraph/edge(beacon_turf)
@@ -180,10 +180,10 @@
 		return
 	animate(victim, alpha = 0, time = 0.2 SECONDS, easing = SINE_EASING|EASE_OUT)
 	sleep(0.2 SECONDS)
-	victim.visible_message(span_hierophant_warning("[victim]Desapareça!"))
+	victim.visible_message(span_hierophant_warning("[victim] Desapareça!"))
 	var/success = do_teleport(victim, target_turf, no_effects = TRUE, channel = TELEPORT_CHANNEL_MAGIC)
 	animate(victim, alpha = 255, time = 0.2 SECONDS, SINE_EASING|EASE_OUT)
-	victim.visible_message(span_hierophant_warning("[victim]Desvanece-se!"))
+	victim.visible_message(span_hierophant_warning("[victim] Desvanece-se!"))
 	if (user != victim && success)
 		log_combat(user, victim, "teleported", null, "from [AREACOORD(user_turf)]")
 
@@ -193,7 +193,7 @@
 		to_chat(user, span_warning("Você precisa estar em solo sólido para soltar o farol!"))
 		return
 
-	user.visible_message(span_hierophant_warning("[user]Começa a mexer com[src]É pommel..."), span_notice("Você começa a separar o farol hierofante..."))
+	user.visible_message(span_hierophant_warning("[user] Começa a mexer com [src] É pommel..."), span_notice("Você começa a separar o farol hierofante..."))
 	balloon_alert(user, "Desamarando o farol...")
 	if (!do_after(user, 5 SECONDS, user))
 		balloon_alert(user, "Interrompido!")
@@ -210,7 +210,7 @@
 	RegisterSignal(beacon, COMSIG_QDELETING, PROC_REF(beacon_destroyed))
 
 	user.update_mob_action_buttons()
-	user.visible_message(span_hierophant_warning("[user]coloca uma estranha máquina abaixo[user.p_their()]Pés!"), span_hierophant("Você descola o farol hierofante, permitindo que você se teletransporte e qualquer aliado a ele a qualquer momento!"))
+	user.visible_message(span_hierophant_warning("[user] coloca uma estranha máquina abaixo [user.p_their()] Pés!"), span_hierophant("Você descola o farol hierofante, permitindo que você se teletransporte e qualquer aliado a ele a qualquer momento!"))
 	to_chat(user, span_hierophant("Você pode remover o farol para colocá-lo novamente batendo-lo com o clube."))
 	update_appearance(UPDATE_ICON_STATE)
 
@@ -218,9 +218,9 @@
 	SIGNAL_HANDLER
 	beacon = null
 	if (ismob(loc))
-		to_chat(loc, span_hierophant("Com um estalo alto, um novo farol aparece em[src]É pommel."))
+		to_chat(loc, span_hierophant("Com um estalo alto, um novo farol aparece em [src] É pommel."))
 	else
-		visible_message(span_hierophant("Com um estalo alto, um novo farol aparece em[src]É pommel."))
+		visible_message(span_hierophant("Com um estalo alto, um novo farol aparece em [src] É pommel."))
 	playsound(src, 'sound/effects/magic/blind.ogg', 50, TRUE, -4)
 	update_appearance(UPDATE_ICON_STATE)
 

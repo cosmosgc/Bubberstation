@@ -75,7 +75,7 @@
 /mob/living/basic/guardian/lightning/proc/on_chain_zap(mob/living/target)
 	target.electrocute_act(shock_damage = 0, source = "lightning chain")
 	target.visible_message(
-		span_danger("[target]ficou chocado com a corrente de raios!"),
+		span_danger("[target] ficou chocado com a corrente de raios!"),
 		span_userdanger("Você está chocado com a corrente de raios!"),
 		span_hear("Você ouve uma forte rachadura elétrica."),
 	)

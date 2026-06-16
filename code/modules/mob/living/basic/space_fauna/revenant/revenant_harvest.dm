@@ -4,7 +4,7 @@
 /// Will return FALSE if we can't execute `harvest()`, or will otherwise the result of `harvest()`: a boolean value.
 /mob/living/basic/revenant/proc/attempt_harvest(mob/living/carbon/human/target)
 	if(LAZYFIND(drained_mobs, REF(target)))
-		to_chat(src, span_revenwarning("[target]A alma está morta e vazia."))
+		to_chat(src, span_revenwarning("[target] A alma está morta e vazia."))
 		return FALSE
 
 	if(!cast_check(0))
@@ -39,7 +39,7 @@
 	var/target_They_have = "[target.p_They()] [target.p_have()]"
 
 	if(target.stat == CONSCIOUS)
-		to_chat(src, span_revennotice("[target_Their]A alma é forte demais para colher."))
+		to_chat(src, span_revennotice("[target_Their] A alma é forte demais para colher."))
 		if(prob(10))
 			to_chat(target, span_revennotice("Você sente como se estivesse sendo observado."))
 		return FALSE
@@ -48,25 +48,25 @@
 	face_atom(target)
 	var/essence_drained = rand(15, 20)
 
-	to_chat(src, span_revennotice("Você procura pela alma de[target]."))
+	to_chat(src, span_revennotice("Você procura pela alma de [target]."))
 
 	if(!do_after(src, (rand(10, 20) DECISECONDS), target, timed_action_flags = IGNORE_HELD_ITEM)) //did they get deleted in that second?
 		return FALSE
 
 	var/target_has_client = !isnull(target.client)
 	if(target_has_client || target.ckey) // any target that has been occupied with a ckey is considered "intelligent"
-		to_chat(src, span_revennotice("[target_Their]A alma queima com inteligência."))
+		to_chat(src, span_revennotice("[target_Their] A alma queima com inteligência."))
 		essence_drained += rand(20, 30)
 
 	if(target.stat != DEAD && !HAS_TRAIT(target, TRAIT_WEAK_SOUL))
-		to_chat(src, span_revennotice("[target_Their]A alma arde com a vida!"))
+		to_chat(src, span_revennotice("[target_Their] A alma arde com a vida!"))
 		essence_drained += rand(40, 50)
 
 	if(!target_has_client && HAS_TRAIT(target, TRAIT_WEAK_SOUL))
-		to_chat(src, span_revennotice("[target_Their]A alma é fraca e subdesenvolvida. Eles não valerão muito."))
+		to_chat(src, span_revennotice("[target_Their] A alma é fraca e subdesenvolvida. Eles não valerão muito."))
 		essence_drained = 5
 
-	to_chat(src, span_revennotice("[target_Their]A alma é fraca e fraca. É hora de colher."))
+	to_chat(src, span_revennotice("[target_Their] A alma é fraca e fraca. É hora de colher."))
 
 	if(!do_after(src, (rand(15, 20) DECISECONDS), target, timed_action_flags = IGNORE_HELD_ITEM))
 		to_chat(src, span_revennotice("A colheita está abandonada."))
@@ -74,24 +74,24 @@
 
 	switch(essence_drained)
 		if(1 to 30)
-			to_chat(src, span_revennotice("[target]Não renderá muita essência. Mesmo assim, tudo conta."))
+			to_chat(src, span_revennotice("[target] Não renderá muita essência. Mesmo assim, tudo conta."))
 		if(30 to 70)
-			to_chat(src, span_revennotice("[target]produzirá uma quantidade média de essência."))
+			to_chat(src, span_revennotice("[target] produzirá uma quantidade média de essência."))
 		if(70 to 90)
-			to_chat(src, span_revenboldnotice("Que festa![target]Vai render muita essência para você."))
+			to_chat(src, span_revenboldnotice("Que festa![target] Vai render muita essência para você."))
 		if(90 to INFINITY)
-			to_chat(src, span_revenbignotice("Uma alma perfeita.[target]vai produzir grandes quantidades de essência para você."))
+			to_chat(src, span_revenbignotice("Uma alma perfeita.[target] vai produzir grandes quantidades de essência para você."))
 
 	if(!do_after(src, (rand(15, 25) DECISECONDS), target, timed_action_flags = IGNORE_HELD_ITEM)) //how about now
 		to_chat(src, span_revenwarning("Você não está perto o suficiente para desviar[target ? "[target]'s" : "[target_their]"]Alma. A ligação foi quebrada."))
 		return FALSE
 
 	if(target.stat == CONSCIOUS)
-		to_chat(src, span_revenwarning("[target_Theyre]agora poderoso o suficiente para lutar fora de sua drenagem!"))
+		to_chat(src, span_revenwarning("[target_Theyre] agora poderoso o suficiente para lutar fora de sua drenagem!"))
 		to_chat(target, span_bolddanger("Sente Algo Puxando seu corpo antes de desaparecer.")) //hey, wait a minute...
 		return FALSE
 
-	to_chat(src, span_revenminor("Você começa a tirar essência de[target]Uma alma."))
+	to_chat(src, span_revenminor("Você começa a tirar essência de [target] Uma alma."))
 	if(target.stat != DEAD)
 		to_chat(target, span_warning("Você sente uma sensação de drenagem horrivelmente desagradável enquanto seu aperto na vida enfraquece..."))
 	if(target.stat == SOFT_CRIT)
@@ -100,12 +100,12 @@
 	apply_status_effect(/datum/status_effect/revenant/revealed, 5 SECONDS)
 	apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 5 SECONDS)
 
-	target.visible_message(span_warning("[target]de arrependi-me de ser ligado no ar,[target_their]Pelé ficando cinza."))
+	target.visible_message(span_warning("[target] de arrependi-me de ser ligado no ar,[target_their] Pelé ficando cinza."))
 
 	if(target.can_block_magic(MAGIC_RESISTANCE_HOLY))
-		to_chat(src, span_revenminor("Algo está errado![target]Parece estar resistindo ao sifão, deixando você vulnerável!"))
+		to_chat(src, span_revenminor("Algo está errado![target] Parece estar resistindo ao sifão, deixando você vulnerável!"))
 		target.visible_message(
-			span_warning("[target]Queda no chão."),
+			span_warning("[target] Queda no chão."),
 			span_revenwarning("Luzes violetas, dançando em sua visão, recuando..."),
 		)
 		return FALSE
@@ -115,7 +115,7 @@
 		to_chat(src, span_revenwarning("[target ? "[target]'s soul has" : "[target_They_have]"]Foi tirado do seu alcance. A ligação foi quebrada."))
 		if(target)
 			target.visible_message(
-				span_warning("[target]Queda no chão."),
+				span_warning("[target] Queda no chão."),
 				span_revenwarning("Luzes violetas, dançando em sua visão, recuando..."),
 			)
 		qdel(draining_beam)
@@ -125,16 +125,16 @@
 
 	if(essence_drained <= 90 && target.stat != DEAD && !HAS_TRAIT(target, TRAIT_WEAK_SOUL))
 		max_essence += 5
-		to_chat(src, span_revenboldnotice("A absorção de[target]A alma viva aumentou seu nível máximo de essência. Sua nova essência máxima é[max_essence]."))
+		to_chat(src, span_revenboldnotice("A absorção de [target] A alma viva aumentou seu nível máximo de essência. Sua nova essência máxima é [max_essence]."))
 
 	if(essence_drained > 90)
 		max_essence += 15
 		perfectsouls++
-		to_chat(src, span_revenboldnotice("A perfeição de[target]A alma aumentou seu nível máximo de essência. Sua nova essência máxima é[max_essence]."))
+		to_chat(src, span_revenboldnotice("A perfeição de [target] A alma aumentou seu nível máximo de essência. Sua nova essência máxima é [max_essence]."))
 
-	to_chat(src, span_revennotice("[target]A alma foi consideravelmente enfraquecida e não produzirá mais essência por enquanto."))
+	to_chat(src, span_revennotice("[target] A alma foi consideravelmente enfraquecida e não produzirá mais essência por enquanto."))
 	target.visible_message(
-		span_warning("[target]Queda no chão."),
+		span_warning("[target] Queda no chão."),
 		span_revenwarning("Luzes violetas, dançando em sua visão, ficando..."),
 	)
 

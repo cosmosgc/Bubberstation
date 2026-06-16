@@ -46,7 +46,7 @@
 ///signal sent from examining target
 /datum/element/deliver_first/proc/on_examine(obj/structure/closet/target, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_warning("Um bloqueio eletrônico impede que isso se abra até chegar ao destino.[GLOB.areas_by_type[goal_area_type]].")
+	examine_list += span_warning("Um bloqueio eletrônico impede que isso se abra até chegar ao destino.[GLOB.areas_by_type [goal_area_type]].")
 	examine_list += span_warning("Esta caixa não pode ser vendida até ser aberta.")
 
 ///registers the signal that blocks target from opening when outside of the valid area, returns if it is now unlocked
@@ -96,7 +96,7 @@
 
 ///called to remove the element in a flavorful way, either from delivery or from emagging/breaking open the crate
 /datum/element/deliver_first/proc/remove_lock(obj/structure/closet/target)
-	target.visible_message(span_notice("[target]O bloqueio de entrega se autodestrui, lançando faíscas do mecanismo!"))
+	target.visible_message(span_notice("[target] O bloqueio de entrega se autodestrui, lançando faíscas do mecanismo!"))
 	var/datum/effect_system/basic/spark_spread/spark_system = new(target.loc, 4, 0)
 	spark_system.start()
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

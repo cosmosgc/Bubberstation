@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		return FALSE
 
 	if(!ispath(equipping.dog_fashion, /datum/dog_fashion/back))
-		to_chat(user, span_warning("Você está pronto.[equipping]Vamos.[source]Está de volta, mas cai!"))
+		to_chat(user, span_warning("Você está pronto.[equipping] Vamos.[source] Está de volta, mas cai!"))
 		equipping.forceMove(source.drop_location())
 		if(prob(25))
 			step_rand(equipping)
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		return FALSE
 
 	if(!isidcard(equipping))
-		to_chat(user, span_warning("Você não pode furar[equipping]Para[source]!"))
+		to_chat(user, span_warning("Você não pode furar [equipping] Para [source]!"))
 		return FALSE
 
 	return TRUE

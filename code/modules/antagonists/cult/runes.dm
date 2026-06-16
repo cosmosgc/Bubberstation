@@ -99,14 +99,14 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 	if(.)
 		return
 	if(!IS_CULTIST_OR_CULTIST_MOB(user))
-		to_chat(user, span_warning("Você não consegue entender as palavras de[src]."))
+		to_chat(user, span_warning("Você não consegue entender as palavras de [src]."))
 		return
 	var/list/invokers = can_invoke(user)
 	if(length(invokers) >= req_cultists)
 		invoke(invokers)
 		SSblackbox.record_feedback("tally", "cult_rune_invoke", 1, "[name]")
 	else
-		to_chat(user, span_danger("Você precisa.[req_cultists - length(invokers)]mais cultistas adjacentes para usar esta runa de tal forma."))
+		to_chat(user, span_danger("Você precisa.[req_cultists - length(invokers)] mais cultistas adjacentes para usar esta runa de tal forma."))
 		fail_invoke()
 
 /obj/effect/rune/attack_animal(mob/living/user, list/modifiers)
@@ -121,13 +121,13 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 		to_chat(user, span_warning("Você é incapaz de invocar a runa!"))
 
 /obj/effect/rune/proc/conceal() //for talisman of revealing/hiding
-	visible_message(span_danger("[src]Desaparece."))
+	visible_message(span_danger("[src] Desaparece."))
 	SetInvisibility(INVISIBILITY_OBSERVER, id=type)
 	alpha = 100 //To help ghosts distinguish hidden runes
 
 /obj/effect/rune/proc/reveal() //for talisman of revealing/hiding
 	RemoveInvisibility(type)
-	visible_message(span_danger("[src]De repente aparece!"))
+	visible_message(span_danger("[src] De repente aparece!"))
 	alpha = initial(alpha)
 
 /*
@@ -166,7 +166,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	//This proc contains the effects of the rune as well as things that happen afterwards. If you want it to spawn an object and then delete itself, have both here.
 	for(var/atom/invoker in invokers)
 		if(istype(invoker, /obj/item/toy/plush/narplush))
-			invoker.visible_message(span_cult_italic("[src]Gritando alto!"))
+			invoker.visible_message(span_cult_italic("[src] Gritando alto!"))
 			continue
 		if(!isliving(invoker))
 			continue
@@ -175,7 +175,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			living_invoker.say(invocation, language = /datum/language/common, ignore_spam = TRUE, forced = "cult invocation")
 		if(invoke_damage)
 			living_invoker.apply_damage(invoke_damage, BRUTE)
-			to_chat(living_invoker,  span_cult_italic("[src]Suga sua força!"))
+			to_chat(living_invoker,  span_cult_italic("[src] Suga sua força!"))
 
 	do_invoke_glow()
 
@@ -244,7 +244,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		return
 
 	rune_in_use = TRUE
-	visible_message(span_warning("[src]pulsa sangue vermelho!"))
+	visible_message(span_warning("[src] pulsa sangue vermelho!"))
 	color = RUNE_COLOR_DARKRED
 
 	if(length(myriad_targets))
@@ -279,12 +279,12 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	if(length(invokers) < 2)
 		for(var/invoker in invokers)
-			to_chat(invoker, span_warning("Você precisa de pelo menos dois invocadores para converter[convertee]!"))
+			to_chat(invoker, span_warning("Você precisa de pelo menos dois invocadores para converter [convertee]!"))
 		return FALSE
 
 	if(convertee.can_block_magic(MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, charge_cost = 0)) //No charge_cost because it can be spammed
 		for(var/invoker in invokers)
-			to_chat(invoker, span_warning("Algo está protegendo[convertee]A mente!"))
+			to_chat(invoker, span_warning("Algo está protegendo [convertee] A mente!"))
 		return FALSE
 
 	var/brutedamage = convertee.get_brute_loss()
@@ -294,7 +294,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		convertee.adjust_fire_loss(-(burndamage * 0.75))
 
 	convertee.visible_message(
-		span_warning("[convertee]Se contorce de dor[(brutedamage || burndamage) 			? "even as [convertee.p_their()] wounds heal and close" 			: "as the markings below [convertee.p_them()] glow a bloody red"]!"),
+		span_warning("[convertee] Se contorce de dor[(brutedamage || burndamage) 			? "even as [convertee.p_their()] wounds heal and close" 			: "as the markings below [convertee.p_them()] glow a bloody red"]!"),
 		span_cult_large("<i>AAAAAAAAAAAAAAAAA</i>"),
 	)
 
@@ -329,7 +329,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/target_sac = FALSE
 	if((((ishuman(sacrificial) || iscyborg(sacrificial)) && sacrificial.stat != DEAD) || cult_team.is_sacrifice_target(sacrificial.mind)) && length(invokers) < 3)
 		for(var/invoker in invokers)
-			to_chat(invoker, span_cult_italic("[sacrificial]está muito ligado ao mundo! Você precisa de três acólitos!"))
+			to_chat(invoker, span_cult_italic("[sacrificial] está muito ligado ao mundo! Você precisa de três acólitos!"))
 		return FALSE
 
 	if(sacrificial.mind)
@@ -758,7 +758,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 	if(mob_to_revive.stat == DEAD)
 		var/diff = LAZYLEN(GLOB.sacrificed) - SOULS_TO_REVIVE - GLOB.sacrifices_used
 		if(diff < 0)
-			to_chat(user, span_warning("Seu culto deve realizar[abs(diff)]Mais sacrifício antes que ele possa reviver outro cultista!"))
+			to_chat(user, span_warning("Seu culto deve realizar [abs(diff)] Mais sacrifício antes que ele possa reviver outro cultista!"))
 			fail_invoke()
 			return
 		GLOB.sacrifices_used += SOULS_TO_REVIVE
@@ -777,7 +777,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 			return
 	SEND_SOUND(mob_to_revive, 'sound/music/antag/bloodcult/bloodcult_gain.ogg')
 	to_chat(mob_to_revive, span_cult_large("\"Pasnar Savrae Yam'th. Levante-se.\""))
-	mob_to_revive.visible_message(span_warning("[mob_to_revive]atrai em uma respiração enorme, luz vermelha brilhando de[mob_to_revive.p_their()]Olhos."), 		span_cult_large("Você acorda de repente do vazio. Você está vivo!"))
+	mob_to_revive.visible_message(span_warning("[mob_to_revive] atrai em uma respiração enorme, luz vermelha brilhando de [mob_to_revive.p_their()] Olhos."), 		span_cult_large("Você acorda de repente do vazio. Você está vivo!"))
 	rune_in_use = FALSE
 	return ..()
 
@@ -799,7 +799,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 	rune_in_use = FALSE
 	for(var/mob/living/cultist in loc)
 		if(IS_CULTIST(cultist) && cultist.stat == DEAD)
-			cultist.visible_message(span_warning("[cultist]Tremendo."))
+			cultist.visible_message(span_warning("[cultist] Tremendo."))
 
 //Rite of the Corporeal Shield: When invoked, becomes solid and cannot be passed. Invoke again to undo.
 /obj/effect/rune/wall
@@ -860,35 +860,35 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		fail_invoke()
 		return
 	if(cultist_to_summon.stat == DEAD)
-		to_chat(user, span_cult_italic("[cultist_to_summon]Morreu!"))
+		to_chat(user, span_cult_italic("[cultist_to_summon] Morreu!"))
 		fail_logmsg += "target died."
 		log_game(fail_logmsg)
 		fail_invoke()
 		return
 	if(cultist_to_summon.pulledby || cultist_to_summon.buckled)
-		to_chat(user, span_cult_italic("[cultist_to_summon]Está sendo mantido no lugar!"))
+		to_chat(user, span_cult_italic("[cultist_to_summon] Está sendo mantido no lugar!"))
 		fail_logmsg += "target restrained."
 		log_game(fail_logmsg)
 		fail_invoke()
 		return
 	if(!IS_CULTIST(cultist_to_summon))
-		to_chat(user, span_cult_italic("[cultist_to_summon]Não é um seguidor do Geômetro!"))
+		to_chat(user, span_cult_italic("[cultist_to_summon] Não é um seguidor do Geômetro!"))
 		fail_logmsg += "target deconverted."
 		log_game(fail_logmsg)
 		fail_invoke()
 		return
 	if(is_away_level(cultist_to_summon.z))
-		to_chat(user, span_cult_italic("[cultist_to_summon]não está em nossa dimensão!"))
+		to_chat(user, span_cult_italic("[cultist_to_summon] não está em nossa dimensão!"))
 		fail_logmsg += "target is in away mission."
 		log_game(fail_logmsg)
 		fail_invoke()
 		return
-	cultist_to_summon.visible_message(span_warning("[cultist_to_summon]de repente desaparece em um flash de luz vermelha!"), 									  span_cult_italic("<b>Vertigem exagerada consome você como você é lançado através do ar!</b>"))
+	cultist_to_summon.visible_message(span_warning("[cultist_to_summon] de repente desaparece em um flash de luz vermelha!"), 									  span_cult_italic("<b>Vertigem exagerada consome você como você é lançado através do ar!</b>"))
 	..()
-	visible_message(span_warning("Uma forma nebulosa se materializa no topo[src]e se solidifica em[cultist_to_summon]!"))
+	visible_message(span_warning("Uma forma nebulosa se materializa no topo [src] e se solidifica em [cultist_to_summon]!"))
 	var/turf/old_turf = get_turf(cultist_to_summon)
 	if(!do_teleport(cultist_to_summon, get_turf(src)))
-		to_chat(user, span_warning("A convocação falhou completamente para[cultist_to_summon]!"))
+		to_chat(user, span_warning("A convocação falhou completamente para [cultist_to_summon]!"))
 		fail_logmsg += "target failed criteria to teleport." //catch-all term, just means they failed do_teleport somehow. The most common reasons why someone should fail to be summoned already have verbose messages.
 		log_game(fail_logmsg)
 		fail_invoke()
@@ -920,7 +920,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 	..()
 	rune_in_use = TRUE
 	var/turf/T = get_turf(src)
-	visible_message(span_warning("[src]Fica uma laranja brilhante!"))
+	visible_message(span_warning("[src] Fica uma laranja brilhante!"))
 	color = "#FC9B54"
 	set_light(6, 1, color)
 	for(var/mob/living/target in viewers(T))
@@ -969,7 +969,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 
 /obj/effect/rune/manifest/can_invoke(mob/living/user)
 	if(!(user in get_turf(src)))
-		to_chat(user, span_cult_italic("Você deve estar em pé[src]!"))
+		to_chat(user, span_cult_italic("Você deve estar em pé [src]!"))
 		fail_invoke()
 		log_game("Manifest rune failed - user not standing on rune")
 		return list()
@@ -1005,7 +1005,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 			if(O.client && !is_banned_from(O.ckey, ROLE_CULTIST) && !QDELETED(src) && !(isAdminObserver(O) && (O.client.prefs.toggles & ADMIN_IGNORE_CULT_GHOST)) && !QDELETED(O))
 				ghosts_on_rune += O
 		if(!length(ghosts_on_rune))
-			to_chat(user, span_cult_italic("Não há espíritos perto[src]!"))
+			to_chat(user, span_cult_italic("Não há espíritos perto [src]!"))
 			fail_invoke()
 			log_game("Manifest rune failed - no nearby ghosts")
 			return list()
@@ -1022,8 +1022,8 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		new_human.add_traits(list(TRAIT_NOBREATH, TRAIT_SPAWNED_MOB, TRAIT_PERMANENTLY_MORTAL), INNATE_TRAIT) // permanently mortal can be removed once this is a bespoke kind of mob
 		ghosts++
 		playsound(src, 'sound/effects/magic/exit_blood.ogg', 50, TRUE)
-		visible_message(span_warning("Uma nuvem de névoa vermelha se forma acima[src], e de dentro de passos ... um[new_human.gender == FEMALE ? "wo":""]Cara."))
-		to_chat(user, span_cult_italic("Seu sangue começa a fluir[src]Você deve permanecer no lugar e consciente para manter as formas dos convocados. Isso vai doer lentamente, mas certamente..."))
+		visible_message(span_warning("Uma nuvem de névoa vermelha se forma acima [src], e de dentro de passos ... um[new_human.gender == FEMALE ? "wo":""]Cara."))
+		to_chat(user, span_cult_italic("Seu sangue começa a fluir [src] Você deve permanecer no lugar e consciente para manter as formas dos convocados. Isso vai doer lentamente, mas certamente..."))
 		var/obj/structure/emergency_shield/cult/weak/N = new(T)
 		if(ghost_to_spawn.mind && ghost_to_spawn.mind)
 			new_human.AddComponent( 				/datum/component/temporary_body, 				old_mind = ghost_to_spawn.mind, 			)
@@ -1041,7 +1041,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		qdel(N)
 		ghosts--
 		if(new_human)
-			new_human.visible_message(span_warning("[new_human]de repente se dissolve em ossos e cinzas."), 					span_cult_large("Sua ligação com o mundo desaparece. Sua forma se rompe."))
+			new_human.visible_message(span_warning("[new_human] de repente se dissolve em ossos e cinzas."), 					span_cult_large("Sua ligação com o mundo desaparece. Sua forma se rompe."))
 			for(var/obj/I in new_human)
 				new_human.dropItemToGround(I, TRUE)
 			new_human.mind?.remove_antag_datum(/datum/antagonist/cult)
@@ -1050,7 +1050,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 	else if(choice == "Ascend as a Dark Spirit")
 		affecting = user
 		affecting.add_atom_colour(RUNE_COLOR_DARKRED, ADMIN_COLOUR_PRIORITY)
-		affecting.visible_message(span_warning("[affecting]Congela a estátua, brilhando um vermelho sobrenatural."), 						span_cult("Você vê o que está além. Tudo é revelado. Nesta forma, você acha que sua voz cresce mais alto e você pode marcar alvos para todo o culto"))
+		affecting.visible_message(span_warning("[affecting] Congela a estátua, brilhando um vermelho sobrenatural."), 						span_cult("Você vê o que está além. Tudo é revelado. Nesta forma, você acha que sua voz cresce mais alto e você pode marcar alvos para todo o culto"))
 		var/mob/dead/observer/G = affecting.ghostize(TRUE)
 		ADD_TRAIT(G, TRAIT_NO_OBSERVE, CULT_TRAIT)
 		var/datum/action/innate/cult/comm/spirit/CM = new
@@ -1061,11 +1061,11 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		GM.Grant(G)
 		while(!QDELETED(affecting))
 			if(!(affecting in T))
-				user.visible_message(span_warning("Um tentáculo espectral envolve[affecting]e puxa[affecting.p_them()]De volta à runa!"))
+				user.visible_message(span_warning("Um tentáculo espectral envolve [affecting] e puxa [affecting.p_them()] De volta à runa!"))
 				Beam(affecting, icon_state="drainbeam", time = 2)
 				affecting.forceMove(get_turf(src)) //NO ESCAPE :^)
 			if(affecting.key)
-				affecting.visible_message(span_warning("[affecting]lentamente relaxa, o brilho ao redor[affecting.p_them()]Escurecimento."), 					span_danger("Você está reunida com sua forma física.[src]liberta seu poder sobre você."))
+				affecting.visible_message(span_warning("[affecting] lentamente relaxa, o brilho ao redor [affecting.p_them()] Escurecimento."), 					span_danger("Você está reunida com sua forma física.[src] liberta seu poder sobre você."))
 				affecting.Paralyze(40)
 				break
 			if(affecting.health <= 10)
@@ -1115,7 +1115,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		to_chat(user, span_cult_large("Só resta um local ritual. Deve ser reservado para a convocação final!"))
 		return
 	if(!(place in summon_objective.summon_spots))
-		to_chat(user, span_cult_large("A runa Apocalipse irá remover um local ritual, onde Nar'Sie pode ser convocado, só pode ser escrito em[english_list(summon_objective.summon_spots)]!"))
+		to_chat(user, span_cult_large("A runa Apocalipse irá remover um local ritual, onde Nar'Sie pode ser convocado, só pode ser escrito em [english_list(summon_objective.summon_spots)]!"))
 		return
 
 	summon_objective.summon_spots -= place
@@ -1165,7 +1165,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 				addtimer(CALLBACK(M, TYPE_PROC_REF(/atom/, remove_alt_appearance),"cult_apoc",TRUE), duration)
 				images += C
 		else
-			to_chat(M, span_cult_large("Um Apocalipse Rune foi invocado em\the [place]Não está mais disponível como local de invocação!"))
+			to_chat(M, span_cult_large("Um Apocalipse Rune foi invocado em\the [place] Não está mais disponível como local de invocação!"))
 			SEND_SOUND(M, 'sound/effects/pope_entry.ogg')
 	image_handler(images, duration)
 	if(intensity >= 285) // Based on the prior formula, this means the cult makes up <15% of current players

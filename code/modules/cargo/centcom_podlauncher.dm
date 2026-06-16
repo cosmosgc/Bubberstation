@@ -638,7 +638,7 @@ ADMIN_VERB(centcom_podlauncher, R_ADMIN, "Config/Launch Supplypod", "Configure a
 			var/turf/target_turf = get_turf(target)
 			setDropoff(target_turf)
 			customDropoff = TRUE
-			to_chat(user, span_notice("Você escolheu[target_turf]em[COORD(target_turf)]como seu local de entrega."))
+			to_chat(user, span_notice("Você escolheu [target_turf] em [COORD(target_turf)] como seu local de entrega."))
 
 /datum/centcom_podlauncher/proc/refreshView()
 	switch(tabIndex)

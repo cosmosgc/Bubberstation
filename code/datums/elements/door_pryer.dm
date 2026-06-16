@@ -49,7 +49,7 @@
 /// Try opening the door, and if we can't then try forcing it
 /datum/element/door_pryer/proc/open_door(mob/living/basic/attacker, obj/machinery/door/airlock/airlock_target)
 	if (!airlock_target.hasPower())
-		attacker.visible_message(span_warning("[attacker]força o[airlock_target]para abrir."))
+		attacker.visible_message(span_warning("[attacker] força o [airlock_target] para abrir."))
 		attacker.log_message("Pried open [src], located at [loc_name(src)].", LOG_GAME)
 		airlock_target.open(FORCING_DOOR_CHECKS)
 		return
@@ -58,7 +58,7 @@
 		airlock_target.open(DEFAULT_DOOR_CHECKS)
 		return
 
-	attacker.visible_message(		message = span_warning("[attacker]Começa a forçar o[airlock_target]Abra!"),
+	attacker.visible_message(		message = span_warning("[attacker] Começa a forçar o [airlock_target] Abra!"),
 		blind_message = span_hear("Você ouve um barulho de metal."),
 	)
 	attacker.log_message("Started prying open [src], located at [loc_name(src)].", LOG_GAME)
@@ -72,7 +72,7 @@
 	if(airlock_target.locked)
 		attacker.log_message("Tried and failed to pry open [src], located at [loc_name(src)], due to the airlock getting bolted during the do_after.", LOG_GAME)
 		return
-	attacker.visible_message(span_warning("[attacker]força o[airlock_target]para abrir."))
+	attacker.visible_message(span_warning("[attacker] força o [airlock_target] para abrir."))
 	attacker.log_message("Successfully pried open [src], located at [loc_name(src)].", LOG_GAME)
 	airlock_target.open(BYPASS_DOOR_CHECKS)
 	airlock_target.take_damage(AIRLOCK_PRY_DAMAGE, BRUTE, sound_effect = FALSE)

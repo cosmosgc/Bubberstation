@@ -14,10 +14,10 @@
 	if(ishuman(mover))
 		var/mob/living/carbon/human/H = mover
 		if(H.nutrition >= NUTRITION_LEVEL_FAT)
-			H.visible_message(span_warning("[H]Empurra através[src]!"), span_notice("Você já viu e comeu pior do que isso."))
+			H.visible_message(span_warning("[H] Empurra através [src]!"), span_notice("Você já viu e comeu pior do que isso."))
 			return TRUE
 		else
-			to_chat(H, span_warning("Você é repelido por olhar[src]Só um porco poderia se forçar a passar por isso."))
+			to_chat(H, span_warning("Você é repelido por olhar [src] Só um porco poderia se forçar a passar por isso."))
 	if(istype(mover, /mob/living/basic/morph))
 		return TRUE
 
@@ -49,4 +49,4 @@
 	H.dna.copy_dna(user.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 	user.updateappearance(mutcolor_update=1)
 	user.domutcheck()
-	user.visible_message(span_warning("[user]A aparência muda para[H]É!"), 	span_bolddanger("[H.p_They()]Pense.[H.p_s()] [H.p_theyre()] <i>Então</i>Muito melhor que você. Não mais.[H.p_they()]Não vai."))
+	user.visible_message(span_warning("[user] A aparência muda para [H] É!"), 	span_bolddanger("[H.p_They()] Pense.[H.p_s()] [H.p_theyre()] <i>Então</i>Muito melhor que você. Não mais.[H.p_they()] Não vai."))

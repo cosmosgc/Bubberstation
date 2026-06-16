@@ -224,7 +224,7 @@
 	else
 		result += "<span class='redtext big'>[name] team failed its mission.</span>"
 
-	result += span_header("Os sequestradores de[name]Foram:")
+	result += span_header("Os sequestradores de [name] Foram:")
 	for(var/datum/mind/abductor_mind in members)
 		result += printplayer(abductor_mind)
 	result += printobjectives(objectives)

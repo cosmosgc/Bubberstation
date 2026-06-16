@@ -101,7 +101,7 @@
 	. = ..()
 	if(owner)
 		addtimer(CALLBACK(src, PROC_REF(Activate), TRUE), autoplace_time, TIMER_UNIQUE|TIMER_OVERRIDE)
-		to_chat(owner, span_bolddanger("Você vai automaticamente estourar e colocar seu núcleo de bolhas em[DisplayTimeText(autoplace_time)]."))
+		to_chat(owner, span_bolddanger("Você vai automaticamente estourar e colocar seu núcleo de bolhas em [DisplayTimeText(autoplace_time)]."))
 
 /datum/action/innate/blobpop/Activate(timer_activated = FALSE)
 	var/mob/living/old_body = owner

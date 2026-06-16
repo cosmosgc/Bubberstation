@@ -160,10 +160,10 @@
 /obj/machinery/power/rtg/old_station/default_deconstruction_screwdriver(mob/user, obj/item/screwdriver)
 	. = ..()
 	if(. & ITEM_INTERACT_SUCCESS)
-		to_chat(user, span_warning("Você sente[src]Desfazendo-se sob suas mãos!"))
+		to_chat(user, span_warning("Você sente [src] Desfazendo-se sob suas mãos!"))
 
 /obj/machinery/power/rtg/old_station/default_deconstruction_crowbar(mob/living/user, obj/item/crowbar, ignore_panel, custom_deconstruct)
-	to_chat(user, span_warning("Como você se intromete,[src]Começa a desmoronar!"))
+	to_chat(user, span_warning("Como você se intromete,[src] Começa a desmoronar!"))
 	if(!crowbar.use_tool(src, user, 3 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 

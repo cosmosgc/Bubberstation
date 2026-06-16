@@ -59,7 +59,7 @@
 		/datum/brain_trauma/severe/paralysis,
 		/datum/brain_trauma/severe/monophobia
 	)
-	wearer.visible_message(span_danger("[wearer]O véu faz[attack_text]Senhorita, mas a força por trás do golpe faz com que se espalhe!"))
+	wearer.visible_message(span_danger("[wearer] O véu faz [attack_text] Senhorita, mas a força por trás do golpe faz com que se espalhe!"))
 	if(IS_HERETIC(wearer))
 		return
 

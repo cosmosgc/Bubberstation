@@ -47,9 +47,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a aquecer.[patient]É medula óssea com[tool]..."),
-		span_notice("[surgeon]Começa o aquecimento.[patient]É medula óssea com[tool]..."),
-		span_notice("[surgeon]Começa a aquecer alguma coisa.[patient]'s peito com[tool]..."),
+		span_notice("Você começa a aquecer.[patient] É medula óssea com [tool]..."),
+		span_notice("[surgeon] Começa o aquecimento.[patient] É medula óssea com [tool]..."),
+		span_notice("[surgeon] Começa a aquecer alguma coisa.[patient]'s peito com [tool]..."),
 	)
 	display_pain(patient, "You feel a searing heat spread through your chest!")
 
@@ -57,9 +57,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("[patient]A medula óssea começa a pulsar lentamente. A ligação viral está completa."),
-		span_notice("[patient]A medula óssea começa a pulsar lentamente."),
-		span_notice("[surgeon]Termina a operação."),
+		span_notice("[patient] A medula óssea começa a pulsar lentamente. A ligação viral está completa."),
+		span_notice("[patient] A medula óssea começa a pulsar lentamente."),
+		span_notice("[surgeon] Termina a operação."),
 	)
 	display_pain(patient, "You feel a faint throbbing in your chest.")
 	for(var/datum/disease/infected_disease as anything in patient.diseases)

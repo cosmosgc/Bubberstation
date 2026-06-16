@@ -15,7 +15,7 @@
 	assembly_flags = ASSEMBLY_NO_DUPLICATES
 
 /obj/item/assembly/igniter/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]está tentando incendiar[user.p_them()]ego com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está tentando incendiar [user.p_them()] ego com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.ignite_mob()
 	return FIRELOSS
 
@@ -48,7 +48,7 @@
 	add_fingerprint(user)
 
 /obj/item/assembly/igniter/ignition_effect(atom/A, mob/user)
-	. = span_notice("[user]Fiddles com[src], e consegue iluminar[A].")
+	. = span_notice("[user] Fiddles com [src], e consegue iluminar [A].")
 	activate()
 	add_fingerprint(user)
 

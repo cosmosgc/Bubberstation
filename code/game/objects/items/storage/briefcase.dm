@@ -49,17 +49,17 @@
 		if(istype(potentially_paper, /obj/item/paper) || istype(potentially_paper, /obj/item/paperplane))
 			papers_found += potentially_paper
 	if(!papers_found.len || !item_loc)
-		user.visible_message(span_suicide("[user]Bache.[user.p_them()]eu mesmo na cabeça com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Bache.[user.p_them()] eu mesmo na cabeça com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user]Abre.[src]e tudo de[user.p_their()]Os papéis voam!"))
+	user.visible_message(span_suicide("[user] Abre.[src] e tudo de [user.p_their()] Os papéis voam!"))
 	for(var/obj/item/paper as anything in papers_found)	//Throws the papers in a random direction
 		var/turf/turf_to_throw_at = prob(20) ? item_loc : get_ranged_target_turf(item_loc, pick(GLOB.alldirs))
 		paper.throw_at(turf_to_throw_at, 2)
 
 	stoplag(1 SECONDS)
 	user.say("ARGGHH, HOW WILL I GET THIS WORK DONE NOW?!!")
-	user.visible_message(span_suicide("[user]Parece sobrecarregado com papelada! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Parece sobrecarregado com papelada! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 // Empty subtype
@@ -162,7 +162,7 @@
 	if(!isturf(user.loc)) //no setting up in a locker
 		return
 	add_fingerprint(user)
-	user.visible_message(span_notice("[user]Começa a se estabelecer.[src]..."), span_notice("Você começa a montar[pad]..."))
+	user.visible_message(span_notice("[user] Começa a se estabelecer.[src]..."), span_notice("Você começa a montar [pad]..."))
 	if(do_after(user, 3 SECONDS, target = user))
 		pad.forceMove(get_turf(src))
 		pad.update_indicator()
@@ -177,7 +177,7 @@
 	if(remote.pad == WEAKREF(src.pad))
 		return ..()
 	remote.pad = WEAKREF(src.pad)
-	to_chat(user, span_notice("Você liga.[pad]Para[remote]."))
+	to_chat(user, span_notice("Você liga.[pad] Para [remote]."))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/item/storage/briefcase/gun

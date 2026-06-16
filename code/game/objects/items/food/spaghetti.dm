@@ -14,7 +14,7 @@
 /obj/item/food/spaghetti/make_microwaveable()
 	var/list/display_message = list(
 		span_notice("Algo molhado cai do bolso e bate no chão. Isso é...[name]?"),
-		span_warning("Merda! Todo o seu bolso[name]Caiu!"))
+		span_warning("Merda! Todo o seu bolso [name] Caiu!"))
 	AddComponent(/datum/component/spill, display_message, 'sound/effects/splat.ogg', /datum/memory/lost_spaghetti)
 
 	return ..()

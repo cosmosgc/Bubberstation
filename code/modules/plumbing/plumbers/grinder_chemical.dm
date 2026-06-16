@@ -72,17 +72,17 @@
 			to_chat(user, span_warning("Âncora primeiro para começar[grinding ? "grind" : "juice"]."))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("Você despeja itens de[tool]Para o moedor."))
+		to_chat(user, span_notice("Você despeja itens de [tool] Para o moedor."))
 		for(var/obj/item/obj_item in tool.contents)
 			blend(obj_item)
 		return ITEM_INTERACT_SUCCESS
 	else if(!tool.tool_behaviour)
 		var/action = "[grinding ? "grind" : "juice"]"
 		if(!anchored)
-			to_chat(user, span_warning("Âncora primeiro para estrelar[action]."))
+			to_chat(user, span_warning("Âncora primeiro para estrelar [action]."))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("Você tenta[action] [tool]."))
+		to_chat(user, span_notice("Você tenta [action] [tool]."))
 		blend(tool)
 		return ITEM_INTERACT_SUCCESS
 

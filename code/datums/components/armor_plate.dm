@@ -51,16 +51,16 @@
 	if(ismecha(parent))
 		if(amount)
 			if(amount < maxamount)
-				examine_list += span_notice("Sua armadura é reforçada com[amount] [upgrade_name].")
+				examine_list += span_notice("Sua armadura é reforçada com [amount] [upgrade_name].")
 			else
-				examine_list += span_notice("Está usando uma carapaça terrível inteiramente composta de[upgrade_name]Seu piloto deve ser um caçador de monstros experiente.")
+				examine_list += span_notice("Está usando uma carapaça terrível inteiramente composta de [upgrade_name] Seu piloto deve ser um caçador de monstros experiente.")
 		else
 			examine_list += span_notice("Tem pontos de fixação para se esconder para proteção adicional.")
 	else
 		if(amount)
-			examine_list += span_notice("Foi fortalecido com[amount]/[maxamount] [upgrade_name].")
+			examine_list += span_notice("Foi fortalecido com [amount]/[maxamount] [upgrade_name].")
 		else
-			examine_list += span_notice("Pode ser fortalecido com até[maxamount] [upgrade_name].")
+			examine_list += span_notice("Pode ser fortalecido com até [maxamount] [upgrade_name].")
 
 /datum/component/armor_plate/proc/applyplate(datum/source, obj/item/our_upgrade_item, mob/user, params)
 	SIGNAL_HANDLER
@@ -69,20 +69,20 @@
 		return
 
 	if(amount >= maxamount)
-		to_chat(user, span_warning("Você não pode melhorar.[parent]Mais um pouco!"))
+		to_chat(user, span_warning("Você não pode melhorar.[parent] Mais um pouco!"))
 		return
 
 	if(ismecha(parent) && !plate_component)
 		var/obj/vehicle/sealed/mecha/as_mecha = parent
 		if (LAZYLEN(as_mecha.equip_by_category[MECHA_ARMOR]) >= as_mecha.max_equip_by_category[MECHA_ARMOR])
-			to_chat(user, span_warning("[as_mecha]Não tem nenhuma blindagem disponível!"))
+			to_chat(user, span_warning("[as_mecha] Não tem nenhuma blindagem disponível!"))
 			return
 
 	if(isstack(our_upgrade_item))
 		our_upgrade_item.use(1)
 	else
 		if(length(our_upgrade_item.contents))
-			to_chat(user, span_warning("[our_upgrade_item]Não pode ser usado para blindagem enquanto há algo dentro!"))
+			to_chat(user, span_warning("[our_upgrade_item] Não pode ser usado para blindagem enquanto há algo dentro!"))
 			return
 		qdel(our_upgrade_item)
 
@@ -95,12 +95,12 @@
 		if(upgrade_prefix && !have_upgraded)
 			target_for_upgrading.name = "[upgrade_prefix] [target_for_upgrading.name]"
 			have_upgraded = TRUE
-		to_chat(user, span_info("Você fortalece[target_for_upgrading], melhorando sua resistência contra ataques."))
+		to_chat(user, span_info("Você fortalece [target_for_upgrading], melhorando sua resistência contra ataques."))
 		return
 
 	var/obj/vehicle/sealed/mecha/mecha_for_upgrading = target_for_upgrading
 	mecha_for_upgrading.update_appearance()
-	to_chat(user, span_info("Você fortalece[mecha_for_upgrading], melhorando sua resistência contra ataques."))
+	to_chat(user, span_info("Você fortalece [mecha_for_upgrading], melhorando sua resistência contra ataques."))
 	if (plate_component)
 		return
 	plate_component = new(mecha_for_upgrading)

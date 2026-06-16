@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(server_maint)
 			var/cmob = C.mob
 			if (!isnewplayer(cmob) || !SSticker.queued_players.Find(cmob))
 				log_access("AFK: [key_name(C)]")
-				to_chat(C, span_userdanger("Você está inativa há mais de[DisplayTimeText(afk_period)]e foram desconectados.</span><br><span class='danger'>Você pode reconectar através do botão no menu de arquivos ou por<b><u><a href='byond://winset?command=.reconnect'>clicando aqui para reconectar</a></u></b>."))
+				to_chat(C, span_userdanger("Você está inativa há mais de [DisplayTimeText(afk_period)] e foram desconectados.</span><br><span class='danger'>Você pode reconectar através do botão no menu de arquivos ou por<b><u><a href='byond://winset?command=.reconnect'>clicando aqui para reconectar</a></u></b>."))
 				QDEL_IN(C, 1) //to ensure they get our message before getting disconnected
 				continue
 

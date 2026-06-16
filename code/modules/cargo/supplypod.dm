@@ -283,7 +283,7 @@
 		destination = get_random_station_turf()
 
 	do_sparks(8, FALSE, victim)
-	victim.visible_message(span_notice("[victim]Desapareça..."))
+	victim.visible_message(span_notice("[victim] Desapareça..."))
 
 	victim.forceMove(src)
 

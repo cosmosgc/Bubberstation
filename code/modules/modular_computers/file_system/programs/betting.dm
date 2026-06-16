@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 	. = ..()
 	var/mob/user = ui.user
 	if(isnull(computer.stored_id))
-		to_chat(user, span_danger("\The [computer]Esclarece um\"Erro RFID - Incapaz de digitalizar ID\"Aviso."))
+		to_chat(user, span_danger("\The [computer] Esclarece um\"Erro RFID - Incapaz de digitalizar ID\"Aviso."))
 		return
 	switch(action)
 		if("create_bet")
@@ -184,7 +184,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_bets, /datum/active_bet)
 		return
 	// We'll only advertise it on the first bet of the round, as to not make this overly annoying.
 	var/should_alert = !length(betting_channel.messages)
-	newscaster_message = GLOB.news_network.submit_article("A aposta.[name]Já começou, façam suas apostas agora!", "Aplicativo de apostas espaciais da NTOS", NEWSCASTER_SPACE_BETTING, null, update_alert = should_alert)
+	newscaster_message = GLOB.news_network.submit_article("A aposta.[name] Já começou, façam suas apostas agora!", "Aplicativo de apostas espaciais da NTOS", NEWSCASTER_SPACE_BETTING, null, update_alert = should_alert)
 
 /// Reply to our previously placed advertisement feed article.
 /datum/active_bet/proc/reply_to_feed(winning_option)

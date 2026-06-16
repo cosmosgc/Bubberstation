@@ -49,7 +49,7 @@
 #undef NICKNAME_CAP
 
 /obj/item/virgin_mary/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a dizer que a Ave Maria deles está num ritmo aterrorizante! Parece que...[user.p_theyre()]Tentando entrar na vida após a morte!"))
+	user.visible_message(span_suicide("[user] Começa a dizer que a Ave Maria deles está num ritmo aterrorizante! Parece que...[user.p_theyre()] Tentando entrar na vida após a morte!"))
 	user.say("Hail Mary, full of grace, the Lord is with thee. Blessed are thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, mother of God, pray for us sinners, now and at the hour of our death. Amen. ", forced = /obj/item/virgin_mary)
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 7.5 SECONDS)
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, say), "O my Mother, preserve me this day from mortal sin..."), 5 SECONDS)

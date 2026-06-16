@@ -88,7 +88,7 @@
 	. = ..()
 	if(has_variable_transfer_amount)
 		if(possible_transfer_amounts.len > 1)
-			. += span_notice("Clique com o botão esquerdo ou com o botão direito para aumentar ou diminuir a quantidade de transferência. Está definido para[amount_per_transfer_from_this]Unidades.")
+			. += span_notice("Clique com o botão esquerdo ou com o botão direito para aumentar ou diminuir a quantidade de transferência. Está definido para [amount_per_transfer_from_this] Unidades.")
 		else if(possible_transfer_amounts.len)
 			. += span_notice("Clique com o botão esquerdo ou com o botão direito para ver o valor da transferência.")
 	if(isliving(user) && HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
@@ -152,15 +152,15 @@
 
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.visible_message(
-		span_danger("[user]respinga o conteúdo de[src]em frente[target][punctuation]"),
-		span_danger("Você espirra o conteúdo de[src]em frente[target][punctuation]"),
+		span_danger("[user] respinga o conteúdo de [src] em frente [target][punctuation]"),
+		span_danger("Você espirra o conteúdo de [src] em frente [target][punctuation]"),
 		ignored_mobs = target,
 	)
 	SEND_SIGNAL(target, COMSIG_ATOM_SPLASHED)
 	if (ismob(target))
 		var/mob/target_mob = target
 		target_mob.show_message(
-			span_userdanger("[user]respinga o conteúdo de[src]Em você!"),
+			span_userdanger("[user] respinga o conteúdo de [src] Em você!"),
 			MSG_VISUAL,
 			span_userdanger("Você se sente encharcado!"),
 		)
@@ -183,7 +183,7 @@
 	if(!iscarbon(eater))
 		return FALSE
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 		return FALSE
 	var/mob/living/carbon/as_carbon = eater
 	var/covered = ""
@@ -193,7 +193,7 @@
 		covered = "mask"
 	if(covered)
 		var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
-		to_chat(user, span_warning("Você tem que remover[who] [covered]Primeiro!"))
+		to_chat(user, span_warning("Você tem que remover [who] [covered] Primeiro!"))
 		return FALSE
 	return TRUE
 
@@ -247,7 +247,7 @@
 		var/turf_splash_multiplier = 1 - splash_multiplier
 		var/mob/M = target
 		var/turf/target_turf = get_turf(target)
-		target.visible_message(span_danger("[M]está salpicado com alguma coisa!"), 						span_userdanger("[M]está salpicado com alguma coisa!"))
+		target.visible_message(span_danger("[M] está salpicado com alguma coisa!"), 						span_userdanger("[M] está salpicado com alguma coisa!"))
 		if(splasher)
 			log_combat(splasher, M, "splashed", src, "containing [reagents.get_reagent_log_string()] [was_thrown ? "(thrown)" : ""]")
 		reagents.expose(target, TOUCH, splash_multiplier)
@@ -256,7 +256,7 @@
 			target_turf.add_liquid_from_reagents(reagents, reagent_multiplier = (1 - splash_multiplier)) // SKYRAT EDIT ADDITION - liquid spills (molotov buff) (huge)
 
 	else if(bartender_check(target, splasher) && was_thrown)
-		visible_message(span_notice("[src]Aterrissando em\the [target]sem derramar uma única gota."))
+		visible_message(span_notice("[src] Aterrissando em\the [target] sem derramar uma única gota."))
 		return
 
 	else
@@ -267,7 +267,7 @@
 				log_combat(splasher, target, "splashed [english_list(reagents.reagent_list)]", src, "in [AREACOORD(target)] [was_thrown ? "(thrown)" : ""]")
 				message_admins("[ADMIN_LOOKUPFLW(splasher)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
 		else
-			visible_message(span_notice("[src]Derrama seu conteúdo por toda parte.[target]."))
+			visible_message(span_notice("[src] Derrama seu conteúdo por toda parte.[target]."))
 			reagents.expose(target, TOUCH)
 		//SKYRAT EDIT END
 		if(QDELETED(src))
@@ -400,33 +400,33 @@
 
 /obj/item/reagent_containers/proc/try_refill(atom/target, mob/living/user)
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_warning("[target]Está cheio."))
+		to_chat(user, span_warning("[target] Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = round(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	playsound(target.loc, SFX_LIQUID_POUR, 50, TRUE)
 	if(trans)
-		to_chat(user, span_notice("Você se transferiu.[trans]Unidade da solução para[target]."))
+		to_chat(user, span_notice("Você se transferiu.[trans] Unidade da solução para [target]."))
 	SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_TO, target)
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/proc/try_drain(atom/target, mob/living/user)
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target]Está vazio e não pode ser reabastecido!"))
+		to_chat(user, span_warning("[target] Está vazio e não pode ser reabastecido!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(reagents.holder_full())
-		to_chat(user, span_warning("[src]Está cheio."))
+		to_chat(user, span_warning("[src] Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = round(target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	playsound(target.loc, SFX_LIQUID_POUR, 50, TRUE)
-	to_chat(user, span_notice("Você enche.[src]com[trans]Unidade do conteúdo de[target]."))
+	to_chat(user, span_notice("Você enche.[src] com [trans] Unidade do conteúdo de [target]."))
 	SEND_SIGNAL(src, COMSIG_REAGENTS_CUP_TRANSFER_FROM, target)
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS

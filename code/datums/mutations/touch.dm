@@ -54,8 +54,8 @@
 			carbon_victim.dropItemToGround(carbon_victim.get_inactive_held_item())
 			carbon_victim.adjust_confusion(15 SECONDS)
 			carbon_victim.visible_message(
-				span_danger("[caster]eletrocutos[victim]!"),
-				span_userdanger("[caster]Eletrocuta você!"),
+				span_danger("[caster] eletrocutos [victim]!"),
+				span_userdanger("[caster] Eletrocuta você!"),
 			)
 			if(stagger)
 				carbon_victim.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
@@ -65,14 +65,14 @@
 		var/mob/living/living_victim = victim
 		if(living_victim.electrocute_act(15, caster, 1, SHOCK_NOSTUN)) //We do damage here because non-carbon mobs typically ignore stamina damage.
 			living_victim.visible_message(
-				span_danger("[caster]eletrocutos[victim]!"),
-				span_userdanger("[caster]Eletrocuta você!"),
+				span_danger("[caster] eletrocutos [victim]!"),
+				span_userdanger("[caster] Eletrocuta você!"),
 			)
 			if(stagger)
 				living_victim.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * 2, 10 SECONDS)
 			return TRUE
 
-	to_chat(caster, span_warning("A eletricidade não parece afetar[victim]..."))
+	to_chat(caster, span_warning("A eletricidade não parece afetar [victim]..."))
 	return TRUE
 
 /obj/item/melee/touch_attack/shock
@@ -160,7 +160,7 @@
 	var/hurt_this_guy = determine_if_this_hurts_instead(mendicant, hurtguy)
 
 	if (hurt_this_guy && (HAS_TRAIT(mendicant, TRAIT_PACIFISM) || !mendicant.combat_mode)) //Returns if we're a pacifist and we'd hurt them, or we're not in combat mode and we'll hurt them
-		mendicant.balloon_alert(mendicant, "[hurtguy]Seria ferido!")
+		mendicant.balloon_alert(mendicant, "[hurtguy] Seria ferido!")
 		return FALSE
 
 	if(hurt_this_guy)
@@ -209,8 +209,8 @@
 	hurtguy.update_damage_overlays()
 	mendicant.update_damage_overlays()
 
-	hurtguy.visible_message(span_notice("[mendicant]Ponha as mãos sobre[hurtguy]!"))
-	to_chat(hurtguy, span_boldnotice("[mendicant]Põe as mãos em você, curando você!"))
+	hurtguy.visible_message(span_notice("[mendicant] Ponha as mãos sobre [hurtguy]!"))
+	to_chat(hurtguy, span_boldnotice("[mendicant] Põe as mãos em você, curando você!"))
 	new /obj/effect/temp_visual/heal(get_turf(hurtguy), COLOR_VERY_PALE_LIME_GREEN)
 	return success
 
@@ -396,20 +396,20 @@
 		our_smite_multiplier *= divine_champion ? 5 : 1 //good luck surviving this if they're a chap
 
 	if(evil_smite)
-		motherfucker_to_hurt.visible_message(span_warning("[smiter]Snaps[smiter.p_their()]Dedos na frente de[motherfucker_to_hurt]O rosto, e[motherfucker_to_hurt]O corpo se torce violentamente de uma força invisível!"))
+		motherfucker_to_hurt.visible_message(span_warning("[smiter] Snaps [smiter.p_their()] Dedos na frente de [motherfucker_to_hurt] O rosto, e [motherfucker_to_hurt] O corpo se torce violentamente de uma força invisível!"))
 		motherfucker_to_hurt.apply_damage(10 * our_smite_multiplier, BRUTE, spread_damage = TRUE, wound_bonus = 5 * our_smite_multiplier)
 		motherfucker_to_hurt.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * our_smite_multiplier, 25 SECONDS)
 		smiter.emote("snap")
 		smite_text_to_target = "crushes you psychically with a snap of [smiter.p_their()] fingers"
 	else
-		motherfucker_to_hurt.visible_message(span_warning("[smiter]Ponha as mãos sobre[motherfucker_to_hurt], mas ela corta[motherfucker_to_hurt.p_them()]com uma energia brilhante!"))
+		motherfucker_to_hurt.visible_message(span_warning("[smiter] Ponha as mãos sobre [motherfucker_to_hurt], mas ela corta [motherfucker_to_hurt.p_them()] com uma energia brilhante!"))
 		motherfucker_to_hurt.apply_damage(10 * our_smite_multiplier, BURN, spread_damage = TRUE, wound_bonus = 5 * our_smite_multiplier)
 		motherfucker_to_hurt.adjust_fire_stacks(3 * our_smite_multiplier)
 		motherfucker_to_hurt.ignite_mob()
 
 	motherfucker_to_hurt.update_damage_overlays()
 
-	to_chat(motherfucker_to_hurt, span_bolddanger("[smiter] [smite_text_to_target]Te machucando!"))
+	to_chat(motherfucker_to_hurt, span_bolddanger("[smiter] [smite_text_to_target] Te machucando!"))
 	motherfucker_to_hurt.emote("scream")
 	new /obj/effect/temp_visual/explosion(get_turf(motherfucker_to_hurt), evil_smite ? LIGHT_COLOR_BLOOD_MAGIC : LIGHT_COLOR_HOLY_MAGIC)
 	. = TRUE

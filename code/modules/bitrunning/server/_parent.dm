@@ -94,11 +94,11 @@
 
 	var/upgraded = FALSE
 	if(capacitor_coefficient < 1)
-		. += span_infoplain("Sua capacidade de refrigeração reduz o tempo de resfriamento em[(1 - capacitor_coefficient) * 100]%.")
+		. += span_infoplain("Sua capacidade de refrigeração reduz o tempo de resfriamento em [(1 - capacitor_coefficient) * 100]%.")
 		upgraded = TRUE
 
 	if(servo_bonus > 0.2)
-		. += span_infoplain("Seu potencial de manipulação está aumentando as recompensas por[servo_bonus]X.")
+		. += span_infoplain("Seu potencial de manipulação está aumentando as recompensas por [servo_bonus] X.")
 		. += span_infoplain("- Lesão por ejeção insegura reduzida.[servo_bonus * 100]%.")
 		upgraded = TRUE
 

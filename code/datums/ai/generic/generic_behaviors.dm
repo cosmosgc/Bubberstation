@@ -47,7 +47,7 @@
 	big_guy.start_pulling(batman)
 	big_guy.face_atom(batman)
 
-	batman.visible_message(span_warning("[batman]recebe um abraço muito apertado de[big_guy]!"), span_userdanger("Você sente seu corpo quebrar como[big_guy]Abraça você!"))
+	batman.visible_message(span_warning("[batman] recebe um abraço muito apertado de [big_guy]!"), span_userdanger("Você sente seu corpo quebrar como [big_guy] Abraça você!"))
 
 	for(var/zone in GLOB.all_body_zones - BODY_ZONE_HEAD)
 		batman.apply_damage(15, BRUTE, zone, wound_bonus = 35)
@@ -127,8 +127,8 @@
 		return perform_flags
 	controller.PauseAi(1.5 SECONDS)
 	living_target.visible_message(
-		span_info("[pawn]começa a tentar dar[held_item]para[living_target]!"),
-		span_warning("[pawn]Tenta te dar[held_item]!")
+		span_info("[pawn] começa a tentar dar [held_item] para [living_target]!"),
+		span_warning("[pawn] Tenta te dar [held_item]!")
 	)
 	if(!do_after(pawn, 1 SECONDS, living_target))
 		return AI_BEHAVIOR_DELAY | perform_flags

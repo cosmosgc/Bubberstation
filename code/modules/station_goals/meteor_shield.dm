@@ -142,7 +142,7 @@
 		return FALSE
 	if(!COOLDOWN_FINISHED(src, shared_emag_cooldown))
 		balloon_alert(user, "Em recarga!")
-		to_chat(user, span_warning("O último satélite precisa[DisplayTimeText(COOLDOWN_TIMELEFT(src, shared_emag_cooldown))]Para recalibrar primeiro. Emagrecer outro tão cedo pode danificar a rede de satélite."))
+		to_chat(user, span_warning("O último satélite precisa [DisplayTimeText(COOLDOWN_TIMELEFT(src, shared_emag_cooldown))] Para recalibrar primeiro. Emagrecer outro tão cedo pode danificar a rede de satélite."))
 		return FALSE
 	var/cooldown_applied = METEOR_SHIELD_EMAG_COOLDOWN
 	COOLDOWN_START(src, shared_emag_cooldown, cooldown_applied)

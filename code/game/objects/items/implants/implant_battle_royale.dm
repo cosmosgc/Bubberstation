@@ -52,7 +52,7 @@
 	if (has_exploded || QDELETED(src))
 		return
 	if (!special && prob(removed_explode_chance))
-		target.visible_message(span_boldwarning("[src]Apita ameaçadoramente."))
+		target.visible_message(span_boldwarning("[src] Apita ameaçadoramente."))
 		playsound(loc, 'sound/items/timer.ogg', 50, vary = FALSE)
 		explode(target)
 	target?.mind?.remove_antag_datum(/datum/antagonist/survivalist/battle_royale)
@@ -104,7 +104,7 @@
 	if (is_type_in_list(get_area(source), limited_areas))
 		return
 	playsound(imp_in, 'sound/items/timer.ogg', 50, vary = FALSE)
-	to_chat(imp_in, span_boldwarning("Você está fora dos limites! Vá para o[target_area_name]Rápido!"))
+	to_chat(imp_in, span_boldwarning("Você está fora dos limites! Vá para o [target_area_name] Rápido!"))
 	addtimer(CALLBACK(src, PROC_REF(check_area_deadly)), 5 SECONDS, TIMER_DELETE_ME)
 
 /// After a grace period they're still out of bounds, killing time

@@ -78,14 +78,14 @@
 
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler]Deite-se em[src]."),
-			span_notice("Você se deita[src]."),
+			span_notice("[buckler] Deite-se em [src]."),
+			span_notice("Você se deita [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler]Deitados.[being_buckled]Para baixo.[src]."),
-			span_notice("[buckler]Deita você em cima[src]."),
+			span_notice("[buckler] Deitados.[being_buckled] Para baixo.[src]."),
+			span_notice("[buckler] Deita você em cima [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -95,14 +95,14 @@
 
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Levanta-se de[src]."),
-			span_notice("Você se levanta de[src]."),
+			span_notice("[unbuckler] Levanta-se de [src]."),
+			span_notice("Você se levanta de [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Puxa.[being_unbuckled]Para cima de[src]."),
-			span_notice("[unbuckler]Te puxa de[src]."),
+			span_notice("[unbuckler] Puxa.[being_unbuckled] Para cima de [src]."),
+			span_notice("[unbuckler] Te puxa de [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -147,7 +147,7 @@
 		var/clumsy_chance = 30 - (user.mind.get_skill_level(/datum/skill/athletics) * 5)
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(clumsy_chance))
 			playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-			to_chat(user, span_warning("Sua mão escorrega, causando\the [src]Para esmagar você!"))
+			to_chat(user, span_warning("Sua mão escorrega, causando\the [src] Para esmagar você!"))
 			user.take_bodypart_damage(rand(2, 5))
 			end_workout()
 			return

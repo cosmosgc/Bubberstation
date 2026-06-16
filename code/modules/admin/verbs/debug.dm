@@ -462,7 +462,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_rejuvenate, R_ADMIN, "Rejuvenate", mob/li
 	M.revive(ADMIN_HEAL_ALL)
 
 	log_admin("[key_name(user)] healed / revived [key_name(M)]")
-	var/msg = span_danger("Administrador.[key_name_admin(user)]curados e revividos[ADMIN_LOOKUPFLW(M)]!")
+	var/msg = span_danger("Administrador.[key_name_admin(user)] curados e revividos [ADMIN_LOOKUPFLW(M)]!")
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	BLACKBOX_LOG_ADMIN_VERB("Rejuvenate")
@@ -637,7 +637,7 @@ ADMIN_VERB(place_ruin, R_DEBUG, "Spawn Ruin", "Attempt to randomly place a speci
 		to_chat(user, span_name("[template.name]"), confidential = TRUE)
 		to_chat(user, span_italics("[template.description]"), confidential = TRUE)
 	else
-		to_chat(user, span_warning("Falhou em colocar[template.name]."), confidential = TRUE)
+		to_chat(user, span_warning("Falhou em colocar [template.name]."), confidential = TRUE)
 
 ADMIN_VERB(unload_ctf, R_DEBUG, "Unload CTF", "Despawns the majority of CTF.", ADMIN_CATEGORY_DEBUG)
 	toggle_id_ctf(user, CTF_GHOST_CTF_GAME_ID, unload=TRUE)
@@ -829,57 +829,57 @@ ADMIN_VERB(check_missing_sprites, R_DEBUG, "Debug Worn Item Sprites", "We're can
 		//Is there an explicit worn_icon to pick against the worn_icon_state? Easy street expected behavior.
 		if(sprite.worn_icon)
 			if(!icon_exists(sprite.worn_icon, sprite.icon_state))
-				to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Bandeiras de Fenda são[sprite.slot_flags]."), confidential = TRUE)
+				to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Bandeiras de Fenda são [sprite.slot_flags]."), confidential = TRUE)
 		else if(sprite.worn_icon_state)
 			if(sprite.slot_flags & ITEM_SLOT_MASK)
 				actual_file_name = 'icons/mob/clothing/mask.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Mascarado."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Mascarado."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_NECK)
 				actual_file_name = 'icons/mob/clothing/neck.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Entalhe de pescoço."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Entalhe de pescoço."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BACK)
 				actual_file_name = 'icons/mob/clothing/back.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Para trás."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Para trás."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_HEAD)
 				actual_file_name = 'icons/mob/clothing/head/default.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Posição da cabeça."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Posição da cabeça."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BELT)
 				actual_file_name = 'icons/mob/clothing/belt.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]O cinto."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] O cinto."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_SUITSTORE)
 				actual_file_name = 'icons/mob/clothing/belt_mirror.dmi'
 				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Sala de armazenamento de trajes."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Sala de armazenamento de trajes."), confidential = TRUE)
 		else if(sprite.icon_state)
 			if(sprite.slot_flags & ITEM_SLOT_MASK)
 				actual_file_name = 'icons/mob/clothing/mask.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Mascarado."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Mascarado."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_NECK)
 				actual_file_name = 'icons/mob/clothing/neck.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Entalhe de pescoço."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Entalhe de pescoço."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BACK)
 				actual_file_name = 'icons/mob/clothing/back.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Para trás."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Para trás."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_HEAD)
 				actual_file_name = 'icons/mob/clothing/head/default.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Posição da cabeça."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Posição da cabeça."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BELT)
 				actual_file_name = 'icons/mob/clothing/belt.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]O cinto."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] O cinto."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_SUITSTORE)
 				actual_file_name = 'icons/mob/clothing/belt_mirror.dmi'
 				if(!icon_exists(actual_file_name, sprite.icon_state))
-					to_chat(user, span_warning("ERRO ESPRITES PARA[sprite.type]Sala de armazenamento de trajes."), confidential = TRUE)
+					to_chat(user, span_warning("ERRO ESPRITES PARA [sprite.type] Sala de armazenamento de trajes."), confidential = TRUE)
 
 #ifndef OPENDREAM_REAL
 ADMIN_VERB(start_tracy, R_DEBUG, "Run Tracy Now", "Start running the byond-tracy profiler immediately", ADMIN_CATEGORY_DEBUG)
@@ -1002,7 +1002,7 @@ ADMIN_VERB(count_instances, R_DEBUG, "Count Atoms/Datums", "Count how many atom 
 			result = count_datums()
 
 	if(result)
-		to_chat(user, span_adminnotice("Contado.[length(result)]Casos, enviando o arquivo JSON compilado agora."), type = MESSAGE_TYPE_DEBUG)
+		to_chat(user, span_adminnotice("Contado.[length(result)] Casos, enviando o arquivo JSON compilado agora."), type = MESSAGE_TYPE_DEBUG)
 		var/tmp_path = "tmp/instance_count_[user.ckey].json"
 		fdel(tmp_path)
 		rustg_file_write(json_encode(result, JSON_PRETTY_PRINT), tmp_path)

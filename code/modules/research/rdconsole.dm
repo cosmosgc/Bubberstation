@@ -80,11 +80,11 @@ Nothing else in the console has ID requirements.
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool]está preso em sua mão!"))
+			to_chat(user, span_warning("[tool] está preso em sua mão!"))
 			return ITEM_INTERACT_BLOCKING
 
 		t_disk = tool
-		to_chat(user, span_notice("Você insere[tool]em\the [src]!"))
+		to_chat(user, span_notice("Você insere [tool] em\the [src]!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if (!istype(tool, /obj/item/disk/design_disk))
@@ -96,11 +96,11 @@ Nothing else in the console has ID requirements.
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool]está preso em sua mão!"))
+		to_chat(user, span_warning("[tool] está preso em sua mão!"))
 		return ITEM_INTERACT_BLOCKING
 
 	d_disk = tool
-	to_chat(user, span_notice("Você insere[tool]em\the [src]!"))
+	to_chat(user, span_notice("Você insere [tool] em\the [src]!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/rdconsole/multitool_act(mob/living/user, obj/item/multitool/tool)

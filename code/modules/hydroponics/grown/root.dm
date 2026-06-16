@@ -38,10 +38,10 @@
 	var/carrot_sword_chance = (max(0, seed.potency - 50) / 50)
 	if (prob(carrot_sword_chance))
 		carrot_blade = new /obj/item/claymore/carrot
-		to_chat(user, span_notice("Você afia a cenoura em uma espada com[I]."))
+		to_chat(user, span_notice("Você afia a cenoura em uma espada com [I]."))
 	else
 		carrot_blade = new /obj/item/knife/shiv/carrot
-		to_chat(user, span_notice("Você afia a cenoura em uma faca com[I]."))
+		to_chat(user, span_notice("Você afia a cenoura em uma faca com [I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(carrot_blade)
@@ -79,10 +79,10 @@
 	var/parsnip_sabre_chance = (max(0, seed.potency - 50) / 50)
 	if (prob(parsnip_sabre_chance))
 		parsnip_blade = new /obj/item/melee/parsnip_sabre
-		to_chat(user, span_notice("Você afiou o parsnip em um sabre com[I]."))
+		to_chat(user, span_notice("Você afiou o parsnip em um sabre com [I]."))
 	else
 		parsnip_blade = new /obj/item/knife/shiv/parsnip
-		to_chat(user, span_notice("Você afiou o parsnip em uma faca com[I]."))
+		to_chat(user, span_notice("Você afiou o parsnip em uma faca com [I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(parsnip_blade)
@@ -127,10 +127,10 @@
 	var/root_dagger_chance = (max(0, seed.potency - 25) / 50)
 	if (prob(root_dagger_chance))
 		root_blade = new /obj/item/knife/combat/root
-		to_chat(user, span_notice("Você afia o cahn'root em uma adaga com[I]."))
+		to_chat(user, span_notice("Você afia o cahn'root em uma adaga com [I]."))
 	else
 		root_blade = new /obj/item/knife/shiv/root
-		to_chat(user, span_notice("Você afiou o cahn'root em uma faca com[I]."))
+		to_chat(user, span_notice("Você afiou o cahn'root em uma faca com [I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(root_blade)

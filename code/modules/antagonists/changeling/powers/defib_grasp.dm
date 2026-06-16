@@ -52,7 +52,7 @@
 
 	if(iscyborg(defibber))
 		if(defibber.flash_act(affect_silicon = TRUE))
-			to_chat(defibber, span_userdanger("[changeling]Acorde de arrependimento, sobrecarregando seus sensores!"))
+			to_chat(defibber, span_userdanger("[changeling] Acorde de arrependimento, sobrecarregando seus sensores!"))
 			// run default visible message regardless, no overt indication of the cyborg being overloaded to watchers
 
 	else
@@ -75,17 +75,17 @@
 				defibber.emote("scream")
 
 				changeling.visible_message(
-					span_bolddanger("[changeling]Acorde de arrependimento, arrebatando[defib]Fora[defibber]As mãos enquanto arrancam[removed_arms >= 2 ? "" : "one of "][defibber.p_their()]Armas!"),
+					span_bolddanger("[changeling] Acorde de arrependimento, arrebatando [defib] Fora [defibber] As mãos enquanto arrancam[removed_arms >= 2 ? "" : "one of "][defibber.p_their()] Armas!"),
 					vision_distance = COMBAT_MESSAGE_RANGE,
 					ignored_mobs = list(changeling, defibber),
 				)
-				to_chat(changeling, span_changeling("O poder de[defib]através de nós, revivendo-nos de nossa estase! Com essa nova energia, nós quebramos.[removed_arms >= 2 ? "" : "one of "][defibber]Tire os braços!"))
-				to_chat(defibber, span_userdanger("[changeling]Acorde de arrependimento, estalando[removed_arms >= 2 ? "" : "one of "]Tire os braços!"))
+				to_chat(changeling, span_changeling("O poder de [defib] através de nós, revivendo-nos de nossa estase! Com essa nova energia, nós quebramos.[removed_arms >= 2 ? "" : "one of "][defibber] Tire os braços!"))
+				to_chat(defibber, span_userdanger("[changeling] Acorde de arrependimento, estalando[removed_arms >= 2 ? "" : "one of "]Tire os braços!"))
 				return // no default message if we got an arm
 
 	changeling.visible_message(
-		span_bolddanger("[changeling]Acorde de arrependimento!"),
+		span_bolddanger("[changeling] Acorde de arrependimento!"),
 		vision_distance = COMBAT_MESSAGE_RANGE,
 		ignored_mobs = changeling,
 	)
-	to_chat(changeling, span_changeling("O poder de[defib]através de nós, revivendo-nos de nossa estase!"))
+	to_chat(changeling, span_changeling("O poder de [defib] através de nós, revivendo-nos de nossa estase!"))

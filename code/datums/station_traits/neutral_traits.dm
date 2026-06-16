@@ -259,7 +259,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/birthday_invite/proc/setup_card(birthday_name)
-	desc = "Um cartão dizendo que seu[birthday_name]Hoje é aniversário."
+	desc = "Um cartão dizendo que seu [birthday_name] Hoje é aniversário."
 	icon_state = "paperslip_words"
 	icon = 'icons/obj/service/bureaucracy.dmi'
 

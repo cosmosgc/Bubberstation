@@ -899,7 +899,7 @@
 		return
 
 	if(!remove_sacrifice_target(chosen_target))
-		to_chat(admin, span_warning("Não foi possível remover[name_of_removed]De[owner]A lista de sacrifícios. Talvez eles não estejam mais na lista."))
+		to_chat(admin, span_warning("Não foi possível remover [name_of_removed] De [owner] A lista de sacrifícios. Talvez eles não estejam mais na lista."))
 		return
 
 	if(tgui_alert(admin, "Avisar que os alvos foram atualizados?", "Whispers of the Mansus", list("Yes", "No")) == "Yes")

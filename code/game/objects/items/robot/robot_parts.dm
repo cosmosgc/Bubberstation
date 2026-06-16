@@ -139,7 +139,7 @@
 		return TRUE
 
 	if(!chest) //can't remove a cell if there's no chest to remove it from.
-		to_chat(user, span_warning("[src]Não tem torso preso!"))
+		to_chat(user, span_warning("[src] Não tem torso preso!"))
 		return
 
 	var/obj/item/stock_parts/power_store/cell/temp_cell = user.is_holding_item_of_type(/obj/item/stock_parts/power_store/cell)
@@ -148,17 +148,17 @@
 		swap_failed = TRUE
 	else if(!user.transferItemToLoc(temp_cell, chest))
 		swap_failed = TRUE
-		to_chat(user, span_warning("[temp_cell]está preso em sua mão, você não pode colocá-lo em[src]!"))
+		to_chat(user, span_warning("[temp_cell] está preso em sua mão, você não pode colocá-lo em [src]!"))
 
 	if(chest.cell) //drop the chest's current cell no matter what.
 		put_in_hand_or_drop(user, chest.cell)
 
 	if(swap_failed) //we didn't transfer any new items.
 		if(chest.cell) //old cell ejected, nothing inserted.
-			to_chat(user, span_notice("Você tira.[chest.cell]De[src]."))
+			to_chat(user, span_notice("Você tira.[chest.cell] De [src]."))
 			chest.cell = null
 		else
-			to_chat(user, span_warning("A abertura da célula de energia[src]O tronco está vazio!"))
+			to_chat(user, span_warning("A abertura da célula de energia [src] O tronco está vazio!"))
 		return
 
 	to_chat(user, span_notice("Você.[chest.cell ? "replace [src]'s [chest.cell.name] with [temp_cell]" : "insert [temp_cell] into [src]"]."))
@@ -266,7 +266,7 @@
 				to_chat(user, span_warning("O endoesqueleto ainda precisa de uma célula de energia!"))
 				return
 			if(!isturf(loc))
-				to_chat(user, span_warning("Você não pode colocar[M]dentro, o quadro tem que estar no chão para ser perfeitamente preciso!"))
+				to_chat(user, span_warning("Você não pode colocar [M] dentro, o quadro tem que estar no chão para ser perfeitamente preciso!"))
 				return
 			if(!M.brain_check(user))
 				return
@@ -274,7 +274,7 @@
 			var/mob/living/brain/brainmob = M.brainmob
 			if(is_banned_from(brainmob.ckey, JOB_CYBORG) || QDELETED(src) || QDELETED(brainmob) || QDELETED(user) || QDELETED(M) || !Adjacent(user))
 				if(!QDELETED(M))
-					to_chat(user, span_warning("Isto.[M.name]Parece não caber!"))
+					to_chat(user, span_warning("Isto.[M.name] Parece não caber!"))
 				return
 			if(!user.temporarilyRemoveItemFromInventory(W))
 				return
@@ -345,7 +345,7 @@
 				to_chat(user, span_warning("Você não pode instalar.[M], o quadro tem que estar no chão para ser perfeitamente preciso!"))
 				return
 			if(!user.temporarilyRemoveItemFromInventory(M))
-				to_chat(user, span_warning("[M]está preso em sua mão!"))
+				to_chat(user, span_warning("[M] está preso em sua mão!"))
 				return
 			qdel(M)
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot/shell(get_turf(src))
@@ -373,7 +373,7 @@
 				O.set_lockcharge(TRUE)
 
 	else if(IS_WRITING_UTENSIL(W))
-		to_chat(user, span_warning("Você precisa usar uma multitool para nomear[src]!"))
+		to_chat(user, span_warning("Você precisa usar uma multitool para nomear [src]!"))
 	else
 		return ..()
 
@@ -446,11 +446,11 @@
 				return TRUE
 			if(forced_ai == selected_ai) // same AI = clear
 				clear_forced_ai()
-				to_chat(user, span_notice("Você reset[src]É a configuração da IA."))
+				to_chat(user, span_notice("Você reset [src] É a configuração da IA."))
 				return TRUE
 
 			set_forced_ai(selected_ai, user)
-			to_chat(user, span_notice("Você está pronto.[src]AI está se preparando para[forced_ai_name]."))
+			to_chat(user, span_notice("Você está pronto.[src] AI está se preparando para [forced_ai_name]."))
 			log_silicon("[key_name(user)] set the default AI for a cyborg shell to [key_name(selected_ai)] at [loc_name(user)]")
 			return TRUE
 

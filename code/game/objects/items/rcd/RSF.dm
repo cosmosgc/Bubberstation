@@ -67,7 +67,7 @@ RSF
 
 /obj/item/rsf/examine(mob/user)
 	. = ..()
-	. += span_notice("Ele atualmente detém[matter]/[max_matter] [discriptor].")
+	. += span_notice("Ele atualmente detém [matter]/[max_matter] [discriptor].")
 
 /obj/item/rsf/cyborg
 	matter = 30
@@ -76,7 +76,7 @@ RSF
 	if(is_type_in_list(W,matter_by_item))//If the thing we got hit by is in our matter list
 		var/tempMatter = matter_by_item[W.type] + matter
 		if(tempMatter > max_matter)
-			to_chat(user, span_warning("\The [src]Não aguento mais.[discriptor]!"))
+			to_chat(user, span_warning("\The [src] Não aguento mais.[discriptor]!"))
 			return
 		if(isstack(W))
 			var/obj/item/stack/stack = W
@@ -85,7 +85,7 @@ RSF
 			qdel(W)
 		matter = tempMatter //We add its value
 		playsound(src.loc, 'sound/machines/click.ogg', 10, TRUE)
-		to_chat(user, span_notice("\The [src]Agora segura[matter]/[max_matter] [discriptor]."))
+		to_chat(user, span_notice("\The [src] Agora segura [matter]/[max_matter] [discriptor]."))
 		icon_state = base_icon_state//and set the icon state to the base state
 	else
 		return ..()
@@ -151,11 +151,11 @@ RSF
 		return TRUE
 	else
 		if(matter - 1 < 0)
-			to_chat(user, span_warning("\The [src]não tem o suficiente[discriptor]Esquerda."))
+			to_chat(user, span_warning("\The [src] não tem o suficiente [discriptor] Esquerda."))
 			icon_state = spent_icon_state
 			return FALSE
 		matter--
-		to_chat(user, span_notice("\The [src]Agora segura[matter]/[max_matter] [discriptor]."))
+		to_chat(user, span_notice("\The [src] Agora segura [matter]/[max_matter] [discriptor]."))
 		return TRUE
 
 ///Helper proc that iterates through all the things we are allowed to spawn on, and sees if the passed atom is one of them

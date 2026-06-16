@@ -50,9 +50,9 @@
 /datum/component/revenant_ability/proc/update_spell_name()
 	var/datum/action/cooldown/spell/spell = parent
 	if(locked)
-		spell.name = "[initial(spell.name)] ([unlock_amount]SE)"
+		spell.name = "[initial(spell.name)] ([unlock_amount] SE)"
 	else
-		spell.name = "[initial(spell.name)] ([cast_amount]E)"
+		spell.name = "[initial(spell.name)] ([cast_amount] E)"
 	spell.build_all_button_icons()
 
 /datum/component/revenant_ability/proc/set_unlock_amount(new_value)
@@ -78,7 +78,7 @@
 		if(ghost.essence_excess >= unlock_amount)
 			return NONE
 		if(feedback)
-			to_chat(ghost, span_revenwarning("Você não tem essência suficiente para abrir[initial(source.name)]!"))
+			to_chat(ghost, span_revenwarning("Você não tem essência suficiente para abrir [initial(source.name)]!"))
 		return SPELL_CANCEL_CAST
 
 	if(!ghost.cast_check(cast_amount, deduct_essence = FALSE, silent = !feedback))
@@ -99,7 +99,7 @@
 			locked = FALSE
 			update_spell_name()
 		else
-			to_chat(ghost, span_revenwarning("Você não tem essência suficiente para abrir[initial(source.name)]!"))
+			to_chat(ghost, span_revenwarning("Você não tem essência suficiente para abrir [initial(source.name)]!"))
 		return SPELL_CANCEL_CAST
 
 	if(!ghost.cast_check(cast_amount, deduct_essence = TRUE, silent = FALSE))

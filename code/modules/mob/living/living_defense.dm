@@ -135,9 +135,9 @@
 		if (SUPPRESSED_QUIET)
 			to_chat(src, span_userdanger("Você levou um tiro.\a [proj][organ_hit_text]!"))
 		if (SUPPRESSED_NONE)
-			visible_message(span_danger("[src]é atingido por\a [proj][organ_hit_text]!"), 					span_userdanger("Você foi atingido por\a [proj][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
+			visible_message(span_danger("[src] é atingido por\a [proj][organ_hit_text]!"), 					span_userdanger("Você foi atingido por\a [proj][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
 			if(is_blind())
-				to_chat(src, span_userdanger("Você sente algo batendo em você[organ_hit_text]!"))
+				to_chat(src, span_userdanger("Você sente algo batendo em você [organ_hit_text]!"))
 
 	if(proj.is_hostile_projectile())
 		apply_projectile_effects(proj, def_zone, blocked)
@@ -246,7 +246,7 @@
 		else
 			playsound(loc, 'sound/items/weapons/genhit.ogg', 50, TRUE, -1) //Item sounds are handled in the item itself
 			if(!isvendor(AM) && !iscarbon(AM)) //Vendors have special interactions, while carbon mobs already generate visible messages!
-				visible_message(span_danger("[src]é atingido por[AM]!"), 							span_userdanger("Você foi atingido por[AM]!"))
+				visible_message(span_danger("[src] é atingido por [AM]!"), 							span_userdanger("Você foi atingido por [AM]!"))
 		log_combat(AM, src, "hit ")
 		return ..()
 
@@ -270,8 +270,8 @@
 		log_hit_combat(throwingdatum?.get_thrower(), thrown_item)
 		return ..()
 
-	visible_message(span_danger("[src]é atingido por[thrown_item]!"),
-		span_userdanger("Você foi atingido por[thrown_item]!"))
+	visible_message(span_danger("[src] é atingido por [thrown_item]!"),
+		span_userdanger("Você foi atingido por [thrown_item]!"))
 	if(!thrown_item.throwforce)
 		log_hit_combat(throwingdatum?.get_thrower(), thrown_item)
 		return
@@ -309,7 +309,7 @@
 		return FALSE
 	INVOKE_ASYNC(item, TYPE_PROC_REF(/obj/item, attempt_pickup), src, TRUE)
 	if(get_active_held_item() == item) //if our attack_hand() picks up the item...
-		visible_message(span_warning("[src]Pega.[item]!"), 						span_userdanger("Você pega.[item]Não ar!"))
+		visible_message(span_warning("[src] Pega.[item]!"), 						span_userdanger("Você pega.[item] Não ar!"))
 		return TRUE
 
 ///Checks the requites for catching a throw item.
@@ -350,7 +350,7 @@
 		return
 
 	if(!(status_flags & CANPUSH) || HAS_TRAIT(src, TRAIT_PUSHIMMUNE))
-		to_chat(user, span_warning("[src]Não pode ser pego mais agressivamente!"))
+		to_chat(user, span_warning("[src] Não pode ser pego mais agressivamente!"))
 		return FALSE
 
 	if(user.grab_state >= GRAB_AGGRESSIVE && HAS_TRAIT(user, TRAIT_PACIFISM))
@@ -375,8 +375,8 @@
 	if(user.grab_state) //only the first upgrade is instantaneous
 		var/old_grab_state = user.grab_state
 		var/grab_upgrade_time = instant ? 0 : 30
-		visible_message(span_danger("[user]Começa a apertar.[user.p_their()]Segura-se.[src]!"), 						span_userdanger("[user]Começa a apertar.[user.p_their()]Segura-se!"), span_hear("Você ouve baralhar agressivo!"), null, user)
-		to_chat(user, span_danger("Você começa a apertar seu aperto[src]!"))
+		visible_message(span_danger("[user] Começa a apertar.[user.p_their()] Segura-se.[src]!"), 						span_userdanger("[user] Começa a apertar.[user.p_their()] Segura-se!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+		to_chat(user, span_danger("Você começa a apertar seu aperto [src]!"))
 		switch(user.grab_state)
 			if(GRAB_AGGRESSIVE)
 				log_combat(user, src, "attempted to neck grab", addition="neck grab")
@@ -391,24 +391,24 @@
 		if(GRAB_AGGRESSIVE)
 			var/add_log = ""
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				visible_message(span_danger("[user]Apertos firmes[src]!"),
-								span_danger("[user]Segura firmemente você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
-				to_chat(user, span_danger("Você segura firmemente[src]!"))
+				visible_message(span_danger("[user] Apertos firmes [src]!"),
+								span_danger("[user] Segura firmemente você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+				to_chat(user, span_danger("Você segura firmemente [src]!"))
 				add_log = " (pacifist)"
 			else
-				visible_message(span_danger("[user]Pega.[src]Agressivamente!"), 								span_userdanger("[user]Pega você agressivamente!"), span_hear("Você ouve baralhar agressivo!"), null, user)
-				to_chat(user, span_danger("Você agarra[src]Agressivamente!"))
+				visible_message(span_danger("[user] Pega.[src] Agressivamente!"), 								span_userdanger("[user] Pega você agressivamente!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+				to_chat(user, span_danger("Você agarra [src] Agressivamente!"))
 			stop_pulling()
 			log_combat(user, src, "grabbed", addition="aggressive grab[add_log]")
 		if(GRAB_NECK)
 			log_combat(user, src, "grabbed", addition="neck grab")
-			visible_message(span_danger("[user]Pega.[src]Pelo pescoço!"),							span_userdanger("[user]Te agarra pelo pescoço!"), span_hear("Você ouve baralhar agressivo!"), null, user)
-			to_chat(user, span_danger("Você agarra[src]Pelo pescoço!"))
+			visible_message(span_danger("[user] Pega.[src] Pelo pescoço!"),							span_userdanger("[user] Te agarra pelo pescoço!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			to_chat(user, span_danger("Você agarra [src] Pelo pescoço!"))
 			if(!buckled && !density)
 				Move(user.loc)
 		if(GRAB_KILL)
 			log_combat(user, src, "strangled", addition="kill grab")
-			visible_message(span_danger("[user]Está estrangulando[src]!"), 							span_userdanger("[user]Está estrangulando você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
+			visible_message(span_danger("[user] Está estrangulando [src]!"), 							span_userdanger("[user] Está estrangulando você!"), span_hear("Você ouve baralhar agressivo!"), null, user)
 			to_chat(user, span_danger("Você está estrangulando.[src]!"))
 			if(!buckled && !density)
 				Move(user.loc)
@@ -424,7 +424,7 @@
 		if(user != src)
 			visible_message(
 				span_notice("[user] [user.friendly_verb_continuous] [src]!"),
-				span_notice("[user] [user.friendly_verb_continuous]Você!"),
+				span_notice("[user] [user.friendly_verb_continuous] Você!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 				ignored_mobs = user,
 			)
@@ -445,7 +445,7 @@
 	user.do_attack_animation(src)
 	visible_message(
 		span_danger("[user] [user.attack_verb_continuous] [src]!"),
-		span_userdanger("[user] [user.attack_verb_continuous]Você!"),
+		span_userdanger("[user] [user.attack_verb_continuous] Você!"),
 		null,
 		COMBAT_MESSAGE_RANGE,
 		user,
@@ -504,12 +504,12 @@
 	if (HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) || prob(75))
 		log_combat(user, src, "attacked")
 		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
-		visible_message(span_danger("[user.name]Mordidas.[src]!"), 						span_userdanger("[user.name]Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, user)
+		visible_message(span_danger("[user.name] Mordidas.[src]!"), 						span_userdanger("[user.name] Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Você morde.[src]!"))
 		return TRUE
 	else
-		visible_message(span_danger("[user.name]Uma mordida erra.[src]!"), 						span_danger("Você evita[user.name]É a mordida!"), span_hear("Você ouve o som das mandíbulas se fechando!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("Sua morte erra[src]!"))
+		visible_message(span_danger("[user.name] Uma mordida erra.[src]!"), 						span_danger("Você evita [user.name] É a mordida!"), span_hear("Você ouve o som das mandíbulas se fechando!"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("Sua morte erra [src]!"))
 
 	return FALSE
 
@@ -525,17 +525,17 @@
 		L.do_attack_animation(src)
 		if(prob(90))
 			log_combat(L, src, "attacked")
-			visible_message(span_danger("[L.name]Mordidas.[src]!"), 							span_userdanger("[L.name]Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, L)
+			visible_message(span_danger("[L.name] Mordidas.[src]!"), 							span_userdanger("[L.name] Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, L)
 			to_chat(L, span_danger("Você morde.[src]!"))
 			playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
 			return TRUE
 		else
-			visible_message(span_danger("[L.name]Uma mordida erra.[src]!"), 							span_danger("Você evita[L.name]É a mordida!"), span_hear("Você ouve o som das mandíbulas se fechando!"), COMBAT_MESSAGE_RANGE, L)
-			to_chat(L, span_warning("Sua morte erra[src]!"))
+			visible_message(span_danger("[L.name] Uma mordida erra.[src]!"), 							span_danger("Você evita [L.name] É a mordida!"), span_hear("Você ouve o som das mandíbulas se fechando!"), COMBAT_MESSAGE_RANGE, L)
+			to_chat(L, span_warning("Sua morte erra [src]!"))
 			return FALSE
 
-	visible_message(span_notice("[L.name]esfrega sua cabeça contra[src]."), 					span_notice("[L.name]esfrega sua cabeça em você."), null, null, L)
-	to_chat(L, span_notice("Você esfrega sua cabeça contra[src]."))
+	visible_message(span_notice("[L.name] esfrega sua cabeça contra [src]."), 					span_notice("[L.name] esfrega sua cabeça em você."), null, null, L)
+	to_chat(L, span_notice("Você esfrega sua cabeça contra [src]."))
 	return FALSE
 
 /mob/living/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
@@ -555,8 +555,8 @@
 		user.do_attack_animation(src)
 		return TRUE
 
-	visible_message(span_notice("[user]Carícias[src]com seu braço de foice."), 					span_notice("[user]Acaricia você com seu braço de foice."), null, null, user)
-	to_chat(user, span_notice("Você acaricia.[src]com seu braço de foice."))
+	visible_message(span_notice("[user] Carícias [src] com seu braço de foice."), 					span_notice("[user] Acaricia você com seu braço de foice."), null, null, user)
+	to_chat(user, span_notice("Você acaricia.[src] com seu braço de foice."))
 	return FALSE
 
 /mob/living/attack_hulk(mob/living/carbon/human/user)
@@ -595,7 +595,7 @@
 		adjust_stamina_loss(shock_damage)
 	if(!(flags & SHOCK_SUPPRESS_MESSAGE))
 		visible_message(
-			span_danger("[src]Ficou chocado com\the [source]!"), 			span_userdanger("Você sente um choque poderoso atravessando seu corpo!"), 			span_hear("Você ouve uma forte rachadura elétrica.") 		)
+			span_danger("[src] Ficou chocado com\the [source]!"), 			span_userdanger("Você sente um choque poderoso atravessando seu corpo!"), 			span_hear("Você ouve uma forte rachadura elétrica.") 		)
 	return shock_damage
 
 /mob/living/emp_act(severity)
@@ -806,8 +806,8 @@
 			return
 		if((shove_flags & SHOVE_BLOCKED) && !(shove_flags & (SHOVE_KNOCKDOWN_BLOCKED|SHOVE_CAN_KICK_SIDE)))
 			var/knocked_down = target.Knockdown(SHOVE_KNOCKDOWN_SOLID, daze_amount = 3 SECONDS)
-			target.visible_message(span_danger("[name]Empurra.[target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"),
-				span_userdanger("Você.[knocked_down ? "'re knocked down" : " resist falling down"]De um empurrão por[name]!"), span_hear("Você ouve embaralhamento agressivo[knocked_down ? "followed by a loud thud!" : ""]"), COMBAT_MESSAGE_RANGE, src)
+			target.visible_message(span_danger("[name] Empurra.[target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"),
+				span_userdanger("Você.[knocked_down ? "'re knocked down" : " resist falling down"]De um empurrão por [name]!"), span_hear("Você ouve embaralhamento agressivo[knocked_down ? "followed by a loud thud!" : ""]"), COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, span_danger("Você empurra.[target.name][knocked_down ? ", knocking [target.p_them()] down" : ""]!"))
 			log_combat(src, target, "shoved", "[knocked_down ? "knocking them down[weapon ? " with [weapon]" : ""]" : ""]")
 			return
@@ -815,9 +815,9 @@
 	if(shove_flags & SHOVE_CAN_KICK_SIDE) //KICK HIM IN THE NUTS
 		if(target.Paralyze(SHOVE_CHAIN_PARALYZE))
 			target.apply_status_effect(/datum/status_effect/no_side_kick)
-			target.visible_message(span_danger("[name]Chutes.[target.name]em frente[target.p_their()]Lado!"),
-							span_userdanger("Você é chutado para o seu lado por[name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("Você chuta.[target.name]em frente[target.p_their()]Lado!"))
+			target.visible_message(span_danger("[name] Chutes.[target.name] em frente [target.p_their()] Lado!"),
+							span_userdanger("Você é chutado para o seu lado por [name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, src)
+			to_chat(src, span_danger("Você chuta.[target.name] em frente [target.p_their()] Lado!"))
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, SetKnockdown), 0), SHOVE_CHAIN_PARALYZE)
 			log_combat(src, target, "kicks", "onto their side (paralyzing)")
 			return
@@ -830,8 +830,8 @@
 	// If it's in our typecache, they're staggered and it exists, disarm. If they're knocked down, disarm too.
 	if(target_held_item && target.get_timed_status_effect_duration(/datum/status_effect/staggered) && is_type_in_typecache(target_held_item, GLOB.shove_disarming_types) || target_held_item && target.body_position == LYING_DOWN)
 		target.dropItemToGround(target_held_item)
-		append_message = "Causando[target.p_them()]Para cair[target_held_item]"
-		target.visible_message(span_danger("[target.name]Gotas\the [target_held_item]!"),
+		append_message = "Causando [target.p_them()] Para cair [target_held_item]"
+		target.visible_message(span_danger("[target.name] Gotas\the [target_held_item]!"),
 			span_warning("Você caiu.\the [target_held_item]!"), null, COMBAT_MESSAGE_RANGE)
 
 	if(shove_flags & SHOVE_CAN_STAGGER)
@@ -856,8 +856,8 @@
 
 ///Send the chat feedback message for shoving
 /mob/living/proc/get_shoving_message(mob/living/shover, obj/item/weapon, shove_flags)
-	visible_message(span_danger("[shover]Empurra.[name][weapon ? " with [weapon]" : ""]!"),
-		span_userdanger("Você está empurrado por[shover][weapon ? " with [weapon]" : ""]!"), span_hear("Você ouve baralhar agressivo!"), COMBAT_MESSAGE_RANGE, shover)
+	visible_message(span_danger("[shover] Empurra.[name][weapon ? " with [weapon]" : ""]!"),
+		span_userdanger("Você está empurrado por [shover][weapon ? " with [weapon]" : ""]!"), span_hear("Você ouve baralhar agressivo!"), COMBAT_MESSAGE_RANGE, shover)
 	to_chat(shover, span_danger("Você empurra.[name][weapon ? " with [weapon]" : ""]!"))
 
 /mob/living/proc/check_block(atom/hit_by, damage, attack_text = "the attack", attack_type = MELEE_ATTACK, armour_penetration = 0, damage_type = BRUTE)

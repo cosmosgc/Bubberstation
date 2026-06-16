@@ -43,14 +43,14 @@
 	return list(span_deadsay("São ossos."))
 
 /obj/item/fish/mastodon/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]Tudo bem! Parece o usuário tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src] Tudo bem! Parece o usuário tentando cometer suicídio!"))
 	forceMove(user)
 	user.update_transform(1.25) // become BIG from eating BIG fish
 	addtimer(CALLBACK(src, PROC_REF(skeleton_appears), user), 2 SECONDS)
 	return MANUAL_SUICIDE_NONLETHAL // chance not to die
 
 /obj/item/fish/mastodon/proc/skeleton_appears(mob/living/user)
-	user.visible_message(span_warning("[user]Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
+	user.visible_message(span_warning("[user] Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
 	user.spawn_gibs()
 	user.drop_everything(del_on_drop = FALSE, force = FALSE, del_if_nodrop = FALSE)
 	user.set_species(/datum/species/skeleton)
@@ -96,7 +96,7 @@
 	return list("cooked meat" = 2)
 
 /obj/item/fish/soul/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer um suicídio!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que...[user.p_theyre()] Tentando cometer um suicídio!"))
 	src.forceMove(user)
 	addtimer(CALLBACK(src, PROC_REF(good_ending), user), 2.5 SECONDS)
 	for(var/i in 1 to 7)
@@ -106,7 +106,7 @@
 /obj/item/fish/soul/proc/good_ending(mob/living/user)
 	var/mob/living/basic/spaceman/soulman = new(get_turf(user))
 	soulman.fully_replace_character_name(user.real_name)
-	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/atom, visible_message), span_notice("[soulman]Era puro demais para este mundo...")), 5 SECONDS, TIMER_DELETE_ME)
+	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/atom, visible_message), span_notice("[soulman] Era puro demais para este mundo...")), 5 SECONDS, TIMER_DELETE_ME)
 	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/mob/living, death)), 5 SECONDS, TIMER_DELETE_ME)
 	if(prob(80)) // the percentage is important.
 		soulman.PossessByPlayer(user.ckey)
@@ -157,13 +157,13 @@
 	return list("cooked crab" = 2)
 
 /obj/item/fish/skin_crab/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user]coloca[user.p_their()]Mão sobre[src]E se concentrar atentamente! Parece que...[user.p_theyre()]Tentando transferir[user.p_their()]Pele para[src]!"))
+	user.visible_message(span_suicide("[user] coloca [user.p_their()] Mão sobre [src] E se concentrar atentamente! Parece que...[user.p_theyre()] Tentando transferir [user.p_their()] Pele para [src]!"))
 	if(!ishuman(user) || HAS_TRAIT(user, TRAIT_UNHUSKABLE))
-		user.visible_message(span_suicide("[user]Não tem pele! Que vergonha!"))
+		user.visible_message(span_suicide("[user] Não tem pele! Que vergonha!"))
 		return SHAME
 
 	if(status == FISH_DEAD)
-		user.visible_message(span_suicide("[src]Está morto![user]Parece um idiota!"))
+		user.visible_message(span_suicide("[src] Está morto![user] Parece um idiota!"))
 		return SHAME
 
 	var/skin_tone
@@ -178,7 +178,7 @@
 
 	// skin crab grows powerful
 	color = skin_tone //skintone2hex(skin_tone) //wait til smartkar's recolorwork
-	visible_message(span_danger("[user]Começa a brilhar assustadoramente..."))
+	visible_message(span_danger("[user] Começa a brilhar assustadoramente..."))
 	AddElement(/datum/element/haunted, haunt_color = skin_tone)
 
 	return BRUTELOSS

@@ -31,7 +31,7 @@
 	ling_sent = TRUE
 	if(target_role.kill(game, host_role, FALSE))
 		target_role.send_message_to_player(span_userdanger("Você foi morto por um metamorfo!"))
-	game.send_message(span_danger("[host_role.body.real_name]foi selecionado para atacar.[target_role.body.real_name]Esta noite!"), MAFIA_TEAM_MAFIA)
+	game.send_message(span_danger("[host_role.body.real_name] foi selecionado para atacar.[target_role.body.real_name] Esta noite!"), MAFIA_TEAM_MAFIA)
 	return TRUE
 
 /datum/mafia_ability/changeling_kill/set_target(datum/mafia_role/new_target)
@@ -52,7 +52,7 @@
 	if (host_role.mafia_game_controller.phase != MAFIA_PHASE_NIGHT)
 		return FALSE
 
-	var/message = span_changeling("<b>\[CHANGELING CHAT\] [source]</b>: [html_decode(speech_args[SPEECH_MESSAGE])]")
+	var/message = span_changeling("<b>\[CHANGELING CHAT\] [source]</b>: [html_decode(speech_args [SPEECH_MESSAGE])]")
 	host_role.mafia_game_controller.send_message(message, MAFIA_TEAM_MAFIA)
 	speech_args[SPEECH_MESSAGE] = ""
 	return TRUE

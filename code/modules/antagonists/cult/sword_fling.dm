@@ -65,7 +65,7 @@
 
 		if(prob(resist_chance))
 			flinged_sword.forceMove(get_turf(loccer))
-			flinged_sword.visible_message(span_alert("\the [flinged_sword]Se puxa para fora.[loccer]'s aperto!"))
+			flinged_sword.visible_message(span_alert("\the [flinged_sword] Se puxa para fora.[loccer]'s aperto!"))
 			// flung by later code
 		else
 			to_chat(owner, span_warning(fail_text))
@@ -73,21 +73,21 @@
 
 	if(isitem(sword_loc))
 		flinged_sword.forceMove(get_turf(sword_loc))
-		flinged_sword.visible_message(span_alert("\the [flinged_sword]Se puxa para fora.[sword_loc]!"))
+		flinged_sword.visible_message(span_alert("\the [flinged_sword] Se puxa para fora.[sword_loc]!"))
 		// flung by later code
 
 	if(iscloset(sword_loc))
 		var/obj/structure/closet/sword_closet = sword_loc
 		if(!(sword_closet.open(owner, force = prob(5), special_effects = TRUE)))
 			sword_closet.container_resist_act(owner, loc_required = FALSE)
-		flinged_sword.visible_message(span_alert("\the [flinged_sword]Se puxa para fora.[sword_closet]!"))
+		flinged_sword.visible_message(span_alert("\the [flinged_sword] Se puxa para fora.[sword_closet]!"))
 
 	// no general struct/machinery check. imagine if someone put the sword in a vendor
 
 	if(isturf(sword_loc))
 		new /obj/effect/temp_visual/sword_sparks(sword_loc)
 		flinged_sword.throw_at(cast_on, cast_range, flinged_sword.throw_speed, owner)
-		flinged_sword.visible_message(			span_warning("\the [flinged_sword]Pulmões em\the [cast_on]!"))
+		flinged_sword.visible_message(			span_warning("\the [flinged_sword] Pulmões em\the [cast_on]!"))
 		playsound(flinged_sword, 'sound/items/haunted/ghostitemattack.ogg', 100, TRUE)
 		flinged_sword.add_filter("cool_glow", 2, list("type" = "outline", "color" = COLOR_HERETIC_GREEN, "size" = 0.7))
 		addtimer(CALLBACK(flinged_sword, TYPE_PROC_REF(/datum, remove_filter), "cool_glow"), 0.7 SECONDS)

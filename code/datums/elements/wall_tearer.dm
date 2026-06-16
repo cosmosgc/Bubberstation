@@ -50,7 +50,7 @@
 	// We need to do this three times to actually destroy it
 	var/rip_time = (istype(target, /turf/closed/wall/r_wall) ? tear_time * reinforced_multiplier : tear_time) / 3
 	if (rip_time > 0)
-		tearer.visible_message(span_warning("[tearer]Começa a rasgar[target]!"))
+		tearer.visible_message(span_warning("[tearer] Começa a rasgar [target]!"))
 		playsound(tearer, 'sound/machines/airlock/airlock_alien_prying.ogg', vol = 100, vary = TRUE)
 		target.balloon_alert(tearer, "tearing...")
 		if (!do_after(tearer, delay = rip_time, target = target, interaction_key = do_after_key))

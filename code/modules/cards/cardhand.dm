@@ -13,13 +13,13 @@
 	update_appearance()
 
 /obj/item/toy/cards/cardhand/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Está cortando[user.p_their()]Pulsos com\the [src]Parece que...[user.p_they()] [user.p_have()]Uma mão miserável!"))
+	user.visible_message(span_suicide("[user] Está cortando [user.p_their()] Pulsos com\the [src] Parece que...[user.p_they()] [user.p_have()] Uma mão miserável!"))
 	playsound(src, 'sound/items/cards/cardshuffle.ogg', 50, TRUE)
 	return BRUTELOSS
 
 /obj/item/toy/cards/cardhand/examine(mob/user)
 	. = ..()
-	. += span_notice("Há[count_cards()]Cartas.")
+	. += span_notice("Há [count_cards()] Cartas.")
 	var/broadcast_check = FALSE
 	for(var/obj/item/toy/singlecard/card in fetch_card_atoms())
 		if(user.is_holding(src) || card.flipped)
@@ -30,9 +30,9 @@
 			. += span_notice("Você escaneia o cartão com sua visão de raio-x e há um:[card.cardname]")
 		var/marked_color = card.getMarkedColor(user)
 		if(marked_color)
-			. += span_notice("Há um[marked_color]Marca no canto de um cartão no cartão!")
+			. += span_notice("Há um [marked_color] Marca no canto de um cartão no cartão!")
 	if(broadcast_check)
-		user.visible_message(span_notice("[user]Cheques.[user.p_their()]Cartas."))
+		user.visible_message(span_notice("[user] Cheques.[user.p_their()] Cartas."))
 
 
 /obj/item/toy/cards/cardhand/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
@@ -91,7 +91,7 @@
 				user.balloon_alert_to_viewers("puts card in deck")
 				return ITEM_INTERACT_SUCCESS
 
-			to_chat(user, span_warning("\The [dealer_deck]Está muito alto!"))
+			to_chat(user, span_warning("\The [dealer_deck] Está muito alto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		card = dealer_deck.get_top_card(user)

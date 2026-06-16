@@ -38,12 +38,12 @@
 	RegisterSignal(hacking_cable, COMSIG_QDELETING, PROC_REF(on_hacking_cable_del))
 	var/mob/living/carbon/hacker = get_holder()
 	if(hacker?.put_in_hands(hacking_cable)) //important to double check since get_holder can return non-null values that aren't carbons.
-		hacker.visible_message(span_notice("Um porto ligado.[src]abre para revelar um cabo, que[hacker]Pega rápido."), span_notice("Um porto ligado.[src]abre para revelar um cabo, que você rapidamente agarra."), span_hear("Você ouve o clique suave de um componente plástico e consegue pegar o cabo caindo."))
+		hacker.visible_message(span_notice("Um porto ligado.[src] abre para revelar um cabo, que [hacker] Pega rápido."), span_notice("Um porto ligado.[src] abre para revelar um cabo, que você rapidamente agarra."), span_hear("Você ouve o clique suave de um componente plástico e consegue pegar o cabo caindo."))
 		track_pai()
 		track_thing(hacking_cable)
 		return TRUE
 	hacking_cable.forceMove(drop_location())
-	hacking_cable.visible_message(message = span_notice("Um porto ligado.[src]abre para revelar um cabo, que rapidamente cai no chão."), blind_message = span_hear("Você ouve o clique suave de um componente plástico cair no chão."))
+	hacking_cable.visible_message(message = span_notice("Um porto ligado.[src] abre para revelar um cabo, que rapidamente cai no chão."), blind_message = span_hear("Você ouve o clique suave de um componente plástico cair no chão."))
 	track_pai()
 	track_thing(hacking_cable)
 	return TRUE

@@ -85,7 +85,7 @@
 		addtimer(VARSET_CALLBACK(src, canmove, TRUE), 2 SECONDS)
 		return FALSE
 	if(power_cell.charge < energy_usage / max(power_efficiency, 1))
-		to_chat(user, span_warning("A exibição em[src]Pisca 'Fora de Poder'."))
+		to_chat(user, span_warning("A exibição em [src] Pisca 'Fora de Poder'."))
 		canmove = FALSE
 		addtimer(VARSET_CALLBACK(src, canmove, TRUE), 2 SECONDS)
 		return FALSE
@@ -94,7 +94,7 @@
 /obj/vehicle/ridden/wheelchair/motorized/attack_hand(mob/living/user, list/modifiers)
 	if(!power_cell || !panel_open)
 		return ..()
-	to_chat(user, span_notice("Você tira.[power_cell]De[src]."))
+	to_chat(user, span_notice("Você tira.[power_cell] De [src]."))
 	user.put_in_hands(power_cell)
 	power_cell = null
 
@@ -113,7 +113,7 @@
 
 		tool.forceMove(src)
 		power_cell = tool
-		to_chat(user, span_notice("Você instala o[tool]."))
+		to_chat(user, span_notice("Você instala o [tool]."))
 		refresh_parts()
 		return ITEM_INTERACT_SUCCESS
 
@@ -143,7 +143,7 @@
 		user.put_in_hands(part)
 		component_parts -= oldstockpart
 		// user message
-		user.visible_message(span_notice("[user]Substituição[oldstockpart.name()]Com[newstockpart.name()]Em[src]."), span_notice("Você substitui[oldstockpart.name()]Com[newstockpart.name()]."))
+		user.visible_message(span_notice("[user] Substituição [oldstockpart.name()] Com [newstockpart.name()] Em [src]."), span_notice("Você substitui [oldstockpart.name()] Com [newstockpart.name()]."))
 		replacement_occured = TRUE
 		break
 
@@ -194,7 +194,7 @@
 /// Detonate an armed explosive on this wheelchair
 /obj/vehicle/ridden/wheelchair/motorized/detonate_bomb()
 	if (obj_flags & EMAGGED)
-		visible_message(span_boldwarning("[src]Explodir!"))
+		visible_message(span_boldwarning("[src] Explodir!"))
 		explosion(src, devastation_range = -1, heavy_impact_range = 1, light_impact_range = 3, flash_range = 2, adminlog = FALSE)
 	return ..()
 
@@ -218,9 +218,9 @@
 			ramtarget.throw_at(throw_target, 2, 3)
 			ramtarget.Knockdown(8 SECONDS)
 			ramtarget.adjust_stamina_loss(35)
-			visible_message(span_danger("[src]Bate em[ramtarget], enviando[disabled]E[ramtarget]Voando!"))
+			visible_message(span_danger("[src] Bate em [ramtarget], enviando [disabled] E [ramtarget] Voando!"))
 		else
-			visible_message(span_danger("[src]Bate em[bumped_atom], enviando[disabled]Voando!"))
+			visible_message(span_danger("[src] Bate em [bumped_atom], enviando [disabled] Voando!"))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 
 /obj/vehicle/ridden/wheelchair/motorized/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -234,7 +234,7 @@
 	if (!bomb_attached)
 		RegisterSignal(src, COMSIG_WHEELCHAIR_BELL_RANG, PROC_REF(on_bell_rang))
 	balloon_alert(user, "Bomba implantada?")
-	visible_message(span_warning("Uma bomba apareceu em[src]Mas que porra?"))
+	visible_message(span_warning("Uma bomba apareceu em [src] Mas que porra?"))
 	obj_flags |= EMAGGED
 	return TRUE
 

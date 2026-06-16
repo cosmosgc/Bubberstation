@@ -81,7 +81,7 @@
 	if(!istype(M))
 		return FALSE
 	if(!silent)
-		M.visible_message(span_notice("[M]Subindo em\the [src]!"))
+		M.visible_message(span_notice("[M] Subindo em\the [src]!"))
 	M.forceMove(src)
 	add_occupant(M)
 	return TRUE
@@ -102,7 +102,7 @@
 		M.throw_at(target_turf, 5, 10)
 
 	if(!silent)
-		M.visible_message(span_notice("[M]Cai fora.\the [src]!"))
+		M.visible_message(span_notice("[M] Cai fora.\the [src]!"))
 	return TRUE
 
 /obj/vehicle/sealed/proc/exit_location(M)
@@ -113,10 +113,10 @@
 		return NONE
 
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool]Parece estar preso à sua mão!"))
+		to_chat(user, span_warning("[tool] Parece estar preso à sua mão!"))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Você insere[tool]Em[src]."))
+	to_chat(user, span_notice("Você insere [tool] Em [src]."))
 	if(inserted_key) // Just in case there's an invalid key
 		inserted_key.forceMove(drop_location())
 	inserted_key = tool
@@ -125,12 +125,12 @@
 
 /obj/vehicle/sealed/proc/remove_key(mob/user)
 	if(!inserted_key)
-		to_chat(user, span_warning("Não há nenhuma chave em[src]!"))
+		to_chat(user, span_warning("Não há nenhuma chave em [src]!"))
 		return
 	if(!is_occupant(user) || !(occupants[user] & VEHICLE_CONTROL_DRIVE))
-		to_chat(user, span_warning("Você deve estar dirigindo.[src]Para remover[src]Uma chave!"))
+		to_chat(user, span_warning("Você deve estar dirigindo.[src] Para remover [src] Uma chave!"))
 		return
-	to_chat(user, span_notice("Você tira.[inserted_key]De[src]."))
+	to_chat(user, span_notice("Você tira.[inserted_key] De [src]."))
 	if(!HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		user.put_in_hands(inserted_key)
 	else

@@ -120,7 +120,7 @@
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "comment",
 		SPECIES_PERK_NAME = "Primitive Tongue",
-		SPECIES_PERK_DESC = "Talvez você possa entender.[initial(common_language.name)]Mas você não pode falar. Você só pode falar[initial(monkey_language.name)].",
+		SPECIES_PERK_DESC = "Talvez você possa entender.[initial(common_language.name)] Mas você não pode falar. Você só pode falar [initial(monkey_language.name)].",
 	))
 
 	return to_add

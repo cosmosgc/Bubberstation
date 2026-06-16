@@ -24,7 +24,7 @@
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)
-			to_chat(src, span_notice("'[act]O emote não existe. Diga \"ajuda para uma lista\"."))
+			to_chat(src, span_notice("'[act] O emote não existe. Diga \"ajuda para uma lista\"."))
 		return FALSE
 	var/silenced = FALSE
 	for(var/datum/emote/emote in key_emotes)
@@ -41,7 +41,7 @@
 		SEND_SIGNAL(src, COMSIG_MOB_EMOTED(emote.key))
 		return TRUE
 	if(intentional && !silenced && !force_silence)
-		to_chat(src, span_notice("Emoção inutilizável[act]Diga.\"ajuda para uma lista\"."))
+		to_chat(src, span_notice("Emoção inutilizável [act] Diga.\"ajuda para uma lista\"."))
 	return FALSE
 
 /datum/emote/help
@@ -110,14 +110,14 @@
 		if(prob(fall_over_prob))
 			flippy_mcgee.Knockdown(1 SECONDS)
 			flippy_mcgee.visible_message(
-				span_notice("[flippy_mcgee]Tenta fazer um giro e cair, que idiota!"),
+				span_notice("[flippy_mcgee] Tenta fazer um giro e cair, que idiota!"),
 				span_notice("Você tenta fazer um giro enquanto ainda está fora de equilíbrio do último salto e cair!")
 			)
 			if(prob(fall_over_prob/2))
 				flippy_mcgee.adjust_brute_loss(1)
 		else
 			flippy_mcgee.visible_message(
-				span_notice("[flippy_mcgee]tropeça um pouco depois da virada."),
+				span_notice("[flippy_mcgee] tropeça um pouco depois da virada."),
 				span_notice("Você tropeça um pouco por ainda estar fora de equilíbrio do seu último lançamento.")
 			)
 */
@@ -136,7 +136,7 @@
 	if(prob(20))
 		flippy_mcgee.Knockdown(1.5 SECONDS)
 		flippy_mcgee.visible_message(
-			span_notice("[flippy_mcgee]Tenta fazer um giro e cair, que idiota!"),
+			span_notice("[flippy_mcgee] Tenta fazer um giro e cair, que idiota!"),
 			span_notice("Você tenta fazer um giro enquanto ainda está fora de equilíbrio do último salto e cair!")
 		)
 	flippy_mcgee.set_dizzy_if_lower(BEYBLADE_DIZZINESS_DURATION)

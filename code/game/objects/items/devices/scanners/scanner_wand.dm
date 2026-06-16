@@ -16,7 +16,7 @@
 	flick("[icon_state]_active", src) //nice little visual flash when scanning someone else.
 
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(25))
-		user.visible_message(span_warning("[user]Alvos para ele mesmo escanear."), 		to_chat(user, span_info("Tente digitalizar.[M], antes de perceber que você está segurando o scanner para trás. Opa.")))
+		user.visible_message(span_warning("[user] Alvos para ele mesmo escanear."), 		to_chat(user, span_info("Tente digitalizar.[M], antes de perceber que você está segurando o scanner para trás. Opa.")))
 		selected_target = user
 		return
 
@@ -25,7 +25,7 @@
 		selected_target = null
 		return
 
-	user.visible_message(span_notice("[user]Alvos[M]para escanear."), 						span_notice("Seu alvo.[M]Sinais vitais."))
+	user.visible_message(span_notice("[user] Alvos [M] para escanear."), 						span_notice("Seu alvo.[M] Sinais vitais."))
 	selected_target = M
 	return
 

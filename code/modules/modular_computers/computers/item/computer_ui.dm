@@ -161,7 +161,7 @@
 				return
 
 			killed_program.kill_program(usr)
-			to_chat(usr, span_notice("Programa[killed_program.filename].[killed_program.filetype]Com PID[rand(100,999)]Foi morto."))
+			to_chat(usr, span_notice("Programa [killed_program.filename].[killed_program.filetype] Com PID [rand(100,999)] Foi morto."))
 			return TRUE
 
 		if("PC_runprogram")

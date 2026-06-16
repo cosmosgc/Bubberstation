@@ -40,8 +40,8 @@
 		var/obj/item/item_hitting = hitby
 		var/tap_vol = istype(item_hitting) ? item_hitting.get_clamped_volume() : 50
 		source.visible_message(
-			span_warning("[source]Parece ileso!"),
-			span_warning("[attack_text]Não causa danos em você!"),
+			span_warning("[source] Parece ileso!"),
+			span_warning("[attack_text] Não causa danos em você!"),
 			span_hear("Você ouve um barulho."),
 			COMBAT_MESSAGE_RANGE,
 		)

@@ -748,5 +748,5 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			return
 		eyes.Remove(src)
 		qdel(eyes)
-		visible_message(span_notice("[src]Olha para cima e seus olhos derretem!"), span_userdanger("Eu entendo agora."))
+		visible_message(span_notice("[src] Olha para cima e seus olhos derretem!"), span_userdanger("Eu entendo agora."))
 		addtimer(CALLBACK(src, PROC_REF(adjust_organ_loss), ORGAN_SLOT_BRAIN, 200), 2 SECONDS)

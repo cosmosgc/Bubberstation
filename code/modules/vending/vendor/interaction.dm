@@ -5,7 +5,7 @@
 			return
 
 	if(tilted && !user.buckled)
-		to_chat(user, span_notice("Você começa a corrigir[src]."))
+		to_chat(user, span_notice("Você começa a corrigir [src]."))
 		if(do_after(user, 5 SECONDS, target = src))
 			untilt(user)
 		return
@@ -60,7 +60,7 @@
 	if(!length(loaded_item.contents) && (products[loaded_item.type] || premium[loaded_item.type] || contraband[loaded_item.type]))
 		return TRUE
 	if(send_message)
-		to_chat(user, span_warning("[src]Não aceita.[loaded_item]!"))
+		to_chat(user, span_warning("[src] Não aceita.[loaded_item]!"))
 	return FALSE
 
 
@@ -83,16 +83,16 @@
 			continue
 
 		if(product_datum.amount == product_datum.max_amount)
-			to_chat(user, span_warning("[src]Não posso aceitar mais.[inserted_item.name][inserted_item.p_s()]!"))
+			to_chat(user, span_warning("[src] Não posso aceitar mais.[inserted_item.name][inserted_item.p_s()]!"))
 			return FALSE
 
 		if(!user.transferItemToLoc(inserted_item, src))
-			to_chat(user, span_warning("[inserted_item]Está preso em sua mão!"))
+			to_chat(user, span_warning("[inserted_item] Está preso em sua mão!"))
 			return FALSE
 
 		product_datum.amount++
 		LAZYADD(product_datum.returned_products, inserted_item)
-		to_chat(user, span_notice("Você insere[inserted_item]Em[src]O ambiente de entrada."))
+		to_chat(user, span_notice("Você insere [inserted_item] Em [src] O ambiente de entrada."))
 		break
 
 /obj/machinery/vending/item_interaction(mob/living/user, obj/item/attack_item, list/modifiers)
@@ -109,11 +109,11 @@
 		if (!panel_open)
 			to_chat(user, span_warning("Você deveria desaparafusar o painel de serviço primeiro!"))
 		else if (!is_operational)
-			to_chat(user, span_warning("[src]Não responde."))
+			to_chat(user, span_warning("[src] Não responde."))
 		else
 			var/obj/item/vending_refill/canister = attack_item
 			if(canister.get_part_rating() == 0)
-				to_chat(user, span_warning("[canister]Está vazio!"))
+				to_chat(user, span_warning("[canister] Está vazio!"))
 			else
 				post_restock(user, restock(canister))
 				return ITEM_INTERACT_SUCCESS
@@ -121,7 +121,7 @@
 	if(compartmentLoadAccessCheck(user) && !user.combat_mode)
 		. = ITEM_INTERACT_FAILURE
 		if (!is_operational)
-			to_chat(user, span_warning("[src]Não responde."))
+			to_chat(user, span_warning("[src] Não responde."))
 		else if(istype(attack_item, /obj/item/storage/bag)) //trays USUALLY
 			var/obj/item/storage/storage_item = attack_item
 			var/loaded = 0
@@ -132,9 +132,9 @@
 				else
 					denied_items++
 			if(denied_items)
-				to_chat(user, span_warning("[src]Recusa alguns ienes!"))
+				to_chat(user, span_warning("[src] Recusa alguns ienes!"))
 			if(loaded)
-				to_chat(user, span_notice("Você insere[loaded]Pratos em[src]O compartimento."))
+				to_chat(user, span_notice("Você insere [loaded] Pratos em [src] O compartimento."))
 				return ITEM_INTERACT_SUCCESS
 		else
 			return loadingAttempt(attack_item, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_FAILURE
@@ -194,7 +194,7 @@
 /obj/machinery/vending/proc/freebie(freebies)
 	PRIVATE_PROC(TRUE)
 
-	visible_message(span_notice("[src]Rendimentos[freebies > 1 ? "several free goodies" : "a free goody"][credits_contained > 0 ? " and some [MONEY_NAME]" : ""]!"))
+	visible_message(span_notice("[src] Rendimentos[freebies > 1 ? "several free goodies" : "a free goody"][credits_contained > 0 ? " and some [MONEY_NAME]" : ""]!"))
 
 	for(var/i in 1 to freebies)
 		playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
@@ -234,7 +234,7 @@
 			tilt(user)
 
 /obj/machinery/vending/attack_tk_grab(mob/user)
-	to_chat(user, span_warning("[src]Parece resistir à sua compreensão mental!"))
+	to_chat(user, span_warning("[src] Parece resistir à sua compreensão mental!"))
 
 /obj/machinery/vending/attack_robot_secondary(mob/user, list/modifiers)
 	. = ..()

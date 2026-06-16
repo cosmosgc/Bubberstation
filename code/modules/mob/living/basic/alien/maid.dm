@@ -24,9 +24,9 @@
 
 	target.wash(CLEAN_SCRUB)
 	if(istype(target, /obj/effect/decal/cleanable))
-		visible_message(span_notice("[src]Limpa.\the [target]."))
+		visible_message(span_notice("[src] Limpa.\the [target]."))
 	else
-		visible_message(span_notice("[src]Polidos\the [target]."))
+		visible_message(span_notice("[src] Polidos\the [target]."))
 	return FALSE
 
 /**

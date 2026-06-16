@@ -191,7 +191,7 @@
 			used += 1 SECONDS
 			if(max - used < time_left_warning && !time_warned)
 				time_warned = TRUE
-				balloon_alert(usr, "[(max - used) / 10]Segundo à esquerda.")
+				balloon_alert(usr, "[(max - used) / 10] Segundo à esquerda.")
 			sleep(1 SECONDS)
 		if(used >= max)
 			balloon_alert(usr, "Fita cheia!")
@@ -238,7 +238,7 @@
 		balloon_alert(usr, "Já está jogando!")
 		return
 	if(mytape.storedinfo?.len <= 0)
-		balloon_alert(usr, "[mytape]Está vazio!")
+		balloon_alert(usr, "[mytape] Está vazio!")
 		return
 
 	playing = TRUE
@@ -349,7 +349,7 @@
 	transcript_paper.name = "[paper_name] page [page_count]"
 	transcript_paper.update_appearance()
 
-	balloon_alert(usr, "transcrição impressa\n[page_count]Página")
+	balloon_alert(usr, "transcrição impressa\n [page_count] Página")
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 50, FALSE)
 
 	// Can't put the entire stack into their hands if there's multple pages, but hey we can at least put one page in.

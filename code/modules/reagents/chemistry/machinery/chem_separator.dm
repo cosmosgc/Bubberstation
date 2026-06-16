@@ -102,14 +102,14 @@
 	. = ..()
 
 	if(reagents.total_volume)
-		. += span_notice("O frasco de destilação diz<b>[reagents.total_volume]/[reagents.maximum_volume]U</b>.")
+		. += span_notice("O frasco de destilação diz<b>[reagents.total_volume]/[reagents.maximum_volume] U</b>.")
 	if(!QDELETED(distilled_container))
-		. += span_notice("O copo de destilação lê<b>[distilled_container.reagents.total_volume]/[distilled_container.reagents.maximum_volume]U</b>.")
+		. += span_notice("O copo de destilação lê<b>[distilled_container.reagents.total_volume]/[distilled_container.reagents.maximum_volume] U</b>.")
 		. += span_notice("Remova o copo com[EXAMINE_HINT("LMB")].")
 	else
 		. += span_warning("Falta um recipiente de destilação, insira com[EXAMINE_HINT("LMB")]")
 	if(!QDELETED(fuel_container))
-		. += span_notice("O recipiente de combustível diz:<b>[fuel_container.reagents.total_volume]/[fuel_container.reagents.maximum_volume]U</b>.")
+		. += span_notice("O recipiente de combustível diz:<b>[fuel_container.reagents.total_volume]/[fuel_container.reagents.maximum_volume] U</b>.")
 		. += span_notice("Retirar combustível com[EXAMINE_HINT("RMB")].")
 	else
 		. += span_warning("Falta um copo contendo combustível para o queimador, insira com[EXAMINE_HINT("RMB")]")
@@ -133,7 +133,7 @@
 
 	. += span_notice("Ao examinar os reagentes dos frascos com seu gráfico, vemos os pontos de ebulição de cada reagente presente.")
 	for(var/datum/reagent/reg as anything in reagents.reagent_list)
-		. += span_notice("[reg.name] [get_boiling_point(reg)]K.")
+		. += span_notice("[reg.name] [get_boiling_point(reg)] K.")
 
 /obj/structure/chem_separator/update_overlays()
 	. = ..()
@@ -269,7 +269,7 @@
 
 		//add new container
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool]está preso em sua mão."))
+			to_chat(user, span_warning("[tool] está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 		distilled_container = tool
 
@@ -281,7 +281,7 @@
 		return ITEM_INTERACT_SUCCESS
 	else if(istype(tool, /obj/item/assembly/igniter/condenser))
 		if(!user.temporarilyRemoveItemFromInventory(tool))
-			to_chat(user, span_warning("[tool]está preso em sua mão."))
+			to_chat(user, span_warning("[tool] está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 		condenser_installed = TRUE
 		update_static_data_for_all_viewers()
@@ -326,7 +326,7 @@
 
 		//add new container
 		if(!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool]está preso em sua mão."))
+			to_chat(user, span_warning("[tool] está preso em sua mão."))
 			return ITEM_INTERACT_BLOCKING
 		fuel_container = tool
 		balloon_alert(user, "Contêiner de combustível adicionado.")

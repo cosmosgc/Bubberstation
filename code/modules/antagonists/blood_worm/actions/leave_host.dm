@@ -21,7 +21,7 @@
 	var/mob/living/carbon/human/host = worm.host
 
 	host.visible_message(
-		message = span_danger("\The [host] collapse[host.p_s()] and start[host.p_s()] shaking violently!"),
+		message = span_danger("\The [host] collapse [host.p_s()] and start [host.p_s()] shaking violently!"),
 		ignored_mobs = owner
 	)
 

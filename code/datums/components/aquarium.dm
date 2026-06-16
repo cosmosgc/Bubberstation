@@ -229,7 +229,7 @@
 		if(source.reagents && HAS_TRAIT(source, TRAIT_AQUARIUM_PANEL_OPEN))
 			return //don't block, we'll be transferring reagents to the feed storage.
 		if(!item.reagents.total_volume)
-			source.balloon_alert(user, "[item]Está vazio!")
+			source.balloon_alert(user, "[item] Está vazio!")
 			return ITEM_INTERACT_BLOCKING
 		var/list/fishes = get_fishes()
 		if(!length(fishes))
@@ -300,7 +300,7 @@
 
 /datum/component/aquarium/proc/on_examine(atom/movable/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("Sua temperatura e fluido estão ajustados para[EXAMINE_HINT("[fluid_temp] K")]E[EXAMINE_HINT(fluid_type)].")
+	examine_list += span_notice("Sua temperatura e fluido estão ajustados para[EXAMINE_HINT("[fluid_temp] K")]E [EXAMINE_HINT(fluid_type)].")
 	var/panel_open = HAS_TRAIT(source, TRAIT_AQUARIUM_PANEL_OPEN)
 	examine_list += span_notice("[EXAMINE_HINT("Alt-click")]Para[panel_open ? "close" : "open"]O painel de controle e alimentação.")
 	if(panel_open && source.reagents.total_volume)
@@ -670,7 +670,7 @@
 		if("remove_item")
 			var/atom/movable/item = locate(params["item_reference"]) in movable.contents
 			item?.forceMove(movable.drop_location())
-			to_chat(user, span_notice("Você tira.[item]De[movable]."))
+			to_chat(user, span_notice("Você tira.[item] De [movable]."))
 		if("rename_fish")
 			var/new_name = sanitize_name(params["chosen_name"])
 			var/atom/movable/fish = locate(params["fish_reference"]) in movable.contents

@@ -31,7 +31,7 @@
 			continue
 		if(victim.can_block_magic(antimagic_flags))
 			victim.visible_message(
-				span_danger("[victim]É um brilho de fogo, mas repele o fogo!"),
+				span_danger("[victim] É um brilho de fogo, mas repele o fogo!"),
 				span_danger("Seu corpo começa a brilhar, mas você está protegido!")
 			)
 			continue
@@ -40,7 +40,7 @@
 			continue
 
 		victim.visible_message(
-			span_danger("[victim]As veias são retalhadas de dentro como uma chama profana irrompe de[victim.p_their()]Sangue!"),
+			span_danger("[victim] As veias são retalhadas de dentro como uma chama profana irrompe de [victim.p_their()] Sangue!"),
 			span_danger("Suas veias estouram por dentro e chama profana irrompe de seu sangue!")
 		)
 

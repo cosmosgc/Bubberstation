@@ -65,8 +65,8 @@
 /obj/machinery/computer/operating/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/disk/surgery))
 		user.visible_message(
-			span_notice("[user]começa a carregar[tool]Em[src]..."),
-			span_notice("Você começa a carregar um protocolo de cirurgia de[tool]..."),
+			span_notice("[user] começa a carregar [tool] Em [src]..."),
+			span_notice("Você começa a carregar um protocolo de cirurgia de [tool]..."),
 			span_hear("Você ouve a conversa de um drive flexível."),
 		)
 		var/obj/item/disk/surgery/disky = tool

@@ -257,7 +257,7 @@
 /mob/living/basic/bot/medbot/emag_effects(mob/user)
 	medical_mode_flags &= ~MEDBOT_DECLARE_CRIT
 	balloon_alert(user, "Circuitos de síntese reagentes encurtados")
-	audible_message(span_danger("[src]Que estranho!"))
+	audible_message(span_danger("[src] Que estranho!"))
 	flick_overlay_view(mutable_appearance(icon, "[base_icon_state]_spark"), 1 SECONDS)
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -338,11 +338,11 @@
 
 	if (!(bot_access_flags & BOT_COVER_EMAGGED))
 		if((damage_type_healer == HEAL_ALL_DAMAGE && patient.get_total_damage() <= heal_threshold) || (!(damage_type_healer == HEAL_ALL_DAMAGE) && patient.get_current_damage_of_type(damage_type_healer) <= heal_threshold))
-			to_chat(src, "[patient]É saudável! Sua programação o impede de cuidar das feridas de alguém com menos de[heal_threshold + 1] [damage_type_healer == HEAL_ALL_DAMAGE ? "total" : damage_type_healer]Dano.")
+			to_chat(src, "[patient] É saudável! Sua programação o impede de cuidar das feridas de alguém com menos de [heal_threshold + 1] [damage_type_healer == HEAL_ALL_DAMAGE ? "total" : damage_type_healer]Dano.")
 			return
 
 	update_bot_mode(new_mode = BOT_HEALING, update_hud = FALSE)
-	patient.visible_message("[src]está tentando cuidar das feridas de[patient]", span_userdanger("[src]Está tentando cuidar de suas feridas!"))
+	patient.visible_message("[src] está tentando cuidar das feridas de [patient]", span_userdanger("[src] Está tentando cuidar de suas feridas!"))
 	if(!do_after(src, delay = 2 SECONDS, target = patient, interaction_key = TEND_DAMAGE_INTERACTION))
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
@@ -364,11 +364,11 @@
 		if(patient.get_current_damage_of_type(damage_type_healer) <= heal_threshold)
 			done_healing = TRUE
 
-	patient.visible_message(span_notice("[src]tende as feridas de[patient]!"), "[span_infoplain(span_green("[src] tends your wounds!"))]")
+	patient.visible_message(span_notice("[src] tende as feridas de [patient]!"), "[span_infoplain(span_green("[src] tends your wounds!"))]")
 
 	if(done_healing)
-		visible_message(span_infoplain("[src]Lugares[p_their()]ferramentas de volta para[p_themselves()]."))
-		to_chat(src, "[patient]Agora está saudável!")
+		visible_message(span_infoplain("[src] Lugares [p_their()] ferramentas de volta para [p_themselves()]."))
+		to_chat(src, "[patient] Agora está saudável!")
 		update_bot_mode(new_mode = BOT_IDLE)
 		return
 

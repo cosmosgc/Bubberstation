@@ -168,12 +168,12 @@
 
 	var/obj/item/bodypart/affected_limb = human_parent.get_bodypart(human_parent.get_random_valid_zone())
 	human_parent.visible_message(
-		span_boldwarning("[human_parent]'s[affected_limb.plaintext_zone]bolhas não naturais, em seguida, explode em bolhas!"),
-		span_boldwarning("Sua[affected_limb.plaintext_zone]bolhas não naturais, em seguida, explode em bolhas!"),
+		span_boldwarning("[human_parent]'s [affected_limb.plaintext_zone] bolhas não naturais, em seguida, explode em bolhas!"),
+		span_boldwarning("Sua [affected_limb.plaintext_zone] bolhas não naturais, em seguida, explode em bolhas!"),
 	)
 
 	if(human_parent.is_blind())
-		to_chat(human_parent, span_boldwarning("Sua[affected_limb.plaintext_zone]Parece que está borbulhando, então queima como o inferno!"))
+		to_chat(human_parent, span_boldwarning("Sua [affected_limb.plaintext_zone] Parece que está borbulhando, então queima como o inferno!"))
 
 	human_parent.apply_damage(RADIATION_BURN_SPLOTCH_DAMAGE, BURN, affected_limb, wound_clothing = FALSE)
 	playsound(
@@ -216,10 +216,10 @@
 
 	if (isliving(source))
 		var/mob/living/living_source = source
-		to_chat(user, span_bolddanger("[icon2html(geiger_counter, user)]O sujeito está irradiado. A contaminação remonta a aproximadamente[DisplayTimeText(world.time - beginning_of_irradiation, 5)]atrás. Níveis de toxina atuais:[living_source.get_tox_loss()]."))
+		to_chat(user, span_bolddanger("[icon2html(geiger_counter, user)] O sujeito está irradiado. A contaminação remonta a aproximadamente [DisplayTimeText(world.time - beginning_of_irradiation, 5)] atrás. Níveis de toxina atuais:[living_source.get_tox_loss()]."))
 	else
 		// In case the green wasn't obvious enough...
-		to_chat(user, span_bolddanger("[icon2html(geiger_counter, user)]Alvo irradiado."))
+		to_chat(user, span_bolddanger("[icon2html(geiger_counter, user)] Alvo irradiado."))
 
 	return COMSIG_GEIGER_COUNTER_SCAN_SUCCESSFUL
 

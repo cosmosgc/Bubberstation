@@ -44,7 +44,7 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 		// This is to make sure the map works so the server does not start without a map.
 		var/datum/parsed_map/M = new (map_file)
 		if(!M)
-			to_chat(user, span_warning("Mapa.[map_file]Falharam em analiso Corretamente."))
+			to_chat(user, span_warning("Mapa.[map_file] Falharam em analiso Corretamente."))
 			return
 
 		if(!M.bounds)
@@ -71,7 +71,7 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 			json_value = virtual_map.LoadConfig("data/custom_map_json/[config_file]", TRUE)
 
 			if(!json_value)
-				to_chat(src, span_warning("Falha ao carregar a configuração:[config_file]Verifique se os campos estão preenchidos corretamente.\"caminho do mapa\": \"personalizado\"E\"arquivo map\": \"Seu nome mapa.\""))
+				to_chat(src, span_warning("Falha ao carregar a configuração:[config_file] Verifique se os campos estão preenchidos corretamente.\"caminho do mapa\": \"personalizado\"E\"arquivo map\": \"Seu nome mapa.\""))
 				return
 		else
 			virtual_map = load_map_config()
@@ -86,7 +86,7 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 					if(!shuttle)
 						continue
 					if(!SSmapping.shuttle_templates[shuttle])
-						to_chat(user, span_warning("Nenhuma nave auxiliar como[shuttle]' existe, usando o padrão."))
+						to_chat(user, span_warning("Nenhuma nave auxiliar como [shuttle]' existe, usando o padrão."))
 						continue
 					virtual_map.shuttles[s] = shuttle
 

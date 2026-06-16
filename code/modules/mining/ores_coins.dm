@@ -135,12 +135,12 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 		return
 	var/mob/living/carbon/human/C = hit_atom
 	if(C.is_eyes_covered())
-		C.visible_message(span_danger("[C]A proteção ocular bloqueia a areia!"), span_warning("Sua proteção ocular bloqueia a areia!"))
+		C.visible_message(span_danger("[C] A proteção ocular bloqueia a areia!"), span_warning("Sua proteção ocular bloqueia a areia!"))
 		return
 	C.adjust_eye_blur(12 SECONDS)
 	C.adjust_stamina_loss(15)//the pain from your eyes burning does stamina damage
 	C.adjust_confusion(5 SECONDS)
-	to_chat(C, span_userdanger("\The [src]Entra em seus olhos! A dor, ela queima!"))
+	to_chat(C, span_userdanger("\The [src] Entra em seus olhos! A dor, ela queima!"))
 	qdel(src)
 
 /obj/item/stack/ore/glass/ex_act(severity, target)
@@ -173,7 +173,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 	merge_type = /obj/item/stack/ore/plasma
 
 /obj/item/stack/ore/plasma/welder_act(mob/living/user, obj/item/I)
-	to_chat(user, span_warning("Você não pode atingir uma temperatura alta o suficiente para cheirar[src]Bem!"))
+	to_chat(user, span_warning("Você não pode atingir uma temperatura alta o suficiente para cheirar [src] Bem!"))
 	return TRUE
 
 /obj/item/stack/ore/silver
@@ -374,7 +374,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 		notify_admins = TRUE
 
 	if(user)
-		user.visible_message(span_warning("[user]Strikes\the [src], causando uma reação em cadeia!"), span_danger("Você ataca.\the [src], causando uma reação em cadeia."))
+		user.visible_message(span_warning("[user] Strikes\the [src], causando uma reação em cadeia!"), span_danger("Você ataca.\the [src], causando uma reação em cadeia."))
 
 	var/attacher_text = attacher ? "Igniter attacher: [ADMIN_LOOKUPFLW(attacher)]" : null
 
@@ -467,9 +467,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 	return value
 
 /obj/item/coin/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]contempla suicídio com\the [src]!"))
+	user.visible_message(span_suicide("[user] contempla suicídio com\the [src]!"))
 	if (!attack_self(user))
-		user.visible_message(span_suicide("[user]Não podia virar\the [src]!"))
+		user.visible_message(span_suicide("[user] Não podia virar\the [src]!"))
 		return SHAME
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 1 SECONDS)//10 = time takes for flip animation
 	return MANUAL_SUICIDE_NONLETHAL
@@ -477,13 +477,13 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 /obj/item/coin/proc/manual_suicide(mob/living/user)
 	var/index = sideslist.Find(coinflip)
 	if (index == 2)//tails
-		user.visible_message(span_suicide("\the [src]Aterrissando[coinflip]! [user]Imediamente cai, morto!"))
+		user.visible_message(span_suicide("\the [src] Aterrissando [coinflip]! [user] Imediamente cai, morto!"))
 		user.adjust_oxy_loss(200)
 		user.death(FALSE)
 		user.set_suicide(TRUE)
 		user.suicide_log()
 	else
-		user.visible_message(span_suicide("\the [src]Aterrissando[coinflip]! [user]Continua vivendo!")) //Don'Coloque no seu bolso. Ele.'s your lucky quarter.
+		user.visible_message(span_suicide("\the [src] Aterrissando [coinflip]! [user] Continua vivendo!")) //Don'Coloque no seu bolso. Ele.'s your lucky quarter.
 
 /obj/item/coin/examine(mob/user)
 	. = ..()
@@ -530,7 +530,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 		var/oldloc = loc
 		sleep(1.5 SECONDS)
 		if(loc == oldloc && user && !user.incapacitated)
-			user.visible_message(span_notice("[user]Flips[src]Ele pousa em[coinflip]."), 				span_notice("Você vira[src]Ele pousa em[coinflip]."), 				span_hear("Você ouve o barulho de moedas soltas."))
+			user.visible_message(span_notice("[user] Flips [src] Ele pousa em [coinflip]."), 				span_notice("Você vira [src] Ele pousa em [coinflip]."), 				span_hear("Você ouve o barulho de moedas soltas."))
 		if(has_action)
 			if(coinflip == heads_name)
 				heads_action(user)
@@ -626,9 +626,9 @@ GLOBAL_LIST_INIT(sand_recipes, list(		new /datum/stack_recipe("pile of dirt", /o
 		var/oldloc = loc
 		sleep(1.5 SECONDS)
 		if(loc == oldloc && user && !user.incapacitated)
-			user.visible_message(span_notice("[user]Flips[src]Ele pousa em[coinflip]."), 				span_notice("Você vira[src]Ele pousa em[coinflip]."), 				span_hear("Você ouve o barulho de moedas soltas."))
+			user.visible_message(span_notice("[user] Flips [src] Ele pousa em [coinflip]."), 				span_notice("Você vira [src] Ele pousa em [coinflip]."), 				span_hear("Você ouve o barulho de moedas soltas."))
 		SSeconomy.fire()
-		to_chat(user,"<span class='bounty'>[SSeconomy.inflation_value()]é o valor da inflação.</span>")
+		to_chat(user,"<span class='bounty'>[SSeconomy.inflation_value()] é o valor da inflação.</span>")
 	return TRUE//did the coin flip? useful for suicide_act
 
 

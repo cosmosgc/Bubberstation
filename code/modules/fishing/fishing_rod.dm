@@ -126,7 +126,7 @@
 	if(bait)
 		equipped_stuff += "[icon2html(bait, user)] <b>[bait]</b>"
 	if(length(equipped_stuff))
-		. += span_notice("Tem.\a [english_list(equipped_stuff)]Equipado.")
+		. += span_notice("Tem.\a [english_list(equipped_stuff)] Equipado.")
 	if(!bait)
 		. += span_warning("Não tem uma isca presa nela. Pescar será mais tedioso!")
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISH))
@@ -148,7 +148,7 @@
 
 	var/list/block = list()
 	var/get_percent = HAS_MIND_TRAIT(user, TRAIT_EXAMINE_DEEPER_FISH)
-	block += span_info("Você acha que pode fazer isso[get_cast_range()]Tiles de distância.")
+	block += span_info("Você acha que pode fazer isso [get_cast_range()] Tiles de distância.")
 	block += get_stat_info(get_percent, difficulty_modifier * 0.01, "Fishing will be", "easier", "harder", "with this fishing rod")
 	block += get_stat_info(get_percent, experience_multiplier - 1, "You will gain experience", "faster", "slower")
 	block += get_stat_info(get_percent, completion_speed_mult - 1, "The minigame completion speed is", "faster", "slower")
@@ -161,7 +161,7 @@
 	. += boxed_message(block.Join("\n"))
 
 	if(get_percent && (material_flags & MATERIAL_EFFECTS) && length(custom_materials))
-		. += boxed_message(span_info("Agora, peixes capturados por esta vara de pesca têm um[get_material_fish_chance(user)]% de ser feito de seus mesmos materiais."))
+		. += boxed_message(span_info("Agora, peixes capturados por esta vara de pesca têm um [get_material_fish_chance(user)]% de ser feito de seus mesmos materiais."))
 
 	block = list()
 	if(HAS_TRAIT(src, TRAIT_ROD_ATTRACT_SHINY_LOVERS))
@@ -287,7 +287,7 @@
 		return
 
 	if(currently_hooked.anchored || currently_hooked.move_resist >= MOVE_FORCE_STRONG)
-		balloon_alert(user, "[currently_hooked.p_they()]Não se mexa!")
+		balloon_alert(user, "[currently_hooked.p_they()] Não se mexa!")
 		return
 
 	//About thirty minutes of non-stop reeling to get from zero to master... not worth it but hey, you do what you do.
@@ -633,7 +633,7 @@
 		if(user.transferItemToLoc(new_item, src))
 			user.put_in_hands(current_item)
 			set_slot(new_item, slot)
-			balloon_alert(user, "[slot]Trocado.")
+			balloon_alert(user, "[slot] Trocado.")
 		else
 			balloon_alert(user, "Preso em suas mãos!")
 			return

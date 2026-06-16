@@ -19,7 +19,7 @@
 	if(!phobia_type)
 		phobia_type = pick(GLOB.phobia_types)
 
-	gain_text = span_warning("Você começa a encontrar[phobia_type]Muito enervante...")
+	gain_text = span_warning("Você começa a encontrar [phobia_type] Muito enervante...")
 	lose_text = span_notice("Você não tem mais medo.[phobia_type].")
 	scan_desc += " of [phobia_type]"
 	return ..()

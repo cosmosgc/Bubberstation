@@ -23,7 +23,7 @@
 /datum/action/cooldown/spell/basic_heal/cast(mob/living/cast_on)
 	. = ..()
 	cast_on.visible_message(
-		span_warning("Uma coroa de luz suave passa[cast_on]!"),
+		span_warning("Uma coroa de luz suave passa [cast_on]!"),
 		span_notice("Você se coroa em luz curativa!"),
 	)
 	var/need_mob_update = FALSE

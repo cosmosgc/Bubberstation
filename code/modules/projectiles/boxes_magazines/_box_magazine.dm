@@ -258,7 +258,7 @@
 	if(!user.is_holding(src) || !user.put_in_hands(A)) //incase they're using TK
 		A.bounce_away(FALSE, NONE)
 	playsound(src, 'sound/items/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
-	to_chat(user, span_notice("Você remove um[casing_phrasing]De[src]!"))
+	to_chat(user, span_notice("Você remove um [casing_phrasing] De [src]!"))
 	update_appearance()
 
 /obj/item/ammo_box/examine(mob/user)

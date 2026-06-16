@@ -213,7 +213,7 @@
 /datum/heretic_knowledge/ultimate/moon_final/proc/attempt_conversion(mob/living/carbon/convertee, mob/user)
 	// Heretics, lunatics and monsters shouldn't become lunatics because they either have a master or have a mansus grasp
 	if(IS_HERETIC_OR_MONSTER(convertee))
-		to_chat(convertee, span_boldwarning("[user]A ascensão está influenciando os fracos. Suas mentes se renderão." ))
+		to_chat(convertee, span_boldwarning("[user] A ascensão está influenciando os fracos. Suas mentes se renderão." ))
 		return FALSE
 	// Mindshielded and anti-magic folks are immune against this effect because this is a magical mind effect
 	if(HAS_MIND_TRAIT(convertee, TRAIT_UNCONVERTABLE) || convertee.can_block_magic(MAGIC_RESISTANCE))

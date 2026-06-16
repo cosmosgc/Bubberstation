@@ -44,8 +44,8 @@
 
 	if(obeys_hardhats && target_head_armor >= 15) // 15 melee armor is enough that most head items dont have this, but anything above a hardhat should protect you
 		poor_target.visible_message(
-			span_warning("[source]Queda sobre[poor_target]Felizmente[poor_target.p_they()]Tinha um capacete!"),
-			span_userdanger("Você é atingido na cabeça por[source]Que bom que você tinha um capacete!"),
+			span_warning("[source] Queda sobre [poor_target] Felizmente [poor_target.p_they()] Tinha um capacete!"),
+			span_userdanger("Você é atingido na cabeça por [source] Que bom que você tinha um capacete!"),
 			span_hear("Você ouve...[crushes_people ? "crash" : "bonk"]!"),
 		)
 
@@ -64,8 +64,8 @@
 		poor_target.apply_damage(fall_damage * levels, forced = TRUE, spread_damage = TRUE, wound_bonus = fall_wound_bonus)
 
 	poor_target.visible_message(
-		span_userdanger("[source]Queda sobre[poor_target], [crushes_people ? "crushing [poor_target.p_them()]" : "hitting [poor_target.p_them()]"] [target_head ? "on the head!" : "!"]"),
-		span_userdanger("Você é.[crushes_people ? "crushed" : "hit"]por[source]!"),
+		span_userdanger("[source] Queda sobre [poor_target], [crushes_people ? "crushing [poor_target.p_them()]" : "hitting [poor_target.p_them()]"] [target_head ? "on the head!" : "!"]"),
+		span_userdanger("Você é.[crushes_people ? "crushed" : "hit"]por [source]!"),
 		span_hear("Você ouve...[crushes_people ? "crash" : "bonk"]!"),
 	)
 

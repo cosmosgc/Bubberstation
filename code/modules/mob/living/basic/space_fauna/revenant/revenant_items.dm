@@ -27,8 +27,8 @@
 	if(!reforming || inert)
 		return ..()
 	user.visible_message(
-		span_notice("[user]dispersões[src]em todas as direções."),
-		span_notice("Você se espalha[src]através da área. As partículas desaparecem lentamente."),
+		span_notice("[user] dispersões [src] em todas as direções."),
+		span_notice("Você se espalha [src] através da área. As partículas desaparecem lentamente."),
 	)
 	user.dropItemToGround(src)
 	qdel(src)
@@ -37,7 +37,7 @@
 	. = ..()
 	if(inert)
 		return
-	visible_message(span_notice("[src]Entra em partículas no impacto, que desaparecem para o nada."))
+	visible_message(span_notice("[src] Entra em partículas no impacto, que desaparecem para o nada."))
 	qdel(src)
 
 /obj/item/ectoplasm/revenant/examine(mob/user)
@@ -48,7 +48,7 @@
 		. += span_revenwarning("Está mudando e distorcido. Seria sábio destruir isso.")
 
 /obj/item/ectoplasm/revenant/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está inalando.[src]! Parece que...[user.p_theyre()]Tentando visitar o reino das sombras!"))
+	user.visible_message(span_suicide("[user] está inalando.[src]! Parece que...[user.p_theyre()] Tentando visitar o reino das sombras!"))
 	qdel(src)
 	return OXYLOSS
 
@@ -58,7 +58,7 @@
 		reform()
 	else
 		inert = TRUE
-		visible_message(span_warning("[src]Se acalma e parece sem vida."))
+		visible_message(span_warning("[src] Se acalma e parece sem vida."))
 
 /// Actually moves the revenant out of ourself
 /obj/item/ectoplasm/revenant/proc/reform()
@@ -77,7 +77,7 @@
 
 	message_admins("[user_name] has been [old_ckey == user_name ? "re":""]made into a revenant by reforming ectoplasm.")
 	revenant.log_message("was [old_ckey == user_name ? "re":""]made as a revenant by reforming ectoplasm.", LOG_GAME)
-	visible_message(span_revenboldnotice("[src]de repente sobe ao ar antes de desaparecer."))
+	visible_message(span_revenboldnotice("[src] de repente sobe ao ar antes de desaparecer."))
 
 	revenant.death_reset()
 	revenant = null
@@ -90,7 +90,7 @@
 	if(isnull(chosen_one))
 		message_admins("No candidates were found for the new revenant.")
 		inert = TRUE
-		visible_message(span_revenwarning("[src]Se acalma e parece sem vida."))
+		visible_message(span_revenwarning("[src] Se acalma e parece sem vida."))
 		qdel(revenant)
 		return null
 	return chosen_one

@@ -74,7 +74,7 @@
 		return
 
 	user.visible_message(
-		message = span_notice("\The [user] start[user.p_s()] building a wall on \the [structure]."),
+		message = span_notice("\The [user] start [user.p_s()] building a wall on \the [structure]."),
 		self_message = span_notice("Você começa a construir uma parede\the [structure]."),
 		blind_message = span_hear("Você ouve uma série de clangs."),
 	)
@@ -95,8 +95,8 @@
 		CRASH("Attempted a girder wall recipe with an invalid wall type ([recipe.wall_type])")
 
 	user.visible_message(
-		message = span_notice("\The [user] finish[user.p_es()] building \a [wall] on \the [structure]."),
-		self_message = span_notice("Você termina de construir\a [wall]Vamos.\the [structure]."),
+		message = span_notice("\The [user] finish [user.p_es()] building \a [wall] on \the [structure]."),
+		self_message = span_notice("Você termina de construir\a [wall] Vamos.\the [structure]."),
 	)
 
 	structure.transfer_fingerprints_to(wall)

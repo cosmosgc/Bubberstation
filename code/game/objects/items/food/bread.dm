@@ -386,8 +386,8 @@
 
 /obj/item/food/baguette/proc/begin_swordplay(mob/user)
 	visible_message(
-		span_notice("[user]começa a empunhar[src]Como uma espada!"),
-		span_notice("Você começa a empunhar[src]como uma espada, com um aperto firme no fundo como uma alça imaginária.")
+		span_notice("[user] começa a empunhar [src] Como uma espada!"),
+		span_notice("Você começa a empunhar [src] como uma espada, com um aperto firme no fundo como uma alça imaginária.")
 	)
 	ADD_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND, SWORDPLAY_TRAIT)
 	attack_verb_continuous = list("slashes", "cuts")
@@ -409,8 +409,8 @@
 
 	if(user)
 		visible_message(
-			span_notice("[user]Não mais segura[src]Como uma espada!"),
-			span_notice("Você volta a segurar[src]Normalmente.")
+			span_notice("[user] Não mais segura [src] Como uma espada!"),
+			span_notice("Você volta a segurar [src] Normalmente.")
 		)
 
 /obj/item/food/baguette/proc/on_sword_dropped(datum/source, mob/user)

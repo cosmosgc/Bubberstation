@@ -68,7 +68,7 @@
 
 	volume_rate = MAX_TRANSFER_RATE
 	investigate_log("was set to [volume_rate] L/s by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "volume de saída definido para[volume_rate]L/s")
+	balloon_alert(user, "volume de saída definido para [volume_rate] L/s")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -149,7 +149,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
+		to_chat(user, span_warning("Você não pode destrancar [src] Desligue isso primeiro!"))
 		return FALSE
 
 // mapping

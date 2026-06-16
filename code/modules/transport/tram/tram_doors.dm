@@ -151,7 +151,7 @@
 /obj/machinery/door/airlock/tram/crush()
 	for(var/turf/checked_turf in locs)
 		for(var/mob/living/future_pancake in checked_turf)
-			future_pancake.visible_message(span_warning("[src]Apita com Raiva e Fecha.[future_pancake]!"), span_userdanger("[src]Apita com raiva e fecha em você!"))
+			future_pancake.visible_message(span_warning("[src] Apita com Raiva e Fecha.[future_pancake]!"), span_userdanger("[src] Apita com raiva e fecha em você!"))
 			var/sig_return = SEND_SIGNAL(future_pancake, COMSIG_LIVING_DOORCRUSHED, src)
 			future_pancake.add_splatter_floor(loc)
 			log_combat(src, future_pancake, "crushed")

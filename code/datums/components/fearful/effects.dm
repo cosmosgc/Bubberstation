@@ -77,7 +77,7 @@
 		return
 
 	owner.visible_message(
-		span_warning("[owner]Embreagens[owner.p_their()]peito por um momento, em seguida, cai no chão."),
+		span_warning("[owner] Embreagens [owner.p_their()] peito por um momento, em seguida, cai no chão."),
 		span_alert("As sombras começam a surgir dos cantos da sua visão, e então não há nada..."),
 		span_hear("Você ouve algo pesado colidir com o chão."),
 	)
@@ -161,7 +161,7 @@
 	owner.Knockdown(0.5 SECONDS)
 	breath_loop.start()
 	panic_end_timer = addtimer(CALLBACK(src, PROC_REF(stop_panic_attack)), rand(3 SECONDS, 5 SECONDS), TIMER_UNIQUE|TIMER_STOPPABLE)
-	owner.visible_message(span_warning("[owner]cai no chão por um momento, agarrando seu peito."), span_alert("Seu coração dói no peito. Você não aguenta muito mais disso!"))
+	owner.visible_message(span_warning("[owner] cai no chão por um momento, agarrando seu peito."), span_alert("Seu coração dói no peito. Você não aguenta muito mais disso!"))
 	return PANIC_ATTACK_TERROR_AMOUNT
 
 /datum/terror_handler/panic/proc/stop_panic_attack()
@@ -202,7 +202,7 @@
 			var/held_item = owner.get_active_held_item()
 			if (owner.dropItemToGround(held_item))
 				owner.visible_message(
-					span_danger("[owner.name]Gotas\the [held_item]!"),
+					span_danger("[owner.name] Gotas\the [held_item]!"),
 					span_warning("Você caiu.\the [held_item]!"), null, COMBAT_MESSAGE_RANGE)
 
 		if (3)

@@ -123,7 +123,7 @@
 		new /obj/effect/temp_visual/dragon_swoop/legionnaire(T)
 		T = get_step(T, dir_to_target)
 	playsound(src,'sound/effects/magic/demon_attack1.ogg', 200, 1)
-	visible_message(span_boldwarning("[src]Preparem-se para atacar!"))
+	visible_message(span_boldwarning("[src] Preparem-se para atacar!"))
 	addtimer(CALLBACK(src, PROC_REF(legionnaire_charge_2), dir_to_target, 0), 0.4 SECONDS)
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/legionnaire_charge_2(move_dir, times_ran)
@@ -152,8 +152,8 @@
 		hit_things += trample_target
 		if(faction_check_atom(trample_target))
 			continue
-		visible_message(span_boldwarning("[src]Pimbas e pára-quedas[trample_target]!"))
-		to_chat(trample_target, span_userdanger("[src]Atropela você e te chuta!"))
+		visible_message(span_boldwarning("[src] Pimbas e pára-quedas [trample_target]!"))
+		to_chat(trample_target, span_userdanger("[src] Atropela você e te chuta!"))
 		trample_target.safe_throw_at(throwtarget, 10, 1, src)
 		trample_target.Paralyze(20)
 		trample_target.adjust_brute_loss(melee_damage_upper)
@@ -169,7 +169,7 @@
 		icon_state = "legionnaire_headless"
 		icon_living = "legionnaire_headless"
 		icon_aggro = "legionnaire_headless"
-		visible_message(span_boldwarning("[src]A cabeça voa!"))
+		visible_message(span_boldwarning("[src] A cabeça voa!"))
 		var/mob/living/simple_animal/hostile/asteroid/elite/legionnairehead/newhead = new /mob/living/simple_animal/hostile/asteroid/elite/legionnairehead(loc)
 		newhead.GiveTarget(target)
 		SET_FACTION_AND_ALLIES_FROM(newhead, src)
@@ -193,7 +193,7 @@
 	icon_state = "legionnaire"
 	icon_living = "legionnaire"
 	icon_aggro = "legionnaire"
-	visible_message(span_boldwarning("O topo de[src]A coluna vaza um líquido negro, formando-se em um crânio!"))
+	visible_message(span_boldwarning("O topo de [src] A coluna vaza um líquido negro, formando-se em um crânio!"))
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/bonfire_teleport()
 	ranged_cooldown = world.time + 5
@@ -202,7 +202,7 @@
 		mypile = newpile
 		mypile.myowner = src
 		playsound(get_turf(src),'sound/items/fulton/fultext_deploy.ogg', 200, 1)
-		visible_message(span_boldwarning("[src]Invoca uma fogueira[get_turf(src)]!"))
+		visible_message(span_boldwarning("[src] Invoca uma fogueira [get_turf(src)]!"))
 		return
 	else
 		var/turf/legionturf = get_turf(src)
@@ -213,9 +213,9 @@
 			return
 		playsound(pileturf,'sound/items/fulton/fultext_deploy.ogg', 200, 1)
 		playsound(legionturf,'sound/items/fulton/fultext_deploy.ogg', 200, 1)
-		visible_message(span_boldwarning("[src]Derrete em uma pilha de ossos queimando!"))
+		visible_message(span_boldwarning("[src] Derrete em uma pilha de ossos queimando!"))
 		forceMove(pileturf)
-		visible_message(span_boldwarning("[src]Formas da fogueira!"))
+		visible_message(span_boldwarning("[src] Formas da fogueira!"))
 		mypile.forceMove(legionturf)
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/spew_smoke()
@@ -226,11 +226,11 @@
 	else
 		smoke_location = get_turf(src)
 	if(myhead != null)
-		myhead.visible_message(span_boldwarning("[myhead]Vomite fumaça de sua mãe!"))
+		myhead.visible_message(span_boldwarning("[myhead] Vomite fumaça de sua mãe!"))
 	else if(!has_head)
-		visible_message(span_boldwarning("[src]Vomita fumaça da ponta da espinha!"))
+		visible_message(span_boldwarning("[src] Vomita fumaça da ponta da espinha!"))
 	else
-		visible_message(span_boldwarning("[src]Vomite fumaça de sua mãe!"))
+		visible_message(span_boldwarning("[src] Vomite fumaça de sua mãe!"))
 	do_smoke(2, src, smoke_location)
 
 //The legionnaire's head.  Basically the same as any legion head, but we have to tell our creator when we die so they can generate another head.

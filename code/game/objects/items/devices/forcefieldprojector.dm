@@ -46,10 +46,10 @@
 		to_chat(user, span_warning("O alvo está muito perto, abortando!"))
 		return ITEM_INTERACT_BLOCKING
 	if(LAZYLEN(current_fields) >= max_fields)
-		to_chat(user, span_warning("[src]Não pode manter mais campos de força!"))
+		to_chat(user, span_warning("[src] Não pode manter mais campos de força!"))
 		return ITEM_INTERACT_BLOCKING
 	if(force_proj_busy)
-		to_chat(user, span_notice("[src]está ocupado criando um campo de força."))
+		to_chat(user, span_notice("[src] está ocupado criando um campo de força."))
 		return ITEM_INTERACT_BLOCKING
 	playsound(loc, 'sound/machines/click.ogg', 20, TRUE)
 	if(creation_time)
@@ -60,7 +60,7 @@
 		force_proj_busy = FALSE
 
 	playsound(src,'sound/items/weapons/resonator_fire.ogg',50,TRUE)
-	user.visible_message(span_warning("[user]projeta um campo de força!"),span_notice("Você projeta um campo de força."))
+	user.visible_message(span_warning("[user] projeta um campo de força!"),span_notice("Você projeta um campo de força."))
 	var/obj/structure/projected_forcefield/F = new(T, src)
 	current_fields += F
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -68,13 +68,13 @@
 
 /obj/item/forcefield_projector/attack_self(mob/user)
 	if(LAZYLEN(current_fields))
-		to_chat(user, span_notice("Você desativa.[src]Desativando todos os campos de força ativos."))
+		to_chat(user, span_notice("Você desativa.[src] Desativando todos os campos de força ativos."))
 		for(var/obj/structure/projected_forcefield/F in current_fields)
 			qdel(F)
 
 /obj/item/forcefield_projector/examine(mob/user)
 	. = ..()
-	. += span_notice("Está sustentando.[LAZYLEN(current_fields)]/[max_fields]campos, e é[round((shield_integrity/max_shield_integrity)*100)]Está carregado.")
+	. += span_notice("Está sustentando.[LAZYLEN(current_fields)]/[max_fields] campos, e é [round((shield_integrity/max_shield_integrity)*100)] Está carregado.")
 
 /obj/item/forcefield_projector/Initialize(mapload)
 	. = ..()
@@ -123,7 +123,7 @@
 	generator = origin
 
 /obj/structure/projected_forcefield/Destroy()
-	visible_message(span_warning("[src]Brilha e Desapareça!"))
+	visible_message(span_warning("[src] Brilha e Desapareça!"))
 	playsound(src,'sound/items/weapons/resonator_blast.ogg',25,TRUE)
 	if(generator)
 		generator.current_fields -= src

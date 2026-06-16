@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(strippable_mannequin_items, create_strippable_list(list(
 	if(!.)
 		return FALSE
 	if(!(equipping.slot_flags & item_slot))
-		to_chat(user, span_warning("[equipping]Não cabe!"))
+		to_chat(user, span_warning("[equipping] Não cabe!"))
 		return FALSE
 	return TRUE
 

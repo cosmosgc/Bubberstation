@@ -80,18 +80,18 @@
 	log_combat(user, target, "attempted to inject", src)
 
 	if(target != user)
-		target.visible_message(span_danger("[user]Está tentando injetar.[target]com[src]!"), 			span_userdanger("[user]Está tentando injetá-lo com[src]!"))
+		target.visible_message(span_danger("[user] Está tentando injetar.[target] com [src]!"), 			span_userdanger("[user] Está tentando injetá-lo com [src]!"))
 		if(!do_after(user, 3 SECONDS, target) || used)
 			return
-		target.visible_message(span_danger("[user]Injeções[target]com a seringa com[src]!"), 						span_userdanger("[user]injeta a seringa com[src]!"))
+		target.visible_message(span_danger("[user] Injeções [target] com a seringa com [src]!"), 						span_userdanger("[user] injeta a seringa com [src]!"))
 
 	else
-		to_chat(user, span_notice("Você se injeta com[src]."))
+		to_chat(user, span_notice("Você se injeta com [src]."))
 
 	log_combat(user, target, "injected", src)
 
 	if(!inject(target, user)) //Now we actually do the heavy lifting.
-		to_chat(user, span_notice("Parece que...[target]Não tem DNA compatível."))
+		to_chat(user, span_notice("Parece que...[target] Não tem DNA compatível."))
 		return
 
 	used = TRUE
@@ -102,7 +102,7 @@
 
 /obj/item/dnainjector/timed/inject(mob/living/carbon/target, mob/user)
 	if(target.stat == DEAD) //prevents dead people from having their DNA changed
-		to_chat(user, span_notice("Você não pode modificar.[target]É DNA enquanto[target.p_theyre()]Morto."))
+		to_chat(user, span_notice("Você não pode modificar.[target] É DNA enquanto [target.p_theyre()] Morto."))
 		return FALSE
 	if(!target.can_mutate())
 		return FALSE

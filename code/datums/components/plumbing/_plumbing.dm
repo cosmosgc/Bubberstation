@@ -256,7 +256,7 @@
 	SIGNAL_HANDLER
 
 	if(distinct_reagent_cap != INFINITY)
-		examine_list += span_notice("Este componente de encanamento só aceitará até[distinct_reagent_cap]Reagentes distintos de uma vez.")
+		examine_list += span_notice("Este componente de encanamento só aceitará até [distinct_reagent_cap] Reagentes distintos de uma vez.")
 
 ///called from in process(). only calls process_request(), but can be overwritten for children with special behaviour
 /datum/component/plumbing/proc/send_request(dir)

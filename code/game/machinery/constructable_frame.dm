@@ -72,8 +72,8 @@
 
 	balloon_alert(user, "desmontando...")
 	user.visible_message(
-		span_warning("[user]Começa a desmontar.[src]."),
-		span_notice("Você começa a desmontar[src]..."),
+		span_warning("[user] Começa a desmontar.[src]."),
+		span_notice("Você começa a desmontar [src]..."),
 		span_hear("Você ouve batidas e barulhos."),
 	)
 	if(!tool.use_tool(src, user, disassemble_time, amount = (tool.tool_behaviour == TOOL_WELDER ? 1 : 0), volume = 50) || state != FRAME_STATE_EMPTY)

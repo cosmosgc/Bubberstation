@@ -148,7 +148,7 @@
 	if (!isvampire(target) || (!skin_contact && !source.get_property(MATERIAL_PENETRATING)))
 		return
 
-	to_chat(target, span_userdanger("Contato com[object]Secar sua carne morta-viva!"))
+	to_chat(target, span_userdanger("Contato com [object] Secar sua carne morta-viva!"))
 	target.apply_damage(source.get_property(id), BURN, def_zone, wound_bonus = 10, wound_clothing = FALSE)
 
 /// Teleports targets who come into active contact with the material around, property value determines teleport radius and damage taken per teleport

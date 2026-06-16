@@ -347,12 +347,12 @@
 	update_static_data()
 
 /obj/item/paper/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Arranha uma nota.[user.p_their()]Pulso com papel! Parece que...[user.p_theyre()]Tentando comer sudoku..."))
+	user.visible_message(span_suicide("[user] Arranha uma nota.[user.p_their()] Pulso com papel! Parece que...[user.p_theyre()] Tentando comer sudoku..."))
 	return BRUTELOSS
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click[src]Dobrar em um avião de papel.")
+	. += span_notice("Alt-click [src] Dobrar em um avião de papel.")
 	if(!in_range(user, src) && !isobserver(user))
 		. += span_warning("Você está muito longe para ler!")
 		return
@@ -445,8 +445,8 @@
 		if(!user.can_read(src) || user.is_blind())
 			//The paper's stampable window area is assumed approx 300x400
 			add_stamp(writing_stats["stamp_class"], rand(0, 300), rand(0, 400), rand(0, 360), writing_stats["stamp_icon_state"], stamp_icon = writing_stats["stamp_icon"])
-			user.visible_message(span_notice("[user]Selos cegos[src]Com\the [attacking_item]!"))
-			to_chat(user, span_notice("Você carimbe[src]Com\the [attacking_item]O melhor que puder!"))
+			user.visible_message(span_notice("[user] Selos cegos [src] Com\the [attacking_item]!"))
+			to_chat(user, span_notice("Você carimbe [src] Com\the [attacking_item] O melhor que puder!"))
 			playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 		else
 			to_chat(user, span_notice("Prepare seu selo sobre o papel!"))
@@ -469,8 +469,8 @@
 
 	add_stamp(writing_stats["stamp_class"], rand(1, 300), rand(1, 400), stamp_icon_state = writing_stats["stamp_icon_state"], stamp_icon = writing_stats["stamp_icon"])
 	user.visible_message(
-		span_notice("[user]Rápido selos[src]Com[tool]Sem olhar."),
-		span_notice("Você sela rapidamente.[src]Com[tool]Sem olhar."),
+		span_notice("[user] Rápido selos [src] Com [tool] Sem olhar."),
+		span_notice("Você sela rapidamente.[src] Com [tool] Sem olhar."),
 	)
 	playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 
@@ -668,7 +668,7 @@
 			var/obj/item/holding = user.get_active_held_item()
 			var/stamp_info = holding?.get_writing_implement_details()
 			if(!stamp_info || (stamp_info["interaction_mode"] != MODE_STAMPING))
-				to_chat(src, span_warning("Você não pode carimbar com o[holding]!"))
+				to_chat(src, span_warning("Você não pode carimbar com o [holding]!"))
 				return TRUE
 
 			var/stamp_class = stamp_info["stamp_class"];
@@ -691,7 +691,7 @@
 				return TRUE
 
 			add_stamp(stamp_class, stamp_x, stamp_y, stamp_rotation, stamp_icon_state, stamp_icon)
-			user.visible_message(span_notice("[user]Selos.[src]Com\the [holding.name]!"), span_notice("Você carimbe[src]Com\the [holding.name]!"))
+			user.visible_message(span_notice("[user] Selos.[src] Com\the [holding.name]!"), span_notice("Você carimbe [src] Com\the [holding.name]!"))
 			playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 
 			update_appearance()

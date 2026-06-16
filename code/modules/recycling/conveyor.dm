@@ -295,7 +295,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(attacking_item.tool_behaviour == TOOL_CROWBAR)
-		user.visible_message(span_notice("[user]Lutas para se levar[src]Com[attacking_item]."), 		span_notice("Você luta para se meter[src]Com[attacking_item]."))
+		user.visible_message(span_notice("[user] Lutas para se levar [src] Com [attacking_item]."), 		span_notice("Você luta para se meter [src] Com [attacking_item]."))
 
 		if(!attacking_item.use_tool(src, user, 4 SECONDS, volume = 40))
 			return
@@ -350,7 +350,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		attacking_item.play_tool_sound(src)
 		flipped = !flipped
 		update_move_direction()
-		to_chat(user, span_notice("Você vira[src]O cinto[flipped ? "around" : "back to normal"]."))
+		to_chat(user, span_notice("Você vira [src] O cinto[flipped ? "around" : "back to normal"]."))
 
 	else if(attacking_item.tool_behaviour == TOOL_WRENCH)
 		attacking_item.play_tool_sound(src)
@@ -557,7 +557,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(!input_speed || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	conveyor_speed = input_speed
-	to_chat(user, span_notice("Você muda o tempo entre movimentos para[input_speed]Segundos."))
+	to_chat(user, span_notice("Você muda o tempo entre movimentos para [input_speed] Segundos."))
 	update_linked_conveyors()
 	return TRUE
 
@@ -573,21 +573,21 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 /obj/machinery/conveyor_switch/screwdriver_act(mob/user, obj/item/tool)
 	tool.play_tool_sound(src, 50)
 	oneway = !oneway
-	to_chat(user, span_notice("Você está pronto.[src]Para[oneway ? "one way" : "default"]configuração."))
+	to_chat(user, span_notice("Você está pronto.[src] Para[oneway ? "one way" : "default"]configuração."))
 	return TRUE
 
 /obj/machinery/conveyor_switch/wrench_act(mob/user, obj/item/tool)
 	tool.play_tool_sound(src, 50)
 	invert_icon = !invert_icon
 	update_appearance()
-	to_chat(user, span_notice("Você está pronto.[src]Para[invert_icon ? "inverted": "normal"]Posição."))
+	to_chat(user, span_notice("Você está pronto.[src] Para[invert_icon ? "inverted": "normal"]Posição."))
 	return TRUE
 
 /obj/machinery/conveyor_switch/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]Está pronto para[oneway ? "one way" : "default"]configuração. Pode ser mudado com um<b>Chave de Fenda</b>.")
-	. += span_notice("[src]Está pronto para[invert_icon ? "inverted": "normal"]Posição. Pode ser girado com um<b>Chave Inglesa.</b>.")
-	. += span_notice("[src]Está pronto para se mover.[conveyor_speed]segundos por cinto. Pode ser mudado com um<b>Multitool</b>.")
+	. += span_notice("[src] Está pronto para[oneway ? "one way" : "default"]configuração. Pode ser mudado com um<b>Chave de Fenda</b>.")
+	. += span_notice("[src] Está pronto para[invert_icon ? "inverted": "normal"]Posição. Pode ser girado com um<b>Chave Inglesa.</b>.")
+	. += span_notice("[src] Está pronto para se mover.[conveyor_speed] segundos por cinto. Pode ser mudado com um<b>Multitool</b>.")
 
 /obj/machinery/conveyor_switch/oneway
 	icon_state = "conveyor_switch_oneway"

@@ -18,10 +18,10 @@
 /obj/item/book/granter/martial/cqc/on_reading_finished(mob/living/carbon/user)
 	. = ..()
 	if(uses <= 0)
-		to_chat(user, span_warning("[src]Apita ameaçadoramente..."))
+		to_chat(user, span_warning("[src] Apita ameaçadoramente..."))
 
 /obj/item/book/granter/martial/cqc/recoil(mob/living/user)
-	to_chat(user, span_warning("[src]Explode!"))
+	to_chat(user, span_warning("[src] Explode!"))
 	playsound(src,'sound/effects/explosion/explosion1.ogg',40,TRUE)
 	user.flash_act(1, 1)
 	user.adjust_brute_loss(6)

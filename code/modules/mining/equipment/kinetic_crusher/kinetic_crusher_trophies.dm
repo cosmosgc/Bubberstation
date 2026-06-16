@@ -18,7 +18,7 @@
 
 /obj/item/crusher_trophy/examine(mob/living/user)
 	. = ..()
-	. += span_notice("Causas[effect_desc()]quando ligado a um triturador cinético.")
+	. += span_notice("Causas [effect_desc()] quando ligado a um triturador cinético.")
 
 /// Returns a string to get added to the examine
 /obj/item/crusher_trophy/proc/effect_desc()
@@ -29,12 +29,12 @@
 /obj/item/crusher_trophy/proc/add_to(obj/item/kinetic_crusher/crusher, mob/living/user)
 	for(var/obj/item/crusher_trophy/trophy as anything in crusher.trophies)
 		if(istype(trophy, denied_type) || istype(src, trophy.denied_type))
-			to_chat(user, span_warning("Você não consegue se conectar.[src]para[crusher]Talvez remover alguns troféus?"))
+			to_chat(user, span_warning("Você não consegue se conectar.[src] para [crusher] Talvez remover alguns troféus?"))
 			return FALSE
 	if(!user.transferItemToLoc(src, crusher))
 		return
 	crusher.trophies += src
-	to_chat(user, span_notice("Você anexa[src]para[crusher]."))
+	to_chat(user, span_notice("Você anexa [src] para [crusher]."))
 	return TRUE
 
 /// Removes the trophy from our crusher

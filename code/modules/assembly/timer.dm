@@ -14,13 +14,13 @@
 	var/hearing_range = 3
 
 /obj/item/assembly/timer/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Olhe para o cronômetro e decida[user.p_their()]Destino! Parece que...[user.p_theyre()]Vai cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Olhe para o cronômetro e decida [user.p_their()] Destino! Parece que...[user.p_theyre()] Vai cometer suicídio!"))
 	activate()//doesnt rely on timer_end to prevent weird metas where one person can control the timer and therefore someone's life. (maybe that should be how it works...)
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), time SECONDS)//kill yourself once the time runs out
 	return MANUAL_SUICIDE
 
 /obj/item/assembly/timer/proc/manual_suicide(mob/living/user)
-	user.visible_message(span_suicide("[user]O tempo acabou!"))
+	user.visible_message(span_suicide("[user] O tempo acabou!"))
 	user.adjust_oxy_loss(200)
 	user.death(FALSE)
 
@@ -56,7 +56,7 @@
 /obj/item/assembly/timer/proc/timer_end()
 	if(secured && next_activate <= world.time)
 		pulse()
-		audible_message(span_infoplain("[icon2html(src, hearers(src))]Bip, bip"), null, hearing_range)
+		audible_message(span_infoplain("[icon2html(src, hearers(src))] Bip, bip"), null, hearing_range)
 		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 			hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	if(loop)

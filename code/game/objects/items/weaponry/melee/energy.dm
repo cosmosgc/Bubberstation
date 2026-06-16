@@ -72,7 +72,7 @@
 /obj/item/melee/energy/suicide_act(mob/living/user)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
 		attack_self(user)
-	user.visible_message(span_suicide("[user]É[pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! Parece que...[user.p_theyre()]Tentando cometer seppuku!"))
+	user.visible_message(span_suicide("[user] É[pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! Parece que...[user.p_theyre()] Tentando cometer seppuku!"))
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/melee/energy/process(seconds_per_tick)
@@ -88,7 +88,7 @@
 		var/mob/living/carbon/carbon_user = user
 		if(carbon_user.wear_mask)
 			in_mouth = ", barely missing [carbon_user.p_their()] nose"
-	. = span_rose("[user]balanços[user.p_their()] [name][in_mouth]. [user.p_They()]luz[user.p_s()] [user.p_their()] [atom.name]no processo.")
+	. = span_rose("[user] balanços [user.p_their()] [name][in_mouth]. [user.p_They()] luz [user.p_s()] [user.p_their()] [atom.name] no processo.")
 	playsound(loc, hitsound, get_clamped_volume(), TRUE, -1)
 	add_fingerprint(user)
 
@@ -163,7 +163,7 @@
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/melee/energy/axe/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]balanços[src]em direção[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] balanços [src] em direção [user.p_their()] Cabeça! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return (BRUTELOSS|FIRELOSS)
 
 /// Energy swords.
@@ -413,9 +413,9 @@
 /obj/item/melee/energy/sword/surplus/examine(mob/user)
 	. = ..()
 	if(charge)
-		. += span_notice("[src]Tem[charge]Bate à esquerda antes de ser recarregado.")
+		. += span_notice("[src] Tem [charge] Bate à esquerda antes de ser recarregado.")
 	else
-		. += span_warning("[src]precisa ser recarregado.")
+		. += span_warning("[src] precisa ser recarregado.")
 
 	. += span_info("Você tem a sensação de que esta arma não é muito eficaz a menos que você bater em alguém enquanto eles são expostos de alguma forma, como atacar por trás ou enquanto eles estão cambaleando.")
 

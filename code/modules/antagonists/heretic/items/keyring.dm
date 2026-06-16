@@ -68,7 +68,7 @@
 
 	if(!IS_HERETIC_OR_MONSTER(teleportee))
 		teleportee.apply_damage(20, BRUTE) //so they dont roll it like a jackpot machine to see if they can land in the armory
-		to_chat(teleportee, span_userdanger("Você tropeça[src], agredido por forças além de sua compreensão, aterrissando em qualquer lugar, mas onde você pensou que estava indo."))
+		to_chat(teleportee, span_userdanger("Você tropeça [src], agredido por forças além de sua compreensão, aterrissando em qualquer lugar, mas onde você pensou que estava indo."))
 
 	INVOKE_ASYNC(src, PROC_REF(async_opendoor), doorstination)
 
@@ -209,7 +209,7 @@
 
 	if(reference_resolved)
 		make_portal(user, reference_resolved, target)
-		to_chat(user, span_notice("Você usa[src], para ligar[reference_resolved]E[target]Juntas."))
+		to_chat(user, span_notice("Você usa [src], para ligar [reference_resolved] E [target] Juntas."))
 		link = null
 		balloon_alert(user, "Ligação 2/2")
 	else

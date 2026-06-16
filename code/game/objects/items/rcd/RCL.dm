@@ -78,7 +78,7 @@
 
 		if(!loaded)
 			if(!user.transferItemToLoc(W, src))
-				to_chat(user, span_warning("[src]está preso em sua mão!"))
+				to_chat(user, span_warning("[src] está preso em sua mão!"))
 				return
 			else
 				loaded = W //W.loc is src at this point.
@@ -93,14 +93,14 @@
 		else
 			return
 		update_appearance()
-		to_chat(user, span_notice("Você adiciona os limpadores de cachimbo para[src]Ele agora contém[loaded.amount]."))
+		to_chat(user, span_notice("Você adiciona os limpadores de cachimbo para [src] Ele agora contém [loaded.amount]."))
 	else
 		..()
 
 /obj/item/rcl/examine(mob/user)
 	. = ..()
 	if(loaded)
-		. += span_info("Ele contém[loaded.amount]/[max_amount]Limpadores de tubos.")
+		. += span_info("Ele contém [loaded.amount]/[max_amount] Limpadores de tubos.")
 
 /obj/item/rcl/Destroy()
 	QDEL_NULL(loaded)
@@ -272,7 +272,7 @@
 	if(!isturf(user.loc))
 		return
 	if(is_empty(user, 0))
-		to_chat(user, span_warning("\The [src]Está vazio!"))
+		to_chat(user, span_warning("\The [src] Está vazio!"))
 		return
 
 	var/turf/T = get_turf(user)
@@ -308,7 +308,7 @@
 		if (current_color_index > colors.len)
 			current_color_index = 1
 		var/cwname = colors[current_color_index]
-		to_chat(user, "A cor mudou para[cwname]!")
+		to_chat(user, "A cor mudou para [cwname]!")
 		if(loaded)
 			loaded.set_pipecleaner_color(colors[current_color_index])
 		if(wiring_gui_menu)

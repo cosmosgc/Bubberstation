@@ -106,7 +106,7 @@
 	GLOB.mass_teaching.equip_all_affected()
 
 	var/item_entry = istype(chosen_entry, /datum/spellbook_entry/item)
-	to_chat(user, span_hypnophrase("Você tem[item_entry ? "granted everyone the power" : "taught everyone the ways"]De[chosen_spell_name]!"))
+	to_chat(user, span_hypnophrase("Você tem[item_entry ? "granted everyone the power" : "taught everyone the ways"]De [chosen_spell_name]!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] gave everyone the [item_entry ? "item" : "spell"] \"[chosen_spell_name]\"!")
 	user.log_message("has gave everyone the [item_entry ? "item" : "spell"] \"[chosen_spell_name]\"!", LOG_GAME)
 

@@ -40,8 +40,8 @@
 /obj/machinery/fat_sucker/examine(mob/user)
 	. = ..()
 	. += {"[span_notice("Alt-Click to toggle the safety hatch.")]
-				[span_notice("Removendo[bite_size]Unidades nutricionais por operação.")]
-				[span_notice("Requer[nutrient_to_meat]unidades nutricionais por laje de carne.")]"}
+				[span_notice("Removendo [bite_size] Unidades nutricionais por operação.")]
+				[span_notice("Requer [nutrient_to_meat] unidades nutricionais por laje de carne.")]"}
 
 /obj/machinery/fat_sucker/close_machine(mob/user, density_to_set = TRUE)
 	if(panel_open)
@@ -54,7 +54,7 @@
 			occupant.forceMove(drop_location())
 			set_occupant(null)
 			return
-		to_chat(occupant, span_notice("Você entra[src]."))
+		to_chat(occupant, span_notice("Você entra [src]."))
 		addtimer(CALLBACK(src, PROC_REF(start_extracting)), 20, TIMER_OVERRIDE|TIMER_UNIQUE)
 		update_appearance()
 
@@ -70,12 +70,12 @@
 		to_chat(user, span_notice("A liberação de emergência não está respondendo! Você começa a empurrar contra o casco!"))
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
-		user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 			span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 			span_hear("Você ouve um metal rangendo de[src]."))
+		user.visible_message(span_notice("Viu?[user] Chutando contra a porta de [src]!"), 			span_notice("Você se apoia na parte de trás de [src] E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 			span_hear("Você ouve um metal rangendo de [src]."))
 		if(do_after(user, breakout_time, target = src, hidden = TRUE))
 			if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 				return
 			free_exit = TRUE
-			user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 				span_notice("Você conseguiu escapar.[src]!"))
+			user.visible_message(span_warning("[user] Com sucesso, fugiu.[src]!"), 				span_notice("Você conseguiu escapar.[src]!"))
 			open_machine()
 		return
 	open_machine()
@@ -182,10 +182,10 @@
 
 /obj/machinery/fat_sucker/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupant)
-		to_chat(user, span_warning("[src]Está ocupado no momento!"))
+		to_chat(user, span_warning("[src] Está ocupado no momento!"))
 		return ITEM_INTERACT_BLOCKING
 	if(state_open)
-		to_chat(user, span_warning("[src]deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
+		to_chat(user, span_warning("[src] deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
 		return ITEM_INTERACT_BLOCKING
 	return default_deconstruction_screwdriver(user, I)
 

@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	SSblackbox.record_feedback("tally", "chaplain_weapon", 1, "[new_holy_weapon.name]")
 
 /obj/item/nullrod/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está matando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando chegar mais perto de Deus!"))
+	user.visible_message(span_suicide("[user] está matando [user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando chegar mais perto de Deus!"))
 	return (BRUTELOSS|FIRELOSS)
 
 
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 
 /obj/item/nullrod/vibro/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(prob(final_block_chance * (HAS_TRAIT(src, TRAIT_WIELDED) ? 2 : 1)) && attack_type == OVERWHELMING_ATTACK)
-		owner.visible_message(span_danger("[owner]Parries[attack_text]Com[src]!"))
+		owner.visible_message(span_danger("[owner] Parries [attack_text] Com [src]!"))
 		return TRUE
 	return FALSE
 
@@ -359,7 +359,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	menu_description = "Um s (w)ord estranho traficando uma quantidade risível de danos. Encaixa nos bolsos. Pode ser usado no cinto."
 
 /obj/item/nullrod/sord/suicide_act(mob/living/user) //a near-exact copy+paste of the actual sord suicide_act()
-	user.visible_message(span_suicide("[user]Está tentando empalar[user.p_them()]ego com[src]! Poderia ser uma tentativa de suicídio se não fosse tão santo."), 	span_suicide("Você tenta empalar-se com[src], mas é muito santo ..."))
+	user.visible_message(span_suicide("[user] Está tentando empalar [user.p_them()] ego com [src]! Poderia ser uma tentativa de suicídio se não fosse tão santo."), 	span_suicide("Você tenta empalar-se com [src], mas é muito santo ..."))
 	return SHAME
 
 // Relic War Hammer - Nothing special.
@@ -415,7 +415,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	SIGNAL_HANDLER
 	if(!iscarbon(picker))
 		return
-	to_chat(picker, span_warning("[src]Tome o lugar do seu braço!"))
+	to_chat(picker, span_warning("[src] Tome o lugar do seu braço!"))
 	var/obj/item/bodypart/active = picker.get_active_hand()
 	var/mob/living/carbon/new_hero = picker
 	new_hero.make_item_prosthetic(src, active.body_zone)
@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 		return
 	if(!(slot & ITEM_SLOT_HANDS))
 		return
-	to_chat(user, span_warning("Enquanto você coloca suas mãos[src], ele trava em seu braço!"))
+	to_chat(user, span_warning("Enquanto você coloca suas mãos [src], ele trava em seu braço!"))
 	var/obj/item/bodypart/active = user.get_active_hand()
 	user.make_item_prosthetic(src, active.body_zone)
 
@@ -519,7 +519,7 @@ GLOBAL_LIST_INIT(nullrod_variants, init_nullrod_variants())
 	menu_description = "Um fedora afiada traficando uma grande quantidade de danos, mas nenhum de mime. Encaixa em bolsos. Pode ser usado na cabeça, obviamente."
 
 /obj/item/nullrod/fedora/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está matando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando mais longe de Deus!"))
+	user.visible_message(span_suicide("[user] está matando [user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando mais longe de Deus!"))
 	return (BRUTELOSS|FIRELOSS)
 
 // Dark Blessing - Replaces your arm with an armblade. Cannot be dropped.

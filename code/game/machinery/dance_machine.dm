@@ -130,7 +130,7 @@
 	if(COOLDOWN_FINISHED(src, jukebox_song_cd))
 		activate_music()
 		return
-	balloon_alert(user, "na refrigeração para[DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]!")
+	balloon_alert(user, "na refrigeração para [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]!")
 	if(COOLDOWN_FINISHED(src, jukebox_error_cd))
 		playsound(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		COOLDOWN_START(src, jukebox_error_cd, 15 SECONDS)

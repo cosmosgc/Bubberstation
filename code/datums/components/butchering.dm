@@ -126,13 +126,13 @@
 /datum/component/butchering/proc/butcher_limb(obj/item/source, obj/item/bodypart/target, mob/living/user)
 	target.add_fingerprint(user)
 	if (LIMB_HAS_SKIN(target) && !HAS_ANY_SURGERY_STATE(target.surgery_state, SURGERY_SKIN_CUT | SURGERY_SKIN_OPEN))
-		to_chat(user, span_warning("[target]A pele ainda está intacta!"))
+		to_chat(user, span_warning("[target] A pele ainda está intacta!"))
 		return
 
 	if (LIMB_HAS_BONES(target) && !HAS_ANY_SURGERY_STATE(target.surgery_state, SURGERY_BONE_DRILLED | SURGERY_BONE_SAWED))
 		// We need to gut the limb before turning it into meat, otherwise just cut around the bone I guess
 		if (length(target.contents))
-			to_chat(user, span_warning("[target]Os ossos ainda estão intactos!"))
+			to_chat(user, span_warning("[target] Os ossos ainda estão intactos!"))
 			return
 
 	var/speed_modifier = 1
@@ -151,9 +151,9 @@
 		log_combat(user, target.owner, "attempted to butcher", source)
 
 	if (length(target.contents))
-		user.visible_message(span_warning("[user]começa a estripar[limb_descriptor]!"), span_notice("Você começa a estripar[limb_descriptor]..."), ignored_mobs = target.owner)
+		user.visible_message(span_warning("[user] começa a estripar [limb_descriptor]!"), span_notice("Você começa a estripar [limb_descriptor]..."), ignored_mobs = target.owner)
 		if (target.owner)
-			to_chat(target.owner, span_warning("[user]Começa a estripar seu[target.plaintext_zone]!"))
+			to_chat(target.owner, span_warning("[user] Começa a estripar seu [target.plaintext_zone]!"))
 
 		playsound(target.loc, butcher_sound, 50, TRUE, -1)
 		if (!do_after(user, speed * speed_modifier, target.owner || target))
@@ -172,9 +172,9 @@
 				to_chat(user, span_warning("Você precisa massacrar todos os outros membros primeiro!"))
 				return
 
-	user.visible_message(span_warning("[user]Começa a cortar[limb_descriptor]Separados!"), span_notice("Você começa a cortar[limb_descriptor]Separados..."), ignored_mobs = target.owner)
+	user.visible_message(span_warning("[user] Começa a cortar [limb_descriptor] Separados!"), span_notice("Você começa a cortar [limb_descriptor] Separados..."), ignored_mobs = target.owner)
 	if (target.owner)
-		to_chat(target.owner, span_warning("[user]começa a cortar seu[target.plaintext_zone]Separados!"))
+		to_chat(target.owner, span_warning("[user] começa a cortar seu [target.plaintext_zone] Separados!"))
 
 	playsound(target.loc, butcher_sound, 50, TRUE, -1)
 	if (!do_after(user, speed * speed_modifier, target.owner || target))
@@ -270,7 +270,7 @@
 			meat.subjectname = target.owner.real_name
 			meat.subjectjob = target.owner.job
 
-	user.visible_message(span_warning("[user]Açougueiros.[limb_descriptor]!"), span_notice("Seu açougueiro.[limb_descriptor]."), ignored_mobs = target.owner)
+	user.visible_message(span_warning("[user] Açougueiros.[limb_descriptor]!"), span_notice("Seu açougueiro.[limb_descriptor]."), ignored_mobs = target.owner)
 	if (!target.owner)
 		target.drop_organs(violent_removal = TRUE) // Should not happen, but just in case
 		create_replacement_limb(target, drop_loc)
@@ -289,7 +289,7 @@
 			else
 				wound_type = WOUND_BLUNT
 
-	to_chat(target.owner, span_userdanger("[user]Corta a carne do seu[target.plaintext_zone]!"))
+	to_chat(target.owner, span_userdanger("[user] Corta a carne do seu [target.plaintext_zone]!"))
 	var/mob/living/carbon/victim = target.owner
 
 	if (!target.butcher_replacement)
@@ -321,14 +321,14 @@
 	return replacement
 
 /datum/component/butchering/proc/start_butcher(obj/item/source, mob/living/target, mob/living/user)
-	to_chat(user, span_notice("Você começa a matar[target]..."))
+	to_chat(user, span_notice("Você começa a matar [target]..."))
 	playsound(target.loc, butcher_sound, 50, TRUE, -1)
 	if (do_after(user, speed, target) && target.Adjacent(source))
 		on_butchering(user, target)
 
 /datum/component/butchering/proc/butcher_human(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
 	if (DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("Você já está interagindo com[victim]!"))
+		to_chat(user, span_warning("Você já está interagindo com [victim]!"))
 		return
 
 	var/static/list/butcher_spots = typecacheof(list(
@@ -345,23 +345,23 @@
 			break
 
 	if (!found_spot)
-		to_chat(user, span_warning("Você precisa de um lugar melhor para açougueiro[victim]!"))
+		to_chat(user, span_warning("Você precisa de um lugar melhor para açougueiro [victim]!"))
 		return
 
 	var/obj/item/bodypart/limb = victim.get_bodypart(deprecise_zone(user.zone_selected))
 	if (!limb)
-		to_chat(user, span_warning("[victim]não tem[parse_zone(deprecise_zone(user.zone_selected))]!"))
+		to_chat(user, span_warning("[victim] não tem [parse_zone(deprecise_zone(user.zone_selected))]!"))
 		return
 
 	butcher_limb(source, limb, user)
 
 /datum/component/butchering/proc/start_neck_slice(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
 	if (DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("Você já está interagindo com[victim]!"))
+		to_chat(user, span_warning("Você já está interagindo com [victim]!"))
 		return
 
-	user.visible_message(span_danger("[user]Está cortando[victim]A garganta!"), 					span_danger("Você começa a cortar[victim]A garganta!"), 					span_hear("Você ouve um barulho de corte!"), ignored_mobs = victim)
-	victim.show_message(span_userdanger("Sua garganta está sendo cortada por[user]!"), MSG_VISUAL, 					span_userdanger("Algo está cortando seu pescoço!"), NONE)
+	user.visible_message(span_danger("[user] Está cortando [victim] A garganta!"), 					span_danger("Você começa a cortar [victim] A garganta!"), 					span_hear("Você ouve um barulho de corte!"), ignored_mobs = victim)
+	victim.show_message(span_userdanger("Sua garganta está sendo cortada por [user]!"), MSG_VISUAL, 					span_userdanger("Algo está cortando seu pescoço!"), NONE)
 	log_combat(user, victim, "attempted throat slitting", source)
 
 	playsound(victim.loc, butcher_sound, 50, TRUE, -1)
@@ -369,10 +369,10 @@
 		return
 
 	if (victim.has_status_effect(/datum/status_effect/neck_slice))
-		user.show_message(span_warning("[victim]O pescoço já foi cortado, não pode piorar o sangramento!"), MSG_VISUAL, 						span_warning("O pescoço já foi cortado, não pode piorar o sangramento!"))
+		user.show_message(span_warning("[victim] O pescoço já foi cortado, não pode piorar o sangramento!"), MSG_VISUAL, 						span_warning("O pescoço já foi cortado, não pode piorar o sangramento!"))
 		return
 
-	victim.visible_message(span_danger("[user]Cortes[victim]A garganta!"), 				span_userdanger("[user]Corta sua garganta..."))
+	victim.visible_message(span_danger("[user] Cortes [victim] A garganta!"), 				span_userdanger("[user] Corta sua garganta..."))
 	log_combat(user, victim, "wounded via throat slitting", source)
 	victim.apply_damage(source.force, BRUTE, BODY_ZONE_HEAD, wound_bonus=CANT_WOUND) // easy tiger, we'll get to that in a sec
 	var/obj/item/bodypart/slit_throat = victim.get_bodypart(BODY_ZONE_HEAD)
@@ -393,7 +393,7 @@
 	var/bonus_chance = max(0, (final_effectiveness - 100) + bonus_modifier) //so 125 total effectiveness = 25% extra chance
 
 	if (target.flags_1 & HOLOGRAM_1)
-		butcher.visible_message(span_notice("[butcher]Tenta matar[target]Mas desaparece."), 			span_notice("Você tenta açougueiro[target]Mas desaparece."))
+		butcher.visible_message(span_notice("[butcher] Tenta matar [target] Mas desaparece."), 			span_notice("Você tenta açougueiro [target] Mas desaparece."))
 		qdel(target)
 		return
 
@@ -425,9 +425,9 @@
 
 	if (butcher)
 		if (length(failures))
-			to_chat(butcher, span_warning("Você falhou em colher alguns dos[english_list(failures)]De[target]."))
+			to_chat(butcher, span_warning("Você falhou em colher alguns dos [english_list(failures)] De [target]."))
 		if (length(bonuses))
-			to_chat(butcher, span_info("Você colhe um extra.[english_list(bonuses)]De[target]!"))
+			to_chat(butcher, span_info("Você colhe um extra.[english_list(bonuses)] De [target]!"))
 
 	for (var/obj/guaranteed_remains as anything in target.guaranteed_butcher_results)
 		var/amount = target.guaranteed_butcher_results[guaranteed_remains]
@@ -470,7 +470,7 @@
 					diseased_remains.AddComponent(/datum/component/infective, diseases_to_add)
 
 	if (butcher)
-		butcher.visible_message(span_notice("[butcher]Açougueiros.[target]."), 			span_notice("Seu açougueiro.[target]."))
+		butcher.visible_message(span_notice("[butcher] Açougueiros.[target]."), 			span_notice("Seu açougueiro.[target]."))
 	butcher_callback?.Invoke(butcher, target)
 	target.harvest(butcher)
 	target.log_message("has been butchered by [key_name(butcher)]", LOG_ATTACK)

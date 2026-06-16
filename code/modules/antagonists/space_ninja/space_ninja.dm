@@ -108,7 +108,7 @@
 	SEND_SOUND(owner.current, sound('sound/music/antag/ninja_greeting.ogg'))
 	to_chat(owner.current, span_danger("Sou um mercenário de elite do poderoso Clã Aranha!"))
 	to_chat(owner.current, span_warning("Surpresa é minha arma. Sombras são minha armadura. Sem eles, não sou nada."))
-	to_chat(owner.current, span_notice("A estação está localizada ao seu[dir2text(get_dir(owner.current, locate(world.maxx/2, world.maxy/2, owner.current.z)))]Uma estrela ninja será uma ótima maneira de chegar lá."))
+	to_chat(owner.current, span_notice("A estação está localizada ao seu [dir2text(get_dir(owner.current, locate(world.maxx/2, world.maxy/2, owner.current.z)))] Uma estrela ninja será uma ótima maneira de chegar lá."))
 	owner.announce_objectives()
 
 /datum/antagonist/ninja/on_gain() // BUBBER EDIT BEGIN- WHOLE PROC EDITS

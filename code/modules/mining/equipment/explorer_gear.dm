@@ -142,23 +142,23 @@
 		return NONE
 	var/mob/living/carbon/char = user
 	if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_OCLOTHING) == src))
-		to_chat(user, span_warning("Você não pode se ajustar.[src]Encontre o Usava!"))
+		to_chat(user, span_warning("Você não pode se ajustar.[src] Encontre o Usava!"))
 		return CLICK_ACTION_BLOCKING
 	if(!user.is_holding(src))
-		to_chat(user, span_warning("Você deve estar segurando.[src]Para ajustar!"))
+		to_chat(user, span_warning("Você deve estar segurando.[src] Para ajustar!"))
 		return CLICK_ACTION_BLOCKING
 	if(slot_flags & ITEM_SLOT_OCLOTHING)
 		slot_flags = ITEM_SLOT_NECK
 		cold_protection = null
 		heat_protection = null
 		set_armor(/datum/armor/none)
-		user.visible_message(span_notice("[user]Ajusta o seu[src]Para usar cerimonial."), span_notice("Você ajusta o seu[src]Para usar cerimonial."))
+		user.visible_message(span_notice("[user] Ajusta o seu [src] Para usar cerimonial."), span_notice("Você ajusta o seu [src] Para usar cerimonial."))
 	else
 		slot_flags = initial(slot_flags)
 		cold_protection = initial(cold_protection)
 		heat_protection = initial(heat_protection)
 		set_armor(initial(armor_type))
-		user.visible_message(span_notice("[user]Ajusta o seu[src]Para usar defensivo."), span_notice("Você ajusta o seu[src]Para usar defensivo."))
+		user.visible_message(span_notice("[user] Ajusta o seu [src] Para usar defensivo."), span_notice("Você ajusta o seu [src] Para usar defensivo."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/head/hooded/cloakhood/goliath

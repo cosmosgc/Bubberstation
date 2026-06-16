@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(magicarp_spell_colours, list(
 /// Updates name based on chosen spell
 /mob/living/basic/carp/magic/proc/assign_spell()
 	var/obj/projectile/spell_type = pick(allowed_projectile_types)
-	name = "[GLOB.magicarp_spell_types[spell_type]] [name]"
+	name = "[GLOB.magicarp_spell_types [spell_type]] [name]"
 	set_greyscale(colors = list(GLOB.magicarp_spell_colours[spell_type]))
 
 	spell = new (src)

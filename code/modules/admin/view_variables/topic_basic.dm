@@ -35,7 +35,7 @@
 			if (!C)
 				return
 			if(!target)
-				to_chat(usr, span_warning("O objeto que você tentou expor[C]não existe mais"), confidential = TRUE)
+				to_chat(usr, span_warning("O objeto que você tentou expor [C] não existe mais"), confidential = TRUE)
 				return
 			message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='byond://?_src_=vars;datumrefresh=[REF(target)]'>VV window</a>")
 			log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [target]")

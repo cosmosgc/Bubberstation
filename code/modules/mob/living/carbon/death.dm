@@ -24,7 +24,7 @@
 	var/atom/Tsec = drop_location()
 	for(var/mob/M in src)
 		M.forceMove(Tsec)
-		visible_message(span_danger("[M]Estourou.[src]!"))
+		visible_message(span_danger("[M] Estourou.[src]!"))
 	return ..()
 
 /mob/living/carbon/get_gibs_type(drop_bitflags = NONE)

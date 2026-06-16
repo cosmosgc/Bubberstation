@@ -67,7 +67,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/pulse)
 
 /obj/item/gun/energy/pulse/destroyer/attack_self(mob/living/user)
-	to_chat(user, span_danger("[src.name]tem três configurações, e todas são Destruição."))
+	to_chat(user, span_danger("[src.name] tem três configurações, e todas são Destruição."))
 
 /obj/item/gun/energy/pulse/pistol
 	name = "pulse pistol"

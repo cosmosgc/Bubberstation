@@ -34,7 +34,7 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			grenades += I
-			balloon_alert(user, "[grenades.len] / [max_grenades]Granadas carregadas.")
+			balloon_alert(user, "[grenades.len] / [max_grenades] Granadas carregadas.")
 		else
 			balloon_alert(user, "Já está cheio!")
 
@@ -42,7 +42,7 @@
 	return grenades.len
 
 /obj/item/gun/grenadelauncher/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	user.visible_message(span_danger("[user]Disparei uma granada!"), 						span_danger("Você dispara o lançador de granadas!"))
+	user.visible_message(span_danger("[user] Disparei uma granada!"), 						span_danger("Você dispara o lançador de granadas!"))
 	var/obj/item/grenade/F = grenades[1] //Now with less copypasta!
 	grenades -= F
 	F.forceMove(user.loc)

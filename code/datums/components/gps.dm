@@ -148,11 +148,11 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	var/atom/A = parent
 	if(tracking)
 		A.cut_overlay("working")
-		to_chat(user, span_notice("[parent]não está mais rastreando, ou visível para outros dispositivos GPS."))
+		to_chat(user, span_notice("[parent] não está mais rastreando, ou visível para outros dispositivos GPS."))
 		tracking = FALSE
 	else
 		A.add_overlay("working")
-		to_chat(user, span_notice("[parent]está agora rastreando, e visível para outros dispositivos GPS."))
+		to_chat(user, span_notice("[parent] está agora rastreando, e visível para outros dispositivos GPS."))
 		tracking = TRUE
 
 	if(debug_mode)
@@ -164,7 +164,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 /datum/component/gps/item/ui_interact(mob/user, datum/tgui/ui)
 	if(emped)
-		to_chat(user, span_hear("[parent]Fraqueza Fraca."))
+		to_chat(user, span_hear("[parent] Fraqueza Fraca."))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

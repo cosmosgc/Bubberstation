@@ -158,7 +158,7 @@
 	if(!is_cyborg)
 		return TRUE
 	if (user)
-		to_chat(user, span_warning("[src]é muito integrado em seu chassis e não pode ser moído!"))
+		to_chat(user, span_warning("[src] é muito integrado em seu chassis e não pode ser moído!"))
 	return FALSE
 
 /obj/item/stack/grind_atom(datum/reagents/target_holder, mob/user)
@@ -423,7 +423,7 @@
 		var/adjusted_time = 0
 		builder.balloon_alert(builder, "building...")
 		builder.visible_message(
-			span_notice("[builder]Começa a construir\a [recipe.title]."),
+			span_notice("[builder] Começa a construir\a [recipe.title]."),
 			span_notice("Você começa a construir\a [recipe.title]..."),
 		)
 		if(HAS_TRAIT(builder, recipe.trait_booster))
@@ -549,7 +549,7 @@
 		for(var/direction in GLOB.cardinals)
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result_type) in nearby_turf)
-				to_chat(builder, span_warning("\The [recipe.title]Não deve ser construído diretamente adjacente a outro!"))
+				to_chat(builder, span_warning("\The [recipe.title] Não deve ser construído diretamente adjacente a outro!"))
 				builder.balloon_alert(builder, "Não pode ser adjacente a outro!")
 				return FALSE
 
@@ -594,11 +594,11 @@
 		// then a more specific message about how much they need and what they need specifically
 		if(singular_name)
 			if(amount > 1)
-				to_chat(user, span_warning("Você precisa pelo menos[amount] [singular_name]Para fazer isso!"))
+				to_chat(user, span_warning("Você precisa pelo menos [amount] [singular_name] Para fazer isso!"))
 			else
-				to_chat(user, span_warning("Você precisa pelo menos[amount] [singular_name]Para fazer isso!"))
+				to_chat(user, span_warning("Você precisa pelo menos [amount] [singular_name] Para fazer isso!"))
 		else
-			to_chat(user, span_warning("Você precisa pelo menos[amount]Para fazer isso!"))
+			to_chat(user, span_warning("Você precisa pelo menos [amount] Para fazer isso!"))
 
 		return FALSE
 
@@ -755,7 +755,7 @@
 	if(!stackmaterial || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	split_n_take(user, stackmaterial)
-	to_chat(user, span_notice("Você pega.[stackmaterial]lençóis fora da pilha."))
+	to_chat(user, span_notice("Você pega.[stackmaterial] lençóis fora da pilha."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /** Splits the stack into two stacks, returns the new stack.
@@ -794,7 +794,7 @@
 	if(can_merge(W, inhand = TRUE))
 		var/obj/item/stack/S = W
 		if(merge(S))
-			to_chat(user, span_notice("Sua[S.name]pilha agora contém[S.get_amount()] [S.singular_name]\s."))
+			to_chat(user, span_notice("Sua [S.name] pilha agora contém [S.get_amount()] [S.singular_name]\s."))
 	else
 		. = ..()
 

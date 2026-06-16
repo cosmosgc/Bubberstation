@@ -32,7 +32,7 @@
 		. += span_info("Ele contém\a [inserted_case].")
 	else
 		. += span_warning("Parece haver algo dentro, mas não dá para saber o que daqui...")
-	. += span_info("Alt-click para remover[inserted_case].")
+	. += span_info("Alt-click para remover [inserted_case].")
 
 /obj/item/implantpad/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -117,7 +117,7 @@
 		user.balloon_alert(user, "Sem grupo ativo!")
 		return FALSE
 	saved_deathrattle_group = current_group
-	user.balloon_alert(user, "Grupo Salvo[current_group.name]")
+	user.balloon_alert(user, "Grupo Salvo [current_group.name]")
 	update_static_data_for_all_viewers()
 	return TRUE
 

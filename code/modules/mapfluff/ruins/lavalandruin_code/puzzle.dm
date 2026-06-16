@@ -329,13 +329,13 @@
 	if(istype(carbon_victim) && (carbon_victim.handcuffed || carbon_victim.stat != CONSCIOUS))
 		user.do_attack_animation(carbon_victim)
 		if(!puzzle_imprison(carbon_victim))
-			to_chat(user, span_warning("[src]não faz nada."))
+			to_chat(user, span_warning("[src] não faz nada."))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_warning("Você é uma armadilha.[carbon_victim]no cubo da prisão!"))
+		to_chat(user, span_warning("Você é uma armadilha.[carbon_victim] no cubo da prisão!"))
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_notice("[src]Só aceita prisioneiros restritos ou inconscientes."))
+	to_chat(user, span_notice("[src] Só aceita prisioneiros restritos ou inconscientes."))
 	return ITEM_INTERACT_BLOCKING
 
 /proc/puzzle_imprison(mob/living/prisoner)

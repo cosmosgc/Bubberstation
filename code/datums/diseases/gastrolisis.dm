@@ -42,7 +42,7 @@
 			if(!eyes && SPT_PROB(2.5, seconds_per_tick))
 				var/obj/item/organ/eyes/snail/new_eyes = new()
 				new_eyes.Insert(affected_mob)
-				affected_mob.visible_message(span_warning("[affected_mob]Os olhos caem, com olhos de caracol tomando seu lugar!"), 				span_userdanger("Você grita de dor enquanto seus olhos são empurrados pelos seus novos olhos de caracol!"))
+				affected_mob.visible_message(span_warning("[affected_mob] Os olhos caem, com olhos de caracol tomando seu lugar!"), 				span_userdanger("Você grita de dor enquanto seus olhos são empurrados pelos seus novos olhos de caracol!"))
 				affected_mob.emote("scream")
 				return
 
@@ -52,7 +52,7 @@
 			if(!shell && SPT_PROB(2.5, seconds_per_tick))
 				if(affected_mob.dropItemToGround(affected_mob.get_item_by_slot(ITEM_SLOT_BACK)))
 					affected_mob.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(affected_mob), ITEM_SLOT_BACK)
-					affected_mob.visible_message(span_warning("[affected_mob]cresce uma concha grotesca em suas costas!"), 					span_userdanger("Você grita de dor como uma concha se empurra para fora de sua pele!"))
+					affected_mob.visible_message(span_warning("[affected_mob] cresce uma concha grotesca em suas costas!"), 					span_userdanger("Você grita de dor como uma concha se empurra para fora de sua pele!"))
 					affected_mob.emote("scream")
 					return
 
@@ -66,7 +66,7 @@
 			if(shell && eyes && tongue && SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.set_species(/datum/species/snail)
 				affected_mob.client?.give_award(/datum/award/achievement/jobs/snail, affected_mob)
-				affected_mob.visible_message(span_warning("[affected_mob]Se transformar em um caracol!"), 				span_boldnotice("Você se transformou em uma pessoa caracol! Você sente um impulso para cccrraaawwwll..."))
+				affected_mob.visible_message(span_warning("[affected_mob] Se transformar em um caracol!"), 				span_boldnotice("Você se transformou em uma pessoa caracol! Você sente um impulso para cccrraaawwwll..."))
 				cure()
 				return FALSE
 

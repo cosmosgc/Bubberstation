@@ -245,7 +245,7 @@
 			to_chat(new_player, span_notice("Há [queue_position-1] jogadores na sua frente na fila para entrar no jogo."))
 		else
 			SSticker.queued_players += new_player
-			to_chat(new_player, span_notice("Você foi adicionado à fila para entrar no jogo. Sua posição na fila é[SSticker.queued_players.len]."))
+			to_chat(new_player, span_notice("Você foi adicionado à fila para entrar no jogo. Sua posição na fila é [SSticker.queued_players.len]."))
 		return
 
 	new_player.auto_deadmin_on_ready_or_latejoin()

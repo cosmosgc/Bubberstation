@@ -12,21 +12,21 @@
 	if(obj_flags & EMAGGED || . & EMP_PROTECT_SELF)
 		return
 	obj_flags |= EMAGGED
-	desc = "[desc]A tela está piscando ligeiramente."
+	desc = "[desc] A tela está piscando ligeiramente."
 
 /obj/item/clothing/glasses/hud/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
 	balloon_alert(user, "Exibição embaralhada")
-	desc = "[desc]A tela está piscando ligeiramente."
+	desc = "[desc] A tela está piscando ligeiramente."
 	return TRUE
 
 /obj/item/clothing/glasses/hud/suicide_act(mob/living/user)
 	if(user.is_blind())
 		return SHAME
 	var/mob/living/living_user = user
-	user.visible_message(span_suicide("[user]Olhe através[src]e parece sobrecarregado com a informação! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Olhe através [src] e parece sobrecarregado com a informação! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(living_user.get_organ_loss(ORGAN_SLOT_BRAIN) >= BRAIN_DAMAGE_SEVERE)
 		var/mob/thing = pick((/mob in view()) - user)
 		if(thing)

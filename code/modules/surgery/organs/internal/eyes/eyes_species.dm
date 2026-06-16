@@ -14,7 +14,7 @@
 	penlight_message = "estão podres e decaídas!"
 
 /obj/item/organ/eyes/zombie/penlight_examine(mob/living/viewer, obj/item/examtool)
-	return span_danger("[owner.p_Their()]Olhos.[penlight_message]")
+	return span_danger("[owner.p_Their()] Olhos.[penlight_message]")
 
 /obj/item/organ/eyes/alien
 	name = "alien eyes"

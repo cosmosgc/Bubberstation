@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 
 /turf/open/misc/asteroid/snow/burn_tile()
 	if(!burnt)
-		visible_message(span_danger("[src]Derrete!"))
+		visible_message(span_danger("[src] Derrete!"))
 		slowdown = 0
 		burnt = TRUE
 		update_appearance()
@@ -268,21 +268,21 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 	if(dug)
 		if(tool.use(DIG_SHEET_AMOUNT))
 			user.visible_message(
-				span_notice("[user]Pacotes.[src]De volta."),
-				span_notice("Você faz as malas.[src]De volta."),
+				span_notice("[user] Pacotes.[src] De volta."),
+				span_notice("Você faz as malas.[src] De volta."),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			refill_dug()
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, "Você não tem o suficiente.[tool.name]Para preencher o buraco.")
+		to_chat(user, "Você não tem o suficiente.[tool.name] Para preencher o buraco.")
 		return ITEM_INTERACT_BLOCKING
 
 	if(footprint_entrance_dirs || footprint_exit_dirs)
 		if(tool.use(1))
 			user.visible_message(
-				span_notice("[user]Preenche como pegadas.[src]."),
-				span_notice("Você preenche as pegadas[src]."),
+				span_notice("[user] Preenche como pegadas.[src]."),
+				span_notice("Você preenche as pegadas [src]."),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			clear_footprints()

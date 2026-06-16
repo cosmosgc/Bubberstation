@@ -50,11 +50,11 @@
 	. = ..()
 	if(active_tables.len >= tables_required)
 		if(!active)
-			visible_message("<span class='revenboldnotice'>				[src]abre seus olhos.</span>")
+			visible_message("<span class='revenboldnotice'>				[src] abre seus olhos.</span>")
 		active = TRUE
 	else
 		if(active)
-			visible_message("<span class='revenboldnotice'>				[src]Fecha os olhos.</span>")
+			visible_message("<span class='revenboldnotice'>				[src] Fecha os olhos.</span>")
 		active = FALSE
 	update_appearance()
 
@@ -110,7 +110,7 @@
 	for(var/i in found - sleepers)
 		var/mob/living/L = i
 		L.add_atom_colour(COLOR_PURPLE, TEMPORARY_COLOUR_PRIORITY)
-		L.visible_message(span_revennotice("Um estranho brilho roxo se envolve ao redor[L]Como[L.p_they()]De repente cair[L.p_s()]inconsciente."),
+		L.visible_message(span_revennotice("Um estranho brilho roxo se envolve ao redor [L] Como [L.p_they()] De repente cair [L.p_s()] inconsciente."),
 			span_revendanger("[desc]"))
 		// Don't let them sit suround unconscious forever
 		addtimer(CALLBACK(src, PROC_REF(sleeper_dreams), L), 10 SECONDS)
@@ -124,7 +124,7 @@
 	for(var/i in sleepers - found)
 		var/mob/living/L = i
 		L.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_PURPLE)
-		L.visible_message("<span class='revennotice'>O brilho de[L]Desaparece.</span>")
+		L.visible_message("<span class='revennotice'>O brilho de [L] Desaparece.</span>")
 		L.grab_ghost()
 
 	sleepers = found
@@ -379,7 +379,7 @@
 		for(var/obj/I in counted_money)
 			qdel(I)
 		if(!check_times[AM] || check_times[AM] < world.time) //Let's not spam the message
-			to_chat(AM, span_notice("[payees[AM]] [MONEY_SYMBOL]Recebido. Você precisa.[threshold-payees[AM]] [MONEY_SYMBOL]Mais."))
+			to_chat(AM, span_notice("[payees [AM]] [MONEY_SYMBOL] Recebido. Você precisa.[threshold-payees [AM]] [MONEY_SYMBOL] Mais."))
 			check_times[AM] = world.time + LUXURY_MESSAGE_COOLDOWN
 		alarm_beep()
 		return ..()

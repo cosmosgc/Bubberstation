@@ -131,7 +131,7 @@ Des: Removes all infected images from the alien.
 
 /mob/living/carbon/alien/proc/alien_evolve(mob/living/carbon/alien/new_xeno)
 	visible_message(
-		span_alertalien("[src]Começa a girar e contorcer!"),
+		span_alertalien("[src] Começa a girar e contorcer!"),
 		span_noticealien("Você começa a evoluir!"),
 	)
 

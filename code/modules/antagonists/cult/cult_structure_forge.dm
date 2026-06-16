@@ -21,7 +21,7 @@
 		NARSIE_ARMOR = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/clothing/suits/armor.dmi', icon_state = "cult_armor"),
 			OUTPUT_ITEMS = list(/obj/item/clothing/suit/hooded/cultrobes/hardened),
-			RADIAL_DESC = "Smiths um conjunto de[/obj/item/clothing/suit/hooded/cultrobes/hardened::name]Uma armadura robusta que pode suportar o espaço.",
+			RADIAL_DESC = "Smiths um conjunto de [/obj/item/clothing/suit/hooded/cultrobes/hardened::name] Uma armadura robusta que pode suportar o espaço.",
 			),
 		ELDRITCH_SWORD = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/weapons/sword.dmi', icon_state = "cultblade"),
@@ -42,13 +42,13 @@
 	return list(CURSED_BLADE = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/weapons/khopesh.dmi', icon_state = "cursed_blade"),
 			OUTPUT_ITEMS = list(/obj/item/melee/sickly_blade/cursed),
-			RADIAL_DESC = "Smiths.[/obj/item/melee/sickly_blade/cursed::name]Uma adaga atualizada que pode ser quebrada para um teletransporte de emergência.",
+			RADIAL_DESC = "Smiths.[/obj/item/melee/sickly_blade/cursed::name] Uma adaga atualizada que pode ser quebrada para um teletransporte de emergência.",
 			),
 	)
 
 
 /obj/structure/destructible/cult/item_dispenser/forge/succcess_message(mob/living/user, obj/item/spawned_item)
-	to_chat(user, span_cult_italic("Você trabalha.[src]como o conhecimento sombrio guia suas mãos, criando[spawned_item]!"))
+	to_chat(user, span_cult_italic("Você trabalha.[src] como o conhecimento sombrio guia suas mãos, criando [spawned_item]!"))
 
 /obj/structure/destructible/cult/item_dispenser/forge/engine
 	name = "magma engine"

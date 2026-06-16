@@ -41,7 +41,7 @@
 		. |= COMPONENT_CLEANED|COMPONENT_CLEANED_GAIN_XP
 
 /obj/item/clothing/gloves/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("\the [src]estão forçando[user]As mãos ao redor[user.p_their()]pescoço! Parece que as luvas estão possuídas!"))
+	user.visible_message(span_suicide("\the [src] estão forçando [user] As mãos ao redor [user.p_their()] pescoço! Parece que as luvas estão possuídas!"))
 	return OXYLOSS
 
 /obj/item/clothing/gloves/worn_overlays(mutable_appearance/standing, isinhands = FALSE)

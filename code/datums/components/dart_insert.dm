@@ -52,10 +52,10 @@
 	if(!istype(dart))
 		return
 	if(!dart.modified)
-		to_chat(user, span_warning("A tampa de segurança o impede de inserir[parent]Em[dart]."))
+		to_chat(user, span_warning("A tampa de segurança o impede de inserir [parent] Em [dart]."))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	if(HAS_TRAIT(dart, TRAIT_DART_HAS_INSERT))
-		to_chat(user, span_warning("Já tem algo dentro[dart]."))
+		to_chat(user, span_warning("Já tem algo dentro [dart]."))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	add_to_dart(dart, user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -70,7 +70,7 @@
 	if(user)
 		if(!user.transferItemToLoc(parent_item, dart_projectile))
 			return
-		to_chat(user, span_notice("Você insere[parent_item]Em[dart]."))
+		to_chat(user, span_notice("Você insere [parent_item] Em [dart]."))
 	else
 		parent_item.forceMove(dart_projectile)
 	ADD_TRAIT(dart, TRAIT_DART_HAS_INSERT, REF(src))
@@ -105,7 +105,7 @@
 	UnregisterSignal(parent, list(COMSIG_QDELETING, COMSIG_MOVABLE_MOVED))
 	if(user)
 		INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), parent)
-		to_chat(user, span_notice("Você tira.[parent]De[dart]."))
+		to_chat(user, span_notice("Você tira.[parent] De [dart]."))
 
 /datum/component/dart_insert/proc/on_dart_attack_self(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -113,7 +113,7 @@
 
 /datum/component/dart_insert/proc/on_dart_examine_more(datum/source, mob/user, list/examine_list)
 	var/obj/item/parent_item = parent
-	examine_list += span_notice("Você pode ver um[parent_item.name]Inserido nele.")
+	examine_list += span_notice("Você pode ver um [parent_item.name] Inserido nele.")
 
 /datum/component/dart_insert/proc/on_leave_dart()
 	SIGNAL_HANDLER

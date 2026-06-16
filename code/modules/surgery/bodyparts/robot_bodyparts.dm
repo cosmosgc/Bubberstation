@@ -129,7 +129,7 @@
 	owner.Knockdown(knockdown_time)
 	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
 		return
-	to_chat(owner, span_danger("Como seu[plaintext_zone]Inesperadamente avarias, faz você cair no chão!"))
+	to_chat(owner, span_danger("Como seu [plaintext_zone] Inesperadamente avarias, faz você cair no chão!"))
 	return
 
 /obj/item/bodypart/leg/right/robot
@@ -179,7 +179,7 @@
 	owner.Knockdown(knockdown_time)
 	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
 		return
-	to_chat(owner, span_danger("Como seu[plaintext_zone]Inesperadamente avarias, faz você cair no chão!"))
+	to_chat(owner, span_danger("Como seu [plaintext_zone] Inesperadamente avarias, faz você cair no chão!"))
 	return
 
 /obj/item/bodypart/chest/robot
@@ -240,7 +240,7 @@
 
 	var/damage_percent_to_max = (get_damage() / max_damage)
 	if (stun_time && (damage_percent_to_max >= robotic_emp_paralyze_damage_percent_threshold))
-		to_chat(owner, span_danger("Sua[plaintext_zone]As placas lógicas temporariamente não respondem!"))
+		to_chat(owner, span_danger("Sua [plaintext_zone] As placas lógicas temporariamente não respondem!"))
 		owner.Stun(stun_time)
 	owner.Shake(pixelshiftx = shift_x, pixelshifty = shift_y, duration = shake_duration)
 	return
@@ -302,24 +302,24 @@
 /obj/item/bodypart/chest/robot/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(cell)
-			to_chat(user, span_warning("Uma célula já está presente em[src]!"))
+			to_chat(user, span_warning("Uma célula já está presente em [src]!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		cell = tool
-		to_chat(user, span_notice("Você insere[cell]em[src]."))
+		to_chat(user, span_notice("Você insere [cell] em [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/stack/cable_coil))
 		if(wired)
-			to_chat(user, span_warning("[src]Já está ligado!"))
+			to_chat(user, span_warning("[src] Já está ligado!"))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/cable_coil/coil = tool
 		if (!coil.use(1))
 			to_chat(user, span_warning("Você precisa de uma bobina para enfiá-lo!"))
 			return ITEM_INTERACT_BLOCKING
 		wired = TRUE
-		to_chat(user, span_notice("Você liga a célula dentro de[src]."))
+		to_chat(user, span_notice("Você liga a célula dentro de [src]."))
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
@@ -329,7 +329,7 @@
 		return
 	. = TRUE
 	cutter.play_tool_sound(src)
-	to_chat(user, span_notice("Você cortou os fios[src]."))
+	to_chat(user, span_notice("Você cortou os fios [src]."))
 	new /obj/item/stack/cable_coil(drop_location(), 1)
 	wired = FALSE
 
@@ -340,14 +340,14 @@
 		to_chat(user, span_warning("Não há nenhuma célula de energia instalada.[src]!"))
 		return
 	screwtool.play_tool_sound(src)
-	to_chat(user, span_notice("Remover[cell]De[src]."))
+	to_chat(user, span_notice("Remover [cell] De [src]."))
 	cell.forceMove(drop_location())
 
 /obj/item/bodypart/chest/robot/examine(mob/user)
 	. = ..()
 	if(cell)
 		. += {"It has a [cell] inserted.\n
-		[span_info("Você pode usar um<b>Chave de fenda</b>Para remover[cell].")]"}
+		[span_info("Você pode usar um<b>Chave de fenda</b>Para remover [cell].")]"}
 	else
 		. += span_info("Tem um porto vazio para um<b>Célula de energia</b>.")
 	if(wired)
@@ -408,7 +408,7 @@
 	if(!. || isnull(owner))
 		return
 
-	to_chat(owner, span_danger("Sua[plaintext_zone]Os transmissores ópticos falham e falham!"))
+	to_chat(owner, span_danger("Sua [plaintext_zone] Os transmissores ópticos falham e falham!"))
 
 	var/glitch_duration = AUGGED_HEAD_EMP_GLITCH_DURATION
 	if (severity == EMP_HEAVY)
@@ -450,7 +450,7 @@
 
 	var/obj/item/assembly/flash/handheld/flash = tool
 	if(flash1 && flash2)
-		to_chat(user, span_warning("[src]Já tem os dois olhos presentes!"))
+		to_chat(user, span_warning("[src] Já tem os dois olhos presentes!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(flash.burnt_out)
@@ -471,11 +471,11 @@
 	..()
 	if(flash1 || flash2)
 		prytool.play_tool_sound(src)
-		to_chat(user, span_notice("Você remove o flash de[src]."))
+		to_chat(user, span_notice("Você remove o flash de [src]."))
 		flash1?.forceMove(drop_location())
 		flash2?.forceMove(drop_location())
 	else
-		to_chat(user, span_warning("Não há nenhum flash para remover[src]."))
+		to_chat(user, span_warning("Não há nenhum flash para remover [src]."))
 	return TRUE
 
 /obj/item/bodypart/head/robot/drop_organs(mob/user, violent_removal)

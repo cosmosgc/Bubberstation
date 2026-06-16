@@ -81,7 +81,7 @@
 		finish_action(controller, FALSE)
 		return
 
-	victim.visible_message(span_warning("[living_pawn]Começa a tentar levar[target]De[victim]!"), span_danger("[living_pawn]Tenta levar[target]!"))
+	victim.visible_message(span_warning("[living_pawn] Começa a tentar levar [target] De [victim]!"), span_danger("[living_pawn] Tenta levar [target]!"))
 
 	controller.set_blackboard_key(BB_MONKEY_PICKPOCKETING, TRUE)
 
@@ -91,14 +91,14 @@
 
 		for(var/obj/item/I in victim.held_items)
 			if(I == target)
-				victim.visible_message(span_danger("[living_pawn]Raptos[target]De[victim]."), span_userdanger("[living_pawn]Arrebatado[target]!"))
+				victim.visible_message(span_danger("[living_pawn] Raptos [target] De [victim]."), span_userdanger("[living_pawn] Arrebatado [target]!"))
 				if(victim.temporarilyRemoveItemFromInventory(target))
 					if(!QDELETED(target) && !equip_item(controller))
 						target.forceMove(living_pawn.drop_location())
 						success = TRUE
 						break
 				else
-					victim.visible_message(span_danger("[living_pawn]Tentei pegar[target]De[victim]Mas falhou!"), span_userdanger("[living_pawn]Tentei agarrar[target]!"))
+					victim.visible_message(span_danger("[living_pawn] Tentei pegar [target] De [victim] Mas falhou!"), span_userdanger("[living_pawn] Tentei agarrar [target]!"))
 
 	finish_action(controller, success) //We either fucked up or got the item.
 

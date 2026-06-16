@@ -10,7 +10,7 @@
 
 /obj/machinery/computer/quantum_console/Initialize(mapload, obj/item/circuitboard/circuit)
 	. = ..()
-	desc = "Mesmo no ano distante[CURRENT_STATION_YEAR]Nanotrasen ainda está usando APIs REST. Que triste."
+	desc = "Mesmo no ano distante [CURRENT_STATION_YEAR] Nanotrasen ainda está usando APIs REST. Que triste."
 
 /obj/machinery/computer/quantum_console/post_machine_initialize()
 	. = ..()

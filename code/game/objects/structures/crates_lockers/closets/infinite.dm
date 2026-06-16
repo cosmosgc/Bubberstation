@@ -30,4 +30,4 @@
 
 /obj/structure/closet/infinite/proc/close_on_my_own()
 	if(close())
-		visible_message(span_notice("\The [src]Fecha por conta própria."))
+		visible_message(span_notice("\The [src] Fecha por conta própria."))

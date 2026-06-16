@@ -41,7 +41,7 @@
 
 /obj/machinery/plumbing/buffer/examine(mob/user)
 	. = ..()
-	. += span_notice("Ele se ativa em um liminar de[activation_volume]Reagentes.")
+	. += span_notice("Ele se ativa em um liminar de [activation_volume] Reagentes.")
 	switch(mode)
 		if(AB_UNREADY)
 			. += span_notice("Está se enchendo de reagentes.")

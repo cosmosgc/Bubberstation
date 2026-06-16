@@ -88,12 +88,12 @@
 	. = ..()
 
 	if(!QDELETED(beaker1))
-		. += span_notice("Input béquer de[beaker1.reagents.maximum_volume]U capacidade está inserida.")
+		. += span_notice("Input béquer de [beaker1.reagents.maximum_volume] U capacidade está inserida.")
 		. += span_notice("Seu copo de entrada pode ser ejetado com[EXAMINE_HINT("LMB Alt")]Clique.")
 	else
 		. += span_warning("Falta um copo de entrada. inserir com[EXAMINE_HINT("Left Click")].")
 	if(!QDELETED(beaker2))
-		. += span_notice("béquer de saída de[beaker2.reagents.maximum_volume]U capacidade está inserida.")
+		. += span_notice("béquer de saída de [beaker2.reagents.maximum_volume] U capacidade está inserida.")
 		. += span_notice("Seu copo de saída pode ser ejetado com[EXAMINE_HINT("RMB Alt")]Clique.")
 	else
 		. += span_warning("Falta um copo de saída, insira com[EXAMINE_HINT("Right Click")].")
@@ -157,7 +157,7 @@
 	if(!replace_beaker(user, !is_right_clicking, item))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Você acrescenta[item]para[is_right_clicking ? "output" : "input"]slot."))
+	to_chat(user, span_notice("Você acrescenta [item] para[is_right_clicking ? "output" : "input"]slot."))
 	update_appearance()
 	ui_interact(user)
 

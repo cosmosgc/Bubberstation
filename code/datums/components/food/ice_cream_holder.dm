@@ -87,7 +87,7 @@
 		var/name_to_use = filled_name || initial(source.name)
 		var/list/unique_list = unique_list(scoops)
 		if(scoops_len > 1 && length(unique_list) == 1) // multiple flavours, and all of the same type
-			source.name = "[make_tuple(scoops_len)] [scoops[1]] [name_to_use]" // "double vanilla" sounds cooler than just "vanilla"
+			source.name = "[make_tuple(scoops_len)] [scoops [1]] [name_to_use]" // "double vanilla" sounds cooler than just "vanilla"
 		else
 			source.name = "[english_list(unique_list)] [name_to_use]"
 
@@ -122,11 +122,11 @@
 		var/key = scoops[1]
 		var/datum/ice_cream_flavour/flavour = GLOB.ice_cream_flavours[LAZYACCESS(special_scoops, key) || key]
 		if(flavour?.desc) //I scream.
-			examine_list += "[source.p_Theyre()]cheio de colheres de[flavour ? flavour.name : "broken, unhappy"]Sorvete."
+			examine_list += "[source.p_Theyre()] cheio de colheres de[flavour ? flavour.name : "broken, unhappy"]Sorvete."
 		else
 			examine_list += replacetext(replacetext("[source.p_Theyre()] [flavour.desc]", "♪ ♪ ♪ ♪ ♪ ♪ ♪ ♪", initial(source.name)), "$CUSTOM NAME", key)
 	else /// Many flavours.
-		examine_list += "[source.p_Theyre()]cheio de colheres de[english_list(scoops)]Sorvete. São tantos quantos[scoops_len]Covers!"
+		examine_list += "[source.p_Theyre()] cheio de colheres de [english_list(scoops)] Sorvete. São tantos quantos [scoops_len] Covers!"
 
 /datum/component/ice_cream_holder/proc/on_update_overlays(atom/source, list/new_overlays)
 	SIGNAL_HANDLER

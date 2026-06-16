@@ -536,7 +536,7 @@ ADMIN_VERB(spawn_debug_full_crew, R_DEBUG, "Spawn Debug Full Crew", "Creates a f
 		// Assign the rank to the new player dummy.
 		if(!SSjob.assign_role(new_guy, job, do_eligibility_checks = FALSE))
 			qdel(new_guy)
-			to_chat(user, "[rank]não foi capaz de ser gerado.")
+			to_chat(user, "[rank] não foi capaz de ser gerado.")
 			continue
 
 		// It's got a job, spawn in a human and shove it in the human.
@@ -557,7 +557,7 @@ ADMIN_VERB(spawn_debug_full_crew, R_DEBUG, "Spawn Debug Full Crew", "Creates a f
 		number_made++
 		CHECK_TICK
 
-	to_chat(user, "[number_made]Membros da tripulação foram criados.")
+	to_chat(user, "[number_made] Membros da tripulação foram criados.")
 
 ADMIN_VERB(debug_spell_requirements, R_DEBUG, "Debug Spell Requirements", "View all spells and their requirements.", ADMIN_CATEGORY_DEBUG)
 	var/header = "<tr><th>Name</th> <th>Requirements</th>"
@@ -690,7 +690,7 @@ ADMIN_VERB(clear_legacy_asset_cache, R_DEBUG, "Clear Legacy Asset Cache", "Clear
 		var/datum/asset/asset_datum = GLOB.asset_datums[target_spritesheet]
 		asset_datum.regenerate()
 		regenerated++
-	to_chat(user, span_notice("Regenerado.[regenerated]Ativo."))
+	to_chat(user, span_notice("Regenerado.[regenerated] Ativo."))
 
 ADMIN_VERB(clear_smart_asset_cache, R_DEBUG, "Clear Smart Asset Cache", "Clear the smart asset cache, causing it to regenerate next round.", ADMIN_CATEGORY_DEBUG)
 	if(!CONFIG_GET(flag/smart_cache_assets))
@@ -700,7 +700,7 @@ ADMIN_VERB(clear_smart_asset_cache, R_DEBUG, "Clear Smart Asset Cache", "Clear t
 	for(var/datum/asset/spritesheet_batched/target_spritesheet as anything in valid_subtypesof(/datum/asset/spritesheet_batched))
 		fdel("[ASSET_CROSS_ROUND_SMART_CACHE_DIRECTORY]/spritesheet_cache.[initial(target_spritesheet.name)].json")
 		cleared++
-	to_chat(user, span_notice("Limpo.[cleared]Ativo."))
+	to_chat(user, span_notice("Limpo.[cleared] Ativo."))
 
 ADMIN_VERB(give_ai_speech, R_FUN, "Give Random AI Speech", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/living/my_guy)
 	if (isnull(my_guy.ai_controller))

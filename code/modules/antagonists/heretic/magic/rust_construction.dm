@@ -47,7 +47,7 @@
 
 	var/mob/living/living_owner = owner
 	invocation = span_danger("<b>[owner]</b> drags [owner.p_their()] hand[living_owner.usable_hands == 1 ? "":"s"] upwards as a wall of rust rises out of [cast_on]!")
-	invocation_self_message = span_notice("Você arrasta[living_owner.usable_hands == 1 ? "a hand":"your hands"]Para cima como uma parede de ferrugem sobe para fora[cast_on].")
+	invocation_self_message = span_notice("Você arrasta[living_owner.usable_hands == 1 ? "a hand":"your hands"]Para cima como uma parede de ferrugem sobe para fora [cast_on].")
 
 /datum/action/cooldown/spell/pointed/rust_construction/cast(turf/cast_on)
 	. = ..()
@@ -55,7 +55,7 @@
 
 	// If we casted at a wall we'll try to rust it. In the case of an enchanted wall it'll deconstruct it
 	if(isclosedturf(cast_on))
-		cast_on.visible_message(span_warning("\The [cast_on]Os tremores fazem com que a ferrugem se desmorone!"))
+		cast_on.visible_message(span_warning("\The [cast_on] Os tremores fazem com que a ferrugem se desmorone!"))
 		var/mob/living/living_owner = owner
 		living_owner?.do_rust_heretic_act(cast_on)
 		// ref transfers to floor
@@ -89,13 +89,13 @@
 		message_shown = TRUE
 		if(IS_HERETIC_OR_MONSTER(living_mob) || living_mob == owner)
 			living_mob.visible_message(
-				span_warning("\A [new_wall] [rises_message]E empurra junto[living_mob]!"),
-				span_notice("\A [new_wall] [rises_message]sob seus pés e empurra você junto!"),
+				span_warning("\A [new_wall] [rises_message] E empurra junto [living_mob]!"),
+				span_notice("\A [new_wall] [rises_message] sob seus pés e empurra você junto!"),
 			)
 		else
 			living_mob.visible_message(
-				span_warning("\A [new_wall] [rises_message]E bater em[living_mob]!"),
-				span_userdanger("\A [new_wall] [rises_message]sob seus pés e bate em você!"),
+				span_warning("\A [new_wall] [rises_message] E bater em [living_mob]!"),
+				span_userdanger("\A [new_wall] [rises_message] sob seus pés e bate em você!"),
 			)
 			living_mob.apply_damage(10, BRUTE, wound_bonus = 10)
 			living_mob.Knockdown(5 SECONDS)

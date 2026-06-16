@@ -20,7 +20,7 @@
 
 /obj/item/clothing/suit/space/eva/plasmaman/examine(mob/user)
 	. = ..()
-	. += span_notice("Ali.[extinguishes_left == 1 ? "is" : "are"] [extinguishes_left]A carga do extintor é deixada neste terno.")
+	. += span_notice("Ali.[extinguishes_left == 1 ? "is" : "are"] [extinguishes_left] A carga do extintor é deixada neste terno.")
 
 /obj/item/clothing/suit/space/eva/plasmaman/equipped(mob/living/user, slot)
 	. = ..()
@@ -51,7 +51,7 @@
 	COOLDOWN_START(src, extinguish_timer, extinguish_cooldown)
 	// Check if our (possibly other) wearer is on fire once the cooldown ends
 	addtimer(CALLBACK(src, PROC_REF(check_fire_state)), extinguish_cooldown)
-	owner.visible_message(span_warning("[owner]O traje se apaga automaticamente.[owner.p_them()]!"), span_warning("Seu traje automaticamente o apaga."))
+	owner.visible_message(span_warning("[owner] O traje se apaga automaticamente.[owner.p_them()]!"), span_warning("Seu traje automaticamente o apaga."))
 	owner.extinguish_mob()
 	new /obj/effect/particle_effect/water(get_turf(owner))
 
@@ -163,17 +163,17 @@
 		return NONE
 
 	if(smile)
-		to_chat(user, span_warning("Parece que alguém já desenhou algo sobre[src]O visor!"))
+		to_chat(user, span_warning("Parece que alguém já desenhou algo sobre [src] O visor!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/toy/crayon/crayon = tool
-	to_chat(user, span_notice("Você começa a desenhar um rosto sorridente[src]O visor..."))
+	to_chat(user, span_notice("Você começa a desenhar um rosto sorridente [src] O visor..."))
 	if(!do_after(user, 2.5 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
 	smile = TRUE
 	smile_color = crayon.paint_color
-	to_chat(user, "Você desenha um sorriso[src]Viseira.")
+	to_chat(user, "Você desenha um sorriso [src] Viseira.")
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 

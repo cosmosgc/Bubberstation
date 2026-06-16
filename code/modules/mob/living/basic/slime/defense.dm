@@ -13,11 +13,11 @@
 		return
 
 	if(buckled == attacker ? prob(60) : prob(30)) //its easier to remove the slime from yourself
-		attacker.visible_message(span_warning("[attacker]Tenta Lutar.\the [defender_slime.name]Fora.[buckled == attacker ? "" : buckled] !"), 		span_danger("[buckled == attacker ? "You attempt" : "[attacker] attempts" ]Para lutar\the [defender_slime.name]Fora.[buckled == attacker ? "" : buckled]!"))
+		attacker.visible_message(span_warning("[attacker] Tenta Lutar.\the [defender_slime.name] Fora.[buckled == attacker ? "" : buckled] !"), 		span_danger("[buckled == attacker ? "You attempt" : "[attacker] attempts" ]Para lutar\the [defender_slime.name] Fora.[buckled == attacker ? "" : buckled]!"))
 		playsound(loc, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
 		return
 
-	attacker.visible_message(span_warning("[attacker]Consegue o Lutar.\the [defender_slime.name]Fora!"), span_notice("Você consegue lutar.\the [defender_slime.name]Fora!"))
+	attacker.visible_message(span_warning("[attacker] Consegue o Lutar.\the [defender_slime.name] Fora!"), span_notice("Você consegue lutar.\the [defender_slime.name] Fora!"))
 	playsound(loc, 'sound/items/weapons/shove.ogg', 50, TRUE, -1)
 
 	defender_slime.discipline_slime()
@@ -51,7 +51,7 @@
 
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, span_danger("[attacking_item]Passa direto[src]!"))
+	to_chat(user, span_danger("[attacking_item] Passa direto [src]!"))
 	return TRUE
 
 ///Attempts to use the item to discipline the unruly slime

@@ -50,7 +50,7 @@
 /obj/structure/ore_box/crowbar_act(mob/living/user, obj/item/I)
 	. = ITEM_INTERACT_BLOCKING
 	if(I.use_tool(src, user, 50, volume = 50))
-		user.visible_message(span_notice("[user]Pries\the [src]Separados."),
+		user.visible_message(span_notice("[user] Pries\the [src] Separados."),
 			span_notice("Você se afasta\the [src]."),
 			span_hear("Você ouve madeira."))
 		deconstruct(TRUE)
@@ -62,7 +62,7 @@
 		return TRUE
 	else if(weapon.atom_storage)
 		weapon.atom_storage.remove_type(/obj/item/stack/ore, src, INFINITY, TRUE, FALSE, user, null)
-		to_chat(user, span_notice("Você esvazia o minério[weapon]em\the [src]."))
+		to_chat(user, span_notice("Você esvazia o minério [weapon] em\the [src]."))
 		return TRUE
 	else
 		return ..()

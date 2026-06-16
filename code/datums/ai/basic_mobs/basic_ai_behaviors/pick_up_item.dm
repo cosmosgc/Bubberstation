@@ -26,7 +26,7 @@
 /datum/ai_behavior/pick_up_item/proc/pickup_item(datum/ai_controller/controller, obj/item/target, storage_key)
 	var/atom/pawn = controller.pawn
 	drop_existing_item(controller, storage_key)
-	pawn.visible_message(span_notice("[pawn]Pega.[target]."))
+	pawn.visible_message(span_notice("[pawn] Pega.[target]."))
 	target.forceMove(pawn)
 	controller.set_blackboard_key(storage_key, target)
 	return TRUE
@@ -39,6 +39,6 @@
 	var/atom/pawn = controller.pawn
 	if(carried_item.loc != pawn)
 		return
-	pawn.visible_message(span_notice("[pawn]Gotas[carried_item]."))
+	pawn.visible_message(span_notice("[pawn] Gotas [carried_item]."))
 	carried_item.forceMove(get_turf(pawn))
 	return TRUE

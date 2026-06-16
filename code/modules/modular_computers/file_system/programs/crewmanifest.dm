@@ -27,4 +27,4 @@
 					to_chat(usr, span_notice("A impressora está sem papel."))
 					return
 				else
-					computer.visible_message(span_notice("\The [computer]imprime um papel."))
+					computer.visible_message(span_notice("\The [computer] imprime um papel."))

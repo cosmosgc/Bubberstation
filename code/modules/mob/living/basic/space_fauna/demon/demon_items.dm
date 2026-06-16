@@ -15,8 +15,8 @@
 		return ..()
 
 	user.visible_message(
-		span_warning("[user]Aumentos[src]para[user.p_their()]boca e lágrimas nele com[user.p_their()]Dentes!"),
-		span_danger("Uma fome não natural consome você. Você levanta.[src]Sua boca e devorá-la!"),
+		span_warning("[user] Aumentos [src] para [user.p_their()] boca e lágrimas nele com [user.p_their()] Dentes!"),
+		span_danger("Uma fome não natural consome você. Você levanta.[src] Sua boca e devorá-la!"),
 	)
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 
@@ -26,7 +26,7 @@
 		return
 
 	user.visible_message(
-		span_warning("[user]Os olhos de um carmesim profundo!"),
+		span_warning("[user] Os olhos de um carmesim profundo!"),
 		span_userdanger("Você sente um estranho poder entrar em seu corpo... você absorveu os poderes de viagem do demônio!"),
 	)
 

@@ -130,7 +130,7 @@
 		return
 
 	explosion_timer = addtimer(CALLBACK(src, PROC_REF(think_fast_chucklenuts)), 5 SECONDS, (TIMER_UNIQUE|TIMER_OVERRIDE))
-	to_chat(user, span_warning("Você prime[src]Bomba de eliminação de evidências!"))
+	to_chat(user, span_warning("Você prime [src] Bomba de eliminação de evidências!"))
 	log_bomber(user, "has activated a", src, "for detonation")
 	playsound(src, 'sound/items/weapons/armbomb.ogg', 50, TRUE)
 	currently_exploding = TRUE
@@ -280,7 +280,7 @@
 
 	if(is_simian(user))
 		atom_storage.locked = STORAGE_NOT_LOCKED
-		to_chat(user, span_notice("Você coloca sua pata no scanner de patas, e ouve um clique suave como[src]Destranca!"))
+		to_chat(user, span_notice("Você coloca sua pata no scanner de patas, e ouve um clique suave como [src] Destranca!"))
 		playsound(src, 'sound/items/click.ogg', 25, TRUE)
 		return TRUE
 	to_chat(user, span_warning("Você coloca a mão no scanner, e ele rejeita com um chimpanzé irritado!"))
@@ -338,8 +338,8 @@
 
 	balloon_alert(user, "Construído!")
 	user.visible_message(
-		span_danger("[user]Bashes.[src]com[tool]!"),
-		span_danger("Você bate[src]com[tool]!"),
+		span_danger("[user] Bashes.[src] com [tool]!"),
+		span_danger("Você bate [src] com [tool]!"),
 		null,
 		COMBAT_MESSAGE_RANGE,
 	)

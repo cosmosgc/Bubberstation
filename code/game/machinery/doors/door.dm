@@ -232,7 +232,7 @@
 		return
 	if(!red_alert_access)
 		return
-	audible_message(span_notice("[src]Whirrr[p_s()]Como[p_they()]Levantar automáticamente.[p_s()]Requisitos de acesso!"))
+	audible_message(span_notice("[src] Whirrr [p_s()] Como [p_they()] Levantar automáticamente.[p_s()] Requisitos de acesso!"))
 	playsound(src, 'sound/machines/airlock/boltsup.ogg', 50, TRUE)
 
 /obj/machinery/door/proc/try_safety_unlock(mob/user)
@@ -653,7 +653,7 @@
 /obj/machinery/door/proc/crush()
 	for(var/turf/checked_turf in locs)
 		for(var/mob/living/future_pancake in checked_turf)
-			future_pancake.visible_message(span_warning("[src]Fecha.[future_pancake]Esmagando[future_pancake.p_them()]!"), span_userdanger("[src]Fecha com você e te esmaga!"))
+			future_pancake.visible_message(span_warning("[src] Fecha.[future_pancake] Esmagando [future_pancake.p_them()]!"), span_userdanger("[src] Fecha com você e te esmaga!"))
 			var/sig_return = SEND_SIGNAL(future_pancake, COMSIG_LIVING_DOORCRUSHED, src)
 			future_pancake.add_splatter_floor(loc)
 			log_combat(src, future_pancake, "crushed")

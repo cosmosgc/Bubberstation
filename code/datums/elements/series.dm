@@ -31,5 +31,5 @@
 	SIGNAL_HANDLER
 
 	var/series_number = subtype_list.Find(target.type)
-	examine_list += span_boldnotice("[target]é parte do\"[series_name]\"Série!")
+	examine_list += span_boldnotice("[target] é parte do\"[series_name]\"Série!")
 	examine_list += span_notice("Recolha todos eles:[series_number]/[length(subtype_list)].")

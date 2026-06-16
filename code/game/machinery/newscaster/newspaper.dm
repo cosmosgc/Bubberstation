@@ -67,12 +67,12 @@
 	SStgui.close_uis(src)
 
 /obj/item/newspaper/suicide_act(mob/living/user)
-	user.visible_message(span_suicide(		"[user]está focando atentamente em[src]Parece que...[user.p_theyre()]Tentando cometer sudoku... até[user.p_their()]Os olhos se iluminam com a realização!"	))
+	user.visible_message(span_suicide(		"[user] está focando atentamente em [src] Parece que...[user.p_theyre()] Tentando cometer sudoku... até [user.p_their()] Os olhos se iluminam com a realização!"	))
 	user.say(";JOURNALISM IS MY CALLING! EVERYBODY APPRECIATES UNBIASED REPORTI-GLORF", forced = "newspaper suicide")
 	var/obj/item/reagent_containers/cup/glass/bottle/whiskey/last_drink = new(user.loc)
 	playsound(user, 'sound/items/drink.ogg', vol = rand(10, 50), vary = TRUE)
 	last_drink.reagents.trans_to(user, last_drink.reagents.total_volume, transferred_by = user)
-	user.visible_message(span_suicide("[user]Derruba o conteúdo de[last_drink.name]Em um gole! Deveria ter ficado com Sudoku!"))
+	user.visible_message(span_suicide("[user] Derruba o conteúdo de [last_drink.name] Em um gole! Deveria ter ficado com Sudoku!"))
 	return TOXLOSS
 
 /obj/item/newspaper/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -85,7 +85,7 @@
 		if (tool.sharpness != SHARP_EDGED || tool.tool_behaviour == TOOL_SCREWDRIVER)
 			used_verb = "puncturing"
 
-		balloon_alert(user, "[used_verb]Olha só...")
+		balloon_alert(user, "[used_verb] Olha só...")
 		if (!do_after(user, 3 SECONDS, src))
 			balloon_alert(user, "Interrompido!")
 			return ITEM_INTERACT_BLOCKING

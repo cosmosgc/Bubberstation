@@ -55,7 +55,7 @@
 	if(!target || !iscarbon(owner))
 		return
 	if(world.time < use_delay)
-		to_chat(owner, span_warning("Você deve esperar.[DisplayTimeText(use_delay - world.time)]para usar o[target]De novo!"))
+		to_chat(owner, span_warning("Você deve esperar.[DisplayTimeText(use_delay - world.time)] para usar o [target] De novo!"))
 		return
 	var/mob/living/carbon/human/C = owner
 	var/mob/eye/camera/remote/remote_eye = C.remote_control

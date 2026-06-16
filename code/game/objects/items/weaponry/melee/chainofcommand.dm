@@ -32,7 +32,7 @@
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/melee/chainofcommand/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está estrangulando [user.p_them()] ego com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/melee/chainofcommand/attack_secondary(mob/living/victim, mob/living/user, list/modifiers, list/attack_modifiers)

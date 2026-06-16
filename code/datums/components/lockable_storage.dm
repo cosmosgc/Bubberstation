@@ -160,7 +160,7 @@
 	if(source.obj_flags & EMAGGED)
 		return FALSE
 
-	source.visible_message(span_warning("As faíscas voam de[source]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
+	source.visible_message(span_warning("As faíscas voam de [source]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
 	source.balloon_alert(user, "Trava destruída.")
 	playsound(source, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	break_lock()
@@ -185,7 +185,7 @@
 	source.update_appearance()
 
 	if(istype(user) && new_code)
-		to_chat(user, span_notice("Você definir o[source]Pincode para[lock_code]."))
+		to_chat(user, span_notice("Você definir o [source] Pincode para [lock_code]."))
 
 	return TRUE
 

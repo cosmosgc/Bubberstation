@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(print_types, init_print_types())
 		to_chat(user, span_notice("Erro de impressão: impressão de tela só é suportada em consoles estacionários."))
 		return FALSE
 	if(computer.stored_paper < CANVAS_PAPER_COST)
-		to_chat(user, span_notice("Erro de impressão: sua impressora precisa pelo menos[CANVAS_PAPER_COST]Papel para imprimir uma tela."))
+		to_chat(user, span_notice("Erro de impressão: sua impressora precisa pelo menos [CANVAS_PAPER_COST] Papel para imprimir uma tela."))
 		return FALSE
 	return TRUE
 
@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(print_types, init_print_types())
 
 /proc/check_can_print_photo(_typepath, _image_file, obj/item/modular_computer/computer, mob/user)
 	if(computer.stored_paper < PHOTO_PAPER_COST)
-		to_chat(user, span_notice("Erro de impressão: sua impressora precisa pelo menos[PHOTO_PAPER_COST]Papel para imprimir uma foto."))
+		to_chat(user, span_notice("Erro de impressão: sua impressora precisa pelo menos [PHOTO_PAPER_COST] Papel para imprimir uma foto."))
 		return FALSE
 	return TRUE
 

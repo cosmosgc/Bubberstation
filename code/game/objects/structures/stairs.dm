@@ -363,7 +363,7 @@
 	return TRUE
 
 /obj/structure/stairs_frame/wrench_act_secondary(mob/living/user, obj/item/used_tool)
-	to_chat(user, span_notice("Você começa a desmontar[src]..."))
+	to_chat(user, span_notice("Você começa a desmontar [src]..."))
 	used_tool.play_tool_sound(src)
 	if(!used_tool.use_tool(src, user, 3 SECONDS))
 		return TRUE
@@ -383,12 +383,12 @@
 	var/obj/item/stack/material = attacked_by
 	if(material.stairs_type)
 		if(material.get_amount() < 10)
-			to_chat(user, span_warning("Você precisa de dez.[material.name]Lençóis para fazer isso!"))
+			to_chat(user, span_warning("Você precisa de dez.[material.name] Lençóis para fazer isso!"))
 			return
 		if(locate(/obj/structure/stairs) in loc)
 			to_chat(user, span_warning("Já tem escadas construídas aqui!"))
 			return
-		to_chat(user, span_notice("Você começa a adicionar[material]para[src]..."))
+		to_chat(user, span_notice("Você começa a adicionar [material] para [src]..."))
 		if(!do_after(user, 10 SECONDS, target = src) || !material.use(10) || (locate(/obj/structure/table) in loc))
 			return
 		make_new_stairs(material.stairs_type)
@@ -399,7 +399,7 @@
 		if(locate(/obj/structure/stairs) in loc)
 			to_chat(user, span_warning("Já tem escadas construídas aqui!"))
 			return
-		to_chat(user, span_notice("Você começa a adicionar[material]para[src]..."))
+		to_chat(user, span_notice("Você começa a adicionar [material] para [src]..."))
 		if(!do_after(user, 10 SECONDS, target = src) || !material.use(10) || (locate(/obj/structure/table) in loc))
 			return
 		var/list/material_list = list()

@@ -185,14 +185,14 @@
 	if(deconstruction_state != HDD_PANEL_CLOSED || user.combat_mode)
 		return NONE
 
-	to_chat(user, span_notice("Você pode ver[front_panel_screws]Foda-se. Você começa a desenroscar[front_panel_screws == 1 ? "it" : "them"]..."))
+	to_chat(user, span_notice("Você pode ver [front_panel_screws] Foda-se. Você começa a desenroscar[front_panel_screws == 1 ? "it" : "them"]..."))
 	while(tool.use_tool(src, user, 7.5 SECONDS, volume=100))
 		front_panel_screws--
 		if(front_panel_screws > 0)
-			to_chat(user, span_notice("O parafuso quebra enquanto você o remove. Apenas[front_panel_screws]Esquerda..."))
+			to_chat(user, span_notice("O parafuso quebra enquanto você o remove. Apenas [front_panel_screws] Esquerda..."))
 			continue
 		deconstruction_state = HDD_PANEL_OPEN
-		to_chat(user, span_notice("Você remove o último parafuso de[src]É o painel frontal."))
+		to_chat(user, span_notice("Você remove o último parafuso de [src] É o painel frontal."))
 		add_overlay("RD-server-hdd-panel-open")
 		break
 	return ITEM_INTERACT_SUCCESS
@@ -201,9 +201,9 @@
 	if(deconstruction_state != HDD_PANEL_OPEN || user.combat_mode)
 		return FALSE
 
-	to_chat(user, span_notice("Você pode ver[source_code_hdd]Em uma caixa segura atrás do painel frontal. Você começa a se soltar..."))
+	to_chat(user, span_notice("Você pode ver [source_code_hdd] Em uma caixa segura atrás do painel frontal. Você começa a se soltar..."))
 	if(tool.use_tool(src, user, 15 SECONDS, volume=100))
-		to_chat(user, span_notice("Você destrói o alojamento, bisbilhotando[source_code_hdd]Livre."))
+		to_chat(user, span_notice("Você destrói o alojamento, bisbilhotando [source_code_hdd] Livre."))
 		deconstruction_state = HDD_PRIED
 	return TRUE
 
@@ -211,18 +211,18 @@
 	if(deconstruction_state != HDD_PRIED || user.combat_mode)
 		return FALSE
 
-	to_chat(user, span_notice("Há[hdd_wires]O fio está conectado a[source_code_hdd]Você começa a cortar[hdd_wires == 1 ? "it" : "them"]..."))
+	to_chat(user, span_notice("Há [hdd_wires] O fio está conectado a [source_code_hdd] Você começa a cortar[hdd_wires == 1 ? "it" : "them"]..."))
 	while(tool.use_tool(src, user, 7.5 SECONDS, volume=100))
 		hdd_wires--
 
 		if(hdd_wires <= 0)
 			deconstruction_state = HDD_CUT_LOOSE
-			to_chat(user, span_notice("Você corta o fio final e remove[source_code_hdd]."))
+			to_chat(user, span_notice("Você corta o fio final e remove [source_code_hdd]."))
 			try_put_in_hand(source_code_hdd, user)
 			source_code_hdd = null
 			stored_research.income_modifier *= 0.5
 			return TRUE
-		to_chat(user, span_notice("Você delicadamente cortou o fio.[hdd_wires]Fio esquerdo..."))
+		to_chat(user, span_notice("Você delicadamente cortou o fio.[hdd_wires] Fio esquerdo..."))
 	return TRUE
 
 /obj/machinery/rnd/server/master/on_deconstruction(disassembled)

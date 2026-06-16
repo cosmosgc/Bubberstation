@@ -161,7 +161,7 @@
 	// Spells which require being on the station
 	if((spell_requirements & SPELL_REQUIRES_STATION) && !is_station_level(caster_turf.z))
 		if(feedback)
-			to_chat(owner, span_warning("Você não pode lançar[src]Aqui!"))
+			to_chat(owner, span_warning("Você não pode lançar [src] Aqui!"))
 		return FALSE
 
 	if((spell_requirements & SPELL_REQUIRES_MIND) && !owner.mind)
@@ -178,7 +178,7 @@
 	// that corresponds with the spell's antimagic, then they can't actually cast the spell
 	if((spell_requirements & SPELL_REQUIRES_NO_ANTIMAGIC) && !owner.can_cast_magic(antimagic_flags))
 		if(feedback)
-			to_chat(owner, span_warning("Alguma forma de antimágica está impedindo você de lançar[src]!"))
+			to_chat(owner, span_warning("Alguma forma de antimágica está impedindo você de lançar [src]!"))
 		return FALSE
 
 	if(!try_invoke(owner, feedback = feedback))
@@ -200,7 +200,7 @@
 		// If you strictly need to be a human, well, goodbye.
 		if(spell_requirements & SPELL_REQUIRES_HUMAN)
 			if(feedback)
-				to_chat(owner, span_warning("[src]Só pode ser lançado por humanos!"))
+				to_chat(owner, span_warning("[src] Só pode ser lançado por humanos!"))
 			return FALSE
 
 		// Otherwise, we can check for contents if they have wizardly apparel. This isn't *quite* perfect, but it'll do, especially since many of the edge cases (gorilla holding a wizard hat) still more or less make sense.
@@ -218,7 +218,7 @@
 
 		if(!(spell_requirements & SPELL_CASTABLE_AS_BRAIN) && isbrain(owner))
 			if(feedback)
-				to_chat(owner, span_warning("[src]Não pode ser lançado neste estado!"))
+				to_chat(owner, span_warning("[src] Não pode ser lançado neste estado!"))
 			return FALSE
 
 	return TRUE
@@ -320,10 +320,10 @@
 				if(caster.usable_hands <= 0)
 					var/arm_describer = (caster.num_hands >= 2 ? "arms limply" : (caster.num_hands == 1 ? "arm wildly" : "arm stumps"))
 					caster.visible_message(
-						span_warning("[caster]Se contorce.[caster.p_their()] [arm_describer]."),
+						span_warning("[caster] Se contorce.[caster.p_their()] [arm_describer]."),
 						ignored_mobs = caster,
 					)
-					to_chat(caster, span_warning("Você não pode posicionar suas mãos corretamente para invocar[src][caster.num_hands > 0 ? "" : ", as you have none"]..."))
+					to_chat(caster, span_warning("Você não pode posicionar suas mãos corretamente para invocar [src][caster.num_hands > 0 ? "" : ", as you have none"]..."))
 					StartCooldown(2 SECONDS)
 					return SPELL_CANCEL_CAST
 
@@ -421,7 +421,7 @@
 	// If you want a spell usable by ghosts for some reason, it must be INVOCATION_NONE
 	if(!istype(invoker))
 		if(feedback)
-			to_chat(invoker, span_warning("Você precisa viver para invocar[src]!"))
+			to_chat(invoker, span_warning("Você precisa viver para invocar [src]!"))
 		return FALSE
 
 	var/invoke_sig_return = SEND_SIGNAL(invoker, COMSIG_MOB_TRY_INVOKE_SPELL, src, feedback)
@@ -432,12 +432,12 @@
 
 	if(invocation_type == INVOCATION_EMOTE && HAS_TRAIT(invoker, TRAIT_EMOTEMUTE))
 		if(feedback)
-			to_chat(invoker, span_warning("Você não pode posicionar suas mãos corretamente para invocar[src]!"))
+			to_chat(invoker, span_warning("Você não pode posicionar suas mãos corretamente para invocar [src]!"))
 		return FALSE
 
 	if((invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !invoker.can_speak())
 		if(feedback)
-			to_chat(invoker, span_warning("Você não pode dizer as palavras para invocar[src]!"))
+			to_chat(invoker, span_warning("Você não pode dizer as palavras para invocar [src]!"))
 		return FALSE
 
 	return TRUE

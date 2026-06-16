@@ -120,7 +120,7 @@
 
 /obj/item/surprise_egg/attack_self(mob/user)
 	..()
-	to_chat(user, span_notice("Você desembrulha[src]E encontre um prêmio lá dentro!"))
+	to_chat(user, span_notice("Você desembrulha [src] E encontre um prêmio lá dentro!"))
 	dispensePrize(get_turf(src))
 	qdel(src)
 

@@ -37,7 +37,7 @@
 	return ..()
 
 /obj/item/reagent_containers/condiment/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]está tentando comer todo o[src]Parece que...[user.p_they()]Esqueci como a comida funcional!"))
+	user.visible_message(span_suicide("[user] está tentando comer todo o [src] Parece que...[user.p_they()] Esqueci como a comida funcional!"))
 	return OXYLOSS
 
 /obj/item/reagent_containers/condiment/proc/try_eat(atom/target, mob/living/user)
@@ -47,21 +47,21 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(target == user)
 		user.visible_message(
-			span_notice("[user]engole um pouco do conteúdo de\the [src]."),
+			span_notice("[user] engole um pouco do conteúdo de\the [src]."),
 			span_notice("Você engoliu um pouco do conteúdo de\the [src]."),
 		)
 	else
 		target.visible_message(
-			span_warning("[user]Tentativas de se alimentar[target]De[src]."),
-			span_warning("[user]Tentamos alimentá-lo.[src]."),
+			span_warning("[user] Tentativas de se alimentar [target] De [src]."),
+			span_warning("[user] Tentamos alimentá-lo.[src]."),
 		)
 		if(!do_after(user, 3 SECONDS, target))
 			return ITEM_INTERACT_BLOCKING
 		if(!reagents || !reagents.total_volume)
 			return ITEM_INTERACT_BLOCKING // The condiment might be empty after the delay.
 		target.visible_message(
-			span_warning("[user]Alimentado.[target]De[src]."),
-			span_warning("[user]Alimentá-lo de[src]."),
+			span_warning("[user] Alimentado.[target] De [src]."),
+			span_warning("[user] Alimentá-lo de [src]."),
 		)
 		log_combat(user, target, "fed", reagents.get_reagent_log_string())
 
@@ -111,7 +111,7 @@
 	var/datum/chemical_reaction/recipe = GLOB.chemical_reactions_list[/datum/chemical_reaction/food/cheesewheel]
 	var/milk_required = recipe.required_reagents[/datum/reagent/consumable/milk]
 	var/enzyme_required = recipe.required_catalysts[/datum/reagent/consumable/enzyme]
-	. += span_notice("[milk_required]Leite,[enzyme_required]Enzima e queijo.")
+	. += span_notice("[milk_required] Leite,[enzyme_required] Enzima e queijo.")
 	. += span_warning("Lembre-se, a enzima não está gasta, então devolva para a garrafa, Dingus!")
 
 /obj/item/reagent_containers/condiment/sugar
@@ -133,7 +133,7 @@
 	var/eggwhite_required = standard_recipe.required_reagents[/datum/reagent/consumable/eggwhite]
 	var/sugar_required = standard_recipe.required_reagents[/datum/reagent/consumable/sugar]
 	var/soymilk_required = alt_recipe.required_reagents[/datum/reagent/consumable/soymilk]
-	. += span_notice("[flour_required]Farinha,[sugar_required]açúcar, e qualquer um[eggyolk_required]Gema de ovo[eggwhite_required]Clara de ovo ou[soymilk_required]Leite de soja produz uma massa de bolo. Você pode fazer massa de torta com isso.")
+	. += span_notice("[flour_required] Farinha,[sugar_required] açúcar, e qualquer um [eggyolk_required] Gema de ovo [eggwhite_required] Clara de ovo ou [soymilk_required] Leite de soja produz uma massa de bolo. Você pode fazer massa de torta com isso.")
 
 /obj/item/reagent_containers/condiment/saltshaker //Separate from above since it's a small shaker rather then
 	name = "salt shaker" // a large one.
@@ -148,7 +148,7 @@
 	fill_icon_thresholds = null
 
 /obj/item/reagent_containers/condiment/saltshaker/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a trocar formulários com o saleiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a trocar formulários com o saleiro! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	var/newname = "[name]"
 	name = "[user.name]"
 	user.name = newname
@@ -164,7 +164,7 @@
 		if(!reagents.has_reagent(/datum/reagent/consumable/salt, 2))
 			to_chat(user, span_warning("Você não tem sal suficiente para fazer uma pilha!"))
 			return
-		user.visible_message(span_notice("[user]Agita um pouco de sal.[target]."), span_notice("Você agita um pouco de sal[target]."))
+		user.visible_message(span_notice("[user] Agita um pouco de sal.[target]."), span_notice("Você agita um pouco de sal [target]."))
 		reagents.remove_reagent(/datum/reagent/consumable/salt, 2)
 		new/obj/effect/decal/cleanable/food/salt(target)
 		return ITEM_INTERACT_SUCCESS
@@ -197,7 +197,7 @@
 	var/datum/chemical_reaction/recipe = GLOB.chemical_reactions_list[/datum/chemical_reaction/food/cheesewheel]
 	var/milk_required = recipe.required_reagents[/datum/reagent/consumable/milk]
 	var/enzyme_required = recipe.required_catalysts[/datum/reagent/consumable/enzyme]
-	. += span_notice("[milk_required]Leite,[enzyme_required]Enzima e queijo.")
+	. += span_notice("[milk_required] Leite,[enzyme_required] Enzima e queijo.")
 	. += span_warning("Lembre-se, a enzima não está gasta, então devolva para a garrafa, Dingus!")
 
 /obj/item/reagent_containers/condiment/flour
@@ -220,8 +220,8 @@
 	var/cakebatter_eggyolk_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/eggyolk]
 	var/cakebatter_sugar_required = recipe_cakebatter.required_reagents[/datum/reagent/consumable/sugar]
 	. += "<b><i>You retreat inward and recall the teachings of... Making Dough...</i></b>"
-	. += span_notice("[dough_flour_required]Farinha,[dough_water_required]A água faz massa normal. Você pode ganhar dinheiro com isso.")
-	. += span_notice("[cakebatter_flour_required]Farinha,[cakebatter_eggyolk_required]Gema de ovo (ou leite de soja),[cakebatter_sugar_required]O açúcar faz massa de bolo. Você pode fazer massa de torta com isso.")
+	. += span_notice("[dough_flour_required] Farinha,[dough_water_required] A água faz massa normal. Você pode ganhar dinheiro com isso.")
+	. += span_notice("[cakebatter_flour_required] Farinha,[cakebatter_eggyolk_required] Gema de ovo (ou leite de soja),[cakebatter_sugar_required] O açúcar faz massa de bolo. Você pode fazer massa de torta com isso.")
 
 /obj/item/reagent_containers/condiment/soymilk
 	name = "soy milk"
@@ -466,14 +466,14 @@
 	//You can tear the bag open above food to put the condiments on it, obviously.
 	if(IS_EDIBLE(target))
 		if(!reagents.total_volume)
-			to_chat(user, span_warning("Você se abre[src], mas não há nada nele."))
+			to_chat(user, span_warning("Você se abre [src], mas não há nada nele."))
 			qdel(src)
 			return ITEM_INTERACT_BLOCKING
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, span_warning("Você se abre[src], mas[target]é empilhado tão alto que apenas pinga!") )
+			to_chat(user, span_warning("Você se abre [src], mas [target] é empilhado tão alto que apenas pinga!") )
 			qdel(src)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você se abre[src]Acima.[target]e os condimentos escorrem nela."))
+		to_chat(user, span_notice("Você se abre [src] Acima.[target] e os condimentos escorrem nela."))
 		reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user)
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
@@ -495,7 +495,7 @@
 		desc = temp_list[3]
 	else
 		icon_state = "condi_mixed"
-		desc = "Um pequeno pacote de condimentos. O rótulo diz que contém[originalname]"
+		desc = "Um pequeno pacote de condimentos. O rótulo diz que contém [originalname]"
 
 //Ketchup
 /obj/item/reagent_containers/condiment/pack/ketchup

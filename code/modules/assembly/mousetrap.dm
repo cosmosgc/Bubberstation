@@ -125,13 +125,13 @@
 					affecting = victim.get_bodypart(pick(GLOB.leg_zones))
 					victim.Paralyze(6 SECONDS)
 				else
-					to_chat(victim, span_notice("Sua[victim.shoes.name]Protege você de[src]."))
+					to_chat(victim, span_notice("Sua [victim.shoes.name] Protege você de [src]."))
 			if(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 				if(!victim.gloves)
 					affecting = victim.get_bodypart(type)
 					victim.Stun(6 SECONDS)
 				else
-					to_chat(victim, span_notice("Sua[victim.gloves.name]Protege você de[src]."))
+					to_chat(victim, span_notice("Sua [victim.gloves.name] Protege você de [src]."))
 		if(affecting)
 			victim.apply_damage(1, BRUTE, affecting, wound_bonus = CANT_WOUND)
 	else if(ismouse(target))
@@ -159,7 +159,7 @@
 		if(IS_RIGHT_INDEX(user.active_hand_index))
 			which_hand = BODY_ZONE_PRECISE_R_HAND
 		triggered(user, which_hand)
-		user.visible_message(span_warning("[user]Acidentalmente decola[src]Quebrando os dedos."), 			span_warning("Você acidentalmente gatilho[src]!"))
+		user.visible_message(span_warning("[user] Acidentalmente decola [src] Quebrando os dedos."), 			span_warning("Você acidentalmente gatilho [src]!"))
 		return TRUE
 	return FALSE
 
@@ -192,7 +192,7 @@
 					var/mob/living/carbon/H = AM
 					if(H.move_intent == MOVE_INTENT_RUN)
 						INVOKE_ASYNC(src, PROC_REF(triggered), H)
-						H.visible_message(span_warning("[H]Acidentalmente pisa em[src]."), 							span_warning("Você acidentalmente pisa[src]."))
+						H.visible_message(span_warning("[H] Acidentalmente pisa em [src]."), 							span_warning("Você acidentalmente pisa [src]."))
 				else if(ismouse(MM) || isregalrat(MM))
 					INVOKE_ASYNC(src, PROC_REF(triggered), MM)
 		else if(AM.density) // For mousetrap grenades, set off by anything heavy
@@ -201,11 +201,11 @@
 /obj/item/assembly/mousetrap/on_found(mob/finder)
 	if(armed)
 		if(finder)
-			finder.visible_message(span_warning("[finder]Acidentalmente decola[src]Quebrando os dedos."), 							   span_warning("Você acidentalmente gatilho[src]!"))
+			finder.visible_message(span_warning("[finder] Acidentalmente decola [src] Quebrando os dedos."), 							   span_warning("Você acidentalmente gatilho [src]!"))
 			triggered(finder, (IS_RIGHT_INDEX(finder.active_hand_index)) ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND)
 			return TRUE //end the search!
 		else
-			visible_message(span_warning("[src]Estalos fechados!"))
+			visible_message(span_warning("[src] Estalos fechados!"))
 			triggered(loc)
 			return FALSE
 	return FALSE
@@ -214,7 +214,7 @@
 /obj/item/assembly/mousetrap/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(!armed)
 		return ..()
-	visible_message(span_warning("[src]é desencadeada por[AM]."))
+	visible_message(span_warning("[src] é desencadeada por [AM]."))
 	triggered(null)
 
 

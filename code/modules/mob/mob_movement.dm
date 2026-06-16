@@ -235,7 +235,7 @@
 			if(stepTurf)
 				var/obj/effect/decal/cleanable/food/salt/salt = locate() in stepTurf
 				if(salt)
-					to_chat(L, span_warning("[salt]Fecha sua passagem!"))
+					to_chat(L, span_warning("[salt] Fecha sua passagem!"))
 					if(isrevenant(L))
 						var/mob/living/basic/revenant/ghostie = L
 						ghostie.apply_status_effect(/datum/status_effect/revenant/revealed, 2 SECONDS)
@@ -291,7 +291,7 @@
 	if(backup.newtonian_move(dir2angle(REVERSE_DIR(movement_dir)), instant = TRUE)) //You're pushing off something movable, so it moves
 		// We set it down here so future calls to Process_Spacemove by the same pair in the same tick don't lead to fucky
 		backup.last_pushoff = world.time
-		to_chat(src, span_info("Você empurra para fora[backup]para se impulsionar."))
+		to_chat(src, span_info("Você empurra para fora [backup] para se impulsionar."))
 	return TRUE
 
 /// We handle lattices via backups

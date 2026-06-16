@@ -41,7 +41,7 @@
 		return FALSE
 
 	obj_flags |= EMAGGED
-	visible_message(span_warning("As faíscas voam de[src]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
+	visible_message(span_warning("As faíscas voam de [src]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
 	balloon_alert(user, "Trava destruída.")
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	stored_lock_code = null

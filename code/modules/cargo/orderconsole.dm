@@ -59,8 +59,8 @@
 		return FALSE
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user]Slips[emag_card]através[src]!"))
-		to_chat(user, span_notice("Você se ajusta.[src]Roteamento e espectro receptor, desbloqueando suprimentos especiais e contrabando."))
+			user.visible_message(span_warning("[user] Slips [emag_card] através [src]!"))
+		to_chat(user, span_notice("Você se ajusta.[src] Roteamento e espectro receptor, desbloqueando suprimentos especiais e contrabando."))
 
 	obj_flags |= EMAGGED
 	contraband = TRUE

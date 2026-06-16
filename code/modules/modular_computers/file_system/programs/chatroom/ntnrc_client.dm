@@ -37,7 +37,7 @@
 /datum/computer_file/program/chatclient/on_install(datum/computer_file/source, obj/item/modular_computer/computer_installing, mob/user)
 	. = ..()
 	if(!username)
-		username = "DefaultUser[rand(100, 999)]"
+		username = "DefaultUser [rand(100, 999)]"
 
 /datum/computer_file/program/chatclient/Destroy()
 	for(var/datum/ntnet_conversation/discussion as anything in conversations)
@@ -141,7 +141,7 @@
 				if(!computer)
 					// This program shouldn't even be runnable without computer.
 					CRASH("Var computer is null!")
-				computer.visible_message(span_warning("\The [computer]Mostra...\"Erro, o disco rígido pode estar cheio. Por favor, libere algum espaço e tente novamente. Espaço necessário:[logfile.size]GQ.\"Aviso."))
+				computer.visible_message(span_warning("\The [computer] Mostra...\"Erro, o disco rígido pode estar cheio. Por favor, libere algum espaço e tente novamente. Espaço necessário:[logfile.size] GQ.\"Aviso."))
 			return TRUE
 		if("PRG_renamechannel")
 			if(!authed)

@@ -239,7 +239,7 @@
 	var/obj/item/disk/holodisk/holodisk_original = tool
 
 	if (!holodisk_original.record)
-		to_chat(user, span_warning("[holodisk_original]Não tem registro!"))
+		to_chat(user, span_warning("[holodisk_original] Não tem registro!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if (!record)
@@ -249,7 +249,7 @@
 	record.caller_image = holodisk_original.record.caller_image
 	record.entries = holodisk_original.record.entries.Copy()
 	record.language = holodisk_original.record.language
-	to_chat(user, span_notice("Você copia o registro de[holodisk_original]para[src]conectando os portos!"))
+	to_chat(user, span_notice("Você copia o registro de [holodisk_original] para [src] conectando os portos!"))
 	name = holodisk_original.name
 
 	return ITEM_INTERACT_SUCCESS

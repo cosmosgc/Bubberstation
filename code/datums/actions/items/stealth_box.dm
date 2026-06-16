@@ -51,7 +51,7 @@
 	var/obj/structure/closet/cardboard/agent/box = owner.loc
 	owner.playsound_local(box, 'sound/misc/box_deploy.ogg', 50, TRUE)
 	box.open()
-	owner.visible_message(span_suicide("[owner]Cai fora.[box]! Parece que...[owner.p_they()]Cometeu suicídio!"))
+	owner.visible_message(span_suicide("[owner] Cai fora.[box]! Parece que...[owner.p_they()] Cometeu suicídio!"))
 	owner.throw_at(get_turf(owner))
 	if(isliving(owner))
 		var/mob/living/suicider = owner

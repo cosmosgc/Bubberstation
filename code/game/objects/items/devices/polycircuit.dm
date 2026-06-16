@@ -11,7 +11,7 @@
 	var/chosen_circuit = "airlock"
 
 /obj/item/stack/circuit_stack/attack_self(mob/user)// Prevents the crafting menu, and tells you how to use it.
-	to_chat(user, span_warning("Você não pode usar[src]Por si só, você terá que tentar remover um desses circuitos à mão... com cuidado."))
+	to_chat(user, span_warning("Você não pode usar [src] Por si só, você terá que tentar remover um desses circuitos à mão... com cuidado."))
 
 /obj/item/stack/circuit_stack/attack_hand(mob/user, list/modifiers)
 	var/mob/living/carbon/human/H = user
@@ -22,7 +22,7 @@
 			return
 		chosen_circuit = tgui_input_list(user, "Circuit to remove", "Circuit Removal", list("airlock","firelock","fire alarm","air alarm","APC"), chosen_circuit)
 		if(isnull(chosen_circuit))
-			to_chat(user, span_notice("Você sabiamente evitar colocar suas mãos em qualquer lugar perto[src]."))
+			to_chat(user, span_notice("Você sabiamente evitar colocar suas mãos em qualquer lugar perto [src]."))
 			return
 		if(is_zero_amount(delete_if_zero = TRUE))
 			return
@@ -39,7 +39,7 @@
 				circuit_type = /obj/item/electronics/airalarm
 			if("APC")
 				circuit_type = /obj/item/electronics/apc
-		to_chat(user, span_notice("Você vê seu circuito, e cuidadosamente tenta removê-lo de[src]Fique parado!"))
+		to_chat(user, span_notice("Você vê seu circuito, e cuidadosamente tenta removê-lo de [src] Fique parado!"))
 		if(do_after(user, 3 SECONDS, target = user))
 			if(!src || QDELETED(src))//Sanity Check.
 				return
@@ -49,10 +49,10 @@
 			if(!amount)
 				to_chat(user, span_notice("Você navega as bordas afiadas dos circuitos e remove a última placa."))
 			else
-				to_chat(user, span_notice("Você navega nas bordas afiadas dos circuitos e remove uma única placa de[src]"))
+				to_chat(user, span_notice("Você navega nas bordas afiadas dos circuitos e remove uma única placa de [src]"))
 		else
 			H.apply_damage(15, BRUTE, pick(GLOB.arm_zones))
-			to_chat(user, span_warning("Você se dá um corte maldoso[src]São muitos cantos e bordas afiadas!"))
+			to_chat(user, span_warning("Você se dá um corte maldoso [src] São muitos cantos e bordas afiadas!"))
 
 /obj/item/stack/circuit_stack/full
 	amount = 8

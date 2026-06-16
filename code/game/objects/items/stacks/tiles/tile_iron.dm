@@ -129,7 +129,7 @@
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/sheet/iron/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name]Em forma[src]em lençóis com[tool]."),
+			span_notice("[user.name] Em forma [src] em lençóis com [tool]."),
 			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
@@ -145,7 +145,7 @@
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/rods/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name]Em forma[src]em barras com[tool]."),
+			span_notice("[user.name] Em forma [src] em barras com [tool]."),
 			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user

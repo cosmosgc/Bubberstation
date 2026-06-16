@@ -30,9 +30,9 @@
 		return ..()
 	var/mob/living/pushed_mob = user.pulling
 	if(pushed_mob.buckled)
-		to_chat(user, span_warning("[pushed_mob]está dobrado para[pushed_mob.buckled]!"))
+		to_chat(user, span_warning("[pushed_mob] está dobrado para [pushed_mob.buckled]!"))
 		return ..()
-	to_chat(user, span_notice("Você tenta persuadir[pushed_mob]em frente[src]..."))
+	to_chat(user, span_notice("Você tenta persuadir [pushed_mob] em frente [src]..."))
 	if(!do_after(user,(5 SECONDS),target = pushed_mob))
 		return ..()
 	pushed_mob.forceMove(loc)
@@ -58,7 +58,7 @@
 /obj/structure/altar/of_gods/examine_more(mob/user)
 	if(!isobserver(user))
 		return ..()
-	. = list(span_notice("<i>Você examina.[src]Mais preto, e nota o segundo...</i>"))
+	. = list(span_notice("<i>Você examina.[src] Mais preto, e nota o segundo...</i>"))
 	if(GLOB.religion)
 		. += list(span_notice("Deidade:[GLOB.deity]."))
 		. += list(span_notice("Religião:[GLOB.religion]."))
@@ -112,7 +112,7 @@
 
 /// When the ritual totem is depleted of antimagic
 /obj/item/ritual_totem/proc/expire(mob/user)
-	to_chat(user, span_warning("[src]consome a magia dentro de si e rapidamente decai em podridão!"))
+	to_chat(user, span_warning("[src] consome a magia dentro de si e rapidamente decai em podridão!"))
 	new /obj/effect/decal/cleanable/ash(drop_location())
 	qdel(src)
 
@@ -124,18 +124,18 @@
 	. = ..()
 	var/is_holy = user.mind?.holy_role
 	if(is_holy)
-		. += span_notice("[src]Só podem ser movidos por importantes seguidores de[GLOB.deity].")
+		. += span_notice("[src] Só podem ser movidos por importantes seguidores de [GLOB.deity].")
 
 /obj/item/ritual_totem/pickup(mob/taker)
 	var/initial_loc = loc
 	var/holiness = taker.mind?.holy_role
 	var/no_take = FALSE
 	if(holiness == NONE)
-		to_chat(taker, span_warning("Por mais que tente, parece que não consegue escolher.[src]Levante-se!"))
+		to_chat(taker, span_warning("Por mais que tente, parece que não consegue escolher.[src] Levante-se!"))
 		no_take = TRUE
 	else if(holiness == HOLY_ROLE_DEACON) //deacons cannot pick them up either
 		no_take = TRUE
-		to_chat(taker, span_warning("Você não pode escolher[src]Levante. Parece que você não é importante o suficiente para[GLOB.deity]Para fazer isso."))
+		to_chat(taker, span_warning("Você não pode escolher [src] Levante. Parece que você não é importante o suficiente para [GLOB.deity] Para fazer isso."))
 	..()
 	if(no_take)
 		taker.dropItemToGround(src)

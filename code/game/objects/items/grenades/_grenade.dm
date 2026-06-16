@@ -65,7 +65,7 @@
 	RegisterSignal(src, COMSIG_ITEM_USED_AS_INGREDIENT, PROC_REF(on_used_as_ingredient))
 
 /obj/item/grenade/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Primes[src], então come! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Primes [src], então come! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
 	arm_grenade(user, det_time)
 	user.transferItemToLoc(src, user, TRUE)//>eat a grenade set to 5 seconds >rush captain
@@ -107,7 +107,7 @@
  */
 /obj/item/grenade/proc/botch_check(mob/living/carbon/human/user)
 	if(sticky && prob(50)) // to add risk to sticky tape grenade cheese, no return cause we still prime as normal after.
-		to_chat(user, span_warning("Mas que...[src]está preso em sua mão!"))
+		to_chat(user, span_warning("Mas que...[src] está preso em sua mão!"))
 		ADD_TRAIT(src, TRAIT_NODROP, STICKY_NODROP)
 
 	var/clumsy = HAS_TRAIT(user, TRAIT_CLUMSY)
@@ -116,7 +116,7 @@
 		arm_grenade(user, 5, FALSE)
 		return TRUE
 	else if(!clumsy && (clumsy_check == GRENADE_NONCLUMSY_FUMBLE))
-		to_chat(user, span_warning("Você puxa o pino[src]Junto a ele está uma fita rosa que diz,\"[span_clown("HONK")]\""))
+		to_chat(user, span_warning("Você puxa o pino [src] Junto a ele está uma fita rosa que diz,\"[span_clown("HONK")]\""))
 		arm_grenade(user, 5, FALSE)
 		return TRUE
 
@@ -128,13 +128,13 @@
 		else
 			. += "\The [src] is set for instant detonation."
 	if (dud_flags & GRENADE_USED)
-		. += span_warning("Parece que...[p_theyve()]Já foi usado.")
+		. += span_warning("Parece que...[p_theyve()] Já foi usado.")
 
 /obj/item/grenade/attack_self(mob/user)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
-		to_chat(user, span_notice("Tente bisbilhotar.[src]De sua mão..."))
+		to_chat(user, span_notice("Tente bisbilhotar.[src] De sua mão..."))
 		if(do_after(user, 7 SECONDS, target = src))
-			to_chat(user, span_notice("Você consegue remover[src]Da sua mão."))
+			to_chat(user, span_notice("Você consegue remover [src] Da sua mão."))
 			REMOVE_TRAIT(src, TRAIT_NODROP, STICKY_NODROP)
 		return
 
@@ -156,7 +156,7 @@
 	if(user)
 		add_fingerprint(user)
 		if(msg)
-			to_chat(user, span_warning("Você prime[src]! [capitalize(DisplayTimeText(det_time))]!"))
+			to_chat(user, span_warning("Você prime [src]! [capitalize(DisplayTimeText(det_time))]!"))
 	if(shrapnel_type && shrapnel_radius)
 		shrapnel_initialized = TRUE
 		AddComponent(/datum/component/pellet_cloud, projectile_type = shrapnel_type, magnitude = shrapnel_radius)
@@ -227,7 +227,7 @@
 		if(det_time == 0)
 			to_chat(user, span_notice("Você modifica o atraso. Está definido para ser instantâneo."))
 		else
-			to_chat(user, span_notice("Você modifica o atraso. Está pronto para[DisplayTimeText(det_time)]."))
+			to_chat(user, span_notice("Você modifica o atraso. Está pronto para [DisplayTimeText(det_time)]."))
 		return TRUE
 
 /obj/item/grenade/multitool_act(mob/living/user, obj/item/tool)
@@ -247,7 +247,7 @@
 		return
 	newtime = round(text2num(newtime))
 	if(change_det_time(newtime))
-		to_chat(user, span_notice("Você modifica o atraso. Está pronto para[DisplayTimeText(det_time)]."))
+		to_chat(user, span_notice("Você modifica o atraso. Está pronto para [DisplayTimeText(det_time)]."))
 
 /**
  * Sets det_time to a number in SECONDS
@@ -285,7 +285,7 @@
 
 /obj/item/grenade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(damage && attack_type == PROJECTILE_ATTACK && damage_type != STAMINA && prob(15))
-		owner.visible_message(span_danger("[attack_text]hits[owner]'s[src], acionando! Que tiro!"))
+		owner.visible_message(span_danger("[attack_text] hits [owner]'s [src], acionando! Que tiro!"))
 		var/turf/source_turf = get_turf(src)
 		var/logmsg = "held a grenade detonated by a projectile ([hitby]) at [COORD(source_turf)]"
 		owner.log_message(logmsg, LOG_GAME)

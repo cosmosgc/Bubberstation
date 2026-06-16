@@ -64,13 +64,13 @@
 		return
 
 	leech.visible_message(
-		message = span_danger("\The [leech] start[leech.p_s()] trying to bite into \the [target]!"),
+		message = span_danger("\The [leech] start [leech.p_s()] trying to bite into \the [target]!"),
 		self_message = span_danger("Você começa a tentar morder\the [target]!"),
 		ignored_mobs = list(target)
 	)
 
 	target.show_message(
-		msg = span_userdanger("\The [leech] start[leech.p_s()] trying to bite into you!"),
+		msg = span_userdanger("\The [leech] start [leech.p_s()] trying to bite into you!"),
 		type = MSG_VISUAL
 	)
 
@@ -99,14 +99,14 @@
 	RegisterSignal(target, COMSIG_MOB_LOGOUT, PROC_REF(incapacitate_leech_living_target))
 
 	leech.visible_message(
-		message = span_danger("\The [leech] bite[leech.p_s()] into \the [target]!"),
+		message = span_danger("\The [leech] bite [leech.p_s()] into \the [target]!"),
 		self_message = span_danger("Você morde\the [target]!"),
 		blind_message = span_hear("Você ouve uma mordida, seguida de uma crise doentia!"),
 		ignored_mobs = list(target)
 	)
 
 	target.show_message(
-		msg = span_userdanger("\The [leech] bite[leech.p_s()] into you!"),
+		msg = span_userdanger("\The [leech] bite [leech.p_s()] into you!"),
 		type = MSG_VISUAL,
 		alt_msg = span_userdanger("You feel something bite into you!"),
 		alt_type = MSG_AUDIBLE
@@ -175,7 +175,7 @@
 		return
 
 	leech.visible_message(
-		message = span_danger("\The [leech] start[leech.p_s()] trying to bite into \the [target]!"),
+		message = span_danger("\The [leech] start [leech.p_s()] trying to bite into \the [target]!"),
 		self_message = span_danger("Você começa a tentar morder\the [target]!")
 	)
 
@@ -185,7 +185,7 @@
 		return
 
 	leech.visible_message(
-		message = span_danger("\The [leech] bite[leech.p_s()] into \the [target]!"),
+		message = span_danger("\The [leech] bite [leech.p_s()] into \the [target]!"),
 		self_message = span_danger("Você morde\the [target]!"),
 		blind_message = span_hear("Você ouve uma mordida!"),
 		ignored_mobs = list(target)

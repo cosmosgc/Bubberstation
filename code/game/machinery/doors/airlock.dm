@@ -719,7 +719,7 @@
 		else
 			. += "There's a [note.name] pinned to the front..."
 			. += note.examine(user)
-		. += span_notice("O anexo[note.name]pode ser derrubado com alguns[EXAMINE_HINT("wirecutters")].")
+		. += span_notice("O anexo [note.name] pode ser derrubado com alguns[EXAMINE_HINT("wirecutters")].")
 	if(seal)
 		. += "It's been braced with \a [seal]."
 	if(welded)
@@ -748,13 +748,13 @@
 
 	var/active_reta = has_active_reta_access()
 	if(active_reta)
-		. += span_nicegreen("Acesso Temporário de Emergência ativado para[EXAMINE_HINT(active_reta)]Cartões de identificação.")
+		. += span_nicegreen("Acesso Temporário de Emergência ativado para [EXAMINE_HINT(active_reta)] Cartões de identificação.")
 
 	if(issilicon(user) && !(machine_stat & BROKEN))
-		. += span_notice("Shift-click[src]para[ density ? "open" : "close"]Ele.")
-		. += span_notice("Ctrl-click[src]para[ locked ? "raise" : "drop"]seus parafusos.")
-		. += span_notice("Alt-click[src]para[ secondsElectrified ? "un-electrify" : "permanently electrify"]Ele.")
-		. += span_notice("Ctrl-Shift-click[src]para[ emergency ? "disable" : "enable"]Acesso de emergência.")
+		. += span_notice("Shift-click [src] para[ density ? "open" : "close"]Ele.")
+		. += span_notice("Ctrl-click [src] para[ locked ? "raise" : "drop"]seus parafusos.")
+		. += span_notice("Alt-click [src] para[ secondsElectrified ? "un-electrify" : "permanently electrify"]Ele.")
+		. += span_notice("Ctrl-Shift-click [src] para[ emergency ? "disable" : "enable"]Acesso de emergência.")
 
 /obj/machinery/door/airlock/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -904,11 +904,11 @@
 		if((HAS_TRAIT(H, TRAIT_DUMB)) && Adjacent(user))
 			playsound(src, 'sound/effects/bang.ogg', 25, TRUE)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
-				H.visible_message(span_danger("[user]Cabeçadas na câmara de ar."), 									span_userdanger("Você bate na câmara de ar!"))
+				H.visible_message(span_danger("[user] Cabeçadas na câmara de ar."), 									span_userdanger("Você bate na câmara de ar!"))
 				H.Paralyze(100)
 				H.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
 			else
-				visible_message(span_danger("[user]Cabeçadas na câmara de ar. Que bom.[user.p_theyre()]usando um capacete."))
+				visible_message(span_danger("[user] Cabeçadas na câmara de ar. Que bom.[user.p_theyre()] usando um capacete."))
 
 /obj/machinery/door/airlock/attempt_wire_interaction(mob/user)
 	if(security_level)
@@ -933,7 +933,7 @@
 
 /obj/machinery/door/airlock/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!has_access_panel)
-		to_chat(user, span_warning("[src]Não tem painel de manutenção!"))
+		to_chat(user, span_warning("[src] Não tem painel de manutenção!"))
 		return ITEM_INTERACT_SUCCESS
 	toggle_panel_open()
 	to_chat(user, span_notice("Você.[panel_open ? "open":"close"]O painel de manutenção da câmara de ar."))
@@ -954,15 +954,15 @@
 			return .
 		if(!panel_open)  // double check it wasn't closed while we were trying to snip
 			return .
-		user.visible_message(span_notice("[user]Cortar[src]É uma grade externa."),
-							span_notice("Você cortou[src]É uma grade externa."))
+		user.visible_message(span_notice("[user] Cortar [src] É uma grade externa."),
+							span_notice("Você cortou [src] É uma grade externa."))
 		security_level = AIRLOCK_SECURITY_PLASTEEL_O
 		return .
 	if(note)
 		if(IsReachableBy(user))
-			user.visible_message(span_notice("[user]Corta.[note]De[src]."), span_notice("Você tira.[note]De[src]."))
+			user.visible_message(span_notice("[user] Corta.[note] De [src]."), span_notice("Você tira.[note] De [src]."))
 		else //telekinesis
-			visible_message(span_notice("[tool]Corta.[note]De[src]."))
+			visible_message(span_notice("[tool] Corta.[note] De [src]."))
 		tool.play_tool_sound(src)
 		note.forceMove(tool.drop_location())
 		note = null
@@ -989,14 +989,14 @@
 		else
 			return ITEM_INTERACT_SUCCESS
 
-	user.visible_message(span_notice("Você começa a bisbilhotar[src]'s[layer_flavor]."))
+	user.visible_message(span_notice("Você começa a bisbilhotar [src]'s [layer_flavor]."))
 	if(!tool.use_tool(src, user, 40, volume=100))
 		return ITEM_INTERACT_SUCCESS
 	if(!panel_open || security_level != starting_level)
 		// if the plating's already been broken, don't break it again
 		return ITEM_INTERACT_SUCCESS
-	user.visible_message(span_notice("[user]Remove[src]Está protegendo."),
-							span_notice("Você tira.[src]'s[layer_flavor]."))
+	user.visible_message(span_notice("[user] Remove [src] Está protegendo."),
+							span_notice("Você tira.[src]'s [layer_flavor]."))
 	security_level = next_level
 	spawn_atom_to_turf(/obj/item/stack/sheet/plasteel, user.loc, 1)
 	if(next_level == AIRLOCK_SECURITY_NONE)
@@ -1053,7 +1053,7 @@
 	if(!tool.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_notice("Você começa a cortar o[layer_flavor]..."))
+	to_chat(user, span_notice("Você começa a cortar o [layer_flavor]..."))
 
 	if(!tool.use_tool(src, user, 4 SECONDS, volume=50))
 		return ITEM_INTERACT_SUCCESS
@@ -1063,8 +1063,8 @@
 		return ITEM_INTERACT_SUCCESS
 
 	user.visible_message(
-		span_notice("[user]corta através[src]Está protegendo."),  // passers-by don't get the full picture
-		span_notice("Você cortou[src]'s[layer_flavor]."),
+		span_notice("[user] corta através [src] Está protegendo."),  // passers-by don't get the full picture
+		span_notice("Você cortou [src]'s [layer_flavor]."),
 		span_hear("Você ouve solda.")
 	)
 
@@ -1080,15 +1080,15 @@
 
 /obj/machinery/door/airlock/proc/try_reinforce(mob/user, obj/item/stack/sheet/material, amt_required, new_security_level)
 	if(material.get_amount() < amt_required)
-		to_chat(user, span_warning("Você precisa pelo menos[amt_required]Folhas de[material]Para reforçar[src]."))
+		to_chat(user, span_warning("Você precisa pelo menos [amt_required] Folhas de [material] Para reforçar [src]."))
 		return FALSE
-	to_chat(user, span_notice("Você começa a reforçar[src]."))
+	to_chat(user, span_notice("Você começa a reforçar [src]."))
 	if(!do_after(user, 2 SECONDS, src))
 		return FALSE
 	if(!panel_open || !material.use(amt_required))
 		return FALSE
-	user.visible_message(span_notice("[user]Reforça[src]com[material]."),
-						span_notice("Você reforça[src]com[material]."))
+	user.visible_message(span_notice("[user] Reforça [src] com [material]."),
+						span_notice("Você reforça [src] com [material]."))
 	security_level = new_security_level
 	update_appearance()
 	return TRUE
@@ -1122,26 +1122,26 @@
 	else if(istype(C, /obj/item/door_seal)) //adding the seal
 		var/obj/item/door_seal/airlockseal = C
 		if(!density)
-			to_chat(user, span_warning("[src]Tem que estar fechada antes de selar!"))
+			to_chat(user, span_warning("[src] Tem que estar fechada antes de selar!"))
 			return
 		if(seal)
-			to_chat(user, span_warning("[src]Já foi selada!"))
+			to_chat(user, span_warning("[src] Já foi selada!"))
 			return
-		user.visible_message(span_notice("[user]Começa a selar[src]."), span_notice("Você começa a selar[src]."))
+		user.visible_message(span_notice("[user] Começa a selar [src]."), span_notice("Você começa a selar [src]."))
 		playsound(src, 'sound/items/tools/jaws_pry.ogg', 30, TRUE)
 		if(!do_after(user, airlockseal.seal_time, target = src))
 			return
 		if(!density)
-			to_chat(user, span_warning("[src]Tem que estar fechada antes de selar!"))
+			to_chat(user, span_warning("[src] Tem que estar fechada antes de selar!"))
 			return
 		if(seal)
-			to_chat(user, span_warning("[src]Já foi selada!"))
+			to_chat(user, span_warning("[src] Já foi selada!"))
 			return
 		if(!user.transferItemToLoc(airlockseal, src))
-			to_chat(user, span_warning("Por alguma razão, você não pode anexar[airlockseal]!"))
+			to_chat(user, span_warning("Por alguma razão, você não pode anexar [airlockseal]!"))
 			return
 		playsound(src, 'sound/machines/airlock/airlockforced.ogg', 30, TRUE)
-		user.visible_message(span_notice("[user]termina a vedação[src]."), span_notice("Você termina de selar[src]."))
+		user.visible_message(span_notice("[user] termina a vedação [src]."), span_notice("Você termina de selar [src]."))
 		seal = airlockseal
 		modify_max_integrity(max_integrity * AIRLOCK_SEAL_MULTIPLIER)
 		update_appearance()
@@ -1151,9 +1151,9 @@
 			to_chat(user, span_warning("Já tem algo preso nessa câmara! Use cortadores para removê-lo."))
 			return
 		if(!user.transferItemToLoc(C, src))
-			to_chat(user, span_warning("Por alguma razão, você não pode anexar[C]!"))
+			to_chat(user, span_warning("Por alguma razão, você não pode anexar [C]!"))
 			return
-		user.visible_message(span_notice("[user]Pins[C]para[src]."), span_notice("Você pin[C]para[src]."))
+		user.visible_message(span_notice("[user] Pins [C] para [src]."), span_notice("Você pin [C] para [src]."))
 		note = C
 		update_appearance()
 	else
@@ -1163,17 +1163,17 @@
 /obj/machinery/door/airlock/try_to_weld(obj/item/weldingtool/W, mob/living/user)
 	if(!operating && density)
 		if(seal)
-			to_chat(user, span_warning("[src]é bloqueado por um selo!"))
+			to_chat(user, span_warning("[src] é bloqueado por um selo!"))
 			return
 
 		if(atom_integrity < max_integrity)
 			if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 				return
-			user.visible_message(span_notice("[user]Começa a soldar a câmara de ar."), 							span_notice("Você começa a reparar a câmara de ar..."), 							span_hear("Você ouve solda."))
+			user.visible_message(span_notice("[user] Começa a soldar a câmara de ar."), 							span_notice("Você começa a reparar a câmara de ar..."), 							span_hear("Você ouve solda."))
 			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 				atom_integrity = max_integrity
 				set_machine_stat(machine_stat & ~BROKEN)
-				user.visible_message(span_notice("[user]termina de soldar[src]."), 									span_notice("Você termina de consertar a câmara de ar."))
+				user.visible_message(span_notice("[user] termina de soldar [src]."), 									span_notice("Você termina de consertar a câmara de ar."))
 				update_appearance()
 		else
 			to_chat(user, span_notice("A câmara de ar não precisa ser consertada."))
@@ -1181,7 +1181,7 @@
 /obj/machinery/door/airlock/try_to_weld_secondary(obj/item/weldingtool/tool, mob/user)
 	if(!tool.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
-	user.visible_message(span_notice("[user]Começa[welded ? "unwelding":"welding"]A câmara de ar."), 		span_notice("Você começa.[welded ? "unwelding":"welding"]A câmara de ar..."), 		span_hear("Você ouve solda."))
+	user.visible_message(span_notice("[user] Começa[welded ? "unwelding":"welding"]A câmara de ar."), 		span_notice("Você começa.[welded ? "unwelding":"welding"]A câmara de ar..."), 		span_hear("Você ouve solda."))
 	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), tool, user)))
 		return
 	welded = !welded
@@ -1207,7 +1207,7 @@
 	if(!ishuman(user))
 		to_chat(user, span_warning("Você não tem a destreza de remover o selo!"))
 		return TRUE
-	user.visible_message(span_notice("[user]Começa a remover o selo de[src]."), span_notice("Você começa a remover[src]Selo pneumático."))
+	user.visible_message(span_notice("[user] Começa a remover o selo de [src]."), span_notice("Você começa a remover [src] Selo pneumático."))
 	playsound(src, 'sound/machines/airlock/airlockforced.ogg', 30, TRUE)
 	if(!do_after(user, airlockseal.unseal_time, target = src))
 		return TRUE
@@ -1215,7 +1215,7 @@
 		return TRUE
 	playsound(src, 'sound/items/tools/jaws_pry.ogg', 30, TRUE)
 	airlockseal.forceMove(get_turf(user))
-	user.visible_message(span_notice("[user]termina de remover o selo de[src]."), span_notice("Você termina de remover[src]Selo pneumático."))
+	user.visible_message(span_notice("[user] termina de remover o selo de [src]."), span_notice("Você termina de remover [src] Selo pneumático."))
 	seal = null
 	modify_max_integrity(max_integrity / AIRLOCK_SEAL_MULTIPLIER)
 	update_appearance()
@@ -1248,7 +1248,7 @@
 
 /obj/machinery/door/airlock/try_to_crowbar(obj/item/tool, mob/living/user, forced = FALSE)
 	if(!isnull(tool) && tool.tool_behaviour == TOOL_CROWBAR && should_try_removing_electronics() && !operating)
-		user.visible_message(span_notice("[user]remove os eletrônicos da câmara de ar."), 			span_notice("Você começa a remover eletrônicos da câmara de ar..."))
+		user.visible_message(span_notice("[user] remove os eletrônicos da câmara de ar."), 			span_notice("Você começa a remover eletrônicos da câmara de ar..."))
 
 		if(tool.use_tool(src, user, 40, volume = 100))
 			deconstruct(TRUE, user)
@@ -1269,7 +1269,7 @@
 			return
 
 		if(istype(tool, /obj/item/fireaxe) && !HAS_TRAIT(tool, TRAIT_WIELDED)) //being fireaxe'd
-			to_chat(user, span_warning("Você precisa estar usando[tool]Para fazer isso!"))
+			to_chat(user, span_warning("Você precisa estar usando [tool] Para fazer isso!"))
 			return
 
 		INVOKE_ASYNC(src, density ? PROC_REF(open) : PROC_REF(close), BYPASS_DOOR_CHECKS)
@@ -1310,7 +1310,7 @@
 	open(BYPASS_DOOR_CHECKS)
 	take_damage(AIRLOCK_PRY_DAMAGE, BRUTE, 0, 0) // Enough to sometimes spark
 	if(density && !open(BYPASS_DOOR_CHECKS))
-		to_chat(user, span_warning("Apesar de suas tentativas,[src]Se recusa a abrir."))
+		to_chat(user, span_warning("Apesar de suas tentativas,[src] Se recusa a abrir."))
 
 /obj/machinery/door/airlock/open(forced = DEFAULT_DOOR_CHECKS)
 	if(cycle_pump && !operating && !welded && !seal && locked && density)
@@ -1543,11 +1543,11 @@
 	if(user.combat_mode)
 		return ..()
 	if(locked || welded || seal) //Extremely generic, as aliens only understand the basics of how airlocks work.
-		to_chat(user, span_warning("[src]Se recusa a se mexer!"))
+		to_chat(user, span_warning("[src] Se recusa a se mexer!"))
 		user.log_message("Tried to pry open [src], located at [loc_name(src)], but failed due to the airlock being sealed.", LOG_GAME)
 		return
 	add_fingerprint(user)
-	user.visible_message(span_warning("[user]Começa a se abrir.[src]."),						span_noticealien("Você começa a cavar suas garras[src]Com toda a sua força!"),						span_warning("Você ouve metal gemendo..."))
+	user.visible_message(span_warning("[user] Começa a se abrir.[src]."),						span_noticealien("Você começa a cavar suas garras [src] Com toda a sua força!"),						span_warning("Você ouve metal gemendo..."))
 	user.log_message("Started prying open [src], located at [loc_name(src)].", LOG_GAME)
 	var/time_to_open = 5 //half a second
 	if(hasPower())
@@ -1556,7 +1556,7 @@
 
 	if(do_after(user, time_to_open, src))
 		if(density && !open(BYPASS_DOOR_CHECKS)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
-			to_chat(user, span_warning("Apesar de seus esforços,[src]Conseguiu resistir suas tentativas de abri-lo!"))
+			to_chat(user, span_warning("Apesar de seus esforços,[src] Conseguiu resistir suas tentativas de abri-lo!"))
 			user.log_message("Tried and failed to pry open [src], located at [loc_name(src)], due to the airlock getting sealed during the do_after.", LOG_GAME)
 			return
 		user.log_message("Successfully pried open [src], located at [loc_name(src)].", LOG_GAME)
@@ -1667,10 +1667,10 @@
 	switch(the_rcd.mode)
 		if(RCD_DECONSTRUCT)
 			if(seal)
-				to_chat(user, span_notice("[src]O selo precisa ser removido primeiro."))
+				to_chat(user, span_notice("[src] O selo precisa ser removido primeiro."))
 				return FALSE
 			if(security_level != AIRLOCK_SECURITY_NONE)
-				to_chat(user, span_notice("[src]O reforço precisa ser removido primeiro."))
+				to_chat(user, span_notice("[src] O reforço precisa ser removido primeiro."))
 				return FALSE
 			return list("delay" = 5 SECONDS, "cost" = 32)
 	return FALSE
@@ -2301,7 +2301,7 @@
 /obj/machinery/door/airlock/external/examine(mob/user)
 	. = ..()
 	if(space_dir)
-		. += span_notice("Tem etiquetas indicando que tem um mecanismo de emergência para abrir do[dir2text(space_dir)]lado com<b>Apenas suas mãos.</b>Mesmo que não haja energia.")
+		. += span_notice("Tem etiquetas indicando que tem um mecanismo de emergência para abrir do [dir2text(space_dir)] lado com<b>Apenas suas mãos.</b>Mesmo que não haja energia.")
 
 /obj/machinery/door/airlock/external/cyclelinkairlock()
 	. = ..()

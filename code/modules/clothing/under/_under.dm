@@ -134,7 +134,7 @@
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/cable_coil/cabling = tool
 		cabling.use(1)
-		cabling.visible_message(span_notice("[user]Conserta os sensores do traje.[src]com[cabling]."))
+		cabling.visible_message(span_notice("[user] Conserta os sensores do traje.[src] com [cabling]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/clothing/accessory))
@@ -238,7 +238,7 @@
 	if(has_sensor == BROKEN_SENSORS || has_sensor == NO_SENSORS)
 		return
 
-	visible_message(span_warning("[src]Os sensores médicos estão curtos!"), blind_message = span_warning("O[src]Faz um som eletrônico!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_warning("[src] Os sensores médicos estão curtos!"), blind_message = span_warning("O [src] Faz um som eletrônico!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	set_has_sensor(BROKEN_SENSORS)
 	sensor_malfunction()
 
@@ -320,7 +320,7 @@
 
 	set_sensor_mode(pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS))
 	playsound(source = src, soundin = 'sound/effects/sparks/sparks3.ogg', vol = 75, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
-	visible_message(span_warning("O[src]Os sensores médicos piscam e mudam rapidamente!"), blind_message = span_warning("O[src]Faz um som eletrônico!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_warning("O [src] Os sensores médicos piscam e mudam rapidamente!"), blind_message = span_warning("O [src] Faz um som eletrônico!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 BUBBERSTATION CHANGE END */
 

@@ -26,7 +26,7 @@
 	show_indicator_overlay("eye_open")
 	stage_timer = addtimer(CALLBACK(src, PROC_REF(show_indicator_overlay), "eye_pulse"), animation_time, TIMER_STOPPABLE)
 	StartCooldown(360 SECONDS, 360 SECONDS)
-	owner.visible_message(span_warning("[owner]Olho brilhante ominosamente!"))
+	owner.visible_message(span_warning("[owner] Olho brilhante ominosamente!"))
 	if (do_after(owner, delay = wait_delay, target = owner, hidden = TRUE))
 		trigger_effect()
 	else
@@ -72,7 +72,7 @@
 	if (!viewer.flash_act(intensity = 4, affect_silicon = TRUE, visual = TRUE, length = 3 SECONDS))
 		return FALSE
 	viewer.set_confusion_if_lower(12 SECONDS)
-	to_chat(viewer, span_warning("Você está cego por[owner]Oh olhar penetrante!"))
+	to_chat(viewer, span_warning("Você está cego por [owner] Oh olhar penetrante!"))
 	return TRUE
 
 /// Animate our effect out
@@ -102,7 +102,7 @@
 	desc = "Depois de um atraso, queime e atordoe todos olhando para você."
 
 /datum/action/cooldown/mob_cooldown/watcher_gaze/fire/apply_effect(mob/living/viewer)
-	to_chat(viewer, span_warning("[owner]O brilho abrasador o força ao chão!"))
+	to_chat(viewer, span_warning("[owner] O brilho abrasador o força ao chão!"))
 	viewer.Paralyze(3 SECONDS)
 	viewer.adjust_fire_stacks(10)
 	viewer.ignite_mob()
@@ -118,7 +118,7 @@
 /datum/action/cooldown/mob_cooldown/watcher_gaze/ice/apply_effect(mob/living/viewer)
 	if(!HAS_TRAIT(viewer, TRAIT_RESISTCOLD))
 		return
-	to_chat(viewer, span_warning("Você é repelido pela força de[owner]O olhar frio!"))
+	to_chat(viewer, span_warning("Você é repelido pela força de [owner] O olhar frio!"))
 	viewer.apply_status_effect(/datum/status_effect/freon/watcher/extended)
 	viewer.safe_throw_at(
 		target = get_edge_target_turf(owner, get_dir(owner, get_step_away(viewer, owner))),

@@ -107,7 +107,7 @@
 				if(!W.tool_start_check(user, amount=1))
 					return
 
-				user.visible_message(span_notice("[user]Desmonta a assembléia de Windoor."),
+				user.visible_message(span_notice("[user] Desmonta a assembléia de Windoor."),
 					span_notice("Você começa a desmontar a assembléia windoor..."))
 
 				if(W.use_tool(src, user, 40, volume=50))
@@ -128,7 +128,7 @@
 					if(WD.dir == dir)
 						to_chat(user, span_warning("Já tem um windoor naquele lugar!"))
 						return
-				user.visible_message(span_notice("[user]Protege a montagem do windoor ao chão."),
+				user.visible_message(span_notice("[user] Protege a montagem do windoor ao chão."),
 					span_notice("Você começa a garantir a montagem windoor ao chão..."))
 
 				if(W.use_tool(src, user, 40, volume=100))
@@ -147,7 +147,7 @@
 
 			//Unwrenching an unsecure assembly un-anchors it. Step 4 undone
 			else if(W.tool_behaviour == TOOL_WRENCH && anchored)
-				user.visible_message(span_notice("[user]Desprotege a assembleia de Windoor ao chão."),
+				user.visible_message(span_notice("[user] Desprotege a assembleia de Windoor ao chão."),
 					span_notice("Você começa a insegurar a montagem windoor ao chão..."))
 
 				if(W.use_tool(src, user, 40, volume=100))
@@ -182,7 +182,7 @@
 
 			//Adding cable to the assembly. Step 5 complete.
 			else if(istype(W, /obj/item/stack/cable_coil) && anchored)
-				user.visible_message(span_notice("[user]Liga a montagem do Windoor."), span_notice("Você começa a ligar a montagem windoor..."))
+				user.visible_message(span_notice("[user] Liga a montagem do Windoor."), span_notice("Você começa a ligar a montagem windoor..."))
 
 				if(do_after(user, 4 SECONDS, target = src))
 					if(!src || !anchored || src.state != "01")
@@ -204,7 +204,7 @@
 
 			//Removing wire from the assembly. Step 5 undone.
 			if(W.tool_behaviour == TOOL_WIRECUTTER)
-				user.visible_message(span_notice("[user]Corta os fios da câmara de ar."), span_notice("Você começa a cortar os fios da câmara de ar..."))
+				user.visible_message(span_notice("[user] Corta os fios da câmara de ar."), span_notice("Você começa a cortar os fios da câmara de ar..."))
 
 				if(W.use_tool(src, user, 40, volume=100))
 					if(state != "02")
@@ -222,7 +222,7 @@
 			else if(istype(W, /obj/item/electronics/airlock))
 
 				W.play_tool_sound(src, 100)
-				user.visible_message(span_notice("[user]Instala a eletrônica na câmara de ar."),
+				user.visible_message(span_notice("[user] Instala a eletrônica na câmara de ar."),
 					span_notice("Você começa a instalar eletrônicos na câmara de ar..."))
 
 				if(do_after(user, 4 SECONDS, target = src))
@@ -241,7 +241,7 @@
 				if(!electronics)
 					return
 
-				user.visible_message(span_notice("[user]remove os eletrônicos da câmara de ar."),
+				user.visible_message(span_notice("[user] remove os eletrônicos da câmara de ar."),
 					span_notice("Você começa a desinstalar eletrônicos da câmara de ar..."))
 
 				if(W.use_tool(src, user, 40, volume=100) && electronics)
@@ -257,7 +257,7 @@
 				if(!electronics)
 					to_chat(usr, span_warning("A montagem está faltando eletrônicos!"))
 					return
-				user.visible_message(span_notice("[user]Coloca a porta no quadro."),
+				user.visible_message(span_notice("[user] Coloca a porta no quadro."),
 					span_notice("Você começa a intrometer o windoor no quadro..."))
 
 				if(W.use_tool(src, user, 40, volume=100) && electronics)

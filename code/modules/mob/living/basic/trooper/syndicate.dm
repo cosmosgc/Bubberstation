@@ -39,7 +39,7 @@
 
 /mob/living/basic/trooper/syndicate/melee/projectile_hit(obj/projectile/hitting_projectile, def_zone, piercing_hit, blocked)
 	if(prob(projectile_deflect_chance))
-		visible_message(span_danger("[src]Blocos.[hitting_projectile]Com seu escudo!"))
+		visible_message(span_danger("[src] Blocos.[hitting_projectile] Com seu escudo!"))
 		return BULLET_ACT_BLOCK
 	return ..()
 

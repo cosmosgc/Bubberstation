@@ -69,7 +69,7 @@
 		if(!broken && !burnt)
 			for(var/obj/O in src)
 				for(var/M in O.buckled_mobs)
-					to_chat(user, span_warning("Alguém está preso a [O]Solte![M]Para tirar da frente."))
+					to_chat(user, span_warning("Alguém está preso a [O] Solte![M] Para tirar da frente."))
 					return
 			var/obj/item/stack/tile/tile = C
 			tile.place_tile(src, user)
@@ -176,7 +176,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src)
 	if(prob(attacking_item.force * 20 - 25))
-		user.visible_message(span_danger("[user]Quebra[src]!"), 						span_danger("Você quebra [src]Com[attacking_item]!"))
+		user.visible_message(span_danger("[user] Quebra [src]!"), 						span_danger("Você quebra [src] Com [attacking_item]!"))
 		ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	else
 		to_chat(user, span_danger("Você acerta [src], sem efeito!"))

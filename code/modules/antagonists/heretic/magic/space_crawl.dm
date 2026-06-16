@@ -105,7 +105,7 @@
 
 	jaunter.add_traits(jaunting_traits, SPACE_PHASING)
 	playsound(our_turf, 'sound/effects/magic/cosmic_energy.ogg', 50, TRUE, -1)
-	our_turf.visible_message(span_warning("[jaunter]Afunda-se em[our_turf]!"))
+	our_turf.visible_message(span_warning("[jaunter] Afunda-se em [our_turf]!"))
 	new /obj/effect/temp_visual/space_explosion(our_turf)
 	jaunter.extinguish_mob()
 
@@ -123,7 +123,7 @@
 	if(!exit_jaunt(jaunter, our_turf))
 		return FALSE
 	jaunter.remove_traits(jaunting_traits, SPACE_PHASING)
-	our_turf.visible_message(span_boldwarning("[jaunter]Se levanta de[our_turf]!"))
+	our_turf.visible_message(span_boldwarning("[jaunter] Se levanta de [our_turf]!"))
 	return TRUE
 
 /datum/action/cooldown/spell/jaunt/space_crawl/on_jaunt_exited(obj/effect/dummy/phased_mob/jaunt, mob/living/unjaunter)

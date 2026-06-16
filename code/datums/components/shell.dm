@@ -138,7 +138,7 @@
 	examine_text += span_notice("Há um circuito integrado ligado. Use uma ferramenta para acessar a fiação. Use uma chave de fenda para removê-la.[source].")
 	examine_text += span_notice("O painel de cobertura para o circuito integrado é[locked? "trancado" : "destrancado"].")
 	var/obj/item/stock_parts/power_store/cell = attached_circuit.cell
-	examine_text += span_notice("O medidor de carga diz[cell ? round(cell.percent(), 1) : 0]%.")
+	examine_text += span_notice("O medidor de carga diz [cell ? round(cell.percent(), 1) : 0]%.")
 
 	if (shell_flags & SHELL_FLAG_USB_PORT)
 		examine_text += span_notice("Há um<b>Porta USB</b>Na frente.")
@@ -183,7 +183,7 @@
 			return ITEM_INTERACT_SUCCESS
 
 		if(!attached_circuit.owner_id && isidcard(item))
-			source.balloon_alert(user, "ID do proprietário definido para[item]")
+			source.balloon_alert(user, "ID do proprietário definido para [item]")
 			attached_circuit.owner_id = WEAKREF(item)
 			return ITEM_INTERACT_SUCCESS
 
@@ -204,7 +204,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(logic_board.current_size > capacity)
-		source.balloon_alert(user, "Isso é muito grande para caber em[parent]!")
+		source.balloon_alert(user, "Isso é muito grande para caber em [parent]!")
 		return ITEM_INTERACT_BLOCKING
 
 	logic_board.inserter_mind = WEAKREF(user.mind)
@@ -252,7 +252,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(parent)
-	source.balloon_alert(user, "Você desaparafusa.[attached_circuit]De[parent].")
+	source.balloon_alert(user, "Você desaparafusa.[attached_circuit] De [parent].")
 	remove_circuit()
 	return ITEM_INTERACT_BLOCKING
 

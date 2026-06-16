@@ -47,7 +47,7 @@
 		. += span_notice("A exibição de status diz:<b>[efficiency]%</b>de carne depois<b>[gibtime*0.1]</b>segundos de processamento.")
 		for(var/datum/stock_part/servo/servo in component_parts)
 			if(servo.tier >= 2)
-				. += span_notice("[src]Foi atualizado para processar materiais inorgânicos.")
+				. += span_notice("[src] Foi atualizado para processar materiais inorgânicos.")
 
 /obj/machinery/gibber/update_overlays()
 	. = ..()
@@ -95,17 +95,17 @@
 		return
 
 	if(!anchored)
-		to_chat(user, span_warning("[src]Não pode ser usado a menos que aparafusado no chão!"))
+		to_chat(user, span_warning("[src] Não pode ser usado a menos que aparafusado no chão!"))
 		return
 
 	if(user.pulling && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(!iscarbon(L))
-			to_chat(user, span_warning("Este item não é adequado para[src]!"))
+			to_chat(user, span_warning("Este item não é adequado para [src]!"))
 			return
 		var/mob/living/carbon/C = L
 		if(C.buckled || C.has_buckled_mobs())
-			to_chat(user, span_warning("[C]está ligado a algo!"))
+			to_chat(user, span_warning("[C] está ligado a algo!"))
 			return
 
 		if(!ignore_clothing)
@@ -114,13 +114,13 @@
 					to_chat(user, span_warning("O sujeito pode não ter itens abióticos!"))
 					return
 
-		user.visible_message(span_danger("[user]começa a colocar[C]em[src]!"))
+		user.visible_message(span_danger("[user] começa a colocar [C] em [src]!"))
 
 		add_fingerprint(user)
 
 		if(do_after(user, gibtime, target = src))
 			if(C && user.pulling == C && !C.buckled && !C.has_buckled_mobs() && !occupant)
-				user.visible_message(span_danger("[user]Coisas.[C]em[src]!"))
+				user.visible_message(span_danger("[user] Coisas.[C] em [src]!"))
 				C.forceMove(src)
 				set_occupant(C)
 				update_appearance()

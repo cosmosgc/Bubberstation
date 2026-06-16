@@ -175,7 +175,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
-	user.visible_message(span_warning("[user]hits[src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_warning("[user] hits [src]."), null, null, COMBAT_MESSAGE_RANGE)
 	log_combat(user, src, "hit")
 	if(!shock(user, 70))
 		take_damage(rand(5,10), BRUTE, MELEE, 1)
@@ -183,7 +183,7 @@
 /obj/structure/grille/attack_alien(mob/living/user, list/modifiers)
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_warning("[user]Estraga.[src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_warning("[user] Estraga.[src]."), null, null, COMBAT_MESSAGE_RANGE)
 	if(!shock(user, 70))
 		take_damage(20, BRUTE, MELEE, 1)
 
@@ -225,7 +225,7 @@
 		if(shock(user, 90))
 			return
 		var/obj/item/stack/rods/R = W
-		user.visible_message(span_notice("[user]Reconstrui a grade quebrada."), 			span_notice("Você reconstrui a grade quebrada."))
+		user.visible_message(span_notice("[user] Reconstrui a grade quebrada."), 			span_notice("Você reconstrui a grade quebrada."))
 		repair_grille()
 		R.use(1)
 		return TRUE
@@ -239,7 +239,7 @@
 				return
 			var/dir_to_set = SOUTHWEST
 			if(!anchored)
-				to_chat(user, span_warning("[src]Precisa ser preso no chão primeiro!"))
+				to_chat(user, span_warning("[src] Precisa ser preso no chão primeiro!"))
 				return
 			for(var/obj/structure/window/WINDOW in loc)
 				to_chat(user, span_warning("Já tem uma janela lá!"))
@@ -273,7 +273,7 @@
 				WD.set_anchored(FALSE)
 				WD.state = 0
 				ST.use(2)
-				to_chat(user, span_notice("Seu lugar.[WD]Vamos.[src]."))
+				to_chat(user, span_notice("Seu lugar.[WD] Vamos.[src]."))
 			return
 //window placing end
 

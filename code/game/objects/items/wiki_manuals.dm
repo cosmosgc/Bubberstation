@@ -88,7 +88,7 @@
 	page_link = "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Finge Ler.\the [src]Intencionalmente... então morre logo de rir!"))
+	user.visible_message(span_suicide("[user] Finge Ler.\the [src] Intencionalmente... então morre logo de rir!"))
 	return OXYLOSS
 
 /obj/item/book/manual/wiki/infections
@@ -199,7 +199,7 @@
 
 /obj/item/book/manual/wiki/ordnance/suicide_act(mob/living/user)
 	var/mob/living/carbon/human/H = user
-	user.visible_message(span_suicide("[user]Começa a dançar à batida de Rhumba! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a dançar à batida de Rhumba! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	if(QDELETED(H))
 		return

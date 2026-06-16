@@ -82,7 +82,7 @@
 /// Dynamic changeling reentry
 /mob/living/basic/blob_minion/zombie/proc/on_corpse_revived()
 	SIGNAL_HANDLER
-	visible_message(span_boldwarning("[src]Explode por dentro!"))
+	visible_message(span_boldwarning("[src] Explode por dentro!"))
 	death()
 
 /// Blob-created zombies will ping for player control when they make a zombie

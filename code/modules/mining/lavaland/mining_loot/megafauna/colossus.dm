@@ -52,7 +52,7 @@
 		return FALSE
 
 	if(world.time < next_command)
-		to_chat(owner, span_notice("Você deve esperar.[DisplayTimeText(next_command - world.time)]Antes de falar novamente."))
+		to_chat(owner, span_notice("Você deve esperar.[DisplayTimeText(next_command - world.time)] Antes de falar novamente."))
 		return FALSE
 
 	return owner.can_speak()
@@ -253,7 +253,7 @@
 
 /obj/machinery/anomalous_crystal/emitter/Initialize(mapload)
 	. = ..()
-	observer_desc = "Este cristal gera\a [initial(generated_projectile.name)]quando ativado."
+	observer_desc = "Este cristal gera\a [initial(generated_projectile.name)] quando ativado."
 
 /obj/machinery/anomalous_crystal/emitter/ActivationReaction(mob/user, method)
 	if(..())

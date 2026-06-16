@@ -57,20 +57,20 @@
 		return ..()
 	if(can_uproot && used_item.tool_behaviour == TOOL_SHOVEL)
 		if(uprooted)
-			user.visible_message(span_notice("[user]começa a replantar[src]..."),
-				span_notice("Você começa a replantar[src]..."))
+			user.visible_message(span_notice("[user] começa a replantar [src]..."),
+				span_notice("Você começa a replantar [src]..."))
 		else
-			user.visible_message(span_notice("[user]Começa a arrancar[src]..."),
-				span_notice("Você começa a arrancar[src]..."))
+			user.visible_message(span_notice("[user] Começa a arrancar [src]..."),
+				span_notice("Você começa a arrancar [src]..."))
 		used_item.play_tool_sound(src, 50)
 		if(!do_after(user, harvest_time, src))
 			return
 		if(uprooted)
-			user.visible_message(span_notice("[user]Replanta[src]."),
-				span_notice("Você replanta[src]."))
+			user.visible_message(span_notice("[user] Replanta [src]."),
+				span_notice("Você replanta [src]."))
 			replant(user)
 		else
-			user.visible_message(span_notice("[user]Desenraiza[src]."),
+			user.visible_message(span_notice("[user] Desenraiza [src]."),
 				span_notice("Você se desenraiza.[src]."))
 			uproot(user)
 		used_item.play_tool_sound(src, 50)
@@ -79,8 +79,8 @@
 	if(!can_harvest(user, used_item))
 		return ..()
 
-	user.visible_message(span_notice("[user]Começa a...[harvest_verb] [src]..."),
-		span_notice("Você começa a[harvest_verb] [src]Com[used_item]..."))
+	user.visible_message(span_notice("[user] Começa a...[harvest_verb] [src]..."),
+		span_notice("Você começa a [harvest_verb] [src] Com [used_item]..."))
 	play_attack_sound(used_item.force)
 	if(!do_after(user, harvest_time * used_item.toolspeed, src))
 		return
@@ -98,8 +98,8 @@
 	if(!can_harvest(user))
 		return
 
-	user.visible_message(span_notice("[user]Começa a...[harvest_verb] [src]..."),
-		span_notice("Você começa a[harvest_verb] [src]..."))
+	user.visible_message(span_notice("[user] Começa a...[harvest_verb] [src]..."),
+		span_notice("Você começa a [harvest_verb] [src]..."))
 	play_attack_sound()
 	if(!do_after(user, harvest_time, src))
 		return
@@ -337,12 +337,12 @@
 	delete_on_harvest = TRUE
 
 /obj/structure/flora/tree/stump/harvest(mob/living/user, product_amount_multiplier)
-	to_chat(user, span_notice("Você consegue remover[src]."))
+	to_chat(user, span_notice("Você consegue remover [src]."))
 	qdel(src)
 
 /obj/structure/flora/tree/stump/uproot(mob/living/user)
 	..()
-	to_chat(user, span_notice("Você consegue remover[src]."))
+	to_chat(user, span_notice("Você consegue remover [src]."))
 	qdel(src)
 
 /obj/structure/flora/tree/dead

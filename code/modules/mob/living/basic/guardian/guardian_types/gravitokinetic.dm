@@ -51,7 +51,7 @@
 	. = ..()
 	if (!. || !isliving(target) || target == src || target == summoner || shares_summoner(target) || gravity_targets[target])
 		return
-	to_chat(src, span_bolddanger("Seu soco tem aplicado gravidade pesada para[target]!"))
+	to_chat(src, span_bolddanger("Seu soco tem aplicado gravidade pesada para [target]!"))
 	add_gravity(target, punch_gravity)
 	to_chat(target, span_userdanger("Tudo parece muito peso!"))
 	return TRUE
@@ -66,7 +66,7 @@
 /mob/living/basic/guardian/gravitokinetic/proc/slam_turf(turf/open/slammed)
 	if (!isopenturf(slammed) || isgroundlessturf(slammed))
 		return
-	visible_message(span_danger("[src]Bate seu punho no[slammed]!"), span_notice("Você amplifica a gravidade em torno do[slammed]."))
+	visible_message(span_danger("[src] Bate seu punho no [slammed]!"), span_notice("Você amplifica a gravidade em torno do [slammed]."))
 	do_attack_animation(slammed)
 	add_gravity(slammed, turf_gravity)
 
@@ -89,7 +89,7 @@
 	if (isnull(gravity_targets[target]))
 		return
 	if (too_far)
-		to_chat(src, span_bolddanger("Você está muito longe de[target]Para ampliar a gravidade!"))
+		to_chat(src, span_bolddanger("Você está muito longe de [target] Para ampliar a gravidade!"))
 	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	target.RemoveElement(/datum/element/forced_gravity, gravity_targets[target])
 	gravity_targets -= target

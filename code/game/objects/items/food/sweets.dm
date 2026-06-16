@@ -205,7 +205,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/bubblegum/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	qdel(src)
 	return TOXLOSS
 

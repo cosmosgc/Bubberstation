@@ -93,11 +93,11 @@
 
 	var/obj/machinery/mechpad/buffered_pad = multitool.buffer
 	if(!(mechpads.len < maximum_pads))
-		to_chat(user, span_warning("[src]Não aguento mais conexões!"))
+		to_chat(user, span_warning("[src] Não aguento mais conexões!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(buffered_pad == connected_mechpad)
-		to_chat(user, span_warning("[src]Não pode se conectar ao seu próprio mechpad!"))
+		to_chat(user, span_warning("[src] Não pode se conectar ao seu próprio mechpad!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!connected_mechpad && buffered_pad == find_pad())
@@ -105,12 +105,12 @@
 			remove_pad(buffered_pad)
 		connect_launchpad(buffered_pad)
 		multitool.set_buffer(null)
-		to_chat(user, span_notice("Você conecta o console ao bloco com dados de\the [multitool]É um amortecedor."))
+		to_chat(user, span_notice("Você conecta o console ao bloco com dados de\the [multitool] É um amortecedor."))
 		return ITEM_INTERACT_SUCCESS
 
 	add_pad(buffered_pad)
 	multitool.set_buffer(null)
-	to_chat(user, span_notice("Você carrega os dados de\the [multitool]É um amortecedor."))
+	to_chat(user, span_notice("Você carrega os dados de\the [multitool] É um amortecedor."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/mechpad/proc/add_pad(obj/machinery/mechpad/pad)
@@ -149,7 +149,7 @@
 		return FALSE
 	if(!connected_mechpad)
 		if(!silent)
-			to_chat(user, span_warning("[src]Não tem nenhum bloco conectado!"))
+			to_chat(user, span_warning("[src] Não tem nenhum bloco conectado!"))
 		return FALSE
 	if(connected_mechpad.machine_stat & (BROKEN|NOPOWER) || where.machine_stat & (BROKEN|NOPOWER))
 		if(!silent)
@@ -162,7 +162,7 @@
 	var/obj/vehicle/sealed/mecha/mech = locate() in get_turf(connected_mechpad)
 	if(!mech)
 		if(!silent)
-			to_chat(user, span_warning("[src]Não detecta nenhum mecha na almofada!"))
+			to_chat(user, span_warning("[src] Não detecta nenhum mecha na almofada!"))
 		return FALSE
 	if(where.mech_only && (locate(/mob/living) in mech.get_all_contents()))
 		if(!silent)

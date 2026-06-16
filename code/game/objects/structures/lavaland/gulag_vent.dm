@@ -48,6 +48,6 @@
 	var/obj/item/boulder/gulag_boulder = new spawned_boulder(get_turf(living_user))
 	gulag_boulder.platform_lifespan = PLATFORM_LIFE_GULAG
 
-	living_user.visible_message(span_notice("[living_user]Tira uma pedra de[src]."))
+	living_user.visible_message(span_notice("[living_user] Tira uma pedra de [src]."))
 	living_user.apply_damage(stamina_damage_to_inflict, STAMINA)
 	playsound(src, 'sound/items/weapons/genhit.ogg', vol = 50, vary = TRUE)

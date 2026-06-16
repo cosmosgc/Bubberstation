@@ -74,7 +74,7 @@
 		return
 
 	if((user.ckey in pickup_restriction_ckeys) && !COOLDOWN_FINISHED(src, pickup_cooldown))
-		user.balloon_alert(user, "Não posso pegar para[COOLDOWN_TIMELEFT(src, pickup_cooldown) *0.1]Segundos!")
+		user.balloon_alert(user, "Não posso pegar para [COOLDOWN_TIMELEFT(src, pickup_cooldown) *0.1] Segundos!")
 		return
 
 	reset_pickup_restriction()

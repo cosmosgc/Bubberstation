@@ -15,9 +15,9 @@
 /obj/machinery/computer/aifixer/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupier)
 		if(machine_stat & (NOPOWER|BROKEN))
-			to_chat(user, span_warning("Os parafusos[name]A tela não se mexe."))
+			to_chat(user, span_warning("Os parafusos [name] A tela não se mexe."))
 		else
-			to_chat(user, span_warning("Os parafusos[name]A tela não se move e emite um sinal de alerta."))
+			to_chat(user, span_warning("Os parafusos [name] A tela não se move e emite um sinal de alerta."))
 	else
 		return ..()
 
@@ -111,7 +111,7 @@
 	//Downloading AI from card to terminal.
 	if(interaction == AI_TRANS_FROM_CARD)
 		if(machine_stat & (NOPOWER|BROKEN))
-			to_chat(user, span_alert("[src]está offline e não pode tomar uma IA neste momento."))
+			to_chat(user, span_alert("[src] está offline e não pode tomar uma IA neste momento."))
 			return
 		AI.forceMove(src)
 		occupier = AI

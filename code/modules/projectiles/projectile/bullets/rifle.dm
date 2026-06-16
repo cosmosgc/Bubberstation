@@ -216,7 +216,7 @@
 
 /obj/projectile/bullet/rebar/supermatter/proc/dust_feedback(atom/target)
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 10, TRUE)
-	visible_message(span_danger("[target]é atingido por[src], Virando[target.p_them()]A poeira em um brilhante clarão de luz!"))
+	visible_message(span_danger("[target] é atingido por [src], Virando [target.p_them()] A poeira em um brilhante clarão de luz!"))
 
 /obj/projectile/bullet/paperball
 	desc = "Doink!"

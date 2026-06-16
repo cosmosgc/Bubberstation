@@ -251,27 +251,27 @@
 /obj/machinery/drone_dispenser/crowbar_act(mob/living/user, obj/item/tool)
 	materials.retrieve_all()
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("Você recupera os materiais de[src]."))
+	to_chat(user, span_notice("Você recupera os materiais de [src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/drone_dispenser/welder_act(mob/living/user, obj/item/tool)
 	if(!(machine_stat & BROKEN))
-		to_chat(user, span_warning("[src]Não precisa de reparos."))
+		to_chat(user, span_warning("[src] Não precisa de reparos."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]Começa a se remendar.[src]Com[tool]."),
-		span_notice("Você começa a restaurar o dano para[src]..."))
+		span_notice("[user] Começa a se remendar.[src] Com [tool]."),
+		span_notice("Você começa a restaurar o dano para [src]..."))
 
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]Consertos[src]!"),
-		span_notice("Você restaura.[src]à operação."))
+		span_notice("[user] Consertos [src]!"),
+		span_notice("Você restaura.[src] à operação."))
 
 	set_machine_stat(machine_stat & ~BROKEN)
 	atom_integrity = max_integrity

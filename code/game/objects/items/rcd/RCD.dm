@@ -100,7 +100,7 @@
 
 /obj/item/construction/rcd/ui_action_click(mob/user, actiontype)
 	if (!COOLDOWN_FINISHED(src, destructive_scan_cooldown))
-		to_chat(user, span_warning("[src]Vamos sair com pouco barulho."))
+		to_chat(user, span_warning("[src] Vamos sair com pouco barulho."))
 		return
 
 	COOLDOWN_START(src, destructive_scan_cooldown, RCD_DESTRUCTIVE_SCAN_COOLDOWN)
@@ -110,11 +110,11 @@
 	var/turf/T = get_turf(user)
 
 	if(!isopenturf(T)) // Oh fuck
-		user.visible_message(span_suicide("[user]está batendo[user.p_them()]e eu morrer com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está batendo [user.p_them()] e eu morrer com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		return BRUTELOSS
 
 	mode = RCD_TURF
-	user.visible_message(span_suicide("[user]Defina o RCD para\"Parede\"e depois para baixo.[user.p_their()]Garganta! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Defina o RCD para\"Parede\"e depois para baixo.[user.p_their()] Garganta! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(useResource(16, user)) // It takes 16 resources to construct a wall
 		var/success = T.rcd_act(user, src, list("[RCD_DESIGN_MODE]" = RCD_TURF, "[RCD_DESIGN_PATH]" = /turf/open/floor/plating/rcd))
 		T = get_turf(user)
@@ -126,7 +126,7 @@
 		user.gib(DROP_ALL_REMAINS)
 		return MANUAL_SUICIDE
 
-	user.visible_message(span_suicide("[user]Puxa o gatilho... Mas não há munição suficiente!"))
+	user.visible_message(span_suicide("[user] Puxa o gatilho... Mas não há munição suficiente!"))
 	return SHAME
 
 /**
@@ -464,7 +464,7 @@
 	interact_with_atom(target, user, modifiers)
 
 /obj/item/construction/rcd/proc/detonate_pulse()
-	audible_message(span_danger("<b>[src]Começa a vibrar e zumbir alto!</b>"), 	span_danger("<b>[src]Começa a vibrar violentamente!</b>"))
+	audible_message(span_danger("<b>[src] Começa a vibrar e zumbir alto!</b>"), 	span_danger("<b>[src] Começa a vibrar violentamente!</b>"))
 	// 5 seconds to get rid of it
 	addtimer(CALLBACK(src, PROC_REF(detonate_pulse_explode)), 5 SECONDS)
 
@@ -611,7 +611,7 @@
 	var/obj/item/mecha_parts/mecha_equipment/rcd/ourshell = loc
 	if(!istype(ourshell))
 		return
-	ourshell.audible_message(span_danger("<b>[ourshell]Começa a vibrar e zumbir alto!</b>"), 	span_danger("<b>[ourshell]Começa a vibrar violentamente!</b>"))
+	ourshell.audible_message(span_danger("<b>[ourshell] Começa a vibrar e zumbir alto!</b>"), 	span_danger("<b>[ourshell] Começa a vibrar violentamente!</b>"))
 	// 5 seconds to get rid of it
 	addtimer(CALLBACK(src, PROC_REF(detonate_pulse_explode)), 5 SECONDS)
 

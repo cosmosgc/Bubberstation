@@ -17,7 +17,7 @@
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]começa a cintilar[user.p_them()]ego com\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] começa a cintilar [user.p_them()] ego com\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/storage/belt/update_overlays()
@@ -362,7 +362,7 @@
 /obj/item/storage/belt/military/snack/Initialize(mapload)
 	. = ..()
 	var/sponsor = pick("Donk Co.", "Waffle Corp.", "Roffle Co.", "Gorlex Marauders", "Tiger Cooperative")
-	desc = "Um conjunto de pinças de lanche usadas por atletas do[sponsor]Divisão de esportes VR."
+	desc = "Um conjunto de pinças de lanche usadas por atletas do [sponsor] Divisão de esportes VR."
 
 /obj/item/storage/belt/military/snack/full/Initialize(mapload)
 	. = ..()
@@ -618,7 +618,7 @@
 		balloon_alert(user, "está vazio!")
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/stored_item = contents[1]
-	user.visible_message(span_notice("[user]Toma.[stored_item]Fora[src]."), span_notice("Você pega.[stored_item]Fora[src]."))
+	user.visible_message(span_notice("[user] Toma.[stored_item] Fora [src]."), span_notice("Você pega.[stored_item] Fora [src]."))
 	user.put_in_hands(stored_item)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -696,7 +696,7 @@
 	RegisterSignal(swordsman, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(counter_attack))
 	swordsman.Immobilize(1 SECONDS)
 	eyed_fool = WEAKREF(cast_on)
-	swordsman.visible_message(span_danger("[swordsman]Alarga.[swordsman.p_their()]posição,[swordsman.p_their()]A mão pairando sobre\the [used_sheath]!"), span_notice("Prepare-se para contra-atacar.[cast_on]!"))
+	swordsman.visible_message(span_danger("[swordsman] Alarga.[swordsman.p_their()] posição,[swordsman.p_their()] A mão pairando sobre\the [used_sheath]!"), span_notice("Prepare-se para contra-atacar.[cast_on]!"))
 	addtimer(CALLBACK(src, PROC_REF(relax), swordsman, used_sheath), 1 SECONDS)
 	COOLDOWN_START(used_sheath, full_ability_cooldown, 60 SECONDS)
 	unset_ranged_ability(swordsman)
@@ -721,7 +721,7 @@
 
 /datum/action/innate/blade_counter/proc/do_strike(mob/living/fool, mob/living/forward_thinker, obj/item/justicetool)
 	var/obj/item/bodypart/offending_hand = fool.get_active_hand()
-	forward_thinker.visible_message(span_danger("[forward_thinker]Desenhe rápidamente.\the [justicetool]E golpes[fool]Durante[fool.p_their()]Ataquem!"), span_notice("Você rapidamente desenha\the [justicetool]e contra-ataque[fool]!"))
+	forward_thinker.visible_message(span_danger("[forward_thinker] Desenhe rápidamente.\the [justicetool] E golpes [fool] Durante [fool.p_their()] Ataquem!"), span_notice("Você rapidamente desenha\the [justicetool] e contra-ataque [fool]!"))
 	fool.apply_damage(
 		damage = justicetool.force * COUNTERMULTIPLIER,
 		damagetype = justicetool.damtype,
@@ -757,8 +757,8 @@
 	var/obj/item/bodypart/offending_hand = fool.get_active_hand()
 	var/obj/item/bodypart/risked_hand = forward_thinker.get_active_hand()
 	if(iscarbon(fool) && offending_hand.dismember(BRUTE, FALSE, WOUND_SLASH))
-		forward_thinker.visible_message(span_danger("[forward_thinker]Desenhe rápidamente.\the [justicetool]E golpes[fool]Durante[fool.p_their()]Atacar, enviar[fool.p_their()]Braço voando!"),
-										span_notice("Você rapidamente desenha\the [justicetool]E cortar[fool]O braço!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker] Desenhe rápidamente.\the [justicetool] E golpes [fool] Durante [fool.p_their()] Atacar, enviar [fool.p_their()] Braço voando!"),
+										span_notice("Você rapidamente desenha\the [justicetool] E cortar [fool] O braço!"))
 	else
 		fool.apply_damage(
 			damage = justicetool.force * COUNTERMULTIPLIER,
@@ -771,10 +771,10 @@
 			attack_direction = get_dir(forward_thinker, fool),
 			attacking_item = justicetool,
 		)
-		forward_thinker.visible_message(span_danger("[forward_thinker]Desenhe rápidamente.\the [justicetool]E golpes[fool]Durante[fool.p_their()]Ataquem!"),
-										span_notice("Você rapidamente desenha\the [justicetool]e os atacar no meio do ato!"))
+		forward_thinker.visible_message(span_danger("[forward_thinker] Desenhe rápidamente.\the [justicetool] E golpes [fool] Durante [fool.p_their()] Ataquem!"),
+										span_notice("Você rapidamente desenha\the [justicetool] e os atacar no meio do ato!"))
 	if(!IS_ROBOTIC_LIMB(risked_hand))
-		forward_thinker.visible_message(span_danger("[forward_thinker]O braço é incapaz de resistir à força do ataque!"),
+		forward_thinker.visible_message(span_danger("[forward_thinker] O braço é incapaz de resistir à força do ataque!"),
 										span_danger("Você sente uma dor aguda quando seu braço é mutilado pela força do ataque!"))
 		forward_thinker.apply_damage(
 		damage = 50,
@@ -800,12 +800,12 @@
 	if(!worthless_hand)
 		worthless_hand = holder.get_inactive_hand()
 		if(!worthless_hand)
-			holder.visible_message(span_danger("[holder]A bainha está falhando, enviando sua lâmina voando!"),
+			holder.visible_message(span_danger("[holder] A bainha está falhando, enviando sua lâmina voando!"),
 									span_danger("Sua bainha falhou, mandando sua lâmina voar!"))
 			return
 
 	if(IS_ROBOTIC_LIMB(worthless_hand) || !worthless_hand.dismember(BRUTE, FALSE, WOUND_BLUNT))
-		holder.visible_message(span_danger("[holder]O braço está mutilado enquanto falham.[holder.p_their()]Lâmina bainha!"),
+		holder.visible_message(span_danger("[holder] O braço está mutilado enquanto falham.[holder.p_their()] Lâmina bainha!"),
 								span_danger("Seu braço está mutilado enquanto não dispara com segurança sua lâmina!"))
 		holder.apply_damage(
 			damage = 50,
@@ -816,7 +816,7 @@
 		)
 		return
 
-	holder.visible_message(span_danger("[holder]O braço é violentamente arrancado enquanto falham.[holder.p_their()]Lâmina bainha!"),
+	holder.visible_message(span_danger("[holder] O braço é violentamente arrancado enquanto falham.[holder.p_their()] Lâmina bainha!"),
 							span_danger("Seu braço está arrancado enquanto você falha em disparar sua lâmina!"))
 
 #undef COUNTERMULTIPLIER

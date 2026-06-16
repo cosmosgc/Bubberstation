@@ -134,7 +134,7 @@
 		rewarded = caster
 
 /datum/status_effect/bounty/on_apply()
-	to_chat(owner, span_boldnotice("Você ouve algo atrás de você falando...\"Você foi marcado para a morte por[rewarded]Se você morrer, eles serão recompensados.\""))
+	to_chat(owner, span_boldnotice("Você ouve algo atrás de você falando...\"Você foi marcado para a morte por [rewarded] Se você morrer, eles serão recompensados.\""))
 	playsound(owner, 'sound/items/weapons/gun/shotgun/rack.ogg', 75, FALSE)
 	return ..()
 
@@ -271,7 +271,7 @@
 	if(taker.IsReachableBy(owner) || ((owner.pulling == taker) || (taker.pulling == owner)) && !IS_DEAD_OR_INCAP(taker))
 		return
 
-	to_chat(taker, span_warning("Você saiu do alcance de[owner]!"))
+	to_chat(taker, span_warning("Você saiu do alcance de [owner]!"))
 	remove_candidate(taker)
 
 /// The offerer moved, see if anyone is out of range now
@@ -470,7 +470,7 @@
 
 	if(!QDELETED(alt_clone)) //catch any stragglers
 		do_sparks(5, FALSE, alt_clone)
-		owner.visible_message("[owner]é passado para uma realidade alternativa diferente!")
+		owner.visible_message("[owner] é passado para uma realidade alternativa diferente!")
 		QDEL_NULL(alt_clone)
 
 	if(block_effects)
@@ -534,7 +534,7 @@
 					alt_clone.appearance = owner.appearance
 					alt_clone.real_name = owner.real_name
 					RegisterSignal(alt_clone, COMSIG_QDELETING, PROC_REF(remove_clone_from_var))
-					owner.visible_message("[owner]Se divide em aparentemente duas versões de si mesmos!")
+					owner.visible_message("[owner] Se divide em aparentemente duas versões de si mesmos!")
 					do_teleport(alt_clone, get_turf(alt_clone), 2, no_effects=TRUE) //teleports clone so it's hard to find the real one!
 					do_sparks(5,FALSE,alt_clone)
 					alt_clone.emote("spin")
@@ -584,7 +584,7 @@
 /datum/status_effect/eigenstasium/on_remove()
 	if(!QDELETED(alt_clone))//catch any stragilers
 		do_sparks(5, FALSE, alt_clone)
-		owner.visible_message("Um dos[owner]De arrependa-se, como fases fora da realidade na sua frente!")
+		owner.visible_message("Um dos [owner] De arrependa-se, como fases fora da realidade na sua frente!")
 		QDEL_NULL(alt_clone)
 	return ..()
 

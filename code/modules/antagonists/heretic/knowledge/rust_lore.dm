@@ -200,7 +200,7 @@
 	if(ritual_location)
 		var/area/our_area = get_area(loc)
 		if(!istype(our_area, ritual_location))
-			loc.balloon_alert(user, "ritual falhou, deve estar em[initial(ritual_location.name)]!") // "Deve estar na ponte."
+			loc.balloon_alert(user, "ritual falhou, deve estar em [initial(ritual_location.name)]!") // "Deve estar na ponte."
 			return FALSE
 
 	return ..()

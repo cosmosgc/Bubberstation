@@ -219,7 +219,7 @@
 	if(SPT_PROB(10, seconds_per_tick))
 		affected_mob.emote("laugh")
 	if(SPT_PROB(18, seconds_per_tick))
-		affected_mob.visible_message(span_danger("[affected_mob]As mãos surtam e batem em todos os lugares!"))
+		affected_mob.visible_message(span_danger("[affected_mob] As mãos surtam e batem em todos os lugares!"))
 		affected_mob.drop_all_held_items()
 	var/need_mob_update
 	need_mob_update = affected_mob.adjust_tox_loss(0.67 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
@@ -678,7 +678,7 @@
 	flip_count = 0
 	var/atom/throw_target = get_edge_target_turf(dancer, dancer.dir)  //Do a super flip
 	dancer.SpinAnimation(speed = 3, loops = 3)
-	dancer.visible_message(span_notice("[dancer]faz uma reviravolta extravagante!"), span_nicegreen("Você faz uma jogada extravagante!"))
+	dancer.visible_message(span_notice("[dancer] faz uma reviravolta extravagante!"), span_nicegreen("Você faz uma jogada extravagante!"))
 	dancer.throw_at(throw_target, range = 6, speed = overdosed ? 4 : 1)
 
 ///This proc listens to the spin signal and throws the mob every third spin
@@ -693,7 +693,7 @@
 	if(spin_count < BLASTOFF_DANCE_MOVES_PER_SUPER_MOVE)
 		return
 	spin_count = 0 //Do a super spin.
-	dancer.visible_message(span_danger("[dancer]Roda violentamente!"), span_danger("Você gira violentamente!"))
+	dancer.visible_message(span_danger("[dancer] Roda violentamente!"), span_danger("Você gira violentamente!"))
 	dancer.spin(30, 2)
 	if(dancer.disgust < 40)
 		dancer.adjust_disgust(10)
@@ -701,7 +701,7 @@
 		return
 	var/dancer_turf = get_turf(dancer)
 	var/atom/movable/dance_partner = dancer.pulledby
-	dance_partner.visible_message(span_danger("[dance_partner]Tenta agarrar-se[dancer], mas é jogado de volta!"), span_danger("Você tenta se segurar[dancer]Mas você está de volta!"), null, COMBAT_MESSAGE_RANGE)
+	dance_partner.visible_message(span_danger("[dance_partner] Tenta agarrar-se [dancer], mas é jogado de volta!"), span_danger("Você tenta se segurar [dancer] Mas você está de volta!"), null, COMBAT_MESSAGE_RANGE)
 	var/throwtarget = get_edge_target_turf(dancer_turf, get_dir(dancer_turf, get_step_away(dance_partner, dancer_turf)))
 	if(overdosed)
 		dance_partner.throw_at(target = throwtarget, range = 7, speed = 4)
@@ -894,7 +894,7 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 			if(istype(possible_purger, /datum/reagent/medicine/c2/multiver) || istype(possible_purger, /datum/reagent/medicine/haloperidol))
 				if(kronkaine_fiend.HasDisease(/datum/disease/adrenal_crisis))
 					break
-				kronkaine_fiend.visible_message(span_bolddanger("[kronkaine_fiend.name]De repente, tenso, parece que o choque está fazendo o corpo deles parar!"), span_userdanger("O choque súbito em combinação com o coquetel de drogas e purgativos em seu corpo faz seu sistema adrenal enlouquecer. Uh oh!"))
+				kronkaine_fiend.visible_message(span_bolddanger("[kronkaine_fiend.name] De repente, tenso, parece que o choque está fazendo o corpo deles parar!"), span_userdanger("O choque súbito em combinação com o coquetel de drogas e purgativos em seu corpo faz seu sistema adrenal enlouquecer. Uh oh!"))
 				kronkaine_fiend.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE) //We punish players for purging, since unchecked purging would allow players to reap the stamina healing benefits without any drawbacks. This also has the benefit of making haloperidol a counter, like it is supposed to be.
 				break
 	need_mob_update = kronkaine_fiend.adjust_stamina_loss(-0.54 * volume * metabolization_ratio * seconds_per_tick, updating_stamina = FALSE, required_biotype = affected_biotype)
@@ -935,7 +935,7 @@ If you have at over 25u in your body you restore more than 20 stamina per cycle,
 /datum/reagent/drug/kronkaine/gore/overdose_start(mob/living/gored, metabolization_ratio)
 	. = ..()
 	gored.visible_message(
-		span_danger("[gored]Explode em um banho de sangue!"),
+		span_danger("[gored] Explode em um banho de sangue!"),
 		span_userdanger("Gore! Gore! Gore! Você está indo! Muito gore! Você está indo! Gore! Acabou! Gore! Gore! Você está indo! Demais."),
 	)
 	new /obj/structure/bouncy_castle(gored.loc, gored)

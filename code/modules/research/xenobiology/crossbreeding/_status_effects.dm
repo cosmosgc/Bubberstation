@@ -11,7 +11,7 @@
 
 /datum/status_effect/rainbow_protection/on_apply()
 	owner.add_traits(list(TRAIT_GODMODE, TRAIT_PACIFISM), TRAIT_STATUS_EFFECT(id))
-	owner.visible_message(span_warning("[owner]Brilha com uma brilhante luz arco-íris."),
+	owner.visible_message(span_warning("[owner] Brilha com uma brilhante luz arco-íris."),
 		span_notice("Você se sente protegido por uma força desconhecida!"))
 	return ..()
 
@@ -22,7 +22,7 @@
 /datum/status_effect/rainbow_protection/on_remove()
 	owner.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
 	owner.remove_traits(list(TRAIT_GODMODE, TRAIT_PACIFISM), TRAIT_STATUS_EFFECT(id))
-	owner.visible_message(span_notice("[owner]Para de brilhar, a luz do arco-íris desaparece."),
+	owner.visible_message(span_notice("[owner] Para de brilhar, a luz do arco-íris desaparece."),
 		span_warning("Você não se sente mais protegido..."))
 
 /atom/movable/screen/alert/status_effect/slimeskin
@@ -41,7 +41,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.physiology.damage_resistance += 10
-	owner.visible_message(span_warning("[owner]de repente está coberto de um estranho gel azul!"),
+	owner.visible_message(span_warning("[owner] de repente está coberto de um estranho gel azul!"),
 		span_notice("Você está coberto de um gel grosso e de borracha."))
 	return ..()
 
@@ -50,7 +50,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.physiology.damage_resistance -= 10
-	owner.visible_message(span_warning("[owner]O renascimento de gel liquefies e dissolver."),
+	owner.visible_message(span_warning("[owner] O renascimento de gel liquefies e dissolver."),
 		span_notice("Sua pele gel se dissolve!"))
 
 /datum/status_effect/slimerecall
@@ -83,8 +83,8 @@
 		return
 	var/turf/old_location = get_turf(owner)
 	if(do_teleport(owner, target.loc, channel = TELEPORT_CHANNEL_QUANTUM)) //despite being named a bluespace teleportation method the quantum channel is used to preserve precision teleporting with a bag of holding
-		old_location.visible_message(span_warning("[owner]desaparece em uma explosão de faíscas!"))
-		to_chat(owner, span_warning("A força desconhecida o arrebata brevemente da realidade, e o deposita ao lado de[target]!"))
+		old_location.visible_message(span_warning("[owner] desaparece em uma explosão de faíscas!"))
+		to_chat(owner, span_warning("A força desconhecida o arrebata brevemente da realidade, e o deposita ao lado de [target]!"))
 
 /atom/movable/screen/alert/status_effect/freon/stasis
 	desc = "Você está congelado dentro de um cubo de gelo protetor! Lá dentro, você não pode fazer nada, mas é imune ao mal! Resista para sair."
@@ -368,7 +368,7 @@
 			huggables += L
 	if(length(huggables))
 		var/mob/living/carbon/hugged = pick(huggables)
-		owner.visible_message(span_notice("[owner]Abraços[hugged]!"), span_notice("Você se abraça.[hugged]!"))
+		owner.visible_message(span_notice("[owner] Abraços [hugged]!"), span_notice("Você se abraça.[hugged]!"))
 
 /datum/status_effect/tarcookie
 	id = "tarcookie"
@@ -472,7 +472,7 @@
 		return
 	if(linked_extract.get_held_mob() == owner)
 		return
-	owner.balloon_alert(owner, "[colour]Extrato desbotado!")
+	owner.balloon_alert(owner, "[colour] Extrato desbotado!")
 	if(!QDELETED(linked_extract))
 		linked_extract.linked_effect = null
 		START_PROCESSING(SSobj,linked_extract)
@@ -490,7 +490,7 @@
 /datum/status_effect/stabilized/grey/tick(seconds_between_ticks)
 	for(var/mob/living/basic/slime/slimes_in_range in range(1, get_turf(owner)))
 		if(!slimes_in_range.has_ally(owner))
-			to_chat(owner, span_notice("[linked_extract]Pulsa suavemente enquanto se comunica com[slimes_in_range]."))
+			to_chat(owner, span_notice("[linked_extract] Pulsa suavemente enquanto se comunica com [slimes_in_range]."))
 			slimes_in_range.befriend(owner)
 	return ..()
 
@@ -549,7 +549,7 @@
 
 /datum/status_effect/stabilized/purple/get_examine_text()
 	if(healed_last_tick)
-		return span_warning("[owner.p_They()] [owner.p_are()]Regenerando lentamente, requeando pequenos fermentos!")
+		return span_warning("[owner.p_They()] [owner.p_are()] Regenerando lentamente, requeando pequenos fermentos!")
 
 	return null
 
@@ -583,7 +583,7 @@
 		if(sheets.len)
 			var/obj/item/stack/sheet/S = pick(sheets)
 			S.add(1)
-			to_chat(owner, span_notice("[linked_extract]adiciona uma camada de lodo para[S], que metamorfosize em outra folha de material!"))
+			to_chat(owner, span_notice("[linked_extract] adiciona uma camada de lodo para [S], que metamorfosize em outra folha de material!"))
 	return ..()
 
 
@@ -594,7 +594,7 @@
 	var/max_cooldown = 10
 
 /datum/status_effect/stabilized/yellow/get_examine_text()
-	return span_warning("Os eletrônicos próximos parecem um pouco mais carregados em qualquer lugar.[owner.p_they()]Vá.[owner.p_es()].")
+	return span_warning("Os eletrônicos próximos parecem um pouco mais carregados em qualquer lugar.[owner.p_they()] Vá.[owner.p_es()].")
 
 /datum/status_effect/stabilized/yellow/tick(seconds_between_ticks)
 	if(cooldown > 0)
@@ -631,7 +631,7 @@
 	var/obj/item/item = owner.get_active_held_item()
 	if(item)
 		if(IS_EDIBLE(item) && (item.microwave_act(microwaver = owner) & COMPONENT_MICROWAVE_SUCCESS))
-			to_chat(owner, span_warning("[linked_extract]flares brilhando, e suas mãos sozinhas são suficientes cozinheiros[item]!"))
+			to_chat(owner, span_warning("[linked_extract] flares brilhando, e suas mãos sozinhas são suficientes cozinheiros [item]!"))
 		else
 			item.attackby(fire, owner)
 	return ..()
@@ -641,7 +641,7 @@
 	qdel(fire)
 
 /datum/status_effect/stabilized/darkpurple/get_examine_text()
-	return span_notice("[owner.p_Their()]As pontas dos dedos estão brilhando!")
+	return span_notice("[owner.p_Their()] As pontas dos dedos estão brilhando!")
 
 /datum/status_effect/stabilized/darkblue
 	id = "stabilizeddarkblue"
@@ -651,25 +651,25 @@
 	if(owner.fire_stacks > 0 && prob(80))
 		owner.adjust_wet_stacks(1)
 		if(owner.fire_stacks <= 0)
-			to_chat(owner, span_notice("[linked_extract]Cobri-lo em uma gosma aguada, extinguindo como chama."))
+			to_chat(owner, span_notice("[linked_extract] Cobri-lo em uma gosma aguada, extinguindo como chama."))
 	var/obj/O = owner.get_active_held_item()
 	if(O)
 		O.extinguish() //All shamelessly copied from water's expose_obj, since I didn't seem to be able to get it here for some reason.
 		O.wash(CLEAN_TYPE_ACID)
 	// Monkey cube
 	if(istype(O, /obj/item/food/monkeycube))
-		to_chat(owner, span_warning("[linked_extract]Mantenha as mãos molhadas! Faz[O]Expandir!"))
+		to_chat(owner, span_warning("[linked_extract] Mantenha as mãos molhadas! Faz [O] Expandir!"))
 		var/obj/item/food/monkeycube/cube = O
 		cube.Expand()
 
 	// Dehydrated carp
 	else if(istype(O, /obj/item/toy/plush/carpplushie/dehy_carp))
-		to_chat(owner, span_warning("[linked_extract]Mantenha as mãos molhadas! Faz[O]Expandir!"))
+		to_chat(owner, span_warning("[linked_extract] Mantenha as mãos molhadas! Faz [O] Expandir!"))
 		var/obj/item/toy/plush/carpplushie/dehy_carp/dehy = O
 		dehy.Swell() // Makes a carp
 
 	else if(istype(O, /obj/item/stack/sheet/hairlesshide))
-		to_chat(owner, span_warning("[linked_extract]Mantenha as mãos molhadas! Molha.[O]!"))
+		to_chat(owner, span_warning("[linked_extract] Mantenha as mãos molhadas! Molha.[O]!"))
 		var/obj/item/stack/sheet/hairlesshide/HH = O
 		new /obj/item/stack/sheet/wethide(get_turf(HH), HH.amount)
 		qdel(HH)
@@ -717,7 +717,7 @@
 		linked_alert.icon_state = "slime_bluespace_on"
 
 	if(healthcheck && (healthcheck - owner.health) > 5)
-		owner.visible_message(span_warning("[linked_extract]nota a mudança repentina em[owner]A saúde física e ativa!"))
+		owner.visible_message(span_warning("[linked_extract] nota a mudança repentina em [owner] A saúde física e ativa!"))
 		do_sparks(5,FALSE,owner)
 		var/turf/emergency_turf = find_safe_turf(owner.z, extended_safety_checks = TRUE)
 		var/range = 0
@@ -725,7 +725,7 @@
 			emergency_turf = get_turf(owner)
 			range = 50
 		if(do_teleport(owner, emergency_turf, range, channel = TELEPORT_CHANNEL_BLUESPACE))
-			to_chat(owner, span_notice("[linked_extract]Levará algum tempo para realinhá-lo no eixo do espaço azul."))
+			to_chat(owner, span_notice("[linked_extract] Levará algum tempo para realinhá-lo no eixo do espaço azul."))
 			do_sparks(5,FALSE,owner)
 			owner.apply_status_effect(/datum/status_effect/bluespacestabilization)
 	healthcheck = owner.health
@@ -774,20 +774,20 @@
 /datum/status_effect/stabilized/cerulean/tick(seconds_between_ticks)
 	if(owner.stat == DEAD)
 		if(clone && clone.stat != DEAD)
-			owner.visible_message(span_warning("[owner]Arde com luz brilhante,[linked_extract]Batendo.[owner.p_their()]A alma está longe."),
-				span_notice("Você sente um brilho quente de[linked_extract]E você abre os olhos... em outro lugar."))
+			owner.visible_message(span_warning("[owner] Arde com luz brilhante,[linked_extract] Batendo.[owner.p_their()] A alma está longe."),
+				span_notice("Você sente um brilho quente de [linked_extract] E você abre os olhos... em outro lugar."))
 			if(owner.mind)
 				owner.mind.transfer_to(clone)
 			clone = null
 			qdel(linked_extract)
 		if(!clone || clone.stat == DEAD)
-			to_chat(owner, span_notice("[linked_extract]desesperadamente tenta mover sua alma para um corpo vivo, mas não consegue encontrar um!"))
+			to_chat(owner, span_notice("[linked_extract] desesperadamente tenta mover sua alma para um corpo vivo, mas não consegue encontrar um!"))
 			qdel(linked_extract)
 	..()
 
 /datum/status_effect/stabilized/cerulean/on_remove()
 	if(clone)
-		clone.visible_message(span_warning("[clone]Se dissolve em uma poça de gosma!"))
+		clone.visible_message(span_warning("[clone] Se dissolve em uma poça de gosma!"))
 		clone.unequip_everything()
 		qdel(clone)
 
@@ -833,7 +833,7 @@
 // Only occasionally give examiners a warning.
 /datum/status_effect/stabilized/green/get_examine_text()
 	if(prob(50))
-		return span_warning("[owner.p_They()]Veja.[owner.p_s()]Um pouco verde e pegajoso...")
+		return span_warning("[owner.p_They()] Veja.[owner.p_s()] Um pouco verde e pegajoso...")
 
 	return null
 
@@ -874,7 +874,7 @@
 /datum/status_effect/stabilized/pink/on_apply()
 	faction_name = FACTION_PINK_EXTRACT(owner)
 	owner.add_ally(faction_name)
-	to_chat(owner, span_notice("[linked_extract]pulsos, gerando uma frágil aura de paz."))
+	to_chat(owner, span_notice("[linked_extract] pulsos, gerando uma frágil aura de paz."))
 	return ..()
 
 /datum/status_effect/stabilized/pink/tick(seconds_between_ticks)
@@ -885,7 +885,7 @@
 			owner.remove_ally(faction_name)
 			to_chat(owner, span_userdanger("A paz foi quebrada! Criaturas hostis agora reagirão a você!"))
 	else if(!owner.has_status_effect(/datum/status_effect/brokenpeace))
-		to_chat(owner, span_notice("[linked_extract]pulsos, gerando uma frágil aura de paz."))
+		to_chat(owner, span_notice("[linked_extract] pulsos, gerando uma frágil aura de paz."))
 		owner.add_ally(faction_name)
 	return ..()
 
@@ -940,7 +940,7 @@
 	return ..()
 
 /datum/status_effect/stabilized/oil/get_examine_text()
-	return span_warning("[owner.p_They()]Cheiro.[owner.p_s()]de enxofre e óleo!")
+	return span_warning("[owner.p_They()] Cheiro.[owner.p_s()] de enxofre e óleo!")
 
 /// How much damage is dealt per healing done for the stabilized back.
 /// This multiplier is applied to prevent two people from converting each other's damage away.
@@ -975,15 +975,15 @@
 		return
 
 	draining_ref = WEAKREF(draining)
-	to_chat(owner, span_boldnotice("Você sente suas mãos derretendo[draining]O pescoço quando você começa a drenar[draining.p_them()]De[draining.p_their()]Vida!"))
-	to_chat(draining, span_userdanger("[owner]As mãos derretem ao redor do pescoço, como você pode sentir sua vida começando a desaparecer!"))
+	to_chat(owner, span_boldnotice("Você sente suas mãos derretendo [draining] O pescoço quando você começa a drenar [draining.p_them()] De [draining.p_their()] Vida!"))
+	to_chat(draining, span_userdanger("[owner] As mãos derretem ao redor do pescoço, como você pode sentir sua vida começando a desaparecer!"))
 
 /datum/status_effect/stabilized/black/get_examine_text()
 	var/mob/living/draining = draining_ref?.resolve()
 	if(!draining)
 		return null
 
-	return span_warning("[owner.p_They()] [owner.p_are()]drenando a saúde de[draining]!")
+	return span_warning("[owner.p_They()] [owner.p_are()] drenando a saúde de [draining]!")
 
 /datum/status_effect/stabilized/black/tick(seconds_between_ticks)
 	if(owner.grab_state < GRAB_KILL || !IS_WEAKREF_OF(owner.pulling, draining_ref))
@@ -991,7 +991,7 @@
 
 	var/mob/living/drained = draining_ref.resolve()
 	if(drained.stat == DEAD)
-		to_chat(owner, span_warning("[drained]Está morto, você não pode mais drenar a vida deles!"))
+		to_chat(owner, span_warning("[drained] Está morto, você não pode mais drenar a vida deles!"))
 		draining_ref = null
 		return
 
@@ -1024,7 +1024,7 @@
 /datum/status_effect/stabilized/lightpink/tick(seconds_between_ticks)
 	for(var/mob/living/carbon/human/H in range(1, get_turf(owner)))
 		if(H != owner && H.stat != DEAD && H.health <= 0 && !H.reagents.has_reagent(/datum/reagent/medicine/epinephrine))
-			to_chat(owner, "[linked_extract]Pulsos em sincronia com[H]O batimento cardíaco, tentando manter[H.p_them()]Vivo.")
+			to_chat(owner, "[linked_extract] Pulsos em sincronia com [H] O batimento cardíaco, tentando manter [H.p_them()] Vivo.")
 			H.reagents.add_reagent(/datum/reagent/medicine/epinephrine,5)
 	return ..()
 
@@ -1037,7 +1037,7 @@
 	colour = SLIME_TYPE_ADAMANTINE
 
 /datum/status_effect/stabilized/adamantine/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_have()]revestimento metálico estranho sobre[owner.p_their()]Pelé.")
+	return span_warning("[owner.p_They()] [owner.p_have()] revestimento metálico estranho sobre [owner.p_their()] Pelé.")
 
 /datum/status_effect/stabilized/gold
 	id = "stabilizedgold"
@@ -1090,7 +1090,7 @@
 			if(X.regencore)
 				X.regencore.interact_with_atom(owner, owner)
 				X.regencore = null
-				owner.visible_message(span_warning("[owner]brilha um arco-íris de cores, e[owner.p_their()]A pele está coberta de uma gosma regenerativa leitosa!"))
+				owner.visible_message(span_warning("[owner] brilha um arco-íris de cores, e [owner.p_their()] A pele está coberta de uma gosma regenerativa leitosa!"))
 				qdel(src)
 				qdel(linked_extract)
 	return ..()

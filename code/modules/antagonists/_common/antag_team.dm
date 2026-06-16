@@ -63,9 +63,9 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 			report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
 			objective_count++
 		if(win)
-			report += span_greentext("O[name]foi bem sucedido!")
+			report += span_greentext("O [name] foi bem sucedido!")
 		else
-			report += span_redtext("O[name]Falhou!")
+			report += span_redtext("O [name] Falhou!")
 
 
 	return "<div class='panel redborder'>[report.Join("<br>")]</div>"

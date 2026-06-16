@@ -202,7 +202,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/stickman/equipped(mob/user, slot)
 	..()
-	to_chat(user, span_notice("Enquanto tenta manipular[src], ele escapa de sua posse .."))
+	to_chat(user, span_notice("Enquanto tenta manipular [src], ele escapa de sua posse .."))
 	if(prob(50))
 		to_chat(user, span_notice("..e desaparece de sua visão! Onde diabos foi parar?"))
 		qdel(src)
@@ -295,8 +295,8 @@
 	if (prob(damage_to_take - atom_integrity) && poor_sod)
 		shrapnel_bomb = TRUE
 
-	user.visible_message(span_danger("[src]explode em pequenos pedaços.[shrapnel_bomb ? ", chunk of it embedding in [user]'s [user.parse_zone_with_bodypart(poor_sod.body_zone)]" : ""]!"),
-		span_userdanger("[src]explode em pequenos pedaços.[shrapnel_bomb ? ", chunk of it embedding in your [poor_sod]!" : ""]!"),
+	user.visible_message(span_danger("[src] explode em pequenos pedaços.[shrapnel_bomb ? ", chunk of it embedding in [user]'s [user.parse_zone_with_bodypart(poor_sod.body_zone)]" : ""]!"),
+		span_userdanger("[src] explode em pequenos pedaços.[shrapnel_bomb ? ", chunk of it embedding in your [poor_sod]!" : ""]!"),
 		span_hear("Você pode ouvir o som de plástico quebrando."))
 
 	if (poor_sod)

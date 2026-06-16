@@ -56,7 +56,7 @@
 	to_chat(person, span_nicegreen("Você sente um terrível presságio tirado de seus ombros!"))
 
 	if(vessel)
-		vessel.visible_message(span_warning("[vessel]Queima em um sinistro flash, tomando uma energia maligna com ele..."))
+		vessel.visible_message(span_warning("[vessel] Queima em um sinistro flash, tomando uma energia maligna com ele..."))
 		UnregisterSignal(vessel, COMSIG_QDELETING)
 		vessel.burn()
 		vessel = null
@@ -92,7 +92,7 @@
 	var/mob/living/living_guy = our_guy
 
 	if(prob(0.001) && (living_guy.stat != DEAD)) // You hit the lottery! Kinda.
-		living_guy.visible_message(span_danger("[living_guy]De repente, explode em chamas!"), span_danger("De repente você pegou fogo!"))
+		living_guy.visible_message(span_danger("[living_guy] De repente, explode em chamas!"), span_danger("De repente você pegou fogo!"))
 		INVOKE_ASYNC(living_guy, TYPE_PROC_REF(/mob, emote), "scream")
 		living_guy.adjust_fire_stacks(20)
 		living_guy.ignite_mob(silent = TRUE)
@@ -140,19 +140,19 @@
 		for(var/obj/machinery/vending/darth_vendor in the_turf)
 			if(!darth_vendor.tiltable || darth_vendor.tilted)
 				continue
-			to_chat(living_guy, span_warning("Uma força malévola reboca no[darth_vendor]..."))
+			to_chat(living_guy, span_warning("Uma força malévola reboca no [darth_vendor]..."))
 			INVOKE_ASYNC(darth_vendor, TYPE_PROC_REF(/obj/machinery/vending, tilt), living_guy)
 			consume_omen()
 			return
 
 		for(var/obj/machinery/light/evil_light in the_turf)
 			if((evil_light.status == LIGHT_BURNED || evil_light.status == LIGHT_BROKEN) || (HAS_TRAIT(living_guy, TRAIT_SHOCKIMMUNE))) // we can't do anything :( // Why in the world is there no get_siemens_coeff proc???
-				to_chat(living_guy, span_warning("[evil_light]Brilha fracamente por um segundo."))
+				to_chat(living_guy, span_warning("[evil_light] Brilha fracamente por um segundo."))
 				do_sparks(2, FALSE, evil_light) // hey maybe it'll ignite them
 				return
 
-			to_chat(living_guy, span_warning("[evil_light]brilha ominosamente...")) // ominously
-			evil_light.visible_message(span_boldwarning("[evil_light]de repente se acende brilhantemente e faíscas!"))
+			to_chat(living_guy, span_warning("[evil_light] brilha ominosamente...")) // ominously
+			evil_light.visible_message(span_boldwarning("[evil_light] de repente se acende brilhantemente e faíscas!"))
 			evil_light.break_light_tube(skip_sound_and_sparks = FALSE)
 			do_sparks(number = 4, cardinal_only = FALSE, source = evil_light)
 			evil_light.Beam(living_guy, icon_state = "lightning[rand(1,12)]", time = 0.5 SECONDS)
@@ -211,7 +211,7 @@
 
 	if(prob(30 * luck_mod) && our_guy.get_bodypart(BODY_ZONE_HEAD)) /// Bonk!
 		playsound(our_guy, 'sound/effects/tableheadsmash.ogg', 90, TRUE)
-		our_guy.visible_message(span_danger("[our_guy]hits[our_guy.p_their()]Cabeça caindo muito mal!"), span_userdanger("Você bateu a cabeça muito mal caindo!"))
+		our_guy.visible_message(span_danger("[our_guy] hits [our_guy.p_their()] Cabeça caindo muito mal!"), span_userdanger("Você bateu a cabeça muito mal caindo!"))
 		our_guy.apply_damage(75 * damage_mod, BRUTE, BODY_ZONE_HEAD, attacking_item = "slipping")
 		our_guy.apply_damage(100 * damage_mod, BRAIN)
 		consume_omen()

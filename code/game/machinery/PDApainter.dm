@@ -360,7 +360,7 @@
 				if(SSid_access.apply_trim_to_card(stored_id_card, path, copy_access = FALSE))
 					return TRUE
 
-				to_chat(usr, span_warning("O corte que você escolheu não poderia ser adicionado a\the [stored_id_card]Precisará de um cartão de identidade mais raro para imprimir os dados."))
+				to_chat(usr, span_warning("O corte que você escolheu não poderia ser adicionado a\the [stored_id_card] Precisará de um cartão de identidade mais raro para imprimir os dados."))
 
 			return TRUE
 		if("reset_card")

@@ -68,7 +68,7 @@
 	if(get_fuel() <= 0)
 		. += span_warning("Está sem fluido de isqueiro! Encher com combustível de soldador.")
 	else
-		. += span_notice("Ele contém[get_fuel()]unidades de combustível fora de[maximum_fuel].")
+		. += span_notice("Ele contém [get_fuel()] unidades de combustível fora de [maximum_fuel].")
 
 /obj/item/lighter/proc/light_updated(datum/source)
 	SIGNAL_HANDLER
@@ -76,7 +76,7 @@
 
 /// Destroy the lighter when it's shot by a bullet
 /obj/item/lighter/proc/on_intercepted_bullet(mob/living/victim, obj/projectile/bullet)
-	victim.visible_message(span_warning("\The [bullet]Estraga tudo.[victim]Está mais leve!"))
+	victim.visible_message(span_warning("\The [bullet] Estraga tudo.[victim] Está mais leve!"))
 	playsound(victim, SFX_RICOCHET, 100, TRUE)
 	new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 	do_sparks(1, TRUE, src)
@@ -90,11 +90,11 @@
 
 /obj/item/lighter/suicide_act(mob/living/carbon/user)
 	if (lit)
-		user.visible_message(span_suicide("[user]Começa a segurar\the [src]'s chama até[user.p_their()]Cara! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Começa a segurar\the [src]'s chama até [user.p_their()] Cara! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		playsound(src, 'sound/items/tools/welder.ogg', 50, TRUE)
 		return FIRELOSS
 	else
-		user.visible_message(span_suicide("[user]Começa a bater[user.p_them()]ego com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Começa a bater [user.p_them()] ego com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		return BRUTELOSS
 
 /obj/item/lighter/update_icon_state()
@@ -111,7 +111,7 @@
 
 /obj/item/lighter/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = span_infoplain(span_rose("Com um único movimento de[user.p_their()]Pulso,[user]Luzes suaves[A]com[src]Droga.[user.p_theyre()]Legal."))
+		. = span_infoplain(span_rose("Com um único movimento de [user.p_their()] Pulso,[user] Luzes suaves [A] com [src] Droga.[user.p_theyre()] Legal."))
 
 /obj/item/lighter/proc/set_lit(new_lit)
 	if(lit == new_lit)
@@ -159,12 +159,12 @@
 		set_lit(FALSE)
 		if(fancy)
 			user.visible_message(
-				span_notice("Você ouve um clique silencioso, como[user]Desliga.[src]Sem sequer olhar para o que[user.p_theyre()]Fazendo. Uau."),
-				span_notice("Você se desligou silenciosamente.[src]Sem olhar para o que está fazendo. Uau.")
+				span_notice("Você ouve um clique silencioso, como [user] Desliga.[src] Sem sequer olhar para o que [user.p_theyre()] Fazendo. Uau."),
+				span_notice("Você se desligou silenciosamente.[src] Sem olhar para o que está fazendo. Uau.")
 			)
 		else
 			user.visible_message(
-				span_notice("[user]Desliga silenciosamente.[src]."),
+				span_notice("[user] Desliga silenciosamente.[src]."),
 				span_notice("Você se desligou silenciosamente.[src].")
 			)
 		return
@@ -176,8 +176,8 @@
 
 	if(fancy)
 		user.visible_message(
-			span_notice("Sem sequer quebrar o passo,[user]Se abre e acende.[src]em um movimento suave."),
-			span_notice("Sem sequer quebrar o passo, você se abre e luz[src]em um movimento suave.")
+			span_notice("Sem sequer quebrar o passo,[user] Se abre e acende.[src] em um movimento suave."),
+			span_notice("Sem sequer quebrar o passo, você se abre e luz [src] em um movimento suave.")
 		)
 		return
 
@@ -194,15 +194,15 @@
 
 	if(hand_protected || prob(75))
 		user.visible_message(
-			span_notice("Depois de algumas tentativas,[user]consegue iluminar[src]."),
-			span_notice("Depois de algumas tentativas, você consegue acender[src].")
+			span_notice("Depois de algumas tentativas,[user] consegue iluminar [src]."),
+			span_notice("Depois de algumas tentativas, você consegue acender [src].")
 		)
 		return
 
 	var/hitzone = user.held_index_to_dir(user.active_hand_index) == "r" ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND
 	user.apply_damage(5, BURN, hitzone)
 	user.visible_message(
-		span_warning("Depois de algumas tentativas,[user]consegue iluminar[src]- no entanto,[user.p_they()]Queime[user.p_s()] [user.p_their()]Dedo no processo."),
+		span_warning("Depois de algumas tentativas,[user] consegue iluminar [src]- no entanto,[user.p_they()] Queime [user.p_s()] [user.p_their()] Dedo no processo."),
 		span_warning("Você se queima enquanto acende o isqueiro!")
 	)
 	user.add_mood_event("burnt_thumb", /datum/mood_event/burnt_thumb)
@@ -218,20 +218,20 @@
 		return ..()
 
 	if(cig.lit)
-		to_chat(user, span_warning("\The [cig]Já está acesa!"))
+		to_chat(user, span_warning("\The [cig] Já está acesa!"))
 	if(target_mob == user)
 		cig.attackby(src, user)
 		return
 
 	if(fancy)
-		cig.light(span_rose("[user]chicotes\the [src]Para fora e segura-o para[target_mob]. [user.p_Their()]O braço é tão firme quanto a chama incandescente.[user.p_they()]luz[user.p_s()] \the [cig]Com."))
+		cig.light(span_rose("[user] chicotes\the [src] Para fora e segura-o para [target_mob]. [user.p_Their()] O braço é tão firme quanto a chama incandescente.[user.p_they()] luz [user.p_s()] \the [cig] Com."))
 	else
-		cig.light(span_notice("[user]Segura.\the [src]Fora para[target_mob], e luzes[target_mob.p_their()] [cig.name]."))
+		cig.light(span_notice("[user] Segura.\the [src] Fora para [target_mob], e luzes [target_mob.p_their()] [cig.name]."))
 
 ///Checks if the lighter is able to perform a welding task.
 /obj/item/lighter/tool_use_check(mob/living/user, amount, heat_required)
 	if(!lit)
-		to_chat(user, span_warning("[src]Tem que ser para completar esta tarefa!"))
+		to_chat(user, span_warning("[src] Tem que ser para completar esta tarefa!"))
 		return FALSE
 	if(get_fuel() < amount)
 		to_chat(user, span_warning("Você precisa de mais combustível de solda para completar esta tarefa!"))
@@ -321,7 +321,7 @@
 
 /obj/item/lighter/greyscale/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = span_notice("Depois de algum engano,[user]consegue iluminar[A]com[src].")
+		. = span_notice("Depois de algum engano,[user] consegue iluminar [A] com [src].")
 
 
 /obj/item/lighter/slime
@@ -355,7 +355,7 @@
 	return list(/datum/reagent/iron = 1, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/consumable/nothing = 10)
 
 /obj/item/lighter/mime/ignition_effect(atom/A, mob/user)
-	. = span_infoplain("[user]Elevações\the [src]para o[A], que milagrosamente ilumina!")
+	. = span_infoplain("[user] Elevações\the [src] para o [A], que milagrosamente ilumina!")
 
 /obj/item/lighter/bright
 	name = "illuminative zippo"
@@ -379,7 +379,7 @@
 
 /obj/item/lighter/bright/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = span_infoplain(span_rose("[user]Levanta o[src]para o[A], acendendo-o com um brilho brilhante de luz!"))
+		. = span_infoplain(span_rose("[user] Levanta o [src] para o [A], acendendo-o com um brilho brilhante de luz!"))
 		var/mob/living/current_viewer = user
 		current_viewer.flash_act(4)
 

@@ -85,4 +85,4 @@
 	if(!owner)
 		return
 	owner.update_mob_action_buttons()
-	dashing_item.balloon_alert(owner, "[current_charges]/[max_charges]cargas de investida")
+	dashing_item.balloon_alert(owner, "[current_charges]/[max_charges] cargas de investida")

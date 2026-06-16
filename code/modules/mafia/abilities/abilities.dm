@@ -100,7 +100,7 @@
 
 	if(target_role)
 		if(SEND_SIGNAL(target_role, COMSIG_MAFIA_ON_VISIT, game, host_role) & MAFIA_VISIT_INTERRUPTED) //visited a warden. something that prevents you by visiting that person
-			host_role.send_message_to_player(span_danger("Sua[name]Foi interrompido!"))
+			host_role.send_message_to_player(span_danger("Sua [name] Foi interrompido!"))
 			return FALSE
 
 	return TRUE

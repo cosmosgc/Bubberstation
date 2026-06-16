@@ -95,9 +95,9 @@
 	. = ..()
 	if(health < maxHealth)
 		if(health >= maxHealth * 0.5)
-			. += span_warning("[p_They()]Parece levemente acumulado.")
+			. += span_warning("[p_They()] Parece levemente acumulado.")
 		else
-			. += span_boldwarning("[p_They()]Parece separamente amassado!")
+			. += span_boldwarning("[p_They()] Parece separamente amassado!")
 
 	if(isnull(stored_gun) || !stored_gun.max_mod_capacity)
 		return
@@ -105,7 +105,7 @@
 	. += "<b>[stored_gun.get_remaining_mod_capacity()]%</b> mod capacity remaining."
 
 	for(var/obj/item/borg/upgrade/modkit/modkit as anything in stored_gun.modkits)
-		. += span_notice("Há\a [modkit]Estalado, usando<b>[modkit.cost]%</b>Capacidade.")
+		. += span_notice("Há\a [modkit] Estalado, usando<b>[modkit.cost]%</b>Capacidade.")
 	if(ai_controller && ai_controller.ai_status == AI_STATUS_IDLE)
 		. += "The [src] appears to be in <b>sleep mode</b>. You can restore normal functions by <b>tapping</b> it."
 

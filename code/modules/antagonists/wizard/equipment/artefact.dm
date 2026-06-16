@@ -30,7 +30,7 @@
 	if(charges > 0)
 		new /obj/effect/rend(get_turf(user), spawn_type, spawn_amt, rend_desc, spawn_fast)
 		charges--
-		user.visible_message(span_bolddanger("[src]Hums com poder como[user]Dá um golpe para[activate_descriptor]Ele mesmo!"))
+		user.visible_message(span_bolddanger("[src] Hums com poder como [user] Dá um golpe para [activate_descriptor] Ele mesmo!"))
 	else
 		to_chat(user, span_danger("As energias extraterrestres que impulsionaram a lâmina estão agora adormecidas."))
 
@@ -67,7 +67,7 @@
 	if(!HAS_TRAIT(tool, TRAIT_NULLROD_ITEM))
 		return NONE
 
-	user.visible_message(span_danger("[user]Selos\the [src]com\the [tool]."))
+	user.visible_message(span_danger("[user] Selos\the [src] com\the [tool]."))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -199,7 +199,7 @@
 		current_owner.update_sight()
 
 /obj/item/scrying/attack_self(mob/user)
-	visible_message(span_danger("[user]Olha para mim[src], seus olhos brilhando."))
+	visible_message(span_danger("[user] Olha para mim [src], seus olhos brilhando."))
 	user.ghostize(1)
 
 /////////////////////////////////////////Necromantic Stone///////////////////
@@ -248,14 +248,14 @@
 
 	check_spooky()//clean out/refresh the list
 	if(spooky_scaries.len >= max_thralls && !unlimited)
-		to_chat(user, span_warning("Este artefato só pode afetar[convert_integer_to_words(max_thralls)]Thralls de cada vez!"))
+		to_chat(user, span_warning("Este artefato só pode afetar [convert_integer_to_words(max_thralls)] Thralls de cada vez!"))
 		return
 	if(applied_species)
 		target.set_species(applied_species, icon_update=0)
 	target.revive(ADMIN_HEAL_ALL)
 	spooky_scaries |= target
 	to_chat(target, span_userdanger("Você foi revivido por<B>[user.real_name]</B>!"))
-	to_chat(target, span_userdanger("[user.p_Theyre()]Seu mestre agora, ajude.[user.p_them()]Mesmo que custe sua nova vida!"))
+	to_chat(target, span_userdanger("[user.p_Theyre()] Seu mestre agora, ajude.[user.p_them()] Mesmo que custe sua nova vida!"))
 	var/datum/antagonist/wizard/antag_datum = user.mind.has_antag_datum(/datum/antagonist/wizard)
 	if(antag_datum)
 		if(!antag_datum.wiz_team)
@@ -267,7 +267,7 @@
 /obj/item/necromantic_stone/examine(mob/user)
 	. = ..()
 	if(!unlimited)
-		. += span_notice("[spooky_scaries.len]/[max_thralls]Thralls ativos.")
+		. += span_notice("[spooky_scaries.len]/[max_thralls] Thralls ativos.")
 
 /obj/item/necromantic_stone/proc/check_spooky()
 	if(unlimited) //no point, the list isn't used.
@@ -325,7 +325,7 @@
 
 /obj/item/warp_whistle/attack_self(mob/user)
 	if(whistler)
-		to_chat(user, span_warning("[src]está em repouso."))
+		to_chat(user, span_warning("[src] está em repouso."))
 		return
 
 	whistler = user
@@ -470,7 +470,7 @@
 		scepter_is_busy_summoning = FALSE
 	if(summon_vendor_charges)
 		playsound(src,'sound/items/weapons/resonator_fire.ogg',50,TRUE)
-		user.visible_message(span_warning("[user]Chama um vendedor runico!"))
+		user.visible_message(span_warning("[user] Chama um vendedor runico!"))
 		new /obj/machinery/vending/runic_vendor(afterattack_turf)
 		summon_vendor_charges--
 		user.changeNext_move(CLICK_CD_MELEE)

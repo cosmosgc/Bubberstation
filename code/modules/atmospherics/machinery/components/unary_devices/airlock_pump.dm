@@ -166,10 +166,10 @@
 /obj/machinery/atmospherics/components/unary/airlock_pump/can_unwrench(mob/user)
 	. = ..()
 	if(!.)
-		to_chat(user, span_warning("Você não pode destrancar[src]Está firmemente seguro no lugar!"))
+		to_chat(user, span_warning("Você não pode destrancar [src] Está firmemente seguro no lugar!"))
 		return FALSE
 	if(. && on)
-		to_chat(user, span_warning("Você não pode destrancar[src]Espera pelo ciclo completo!"))
+		to_chat(user, span_warning("Você não pode destrancar [src] Espera pelo ciclo completo!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/airlock_pump/set_on(active)
@@ -597,14 +597,14 @@
 		user.ventcrawl_layer = clamp(user.ventcrawl_layer + 2, PIPING_LAYER_DEFAULT - 1, PIPING_LAYER_DEFAULT + 1)
 	if((SOUTH|WEST) & direction)
 		user.ventcrawl_layer = clamp(user.ventcrawl_layer - 2, PIPING_LAYER_DEFAULT - 1, PIPING_LAYER_DEFAULT + 1)
-	to_chat(user, "Você se alinha com o[user.ventcrawl_layer == 2 ? 1 : 2]\tSaída.")
+	to_chat(user, "Você se alinha com o [user.ventcrawl_layer == 2 ? 1 : 2]\tSaída.")
 
 /obj/machinery/atmospherics/components/unary/airlock_pump/on_set_is_operational(was_operational)
 	if(was_operational && !is_operational)
 		// unbolt all the doors but don't open them
 		for(var/obj/machinery/door/airlock/airlock as anything in (internal_airlocks + external_airlocks))
 			airlock.unbolt()
-		audible_message(span_notice("[src]Whirrrs como[p_they()]Perde energia, desligando os parafusos da câmara de ar."))
+		audible_message(span_notice("[src] Whirrrs como [p_they()] Perde energia, desligando os parafusos da câmara de ar."))
 	else if(!was_operational && is_operational)
 		// upon regaining power, re-bolt relevant airlocks
 		for(var/obj/machinery/door/airlock/airlock as anything in external_airlocks)
@@ -612,7 +612,7 @@
 		for(var/obj/machinery/door/airlock/airlock as anything in internal_airlocks)
 			if(open_airlock_on_cycle)
 				INVOKE_ASYNC(airlock, TYPE_PROC_REF(/obj/machinery/door/airlock, secure_open))
-		audible_message(span_notice("[src]Whirrrs como[p_they()]Recupera energia, religando parafusos de câmara."))
+		audible_message(span_notice("[src] Whirrrs como [p_they()] Recupera energia, religando parafusos de câmara."))
 
 /obj/machinery/atmospherics/components/unary/airlock_pump/unbolt_only
 	open_airlock_on_cycle = FALSE

@@ -116,7 +116,7 @@
 		return
 
 	var/datum/computer_file/program/chatclient/chatprogram = cpu.find_file_by_name("ntnrc_client")
-	chatprogram.username = "[LOWER_TEXT(initial(department_type.department_name))]_department"
+	chatprogram.username = "[LOWER_TEXT(initial(department_type.department_name))] _department"
 	cpu.idle_threads += chatprogram
 
 	var/datum/computer_file/program/department_order/orderprogram = cpu.find_file_by_name("dept_order")

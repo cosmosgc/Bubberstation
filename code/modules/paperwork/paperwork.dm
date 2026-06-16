@@ -53,10 +53,10 @@
 		return TRUE
 	var/datum/action/item_action/chameleon/change/stamp/stamp_action = locate() in attacking_item.actions
 	if(isnull(stamp_action))
-		to_chat(user, span_warning("Você caça através dos papéis para algum lugar para usar[attacking_item]Mas não consigo encontrar nada."))
+		to_chat(user, span_warning("Você caça através dos papéis para algum lugar para usar [attacking_item] Mas não consigo encontrar nada."))
 		return TRUE
 
-	to_chat(user, span_notice("[attacking_item]Se transforma no selo apropriado, que você usa para completar a papelada."))
+	to_chat(user, span_notice("[attacking_item] Se transforma no selo apropriado, que você usa para completar a papelada."))
 	stamp_action.update_look(stamp_requested)
 	add_stamp()
 	return TRUE
@@ -74,10 +74,10 @@
 			else
 				var/datum/job/stamp_title = stamp_job
 				var/title = initial(stamp_title.title)
-				. += span_info("Tentar ler faz sua cabeça girar. A julgar pelas poucas palavras que você pode entender, isso parece um trabalho para o[title].")
+				. += span_info("Tentar ler faz sua cabeça girar. A julgar pelas poucas palavras que você pode entender, isso parece um trabalho para o [title].")
 
 /obj/item/paperwork/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a insultar a ineficiência da papelada e burocracia. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a insultar a ineficiência da papelada e burocracia. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 
 	var/obj/item/paper/new_paper = new /obj/item/paper(get_turf(src))
 	var/turf/turf_to_throw_at = get_ranged_target_turf(get_turf(src), pick(GLOB.alldirs))
@@ -85,9 +85,9 @@
 
 	var/obj/item/bodypart/BP = user.get_bodypart(pick(BODY_ZONE_HEAD))
 	if(BP?.dismember())
-		new_paper.visible_message(span_alert("O[src]lança uma folha de papel, instantaneamente cortando[user]A cabeça!"))
+		new_paper.visible_message(span_alert("O [src] lança uma folha de papel, instantaneamente cortando [user] A cabeça!"))
 	else
-		user.visible_message(span_suicide("[user]Entra em pânico e começa a sufocar até a morte!"))
+		user.visible_message(span_suicide("[user] Entra em pânico e começa a sufocar até a morte!"))
 		return OXYLOSS
 
 	return MANUAL_SUICIDE
@@ -235,7 +235,7 @@
 
 /obj/item/paperwork/photocopy/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/stamp/void) && !stamped && !voided)
-		to_chat(user, span_notice("Você planta o[attacking_item]firmemente na frente dos documentos."))
+		to_chat(user, span_notice("Você planta o [attacking_item] firmemente na frente dos documentos."))
 		stamp_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', "paper_stamp-void")
 		add_overlay(stamp_overlay)
 		voided = TRUE

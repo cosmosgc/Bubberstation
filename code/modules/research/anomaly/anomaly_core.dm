@@ -24,7 +24,7 @@
 
 /obj/item/assembly/signaler/anomaly/manual_suicide(datum/mind/suicidee)
 	var/mob/living/user = suicidee.current
-	user.visible_message(span_suicide("[user]'s[name]está reagindo ao sinal de rádio, deformando[user.p_their()]Corpo!"))
+	user.visible_message(span_suicide("[user]'s [name] está reagindo ao sinal de rádio, deformando [user.p_their()] Corpo!"))
 	user.set_suicide(TRUE)
 	user.gib(DROP_ALL_REMAINS)
 
@@ -32,7 +32,7 @@
 	return
 
 /obj/item/assembly/signaler/anomaly/analyzer_act(mob/living/user, obj/item/analyzer/tool)
-	to_chat(user, span_notice("Analisando...[src]O campo estabilizado está flutuando ao longo da frequência.[format_frequency(frequency)], código[code]."))
+	to_chat(user, span_notice("Analisando...[src] O campo estabilizado está flutuando ao longo da frequência.[format_frequency(frequency)], código [code]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/assembly/signaler/anomaly/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)

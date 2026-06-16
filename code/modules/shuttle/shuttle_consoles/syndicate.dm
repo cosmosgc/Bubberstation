@@ -21,7 +21,7 @@
 		return FALSE
 	var/obj/item/circuitboard/computer/syndicate_shuttle/board = circuit
 	if(board?.challenge_start_time && world.time < board.challenge_start_time + SYNDICATE_CHALLENGE_TIMER)
-		to_chat(user, span_warning("Você lançou um desafio de combate para a estação! Você tem que dar-lhes pelo menos[DisplayTimeText(board.challenge_start_time + SYNDICATE_CHALLENGE_TIMER - world.time)]Mais para permitir que se preparem."))
+		to_chat(user, span_warning("Você lançou um desafio de combate para a estação! Você tem que dar-lhes pelo menos [DisplayTimeText(board.challenge_start_time + SYNDICATE_CHALLENGE_TIMER - world.time)] Mais para permitir que se preparem."))
 		return FALSE
 	board.moved = TRUE
 	return TRUE

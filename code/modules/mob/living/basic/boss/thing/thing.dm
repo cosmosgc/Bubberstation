@@ -107,7 +107,7 @@
 		return
 	add_traits(list(TRAIT_GODMODE, TRAIT_IMMOBILIZED), MEGAFAUNA_TRAIT)
 	balloon_alert_to_viewers("invulnerable! overload the machines!")
-	visible_message(span_danger("[src]Cai no chão cambaleando, incapaz de acompanhar os ferimentos!"))
+	visible_message(span_danger("[src] Cai no chão cambaleando, incapaz de acompanhar os ferimentos!"))
 	phase_invulnerability_timer = addtimer(CALLBACK(src, PROC_REF(phase_too_slow)), phase_invul_time, TIMER_STOPPABLE|TIMER_UNIQUE)
 	add_filter(PHASEREGEN_FILTER, 2, list("type" = "outline", "color" = COLOR_PALE_GREEN, "alpha" = 0, "size" = 1))
 	var/filter = get_filter(PHASEREGEN_FILTER)
@@ -142,7 +142,7 @@
 	for(var/turf/open/target in RANGE_TURFS(1, loc))
 		new /obj/effect/temp_visual/mook_dust(target)
 	playsound(loc, 'sound/effects/meteorimpact.ogg', 40, TRUE)
-	visible_message(span_danger("[src]Recua pelo chão de volta para onde veio!"))
+	visible_message(span_danger("[src] Recua pelo chão de volta para onde veio!"))
 	forceMove(spawn_loc)
 
 /// The Thing is successfully hit by incendiary fire while downed by damage (alternatively takes too much damage if not ruin spawned)
@@ -167,7 +167,7 @@
 	phase_invulnerability_timer = null
 	remove_traits(list(TRAIT_GODMODE, TRAIT_IMMOBILIZED), MEGAFAUNA_TRAIT)
 	balloon_alert_to_viewers("recovers!")
-	visible_message(span_danger("[src]Se recupera dos danos! Muito lento!"))
+	visible_message(span_danger("[src] Se recupera dos danos! Muito lento!"))
 	adjust_health(-(maxHealth/3) * 0.5) //half of a phase (which is a third of maxhealth)
 	var/filter = get_filter(PHASEREGEN_FILTER)
 	if(!isnull(filter))

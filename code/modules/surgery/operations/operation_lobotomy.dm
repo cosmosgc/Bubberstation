@@ -30,9 +30,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a fazer uma lobotomia em[FORMAT_ORGAN_OWNER(organ)]O cérebro..."),
-		span_notice("[surgeon]Começa a fazer uma lobotomia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
-		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("Você começa a fazer uma lobotomia em [FORMAT_ORGAN_OWNER(organ)] O cérebro..."),
+		span_notice("[surgeon] Começa a fazer uma lobotomia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
+		span_notice("[surgeon] Começa a operar em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!")
 
@@ -40,9 +40,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você fez uma lobotomia com sucesso em[FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon]Com sucesso lobotomiza[FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon]Termina a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("Você fez uma lobotomia com sucesso em [FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon] Com sucesso lobotomiza [FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon] Termina a cirurgia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head goes totally numb for a moment, the pain is overwhelming!")
 
@@ -71,8 +71,8 @@
 		surgeon,
 		organ.owner,
 		span_warning("Você remove a parte errada, causando mais danos!"),
-		span_notice("[surgeon]Sem sucesso tentativas de lobotomizar[FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon]Completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("[surgeon] Sem sucesso tentativas de lobotomizar [FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon] Completa a cirurgia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "The pain in your head only seems to get worse!")
 	organ.apply_organ_damage(80)

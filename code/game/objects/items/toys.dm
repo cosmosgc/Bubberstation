@@ -67,12 +67,12 @@
 		return NONE
 	var/obj/structure/reagent_dispensers/RD = interacting_with
 	if(RD.reagents.total_volume <= 0)
-		to_chat(user, span_warning("[RD]Está vazio."))
+		to_chat(user, span_warning("[RD] Está vazio."))
 	else if(reagents.total_volume >= 10)
-		to_chat(user, span_warning("[src]Está cheio."))
+		to_chat(user, span_warning("[src] Está cheio."))
 	else
 		interacting_with.reagents.trans_to(src, 10, transferred_by = user)
-		to_chat(user, span_notice("Você enche o balão com o conteúdo de[interacting_with]."))
+		to_chat(user, span_notice("Você enche o balão com o conteúdo de [interacting_with]."))
 		desc = "Um balão translúcido com alguma forma de líquido rolando nele."
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -82,12 +82,12 @@
 	if(istype(I, /obj/item/reagent_containers/cup))
 		if(I.reagents)
 			if(I.reagents.total_volume <= 0)
-				to_chat(user, span_warning("[I]Está vazio."))
+				to_chat(user, span_warning("[I] Está vazio."))
 			else if(reagents.total_volume >= 10)
-				to_chat(user, span_warning("[src]Está cheio."))
+				to_chat(user, span_warning("[src] Está cheio."))
 			else
 				desc = "Um balão translúcido com alguma forma de líquido rolando nele."
-				to_chat(user, span_notice("Você enche o balão com o conteúdo de[I]."))
+				to_chat(user, span_notice("Você enche o balão com o conteúdo de [I]."))
 				I.reagents.trans_to(src, 10, transferred_by = user)
 				update_appearance()
 	else if(I.get_sharpness())
@@ -106,7 +106,7 @@
 			T = get_turf(AT)
 		else
 			T = get_turf(src)
-		T.visible_message(span_danger("[src]Explosões!"),span_hear("Você ouve um pop e um splash."))
+		T.visible_message(span_danger("[src] Explosões!"),span_hear("Você ouve um pop e um splash."))
 		reagents.expose(T)
 		for(var/atom/A in T)
 			reagents.expose(A)
@@ -176,7 +176,7 @@
 		to_chat(user, span_warning("Você deve usar balões de cores diferentes para fazer isso!"))
 		return ..()
 	visible_message(
-		span_notice("[user.name]Começa a contorcer um animal balão!"),
+		span_notice("[user.name] Começa a contorcer um animal balão!"),
 		blind_message = span_hear("Você ouve balões sendo contorcidos."),
 		vision_distance = 3,
 		ignored_mobs = user,
@@ -413,7 +413,7 @@
 	current_mode++
 	playsound(src, 'sound/items/tools/screwdriver2.ogg', 50, vary = TRUE)
 	if (current_mode <= modes.len)
-		balloon_alert(user, "Pronto para[current_mode]")
+		balloon_alert(user, "Pronto para [current_mode]")
 	else
 		balloon_alert(user, "desligado")
 		current_mode = CAPTAINSAID_MODE_OFF
@@ -439,9 +439,9 @@
 /obj/item/toy/spinningtoy/suicide_act(mob/living/carbon/human/user)
 	var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(!myhead)
-		user.visible_message(span_suicide("[user]tenta consumir[src]...mas[user.p_they()] [user.p_have()]Sem boca!")) // and i must scream
+		user.visible_message(span_suicide("[user] tenta consumir [src]...mas [user.p_they()] [user.p_have()] Sem boca!")) // and i must scream
 		return SHAME
-	user.visible_message(span_suicide("[user]consome[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] consome [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(user, 'sound/items/eatfood.ogg', 50, TRUE)
 	user.adjust_nutrition(50) // mmmm delicious
 	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), (3 SECONDS))
@@ -460,14 +460,14 @@
 	if(!user)
 		return
 	if(!user.is_holding(src)) // Half digestion? Start choking to death
-		user.visible_message(span_suicide("[user]Entra em pânico e começa a sufocar.[user.p_them()]Me matar!"))
+		user.visible_message(span_suicide("[user] Entra em pânico e começa a sufocar.[user.p_them()] Me matar!"))
 		user.adjust_oxy_loss(200)
 		user.death(FALSE) // unfortunately you have to handle the suiciding yourself with a manual suicide
 		user.ghostize(FALSE) // get the fuck out of our body
 		return
 	var/obj/item/bodypart/chest/CH = user.get_bodypart(BODY_ZONE_CHEST)
 	if(CH.cavity_item) // if he's (un)bright enough to have a round and full belly...
-		user.visible_message(span_danger("[user]regurgita[src]!")) // I swear i dont have a fetish
+		user.visible_message(span_danger("[user] regurgita [src]!")) // I swear i dont have a fetish
 		user.vomit(VOMIT_CATEGORY_BLOOD, lost_nutrition = 100, distance = 0)
 		user.adjust_oxy_loss(120)
 		user.dropItemToGround(src) // incase the crit state doesn't drop the singulo to the floor
@@ -523,10 +523,10 @@
 			return 1
 		if (A.amount_left < (7 - src.bullets))
 			src.bullets += A.amount_left
-			to_chat(user, span_notice("Você recarrega[A.amount_left]Caps."))
+			to_chat(user, span_notice("Você recarrega [A.amount_left] Caps."))
 			A.amount_left = 0
 		else
-			to_chat(user, span_notice("Você recarrega[7 - src.bullets]Caps."))
+			to_chat(user, span_notice("Você recarrega [7 - src.bullets] Caps."))
 			A.amount_left -= 7 - src.bullets
 			src.bullets = 7
 		A.update_appearance()
@@ -545,7 +545,7 @@
 		return ITEM_INTERACT_SUCCESS
 	playsound(user, 'sound/items/weapons/gun/revolver/shot.ogg', 100, TRUE)
 	src.bullets--
-	user.visible_message(span_danger("[user]Fogos[src]em[interacting_with]!"), 		span_danger("Você atira.[src]em[interacting_with]!"), 		span_hear("Você ouve um tiro!"))
+	user.visible_message(span_danger("[user] Fogos [src] em [interacting_with]!"), 		span_danger("Você atira.[src] em [interacting_with]!"), 		span_hear("Você ouve um tiro!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/toy/ammo
@@ -619,7 +619,7 @@
 
 /obj/item/toy/sword/examine(mob/user)
 	. = ..()
-	. += span_notice("Tem um mostrador de iluminação atualmente definido para[saber_color]que parece que pode ser transformado com um<b>Chave de fenda</b>.")
+	. += span_notice("Tem um mostrador de iluminação atualmente definido para [saber_color] que parece que pode ser transformado com um<b>Chave de fenda</b>.")
 
 /obj/item/toy/sword/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(saber_color)
@@ -633,7 +633,7 @@
 			saber_color = "red"
 		else
 			return ITEM_INTERACT_SUCCESS
-	balloon_alert(user, "mudou para[saber_color]")
+	balloon_alert(user, "mudou para [saber_color]")
 	update_appearance(UPDATE_ICON)
 	return ITEM_INTERACT_SUCCESS
 
@@ -663,10 +663,10 @@
 	if(istype(weapon, /obj/item/toy/sword))
 		var/obj/item/toy/sword/attatched_sword = weapon
 		if(HAS_TRAIT(weapon, TRAIT_NODROP))
-			to_chat(user, span_warning("[weapon]está preso em sua mão, você não pode prendê-lo a[src]!"))
+			to_chat(user, span_warning("[weapon] está preso em sua mão, você não pode prendê-lo a [src]!"))
 			return
 		else if(HAS_TRAIT(src, TRAIT_NODROP))
-			to_chat(user, span_warning("[src]está preso em sua mão, você não pode prendê-lo a[weapon]!"))
+			to_chat(user, span_warning("[src] está preso em sua mão, você não pode prendê-lo a [weapon]!"))
 			return
 		else
 			to_chat(user, span_notice("Você prende as pontas das duas espadas de plástico, fazendo um único brinquedo de duas lâminas! Você é falsamente legal."))
@@ -725,14 +725,14 @@
 
 /obj/item/toy/windup_toolbox/attack_self(mob/user)
 	if(!active)
-		to_chat(user, span_notice("Você acaba[src], começa a rugir."))
+		to_chat(user, span_notice("Você acaba [src], começa a rugir."))
 		active = TRUE
 		update_appearance()
 		playsound(src, 'sound/effects/pope_entry.ogg', 100)
 		Rumble()
 		addtimer(CALLBACK(src, PROC_REF(stopRumble)), 60 SECONDS)
 	else
-		to_chat(user, span_warning("[src]Já está ativo!"))
+		to_chat(user, span_warning("[src] Já está ativo!"))
 
 /obj/item/toy/windup_toolbox/proc/Rumble()
 	var/static/list/transforms
@@ -754,7 +754,7 @@
 /obj/item/toy/windup_toolbox/proc/stopRumble()
 	active = FALSE
 	update_appearance()
-	visible_message(span_warning("[src]lentamente pára de bater e cai ainda, seu trinco estalando fechado.")) //subtle difference
+	visible_message(span_warning("[src] lentamente pára de bater e cai ainda, seu trinco estalando fechado.")) //subtle difference
 	playsound(loc, 'sound/items/weapons/batonextend.ogg', 100, TRUE)
 	animate(src, transform = matrix())
 
@@ -779,7 +779,7 @@
 	return 0
 
 /obj/item/dualsaber/toy/impale(mob/living/user)//Stops Toy Dualsabers from injuring clowns
-	to_chat(user, span_warning("Você gira um pouco antes de perder o equilíbrio e empalar-se em[src]."))
+	to_chat(user, span_warning("Você gira um pouco antes de perder o equilíbrio e empalar-se em [src]."))
 	user.adjust_stamina_loss(25)
 
 /obj/item/toy/katana
@@ -821,7 +821,7 @@
 /obj/item/toy/snappop/proc/pop_burst(n = 3, c = TRUE)
 	do_sparks(n, c, src)
 	new ash_type(loc)
-	visible_message(span_warning("[src]Explode!"),
+	visible_message(span_warning("[src] Explode!"),
 		span_hear("Você ouve um estalo!"))
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)
@@ -897,7 +897,7 @@
 
 /obj/item/toy/talking/proc/activation_message(mob/user)
 	user.visible_message(
-		span_notice("[user]Puxa a corda\the [src]."),
+		span_notice("[user] Puxa a corda\the [src]."),
 		span_notice("Você puxa o fio\the [src]."),
 		span_notice("Você ouve uma corda sendo puxada."))
 
@@ -939,7 +939,7 @@
 
 /obj/item/toy/talking/codex_gigas/activation_message(mob/user)
 	user.visible_message(
-		span_notice("[user]Aperte o botão.\the [src]."),
+		span_notice("[user] Aperte o botão.\the [src]."),
 		span_notice("Você aperta o botão.\the [src]."),
 		span_notice("Você ouve um clique suave."))
 
@@ -976,16 +976,16 @@
 /obj/item/toy/nuke/attack_self(mob/user)
 	if (obj_flags & EMAGGED && cooldown < world.time)
 		cooldown = world.time + 600
-		user.audible_message(span_hear("Você ouve o clique de um botão."), self_message = span_notice("Você ativa.[src]Toca um barulho alto!"))
+		user.audible_message(span_hear("Você ouve o clique de um botão."), self_message = span_notice("Você ativa.[src] Toca um barulho alto!"))
 		sleep(0.5 SECONDS)
 		playsound(src, 'sound/announcer/alarm/nuke_alarm.ogg', 20, FALSE)
 		sleep(14 SECONDS)
-		user.visible_message(span_alert("[src]Explode violentamente!"))
+		user.visible_message(span_alert("[src] Explode violentamente!"))
 		explosion(src, light_impact_range = 1)
 		qdel(src)
 	else if (cooldown < world.time)
 		cooldown = world.time + 600 //1 minute
-		user.visible_message(span_warning("[user]Aperte um botão.[src]."), span_notice("Você ativa.[src]Toca um barulho alto!"), span_hear("Você ouve o clique de um botão."))
+		user.visible_message(span_warning("[user] Aperte um botão.[src]."), span_notice("Você ativa.[src] Toca um barulho alto!"), span_hear("Você ouve o clique de um botão."))
 		sleep(0.5 SECONDS)
 		icon_state = "nuketoy"
 		playsound(src, 'sound/announcer/alarm/nuke_alarm.ogg', 20, FALSE)
@@ -1048,7 +1048,7 @@
 /obj/item/toy/redbutton/attack_self(mob/user)
 	if (cooldown < world.time)
 		cooldown = (world.time + 300) // Sets cooldown at 30 seconds
-		user.visible_message(span_warning("[user]Pressiona o botão vermelho."), span_notice("Você aperta o botão, ele toca um barulho alto!"), span_hear("O botão clica alto."))
+		user.visible_message(span_warning("[user] Pressiona o botão vermelho."), span_notice("Você aperta o botão, ele toca um barulho alto!"), span_hear("O botão clica alto."))
 		playsound(src, 'sound/effects/explosion/explosionfar.ogg', 50, FALSE)
 		for(var/mob/M in urange(10, src)) // Checks range
 			if(!M.stat && !isAI(M)) // Checks to make sure whoever's getting shaken is alive/not the AI
@@ -1121,7 +1121,7 @@
 /obj/item/toy/clockwork_watch/attack_self(mob/user)
 	if (cooldown < world.time)
 		cooldown = world.time + 1800 //3 minutes
-		user.visible_message(span_warning("[user]gira uma engrenagem sobre[src]."), span_notice("Você gira uma engrenagem sobre[src]Toca um barulho alto!"), span_hear("Você ouve engrenagens girando."))
+		user.visible_message(span_warning("[user] gira uma engrenagem sobre [src]."), span_notice("Você gira uma engrenagem sobre [src] Toca um barulho alto!"), span_hear("Você ouve engrenagens girando."))
 		playsound(src, 'sound/effects/magic/clockwork/ark_activation.ogg', 50, FALSE)
 	else
 		to_chat(user, span_alert("As engrenagens já estão girando!"))
@@ -1159,16 +1159,16 @@
 /obj/item/toy/toy_xeno/attack_self(mob/user)
 	if(cooldown <= world.time)
 		cooldown = (world.time + 50) //5 second cooldown
-		user.visible_message(span_notice("[user]Puxa a corda para trás.[src]."))
+		user.visible_message(span_notice("[user] Puxa a corda para trás.[src]."))
 		icon_state = "[initial(icon_state)]_used"
 		sleep(0.5 SECONDS)
-		audible_message(span_danger("[icon2html(src, viewers(src))]Hiss!"))
+		audible_message(span_danger("[icon2html(src, viewers(src))] Hiss!"))
 		var/list/possible_sounds = list('sound/mobs/non-humanoids/hiss/hiss1.ogg', 'sound/mobs/non-humanoids/hiss/hiss2.ogg', 'sound/mobs/non-humanoids/hiss/hiss3.ogg', 'sound/mobs/non-humanoids/hiss/hiss4.ogg')
 		var/chosen_sound = pick(possible_sounds)
 		playsound(get_turf(src), chosen_sound, 50, TRUE)
 		addtimer(VARSET_CALLBACK(src, icon_state, "[initial(icon_state)]"), 4.5 SECONDS)
 	else
-		to_chat(user, span_warning("A corda ligada[src]Não reviveu todo o caminho!"))
+		to_chat(user, span_warning("A corda ligada [src] Não reviveu todo o caminho!"))
 		return
 
 // TOY MOUSEYS :3 :3 :3
@@ -1197,7 +1197,7 @@
 
 /obj/item/toy/figure/Initialize(mapload)
 	. = ..()
-	desc = "A\"Vida no Espaço\"marca[src]."
+	desc = "A\"Vida no Espaço\"marca [src]."
 	AddElement(/datum/element/toy_talk)
 
 /obj/item/toy/figure/attack_self(mob/user as mob)
@@ -1472,10 +1472,10 @@
 /obj/item/toy/brokenradio/attack_self(mob/user)
 	if(cooldown <= world.time)
 		cooldown = (world.time + 300)
-		user.visible_message(span_notice("[user]Ajusta o mostrador.[src]."))
+		user.visible_message(span_notice("[user] Ajusta o mostrador.[src]."))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/items/radiostatic.ogg', 50, FALSE), 0.5 SECONDS)
 	else
-		to_chat(user, span_warning("A discagem está ligada.[src]Estraga tudo."))
+		to_chat(user, span_warning("A discagem está ligada.[src] Estraga tudo."))
 		return
 
 /obj/item/toy/braintoy
@@ -1758,16 +1758,16 @@ GLOBAL_LIST_EMPTY(intento_players)
 	render(intent)
 	switch(intent)
 		if(HELP)
-			to_chat(victim, span_danger("[src]te abraça para se sentir melhor!"))
+			to_chat(victim, span_danger("[src] te abraça para se sentir melhor!"))
 			victim.add_mood_event("hug", /datum/mood_event/hug)
 		if(DISARM)
 			to_chat(victim, span_danger("Você foi derrubado por um empurrão.[src]!"))
 			victim.Knockdown(2 SECONDS)
 		if(GRAB)
-			to_chat(victim, span_danger("[src]Pega você agressivamente!"))
+			to_chat(victim, span_danger("[src] Pega você agressivamente!"))
 			victim.Stun(2 SECONDS)
 		if(HARM)
-			to_chat(victim, span_danger("Você é socado por[src]!"))
+			to_chat(victim, span_danger("Você é socado por [src]!"))
 			victim.apply_damage(rand(20, 30), BRUTE)
 
 	index += 1
@@ -1854,7 +1854,7 @@ GLOBAL_LIST_EMPTY(intento_players)
 /obj/item/extendohand/attack(atom/M, mob/living/carbon/human/user, list/modifiers, list/attack_modifiers)
 	var/dist = get_dist(M, user)
 	if(dist < min_reach)
-		to_chat(user, span_warning("[M]está muito perto de usar.[src]Vamos."))
+		to_chat(user, span_warning("[M] está muito perto de usar.[src] Vamos."))
 		return
 	M.attack_hand(user, modifiers)
 
@@ -1885,7 +1885,7 @@ GLOBAL_LIST_EMPTY(intento_players)
 	AddElement(/datum/element/kneejerk)
 
 /obj/item/banhammer/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está batendo[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando banir[user.p_them()]ego da vida."))
+	user.visible_message(span_suicide("[user] está batendo [user.p_them()] ego com [src]! Parece que...[user.p_theyre()] Tentando banir [user.p_them()] ego da vida."))
 	return (BRUTELOSS|FIRELOSS|TOXLOSS|OXYLOSS)
 /*
 oranges says: This is a meme relating to the english translation of the ss13 russian wiki page on lurkmore.
@@ -1894,9 +1894,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 */
 /obj/item/banhammer/attack(mob/M, mob/living/user)
 	if(user.zone_selected == BODY_ZONE_HEAD)
-		M.visible_message(span_danger("[user]estão acariciando a cabeça de[M]Com um bangammer."), span_userdanger("[user]estão acariciando sua cabeça com um bangammer."), span_hear("Você ouve um bangammer acariciando uma cabeça.")) // see above comment
+		M.visible_message(span_danger("[user] estão acariciando a cabeça de [M] Com um bangammer."), span_userdanger("[user] estão acariciando sua cabeça com um bangammer."), span_hear("Você ouve um bangammer acariciando uma cabeça.")) // see above comment
 	else
-		M.visible_message(span_danger("[M]Foi banida PARA NÃO REISINA[user]!"), span_userdanger("Você foi banido por NÃO REISIN[user]!"), span_hear("Você ouve um banhammer banindo alguém."))
+		M.visible_message(span_danger("[M] Foi banida PARA NÃO REISINA [user]!"), span_userdanger("Você foi banido por NÃO REISIN [user]!"), span_hear("Você ouve um banhammer banindo alguém."))
 	playsound(loc, 'sound/effects/adminhelp.ogg', 15) //keep it at 15% volume so people don't jump out of their skin too much
 	if(user.combat_mode)
 		return ..(M, user)

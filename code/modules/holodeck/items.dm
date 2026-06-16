@@ -66,7 +66,7 @@
 		M.apply_damage(10, STAMINA)
 		if(prob(5))
 			M.Paralyze(60)
-			visible_message(span_danger("[M]é derrubado imediatamente[M.p_their()]Pés!"))
+			visible_message(span_danger("[M] é derrubado imediatamente [M.p_their()] Pés!"))
 
 //
 // Machines

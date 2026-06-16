@@ -22,7 +22,7 @@
 /obj/item/reagent_containers/applicator/pill/proc/reagent_special_examine(datum/source, mob/user, list/examine_list, can_see_insides = FALSE)
 	SIGNAL_HANDLER
 	if (layers_remaining)
-		examine_list += span_notice("Sua casca açucarada durará aproximadamente[layers_remaining]segundos no estômago humano.")
+		examine_list += span_notice("Sua casca açucarada durará aproximadamente [layers_remaining] segundos no estômago humano.")
 	else
 		examine_list += span_warning("Sua concha está completamente dissolvida!")
 
@@ -58,14 +58,14 @@
 		return NONE
 
 	if(target.is_drainable() && !target.reagents.total_volume)
-		to_chat(user, span_warning("[target]Está vazio! Não há nada para dissolver[src]Entre."))
+		to_chat(user, span_warning("[target] Está vazio! Não há nada para dissolver [src] Entre."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_warning("[target]Está cheio."))
+		to_chat(user, span_warning("[target] Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_warning("[user]Coloca algo em[target]!"), span_notice("Você dissolve.[src]em[target]."), null, 2)
+	user.visible_message(span_warning("[user] Coloca algo em [target]!"), span_notice("Você dissolve.[src] em [target]."), null, 2)
 	reagents.trans_to(target, reagents.total_volume, transferred_by = user)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -83,7 +83,7 @@
 	else if (istype(tool, /obj/item/reagent_containers/cup))
 		container = tool
 		if (!container.is_drainable())
-			to_chat(user, span_warning("Você não pode derramar[container]'s conteúdo em[src]!"))
+			to_chat(user, span_warning("Você não pode derramar [container]'s conteúdo em [src]!"))
 			return ITEM_INTERACT_BLOCKING
 		use_verb = "pour"
 
@@ -93,12 +93,12 @@
 	var/datum/reagent/consumable/sugar/sugar = container.reagents.has_reagent(/datum/reagent/consumable/sugar)
 	if (sugar)
 		if (layers_remaining >= PILL_MAX_LAYERS) // Full minute
-			to_chat(user, span_warning("[src]O revestimento é muito grosso para cobrir com mais açúcar!"))
+			to_chat(user, span_warning("[src] O revestimento é muito grosso para cobrir com mais açúcar!"))
 			return ITEM_INTERACT_BLOCKING
 		var/to_apply = floor(min(container.amount_per_transfer_from_this, sugar.volume, PILL_MAX_LAYERS - layers_remaining))
 		container.reagents.remove_reagent(/datum/reagent/consumable/sugar, to_apply)
 		layers_remaining += to_apply
-		to_chat(user, span_notice("Você.[use_verb]Alguns de[container]'s conteúdo em[src], espessando sua casca açucarada."))
+		to_chat(user, span_notice("Você.[use_verb] Alguns de [container]'s conteúdo em [src], espessando sua casca açucarada."))
 		return ITEM_INTERACT_SUCCESS
 
 	var/datum/reagent/water/water = container.reagents.has_reagent(/datum/reagent/water)
@@ -106,13 +106,13 @@
 		return ..()
 
 	if (!layers_remaining) // No coating
-		to_chat(user, span_warning("[src]Não tem mais camadas externas para dissolver!"))
+		to_chat(user, span_warning("[src] Não tem mais camadas externas para dissolver!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/to_apply = floor(min(container.amount_per_transfer_from_this, water.volume, layers_remaining))
 	container.reagents.remove_reagent(/datum/reagent/water, to_apply)
 	layers_remaining -= to_apply
-	to_chat(user, span_notice("Você.[use_verb]Alguns de[container]'s conteúdo em[src], dissolvendo sua casca açucarada."))
+	to_chat(user, span_notice("Você.[use_verb] Alguns de [container]'s conteúdo em [src], dissolvendo sua casca açucarada."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/applicator/pill/proc/on_digestion(datum/source, obj/item/organ/stomach/stomach, mob/living/carbon/owner, seconds_per_tick)

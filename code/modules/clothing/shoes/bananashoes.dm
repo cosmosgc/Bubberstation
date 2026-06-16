@@ -58,7 +58,7 @@
 /obj/item/clothing/shoes/clown_shoes/banana_shoes/attack_self(mob/user)
 	var/sheet_amount = bananium.retrieve_all()
 	if(sheet_amount)
-		to_chat(user, span_notice("Você recupera.[sheet_amount]folhas de banânio dos protótipos de sapatos."))
+		to_chat(user, span_notice("Você recupera.[sheet_amount] folhas de banânio dos protótipos de sapatos."))
 	else
 		to_chat(user, span_warning("Você não pode recuperar nenhum banânio dos sapatos protótipos!"))
 

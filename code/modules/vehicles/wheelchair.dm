@@ -104,7 +104,7 @@
 		return FALSE
 	remove_bell()
 	remove_bomb()
-	user.visible_message(span_notice("[user]Colapso[src]."), span_notice("Você colapsa.[src]."))
+	user.visible_message(span_notice("[user] Colapso [src]."), span_notice("Você colapsa.[src]."))
 	var/obj/vehicle/ridden/wheelchair/wheelchair_folded = new foldabletype(get_turf(src))
 	user.put_in_hands(wheelchair_folded)
 	qdel(src)
@@ -127,7 +127,7 @@
 /obj/vehicle/ridden/wheelchair/examine(mob/user)
 	. =..()
 	if(bell_attached)
-		. += span_notice("Há\a [bell_attached]Ligado ao cabo.")
+		. += span_notice("Há\a [bell_attached] Ligado ao cabo.")
 	if(bomb_attached)
 		. += span_warning("Há um par de tanques de gás ligados ao quadro.")
 
@@ -135,7 +135,7 @@
 	if (!bell_attached)
 		return
 	bell_attached.forceMove(get_turf(src))
-	visible_message(span_notice("[bell_attached]Cai!"))
+	visible_message(span_notice("[bell_attached] Cai!"))
 	bell_attached = null
 	update_appearance()
 
@@ -143,7 +143,7 @@
 	if (!bomb_attached)
 		return
 	bomb_attached.forceMove(get_turf(src))
-	visible_message(span_notice("[bomb_attached]Cai!"))
+	visible_message(span_notice("[bomb_attached] Cai!"))
 	bomb_attached = null
 	update_appearance()
 

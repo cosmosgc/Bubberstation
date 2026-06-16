@@ -78,10 +78,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 		to_chat(user, span_warning("Não há unidade de desfibrilador carregada!"))
 		return
 	if(defib.paddles.loc != defib)
-		to_chat(user, span_warning("[defib.paddles.loc == user ? "You are already" : "Someone else is"]Segurando[defib]São remos!"))
+		to_chat(user, span_warning("[defib.paddles.loc == user ? "You are already" : "Someone else is"]Segurando [defib] São remos!"))
 		return
 	if(!in_range(src, user))
-		to_chat(user, span_warning("[defib]Reme muito e saia das mãos!"))
+		to_chat(user, span_warning("[defib] Reme muito e saia das mãos!"))
 		return
 	user.put_in_hands(defib.paddles)
 
@@ -92,12 +92,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 			return
 		var/obj/item/defibrillator/new_defib = item
 		if(!new_defib.get_cell())
-			to_chat(user, span_warning("Apenas desfibriladores contendo uma célula podem ser ligados a[src]!"))
+			to_chat(user, span_warning("Apenas desfibriladores contendo uma célula podem ser ligados a [src]!"))
 			return
 		if(HAS_TRAIT(new_defib, TRAIT_NODROP) || !user.transferItemToLoc(new_defib, src))
-			to_chat(user, span_warning("[new_defib]está preso em sua mão!"))
+			to_chat(user, span_warning("[new_defib] está preso em sua mão!"))
 			return
-		user.visible_message(span_notice("[user]Ele se liga.[new_defib]Para[src]!"), 		span_notice("Você pressiona.[new_defib]No monte, e ele se encaixa no lugar."))
+		user.visible_message(span_notice("[user] Ele se liga.[new_defib] Para [src]!"), 		span_notice("Você pressiona.[new_defib] No monte, e ele se encaixa no lugar."))
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		// Make sure the defib is set before processing begins.
 		defib = new_defib
@@ -124,13 +124,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 		to_chat(user, span_warning("Não há nenhum desfibrilador para prender!"))
 		return TRUE
 	if(!clamps_locked)
-		to_chat(user, span_warning("[src]As pinças estão desligadas!"))
+		to_chat(user, span_warning("[src] As pinças estão desligadas!"))
 		return TRUE
-	user.visible_message(span_notice("[user]Pressiona[multitool]Em[src]A vaga de identificação..."), 	span_notice("Você começa a substituir os grampos[src]..."))
+	user.visible_message(span_notice("[user] Pressiona [multitool] Em [src] A vaga de identificação..."), 	span_notice("Você começa a substituir os grampos [src]..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	if(!do_after(user, 10 SECONDS, target = src) || !clamps_locked)
 		return
-	user.visible_message(span_notice("[user]pulsações[multitool], e[src]As pinças deslizam para cima."), 	span_notice("Você anula as travas de trava.[src]!"))
+	user.visible_message(span_notice("[user] pulsações [multitool], e [src] As pinças deslizam para cima."), 	span_notice("Você anula as travas de trava.[src]!"))
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	clamps_locked = FALSE
 	update_appearance()
@@ -148,7 +148,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 	new wallframe_type(get_turf(src))
 	qdel(src)
 	tool.play_tool_sound(user)
-	to_chat(user, span_notice("Você tira.[src]Da Parede."))
+	to_chat(user, span_notice("Você tira.[src] Da Parede."))
 	return TRUE
 
 /obj/machinery/defibrillator_mount/click_alt(mob/living/carbon/user)
@@ -156,13 +156,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 		to_chat(user, span_warning("Seria difícil remover uma unidade de desfibrilação de uma montagem que não tem nenhuma."))
 		return CLICK_ACTION_BLOCKING
 	if(clamps_locked)
-		to_chat(user, span_warning("Você tenta puxar para fora[defib]Mas as pinças da montagem estão bem trancadas!"))
+		to_chat(user, span_warning("Você tenta puxar para fora [defib] Mas as pinças da montagem estão bem trancadas!"))
 		return CLICK_ACTION_BLOCKING
 	if(!user.put_in_hands(defib))
 		to_chat(user, span_warning("Você precisa de uma mão livre!"))
-		user.visible_message(span_notice("[user]Soltem os ganchos.[defib]De[src], derrubando-o no chão."), 		span_notice("Você desliza para fora[defib]De[src]e soltar os cabos de carga, derrubá-lo no chão."))
+		user.visible_message(span_notice("[user] Soltem os ganchos.[defib] De [src], derrubando-o no chão."), 		span_notice("Você desliza para fora [defib] De [src] e soltar os cabos de carga, derrubá-lo no chão."))
 	else
-		user.visible_message(span_notice("[user]Soltem os ganchos.[defib]De[src]."), 		span_notice("Você desliza para fora[defib]De[src]e soltar os cabos de carga."))
+		user.visible_message(span_notice("[user] Soltem os ganchos.[defib] De [src]."), 		span_notice("Você desliza para fora [defib] De [src] e soltar os cabos de carga."))
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	return CLICK_ACTION_SUCCESS
 

@@ -91,7 +91,7 @@
 		return
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_SKYFALL))
 		var/timeleft = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_SKYFALL)
-		to_chat(owner, span_warning("Você precisa esperar.[DisplayTimeText(timeleft, 1)]Antes de tentar Skyfall."))
+		to_chat(owner, span_warning("Você precisa esperar.[DisplayTimeText(timeleft, 1)] Antes de tentar Skyfall."))
 		return
 	if(skyfall_charge_level)
 		abort_skyfall()
@@ -112,23 +112,23 @@
 	skyfall_charge_level++
 	switch(skyfall_charge_level)
 		if(1)
-			chassis.visible_message(span_warning("[chassis]cliques e zumbidos por um momento, com um zumbido baixo saindo das pernas."))
+			chassis.visible_message(span_warning("[chassis] cliques e zumbidos por um momento, com um zumbido baixo saindo das pernas."))
 			playsound(chassis, 'sound/items/tools/rped.ogg', 50, TRUE)
 		if(2)
-			chassis.visible_message(span_warning("[chassis]começa a tremer, os sons da eletricidade crescendo mais alto."))
+			chassis.visible_message(span_warning("[chassis] começa a tremer, os sons da eletricidade crescendo mais alto."))
 			chassis.Shake(1, 1, SKYFALL_SINGLE_CHARGE_TIME-1) // -1 gives space between the animates, so they don't interrupt eachother
 		if(3)
-			chassis.visible_message(span_warning("[chassis]assume uma pose enquanto choca violentamente."))
+			chassis.visible_message(span_warning("[chassis] assume uma pose enquanto choca violentamente."))
 			chassis.Shake(2, 2, SKYFALL_SINGLE_CHARGE_TIME-1) // -1 gives space between the animates, so they don't interrupt eachother
 			chassis.spark_system.start()
 			chassis.update_appearance(UPDATE_ICON_STATE)
 		if(4)
-			chassis.visible_message(span_warning("[chassis]faíscas e persianas quando termina a preparação."))
+			chassis.visible_message(span_warning("[chassis] faíscas e persianas quando termina a preparação."))
 			playsound(chassis, 'sound/vehicles/mecha/skyfall_power_up.ogg', 50, TRUE)
 			chassis.Shake(3, 3, SKYFALL_SINGLE_CHARGE_TIME-1) // -1 gives space between the animates, so they don't interrupt eachother
 			chassis.spark_system.start()
 		if(SKYFALL_CHARGELEVEL_LAUNCH)
-			chassis.visible_message(span_danger("[chassis]Salta para o ar!"))
+			chassis.visible_message(span_danger("[chassis] Salta para o ar!"))
 			playsound(chassis, 'sound/items/weapons/gun/general/rocket_launch.ogg', 50, TRUE)
 	if(skyfall_charge_level != SKYFALL_CHARGELEVEL_LAUNCH)
 		skyfall_charge_loop()
@@ -173,7 +173,7 @@
  */
 /datum/action/vehicle/sealed/mecha/skyfall/proc/land()
 	var/turf/landed_on = get_turf(chassis)
-	chassis.visible_message(span_danger("[chassis]Aterra de cima!"))
+	chassis.visible_message(span_danger("[chassis] Aterra de cima!"))
 	playsound(chassis, 'sound/effects/explosion/explosion1.ogg', 50, 1)
 	chassis.resistance_flags &= ~INDESTRUCTIBLE
 	chassis.mecha_flags &= ~(QUIET_STEPS|QUIET_TURNS|CANNOT_INTERACT)
@@ -206,12 +206,12 @@
 			if(crushed_victim in chassis.occupants)
 				continue
 			if(!(crushed_victim in landed_on))
-				to_chat(crushed_victim, span_userdanger("Os tremores de[chassis]A aterrissagem o faz voar!"))
+				to_chat(crushed_victim, span_userdanger("Os tremores de [chassis] A aterrissagem o faz voar!"))
 				var/fly_away_direction = get_dir(chassis, crushed_victim)
 				crushed_victim.throw_at(get_edge_target_turf(crushed_victim, fly_away_direction), 4, 3)
 				crushed_victim.adjust_brute_loss(15)
 				continue
-			to_chat(crushed_victim, span_userdanger("[chassis]Bate em você de cima!"))
+			to_chat(crushed_victim, span_userdanger("[chassis] Bate em você de cima!"))
 			if(crushed_victim.stat != CONSCIOUS)
 				crushed_victim.investigate_log("has been gibbed by a falling Savannah Ivanov mech.", INVESTIGATE_DEATHS)
 				crushed_victim.gib(DROP_ALL_REMAINS)
@@ -261,7 +261,7 @@
 		return
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_MISSILE_STRIKE))
 		var/timeleft = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_MISSILE_STRIKE)
-		to_chat(owner, span_warning("Você precisa esperar.[DisplayTimeText(timeleft, 1)]Antes de disparar outro ataque Ivanov."))
+		to_chat(owner, span_warning("Você precisa esperar.[DisplayTimeText(timeleft, 1)] Antes de disparar outro ataque Ivanov."))
 		return
 	if(aiming_missile)
 		end_missile_targeting()

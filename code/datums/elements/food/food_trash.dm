@@ -80,7 +80,7 @@
 
 	playsound(source, 'sound/effects/chipbagpop.ogg', 100)
 
-	popper.visible_message(span_danger("[popper]Vamos lá.\the [source], estourando o saco!"), span_danger("Você pisa\the [source], estourando o saco!"), span_danger("Você ouve uma rachadura afiada!"), COMBAT_MESSAGE_RANGE)
+	popper.visible_message(span_danger("[popper] Vamos lá.\the [source], estourando o saco!"), span_danger("Você pisa\the [source], estourando o saco!"), span_danger("Você ouve uma rachadura afiada!"), COMBAT_MESSAGE_RANGE)
 	INVOKE_ASYNC(src, PROC_REF(async_generate_trash), source)
 	qdel(source)
 

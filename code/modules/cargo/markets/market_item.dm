@@ -77,7 +77,7 @@
 	if(ismovable(item))
 		var/atom/movable/return_item = item
 		UnregisterSignal(item, COMSIG_QDELETING)
-		item.visible_message(span_notice("[item]Desapareça..."))
+		item.visible_message(span_notice("[item] Desapareça..."))
 		do_sparks(8, FALSE, item)
 		if(isnull(loc))
 			item.moveToNullspace()

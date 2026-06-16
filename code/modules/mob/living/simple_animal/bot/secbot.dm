@@ -185,7 +185,7 @@
 		base_speed += 3
 		addtimer(VARSET_CALLBACK(src, base_speed, base_speed - 3), 6 SECONDS)
 		playsound(src, 'sound/machines/defib/defib_zap.ogg', 50)
-		visible_message(span_warning("[src]Treme e acelera!"))
+		visible_message(span_warning("[src] Treme e acelera!"))
 
 /mob/living/simple_animal/bot/secbot/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -264,7 +264,7 @@
 
 		// Turns an oversight into a feature. Beepsky will now announce when pacifists taunt him over sec comms.
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
-			user.visible_message(span_notice("[user]Gozos.[src], ousado[p_them()]Perseguidor!"), 				span_notice("Você zomba[src], ousado[p_them()]Perseguir você!"), span_hear("Você ouve alguém gritar uma provocação ousada!"), DEFAULT_MESSAGE_RANGE, user)
+			user.visible_message(span_notice("[user] Gozos.[src], ousado [p_them()] Perseguidor!"), 				span_notice("Você zomba [src], ousado [p_them()] Perseguir você!"), span_hear("Você ouve alguém gritar uma provocação ousada!"), DEFAULT_MESSAGE_RANGE, user)
 			speak("Taunted by pacifist scumbag [RUNECHAT_BOLD("[user]")] in [get_area(src)].", radio_channel)
 
 			// Interrupt the attack chain. We've already handled this scenario for pacifists.
@@ -291,10 +291,10 @@
 		oldtarget_name = user.name
 
 	if(bot_type == HONK_BOT)
-		audible_message(span_danger("[src]Dá uma risada do mal!"))
+		audible_message(span_danger("[src] Dá uma risada do mal!"))
 		playsound(src, 'sound/mobs/non-humanoids/honkbot/honkbot_evil_laugh.ogg', 75, TRUE, -1) // evil laughter
 	else
-		audible_message(span_danger("[src]Que estranho!"))
+		audible_message(span_danger("[src] Que estranho!"))
 
 	security_mode_flags &= ~SECBOT_DECLARE_ARRESTS
 	update_appearance()
@@ -335,7 +335,7 @@
 /mob/living/simple_animal/bot/secbot/proc/start_handcuffing(mob/living/carbon/current_target)
 	mode = BOT_ARREST
 	playsound(src, 'sound/items/weapons/cablecuff.ogg', 30, TRUE, -2)
-	current_target.visible_message(span_danger("[src]Está tentando colocar zíperes[current_target]!"),						span_userdanger("[src]Está tentando colocar zíperes em você!"))
+	current_target.visible_message(span_danger("[src] Está tentando colocar zíperes [current_target]!"),						span_userdanger("[src] Está tentando colocar zíperes em você!"))
 	addtimer(CALLBACK(src, PROC_REF(handcuff_target), current_target), 6 SECONDS)
 
 /mob/living/simple_animal/bot/secbot/proc/handcuff_target(mob/living/carbon/current_target)
@@ -373,7 +373,7 @@
 	if(security_mode_flags & SECBOT_DECLARE_ARRESTS)
 		var/area/location = get_area(src)
 		speak("[security_mode_flags & SECBOT_HANDCUFF_TARGET ? "Arresting" : "Detaining"] level [threat] scumbag [RUNECHAT_BOLD("[current_target]")] in [location].", radio_channel)
-	current_target.visible_message(span_danger("[src]ATORDOAMENTOS[current_target]!"),							span_userdanger("[src]Te atordoa!"))
+	current_target.visible_message(span_danger("[src] ATORDOAMENTOS [current_target]!"),							span_userdanger("[src] Te atordoa!"))
 
 	target_lastloc = current_target.loc
 	mode = BOT_PREP_ARREST
@@ -502,7 +502,7 @@
 		target = nearby_carbons
 		oldtarget_name = nearby_carbons.name
 		threat_react(threatlevel)
-		visible_message("<b>[src]</b>Pontos em[nearby_carbons.name]!")
+		visible_message("<b>[src]</b>Pontos em [nearby_carbons.name]!")
 		mode = BOT_HUNT
 		INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 		break

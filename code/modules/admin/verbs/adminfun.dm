@@ -108,7 +108,7 @@ ADMIN_VERB(everyone_random, R_SERVER, "Make Everyone Random", "Make everyone hav
 	message_admins("Admin [key_name_admin(user)] has forced the players to have random appearances.")
 
 	if(notifyplayers == "Yes")
-		to_chat(world, span_adminnotice("Administrador.[user.key]forçou os jogadores a terem identidades completamente aleatórias!"), confidential = TRUE)
+		to_chat(world, span_adminnotice("Administrador.[user.key] forçou os jogadores a terem identidades completamente aleatórias!"), confidential = TRUE)
 
 	to_chat(user, "<i>Lembre-se: você sempre pode desativar a aleatoriedade usando o verbo novamente, assumindo que a rodada ainda não começou.</i>.", confidential = TRUE)
 

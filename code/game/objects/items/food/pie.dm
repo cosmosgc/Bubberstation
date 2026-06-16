@@ -80,7 +80,7 @@
 		victim.Paralyze(2 SECONDS) //splat!
 	if(can_splat_on)
 		victim.adjust_eye_blur(2 SECONDS)
-	victim.visible_message(span_warning("[victim]é creme de[src]!"), span_userdanger("Você foi amassado por[src]!"))
+	victim.visible_message(span_warning("[victim] é creme de [src]!"), span_userdanger("Você foi amassado por [src]!"))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)
 
 /obj/item/food/pie/cream/nostun

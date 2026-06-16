@@ -83,7 +83,7 @@
 	//BUBBER EDIT START - makes nebula vomit not painful to deal with
 	if(prob(vomit_frequency))
 		new /obj/effect/decal/cleanable/vomit/nebula(owner.loc)
-		owner.visible_message(span_notice("Um líquido lindamente brilhante escorre de[owner]e forma uma poça"), span_notice("O líquido brilhante que escorre de você forma uma poça"))
+		owner.visible_message(span_notice("Um líquido lindamente brilhante escorre de [owner] e forma uma poça"), span_notice("O líquido brilhante que escorre de você forma uma poça"))
 	//BUBBER EDIT END
 
 /// Apply the space texture

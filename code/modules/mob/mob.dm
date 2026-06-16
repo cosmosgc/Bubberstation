@@ -606,7 +606,7 @@
 		if(force_examinate_more || (examine_time && (world.time - examine_time < EXAMINE_MORE_WINDOW) && !removes_double_click))
 			var/list/result = examinify.examine_more(src)
 			if(!length(result))
-				result += span_notice("<i>Você examina.[examinify]Mais perto, mas não acho nada interessante...</i>")
+				result += span_notice("<i>Você examina.[examinify] Mais perto, mas não acho nada interessante...</i>")
 			result_combined = boxed_message(jointext(result, "<br>"))
 			result_combined = replacetext(result_combined, "<hr><br>", "<hr>") // BUBBER EDIT ADDITION - bit of a hack here to make sure we don't get linebreaks coming after headers
 
@@ -624,7 +624,7 @@
 		if (length(overrides))
 			result = overrides[max(overrides)]
 		if(removes_double_click)
-			result += span_notice("<i>Você pode.<a href=byond://?src=[REF(src)];run_examinate=[REF(examinify)]>examinar</a> [examinify]Mais perto...</i>")
+			result += span_notice("<i>Você pode.<a href=byond://?src=[REF(src)];run_examinate=[REF(examinify)]>examinar</a> [examinify] Mais perto...</i>")
 		result_combined = (atom_title ? fieldset_block("[atom_title].", jointext(result, "<br>"), "boxed_message") : boxed_message(jointext(result, "<br>")))
 		result_combined = replacetext(result_combined, "<hr><br>", "<hr>") // BUBBER EDIT ADDITION - bit of a hack here to make sure we don't get linebreaks coming after headers, as well as properly adding the examine_block
 
@@ -679,7 +679,7 @@
 		return FALSE
 
 	to_chat(src, span_notice("Você começa a sentir algo..."))
-	visible_message(span_notice(" [name]Começa a sentir por aí\the [examined_thing.name]..."))
+	visible_message(span_notice(" [name] Começa a sentir por aí\the [examined_thing.name]..."))
 
 	/// how long it takes for the blind person to find the thing they're examining
 	var/examine_delay_length = rand(1 SECONDS, 2 SECONDS)
@@ -740,13 +740,13 @@
 	if(examined_mob.can_eye_contact() && SEND_SIGNAL(src, COMSIG_MOB_EYECONTACT, examined_mob, TRUE) != COMSIG_BLOCK_EYECONTACT)
 		var/obj/item/clothing/eye_cover = examined_mob.is_eyes_covered()
 		if (!eye_cover || (!eye_cover.tint && !eye_cover.flash_protect))
-			var/msg = span_smallnotice("Você faz contato visual com[examined_mob].")
+			var/msg = span_smallnotice("Você faz contato visual com [examined_mob].")
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, msg), 0.3 SECONDS) // so the examine signal has time to fire and this will print after
 
 	if(!imagined_eye_contact && can_eye_contact() && !examined_mob.is_blind() && SEND_SIGNAL(examined_mob, COMSIG_MOB_EYECONTACT, src, FALSE) != COMSIG_BLOCK_EYECONTACT)
 		var/obj/item/clothing/eye_cover = is_eyes_covered()
 		if (!eye_cover || (!eye_cover.tint && !eye_cover.flash_protect))
-			var/msg = span_smallnotice("[src]faz contato visual com você.")
+			var/msg = span_smallnotice("[src] faz contato visual com você.")
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), examined_mob, msg), 0.3 SECONDS)
 
 /// Checks if we can make eye contact or someone can make eye contact with us
@@ -913,8 +913,8 @@
 
 	if(death_time < required_delay)
 		if(!check_rights_for(usr.client, R_ADMIN))
-			to_chat(usr, "Você esteve morto por[DisplayTimeText(death_time, 1)].")
-			to_chat(usr, span_warning("Você deve esperar.[DisplayTimeText(required_delay, 1)]Respawn!"))
+			to_chat(usr, "Você esteve morto por [DisplayTimeText(death_time, 1)].")
+			to_chat(usr, span_warning("Você deve esperar.[DisplayTimeText(required_delay, 1)] Respawn!"))
 			return FALSE
 		if(tgui_alert(usr, "Você esteve morto por[DisplayTimeText(death_time, 1)]fora do necessário[DisplayTimeText(required_delay, 1)]Você quer usar suas permissões para contornar isso?", "Respawn", list("Yes", "No")) != "Yes")
 			return FALSE
@@ -963,7 +963,7 @@
 	var/obj/item/held_item = get_active_held_item()
 	if(SEND_SIGNAL(src, COMSIG_MOB_SWAPPING_HANDS, held_item) & COMPONENT_BLOCK_SWAP)
 		if (!silent)
-			to_chat(src, span_warning("Sua outra mão está muito ocupada segurando[held_item]."))
+			to_chat(src, span_warning("Sua outra mão está muito ocupada segurando [held_item]."))
 		return FALSE
 
 	var/result = perform_hand_swap(held_index)
@@ -1089,7 +1089,7 @@
 
 	if(magic_flags & MAGIC_RESISTANCE)
 		visible_message(
-			span_warning("[src]pulsos vermelhos como[ismob(antimagic_source) ? p_they() : antimagic_source]absorve energia mágica!"),
+			span_warning("[src] pulsos vermelhos como [ismob(antimagic_source) ? p_they() : antimagic_source] absorve energia mágica!"),
 			span_userdanger("Uma intensa aura mágica pulsa ao redor[ismob(antimagic_source) ? "you" : antimagic_source]como se dissipa no ar!"),
 		)
 		antimagic_effect = mutable_appearance('icons/effects/effects.dmi', "shield-red", MOB_SHIELD_LAYER)
@@ -1098,7 +1098,7 @@
 
 	else if(magic_flags & MAGIC_RESISTANCE_HOLY)
 		visible_message(
-			span_warning("[src]Começa a brilhar como[ismob(antimagic_source) ? p_they() : antimagic_source]emite um halo de luz!"),
+			span_warning("[src] Começa a brilhar como [ismob(antimagic_source) ? p_they() : antimagic_source] emite um halo de luz!"),
 			span_userdanger("Uma sensação de calor se lava[ismob(antimagic_source) ? "you" : antimagic_source]como raios de luz cercam seu corpo e protegem você!"),
 		)
 		antimagic_effect = mutable_appearance('icons/mob/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
@@ -1107,7 +1107,7 @@
 
 	else if(magic_flags & MAGIC_RESISTANCE_MIND)
 		visible_message(
-			span_warning("[src]A testa brilha como[ismob(antimagic_source) ? p_they() : antimagic_source]Repulsa magia de sua mente!"),
+			span_warning("[src] A testa brilha como [ismob(antimagic_source) ? p_they() : antimagic_source] Repulsa magia de sua mente!"),
 			span_userdanger("Uma sensação de frio respinga[ismob(antimagic_source) ? "you" : antimagic_source]Como sua testa reflete magia usando sua mente!"),
 		)
 		antimagic_effect = mutable_appearance('icons/mob/effects/genetics.dmi', "telekinesishead", MOB_SHIELD_LAYER)
@@ -1364,7 +1364,7 @@
 	var/obj/item/pen/pen = writing_instrument
 
 	if(istype(pen) && pen.requires_gravity)
-		to_chat(src, span_warning("Você tenta escrever, mas\the [writing_instrument]Não funciona em gravidade zero!"))
+		to_chat(src, span_warning("Você tenta escrever, mas\the [writing_instrument] Não funciona em gravidade zero!"))
 		return FALSE
 
 	return TRUE
@@ -1392,7 +1392,7 @@
 /mob/proc/can_read(atom/viewed_atom, reading_check_flags = (READING_CHECK_LITERACY|READING_CHECK_LIGHT), silent = FALSE)
 	if((reading_check_flags & READING_CHECK_LITERACY) && !is_literate())
 		if(!silent)
-			to_chat(src, span_warning("Você tenta ler[viewed_atom]Mas não entendo nada disso."))
+			to_chat(src, span_warning("Você tenta ler [viewed_atom] Mas não entendo nada disso."))
 		return FALSE
 
 	if((reading_check_flags & READING_CHECK_LIGHT) && !has_light_nearby() && !has_nightvision())

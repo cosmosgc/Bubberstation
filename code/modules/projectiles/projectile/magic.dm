@@ -16,7 +16,7 @@
 	if(isliving(target))
 		var/mob/living/victim = target
 		if(victim.can_block_magic(antimagic_flags, antimagic_charge_cost))
-			visible_message(span_warning("[src]Falha no contato com[victim]!"))
+			visible_message(span_warning("[src] Falha no contato com [victim]!"))
 			return PROJECTILE_DELETE_WITHOUT_HITTING
 
 	if(istype(target, /obj/machinery/hydroponics)) // even plants can block antimagic
@@ -24,7 +24,7 @@
 		if(!plant_tray.myseed)
 			return
 		if(plant_tray.myseed.get_gene(/datum/plant_gene/trait/anti_magic))
-			visible_message(span_warning("[src]Falha no contato com[plant_tray]!"))
+			visible_message(span_warning("[src] Falha no contato com [plant_tray]!"))
 			return PROJECTILE_DELETE_WITHOUT_HITTING
 
 /// Straight up kills you, unless you're undead
@@ -373,11 +373,11 @@
 	if(iscarbon(target))
 		if(istype(get_area(target), /area/deathmatch))
 			target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 25) // Roughly 8 hits to kill
-			target.visible_message(span_warning("[target]Agarra sua cabeça em dor!"))
+			target.visible_message(span_warning("[target] Agarra sua cabeça em dor!"))
 			return BULLET_ACT_HIT
 		for(var/x in target.get_traumas())//checks to see if the victim is already going through possession
 			if(istype(x, /datum/brain_trauma/special/imaginary_friend/trapped_owner))
-				target.visible_message(span_warning("[src]desaparece em contato com[target]!"))
+				target.visible_message(span_warning("[src] desaparece em contato com [target]!"))
 				return BULLET_ACT_BLOCK
 		to_chat(target, span_warning("Sua mente foi aberta à possessão!"))
 		possession_test(target)

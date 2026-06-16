@@ -24,13 +24,13 @@
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_CLAW)
 			attacker.emote("spin")
 			defender.visible_message(
-				span_danger("[attacker]'s cauda[atk_verb] [defender]Para o chão!"),
-				span_userdanger("Seu corpo gira como você é[atk_verb]Para o chão por[attacker]A cauda!"),
+				span_danger("[attacker]'s cauda [atk_verb] [defender] Para o chão!"),
+				span_userdanger("Seu corpo gira como você é [atk_verb] Para o chão por [attacker] A cauda!"),
 				span_hear("Você ouve um estalo, seguido de um baque!"),
 				null,
 				attacker,
 			)
-			to_chat(attacker, span_danger("Você prende seu rabo para[defender], [atk_verb]Eles para o chão!"))
+			to_chat(attacker, span_danger("Você prende seu rabo para [defender], [atk_verb] Eles para o chão!"))
 			defender.apply_damage(rand(5, 10), attacker.get_attack_type())
 			playsound(attacker, 'sound/items/weapons/whip.ogg', 50, TRUE, -1)
 			defender.Knockdown(2 SECONDS)
@@ -45,13 +45,13 @@
 			atk_verb = pick("whipped", "flogged", "lashed")
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_CLAW)
 			defender.visible_message(
-				span_danger("[attacker]'s cauda[atk_verb] [defender]Em um movimento rápido!"),
-				span_userdanger("Você sente uma picada afiada como você é[atk_verb]por[attacker]!"),
+				span_danger("[attacker]'s cauda [atk_verb] [defender] Em um movimento rápido!"),
+				span_userdanger("Você sente uma picada afiada como você é [atk_verb] por [attacker]!"),
 				span_hear("Você ouve um barulho agudo!"),
 				null,
 				attacker,
 			)
-			to_chat(attacker, span_danger("Em um movimento, você[atk_verb] [defender]Rápido!"))
+			to_chat(attacker, span_danger("Em um movimento, você [atk_verb] [defender] Rápido!"))
 			defender.apply_damage(rand(10, 15), attacker.get_attack_type())
 			playsound(attacker, 'sound/items/weapons/whip.ogg', 50, TRUE, -1)
 			defender.drop_all_held_items()
@@ -65,13 +65,13 @@
 
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_BITE)
 			defender.visible_message(
-				span_danger("[attacker] [atk_verb]S[defender]violentamente!"),
-				span_userdanger("Você é cruel.[atk_verb]ed por[attacker]!"),
+				span_danger("[attacker] [atk_verb] S [defender] violentamente!"),
+				span_userdanger("Você é cruel.[atk_verb] ed por [attacker]!"),
 				span_hear("Você ouve um roer violento!"),
 				null,
 				attacker,
 			)
-			to_chat(attacker, span_danger("Você.[atk_verb] [defender]Com força cruel!"))
+			to_chat(attacker, span_danger("Você.[atk_verb] [defender] Com força cruel!"))
 			defender.apply_damage(rand(10, 20), damagetype = BRUTE, sharpness = SHARP_POINTY, wound_bonus = 50)
 			playsound(attacker, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
 			if(HAS_TRAIT(attacker, TRAIT_PACIFISM))

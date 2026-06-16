@@ -66,7 +66,7 @@
 	if(alert)
 		. += span_notice("Ligado a um sistema anti-roubo.")
 	if(showpiece)
-		. += span_notice("Tem.\a [showpiece]Dentro.")
+		. += span_notice("Tem.\a [showpiece] Dentro.")
 
 ///Removes the showpiece from the displaycase
 /obj/structure/displaycase/proc/dump()
@@ -137,13 +137,13 @@
 			if(!attacking_item.tool_start_check(user, amount=1))
 				return
 
-			to_chat(user, span_notice("Você começa a reparar[src]..."))
+			to_chat(user, span_notice("Você começa a reparar [src]..."))
 			if(attacking_item.use_tool(src, user, 40, volume=50))
 				atom_integrity = max_integrity
 				update_appearance()
 				to_chat(user, span_notice("Você conserta.[src]."))
 		else
-			to_chat(user, span_warning("[src]Já está em boas condições!"))
+			to_chat(user, span_warning("[src] Já está em boas condições!"))
 		return
 	else if(!alert && attacking_item.tool_behaviour == TOOL_CROWBAR) //Only applies to the lab cage and player made display cases
 		if(broken)
@@ -165,7 +165,7 @@
 		if(glass_sheet.get_amount() < 2)
 			to_chat(user, span_warning("Você precisa de duas folhas de vidro para consertar o caso!"))
 			return
-		to_chat(user, span_notice("Você começa a consertar[src]..."))
+		to_chat(user, span_notice("Você começa a consertar [src]..."))
 		if(do_after(user, 2 SECONDS, target = src))
 			glass_sheet.use(2)
 			broken = FALSE
@@ -181,7 +181,7 @@
 		return TRUE
 	if(user.transferItemToLoc(new_showpiece, src))
 		showpiece = new_showpiece
-		to_chat(user, span_notice("Você colocou[new_showpiece]em exibição."))
+		to_chat(user, span_notice("Você colocou [new_showpiece] em exibição."))
 		update_appearance()
 
 ///Opens and closes the display case
@@ -214,7 +214,7 @@
 			if(!user.is_blind())
 				user.examinate(src)
 			return
-		user.visible_message(span_danger("[user]Chuta um vitrine."), null, null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_danger("[user] Chuta um vitrine."), null, null, COMBAT_MESSAGE_RANGE)
 		log_combat(user, src, "kicks")
 		user.do_attack_animation(src, ATTACK_EFFECT_KICK)
 		take_damage(2)
@@ -258,7 +258,7 @@
 	. = ..()
 	if(!electronics)
 		. += span_notice("Você pode anexar[EXAMINE_HINT("airlock electronics")]para dar-lhe restrições de acesso.")
-	. += span_notice("[src]Pode ser finalizado usando[EXAMINE_HINT("10 glass sheets")], ou se transformou em um Vend-A-Tray usando um[EXAMINE_HINT("card reader")].")
+	. += span_notice("[src] Pode ser finalizado usando[EXAMINE_HINT("10 glass sheets")], ou se transformou em um Vend-A-Tray usando um[EXAMINE_HINT("card reader")].")
 
 /obj/structure/displaycase_chassis/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -283,7 +283,7 @@
 
 	if(istype(attacking_item, /obj/item/stock_parts/card_reader))
 		var/obj/item/stock_parts/card_reader/card_reader = attacking_item
-		balloon_alert(user, "Adicionando[card_reader]...")
+		balloon_alert(user, "Adicionando [card_reader]...")
 		if(do_after(user, 2 SECONDS, target = src))
 			qdel(card_reader)
 			make_final_result(display_type = /obj/structure/displaycase/forsale)
@@ -369,7 +369,7 @@
 /obj/structure/displaycase/trophy/dump()
 	if (showpiece)
 		if(holographic_showpiece)
-			visible_message(span_danger("[showpiece]Estraga e desaparece!"))
+			visible_message(span_danger("[showpiece] Estraga e desaparece!"))
 			do_sparks(number = 1, cardinal_only = FALSE, source = src)
 			QDEL_NULL(showpiece)
 			holographic_showpiece = FALSE
@@ -541,10 +541,10 @@
 				to_chat(usr, span_notice("Não há nada à venda."))
 				return TRUE
 			if(broken)
-				to_chat(usr, span_notice("[src]Parece estar quebrado."))
+				to_chat(usr, span_notice("[src] Parece estar quebrado."))
 				return TRUE
 			if(!payments_acc)
-				to_chat(usr, span_notice("[src]Ainda não foi registrado."))
+				to_chat(usr, span_notice("[src] Ainda não foi registrado."))
 				return TRUE
 			if(!usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return TRUE
@@ -553,7 +553,7 @@
 				return
 			var/datum/bank_account/account = potential_acc.registered_account
 			if(!account)
-				to_chat(usr, span_notice("[potential_acc]Não tem nenhuma conta registrada!"))
+				to_chat(usr, span_notice("[potential_acc] Não tem nenhuma conta registrada!"))
 				return
 			if(!account.has_money(sale_price))
 				to_chat(usr, span_notice("Você não possui os fundos para comprar isso."))
@@ -563,7 +563,7 @@
 				if(payments_acc)
 					payments_acc.adjust_money(sale_price, "Display Case: [capitalize(showpiece.name)]")
 				usr.put_in_hands(showpiece)
-				to_chat(usr, span_notice("Você compra.[showpiece]Para[sale_price] [MONEY_NAME]."))
+				to_chat(usr, span_notice("Você compra.[showpiece] Para [sale_price] [MONEY_NAME]."))
 				playsound(src, 'sound/effects/cashregister.ogg', 40, TRUE)
 				flick("[initial(icon_state)]_vend", src)
 				showpiece = null
@@ -572,7 +572,7 @@
 				return TRUE
 		if("Open")
 			if(!payments_acc)
-				to_chat(usr, span_notice("[src]Ainda não foi registrado."))
+				to_chat(usr, span_notice("[src] Ainda não foi registrado."))
 				return TRUE
 			if(!potential_acc || !potential_acc.registered_account)
 				return
@@ -599,13 +599,13 @@
 			if(!new_price_input || QDELETED(usr) || QDELETED(src))
 				return
 			if(payments_acc != potential_acc.registered_account)
-				to_chat(usr, span_warning("[src]Rejeita seu novo preço."))
+				to_chat(usr, span_warning("[src] Rejeita seu novo preço."))
 				return
 			if(!usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				to_chat(usr, span_warning("Você precisa se aproximar!"))
 				return
 			sale_price = new_price_input
-			to_chat(usr, span_notice("O custo está agora definido para[sale_price]."))
+			to_chat(usr, span_notice("O custo está agora definido para [sale_price]."))
 			SStgui.update_uis(src)
 			return TRUE
 	. = TRUE
@@ -628,7 +628,7 @@
 /obj/structure/displaycase/forsale/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(atom_integrity <= (integrity_failure * max_integrity))
-		to_chat(user, span_notice("Você começa a recalibrar[src]O campo de flutuação..."))
+		to_chat(user, span_notice("Você começa a recalibrar [src] O campo de flutuação..."))
 		if(do_after(user, 2 SECONDS, target = src))
 			broken = FALSE
 			atom_integrity = max_integrity
@@ -641,7 +641,7 @@
 		if(anchored)
 			to_chat(user, span_notice("Você começa a se proteger.[src]..."))
 		else
-			to_chat(user, span_notice("Você começa a proteger[src]..."))
+			to_chat(user, span_notice("Você começa a proteger [src]..."))
 		if(I.use_tool(src, user, 16, volume=50))
 			if(QDELETED(I))
 				return
@@ -652,7 +652,7 @@
 			set_anchored(!anchored)
 			return TRUE
 	else if(!open && !user.combat_mode)
-		to_chat(user, span_notice("[src]deve estar aberto para movê-lo."))
+		to_chat(user, span_notice("[src] deve estar aberto para movê-lo."))
 		return
 
 /obj/structure/displaycase/forsale/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -660,15 +660,15 @@
 	payments_acc = null
 	req_access = list()
 	balloon_alert(user, "Reset do proprietário da conta")
-	to_chat(user, span_warning("[src]O leitor de cartas fala e fumar."))
+	to_chat(user, span_warning("[src] O leitor de cartas fala e fumar."))
 	return TRUE
 
 /obj/structure/displaycase/forsale/examine(mob/user)
 	. = ..()
 	if(showpiece && !open)
-		. += span_notice("[showpiece]Está à venda para[sale_price] [MONEY_NAME].")
+		. += span_notice("[showpiece] Está à venda para [sale_price] [MONEY_NAME].")
 	if(broken)
-		. += span_notice("[src]O gerador de campo parece estar sobrecarregado. Use uma ferramenta para consertar.")
+		. += span_notice("[src] O gerador de campo parece estar sobrecarregado. Use uma ferramenta para consertar.")
 
 /obj/structure/displaycase/forsale/atom_break(damage_flag)
 	. = ..()

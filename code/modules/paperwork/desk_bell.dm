@@ -49,7 +49,7 @@
 	if(!COOLDOWN_FINISHED(src, ring_cooldown) && ring_cooldown_length)
 		return TRUE
 	if(!ring_bell(user))
-		to_chat(user, span_notice("[src]é silencioso. Um idiota quebrou."))
+		to_chat(user, span_notice("[src] é silencioso. Um idiota quebrou."))
 	if(ring_cooldown_length)
 		COOLDOWN_START(src, ring_cooldown, ring_cooldown_length)
 	return TRUE
@@ -98,9 +98,9 @@
 /obj/structure/desk_bell/proc/check_clapper(mob/living/user)
 	if(((times_rang >= 10000) || prob(times_rang/100)) && ring_cooldown_length)
 		if (user)
-			to_chat(user, span_notice("Você ouve.[src]O batedor cai da dobradiça. Bom trabalho, você quebrou."))
+			to_chat(user, span_notice("Você ouve.[src] O batedor cai da dobradiça. Bom trabalho, você quebrou."))
 		else
-			audible_message(span_notice("Você ouve.[src]O batedor cai da dobradiça. Bom trabalho, você quebrou."))
+			audible_message(span_notice("Você ouve.[src] O batedor cai da dobradiça. Bom trabalho, você quebrou."))
 		broken_ringer = TRUE
 
 /// Ring the bell

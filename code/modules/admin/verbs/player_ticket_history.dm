@@ -46,7 +46,7 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 	)
 	if(!ticket_lookup.Execute())
 		qdel(ticket_lookup)
-		to_chat(usr, "Não foi possível consultar o histórico de tickets para[ckey]!")
+		to_chat(usr, "Não foi possível consultar o histórico de tickets para [ckey]!")
 		return
 
 	var/list/lookup_targets = list()
@@ -92,11 +92,11 @@ ADMIN_VERB(player_ticket_history, R_ADMIN, "Player Ticket History", "Allows you 
 	UNTIL(lookup_targets.len == 0)
 
 	if(!length(history_cache))
-		to_chat(usr, span_adminnotice("Nenhum histórico de ingressos encontrado para[ckey]!"))
+		to_chat(usr, span_adminnotice("Nenhum histórico de ingressos encontrado para [ckey]!"))
 		ticket_histories -= ckey
 		return
 
-	to_chat(usr, span_adminnotice("Terminado o histórico de bilhetes de cache para[ckey]!"))
+	to_chat(usr, span_adminnotice("Terminado o histórico de bilhetes de cache para [ckey]!"))
 
 /datum/ticket_history_holder/ui_state(mob/user)
 	return ADMIN_STATE(R_ADMIN)

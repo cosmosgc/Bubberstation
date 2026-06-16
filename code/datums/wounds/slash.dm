@@ -14,11 +14,11 @@
 
 	switch(severity)
 		if(WOUND_SEVERITY_TRIVIAL)
-			return span_danger("Está vazando sangue de um pequeno[LOWER_TEXT(undiagnosed_name || name)].")
+			return span_danger("Está vazando sangue de um pequeno [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_MODERATE)
-			return span_warning("Está vazando sangue de[LOWER_TEXT(undiagnosed_name || name)].")
+			return span_warning("Está vazando sangue de [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_SEVERE)
-			return span_boldwarning("Está vazando sangue de um sério[LOWER_TEXT(undiagnosed_name || name)]!")
+			return span_boldwarning("Está vazando sangue de um sério [LOWER_TEXT(undiagnosed_name || name)]!")
 		if(WOUND_SEVERITY_CRITICAL)
 			return span_boldwarning("Está vazando sangue de um major.[LOWER_TEXT(undiagnosed_name || name)]!!")
 
@@ -185,12 +185,12 @@
 		return FALSE
 
 	if(DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("Você já está interagindo com[victim]!"))
+		to_chat(user, span_warning("Você já está interagindo com [victim]!"))
 		return
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		if(carbon_user.is_mouth_covered())
-			to_chat(user, span_warning("Sua boca está coberta, você não pode lamber.[victim]As feridas!"))
+			to_chat(user, span_warning("Sua boca está coberta, você não pode lamber.[victim] As feridas!"))
 			return
 		if(!carbon_user.get_organ_slot(ORGAN_SLOT_TONGUE))
 			to_chat(user, span_warning("Você não pode lamber feridas sem uma língua!")) // f in chat
@@ -207,13 +207,13 @@
 			continue
 		user.ForceContractDisease(iter_disease)
 
-	user.visible_message(span_notice("[user]Começa a lamber as feridas.[victim]'s[limb.plaintext_zone]."), span_notice("Você começa a lamber as feridas.[victim]'s[limb.plaintext_zone]..."), ignored_mobs=victim)
-	to_chat(victim, span_notice("[user]começa a lamber as feridas em seu[limb.plaintext_zone]."))
+	user.visible_message(span_notice("[user] Começa a lamber as feridas.[victim]'s [limb.plaintext_zone]."), span_notice("Você começa a lamber as feridas.[victim]'s [limb.plaintext_zone]..."), ignored_mobs=victim)
+	to_chat(victim, span_notice("[user] começa a lamber as feridas em seu [limb.plaintext_zone]."))
 	if(!do_after(user, base_treat_time, target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 
-	user.visible_message(span_notice("[user]lambe as feridas.[victim]'s[limb.plaintext_zone]."), span_notice("Você lambe algumas das feridas.[victim]'s[limb.plaintext_zone]"), ignored_mobs=victim)
-	to_chat(victim, span_green("[user]lambe as feridas em seu[limb.plaintext_zone]!"))
+	user.visible_message(span_notice("[user] lambe as feridas.[victim]'s [limb.plaintext_zone]."), span_notice("Você lambe algumas das feridas.[victim]'s [limb.plaintext_zone]"), ignored_mobs=victim)
+	to_chat(victim, span_green("[user] lambe as feridas em seu [limb.plaintext_zone]!"))
 	var/mob/victim_stored = victim
 	adjust_blood_flow(-0.5)
 
@@ -230,7 +230,7 @@
 		if(demotes_to)
 			replace_wound(new demotes_to)
 		else
-			to_chat(victim, span_green("O corte em seu[limb.plaintext_zone]Tem[!limb.can_bleed() ? "healed up" : "stopped bleeding"]!"))
+			to_chat(victim, span_green("O corte em seu [limb.plaintext_zone] Tem[!limb.can_bleed() ? "healed up" : "stopped bleeding"]!"))
 			qdel(src)
 
 /datum/wound/slash/flesh/on_xadone(power)
@@ -244,7 +244,7 @@
 /// If someone's putting a laser gun up to our cut to cauterize it
 /datum/wound/slash/flesh/proc/las_cauterize(obj/item/gun/energy/laser/lasgun, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.25 : 1)
-	user.visible_message(span_warning("[user]Começa mirando[lasgun]diretamente em[victim]'s[limb.plaintext_zone]..."), span_userdanger("Você começa a apontar[lasgun]diretamente em[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]..."))
+	user.visible_message(span_warning("[user] Começa mirando [lasgun] diretamente em [victim]'s [limb.plaintext_zone]..."), span_userdanger("Você começa a apontar [lasgun] diretamente em[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]..."))
 	if(!do_after(user, base_treat_time  * self_penalty_mult, target = victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 	var/damage = lasgun.chambered.loaded_projectile.damage
@@ -253,7 +253,7 @@
 	if(!lasgun.process_fire(victim, victim, TRUE, null, limb.body_zone))
 		return
 	victim.emote("scream")
-	victim.visible_message(span_warning("Os cortes em[victim]'s[limb.plaintext_zone]A cicatriz acabou!"))
+	victim.visible_message(span_warning("Os cortes em [victim]'s [limb.plaintext_zone] A cicatriz acabou!"))
 	adjust_blood_flow(-1 * (damage / (5 * self_penalty_mult))) // 20 / 5 = 4 bloodflow removed, p good
 
 /// If someone is using either a cautery tool or something with heat to cauterize this cut
@@ -265,9 +265,9 @@
 
 	if(HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		treatment_delay *= 0.5
-		user.visible_message(span_danger("[user]Começa a cauterizar[victim]'s[limb.plaintext_zone]com[I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]com[I], mantendo as indicações de holo-imagem em mente ..."))
+		user.visible_message(span_danger("[user] Começa a cauterizar [victim]'s [limb.plaintext_zone] com [I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone] com [I], mantendo as indicações de holo-imagem em mente ..."))
 	else
-		user.visible_message(span_danger("[user]Começa a cauterizar[victim]'s[limb.plaintext_zone]com[I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]com[I]..."))
+		user.visible_message(span_danger("[user] Começa a cauterizar [victim]'s [limb.plaintext_zone] com [I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone] com [I]..."))
 
 	playsound(user, 'sound/items/handling/surgery/cautery1.ogg', 75, TRUE)
 
@@ -277,7 +277,7 @@
 	playsound(user, 'sound/items/handling/surgery/cautery2.ogg', 75, TRUE)
 
 	var/bleeding_wording = (!limb.can_bleed() ? "cuts" : "bleeding")
-	user.visible_message(span_green("[user]Cauteriza alguns dos[bleeding_wording]Vamos.[victim]."), span_green("Você cauteriza alguns dos[bleeding_wording]Vamos.[victim]."))
+	user.visible_message(span_green("[user] Cauteriza alguns dos [bleeding_wording] Vamos.[victim]."), span_green("Você cauteriza alguns dos [bleeding_wording] Vamos.[victim]."))
 	victim.apply_damage(2 + severity, BURN, limb, wound_bonus = CANT_WOUND)
 	if(prob(30))
 		victim.emote("scream")

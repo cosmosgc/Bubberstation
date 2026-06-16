@@ -126,6 +126,6 @@
 	printed.pixel_x = printed.base_pixel_x + rand(-10, 10)
 	printed.pixel_y = printed.base_pixel_y + rand(-10, 10)
 	user.toner -= printcost  //All fun allowed.
-	user.visible_message(span_notice("[user.name]Cuspiu uma fotografia de uma fenda estreita em seu chassis."), span_notice("Você imprime uma fotografia."))
+	user.visible_message(span_notice("[user.name] Cuspiu uma fotografia de uma fenda estreita em seu chassis."), span_notice("Você imprime uma fotografia."))
 	balloon_alert(user, "Fotografia impressiona")
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 50, TRUE, -3)

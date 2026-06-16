@@ -123,9 +123,9 @@
 	. = ..()
 	var/wrench_hint = EXAMINE_HINT("wrench")
 	if(!initialize_directions)
-		. += span_notice("Um tubo pode ser aberto com um[wrench_hint].")
+		. += span_notice("Um tubo pode ser aberto com um [wrench_hint].")
 	else
-		. += span_notice("O tubo pode ser movido ou fechado com um[wrench_hint].")
+		. += span_notice("O tubo pode ser movido ou fechado com um [wrench_hint].")
 	. += span_notice("Um adesivo holográfico diz que sua pressão máxima é:[siunit_pressure(max_pressure, 0)].")
 
 /obj/machinery/atmospherics/components/tank/finalize_material_effects(list/materials)
@@ -537,19 +537,19 @@
 	var/wrenched_hint = EXAMINE_HINT("wrenched")
 
 	if(!anchored)
-		. += span_notice("[src]não foi[wrenched_hint]Para o chão ainda.")
+		. += span_notice("[src] não foi [wrenched_hint] Para o chão ainda.")
 	else
-		. += span_notice("[src]É[wrenched_hint]Para o chão.")
+		. += span_notice("[src] É [wrenched_hint] Para o chão.")
 
 	switch(construction_state)
 		if(TANK_FRAME)
 			var/screwed_hint = EXAMINE_HINT("screwed")
 			var/plating_hint = EXAMINE_HINT("metal plating")
-			. += span_notice("[src]É[screwed_hint]juntos e agora só precisa de alguns[plating_hint].")
+			. += span_notice("[src] É [screwed_hint] juntos e agora só precisa de alguns [plating_hint].")
 		if(TANK_PLATING_UNSECURED)
 			var/crowbar_hint = EXAMINE_HINT("crowbar")
 			var/welder_hint = EXAMINE_HINT("welder")
-			. += span_notice("O chapeamento foi firme ligado e precisa de um[crowbar_hint]Mas ainda precisa ser selada por um[welder_hint].")
+			. += span_notice("O chapeamento foi firme ligado e precisa de um [crowbar_hint] Mas ainda precisa ser selada por um [welder_hint].")
 
 /obj/structure/tank_frame/atom_deconstruct(disassembled)
 	if(disassembled)
@@ -579,11 +579,11 @@
 	if(construction_state != TANK_FRAME)
 		return
 	. = TRUE
-	to_chat(user, span_notice("Você começa a desmontar[src]."))
+	to_chat(user, span_notice("Você começa a desmontar [src]."))
 	if(!tool.use_tool(src, user, 1 SECONDS))
 		return
 	deconstruct(TRUE)
-	to_chat(user, span_notice("[src]Foi desmontado."))
+	to_chat(user, span_notice("[src] Foi desmontado."))
 
 /obj/structure/tank_frame/proc/add_plating(mob/living/user, obj/item/stack/stack)
 	. = FALSE
@@ -595,7 +595,7 @@
 		return
 
 	. = TRUE
-	to_chat(user, span_notice("Você começa a adicionar[stack]Para[src]..."))
+	to_chat(user, span_notice("Você começa a adicionar [stack] Para [src]..."))
 	if(!stack.use_tool(src, user, 3 SECONDS))
 		return
 	if(!stack.use(TANK_PLATING_SHEETS))
@@ -613,13 +613,13 @@
 				amount_more = "just a bit more"
 			else
 				amount_more = "an indeterminate amount more"
-		to_chat(user, span_notice("Você não tem o suficiente.[stack]para adicionar todo o renascimento. Talvez.[amount_more]."))
+		to_chat(user, span_notice("Você não tem o suficiente.[stack] para adicionar todo o renascimento. Talvez.[amount_more]."))
 		return
 
 	material_end_product = stack_mat
 	construction_state = TANK_PLATING_UNSECURED
 	update_appearance(UPDATE_ICON)
-	to_chat(user, span_notice("Termine de acoplar.[stack]Para[src]."))
+	to_chat(user, span_notice("Termine de acoplar.[stack] Para [src]."))
 
 /obj/structure/tank_frame/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
@@ -640,7 +640,7 @@
 		return
 	. = TRUE
 	if(!anchored)
-		to_chat(user, span_notice("Você precisa.<b>Chave Inglesa.</b> [src]para o chão antes de terminar."))
+		to_chat(user, span_notice("Você precisa.<b>Chave Inglesa.</b> [src] para o chão antes de terminar."))
 		return
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
@@ -655,7 +655,7 @@
 	var/list/new_custom_materials = list((material_end_product) = TANK_PLATING_SHEETS * SHEET_MATERIAL_AMOUNT)
 	new_tank.set_custom_materials(new_custom_materials)
 	new_tank.on_construction(user, new_tank.pipe_color, new_tank.piping_layer)
-	to_chat(user, span_notice("[new_tank]foi selado e está pronto para aceitar gases."))
+	to_chat(user, span_notice("[new_tank] foi selado e está pronto para aceitar gases."))
 	qdel(src)
 
 #undef TANK_PLATING_SHEETS

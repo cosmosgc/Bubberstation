@@ -115,10 +115,10 @@
 	. = ..()
 
 	if(!user.combat_mode)
-		user.visible_message(span_notice("[user]Bate na porta.[src]."), 			span_notice("Você bate.[src]."))
+		user.visible_message(span_notice("[user] Bate na porta.[src]."), 			span_notice("Você bate.[src]."))
 		playsound(src, knock_sound, 50, TRUE)
 	else
-		user.visible_message(span_warning("[user]Bache.[src]!"), 			span_warning("Você bate[src]!"))
+		user.visible_message(span_warning("[user] Bache.[src]!"), 			span_warning("Você bate [src]!"))
 		playsound(src, bash_sound, 100, TRUE)
 
 /obj/structure/tram/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
@@ -150,11 +150,11 @@
 
 /obj/structure/tram/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("[src]Já está em boas condições!"))
+		to_chat(user, span_warning("[src] Já está em boas condições!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return FALSE
-	to_chat(user, span_notice("Você começa a reparar[src]..."))
+	to_chat(user, span_notice("Você começa a reparar [src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		atom_integrity = max_integrity
 		to_chat(user, span_notice("Você conserta.[src]."))
@@ -165,7 +165,7 @@
 	switch(state)
 		if(TRAM_SCREWED_TO_FRAME)
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user]começa a desaparafusar o painel do bonde da moldura..."),
+				user.visible_message(span_notice("[user] começa a desaparafusar o painel do bonde da moldura..."),
 				span_notice("Você começa a desaparafusar o painel do bonde da moldura..."))
 				if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 					state = TRAM_IN_FRAME
@@ -177,22 +177,22 @@
 
 		if(TRAM_IN_FRAME)
 			if(tool.tool_behaviour == TOOL_CROWBAR)
-				user.visible_message(span_notice("[user]Cunhas.\the [tool]Na abertura do painel do bonde e começa a bisbilhotar..."),
-				span_notice("Sua cunha.\the [tool]na abertura do painel do bonde no quadro e começar a bisbilhotar..."))
+				user.visible_message(span_notice("[user] Cunhas.\the [tool] Na abertura do painel do bonde e começa a bisbilhotar..."),
+				span_notice("Sua cunha.\the [tool] na abertura do painel do bonde no quadro e começar a bisbilhotar..."))
 				if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 					state = TRAM_OUT_OF_FRAME
 					to_chat(user, span_notice("O painel sai do quadro, expondo um cabeamento que parece que pode ser cortado."))
 					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user]Resegura o Painel do Bonde na Moldura..."),
+				user.visible_message(span_notice("[user] Resegura o Painel do Bonde na Moldura..."),
 				span_notice("Você reassegura o painel do bonde para o quadro..."))
 				state = TRAM_SCREWED_TO_FRAME
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		if(TRAM_OUT_OF_FRAME)
 			if(tool.tool_behaviour == TOOL_WIRECUTTER)
-				user.visible_message(span_notice("[user]Começa a cortar o cabeamento conjuntivo.\the [src]..."),
+				user.visible_message(span_notice("[user] Começa a cortar o cabeamento conjuntivo.\the [src]..."),
 				span_notice("Você começa a cortar o cabeamento conectivo em\the [src]"))
 				if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 					to_chat(user, span_notice("Os painéis saem do caminho expondo o suporte do quadro."))
@@ -392,7 +392,7 @@
 	var/duration = ((4.8 SECONDS) / tool.force) * 2 //In seconds, for now.
 	if(istype(tool, /obj/item/hatchet) || istype(tool, /obj/item/fireaxe))
 		duration /= 4 //Much better with hatchets and axes.
-	to_chat(user, span_notice("Você começa a quebrar[src]."))
+	to_chat(user, span_notice("Você começa a quebrar [src]."))
 	if(!do_after(user, duration * (1 SECONDS), target=src)) //Into deciseconds.
 		return ITEM_INTERACT_BLOCKING
 	deconstruct(disassembled = FALSE)
@@ -497,7 +497,7 @@
 		if(!deployed)
 			// Bring out the blades
 			if(locked)
-				visible_message(span_danger("\the [src]Fecha devoto ao seu servo superaquecimento!"))
+				visible_message(span_danger("\the [src] Fecha devoto ao seu servo superaquecimento!"))
 			do_sparks(3, cardinal_only = FALSE, source = src)
 			deploy_spoiler()
 		return
@@ -540,7 +540,7 @@
 /obj/structure/tram/spoiler/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, span_warning("Você faz curto-circuito.[src]É servo de superaquecimento!"), type = MESSAGE_TYPE_INFO)
+	to_chat(user, span_warning("Você faz curto-circuito.[src] É servo de superaquecimento!"), type = MESSAGE_TYPE_INFO)
 	playsound(src, SFX_SPARKS, 100, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 	do_sparks(5, cardinal_only = FALSE, source = src)
 	obj_flags |= EMAGGED
@@ -565,7 +565,7 @@
 		if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 			return
 		locked = !locked
-		user.visible_message(span_warning("[user] [locked ? "welds \the [src] in place" : "repairs \the [src]"]Com[tool]."), 			span_warning("Você termina de soldar.\the [src], [locked ? "locking it in place." : "it can move freely again!"]"), null, COMBAT_MESSAGE_RANGE)
+		user.visible_message(span_warning("[user] [locked ? "welds \the [src] in place" : "repairs \the [src]"]Com [tool]."), 			span_warning("Você termina de soldar.\the [src], [locked ? "locking it in place." : "it can move freely again!"]"), null, COMBAT_MESSAGE_RANGE)
 
 		if(locked)
 			deploy_spoiler()
@@ -573,7 +573,7 @@
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_notice("Você começa a reparar[src]..."))
+	to_chat(user, span_notice("Você começa a reparar [src]..."))
 	if(!tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		return
 	atom_integrity = max_integrity

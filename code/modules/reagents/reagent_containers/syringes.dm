@@ -52,23 +52,23 @@
 	log_combat(user, target, "attempted to inject", src, addition="which had [contained]")
 
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src]Está vazio! Botão direito para desenhar."))
+		to_chat(user, span_warning("[src] Está vazio! Botão direito para desenhar."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!isliving(target) && !target.is_injectable(user))
-		to_chat(user, span_warning("Você não pode preencher diretamente[target]!"))
+		to_chat(user, span_warning("Você não pode preencher diretamente [target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target.reagents.holder_full())
-		to_chat(user, span_notice("[target]Está cheio."))
+		to_chat(user, span_notice("[target] Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target != user)
 			living_target.visible_message(
-				span_danger("[user]Está tentando injetar.[living_target]!"),
-				span_userdanger("[user]Está tentando injetar em você!"),
+				span_danger("[user] Está tentando injetar.[living_target]!"),
+				span_userdanger("[user] Está tentando injetar em você!"),
 			)
 			if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), living_target, extra_checks = CALLBACK(src, PROC_REF(try_syringe), living_target, user)))
 				return ITEM_INTERACT_BLOCKING
@@ -77,8 +77,8 @@
 			if(living_target.reagents.holder_full())
 				return ITEM_INTERACT_BLOCKING
 			living_target.visible_message(
-				span_danger("[user]Injeções[living_target]Com a seringa!"),
-				span_userdanger("[user]Injeta você com a seringa!"),
+				span_danger("[user] Injeções [living_target] Com a seringa!"),
+				span_userdanger("[user] Injeta você com a seringa!"),
 			)
 
 		if(living_target == user)
@@ -87,7 +87,7 @@
 			log_combat(user, living_target, "injected", src, addition="which had [contained]")
 
 	if(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user, methods = INJECT))
-		to_chat(user, span_notice("Você injeta.[amount_per_transfer_from_this]Unidades da solução. A seringa agora contém[reagents.total_volume]Unidades."))
+		to_chat(user, span_notice("Você injeta.[amount_per_transfer_from_this] Unidades da solução. A seringa agora contém [reagents.total_volume] Unidades."))
 		target.update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -102,7 +102,7 @@
 	SEND_SIGNAL(target, COMSIG_LIVING_TRY_SYRINGE_WITHDRAW, user)
 
 	if(reagents.holder_full())
-		to_chat(user, span_notice("[src]Está cheio."))
+		to_chat(user, span_notice("[src] Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isliving(target))
@@ -110,30 +110,30 @@
 		var/drawn_amount = reagents.maximum_volume - reagents.total_volume
 		if(target != user)
 			target.visible_message(
-				span_danger("[user]está tentando tirar uma amostra de sangue de[target]!"),
-				span_userdanger("[user]Está tentando tirar uma amostra de sangue de você!"),
+				span_danger("[user] está tentando tirar uma amostra de sangue de [target]!"),
+				span_userdanger("[user] Está tentando tirar uma amostra de sangue de você!"),
 			)
 			if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), target, extra_checks = CALLBACK(src, PROC_REF(try_syringe), living_target, user)))
 				return ITEM_INTERACT_BLOCKING
 			if(reagents.holder_full())
 				return ITEM_INTERACT_BLOCKING
 		if(living_target.transfer_blood_to(src, drawn_amount))
-			user.visible_message(span_notice("[user]Tira uma amostra de sangue de[living_target]."))
+			user.visible_message(span_notice("[user] Tira uma amostra de sangue de [living_target]."))
 		else
-			to_chat(user, span_warning("Você é incapaz de tirar sangue de[living_target]!"))
+			to_chat(user, span_warning("Você é incapaz de tirar sangue de [living_target]!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target]Está vazio!"))
+		to_chat(user, span_warning("[target] Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.is_drawable(user))
-		to_chat(user, span_warning("Você não pode remover diretamente reagentes de[target]!"))
+		to_chat(user, span_warning("Você não pode remover diretamente reagentes de [target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user) // transfer from, transfer to - who cares?
 	if(trans)
-		to_chat(user, span_notice("Você enche.[src]com[trans]Unidades da solução. Agora contém[reagents.total_volume]Unidades."))
+		to_chat(user, span_notice("Você enche.[src] com [trans] Unidades da solução. Agora contém [reagents.total_volume] Unidades."))
 	target.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -142,9 +142,9 @@
  */
 /obj/item/reagent_containers/syringe/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item,  discover_after = TRUE)
 	if(source_item)
-		to_chat(victim, span_boldwarning("Tem\a [src]em[source_item]!!"))
+		to_chat(victim, span_boldwarning("Tem\a [src] em [source_item]!!"))
 	else
-		to_chat(victim, span_boldwarning("[src]Injeta você!"))
+		to_chat(victim, span_boldwarning("[src] Injeta você!"))
 
 	victim.apply_damage(5, BRUTE, BODY_ZONE_HEAD)
 	reagents?.trans_to(victim, round(reagents.total_volume*(2/3)), transferred_by = user, methods = INJECT)
@@ -192,7 +192,7 @@
 	SIGNAL_HANDLER
 	if(!reagents.total_volume || !user.reagents || !user.try_inject(user, user.get_active_hand()))
 		return
-	to_chat(user, span_danger("Enquanto você abre[letter]Você se fura em uma seringa!"))
+	to_chat(user, span_danger("Enquanto você abre [letter] Você se fura em uma seringa!"))
 	reagents.trans_to(user, min(reagents.total_volume, 5))
 	forceMove(user.loc)
 	return COMPONENT_TRAITOR_MAIL_HANDLED

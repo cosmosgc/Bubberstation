@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/gateway/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(istype(I, /obj/item/key/gateway) && requires_key)
-		to_chat(user, "<span class='notice'>Você insere[src]Para a chave, abrindo o portal!</span>")
+		to_chat(user, "<span class='notice'>Você insere [src] Para a chave, abrindo o portal!</span>")
 		key_used = TRUE
 		qdel(I)
 		return

@@ -51,15 +51,15 @@
 	var/adjacent = user.Adjacent(target)
 	if((target.is_drainable() && !target.is_refillable()) && adjacent && can_fill_from_container)
 		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target]Está vazio."))
+			to_chat(user, span_warning("[target] Está vazio."))
 			return FALSE
 
 		if(reagents.holder_full())
-			to_chat(user, span_warning("[src]Está cheio."))
+			to_chat(user, span_warning("[src] Está cheio."))
 			return FALSE
 
 		var/trans = target.reagents.trans_to(src, 50, transferred_by = user) //transfer 50u , using the spray's transfer amount would take too long to refill
-		to_chat(user, span_notice("Você enche.\the [src]com[trans]unidades do conteúdo de\the [target]."))
+		to_chat(user, span_notice("Você enche.\the [src] com [trans] unidades do conteúdo de\the [target]."))
 		return FALSE
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
@@ -145,7 +145,7 @@
 	if (tgui_alert(usr, "Tem certeza que quer esvaziar isso?", "Empty Bottle:", list("Yes", "No")) != "Yes")
 		return
 	if(isturf(usr.loc) && src.loc == usr)
-		to_chat(usr, span_notice("Você está vazio.\the [src]Para o chão."))
+		to_chat(usr, span_notice("Você está vazio.\the [src] Para o chão."))
 		reagents.expose(usr.loc)
 		log_combat(usr, usr.loc, "emptied onto", src, addition="which had [reagents.get_reagent_log_string()]")
 		src.reagents.clear_reagents()
@@ -154,7 +154,7 @@
 	SIGNAL_HANDLER
 	if(reagents.total_volume < amount_per_transfer_from_this)
 		return
-	to_chat(user, span_danger("Enquanto você abre[letter], uma névoa se espalha por dentro!"))
+	to_chat(user, span_danger("Enquanto você abre [letter], uma névoa se espalha por dentro!"))
 	spray(user, user)
 	playsound(user, spray_sound, 50, TRUE, -6)
 	forceMove(user.loc)
@@ -191,17 +191,17 @@
 	possible_transfer_amounts = list(2,5)
 
 /obj/item/reagent_containers/spray/cleaner/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]é colocar o bico de\the [src]em[user.p_their()]Boca. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] é colocar o bico de\the [src] em [user.p_their()] Boca. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(do_after(user, 3 SECONDS, user))
 		if(reagents.total_volume >= amount_per_transfer_from_this)//if not empty
-			user.visible_message(span_suicide("[user]Puxa o gatilho!"))
+			user.visible_message(span_suicide("[user] Puxa o gatilho!"))
 			spray(user, user)
 			return BRUTELOSS
 		else
-			user.visible_message(span_suicide("[user]Puxa o gatilho... mas\the [src]Está vazio!"))
+			user.visible_message(span_suicide("[user] Puxa o gatilho... mas\the [src] Está vazio!"))
 			return SHAME
 	else
-		user.visible_message(span_suicide("[user]Decidiu que valia a pena viver."))
+		user.visible_message(span_suicide("[user] Decidiu que valia a pena viver."))
 		return MANUAL_SUICIDE_NONLETHAL
 
 //spray tan
@@ -232,7 +232,7 @@
 	list_reagents = null
 
 /obj/item/reagent_containers/spray/pepper/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a soprar.\the [src]! Parece que...[user.p_theyre()]Ficar chapado!"))
+	user.visible_message(span_suicide("[user] Começa a soprar.\the [src]! Parece que...[user.p_theyre()] Ficar chapado!"))
 	return OXYLOSS
 
 //water flower

@@ -13,7 +13,7 @@
 		return FALSE
 
 	if((target_role.role_flags & ROLE_UNDETECTABLE))
-		host_role.send_message_to_player(span_warning("[target_role.body.real_name]As memórias revelam que eles são[pick(game.all_roles - target_role)]."))
+		host_role.send_message_to_player(span_warning("[target_role.body.real_name] As memórias revelam que eles são [pick(game.all_roles - target_role)]."))
 	else
-		host_role.send_message_to_player(span_warning("[target_role.body.real_name]As memórias revelam que eles são[target_role.name]."))
+		host_role.send_message_to_player(span_warning("[target_role.body.real_name] As memórias revelam que eles são [target_role.name]."))
 	return TRUE

@@ -114,7 +114,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 			))
 
 			if (query_delete_known_alt.warn_execute())
-				var/message = "[key_name(usr)] has deleted the known alt connection between [result[1]] and [result[2]]."
+				var/message = "[key_name(usr)] has deleted the known alt connection between [result [1]] and [result [2]]."
 				message_admins(message)
 				log_admin_private(message)
 

@@ -137,7 +137,7 @@
 		return FALSE
 	if(!ready)
 		if(!silent)
-			to_chat(user, span_warning("\The [src]Ainda não está pronto para eclodir!"))
+			to_chat(user, span_warning("\The [src] Ainda não está pronto para eclodir!"))
 		return FALSE
 	return TRUE
 

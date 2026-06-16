@@ -91,16 +91,16 @@
 /obj/effect/immovablerod/wizard/penetrate(mob/living/penetrated)
 	if(penetrated.can_block_magic())
 		penetrated.visible_message(
-			span_danger("[src]hits[penetrated], mas ele volta, e depois desaparece!"),
-			span_userdanger("[src]bate em você... mas ele volta, e desaparece!"),
+			span_danger("[src] hits [penetrated], mas ele volta, e depois desaparece!"),
+			span_userdanger("[src] bate em você... mas ele volta, e desaparece!"),
 			span_danger("Você ouve um fraco, triste, CLANG.")
 			)
 		stop_travel()
 		return
 
 	penetrated.visible_message(
-		span_danger("[penetrated]é penetrado por uma vara imóvel!"),
-		span_userdanger("O[src]Penetra em você!"),
+		span_danger("[penetrated] é penetrado por uma vara imóvel!"),
+		span_userdanger("O [src] Penetra em você!"),
 		span_danger("Você ouve um clang!"),
 		)
 	penetrated.adjust_brute_loss(70 + damage_bonus)
@@ -111,10 +111,10 @@
 		return ..() // There's no wizard in this rod? It's pretty much a normal rod at this point
 
 	strongman.visible_message(
-		span_boldwarning("[src]Se transformar em[wizard]Como[strongman]Suplexiza-os!"),
-		span_warning("Enquanto você agarra[src], de arrependimento se transforma em[wizard]Como você suplexá-los!")
+		span_boldwarning("[src] Se transformar em [wizard] Como [strongman] Suplexiza-os!"),
+		span_warning("Enquanto você agarra [src], de arrependimento se transforma em [wizard] Como você suplexá-los!")
 		)
-	to_chat(wizard, span_boldwarning("De repente, você está fora da forma de haste como[strongman]De alguma forma consegue te agarrar, te jogar no chão!"))
+	to_chat(wizard, span_boldwarning("De repente, você está fora da forma de haste como [strongman] De alguma forma consegue te agarrar, te jogar no chão!"))
 	stop_travel()
 	wizard.Stun(6 SECONDS)
 	wizard.apply_damage(25, BRUTE)

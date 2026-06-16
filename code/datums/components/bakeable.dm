@@ -114,14 +114,14 @@
 
 	if(positive_result)
 		used_oven.visible_message(
-			span_notice("Você cheira algo grande vindo de[used_oven]."),
+			span_notice("Você cheira algo grande vindo de [used_oven]."),
 			blind_message = span_notice("Você cheira algo ótimo..."),
 			ignored_mobs = asomnia_hadders,
 		)
 		BLACKBOX_LOG_FOOD_MADE(baked_result.type)
 	else
 		used_oven.visible_message(
-			span_warning("Você sente um cheiro queimado vindo de[used_oven]."),
+			span_warning("Você sente um cheiro queimado vindo de [used_oven]."),
 			blind_message = span_warning("Você sente cheiro de queimado..."),
 			ignored_mobs = asomnia_hadders,
 		)
@@ -143,8 +143,8 @@
 
 	if(positive_result)
 		if(current_bake_time <= required_bake_time * 0.75)
-			examine_list += span_notice("[parent]Provavelmente precisa ser cozido um pouco mais!")
+			examine_list += span_notice("[parent] Provavelmente precisa ser cozido um pouco mais!")
 		else if(current_bake_time <= required_bake_time)
-			examine_list += span_notice("[parent]Parece estar quase acabando de cozinhar!")
+			examine_list += span_notice("[parent] Parece estar quase acabando de cozinhar!")
 	else
-		examine_list += span_danger("[parent]Provavelmente não deveria ser colocado no forno.")
+		examine_list += span_danger("[parent] Provavelmente não deveria ser colocado no forno.")

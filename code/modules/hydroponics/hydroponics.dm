@@ -284,7 +284,7 @@
 			adjust_pestlevel(-0.5 * seconds_per_tick)
 		else
 			set_self_sustaining(FALSE)
-			visible_message(span_warning("[name]A funcionalidade de crescimento automático desliga!"))
+			visible_message(span_warning("[name] A funcionalidade de crescimento automático desliga!"))
 
 	if(isturf(loc))
 		var/turf/currentTurf = loc
@@ -683,7 +683,7 @@
 	set_plant_health(myseed.endurance, update_icon = FALSE)
 	set_weedlevel(0, update_icon = FALSE) // Reset
 	set_pestlevel(0) // Reset
-	visible_message(span_warning("O[oldPlantName]é ultrapassado por alguns[myseed.plantname]!"))
+	visible_message(span_warning("O [oldPlantName] é ultrapassado por alguns [myseed.plantname]!"))
 
 /// Mutates the stats of the current seed
 /obj/machinery/hydroponics/proc/mutate(lifemut = 2, endmut = 5, productmut = 1, yieldmut = 2, potmut = 25, wrmut = 2, wcmut = 5, traitmut = 0, stabmut = 3) // Mutates the current seed
@@ -741,7 +741,7 @@
 	lastcycle = world.time
 	set_weedlevel(0, update_icon = FALSE)
 
-	var/message = span_warning("[oldPlantName]de repente se transforma em[myseed.plantname]!")
+	var/message = span_warning("[oldPlantName] de repente se transforma em [myseed.plantname]!")
 	addtimer(CALLBACK(src, PROC_REF(after_mutation), message), 0.5 SECONDS)
 
 /// Transform the plant into a completely random species
@@ -758,13 +758,13 @@
 	lastcycle = world.time
 	set_weedlevel(0, update_icon = FALSE)
 
-	var/message = span_warning("[oldPlantName]De repente polimorfos em[myseed.plantname]!")
+	var/message = span_warning("[oldPlantName] De repente polimorfos em [myseed.plantname]!")
 	addtimer(CALLBACK(src, PROC_REF(after_mutation), message), 0.5 SECONDS)
 
 /// Mutates the weeds in the tray into a random weed plant (which can overtake existing plants)
 /obj/machinery/hydroponics/proc/mutateweed()
 	if(weedlevel <= 5)
-		visible_message(span_warning("As poucas ervas daninhas dentro[src]Parece reagir, mas só por um momento..."))
+		visible_message(span_warning("As poucas ervas daninhas dentro [src] Parece reagir, mas só por um momento..."))
 		return
 
 	set_seed(null)
@@ -775,7 +775,7 @@
 	lastcycle = world.time
 	set_weedlevel(0, update_icon = FALSE) // Reset
 
-	var/message = span_warning("As ervas daninhas mutantes em[src]desovar alguns[myseed.plantname]!")
+	var/message = span_warning("As ervas daninhas mutantes em [src] desovar alguns [myseed.plantname]!")
 	addtimer(CALLBACK(src, PROC_REF(after_mutation), message), 0.5 SECONDS)
 
 /**
@@ -839,7 +839,7 @@
  */
 /obj/machinery/hydroponics/proc/mutatepest()
 	if(pestlevel <= 5)
-		visible_message(span_warning("As pragas parecem se comportar estranhamente em[src], mas rapidamente se acalmar ..."))
+		visible_message(span_warning("As pragas parecem se comportar estranhamente em [src], mas rapidamente se acalmar ..."))
 		return
 
 	var/mob/user = lastuser?.resolve()
@@ -861,11 +861,11 @@
 		var/obj/item/reagent_containers/reagent_source = O
 
 		if(!reagent_source.reagents.total_volume)
-			to_chat(user, span_warning("[reagent_source]Está vazio!"))
+			to_chat(user, span_warning("[reagent_source] Está vazio!"))
 			return 1
 
 		if(reagents.total_volume >= reagents.maximum_volume && !reagent_source.reagents.has_reagent(/datum/reagent/water, 1))
-			to_chat(user, span_notice("[src]Está cheio."))
+			to_chat(user, span_notice("[src] Está cheio."))
 			return
 
 		var/list/trays = list(src)//makes the list just this in cases of syringes and compost etc
@@ -875,7 +875,7 @@
 
 		if(IS_EDIBLE(reagent_source))
 			if(HAS_TRAIT(reagent_source, TRAIT_UNCOMPOSTABLE))
-				to_chat(user, "[reagent_source]Não pode ser composta em seu estado atual.")
+				to_chat(user, "[reagent_source] Não pode ser composta em seu estado atual.")
 				return
 			visi_msg="[user] composts [reagent_source], spreading it through [target]"
 			transfer_amount = reagent_source.reagents.total_volume
@@ -929,7 +929,7 @@
 		return
 	else if(istype(O, /obj/item/cultivator))
 		if(weedlevel > 0)
-			user.visible_message(span_notice("[user]Desenraiza as ervas daninhas."), span_notice("Você remove as ervas daninhas de[src]."))
+			user.visible_message(span_notice("[user] Desenraiza as ervas daninhas."), span_notice("Você remove as ervas daninhas de [src]."))
 			set_weedlevel(0)
 			return
 		else
@@ -947,7 +947,7 @@
 			to_chat(user, span_notice("Você não pode pegar mais cortes desta planta!"))
 			return
 		else
-			user.visible_message(span_notice("[user]Enxertos fora de um membro de[src]."), span_notice("Você cuidadosamente enxertar uma parte de[src]."))
+			user.visible_message(span_notice("[user] Enxertos fora de um membro de [src]."), span_notice("Você cuidadosamente enxertar uma parte de [src]."))
 			var/obj/item/graft/snip = myseed.create_graft()
 			if(!snip)
 				return // The plant did not return a graft.
@@ -989,7 +989,7 @@
 					break
 		myseed.reagents_from_genes()
 		adjust_plant_health(-15)
-		to_chat(user, span_notice("Você cuidadosamente corta os genes fora do[myseed.plantname]Deixando a planta mais fraca."))
+		to_chat(user, span_notice("Você cuidadosamente corta os genes fora do [myseed.plantname] Deixando a planta mais fraca."))
 		update_appearance()
 		return
 
@@ -1004,9 +1004,9 @@
 			return
 		var/datum/plant_gene/grafted_trait = myseed.apply_graft(snip)
 		if(grafted_trait)
-			to_chat(user, span_notice("Você cuidadosamente integrar o membro da planta enxertada em[myseed.plantname], concedendo[grafted_trait.get_name()]."))
+			to_chat(user, span_notice("Você cuidadosamente integrar o membro da planta enxertada em [myseed.plantname], concedendo [grafted_trait.get_name()]."))
 		else
-			to_chat(user, span_notice("Você tenta integrar o membro da planta enxertada em[myseed.plantname], mas rejeita o traço do[snip]."))
+			to_chat(user, span_notice("Você tenta integrar o membro da planta enxertada em [myseed.plantname], mas rejeita o traço do [snip]."))
 		qdel(snip)
 		return
 
@@ -1016,33 +1016,33 @@
 			for(var/obj/item/food/grown/G in harvest)
 				O.atom_storage?.attempt_insert(G, user, TRUE)
 		else if(plant_status == HYDROTRAY_PLANT_DEAD)
-			to_chat(user, span_notice("Você remove a planta morta de[src]."))
+			to_chat(user, span_notice("Você remove a planta morta de [src]."))
 			set_seed(null)
 		return
 
 	else if(O.tool_behaviour == TOOL_SHOVEL)
 		if(!myseed && !weedlevel)
-			to_chat(user, span_warning("[src]não tem plantas ou ervas daninhas!"))
+			to_chat(user, span_warning("[src] não tem plantas ou ervas daninhas!"))
 			return
-		user.visible_message(span_notice("[user]Começa a cavar[src]As plantas..."),
-			span_notice("Você começa a cavar[src]As plantas..."))
+		user.visible_message(span_notice("[user] Começa a cavar [src] As plantas..."),
+			span_notice("Você começa a cavar [src] As plantas..."))
 		if(O.use_tool(src, user, 50, volume=50) || (!myseed && !weedlevel))
-			user.visible_message(span_notice("[user]escava as plantas dentro[src]!"), span_notice("Você desenterra tudo[src]As plantas!"))
+			user.visible_message(span_notice("[user] escava as plantas dentro [src]!"), span_notice("Você desenterra tudo [src] As plantas!"))
 			remove_plant()
 			return
 	else if(istype(O, /obj/item/gun/energy/floragun))
 		var/obj/item/gun/energy/floragun/flowergun = O
 		if(flowergun.cell.charge < flowergun.cell.maxcharge)
-			to_chat(user, span_notice("[flowergun]Deve ser totalmente carregado para bloquear uma mutação!"))
+			to_chat(user, span_notice("[flowergun] Deve ser totalmente carregado para bloquear uma mutação!"))
 			return
 		if(!myseed)
-			to_chat(user, span_warning("[src]Está vazio!"))
+			to_chat(user, span_warning("[src] Está vazio!"))
 			return
 		if(myseed.endurance <= FLORA_GUN_MIN_ENDURANCE)
-			to_chat(user, span_warning("[myseed.plantname]Não é resistente o suficiente para sequenciar sua mutação!"))
+			to_chat(user, span_warning("[myseed.plantname] Não é resistente o suficiente para sequenciar sua mutação!"))
 			return
 		if(!LAZYLEN(myseed.mutatelist))
-			to_chat(user, span_warning("[myseed.plantname]Não tem mais nada para se transformar!"))
+			to_chat(user, span_warning("[myseed.plantname] Não tem mais nada para se transformar!"))
 			return
 		else
 			var/list/fresh_mut_list = list()
@@ -1060,7 +1060,7 @@
 			myseed.set_endurance(myseed.endurance/2)
 			flowergun.cell.use(flowergun.cell.charge)
 			flowergun.update_appearance()
-			to_chat(user, span_notice("[myseed.plantname]A mutação foi definida para[locked_mutation], esgotando[flowergun]O celular!"))
+			to_chat(user, span_notice("[myseed.plantname] A mutação foi definida para [locked_mutation], esgotando [flowergun] O celular!"))
 			return
 	else
 		return ..()
@@ -1087,7 +1087,7 @@
 		return myseed.harvest(user)
 
 	else if(plant_status == HYDROTRAY_PLANT_DEAD)
-		to_chat(user, span_notice("Você remove a planta morta de[src]."))
+		to_chat(user, span_notice("Você remove a planta morta de [src]."))
 		set_seed(null)
 	else
 		if(user)
@@ -1100,12 +1100,12 @@
 	update_use_power(ACTIVE_POWER_USE)
 
 	if(!powered())
-		to_chat(user, span_warning("[name]não tem poder."))
+		to_chat(user, span_warning("[name] não tem poder."))
 		update_use_power(NO_POWER_USE)
 		return CLICK_ACTION_BLOCKING
 
 	set_self_sustaining(!self_sustaining)
-	to_chat(user, span_notice("Você.[self_sustaining ? "activate" : "deactivated"] [src]A função de crescimento automático[self_sustaining ? ", maintaining the tray's health while using high amounts of power" : ""]."))
+	to_chat(user, span_notice("Você.[self_sustaining ? "activate" : "deactivated"] [src] A função de crescimento automático[self_sustaining ? ", maintaining the tray's health while using high amounts of power" : ""]."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/hydroponics/attack_hand_secondary(mob/user, list/modifiers)
@@ -1125,7 +1125,7 @@
 	reagents.clear_reagents()
 	for(var/obj/item/mob_holder/snail/possible_snail in contents)
 		possible_snail.forceMove(drop_location())
-	to_chat(user, span_warning("Você está vazio.[src]É o tanque de nutrientes."))
+	to_chat(user, span_warning("Você está vazio.[src] É o tanque de nutrientes."))
 
 /**
  * Update Tray Proc
@@ -1137,11 +1137,11 @@
 /obj/machinery/hydroponics/proc/update_tray(mob/user, product_count)
 	lastproduce = age
 	if(istype(myseed, /obj/item/seeds/replicapod))
-		to_chat(user, span_notice("Você colhe da[myseed.plantname]."))
+		to_chat(user, span_notice("Você colhe da [myseed.plantname]."))
 	else if(product_count <= 0)
 		to_chat(user, span_warning("Você não consegue colher nada útil!"))
 	else
-		to_chat(user, span_notice("Você colhe.[product_count]itens do[myseed.plantname]."))
+		to_chat(user, span_notice("Você colhe.[product_count] itens do [myseed.plantname]."))
 	if(!myseed.get_gene(/datum/plant_gene/trait/repeated_harvest))
 		set_seed(null)
 		if(self_sustaining) //No reason to pay for an empty tray.
@@ -1166,7 +1166,7 @@
 	if(!istype(young_plant))
 		return
 	if(myseed)
-		to_chat(user, span_warning("[src]Já tem uma planta crescendo nela!"))
+		to_chat(user, span_warning("[src] Já tem uma planta crescendo nela!"))
 		return
 	if(istype(young_plant, /obj/item/seeds/kudzu))
 		investigate_log("had Kudzu planted in it by [key_name(user)] at [AREACOORD(src)].", INVESTIGATE_BOTANY)

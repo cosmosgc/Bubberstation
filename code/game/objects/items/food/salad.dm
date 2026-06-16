@@ -233,7 +233,7 @@
 	examine_list += "Dentro, você pode ver:"
 	examine_list += soups_found
 	if(unknown_volume > 0)
-		examine_list += "&bull;[round(unknown_volume, 0.01)]unidades de reagentes desconhecidos"
+		examine_list += "&bull;[round(unknown_volume, 0.01)] unidades de reagentes desconhecidos"
 
 	return STOP_GENERIC_REAGENT_EXAMINE
 

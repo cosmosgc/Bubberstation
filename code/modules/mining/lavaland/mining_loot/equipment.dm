@@ -89,7 +89,7 @@
 /obj/item/warp_cube/attack_self(mob/user)
 	var/turf/current_location = get_turf(user)
 	if(!linked || isnull(get_turf(linked)) || !check_teleport_valid(src, current_location))
-		to_chat(user, span_warning("[src]Estraga inútilmente."))
+		to_chat(user, span_warning("[src] Estraga inútilmente."))
 		return
 	if(teleporting)
 		return
@@ -161,7 +161,7 @@
 		cooldown = world.time + 600
 		new /obj/effect/immortality_talisman(get_turf(user), user)
 	else
-		to_chat(user, span_warning("[src]Ainda não está pronto!"))
+		to_chat(user, span_warning("[src] Ainda não está pronto!"))
 
 /obj/effect/immortality_talisman
 	name = "hole in reality"
@@ -192,12 +192,12 @@
 
 	user.remove_traits(list(TRAIT_GODMODE, TRAIT_NO_TRANSFORM), REF(src))
 	user.forceMove(get_turf(src))
-	user.visible_message(span_danger("[user]Volta para a realidade!"))
+	user.visible_message(span_danger("[user] Volta para a realidade!"))
 
 /obj/effect/immortality_talisman/proc/vanish(mob/user)
-	user.visible_message(span_danger("[user] [vanish_description], deixando um buraco[user.p_their()]Lugar!"))
+	user.visible_message(span_danger("[user] [vanish_description], deixando um buraco [user.p_their()] Lugar!"))
 
-	desc = "Tem um formato horrível como[user.name]."
+	desc = "Tem um formato horrível como [user.name]."
 	setDir(user.dir)
 
 	user.forceMove(src)

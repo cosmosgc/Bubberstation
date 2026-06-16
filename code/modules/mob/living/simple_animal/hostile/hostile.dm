@@ -443,7 +443,7 @@
 	if(CheckFriendlyFire(A))
 		return
 	if(!(simple_mob_flags & SILENCE_RANGED_MESSAGE))
-		visible_message(span_danger("<b>[src]</b> [ranged_message]Em[A]!"))
+		visible_message(span_danger("<b>[src]</b> [ranged_message] Em [A]!"))
 
 
 	if(rapid > 1)

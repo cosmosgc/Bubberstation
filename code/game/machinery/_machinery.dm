@@ -741,8 +741,8 @@
 			hit_with_what_noun += plural_s(hit_with_what_noun) // hit with "their hands"
 
 	user.visible_message(
-		span_danger("[user]Esmaga.[src]com[user.p_their()] [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
-		span_danger("Você quebra[src]com o seu[hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
+		span_danger("[user] Esmaga.[src] com [user.p_their()] [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
+		span_danger("Você quebra [src] com o seu [hit_with_what_noun][damage ? "." : ", [no_damage_feedback]!"]"),
 		span_hear("Você ouve...[damage ? "smash" : "thud"]."),
 		COMBAT_MESSAGE_RANGE,
 	)
@@ -881,7 +881,7 @@
 		return deconstruct_on_fail ? default_deconstruction_crowbar(user, crowbar) : ITEM_INTERACT_BLOCKING
 
 	crowbar.play_tool_sound(src, 50)
-	user.visible_message(span_notice("[user]Piries abertas.[src]."), span_notice("Você abre[src]."))
+	user.visible_message(span_notice("[user] Piries abertas.[src]."), span_notice("Você abre [src]."))
 	open_machine(density_to_set = open_density)
 	if (close_after_pry) //Should it immediately close after prying? (If not, it must be closed elsewhere)
 		close_machine(density_to_set = closed_density)
@@ -1156,7 +1156,7 @@
 					physical_part = primary_part_base
 
 				replacer_tool.atom_storage.attempt_insert(physical_part, user, TRUE, force = STORAGE_SOFT_LOCKED)
-				to_chat(user, span_notice("[capitalize(physical_part.name)]substituído por[secondary_part_name]."))
+				to_chat(user, span_notice("[capitalize(physical_part.name)] substituído por [secondary_part_name]."))
 				shouldplaysound = TRUE //Only play the sound when parts are actually replaced!
 				break
 
@@ -1218,7 +1218,7 @@
 			html_icon = part.icon
 			icon_state = part.icon_state
 		//merge icon & name into text
-		text += span_notice("[icon2html(html_icon, user, icon_state)] [part_count[component_part]] [part_name]\s.")
+		text += span_notice("[icon2html(html_icon, user, icon_state)] [part_count [component_part]] [part_name]\s.")
 
 	return text
 

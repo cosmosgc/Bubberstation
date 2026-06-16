@@ -26,7 +26,7 @@
 
 	ADD_TRAIT(caster, TRAIT_IMMOBILIZED, MEGAFAUNA_TRAIT)
 	caster.Shake(1.4, 0.8, 0.3 SECONDS)
-	caster.visible_message(span_danger("[caster]Treme violentamente!"))
+	caster.visible_message(span_danger("[caster] Treme violentamente!"))
 
 	for(var/turf/open/target in RANGE_TURFS(2, caster) - caster.loc)
 		new /obj/effect/temp_visual/telegraphing/exclamation/animated(target, 1.5 SECONDS)
@@ -63,7 +63,7 @@
 	animate(decoy, alpha = 0, color = COLOR_RED, transform = matrix()*2, time = 3)
 
 /datum/action/cooldown/mob_cooldown/charge/the_thing/hit_target(atom/movable/source, mob/living/target, damage_dealt)
-	target.visible_message(span_danger("[source]Pulmões para dentro[target]!"), span_userdanger("[source]te derruba no chão, te corta no processo!"))
+	target.visible_message(span_danger("[source] Pulmões para dentro [target]!"), span_userdanger("[source] te derruba no chão, te corta no processo!"))
 	target.apply_damage(damage_dealt, BRUTE)
 	target.Knockdown(0.5 SECONDS)
 	playsound(get_turf(target), 'sound/items/weapons/rapierhit.ogg', 100, TRUE)
@@ -119,14 +119,14 @@
 		return
 	. = ..()
 	ADD_TRAIT(caster, TRAIT_IMMOBILIZED, MEGAFAUNA_TRAIT)
-	caster.visible_message(span_danger("[caster][caster.p_s()]A carne começa a ficar cheia de buracos!"))
+	caster.visible_message(span_danger("[caster][caster.p_s()] A carne começa a ficar cheia de buracos!"))
 	for(var/turf/open/target in RANGE_TURFS(2, caster))
 		new /obj/effect/temp_visual/telegraphing/exclamation(target, 1.2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(shriek), owner), 1.2 SECONDS)
 
 /datum/action/cooldown/mob_cooldown/the_thing/shriek/proc/shriek(atom/caster)
 	REMOVE_TRAIT(caster, TRAIT_IMMOBILIZED, MEGAFAUNA_TRAIT)
-	caster.visible_message(span_danger("[caster]Gritos! A frequência do som faz sua pele doer e você sente como se seu cérebro estivesse pegando fogo!"))
+	caster.visible_message(span_danger("[caster] Gritos! A frequência do som faz sua pele doer e você sente como se seu cérebro estivesse pegando fogo!"))
 	SEND_SOUND(caster, sound('sound/effects/screech.ogg'))
 	for(var/mob/living/target in range(2, caster))
 		if(target == owner)
@@ -157,7 +157,7 @@
 	. = ..()
 	targetted_turf = get_turf(targetted_turf)
 	owner.Shake(1.4, 0.8, 0.3 SECONDS)
-	owner.visible_message(span_danger("[owner]Treme violentamente!"))
+	owner.visible_message(span_danger("[owner] Treme violentamente!"))
 	var/list/turf/target_turfs = find_turfs(targetted_turf)
 	for(var/turf/open/target in target_turfs)
 		new /obj/effect/temp_visual/telegraphing/exclamation/animated(target, 1.5 SECONDS)
@@ -195,7 +195,7 @@
 		return
 	. = ..()
 	var/turf/owner_turf = get_turf(owner)
-	owner.visible_message(span_danger("[owner]Cuspido ácido!"))
+	owner.visible_message(span_danger("[owner] Cuspido ácido!"))
 	var/list/potential = RANGE_TURFS(4, owner_turf)
 
 	for(var/i = 1 to rand(2,4))

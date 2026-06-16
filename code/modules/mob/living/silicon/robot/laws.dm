@@ -22,7 +22,7 @@
 	if (shell) //AI shell
 		to_chat(src, span_bold("Lembre-se, você é uma IA controlando remotamente sua concha, outros IA podem ser ignorados."))
 	else if (connected_ai)
-		to_chat(src, span_bold("Lembre-se,[connected_ai.name]É seu mestre, outros IA podem ser ignorados."))
+		to_chat(src, span_bold("Lembre-se,[connected_ai.name] É seu mestre, outros IA podem ser ignorados."))
 	else if (emagged)
 		to_chat(src, span_bold("Lembre-se, você não é obrigado a ouvir a IA."))
 	else

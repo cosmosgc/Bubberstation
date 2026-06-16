@@ -110,12 +110,12 @@ ADMIN_VERB(cmd_show_at_markers, R_DEBUG, "Show roundstart AT markers", "Places a
 		count++
 
 	if(count)
-		to_chat(user, "[count]Marcadores AT removidos.", confidential = TRUE)
+		to_chat(user, "[count] Marcadores AT removidos.", confidential = TRUE)
 	else
 		for(var/t in GLOB.active_turfs_startlist)
 			new /obj/effect/abstract/marker/at(t)
 			count++
-		to_chat(user, "[count]Marcadores AT colocados.", confidential = TRUE)
+		to_chat(user, "[count] Marcadores AT colocados.", confidential = TRUE)
 
 	BLACKBOX_LOG_ADMIN_VERB("Show Roundstart Active Turf Markers")
 
@@ -163,7 +163,7 @@ ADMIN_VERB(count_objects_on_z_level, R_DEBUG, "Count Objects On Z-Level", "Count
 					count++
 					atom_list += A
 
-	to_chat(world, "Há[count]objetos do tipo[type_path]em nível z[num_level]", confidential = TRUE)
+	to_chat(world, "Há [count] objetos do tipo [type_path] em nível z [num_level]", confidential = TRUE)
 	BLACKBOX_LOG_ADMIN_VERB("Count Objects Zlevel")
 
 ADMIN_VERB_VISIBILITY(count_objects_all, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
@@ -181,7 +181,7 @@ ADMIN_VERB(count_objects_all, R_DEBUG, "Count Objects All", "Counts the number o
 		if(istype(A,type_path))
 			count++
 
-	to_chat(world, "Há[count]objetos do tipo[type_path]no mundo do jogo", confidential = TRUE)
+	to_chat(world, "Há [count] objetos do tipo [type_path] no mundo do jogo", confidential = TRUE)
 	BLACKBOX_LOG_ADMIN_VERB("Count Objects All")
 
 GLOBAL_VAR_INIT(say_disabled, FALSE)

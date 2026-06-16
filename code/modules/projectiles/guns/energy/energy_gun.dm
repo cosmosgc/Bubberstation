@@ -115,7 +115,7 @@
 ///Handles clearing the linked_beacon reference in the event that it is deleted.
 /obj/item/gun/energy/e_gun/dragnet/proc/handle_beacon_disable(datum/source)
 	SIGNAL_HANDLER
-	visible_message(span_warning("Uma luz sobre o[src]flashes, indicando que não está mais ligado com um farol DRAGnet!"))
+	visible_message(span_warning("Uma luz sobre o [src] flashes, indicando que não está mais ligado com um farol DRAGnet!"))
 	linked_beacon = null
 
 /obj/item/gun/energy/e_gun/turret
@@ -170,12 +170,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.adjust_fire_loss(3)
-				to_chat(M, span_userdanger("Sua[name]Parece mais quente."))
+				to_chat(M, span_userdanger("Sua [name] Parece mais quente."))
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.adjust_fire_loss(10)
 				reactor_overloaded = TRUE
-				to_chat(M, span_userdanger("Sua[name]Sobrecarga do reator!"))
+				to_chat(M, span_userdanger("Sua [name] Sobrecarga do reator!"))
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	. = ..()

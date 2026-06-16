@@ -70,7 +70,7 @@
 		if(!light.on)
 			continue
 
-		light.visible_message(span_boldwarning("[light]de repente se acende e começa a brilhar!"))
+		light.visible_message(span_boldwarning("[light] de repente se acende e começa a brilhar!"))
 		do_sparks(4, FALSE, light)
 		new /obj/effect/temp_visual/revenant(get_turf(light))
 		addtimer(CALLBACK(src, PROC_REF(overload_shock), light, caster), 2 SECONDS)
@@ -213,7 +213,7 @@
 		if(mob == caster)
 			continue
 		if(mob.can_block_magic(antimagic_flags))
-			to_chat(caster, span_warning("O feitiço não teve efeito sobre[mob]!"))
+			to_chat(caster, span_warning("O feitiço não teve efeito sobre [mob]!"))
 			continue
 		new /obj/effect/temp_visual/revenant(mob.loc)
 		if(iscarbon(mob))
@@ -289,7 +289,7 @@
 
 	new /obj/effect/temp_visual/revenant(get_turf(victim))
 
-	victim.AddComponent(/datum/component/haunted_item, 		haunt_color = "#823abb", 		haunt_duration = rand(1 MINUTES, 3 MINUTES), 		aggro_radius = aoe_radius - 1, 		spawn_message = span_revenwarning("[victim]Começa a flutuar e girar no ar enquanto brilha um roxo horrível!"), 		despawn_message = span_revenwarning("[victim]Cai de volta ao chão, parada mais uma vez."), 	)
+	victim.AddComponent(/datum/component/haunted_item, 		haunt_color = "#823abb", 		haunt_duration = rand(1 MINUTES, 3 MINUTES), 		aggro_radius = aoe_radius - 1, 		spawn_message = span_revenwarning("[victim] Começa a flutuar e girar no ar enquanto brilha um roxo horrível!"), 		despawn_message = span_revenwarning("[victim] Cai de volta ao chão, parada mais uma vez."), 	)
 
 #undef REVENANT_DEFILE_MIN_DAMAGE
 #undef REVENANT_DEFILE_MAX_DAMAGE

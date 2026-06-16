@@ -194,11 +194,11 @@
 			if(on)
 				. += span_notice("Tem alguém lá dentro.[src]!")
 			else
-				. += span_notice("Você mal consegue ver uma forma flutuando[src].")
+				. += span_notice("Você mal consegue ver uma forma flutuando [src].")
 		else
-			. += span_notice("[src]Parece Vazio.")
+			. += span_notice("[src] Parece Vazio.")
 		if(beaker)
-			. += span_notice("Um copo de[beaker.reagents.maximum_volume]Sua capacidade está localizada lá dentro.")
+			. += span_notice("Um copo de [beaker.reagents.maximum_volume] Sua capacidade está localizada lá dentro.")
 		else
 			. += span_warning("Falta um copo.")
 
@@ -207,10 +207,10 @@
 
 		. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")]Abra.")
 		if(panel_open)
-			. += span_notice("[src]Pode ser[EXAMINE_HINT("pried")]Separados.")
-			. += span_notice("[src]pode ser girado com um[EXAMINE_HINT("wrench")].")
+			. += span_notice("[src] Pode ser[EXAMINE_HINT("pried")]Separados.")
+			. += span_notice("[src] pode ser girado com um[EXAMINE_HINT("wrench")].")
 		else if(machine_stat & NOPOWER)
-			. += span_notice("[src]Pode ser[EXAMINE_HINT("pried")]Abra.")
+			. += span_notice("[src] Pode ser[EXAMINE_HINT("pried")]Abra.")
 
 /obj/machinery/cryo_cell/update_icon()
 	SET_PLANE_IMPLICIT(src, initial(plane))
@@ -285,7 +285,7 @@
 
 	var/unsafe_release = FALSE
 	if(internal_pressure > 2 * ONE_ATMOSPHERE)
-		to_chat(user, span_warning("Enquanto você começa a bisbilhotar\the [src]Um sopro de ar na sua cara... Talvez deve reconsiderar?"))
+		to_chat(user, span_warning("Enquanto você começa a bisbilhotar\the [src] Um sopro de ar na sua cara... Talvez deve reconsiderar?"))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
 		unsafe_release = TRUE
@@ -519,11 +519,11 @@
 /obj/machinery/cryo_cell/container_resist_act(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("Viu?[user]Chutando contra o copo de[src]!"), 		span_notice("Você luta por dentro.[src]Chutando a liberação com o pé...[DisplayTimeText(CRYO_BREAKOUT_TIME)].)"), 		span_hear("Você ouve uma batida de[src]."))
+	user.visible_message(span_notice("Viu?[user] Chutando contra o copo de [src]!"), 		span_notice("Você luta por dentro.[src] Chutando a liberação com o pé...[DisplayTimeText(CRYO_BREAKOUT_TIME)].)"), 		span_hear("Você ouve uma batida de [src]."))
 	if(do_after(user, CRYO_BREAKOUT_TIME, target = src, hidden = TRUE))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
-		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
+		user.visible_message(span_warning("[user] Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/cryo_cell/ui_state(mob/user)
@@ -651,7 +651,7 @@
 			close_machine(target)
 		return
 
-	user.visible_message(span_notice("[user]Começa a empurrar.[target]Dentro.[src]."), span_notice("Você começa a empurrar[target]Dentro.[src]."))
+	user.visible_message(span_notice("[user] Começa a empurrar.[target] Dentro.[src]."), span_notice("Você começa a empurrar [target] Dentro.[src]."))
 	if (do_after(user, 2.5 SECONDS, target=target))
 		close_machine(target)
 

@@ -162,13 +162,13 @@
 		return
 
 	parent.cell.give(shock_damage * 2)
-	to_chat(source, span_notice("Você absorve um pouco do choque em seu[parent.name]!"))
+	to_chat(source, span_notice("Você absorve um pouco do choque em seu [parent.name]!"))
 
 /obj/item/circuit_component/implant_core/proc/on_examine(datum/source, mob/mob, list/examine_text)
 	SIGNAL_HANDLER
 
 	if (isobserver(mob))
-		examine_text += span_notice("[source.p_They()] [source.p_have()] <a href='byond://?src=[REF(src)];open_implant=1'>\a [parent]implantado em[source.p_them()]</a>.")
+		examine_text += span_notice("[source.p_They()] [source.p_have()] <a href='byond://?src=[REF(src)];open_implant=1'>\a [parent] implantado em [source.p_them()]</a>.")
 
 /obj/item/circuit_component/implant_core/Topic(href, list/href_list)
 	..()
@@ -216,9 +216,9 @@
 	var/obj/item/stock_parts/power_store/cell/cell = circuit_component.parent.cell
 
 	if (isnull(cell))
-		to_chat(owner, span_boldwarning("[circuit_component.parent]não tem célula de energia."))
+		to_chat(owner, span_boldwarning("[circuit_component.parent] não tem célula de energia."))
 	else
-		to_chat(owner, span_info("[circuit_component.parent]'s[cell.name]Tem.<b>[cell.percent()]%</b>À esquerda."))
+		to_chat(owner, span_info("[circuit_component.parent]'s [cell.name] Tem.<b>[cell.percent()]%</b>À esquerda."))
 		to_chat(owner, span_info("Você pode recarregar usando uma estação de recarga cyborg."))
 
 /datum/action/innate/implant_charge_action/process(seconds_per_tick)

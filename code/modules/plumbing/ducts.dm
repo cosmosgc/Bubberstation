@@ -222,7 +222,7 @@
 
 /obj/machinery/duct/examine(mob/user)
 	. = ..()
-	. += span_notice("Sua cor atual e camada são[GLOB.pipe_color_name[duct_color]]E[GLOB.plumbing_layer_names["[duct_layer]"]]Use a mão para mudar.")
+	. += span_notice("Sua cor atual e camada são [GLOB.pipe_color_name[duct_color]]E[GLOB.plumbing_layer_names["[duct_layer]"]]Use a mão para mudar.")
 	. += span_notice("Pode ser.[EXAMINE_HINT("wrenched")]Separados.")
 
 /obj/machinery/duct/update_icon_state()
@@ -295,7 +295,7 @@
 
 /obj/item/stack/ducts/examine(mob/user)
 	. = ..()
-	. += span_notice("Sua cor atual e camada são[GLOB.pipe_color_name[duct_color]]E[GLOB.plumbing_layer_names["[duct_layer]"]]Use a mão para mudar.")
+	. += span_notice("Sua cor atual e camada são [GLOB.pipe_color_name[duct_color]]E[GLOB.plumbing_layer_names["[duct_layer]"]]Use a mão para mudar.")
 	. += span_notice("Coloque no chão.[EXAMINE_HINT("wrench")]Para chorar dutos.")
 
 /obj/item/stack/ducts/attack_self(mob/user)

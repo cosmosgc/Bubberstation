@@ -112,7 +112,7 @@
 				continue
 
 			if(get_turf(rider) != destturf) //precision made them teleport somewhere else
-				to_chat(rider, span_warning("Como você reorienta seus sentidos, você percebe que você não está montando[teleatom]Mais!"))
+				to_chat(rider, span_warning("Como você reorienta seus sentidos, você percebe que você não está montando [teleatom] Mais!"))
 				continue
 
 			// [mob/living].forceMove() forces mobs to unbuckle, so we need to buckle them again

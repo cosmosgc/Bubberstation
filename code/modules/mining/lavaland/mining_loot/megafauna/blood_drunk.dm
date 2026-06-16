@@ -44,7 +44,7 @@
 	. += span_notice("Transformá-lo imediatamente após um ataque faz com que o próximo ataque saia mais rápido.")
 
 /obj/item/melee/cleaving_saw/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]É[HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE) ? "closing [src] on [user.p_their()] neck" : "opening [src] into [user.p_their()] chest"]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] É[HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE) ? "closing [src] on [user.p_their()] neck" : "opening [src] into [user.p_their()] chest"]Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	attack_self(user)
 	return BRUTELOSS
 

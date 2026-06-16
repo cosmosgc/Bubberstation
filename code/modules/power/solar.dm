@@ -102,7 +102,7 @@
 /obj/machinery/power/solar/crowbar_act(mob/user, obj/item/I)
 	if(I.use_tool(src, user, 0))
 		playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		user.visible_message(span_notice("[user]Cansado do copo.[src]."), span_notice("Você tira o copo.[src]."))
+		user.visible_message(span_notice("[user] Cansado do copo.[src]."), span_notice("Você tira o copo.[src]."))
 		deconstruct(TRUE)
 	return TRUE
 
@@ -341,7 +341,7 @@
 			new /obj/item/electronics/tracker(src.loc)
 			tracker = FALSE
 			update_appearance()
-			user.visible_message(span_notice("[user]Tira os eletrônicos da montagem solar."), span_notice("Você tira os eletrônicos da montagem solar."))
+			user.visible_message(span_notice("[user] Tira os eletrônicos da montagem solar."), span_notice("Você tira os eletrônicos da montagem solar."))
 			return TRUE
 
 		//prevent construction if something dense's on our tile
@@ -356,7 +356,7 @@
 			to_chat(user, span_warning("Você não tem vidro suficiente para completar o rastreador."))
 			return
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
-		user.visible_message(span_notice("[user]Coloca o vidro na montagem solar."),span_notice("Você coloca o vidro na montagem solar."))
+		user.visible_message(span_notice("[user] Coloca o vidro na montagem solar."),span_notice("Você coloca o vidro na montagem solar."))
 		new /obj/machinery/power/tracker/(get_turf(src), src)
 		return TRUE
 
@@ -367,7 +367,7 @@
 			tracker = TRUE
 			update_appearance()
 			qdel(item_used)
-			user.visible_message(span_notice("[user]insere os eletrônicos na montagem solar."), span_notice("Você insere os eletrônicos na montagem solar."))
+			user.visible_message(span_notice("[user] insere os eletrônicos na montagem solar."), span_notice("Você insere os eletrônicos na montagem solar."))
 			return TRUE
 
 	//make a list of all the glass
@@ -410,7 +410,7 @@
 
 		var/datum/material/glass_material = my_sheet.material_type
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
-		user.visible_message(span_notice("[user]Coloca o vidro na montagem solar."), span_notice("Você coloca o vidro na montagem solar."))
+		user.visible_message(span_notice("[user] Coloca o vidro na montagem solar."), span_notice("Você coloca o vidro na montagem solar."))
 		var/obj/machinery/power/solar/mySolar = new /obj/machinery/power/solar(get_turf(src), src)
 		mySolar.power_tier = glass_material_to_tier[glass_material]
 		mySolar.material_type = glass_material

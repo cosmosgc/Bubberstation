@@ -148,12 +148,12 @@
 	if (isnull(attached_circuit))
 		examine_text += span_notice("Há uma porta USB na frente.")
 	else
-		examine_text += span_notice("[attached_circuit.shell || attached_circuit]está conectado a[parent.p_them()]Por uma porta USB.")
+		examine_text += span_notice("[attached_circuit.shell || attached_circuit] está conectado a [parent.p_them()] Por uma porta USB.")
 
 /datum/component/usb_port/proc/on_examine_shell(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_notice("[source.p_They()] [source.p_are()]Ligado.[parent]Com um cabo USB.")
+	examine_text += span_notice("[source.p_They()] [source.p_are()] Ligado.[parent] Com um cabo USB.")
 
 /datum/component/usb_port/proc/on_atom_usb_cable_try_attach(datum/source, obj/item/usb_cable/connecting_cable, mob/user)
 	SIGNAL_HANDLER

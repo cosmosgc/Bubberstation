@@ -45,7 +45,7 @@
 	var/obj/item/paper/top_paper
 
 /obj/item/clipboard/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]começa a colocar[user.p_their()]cabeça para o clipe de\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] começa a colocar [user.p_their()] cabeça para o clipe de\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS //The clipboard's clip is very strong. Industrial duty. Can kill a man easily.
 
 /obj/item/clipboard/Initialize(mapload)
@@ -72,13 +72,13 @@
 		return
 	paper.forceMove(user.loc)
 	user.put_in_hands(paper)
-	to_chat(user, span_notice("Você tira.[paper]De[src]."))
+	to_chat(user, span_notice("Você tira.[paper] De [src]."))
 
 /obj/item/clipboard/proc/remove_pen(mob/user)
 	var/obj/item/pen/pen = src.pen
 	pen.forceMove(user.loc)
 	user.put_in_hands(pen)
-	to_chat(user, span_notice("Você tira.[pen]De[src]."))
+	to_chat(user, span_notice("Você tira.[pen] De [src]."))
 
 /obj/item/clipboard/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -130,13 +130,13 @@
 			UnregisterSignal(top_paper, COMSIG_ATOM_UPDATED_ICON)
 		RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 		top_paper = weapon
-		to_chat(user, span_notice("Você corta[weapon]em frente[src]."))
+		to_chat(user, span_notice("Você corta [weapon] em frente [src]."))
 	else if(istype(weapon, /obj/item/pen) && !pen)
 		//Add a pen into the clipboard, attack (write) if there is already one
 		if(!usr.transferItemToLoc(weapon, src))
 			return
 		pen = weapon
-		to_chat(usr, span_notice("Você está em posição.[weapon]Em[src]."))
+		to_chat(usr, span_notice("Você está em posição.[weapon] Em [src]."))
 	else if(top_paper)
 		top_paper.attackby(user.get_active_held_item(), user)
 	update_appearance()
@@ -186,7 +186,7 @@
 				if(!integrated_pen)
 					remove_pen(usr)
 				else
-					to_chat(usr, span_warning("Você parece não encontrar uma maneira de remover[src]'s[pen]."))
+					to_chat(usr, span_warning("Você parece não encontrar uma maneira de remover [src]'s [pen]."))
 				. = TRUE
 		// Take paper out
 		if("remove_paper")
@@ -206,7 +206,7 @@
 			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
 				top_paper = paper
-				to_chat(usr, span_notice("Você se mexe.[paper]até o topo."))
+				to_chat(usr, span_notice("Você se mexe.[paper] até o topo."))
 				update_icon()
 				. = TRUE
 		// Rename the paper (it's a verb)

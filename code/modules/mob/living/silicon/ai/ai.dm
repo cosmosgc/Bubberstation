@@ -105,7 +105,7 @@
 				continue
 			if(!McMobby.binarycheck())
 				continue
-			to_chat(McMobby,span_binarysay("<span class=[SPAN_COMMAND]>\[ SYSTEM \]Novo Host Remote está ligado a este canal.[src]</span>"), type = MESSAGE_TYPE_RADIO)
+			to_chat(McMobby,span_binarysay("<span class=[SPAN_COMMAND]>\[ SYSTEM \] Novo Host Remote está ligado a este canal.[src]</span>"), type = MESSAGE_TYPE_RADIO)
 
 /mob/living/silicon/ai/weak_syndie
 	radio = /obj/item/radio/headset/silicon/ai/evil
@@ -127,7 +127,7 @@
 			_key = text2num(_key)
 			if(user.keys_held["Ctrl"]) //do we assign a new hotkey?
 				cam_hotkeys[_key] = eyeobj.loc
-				to_chat(src, "Localização salva no Grupo de Câmeras[_key].")
+				to_chat(src, "Localização salva no Grupo de Câmeras [_key].")
 				return
 			if(cam_hotkeys[_key]) //if this is false, no hotkey for this slot exists.
 				cam_prev = eyeobj.loc
@@ -953,7 +953,7 @@
 		playsound(get_turf(src), 'sound/machines/buzz/buzz-two.ogg', 50, TRUE, ignore_walls = FALSE)
 		return
 	if(apc.aidisabled)
-		to_chat(src, span_danger("Hack abortado.[apc]não está mais respondendo aos nossos sistemas."))
+		to_chat(src, span_danger("Hack abortado.[apc] não está mais respondendo aos nossos sistemas."))
 		playsound(get_turf(src), 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE, ignore_walls = FALSE)
 		return
 
@@ -969,7 +969,7 @@
 		else //combat software AIs use a different UI
 			malf_picker.update_static_data_for_all_viewers()
 	if(apc.malfai) // another malf hacked this one; counter-hack!
-		to_chat(apc.malfai, span_warning("Uma sub-rotina adversa tem contra-atacado[apc]!"))
+		to_chat(apc.malfai, span_warning("Uma sub-rotina adversa tem contra-atacado [apc]!"))
 		apc.malfai.hacked_apcs -= apc
 	apc.malfai = src
 	apc.malfhack = TRUE
@@ -979,7 +979,7 @@
 	apc.set_hacked_hud()
 	hacked_apcs += apc
 	playsound(get_turf(src), 'sound/machines/ding.ogg', 50, TRUE, ignore_walls = FALSE)
-	to_chat(src, "Hack completo.[apc]está agora sob seu controle exclusivo.")
+	to_chat(src, "Hack completo.[apc] está agora sob seu controle exclusivo.")
 
 /mob/living/silicon/ai/verb/deploy_to_shell()
 	set category = "AI Commands"

@@ -45,7 +45,7 @@
 		var/value = entry_port.value
 		// To prevent people from infinitely making lists to crash the server
 		if(islist(value) && get_list_count(value, max_list_count) >= max_list_count)
-			visible_message("[src]Começa a superaquecer!")
+			visible_message("[src] Começa a superaquecer!")
 			return
 		var/value_to_add = handler.convert_value(list_output, value)
 		if(isdatum(value_to_add))

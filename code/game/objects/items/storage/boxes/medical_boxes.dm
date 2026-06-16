@@ -244,7 +244,7 @@
 
 /obj/item/paper/triage/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>A parte de trás de[src]tem um guia para a triagem:</i>")
+	. += span_notice("<i>A parte de trás de [src] tem um guia para a triagem:</i>")
 	. += "&bull; \"Is the victim walking and can respond to simple orders?\" If so, mark as <b>minimal</b>."
 	. += "&bull; \"Has the victim stopped breathing entirely (without even gasping for air)?\" If so, mark as <b>expectant / deceased</b>."
 	. += "&bull; \"Is the victim bleeding, failing to follow simple commands, lacking a pulse, having difficulties breathing?\" If so, mark as <b>immediate</b>."

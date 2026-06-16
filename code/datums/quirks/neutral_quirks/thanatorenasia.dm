@@ -35,5 +35,5 @@
 
 /datum/quirk/death_dnr_poll/proc/on_successful_revive()
 	quirk_holder.log_message("has had their body taken over by a ghost due to the [name] quirk.", LOG_GAME, color = COLOR_PURPLE)
-	var/welcome_msg = boxed_message(span_notice("<b>[quirk_holder.real_name]</b>Tem<i>[name]</i>- Você é[quirk_holder.p_their()]Novo dono.<br>Se você escolher<b>\"Não ressuscite\"</b>após a morte, outro fantasma assumirá o corpo novamente."))
+	var/welcome_msg = boxed_message(span_notice("<b>[quirk_holder.real_name]</b>Tem<i>[name]</i>- Você é [quirk_holder.p_their()] Novo dono.<br>Se você escolher<b>\"Não ressuscite\"</b>após a morte, outro fantasma assumirá o corpo novamente."))
 	addtimer(CALLBACK(src, GLOBAL_PROC_REF(to_chat), quirk_holder, welcome_msg), 2 SECONDS)

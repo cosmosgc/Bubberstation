@@ -39,7 +39,7 @@
 	if(mode)
 		. += "\The [src] is bolted to the floor."
 	if((in_range(user, src) || isobserver(user)) && internal_heat > max_heat * 0.5)
-		. += span_danger("[src]Está deformando o ar acima dele. Deve estar muito quente.")
+		. += span_danger("[src] Está deformando o ar acima dele. Deve estar muito quente.")
 
 /obj/item/powersink/set_anchored(anchorvalue)
 	. = ..()
@@ -81,20 +81,20 @@
 		if(isturf(T) && T.underfloor_accessibility >= UNDERFLOOR_INTERACTABLE)
 			attached = locate() in T
 			if(!attached)
-				to_chat(user, span_warning("\The [src]Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
+				to_chat(user, span_warning("\The [src] Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
 			else
 				set_mode(CLAMPED_OFF)
-				user.visible_message( 					"[user]APENAS\the [src]ao cabo.", 					span_notice("Você vai embora.\the [src]no chão e conectá-lo ao cabo."),
+				user.visible_message( 					"[user] APENAS\the [src] ao cabo.", 					span_notice("Você vai embora.\the [src] no chão e conectá-lo ao cabo."),
 					span_hear("Você ouve alguns fios sendo conectados a algo."))
 		else
-			to_chat(user, span_warning("\The [src]Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
+			to_chat(user, span_warning("\The [src] Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
 	else
 		set_mode(DISCONNECTED)
-		user.visible_message( 			"[user]Detaches\the [src]Faça cabo.", 			span_notice("Você destranca.\the [src]do chão e separe-o do cabo."),
+		user.visible_message( 			"[user] Detaches\the [src] Faça cabo.", 			span_notice("Você destranca.\the [src] do chão e separe-o do cabo."),
 			span_hear("Você ouve alguns fios sendo desconectados de algo."))
 
 /obj/item/powersink/screwdriver_act(mob/living/user, obj/item/tool)
-	user.visible_message( 		"[user]Mexe com\the [src]Por um tempo.", 		span_notice("Você não pode colocar a chave de fenda\the [src]São parafusos! Tente usar uma chave inglesa."))
+	user.visible_message( 		"[user] Mexe com\the [src] Por um tempo.", 		span_notice("Você não pode colocar a chave de fenda\the [src] São parafusos! Tente usar uma chave inglesa."))
 	return TRUE
 
 /obj/item/powersink/attack_paw(mob/user, list/modifiers)
@@ -112,7 +112,7 @@
 			..()
 
 		if(CLAMPED_OFF)
-			user.visible_message( 				"[user]Ativa.\the [src]!", 				span_notice("Você ativa.\the [src]."),
+			user.visible_message( 				"[user] Ativa.\the [src]!", 				span_notice("Você ativa.\the [src]."),
 				span_hear("Você ouve um clique."))
 			message_admins("Power sink activated by [ADMIN_LOOKUPFLW(user)] at [ADMIN_VERBOSEJMP(src)]")
 			user.log_message("activated a powersink", LOG_GAME)
@@ -124,7 +124,7 @@
 			set_mode(OPERATING)
 
 		if(OPERATING)
-			user.visible_message( 				"[user]Desativa\the [src]!", 				span_notice("Você desativa.\the [src]."),
+			user.visible_message( 				"[user] Desativa\the [src]!", 				span_notice("Você desativa.\the [src]."),
 				span_hear("Você ouve um clique."))
 			user.log_message("deactivated the powersink", LOG_GAME)
 			set_mode(CLAMPED_OFF)

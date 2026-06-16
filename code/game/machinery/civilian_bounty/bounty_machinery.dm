@@ -50,7 +50,7 @@
 
 /obj/machinery/computer/piratepad_control/multitool_act(mob/living/user, obj/item/multitool/I)
 	if(istype(I) && istype(I.buffer,/obj/machinery/piratepad/civilian))
-		to_chat(user, span_notice("Você liga.[src]com[I.buffer]em[I]Tampão."))
+		to_chat(user, span_notice("Você liga.[src] com [I.buffer] em [I] Tampão."))
 		pad_ref = WEAKREF(I.buffer)
 		return TRUE
 
@@ -172,7 +172,7 @@
 	if(check_global)
 		update_global_bounty_list(round(CIV_BOUNTY_BASELINE + (SSeconomy.civ_bounty_tracker / 3)), FALSE)
 
-	pad.visible_message(span_notice("[pad]Ativar!"))
+	pad.visible_message(span_notice("[pad] Ativar!"))
 	pad.finish_sending()
 	playsound(loc, 'sound/machines/synth/synth_yes.ogg', 30 , TRUE)
 	sending = FALSE
@@ -313,8 +313,8 @@
 		else
 			id_eject(user, target)
 
-	user.visible_message(span_notice("[user]Inserções\the [card_to_insert]em\the [src]."),
-						span_notice("Você insere\the [card_to_insert]em\the [src]."))
+	user.visible_message(span_notice("[user] Inserções\the [card_to_insert] em\the [src]."),
+						span_notice("Você insere\the [card_to_insert] em\the [src]."))
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 	ui_interact(user)
 	return TRUE
@@ -326,7 +326,7 @@
 		return FALSE
 	else
 		try_put_in_hand(target, user)
-		user.visible_message(span_notice("[user]fica.\the [target]De\the [src]."), 							span_notice("Você consegue.\the [target]De\the [src]."))
+		user.visible_message(span_notice("[user] fica.\the [target] De\the [src]."), 							span_notice("Você consegue.\the [target] De\the [src]."))
 		playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 		inserted_scan_id = null
 		return TRUE
@@ -422,7 +422,7 @@
 	var/uses = 2
 
 /obj/item/civ_bounty_beacon/attack_self()
-	loc.visible_message(span_warning("\The [src]Começa a tocar alto!"))
+	loc.visible_message(span_warning("\The [src] Começa a tocar alto!"))
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 1 SECONDS)
 
 /obj/item/civ_bounty_beacon/proc/launch_payload()

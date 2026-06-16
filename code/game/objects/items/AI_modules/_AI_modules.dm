@@ -84,7 +84,7 @@
 
 	var/law2log = transmitInstructions(law_datum, user, overflow) //Freeforms return something extra we need to log
 	if(law_datum.owner)
-		to_chat(user, span_notice("Envio completo.[law_datum.owner]Como Leis foram modificadas."))
+		to_chat(user, span_notice("Envio completo.[law_datum.owner] Como Leis foram modificadas."))
 		law_datum.owner.law_change_counter++
 	else
 		to_chat(user, span_notice("Envio completo."))
@@ -111,12 +111,12 @@
 	log_silicon("LAW: [key_name(user)] used [src.name] on [key_name(law_datum.owner)] from [AREACOORD(user)].[law2log ? " The law specified [law2log]" : ""], [length(affected_cyborgs) ? ", impacting synced borgs [borg_txt]" : ""]")
 	message_admins("[ADMIN_LOOKUPFLW(user)] used [src.name] on [ADMIN_LOOKUPFLW(law_datum.owner)] from [AREACOORD(user)].[law2log ? " The law specified [law2log]" : ""] , [length(affected_cyborgs) ? ", impacting synced borgs [borg_flw.Join()]" : ""]")
 	if(law_datum.owner)
-		deadchat_broadcast("<b>Mumada.[span_name("[ainame]")]'s leis em[get_area_name(user, TRUE)].</b>", span_name("[user]"), follow_target=user, message_type=DEADCHAT_LAWCHANGE)
+		deadchat_broadcast("<b>Mumada.[span_name("[ainame]")]'s leis em [get_area_name(user, TRUE)].</b>", span_name("[user]"), follow_target=user, message_type=DEADCHAT_LAWCHANGE)
 
 //The proc that actually changes the silicon's laws.
 /obj/item/ai_module/proc/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow = FALSE)
 	if(law_datum.owner)
-		to_chat(law_datum.owner, span_userdanger("[sender]Fez upload de uma mudança para as leis que você deve seguir usando um[name]."))
+		to_chat(law_datum.owner, span_userdanger("[sender] Fez upload de uma mudança para as leis que você deve seguir usando um [name]."))
 
 /obj/item/ai_module/core
 	desc = "Um Módulo de IA para programar leis nucleares para uma IA."

@@ -299,7 +299,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	if(isclosedturf(local_turf))
 		var/turf/did_it_melt = local_turf.Melt()
 		if(!isclosedturf(did_it_melt)) //In case some joker finds way to place these on indestructible walls
-			visible_message(span_warning("[src]Derrete através[local_turf]!"))
+			visible_message(span_warning("[src] Derrete através [local_turf]!"))
 		return
 
 	// PART 2: GAS PROCESSING
@@ -630,7 +630,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			sleep(1 SECONDS)
 			continue
 		else if(i > 50)
-			message = "[DisplayTimeText(i, TRUE)] [count_down_messages[3]]"
+			message = "[DisplayTimeText(i, TRUE)] [count_down_messages [3]]"
 		else
 			message = "[i*0.1]..."
 

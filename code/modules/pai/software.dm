@@ -172,11 +172,11 @@
 	if(tgui_alert(holder, "[src]Está pedindo uma amostra de DNA de você. Permitirá que confirme sua identidade?", "Checking DNA", list("Yes", "No")) != "Yes")
 		balloon_alert(src, "Amostra de DNA recusada!")
 		return FALSE
-	holder.visible_message(span_notice("[holder]Pressiona[holder.p_their()]polágar contra[src]."), span_notice("Você aperta seu polegar contra[src]."), span_notice("[src]Faz um som agudo enchanto extrai material de DNA de[holder]."))
+	holder.visible_message(span_notice("[holder] Pressiona [holder.p_their()] polágar contra [src]."), span_notice("Você aperta seu polegar contra [src]."), span_notice("[src] Faz um som agudo enchanto extrai material de DNA de [holder]."))
 	if(!holder.has_dna())
 		balloon_alert(src, "Detectado DNA de nenhum!")
 		return FALSE
-	to_chat(src, span_bolddanger(("[holder]Uma corda UE:[holder.dna.unique_enzymes]")))
+	to_chat(src, span_bolddanger(("[holder] Uma corda UE:[holder.dna.unique_enzymes]")))
 	to_chat(src, span_notice("DNA[holder.dna.unique_enzymes == master_dna ? "matches" : "does not match"]Nosso DNA de Mestre Armazenado."))
 	return TRUE
 

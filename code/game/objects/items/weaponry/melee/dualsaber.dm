@@ -56,7 +56,7 @@
 		to_chat(user, span_warning("Falta-lhe a graça para usar isso!"))
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 	if(HAS_TRAIT_FROM(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT))
-		to_chat(user, span_warning("Você não consegue segurar[src]Bem!"))
+		to_chat(user, span_warning("Você não consegue segurar [src] Bem!"))
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 	update_weight_class(w_class_on)
 	hitsound = 'sound/items/weapons/blade1.ogg'
@@ -82,7 +82,7 @@
 
 /obj/item/dualsaber/suicide_act(mob/living/carbon/user)
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
-		user.visible_message(span_suicide("[user]Começa a girar muito rápido! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Começa a girar muito rápido! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 
 		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)//stole from chainsaw code
 		var/obj/item/organ/brain/B = user.get_organ_slot(ORGAN_SLOT_BRAIN)
@@ -97,11 +97,11 @@
 					myhead.drop_limb()
 				sleep(0.3 SECONDS)
 			else
-				user.visible_message(span_suicide("[user]Entra em pânico e começa a sufocar até a morte!"))
+				user.visible_message(span_suicide("[user] Entra em pânico e começa a sufocar até a morte!"))
 				return OXYLOSS
 
 	else
-		user.visible_message(span_suicide("[user]Começa a bater[user.p_them()]e eu morrer com\the [src]É o cabo! Provavelmente teria sido mais legal se[user.p_they()]Ligou primeiro!"))
+		user.visible_message(span_suicide("[user] Começa a bater [user.p_them()] e eu morrer com\the [src] É o cabo! Provavelmente teria sido mais legal se [user.p_they()] Ligou primeiro!"))
 	return BRUTELOSS
 
 /obj/item/dualsaber/Initialize(mapload)
@@ -142,7 +142,7 @@
 	dance_rotate(user, CALLBACK(user, TYPE_PROC_REF(/mob, dance_flip)))
 
 /obj/item/dualsaber/proc/impale(mob/living/user)
-	to_chat(user, span_warning("Você gira um pouco antes de perder o equilíbrio e empalar-se em[src]."))
+	to_chat(user, span_warning("Você gira um pouco antes de perder o equilíbrio e empalar-se em [src]."))
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		user.take_bodypart_damage(20,25,check_armor = TRUE)
 	else
@@ -189,7 +189,7 @@
 		var/mob/living/carbon/C = user
 		if(C.wear_mask)
 			in_mouth = ", barely missing [user.p_their()] nose"
-	. = span_rose("[user]balanços[user.p_their()] [name][in_mouth]. [user.p_They()]luz[user.p_s()] [A.loc == user ? "[user.p_their()] [A.name]" : A]Sem processo.")
+	. = span_rose("[user] balanços [user.p_their()] [name][in_mouth]. [user.p_They()] luz [user.p_s()] [A.loc == user ? "[user.p_their()] [A.name]" : A]Sem processo.")
 	playsound(loc, hitsound, get_clamped_volume(), TRUE, -1)
 	add_fingerprint(user)
 	// Light your candles while spinning around the room

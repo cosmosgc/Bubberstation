@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(canvas_dimensions, init_canvas_dimensions())
 		user.transfer_item_to_turf(canvas, get_turf(src), silent = FALSE)
 		painting = canvas
 		canvas.layer = layer+0.1
-		user.visible_message(span_notice("[user]coloca\the [canvas]Vamos.\the [src]."),span_notice("Seu lugar.\the [canvas]Vamos.\the [src]."))
+		user.visible_message(span_notice("[user] coloca\the [canvas] Vamos.\the [src]."),span_notice("Seu lugar.\the [canvas] Vamos.\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 
@@ -332,7 +332,7 @@ GLOBAL_LIST_INIT(canvas_dimensions, init_canvas_dimensions())
 		return
 	painting_metadata.frame_type = result
 	var/obj/structure/sign/painting/our_frame = loc
-	our_frame.balloon_alert(user, "Moldura definitiva para[result]")
+	our_frame.balloon_alert(user, "Moldura definitiva para [result]")
 	our_frame.update_appearance()
 
 /obj/item/canvas/proc/can_select_frame(mob/user)
@@ -637,13 +637,13 @@ GLOBAL_LIST_INIT(canvas_dimensions, init_canvas_dimensions())
 
 /obj/structure/sign/painting/proc/frame_canvas(mob/living/user, obj/item/canvas/new_canvas)
 	if(!(new_canvas.type in accepted_canvas_types))
-		to_chat(user, span_warning("[new_canvas]Não caberá nesta moldura."))
+		to_chat(user, span_warning("[new_canvas] Não caberá nesta moldura."))
 		return FALSE
 	if(user.transferItemToLoc(new_canvas,src))
 		current_canvas = new_canvas
 		if(!current_canvas.finalized)
 			current_canvas.finalize(user)
-		to_chat(user,span_notice("Você emoldura[current_canvas]."))
+		to_chat(user,span_notice("Você emoldura [current_canvas]."))
 		add_art_element()
 		update_appearance()
 		if(HAS_PERSONALITY(user, /datum/personality/creative))

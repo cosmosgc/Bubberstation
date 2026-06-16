@@ -113,14 +113,14 @@
 		return
 
 	var/mob/living/carbon/human/victim = user
-	victim.visible_message(span_suicide("[user]Fechaduras[src]em volta do pescoço, rugas se formando em seu rosto. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	victim.visible_message(span_suicide("[user] Fechaduras [src] em volta do pescoço, rugas se formando em seu rosto. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	for(var/mult in 1 to 5) // Rapidly age
 		if(!do_after(victim, 0.5 SECONDS)) // just to space out the aging, either way you still dust.
 			break
 		var/before_age = victim.age
 		victim.age = round((victim.age * 1.5),1)
-		to_chat(victim, span_danger("Você envelhece.[(victim.age - before_age)]Anos!"))
+		to_chat(victim, span_danger("Você envelhece.[(victim.age - before_age)] Anos!"))
 
-	to_chat(victim, span_danger("Na idade madura de[victim.age]Suas células falham seu ciclo de mitose, permitindo que as areias do tempo se lavem sobre você."))
+	to_chat(victim, span_danger("Na idade madura de [victim.age] Suas células falham seu ciclo de mitose, permitindo que as areias do tempo se lavem sobre você."))
 	victim.dust(TRUE, TRUE, TRUE)
 	return MANUAL_SUICIDE

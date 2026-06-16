@@ -46,7 +46,7 @@
 
 	var/modifiers = params2list(params)
 	clicker.visible_message(
-		span_danger("[clicker]Cuspiu tinta!"),
+		span_danger("[clicker] Cuspiu tinta!"),
 		span_bold("Você cuspiu tinta."),
 	)
 	var/obj/projectile/ink_spit/ink = new /obj/projectile/ink_spit(clicker.loc)

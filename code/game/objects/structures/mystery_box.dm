@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 
 /// The box has finished choosing, mark it as available for grabbing
 /obj/structure/mystery_box/proc/present_weapon()
-	visible_message(span_notice("[src]Presentes[presented_item]!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_notice("[src] Presentes [presented_item]!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	box_state = MYSTERY_BOX_PRESENTING
 	box_expire_timer = addtimer(CALLBACK(src, PROC_REF(start_expire_offer)), MBOX_DURATION_PRESENTING, TIMER_STOPPABLE)
 
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 	box_expire_timer = null
 	addtimer(CALLBACK(src, PROC_REF(ready_again)), MBOX_DURATION_STANDBY)
 	if(uses_left <= 0)
-		visible_message("[src]Derruba.")
+		visible_message("[src] Derruba.")
 		deconstruct(disassembled = FALSE)
 
 /// The cooldown between activations has finished, shake to show that
@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 /// Someone attacked the box with an empty hand, spawn the shown prize and give it to them, then close the box
 /obj/structure/mystery_box/proc/grant_weapon(mob/living/user)
 	var/atom/movable/instantiated_weapon = new presented_item.selected_path(loc)
-	user.visible_message(span_notice("[user]Toma.[presented_item]De[src]."), span_notice("Você pega.[presented_item]De[src]."), vision_distance = COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_notice("[user] Toma.[presented_item] De [src]."), span_notice("Você pega.[presented_item] De [src]."), vision_distance = COMBAT_MESSAGE_RANGE)
 	playsound(src, grant_sound, 70, FALSE, channel = current_sound_channel, falloff_exponent = 10)
 	close_box()
 
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 
 /obj/structure/mystery_box/fishing/activate(mob/living/user)
 	if(user.mind && minds_that_opened_us?[WEAKREF(user.mind)] >= 3)
-		to_chat(user, span_warning("[src]se recusa a abrir para você mais. Talvez devesse apresentá-lo a outra pessoa..."))
+		to_chat(user, span_warning("[src] se recusa a abrir para você mais. Talvez devesse apresentá-lo a outra pessoa..."))
 		return
 	return ..()
 

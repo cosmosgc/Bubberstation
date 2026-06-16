@@ -61,7 +61,7 @@
 					neckgrab_throw = TRUE
 				stop_pulling()
 				if(HAS_TRAIT(src, TRAIT_PACIFISM) || HAS_TRAIT(src, TRAIT_NO_THROWING))
-					to_chat(src, span_notice("Você gentilmente deixa ir[throwable_mob]."))
+					to_chat(src, span_notice("Você gentilmente deixa ir [throwable_mob]."))
 					return FALSE
 	else
 		thrown_thing = held_item.on_thrown(src, target)
@@ -150,25 +150,25 @@
 	if(offered)
 		if(offered == src)
 			if(!swap_hand(get_inactive_hand_index())) //have to swap hands first to take something
-				to_chat(src, span_warning("Você tenta levar[offered_item]de você mesmo, mas falhou."))
+				to_chat(src, span_warning("Você tenta levar [offered_item] de você mesmo, mas falhou."))
 				return
 			if(!put_in_active_hand(offered_item))
-				to_chat(src, span_warning("Você tenta levar[offered_item]de você mesmo, mas falhou."))
+				to_chat(src, span_warning("Você tenta levar [offered_item] de você mesmo, mas falhou."))
 				return
 			else
-				to_chat(src, span_notice("Você pega.[offered_item]De você mesmo."))
+				to_chat(src, span_notice("Você pega.[offered_item] De você mesmo."))
 				return
 
 		if(IS_DEAD_OR_INCAP(offered))
-			to_chat(src, span_warning("[offered.p_Theyre()]Incapaz de levar Qualquer Cozinha[offered.p_their()]Estado atual!"))
+			to_chat(src, span_warning("[offered.p_Theyre()] Incapaz de levar Qualquer Cozinha [offered.p_their()] Estado atual!"))
 			return
 
 		if(!offered.IsReachableBy(src))
-			to_chat(src, span_warning("Você tem que estar ao lado[offered.p_them()]!"))
+			to_chat(src, span_warning("Você tem que estar ao lado [offered.p_them()]!"))
 			return
 
 		if(!HAS_TRAIT(offered, TRAIT_CAN_HOLD_ITEMS))
-			to_chat(src, span_warning("[offered.p_They()]Não posso segurar nada que você oferece!"))
+			to_chat(src, span_warning("[offered.p_They()] Não posso segurar nada que você oferece!"))
 			return
 	else if(!(locate(/mob/living) in orange(1, src)))
 		to_chat(src, span_warning("Não há ninguém além de você para levá-lo!"))
@@ -178,7 +178,7 @@
 		return
 
 	balloon_alert_to_viewers("offers something")
-	visible_message(span_notice("[src]está oferecendo[offered ? "[offered] " : ""][offered_item]."), 					span_notice("Você oferece[offered ? "[offered] " : ""][offered_item]."), null, 2)
+	visible_message(span_notice("[src] está oferecendo[offered ? "[offered] " : ""][offered_item]."), 					span_notice("Você oferece[offered ? "[offered] " : ""][offered_item]."), null, 2)
 
 	apply_status_effect(/datum/status_effect/offering, offered_item, null, offered)
 
@@ -197,10 +197,10 @@
 		to_chat(src, span_warning("Você é incapaz de tomar qualquer coisa em seu estado atual!"))
 		return
 	if(get_dist(src, offerer) > 1)
-		to_chat(src, span_warning("[offerer]Está fora de alcance!"))
+		to_chat(src, span_warning("[offerer] Está fora de alcance!"))
 		return
 	if(!offered_item || offerer.get_active_held_item() != offered_item)
-		to_chat(src, span_warning("[offerer]não está mais segurando o item que estavam oferecendo!"))
+		to_chat(src, span_warning("[offerer] não está mais segurando o item que estavam oferecendo!"))
 		return
 	if(!get_empty_held_indexes())
 		to_chat(src, span_warning("Você não tem mãos vazias!"))
@@ -210,10 +210,10 @@
 		return
 
 	if(!offerer.temporarilyRemoveItemFromInventory(offered_item))
-		visible_message(span_notice("[offerer]Tenta entregar[offered_item]Mas está preso a eles..."))
+		visible_message(span_notice("[offerer] Tenta entregar [offered_item] Mas está preso a eles..."))
 		return
 
-	visible_message(span_notice("[src]Toma.[offered_item]De[offerer]."), 					span_notice("Você pega.[offered_item]De[offerer]."))
+	visible_message(span_notice("[src] Toma.[offered_item] De [offerer]."), 					span_notice("Você pega.[offered_item] De [offerer]."))
 	offered_item.do_pickup_animation(src, offerer)
 	put_in_hands(offered_item)
 

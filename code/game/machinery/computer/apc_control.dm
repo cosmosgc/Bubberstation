@@ -30,7 +30,7 @@
 
 /obj/machinery/computer/apc_control/attack_ai(mob/user)
 	if(!isAdminGhostAI(user))
-		to_chat(user,span_warning("[src]Não suporta controle de IA.")) //You already have APC access, cheater!
+		to_chat(user,span_warning("[src] Não suporta controle de IA.")) //You already have APC access, cheater!
 		return
 	return ..()
 
@@ -63,7 +63,7 @@
 	if(isnull(apc))
 		return
 	if(apc.remote_control_user)
-		to_chat(user, span_warning("\The [apc]está sendo controlado por outra pessoa!"))
+		to_chat(user, span_warning("\The [apc] está sendo controlado por outra pessoa!"))
 		return
 	if(active_apc)
 		disconnect_apc()

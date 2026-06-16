@@ -202,7 +202,7 @@ GLOBAL_LIST_INIT(mafia_role_by_alignment, setup_mafia_role_by_alignment())
 	create_bodies()
 	SEND_GLOBAL_SIGNAL(COMSIG_MAFIA_GAME_START, src)
 	start_day(can_vote = FALSE)
-	send_message(span_notice("<b>O mapa selecionado é[current_map.name]!</b></br> [current_map.description]"))
+	send_message(span_notice("<b>O mapa selecionado é [current_map.name]!</b></br> [current_map.description]"))
 	send_message("<b>Day [turn] started! There is no voting on the first day. Say hello to everybody!</b>")
 	next_phase_timer = addtimer(CALLBACK(src, PROC_REF(check_trial), FALSE), (FIRST_DAY_PERIOD_LENGTH / time_speedup), TIMER_STOPPABLE) //no voting period = no votes = instant night
 	for(var/datum/mafia_role/roles as anything in all_roles)
@@ -292,24 +292,24 @@ GLOBAL_LIST_INIT(mafia_role_by_alignment, setup_mafia_role_by_alignment())
  */
 /datum/mafia_controller/proc/lynch()
 	for(var/datum/mafia_role/role as anything in judgement_abstain_votes)
-		send_message(span_comradio("[role.body.real_name]Absteve-se."))
+		send_message(span_comradio("[role.body.real_name] Absteve-se."))
 
 	var/total_innocent_votes
 	for(var/datum/mafia_role/role as anything in judgement_innocent_votes)
-		send_message(span_green("[role.body.real_name]Votou inocente."))
+		send_message(span_green("[role.body.real_name] Votou inocente."))
 		total_innocent_votes += role.vote_power
 
 	var/total_guilty_votes
 	for(var/datum/mafia_role/role as anything in judgement_guilty_votes)
-		send_message(span_red("[role.body.real_name]Votou culpado."))
+		send_message(span_red("[role.body.real_name] Votou culpado."))
 		total_guilty_votes += role.vote_power
 
 	if(total_guilty_votes > total_innocent_votes) //strictly need majority guilty to lynch
-		send_message(span_red("<b>Culpado gama maioria,[on_trial.body.real_name]Foi linchado.</b>"))
+		send_message(span_red("<b>Culpado gama maioria,[on_trial.body.real_name] Foi linchado.</b>"))
 		on_trial.kill(src, lynch = TRUE)
 		next_phase_timer = addtimer(CALLBACK(src, PROC_REF(send_home), on_trial), (LYNCH_PERIOD_LENGTH / time_speedup), TIMER_STOPPABLE)
 	else
-		send_message(span_green("<b>Inocente gama maioria,[on_trial.body.real_name]Foi Poupado.</b>"))
+		send_message(span_green("<b>Inocente gama maioria,[on_trial.body.real_name] Foi Poupado.</b>"))
 		on_trial.body.forceMove(get_turf(on_trial.assigned_landmark))
 	on_trial = null
 	if(!check_victory())
@@ -372,7 +372,7 @@ GLOBAL_LIST_INIT(mafia_role_by_alignment, setup_mafia_role_by_alignment())
 	if(living_mafia.len + living_town.len <= 0)
 		victory_message = "Saca!</span>" //this is in-case no neutrals won, but there's no town/mafia left.
 		for(var/datum/mafia_role/solo as anything in neutral_killers)
-			victory_message = "[uppertext(solo.name)]Vitória!</span>"
+			victory_message = "[uppertext(solo.name)] Vitória!</span>"
 			if(!early_start)
 				award_role(solo.winner_award, solo)
 
@@ -515,13 +515,13 @@ GLOBAL_LIST_INIT(mafia_role_by_alignment, setup_mafia_role_by_alignment())
 		voter.body.maptext_x = initial(voter.body.maptext_x)
 		voter.body.maptext_width = initial(voter.body.maptext_width)
 		voter.body.maptext = null
-		send_message(span_notice("[voter.body.real_name]Retrai seu voto em[target.body.real_name]!"), team = teams)
+		send_message(span_notice("[voter.body.real_name] Retrai seu voto em [target.body.real_name]!"), team = teams)
 	else
 		voter.body.maptext_y = 12
 		voter.body.maptext_x = -16
 		voter.body.maptext_width = 64
 		voter.body.maptext = "<span class='maptext' style='text-align: center; vertical-align: top'>[target.body.real_name]</span>"
-		send_message(span_notice("[voter.body.real_name]Votou em[target.body.real_name]!"), team = teams)
+		send_message(span_notice("[voter.body.real_name] Votou em [target.body.real_name]!"), team = teams)
 	if(!teams)
 		target.body.update_appearance() //Update the vote display if it's a public vote
 		var/datum/mafia_role/old = old_vote

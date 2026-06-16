@@ -193,7 +193,7 @@
 	do_electrocution()
 
 	if (print_message)
-		parent_as_movable.visible_message(span_danger("[parent_as_movable]Isso causa um choque poderoso!"), span_hear("Você ouve um choque profundo!"))
+		parent_as_movable.visible_message(span_danger("[parent_as_movable] Isso causa um choque poderoso!"), span_hear("Você ouve um choque profundo!"))
 
 /// Zap whoever is buckled to us
 /datum/component/electrified_buckle/proc/do_electrocution()
@@ -235,7 +235,7 @@
 	if(shock_on_loop)
 		shock_on_loop = FALSE
 		STOP_PROCESSING(SSprocessing, src)
-		parent_as_movable.visible_message(span_notice("\The [parent_as_movable]Emite um estado quando seu circuito se abre, rasgando-o seguro por próximo."))
+		parent_as_movable.visible_message(span_notice("\The [parent_as_movable] Emite um estado quando seu circuito se abre, rasgando-o seguro por próximo."))
 	else
 		shock_on_loop = TRUE
 		START_PROCESSING(SSprocessing, src)

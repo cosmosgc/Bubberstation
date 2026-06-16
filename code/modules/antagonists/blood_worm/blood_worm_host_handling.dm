@@ -6,7 +6,7 @@
 		playsound(src, 'sound/effects/magic/enter_blood.ogg', vol = 60, vary = TRUE, ignore_walls = FALSE)
 
 		visible_message(
-			message = span_bolddanger("\The [src] enter[p_s()] \the [new_host]!"),
+			message = span_bolddanger("\The [src] enter [p_s()] \the [new_host]!"),
 			self_message = span_notice("Você entra\the [new_host]."),
 			blind_message = span_hear("Você ouve um barulho.")
 		)
@@ -82,7 +82,7 @@
 		return
 
 	visible_message(
-		message = span_bolddanger("\The [src] emerge[p_s()] from \the [host]!"),
+		message = span_bolddanger("\The [src] emerge [p_s()] from \the [host]!"),
 		blind_message = span_hear("Você ouve um barulho."),
 		ignored_mobs = list(host, src)
 	)

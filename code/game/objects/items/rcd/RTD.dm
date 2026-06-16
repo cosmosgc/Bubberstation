@@ -276,7 +276,7 @@
 					design_category = sub_category
 					selected_design = design_info["datum"]
 					selected_direction = floor.dir
-					balloon_alert(user, "O azulejo mudou para[selected_design.name]")
+					balloon_alert(user, "O azulejo mudou para [selected_design.name]")
 
 					return ITEM_INTERACT_SUCCESS
 

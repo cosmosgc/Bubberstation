@@ -43,8 +43,8 @@
 
 	if (!silent)
 		user.visible_message(
-			span_notice("[user]Tenta fixar[badge]Vamos.[distinguished]É o peito."),
-			span_notice("Você tenta furar[badge]Vamos.[distinguished]É o peito."),
+			span_notice("[user] Tenta fixar [badge] Vamos.[distinguished] É o peito."),
+			span_notice("Você tenta furar [badge] Vamos.[distinguished] É o peito."),
 		)
 
 	if (on_pre_pin && !on_pre_pin.Invoke(distinguished, user))
@@ -58,13 +58,13 @@
 
 	if (pinned)
 		user.visible_message(
-			span_notice("[user]Pins[badge]Vamos.[distinguished]É o peito."),
-			span_notice("Você pin[badge]Vamos.[distinguished]É o peito."),
+			span_notice("[user] Pins [badge] Vamos.[distinguished] É o peito."),
+			span_notice("Você pin [badge] Vamos.[distinguished] É o peito."),
 		)
 	else
 		user.visible_message(
-			span_warning("[user]Não consegue fixar[badge]Vamos.[distinguished]É o peito, aparentemente incapaz de se separar dele."),
-			span_warning("Você falhou em fixar[badge]Vamos.[distinguished]É o peito."),
+			span_warning("[user] Não consegue fixar [badge] Vamos.[distinguished] É o peito, aparentemente incapaz de se separar dele."),
+			span_warning("Você falhou em fixar [badge] Vamos.[distinguished] É o peito."),
 		)
 
 /// Callback for do_after to check if we can still be pinned

@@ -36,7 +36,7 @@
 	scan_ability?.Remove(user)
 
 /obj/item/clothing/glasses/godeye/proc/pain(mob/living/victim)
-	to_chat(victim, span_userdanger("Você sente dor ofuscante, como[src]Enfia no seu crânio."))
+	to_chat(victim, span_userdanger("Você sente dor ofuscante, como [src] Enfia no seu crânio."))
 	victim.emote("scream")
 	victim.flash_act()
 
@@ -82,14 +82,14 @@
 	var/datum/status_effect/agent_pinpointer/scan_pinpointer = living_owner.apply_status_effect(/datum/status_effect/agent_pinpointer/scan)
 	scan_pinpointer.scan_target = living_scanned
 
-	to_chat(living_scanned, span_warning("Você vê brevemente um flash de[living_owner]Antes de ser derrubado por uma força invisível!"))
+	to_chat(living_scanned, span_warning("Você vê brevemente um flash de [living_owner] Antes de ser derrubado por uma força invisível!"))
 	living_scanned.add_filter("scan", 2, list("type" = "outline", "color" = COLOR_RED, "size" = 1))
 	addtimer(CALLBACK(living_scanned, TYPE_PROC_REF(/datum, remove_filter), "scan"), 30 SECONDS)
 
 	healthscan(living_owner, living_scanned, 1, TRUE)
 
 	owner.playsound_local(get_turf(owner), 'sound/effects/magic/smoke.ogg', 50, TRUE)
-	owner.balloon_alert(owner, "[living_scanned]Escaneado.")
+	owner.balloon_alert(owner, "[living_scanned] Escaneado.")
 	addtimer(CALLBACK(src, PROC_REF(send_cooldown_end_message), cooldown_time))
 
 /datum/action/cooldown/spell/pointed/scan/proc/send_cooldown_end_message()

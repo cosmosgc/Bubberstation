@@ -63,7 +63,7 @@
 	STOP_PROCESSING(SSobj, old_organ)
 
 /datum/quirk/prosthetic_organ/post_add()
-	to_chat(quirk_holder, span_bolddanger("Sua[slot_string]foi substituído por um órgão excedente. É fraco e altamente instável. Além disso, qualquer PEM fará com que pare de funcionar completamente."))
+	to_chat(quirk_holder, span_bolddanger("Sua [slot_string] foi substituído por um órgão excedente. É fraco e altamente instável. Além disso, qualquer PEM fará com que pare de funcionar completamente."))
 
 /datum/quirk/prosthetic_organ/remove()
 	if(old_organ)

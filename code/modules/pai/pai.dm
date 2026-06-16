@@ -268,7 +268,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/silicon/pai/update_desc(updates)
-	desc = "Um avatar holográfico de luz dura representando uma IAP. Este aparece na forma de[chassis]."
+	desc = "Um avatar holográfico de luz dura representando uma IAP. Este aparece na forma de [chassis]."
 	return ..()
 
 /mob/living/silicon/pai/update_icon_state()

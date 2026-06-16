@@ -44,7 +44,7 @@
 		return ..()
 
 	if(!silent)
-		owner.current.visible_message(span_deconversion_message("[owner.current]Parece que...[owner.current.p_theyve()]Apenas revertida para[owner.current.p_their()]Velha fé!"), ignored_mobs = owner.current)
+		owner.current.visible_message(span_deconversion_message("[owner.current] Parece que...[owner.current.p_theyve()] Apenas revertida para [owner.current.p_their()] Velha fé!"), ignored_mobs = owner.current)
 		to_chat(owner.current, span_userdanger("Uma luz branca não familiar passa pela sua mente, limpando a mancha do Geômetro e todas as suas memórias como serva dela."))
 		owner.current.log_message("has renounced the cult of Nar'Sie!", LOG_ATTACK, color=COLOR_CULT_RED)
 
@@ -151,10 +151,10 @@
 	ADD_TRAIT(item, TRAIT_CONTRABAND, INNATE_TRAIT)
 	var/where = mob.equip_conspicuous_item(item)
 	if(!where)
-		to_chat(mob, span_userdanger("Infelizmente, você não conseguiu[item]Isso é muito ruim e você deve administrar ajuda imediatamente."))
+		to_chat(mob, span_userdanger("Infelizmente, você não conseguiu [item] Isso é muito ruim e você deve administrar ajuda imediatamente."))
 		return FALSE
 
-	to_chat(mob, span_danger("Você tem[item]em seu[where]."))
+	to_chat(mob, span_danger("Você tem [item] em seu [where]."))
 	if(where == "backpack")
 		mob.back.atom_storage?.show_contents(mob)
 	return TRUE
@@ -201,7 +201,7 @@
 
 	for(var/datum/mind/cult_mind as anything in cult_team.members)
 		if (cult_mind != owner)
-			to_chat(cult_mind.current, span_cult_large("[owner.current]é o Mestre do seu culto! Siga[owner.current.p_their()]Ordens do melhor que puder!"))
+			to_chat(cult_mind.current, span_cult_large("[owner.current] é o Mestre do seu culto! Siga [owner.current.p_their()] Ordens do melhor que puder!"))
 
 	to_chat(owner.current, span_cult_large("<span class='warningplain'>Você é o Mestre do culto.</span>Como Mestre do culto, você tem um título único e voz alta quando se comunica, são capazes de marcar alvos, como um local ou um não-cultista, para direcionar o culto para eles, e, finalmente, você é capaz de convocar todo o culto vivo para sua localização<b><i>Uma vez</i></b>Use essas habilidades para direcionar o culto à vitória a qualquer custo."))
 

@@ -76,7 +76,7 @@
 
 /mob/living/basic/cow/tamed(mob/living/tamer, atom/food)
 	. = ..()
-	visible_message("[src] [tame_message]Como parece se relacionar com[tamer].", "Você.[self_tame_message], reconhecendo[tamer]Como seu novo amigo.")
+	visible_message("[src] [tame_message] Como parece se relacionar com [tamer].", "Você.[self_tame_message], reconhecendo [tamer] Como seu novo amigo.")
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cow)
 
 /*

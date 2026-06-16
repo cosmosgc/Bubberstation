@@ -39,7 +39,7 @@
 	if(!isliving(user))
 		return CLICK_ACTION_BLOCKING
 	if(user.get_active_held_item() != src)
-		to_chat(user, span_warning("Você deve segurar o[src]em suas mãos para fazer isso!"))
+		to_chat(user, span_warning("Você deve segurar o [src] em suas mãos para fazer isso!"))
 		return CLICK_ACTION_BLOCKING
 	if (!enabled_waddle)
 		to_chat(user, span_notice("Você desliga os amortecedores!"))

@@ -77,7 +77,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		return
 
 	var/client/hopper = client
-	to_chat(hopper, span_notice("Enviando você para[pick]."))
+	to_chat(hopper, span_notice("Enviando você para [pick]."))
 	var/atom/movable/screen/splash/fade_in = new(null, null, hopper, FALSE)
 	fade_in.fade(FALSE)
 

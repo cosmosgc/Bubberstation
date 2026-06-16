@@ -101,10 +101,10 @@
 		proj_damage_mult = our_gun.projectile_damage_multiplier
 	var/list/readout = list()
 	if(proj_damage_mult <= 0 || (initial_damage <= 0 && initial_stamina <= 0))
-		return "Nossa equipe legal determinou uma naturalza ofensiva destes[span_warning(caliber)]rounds para ser esotérico."
+		return "Nossa equipe legal determinou uma naturalza ofensiva destes [span_warning(caliber)] rounds para ser esotérico."
 	// No dividing by 0
 	if(initial_damage)
-		readout += "A maioria dos macacos que nossa equipe legal submeteu a estes[span_warning(caliber)]As balas sucumbiram às suas feridas depois.[span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s")]à queima-roupa, tomando[span_warning("[pellets] shot\s")]Por rodada."
+		readout += "A maioria dos macacos que nossa equipe legal submeteu a estes [span_warning(caliber)] As balas sucumbiram às suas feridas depois.[span_warning("[HITS_TO_CRIT((initial(exam_proj.damage) * proj_damage_mult) * pellets)] shot\s")]à queima-roupa, tomando[span_warning("[pellets] shot\s")]Por rodada."
 	if(initial_stamina)
 		readout += "[!readout.len ? "Most monkeys" : "More fortunate monkeys"]colapso de exaustão depois[span_warning("[HITS_TO_CRIT((initial(exam_proj.stamina) * proj_damage_mult) * pellets)] impact\s")]Destes[span_warning("[caliber]")]Rodadas."
 	return readout.Join("\n") // Sending over a single string, rather than the whole list
@@ -149,7 +149,7 @@
 					continue
 			if (boolets > 0)
 				box.update_appearance()
-				to_chat(user, span_notice("Você coleciona[boolets] [box.casing_phrasing]\s.[box]agora contém[box.stored_ammo.len] [box.casing_phrasing]\s."))
+				to_chat(user, span_notice("Você coleciona [boolets] [box.casing_phrasing]\s.[box] agora contém [box.stored_ammo.len] [box.casing_phrasing]\s."))
 			else
 				to_chat(user, span_warning("Você não consegue coletar nada!"))
 	else

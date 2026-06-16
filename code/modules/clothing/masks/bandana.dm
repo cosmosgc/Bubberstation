@@ -38,7 +38,7 @@
 
 /obj/item/clothing/mask/bandana/adjust_visor(mob/living/user)
 	if(slot_flags & ITEM_SLOT_NECK)
-		to_chat(user, span_warning("Você deve desfazer[src]Para empurrá-lo em um chapéu!"))
+		to_chat(user, span_warning("Você deve desfazer [src] Para empurrá-lo em um chapéu!"))
 		return FALSE
 	//SKYRAT EDIT ADDITION START: BANDANA HATS FOR MUTANTS
 	if(slot_flags & ITEM_SLOT_HEAD)
@@ -62,13 +62,13 @@
 	var/mob/living/carbon/char = user
 	var/matrix/widen = matrix()
 	if((char.get_item_by_slot(ITEM_SLOT_NECK) == src) || (char.get_item_by_slot(ITEM_SLOT_MASK) == src) || (char.get_item_by_slot(ITEM_SLOT_HEAD) == src))
-		to_chat(user, span_warning("Você não pode amarrar[src]Encontre o Usava!"))
+		to_chat(user, span_warning("Você não pode amarrar [src] Encontre o Usava!"))
 		return CLICK_ACTION_BLOCKING
 	else if(slot_flags & ITEM_SLOT_HEAD)
-		to_chat(user, span_warning("Você deve desfazer[src]Antes que você possa amarrá-lo em um lenço!"))
+		to_chat(user, span_warning("Você deve desfazer [src] Antes que você possa amarrá-lo em um lenço!"))
 		return CLICK_ACTION_BLOCKING
 	else if(!user.is_holding(src))
-		to_chat(user, span_warning("Você deve estar segurando.[src]para amarrá-lo!"))
+		to_chat(user, span_warning("Você deve estar segurando.[src] para amarrá-lo!"))
 		return CLICK_ACTION_BLOCKING
 
 	if(slot_flags & ITEM_SLOT_MASK)
@@ -77,7 +77,7 @@
 		worn_y_offset = -3
 		widen.Scale(1.25, 1)
 		transform = widen
-		user.visible_message(span_notice("[user]Ataduras[src]Levante-se como um lenço."), span_notice("Você amarra.[src]Levante-se como um lenço."))
+		user.visible_message(span_notice("[user] Ataduras [src] Levante-se como um lenço."), span_notice("Você amarra.[src] Levante-se como um lenço."))
 		flags_inv = NONE
 		flags_cover = NONE
 		return CLICK_ACTION_SUCCESS
@@ -86,7 +86,7 @@
 	slot_flags = initial(slot_flags)
 	worn_y_offset = initial(worn_y_offset)
 	transform = initial(transform)
-	user.visible_message(span_notice("[user]Desamarra o pescoço."), span_notice("Você desamarra o pescoço."))
+	user.visible_message(span_notice("[user] Desamarra o pescoço."), span_notice("Você desamarra o pescoço."))
 	flags_inv = initial(flags_inv)
 	flags_cover = initial(flags_cover)
 	return CLICK_ACTION_SUCCESS
@@ -266,4 +266,4 @@
 
 /obj/item/clothing/mask/facescarf/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click[src]Para ajustar.")
+	. += span_notice("Alt-click [src] Para ajustar.")

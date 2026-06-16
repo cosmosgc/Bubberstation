@@ -216,7 +216,7 @@
 	mask?.random_look()
 
 /obj/item/clothing/mask/chameleon/drone/attack_self(mob/user)
-	to_chat(user, span_notice("[src]Não tem um trocador de voz."))
+	to_chat(user, span_notice("[src] Não tem um trocador de voz."))
 
 // Cham shoes, including chameleon noslips
 /datum/armor/shoes_chameleon

@@ -58,7 +58,7 @@
 	choke_loop = new /datum/looping_sound/choking(owner)
 	check_audio_state()
 
-	owner.visible_message(span_bolddanger("[owner]Tenta falar, mas não consegue! Estão engasgando!"), 		span_userdanger("Você tenta respirar, mas há um bloqueio! Você está sufocando!"), 	)
+	owner.visible_message(span_bolddanger("[owner] Tenta falar, mas não consegue! Estão engasgando!"), 		span_userdanger("Você tenta respirar, mas há um bloqueio! Você está sufocando!"), 	)
 
 	//barticles
 	if(flaming)
@@ -120,7 +120,7 @@
 		choking_on.throw_at(target, distance, 1, source)
 
 /datum/status_effect/choke/get_examine_text()
-	return span_boldwarning("[owner.p_They()] [owner.p_are()]Engasgando!")
+	return span_boldwarning("[owner.p_They()] [owner.p_are()] Engasgando!")
 
 /datum/status_effect/choke/proc/remove_choke(datum/source)
 	SIGNAL_HANDLER
@@ -195,9 +195,9 @@
 
 	var/mob/living/livin_victim = victim
 	if(iscarbon(aggressor) && livin_victim.body_position == STANDING_UP)
-		owner.visible_message(span_warning("[aggressor]Envoltório[aggressor.p_their()]braços ao redor[victim]E começa a empurrar[aggressor.p_their()]punhos em direção a si mesmos!"), 			span_boldwarning("[aggressor]Envoltório[aggressor.p_their()]braços ao seu redor, e começa a empurrar suas mãos para o seu peito.[capitalize(GLOB.deity)]Isso dói!"), 			)
+		owner.visible_message(span_warning("[aggressor] Envoltório [aggressor.p_their()] braços ao redor [victim] E começa a empurrar [aggressor.p_their()] punhos em direção a si mesmos!"), 			span_boldwarning("[aggressor] Envoltório [aggressor.p_their()] braços ao seu redor, e começa a empurrar suas mãos para o seu peito.[capitalize(GLOB.deity)] Isso dói!"), 			)
 	else
-		owner.visible_message(span_warning("[aggressor]Lugares[aggressor.p_their()] [hand_name]Está ligado.[victim]Está de volta, e começa a bater com força!"), 			span_boldwarning("Você sente[aggressor]\s[hand_name]Está de costas, e depois repetiu o golpe!"))
+		owner.visible_message(span_warning("[aggressor] Lugares [aggressor.p_their()] [hand_name] Está ligado.[victim] Está de volta, e começa a bater com força!"), 			span_boldwarning("Você sente [aggressor]\s [hand_name] Está de costas, e depois repetiu o golpe!"))
 
 	if(!do_after(aggressor, 7 SECONDS, victim, extra_checks = CALLBACK(src, PROC_REF(thrusting_continues), victim, aggressor), interaction_key = "heimlich"))
 		aggressor.stop_pulling()
@@ -205,7 +205,7 @@
 	aggressor.stop_pulling()
 
 	var/atom/movable/choking_on = choking_on_ref?.resolve()
-	owner.visible_message(span_green("[victim]Vomite.\the[choking_on]. [victim.p_theyre()]Vai conseguir!"), 			span_green("Vomita aquele maldito bloqueio. Você pode respirar! O peito quebrado é um ótimo preço a pagar."))
+	owner.visible_message(span_green("[victim] Vomite.\the [choking_on]. [victim.p_theyre()] Vai conseguir!"), 			span_green("Vomita aquele maldito bloqueio. Você pode respirar! O peito quebrado é um ótimo preço a pagar."))
 	if(iscarbon(victim))
 		var/mob/living/carbon/carbon_victim = victim
 		var/obj/item/bodypart/chest = carbon_victim.get_bodypart(BODY_ZONE_CHEST)

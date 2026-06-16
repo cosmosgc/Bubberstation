@@ -142,7 +142,7 @@
 		disk_ban += "powers"
 
 	if(length(import_ban))
-		to_chat(neo, span_warning("Este domínio proíbe o uso de[english_list(import_ban)]Sua carga externa[english_list(disk_ban)]Não será concedido!"))
+		to_chat(neo, span_warning("Este domínio proíbe o uso de [english_list(import_ban)] Sua carga externa [english_list(disk_ban)] Não será concedido!"))
 
 	var/return_flags = NONE
 	return_flags = SEND_SIGNAL(neo, COMSIG_BITRUNNER_STOCKING_GEAR, avatar, domain_forbids_flags)

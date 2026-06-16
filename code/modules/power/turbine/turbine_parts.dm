@@ -14,12 +14,12 @@
 
 /obj/item/turbine_parts/examine(mob/user)
 	. = ..()
-	. += span_notice("Este é um nível[current_tier]parte da turbina, classificada para[get_tier_value(TURBINE_MAX_RPM)]RPM e[get_tier_value(TURBINE_MAX_TEMP)]K.")
+	. += span_notice("Este é um nível [current_tier] parte da turbina, classificada para [get_tier_value(TURBINE_MAX_RPM)] RPM e [get_tier_value(TURBINE_MAX_TEMP)] K.")
 
 	var/list/required_parts = get_tier_upgrades()
 	if(length(required_parts))
 		var/obj/item/stack/material = required_parts[TURBINE_UPGRADE_PART]
-		. += span_notice("Pode ser atualizado com[required_parts[TURBINE_UPGRADE_AMOUNT]] [initial(material.name)]Lençóis.")
+		. += span_notice("Pode ser atualizado com [required_parts[TURBINE_UPGRADE_AMOUNT]] [initial(material.name)] Lençóis.")
 	else
 		. += span_notice("Já está no nível máximo.")
 
@@ -81,7 +81,7 @@
 
 	var/amount = required_parts[TURBINE_UPGRADE_AMOUNT]
 	if(material.amount < amount)
-		balloon_alert(user, "Requer[amount]Lençóis!")
+		balloon_alert(user, "Requer [amount] Lençóis!")
 		return ITEM_INTERACT_FAILURE
 
 	if(do_after(user, current_tier SECONDS, src) && material.use(amount))

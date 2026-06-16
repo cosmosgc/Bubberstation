@@ -307,7 +307,7 @@
 
 	var/damage = take_damage(final_force, attacking_item.damtype, MELEE, 1, get_dir(src, user))
 	//only witnesses close by and the victim see a hit message.
-	user.visible_message(span_danger("[user]hits[src]Com[attacking_item][damage ? "." : ", without leaving a mark!"]"), 		span_danger("Você bateu.[src]Com[attacking_item][damage ? "." : ", without leaving a mark!"]"), null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_danger("[user] hits [src] Com [attacking_item][damage ? "." : ", without leaving a mark!"]"), 		span_danger("Você bateu.[src] Com [attacking_item][damage ? "." : ", without leaving a mark!"]"), null, COMBAT_MESSAGE_RANGE)
 	log_combat(user, src, "attacked", attacking_item)
 	return damage
 
@@ -429,7 +429,7 @@
 					adjust_organ_loss(ORGAN_SLOT_BRAIN, 20)
 					if(stat == CONSCIOUS)
 						visible_message(
-							span_danger("[src]Não tem sentido!"),
+							span_danger("[src] Não tem sentido!"),
 							span_userdanger("Você não tem sentido!"),
 						)
 						set_confusion_if_lower(20 SECONDS)
@@ -452,7 +452,7 @@
 			if(stat == CONSCIOUS && !attacking_item.get_sharpness() && !HAS_TRAIT(src, TRAIT_BRAWLING_KNOCKDOWN_BLOCKED) && attacking_item.damtype == BRUTE)
 				if(prob(damage_done))
 					visible_message(
-						span_danger("[src]é derrubado!"),
+						span_danger("[src] é derrubado!"),
 						span_userdanger("Você foi derrubado!"),
 					)
 					apply_effect(6 SECONDS, EFFECT_KNOCKDOWN, armor_block)

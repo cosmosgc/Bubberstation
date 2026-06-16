@@ -25,9 +25,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a pacificar[FORMAT_ORGAN_OWNER(organ)]..."),
-		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
-		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("Você começa a pacificar [FORMAT_ORGAN_OWNER(organ)]..."),
+		span_notice("[surgeon] Começa a consertar.[FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
+		span_notice("[surgeon] Começa a operar em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!")
 
@@ -36,8 +36,8 @@
 		surgeon,
 		organ.owner,
 		span_notice("Você consegue pacificar.[FORMAT_ORGAN_OWNER(organ)]."),
-		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]!"),
-		span_notice("[surgeon]completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("[surgeon] Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]!"),
+		span_notice("[surgeon] completa a cirurgia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds... the concept of violence flashes in your head, and nearly makes you hurl!")
 	organ.gain_trauma(/datum/brain_trauma/severe/pacifism, TRAUMA_RESILIENCE_LOBOTOMY)
@@ -46,9 +46,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você estraga tudo, religando[FORMAT_ORGAN_OWNER(organ)]O cérebro está errado..."),
-		span_warning("[surgeon]Estraga tudo, causando danos cerebrais!"),
-		span_notice("[surgeon]completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("Você estraga tudo, religando [FORMAT_ORGAN_OWNER(organ)] O cérebro está errado..."),
+		span_warning("[surgeon] Estraga tudo, causando danos cerebrais!"),
+		span_notice("[surgeon] completa a cirurgia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds, and it feels like it's getting worse!")
 	organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)

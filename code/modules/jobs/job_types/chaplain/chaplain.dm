@@ -54,7 +54,7 @@
 			holy_bible.icon_state = GLOB.bible_icon_state
 		if(GLOB.bible_inhand_icon_state)
 			holy_bible.inhand_icon_state = GLOB.bible_inhand_icon_state
-		to_chat(human_spawned, span_boldnotice("Já existe uma religião estabelecida a bordo da estação. Você é um acólito de[GLOB.deity]Derrote ao Capelão."))
+		to_chat(human_spawned, span_boldnotice("Já existe uma religião estabelecida a bordo da estação. Você é um acólito de [GLOB.deity] Derrote ao Capelão."))
 		human_spawned.equip_to_storage(holy_bible, ITEM_SLOT_BACK, indirect_action = TRUE, del_on_fail = TRUE)
 		var/nrt = GLOB.holy_weapon_type || /obj/item/nullrod
 		var/obj/item/nullrod/nullrod = new nrt(human_spawned)

@@ -34,10 +34,10 @@
 	return 1
 
 /obj/item/stack/ore/bluespace_crystal/attack_self(mob/user)
-	user.visible_message(span_warning("[user]Começa a esmagar[src]!"), span_danger("Você começa a esmagar[src]!")) //BUBBERSTATION ADDITION
+	user.visible_message(span_warning("[user] Começa a esmagar [src]!"), span_danger("Você começa a esmagar [src]!")) //BUBBERSTATION ADDITION
 	if(!do_after(user, delay = 1.5 SECONDS)) //BUBBERSTATION ADDITION
 		return //BUBBERSTATION ADDITION
-	user.visible_message(span_warning("[user]Quedas.[src]!"), span_danger("Você esmaga[src]!"))
+	user.visible_message(span_warning("[user] Quedas.[src]!"), span_danger("Você esmaga [src]!"))
 	new /obj/effect/particle_effect/sparks(loc)
 	playsound(loc, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	blink_mob(user)
@@ -48,7 +48,7 @@
 
 /obj/item/stack/ore/bluespace_crystal/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(!..()) // not caught in mid-air
-		visible_message(span_notice("[src]Falha e desaparecimento com o impacto!"))
+		visible_message(span_notice("[src] Falha e desaparecimento com o impacto!"))
 		var/turf/T = get_turf(hit_atom)
 		new /obj/effect/particle_effect/sparks(T)
 		playsound(loc, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

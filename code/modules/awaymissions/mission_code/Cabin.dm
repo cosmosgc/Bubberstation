@@ -122,7 +122,7 @@
 	user.balloon_alert_to_viewers("activating...")
 
 /obj/structure/ladder/unbreakable/rune/show_final_fluff_message(mob/user, going_up)
-	visible_message(span_notice("[user]Ativa.[src]e se teletransporta."))
+	visible_message(span_notice("[user] Ativa.[src] e se teletransporta."))
 	user.balloon_alert_to_viewers("warped in")
 
 /obj/structure/ladder/unbreakable/rune/use(mob/user, going_up = TRUE)

@@ -31,7 +31,7 @@
 		desc = src::desc
 		return
 	var/obj/item/inserted = locate(/obj/item) in atom_storage.real_location
-	desc = "Um saco de evidências contendo[inserted]. [inserted.desc]"
+	desc = "Um saco de evidências contendo [inserted]. [inserted.desc]"
 
 /obj/item/evidencebag/update_icon_state()
 	. = ..()
@@ -66,8 +66,8 @@
 
 /obj/item/evidencebag/attack_self(mob/user)
 	if(!atom_storage.get_total_weight())
-		to_chat(user, span_notice("[src]Está vazio."))
+		to_chat(user, span_notice("[src] Está vazio."))
 		return
-	user.visible_message(span_notice("[user]Vazios[src]."), span_notice("Você está vazio.[src]."),	span_hear("Você ouve alguém rosnando em um saco plástico, e remove algo."))
+	user.visible_message(span_notice("[user] Vazios [src]."), span_notice("Você está vazio.[src]."),	span_hear("Você ouve alguém rosnando em um saco plástico, e remove algo."))
 	playsound(src,'sound/items/evidence_bag/evidence_bag_unzip.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
 	atom_storage.remove_all()

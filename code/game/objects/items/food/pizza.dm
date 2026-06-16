@@ -57,7 +57,7 @@
 	if(!sliced)
 		slice(user, tool)
 		return ITEM_INTERACT_SUCCESS
-	user.visible_message(span_notice("[user]Separados.[src]em fatias individuais com[tool]."))
+	user.visible_message(span_notice("[user] Separados.[src] em fatias individuais com [tool]."))
 	cut_apart()
 	return ITEM_INTERACT_SUCCESS
 
@@ -65,7 +65,7 @@
 	. = NONE
 	if(isnull(slice_type) || !(tool.tool_behaviour in cutting_tools))
 		return
-	visible_message(span_notice("[user]Separados.[src]em fatias individuais com[tool]."))
+	visible_message(span_notice("[user] Separados.[src] em fatias individuais com [tool]."))
 	cut_apart()
 	return ITEM_INTERACT_SUCCESS
 
@@ -73,7 +73,7 @@
 	. = ..()
 	if(!sliced)
 		return
-	user.visible_message(span_notice("[user]Pega uma fatia de[src]."), span_notice("Você pega uma fatia de[src]."))
+	user.visible_message(span_notice("[user] Pega uma fatia de [src]."), span_notice("Você pega uma fatia de [src]."))
 	produce_slice(user)
 
 /obj/item/food/pizza/proc/get_slices_filter() //to not repeat code
@@ -85,7 +85,7 @@
 		return
 	tool?.play_tool_sound(src)
 	sliced = TRUE
-	user?.visible_message(span_notice("[user]Cortes.[src]Em 6 fatias com[tool]."))
+	user?.visible_message(span_notice("[user] Cortes.[src] Em 6 fatias com [tool]."))
 	interaction_flags_item &= ~INTERACT_ITEM_ATTACK_HAND_PICKUP
 
 /obj/item/food/pizza/proc/cut_apart()
@@ -491,7 +491,7 @@
 	if(!did_the_thing)
 		return
 	to_chat(user, span_userdanger("Talvez eu te dê uma pizza, talvez eu quebre seu braço.")) //makes the reference more obvious
-	user.visible_message(span_warning("\The [src]Quebre-se.[user]O braço!"), span_warning("\The [src]Quebre seu braço!"))
+	user.visible_message(span_warning("\The [src] Quebre-se.[user] O braço!"), span_warning("\The [src] Quebre seu braço!"))
 	playsound(user, SFX_DESECRATION, 50, TRUE, -1)
 
 /obj/item/food/proc/i_kill_you(obj/item/item, mob/living/user)

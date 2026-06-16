@@ -32,7 +32,7 @@
 			user.add_mood_event("artbad", /datum/mood_event/artbad)
 			msg = "Wow, [source.p_they()] sucks."
 
-	user.visible_message(span_notice("[user]Para e olha atentamente para[source]."), 		span_notice("Você avalia[source]... [msg]"))
+	user.visible_message(span_notice("[user] Para e olha atentamente para [source]."), 		span_notice("Você avalia [source]... [msg]"))
 
 /datum/element/art/proc/on_examine(atom/source, mob/user, list/examine_texts)
 	SIGNAL_HANDLER
@@ -42,7 +42,7 @@
 		INVOKE_ASYNC(src, PROC_REF(appraise), source, user) //Do not sleep the proc.
 
 /datum/element/art/proc/appraise(atom/source, mob/user)
-	to_chat(user, span_notice("Você começa a avaliar[source]..."))
+	to_chat(user, span_notice("Você começa a avaliar [source]..."))
 	if(!do_after(user, 2 SECONDS, target = source))
 		return
 	var/mult = 1
@@ -61,7 +61,7 @@
 		user.add_mood_event("artbad", /datum/mood_event/artbad)
 		msg = "Wow, [source.p_they()] sucks."
 
-	user.visible_message(span_notice("[user]Pare para inspecionar.[source]."), 		span_notice("Você avalia[source], inspecionando o bom ofício do proletariado...[msg]"))
+	user.visible_message(span_notice("[user] Pare para inspecionar.[source]."), 		span_notice("Você avalia [source], inspecionando o bom ofício do proletariado...[msg]"))
 
 /datum/element/art/commoner
 
@@ -84,4 +84,4 @@
 		user.add_mood_event("artbad", /datum/mood_event/artbad)
 		msg = "Wow, [source.p_they()] sucks."
 
-	user.visible_message(span_notice("[user]Pare para inspecionar.[source]."), 		span_notice("Você avalia[source], inspecionando o bom ofício do proletariado...[msg]"))
+	user.visible_message(span_notice("[user] Pare para inspecionar.[source]."), 		span_notice("Você avalia [source], inspecionando o bom ofício do proletariado...[msg]"))

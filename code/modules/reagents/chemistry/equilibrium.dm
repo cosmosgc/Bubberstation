@@ -368,8 +368,8 @@
 
 	#ifdef REAGENTS_TESTING //Kept in so that people who want to write fermireactions can contact me with this log so I can help them
 	debug_admins(span_green("Passo de reação ativo para:[reaction.type]"))
-	debug_admins(span_notice("Condições de reação Temp:[holder.chem_temp], pH:[holder.ph], reações:[length(holder.reaction_list)]Reagentes:[length(holder.reagent_list)]"))
-	debug_admins(span_warning("Reação:[reacted_vol]de[step_target_vol]total[target_vol]Delta t[delta_t], multiplicador[multiplier], fator delta quim [delta_chem_factor]Pfactor[product_ratio], pureza de[purity]De um delta-ph de[delta_ph]DeltaTime:[seconds_per_tick]"))
+	debug_admins(span_notice("Condições de reação Temp:[holder.chem_temp], pH:[holder.ph], reações:[length(holder.reaction_list)] Reagentes:[length(holder.reagent_list)]"))
+	debug_admins(span_warning("Reação:[reacted_vol] de [step_target_vol] total [target_vol] Delta t [delta_t], multiplicador [multiplier], fator delta quim [delta_chem_factor] Pfactor [product_ratio], pureza de [purity] De um delta-ph de [delta_ph] DeltaTime:[seconds_per_tick]"))
 	#endif
 
 	//Apply thermal output of reaction to beaker

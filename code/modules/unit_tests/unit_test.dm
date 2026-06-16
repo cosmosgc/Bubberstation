@@ -141,10 +141,10 @@ GLOBAL_VAR_INIT(focused_tests, focused_tests())
 	var/path_prefix = replacetext(replacetext("[type]", "/datum/unit_test/", ""), "/", "_")
 	name = replacetext(name, "/", "_")
 
-	var/filename = "code/modules/unit_tests/screenshots/[path_prefix]_[name].png"
+	var/filename = "code/modules/unit_tests/screenshots/[path_prefix] _ [name].png"
 
 	if (fexists(filename))
-		var/data_filename = "data/screenshots/[path_prefix]_[name].png"
+		var/data_filename = "data/screenshots/[path_prefix] _ [name].png"
 		fcopy(icon, data_filename)
 		log_test("\t[path_prefix]_[name] was found, putting in data/screenshots")
 	else

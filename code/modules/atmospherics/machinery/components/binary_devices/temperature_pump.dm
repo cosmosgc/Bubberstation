@@ -36,7 +36,7 @@
 
 	heat_transfer_rate = max_heat_transfer_rate
 	investigate_log("was set to [heat_transfer_rate]% by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "Taxa de transferência definida para[heat_transfer_rate]%")
+	balloon_alert(user, "Taxa de transferência definida para [heat_transfer_rate]%")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 

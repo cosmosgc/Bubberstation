@@ -105,7 +105,7 @@
 	animate(baller, pixel_w = dunk_pixel_w, pixel_z = dunk_pixel_z, time = 0.5 SECONDS, easing = BOUNCE_EASING|EASE_IN|EASE_OUT, flags = ANIMATION_PARALLEL|ANIMATION_RELATIVE)
 	animate(pixel_w = -dunk_pixel_w, pixel_z = -dunk_pixel_z, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE)
 
-	visible_message(span_warning("[baller]Mergulhos.[ball]Em\the [src]!"))
+	visible_message(span_warning("[baller] Mergulhos.[ball] Em\the [src]!"))
 	baller.add_mood_event("basketball", /datum/mood_event/basketball_dunk)
 	score(ball, baller, 2)
 
@@ -126,7 +126,7 @@
 		return
 	loser.forceMove(loc)
 	loser.Paralyze(100)
-	visible_message(span_danger("[baller]Mergulhos.[loser]Em\the [src]!"))
+	visible_message(span_danger("[baller] Mergulhos.[loser] Em\the [src]!"))
 	playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 100, FALSE)
 	baller.adjust_stamina_loss(STAMINA_COST_DUNKING_MOB)
 	baller.stop_pulling()
@@ -167,9 +167,9 @@
 		var/points = (distance > 2) ? 3 : 2
 		thrower.add_mood_event("basketball", /datum/mood_event/basketball_score)
 		score(AM, thrower, points)
-		visible_message(span_warning("[click_on_hoop ? "Swish!" : ""] [AM]Aterra em[src]."))
+		visible_message(span_warning("[click_on_hoop ? "Swish!" : ""] [AM] Aterra em [src]."))
 	else
-		visible_message(span_danger("[AM]Rebater de[src]'s[click_on_hoop ? "rim" : "backboard"]!"))
+		visible_message(span_danger("[AM] Rebater de [src]'s[click_on_hoop ? "rim" : "backboard"]!"))
 
 // Special hoops for the minigame
 /obj/structure/hoop/minigame

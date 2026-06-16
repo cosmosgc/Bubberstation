@@ -148,7 +148,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	visible_message(span_warning("As faíscas voam para fora[src]!"))
+	visible_message(span_warning("As faíscas voam para fora [src]!"))
 	if(user)
 		balloon_alert(user, "gravidade insegura desbloqueada")
 		user.log_message("emagged [src].", LOG_ATTACK)

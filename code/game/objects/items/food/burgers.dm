@@ -34,7 +34,7 @@
 		return
 	new/obj/effect/particle_effect/fluid/smoke(get_turf(src))
 	playsound(src, 'sound/effects/smoke.ogg', 50, TRUE)
-	visible_message(span_warning("Oh, Deuses![src]Está arruinado! Mas e se...?"))
+	visible_message(span_warning("Oh, Deuses![src] Está arruinado! Mas e se...?"))
 	name = "steamed ham"
 	desc = pick("Chefe de Pessoal, bem-vindo. Espero que esteja preparado para um almoço inesquecível!",
 		"And you call these steamed hams despite the fact that they are obviously microwaved?",
@@ -262,7 +262,7 @@
 		if(62 to 64)
 			playsound(loc, SFX_HALLUCINATION_I_SEE_YOU, 50, TRUE, ignore_walls = FALSE)
 		if(61)
-			visible_message("[src]Despeja uma vez de ectoplasma!")
+			visible_message("[src] Despeja uma vez de ectoplasma!")
 			new /obj/effect/decal/cleanable/greenglow/ecto(loc)
 			playsound(loc, 'sound/effects/splat.ogg', 200, TRUE)
 
@@ -472,7 +472,7 @@
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT * 2)
 
 /obj/item/food/burger/superbite/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a comer.[src]em uma mordida, parece que[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a comer.[src] em uma mordida, parece que [user.p_theyre()] Tentando cometer suicídio!"))
 	var/datum/component/edible/component = GetComponent(/datum/component/edible)
 	component?.TakeBite(user, user)
 	return OXYLOSS

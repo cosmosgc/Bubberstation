@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a mudar[limb.owner || limb]A aparência..."),
-		span_notice("[surgeon]Começa a alterar[limb.owner || limb]A aparência."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a mudar [limb.owner || limb] A aparência..."),
+		span_notice("[surgeon] Começa a alterar [limb.owner || limb] A aparência."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a slicing pain across your face!")
 
@@ -76,9 +76,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_notice("Você restaura com sucesso.[limb.owner || limb]A aparência."),
-			span_notice("[surgeon]com sucesso restaura[limb.owner || limb]A aparência!"),
-			span_notice("[surgeon]Termina a operação.[limb.owner ? "[limb.owner]'s face." : limb]"),
+			span_notice("Você restaura com sucesso.[limb.owner || limb] A aparência."),
+			span_notice("[surgeon] com sucesso restaura [limb.owner || limb] A aparência!"),
+			span_notice("[surgeon] Termina a operação.[limb.owner ? "[limb.owner]'s face." : limb]"),
 		)
 		display_pain(limb.owner, "The pain fades, your face feels normal again!")
 		return
@@ -92,9 +92,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você altera.[oldname]A aparência completamente,[limb.owner.p_they()]é agora[operation_args[OPERATION_NEW_NAME]]."),
-		span_notice("[surgeon]alters[oldname]A aparência completamente,[limb.owner.p_they()]é agora[operation_args[OPERATION_NEW_NAME]]!"),
-		span_notice("[surgeon]Termina a operação.[limb.owner ? "[limb.owner]'s face." : limb]."),
+		span_notice("Você altera.[oldname] A aparência completamente,[limb.owner.p_they()] é agora [operation_args[OPERATION_NEW_NAME]]."),
+		span_notice("[surgeon] alters [oldname] A aparência completamente,[limb.owner.p_they()] é agora [operation_args[OPERATION_NEW_NAME]]!"),
+		span_notice("[surgeon] Termina a operação.[limb.owner ? "[limb.owner]'s face." : limb]."),
 	)
 	display_pain(limb.owner, "The pain fades, your face feels new and unfamiliar!")
 	if(ishuman(limb.owner))
@@ -108,9 +108,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("Você estragou tudo, indo embora.[limb.owner || limb]A aparência desfigurada!"),
-		span_warning("[surgeon]Estraga tudo, desfigura[limb.owner || limb]A aparência!"),
-		span_notice("[surgeon]Termina a operação.[limb.owner ? "[limb.owner]'s face." : limb]."),
+		span_warning("Você estragou tudo, indo embora.[limb.owner || limb] A aparência desfigurada!"),
+		span_warning("[surgeon] Estraga tudo, desfigura [limb.owner || limb] A aparência!"),
+		span_notice("[surgeon] Termina a operação.[limb.owner ? "[limb.owner]'s face." : limb]."),
 	)
 	display_pain(limb.owner, "Your face feels horribly scarred and deformed!")
 	ADD_TRAIT(limb, TRAIT_DISFIGURED, TRAIT_GENERIC)
@@ -141,9 +141,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a aplicar plástico para[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a aplicar plástico para[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a operar em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a aplicar plástico para [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a aplicar plástico para [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a operar em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a strange sensation as something is applied to your face!")
 

@@ -79,13 +79,13 @@
 		return
 
 /obj/item/organ/heart/gland/heal/proc/reject_implant(obj/item/implant/implant)
-	owner.visible_message(span_warning("[owner]Vomita um pequeno implante mutilado!"), span_userdanger("Você de repente vomita um pequeno implante mutilado!"))
+	owner.visible_message(span_warning("[owner] Vomita um pequeno implante mutilado!"), span_userdanger("Você de repente vomita um pequeno implante mutilado!"))
 	owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 	implant.removed(owner)
 	qdel(implant)
 
 /obj/item/organ/heart/gland/heal/proc/reject_cyberimp(obj/item/organ/cyberimp/implant)
-	owner.visible_message(span_warning("[owner]Ele vomitou.[implant.name]!"), span_userdanger("Você de repente vomita seu[implant.name]!"))
+	owner.visible_message(span_warning("[owner] Ele vomitou.[implant.name]!"), span_userdanger("Você de repente vomita seu [implant.name]!"))
 	owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 	implant.Remove(owner)
 	implant.forceMove(owner.drop_location())
@@ -95,7 +95,7 @@
 		owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 		appendix.Remove(owner)
 		appendix.forceMove(owner.drop_location())
-		owner.visible_message(span_warning("[owner]Ele vomitou.[appendix.name]!"), span_userdanger("Você de repente vomita seu[appendix.name]!"))
+		owner.visible_message(span_warning("[owner] Ele vomitou.[appendix.name]!"), span_userdanger("Você de repente vomita seu [appendix.name]!"))
 	else
 		to_chat(owner, span_warning("Você sente um barulho estranho em seus intestinos..."))
 
@@ -107,7 +107,7 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_liver(obj/item/organ/liver/liver)
 	if(liver)
-		owner.visible_message(span_warning("[owner]Ele vomitou.[liver.name]!"), span_userdanger("Você de repente vomita seu[liver.name]!"))
+		owner.visible_message(span_warning("[owner] Ele vomitou.[liver.name]!"), span_userdanger("Você de repente vomita seu [liver.name]!"))
 		owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 		liver.Remove(owner)
 		liver.forceMove(owner.drop_location())
@@ -122,7 +122,7 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_lungs(obj/item/organ/lungs/lungs)
 	if(lungs)
-		owner.visible_message(span_warning("[owner]Ele vomitou.[lungs.name]!"), span_userdanger("Você de repente vomita seu[lungs.name]!"))
+		owner.visible_message(span_warning("[owner] Ele vomitou.[lungs.name]!"), span_userdanger("Você de repente vomita seu [lungs.name]!"))
 		owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 		lungs.Remove(owner)
 		lungs.forceMove(owner.drop_location())
@@ -137,7 +137,7 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_stomach(obj/item/organ/stomach/stomach)
 	if(stomach)
-		owner.visible_message(span_warning("[owner]Ele vomitou.[stomach.name]!"), span_userdanger("Você de repente vomita seu[stomach.name]!"))
+		owner.visible_message(span_warning("[owner] Ele vomitou.[stomach.name]!"), span_userdanger("Você de repente vomita seu [stomach.name]!"))
 		owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 		stomach.Remove(owner)
 		stomach.forceMove(owner.drop_location())
@@ -152,7 +152,7 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_eyes(obj/item/organ/eyes/eyes)
 	if(eyes)
-		owner.visible_message(span_warning("[owner]'s[eyes.name]Caiam de suas órbitas!"), span_userdanger("Sua[eyes.name]Caiam de suas órbitas!"))
+		owner.visible_message(span_warning("[owner]'s [eyes.name] Caiam de suas órbitas!"), span_userdanger("Sua [eyes.name] Caiam de suas órbitas!"))
 		playsound(owner, 'sound/effects/splat.ogg', 50, TRUE)
 		eyes.Remove(owner)
 		eyes.forceMove(owner.drop_location())
@@ -167,27 +167,27 @@
 		eye_type = owner.dna.species.mutanteyes
 	var/obj/item/organ/eyes/new_eyes = new eye_type()
 	new_eyes.Insert(owner)
-	owner.visible_message(span_warning("Um par de novos olhos de arrependimento[owner]As órbitas dos olhos!"), span_userdanger("Um par de novos olhos de arrependimento infla em seus olhos!"))
+	owner.visible_message(span_warning("Um par de novos olhos de arrependimento [owner] As órbitas dos olhos!"), span_userdanger("Um par de novos olhos de arrependimento infla em seus olhos!"))
 
 /obj/item/organ/heart/gland/heal/proc/replace_limb(body_zone, obj/item/bodypart/limb)
 	if(limb)
-		owner.visible_message(span_warning("[owner]'s[limb.plaintext_zone]De arrependimento se desprende de[owner.p_their()]Corpo!"), span_userdanger("Sua[limb.plaintext_zone]De arrepender-se de seu corpo!"))
+		owner.visible_message(span_warning("[owner]'s [limb.plaintext_zone] De arrependimento se desprende de [owner.p_their()] Corpo!"), span_userdanger("Sua [limb.plaintext_zone] De arrepender-se de seu corpo!"))
 		playsound(owner, SFX_DESECRATION, 50, TRUE, -1)
 		limb.drop_limb()
 	else
-		to_chat(owner, span_warning("Você sente um formigamento estranho no seu[parse_zone(body_zone)]Mesmo que você não tenha um."))
+		to_chat(owner, span_warning("Você sente um formigamento estranho no seu [parse_zone(body_zone)] Mesmo que você não tenha um."))
 
 	addtimer(CALLBACK(src, PROC_REF(finish_replace_limb), body_zone), rand(15 SECONDS, 30 SECONDS))
 
 /obj/item/organ/heart/gland/heal/proc/finish_replace_limb(body_zone)
-	owner.visible_message(span_warning("Com um estalo alto,[owner]'s[parse_zone(body_zone)]Rapidamente cresce de volta[owner.p_their()]Corpo!"),
-	span_userdanger("Com um estalo alto, seu[parse_zone(body_zone)]Rápido, crescendo de volta do seu corpo!"),
+	owner.visible_message(span_warning("Com um estalo alto,[owner]'s [parse_zone(body_zone)] Rapidamente cresce de volta [owner.p_their()] Corpo!"),
+	span_userdanger("Com um estalo alto, seu [parse_zone(body_zone)] Rápido, crescendo de volta do seu corpo!"),
 	span_warning("Ouça um estalo alto."))
 	playsound(owner, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	owner.regenerate_limb(body_zone)
 
 /obj/item/organ/heart/gland/heal/proc/replace_blood()
-	owner.visible_message(span_warning("[owner]Começa a vomitar enormes quantidades de sangue!"), span_userdanger("Você de repente começa a vomitar grandes quantidades de sangue!"))
+	owner.visible_message(span_warning("[owner] Começa a vomitar enormes quantidades de sangue!"), span_userdanger("Você de repente começa a vomitar grandes quantidades de sangue!"))
 	keep_replacing_blood()
 
 /obj/item/organ/heart/gland/heal/proc/keep_replacing_blood()
@@ -211,14 +211,14 @@
 
 /obj/item/organ/heart/gland/heal/proc/replace_chest(obj/item/bodypart/chest/chest)
 	if(!IS_ORGANIC_LIMB(chest))
-		owner.visible_message(span_warning("[owner]'s[chest.name]expele rapidamente seus componentes mecânicos, substituindo-os por carne!"), span_userdanger("Sua[chest.name]expele rapidamente seus componentes mecânicos, substituindo-os por carne!"))
+		owner.visible_message(span_warning("[owner]'s [chest.name] expele rapidamente seus componentes mecânicos, substituindo-os por carne!"), span_userdanger("Sua [chest.name] expele rapidamente seus componentes mecânicos, substituindo-os por carne!"))
 		playsound(owner, 'sound/effects/magic/clockwork/anima_fragment_attack.ogg', 50, TRUE)
 		var/list/dirs = GLOB.alldirs.Copy()
 		for(var/i in 1 to 3)
 			var/obj/effect/decal/cleanable/blood/gibs/robot_debris/debris = new(get_turf(owner))
 			debris.streak(dirs)
 	else
-		owner.visible_message(span_warning("[owner]'s[chest.name]Larga sua carne danificada, substituindo um rápido!"), span_warning("Sua[chest.name]Larga sua carne danificada, substituindo um rápido!"))
+		owner.visible_message(span_warning("[owner]'s [chest.name] Larga sua carne danificada, substituindo um rápido!"), span_warning("Sua [chest.name] Larga sua carne danificada, substituindo um rápido!"))
 		playsound(owner, 'sound/effects/splat.ogg', 50, TRUE)
 		var/list/dirs = GLOB.alldirs.Copy()
 		for(var/i in 1 to 3)

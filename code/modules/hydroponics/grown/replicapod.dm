@@ -74,7 +74,7 @@
 		return
 
 	if(!blood.data["mind"] || !blood.data["cloneable"])
-		visible_message(span_warning("O[src]Rejeita a amostra!"))
+		visible_message(span_warning("O [src] Rejeita a amostra!"))
 		return
 
 	mind = blood.data["mind"]
@@ -87,7 +87,7 @@
 	quirks = blood.data["quirks"]
 	sampleDNA = blood.data["blood_DNA"]
 	contains_sample = TRUE
-	visible_message(span_notice("O[src]é injetado com uma amostra de sangue fresco."))
+	visible_message(span_notice("O [src] é injetado com uma amostra de sangue fresco."))
 	investigate_log("[key_name(mind)]'s cloning record was added to [src]", INVESTIGATE_BOTANY)
 
 /// Handles reagents being deleted from these seeds.
@@ -168,7 +168,7 @@
 
 		// Make sure they can still interact with the parent hydroponics tray.
 		if(!user.can_perform_action(parent))
-			to_chat(user, text = "Você não é mais capaz de colher as sementes de[parent]!", type = MESSAGE_TYPE_INFO)
+			to_chat(user, text = "Você não é mais capaz de colher as sementes de [parent]!", type = MESSAGE_TYPE_INFO)
 			return result
 
 		var/seed_count = 1

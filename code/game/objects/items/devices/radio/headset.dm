@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	overlay_mic_active = null
 
 /obj/item/radio/headset/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]começa a colocar\the [src]A antena está pronta.[user.p_their()]Nariz! Parece que...[user.p_theyre()]Tentando dar[user.p_them()]Câncer de si mesmo!"))
+	user.visible_message(span_suicide("[user] começa a colocar\the [src] A antena está pronta.[user.p_their()] Nariz! Parece que...[user.p_theyre()] Tentando dar [user.p_them()] Câncer de si mesmo!"))
 	return TOXLOSS
 
 /obj/item/radio/headset/examine(mob/user)
@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	var/list/available_channels = list()
 	available_channels += "<li><b>[span_radio(RADIO_KEY_COMMON)]</b>para a frequência atualmente sintonizada</li>"
 	if(special_channels & RADIO_SPECIAL_BINARY)
-		available_channels += "<li><b>[span_binarysay(MODE_TOKEN_BINARY)]para[span_binarysay(capitalize(MODE_BINARY))]</b></li>"
+		available_channels += "<li><b>[span_binarysay(MODE_TOKEN_BINARY)] para [span_binarysay(capitalize(MODE_BINARY))]</b></li>"
 
 	for(var/i in 1 to length(channels))
 		var/channel_name = channels[i]

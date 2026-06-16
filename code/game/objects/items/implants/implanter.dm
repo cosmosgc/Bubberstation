@@ -28,7 +28,7 @@
 		return
 
 	if(target != user)
-		target.visible_message(span_warning("[user]está tentando implantar[target]."))
+		target.visible_message(span_warning("[user] está tentando implantar [target]."))
 		if(!do_after(user, 5 SECONDS, target))
 			return
 
@@ -39,11 +39,11 @@
 		if (target == user)
 			to_chat(user, span_notice("Implante-se."))
 		else
-			target.visible_message(span_notice("[user]implantes[target]."), span_notice("[user]Implante você."))
+			target.visible_message(span_notice("[user] implantes [target]."), span_notice("[user] Implante você."))
 		imp = null
 		update_appearance()
 	else
-		to_chat(user, span_warning("[src]falha em implantar[target]."))
+		to_chat(user, span_warning("[src] falha em implantar [target]."))
 
 /obj/item/implanter/Initialize(mapload)
 	. = ..()

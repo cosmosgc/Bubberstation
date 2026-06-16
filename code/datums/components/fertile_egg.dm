@@ -64,7 +64,7 @@
 	current_growth += rand(minimum_growth_rate, maximum_growth_rate) * seconds_per_tick
 	if(current_growth < total_growth_required)
 		return
-	parent_atom.visible_message(span_notice("[parent]escotilhas com um som de rachadura silencioso."))
+	parent_atom.visible_message(span_notice("[parent] escotilhas com um som de rachadura silencioso."))
 	new embryo_type(get_turf(parent_atom))
 	post_hatch?.Invoke(embryo_type)
 	// We destroy the parent on hatch, which will destroy the component as well, which will stop us processing.

@@ -113,7 +113,7 @@
 	aoe_radius = 14
 
 /datum/action/cooldown/spell/aoe/blindness/cast(atom/cast_on)
-	cast_on.visible_message(span_danger("[cast_on]Brilha seus olhos."))
+	cast_on.visible_message(span_danger("[cast_on] Brilha seus olhos."))
 	return ..()
 
 /datum/action/cooldown/spell/aoe/blindness/get_things_to_cast_on(atom/center)

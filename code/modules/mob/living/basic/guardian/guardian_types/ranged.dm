@@ -186,7 +186,7 @@
 	if (isguardian(owner) && crossed_object == guardian_owner.summoner || guardian_owner.shares_summoner(crossed_object))
 		return
 
-	var/send_message = span_bolddanger("[crossed_object]Cruzou.[name].")
+	var/send_message = span_bolddanger("[crossed_object] Cruzou.[name].")
 	if (!isguardian(owner) || isnull(guardian_owner.summoner))
 		to_chat(owner, send_message)
 		return

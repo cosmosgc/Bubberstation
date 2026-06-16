@@ -30,7 +30,7 @@
 /obj/item/rolling_table_dock/deploy_rolling_table(mob/user, atom/location)
 	if(loaded)
 		loaded.forceMove(location)
-		user.visible_message(span_notice("[user]implante[loaded]."), balloon_alert(user, "Você implante o[loaded]."))
+		user.visible_message(span_notice("[user] implante [loaded]."), balloon_alert(user, "Você implante o [loaded]."))
 		loaded = null
 	else
 		balloon_alert(user, "A doca está vazia!")

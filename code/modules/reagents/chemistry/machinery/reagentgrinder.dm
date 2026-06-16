@@ -81,7 +81,7 @@
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("Você está muito longe para examinar.[src]O conteúdo e a exibição!")
+		. += span_warning("Você está muito longe para examinar.[src] O conteúdo e a exibição!")
 		return
 
 	var/total_weight = 0
@@ -98,14 +98,14 @@
 	if(to_process.len)
 		. += span_notice("Atualmente segurando:")
 		for(var/target_name in to_process)
-			. += span_notice("[to_process[target_name]] [target_name]")
+			. += span_notice("[to_process [target_name]] [target_name]")
 		. += span_notice("Cheio de<b>[round((total_weight / maximum_weight) * 100)]%</b>Capacidade.")
 
 	if(!QDELETED(beaker))
-		. += span_notice("Um copo de<b>[beaker.reagents.maximum_volume]U</b>A capacidade está presente. Contém:")
+		. += span_notice("Um copo de<b>[beaker.reagents.maximum_volume] U</b>A capacidade está presente. Contém:")
 		if(beaker.reagents.total_volume)
 			for(var/datum/reagent/reg as anything in beaker.reagents.reagent_list)
-				. += span_notice("[round(reg.volume, CHEMICAL_VOLUME_ROUNDING)]Você de[reg.name]")
+				. += span_notice("[round(reg.volume, CHEMICAL_VOLUME_ROUNDING)] Você de [reg.name]")
 		else
 			. += span_notice("Nothing.")
 		. += span_notice("[EXAMINE_HINT("Right click")]com a mão vazia para remover o copo.")
@@ -183,7 +183,7 @@
 
 		// Nothing would come from grinding or juicing
 		if(!length(ingredient.grind_results()) && !ingredient.reagents.total_volume)
-			to_chat(user, span_warning("Você não pode moer / suco[ingredient]em reagentes!"))
+			to_chat(user, span_warning("Você não pode moer / suco [ingredient] em reagentes!"))
 			continue
 
 		// Error messages should be in the objects' definitions
@@ -206,7 +206,7 @@
 	var/items_transfered = 0
 	for(var/obj/item/weapon as anything in filtered_list)
 		if(weapon.w_class + total_weight > maximum_weight)
-			to_chat(user, span_warning("[weapon]É muito grande para caber em[src]."))
+			to_chat(user, span_warning("[weapon] É muito grande para caber em [src]."))
 			continue
 
 		//try to remove the right way
@@ -215,7 +215,7 @@
 
 		total_weight += weapon.w_class
 		items_transfered += 1
-		to_chat(user, span_notice("[weapon]foi carregado em[src]."))
+		to_chat(user, span_notice("[weapon] foi carregado em [src]."))
 
 	return items_transfered
 
@@ -226,7 +226,7 @@
 	//add the beaker
 	if (is_reagent_container(tool) && tool.is_open_container())
 		replace_beaker(user, tool)
-		to_chat(user, span_notice("Você acrescenta[tool]para[src]."))
+		to_chat(user, span_notice("Você acrescenta [tool] para [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	//add items from bag
@@ -250,24 +250,24 @@
 		if(!items_added)
 			to_chat(user, span_warning("Nenhum item foi adicionado."))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("[items_added]Os itens foram adicionados de[tool]para[src]."))
+		to_chat(user, span_notice("[items_added] Os itens foram adicionados de [tool] para [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	//add item directly
 	else if(length(tool.grind_results()) || tool.reagents?.total_volume)
 		if(tool.atom_storage && length(tool.contents)) //anything that has internal storage would be too much recursion for us to handle
-			to_chat(user, span_notice("Arraste este item para[src]para despejar seu conteúdo, ou esvaziá-lo para moer o recipiente."))
+			to_chat(user, span_notice("Arraste este item para [src] para despejar seu conteúdo, ou esvaziá-lo para moer o recipiente."))
 			return ITEM_INTERACT_BLOCKING
 
 		//add the items
 		if(!load_items(user, list(tool)))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("[tool]foi adicionado a[src]."))
+		to_chat(user, span_notice("[tool] foi adicionado a [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	//ask player to drag stuff into grinder
 	else if(tool.atom_storage)
-		to_chat(user, span_warning("Você deve arrastar e despejar conteúdo de[tool]em[src]."))
+		to_chat(user, span_warning("Você deve arrastar e despejar conteúdo de [tool] em [src]."))
 		return ITEM_INTERACT_BLOCKING
 
 	return NONE
@@ -306,7 +306,7 @@
 			continue
 		contents_to_dump += to_dump
 
-	to_chat(user, span_notice("Você largou[load_items(user, contents_to_dump)]itens de[storage.parent]em[src]."))
+	to_chat(user, span_notice("Você largou [load_items(user, contents_to_dump)] itens de [storage.parent] em [src]."))
 
 	return STORAGE_DUMP_HANDLED
 
@@ -431,13 +431,13 @@
 
 		if(juicing)
 			if(!ingredient.juice(beaker.reagents, user))
-				to_chat(user, span_danger("[src]Curto-circuito, enquanto tenta subir.[ingredient], e transferi-lo de volta para o armazenamento."))
+				to_chat(user, span_danger("[src] Curto-circuito, enquanto tenta subir.[ingredient], e transferi-lo de volta para o armazenamento."))
 				continue
 		else if(!ingredient.grind(beaker.reagents, user))
 			if(isstack(ingredient))
-				to_chat(user, span_notice("[src]Tenta moer tantas peças de[ingredient]o mais possível."))
+				to_chat(user, span_notice("[src] Tenta moer tantas peças de [ingredient] o mais possível."))
 			else
-				to_chat(user, span_danger("[src]Curto-circuito enquanto tenta moer[ingredient], e transferi-lo de volta para o armazenamento."))
+				to_chat(user, span_danger("[src] Curto-circuito enquanto tenta moer [ingredient], e transferi-lo de volta para o armazenamento."))
 			continue
 
 		//happens only for stacks where some of the sheets were grinded so we roughly compute the weight grinded

@@ -86,7 +86,7 @@
 		if(materials.silo)
 			. += span_notice("O indicador de ligação de silo de minério está aceso, e o repovoamento de cyborg pode ser alternado por<b>Clicando direto</b> [src].")
 		if(repairs)
-			. += span_notice("[src]Foi atualizado para suportar reparos automáticos.")
+			. += span_notice("[src] Foi atualizado para suportar reparos automáticos.")
 
 /obj/machinery/recharge_station/on_set_is_operational(old_value)
 	if(old_value) //Turned off

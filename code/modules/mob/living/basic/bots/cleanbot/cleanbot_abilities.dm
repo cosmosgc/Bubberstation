@@ -28,7 +28,7 @@
 	var/foam_range = 2
 
 /datum/action/cooldown/mob_cooldown/bot/foam/Activate(mob/living/firer, atom/target)
-	owner.visible_message(span_danger("[owner]Whirs e bolhas violentamente, antes de liberar uma pluma de espuma!"))
+	owner.visible_message(span_danger("[owner] Whirs e bolhas violentamente, antes de liberar uma pluma de espuma!"))
 	do_foam(foam_range, owner, owner.loc)
 	StartCooldown()
 	return TRUE

@@ -31,26 +31,26 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a lavagem cerebral[organ.owner]..."),
-		span_notice("[surgeon]Começa a consertar.[organ.owner]É o cérebro."),
-		span_notice("[surgeon]Começa a operar em[organ.owner]É o cérebro."),
+		span_notice("Você começa a lavagem cerebral [organ.owner]..."),
+		span_notice("[surgeon] Começa a consertar.[organ.owner] É o cérebro."),
+		span_notice("[surgeon] Começa a operar em [organ.owner] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
 
 /datum/surgery_operation/organ/brainwash/on_success(obj/item/organ/brain/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
 	if(!organ.owner.mind)
-		to_chat(surgeon, span_warning("[organ.owner]não responde à lavagem cerebral, como se[organ.owner.p_they()]Faltava uma mente..."))
+		to_chat(surgeon, span_warning("[organ.owner] não responde à lavagem cerebral, como se [organ.owner.p_they()] Faltava uma mente..."))
 		return ..()
 	if(HAS_MIND_TRAIT(organ.owner, TRAIT_UNCONVERTABLE))
-		to_chat(surgeon, span_warning("[organ.owner]Parece resistente à lavagem cerebral..."))
+		to_chat(surgeon, span_warning("[organ.owner] Parece resistente à lavagem cerebral..."))
 		return ..()
 
 	display_results(
 		surgeon,
 		organ.owner,
 		span_notice("Você fez lavagem cerebral com sucesso.[organ.owner]!"),
-		span_notice("[surgeon]Lavagens cerebrais bem sucedidas[organ.owner]!"),
-		span_notice("[surgeon]Termina a cirurgia em[organ.owner]É o cérebro."),
+		span_notice("[surgeon] Lavagens cerebrais bem sucedidas [organ.owner]!"),
+		span_notice("[surgeon] Termina a cirurgia em [organ.owner] É o cérebro."),
 	)
 	on_brainwash(organ.owner, surgeon, tool, operation_args)
 
@@ -68,8 +68,8 @@
 		surgeon,
 		organ.owner,
 		span_notice("Você estraga tudo, machuca o tecido cerebral!"),
-		span_notice("[surgeon]Estraga tudo, causando danos cerebrais!"),
-		span_notice("[surgeon]Completa a cirurgia em[organ.owner]É o cérebro."),
+		span_notice("[surgeon] Estraga tudo, causando danos cerebrais!"),
+		span_notice("[surgeon] Completa a cirurgia em [organ.owner] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head throbs with horrible pain!")
 	organ.apply_organ_damage(40)
@@ -120,9 +120,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a lavagem cerebral[organ.owner]..."),
-		span_notice("[surgeon]Começa a consertar.[organ.owner]É o cérebro."),
-		span_notice("[surgeon]Começa a operar em[organ.owner]É o cérebro."),
+		span_notice("Você começa a lavagem cerebral [organ.owner]..."),
+		span_notice("[surgeon] Começa a consertar.[organ.owner] É o cérebro."),
+		span_notice("[surgeon] Começa a operar em [organ.owner] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
 

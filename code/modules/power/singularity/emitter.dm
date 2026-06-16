@@ -169,10 +169,10 @@
 /obj/machinery/power/emitter/interact(mob/user)
 	add_fingerprint(user)
 	if(!welded)
-		to_chat(user, span_warning("[src]Precisa ser firmemente seguro no chão primeiro!"))
+		to_chat(user, span_warning("[src] Precisa ser firmemente seguro no chão primeiro!"))
 		return FALSE
 	if(!powernet)
-		to_chat(user, span_warning("\The [src]Não está conectado a um fio!"))
+		to_chat(user, span_warning("\The [src] Não está conectado a um fio!"))
 		return FALSE
 	if(locked || !allow_switch_interact)
 		to_chat(user, span_warning("Os controles estão travados!"))
@@ -194,7 +194,7 @@
 /obj/machinery/power/emitter/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(ismegafauna(user) && anchored)
 		set_anchored(FALSE)
-		user.visible_message(span_warning("[user]Rips[src]Livre de suas amantes!"))
+		user.visible_message(span_warning("[user] Rips [src] Livre de suas amantes!"))
 	else
 		. = ..()
 	if(. && !anchored)
@@ -273,12 +273,12 @@
 /obj/machinery/power/emitter/can_be_unfasten_wrench(mob/user, silent)
 	if(active)
 		if(!silent)
-			to_chat(user, span_warning("Vire.\the [src]Fora primeiro!"))
+			to_chat(user, span_warning("Vire.\the [src] Fora primeiro!"))
 		return FAILED_UNFASTEN
 
 	else if(welded)
 		if(!silent)
-			to_chat(user, span_warning("[src]Está soldada ao chão!"))
+			to_chat(user, span_warning("[src] Está soldada ao chão!"))
 		return FAILED_UNFASTEN
 
 	return ..()
@@ -291,31 +291,31 @@
 /obj/machinery/power/emitter/welder_act(mob/living/user, obj/item/item)
 	..()
 	if(active)
-		to_chat(user, span_warning("Vire.[src]Fora primeiro!"))
+		to_chat(user, span_warning("Vire.[src] Fora primeiro!"))
 		return TRUE
 
 	if(welded)
 		if(!item.tool_start_check(user, amount=1))
 			return TRUE
-		user.visible_message(span_notice("[user.name]Começa a cortar\the [src]Livre do chão."), 			span_notice("Você começa a cortar[src]Livre do chão..."), 			span_hear("Você ouve solda."))
+		user.visible_message(span_notice("[user.name] Começa a cortar\the [src] Livre do chão."), 			span_notice("Você começa a cortar [src] Livre do chão..."), 			span_hear("Você ouve solda."))
 		if(!item.use_tool(src, user, 20, 1, 50))
 			return FALSE
 		welded = FALSE
-		to_chat(user, span_notice("Você cortou.[src]Livre do chão."))
+		to_chat(user, span_notice("Você cortou.[src] Livre do chão."))
 		disconnect_from_network()
 		update_cable_icons_on_turf(get_turf(src))
 		return TRUE
 
 	if(!anchored)
-		to_chat(user, span_warning("[src]Precisa ser puxado para o chão!"))
+		to_chat(user, span_warning("[src] Precisa ser puxado para o chão!"))
 		return TRUE
 	if(!item.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user.name]começa a soldar\the [src]Para o chão."), 		span_notice("Você começa a soldar[src]Para o chão..."), 		span_hear("Você ouve solda."))
+	user.visible_message(span_notice("[user.name] começa a soldar\the [src] Para o chão."), 		span_notice("Você começa a soldar [src] Para o chão..."), 		span_hear("Você ouve solda."))
 	if(!item.use_tool(src, user, 20, 1, 50))
 		return FALSE
 	welded = TRUE
-	to_chat(user, span_notice("Você solda[src]Para o chão."))
+	to_chat(user, span_notice("Você solda [src] Para o chão."))
 	connect_to_network()
 	update_cable_icons_on_turf(get_turf(src))
 	return TRUE
@@ -339,7 +339,7 @@
 		to_chat(user, span_danger("Acesso negado."))
 		return
 	if(!active)
-		to_chat(user, span_warning("Os controles só podem ser travados quando\the [src]Está online!"))
+		to_chat(user, span_warning("Os controles só podem ser travados quando\the [src] Está online!"))
 		return
 	locked = !locked
 	to_chat(user, span_notice("Você.[src.locked ? "lock" : "unlock"]Os controles."))
@@ -374,7 +374,7 @@
 		fire_rate_mod = diskie.fire_rate_mod
 		no_shot_counter = diskie.no_shot_counter
 		playsound(src, 'sound/machines/card_slide.ogg', 50)
-		to_chat(user, span_notice("Você atualiza o[src]A configuração do diodo com o[config_disk]."))
+		to_chat(user, span_notice("Você atualiza o [src] A configuração do diodo com o [config_disk]."))
 		update_appearance()
 		if(diskie.consumable)
 			qdel(diskie)
@@ -389,7 +389,7 @@
 	if(!user.transferItemToLoc(energy_gun, src))
 		return
 	if(energy_gun.gun_flags & TURRET_INCOMPATIBLE)
-		user.balloon_alert(user, "[energy_gun]Não cabe!")
+		user.balloon_alert(user, "[energy_gun] Não cabe!")
 		return
 	gun = energy_gun
 	gun_properties = gun.get_turret_properties()

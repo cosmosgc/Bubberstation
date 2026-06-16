@@ -120,7 +120,7 @@
 		if(bodypart)
 			forceMove(get_turf(user))
 			var/did_dismember = bodypart.dismember()
-			user.visible_message("<b>[span_danger("[src] goes off in [user]'s hand[did_dismember ? ", blowing [user.p_their()] [bodypart.plaintext_zone] to bloody shreds" : ""]!")]</b>", span_userdanger("[src]Sai na sua mão.[did_dismember ? ", blowing your [bodypart.plaintext_zone] to bloody shreds" : ""]!"))
+			user.visible_message("<b>[span_danger("[src] goes off in [user]'s hand[did_dismember ? ", blowing [user.p_their()] [bodypart.plaintext_zone] to bloody shreds" : ""]!")]</b>", span_userdanger("[src] Sai na sua mão.[did_dismember ? ", blowing your [bodypart.plaintext_zone] to bloody shreds" : ""]!"))
 
 	. = ..()
 	if(!.)
@@ -154,7 +154,7 @@
 		living_mob.Knockdown(20 SECONDS)
 		living_mob.soundbang_act(SOUNDBANG_NORMAL, 200, 10, 15)
 		if(living_mob.apply_damages(brute = 10, burn = 10))
-			to_chat(living_mob, span_userdanger("A explosão de\the [src]Machuca e queima você!"))
+			to_chat(living_mob, span_userdanger("A explosão de\the [src] Machuca e queima você!"))
 
 	// only checking if they're on top of the tile, cause being one tile over will be its own punishment
 

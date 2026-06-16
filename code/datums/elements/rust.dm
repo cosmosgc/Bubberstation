@@ -36,7 +36,7 @@
 /datum/element/rust/proc/handle_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_notice("[source]É muito enferrujado, você poderia provavelmente<i>Queime.</i>UO<i>Raspar.</i>Talvez até sirva um pouco.<i>Cola espacial</i>Não é um ferrugem.")
+	examine_text += span_notice("[source] É muito enferrujado, você poderia provavelmente<i>Queime.</i>UO<i>Raspar.</i>Talvez até sirva um pouco.<i>Cola espacial</i>Não é um ferrugem.")
 
 /datum/element/rust/proc/apply_rust_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER

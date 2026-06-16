@@ -204,7 +204,7 @@
 	return isfloorturf(surface)
 
 /obj/item/toy/crayon/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está bloqueando.[src]Para cima.[user.p_their()]Nariz e para dentro[user.p_their()]Cérebro. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está bloqueando.[src] Para cima.[user.p_their()] Nariz e para dentro [user.p_their()] Cérebro. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.add_atom_colour(color_transition_filter(paint_color, SATURATION_OVERRIDE), ADMIN_COLOUR_PRIORITY)
 	return (BRUTELOSS|OXYLOSS)
 
@@ -531,7 +531,7 @@
 		clicky = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(ICON_SIZE_Y/2), ICON_SIZE_Y/2)
 
 	if(!instant)
-		to_chat(user, span_notice("Você começa a desenhar um[temp]Vamos.\the [target]..."))
+		to_chat(user, span_notice("Você começa a desenhar um [temp] Vamos.\the [target]..."))
 
 	if(pre_noise)
 		audible_message(span_notice("Você ouve spray."))
@@ -581,7 +581,7 @@
 	if(!instant)
 		to_chat(user, span_notice("Você termina de desenhar.\the [temp]."))
 	else
-		to_chat(user, span_notice("Você pulveriza um[temp]Vamos.\the [target.name]"))
+		to_chat(user, span_notice("Você pulveriza um [temp] Vamos.\the [target.name]"))
 
 	if(length(text_buffer) > 1)
 		text_buffer = copytext(text_buffer, length(text_buffer[1]) + 1)
@@ -627,7 +627,7 @@
 	if(!use_charges(user, 1))
 		return ITEM_INTERACT_FAILURE
 
-	to_chat(user, span_notice("Você desenha um contorno de giz[pwned_human]."))
+	to_chat(user, span_notice("Você desenha um contorno de giz [pwned_human]."))
 	var/obj/effect/decal/cleanable/crayon/chalk_line = new(get_turf(pwned_human), paint_color, "body", "chalk outline", null, null, "A vaguely [pwned_human] shaped body outline.", outline_strength)
 	chalk_line.pixel_y = (pwned_human.pixel_y + pwned_human.pixel_z)
 	chalk_line.pixel_x = (pwned_human.pixel_x + pwned_human.pixel_w)
@@ -769,7 +769,7 @@
 		return
 
 	var/obj/item/stack/sheet/cardboard/cardboard = new (user.drop_location())
-	to_chat(user, span_notice("Você dobra o[src]em papelão."))
+	to_chat(user, span_notice("Você dobra o [src] em papelão."))
 	user.put_in_active_hand(cardboard)
 	qdel(src)
 
@@ -858,11 +858,11 @@
 /obj/item/toy/crayon/spraycan/suicide_act(mob/living/user)
 	var/used = min(charges_left, 10)
 	if(is_capped || !actually_paints || !use_charges(user, 10, FALSE))
-		user.visible_message(span_suicide("[user]Agitando.[src]com um chocalho e leva-o para[user.p_their()]Boa, mas nada mesmo!"))
+		user.visible_message(span_suicide("[user] Agitando.[src] com um chocalho e leva-o para [user.p_their()] Boa, mas nada mesmo!"))
 		user.say("MEDIOCRE!!", forced = "spraycan suicide")
 		return SHAME
 
-	user.visible_message(span_suicide("[user]Agitando.[src]com um chocalho e leva-o para[user.p_their()]boca, spray de tinta através[user.p_their()]Dentes!"))
+	user.visible_message(span_suicide("[user] Agitando.[src] com um chocalho e leva-o para [user.p_their()] boca, spray de tinta através [user.p_their()] Dentes!"))
 	user.say("WITNESS ME!!", forced = "spraycan suicide")
 	if(pre_noise || post_noise)
 		playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
@@ -881,7 +881,7 @@
 			. += "It's roughly [PERCENT(charges_left/charges)]% full."
 		else
 			. += "It is empty."
-	. += span_notice("Alt-click[src]Para[ is_capped ? "take the cap off" : "put the cap on"].")
+	. += span_notice("Alt-click [src] Para[ is_capped ? "take the cap off" : "put the cap on"].")
 
 
 /obj/item/toy/crayon/spraycan/can_use_on(atom/target, mob/user, list/modifiers)
@@ -920,8 +920,8 @@
 			return ITEM_INTERACT_BLOCKING
 
 		var/mob/living/carbon/carbon_target = target
-		user.visible_message(span_danger("[user]Sprays.[src]Na cara de[target]!"))
-		to_chat(target, span_userdanger("[user]Sprays.[src]Na sua cara!"))
+		user.visible_message(span_danger("[user] Sprays.[src] Na cara de [target]!"))
+		to_chat(target, span_userdanger("[user] Sprays.[src] Na sua cara!"))
 
 		if(carbon_target.client)
 			carbon_target.set_eye_blur_if_lower(6 SECONDS)
@@ -938,7 +938,7 @@
 		reagents.expose(carbon_target, VAPOR, fraction * volume_multiplier)
 
 	else if(actually_paints && target.is_atom_colour(paint_color, min_priority_index = washable_coloring_mode ? WASHABLE_COLOUR_PRIORITY : FIXED_COLOUR_PRIORITY)) //bubber edit
-		balloon_alert(user, "[target.p_theyre()]Já essa cor!")
+		balloon_alert(user, "[target.p_theyre()] Já essa cor!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/saturation_mode = SATURATION_MULTIPLY
@@ -954,7 +954,7 @@
 
 		if(pre_noise || post_noise)
 			playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
-		user.visible_message(span_notice("[user]Casacos.[target]Spray com tinta!"), span_notice("Seu casaco.[target]com tinta spray."))
+		user.visible_message(span_notice("[user] Casacos.[target] Spray com tinta!"), span_notice("Seu casaco.[target] com tinta spray."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!isobj(target) || (target.flags_1 & UNPAINTABLE_1))
@@ -968,7 +968,7 @@
 
 		if(pre_noise || post_noise)
 			playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
-		user.visible_message(span_notice("[user]Casacos.[target]Spray com tinta!"), span_notice("Seu casaco.[target]com tinta spray."))
+		user.visible_message(span_notice("[user] Casacos.[target] Spray com tinta!"), span_notice("Seu casaco.[target] com tinta spray."))
 		return ITEM_INTERACT_SUCCESS
 
 	if (color_is_dark && saturation_mode == SATURATION_OVERRIDE && !(target.flags_1 & ALLOW_DARK_PAINTS_1))
@@ -982,14 +982,14 @@
 		var/obj/item/pipe/target_pipe = target
 		target_pipe.pipe_color = paint_color
 		target.add_atom_colour(paint_color, FIXED_COLOUR_PRIORITY)
-		balloon_alert(user, "Pintado em[GLOB.pipe_color_name[paint_color]]Cor")
+		balloon_alert(user, "Pintado em [GLOB.pipe_color_name[paint_color]]Cor")
 	else if(istype(target, /obj/machinery/atmospherics))
 		if(!GLOB.pipe_color_name.Find(paint_color))
 			balloon_alert(user, "Cor do cano inválida!")
 			return ITEM_INTERACT_BLOCKING
 		var/obj/machinery/atmospherics/target_pipe = target
 		target_pipe.paint(paint_color)
-		balloon_alert(user, "Pintado em[GLOB.pipe_color_name[paint_color]]Cor")
+		balloon_alert(user, "Pintado em [GLOB.pipe_color_name[paint_color]]Cor")
 	else if (is_type_in_typecache(target, direct_color_types))
 		target.add_atom_colour(paint_color, washable_coloring_mode ? WASHABLE_COLOUR_PRIORITY : FIXED_COLOUR_PRIORITY) //bubber edit
 	else
@@ -1009,7 +1009,7 @@
 
 	if(pre_noise || post_noise)
 		playsound(user.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
-	user.visible_message(span_notice("[user]Casacos.[target]Spray com tinta!"), span_notice("Seu casaco.[target]com tinta spray."))
+	user.visible_message(span_notice("[user] Casacos.[target] Spray com tinta!"), span_notice("Seu casaco.[target] com tinta spray."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/toy/crayon/spraycan/proc/color_limb(obj/item/bodypart/limb, mob/living/user)

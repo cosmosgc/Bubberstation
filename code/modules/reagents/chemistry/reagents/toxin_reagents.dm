@@ -945,7 +945,7 @@
 			if(!affected_mob.undergoing_cardiac_arrest() && affected_mob.can_heartattack())
 				affected_mob.set_heartattack(TRUE)
 				if(affected_mob.stat == CONSCIOUS)
-					affected_mob.visible_message(span_userdanger("[affected_mob]Embreagens em[affected_mob.p_their()]peito como se[affected_mob.p_their()]O coração parou!"))
+					affected_mob.visible_message(span_userdanger("[affected_mob] Embreagens em [affected_mob.p_their()] peito como se [affected_mob.p_their()] O coração parou!"))
 			else
 				affected_mob.losebreath += 10
 				need_mob_update = affected_mob.adjust_oxy_loss(rand(5,25), updating_health = FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
@@ -1347,7 +1347,7 @@
 		var/obj/item/bodypart/BP = affected_mob.get_bodypart(selected_part)
 		if(BP)
 			playsound(affected_mob, SFX_DESECRATION, 50, TRUE, -1)
-			affected_mob.visible_message(span_warning("[affected_mob]Os ossos doem muito!"), span_danger("Seus ossos doem demais!"))
+			affected_mob.visible_message(span_warning("[affected_mob] Os ossos doem muito!"), span_danger("Seus ossos doem demais!"))
 			affected_mob.say("OOF!!", forced = type)
 			affected_mob.apply_damage(20, BRUTE, BP, wound_bonus = rand(30, 130))
 
@@ -1469,7 +1469,7 @@
 			if(SPT_PROB(5, seconds_per_tick))
 				var/obj/item/organ/tongue/tongue = affected_mob.get_organ_slot(ORGAN_SLOT_TONGUE)
 				if(tongue)
-					to_chat(affected_mob, span_warning("Sua[tongue.name]Sente dormente..."))
+					to_chat(affected_mob, span_warning("Sua [tongue.name] Sente dormente..."))
 				affected_mob.set_slurring_if_lower(25 SECONDS * metabolization_ratio)
 			affected_mob.adjust_disgust(17.5 * metabolization_ratio * seconds_per_tick)
 		if(13 to 21)

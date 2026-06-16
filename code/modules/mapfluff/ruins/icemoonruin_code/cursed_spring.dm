@@ -38,5 +38,5 @@
 
 	var/turf/return_turf = find_safe_turf(extended_safety_checks = TRUE, dense_atoms = FALSE)
 	transformed_mob.forceMove(return_turf)
-	to_chat(transformed_mob, span_notice("Você pisca e se encontra em[get_area_name(return_turf)]."))
+	to_chat(transformed_mob, span_notice("Você pisca e se encontra em [get_area_name(return_turf)]."))
 */

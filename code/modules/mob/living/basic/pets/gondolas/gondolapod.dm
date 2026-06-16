@@ -98,7 +98,7 @@
 	var/mob/living/basic/pet/gondola/gondolapod/gondola_owner = owner
 	var/total = gondola_owner.contents.len
 	if (total)
-		to_chat(gondola_owner, span_notice("Você detecta[total]objeto dentro de sua barriga incrivelmente vasta."))
+		to_chat(gondola_owner, span_notice("Você detecta [total] objeto dentro de sua barriga incrivelmente vasta."))
 	else
 		to_chat(gondola_owner, span_notice("Uma olhada mais de perto dentro de si mesmo revela... nada."))
 	return TRUE

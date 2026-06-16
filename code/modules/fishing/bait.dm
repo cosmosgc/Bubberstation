@@ -93,7 +93,7 @@
 
 /obj/item/fishing_lure/examine(mob/user)
 	. = ..()
-	. += span_info("Tem que ser girado com uma frequência de[spin_frequency[1] * 0.1]para[spin_frequency[2] * 0.1]segundos enquanto pescava.")
+	. += span_info("Tem que ser girado com uma frequência de [spin_frequency[1] * 0.1]para [spin_frequency[2] * 0.1]segundos enquanto pescava.")
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISHING_SPOT))
 		. += span_tinynotice("Graças à sua experiência, você pode examiná-lo novamente para obter uma lista de peixes que você pode pegar com ele.")
 

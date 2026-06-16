@@ -17,13 +17,13 @@
 	return TRUE
 
 /obj/item/book/granter/martial/on_reading_start(mob/user)
-	to_chat(user, span_notice("Você começa a ler sobre[martial_name]..."))
+	to_chat(user, span_notice("Você começa a ler sobre [martial_name]..."))
 	return TRUE
 
 /obj/item/book/granter/martial/on_reading_finished(mob/user)
 	if(user.mind)
 		if(!user.mind.AddComponent(/datum/component/mindbound_martial_arts, martial))
-			to_chat(user, span_warning("Você tenta aprender[martial_name]De[src]Mas não gruda."))
+			to_chat(user, span_warning("Você tenta aprender [martial_name] De [src] Mas não gruda."))
 			uses += 1 // Return the use
 			return
 	else

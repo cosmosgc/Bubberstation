@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 
 /obj/item/stack/marker_beacon/examine(mob/user)
 	. = ..()
-	. += span_notice("Use na mão para colocar um[singular_name].\nAlt-clique para selecionar uma cor. Cor atual é[picked_color].")
+	. += span_notice("Use na mão para colocar um [singular_name].\nAlt-clique para selecionar uma cor. Cor atual é [picked_color].")
 
 /obj/item/stack/marker_beacon/update_icon_state()
 	icon_state = "[initial(icon_state)][LOWER_TEXT(picked_color)]"
@@ -47,13 +47,13 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 
 /obj/item/stack/marker_beacon/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("Você precisa de mais espaço para colocar um[singular_name]Aqui."))
+		to_chat(user, span_warning("Você precisa de mais espaço para colocar um [singular_name] Aqui."))
 		return
 	if(locate(/obj/structure/marker_beacon) in user.loc)
-		to_chat(user, span_warning("Já existe um[singular_name]Aqui."))
+		to_chat(user, span_warning("Já existe um [singular_name] Aqui."))
 		return
 	if(use(1))
-		to_chat(user, span_notice("Você ativa e ancora[amount ? "a":"the"] [singular_name]Nenhum lugar."))
+		to_chat(user, span_notice("Você ativa e ancora[amount ? "a":"the"] [singular_name] Nenhum lugar."))
 		playsound(user, 'sound/machines/click.ogg', 50, TRUE)
 		var/obj/structure/marker_beacon/M = new(user.loc, picked_color)
 		transfer_fingerprints_to(M)
@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 
 /obj/structure/marker_beacon/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-clique para selecionar uma cor. Cor atual é[picked_color].")
+	. += span_notice("Alt-clique para selecionar uma cor. Cor atual é [picked_color].")
 
 /obj/structure/marker_beacon/update_appearance(updates)
 	while(!picked_color || !GLOB.marker_beacon_colors[picked_color])
@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("Você começa a escolher[src]Levante..."))
+	to_chat(user, span_notice("Você começa a escolher [src] Levante..."))
 	if(do_after(user, remove_speed, target = src))
 		var/obj/item/stack/marker_beacon/M = new(loc)
 		M.picked_color = picked_color
@@ -135,7 +135,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 /obj/structure/marker_beacon/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(I, /obj/item/stack/marker_beacon))
 		var/obj/item/stack/marker_beacon/M = I
-		to_chat(user, span_notice("Você começa a escolher[src]Levante..."))
+		to_chat(user, span_notice("Você começa a escolher [src] Levante..."))
 		if(do_after(user, remove_speed, target = src) && M.amount + 1 <= M.max_amount)
 			M.add(1)
 			playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 	if(istype(I, /obj/item/light_eater))
 		var/obj/effect/decal/cleanable/ash/A = new /obj/effect/decal/cleanable/ash(drop_location())
 		A.desc += "\nLooks like this used to be \a [src] some time ago."
-		visible_message(span_danger("[src]é desintegrado por[I]!"))
+		visible_message(span_danger("[src] é desintegrado por [I]!"))
 		playsound(src, 'sound/items/tools/welder.ogg', 50, TRUE)
 		qdel(src)
 		return

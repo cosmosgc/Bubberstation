@@ -42,8 +42,8 @@
 		user.Move_Pulled(source_obj)
 
 		if (user.pulling.loc == source_obj.loc)
-			user.visible_message(span_notice("[user]Lugares[user.pulling]em frente[source_obj]."),
-				span_notice("Seu lugar.[user.pulling]em frente[source_obj]."))
+			user.visible_message(span_notice("[user] Lugares [user.pulling] em frente [source_obj]."),
+				span_notice("Seu lugar.[user.pulling] em frente [source_obj]."))
 			user.stop_pulling()
 
 		return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -54,7 +54,7 @@
 			//Already buckled to the object, you probably meant to unbuckle them
 			return
 
-		to_chat(user, span_warning("[pushed_mob]está dobrado para[pushed_mob.buckled]!"))
+		to_chat(user, span_warning("[pushed_mob] está dobrado para [pushed_mob.buckled]!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	INVOKE_ASYNC(src, PROC_REF(perform_table_smash), source_obj, user)
@@ -76,7 +76,7 @@
 			if (GRAB_NECK to GRAB_KILL)
 				tablelimbsmash(user, pushed_mob, table)
 	else
-		pushed_mob.visible_message(span_notice("[user]Começa a colocar[pushed_mob]em frente[table]..."), 							span_userdanger("[user]Começa a colocar[pushed_mob]em frente[table]..."))
+		pushed_mob.visible_message(span_notice("[user] Começa a colocar [pushed_mob] em frente [table]..."), 							span_userdanger("[user] Começa a colocar [pushed_mob] em frente [table]..."))
 		if (do_after(user, 3.5 SECONDS, target = pushed_mob))
 			tableplace(user, pushed_mob, table)
 		else
@@ -119,8 +119,8 @@
 	if (istype(potential_spine))
 		tableplace_delay *= potential_spine.athletics_boost_multiplier
 
-	carried_mob.visible_message(span_notice("[user]começa a[skills_space]Lugar[carried_mob]em frente[table]..."),
-		span_userdanger("[user]começa a[skills_space]Lugar[carried_mob]em frente[table]..."))
+	carried_mob.visible_message(span_notice("[user] começa a [skills_space] Lugar [carried_mob] em frente [table]..."),
+		span_userdanger("[user] começa a [skills_space] Lugar [carried_mob] em frente [table]..."))
 	if (!do_after(user, tableplace_delay, target = carried_mob))
 		return ITEM_INTERACT_BLOCKING
 	user.unbuckle_mob(carried_mob)
@@ -131,13 +131,13 @@
 /datum/element/table_smash/proc/tableplace(mob/living/user, mob/living/pushed_mob, obj/structure/table/table)
 	pushed_mob.forceMove(table.loc)
 	pushed_mob.set_resting(TRUE, TRUE)
-	pushed_mob.visible_message(span_notice("[user]Lugares[pushed_mob]em frente[table]."), 		span_notice("[user]Lugares[pushed_mob]em frente[table]."))
+	pushed_mob.visible_message(span_notice("[user] Lugares [pushed_mob] em frente [table]."), 		span_notice("[user] Lugares [pushed_mob] em frente [table]."))
 	log_combat(user, pushed_mob, "placed", null, "onto [table]")
 
 /// Aggressively smash the mob onto the table
 /datum/element/table_smash/proc/tablepush(mob/living/user, mob/living/pushed_mob, obj/structure/table/table)
 	if (HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_danger("Jogando[pushed_mob]na mesa pode machucá-los!"))
+		to_chat(user, span_danger("Jogando [pushed_mob] na mesa pode machucá-los!"))
 		return
 
 	var/passtable_key = REF(user)
@@ -155,7 +155,7 @@
 	pushed_mob.apply_damage(10, BRUTE)
 	pushed_mob.apply_damage(40, STAMINA)
 	playsound(pushed_mob, 'sound/effects/tableslam.ogg', 90, TRUE)
-	pushed_mob.visible_message(span_danger("[user]Slams[pushed_mob]em frente\the [table]!"), 		span_userdanger("[user]Bate em você\the [table]!"))
+	pushed_mob.visible_message(span_danger("[user] Slams [pushed_mob] em frente\the [table]!"), 		span_userdanger("[user] Bate em você\the [table]!"))
 	log_combat(user, pushed_mob, "tabled", null, "onto [table]")
 	pushed_mob.add_mood_event("table", /datum/mood_event/table)
 	SEND_SIGNAL(user, COMSIG_LIVING_TABLE_SLAMMING, pushed_mob, table)
@@ -172,8 +172,8 @@
 	pushed_mob.apply_damage(30, BRUTE, banged_limb, wound_bonus = extra_wound)
 	pushed_mob.apply_damage(60, STAMINA)
 	playsound(pushed_mob, 'sound/effects/bang.ogg', 90, TRUE)
-	pushed_mob.visible_message(span_danger("[user]Esmaga.[pushed_mob]'s[banged_limb.plaintext_zone]Contra\the [table]!"),
-		span_userdanger("[user]Esmaga seu[banged_limb.plaintext_zone]Contra\the [table]"))
+	pushed_mob.visible_message(span_danger("[user] Esmaga.[pushed_mob]'s [banged_limb.plaintext_zone] Contra\the [table]!"),
+		span_userdanger("[user] Esmaga seu [banged_limb.plaintext_zone] Contra\the [table]"))
 	log_combat(user, pushed_mob, "head slammed", null, "against [table]")
 	pushed_mob.add_mood_event("table", /datum/mood_event/table_limbsmash, banged_limb)
 	table.take_damage(50)
@@ -187,9 +187,9 @@
 	if((shove_flags & SHOVE_KNOCKDOWN_BLOCKED) || !(shove_flags & SHOVE_BLOCKED))
 		return
 	target.Knockdown(SHOVE_KNOCKDOWN_TABLE, daze_amount = 3 SECONDS)
-	target.visible_message(span_danger("[shover.name]Empurra.[target.name]em frente\the [src]!"),
-		span_userdanger("Você está empurrado em\the [src]Por que[shover.name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, shover)
-	to_chat(shover, span_danger("Você empurra.[target.name]em frente\the [src]!"))
+	target.visible_message(span_danger("[shover.name] Empurra.[target.name] em frente\the [src]!"),
+		span_userdanger("Você está empurrado em\the [src] Por que [shover.name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, shover)
+	to_chat(shover, span_danger("Você empurra.[target.name] em frente\the [src]!"))
 	target.throw_at(src, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 	log_combat(shover, target, "shoved", "onto [src] (table)[weapon ? " with [weapon]" : ""]")
 	after_smash(target)

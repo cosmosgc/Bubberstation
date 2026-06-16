@@ -92,7 +92,7 @@
 	SIGNAL_HANDLER
 
 /obj/item/pen/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está rabiscando números por toda parte.[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando comer sudoku..."))
+	user.visible_message(span_suicide("[user] Está rabiscando números por toda parte.[user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando comer sudoku..."))
 	return BRUTELOSS
 
 /obj/item/pen/blue
@@ -135,8 +135,8 @@
 			chosen_color = "blue"
 		else
 			colour = COLOR_BLACK
-	to_chat(user, span_notice("\The [src]Agora vai escrever em[chosen_color]."))
-	desc = "É uma caneta de tinta de quatro cores, pronta para[chosen_color]."
+	to_chat(user, span_notice("\The [src] Agora vai escrever em [chosen_color]."))
+	desc = "É uma caneta de tinta de quatro cores, pronta para [chosen_color]."
 	balloon_alert(user, "clicked")
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE, -3)
 
@@ -251,7 +251,7 @@
 	if(isnull(deg) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || loc != user)
 		return CLICK_ACTION_BLOCKING
 	degrees = deg
-	to_chat(user, span_notice("Você gira o topo da caneta para[deg]Graus."))
+	to_chat(user, span_notice("Você gira o topo da caneta para [deg] Graus."))
 	SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 	return CLICK_ACTION_SUCCESS
 
@@ -260,7 +260,7 @@
 		return ..()
 	if(!M.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 		return FALSE
-	to_chat(user, span_warning("Você esfaqueia.[M]com uma cana."))
+	to_chat(user, span_warning("Você esfaqueia.[M] com uma cana."))
 	to_chat(M, span_danger("Você sente um pinto minúsculo!"))
 	log_combat(user, M, "stabbed", src)
 	return TRUE
@@ -401,16 +401,16 @@
 	UnregisterSignal(source, list(COMSIG_ITEM_UNEMBEDDED, COMSIG_ITEM_FAILED_EMBED))
 	victim.visible_message(
 		message = span_warning("The blade of the [hidden_name] retracts as \the [source] is removed from [victim]!"),
-		self_message = span_warning("A lâmina do[hidden_name]Retrai como\the [source]é removido de você!"),
+		self_message = span_warning("A lâmina do [hidden_name] Retrai como\the [source] é removido de você!"),
 		blind_message = span_warning("Você ouve uma lâmina de energia se retirar!"),
 		vision_distance = 1
 	)
 
 /obj/item/pen/edagger/suicide_act(mob/living/user)
 	if(HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-		user.visible_message(span_suicide("[user]com força, enfia a caneta em sua boca!"))
+		user.visible_message(span_suicide("[user] com força, enfia a caneta em sua boca!"))
 	else
-		user.visible_message(span_suicide("[user]Está segurando uma caneta na boca deles! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Está segurando uma caneta na boca deles! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		attack_self(user)
 	return BRUTELOSS
 
@@ -560,7 +560,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	living_target.apply_status_effect(/datum/status_effect/surrender_timed)
-	to_chat(living_target, span_userdanger("[user]solicita sua rendição imediata! Você tem 30 segundos para obedecer!"))
+	to_chat(living_target, span_userdanger("[user] solicita sua rendição imediata! Você tem 30 segundos para obedecer!"))
 	new /obj/effect/temp_visual/security_holosign(target_turf, user) //produce a holographic glow
 	COOLDOWN_START(src, holosign_cooldown, 30 SECONDS)
 	return ITEM_INTERACT_SUCCESS
@@ -575,4 +575,4 @@
 	. = ..()
 	playsound(loc, 'sound/machines/chime.ogg', 50, FALSE) //make some noise!
 	if(creator)
-		visible_message(span_danger("[creator]Criou um holograma de segurança!"))
+		visible_message(span_danger("[creator] Criou um holograma de segurança!"))

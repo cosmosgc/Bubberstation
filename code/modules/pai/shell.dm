@@ -1,6 +1,6 @@
 /mob/living/silicon/pai/mob_try_pickup(mob/living/user, instant=FALSE)
 	if(!possible_chassis[chassis])
-		to_chat(user, span_warning("[src]A forma atual não pode ser carregada!"))
+		to_chat(user, span_warning("[src] A forma atual não pode ser carregada!"))
 		return FALSE
 	return ..()
 
@@ -18,7 +18,7 @@
 		return FALSE
 	var/holochassis = pick(possible_chassis - chassis)
 	set_holochassis(holochassis)
-	balloon_alert(src, "[holochassis]Compósito ligado")
+	balloon_alert(src, "[holochassis] Compósito ligado")
 	return TRUE
 
 /**
@@ -56,7 +56,7 @@
 	if(!choice)
 		return FALSE
 	set_holochassis(choice)
-	balloon_alert(src, "[choice]Compósito ligado")
+	balloon_alert(src, "[choice] Compósito ligado")
 	update_resting()
 	return TRUE
 
@@ -78,7 +78,7 @@
 	if(!holoform)
 		. = fold_out(force)
 		return FALSE
-	visible_message(span_notice("[src]Desmaterializa!"))
+	visible_message(span_notice("[src] Desmaterializa!"))
 	stop_pulling()
 	if(ispickedupmob(loc))
 		var/obj/item/mob_holder/mob_head = loc
@@ -128,7 +128,7 @@
 		client.set_eye(src)
 	set_light_on(FALSE)
 	update_appearance(UPDATE_ICON_STATE)
-	visible_message(span_boldnotice("[src]aparece em um clarão de luz!"))
+	visible_message(span_boldnotice("[src] aparece em um clarão de luz!"))
 	holoform = TRUE
 	return TRUE
 

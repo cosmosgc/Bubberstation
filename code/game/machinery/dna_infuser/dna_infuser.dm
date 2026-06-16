@@ -43,19 +43,19 @@
 	if(!infusing_from)
 		. += span_notice("Missing [span_bold("an infusion source")].")
 	else
-		. += span_notice("[span_bold(infusing_from.name)]está no espaço de infusão.")
+		. += span_notice("[span_bold(infusing_from.name)] está no espaço de infusão.")
 	. += span_notice("Otter criatura morta. Dependendo do tamanho, arraste ou caia na Fenda do Infusor.")
 	. += span_notice("O sujeito entra na câmara, alguém ativa a máquina. Voila! Um de seus órgãos mudou!")
 	. += span_notice("Alt-click para ejetar a fonte de infusão, se estiver dentro.")
 	if(max_tier_allowed < DNA_INFUSER_MAX_TIER)
-		. += span_boldnotice("Neste momento, o infusor de DNA só pode infundir camada[max_tier_allowed]Entradas.")
+		. += span_boldnotice("Neste momento, o infusor de DNA só pode infundir camada [max_tier_allowed] Entradas.")
 	else
 		. += span_boldnotice("Nível máximo desbloqueado. Todas as entradas de DNA são possíveis.")
 	. += span_notice("Examine mais para mais informações.")
 
 /obj/machinery/dna_infuser/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Se você infundir uma camada[DNA_MUTANT_TIER_ONE]Entrada até que desbloqueie o bônus, ele vai atualizar o nível máximo e permitir infusões mais complicadas.")
+	. += span_notice("Se você infundir uma camada [DNA_MUTANT_TIER_ONE] Entrada até que desbloqueie o bônus, ele vai atualizar o nível máximo e permitir infusões mais complicadas.")
 	. += span_notice("O nível máximo que pode atingir é o nível Tier.[DNA_INFUSER_MAX_TIER].")
 
 /obj/machinery/dna_infuser/interact(mob/user)
@@ -77,7 +77,7 @@
 /obj/machinery/dna_infuser/proc/start_infuse()
 	var/mob/living/carbon/human/human_occupant = occupant
 	infusing = TRUE
-	visible_message(span_notice("[src]Hums à vida, começando o processo de infusão!"))
+	visible_message(span_notice("[src] Hums à vida, começando o processo de infusão!"))
 
 	infusing_into = infusing_from.get_infusion_entry()
 	var/fail_title = ""
@@ -109,7 +109,7 @@
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, vary = FALSE)
 	if(fail_explanation)
 		playsound(src, 'sound/machines/printer.ogg', 100, TRUE)
-		visible_message(span_notice("[src]imprime um relatório de erro."))
+		visible_message(span_notice("[src] imprime um relatório de erro."))
 		var/obj/item/paper/printed_paper = new /obj/item/paper(loc)
 		printed_paper.name = "error report - '[fail_title]'"
 		printed_paper.add_raw_text(fail_explanation)
@@ -123,7 +123,7 @@
 		max_tier_allowed != DNA_INFUSER_MAX_TIER 		&& infusing_into.tier == max_tier_allowed 		&& target.has_status_effect(infusing_into.status_effect_type) 	)
 		max_tier_allowed++
 		playsound(src, 'sound/machines/ding.ogg', 50, TRUE)
-		visible_message(span_notice("[src]dings como ele registra os resultados da infusão completa."))
+		visible_message(span_notice("[src] dings como ele registra os resultados da infusão completa."))
 
 /obj/machinery/dna_infuser/update_icon_state()
 	//out of order
@@ -171,7 +171,7 @@
 	if(!is_valid_infusion(tool, user))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
-		to_chat(user, span_warning("[tool]está preso em sua mão!"))
+		to_chat(user, span_warning("[tool] está preso em sua mão!"))
 		return ITEM_INTERACT_BLOCKING
 	infusing_from = tool
 	return ITEM_INTERACT_SUCCESS
@@ -180,12 +180,12 @@
 	if(user.stat)
 		if(COOLDOWN_FINISHED(src, message_cooldown))
 			COOLDOWN_START(src, message_cooldown, 4 SECONDS)
-			to_chat(user, span_warning("[src]A porta não se mexe!"))
+			to_chat(user, span_warning("[src] A porta não se mexe!"))
 		return
 	if(infusing)
 		if(COOLDOWN_FINISHED(src, message_cooldown))
 			COOLDOWN_START(src, message_cooldown, 4 SECONDS)
-			to_chat(user, span_danger("[src]A porta não se moverá enquanto todas as agulhas infundem você!"))
+			to_chat(user, span_danger("[src] A porta não se moverá enquanto todas as agulhas infundem você!"))
 		return
 	open_machine(drop = FALSE)
 	//we set drop to false to manually call it with an allowlist

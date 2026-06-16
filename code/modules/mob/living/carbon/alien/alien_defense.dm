@@ -24,16 +24,16 @@ In all, this is a lot like the monkey code. /N
 		AdjustParalyzed(-6 SECONDS)
 		AdjustUnconscious(-6 SECONDS)
 		AdjustSleeping(-10 SECONDS)
-		visible_message(span_notice("[user.name]Focinhos[src]Tentando acordar[p_them()]Levante-se!"))
+		visible_message(span_notice("[user.name] Focinhos [src] Tentando acordar [p_them()] Levante-se!"))
 	else if(health > 0)
 		user.do_attack_animation(src, ATTACK_EFFECT_BITE)
 		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
-		visible_message(span_danger("[user.name]Mordidas.[src]!"), 						span_userdanger("[user.name]Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, user)
+		visible_message(span_danger("[user.name] Mordidas.[src]!"), 						span_userdanger("[user.name] Morde você!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Você morde.[src]!"))
 		adjust_brute_loss(1)
 		log_combat(user, src, "attacked")
 	else
-		to_chat(user, span_warning("[name]Está muito ferido para isso."))
+		to_chat(user, span_warning("[name] Está muito ferido para isso."))
 
 
 /mob/living/carbon/alien/attack_larva(mob/living/carbon/alien/larva/L, list/modifiers)

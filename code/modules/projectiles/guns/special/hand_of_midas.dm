@@ -28,9 +28,9 @@
 /obj/item/gun/magic/midas_hand/examine(mob/user)
 	. = ..()
 	var/gold_time_converted = gold_time_convert()
-	. += span_notice("Seu próximo tiro vai infligir[gold_time_converted]Segundo[gold_time_converted == 1 ? "" : "s"]De Midas Blight.")
-	. += span_notice("Clique com o botão direito dos inimigos para drenar ouro de suas correntes sanguíneas para recarregar[src].")
-	. += span_notice("[src]pode ser recarregado usando moedas de ouro em uma pitada.")
+	. += span_notice("Seu próximo tiro vai infligir [gold_time_converted] Segundo[gold_time_converted == 1 ? "" : "s"]De Midas Blight.")
+	. += span_notice("Clique com o botão direito dos inimigos para drenar ouro de suas correntes sanguíneas para recarregar [src].")
+	. += span_notice("[src] pode ser recarregado usando moedas de ouro em uma pitada.")
 
 /obj/item/gun/magic/midas_hand/shoot_with_empty_chamber(mob/living/user)
 	. = ..()
@@ -88,7 +88,7 @@
 /obj/item/gun/magic/midas_hand/proc/handle_gold_charges(user, gold_amount)
 	gold_timer += gold_amount
 	var/gold_time_converted = gold_time_convert()
-	balloon_alert(user, "[gold_time_converted]Segundo[gold_time_converted == 1 ? "" : "s"]")
+	balloon_alert(user, "[gold_time_converted] Segundo[gold_time_converted == 1 ? "" : "s"]")
 	if(!charges)
 		instant_recharge()
 
@@ -105,7 +105,7 @@
 		return
 
 	var/mob/living/carbon/human/victim = user
-	victim.visible_message(span_suicide("[victim]Segura o barril de[src]Para[victim.p_their()]Cabeça, acendendo o fusível. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	victim.visible_message(span_suicide("[victim] Segura o barril de [src] Para [victim.p_their()] Cabeça, acendendo o fusível. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(!do_after(victim, 1.5 SECONDS))
 		return SHAME
 	playsound(src, 'sound/items/weapons/gun/rifle/shot.ogg', 75, TRUE)

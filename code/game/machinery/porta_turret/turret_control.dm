@@ -78,8 +78,8 @@
 /obj/machinery/turretid/examine(mob/user)
 	. += ..()
 	if(issilicon(user) && !(machine_stat & BROKEN))
-		. += span_notice("Ctrl-click[src]Para[ enabled ? "disable" : "enable"]Torres.")
-		. += span_notice("Alt-click[src]para colocar torres para[ lethal ? "stun" : "kill"].")
+		. += span_notice("Ctrl-click [src] Para[ enabled ? "disable" : "enable"]Torres.")
+		. += span_notice("Alt-click [src] para colocar torres para[ lethal ? "stun" : "kill"].")
 
 /obj/machinery/turretid/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	. = NONE
@@ -88,7 +88,7 @@
 
 	if(multi_tool.buffer && istype(multi_tool.buffer, /obj/machinery/porta_turret))
 		turrets |= WEAKREF(multi_tool.buffer)
-		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer]Com\the [src]."))
+		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer] Com\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/turretid/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)

@@ -13,10 +13,10 @@
 		return
 
 	if(user.has_language(language))
-		to_chat(user, span_boldwarning("Você começa a passar[src]Mas você já sabe[initial(language.name)]."))
+		to_chat(user, span_boldwarning("Você começa a passar [src] Mas você já sabe [initial(language.name)]."))
 		return
 
-	to_chat(user, span_bolddanger("Você começa a passar[src], e[flavour_text]."))
+	to_chat(user, span_bolddanger("Você começa a passar [src], e [flavour_text]."))
 
 	user.grant_language(language)
 	user.remove_blocked_language(language, source=LANGUAGE_ALL)
@@ -34,19 +34,19 @@
 	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
 
 	if(M.stat == DEAD)
-		M.visible_message(span_danger("[user]Strocks.[M]O cadáver sem vida com[src]."), span_userdanger("[user]Bate no seu cadáver sem vida com[src]."), span_hear("Você ouve batidas."))
+		M.visible_message(span_danger("[user] Strocks.[M] O cadáver sem vida com [src]."), span_userdanger("[user] Bate no seu cadáver sem vida com [src]."), span_hear("Você ouve batidas."))
 	else if(M.has_language(language))
-		M.visible_message(span_danger("[user]Batidas.[M]sobre a cabeça com[src]!"), span_userdanger("[user]Bate na sua cabeça com[src]!"), span_hear("Você ouve batidas."))
+		M.visible_message(span_danger("[user] Batidas.[M] sobre a cabeça com [src]!"), span_userdanger("[user] Bate na sua cabeça com [src]!"), span_hear("Você ouve batidas."))
 	else
-		M.visible_message(span_notice("[user]Ensina.[M]Batendo.[M.p_them()]sobre a cabeça com[src]!"), span_boldnotice("Como[user]Bate em você com[src], [flavour_text]."), span_hear("Você ouve batidas."))
+		M.visible_message(span_notice("[user] Ensina.[M] Batendo.[M.p_them()] sobre a cabeça com [src]!"), span_boldnotice("Como [user] Bate em você com [src], [flavour_text]."), span_hear("Você ouve batidas."))
 		M.grant_language(language, source = LANGUAGE_MIND)
 		use_charge(user)
 
 /obj/item/language_manual/proc/use_charge(mob/user)
 	charges--
 	if(!charges)
-		user.visible_message(span_notice("A capa de[user]O livro começa a mudar e mudar! Ele cai de[user.p_their()]Mãos!"),
-							span_warning("A capa e o conteúdo de[src]Comece a mudar e mudar! Ele escapa de suas mãos!"))
+		user.visible_message(span_notice("A capa de [user] O livro começa a mudar e mudar! Ele cai de [user.p_their()] Mãos!"),
+							span_warning("A capa e o conteúdo de [src] Comece a mudar e mudar! Ele escapa de suas mãos!"))
 		new /obj/item/book/manual/random(get_turf(src))
 		qdel(src)
 
@@ -67,7 +67,7 @@
 	var/list/available_languages = length(GLOB.uncommon_roundstart_languages) ? GLOB.uncommon_roundstart_languages : list(/datum/language/common)
 	language = pick(available_languages)
 	name = "[initial(language.name)] manual"
-	desc = "A capa do livro diz:\"[initial(language.name)]Para Xenos, aprender línguas galácticas comuns em segundos.\""
+	desc = "A capa do livro diz:\"[initial(language.name)] Para Xenos, aprender línguas galácticas comuns em segundos.\""
 	flavour_text = "Você se sente empoderado com um domínio sobre[initial(language.name)]"
 
 /obj/item/language_manual/roundstart_species/unlimited
@@ -103,14 +103,14 @@
 /obj/item/language_manual/dronespeak_manual/attack(mob/living/M, mob/living/user)
 	// If they are not drone or silicon, we don't want them to learn this language.
 	if(!(isdrone(M) || issilicon(M)))
-		M.visible_message(span_danger("[user]Batidas.[M]sobre a cabeça com[src]!"), span_userdanger("[user]Bate na sua cabeça com[src]!"), span_hear("Você ouve batidas."))
+		M.visible_message(span_danger("[user] Batidas.[M] sobre a cabeça com [src]!"), span_userdanger("[user] Bate na sua cabeça com [src]!"), span_hear("Você ouve batidas."))
 		return
 
 	return ..()
 
 /obj/item/language_manual/dronespeak_manual/attack_self(mob/living/user)
 	if(!(isdrone(user) || issilicon(user)))
-		to_chat(user, span_danger("Você se bate na cabeça com[src]!"))
+		to_chat(user, span_danger("Você se bate na cabeça com [src]!"))
 		return
 
 	return ..()

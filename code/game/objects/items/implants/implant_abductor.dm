@@ -10,7 +10,7 @@
 /obj/item/implant/abductor/activate()
 	. = ..()
 	if(on_cooldown)
-		to_chat(imp_in, span_warning("Você deve esperar.[timeleft(on_cooldown)*0.1]segundos para usar[src]De novo!"))
+		to_chat(imp_in, span_warning("Você deve esperar.[timeleft(on_cooldown)*0.1] segundos para usar [src] De novo!"))
 		return
 
 	if(isnull(home) && !link_pad())

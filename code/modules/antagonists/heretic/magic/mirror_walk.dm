@@ -61,14 +61,14 @@
 		return
 
 	jaunter.Beam(nearby_reflection, icon_state = "light_beam", time = phase_out_time)
-	nearby_reflection.visible_message(span_warning("[nearby_reflection]Começa a brilhar e tremer ligeiramente!"))
+	nearby_reflection.visible_message(span_warning("[nearby_reflection] Começa a brilhar e tremer ligeiramente!"))
 	if(!do_after(jaunter, phase_out_time, nearby_reflection, IGNORE_USER_LOC_CHANGE|IGNORE_INCAPACITATED, hidden = TRUE))
 		return
 
 	playsound(jaunter, 'sound/effects/magic/ethereal_enter.ogg', 50, TRUE, -1)
 	jaunter.visible_message(
-		span_boldwarning("[jaunter]fases fora da realidade, desaparecendo diante de seus próprios olhos!"),
-		span_notice("Você pula para o reflexo vindo de[nearby_reflection], entrando no Reino do Espírito."),
+		span_boldwarning("[jaunter] fases fora da realidade, desaparecendo diante de seus próprios olhos!"),
+		span_notice("Você pula para o reflexo vindo de [nearby_reflection], entrando no Reino do Espírito."),
 	)
 
 	// Pass the turf of the nearby reflection to the parent call
@@ -93,7 +93,7 @@
 		return FALSE
 
 	nearby_reflection.Beam(phase_turf, icon_state = "light_beam", time = phase_in_time)
-	nearby_reflection.visible_message(span_warning("[nearby_reflection]Começa a brilhar e tremer ligeiramente!"))
+	nearby_reflection.visible_message(span_warning("[nearby_reflection] Começa a brilhar e tremer ligeiramente!"))
 	if(!do_after(unjaunter, phase_in_time, nearby_reflection, hidden = TRUE))
 		return FALSE
 
@@ -116,8 +116,8 @@
 	if (!nearby_reflection) // Should only be true if you're forced out somehow, like by having the spell removed
 		return
 	unjaunter.visible_message(
-		span_boldwarning("[unjaunter]fases na realidade diante de seus próprios olhos!"),
-		span_notice("Você pula do reflexo saindo do[nearby_reflection]Saindo do Reino do Espírito."),
+		span_boldwarning("[unjaunter] fases na realidade diante de seus próprios olhos!"),
+		span_notice("Você pula do reflexo saindo do [nearby_reflection] Saindo do Reino do Espírito."),
 	)
 
 /**

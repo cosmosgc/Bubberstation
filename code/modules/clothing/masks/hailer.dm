@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 		to_chat(user, span_danger("Você ajusta o limitador, mas nada acontece, provavelmente porque está quebrado."))
 		return
 	var/position = aggressiveness == AGGR_GOOD_COP ? "middle" : aggressiveness == AGGR_BAD_COP ? "last" : "first"
-	to_chat(user, span_notice("Você colocou o limitador para o[position]Posição."))
+	to_chat(user, span_notice("Você colocou o limitador para o [position] Posição."))
 	aggressiveness = aggressiveness % 3 + 1 // loop AGGR_GOOD_COP -> AGGR_SHIT_COP
 
 /obj/item/clothing/mask/gas/sechailer/wirecutter_act(mob/living/user, obj/item/I)
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	if(!isliving(usr) || !can_use(usr) || !COOLDOWN_FINISHED(src, hailer_cooldown))
 		return
 	if(broken_hailer)
-		to_chat(usr, span_warning("\The [src]O sistema de saudação está quebrado."))
+		to_chat(usr, span_warning("\The [src] O sistema de saudação está quebrado."))
 		return
 
 	// handle recent uses for overuse
@@ -152,12 +152,12 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 
 	switch(recent_uses)
 		if(3)
-			to_chat(usr, span_warning("\The [src]Está começando a aquecer."))
+			to_chat(usr, span_warning("\The [src] Está começando a aquecer."))
 		if(4)
-			to_chat(usr, span_userdanger("\The [src]Está esquentando perigosamente por excesso de uso!"))
+			to_chat(usr, span_userdanger("\The [src] Está esquentando perigosamente por excesso de uso!"))
 		if(5) // overload
 			broken_hailer = TRUE
-			to_chat(usr, span_userdanger("\The [src]O modulador de energia sobrecarrega e quebra."))
+			to_chat(usr, span_userdanger("\The [src] O modulador de energia sobrecarrega e quebra."))
 			return
 
 	// select phrase to play

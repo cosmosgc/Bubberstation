@@ -61,7 +61,7 @@
 	if(!owner)
 		if(!user.mind)
 			return
-		to_chat(user, span_notice("Você se amarra.[src]para você mesmo."))
+		to_chat(user, span_notice("Você se amarra.[src] para você mesmo."))
 		owner = user.mind
 		return
 
@@ -69,7 +69,7 @@
 		if(IS_WIZARD_APPRENTICE(user))
 			to_chat(user, span_warning("Se você for pego espiando o livro de feitiços do seu professor, provavelmente será expulso da Academia de Mágicos. Melhor não."))
 		else
-			to_chat(user, span_warning("[src]Não o reconhece como seu dono e se recusa a abrir!"))
+			to_chat(user, span_warning("[src] Não o reconhece como seu dono e se recusa a abrir!"))
 		return
 
 	return ..()
@@ -79,7 +79,7 @@
 	if(istype(O, /obj/item/antag_spawner/contract))
 		var/datum/spellbook_entry/item/contract/contract_entry = locate() in entries
 		if(!istype(contract_entry))
-			to_chat(user, span_warning("[src]Parece não querer devolver.[O]."))
+			to_chat(user, span_warning("[src] Parece não querer devolver.[O]."))
 			return
 		if(!contract_entry.can_refund(user, src))
 			to_chat(user, span_warning("Você não pode devolver.[src]."))
@@ -97,7 +97,7 @@
 	else if(istype(O, /obj/item/antag_spawner/slaughter_demon/laughter))
 		var/datum/spellbook_entry/item/hugbottle/demon_entry = locate() in entries
 		if(!istype(demon_entry))
-			to_chat(user, span_warning("[src]Parece não querer devolver.[O]."))
+			to_chat(user, span_warning("[src] Parece não querer devolver.[O]."))
 			return
 		if(!demon_entry.can_refund(user, src))
 			to_chat(user, span_warning("Você não pode devolver.[O]."))
@@ -111,7 +111,7 @@
 	else if(istype(O, /obj/item/antag_spawner/slaughter_demon))
 		var/datum/spellbook_entry/item/bloodbottle/demon_entry = locate() in entries
 		if(!istype(demon_entry))
-			to_chat(user, span_warning("[src]Parece não querer devolver.[O]."))
+			to_chat(user, span_warning("[src] Parece não querer devolver.[O]."))
 			return
 		if(!demon_entry.can_refund(user, src))
 			to_chat(user, span_warning("Você não pode devolver.[O]."))

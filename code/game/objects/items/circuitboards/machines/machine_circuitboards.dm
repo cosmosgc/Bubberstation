@@ -302,13 +302,13 @@
 /obj/item/circuitboard/machine/pacman/examine(mob/user)
 	. = ..()
 	var/message = high_production_profile ? "high-power uranium mode" : "medium-power plasma mode"
-	. += span_notice("Está definido para[message].")
-	. += span_notice("Você pode mudar o modo usando uma chave de fenda ligada[src].")
+	. += span_notice("Está definido para [message].")
+	. += span_notice("Você pode mudar o modo usando uma chave de fenda ligada [src].")
 
 /obj/item/circuitboard/machine/pacman/screwdriver_act(mob/living/user, obj/item/tool)
 	high_production_profile = !high_production_profile
 	var/message = high_production_profile ? "high-power uranium mode" : "medium-power plasma mode"
-	to_chat(user, span_notice("Você colocou o tabuleiro para[message]"))
+	to_chat(user, span_notice("Você colocou o tabuleiro para [message]"))
 
 /obj/item/circuitboard/machine/turbine_compressor
 	name = "Turbine - Inlet Compressor"
@@ -417,7 +417,7 @@
 /obj/item/circuitboard/machine/thermomachine/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	. = ..()
 	pipe_layer = (pipe_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (pipe_layer + 1)
-	to_chat(user, span_notice("Você muda o circuito para a camada[pipe_layer]."))
+	to_chat(user, span_notice("Você muda o circuito para a camada [pipe_layer]."))
 
 /obj/item/circuitboard/machine/thermomachine/examine()
 	. = ..()
@@ -605,14 +605,14 @@
 	var/position = fridges_name_paths.Find(build_path, fridges_name_paths)
 	position = (position == length(fridges_name_paths)) ? 1 : (position + 1)
 	build_path = fridges_name_paths[position]
-	to_chat(user, span_notice("Você colocou o tabuleiro para[fridges_name_paths[build_path]]."))
+	to_chat(user, span_notice("Você colocou o tabuleiro para [fridges_name_paths[build_path]]."))
 	return TRUE
 
 /obj/item/circuitboard/machine/smartfridge/examine(mob/user)
 	. = ..()
 	if(is_special_type)
 		return
-	. += span_info("[src]Está pronto para[fridges_name_paths[build_path]]Pode usar uma chave de fenda para reconfigurar.")
+	. += span_info("[src] Está pronto para [fridges_name_paths[build_path]]Pode usar uma chave de fenda para reconfigurar.")
 
 /obj/item/circuitboard/machine/dehydrator
 	name = "Dehydrator"
@@ -880,7 +880,7 @@
 		to_chat(user, span_warning("Você deve segurar o circuito para mudar seu custo!"))
 		return
 	custom_cost = new_cost
-	to_chat(user, span_notice("O custo está agora definido para[custom_cost]."))
+	to_chat(user, span_notice("O custo está agora definido para [custom_cost]."))
 
 /obj/item/circuitboard/machine/medical_kiosk/examine(mob/user)
 	. = ..()
@@ -1525,14 +1525,14 @@
 		return ITEM_INTERACT_BLOCKING
 
 	venue_type = radial_results[choice]
-	to_chat(user, span_notice("Você muda.[src]É um local conectado."))
+	to_chat(user, span_notice("Você muda.[src] É um local conectado."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/circuitboard/machine/restaurant_portal/examine(mob/user)
 	. = ..()
 	if (venue_type)
 		var/datum/venue/as_venue = venue_type
-		. += span_notice("[src]está ligado a\a [initial(as_venue.name)]local.")
+		. += span_notice("[src] está ligado a\a [initial(as_venue.name)] local.")
 
 /obj/item/circuitboard/machine/restaurant_portal/configure_machine(obj/machinery/restaurant_portal/machine)
 	if(!istype(machine))

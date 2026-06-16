@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	if(!target.buckle_mob(src, TRUE))
 		return FALSE
 
-	to_chat(src, span_notice("Sente-se.[target]O ombro."))
+	to_chat(src, span_notice("Sente-se.[target] O ombro."))
 	toggle_perched(perched = TRUE)
 	RegisterSignal(src, COMSIG_LIVING_SET_BUCKLED, PROC_REF(on_unbuckle))
 	return TRUE
@@ -303,8 +303,8 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 	pick_up_item(target)
 	visible_message(
-		span_notice("[src]Pega.[held_item]!"),
-		span_notice("Você agarra[held_item]!"),
+		span_notice("[src] Pega.[held_item]!"),
+		span_notice("Você agarra [held_item]!"),
 		span_hear("Você ouve os sons das asas batendo furiosamente."),
 	)
 	return TRUE
@@ -323,8 +323,8 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 			continue
 
 		visible_message(
-			span_notice("[src]Pega.[held_item]Fora[victim]A mão!"),
-			span_notice("Você tem um problema.[held_item]Fora[victim]A mão!"),
+			span_notice("[src] Pega.[held_item] Fora [victim] A mão!"),
+			span_notice("Você tem um problema.[held_item] Fora [victim] A mão!"),
 			span_hear("Você ouve os sons das asas batendo furiosamente."),
 		)
 		pick_up_item(stealable)
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /// We don't qdel the item here, we assume the invoking proc will have handled that somehow.
 /// Returns TRUE if we ate the thing.
 /mob/living/basic/parrot/proc/consume_cracker(obj/item/thing)
-	to_chat(src, span_notice("[src]Devora ansiosamente\the [thing]."))
+	to_chat(src, span_notice("[src] Devora ansiosamente\the [thing]."))
 	if(!istype(thing, /obj/item/food/cracker))
 		return TRUE // we still ate it
 

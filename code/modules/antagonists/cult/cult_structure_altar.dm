@@ -19,7 +19,7 @@
 		ELDRITCH_WHETSTONE = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/antags/cult/items.dmi', icon_state = "cult_sharpener"),
 			OUTPUT_ITEMS = list(/obj/item/sharpener/cult),
-			RADIAL_DESC = "Fornece\a [/obj/item/sharpener/cult::name]utilizáveis para aumentar os danos de espadas e adagas. Só um uso.",
+			RADIAL_DESC = "Fornece\a [/obj/item/sharpener/cult::name] utilizáveis para aumentar os danos de espadas e adagas. Só um uso.",
 			),
 		CONSTRUCT_SHELL = list(
 			PREVIEW_IMAGE = image(icon = 'icons/mob/shells.dmi', icon_state = "construct_cult"),
@@ -45,12 +45,12 @@
 	return list(PROTEON_ORB = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/antags/cult/items.dmi', icon_state = "summoning_orb"),
 			OUTPUT_ITEMS = list(/obj/item/proteon_orb),
-			RADIAL_DESC = "Fornece\a [/obj/item/proteon_orb::name]que pode ser usado para criar um portal, liberando construções menores para a estação."
+			RADIAL_DESC = "Fornece\a [/obj/item/proteon_orb::name] que pode ser usado para criar um portal, liberando construções menores para a estação."
 			),
 	)
 
 /obj/structure/destructible/cult/item_dispenser/altar/succcess_message(mob/living/user, obj/item/spawned_item)
-	to_chat(user, span_cult_italic("Você se ajoelha diante[src]E sua fé é recompensada com[spawned_item]!"))
+	to_chat(user, span_cult_italic("Você se ajoelha diante [src] E sua fé é recompensada com [spawned_item]!"))
 
 #undef ELDRITCH_WHETSTONE
 #undef CONSTRUCT_SHELL

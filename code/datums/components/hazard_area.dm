@@ -164,7 +164,7 @@
 	owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/hazard_area, update=TRUE)
 
 /datum/status_effect/hazard_area/get_examine_text()
-	return span_notice("[owner.p_They()]Aparecer[owner.p_s()]Ser imobilizado por meio desconhecimentos.")
+	return span_notice("[owner.p_They()] Aparecer [owner.p_s()] Ser imobilizado por meio desconhecimentos.")
 
 /atom/movable/screen/alert/status_effect/hazard_area
 	name = "Hazardous Area"

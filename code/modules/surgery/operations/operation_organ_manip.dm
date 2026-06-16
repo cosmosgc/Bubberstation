@@ -155,9 +155,9 @@
 			display_results(
 				surgeon,
 				limb.owner,
-				span_notice("Você começa a remover[organ.name]De[FORMAT_LIMB_OWNER(limb)]..."),
-				span_notice("[surgeon]começa a remover[organ.name]De[limb.owner || limb]."),
-				span_notice("[surgeon]Começa a remover algo de[limb.owner || limb]."),
+				span_notice("Você começa a remover [organ.name] De [FORMAT_LIMB_OWNER(limb)]..."),
+				span_notice("[surgeon] começa a remover [organ.name] De [limb.owner || limb]."),
+				span_notice("[surgeon] Começa a remover algo de [limb.owner || limb]."),
 			)
 			display_pain(limb.owner, "You feel a tugging sensation in your [limb.plaintext_zone]!")
 		if("insert")
@@ -165,9 +165,9 @@
 			display_results(
 				surgeon,
 				limb.owner,
-				span_notice("Você começa a inserir[tool.name]em[FORMAT_LIMB_OWNER(limb)]..."),
-				span_notice("[surgeon]começa a inserir[tool.name]em[limb.owner || limb]."),
-				span_notice("[surgeon]começa a inserir algo em[limb.owner || limb]."),
+				span_notice("Você começa a inserir [tool.name] em [FORMAT_LIMB_OWNER(limb)]..."),
+				span_notice("[surgeon] começa a inserir [tool.name] em [limb.owner || limb]."),
+				span_notice("[surgeon] começa a inserir algo em [limb.owner || limb]."),
 			)
 			display_pain(limb.owner, "You can feel something being placed in your [limb.plaintext_zone]!")
 
@@ -186,9 +186,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você extrai com sucesso[organ.name]De[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Com sucesso extrai[organ.name]De[FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon]com sucesso extrai algo de[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você extrai com sucesso [organ.name] De [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Com sucesso extrai [organ.name] De [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon] com sucesso extrai algo de [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] throbs with pain, you can't feel your [organ.name] anymore!")
 	log_combat(surgeon, limb.owner || limb, "surgically removed [organ.name] from")
@@ -210,9 +210,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você inseriu com sucesso[organ.name]em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]com sucesso insere[organ.name]em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]com sucesso insere algo em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você inseriu com sucesso [organ.name] em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] com sucesso insere [organ.name] em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] com sucesso insere algo em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] throbs with pain as your new [organ.name] comes to life!")
 

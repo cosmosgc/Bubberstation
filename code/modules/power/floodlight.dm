@@ -253,7 +253,7 @@
 		if(FLOODLIGHT_HIGH)
 			setting_text = "Alta potência."
 	if(user)
-		to_chat(user, span_notice("Você está pronto.[src]Para[setting_text]."))
+		to_chat(user, span_notice("Você está pronto.[src] Para [setting_text]."))
 
 /obj/machinery/power/floodlight/cable_layer_act(mob/living/user, obj/item/tool)
 	if(anchored)

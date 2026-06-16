@@ -48,7 +48,7 @@
 	if(!tucker.transfer_item_to_turf(tucked, target_bed.drop_location()))
 		return
 
-	to_chat(tucker, span_notice("Você se deitou.[tucked]Fora.[target_bed]."))
+	to_chat(tucker, span_notice("Você se deitou.[tucked] Fora.[target_bed]."))
 	tuck(tucked, target_bed)
 	return COMPONENT_NO_AFTERATTACK
 

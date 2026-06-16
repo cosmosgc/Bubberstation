@@ -14,7 +14,7 @@
 		if(W.use_tool(src, user, 0, volume=40))
 			var/sheet_type = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
 			var/obj/item/stack/sheet/mineral/new_item = new sheet_type(user.loc)
-			user.visible_message(span_notice("[user]Em forma[src]Em[new_item]Com[W]."), 				span_notice("Você moldou[src]Em[new_item]Com[W]."), 				span_hear("Você ouve solda."))
+			user.visible_message(span_notice("[user] Em forma [src] Em [new_item] Com [W]."), 				span_notice("Você moldou [src] Em [new_item] Com [W]."), 				span_hear("Você ouve solda."))
 			var/holding = user.is_holding(src)
 			use(4)
 			if(holding && QDELETED(src))

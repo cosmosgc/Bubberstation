@@ -56,8 +56,8 @@
 		return
 
 	visible_message(
-		span_warning("[src]Separadores[attacked]É a cauda fora em um golpe rápido!"),
-		span_warning("Você corta[attacked]É a cauda fora."),
+		span_warning("[src] Separadores [attacked] É a cauda fora em um golpe rápido!"),
+		span_warning("Você corta [attacked] É a cauda fora."),
 	)
 	tail.Remove(attacked)
 	tail.forceMove(drop_location())

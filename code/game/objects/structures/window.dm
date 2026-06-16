@@ -162,7 +162,7 @@
 
 /obj/structure/window/attack_tk(mob/user)
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_notice("Algo bate em cima[src]."))
+	user.visible_message(span_notice("Algo bate em cima [src]."))
 	add_fingerprint(user)
 	playsound(src, knock_sound, 50, TRUE)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -182,10 +182,10 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	if(!user.combat_mode)
-		user.visible_message(span_notice("[user]Bate na porta.[src]."), 			span_notice("Você bate.[src]."))
+		user.visible_message(span_notice("[user] Bate na porta.[src]."), 			span_notice("Você bate.[src]."))
 		playsound(src, knock_sound, 50, TRUE)
 	else
-		user.visible_message(span_warning("[user]Bache.[src]!"), 			span_warning("Você bate[src]!"))
+		user.visible_message(span_warning("[user] Bache.[src]!"), 			span_warning("Você bate [src]!"))
 		playsound(src, bash_sound, 100, TRUE)
 
 /obj/structure/window/attack_paw(mob/user, list/modifiers)
@@ -204,11 +204,11 @@
 
 /obj/structure/window/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("[src]Já está em boas condições!"))
+		to_chat(user, span_warning("[src] Já está em boas condições!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!tool.tool_start_check(user, amount = 0))
 		return FALSE
-	to_chat(user, span_notice("Você começa a reparar[src]..."))
+	to_chat(user, span_notice("Você começa a reparar [src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume = 50))
 		repair_damage(max_integrity)
 		to_chat(user, span_notice("Você conserta.[src]."))
@@ -246,7 +246,7 @@
 	if(reinf && state >= RWINDOW_FRAME_BOLTED)
 		return FALSE
 
-	to_chat(user, span_notice("Você começa a desmontar[src]..."))
+	to_chat(user, span_notice("Você começa a desmontar [src]..."))
 	if(!tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_state_and_anchored), state, anchored)))
 		return ITEM_INTERACT_SUCCESS
 	var/obj/item/stack/sheet/G = new glass_type(user.loc, glass_amount)
@@ -522,7 +522,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 		if(RWINDOW_SECURE)
 			if(tool.tool_behaviour == TOOL_WELDER)
 				if(tool.tool_start_check(user, heat_required = HIGH_TEMPERATURE_REQUIRED))
-					user.visible_message(span_notice("[user]Segura.\the [tool]Para os parafusos de segurança\the [src]..."),
+					user.visible_message(span_notice("[user] Segura.\the [tool] Para os parafusos de segurança\the [src]..."),
 						span_notice("Você começa a aquecer os parafusos de segurança\the [src]..."))
 					if(tool.use_tool(src, user, 15 SECONDS, volume = 100))
 						to_chat(user, span_notice("Os parafusos de segurança estão brilhando e estão prontos para serem removidos."))
@@ -533,7 +533,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 
 		if(RWINDOW_BOLTS_HEATED)
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user]Escava nos parafusos de segurança aquecidos e começa a removê-los..."),
+				user.visible_message(span_notice("[user] Escava nos parafusos de segurança aquecidos e começa a removê-los..."),
 										span_notice("Você cava os parafusos aquecidos com força e eles começam a virar..."))
 				if(tool.use_tool(src, user, 50, volume = 50))
 					state = RWINDOW_BOLTS_OUT
@@ -543,8 +543,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 
 		if(RWINDOW_BOLTS_OUT)
 			if(tool.tool_behaviour == TOOL_CROWBAR)
-				user.visible_message(span_notice("[user]Cunhas.\the [tool]e começa a bisbilhotar..."),
-										span_notice("Sua cunha.\the [tool]para o espaço na moldura e começar a bisbilhotar..."))
+				user.visible_message(span_notice("[user] Cunhas.\the [tool] e começa a bisbilhotar..."),
+										span_notice("Sua cunha.\the [tool] para o espaço na moldura e começar a bisbilhotar..."))
 				if(tool.use_tool(src, user, 40, volume = 50))
 					state = RWINDOW_POPPED
 					to_chat(user, span_notice("O painel sai do quadro, expondo barras finas de metal que parecem que podem ser cortadas."))
@@ -553,7 +553,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 
 		if(RWINDOW_POPPED)
 			if(tool.tool_behaviour == TOOL_WIRECUTTER)
-				user.visible_message(span_notice("[user]Começa a cortar as barras expostas.\the [src]..."),
+				user.visible_message(span_notice("[user] Começa a cortar as barras expostas.\the [src]..."),
 										span_notice("Você começa a cortar as barras expostas em\the [src]"))
 				if(tool.use_tool(src, user, 20, volume = 50))
 					state = RWINDOW_BARS_CUT
@@ -563,7 +563,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 
 		if(RWINDOW_BARS_CUT)
 			if(tool.tool_behaviour == TOOL_WRENCH)
-				user.visible_message(span_notice("[user]Começa a desapertar\the [src]Da modura..."),
+				user.visible_message(span_notice("[user] Começa a desapertar\the [src] Da modura..."),
 					span_notice("Você começa a soltar os parafusos da moldura..."))
 				if(tool.use_tool(src, user, 40, volume = 50))
 					to_chat(user, span_notice("Você desparafusa os parafusos da moldura e a janela se solta."))
@@ -592,7 +592,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/unanchored/spawner, 0)
 /obj/structure/window/proc/cool_bolts()
 	if(state == RWINDOW_BOLTS_HEATED)
 		state = RWINDOW_SECURE
-		visible_message(span_notice("Os parafusos\the [src]Parece que eleesesfriaram..."))
+		visible_message(span_notice("Os parafusos\the [src] Parece que eleesesfriaram..."))
 
 /obj/structure/window/reinforced/examine(mob/user)
 	. = ..()
@@ -991,11 +991,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/tinted/frosted/spaw
 		return ..()
 
 	if(istype(W, /obj/item/paper) && atom_integrity < max_integrity)
-		user.visible_message(span_notice("[user]Começa a remendar os buracos\the [src]."))
+		user.visible_message(span_notice("[user] Começa a remendar os buracos\the [src]."))
 		if(do_after(user, 2 SECONDS, target = src))
 			atom_integrity = min(atom_integrity+4,max_integrity)
 			qdel(W)
-			user.visible_message(span_notice("[user]Remenda alguns dos buracos.\the [src]."))
+			user.visible_message(span_notice("[user] Remenda alguns dos buracos.\the [src]."))
 			if(atom_integrity == max_integrity)
 				update_appearance()
 			return

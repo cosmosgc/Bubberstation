@@ -18,11 +18,11 @@
 
 	if(reagents.total_volume > 0)
 		if(target.reagents.holder_full())
-			to_chat(user, span_notice("[target]Está cheio."))
+			to_chat(user, span_notice("[target] Está cheio."))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!target.is_injectable(user))
-			to_chat(user, span_warning("Você não pode transferir reagentes para[target]!"))
+			to_chat(user, span_warning("Você não pode transferir reagentes para [target]!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/trans = 0
@@ -40,19 +40,19 @@
 
 					trans = round(reagents.trans_to(safe_thing, amount_per_transfer_from_this, transferred_by = user, methods = TOUCH), CHEMICAL_VOLUME_ROUNDING)
 
-					target.visible_message(span_danger("[user]Tenta esguichar algo em[target]Os olhos, mas falha!"), 											span_userdanger("[user]Tenta esguichar algo em seus olhos, mas falha!"))
+					target.visible_message(span_danger("[user] Tenta esguichar algo em [target] Os olhos, mas falha!"), 											span_userdanger("[user] Tenta esguichar algo em seus olhos, mas falha!"))
 					if(trans)
-						to_chat(user, span_notice("Você se transferiu.[trans]Unidade da solução."))
+						to_chat(user, span_notice("Você se transferiu.[trans] Unidade da solução."))
 					update_appearance()
 					return ITEM_INTERACT_BLOCKING
 
 			else if(isalien(target)) //hiss-hiss has no eyes!
-				to_chat(target, span_danger("[target]Não parece ter olhos!"))
+				to_chat(target, span_danger("[target] Não parece ter olhos!"))
 				return ITEM_INTERACT_BLOCKING
 
 			target.visible_message(
-				span_danger("[user]Esguicha algo em[target]Os olhos!"),
-				span_userdanger("[user]esguicha algo em seus olhos!"),
+				span_danger("[user] Esguicha algo em [target] Os olhos!"),
+				span_userdanger("[user] esguicha algo em seus olhos!"),
 			)
 			SEND_SIGNAL(target, COMSIG_MOB_REAGENTS_DROPPED_INTO_EYES, user, src, reagents, fraction)
 			reagents.expose(target, TOUCH, fraction)
@@ -61,22 +61,22 @@
 
 		trans = round(reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 		if(trans)
-			to_chat(user, span_notice("Você se transferiu.[trans]Unidade da solução."))
+			to_chat(user, span_notice("Você se transferiu.[trans] Unidade da solução."))
 		update_appearance()
 		target.update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if(!target.is_drawable(user, FALSE)) //No drawing from mobs here
-		to_chat(user, span_warning("Você não pode remover diretamente reagentes de[target]!"))
+		to_chat(user, span_warning("Você não pode remover diretamente reagentes de [target]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!target.reagents.total_volume)
-		to_chat(user, span_warning("[target]Está vazio!"))
+		to_chat(user, span_warning("[target] Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/trans = round(target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	if(trans)
-		to_chat(user, span_notice("Você enche.[src]com[trans]Unidade da solução."))
+		to_chat(user, span_notice("Você enche.[src] com [trans] Unidade da solução."))
 
 	update_appearance()
 	target.update_appearance()

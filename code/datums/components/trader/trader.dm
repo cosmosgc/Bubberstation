@@ -390,9 +390,9 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		product_info = wanted_items[thing]
 		var/tern_op_result = (product_info[TRADER_PRODUCT_INFO_QUANTITY] == INFINITY ? "as many as I can." : "[product_info[TRADER_PRODUCT_INFO_QUANTITY]]") //Coder friendly string concat
 		if(product_info[TRADER_PRODUCT_INFO_QUANTITY] <= 0) //Zero demand
-			buy_info += span_notice("&bull; [span_red("(DOESN'T WANT MORE)")] [initial(thing.name)] for [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info[TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]; willing to buy [span_red("[tern_op_result]")] more.")
+			buy_info += span_notice("&bull; [span_red("(DOESN'T WANT MORE)")] [initial(thing.name)] for [product_info [TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info [TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]; willing to buy [span_red("[tern_op_result]")] more.")
 		else
-			buy_info += span_notice("&bull;[initial(thing.name)]para[product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info[TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]? disposto a comprar[span_green("[tern_op_result]")]")
+			buy_info += span_notice("&bull;[initial(thing.name)] para [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name][product_info [TRADER_PRODUCT_INFO_PRICE_MOD_DESCRIPTION]]? disposto a comprar[span_green("[tern_op_result]")]")
 
 	to_chat(customer, boxed_message(buy_info.Join("\n")))
 
@@ -410,9 +410,9 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		product_info = products[thing]
 		var/tern_op_result = (product_info[TRADER_PRODUCT_INFO_QUANTITY] == INFINITY ? "an infinite amount" : "[product_info[TRADER_PRODUCT_INFO_QUANTITY]]") //Coder friendly string concat
 		if(product_info[TRADER_PRODUCT_INFO_QUANTITY] <= 0) //Out of stock
-			sell_info += span_notice("&bull; [span_red("(OUT OF STOCK)")] [initial(thing.name)] for [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_red("[tern_op_result]")] left in stock")
+			sell_info += span_notice("&bull; [span_red("(OUT OF STOCK)")] [initial(thing.name)] for [product_info [TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_red("[tern_op_result]")] left in stock")
 		else
-			sell_info += span_notice("&bull;[initial(thing.name)]para[product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_green("[tern_op_result]")]Deixado em estoque")
+			sell_info += span_notice("&bull;[initial(thing.name)] para [product_info[TRADER_PRODUCT_INFO_PRICE]] [trader_data.currency_name]; [span_green("[tern_op_result]")]Deixado em estoque")
 	to_chat(customer, boxed_message(sell_info.Join("\n")))
 
 ///Sets quantity of all products to initial(quanity); this proc is currently called during initialize

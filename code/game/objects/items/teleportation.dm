@@ -112,7 +112,7 @@
 ///Checks if the targeted portal was created by us, then causes it to expire, removing it
 /obj/item/hand_tele/proc/try_dispel_portal(atom/target, mob/user)
 	if(is_parent_of_portal(target))
-		to_chat(user, span_notice("Você se dissipa.[target]Com[src]!"))
+		to_chat(user, span_notice("Você se dissipa.[target] Com [src]!"))
 		var/obj/effect/portal/portal = target
 		portal.expire()
 		return TRUE
@@ -134,7 +134,7 @@
 		portal_location = last_portal_location_ref.resolve()
 
 	if (isnull(portal_location))
-		to_chat(user, span_warning("[src]flashes breves. Nenhum alvo está preso."))
+		to_chat(user, span_warning("[src] flashes breves. Nenhum alvo está preso."))
 		return ITEM_INTERACT_BLOCKING
 
 	try_create_portal_to(user, portal_location)
@@ -149,7 +149,7 @@
 	//SKYRAT EDIT BEGIN
 	var/turf/my_turf = get_turf(src)
 	if(is_away_level(my_turf.z))
-		to_chat(user, "<span class='warning'>[src]Não pode ser usado aqui!</span>")
+		to_chat(user, "<span class='warning'>[src] Não pode ser usado aqui!</span>")
 		return
 	//SKYRAT EDIT END
 	var/list/locations = list()
@@ -204,7 +204,7 @@
 /// Takes either PORTAL_LOCATION_DANGEROUS or an /obj/machinery/computer/teleport/computer.
 /obj/item/hand_tele/proc/try_create_portal_to(mob/user, teleport_location)
 	if (length(active_portal_pairs) >= max_portal_pairs)
-		user.show_message(span_notice("[src]Está recarregando!"))
+		user.show_message(span_notice("[src] Está recarregando!"))
 		return
 
 	var/atom/teleport_target
@@ -229,11 +229,11 @@
 		teleport_target = target
 
 	if (teleport_target == null)
-		to_chat(user, span_notice("[src]vibra, então pára. Talvez devesse tentar outra coisa."))
+		to_chat(user, span_notice("[src] vibra, então pára. Talvez devesse tentar outra coisa."))
 		return
 
 	if(!check_teleport_valid(src, teleport_target))
-		to_chat(user, span_notice("[src]está com defeito."))
+		to_chat(user, span_notice("[src] está com defeito."))
 		return
 
 	if (!can_teleport_notifies(user))
@@ -251,7 +251,7 @@
 
 	try_move_adjacent(portal1, user.dir)
 	if(QDELETED(portal1) || QDELETED(portal2)) //in the event that something managed to delete the portal objects, i.e. something teleported them
-		to_chat(user, span_notice("[src]Vibra, mas nenhum portal parece apareceu. Talvez deve tentar outra coisa."))
+		to_chat(user, span_notice("[src] Vibra, mas nenhum portal parece apareceu. Talvez deve tentar outra coisa."))
 		return
 	active_portal_pairs[portal1] = portal2
 
@@ -268,7 +268,7 @@
 /obj/item/hand_tele/proc/can_teleport_notifies(mob/user)
 	var/turf/current_location = get_turf(user)
 	if (!current_location || !check_teleport_valid(src, current_location) || is_away_level(current_location.z) || !isturf(user.loc))
-		to_chat(user, span_notice("[src]está com defeito."))
+		to_chat(user, span_notice("[src] está com defeito."))
 		return FALSE
 
 	return TRUE
@@ -299,16 +299,16 @@
 
 /obj/item/hand_tele/suicide_act(mob/living/user)
 	if(iscarbon(user))
-		user.visible_message(span_suicide("[user]está criando um portal fraco e grudando[user.p_their()]Vá em frente! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está criando um portal fraco e grudando [user.p_their()] Vá em frente! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		var/mob/living/carbon/itemUser = user
 		var/obj/item/bodypart/head/head = itemUser.get_bodypart(BODY_ZONE_HEAD)
 		if(head)
 			head.drop_limb()
 			var/list/safeLevels = SSmapping.levels_by_any_trait(list(ZTRAIT_SPACE_RUINS, ZTRAIT_LAVA_RUINS, ZTRAIT_STATION, ZTRAIT_MINING))
 			head.forceMove(locate(rand(1, world.maxx), rand(1, world.maxy), pick(safeLevels)))
-			itemUser.visible_message(span_suicide("O portal está fechado.[user]É a cabeça com ele!"))
+			itemUser.visible_message(span_suicide("O portal está fechado.[user] É a cabeça com ele!"))
 		else
-			itemUser.visible_message(span_suicide("[user]Parecem ainda mais deprimidos quando percebem que não têm cabeça... e de repente morrem de vergonha!"))
+			itemUser.visible_message(span_suicide("[user] Parecem ainda mais deprimidos quando percebem que não têm cabeça... e de repente morrem de vergonha!"))
 		return BRUTELOSS
 
 /obj/item/syndicate_teleporter
@@ -347,7 +347,7 @@
 
 /obj/item/syndicate_teleporter/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]Tem.<b>[charges]</b>Fora[max_charges]As acusações foram deixadas.")
+	. += span_notice("[src] Tem.<b>[charges]</b>Fora [max_charges] As acusações foram deixadas.")
 
 /obj/item/syndicate_teleporter/attack_self(mob/user)
 	. = ..()
@@ -380,7 +380,7 @@
 				teleported_something = TRUE
 			attempt_teleport(user = mob_on_same_tile, triggered_by_emp = TRUE, not_holding_tele = TRUE)
 		if(!teleported_something)
-			visible_message(span_danger("[src]Pisca para fora da existência!"))
+			visible_message(span_danger("[src] Pisca para fora da existência!"))
 			do_sparks(2, 1, src)
 			qdel(src)
 
@@ -483,9 +483,9 @@
 	playsound(destination, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	playsound(destination, 'sound/effects/magic/disintegrate.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(!not_holding_tele)
-		to_chat(victim, span_userdanger("Você se teletransporta para[destination], [src]Tenta salvar você, mas..."))
+		to_chat(victim, span_userdanger("Você se teletransporta para [destination], [src] Tenta salvar você, mas..."))
 	else
-		to_chat(victim, span_userdanger("Você se teletransporta para[destination]."))
+		to_chat(victim, span_userdanger("Você se teletransporta para [destination]."))
 	destination.ex_act(EXPLODE_HEAVY)
 	victim.unequip_everything()
 	victim.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
@@ -496,7 +496,7 @@
 	for(var/mob/living/victim in fragging_location)//Hit everything in the turf
 		victim.apply_damage(20, BRUTE)
 		victim.Paralyze(6 SECONDS)
-		to_chat(victim, span_warning("[user]teletransporta-se para dentro de você, batendo no chão com a onda do espaço azul!"))
+		to_chat(victim, span_warning("[user] teletransporta-se para dentro de você, batendo no chão com a onda do espaço azul!"))
 		victim.throw_at(get_step_rand(victim), 1, 1, user, spin = TRUE)
 
 ///Bleed and make blood splatters at tele start and end points
@@ -515,7 +515,7 @@
 	// average evens out to 10 per teleport, but the randomness spices things up
 	if(prob(25) && bleed_amount)
 		playsound(src, 'sound/effects/wounds/pierce1.ogg', 40, vary = TRUE)
-		visible_message(span_warning("Sangue visivelmente jorra para fora[user]Como[src]Não consegue se teletransportar.[user.p_their()]Corpo corporativo!"), 			span_boldwarning("O sangue jorra visivelmente de você como[src]Falha em teletransporte ao seu corpo, corpo e corpo!"))
+		visible_message(span_warning("Sangue visivelmente jorra para fora [user] Como [src] Não consegue se teletransportar.[user.p_their()] Corpo corporativo!"), 			span_boldwarning("O sangue jorra visivelmente de você como [src] Falha em teletransporte ao seu corpo, corpo e corpo!"))
 		carbon_user.bleed(bleed_amount * 0.75)
 		carbon_user.spray_blood(pick(GLOB.alldirs), rand(1, 3))
 		return TRUE

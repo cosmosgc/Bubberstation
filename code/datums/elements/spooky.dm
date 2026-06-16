@@ -69,12 +69,12 @@
 		return
 
 	if(single_use)
-		to_chat(user, span_warning("Você sente como[source]perdeu seu medo..."))
+		to_chat(user, span_warning("Você sente como [source] perdeu seu medo..."))
 		Detach(source)
 
 	human.Paralyze(2 SECONDS)
 	human.set_species(/datum/species/skeleton)
-	human.visible_message(span_warning("[human]desistiu da vida como mortal."))
+	human.visible_message(span_warning("[human] desistiu da vida como mortal."))
 	to_chat(human, span_boldnotice("Você é um esqueleto assustador!"))
 	to_chat(human,
 		span_boldnotice("Uma nova vida e identidade começou.[too_spooky ? "Help your fellow skeletons into bringing out the spooky-pocalypse." : ""]Você não esqueceu sua vida passada, e ainda está em dívida com lealdades passadas.")

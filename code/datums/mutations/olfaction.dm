@@ -74,7 +74,7 @@
 
 	// There are no finger prints on the atom, so nothing to track
 	if(!length(possibles))
-		to_chat(caster, span_warning("Apesar de seus melhores esforços, não há cheiros para serem encontrados em[sniffed]..."))
+		to_chat(caster, span_warning("Apesar de seus melhores esforços, não há cheiros para serem encontrados em [sniffed]..."))
 		return
 
 	var/mob/living/carbon/new_target = tgui_input_list(caster, "Scent to remember", "Scent Tracking", sort_names(possibles))
@@ -89,12 +89,12 @@
 
 		// We don't have a new target, but we have an old target to fall back on
 		else
-			to_chat(caster, span_notice("Você retorna ao rastreamento.[old_target]A caça continua."))
+			to_chat(caster, span_notice("Você retorna ao rastreamento.[old_target] A caça continua."))
 			on_the_trail(caster)
 		return
 
 	// We have a new target to track
-	to_chat(caster, span_notice("Você pega o cheiro de[new_target]A caçada começa."))
+	to_chat(caster, span_notice("Você pega o cheiro de [new_target] A caçada começa."))
 	tracking_ref = WEAKREF(new_target)
 	on_the_trail(caster)
 
@@ -136,4 +136,4 @@
 
 	var/direction_text = span_bold("[dir2text(get_dir(caster_turf, current_target_turf))]")
 	if(direction_text)
-		to_chat(caster, span_notice("Você considera[current_target]O céu. A trilha leva[direction_text]."))
+		to_chat(caster, span_notice("Você considera [current_target] O céu. A trilha leva [direction_text]."))

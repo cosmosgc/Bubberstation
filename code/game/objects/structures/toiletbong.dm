@@ -23,12 +23,12 @@
 	if(toilet)
 		for(var/obj/item/cistern_item in toilet.contents)
 			cistern_item.forceMove(crafter.drop_location())
-			to_chat(crafter, span_warning("[cistern_item]Cai do Banheiro!"))
+			to_chat(crafter, span_warning("[cistern_item] Cai do Banheiro!"))
 		setDir(toilet.dir)
 		forceMove(toilet.loc)
 
 	crafter.visible_message(
-		span_notice("[crafter]Liga o lança-chamas ao banheiro reaproveitado."),
+		span_notice("[crafter] Liga o lança-chamas ao banheiro reaproveitado."),
 		span_notice("Você coloca o lança-chamas no banheiro reaproveitado."),
 	)
 	return ..()
@@ -46,14 +46,14 @@
 	if (!LAZYLEN(contents))
 		user.balloon_alert(user, "está vazio!")
 		return
-	user.visible_message(span_boldnotice("[user]Leva uma grande carga sobre o o[src]."))
+	user.visible_message(span_boldnotice("[user] Leva uma grande carga sobre o o [src]."))
 	if (!do_after(user, 2 SECONDS, target = src))
 		return
 	var/turf/toiletbong_location = loc
 	toiletbong_location.hotspot_expose(1000, 5)
 	for (var/obj/item/item in contents)
 		if (item.resistance_flags & INDESTRUCTIBLE)
-			user.balloon_alert(user, "[item.name]Está bloqueando os canos!")
+			user.balloon_alert(user, "[item.name] Está bloqueando os canos!")
 			continue
 		playsound(src, 'sound/items/modsuit/flamethrower.ogg', 50)
 
@@ -62,10 +62,10 @@
 		if (prob(5) && !(obj_flags & EMAGGED))
 			if(user.get_liked_foodtypes() & GORE)
 				user.balloon_alert(user, "Um presente escondido!")
-				user.visible_message(span_danger("[user]Tira um rato dos canos."))
+				user.visible_message(span_danger("[user] Tira um rato dos canos."))
 			else
 				to_chat(user, span_userdanger("Havia algo nojento nos canos!"))
-				user.visible_message(span_danger("[user]Cuspiu um rato."))
+				user.visible_message(span_danger("[user] Cuspiu um rato."))
 				user.adjust_disgust(50)
 				user.vomit(VOMIT_CATEGORY_DEFAULT)
 			var/mob/living/spawned_mob = new /mob/living/basic/mouse(get_turf(user))
@@ -90,7 +90,7 @@
 	if(anchored)
 		return FALSE
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("Você começa a desmontar o[src]."))
+	to_chat(user, span_notice("Você começa a desmontar o [src]."))
 	if (!do_after(user, 10 SECONDS, target = src))
 		return FALSE
 	new /obj/item/flamethrower(get_turf(src))
@@ -108,7 +108,7 @@
 	playsound(src, 'sound/effects/fish_splash.ogg', 50)
 	balloon_alert(user, "O banheiro quebrou.")
 	if (emag_card)
-		to_chat(user, span_boldwarning("O[emag_card]cai no banheiro. Você pesca de volta. Parece que quebrou o banheiro."))
+		to_chat(user, span_boldwarning("O [emag_card] cai no banheiro. Você pesca de volta. Parece que quebrou o banheiro."))
 	return TRUE
 
 /obj/structure/toiletbong/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)

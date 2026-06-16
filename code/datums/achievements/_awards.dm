@@ -286,7 +286,7 @@
 
 ///Compose the string to send to the user's chat when the progress is made. This one here is generic, but you should override it really.
 /datum/award/score/progress/proc/get_progress_string(progress_string)
-	return span_greenannounce("Novo progresso feito para[name]: <B>[progress_string]!</B>")
+	return span_greenannounce("Novo progresso feito para [name]: <B>[progress_string]!</B>")
 
 /datum/award/score/progress/load(datum/achievement_data/holder)
 	var/list/results = ..()

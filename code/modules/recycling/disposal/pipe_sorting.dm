@@ -62,10 +62,10 @@
 		if(O.currTag)// Tagger has a tag set
 			if(O.currTag in sortTypes)
 				sortTypes -= O.currTag
-				to_chat(user, span_notice("Removido\"[GLOB.TAGGERLOCATIONS[O.currTag]]\"filtro."))
+				to_chat(user, span_notice("Removido\"[GLOB.TAGGERLOCATIONS [O.currTag]]\"filtro."))
 			else
 				sortTypes |= O.currTag
-				to_chat(user, span_notice("Adicionado\"[GLOB.TAGGERLOCATIONS[O.currTag]]\"filtro."))
+				to_chat(user, span_notice("Adicionado\"[GLOB.TAGGERLOCATIONS [O.currTag]]\"filtro."))
 			playsound(src, 'sound/machines/beep/twobeep_high.ogg', 100, TRUE)
 	else
 		return ..()

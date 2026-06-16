@@ -29,7 +29,7 @@
 
 		if(pulled_has_spells)
 			to_chat(pulled_living, span_notice("Você sente magia crua fluindo através de você. Isso é bom!"))
-			to_chat(cast_on, span_notice("[pulled_living]de repente parece muito quente!"))
+			to_chat(cast_on, span_notice("[pulled_living] de repente parece muito quente!"))
 			return
 
 		to_chat(pulled_living, span_notice("Você se sente muito estranho por um momento, mas depois passa."))
@@ -43,14 +43,14 @@
 	var/charge_return = SEND_SIGNAL(to_charge, COMSIG_ITEM_MAGICALLY_CHARGED, src, cast_on)
 
 	if(QDELETED(to_charge))
-		to_chat(cast_on, span_warning("[src]Parece reagir adversamente com[to_charge]!"))
+		to_chat(cast_on, span_warning("[src] Parece reagir adversamente com [to_charge]!"))
 		return
 
 	if(charge_return & COMPONENT_ITEM_BURNT_OUT)
-		to_chat(cast_on, span_warning("[to_charge]Parece reagir negativamente a[src], ficando desconfortavelmente quente!"))
+		to_chat(cast_on, span_warning("[to_charge] Parece reagir negativamente a [src], ficando desconfortavelmente quente!"))
 
 	else if(charge_return & COMPONENT_ITEM_CHARGED)
-		to_chat(cast_on, span_notice("[to_charge]de repente parece muito quente!"))
+		to_chat(cast_on, span_notice("[to_charge] de repente parece muito quente!"))
 
 	else
-		to_chat(cast_on, span_notice("[to_charge]Não parece estar reagindo a[src]."))
+		to_chat(cast_on, span_notice("[to_charge] Não parece estar reagindo a [src]."))

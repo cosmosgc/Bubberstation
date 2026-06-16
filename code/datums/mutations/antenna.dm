@@ -80,13 +80,13 @@
 		return FALSE
 	var/mob/living/living_cast_on = cast_on
 	if(!living_cast_on.mind)
-		to_chat(owner, span_warning("[cast_on]Não tem mente para ler!"))
+		to_chat(owner, span_warning("[cast_on] Não tem mente para ler!"))
 		return FALSE
 	if(living_cast_on.stat == DEAD)
-		to_chat(owner, span_warning("[cast_on]Está morto!"))
+		to_chat(owner, span_warning("[cast_on] Está morto!"))
 		return FALSE
 	if(living_cast_on.mob_biotypes & MOB_ROBOTIC)
-		to_chat(owner, span_warning("[cast_on]É robótico, você não pode ler[cast_on.p_their()]Mente!"))
+		to_chat(owner, span_warning("[cast_on] É robótico, você não pode ler [cast_on.p_their()] Mente!"))
 		return FALSE
 
 	return TRUE
@@ -94,7 +94,7 @@
 /datum/action/cooldown/spell/pointed/mindread/cast(mob/living/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags, charge_cost = 0))
-		to_chat(owner, span_warning("Enquanto você alcança[cast_on]Você é parado por um bloqueio mental. Parece que você foi frustrado."))
+		to_chat(owner, span_warning("Enquanto você alcança [cast_on] Você é parado por um bloqueio mental. Parece que você foi frustrado."))
 		return
 
 	if(cast_on == owner)
@@ -109,7 +109,7 @@
 		return
 
 	if(HAS_TRAIT(cast_on, TRAIT_EVIL))
-		to_chat(owner, span_warning("Enquanto você alcança[cast_on]A mente, você sente o vazio esmagadora dentro. Um ser verdadeiramente mau.[HAS_TRAIT(owner, TRAIT_EVIL) ? "It's nice to find someone who is like-minded." : "What is wrong with this person?"]"))
+		to_chat(owner, span_warning("Enquanto você alcança [cast_on] A mente, você sente o vazio esmagadora dentro. Um ser verdadeiramente mau.[HAS_TRAIT(owner, TRAIT_EVIL) ? "It's nice to find someone who is like-minded." : "What is wrong with this person?"]"))
 
 	var/list/log_info = list()
 	var/list/discovered_info = list("<i>You plunge into [cast_on]'s mind and discover...</i>")
@@ -159,7 +159,7 @@
 	if(QDELETED(examiner))
 		return
 	if(antimagic)
-		to_chat(examiner, boxed_message(span_warning("Você tenta analisar[examined]Os pensamentos atuais, mas não conseguem penetrar[examined.p_their()]mente... Parece que você foi frustrado.")))
+		to_chat(examiner, boxed_message(span_warning("Você tenta analisar [examined] Os pensamentos atuais, mas não conseguem penetrar [examined.p_their()] mente... Parece que você foi frustrado.")))
 		return
 
 	var/list/log_info = list()
@@ -167,7 +167,7 @@
 		to_chat(examined, span_danger("Você sente algo estranho entrar em sua mente."))
 		log_info += "Target alerted!"
 
-	to_chat(examiner, boxed_message(span_notice("<i>Você analisa.[examined]Os pensamentos atuais...</i><br>&emsp;\"[read_text]\"...")))
+	to_chat(examiner, boxed_message(span_notice("<i>Você analisa.[examined] Os pensamentos atuais...</i><br>&emsp;\"[read_text]\"...")))
 	log_info += "Current thought: \"[read_text]\""
 
 	log_combat(examiner, examined, "mind read (triggered on examine)", null, "info: [english_list(log_info, and_text = ", ")]")

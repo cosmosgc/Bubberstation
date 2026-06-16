@@ -17,8 +17,8 @@
 
 /datum/storage/bag/trash/remove_single(mob/removing, obj/item/thing, atom/remove_to_loc, silent)
 	real_location.visible_message(
-		span_notice("[removing]Começa a pescar por dentro.[parent]."),
-		span_notice("Você começa a cavar em torno[parent]Para tentar tirar algo mais."),
+		span_notice("[removing] Começa a pescar por dentro.[parent]."),
+		span_notice("Você começa a cavar em torno [parent] Para tentar tirar algo mais."),
 	)
 	if(!do_after(removing, 1.5 SECONDS, parent))
 		return FALSE

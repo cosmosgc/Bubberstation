@@ -793,7 +793,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!..())
 		return FALSE
 
-	visible_message(span_deadsay("<b>[src]</b>apontá para[pointed_at]."))
+	visible_message(span_deadsay("<b>[src]</b>apontá para [pointed_at]."))
 
 //this is called when a ghost is drag clicked to something.
 /mob/dead/observer/mouse_drop_dragged(atom/over, mob/user)
@@ -982,7 +982,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/examine_more(mob/user)
 	if(!isAdminObserver(user))
 		return ..()
-	. = list(span_notice("<i>Você examina.[src]Mais preto, e nota o segundo...</i>"))
+	. = list(span_notice("<i>Você examina.[src] Mais preto, e nota o segundo...</i>"))
 	. += list("\t>[span_admin("[ADMIN_FULLMONTY(src)]")]")
 
 

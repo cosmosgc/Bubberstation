@@ -53,6 +53,6 @@
 		var/minutes_left = required_playtime - current_playtime
 		var/playtime_left = DisplayTimeText(minutes_left * (1 MINUTES))
 		if(!silent)
-			to_chat(user, span_danger("Você precisa jogar.[playtime_left]Mais como[required_role]Para gerar como um drone de manutenção!"))
+			to_chat(user, span_danger("Você precisa jogar.[playtime_left] Mais como [required_role] Para gerar como um drone de manutenção!"))
 		return FALSE
 	return ..()

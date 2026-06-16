@@ -304,7 +304,7 @@ Buildable meters
 	transfer_fingerprints_to(built_machine)
 
 	wrench.play_tool_sound(src)
-	user.visible_message( 		span_notice("[user]Fixa\the [src]."), 		span_notice("Você aperta.\the [src]."), 		span_hear("Você ouve ratching."))
+	user.visible_message( 		span_notice("[user] Fixa\the [src]."), 		span_notice("Você aperta.\the [src]."), 		span_hear("Você ouve ratching."))
 
 	qdel(src)
 
@@ -318,7 +318,7 @@ Buildable meters
 
 	if(welder.use_tool(src, user, 2 SECONDS, volume=2))
 		new /obj/item/sliced_pipe(drop_location())
-		user.visible_message( 			"[user]soldas\the [src]Em dois.", 			span_notice("Você solda\the [src]Em dois."), 			span_hear("Você ouve solda."))
+		user.visible_message( 			"[user] soldas\the [src] Em dois.", 			span_notice("Você solda\the [src] Em dois."), 			span_hear("Você ouve solda."))
 
 		qdel(src)
 
@@ -413,7 +413,7 @@ Buildable meters
 	T.flipped = flipped
 
 /obj/item/pipe/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Empurra.[src]em[user.p_their()]boca e liga! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Empurra.[src] em [user.p_their()] boca e liga! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		for(var/i in 1 to 20)
@@ -426,7 +426,7 @@ Buildable meters
 
 /obj/item/pipe/examine(mob/user)
 	. = ..()
-	. += span_notice("A camada do tubo está definida para[piping_layer].")
+	. += span_notice("A camada do tubo está definida para [piping_layer].")
 	. += span_notice("Você pode mudar a camada do tubo clicando direito no dispositivo.")
 
 /obj/item/pipe/attack_hand_secondary(mob/user, list/modifiers)
@@ -435,7 +435,7 @@ Buildable meters
 		return
 	var/layer_to_set = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
 	set_piping_layer(layer_to_set)
-	balloon_alert(user, "Camada de tubo definida para[piping_layer]")
+	balloon_alert(user, "Camada de tubo definida para [piping_layer]")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 

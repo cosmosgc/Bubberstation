@@ -197,7 +197,7 @@
 	required_container = /obj/item/slime_extract/blue
 
 /datum/chemical_reaction/slime/slimefoam/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	holder.create_foam(/datum/effect_system/fluid_spread/foam, 80, span_danger("[src]Vomite espuma!"), log = TRUE)
+	holder.create_foam(/datum/effect_system/fluid_spread/foam, 80, span_danger("[src] Vomite espuma!"), log = TRUE)
 
 //Dark Blue
 /datum/chemical_reaction/slime/slimefreeze
@@ -334,12 +334,12 @@
 /datum/chemical_reaction/slime/slimebloodlust/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	for(var/mob/living/basic/slime/slime in viewers(get_turf(holder.my_atom), null))
 		if(slime.hunger_disabled) //Undoes docility, but doesn't make rabid.
-			slime.visible_message(span_danger("[slime]Esquece seu treinamento, tornando-se selvagem mais uma vez!"))
+			slime.visible_message(span_danger("[slime] Esquece seu treinamento, tornando-se selvagem mais uma vez!"))
 			slime.set_default_behaviour()
 			slime.update_name()
 			continue
 		slime.set_enraged_behaviour()
-		slime.visible_message(span_danger("O[slime]é levado a um frenesi!"))
+		slime.visible_message(span_danger("O [slime] é levado a um frenesi!"))
 	..()
 
 /datum/chemical_reaction/slime/slimespeed
@@ -450,7 +450,7 @@
 
 /datum/chemical_reaction/slime/slimecrystal/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/obj/item/stack/ore/bluespace_crystal/BC = new (get_turf(holder.my_atom))
-	BC.visible_message(span_notice("\The [BC]Parece não faz nada!"))
+	BC.visible_message(span_notice("\The [BC] Parece não faz nada!"))
 	..()
 
 /datum/chemical_reaction/slime/slimeradio

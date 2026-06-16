@@ -33,7 +33,7 @@
 	beauty = FISH_BEAUTY_EXCELLENT
 
 /obj/item/fish/donkfish/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(!ishuman(user))
 		return TOXLOSS
 
@@ -71,7 +71,7 @@
 	return ..() * 0.04
 
 /obj/item/fish/jumpercable/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Ganchos em ambas como extensões.[src]Sem pito deles! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Ganchos em ambas como extensões.[src] Sem pito deles! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	electrocute_mob(user, power_source = get_area(src), source = src, siemens_coeff = 1, dist_check = FALSE)
 	tesla_zap(source = user, zap_range = 4, power = electrogenesis_power, cutoff = 1e3, zap_flags = ZAP_LOW_POWER_GEN|ZAP_MOB_DAMAGE)
 	playsound(user, 'sound/items/weapons/zapbang.ogg', 75)
@@ -202,11 +202,11 @@
 // you suicide like a real chainsaw
 /obj/item/fish/chainsawfish/suicide_act(mob/living/carbon/user)
 	if(status == FISH_DEAD)
-		user.visible_message(span_suicide("[user]Esmaga.[src]Em[user.p_their()]pescoço, destruindo[user.p_their()]Esófago! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Esmaga.[src] Em [user.p_their()] pescoço, destruindo [user.p_their()] Esófago! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		playsound(src, 'sound/items/weapons/genhit1.ogg', 100, TRUE)
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user]Começa a rasgar[user.p_their()]cabeça fora com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a rasgar [user.p_their()] cabeça fora com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/weapons/chainsawhit.ogg', 100, TRUE)
 	var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(myhead)

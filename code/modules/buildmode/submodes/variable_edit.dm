@@ -45,7 +45,7 @@
 				return
 			log_admin("Build Mode: [key_name(c)] modified [object.name]'s [varholder] to [valueholder]")
 		else
-			to_chat(c, span_warning("[initial(object.name)]não tem um var chamado '[varholder]'"))
+			to_chat(c, span_warning("[initial(object.name)] não tem um var chamado '[varholder]'"))
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(object.vars.Find(varholder))
 			var/reset_value = initial(object.vars[varholder])
@@ -54,5 +54,5 @@
 				return
 			log_admin("Build Mode: [key_name(c)] modified [object.name]'s [varholder] to [reset_value]")
 		else
-			to_chat(c, span_warning("[initial(object.name)]não tem um var chamado '[varholder]'"))
+			to_chat(c, span_warning("[initial(object.name)] não tem um var chamado '[varholder]'"))
 

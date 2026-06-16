@@ -212,7 +212,7 @@
 	SIGNAL_HANDLER
 
 	travel_remaining = 0
-	bumped_atom.visible_message(span_userdanger("\The [bumped_atom]Bate no campo violentamente!"))
+	bumped_atom.visible_message(span_userdanger("\The [bumped_atom] Bate no campo violentamente!"))
 	for(var/obj/structure/transport/linear/tram/transport_module as anything in transport_modules)
 		transport_module.set_travelling(FALSE)
 		for(var/explosive_target in transport_module.transport_contents)
@@ -1055,7 +1055,7 @@
 
 /obj/machinery/transport/tram_controller/ui_status(mob/user, datum/ui_state/state)
 	if(HAS_SILICON_ACCESS(user) && (controller_datum.controller_status & SYSTEM_FAULT || controller_datum.controller_status & COMM_ERROR || !is_operational))
-		to_chat(user, span_warning("Um código de erro pisca: falha de comunicação! O[src]Não está respondendo a entradas remotas!"))
+		to_chat(user, span_warning("Um código de erro pisca: falha de comunicação! O [src] Não está respondendo a entradas remotas!"))
 		return UI_CLOSE
 
 	return ..()
@@ -1113,7 +1113,7 @@
 		return
 
 	if(machine_stat & NOPOWER)
-		visible_message(span_warning("O botão não parece fazer nada, o[src]O estado de falha de energia está piscando!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		visible_message(span_warning("O botão não parece fazer nada, o [src] O estado de falha de energia está piscando!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		return
 
 	switch(action)

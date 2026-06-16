@@ -76,7 +76,7 @@
 		if(40 SECONDS to 50 SECONDS)
 			fear_string = "shakily"
 
-	carbon_user.visible_message(span_danger("[carbon_user]Fiddles com e puxa[src]..."), 		span_danger("Você.[isnull(fear_string) ? "" : " [fear_string]"]Tente Puxar[src]..."), "<i>Você ouve cliques e tique-taque.</i>")
+	carbon_user.visible_message(span_danger("[carbon_user] Fiddles com e puxa [src]..."), 		span_danger("Você.[isnull(fear_string) ? "" : " [fear_string]"]Tente Puxar [src]..."), "<i>Você ouve cliques e tique-taque.</i>")
 	if(!do_after(user, 2 SECONDS, target = src))
 		struggling = FALSE
 		return
@@ -84,21 +84,21 @@
 		to_chat(user, span_warning("Não se move!"))
 		escape_chance++
 	else
-		user.visible_message(span_warning("A fechadura[user]'s[name]Abra!"), 		span_userdanger("Você força o cadeado!"), "<i>Você ouve um único clique pronunciado!</i>")
+		user.visible_message(span_warning("A fechadura [user]'s [name] Abra!"), 		span_userdanger("Você força o cadeado!"), "<i>Você ouve um único clique pronunciado!</i>")
 		REMOVE_TRAIT(src, TRAIT_NODROP, REVERSE_BEAR_TRAP_TRAIT)
 	struggling = FALSE
 
 /obj/item/reverse_bear_trap/attack(mob/living/target, mob/living/user)
 	if(target.get_item_by_slot(ITEM_SLOT_HEAD))
-		to_chat(user, span_warning("Removedor[target.p_their()]Primeiro o capacete!"))
+		to_chat(user, span_warning("Removedor [target.p_their()] Primeiro o capacete!"))
 		return
-	target.visible_message(span_warning("[user]Começa a forçar[src]em frente[target]A cabeça!"), 		span_userdanger("[target]Começa a forçar[src]Na sua cabeça!"), "<i>Você ouve barulho.</i>")
-	to_chat(user, span_danger("Você começa a forçar[src]em frente[target]A cabeça..."))
+	target.visible_message(span_warning("[user] Começa a forçar [src] em frente [target] A cabeça!"), 		span_userdanger("[target] Começa a forçar [src] Na sua cabeça!"), "<i>Você ouve barulho.</i>")
+	to_chat(user, span_danger("Você começa a forçar [src] em frente [target] A cabeça..."))
 
 	if(!do_after(user, 3 SECONDS, target = target) || target.get_item_by_slot(ITEM_SLOT_HEAD))
 		return
-	target.visible_message(span_warning("[user]forças e fechaduras[src]em frente[target]A cabeça!"), 		span_userdanger("[user]Fechaduras[src]Na sua cabeça!"), "<i>Você ouve um clique, e então um temporizador se desliga.</i>")
-	to_chat(user, span_danger("Você força[src]em frente[target]Cabeça e clique no cadeado."))
+	target.visible_message(span_warning("[user] forças e fechaduras [src] em frente [target] A cabeça!"), 		span_userdanger("[user] Fechaduras [src] Na sua cabeça!"), "<i>Você ouve um clique, e então um temporizador se desliga.</i>")
+	to_chat(user, span_danger("Você força [src] em frente [target] Cabeça e clique no cadeado."))
 
 	user.dropItemToGround(src)
 	target.equip_to_slot_if_possible(src, ITEM_SLOT_HEAD)
@@ -116,11 +116,11 @@
 	reset()
 	var/mob/living/carbon/human/victim = loc
 	if(!istype(victim) || victim.get_item_by_slot(ITEM_SLOT_HEAD) != src)
-		visible_message(span_warning("[src]As mandíbulas se abrem com uma rachadura no ouvido!"))
+		visible_message(span_warning("[src] As mandíbulas se abrem com uma rachadura no ouvido!"))
 		playsound(src, 'sound/effects/snap.ogg', 75, TRUE)
 	else
 		var/mob/living/carbon/human/jill = loc
-		jill.visible_message(span_boldwarning("[src]Vai para dentro.[jill]'s boca, rasgando[jill.p_their()]Separem-se!"), span_userdanger("[src]Vai!"))
+		jill.visible_message(span_boldwarning("[src] Vai para dentro.[jill]'s boca, rasgando [jill.p_their()] Separem-se!"), span_userdanger("[src] Vai!"))
 		jill.emote("scream")
 		playsound(src, 'sound/effects/snap.ogg', 75, TRUE, frequency = 0.5)
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE, frequency = 0.5)

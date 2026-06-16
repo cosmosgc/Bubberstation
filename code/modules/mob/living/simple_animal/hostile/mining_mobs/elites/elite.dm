@@ -164,12 +164,12 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		if(TUMOR_PASSIVE)
 			// Prevents the user from being forcemoved back and forth between two elite arenas.
 			if(HAS_TRAIT(user, TRAIT_ELITE_CHALLENGER))
-				user.visible_message(span_warning("[user]Chega para[src]com[user.p_their()]Braço, mas nada acontece."),
-					span_warning("Você alcança[src]com seu braço... mas nada acontece."))
+				user.visible_message(span_warning("[user] Chega para [src] com [user.p_their()] Braço, mas nada acontece."),
+					span_warning("Você alcança [src] com seu braço... mas nada acontece."))
 				return
 			activity = TUMOR_ACTIVE
-			user.visible_message(span_boldwarning("[src]Convulsões como[user]O braço entra em seu raio. Uh-oh..."),
-				span_boldwarning("[src]Convulsões quando seu braço entra em seu raio. Seus instintos dizem para se afastar."))
+			user.visible_message(span_boldwarning("[src] Convulsões como [user] O braço entra em seu raio. Uh-oh..."),
+				span_boldwarning("[src] Convulsões quando seu braço entra em seu raio. Seus instintos dizem para se afastar."))
 			make_activator(user)
 			if(boosted)
 				mychild.playsound_local(get_turf(mychild), 'sound/effects/magic.ogg', 40, 0)
@@ -178,17 +178,17 @@ While using this makes the system rely on OnFire, it still gives options for tim
 			INVOKE_ASYNC(src, PROC_REF(arena_checks))
 		if(TUMOR_INACTIVE)
 			if(HAS_TRAIT(user, TRAIT_ELITE_CHALLENGER))
-				user.visible_message(span_warning("[user]Chega para[src]com[user.p_their()]Braço, mas nada acontece."),
-					span_warning("Você alcança[src]com seu braço... mas nada acontece."))
+				user.visible_message(span_warning("[user] Chega para [src] com [user.p_their()] Braço, mas nada acontece."),
+					span_warning("Você alcança [src] com seu braço... mas nada acontece."))
 				return
 			activity = TUMOR_ACTIVE
 			var/mob/dead/observer/elitemind = null
-			visible_message(span_boldwarning("[src]começa a ter convulsões. Seus instintos dizem para se afastar."))
+			visible_message(span_boldwarning("[src] começa a ter convulsões. Seus instintos dizem para se afastar."))
 			make_activator(user)
 			if(!boosted)
 				addtimer(CALLBACK(src, PROC_REF(spawn_elite)), 3 SECONDS)
 				return
-			visible_message(span_boldwarning("Algo dentro[src]Mexe..."))
+			visible_message(span_boldwarning("Algo dentro [src] Mexe..."))
 			var/mob/chosen_one = SSpolling.poll_ghosts_for_target(check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, poll_time = 5 SECONDS, checked_target = src, ignore_category = POLL_IGNORE_LAVALAND_ELITE, alert_pic = src, role_name_text = "lavaland elite")
 			if(chosen_one)
 				audible_message(span_boldwarning("Os sons de agitação aumentam em volume!"))
@@ -204,7 +204,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 /obj/structure/elite_tumor/proc/spawn_elite(mob/dead/observer/elitemind)
 	var/selectedspawn = pick(potentialspawns)
 	mychild = new selectedspawn(loc)
-	visible_message(span_boldwarning("[mychild]emerge de[src]!"))
+	visible_message(span_boldwarning("[mychild] emerge de [src]!"))
 	playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 	if(boosted)
 		mychild.PossessByPlayer(elitemind.key)
@@ -222,7 +222,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 
 /obj/structure/elite_tumor/proc/return_elite()
 	mychild.forceMove(loc)
-	visible_message(span_boldwarning("[mychild]emerge de[src]!"))
+	visible_message(span_boldwarning("[mychild] emerge de [src]!"))
 	playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 	mychild.revive(HEAL_ALL)
 	if(boosted)
@@ -278,11 +278,11 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	. = NONE
 	if(istype(attacking_item, /obj/item/organ/monster_core/regenerative_core) && activity == TUMOR_INACTIVE && !boosted)
 		var/obj/item/organ/monster_core/regenerative_core/core = attacking_item
-		visible_message(span_boldwarning("Como[user]Larga o núcleo em[src], [src]Parece inchar."))
+		visible_message(span_boldwarning("Como [user] Larga o núcleo em [src], [src] Parece inchar."))
 		icon_state = "advanced_tumor"
 		boosted = TRUE
 		set_light_range(6)
-		desc = "[desc]Este parece brilhar com uma forte intensidade."
+		desc = "[desc] Este parece brilhar com uma forte intensidade."
 		qdel(core)
 		return ITEM_INTERACT_SUCCESS
 
@@ -320,17 +320,17 @@ While using this makes the system rely on OnFire, it still gives options for tim
 /obj/structure/elite_tumor/proc/border_check()
 	if(activator != null && get_dist(src, activator) >= 12)
 		activator.forceMove(loc)
-		visible_message(span_boldwarning("[activator]de repente reaparece acima[src]!"))
+		visible_message(span_boldwarning("[activator] de repente reaparece acima [src]!"))
 		playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 	if(mychild != null && get_dist(src, mychild) >= 12)
 		mychild.forceMove(loc)
-		visible_message(span_boldwarning("[mychild]de repente reaparece acima[src]!"))
+		visible_message(span_boldwarning("[mychild] de repente reaparece acima [src]!"))
 		playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 
 /obj/structure/elite_tumor/proc/onEliteLoss()
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, 0, 50, TRUE, TRUE)
-	visible_message(span_boldwarning("[src]começa a convulsão violentamente antes de começar a dissipar."))
-	visible_message(span_boldwarning("Como[src]Fecha, algo é forçado a subir de baixo."))
+	visible_message(span_boldwarning("[src] começa a convulsão violentamente antes de começar a dissipar."))
+	visible_message(span_boldwarning("Como [src] Fecha, algo é forçado a subir de baixo."))
 	var/obj/structure/closet/crate/necropolis/tendril/lootbox = new /obj/structure/closet/crate/necropolis/tendril(loc)
 	if(boosted)
 		if(mychild.loot_drop != null && prob(50))
@@ -374,15 +374,15 @@ While using this makes the system rely on OnFire, it still gives options for tim
 
 	var/mob/living/simple_animal/hostile/asteroid/elite/elite = interacting_with
 	if(elite.stat != DEAD || elite.sentience_type != SENTIENCE_BOSS || !elite.key)
-		user.visible_message(span_notice("Parece[elite]é incapaz de ser revivido agora. Talvez tente novamente mais tarde."))
+		user.visible_message(span_notice("Parece [elite] é incapaz de ser revivido agora. Talvez tente novamente mais tarde."))
 		return ITEM_INTERACT_BLOCKING
 	elite.set_allies(list("[REF(user)]"))
 	elite.set_faction(null)
 	elite.revive(HEAL_ALL)
-	user.visible_message(span_notice("[user]Apunhalamentos[elite]com[src]Revivendo."))
+	user.visible_message(span_notice("[user] Apunhalamentos [elite] com [src] Revivendo."))
 	elite.playsound_local(get_turf(elite), 'sound/effects/magic.ogg', 40, 0)
-	to_chat(elite, span_userdanger("Você foi revivido por[user]Enquanto você não pode falar com eles, você deve[user]Uma grande dívida. Assistir[user.p_them()]em alcançar[user.p_their()]objetivos, independente do risco."))
-	to_chat(elite, span_boldbig("Note que você agora compartilha a lealdade de[user]Espera-se que você não sabote intencionalmente sua facção a menos que seja ordenado!"))
+	to_chat(elite, span_userdanger("Você foi revivido por [user] Enquanto você não pode falar com eles, você deve [user] Uma grande dívida. Assistir [user.p_them()] em alcançar [user.p_their()] objetivos, independente do risco."))
+	to_chat(elite, span_boldbig("Note que você agora compartilha a lealdade de [user] Espera-se que você não sabote intencionalmente sua facção a menos que seja ordenado!"))
 	elite.maxHealth *= ELITE_POST_BATTLE_HEALTH_MULTIPLIER
 	elite.health = elite.maxHealth
 	elite.desc = "[elite.desc] However, this one appears to be less wild in nature, and calmer around people."

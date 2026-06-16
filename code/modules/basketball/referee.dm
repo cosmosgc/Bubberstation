@@ -27,7 +27,7 @@
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown_minigame))
-		clicker.balloon_alert(clicker, "Não posso lançar para[COOLDOWN_TIMELEFT(src, whistle_cooldown_minigame) *0.1]segundos!")
+		clicker.balloon_alert(clicker, "Não posso lançar para [COOLDOWN_TIMELEFT(src, whistle_cooldown_minigame) *0.1] segundos!")
 		unset_ranged_ability(clicker)
 		return FALSE
 
@@ -42,6 +42,6 @@
 	COOLDOWN_START(src, whistle_cooldown_minigame, 1 MINUTES)
 	unset_ranged_ability(clicker)
 
-	to_chat(target, span_bold("[clicker]deu-lhe um tempo para uma falta!"))
-	to_chat(clicker, span_bold("Você colocou[target]Em um intervalo!"))
+	to_chat(target, span_bold("[clicker] deu-lhe um tempo para uma falta!"))
+	to_chat(clicker, span_bold("Você colocou [target] Em um intervalo!"))
 	return TRUE

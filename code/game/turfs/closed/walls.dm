@@ -164,7 +164,7 @@
 	else
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 		add_dent(WALL_DENT_HIT)
-		user.visible_message(span_danger("[user]Esmaga.\the [src]!"), 					span_danger("Você quebra\the [src]!"), 					span_hear("Você ouve um estrondo!"))
+		user.visible_message(span_danger("[user] Esmaga.\the [src]!"), 					span_danger("Você quebra\the [src]!"), 					span_hear("Você ouve um estrondo!"))
 	return TRUE
 
 /**

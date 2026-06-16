@@ -35,7 +35,7 @@
 	lunatic_obj.master = heretic_master
 	lunatic_obj.update_explanation_text()
 
-	to_chat(owner, span_boldnotice("Arruinar a mentira, salvar a verdade através da obediência[heretic_master]O líder!"))
+	to_chat(owner, span_boldnotice("Arruinar a mentira, salvar a verdade através da obediência [heretic_master] O líder!"))
 
 /datum/antagonist/lunatic/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/our_mob = mob_override || owner.current

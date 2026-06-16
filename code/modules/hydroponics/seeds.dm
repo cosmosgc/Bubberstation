@@ -316,14 +316,14 @@
 
 		// Heats up the plant's contents by 25 kelvin per 1 unit of nutriment. Mutually exclusive with cooling.
 		if(get_gene(/datum/plant_gene/trait/chem_heating))
-			T.visible_message(span_notice("[T]liberta ar congelante, consumindo seus nutrientes para aquecer seu conteúdo."))
+			T.visible_message(span_notice("[T] liberta ar congelante, consumindo seus nutrientes para aquecer seu conteúdo."))
 			T.reagents.remove_reagent(/datum/reagent/consumable/nutriment, num_nutriment)
 			T.reagents.chem_temp = min(1000, (T.reagents.chem_temp + num_nutriment * 25))
 			T.reagents.handle_reactions()
 			playsound(T.loc, 'sound/effects/wounds/sizzle2.ogg', 5)
 		// Cools down the plant's contents by 5 kelvin per 1 unit of nutriment. Mutually exclusive with heating.
 		else if(get_gene(/datum/plant_gene/trait/chem_cooling))
-			T.visible_message(span_notice("[T]libera uma explosão de ar quente, consumindo seus nutrientes para refrescar seu conteúdo."))
+			T.visible_message(span_notice("[T] libera uma explosão de ar quente, consumindo seus nutrientes para refrescar seu conteúdo."))
 			T.reagents.remove_reagent(/datum/reagent/consumable/nutriment, num_nutriment)
 			T.reagents.chem_temp = max(3, (T.reagents.chem_temp + num_nutriment * -5))
 			T.reagents.handle_reactions()

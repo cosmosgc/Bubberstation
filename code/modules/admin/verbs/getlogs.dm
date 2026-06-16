@@ -23,4 +23,4 @@ ADMIN_VERB(get_current_logs, R_ADMIN, "Get Current Logs", "View or retrieve logf
 			src << ftp(file(path))
 		else
 			return
-	to_chat(src, "Tentando enviar[path]Isso pode levar alguns minutos se o arquivo for muito grande.", confidential = TRUE)
+	to_chat(src, "Tentando enviar [path] Isso pode levar alguns minutos se o arquivo for muito grande.", confidential = TRUE)

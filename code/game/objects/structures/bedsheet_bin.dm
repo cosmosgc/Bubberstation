@@ -87,7 +87,7 @@ LINEN BINS
 	if(!QDELETED(shreds)) // Stacks merged
 		transfer_fingerprints_to(shreds)
 		shreds.add_fingerprint(user)
-	to_chat(user, span_notice("Você rasga[src]Levante."))
+	to_chat(user, span_notice("Você rasga [src] Levante."))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -649,10 +649,10 @@ LINEN BINS
 
 /obj/structure/bedsheetbin/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	if(amount)
-		to_chat(user, span_warning("O[src]Deve ester vazio primeiro!"))
+		to_chat(user, span_warning("O [src] Deve ester vazio primeiro!"))
 		return ITEM_INTERACT_SUCCESS
 	if(tool.use_tool(src, user, 0.5 SECONDS, volume=50))
-		to_chat(user, span_notice("Você desmonta o[src]."))
+		to_chat(user, span_notice("Você desmonta o [src]."))
 		new /obj/item/stack/rods(loc, 2)
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
@@ -674,7 +674,7 @@ LINEN BINS
 		return ITEM_INTERACT_BLOCKING
 	sheets.Add(tool)
 	amount++
-	to_chat(user, span_notice("Você colocou[tool]Em[src]."))
+	to_chat(user, span_notice("Você colocou [tool] Em [src]."))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -691,10 +691,10 @@ LINEN BINS
 		balloon_alert(user, "Já tem alguma coisa aí!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src, silent = FALSE))
-		to_chat(user, span_warning("\The [tool]está preso em sua mão, você não pode escondê-lo entre os lençóis!"))
+		to_chat(user, span_warning("\The [tool] está preso em sua mão, você não pode escondê-lo entre os lençóis!"))
 		return ITEM_INTERACT_BLOCKING
 	hidden = tool
-	to_chat(user, span_notice("Você se esconde.[tool]entre os lençóis."))
+	to_chat(user, span_notice("Você se esconde.[tool] entre os lençóis."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/bedsheetbin/attack_paw(mob/user, list/modifiers)
@@ -721,12 +721,12 @@ LINEN BINS
 
 		B.forceMove(drop_location())
 		user.put_in_hands(B)
-		to_chat(user, span_notice("Você pega.[B]Fora[src]."))
+		to_chat(user, span_notice("Você pega.[B] Fora [src]."))
 		update_appearance()
 
 		if(hidden)
 			hidden.forceMove(drop_location())
-			to_chat(user, span_notice("[hidden]Cai fora.[B]!"))
+			to_chat(user, span_notice("[hidden] Cai fora.[B]!"))
 			hidden = null
 
 	add_fingerprint(user)
@@ -745,7 +745,7 @@ LINEN BINS
 			B = new /obj/item/bedsheet(loc)
 
 		B.forceMove(drop_location())
-		to_chat(user, span_notice("Você remove telecinicamente.[B]De[src]."))
+		to_chat(user, span_notice("Você remove telecinicamente.[B] De [src]."))
 		update_appearance()
 
 		if(hidden)

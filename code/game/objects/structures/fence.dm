@@ -70,18 +70,18 @@
 			to_chat(user, span_warning("Esta cerca já está muito cortada!"))
 			return
 
-		user.visible_message(span_danger("\The [user]Começa a cortar\the [src]com\the [W]."),		span_danger("Você começa a cortar\the [src]com\the [W]."))
+		user.visible_message(span_danger("\The [user] Começa a cortar\the [src] com\the [W]."),		span_danger("Você começa a cortar\the [src] com\the [W]."))
 
 		if(do_after(user, CUT_TIME*W.toolspeed, target = src))
 			if(current_stage == hole_size)
 				switch(++hole_size)
 					if(MEDIUM_HOLE)
-						visible_message(span_notice("\The [user]corta em\the [src]Um pouco mais."))
+						visible_message(span_notice("\The [user] corta em\the [src] Um pouco mais."))
 						to_chat(user, span_info("Você provavelmente poderia passar por aquele buraco agora. Embora escalar seria muito mais rápido se o tornasse ainda maior."))
 						AddElement(/datum/element/climbable)
 					if(LARGE_HOLE)
-						visible_message(span_notice("\The [user]Corta completamente\the [src]."))
-						to_chat(user, span_info("O buraco dentro\the [src]é agora grande o suficiente para atravessar."))
+						visible_message(span_notice("\The [user] Corta completamente\the [src]."))
+						to_chat(user, span_info("O buraco dentro\the [src] é agora grande o suficiente para atravessar."))
 						RemoveElement(/datum/element/climbable)
 
 				update_cut_status()

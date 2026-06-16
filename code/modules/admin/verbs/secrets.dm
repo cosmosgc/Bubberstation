@@ -438,7 +438,7 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 				path_to_spawn = text2path(path_to_spawn)
 
 			if (!ispath(path_to_spawn))
-				to_chat(holder, span_notice("Caminho inválido[path_to_spawn]."), confidential = TRUE)
+				to_chat(holder, span_notice("Caminho inválido [path_to_spawn]."), confidential = TRUE)
 				return
 
 			var/list/candidates = list()

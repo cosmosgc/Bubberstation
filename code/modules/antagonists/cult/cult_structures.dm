@@ -46,12 +46,12 @@
 
 /obj/structure/destructible/cult/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]É[anchored ? "secured to":"unsecured from"]O chão.")
+	. += span_notice("[src] É[anchored ? "secured to":"unsecured from"]O chão.")
 	if(is_cultist_check(user) || isobserver(user))
 		if(cult_examine_tip)
 			. += span_cult(cult_examine_tip)
 		if(!COOLDOWN_FINISHED(src, use_cooldown_duration))
-			. += span_cult_italic("A magia em[src]é muito fraco, ele estará pronto para usar novamente em<b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown_duration))]</b>.")
+			. += span_cult_italic("A magia em [src] é muito fraco, ele estará pronto para usar novamente em<b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown_duration))]</b>.")
 
 /obj/structure/destructible/cult/set_anchored(anchorvalue)
 	. = ..()
@@ -68,7 +68,7 @@
  */
 /obj/structure/destructible/cult/proc/conceal()
 	set_density(FALSE)
-	visible_message(span_danger("[src]Desapareça."))
+	visible_message(span_danger("[src] Desapareça."))
 	SetInvisibility(INVISIBILITY_OBSERVER, id=type)
 	alpha = 100
 	set_light_power(0)
@@ -81,7 +81,7 @@
 /obj/structure/destructible/cult/proc/reveal()
 	set_density(initial(density))
 	RemoveInvisibility(type)
-	visible_message(span_danger("[src]De arrependimento apareceu!"))
+	visible_message(span_danger("[src] De arrependimento apareceu!"))
 	alpha = initial(alpha)
 	set_light_range(initial(light_range))
 	set_light_power(initial(light_power))
@@ -99,7 +99,7 @@
 	setup_options()
 
 /obj/structure/destructible/cult/item_dispenser/rust_heretic_act()
-	visible_message(span_notice("[src]Desfaz-se em pó. Em seu meio, você vê\a [initial(mansus_conversion_path.name)]."))
+	visible_message(span_notice("[src] Desfaz-se em pó. Em seu meio, você vê\a [initial(mansus_conversion_path.name)]."))
 	var/turf/turfy = get_turf(src)
 	new mansus_conversion_path(turfy)
 	turfy.rust_heretic_act()
@@ -113,10 +113,10 @@
 		to_chat(user, span_warning("Tem certeza de que sabe para que é usado e não consegue tocá-lo."))
 		return
 	if(!anchored)
-		to_chat(user, span_cult_italic("Você precisa ancorar[src]Para o chão primeiro."))
+		to_chat(user, span_cult_italic("Você precisa ancorar [src] Para o chão primeiro."))
 		return
 	if(!COOLDOWN_FINISHED(src, use_cooldown))
-		to_chat(user, span_cult_italic("A magia em[src]é muito fraco, ele estará pronto para usar novamente em<b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown))]</b>."))
+		to_chat(user, span_cult_italic("A magia em [src] é muito fraco, ele estará pronto para usar novamente em<b>[DisplayTimeText(COOLDOWN_TIMELEFT(src, use_cooldown))]</b>."))
 		return
 
 	setup_options()
@@ -197,7 +197,7 @@
  * Override for unique feedback messages on item spawn.
  */
 /obj/structure/destructible/cult/item_dispenser/proc/succcess_message(mob/living/user, obj/item/spawned_item)
-	to_chat(user, span_cult_italic("[src]produto uma[spawned_item.name]."))
+	to_chat(user, span_cult_italic("[src] produto uma [spawned_item.name]."))
 
 /*
  * Simple proc intended for use in callbacks to determine if [user] can continue to use a radial menu.

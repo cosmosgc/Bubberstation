@@ -19,7 +19,7 @@
 
 /obj/item/stack/light_w/examine(mob/user)
 	. = ..()
-	. += span_warning("\The [src]Parece inacabado, adicione<b>Ferro</b>para completá-lo.")
+	. += span_warning("\The [src] Parece inacabado, adicione<b>Ferro</b>para completá-lo.")
 
 /obj/item/stack/light_w/attackby(obj/item/O, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(O, /obj/item/stack/sheet/iron))

@@ -72,11 +72,11 @@
 	. = ..()
 	switch(engine_state)
 		if(ENGINE_UNWRENCHED)
-			. += span_notice("\The [src]está livre do chão. Precisa ser puxado para o chão para ser instalado.")
+			. += span_notice("\The [src] está livre do chão. Precisa ser puxado para o chão para ser instalado.")
 		if(ENGINE_WRENCHED)
-			. += span_notice("\The [src]está aparafusado no chão e pode ser aberto com uma chave inglesa. Precisa ser soldada ao chão para terminar a instalação.")
+			. += span_notice("\The [src] está aparafusado no chão e pode ser aberto com uma chave inglesa. Precisa ser soldada ao chão para terminar a instalação.")
 		if(ENGINE_WELDED)
-			. += span_notice("\The [src]é soldada ao chão e pode ser não soldada. Está atualmente totalmente instalado.")
+			. += span_notice("\The [src] é soldada ao chão e pode ser não soldada. Está atualmente totalmente instalado.")
 
 /obj/machinery/power/shuttle_engine/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(held_item?.tool_behaviour == TOOL_WELDER && engine_state == ENGINE_WRENCHED)
@@ -102,7 +102,7 @@
 /obj/machinery/power/shuttle_engine/can_be_unfasten_wrench(mob/user, silent)
 	if(engine_state == ENGINE_WELDED)
 		if(!silent)
-			to_chat(user, span_warning("[src]Está soldada ao chão!"))
+			to_chat(user, span_warning("[src] Está soldada ao chão!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -131,27 +131,27 @@
 	. = ..()
 	switch(engine_state)
 		if(ENGINE_UNWRENCHED)
-			to_chat(user, span_warning("\The [src]Precisa ser puxado para o chão!"))
+			to_chat(user, span_warning("\The [src] Precisa ser puxado para o chão!"))
 		if(ENGINE_WRENCHED)
 			if(!tool.tool_start_check(user, heat_required = HIGH_TEMPERATURE_REQUIRED))
 				return TRUE
 
-			user.visible_message(span_notice("[user.name]começa a soldar\the [src]Para o chão."), 				span_notice("Você começa a soldar\the [src]Para o chão..."), 				span_hear("Você ouve solda."))
+			user.visible_message(span_notice("[user.name] começa a soldar\the [src] Para o chão."), 				span_notice("Você começa a soldar\the [src] Para o chão..."), 				span_hear("Você ouve solda."))
 
 			if(tool.use_tool(src, user, ENGINE_WELDTIME, volume = 50))
 				engine_state = ENGINE_WELDED
-				to_chat(user, span_notice("Você solda\the [src]Para o chão."))
+				to_chat(user, span_notice("Você solda\the [src] Para o chão."))
 				alter_engine_power(engine_power)
 
 		if(ENGINE_WELDED)
 			if(!tool.tool_start_check(user, heat_required = HIGH_TEMPERATURE_REQUIRED))
 				return TRUE
 
-			user.visible_message(span_notice("[user.name]Começa a cortar\the [src]Livre do chão."), 				span_notice("Você começa a cortar\the [src]Livre do chão..."), 				span_hear("Você ouve solda."))
+			user.visible_message(span_notice("[user.name] Começa a cortar\the [src] Livre do chão."), 				span_notice("Você começa a cortar\the [src] Livre do chão..."), 				span_hear("Você ouve solda."))
 
 			if(tool.use_tool(src, user, ENGINE_WELDTIME, volume = 50))
 				engine_state = ENGINE_WRENCHED
-				to_chat(user, span_notice("Você cortou.\the [src]Livre do chão."))
+				to_chat(user, span_notice("Você cortou.\the [src] Livre do chão."))
 				alter_engine_power(-engine_power)
 	return TRUE
 

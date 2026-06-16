@@ -68,7 +68,7 @@
 	var/datum/objective/destroy = new /datum/objective/destroy_nation(null, attacking_nation)
 	destroy.team = src
 	objectives += destroy
-	update_all_member_objectives(span_danger("A nação de[attacking_nation]declarou a intenção de conquistar[src]Você tem novos objetivos."))
+	update_all_member_objectives(span_danger("A nação de [attacking_nation] declarou a intenção de conquistar [src] Você tem novos objetivos."))
 
 /datum/team/nation/proc/update_all_member_objectives(message)
 	for(var/datum/mind/member in members)

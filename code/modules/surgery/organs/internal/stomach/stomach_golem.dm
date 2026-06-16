@@ -70,14 +70,14 @@
 	. = ..()
 	if (!.)
 		return FALSE
-	owner.visible_message(span_warning("[owner]Ficam tão rígidos como uma estátua!"), span_warning("Seus membros ainda caem. Você não tem mais energia suficiente para se mover!"))
+	owner.visible_message(span_warning("[owner] Ficam tão rígidos como uma estátua!"), span_warning("Seus membros ainda caem. Você não tem mais energia suficiente para se mover!"))
 	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_FORCED_STANDING, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return TRUE
 
 /datum/status_effect/golem_statued/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_are()]Como uma estátua!")
+	return span_warning("[owner.p_They()] [owner.p_are()] Como uma estátua!")
 
 /datum/status_effect/golem_statued/on_remove()
-	owner.visible_message(span_notice("[owner]lentamente se move de volta ao movimento!"), span_notice("Você reuniu força suficiente para mover seu corpo mais uma vez."))
+	owner.visible_message(span_notice("[owner] lentamente se move de volta ao movimento!"), span_notice("Você reuniu força suficiente para mover seu corpo mais uma vez."))
 	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_FORCED_STANDING, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return ..()

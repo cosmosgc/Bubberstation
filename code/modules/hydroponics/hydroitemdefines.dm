@@ -15,7 +15,7 @@
 	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 100)
 
 /obj/item/reagent_containers/spray/weedspray/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está ofegante[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está ofegante [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/reagent_containers/spray/pestspray // -- Skie
@@ -31,7 +31,7 @@
 	list_reagents = list(/datum/reagent/toxin/pestkiller = 100)
 
 /obj/item/reagent_containers/spray/pestspray/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está ofegante[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está ofegante [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/cultivator
@@ -53,7 +53,7 @@
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 
 /obj/item/cultivator/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está coçando.[user.p_their()]De volta tão forte quanto[user.p_they()]Pode com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está coçando.[user.p_their()] De volta tão forte quanto [user.p_they()] Pode com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/cultivator/rake
@@ -84,7 +84,7 @@
 		H.set_confusion_if_lower(10 SECONDS)
 		H.Stun(20)
 		playsound(src, 'sound/items/weapons/punch4.ogg', 50, TRUE)
-		H.visible_message(span_warning("[H]Vamos lá.[src]fazendo o cabo bater[H.p_them()]bem na cara!"), 						  span_userdanger("Você pisa[src]fazendo com que o cabo te acertasse na cara!"))
+		H.visible_message(span_warning("[H] Vamos lá.[src] fazendo o cabo bater [H.p_them()] bem na cara!"), 						  span_userdanger("Você pisa [src] fazendo com que o cabo te acertasse na cara!"))
 
 /obj/item/cultivator/cyborg
 	name = "cyborg cultivator"
@@ -124,7 +124,7 @@
 	AddComponent(/datum/component/butchering, 	speed = 7 SECONDS, 	effectiveness = 100, 	)
 
 /obj/item/hatchet/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está cortando em[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está cortando em [user.p_them()] ego com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 
@@ -173,7 +173,7 @@
 	AddElement(/datum/element/bane, mob_biotypes = MOB_PLANT, damage_multiplier = 0.5, requires_combat_mode = FALSE)
 
 /obj/item/scythe/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está decapitando.[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está decapitando.[user.p_them()] ego com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		var/obj/item/bodypart/BP = C.get_bodypart(BODY_ZONE_HEAD)

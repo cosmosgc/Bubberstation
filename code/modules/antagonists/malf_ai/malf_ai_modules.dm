@@ -95,10 +95,10 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 /datum/action/innate/ai/proc/adjust_uses(amt, silent)
 	uses += amt
 	if(!silent && uses)
-		to_chat(owner, span_notice("[name]Agora tem<b>[uses]</b>usar[uses > 1 ? "s" : ""]Restando."))
+		to_chat(owner, span_notice("[name] Agora tem<b>[uses]</b>usar[uses > 1 ? "s" : ""]Restando."))
 	if(uses <= 0)
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, span_warning("[name]Acabou o uso!"))
+			to_chat(owner, span_warning("[name] Acabou o uso!"))
 		qdel(src)
 
 /// Framework for ranged abilities that can have different effects by left-clicking stuff.
@@ -110,10 +110,10 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 /datum/action/innate/ai/ranged/adjust_uses(amt, silent)
 	uses += amt
 	if(!silent && uses)
-		to_chat(owner, span_notice("[name]Agora tem<b>[uses]</b>Use o restante."))
+		to_chat(owner, span_notice("[name] Agora tem<b>[uses]</b>Use o restante."))
 	if(!uses)
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, span_warning("[name]Acabou o uso!"))
+			to_chat(owner, span_warning("[name] Acabou o uso!"))
 		Remove(owner)
 		QDEL_IN(src, 10 SECONDS) //let any active timers on us finish up
 
@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
 		active = FALSE
 		return
-	to_chat(owner, "<span class='small bolddanger'>AKJV9C88ASD12NB[pass]</span>")
+	to_chat(owner, "<span class='small bolddanger'>AKJV9C88ASD12NB [pass]</span>")
 	owner.playsound_local(owner, 'sound/items/timer.ogg', 50, 0, use_reverb = FALSE)
 	sleep(3 SECONDS)
 	if(QDELETED(owner) || !isturf(owner_AI.loc))
@@ -363,14 +363,14 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /obj/machinery/doomsday_device/proc/trigger_doomsday()
 	callback_on_everyone_on_z(SSmapping.levels_by_trait(ZTRAIT_STATION), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(bring_doomsday)), src)
-	to_chat(world, span_bold("A IA limpou a estação da vida com[src]!"))
+	to_chat(world, span_bold("A IA limpou a estação da vida com [src]!"))
 	SSticker.force_ending = FORCE_END_ROUND
 
 /proc/bring_doomsday(mob/living/victim, atom/source)
 	if(issilicon(victim))
 		return FALSE
 
-	to_chat(victim, span_userdanger("A onda de explosão de[source]Rasga o átomo do átomo!"))
+	to_chat(victim, span_userdanger("A onda de explosão de [source] Rasga o átomo do átomo!"))
 	victim.investigate_log("has been dusted by a doomsday device.", INVESTIGATE_DEATHS)
 	victim.dust()
 	return TRUE
@@ -448,7 +448,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/ranged/override_machine/New()
 	. = ..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/ranged/override_machine/do_ability(mob/living/clicker, atom/clicked_on)
 	if(clicker.incapacitated)
@@ -469,13 +469,13 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 	clicker.playsound_local(clicker, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
 
-	clicked_machine.audible_message(span_userdanger("Você ouve um barulho elétrico vindo de[clicked_machine]!"))
+	clicked_machine.audible_message(span_userdanger("Você ouve um barulho elétrico vindo de [clicked_machine]!"))
 	addtimer(CALLBACK(src, PROC_REF(animate_machine), clicker, clicked_machine), 5 SECONDS) //kabeep!
 	unset_ranged_ability(clicker, span_danger("Enviando sinal de anulação..."))
 	adjust_uses(-1) //adjust after we unset the active ability since we may run out of charges, thus deleting the ability
 
 	if(uses)
-		desc = "[initial(desc)]Tem.[uses]Use o restante."
+		desc = "[initial(desc)] Tem.[uses] Use o restante."
 		build_all_button_icons()
 	return TRUE
 
@@ -536,7 +536,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/ranged/overload_machine/New()
 	..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/ranged/overload_machine/proc/detonate_machine(mob/living/clicker, obj/machinery/to_explode)
 	if(QDELETED(to_explode))
@@ -569,10 +569,10 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	clicker.playsound_local(clicker, SFX_SPARKS, 50, 0)
 	adjust_uses(-1)
 	if(uses)
-		desc = "[initial(desc)]Tem.[uses]Use o restante."
+		desc = "[initial(desc)] Tem.[uses] Use o restante."
 		build_all_button_icons()
 
-	clicked_machine.audible_message(span_userdanger("Você ouve um barulho elétrico vindo de[clicked_machine]!"))
+	clicked_machine.audible_message(span_userdanger("Você ouve um barulho elétrico vindo de [clicked_machine]!"))
 	addtimer(CALLBACK(src, PROC_REF(detonate_machine), clicker, clicked_machine), 5 SECONDS) //kaboom!
 	unset_ranged_ability(clicker, span_danger("Máquina de sobrecarga..."))
 	return TRUE
@@ -595,7 +595,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/blackout/New()
 	..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/blackout/Activate()
 	for(var/obj/machinery/power/apc/apc as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc))
@@ -608,7 +608,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	adjust_uses(-1)
 	if(QDELETED(src) || uses) //Not sure if not having src here would cause a runtime, so it's here to be safe
 		return
-	desc = "[initial(desc)]Tem.[uses]Use o restante."
+	desc = "[initial(desc)] Tem.[uses] Use o restante."
 	build_all_button_icons()
 
 /// HIGH IMPACT HONKING
@@ -819,7 +819,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/reactivate_cameras/New()
 	..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/reactivate_cameras/Activate()
 	var/fixed_cameras = 0
@@ -836,7 +836,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	adjust_uses(0, TRUE) //Checks the uses remaining
 	if(QDELETED(src) || !uses) //Not sure if not having src here would cause a runtime, so it's here to be safe
 		return
-	desc = "[initial(desc)]Tem.[uses]Use o restante."
+	desc = "[initial(desc)] Tem.[uses] Use o restante."
 	build_all_button_icons()
 
 /// Upgrade Camera Network: EMP-proofs all cameras, in addition to giving them X-ray vision.
@@ -1045,7 +1045,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 			say_span = selection
 			if(changing_voice)
 				owner.speech_span = say_span
-			to_chat(usr, span_notice("Voz definida para[selection]."))
+			to_chat(usr, span_notice("Voz definida para [selection]."))
 		if("verb")
 			say_verb = strip_html(params["verb"], MAX_NAME_LEN)
 			if(changing_voice)
@@ -1080,7 +1080,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/ranged/emag/New()
 	. = ..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/ranged/emag/do_ability(mob/living/clicker, atom/clicked_on)
 
@@ -1143,7 +1143,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 	adjust_uses(-1)
 	if(uses)
-		desc = "[initial(desc)]Tem.[uses]Use o restante."
+		desc = "[initial(desc)] Tem.[uses] Use o restante."
 		build_all_button_icons()
 	else
 		unset_ranged_ability(ai_clicker, span_warning("Fora de uso!"))
@@ -1177,7 +1177,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/ranged/core_tilt/New()
 	. = ..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/ranged/core_tilt/do_ability(mob/living/clicker, atom/clicked_on)
 
@@ -1211,7 +1211,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 	adjust_uses(-1)
 	if(uses)
-		desc = "[initial(desc)]Tem.[uses]Use o restante."
+		desc = "[initial(desc)] Tem.[uses] Use o restante."
 		build_all_button_icons()
 
 	COOLDOWN_START(src, time_til_next_tilt, roll_over_cooldown)
@@ -1270,7 +1270,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/ranged/remote_vendor_tilt/New()
 	. = ..()
-	desc = "[desc]Tem.[uses]Use o restante."
+	desc = "[desc] Tem.[uses] Use o restante."
 
 /datum/action/innate/ai/ranged/remote_vendor_tilt/do_ability(mob/living/clicker, atom/clicked_on)
 
@@ -1311,13 +1311,13 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 		return FALSE
 
 	new /obj/effect/temp_visual/telegraphing/vending_machine_tilt(target, time_to_tilt)
-	clicked_vendor.visible_message(span_warning("[clicked_vendor]Começa a cair..."))
+	clicked_vendor.visible_message(span_warning("[clicked_vendor] Começa a cair..."))
 	clicked_vendor.balloon_alert_to_viewers("falling over...")
 	addtimer(CALLBACK(src, PROC_REF(do_vendor_tilt), clicked_vendor, target), time_to_tilt)
 
 	adjust_uses(-1)
 	if(uses)
-		desc = "[initial(desc)]Tem.[uses]Use o restante."
+		desc = "[initial(desc)] Tem.[uses] Use o restante."
 		build_all_button_icons()
 
 	unset_ranged_ability(clicker, span_danger("Tilting..."))
@@ -1344,7 +1344,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 		return FALSE
 
 	if (!clicker.can_see(clicked_vendor))
-		to_chat(clicker, span_warning("Perdido de vista[clicked_vendor]!"))
+		to_chat(clicker, span_warning("Perdido de vista [clicked_vendor]!"))
 		return FALSE
 
 	return TRUE

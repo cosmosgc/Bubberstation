@@ -150,4 +150,4 @@
 		span = "<span class='danger'>"
 		effect_description = span_bold("Brilho preto moldado")
 
-	location.visible_message("[span]O[originalName]é coberto por um[effect_description]e então se transforma em[parent]!</span>")
+	location.visible_message("[span] O [originalName] é coberto por um [effect_description] e então se transforma em [parent]!</span>")

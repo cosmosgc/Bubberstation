@@ -22,7 +22,7 @@
 
 	set_teleport_target(M.buffer)
 
-	to_chat(user, span_green("Você tem sucesso na ligação.[src]para o[M.buffer]."))
+	to_chat(user, span_green("Você tem sucesso na ligação.[src] para o [M.buffer]."))
 	return ITEM_INTERACT_SUCCESS
 
 ///Lose our previous target and make our previous target lose us. Seperate proc because I feel like I'll need this again

@@ -23,7 +23,7 @@
 
 /obj/item/clothing/under/plasmaman/examine(mob/user)
 	. = ..()
-	. += span_notice("Ali.[extinguishes_left == 1 ? "is" : "are"] [extinguishes_left]Cargas de extintor deixadas neste terno.")
+	. += span_notice("Ali.[extinguishes_left == 1 ? "is" : "are"] [extinguishes_left] Cargas de extintor deixadas neste terno.")
 
 /obj/item/clothing/under/plasmaman/equipped(mob/living/user, slot)
 	. = ..()
@@ -54,7 +54,7 @@
 	COOLDOWN_START(src, extinguish_timer, extinguish_cooldown)
 	// Check if our (possibly other) wearer is on fire once the cooldown ends
 	addtimer(CALLBACK(src, PROC_REF(check_fire_state)), extinguish_cooldown)
-	owner.visible_message(span_warning("[owner]O traje se apaga automaticamente.[owner.p_them()]!"), span_warning("Sua viagem é automática."))
+	owner.visible_message(span_warning("[owner] O traje se apaga automaticamente.[owner.p_them()]!"), span_warning("Sua viagem é automática."))
 	owner.extinguish_mob()
 	new /obj/effect/particle_effect/water(get_turf(owner))
 
@@ -174,6 +174,6 @@
 	COOLDOWN_START(src, extinguish_timer, extinguish_cooldown)
 	// Check if our (possibly other) wearer is on fire once the cooldown ends
 	addtimer(CALLBACK(src, PROC_REF(check_fire_state)), extinguish_cooldown)
-	owner.visible_message(span_warning("[owner]O terno vômito lubrificante espacial em todo lugar!"), span_warning("Seu terno vomitar lubrificante espacial em todo lugar!"))
+	owner.visible_message(span_warning("[owner] O terno vômito lubrificante espacial em todo lugar!"), span_warning("Seu terno vomitar lubrificante espacial em todo lugar!"))
 	owner.extinguish_mob()
 	do_foam(4, src, get_turf(owner), /datum/reagent/lube, 15)

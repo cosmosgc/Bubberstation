@@ -54,7 +54,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/can_unwrench(mob/user)
 	. = ..()
 	if(. && connected_device)
-		to_chat(user, span_warning("Você não pode destrancar[src], separar[connected_device]Primeiro!"))
+		to_chat(user, span_warning("Você não pode destrancar [src], separar [connected_device] Primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/portables_connector/layer2

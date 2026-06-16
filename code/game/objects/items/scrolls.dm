@@ -31,7 +31,7 @@
 	uses--
 	if(uses > 0)
 		return
-	to_chat(cast_on, span_warning("[src]Acabou-se o uso e desmoronou para o pó!"))
+	to_chat(cast_on, span_warning("[src] Acabou-se o uso e desmoronou para o pó!"))
 	qdel(src)
 
 /obj/item/teleportation_scroll/apprentice
@@ -57,7 +57,7 @@
 		return
 	var/datum/action/cooldown/spell/teleport/area_teleport/wizard/scroll/teleport = locate() in actions
 	if(!teleport)
-		to_chat(user, span_warning("[src]Parece ser um rolo de teletransporte defeituoso, e não tem magia associada."))
+		to_chat(user, span_warning("[src] Parece ser um rolo de teletransporte defeituoso, e não tem magia associada."))
 		return
 	if(!teleport.Activate(user))
 		return

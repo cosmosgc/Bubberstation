@@ -67,7 +67,7 @@
 		var/found_table = locate(/obj/structure/table) in found_location
 		var/found_tray = locate(/obj/item/storage/bag/tray) in found_location || locate(/obj/item/plate/oven_tray) in found_location
 		if(!found_turf && !istype(found_location, /obj/item/storage/bag/tray) || found_turf && !(found_table || found_tray))
-			to_chat(user, span_notice("Você não pode fazer[initial(result_atom_type.name)]Aqui! Você precisa de uma mesa ou pelo menos de uma bandeja."))
+			to_chat(user, span_notice("Você não pode fazer [initial(result_atom_type.name)] Aqui! Você precisa de uma mesa ou pelo menos de uma bandeja."))
 			return
 
 	mutable_recipes += list(list(TOOL_PROCESSING_RESULT = result_atom_type, TOOL_PROCESSING_AMOUNT = amount_created, TOOL_PROCESSING_TIME = time_to_process, TOOL_PROCESSING_SOUND = sound_to_play))
@@ -84,15 +84,15 @@
 	// but at least it's readable?
 	if(amount_created > 1)
 		if(result_gender == PLURAL)
-			examine_list += span_notice("Pode ser transformado em[amount_created] [result_name]Com[span_bold(tool_desc)]!")
+			examine_list += span_notice("Pode ser transformado em [amount_created] [result_name] Com [span_bold(tool_desc)]!")
 		else
-			examine_list += span_notice("Pode ser transformado em[amount_created] [result_name][plural_s(result_name)]Com[span_bold(tool_desc)]!")
+			examine_list += span_notice("Pode ser transformado em [amount_created] [result_name][plural_s(result_name)] Com [span_bold(tool_desc)]!")
 
 	else
 		if(result_gender == PLURAL)
-			examine_list += span_notice("Pode ser transformado em algo[result_name]Com[span_bold(tool_desc)]!")
+			examine_list += span_notice("Pode ser transformado em algo [result_name] Com [span_bold(tool_desc)]!")
 		else
-			examine_list += span_notice("Pode ser transformado em\a [result_name]Com[span_bold(tool_desc)]!")
+			examine_list += span_notice("Pode ser transformado em\a [result_name] Com [span_bold(tool_desc)]!")
 
 /**
  * Adds context sensitivy directly to the processable file for screentips

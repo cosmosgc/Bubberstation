@@ -35,7 +35,7 @@
 /obj/item/mod/module/stealth/proc/unstealth(datum/source)
 	SIGNAL_HANDLER
 
-	to_chat(mod.wearer, span_warning("[src]É liberado do contato!"))
+	to_chat(mod.wearer, span_warning("[src] É liberado do contato!"))
 	do_sparks(2, TRUE, src)
 	drain_power(use_energy_cost)
 	deactivate()
@@ -139,7 +139,7 @@
 	new /obj/effect/temp_visual/emp/pulse(get_turf(src))
 	new /obj/effect/temp_visual/emp(get_turf(hit_atom))
 	playsound(src, 'sound/effects/empulse.ogg', 60, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
-	visible_message("[src]emite um pulso eletromagnético no impacto!")
+	visible_message("[src] emite um pulso eletromagnético no impacto!")
 	if(isturf(loc)) // if we didn't embed in anything, go away
 		qdel(src)
 
@@ -197,9 +197,9 @@
 
 /obj/item/mod/module/hacker/proc/charge_message(atom/drained_atom, drain_amount)
 	if(drain_amount)
-		to_chat(mod.wearer, span_notice("Ganado.<B>[drain_amount]</B>unidades de energia de[drained_atom]."))
+		to_chat(mod.wearer, span_notice("Ganado.<B>[drain_amount]</B>unidades de energia de [drained_atom]."))
 	else
-		to_chat(mod.wearer, span_warning("[drained_atom]secou a energia, você deve encontrar outra fonte!"))
+		to_chat(mod.wearer, span_warning("[drained_atom] secou a energia, você deve encontrar outra fonte!"))
 
 //Security Records, Ninja objective This notifies the AI and sets everyone on arrest.
 /obj/machinery/computer/records/security/ninjadrain_act(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
@@ -510,7 +510,7 @@
 	if(hacking_module.mod.subtract_charge(DEFAULT_CHARGE_DRAIN*10))
 		//Got that electric touch
 		do_sparks(5, FALSE, loc)
-		visible_message(span_danger("[ninja]Eletrocutos[src]Com[ninja.p_their()]Toque!"), span_userdanger("[ninja]eletrocuta você com[ninja.p_their()]Toque!"))
+		visible_message(span_danger("[ninja] Eletrocutos [src] Com [ninja.p_their()] Toque!"), span_userdanger("[ninja] eletrocuta você com [ninja.p_their()] Toque!"))
 		addtimer(CALLBACK(src, PROC_REF(ninja_knockdown)), 0.3 SECONDS)
 	return NONE
 
@@ -566,7 +566,7 @@
 	hacking_module.charge_message(src, cell.charge)
 	cell.charge = 0
 	update_appearance()
-	visible_message(span_warning("[ninja]Drena a energia do[src]!"))
+	visible_message(span_warning("[ninja] Drena a energia do [src]!"))
 	do_sparks(number = 3, cardinal_only = FALSE, source = src)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -689,7 +689,7 @@
 			balloon_alert(mod.wearer, "Nenhuma arma ligada!")
 			return
 		set_weapon(weapon_to_link)
-		balloon_alert(mod.wearer, "[linked_weapon.name]Ligado.")
+		balloon_alert(mod.wearer, "[linked_weapon.name] Ligado.")
 		return
 	if(linked_weapon in mod.wearer.get_all_contents())
 		balloon_alert(mod.wearer, "Já está em si mesmo!")
@@ -702,7 +702,7 @@
 	linked_weapon.forceMove(linked_weapon.drop_location())
 	if(in_view)
 		do_sparks(5, FALSE, linked_weapon)
-		mod.wearer.visible_message(span_danger("[linked_weapon]Voa em direção[mod.wearer]!"),span_warning("Você estende sua mão e[linked_weapon]Voa em sua direção!"))
+		mod.wearer.visible_message(span_danger("[linked_weapon] Voa em direção [mod.wearer]!"),span_warning("Você estende sua mão e [linked_weapon] Voa em sua direção!"))
 		linked_weapon.throw_at(mod.wearer, distance+1, linked_weapon.throw_speed, mod.wearer)
 	else
 		recall_weapon()
@@ -864,7 +864,7 @@
 	var/obj/item/mod/module/energy_net/module = net_module?.resolve()
 	if(module)
 		module.add_net(net)
-	firer?.visible_message(span_danger("[firer]Pegado.[target]com uma rede de energia!"), span_notice("Você pegou.[target]com uma rede de energia!"))
+	firer?.visible_message(span_danger("[firer] Pegado.[target] com uma rede de energia!"), span_notice("Você pegou.[target] com uma rede de energia!"))
 	if(target.buckled)
 		target.buckled.unbuckle_mob(target, force = TRUE)
 	net.buckle_mob(target, force = TRUE)
@@ -901,7 +901,7 @@
 
 /obj/structure/energy_net/atom_destruction(damage_flag)
 	for(var/mob/recovered_mob as anything in buckled_mobs)
-		recovered_mob.visible_message(span_notice("[recovered_mob]é recuperado da rede de energia!"), span_notice("Você está recuperado da rede de energia!"), span_hear("Você ouve um grunhido."))
+		recovered_mob.visible_message(span_notice("[recovered_mob] é recuperado da rede de energia!"), span_notice("Você está recuperado da rede de energia!"), span_hear("Você ouve um grunhido."))
 	return ..()
 
 /obj/structure/energy_net/attack_paw(mob/user, list/modifiers)

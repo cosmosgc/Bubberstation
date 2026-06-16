@@ -29,9 +29,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a dissecar[patient]..."),
-		span_notice("[surgeon]Começa a dissecar[patient]."),
-		span_notice("[surgeon]Começa a dissecar[patient]."),
+		span_notice("Você começa a dissecar [patient]..."),
+		span_notice("[surgeon] Começa a dissecar [patient]."),
+		span_notice("[surgeon] Começa a dissecar [patient]."),
 	)
 
 /datum/surgery_operation/basic/dissection/on_failure(mob/living/patient, mob/living/surgeon, tool, list/operation_args)
@@ -39,9 +39,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Você disseca.[patient]Mas não ache nada particularmente interessante."),
-		span_warning("[surgeon]Disseca[patient]."),
-		span_warning("[surgeon]Disseca[patient]."),
+		span_warning("Você disseca.[patient] Mas não ache nada particularmente interessante."),
+		span_warning("[surgeon] Disseca [patient]."),
+		span_warning("[surgeon] Disseca [patient]."),
 	)
 	give_paper(surgeon, points_earned)
 	patient.apply_damage(80, BRUTE, BODY_ZONE_CHEST)
@@ -52,9 +52,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("Você disseca.[patient], Descobrindo[points_earned]Ponto de dados!"),
-		span_warning("[surgeon]Disseca[patient]."),
-		span_warning("[surgeon]Disseca[patient]."),
+		span_warning("Você disseca.[patient], Descobrindo [points_earned] Ponto de dados!"),
+		span_warning("[surgeon] Disseca [patient]."),
+		span_warning("[surgeon] Disseca [patient]."),
 	)
 	give_paper(surgeon, points_earned)
 	patient.apply_damage(80, BRUTE, BODY_ZONE_CHEST)
@@ -113,7 +113,7 @@
 
 /obj/item/research_notes/examine(mob/user)
 	. = ..()
-	. += span_notice("Vale a pena.[value]Pontos de pesquisa.")
+	. += span_notice("Vale a pena.[value] Pontos de pesquisa.")
 
 /obj/item/research_notes/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/research_notes))

@@ -45,9 +45,9 @@
 
 /obj/item/light/suicide_act(mob/living/carbon/user)
 	if (status == LIGHT_BROKEN)
-		user.visible_message(span_suicide("[user]Começa a esfaquear[user.p_them()]ego com\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Começa a esfaquear [user.p_them()] ego com\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	else
-		user.visible_message(span_suicide("[user]começa a comer\the [src]Parece que...[user.p_theyre()]Não muito brilhante!"))
+		user.visible_message(span_suicide("[user] começa a comer\the [src] Parece que...[user.p_theyre()] Não muito brilhante!"))
 		shatter()
 	return BRUTELOSS
 
@@ -111,7 +111,7 @@
 		if(LIGHT_OK)
 			desc = "Um substituto.[name]."
 		if(LIGHT_BURNED)
-			desc = "Um queimado-out[name]."
+			desc = "Um queimado-out [name]."
 		if(LIGHT_BROKEN)
 			desc = "Um quebrado.[name]."
 
@@ -135,12 +135,12 @@
 
 /obj/item/light/proc/shatter(target)
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		visible_message(span_danger("[src]Quebrou."),span_hear("Você ouve um objeto de vidro quebrando."))
+		visible_message(span_danger("[src] Quebrou."),span_hear("Você ouve um objeto de vidro quebrando."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharpness = SHARP_POINTY
 		playsound(loc, 'sound/effects/glass/glasshit.ogg', 75, TRUE)
 		if(length(reagents.reagent_list))
-			visible_message(span_danger("O conteúdo de[src]Espreme em você enquanto pisa!"),span_hear("Você sente o conteúdo de[src]Espreme em você enquanto pisa nele!"))
+			visible_message(span_danger("O conteúdo de [src] Espreme em você enquanto pisa!"),span_hear("Você sente o conteúdo de [src] Espreme em você enquanto pisa nele!"))
 			reagents.expose(target, TOUCH)
 		update_appearance(UPDATE_DESC | UPDATE_ICON)

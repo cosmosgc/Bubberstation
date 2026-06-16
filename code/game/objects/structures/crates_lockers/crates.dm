@@ -154,7 +154,7 @@
 		manifest = null
 		return
 	if(user)
-		to_chat(user, span_notice("Você arranca o manifesto de[src]."))
+		to_chat(user, span_notice("Você arranca o manifesto de [src]."))
 	playsound(src, 'sound/items/poster/poster_ripped.ogg', 75, TRUE)
 
 	our_manifest.forceMove(drop_location(src))
@@ -512,7 +512,7 @@
 
 /obj/structure/closet/crate/market/after_open(mob/living/user, force)
 	. = ..()
-	visible_message(span_notice("[src]Estourou como[user]Toca!"))
+	visible_message(span_notice("[src] Estourou como [user] Toca!"))
 	pop_crate()
 
 /obj/structure/closet/crate/market/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)

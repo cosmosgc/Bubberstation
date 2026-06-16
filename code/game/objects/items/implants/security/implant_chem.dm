@@ -92,7 +92,7 @@
 	return ..()
 
 /obj/item/implant/chem/proc/signaler_sync(obj/item/assembly/signaler/syncing_signaler, mob/living/user)
-	to_chat(user, "Você sincroniza.\the [src]Para\the [syncing_signaler]Código e frequência[frequency ? "" : ", disabling other methods of activation"].")
+	to_chat(user, "Você sincroniza.\the [src] Para\the [syncing_signaler] Código e frequência[frequency ? "" : ", disabling other methods of activation"].")
 	code = syncing_signaler.code
 	SSradio.remove_object(src, frequency)
 	frequency = syncing_signaler.frequency

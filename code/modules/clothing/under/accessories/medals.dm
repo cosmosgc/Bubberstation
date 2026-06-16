@@ -43,7 +43,7 @@
 /obj/item/clothing/accessory/medal/update_desc(updates)
 	. = ..()
 	if(commendation_message && awarded_to && awarder)
-		desc += span_info("<br>A inscrição diz:[commendation_message]- Concedido para[awarded_to]Por que[awarder]")
+		desc += span_info("<br>A inscrição diz:[commendation_message]- Concedido para [awarded_to] Por que [awarder]")
 
 /obj/item/clothing/accessory/medal/conduct
 	name = "distinguished conduct medal"
@@ -128,7 +128,7 @@
 
 /obj/item/clothing/accessory/medal/plasma/atmos_expose(datum/gas_mixture/air, exposed_temperature)
 	atmos_spawn_air("[GAS_PLASMA]=20;[TURF_TEMPERATURE(exposed_temperature)]")
-	visible_message(span_danger("\The [src]Explodir em Chamas!"), span_userdanger("Sua[src]Explodir em Chamas!"))
+	visible_message(span_danger("\The [src] Explodir em Chamas!"), span_userdanger("Sua [src] Explodir em Chamas!"))
 	qdel(src)
 
 /obj/item/clothing/accessory/medal/plasma/nobel_science

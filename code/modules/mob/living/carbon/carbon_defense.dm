@@ -326,7 +326,7 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper, force_friendly)
 	var/nosound = FALSE //SKYRAT EDIT ADDITION - EMOTES
 	if(on_fire)
-		to_chat(helper, span_warning("Você não pode colocar[p_them()]Saiam com suas próprias mãos!"))
+		to_chat(helper, span_warning("Você não pode colocar [p_them()] Saiam com suas próprias mãos!"))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_CARBON_PRE_MISC_HELP, helper) & COMPONENT_BLOCK_MISC_HELP)
@@ -338,41 +338,41 @@
 
 	if(body_position == LYING_DOWN)
 		if(buckled)
-			to_chat(helper, span_warning("Você precisa desapertar[src]Primero um facer isso!"))
+			to_chat(helper, span_warning("Você precisa desapertar [src] Primero um facer isso!"))
 			return
-		helper.visible_message(span_notice("[helper]Shakes.[src]Tentando obter[p_them()]Levante-se!"), 						null, span_hear("Você ouve o barulho de roupas."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-		to_chat(helper, span_notice("Você treme.[src]Tentando Escolher[p_them()]Levante-se!"))
-		to_chat(src, span_notice("[helper]Te sacode para te levar!"))
+		helper.visible_message(span_notice("[helper] Shakes.[src] Tentando obter [p_them()] Levante-se!"), 						null, span_hear("Você ouve o barulho de roupas."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+		to_chat(helper, span_notice("Você treme.[src] Tentando Escolher [p_them()] Levante-se!"))
+		to_chat(src, span_notice("[helper] Te sacode para te levar!"))
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
 		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !INCAPACITATED_IGNORING(src, INCAPABLE_RESTRAINTS) && !(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT))) // Bubberstation Edit - Sensitive snoot check
-			visible_message(span_warning("[helper]Tenta boop[src]Não nariz, mas[p_they()]Mexa-se.[p_s()]Sai do caminho."))
+			visible_message(span_warning("[helper] Tenta boop [src] Não nariz, mas [p_they()] Mexa-se.[p_s()] Sai do caminho."))
 			return
 		else
 			playsound(src, 'modular_zubbers/sound/emotes/nose_boop.ogg', 50, 0)
 			if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && !is_mouth_covered(ITEM_SLOT_MASK))
-				to_chat(src, span_warning("[helper]Bate no seu nariz sensível, mandando você para o chão!"))
+				to_chat(src, span_warning("[helper] Bate no seu nariz sensível, mandando você para o chão!"))
 				src.Knockdown(20)
 				src.apply_damage(30, STAMINA)
-			helper.visible_message(span_notice("[helper]boops[src]Ó Nariz."), span_notice("Seu boop.[src]Nada de Nariz."))
+			helper.visible_message(span_notice("[helper] boops [src] Ó Nariz."), span_notice("Seu boop.[src] Nada de Nariz."))
 	//SKYRAT EDIT ADDITION END
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
 		//SKYRAT EDIT ADDITION BEGIN - OVERSIZED & DISALLOWED HEADPATS
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(helper, TRAIT_OVERSIZED))
-			visible_message(span_warning("[helper]Tenta Bater[src]na cabeça, mas não consigo alcançar!"))
+			visible_message(span_warning("[helper] Tenta Bater [src] na cabeça, mas não consigo alcançar!"))
 			return
 		else if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !INCAPACITATED_IGNORING(src, INCAPABLE_RESTRAINTS))
-			visible_message(span_warning("[helper]Tenta Bater[src]na cabeça, mas[p_they()]Mexa-se.[p_s()]Sai do caminho."))
+			visible_message(span_warning("[helper] Tenta Bater [src] na cabeça, mas [p_they()] Mexa-se.[p_s()] Sai do caminho."))
 			return
 		//SKYRAT EDIT ADDITION END
-		helper.visible_message(span_notice("[helper]dá[src]Um tapinha na cabeça para fazer[p_them()]Melhore!"), 					null, span_hear("Você ouve um som suave."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-		to_chat(helper, span_notice("Você dá[src]Um tapinha na cabeça para fazer[p_them()]Melhore!"))
-		to_chat(src, span_notice("[helper]Dá-lhe um tapinha na cabeça para se sentir melhor!"))
+		helper.visible_message(span_notice("[helper] dá [src] Um tapinha na cabeça para fazer [p_them()] Melhore!"), 					null, span_hear("Você ouve um som suave."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+		to_chat(helper, span_notice("Você dá [src] Um tapinha na cabeça para fazer [p_them()] Melhore!"))
+		to_chat(src, span_notice("[helper] Dá-lhe um tapinha na cabeça para se sentir melhor!"))
 
 		share_blood_on_touch(helper, ITEM_SLOT_HEAD|ITEM_SLOT_MASK)
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
-			to_chat(helper, span_warning("[src]Parece visivelmente chateado como você pat[p_them()]Na cabeça."))
+			to_chat(helper, span_warning("[src] Parece visivelmente chateado como você pat [p_them()] Na cabeça."))
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			var/obj/item/organ/tail/src_tail = get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
@@ -381,19 +381,19 @@
 		//SKYRAT EDIT ADDITION END
 
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.get_organ_by_type(/obj/item/organ/tail)))
-		helper.visible_message(span_notice("[helper]Puxa.[src]Uma cauda!"), 					null, span_hear("Você ouve um som suave."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-		to_chat(helper, span_notice("Você puxa.[src]Uma cauda!"))
-		to_chat(src, span_notice("[helper]Puxa no seu rabo!"))
+		helper.visible_message(span_notice("[helper] Puxa.[src] Uma cauda!"), 					null, span_hear("Você ouve um som suave."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+		to_chat(helper, span_notice("Você puxa.[src] Uma cauda!"))
+		to_chat(src, span_notice("[helper] Puxa no seu rabo!"))
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH)) //How dare they!
-			to_chat(helper, span_warning("[src]faz um barulho resmungando enquanto você puxa[p_their()]Cauda."))
+			to_chat(helper, span_warning("[src] faz um barulho resmungando enquanto você puxa [p_their()] Cauda."))
 		else
 			add_mood_event("tailpulled", /datum/mood_event/tailpulled)
 
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && (istype(head, /obj/item/clothing/head/costume/kitty) || istype(head, /obj/item/clothing/head/collectable/kitty)))
 		var/obj/item/clothing/head/faketail = head
-		helper.visible_message(span_danger("[helper]Puxa.[src]A cauda... e ela arranca!"), 					null, span_hear("Você ouve um som rasgando."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-		to_chat(helper, span_danger("Você puxa.[src]A cauda... e ela arranca!"))
-		to_chat(src, span_userdanger("[helper]Puxa na sua cauda... e arranca!"))
+		helper.visible_message(span_danger("[helper] Puxa.[src] A cauda... e ela arranca!"), 					null, span_hear("Você ouve um som rasgando."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+		to_chat(helper, span_danger("Você puxa.[src] A cauda... e ela arranca!"))
+		to_chat(src, span_userdanger("[helper] Puxa na sua cauda... e arranca!"))
 		playsound(loc, 'sound/effects/cloth_rip.ogg', 75, TRUE)
 		dropItemToGround(faketail)
 		helper.put_in_hands(faketail)
@@ -401,18 +401,18 @@
 
 	else
 		if (helper.grab_state >= GRAB_AGGRESSIVE)
-			helper.visible_message(span_notice("[helper]Abraços[src]Em um abraço de urso apertado!"), 						null, span_hear("Você ouve o barulho de roupas."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-			to_chat(helper, span_notice("Você embrulha[src]em um abraço de urso apertado!"))
-			to_chat(src, span_notice("[helper]te aperta super firmemente em um abraço firme de urso!"))
+			helper.visible_message(span_notice("[helper] Abraços [src] Em um abraço de urso apertado!"), 						null, span_hear("Você ouve o barulho de roupas."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+			to_chat(helper, span_notice("Você embrulha [src] em um abraço de urso apertado!"))
+			to_chat(src, span_notice("[helper] te aperta super firmemente em um abraço firme de urso!"))
 		else
 			// SKYRAT EDIT ADDITION START
 			if (HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !INCAPACITATED_IGNORING(src, INCAPABLE_RESTRAINTS))
-				visible_message(span_warning("[helper]Tenta abraçar[src], mas[p_they()]Mexa-se.[p_s()]Sai do caminho."))
+				visible_message(span_warning("[helper] Tenta abraçar [src], mas [p_they()] Mexa-se.[p_s()] Sai do caminho."))
 				return
 			// SKYRAT EDIT ADDITION END
-			helper.visible_message(span_notice("[helper]Abraços[src]Para fazer[p_them()]Melhore!"), 						null, span_hear("Você ouve o barulho de roupas."), DEFAULT_MESSAGE_RANGE, list(helper, src))
-			to_chat(helper, span_notice("Você se abraça.[src]Para fazer[p_them()]Melhore!"))
-			to_chat(src, span_notice("[helper]te abraça para se sentir melhor!"))
+			helper.visible_message(span_notice("[helper] Abraços [src] Para fazer [p_them()] Melhore!"), 						null, span_hear("Você ouve o barulho de roupas."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+			to_chat(helper, span_notice("Você se abraça.[src] Para fazer [p_them()] Melhore!"))
+			to_chat(src, span_notice("[helper] te abraça para se sentir melhor!"))
 
 		share_blood_on_touch(helper, ITEM_SLOT_HEAD|ITEM_SLOT_MASK|ITEM_SLOT_GLOVES)
 		// Warm them up with hugs
@@ -435,14 +435,14 @@
 
 		// Let people know if they hugged someone really warm or really cold
 		if(helper.bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT)
-			to_chat(src, span_warning("Parece que...[helper]é sobre o aquecimento como[helper.p_they()]Abraço[helper.p_s()]Você."))
+			to_chat(src, span_warning("Parece que...[helper] é sobre o aquecimento como [helper.p_they()] Abraço [helper.p_s()] Você."))
 		else if(helper.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
-			to_chat(src, span_warning("Parece que...[helper]Está congelando como[helper.p_they()]Abraço[helper.p_s()]Você."))
+			to_chat(src, span_warning("Parece que...[helper] Está congelando como [helper.p_they()] Abraço [helper.p_s()] Você."))
 
 		if(bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT)
-			to_chat(helper, span_warning("Parece que...[src]está muito quente enquanto você abraça[p_them()]."))
+			to_chat(helper, span_warning("Parece que...[src] está muito quente enquanto você abraça [p_them()]."))
 		else if(bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
-			to_chat(helper, span_warning("Parece que...[src]está congelando enquanto você abraça[p_them()]."))
+			to_chat(helper, span_warning("Parece que...[src] está congelando enquanto você abraça [p_them()]."))
 
 		if(HAS_TRAIT(helper, TRAIT_FRIENDLY) || force_friendly)
 			if (helper.mob_mood.sanity >= SANITY_GREAT)
@@ -452,7 +452,7 @@
 				add_mood_event("friendly_hug", /datum/mood_event/betterhug, helper)
 
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
-			to_chat(helper, span_warning("[src]Parece visivelmente chateado enquanto você abraça[p_them()]."))
+			to_chat(helper, span_warning("[src] Parece visivelmente chateado enquanto você abraça [p_them()]."))
 
 	SEND_SIGNAL(src, COMSIG_CARBON_HELP_ACT, helper)
 	SEND_SIGNAL(helper, COMSIG_CARBON_HELPED, src)
@@ -486,7 +486,7 @@
 			if(!embeds)
 				embeds = TRUE
 				// this way, we only visibly try to examine ourselves if we have something embedded, otherwise we'll still hug ourselves :)
-				visible_message(span_notice("[src]Exame.[p_them()]Eu."), 					span_notice("Procure estilhaços."), visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE)
+				visible_message(span_notice("[src] Exame.[p_them()] Eu."), 					span_notice("Procure estilhaços."), visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE)
 			var/harmless = weapon.get_embed().is_harmless()
 			var/stuck_wordage = harmless ? "stuck to" : "embedded in"
 			var/embed_text = "\t <a href='byond://?src=[REF(src)];embedded_object=[REF(weapon)];embedded_limb=[REF(limb)]'> There is [icon2html(weapon, src)] \a [weapon] [stuck_wordage] your [limb.plaintext_zone]!</a>"
@@ -602,19 +602,19 @@
 		return
 	var/starting_hand_index = active_hand_index
 	if(starting_hand_index == grasped_part.held_index)
-		to_chat(src, span_danger("Você não pode entender o seu[grasped_part.name]Com ela mesma!"))
+		to_chat(src, span_danger("Você não pode entender o seu [grasped_part.name] Com ela mesma!"))
 		return
 
 	var/bleed_rate = grasped_part.cached_bleed_rate
 	var/bleeding_text = (bleed_rate ? ", trying to stop the bleeding" : "")
-	to_chat(src, span_warning("Tente se agarrar ao seu[grasped_part.name][bleeding_text]..."))
+	to_chat(src, span_warning("Tente se agarrar ao seu [grasped_part.name][bleeding_text]..."))
 	if(!do_after(src, 0.75 SECONDS))
-		to_chat(src, span_danger("Você não consegue entender[grasped_part.name]."))
+		to_chat(src, span_danger("Você não consegue entender [grasped_part.name]."))
 		return
 
 	var/obj/item/hand_item/self_grasp/grasp = new
 	if(starting_hand_index != active_hand_index || !put_in_active_hand(grasp))
-		to_chat(src, span_danger("Você não consegue entender[grasped_part.name]."))
+		to_chat(src, span_danger("Você não consegue entender [grasped_part.name]."))
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
@@ -676,7 +676,7 @@
 
 	var/bleed_rate = grasped_part.cached_bleed_rate
 	var/bleeding_text = (bleed_rate ? ", trying to stop the bleeding" : "")
-	user.visible_message(span_danger("[user]Agarra-se.[user.p_their()] [grasped_part.name][bleeding_text]."), span_notice("Segura-se.[grasped_part.name]Muito apertado."), vision_distance=COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_danger("[user] Agarra-se.[user.p_their()] [grasped_part.name][bleeding_text]."), span_notice("Segura-se.[grasped_part.name] Muito apertado."), vision_distance=COMBAT_MESSAGE_RANGE)
 	playsound(get_turf(src), 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	return TRUE
 
@@ -689,7 +689,7 @@
 		return FALSE
 
 	if (run_armor_check(attack_flag = BIO, silent = TRUE) >= 100)
-		to_chat(src, span_warning("Sua armadura protege você de[scramble_source]!"))
+		to_chat(src, span_warning("Sua armadura protege você de [scramble_source]!"))
 		return FALSE
 
 	if (!length(GLOB.bioscrambler_valid_organs) || !length(GLOB.bioscrambler_valid_parts))
@@ -715,7 +715,7 @@
 				qdel(picked_user_part)
 
 	if (!changed_something)
-		to_chat(src, span_notice("Seu corpo aumentado protege você de[scramble_source]!"))
+		to_chat(src, span_notice("Seu corpo aumentado protege você de [scramble_source]!"))
 		return FALSE
 	update_body(TRUE)
 	balloon_alert(src, "Algo mudou em você.")

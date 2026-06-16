@@ -43,7 +43,7 @@
 /// Called when we are removed from stealth involuntarily
 /mob/living/basic/guardian/assassin/proc/on_forced_unstealth(mob/living/source)
 	SIGNAL_HANDLER
-	visible_message(span_danger("\The [src]De arrependimento apareceu!"))
+	visible_message(span_danger("\The [src] De arrependimento apareceu!"))
 	COOLDOWN_START(src, manifest_cooldown, 4 SECONDS)
 	var/datum/action/cooldown/guardian/toggle_mode/assassin/stealth_ability = locate() in actions
 	if(stealth_ability)

@@ -132,14 +132,14 @@
 
 	while(check_rebuild(source, user, mats))
 		user.visible_message(
-			span_notice("[user]usa um pouco de[mats]Para reconstruir[source]É a forma."),
-			span_notice("Você usa um pouco de[mats]Para reconstruir[source]É a forma."),
+			span_notice("[user] usa um pouco de [mats] Para reconstruir [source] É a forma."),
+			span_notice("Você usa um pouco de [mats] Para reconstruir [source] É a forma."),
 		)
 
 		var/do_after_time = 2 SECONDS
 		if(brute_ready && burn_ready && nutrition_ready && source.can_be_revived())
 			do_after_time *= 4
-			user.show_message(span_notice("[source]Parece quase totalmente reconstruída, isso vai demorar um pouco mais..."), MSG_VISUAL)
+			user.show_message(span_notice("[source] Parece quase totalmente reconstruída, isso vai demorar um pouco mais..."), MSG_VISUAL)
 		if(HAS_TRAIT(user, TRAIT_QUICK_BUILD))
 			do_after_time *= 0.75
 
@@ -159,23 +159,23 @@
 		source.adjust_nutrition(mat_power * 20)
 		if(!brute_ready)
 			if(source.get_brute_loss() < 50)
-				user.show_message(span_notice("[source]Parece mais forte do que nunca! Não faz muito tempo..."), MSG_VISUAL)
+				user.show_message(span_notice("[source] Parece mais forte do que nunca! Não faz muito tempo..."), MSG_VISUAL)
 				brute_ready = TRUE
 			continue
 		if(!burn_ready)
 			if(source.get_fire_loss() < 50)
-				user.show_message(span_notice("[source]Parece estar recuperando sua integridade! Só um pouco mais..."), MSG_VISUAL)
+				user.show_message(span_notice("[source] Parece estar recuperando sua integridade! Só um pouco mais..."), MSG_VISUAL)
 				burn_ready = TRUE
 			continue
 		if(!nutrition_ready)
 			if(source.nutrition > NUTRITION_LEVEL_HUNGRY)
-				user.show_message(span_notice("[source]Parece estar estabilizando sua forma! Quase lá..."), MSG_VISUAL)
+				user.show_message(span_notice("[source] Parece estar estabilizando sua forma! Quase lá..."), MSG_VISUAL)
 				nutrition_ready = TRUE
 			continue
 
 		if(source.revive(excess_healing = 10)) // give a bit of organ/tox/oxy healing for free
 			source.visible_message(
-				span_notice("[source]estabiliza e reforma em um estado funcional!"),
+				span_notice("[source] estabiliza e reforma em um estado funcional!"),
 				span_boldnotice("Você estabiliza e se transforma em um estado funcional!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
@@ -216,7 +216,7 @@
 	if(source.nutrition < NUTRITION_LEVEL_STARVING)
 		if(!early_warning && COOLDOWN_FINISHED(src, warning_cd) && source.stat < UNCONSCIOUS)
 			source.visible_message(
-				span_warning("[source]Estremece fracamente quando sua forma começa a desestabilizar!"),
+				span_warning("[source] Estremece fracamente quando sua forma começa a desestabilizar!"),
 				span_bolddanger("Você sente sua forma se desestabilizando enquanto falta material para se sustentar! Encontre alguns minerais para comer em breve, ou você pode desmoronar!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
@@ -229,7 +229,7 @@
 	if(source.nutrition < 50)
 		if(!final_warning && COOLDOWN_FINISHED(src, warning_cd) && source.stat < UNCONSCIOUS)
 			source.visible_message(
-				span_warning("[source]Parece que estão prestes a desmoronar!"),
+				span_warning("[source] Parece que estão prestes a desmoronar!"),
 				span_userdanger("Sua forma estremece violentamente enquanto você quase completa desestabilização! Coma alguns minerais rapidamente, ou você pode desmoronar!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
@@ -241,7 +241,7 @@
 
 	if(source.nutrition < 2 && source.stat != DEAD)
 		source.visible_message(
-			span_warning("[source]Estremece e desmorona em uma pilha de pedras inertes!"),
+			span_warning("[source] Estremece e desmorona em uma pilha de pedras inertes!"),
 			span_userdanger("Você corre nosso material para sustentar sua forma animada, e se desintegra em uma pilha de pedras inertes!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)

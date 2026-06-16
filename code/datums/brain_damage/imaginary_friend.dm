@@ -109,9 +109,9 @@
 	Show()
 
 /mob/eye/imaginary_friend/proc/greet()
-	to_chat(src, span_notice("<b>Você é o amigo imaginário de[owner]!</b>"))
+	to_chat(src, span_notice("<b>Você é o amigo imaginário de [owner]!</b>"))
 	to_chat(src, span_notice("Você é absolutamente leal ao seu amigo, não importa o que aconteça."))
-	to_chat(src, span_notice("Você não pode influenciar diretamente o mundo ao seu redor, mas você pode ver o que[owner]Não posso."))
+	to_chat(src, span_notice("Você não pode influenciar diretamente o mundo ao seu redor, mas você pode ver o que [owner] Não posso."))
 
 /**
  * Arguments:

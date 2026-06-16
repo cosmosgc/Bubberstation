@@ -119,7 +119,7 @@
 		if(QDELING(parent_rune))
 			parent_rune = null
 			return ..()
-		parent_rune.visible_message(span_danger("O[parent_rune]Desaparece como[src]Está destruído!"))
+		parent_rune.visible_message(span_danger("O [parent_rune] Desaparece como [src] Está destruído!"))
 		QDEL_NULL(parent_rune)
 	return ..()
 
@@ -198,11 +198,11 @@
 		return
 
 	if (active)
-		user.visible_message(span_notice("[user]Desativado.\the [src]."), 			span_notice("Você desativa.\the [src]."), 			span_hear("Você ouve o som pesado desaparecer."))
+		user.visible_message(span_notice("[user] Desativado.\the [src]."), 			span_notice("Você desativa.\the [src]."), 			span_hear("Você ouve o som pesado desaparecer."))
 		shields_down()
 	else
 		if(anchored)
-			user.visible_message(span_notice("[user]Ativado\the [src]."), 				span_notice("Você ativa.\the [src]."), 				span_hear("Você ouve droning pesado."))
+			user.visible_message(span_notice("[user] Ativado\the [src]."), 				span_notice("Você ativa.\the [src]."), 				span_hear("Você ouve droning pesado."))
 			shields_up()
 		else
 			to_chat(user, span_warning("O dispositivo deve ser fixado no chão!"))
@@ -230,7 +230,7 @@
 		tool.play_tool_sound(src, 100)
 		balloon_alert(user, "solto")
 		if(active)
-			to_chat(user, span_notice("\The [src]Desliga!"))
+			to_chat(user, span_notice("\The [src] Desliga!"))
 			shields_down()
 		set_anchored(FALSE)
 
@@ -239,7 +239,7 @@
 	if(istype(W, /obj/item/stack/cable_coil) && (machine_stat & BROKEN) && panel_open)
 		var/obj/item/stack/cable_coil/coil = W
 		if (coil.get_amount() < 1)
-			to_chat(user, span_warning("Você precisa de um cabo para consertar[src]!"))
+			to_chat(user, span_warning("Você precisa de um cabo para consertar [src]!"))
 			return
 		to_chat(user, span_notice("Você começa a substituir os fios..."))
 		if(do_after(user, 3 SECONDS, target = src))
@@ -370,7 +370,7 @@
 		if(!active_power_usage || surplus() >= active_power_usage)
 			add_load(active_power_usage)
 		else
-			visible_message(span_danger("[src]Desliga por falta de energia!"), 				"Se essa mensagem é vista, algo está errado.",
+			visible_message(span_danger("[src] Desliga por falta de energia!"), 				"Se essa mensagem é vista, algo está errado.",
 				span_hear("Você ouve o som pesado desaparecer."))
 			deactivate()
 			log_game("[src] deactivated due to lack of power at [AREACOORD(src)]")
@@ -495,11 +495,11 @@
 		return
 
 	if(active)
-		user.visible_message(span_notice("[user]Virado.\the [src]Fora."), 			span_notice("Você desliga.\the [src]."), 			span_hear("Você ouve o som pesado desaparecer."))
+		user.visible_message(span_notice("[user] Virado.\the [src] Fora."), 			span_notice("Você desliga.\the [src]."), 			span_hear("Você ouve o som pesado desaparecer."))
 		deactivate()
 		user.log_message("deactivated [src].", LOG_GAME)
 	else
-		user.visible_message(span_notice("[user]Virado.\the [src]Vamos."), 			span_notice("Você liga.\the [src]."), 			span_hear("Você ouve droning pesado."))
+		user.visible_message(span_notice("[user] Virado.\the [src] Vamos."), 			span_notice("Você liga.\the [src]."), 			span_hear("Você ouve droning pesado."))
 		activate()
 		user.log_message("activated [src].", LOG_GAME)
 	add_fingerprint(user)
@@ -551,7 +551,7 @@
 		needs_power = TRUE
 		setDir(get_dir(gen_primary, gen_secondary))
 	for(var/mob/living/L in get_turf(src))
-		visible_message(span_danger("\The [src]de repente ocupa o mesmo espaço que\the [L]!"))
+		visible_message(span_danger("\The [src] de repente ocupa o mesmo espaço que\the [L]!"))
 		L.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
 		L.gib(DROP_ALL_REMAINS)
 	RegisterSignal(src, COMSIG_ATOM_SINGULARITY_TRY_MOVE, PROC_REF(block_singularity))

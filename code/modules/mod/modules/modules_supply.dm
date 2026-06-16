@@ -196,7 +196,7 @@
 
 	COOLDOWN_START(src, gibtonite_warning_cd, 3 SECONDS)
 	playsound(bumper, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-	to_chat(bumper, span_warning("[icon2html(src, bumper)]Depósito de minério de gibtonita instável detectado!"))
+	to_chat(bumper, span_warning("[icon2html(src, bumper)] Depósito de minério de gibtonita instável detectado!"))
 
 /obj/item/mod/module/drill/proc/on_module_activated(datum/source, obj/item/mod/module/module)
 	SIGNAL_HANDLER
@@ -319,7 +319,7 @@
 	render_matrix.Scale(1.25, 1.25)
 	animate(game_renderer, launch_time, transform = render_matrix)
 	var/current_time = world.time
-	mod.wearer.visible_message(span_warning("[mod.wearer]Começa a gritar!"), 		blind_message = span_hear("Você ouve um zumbido."))
+	mod.wearer.visible_message(span_warning("[mod.wearer] Começa a gritar!"), 		blind_message = span_hear("Você ouve um zumbido."))
 	playsound(src, 'sound/items/modsuit/loader_charge.ogg', 75, TRUE)
 	lightning = mutable_appearance('icons/effects/effects.dmi', "electricity3", layer = LOW_MOB_LAYER)
 	mod.wearer.add_overlay(lightning)
@@ -598,12 +598,12 @@
 		return NONE
 
 	if (hide_upgrade)
-		to_chat(user, span_warning("[mod]Já está reforçado com pele de bileworm!"))
+		to_chat(user, span_warning("[mod] Já está reforçado com pele de bileworm!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/stack/sheet/animalhide/bileworm/hide = item
 	if (!hide.use(hide_amount))
-		to_chat(user, span_warning("Você precisa se esconder mais para reforçar completamente[mod]!"))
+		to_chat(user, span_warning("Você precisa se esconder mais para reforçar completamente [mod]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	hide_upgrade = TRUE
@@ -733,7 +733,7 @@
 	addtimer(CALLBACK(src, PROC_REF(boom), firer), explosion_time)
 
 /obj/structure/mining_bomb/proc/boom(atom/movable/firer)
-	visible_message(span_danger("[src]Explodir!"))
+	visible_message(span_danger("[src] Explodir!"))
 	playsound(src, 'sound/effects/magic/magic_missile.ogg', 200, vary = TRUE)
 	for(var/turf/closed/mineral/rock in circle_range_turfs(src, 1))
 		rock.gets_drilled()

@@ -482,7 +482,7 @@ GLOBAL_LIST_INIT(permission_action_types, list(
 	if(!.)
 		return FALSE
 	if(!admin_ckey && (. in (GLOB.admin_datums+GLOB.deadmins)))
-		to_chat(usr, span_danger("[admin_key]Já é um administrador."), confidential = TRUE)
+		to_chat(usr, span_danger("[admin_key] Já é um administrador."), confidential = TRUE)
 		return FALSE
 	if(!use_db)
 		return
@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(permission_action_types, list(
 		return FALSE
 	if(query_admin_in_db.NextRow())
 		qdel(query_admin_in_db)
-		to_chat(usr, span_danger("[admin_key]Já listados no banco de dados administrativo. Verifique a conta da limpeza se eles não aparecem na lista de administradores."), confidential = TRUE)
+		to_chat(usr, span_danger("[admin_key] Já listados no banco de dados administrativo. Verifique a conta da limpeza se eles não aparecem na lista de administradores."), confidential = TRUE)
 		return FALSE
 	QDEL_NULL(query_admin_in_db)
 	var/datum/db_query/query_add_admin = SSdbcore.NewQuery(
@@ -1209,6 +1209,6 @@ GLOBAL_LIST_INIT(permission_action_types, list(
 		qdel(query_sync_lastadminrank)
 		return
 	QDEL_NULL(query_sync_lastadminrank)
-	to_chat(usr, span_admin("Sincronização de[admin_key]Bem sucedido."), confidential = TRUE)
+	to_chat(usr, span_admin("Sincronização de [admin_key] Bem sucedido."), confidential = TRUE)
 
 #undef PERMISSIONS_LOGS_PER_PAGE

@@ -522,7 +522,7 @@
 		hit_ore.fire_act(30000)
 
 	playsound(weather_turf, 'sound/effects/magic/lightningbolt.ogg', 100, extrarange = 10, falloff_distance = 10)
-	weather_turf.visible_message(span_danger("Um raio atinge[weather_turf]!"))
+	weather_turf.visible_message(span_danger("Um raio atinge [weather_turf]!"))
 	new /obj/effect/hotspot(weather_turf)
 
 /**

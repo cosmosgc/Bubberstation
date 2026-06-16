@@ -79,7 +79,7 @@
 		flashed.mind_initialize()
 #else
 	if (isnull(flashed.mind) || !GET_CLIENT(flashed))
-		flashed.balloon_alert(source, "[flashed.p_their()]A mente está vazia!")
+		flashed.balloon_alert(source, "[flashed.p_their()] A mente está vazia!")
 		return
 #endif
 
@@ -90,11 +90,11 @@
 			return
 
 	if (flashed.mind.has_antag_datum(/datum/antagonist/brother))
-		flashed.balloon_alert(source, "[flashed.p_theyre()]leal a outra pessoa!")
+		flashed.balloon_alert(source, "[flashed.p_theyre()] leal a outra pessoa!")
 		return
 
 	if (HAS_MIND_TRAIT(flashed, TRAIT_UNCONVERTABLE))
-		flashed.balloon_alert(source, "[flashed.p_they()]Resista!")
+		flashed.balloon_alert(source, "[flashed.p_they()] Resista!")
 		return
 
 	if (!team.add_brother(flashed, key_name(source))) // Shouldn't happen given the former, more specific checks but just in case
@@ -262,7 +262,7 @@
 		last_names += split_name[split_name.len]
 
 	if (last_names.len == 1)
-		name = "[last_names[1]]'s Isolated Intifada"
+		name = "[last_names [1]]'s Isolated Intifada"
 	else
 		name = "[initial(name)] of " + last_names.Join(" & ")
 

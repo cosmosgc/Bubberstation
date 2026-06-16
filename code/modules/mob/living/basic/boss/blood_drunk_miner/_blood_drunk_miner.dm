@@ -155,8 +155,8 @@ Difficulty: Medium
 
 	changeNext_move(CLICK_CD_MELEE)
 	victim.visible_message(
-		span_danger("[src]Cortes em[victim]Com[p_their()]Cortando serra!"),
-		span_userdanger("Você é cortado por[src]Está cortando a serra!"),
+		span_danger("[src] Cortes em [victim] Com [p_their()] Cortando serra!"),
+		span_userdanger("Você é cortado por [src] Está cortando a serra!"),
 	)
 
 	var/datum/callback/melee_callback = CALLBACK(miner_saw, TYPE_PROC_REF(/obj/item/melee/cleaving_saw/miner, melee_attack_chain), src, victim, modifiers)

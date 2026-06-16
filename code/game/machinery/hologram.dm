@@ -233,7 +233,7 @@ Possible to do for anyone motivated enough:
 	if(!isAI(user))
 		return
 
-	. += span_info("Uso:[/datum/saymode/holopad::key]para falar através da projeção.")
+	. += span_info("Uso:[/datum/saymode/holopad::key] para falar através da projeção.")
 	. += span_info("Clique com o botão direito para projetar ou cancelar uma projeção.")
 	. += span_info("Alt-click para desligar todas as chamadas ativa e incomming.")
 	. += span_info("Ctrl-clique para terminar a projeção sem saltar para sua última localização.")
@@ -272,7 +272,7 @@ Possible to do for anyone motivated enough:
 			return
 		if (!user.transferItemToLoc(tool, src))
 			return
-		to_chat(user,span_notice("Você insere[tool]Em[src]."))
+		to_chat(user,span_notice("Você insere [tool] Em [src]."))
 		disk = tool
 		return ITEM_INTERACT_SUCCESS
 	return NONE
@@ -570,7 +570,7 @@ Possible to do for anyone motivated enough:
 		set_holo(user, hologram)
 
 		set_holo(user, hologram)
-		visible_message(span_notice("Uma imagem holográfica de[user]Brilha para a vida diante de seus olhos!"))
+		visible_message(span_notice("Uma imagem holográfica de [user] Brilha para a vida diante de seus olhos!"))
 
 		return hologram
 	else
@@ -759,7 +759,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.name = "[record.caller_name] (Hologram)"//If someone decides to right click.
 	set_holo(record, hologram)
 
-	visible_message(span_notice("Uma imagem holográfica de[record.caller_name]Brilha para a vida diante de seus olhos!"))
+	visible_message(span_notice("Uma imagem holográfica de [record.caller_name] Brilha para a vida diante de seus olhos!"))
 	return hologram
 
 /obj/machinery/holopad/proc/replay_start()

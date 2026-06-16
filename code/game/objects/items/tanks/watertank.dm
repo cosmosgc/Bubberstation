@@ -160,7 +160,7 @@
 	return new /obj/item/reagent_containers/spray/mister/janitor(src)
 
 /obj/item/reagent_containers/spray/mister/janitor/mode_change_message(mob/user)
-	to_chat(user, span_notice("Você.[amount_per_transfer_from_this == 10 ? "remove" : "affix"]O bico. Agora você vai usar[amount_per_transfer_from_this]Unidades por spray."))
+	to_chat(user, span_notice("Você.[amount_per_transfer_from_this == 10 ? "remove" : "affix"]O bico. Agora você vai usar [amount_per_transfer_from_this] Unidades por spray."))
 
 //Security tank
 /obj/item/watertank/pepperspray
@@ -192,7 +192,7 @@
 	return new /obj/item/reagent_containers/spray/mister/pepperspray(src)
 
 /obj/item/reagent_containers/spray/mister/pepperspray/mode_change_message(mob/user)
-	to_chat(user, span_notice("Você.[amount_per_transfer_from_this == 10 ? "remove" : "affix"]O bico. Agora você vai usar[amount_per_transfer_from_this]Unidades por spray."))
+	to_chat(user, span_notice("Você.[amount_per_transfer_from_this == 10 ? "remove" : "affix"]O bico. Agora você vai usar [amount_per_transfer_from_this] Unidades por spray."))
 
 //ATMOS FIRE FIGHTING BACKPACK
 /obj/item/watertank/atmos
@@ -432,13 +432,13 @@
 	on = TRUE
 	START_PROCESSING(SSobj, src)
 	if(ismob(loc))
-		to_chat(loc, span_notice("[src]Liga."))
+		to_chat(loc, span_notice("[src] Liga."))
 
 /obj/item/reagent_containers/chemtank/proc/turn_off()
 	on = FALSE
 	STOP_PROCESSING(SSobj, src)
 	if(ismob(loc))
-		to_chat(loc, span_notice("[src]Desliga."))
+		to_chat(loc, span_notice("[src] Desliga."))
 
 /obj/item/reagent_containers/chemtank/process(seconds_per_tick)
 	if(!ishuman(loc))

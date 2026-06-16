@@ -93,7 +93,7 @@
 	ai_controller?.set_blackboard_key(BB_LEGION_CORPSE, consumed)
 	ai_controller?.set_blackboard_key(BB_LEGION_RECENT_LINES, consumed.copy_recent_speech(line_chance = 80))
 	stored_mob = consumed
-	visible_message(span_warning("[src]Cambaleando para[p_their()]Pés!"))
+	visible_message(span_warning("[src] Cambaleando para [p_their()] Pés!"))
 	if (prob(75))
 		return
 	// Congratulations you have won a special prize: cancer

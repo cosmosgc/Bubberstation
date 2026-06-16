@@ -81,7 +81,7 @@
 		if(!isliving(user))
 			return
 		var/mob/living/living_user = user
-		to_chat(user, span_warning("Como você tenta usar[src], você ouve sons estranhos rasgando, como se os deuses codificadores estivessem tentando alcançar e sufocar vocês mesmos."))
+		to_chat(user, span_warning("Como você tenta usar [src], você ouve sons estranhos rasgando, como se os deuses codificadores estivessem tentando alcançar e sufocar vocês mesmos."))
 		playsound(src, 'sound/effects/dimensional_rend.ogg')
 		sleep(4 SECONDS)
 		var/confirmation = tgui_alert(user, "Tem certeza que quer fazer isso?", "Admins Only. Last Chance.", list("Yes", "No"))

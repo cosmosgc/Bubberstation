@@ -41,14 +41,14 @@
 		user.ignite_mob()
 		if(user.on_fire)
 			user.visible_message(
-				span_warning("[user]acidentalmente inflama[user.p_them()]Eu!"),
-				span_userdanger("Você errou.[src]e acidentalmente se incendiar!"),
+				span_warning("[user] acidentalmente inflama [user.p_them()] Eu!"),
+				span_userdanger("Você errou.[src] e acidentalmente se incendiar!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		else
 			user.visible_message(
-				span_warning("[user]Queima acidentalmente.[user.p_them()]Eu!"),
-				span_userdanger("Você errou.[src]e acidentalmente se queimar!"),
+				span_warning("[user] Queima acidentalmente.[user.p_them()] Eu!"),
+				span_userdanger("Você errou.[src] e acidentalmente se queimar!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		return ITEM_INTERACT_SUCCESS

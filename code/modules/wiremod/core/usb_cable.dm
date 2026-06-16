@@ -36,7 +36,7 @@
 	. = ..()
 
 	if (!isnull(attached_circuit))
-		. += span_notice("Está ligado a[attached_circuit.shell || attached_circuit].")
+		. += span_notice("Está ligado a [attached_circuit.shell || attached_circuit].")
 
 /obj/item/usb_cable/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -66,7 +66,7 @@
 		else if (ismachinery(target))
 			connection_description = "machine"
 
-		balloon_alert(user, "conectados a[connection_description]")
+		balloon_alert(user, "conectados a [connection_description]")
 		playsound(src, 'sound/items/tools/screwdriver2.ogg', 20, TRUE)
 
 		return TRUE
@@ -77,7 +77,7 @@
 	return FALSE
 
 /obj/item/usb_cable/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está embrulhando[src]Por aí.[user.p_their()]pescoço! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está embrulhando [src] Por aí.[user.p_their()] pescoço! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/usb_cable/proc/on_moved()

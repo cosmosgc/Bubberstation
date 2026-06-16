@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(possible_food_allergies, list(
 
 /datum/quirk/item_quirk/food_allergic/add_unique(client/client_source)
 	var/what_are_we_actually_killed_by = english_list(bitfield_to_list(target_foodtypes, FOOD_FLAGS_IC)) // This should never be more than one thing but just in case we can support it
-	to_chat(client_source.mob, span_info("Você é alérgico a[what_are_we_actually_killed_by]Cuidado com o que come!"))
+	to_chat(client_source.mob, span_info("Você é alérgico a [what_are_we_actually_killed_by] Cuidado com o que come!"))
 
 	var/obj/item/clothing/accessory/dogtag/allergy/dogtag = new(quirk_holder, what_are_we_actually_killed_by)
 	give_item_to_holder(dogtag, list(LOCATION_BACKPACK, LOCATION_HANDS), flavour_text = "Keep it close around the kitchen.", notify_player = TRUE)

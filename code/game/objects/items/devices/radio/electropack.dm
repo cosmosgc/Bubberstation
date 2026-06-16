@@ -28,7 +28,7 @@
 	return ..()
 
 /obj/item/electropack/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Ganchos[user.p_them()]Eu sou o eletropacote e spam é o gatilho! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Ganchos [user.p_them()] Eu sou o eletropacote e spam é o gatilho! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return FIRELOSS
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
@@ -46,7 +46,7 @@
 		A.icon = 'icons/obj/devices/assemblies.dmi'
 
 		if(!user.transferItemToLoc(W, A))
-			to_chat(user, span_warning("[W]está preso em sua mão, você não pode prendê-lo a[src]!"))
+			to_chat(user, span_warning("[W] está preso em sua mão, você não pode prendê-lo a [src]!"))
 			return
 		W.master = A
 		A.helmet_part = W

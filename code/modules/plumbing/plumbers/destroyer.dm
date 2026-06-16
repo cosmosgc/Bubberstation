@@ -21,7 +21,7 @@
 
 /obj/machinery/plumbing/disposer/examine(mob/user)
 	. = ..()
-	. += span_notice("Está eliminando[disposal_rate]U reagentes por segundo.")
+	. += span_notice("Está eliminando [disposal_rate] U reagentes por segundo.")
 	. += span_notice("Use a mão para mudar a taxa de eliminação.")
 
 /obj/machinery/plumbing/disposer/add_context(atom/source, list/context, obj/item/held_item, mob/user)

@@ -33,30 +33,30 @@
 	if(!marked_item || marked_item.item_flags & ABSTRACT)
 		return
 	if(HAS_TRAIT(marked_item, TRAIT_NODROP))
-		to_chat(cast_on, span_warning("[marked_item]Não seria uma boa ideia colocar sua alma nela."))
+		to_chat(cast_on, span_warning("[marked_item] Não seria uma boa ideia colocar sua alma nela."))
 		return
 	// I ensouled the nuke disk once.
 	// But it's a really mean tactic, so we probably should disallow it.
 	if(SEND_SIGNAL(marked_item, COMSIG_ITEM_IMBUE_SOUL, src, cast_on) & COMPONENT_BLOCK_IMBUE)
-		to_chat(cast_on, span_warning("[marked_item]Não é adequado para a colocação de sua alma frágil."))
+		to_chat(cast_on, span_warning("[marked_item] Não é adequado para a colocação de sua alma frágil."))
 		return
 
 	//BUBBERSTATION CHANGE START: NERFS LICHDOM
 	if(marked_item.w_class < WEIGHT_CLASS_BULKY) //Can't cast on small items.
-		to_chat(cast_on, span_warning("[marked_item]É muito pequeno para conter seu enorme<s>Ego.</s>Alma."))
+		to_chat(cast_on, span_warning("[marked_item] É muito pequeno para conter seu enorme<s>Ego.</s>Alma."))
 		return
 
 	if(marked_item.resistance_flags & (INDESTRUCTIBLE|LAVA_PROOF|FIRE_PROOF)) //Can't cast on items that are indestructable and/or fire proof.
-		to_chat(cast_on, span_warning("[marked_item]é muito resistente à sua magia. Talvez experimentar algo que não seja à prova de fogo?"))
+		to_chat(cast_on, span_warning("[marked_item] é muito resistente à sua magia. Talvez experimentar algo que não seja à prova de fogo?"))
 		return
 	//BUBBERSTATION CHANGE END: NERFS LICHDOM
 
 	. = ..()
 	playsound(cast_on, 'sound/effects/pope_entry.ogg', 100)
 
-	to_chat(cast_on, span_green("Você começa a se concentrar em[marked_item]..."))
+	to_chat(cast_on, span_green("Você começa a se concentrar em [marked_item]..."))
 	if(!do_after(cast_on, 5 SECONDS, target = marked_item, timed_action_flags = IGNORE_HELD_ITEM))
-		to_chat(cast_on, span_warning("Sua alma volta para o seu corpo enquanto você pára de inspirar[marked_item]!"))
+		to_chat(cast_on, span_warning("Sua alma volta para o seu corpo enquanto você pára de inspirar [marked_item]!"))
 		return
 
 	marked_item.AddComponent(/datum/component/phylactery, cast_on.mind)

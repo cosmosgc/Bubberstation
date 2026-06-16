@@ -28,28 +28,28 @@
 /obj/structure/bed/nest/buckle_feedback(mob/living/being_buckled, mob/buckler)
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler]Deite-se em[src], embrulhando[buckler.p_them()]Ego em uma resina grossa e pegajosa."),
-			span_notice("Você se deita[src], embrulhando-se em uma resina grossa e pegajosa."),
+			span_notice("[buckler] Deite-se em [src], embrulhando [buckler.p_them()] Ego em uma resina grossa e pegajosa."),
+			span_notice("Você se deita [src], embrulhando-se em uma resina grossa e pegajosa."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler]Deitados.[being_buckled]Para baixo.[src], embrulhando[being_buckled.p_them()]Em uma resina grossa e pegajosa."),
-			span_notice("[buckler]Deita você em cima[src], embrulhando você em uma resina grossa e pegajosa."),
+			span_notice("[buckler] Deitados.[being_buckled] Para baixo.[src], embrulhando [being_buckled.p_them()] Em uma resina grossa e pegajosa."),
+			span_notice("[buckler] Deita você em cima [src], embrulhando você em uma resina grossa e pegajosa."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
 /obj/structure/bed/nest/unbuckle_feedback(mob/living/being_unbuckled, mob/unbuckler)
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Puxa.[unbuckler.p_them()]Livre-se do ninho pegajoso!"),
+			span_notice("[unbuckler] Puxa.[unbuckler.p_them()] Livre-se do ninho pegajoso!"),
 			span_notice("Você se liberta do ninho pegajoso!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Puxa.[being_unbuckled]Livre do ninho pegajoso!"),
-			span_notice("[unbuckler]Tira você do ninho pegajoso!"),
+			span_notice("[unbuckler] Puxa.[being_unbuckled] Livre do ninho pegajoso!"),
+			span_notice("[unbuckler] Tira você do ninho pegajoso!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -63,14 +63,14 @@
 		return
 
 	if(captive != hero)
-		captive.visible_message(span_notice("[hero.name]Puxa.[captive.name]Livre do ninho pegajoso!"),
-			span_notice("[hero.name]Tira você da resina gelatinosa."),
+		captive.visible_message(span_notice("[hero.name] Puxa.[captive.name] Livre do ninho pegajoso!"),
+			span_notice("[hero.name] Tira você da resina gelatinosa."),
 			span_hear("Você ouve o barulho..."))
 		unbuckle_mob(captive)
 		add_fingerprint(hero)
 		return
 
-	captive.visible_message(span_warning("[captive.name]Luta para se libertar da resina gelatinosa!"),
+	captive.visible_message(span_warning("[captive.name] Luta para se libertar da resina gelatinosa!"),
 		span_notice("Você luta para se libertar da resina gelatinosa..."),
 		span_hear("Você ouve o barulho..."))
 
@@ -79,7 +79,7 @@
 			to_chat(captive, span_warning("Você não consegue se soltar!"))
 		return
 
-	captive.visible_message(span_warning("[captive.name]Se liberta da resina gelatina!"),
+	captive.visible_message(span_warning("[captive.name] Se liberta da resina gelatina!"),
 		span_notice("Você se liberta da resina gelatinosa!"),
 		span_hear("Você ouve o barulho..."))
 
@@ -99,7 +99,7 @@
 		unbuckle_all_mobs()
 
 	if(buckle_mob(M))
-		M.visible_message(span_notice("[user.name]Segreda uma gosma vil grossa, protegendo[M.name]Em[src]!"),			span_danger("[user.name]Te ensopado em uma resina federal, te prendendo.[src]!"),			span_hear("Você ouve o barulho..."))
+		M.visible_message(span_notice("[user.name] Segreda uma gosma vil grossa, protegendo [M.name] Em [src]!"),			span_danger("[user.name] Te ensopado em uma resina federal, te prendendo.[src]!"),			span_hear("Você ouve o barulho..."))
 
 /obj/structure/bed/nest/post_buckle_mob(mob/living/M)
 	ADD_TRAIT(M, TRAIT_HANDS_BLOCKED, type)

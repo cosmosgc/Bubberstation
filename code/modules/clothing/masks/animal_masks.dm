@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 	if(!(clothing_flags & VOICEBOX_TOGGLABLE))
 		return NONE
 	clothing_flags ^= VOICEBOX_DISABLED
-	to_chat(user, span_notice("Você.[clothing_flags & VOICEBOX_DISABLED ? "disabled" : "enabled"] [src]A caixa de voz."))
+	to_chat(user, span_notice("Você.[clothing_flags & VOICEBOX_DISABLED ? "disabled" : "enabled"] [src] A caixa de voz."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/mask/animal/proc/make_cursed() //apply cursed effects.
@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 	if(flags_inv == initial(flags_inv))
 		flags_inv = HIDEFACIALHAIR
 	name = "[animal_type] face"
-	desc = "Parece...[animal_type]Máscara, mas uma inspeção mais próxima revela que está unida no rosto dessa pessoa!"
+	desc = "Parece...[animal_type] Máscara, mas uma inspeção mais próxima revela que está unida no rosto dessa pessoa!"
 	if(curse_spawn_sound)
 		playsound(src, curse_spawn_sound, 50, TRUE)
 	var/update_speech_mod = !modifies_speech && LAZYLEN(animal_sounds)
@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 		if(M.get_item_by_slot(ITEM_SLOT_MASK) == src)
 			if(update_speech_mod)
 				RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-			to_chat(M, span_userdanger("[src]Foi amaldiçoado!"))
+			to_chat(M, span_userdanger("[src] Foi amaldiçoado!"))
 			M.update_worn_mask()
 			M.refresh_obscured()
 
@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 	if(ismob(loc))
 		var/mob/M = loc
 		if(M.get_item_by_slot(ITEM_SLOT_MASK) == src)
-			to_chat(M, span_notice("[src]A maldição foi levantada!"))
+			to_chat(M, span_notice("[src] A maldição foi levantada!"))
 			if(update_speech_mod)
 				UnregisterSignal(M, COMSIG_MOB_SAY)
 			M.update_worn_mask()
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 	if(!iscarbon(user))
 		return ..()
 	if((slot & ITEM_SLOT_MASK) && HAS_TRAIT_FROM(src, TRAIT_NODROP, CURSED_MASK_TRAIT))
-		to_chat(user, span_userdanger("[src]Foi amaldiçoado!"))
+		to_chat(user, span_userdanger("[src] Foi amaldiçoado!"))
 	return ..()
 
 

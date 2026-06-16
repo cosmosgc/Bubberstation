@@ -94,7 +94,7 @@
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	var/mob/living/carbon/jedi = user
 	jedi.visible_message(
-		span_danger("[jedi]A cabeça começa a cair sobre si mesma!"),
+		span_danger("[jedi] A cabeça começa a cair sobre si mesma!"),
 		span_userdanger("Sua cabeça parece estar desmoronando! Não foi uma boa ideia!"),
 		span_hear("Você ouve algo quebrar e explodir em sangue.")
 		)
@@ -320,14 +320,14 @@
 
 /obj/singularity/proc/supermatter_upgrade()
 	name = "supermatter-charged [initial(name)]"
-	desc = "[initial(desc)]Brilha ferozmente com fogo interior."
+	desc = "[initial(desc)] Brilha ferozmente com fogo interior."
 	consumed_supermatter = TRUE
 	set_light(10)
 
 /obj/singularity/proc/consume_boh(obj/boh)
 	collapsing = TRUE
 	name = "unstable [initial(name)]"
-	desc = "[initial(desc)]Parece estar desmoronando em si mesmo."
+	desc = "[initial(desc)] Parece estar desmoronando em si mesmo."
 	visible_message(
 		message = span_danger("As [src] consumes [boh], it begins to collapse in on itself!"),
 		blind_message = span_hear("Você ouve crepitações agressivas!"),
@@ -431,7 +431,7 @@
 /obj/singularity/proc/combust_mobs()
 	for(var/mob/living/carbon/burned_mob in urange(20, src, 1))
 		burned_mob.visible_message(
-			span_warning("[burned_mob]A pele explode em chamas!"),
+			span_warning("[burned_mob] A pele explode em chamas!"),
 			span_userdanger("Você sente um fogo interior quando sua pele explode em chamas!")
 		)
 		burned_mob.adjust_fire_stacks(5)
@@ -451,7 +451,7 @@
 		if(istype(stunned_human.glasses, /obj/item/clothing/glasses/meson))
 			var/obj/item/clothing/glasses/meson/check_meson = stunned_human.glasses
 			if(check_meson.vision_flags & SEE_TURFS)
-				to_chat(stunned_human, span_notice("Você olha diretamente para\the [src]Que bom que você estava com seus óculos protetores!"))
+				to_chat(stunned_human, span_notice("Você olha diretamente para\the [src] Que bom que você estava com seus óculos protetores!"))
 				continue
 
 		apply_stun(stunned_mob)
@@ -459,8 +459,8 @@
 /obj/singularity/proc/apply_stun(mob/living/carbon/stunned_mob)
 	stunned_mob.apply_effect(60, EFFECT_STUN)
 	stunned_mob.visible_message(
-		span_danger("[stunned_mob]Olha em branco para\the [src]!"),
-		span_userdanger("Você olha diretamente para\the [src]e sentir-se fraco.")
+		span_danger("[stunned_mob] Olha em branco para\the [src]!"),
+		span_userdanger("Você olha diretamente para\the [src] e sentir-se fraco.")
 	)
 
 /obj/singularity/proc/emp_area()

@@ -149,13 +149,13 @@
 	return list(span_deadsay("São ossos."))
 
 /obj/item/fish/boned/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	forceMove(user)
 	addtimer(CALLBACK(src, PROC_REF(skeleton_appears), user), 2 SECONDS)
 	return MANUAL_SUICIDE_NONLETHAL // chance not to die
 
 /obj/item/fish/boned/proc/skeleton_appears(mob/living/user)
-	user.visible_message(span_warning("[user]Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
+	user.visible_message(span_warning("[user] Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
 	user.spawn_gibs()
 	user.drop_everything(del_on_drop = FALSE, force = FALSE, del_if_nodrop = FALSE)
 	user.set_species(/datum/species/skeleton)
@@ -209,7 +209,7 @@
 /obj/item/fish/lavaloop/proc/explode_on_user(mob/living/user)
 	var/obj/item/bodypart/arm/active_arm = user.get_active_hand()
 	active_arm?.dismember()
-	to_chat(user, span_warning("[src]Explodir!"))
+	to_chat(user, span_warning("[src] Explodir!"))
 	playsound(src, 'sound/effects/explosion/explosion1.ogg', 40, TRUE)
 	user.flash_act(1, 1)
 	qdel(src)

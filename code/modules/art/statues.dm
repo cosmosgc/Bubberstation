@@ -493,7 +493,7 @@ Moving interrupts
 	else
 		current_target = target.appearance
 	var/mutable_appearance/ma = current_target
-	user.balloon_alert(user, "Esculpir o alvo é[ma.name]")
+	user.balloon_alert(user, "Esculpir o alvo é [ma.name]")
 
 /obj/structure/carving_block/proc/reset_target()
 	current_target = null

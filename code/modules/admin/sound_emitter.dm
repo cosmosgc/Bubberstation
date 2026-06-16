@@ -85,19 +85,19 @@
 		if(!new_label)
 			return
 		maptext = MAPTEXT(new_label)
-		to_chat(user, span_notice("Rótulo definido para[maptext]."), confidential = TRUE)
+		to_chat(user, span_notice("Rótulo definido para [maptext]."), confidential = TRUE)
 	if(href_list["edit_sound_file"])
 		var/new_file = input(user, "Escolha um arquivo de som.", "Emissário de Som") as null|sound
 		if(!new_file)
 			return
 		sound_file = new_file
-		to_chat(user, span_notice("Novo arquivo de som definido como[sound_file]."), confidential = TRUE)
+		to_chat(user, span_notice("Novo arquivo de som definido como [sound_file]."), confidential = TRUE)
 	if(href_list["edit_volume"])
 		var/new_volume = tgui_input_number(user, "Choose a volume", "Sound Emitter", sound_volume, 100)
 		if(!new_volume)
 			return
 		sound_volume = new_volume
-		to_chat(user, span_notice("Volume definido para[sound_volume]%."), confidential = TRUE)
+		to_chat(user, span_notice("Volume definido para [sound_volume]%."), confidential = TRUE)
 	if(href_list["edit_mode"])
 		var/new_mode
 		var/mode_list = list("Local (normal sound)" = SOUND_EMITTER_LOCAL, "Direct (not affected by environment/location)" = SOUND_EMITTER_DIRECT)
@@ -105,7 +105,7 @@
 		if(!new_mode)
 			return
 		motus_operandi = mode_list[new_mode]
-		to_chat(user, span_notice("Modo definido para[motus_operandi]."), confidential = TRUE)
+		to_chat(user, span_notice("Modo definido para [motus_operandi]."), confidential = TRUE)
 	if(href_list["edit_range"])
 		var/new_range
 		var/range_list = list("Radius (all mobs within a radius)" = SOUND_EMITTER_RADIUS, "Z-Level (all mobs on the same z)" = SOUND_EMITTER_ZLEVEL, "Global (all players)" = SOUND_EMITTER_GLOBAL)
@@ -113,13 +113,13 @@
 		if(!new_range)
 			return
 		emitter_range = range_list[new_range]
-		to_chat(user, span_notice("Distância definida para[emitter_range]."), confidential = TRUE)
+		to_chat(user, span_notice("Distância definida para [emitter_range]."), confidential = TRUE)
 	if(href_list["edit_radius"])
 		var/new_radius = tgui_input_number(user, "Choose a radius", "Sound Emitter", sound_volume, 127)
 		if(!new_radius)
 			return
 		play_radius = new_radius
-		to_chat(user, span_notice("Raio sonoro definido para[play_radius]."), confidential = TRUE)
+		to_chat(user, span_notice("Raio sonoro definido para [play_radius]."), confidential = TRUE)
 	if(href_list["play"])
 		activate(user)
 	edit_emitter(user) //Refresh the UI to see our changes

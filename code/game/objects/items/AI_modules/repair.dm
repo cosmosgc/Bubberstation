@@ -14,12 +14,12 @@
 	lawpos = tgui_input_number(user, "Law to delete", "Law Removal", lawpos, 50)
 	if(!lawpos || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
-	to_chat(user, span_notice("Lei.[lawpos]Selecionado."))
+	to_chat(user, span_notice("Lei.[lawpos] Selecionado."))
 	..()
 
 /obj/item/ai_module/remove/install(datum/ai_laws/law_datum, mob/user)
 	if(lawpos > law_datum.get_law_amount(list(LAW_INHERENT, LAW_SUPPLIED)))
-		to_chat(user, span_warning("Não há lei.[lawpos]Para apagar!"))
+		to_chat(user, span_warning("Não há lei.[lawpos] Para apagar!"))
 		return
 	..()
 

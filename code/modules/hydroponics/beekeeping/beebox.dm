@@ -130,13 +130,13 @@
 	if(half_bee && (bees.len >= half_bee))
 		. += span_notice("Este lugar é aBUZZ com atividade... há muitas abelhas!")
 
-	. += span_notice("[bee_resources]100 recursos.")
-	. += span_notice("[bee_resources]Para um novo favo de mel.")
-	. += span_notice("[bee_resources*2]Em direção a uma nova abelha.")
+	. += span_notice("[bee_resources] 100 recursos.")
+	. += span_notice("[bee_resources] Para um novo favo de mel.")
+	. += span_notice("[bee_resources*2] Em direção a uma nova abelha.")
 
 	if(honeycombs.len)
 		var/plural = honeycombs.len > 1
-		. += span_notice("Ali.[plural? "are" : "is"] [honeycombs.len]favo de mel não recolhido[plural ? "s":""]no apiário.")
+		. += span_notice("Ali.[plural? "are" : "is"] [honeycombs.len] favo de mel não recolhido[plural ? "s":""]no apiário.")
 
 	if(honeycombs.len >= get_max_honeycomb())
 		. += span_warning("Não há espaço para mais favo de mel!")
@@ -150,7 +150,7 @@
 	if(istype(item, /obj/item/honey_frame))
 		var/obj/item/honey_frame/frame = item
 		if(honey_frames.len < BEEBOX_MAX_FRAMES)
-			visible_message(span_notice("[user]adiciona uma moldura ao apiário."))
+			visible_message(span_notice("[user] adiciona uma moldura ao apiário."))
 			if(!user.transferItemToLoc(frame, src))
 				return
 			honey_frames += frame
@@ -172,7 +172,7 @@
 		new_queen.queen.forceMove(src)
 
 		if(queen_bee)
-			visible_message(span_notice("[user]Sets[queen_bee]dentro do apiário, tornando-se sua nova casa."))
+			visible_message(span_notice("[user] Sets [queen_bee] dentro do apiário, tornando-se sua nova casa."))
 			var/relocated = 0
 			for(var/mob/living/basic/bee/relocating_bee as anything in bees)
 				if(relocating_bee.reagent_incompatible(queen_bee))
@@ -203,9 +203,9 @@
 				worker.forceMove(drop_location())
 			bees_attack = TRUE
 		if(bees_attack)
-			visible_message(span_danger("[user]Perturba como Abelhas!"))
+			visible_message(span_danger("[user] Perturba como Abelhas!"))
 		else
-			visible_message(span_danger("[user]Perturbações\the [src]Sem efeito!"))
+			visible_message(span_danger("[user] Perturbações\the [src] Sem efeito!"))
 	else
 		var/option = tgui_alert(user, "Que peça você deseja remover?", "Apiary Adjustment", list("Honey Frame", "Queen Bee"))
 		if(!option || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, NEED_DEXTERITY))
@@ -220,7 +220,7 @@
 				if(frame)
 					if(!user.put_in_active_hand(frame))
 						frame.forceMove(drop_location())
-					visible_message(span_notice("[user]remove uma moldura do apiário."))
+					visible_message(span_notice("[user] remove uma moldura do apiário."))
 
 					var/amtH = frame.honeycomb_capacity
 					var/fallen = 0
@@ -232,7 +232,7 @@
 							fallen++
 					if(fallen)
 						var/multiple = fallen > 1
-						visible_message(span_notice("[user]Arranhões[multiple ? "[fallen]" : "a"]Favo de mel[multiple ? "s" : ""]Fora da modura."))
+						visible_message(span_notice("[user] Arranhões[multiple ? "[fallen]" : "a"]Favo de mel[multiple ? "s" : ""]Fora da modura."))
 
 			if("Queen Bee")
 				if(!queen_bee || queen_bee.loc != src)
@@ -245,7 +245,7 @@
 				queen.name = queen_bee.name
 				if(!user.put_in_active_hand(queen))
 					queen.forceMove(drop_location())
-				visible_message(span_notice("[user]remove a rainha do apiário."))
+				visible_message(span_notice("[user] remove a rainha do apiário."))
 				queen_bee = null
 
 /obj/structure/beebox/atom_deconstruct(disassembled = TRUE)

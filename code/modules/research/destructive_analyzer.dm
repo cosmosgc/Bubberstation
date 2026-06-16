@@ -46,12 +46,12 @@
 	if(!is_insertion_ready(user))
 		return ..()
 	if(!user.transferItemToLoc(weapon, src))
-		to_chat(user, span_warning("\The [weapon]está preso em sua mão, você não pode colocá-lo em\the [src]!"))
+		to_chat(user, span_warning("\The [weapon] está preso em sua mão, você não pode colocá-lo em\the [src]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	busy = TRUE
 	loaded_item = weapon
-	to_chat(user, span_notice("Seu lugar.\the [weapon]Dentro.\the [src]."))
+	to_chat(user, span_notice("Seu lugar.\the [weapon] Dentro.\the [src]."))
 	flick("[base_icon_state]_la", src)
 	addtimer(CALLBACK(src, PROC_REF(finish_loading)), 1 SECONDS)
 	return ITEM_INTERACT_SUCCESS

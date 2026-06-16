@@ -38,7 +38,7 @@
 	bay.detach()
 	bay.forceMove(src) //for later detaching
 	attach(mech, attach_right)
-	user.visible_message(span_notice("[user]Insere algo em[src]."), span_notice("Você anexa o[initial(name)]Para o compartimento das armas escondidas."))
+	user.visible_message(span_notice("[user] Insere algo em [src]."), span_notice("Você anexa o [initial(name)] Para o compartimento das armas escondidas."))
 	return TRUE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/detach(atom/moveto)
@@ -194,7 +194,7 @@
 	var/has_molten = FALSE
 	for (var/obj/item/mecha_parts/mecha_equipment/weapon/energy/thermal/thegun in themech.flat_equipment)
 		if (istype(thegun, /obj/item/mecha_parts/mecha_equipment/weapon/energy/thermal/cryo))
-			to_chat(user, span_warning("[themech]Já tem.[thegun]Instalado!"))
+			to_chat(user, span_warning("[themech] Já tem.[thegun] Instalado!"))
 			return ITEM_INTERACT_BLOCKING
 		if (istype(thegun, /obj/item/mecha_parts/mecha_equipment/weapon/energy/thermal/inferno))
 			has_molten = TRUE
@@ -209,7 +209,7 @@
 	var/has_cryo = FALSE
 	for (var/obj/item/mecha_parts/mecha_equipment/weapon/energy/thermal/thegun in themech.flat_equipment)
 		if (istype(thegun, /obj/item/mecha_parts/mecha_equipment/weapon/energy/thermal/inferno))
-			to_chat(user, span_warning("[themech]Já tem.[thegun]Instalado!"))
+			to_chat(user, span_warning("[themech] Já tem.[thegun] Instalado!"))
 			return ITEM_INTERACT_BLOCKING
 		if (istype(thegun, /obj/item/mecha_parts/mecha_equipment/weapon/energy/thermal/cryo))
 			has_cryo = TRUE
@@ -657,7 +657,7 @@
 			return
 
 		playsound(chassis, clampsound, 50, FALSE, -6)
-		mobtarget.visible_message(span_notice("[chassis]Elevações[mobtarget]Em sua cela interna."),span_userdanger("[chassis]Te agarra com[src]e prepara-se para carregá-lo em[secmech.cargo_hold]!"))
+		mobtarget.visible_message(span_notice("[chassis] Elevações [mobtarget] Em sua cela interna."),span_userdanger("[chassis] Te agarra com [src] e prepara-se para carregá-lo em [secmech.cargo_hold]!"))
 		if(!do_after_cooldown(mobtarget, source, flags = MECH_DO_AFTER_DIR_CHANGE_FLAG|MECH_DO_AFTER_ADJACENCY_FLAG))
 			return
 		mobtarget.forceMove(secmech.cargo_hold)

@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a bombear[organ.owner]O estômago..."),
-		span_notice("[surgeon]Começa a bombear[organ.owner]Estômago."),
-		span_notice("[surgeon]Começa a pressionar[organ.owner]Abdômen."),
+		span_notice("Você começa a bombear [organ.owner] O estômago..."),
+		span_notice("[surgeon] Começa a bombear [organ.owner] Estômago."),
+		span_notice("[surgeon] Começa a pressionar [organ.owner] Abdômen."),
 	)
 	display_pain(organ.owner, "You feel a horrible sloshing feeling in your gut! You're going to be sick!")
 
@@ -34,9 +34,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("[surgeon]forças[organ.owner]vomitar, limpar o estômago de alguns químicos!"),
-		span_notice("[surgeon]forças[organ.owner]vomitar, limpar o estômago de alguns químicos!"),
-		span_notice("[surgeon]forças[organ.owner]Vomitar!"),
+		span_notice("[surgeon] forças [organ.owner] vomitar, limpar o estômago de alguns químicos!"),
+		span_notice("[surgeon] forças [organ.owner] vomitar, limpar o estômago de alguns químicos!"),
+		span_notice("[surgeon] forças [organ.owner] Vomitar!"),
 	)
 	organ.owner.vomit((MOB_VOMIT_MESSAGE | MOB_VOMIT_STUN), lost_nutrition = 20, purge_ratio = 0.67)
 
@@ -44,9 +44,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você estraga tudo, contusões.[organ.owner]O peito!"),
-		span_warning("[surgeon]Estraga tudo, contusões[organ.owner]O peito!"),
-		span_warning("[surgeon]Estraga tudo!"),
+		span_warning("Você estraga tudo, contusões.[organ.owner] O peito!"),
+		span_warning("[surgeon] Estraga tudo, contusões [organ.owner] O peito!"),
+		span_warning("[surgeon] Estraga tudo!"),
 	)
 	organ.apply_organ_damage(5)
 	organ.bodypart_owner.receive_damage(5)

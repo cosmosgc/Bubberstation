@@ -29,7 +29,7 @@
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("Você está muito longe para examinar.[src]O conteúdo e a exibição!")
+		. += span_warning("Você está muito longe para examinar.[src] O conteúdo e a exibição!")
 		return
 
 	if(charging)
@@ -51,18 +51,18 @@
 
 	var/obj/item/stock_parts/power_store/charging_cell = charging.get_cell()
 	if(charging_cell)
-		. += span_notice("- \The [charging]O celular está em<b>[charging_cell.percent()]%</b>.")
+		. += span_notice("- \The [charging] O celular está em<b>[charging_cell.percent()]%</b>.")
 		return
 	if(istype(charging, /obj/item/ammo_box/magazine/recharge))
 		var/obj/item/ammo_box/magazine/recharge/power_pack = charging
-		. += span_notice("- \The [charging]O celular está em<b>[PERCENT(power_pack.stored_ammo.len/power_pack.max_ammo)]%</b>.")
+		. += span_notice("- \The [charging] O celular está em<b>[PERCENT(power_pack.stored_ammo.len/power_pack.max_ammo)]%</b>.")
 		return
 	if(istype(charging, /obj/item/gun/ballistic/automatic/battle_rifle))
 		var/obj/item/gun/ballistic/automatic/battle_rifle/recalibrating_gun = charging
-		. += span_notice("- \The [charging]A degradação do sistema está no estágio[recalibrating_gun.degradation_stage]De[recalibrating_gun.degradation_stage_max]</b>.")
-		. += span_notice("- \The [charging]O tampão de degradação está em<b>[PERCENT(recalibrating_gun.shots_before_degradation/recalibrating_gun.max_shots_before_degradation)]%</b>.")
+		. += span_notice("- \The [charging] A degradação do sistema está no estágio [recalibrating_gun.degradation_stage] De [recalibrating_gun.degradation_stage_max]</b>.")
+		. += span_notice("- \The [charging] O tampão de degradação está em<b>[PERCENT(recalibrating_gun.shots_before_degradation/recalibrating_gun.max_shots_before_degradation)]%</b>.")
 		return
-	. += span_notice("- \The [charging]Não está relatando um nível de energia.")
+	. += span_notice("- \The [charging] Não está relatando um nível de energia.")
 
 /obj/machinery/recharger/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	if(is_type_in_typecache(arrived, allowed_devices))
@@ -88,14 +88,14 @@
 		return NONE
 
 	if(!anchored)
-		to_chat(user, span_notice("[src]Não está conectado a nada!"))
+		to_chat(user, span_notice("[src] Não está conectado a nada!"))
 		return ITEM_INTERACT_BLOCKING
 	if(charging || panel_open)
 		return ITEM_INTERACT_BLOCKING
 
 	var/area/our_area = get_area(src) //Check to make sure user's not in space doing it, and that the area got proper power.
 	if(!isarea(our_area) || our_area.power_equip == 0)
-		to_chat(user, span_notice("[src]Pisca vermelho enquanto você tenta inserir[tool]."))
+		to_chat(user, span_notice("[src] Pisca vermelho enquanto você tenta inserir [tool]."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/gun/energy))

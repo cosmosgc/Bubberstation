@@ -131,23 +131,23 @@
 	var/datum/mind/master_mind = choices[new_master]
 	var/mob/living/carbon/human/master = master_mind.current
 	if (!master || master.stat == DEAD || !master.client)
-		to_chat(owner, span_cult("[new_master]Não pode mais assumir o papel de um Mestre."))
+		to_chat(owner, span_cult("[new_master] Não pode mais assumir o papel de um Mestre."))
 		return
 
 	var/datum/antagonist/cult/target_datum = master_mind.has_antag_datum(/datum/antagonist/cult)
 	if(!target_datum || owner_datum.cult_team != target_datum?.cult_team)
-		to_chat(owner, span_cult("[new_master]Não pode mais assumir o papel de um Mestre."))
+		to_chat(owner, span_cult("[new_master] Não pode mais assumir o papel de um Mestre."))
 		return
 
 	SEND_SOUND(master, sound('sound/effects/magic.ogg', volume = 33))
 	confirmation = tgui_alert(master, "[owner.real_name] is offering their role as the cult's Master to you! Do you wish to accept it?", "Take the Mantle", list("Yes", "No"))
 
 	if (confirmation != "Yes")
-		to_chat(owner, span_cult("[new_master]Recusou sua oferta."))
+		to_chat(owner, span_cult("[new_master] Recusou sua oferta."))
 		return
 
 	if (!IsAvailable() || !master_mind.has_antag_datum(/datum/antagonist/cult) || !master.client)
-		to_chat(owner, span_cult("[new_master]Não pode mais assumir o papel de um Mestre."))
+		to_chat(owner, span_cult("[new_master] Não pode mais assumir o papel de um Mestre."))
 		return
 
 	target_datum.cult_team.leader_passed_on = TRUE
@@ -265,7 +265,7 @@
 		return FALSE
 
 	if(cult_team.set_blood_target(clicked_on, clicker, cult_mark_duration))
-		unset_ranged_ability(clicker, span_cult("O ritual de marcação está completo! Vai durar por[DisplayTimeText(cult_mark_duration)]segundos."))
+		unset_ranged_ability(clicker, span_cult("O ritual de marcação está completo! Vai durar por [DisplayTimeText(cult_mark_duration)] segundos."))
 		COOLDOWN_START(src, cult_mark_cooldown, cult_mark_cooldown_duration)
 		build_all_button_icons()
 		addtimer(CALLBACK(src, PROC_REF(build_all_button_icons)), cult_mark_cooldown_duration + 1)
@@ -316,7 +316,7 @@
 		return FALSE
 
 	if(cult_team.set_blood_target(mark_target, owner, 60 SECONDS))
-		to_chat(owner, span_cult_bold("Você marcou.[mark_target]Para o culto! Vai durar por[DisplayTimeText(cult_mark_duration)]."))
+		to_chat(owner, span_cult_bold("Você marcou.[mark_target] Para o culto! Vai durar por [DisplayTimeText(cult_mark_duration)]."))
 		COOLDOWN_START(src, cult_mark_cooldown, cult_mark_cooldown_duration)
 		build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
 		addtimer(CALLBACK(src, PROC_REF(reset_button)), cult_mark_cooldown_duration + 1)
@@ -394,7 +394,7 @@
 
 	if(throwee)
 		if(get_dist(throwee, clicked_on) >= 16)
-			to_chat(clicker, span_cult("Você não pode se teletransportar[clicked_on.p_them()]tão longe!"))
+			to_chat(clicker, span_cult("Você não pode se teletransportar [clicked_on.p_them()] tão longe!"))
 			return FALSE
 
 		var/turf/throwee_turf = get_turf(throwee)
@@ -402,7 +402,7 @@
 		playsound(throwee_turf, 'sound/effects/magic/exit_blood.ogg', 50)
 		new /obj/effect/temp_visual/cult/sparks(throwee_turf, clicker.dir)
 		throwee.visible_message(
-			span_warning("Um pulso de socos mágicos[throwee]Afaste-se!"),
+			span_warning("Um pulso de socos mágicos [throwee] Afaste-se!"),
 			span_cult("Um pulso de sangue mágico te leva embora..."),
 		)
 
@@ -417,12 +417,12 @@
 		throwee_turf.Beam(clicked_on, icon_state = "sendbeam", time = 0.4 SECONDS)
 		new /obj/effect/temp_visual/cult/sparks(get_turf(clicked_on), clicker.dir)
 		throwee.visible_message(
-			span_warning("[throwee]Aparece de repente em um pulso de magia!"),
+			span_warning("[throwee] Aparece de repente em um pulso de magia!"),
 			span_cult("E você aparece em outro lugar."),
 		)
 
 		COOLDOWN_START(src, pulse_cooldown, pulse_cooldown_duration)
-		to_chat(clicker, span_cult("Um pulso de magia de sangue flui através de você enquanto você muda[throwee]através do tempo e espaço."))
+		to_chat(clicker, span_cult("Um pulso de magia de sangue flui através de você enquanto você muda [throwee] através do tempo e espaço."))
 		clicker.click_intercept = null
 		throwee_ref = null
 		build_all_button_icons()
@@ -435,12 +435,12 @@
 		if(!IS_CULTIST(living_clicked))
 			return FALSE
 		SEND_SOUND(clicker, sound('sound/items/weapons/thudswoosh.ogg'))
-		to_chat(clicker, span_cult_bold("Você alcança o véu com os olhos da sua mente e agarra[clicked_on]! <b>Clique em qualquer lugar próximo para teletransportar[clicked_on.p_them()]!</b>"))
+		to_chat(clicker, span_cult_bold("Você alcança o véu com os olhos da sua mente e agarra [clicked_on]! <b>Clique em qualquer lugar próximo para teletransportar [clicked_on.p_them()]!</b>"))
 		throwee_ref = WEAKREF(clicked_on)
 		return TRUE
 
 	if(istype(clicked_on, /obj/structure/destructible/cult))
-		to_chat(clicker, span_cult_bold("Você alcança o véu com o olho de sua mente e levanta[clicked_on]! <b>Clique em qualquer lugar próximo para teletransportar!</b>"))
+		to_chat(clicker, span_cult_bold("Você alcança o véu com o olho de sua mente e levanta [clicked_on]! <b>Clique em qualquer lugar próximo para teletransportar!</b>"))
 		throwee_ref = WEAKREF(clicked_on)
 		return TRUE
 	return FALSE

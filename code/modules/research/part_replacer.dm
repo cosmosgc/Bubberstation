@@ -101,7 +101,7 @@
 		if(target_holder.total_volume)
 			target_holder.force_stop_reacting()
 			target_holder.clear_reagents()
-			to_chat(usr, span_notice("[src]Churns como[inserted_component]tem seus reagentes esvaziados no espaço azul."))
+			to_chat(usr, span_notice("[src] Churns como [inserted_component] tem seus reagentes esvaziados no espaço azul."))
 		target_holder.flags = target_holder.flags << 5 //masks all flags upto DUNKABLE(1<<5) i.e. removes all methods of transfering reagents to/from the object
 /**
  * Signal handler for a part is removed from the BRPED.

@@ -1,8 +1,8 @@
 /obj/item/ai_module/zeroth/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	if(law_datum.owner)
 		if(law_datum.owner.laws.zeroth)
-			to_chat(law_datum.owner, "[sender.real_name]Tentou modificar sua lei zero.")
-			to_chat(law_datum.owner, "Seria melhor para você jogar junto com[sender.real_name]Isso:")
+			to_chat(law_datum.owner, "[sender.real_name] Tentou modificar sua lei zero.")
+			to_chat(law_datum.owner, "Seria melhor para você jogar junto com [sender.real_name] Isso:")
 			for(var/failedlaw in laws)
 				to_chat(law_datum.owner, "[failedlaw]")
 			return TRUE

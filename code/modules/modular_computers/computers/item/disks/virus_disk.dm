@@ -114,11 +114,11 @@
 	if(!istype(attacking_item, /obj/item/stack/telecrystal))
 		return
 	if(!charges)
-		to_chat(user, span_notice("[src]Está fora das acusações, se recusa a aceitar[attacking_item]."))
+		to_chat(user, span_notice("[src] Está fora das acusações, se recusa a aceitar [attacking_item]."))
 		return
 	var/obj/item/stack/telecrystal/telecrystal_stack = attacking_item
 	telecrystals += telecrystal_stack.amount
-	to_chat(user, span_notice("Você está em posição.[telecrystal_stack]Em[src]Da próxima vez que for usada, também dará telecristais."))
+	to_chat(user, span_notice("Você está em posição.[telecrystal_stack] Em [src] Da próxima vez que for usada, também dará telecristais."))
 	telecrystal_stack.use(telecrystal_stack.amount)
 
 

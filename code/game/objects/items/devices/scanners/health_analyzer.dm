@@ -45,10 +45,10 @@
 /obj/item/healthanalyzer/examine(mob/user)
 	. = ..()
 	if(src.mode != SCANNER_NO_MODE)
-		. += span_notice("Alt-click[src]Para mudar a leitura dos danos nos membros. Ctrl-shift-clique para imprimir relatório de leitura.")
+		. += span_notice("Alt-click [src] Para mudar a leitura dos danos nos membros. Ctrl-shift-clique para imprimir relatório de leitura.")
 
 /obj/item/healthanalyzer/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]começa a analisar[user.p_them()]ego com[src]A exibição mostra que[user.p_theyre()]Morto!"))
+	user.visible_message(span_suicide("[user] começa a analisar [user.p_them()] ego com [src] A exibição mostra que [user.p_theyre()] Morto!"))
 	return BRUTELOSS
 
 /obj/item/healthanalyzer/attack_self(mob/user)
@@ -76,8 +76,8 @@
 	if ((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
 		var/turf/scan_turf = get_turf(user)
 		user.visible_message(
-			span_warning("[user]Análises[scan_turf]Sinais Vitais!"),
-			span_notice("Você tenta estupidamente analisar[scan_turf]Sinais Vitais!"),
+			span_warning("[user] Análises [scan_turf] Sinais Vitais!"),
+			span_notice("Você tenta estupidamente analisar [scan_turf] Sinais Vitais!"),
 		)
 
 		var/floor_text = "<span class='info'>Analyzing results for <b>[scan_turf]</b> ([station_time_timestamp()]):</span><br>"
@@ -91,10 +91,10 @@
 		return
 
 	if(ispodperson(M) && !advanced)
-		to_chat(user, span_info("[M]A estrutura biológica é muito complexa para o analisador de saúde."))
+		to_chat(user, span_info("[M] A estrutura biológica é muito complexa para o analisador de saúde."))
 		return
 
-	user.visible_message(span_notice("[user]Análises[M]Os sinos vitais."))
+	user.visible_message(span_notice("[user] Análises [M] Os sinos vitais."))
 	balloon_alert(user, "Analisando sinos vitais.")
 	playsound(user.loc, 'sound/items/healthanalyzer.ogg', 50)
 
@@ -160,7 +160,7 @@
 	var/tox_loss = target.get_tox_loss()
 	var/fire_loss = target.get_fire_loss()
 	var/brute_loss = target.get_brute_loss()
-	var/mob_status = (!target.appears_alive() ? span_alert("<b>Falecido.</b>") : "<b>[round(target.health / target.maxHealth, 0.01) * 100]Saúde</b>")
+	var/mob_status = (!target.appears_alive() ? span_alert("<b>Falecido.</b>") : "<b>[round(target.health / target.maxHealth, 0.01) * 100] Saúde</b>")
 
 	if(HAS_TRAIT(target, TRAIT_FAKEDEATH) && target.stat != DEAD)
 		// if we don't appear to actually be in a "dead state", add fake oxyloss
@@ -496,7 +496,7 @@
 				if(reagent_types_to_check)
 					if(!istype(reagent, reagent_types_to_check))
 						continue
-				render_block += "<span class='notice ml-2'>[round(reagent.volume, 0.001)]Unidades de[reagent.name][reagent.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
+				render_block += "<span class='notice ml-2'>[round(reagent.volume, 0.001)] Unidades de [reagent.name][reagent.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
 
 		if(!length(render_block)) //If no VISIBLY DISPLAYED reagents are present, we report as if there is nothing.
 			render_list += "<span class='notice ml-1'>Subject contains no reagents in their [LOWER_TEXT(target.get_bloodtype()?.get_blood_name()) || "blood"]stream.</span><br>"
@@ -517,11 +517,11 @@
 						if(!istype(bit, reagent_types_to_check))
 							continue
 					if(!belly.food_reagents[bit.type])
-						render_block += "<span class='notice ml-2'>[round(bit.volume, 0.001)]Unidades de[bit.name][bit.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
+						render_block += "<span class='notice ml-2'>[round(bit.volume, 0.001)] Unidades de [bit.name][bit.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
 					else
 						var/bit_vol = bit.volume - belly.food_reagents[bit.type]
 						if(bit_vol > 0)
-							render_block += "<span class='notice ml-2'>[round(bit_vol, 0.001)]Unidades de[bit.name][bit.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
+							render_block += "<span class='notice ml-2'>[round(bit_vol, 0.001)] Unidades de [bit.name][bit.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
 
 			if(!length(render_block))
 				render_list += "<span class='notice ml-1'>Subject contains no reagents in their stomach.</span><br>"
@@ -598,7 +598,7 @@
 			var/obj/item/healthanalyzer/simple/simple_scanner = scanner
 			// Only emit the cheerful scanner message if this scan came from a scanner
 			playsound(simple_scanner, 'sound/machines/ping.ogg', 50, FALSE)
-			to_chat(user, span_notice("\The [simple_scanner]faz um ping feliz e brevemente mostra uma cara sorridente com vários pontos de exclamação! É muito animado para relatar que[patient]Não tem ferimentos!"))
+			to_chat(user, span_notice("\The [simple_scanner] faz um ping feliz e brevemente mostra uma cara sorridente com vários pontos de exclamação! É muito animado para relatar que [patient] Não tem ferimentos!"))
 			simple_scanner.show_emotion(AID_EMOTION_HAPPY)
 		to_chat(user, "<span class='notice ml-1'>Nenhum ferimento detectado no sujeito.</span>")
 	else
@@ -630,7 +630,7 @@
 /obj/item/healthanalyzer/simple/attack_self(mob/user)
 	if(next_encouragement < world.time)
 		playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
-		to_chat(user, span_notice("[src]Faz um ping feliz[pick(encouragements)]!"))
+		to_chat(user, span_notice("[src] Faz um ping feliz [pick(encouragements)]!"))
 		next_encouragement = world.time + 10 SECONDS
 		show_emotion(AID_EMOTION_HAPPY)
 	else if(emotion != AID_EMOTION_ANGRY)
@@ -639,14 +639,14 @@
 		violence(user)
 
 /obj/item/healthanalyzer/simple/proc/greed_warning(mob/user)
-	to_chat(user, span_warning("[src]mostra uma cara estranha e de alta definição, te castigando por pedir muito encorajamento."))
+	to_chat(user, span_warning("[src] mostra uma cara estranha e de alta definição, te castigando por pedir muito encorajamento."))
 	show_emotion(AID_EMOTION_ANGRY)
 
 /obj/item/healthanalyzer/simple/proc/violence(mob/user)
 	playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 	if(isliving(user))
 		var/mob/living/L = user
-		to_chat(L, span_warning("[src]faz um zumbido desapontado e pica seu dedo por ser ganancioso. Ow!"))
+		to_chat(L, span_warning("[src] faz um zumbido desapontado e pica seu dedo por ser ganancioso. Ow!"))
 		flick(icon_state + "_pinprick", src)
 		violence_damage(user)
 		user.dropItemToGround(src)
@@ -663,13 +663,13 @@
 
 	add_fingerprint(user)
 	user.visible_message(
-		span_notice("[user]scans[interacting_with]Para[scan_for_what]."),
-		span_notice("Você verifica.[interacting_with]Para[scan_for_what]."),
+		span_notice("[user] scans [interacting_with] Para [scan_for_what]."),
+		span_notice("Você verifica.[interacting_with] Para [scan_for_what]."),
 	)
 
 	if(!iscarbon(interacting_with))
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
-		to_chat(user, span_notice("[src]faz um zumbido triste e brevemente mostra um rosto infeliz, indicando que ele não pode escanear[interacting_with]."))
+		to_chat(user, span_notice("[src] faz um zumbido triste e brevemente mostra um rosto infeliz, indicando que ele não pode escanear [interacting_with]."))
 		show_emotion(AI_EMOTION_SAD)
 		return ITEM_INTERACT_BLOCKING
 
@@ -760,7 +760,7 @@
 
 	if(!length(render))
 		playsound(scanner, 'sound/machines/ping.ogg', 50, FALSE)
-		to_chat(user, span_notice("\The [scanner]faz um ping feliz e brevemente mostra uma cara sorridente com vários pontos de exclamação! É muito animado para relatar que[patient]Não tem doenças!"))
+		to_chat(user, span_notice("\The [scanner] faz um ping feliz e brevemente mostra uma cara sorridente com vários pontos de exclamação! É muito animado para relatar que [patient] Não tem doenças!"))
 		scanner.emotion = AID_EMOTION_HAPPY
 	else
 		to_chat(user, span_notice(render.Join("")))

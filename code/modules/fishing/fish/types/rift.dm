@@ -58,7 +58,7 @@
 
 /datum/embedding/chrystarfish/jostle_effects()
 	do_teleport(owner, get_turf(owner), 3, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
-	owner.visible_message(span_danger("[owner]teletransportar como[parent]Jostles dentro de[owner.p_them()]!"))
+	owner.visible_message(span_danger("[owner] teletransportar como [parent] Jostles dentro de [owner.p_them()]!"))
 
 /obj/item/fish/starfish/chrystarfish/set_status(new_status, silent)
 	. = ..()
@@ -79,14 +79,14 @@
 /obj/item/fish/starfish/chrystarfish/flinch_on_eat(mob/living/eater, mob/living/feeder)
 	if(status != FISH_ALIVE)
 		return
-	to_chat(feeder, span_warning("[src]Sai do espaço-tempo com dor!"))
+	to_chat(feeder, span_warning("[src] Sai do espaço-tempo com dor!"))
 
 	var/tp_range = 6 * clamp(weight/average_weight, 3, 9) // usually 6, plus or minus fish weight
 	// teleports itself if on a turf otherwise its container - whatever it is
 	do_teleport(isturf(loc) ? src : loc, get_turf(feeder), tp_range, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
 
 /obj/item/fish/starfish/chrystarfish/suicide_act(mob/living/user)
-	visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que estão tentando se suicidar!"))
+	visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que estão tentando se suicidar!"))
 	forceMove(user)
 	// *everything*
 	for(var/obj/thing in user.get_contents())
@@ -226,7 +226,7 @@
 	switch(patience)
 		if(0)
 			// No check, we always want sharky to bite jerky on 0
-			moc.visible_message(span_bolddanger("[src]Morde diretamente em[moc]E se contorce.[moc.p_their()]Seguram!"), span_userdanger("[src]Afunda suas presas em você!"))
+			moc.visible_message(span_bolddanger("[src] Morde diretamente em [moc] E se contorce.[moc.p_their()] Seguram!"), span_userdanger("[src] Afunda suas presas em você!"))
 			moc.apply_damage(force, BRUTE, moc.get_active_hand(), wound_bonus = wound_bonus, exposed_wound_bonus = exposed_wound_bonus, sharpness = sharpness, attacking_item = src)
 			forceMove(moc.drop_location())
 			moc.painful_scream()
@@ -234,18 +234,18 @@
 			playsound(src, hitsound, 45)
 		if(1 to 10)
 			// No check, final warning as they struggle, also funny.
-			visible_message(span_bolddanger("[src]Bater contra[moc]Apertar!"))
+			visible_message(span_bolddanger("[src] Bater contra [moc] Apertar!"))
 			moc.shake_up_animation()
 		if(10 to 15)
 			if(last_effect == PATIENCE_FLINCH)
 				return
-			visible_message(span_danger("[src]Se afasta de[moc]!"))
+			visible_message(span_danger("[src] Se afasta de [moc]!"))
 			moc.shake_up_animation()
 			last_effect = PATIENCE_FLINCH
 		if(15 to 20)
 			if(last_effect == PATIENCE_UNCOMFY)
 				return
-			visible_message(span_notice("[src]Parece desconfortável em[moc]É o alcance."))
+			visible_message(span_notice("[src] Parece desconfortável em [moc] É o alcance."))
 			last_effect = PATIENCE_UNCOMFY
 
 	return
@@ -255,8 +255,8 @@
 
 /obj/item/fish/dolphish/pet_fish(mob/living/user, in_aquarium)
 	user.visible_message(
-		span_warning("[user]Tenta acariciar[src], mas ele afunda suas presentes em[user.p_their()]Mão!"),
-		span_warning("Você tenta acariciar[src]Mas ela afunda suas presas em suas mãos!"),
+		span_warning("[user] Tenta acariciar [src], mas ele afunda suas presentes em [user.p_their()] Mão!"),
+		span_warning("Você tenta acariciar [src] Mas ela afunda suas presas em suas mãos!"),
 		vision_distance = DEFAULT_MESSAGE_RANGE - 3,
 		)
 	user.apply_damage(force, BRUTE, user.get_active_hand(), wound_bonus = wound_bonus, exposed_wound_bonus = exposed_wound_bonus, sharpness = sharpness, attacking_item = src)
@@ -305,7 +305,7 @@
 	beauty = FISH_BEAUTY_UGLY
 
 /obj/item/fish/flumpulus/suicide_act(mob/living/user)
-	visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que estão tentando se suicidar!"))
+	visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que estão tentando se suicidar!"))
 	forceMove(user)
 	. = MANUAL_SUICIDE
 	for(var/i in 1 to rand(5, 15))
@@ -318,13 +318,13 @@
 	new_eyes = new new_eyes(user)
 	new_eyes.Insert(user)
 	playsound(user, 'sound/effects/cartoon_sfx/cartoon_pop.ogg', 50, TRUE)
-	user.visible_message("[user]'s[eyes ? eyes : "eye holes"]De arrependimento brotam talos e se transformam em[new_eyes]!")
+	user.visible_message("[user]'s[eyes ? eyes : "eye holes"]De arrependimento brotam talos e se transformam em [new_eyes]!")
 	ASYNC
 		user.emote("scream")
 		eyes.throw_at(get_edge_target_turf(user, pick(GLOB.alldirs)), rand(1, 10), rand(1, 10))
 		sleep(5 SECONDS)
 		if(!QDELETED(eyes))
-			eyes.visible_message(span_danger("[eyes]rapidamente virar pó."))
+			eyes.visible_message(span_danger("[eyes] rapidamente virar pó."))
 			eyes.dust()
 
 /obj/item/fish/flumpulus/get_base_edible_reagents_to_add()
@@ -339,7 +339,7 @@
 		return .
 
 	for(var/mob/living/fallen_mob in falling_movables)
-		visible_message(span_danger("[src]Aplaina como uma panqueca como[fallen_mob]Aterra em Cidade Dele!"))
+		visible_message(span_danger("[src] Aplaina como uma panqueca como [fallen_mob] Aterra em Cidade Dele!"))
 		damage_fish(max_integrity * integrity_failure * 0.9) // very "durable"
 		AddElement(/datum/element/squish, 15 SECONDS)
 		fallen_mob.Paralyze(0.5 SECONDS)
@@ -391,17 +391,17 @@
 	max_pressure = WARNING_HIGH_PRESSURE
 
 /obj/item/fish/gullion/suicide_act(mob/living/user)
-	visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que estão tentando se suicidar!"))
+	visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que estão tentando se suicidar!"))
 	forceMove(user)
 	var/datum/gas_mixture/environment = user.loc.return_air()
 	var/oxygen_in_air = locate(/datum/gas/oxygen) in environment.gases
 	if(!oxygen_in_air || (status == FISH_DEAD))
-		visible_message(span_suicide("[user]Engasga e morte! (Espere, do peixe ou da mentira de ar?)"))
+		visible_message(span_suicide("[user] Engasga e morte! (Espere, do peixe ou da mentira de ar?)"))
 		return OXYLOSS
 
 	user.petrify(statue_timer = INFINITY)
 	user.death()
-	visible_message(span_suicide("[user]A pele se transforma em quartzo ao entrar em contato com o oxigênio no ar!"))
+	visible_message(span_suicide("[user] A pele se transforma em quartzo ao entrar em contato com o oxigênio no ar!"))
 	qdel(src)
 	return MANUAL_SUICIDE
 
@@ -467,12 +467,12 @@
 		AddElement(/datum/element/haunted, COLOR_GREEN)
 
 /obj/item/fish/mossglob/suicide_act(mob/living/user)
-	visible_message(span_suicide("[user]Palitos.[user.p_their()]braço bem fundo em[src]! Parece que estão tentando se oferecer!"))
+	visible_message(span_suicide("[user] Palitos.[user.p_their()] braço bem fundo em [src]! Parece que estão tentando se oferecer!"))
 	user.drop_everything()
 	set_status(FISH_ALIVE)
 	transform = transform.Scale(1.15, 1.15)
 	update_size_and_weight(new_size = size * 1.15, new_weight = weight * 1.15)
-	visible_message(span_suicide("[user]é absorvido em[src]!"))
+	visible_message(span_suicide("[user] é absorvido em [src]!"))
 	objectify(user, src)
 	return MANUAL_SUICIDE_NONLETHAL
 
@@ -556,9 +556,9 @@
 /obj/item/fish/babbelfish/suicide_act(mob/living/user)
 	if(status == FISH_DEAD)
 		if(moron_inside)
-			visible_message(span_suicide("[user]coloca[src]contra seus lábios, mas[src]Já está cheio!"))
+			visible_message(span_suicide("[user] coloca [src] contra seus lábios, mas [src] Já está cheio!"))
 			return SHAME
-		visible_message(span_suicide("[user]coloca[src]contra seus lábios, mas[src]A pós-imagem psíquica é uma droga.[user.p_them()]Para dentro!"))
+		visible_message(span_suicide("[user] coloca [src] contra seus lábios, mas [src] A pós-imagem psíquica é uma droga.[user.p_them()] Para dentro!"))
 		user.drop_everything()
 		objectify(user, src)
 		user.fully_replace_character_name(null, name) // fish's name
@@ -568,11 +568,11 @@
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_loc))
 		return MANUAL_SUICIDE_NONLETHAL // in case they somehow break out
 
-	visible_message(span_suicide("[user]coloca[src]Contra seus lábios! Parece que estão se preparando para dizer algo!"))
+	visible_message(span_suicide("[user] coloca [src] Contra seus lábios! Parece que estão se preparando para dizer algo!"))
 	var/psychic_speech = tgui_input_text(user, message = "Say something!", title = "What are your last words?", timeout = 15 SECONDS)
 	if(!psychic_speech || !locate(src) in user.get_contents())
 		user.say("Err, umm... uhh... erm...", forced = "blustering like a moron due to babbelfish suicide")
-		visible_message(span_suicide("[user]Morre de vergonha!"))
+		visible_message(span_suicide("[user] Morre de vergonha!"))
 		return OXYLOSS
 
 	voice_of_god(psychic_speech, user, list("big", "alertalien"), base_multiplier = 5, include_speaker = TRUE, forced = TRUE, ignore_spam = TRUE)
@@ -652,7 +652,7 @@
 		fishie.set_status(FISH_DEAD)
 		affected++
 	if(affected)
-		visible_message(span_bolddanger("[src]O lamento mata[affected]Peixe preto!")) // m-m-m-m-m-MONSTER KILL
+		visible_message(span_bolddanger("[src] O lamento mata [affected] Peixe preto!")) // m-m-m-m-m-MONSTER KILL
 
 /obj/item/fish/babbelfish/attack_hand(mob/living/user, list/modifiers)
 
@@ -660,10 +660,10 @@
 		return ..()
 
 	if((user.usable_hands < 2) && !HAS_TRAIT(user, TRAIT_STRENGTH))
-		to_chat(user, span_notice("[src]é muito denso para se separar com apenas uma mão."))
+		to_chat(user, span_notice("[src] é muito denso para se separar com apenas uma mão."))
 		return
 
-	to_chat(user, span_danger("Você começa a puxar e torcer[src], tentando dividir pelo meio..."))
+	to_chat(user, span_danger("Você começa a puxar e torcer [src], tentando dividir pelo meio..."))
 	if(!do_after(user, 5 SECONDS, src))
 		return
 
@@ -738,15 +738,15 @@
 	. = ..()
 	var/obj/item/organ/ears/ears = target_mob.get_organ_slot(ORGAN_SLOT_EARS)
 	if(!ears)
-		to_chat(user, span_notice("[target_mob == user ? "You don't have" : target_mob + "has no"]Orelhas para empurrar[src]dentro!"))
+		to_chat(user, span_notice("[target_mob == user ? "You don't have" : target_mob + "has no"]Orelhas para empurrar [src] dentro!"))
 		return
 
-	to_chat(user, span_danger("Você começa a empurrar[src]Em[target_mob == user ? "your" : target_mob + "'s"]Orelhas. Provavelmente uma má ideia."))
+	to_chat(user, span_danger("Você começa a empurrar [src] Em[target_mob == user ? "your" : target_mob + "'s"]Orelhas. Provavelmente uma má ideia."))
 	if(!do_after(user, 2.5 SECONDS * (target_mob == user ? 1 : 3), src))
 		return
 
 	user.apply_damage(25, BRUTE, user.get_bodypart(ears.zone), attacking_item = src)
-	to_chat(user, span_notice("Como você está empurrando-os, o[src]Ter uma vida própria e rastejar brutalmente para dentro[target_mob == user ? "your" : target_mob + "'s"]Orelhas, tomando o seu lugar completo.[target_mob == user ? "your" : target_mob.p_their()]  [ears.zone]!"))
+	to_chat(user, span_notice("Como você está empurrando-os, o [src] Ter uma vida própria e rastejar brutalmente para dentro[target_mob == user ? "your" : target_mob + "'s"]Orelhas, tomando o seu lugar completo.[target_mob == user ? "your" : target_mob.p_their()]  [ears.zone]!"))
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', vol = 100, falloff_exponent = 2, vary = TRUE)
 	// bad moodlet
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
@@ -758,7 +758,7 @@
 		/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE_MIND, 		inventory_flags = null, 		charges = maxHealth * 0.1, 		block_magic = CALLBACK(src, PROC_REF(on_drain_magic)), 		expiration = CALLBACK(src, PROC_REF(on_expire)), 	)
 
 	if(HAS_MIND_TRAIT(organ_owner, TRAIT_TOWER_OF_BABEL))
-		to_chat(organ_owner, span_noticealien("Não se sente tão diferente desta vez. Parece que seu cérebro está sintonizado com[src]O efeito."))
+		to_chat(organ_owner, span_noticealien("Não se sente tão diferente desta vez. Parece que seu cérebro está sintonizado com [src] O efeito."))
 		return
 
 	if(!removal_holder)
@@ -798,9 +798,9 @@
 	QDEL_NULL(bound_component)
 
 /obj/item/organ/ears/babbelfish/proc/on_drain_magic(mob/user)
-	to_chat(user, span_noticealien("Sua[src]Eles protegem sua mente de fenômenos psíquicos!"))
+	to_chat(user, span_noticealien("Sua [src] Eles protegem sua mente de fenômenos psíquicos!"))
 	adjust_temporary_deafness(40 SECONDS)
 
 /obj/item/organ/ears/babbelfish/proc/on_expire(mob/user)
-	to_chat(user, span_noticealien("Sua[src]De arrependimento estorou!"))
+	to_chat(user, span_noticealien("Sua [src] De arrependimento estorou!"))
 	apply_organ_damage(maxHealth, maxHealth)

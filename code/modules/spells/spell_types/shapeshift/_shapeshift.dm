@@ -123,7 +123,7 @@
 	else
 		our_pipeline = pipenets
 
-	to_chat(cast_on, span_userdanger("Elenco.[src]dentro de[pipe_you_die_in]Rápido te transforma em um maldito mush!"))
+	to_chat(cast_on, span_userdanger("Elenco.[src] dentro de [pipe_you_die_in] Rápido te transforma em um maldito mush!"))
 	var/obj/effect/gib_type = cast_on.get_gibs_type()
 
 	for(var/obj/machinery/atmospherics/components/unary/possible_vent in range(10, get_turf(cast_on)))

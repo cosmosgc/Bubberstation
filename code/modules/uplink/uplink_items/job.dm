@@ -270,7 +270,7 @@
 	var/obj/vehicle/sealed/car/clowncar/car = ..()
 	car.enforce_clown_role = FALSE
 	var/obj/item/key = new car.key_type(user.loc)
-	car.visible_message(span_notice("[key]Cai fora.[car]Para o chão."))
+	car.visible_message(span_notice("[key] Cai fora.[car] Para o chão."))
 	return car
 
 /datum/uplink_item/role_restricted/his_grace

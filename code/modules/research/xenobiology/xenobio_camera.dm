@@ -156,7 +156,7 @@
 /// Handles inserting a monkey cube into the console.
 /obj/machinery/computer/camera_advanced/xenobio/proc/monkeycube_act(mob/living/user, obj/item/food/monkeycube/used_cube)
 	stored_monkeys += 1
-	balloon_alert(user, "[stored_monkeys]Armazenado de Cubo")
+	balloon_alert(user, "[stored_monkeys] Armazenado de Cubo")
 	var/atom/movable/screen/xenobio_console/xeno_hud = user.hud_used?.screen_objects[HUD_XENOBIO_CONSOLE]
 	if(xeno_hud)
 		xeno_hud.on_update_hud(LAZYLEN(stored_slimes), stored_monkeys, max_slimes)
@@ -175,7 +175,7 @@
 		balloon_alert(user, "Nada de cubos de macaco!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "[stored_monkeys]Armazenado de Cubo")
+	balloon_alert(user, "[stored_monkeys] Armazenado de Cubo")
 	var/atom/movable/screen/xenobio_console/xeno_hud = user.hud_used?.screen_objects[HUD_XENOBIO_CONSOLE]
 	if(xeno_hud)
 		xeno_hud.on_update_hud(LAZYLEN(stored_slimes), stored_monkeys, max_slimes)
@@ -218,7 +218,7 @@
 	if(stored_slimes.len == 1)
 		target_turf.visible_message(span_notice("O lodo está cuspido!"))
 	else
-		target_turf.visible_message(span_notice("[stored_slimes.len]Lixos são cuspidos!"))
+		target_turf.visible_message(span_notice("[stored_slimes.len] Lixos são cuspidos!"))
 
 	for(var/mob/living/basic/slime/stored_slime in stored_slimes)
 		stored_slime.forceMove(target_turf)
@@ -262,7 +262,7 @@
 ///Places one monkey, if possible
 /obj/machinery/computer/camera_advanced/xenobio/proc/feed_slime(mob/living/user, turf/open/target_turf)
 	if(stored_monkeys < 1)
-		to_chat(user, span_warning("[src]Precisa ter pelo menos um macaco guardado. Atualmente tem.[stored_monkeys]Macacos Armazenados."))
+		to_chat(user, span_warning("[src] Precisa ter pelo menos um macaco guardado. Atualmente tem.[stored_monkeys] Macacos Armazenados."))
 		target_turf.balloon_alert(user, "Não há macacos suficientes.")
 		return
 
@@ -335,7 +335,7 @@
 		return
 
 	suck_up(target_monkey)
-	target_monkey.visible_message(span_notice("O macaco dispara como[target_monkey.p_theyre()]Recuperado para recuperar!"))
+	target_monkey.visible_message(span_notice("O macaco dispara como [target_monkey.p_theyre()] Recuperado para recuperar!"))
 	connected_recycler.use_energy(500 JOULES)
 	stored_monkeys += connected_recycler.cube_production
 	stored_monkeys = round(stored_monkeys, 0.1) //Prevents rounding errors

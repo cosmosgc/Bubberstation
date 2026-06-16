@@ -25,7 +25,7 @@
 	var/folder_type_name = "folder"
 
 /obj/item/folder/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a apresentar uma sentença de morte imaginária! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a apresentar uma sentença de morte imaginária! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/folder/Initialize(mapload)
@@ -45,7 +45,7 @@
 /obj/item/folder/examine()
 	. = ..()
 	if(length(contents) && !contents_hidden)
-		. += span_notice("<b>Botão direito</b>Para remover[contents[1]].")
+		. += span_notice("<b>Botão direito</b>Para remover [contents[1]].")
 
 /obj/item/folder/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	if(is_type_in_typecache(target, folder_insertables))
@@ -72,7 +72,7 @@
 	if(istype(Item))
 		Item.forceMove(user.loc)
 		user.put_in_hands(Item)
-		to_chat(user, span_notice("Você tira.[Item]De[src]."))
+		to_chat(user, span_notice("Você tira.[Item] De [src]."))
 		update_icon()
 
 /obj/item/folder/attack_hand(mob/user, list/modifiers)
@@ -113,7 +113,7 @@
 
 /obj/item/folder/proc/sharp_thing_act(mob/user, obj/item/sharp_tool)
 	if(contents.len)
-		balloon_alert(user, "vazio[src]Primero!")
+		balloon_alert(user, "vazio [src] Primero!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert(user, "Cortado.")

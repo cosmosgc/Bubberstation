@@ -197,7 +197,7 @@
 
 	source.remove_accessory(src)
 	forceMove(source.drop_location())
-	source.visible_message(span_warning("[src]Queda de[source]!"))
+	source.visible_message(span_warning("[src] Queda de [source]!"))
 
 /// Signal proc for [COMSIG_ATOM_UPDATE_OVERLAYS] on the uniform we're pinned to to add our overlays to the inventory icon
 /obj/item/clothing/accessory/proc/on_uniform_update(obj/item/source, list/overlays)

@@ -207,13 +207,13 @@
 	var/dmi_hashes = data["dmi_hashes"] // this only contains values if do_cache is TRUE.
 
 	for(var/size_id in sizes)
-		var/png_name = "[name]_[size_id].png"
+		var/png_name = "[name] _ [size_id].png"
 		var/file_directory = "data/spritesheets/[png_name]"
 		var/file_hash = rustg_hash_file(RUSTG_HASH_MD5, file_directory)
 		SSassets.transport.register_asset(png_name, fcopy_rsc(file_directory), file_hash)
 		if(CONFIG_GET(flag/save_spritesheets))
 			save_to_logs(file_name = png_name, file_location = file_directory)
-	var/css_name = "spritesheet_[name].css"
+	var/css_name = "spritesheet_ [name].css"
 	var/file_directory = "data/spritesheets/[css_name]"
 
 	fdel(file_directory)
@@ -285,19 +285,19 @@
 	if(!CONFIG_GET(flag/smart_cache_assets) && !force_cache)
 		return FALSE
 	// this is already guaranteed to exist.
-	var/css_name = "spritesheet_[name].css"
+	var/css_name = "spritesheet_ [name].css"
 	var/css_file_directory = "data/spritesheets/[css_name]"
 
 	// sizes gets filled during should_refresh()
 	for(var/size_id in sizes)
-		var/fname = "data/spritesheets/[name]_[size_id].png"
+		var/fname = "data/spritesheets/[name] _ [size_id].png"
 		if(!fexists(fname))
 			return FALSE
 
 	var/css_hash = rustg_hash_file(RUSTG_HASH_MD5, css_file_directory)
 	SSassets.transport.register_asset(css_name, fcopy_rsc(css_file_directory), file_hash=css_hash)
 	for(var/size_id in sizes)
-		var/fname = "data/spritesheets/[name]_[size_id].png"
+		var/fname = "data/spritesheets/[name] _ [size_id].png"
 		var/hash = rustg_hash_file(RUSTG_HASH_MD5, fname)
 		SSassets.transport.register_asset("[name]_[size_id].png", fcopy_rsc(fname), file_hash=hash)
 

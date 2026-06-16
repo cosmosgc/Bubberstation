@@ -51,14 +51,14 @@
 		// There's a flashlight in us. Remove it first, or it'll be lost forever!
 		var/obj/item/flashlight/seclite/blocking_us = locate() in src
 		if(blocking_us)
-			to_chat(user, span_warning("[blocking_us]Está no caminho, remova-o primeiro!"))
+			to_chat(user, span_warning("[blocking_us] Está no caminho, remova-o primeiro!"))
 			return TRUE
 
 		if(!attached_signaler.secured)
-			to_chat(user, span_warning("Seguro.[attached_signaler]Primero!"))
+			to_chat(user, span_warning("Seguro.[attached_signaler] Primero!"))
 			return TRUE
 
-		to_chat(user, span_notice("Você acrescenta[attached_signaler]Para[src]."))
+		to_chat(user, span_notice("Você acrescenta [attached_signaler] Para [src]."))
 
 		qdel(attached_signaler)
 		var/obj/item/bot_assembly/secbot/secbot_frame = new(drop_location())
@@ -725,7 +725,7 @@
 		/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, 		inventory_flags = ITEM_SLOT_OCLOTHING, 		charges = 1, 		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), 		expiration = CALLBACK(src, PROC_REF(decay)) 	)
 
 /obj/item/clothing/head/helmet/durability/holymelon/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src]Perde um pouco de brilho e brilho..."))
+	to_chat(user, span_warning("[src] Perde um pouco de brilho e brilho..."))
 
 /obj/item/clothing/head/helmet/durability/holymelon/proc/decay()
 	take_damage(8, BRUTE, 0, 0)

@@ -15,7 +15,7 @@
 			peek_a_boo.apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 2 SECONDS)
 
 		target.visible_message(
-			span_warning("[target]violentamente hesita!"),
+			span_warning("[target] violentamente hesita!"),
 			span_revendanger("Você sente sua essência drenando de ter sua foto tirada!"),
 		)
 		target.apply_damage(rand(10, 15))

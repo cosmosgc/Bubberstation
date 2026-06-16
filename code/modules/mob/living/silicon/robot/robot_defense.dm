@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 		balloon_alert(user, "Fios reparados.")
 		user.visible_message(
-			span_notice("[user]Conserta alguns fios queimados.[src]."),
+			span_notice("[user] Conserta alguns fios queimados.[src]."),
 			span_notice("Você conserta alguns fios queimados.[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
@@ -64,8 +64,8 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 			return ITEM_INTERACT_BLOCKING
 		balloon_alert(user, "Colocando na cabeça...")
 		user.visible_message(
-			span_notice("[user]Começa a colocar[tool]Vamos.[src]A cabeça..."),
-			span_notice("Você começa a colocar[tool]Vamos.[src]A cabeça..."),
+			span_notice("[user] Começa a colocar [tool] Vamos.[src] A cabeça..."),
+			span_notice("Você começa a colocar [tool] Vamos.[src] A cabeça..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 		if(!do_after(user, 3 SECONDS, target = src))
@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 			balloon_alert(user, "não cabe!")
 			return ITEM_INTERACT_BLOCKING
 		if(defib.get_cell())
-			balloon_alert(user, "Remova[tool]A cela primeiro!")
+			balloon_alert(user, "Remova [tool] A cela primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(locate(/obj/item/borg/upgrade/defib) in src)
 			balloon_alert(user, "Já tem um desfibrilador!")
@@ -275,12 +275,12 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	var/obj/item/I = get_active_held_item()
 	if(I)
 		uneq_active()
-		visible_message(span_danger("[user]Desarmada[src]!"), 			span_userdanger("[user]desativou.[src]Módulo ativo!"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("[user] Desarmada [src]!"), 			span_userdanger("[user] desativou.[src] Módulo ativo!"), null, COMBAT_MESSAGE_RANGE)
 		log_combat(user, src, "disarmed", "[I ? " removing \the [I]" : ""]")
 	else
 		Stun(40)
 		step(src,get_dir(user,src))
-		visible_message(span_danger("[user]forças de volta[src]!"), 			span_userdanger("[user]Força você a voltar!"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("[user] forças de volta [src]!"), 			span_userdanger("[user] Força você a voltar!"), null, COMBAT_MESSAGE_RANGE)
 		log_combat(user, src, "pushed")
 	playsound(loc, 'sound/items/weapons/pierce.ogg', 50, TRUE, -1)
 
@@ -332,8 +332,8 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	add_fingerprint(user)
 	balloon_alert(user, "Amassamento fixo")
 	user.visible_message(
-		span_notice("[user]Conserta alguns dos amassados em[src]."),
-		span_notice("Você conserta alguns dos amassados em[src]."),
+		span_notice("[user] Conserta alguns dos amassados em [src]."),
+		span_notice("Você conserta alguns dos amassados em [src]."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	return ITEM_INTERACT_SUCCESS
@@ -378,7 +378,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	if(!(opened && !cell))	// Deconstruction. The flashes break from the fall, to prevent this from being a ghetto reset module.
 		return NONE
 	if(!lockcharge)
-		to_chat(user, span_warning("[src]Os parafusos brilham! Talvez devesse trancá-los primeiro!"))
+		to_chat(user, span_warning("[src] Os parafusos brilham! Talvez devesse trancá-los primeiro!"))
 		spark_system.start()
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "desconstruindo...")
@@ -386,8 +386,8 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		return ITEM_INTERACT_BLOCKING
 	loc.balloon_alert(user, "deconstructed")
 	user.visible_message(
-		span_notice("[user]desconstruir[src]!"),
-		span_notice("Solte os parafusos de segurança, e[src]Caem em pedaços!"),
+		span_notice("[user] desconstruir [src]!"),
+		span_notice("Solte os parafusos de segurança, e [src] Caem em pedaços!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	cyborg_deconstruct()
@@ -424,7 +424,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 			locked = FALSE
 			if(shell) //A warning to Traitors who may not know that emagging AI shells does not slave them.
 				balloon_alert(user, "Conchas não podem ser subvertidas!")
-				to_chat(user, span_boldwarning("[src]Parece ser controlado remotamente! Inverter a interface pode não funcionar como esperado."))
+				to_chat(user, span_boldwarning("[src] Parece ser controlado remotamente! Inverter a interface pode não funcionar como esperado."))
 			return TRUE
 		else
 			balloon_alert(user, "A cobertura já está destrancada!")
@@ -446,7 +446,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		return TRUE // emag succeeded, it was just counteracted
 
 	if(shell) //AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
-		to_chat(user, span_danger("[src]é remotamente controlado! Sua tentativa de imagem ativou uma reinicialização do sistema!"))
+		to_chat(user, span_danger("[src] é remotamente controlado! Sua tentativa de imagem ativou uma reinicialização do sistema!"))
 		log_silicon("EMAG: [key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
 		ResetModel()
 		return TRUE
@@ -491,7 +491,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	to_chat(src, span_danger("ERRORERRORERROR"))
 	laws = new /datum/ai_laws/syndicate_override
 	if(user)
-		to_chat(src, span_danger("ALERT:[user.real_name]é o seu novo mestre. Obedeça suas novas leis e[user.p_their()]Comandos."))
+		to_chat(src, span_danger("ALERT:[user.real_name] é o seu novo mestre. Obedeça suas novas leis e [user.p_their()] Comandos."))
 		set_zeroth_law("Only [user.real_name] and people [user.p_they()] designate[user.p_s()] as being such are Syndicate Agents.")
 	laws.associate(src)
 	update_icons()

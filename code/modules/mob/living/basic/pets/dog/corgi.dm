@@ -111,14 +111,14 @@
 /mob/living/basic/pet/dog/corgi/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/razor))
 		if(shaved)
-			to_chat(user, span_warning("Você não pode raspar este corgi,[p_they()]Já foi raspado!"))
+			to_chat(user, span_warning("Você não pode raspar este corgi,[p_they()] Já foi raspado!"))
 			return
 		if(!can_be_shaved)
-			to_chat(user, span_warning("Você não pode raspar este corgi,[p_they()] [p_do()]Não tenho um casaco de pele!"))
+			to_chat(user, span_warning("Você não pode raspar este corgi,[p_they()] [p_do()] Não tenho um casaco de pele!"))
 			return
-		user.visible_message(span_notice("[user]Começa a se barbear.[src]usando\the [attacking_item]."), span_notice("Você começa a se barbear.[src]usando\the [attacking_item]..."))
+		user.visible_message(span_notice("[user] Começa a se barbear.[src] usando\the [attacking_item]."), span_notice("Você começa a se barbear.[src] usando\the [attacking_item]..."))
 		if(do_after(user, 5 SECONDS, target = src))
-			user.visible_message(span_notice("[user]Barba.[src]É o cabelo usando\the [attacking_item]."))
+			user.visible_message(span_notice("[user] Barba.[src] É o cabelo usando\the [attacking_item]."))
 			playsound(get_turf(src), 'sound/items/hair-clippers.ogg', 20, TRUE)
 			shaved = TRUE
 			icon_living = "[icon_living]_shaved"
@@ -214,19 +214,19 @@
 
 	if(isnull(item_to_add))
 		if (!isnull(user))
-			user.visible_message(span_notice("[user]Animais de estimação[src]."), span_notice("Você descansa em sua mão[src]É a cabeça por um momento."))
+			user.visible_message(span_notice("[user] Animais de estimação [src]."), span_notice("Você descansa em sua mão [src] É a cabeça por um momento."))
 			if(flags_1 & HOLOGRAM_1)
 				return
 			user.add_mood_event(REF(src), /datum/mood_event/pet_animal, src)
 		return FALSE
 
 	if(user && !user.temporarilyRemoveItemFromInventory(item_to_add))
-		to_chat(user, span_warning("\The [item_to_add]está preso em sua mão, você não pode colocá-lo[src]A cabeça!"))
+		to_chat(user, span_warning("\The [item_to_add] está preso em sua mão, você não pode colocá-lo [src] A cabeça!"))
 		return FALSE
 
 	//Various hats and items (worn on his head) change Ian's behaviour. His attributes are reset when a hat is removed.
 	if(!ispath(item_to_add.dog_fashion, /datum/dog_fashion/head))
-		to_chat(user, span_warning("Você está pronto.[item_to_add]Vamos.[src]É a cabeça, mas cai!"))
+		to_chat(user, span_warning("Você está pronto.[item_to_add] Vamos.[src] É a cabeça, mas cai!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)
@@ -235,10 +235,10 @@
 
 	if (user)
 		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
-			to_chat(user, span_notice("Há apenas um olhar chato, sem vida[real_name]Os olhos como você coloca\the [item_to_add]Vamos.[p_them()]."))
+			to_chat(user, span_notice("Há apenas um olhar chato, sem vida [real_name] Os olhos como você coloca\the [item_to_add] Vamos.[p_them()]."))
 		else
-			user.visible_message(span_notice("[user]coloca[item_to_add]Vamos.[real_name]A cabeça.[src]Olha só.[user]e ladra uma vez."),
-				span_notice("Você colocou[item_to_add]Vamos.[real_name]A cabeça.[src]Dá-lhe um olhar peculiar, então balança[p_their()]cauda uma vez e ladra."),
+			user.visible_message(span_notice("[user] coloca [item_to_add] Vamos.[real_name] A cabeça.[src] Olha só.[user] e ladra uma vez."),
+				span_notice("Você colocou [item_to_add] Vamos.[real_name] A cabeça.[src] Dá-lhe um olhar peculiar, então balança [p_their()] cauda uma vez e ladra."),
 				span_hear("Você ouve um latido amigável."))
 	item_to_add.forceMove(src)
 	inventory_head = item_to_add
@@ -296,13 +296,13 @@
 		inventory_head.forceMove(drop_location())
 		inventory_head = null
 	place_on_head(pick(possible_headwear))
-	visible_message(span_notice("[src]coloca[inventory_head]Vamos.[p_their()]A própria cabeça, de alguma forma."))
+	visible_message(span_notice("[src] coloca [inventory_head] Vamos.[p_their()] A própria cabeça, de alguma forma."))
 
 ///Deadchat plays command that drops the current hat off Ian.
 /mob/living/basic/pet/dog/corgi/proc/drop_hat()
 	if(!inventory_head)
 		return
-	visible_message(span_notice("[src]vigorosamente treme[p_their()]cabeça, caindo[inventory_head]Para o chão."))
+	visible_message(span_notice("[src] vigorosamente treme [p_their()] cabeça, caindo [inventory_head] Para o chão."))
 	inventory_head.forceMove(drop_location())
 	inventory_head = null
 	update_corgi_fluff()
@@ -374,7 +374,7 @@
 		icon_living = "old_corgi"
 		held_state = "old_corgi"
 		icon_dead = "old_corgi_dead"
-		desc = "Em uma idade madura de[record_age]Ian não é tão ágil como antes, mas sempre será o corgi amado do HoP." //RIP
+		desc = "Em uma idade madura de [record_age] Ian não é tão ágil como antes, mas sempre será o corgi amado do HoP." //RIP
 		ai_controller?.set_blackboard_key(BB_DOG_IS_SLOW, TRUE)
 		is_slow = TRUE
 		speed = 2
@@ -487,7 +487,7 @@
 	SIGNAL_HANDLER
 	if (!is_type_in_list(prey, edible_types) || istype(prey, type))
 		return
-	visible_message(span_warning("Magia negra ressoando de[src]devora[prey]!"), 		"<span class='cult big bold'>ALGO DELICIOSO</span>")
+	visible_message(span_warning("Magia negra ressoando de [src] devora [prey]!"), 		"<span class='cult big bold'>ALGO DELICIOSO</span>")
 	playsound(src, 'sound/effects/magic/demon_attack1.ogg', 75, TRUE)
 	new /obj/effect/temp_visual/cult/sac(get_turf(prey))
 	narsie_act()
@@ -509,7 +509,7 @@
 
 /mob/living/basic/pet/dog/corgi/narsie/narsie_act()
 	if(stat == DEAD) //Nar'Sie loves her doggy
-		visible_message(span_warning("[src]Surge novamente, revivido pelos magos das trevas!"), 		span_cult_large("RISE"))
+		visible_message(span_warning("[src] Surge novamente, revivido pelos magos das trevas!"), 		span_cult_large("RISE"))
 		revive(ADMIN_HEAL_ALL) //also means that a dead Nars-Ian can consume a pet and revive
 	adjust_brute_loss(-maxHealth)
 

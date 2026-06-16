@@ -33,7 +33,7 @@
 
 /obj/item/food/grown/pumpkin/attackby(obj/item/W as obj, mob/user as mob, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
-		user.show_message(span_notice("Você entalha um rosto[src]!"), MSG_VISUAL)
+		user.show_message(span_notice("Você entalha um rosto [src]!"), MSG_VISUAL)
 		new carved_type(user.loc)
 		qdel(src)
 		return

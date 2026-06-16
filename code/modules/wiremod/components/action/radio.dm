@@ -37,7 +37,7 @@
 /obj/item/circuit_component/radio/Initialize(mapload)
 	. = ..()
 	if(signal_cooldown_time > 0)
-		desc = "[desc]Tem...[signal_cooldown_time * 0.1]Segunda pausa entre enviar sinos."
+		desc = "[desc] Tem...[signal_cooldown_time * 0.1] Segunda pausa entre enviar sinos."
 
 /obj/item/circuit_component/radio/register_shell(atom/movable/shell)
 	parent_shell = shell

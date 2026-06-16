@@ -54,7 +54,7 @@ ADMIN_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Upload a map 
 		else
 			return
 	if(!M.cached_map)
-		to_chat(user, span_warning("Modelo de mapa[map]Falharam em analisar corretamente."), confidential = TRUE)
+		to_chat(user, span_warning("Modelo de mapa [map] Falharam em analisar corretamente."), confidential = TRUE)
 		return
 
 	var/datum/map_report/report = M.cached_map.check_for_errors()
@@ -62,7 +62,7 @@ ADMIN_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Upload a map 
 	if(report)
 		report.show_to(user)
 		report_link = " - <a href='byond://?src=[REF(report)];[HrefToken(forceGlobal = TRUE)];show=1'>validation report</a>"
-		to_chat(user, span_warning("Modelo de mapa[map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>validação falhada</a>."), confidential = TRUE)
+		to_chat(user, span_warning("Modelo de mapa [map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>validação falhada</a>."), confidential = TRUE)
 		if(report.loadable)
 			var/response = tgui_alert(user, "O mapa falhou, gostaria de carregá-lo?", "Map Errors", list("Cancel", "Upload Anyways"))
 			if(response != "Upload Anyways")
@@ -72,5 +72,5 @@ ADMIN_VERB(map_template_upload, R_DEBUG, "Map Template - Upload", "Upload a map 
 			return
 
 	SSmapping.map_templates[M.name] = M
-	message_admins(span_adminnotice("[key_name_admin(user)] has uploaded a map template '[map]' ([M.width]x[M.height])[report_link]."))
-	to_chat(user, span_notice("Modelo de mapa[map]' pronto para colocar ([M.width]x[M.height])"), confidential = TRUE)
+	message_admins(span_adminnotice("[key_name_admin(user)] has uploaded a map template '[map]' ([M.width] x [M.height])[report_link]."))
+	to_chat(user, span_notice("Modelo de mapa [map]' pronto para colocar ([M.width] x [M.height])"), confidential = TRUE)

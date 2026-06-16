@@ -84,7 +84,7 @@
 /obj/machinery/puzzle/button/meatderelict/on_puzzle_complete()
 	. = ..()
 	playsound(src, 'sound/effects/alert.ogg', 100, TRUE)
-	visible_message(span_warning("[src]Solta um alarme enquanto o confinamento é levantado!"))
+	visible_message(span_warning("[src] Solta um alarme enquanto o confinamento é levantado!"))
 
 /obj/structure/puzzle_blockade/meat
 	name = "mass of meat and teeth"

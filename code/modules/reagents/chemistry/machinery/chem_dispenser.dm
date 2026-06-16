@@ -154,7 +154,7 @@
 /obj/machinery/chem_dispenser/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += span_notice("[src]A escotilha de manutenção está aberta!")
+		. += span_notice("[src] A escotilha de manutenção está aberta!")
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("A exibição de status diz:\nTaxa de recarga:<b>[display_power(recharge_amount, convert = FALSE)]</b>.\nCusto energético:<b>[siunit(power_cost, "J/u", 3)]</b>.")
 	. += span_notice("Use<b>RMB</b>Ejetar um copo armado.")
@@ -409,8 +409,8 @@
 				for(var/reagent in recording_recipe)
 					var/reagent_id = GLOB.name2reagent[reagent]
 					if(!dispensable_reagents.Find(reagent_id))
-						visible_message(span_warning("[src]Buzzes."), span_hear("Você ouve um zumbido fraco."))
-						to_chat(ui.user, span_warning("[src]Não consigo encontrar<b>[reagent]</b>!"))
+						visible_message(span_warning("[src] Buzzes."), span_hear("Você ouve um zumbido fraco."))
+						to_chat(ui.user, span_warning("[src] Não consigo encontrar<b>[reagent]</b>!"))
 						playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 						return
 				saved_recipes[name] = recording_recipe
@@ -493,7 +493,7 @@
 	cell.use(total * power_cost)
 	cell.emp_act(severity)
 	work_animation()
-	visible_message(span_danger("[src]Falhas, pulverização química em todo lugar!"))
+	visible_message(span_danger("[src] Falhas, pulverização química em todo lugar!"))
 
 /obj/machinery/chem_dispenser/RefreshParts()
 	. = ..()

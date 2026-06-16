@@ -81,12 +81,12 @@
 	if(IS_WIZARD(user) || isobserver(user))
 		if(user.mind == lich_mind)
 			var/time_to_revive = base_respawn_time + (num_resurrections * time_per_resurrection)
-			examine_list += span_green("Sua filacteria. A próxima vez que você encontrar uma morte prematura, você vai reviver neste objeto em<b>[time_to_revive / 10 / 60]minutos.</b>.")
+			examine_list += span_green("Sua filacteria. A próxima vez que você encontrar uma morte prematura, você vai reviver neste objeto em<b>[time_to_revive / 10 / 60] minutos.</b>.")
 		else
-			examine_list += span_green("Filarquia de um lich. Esta pertence a[lich_mind].")
+			examine_list += span_green("Filarquia de um lich. Esta pertence a [lich_mind].")
 
 		if(num_resurrections > 0)
-			examine_list += span_green("<i>Tem.[num_resurrections]Entalhes no lado dele.</i>")
+			examine_list += span_green("<i>Tem.[num_resurrections] Entalhes no lado dele.</i>")
 
 	else
 		examine_list += span_green("Uma aura terrível cerca este item. Sua própria existência é ofensiva para a própria vida...")
@@ -132,7 +132,7 @@
 	// Start revival
 	var/time_to_revive = base_respawn_time + (num_resurrections * time_per_resurrection)
 	revive_timer = addtimer(CALLBACK(src, PROC_REF(revive_lich), died), time_to_revive, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(died, span_green("Você sente sua alma sendo arrastada de volta para este mundo...<b>Você vai reviver em seu filactério em[time_to_revive / 10 / 60]Minutos.</b>"))
+	to_chat(died, span_green("Você sente sua alma sendo arrastada de volta para este mundo...<b>Você vai reviver em seu filactério em [time_to_revive / 10 / 60] Minutos.</b>"))
 
 /**
  * Signal proc for [COMSIG_LIVING_REVIVE].
@@ -209,7 +209,7 @@
 		var/turf/body_turf = get_turf(corpse)
 		var/wheres_wizdo = dir2text(get_dir(body_turf, parent_turf))
 		if(wheres_wizdo)
-			corpse.visible_message(span_warning("De arrependimento,[corpse.name]O cadáver cai em pedaços! Você vê uma energia estranha subir dos restos mortais, e acelerar para o[wheres_wizdo]!"))
+			corpse.visible_message(span_warning("De arrependimento,[corpse.name] O cadáver cai em pedaços! Você vê uma energia estranha subir dos restos mortais, e acelerar para o [wheres_wizdo]!"))
 			body_turf.Beam(parent_turf, icon_state = "lichbeam", time = 1 SECONDS * (num_resurrections + 1))
 		//BUBBERSTATION CHANGE START: MORE PRECISE LOCATION AFTER 3 REVIVES.
 		if(body_turf && num_resurrections >= 3)

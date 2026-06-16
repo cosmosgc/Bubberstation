@@ -41,7 +41,7 @@
 
 /obj/item/food/grown/potato/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
-		to_chat(user, span_notice("Você cortou a batata em cunhas com[W]."))
+		to_chat(user, span_notice("Você cortou a batata em cunhas com [W]."))
 		var/obj/item/food/grown/potato/wedges/Wedges = new /obj/item/food/grown/potato/wedges
 		remove_item_from_storage(user)
 		qdel(src)

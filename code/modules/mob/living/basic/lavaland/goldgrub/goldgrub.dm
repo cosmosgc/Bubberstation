@@ -83,7 +83,7 @@
 	if(prob(hitting_projectile.armour_penetration))
 		return NONE
 
-	visible_message(span_danger("[hitting_projectile]é repelido por[source]Uma Cintura!"))
+	visible_message(span_danger("[hitting_projectile] é repelido por [source] Uma Cintura!"))
 	return COMPONENT_BULLET_BLOCKED
 
 /mob/living/basic/mining/goldgrub/proc/barf_contents(gibbed)
@@ -92,7 +92,7 @@
 		ore.forceMove(loc)
 
 	if(!gibbed)
-		visible_message(span_danger("[src]Cuspiu seus minérios consumidos!"))
+		visible_message(span_danger("[src] Cuspiu seus minérios consumidos!"))
 
 /mob/living/basic/mining/goldgrub/proc/generate_loot()
 	var/loot_amount = rand(1,3)

@@ -20,7 +20,7 @@
 	if(gibbed)
 		to_chat(user, span_notice("Este poder não pode ser usado se todo o seu corpo mortal estiver desintegrado..."))
 		return
-	user.visible_message(span_notice("Viu?[user]A alma arrastada para fora de seu corpo!"), span_notice("Você sente sua alma arrastada para um corpo novo!"))
+	user.visible_message(span_notice("Viu?[user] A alma arrastada para fora de seu corpo!"), span_notice("Você sente sua alma arrastada para um corpo novo!"))
 	var/typepath = user.type
 	var/mob/living/carbon/clone = new typepath(user.loc)
 	clone.real_name = user.real_name
@@ -30,7 +30,7 @@
 	user.forceMove(T)
 	user.revive(ADMIN_HEAL_ALL)
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon, set_species), /datum/species/shadow)
-	to_chat(user, span_notice("Você pisca e se encontra em[get_area_name(T)]...sentido-se um pouco mais escuro."))
+	to_chat(user, span_notice("Você pisca e se encontra em [get_area_name(T)]...sentido-se um pouco mais escuro."))
 	clone.dust()
 	qdel(src)
 

@@ -55,7 +55,7 @@
 		user.temporarilyRemoveItemFromInventory(hand_item, TRUE) //DROPDEL will delete the item
 		if(!silent)
 			playsound(user, 'sound/effects/blob/blobattack.ogg', 30, TRUE)
-			user.visible_message(span_warning("Com uma crise doentia,[user]Reformas[user.p_their()] [weapon_name_simple]Em um braço!"), span_notice("Nós assimilamos o[weapon_name_simple]De volta ao nosso corpo."), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
+			user.visible_message(span_warning("Com uma crise doentia,[user] Reformas [user.p_their()] [weapon_name_simple] Em um braço!"), span_notice("Nós assimilamos o [weapon_name_simple] De volta ao nosso corpo."), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
 		user.update_held_items()
 		return TRUE
 
@@ -77,7 +77,7 @@
 	else
 		limb_regen = user.regenerate_limb(BODY_ZONE_L_ARM, 1)
 	if(limb_regen)
-		user.visible_message(span_warning("[user]Está faltando reformas de braço, fazendo um som alto e grotesco!"), span_userdanger("Seu braço regride, fazendo um som alto e crocante e lhe dando muita dor!"), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
+		user.visible_message(span_warning("[user] Está faltando reformas de braço, fazendo um som alto e grotesco!"), span_userdanger("Seu braço regride, fazendo um som alto e crocante e lhe dando muita dor!"), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 		user.emote("scream")
 	var/obj/item/W = new weapon_type(user, silent)
 	user.put_in_hands(W)
@@ -133,7 +133,7 @@
 
 	if(istype(H.wear_suit, suit_type) || istype(H.head, helmet_type))
 		var/name_to_use = (isnull(suit_type) ? helmet_name_simple : suit_name_simple)
-		H.visible_message(span_warning("[H]Arrematar[H.p_their()] [name_to_use]!"), span_warning("Nós abandonamos nosso[name_to_use]."), span_hear("Você ouve a matéria orgânica rasgando e rasgando!"))
+		H.visible_message(span_warning("[H] Arrematar [H.p_their()] [name_to_use]!"), span_warning("Nós abandonamos nosso [name_to_use]."), span_hear("Você ouve a matéria orgânica rasgando e rasgando!"))
 		if(!isnull(helmet_type))
 			H.temporarilyRemoveItemFromInventory(H.head, TRUE) //The qdel on dropped() takes care of it
 		if(!isnull(suit_type))
@@ -243,12 +243,12 @@
 			return
 
 		if(opening.hasPower())
-			user.visible_message(span_warning("[user]Compotas[src]para a câmara de ar e começa a abri-la!"), span_warning("Nós começamos a forçar o[opening]Abra."), 			span_hear("Você ouve um barulho de metal."))
+			user.visible_message(span_warning("[user] Compotas [src] para a câmara de ar e começa a abri-la!"), span_warning("Nós começamos a forçar o [opening] Abra."), 			span_hear("Você ouve um barulho de metal."))
 			playsound(opening, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 			if(!do_after(user, 10 SECONDS, target = opening))
 				return
 		//user.say("Heeeeeeeeeerrre's Johnny!")
-		user.visible_message(span_warning("[user]força a câmara a abrir com[user.p_their()] [src]!"), span_warning("Nós forçamos o[opening]Para abrir."), 		span_hear("Você ouve um barulho de metal."))
+		user.visible_message(span_warning("[user] força a câmara a abrir com [user.p_their()] [src]!"), span_warning("Nós forçamos o [opening] Para abrir."), 		span_hear("Você ouve um barulho de metal."))
 		opening.open(BYPASS_DOOR_CHECKS)
 
 /obj/item/melee/arm_blade/dropped(mob/user)
@@ -318,7 +318,7 @@
 		qdel(src)
 
 /obj/item/gun/magic/tentacle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Bobinas.[src]Bem, eu sei.[user.p_their()]pescoço! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Bobinas.[src] Bem, eu sei.[user.p_their()] pescoço! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/ammo_casing/magic/tentacle
@@ -378,7 +378,7 @@
 
 	for(var/obj/item/weapon in user.held_items)
 		if(weapon.get_sharpness())
-			victim.visible_message(span_danger("[user]Impales.[victim]Com[user.p_their()] [weapon.name]!"), span_userdanger("[user]Impales você com[user.p_their()] [weapon.name]!"))
+			victim.visible_message(span_danger("[user] Impales.[victim] Com [user.p_their()] [weapon.name]!"), span_userdanger("[user] Impales você com [user.p_their()] [weapon.name]!"))
 			victim.apply_damage(weapon.force, BRUTE, BODY_ZONE_CHEST, attacking_item = weapon)
 			user.do_item_attack_animation(victim, used_item = weapon, animation_type = ATTACK_ANIMATION_PIERCE)
 			user.add_blood_DNA_to_items(victim.get_blood_dna_list(), ITEM_SLOT_ICLOTHING|ITEM_SLOT_OCLOTHING)
@@ -399,7 +399,7 @@
 			return BULLET_ACT_BLOCK
 
 		var/mob/living/carbon/carbon_ling = ling
-		to_chat(carbon_ling, span_notice("Você puxa.[catching]para você mesmo."))
+		to_chat(carbon_ling, span_notice("Você puxa.[catching] para você mesmo."))
 		carbon_ling.throw_mode_on(THROW_MODE_TOGGLE)
 		catching.throw_at(
 			target = carbon_ling,
@@ -421,8 +421,8 @@
 
 	if(!iscarbon(victim) || !ishuman(ling) || !ling.combat_mode)
 		victim.visible_message(
-			span_danger("[victim]é agarrado por[ling]'s[src]]!"),
-			span_userdanger("\A [src]Pega você e puxa para você[ling]!"),
+			span_danger("[victim] é agarrado por [ling]'s [src]]!"),
+			span_userdanger("\A [src] Pega você e puxa para você [ling]!"),
 		)
 		victim.throw_at(
 			target = get_step_towards(ling, victim),
@@ -439,21 +439,21 @@
 		if(!isnull(stealing))
 			if(victim.dropItemToGround(stealing))
 				victim.visible_message(
-					span_danger("[stealing]é arrancado[victim]'s mão por[src]!"),
-					span_userdanger("\A [src]Puxa.[stealing]Afaste-se de você!"),
+					span_danger("[stealing] é arrancado [victim]'s mão por [src]!"),
+					span_userdanger("\A [src] Puxa.[stealing] Afaste-se de você!"),
 				)
 				return on_hit(stealing) //grab the item as if you had hit it directly with the tentacle
 
-			to_chat(ling, span_warning("Você não consegue se intrometer.[stealing]Fora.[victim]Mãos!"))
+			to_chat(ling, span_warning("Você não consegue se intrometer.[stealing] Fora.[victim] Mãos!"))
 			return BULLET_ACT_BLOCK
 
-		to_chat(ling, span_danger("[victim]Não tem nada em mãos para desarmar!"))
+		to_chat(ling, span_danger("[victim] Não tem nada em mãos para desarmar!"))
 		return BULLET_ACT_HIT
 
 	if(ling.combat_mode)
 		victim.visible_message(
-			span_danger("[victim]é jogado em direção[ling]Por que\a [src]!"),
-			span_userdanger("\A [src]Te agarra e te joga em direção[ling]!"),
+			span_danger("[victim] é jogado em direção [ling] Por que\a [src]!"),
+			span_userdanger("\A [src] Te agarra e te joga em direção [ling]!"),
 		)
 		victim.throw_at(
 			target = get_step_towards(ling, victim),
@@ -514,7 +514,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CHANGELING_TRAIT)
 	if(ismob(loc))
-		loc.visible_message(span_warning("O fim de[loc.name]\'A mão infla rapidamente, formando uma enorme massa de escudo!"), span_warning("Nós inflamos nossa mão em um escudo forte."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
+		loc.visible_message(span_warning("O fim de [loc.name]\'A mão infla rapidamente, formando uma enorme massa de escudo!"), span_warning("Nós inflamos nossa mão em um escudo forte."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 
 /obj/item/shield/changeling/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == OVERWHELMING_ATTACK)
@@ -523,7 +523,7 @@
 	if(remaining_uses < 1)
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
-			H.visible_message(span_warning("Com uma crise doentia,[H]Reformas[H.p_their()]escudo em um braço!"), span_notice("Nós assimilamos nosso escudo em nosso corpo"), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
+			H.visible_message(span_warning("Com uma crise doentia,[H] Reformas [H.p_their()] escudo em um braço!"), span_notice("Nós assimilamos nosso escudo em nosso corpo"), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
 		qdel(src)
 		return 0
 	else
@@ -645,7 +645,7 @@
 /obj/item/clothing/head/helmet/changeling_hivehead/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/organ/monster_core/regenerative_core/legion) || !holds_reagents)
 		return NONE
-	visible_message(span_boldwarning("Como[user]Empurra.[tool]Em[src], [src]Começa a sofrer mutação."))
+	visible_message(span_boldwarning("Como [user] Empurra.[tool] Em [src], [src] Começa a sofrer mutação."))
 	var/mob/living/carbon/wearer = loc
 	playsound(wearer, 'sound/effects/blob/attackblob.ogg', 60, TRUE)
 	wearer.temporarilyRemoveItemFromInventory(wearer.head, TRUE)
@@ -686,7 +686,7 @@
 
 ///Our tell that we're using this ability. Usually a sound and a visible message.area
 /datum/action/cooldown/hivehead_spawn_minions/proc/do_tell()
-	owner.visible_message(span_warning("[owner]A cabeça começa a zumbir quando as abelhas começam a jorrar!"), span_warning("Libertamos como Abelhas."), span_hear("Você ouve um zumbido alto!"))
+	owner.visible_message(span_warning("[owner] A cabeça começa a zumbir quando as abelhas começam a jorrar!"), span_warning("Libertamos como Abelhas."), span_hear("Você ouve um zumbido alto!"))
 	playsound(owner, 'sound/mobs/non-humanoids/bee/bee_swarm.ogg', 60, TRUE)
 
 ///Stuff we want to do to our minions. This is in its own proc so subtypes can override this behaviour.
@@ -713,7 +713,7 @@
 	spawn_count = 4
 
 /datum/action/cooldown/hivehead_spawn_minions/legion/do_tell()
-	owner.visible_message(span_warning("[owner]A cabeça começa a tremer enquanto a legião começa a jorrar!"), span_warning("Libertaremos a legião."), span_hear("Você ouve um som forte!"))
+	owner.visible_message(span_warning("[owner] A cabeça começa a tremer enquanto a legião começa a jorrar!"), span_warning("Libertaremos a legião."), span_hear("Você ouve um som forte!"))
 	playsound(owner, 'sound/effects/blob/attackblob.ogg', 60, TRUE)
 
 /datum/action/cooldown/hivehead_spawn_minions/legion/minion_additional_changes(mob/living/basic/minion)

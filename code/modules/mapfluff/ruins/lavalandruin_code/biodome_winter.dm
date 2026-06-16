@@ -40,7 +40,7 @@
 		var/obj/hit_object = hit_atom
 		var/success = hit_object.freeze()
 		if(!success && hit_object.resistance_flags & FREEZE_PROOF)
-			hit_object.visible_message(span_warning("[hit_object]é à prova de congelamento!"))
+			hit_object.visible_message(span_warning("[hit_object] é à prova de congelamento!"))
 
 	else if(isliving(hit_atom))
 		var/mob/living/hit_mob = hit_atom

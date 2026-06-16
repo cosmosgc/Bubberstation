@@ -144,7 +144,7 @@
 
 		if(SSlag_switch.measures[SLOWMODE_SAY] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES) && src == usr)
 			if(!COOLDOWN_FINISHED(client, say_slowmode))
-				to_chat(src, span_warning("Mensagem não enviada devido ao modo lento. Por favor, espere.[SSlag_switch.slowmode_cooldown/10]Segundos entre como mensagens.\n\"[message]\""))
+				to_chat(src, span_warning("Mensagem não enviada devido ao modo lento. Por favor, espere.[SSlag_switch.slowmode_cooldown/10] Segundos entre como mensagens.\n\"[message]\""))
 				return
 			COOLDOWN_START(client, say_slowmode, SSlag_switch.slowmode_cooldown)
 

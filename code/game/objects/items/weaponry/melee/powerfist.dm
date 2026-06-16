@@ -54,7 +54,7 @@
 		. += span_notice("Precisa se aproximar mais para ver.")
 		return
 	if(tank)
-		. += span_notice("[icon2html(tank, user)]Tem.\a [tank]Montado nele.")
+		. += span_notice("[icon2html(tank, user)] Tem.\a [tank] Montado nele.")
 		. += span_notice("Pode ser removido com um<b>Chave de Fenda</b>.")
 
 	. += span_notice("Use um.<b>Chave Inglesa.</b>Para mudar a força da válvula. A força atual está em<b>[pressure_setting_to_text(fist_pressure_setting)]</b>Nível.")
@@ -62,7 +62,7 @@
 /obj/item/melee/powerfist/wrench_act(mob/living/user, obj/item/tool)
 	fist_pressure_setting = fist_pressure_setting >= HIGH_PRESSURE ? LOW_PRESSURE : fist_pressure_setting + 1
 	tool.play_tool_sound(src)
-	balloon_alert(user, "Pistão de força ajustado para[pressure_setting_to_text(fist_pressure_setting)]")
+	balloon_alert(user, "Pistão de força ajustado para [pressure_setting_to_text(fist_pressure_setting)]")
 	return TRUE
 
 /obj/item/melee/powerfist/screwdriver_act(mob/living/user, obj/item/tool)
@@ -80,32 +80,32 @@
 		return
 	var/obj/item/tank/internals/tank_to_insert = item_to_insert
 	if(tank_to_insert.volume <= 3)
-		to_chat(user, span_warning("\The [tank_to_insert]É muito pequeno para\the [src]."))
+		to_chat(user, span_warning("\The [tank_to_insert] É muito pequeno para\the [src]."))
 		return
 	update_tank(item_to_insert, TANK_INSERTING, user)
 
 /obj/item/melee/powerfist/proc/update_tank(obj/item/tank/internals/the_tank, removing = TANK_INSERTING, mob/living/carbon/human/user)
 	if(removing)
 		if(!tank)
-			to_chat(user, span_notice("\The [src]Atualmente não tem nenhum tanque ligado a ele."))
+			to_chat(user, span_notice("\The [src] Atualmente não tem nenhum tanque ligado a ele."))
 			return
-		to_chat(user, span_notice("Você se desprende.\the [the_tank]De\the [src]."))
+		to_chat(user, span_notice("Você se desprende.\the [the_tank] De\the [src]."))
 		tank.forceMove(get_turf(user))
 		user.put_in_hands(tank)
 		tank = null
 		return
 
 	if(tank)
-		to_chat(user, span_warning("\The [src]Já tem um tanque."))
+		to_chat(user, span_warning("\The [src] Já tem um tanque."))
 		return
 	if(!user.transferItemToLoc(the_tank, src))
 		return
-	to_chat(user, span_notice("Você gancho.\the [the_tank]até\the [src]."))
+	to_chat(user, span_notice("Você gancho.\the [the_tank] até\the [src]."))
 	tank = the_tank
 
 /obj/item/melee/powerfist/attack(mob/living/target, mob/living/user)
 	if(!tank)
-		to_chat(user, span_warning("\The [src]Não posso operar sem uma fonte de gás!"))
+		to_chat(user, span_warning("\The [src] Não posso operar sem uma fonte de gás!"))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("Você não quer machucar outros seres vivos!"))
@@ -116,21 +116,21 @@
 
 	var/datum/gas_mixture/gas_used = tank.remove_air(gas_per_fist * fist_pressure_setting)
 	if(!gas_used)
-		to_chat(user, span_warning("\The [src]O tanque está vazio!"))
+		to_chat(user, span_warning("\The [src] O tanque está vazio!"))
 		target.apply_damage((force / 5), BRUTE)
 		playsound(loc, 'sound/items/weapons/punch1.ogg', 50, TRUE)
-		target.visible_message(span_danger("[user]O powerfist deixa sair uma coisa chata como[user.p_they()]Soco.[user.p_es()] [target.name]!"), 			span_userdanger("[user]Ele te soca!"))
+		target.visible_message(span_danger("[user] O powerfist deixa sair uma coisa chata como [user.p_they()] Soco.[user.p_es()] [target.name]!"), 			span_userdanger("[user] Ele te soca!"))
 		return
 
 	if(!molar_cmp_equals(gas_used.total_moles(), gas_per_fist * fist_pressure_setting))
 		our_turf.assume_air(gas_used)
-		to_chat(user, span_warning("\The [src]O pistão-ram solta um chiado fraco, precisa de mais gasolina!"))
+		to_chat(user, span_warning("\The [src] O pistão-ram solta um chiado fraco, precisa de mais gasolina!"))
 		playsound(loc, 'sound/items/weapons/punch4.ogg', 50, TRUE)
 		target.apply_damage((force / 2), BRUTE)
-		target.visible_message(span_danger("[user]O powerfist deixa sair um chiado fraco como[user.p_they()]Soco.[user.p_es()] [target.name]!"), 			span_userdanger("[user]É golpear com força!"))
+		target.visible_message(span_danger("[user] O powerfist deixa sair um chiado fraco como [user.p_they()] Soco.[user.p_es()] [target.name]!"), 			span_userdanger("[user] É golpear com força!"))
 		return
 
-	target.visible_message(span_danger("[user]O powerfist faz um barulho alto como[user.p_they()]Soco.[user.p_es()] [target.name]!"), 		span_userdanger("Você grita de dor como[user]É o soco que te atira para trás!"))
+	target.visible_message(span_danger("[user] O powerfist faz um barulho alto como [user.p_they()] Soco.[user.p_es()] [target.name]!"), 		span_userdanger("Você grita de dor como [user] É o soco que te atira para trás!"))
 	new /obj/effect/temp_visual/kinetic_blast(target.loc)
 	target.apply_damage(force * fist_pressure_setting, BRUTE, wound_bonus = CANT_WOUND)
 	playsound(src, 'sound/items/weapons/resonator_blast.ogg', 50, TRUE)

@@ -48,7 +48,7 @@
 
 /// Consumes a use of the beacon, sending the user a message and creating their item in the process
 /obj/item/choice_beacon/proc/consume_use(obj/choice_path, mob/living/user)
-	to_chat(user, span_hear("Você ouve algo estalar do farol por um momento antes de uma voz falar.\"Por favor, aguarde por uma mensagem de[company_source]Mensagem:[company_message]Fim da mensagem.\""))
+	to_chat(user, span_hear("Você ouve algo estalar do farol por um momento antes de uma voz falar.\"Por favor, aguarde por uma mensagem de [company_source] Mensagem:[company_message] Fim da mensagem.\""))
 
 	spawn_option(choice_path, user)
 	uses--
@@ -57,7 +57,7 @@
 		qdel(src)
 		return
 
-	to_chat(user, span_notice("[uses]usar[uses > 1 ? "s" : ""]Fique.[uses > 1 ? "" : "s"]Vamos.[src]."))
+	to_chat(user, span_notice("[uses] usar[uses > 1 ? "s" : ""]Fique.[uses > 1 ? "" : "s"]Vamos.[src]."))
 
 /// Actually spawns the item selected by the user
 /obj/item/choice_beacon/proc/spawn_option(obj/choice_path, mob/living/user)

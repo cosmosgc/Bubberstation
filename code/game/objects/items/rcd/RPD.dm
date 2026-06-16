@@ -125,7 +125,7 @@
 	ui_interact(user)
 
 /obj/item/pipe_dispenser/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Aponta o fim do RPD para baixo.[user.p_their()]Garganta e aperta um botão! Parece que...[user.p_theyre()]Tentando cometer suicídio..."))
+	user.visible_message(span_suicide("[user] Aponta o fim do RPD para baixo.[user.p_their()] Garganta e aperta um botão! Parece que...[user.p_theyre()] Tentando cometer suicídio..."))
 	playsound(get_turf(user), SFX_TOOL_SWITCH, 20, TRUE)
 	playsound(get_turf(user), RPD_USE_SOUND, 50, TRUE)
 	return BRUTELOSS
@@ -275,7 +275,7 @@
 			if (ISNOTSTUB(target_dir))
 				p_init_dir = target_dir
 			else
-				to_chat(ui.user, span_warning("\The [src]A tela pisca um aviso: não pode configurar um tubo para se conectar apenas em uma direção."))
+				to_chat(ui.user, span_warning("\The [src] A tela pisca um aviso: não pode configurar um tubo para se conectar apenas em uma direção."))
 				return FALSE
 
 		if("init_reset")
@@ -398,7 +398,7 @@
 				SSair.add_to_rebuild_queue(target_smart_pipe)
 			// Finally, update our internal state - update_pipe_icon also updates dir and connections
 			target_smart_pipe.update_pipe_icon()
-			user.visible_message(span_notice("[user]reprogramações\the [target_smart_pipe]."), span_notice("Você reprograma\the [target_smart_pipe]."))
+			user.visible_message(span_notice("[user] reprogramações\the [target_smart_pipe]."), span_notice("Você reprograma\the [target_smart_pipe]."))
 			return ITEM_INTERACT_SUCCESS
 
 		// If this is an unplaced smart pipe, try to reprogram it
@@ -539,7 +539,7 @@
 		if(!do_after(user, atmos_build_speed, target = atom_to_target))
 			return FALSE
 		if(!recipe.all_layers && (layer_to_build == 1 || layer_to_build == MAX_PIPE_LAYERS))
-			balloon_alert(user, "não pode construir sobre camada[layer_to_build]!")
+			balloon_alert(user, "não pode construir sobre camada [layer_to_build]!")
 			if(multi_layer)
 				continue
 			return FALSE
@@ -591,7 +591,7 @@
 	else //mice with side-scrolling wheels are apparently a thing and fuck this up
 		return
 	SStgui.update_uis(src)
-	balloon_alert(source_mob, "Definir cama de tubo para[get_active_pipe_layers()[1]]")
+	balloon_alert(source_mob, "Definir cama de tubo para [get_active_pipe_layers()[1]]")
 
 
 /obj/item/rpd_upgrade

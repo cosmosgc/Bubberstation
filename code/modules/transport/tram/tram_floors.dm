@@ -242,13 +242,13 @@
 /obj/structure/thermoplastic/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	if(secured)
-		user.visible_message(span_notice("[user]começa a desaparafusar o azulejo..."),
+		user.visible_message(span_notice("[user] começa a desaparafusar o azulejo..."),
 		span_notice("Você começa a desaparafusar o azulejo..."))
 		if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 			secured = FALSE
 			to_chat(user, span_notice("Os parafusos saem, e uma lacuna se forma na borda do azulejo."))
 	else
-		user.visible_message(span_notice("[user]começa a apertar o azulejo..."),
+		user.visible_message(span_notice("[user] começa a apertar o azulejo..."),
 		span_notice("Você começa a apertar o azulejo..."))
 		if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 			secured = TRUE
@@ -263,8 +263,8 @@
 		return FALSE
 
 	else
-		user.visible_message(span_notice("[user]Cunhas.\the [tool]na abertura do azulejo na borda e começa a bisbilhotar..."),
-		span_notice("Sua cunha.\the [tool]na abertura do painel do bonde no quadro e começar a bisbilhotar..."))
+		user.visible_message(span_notice("[user] Cunhas.\the [tool] na abertura do azulejo na borda e começa a bisbilhotar..."),
+		span_notice("Sua cunha.\the [tool] na abertura do painel do bonde no quadro e começar a bisbilhotar..."))
 		if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 			to_chat(user, span_notice("O painel sai da modura."))
 			var/obj/item/stack/thermoplastic/pulled_tile = new floor_tile()
@@ -276,11 +276,11 @@
 
 /obj/structure/thermoplastic/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
-		to_chat(user, span_warning("[src]Já está em boas condições!"))
+		to_chat(user, span_warning("[src] Já está em boas condições!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return FALSE
-	to_chat(user, span_notice("Você começa a reparar[src]..."))
+	to_chat(user, span_notice("Você começa a reparar [src]..."))
 	var/integrity_to_repair = max_integrity - atom_integrity
 	if(tool.use_tool(src, user, integrity_to_repair * 0.5, volume = 50))
 		atom_integrity = max_integrity
@@ -337,4 +337,4 @@
 				damage_value = "mediocre"
 		if(!damage_value)
 			return
-		. += span_notice("Isso pode funcionar como um[damage_value]Atirando arma.")
+		. += span_notice("Isso pode funcionar como um [damage_value] Atirando arma.")

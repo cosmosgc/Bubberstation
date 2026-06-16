@@ -27,7 +27,7 @@
 /obj/structure/holopay/examine(mob/user)
 	. = ..()
 	if(force_fee)
-		. += span_boldnotice("Este holopay força um pagamento de<b>[force_fee]</b> [MONEY_NAME_AUTOPURAL(force_fee)]Por golpe em vez de uma quantidade variável.")
+		. += span_boldnotice("Este holopay força um pagamento de<b>[force_fee]</b> [MONEY_NAME_AUTOPURAL(force_fee)] Por golpe em vez de uma quantidade variável.")
 
 /obj/structure/holopay/Initialize(mapload)
 	. = ..()
@@ -94,7 +94,7 @@
 		var/obj/item/holochip/chip = held_item
 		if(!chip.credits)
 			balloon_alert(user, "O holochip está vazio.")
-			to_chat(user, span_warning("Não parece haver nenhum.[MONEY_NAME]Aqui."))
+			to_chat(user, span_warning("Não parece haver nenhum.[MONEY_NAME] Aqui."))
 			return FALSE
 		/// Charges force fee or uses pay what you want
 		var/cash_deposit = force_fee || tgui_input_number(user, "How much? (Max: [chip.credits])", "Patronage", max_value = chip.credits)
@@ -105,7 +105,7 @@
 			return FALSE
 		if(!chip.spend(cash_deposit, FALSE))
 			balloon_alert(user, "Insuficiência.[MONEY_NAME]")
-			to_chat(user, span_warning("Você não tem o suficiente.[MONEY_NAME]para pagar com este chip."))
+			to_chat(user, span_warning("Você não tem o suficiente.[MONEY_NAME] para pagar com este chip."))
 			return FALSE
 		/// Success: Alert buyer
 		alert_buyer(user, cash_deposit)
@@ -202,7 +202,7 @@
  */
 /obj/structure/holopay/proc/assign_card(turf/target, obj/item/card/id/card)
 	linked_card = card
-	desc = "Paga direta para[card.registered_account.account_holder]A conta bancária."
+	desc = "Paga direta para [card.registered_account.account_holder] A conta bancária."
 	force_fee = card.holopay_fee
 	shop_logo = card.holopay_logo
 	name = card.holopay_name

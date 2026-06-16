@@ -96,7 +96,7 @@
 /// Wraps the stealing process in a scanning effect.
 /datum/component/spy_uplink/proc/start_stealing(atom/movable/stealing, mob/living/spy, datum/spy_bounty/bounty)
 	if(!isturf(stealing.loc) && stealing.loc != spy)
-		to_chat(spy, span_warning("Seu uplink pisca vermelho:[stealing]Não pode ser extraído de lá."))
+		to_chat(spy, span_warning("Seu uplink pisca vermelho:[stealing] Não pode ser extraído de lá."))
 		return FALSE
 
 	log_combat(spy, stealing, "started stealing", parent, "(spy bounty)")
@@ -134,17 +134,17 @@
 /// If successful, proceeds to complete the bounty.
 /datum/component/spy_uplink/proc/steal_process(atom/movable/stealing, mob/living/spy, datum/spy_bounty/bounty)
 	spy.visible_message(
-		span_warning("[spy]começa a varredura[stealing]com um dispositivo estranho..."),
-		span_notice("Você começa a escanear[stealing], preparando-o para extração."),
+		span_warning("[spy] começa a varredura [stealing] com um dispositivo estranho..."),
+		span_notice("Você começa a escanear [stealing], preparando-o para extração."),
 	)
 
 	if(!do_after(spy, bounty.theft_time, stealing, interaction_key = REF(src), hidden = TRUE))
 		return FALSE
 	if(bounty.claimed)
-		to_chat(spy, span_warning("Seu uplink pisca vermelho:[stealing]foi reivindicado por outro espião!"))
+		to_chat(spy, span_warning("Seu uplink pisca vermelho:[stealing] foi reivindicado por outro espião!"))
 		return FALSE
 	if(spy.is_holding(stealing) && !spy.dropItemToGround(stealing))
-		to_chat(spy, span_warning("Seu uplink pisca vermelho:[stealing]Parece preso em sua mão!"))
+		to_chat(spy, span_warning("Seu uplink pisca vermelho:[stealing] Parece preso em sua mão!"))
 		return FALSE
 
 	var/bounty_key = bounty.get_dupe_protection_key(stealing)

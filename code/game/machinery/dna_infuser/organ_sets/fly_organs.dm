@@ -130,7 +130,7 @@
 	body.vomit(vomit_flags = (MOB_VOMIT_MESSAGE | MOB_VOMIT_FORCE | MOB_VOMIT_HARM), lost_nutrition = 0, distance = 2, purge_ratio = 0.67)
 	playsound(get_turf(owner), 'sound/effects/splat.ogg', 50, TRUE)
 	body.visible_message(
-		span_danger("[body]Vomita no chão!"),
+		span_danger("[body] Vomita no chão!"),
 		span_userdanger("Vomite no chão!"),
 	)
 	return ..()

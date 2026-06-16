@@ -49,7 +49,7 @@
 	if(spell_to_give)
 		spell_to_give.Remove(source)
 		if(source.stat != DEAD && !silent)
-			to_chat(source, span_boldnotice("O conhecimento de como lançar[spell_to_give]Sai da sua mente."))
+			to_chat(source, span_boldnotice("O conhecimento de como lançar [spell_to_give] Sai da sua mente."))
 	return TRUE
 
 /obj/item/implanter/spell

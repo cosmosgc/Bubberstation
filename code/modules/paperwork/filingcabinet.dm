@@ -52,12 +52,12 @@
 	else if(P.w_class < WEIGHT_CLASS_NORMAL)
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, span_notice("Você colocou[P]Em[src]."))
+		to_chat(user, span_notice("Você colocou [P] Em [src]."))
 		icon_state = "[initial(icon_state)]-open"
 		sleep(0.5 SECONDS)
 		icon_state = initial(icon_state)
 	else if(!user.combat_mode || (P.item_flags & NOBLUDGEON))
-		to_chat(user, span_warning("Você não pode colocar[P]Em[src]!"))
+		to_chat(user, span_warning("Você não pode colocar [P] Em [src]!"))
 	else
 		return ..()
 
@@ -111,9 +111,9 @@
 			I.forceMove(loc)
 			if(prob(25))
 				step_rand(I)
-			to_chat(user, span_notice("Você puxa.\a [I]Fora[src]Ao caso."))
+			to_chat(user, span_notice("Você puxa.\a [I] Fora [src] Ao caso."))
 			return
-	to_chat(user, span_notice("Você não encontra nada em[src]."))
+	to_chat(user, span_notice("Você não encontra nada em [src]."))
 
 /*
  * Security Record Cabinets

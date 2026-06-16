@@ -31,9 +31,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a desparafusar a concha de[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a desparafusar a casca de[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a desparafusar a casca de[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a desparafusar a concha de [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a desparafusar a casca de [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a desparafusar a casca de [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel your [limb.plaintext_zone] grow numb as the shell is unscrewed.", TRUE)
 
@@ -64,9 +64,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a abrir os porta- escotilhas[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a abrir as escotilhas[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a abrir as escotilhas[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a abrir os porta- escotilhas [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a abrir as escotilhas [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a abrir as escotilhas [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "The last faint pricks of tactile sensation fade from your [limb.plaintext_zone] as the hatch is opened.", TRUE)
 
@@ -111,9 +111,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a ferrar a casca de[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a ferrar a casca de[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a ferrar a casca de[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a ferrar a casca de [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a ferrar a casca de [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a ferrar a casca de [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel the faint pricks of sensation return as your [limb.plaintext_zone]'s shell is screwed in.", TRUE)
 
@@ -145,9 +145,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a preparar eletrônicos em[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a preparar eletrônicos em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a preparar eletrônicos em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a preparar eletrônicos em [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a preparar eletrônicos em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a preparar eletrônicos em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You can feel a faint buzz in your [limb.plaintext_zone] as the electronics reboot.", TRUE)
 
@@ -178,9 +178,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a abrir alguns parafusos[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a abrir alguns parafusos.[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a abrir alguns parafusos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a abrir alguns parafusos [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a abrir alguns parafusos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a abrir alguns parafusos.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a jostle in your [limb.plaintext_zone] as the bolts begin to loosen.", TRUE)
 
@@ -216,9 +216,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a puxar alguns parafusos[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a quebrar alguns parafusos[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a quebrar alguns parafusos[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a puxar alguns parafusos [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a quebrar alguns parafusos [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a quebrar alguns parafusos [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a jostle in your [limb.plaintext_zone] as the bolts begin to tighten.", TRUE)
 

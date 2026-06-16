@@ -82,7 +82,7 @@
 /obj/item/clothing/head/helmet/perceptomatrix/proc/pre_cast_core_check(mob/caster, datum/action/cooldown/spell/spell)
 	SIGNAL_HANDLER
 	if((!core_installed) && spell.school == SCHOOL_PSYCHIC)
-		to_chat(caster, span_warning("Você não pode zap mentes através[src]Está protegendo sem um núcleo instalado!"))
+		to_chat(caster, span_warning("Você não pode zap mentes através [src] Está protegendo sem um núcleo instalado!"))
 		return SPELL_CANCEL_CAST
 
 /obj/item/clothing/head/helmet/perceptomatrix/proc/update_anomaly_state()
@@ -174,8 +174,8 @@
 /datum/action/cooldown/spell/pointed/percept_hallucination/proc/blows_up_pancakes_with_mind(obj/item/food/pancakes/pancakes)
 
 	owner.visible_message(
-		span_userdanger("[owner]Explodir.[pancakes]Com[owner.p_their()]Mente!"),
-		span_userdanger("Você explode.[pancakes]Com sua mente!")
+		span_userdanger("[owner] Explodir.[pancakes] Com [owner.p_their()] Mente!"),
+		span_userdanger("Você explode.[pancakes] Com sua mente!")
 	)
 
 	for(var/mob/chef in get_hearers_in_view(7, pancakes))
@@ -214,7 +214,7 @@
 
 	if(cast_on.can_block_magic(antimagic_flags))
 		to_chat(cast_on, span_notice("Você sente energias psíquicas refletindo em você."))
-		to_chat(owner, span_warning("[cast_on]Desvia a energia!"))
+		to_chat(owner, span_warning("[cast_on] Desvia a energia!"))
 		return
 
 	to_chat(cast_on, span_warning("Seu cérebro parece estar pegando fogo!"))

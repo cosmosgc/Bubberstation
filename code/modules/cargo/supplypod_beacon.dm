@@ -63,7 +63,7 @@
 	. = ..()
 	. += span_notice("Parece que tem alguns parafusos de ancoragem.")
 	if(!express_console)
-		. += span_notice("[src]Não está ligado a um console Express Supply.")
+		. += span_notice("[src] Não está ligado a um console Express Supply.")
 	else
 		. += span_notice("Alt-clique para desligá-lo do console de suprimentos expresso.")
 
@@ -96,7 +96,7 @@
 	update_status(SP_LINKED)
 	if (express_console.using_beacon)
 		update_status(SP_READY)
-	to_chat(user, span_notice("[src]ligado a[C]."))
+	to_chat(user, span_notice("[src] ligado a [C]."))
 
 /obj/item/supplypod_beacon/click_alt(mob/user)
 	if(!express_console)

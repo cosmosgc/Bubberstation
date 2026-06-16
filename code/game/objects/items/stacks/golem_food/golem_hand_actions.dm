@@ -31,7 +31,7 @@
 
 /obj/item/gibtonite_hand/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if (!held_gibtonite)
-		to_chat(user, span_warning("[src]Fazzles, foi um fracasso!"))
+		to_chat(user, span_warning("[src] Fazzles, foi um fracasso!"))
 		qdel(src)
 		return ITEM_INTERACT_BLOCKING
 

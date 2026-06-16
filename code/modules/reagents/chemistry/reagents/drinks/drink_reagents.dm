@@ -172,7 +172,7 @@
 /datum/reagent/consumable/superlaughter/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	if(SPT_PROB(16, seconds_per_tick))
-		affected_mob.visible_message(span_danger("[affected_mob]Estourou em um ataque de risadas incontroláveis!"), span_userdanger("Você explodiu em um ataque de risadas incontroláveis!"))
+		affected_mob.visible_message(span_danger("[affected_mob] Estourou em um ataque de risadas incontroláveis!"), span_userdanger("Você explodiu em um ataque de risadas incontroláveis!"))
 		affected_mob.Stun(5)
 		affected_mob.add_mood_event("chemical_laughter", /datum/mood_event/chemical_superlaughter)
 

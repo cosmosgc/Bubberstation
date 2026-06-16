@@ -105,7 +105,7 @@
 	. += span_notice("Marcar uma grande criatura com uma força desestabilizadora com o botão direito, em seguida, acertá-los em mim para fazer<b>[force_wielded + detonation_damage]</b>Dano.")
 	. += span_notice("Sim.<b>[force_wielded + detonation_damage + backstab_bonus]</b>Danos se o alvo for esfaqueado, em vez de<b>[force_wielded + detonation_damage]</b>.")
 	for(var/obj/item/crusher_trophy/crusher_trophy as anything in trophies)
-		. += span_notice("Tem.\a [crusher_trophy]Apegado, que causa[crusher_trophy.effect_desc()].")
+		. += span_notice("Tem.\a [crusher_trophy] Apegado, que causa [crusher_trophy.effect_desc()].")
 
 /obj/item/kinetic_crusher/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/crusher_trophy))

@@ -28,7 +28,7 @@
 			//everyone else gets to relish in madness
 			//yes killing their mood will also trigger mood hallucinations
 			create_vendetta(crewmate.mind, invoker.mind)
-			to_chat(crewmate, span_boldwarning("Seu ambiente de repente se enche de uma cacofonia de risadas maníacas e psicodistúrbios.\nVocê sente sua psique interior despedaçar-se em uma miríade de pedaços de vidro irregular de cores desconhecidas do universo, refletindo infinitamente uma luz ofuscante e louca vindo dos mais íntimos santuários de sua mente destruída.\nDepois de uma breve pausa que parecia um milênio, uma frase se recupera incessantemente em sua cabeça, imbuída da falsa esperança de absolvição...\n				<b>[invoker]Deve morrer.</b>"))
+			to_chat(crewmate, span_boldwarning("Seu ambiente de repente se enche de uma cacofonia de risadas maníacas e psicodistúrbios.\nVocê sente sua psique interior despedaçar-se em uma miríade de pedaços de vidro irregular de cores desconhecidas do universo, refletindo infinitamente uma luz ofuscante e louca vindo dos mais íntimos santuários de sua mente destruída.\nDepois de uma breve pausa que parecia um milênio, uma frase se recupera incessantemente em sua cabeça, imbuída da falsa esperança de absolvição...\n				<b>[invoker] Deve morrer.</b>"))
 			var/datum/brain_trauma/mild/hallucinations/added_trauma = new()
 			added_trauma.resilience = TRAUMA_RESILIENCE_ABSOLUTE
 			crewmate.adjust_organ_loss(ORGAN_SLOT_BRAIN, BRAIN_DAMAGE_DEATH - 25, BRAIN_DAMAGE_DEATH - 25) //you'd better hope chap didn't pick a hypertool
@@ -40,4 +40,4 @@
 	invoker.add_mood_event("wizard_ritual_finale", /datum/mood_event/madness_elation)
 	var/obj/item/gun/magic/staff/chaos/true_wabbajack/the_wabbajack = new
 	invoker.put_in_active_hand(the_wabbajack)
-	to_chat(invoker, span_mind_control("Seu instinto e pensamento racional está gritando com você como[the_wabbajack]aparece em seu aperto firme..."))
+	to_chat(invoker, span_mind_control("Seu instinto e pensamento racional está gritando com você como [the_wabbajack] aparece em seu aperto firme..."))

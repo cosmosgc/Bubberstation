@@ -238,7 +238,7 @@
 	if (iscarbon(holder.my_atom))
 		var/mob/living/carbon/victim = holder.my_atom
 		if (victim.stat != DEAD)
-			victim.visible_message(span_warning("[victim]Começa a tossir fumaça violentamente!"))
+			victim.visible_message(span_warning("[victim] Começa a tossir fumaça violentamente!"))
 		victim.adjust_organ_loss(ORGAN_SLOT_LUNGS, volume / 15)
 	do_chem_smoke(amount = volume / 1.5, holder = holder.my_atom, location = location, carry = holder, silent = FALSE, log = TRUE)
 	return SPARK_ACT_NON_DESTRUCTIVE | SPARK_ACT_CLEAR_ALL

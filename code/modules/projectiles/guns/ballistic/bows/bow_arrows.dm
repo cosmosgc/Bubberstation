@@ -163,11 +163,11 @@
 		return
 	var/mob/living/carbon/human/human_target = target
 	if(!human_target.on_fire)
-		to_chat(human_target, span_danger("[src]Explode em chamas que rapidamente envolvem você!"))
+		to_chat(human_target, span_danger("[src] Explode em chamas que rapidamente envolvem você!"))
 		human_target.adjust_fire_stacks(2)
 		human_target.ignite_mob()
 		return
-	to_chat(human_target, span_danger("[src]Reage com as chamas que o envolvem! Merda!"))
+	to_chat(human_target, span_danger("[src] Reage com as chamas que o envolvem! Merda!"))
 	explosion(src, light_impact_range = 1, flame_range = 2) //ow
 
 /// Ashen arrows

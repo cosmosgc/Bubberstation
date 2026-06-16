@@ -20,7 +20,7 @@
 
 /obj/structure/trap/Initialize(mapload)
 	. = ..()
-	flare_message = span_warning("[src]Como Chamas Brilhantem!")
+	flare_message = span_warning("[src] Como Chamas Brilhantem!")
 	spark_system = new(src, 4, TRUE)
 
 	var/static/list/loc_connections = list(
@@ -45,7 +45,7 @@
 	if(user.mind && (user.mind in immune_minds))
 		return
 	if(get_dist(user, src) <= 1)
-		. += span_notice("Você revela[src]!")
+		. += span_notice("Você revela [src]!")
 		flare()
 
 /obj/structure/trap/proc/flare()
@@ -110,7 +110,7 @@
 /obj/structure/trap/stun/hunter/Initialize(mapload)
 	. = ..()
 	time_between_triggers = 1 SECONDS
-	flare_message = span_warning("[src]Estalos fechados!")
+	flare_message = span_warning("[src] Estalos fechados!")
 
 /obj/structure/trap/stun/hunter/Destroy()
 	if(!QDELETED(stored_item))
@@ -168,7 +168,7 @@
 	var/turf/target_turf = get_turf(src)
 	if(!user || !user.transferItemToLoc(src, target_turf))//visibly unequips
 		return
-	to_chat(user, span_notice("Você armou.[src]Examine enquanto está perto de desarmá-lo."))
+	to_chat(user, span_notice("Você armou.[src] Examine enquanto está perto de desarmá-lo."))
 	stored_trap.forceMove(target_turf)//moves trap to ground
 	forceMove(stored_trap)//moves item into trap
 

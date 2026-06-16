@@ -71,7 +71,7 @@
 /// Simple proc that plays the supermatter dusting sound and sends a visible message.
 /mob/living/basic/supermatter_spider/proc/dust_feedback(atom/target)
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 10, TRUE)
-	visible_message(span_danger("[src]bate em[target], virando[target.p_them()]A poeira em um brilhante clarão de luz!"))
+	visible_message(span_danger("[src] bate em [target], virando [target.p_them()] A poeira em um brilhante clarão de luz!"))
 
 /mob/living/basic/supermatter_spider/overcharged
 	name = "overcharged supermatter spider"

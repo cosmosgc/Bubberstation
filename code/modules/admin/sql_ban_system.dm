@@ -699,8 +699,8 @@
 	if(player_ckey)
 		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, 0, severity)
 
-	var/player_ban_notification = span_boldannounce("Você foi[applies_to_admins ? "admin " : ""]proibido por[usr.client.key]De[is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nRazão:[reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
-	var/other_ban_notification = span_boldannounce("Outro jogador compartilhando seu IP ou CID foi banido por[usr.client.key]De[is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nRazão:[reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
+	var/player_ban_notification = span_boldannounce("Você foi[applies_to_admins ? "admin " : ""]proibido por [usr.client.key] De[is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nRazão:[reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
+	var/other_ban_notification = span_boldannounce("Outro jogador compartilhando seu IP ou CID foi banido por [usr.client.key] De[is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nRazão:[reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
 
@@ -897,11 +897,11 @@
 	var/client/C = GLOB.directory[player_key]
 	if(C)
 		build_ban_cache(C)
-		to_chat(C, span_boldannounce("[usr.client.key]removeu uma proibição de[role]Por sua chave."), confidential = TRUE)
+		to_chat(C, span_boldannounce("[usr.client.key] removeu uma proibição de [role] Por sua chave."), confidential = TRUE)
 	for(var/client/i in GLOB.clients - C)
 		if(i.address == player_ip || i.computer_id == player_cid)
 			build_ban_cache(i)
-			to_chat(i, span_boldannounce("[usr.client.key]removeu uma proibição de[role]para o seu IP ou CID."), confidential = TRUE)
+			to_chat(i, span_boldannounce("[usr.client.key] removeu uma proibição de [role] para o seu IP ou CID."), confidential = TRUE)
 	unban_panel(player_key, admin_key, player_ip, player_cid, page)
 
 /// Sometimes an admin did not intend to unban a player. This proc undoes an unbanning operation by setting the unbanned_ keys in the DB back to null.
@@ -940,8 +940,8 @@
 	log_admin_private("[kn] has rebanned [target] from [role].")
 	message_admins("[kna] has rebanned [target] from [role].")
 
-	var/banned_player_message = span_boldannounce("[usr.client.key]Reativou uma proibição removida de[role]Por sua chave.")
-	var/banned_other_message = span_boldannounce("[usr.client.key]Reativou uma proibição removida de[role]para o seu IP ou CID.")
+	var/banned_player_message = span_boldannounce("[usr.client.key] Reativou uma proibição removida de [role] Por sua chave.")
+	var/banned_other_message = span_boldannounce("[usr.client.key] Reativou uma proibição removida de [role] para o seu IP ou CID.")
 	var/kick_banned_players = (role == "Server")
 
 	notify_all_banned_players(ckey(player_key), player_ip, player_cid, banned_player_message, banned_other_message, kick_banned_players, applies_to_admins)
@@ -1053,8 +1053,8 @@
 	if(changes["Applies to admins"])
 		send2adminchat("BAN ALERT","[kn] has edited a ban for [old_key ? "[old_key]" : "[old_ip]-[old_cid]"] to [applies_to_admins ? "" : "not"]affect admins")
 
-	var/player_edit_message = span_boldannounce("[usr.client.key]Editou o[changes_keys_text]de uma proibição para sua chave.")
-	var/other_edit_message = span_boldannounce("[usr.client.key]Editou o[changes_keys_text]de uma proibição para o seu IP ou CID.")
+	var/player_edit_message = span_boldannounce("[usr.client.key] Editou o [changes_keys_text] de uma proibição para sua chave.")
+	var/other_edit_message = span_boldannounce("[usr.client.key] Editou o [changes_keys_text] de uma proibição para o seu IP ou CID.")
 
 	var/kick_banned_players = (is_server_ban && (changes["Key"] || changes["IP"] || changes["CID"]))
 
@@ -1125,7 +1125,7 @@
 		if(check_rights(R_PERMISSIONS, show_msg = FALSE) && (can_edit_rights_flags() & R_EVERYTHING) == R_EVERYTHING) //edit rights are a more effective way to check hierarchical rank since many non-headmins have R_PERMISSIONS now
 			max_adminbans = MAX_ADMINBANS_PER_HEADMIN
 		if(adminban_count >= max_adminbans)
-			to_chat(usr, span_danger("Você já registrou.[max_adminbans]Proibição de administração ou mais. Não abusem dessa função!"), confidential = TRUE)
+			to_chat(usr, span_danger("Você já registrou.[max_adminbans] Proibição de administração ou mais. Não abusem dessa função!"), confidential = TRUE)
 			qdel(query_check_adminban_count)
 			return FALSE
 	qdel(query_check_adminban_count)
@@ -1157,7 +1157,7 @@
 	var/is_admin = FALSE
 	if(player_client)
 		build_ban_cache(player_client)
-		to_chat(player_client, span_boldannounce("[banned_player_message]<br><span class='danger'>Para apelar esta proibição ir para[appeal_url]"), confidential = TRUE)
+		to_chat(player_client, span_boldannounce("[banned_player_message]<br><span class='danger'>Para apelar esta proibição ir para [appeal_url]"), confidential = TRUE)
 		if(GLOB.admin_datums[player_client.ckey] || GLOB.deadmins[player_client.ckey])
 			is_admin = TRUE
 		if(kick_banned_players && (!is_admin || (is_admin && applies_to_admins)))
@@ -1166,7 +1166,7 @@
 	for(var/client/other_player_client in GLOB.clients - player_client)
 		if(other_player_client.address == banned_player_ip || other_player_client.computer_id == banned_player_cid)
 			build_ban_cache(other_player_client)
-			to_chat(other_player_client, span_boldannounce("[banned_other_message]<br><span class='danger'>Para apelar esta proibição ir para[appeal_url]"), confidential = TRUE)
+			to_chat(other_player_client, span_boldannounce("[banned_other_message]<br><span class='danger'>Para apelar esta proibição ir para [appeal_url]"), confidential = TRUE)
 			if(GLOB.admin_datums[other_player_client.ckey] || GLOB.deadmins[other_player_client.ckey])
 				is_admin = TRUE
 			if(kick_banned_players && (!is_admin || (is_admin && applies_to_admins)))

@@ -76,10 +76,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 	set_lights(!area.lightswitch)
 
 /obj/machinery/light_switch/screwdriver_act(mob/living/user, obj/item/tool)
-	user.visible_message(span_notice("[user]Começa a desenroscar[src]..."), span_notice("Você começa a desenroscar[src]..."))
+	user.visible_message(span_notice("[user] Começa a desenroscar [src]..."), span_notice("Você começa a desenroscar [src]..."))
 	if(!tool.use_tool(src, user, 40, volume = 50))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user]Desenrosca.[src]!"), span_notice("Você se desprende.[src]Da Parede."))
+	user.visible_message(span_notice("[user] Desenrosca.[src]!"), span_notice("Você se desprende.[src] Da Parede."))
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS

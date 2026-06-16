@@ -43,7 +43,7 @@
 	if(strikes_to_lose_limb <= 0) // we've already hit sepsis, nothing more to do
 		victim.adjust_tox_loss(0.25 * seconds_per_tick)
 		if(SPT_PROB(0.5, seconds_per_tick))
-			victim.visible_message(span_danger("A infecção nos restos de[victim]'s[limb.plaintext_zone]Desloque-se e enjoe!"), span_warning("Você pode sentir a infecção nos restos de seu[limb.plaintext_zone]Correndo em suas veias!"), vision_distance = COMBAT_MESSAGE_RANGE)
+			victim.visible_message(span_danger("A infecção nos restos de [victim]'s [limb.plaintext_zone] Desloque-se e enjoe!"), span_warning("Você pode sentir a infecção nos restos de seu [limb.plaintext_zone] Correndo em suas veias!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		return
 
 	for(var/datum/reagent/reagent as anything in victim.reagents.reagent_list)
@@ -73,7 +73,7 @@
 
 	// here's the check to see if we're cleared up
 	if((flesh_damage <= 0) && (infection <= WOUND_INFECTION_MODERATE))
-		to_chat(victim, span_green("As queimaduras em seu[limb.plaintext_zone]Está limpo!"))
+		to_chat(victim, span_green("As queimaduras em seu [limb.plaintext_zone] Está limpo!"))
 		qdel(src)
 		return
 
@@ -93,15 +93,15 @@
 			if(SPT_PROB(15, seconds_per_tick))
 				victim.adjust_tox_loss(0.2)
 				if(prob(6))
-					to_chat(victim, span_warning("As bolhas em seu[limb.plaintext_zone]Que pus estranho..."))
+					to_chat(victim, span_warning("As bolhas em seu [limb.plaintext_zone] Que pus estranho..."))
 		if(WOUND_INFECTION_SEVERE to WOUND_INFECTION_CRITICAL)
 			if(!disabling)
 				if(SPT_PROB(1, seconds_per_tick))
-					to_chat(victim, span_warning("<b>Sua[limb.plaintext_zone]Fecha completamente, enquanto luta pelo controle contra a infecção!</b>"))
+					to_chat(victim, span_warning("<b>Sua [limb.plaintext_zone] Fecha completamente, enquanto luta pelo controle contra a infecção!</b>"))
 					set_disabling(TRUE)
 					return
 			else if(SPT_PROB(4, seconds_per_tick))
-				to_chat(victim, span_notice("Você recupera a sensação em seu[limb.plaintext_zone]Mas ainda está em péssimo estado!"))
+				to_chat(victim, span_notice("Você recupera a sensação em seu [limb.plaintext_zone] Mas ainda está em péssimo estado!"))
 				set_disabling(FALSE)
 				return
 
@@ -111,17 +111,17 @@
 		if(WOUND_INFECTION_CRITICAL to WOUND_INFECTION_SEPTIC)
 			if(!disabling)
 				if(SPT_PROB(1.5, seconds_per_tick))
-					to_chat(victim, span_warning("<b>Você de repente perde toda a sensação da infecção em seu[limb.plaintext_zone]!</b>"))
+					to_chat(victim, span_warning("<b>Você de repente perde toda a sensação da infecção em seu [limb.plaintext_zone]!</b>"))
 					set_disabling(TRUE)
 					return
 			else if(SPT_PROB(1.5, seconds_per_tick))
-				to_chat(victim, span_notice("Você mal pode sentir o seu[limb.plaintext_zone]novamente, e você tem que se esforçar para manter o controle motor!"))
+				to_chat(victim, span_notice("Você mal pode sentir o seu [limb.plaintext_zone] novamente, e você tem que se esforçar para manter o controle motor!"))
 				set_disabling(FALSE)
 				return
 
 			if(SPT_PROB(2.48, seconds_per_tick))
 				if(prob(20))
-					to_chat(victim, span_warning("Você contempla a vida sem sua[limb.plaintext_zone]..."))
+					to_chat(victim, span_warning("Você contempla a vida sem sua [limb.plaintext_zone]..."))
 					victim.adjust_tox_loss(0.75)
 				else
 					victim.adjust_tox_loss(1)
@@ -131,11 +131,11 @@
 				strikes_to_lose_limb--
 				switch(strikes_to_lose_limb)
 					if(2 to INFINITY)
-						to_chat(victim, span_deadsay("<b>A infecção em seu[limb.plaintext_zone]Está literalmente pingando, você se sente horrível!</b>"))
+						to_chat(victim, span_deadsay("<b>A infecção em seu [limb.plaintext_zone] Está literalmente pingando, você se sente horrível!</b>"))
 					if(1)
-						to_chat(victim, span_deadsay("<b>Infecção tem quase completamente reivindicado o seu[limb.plaintext_zone]!</b>"))
+						to_chat(victim, span_deadsay("<b>Infecção tem quase completamente reivindicado o seu [limb.plaintext_zone]!</b>"))
 					if(0)
-						to_chat(victim, span_deadsay("<b>A última das terminações nervosas em seu[limb.plaintext_zone]A infecção paralisa completamente seu conector.</b>"))
+						to_chat(victim, span_deadsay("<b>A última das terminações nervosas em seu [limb.plaintext_zone] A infecção paralisa completamente seu conector.</b>"))
 						threshold_penalty *= 2 // piss easy to destroy
 						set_disabling(TRUE)
 
@@ -148,7 +148,7 @@
 
 /datum/wound/burn/flesh/get_wound_description(mob/user)
 	if(strikes_to_lose_limb <= 0)
-		return span_deadsay("<B>[victim.p_Their()] [limb.plaintext_zone]está completamente trancado e não é funcional.</B>")
+		return span_deadsay("<B>[victim.p_Their()] [limb.plaintext_zone] está completamente trancado e não é funcional.</B>")
 
 	var/list/condition = list("[victim.p_Their()] [limb.plaintext_zone] [examine_desc]")
 	var/obj/item/stack/medical/wrap/current_gauze = LAZYACCESS(limb.applied_items, LIMB_ITEM_GAUZE)
@@ -174,7 +174,7 @@
 			if(WOUND_INFECTION_CRITICAL to WOUND_INFECTION_SEPTIC)
 				condition += ", [span_deadsay("with streaks of rotten infection!")]"
 			if(WOUND_INFECTION_SEPTIC to INFINITY)
-				return span_deadsay("<B>[victim.p_Their()] [limb.plaintext_zone]É uma bagunça de pele carbonizada e podre infectado!</B>")
+				return span_deadsay("<B>[victim.p_Their()] [limb.plaintext_zone] É uma bagunça de pele carbonizada e podre infectado!</B>")
 			else
 				condition += "!"
 
@@ -239,13 +239,13 @@
 /// Paramedic UV penlights
 /datum/wound/burn/flesh/proc/uv(obj/item/flashlight/pen/paramedic/I, mob/user)
 	if(!COOLDOWN_FINISHED(I, uv_cooldown))
-		to_chat(user, span_notice("[I]Ainda está recarregando!"))
+		to_chat(user, span_notice("[I] Ainda está recarregando!"))
 		return
 	if(infection <= 0 || infection < sanitization)
-		to_chat(user, span_notice("Não há infecção para tratar.[victim]'s[limb.plaintext_zone]!"))
+		to_chat(user, span_notice("Não há infecção para tratar.[victim]'s [limb.plaintext_zone]!"))
 		return
 
-	user.visible_message(span_notice("[user]pisca as queimaduras.[victim]'s[limb]com[I]."), span_notice("Você pisca as queimaduras[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]com[I]."), vision_distance=COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_notice("[user] pisca as queimaduras.[victim]'s [limb] com [I]."), span_notice("Você pisca as queimaduras[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone] com [I]."), vision_distance=COMBAT_MESSAGE_RANGE)
 	sanitization += I.uv_power
 	COOLDOWN_START(I, uv_cooldown, I.uv_cooldown_length)
 
@@ -258,12 +258,12 @@
 	. = ..()
 	if(strikes_to_lose_limb <= 0) // we've already hit sepsis, nothing more to do
 		if(SPT_PROB(0.5, seconds_per_tick))
-			victim.visible_message(span_danger("A infecção nos restos de[victim]'s[limb.plaintext_zone]Desloque-se e enjoe!"), span_warning("Você pode sentir a infecção nos restos de seu[limb.plaintext_zone]Correndo em suas veias!"), vision_distance = COMBAT_MESSAGE_RANGE)
+			victim.visible_message(span_danger("A infecção nos restos de [victim]'s [limb.plaintext_zone] Desloque-se e enjoe!"), span_warning("Você pode sentir a infecção nos restos de seu [limb.plaintext_zone] Correndo em suas veias!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		return
 	if(flesh_healing > 0)
 		flesh_damage = max(flesh_damage - (0.1 * seconds_per_tick), 0)
 	if((flesh_damage <= 0) && (infection <= 1))
-		to_chat(victim, span_green("As queimaduras em seu[limb.plaintext_zone]Está limpo!"))
+		to_chat(victim, span_green("As queimaduras em seu [limb.plaintext_zone] Está limpo!"))
 		qdel(src)
 		return
 	if(sanitization > 0)

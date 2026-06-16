@@ -107,7 +107,7 @@
 
 /datum/component/uplink/proc/load_tc(mob/user, obj/item/stack/telecrystal/telecrystals, silent = FALSE)
 	if(!silent)
-		to_chat(user, span_notice("Você está em posição.[telecrystals]em[parent]e carregar seu uplink interno."))
+		to_chat(user, span_notice("Você está em posição.[telecrystals] em [parent] e carregar seu uplink interno."))
 	var/amt = telecrystals.amount
 	uplink_handler.add_telecrystals(amt)
 	telecrystals.use(amt)
@@ -131,10 +131,10 @@
 
 	if(user != owner)
 		return
-	examine_list += span_warning("[parent]contém seu link oculto[unlock_code ? ", the code to unlock it is [span_boldwarning(unlock_code)]" : null].")
+	examine_list += span_warning("[parent] contém seu link oculto[unlock_code ? ", the code to unlock it is [span_boldwarning(unlock_code)]" : null].")
 
 	if(failsafe_code)
-		examine_list += span_warning("O código de segurança é[span_boldwarning(failsafe_code)].")
+		examine_list += span_warning("O código de segurança é [span_boldwarning(failsafe_code)].")
 
 /datum/component/uplink/proc/interact(datum/source, mob/user)
 	SIGNAL_HANDLER

@@ -8,7 +8,7 @@
 	if(dna_lock && M.has_dna())
 		var/mob/living/carbon/entering_carbon = M
 		if(entering_carbon.dna.unique_enzymes != dna_lock)
-			to_chat(M, span_warning("Acesso negado.[name]está seguro com uma trava de DNA."))
+			to_chat(M, span_warning("Acesso negado.[name] está seguro com uma trava de DNA."))
 			log_message("Permission denied (DNA LOCK).", LOG_MECHA)
 			return
 	if((mecha_flags & ID_LOCK_ON) && !allowed(M))
@@ -23,7 +23,7 @@
 	if(M.incapacitated)
 		return FALSE
 	if(atom_integrity <= 0)
-		to_chat(M, span_warning("Você não pode entrar.[src]Ele foi destruído!"))
+		to_chat(M, span_warning("Você não pode entrar.[src] Ele foi destruído!"))
 		return FALSE
 	if(M.buckled)
 		to_chat(M, span_warning("Não pode entrar no exossuit com o cinto."))
@@ -71,10 +71,10 @@
 		to_chat(user, span_warning("está cheio!"))
 		return FALSE
 	if(dna_lock && (!brain_mob.stored_dna || (dna_lock != brain_mob.stored_dna.unique_enzymes)))
-		to_chat(user, span_warning("Acesso negado.[name]está seguro com uma trava de DNA."))
+		to_chat(user, span_warning("Acesso negado.[name] está seguro com uma trava de DNA."))
 		return FALSE
 
-	visible_message(span_notice("[user]começa a inserir um MMI em[name]."))
+	visible_message(span_notice("[user] começa a inserir um MMI em [name]."))
 
 	if(!do_after(user, 4 SECONDS, target = src))
 		to_chat(user, span_notice("Pare de inserir o MMI."))
@@ -93,7 +93,7 @@
 
 	var/mob/living/brain/brain_mob = brain_obj.brainmob
 	if(!user.transferItemToLoc(brain_obj, src))
-		to_chat(user, span_warning("[brain_obj]está preso em sua mão, você não pode colocá-lo em[src]!"))
+		to_chat(user, span_warning("[brain_obj] está preso em sua mão, você não pode colocá-lo em [src]!"))
 		return FALSE
 
 	brain_obj.set_mecha(src)

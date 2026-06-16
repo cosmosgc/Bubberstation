@@ -313,7 +313,7 @@
 /datum/action/cooldown/mob_cooldown/projectile_attack/kinetic_accelerator/Activate(atom/target_atom)
 	. = ..()
 	playsound(owner, projectile_sound, 200, TRUE, 2)
-	owner.visible_message(span_danger("[owner]Dispara o acelerador protocinético!"))
+	owner.visible_message(span_danger("[owner] Dispara o acelerador protocinético!"))
 	owner.face_atom(target_atom)
 	new /obj/effect/temp_visual/dir_setting/firing_effect(owner.loc, owner.dir)
 

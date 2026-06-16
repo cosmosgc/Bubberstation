@@ -29,5 +29,5 @@
 		if(soft_object == falling_victim)
 			to_chat(falling_victim, span_notice("Sua queda é amortecida pelo seu corpo para proporcionar uma aterrissagem suave!"))
 		else
-			to_chat(falling_victim, span_notice("[soft_object]Provê uma aterrissagem suave para você!"))
+			to_chat(falling_victim, span_notice("[soft_object] Provê uma aterrissagem suave para você!"))
 	return FALL_INTERCEPTED | FALL_NO_MESSAGE

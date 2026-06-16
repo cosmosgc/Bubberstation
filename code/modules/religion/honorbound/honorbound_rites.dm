@@ -12,7 +12,7 @@
 	if(!honor)
 		return FALSE
 	if(!length(honor.guilty))
-		to_chat(user, span_warning("[GLOB.deity]não guarda rancor para perdoar."))
+		to_chat(user, span_warning("[GLOB.deity] não guarda rancor para perdoar."))
 		return FALSE
 	var/forgiven_choice = tgui_input_list(user, "Choose one of [GLOB.deity]'s guilty to forgive", "Forgive", honor.guilty)
 	if(isnull(forgiven_choice))
@@ -47,7 +47,7 @@
 			continue
 		writ_target = could_writ //PLEASE SIGN MY AUTOGRAPH
 		return ..()
-	to_chat(user, span_warning("Você precisa colocar papel em branco[religious_tool]Para fazer isso!"))
+	to_chat(user, span_warning("Você precisa colocar papel em branco [religious_tool] Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/summon_rules/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -58,7 +58,7 @@
 	if(QDELETED(autograph) || !(tool_turf == autograph.loc)) //check if the paper is still there
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	autograph.visible_message(span_notice("Palavras mágicas se formam[autograph]!"))
+	autograph.visible_message(span_notice("Palavras mágicas se formam [autograph]!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
 	new /obj/item/paper/holy_writ(tool_turf)
 	qdel(autograph)
@@ -135,7 +135,7 @@
 
 /datum/religion_rites/deaconize/crusader/is_valid_for_deacon(mob/living/carbon/human/possible_deacon, mob/living/user)
 	if((TRAIT_GENELESS in possible_deacon.dna.species.inherent_traits) && !issynthetic(possible_deacon)) // BUBBER EDIT CHANGE: Let synths join crusades. Original: if(TRAIT_GENELESS in possible_deacon.dna.species.inherent_traits)
-		to_chat(user, span_warning("Esta espécie enoja.[GLOB.deity]Eles nunca poderiam se juntar à cruzada!"))
+		to_chat(user, span_warning("Esta espécie enoja.[GLOB.deity] Eles nunca poderiam se juntar à cruzada!"))
 		return FALSE
 	return ..()
 

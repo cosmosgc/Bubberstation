@@ -42,7 +42,7 @@
 	if(AI)
 		QDEL_NULL(AI)
 	QDEL_LIST(crowbar_salvage)
-	src.visible_message(span_danger("[src]A superestrutura se dobra sobre si mesma, colapsando em um monte de sucata insalvável!"))
+	src.visible_message(span_danger("[src] A superestrutura se dobra sobre si mesma, colapsando em um monte de sucata insalvável!"))
 	playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 	for(var/mob/living/witness in range(2, src))
 		shake_camera(witness, 2, 1)
@@ -59,16 +59,16 @@
 	..()
 	. = TRUE
 	if(salvage_num <= 0 || !length(welder_salvage))
-		to_chat(user, span_notice("Você não vê nada que possa ser cortado com[I]!"))
+		to_chat(user, span_notice("Você não vê nada que possa ser cortado com [I]!"))
 		return
 	if(!I.use_tool(src, user, 0, volume=50))
 		return
 	if(prob(30))
-		to_chat(user, span_notice("Você não consegue salvar nada valioso de[src]!"))
+		to_chat(user, span_notice("Você não consegue salvar nada valioso de [src]!"))
 		return
 	var/type = pick(welder_salvage)
 	var/N = new type(get_turf(user))
-	user.visible_message(span_notice("[user]Cortes.[N]De[src]."), span_notice("Você cortou.[N]De[src]."))
+	user.visible_message(span_notice("[user] Cortes.[N] De [src]."), span_notice("Você cortou.[N] De [src]."))
 	if(!isstack(N))
 		welder_salvage -= type
 	salvage_num--
@@ -77,10 +77,10 @@
 	..()
 	. = TRUE
 	if(wires_removed)
-		to_chat(user, span_notice("Você não vê nada que possa ser cortado com[I]!"))
+		to_chat(user, span_notice("Você não vê nada que possa ser cortado com [I]!"))
 		return
 	var/N = new /obj/item/stack/cable_coil(get_turf(user), rand(1,3))
-	user.visible_message(span_notice("[user]Cortes.[N]De[src]."), span_notice("Você cortou.[N]De[src]."))
+	user.visible_message(span_notice("[user] Cortes.[N] De [src]."), span_notice("Você cortou.[N] De [src]."))
 	wires_removed = TRUE
 
 /obj/structure/mecha_wreckage/crowbar_act(mob/living/user, obj/item/I)
@@ -89,10 +89,10 @@
 	if(crowbar_salvage.len)
 		var/obj/S = pick(crowbar_salvage)
 		S.forceMove(user.drop_location())
-		user.visible_message(span_notice("[user]Pries.[S]De[src]."), span_notice("Você se intromete.[S]De[src]."))
+		user.visible_message(span_notice("[user] Pries.[S] De [src]."), span_notice("Você se intromete.[S] De [src]."))
 		crowbar_salvage -= S
 		return
-	to_chat(user, span_notice("Você não vê nada que possa ser invadido com[I]!"))
+	to_chat(user, span_notice("Você não vê nada que possa ser invadido com [I]!"))
 
 /obj/structure/mecha_wreckage/transfer_ai(interaction, mob/user, mob/living/silicon/ai/ai_mob, obj/item/aicard/card)
 	if(!..())

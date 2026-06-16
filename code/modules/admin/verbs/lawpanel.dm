@@ -120,7 +120,7 @@ ADMIN_VERB(law_panel, R_ADMIN, "Law Panel", "View the AI laws.", ADMIN_CATEGORY_
 
 	// Sanity
 	if(old_prio != borgo.laws.supplied.Find(law))
-		to_chat(user, span_danger("[borgo]As leis podem ter mudado já que você editou prioridade, por favor, tente novamente."))
+		to_chat(user, span_danger("[borgo] As leis podem ter mudado já que você editou prioridade, por favor, tente novamente."))
 		return FALSE
 
 	// If it's far beyond any existing values, just re-add it normally
@@ -142,7 +142,7 @@ ADMIN_VERB(law_panel, R_ADMIN, "Law Panel", "View the AI laws.", ADMIN_CATEGORY_
 			return FALSE
 		// Sanity
 		if(law != borgo.laws.supplied[old_prio] || existing_law != borgo.laws.supplied[new_prio])
-			to_chat(user, span_danger("[borgo]As leis mudaram desde que você editou a prioridade, por favor tente novamente."))
+			to_chat(user, span_danger("[borgo] As leis mudaram desde que você editou a prioridade, por favor tente novamente."))
 			return FALSE
 
 		if(swap_or_remove == "Swap")
@@ -166,7 +166,7 @@ ADMIN_VERB(law_panel, R_ADMIN, "Law Panel", "View the AI laws.", ADMIN_CATEGORY_
 
 	// Sanity
 	if(old_prio != borgo.laws.supplied.Find(law))
-		to_chat(user, span_danger("[borgo]As leis podem ter mudado desde que você editou prioridade, por favor, tente novamente."))
+		to_chat(user, span_danger("[borgo] As leis podem ter mudado desde que você editou prioridade, por favor, tente novamente."))
 		return FALSE
 
 	// At this point the slot is free, insert it as normal

@@ -13,13 +13,13 @@
 
 /datum/status_effect/determined/on_apply()
 	. = ..()
-	owner.visible_message(span_danger("[owner]O corpo se tensiona visivelmente, gritting contra[owner.p_their()]Dor!"), span_notice("<b>Seus sentidos aguçam enquanto seu corpo está tenso pelas feridas que sofreu!</b>"), 		vision_distance=COMBAT_MESSAGE_RANGE)
+	owner.visible_message(span_danger("[owner] O corpo se tensiona visivelmente, gritting contra [owner.p_their()] Dor!"), span_notice("<b>Seus sentidos aguçam enquanto seu corpo está tenso pelas feridas que sofreu!</b>"), 		vision_distance=COMBAT_MESSAGE_RANGE)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		human_owner.physiology.bleed_mod *= WOUND_DETERMINATION_BLEED_MOD
 
 /datum/status_effect/determined/on_remove()
-	owner.visible_message(span_danger("[owner]Ó corpo relaxado!"), span_warning("<b>Sua adrenalina acaba, e a dor de suas feridas volta a doer...</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+	owner.visible_message(span_danger("[owner] Ó corpo relaxado!"), span_warning("<b>Sua adrenalina acaba, e a dor de suas feridas volta a doer...</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		human_owner.physiology.bleed_mod /= WOUND_DETERMINATION_BLEED_MOD

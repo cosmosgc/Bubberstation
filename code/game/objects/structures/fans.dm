@@ -15,8 +15,8 @@
 		new buildstacktype(loc,buildstackamount)
 
 /obj/structure/fans/wrench_act(mob/living/user, obj/item/I)
-	user.visible_message(span_warning("[user]Desmonta[src]."),
-		span_notice("Você começa a desmontar[src]..."), span_hear("Você ouve barulhos."))
+	user.visible_message(span_warning("[user] Desmonta [src]."),
+		span_notice("Você começa a desmontar [src]..."), span_hear("Você ouve barulhos."))
 	if(I.use_tool(src, user, 20, volume=50))
 		deconstruct(TRUE)
 	return TRUE

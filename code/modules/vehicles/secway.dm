@@ -72,22 +72,22 @@
 	if(!istype(tool, /obj/item/food/grown/banana))
 		return NONE
 	// ignore the occupants because they're presumably too distracted to notice the guy stuffing fruit into their vehicle's exhaust. do segways have exhausts? they do now!
-	user.visible_message(span_warning("[user]Começa o recheio[tool]Em[src]O tubo de fuga."), span_warning("Você começa a encher[tool]Em[src]O tubo de fuga..."), ignored_mobs = occupants)
+	user.visible_message(span_warning("[user] Começa o recheio [tool] Em [src] O tubo de fuga."), span_warning("Você começa a encher [tool] Em [src] O tubo de fuga..."), ignored_mobs = occupants)
 	if(!do_after(user, 3 SECONDS, src))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_warning("[user]Coisas.[tool]Em[src]O tubo de fuga."), span_warning("Sua coisa.[tool]Em[src]O tubo de fuga."), ignored_mobs = occupants)
+	user.visible_message(span_warning("[user] Coisas.[tool] Em [src] O tubo de fuga."), span_warning("Sua coisa.[tool] Em [src] O tubo de fuga."), ignored_mobs = occupants)
 	eddie_murphy = tool
 	return ITEM_INTERACT_SUCCESS
 
 /obj/vehicle/ridden/secway/attack_hand(mob/living/user, list/modifiers)
 	if(!eddie_murphy)
 		return ..()
-	user.visible_message(span_warning("[user]começa a limpar.[eddie_murphy]Fora[src]."), span_warning("Você começa a limpar.[eddie_murphy]Fora[src]..."))
+	user.visible_message(span_warning("[user] começa a limpar.[eddie_murphy] Fora [src]."), span_warning("Você começa a limpar.[eddie_murphy] Fora [src]..."))
 	if(!do_after(user, 6 SECONDS, target = src))
 		return ..()
-	user.visible_message(span_warning("[user]Limpa.[eddie_murphy]Fora[src]."), span_warning("Você consegue[eddie_murphy]Fora[src]."))
+	user.visible_message(span_warning("[user] Limpa.[eddie_murphy] Fora [src]."), span_warning("Você consegue [eddie_murphy] Fora [src]."))
 	eddie_murphy.forceMove(drop_location())
 	eddie_murphy = null
 

@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 
 	INVOKE_ASYNC(cast_on, TYPE_PROC_REF(/atom/movable, say), message = "R'CH T'H F'SH!", forced = "fishing rod infusion invocation")
 	playsound(cast_on, /datum/action/cooldown/spell/touch/mansus_grasp::sound, 15)
-	cast_on.visible_message(span_notice("[cast_on]Snaps[cast_on.p_their()]Dedos ao lado de[held_rod], cobrindo-o em uma explosão de chamas roxas!"))
+	cast_on.visible_message(span_notice("[cast_on] Snaps [cast_on.p_their()] Dedos ao lado de [held_rod], cobrindo-o em uma explosão de chamas roxas!"))
 
 	ADD_TRAIT(held_rod, TRAIT_ROD_MANSUS_INFUSED, REF(held_rod))
 	held_rod.difficulty_modifier -= 20
@@ -101,12 +101,12 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 			// We found a replacement place to put our heart
 			where_to_put_our_heart = look_for_backup
 			our_heretic.living_heart_organ_slot = backup_slot
-			to_chat(user, span_boldnotice("Como sua espécie não tem coração, seu coração vivo está localizado em seu[look_for_backup.name]."))
+			to_chat(user, span_boldnotice("Como sua espécie não tem coração, seu coração vivo está localizado em seu [look_for_backup.name]."))
 			break
 
 	if(where_to_put_our_heart)
 		where_to_put_our_heart.AddComponent(/datum/component/living_heart)
-		desc = "Concede-lhe um coração vivo, amarrado ao seu[where_to_put_our_heart.name], permitindo que você rastreie alvos de sacrifício. Se você perder seu[where_to_put_our_heart.name], você pode transmutar uma papoula e uma poça de sangue para acordar seu[where_to_put_our_heart.name]em um Coração Vivo. Cybernetic[where_to_put_our_heart.name]Bloqueará o ritual!"
+		desc = "Concede-lhe um coração vivo, amarrado ao seu [where_to_put_our_heart.name], permitindo que você rastreie alvos de sacrifício. Se você perder seu [where_to_put_our_heart.name], você pode transmutar uma papoula e uma poça de sangue para acordar seu [where_to_put_our_heart.name] em um Coração Vivo. Cybernetic [where_to_put_our_heart.name] Bloqueará o ritual!"
 
 	else
 		to_chat(user, span_boldnotice("Você não tem coração, nem órgãos do peito. Você não ganhou um Coração Vivo por causa disso."))
@@ -142,7 +142,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	if(is_valid_heart(our_living_heart))
 		return TRUE
 
-	loc.balloon_alert(user, "O ritual falhou,[our_heretic.living_heart_organ_slot]Não pode ser acordado!") // "coração não pode ser despertado!"
+	loc.balloon_alert(user, "O ritual falhou,[our_heretic.living_heart_organ_slot] Não pode ser acordado!") // "coração não pode ser despertado!"
 	return FALSE
 
 /datum/heretic_knowledge/living_heart/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 	selected_atoms -= our_new_heart
 	// Make it the living heart
 	our_new_heart.AddComponent(/datum/component/living_heart)
-	to_chat(user, span_warning("Você sente o seu[our_new_heart.name]Comece o pulso mais rápido e rápido quando ele acordar!"))
+	to_chat(user, span_warning("Você sente o seu [our_new_heart.name] Comece o pulso mais rápido e rápido quando ele acordar!"))
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	return TRUE
 
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		stack_trace("Somehow, no book in codex cicatrix selected atoms! [english_list(selected_atoms)]")
 	playsound(body, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
 	body.do_jitter_animation()
-	body.visible_message(span_danger("Um som terrível é ouvido como[ripped_thing]'s[exterior_text]é arrancado para fora, enrolando ao redor[le_book || "the book"], transformando-se em um tom azul eldritch!"))
+	body.visible_message(span_danger("Um som terrível é ouvido como [ripped_thing]'s [exterior_text] é arrancado para fora, enrolando ao redor[le_book || "the book"], transformando-se em um tom azul eldritch!"))
 	return ..()
 
 /datum/heretic_knowledge/feast_of_owls

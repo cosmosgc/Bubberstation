@@ -14,7 +14,7 @@
 	SIGNAL_HANDLER
 
 	owner.visible_message(
-		span_danger("[owner]lentamente tira sua cabeça de sua concha!"),
+		span_danger("[owner] lentamente tira sua cabeça de sua concha!"),
 		span_userdanger("Você tira a cabeça da casca."),
 	)
 	REMOVE_TRAIT(owner, TRAIT_SHELL_RETREATED, REF(src))
@@ -23,7 +23,7 @@
 
 /datum/action/cooldown/mob_cooldown/shell_retreat/proc/retreat_into_shell()
 	owner.visible_message(
-		span_danger("[owner]Rápido escapa para sua concha!"),
+		span_danger("[owner] Rápido escapa para sua concha!"),
 		span_userdanger("Você se esconde em sua concha..."),
 	)
 	RegisterSignals(owner, list(COMSIG_LIVING_DEATH, COMSIG_MOVABLE_ATTEMPTED_MOVE), PROC_REF(unretreat_from_shell))

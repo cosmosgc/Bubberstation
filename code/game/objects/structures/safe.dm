@@ -93,7 +93,7 @@ FLOOR SAFES
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert(user, "Reestabelecendo trava...")
-	to_chat(user, span_notice("Você começa a redefinir a fechadura para[src]Você vai precisar definir[number_of_tumblers]Números."))
+	to_chat(user, span_notice("Você começa a redefinir a fechadura para [src] Você vai precisar definir [number_of_tumblers] Números."))
 
 	var/list/new_tumblers = list()
 	for(var/tumbler_index in 1 to number_of_tumblers)
@@ -114,7 +114,7 @@ FLOOR SAFES
 	current_tumbler_index = 1
 	dial = 0
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("Você reiniciou com sucesso a fechadura para[src]A nova combinação é:[tumblers.Join("-")]."))
+	to_chat(user, span_notice("Você reiniciou com sucesso a fechadura para [src] A nova combinação é:[tumblers.Join("-")]."))
 	balloon_alert(user, "Fechado!")
 	return ITEM_INTERACT_SUCCESS
 
@@ -123,18 +123,18 @@ FLOOR SAFES
 		. = TRUE //no afterattack
 		if(attacking_item.w_class + space <= maxspace)
 			if(!user.transferItemToLoc(attacking_item, src))
-				to_chat(user, span_warning("\The [attacking_item]está preso em sua mão, você não pode colocá-lo no cofre!"))
+				to_chat(user, span_warning("\The [attacking_item] está preso em sua mão, você não pode colocá-lo no cofre!"))
 				return
 			space += attacking_item.w_class
-			to_chat(user, span_notice("Você colocou[attacking_item]Em[src]."))
+			to_chat(user, span_notice("Você colocou [attacking_item] Em [src]."))
 		else
-			to_chat(user, span_warning("[attacking_item]Não vai caber[src]."))
+			to_chat(user, span_warning("[attacking_item] Não vai caber [src]."))
 	else
 		if(istype(attacking_item, /obj/item/clothing/neck/stethoscope))
 			attack_hand(user)
 			return
 		else
-			to_chat(user, span_warning("Você não pode colocar[attacking_item]no cofre enquanto está fechado!"))
+			to_chat(user, span_warning("Você não pode colocar [attacking_item] no cofre enquanto está fechado!"))
 			return
 
 /obj/structure/safe/blob_act(obj/structure/blob/B)
@@ -290,7 +290,7 @@ FLOOR SAFES
 	if(!canhear)
 		return
 	if(current_tick == 2)
-		to_chat(user, span_italics("Os filhos de[src]são muito rápidos e se misturam."))
+		to_chat(user, span_italics("Os filhos de [src] são muito rápidos e se misturam."))
 	if(total_ticks == 1 || prob(SOUND_CHANCE))
 		balloon_alert(user, pick(sounds))
 

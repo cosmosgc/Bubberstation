@@ -120,12 +120,12 @@
 
 /obj/item/mecha_parts/mecha_tracking/try_attach_part(mob/user, obj/vehicle/sealed/mecha/mecha_to_attach, attach_right = FALSE)
 	if(!(mecha_to_attach.mecha_flags & flag_to_check))
-		to_chat(user, span_notice("[src]É incompatível com[mecha_to_attach]."))
+		to_chat(user, span_notice("[src] É incompatível com [mecha_to_attach]."))
 		return
 
 	for(var/obj/item/mecha_parts/mecha_tracking/tracker as anything in mecha_to_attach.trackers)
 		if(tracker.flag_to_check == flag_to_check)
-			to_chat(user, span_notice("Já existe uma versão de[src]Ligado.[mecha_to_attach]."))
+			to_chat(user, span_notice("Já existe uma versão de [src] Ligado.[mecha_to_attach]."))
 			return
 
 	if(!..())

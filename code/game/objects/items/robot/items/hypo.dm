@@ -109,7 +109,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(!injectee.try_inject(user, user.zone_selected, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE | (bypass_protection ? INJECT_CHECK_PENETRATE_THICK : 0)))
-		balloon_alert(user, "[injectee.parse_zone_with_bodypart(user.zone_selected)]Está bloqueado!")
+		balloon_alert(user, "[injectee.parse_zone_with_bodypart(user.zone_selected)] Está bloqueado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (!injectee.reagents)
@@ -117,10 +117,10 @@
 		return ITEM_INTERACT_BLOCKING
 
 	to_chat(injectee, span_warning("Você sente um pinto minúsculo!"))
-	to_chat(user, span_notice("Você injeta.[injectee]como injetor ([selected_reagent.name])."))
+	to_chat(user, span_notice("Você injeta.[injectee] como injetor ([selected_reagent.name])."))
 	user.changeNext_move(CLICK_CD_MELEE)
 	stored_reagents.trans_to(injectee, amount_per_transfer_from_this, target_id = selected_reagent.type, transferred_by = user, methods = INJECT)
-	balloon_alert(user, "[amount_per_transfer_from_this]Unidade injetada.")
+	balloon_alert(user, "[amount_per_transfer_from_this] Unidade injetada.")
 	log_combat(user, injectee, "injected", src, "(CHEMICALS: [selected_reagent])")
 	return ITEM_INTERACT_SUCCESS
 
@@ -163,13 +163,13 @@
 				var/obj/item/robot_model/container_model = loc
 				cyborg = container_model.robot
 			playsound(cyborg, 'sound/effects/pop.ogg', 50, FALSE)
-			balloon_alert(cyborg, "Dispensando[selected_reagent.name]")
+			balloon_alert(cyborg, "Dispensando [selected_reagent.name]")
 			break
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
 	. = ..()
 	. += "Currently loaded: [selected_reagent ? "[selected_reagent]. [selected_reagent.description]" : "nothing."]"
-	. += span_notice("<i>Alt+. Clique.</i>para mudar a quantidade de transferência. Atualmente definido para[amount_per_transfer_from_this]U.")
+	. += span_notice("<i>Alt+. Clique.</i>para mudar a quantidade de transferência. Atualmente definido para [amount_per_transfer_from_this] U.")
 
 /* SKYRAT EDIT REMOVAL START - SEE master_files/code/modules/reagents/reagent_containers.dm
 /obj/item/reagent_containers/borghypo/click_alt(mob/living/user)
@@ -339,7 +339,7 @@ SKYRAT EDIT REMOVAL END */
 	shaker.add_reagent(selected_reagent.type, amount_per_transfer_from_this, reagtemp = dispensed_temperature, no_react = TRUE)
 
 	shaker.trans_to(interacting_with, amount_per_transfer_from_this, transferred_by = user)
-	balloon_alert(user, "[amount_per_transfer_from_this]A unidade está derramada.")
+	balloon_alert(user, "[amount_per_transfer_from_this] A unidade está derramada.")
 	return ITEM_INTERACT_SUCCESS
 
 
@@ -397,7 +397,7 @@ SKYRAT EDIT REMOVAL END */
 	stored_reagents.remove_reagent(selected_reagent.type, amount_per_transfer_from_this)
 	shaker.add_reagent(selected_reagent.type, amount_per_transfer_from_this, reagtemp = dispensed_temperature, no_react = TRUE)
 	shaker.trans_to(interacting_with, amount_per_transfer_from_this, transferred_by = user)
-	balloon_alert(user, "[amount_per_transfer_from_this]A unidade está derramada.")
+	balloon_alert(user, "[amount_per_transfer_from_this] A unidade está derramada.")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/borghypo/borgshaker/hacked

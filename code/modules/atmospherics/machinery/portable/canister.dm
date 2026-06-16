@@ -66,7 +66,7 @@
 		create_gas()
 
 	if(ispath(gas_type, /datum/gas))
-		desc = "[GLOB.meta_gas_info[gas_type][META_GAS_NAME]]. [GLOB.meta_gas_info[gas_type][META_GAS_DESC]]"
+		desc = "[GLOB.meta_gas_info [gas_type][META_GAS_NAME]]. [GLOB.meta_gas_info [gas_type][META_GAS_DESC]]"
 
 	update_window()
 
@@ -109,10 +109,10 @@
 	. = ..()
 	if(atom_integrity < max_integrity)
 		. += span_notice("Integridade comprometida, reparar casco com uma ferramenta de solda.")
-	. += span_notice("Um adesivo de seu lado diz<b>Pressão máxima segura:[siunit_pressure(initial(pressure_limit), 0)]Temperatura Max Seguro:[siunit(temp_limit, "K", 0)]</b>.")
+	. += span_notice("Um adesivo de seu lado diz<b>Pressão máxima segura:[siunit_pressure(initial(pressure_limit), 0)] Temperatura Max Seguro:[siunit(temp_limit, "K", 0)]</b>.")
 	. += span_notice("O casco é<b>Soldado.</b>Juntas e podem ser separadas.")
 	if(internal_cell)
-		. += span_notice("A célula interna tem[internal_cell.percent()]De sua carga total.")
+		. += span_notice("A célula interna tem [internal_cell.percent()] De sua carga total.")
 	else
 		. += span_notice("Aviso, nenhuma célula instalada, use uma chave de fenda para abrir a escotilha e inserir uma.")
 	if(panel_open)
@@ -450,12 +450,12 @@
 
 	var/pressure = air_contents.return_pressure()
 	if(pressure > 300)
-		to_chat(user, span_alert("O medidor de pressão ligado.[src]indica uma alta pressão dentro... talvez queira reconsiderar?"))
+		to_chat(user, span_alert("O medidor de pressão ligado.[src] indica uma alta pressão dentro... talvez queira reconsiderar?"))
 		message_admins("[src] deconstructed by [ADMIN_LOOKUPFLW(user)]")
 		user.log_message("deconstructed [src] with a welder.", LOG_GAME)
-	to_chat(user, span_notice("Você começa a cortar[src]Separados..."))
+	to_chat(user, span_notice("Você começa a cortar [src] Separados..."))
 	if(I.use_tool(src, user, 3 SECONDS, volume=50))
-		to_chat(user, span_notice("Você cortou.[src]Separados."))
+		to_chat(user, span_notice("Você cortou.[src] Separados."))
 		deconstruct(TRUE)
 
 	return ITEM_INTERACT_SUCCESS

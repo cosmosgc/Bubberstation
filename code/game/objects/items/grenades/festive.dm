@@ -52,7 +52,7 @@
 	return ..()
 
 /obj/item/sparkler/ignition_effect(atom/atom, mob/user)
-	. = span_notice("[user]graciosamente luzes[atom]com[src].")
+	. = span_notice("[user] graciosamente luzes [atom] com [src].")
 
 /obj/item/sparkler/get_temperature()
 	return lit * heat
@@ -91,7 +91,7 @@
 		return
 	if(det_time)
 		det_time -= 10
-		to_chat(user, span_notice("Você encurta o fusível de[src]com[item]."))
+		to_chat(user, span_notice("Você encurta o fusível de [src] com [item]."))
 		playsound(src, 'sound/items/tools/wirecutter.ogg', 20, TRUE)
 		icon_state = initial(icon_state) + "_[det_time]"
 		update_appearance()
@@ -103,7 +103,7 @@
 	if(user)
 		add_fingerprint(user)
 		if(msg)
-			to_chat(user, span_warning("Você prime[src]! [capitalize(DisplayTimeText(det_time))]!"))
+			to_chat(user, span_warning("Você prime [src]! [capitalize(DisplayTimeText(det_time))]!"))
 	playsound(src, 'sound/effects/fuse.ogg', volume, TRUE)
 	active = TRUE
 	icon_state = initial(icon_state) + "_active"

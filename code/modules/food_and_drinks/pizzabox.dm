@@ -70,19 +70,19 @@
 		boxtag_set = TRUE
 	if(open)
 		if(pizza)
-			desc = "[desc]Parece ter\a [pizza]Dentro.[pizza.sliced ? ". It is sliced" : ""]Use sua outra mão para tirá-la."
+			desc = "[desc] Parece ter\a [pizza] Dentro.[pizza.sliced ? ". It is sliced" : ""]Use sua outra mão para tirá-la."
 		if(bomb)
-			desc = "[desc]Espere, o quê? Tem.\a [bomb]Para dentro!"
+			desc = "[desc] Espere, o quê? Tem.\a [bomb] Para dentro!"
 			if(bomb_defused)
-				desc = "[desc]A bomba parece inerte. Use sua outra mão para ativá-la."
+				desc = "[desc] A bomba parece inerte. Use sua outra mão para ativá-la."
 			if(bomb_active)
-				desc = "[desc]Parece que vai explodir!"
+				desc = "[desc] Parece que vai explodir!"
 	else
 		var/obj/item/pizzabox/box = length(boxes) ? boxes[length(boxes)] : src
 		if(length(boxes))
-			desc = "Uma pilha de caixas para pizzas. Parece haver[length(boxes) + 1]Caixas na pilha."
+			desc = "Uma pilha de caixas para pizzas. Parece haver [length(boxes) + 1] Caixas na pilha."
 		if(box.boxtag != "")
-			desc = "[desc]O[length(boxes) ? "top box" : "box"]A etiqueta diz:[box.boxtag]."
+			desc = "[desc] O[length(boxes) ? "top box" : "box"]A etiqueta diz:[box.boxtag]."
 
 /obj/item/pizzabox/update_icon_state()
 	if(!open)
@@ -139,7 +139,7 @@
 		return
 	open = !open
 	if(open && !bomb_defused)
-		audible_message(span_warning("[icon2html(src, hearers(src))]Bip"))
+		audible_message(span_warning("[icon2html(src, hearers(src))] Bip"))
 		bomb_active = TRUE
 		START_PROCESSING(SSobj, src)
 	update_appearance()

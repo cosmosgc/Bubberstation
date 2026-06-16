@@ -25,7 +25,7 @@
 	var/turf/player_turf = get_turf(user)
 	if(player_turf?.is_blocked_turf(TRUE))
 		return FALSE
-	user.visible_message(span_danger("[user]começa a plantar\the [src]..."))
+	user.visible_message(span_danger("[user] começa a plantar\the [src]..."))
 	if(do_after(user, 8 SECONDS, target = user.drop_location(), progress = TRUE))
 		new /obj/structure/hedge/opaque(user.drop_location())
 		to_chat(user, span_notice("Você planta.\the [src]."))

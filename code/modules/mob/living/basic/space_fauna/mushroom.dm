@@ -103,10 +103,10 @@
 		consume_mushroom(target)
 		return
 	target.faint_ticker++
-	visible_message(span_notice("[src]Mastiga um pouco.[target]."))
+	visible_message(span_notice("[src] Mastiga um pouco.[target]."))
 
 /mob/living/basic/mushroom/proc/consume_mushroom(mob/living/basic/mushroom/consumed)
-	visible_message(span_warning("[src]Devora[consumed]!"))
+	visible_message(span_warning("[src] Devora [consumed]!"))
 	var/level_gain = (consumed.powerlevel - powerlevel)
 	if(level_gain >= 0 && !ckey && !consumed.bruised)//Player shrooms can't level up to become robust gods.
 		consumed.level_up(level_gain)
@@ -135,7 +135,7 @@
 		add_overlay(cap_living)
 
 /mob/living/basic/mushroom/proc/recover(obj/item/mush_meal)
-	visible_message(span_notice("[src]Venha.[mush_meal]!"))
+	visible_message(span_notice("[src] Venha.[mush_meal]!"))
 	update_mushroomcap()
 	qdel(mush_meal)
 	if(!COOLDOWN_FINISHED(src, recovery_cooldown))

@@ -255,7 +255,7 @@
 
 	turned_on_portal = WEAKREF(user)
 
-	balloon_alert(user, "local mudado para[chosen_venue.name]")
+	balloon_alert(user, "local mudado para [chosen_venue.name]")
 
 	if(linked_venue && (src in linked_venue.restaurant_portals)) //We're already linked, unlink us.
 		linked_venue.restaurant_portals -= src

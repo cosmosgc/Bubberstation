@@ -179,12 +179,12 @@
 /obj/structure/carp_rift/examine(mob/user)
 	. = ..()
 	if(time_charged < max_charge)
-		. += span_notice("Parece que sim.[(time_charged / max_charge) * 100]Está carregado.")
+		. += span_notice("Parece que sim.[(time_charged / max_charge) * 100] Está carregado.")
 	else
 		. += span_warning("Este está totalmente carregado. Neste estado, está preparado para transportar uma quantidade muito maior de carpa do que o normal.")
 
 	if(isobserver(user))
-		. += span_notice("Tem.[carp_stored]Carpa disponível para desovar.")
+		. += span_notice("Tem.[carp_stored] Carpa disponível para desovar.")
 
 /obj/structure/carp_rift/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	playsound(src, 'sound/effects/magic/lightningshock.ogg', 50, TRUE)
@@ -330,7 +330,7 @@
 /obj/structure/carp_rift/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(HAS_TRAIT(attacking_item, TRAIT_TELEKINESIS_CONTROLLED))
 		if(user)
-			to_chat(user, span_warning("O campo gravitacional de[src]interfere com o controle telequenético de[user], anulando o golpe!"))
+			to_chat(user, span_warning("O campo gravitacional de [src] interfere com o controle telequenético de [user], anulando o golpe!"))
 		return FALSE
 	. = ..()
 
@@ -338,7 +338,7 @@
 	if(HAS_TRAIT(hit_by, TRAIT_TELEKINESIS_CONTROLLED))
 		var/mob/thrower = throwingdatum.thrower.resolve()
 		if(thrower && ismob(thrower))
-			to_chat(thrower, span_warning("O campo gravitacional de[src]interfere com o controle telequenético de[hit_by], anulando o golpe!"))
+			to_chat(thrower, span_warning("O campo gravitacional de [src] interfere com o controle telequenético de [hit_by], anulando o golpe!"))
 		return
 	. = ..()
 

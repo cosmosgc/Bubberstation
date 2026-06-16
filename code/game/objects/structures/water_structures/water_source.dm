@@ -32,7 +32,7 @@
 	if(selected_area in list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES))
 		washing_face = TRUE
 	user.visible_message(
-		span_notice("[user]Começa a lavar.[user.p_their()] [washing_face ? "face" : "hands"]..."),
+		span_notice("[user] Começa a lavar.[user.p_their()] [washing_face ? "face" : "hands"]..."),
 		span_notice("Você começa a lavar o seu[washing_face ? "face" : "hands"]..."))
 	busy = TRUE
 
@@ -53,8 +53,8 @@
 		user.wash(CLEAN_WASH)
 
 	user.visible_message(
-		span_notice("[user]Lava.[user.p_their()] [washing_face ? "face" : "hands"]Usando[src]."),
-		span_notice("Você lava o seu[washing_face ? "face" : "hands"]Usando[src]."),
+		span_notice("[user] Lava.[user.p_their()] [washing_face ? "face" : "hands"]Usando [src]."),
+		span_notice("Você lava o seu[washing_face ? "face" : "hands"]Usando [src]."),
 	)
 
 /obj/structure/water_source/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -70,9 +70,9 @@
 		if(container.is_refillable())
 			if(!container.reagents.holder_full())
 				container.reagents.add_reagent(dispensedreagent, min(container.volume - container.reagents.total_volume, container.amount_per_transfer_from_this))
-				to_chat(user, span_notice("Você enche.[container]De[src]."))
+				to_chat(user, span_notice("Você enche.[container] De [src]."))
 				return TRUE
-			to_chat(user, span_notice("\The [container]Está cheio."))
+			to_chat(user, span_notice("\The [container] Está cheio."))
 			return FALSE
 
 	if(istype(attacking_item, /obj/item/melee/baton/security))
@@ -83,14 +83,14 @@
 			user.set_stutter(baton.knockdown_time)
 			baton.cell.use(baton.cell_hit_cost)
 			user.visible_message(
-				span_warning("[user]Choques.[user.p_them()]Auto-enquanto tenta lavar o ativo[baton.name]!"),
-				span_userdanger("Você insensato tentar lavar[baton]Enquanto ainda está ligado."))
+				span_warning("[user] Choques.[user.p_them()] Auto-enquanto tenta lavar o ativo [baton.name]!"),
+				span_userdanger("Você insensato tentar lavar [baton] Enquanto ainda está ligado."))
 			playsound(src, baton.on_stun_sound, 50, TRUE)
 			return
 
 	if(istype(attacking_item, /obj/item/mop))
 		attacking_item.reagents.add_reagent(dispensedreagent, 5)
-		to_chat(user, span_notice("Você está molhado.[attacking_item]Em[src]."))
+		to_chat(user, span_notice("Você está molhado.[attacking_item] Em [src]."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 		return
 
@@ -104,8 +104,8 @@
 		attacking_item.wash(CLEAN_WASH)
 		reagents.expose(attacking_item, TOUCH, 5 / max(reagents.total_volume, 5))
 		user.visible_message(
-			span_notice("[user]Lava.[attacking_item]Usando[src]."),
-			span_notice("Você lava.[attacking_item]Usando[src]."))
+			span_notice("[user] Lava.[attacking_item] Usando [src]."),
+			span_notice("Você lava.[attacking_item] Usando [src]."))
 		return TRUE
 
 	return ..()

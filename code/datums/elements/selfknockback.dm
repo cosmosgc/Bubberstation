@@ -45,7 +45,7 @@ clamping the Knockback_Force value below. */
 	var/target_angle = get_angle(attacktarget, usertarget)
 	var/move_target = get_ranged_target_turf(usertarget, angle2dir(target_angle), knockback_force)
 	usertarget.throw_at(move_target, knockback_force, knockback_speed)
-	usertarget.visible_message(span_warning("[usertarget]é jogado de volta pela força de\the [I]impacto\the [attacktarget]!"), span_warning("A força de\the [I]impacto\the [attacktarget]Manda você voar!"))
+	usertarget.visible_message(span_warning("[usertarget] é jogado de volta pela força de\the [I] impacto\the [attacktarget]!"), span_warning("A força de\the [I] impacto\the [attacktarget] Manda você voar!"))
 
 /datum/element/selfknockback/proc/Projectile_SelfKnockback(obj/projectile/proj)
 	SIGNAL_HANDLER

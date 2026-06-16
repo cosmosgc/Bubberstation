@@ -38,9 +38,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a cunhar[tool]Em[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a cunhar\the [tool]Em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a colocar algo em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a cunhar [tool] Em [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a cunhar\the [tool] Em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a colocar algo em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Something's being jammed into your [limb.plaintext_zone]!")
 
@@ -56,9 +56,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Sua cunha.[tool]Em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Cunhas.[tool]Em[FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon]Encaixa algo em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Sua cunha.[tool] Em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Cunhas.[tool] Em [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon] Encaixa algo em [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/remove_dental_implant
@@ -89,9 +89,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a olhar[limb.owner || limb]boca para implantes dentários..."),
-		span_notice("[surgeon]começa a olhar[limb.owner || limb]Uma boca."),
-		span_notice("[surgeon]Começa a examinar[limb.owner || limb]Os dentes."),
+		span_notice("Você começa a olhar [limb.owner || limb] boca para implantes dentários..."),
+		span_notice("[surgeon] começa a olhar [limb.owner || limb] Uma boca."),
+		span_notice("[surgeon] Começa a examinar [limb.owner || limb] Os dentes."),
 	)
 	display_pain(limb.owner, "You feel fingers poke around at your teeth.")
 
@@ -103,9 +103,9 @@
 		display_results(
 			surgeon,
 			limb.owner,
-			span_notice("Você não encontra nenhum implante dentário em[FORMAT_LIMB_OWNER(limb)]."),
-			span_notice("[surgeon]não encontra nenhum implante dentário em[FORMAT_LIMB_OWNER(limb)]."),
-			span_notice("[surgeon]Termina de exame.[FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("Você não encontra nenhum implante dentário em [FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("[surgeon] não encontra nenhum implante dentário em [FORMAT_LIMB_OWNER(limb)]."),
+			span_notice("[surgeon] Termina de exame.[FORMAT_LIMB_OWNER(limb)]."),
 		)
 		return
 
@@ -118,9 +118,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você retira com cuidado.[yoinked]De[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Cuidado com a remoção.[yoinked]De[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Cuidado, remova algo de[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você retira com cuidado.[yoinked] De [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Cuidado com a remoção.[yoinked] De [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Cuidado, remova algo de [FORMAT_LIMB_OWNER(limb)]."),
 	)
 
 // Teeth pill code

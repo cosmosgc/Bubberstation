@@ -98,7 +98,7 @@
 			to_chat(user, span_warning("Este feitiço não pode ser melhorado!"))
 			return FALSE
 
-		to_chat(user, span_notice("Você melhorou.[before_name]Em[existing.name]."))
+		to_chat(user, span_notice("Você melhorou.[before_name] Em [existing.name]."))
 		name = existing.name
 
 		//we'll need to update the cooldowns for the spellbook
@@ -113,7 +113,7 @@
 	//No same spell found - just learn it
 	var/datum/action/cooldown/spell/new_spell = new spell_type(user.mind || user)
 	new_spell.Grant(user)
-	to_chat(user, span_notice("Você aprendeu[new_spell.name]."))
+	to_chat(user, span_notice("Você aprendeu [new_spell.name]."))
 
 	if(log_buy)
 		log_spellbook("[key_name(user)] learned [new_spell] for [cost] points")
@@ -226,7 +226,7 @@
 /// Attempts to give the item to the buyer on purchase.
 /datum/spellbook_entry/item/proc/try_equip_item(mob/living/carbon/human/user, obj/item/to_equip)
 	var/was_put_in_hands = user.put_in_hands(to_equip)
-	to_chat(user, span_notice("\A [to_equip.name]Foi convocado.[was_put_in_hands ? "in your hands" : "at your feet"]."))
+	to_chat(user, span_notice("\A [to_equip.name] Foi convocado.[was_put_in_hands ? "in your hands" : "at your feet"]."))
 
 /// Ritual, these cause station wide effects and are (pretty much) a blank slate to implement stuff in
 /datum/spellbook_entry/summon

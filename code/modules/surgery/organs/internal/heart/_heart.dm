@@ -63,8 +63,8 @@
 
 	if(!beating)
 		user.visible_message(
-			span_notice("[user]aperta[src]Para fazê-lo bater novamente!"),
-			span_notice("Você aperta.[src]Para fazê-lo bater novamente!"),
+			span_notice("[user] aperta [src] Para fazê-lo bater novamente!"),
+			span_notice("Você aperta.[src] Para fazê-lo bater novamente!"),
 		)
 		Restart()
 		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 8 SECONDS)
@@ -119,7 +119,7 @@
 	if(!beating || (organ_flags & ORGAN_FAILING))
 		if(owner.can_heartattack() && Stop())
 			if(owner.stat == CONSCIOUS)
-				owner.visible_message(span_danger("[owner]Embreagens em[owner.p_their()]peito como se[owner.p_their()]O coração está parando!"))
+				owner.visible_message(span_danger("[owner] Embreagens em [owner.p_their()] peito como se [owner.p_their()] O coração está parando!"))
 			to_chat(owner, span_userdanger("Você sente uma dor terrível no peito, como se seu coração tivesse parado!"))
 		return
 
@@ -156,7 +156,7 @@
 
 /// by default, returns the hearts beat_noise var as a notice span. May do other things when overridden, such as eldritch insanity or electrocution. Whatever you want, really.
 /obj/item/organ/heart/proc/hear_beat_noise(mob/living/hearer)
-	return span_notice("[owner.p_Their()]O coração produz[beat_noise].")
+	return span_notice("[owner.p_Their()] O coração produz [beat_noise].")
 
 /obj/item/organ/heart/cursed
 	name = "cursed heart"
@@ -234,7 +234,7 @@
 		addtimer(CALLBACK(src, PROC_REF(Restart)), 10 SECONDS)
 		if(owner_needs_us)
 			owner.visible_message(
-				span_danger("[owner]Embreagens em[owner.p_their()]peito como se[owner.p_their()]O coração está parando!"),
+				span_danger("[owner] Embreagens em [owner.p_their()] peito como se [owner.p_their()] O coração está parando!"),
 				span_userdanger("Você sente uma dor terrível no peito, como se seu coração tivesse parado!"),
 			)
 
@@ -307,7 +307,7 @@
 	AddElement(/datum/element/dangerous_organ_removal, /*surgical = */ TRUE)
 
 /obj/item/organ/heart/cybernetic/surplus/hear_beat_noise(mob/living/hearer)
-	return span_danger("[owner.p_Their()]O coração produz[beat_noise].")
+	return span_danger("[owner.p_Their()] O coração produz [beat_noise].")
 
 /obj/item/organ/heart/freedom
 	name = "heart of freedom"

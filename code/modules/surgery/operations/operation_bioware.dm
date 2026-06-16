@@ -52,9 +52,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a tecer[limb.owner]Os vasos sanguíneos."),
-		span_notice("[surgeon]Começa a tecer.[limb.owner]Os vasos sanguíneos."),
-		span_notice("[surgeon]Começa a manipular[limb.owner]Os vasos sanguíneos."),
+		span_notice("Você começa a tecer [limb.owner] Os vasos sanguíneos."),
+		span_notice("[surgeon] Começa a tecer.[limb.owner] Os vasos sanguíneos."),
+		span_notice("[surgeon] Começa a manipular [limb.owner] Os vasos sanguíneos."),
 	)
 	display_pain(limb.owner, "Your entire body burns in agony!")
 
@@ -63,9 +63,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você tece[limb.owner]Os vasos sanguíneos em uma malha resistente!"),
-		span_notice("[surgeon]tece[limb.owner]Os vasos sanguíneos em uma malha resistente!"),
-		span_notice("[surgeon]termina de manipular[limb.owner]Os vasos sanguíneos."),
+		span_notice("Você tece [limb.owner] Os vasos sanguíneos em uma malha resistente!"),
+		span_notice("[surgeon] tece [limb.owner] Os vasos sanguíneos em uma malha resistente!"),
+		span_notice("[surgeon] termina de manipular [limb.owner] Os vasos sanguíneos."),
 	)
 	display_pain(limb.owner, "You can feel your blood pumping through reinforced veins!")
 
@@ -85,9 +85,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a enrolar os músculos[limb.owner]Os vasos sanguíneos."),
-		span_notice("[surgeon]Começa a envolver os músculos.[limb.owner]Os vasos sanguíneos."),
-		span_notice("[surgeon]Começa a manipular[limb.owner]Os vasos sanguíneos."),
+		span_notice("Você começa a enrolar os músculos [limb.owner] Os vasos sanguíneos."),
+		span_notice("[surgeon] Começa a envolver os músculos.[limb.owner] Os vasos sanguíneos."),
+		span_notice("[surgeon] Começa a manipular [limb.owner] Os vasos sanguíneos."),
 	)
 	display_pain(limb.owner, "Your entire body burns in agony!")
 
@@ -96,9 +96,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você reformula[limb.owner]Os vasos sanguíneos, adicionando uma membrana muscular!"),
-		span_notice("[surgeon]Refazer[limb.owner]Os vasos sanguíneos, adicionando uma membrana muscular!"),
-		span_notice("[surgeon]termina de manipular[limb.owner]Os vasos sanguíneos."),
+		span_notice("Você reformula [limb.owner] Os vasos sanguíneos, adicionando uma membrana muscular!"),
+		span_notice("[surgeon] Refazer [limb.owner] Os vasos sanguíneos, adicionando uma membrana muscular!"),
+		span_notice("[surgeon] termina de manipular [limb.owner] Os vasos sanguíneos."),
 	)
 	display_pain(limb.owner, "You can feel your heartbeat's powerful pulses ripple through your body!")
 
@@ -119,9 +119,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Vocês começam a se juntar[limb.owner]Os nervos."),
-		span_notice("[surgeon]Começa a se juntar[limb.owner]Os nervos."),
-		span_notice("[surgeon]Começa a manipular[limb.owner]É o sistema nervoso."),
+		span_notice("Vocês começam a se juntar [limb.owner] Os nervos."),
+		span_notice("[surgeon] Começa a se juntar [limb.owner] Os nervos."),
+		span_notice("[surgeon] Começa a manipular [limb.owner] É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "Your entire body goes numb!")
 
@@ -130,9 +130,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você se uniu com sucesso.[limb.owner]É o sistema nervoso!"),
-		span_notice("[surgeon]Com sucesso se encaixa.[limb.owner]É o sistema nervoso!"),
-		span_notice("[surgeon]termina de manipular[limb.owner]É o sistema nervoso."),
+		span_notice("Você se uniu com sucesso.[limb.owner] É o sistema nervoso!"),
+		span_notice("[surgeon] Com sucesso se encaixa.[limb.owner] É o sistema nervoso!"),
+		span_notice("[surgeon] termina de manipular [limb.owner] É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "You regain feeling in your body; It feels like everything's happening around you in slow motion!")
 
@@ -153,9 +153,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a reencaminhar[limb.owner]Os nervos."),
-		span_notice("[surgeon]Começa a reencaminhar.[limb.owner]Os nervos."),
-		span_notice("[surgeon]Começa a manipular[limb.owner]É o sistema nervoso."),
+		span_notice("Você começa a reencaminhar [limb.owner] Os nervos."),
+		span_notice("[surgeon] Começa a reencaminhar.[limb.owner] Os nervos."),
+		span_notice("[surgeon] Começa a manipular [limb.owner] É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "Your entire body goes numb!")
 
@@ -164,9 +164,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você reencaminha com sucesso.[limb.owner]É o sistema nervoso!"),
-		span_notice("[surgeon]com sucesso redireciona[limb.owner]É o sistema nervoso!"),
-		span_notice("[surgeon]termina de manipular[limb.owner]É o sistema nervoso."),
+		span_notice("Você reencaminha com sucesso.[limb.owner] É o sistema nervoso!"),
+		span_notice("[surgeon] com sucesso redireciona [limb.owner] É o sistema nervoso!"),
+		span_notice("[surgeon] termina de manipular [limb.owner] É o sistema nervoso."),
 	)
 	display_pain(limb.owner, "You regain feeling in your body! You feel energized!")
 
@@ -186,9 +186,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a remodelar[limb.owner]Os ligamentos estão em forma de gancho."),
-		span_notice("[surgeon]Começa a remodelar.[limb.owner]Os ligamentos estão em forma de gancho."),
-		span_notice("[surgeon]Começa a manipular[limb.owner]Os ligamentos."),
+		span_notice("Você começa a remodelar [limb.owner] Os ligamentos estão em forma de gancho."),
+		span_notice("[surgeon] Começa a remodelar.[limb.owner] Os ligamentos estão em forma de gancho."),
+		span_notice("[surgeon] Começa a manipular [limb.owner] Os ligamentos."),
 	)
 	display_pain(limb.owner, "Your limbs burn with severe pain!")
 
@@ -197,9 +197,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você reformula[limb.owner]Ligamentos em um gancho conjuntivo!"),
-		span_notice("[surgeon]Refazer[limb.owner]Ligamentos em um gancho conjuntivo!"),
-		span_notice("[surgeon]termina de manipular[limb.owner]Os ligamentos."),
+		span_notice("Você reformula [limb.owner] Ligamentos em um gancho conjuntivo!"),
+		span_notice("[surgeon] Refazer [limb.owner] Ligamentos em um gancho conjuntivo!"),
+		span_notice("[surgeon] termina de manipular [limb.owner] Os ligamentos."),
 	)
 	display_pain(limb.owner, "Your limbs feel... strangely loose.")
 
@@ -219,9 +219,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a reforçar[limb.owner]Os ligamentos."),
-		span_notice("[surgeon]Começa a reforçar.[limb.owner]Os ligamentos."),
-		span_notice("[surgeon]Começa a manipular[limb.owner]Os ligamentos."),
+		span_notice("Você começa a reforçar [limb.owner] Os ligamentos."),
+		span_notice("[surgeon] Começa a reforçar.[limb.owner] Os ligamentos."),
+		span_notice("[surgeon] Começa a manipular [limb.owner] Os ligamentos."),
 	)
 	display_pain(limb.owner, "Your limbs burn with severe pain!")
 
@@ -230,9 +230,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você reforça[limb.owner]Os ligamentos!"),
-		span_notice("[surgeon]Reforça[limb.owner]Os ligamentos!"),
-		span_notice("[surgeon]termina de manipular[limb.owner]Os ligamentos."),
+		span_notice("Você reforça [limb.owner] Os ligamentos!"),
+		span_notice("[surgeon] Reforça [limb.owner] Os ligamentos!"),
+		span_notice("[surgeon] termina de manipular [limb.owner] Os ligamentos."),
 	)
 	display_pain(limb.owner, "Your limbs feel more secure, but also more frail.")
 
@@ -269,9 +269,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a dobrar[limb.owner]É o córtex cerebral."),
-		span_notice("[surgeon]Começa a dobrar[limb.owner]É o córtex cerebral."),
-		span_notice("[surgeon]Começa a cirurgia em[limb.owner]É o cérebro."),
+		span_notice("Você começa a dobrar [limb.owner] É o córtex cerebral."),
+		span_notice("[surgeon] Começa a dobrar [limb.owner] É o córtex cerebral."),
+		span_notice("[surgeon] Começa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head throbs with gruesome pain, it's nearly too much to handle!")
 
@@ -280,9 +280,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você dobra[limb.owner]O córtex cerebral está em um padrão fractal!"),
-		span_notice("[surgeon]dobras[limb.owner]O córtex cerebral está em um padrão fractal!"),
-		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
+		span_notice("Você dobra [limb.owner] O córtex cerebral está em um padrão fractal!"),
+		span_notice("[surgeon] dobras [limb.owner] O córtex cerebral está em um padrão fractal!"),
+		span_notice("[surgeon] completa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your brain feels stronger... and more flexible!")
 
@@ -294,8 +294,8 @@
 		surgeon,
 		limb.owner,
 		span_warning("Você estraga tudo, prejudica o cérebro!"),
-		span_warning("[surgeon]Estraga tudo, prejudica o cérebro!"),
-		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
+		span_warning("[surgeon] Estraga tudo, prejudica o cérebro!"),
+		span_notice("[surgeon] completa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head throbs with excruciating pain!")
 	brain.apply_organ_damage(60)
@@ -318,9 +318,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a esculpir[limb.owner]O córtex cerebral externo em um padrão de autoimpressão."),
-		span_notice("[surgeon]Começa a esculpir[limb.owner]O córtex cerebral externo em um padrão de autoimpressão."),
-		span_notice("[surgeon]Começa a cirurgia em[limb.owner]É o cérebro."),
+		span_notice("Você começa a esculpir [limb.owner] O córtex cerebral externo em um padrão de autoimpressão."),
+		span_notice("[surgeon] Começa a esculpir [limb.owner] O córtex cerebral externo em um padrão de autoimpressão."),
+		span_notice("[surgeon] Começa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head throbs with gruesome pain, it's nearly too much to handle!")
 
@@ -329,9 +329,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você reformula[limb.owner]O córtex cerebral externo em um padrão de autoimpressão!"),
-		span_notice("[surgeon]Refazer[limb.owner]O córtex cerebral externo em um padrão de autoimpressão!"),
-		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
+		span_notice("Você reformula [limb.owner] O córtex cerebral externo em um padrão de autoimpressão!"),
+		span_notice("[surgeon] Refazer [limb.owner] O córtex cerebral externo em um padrão de autoimpressão!"),
+		span_notice("[surgeon] completa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your brain feels stronger... and more resilient!")
 
@@ -342,8 +342,8 @@
 		surgeon,
 		limb.owner,
 		span_warning("Você estraga tudo, prejudica o cérebro!"),
-		span_warning("[surgeon]Estraga tudo, prejudica o cérebro!"),
-		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
+		span_warning("[surgeon] Estraga tudo, prejudica o cérebro!"),
+		span_notice("[surgeon] completa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your brain throbs with intense pain; Thinking hurts!")
 	limb.owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, 60)

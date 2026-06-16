@@ -182,4 +182,4 @@
 		return
 	victim.Knockdown(20)
 	playsound(loc, 'sound/misc/slip.ogg', 15)
-	victim.visible_message(span_danger("[victim]Escorrega.[src]É manteiga!"))
+	victim.visible_message(span_danger("[victim] Escorrega.[src] É manteiga!"))

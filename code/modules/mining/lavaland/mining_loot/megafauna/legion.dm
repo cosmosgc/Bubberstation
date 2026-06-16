@@ -25,7 +25,7 @@
 
 /obj/item/storm_staff/examine(mob/user)
 	. = ..()
-	. += span_notice("Tem.[thunder_charges]Acusações restantes.")
+	. += span_notice("Tem.[thunder_charges] Acusações restantes.")
 	. += span_notice("Use-o para dissepar temperaturas.")
 	. += span_notice("Use-o em alvos para invocar raios do céu.")
 	. += span_notice("Os raios são impulsionados em uma área com efeitos climáticos.")
@@ -53,7 +53,7 @@
 	if(!do_after(user, 3 SECONDS, target = src))
 		balloon_alert(user, "Interrompido!")
 		return
-	user.visible_message(span_warning("[user]Segura.[src]Para o céu como um raio laranja viaja para o céu!"), 	span_notice("Você espera.[src]Para o céu, dissipando a tempestade!"))
+	user.visible_message(span_warning("[user] Segura.[src] Para o céu como um raio laranja viaja para o céu!"), 	span_notice("Você espera.[src] Para o céu, dissipando a tempestade!"))
 	playsound(user, 'sound/effects/magic/staff_change.ogg', 200, FALSE)
 	var/old_color = user.color
 	user.color = list(340/255, 240/255, 0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 0,0,0,0)
@@ -93,7 +93,7 @@
 			break
 	playsound(src, 'sound/effects/magic/lightningshock.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 	targeted_turfs += target_turf
-	balloon_alert(user, "Você aponta para[target_turf]...")
+	balloon_alert(user, "Você aponta para [target_turf]...")
 	new /obj/effect/temp_visual/telegraphing/thunderbolt(target_turf)
 	addtimer(CALLBACK(src, PROC_REF(throw_thunderbolt), target_turf, power_boosted), 1.5 SECONDS)
 	thunder_charges--
@@ -124,5 +124,5 @@
 		for(var/obj/hit_thing in turf)
 			hit_thing.take_damage(20, BURN, ENERGY, FALSE)
 	playsound(target, 'sound/effects/magic/lightningbolt.ogg', 100, TRUE)
-	target.visible_message(span_danger("Um raio atinge[target]!"))
+	target.visible_message(span_danger("Um raio atinge [target]!"))
 	explosion(target, light_impact_range = (boosted ? 1 : 0), flame_range = (boosted ? 2 : 1), silent = TRUE)

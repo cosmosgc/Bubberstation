@@ -42,25 +42,25 @@
 
 /mob/living/silicon/pai/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	if(!user.combat_mode)
-		visible_message(span_notice("[user]Bata levemente[src]na cabeça, provocando um zumbido fora de seu campo holográfico."))
+		visible_message(span_notice("[user] Bata levemente [src] na cabeça, provocando um zumbido fora de seu campo holográfico."))
 		return
 	user.do_attack_animation(src)
 	if(user.name != master_name)
-		visible_message(span_danger("[user]Pimbas em[src]!."))
+		visible_message(span_danger("[user] Pimbas em [src]!."))
 		take_holo_damage(2)
 		return
-	visible_message(span_notice("Respondendo ao toque de seu mestre,[src]Desliga seu emissor holocássis, perdendo rapidamente a coerência."))
+	visible_message(span_notice("Respondendo ao toque de seu mestre,[src] Desliga seu emissor holocássis, perdendo rapidamente a coerência."))
 	if(!do_after(user, 1 SECONDS, src))
 		return
 	fold_in()
 	if(user.put_in_hands(card))
-		user.visible_message(span_notice("[user]Recolhe rapidamente[user.p_their()]Cartão do P.A.I."))
+		user.visible_message(span_notice("[user] Recolhe rapidamente [user.p_their()] Cartão do P.A.I."))
 
 /mob/living/silicon/pai/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
 	. = ..()
 	if(. == BULLET_ACT_HIT && (hitting_projectile.stun || hitting_projectile.paralyze))
 		fold_in(force = TRUE)
-		visible_message(span_warning("O projétil carregado eletronicamente interrompe.[src]É holomatrix, forçando[p_them()]Dobrar!"))
+		visible_message(span_warning("O projétil carregado eletronicamente interrompe.[src] É holomatrix, forçando [p_them()] Dobrar!"))
 
 /mob/living/silicon/pai/ignite_mob(silent)
 	return FALSE

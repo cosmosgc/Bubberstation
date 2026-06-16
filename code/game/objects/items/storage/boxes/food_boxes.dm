@@ -110,12 +110,12 @@
 		return ITEM_INTERACT_SUCCESS
 	if(tool.get_sharpness() && !contents.len)
 		if(design_choice == "None")
-			user.show_message(span_notice("Você corta buracos nos olhos[src]."), MSG_VISUAL)
+			user.show_message(span_notice("Você corta buracos nos olhos [src]."), MSG_VISUAL)
 			new /obj/item/clothing/head/costume/papersack(drop_location())
 			qdel(src)
 			return ITEM_INTERACT_SUCCESS
 		else if(design_choice == "SmileyFace")
-			user.show_message(span_notice("Você corta buracos nos olhos[src]e modificar o projeto."), MSG_VISUAL)
+			user.show_message(span_notice("Você corta buracos nos olhos [src] e modificar o projeto."), MSG_VISUAL)
 			new /obj/item/clothing/head/costume/papersack/smiley(drop_location())
 			qdel(src)
 			return ITEM_INTERACT_SUCCESS

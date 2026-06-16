@@ -276,7 +276,7 @@
 	internal_pressure -= environment_air.return_pressure()
 
 	if(internal_pressure > 2 * ONE_ATMOSPHERE)
-		to_chat(user, span_warning("Enquanto você começa a desconstruir\the [src]Um sopro de ar na sua cara... talvez devesse reconsiderar?"))
+		to_chat(user, span_warning("Enquanto você começa a desconstruir\the [src] Um sopro de ar na sua cara... talvez devesse reconsiderar?"))
 		unsafe_wrenching = TRUE
 
 	if(!do_after(user, 2 SECONDS, src))

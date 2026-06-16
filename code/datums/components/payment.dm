@@ -121,7 +121,7 @@
 		else
 			user.pulling = holochange
 	log_econ("[total_cost] [MONEY_NAME] were spent on [parent] by [user].")
-	to_chat(user, span_notice("Compra concluída com realizada[MONEY_NAME]."))
+	to_chat(user, span_notice("Compra concluída com realizada [MONEY_NAME]."))
 	playsound(user, 'sound/effects/cashregister.ogg', 20, TRUE)
 	return TRUE
 
@@ -162,7 +162,7 @@
 				to_chat(user, span_warning("Cartão de identificação não tem fundos. Abortando."))
 			if(PAYMENT_VENDING)
 				to_chat(user, span_warning("Você não possui fundos para comprar isso."))
-		atom_parent.balloon_alert(user, "Necessidades[total_cost] [MONEY_NAME_AUTOPURAL(total_cost)]!")
+		atom_parent.balloon_alert(user, "Necessidades [total_cost] [MONEY_NAME_AUTOPURAL(total_cost)]!")
 		return FALSE
 	target_acc.transfer_money(idcard.registered_account, total_cost, "Nanotrasen: Usage of Corporate Machinery")
 	log_econ("[total_cost] [MONEY_NAME] were spent on [parent] by [user] via [idcard.registered_account.account_holder]'s card.")

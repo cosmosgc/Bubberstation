@@ -20,7 +20,7 @@
 	if (!what_to_change)
 		return
 	save_flag ^= options[what_to_change]
-	to_chat(builder, span_notice("[what_to_change]é agora[save_flag & options[what_to_change] ? "ENABLED" : "DISABLED"]."))
+	to_chat(builder, span_notice("[what_to_change] é agora [save_flag & options[what_to_change] ? "ENABLED" : "DISABLED"]."))
 
 /datum/buildmode_mode/map_export/show_help(client/builder)
 	to_chat(builder, span_purple(boxed_message(

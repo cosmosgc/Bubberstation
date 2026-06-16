@@ -88,16 +88,16 @@
 	if(!.)
 		return
 	if(card.AI)
-		to_chat(user, span_warning("[card]Já está ocupado!"))
+		to_chat(user, span_warning("[card] Já está ocupado!"))
 		return FALSE
 	if(!occupier)
-		to_chat(user, span_warning("Não há nada dentro[src]Para transferir!"))
+		to_chat(user, span_warning("Não há nada dentro [src] Para transferir!"))
 		return FALSE
 	if(!occupier.mind || !occupier.client)
-		to_chat(user, span_warning("[occupier]ou está inativa ou destruída!"))
+		to_chat(user, span_warning("[occupier] ou está inativa ou destruída!"))
 		return FALSE
 	if(occupier.linked_core) //if they have an active linked_core, they can't be transferred from an APC
-		to_chat(user, span_warning("[occupier]está recusando todas as tentativas de transferência!") )
+		to_chat(user, span_warning("[occupier] está recusando todas as tentativas de transferência!") )
 		return FALSE
 	if(transfer_in_progress)
 		to_chat(user, span_warning("Já há uma transferência em andamento!"))
@@ -108,7 +108,7 @@
 	if(!user_turf)
 		return FALSE
 	transfer_in_progress = TRUE
-	user.visible_message(span_notice("[user]slots[card]Em[src]..."), span_notice("Processo de transferência iniciado. Enviando pedido de aprovação da IA..."))
+	user.visible_message(span_notice("[user] slots [card] Em [src]..."), span_notice("Processo de transferência iniciado. Enviando pedido de aprovação da IA..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	SEND_SOUND(occupier, sound('sound/announcer/notice/notice2.ogg')) //To alert the AI that someone's trying to card them if they're tabbed out
 	if(tgui_alert(occupier, "[user]está tentando transferi-lo para\a [card.name]Você concorda com isso?", "APC Transfer", list("Yes - Transfer Me", "No - Keep Me Here")) == "No - Keep Me Here")
@@ -118,20 +118,20 @@
 		return FALSE
 	if(user.loc != user_turf)
 		to_chat(user, span_danger("A localização mudou. Processo encerrado."))
-		to_chat(occupier, span_warning("[user]Afaste-se! Transferência cancelada."))
+		to_chat(occupier, span_warning("[user] Afaste-se! Transferência cancelada."))
 		transfer_in_progress = FALSE
 		return FALSE
-	to_chat(user, span_notice("AI aceitou o pedido. Transferindo informações armazenadas para[card]..."))
-	to_chat(occupier, span_notice("Transferência começando. Você será transferido para[card]Em breve."))
+	to_chat(user, span_notice("AI aceitou o pedido. Transferindo informações armazenadas para [card]..."))
+	to_chat(occupier, span_notice("Transferência começando. Você será transferido para [card] Em breve."))
 	if(!do_after(user, 5 SECONDS, target = src))
-		to_chat(occupier, span_warning("[user]Foi interrompido! Transferência cancelada."))
+		to_chat(occupier, span_warning("[user] Foi interrompido! Transferência cancelada."))
 		transfer_in_progress = FALSE
 		return FALSE
 	if(!occupier || !card)
 		transfer_in_progress = FALSE
 		return FALSE
-	user.visible_message(span_notice("[user]Transferências[occupier]Para[card]!"), span_notice("Transferência completa![occupier]está agora armazenado em[card]."))
-	to_chat(occupier, span_notice("Transferência completa! Você foi armazenado em[user]'s[card.name]."))
+	user.visible_message(span_notice("[user] Transferências [occupier] Para [card]!"), span_notice("Transferência completa![occupier] está agora armazenado em [card]."))
+	to_chat(occupier, span_notice("Transferência completa! Você foi armazenado em [user]'s [card.name]."))
 	occupier.forceMove(card)
 	card.AI = occupier
 	occupier.shunted = FALSE

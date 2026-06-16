@@ -12,16 +12,16 @@
 	var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
 	if (prob(90))
 		playsound(loc, 'sound/items/weapons/slash.ogg', 25, TRUE, -1)
-		visible_message(span_danger("[user]Cortes em[src]!"), 						span_userdanger("[user]Corta em você!"), null, null, user)
-		to_chat(user, span_danger("Você corta em[src]!"))
+		visible_message(span_danger("[user] Cortes em [src]!"), 						span_userdanger("[user] Corta em você!"), null, null, user)
+		to_chat(user, span_danger("Você corta em [src]!"))
 		if(prob(8))
 			flash_act(affect_silicon = 1)
 		adjust_brute_loss(damage)
 		log_combat(user, src, "attacked")
 	else
 		playsound(loc, 'sound/items/weapons/slashmiss.ogg', 25, TRUE, -1)
-		visible_message(span_danger("[user]Escorregou.[src]!"),
-						span_danger("Você evita[user]É furto!"), null, null, user)
+		visible_message(span_danger("[user] Escorregou.[src]!"),
+						span_danger("Você evita [user] É furto!"), null, null, user)
 		to_chat(user, span_warning("Seu golpe erra.[src]!"))
 		log_combat(user, src, "attacked and missed")
 
@@ -33,18 +33,18 @@
 			buckled.Paralyze(2 SECONDS)
 			unbuckle_mob(buckled)
 			buckled.visible_message(
-				span_danger("[buckled]é derrubado de[src]Por que[user]!"),
-				span_userdanger("Você está morto.[src]Por que[user]!"),
+				span_danger("[buckled] é derrubado de [src] Por que [user]!"),
+				span_userdanger("Você está morto.[src] Por que [user]!"),
 				ignored_mobs = user,
 			)
-			to_chat(user, span_danger("Você bate.[buckled]Fora de[src]!"))
+			to_chat(user, span_danger("Você bate.[buckled] Fora de [src]!"))
 
 /mob/living/silicon/attack_paw(mob/living/user, list/modifiers)
 	return attack_hand(user, modifiers)
 
 /mob/living/silicon/attack_larva(mob/living/carbon/alien/larva/L, list/modifiers)
 	if(!L.combat_mode)
-		visible_message(span_notice("[L.name]esfrega sua cabeça contra[src]."))
+		visible_message(span_notice("[L.name] esfrega sua cabeça contra [src]."))
 
 /mob/living/silicon/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
@@ -52,7 +52,7 @@
 		return
 	adjust_brute_loss(rand(10, 15))
 	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
-	visible_message(span_danger("[user]Socos.[src]!"), 					span_userdanger("[user]Bate em você!"), null, COMBAT_MESSAGE_RANGE, user)
+	visible_message(span_danger("[user] Socos.[src]!"), 					span_userdanger("[user] Bate em você!"), null, COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_danger("Você soca.[src]!"))
 
 /mob/living/silicon/attack_hand(mob/living/carbon/human/user, list/modifiers)
@@ -70,16 +70,16 @@
 	if(user.combat_mode)
 		user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 		playsound(src.loc, 'sound/effects/bang.ogg', 10, TRUE)
-		visible_message(span_danger("[user]Socos.[src]Mas não deixa uma marca!"), 						span_warning("[user]te soca, mas não deixa uma marca!"), null, COMBAT_MESSAGE_RANGE, user)
+		visible_message(span_danger("[user] Socos.[src] Mas não deixa uma marca!"), 						span_warning("[user] te soca, mas não deixa uma marca!"), null, COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Você soca.[src], mas não deixe uma marca!"))
 		return TRUE
 	else
 		// SKYRAT EDIT ADDITION START
 		if(HAS_TRAIT(src, TRAIT_QUICKREFLEXES) && (src.stat != UNCONSCIOUS) && !INCAPACITATED_IGNORING(src, INCAPABLE_RESTRAINTS))
-			visible_message(span_warning("[user]Tenta acariciar[src]Mas ela sai do caminho."))
+			visible_message(span_warning("[user] Tenta acariciar [src] Mas ela sai do caminho."))
 			return TRUE
 		// SKYRAT EDIT ADDITION END
-		visible_message(span_notice("[user]Animais de estimação[src]."), span_notice("[user]Te acaricia."), null, null, user)
+		visible_message(span_notice("[user] Animais de estimação [src]."), span_notice("[user] Te acaricia."), null, null, user)
 		to_chat(user, span_notice("Seu animal de estimação.[src]."))
 		SEND_SIGNAL(user, COMSIG_MOB_PAT_BORG)
 		return TRUE
@@ -90,7 +90,7 @@
 		return SUCCESSFUL_BLOCK
 	if(damage_type == BRUTE && attack_type == UNARMED_ATTACK && attack_flag == MELEE && damage <= 10)
 		playsound(src, 'sound/effects/bang.ogg', 10, TRUE)
-		visible_message(span_danger("[attack_text]Não deixa uma marca[src]!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("[attack_text] Não deixa uma marca [src]!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		return SUCCESSFUL_BLOCK
 	return FAILED_BLOCK
 
@@ -119,7 +119,7 @@
 		if(prob(severity*50))
 			unbuckle_mob(M)
 			M.Paralyze(40)
-			M.visible_message(span_boldwarning("[M]é jogado fora de[src]!"))
+			M.visible_message(span_boldwarning("[M] é jogado fora de [src]!"))
 	flash_act(affect_silicon = 1)
 
 /mob/living/silicon/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit = FALSE)
@@ -137,7 +137,7 @@
 
 	if(prob(prob_of_knocking_dudes_off))
 		for(var/mob/living/buckled in buckled_mobs)
-			buckled.visible_message(span_boldwarning("[buckled]é derrubado de[src]Por que[hitting_projectile]!"))
+			buckled.visible_message(span_boldwarning("[buckled] é derrubado de [src] Por que [hitting_projectile]!"))
 			unbuckle_mob(buckled)
 			buckled.Paralyze(4 SECONDS)
 

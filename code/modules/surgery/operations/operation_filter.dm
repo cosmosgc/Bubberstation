@@ -39,9 +39,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("[tool]completa uma filtragem de ciclo[limb.owner]É sangue."),
-		span_notice("[tool]Whirrrs enquanto filtra[limb.owner]É sangue."),
-		span_notice("[tool]Whirrrs enquanto bombeia."),
+		span_notice("[tool] completa uma filtragem de ciclo [limb.owner] É sangue."),
+		span_notice("[tool] Whirrrs enquanto filtra [limb.owner] É sangue."),
+		span_notice("[tool] Whirrrs enquanto bombeia."),
 	)
 
 	if(surgeon.is_holding_item_of_type(/obj/item/healthanalyzer))
@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("Você estraga tudo, contusões.[limb.owner]O peito!"),
-		span_warning("[surgeon]Estraga tudo, contusões[limb.owner]O peito!"),
-		span_warning("[surgeon]Estraga tudo!"),
+		span_warning("Você estraga tudo, contusões.[limb.owner] O peito!"),
+		span_warning("[surgeon] Estraga tudo, contusões [limb.owner] O peito!"),
+		span_warning("[surgeon] Estraga tudo!"),
 	)
 	limb.receive_damage(5, damage_source = tool)
 
@@ -63,7 +63,7 @@
 		return TRUE
 	// BUBBER EDIT ADDITION END
 	if(!length(target.reagents?.reagent_list))
-		bloodfilter.audible_message(span_notice("[bloodfilter]Pings como não relata nenhum produto químico detectado em[target]É sangue."))
+		bloodfilter.audible_message(span_notice("[bloodfilter] Pings como não relata nenhum produto químico detectado em [target] É sangue."))
 		playsound(target, 'sound/machines/ping.ogg', 75, TRUE, falloff_exponent = 12, falloff_distance = 1)
 		return FALSE
 

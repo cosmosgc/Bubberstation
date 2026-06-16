@@ -56,10 +56,10 @@
 		return NONE
 
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("[src]Está quebrado!"))
+		to_chat(user, span_warning("[src] Está quebrado!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!anchored)
-		to_chat(user, span_warning("[src]Não está preso ao chão!"))
+		to_chat(user, span_warning("[src] Não está preso ao chão!"))
 		return ITEM_INTERACT_BLOCKING
 	if(charging)
 		to_chat(user, span_warning("Já tem uma cela no carregador!"))
@@ -69,15 +69,15 @@
 	if(!isarea(charge_area))
 		return ITEM_INTERACT_BLOCKING
 	if(!charge_area.power_equip) // There's no APC in this area, don't try to cheat power!
-		to_chat(user, span_warning("[src]Pisca vermelho enquanto tenta inserir a célula!"))
+		to_chat(user, span_warning("[src] Pisca vermelho enquanto tenta inserir a célula!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 
 	charging = tool
 	user.visible_message(
-		span_notice("[user]insere uma célula em[src]."),
-		span_notice("Você insere uma célula em[src]."),
+		span_notice("[user] insere uma célula em [src]."),
+		span_notice("Você insere uma célula em [src]."),
 	)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -107,14 +107,14 @@
 		return
 
 	charging.add_fingerprint(user)
-	user.visible_message(span_notice("[user]Remover[charging]De[src]."), span_notice("Você tira.[charging]De[src]."))
+	user.visible_message(span_notice("[user] Remover [charging] De [src]."), span_notice("Você tira.[charging] De [src]."))
 	user.put_in_hands(removecell(drop_location()))
 
 /obj/machinery/cell_charger/attack_tk(mob/user)
 	if(!charging)
 		return
 
-	to_chat(user, span_notice("Você remove telecinicamente.[charging]De[src]."))
+	to_chat(user, span_notice("Você remove telecinicamente.[charging] De [src]."))
 	removecell(drop_location())
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 

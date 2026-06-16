@@ -42,12 +42,12 @@
 
 /obj/item/reagent_containers/cup/soda_cans/suicide_act(mob/living/carbon/human/H)
 	if(!reagents.total_volume)
-		H.visible_message(span_warning("[H]está tentando tomar um grande gole de[src]A lata está vazia!"))
+		H.visible_message(span_warning("[H] está tentando tomar um grande gole de [src] A lata está vazia!"))
 		return SHAME
 	if(!is_drainable())
 		open_soda(H)
 		sleep(1 SECONDS)
-	H.visible_message(span_suicide("[H]Toma um grande gole de[src]! Parece que...[H.p_theyre()]Tentando cometer suicídio!"))
+	H.visible_message(span_suicide("[H] Toma um grande gole de [src]! Parece que...[H.p_theyre()] Tentando cometer suicídio!"))
 	playsound(H,'sound/items/drink.ogg', 80, TRUE)
 	reagents.trans_to(H, src.reagents.total_volume, transferred_by = H) //a big sip
 	sleep(0.5 SECONDS)
@@ -78,13 +78,13 @@
 
 	if(target == user)
 		user.visible_message(
-			span_warning("[user]Esmaga a lata de[src]Vamos.[user.p_their()]testa!"),
-			span_notice("Você esmaga a lata de[src]Na sua testa."),
+			span_warning("[user] Esmaga a lata de [src] Vamos.[user.p_their()] testa!"),
+			span_notice("Você esmaga a lata de [src] Na sua testa."),
 		)
 	else
 		user.visible_message(
-			span_warning("[user]Esmaga a lata de[src]Vamos.[target]A testa!"),
-			span_notice("Você esmaga a lata de[src]Vamos.[target]Na testa."),
+			span_warning("[user] Esmaga a lata de [src] Vamos.[target] A testa!"),
+			span_notice("Você esmaga a lata de [src] Vamos.[target] Na testa."),
 		)
 	playsound(src, 'sound/items/weapons/pierce.ogg', rand(10, 50), TRUE)
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(target.drop_location())
@@ -106,7 +106,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/proc/open_soda(mob/user)
 	if(tape_color)
-		to_chat(user, "Você arranca a cobertura da fita[src]O buraco.")
+		to_chat(user, "Você arranca a cobertura da fita [src] O buraco.")
 		playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 		tape_color = null
 		add_container_flags(OPENCONTAINER)
@@ -114,11 +114,11 @@
 		return
 
 	if(prob(fizziness))
-		user.visible_message(span_danger("[user]Abre.[src], e de repente é pulverizado pelo conteúdo da bomba!"), span_danger("Você puxa para trás a aba de[src], e de repente são pulverizados com uma torrente de líquido! Ahhh!"))
+		user.visible_message(span_danger("[user] Abre.[src], e de repente é pulverizado pelo conteúdo da bomba!"), span_danger("Você puxa para trás a aba de [src], e de repente são pulverizados com uma torrente de líquido! Ahhh!"))
 		burst_soda(user)
 		return
 
-	to_chat(user, "Você puxa para trás a aba de[src]com um pop satisfatório.") //Ahhhhhhhh
+	to_chat(user, "Você puxa para trás a aba de [src] com um pop satisfatório.") //Ahhhhhhhh
 	add_container_flags(OPENCONTAINER)
 	playsound(src, SFX_CAN_OPEN, 50, TRUE)
 	throwforce = 0
@@ -143,7 +143,7 @@
 
 	playsound(src, 'sound/items/can/can_pop.ogg', 80, TRUE)
 	if(!hide_message)
-		visible_message(span_danger("[src]Derrama, espalhando seu conteúdo por todo lado.[target]!"))
+		visible_message(span_danger("[src] Derrama, espalhando seu conteúdo por todo lado.[target]!"))
 	add_container_flags(OPENCONTAINER)
 	reagents.expose(target, TOUCH)
 	reagents.clear_reagents()
@@ -152,7 +152,7 @@
 /obj/item/reagent_containers/cup/soda_cans/wirecutter_act(mob/living/user, obj/item/tool)
 	if (!fuse_color)
 		return NONE
-	to_chat(user, span_notice("Você corta[src]Está se fundindo."))
+	to_chat(user, span_notice("Você corta [src] Está se fundindo."))
 	tool.play_tool_sound(src, 50)
 	add_fingerprint(user)
 	fuse_color = null
@@ -167,15 +167,15 @@
 /obj/item/reagent_containers/cup/soda_cans/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (istype(tool, /obj/item/stack/cable_coil))
 		if (fuse_color)
-			to_chat(user, span_warning("[src]Já tem um fusível ligado a ele!"))
+			to_chat(user, span_warning("[src] Já tem um fusível ligado a ele!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (tape_color)
-			to_chat(user, span_warning("[src]O buraco está coberto de fita!"))
+			to_chat(user, span_warning("[src] O buraco está coberto de fita!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (!is_drainable())
-			to_chat(user, span_warning("[src]Ainda não foi aberto!"))
+			to_chat(user, span_warning("[src] Ainda não foi aberto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/cable_coil/coil = tool
@@ -187,18 +187,18 @@
 		fuse_color = coil_color
 		// Heating replaced with lighting the fuse
 		RemoveElement(/datum/element/reagents_item_heatable)
-		to_chat(user, span_notice("Você liga um fusível a[src]."))
+		to_chat(user, span_notice("Você liga um fusível a [src]."))
 		log_bomber(user, "attached a fuse to", src)
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if (istype(tool, /obj/item/stack/medical/wrap/sticky_tape))
 		if (tape_color)
-			to_chat(user, span_warning("[src]O buraco já está coberto de fita!"))
+			to_chat(user, span_warning("[src] O buraco já está coberto de fita!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (!is_drainable())
-			to_chat(user, span_warning("[src]Ainda não foi aberto!"))
+			to_chat(user, span_warning("[src] Ainda não foi aberto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/medical/wrap/sticky_tape/tape = tool
@@ -208,7 +208,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		tape_color = tape_colors[1]
-		to_chat(user, span_notice("Você embrulha[src]Em cima[tape]."))
+		to_chat(user, span_notice("Você embrulha [src] Em cima [tape]."))
 		reset_container_flags()
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
@@ -217,12 +217,12 @@
 		return ..()
 
 	if (fuse_timer)
-		to_chat(user, span_warning("[src]Já está acesa!"))
+		to_chat(user, span_warning("[src] Já está acesa!"))
 		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)
 	log_bomber(user, "has primed a rigged", src)
-	to_chat(user, span_warning("Você acende.[src]O fusível!"))
+	to_chat(user, span_warning("Você acende.[src] O fusível!"))
 	fuse_timer = addtimer(CALLBACK(src, PROC_REF(try_detonate)), rand(2 SECONDS, 4 SECONDS))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -270,7 +270,7 @@
 		return
 
 	burst_soda(hit_atom, hide_message = TRUE)
-	visible_message(span_danger("[src]O impacto com[hit_atom]causa a ruptura, derramando em todo lugar!"))
+	visible_message(span_danger("[src] O impacto com [hit_atom] causa a ruptura, derramando em todo lugar!"))
 	var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(loc)
 	crushed_can.icon_state = icon_state
 	moveToNullspace()
@@ -290,7 +290,7 @@
 /obj/item/reagent_containers/cup/soda_cans/attack_self_secondary(mob/user)
 	if(!is_drainable())
 		playsound(src, 'sound/items/can/can_shake.ogg', 50, TRUE)
-		user.visible_message(span_danger("[user]Shakes.[src]!"), span_danger("Você treme.[src]!"), vision_distance=2)
+		user.visible_message(span_danger("[user] Shakes.[src]!"), span_danger("Você treme.[src]!"), vision_distance=2)
 		fizziness += SODA_FIZZINESS_SHAKE
 		return
 	return ..()
@@ -300,7 +300,7 @@
 	if(!in_range(user, src))
 		return
 	if(fizziness > 30 && prob(fizziness * 2))
-		. += span_notice("<i>Você examina.[src]Mais perto, e note o seguinte...</i>")
+		. += span_notice("<i>Você examina.[src] Mais perto, e note o seguinte...</i>")
 		. += "\t[span_warning("You get a menacing aura of fizziness from it...")]"
 
 /obj/item/reagent_containers/cup/soda_cans/should_atmos_process(datum/gas_mixture/air, exposed_temperature)

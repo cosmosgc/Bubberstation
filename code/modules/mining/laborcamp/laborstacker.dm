@@ -164,7 +164,7 @@
 
 	obj_flags |= EMAGGED
 	balloon_alert(user, "id autornticador curto-circuito")
-	visible_message(span_warning("[src]solta algumas faíscas!"))
+	visible_message(span_warning("[src] solta algumas faíscas!"))
 	do_sparks(2, TRUE, src)
 	return TRUE
 

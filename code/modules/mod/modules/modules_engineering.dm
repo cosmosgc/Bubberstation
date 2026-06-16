@@ -320,7 +320,7 @@
 		return
 
 	balloon_alert(user, "Ligando o cabo...")
-	to_chat(target, span_userdanger("[user]Está tentando prender uma corda a você!"))
+	to_chat(target, span_userdanger("[user] Está tentando prender uma corda a você!"))
 	if (!do_after(user, 5 SECONDS, target))
 		return
 
@@ -333,7 +333,7 @@
 		return
 
 	balloon_alert(user, "Amarrado.")
-	to_chat(target, span_userdanger("[user]Amarra uma corda em você!"))
+	to_chat(target, span_userdanger("[user] Amarra uma corda em você!"))
 	target.AddComponent(/datum/component/tether, src, 7, "tether", tether_trait_source = REF(src), no_target_trait = TRUE)
 
 /obj/item/tether_anchor/proc/tether_snapped(datum/component/tether/tether, tether_source)

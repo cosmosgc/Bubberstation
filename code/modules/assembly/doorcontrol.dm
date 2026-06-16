@@ -55,7 +55,7 @@
 			id = copytext(change_id, start, end)
 	balloon_alert(user, "Id mudou.")
 	if(id != -1)
-		to_chat(user, span_notice("Você muda a identidade para[id]."))
+		to_chat(user, span_notice("Você muda a identidade para [id]."))
 	else
 		to_chat(user, span_notice("Agora você deve interagir com uma porta pod para gerar uma identificação única."))
 

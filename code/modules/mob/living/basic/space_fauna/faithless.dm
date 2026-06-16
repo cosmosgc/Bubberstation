@@ -50,7 +50,7 @@
 	var/mob/living/living_target = target
 	if (prob(paralyze_chance))
 		living_target.Paralyze(paralyze_duration)
-		living_target.visible_message(span_danger("\The [src]Bate.\the [target]Abaixe-se!"), 			span_userdanger("\The [src]Derruba você!"))
+		living_target.visible_message(span_danger("\The [src] Bate.\the [target] Abaixe-se!"), 			span_userdanger("\The [src] Derruba você!"))
 
 /datum/ai_controller/basic_controller/faithless
 	blackboard = list(

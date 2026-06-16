@@ -22,9 +22,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você procura por implantes em[patient]..."),
-		span_notice("[surgeon]Procura por implantes em[patient]."),
-		span_notice("[surgeon]Procura por algo em[patient]."),
+		span_notice("Você procura por implantes em [patient]..."),
+		span_notice("[surgeon] Procura por implantes em [patient]."),
+		span_notice("[surgeon] Procura por algo em [patient]."),
 	)
 	if(LAZYLEN(patient.implants))
 		display_pain(patient, "You feel a serious pain as [surgeon] digs around inside you!")
@@ -35,18 +35,18 @@
 		display_results(
 			surgeon,
 			patient,
-			span_warning("Você não encontra nenhum implante para remover[patient]."),
-			span_warning("[surgeon]não encontra nenhum implante para remover de[patient]."),
-			span_warning("[surgeon]não encontra nada para remover[patient]."),
+			span_warning("Você não encontra nenhum implante para remover [patient]."),
+			span_warning("[surgeon] não encontra nenhum implante para remover de [patient]."),
+			span_warning("[surgeon] não encontra nada para remover [patient]."),
 		)
 		return
 
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você remove com sucesso.[implant]De[patient]."),
-		span_notice("[surgeon]com sucesso remove[implant]De[patient]!"),
-		span_notice("[surgeon]com sucesso remove algo de[patient]!"),
+		span_notice("Você remove com sucesso.[implant] De [patient]."),
+		span_notice("[surgeon] com sucesso remove [implant] De [patient]!"),
+		span_notice("[surgeon] com sucesso remove algo de [patient]!"),
 	)
 	display_pain(patient, "You can feel your [implant.name] pulled out of you!")
 	implant.removed(patient)
@@ -64,9 +64,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Seu lugar.[implant]em[case]."),
-		span_notice("[surgeon]Lugares[implant]em[case]."),
-		span_notice("[surgeon]Coloca algo em[case]."),
+		span_notice("Seu lugar.[implant] em [case]."),
+		span_notice("[surgeon] Lugares [implant] em [case]."),
+		span_notice("[surgeon] Coloca algo em [case]."),
 	)
 
 /datum/surgery_operation/basic/implant_removal/proc/get_case(mob/living/surgeon, mob/living/target)

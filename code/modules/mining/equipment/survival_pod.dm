@@ -52,7 +52,7 @@
 	if(used)
 		return FALSE
 
-	loc.visible_message(span_warning("[src]Começa a tremer. Para trás!"))
+	loc.visible_message(span_warning("[src] Começa a tremer. Para trás!"))
 	used = TRUE
 	addtimer(CALLBACK(src, PROC_REF(expand), user), 5 SECONDS)
 	if(iscarbon(user))
@@ -88,9 +88,9 @@
 /obj/item/survivalcapsule/proc/fail_feedback(status)
 	switch(status)
 		if(SHELTER_DEPLOY_BAD_AREA)
-			loc.visible_message(span_warning("[src]não funcionará nesta área."))
+			loc.visible_message(span_warning("[src] não funcionará nesta área."))
 		if(SHELTER_DEPLOY_BAD_TURFS, SHELTER_DEPLOY_ANCHORED_OBJECTS, SHELTER_DEPLOY_OUTSIDE_MAP, SHELTER_DEPLOY_BANNED_OBJECTS)
-			loc.visible_message(span_warning("[src]Não tem espaço para ir! Você precisa limpar um[template.width]x[template.height]Área!"))
+			loc.visible_message(span_warning("[src] Não tem espaço para ir! Você precisa limpar um [template.width] x [template.height] Área!"))
 
 /// Throws any mobs near the deployed location away from the item / shelter
 /// Does some math to make closer mobs get thrown further
@@ -232,8 +232,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/window/survival_pod/left, 0)
 /obj/item/gps/computer/wrench_act(mob/living/user, obj/item/I)
 	..()
 
-	user.visible_message(span_warning("[user]Desmonta[src]."),
-		span_notice("Você começa a desmontar[src]..."), span_hear("Você ouve barulhos."))
+	user.visible_message(span_warning("[user] Desmonta [src]."),
+		span_notice("Você começa a desmontar [src]..."), span_hear("Você ouve barulhos."))
 	if(I.use_tool(src, user, 20, volume=50))
 		new /obj/item/gps(loc)
 		qdel(src)

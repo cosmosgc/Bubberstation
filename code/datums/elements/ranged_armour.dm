@@ -45,10 +45,10 @@
 	if (bullet.damage >= minimum_projectile_force || (bullet.damage_type in vulnerable_projectile_types))
 		return
 	if (below_projectile_multiplier == 0)
-		parent.visible_message(span_danger("[parent]Parece ileso.[bullet]!"))
+		parent.visible_message(span_danger("[parent] Parece ileso.[bullet]!"))
 		return PROJECTILE_INTERRUPT_HIT
 	bullet.damage *= below_projectile_multiplier
-	parent.visible_message(span_danger("[parent]Parece resistente a[bullet]!"))
+	parent.visible_message(span_danger("[parent] Parece resistente a [bullet]!"))
 
 /// Ignore thrown damage based on projectile properties. There's no elegant way to multiply the damage because throwforce is persistent.
 /datum/element/ranged_armour/proc/pre_thrown_impact(atom/parent, obj/item/hit_atom, datum/thrownthing/throwingdatum)

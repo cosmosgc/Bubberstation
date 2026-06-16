@@ -25,7 +25,7 @@
 
 /datum/action/cooldown/spell/touch/mansus_grasp/on_antimagic_triggered(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	victim.visible_message(
-		span_danger("O feitiço salta de[victim]!"),
+		span_danger("O feitiço salta de [victim]!"),
 		span_danger("O feitiço sai de você!"),
 	)
 
@@ -58,8 +58,8 @@
 		carbon_hit.mob_light(range = 1.5, power = 2.5, color = COLOR_CULT_RED, duration = 0.5 SECONDS)
 		playsound(carbon_hit, 'sound/effects/magic/curse.ogg', 50, TRUE)
 
-		to_chat(caster, span_warning("Uma força profana intervém como você entende[carbon_hit]Absorvendo a maioria dos atos!"))
-		to_chat(carbon_hit, span_warning("Como[caster]Pega você com forças de eldritch, sua magia de sangue absorve a maioria dos efeitos!"))
+		to_chat(caster, span_warning("Uma força profana intervém como você entende [carbon_hit] Absorvendo a maioria dos atos!"))
+		to_chat(carbon_hit, span_warning("Como [caster] Pega você com forças de eldritch, sua magia de sangue absorve a maioria dos efeitos!"))
 		carbon_hit.balloon_alert_to_viewers("absorbed!")
 		return TRUE
 
@@ -99,11 +99,11 @@
 	remove_hand_with_no_refund(user)
 
 /obj/item/melee/touch_attack/mansus_fist/ignition_effect(atom/to_light, mob/user)
-	. = span_rose("[user]Esforçosamente estala[user.p_their()]Dedos preto[to_light], acendendo-o com energias eldritch. Maldito fodão!")
+	. = span_rose("[user] Esforçosamente estala [user.p_their()] Dedos preto [to_light], acendendo-o com energias eldritch. Maldito fodão!")
 	remove_hand_with_no_refund(user)
 
 /obj/item/melee/touch_attack/mansus_fist/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Capas[user.p_their()]Cara com[user.p_their()]Uma mão doentia! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Capas [user.p_their()] Cara com [user.p_their()] Uma mão doentia! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	var/mob/living/carbon/carbon_user = user //iscarbon already used in spell's parent
 	var/datum/action/cooldown/spell/touch/mansus_grasp/source = spell_which_made_us?.resolve()
 	if(QDELETED(source) || !IS_HERETIC(user))

@@ -40,7 +40,7 @@
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -15)
 
 /obj/item/claymore/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está caindo sobre[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está caindo sobre [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/claymore/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
@@ -163,7 +163,7 @@
 	if(!QDELETED(target) && target.stat == DEAD && target.mind?.has_antag_datum(/datum/antagonist/highlander))
 		user.fully_heal() //STEAL THE LIFE OF OUR FALLEN FOES
 		add_notch(user)
-		target.visible_message(span_warning("[target]Desfaz-se ao pó abaixo[user]É uma droga!"), span_userdanger("Enquanto você cai, seu corpo desmorona em pó!"))
+		target.visible_message(span_warning("[target] Desfaz-se ao pó abaixo [user] É uma droga!"), span_userdanger("Enquanto você cai, seu corpo desmorona em pó!"))
 		target.investigate_log("has been dusted by a highlander claymore.", INVESTIGATE_DEATHS)
 		target.dust()
 
@@ -178,9 +178,9 @@
 			closest_victim = siliscot
 
 	if(!closest_victim)
-		to_chat(user, span_warning("[src]Bate por um momento e fica escuro. Talvez não haja ninguém por perto."))
+		to_chat(user, span_warning("[src] Bate por um momento e fica escuro. Talvez não haja ninguém por perto."))
 		return
-	to_chat(user, span_danger("[src]thrums e pontos para o o[dir2text(get_dir(user, closest_victim))]."))
+	to_chat(user, span_danger("[src] thrums e pontos para o o [dir2text(get_dir(user, closest_victim))]."))
 
 /obj/item/claymore/highlander/IsReflect()
 	return 1 //YOU THINK YOUR PUNY LASERS CAN STOP ME?
@@ -191,7 +191,7 @@
 	var/new_name = name
 	switch(notches)
 		if(1)
-			to_chat(user, span_notice("Sua primeira morte - espero que uma de muitas. Você arranha um entalhe em[src]A lâmina."))
+			to_chat(user, span_notice("Sua primeira morte - espero que uma de muitas. Você arranha um entalhe em [src] A lâmina."))
 			to_chat(user, span_warning("Você sente a alma do seu inimigo caído entrando em sua lâmina, restaurando suas feridas!"))
 			new_name = "notched claymore"
 		if(2)
@@ -227,7 +227,7 @@
 			new_name = "gore-stained claymore"
 			add_atom_colour(rgb(255, 95, 95), ADMIN_COLOUR_PRIORITY)
 		if(10)
-			user.visible_message(span_warning("[user]Os olhos brilham com nevoeiro vingativo!"), 			span_userdanger("Você sente o poder de Valhalla fluindo através de você!<i>Só pode haver um!</i>"))
+			user.visible_message(span_warning("[user] Os olhos brilham com nevoeiro vingativo!"), 			span_userdanger("Você sente o poder de Valhalla fluindo através de você!<i>Só pode haver um!</i>"))
 			new_name = "GORE-DRENCHED CLAYMORE OF [pick("THE WHIMSICAL SLAUGHTER", "A THOUSAND SLAUGHTERED CATTLE", "GLORY AND VALHALLA", "ANNIHILATION", "OBLITERATION")]"
 			icon_state = "claymore_gold"
 			inhand_icon_state = "cultblade"

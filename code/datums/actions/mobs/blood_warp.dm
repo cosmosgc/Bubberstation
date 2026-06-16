@@ -57,7 +57,7 @@
 		shuffle_inplace(pools)
 		found_bloodpool = pick(pools)
 	if(found_bloodpool)
-		owner.visible_message(span_danger("[owner]Afunda no sangue..."))
+		owner.visible_message(span_danger("[owner] Afunda no sangue..."))
 		playsound(owner_turf, 'sound/effects/magic/enter_blood.ogg', 100, TRUE, -1)
 		owner.forceMove(get_turf(found_bloodpool))
 		playsound(get_turf(owner), 'sound/effects/magic/exit_blood.ogg', 100, TRUE, -1)

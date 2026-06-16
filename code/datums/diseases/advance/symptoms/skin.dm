@@ -33,4 +33,4 @@
 				M.reagents.add_reagent(color, 5)
 		else
 			if (prob(50)) // spam
-				M.visible_message(span_warning("[M]Parece bastante vibrante..."), span_notice("As cores, cara, as cores..."))
+				M.visible_message(span_warning("[M] Parece bastante vibrante..."), span_notice("As cores, cara, as cores..."))

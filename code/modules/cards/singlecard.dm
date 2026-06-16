@@ -59,7 +59,7 @@
 		return
 
 	if(user.is_holding(src))
-		user.visible_message(span_notice("[user]Cheques.[user.p_their()]Cartão."), span_notice("O cartão diz:[cardname]."))
+		user.visible_message(span_notice("[user] Cheques.[user.p_their()] Cartão."), span_notice("O cartão diz:[cardname]."))
 		if(blank)
 			. += span_notice("O cartão está em branco. Escreva com uma caneta.")
 	else if(HAS_TRAIT(user, TRAIT_XRAY_VISION))
@@ -69,7 +69,7 @@
 
 	var/marked_color = getMarkedColor(user)
 	if(marked_color)
-		. += span_notice("O cartão tem um[marked_color]Marca na esquina!")
+		. += span_notice("O cartão tem um [marked_color] Marca na esquina!")
 
 /obj/item/toy/singlecard/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item) || src == held_item)
@@ -102,7 +102,7 @@
 	return NONE
 
 /obj/item/toy/singlecard/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Está cortando[user.p_their()]Pulsos com\the [src]Parece que...[user.p_they()] [user.p_have()]Um cartão de azar!"))
+	user.visible_message(span_suicide("[user] Está cortando [user.p_their()] Pulsos com\the [src] Parece que...[user.p_they()] [user.p_have()] Um cartão de azar!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE)
 	return BRUTELOSS
 
@@ -157,7 +157,7 @@
 				user.balloon_alert_to_viewers("puts card in deck")
 				return ITEM_INTERACT_SUCCESS
 
-			to_chat(user, span_warning("\The [dealer_deck]Está muito alto!"))
+			to_chat(user, span_warning("\The [dealer_deck] Está muito alto!"))
 			return ITEM_INTERACT_BLOCKING
 
 		card = dealer_deck.draw(user)
@@ -200,7 +200,7 @@
 
 	if(marked_cheating_color && !blank && IS_WRITING_UTENSIL(tool)) // You cheated not only the game, but yourself
 		marked_color = marked_cheating_color
-		to_chat(user, span_notice("Você colocou um[marked_color]Marca no canto de[src]como[tool]Trapaceiro para Ganhar!"))
+		to_chat(user, span_notice("Você colocou um [marked_color] Marca no canto de [src] como [tool] Trapaceiro para Ganhar!"))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.can_write(tool))

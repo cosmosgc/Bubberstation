@@ -120,7 +120,7 @@
 
 /obj/item/antag_spawner/nuke_ops/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, span_warning("[src]Está sem energia!"))
+		to_chat(user, span_warning("[src] Está sem energia!"))
 		return FALSE
 	if(!user.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
 		to_chat(user, span_danger("Falha na autenticação. Acesso negado."))
@@ -138,7 +138,7 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, span_notice("Você ativa.[src]e esperar confirmação."))
+	to_chat(user, span_notice("Você ativa.[src] e esperar confirmação."))
 	var/mob/chosen_one = SSpolling.poll_ghost_candidates("Do you want to play as a reinforcement [special_role_name]?", check_jobban = ROLE_OPERATIVE, role = ROLE_OPERATIVE, poll_time = 15 SECONDS, ignore_category = POLL_IGNORE_SYNDICATE, alert_pic = src, role_name_text = special_role_name, amount_to_pick = 1)
 	if(chosen_one)
 		if(QDELETED(src) || !check_usability(user))
@@ -333,7 +333,7 @@
 
 /obj/item/antag_spawner/loadout/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, span_warning("[src]Está sem energia!"))
+		to_chat(user, span_warning("[src] Está sem energia!"))
 		return FALSE
 	return TRUE
 
@@ -348,7 +348,7 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, span_notice("Você ativa.[src]e esperar confirmação."))
+	to_chat(user, span_notice("Você ativa.[src] e esperar confirmação."))
 	var/mob/chosen_one = SSpolling.poll_ghost_candidates(
 		check_jobban = poll_role_check,
 		role = poll_role_check,
@@ -450,7 +450,7 @@
 	if(is_simian(second_lifer))
 		return
 	// timer is long to let them panic and consider their folly, and because allergies take a while
-	second_lifer.visible_message(span_bolddanger("[second_lifer]Começa a inchar mal no tamanho. Parece que eles tiveram uma reação alérgica a se tornar um[folly_species]!"), span_userdanger("Como seu macaco se transforma, sente suas alergias chegando. Oh, não."))
+	second_lifer.visible_message(span_bolddanger("[second_lifer] Começa a inchar mal no tamanho. Parece que eles tiveram uma reação alérgica a se tornar um [folly_species]!"), span_userdanger("Como seu macaco se transforma, sente suas alergias chegando. Oh, não."))
 	// no brain or items. organs are funny though
 	second_lifer.inflate_gib(drop_bitflags = DROP_ORGANS|DROP_BODYPARTS, gib_time = 25 SECONDS, anim_time = 40 SECONDS)
 

@@ -32,9 +32,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a fazer uma autópsia em[limb.owner]..."),
-		span_notice("[surgeon]usa[tool]para realizar uma autópsia em[limb.owner]."),
-		span_notice("[surgeon]usa[tool]Vamos.[limb.owner]É o peito."),
+		span_notice("Você começa a fazer uma autópsia em [limb.owner]..."),
+		span_notice("[surgeon] usa [tool] para realizar uma autópsia em [limb.owner]."),
+		span_notice("[surgeon] usa [tool] Vamos.[limb.owner] É o peito."),
 	)
 
 /datum/surgery_operation/limb/autopsy/on_success(obj/item/bodypart/limb, mob/living/surgeon, obj/item/autopsy_scanner/tool, list/operation_args)

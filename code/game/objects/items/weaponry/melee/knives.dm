@@ -60,7 +60,7 @@
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple)
 
 /obj/item/knife/suicide_act(mob/living/user)
-	user.visible_message(pick(span_suicide("[user]Está cortando[user.p_their()]pulsos com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio."), 		span_suicide("[user]Está cortando[user.p_their()]garganta com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio."), 		span_suicide("[user]Está cortando[user.p_their()]estômago aberto com\the [src]! Parece que...[user.p_theyre()]Tentando cometer seppuku.")))
+	user.visible_message(pick(span_suicide("[user] Está cortando [user.p_their()] pulsos com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio."), 		span_suicide("[user] Está cortando [user.p_their()] garganta com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio."), 		span_suicide("[user] Está cortando [user.p_their()] estômago aberto com\the [src]! Parece que...[user.p_theyre()] Tentando cometer seppuku.")))
 	return BRUTELOSS
 
 /obj/item/knife/ritual
@@ -170,14 +170,14 @@
 	if(user.get_item_by_slot(ITEM_SLOT_MASK) == src && !user.has_status_effect(/datum/status_effect/choke) && prob(20))
 		user.apply_damage(5, BRUTE, BODY_ZONE_HEAD)
 		playsound(user, 'sound/items/weapons/slice.ogg', 50, TRUE)
-		user.visible_message(span_danger("[user]acidentalmente cortes[user.p_them()]ego enquanto puxava[src]Fora[user.p_them()]Dentes! Que idiota!"), span_userdanger("Você acidentalmente cortou sua boca com[src]!"))
+		user.visible_message(span_danger("[user] acidentalmente cortes [user.p_them()] ego enquanto puxava [src] Fora [user.p_them()] Dentes! Que idiota!"), span_userdanger("Você acidentalmente cortou sua boca com [src]!"))
 
 /obj/item/knife/combat/equipped(mob/living/user, slot, initial = FALSE)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(20))
 		if(user.get_item_by_slot(ITEM_SLOT_MASK) == src)
 			user.apply_status_effect(/datum/status_effect/choke, src)
-			user.visible_message(span_danger("[user]Engoliu acidentalmente.[src]!"))
+			user.visible_message(span_danger("[user] Engoliu acidentalmente.[src]!"))
 			playsound(user, 'sound/items/eatfood.ogg', 100, TRUE)
 
 /obj/item/knife/combat/survival
@@ -317,7 +317,7 @@
 	custom_materials = null
 
 /obj/item/knife/shiv/carrot/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Com força.\the [src]em[user.p_their()]Olho! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Com força.\the [src] em [user.p_their()] Olho! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/knife/shiv/parsnip
@@ -383,7 +383,7 @@
 	tool_behaviour = (active ? TOOL_KNIFE : NONE)
 
 /obj/item/switchblade/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está cortando[user.p_their()]A própria garganta com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está cortando [user.p_their()] A própria garganta com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/switchblade/extended

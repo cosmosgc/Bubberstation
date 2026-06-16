@@ -272,7 +272,7 @@
 	if(duct.duct_layer && duct.duct_color)
 		current_color = GLOB.pipe_color_name[duct.duct_color]
 		current_layer = GLOB.plumbing_layer_names["[duct.duct_layer]"]
-		balloon_alert(user, "usando[current_color], camada[current_layer]")
+		balloon_alert(user, "usando [current_color], camada [current_layer]")
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
@@ -297,7 +297,7 @@
 		if(current_loc < 1)
 			current_loc = GLOB.plumbing_layers.len
 		current_layer = GLOB.plumbing_layers[current_loc]
-	to_chat(source, span_notice("Você colocou a camada para[current_layer]."))
+	to_chat(source, span_notice("Você colocou a camada para [current_layer]."))
 
 /obj/item/construction/plumbing/service
 	name = "service plumbing constructor"

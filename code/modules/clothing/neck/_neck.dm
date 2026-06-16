@@ -97,7 +97,7 @@
 		tie_timer_actual *= 0.5
 	// Tie/Untie our tie
 	if(!do_after(user, tie_timer_actual))
-		to_chat(user, span_notice("Seus dedos se afastam[src]como sua concentração quebra."))
+		to_chat(user, span_notice("Seus dedos se afastam [src] como sua concentração quebra."))
 		return CLICK_ACTION_BLOCKING
 	// Clumsy & Dumb people have trouble tying their ties.
 	if((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
@@ -106,7 +106,7 @@
 	// Success!
 	is_tied = !is_tied
 	user.visible_message(
-		span_notice("[user]Ajustes[user.p_their()]Empatar[HAS_TRAIT(user, TRAIT_BALD) ? "" : " and runs a hand across [user.p_their()] head"]."),
+		span_notice("[user] Ajustes [user.p_their()] Empatar[HAS_TRAIT(user, TRAIT_BALD) ? "" : " and runs a hand across [user.p_their()] head"]."),
 		span_notice("Você com sucesso.[is_tied ? "tied" : "untied"] [src]!"),
 	)
 	update_appearance(UPDATE_ICON)
@@ -241,7 +241,7 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, -3) //FISH DOCTOR?!
 
 /obj/item/clothing/neck/stethoscope/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]coloca\the [src]Para[user.p_their()]Baú! Parece que...[user.p_they()]Não vai ouvir muito!"))
+	user.visible_message(span_suicide("[user] coloca\the [src] Para [user.p_their()] Baú! Parece que...[user.p_they()] Não vai ouvir muito!"))
 	return OXYLOSS
 
 /obj/item/clothing/neck/stethoscope/attack(mob/living/target, mob/living/user)
@@ -269,12 +269,12 @@
 	//determine what specific action we're taking
 	switch (body_part)
 		if(BODY_ZONE_CHEST)//Listening to the chest
-			user.visible_message(span_notice("[user]Lugares[src]Contra[carbon_patient]'s[body_part]Escuta iminente."), ignored_mobs = user)
+			user.visible_message(span_notice("[user] Lugares [src] Contra [carbon_patient]'s [body_part] Escuta iminente."), ignored_mobs = user)
 			if(HAS_TRAIT(user, TRAIT_DEAF))
-				to_chat(user, span_notice("Seu lugar.[src]Contra[carbon_patient]'s[body_part]Mas é muito bom, já que não consegue ouvir."))
+				to_chat(user, span_notice("Seu lugar.[src] Contra [carbon_patient]'s [body_part] Mas é muito bom, já que não consegue ouvir."))
 				return
 			else
-				render_list += span_info("Seu lugar.[src]Contra[carbon_patient]'s[body_part]:\n")
+				render_list += span_info("Seu lugar.[src] Contra [carbon_patient]'s [body_part]:\n")
 
 			//assess breathing
 			var/lung_noises = TRUE
@@ -305,8 +305,8 @@
 					render_list += "<span class='notice ml-1'>[heart.hear_beat_noise(user)]</span>\n"
 
 		if(BODY_ZONE_PRECISE_GROIN)//If we're targeting the groin
-			render_list += span_info("Você pressiona com cuidado[carbon_patient]Abdômen:\n")
-			user.visible_message(span_notice("[user]Pressiona suas mãos contra[carbon_patient]Abdômen."), ignored_mobs = user)
+			render_list += span_info("Você pressiona com cuidado [carbon_patient] Abdômen:\n")
+			user.visible_message(span_notice("[user] Pressiona suas mãos contra [carbon_patient] Abdômen."), ignored_mobs = user)
 
 			//assess abdominal organs
 			var/appendix_okay = TRUE
@@ -339,11 +339,11 @@
 
 		else//targeting an extremity or the head
 			if(body_part ==  BODY_ZONE_HEAD)
-				render_list += span_info("Você cuidadosamente pressiona seus dedos para[carbon_patient]O pescoço:\n")
-				user.visible_message(span_notice("[user]Pressiona seus dedos contra[carbon_patient]O pescoço."), ignored_mobs = user)
+				render_list += span_info("Você cuidadosamente pressiona seus dedos para [carbon_patient] O pescoço:\n")
+				user.visible_message(span_notice("[user] Pressiona seus dedos contra [carbon_patient] O pescoço."), ignored_mobs = user)
 			else
-				render_list += span_info("Você cuidadosamente pressiona seus dedos para[carbon_patient]'s[body_part]:\n")
-				user.visible_message(span_notice("[user]Pressiona seus dedos contra[carbon_patient]'s[body_part]."), ignored_mobs = user)
+				render_list += span_info("Você cuidadosamente pressiona seus dedos para [carbon_patient]'s [body_part]:\n")
+				user.visible_message(span_notice("[user] Pressiona seus dedos contra [carbon_patient]'s [body_part]."), ignored_mobs = user)
 
 			var/cached_blood_volume = carbon_patient.get_blood_volume(apply_modifiers = TRUE)
 
@@ -535,7 +535,7 @@
 /obj/item/clothing/neck/necklace/dope/merchant/attack_self(mob/user)
 	. = ..()
 	selling = !selling
-	to_chat(user, span_notice("[src]foi definido para[selling ? "'Sell'" : "'Get Price'"]Modo."))
+	to_chat(user, span_notice("[src] foi definido para[selling ? "'Sell'" : "'Get Price'"]Modo."))
 
 /obj/item/clothing/neck/necklace/dope/merchant/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/datum/export_report/ex = export_item_and_contents(interacting_with, delete_unsold = selling, dry_run = !selling)
@@ -550,7 +550,7 @@
 		if(selling)
 			new /obj/item/holochip(get_turf(user), true_price)
 	else
-		to_chat(user, span_warning("Não há valor de exportação para[interacting_with]Ou qualquer item dentro dele."))
+		to_chat(user, span_warning("Não há valor de exportação para [interacting_with] Ou qualquer item dentro dele."))
 
 	return ITEM_INTERACT_BLOCKING
 

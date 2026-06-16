@@ -170,7 +170,7 @@
 		if(fish_reference.w_class >= WEIGHT_CLASS_BULKY)
 			ash_type = /obj/effect/decal/cleanable/ash/large
 		new ash_type(loc)
-		visible_message("[fish_reference]Se transformar em poeira como[fish_reference.p_theyre()]Removido de[src].")
+		visible_message("[fish_reference] Se transformar em poeira como [fish_reference.p_theyre()] Removido de [src].")
 	else
 		user.put_in_hands(mounted_fish)
 	balloon_alert_to_viewers("fish removed")

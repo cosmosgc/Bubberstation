@@ -15,7 +15,7 @@
 	icon = 'icons/obj/weapons/restraints.dmi'
 
 /obj/item/restraints/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está estrangulando [user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 // Zipties, cable cuffs, etc. Can be cut with wirecutters instantly.
@@ -101,19 +101,19 @@
 		return
 
 	victim.visible_message(
-		span_danger("[user]está tentando colocar[src]Vamos.[victim]!"),
-		span_userdanger("[user]está tentando colocar[src]Em você!"),
+		span_danger("[user] está tentando colocar [src] Vamos.[victim]!"),
+		span_userdanger("[user] está tentando colocar [src] Em você!"),
 	)
 
 	if(victim.is_blind())
-		to_chat(victim, span_userdanger("Como você sente alguém agarrar seus pulsos,[src]Comece um cavalar na sua pele!"))
+		to_chat(victim, span_userdanger("Como você sente alguém agarrar seus pulsos,[src] Comece um cavalar na sua pele!"))
 
 	playsound(loc, cuffsound, 30, TRUE, -2)
 	log_combat(user, victim, "attempted to handcuff")
 
 	if(!do_after(user, get_handcuff_time(user), victim, timed_action_flags = IGNORE_SLOWDOWNS) || !victim.canBeHandcuffed())
 		victim.balloon_alert(user, "Falhou em Algemar!")
-		to_chat(user, span_warning("Você falhou em algemar[victim]!"))
+		to_chat(user, span_warning("Você falhou em algemar [victim]!"))
 		log_combat(user, victim, "failed to handcuff")
 		return
 
@@ -121,8 +121,8 @@
 	playsound(loc, cuffsuccesssound, 30, TRUE, -2)
 
 	victim.visible_message(
-		span_notice("[user]Algemas.[victim]."),
-		span_userdanger("[user]Algema você."),
+		span_notice("[user] Algemas.[victim]."),
+		span_userdanger("[user] Algema você."),
 	)
 
 	log_combat(user, victim, "successfully handcuffed")
@@ -395,7 +395,7 @@
 
 /obj/item/restraints/handcuffs/cult/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
-	wearer.visible_message(span_danger("[wearer]As almas quebraram em uma descarga de magia negra!"), span_userdanger("Sua[src]Estilhaços em uma descarga de magia negra!"))
+	wearer.visible_message(span_danger("[wearer] As almas quebraram em uma descarga de magia negra!"), span_userdanger("Sua [src] Estilhaços em uma descarga de magia negra!"))
 	qdel(src)
 
 
@@ -451,7 +451,7 @@
 	return ..()
 
 /obj/item/restraints/legcuffs/beartrap/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está grudando[user.p_their()]cabeça para dentro\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está grudando [user.p_their()] cabeça para dentro\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/items/weapons/bladeslice.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 
@@ -471,7 +471,7 @@
 		spring_trap(user, def_zone = hand_zone)
 		return
 
-	to_chat(user, span_notice("[src]é agora[armed ? "armed" : "disarmed"]"))
+	to_chat(user, span_notice("[src] é agora[armed ? "armed" : "disarmed"]"))
 
 
 /obj/item/restraints/legcuffs/beartrap/attempt_pickup(mob/user)
@@ -519,7 +519,7 @@
 		var/obj/vehicle/ridden_vehicle = victim.buckled
 		if(!ridden_vehicle.are_legs_exposed) //close the trap without injuring/trapping the rider if their legs are inside the vehicle at all times.
 			close_trap()
-			ridden_vehicle.visible_message(span_danger("[ridden_vehicle]Gatilhos.\the [src]."))
+			ridden_vehicle.visible_message(span_danger("[ridden_vehicle] Gatilhos.\the [src]."))
 			return
 
 	//don't close the trap if they're as small as a mouse
@@ -530,9 +530,9 @@
 
 	close_trap()
 	if(ignore_movetypes)
-		victim.visible_message(span_danger("\The [src]ensnares[victim]!"), 				span_userdanger("\The [src]Enlaça você!"))
+		victim.visible_message(span_danger("\The [src] ensnares [victim]!"), 				span_userdanger("\The [src] Enlaça você!"))
 	else
-		victim.visible_message(span_danger("[victim]Gatilhos.\the [src]."), 				span_userdanger("Você aciona.\the [src]!"))
+		victim.visible_message(span_danger("[victim] Gatilhos.\the [src]."), 				span_userdanger("Você aciona.\the [src]!"))
 
 	if(iscarbon(victim) && (victim.body_position == STANDING_UP || hit_prone) && !((def_zone == BODY_ZONE_PRECISE_R_HAND) || (def_zone == BODY_ZONE_PRECISE_L_HAND)))
 		var/mob/living/carbon/carbon_victim = victim
@@ -629,7 +629,7 @@
 /obj/item/restraints/legcuffs/bola/proc/ensnare(mob/living/carbon/snared_mob)
 	if(snared_mob.legcuffed || snared_mob.num_legs < 2)
 		return
-	visible_message(span_danger("\The [src]ensnares[snared_mob]!"), span_userdanger("\The [src]Enlaça você!"))
+	visible_message(span_danger("\The [src] ensnares [snared_mob]!"), span_userdanger("\The [src] Enlaça você!"))
 	snared_mob.equip_to_slot(src, ITEM_SLOT_LEGCUFFED)
 	SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 	snared_mob.Knockdown(knockdown)

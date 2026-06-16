@@ -90,14 +90,14 @@
 	if(istype(exposed_obj, /obj/item/paper))
 		var/obj/item/paper/paperaffected = exposed_obj
 		paperaffected.clear_paper()
-		to_chat(usr, span_notice("[paperaffected]A tinta lava."))
+		to_chat(usr, span_notice("[paperaffected] A tinta lava."))
 	if(istype(exposed_obj, /obj/item/book))
 		if(reac_volume >= 5)
 			var/obj/item/book/affectedbook = exposed_obj
 			affectedbook.book_data.set_content("")
-			exposed_obj.visible_message(span_notice("[exposed_obj]A escrita é lavada por[name]!"))
+			exposed_obj.visible_message(span_notice("[exposed_obj] A escrita é lavada por [name]!"))
 		else
-			exposed_obj.visible_message(span_warning("[exposed_obj]A tinta é manchada por[name]Mas não se lava!"))
+			exposed_obj.visible_message(span_warning("[exposed_obj] A tinta é manchada por [name] Mas não se lava!"))
 	return ..()
 
 /datum/reagent/consumable/ethanol/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with ethanol isn't quite as good as fuel.
@@ -283,7 +283,7 @@
 				drinker.emote("scream")
 
 	if(SPT_PROB(1.5, seconds_per_tick) && iscarbon(drinker))
-		drinker.visible_message(span_danger("[drinker]Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
+		drinker.visible_message(span_danger("[drinker] Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
 		if(drinker.Unconscious(10 SECONDS))
 			. = UPDATE_MOB_HEALTH
 		drinker.set_jitter_if_lower(700 SECONDS)
@@ -729,13 +729,13 @@
 /datum/reagent/consumable/ethanol/brave_bull/on_mob_metabolize(mob/living/drinker)
 	. = ..()
 	tough_text = pick("brawny", "tenacious", "tough", "hardy", "sturdy") //Tuff stuff
-	to_chat(drinker, span_notice("Você sente[tough_text]!"))
+	to_chat(drinker, span_notice("Você sente [tough_text]!"))
 	drinker.maxHealth += 10 //Brave Bull makes you sturdier, and thus capable of withstanding a tiny bit more punishment.
 	drinker.health += 10
 
 /datum/reagent/consumable/ethanol/brave_bull/on_mob_end_metabolize(mob/living/drinker)
 	. = ..()
-	to_chat(drinker, span_notice("Você não sente mais[tough_text]."))
+	to_chat(drinker, span_notice("Você não sente mais [tough_text]."))
 	drinker.maxHealth -= 10
 	drinker.health = min(drinker.health - 10, drinker.maxHealth) //This can indeed crit you if you're alive solely based on alchol ingestion
 
@@ -1045,10 +1045,10 @@
 
 	var/turf/jaunt_turf = get_turf(jaunter)
 	jaunt_turf.visible_message(
-		span_warning("Algo impede[source]De entrar[blood]!"),
+		span_warning("Algo impede [source] De entrar [blood]!"),
 		blind_message = span_notice("Você ouve um barulho e um barulho.")
 	)
-	to_chat(jaunter, span_warning("Uma força estranha está bloqueando[source]De entrar!"))
+	to_chat(jaunter, span_warning("Uma força estranha está bloqueando [source] De entrar!"))
 
 	return COMPONENT_STOP_CONSUMPTION
 
@@ -1088,13 +1088,13 @@
 		if(!nearby_blood.can_bloodcrawl_in())
 			continue
 		source.forceMove(get_turf(nearby_blood))
-		source.visible_message(span_warning("[nearby_blood]violentamente expulsa[source]!"))
+		source.visible_message(span_warning("[nearby_blood] violentamente expulsa [source]!"))
 		crawl.exit_blood_effect(source)
 		return
 
 	// Fuck it, just eject them, thanks to some split second cleaning
 	source.forceMove(get_turf(source))
-	source.visible_message(span_warning("[source]aparece do nada, coberto de sangue!"))
+	source.visible_message(span_warning("[source] aparece do nada, coberto de sangue!"))
 	crawl.exit_blood_effect(source)
 
 /datum/reagent/consumable/ethanol/vodkatonic
@@ -1544,7 +1544,7 @@
 				if(!drinker.undergoing_cardiac_arrest() && drinker.can_heartattack())
 					drinker.set_heartattack(TRUE)
 					if(drinker.stat == CONSCIOUS)
-						drinker.visible_message(span_userdanger("[drinker]Embreagens em[drinker.p_their()]peito como se[drinker.p_their()]O coração parou!"))
+						drinker.visible_message(span_userdanger("[drinker] Embreagens em [drinker.p_their()] peito como se [drinker.p_their()] O coração parou!"))
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
 
@@ -1761,9 +1761,9 @@
 	need_mob_update += drinker.adjust_stamina_loss(max(-heal_amt * 5, -20), updating_stamina = FALSE, required_biotype = affected_biotype)
 	if(need_mob_update)
 		drinker.updatehealth()
-	drinker.visible_message(span_warning("[drinker]Arrepios com vigor renovado!"), span_notice("Um pouco de[LOWER_TEXT(name)]Enche você de energia!"))
+	drinker.visible_message(span_warning("[drinker] Arrepios com vigor renovado!"), span_notice("Um pouco de [LOWER_TEXT(name)] Enche você de energia!"))
 	if(!drinker.stat && heal_points == 20) //brought us out of softcrit
-		drinker.visible_message(span_danger("[drinker]Desamparar[drinker.p_their()]Pés!"), span_boldnotice("Levante-se, garoto."))
+		drinker.visible_message(span_danger("[drinker] Desamparar [drinker.p_their()] Pés!"), span_boldnotice("Levante-se, garoto."))
 
 /datum/reagent/consumable/ethanol/bastion_bourbon/on_mob_life(mob/living/drinker, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -1873,7 +1873,7 @@
 		for(var/obj/item/shield/the_shield in the_human.contents)
 			mighty_shield = WEAKREF(the_shield)
 			the_shield.block_chance += 10
-			to_chat(the_human, span_notice("[the_shield]Parece polido, embora não se lembre de polir."))
+			to_chat(the_human, span_notice("[the_shield] Parece polido, embora não se lembre de polir."))
 			break
 
 /datum/reagent/consumable/ethanol/alexander/on_mob_life(mob/living/drinker, seconds_per_tick, metabolization_ratio)
@@ -1888,7 +1888,7 @@
 	var/obj/item/shield/the_shield = mighty_shield?.resolve()
 	if(the_shield)
 		the_shield.block_chance -= 10
-		to_chat(drinker,span_notice("Você percebe[the_shield]Parece desgastado novamente. Estranho."))
+		to_chat(drinker,span_notice("Você percebe [the_shield] Parece desgastado novamente. Estranho."))
 		mighty_shield = null
 
 /datum/reagent/consumable/ethanol/amaretto_alexander
@@ -2142,7 +2142,7 @@
 	if(named)
 		name += "Wine"
 	else
-		name = "Mixed [names_in_order[1]] Wine"
+		name = "Mixed [names_in_order [1]] Wine"
 
 	var/alcohol_description
 	switch(boozepwr)
@@ -2296,7 +2296,7 @@
 					metabolizer.set_facial_hairstyle("Beard (Very Long)", update = TRUE)
 
 				if(metabolizer.age > 969) //Best not let people get older than this or i might incur G-ds wrath
-					metabolizer.visible_message(span_notice("[metabolizer]Torna-se mais velho do que qualquer homem deveria ser e desmorona-se em pó!"))
+					metabolizer.visible_message(span_notice("[metabolizer] Torna-se mais velho do que qualquer homem deveria ser e desmorona-se em pó!"))
 					metabolizer.dust(just_ash = FALSE, drop_items = TRUE, force = FALSE)
 
 /datum/reagent/consumable/ethanol/rubberneck

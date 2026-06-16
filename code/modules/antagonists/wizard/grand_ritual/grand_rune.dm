@@ -98,7 +98,7 @@
 		return
 	if(!IS_WIZARD(user))
 		return
-	. += span_notice("Invoque esta runa[GRAND_RUNE_INVOKES_TO_COMPLETE - times_invoked]Mais vezes para completar o ritual.")
+	. += span_notice("Invoque esta runa [GRAND_RUNE_INVOKES_TO_COMPLETE - times_invoked] Mais vezes para completar o ritual.")
 
 /obj/effect/grand_rune/can_interact(mob/living/user)
 	. = ..()
@@ -144,7 +144,7 @@
 	//so hopefully this will properly do that, and on the third invocation it will just eat all remaining cheese
 	cheese_to_haunt = cheese_list.Copy(1, min(round(length(cheese_list) * times_invoked * 0.4), max(length(cheese_list), 3)))
 	for(var/obj/item/food/cheese/wheel/sacrifice as anything in cheese_to_haunt)
-		sacrifice.AddComponent(			/datum/component/haunted_item, 			haunt_color = spell_colour, 			haunt_duration = 10 SECONDS, 			aggro_radius = 0, 			spawn_message = span_revenwarning("[sacrifice]Começa a flutuar e girar para o ar quando se torna envolvido em energias de outro mundo..."), 		)
+		sacrifice.AddComponent(			/datum/component/haunted_item, 			haunt_color = spell_colour, 			haunt_duration = 10 SECONDS, 			aggro_radius = 0, 			spawn_message = span_revenwarning("[sacrifice] Começa a flutuar e girar para o ar quando se torna envolvido em energias de outro mundo..."), 		)
 		addtimer(CALLBACK(sacrifice, TYPE_PROC_REF(/obj/item/food/cheese/wheel, consume_cheese)), 10 SECONDS)
 	cheese_sacrificed += length(cheese_to_haunt)
 
@@ -205,7 +205,7 @@
 		possible_events += possible_event
 
 	if (!length(possible_events))
-		visible_message(span_notice("[src]faz um barulho triste."))
+		visible_message(span_notice("[src] faz um barulho triste."))
 		return
 
 	var/datum/round_event_control/final_event = pick (possible_events)

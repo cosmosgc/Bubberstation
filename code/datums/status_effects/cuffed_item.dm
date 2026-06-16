@@ -67,7 +67,7 @@
 /datum/status_effect/cuffed_item/proc/on_examine_more(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_warning("[cuffed.examine_title(user)]é obrigado a[owner.p_their()] [owner.get_held_index_name(owner.get_held_index_of_item(cuffed))]Por que[cuffs.examine_title(user)]")
+	examine_list += span_warning("[cuffed.examine_title(user)] é obrigado a [owner.p_their()] [owner.get_held_index_name(owner.get_held_index_of_item(cuffed))] Por que [cuffs.examine_title(user)]")
 
 ///What happens if one of the items is moved away from the mob
 /datum/status_effect/cuffed_item/proc/on_displaced(datum/source)
@@ -79,7 +79,7 @@
 	SIGNAL_HANDLER
 
 	if(user == owner)
-		examine_texts += span_notice("[item.p_Theyre()]Algemado a você por\a [cuffs]Você pode.<a href='byond://?src=[REF(item)];remove_cuffs_item=1'>Remova-os.</a>.")
+		examine_texts += span_notice("[item.p_Theyre()] Algemado a você por\a [cuffs] Você pode.<a href='byond://?src=[REF(item)];remove_cuffs_item=1'>Remova-os.</a>.")
 
 /// This mainly exists as a fallback in the rare case the alert icon is not reachable (too many alerts?). You should be somewhat able to examine items while blind so all good.
 /datum/status_effect/cuffed_item/proc/topic_handler(atom/source, user, href_list)
@@ -114,7 +114,7 @@
 		return FALSE
 
 	if(user != owner)
-		owner.visible_message(span_notice("[user]Removedor Tenta.[cuffs]Ligando.[cuffed]Para[owner]"), span_warning("[user]está tentando remover[cuffs]Ligando.[cuffed]para você."))
+		owner.visible_message(span_notice("[user] Removedor Tenta.[cuffs] Ligando.[cuffed] Para [owner]"), span_warning("[user] está tentando remover [cuffs] Ligando.[cuffed] para você."))
 
 	owner.balloon_alert(user, "Removendo algemas...")
 	playsound(owner, cuffs.cuffsound, 30, TRUE, -2)
@@ -123,7 +123,7 @@
 		return FALSE
 
 	if(user != owner)
-		owner.visible_message(span_notice("[user]Remover[cuffs]Ligando.[cuffed]Para[owner]"), span_warning("[user]Remover[cuffs]Ligando.[cuffed]para você."))
+		owner.visible_message(span_notice("[user] Remover [cuffs] Ligando.[cuffed] Para [owner]"), span_warning("[user] Remover [cuffs] Ligando.[cuffed] para você."))
 
 	log_combat(user, owner, "removed restraints binding [cuffed] to")
 

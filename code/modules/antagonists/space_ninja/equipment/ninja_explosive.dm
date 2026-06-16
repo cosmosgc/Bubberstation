@@ -29,7 +29,7 @@
 	if (isnull(detonation_area))
 		. += span_notice("Este foi fornecido sem destino definido, e não pode ser usado.")
 	else
-		. += span_notice("Este dispositivo só funcionará em[detonation_area].")
+		. += span_notice("Este dispositivo só funcionará em [detonation_area].")
 
 /**
  * set_detonation_area

@@ -69,7 +69,7 @@
 
 	report += ""
 
-	report += did_we_win() ? span_greentext("O[name]foram bem sucedidos!") : span_redtext("O[name]Falhou!")
+	report += did_we_win() ? span_greentext("O [name] foram bem sucedidos!") : span_redtext("O [name] Falhou!")
 
 	return "<div class='panel redborder'>[report.Join("<br>")]</div>"
 

@@ -56,23 +56,23 @@
 	var/t_Their = target.p_Their()
 	var/t_are = target.p_are()
 	if((visible_info & EMPATH_SEE_COMBAT) && target.combat_mode)
-		examine_list += "[t_They]Parece.[p_s()]Estar de guarda."
+		examine_list += "[t_They] Parece.[p_s()] Estar de guarda."
 	if((visible_info & EMPATH_SEE_OXY) && target.get_oxy_loss() >= 10)
-		examine_list += "[t_They]Parece.[p_s()]Ventou."
+		examine_list += "[t_They] Parece.[p_s()] Ventou."
 	if((visible_info & EMPATH_SEE_TOX) && target.get_tox_loss() >= 10)
-		examine_list += "[t_They]Parece.[p_s()]Doente."
+		examine_list += "[t_They] Parece.[p_s()] Doente."
 	if((visible_info & EMPATH_SEE_SANITY) && target.mob_mood.sanity <= SANITY_DISTURBED)
-		examine_list += "[t_They]Parece.[p_s()]Angustiado."
+		examine_list += "[t_They] Parece.[p_s()] Angustiado."
 	if((visible_info & EMPATH_SEE_BLIND) && target.is_blind())
-		examine_list += "[t_They]Aparecer[p_s()]estar olhando para o espaço."
+		examine_list += "[t_They] Aparecer [p_s()] estar olhando para o espaço."
 	if((visible_info & EMPATH_SEE_DEAF) && HAS_TRAIT(target, TRAIT_DEAF))
-		examine_list += "[t_They]Aparecer[p_s()]para não estar respondendo a ruídos."
+		examine_list += "[t_They] Aparecer [p_s()] para não estar respondendo a ruídos."
 	if((visible_info & EMPATH_SEE_HOT) && target.bodytemperature > target.get_body_temp_heat_damage_limit())
-		examine_list += "[t_They] [t_are]ruborizado e chiado."
+		examine_list += "[t_They] [t_are] ruborizado e chiado."
 	if((visible_info & EMPATH_SEE_COLD) && target.bodytemperature < target.get_body_temp_cold_damage_limit())
-		examine_list += "[t_They] [t_are]Tremendo."
+		examine_list += "[t_They] [t_are] Tremendo."
 	if((visible_info & EMPATH_SEE_EVIL) && HAS_TRAIT(target, TRAIT_EVIL))
-		examine_list += "[t_Their]Os olhos irradiam com um desapego insensível e frio. Não há nada além de escuridão dentro[t_their]Alma."
+		examine_list += "[t_Their] Os olhos irradiam com um desapego insensível e frio. Não há nada além de escuridão dentro [t_their] Alma."
 		if(living_parent.mind?.holy_role >= HOLY_ROLE_PRIEST)
 			examine_list += span_warning("Perfeito para o Smiting!")
 		else if(!seen_it)

@@ -86,7 +86,7 @@
 	if(selfdestruct)
 		if(user)
 			user.show_message("[span_danger("SELF-DESTRUCTING...")]<br>", MSG_VISUAL)
-			to_chat(user, span_userdanger("[gun]Explode!"))
+			to_chat(user, span_userdanger("[gun] Explode!"))
 		explosion(src, devastation_range = -1, light_impact_range = 2, flash_range = 3)
 		if(gun)
 			qdel(gun)
@@ -250,12 +250,12 @@
 /obj/item/firing_pin/paywall/examine(mob/user)
 	. = ..()
 	if(pin_owner)
-		. += span_notice("Este pino de disparo está atualmente autorizado a pagar a conta de[pin_owner.account_holder].")
+		. += span_notice("Este pino de disparo está atualmente autorizado a pagar a conta de [pin_owner.account_holder].")
 
 /obj/item/firing_pin/paywall/gun_insert(mob/living/user, obj/item/gun/new_gun, starting = FALSE)
 	if(pin_owner || starting)
 		. = ..()
-		gun.desc += span_notice("Isto.[gun.name]tem um[multi_payment ? "per-shot" : "license permit"]custo de[payment_amount] [MONEY_NAME_AUTOPURAL(payment_amount)].")
+		gun.desc += span_notice("Isto.[gun.name] tem um[multi_payment ? "per-shot" : "license permit"]custo de [payment_amount] [MONEY_NAME_AUTOPURAL(payment_amount)].")
 		return
 
 	if(isnull(user))
@@ -362,7 +362,7 @@
 
 /obj/item/firing_pin/tag/auth_fail(mob/living/user)
 	. = ..()
-	to_chat(user, span_warning("Você precisa estar usando[tagcolor]Armadura laser tag!"))
+	to_chat(user, span_warning("Você precisa estar usando [tagcolor] Armadura laser tag!"))
 
 /obj/item/firing_pin/tag/red
 	name = "red laser tag firing pin"

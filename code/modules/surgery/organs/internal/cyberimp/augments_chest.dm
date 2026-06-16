@@ -112,7 +112,7 @@
 		owner.updatehealth()
 
 	if(body_damage_patched && prob(35)) // healing is called every few seconds, not every tick
-		owner.visible_message(span_warning("[owner]O corpo se contorce um pouco."), span_notice("Você sente como se algo estivesse remendando seu corpo ferido."))
+		owner.visible_message(span_warning("[owner] O corpo se contorce um pouco."), span_notice("Você sente como se algo estivesse remendando seu corpo ferido."))
 
 
 /obj/item/organ/cyberimp/chest/reviver/proc/revive_dead()
@@ -124,7 +124,7 @@
 
 	defib_cooldown += 16 SECONDS // delay so it doesn't spam
 
-	owner.visible_message(span_warning("[owner]O corpo tem convulsões um pouco."))
+	owner.visible_message(span_warning("[owner] O corpo tem convulsões um pouco."))
 	playsound(owner, SFX_BODYFALL, 50, TRUE)
 	playsound(owner, 'sound/machines/defib/defib_zap.ogg', 75, TRUE, -1)
 	owner.set_heartattack(FALSE)

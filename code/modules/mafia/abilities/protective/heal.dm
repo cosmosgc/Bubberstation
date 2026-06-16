@@ -18,7 +18,7 @@
 	if(!.)
 		return FALSE
 	if(new_target.role_flags & ROLE_VULNERABLE)
-		host_role.send_message_to_player(span_notice("[new_target]Não pode ser protegido."))
+		host_role.send_message_to_player(span_notice("[new_target] Não pode ser protegido."))
 		return FALSE
 
 /datum/mafia_ability/heal/perform_action_target(datum/mafia_controller/game, datum/mafia_role/day_target)
@@ -42,7 +42,7 @@
 		host_role.send_message_to_player(span_warning("Você foi atacado ontem à noite!"))
 		return MAFIA_PREVENT_KILL
 	host_role.send_message_to_player(span_warning("A pessoa que você protegeu esta noite foi atacada!"))
-	target_role.send_message_to_player(span_greentext("Você foi atacado ontem à noite, mas[saving_message]!"))
+	target_role.send_message_to_player(span_greentext("Você foi atacado ontem à noite, mas [saving_message]!"))
 	return MAFIA_PREVENT_KILL
 
 /**

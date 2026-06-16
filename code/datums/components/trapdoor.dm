@@ -69,7 +69,7 @@
 	if(!isopenturf(new_parent))
 		if(isatom(new_parent))
 			var/atom/new_parent_atom = new_parent
-			new_parent_atom.visible_message(span_warning("O mecanismo de alçapão sob[new_parent_atom]Está quebrado!"))
+			new_parent_atom.visible_message(span_warning("O mecanismo de alçapão sob [new_parent_atom] Está quebrado!"))
 		return COMPONENT_NOTRANSFER
 	if(SSshuttle.get_containing_shuttle(new_parent))
 		on_shuttle = TRUE
@@ -247,7 +247,7 @@
 			post_change_callbacks += CALLBACK(src, TYPE_PROC_REF(/datum/component/trapdoor, carry_over_trapdoor), path, null, conspicuous, assembly)
 			return
 		// otherwise, break trapdoor
-		dying_trapdoor.visible_message(span_warning("O mecanismo do alçapão[dying_trapdoor]Está quebrado!"))
+		dying_trapdoor.visible_message(span_warning("O mecanismo do alçapão [dying_trapdoor] Está quebrado!"))
 		if(assembly)
 			assembly.linked = max(assembly.linked - 1, 0)
 			stored_decals.Cut()
@@ -295,7 +295,7 @@
 		RegisterSignal(parent, COMSIG_TURF_DECAL_DETACHED, PROC_REF(decal_detached))
 	playsound(trapdoor_turf, 'sound/machines/trapdoor/trapdoor_open.ogg', 50)
 	trapdoor_baseturfs = trapdoor_turf.get_baseturfs_to_depth(opening_depth)
-	trapdoor_turf.visible_message(span_warning("[trapdoor_turf]Balance!"))
+	trapdoor_turf.visible_message(span_warning("[trapdoor_turf] Balance!"))
 	trapdoor_turf.ScrapeAway(opening_depth, flags = CHANGETURF_INHERIT_AIR | CHANGETURF_TRAPDOOR_INDUCED)
 
 /**
@@ -308,10 +308,10 @@
 	var/turf/open/trapdoor_turf = parent
 	var/obj/structure/lattice/blocking = locate() in trapdoor_turf.contents
 	if(blocking)
-		trapdoor_turf.visible_message(span_warning("O mecanismo do alçapão[trapdoor_turf]Tenta fechar, mas está preso por[blocking]!"))
+		trapdoor_turf.visible_message(span_warning("O mecanismo do alçapão [trapdoor_turf] Tenta fechar, mas está preso por [blocking]!"))
 		return
 	playsound(trapdoor_turf, 'sound/machines/trapdoor/trapdoor_shut.ogg', 50)
-	trapdoor_turf.visible_message(span_warning("O mecanismo do alçapão[trapdoor_turf]Baloiços fechados!"))
+	trapdoor_turf.visible_message(span_warning("O mecanismo do alçapão [trapdoor_turf] Baloiços fechados!"))
 	var/list/new_baseturfs = list()
 	new_baseturfs += trapdoor_turf.baseturfs
 	new_baseturfs += trapdoor_turf.type
@@ -360,14 +360,14 @@
 	var/turf/assembly_turf = get_turf(src)
 	if(!COOLDOWN_FINISHED(src, search_cooldown))
 		var/timeleft = DisplayTimeText(COOLDOWN_TIMELEFT(src, search_cooldown))
-		assembly_turf.visible_message(span_warning("[src]Está no esfriamento! Por favor, espere.[timeleft]."), vision_distance = SAMETILE_MESSAGE_RANGE)
+		assembly_turf.visible_message(span_warning("[src] Está no esfriamento! Por favor, espere.[timeleft]."), vision_distance = SAMETILE_MESSAGE_RANGE)
 		return
 	if(SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRAPDOOR_LINK, src) & LINKED_UP)
 		playsound(assembly_turf, 'sound/machines/chime.ogg', 50, TRUE)
-		assembly_turf.visible_message(span_notice("[src]Está ligado a um alçapão próximo! Agora você pode usá-lo para verificar onde o alçapão está... tenha cuidado!"), vision_distance = SAMETILE_MESSAGE_RANGE)
+		assembly_turf.visible_message(span_notice("[src] Está ligado a um alçapão próximo! Agora você pode usá-lo para verificar onde o alçapão está... tenha cuidado!"), vision_distance = SAMETILE_MESSAGE_RANGE)
 	else
 		playsound(assembly_turf, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-		assembly_turf.visible_message(span_warning("[src]não encontrou um alçapão próximo para se conectar."), vision_distance = SAMETILE_MESSAGE_RANGE)
+		assembly_turf.visible_message(span_warning("[src] não encontrou um alçapão próximo para se conectar."), vision_distance = SAMETILE_MESSAGE_RANGE)
 
 /**
  * ## trapdoor remotes!
@@ -388,14 +388,14 @@
 /obj/item/trapdoor_remote/examine(mob/user)
 	. = ..()
 	if(!internals)
-		. += span_warning("[src]Não tem internos! Precisa de um controlador para funcionar.")
+		. += span_warning("[src] Não tem internos! Precisa de um controlador para funcionar.")
 		return
 	. += span_notice("Os internos podem ser removidos com uma chave de fenda.")
 	if(!internals.linked)
-		. += span_warning("[src]Não está ligado a um alçapão.")
-		. += span_notice("[src]Ligar-se-ão aos alçapões próximos quando usados.")
+		. += span_warning("[src] Não está ligado a um alçapão.")
+		. += span_notice("[src] Ligar-se-ão aos alçapões próximos quando usados.")
 		return
-	. += span_notice("[src]está ligado a[internals.linked]Trapdoor(s).")
+	. += span_notice("[src] está ligado a [internals.linked] Trapdoor(s).")
 	. += span_notice("Pode ser ligado a alçapão adicional usando-o em um alçapão.")
 	. += span_notice("Trapdoor pode ser desligado com multitool.")
 	. += span_notice("Autoclose é[internals.autoclose ? "enabled" : "disabled"], ctrl-click para alternar.")
@@ -405,9 +405,9 @@
 /obj/item/trapdoor_remote/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!internals)
-		to_chat(user, span_warning("[src]Não tem internos!"))
+		to_chat(user, span_warning("[src] Não tem internos!"))
 		return
-	to_chat(user, span_notice("Você estoura.[internals]Fora[src]."))
+	to_chat(user, span_notice("Você estoura.[internals] Fora [src]."))
 	internals.forceMove(get_turf(src))
 	internals = null
 
@@ -435,7 +435,7 @@
 		internals.pulsed(user)
 		// The pulse linked successfully
 		if(internals.linked)
-			user.balloon_alert(user, "ligado[internals.linked]Armadilhas")
+			user.balloon_alert(user, "ligado [internals.linked] Armadilhas")
 		// The pulse failed to link
 		else
 			user.balloon_alert(user, "A ligação falhou!")

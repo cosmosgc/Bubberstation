@@ -117,7 +117,7 @@
 		return
 	var/health_consumed = butchered.maxHealth * 0.1
 	user.heal_ordered_damage(health_consumed, list(BRUTE, BURN, TOX))
-	to_chat(user, span_notice("Você se cura do cadáver de[butchered]."))
+	to_chat(user, span_notice("Você se cura do cadáver de [butchered]."))
 	var/datum/client_colour/color_effect = user.add_client_colour(/datum/client_colour/bloodlust, HELMET_TRAIT)
 	QDEL_IN(color_effect, 1 SECONDS)
 

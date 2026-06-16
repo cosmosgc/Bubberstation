@@ -51,11 +51,11 @@
 		to_chat(owner, span_warning("Eles estão mortos!"))
 		return FALSE
 
-	to_chat(owner, span_notice("Você começa a ligar[linkee]A mente da sua..."))
+	to_chat(owner, span_notice("Você começa a ligar [linkee] A mente da sua..."))
 	to_chat(linkee, span_warning("Você sente sua mente sendo puxada para algum lugar... conectado... entrelaçado com o próprio tecido da realidade..."))
 
 	if(!do_after(owner, link_time, linkee, hidden = TRUE))
-		to_chat(owner, span_warning("Você não consegue se conectar com[linkee]A mente."))
+		to_chat(owner, span_warning("Você não consegue se conectar com [linkee] A mente."))
 		to_chat(linkee, span_warning("A presença estrangeira deixa sua mente."))
 		return FALSE
 
@@ -63,7 +63,7 @@
 		return FALSE
 
 	if(!linker.link_mob(linkee))
-		to_chat(owner, span_warning("Você não consegue se ligar a[linkee]A mente."))
+		to_chat(owner, span_warning("Você não consegue se ligar a [linkee] A mente."))
 		to_chat(linkee, span_warning("A presença estrangeira deixa sua mente."))
 		return FALSE
 

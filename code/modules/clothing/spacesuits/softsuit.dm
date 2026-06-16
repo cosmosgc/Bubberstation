@@ -90,7 +90,7 @@
 
 /obj/item/clothing/suit/space/fragile/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(!torn && prob(50))
-		to_chat(owner, span_warning("[src]lágrimas dos danos, quebrando o selo hermético!"))
+		to_chat(owner, span_warning("[src] lágrimas dos danos, quebrando o selo hermético!"))
 		clothing_flags &= ~STOPSPRESSUREDAMAGE
 		name = "torn [src]."
 		desc = "Um terno volumoso para proteger o usuário em situações de emergência, pelo menos até alguém abrir um buraco no terno."

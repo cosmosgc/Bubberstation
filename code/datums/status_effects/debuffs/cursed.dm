@@ -122,7 +122,7 @@
 		brand?.remove_wound()
 
 	owner.visible_message(
-		span_notice("A fumaça sai lentamente de[owner.name]..."),
+		span_notice("A fumaça sai lentamente de [owner.name]..."),
 		span_notice("Sua pele finalmente se acalma e sua garganta não parece mais seca... O desaparecimento da marca confirma que a maldição foi levantada."),
 	)
 	qdel(src)

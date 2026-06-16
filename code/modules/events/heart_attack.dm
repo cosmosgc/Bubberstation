@@ -69,7 +69,7 @@
 /datum/round_event/heart_attack/proc/attack_heart()
 	var/mob/living/carbon/human/winner = pick_weight(victims)
 	if(winner.has_status_effect(/datum/status_effect/exercised)) //Stuff that should "block" a heart attack rather than just deny eligibility for one goes here.
-		winner.visible_message(span_warning("[winner]Grunhidos e agarra seu peito por um momento, pegando[winner.p_their()]Respirar."), span_medal("Seu peito dói por um breve momento, que rapidamente desaparece. Você sente como se tivesse evitado um sério desastre de saúde."), span_hear("Você ouve alguém respirando aguçado por um momento, seguido por um suspiro de alívio."), 4)
+		winner.visible_message(span_warning("[winner] Grunhidos e agarra seu peito por um momento, pegando [winner.p_their()] Respirar."), span_medal("Seu peito dói por um breve momento, que rapidamente desaparece. Você sente como se tivesse evitado um sério desastre de saúde."), span_hear("Você ouve alguém respirando aguçado por um momento, seguido por um suspiro de alívio."), 4)
 		winner.playsound_local(get_turf(winner), 'sound/effects/health/slowbeat.ogg', 40, 0, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
 		winner.Stun(3 SECONDS)
 		if(winner.client)

@@ -201,4 +201,4 @@ micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.
 			stack_trace("[component_path] was an invalid component")
 		nice_list += list("[component_amount] [component_name]\s")
 
-	. += span_info("Exige[english_list(nice_list)].")
+	. += span_info("Exige [english_list(nice_list)].")

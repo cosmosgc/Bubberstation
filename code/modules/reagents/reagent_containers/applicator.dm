@@ -32,7 +32,7 @@
 
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(target_mob == user)
-		target_mob.visible_message(span_notice("[user]Tentando[apply_method] [src]."))
+		target_mob.visible_message(span_notice("[user] Tentando [apply_method] [src]."))
 		if(self_delay)
 			if(!do_after(user, self_delay, target_mob))
 				return ITEM_INTERACT_BLOCKING
@@ -40,10 +40,10 @@
 		on_consumption(user, user, modifiers)
 		return ITEM_INTERACT_SUCCESS
 
-	target_mob.visible_message(span_danger("[user]Tentações de força[target_mob]para[apply_method] [src]."), span_userdanger("[user]Tentando forçá-lo a[apply_method] [src]."))
+	target_mob.visible_message(span_danger("[user] Tentações de força [target_mob] para [apply_method] [src]."), span_userdanger("[user] Tentando forçá-lo a [apply_method] [src]."))
 	if(!do_after(user, CHEM_INTERACT_DELAY(application_delay, user), target_mob))
 		return ITEM_INTERACT_BLOCKING
 
-	target_mob.visible_message(span_danger("[user]forças[target_mob]para[apply_method] [src]."), span_userdanger("[user]Força você a[apply_method] [src]."))
+	target_mob.visible_message(span_danger("[user] forças [target_mob] para [apply_method] [src]."), span_userdanger("[user] Força você a [apply_method] [src]."))
 	on_consumption(target_mob, user, modifiers)
 	return ITEM_INTERACT_SUCCESS

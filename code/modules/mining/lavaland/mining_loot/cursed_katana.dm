@@ -37,7 +37,7 @@
 	if(!katana || katana.shattered)
 		return FALSE
 	if(!katana.drew_blood)
-		to_chat(owner, span_userdanger("[katana]Bate em você com fome!"))
+		to_chat(owner, span_userdanger("[katana] Bate em você com fome!"))
 		playsound(owner, 'sound/effects/magic/demon_attack1.ogg', 50, TRUE)
 		owner.apply_damage(25, BRUTE, hand, wound_bonus = 10, sharpness = SHARP_EDGED)
 	katana.drew_blood = FALSE
@@ -107,15 +107,15 @@
 	return target.stat != DEAD && target != user
 
 /obj/item/cursed_katana/proc/strike(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user]Strikes[target]Com[src]É o cabo!"),
-		span_notice("Você ataca[target]!"))
-	to_chat(target, span_userdanger("Você foi atingido por[user]!"))
+	user.visible_message(span_warning("[user] Strikes [target] Com [src] É o cabo!"),
+		span_notice("Você ataca [target]!"))
+	to_chat(target, span_userdanger("Você foi atingido por [user]!"))
 	playsound(src, 'sound/items/weapons/genhit3.ogg', 50, TRUE)
 	RegisterSignal(target, COMSIG_MOVABLE_IMPACT, PROC_REF(strike_throw_impact))
 	var/atom/throw_target = get_edge_target_turf(target, user.dir)
 	target.throw_at(throw_target, 5, 3, user, FALSE, gentle = TRUE)
 	target.apply_damage(damage = 17, exposed_wound_bonus = 10)
-	to_chat(target, span_userdanger("Você foi atingido por[user]!"))
+	to_chat(target, span_userdanger("Você foi atingido por [user]!"))
 	user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
 /obj/item/cursed_katana/proc/strike_throw_impact(mob/living/source, atom/hit_atom, datum/thrownthing/thrownthing)
@@ -133,7 +133,7 @@
 	return NONE
 
 /obj/item/cursed_katana/proc/slice(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user]Faz uma fatia larga!"),
+	user.visible_message(span_warning("[user] Faz uma fatia larga!"),
 		span_notice("Você faz uma fatia larga!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE)
 	user.do_item_attack_animation(target, used_item = src, animation_type = ATTACK_ANIMATION_SLASH)
@@ -146,14 +146,14 @@
 		for(var/mob/living/additional_target in turf)
 			if(user.Adjacent(additional_target) && additional_target.density)
 				additional_target.apply_damage(damage = 15, sharpness = SHARP_EDGED, exposed_wound_bonus = 10)
-				to_chat(additional_target, span_userdanger("Você foi fatiado por[user]!"))
+				to_chat(additional_target, span_userdanger("Você foi fatiado por [user]!"))
 	target.apply_damage(damage = 5, sharpness = SHARP_EDGED, wound_bonus = 10)
 
 /obj/item/cursed_katana/proc/cloak(mob/living/target, mob/user)
 	user.alpha = 150
 	user.SetInvisibility(INVISIBILITY_OBSERVER, id=type) // so hostile mobs cant see us or target us
 	user.add_sight(SEE_SELF) // so we can see us
-	user.visible_message(span_warning("[user]Desapareça no ar!"),
+	user.visible_message(span_warning("[user] Desapareça no ar!"),
 		span_notice("Você entra no manto escuro."))
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 	playsound(src, 'sound/effects/magic/smoke.ogg', 50, TRUE)
@@ -167,15 +167,15 @@
 	user.alpha = 255
 	user.RemoveInvisibility(type)
 	user.clear_sight(SEE_SELF)
-	user.visible_message(span_warning("[user]Aparece não fazer nada!"),
+	user.visible_message(span_warning("[user] Aparece não fazer nada!"),
 		span_notice("Você sai do manto escuro."))
 	playsound(src, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 
 /obj/item/cursed_katana/proc/cut(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user]Cortes.[target]Tendões!"),
+	user.visible_message(span_warning("[user] Cortes.[target] Tendões!"),
 		span_notice("Você cortou o tendão.[target]!"))
-	to_chat(target, span_userdanger("Seus tendões foram cortados por[user]!"))
+	to_chat(target, span_userdanger("Seus tendões foram cortados por [user]!"))
 	user.do_item_attack_animation(target, used_item = src, animation_type = ATTACK_ANIMATION_SLASH)
 	target.apply_damage(damage = 15, sharpness = SHARP_EDGED, wound_bonus = 15)
 	user.do_attack_animation(target, ATTACK_EFFECT_DISARM)
@@ -187,9 +187,9 @@
 		status.add_stacks(6)
 
 /obj/item/cursed_katana/proc/dash(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user]Atravesse[target]!"),
-		span_notice("Você corre[target]!"))
-	to_chat(target, span_userdanger("[user]Corre através de você!"))
+	user.visible_message(span_warning("[user] Atravesse [target]!"),
+		span_notice("Você corre [target]!"))
+	to_chat(target, span_userdanger("[user] Corre através de você!"))
 	playsound(src, 'sound/effects/magic/blink.ogg', 50, TRUE)
 	target.apply_damage(damage = 17, sharpness = SHARP_POINTY, exposed_wound_bonus = 10)
 	var/turf/dash_target = get_turf(target)
@@ -205,9 +205,9 @@
 	do_teleport(user, dash_target, channel = TELEPORT_CHANNEL_MAGIC)
 
 /obj/item/cursed_katana/proc/shatter(mob/living/target, mob/user)
-	user.visible_message(span_warning("[user]Estilhaços[src]Câmbio.[target]!"),
-		span_notice("Você quebra[src]Câmbio.[target]!"))
-	to_chat(target, span_userdanger("[user]Estilhaços[src]sobre você!"))
+	user.visible_message(span_warning("[user] Estilhaços [src] Câmbio.[target]!"),
+		span_notice("Você quebra [src] Câmbio.[target]!"))
+	to_chat(target, span_userdanger("[user] Estilhaços [src] sobre você!"))
 	target.apply_damage(damage = ismining(target) ? 75 : 35, wound_bonus = 20)
 	user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
 	playsound(src, 'sound/effects/glass/glassbr3.ogg', 100, TRUE)

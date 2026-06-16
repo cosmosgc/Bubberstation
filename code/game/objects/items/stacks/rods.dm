@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( 	new/datum/stack_recipe("grille", /obj/stru
 	embed_chance = 50
 
 /obj/item/stack/rods/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a fazer coisas.\the [src]Para baixo.[user.p_their()]Garganta! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))//it looks like theyre ur mum
+	user.visible_message(span_suicide("[user] Começa a fazer coisas.\the [src] Para baixo.[user.p_their()] Garganta! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))//it looks like theyre ur mum
 	return BRUTELOSS
 
 /obj/item/stack/rods/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( 	new/datum/stack_recipe("grille", /obj/stru
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/sheet/iron/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name]Em forma[src]em chapas de ferro com[tool]."),
+			span_notice("[user.name] Em forma [src] em chapas de ferro com [tool]."),
 			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( 	new/datum/stack_recipe("grille", /obj/stru
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/tile/iron/two/new_item = new(user.loc)
 		user.visible_message(
-			span_notice("[user.name]Em forma[src]em telhas do chão com[tool]."),
+			span_notice("[user.name] Em forma [src] em telhas do chão com [tool]."),
 			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user

@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	use_energy(active_power_usage)
 	stored_matter += cube_production
 	addtimer(VARSET_CALLBACK(src, pixel_x, base_pixel_x))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, span_notice("A máquina agora tem[stored_matter]O valor do macaco em material armazenado.")))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, span_notice("A máquina agora tem [stored_matter] O valor do macaco em material armazenado.")))
 
 /obj/machinery/monkey_recycler/interact(mob/user)
 	if(stored_matter >= 1)
@@ -85,9 +85,9 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 		for(var/i in 1 to floor(stored_matter))
 			new /obj/item/food/monkeycube(src.loc)
 			stored_matter--
-		to_chat(user, span_notice("A tela da máquina pisca que ela tem[stored_matter]O material dos macacos ficou."))
+		to_chat(user, span_notice("A tela da máquina pisca que ela tem [stored_matter] O material dos macacos ficou."))
 	else
-		to_chat(user, span_danger("A máquina precisa de pelo menos 1 macaco para produzir um cubo de macaco. Ele tem atualmente[stored_matter]."))
+		to_chat(user, span_danger("A máquina precisa de pelo menos 1 macaco para produzir um cubo de macaco. Ele tem atualmente [stored_matter]."))
 
 /obj/machinery/monkey_recycler/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()

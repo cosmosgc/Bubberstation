@@ -116,9 +116,9 @@
 	var/scope = isgun(parent) ? "scope in" : "zoom out"
 	switch(zoom_method)
 		if(ZOOM_METHOD_RIGHT_CLICK)
-			examine_list += span_notice("Você pode.[scope]Com<b>botão direito</b>.")
+			examine_list += span_notice("Você pode.[scope] Com<b>botão direito</b>.")
 		if(ZOOM_METHOD_WIELD)
-			examine_list += span_notice("Você pode.[scope]usando-a com as duas mãos.")
+			examine_list += span_notice("Você pode.[scope] usando-a com as duas mãos.")
 
 /**
  * We find and return the best target to hit on a given turf.

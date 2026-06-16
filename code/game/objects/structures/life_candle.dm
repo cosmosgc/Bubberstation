@@ -49,14 +49,14 @@
 	if(!user.mind)
 		return
 	if(user.mind in linked_minds)
-		user.visible_message(span_notice("[user]alcança e aperta a chama de[src]."), span_warning("Você cortou a conexão entre você e[src]."))
+		user.visible_message(span_notice("[user] alcança e aperta a chama de [src]."), span_warning("Você cortou a conexão entre você e [src]."))
 		linked_minds -= user.mind
 		if(!linked_minds.len)
 			REMOVE_TRAIT(src, TRAIT_MOVE_FLOATING, LIFECANDLE_TRAIT)
 	else
 		if(!linked_minds.len)
 			ADD_TRAIT(src, TRAIT_MOVE_FLOATING, LIFECANDLE_TRAIT)
-		user.visible_message(span_notice("[user]toques[src]Parece responder a[user.p_their()]Presença!"), span_warning("Você cria uma conexão entre você e[src]."))
+		user.visible_message(span_notice("[user] toques [src] Parece responder a [user.p_their()] Presença!"), span_warning("Você cria uma conexão entre você e [src]."))
 		linked_minds |= user.mind
 
 	update_appearance()

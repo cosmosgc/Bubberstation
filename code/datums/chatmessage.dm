@@ -119,7 +119,7 @@
 	RegisterSignal(owned_by, COMSIG_QDELETING, PROC_REF(on_parent_qdel))
 
 	// Remove spans in the message from things like the recorder
-	var/static/regex/span_check = new(@"<\/?span[^>]*>", "gi")
+	var/static/regex/span_check = new(@"<\/?span [^>]*>", "gi")
 	text = replacetext(text, span_check, "")
 
 	// Clip message

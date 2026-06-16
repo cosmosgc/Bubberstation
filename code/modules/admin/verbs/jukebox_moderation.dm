@@ -24,7 +24,7 @@ ADMIN_VERB(upload_jukebox_music, R_SERVER, "Jukebox Upload Music", "Upload a val
 	fcopy(file, save_path)
 
 	message_admins("[key_name_admin(user)] uploaded [clean_name] to the jukebox!")
-	to_chat(user, span_notice("Enviado com sucesso[clean_name]!"))
+	to_chat(user, span_notice("Enviado com sucesso [clean_name]!"))
 
 ADMIN_VERB(browse_jukebox_music, R_SERVER, "Jukebox Browse Music", "Browse music files for moderation.", ADMIN_CATEGORY_SERVER)
 	var/list/files = flist(CONFIG_JUKEBOX_SOUNDS)

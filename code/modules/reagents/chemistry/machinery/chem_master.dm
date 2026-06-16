@@ -83,7 +83,7 @@
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("A exibição de status diz:<br>Capacidade de reserva de reagente:<b>[reagents.maximum_volume]</b>Unidades.<br>Velocidade de impressão:<b>[0.75 SECONDS / printing_speed * 100]%</b>.")
 		if(!QDELETED(beaker))
-			. += span_notice("[beaker]de<b>[beaker.reagents.maximum_volume]U</b>Capacidade inserida.")
+			. += span_notice("[beaker] de<b>[beaker.reagents.maximum_volume] U</b>Capacidade inserida.")
 			. += span_notice("Clique com a mão vazia para remover o copo.")
 		else
 			. += span_warning("Beker de entrada faltando.")

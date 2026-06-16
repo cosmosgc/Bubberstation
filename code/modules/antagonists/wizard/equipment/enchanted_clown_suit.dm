@@ -62,7 +62,7 @@
 	return ..()
 
 /datum/action/cooldown/spell/conjure_item/clown_pockets/post_created(atom/cast_on, atom/created)
-	cast_on.visible_message(span_notice("[cast_on]Sai.[created]!"), span_notice("Você vai embora.[created]!"))
+	cast_on.visible_message(span_notice("[cast_on] Sai.[created]!"), span_notice("Você vai embora.[created]!"))
 
 /datum/action/cooldown/spell/conjure_item/clown_pockets/can_cast_spell(feedback = TRUE)
 	. = ..()
@@ -75,7 +75,7 @@
 
 /// Prints a funny message, exists so I can override it to print a different message
 /datum/action/cooldown/spell/conjure_item/clown_pockets/proc/cast_message(mob/cast_on)
-	cast_on.visible_message(span_notice("[cast_on]Chega muito mais fundo em[cast_on.p_their()]bolsos do que você acha que deve ser possível e começa a procurar por algo."), span_notice("Você chega mais fundo em seus bolsos do que você já fez antes e sente por algo."))
+	cast_on.visible_message(span_notice("[cast_on] Chega muito mais fundo em [cast_on.p_their()] bolsos do que você acha que deve ser possível e começa a procurar por algo."), span_notice("Você chega mais fundo em seus bolsos do que você já fez antes e sente por algo."))
 
 /// Longer cooldown variant which is attached to the enchanted clown suit
 /datum/action/cooldown/spell/conjure_item/clown_pockets/enchantment
@@ -83,7 +83,7 @@
 	cooldown_time = 60 SECONDS
 
 /datum/action/cooldown/spell/conjure_item/clown_pockets/enchantment/cast_message(mob/cast_on)
-	cast_on.visible_message(span_notice("[cast_on]Começa a vasculhar[cast_on.p_their()]Comicalmente calças grandes."), span_notice("Você começa a vasculhar com suas calças grandes."))
+	cast_on.visible_message(span_notice("[cast_on] Começa a vasculhar [cast_on.p_their()] Comicalmente calças grandes."), span_notice("Você começa a vasculhar com suas calças grandes."))
 
 /// Enchanted clown suit
 /obj/item/clothing/under/rank/civilian/clown/magic

@@ -279,7 +279,7 @@
 	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
-			// Original: to_chat(user, span_danger("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
+			// Original: to_chat(user, span_danger("You must wait another [DisplayTimeText(user.emotes_used [src] - world.time + cooldown)] before using that emote."))
 			user.balloon_alert(user, "Em recarga!") // BUBBER EDIT CHANGE
 		return FALSE
 	if(!user.emotes_used)
@@ -400,16 +400,16 @@
 				return FALSE
 			switch(user.stat)
 				if(SOFT_CRIT)
-					to_chat(user, span_warning("Você não pode.[key]enquanto em estado crítico!"))
+					to_chat(user, span_warning("Você não pode.[key] enquanto em estado crítico!"))
 				if(UNCONSCIOUS, HARD_CRIT)
-					to_chat(user, span_warning("Você não pode.[key]Enquanto estava inconsciente!"))
+					to_chat(user, span_warning("Você não pode.[key] Enquanto estava inconsciente!"))
 				if(DEAD)
-					to_chat(user, span_warning("Você não pode.[key]Enquanto estava morto!"))
+					to_chat(user, span_warning("Você não pode.[key] Enquanto estava morto!"))
 			return FALSE
 		if(hands_use_check && HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 			if(!intentional)
 				return FALSE
-			to_chat(user, span_warning("Você não pode usar suas mãos para[key]Agora!"))
+			to_chat(user, span_warning("Você não pode usar suas mãos para [key] Agora!"))
 			return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))

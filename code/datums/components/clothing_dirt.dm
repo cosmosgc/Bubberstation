@@ -56,7 +56,7 @@
 	var/mob/living/carbon/wearer = clothing.loc
 	if(wearer.is_blind() && !wearer.is_blind_from(EYES_COVERED))
 		return
-	to_chat(wearer, span_warning("É difícil ver com todas as coisas cobrindo seu[clothing.name]..."))
+	to_chat(wearer, span_warning("É difícil ver com todas as coisas cobrindo seu [clothing.name]..."))
 
 /datum/component/clothing_dirt/proc/on_equip(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
@@ -176,8 +176,8 @@
 	remove_tint(FALSE)
 	dirtiness = min(3, dirtiness + rand(2, 3))
 	apply_tint(TRUE)
-	user.visible_message(span_danger("[user]Sprays.[spraycan]Na cara de[wearer]!"))
-	to_chat(wearer, span_userdanger("[user]Sprays.[spraycan]Na sua cara!"))
+	user.visible_message(span_danger("[user] Sprays.[spraycan] Na cara de [wearer]!"))
+	to_chat(wearer, span_userdanger("[user] Sprays.[spraycan] Na sua cara!"))
 	return COMPONENT_CANCEL_SPRAYPAINT
 
 /datum/component/clothing_dirt/proc/on_clean(obj/item/clothing/source, clean_types)

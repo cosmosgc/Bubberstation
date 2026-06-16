@@ -135,7 +135,7 @@
 	var/obj/item/card/id/id_card = bartender.wear_id
 	if(bartender.age < AGE_MINOR)
 		id_card.registered_age = AGE_MINOR
-		to_chat(bartender, span_notice("Não tem idade para acessar ou servir álcool, mas sua identidade foi discretamente modificada para mostrar sua idade como[AGE_MINOR]Tente manter isso em segredo!"))
+		to_chat(bartender, span_notice("Não tem idade para acessar ou servir álcool, mas sua identidade foi discretamente modificada para mostrar sua idade como [AGE_MINOR] Tente manter isso em segredo!"))
 
 //Preserved terrarium/seed vault: Spawns in seed vault structures in lavaland. Ghosts become plantpeople and are advised to begin growing plants in the room near them.
 /obj/effect/mob_spawn/ghost_role/human/seed_vault

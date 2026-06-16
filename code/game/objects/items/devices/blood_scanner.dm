@@ -24,8 +24,8 @@
 	var/obj/item/bodypart/poked_bit = poked_guy.get_bodypart(check_zone(user.zone_selected))
 	if(!poked_bit)
 		return
-	user.visible_message(span_notice("[user]Idiotas.[poked_guy]Com[src]."), span_notice("Você começa a escanear[poked_guy]Com[src]."), ignored_mobs = poked_guy)
-	to_chat(poked_guy, span_notice("[user]Desliza a agulha de[src]em seu[poked_bit]e começa a apertar botões."))
+	user.visible_message(span_notice("[user] Idiotas.[poked_guy] Com [src]."), span_notice("Você começa a escanear [poked_guy] Com [src]."), ignored_mobs = poked_guy)
+	to_chat(poked_guy, span_notice("[user] Desliza a agulha de [src] em seu [poked_bit] e começa a apertar botões."))
 	var/success = do_after(user, 2 SECONDS, poked_guy)
 	if(success)
 		scan_blood(scanner = user, scanned_person = poked_guy)
@@ -41,8 +41,8 @@
 		return NONE
 	var/mob/living/carbon/poked_guy = interacting_with
 	var/obj/item/bodypart/poked_bit = poked_guy.get_bodypart(check_zone(user.zone_selected))
-	user.visible_message(span_notice("[user]Idiotas.[poked_guy]Com[src]."), span_notice("Você começa a escanear[poked_guy]Com[src]."), ignored_mobs = poked_guy)
-	to_chat(poked_guy, span_notice("[user]Desliza a agulha de[src]em seu[poked_bit]e começa a apertar botões."))
+	user.visible_message(span_notice("[user] Idiotas.[poked_guy] Com [src]."), span_notice("Você começa a escanear [poked_guy] Com [src]."), ignored_mobs = poked_guy)
+	to_chat(poked_guy, span_notice("[user] Desliza a agulha de [src] em seu [poked_bit] e começa a apertar botões."))
 	var/success = do_after(user, 2 SECONDS, poked_guy)
 	if(success)
 		chemscan(user, poked_guy, reagent_types_to_check = /datum/reagent/medicine)
@@ -58,7 +58,7 @@
 	var/render_list = list()
 	var/oxy_loss = scanned_person.get_oxy_loss()
 	var/tox_loss = scanned_person.get_tox_loss()
-	render_list += span_info("Você leu o[src]Tela:\n")
+	render_list += span_info("Você leu o [src] Tela:\n")
 	render_list += "<span class='notice ml-1'>Blood Type: [scanned_person?.dna?.blood_type]</span>\n"
 	if(oxy_loss > 50)//if they have knockout levels of suffocation damage
 		render_list += "<span class='danger ml-1'>Warning: Hypoxic blood oxygen levels.</span>\n"
@@ -80,16 +80,16 @@
 
 /obj/item/blood_scanner/proc/regret(mob/living/stabber, mob/living/stabbed, obj/item/bodypart/to_stab)
 	to_stab?.force_wound_upwards(/datum/wound/pierce/bleed/moderate/needle_fail, wound_source = "idiot moved with a needle in them")
-	stabber.visible_message(span_warning("[src]A agulha é arrancada, fazendo um buraco[stabbed]'s[to_stab]!"), span_warning("Droga! A agulha foi arrancada, fazenda um pequeno buraco[stabbed.p_their()] [to_stab]."), ignored_mobs = stabbed)
-	to_chat(stabbed, span_userdanger("<b>OWWW!</b>A agulha de[src]é arrancado, fazendo um pequeno buraco em seu[to_stab]!"))
+	stabber.visible_message(span_warning("[src] A agulha é arrancada, fazendo um buraco [stabbed]'s [to_stab]!"), span_warning("Droga! A agulha foi arrancada, fazenda um pequeno buraco [stabbed.p_their()] [to_stab]."), ignored_mobs = stabbed)
+	to_chat(stabbed, span_userdanger("<b>OWWW!</b>A agulha de [src] é arrancado, fazendo um pequeno buraco em seu [to_stab]!"))
 
 /obj/item/blood_scanner/proc/usable_check(mob/living/person_scanning, atom/scanee)
 	if(!isliving(scanee))
 		return FALSE
 	if(!istype(scanee, /mob/living/carbon))
-		to_chat(person_scanning, span_warning("[src]É incompatível."))
+		to_chat(person_scanning, span_warning("[src] É incompatível."))
 		return FALSE
 	if(!person_scanning.can_read(src) || person_scanning.is_blind())
-		to_chat(person_scanning, span_warning("Você é incapaz de ler.[src]É a tela!"))
+		to_chat(person_scanning, span_warning("Você é incapaz de ler.[src] É a tela!"))
 		return FALSE
 	return TRUE

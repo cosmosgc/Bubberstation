@@ -186,12 +186,12 @@
 /obj/item/shield/riot/attackby(obj/item/attackby_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attackby_item, /obj/item/stack/sheet/mineral/titanium))
 		if (atom_integrity >= max_integrity)
-			to_chat(user, span_warning("[src]Já está em perfeitas condições."))
+			to_chat(user, span_warning("[src] Já está em perfeitas condições."))
 			return
 		var/obj/item/stack/sheet/mineral/titanium/titanium_sheet = attackby_item
 		titanium_sheet.use(1)
 		atom_integrity = max_integrity
-		to_chat(user, span_notice("Você conserta.[src]com[titanium_sheet]."))
+		to_chat(user, span_notice("Você conserta.[src] com [titanium_sheet]."))
 		return
 	return ..()
 
@@ -442,12 +442,12 @@
 /obj/item/shield/ballistic/attackby(obj/item/attackby_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attackby_item, /obj/item/stack/sheet/mineral/titanium))
 		if (atom_integrity >= max_integrity)
-			to_chat(user, span_warning("[src]Já está em perfeitas condições."))
+			to_chat(user, span_warning("[src] Já está em perfeitas condições."))
 			return
 		var/obj/item/stack/sheet/mineral/titanium/titanium_sheet = attackby_item
 		titanium_sheet.use(1)
 		atom_integrity = max_integrity
-		to_chat(user, span_notice("Você conserta.[src]com[titanium_sheet]."))
+		to_chat(user, span_notice("Você conserta.[src] com [titanium_sheet]."))
 		return
 	return ..()
 

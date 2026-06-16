@@ -77,7 +77,7 @@
 /datum/action/cooldown/spell/jaunt/bloodcrawl/proc/try_enter_jaunt(obj/effect/decal/cleanable/blood, mob/living/jaunter, forced = FALSE)
 	if(!forced)
 		if(enter_blood_time > 0 SECONDS)
-			blood.visible_message(span_warning("[jaunter]Começa a afundar em[blood]!"))
+			blood.visible_message(span_warning("[jaunter] Começa a afundar em [blood]!"))
 			if(!do_after(jaunter, enter_blood_time, target = blood))
 				return FALSE
 
@@ -102,7 +102,7 @@
 		jaunter.put_in_hands(left_hand)
 		jaunter.put_in_hands(right_hand)
 
-	blood.visible_message(span_warning("[jaunter]Afunda-se em[blood]!"))
+	blood.visible_message(span_warning("[jaunter] Afunda-se em [blood]!"))
 	playsound(jaunt_turf, 'sound/effects/magic/enter_blood.ogg', 50, TRUE, -1)
 	jaunter.extinguish_mob()
 
@@ -120,14 +120,14 @@
 			return FALSE
 
 		if(exit_blood_time > 0 SECONDS)
-			blood.visible_message(span_warning("[blood]Começa a borbulhar..."))
+			blood.visible_message(span_warning("[blood] Começa a borbulhar..."))
 			if(!do_after(jaunter, exit_blood_time, target = blood))
 				return FALSE
 
 	if(!exit_jaunt(jaunter, get_turf(blood)))
 		return FALSE
 
-	blood.visible_message(span_boldwarning("[jaunter]Se levanta de[blood]!"))
+	blood.visible_message(span_boldwarning("[jaunter] Se levanta de [blood]!"))
 	return TRUE
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/on_jaunt_exited(obj/effect/dummy/phased_mob/jaunt, mob/living/unjaunter)
@@ -188,7 +188,7 @@
 
 	if(victim.stat == CONSCIOUS)
 		jaunt_turf.visible_message(
-			span_warning("[victim]Chuta livre de[blood]Antes de entrar!"),
+			span_warning("[victim] Chuta livre de [blood] Antes de entrar!"),
 			blind_message = span_notice("Você ouve salpicos e lutando."),
 		)
 		return FALSE
@@ -199,7 +199,7 @@
 	victim.forceMove(jaunter)
 	victim.emote("scream")
 	jaunt_turf.visible_message(
-		span_boldwarning("[jaunter]arrasta[victim]em[blood]!"),
+		span_boldwarning("[jaunter] arrasta [victim] em [blood]!"),
 		blind_message = span_notice("Você ouve um barulho."),
 	)
 
@@ -269,7 +269,7 @@
 	if(!iscarbon(jaunter))
 		resist_jaunt_damage = TRUE
 		deltimer(jaunt_damage_timer)
-	to_chat(jaunter, span_danger("Você começa a festejar[victim]Você não pode se mover enquanto está fazendo isso."))
+	to_chat(jaunter, span_danger("Você começa a festejar [victim] Você não pode se mover enquanto está fazendo isso."))
 
 /**
  * Called when a victim is successfully consumed.
@@ -278,7 +278,7 @@
 	if(!iscarbon(jaunter))
 		resist_jaunt_damage = FALSE
 		jaunt_damage_timer = addtimer(CALLBACK(src, PROC_REF(damage_for_lazy_demon), jaunter), 20 SECONDS, TIMER_STOPPABLE)
-	to_chat(jaunter, span_danger("Você devora.[victim]Sua saúde está totalmente restaurada."))
+	to_chat(jaunter, span_danger("Você devora.[victim] Sua saúde está totalmente restaurada."))
 	qdel(victim)
 
 /**
@@ -307,10 +307,10 @@
 	return ..()
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/slaughter_demon/funny/on_victim_start_consume(mob/living/victim, mob/living/jaunter)
-	to_chat(jaunter, span_clown("Você convida.[victim]Para sua festa! Você não pode se mover enquanto está fazendo isso."))
+	to_chat(jaunter, span_clown("Você convida.[victim] Para sua festa! Você não pode se mover enquanto está fazendo isso."))
 
 /datum/action/cooldown/spell/jaunt/bloodcrawl/slaughter_demon/funny/on_victim_consumed(mob/living/victim, mob/living/jaunter)
-	to_chat(jaunter, span_clown("[victim]se junta à sua festa! Sua saúde está totalmente restaurada."))
+	to_chat(jaunter, span_clown("[victim] se junta à sua festa! Sua saúde está totalmente restaurada."))
 	consumed_mobs += victim
 	RegisterSignal(victim, COMSIG_MOB_STATCHANGE, PROC_REF(on_victim_statchange))
 	RegisterSignal(victim, COMSIG_QDELETING, PROC_REF(on_victim_deleted))
@@ -334,7 +334,7 @@
 		if(!friend.revive(ADMIN_HEAL_ALL, force_grab_ghost = TRUE))
 			continue
 		friend.playsound_local(release_turf, 'sound/effects/magic/exit_blood.ogg', 50, TRUE, -1)
-		to_chat(friend, span_clown("Você vai embora.[source]É um abraço caloroso, e se sinta pronto para enfrentar o mundo."))
+		to_chat(friend, span_clown("Você vai embora.[source] É um abraço caloroso, e se sinta pronto para enfrentar o mundo."))
 
 
 /**
@@ -351,7 +351,7 @@
 		return
 	// Someone we've eaten has spontaneously revived; maybe regen coma, maybe a changeling
 	victim.forceMove(get_turf(victim))
-	victim.visible_message(span_warning("[victim]cai do ar, coberto de sangue, com um olhar confuso no rosto."))
+	victim.visible_message(span_warning("[victim] cai do ar, coberto de sangue, com um olhar confuso no rosto."))
 	exit_blood_effect(victim)
 
 	consumed_mobs -= victim

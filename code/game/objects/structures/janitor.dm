@@ -135,12 +135,12 @@
 				. += "\t[icon2html(sign_obj, user)] \a [sign_obj]"
 		. += span_notice("\n<b>Botão esquerdo</b>para[contents.len > 1 ? "search [src]" : "remove [contents[1]]"].")
 		if(mybag)
-			. += span_notice("<b>Botão direito</b>com um<b>[weight_class_to_text(mybag.atom_storage.max_specific_storage)]item</b>para colocá-lo em[mybag].")
+			. += span_notice("<b>Botão direito</b>com um<b>[weight_class_to_text(mybag.atom_storage.max_specific_storage)] item</b>para colocá-lo em [mybag].")
 		if(mymop)
 			. += span_notice("<b>Botão direito</b>Para remover rapidamente.[mymop].")
 	if(CART_HAS_MINIMUM_REAGENT_VOLUME)
 		. += span_notice("<b>Botão direito</b>com um<b>esfregão</b>para molhar.")
-		. += span_info("<b>Crowbar.</b>para jogar seu balde de esfregão em[get_turf(src)].")
+		. += span_info("<b>Crowbar.</b>para jogar seu balde de esfregão em [get_turf(src)].")
 
 /obj/structure/mop_bucket/janitorialcart/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
@@ -239,10 +239,10 @@
 		balloon_alert(user, "O balde está vazio!")
 		return ITEM_INTERACT_SUCCESS
 	user.balloon_alert_to_viewers("starts dumping [src]...", "started dumping [src]...")
-	user.visible_message(span_notice("[user]começa a despejar o conteúdo de[src]É um balde de esfregão."), span_notice("Você começa a despejar o conteúdo de[src]O balde de esfregão..."))
+	user.visible_message(span_notice("[user] começa a despejar o conteúdo de [src] É um balde de esfregão."), span_notice("Você começa a despejar o conteúdo de [src] O balde de esfregão..."))
 	if(tool.use_tool(src, user, 5 SECONDS, volume = 50))
 		balloon_alert(user, "Descartado.[src]")
-		to_chat(user, span_notice("Você jogou fora o conteúdo de[src]É um balde de esfregão no chão."))
+		to_chat(user, span_notice("Você jogou fora o conteúdo de [src] É um balde de esfregão no chão."))
 		reagents.expose(loc)
 		reagents.clear_reagents()
 		update_appearance(UPDATE_OVERLAYS)

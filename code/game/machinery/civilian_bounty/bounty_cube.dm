@@ -40,9 +40,9 @@
 /obj/item/bounty_cube/examine()
 	. = ..()
 	if(speed_bonus)
-		. += span_notice("<b>[time2text(next_nag_time - world.time,"mm:ss", NO_TIMEZONE)]</b>Fica até<b>[bounty_value * speed_bonus]</b> [MONEY_NAME_SINGULAR]Bônus de entrega rápida perdido.")
+		. += span_notice("<b>[time2text(next_nag_time - world.time,"mm:ss", NO_TIMEZONE)]</b>Fica até<b>[bounty_value * speed_bonus]</b> [MONEY_NAME_SINGULAR] Bônus de entrega rápida perdido.")
 	if(handler_tip && !bounty_handler_account)
-		. += span_notice("Analise isso no transporte de carga com um scanner de exportação para registrar sua conta bancária para o<b>[bounty_value * handler_tip]</b> [MONEY_NAME_SINGULAR]Lidando com gorjeta.")
+		. += span_notice("Analise isso no transporte de carga com um scanner de exportação para registrar sua conta bancária para o<b>[bounty_value * handler_tip]</b> [MONEY_NAME_SINGULAR] Lidando com gorjeta.")
 
 /obj/item/bounty_cube/process(seconds_per_tick)
 	//if our nag cooldown has finished and we aren't on Centcom or in transit, then nag

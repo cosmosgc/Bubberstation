@@ -50,7 +50,7 @@
 
 	for(var/obj/restraint as anything in restraints)
 		if(restraint.obj_flags & (INDESTRUCTIBLE | ACID_PROOF | UNACIDABLE))
-			to_chat(user, span_changeling("Não podemos usar bioácido para destruir[restraint]!"))
+			to_chat(user, span_changeling("Não podemos usar bioácido para destruir [restraint]!"))
 			continue
 
 		if(restraint == user.loc)
@@ -65,7 +65,7 @@
 		addtimer(CALLBACK(restraint, TYPE_PROC_REF(/atom, atom_destruction), ACID), 1.5 SECONDS)
 		log_combat(user = user, target = restraint, what_done = "melted restraining item", addition = "(biodegrade)")
 		user.visible_message(
-			span_warning("[user]Lança torrentes de ácido sobre[restraint], derretendo-os com facilidade horrível."),
+			span_warning("[user] Lança torrentes de ácido sobre [restraint], derretendo-os com facilidade horrível."),
 			user.balloon_alert(user, "Derreter como Amarras..."),
 			span_danger("Você ouve retching, em seguida, a queima de ácido poderoso, mais perto do som do vapor sibilante."))
 		playsound(user, 'sound/items/tools/welder.ogg', 50, TRUE)
@@ -96,14 +96,14 @@
 	playsound(user, 'sound/mobs/non-humanoids/bileworm/bileworm_spit.ogg', 50, TRUE)
 	if(IS_CHANGELING(hapless_manhandler))
 		user.visible_message(
-			span_danger("[user]Despeja uma névoa de ácido escaldante sobre[hapless_manhandler]... masnadacontece!"),
+			span_danger("[user] Despeja uma névoa de ácido escaldante sobre [hapless_manhandler]... masnadacontece!"),
 			span_changeling("We prepare our escape, spraying bio-acid on our captor... [span_danger("But nothing happened?!")]"),
 			span_danger("Você ouve reticências, depois uma brasa que termina abruptamente.")
 			)
 		to_chat(hapless_manhandler, span_changeling("Nossa presa tenta nos dissuadir com uma das mais simples adaptações de nossa biologia. Estranho."))
 		return
 	user.visible_message(
-		span_danger("[user]Despeja uma névoa de ácido escaldante sobre[hapless_manhandler], usando a oportunidade para lutar."),
+		span_danger("[user] Despeja uma névoa de ácido escaldante sobre [hapless_manhandler], usando a oportunidade para lutar."),
 		user.balloon_alert(user, "Dissuadindo o raptor..."),
 		span_danger("Você ouve reticências, em seguida, fervendo, rapidamente abafado por uma forte sensação de dor."))
 	hapless_manhandler.Stun(2 SECONDS)

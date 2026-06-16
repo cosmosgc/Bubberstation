@@ -31,7 +31,7 @@
 
 	if(cast_on.can_block_magic(antimagic_flags))
 		cast_on.visible_message(
-			span_danger("[cast_on]Os hematomas brilham brevemente, mas repele o efeito!"),
+			span_danger("[cast_on] Os hematomas brilham brevemente, mas repele o efeito!"),
 			span_danger("Suas contusões ardem um pouco, mas você está protegido!")
 		)
 		return FALSE
@@ -49,7 +49,7 @@
 		crit_wound.apply_wound(pick(cast_on.get_bodyparts()))
 
 	cast_on.visible_message(
-		span_danger("[cast_on]Arranhões e hematomas são rasgados por uma força profana!"),
+		span_danger("[cast_on] Arranhões e hematomas são rasgados por uma força profana!"),
 		span_danger("Seus arranhões e contusões são rasgados por uma horrível força profana!")
 	)
 

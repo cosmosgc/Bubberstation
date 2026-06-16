@@ -64,7 +64,7 @@
 		carbon_target.reagents.add_reagent(/datum/reagent/toxin, 4)
 
 /obj/item/melee/beesword/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está esfaqueando.[user.p_them()]Ego na gigante com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está esfaqueando.[user.p_them()] Ego na gigante com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(get_turf(src), hitsound, 75, TRUE, -1)
 	return TOXLOSS
 
@@ -90,7 +90,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		human_target.drop_all_held_items()
-		human_target.visible_message(span_danger("[user]Desarmar.[human_target]!"), span_userdanger("[user]Desarmei você!"))
+		human_target.visible_message(span_danger("[user] Desarmar.[human_target]!"), span_userdanger("[user] Desarmei você!"))
 
 /obj/item/melee/roastingstick
 	name = "advanced roasting stick"
@@ -130,7 +130,7 @@
 	SIGNAL_HANDLER
 
 	if(held_sausage)
-		to_chat(user, span_warning("Você não pode se retratar.[src]entanto[held_sausage]Está preso!"))
+		to_chat(user, span_warning("Você não pode se retratar.[src] entanto [held_sausage] Está preso!"))
 		return COMPONENT_BLOCK_TRANSFORM
 
 /*
@@ -151,15 +151,15 @@
 	..()
 	if (istype(target, /obj/item/food/sausage))
 		if (!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-			to_chat(user, span_warning("Você deve estender[src]Para prender qualquer coisa a ele!"))
+			to_chat(user, span_warning("Você deve estender [src] Para prender qualquer coisa a ele!"))
 			return
 		if (held_sausage)
-			to_chat(user, span_warning("[held_sausage]Já está ligado a[src]!"))
+			to_chat(user, span_warning("[held_sausage] Já está ligado a [src]!"))
 			return
 		if (user.transferItemToLoc(target, src))
 			held_sausage = target
 		else
-			to_chat(user, span_warning("[target]Não parece querer entrar[src]!"))
+			to_chat(user, span_warning("[target] Não parece querer entrar [src]!"))
 	update_appearance()
 
 /obj/item/melee/roastingstick/attack_hand(mob/user, list/modifiers)
@@ -184,7 +184,7 @@
 	if (!is_type_in_typecache(interacting_with, ovens))
 		return NONE
 	if (istype(interacting_with, /obj/singularity) || istype(interacting_with, /obj/energy_ball) && get_dist(user, interacting_with) < 10)
-		to_chat(user, span_notice("Você manda[held_sausage]em direção[interacting_with]."))
+		to_chat(user, span_notice("Você manda [held_sausage] em direção [interacting_with]."))
 		playsound(src, 'sound/items/tools/rped.ogg', 50, TRUE)
 		beam = user.Beam(interacting_with, icon_state = "rped_upgrade", time = 10 SECONDS)
 		finish_roasting(user, interacting_with)
@@ -196,14 +196,14 @@
 		return NONE
 	if (!is_type_in_typecache(interacting_with, ovens))
 		return NONE
-	to_chat(user, span_notice("Você se estende.[src]em direção[interacting_with]."))
+	to_chat(user, span_notice("Você se estende.[src] em direção [interacting_with]."))
 	playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
 	finish_roasting(user, interacting_with)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/melee/roastingstick/proc/finish_roasting(user, atom/target)
 	if(do_after(user, 10 SECONDS, target = user))
-		to_chat(user, span_notice("Você termina de assar[held_sausage]."))
+		to_chat(user, span_notice("Você termina de assar [held_sausage]."))
 		playsound(src, 'sound/items/tools/welder2.ogg', 50, TRUE)
 		held_sausage.add_atom_colour(rgb(103, 63, 24), FIXED_COLOUR_PRIORITY)
 		held_sausage.name = "[target.name]-roasted [held_sausage.name]"
@@ -212,7 +212,7 @@
 	else
 		QDEL_NULL(beam)
 		playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
-		to_chat(user, span_notice("Você colocou[src]Vamos."))
+		to_chat(user, span_notice("Você colocou [src] Vamos."))
 
 /obj/item/melee/cleric_mace
 	name = "cleric mace"
@@ -253,7 +253,7 @@
 	. = ..()
 	var/datum/material/material = get_material_from_slot(/datum/material_slot/handle)
 	if (material)
-		desc = "[initial(desc)]Sua alça é feita de[material.name]."
+		desc = "[initial(desc)] Sua alça é feita de [material.name]."
 
 /obj/item/melee/cleric_mace/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	// Don't bring a...mace to a gunfight, and also you aren't going to really block someone full body tackling you with a mace.
@@ -284,7 +284,7 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
 /obj/item/sord/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está tentando empalar[user.p_them()]ego com[src]! Seria uma tentativa de suicídio se não fosse tão ruim."), 	span_suicide("Você tenta empalar-se com[src], mas é inútil ..."))
+	user.visible_message(span_suicide("[user] Está tentando empalar [user.p_them()] ego com [src]! Seria uma tentativa de suicídio se não fosse tão ruim."), 	span_suicide("Você tenta empalar-se com [src], mas é inútil ..."))
 	return SHAME
 
 /obj/item/carpenter_hammer
@@ -338,9 +338,9 @@
 
 /obj/item/phone/suicide_act(mob/living/user)
 	if(locate(/obj/structure/chair/stool) in user.loc)
-		user.visible_message(span_suicide("[user]começa a amarrar uma corda com[src]Cordão! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] começa a amarrar uma corda com [src] Cordão! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	else
-		user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]Cordão! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Está estrangulando [user.p_them()] ego com [src] Cordão! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/bambostaff
@@ -475,7 +475,7 @@
 
 /obj/item/melee/flyswatter/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	if(is_type_in_typecache(target, splattable))
-		to_chat(user, span_warning("Você facilmente escorregou[target]."))
+		to_chat(user, span_warning("Você facilmente escorregou [target]."))
 		if(QDELETED(target))
 			return
 		if(isliving(target))

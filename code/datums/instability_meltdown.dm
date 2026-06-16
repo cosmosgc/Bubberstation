@@ -80,7 +80,7 @@
 		return
 	var/obj/item/organ/picked_organ = pick(elligible_organs)
 	picked_organ.Remove(src)
-	victim.visible_message(span_danger("[victim]Vomite.[p_their()] [picked_organ.name]!"), span_danger("Você vomita seu[picked_organ.name]")) //no "Vomite seu coração"
+	victim.visible_message(span_danger("[victim] Vomite.[p_their()] [picked_organ.name]!"), span_danger("Você vomita seu [picked_organ.name]")) //no "Vomite seu coração"
 	picked_organ.forceMove(victim.drop_location())
 	if(prob(20))
 		picked_organ.animate_atom_living()
@@ -144,7 +144,7 @@
 /datum/instability_meltdown/fatal/skeletonize
 
 /datum/instability_meltdown/fatal/skeletonize/meltdown(mob/living/carbon/human/victim)
-	victim.visible_message(span_warning("[victim]Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
+	victim.visible_message(span_warning("[victim] Uma pele derrete!"), span_boldwarning("Sua pele derrete!"))
 	victim.spawn_gibs()
 	victim.set_species(/datum/species/skeleton)
 	if(prob(90))

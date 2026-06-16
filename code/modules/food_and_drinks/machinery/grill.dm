@@ -157,7 +157,7 @@
 		if(!merged)
 			weapon.forceMove(src)
 
-		to_chat(user, span_notice("Você acrescenta[src]Para a pilha de combustível."))
+		to_chat(user, span_notice("Você acrescenta [src] Para a pilha de combustível."))
 		if(!grill_fuel)
 			burn_stack()
 			begin_processing()
@@ -201,7 +201,7 @@
 			update_appearance(UPDATE_ICON_STATE)
 
 			//feedback
-			to_chat(user, span_notice("Você se transferiu.[transfered_amount]Para a fonte de combustível."))
+			to_chat(user, span_notice("Você se transferiu.[transfered_amount] Para a fonte de combustível."))
 			return ITEM_INTERACT_SUCCESS
 
 		balloon_alert(user, "Nenhum combustível transferido!")
@@ -221,7 +221,7 @@
 			balloon_alert(user, "sem combustível!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(weapon, src))
-			balloon_alert(user, "[weapon]Está preso em sua mão!")
+			balloon_alert(user, "[weapon] Está preso em sua mão!")
 			return ITEM_INTERACT_BLOCKING
 
 		//add the item on the grill
@@ -230,7 +230,7 @@
 		var/datum/component/sizzle/sizzle = grilled_item.GetComponent(/datum/component/sizzle)
 		if(!isnull(sizzle))
 			grill_time = sizzle.time_elapsed()
-		to_chat(user, span_notice("Você colocou o[grilled_item]Vamos.[src]."))
+		to_chat(user, span_notice("Você colocou o [grilled_item] Vamos.[src]."))
 		update_appearance(UPDATE_ICON_STATE)
 		grill_loop.start()
 		return ITEM_INTERACT_SUCCESS

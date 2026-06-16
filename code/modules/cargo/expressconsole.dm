@@ -57,7 +57,7 @@
 		if(!user.temporarilyRemoveItemFromInventory(tool))
 			return ITEM_INTERACT_FAILURE
 		pod_type = /obj/structure/closet/supplypod/bluespacepod // doesnt affect our circuit board, making reversal possible
-		to_chat(user, span_notice("Você insere o disco em[src], permitindo veículos avançados de entrega de suprimentos."))
+		to_chat(user, span_notice("Você insere o disco em [src], permitindo veículos avançados de entrega de suprimentos."))
 		tool.forceMove(src)
 		return ITEM_INTERACT_SUCCESS
 
@@ -67,7 +67,7 @@
 			beacon.link_console(src, user)
 			return ITEM_INTERACT_SUCCESS
 
-		to_chat(user, span_alert("[src]já está ligado a[beacon]."))
+		to_chat(user, span_alert("[src] já está ligado a [beacon]."))
 		return ITEM_INTERACT_FAILURE
 
 	return NONE
@@ -77,7 +77,7 @@
 		return FALSE
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user]Deslize[emag_card]através[src]!"))
+			user.visible_message(span_warning("[user] Deslize [emag_card] através [src]!"))
 		to_chat(user, span_notice("Você muda os protocolos de roteamento, permitindo que o módulo de suprimentos aterrisse em qualquer lugar na estação."))
 	obj_flags |= EMAGGED
 	contraband = TRUE

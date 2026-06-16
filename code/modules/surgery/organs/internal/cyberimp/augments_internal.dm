@@ -120,7 +120,7 @@
 			if(!held_item)
 				continue
 			stored_items += held_item
-			to_chat(owner, span_notice("Sua[owner.get_held_index_name(owner.get_held_index_of_item(held_item))]A aderência aperta."))
+			to_chat(owner, span_notice("Sua [owner.get_held_index_name(owner.get_held_index_of_item(held_item))] A aderência aperta."))
 			ADD_TRAIT(held_item, TRAIT_NODROP, IMPLANT_TRAIT)
 			RegisterSignal(held_item, COMSIG_ITEM_DROPPED, PROC_REF(on_held_item_dropped))
 	else
@@ -139,7 +139,7 @@
 	for(var/obj/item/stored_item as anything in stored_items)
 		throw_target = pick(oview(range))
 		stored_item.throw_at(throw_target, range, 2)
-		to_chat(owner, span_warning("Sua[owner.get_held_index_name(owner.get_held_index_of_item(stored_item))]espasmos e lances\the [stored_item]!"))
+		to_chat(owner, span_warning("Sua [owner.get_held_index_name(owner.get_held_index_of_item(stored_item))] espasmos e lances\the [stored_item]!"))
 	stored_items = list()
 
 
@@ -251,7 +251,7 @@
 
 /obj/item/organ/cyberimp/brain/connector/ui_action_click()
 
-	to_chat(owner, span_warning("Você começa a mexer com[src]..."))
+	to_chat(owner, span_warning("Você começa a mexer com [src]..."))
 	playsound(owner, 'sound/items/taperecorder/tape_flip.ogg', 20, vary = TRUE) // asmr
 
 	if(!do_after(owner, 1.5 SECONDS, owner)) // othwerwise it doesnt appear
@@ -261,7 +261,7 @@
 	if(organ_flags & ORGAN_FAILING)
 		var/holy_shit_my_brain = remove_brain(owner.get_organ_by_type(ORGAN_SLOT_BRAIN))
 		if(holy_shit_my_brain)
-			to_chat(owner, span_warning("Você pega.[holy_shit_my_brain]Fora[src]Você olha para ele por um momento em confusão."))
+			to_chat(owner, span_warning("Você pega.[holy_shit_my_brain] Fora [src] Você olha para ele por um momento em confusão."))
 		return
 
 	var/obj/item/skillchip/skillchip = owner.get_active_held_item()
@@ -269,7 +269,7 @@
 		if(istype(skillchip, /obj/item/skillchip))
 			insert_skillchip(skillchip)
 		else
-			to_chat(owner, span_warning("Você tenta inserir[owner.get_active_held_item()]em[src]Mas não cabe!")) // make it kill you if you shove a crayon inside or something
+			to_chat(owner, span_warning("Você tenta inserir [owner.get_active_held_item()] em [src] Mas não cabe!")) // make it kill you if you shove a crayon inside or something
 	else // no inhand item, assume removal
 		var/obj/item/organ/brain/chippy_brain = owner.get_organ_by_type(/obj/item/organ/brain)
 		if(!chippy_brain)
@@ -299,7 +299,7 @@
 		skillchip.forceMove(owner.drop_location())
 		owner.put_in_hands(skillchip, del_on_fail = FALSE)
 		playsound(owner, 'sound/machines/click.ogg', 10, vary = TRUE)
-		to_chat(owner, span_warning("Você pega.[skillchip]Fora[src]."))
+		to_chat(owner, span_warning("Você pega.[skillchip] Fora [src]."))
 		return
 
 	to_chat(owner, span_warning("Seu cérebro está vazio!")) // heh
@@ -314,7 +314,7 @@
 		loops = 2
 	for(var/i in 1 to loops)
 		// you either lose a chip or a bit of your brain
-		owner.visible_message(span_warning("Algo cai no chão por trás[owner]A cabeça."),			span_boldwarning("Você sente algo cair atrás da sua cabeça."))
+		owner.visible_message(span_warning("Algo cai no chão por trás [owner] A cabeça."),			span_boldwarning("Você sente algo cair atrás da sua cabeça."))
 		var/obj/item/organ/brain/chippy_brain = owner.get_organ_by_type(ORGAN_SLOT_BRAIN)
 		var/obj/item/skillchip/skillchip = chippy_brain?.skillchips[1]
 		if(skillchip)
@@ -333,7 +333,7 @@
 	chippy_brain.maxHealth -= 15 * severity // a bit of your brain fell off. again.
 	if(chippy_brain.damage >= chippy_brain.maxHealth)
 		chippy_brain.forceMove(owner.drop_location())
-		owner.visible_message(span_userdanger("[owner]O cérebro cai da parte de trás de[owner.p_their()]Cabeça!"), span_boldwarning("Você sente que está perdendo algo."))
+		owner.visible_message(span_userdanger("[owner] O cérebro cai da parte de trás de [owner.p_their()] Cabeça!"), span_boldwarning("Você sente que está perdendo algo."))
 		return chippy_brain
 
 	var/gib_type = /obj/effect/decal/cleanable/blood/gibs/up

@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 			if (C.stat != DEAD)
 				var/obj/item/stack/telecrystal/TC = new(C.drop_location(), tc_to_distribute)
 				TC.throw_at(get_step(C, C.dir), 3, 3)
-				C.visible_message(span_notice("[C]Um meio digerido telecristal"),span_notice("Você tossiu um telecristal meio digerido!"))
+				C.visible_message(span_notice("[C] Um meio digerido telecristal"),span_notice("Você tossiu um telecristal meio digerido!"))
 				break
 
 

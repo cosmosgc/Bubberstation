@@ -23,7 +23,7 @@
 	if(broken)
 		. += span_warning("Está quebrado no momento. Você pode usar um pedaço de[EXAMINE_HINT("cable")]Para consertar.")
 	else
-		. += span_notice("Está no momento[GLOB.suit_sensor_mode_to_defines.Find(sensor_mode + 1)]'.")
+		. += span_notice("Está no momento [GLOB.suit_sensor_mode_to_defines.Find(sensor_mode + 1)]'.")
 
 /obj/item/suit_sensor/update_overlays()
 	. = ..()

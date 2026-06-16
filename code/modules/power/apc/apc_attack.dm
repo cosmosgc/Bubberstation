@@ -117,7 +117,7 @@
 
 	if(opened && (!issilicon(user)))
 		if(cell)
-			user.visible_message(span_notice("[user]Remover\the [cell]De[src]!"))
+			user.visible_message(span_notice("[user] Remover\the [cell] De [src]!"))
 			balloon_alert(user, "célula removida")
 			user.put_in_hands(cell)
 		return

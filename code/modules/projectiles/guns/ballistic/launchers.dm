@@ -126,7 +126,7 @@
 		. += "rocketlauncher_loaded"
 
 /obj/item/gun/ballistic/rocketlauncher/suicide_act(mob/living/user)
-	user.visible_message(span_warning("[user]Objetivos[src]No chão! Parece que...[user.p_theyre()]Fazenda um salto de foguete doente!"), 		span_userdanger("Você aponta[src]no chão para executar um salto de foguete bisnasty..."))
+	user.visible_message(span_warning("[user] Objetivos [src] No chão! Parece que...[user.p_theyre()] Fazenda um salto de foguete doente!"), 		span_userdanger("Você aponta [src] no chão para executar um salto de foguete bisnasty..."))
 	if(can_shoot())
 		ADD_TRAIT(user, TRAIT_NO_TRANSFORM, REF(src))
 		playsound(src, 'sound/vehicles/rocketlaunch.ogg', 80, TRUE, 5)
@@ -143,7 +143,7 @@
 		sleep(0.5 SECONDS)
 		shoot_with_empty_chamber(user)
 		sleep(2 SECONDS)
-		user.visible_message(span_warning("[user]Parece que a sala percebeu[user.p_theyre()]Ainda lá.[user.p_They()]Continue um empurrar.[src]Pela garganta e sufocar[user.p_them()]Me dê isso!"), 			span_userdanger("Você olha ao redor depois de perceber que ainda está aqui, então continue a sufocar-se até a morte com[src]!"))
+		user.visible_message(span_warning("[user] Parece que a sala percebeu [user.p_theyre()] Ainda lá.[user.p_They()] Continue um empurrar.[src] Pela garganta e sufocar [user.p_them()] Me dê isso!"), 			span_userdanger("Você olha ao redor depois de perceber que ainda está aqui, então continue a sufocar-se até a morte com [src]!"))
 		sleep(2 SECONDS)
 		return OXYLOSS
 

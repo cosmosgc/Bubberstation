@@ -119,7 +119,7 @@
 		INVOKE_ASYNC(our_hud, TYPE_PROC_REF(/datum/hud, show_hud), our_hud.hud_version)
 
 /obj/item/multitool/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Coloca o[src]Para[user.p_their()]Peito. Parece que...[user.p_theyre()]Tentando pulsar.[user.p_their()]Coração fora!"))
+	user.visible_message(span_suicide("[user] Coloca o [src] Para [user.p_their()] Peito. Parece que...[user.p_theyre()] Tentando pulsar.[user.p_their()] Coração fora!"))
 	return OXYLOSS//there's a reason it wasn't recommended by doctors
 
 /**
@@ -227,7 +227,7 @@
 /obj/item/multitool/ai_detect/proc/toggle_hud(mob/user)
 	hud_on = !hud_on
 	if(user)
-		to_chat(user, span_notice("Você alterna o recurso de detecção de ai em[src] [hud_on ? "on" : "off"]."))
+		to_chat(user, span_notice("Você alterna o recurso de detecção de ai em [src] [hud_on ? "on" : "off"]."))
 	if(hud_on)
 		START_PROCESSING(SSfastprocess, src)
 		show_hud(user)

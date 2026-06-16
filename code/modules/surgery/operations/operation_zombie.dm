@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a crescer um tumor de romerol em[limb.owner]O cérebro..."),
-		span_notice("[surgeon]Começa a mexer com[limb.owner]O cérebro..."),
-		span_notice("[surgeon]Começa a operar em[limb.owner]É o cérebro."),
+		span_notice("Você começa a crescer um tumor de romerol em [limb.owner] O cérebro..."),
+		span_notice("[surgeon] Começa a mexer com [limb.owner] O cérebro..."),
+		span_notice("[surgeon] Começa a operar em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
 
@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você tem sucesso em desenvolver um tumor de romerol[limb.owner]É o cérebro."),
-		span_notice("[surgeon]Com sucesso cresce um tumor de romerol em[limb.owner]Cérebro!"),
-		span_notice("[surgeon]completa a cirurgia em[limb.owner]É o cérebro."),
+		span_notice("Você tem sucesso em desenvolver um tumor de romerol [limb.owner] É o cérebro."),
+		span_notice("[surgeon] Com sucesso cresce um tumor de romerol em [limb.owner] Cérebro!"),
+		span_notice("[surgeon] completa a cirurgia em [limb.owner] É o cérebro."),
 	)
 	display_pain(limb.owner, "Your head goes totally numb for a moment, the pain is overwhelming!")
 	if(locate(/obj/item/organ/zombie_infection) in limb) // they got another one mid surgery? whatever

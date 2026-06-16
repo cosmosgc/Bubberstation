@@ -186,7 +186,7 @@
 		user.client.give_award(/datum/award/achievement/misc/cleanboss, user)
 	if(isnull(weapon))
 		return
-	. += span_warning("É isso?\a [weapon]Gravado a ele?")
+	. += span_warning("É isso?\a [weapon] Gravado a ele?")
 
 /mob/living/basic/bot/cleanbot/update_icon_state()
 	. = ..()
@@ -201,7 +201,7 @@
 	if(weapon)
 		weapon.force = initial(weapon.force)
 	balloon_alert(user, "Travas desativadas")
-	audible_message(span_danger("[src]Que estranho!"))
+	audible_message(span_danger("[src] Que estranho!"))
 
 /mob/living/basic/bot/cleanbot/explode()
 	var/atom/drop_loc = drop_location()
@@ -325,7 +325,7 @@
 	if(!(iscarbon(target) && (bot_access_flags & BOT_COVER_EMAGGED)) && !is_type_in_typecache(target, huntable_trash))
 		return NONE
 
-	visible_message(span_danger("[src]pulveriza ácido fluorídrico em[target]!"))
+	visible_message(span_danger("[src] pulveriza ácido fluorídrico em [target]!"))
 	playsound(src, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 	target.acid_act(75, 10)
 	return COMPONENT_CANCEL_ATTACK_CHAIN

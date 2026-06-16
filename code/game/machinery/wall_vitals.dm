@@ -163,7 +163,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader/advanced, 32)
 
 	if(isnull(connected))
 		if(find_machine())
-			balloon_alert(user, "Conectados a[connected.name]")
+			balloon_alert(user, "Conectados a [connected.name]")
 		else
 			balloon_alert(user, "Não há máquinas conectáveis por perto!")
 		return ITEM_INTERACT_SUCCESS
@@ -172,7 +172,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/vitals_reader/advanced, 32)
 	if(!do_after(user, 2 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "Desligado de[connected.name]")
+	balloon_alert(user, "Desligado de [connected.name]")
 	set_connection(null)
 	return ITEM_INTERACT_SUCCESS
 

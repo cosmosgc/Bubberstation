@@ -44,7 +44,7 @@
 	else if(num == INFINITY)
 		. += span_notice("Está cheio de suprimentos!")
 	else
-		. += span_notice("Pode reabastecer.[num]item.")
+		. += span_notice("Pode reabastecer.[num] item.")
 
 /obj/item/vending_refill/get_part_rating()
 	. = 0

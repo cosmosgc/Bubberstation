@@ -54,7 +54,7 @@
 
 /obj/item/boulder/examine(mob/user)
 	. = ..()
-	. += span_notice("Esta pedra levaria[durability]Mais passos para definir ou quebrar.")
+	. += span_notice("Esta pedra levaria [durability] Mais passos para definir ou quebrar.")
 	if(HAS_TRAIT(user, TRAIT_BOULDER_BREAKER))
 		. += span_notice("Você pode esmagar esta rocha com suas próprias mãos.")
 
@@ -137,7 +137,7 @@
 	var/obj/structure/lattice/catwalk/boulder/platform = new(interacting_with)
 	addtimer(CALLBACK(platform, TYPE_PROC_REF(/obj/structure/lattice/catwalk/boulder, pre_self_destruct)), active_platform_lifespan)
 	// See Lattice.dm for more info
-	visible_message(span_notice("\The [src]Flutua sobre\the [interacting_with], formando uma plataforma temporária!"))
+	visible_message(span_notice("\The [src] Flutua sobre\the [interacting_with], formando uma plataforma temporária!"))
 	qdel(src)
 	return platform
 
@@ -218,7 +218,7 @@
 /obj/item/boulder/proc/break_apart()
 	if(length(contents))
 		var/list/quips = list("Clang!", "Crack!", "Bang!", "Clunk!", "Clank!")
-		visible_message(span_notice("[pick(quips)]Algo cai de\the [src]!"))
+		visible_message(span_notice("[pick(quips)] Algo cai de\the [src]!"))
 		playsound(loc, 'sound/effects/pickaxe/picaxe1.ogg', 60, FALSE)
 		for(var/obj/item/content as anything in contents)
 			content.forceMove(get_turf(src))

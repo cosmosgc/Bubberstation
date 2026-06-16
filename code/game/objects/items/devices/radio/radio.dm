@@ -601,27 +601,27 @@
 	unscrewed = !unscrewed
 	tool.play_tool_sound(src, 10)
 	if(unscrewed)
-		to_chat(user, span_notice("[src]Agora pode ser anexado e modificado!"))
+		to_chat(user, span_notice("[src] Agora pode ser anexado e modificado!"))
 	else
-		to_chat(user, span_notice("[src]Não pode mais ser modificado ou anexado!"))
+		to_chat(user, span_notice("[src] Não pode mais ser modificado ou anexado!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/radio/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(keylock)
 		if(RADIO_KEYSLOT_LOCKED)
-			to_chat(user, span_warning("Os parafusos travando[src]As chaves estão despojadas e não podem ser removidas."))
+			to_chat(user, span_warning("Os parafusos travando [src] As chaves estão despojadas e não podem ser removidas."))
 			return ITEM_INTERACT_BLOCKING
 		if(RADIO_KEYSLOT_EMAGGABLE_LOCK)
-			to_chat(user, span_warning("Os parafusos travando[src]As chaves estão apertadas, e provavelmente não podem ser removidas sem algum tipo de ímã..."))
+			to_chat(user, span_warning("Os parafusos travando [src] As chaves estão apertadas, e provavelmente não podem ser removidas sem algum tipo de ímã..."))
 			return ITEM_INTERACT_BLOCKING
 
 	var/list/removed_keys = remove_keys(user)
 	if(length(removed_keys) > 1)
-		to_chat(user, span_notice("Você remove as chaves de criptografia de[src]."))
+		to_chat(user, span_notice("Você remove as chaves de criptografia de [src]."))
 	else if(length(removed_keys) == 1)
-		to_chat(user, span_notice("Você tira.[removed_keys[1]]De[src]."))
+		to_chat(user, span_notice("Você tira.[removed_keys [1]]De [src]."))
 	else
-		to_chat(user, span_warning("[src]Não tem nenhuma chave de criptografia única! Que inútil..."))
+		to_chat(user, span_warning("[src] Não tem nenhuma chave de criptografia única! Que inútil..."))
 	tool.play_tool_sound(src, 10)
 	return TRUE
 
@@ -668,14 +668,14 @@
 	emped++ //There's been an EMP; better count it
 	var/curremp = emped //Remember which EMP this was
 	if (listening && ismob(loc)) // if the radio is turned on and on someone's person they notice
-		to_chat(loc, span_warning("\The [src]Sobrecargas."))
+		to_chat(loc, span_warning("\The [src] Sobrecargas."))
 	for (var/ch_name in channels)
 		channels[ch_name] = 0
 	set_on(FALSE)
 	addtimer(CALLBACK(src, PROC_REF(end_emp_effect), curremp), 20 SECONDS)
 
 /obj/item/radio/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a saltar[src]Fora.[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a saltar [src] Fora.[user.p_their()] Cabeça! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/radio/proc/end_emp_effect(curremp)

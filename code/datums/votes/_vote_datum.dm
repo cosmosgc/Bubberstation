@@ -179,7 +179,7 @@
 	if(override_question)
 		title_text += span_bold(override_question)
 	else
-		title_text += span_bold("[capitalize(name)]Votação")
+		title_text += span_bold("[capitalize(name)] Votação")
 
 	returned_text += "Winner Selection: "
 	switch(winner_method)
@@ -216,7 +216,7 @@
 				percentage_text += "[text]%"
 			else
 				percentage_text = "    0%"
-			returned_text += "[percentage_text] | [span_bold(option)]: [choices[option]]"
+			returned_text += "[percentage_text] | [span_bold(option)]: [choices [option]]"
 
 	if(!real_winner) // vote has no winner or cannot be won, but still had votes
 		return returned_text

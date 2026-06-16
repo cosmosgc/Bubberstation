@@ -108,7 +108,7 @@
 		return FALSE
 
 	if(!user.transferItemToLoc(inserted_item, src))
-		to_chat(user, span_warning("[inserted_item]Está preso em sua mão!"))
+		to_chat(user, span_warning("[inserted_item] Está preso em sua mão!"))
 		return FALSE
 
 	//the hash key decides how items stack in the UI. We diffrentiate them based on name & price
@@ -336,7 +336,7 @@
 	set_panel_open(TRUE)
 	//and references the deity
 	name = "[GLOB.deity]'s Consecrated Vendor"
-	desc = "Uma máquina de vendas criada por[GLOB.deity]."
+	desc = "Uma máquina de vendas criada por [GLOB.deity]."
 	slogan_list = list("[GLOB.deity] says: It's your divine right to buy!")
 	add_filter("vending_outline", 9, list("type" = "outline", "color" = COLOR_VERY_SOFT_YELLOW))
 	add_filter("vending_rays", 10, list("type" = "rays", "size" = 35, "color" = COLOR_VIVID_YELLOW))

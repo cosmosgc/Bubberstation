@@ -43,7 +43,7 @@
 	var/mob/living/basic/blood_worm/worm = target
 	var/mob/living/carbon/human/host = worm.host
 
-	to_chat(owner, span_notice("Você começa a reiniciar.\the [host]A circulação sanguínea..."))
+	to_chat(owner, span_notice("Você começa a reiniciar.\the [host] A circulação sanguínea..."))
 
 	for (var/i in 1 to 3)
 		if (!do_after(owner, 2 SECONDS, host, timed_action_flags = IGNORE_INCAPACITATED | IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE, extra_checks = CALLBACK(src, PROC_REF(run_checks), worm, host)))
@@ -58,7 +58,7 @@
 		animate(transform = original_transform, time = 0.2 SECONDS, easing = CUBIC_EASING | EASE_IN, flags = ANIMATION_PARALLEL)
 
 		host.visible_message(
-			message = span_danger("\The [host] shake[host.p_s()] violently!"),
+			message = span_danger("\The [host] shake [host.p_s()] violently!"),
 			ignored_mobs = owner
 		)
 
@@ -67,7 +67,7 @@
 		return FALSE
 
 	host.visible_message(
-		message = span_danger("\The [host] rise[host.p_s()] from the dead!"),
+		message = span_danger("\The [host] rise [host.p_s()] from the dead!"),
 		ignored_mobs = owner
 	)
 

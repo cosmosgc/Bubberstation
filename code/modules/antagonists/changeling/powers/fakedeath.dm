@@ -110,7 +110,7 @@
 
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	user.visible_message(
-		span_warning("[user]Os membros Desaparecidos reformam, fazem um som alto e grotesco!"),
+		span_warning("[user] Os membros Desaparecidos reformam, fazem um som alto e grotesco!"),
 		span_userdanger("Seus membros cresceram, fazendo um som alto, crocante e dando-lhe uma grande dor!"),
 		span_hear("Você ouve matéria orgânica rasgando e rasgando!"),
 	)

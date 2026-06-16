@@ -539,7 +539,7 @@
 			. += span_notice("[icon2html(ME, user)] \A [ME].")
 	if(mecha_flags & PANEL_OPEN)
 		if(servo)
-			. += span_notice("Servo reduz o uso de energia de movimento por[100 - round(100 / servo.rating)]%")
+			. += span_notice("Servo reduz o uso de energia de movimento por [100 - round(100 / servo.rating)]%")
 		else
 			. += span_warning("Está faltando um servo.")
 		if(capacitor)
@@ -550,10 +550,10 @@
 			. += span_warning("Está faltando um módulo de varredura.")
 	if(!(mecha_flags & IS_ENCLOSED))
 		if(mecha_flags & SILICON_PILOT)
-			. += span_notice("[src]Parece estrela pilotando um si mesmo...")
+			. += span_notice("[src] Parece estrela pilotando um si mesmo...")
 		else
 			for(var/occupante in occupants)
-				. += span_notice("Você pode ver[occupante]Dentro.")
+				. += span_notice("Você pode ver [occupante] Dentro.")
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				for(var/held_item in H.held_items)
@@ -759,7 +759,7 @@
 	if(completely_disabled || is_currently_ejecting || (mecha_flags & CANNOT_INTERACT))
 		return
 	if(phasing)
-		balloon_alert(user, "Não enquanto[phasing]!")
+		balloon_alert(user, "Não enquanto [phasing]!")
 		return
 	if(user.incapacitated)
 		return
@@ -928,7 +928,7 @@
 /obj/vehicle/sealed/mecha/proc/on_light_eater(obj/vehicle/sealed/source, datum/light_eater)
 	SIGNAL_HANDLER
 	if(mecha_flags & HAS_LIGHTS)
-		visible_message(span_danger("[src]Como luzes se apagaram!"))
+		visible_message(span_danger("[src] Como luzes se apagaram!"))
 		mecha_flags &= ~HAS_LIGHTS
 	set_light_on(FALSE)
 	for(var/occupant in occupants)
@@ -969,10 +969,10 @@
 		act?.build_all_button_icons(UPDATE_BUTTON_ICON)
 	if(overclock_mode)
 		movedelay = movedelay / overclock_coeff
-		visible_message(span_notice("[src]Começa a aquecer, fazendo sons de zumbido."))
+		visible_message(span_notice("[src] Começa a aquecer, fazendo sons de zumbido."))
 	else
 		movedelay = initial(movedelay)
-		visible_message(span_notice("[src]Esfria e o zumbido parava."))
+		visible_message(span_notice("[src] Esfria e o zumbido parava."))
 	update_energy_drain()
 	return TRUE
 

@@ -41,10 +41,10 @@
 
 		. += span_notice("Alt-click para desligá-lo.")
 	else
-		. += span_notice("Inserir[src]em uma plataforma quântica ativa para ligá-la.")
+		. += span_notice("Inserir [src] em uma plataforma quântica ativa para ligá-la.")
 
 /obj/item/quantum_keycard/click_alt(mob/living/user)
-	to_chat(user, span_notice("Você começa a pressionar[src]É o botão de desligar a ligação..."))
+	to_chat(user, span_notice("Você começa a pressionar [src] É o botão de desligar a ligação..."))
 	if(!do_after(user, 4 SECONDS, target = src))
 		return CLICK_ACTION_BLOCKING
 	to_chat(user, span_notice("O cartão bipa duas vezes e desconecta o link quântico."))

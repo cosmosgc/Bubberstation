@@ -164,7 +164,7 @@
 		if(cultist.current.stat == DEAD || !cultist.current.client)
 			continue
 
-		to_chat(cultist.current, span_bold(span_cult_large("[marker]Está marcado.[blood_target]Em\the [target_area]Como prioridade máxima do culto, chegue lá imediatamente!")))
+		to_chat(cultist.current, span_bold(span_cult_large("[marker] Está marcado.[blood_target] Em\the [target_area] Como prioridade máxima do culto, chegue lá imediatamente!")))
 		SEND_SOUND(cultist.current, sound(SFX_HALLUCINATION_OVER_HERE, 0, 1, 75))
 		cultist.current.client.images += blood_target_image
 		if (cultist.current.hud_used)

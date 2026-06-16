@@ -15,18 +15,18 @@ Slimecrossing Potions
 	if(. & ITEM_INTERACT_ANY_BLOCKER)
 		return .
 	if(istype(interacting_with, /obj/item/slimecross))
-		to_chat(user, span_warning("[interacting_with]É muito complexo para a poção clonar!"))
+		to_chat(user, span_warning("[interacting_with] É muito complexo para a poção clonar!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!istype(interacting_with, /obj/item/slime_extract))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/slime_extract/S = interacting_with
 	if(S.recurring)
-		to_chat(user, span_warning("[interacting_with]É muito complexo para a poção clonar!"))
+		to_chat(user, span_warning("[interacting_with] É muito complexo para a poção clonar!"))
 		return ITEM_INTERACT_BLOCKING
 	var/path = S.type
 	var/obj/item/slime_extract/C = new path(get_turf(interacting_with))
 	C.extract_uses = S.extract_uses
-	to_chat(user, span_notice("Você derrama a poção em[interacting_with]E o fluido se solidifica em uma cópia!"))
+	to_chat(user, span_notice("Você derrama a poção em [interacting_with] E o fluido se solidifica em uma cópia!"))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -42,17 +42,17 @@ Slimecrossing Potions
 		return .
 	var/mob/living/peace_target = interacting_with
 	if(!isliving(peace_target) || peace_target.stat == DEAD)
-		to_chat(user, span_warning("[src]Só funciona com os vivos."))
+		to_chat(user, span_warning("[src] Só funciona com os vivos."))
 		return ITEM_INTERACT_BLOCKING
 	if(ismegafauna(peace_target))
-		to_chat(user, span_warning("[src]não trabalha em seres de puro mal!"))
+		to_chat(user, span_warning("[src] não trabalha em seres de puro mal!"))
 		return ITEM_INTERACT_BLOCKING
 	if(peace_target != user)
-		peace_target.visible_message(span_danger("[user]Começa a se alimentar.[peace_target] [src]!"),
-			span_userdanger("[user]começa a te alimentar.[src]!"))
+		peace_target.visible_message(span_danger("[user] Começa a se alimentar.[peace_target] [src]!"),
+			span_userdanger("[user] começa a te alimentar.[src]!"))
 	else
-		peace_target.visible_message(span_danger("[user]Começa a beber.[src]!"),
-			span_danger("Você começa a beber[src]!"))
+		peace_target.visible_message(span_danger("[user] Começa a beber.[src]!"),
+			span_danger("Você começa a beber [src]!"))
 
 	if(!do_after(user, 10 SECONDS, target = peace_target))
 		return ITEM_INTERACT_BLOCKING
@@ -89,16 +89,16 @@ Slimecrossing Potions
 		to_chat(user, span_warning("Não pode beber a poção do amor. Você é narcisista?"))
 		return ITEM_INTERACT_BLOCKING
 	if(love_target.has_status_effect(/datum/status_effect/in_love))
-		to_chat(user, span_warning("[love_target]Já está apaixonado!"))
+		to_chat(user, span_warning("[love_target] Já está apaixonado!"))
 		return ITEM_INTERACT_BLOCKING
 
-	love_target.visible_message(span_danger("[user]Começa a se alimentar.[love_target]Uma poção do amor!"),
-		span_userdanger("[user]Começa a te alimentar com uma poção do amor!"))
+	love_target.visible_message(span_danger("[user] Começa a se alimentar.[love_target] Uma poção do amor!"),
+		span_userdanger("[user] Começa a te alimentar com uma poção do amor!"))
 
 	if(!do_after(user, 5 SECONDS, target = love_target))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você se alimenta.[love_target]A poção do amor!"))
-	to_chat(love_target, span_notice("Você desenvolve sentimentos por[user], e qualquer um[user.p_they()]Como[user.p_s()]."))
+	to_chat(user, span_notice("Você se alimenta.[love_target] A poção do amor!"))
+	to_chat(love_target, span_notice("Você desenvolve sentimentos por [user], e qualquer um [user.p_they()] Como [user.p_s()]."))
 	love_target.add_ally(user)
 	love_target.apply_status_effect(/datum/status_effect/in_love, user)
 	qdel(src)
@@ -123,12 +123,12 @@ Slimecrossing Potions
 		to_chat(user, span_warning("A poção só pode ser usada em roupas!"))
 		return ITEM_INTERACT_BLOCKING
 	if(istype(clothing, /obj/item/clothing/suit/space))
-		to_chat(user, span_warning("O[interacting_with]Já está resistente à pressão!"))
+		to_chat(user, span_warning("O [interacting_with] Já está resistente à pressão!"))
 		return ITEM_INTERACT_BLOCKING
 	if(clothing.min_cold_protection_temperature == SPACE_SUIT_MIN_TEMP_PROTECT && (clothing.clothing_flags & STOPSPRESSUREDAMAGE))
-		to_chat(user, span_warning("O[interacting_with]Já está resistente à pressão!"))
+		to_chat(user, span_warning("O [interacting_with] Já está resistente à pressão!"))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você esfrega a gosma azul sobre o[clothing], tornando-o hermético."))
+	to_chat(user, span_notice("Você esfrega a gosma azul sobre o [clothing], tornando-o hermético."))
 	clothing.name = "pressure-resistant [clothing.name]"
 	clothing.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	clothing.add_atom_colour(color_transition_filter(COLOR_NAVY, SATURATION_OVERRIDE), FIXED_COLOUR_PRIORITY)
@@ -166,7 +166,7 @@ Slimecrossing Potions
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/clothing = interacting_with
-	to_chat(user, span_notice("Você desliza o cocô vermelho sobre o[clothing], tornando-o à prova de lava."))
+	to_chat(user, span_notice("Você desliza o cocô vermelho sobre o [clothing], tornando-o à prova de lava."))
 	clothing.name = "lavaproof [clothing.name]"
 	clothing.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	clothing.add_atom_colour(color_transition_filter(COLOR_MAROON, SATURATION_OVERRIDE), FIXED_COLOUR_PRIORITY)
@@ -203,7 +203,7 @@ Slimecrossing Potions
 	user.do_attack_animation(interacting_with)
 	revive_target.revive(HEAL_ALL)
 	revive_target.set_stat(CONSCIOUS)
-	revive_target.visible_message(span_notice("[revive_target]está cheio de vigor renovado e pisca acordado!"))
+	revive_target.visible_message(span_notice("[revive_target] está cheio de vigor renovado e pisca acordado!"))
 	revive_target.maxHealth -= 10 //Revival isn't healthy.
 	revive_target.health -= 10
 	revive_target.regenerate_icons()

@@ -46,12 +46,12 @@ ORIGINAL:
 
 	if (item.tool_behaviour == TOOL_MULTITOOL) //attempt to repair the brain
 		if (brainmob?.health <= HEALTH_THRESHOLD_DEAD) //if the brain is fucked anyway, do nothing
-			to_chat(user, span_warning("[src]Está muito danificado, não há mais nada que possamos fazer por isso!"))
+			to_chat(user, span_warning("[src] Está muito danificado, não há mais nada que possamos fazer por isso!"))
 			return TRUE
 		if (DOING_INTERACTION(user, src))
 			to_chat(user, span_warning("Você já está consertando.[src]!"))
 			return TRUE
-		user.visible_message(span_notice("[user]lentamente começa a reparar[src]Com[item]."), span_notice("Você lentamente começa a reparar[src]Com[item]."))
+		user.visible_message(span_notice("[user] lentamente começa a reparar [src] Com [item]."), span_notice("Você lentamente começa a reparar [src] Com [item]."))
 		var/did_repair = FALSE
 		while(damage > 0)
 			if(item.use_tool(src, user, 3 SECONDS, volume = 50))
@@ -61,11 +61,11 @@ ORIGINAL:
 				break
 		if (did_repair)
 			if (damage > 0)
-				user.visible_message(span_notice("[user]Parcialmente reparos[src]Com[item]."), span_notice("Você repara parcialmente.[src]Com[item]."))
+				user.visible_message(span_notice("[user] Parcialmente reparos [src] Com [item]."), span_notice("Você repara parcialmente.[src] Com [item]."))
 			else
-				user.visible_message(span_notice("[user]Consertar completo.[src]Com[item], fazenda sua luz de visão parar de piscar."), span_notice("Você repara completamente.[src]Com[item], fazenda sua luz de visão parar de piscar."))
+				user.visible_message(span_notice("[user] Consertar completo.[src] Com [item], fazenda sua luz de visão parar de piscar."), span_notice("Você repara completamente.[src] Com [item], fazenda sua luz de visão parar de piscar."))
 		else
-			to_chat(user, span_warning("Você falhou em consertar.[src]Com[item]!"))
+			to_chat(user, span_warning("Você falhou em consertar.[src] Com [item]!"))
 		return TRUE
 	return FALSE
 EDIT END */
@@ -74,14 +74,14 @@ EDIT END */
 /obj/item/organ/brain/cybernetic/check_for_repair(obj/item/item, mob/user)
 	if (item.tool_behaviour == TOOL_MULTITOOL && (organ_flags & ORGAN_ROBOTIC)) //robotic repair option
 		if (brainmob?.health <= HEALTH_THRESHOLD_DEAD) //if the brain is fucked anyway, do nothing
-			to_chat(user, span_warning("[src]Está muito danificado, não há mais nada que possamos fazer por isso!"))
+			to_chat(user, span_warning("[src] Está muito danificado, não há mais nada que possamos fazer por isso!"))
 			return TRUE
 
 		if (DOING_INTERACTION(user, src))
 			to_chat(user, span_warning("Você já está consertando.[src]!"))
 			return TRUE
 
-		user.visible_message(span_notice("[user]lentamente começa a reparar[src]Com[item]."), span_notice("Você lentamente começa a reparar[src]Com[item]."))
+		user.visible_message(span_notice("[user] lentamente começa a reparar [src] Com [item]."), span_notice("Você lentamente começa a reparar [src] Com [item]."))
 		var/did_repair = FALSE
 		while(damage > 0)
 			if(item.use_tool(src, user, 3 SECONDS, volume = 50))
@@ -92,24 +92,24 @@ EDIT END */
 
 		if (did_repair)
 			if (damage > 0)
-				user.visible_message(span_notice("[user]Parcialmente reparos[src]Com[item]."), span_notice("Você repara parcialmente.[src]Com[item]."))
+				user.visible_message(span_notice("[user] Parcialmente reparos [src] Com [item]."), span_notice("Você repara parcialmente.[src] Com [item]."))
 			else
-				user.visible_message(span_notice("[user]Consertar completo.[src]Com[item], fazenda sua luz de visão parar de piscar."), span_notice("Você repara completamente.[src]Com[item], fazenda sua luz de visão parar de piscar."))
+				user.visible_message(span_notice("[user] Consertar completo.[src] Com [item], fazenda sua luz de visão parar de piscar."), span_notice("Você repara completamente.[src] Com [item], fazenda sua luz de visão parar de piscar."))
 		else
-			to_chat(user, span_warning("Você falhou em consertar.[src]Com[item]!"))
+			to_chat(user, span_warning("Você falhou em consertar.[src] Com [item]!"))
 
 		return TRUE
 	else if(damage && item.is_drainable() && item.reagents.has_reagent(/datum/reagent/medicine/mannitol) && (organ_flags & ORGAN_ORGANIC)) //ganic repair option (this is for the cortical children)
 		if(brainmob?.health <= HEALTH_THRESHOLD_DEAD) //if the brain is fucked anyway, do nothing
-			to_chat(user, span_warning("[src]Está muito danificado, não há mais nada que possamos fazer por isso!"))
+			to_chat(user, span_warning("[src] Está muito danificado, não há mais nada que possamos fazer por isso!"))
 			return TRUE
 
-		user.visible_message(span_notice("[user]Começa lentamente a derramar o conteúdo de[item]em frente[src]."), span_notice("Você começa lentamente a derramar o conteúdo de[item]em frente[src]."))
+		user.visible_message(span_notice("[user] Começa lentamente a derramar o conteúdo de [item] em frente [src]."), span_notice("Você começa lentamente a derramar o conteúdo de [item] em frente [src]."))
 		if(!do_after(user, 3 SECONDS, src))
-			to_chat(user, span_warning("Você falhou em despejar o conteúdo de[item]em frente[src]!"))
+			to_chat(user, span_warning("Você falhou em despejar o conteúdo de [item] em frente [src]!"))
 			return TRUE
 		var/and_bright_shade = !shade_color ? "" : " and turn a slightly brighter shade of [shade_color]"
-		user.visible_message(span_notice("[user]derrama o conteúdo de[item]em frente[src], fazendo-o reformar sua forma original[and_bright_shade]."), span_notice("Você derrama o conteúdo de[item]em frente[src], fazendo-o reformar sua forma original[and_bright_shade]."))
+		user.visible_message(span_notice("[user] derrama o conteúdo de [item] em frente [src], fazendo-o reformar sua forma original [and_bright_shade]."), span_notice("Você derrama o conteúdo de [item] em frente [src], fazendo-o reformar sua forma original [and_bright_shade]."))
 		var/amount = item.reagents.get_reagent_amount(/datum/reagent/medicine/mannitol)
 		var/healto = max(0, damage - amount * 2)
 		item.reagents.remove_all(ROUND_UP(item.reagents.total_volume / amount * (damage - healto) * 0.5)) //only removes however much solution is needed while also taking into account how much of the solution is mannitol

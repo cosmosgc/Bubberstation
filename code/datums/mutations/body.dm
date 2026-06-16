@@ -17,7 +17,7 @@
 /datum/mutation/epilepsy/proc/trigger_seizure()
 	if(owner.stat != CONSCIOUS)
 		return
-	owner.visible_message(span_danger("[owner]Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
+	owner.visible_message(span_danger("[owner] Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
 	owner.Unconscious(200 * GET_MUTATION_POWER(src))
 	owner.set_jitter(2000 SECONDS * GET_MUTATION_POWER(src)) //yes this number looks crazy but the jitter animations are amplified based on the duration.
 	owner.add_mood_event("epilepsy", /datum/mood_event/epilepsy)
@@ -133,7 +133,7 @@
 		return
 	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner]Repentinamente encolhe!"), span_notice("Tudo ao seu redor parece crescer."))
+	owner.visible_message(span_danger("[owner] Repentinamente encolhe!"), span_notice("Tudo ao seu redor parece crescer."))
 
 /datum/mutation/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
@@ -145,7 +145,7 @@
 		return
 	// SKYRAT EDIT END
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner]De arrependimento cresce!"), span_notice("Tudo ao seu redor parece encolher."))
+	owner.visible_message(span_danger("[owner] De arrependimento cresce!"), span_notice("Tudo ao seu redor parece encolher."))
 
 /datum/mutation/acromegaly
 	name = "Acromegaly"
@@ -161,7 +161,7 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_TOO_TALL, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner]De arrependimento cresce alto!"), span_notice("Você sente uma pequena vontade estranha de lutar com pequenos homens com estilingues. Ou talvez jogar basquete."))
+	owner.visible_message(span_danger("[owner] De arrependimento cresce alto!"), span_notice("Você sente uma pequena vontade estranha de lutar com pequenos homens com estilingues. Ou talvez jogar basquete."))
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(head_bonk))
 	owner.regenerate_icons()
 
@@ -169,7 +169,7 @@
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_TOO_TALL, GENETIC_MUTATION)
-	owner.visible_message(span_danger("[owner]Repentinamente encolhe!"), span_notice("Você volta à sua altura habitual."))
+	owner.visible_message(span_danger("[owner] Repentinamente encolhe!"), span_notice("Você volta à sua altura habitual."))
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(head_bonk))
 	owner.regenerate_icons()
 
@@ -179,7 +179,7 @@
 	var/atom/movable/whacked_by = (locate(/obj/machinery/door/airlock) in parent.loc) || (locate(/obj/machinery/door/firedoor) in parent.loc) || (locate(/obj/structure/mineral_door) in parent.loc)
 	if(!whacked_by || prob(100 - (8 *  GET_MUTATION_SYNCHRONIZER(src))))
 		return
-	to_chat(parent, span_danger("Você bateu a cabeça.\the [whacked_by]Cabeçada!"))
+	to_chat(parent, span_danger("Você bateu a cabeça.\the [whacked_by] Cabeçada!"))
 	var/dmg = HAS_TRAIT(parent, TRAIT_HEAD_INJURY_BLOCKED) ? rand(1,4) : rand(2,9)
 	parent.apply_damage(dmg, BRUTE, BODY_ZONE_HEAD)
 	parent.do_attack_animation(whacked_by, ATTACK_EFFECT_PUNCH)
@@ -205,7 +205,7 @@
 	// SKYRAT EDIT END
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(1.25)
-	owner.visible_message(span_danger("[owner]De arrependimento cresce!"), span_notice("Tudo ao seu redor parece encolher."))
+	owner.visible_message(span_danger("[owner] De arrependimento cresce!"), span_notice("Tudo ao seu redor parece encolher."))
 
 /datum/mutation/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
@@ -217,7 +217,7 @@
 	// SKYRAT EDIT END
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
-	owner.visible_message(span_danger("[owner]Repentinamente encolhe!"), span_notice("Tudo ao seu redor parece crescer."))
+	owner.visible_message(span_danger("[owner] Repentinamente encolhe!"), span_notice("Tudo ao seu redor parece crescer."))
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/clumsy
@@ -414,17 +414,17 @@
 /datum/mutation/badblink/on_life(seconds_per_tick)
 	if(SPT_PROB(warpchance, seconds_per_tick))
 		var/warpmessage = pick(
-		span_warning("Com uma torção de 720 graus[owner.p_their()]Para trás,[owner]Desapareça no ar."),
-		span_warning("[owner]faz algum tipo de retrocesso estranho em outra dimensão. Parece muito doloroso."),
-		span_warning("[owner]faz um salto para a esquerda, um passo para a direita, e dobras fora da realidade."),
-		span_warning("[owner]O tronco começa a dobrar do avesso até desaparecer da realidade, tomando[owner]Comele."),
-		span_warning("Um momento, você vê[owner]No próximo,[owner]Se foi."))
+		span_warning("Com uma torção de 720 graus [owner.p_their()] Para trás,[owner] Desapareça no ar."),
+		span_warning("[owner] faz algum tipo de retrocesso estranho em outra dimensão. Parece muito doloroso."),
+		span_warning("[owner] faz um salto para a esquerda, um passo para a direita, e dobras fora da realidade."),
+		span_warning("[owner] O tronco começa a dobrar do avesso até desaparecer da realidade, tomando [owner] Comele."),
+		span_warning("Um momento, você vê [owner] No próximo,[owner] Se foi."))
 		owner.visible_message(warpmessage, span_userdanger("Você sente uma onda de náusea ao cair na realidade!"))
 		var/warpdistance = rand(10, 15) * GET_MUTATION_POWER(src)
 		do_teleport(owner, get_turf(owner), warpdistance, channel = TELEPORT_CHANNEL_FREE)
 		owner.adjust_disgust(GET_MUTATION_SYNCHRONIZER(src) * (warpchance * warpdistance))
 		warpchance = 0
-		owner.visible_message(span_danger("[owner]Aparece não fazer nada!"))
+		owner.visible_message(span_danger("[owner] Aparece não fazer nada!"))
 	else
 		warpchance += 0.0625 * seconds_per_tick / GET_MUTATION_ENERGY(src)
 
@@ -446,7 +446,7 @@
 			COOLDOWN_START(src, msgcooldown, 20 SECONDS)
 		if(prob(15))
 			owner.acid_act(rand(30, 50), 10)
-			owner.visible_message(span_warning("[owner]É bolhas de pele e estouros."), span_userdanger("Sua carne borbulhante estorou! Queima!"))
+			owner.visible_message(span_warning("[owner] É bolhas de pele e estouros."), span_userdanger("Sua carne borbulhante estorou! Queima!"))
 			playsound(owner,'sound/items/weapons/sear.ogg', 50, TRUE)
 
 /datum/mutation/spastic
@@ -570,7 +570,7 @@
 
 	var/obj/item/bodypart/head/head = owner.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
-		owner.visible_message(span_warning("[owner]É a cabeça doendo!"), ignored_mobs = list(owner))
+		owner.visible_message(span_warning("[owner] É a cabeça doendo!"), ignored_mobs = list(owner))
 		new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 		head.drop_organs()
 		head.dismember(dam_type = BRUTE, silent = TRUE)
@@ -595,7 +595,7 @@
 
 	owner.dna.species.regenerate_organs(owner, replace_current = FALSE, excluded_zones = list(BODY_ZONE_CHEST)) //replace_current needs to be FALSE to prevent weird adding and removing mutation healing
 	owner.apply_damage(damage = 50, damagetype = BRUTE, def_zone = BODY_ZONE_HEAD) //and this to DISCOURAGE organ farming, or at least not make it free.
-	owner.visible_message(span_warning("[owner]A cabeça volta com uma crise doentia!"), span_warning("Sua cabeça cresce com uma rachadura doentia! Ouch."))
+	owner.visible_message(span_warning("[owner] A cabeça volta com uma crise doentia!"), span_warning("Sua cabeça cresce com uma rachadura doentia! Ouch."))
 	new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 
 /datum/mutation/headless/proc/abort_attachment(datum/source, obj/item/bodypart/new_limb, special) //you aren't getting your head back

@@ -327,7 +327,7 @@
 	update_mob_action_buttons()
 
 	visible_message(
-		span_warning("[src]deixa sair um grito minguante como a névoa violeta gira em torno de seu corpo dissolvente!"),
+		span_warning("[src] deixa sair um grito minguante como a névoa violeta gira em torno de seu corpo dissolvente!"),
 		span_revendanger("Não! Não... é tarde demais, você pode sentir sua essência.[pick("breaking apart", "drifting away")]..."),
 	)
 
@@ -343,7 +343,7 @@
 	if(QDELETED(src) || !dormant) // something fucky happened, abort. we MUST be dormant to go inside the ectoplasm.
 		return
 
-	visible_message(span_danger("[src]O corpo se divide em uma pilha de pó azul."))
+	visible_message(span_danger("[src] O corpo se divide em uma pilha de pó azul."))
 
 	var/obj/item/ectoplasm/revenant/goop = new(get_turf(src)) // the ectoplasm will handle moving us out of dormancy
 	goop.old_ckey = client.ckey
@@ -387,8 +387,8 @@
 /mob/living/basic/revenant/proc/on_baned(obj/item/weapon, mob/living/user)
 	SIGNAL_HANDLER
 	visible_message(
-		span_warning("[src]violentamente hesita!"),
-		span_revendanger("Como[weapon]passa por você, sente sua essência drenando!"),
+		span_warning("[src] violentamente hesita!"),
+		span_revendanger("Como [weapon] passa por você, sente sua essência drenando!"),
 	)
 	apply_status_effect(/datum/status_effect/revenant/inhibited, 3 SECONDS)
 
@@ -489,9 +489,9 @@
 	update_mob_action_buttons()
 	if(!silent)
 		if(essence_to_change_by > 0)
-			to_chat(src, span_revennotice("Ganhado[essence_to_change_by]E.[source ? "from [source]":""]."))
+			to_chat(src, span_revennotice("Ganhado [essence_to_change_by] E.[source ? "from [source]":""]."))
 		else
-			to_chat(src, span_revenminor("Perdido[essence_to_change_by]E.[source ? "from [source]":""]."))
+			to_chat(src, span_revenminor("Perdido [essence_to_change_by] E.[source ? "from [source]":""]."))
 	return TRUE
 
 /mob/living/basic/revenant/mob_negates_gravity()

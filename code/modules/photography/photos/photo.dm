@@ -69,7 +69,7 @@
 	return ..()
 
 /obj/item/photo/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user]Está dando uma última olhada.\the [src]Parece que...[user.p_theyre()]Ceder à morte!"))//when you wanna look at photo of waifu one last time before you die...
+	user.visible_message(span_suicide("[user] Está dando uma última olhada.\the [src] Parece que...[user.p_theyre()] Ceder à morte!"))//when you wanna look at photo of waifu one last time before you die...
 	if (!ishuman(user) || user.physique == MALE)
 		playsound(user, 'sound/mobs/humanoids/human/laugh/manlaugh1.ogg', 50, TRUE)//EVERY TIME I DO IT MAKES ME LAUGH
 	else
@@ -100,7 +100,7 @@
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, span_warning("[src]Parece está em branco..."))
+		to_chat(user, span_warning("[src] Parece está em branco..."))
 		return
 	var/width_height = "width"
 	if(picture.psize_y > picture.psize_x)

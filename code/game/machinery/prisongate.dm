@@ -30,14 +30,14 @@
 /obj/machinery/prisongate/power_change()
 	. = ..()
 	if(!powered())
-		visible_message(span_notice("[src]Momentaneamente treme antes da barreira da luz dura perder coesão e se dissipa no ar!"))
+		visible_message(span_notice("[src] Momentaneamente treme antes da barreira da luz dura perder coesão e se dissipa no ar!"))
 		gate_active = FALSE
 		flick("prisongate_turningoff", src)
 		icon_state = "prisongate_off"
 		update_use_power(IDLE_POWER_USE)
 	else
 		gate_active = TRUE
-		visible_message(span_notice("[src]Quando sua barreira de luz dura enche o espaço entre ela."))
+		visible_message(span_notice("[src] Quando sua barreira de luz dura enche o espaço entre ela."))
 		flick("prisongate_turningon", src)
 		icon_state = "prisongate_on"
 		update_use_power(ACTIVE_POWER_USE)

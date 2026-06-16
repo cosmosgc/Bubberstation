@@ -45,7 +45,7 @@
 /obj/item/chainsaw/proc/on_transform(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER
 
-	to_chat(user, span_notice("Enquanto você puxa o cordão inicial pendurado de[src], [active ? "it begins to whirr" : "the chain stops moving"]."))
+	to_chat(user, span_notice("Enquanto você puxa o cordão inicial pendurado de [src], [active ? "it begins to whirr" : "the chain stops moving"]."))
 	var/datum/component/butchering/butchering = GetComponent(/datum/component/butchering)
 	butchering.butchering_enabled = active
 	if (active)
@@ -73,14 +73,14 @@
 
 /obj/item/chainsaw/suicide_act(mob/living/carbon/user)
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
-		user.visible_message(span_suicide("[user]Esmaga.[src]Em[user.p_their()]pescoço, destruindo[user.p_their()]Esófago! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Esmaga.[src] Em [user.p_their()] pescoço, destruindo [user.p_their()] Esófago! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		playsound(src, 'sound/items/weapons/genhit1.ogg', 100, TRUE)
 		return BRUTELOSS
 
-	user.visible_message(span_suicide("[user]Começa a rasgar[user.p_their()]cabeça fora com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a rasgar [user.p_their()] cabeça fora com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 	if(!myhead)
-		visible_message(span_suicide("[user]Percebe é assim?[user.p_they()]Não pode cortar[user.p_their()]cabeça porque[user.p_they()]Não tenho um!"))
+		visible_message(span_suicide("[user] Percebe é assim?[user.p_they()] Não pode cortar [user.p_their()] cabeça porque [user.p_they()] Não tenho um!"))
 		return SHAME
 
 	playsound(src, 'sound/items/weapons/chainsawhit.ogg', 100, TRUE)
@@ -89,7 +89,7 @@
 
 	var/datum/wound/slash/crit_wound = new ()
 	crit_wound.apply_wound(myhead)
-	visible_message(span_suicide("[user]Tenta em vão cortar[user.p_their()]cabeça, mas morre na tentativa!"))
+	visible_message(span_suicide("[user] Tenta em vão cortar [user.p_their()] cabeça, mas morre na tentativa!"))
 	return BRUTELOSS
 
 /obj/item/chainsaw/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -133,7 +133,7 @@
 
 /obj/item/chainsaw/doomslayer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == PROJECTILE_ATTACK)
-		owner.visible_message(span_danger("Ataques ranged só fazem[owner]Mais Zangado!"))
+		owner.visible_message(span_danger("Ataques ranged só fazem [owner] Mais Zangado!"))
 		playsound(src, SFX_BULLET_MISS, 75, TRUE)
 		return TRUE
 	return FALSE

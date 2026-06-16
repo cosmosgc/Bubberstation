@@ -56,7 +56,7 @@
 	if(panel_open)
 		multi_tool.set_buffer(src)
 		balloon_alert(user, "Salvo nenhum buffer da multitool")
-		to_chat(user, span_notice("Você guarda os dados em[multi_tool]Tampão. Agora pode ser guardado em almofadas com painéis fechados."))
+		to_chat(user, span_notice("Você guarda os dados em [multi_tool] Tampão. Agora pode ser guardado em almofadas com painéis fechados."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(multi_tool.buffer, /obj/machinery/quantumpad))
@@ -80,13 +80,13 @@
 	if(istype(tool, /obj/item/quantum_keycard))
 		var/obj/item/quantum_keycard/card = tool
 		if(card.qpad)
-			to_chat(user, span_notice("Você insere[card]Em[src]Está ativando."))
+			to_chat(user, span_notice("Você insere [card] Em [src] Está ativando."))
 			interact(user, card.qpad)
 			return ITEM_INTERACT_SUCCESS
-		to_chat(user, span_notice("Você insere[card]Em[src]O cartão de acesso, iniciando o procedimento de ligação."))
+		to_chat(user, span_notice("Você insere [card] Em [src] O cartão de acesso, iniciando o procedimento de ligação."))
 		if(!do_after(user, 4 SECONDS, target = src))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você completa a ligação entre[card]E[src]."))
+		to_chat(user, span_notice("Você completa a ligação entre [card] E [src]."))
 		card.set_pad(src)
 		return ITEM_INTERACT_SUCCESS
 
@@ -106,16 +106,16 @@
 	//SKYRAT EDIT ADDITION
 	var/turf/my_turf = get_turf(src)
 	if(is_away_level(my_turf.z))
-		to_chat(user, "<span class='warning'>[src]Não pode ser usado aqui!</span>")
+		to_chat(user, "<span class='warning'>[src] Não pode ser usado aqui!</span>")
 		return
 	//SKYRAT EDIT END
 
 	if(world.time < last_teleport + teleport_cooldown)
-		to_chat(user, span_warning("[src]está recarregando o poder. Por favor, espere.[DisplayTimeText(last_teleport + teleport_cooldown - world.time)]."))
+		to_chat(user, span_warning("[src] está recarregando o poder. Por favor, espere.[DisplayTimeText(last_teleport + teleport_cooldown - world.time)]."))
 		return
 
 	if(teleporting)
-		to_chat(user, span_warning("[src]Está carregando. Por favor, espere."))
+		to_chat(user, span_warning("[src] Está carregando. Por favor, espere."))
 		return
 
 	if(target_pad.teleporting)
@@ -152,7 +152,7 @@
 	teleporting = FALSE
 	if(machine_stat & NOPOWER)
 		if(user)
-			to_chat(user, span_warning("[src]está sem energia!"))
+			to_chat(user, span_warning("[src] está sem energia!"))
 		return
 	if(QDELETED(target_pad) || target_pad.machine_stat & NOPOWER)
 		if(user)

@@ -20,7 +20,7 @@
 	VAR_FINAL/mode = FALSE
 
 /obj/item/hand_labeler/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está apontando[src]Em[user.p_them()]Eu.[user.p_Theyre()]Vou rotular[user.p_them()]ego como um suicídio!"))
+	user.visible_message(span_suicide("[user] está apontando [src] Em [user.p_them()] Eu.[user.p_Theyre()] Vou rotular [user.p_them()] ego como um suicídio!"))
 	labels_left = max(labels_left - 1, 0)
 
 	var/old_real_name = user.real_name
@@ -75,8 +75,8 @@
 	var/cursor_y = text2num(LAZYACCESS(modifiers, ICON_Y))
 	interacting_with.balloon_alert_to_viewers("labelled")
 	user.visible_message(
-		span_notice("[user]Etiquetas[interacting_with]Com\"[label]\"."),
-		span_notice("Você rotula[interacting_with]Com\"[label]\"."),
+		span_notice("[user] Etiquetas [interacting_with] Com\"[label]\"."),
+		span_notice("Você rotula [interacting_with] Com\"[label]\"."),
 	)
 	var/obj/item/label/stick_label = new(null, label)
 	stick_label.stick_to_atom(interacting_with, cursor_x, cursor_y)
@@ -119,7 +119,7 @@
 /obj/item/hand_labeler/examine()
 	. = ..()
 	if(labels_left > 0)
-		. += span_notice("Parece que poderia rotular[labels_left]Mais coisas.")
+		. += span_notice("Parece que poderia rotular [labels_left] Mais coisas.")
 	else
 		. += span_notice("Está sem rótulos.")
 

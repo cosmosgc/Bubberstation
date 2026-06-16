@@ -58,13 +58,13 @@
 		return ITEM_INTERACT_FAILURE
 
 	if(!user.transferItemToLoc(exportable, src))
-		to_chat(user, span_warning("[exportable]Está preso na mão!"))
+		to_chat(user, span_warning("[exportable] Está preso na mão!"))
 		return ITEM_INTERACT_FAILURE
 
 	var/obj/item/stock_block/new_block = new /obj/item/stock_block(drop_location())
 	new_block.export_value = price
 	new_block.set_custom_materials(materials)
-	to_chat(user, span_notice("Você criou um bloco de ações no valor[new_block.export_value * exportable.amount] [MONEY_SYMBOL]Venda antes que fique líquido!"))
+	to_chat(user, span_notice("Você criou um bloco de ações no valor [new_block.export_value * exportable.amount] [MONEY_SYMBOL] Venda antes que fique líquido!"))
 	playsound(src, 'sound/machines/synth/synth_yes.ogg', 50, FALSE)
 	qdel(exportable)
 	use_energy(active_power_usage)
@@ -350,15 +350,15 @@
 
 	var/datum/material/export_mat = custom_materials[1]
 	var/quantity = custom_materials[export_mat] / SHEET_MATERIAL_AMOUNT
-	. += span_notice("\The [src]vale a pena.[quantity * export_value] [MONEY_SYMBOL], de vender[quantity]Folhas de[export_mat.name].")
+	. += span_notice("\The [src] vale a pena.[quantity * export_value] [MONEY_SYMBOL], de vender [quantity] Folhas de [export_mat.name].")
 
 	if(fluid)
-		. += span_warning("\The [src]é atualmente líquido! Seu valor é baseado no preço de mercado.")
+		. += span_warning("\The [src] é atualmente líquido! Seu valor é baseado no preço de mercado.")
 	else
 		. += span_notice("\The [src]'s value is still [span_boldnotice("locked in")]. [span_boldnotice("Sell it")] before its value becomes liquid!")
 
 /obj/item/stock_block/proc/value_warning()
-	visible_message(span_warning("\The [src]Está começando a ficar líquido!"))
+	visible_message(span_warning("\The [src] Está começando a ficar líquido!"))
 	icon_state = "stock_block_fluid"
 	update_appearance(UPDATE_ICON_STATE)
 
@@ -366,7 +366,7 @@
 	export_value = SSstock_market.materials_prices[custom_materials[1]]
 	icon_state = "stock_block_liquid"
 	update_appearance(UPDATE_ICON_STATE)
-	visible_message(span_warning("\The [src]Fica líquido!"))
+	visible_message(span_warning("\The [src] Fica líquido!"))
 	fluid = TRUE
 
 #undef MAX_STACK_LIMIT

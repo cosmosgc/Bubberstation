@@ -156,7 +156,7 @@
 				inserted_coin.throw_at(user, 3, 10)
 				if(prob(10))
 					balance = max(balance - SPIN_PRICE, 0)
-				to_chat(user, span_warning("[src]Cospe sua moeda de volta!"))
+				to_chat(user, span_warning("[src] Cospe sua moeda de volta!"))
 				return ITEM_INTERACT_BLOCKING
 			else
 				if(!user.temporarilyRemoveItemFromInventory(inserted_coin))
@@ -174,7 +174,7 @@
 			var/obj/item/holochip/inserted_chip = inserted
 			if(!user.temporarilyRemoveItemFromInventory(inserted_chip))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "[inserted_chip.credits] [MONEY_NAME_AUTOPURAL(inserted_chip.credits)]Inserido")
+			balloon_alert(user, "[inserted_chip.credits] [MONEY_NAME_AUTOPURAL(inserted_chip.credits)] Inserido")
 			balance += inserted_chip.credits
 			qdel(inserted_chip)
 			return ITEM_INTERACT_SUCCESS
@@ -206,9 +206,9 @@
 			name = msg
 
 		playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
-		desc = "Propriedade de[id_bank_account.account_holder], tira diretamente de[user.p_their()]Conta."
+		desc = "Propriedade de [id_bank_account.account_holder], tira diretamente de [user.p_their()] Conta."
 		house_bank_account = id_bank_account
-		to_chat(user, span_notice("Você liga a máquina de fenda para[id_bank_account.account_holder]Uma conta."))
+		to_chat(user, span_notice("Você liga a máquina de fenda para [id_bank_account.account_holder] Uma conta."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -331,7 +331,7 @@
 	var/the_name
 	if(user)
 		the_name = user.real_name
-		visible_message(span_notice("[user]Puxa a alavanca e a máquina de fenda começa a girar!"))
+		visible_message(span_notice("[user] Puxa a alavanca e a máquina de fenda começa a girar!"))
 		if(isliving(user))
 			var/mob/living/living_user = user
 			living_user.add_mood_event("slots_spin", /datum/mood_event/slots)

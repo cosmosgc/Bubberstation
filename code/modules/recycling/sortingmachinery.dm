@@ -60,9 +60,9 @@
 	. = ..()
 	if(note)
 		if(!in_range(user, src))
-			. += span_info("Tem um...[EXAMINE_HINT(note.name)]Apegado a ele. Você não pode ler daqui.")
+			. += span_info("Tem um...[EXAMINE_HINT(note.name)] Apegado a ele. Você não pode ler daqui.")
 		else
-			. += span_info("Tem um...[EXAMINE_HINT(note.name)]ligado a ele...")
+			. += span_info("Tem um...[EXAMINE_HINT(note.name)] ligado a ele...")
 			. += note.examine(user)
 	if(sticker)
 		. += span_notice("Tem um...[EXAMINE_HINT("barcode")]ligado ao lado. O pacote está marcado para[EXAMINE_HINT("export.")]")
@@ -79,17 +79,17 @@
 		var/atom/movable/movable_loc = loc //can't unwrap the wrapped container if it's inside something.
 		movable_loc.relay_container_resist_act(user, container)
 		return
-	to_chat(user, span_notice("Você se apoia na parte de trás de[container]E começar a empurrar para rasgar o embrulho ao redor dele."))
+	to_chat(user, span_notice("Você se apoia na parte de trás de [container] E começar a empurrar para rasgar o embrulho ao redor dele."))
 	if(do_after(user, 5 SECONDS, target = container))
 		if(!user || user.stat != CONSCIOUS || user.loc != container || container.loc != src)
 			return
-		to_chat(user, span_notice("Você foi removido com sucesso.[container]Está embrulhando!"))
+		to_chat(user, span_notice("Você foi removido com sucesso.[container] Está embrulhando!"))
 		container.forceMove(loc)
 		unwrap_contents()
 		post_unwrap_contents(user)
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, span_warning("Você não consegue remover.[container]Está embrulhando!"))
+			to_chat(user, span_warning("Você não consegue remover.[container] Está embrulhando!"))
 
 /obj/item/delivery/update_icon_state()
 	. = ..()
@@ -118,7 +118,7 @@
 	else if(istype(item, /obj/item/stack/wrapping_paper) && !giftwrapped)
 		var/obj/item/stack/wrapping_paper/wrapping_paper = item
 		if(wrapping_paper.use(3))
-			user.visible_message(span_notice("[user]Enrola o pacote em papel festivo!"))
+			user.visible_message(span_notice("[user] Enrola o pacote em papel festivo!"))
 			giftwrapped = TRUE
 			greyscale_config = text2path("/datum/greyscale_config/gift[icon_state]")
 			set_greyscale(colors = wrapping_paper.greyscale_colors)
@@ -131,9 +131,9 @@
 			to_chat(user, span_warning("Este pacote já tem uma nota anexada!"))
 			return
 		if(!user.transferItemToLoc(item, src))
-			to_chat(user, span_warning("Por alguma razão, você não pode anexar[item]!"))
+			to_chat(user, span_warning("Por alguma razão, você não pode anexar [item]!"))
 			return
-		user.visible_message(span_notice("[user]APENAS[item]para[src]."), span_notice("Você anexa[item]para[src]."))
+		user.visible_message(span_notice("[user] APENAS [item] para [src]."), span_notice("Você anexa [item] para [src]."))
 		note = item
 		update_appearance()
 
@@ -145,12 +145,12 @@
 			to_chat(user, span_warning("Este pacote já tem um código de barras anexado!"))
 			return
 		if(!(sales_tagger.payments_acc))
-			to_chat(user, span_warning("Deslize a identificação.[sales_tagger]Primeiro!"))
+			to_chat(user, span_warning("Deslize a identificação.[sales_tagger] Primeiro!"))
 			return
 		if(sales_tagger.paper_count <= 0)
-			to_chat(user, span_warning("[sales_tagger]Acabou o papel!"))
+			to_chat(user, span_warning("[sales_tagger] Acabou o papel!"))
 			return
-		user.visible_message(span_notice("[user]Liga um código de barras a[src]."), span_notice("Você anexa um código de barras para[src]."))
+		user.visible_message(span_notice("[user] Liga um código de barras a [src]."), span_notice("Você anexa um código de barras para [src]."))
 		sales_tagger.paper_count -= 1
 		sticker = new /obj/item/barcode(src)
 		sticker.payments_acc = sales_tagger.payments_acc	//new tag gets the tagger's current account.
@@ -171,7 +171,7 @@
 			to_chat(user, span_warning("Este código de barras parece ser inválido. Acho que é lixo agora."))
 			return
 		if(!user.transferItemToLoc(item, src))
-			to_chat(user, span_warning("Por alguma razão, você não pode anexar[item]!"))
+			to_chat(user, span_warning("Por alguma razão, você não pode anexar [item]!"))
 			return
 		sticker = stickerA
 		for(var/obj/wrapped_item in get_all_contents())
@@ -272,7 +272,7 @@
 	desc = "Costumava enganar a rede de e-mails para pensar que você é um pacote inofensivo. Na verdade, funciona como uma etiqueta de destino regular também."
 
 /obj/item/dest_tagger/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a marcar[user.p_their()]Destino final! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a marcar [user.p_their()] Destino final! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if (islizard(user))
 		to_chat(user, span_notice("Olá"))//lizard nerf
 	else
@@ -343,8 +343,8 @@
 
 /obj/item/sales_tagger/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]Tem[paper_count]/[max_paper_count]Códigos de barras disponíveis. Reencher com papel.")
-	. += span_notice("A divisão de lucros na venda está definida para[round(cut_multiplier*100)]%. <b>Alt-click</b>Para mudar.")
+	. += span_notice("[src] Tem [paper_count]/[max_paper_count] Códigos de barras disponíveis. Reencher com papel.")
+	. += span_notice("A divisão de lucros na venda está definida para [round(cut_multiplier*100)]%. <b>Alt-click</b>Para mudar.")
 	if(payments_acc)
 		. += span_notice("<b>Ctrl-click</b>Para limpar a conta registrada.")
 
@@ -359,7 +359,7 @@
 			else
 				payments_acc = potential_acc.registered_account
 				playsound(src, 'sound/machines/ping.ogg', 40, TRUE)
-				to_chat(user, span_notice("[src]Registra o cartão de identidade. Marque um item embrulhado para criar um código de barras."))
+				to_chat(user, span_notice("[src] Registra o cartão de identidade. Marque um item embrulhado para criar um código de barras."))
 		else if(!potential_acc.registered_account)
 			to_chat(user, span_warning("Este cartão de identidade não tem conta registrada!"))
 			return
@@ -369,12 +369,12 @@
 			qdel(item)
 			if (paper_count >= max_paper_count)
 				paper_count = max_paper_count
-				to_chat(user, span_notice("[src]O suprimento de papel está cheio."))
+				to_chat(user, span_notice("[src] O suprimento de papel está cheio."))
 				return
-			to_chat(user, span_notice("Você enche.[src]O suprimento de papel, você tem[paper_count]Esquerda."))
+			to_chat(user, span_notice("Você enche.[src] O suprimento de papel, você tem [paper_count] Esquerda."))
 			return
 		else
-			to_chat(user, span_notice("[src]O suprimento de papel está cheio."))
+			to_chat(user, span_notice("[src] O suprimento de papel está cheio."))
 			return
 
 /obj/item/sales_tagger/attack_self(mob/user)
@@ -383,7 +383,7 @@
 		to_chat(user, span_warning("Você está sem papel!"))
 		return
 	if(!payments_acc)
-		to_chat(user, span_warning("Você precisa roubar.[src]com um cartão de identificação primeiro."))
+		to_chat(user, span_warning("Você precisa roubar.[src] com um cartão de identificação primeiro."))
 		return
 	paper_count -= 1
 	playsound(src, 'sound/machines/click.ogg', 40, TRUE)
@@ -403,5 +403,5 @@
 	if(!potential_cut)
 		cut_multiplier = initial(cut_multiplier)
 	cut_multiplier = clamp(round(potential_cut/100, cut_min), cut_min, cut_max)
-	to_chat(user, span_notice("[round(cut_multiplier*100)]O lucro será recebido se um pacote com código de barras for vendido."))
+	to_chat(user, span_notice("[round(cut_multiplier*100)] O lucro será recebido se um pacote com código de barras for vendido."))
 	return CLICK_ACTION_SUCCESS

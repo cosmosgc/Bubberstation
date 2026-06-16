@@ -25,7 +25,7 @@
 
 /obj/item/desynchronizer/attack_self(mob/living/user)
 	if(world.time < next_use)
-		to_chat(user, span_warning("[src]Ainda está recarregando."))
+		to_chat(user, span_warning("[src] Ainda está recarregando."))
 		return
 	if(!sync_holder)
 		desync(user)
@@ -44,7 +44,7 @@
 	if(!new_duration || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, NEED_DEXTERITY))
 		return CLICK_ACTION_BLOCKING
 	duration = new_duration
-	to_chat(user, span_notice("Você estabeleceu a duração para[DisplayTimeText(duration)]."))
+	to_chat(user, span_notice("Você estabeleceu a duração para [DisplayTimeText(duration)]."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/desynchronizer/proc/desync(mob/living/user)
@@ -52,7 +52,7 @@
 		return
 	sync_holder = new(drop_location())
 	new /obj/effect/temp_visual/desynchronizer(drop_location())
-	to_chat(user, span_notice("Você ativa.[src]Dessincronizando-se do presente. Você ainda pode ver seu ambiente, mas você se sente estranhamente dissociada da realidade."))
+	to_chat(user, span_notice("Você ativa.[src] Dessincronizando-se do presente. Você ainda pode ver seu ambiente, mas você se sente estranhamente dissociada da realidade."))
 	user.forceMove(sync_holder)
 	last_use = world.time
 	icon_state = "desynchronizer-on"

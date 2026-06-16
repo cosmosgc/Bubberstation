@@ -283,10 +283,10 @@
 		reset_container_flags()
 		animate(src, transform = null, time = 2, loop = 0)
 		if(fumbled)
-			to_chat(user, span_warning("Você se mete com[src]Cap! A tampa cai no chão e simplesmente desaparece. Onde diabos foi parar?"))
+			to_chat(user, span_warning("Você se mete com [src] Cap! A tampa cai no chão e simplesmente desaparece. Onde diabos foi parar?"))
 			cap_lost = TRUE
 		else
-			to_chat(user, span_notice("Você tira a tampa de[src]."))
+			to_chat(user, span_notice("Você tira a tampa de [src]."))
 			playsound(loc, 'sound/items/handling/reagent_containers/plastic_bottle/bottle_cap_open.ogg', 50, TRUE)
 	else
 		update_container_flags(SEALED_CONTAINER | TRANSPARENT)
@@ -303,7 +303,7 @@
 	if(is_open_container() || !reagents.total_volume)
 		return
 	if(prob(flip_chance)) // landed upright
-		src.visible_message(span_notice("[src]Pousa em pé!"))
+		src.visible_message(span_notice("[src] Pousa em pé!"))
 		var/mob/living/thrower = throwingdatum?.get_thrower()
 		if(istype(thrower))
 			thrower.add_mood_event("bottle_flip", /datum/mood_event/bottle_flip)

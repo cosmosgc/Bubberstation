@@ -32,10 +32,10 @@
 	if (!area_constraint)
 		return TRUE
 	if(!istype(build_area, area_constraint))
-		to_chat(owner, span_warning("Você só pode construir dentro[area_constraint::name]!"))
+		to_chat(owner, span_warning("Você só pode construir dentro [area_constraint::name]!"))
 		return FALSE
 	if(only_station_z && !is_station_level(build_target.z))
-		to_chat(owner, span_warning("[area_constraint::name]foi lançado e não pode mais ser modificado."))
+		to_chat(owner, span_warning("[area_constraint::name] foi lançado e não pode mais ser modificado."))
 		return FALSE
 	return TRUE
 
@@ -83,13 +83,13 @@
 		return
 	var/turf/place_turf = get_turf(remote_eye)
 	if(!base_console.structures[structure_name])
-		to_chat(owner, span_warning("[base_console]Está fora de[structure_name]!"))
+		to_chat(owner, span_warning("[base_console] Está fora de [structure_name]!"))
 		return
 	if(!check_spot())
 		return
 	//Can't place inside a closed turf
 	if(place_turf.density)
-		to_chat(owner, span_warning("[structure_name]Pode ser colocado apenas em um andar."))
+		to_chat(owner, span_warning("[structure_name] Pode ser colocado apenas em um andar."))
 		return
 	//Can't place two dense objects inside each other
 	if(initial(structure_path.density) && place_turf.is_blocked_turf())
@@ -113,7 +113,7 @@
 	place_sound = 'sound/machines/click.ogg'
 
 /datum/action/innate/construction/place_structure/fan/after_place(obj/placed_structure, remaining)
-	to_chat(owner, span_notice("Pequeno ventilador colocado.[remaining]Fãs restantes."))
+	to_chat(owner, span_notice("Pequeno ventilador colocado.[remaining] Fãs restantes."))
 
 /datum/action/innate/construction/place_structure/turret
 	name = "Install Plasma Anti-Wildlife Turret"
@@ -129,4 +129,4 @@
 		return
 
 	LAZYADD(turret_controller.turrets, WEAKREF(placed_structure))
-	to_chat(owner, span_notice("Você construiu uma torre adicional.[remaining]Torres Restantes."))
+	to_chat(owner, span_notice("Você construiu uma torre adicional.[remaining] Torres Restantes."))

@@ -71,7 +71,7 @@
 /datum/component/keep_me_secure/proc/on_examine(mob/living/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_boldnotice("[parent]deve ser seguro o tempo todo.")
+	examine_list += span_boldnotice("[parent] deve ser seguro o tempo todo.")
 	if(is_secured())
 		examine_list += span_notice("Agora, é.")
 	else
@@ -82,6 +82,6 @@
 /datum/component/keep_me_secure/proc/on_examine_more(mob/living/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("Pelo[parent]Para ser seguro, precisa ser:")
+	examine_list += span_notice("Pelo [parent] Para ser seguro, precisa ser:")
 	examine_list += span_notice("Sempre em movimento, e...")
 	examine_list += span_notice("2. Preso ou arrastado por alguém.")

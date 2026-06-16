@@ -116,7 +116,7 @@
 			anomaly_core.forceMove(drop_location())
 			anomaly_core = null
 		else // You exceeded the cap sorry
-			visible_message(span_warning("[anomaly_core]perde seu brilho à medida que cai no chão, há pouca energia ambiente para suportar outro núcleo deste tipo."))
+			visible_message(span_warning("[anomaly_core] perde seu brilho à medida que cai no chão, há pouca energia ambiente para suportar outro núcleo deste tipo."))
 			new /obj/item/inert_anomaly(drop_location())
 
 	// else, anomaly core gets deleted by qdel(src).
@@ -125,9 +125,9 @@
 
 /obj/effect/anomaly/analyzer_act(mob/living/user, obj/item/analyzer/tool)
 	if(!isnull(anomaly_core))
-		to_chat(user, span_notice("Analisando...[src]O campo instável está flutuando ao longo da frequência.[format_frequency(anomaly_core.frequency)], código[anomaly_core.code]."))
+		to_chat(user, span_notice("Analisando...[src] O campo instável está flutuando ao longo da frequência.[format_frequency(anomaly_core.frequency)], código [anomaly_core.code]."))
 		return ITEM_INTERACT_SUCCESS
-	to_chat(user, span_notice("Analisando...[src]O campo instável não flutua ao longo de uma frequência estável."))
+	to_chat(user, span_notice("Analisando...[src] O campo instável não flutua ao longo de uma frequência estável."))
 	return ITEM_INTERACT_BLOCKING
 
 ///Stabilize an anomaly, letting it stay around forever or untill destabilizes by a player. An anomaly without a core can't be signalled, but can be destabilized

@@ -148,7 +148,7 @@
 	if (!feedback)
 		return
 	spin(spintime = 10, speed = 1)
-	visible_message("[src]gira em um círculo como parece se ligar com[tamer].")
+	visible_message("[src] gira em um círculo como parece se ligar com [tamer].")
 
 /// Teleport when you right click away from you
 /mob/living/basic/carp/ranged_secondary_attack(atom/atom_target, modifiers)

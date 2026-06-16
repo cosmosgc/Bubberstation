@@ -39,7 +39,7 @@
 			robot_spawn.notify_ai(AI_NOTIFICATION_AI_SHELL)
 		else
 			robot_spawn.notify_ai(TRUE)
-		robot_spawn.visible_message(span_notice("[robot_spawn]Com cuidado."), span_notice("Protocolo LawSync ativado."))
+		robot_spawn.visible_message(span_notice("[robot_spawn] Com cuidado."), span_notice("Protocolo LawSync ativado."))
 		robot_spawn.lawupdate = TRUE
 		robot_spawn.lawsync()
 		robot_spawn.show_laws()

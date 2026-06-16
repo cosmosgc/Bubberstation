@@ -48,7 +48,7 @@
 
 /obj/item/radio/intercom/examine(mob/user)
 	. = ..()
-	. += span_notice("Use[MODE_TOKEN_INTERCOM]Quando perto para falar sobre isso.")
+	. += span_notice("Use [MODE_TOKEN_INTERCOM] Quando perto para falar sobre isso.")
 	if(!unscrewed)
 		. += span_notice("É...<b>Está ferrado.</b>e seguro na parede.")
 	else
@@ -61,7 +61,7 @@
 		if((obj_flags & EMAGGED) && initial(freqlock) == RADIO_FREQENCY_EMAGGABLE_LOCK)
 			. += span_warning("Sua trava de frequência foi cortada...")
 	else
-		. += span_notice("Tem um bloqueio de frequência definido para[frequency/10].")
+		. += span_notice("Tem um bloqueio de frequência definido para [frequency/10].")
 
 	if(keylock == RADIO_KEYSLOT_UNLOCKED)
 		if((obj_flags & EMAGGED) && initial(keylock) == RADIO_KEYSLOT_EMAGGABLE_LOCK)
@@ -83,15 +83,15 @@
 
 /obj/item/radio/intercom/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	if(unscrewed)
-		user.visible_message(span_notice("[user]Começa a apertar.[src]Os parafusos..."), span_notice("Você começa a ferrar[src]..."))
+		user.visible_message(span_notice("[user] Começa a apertar.[src] Os parafusos..."), span_notice("Você começa a ferrar [src]..."))
 		if(tool.use_tool(src, user, 30, volume=50))
-			user.visible_message(span_notice("[user]aperta.[src]São parafusos!"), span_notice("Você aperta.[src]São parafusos."))
+			user.visible_message(span_notice("[user] aperta.[src] São parafusos!"), span_notice("Você aperta.[src] São parafusos."))
 			unscrewed = FALSE
 			update_appearance(UPDATE_OVERLAYS)
 	else
-		user.visible_message(span_notice("[user]começa a afrouxar[src]Os parafusos..."), span_notice("Você começa a desenroscar[src]..."))
+		user.visible_message(span_notice("[user] começa a afrouxar [src] Os parafusos..."), span_notice("Você começa a desenroscar [src]..."))
 		if(tool.use_tool(src, user, 40, volume=50))
-			user.visible_message(span_notice("[user]Solte-se.[src]São parafusos!"), span_notice("Você desaparafusa.[src], soltando-o da parede."))
+			user.visible_message(span_notice("[user] Solte-se.[src] São parafusos!"), span_notice("Você desaparafusa.[src], soltando-o da parede."))
 			unscrewed = TRUE
 			update_appearance(UPDATE_OVERLAYS)
 	return ITEM_INTERACT_SUCCESS
@@ -103,12 +103,12 @@
 
 /obj/item/radio/intercom/wrench_act(mob/living/user, obj/item/tool)
 	if(!unscrewed)
-		to_chat(user, span_warning("Você precisa desaparafusar[src]Pela parede primeiro!"))
+		to_chat(user, span_warning("Você precisa desaparafusar [src] Pela parede primeiro!"))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user]começa a insegurar[src]..."), span_notice("Você começa a se proteger.[src]..."))
+	user.visible_message(span_notice("[user] começa a insegurar [src]..."), span_notice("Você começa a se proteger.[src]..."))
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 80))
-		user.visible_message(span_notice("[user]Inseguras[src]!"), span_notice("Você se desprende.[src]Da parede."))
+		user.visible_message(span_notice("[user] Inseguras [src]!"), span_notice("Você se desprende.[src] Da parede."))
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -189,7 +189,7 @@
 		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE)
 		return .
 
-	balloon_alert(user, "[message]Quebrado.")
+	balloon_alert(user, "[message] Quebrado.")
 	playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(freqlock == RADIO_FREQENCY_EMAGGABLE_LOCK)
 		freqlock = RADIO_FREQENCY_UNLOCKED

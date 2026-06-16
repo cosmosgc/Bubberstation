@@ -204,14 +204,14 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	if(damage > high_threshold)
 		if(IS_ROBOTIC_ORGAN(src))
-			. += span_warning("[src]Parece estar com defeito.")
+			. += span_warning("[src] Parece estar com defeito.")
 			return
-		. += span_warning("[src]está começando a parecer descolorido.")
+		. += span_warning("[src] está começando a parecer descolorido.")
 
 /// Returns a line to be displayed regarding valid insertion zones
 /obj/item/organ/proc/zones_tip()
 	if (!valid_zones)
-		return span_notice("Deve ser inserido no[parse_zone(zone)].")
+		return span_notice("Deve ser inserido no [parse_zone(zone)].")
 
 	var/list/fit_zones = list()
 	for (var/valid_zone in valid_zones)
@@ -503,9 +503,9 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	if(!HAS_TRAIT(eater, TRAIT_READY_TO_OPERATE))
 		return NONE
 	if(eater == feeder)
-		to_chat(feeder, span_warning("Você sente que é imprudente comer[source]enquanto você está em cirurgia."))
+		to_chat(feeder, span_warning("Você sente que é imprudente comer [source] enquanto você está em cirurgia."))
 	else
-		to_chat(feeder, span_warning("A única coisa que você poderia pensar em fazer com[source]Agora é alimentá-lo para[eater]Mas isso não parece certo."))
+		to_chat(feeder, span_warning("A única coisa que você poderia pensar em fazer com [source] Agora é alimentá-lo para [eater] Mas isso não parece certo."))
 	return BLOCK_EAT_ATTEMPT
 
 /// Get all possible organ slots by checking every organ, and then store it and give it whenever needed

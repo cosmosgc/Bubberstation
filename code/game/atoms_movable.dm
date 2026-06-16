@@ -353,8 +353,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(impact_flags & ZIMPACT_NO_MESSAGE))
 		visible_message(
-			span_danger("[src]Bate em[impacted_turf]!"),
-			span_userdanger("Você bate em[impacted_turf]!"),
+			span_danger("[src] Bate em [impacted_turf]!"),
+			span_userdanger("Você bate em [impacted_turf]!"),
 		)
 	if(!(impact_flags & ZIMPACT_NO_SPIN))
 		INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
@@ -461,7 +461,7 @@
 	if(z_move_flags & ZMOVE_CAN_FLY_CHECKS && !(movement_type & (FLYING|FLOATING)) && has_gravity(start))
 		if(z_move_flags & ZMOVE_FEEDBACK)
 			if(rider)
-				to_chat(rider, span_warning("[src] [p_are()]incapaz de voar."))
+				to_chat(rider, span_warning("[src] [p_are()] incapaz de voar."))
 			else
 				to_chat(src, span_warning("Você não é o Superman."))
 		return FALSE
@@ -553,7 +553,7 @@
 		var/mob/pulled_mob = pulled_atom
 		log_combat(src, pulled_mob, "grabbed", addition="passive grab")
 		if(!supress_message)
-			pulled_mob.visible_message(span_warning("[src]Pega.[pulled_mob]passivamente."), 				span_danger("[src]Pega você passivamente."))
+			pulled_mob.visible_message(span_warning("[src] Pega.[pulled_mob] passivamente."), 				span_danger("[src] Pega você passivamente."))
 	return TRUE
 
 /atom/movable/proc/stop_pulling()
@@ -1445,12 +1445,12 @@
 /atom/movable/proc/force_push(atom/movable/pushed_atom, force = move_force, direction, silent = FALSE)
 	. = pushed_atom.force_pushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_warning("[src]forçosamente empurra contra[pushed_atom]!"), span_warning("Você forçosamente empurra contra[pushed_atom]!"))
+		visible_message(span_warning("[src] forçosamente empurra contra [pushed_atom]!"), span_warning("Você forçosamente empurra contra [pushed_atom]!"))
 
 /atom/movable/proc/move_crush(atom/movable/crushed_atom, force = move_force, direction, silent = FALSE)
 	. = crushed_atom.move_crushed(src, force, direction)
 	if(!silent && .)
-		visible_message(span_danger("[src]Quebre o passado[crushed_atom]!"), span_danger("Você esmaga[crushed_atom]!"))
+		visible_message(span_danger("[src] Quebre o passado [crushed_atom]!"), span_danger("Você esmaga [crushed_atom]!"))
 
 /atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE
@@ -1761,7 +1761,7 @@
 			return
 		if(edit_faction(usr))
 			var/list/factions_printout = faction_to_text()
-			to_chat(usr, span_notice("Facções atualizadas para[src]:[factions_printout]"))
+			to_chat(usr, span_notice("Facções atualizadas para [src]:[factions_printout]"))
 
 	if(href_list[VV_HK_GET_FACTIONS])
 		if(!check_rights(R_ADMIN))
@@ -1769,7 +1769,7 @@
 		if(QDELETED(src))
 			return
 		var/list/factions_printout = faction_to_text()
-		to_chat(usr, span_notice(span_notice("Fações para[src]:[factions_printout]")))
+		to_chat(usr, span_notice(span_notice("Fações para [src]:[factions_printout]")))
 
 	if(href_list[VV_HK_EDIT_PARTICLES])
 		var/client/C = usr.client
@@ -1785,7 +1785,7 @@
 			return
 		// This should never happen, but if it does it should not be silent.
 		if(deadchat_plays() == COMPONENT_INCOMPATIBLE)
-			to_chat(usr, span_warning("Controle de bate-papo não compatível com[src]."))
+			to_chat(usr, span_warning("Controle de bate-papo não compatível com [src]."))
 			CRASH("deadchat_control component incompatible with object of type: [type]")
 		to_chat(usr, span_notice("Deadchat agora controla.[src]."))
 		log_admin("[key_name(usr)] has added deadchat control to [src]")
@@ -2013,7 +2013,7 @@
 	else if (prompt == "Remove")
 		var/list/current_factions = LAZYLISTDUPLICATE(faction)
 		if(!LAZYLEN(current_factions))
-			to_chat(user, span_warning("[src]Não tem facções para remover!"))
+			to_chat(user, span_warning("[src] Não tem facções para remover!"))
 			return FALSE
 
 		current_factions = sort_list(current_factions, GLOBAL_PROC_REF(cmp_text_asc)) // sort alphabetically

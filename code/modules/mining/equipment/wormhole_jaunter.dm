@@ -15,7 +15,7 @@
 	slot_flags = ITEM_SLOT_BELT
 
 /obj/item/wormhole_jaunter/attack_self(mob/user)
-	user.visible_message(span_notice("[user.name]Ativa.\the [src]!"))
+	user.visible_message(span_notice("[user.name] Ativa.\the [src]!"))
 	SSblackbox.record_feedback("tally", "jaunter", 1, "User") // user activated
 	activate(user, TRUE)
 
@@ -23,7 +23,7 @@
 	var/turf/device_turf = get_turf(src)
 	if(!device_turf || is_centcom_level(device_turf.z) || is_reserved_level(device_turf.z))
 		if(user)
-			to_chat(user, span_notice("Você está tendo dificuldades em conseguir\the [src]Trabalho."))
+			to_chat(user, span_notice("Você está tendo dificuldades em conseguir\the [src] Trabalho."))
 		return FALSE
 	return TRUE
 
@@ -47,9 +47,9 @@
 
 	if(!can_jaunter_teleport())
 		if(user)
-			to_chat(user, span_notice("\The [src]Não encontramos sinais no mundo para ancorar um buraco de minhoca."))
+			to_chat(user, span_notice("\The [src] Não encontramos sinais no mundo para ancorar um buraco de minhoca."))
 		else
-			visible_message(span_notice("\The [src]Não encontrei nenhum farol no mundo para ancorar um buraco de minhoca!"))
+			visible_message(span_notice("\The [src] Não encontrei nenhum farol no mundo para ancorar um buraco de minhoca!"))
 		return FALSE
 
 	var/list/destinations = get_destinations()
@@ -77,11 +77,11 @@
 
 	var/mob/M = loc
 	if(istype(M) && triggered)
-		M.visible_message(span_userdanger("Sua[src.name]Sobrecarga e ativa!"))
+		M.visible_message(span_userdanger("Sua [src.name] Sobrecarga e ativa!"))
 		SSblackbox.record_feedback("tally", "jaunter", 1, "EMP") // EMP accidental activation
 		activate(M, FALSE, TRUE)
 	else if(triggered)
-		visible_message(span_warning("\The [src]Sobrecarga e ativa!"))
+		visible_message(span_warning("\The [src] Sobrecarga e ativa!"))
 		activate()
 
 /obj/item/wormhole_jaunter/equipped(mob/user, slot, initial)
@@ -99,8 +99,8 @@
 	if(!activate(user, FALSE, TRUE))
 		return
 
-	to_chat(user, span_userdanger("Sua[src]Ativa, salvando você de\the [chasm]!"))
-	chasm.visible_message(span_boldwarning("[user]Cai em\the [chasm]!")) // To freak out any bystanders
+	to_chat(user, span_userdanger("Sua [src] Ativa, salvando você de\the [chasm]!"))
+	chasm.visible_message(span_boldwarning("[user] Cai em\the [chasm]!")) // To freak out any bystanders
 	SSblackbox.record_feedback("tally", "jaunter", 1, "Chasm") // Chasm automatic activation
 	return COMPONENT_NO_CHASM_DROP
 

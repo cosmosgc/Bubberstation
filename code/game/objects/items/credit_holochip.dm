@@ -125,7 +125,7 @@
 		if(!user.put_in_hands(chip))
 			chip.forceMove(user.drop_location())
 		add_fingerprint(user)
-	to_chat(user, span_notice("Você extrai.[split_amount] [MONEY_NAME]Em um novo holochip."))
+	to_chat(user, span_notice("Você extrai.[split_amount] [MONEY_NAME] Em um novo holochip."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/holochip/emp_act(severity)
@@ -134,7 +134,7 @@
 		return
 	var/wipe_chance = 60 / severity
 	if(prob(wipe_chance))
-		visible_message(span_warning("[src]Fale e desapareça!"))
+		visible_message(span_warning("[src] Fale e desapareça!"))
 		qdel(src) //rip cash
 
 /obj/item/holochip/thousand

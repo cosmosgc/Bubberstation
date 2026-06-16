@@ -19,7 +19,7 @@
 	if(length(choices) == 1) // Only one choice, no need to vote. Let's just auto-rotate it to the only remaining map because it would just happen anyways.
 		var/datum/map_config/change_me_out = global.config.maplist[choices[1]]
 		finalize_vote(choices[1])// voted by not voting, very sad.
-		to_chat(world, span_boldannounce("A votação do mapa foi ignorada porque só há um mapa para votar. O mapa foi mudado para[change_me_out.map_name]."))
+		to_chat(world, span_boldannounce("A votação do mapa foi ignorada porque só há um mapa para votar. O mapa foi mudado para [change_me_out.map_name]."))
 		return FALSE
 	if(length(choices) == 0)
 		to_chat(world, span_boldannounce("Um mapa foi chamado, mas não há mapas para votar! Jogadores, reclamem com os administradores. Administração, reclame com os codificadores."))

@@ -194,7 +194,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, explosion_cooldown))
 		return
-	owner.visible_message(span_boldwarning("O pó de enxofre ao redor[owner]Fogo!"))
+	owner.visible_message(span_boldwarning("O pó de enxofre ao redor [owner] Fogo!"))
 	addtimer(CALLBACK(src, PROC_REF(explode)), 0.25 SECONDS)
 	COOLDOWN_START(src, explosion_cooldown, delay_between_explosions)
 

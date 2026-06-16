@@ -26,7 +26,7 @@
 
 /obj/machinery/plumbing/bottler/examine(mob/user)
 	. = ..()
-	. += span_notice("Uma pequena tela indica que vai preencher[wanted_amount]U.")
+	. += span_notice("Uma pequena tela indica que vai preencher [wanted_amount] U.")
 	if(!valid_output_configuration)
 		. += span_warning("Uma notificação piscando na tela diz:\"Erro de localização de saída!\"")
 
@@ -67,7 +67,7 @@
 	if(!new_amount || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return .
 	wanted_amount = new_amount
-	to_chat(user, span_notice("O[src]Agora vai encher para[wanted_amount]U."))
+	to_chat(user, span_notice("O [src] Agora vai encher para [wanted_amount] U."))
 
 /obj/machinery/plumbing/bottler/process(seconds_per_tick)
 	if(!is_operational)

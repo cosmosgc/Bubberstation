@@ -135,7 +135,7 @@
 
 	for(var/datum/crafting_recipe/recipe as anything in slapcraft_recipes)
 		var/atom/result = initial(recipe.result)
-		examine_list += "<a href='byond://?src=[REF(source)];check_recipe=[REF(recipe)]'>Veja a receita para[initial(result.name)]</a>"
+		examine_list += "<a href='byond://?src=[REF(source)];check_recipe=[REF(recipe)]'>Veja a receita para [initial(result.name)]</a>"
 
 /datum/element/slapcrafting/proc/topic_handler(atom/source, user, href_list)
 	SIGNAL_HANDLER
@@ -150,7 +150,7 @@
 
 	var/atom/result = initial(cur_recipe.result)
 
-	to_chat(user, span_notice("Você poderia fazer\a [initial(result.name)]Aplicando um desses itens nele!"))
+	to_chat(user, span_notice("Você poderia fazer\a [initial(result.name)] Aplicando um desses itens nele!"))
 
 	// Gotta instance it to copy the lists over.
 	cur_recipe = new cur_recipe()

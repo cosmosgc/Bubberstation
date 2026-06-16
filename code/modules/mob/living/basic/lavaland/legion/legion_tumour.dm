@@ -72,16 +72,16 @@
 		target.apply_status_effect(applied_status)
 
 		if (target != user)
-			target.visible_message(span_notice("[user]Splatters.[target]Com[src]Os tentáculos nojentos puxam.[target.p_their()]Feridas fechadas!"))
+			target.visible_message(span_notice("[user] Splatters.[target] Com [src] Os tentáculos nojentos puxam.[target.p_their()] Feridas fechadas!"))
 		else
-			to_chat(user, span_notice("Você mancha[src]Você mesmo. Tendões nojentos fecham suas feridas."))
+			to_chat(user, span_notice("Você mancha [src] Você mesmo. Tendões nojentos fecham suas feridas."))
 		return TRUE
 
 	if (!ishuman(target))
 		return FALSE
 
 	log_combat(user, target, "used a Legion Tumour on", src, "as they are in crit, this will turn them into a Legion.")
-	target.visible_message(span_boldwarning("[user]Splatters.[target]Com[src]... e ela brota em uma vida horrível!"))
+	target.visible_message(span_boldwarning("[user] Splatters.[target] Com [src]... e ela brota em uma vida horrível!"))
 	var/mob/living/basic/mining/legion_brood/skull = new(target.loc)
 	skull.melee_attack(target)
 	return TRUE
@@ -146,14 +146,14 @@
 	if (QDELETED(src) || QDELETED(owner))
 		return
 	owner.log_message("has been turned into a Legion by their tumour.", LOG_VICTIM)
-	owner.visible_message(span_boldwarning("Os tentáculos negros explodem de[owner]É carne, cobrindo-os em carne amorfa!"))
+	owner.visible_message(span_boldwarning("Os tentáculos negros explodem de [owner] É carne, cobrindo-os em carne amorfa!"))
 	var/mob/living/basic/mining/legion/new_legion = new spawn_type(owner.loc)
 	new_legion.consume(owner)
 	qdel(src)
 
 /obj/item/organ/legion_tumour/on_find(mob/living/finder)
 	. = ..()
-	to_chat(finder, span_warning("Há um tumor enorme em[owner]'s[zone]!"))
+	to_chat(finder, span_warning("Há um tumor enorme em [owner]'s [zone]!"))
 	if(stage < 4)
 		to_chat(finder, span_notice("Seus tentáculos parecem se contorcer em direção à luz."))
 		return

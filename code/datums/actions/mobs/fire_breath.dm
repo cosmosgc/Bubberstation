@@ -74,9 +74,9 @@
 /datum/action/cooldown/mob_cooldown/fire_breath/proc/on_burn_mob(mob/living/barbecued, mob/living/source)
 	if(fire_temperature <= TCMB)
 		barbecued.apply_status_effect(/datum/status_effect/ice_block_talisman, 2 SECONDS)
-		to_chat(barbecued, span_userdanger("Você está congelado por[source]Hálito gelado!"))
+		to_chat(barbecued, span_userdanger("Você está congelado por [source] Hálito gelado!"))
 	else
-		to_chat(barbecued, span_userdanger("Você está queimado por[source]Hálito de fogo!"))
+		to_chat(barbecued, span_userdanger("Você está queimado por [source] Hálito de fogo!"))
 	barbecued.adjust_fire_loss(fire_damage)
 
 /// Shoot three lines of fire in a sort of fork pattern approximating a cone

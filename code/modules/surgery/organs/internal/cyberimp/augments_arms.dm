@@ -114,7 +114,7 @@
 	if(. & EMP_PROTECT_SELF || !IS_ROBOTIC_ORGAN(src))
 		return
 	if(prob(15/severity) && owner)
-		to_chat(owner, span_warning("O pulso eletromagnético causa[src]Para o mau funcionamento!"))
+		to_chat(owner, span_warning("O pulso eletromagnético causa [src] Para o mau funcionamento!"))
 		// give the owner an idea about why his implant is glitching
 		Retract()
 
@@ -156,8 +156,8 @@
 	active_item.resistance_flags = active_item::resistance_flags
 	if(owner)
 		owner.visible_message(
-			span_notice("[owner]Retrai[active_item]De volta para[owner.p_their()] [parse_zone(zone)]."),
-			span_notice("[active_item]E volta para o seu[parse_zone(zone)]."),
+			span_notice("[owner] Retrai [active_item] De volta para [owner.p_their()] [parse_zone(zone)]."),
+			span_notice("[active_item] E volta para o seu [parse_zone(zone)]."),
 			span_hear("Você ouve um pequeno ruído mecânico."),
 		)
 
@@ -192,17 +192,17 @@
 		for(var/i in 1 to hand_items.len) //Can't just use *in* here.
 			var/hand_item = hand_items[i]
 			if(!owner.dropItemToGround(hand_item))
-				failure_message += span_warning("Sua[hand_item]Interfere com[src]!")
+				failure_message += span_warning("Sua [hand_item] Interfere com [src]!")
 				continue
-			to_chat(owner, span_notice("Você caiu.[hand_item]para ativar[src]!"))
+			to_chat(owner, span_notice("Você caiu.[hand_item] para ativar [src]!"))
 			success = owner.put_in_hand(active_item, owner.get_empty_held_index_for_side(side))
 			break
 		if(!success)
 			for(var/i in failure_message)
 				to_chat(owner, i)
 			return
-	owner.visible_message(span_notice("[owner]Estende[active_item]De[owner.p_their()] [parse_zone(zone)]."),
-		span_notice("Você se estende.[active_item]de sua[parse_zone(zone)]."),
+	owner.visible_message(span_notice("[owner] Estende [active_item] De [owner.p_their()] [parse_zone(zone)]."),
+		span_notice("Você se estende.[active_item] de sua [parse_zone(zone)]."),
 		span_hear("Você ouve um pequeno ruído mecânico."))
 	playsound(get_turf(owner), extend_sound, 50, TRUE)
 
@@ -244,9 +244,9 @@
 		return
 	if(prob(30/severity) && owner && !(organ_flags & ORGAN_FAILING))
 		Retract()
-		owner.visible_message(span_danger("Um estrondo alto vem de[owner]\'S[parse_zone(zone)]!"))
+		owner.visible_message(span_danger("Um estrondo alto vem de [owner]\'S [parse_zone(zone)]!"))
 		playsound(get_turf(owner), 'sound/items/weapons/flashbang.ogg', 100, TRUE)
-		to_chat(owner, span_userdanger("Você sente uma explosão irromper dentro de seu[parse_zone(zone)]Como seu implante quebra!"))
+		to_chat(owner, span_userdanger("Você sente uma explosão irromper dentro de seu [parse_zone(zone)] Como seu implante quebra!"))
 		owner.adjust_fire_stacks(20)
 		owner.ignite_mob()
 		owner.adjust_fire_loss(25)
@@ -531,7 +531,7 @@
 
 	if(organ_flags & ORGAN_FAILING)
 		if(source.body_position != LYING_DOWN && living_target != source && prob(50))
-			to_chat(source, span_danger("Você tenta[picked_hit_type] [living_target]Mas perca o equilíbrio e caia!"))
+			to_chat(source, span_danger("Você tenta [picked_hit_type] [living_target] Mas perca o equilíbrio e caia!"))
 			source.Knockdown(3 SECONDS)
 			source.forceMove(get_turf(living_target))
 		else
@@ -585,8 +585,8 @@
 
 	// Some mobs gib when killed, so we're logging early. At this point, we're definitely hitting, so...
 	living_target.visible_message(
-		span_danger("[source] [picked_hit_type]Ed.[living_target][ground_bounce ? " into [target_turf]" : ""]!"),
-		span_userdanger("Você é[picked_hit_type]ed por[source][ground_bounce ? " into [target_turf]" : ""]!"),
+		span_danger("[source] [picked_hit_type] Ed.[living_target][ground_bounce ? " into [target_turf]" : ""]!"),
+		span_userdanger("Você é [picked_hit_type] ed por [source][ground_bounce ? " into [target_turf]" : ""]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		source,

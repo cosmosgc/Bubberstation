@@ -69,8 +69,8 @@
 	// User feedback before clearing
 	var/mob/living/carbon/human/holder = get_id_holder()
 	if(holder)
-		holder.balloon_alert(holder, "[dept]Acesso expirado")
-		to_chat(holder, span_warning("Acesso de emergência a[dept]Expirou."))
+		holder.balloon_alert(holder, "[dept] Acesso expirado")
+		to_chat(holder, span_warning("Acesso de emergência a [dept] Expirou."))
 
 	// Remove department's temporary access from the main access list
 	var/list/dept_access = reta_temp_access[dept]

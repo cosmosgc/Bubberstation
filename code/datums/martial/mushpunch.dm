@@ -20,12 +20,12 @@
 
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 	defender.visible_message(
-		span_danger("[attacker] [atk_verb]Ed[defender]com tanta força desumana que envia[defender.p_them()]Voando para trás!"), 		span_userdanger("Você é[atk_verb]ed por[attacker]Com tanta força desumana que te faz voar para trás!"),
+		span_danger("[attacker] [atk_verb] Ed [defender] com tanta força desumana que envia [defender.p_them()] Voando para trás!"), 		span_userdanger("Você é [atk_verb] ed por [attacker] Com tanta força desumana que te faz voar para trás!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você.[atk_verb] [defender]com tanta força desumana que envia[defender.p_them()]Voando para trás!"))
+	to_chat(attacker, span_danger("Você.[atk_verb] [defender] com tanta força desumana que envia [defender.p_them()] Voando para trás!"))
 	defender.apply_damage(final_damage, attacker.get_attack_type())
 	playsound(defender, 'sound/effects/meteorimpact.ogg', 25, TRUE, -1)
 	var/throwtarget = get_edge_target_turf(attacker, get_dir(attacker, get_step_away(defender, attacker)))
@@ -42,11 +42,11 @@
 /obj/item/mushpunch/attack_self(mob/living/user)
 	if(!istype(user))
 		return
-	to_chat(user, span_spiderbroodmother("Você devora.[src]E uma confluência de habilidade e poder do cogumelo aumenta seus socos! Você precisa de um momento para carregar esses socos poderosos."))
+	to_chat(user, span_spiderbroodmother("Você devora.[src] E uma confluência de habilidade e poder do cogumelo aumenta seus socos! Você precisa de um momento para carregar esses socos poderosos."))
 	var/datum/martial_art/mushpunch/mush = new(user)
 	mush.teach(user)
 	visible_message(
-		span_warning("[user]devora[src]."),
+		span_warning("[user] devora [src]."),
 		span_notice("Você devora.[src]."),
 	)
 

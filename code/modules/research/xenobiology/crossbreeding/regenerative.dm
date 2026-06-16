@@ -20,13 +20,13 @@ Regenerative extracts:
 		return
 	var/mob/living/H = interacting_with
 	if(H.stat == DEAD)
-		to_chat(user, span_warning("[src]Não vai funcionar com os mortos!"))
+		to_chat(user, span_warning("[src] Não vai funcionar com os mortos!"))
 		return ITEM_INTERACT_BLOCKING
 	if(H != user)
-		user.visible_message(span_notice("[user]Quedas[src]Câmbio.[H], o goo leitoso rapidamente regenerando todos[H.p_their()]Feridas!"),
-			span_notice("Você aperta.[src], e explode[H], o goo leitoso regenerando[H.p_their()]Lesões."))
+		user.visible_message(span_notice("[user] Quedas [src] Câmbio.[H], o goo leitoso rapidamente regenerando todos [H.p_their()] Feridas!"),
+			span_notice("Você aperta.[src], e explode [H], o goo leitoso regenerando [H.p_their()] Lesões."))
 	else
-		user.visible_message(span_notice("[user]Quedas[src]Câmbio.[user.p_them()]Self, o goo leitoso rapidamente regenerando tudo[user.p_their()]Feridas!"),
+		user.visible_message(span_notice("[user] Quedas [src] Câmbio.[user.p_them()] Self, o goo leitoso rapidamente regenerando tudo [user.p_their()] Feridas!"),
 			span_notice("Você aperta.[src], e explode em sua mão, espirrando você com gosma leitosa que regenera rapidamente seus ferimentos!"))
 	core_effect_before(H, user)
 	user.do_attack_animation(interacting_with)
@@ -44,7 +44,7 @@ Regenerative extracts:
 	colour = SLIME_TYPE_ORANGE
 
 /obj/item/slimecross/regenerative/orange/core_effect_before(mob/living/target, mob/user)
-	target.visible_message(span_warning("O[src]Está fervendo!"))
+	target.visible_message(span_warning("O [src] Está fervendo!"))
 	for(var/turf/targetturf in RANGE_TURFS(1,target))
 		if(!locate(/obj/effect/hotspot) in targetturf)
 			new /obj/effect/hotspot(targetturf)
@@ -71,13 +71,13 @@ Regenerative extracts:
 	effect_desc = "Cura completamente o alvo e encerra o alvo em um armário."
 
 /obj/item/slimecross/regenerative/metal/core_effect(mob/living/target, mob/user)
-	target.visible_message(span_warning("O goo leitoso endurece e remodela-se, encantando[target]!"))
+	target.visible_message(span_warning("O goo leitoso endurece e remodela-se, encantando [target]!"))
 	var/obj/structure/closet/C = new /obj/structure/closet(target.loc)
 	C.name = "slimy closet"
 	C.desc = "Looking closer, it seems to be made of a sort of solid, opaque, metal-like goo."
 	if(target.mob_size > C.max_mob_size) //Prevents capturing megafauna or other large mobs in the closets
 		C.bust_open()
-		C.visible_message(span_warning("[target]é muito grande, e imediatamente quebra\the [C.name]Abra!"))
+		C.visible_message(span_warning("[target] é muito grande, e imediatamente quebra\the [C.name] Abra!"))
 	else //This can't be allowed to actually happen to the too-big mobs or it breaks some actions
 		target.forceMove(C)
 
@@ -126,7 +126,7 @@ Regenerative extracts:
 		var/obj/item/clothing/C = H.get_item_by_slot(ITEM_SLOT_HEAD)
 		fireproof(C)
 	if(fireproofed)
-		target.visible_message(span_notice("Alguns de[target]As roupas são revestidas na gosma, e ficam azuis!"))
+		target.visible_message(span_notice("Alguns de [target] As roupas são revestidas na gosma, e ficam azuis!"))
 
 /obj/item/slimecross/regenerative/darkblue/proc/fireproof(obj/item/clothing/clothing_piece)
 	clothing_piece.name = "fireproofed [clothing_piece.name]"
@@ -152,11 +152,11 @@ Regenerative extracts:
 /obj/item/slimecross/regenerative/bluespace/core_effect(mob/living/target, mob/user)
 	var/turf/old_location = get_turf(target)
 	if(do_teleport(target, T, channel = TELEPORT_CHANNEL_QUANTUM)) //despite being named a bluespace teleportation method the quantum channel is used to preserve precision teleporting with a bag of holding
-		old_location.visible_message(span_warning("[target]Desaparece em uma chuva de faíscas!"))
+		old_location.visible_message(span_warning("[target] Desaparece em uma chuva de faíscas!"))
 		to_chat(target, span_danger("O goo leitoso te teletransporta para algum lugar que se lembre!"))
 
 	if(HAS_TRAIT(target, TRAIT_NO_TELEPORT))
-		old_location.visible_message(span_warning("[target]faíscas brevemente, mas é impedido de se teletransportar!"))
+		old_location.visible_message(span_warning("[target] faíscas brevemente, mas é impedido de se teletransportar!"))
 
 /obj/item/slimecross/regenerative/bluespace/Initialize(mapload)
 	. = ..()
@@ -187,7 +187,7 @@ Regenerative extracts:
 	effect_desc = "Cura completamente e aleatoriamente colore o alvo."
 
 /obj/item/slimecross/regenerative/pyrite/core_effect(mob/living/target, mob/user)
-	target.visible_message(span_warning("O revestimento goo leitoso[target]folhas[target.p_them()]uma cor diferente!"))
+	target.visible_message(span_warning("O revestimento goo leitoso [target] folhas [target.p_them()] uma cor diferente!"))
 	target.add_atom_colour(color_transition_filter(rgb(rand(0,255), rand(0,255), rand(0,255)), SATURATION_OVERRIDE), WASHABLE_COLOUR_PRIORITY)
 
 /obj/item/slimecross/regenerative/red
@@ -204,7 +204,7 @@ Regenerative extracts:
 
 /obj/item/slimecross/regenerative/green/core_effect(mob/living/target, mob/user)
 	if(isslime(target))
-		target.visible_message(span_warning("O[target]De repente muda de cor!"))
+		target.visible_message(span_warning("O [target] De repente muda de cor!"))
 		var/mob/living/basic/slime/target_slime = target
 		target_slime.set_slime_type()
 	if(isjellyperson(target))
@@ -245,7 +245,7 @@ Regenerative extracts:
 	var/dummytype = target.type
 	if(target.mob_biotypes & MOB_SPECIAL) //Prevents megafauna and voidwalker duping in a lame way
 		dummytype = /mob/living/basic/slime
-		to_chat(user, span_warning("A gosma leitosa flui sobre[target]Caindo em uma poça fraca."))
+		to_chat(user, span_warning("A gosma leitosa flui sobre [target] Caindo em uma poça fraca."))
 	var/mob/living/dummy = new dummytype(target.loc)
 	to_chat(target, span_notice("A gosma leitosa flui de sua pele, formando uma cópia imperfeita de você."))
 	if(iscarbon(target) && iscarbon(dummy))

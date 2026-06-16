@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	return ..()
 
 /mob/living/basic/bot/proc/explode()
-	visible_message(span_boldnotice("[src]Vai pelos são!"))
+	visible_message(span_boldnotice("[src] Vai pelos são!"))
 	do_sparks(3, TRUE, src)
 	var/atom/location_destroyed = drop_location()
 	if(prob(50))
@@ -340,16 +340,16 @@ GLOBAL_LIST_INIT(command_strings, list(
 	else
 		. += "[src] is in pristine condition."
 
-	. += span_notice("[p_Their()]painel de manutenção é[bot_access_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
+	. += span_notice("[p_Their()] painel de manutenção é[bot_access_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
 	. += span_info("Você pode usar um<b>Chave de Fenda</b>Para[bot_access_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"] [p_them()].")
 
 	if(bot_access_flags & BOT_COVER_MAINTS_OPEN)
-		. += span_notice("[p_Their()]painel de controle é[bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
+		. += span_notice("[p_Their()] painel de controle é[bot_access_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
 		if(!(bot_access_flags & BOT_COVER_EMAGGED) && (issilicon(user) || user.Adjacent(src)))
-			. += span_info("Alt-click[issilicon(user) ? "" : "or use your ID on "][p_them()]Para[bot_access_flags & BOT_COVER_LOCKED ? "un" : ""]Trava.[p_their()]Painel de controle.")
+			. += span_info("Alt-click[issilicon(user) ? "" : "or use your ID on "][p_them()] Para[bot_access_flags & BOT_COVER_LOCKED ? "un" : ""]Trava.[p_their()] Painel de controle.")
 	if(isnull(paicard))
 		return
-	. += span_notice("[p_They()] [p_have()]Um dispositivo PAI instalado.")
+	. += span_notice("[p_They()] [p_have()] Um dispositivo PAI instalado.")
 	if(!(bot_access_flags & BOT_COVER_MAINTS_OPEN))
 		. += span_info("Você pode usar um<b>hemostat</b>para removê-lo.")
 
@@ -373,7 +373,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	if(!topic_denied(user))
 		ui_interact(user)
 		return
-	to_chat(user, span_warning("[src]A interface não está respondendo!"))
+	to_chat(user, span_warning("[src] A interface não está respondendo!"))
 
 /mob/living/basic/bot/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -428,7 +428,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		return
 
 	heal_overall_damage(10)
-	user.visible_message(span_notice("[user]Reparos[src]!"),span_notice("Você conserta.[src]."))
+	user.visible_message(span_notice("[user] Reparos [src]!"),span_notice("Você conserta.[src]."))
 
 /mob/living/basic/bot/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(attacking_item.GetID())
@@ -450,7 +450,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	if(!do_after(user, 3 SECONDS, target = src) || !paicard)
 		return
 
-	user.visible_message(span_notice("[user]EUA[attacking_item]Para puxar[paicard]Fora[initial(src.name)]!"), 		span_notice("Você puxa.[paicard]Fora[initial(src.name)]Com[attacking_item]."))
+	user.visible_message(span_notice("[user] EUA [attacking_item] Para puxar [paicard] Fora [initial(src.name)]!"), 		span_notice("Você puxa.[paicard] Fora [initial(src.name)] Com [attacking_item]."))
 
 	ejectpai(user)
 
@@ -477,7 +477,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	new /obj/effect/temp_visual/emp(loc)
 	if(paicard)
 		paicard.emp_act(severity)
-		src.visible_message(span_notice("[paicard]Voa para fora[initial(src.name)]!"), span_warning("Você foi expulso com força.[initial(src.name)]!"))
+		src.visible_message(span_notice("[paicard] Voa para fora [initial(src.name)]!"), span_warning("Você foi expulso com força.[initial(src.name)]!"))
 		ejectpai()
 
 	if (QDELETED(src))
@@ -632,7 +632,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 			if(!(bot_access_flags & BOT_COVER_EMAGGED))
 				bot_access_flags |= (BOT_COVER_LOCKED|BOT_COVER_EMAGGED|BOT_COVER_HACKED)
 				emag_effects(the_user)
-				to_chat(the_user, span_warning("Você está sobrecarregado.[src]'s[hackables]."))
+				to_chat(the_user, span_warning("Você está sobrecarregado.[src]'s [hackables]."))
 				message_admins("Safety lock of [ADMIN_LOOKUPFLW(src)] was disabled by [ADMIN_LOOKUPFLW(the_user)] in [ADMIN_VERBOSEJMP(the_user)]")
 				the_user.log_message("disabled safety lock of [the_user]", LOG_GAME)
 				bot_reset()
@@ -640,10 +640,10 @@ GLOBAL_LIST_INIT(command_strings, list(
 				to_chat(src, span_boldnotice(get_emagged_message()))
 				return
 			if(!(bot_access_flags & BOT_COVER_HACKED))
-				to_chat(the_user, span_bolddanger("Você não consegue consertar.[src]'s[hackables]."))
+				to_chat(the_user, span_bolddanger("Você não consegue consertar.[src]'s [hackables]."))
 				return
 			bot_access_flags &= ~(BOT_COVER_EMAGGED|BOT_COVER_HACKED)
-			to_chat(the_user, span_notice("Você redefiniu o[src]'s[hackables]."))
+			to_chat(the_user, span_notice("Você redefiniu o [src]'s [hackables]."))
 			the_user.log_message("re-enabled safety lock of [src]", LOG_GAME)
 			bot_reset()
 			to_chat(src, span_userdanger("Software restaurado ao padrão."))
@@ -651,7 +651,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 		if("eject_pai")
 			if(!paicard)
 				return
-			to_chat(the_user, span_notice("Você ejeta.[paicard]De[initial(src.name)]."))
+			to_chat(the_user, span_notice("Você ejeta.[paicard] De [initial(src.name)]."))
 			ejectpai(the_user)
 		if("toggle_personality")
 			if (can_be_possessed)
@@ -703,9 +703,9 @@ GLOBAL_LIST_INIT(command_strings, list(
 	paicard.pai.fold_in()
 	copy_languages(paicard.pai, source_override = LANGUAGE_PAI)
 	set_active_language(paicard.pai.get_selected_language())
-	user.visible_message(span_notice("[user]Inserções[card]Em[src]!"), span_notice("Você insere[card]Em[src]."))
+	user.visible_message(span_notice("[user] Inserções [card] Em [src]!"), span_notice("Você insere [card] Em [src]."))
 	paicard.pai.mind.transfer_to(src)
-	to_chat(src, span_notice("Você sente sua mudança de forma como você é carregado em[src]."))
+	to_chat(src, span_notice("Você sente sua mudança de forma como você é carregado em [src]."))
 	name = paicard.pai.name
 	original_faction = get_faction()
 	original_allies = allies
@@ -737,7 +737,7 @@ GLOBAL_LIST_INIT(command_strings, list(
 	var/to_log = user ? user : src
 	log_combat(to_log, paicard.pai, "ejected [user ? "from [initial(name)]" : ""].")
 	if(announce)
-		to_chat(paicard.pai, span_notice("Você sente seu controle desaparecer como[paicard]Ejeta de[initial(name)]."))
+		to_chat(paicard.pai, span_notice("Você sente seu controle desaparecer como [paicard] Ejeta de [initial(name)]."))
 	paicard = null
 	name = initial(name)
 	set_faction(original_faction)

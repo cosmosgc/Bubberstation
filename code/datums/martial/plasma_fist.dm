@@ -48,13 +48,13 @@
 
 /datum/martial_art/plasma_fist/proc/Throwback(mob/living/attacker, mob/living/defender)
 	defender.visible_message(
-		span_danger("[attacker]hits[defender]Como Plasma Punch!"),
-		span_userdanger("Você foi atingido com um soco de plasma[attacker]!"),
+		span_danger("[attacker] hits [defender] Como Plasma Punch!"),
+		span_userdanger("Você foi atingido com um soco de plasma [attacker]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você bateu.[defender]Como Plasma Punch!"))
+	to_chat(attacker, span_danger("Você bateu.[defender] Como Plasma Punch!"))
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	var/atom/throw_target = get_edge_target_turf(defender, get_dir(defender, get_step_away(defender, attacker)))
 	defender.throw_at(throw_target, 200, 4,attacker)
@@ -69,13 +69,13 @@
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 50, TRUE, -1)
 	attacker.say("PLASMA FIST!", forced="plasma fist")
 	defender.visible_message(
-		span_danger("[attacker]hits[defender]Com a técnica de punho de plástico!"),
-		span_userdanger("De repente, você é atingido com o PLASMA FIST TECHNIQUE por[attacker]!"),
+		span_danger("[attacker] hits [defender] Com a técnica de punho de plástico!"),
+		span_userdanger("De repente, você é atingido com o PLASMA FIST TECHNIQUE por [attacker]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você bateu.[defender]Com a técnica de punho de plástico!"))
+	to_chat(attacker, span_danger("Você bateu.[defender] Com a técnica de punho de plástico!"))
 	log_combat(attacker, defender, "gibbed (Plasma Fist)")
 	var/turf/Dturf = get_turf(defender)
 	defender.investigate_log("has been gibbed by plasma fist.", INVESTIGATE_DEATHS)
@@ -195,7 +195,7 @@
 
 /obj/effect/temp_visual/plasma_soul/Destroy()
 	if(!beam_target)
-		visible_message(span_notice("[src]Desapareça..."))
+		visible_message(span_notice("[src] Desapareça..."))
 	. = ..()
 
 /obj/effect/ebeam/plasma_fist

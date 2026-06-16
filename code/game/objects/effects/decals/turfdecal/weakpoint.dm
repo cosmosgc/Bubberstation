@@ -65,10 +65,10 @@
 	qdel(src)
 
 /obj/effect/weakpoint/welder_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("Você começa a fortalecer[src]..."))
+	to_chat(user, span_notice("Você começa a fortalecer [src]..."))
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 1, volume=50))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("\The [src]está totalmente selado, eliminando o risco de o ponto fraco crescer."))
+	to_chat(user, span_notice("\The [src] está totalmente selado, eliminando o risco de o ponto fraco crescer."))
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -77,7 +77,7 @@
 		var/obj/item/stack/medical/wrap/sticky_tape/duct_tape = tool
 		if(!duct_tape.use(1))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("\The [src]é selado com um pouco de graxa de cotovelo e um monte de[duct_tape]."))
+		to_chat(user, span_notice("\The [src] é selado com um pouco de graxa de cotovelo e um monte de [duct_tape]."))
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
 	return ..()
@@ -91,8 +91,8 @@
 
 /obj/effect/weakpoint/examine(mob/user)
 	. = ..()
-	. += span_notice("\The [src]Pode ser consertado com um soldador.")
-	. += span_warning("Uma explosão suficientemente forte causará[src]Para expandir.")
+	. += span_notice("\The [src] Pode ser consertado com um soldador.")
+	. += span_warning("Uma explosão suficientemente forte causará [src] Para expandir.")
 
 /**
  * Generates a list of turfs from the start location meandering along a randomized set of turns.

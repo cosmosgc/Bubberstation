@@ -57,7 +57,7 @@
 	var/list/realignment_traits = list(TRAIT_BATON_RESISTANCE, TRAIT_PACIFISM)
 
 /datum/status_effect/realignment/get_examine_text()
-	return span_notice("[owner.p_Theyre()]Brilhando um branco suave.")
+	return span_notice("[owner.p_Theyre()] Brilhando um branco suave.")
 
 /datum/status_effect/realignment/on_apply()
 	owner.add_traits(realignment_traits, TRAIT_STATUS_EFFECT(id))

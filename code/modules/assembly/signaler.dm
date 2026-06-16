@@ -30,7 +30,7 @@
 	var/range = 0 //Everywhere
 
 /obj/item/assembly/signaler/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Venha.\the [src]Se for o sinalizado,[user.p_they()]Vai morrer!"))
+	user.visible_message(span_suicide("[user] Venha.\the [src] Se for o sinalizado,[user.p_they()] Vai morrer!"))
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
 	moveToNullspace()
 	suicider = user.mind
@@ -43,7 +43,7 @@
 		return
 	if(suicide_mob != REF(user))
 		return
-	user.visible_message(span_suicide("[user]'s[src]Recebe um sinal, Matando[user.p_them()]-Instantanemante!"))
+	user.visible_message(span_suicide("[user]'s [src] Recebe um sinal, Matando [user.p_them()]-Instantanemante!"))
 	user.set_suicide(TRUE)
 	user.adjust_oxy_loss(200)//it sends an electrical pulse to their heart, killing them. or something.
 	user.death(FALSE)
@@ -128,7 +128,7 @@
 		if(secured && signaler2.secured)
 			code = signaler2.code
 			set_frequency(signaler2.frequency)
-			to_chat(user, "Você transfere a frequência e o código de\the [signaler2.name]Para\the [name]")
+			to_chat(user, "Você transfere a frequência e o código de\the [signaler2.name] Para\the [name]")
 	..()
 
 /obj/item/assembly/signaler/attack_self_secondary(mob/user, modifiers)
@@ -171,7 +171,7 @@
 	last_receive_signal_log = istype(holder, /obj/item/transfer_valve) ? signal.logging_data : null
 
 	pulse()
-	audible_message(span_infoplain("[icon2html(src, hearers(src))]Bip, bip"), null, hearing_range)
+	audible_message(span_infoplain("[icon2html(src, hearers(src))] Bip, bip"), null, hearing_range)
 	for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
 		hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	return TRUE
@@ -184,7 +184,7 @@
 
 /obj/item/assembly/signaler/proc/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)
 	SIGNAL_HANDLER
-	to_chat(user, span_danger("Enquanto você abre[letter]Você acidentalmente aperta um botão[src]!"))
+	to_chat(user, span_danger("Enquanto você abre [letter] Você acidentalmente aperta um botão [src]!"))
 	INVOKE_ASYNC(src, PROC_REF(signal)) // No need to check for cooldown, the cooldown is shorter than the do_after for opening mail
 	return NONE //don't return handled, we want in hands and open ui
 

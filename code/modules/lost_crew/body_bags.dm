@@ -19,7 +19,7 @@
 
 /obj/structure/closet/body_bag/lost_crew/with_body/attempt_fold(mob/living/carbon/human/the_folder)
 	if (!body_spawned)
-		to_chat(the_folder, span_warning("O corpo dentro de[src]Impede que você dobre!"))
+		to_chat(the_folder, span_warning("O corpo dentro de [src] Impede que você dobre!"))
 		return FALSE
 	return ..()
 

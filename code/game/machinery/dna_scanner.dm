@@ -75,12 +75,12 @@
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
+	user.visible_message(span_notice("Viu?[user] Chutando contra a porta de [src]!"), 		span_notice("Você se apoia na parte de trás de [src] E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve um metal rangendo de [src]."))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open || !locked)
 			return
 		locked = FALSE
-		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
+		user.visible_message(span_warning("[user] Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/dna_scannernew/proc/locate_computer(type_)
@@ -119,7 +119,7 @@
 	if(user.stat || locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, span_warning("[src]A porta não se mexe!"))
+			to_chat(user, span_warning("[src] A porta não se mexe!"))
 		return
 	open_machine()
 

@@ -32,9 +32,9 @@
 	switch(disease.stage)
 		if(5)
 			ADD_TRAIT(head, TRAIT_DISFIGURED, DISEASE_TRAIT)
-			victim.visible_message(span_warning("[victim]O rosto parece ceder!"), span_notice("Você sente seu rosto amassado e cair!"))
+			victim.visible_message(span_warning("[victim] O rosto parece ceder!"), span_notice("Você sente seu rosto amassado e cair!"))
 		else
-			victim.visible_message(span_warning("[victim]O rosto começa a contorcer..."), span_notice("Seu rosto está molhado e maleável..."))
+			victim.visible_message(span_warning("[victim] O rosto começa a contorcer..."), span_notice("Seu rosto está molhado e maleável..."))
 
 
 /datum/symptom/disfiguration/End(datum/disease/advance/disease)

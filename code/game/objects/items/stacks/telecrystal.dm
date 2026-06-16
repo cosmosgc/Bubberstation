@@ -26,7 +26,7 @@
 			continue
 		hidden_uplink.uplink_handler.add_telecrystals(amount)
 		use(amount)
-		to_chat(user, span_notice("Você pressiona.[src]em você mesmo e carregar seu uplink escondido."))
+		to_chat(user, span_notice("Você pressiona.[src] em você mesmo e carregar seu uplink escondido."))
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 

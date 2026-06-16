@@ -28,7 +28,7 @@
 
 /datum/element/shuttle_construction_lattice/proc/on_examined(obj/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("Cortando isso.[source.name]Will.<i>Arruinar o tratamento que o torna adequado para a construção da nave.</i>.")
+	examine_list += span_notice("Cortando isso.[source.name] Will.<i>Arruinar o tratamento que o torna adequado para a construção da nave.</i>.")
 
 /datum/element/shuttle_construction_lattice/proc/on_moved(obj/source, atom/old_loc)
 	SIGNAL_HANDLER

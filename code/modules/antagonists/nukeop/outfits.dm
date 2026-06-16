@@ -114,7 +114,7 @@
 	. = ..()
 	if(visuals_only)
 		return
-	to_chat(H, span_notice("Você é um agente de[faction], enviado para acompanhar o esquadrão nuclear em sua missão. Apoie seus aliados e lembre-se:"))
+	to_chat(H, span_notice("Você é um agente de [faction], enviado para acompanhar o esquadrão nuclear em sua missão. Apoie seus aliados e lembre-se:"))
 
 /datum/outfit/syndicate/reinforcement/plasmaman
 	name = "Syndicate Operative - Reinforcement (Plasmaman)"

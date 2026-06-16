@@ -35,17 +35,17 @@
 	// .01s are used in case the drunk value ends up to be a small decimal.
 	switch(drunk_value)
 		if(11 to 21)
-			return span_warning("[owner.p_They()] [owner.p_are()]Levemente corado.")
+			return span_warning("[owner.p_They()] [owner.p_are()] Levemente corado.")
 		if(21.01 to 41)
-			return span_warning("[owner.p_They()] [owner.p_are()]Fluxo.")
+			return span_warning("[owner.p_They()] [owner.p_are()] Fluxo.")
 		if(41.01 to 51)
-			return span_warning("[owner.p_They()] [owner.p_are()]-Bastante corado.[owner.p_their()]Hálito cheira a álcool.")
+			return span_warning("[owner.p_They()] [owner.p_are()]-Bastante corado.[owner.p_their()] Hálito cheira a álcool.")
 		if(51.01 to 61)
-			return span_warning("[owner.p_They()] [owner.p_are()]Muito ruborizado e[owner.p_their()]movimentos secos, com hálito cheirando a álcool.")
+			return span_warning("[owner.p_They()] [owner.p_are()] Muito ruborizado e [owner.p_their()] movimentos secos, com hálito cheirando a álcool.")
 		if(61.01 to 91)
-			return span_warning("[owner.p_They()]Veja.[owner.p_s()]Como uma bagunça de bêbados.")
+			return span_warning("[owner.p_They()] Veja.[owner.p_s()] Como uma bagunça de bêbados.")
 		if(91.01 to INFINITY)
-			return span_warning("[owner.p_They()] [owner.p_are()]Uma merda, um naufrágio.")
+			return span_warning("[owner.p_They()] [owner.p_are()] Uma merda, um naufrágio.")
 
 	return null
 

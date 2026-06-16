@@ -21,7 +21,7 @@
 	)
 
 /obj/item/book/granter/action/spell/summon_cheese/recoil(mob/living/user)
-	to_chat(user, span_warning("\The [src]se transforma em uma fatia de queijo!"))
+	to_chat(user, span_warning("\The [src] se transforma em uma fatia de queijo!"))
 	var/obj/item/food/cheese/wedge/book_cheese = new
 	user.temporarilyRemoveItemFromInventory(src, force = TRUE)
 	user.put_in_hands(book_cheese)

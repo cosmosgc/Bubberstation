@@ -46,7 +46,7 @@
 		if (victim.stat == DEAD || HAS_TRAIT(victim, TRAIT_TENTACLE_IMMUNE))
 			continue
 		balloon_alert(victim, "grabbed")
-		visible_message(span_danger("[src]Agarra-se.[victim]!"))
+		visible_message(span_danger("[src] Agarra-se.[victim]!"))
 		victim.adjust_brute_loss(rand(min_damage, max_damage))
 		if (victim.apply_status_effect(/datum/status_effect/incapacitating/stun/goliath_tentacled, grapple_time, src))
 			buckle_mob(victim, TRUE)
@@ -114,7 +114,7 @@
 /datum/status_effect/incapacitating/stun/goliath_tentacled/proc/on_helped(mob/source, mob/helping)
 	SIGNAL_HANDLER
 	release()
-	source.visible_message(span_notice("[helping]Rips[source]Do alcance do tentáculo!"))
+	source.visible_message(span_notice("[helping] Rips [source] Do alcance do tentáculo!"))
 	return COMPONENT_BLOCK_MISC_HELP
 
 /// Something happened to make the tentacle let go

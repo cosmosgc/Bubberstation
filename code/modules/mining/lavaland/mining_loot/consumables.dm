@@ -69,7 +69,7 @@
 		if(wisp.loc == src)
 			qdel(wisp)
 		else
-			wisp.visible_message(span_notice("[wisp]tem um sentimento triste por um momento, então passa."))
+			wisp.visible_message(span_notice("[wisp] tem um sentimento triste por um momento, então passa."))
 	return ..()
 
 /obj/effect/wisp

@@ -124,7 +124,7 @@
 	var/despawn = tgui_alert(usr, "Voltar a dormir? (Aviso, sua multidão será deletada!)", null, list("Yes", "No"))
 	if(despawn == "No" || !loc || !Adjacent(user))
 		return
-	user.visible_message(span_notice("[user.name]sobe de volta ao sono criogênico..."))
+	user.visible_message(span_notice("[user.name] sobe de volta ao sono criogênico..."))
 	qdel(user)
 
 /datum/outfit/cryobartender

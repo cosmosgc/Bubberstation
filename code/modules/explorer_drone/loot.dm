@@ -170,15 +170,15 @@ GLOBAL_LIST_INIT(adventure_loot_generator_index,generate_generator_index())
 /obj/item/firelance/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ITEM_INTERACT_BLOCKING
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		to_chat(user, span_notice("Você precisa empunhar[src]em duas mãos antes de poder atirar."))
+		to_chat(user, span_notice("Você precisa empunhar [src] em duas mãos antes de poder atirar."))
 		return .
 	if(LAZYACCESS(user.do_afters, "firelance"))
 		return .
 	if(!cell.use(0.2 * STANDARD_CELL_CHARGE))
-		to_chat(user,span_warning("[src]Uma bateria acabou!"))
+		to_chat(user,span_warning("[src] Uma bateria acabou!"))
 		return .
 	ADD_TRAIT(user, TRAIT_IMMOBILIZED, REF(src))
-	to_chat(user,span_notice("Você começa a cobrar[src]..."))
+	to_chat(user,span_notice("Você começa a cobrar [src]..."))
 	inhand_icon_state = "firelance_charging"
 	user.update_held_items()
 	if(do_after(user,windup_time,interaction_key="firelance",extra_checks = CALLBACK(src, PROC_REF(windup_checks))))

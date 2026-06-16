@@ -26,7 +26,7 @@
 	. = ..()
 	var/obj/machinery/computer/shuttle/our_computer = computer_ref?.resolve()
 	if(may_change_docks && our_computer)
-		. += span_notice("Você pode mudar onde[get_area_name(SSshuttle.getShuttle(our_computer.shuttleId))]docas usando[EXAMINE_HINT("alt-right-click")].")
+		. += span_notice("Você pode mudar onde [get_area_name(SSshuttle.getShuttle(our_computer.shuttleId))] docas usando[EXAMINE_HINT("alt-right-click")].")
 
 /obj/item/shuttle_remote/Initialize(mapload)
 	. = ..()

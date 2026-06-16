@@ -136,6 +136,6 @@
 	if(AI.interaction_range > 7)
 		AI.interaction_range = INFINITY
 	playsound(src,'sound/machines/beep/twobeep.ogg',50,FALSE)
-	to_chat(user, span_notice("Você insere[src]Em[AI]O compartimento, e ele apita enquanto processa os dados."))
-	to_chat(AI, span_notice("Você processa[src], e encontrar-se capaz de manipular eletrônica de até[AI.interaction_range]Metros!"))
+	to_chat(user, span_notice("Você insere [src] Em [AI] O compartimento, e ele apita enquanto processa os dados."))
+	to_chat(AI, span_notice("Você processa [src], e encontrar-se capaz de manipular eletrônica de até [AI.interaction_range] Metros!"))
 	qdel(src)

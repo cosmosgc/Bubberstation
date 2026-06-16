@@ -54,7 +54,7 @@ Striking a noncultist, however, will tear their flesh."}
 /obj/item/melee/cultblade/dagger/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	var/block_message = "[owner] parries [attack_text] with [src]"
 	if(owner.get_active_held_item() != src)
-		block_message = "[owner]Parries[attack_text]com[src]em suas mãos"
+		block_message = "[owner] Parries [attack_text] com [src] em suas mãos"
 
 	if(IS_CULTIST(owner) && prob(final_block_chance) && (attack_type != PROJECTILE_ATTACK || attack_type != OVERWHELMING_ATTACK))
 		new /obj/effect/temp_visual/cult/sparks(get_turf(owner))
@@ -127,7 +127,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 	if(IS_CULTIST(owner) && prob(final_block_chance))
 		new /obj/effect/temp_visual/cult/sparks(get_turf(owner))
-		owner.visible_message(span_danger("[owner]Parries[attack_text]com[src]!"))
+		owner.visible_message(span_danger("[owner] Parries [attack_text] com [src]!"))
 		return TRUE
 	else
 		return FALSE
@@ -136,7 +136,7 @@ Striking a noncultist, however, will tear their flesh."}
 	if(!IS_CULTIST(user) && !free_use)
 		user.Paralyze(100)
 		user.dropItemToGround(src, TRUE)
-		user.visible_message(span_warning("Uma força poderosa empurra[user]longe de[target]!"), 				span_cult_large("\"Não devia brincar com coisas afiadas. Você vai arrancar o olho de alguém.\""))
+		user.visible_message(span_warning("Uma força poderosa empurra [user] longe de [target]!"), 				span_cult_large("\"Não devia brincar com coisas afiadas. Você vai arrancar o olho de alguém.\""))
 		if(ishuman(user))
 			var/mob/living/carbon/human/miscreant = user
 			miscreant.apply_damage(rand(force/2, force), BRUTE, pick(GLOB.arm_zones))
@@ -275,7 +275,7 @@ Striking a noncultist, however, will tear their flesh."}
 	return
 
 /obj/item/melee/cultblade/haunted/proc/on_priest_handle(mob/living/user, actiontype)
-	user.visible_message(span_cult_bold("Você começa a cantar os hinos sagrados de[GLOB.deity]..."),		span_cult_bold("[user]Começa a cantar enquanto segura[src]Alto..."))
+	user.visible_message(span_cult_bold("Você começa a cantar os hinos sagrados de [GLOB.deity]..."),		span_cult_bold("[user] Começa a cantar enquanto segura [src] Alto..."))
 	if(!do_after(user, 6 SECONDS, src))
 		to_chat(user, span_notice("Você foi interrompido!"))
 		return
@@ -285,10 +285,10 @@ Striking a noncultist, however, will tear their flesh."}
 /obj/item/melee/cultblade/haunted/proc/on_cultist_handle(mob/living/user, actiontype)
 	var/binding_implements = list(/obj/item/melee/cultblade/dagger, /obj/item/melee/sickly_blade/cursed)
 	if(!user.is_holding_item_of_types(binding_implements))
-		to_chat(user, span_notice("Você precisa segurar um punhal ritual para amarrar[src]!"))
+		to_chat(user, span_notice("Você precisa segurar um punhal ritual para amarrar [src]!"))
 		return
 
-	user.visible_message(span_cult_bold("Você começa a cortar sua mão em cima de[src]..."),		span_cult_bold("[user]Começa a cortar aberto.[user.p_their()]palma em cima de[src]..."))
+	user.visible_message(span_cult_bold("Você começa a cortar sua mão em cima de [src]..."),		span_cult_bold("[user] Começa a cortar aberto.[user.p_their()] palma em cima de [src]..."))
 	if(!do_after(user, 6 SECONDS, src))
 		to_chat(user, span_notice("Você foi interrompido!"))
 		return
@@ -299,17 +299,17 @@ Striking a noncultist, however, will tear their flesh."}
 	// todo make the former a subtype of latter
 	var/binding_implements = list(/obj/item/clothing/neck/eldritch_amulet, /obj/item/clothing/neck/heretic_focus)
 	if(!user.is_holding_item_of_types(binding_implements))
-		to_chat(user, span_notice("Você precisa manter o foco para ligar[src]!"))
+		to_chat(user, span_notice("Você precisa manter o foco para ligar [src]!"))
 		return
 
-	user.visible_message(span_cult_bold("Você canaliza o Mansus através de seu foco, capacitando as runas de vedação..."), span_cult_bold("[user]mantém seu foco em cima de Eldritch[src]e começa a se concentrar..."))
+	user.visible_message(span_cult_bold("Você canaliza o Mansus através de seu foco, capacitando as runas de vedação..."), span_cult_bold("[user] mantém seu foco em cima de Eldritch [src] e começa a se concentrar..."))
 	if(!do_after(user, 6 SECONDS, src))
 		to_chat(user, span_notice("Você foi interrompido!"))
 		return
 	return TRUE
 
 /obj/item/melee/cultblade/haunted/proc/on_wizard_handle(mob/living/user, actiontype)
-	user.visible_message(span_cult_bold("Você começa rapidamente e rapidamente lançando as runas de vedação."), span_cult_bold("[user]Começa a rastrear as runas anti-luz.[src]..."))
+	user.visible_message(span_cult_bold("Você começa rapidamente e rapidamente lançando as runas de vedação."), span_cult_bold("[user] Começa a rastrear as runas anti-luz.[src]..."))
 	if(!do_after(user, 3 SECONDS, src))
 		to_chat(user, span_notice("Você foi interrompido!"))
 		return
@@ -319,11 +319,11 @@ Striking a noncultist, however, will tear their flesh."}
 	// todo make the former a subtype of latter
 	var/binding_implements = list(/obj/item/book/bible)
 	if(!user.is_holding_item_of_types(binding_implements))
-		to_chat(user, span_notice("Você precisa usar uma Bíblia para amarrar[src]!"))
+		to_chat(user, span_notice("Você precisa usar uma Bíblia para amarrar [src]!"))
 		return
 
 	var/passage = "[pick(GLOB.first_names_male)] [rand(1,9)]:[rand(1,25)]" // Space Bibles will have Alejandro 9:21 passages, as part of the Very New Testament.
-	user.visible_message(span_cult_bold("Você começa a ler em voz alta a passagem[passage]..."), span_cult_bold("[user]Começa a ler em voz alta a passagem[passage]..."))
+	user.visible_message(span_cult_bold("Você começa a ler em voz alta a passagem [passage]..."), span_cult_bold("[user] Começa a ler em voz alta a passagem [passage]..."))
 	if(!do_after(user, 12 SECONDS, src))
 		to_chat(user, span_notice("Você foi interrompido!"))
 		return
@@ -338,7 +338,7 @@ Striking a noncultist, however, will tear their flesh."}
 	if(!do_after(user, 5 SECONDS, src))
 		to_chat(user, span_notice("Você foi interrompido!"))
 		return
-	visible_message(span_danger("[user]não está preso.[src]!"))
+	visible_message(span_danger("[user] não está preso.[src]!"))
 	bound = FALSE
 	for(var/datum/action/cooldown/spell/sword_spell as anything in path_sword_actions)
 		sword_spell.Grant(trapped_entity)
@@ -354,7 +354,7 @@ Striking a noncultist, however, will tear their flesh."}
 	binding_filters_update()
 
 /obj/item/melee/cultblade/haunted/proc/rebind_blade(mob/user)
-	visible_message(span_danger("[user]Encaixou.[src]!"))
+	visible_message(span_danger("[user] Encaixou.[src]!"))
 	bound = TRUE
 	force -= 5
 	armour_penetration -= 10
@@ -421,7 +421,7 @@ Striking a noncultist, however, will tear their flesh."}
 	var/list/wielder_spells = path_spells[WIELDER_SPELLS]
 	var/list/sword_spells = path_spells[SWORD_SPELLS]
 
-	name = "[path_spells[SWORD_PREFIX]] [name]"
+	name = "[path_spells [SWORD_PREFIX]] [name]"
 
 
 	// Creating the path spells.
@@ -605,7 +605,7 @@ Striking a noncultist, however, will tear their flesh."}
 	if(!IS_CULTIST(user))
 		user.dropItemToGround(src, TRUE)
 		user.Paralyze(100)
-		to_chat(user, span_warning("Uma força poderosa te afasta[src]!"))
+		to_chat(user, span_warning("Uma força poderosa te afasta [src]!"))
 		return
 	if(totalcurses >= MAX_SHUTTLE_CURSES)
 		to_chat(user, span_warning("Você tenta quebrar a esfera, mas ela permanece sólida como uma rocha!"))
@@ -651,7 +651,7 @@ Striking a noncultist, however, will tear their flesh."}
 		else if(MAX_SHUTTLE_CURSES-totalcurses == 1)
 			to_chat(user, span_danger(span_big("Você sente que a nave de emergência só pode ser amaldiçoada mais uma vez.")))
 		else
-			to_chat(user, span_danger(span_big("Você sente que a nave de emergência só pode ser amaldiçoada[MAX_SHUTTLE_CURSES-totalcurses]Mais vezes.")))
+			to_chat(user, span_danger(span_big("Você sente que a nave de emergência só pode ser amaldiçoada [MAX_SHUTTLE_CURSES-totalcurses] Mais vezes.")))
 
 		if(totalcurses >= MAX_SHUTTLE_CURSES && (world.time < first_curse_time + SHUTTLE_CURSE_OMFG_TIMESPAN))
 			var/omfg_message = pick_list(CULT_SHUTTLE_CURSE, "omfg_announce") || "LEAVE US ALONE!"
@@ -693,7 +693,7 @@ Striking a noncultist, however, will tear their flesh."}
 		if(locate(/obj/structure/spawner/sentient/proteon_spawner) in hole_candidate)
 			to_chat(user, span_cult_bold("Há um portal muito perto. O véu ainda não está fraco o suficiente para permitir rasgos tão próximos em seu tecido."))
 			return
-	to_chat(user, span_cult_bold_italic("Você se concentra em[src]e direcioná-lo para o chão. Estromece..."))
+	to_chat(user, span_cult_bold_italic("Você se concentra em [src] e direcioná-lo para o chão. Estromece..."))
 
 	var/turf/open/hole_spot = get_turf(user)
 	if(!istype(hole_spot) || isgroundlessturf(hole_spot))
@@ -715,7 +715,7 @@ Striking a noncultist, however, will tear their flesh."}
 		fucked = TRUE
 		ADD_TRAIT(user, TRAIT_NO_TRANSFORM, REF(src)) // keep em in place
 		user.add_atom_colour(COLOR_CULT_RED, TEMPORARY_COLOUR_PRIORITY)
-		user.visible_message(span_cult_bold("Os tentáculos escuros aparecem do chão e da raiz.[user]No lugar!"))
+		user.visible_message(span_cult_bold("Os tentáculos escuros aparecem do chão e da raiz.[user] No lugar!"))
 	sleep(5 SECONDS) // can we still use these or. i mean its async
 	new /obj/structure/spawner/sentient/proteon_spawner(src)
 	visible_message(span_cult_bold("Um buraco misterioso aparece do nada!"))
@@ -724,7 +724,7 @@ Striking a noncultist, however, will tear their flesh."}
 	if(get_turf(user) != src) // they get away. for now
 		REMOVE_TRAIT(user, TRAIT_NO_TRANSFORM, REF(src))
 		return
-	user.visible_message(span_cult_bold("[user]é puxado para o portal através de um buraco infinitamente minúsculo, rasgando[user.p_their()]Corpo!"))
+	user.visible_message(span_cult_bold("[user] é puxado para o portal através de um buraco infinitamente minúsculo, rasgando [user.p_their()] Corpo!"))
 	sleep(5 SECONDS)
 	user.visible_message(span_cult_italic("Uma construção invulgarmente grande aparece através do portal!"))
 	user.gib() // total destruction
@@ -745,7 +745,7 @@ Striking a noncultist, however, will tear their flesh."}
 /obj/item/cult_shift/examine(mob/user)
 	. = ..()
 	if(uses)
-		. += span_cult("Tem.[uses]Use o restante.")
+		. += span_cult("Tem.[uses] Use o restante.")
 	else
 		. += span_cult("Parece drenado.")
 
@@ -759,12 +759,12 @@ Striking a noncultist, however, will tear their flesh."}
 
 /obj/item/cult_shift/attack_self(mob/user)
 	if(!uses || !iscarbon(user))
-		to_chat(user, span_warning("\The [src]é chato e imutável em suas mãos."))
+		to_chat(user, span_warning("\The [src] é chato e imutável em suas mãos."))
 		return
 	if(!IS_CULTIST(user))
 		user.dropItemToGround(src, TRUE)
 		step(src, pick(GLOB.alldirs))
-		to_chat(user, span_warning("\The [src]Sua conexão com esta dimensão é muito forte!"))
+		to_chat(user, span_warning("\The [src] Sua conexão com esta dimensão é muito forte!"))
 		return
 
 	//The user of the shifter
@@ -839,10 +839,10 @@ Striking a noncultist, however, will tear their flesh."}
 
 		if(IS_CULTIST(target) && target.put_in_active_hand(src))
 			playsound(src, 'sound/items/weapons/throwtap.ogg', 50)
-			target.visible_message(span_warning("[target]pega[src]Fora do ar!"))
+			target.visible_message(span_warning("[target] pega [src] Fora do ar!"))
 			return
 		if(target.can_block_magic() || IS_CULTIST(target))
-			target.visible_message(span_warning("[src]Rebate de[target]Como se repelido por uma força invisível!"))
+			target.visible_message(span_warning("[src] Rebate de [target] Como se repelido por uma força invisível!"))
 			return
 		if(!..())
 			target.Paralyze(50)
@@ -855,7 +855,7 @@ Striking a noncultist, however, will tear their flesh."}
 		if(!T)
 			T = get_turf(src)
 		if(T)
-			T.visible_message(span_warning("[src]Estilhaça e derrete de volta em sangue!"))
+			T.visible_message(span_warning("[src] Estilhaça e derrete de volta em sangue!"))
 			new /obj/effect/temp_visual/cult/sparks(T)
 			new /obj/effect/decal/cleanable/blood/splatter(T)
 			playsound(T, 'sound/effects/glass/glassbr3.ogg', 100)
@@ -867,7 +867,7 @@ Striking a noncultist, however, will tear their flesh."}
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		final_block_chance *= 2
 	if(IS_CULTIST(owner) && prob(final_block_chance))
-		owner.visible_message(span_danger("[owner]Parries[attack_text]com[src]!"))
+		owner.visible_message(span_danger("[owner] Parries [attack_text] com [src]!"))
 		new /obj/effect/temp_visual/cult/sparks(get_turf(owner))
 		return TRUE
 	else
@@ -900,7 +900,7 @@ Striking a noncultist, however, will tear their flesh."}
 		if(isliving(halberd.loc))
 			var/mob/living/current_owner = halberd.loc
 			current_owner.dropItemToGround(halberd)
-			current_owner.visible_message(span_warning("Uma força invisível puxa o maldito Halberd de[current_owner]Mãos!"))
+			current_owner.visible_message(span_warning("Uma força invisível puxa o maldito Halberd de [current_owner] Mãos!"))
 		halberd.throw_at(owner, 10, 2, owner)
 
 
@@ -1094,7 +1094,7 @@ Striking a noncultist, however, will tear their flesh."}
 		if(damage_type == BRUTE || damage_type == BURN)
 			if(damage >= 30)
 				var/turf/T = get_turf(owner)
-				T.visible_message(span_warning("A pura força de[hitby]Quebra o escudo do espelho!"))
+				T.visible_message(span_warning("A pura força de [hitby] Quebra o escudo do espelho!"))
 				new /obj/effect/temp_visual/cult/sparks(T)
 				playsound(T, 'sound/effects/glass/glassbr3.ogg', 100)
 				owner.Paralyze(25)
@@ -1137,11 +1137,11 @@ Striking a noncultist, however, will tear their flesh."}
 		var/mob/living/target = hit_atom
 
 		if(target.can_block_magic() || IS_CULTIST(target))
-			target.visible_message(span_warning("[src]Rebate de[target]Como se repelido por uma força invisível!"))
+			target.visible_message(span_warning("[src] Rebate de [target] Como se repelido por uma força invisível!"))
 			return
 		if(IS_CULTIST(target) && target.put_in_active_hand(src))
 			playsound(src, 'sound/items/weapons/throwtap.ogg', 50)
-			target.visible_message(span_warning("[target]pega[src]Fora do ar!"))
+			target.visible_message(span_warning("[target] pega [src] Fora do ar!"))
 			return
 		if(!..())
 			target.Paralyze(30)

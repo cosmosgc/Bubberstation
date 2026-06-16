@@ -30,7 +30,7 @@
 	do_attack_animation(healed, ATTACK_EFFECT_PUNCH)
 	healed.visible_message(
 		message = span_notice("[src] heals [healed]!"),
-		self_message = span_userdanger("[src]Cura você!"),
+		self_message = span_userdanger("[src] Cura você!"),
 		vision_distance = COMBAT_MESSAGE_RANGE,
 		ignored_mobs = src,
 	)
@@ -70,7 +70,7 @@
 		return FALSE
 
 	if (!isnull(beacon))
-		beacon.visible_message("[beacon]Desapareça!")
+		beacon.visible_message("[beacon] Desapareça!")
 		new /obj/effect/temp_visual/guardian/phase/out(beacon.loc)
 		qdel(beacon)
 
@@ -125,7 +125,7 @@
 	playsound(target, 'sound/items/weapons/punch1.ogg', 50, TRUE, TRUE, frequency = -1)
 	source.balloon_alert(source, "teleportando...")
 	target.visible_message(
-		span_danger("[target]começa a brilhar fracamente!"), 		span_userdanger("Você começa a brilhar fracamente, e você se sente estranhamente sem peso!"))
+		span_danger("[target] começa a brilhar fracamente!"), 		span_userdanger("Você começa a brilhar fracamente, e você se sente estranhamente sem peso!"))
 	if(!do_after(source, teleport_time, target))
 		return
 	new /obj/effect/temp_visual/guardian/phase/out(target.loc)
@@ -133,7 +133,7 @@
 		var/mob/living/living_target = target
 		living_target.flash_act()
 	target.visible_message(
-		span_danger("[target]Desaparece em um clarão de luz!"), 		span_userdanger("Sua visão é obscurecida por um clarão de luz!"), 	)
+		span_danger("[target] Desaparece em um clarão de luz!"), 		span_userdanger("Sua visão é obscurecida por um clarão de luz!"), 	)
 	do_teleport(target, beacon, precision = 0, channel = TELEPORT_CHANNEL_BLUESPACE)
 	new /obj/effect/temp_visual/guardian/phase(get_turf(target))
 

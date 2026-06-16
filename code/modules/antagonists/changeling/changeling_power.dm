@@ -94,13 +94,13 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 		return FALSE
 	var/datum/antagonist/changeling/changeling = IS_CHANGELING(user)
 	if(changeling.chem_charges < chemical_cost)
-		user.balloon_alert(user, "Necessidades[chemical_cost]Produtos químicos!")
+		user.balloon_alert(user, "Necessidades [chemical_cost] Produtos químicos!")
 		return FALSE
 	if(changeling.absorbed_count < req_dna)
-		user.balloon_alert(user, "Necessidades[req_dna]Amostra de DNA!")
+		user.balloon_alert(user, "Necessidades [req_dna] Amostra de DNA!")
 		return FALSE
 	if(changeling.true_absorbs < req_absorbs)
-		user.balloon_alert(user, "Necessidades[req_absorbs]Absorção!")
+		user.balloon_alert(user, "Necessidades [req_absorbs] Absorção!")
 		return FALSE
 	if(req_stat < user.stat)
 		user.balloon_alert(user, "incapacitado!")

@@ -30,7 +30,7 @@
 		return
 
 	cling.visible_message(
-		span_warning("[cling]A pele de repente começa a mudar e brilhar!"),
+		span_warning("[cling] A pele de repente começa a mudar e brilhar!"),
 		span_notice("Mudamos nossa pele para nos adaptarmos à escuridão."),
 	)
 	var/datum/antagonist/changeling/changeling_data = cling.mind?.has_antag_datum(/datum/antagonist/changeling)
@@ -41,7 +41,7 @@
 		return
 
 	cling.visible_message(
-		span_warning("[cling]Um pele vai do brilho ao normal."),
+		span_warning("[cling] Um pele vai do brilho ao normal."),
 		span_notice("Paramos de adaptar nossa pele à escuridão."),
 	)
 	var/datum/antagonist/changeling/changeling_data = cling.mind?.has_antag_datum(/datum/antagonist/changeling)
@@ -86,7 +86,7 @@
 	SIGNAL_HANDLER
 
 	if(last_alpha > dark_color_threshold)
-		examine_list += span_warning("[owner.p_Their()]A pele está brilhando anormalmente na luz.")
+		examine_list += span_warning("[owner.p_Their()] A pele está brilhando anormalmente na luz.")
 
 /datum/status_effect/darkness_adapted/proc/get_darkness()
 	var/turf/owner_turf = get_turf(owner)

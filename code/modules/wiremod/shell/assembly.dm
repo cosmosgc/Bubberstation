@@ -85,7 +85,7 @@
 
 /obj/item/assembly/wiremod/examine(mob/user)
 	. = ..()
-	. += span_notice("Você também pode.[secured && "un"]Seguro.[src]clicando com o botão direito com uma chave de fenda, mesmo que um circuito integrado esteja ligado.")
+	. += span_notice("Você também pode.[secured && "un"]Seguro.[src] clicando com o botão direito com uma chave de fenda, mesmo que um circuito integrado esteja ligado.")
 
 // This is to bypass removing the circuit with a screwdriver left-click
 /obj/item/assembly/wiremod/screwdriver_act_secondary(mob/living/user, obj/item/tool)

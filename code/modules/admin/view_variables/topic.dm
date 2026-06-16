@@ -92,7 +92,7 @@
 				L.adjust_stamina_loss(amount, forced = TRUE)
 				newamt = L.get_stamina_loss()
 			else
-				to_chat(usr, "Você causou um erro. Texto:[Text]Mob:[L]", confidential = TRUE)
+				to_chat(usr, "Você causou um erro. Texto:[Text] Mob:[L]", confidential = TRUE)
 				return
 
 		if(amount != 0)

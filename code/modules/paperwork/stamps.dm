@@ -15,7 +15,7 @@
 	attack_verb_simple = list("stamp")
 
 /obj/item/stamp/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Selos 'VOID' em[user.p_their()]testa, então imediatamente cai, morto."))
+	user.visible_message(span_suicide("[user] Selos 'VOID' em [user.p_their()] testa, então imediatamente cai, morto."))
 	playsound(src, 'sound/items/handling/standard_stamp.ogg', 50, vary = TRUE)
 	return OXYLOSS
 

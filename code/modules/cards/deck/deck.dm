@@ -53,7 +53,7 @@
 			initial_cards += "[person] of [suit]"
 
 /obj/item/toy/cards/deck/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Está cortando[user.p_their()]Pulsos com\the [src]Parece que a sorte deles acabou!"))
+	user.visible_message(span_suicide("[user] Está cortando [user.p_their()] Pulsos com\the [src] Parece que a sorte deles acabou!"))
 	playsound(src, 'sound/items/cards/cardshuffle.ogg', 50, TRUE)
 	return BRUTELOSS
 
@@ -69,7 +69,7 @@
 
 		var/marked_color = card.getMarkedColor(user)
 		if(marked_color)
-			. += span_notice("A carta de topo do baralho tem um[marked_color]Marca na esquina!")
+			. += span_notice("A carta de topo do baralho tem um [marked_color] Marca na esquina!")
 
 	. += span_notice("Clique e arraste o convés para você mesmo.") // This should be a context screentip
 
@@ -156,7 +156,7 @@
 
 /obj/item/toy/cards/deck/click_alt(mob/living/user)
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		to_chat(user, span_notice("Você deve segurar o[src]com as duas mãos para baralhar."))
+		to_chat(user, span_notice("Você deve segurar o [src] com as duas mãos para baralhar."))
 		return CLICK_ACTION_BLOCKING
 
 	shuffle_cards(user)
@@ -188,7 +188,7 @@
 		return NONE
 
 	if (!insert(tool))
-		to_chat(user, span_warning("\The [src]Está muito alto!"))
+		to_chat(user, span_warning("\The [src] Está muito alto!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/card_grammar = istype(tool, /obj/item/toy/singlecard) ? "card" : "cards"
@@ -205,7 +205,7 @@
 	if(!istype(thrower)) // if a mob didn't throw it (need two people to play 52 pickup)
 		return
 
-	target.visible_message(span_warning("[target]É forçado a jogar 52 cartas!"), span_warning("Você é forçado a jogar 52 cartas."))
+	target.visible_message(span_warning("[target] É forçado a jogar 52 cartas!"), span_warning("Você é forçado a jogar 52 cartas."))
 	target.add_mood_event("lost_52_card_pickup", /datum/mood_event/lost_52_card_pickup)
 	thrower.add_mood_event("won_52_card_pickup", /datum/mood_event/won_52_card_pickup)
 	add_memory_in_range(target, 7, /datum/memory/playing_card_pickup, protagonist = thrower, deuteragonist = target, antagonist = src)

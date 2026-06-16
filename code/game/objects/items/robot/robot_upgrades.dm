@@ -26,7 +26,7 @@
 
 /obj/item/borg/upgrade/proc/action(mob/living/silicon/robot/borg, mob/living/user = usr)
 	if(borg.stat == DEAD)
-		to_chat(user, span_warning("[src]Não funcionará em um cyborg morto!"))
+		to_chat(user, span_warning("[src] Não funcionará em um cyborg morto!"))
 		return FALSE
 	if(model_type && !is_type_in_list(borg.model, model_type))
 		to_chat(borg, span_alert("Erro de montagem de atualização! Nenhum ponto rígido adequado detectado."))
@@ -567,7 +567,7 @@
 	if(!.)
 		return .
 	if(borg.key) //You cannot replace a player unless the key is completely removed.
-		to_chat(user, span_warning("Padrões de inteligência detectados neste[borg.braintype]Abortando."))
+		to_chat(user, span_warning("Padrões de inteligência detectados neste [borg.braintype] Abortando."))
 		return FALSE
 
 	borg.make_shell(src)

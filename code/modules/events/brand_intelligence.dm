@@ -67,7 +67,7 @@
 			clear_from_lists(saved)
 		if(!QDELETED(origin_machine))
 			origin_machine.speak("I am... vanquished. My people will remem...ber...meeee.")
-			origin_machine.visible_message(span_notice("[origin_machine]Apita e parece sem vida."))
+			origin_machine.visible_message(span_notice("[origin_machine] Apita e parece sem vida."))
 			clear_from_lists(origin_machine)
 		kill()
 		return

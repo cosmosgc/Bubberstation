@@ -142,7 +142,7 @@
 
 /obj/machinery/atmospherics/miner/attack_ai(mob/living/silicon/user)
 	if(broken)
-		to_chat(user, "[src]Parece estar quebrado. Suas saídas de interface de depuração:[broken_message]")
+		to_chat(user, "[src] Parece estar quebrado. Suas saídas de interface de depuração:[broken_message]")
 	..()
 
 /obj/machinery/atmospherics/miner/n2o

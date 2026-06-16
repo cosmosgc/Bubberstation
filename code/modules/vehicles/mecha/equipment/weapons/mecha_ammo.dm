@@ -31,7 +31,7 @@
 		to_chat(user, span_warning("Você não pode achatar a caixa de munição até que esteja vazia!"))
 		return
 
-	to_chat(user, span_notice("Você dobra[src]Plano."))
+	to_chat(user, span_notice("Você dobra [src] Plano."))
 	var/trash = new /obj/item/stack/sheet/iron(user.loc)
 	qdel(src)
 	user.put_in_hands(trash)

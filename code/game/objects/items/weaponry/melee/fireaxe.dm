@@ -56,7 +56,7 @@ GLOBAL_DATUM(bridge_axe, /obj/item/fireaxe)
 	return ..()
 
 /obj/item/fireaxe/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Eixos[user.p_them()]da cabeça aos pés! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Eixos [user.p_them()] da cabeça aos pés! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/fireaxe/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)

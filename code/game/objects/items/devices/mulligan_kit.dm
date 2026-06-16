@@ -57,7 +57,7 @@
 		fake_id.forceMove(user.drop_location())
 		to_chat(user, span_warning("Deixe sua nova identidade no chão."))
 	else
-		to_chat(user, span_notice("Você rapidamente coloca seu novo cartão de identidade[placed_in]."))
+		to_chat(user, span_notice("Você rapidamente coloca seu novo cartão de identidade [placed_in]."))
 
 	user.update_ID_card()
 

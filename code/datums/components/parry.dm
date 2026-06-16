@@ -108,9 +108,9 @@
 			source.set_angle((source.angle + 180) % 360 + rand(-3, 3))
 		else
 			source.set_angle(dir2angle(user.dir) + rand(-3, 3))
-		user.visible_message(span_warning("[user]Peritamente parries[source]Com[user.p_their()]Mão nua!"), span_warning("Você está em apuros.[source]Com sua mão!"))
+		user.visible_message(span_warning("[user] Peritamente parries [source] Com [user.p_their()] Mão nua!"), span_warning("Você está em apuros.[source] Com sua mão!"))
 	else
-		user.visible_message(span_warning("[user]Elevações[source]Com[user.p_their()]Mão nua!"), span_warning("Você aumenta.[source]Com sua mão!"))
+		user.visible_message(span_warning("[user] Elevações [source] Com [user.p_their()] Mão nua!"), span_warning("Você aumenta.[source] Com sua mão!"))
 	source.firer = user
 	source.speed *= (source.firer == user) ? boost_speed_mult : parry_speed_mult
 	source.damage *= (source.firer == user) ? boost_damage_mult : parry_damage_mult

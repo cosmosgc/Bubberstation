@@ -16,10 +16,10 @@
 
 /obj/structure/fluff/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(I.tool_behaviour == TOOL_WRENCH && deconstructible)
-		user.visible_message(span_notice("[user]Começa a desmontar.[src]..."), span_notice("Você começa a desmontar[src]..."))
+		user.visible_message(span_notice("[user] Começa a desmontar.[src]..."), span_notice("Você começa a desmontar [src]..."))
 		I.play_tool_sound(src)
 		if(I.use_tool(src, user, 50))
-			user.visible_message(span_notice("[user]Desmonta[src]!"), span_notice("Você quebrou.[src]em sucata de metal."))
+			user.visible_message(span_notice("[user] Desmonta [src]!"), span_notice("Você quebrou.[src] em sucata de metal."))
 			playsound(user, 'sound/items/deconstruct.ogg', 50, TRUE)
 			new/obj/item/stack/sheet/iron(drop_location())
 			qdel(src)

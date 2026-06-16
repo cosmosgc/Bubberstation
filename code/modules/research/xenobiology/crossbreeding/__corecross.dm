@@ -112,7 +112,7 @@
 
 /obj/item/slimecrossbeaker/process()
 	if(!reagents.total_volume)
-		visible_message(span_notice("[src]Foi completamente dranado, e derrete."))
+		visible_message(span_notice("[src] Foi completamente dranado, e derrete."))
 		qdel(src)
 
 /obj/item/slimecrossbeaker/bloodpack //Pack of 50u blood. Deletes on empty.
@@ -146,7 +146,7 @@
 		return NONE
 	var/mob/living/carbon/injecting_mob = interacting_with
 	if(!reagents.total_volume)
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 	if(self_use_only && injecting_mob != user)
 		to_chat(user, span_warning("Isso só pode ser usado em si mesmo."))
@@ -154,13 +154,13 @@
 	if(reagents.total_volume && (ignore_flags || injecting_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE)))
 		reagents.trans_to(injecting_mob, reagents.total_volume, transferred_by = user)
 		if(user != injecting_mob)
-			to_chat(injecting_mob, span_warning("[user]Pressiona[src]Contra você!"))
-			to_chat(user, span_notice("Você pressiona.[src]Contra[injecting_mob], injetando[injecting_mob.p_them()]."))
+			to_chat(injecting_mob, span_warning("[user] Pressiona [src] Contra você!"))
+			to_chat(user, span_notice("Você pressiona.[src] Contra [injecting_mob], injetando [injecting_mob.p_them()]."))
 		else
-			to_chat(user, span_notice("Você pressiona.[src]contra você mesmo, e ele achata contra você!"))
+			to_chat(user, span_notice("Você pressiona.[src] contra você mesmo, e ele achata contra você!"))
 		return ITEM_INTERACT_SUCCESS
 	else
-		to_chat(user, span_warning("Não há lugar para ficar[src]!"))
+		to_chat(user, span_warning("Não há lugar para ficar [src]!"))
 		return ITEM_INTERACT_BLOCKING
 
 /obj/item/slimecrossbeaker/autoinjector/regenpack

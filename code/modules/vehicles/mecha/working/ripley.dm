@@ -325,15 +325,15 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 			step_rand(stored)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/relay_container_resist_act(mob/living/user, obj/container)
-	to_chat(user, span_notice("Você se apoia na parte de trás de[container]e começar a empurrar para que ele caia[src]."))
+	to_chat(user, span_notice("Você se apoia na parte de trás de [container] e começar a empurrar para que ele caia [src]."))
 	if(do_after(user, 30 SECONDS, target = container))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || container.loc != src )
 			return
-		to_chat(user, span_notice("Você empurrou com sucesso.[container]Fora[src]!"))
+		to_chat(user, span_notice("Você empurrou com sucesso.[container] Fora [src]!"))
 		container.forceMove(drop_location())
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, span_warning("Você não consegue empurrar.[container]Fora[src]!"))
+			to_chat(user, span_warning("Você não consegue empurrar.[container] Fora [src]!"))
 
 /obj/item/mecha_parts/mecha_equipment/ejector/get_snowflake_data()
 	var/list/data = list(
@@ -411,15 +411,15 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 	if (user.mob_size > MOB_SIZE_HUMAN)
 		breakout_time = 6 SECONDS
 
-	to_chat(user, span_notice("Você começa a tentar uma fuga. (Isso vai levar ao redor[DisplayTimeText(breakout_time)]e[chassis]Precisa permanecer parado."))
+	to_chat(user, span_notice("Você começa a tentar uma fuga. (Isso vai levar ao redor [DisplayTimeText(breakout_time)] e [chassis] Precisa permanecer parado."))
 	if(!do_after(user, breakout_time, target = chassis))
 		return
-	to_chat(user, span_notice("Você foge do[src]."))
+	to_chat(user, span_notice("Você foge do [src]."))
 	playsound(chassis, 'sound/items/tools/crowbar.ogg', 100, TRUE)
 	cheese_it(user)
 	for(var/mob/freebird in contents)
 		if(user != freebird)
-			to_chat(freebird, span_warning("[user]Conseguiu abrir a escotilha, e você caiu com ele. Você está livre!"))
+			to_chat(freebird, span_warning("[user] Conseguiu abrir a escotilha, e você caiu com ele. Você está livre!"))
 			cheese_it(freebird)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage/proc/cheese_it(mob/living/escapee)

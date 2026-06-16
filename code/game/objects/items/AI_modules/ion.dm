@@ -40,4 +40,4 @@ CONTAINS:
 	laws[1] = generate_ion_law()
 	to_chat(user, span_notice("Você aperta o botão.[src]."))
 	playsound(user, 'sound/machines/click.ogg', 20, TRUE)
-	src.loc.visible_message(span_warning("[icon2html(src, viewers(loc))] [laws[1]]"))
+	src.loc.visible_message(span_warning("[icon2html(src, viewers(loc))] [laws [1]]"))

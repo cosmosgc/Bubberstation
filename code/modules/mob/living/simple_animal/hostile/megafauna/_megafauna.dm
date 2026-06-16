@@ -145,8 +145,8 @@
 
 /mob/living/simple_animal/hostile/megafauna/proc/celebrate_kill(mob/living/L)
 	visible_message(
-		span_danger("[src]Desembochas[L]!"),
-		span_userdanger("Você se banqueteia[L]Os órgãos, restaurando sua saúde!"))
+		span_danger("[src] Desembochas [L]!"),
+		span_userdanger("Você se banqueteia [L] Os órgãos, restaurando sua saúde!"))
 
 /mob/living/simple_animal/hostile/megafauna/CanAttack(atom/the_target)
 	. = ..()

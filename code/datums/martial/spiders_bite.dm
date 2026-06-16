@@ -41,8 +41,8 @@
 	if(isnull(weapon) || !target.dropItemToGround(weapon))
 		return
 	source.visible_message(
-		span_warning("[source]Bate.[target]'s[weapon.name]Fora[target.p_their()]mãos com um chute!"),
-		span_notice("Você canaliza o fluxo da gravidade e bate[target]'s[weapon.name]Fora[target.p_their()]mãos com um chute!"),
+		span_warning("[source] Bate.[target]'s [weapon.name] Fora [target.p_their()] mãos com um chute!"),
+		span_notice("Você canaliza o fluxo da gravidade e bate [target]'s [weapon.name] Fora [target.p_their()] mãos com um chute!"),
 		span_hear("Você ouve um barulho, seguido por um barulho."),
 	)
 

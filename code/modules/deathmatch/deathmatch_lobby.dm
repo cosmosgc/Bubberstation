@@ -235,7 +235,7 @@
 	var/mob/dead/observer/ghost = !player.client ? player.get_ghost() : player.ghostize() //this doesnt work on those who used the ghost verb
 	if(!isnull(ghost))
 		add_observer(ghost, (host == ckey))
-	announce(span_reallybig("[player.real_name]Morreu.<br>[players.len]Mantenha-se firme."))
+	announce(span_reallybig("[player.real_name] Morreu.<br>[players.len] Mantenha-se firme."))
 
 	//Bubber Edit - retain respawn timer
 	var/mob/dead_player_mob = get_mob_by_ckey(ckey)

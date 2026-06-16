@@ -92,7 +92,7 @@
 
 	examine_list += "Tem.\a [bayonet] [removable ? "" : "permanently "]Afixado nele."
 	if(removable)
-		examine_list += span_info("[bayonet]Parece que pode ser<b>\"Desenroso\".</b>De[bayonet].")
+		examine_list += span_info("[bayonet] Parece que pode ser<b>\"Desenroso\".</b>De [bayonet].")
 
 /datum/component/bayonet_attachable/proc/on_pre_attack(obj/item/source, atom/target, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER

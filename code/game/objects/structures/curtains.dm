@@ -58,10 +58,10 @@
 	if(anchored)
 		return TRUE
 
-	user.visible_message(span_warning("[user]Cortem-se.[src]."),
-		span_notice("Você começa a se separar[src]."), span_hear("Você ouve o corte."))
+	user.visible_message(span_warning("[user] Cortem-se.[src]."),
+		span_notice("Você começa a se separar [src]."), span_hear("Você ouve o corte."))
 	if(I.use_tool(src, user, 50, volume=100) && !anchored)
-		to_chat(user, span_notice("Você se cortou[src]."))
+		to_chat(user, span_notice("Você se cortou [src]."))
 		deconstruct()
 
 	return TRUE

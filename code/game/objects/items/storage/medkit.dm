@@ -36,7 +36,7 @@
 	desc = "Um kit de primeiros socorros com a habilidade de curar ferimentos comuns."
 
 /obj/item/storage/medkit/regular/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]começa a dar[user.p_them()]Auto-ajuda com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] começa a dar [user.p_them()] Auto-ajuda com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/storage/medkit/regular/PopulateContents()
@@ -152,7 +152,7 @@
 	return "burn"
 
 /obj/item/storage/medkit/fire/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a esfregar.\the [src]contra[user.p_them()]Eu! Parece que...[user.p_theyre()]Tentando iniciar um incêndio!"))
+	user.visible_message(span_suicide("[user] Começa a esfregar.\the [src] contra [user.p_them()] Eu! Parece que...[user.p_theyre()] Tentando iniciar um incêndio!"))
 	return FIRELOSS
 
 /obj/item/storage/medkit/fire/PopulateContents()
@@ -176,7 +176,7 @@
 	return "tox"
 
 /obj/item/storage/medkit/toxin/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a lamber a tinta de chumbo.\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a lamber a tinta de chumbo.\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return TOXLOSS
 
 
@@ -203,7 +203,7 @@
 	return "oxy"
 
 /obj/item/storage/medkit/o2/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a bater[user.p_their()]pescoço com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a bater [user.p_their()] pescoço com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/storage/medkit/o2/PopulateContents()
@@ -227,7 +227,7 @@
 	return "brute"
 
 /obj/item/storage/medkit/brute/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a bater[user.p_them()]ego sobre a cabeça com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a bater [user.p_them()] ego sobre a cabeça com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/storage/medkit/brute/PopulateContents()
@@ -456,7 +456,7 @@
 		var/obj/item/reagent_containers/RC = tool
 		var/units = RC.reagents.trans_to(src, RC.amount_per_transfer_from_this, transferred_by = user)
 		if(units)
-			balloon_alert(user, "[units]Você foi transferido.")
+			balloon_alert(user, "[units] Você foi transferido.")
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 	if(istype(tool, /obj/item/plunger))
@@ -471,14 +471,14 @@
 	if(HAS_TRAIT(user, TRAIT_RESISTCOLD)) //if they're immune to cold, just do the box suicide
 		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 		if(myhead)
-			user.visible_message(span_suicide("[user]coloca[user.p_their()]cabeça para dentro\the [src]e começa a fechar! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+			user.visible_message(span_suicide("[user] coloca [user.p_their()] cabeça para dentro\the [src] e começa a fechar! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 			if (myhead.dismember())
 				myhead.forceMove(src) //force your enemies to kill themselves with your head collection box!
 			playsound(user, "desecration-01.ogg", 50, TRUE, -1)
 			return BRUTELOSS
-		user.visible_message(span_suicide("[user]está batendo[user.p_them()]ego com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está batendo [user.p_them()] ego com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		return BRUTELOSS
-	user.visible_message(span_suicide("[user]está colocando[user.p_their()]cabeça dentro do[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está colocando [user.p_their()] cabeça dentro do [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.adjust_bodytemperature(-300)
 	user.apply_status_effect(/datum/status_effect/freon)
 	return FIRELOSS

@@ -34,7 +34,7 @@
 			if(!target_zone) //we broke their legs right on off!
 				break
 			occupant.forceMove(user.drop_location())
-			user.visible_message(span_warning("[user]Recua como algo que sai de[src]."), span_userdanger("Você sente uma dor súbita no seu[pick("foot", "toe", "ankle")]!"))
+			user.visible_message(span_warning("[user] Recua como algo que sai de [src]."), span_userdanger("Você sente uma dor súbita no seu[pick("foot", "toe", "ankle")]!"))
 			user.Knockdown(20) //Is one second paralyze better here? I feel you would fall on your ass in some fashion.
 			occupant.UnarmedAttack(user, proximity_flag = TRUE)
 
@@ -55,11 +55,11 @@
 	if(!(user.mobility_flags & MOBILITY_USE) || !isliving(target))
 		return
 	if(contents.len >= max_occupants)
-		to_chat(user, span_warning("[src]Estão cheios!"))
+		to_chat(user, span_warning("[src] Estão cheios!"))
 		return
 	if(istype(target, /mob/living/basic/snake) || istype(target, /mob/living/basic/headslug) || islarva(target))
 		target.forceMove(src)
-		to_chat(user, span_notice("[target]Desliza para dentro[src]."))
+		to_chat(user, span_notice("[target] Desliza para dentro [src]."))
 
 /obj/item/clothing/shoes/cowboy/container_resist_act(mob/living/user)
 	if(!do_after(user, 1 SECONDS, target = user))

@@ -147,7 +147,7 @@
 	if(!cell.use(THERMAL_REGULATOR_COST))
 		toggle_spacesuit(user, FALSE)
 		update_hud_icon(user)
-		to_chat(user, span_warning("O regulador térmico corta como[cell]Fica sem carga."))
+		to_chat(user, span_warning("O regulador térmico corta como [cell] Fica sem carga."))
 		return
 
 	// If we got here, it means thermals are on, the cell is in and the cell has
@@ -177,7 +177,7 @@
 // support for items that interact with the cell
 /obj/item/clothing/suit/space/get_cell(atom/movable/interface, mob/user)
 	if(istype(interface, /obj/item/inducer))
-		to_chat(user, span_alert("Erro: incapaz de interagir com[interface]."))
+		to_chat(user, span_alert("Erro: incapaz de interagir com [interface]."))
 		return null
 	return cell
 
@@ -208,7 +208,7 @@
 	var/deg_c = input(user, "A que temperatura você gostaria de definir o regulador térmico?[range_low]-[range_high]graus celcius)") as null|num
 	if(deg_c && deg_c >= range_low && deg_c <= range_high)
 		temperature_setting = round(T0C + deg_c, 0.1)
-		to_chat(user, span_notice("Você vê a mudança de leitura para[deg_c]C."))
+		to_chat(user, span_notice("Você vê a mudança de leitura para [deg_c] C."))
 	return ITEM_INTERACT_SUCCESS
 
 // object handling for accessing features of the suit
@@ -216,11 +216,11 @@
 	if(!cell_cover_open || !istype(I, /obj/item/stock_parts/power_store/cell))
 		return ..()
 	if(cell)
-		to_chat(user, span_warning("[src]Já tem um celular instalado."))
+		to_chat(user, span_warning("[src] Já tem um celular instalado."))
 		return
 	if(user.transferItemToLoc(I, src))
 		cell = I
-		to_chat(user, span_notice("Você instalou com sucesso.\the [cell]em[src]."))
+		to_chat(user, span_notice("Você instalou com sucesso.\the [cell] em [src]."))
 		update_hud_icon(user)
 		return
 
@@ -244,7 +244,7 @@
 /obj/item/clothing/suit/space/proc/remove_cell(mob/user)
 	if(!cell_cover_open || isnull(cell))
 		return
-	user.visible_message(span_notice("[user]Remove\the [cell]De[src]!"), 		span_notice("Você tira.[cell]."))
+	user.visible_message(span_notice("[user] Remove\the [cell] De [src]!"), 		span_notice("Você tira.[cell]."))
 	cell.add_fingerprint(user)
 	user.put_in_hands(cell)
 	cell = null
@@ -270,7 +270,7 @@
 	// thermal protection value and should just return out early.
 	if(!thermal_on && (!cell || cell.charge < THERMAL_REGULATOR_COST))
 		if(toggler)
-			to_chat(toggler, span_warning("O regulador térmico ligado.[src]Não tem custo."))
+			to_chat(toggler, span_warning("O regulador térmico ligado.[src] Não tem custo."))
 		return
 
 	thermal_on = !thermal_on
@@ -283,9 +283,9 @@
 	if(!toggler)
 		return
 	if(manual_toggle)
-		to_chat(toggler, span_notice("Você vira.[thermal_on ? "on" : "off"] [src]O regulador térmico."))
+		to_chat(toggler, span_notice("Você vira.[thermal_on ? "on" : "off"] [src] O regulador térmico."))
 	else
-		to_chat(toggler, span_danger("Você sente[src]O interruptor do regulador térmico.[thermal_on ? "on" : "off"]Sozinho!"))
+		to_chat(toggler, span_danger("Você sente [src] O interruptor do regulador térmico.[thermal_on ? "on" : "off"]Sozinho!"))
 
 /obj/item/clothing/suit/space/ui_action_click(mob/user, actiontype)
 	toggle_spacesuit(user)
@@ -343,10 +343,10 @@
 /obj/item/clothing/head/helmet/space/suicide_act(mob/living/carbon/user)
 	var/datum/gas_mixture/environment = user.loc.return_air()
 	if(HAS_TRAIT(user, TRAIT_RESISTCOLD) || !environment || environment.return_temperature() >= user.get_body_temp_cold_damage_limit())
-		user.visible_message(span_suicide("[user]está batendo[user.p_them()]ego com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está batendo [user.p_them()] ego com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		return BRUTELOSS
 	user.say("You want proof? I'll give you proof! Here's proof of what'll happen to you if you stay here with your stuff!", forced = "space helmet suicide")
-	user.visible_message(span_suicide("[user]está removendo[user.p_their()]Capacete para fazer um ponto! Puta merda,[user.p_they()]Morto!")) //the use of p_they() instead of p_their() here is intentional
+	user.visible_message(span_suicide("[user] está removendo [user.p_their()] Capacete para fazer um ponto! Puta merda,[user.p_they()] Morto!")) //the use of p_they() instead of p_their() here is intentional
 	user.adjust_bodytemperature(-300)
 	user.apply_status_effect(/datum/status_effect/freon)
 	if(!ishuman(user))

@@ -38,12 +38,12 @@
 
 /obj/vehicle/sealed/car/vim/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]pode ser consertado com um soldador.")
+	. += span_notice("[src] pode ser consertado com um soldador.")
 
 /obj/vehicle/sealed/car/vim/atom_destruction(damage_flag)
 	new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 	do_sparks(5, TRUE, src)
-	visible_message(span_bolddanger("[src]Vai pelos são!"))
+	visible_message(span_bolddanger("[src] Vai pelos são!"))
 	return ..()
 
 /obj/vehicle/sealed/car/vim/mob_try_enter(mob/entering)

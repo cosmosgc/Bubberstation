@@ -116,6 +116,6 @@
 		flashed.adjust_confusion_up_to(1 SECONDS, 3 SECONDS)
 
 	INVOKE_ASYNC(flashed, TYPE_PROC_REF(/mob, emote), "scream")
-	flashed.visible_message(span_danger("[flashed]Chora em dor como uma rajada de luz chamusca sua carne!"), 		span_danger("Você chora de dor enquanto a explosão repentina de luz canta sua carne!"), 		span_danger("Algo chora de dor! Parece um monstro assustador! Ainda bem que não pode ver, ou estaria surtando agora."))
+	flashed.visible_message(span_danger("[flashed] Chora em dor como uma rajada de luz chamusca sua carne!"), 		span_danger("Você chora de dor enquanto a explosão repentina de luz canta sua carne!"), 		span_danger("Algo chora de dor! Parece um monstro assustador! Ainda bem que não pode ver, ou estaria surtando agora."))
 
 	return FLASH_OVERRIDDEN

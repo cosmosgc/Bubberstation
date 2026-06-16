@@ -55,9 +55,9 @@
 		limit = magic_enhanced ? ENHANCED_BLOODCHARGE : MAX_BLOODCHARGE
 	if(length(spells) >= limit)
 		if(rune)
-			to_chat(owner, span_cult_italic("Você não pode armazenar mais do que[limit]Feitiços.<b>Escolha um feitiço para remover.</b>"))
+			to_chat(owner, span_cult_italic("Você não pode armazenar mais do que [limit] Feitiços.<b>Escolha um feitiço para remover.</b>"))
 		else
-			to_chat(owner, span_cult_bold_italic("<u>Você não pode armazenar mais do que[RUNELESS_MAX_BLOODCHARGE]feitiços sem uma runa poderosa! Escolha um feitiço para remover.</u>"))
+			to_chat(owner, span_cult_bold_italic("<u>Você não pode armazenar mais do que [RUNELESS_MAX_BLOODCHARGE] feitiços sem uma runa poderosa! Escolha um feitiço para remover.</u>"))
 		var/nullify_spell = tgui_input_list(owner, "Spell to remove", "Current Spells", spells)
 		if(isnull(nullify_spell))
 			return
@@ -101,7 +101,7 @@
 		new_spell.Grant(owner, src)
 		spells += new_spell
 		Positioning()
-		to_chat(owner, span_warning("Suas feridas brilham com poder, você preparou um[new_spell.name]Invocação!"))
+		to_chat(owner, span_warning("Suas feridas brilham com poder, você preparou um [new_spell.name] Invocação!"))
 	channeling = FALSE
 
 /datum/action/innate/cult/blood_spell //The next generation of talismans, handles storage/creation of blood magic
@@ -155,7 +155,7 @@
 		hand_magic = null
 		to_chat(owner, span_warning("Você não tem mão vazia para invocar magia de sangue!"))
 		return
-	to_chat(owner, span_notice("Suas feridas brilham enquanto você invoca o[name]."))
+	to_chat(owner, span_notice("Suas feridas brilham enquanto você invoca o [name]."))
 
 //Cult Blood Spells
 /datum/action/innate/cult/blood_spell/stun
@@ -181,7 +181,7 @@
 
 /datum/action/innate/cult/blood_spell/emp/Activate()
 	owner.whisper(invocation, language = /datum/language/common, forced = "cult invocation")
-	owner.visible_message(span_warning("[owner]A mão brilha um azul brilhante!"), 		span_cult_italic("Você fala as palavras amaldiçoadas, emitindo uma explosão de PEM de sua mão."))
+	owner.visible_message(span_warning("[owner] A mão brilha um azul brilhante!"), 		span_cult_italic("Você fala as palavras amaldiçoadas, emitindo uma explosão de PEM de sua mão."))
 	empulse(owner, 2, 5, emp_source = src)
 	charges--
 	SSblackbox.record_feedback("tally", "cult_spell_invoke", 1, "[name]")
@@ -219,12 +219,12 @@
 /datum/action/innate/cult/blood_spell/dagger/Activate()
 	var/turf/owner_turf = get_turf(owner)
 	owner.whisper(invocation, language = /datum/language/common, forced = "cult invocation")
-	owner.visible_message(span_warning("[owner]A mão brilha vermelha por um momento."), 		span_cult_italic("Seu pedido de ajuda é respondido, e a luz começa a brilhar e tomar forma em suas mãos!"))
+	owner.visible_message(span_warning("[owner] A mão brilha vermelha por um momento."), 		span_cult_italic("Seu pedido de ajuda é respondido, e a luz começa a brilhar e tomar forma em suas mãos!"))
 	var/obj/item/summoned_blade = new summoned_type(owner_turf)
 	if(owner.put_in_hands(summoned_blade))
-		to_chat(owner, span_warning("A[summoned_blade]aparece em suas mãos!"))
+		to_chat(owner, span_warning("A [summoned_blade] aparece em suas mãos!"))
 	else
-		owner.visible_message(span_warning("A[summoned_blade]aparece em[owner]Pés!"), 			span_cult_italic("A[summoned_blade]se materializa aos seus pés."))
+		owner.visible_message(span_warning("A [summoned_blade] aparece em [owner] Pés!"), 			span_cult_italic("A [summoned_blade] se materializa aos seus pés."))
 	SEND_SOUND(owner, sound('sound/effects/magic.ogg', FALSE, 0, 25))
 	charges--
 	SSblackbox.record_feedback("tally", "cult_spell_invoke", 1, "[name]")
@@ -263,7 +263,7 @@
 	clicked_on.add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/has_antagonist/cult, "cult_apoc", sparkle_image, NONE)
 
 	addtimer(CALLBACK(clicked_on, TYPE_PROC_REF(/atom/, remove_alt_appearance), "cult_apoc", TRUE), 4 MINUTES, TIMER_OVERRIDE|TIMER_UNIQUE)
-	to_chat(clicker, span_cult_bold("[clicked_on]Foi amaldiçoado com pesadelos vivos!"))
+	to_chat(clicker, span_cult_bold("[clicked_on] Foi amaldiçoado com pesadelos vivos!"))
 
 	charges--
 	desc = base_desc
@@ -286,7 +286,7 @@
 
 /datum/action/innate/cult/blood_spell/veiling/Activate()
 	if(!revealing)
-		owner.visible_message(span_warning("A poeira cinza fina cai de[owner]A mão!"), 			span_cult_italic("Você invoca o feitiço de vela, escondendo runas próximas."))
+		owner.visible_message(span_warning("A poeira cinza fina cai de [owner] A mão!"), 			span_cult_italic("Você invoca o feitiço de vela, escondendo runas próximas."))
 		charges--
 		SEND_SOUND(owner, sound('sound/effects/magic/smoke.ogg',0,1,25))
 		owner.whisper(invocation, language = /datum/language/common, forced = "cult invocation")
@@ -304,7 +304,7 @@
 		name = "Reveal Runes"
 		button_icon_state = "back"
 	else
-		owner.visible_message(span_warning("Um flash de luz brilha de[owner]A mão!"), 			span_cult_italic("Você invoca o contra-feitiço, revelando runas próximas."))
+		owner.visible_message(span_warning("Um flash de luz brilha de [owner] A mão!"), 			span_cult_italic("Você invoca o contra-feitiço, revelando runas próximas."))
 		charges--
 		owner.whisper(invocation, language = /datum/language/common, forced = "cult invocation")
 		SEND_SOUND(owner, sound('sound/effects/magic/enter_blood.ogg',0,1,25))
@@ -445,8 +445,8 @@
 	if(IS_CULTIST(user) && isnull(GET_CULTIST(user)))
 		effect_coef = 0.2
 	user.visible_message(
-		span_warning("[user]Espera.[user.p_their()]Mão, que explode em um clarão de luz vermelha!"),
-		span_cult_italic("Você tenta atordoar[target]Com o feitiço!"),
+		span_warning("[user] Espera.[user.p_their()] Mão, que explode em um clarão de luz vermelha!"),
+		span_cult_italic("Você tenta atordoar [target] Com o feitiço!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	user.mob_light(range = 1.1, power = 2, color = LIGHT_COLOR_BLOOD_MAGIC, duration = 0.2 SECONDS)
@@ -467,12 +467,12 @@
 		playsound(target, 'sound/effects/magic/magic_block_mind.ogg', 150, TRUE) // insanely quiet
 
 		to_chat(user, span_warning("Uma força de Eldritch intervém enquanto você toca.[target], absorvendo a maioria dos efeitos!"))
-		to_chat(target, span_warning("Como[user]O Mansus absorve a maioria dos efeitos!"))
+		to_chat(target, span_warning("Como [user] O Mansus absorve a maioria dos efeitos!"))
 		target.balloon_alert_to_viewers("absorbed!")
 		return ..()
 		// SKYRAT EDIT ADDITION START
 	else if(IS_CLOCK(target))
-		to_chat(user, span_warning("Alguma força maior do que você intervém![target]Está protegido pelo herege Ratvar!"))
+		to_chat(user, span_warning("Alguma força maior do que você intervém![target] Está protegido pelo herege Ratvar!"))
 		to_chat(target, span_warning("Você está protegido por sua fé em Ratvar!"))
 		var/old_color = target.color
 		target.color = rgb(190, 135, 0)
@@ -484,7 +484,7 @@
 		to_chat(user, span_warning("O feitiço não teve efeito!"))
 		return ..()
 
-	to_chat(user, span_cult_italic("Em um brilhante flash de vermelho,[target]Cai no chão!"))
+	to_chat(user, span_cult_italic("Em um brilhante flash de vermelho,[target] Cai no chão!"))
 	target.Paralyze(16 SECONDS * effect_coef)
 	target.flash_act(1, TRUE)
 	if(issilicon(target))
@@ -539,7 +539,7 @@
 	var/turf/origin = get_turf(user)
 	if(do_teleport(target, dest, channel = TELEPORT_CHANNEL_CULT))
 		origin.visible_message(
-			span_warning("O pó flui de[user]'s mão, e[user.p_they()]Desapareça.[user.p_s()]com uma rachadura afiada!"),
+			span_warning("O pó flui de [user]'s mão, e [user.p_they()] Desapareça.[user.p_s()] com uma rachadura afiada!"),
 			span_cult_italic("Você fala as palavras do talismã e encontra-se em outro lugar!"),
 			span_hear("Você ouve uma rachadura afiada."),
 		)
@@ -574,7 +574,7 @@
 /obj/item/melee/blood_magic/shackles/proc/CuffAttack(mob/living/carbon/C, mob/living/user)
 	if(!C.handcuffed)
 		playsound(loc, 'sound/items/weapons/cablecuff.ogg', 30, TRUE, -2)
-		C.visible_message(span_danger("[user]Começa a restrição.[C]com magia negra!"), 								span_userdanger("[user]começa a moldar algemas mágicas escuras ao redor de seus pulsos!"))
+		C.visible_message(span_danger("[user] Começa a restrição.[C] com magia negra!"), 								span_userdanger("[user] começa a moldar algemas mágicas escuras ao redor de seus pulsos!"))
 		if(do_after(user, 3 SECONDS, C))
 			if(!C.handcuffed)
 				C.equip_to_slot_or_del(new /obj/item/restraints/handcuffs/cult, ITEM_SLOT_HANDCUFFED, indirect_action = TRUE)
@@ -583,11 +583,11 @@
 				log_combat(user, C, "shackled")
 				uses--
 			else
-				to_chat(user, span_warning("[C]Já está preso."))
+				to_chat(user, span_warning("[C] Já está preso."))
 		else
-			to_chat(user, span_warning("Você falha em amarrar[C]."))
+			to_chat(user, span_warning("Você falha em amarrar [C]."))
 	else
-		to_chat(user, span_warning("[C]Já está preso."))
+		to_chat(user, span_warning("[C] Já está preso."))
 
 //Construction: Converts 50 iron to a construct shell, plasteel to runed metal, airlock to brittle runed airlock, a borg to a construct, or borg shell to a construct shell
 /obj/item/melee/blood_magic/construction
@@ -616,7 +616,7 @@
 	if(istype(target, /obj/item/stack/sheet/iron))
 		var/obj/item/stack/sheet/candidate = target
 		if(!candidate.use(IRON_TO_CONSTRUCT_SHELL_CONVERSION))
-			to_chat(user, span_warning("Você precisa.[IRON_TO_CONSTRUCT_SHELL_CONVERSION]ferro para produzir uma concha de construção!"))
+			to_chat(user, span_warning("Você precisa.[IRON_TO_CONSTRUCT_SHELL_CONVERSION] ferro para produzir uma concha de construção!"))
 			return
 		uses--
 		to_chat(user, span_warning("Uma nuvem escura emana de sua mão e gira em torno do ferro, torcendo-o em uma concha de construção!"))
@@ -640,7 +640,7 @@
 		var/mob/living/silicon/robot/candidate = target
 		if(candidate.mmi || candidate.shell)
 			channeling = TRUE
-			user.visible_message(span_danger("Uma nuvem escura emana de[user]A mão e as voltas[candidate]!"))
+			user.visible_message(span_danger("Uma nuvem escura emana de [user] A mão e as voltas [candidate]!"))
 			playsound(T, 'sound/machines/airlock/airlock_alien_prying.ogg', 80, TRUE)
 			var/prev_color = candidate.color
 			candidate.color = "black"
@@ -656,7 +656,7 @@
 				candidate.color = prev_color
 				return
 			candidate.grab_ghost()
-			user.visible_message(span_danger("A nuvem escura recua do que antes era.[candidate], revelando um[construct_class]!"))
+			user.visible_message(span_danger("A nuvem escura recua do que antes era.[candidate], revelando um [construct_class]!"))
 			make_new_construct_from_class(construct_class, THEME_CULT, candidate, user, FALSE, T)
 			uses--
 			qdel(candidate)
@@ -664,7 +664,7 @@
 			return ..()
 
 		uses--
-		to_chat(user, span_warning("Uma nuvem escura emana de sua mão e gira ao redor[candidate]- Torcê-lo em uma concha de construção!"))
+		to_chat(user, span_warning("Uma nuvem escura emana de sua mão e gira ao redor [candidate]- Torcê-lo em uma concha de construção!"))
 		new /obj/structure/constructshell(T)
 		SEND_SOUND(user, sound('sound/effects/magic.ogg',0,1,25))
 		qdel(candidate)
@@ -680,7 +680,7 @@
 
 		target.narsie_act()
 		uses--
-		user.visible_message(span_warning("As fitas pretas de repente emanam de[user]A mão e agarra-se à câmara de ar. Torcendo e corrompendo-a!"))
+		user.visible_message(span_warning("As fitas pretas de repente emanam de [user] A mão e agarra-se à câmara de ar. Torcendo e corrompendo-a!"))
 		SEND_SOUND(user, sound('sound/effects/magic.ogg',0,1,25))
 		channeling = FALSE
 		return ..()
@@ -787,11 +787,11 @@
 		return FALSE
 	if(uses > missing_health)
 		construct_thing.adjust_health(-missing_health)
-		construct_thing.visible_message(span_warning("[construct_thing]está completamente curado por[user]É magia de sangue!"))
+		construct_thing.visible_message(span_warning("[construct_thing] está completamente curado por [user] É magia de sangue!"))
 		uses -= missing_health
 	else
 		construct_thing.adjust_health(-uses)
-		construct_thing.visible_message(span_warning("[construct_thing]é parcialmente curado por[user]É magia de sangue!"))
+		construct_thing.visible_message(span_warning("[construct_thing] é parcialmente curado por [user] É magia de sangue!"))
 		uses = 0
 	playsound(get_turf(construct_thing), 'sound/effects/magic/staff_healing.ogg', 25)
 	user.Beam(construct_thing, icon_state="sendbeam", time = 1 SECONDS)
@@ -840,7 +840,7 @@
 		damage_healed = -1 * min(uses * (1 / SELF_HEAL_PENALTY), overall_damage)
 		healing_cost = damage_healed * SELF_HEAL_PENALTY
 	uses += round(healing_cost)
-	human_bloodbag.visible_message(span_warning("[human_bloodbag]É[uses == 0 ? "partially healed":"fully healed"]por[human_bloodbag == user ? "[human_bloodbag.p_their()]":"[human_bloodbag]'s"]Magia de sangue!"))
+	human_bloodbag.visible_message(span_warning("[human_bloodbag] É[uses == 0 ? "partially healed":"fully healed"]por[human_bloodbag == user ? "[human_bloodbag.p_their()]":"[human_bloodbag]'s"]Magia de sangue!"))
 
 	var/need_mob_update = FALSE
 	need_mob_update += human_bloodbag.adjust_oxy_loss(damage_healed * (human_bloodbag.get_oxy_loss() / overall_damage), updating_health = FALSE)
@@ -862,17 +862,17 @@
  */
 /obj/item/melee/blood_magic/manipulator/proc/drain_victim(mob/living/carbon/human/human_bloodbag, mob/living/carbon/human/user)
 	if(human_bloodbag.has_status_effect(/datum/status_effect/speech/slurring/cult))
-		to_chat(user,span_danger("[human_bloodbag.p_Their()]O sangue foi contaminado por uma forma ainda mais forte de magia de sangue, não adianta para nós assim!"))
+		to_chat(user,span_danger("[human_bloodbag.p_Their()] O sangue foi contaminado por uma forma ainda mais forte de magia de sangue, não adianta para nós assim!"))
 		return FALSE
 	if(human_bloodbag.get_blood_volume() <= BLOOD_VOLUME_SAFE)
-		to_chat(user,span_warning("[human_bloodbag.p_Theyre()]Faltando muito sangue - você não pode drenar[human_bloodbag.p_them()]Mais longe!"))
+		to_chat(user,span_warning("[human_bloodbag.p_Theyre()] Faltando muito sangue - você não pode drenar [human_bloodbag.p_them()] Mais longe!"))
 		return FALSE
 	human_bloodbag.adjust_blood_volume(-BLOOD_DRAIN_GAIN * USES_TO_BLOOD)
 	uses += BLOOD_DRAIN_GAIN
 	user.Beam(human_bloodbag, icon_state="drainbeam", time = 1 SECONDS)
 	playsound(get_turf(human_bloodbag), 'sound/effects/magic/enter_blood.ogg', 50)
-	human_bloodbag.visible_message(span_danger("[user]Esvazia alguns de[human_bloodbag]Sangue!"))
-	to_chat(user,span_cult_italic("Seu rito de sangue ganha 50 acusações de drenagem.[human_bloodbag]É sangue."))
+	human_bloodbag.visible_message(span_danger("[user] Esvazia alguns de [human_bloodbag] Sangue!"))
+	to_chat(user,span_cult_italic("Seu rito de sangue ganha 50 acusações de drenagem.[human_bloodbag] É sangue."))
 	new /obj/effect/temp_visual/cult/sparks(get_turf(human_bloodbag))
 	return TRUE
 
@@ -895,7 +895,7 @@
 	user.Beam(our_turf,icon_state="drainbeam", time = 15)
 	new /obj/effect/temp_visual/cult/sparks(get_turf(user))
 	playsound(our_turf, 'sound/effects/magic/enter_blood.ogg', 50)
-	to_chat(user, span_cult_italic("Seu rito de sangue ganhou[round(blood_to_gain)]Cargas de fontes de sangue ao seu redor!"))
+	to_chat(user, span_cult_italic("Seu rito de sangue ganhou [round(blood_to_gain)] Cargas de fontes de sangue ao seu redor!"))
 	uses += max(1, round(blood_to_gain))
 
 /**
@@ -917,7 +917,7 @@
 	switch(choice)
 		if("Bloody Halberd (150)")
 			if(uses < BLOOD_HALBERD_COST)
-				to_chat(user, span_cult_italic("Você precisa.[BLOOD_HALBERD_COST]acusações para realizar este ritual."))
+				to_chat(user, span_cult_italic("Você precisa.[BLOOD_HALBERD_COST] acusações para realizar este ritual."))
 				return
 			uses -= BLOOD_HALBERD_COST
 			var/turf/current_position = get_turf(user)
@@ -927,13 +927,13 @@
 			halberd_act_granted.Grant(user, rite)
 			rite.halberd_act = halberd_act_granted
 			if(user.put_in_hands(rite))
-				to_chat(user, span_cult_italic("A[rite.name]aparece em suas mãos!"))
+				to_chat(user, span_cult_italic("A [rite.name] aparece em suas mãos!"))
 			else
-				user.visible_message(span_warning("A[rite.name]aparece em[user]Pés!"), 					span_cult_italic("A[rite.name]se materializa aos seus pés."))
+				user.visible_message(span_warning("A [rite.name] aparece em [user] Pés!"), 					span_cult_italic("A [rite.name] se materializa aos seus pés."))
 
 		if("Blood Bolt Barrage (300)")
 			if(uses < BLOOD_BARRAGE_COST)
-				to_chat(user, span_cult_italic("Você precisa.[BLOOD_BARRAGE_COST]acusações para realizar este ritual."))
+				to_chat(user, span_cult_italic("Você precisa.[BLOOD_BARRAGE_COST] acusações para realizar este ritual."))
 				return
 			var/obj/rite = new /obj/item/gun/magic/wand/arcane_barrage/blood()
 			uses -= BLOOD_BARRAGE_COST
@@ -946,7 +946,7 @@
 
 		if("Blood Beam (500)")
 			if(uses < BLOOD_BEAM_COST)
-				to_chat(user, span_cult_italic("Você precisa.[BLOOD_BEAM_COST]acusações para realizar este ritual."))
+				to_chat(user, span_cult_italic("Você precisa.[BLOOD_BEAM_COST] acusações para realizar este ritual."))
 				return
 			var/obj/rite = new /obj/item/blood_beam()
 			uses -= BLOOD_BEAM_COST

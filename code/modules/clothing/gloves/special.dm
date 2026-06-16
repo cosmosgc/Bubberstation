@@ -46,7 +46,7 @@
 	if(!pull_component)
 		return
 
-	to_chat(pull_component.parent, span_warning("Você perdeu o poder de aperto de[src]!"))
+	to_chat(pull_component.parent, span_warning("Você perdeu o poder de aperto de [src]!"))
 
 	QDEL_NULL(pull_component_weakref)
 

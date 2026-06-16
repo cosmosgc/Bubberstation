@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(lag_switch)
 
 	slowmode_cooldown = length_secs
 	if(measures[SLOWMODE_SAY])
-		to_chat(world, span_boldannounce("Temporizador de modo lento foi mudado para[length]Segundos por um administrador."))
+		to_chat(world, span_boldannounce("Temporizador de modo lento foi mudado para [length] Segundos por um administrador."))
 	return TRUE
 
 /// Handle the state change for individual measures
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(lag_switch)
 						ghost.client.view_size.resetToDefault()
 		if(SLOWMODE_SAY)
 			if(state)
-				to_chat(world, span_boldannounce("Slowmode para IC / bate-papo morto foi ativado com[slowmode_cooldown/10]Segundos entre como mensagens."))
+				to_chat(world, span_boldannounce("Slowmode para IC / bate-papo morto foi ativado com [slowmode_cooldown/10] Segundos entre como mensagens."))
 			else
 				for(var/client/C as anything in GLOB.clients)
 					COOLDOWN_RESET(C, say_slowmode)

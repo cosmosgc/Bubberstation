@@ -49,9 +49,9 @@
 		if (isturf(user.loc))
 			toggle(user)
 		else
-			to_chat(user, span_warning("Você não pode usar[src]dentro de alguma coisa!"))
+			to_chat(user, span_warning("Você não pode usar [src] dentro de alguma coisa!"))
 	else
-		to_chat(user, span_warning("Você precisa pelo menos[display_energy(ACTIVATION_COST)]de carga em sua cela para usar[src]!"))
+		to_chat(user, span_warning("Você precisa pelo menos [display_energy(ACTIVATION_COST)] de carga em sua cela para usar [src]!"))
 
 /obj/item/borg_chameleon/proc/toggle(mob/living/silicon/robot/user)
 	if(active)
@@ -60,7 +60,7 @@
 		deactivate(user)
 	else
 		if(animation_playing)
-			to_chat(user, span_notice("\the [src]está recarregando."))
+			to_chat(user, span_notice("\the [src] está recarregando."))
 			return
 		animation_playing = TRUE
 		to_chat(user, span_notice("Você ativa.\the [src]."))

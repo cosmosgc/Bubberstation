@@ -32,7 +32,7 @@
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
 		cast_on.visible_message(
-			span_danger("[cast_on]O rosto explode em chamas, que instantaneamente explode para fora, deixando[cast_on.p_them()]ileso!"),
+			span_danger("[cast_on] O rosto explode em chamas, que instantaneamente explode para fora, deixando [cast_on.p_them()] ileso!"),
 			span_danger("Seu rosto começa a arder, mas as chamas são repelidas pela sua proteção anti-mágica!"),
 		)
 		to_chat(owner, span_warning("O feitiço não teve efeito!"))
@@ -42,8 +42,8 @@
 	var/obj/item/clothing/mask/animal/cursed_mask = new chosen_type(get_turf(target))
 
 	cast_on.visible_message(
-		span_danger("[target]O rosto explode em chamas, e a cabeça de um animal de celeiro toma seu lugar!"),
-		span_userdanger("Seu rosto arde, e logo após o fogo você percebe que tem o rosto de um[cursed_mask.animal_type]!"),
+		span_danger("[target] O rosto explode em chamas, e a cabeça de um animal de celeiro toma seu lugar!"),
+		span_userdanger("Seu rosto arde, e logo após o fogo você percebe que tem o rosto de um [cursed_mask.animal_type]!"),
 	)
 
 	// Can't drop? Nuke it

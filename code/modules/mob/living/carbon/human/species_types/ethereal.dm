@@ -150,8 +150,8 @@
 		return FALSE
 	emageffect = TRUE
 	if(user)
-		to_chat(user, span_notice("Você bate[source]Na parte de trás com seu cartão."))
-	source.visible_message(span_danger("[source]Começa a piscar em uma série de cores!"))
+		to_chat(user, span_notice("Você bate [source] Na parte de trás com seu cartão."))
+	source.visible_message(span_danger("[source] Começa a piscar em uma série de cores!"))
 	handle_emag(source)
 	addtimer(CALLBACK(src, PROC_REF(stop_emag), source), 2 MINUTES) //Disco mode for 2 minutes! This doesn't affect the ethereal at all besides either annoying some players, or making someone look badass.
 	return TRUE
@@ -177,7 +177,7 @@
 /datum/species/ethereal/proc/stop_emag(mob/living/carbon/human/ethereal)
 	emageffect = FALSE
 	refresh_light_color(ethereal)
-	ethereal.visible_message(span_danger("[ethereal]Pare de tremer e volte ao seu estado normal!"))
+	ethereal.visible_message(span_danger("[ethereal] Pare de tremer e volte ao seu estado normal!"))
 
 /datum/species/ethereal/proc/handle_glow_emote(mob/living/carbon/human/ethereal, power, range, flare = FALSE, duration = 5 SECONDS, flare_time = 0)
 	powermult = power

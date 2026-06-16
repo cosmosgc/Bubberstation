@@ -92,7 +92,7 @@
 
 	to_chat(user, span_warning("Você permite o nome ironicamente\"Lutando com nevoeiro\"Modo, e desativar as seguranças do alvo.")) // heheehe. funny
 
-	audible_message(span_danger("[src]Que estranho!"))
+	audible_message(span_danger("[src] Que estranho!"))
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 	internal_ext.chem = /datum/reagent/clf3 //Refill the internal extinguisher with liquid fire

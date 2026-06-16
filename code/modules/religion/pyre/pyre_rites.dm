@@ -92,7 +92,7 @@
 		return FALSE
 	var/favor_gained = 100 + round(chosen_sacrifice.get_fire_loss())
 	GLOB.religious_sect.adjust_favor(favor_gained, user)
-	to_chat(user, span_notice("[GLOB.deity]absorve o cadáver queimado e qualquer vestígio de fogo com ele.[GLOB.deity]Te recompensa com[favor_gained]Por favor."))
+	to_chat(user, span_notice("[GLOB.deity] absorve o cadáver queimado e qualquer vestígio de fogo com ele.[GLOB.deity] Te recompensa com [favor_gained] Por favor."))
 	chosen_sacrifice.dust(force = TRUE)
 	playsound(get_turf(religious_tool), 'sound/effects/supermatter.ogg', 50, TRUE)
 	chosen_sacrifice = null
@@ -133,7 +133,7 @@
 			continue
 		enchant_target = can_enchant
 		return ..()
-	to_chat(user, span_warning("Você precisa colocar uma flecha sagrada[religious_tool]Para fazer isso!"))
+	to_chat(user, span_warning("Você precisa colocar uma flecha sagrada [religious_tool] Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/blazing_star/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -144,7 +144,7 @@
 	if(QDELETED(enchanting) || !(tool_turf == enchanting.loc)) //check if the arrow is still there
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	enchanting.visible_message(span_notice("[enchant_target]é abençoado pelo fogo sagrado!"))
+	enchanting.visible_message(span_notice("[enchant_target] é abençoado pelo fogo sagrado!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
 	new /obj/item/ammo_casing/arrow/holy/blazing(tool_turf)
 	qdel(enchanting)

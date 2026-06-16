@@ -37,7 +37,7 @@
 		QDEL_IN(src, 3 SECONDS)
 
 /obj/item/fish/holo/suicide_act(mob/living/user)
-	visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando o Derek.[user.p_them()]Eu!"))
+	visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que...[user.p_theyre()] Tentando o Derek.[user.p_them()] Eu!"))
 	var/area/station/holodeck/holo_area = get_area(src)
 	if(!istype(holo_area))
 		user.dust(just_ash = TRUE, drop_items = TRUE)

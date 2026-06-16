@@ -80,11 +80,11 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 /obj/item/clothing/mask/gas/examine(mob/user)
 	. = ..()
 	if(cig)
-		. += span_notice("Há um[cig.name]Preso no filtro.")
+		. += span_notice("Há um [cig.name] Preso no filtro.")
 	if(max_filters > 0 && !cig)
-		. += span_notice("[src]Tem[max_filters]slot\s para filtros.")
+		. += span_notice("[src] Tem [max_filters] slot\s para filtros.")
 	if(LAZYLEN(gas_filters) > 0)
-		. += span_notice("Atualmente lá.[LAZYLEN(gas_filters) == 1 ? "is" : "are"] [LAZYLEN(gas_filters)]filtro com[get_filter_durability()]Percentagem de durabilidade.")
+		. += span_notice("Atualmente lá.[LAZYLEN(gas_filters) == 1 ? "is" : "are"] [LAZYLEN(gas_filters)] filtro com [get_filter_durability()] Percentagem de durabilidade.")
 		. += span_notice("Os filtros podem ser removidos clicando com o botão direito com uma mão vazia.[src].")
 
 /obj/item/clothing/mask/gas/Exited(atom/movable/gone)
@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		icon_state = options[choice]
 		user.update_worn_mask()
 		update_item_action_buttons()
-		to_chat(user, span_notice("Sua máscara de palhaço se transformou em[choice]Todos louvem a Honkmother!"))
+		to_chat(user, span_notice("Sua máscara de palhaço se transformou em [choice] Todos louvem a Honkmother!"))
 		return TRUE
 
 /obj/item/clothing/mask/gas/sexyclown
@@ -415,7 +415,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		*/
 		user.update_worn_mask()
 		update_item_action_buttons()
-		to_chat(user, span_notice("Sua máscara Mime se transformou em[choice]!"))
+		to_chat(user, span_notice("Sua máscara Mime se transformou em [choice]!"))
 		return TRUE
 
 /obj/item/clothing/mask/gas/monkeymask
@@ -505,7 +505,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		icon_state = options[choice]
 		user.update_worn_mask()
 		update_item_action_buttons()
-		to_chat(M, span_notice("A Máscara Tiki mudou para[choice]Máscara!"))
+		to_chat(M, span_notice("A Máscara Tiki mudou para [choice] Máscara!"))
 		return 1
 
 /obj/item/clothing/mask/gas/tiki_mask/yalp_elor

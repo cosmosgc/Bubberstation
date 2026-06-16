@@ -30,7 +30,7 @@
 		human_cast_on.dropItemToGround(human_cast_on.glasses)
 		var/obj/item/clothing/head/wizard/wizhat = human_cast_on.head
 		if(istype(wizhat))
-			to_chat(human_cast_on, span_notice("Sua[wizhat]se transforma em um eyepatch."))
+			to_chat(human_cast_on, span_notice("Sua [wizhat] se transforma em um eyepatch."))
 			qdel(wizhat)
 		else
 			to_chat(human_cast_on, span_notice("Um eyepatch aparece sobre um de seus olhos."))

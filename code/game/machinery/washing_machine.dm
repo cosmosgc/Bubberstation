@@ -284,7 +284,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	inhand_x_dimension = initial(target_type.inhand_x_dimension)
 	inhand_y_dimension = initial(target_type.inhand_y_dimension)
 	name = initial(target_type.name)
-	desc = "[initial(target_type.desc)]As cores parecem um pouco duvidosas."
+	desc = "[initial(target_type.desc)] As cores parecem um pouco duvidosas."
 	return target_type //successfully "appearance copy" dyed something; returns the target type as a hacky way of extending
 
 //what happens to this object when washed inside a washing machine
@@ -374,13 +374,13 @@ GLOBAL_LIST_INIT(dye_registry, list(
 		to_chat(user, span_warning("Abra a porta primeiro!"))
 		return ITEM_INTERACT_BLOCKING
 	if(bloody_mess)
-		to_chat(user, span_warning("[src]Deve ser limpo primeiro!"))
+		to_chat(user, span_warning("[src] Deve ser limpo primeiro!"))
 		return ITEM_INTERACT_BLOCKING
 	if(total_load >= max_wash_capacity)
 		to_chat(user, span_warning("A máquina de lavar está cheia!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, src))
-		to_chat(user, span_warning("\The [item]está preso em sua mão, você não pode colocá-lo na máquina de lavar!"))
+		to_chat(user, span_warning("\The [item] está preso em sua mão, você não pode colocá-lo na máquina de lavar!"))
 		return ITEM_INTERACT_BLOCKING
 	if(item.dye_color)
 		color_source = item
@@ -394,7 +394,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(.)
 		return
 	if(busy)
-		to_chat(user, span_warning("[src]Está ocupado!"))
+		to_chat(user, span_warning("[src] Está ocupado!"))
 		return
 
 	if(user.pulling && isliving(user.pulling))
@@ -410,7 +410,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 					balloon_alert(user, "Agarre mais forte!")
 					return
 
-				victim.visible_message(span_danger("[user]está tentando forçar[victim]em[src]!"))
+				victim.visible_message(span_danger("[user] está tentando forçar [victim] em [src]!"))
 				log_game("[key_name_and_tag(user)] is forcing [key_name_and_tag(victim)] into a washing machine")
 				if(!do_after(user, 3 SECONDS, target = src, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, PROC_REF(check_aggro_grab), user)))
 					return
@@ -435,13 +435,13 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(!user.can_perform_action(src, ALLOW_SILICON_REACH))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	if(busy)
-		to_chat(user, span_warning("[src]Está ocupado!"))
+		to_chat(user, span_warning("[src] Está ocupado!"))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	if(state_open)
 		to_chat(user, span_warning("Feche a porta primeiro!"))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	if(bloody_mess)
-		to_chat(user, span_warning("[src]Deve ser limpo primeiro!"))
+		to_chat(user, span_warning("[src] Deve ser limpo primeiro!"))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	busy = TRUE
 	if(HAS_TRAIT(user, TRAIT_BRAINWASHING))

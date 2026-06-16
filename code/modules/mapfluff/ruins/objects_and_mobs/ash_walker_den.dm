@@ -53,12 +53,12 @@
 
 			if(issilicon(offeredmob)) //no advantage to sacrificing borgs...
 				offeredmob.investigate_log("has been gibbed by the necropolis tendril.", INVESTIGATE_DEATHS)
-				visible_message(span_notice("Os tentáculos serrados puxam ansiosamente[offeredmob]Separados, mas nada de interessante."))
+				visible_message(span_notice("Os tentáculos serrados puxam ansiosamente [offeredmob] Separados, mas nada de interessante."))
 				offeredmob.gib()
 				return
 
 			if(offeredmob.mind?.has_antag_datum(/datum/antagonist/ashwalker) && (offeredmob.ckey || offeredmob.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
-				visible_message(span_warning("Os tentáculos serrados puxam com cuidado.[offeredmob]Para[src]Absorvendo o corpo e criando-o de novo."))
+				visible_message(span_warning("Os tentáculos serrados puxam com cuidado.[offeredmob] Para [src] Absorvendo o corpo e criando-o de novo."))
 				var/mob/deadmob
 				if(offeredmob.ckey)
 					deadmob = offeredmob
@@ -74,7 +74,7 @@
 				meat_counter += 20
 			else
 				meat_counter++
-			visible_message(span_warning("Os tentáculos serrados puxam ansiosamente[offeredmob]Para[src], rasgando o corpo entender seu sangue escorre sobre os ovos."))
+			visible_message(span_warning("Os tentáculos serrados puxam ansiosamente [offeredmob] Para [src], rasgando o corpo entender seu sangue escorre sobre os ovos."))
 			playsound(get_turf(src),'sound/effects/magic/demon_consume.ogg', 100, TRUE)
 			var/deliverykey = offeredmob.fingerprintslast //ckey of whoever brought the body
 			var/mob/living/deliverymob = get_mob_by_key(deliverykey) //mob of said ckey

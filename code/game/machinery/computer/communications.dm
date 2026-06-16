@@ -272,7 +272,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			var/associates = (emagged || syndicate) ? "the Syndicate": "CentCom"
 			user.log_talk(message, LOG_SAY, tag = "message to [associates]")
-			deadchat_broadcast("Tem mensagem[associates], \"[message]\"Em[span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
+			deadchat_broadcast("Tem mensagem [associates], \"[message]\"Em[span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type = DEADCHAT_ANNOUNCEMENT)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("purchaseShuttle")
 			var/can_buy_shuttles_or_fail_reason = can_buy_shuttles(user)
@@ -368,7 +368,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			user.log_message("is about to send the following message to [destination]: [message]", LOG_GAME)
 			to_chat(
 				GLOB.admins,
-				span_adminnotice( 					"<b color='orange'>MENSAGEM CRUSS-SECTOR:</b> [ADMIN_LOOKUPFLW(user)]está prestes a enviar a seguinte mensagem para<b>[destination]</b>(vai auto-aprovar[GLOB.communications_controller.soft_filtering ? DisplayTimeText(EXTENDED_CROSS_SECTOR_CANCEL_TIME) : DisplayTimeText(CROSS_SECTOR_CANCEL_TIME)]): 					<b><a href='byond://?src=[REF(src)];reject_cross_comms_message=1'>REJEITO</a></b><br> 					[html_encode(message)]" 				)
+				span_adminnotice( 					"<b color='orange'>MENSAGEM CRUSS-SECTOR:</b> [ADMIN_LOOKUPFLW(user)] está prestes a enviar a seguinte mensagem para<b>[destination]</b>(vai auto-aprovar [GLOB.communications_controller.soft_filtering ? DisplayTimeText(EXTENDED_CROSS_SECTOR_CANCEL_TIME) : DisplayTimeText(CROSS_SECTOR_CANCEL_TIME)]): 					<b><a href='byond://?src=[REF(src)];reject_cross_comms_message=1'>REJEITO</a></b><br> 					[html_encode(message)]" 				)
 			)
 
 			send_cross_comms_message_timer = addtimer(CALLBACK(src, PROC_REF(send_cross_comms_message), user, destination, message), GLOB.communications_controller.soft_filtering ? EXTENDED_CROSS_SECTOR_CANCEL_TIME : CROSS_SECTOR_CANCEL_TIME, TIMER_STOPPABLE)
@@ -416,7 +416,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				authenticated = TRUE
 				authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 				authorize_name = "Unknown"
-				to_chat(user, span_warning("[src]deixa sair um alarme silencioso enquanto seu login é anulado."))
+				to_chat(user, span_warning("[src] deixa sair um alarme silencioso enquanto seu login é anulado."))
 				playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 25, FALSE)
 			else if(isliving(user))
 				var/mob/living/L = user
@@ -513,14 +513,14 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
-		to_chat(user, span_warning("Este foi o seu último uso livre sem refrigeração, você não será capaz de usar isso novamente para[DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
+		to_chat(user, span_warning("Este foi o seu último uso livre sem refrigeração, você não será capaz de usar isso novamente para [DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
 		COOLDOWN_START(src, emergency_access_cooldown, EMERGENCY_ACCESS_COOLDOWN)
 		++toggle_uses //add a use so that this if() is false the next time you try this button
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, emergency_access_cooldown))
 		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(src, emergency_access_cooldown), 1)
-		to_chat(user, span_warning("Acesso de emergência ainda está em refrigeração para[time_left]!"))
+		to_chat(user, span_warning("Acesso de emergência ainda está em refrigeração para [time_left]!"))
 		return TRUE //dont use the button, we are in cooldown
 	else if((last_toggled + EMERGENCY_ACCESS_COOLDOWN) < world.time)
 		toggle_uses = 0 //either cooldown is done, or we just havent touched it in 30 seconds, either way reset uses
@@ -802,7 +802,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		//No cheating, mime/random mute guy!
 		input = "..."
 		user.visible_message(
-			span_notice("[user]Não se mexa.[src]O botão do anúncio, deixando o microfone ligado em silêncio estranho."),
+			span_notice("[user] Não se mexa.[src] O botão do anúncio, deixando o microfone ligado em silêncio estranho."),
 			span_notice("Você deixa o microfone ligado em silêncio estranho..."),
 			span_hear("Você ouve um silêncio estranho, de alguma forma."),
 			vision_distance = 4,

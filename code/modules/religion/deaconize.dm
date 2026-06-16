@@ -33,7 +33,7 @@
 		return FALSE
 	var/mob/living/carbon/human/possible_deacon = locate() in movable_reltool.buckled_mobs
 	if(!possible_deacon)
-		to_chat(user, span_warning("Nada está preso ao[movable_reltool]!"))
+		to_chat(user, span_warning("Nada está preso ao [movable_reltool]!"))
 		return FALSE
 	if(!is_valid_for_deacon(possible_deacon, user))
 		return FALSE
@@ -47,23 +47,23 @@
 /datum/religion_rites/deaconize/invoke_effect(mob/living/carbon/human/user, atom/movable/religious_tool)
 	. = ..()
 	if(!(potential_deacon in religious_tool.buckled_mobs)) //checks one last time if the right corpse is still buckled
-		to_chat(user, span_warning("[potential_deacon]Não está mais no altar!"))
+		to_chat(user, span_warning("[potential_deacon] Não está mais no altar!"))
 		return FALSE
 	if(potential_deacon.stat != CONSCIOUS)
-		to_chat(user, span_warning("[potential_deacon]Tem que estar consciente para que o ritual funcione!"))
+		to_chat(user, span_warning("[potential_deacon] Tem que estar consciente para que o ritual funcione!"))
 		return FALSE
 	if(!potential_deacon.mind)
-		to_chat(user, span_warning("[potential_deacon]Um mente parece estrela em outro lugar!"))
+		to_chat(user, span_warning("[potential_deacon] Um mente parece estrela em outro lugar!"))
 		return FALSE
 	if(IS_CULTIST(potential_deacon))//what the fuck?!
-		to_chat(user, span_warning("[GLOB.deity]Viu um verdeiro mal escuro em[potential_deacon]O coração, e eles foram feridos!"))
+		to_chat(user, span_warning("[GLOB.deity] Viu um verdeiro mal escuro em [potential_deacon] O coração, e eles foram feridos!"))
 		playsound(get_turf(religious_tool), 'sound/effects/pray.ogg', 50, TRUE)
 		potential_deacon.gib(DROP_ORGANS|DROP_BODYPARTS)
 		return FALSE
 	var/datum/brain_trauma/special/honorbound/honor = user.has_trauma_type(/datum/brain_trauma/special/honorbound)
 	if(honor && (potential_deacon in honor.guilty))
 		honor.guilty -= potential_deacon
-	to_chat(user, span_notice("[GLOB.deity]Encaixou.[potential_deacon]Para o código! Eles agora são um papel sagrado! (embora o nível mais baixo de tais)"))
+	to_chat(user, span_notice("[GLOB.deity] Encaixou.[potential_deacon] Para o código! Eles agora são um papel sagrado! (embora o nível mais baixo de tais)"))
 	potential_deacon.mind.set_holy_role(HOLY_ROLE_DEACON)
 	GLOB.religious_sect.on_conversion(potential_deacon)
 	playsound(get_turf(religious_tool), 'sound/effects/pray.ogg', 50, TRUE)
@@ -72,10 +72,10 @@
 ///Helper if the passed possible_deacon is valid to become a deacon or not.
 /datum/religion_rites/deaconize/proc/is_valid_for_deacon(mob/living/carbon/human/possible_deacon, mob/living/user)
 	if(possible_deacon.stat != CONSCIOUS)
-		to_chat(user, span_warning("[possible_deacon]Precisa estar vivo e consciente para se juntar!"))
+		to_chat(user, span_warning("[possible_deacon] Precisa estar vivo e consciente para se juntar!"))
 		return FALSE
 	if(possible_deacon.mind && possible_deacon.mind.holy_role)
-		to_chat(user, span_warning("[possible_deacon]Já é um membro da religião!"))
+		to_chat(user, span_warning("[possible_deacon] Já é um membro da religião!"))
 		return FALSE
 	return TRUE
 

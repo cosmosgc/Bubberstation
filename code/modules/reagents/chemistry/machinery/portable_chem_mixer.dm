@@ -51,7 +51,7 @@
 	if(QDELETED(beaker))
 		. += span_notice("Um copo pode ser inserido para distribuir reagentes depois que estiver trancado.")
 	else
-		. += span_notice("Um copo de[beaker.reagents.maximum_volume]U capacidade está inserida.")
+		. += span_notice("Um copo de [beaker.reagents.maximum_volume] U capacidade está inserida.")
 		. += span_notice("Pode ser ejetado com[EXAMINE_HINT("Alt Click")].")
 
 /obj/item/storage/portable_chem_mixer/update_icon_state()

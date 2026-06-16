@@ -116,7 +116,7 @@
 	if(!length(accepted_anomalies))
 		return
 	if(core)
-		examine_list += span_notice("Há um[core.name]Instalado Nele.[core_removable ? "You could remove it with a <b>screwdriver</b>..." : "Unfortunately, due to a design quirk, it's unremovable."]")
+		examine_list += span_notice("Há um [core.name] Instalado Nele.[core_removable ? "You could remove it with a <b>screwdriver</b>..." : "Unfortunately, due to a design quirk, it's unremovable."]")
 		return
 	var/list/core_list = list()
 	for(var/atom/core_path as anything in accepted_anomalies)

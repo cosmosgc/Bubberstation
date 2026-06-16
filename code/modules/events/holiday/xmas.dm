@@ -9,7 +9,7 @@
 
 /obj/item/toy/xmas_cracker/attack(mob/target, mob/user)
 	if( !cracked && ishuman(target) && (target.stat == CONSCIOUS) && !target.get_active_held_item() )
-		target.visible_message(span_notice("[user]E[target]Pop.\an [src]Pop"), span_notice("Você puxa.\an [src]Com[target]Pop"), span_hear("Você ouve um estouro."))
+		target.visible_message(span_notice("[user] E [target] Pop.\an [src] Pop"), span_notice("Você puxa.\an [src] Com [target] Pop"), span_hear("Você ouve um estouro."))
 		var/obj/item/paper/joke_paper = new /obj/item/paper(user.loc)
 		joke_paper.name = "[pick("awful","terrible","unfunny")] joke"
 		joke_paper.add_raw_text(pick("What did one snowman say to the other?\n\n<i>'Is it me or can you smell carrots?'</i>",

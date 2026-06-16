@@ -42,9 +42,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a cortar[limb.owner]'s[limb.plaintext_zone]..."),
-		span_notice("[surgeon]começa a cortar[limb.owner]'s[limb.plaintext_zone]."),
-		span_notice("[surgeon]começa a cortar[limb.owner]'s[limb.plaintext_zone]Com[tool]."),
+		span_notice("Você começa a cortar [limb.owner]'s [limb.plaintext_zone]..."),
+		span_notice("[surgeon] começa a cortar [limb.owner]'s [limb.plaintext_zone]."),
+		span_notice("[surgeon] começa a cortar [limb.owner]'s [limb.plaintext_zone] Com [tool]."),
 	)
 	display_pain(limb.owner, "You feel a gruesome pain in your [limb.plaintext_zone]'s joint!")
 
@@ -52,9 +52,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você amputa com sucesso.[limb.owner]'s[limb.plaintext_zone]!"),
-		span_notice("[surgeon]Com sucesso amplita[limb.owner]'s[limb.plaintext_zone]!"),
-		span_notice("[surgeon]Termina de Cortar[limb.owner]'s[limb.plaintext_zone]."),
+		span_notice("Você amputa com sucesso.[limb.owner]'s [limb.plaintext_zone]!"),
+		span_notice("[surgeon] Com sucesso amplita [limb.owner]'s [limb.plaintext_zone]!"),
+		span_notice("[surgeon] Termina de Cortar [limb.owner]'s [limb.plaintext_zone]."),
 	)
 	display_pain(limb.owner, "You can no longer feel your [limb.plaintext_zone]!")
 	if(HAS_MIND_TRAIT(surgeon, TRAIT_MORBID))

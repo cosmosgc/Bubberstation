@@ -251,11 +251,11 @@
 
 /mob/living/basic/drone/proc/alarm_triggered(datum/source, alarm_type, area/source_area)
 	SIGNAL_HANDLER
-	to_chat(src, "--- [alarm_type]Alarme detectado em[source_area.name]!")
+	to_chat(src, "--- [alarm_type] Alarme detectado em [source_area.name]!")
 
 /mob/living/basic/drone/proc/alarm_cleared(datum/source, alarm_type, area/source_area)
 	SIGNAL_HANDLER
-	to_chat(src, "--- [alarm_type]Alarme em[source_area.name]Foi libertado.")
+	to_chat(src, "--- [alarm_type] Alarme em [source_area.name] Foi libertado.")
 
 /mob/living/basic/drone/proc/set_shy(new_shy)
 	shy = new_shy

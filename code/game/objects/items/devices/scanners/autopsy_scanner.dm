@@ -26,19 +26,19 @@
 	var/mob/living/scanned = interacting_with
 
 	if(scanned.stat != DEAD && !HAS_TRAIT(scanned, TRAIT_FAKEDEATH)) // good job, you found a loophole
-		to_chat(user, span_deadsay("[icon2html(src, user)]ERRO! Não posso escanear cadáveres vivos. Analisador de saúde ou paciente final."))
+		to_chat(user, span_deadsay("[icon2html(src, user)] ERRO! Não posso escanear cadáveres vivos. Analisador de saúde ou paciente final."))
 		return ITEM_INTERACT_BLOCKING
 
 	. = ITEM_INTERACT_SUCCESS
 
 	// Clumsiness/brain damage check
 	if ((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
-		user.visible_message(span_warning("[user]analisa os sinais vitais do chão!"), 							span_notice("Você estúpidamente tenta analisar os sinais vitais do chão!"))
+		user.visible_message(span_warning("[user] analisa os sinais vitais do chão!"), 							span_notice("Você estúpidamente tenta analisar os sinais vitais do chão!"))
 		to_chat(user, "[span_info("Analyzing results for The floor:\n\tOverall status: <b>Healthy</b>")]				\n[span_info("Key: <font color='#00cccc'>Suffocation</font>/<font color='#00cc66'>Toxin</font>/<font color='#ffcc33'>Burn</font>/<font color='#ff3333'>Brute</font>")]				\n[span_info("\tDamage specifics: <font color='#66cccc'>0</font>-<font color='#00cc66'>0</font>-<font color='#ff9933'>0</font>-<font color='#ff3333'>0</font>")]				\n[span_info("Body temperature: ???")]")
 		return
 
-	user.visible_message(span_notice("[user]scans[scanned]É um cadáver."))
-	to_chat(user, span_deadsay("[icon2html(src, user)]Analisando CADAVER."))
+	user.visible_message(span_notice("[user] scans [scanned] É um cadáver."))
+	to_chat(user, span_deadsay("[icon2html(src, user)] Analisando CADAVER."))
 
 	healthscan(user, scanned, advanced = TRUE)
 

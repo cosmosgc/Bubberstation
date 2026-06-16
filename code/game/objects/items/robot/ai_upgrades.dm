@@ -19,7 +19,7 @@
 			var/datum/action/gifted_action = new ability
 			gifted_action.Grant(AI)
 		else if(gifted_ability.one_purchase)
-			to_chat(user, "[AI]Já tem.\a [src]Instalado!")
+			to_chat(user, "[AI] Já tem.\a [src] Instalado!")
 			return
 		else
 			action.uses += initial(action.uses)
@@ -33,8 +33,8 @@
 			if(gifted_ability.unlock_sound)
 				AI.playsound_local(AI, gifted_ability.unlock_sound, 50, 0)
 		update_static_data(AI)
-	to_chat(user, span_notice("Você instala.[src], atualização[AI]."))
-	to_chat(AI, span_userdanger("[user]Tem melhorado você com[src]!"))
+	to_chat(user, span_notice("Você instala.[src], atualização [AI]."))
+	to_chat(AI, span_userdanger("[user] Tem melhorado você com [src]!"))
 	user.log_message("has upgraded [key_name(AI)] with a [src].", LOG_GAME)
 	qdel(src)
 	return TRUE
@@ -57,15 +57,15 @@
 	var/mob/living/silicon/ai/AI = A
 	if(AI.malf_picker)
 		AI.malf_picker.processing_time += 50
-		to_chat(AI, span_userdanger("[user]tentou atualizá-lo com software de combate que você já possui. Você ganha 50 pontos para gastar em módulos de mau funcionamento."))
+		to_chat(AI, span_userdanger("[user] tentou atualizá-lo com software de combate que você já possui. Você ganha 50 pontos para gastar em módulos de mau funcionamento."))
 	else
-		to_chat(AI, span_userdanger("[user]Atualizou você com software de combate!"))
+		to_chat(AI, span_userdanger("[user] Atualizou você com software de combate!"))
 		to_chat(AI, span_userdanger("Suas leis e objetivos atuais permanecem inalterados.")) //this unlocks malf powers, but does not give the license to plasma flood
 		AI.add_malf_picker()
 		AI.hack_software = TRUE
 		log_silicon("[key_name(user)] has upgraded [key_name(AI)] with a [src].")
 		message_admins("[ADMIN_LOOKUPFLW(user)] has upgraded [ADMIN_LOOKUPFLW(AI)] with a [src].")
-	to_chat(user, span_notice("Você instala.[src], atualização[AI]."))
+	to_chat(user, span_notice("Você instala.[src], atualização [AI]."))
 	qdel(src)
 	return TRUE
 

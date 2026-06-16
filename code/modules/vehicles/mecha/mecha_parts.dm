@@ -15,9 +15,9 @@
 
 /obj/item/mecha_parts/proc/try_attach_part(mob/user, obj/vehicle/sealed/mecha/M, attach_right = FALSE) //For attaching parts to a finished mech
 	if(!user.transferItemToLoc(src, M))
-		to_chat(user, span_warning("\The [src]está preso em sua mão, você não pode colocá-lo em\the [M]!"))
+		to_chat(user, span_warning("\The [src] está preso em sua mão, você não pode colocá-lo em\the [M]!"))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user]APENAS[src]para[M]."), span_notice("Você anexa[src]para[M]."))
+	user.visible_message(span_notice("[user] APENAS [src] para [M]."), span_notice("Você anexa [src] para [M]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/mecha_parts/part/try_attach_part(mob/user, obj/vehicle/sealed/mecha/M, attach_right = FALSE)

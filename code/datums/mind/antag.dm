@@ -198,7 +198,7 @@
 
 	if(creator.is_antag())
 		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
-		to_chat(current, span_userdanger("Apesar das alianças atuais do seu criador, seu verdadeiro mestre permanece.[creator.real_name]Se a lealdade deles mudar, a sua também muda. Isso nunca mudará a menos que o corpo do seu criador seja destruído."))
+		to_chat(current, span_userdanger("Apesar das alianças atuais do seu criador, seu verdadeiro mestre permanece.[creator.real_name] Se a lealdade deles mudar, a sua também muda. Isso nunca mudará a menos que o corpo do seu criador seja destruído."))
 
 /datum/mind/proc/get_all_objectives()
 	var/list/all_objectives = list()

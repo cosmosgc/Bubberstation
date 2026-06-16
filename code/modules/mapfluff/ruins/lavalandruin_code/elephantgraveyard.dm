@@ -242,7 +242,7 @@
 	//player is attempting to open/close the grave with a shovel
 	if(!user.combat_mode)
 		user.visible_message(
-			span_notice("[user]Está tentando[opened ? "close" : "dig open"] [src]."),
+			span_notice("[user] Está tentando[opened ? "close" : "dig open"] [src]."),
 			span_notice("Você começa.[opened ? "closing" : "digging open"] [src]."),
 		)
 		if(!weapon.use_tool(src, user, delay = 15, volume = 40))
@@ -270,13 +270,13 @@
 			return TRUE
 
 		user.visible_message(
-			span_notice("[user]Está tentando remover[src]."),
-			span_notice("Você começa a remover[src]."),
+			span_notice("[user] Está tentando remover [src]."),
+			span_notice("Você começa a remover [src]."),
 		)
 		if(!weapon.use_tool(src, user, delay = 15, volume = 40) || !opened)
 			return TRUE
 
-		to_chat(user, span_notice("Você tira.\the [src]Completamente."))
+		to_chat(user, span_notice("Você tira.\the [src] Completamente."))
 		user.add_mood_event("graverobbing", /datum/mood_event/graverobbing)
 		deconstruct(TRUE)
 		return TRUE
@@ -288,16 +288,16 @@
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	user.visible_message(
-		span_warning("[src]A sujeira começa a mudar e a rugir!"),
+		span_warning("[src] A sujeira começa a mudar e a rugir!"),
 		span_notice("Você desesperadamente começa a arranhar a sujeira em torno de você, tentando forçar-se para cima através do solo...[DisplayTimeText(breakout_time)].)"),
-		span_hear("Você ouve o som de mover sujeira de[src]."),
+		span_hear("Você ouve o som de mover sujeira de [src]."),
 	)
 	if(do_after(user, breakout_time, target = src))
 		if(opened)
 			return
 		user.visible_message(
-			span_danger("[user]emerge de[src]Espalhando sujeira por toda parte!"),
-			span_notice("Você triunfante superfície para fora[src], espalhando terra ao redor do túmulo!"),
+			span_danger("[user] emerge de [src] Espalhando sujeira por toda parte!"),
+			span_notice("Você triunfante superfície para fora [src], espalhando terra ao redor do túmulo!"),
 		)
 		bust_open()
 	else

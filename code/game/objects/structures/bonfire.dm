@@ -83,7 +83,7 @@
 	if(.)
 		return
 	if(burning)
-		to_chat(user, span_warning("Você precisa extinguir.[src]Antes de remover os troncos!"))
+		to_chat(user, span_warning("Você precisa extinguir.[src] Antes de remover os troncos!"))
 		return
 	if(!has_buckled_mobs() && do_after(user, 5 SECONDS, target = src))
 		for(var/obj/item/grown/log/bonfire_log in contents)
@@ -131,11 +131,11 @@
 		var/mob/living/burning_body = entered
 		if(burning_body.on_fire)
 			start_burning()
-			visible_message(span_notice("[entered]Atropela.[src], começando seu fogo!"))
+			visible_message(span_notice("[entered] Atropela.[src], começando seu fogo!"))
 
 	else if(entered.resistance_flags & ON_FIRE)
 		start_burning()
-		visible_message(span_notice("[entered]O nevoeiro se espalha para[src], colocando nevoeiro!"))
+		visible_message(span_notice("[entered] O nevoeiro se espalha para [src], colocando nevoeiro!"))
 
 /obj/structure/bonfire/proc/bonfire_burn(seconds_per_tick = 2)
 	var/turf/current_location = get_turf(src)

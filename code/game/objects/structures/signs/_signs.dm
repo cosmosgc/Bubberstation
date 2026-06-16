@@ -52,12 +52,12 @@
 	. = ..()
 	if(!buildable_sign)
 		return ITEM_INTERACT_FAILURE
-	user.visible_message(span_notice("[user]Começa a remover[src]..."), 		span_notice("Você começa a desapertar[src]."))
+	user.visible_message(span_notice("[user] Começa a remover [src]..."), 		span_notice("Você começa a desapertar [src]."))
 	I.play_tool_sound(src)
 	if(!I.use_tool(src, user, 4 SECONDS))
 		return ITEM_INTERACT_FAILURE
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
-	user.visible_message(span_notice("[user]Se solta.[src]."), 		span_notice("Você desaperta.[src]."))
+	user.visible_message(span_notice("[user] Se solta.[src]."), 		span_notice("Você desaperta.[src]."))
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
@@ -70,10 +70,10 @@
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user]Começa a reparar.[src]..."), 		span_notice("Você começa a reparar[src]."))
+	user.visible_message(span_notice("[user] Começa a reparar.[src]..."), 		span_notice("Você começa a reparar [src]."))
 	if(!I.use_tool(src, user, 4 SECONDS, volume =50 ))
 		return TRUE
-	user.visible_message(span_notice("[user]Termina de reparação.[src]."), 		span_notice("Você termina de consertar.[src]."))
+	user.visible_message(span_notice("[user] Termina de reparação.[src]."), 		span_notice("Você termina de consertar.[src]."))
 	atom_integrity = max_integrity
 	return TRUE
 
@@ -87,7 +87,7 @@
 		if(!Adjacent(user)) //Make sure user is adjacent still.
 			to_chat(user, span_warning("Você precisa ficar ao lado do sinal para mudá-lo!"))
 			return
-		user.visible_message(span_notice("[user]Começa a mudar.[src]."), 			span_notice("Você começa a mudar.[src]."))
+		user.visible_message(span_notice("[user] Começa a mudar.[src]."), 			span_notice("Você começa a mudar.[src]."))
 		if(!do_after(user, 4 SECONDS, target = src)) //Small delay for changing signs instead of it being instant, so somebody could be shoved or stunned to prevent them from doing so.
 			return
 		var/sign_type = GLOB.editable_sign_types[choice]
@@ -99,7 +99,7 @@
 		changedsign.pixel_y = pixel_y
 		changedsign.atom_integrity = atom_integrity
 		qdel(src)
-		user.visible_message(span_notice("[user]Termina de mudar o sinal."), 			span_notice("Você termina de mudar a placa."))
+		user.visible_message(span_notice("[user] Termina de mudar o sinal."), 			span_notice("Você termina de mudar a placa."))
 		return
 	return ..()
 
@@ -196,7 +196,7 @@
 		placed_sign.pixel_x = 32
 	else if(dir & WEST)
 		placed_sign.pixel_x = -32
-	user.visible_message(span_notice("[user]Fixa.[src]Para[target_turf]."), 		span_notice("Você anexa o sinal para[target_turf]."))
+	user.visible_message(span_notice("[user] Fixa.[src] Para [target_turf]."), 		span_notice("Você anexa o sinal para [target_turf]."))
 	playsound(target_turf, 'sound/items/deconstruct.ogg', 50, TRUE)
 	placed_sign.update_integrity(get_integrity())
 	placed_sign.setDir(dir)
@@ -213,10 +213,10 @@
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
-	user.visible_message(span_notice("[user]Começa a reparar.[src]..."), 		span_notice("Você começa a reparar[src]."))
+	user.visible_message(span_notice("[user] Começa a reparar.[src]..."), 		span_notice("Você começa a reparar [src]."))
 	if(!I.use_tool(src, user, 4 SECONDS, volume =50 ))
 		return TRUE
-	user.visible_message(span_notice("[user]Termina de reparação.[src]."), 		span_notice("Você termina de consertar.[src]."))
+	user.visible_message(span_notice("[user] Termina de reparação.[src]."), 		span_notice("Você termina de consertar.[src]."))
 	atom_integrity = max_integrity
 	return TRUE
 
@@ -226,7 +226,7 @@
 /obj/item/sign/proc/set_sign_type(obj/structure/sign/fake_type)
 	name = initial(fake_type.name)
 	if(fake_type != /obj/structure/sign/blank)
-		desc = "[initial(fake_type.desc)]Pode ser colocado em uma parede."
+		desc = "[initial(fake_type.desc)] Pode ser colocado em uma parede."
 	else
 		desc = initial(desc)
 	icon_state = initial(fake_type.icon_state)

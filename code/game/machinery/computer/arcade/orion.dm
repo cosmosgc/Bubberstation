@@ -488,7 +488,7 @@
 
 	user.log_message("emagged [src], activating Realism Mode.", LOG_GAME)
 	balloon_alert(user, "Modo realismo ativado")
-	to_chat(user, span_notice("Você sobrepõe o menu de código de fraude e passa para Cheat #[rand(1, 50)]Modo Realismo."))
+	to_chat(user, span_notice("Você sobrepõe o menu de código de fraude e passa para Cheat #[rand(1, 50)] Modo Realismo."))
 	newgame(user)
 	return TRUE
 
@@ -516,7 +516,7 @@
 		return
 
 	log_bomber(user, "primed an explosive", src, "for detonation")
-	to_chat(user, span_warning("Você liga o interruptor na parte de baixo de[src]."))
+	to_chat(user, span_warning("Você liga o interruptor na parte de baixo de [src]."))
 	active = TRUE
 	addtimer(CALLBACK(src, PROC_REF(commit_explosion)), 1 SECONDS)
 
@@ -535,7 +535,7 @@
 			playsound(loc, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE)
 			time_for_next_level = 0.36 SECONDS
 		if(3 to INFINITY)
-			visible_message(span_userdanger("[src]Explode!"))
+			visible_message(span_userdanger("[src] Explode!"))
 			explosion(src, devastation_range = 2, heavy_impact_range = 4, light_impact_range = 8, flame_range = 16)
 			qdel(src)
 			return

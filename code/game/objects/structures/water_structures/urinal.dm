@@ -32,10 +32,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 		var/mob/living/grabbed_mob = user.pulling
 		if(user.grab_state >= GRAB_AGGRESSIVE)
 			if(grabbed_mob.loc != get_turf(src))
-				to_chat(user, span_notice("[grabbed_mob.name]Precisa está ligada.[src]."))
+				to_chat(user, span_notice("[grabbed_mob.name] Precisa está ligada.[src]."))
 				return
 			user.changeNext_move(CLICK_CD_MELEE)
-			user.visible_message(span_danger("[user]Slams[grabbed_mob]Em[src]!"), span_danger("Você bate[grabbed_mob]Em[src]!"))
+			user.visible_message(span_danger("[user] Slams [grabbed_mob] Em [src]!"), span_danger("Você bate [grabbed_mob] Em [src]!"))
 			grabbed_mob.emote("scream")
 			grabbed_mob.adjust_brute_loss(8)
 		else
@@ -44,7 +44,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 
 	if(exposed)
 		if(hidden_item)
-			to_chat(user, span_notice("Você pesca.[hidden_item]fora do compartimento de drenagem."))
+			to_chat(user, span_notice("Você pesca.[hidden_item] fora do compartimento de drenagem."))
 			user.put_in_hands(hidden_item)
 		else
 			to_chat(user, span_warning("Não há nada no suporte do dreno!"))
@@ -57,13 +57,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 			to_chat(user, span_warning("Já há algo no compartimento de drenagem!"))
 			return
 		if(attacking_item.w_class > WEIGHT_CLASS_TINY)
-			to_chat(user, span_warning("[attacking_item]É muito grande para o compartimento de drenagem."))
+			to_chat(user, span_warning("[attacking_item] É muito grande para o compartimento de drenagem."))
 			return
 		if(!user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("[attacking_item]está preso em sua mão, você não pode colocá-lo no compartimento de drenagem!"))
+			to_chat(user, span_warning("[attacking_item] está preso em sua mão, você não pode colocá-lo no compartimento de drenagem!"))
 			return
 		hidden_item = attacking_item
-		to_chat(user, span_notice("Seu lugar.[attacking_item]Não compartimento de drenagem."))
+		to_chat(user, span_notice("Seu lugar.[attacking_item] Não compartimento de drenagem."))
 		return
 	return ..()
 
@@ -111,6 +111,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/urinal, 32)
 	preserved_food = TRUE
 
 /obj/item/food/urinalcake/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user]Esmaga.[src]!"), span_notice("Você aperta.[src]."), "<i>Você ouve um squish.</i>")
+	user.visible_message(span_notice("[user] Esmaga.[src]!"), span_notice("Você aperta.[src]."), "<i>Você ouve um squish.</i>")
 	icon_state = "urinalcake_squish"
 	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 0.8 SECONDS)

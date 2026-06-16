@@ -169,14 +169,14 @@
 	foldable_result = null
 
 /obj/item/storage/box/hug/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Prende a caixa de abraços.[user.p_their()]Jugular! Acho que não foi uma caixa de abraços."))
+	user.visible_message(span_suicide("[user] Prende a caixa de abraços.[user.p_their()] Jugular! Acho que não foi uma caixa de abraços."))
 	return BRUTELOSS
 
 /obj/item/storage/box/hug/attack_self(mob/user)
 	..()
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, SFX_RUSTLE, 50, vary=TRUE, extrarange=-5)
-	user.visible_message(span_notice("[user]Abraços[src]."),span_notice("Você se abraça.[src]."))
+	user.visible_message(span_notice("[user] Abraços [src]."),span_notice("Você se abraça.[src]."))
 
 /obj/item/storage/box/hug/black
 	icon_state = "hugbox_black"
@@ -206,7 +206,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/storage/box/clown/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Abre.[src]e é consumido por[p_them()]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Abre.[src] e é consumido por [p_them()]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(user, 'sound/misc/scary_horn.ogg', 70, vary = TRUE)
 	forceMove(user.drop_location())
 	var/obj/item/mob_holder/consumed = new(src, user)
@@ -247,14 +247,14 @@
 
 //Duplicated suicide/attack self procs, since the survival boxes are a subtype of box/survival
 /obj/item/storage/box/survival/hug/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Prende a caixa de abraços.[user.p_their()]Jugular! Acho que não foi uma caixa de abraços."))
+	user.visible_message(span_suicide("[user] Prende a caixa de abraços.[user.p_their()] Jugular! Acho que não foi uma caixa de abraços."))
 	return BRUTELOSS
 
 /obj/item/storage/box/survival/hug/attack_self(mob/user)
 	..()
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, SFX_RUSTLE, 50, vary=TRUE, extrarange=-5)
-	user.visible_message(span_notice("[user]Abraços[src]."),span_notice("Você se abraça.[src]."))
+	user.visible_message(span_notice("[user] Abraços [src]."),span_notice("Você se abraça.[src]."))
 
 /obj/item/storage/box/hug/plushes
 	name = "tactical cuddle kit"

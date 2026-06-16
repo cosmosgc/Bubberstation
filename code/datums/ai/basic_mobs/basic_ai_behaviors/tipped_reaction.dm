@@ -20,10 +20,10 @@
 
 	if(prob(75) && savior)
 		var/text = pick("imploringly", "pleadingly", "with a resigned expression")
-		seen_message = "[controller.pawn]Olha só.[savior] [text]."
-		self_message = "Você olha[savior] [text]."
+		seen_message = "[controller.pawn] Olha só.[savior] [text]."
+		self_message = "Você olha [savior] [text]."
 	else
-		seen_message = "[controller.pawn]Parece resignado ao seu destino."
+		seen_message = "[controller.pawn] Parece resignado ao seu destino."
 		self_message = "Você se resigna ao seu destino."
 	controller.pawn.visible_message(span_notice("[seen_message]"), span_notice("[self_message]"))
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED

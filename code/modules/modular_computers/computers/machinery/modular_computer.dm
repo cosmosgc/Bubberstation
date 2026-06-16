@@ -78,7 +78,7 @@
 	. = cpu?.examine(user) || ..()
 	. += span_info("Você pode alternar a interação entre o computador e sua estrutura de máquinas com[EXAMINE_HINT("Right-Click")]enquanto de mãos vazias.")
 	var/frame_or_pc = HAS_TRAIT_FROM(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user)) ? "frame" : "computer"
-	. += span_info("Atualmente interagindo com[EXAMINE_HINT(frame_or_pc)].")
+	. += span_info("Atualmente interagindo com [EXAMINE_HINT(frame_or_pc)].")
 
 /obj/machinery/modular_computer/attack_ghost(mob/dead/observer/user)
 	. = ..()

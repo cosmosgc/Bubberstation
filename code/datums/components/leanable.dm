@@ -96,8 +96,8 @@
 	add_offsets(LEANING_TRAIT, x_add = new_x, y_add = new_y)
 	add_traits(list(TRAIT_UNDENSE, TRAIT_EXPANDED_FOV), LEANING_TRAIT)
 	visible_message(
-		span_notice("[src]Encosta-se contra[lean_target]."),
-		span_notice("Você se inclina contra[lean_target]."),
+		span_notice("[src] Encosta-se contra [lean_target]."),
+		span_notice("Você se inclina contra [lean_target]."),
 	)
 	RegisterSignals(src, list(
 		COMSIG_MOB_CLIENT_PRE_MOVE,
@@ -116,7 +116,7 @@
 	// Make sure we unregister signal handlers and reset animation
 	stop_leaning()
 	// -1000 aura
-	visible_message(span_notice("[src]Queda plana sobre[p_their()]face de perder[p_their()]Equilíbrio!"), span_warning("Você cai de repente quando o objeto que você estava apoiando desaparece do contato com você!"))
+	visible_message(span_notice("[src] Queda plana sobre [p_their()] face de perder [p_their()] Equilíbrio!"), span_warning("Você cai de repente quando o objeto que você estava apoiando desaparece do contato com você!"))
 	Knockdown(3 SECONDS)
 
 /mob/living/proc/stop_leaning()

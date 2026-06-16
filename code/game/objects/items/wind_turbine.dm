@@ -177,7 +177,7 @@
 		return
 	user.Paralyze(5)
 	user.Knockdown(10)
-	user.visible_message(span_danger("[user]é golpeado na cabeça pelo[src]Está girando lâminas!"), span_userdanger("Você é atingido na cabeça pelo[src]E cair!"))
+	user.visible_message(span_danger("[user] é golpeado na cabeça pelo [src] Está girando lâminas!"), span_userdanger("Você é atingido na cabeça pelo [src] E cair!"))
 	// imaginary friends call sleep in their emotes
 	// even though imaginary friends can't put on a wind turbine I still have to do this
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/, emote), "scream")
@@ -197,15 +197,15 @@
 	. = ..()
 
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("Você está muito longe para examinar.[src]O conteúdo! Você ainda pode vê-lo girar tão maravilhosamente embora...")
+		. += span_warning("Você está muito longe para examinar.[src] O conteúdo! Você ainda pode vê-lo girar tão maravilhosamente embora...")
 		if (charging && istype(charging,/obj/item/melee/baton/security/))
-			. += span_info("Você pode ver o[charging]Pendurando precariamente no porto de carga...")
+			. += span_info("Você pode ver o [charging] Pendurando precariamente no porto de carga...")
 		return
 
 	if(cap)
-		. += span_info("Clique com uma chave de fenda para ejetar o[cap].")
+		. += span_info("Clique com uma chave de fenda para ejetar o [cap].")
 	. += span_info("Esmagá-lo em uma telha para ancorar e aproveitar o vento espacial.")
-	. += span_info("A turbina eólica está armazenando[floor(available_power / 100) / 10]KJ.")
+	. += span_info("A turbina eólica está armazenando [floor(available_power / 100) / 10] KJ.")
 	if(charging)
 		. += {"[span_notice("\The [src] contains:")]
 		[span_notice("- \A [charging].")]"}
@@ -213,7 +213,7 @@
 /obj/item/portable_wind_turbine/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(charging)
-		user.balloon_alert(user, "Remova o[charging]Primeiro!")
+		user.balloon_alert(user, "Remova o [charging] Primeiro!")
 		return FALSE
 	if(cap)
 		tool.play_tool_sound(src, 50)
@@ -250,7 +250,7 @@
 			return TRUE
 		user.transferItemToLoc(attacking_item, src)
 		cap = attacking_item
-		balloon_alert(user, "inserido o[attacking_item]")
+		balloon_alert(user, "inserido o [attacking_item]")
 		return TRUE
 	if(!is_type_in_typecache(attacking_item, allowed_devices))
 		return ..()

@@ -28,7 +28,7 @@
 		if(voting_active)
 			apply_vote(I,user)
 		else
-			to_chat(user,span_warning("[src]está em modo de manutenção. A votação não é possível no momento."))
+			to_chat(user,span_warning("[src] está em modo de manutenção. A votação não é possível no momento."))
 		return
 	return ..()
 
@@ -90,7 +90,7 @@
 
 /obj/structure/votebox/proc/register_owner(obj/item/card/id/I,mob/living/user)
 	owner = I
-	to_chat(user,span_notice("Você se registra.[src]ao seu cartão de identidade."))
+	to_chat(user,span_notice("Você se registra.[src] ao seu cartão de identidade."))
 	ui_interact(user)
 
 /obj/structure/votebox/proc/set_description(mob/user)
@@ -105,10 +105,10 @@
 	var/obj/item/card/id/voter_card = user.get_idcard()
 	if(id_auth)
 		if(!voter_card)
-			to_chat(user,span_warning("[src]requer um cartão de identidade válido para votar!"))
+			to_chat(user,span_warning("[src] requer um cartão de identidade válido para votar!"))
 			return
 		if(voted && (voter_card in voted))
-			to_chat(user,span_warning("[src]Permita um voto por pessoa."))
+			to_chat(user,span_warning("[src] Permita um voto por pessoa."))
 			return
 	if(user.transferItemToLoc(I,src))
 		if(!voted)
@@ -157,11 +157,11 @@
 	for(var/obj/item/paper/P in contents)
 		options += P
 	if(!length(options))
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 	else
 		var/obj/item/paper/P = pick(options)
 		user.put_in_hands(P)
-		to_chat(user, span_notice("[src]O voto é aleatório."))
+		to_chat(user, span_notice("[src] O voto é aleatório."))
 
 /obj/structure/votebox/proc/print_tally(mob/user)
 	var/list/results = list()
@@ -214,7 +214,7 @@
 	vote_tally_paper.name = "Voting Results"
 	vote_tally_paper.update_appearance()
 	user.put_in_hands(vote_tally_paper)
-	to_chat(user,span_notice("[src]Imprima a contagem de votos."))
+	to_chat(user,span_notice("[src] Imprima a contagem de votos."))
 
 /obj/structure/votebox/update_icon_state()
 	icon_state = "votebox_[voting_active ? "active" : "maint"]"

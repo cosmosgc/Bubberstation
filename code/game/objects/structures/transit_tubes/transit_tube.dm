@@ -38,7 +38,7 @@
 			for(var/obj/structure/transit_tube_pod/pod in src.loc)
 				to_chat(user, span_warning("Tire a cápsula primeiro!"))
 				return
-			user.visible_message(span_notice("[user]Começa a se separar.\the [src]."), span_notice("Você começa a se separar\the [src]..."))
+			user.visible_message(span_notice("[user] Começa a se separar.\the [src]."), span_notice("Você começa a se separar\the [src]..."))
 			if(W.use_tool(src, user, 2 SECONDS, volume=50))
 				to_chat(user, span_notice("Você se desprende.\the [src]."))
 				var/obj/structure/c_transit_tube/R = new tube_construction(loc)

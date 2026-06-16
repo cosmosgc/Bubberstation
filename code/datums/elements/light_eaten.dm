@@ -65,7 +65,7 @@
 	examine_text += span_warning("Está escuro e vazio...")
 	if(isliving(examiner) && prob(20))
 		var/mob/living/target = examiner
-		examine_text += span_danger("Você pode sentir algo dentro[eaten_light.p_them()]Rasgue seus olhos!")
+		examine_text += span_danger("Você pode sentir algo dentro [eaten_light.p_them()] Rasgue seus olhos!")
 		target.adjust_temp_blindness(10 SECONDS)
 		target.set_eye_blur_if_lower(20 SECONDS)
 	return NONE

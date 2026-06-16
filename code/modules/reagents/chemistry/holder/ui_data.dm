@@ -161,7 +161,7 @@
 		var/container_name
 		if(reaction.required_container)
 			var/list/names = splittext("[reaction.required_container]", "/")
-			container_name = "[names[names.len-1]] [names[names.len]]"
+			container_name = "[names [names.len-1]] [names [names.len]]"
 			container_name = replacetext(container_name, "_", " ")
 
 		//Next, find the product

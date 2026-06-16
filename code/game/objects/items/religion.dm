@@ -29,9 +29,9 @@
 	if(!inspiration_available || flags_1 & HOLOGRAM_1)
 		return
 	if(morale_time > world.time)
-		to_chat(user, span_warning("Você não está se sentindo inspirado o suficiente para florescer.[src]Mais uma vez."))
+		to_chat(user, span_warning("Você não está se sentindo inspirado o suficiente para florescer.[src] Mais uma vez."))
 		return
-	user.visible_message("<span class='big notice'>[user]floresce[src]!</span>", 	span_notice("Você levanta.[src]Para o céu, inspirando seus aliados!"))
+	user.visible_message("<span class='big notice'>[user] floresce [src]!</span>", 	span_notice("Você levanta.[src] Para o céu, inspirando seus aliados!"))
 	playsound(src, SFX_RUSTLE, 100, FALSE)
 	if(warcry)
 		user.say("[warcry]", forced="banner")
@@ -58,7 +58,7 @@
 	for(var/V in inspired)
 		var/mob/living/carbon/human/H = V
 		if(H != user)
-			to_chat(H, span_notice("Sua confiança aumenta como[user]floresce[user.p_their()] [name]!"))
+			to_chat(H, span_notice("Sua confiança aumenta como [user] floresce [user.p_their()] [name]!"))
 		inspiration(H)
 		special_inspiration(H)
 
@@ -345,7 +345,7 @@
 	if(staffcooldown + staffwait > world.time)
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user]Canta profundamente e ondas[user.p_their()]Pessoal!"))
+	user.visible_message(span_notice("[user] Canta profundamente e ondas [user.p_their()] Pessoal!"))
 	if(do_after(user, 2 SECONDS, interacting_with))
 		interacting_with.add_atom_colour(conversion_color, WASHABLE_COLOUR_PRIORITY) //wololo
 	staffcooldown = world.time

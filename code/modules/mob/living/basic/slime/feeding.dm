@@ -72,11 +72,11 @@
 		layer = MOB_ABOVE_PIGGYBACK_LAYER //appear above the target mob
 		target_mob.apply_status_effect(/datum/status_effect/slime_leech, src)
 		target_mob.visible_message(
-			span_danger("[name]Encaixotar[target_mob]!"),
-			span_userdanger("[name]Encaixotar[target_mob]!"),
+			span_danger("[name] Encaixotar [target_mob]!"),
+			span_userdanger("[name] Encaixotar [target_mob]!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
-		to_chat(src, span_notice("<i>Eu começo a me alimentar[target_mob]...</i>"))
+		to_chat(src, span_notice("<i>Eu começo a me alimentar [target_mob]...</i>"))
 		balloon_alert(src, "A alimentação começou.")
 	else
 		balloon_alert(src, "A trava falhou!")
@@ -87,7 +87,7 @@
 		return
 
 	if(!silent)
-		visible_message(span_warning("[src]Vamos.[buckled]!"), span_notice("Solte-me.[buckled]"))
+		visible_message(span_warning("[src] Vamos.[buckled]!"), span_notice("Solte-me.[buckled]"))
 		balloon_alert(src, "A alimentação parou.")
 	remove_offsets(FEEDING_OFFSET)
 	layer = initial(layer)

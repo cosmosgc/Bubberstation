@@ -67,7 +67,7 @@
 
 /// I love eating diamonds yum
 /mob/living/basic/mining/watcher/proc/consume(atom/movable/thing)
-	visible_message(span_warning("[thing]Parece Desapareça em[src]Ó corpo!"))
+	visible_message(span_warning("[thing] Parece Desapareça em [src] Ó corpo!"))
 	thing.forceMove(src)
 
 /// More durable, burning projectiles

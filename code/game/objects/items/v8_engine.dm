@@ -96,7 +96,7 @@
 	if(fire_charges <= 0)
 		balloon_alert(user, "Sem acusações de incêndio!")
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_boldnotice("Você aponta para[interacting_with]..."))
+	to_chat(user, span_boldnotice("Você aponta para [interacting_with]..."))
 	user.add_shared_particles(/particles/bonfire)
 
 	if(!do_after(user, SLASH_WINDUP, target = src))
@@ -154,7 +154,7 @@
 		projectile.damage /= 2 // The damage is pretty solid normally, but with the explosion and all the RNG that comes with, it's nearly a 1-shot. This evens a playing field a bit.
 	projectile.fire(null, interacting_with)
 
-	user.visible_message(span_danger("[user]Faz...[upgraded ? " devastating" : "" ]Em Chamas Cortam em[interacting_with]!"),		span_notice("Você pega um golpe em chamas[interacting_with]!"))
+	user.visible_message(span_danger("[user] Faz...[upgraded ? " devastating" : "" ] Em Chamas Cortam em [interacting_with]!"),		span_notice("Você pega um golpe em chamas [interacting_with]!"))
 	playsound(src, 'sound/items/modsuit/flamethrower.ogg', vol = 75, vary = FALSE, extrarange = 3)
 	playsound(src, 'sound/items/weapons/slash.ogg', vol = 50, vary = FALSE, extrarange = 3)
 

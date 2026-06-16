@@ -142,8 +142,8 @@
 	if(patient == user)
 		if(!silent)
 			user.visible_message(
-				span_notice("[user]começa a aplicar[src]Vamos.[user.p_them()]Eu..."),
-				span_notice("Você começa a aplicar[src]Em você mesmo..."),
+				span_notice("[user] começa a aplicar [src] Vamos.[user.p_them()] Eu..."),
+				span_notice("Você começa a aplicar [src] Em você mesmo..."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		if(!do_after(
@@ -161,8 +161,8 @@
 	else if(other_delay)
 		if(!silent)
 			user.visible_message(
-				span_notice("[user]começa a aplicar[src]Vamos.[patient]."),
-				span_notice("Você começa a aplicar[src]Vamos.[patient]..."),
+				span_notice("[user] começa a aplicar [src] Vamos.[patient]."),
+				span_notice("Você começa a aplicar [src] Vamos.[patient]..."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		if(!do_after(
@@ -180,8 +180,8 @@
 	else
 		if(!silent)
 			user.visible_message(
-				span_notice("[user]Aplicável[src]Vamos.[patient]."),
-				span_notice("Você se candidata.[src]Vamos.[patient]."),
+				span_notice("[user] Aplicável [src] Vamos.[patient]."),
+				span_notice("Você se candidata.[src] Vamos.[patient]."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 
@@ -271,7 +271,7 @@
 		return FALSE
 	if(!works_on_dead && patient.stat == DEAD)
 		if(!silent)
-			patient.balloon_alert(user, "[patient.p_theyre()]Morto!")
+			patient.balloon_alert(user, "[patient.p_theyre()] Morto!")
 		return FALSE
 
 	if(iscarbon(patient))
@@ -283,7 +283,7 @@
 			return FALSE
 		if(!IS_ORGANIC_LIMB(affecting)) //Limb must be organic to be healed - RR
 			if(!silent)
-				carbon_patient.balloon_alert(user, "[affecting.plaintext_zone]Não é orgânico!")
+				carbon_patient.balloon_alert(user, "[affecting.plaintext_zone] Não é orgânico!")
 			return FALSE
 
 		var/datum/wound/burn/flesh/any_burn_wound = locate() in affecting.wounds
@@ -295,20 +295,20 @@
 		if(!brute_to_heal && !burn_to_heal && !can_heal_burn_wounds && !can_suture_bleeding)
 			if(!silent)
 				if(!brute_to_heal && stop_bleeding) // no brute, no bleeding
-					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone]Não está sangrando ou machucado!")
+					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone] Não está sangrando ou machucado!")
 				else if(!burn_to_heal && (flesh_regeneration || sanitization) && any_burn_wound) // no burns, existing burn wounds are treated
-					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone]é totalmente tratado, dê-lhe tempo!")
+					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone] é totalmente tratado, dê-lhe tempo!")
 				else if(!affecting.brute_dam && !affecting.burn_dam) // not hurt at all
-					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone]Não está ferido!")
+					carbon_patient.balloon_alert(user, "[affecting.plaintext_zone] Não está ferido!")
 				else // probably hurt in some way but we are not the right item for this
-					carbon_patient.balloon_alert(user, "Não posso curar.[affecting.plaintext_zone]Com[name]!")
+					carbon_patient.balloon_alert(user, "Não posso curar.[affecting.plaintext_zone] Com [name]!")
 			return FALSE
 		return TRUE
 
 	if(isanimal_or_basicmob(patient))
 		if(!heal_brute) // only brute can heal
 			if(!silent)
-				patient.balloon_alert(user, "Não pode curar com[name]!")
+				patient.balloon_alert(user, "Não pode curar com [name]!")
 			return FALSE
 		if(!(patient.mob_biotypes & MOB_ORGANIC))
 			if(!silent)
@@ -328,8 +328,8 @@
 /obj/item/stack/medical/proc/heal_carbon(mob/living/carbon/patient, mob/living/user, healed_zone)
 	var/obj/item/bodypart/affecting = patient.get_bodypart(healed_zone)
 	user.visible_message(
-		span_green("[user]Aplicável[src]Vamos.[patient]'s[affecting.plaintext_zone]."),
-		span_green("Você se candidata.[src]Vamos.[patient]'s[affecting.plaintext_zone]."),
+		span_green("[user] Aplicável [src] Vamos.[patient]'s [affecting.plaintext_zone]."),
+		span_green("Você se candidata.[src] Vamos.[patient]'s [affecting.plaintext_zone]."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	var/previous_damage = affecting.get_damage()
@@ -354,8 +354,8 @@
 /obj/item/stack/medical/proc/heal_simplemob(mob/living/patient, mob/living/user)
 	patient.adjust_brute_loss(-1 * (heal_brute * patient.maxHealth / 100))
 	user.visible_message(
-		span_green("[user]Aplicável[src]Vamos.[patient]."),
-		span_green("Você se candidata.[src]Vamos.[patient]."),
+		span_green("[user] Aplicável [src] Vamos.[patient]."),
+		span_green("Você se candidata.[src] Vamos.[patient]."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	return TRUE
@@ -381,7 +381,7 @@
 	return list(/datum/reagent/medicine/c2/libital = 10)
 
 /obj/item/stack/medical/bruise_pack/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está batendo[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está batendo [user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/stack/medical/wrap
@@ -442,20 +442,20 @@
 		treatment_delay *= 0.5
 		if(user == patient)
 			user.visible_message(
-				span_warning("[user]Começa habilmente embrulhando as feridas em[p_their()]'s[limb.plaintext_zone]Com[src]..."),
-				span_warning("Você começa rapidamente a embrulhar as feridas em seu[limb.plaintext_zone]Com[src], mantendo as indicações de holo-imagem em mente ..."),
+				span_warning("[user] Começa habilmente embrulhando as feridas em [p_their()]'s [limb.plaintext_zone] Com [src]..."),
+				span_warning("Você começa rapidamente a embrulhar as feridas em seu [limb.plaintext_zone] Com [src], mantendo as indicações de holo-imagem em mente ..."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		else
 			user.visible_message(
-				span_warning("[user]Começa habilmente embrulhando as feridas em[patient]'s[limb.plaintext_zone]Com[src]..."),
-				span_warning("Você começa rapidamente a embrulhar as feridas.[patient]'s[limb.plaintext_zone]Com[src], mantendo as indicações de holo-imagem em mente ..."),
+				span_warning("[user] Começa habilmente embrulhando as feridas em [patient]'s [limb.plaintext_zone] Com [src]..."),
+				span_warning("Você começa rapidamente a embrulhar as feridas.[patient]'s [limb.plaintext_zone] Com [src], mantendo as indicações de holo-imagem em mente ..."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 	else
 		user.visible_message(
-			span_warning("[user]Começa a embrulhar as feridas.[patient]'s[limb.plaintext_zone]Com[src]..."),
-			span_warning("Você começa a embrulhar as feridas.[user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]Com[src]..."),
+			span_warning("[user] Começa a embrulhar as feridas.[patient]'s [limb.plaintext_zone] Com [src]..."),
+			span_warning("Você começa a embrulhar as feridas.[user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone] Com [src]..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	if(heal_begin_sound)
@@ -470,9 +470,9 @@
 
 /// Callback for limb applicability component
 /obj/item/stack/medical/wrap/proc/on_gauze_limb(mob/user, mob/living/patient, obj/item/bodypart/limb)
-	patient.balloon_alert(user, "Envolto[limb.plaintext_zone]")
+	patient.balloon_alert(user, "Envolto [limb.plaintext_zone]")
 	user.visible_message(
-		span_green("[user]Aplicável[src]Para[patient]'s[limb.plaintext_zone]."),
+		span_green("[user] Aplicável [src] Para [patient]'s [limb.plaintext_zone]."),
 		span_green("Você enfaixa as feridas.[user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
@@ -532,9 +532,9 @@
 			return ITEM_INTERACT_BLOCKING
 		new /obj/item/stack/sheet/cloth(tool.drop_location())
 		if(IsReachableBy(user))
-			user.visible_message(span_notice("[user]Cortes.[src]em pedaços de pano com[tool]."), 				span_notice("Você cortou.[src]em pedaços de pano com[tool]."), 				span_hear("Você ouve o corte."))
+			user.visible_message(span_notice("[user] Cortes.[src] em pedaços de pano com [tool]."), 				span_notice("Você cortou.[src] em pedaços de pano com [tool]."), 				span_hear("Você ouve o corte."))
 		else //telekinesis
-			visible_message(span_notice("[tool]Cortes.[src]em pedaços de pano."), 				blind_message = span_hear("Você ouve o corte."))
+			visible_message(span_notice("[tool] Cortes.[src] em pedaços de pano."), 				blind_message = span_hear("Você ouve o corte."))
 		use(2)
 		return ITEM_INTERACT_SUCCESS
 
@@ -542,7 +542,7 @@
 
 
 /obj/item/stack/medical/wrap/gauze/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a apertar.[src]Por aí.[user.p_their()]pescoço! Parece que...[user.p_they()]Esqueci como usar suprimentos médicos!"))
+	user.visible_message(span_suicide("[user] Começa a apertar.[src] Por aí.[user.p_their()] pescoço! Parece que...[user.p_they()] Esqueci como usar suprimentos médicos!"))
 	return OXYLOSS
 
 /obj/item/stack/medical/wrap/gauze/improvised
@@ -625,7 +625,7 @@
 	return list(/datum/reagent/medicine/c2/lenturi = 10)
 
 /obj/item/stack/medical/ointment/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está apertando[src]Em[user.p_their()]Boca![user.p_do(TRUE)]Não.[user.p_they()]Sabe que isso é tóxico?"))
+	user.visible_message(span_suicide("[user] está apertando [src] Em [user.p_their()] Boca![user.p_do(TRUE)] Não.[user.p_they()] Sabe que isso é tóxico?"))
 	return TOXLOSS
 
 /obj/item/stack/medical/mesh
@@ -768,9 +768,9 @@
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/patient = user
-	patient.visible_message(span_suicide("[patient]está esguichando todo[src]Em[patient.p_their()]Boca! Não é um procedimento adequado! Parece que...[patient.p_theyre()]Tentando cometer suicídio!"))
+	patient.visible_message(span_suicide("[patient] está esguichando todo [src] Em [patient.p_their()] Boca! Não é um procedimento adequado! Parece que...[patient.p_theyre()] Tentando cometer suicídio!"))
 	if(!do_after(patient, 2 SECONDS))
-		patient.visible_message(span_suicide("[patient]Estraga tudo como um idiota e ainda morre!"))
+		patient.visible_message(span_suicide("[patient] Estraga tudo como um idiota e ainda morre!"))
 		return BRUTELOSS
 
 	patient.emote("scream")

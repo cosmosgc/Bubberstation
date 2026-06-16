@@ -135,5 +135,5 @@ among other potential differences. This granularity is helpful for things like t
 /obj/projectile/bullet/rocket/reverse/fire(angle, atom/direct_target)
 	..()
 	if(firer) //troll
-		firer.visible_message(span_danger("[src]Exploda assim que[firer]Atire!"))
+		firer.visible_message(span_danger("[src] Exploda assim que [firer] Atire!"))
 		on_hit(firer)

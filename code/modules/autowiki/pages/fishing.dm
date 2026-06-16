@@ -364,7 +364,7 @@
 /datum/autowiki/fish_scan/proc/build_rewards(datum/experiment/scanning/fish/scan, list/generated_icons)
 	var/output = ""
 	var/datum/fish_source/portal/reward = GLOB.preset_fish_sources[scan.fish_source_reward]
-	var/filename = SANITIZE_FILENAME("fishing_portal_[reward.radial_state]")
+	var/filename = SANITIZE_FILENAME("fishing_portal_ [reward.radial_state]")
 
 	var/list/unlocks = list()
 	for(var/datum/experiment/unlock as anything in scan.next_experiments)

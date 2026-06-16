@@ -120,7 +120,7 @@
 		. += latches
 
 /obj/item/storage/toolbox/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Robustos.[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Robustos.[user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 //repairbot assembly

@@ -68,12 +68,12 @@
 
 /obj/item/gun/syringe/examine(mob/user)
 	. = ..()
-	. += span_notice("Pode esperar.[max_syringes]Seringa. Tem.[syringes.len]Seringa Restante.")
+	. += span_notice("Pode esperar.[max_syringes] Seringa. Tem.[syringes.len] Seringa Restante.")
 	if (low_power)
 		. += span_notice("Seu regulador de pressão está ajustado para o modo de baixa potência, certificando-se que as seringas injetadas irão incorporar e lentamente sangrar seus reagentes em seu alvo.")
 	else
 		. += span_notice("Seu regulador de pressão é ativado ao máximo, injetando instantaneamente os reagentes ao custo de quebrar as seringas disparadas.")
-	. += span_notice("Botão direito[src]Na mão para mudar para[low_power ? "full" : "low"]Poder.")
+	. += span_notice("Botão direito [src] Na mão para mudar para[low_power ? "full" : "low"]Poder.")
 
 /obj/item/gun/syringe/attack_self(mob/living/user, list/modifiers)
 	if (!syringes.len)
@@ -87,7 +87,7 @@
 	user.put_in_hands(syringe)
 
 	syringes.Remove(syringe)
-	balloon_alert(user, "[syringe.name]Descarregado")
+	balloon_alert(user, "[syringe.name] Descarregado")
 	update_appearance()
 	return TRUE
 
@@ -108,7 +108,7 @@
 
 /obj/item/gun/syringe/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/reagent_containers/syringe/bluespace))
-		balloon_alert(user, "[tool.name]É muito grande!")
+		balloon_alert(user, "[tool.name] É muito grande!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!istype(tool, /obj/item/reagent_containers/syringe))
@@ -121,7 +121,7 @@
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "[tool.name]Carregado.")
+	balloon_alert(user, "[tool.name] Carregado.")
 	syringes += tool
 	recharge_newshot()
 	update_appearance()
@@ -195,12 +195,12 @@
 	if(istype(tool, /obj/item/dnainjector))
 		var/obj/item/dnainjector/D = tool
 		if(D.used)
-			balloon_alert(user, "[D.name]Está esgotado!")
+			balloon_alert(user, "[D.name] Está esgotado!")
 			return ITEM_INTERACT_BLOCKING
 		if(syringes.len < max_syringes)
 			if(!user.transferItemToLoc(D, src))
 				return ITEM_INTERACT_BLOCKING
-			balloon_alert(user, "[D.name]Carregado.")
+			balloon_alert(user, "[D.name] Carregado.")
 			syringes += D
 			recharge_newshot()
 			update_appearance()
@@ -236,6 +236,6 @@
 	. = ..()
 	if(!.)
 		return
-	visible_message(span_danger("[user]Átira na Arma!"))
+	visible_message(span_danger("[user] Átira na Arma!"))
 	user.adjust_stamina_loss(20, updating_stamina = FALSE)
 	user.adjust_oxy_loss(20)

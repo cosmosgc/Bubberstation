@@ -4,7 +4,7 @@
 		var/obj/item/ai_module/MOD = W
 		disconnect_shell()
 		if(!mind) //A player mind is required for law procs to run antag checks.
-			to_chat(user, span_warning("[src]Não responde completamente!"))
+			to_chat(user, span_warning("[src] Não responde completamente!"))
 			return
 		MOD.install(laws, user) //Proc includes a success mesage so we don't need another one
 		return
@@ -109,16 +109,16 @@
 		if(mind)
 			consent = tgui_alert(src, "[user] is attempting to open your access panel, unlock the cover?", "AI Access Panel", list("Yes", "No"))
 			if(consent == "No" && !consent_override && !emagged)
-				to_chat(user, span_notice("[src]Se recusa a abrir seu painel de acesso."))
+				to_chat(user, span_notice("[src] Se recusa a abrir seu painel de acesso."))
 				return ITEM_INTERACT_SUCCESS
 			if(consent != "Yes" && (consent_override || emagged))
-				to_chat(user, span_warning("[src]Se você quiser abrir o painel de acesso.[!emagged ? " swipe your ID and " : " "]Abra mesmo assim!"))
+				to_chat(user, span_warning("[src] Se você quiser abrir o painel de acesso.[!emagged ? " swipe your ID and " : " "]Abra mesmo assim!"))
 		else
 			if(!consent_override && !emagged)
-				to_chat(user, span_notice("[src]Não respondeu ao seu pedido para abrir o painel de acesso."))
+				to_chat(user, span_notice("[src] Não respondeu ao seu pedido para abrir o painel de acesso."))
 				return ITEM_INTERACT_SUCCESS
 			else
-				to_chat(user, span_notice("[src]Não respondeu ao seu pedido para abrir o painel de acesso. Você.[!emagged ? " swipe your ID and " : " "]Abra mesmo assim."))
+				to_chat(user, span_notice("[src] Não respondeu ao seu pedido para abrir o painel de acesso. Você.[!emagged ? " swipe your ID and " : " "]Abra mesmo assim."))
 
 	balloon_alert(user, "Investigado painel de acesso aberto...")
 	balloon_alert(src, "Painel de acesso sendo aberto...")

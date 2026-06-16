@@ -599,7 +599,7 @@
 
 /// by default, returns the eyes' penlight_message var as a notice span. May do other things when overridden, such as eldritch insanity, or eye damage, or whatnot. Whatever you want, really.
 /obj/item/organ/eyes/proc/penlight_examine(mob/living/viewer)
-	return span_notice("[owner.p_Their()]Olhos.[penlight_message].")
+	return span_notice("[owner.p_Their()] Olhos.[penlight_message].")
 
 #define NIGHTVISION_LIGHT_OFF 0
 #define NIGHTVISION_LIGHT_LOW 1

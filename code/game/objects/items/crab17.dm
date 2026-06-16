@@ -82,7 +82,7 @@
 
 	var/obj/item/card/id/card = attacking_item.GetID()
 	if(!card)
-		balloon_alert(user, "Sua[attacking_item.name]É repelido pelo leitor de cartões")
+		balloon_alert(user, "Sua [attacking_item.name] É repelido pelo leitor de cartões")
 
 		var/throwtarget = get_step(user, get_dir(src, user))
 		user.safe_throw_at(throwtarget, 1, 1, force = MOVE_FORCE_EXTREMELY_STRONG)

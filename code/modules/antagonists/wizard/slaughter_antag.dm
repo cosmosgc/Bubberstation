@@ -54,9 +54,9 @@
 		report += printobjectives(objectives)
 
 	if(consume_count > 0)
-		report += span_greentext("O[name]consumiu um total de[consume_count]Corpos!")
+		report += span_greentext("O [name] consumiu um total de [consume_count] Corpos!")
 	else
-		report += span_redtext("O[name]Não consumiu ninguém! Vergonha!")
+		report += span_redtext("O [name] Não consumiu ninguém! Vergonha!")
 
 	if(isnull(owner.current) || owner.current.stat == DEAD) //demons delete on death but if someone makes like a subtype that doesnt we also check for stat
 		report += "<span class='redtext big'>The [name] was vanquished!</span>"

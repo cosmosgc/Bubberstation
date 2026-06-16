@@ -61,18 +61,18 @@
 		owner.set_jitter_if_lower(30 SECONDS)
 
 	if(strikes_left == 0)
-		owner.visible_message(span_danger("[owner]A pele vira pó!"), span_boldwarning("Sua pele vira pó!"))
+		owner.visible_message(span_danger("[owner] A pele vira pó!"), span_boldwarning("Sua pele vira pó!"))
 		owner.dust()
 		return
 
 /datum/status_effect/decloning/get_examine_text()
 	switch(strikes_left)
 		if(68 to 100)
-			return span_warning("[owner.p_Their()]O corpo parece um pouco deformado.")
+			return span_warning("[owner.p_Their()] O corpo parece um pouco deformado.")
 		if(34 to 67)
-			return span_warning("[owner.p_Their()]O corpo parece<b>Muito.</b>Deformado.")
+			return span_warning("[owner.p_Their()] O corpo parece<b>Muito.</b>Deformado.")
 		if(-INFINITY to 33)
-			return span_boldwarning("[owner.p_Their()]O corpo parece severamente deformado!")
+			return span_boldwarning("[owner.p_Their()] O corpo parece severamente deformado!")
 
 /atom/movable/screen/alert/status_effect/decloning
 	name = "Cellular Meltdown"

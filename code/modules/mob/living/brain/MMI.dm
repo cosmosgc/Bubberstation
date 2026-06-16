@@ -57,7 +57,7 @@
 			to_chat(user, span_warning("Já tem um cérebro no MMI!"))
 			return
 		if(newbrain.suicided)
-			to_chat(user, span_warning("[newbrain]é completamente inútil."))
+			to_chat(user, span_warning("[newbrain] é completamente inútil."))
 			return
 		if(!newbrain.brainmob)
 			var/install = tgui_alert(user, "[newbrain]Está inativo?", "Installing Brain", list("Yes", "No"))
@@ -65,7 +65,7 @@
 				return
 			if(!user.transferItemToLoc(newbrain, src))
 				return
-			user.visible_message(span_notice("[user]Palitos[newbrain]em[src]."), span_notice("[src]A luz indicadora fica vermelha enquanto você insere[newbrain]Seu alarme de atividade cerebral soa."))
+			user.visible_message(span_notice("[user] Palitos [newbrain] em [src]."), span_notice("[src] A luz indicadora fica vermelha enquanto você insere [newbrain] Seu alarme de atividade cerebral soa."))
 			brain = newbrain
 			brain.organ_flags |= ORGAN_FROZEN
 			name = "[initial(name)]: [copytext(newbrain.name, 1, -8)]"
@@ -77,7 +77,7 @@
 		var/mob/living/brain/B = newbrain.brainmob
 		if(!B.key && !newbrain.decoy_override)
 			B.notify_revival("Someone has put your brain in a MMI!", source = src)
-		user.visible_message(span_notice("[user]Palitos\a [newbrain]em[src]."), span_notice("[src]A luz indicadora acende enquanto você insere[newbrain]."))
+		user.visible_message(span_notice("[user] Palitos\a [newbrain] em [src]."), span_notice("[src] A luz indicadora acende enquanto você insere [newbrain]."))
 
 		set_brainmob(newbrain.brainmob)
 		newbrain.brainmob = null
@@ -87,10 +87,10 @@
 		if(!fubar_brain && !(newbrain.organ_flags & ORGAN_FAILING)) // the brain organ hasn't been beaten to death, nor was from a suicider.
 			brainmob.set_stat(CONSCIOUS) //we manually revive the brain mob
 		else if(!fubar_brain && newbrain.organ_flags & ORGAN_FAILING) // the brain is damaged, but not from a suicider
-			to_chat(user, span_warning("[src]A luz indicadora fica amarela e seu alarme de integridade cerebral apita suavemente. Talvez deva verificar.[newbrain]Por danos."))
+			to_chat(user, span_warning("[src] A luz indicadora fica amarela e seu alarme de integridade cerebral apita suavemente. Talvez deva verificar.[newbrain] Por danos."))
 			playsound(src, 'sound/machines/synth/synth_no.ogg', 5, TRUE)
 		else
-			to_chat(user, span_warning("[src]A luz indicadora fica vermelha e seu alarme de atividade cerebral apita suavemente. Talvez deva verificar.[newbrain]De novo."))
+			to_chat(user, span_warning("[src] A luz indicadora fica vermelha e seu alarme de atividade cerebral apita suavemente. Talvez deva verificar.[newbrain] De novo."))
 			playsound(src, 'sound/machines/beep/triple_beep.ogg', 5, TRUE)
 
 		brainmob.reset_perspective()
@@ -172,12 +172,12 @@
 /obj/item/mmi/attack_self(mob/user)
 	if(!brain)
 		radio.set_on(!radio.is_on())
-		to_chat(user, span_notice("Você comuta[src]Sistema de rádio[radio.is_on() == TRUE ? "on" : "off"]."))
+		to_chat(user, span_notice("Você comuta [src] Sistema de rádio[radio.is_on() == TRUE ? "on" : "off"]."))
 	else
 		eject_brain(user)
 		update_appearance()
 		name = initial(name)
-		to_chat(user, span_notice("Você abre e levanta[src], derramando o cérebro no chão."))
+		to_chat(user, span_notice("Você abre e levanta [src], derramando o cérebro no chão."))
 
 /obj/item/mmi/proc/eject_brain(mob/user)
 	if(brainmob)
@@ -304,18 +304,18 @@
 		// It's dead, show it as much
 		if((brain.organ_flags & ORGAN_FAILING) || brainmob?.stat == DEAD)
 			if(brain.suicided || (brainmob && HAS_TRAIT(brainmob, TRAIT_SUICIDED)))
-				. += span_warning("[src]A luz indicadora está vermelha.")
+				. += span_warning("[src] A luz indicadora está vermelha.")
 			else
-				. += span_warning("[src]A luz indicadora é amarela. Talvez deva verificar se há danos no cérebro.")
+				. += span_warning("[src] A luz indicadora é amarela. Talvez deva verificar se há danos no cérebro.")
 		// If we have a client, OR it's a decoy brain, show as active
 		else if(brain.decoy_override || brainmob?.client)
-			. += span_notice("[src]indica que o cérebro está ativo.")
+			. += span_notice("[src] indica que o cérebro está ativo.")
 		// If we have a brainmob and it has a mind, it may just be DC'd
 		else if(brainmob?.mind)
-			. += span_warning("[src]indica que o cérebro está inativo, pode mudar.")
+			. += span_warning("[src] indica que o cérebro está inativo, pode mudar.")
 		// No brainmob, no mind, and not a decoy, it's a dead brain
 		else
-			. += span_warning("[src]indica que o cérebro não responde.")
+			. += span_warning("[src] indica que o cérebro não responde.")
 
 /obj/item/mmi/relaymove(mob/living/user, direction)
 	return //so that the MMI won't get a warning about not being able to move if it tries to move
@@ -324,31 +324,31 @@
 	var/mob/living/brain/B = brainmob
 	if(!B)
 		if(user)
-			to_chat(user, span_warning("\The [src]indica que não há nenhuma mente presente!"))
+			to_chat(user, span_warning("\The [src] indica que não há nenhuma mente presente!"))
 		return FALSE
 	if(brain?.decoy_override)
 		if(user)
-			to_chat(user, span_warning("Isto.[name]Parece não caber!"))
+			to_chat(user, span_warning("Isto.[name] Parece não caber!"))
 		return FALSE
 	if(!B.key || !B.mind)
 		if(user)
-			to_chat(user, span_warning("\The [src]indica que sua mente não responde completamente!"))
+			to_chat(user, span_warning("\The [src] indica que sua mente não responde completamente!"))
 		return FALSE
 	if(!B.client)
 		if(user)
-			to_chat(user, span_warning("\The [src]indica que sua mente está inativa."))
+			to_chat(user, span_warning("\The [src] indica que sua mente está inativa."))
 		return FALSE
 	if(HAS_TRAIT(B, TRAIT_SUICIDED) || brain?.suicided)
 		if(user)
-			to_chat(user, span_warning("\The [src]indica que sua mente não tem vontade de viver!"))
+			to_chat(user, span_warning("\The [src] indica que sua mente não tem vontade de viver!"))
 		return FALSE
 	if(B.stat == DEAD)
 		if(user)
-			to_chat(user, span_warning("\The [src]indica que o cérebro está morto!"))
+			to_chat(user, span_warning("\The [src] indica que o cérebro está morto!"))
 		return FALSE
 	if(brain?.organ_flags & ORGAN_FAILING)
 		if(user)
-			to_chat(user, span_warning("\The [src]indica que o cérebro está danificado!"))
+			to_chat(user, span_warning("\The [src] indica que o cérebro está danificado!"))
 		return FALSE
 	return TRUE
 

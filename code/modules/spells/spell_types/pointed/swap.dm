@@ -55,7 +55,7 @@
 			to_chat(owner, span_warning("Você não tem meta de troca secundária!"))
 		return FALSE
 	second_target = target
-	to_chat(owner, span_notice("Você seleciona[target.name]Como um alvo secundário de troca!"))
+	to_chat(owner, span_notice("Você seleciona [target.name] Como um alvo secundário de troca!"))
 	return FALSE
 
 /datum/action/cooldown/spell/pointed/swap/cast(mob/living/carbon/cast_on)

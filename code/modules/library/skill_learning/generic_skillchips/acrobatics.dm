@@ -56,7 +56,7 @@
 	switch(rand(mintegrity, get_integrity())) // 1 to 100 but gets worse every time
 		// CRIT FAIL
 		if(1)
-			bozo.visible_message(span_userdanger("[bozo]A cabeça de repente explode para fora!"))
+			bozo.visible_message(span_userdanger("[bozo] A cabeça de repente explode para fora!"))
 
 			explosion(bozo, light_impact_range = 2, adminlog = TRUE, explosion_cause = src)
 			// WITNESS THE GORE
@@ -91,7 +91,7 @@
 		// last chance to stop
 		if(7 to 9)
 			bozo.visible_message(
-				span_danger("[bozo]Parece curto-circuito!"),
+				span_danger("[bozo] Parece curto-circuito!"),
 				span_userdanger("Seu cérebro curto-circuitos!"),
 			)
 			// if they're susceptible to electrocution, confuse them
@@ -111,7 +111,7 @@
 				bozo.adjust_fire_stacks(11 - get_integrity())
 				bozo.ignite_mob()
 				bozo.visible_message(
-					span_danger("[bozo]A cabeça acende!"),
+					span_danger("[bozo] A cabeça acende!"),
 					span_userdanger("Sua cabeça dói tanto que parece que está pegando fogo!"),
 				)
 				ASYNC
@@ -121,7 +121,7 @@
 				particle_path = /particles/smoke/steam/bad
 			else
 				bozo.visible_message(
-					span_danger("[bozo]A cabeça começa a fumar!"),
+					span_danger("[bozo] A cabeça começa a fumar!"),
 					span_userdanger("Seu cérebro parece estar pegando fogo!"),
 				)
 
@@ -146,7 +146,7 @@
 		// hey, something isn't right...
 		if(16 to 50)
 			bozo.visible_message(
-				span_warning("[bozo]As faíscas da cabeça."),
+				span_warning("[bozo] As faíscas da cabeça."),
 			)
 
 			sparks.amount = rand(1, 2)

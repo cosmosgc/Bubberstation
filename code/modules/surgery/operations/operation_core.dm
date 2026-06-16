@@ -24,9 +24,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a extrair[patient]O núcleo..."),
-		span_notice("[surgeon]começa a extrair[patient]É o núcleo."),
-		span_notice("[surgeon]começa a extrair[patient]É o núcleo."),
+		span_notice("Você começa a extrair [patient] O núcleo..."),
+		span_notice("[surgeon] começa a extrair [patient] É o núcleo."),
+		span_notice("[surgeon] começa a extrair [patient] É o núcleo."),
 	)
 
 /datum/surgery_operation/basic/core_removal/on_success(mob/living/basic/slime/patient, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -35,9 +35,9 @@
 		display_results(
 			surgeon,
 			patient,
-			span_notice("Você extrai com sucesso[core_count]O núcleo de[patient]."),
-			span_notice("[surgeon]Com sucesso extrai[core_count]O núcleo de[patient]!"),
-			span_notice("[surgeon]Com sucesso extrai[core_count]O núcleo de[patient]!"),
+			span_notice("Você extrai com sucesso [core_count] O núcleo de [patient]."),
+			span_notice("[surgeon] Com sucesso extrai [core_count] O núcleo de [patient]!"),
+			span_notice("[surgeon] Com sucesso extrai [core_count] O núcleo de [patient]!"),
 		)
 	else
 		to_chat(surgeon, span_warning("Não há mais núcleos.[patient]!"))

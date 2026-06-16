@@ -293,7 +293,7 @@
 			//output for each mob
 			dat += {"
 
-				<tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
+				<tr id='data[i]' name='[i]' onClick="addToLocked('item [i]','data [i]','notice_span [i]')">
 					<td align='center' bgcolor='[color]'>
 						<span id='notice_span[i]'></span>
 						<a id='link[i]'

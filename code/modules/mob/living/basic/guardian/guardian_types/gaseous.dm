@@ -130,7 +130,7 @@
 			to_chat(owner, span_warning("Você não pode liberar o gás sem ser convocado!"))
 			return
 
-	to_chat(owner, span_bolddanger("Você começa a liberar[picked_gas]."))
+	to_chat(owner, span_bolddanger("Você começa a liberar [picked_gas]."))
 	owner.investigate_log("set their gas type to [picked_gas].", INVESTIGATE_ATMOS)
 	var/had_gas = !isnull(active_gas)
 	active_gas = gas_type

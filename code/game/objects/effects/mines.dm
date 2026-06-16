@@ -40,7 +40,7 @@
 	if(user == unlucky_sod)
 		. += span_bolddanger("A placa de pressão está depressiva. Qualquer movimento que fizer vai detoná-lo agora.")
 	else if(!isnull(unlucky_sod))
-		. += span_danger("A placa de pressão está deprimida.[unlucky_sod]Qualquer movimento que fizerem vai detoná-lo agora.")
+		. += span_danger("A placa de pressão está deprimida.[unlucky_sod] Qualquer movimento que fizerem vai detoná-lo agora.")
 
 /obj/effect/mine/update_icon_state()
 	. = ..()
@@ -58,7 +58,7 @@
 	armed = TRUE
 	update_appearance(UPDATE_ICON_STATE)
 	playsound(src, 'sound/machines/nuke/angry_beep.ogg', 40, FALSE, -2)
-	visible_message(span_danger("\The [src]Apita suavemente, indicando que está ativo."), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_message(span_danger("\The [src] Apita suavemente, indicando que está ativo."), vision_distance = COMBAT_MESSAGE_RANGE)
 
 /// Can this mine trigger on the passed movable?
 /obj/effect/mine/proc/can_trigger(atom/movable/on_who)
@@ -95,7 +95,7 @@
 		else
 			return //it didn't actually touch the mine, don't blow
 
-	visible_message(span_danger("[icon2html(src, viewers(src))]Clique."))
+	visible_message(span_danger("[icon2html(src, viewers(src))] Clique."))
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 	if(gonna_blow)
 		RegisterSignal(arrived, COMSIG_MOVABLE_MOVED, PROC_REF(triggermine)) //wait for it to finish the movement before blowing so it takes proper damage
@@ -112,7 +112,7 @@
 
 	if(!foot_on_mine && gone.flags_1 & ON_BORDER_1)
 		if(gone.dir == REVERSE_DIR(direction)) //see if a north facing border atom (ie window) travels south (and other directions as needed)
-			visible_message(span_danger("[icon2html(src, viewers(src))]Clique."))
+			visible_message(span_danger("[icon2html(src, viewers(src))] Clique."))
 			playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 			triggermine() //it "passed" over the mine briefly, triggering it in the process
 		return //either it blew up the mine, or it didn't and we don't have to worry about anything else.
@@ -134,9 +134,9 @@
 	if(triggered) //too busy detonating to detonate again
 		return
 	if(triggerer)
-		visible_message(span_danger("[triggerer]Decolar[icon2html(src, viewers(src))] [src]!"))
+		visible_message(span_danger("[triggerer] Decolar [icon2html(src, viewers(src))] [src]!"))
 	else
-		visible_message(span_danger("[icon2html(src, viewers(src))] [src]Detona!"))
+		visible_message(span_danger("[icon2html(src, viewers(src))] [src] Detona!"))
 
 	do_sparks(3, TRUE, src)
 	mineEffect(triggerer)
@@ -286,7 +286,7 @@
 	do_alert_animation()
 	playsound(loc, 'sound/machines/chime.ogg', 30, FALSE, -3)
 	var/obj/effect/mine/new_mine = new mine_type(get_turf(src))
-	visible_message(span_danger("\The [src]libera uma fumaça, revelando\a [new_mine]!"))
+	visible_message(span_danger("\The [src] libera uma fumaça, revelando\a [new_mine]!"))
 	var/obj/effect/particle_effect/fluid/smoke/poof = new (get_turf(src))
 	poof.lifetime = 3
 	qdel(src)

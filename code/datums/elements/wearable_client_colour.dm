@@ -121,4 +121,4 @@
 
 /datum/element/wearable_client_colour/proc/on_examine(obj/item/source, mob/user, list/examine_texts)
 	SIGNAL_HANDLER
-	examine_texts += span_info("Enquanto segurava ou usava,[key_info]para ligar/desligar a cor da tela de óculos e tal.")
+	examine_texts += span_info("Enquanto segurava ou usava,[key_info] para ligar/desligar a cor da tela de óculos e tal.")

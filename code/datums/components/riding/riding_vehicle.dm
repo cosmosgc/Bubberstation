@@ -15,11 +15,11 @@
 
 	if(!keycheck(rider))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("[movable_parent]Não tem nenhuma chave inserida!"))
+			to_chat(rider, span_warning("[movable_parent] Não tem nenhuma chave inserida!"))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	if(HAS_TRAIT(rider, TRAIT_INCAPACITATED))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("Você não pode operar.[movable_parent]Agora!"))
+			to_chat(rider, span_warning("Você não pode operar.[movable_parent] Agora!"))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	if(ride_check_flags & RIDER_NEEDS_LEGS && HAS_TRAIT(rider, TRAIT_FLOORED))
 		if(z_move_flags & ZMOVE_FEEDBACK)
@@ -27,7 +27,7 @@
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	if(ride_check_flags & RIDER_NEEDS_ARMS && HAS_TRAIT(rider, TRAIT_HANDS_BLOCKED))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("Você não consegue se segurar[movable_parent]Para movê-lo..."))
+			to_chat(rider, span_warning("Você não consegue se segurar [movable_parent] Para movê-lo..."))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 
 	return COMPONENT_RIDDEN_ALLOW_Z_MOVE
@@ -39,25 +39,25 @@
 
 	if(!keycheck(user))
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("[vehicle_parent]Não tem nenhuma chave inserida!"))
+			to_chat(user, span_warning("[vehicle_parent] Não tem nenhuma chave inserida!"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(HAS_TRAIT(user, TRAIT_INCAPACITATED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
-			user.visible_message(span_danger("[user]Cai fora.\the [vehicle_parent]."),			span_danger("Você desliza.\the [vehicle_parent]Como seu corpo cai!"))
+			user.visible_message(span_danger("[user] Cai fora.\the [vehicle_parent]."),			span_danger("Você desliza.\the [vehicle_parent] Como seu corpo cai!"))
 			user.Stun(3 SECONDS)
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("Você não pode operar.\the [vehicle_parent]Agora!"))
+			to_chat(user, span_warning("Você não pode operar.\the [vehicle_parent] Agora!"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(ride_check_flags & RIDER_NEEDS_LEGS && HAS_TRAIT(user, TRAIT_FLOORED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
-			user.visible_message(span_danger("[user]Cai fora.\the [vehicle_parent]."),			span_danger("Você cai\the [vehicle_parent]Enquanto tenta operá-lo enquanto não consegue ficar em pé!"))
+			user.visible_message(span_danger("[user] Cai fora.\the [vehicle_parent]."),			span_danger("Você cai\the [vehicle_parent] Enquanto tenta operá-lo enquanto não consegue ficar em pé!"))
 			user.Stun(3 SECONDS)
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
@@ -68,11 +68,11 @@
 	if(ride_check_flags & RIDER_NEEDS_ARMS && HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle_mob(user, TRUE)
-			user.visible_message(span_danger("[user]Cai fora.\the [vehicle_parent]."),			span_danger("Você cai\the [vehicle_parent]enquanto tenta operá-lo sem ser capaz de aguentar!"))
+			user.visible_message(span_danger("[user] Cai fora.\the [vehicle_parent]."),			span_danger("Você cai\the [vehicle_parent] enquanto tenta operá-lo sem ser capaz de aguentar!"))
 			user.Stun(3 SECONDS)
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, span_warning("Você não consegue se segurar\the [vehicle_parent]Para movê-lo..."))
+			to_chat(user, span_warning("Você não consegue se segurar\the [vehicle_parent] Para movê-lo..."))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
@@ -88,7 +88,7 @@
 	if(!istype(next) || !istype(current))
 		return //not happening.
 	if(!turf_check(next, current))
-		to_chat(user, span_warning("\The [movable_parent]não pode ir em[next]!"))
+		to_chat(user, span_warning("\The [movable_parent] não pode ir em [next]!"))
 		return
 	if(!Process_Spacemove(direction) || !isturf(movable_parent.loc))
 		return
@@ -371,7 +371,7 @@
 
 	if(keycheck(user) && the_secway.eddie_murphy)
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			the_secway.visible_message(span_warning("[the_secway]Sputters e se recusa a se mover!"))
+			the_secway.visible_message(span_warning("[the_secway] Sputters e se recusa a se mover!"))
 			playsound(get_turf(the_secway), 'sound/effects/stall.ogg', 70)
 			COOLDOWN_START(src, message_cooldown, 0.75 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE

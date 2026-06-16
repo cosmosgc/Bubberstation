@@ -126,9 +126,9 @@
 	if(!HAS_TRAIT(user, TRAIT_BOULDER_BREAKER))
 		return
 	if(!discovered)
-		to_chat(user, span_notice("Você não consegue encontrar o ponto fraco de[src]Talvez precisa ser escalado primeiro."))
+		to_chat(user, span_notice("Você não consegue encontrar o ponto fraco de [src] Talvez precisa ser escalado primeiro."))
 		return
-	to_chat(user, span_notice("Você começa a atacar.[src]com o punho do seu Golem, tentando desenterrar uma pedra..."))
+	to_chat(user, span_notice("Você começa a atacar.[src] com o punho do seu Golem, tentando desenterrar uma pedra..."))
 	for(var/i in 1 to 3)
 		if(do_after(user, boulder_size * 1 SECONDS, src))
 			user.apply_damage(20, STAMINA)
@@ -722,7 +722,7 @@
 			boss_string = "A bloody drillmark"
 		if(/mob/living/simple_animal/hostile/megafauna/wendigo/noportal)
 			boss_string = "A chilling skull"
-	. += span_notice("[boss_string]está gravado no lado da ventilação.")
+	. += span_notice("[boss_string] está gravado no lado da ventilação.")
 
 /obj/structure/ore_vent/boss/start_wave_defense()
 	if(!COOLDOWN_FINISHED(src, wave_cooldown))

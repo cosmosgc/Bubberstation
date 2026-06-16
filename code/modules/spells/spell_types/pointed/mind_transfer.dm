@@ -62,7 +62,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(cast_on, TRAIT_NO_MINDSWAP))
-		to_chat(owner, span_warning("Este tipo de magia não pode operar[cast_on.p_their()]Mente!"))
+		to_chat(owner, span_warning("Este tipo de magia não pode operar [cast_on.p_their()] Mente!"))
 		return FALSE
 
 	if(is_type_in_typecache(cast_on, blacklisted_mobs))
@@ -80,10 +80,10 @@
 		to_chat(owner, span_warning("Você não quer estar morto!"))
 		return FALSE
 	if(!living_target.mind && target_requires_mind)
-		to_chat(owner, span_warning("[living_target.p_They()] [living_target.p_do()]Não parece ter uma mente para trocar!"))
+		to_chat(owner, span_warning("[living_target.p_They()] [living_target.p_do()] Não parece ter uma mente para trocar!"))
 		return FALSE
 	if(!living_target.key && target_requires_key)
-		to_chat(owner, span_warning("[living_target.p_They()]Aparecer[living_target.p_s()]ser catatônico! Nem mesmo magia pode afetar[living_target.p_their()]Mente vaga."))
+		to_chat(owner, span_warning("[living_target.p_They()] Aparecer [living_target.p_s()] ser catatônico! Nem mesmo magia pode afetar [living_target.p_their()] Mente vaga."))
 		return FALSE
 
 	return TRUE
@@ -106,7 +106,7 @@
 
 	var/datum/mind/mind_to_swap = to_swap.mind
 	if(to_swap.can_block_magic(antimagic_flags) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/wizard) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/cult) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/changeling) 		|| mind_to_swap.has_antag_datum(/datum/antagonist/rev) 		|| IS_FAKE_KEY(mind_to_swap.key) 	)
-		to_chat(caster, span_warning("[to_swap.p_Their()]A mente está resistindo ao seu feitiço!"))
+		to_chat(caster, span_warning("[to_swap.p_Their()] A mente está resistindo ao seu feitiço!"))
 		return FALSE
 
 	// MIND TRANSFER BEGIN

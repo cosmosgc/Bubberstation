@@ -73,7 +73,7 @@
 		return
 	if(locate(/obj/structure/alien/weeds/node) in get_turf(src))
 		return
-	visible_message(span_alertalien("[src]Planta algumas ervas daninhas alienígenas!"))
+	visible_message(span_alertalien("[src] Planta algumas ervas daninhas alienígenas!"))
 	new /obj/structure/alien/weeds/node(loc)
 
 ///Lays an egg on the turf the mob is currently standing on.
@@ -82,7 +82,7 @@
 		return
 	if(locate(/obj/structure/alien/egg) in get_turf(src))
 		return
-	visible_message(span_alertalien("[src]Põe um ovo!"))
+	visible_message(span_alertalien("[src] Põe um ovo!"))
 	new /obj/structure/alien/egg(loc)
 
 /mob/living/basic/alien/get_bloodtype()

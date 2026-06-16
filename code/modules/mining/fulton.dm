@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 
 /obj/item/extraction_pack/examine()
 	. = ..()
-	. += span_infoplain("Tem.[uses_left]Use o resto.")
+	. += span_infoplain("Tem.[uses_left] Use o resto.")
 
 	var/obj/structure/extraction_point/beacon = beacon_ref?.resolve()
 
@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 		. += span_infoplain("Não está ligado a um farol.")
 		return
 
-	. += span_infoplain("Está ligado a[beacon.name].")
+	. += span_infoplain("Está ligado a [beacon.name].")
 
 /obj/item/extraction_pack/attack_self(mob/user)
 	var/list/possible_beacons = list()
@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 		balloon_alert(user, "Incapaz de ativar!")
 		return ITEM_INTERACT_BLOCKING
 	if(!safe_for_living_creatures && check_for_living_mobs(thing))
-		to_chat(user, span_warning("[src]Não é seguro para uso com seres vivos, eles não sobreviveriam à viagem de volta!"))
+		to_chat(user, span_warning("[src] Não é seguro para uso com seres vivos, eles não sobreviveriam à viagem de volta!"))
 		balloon_alert(user, "Não é seguro!")
 		return ITEM_INTERACT_BLOCKING
 	if(thing.move_resist > max_force_fulton)

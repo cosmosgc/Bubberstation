@@ -13,7 +13,7 @@
 	var/mob/living/buckled_mob = locate() in buckled_mobs
 	if(!buckled_mob)
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("Invocando o ritual sagrado, você sacrifica[buckled_mob]."))
+	to_chat(user, span_notice("Invocando o ritual sagrado, você sacrifica [buckled_mob]."))
 	buckled_mob.investigate_log("has been sacrificially gibbed on an altar.", INVESTIGATE_DEATHS)
 	buckled_mob.gib(DROP_ALL_REMAINS)
 	message_admins("[ADMIN_LOOKUPFLW(user)] has sacrificed [key_name_admin(buckled_mob)] on the sacrificial altar at [AREACOORD(src)].")

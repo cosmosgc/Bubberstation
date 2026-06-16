@@ -308,7 +308,7 @@
 	if(over_object == user)
 		if(!briefcase)
 			return
-		user.visible_message(span_notice("[usr]Começa a fechar.[src]..."), span_notice("Você começa a fechar[src]..."))
+		user.visible_message(span_notice("[usr] Começa a fechar.[src]..."), span_notice("Você começa a fechar [src]..."))
 		if(do_after(user, 3 SECONDS, target = user))
 			user.put_in_hands(briefcase)
 			moveToNullspace() //hides it from suitcase contents
@@ -321,7 +321,7 @@
 		if(IS_WEAKREF_OF(src, launch.pad)) //do not attempt to link when already linked
 			return ..()
 		launch.pad = WEAKREF(src)
-		to_chat(user, span_notice("Você liga.[src]para[launch]."))
+		to_chat(user, span_notice("Você liga.[src] para [launch]."))
 	else
 		return ..()
 
@@ -342,7 +342,7 @@
 /obj/item/launchpad_remote/attack_self(mob/user)
 	. = ..()
 	ui_interact(user)
-	to_chat(user, span_notice("[src]projeta uma exibição em sua retina."))
+	to_chat(user, span_notice("[src] projeta uma exibição em sua retina."))
 
 
 /obj/item/launchpad_remote/ui_state(mob/user)

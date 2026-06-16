@@ -164,8 +164,8 @@ ADMIN_VERB(debug_nature_map_generator, R_DEBUG, "Test Nature Map Generator", "Te
 	var/turf/End = locate(text2num(endCoords[1]),text2num(endCoords[2]),text2num(endCoords[3]))
 	if(!Start || !End)
 		to_chat(user, "Turfs inválidos")
-		to_chat(user, "Coords:[startCoords[1]] - [startCoords[2]] - [startCoords[3]]")
-		to_chat(user, "Fim Coords:[endCoords[1]] - [endCoords[2]] - [endCoords[3]]")
+		to_chat(user, "Coords:[startCoords [1]] - [startCoords [2]] - [startCoords [3]]")
+		to_chat(user, "Fim Coords:[endCoords [1]] - [endCoords [2]] - [endCoords [3]]")
 		return
 
 	var/static/list/clusters = list(

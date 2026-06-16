@@ -106,8 +106,8 @@
 /// Small little taunt when we epically troll someone
 /mob/living/basic/boss/proc/celebrate_kill(mob/living/poor_sap)
 	visible_message(
-		span_danger("[src]Desembochas[poor_sap]!"),
-		span_userdanger("Você se banqueteia[poor_sap]Os órgãos, restaurando sua saúde!"),
+		span_danger("[src] Desembochas [poor_sap]!"),
+		span_userdanger("Você se banqueteia [poor_sap] Os órgãos, restaurando sua saúde!"),
 	)
 
 /// Handles adding all relevant achievements when applicable (probably when we are defeated)

@@ -37,7 +37,7 @@
 	var/obj/item/card/id/stored_card = computer.GetID()
 	if(istype(stored_card) && stored_card.registered_name)
 		username = "user [stored_card.registered_name]"
-	to_chat(borgo, span_userdanger("Pedido recebido de[username]Para o arquivo de registro do sistema. Envio em andar."))//Damning evidence may be contained, so warn the borg
+	to_chat(borgo, span_userdanger("Pedido recebido de [username] Para o arquivo de registro do sistema. Envio em andar."))//Damning evidence may be contained, so warn the borg
 	borgo.logevent("File request by [username]: /var/logs/syslog")
 	borgo.balloon_alert(user, "Baixando logs")
 	return TRUE
@@ -138,7 +138,7 @@
 			return FALSE
 	to_chat(robot, "<br><br>[span_notice("Message from [ID] -- \"[message]\"")]<br>")
 	if(user)
-		to_chat(user, "Mensagem enviada para[robot]: [message]")
+		to_chat(user, "Mensagem enviada para [robot]: [message]")
 	robot.logevent("Message from [ID] -- \"[message]\"")
 	SEND_SOUND(robot, 'sound/machines/beep/twobeep_high.ogg')
 	if(robot.connected_ai)

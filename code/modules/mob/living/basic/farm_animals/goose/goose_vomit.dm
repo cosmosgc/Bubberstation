@@ -178,7 +178,7 @@
 	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
 	if (duration > 0)
 		return // Saved by something, although probably by dying early
-	owner.death_message = "lets out one final oxygen-deprived honk before [owner.p_they()] go[owner.p_es()] limp and lifeless.."
+	owner.death_message = "lets out one final oxygen-deprived honk before [owner.p_they()] go [owner.p_es()] limp and lifeless.."
 	owner.death()
 
 /// Don't keep dying if we died

@@ -38,9 +38,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a reparar[organ.owner]Asas danificadas..."),
-		span_notice("[surgeon]começa a reparar[organ.owner]Asas danificadas."),
-		span_notice("[surgeon]Começa a operar em[organ.owner]Asas danificadas."),
+		span_notice("Você começa a reparar [organ.owner] Asas danificadas..."),
+		span_notice("[surgeon] começa a reparar [organ.owner] Asas danificadas."),
+		span_notice("[surgeon] Começa a operar em [organ.owner] Asas danificadas."),
 	)
 	display_pain(organ.owner, "Your wings sting like hell!")
 
@@ -48,9 +48,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você consegue consertar.[organ.owner]As asas."),
-		span_notice("[surgeon]Consertar com sucesso.[organ.owner]Asas!"),
-		span_notice("[surgeon]completa a cirurgia em[organ.owner]As asas."),
+		span_notice("Você consegue consertar.[organ.owner] As asas."),
+		span_notice("[surgeon] Consertar com sucesso.[organ.owner] Asas!"),
+		span_notice("[surgeon] completa a cirurgia em [organ.owner] As asas."),
 	)
 	display_pain(organ.owner, "You can feel your wings again!")
 	// heal the wings in question

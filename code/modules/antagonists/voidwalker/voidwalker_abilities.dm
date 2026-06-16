@@ -134,5 +134,5 @@
 	if(istype(get_turf(target), valid_target_turf))
 		return ..()
 
-	owner.balloon_alert(owner, "Deve mirar[initial(valid_target_turf.name)]!")
+	owner.balloon_alert(owner, "Deve mirar [initial(valid_target_turf.name)]!")
 	return FALSE

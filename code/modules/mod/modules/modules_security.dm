@@ -100,7 +100,7 @@
 		return
 	if(!check_power(use_energy_cost))
 		return
-	mod.wearer.visible_message(span_warning("[src]reage ao ataque com uma fumaça de spray de pimenta!"), span_notice("Sua[src]Libera uma vez de spray de pimenta!"))
+	mod.wearer.visible_message(span_warning("[src] reage ao ataque com uma fumaça de spray de pimenta!"), span_notice("Sua [src] Libera uma vez de spray de pimenta!"))
 	used()
 
 ///Holster - Instantly holsters any not huge gun.
@@ -434,7 +434,7 @@
 	if(!do_after(mod.wearer, 1.1 SECONDS, target = mod))
 		return
 	playsound(src, 'sound/effects/ping_hit.ogg', vol = 75, vary = TRUE) // Should be audible for the radius of the sonar
-	to_chat(mod.wearer, span_notice("Você bate seu punho no chão, enviando uma onda sônica que detecta[detect_living_creatures()]Seres vivo nas proximidades!"))
+	to_chat(mod.wearer, span_notice("Você bate seu punho no chão, enviando uma onda sônica que detecta [detect_living_creatures()] Seres vivo nas proximidades!"))
 	for(var/mob/living/creature as anything in keyed_creatures)
 		new /obj/effect/temp_visual/sonar_ping(mod.wearer.loc, mod.wearer, creature)
 

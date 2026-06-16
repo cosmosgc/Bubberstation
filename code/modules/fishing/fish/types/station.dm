@@ -152,7 +152,7 @@
 	ADD_TRAIT(src, TRAIT_FISH_SURVIVE_COOKING, INNATE_TRAIT)
 
 /obj/item/fish/fryish/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src] Inteiro! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.say("Mmmm! Delicious!", forced = "fryfish suicide")
 	qdel(src)
 	return OXYLOSS

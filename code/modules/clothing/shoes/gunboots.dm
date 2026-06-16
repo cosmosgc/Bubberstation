@@ -63,7 +63,7 @@
 	shot.def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG) // they're fired from boots after all
 	shot.aim_projectile(target, wearer)
 	if(!shot.suppressed)
-		wearer.visible_message(span_danger("[wearer]'s[name]Fogos\a [shot]!"), "", blind_message = span_hear("Você ouve um tiro!"), vision_distance=COMBAT_MESSAGE_RANGE)
+		wearer.visible_message(span_danger("[wearer]'s [name] Fogos\a [shot]!"), "", blind_message = span_hear("Você ouve um tiro!"), vision_distance=COMBAT_MESSAGE_RANGE)
 	shot.fire()
 
 /obj/item/clothing/shoes/gunboots/disabler

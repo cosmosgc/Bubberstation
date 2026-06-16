@@ -19,7 +19,7 @@
 		return TRUE
 	var/obj/vehicle/ridden/scooter/skateboard/improvised/skater = new(drop_location())
 	new /obj/item/stack/rods(drop_location(), 2)
-	to_chat(user, span_notice("Você remove o guidão de[src]."))
+	to_chat(user, span_notice("Você remove o guidão de [src]."))
 	if(has_buckled_mobs())
 		var/mob/living/carbon/carbons = buckled_mobs[1]
 		unbuckle_mob(carbons)
@@ -109,14 +109,14 @@
 			rider.Paralyze(8 SECONDS)
 			rider.forceMove(bumped_thing)
 			forceMove(bumped_thing)
-			visible_message(span_danger("[src]Bate em[bumped_thing], e é jogado direto nele!"))
+			visible_message(span_danger("[src] Bate em [bumped_thing], e é jogado direto nele!"))
 			return
 		rider.throw_at(throw_target, 3, 2)
 		var/head_slot = rider.get_item_by_slot(ITEM_SLOT_HEAD)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/utility/hardhat)))
 			rider.adjust_organ_loss(ORGAN_SLOT_BRAIN, 5)
 			rider.updatehealth()
-		visible_message(span_danger("[src]Bate em[bumped_thing], enviando[rider]Voando!"))
+		visible_message(span_danger("[src] Bate em [bumped_thing], enviando [rider] Voando!"))
 		rider.Paralyze(8 SECONDS)
 		if(iscarbon(bumped_thing))
 			var/mob/living/carbon/victim = bumped_thing
@@ -146,7 +146,7 @@
 		unbuckle_mob(skater)
 		var/atom/throw_target = get_edge_target_turf(src, pick(GLOB.cardinals))
 		skater.throw_at(throw_target, 2, 2)
-		visible_message(span_danger("[skater]perde[skater.p_their()]pisando e batendo no chão!"))
+		visible_message(span_danger("[skater] perde [skater.p_their()] pisando e batendo no chão!"))
 		skater.Paralyze(4 SECONDS)
 		grinding = FALSE
 		icon_state = "[initial(icon_state)]"
@@ -164,7 +164,7 @@
 			victim.apply_damage(damage = 25, damagetype = BRUTE, def_zone = victim.get_random_valid_zone(even_weights = TRUE), wound_bonus = 20)
 			victim.Paralyze(1.5 SECONDS)
 			skater.adjust_stamina_loss(instability)
-			victim.visible_message(span_danger("[victim]direto para cima é moído no chão por[skater]'s[src]Radical!"))
+			victim.visible_message(span_danger("[victim] direto para cima é moído no chão por [skater]'s [src] Radical!"))
 	addtimer(CALLBACK(src, PROC_REF(grind)), 0.1 SECONDS)
 
 /obj/vehicle/ridden/scooter/skateboard/mouse_drop_dragged(atom/over_object, mob/user)
@@ -209,7 +209,7 @@
 		return
 	if(rider && (z_move_flags & ZMOVE_CAN_FLY_CHECKS) && direction == UP)
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("[src] [p_are()]não poderoso o suficiente para voar para cima."))
+			to_chat(rider, span_warning("[src] [p_are()] não poderoso o suficiente para voar para cima."))
 		return FALSE
 
 /obj/vehicle/ridden/scooter/skateboard/hoverboard/holyboarded
@@ -253,10 +253,10 @@
 		return NONE
 	if(!tool.tool_start_check(user, amount=5))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você começa a adicionar rodas para[src]."))
+	to_chat(user, span_notice("Você começa a adicionar rodas para [src]."))
 	if(!tool.use_tool(src, user, 80, volume = 50, amount = 5))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você termina de fazer rodas para[src]."))
+	to_chat(user, span_notice("Você termina de fazer rodas para [src]."))
 	new /obj/vehicle/ridden/scooter/skateboard/improvised(user.loc)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -279,10 +279,10 @@
 		return NONE
 	if(!tool.tool_start_check(user, amount=2))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você começa a fazer guidão para[src]."))
+	to_chat(user, span_notice("Você começa a fazer guidão para [src]."))
 	if(!tool.use_tool(src, user, 25, volume=50, amount=2))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você adiciona as hastes para[src], criando guidão."))
+	to_chat(user, span_notice("Você adiciona as hastes para [src], criando guidão."))
 	var/obj/vehicle/ridden/scooter/skaterskoot = new(loc)
 	if(has_buckled_mobs())
 		var/mob/living/carbon/skaterboy = buckled_mobs[1]
@@ -295,10 +295,10 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("Você começa a desconstruir e remover as rodas sobre[src]..."))
+	to_chat(user, span_notice("Você começa a desconstruir e remover as rodas sobre [src]..."))
 	if(!tool.use_tool(src, user, 20, volume=50))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você desconstrui as rodas sobre[src]."))
+	to_chat(user, span_notice("Você desconstrui as rodas sobre [src]."))
 	new /obj/item/stack/sheet/iron(drop_location(), 5)
 	new /obj/item/scooter_frame(drop_location())
 	if(has_buckled_mobs())
@@ -326,7 +326,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/post_unbuckle_mob(mob/living/M)
 	if(!has_buckled_mobs())
-		to_chat(M, span_notice("Você estoura o[wheel_name]De volta ao lugar."))
+		to_chat(M, span_notice("Você estoura o [wheel_name] De volta ao lugar."))
 		moveToNullspace()
 		shoes.toggle_wheels(FALSE)
 	return ..()
@@ -335,7 +335,7 @@
 	return
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/post_buckle_mob(mob/living/M)
-	to_chat(M, span_notice("Você aparece o[wheel_name]."))
+	to_chat(M, span_notice("Você aparece o [wheel_name]."))
 	shoes.toggle_wheels(TRUE)
 	return ..()
 

@@ -12,7 +12,7 @@
 		to_chat(user, span_warning("Esta área já tem um APC!"))
 		return FALSE //only one APC per area
 	if(!A.requires_power || A.always_unpowered)
-		to_chat(user, span_warning("Você não pode colocar[src]nesta área!"))
+		to_chat(user, span_warning("Você não pode colocar [src] nesta área!"))
 		return FALSE //can't place apcs in areas with no power requirement
 	for(var/obj/machinery/power/terminal/E in T)
 		if(E.master)

@@ -51,7 +51,7 @@
 
 /datum/quirk/item_quirk/allergic/post_add()
 	quirk_holder.add_mob_memory(/datum/memory/key/quirk_allergy, allergy_string = allergy_string)
-	to_chat(quirk_holder, span_boldnotice("Você é alérgico a[allergy_string], certifique-se de não consumir nenhum destes!"))
+	to_chat(quirk_holder, span_boldnotice("Você é alérgico a [allergy_string], certifique-se de não consumir nenhum destes!"))
 
 /datum/quirk/item_quirk/allergic/proc/block_metab(mob/living/carbon/source, datum/reagent/chem, seconds_per_tick)
 	SIGNAL_HANDLER

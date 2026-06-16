@@ -116,7 +116,7 @@
 		var/obj/item/reagent_containers/RC = tool
 		var/units = RC.reagents.trans_to(src, RC.amount_per_transfer_from_this, transferred_by = user)
 		if(units)
-			to_chat(user, span_notice("Você se transferiu.[units]unidades da solução para[src]."))
+			to_chat(user, span_notice("Você se transferiu.[units] unidades da solução para [src]."))
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 

@@ -79,7 +79,7 @@
 	brain.throw_at(get_step(source_turf, source.dir), 1, 1)
 
 	source.visible_message(
-		span_boldwarning("[source]O cérebro sai direto do[source.p_their()]Cabeça!"),
+		span_boldwarning("[source] O cérebro sai direto do [source.p_their()] Cabeça!"),
 		span_userdanger("Seu cérebro sai da sua cabeça!"),
 	)
 
@@ -101,11 +101,11 @@
 	playsound(victim, 'sound/items/handling/surgery/organ2.ogg', 50, TRUE)
 	victim.balloon_alert(user, "Tirando os olhos...")
 	user.visible_message(
-		span_boldwarning("[user]Chega dentro[victim]O crânio..."),
+		span_boldwarning("[user] Chega dentro [victim] O crânio..."),
 		ignored_mobs = user
 	)
 	victim.show_message(
-		span_userdanger("[victim]começa a arrancar seus olhos!"),
+		span_userdanger("[victim] começa a arrancar seus olhos!"),
 		MSG_VISUAL,
 		span_userdanger("Um braço atinge seu cérebro, e começa a puxar seus olhos!"),
 	)
@@ -120,13 +120,13 @@
 
 	playsound(victim, 'sound/items/handling/surgery/organ1.ogg', 75, TRUE)
 	user.visible_message(
-		span_boldwarning("[user]Rasga.[victim]Os olhos!"),
-		span_boldwarning("Você arranca[victim]Os olhos!"),
+		span_boldwarning("[user] Rasga.[victim] Os olhos!"),
+		span_boldwarning("Você arranca [victim] Os olhos!"),
 		ignored_mobs = victim,
 	)
 
 	victim.show_message(
-		span_userdanger("[user]Rasga seus olhos!"),
+		span_userdanger("[user] Rasga seus olhos!"),
 		MSG_VISUAL,
 		span_userdanger("Você sente um braço puxado de dentro da sua cabeça, como você sente que algo muito importante está faltando!"),
 	)

@@ -45,7 +45,7 @@
 	fired.Cut()
 	countdown_step = countdown_length
 
-	message_duelists(span_notice("Coloque sua arma e mexa-se.[required_distance]Afaste-se do seu oponente."))
+	message_duelists(span_notice("Coloque sua arma e mexa-se.[required_distance] Afaste-se do seu oponente."))
 
 	START_PROCESSING(SSobj,src)
 
@@ -94,7 +94,7 @@
 
 
 /datum/duel/proc/back_to_prep()
-	message_duelists(span_notice("Posições inválidas. Por favor, mudem para posições válidas exatamente.[required_distance]Afaste-se um do outro para continuar."))
+	message_duelists(span_notice("Posições inválidas. Por favor, mudem para posições válidas exatamente.[required_distance] Afaste-se um do outro para continuar."))
 	state = DUEL_PREPARATION
 	confirmations.Cut()
 	countdown_step = countdown_length
@@ -211,7 +211,7 @@
 			setting = DUEL_SETTING_C
 		if(DUEL_SETTING_C)
 			setting = DUEL_SETTING_A
-	to_chat(user,span_notice("Você troca.[src]Ajustando para[setting]Modo."))
+	to_chat(user,span_notice("Você troca.[src] Ajustando para [setting] Modo."))
 	update_appearance()
 
 /obj/item/gun/energy/dueling/update_overlays()
@@ -237,7 +237,7 @@
 		if(DUEL_READY)
 			return .
 		else
-			to_chat(user,span_warning("[src]Está trancada. Espere o sinal antes de atirar."))
+			to_chat(user,span_warning("[src] Está trancada. Espere o sinal antes de atirar."))
 			return FALSE
 
 /obj/item/gun/energy/dueling/proc/is_duelist(mob/living/L)
@@ -255,7 +255,7 @@
 		to_chat(user,span_notice("Você confirma sua prontidão."))
 		return
 	else if(!is_duelist(target)) //I kinda want to leave this out just to see someone shoot a bystander or missing.
-		to_chat(user,span_warning("[src]O sistema de segurança evita atirar em qualquer um, exceto no seu oponente designado."))
+		to_chat(user,span_warning("[src] O sistema de segurança evita atirar em qualquer um, exceto no seu oponente designado."))
 		return
 	else
 		duel.fired[src] = TRUE
@@ -269,7 +269,7 @@
 /obj/item/gun/energy/dueling/proc/check_valid_duel(mob/living/user, do_warn)
 	if(!duel)
 		if(do_warn)
-			to_chat(user,span_warning("[src]está atualmente sem par."))
+			to_chat(user,span_warning("[src] está atualmente sem par."))
 		return FALSE
 	return TRUE
 

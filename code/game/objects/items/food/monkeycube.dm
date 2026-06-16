@@ -38,7 +38,7 @@
 		ADD_TRAIT(bananas, TRAIT_SPAWNED_MOB, INNATE_TRAIT)
 		SET_FACTION_AND_ALLIES_FROM(bananas, src)
 
-		visible_message(span_notice("[src]Expandir!"))
+		visible_message(span_notice("[src] Expandir!"))
 		bananas.log_message("spawned via [src], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
 
 		var/alpha_to = bananas.alpha
@@ -48,22 +48,22 @@
 		animate(bananas, 0.5 SECONDS, alpha = alpha_to, transform = scale_to, easing = QUAD_EASING|EASE_OUT)
 
 	else if (!spammer) // Visible message in case there are no fingerprints
-		visible_message(span_notice("[src]Não consegue se expandir!"))
+		visible_message(span_notice("[src] Não consegue se expandir!"))
 		return
 
 	animate(src, 0.4 SECONDS, alpha = 0, transform = transform.Scale(0), easing = QUAD_EASING|EASE_IN)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/item/food/monkeycube/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está colocando[src]Em[user.p_their()]Boca! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está colocando [src] Em [user.p_their()] Boca! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	var/eating_success = do_after(user, 1 SECONDS, src)
 	if(QDELETED(user)) //qdeletion: the nuclear option of self-harm
 		return SHAME
 	if(!eating_success || QDELETED(src)) //checks if src is gone or if they failed to wait for a second
-		user.visible_message(span_suicide("[user]Galinhas fora!"))
+		user.visible_message(span_suicide("[user] Galinhas fora!"))
 		return SHAME
 	if(HAS_TRAIT(user, TRAIT_NOHUNGER)) //plasmamen don't have saliva/stomach acid
-		user.visible_message(span_suicide("[user]Percebe?[user.p_their()]O corpo não vai se ativar.[src]!")
+		user.visible_message(span_suicide("[user] Percebe?[user.p_their()] O corpo não vai se ativar.[src]!")
 		,span_warning("Seu corpo não vai se ativar.[src]..."))
 		return SHAME
 	playsound(user, 'sound/items/eatfood.ogg', rand(10, 50), TRUE)
@@ -75,15 +75,15 @@
 	if(QDELETED(user) || QDELETED(src))
 		return
 	if(src.loc != user) //how the hell did you manage this
-		to_chat(user, span_warning("Algo aconteceu com[src]..."))
+		to_chat(user, span_warning("Algo aconteceu com [src]..."))
 		return
 	Expand()
-	user.visible_message(span_danger("[user]O torso explode quando um primata emerge!"))
+	user.visible_message(span_danger("[user] O torso explode quando um primata emerge!"))
 	user.gib(DROP_BRAIN|DROP_BODYPARTS|DROP_ITEMS) // just remove the organs
 
 /obj/item/food/monkeycube/proc/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)
 	SIGNAL_HANDLER
-	to_chat(user, span_danger("Enquanto você abre[letter]Seu conteúdo se expande rapidamente!"))
+	to_chat(user, span_danger("Enquanto você abre [letter] Seu conteúdo se expande rapidamente!"))
 	Expand()
 	return COMPONENT_TRAITOR_MAIL_HANDLED
 

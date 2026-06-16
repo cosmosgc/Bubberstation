@@ -101,12 +101,12 @@
 	. = ..()
 	if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
 		if(cell)
-			. += span_notice("[p_They()] [p_have()] \a [cell]Instalado.")
+			. += span_notice("[p_They()] [p_have()] \a [cell] Instalado.")
 			. += span_info("Você pode usar um<b>Pé de cabra.</b>para removê-lo.")
 		else
-			. += span_notice("[p_They()] [p_have()]Um compartimento vazio onde<b>Célula de energia</b>Pode ser instalado.")
+			. += span_notice("[p_They()] [p_have()] Um compartimento vazio onde<b>Célula de energia</b>Pode ser instalado.")
 	if(load) //observer check is so we don't show the name of the ghost that's sitting on it to prevent metagaming who's ded.
-		. += span_notice("\A [isobserver(load) ? "ghostly figure" : load]Está ligado.[p_their()]Plataforma de carga.")
+		. += span_notice("\A [isobserver(load) ? "ghostly figure" : load]Está ligado.[p_their()] Plataforma de carga.")
 
 
 /mob/living/simple_animal/bot/mulebot/Destroy()
@@ -163,12 +163,12 @@
 	if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN) || user.combat_mode)
 		return
 	if(!cell)
-		to_chat(user, span_warning("[src]não tem uma célula de energia!"))
+		to_chat(user, span_warning("[src] não tem uma célula de energia!"))
 		return ITEM_INTERACT_BLOCKING
 	cell.add_fingerprint(user)
 	user.visible_message(
-		span_notice("[user]Pés de cabra.[cell]Fora de[src]."),
-		span_notice("Você se intromete.[cell]Fora[src]."),
+		span_notice("[user] Pés de cabra.[cell] Fora de [src]."),
+		span_notice("Você se intromete.[cell] Fora [src]."),
 	)
 	if(Adjacent(user) && !issilicon(user))
 		user.put_in_hands(cell)
@@ -179,15 +179,15 @@
 /mob/living/simple_animal/bot/mulebot/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell) && (bot_cover_flags & BOT_COVER_MAINTS_OPEN))
 		if(cell)
-			to_chat(user, span_warning("[src]Já tem uma célula de energia!"))
+			to_chat(user, span_warning("[src] Já tem uma célula de energia!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		cell = tool
 		diag_hud_set_mulebotcell()
 		user.visible_message(
-			span_notice("[user]Inserções\a [cell]Em[src]."),
-			span_notice("Você insere[cell]Em[src]."),
+			span_notice("[user] Inserções\a [cell] Em [src]."),
+			span_notice("Você insere [cell] Em [src]."),
 		)
 		return ITEM_INTERACT_SUCCESS
 	if(is_wire_tool(tool) && (bot_cover_flags & BOT_COVER_MAINTS_OPEN))
@@ -199,8 +199,8 @@
 	. = ..()
 	if(ismob(load) && prob(1 + attacking_item.force * 2))
 		user.visible_message(
-			span_danger("[user]Bate.[load]Fora.[src]Com\the [attacking_item]!"),
-			span_danger("Você bate.[load]Fora.[src]Com\the [attacking_item]!"),
+			span_danger("[user] Bate.[load] Fora.[src] Com\the [attacking_item]!"),
+			span_danger("Você bate.[load] Fora.[src] Com\the [attacking_item]!"),
 		)
 		unload(0)
 		return TRUE
@@ -249,7 +249,7 @@
 		if(prob(50) && !isnull(load))
 			unload(0)
 		if(prob(25))
-			visible_message(span_danger("Algo curto dentro dentro[src]!"))
+			visible_message(span_danger("Algo curto dentro dentro [src]!"))
 			wires.cut_random(source = proj.firer)
 
 /mob/living/simple_animal/bot/mulebot/ui_interact(mob/user, datum/tgui/ui)
@@ -301,11 +301,11 @@
 			if(bot_mode_flags & BOT_MODE_ON)
 				turn_off()
 			else if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-				to_chat(user, span_warning("[name]O painel de manutenção está aberto!"))
+				to_chat(user, span_warning("[name] O painel de manutenção está aberto!"))
 				return
 			else if(cell)
 				if(!turn_on())
-					to_chat(user, span_warning("Você não pode ligar[src]!"))
+					to_chat(user, span_warning("Você não pode ligar [src]!"))
 					return
 			return TRUE
 		else
@@ -359,16 +359,16 @@
 /mob/living/simple_animal/bot/mulebot/proc/buzz(type)
 	switch(type)
 		if(SIGH)
-			audible_message(span_hear("[src]Faz um zumbido suspirando."))
+			audible_message(span_hear("[src] Faz um zumbido suspirando."))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 		if(ANNOYED)
-			audible_message(span_hear("[src]Faz um zumbido irritado."))
+			audible_message(span_hear("[src] Faz um zumbido irritado."))
 			playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50, FALSE)
 		if(DELIGHT)
-			audible_message(span_hear("[src]Faz um ping encantado!"))
+			audible_message(span_hear("[src] Faz um ping encantado!"))
 			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
 		if(CHIME)
-			audible_message(span_hear("[src]Faz barulho!"))
+			audible_message(span_hear("[src] Faz barulho!"))
 			playsound(src, 'sound/machines/chime.ogg', 50, FALSE)
 	flick("[base_icon]1", src)
 
@@ -629,7 +629,7 @@
 		if(pathset) //The AI called us here, so notify it of our arrival.
 			loaddir = dir //The MULE will attempt to load a crate in whatever direction the MULE is "facing".
 			if(calling_ai)
-				to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [src]Sem fio toca um som chiming!"))
+				to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [src] Sem fio toca um som chiming!"))
 				calling_ai.playsound_local(calling_ai, 'sound/machines/chime.ogg', 40, FALSE)
 				calling_ai = null
 				radio_channel = RADIO_CHANNEL_AI_PRIVATE //Report on AI Private instead if the AI is controlling us.
@@ -669,24 +669,24 @@
 	var/mob/living/L = M
 	if(wires.is_cut(WIRE_AVOIDANCE)) // usually just bumps, but if the avoidance wire is cut, knocks them over.
 		if(iscyborg(L))
-			visible_message(span_danger("[src]Esbarra.[L]!"))
+			visible_message(span_danger("[src] Esbarra.[L]!"))
 		else if(L.Knockdown(8 SECONDS))
 			log_combat(src, L, "knocked down")
-			visible_message(span_danger("[src]Derruba.[L]!"))
+			visible_message(span_danger("[src] Derruba.[L]!"))
 	return ..()
 
 // when mulebot is in the same loc
 /mob/living/simple_animal/bot/mulebot/proc/run_over(mob/living/carbon/human/crushed)
 	if (!(bot_cover_flags & BOT_COVER_EMAGGED) && !wires.is_cut(WIRE_AVOIDANCE))
 		if (!has_status_effect(/datum/status_effect/careful_driving))
-			crushed.visible_message(span_notice("[src]Desacelera para evitar imaginário.[crushed]."))
+			crushed.visible_message(span_notice("[src] Desacelera para evitar imaginário.[crushed]."))
 		apply_status_effect(/datum/status_effect/careful_driving)
 		return // Player mules must be emagged before they can trample
 
 	log_combat(src, crushed, "run over", addition = "(DAMTYPE: [uppertext(BRUTE)])")
 	crushed.visible_message(
-		span_danger("[src]Chega.[crushed]!"),
-		span_userdanger("[src]Passa por cima de você!"),
+		span_danger("[src] Chega.[crushed]!"),
+		span_userdanger("[src] Passa por cima de você!"),
 	)
 
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
@@ -791,7 +791,7 @@
 
 /mob/living/simple_animal/bot/mulebot/post_possession()
 	. = ..()
-	visible_message(span_notice("[src]As seguranças estão travadas."))
+	visible_message(span_notice("[src] As seguranças estão travadas."))
 
 /mob/living/simple_animal/bot/mulebot/paranormal//allows ghosts only unless hacked to actually be useful
 	name = "\improper GHOULbot"

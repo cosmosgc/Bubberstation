@@ -34,12 +34,12 @@
 
 /obj/item/assembly/flash/suicide_act(mob/living/user)
 	if(burnt_out)
-		user.visible_message(span_suicide("[user]Aumentos\the [src]até[user.p_their()]Olhos e ativa... mas está queimado!"))
+		user.visible_message(span_suicide("[user] Aumentos\the [src] até [user.p_their()] Olhos e ativa... mas está queimado!"))
 		return SHAME
 	else if(user.is_blind())
-		user.visible_message(span_suicide("[user]Aumentos\the [src]até[user.p_their()]Olhos e ativa... mas...[user.p_theyre()]Cego!"))
+		user.visible_message(span_suicide("[user] Aumentos\the [src] até [user.p_their()] Olhos e ativa... mas...[user.p_theyre()] Cego!"))
 		return SHAME
-	user.visible_message(span_suicide("[user]Aumentos\the [src]até[user.p_their()]Olhos e ativa! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Aumentos\the [src] até [user.p_their()] Olhos e ativa! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	attack(user,user)
 	return FIRELOSS
 
@@ -74,7 +74,7 @@
 /obj/item/assembly/flash/proc/burn_out() //Made so you can override it if you want to have an invincible flash from R&D or something.
 	if(!burnt_out)
 		burnt_out = TRUE
-		loc?.visible_message(span_danger("[src]Queima!"),span_userdanger("[src]Queima!"))
+		loc?.visible_message(span_danger("[src] Queima!"),span_userdanger("[src] Queima!"))
 		update_appearance()
 
 /obj/item/assembly/flash/proc/flash_recharge(interval = 10)
@@ -95,7 +95,7 @@
 	var/list/mob/targets = get_flash_targets(get_turf(src), range, FALSE)
 	if(user)
 		targets -= user
-		to_chat(user, span_danger("[src]emite uma luz ofuscante!"))
+		to_chat(user, span_danger("[src] emite uma luz ofuscante!"))
 	for(var/mob/living/nearby_living in targets)
 		flash_mob(nearby_living, user, confusion_duration, targeted = FALSE, generic_message = TRUE)
 	return TRUE
@@ -150,7 +150,7 @@
 		flashed.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"] [extra_log]", LOG_ATTACK)
 
 	if(generic_message && flashed != user)
-		to_chat(flashed, span_danger("[src]emite uma luz ofuscante!"))
+		to_chat(flashed, span_danger("[src] emite uma luz ofuscante!"))
 
 	var/deviation = calculate_deviation(flashed, user || src)
 
@@ -174,9 +174,9 @@
 	if(!flash_result)
 		if(targeted)
 			if(user)
-				visible_message(span_warning("[user]Não consegue ficar cego.[flashed]Com o flash!"), span_danger("[user]Não consegue te cegar com o flash!"))
+				visible_message(span_warning("[user] Não consegue ficar cego.[flashed] Com o flash!"), span_danger("[user] Não consegue te cegar com o flash!"))
 			else
-				to_chat(flashed, span_danger("[src]Não te cega!"))
+				to_chat(flashed, span_danger("[src] Não te cega!"))
 		return FALSE
 
 	flashed.adjust_confusion_up_to(confusion_duration, confusion_duration * CONFUSION_STACK_MAX_MULTIPLIER)
@@ -191,23 +191,23 @@
 				flashed.Paralyze(flash_duration)
 				flashed.set_temp_blindness_if_lower(flash_duration)
 				if(user)
-					user.visible_message(span_warning("[user]Sobrecargas[flashed]Os sensores e a computação com o flash!"), span_danger("Você está sobrecarregado.[flashed]Os sensores e a computação com o flash!"))
+					user.visible_message(span_warning("[user] Sobrecargas [flashed] Os sensores e a computação com o flash!"), span_danger("Você está sobrecarregado.[flashed] Os sensores e a computação com o flash!"))
 				else
-					to_chat(flashed, "[src]sobrecarrega seus sensores e computação!")
+					to_chat(flashed, "[src] sobrecarrega seus sensores e computação!")
 			else
 				flashed.set_temp_blindness_if_lower( (rand(5,15) SECONDS))
 				if(user)
-					user.visible_message(span_warning("[user]Persianas[flashed]Com o flash!"), span_danger("Você é cego.[flashed]Com o flash!"))
+					user.visible_message(span_warning("[user] Persianas [flashed] Com o flash!"), span_danger("Você é cego.[flashed] Com o flash!"))
 				else
-					to_chat(flashed, "Você está cego por[src]!")
+					to_chat(flashed, "Você está cego por [src]!")
 		else
 			//easy way to make sure that you can only long stun someone who is facing in your direction
 			flashed.adjust_stamina_loss(rand(80, 120) * (1 - (deviation * 0.5)))
 			flashed.Knockdown(rand(25, 50) * (1 - (deviation * 0.5)))
 			if(user)
-				visible_message(span_danger("[user]Persianas[flashed]Com o flash!"), span_userdanger("[user]Te cega com o flash!"))
+				visible_message(span_danger("[user] Persianas [flashed] Com o flash!"), span_userdanger("[user] Te cega com o flash!"))
 			else
-				to_chat(flashed, "Você está cego por[src]!")
+				to_chat(flashed, "Você está cego por [src]!")
 
 	if(user)
 		SEND_SIGNAL(user, COMSIG_MOB_SUCCESSFUL_FLASHED_MOB, flashed, src, deviation)
@@ -273,7 +273,7 @@
 	SIGNAL_HANDLER
 	if(!try_use_flash())
 		return NONE
-	to_chat(user, span_danger("Enquanto você abre[letter], uma luz muito brilhante sai de dentro!"))
+	to_chat(user, span_danger("Enquanto você abre [letter], uma luz muito brilhante sai de dentro!"))
 	flash_mob(user)
 	forceMove(user.loc)
 	return COMPONENT_TRAITOR_MAIL_HANDLED
@@ -366,7 +366,7 @@
 	overheat = FALSE
 
 /obj/item/assembly/flash/armimplant/screwdriver_act(mob/living/user, obj/item/I)
-	to_chat(user, span_notice("\The [src]É um implante! Não pode ser seguro!"))
+	to_chat(user, span_notice("\The [src] É um implante! Não pode ser seguro!"))
 	add_fingerprint(user)
 
 /obj/item/assembly/flash/hypnotic
@@ -385,14 +385,14 @@
 		flashed.log_message("was [targeted? "hypno-flashed(targeted)" : "hypno-flashed(AOE)"] [extra_log]", LOG_ATTACK)
 
 	if(generic_message && flashed != user)
-		to_chat(flashed, span_notice("[src]emite uma luz calmante..."))
+		to_chat(flashed, span_notice("[src] emite uma luz calmante..."))
 
 	if(!flashed.flash_act(1, override_blindness_check = targeted, affect_silicon = TRUE))
 		if(targeted)
 			if(user)
-				user.visible_message(span_warning("[user]Não consegue ficar cego.[flashed]Com o flash!"), span_warning("Você falhou em hipno-flash[flashed]!"))
+				user.visible_message(span_warning("[user] Não consegue ficar cego.[flashed] Com o flash!"), span_warning("Você falhou em hipno-flash [flashed]!"))
 			else
-				to_chat(flashed, span_danger("[src]Não te cega!"))
+				to_chat(flashed, span_danger("[src] Não te cega!"))
 		return FALSE
 
 	if(!targeted)
@@ -404,9 +404,9 @@
 		return TRUE
 
 	if(user)
-		user.visible_message(span_danger("[user]Persianas[flashed]Com o flash!"), span_danger("Você hipno-flash[flashed]!"))
+		user.visible_message(span_danger("[user] Persianas [flashed] Com o flash!"), span_danger("Você hipno-flash [flashed]!"))
 	else
-		to_chat(flashed, "Você está cego por[src]!")
+		to_chat(flashed, "Você está cego por [src]!")
 
 	if(!flashed.hypnosis_vulnerable())
 		to_chat(flashed, span_hypnophrase("A luz faz você se sentir estranhamente relaxado..."))

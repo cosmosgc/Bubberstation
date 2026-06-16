@@ -34,7 +34,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/grey/do_effect(mob/user)
 	new /obj/item/slimepotion/slime_reviver(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/orange
@@ -54,7 +54,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/purple/do_effect(mob/user)
 	new /obj/item/slimecrossbeaker/omnizine(get_turf(user))
-	user.visible_message(span_notice("[src]faíscas e inundações com uma solução regenerativa!"))
+	user.visible_message(span_notice("[src] faíscas e inundações com uma solução regenerativa!"))
 	..()
 
 /obj/item/slimecross/charged/blue
@@ -63,7 +63,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/blue/do_effect(mob/user)
 	new /obj/item/slimepotion/slime/chargedstabilizer(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/metal
@@ -73,7 +73,7 @@ Charged extracts:
 /obj/item/slimecross/charged/metal/do_effect(mob/user)
 	new /obj/item/stack/sheet/iron(get_turf(user), 25)
 	new /obj/item/stack/sheet/plasteel(get_turf(user), 10)
-	user.visible_message(span_notice("[src]Cresce em uma infinidade de metais!"))
+	user.visible_message(span_notice("[src] Cresce em uma infinidade de metais!"))
 	..()
 
 /obj/item/slimecross/charged/yellow
@@ -82,7 +82,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/yellow/do_effect(mob/user)
 	new /obj/item/stock_parts/power_store/cell/high/slime_hypercharged(get_turf(user))
-	user.visible_message(span_notice("[src]faíscas violentamente, e incha com energia elétrica!"))
+	user.visible_message(span_notice("[src] faíscas violentamente, e incha com energia elétrica!"))
 	..()
 
 /obj/item/slimecross/charged/darkpurple
@@ -91,7 +91,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/darkpurple/do_effect(mob/user)
 	new /obj/item/stack/sheet/mineral/plasma(get_turf(user), 10)
-	user.visible_message(span_notice("[src]produzir uma grande quantidade de plasma!"))
+	user.visible_message(span_notice("[src] produzir uma grande quantidade de plasma!"))
 	..()
 
 /obj/item/slimecross/charged/darkblue
@@ -100,7 +100,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/darkblue/do_effect(mob/user)
 	new /obj/item/slimepotion/spaceproof(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/silver
@@ -112,7 +112,7 @@ Charged extracts:
 	for(var/i in 1 to 10)
 		var/drink_type = get_random_drink()
 		new drink_type(get_turf(user))
-	user.visible_message(span_notice("[src]produz bolo e bebidas para uma festa!"))
+	user.visible_message(span_notice("[src] produz bolo e bebidas para uma festa!"))
 	..()
 
 /obj/item/slimecross/charged/bluespace
@@ -121,7 +121,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/bluespace/do_effect(mob/user)
 	new /obj/item/stack/sheet/bluespace_crystal(get_turf(user), 10)
-	user.visible_message(span_notice("[src]produz várias folhas de policristal!"))
+	user.visible_message(span_notice("[src] produz várias folhas de policristal!"))
 	..()
 
 /obj/item/slimecross/charged/sepia
@@ -130,7 +130,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/sepia/do_effect(mob/user)
 	new /obj/item/camera/spooky(get_turf(user))
-	user.visible_message(span_notice("[src]Estremece de uma maneira estranha e etérea, e produz uma câmera!"))
+	user.visible_message(span_notice("[src] Estremece de uma maneira estranha e etérea, e produz uma câmera!"))
 	..()
 
 /obj/item/slimecross/charged/cerulean
@@ -139,7 +139,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/cerulean/do_effect(mob/user)
 	new /obj/item/slimepotion/enhancer/max(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/pyrite
@@ -148,7 +148,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/pyrite/do_effect(mob/user)
 	new /obj/item/stack/sheet/mineral/bananium(get_turf(user), 10)
-	user.visible_message(span_warning("[src]Solidifica-se com um horrível cheiro de banana!"))
+	user.visible_message(span_warning("[src] Solidifica-se com um horrível cheiro de banana!"))
 	..()
 
 /obj/item/slimecross/charged/red
@@ -157,7 +157,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/red/do_effect(mob/user)
 	new /obj/item/slimepotion/lavaproof(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/green
@@ -179,7 +179,7 @@ Charged extracts:
 	if(!user.can_perform_action(src))
 		return
 	human_user.set_species(choice_list[racechoice], icon_update=1)
-	human_user.visible_message(span_warning("[human_user]De arrependimento, lama de forma como[src]dissolver-se em[human_user.p_their()]Pelé!"))
+	human_user.visible_message(span_warning("[human_user] De arrependimento, lama de forma como [src] dissolver-se em [human_user.p_their()] Pelé!"))
 	..()
 
 /obj/item/slimecross/charged/pink
@@ -188,7 +188,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/pink/do_effect(mob/user)
 	new /obj/item/slimepotion/lovepotion(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/gold
@@ -198,20 +198,20 @@ Charged extracts:
 	var/spawned = 0
 
 /obj/item/slimecross/charged/gold/do_effect(mob/user)
-	user.visible_message(span_warning("[src]Começa a tremer violentamente!"))
+	user.visible_message(span_warning("[src] Começa a tremer violentamente!"))
 	addtimer(CALLBACK(src, PROC_REF(startTimer)), 5 SECONDS)
 
 /obj/item/slimecross/charged/gold/proc/startTimer()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/slimecross/charged/gold/process()
-	visible_message(span_warning("[src]solta uma faísca, e produz uma criatura viva!"))
+	visible_message(span_warning("[src] solta uma faísca, e produz uma criatura viva!"))
 	new /obj/effect/particle_effect/sparks(get_turf(src))
 	playsound(get_turf(src), SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	create_random_mob(get_turf(src), HOSTILE_SPAWN)
 	spawned++
 	if(spawned >= max_spawn)
-		visible_message(span_warning("[src]cai em uma poça de gosma."))
+		visible_message(span_warning("[src] cai em uma poça de gosma."))
 		qdel(src)
 
 /obj/item/slimecross/charged/gold/Destroy()
@@ -223,7 +223,7 @@ Charged extracts:
 	effect_desc = "Cria uma explosão após alguns segundos."
 
 /obj/item/slimecross/charged/oil/do_effect(mob/user)
-	user.visible_message(span_danger("[src]Começa a tremer com força crescente!"))
+	user.visible_message(span_danger("[src] Começa a tremer com força crescente!"))
 	addtimer(CALLBACK(src, PROC_REF(boom)), 5 SECONDS)
 
 /obj/item/slimecross/charged/oil/proc/boom()
@@ -247,7 +247,7 @@ Charged extracts:
 
 	var/datum/species/changed = pick(allowed_species)
 	if(isnull(changed))
-		visible_message(span_notice("[src]Tem febre inútil."))
+		visible_message(span_notice("[src] Tem febre inútil."))
 		return
 	experiment_subject.set_species(changed, icon_update = TRUE)
 	to_chat(experiment_subject, span_danger("Você se sente muito diferente!"))
@@ -259,7 +259,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/lightpink/do_effect(mob/user)
 	new /obj/item/slimepotion/peacepotion(get_turf(user))
-	user.visible_message(span_notice("[src]Destila em uma poção!"))
+	user.visible_message(span_notice("[src] Destila em uma poção!"))
 	..()
 
 /obj/item/slimecross/charged/adamantine
@@ -267,7 +267,7 @@ Charged extracts:
 	effect_desc = "Cria uma concha de Golem completa."
 
 /obj/item/slimecross/charged/adamantine/do_effect(mob/user)
-	user.visible_message(span_notice("[src]produzir uma concha de Golem totalmente formada!"))
+	user.visible_message(span_notice("[src] produzir uma concha de Golem totalmente formada!"))
 	new /obj/effect/mob_spawn/ghost_role/human/golem/servant(get_turf(src), /datum/species/golem, user)
 	..()
 
@@ -276,7 +276,7 @@ Charged extracts:
 	effect_desc = "Produz três lodos vivos de cores aleatórias."
 
 /obj/item/slimecross/charged/rainbow/do_effect(mob/user)
-	user.visible_message(span_warning("[src]Incha e se divide em três novas lombrigas!"))
+	user.visible_message(span_warning("[src] Incha e se divide em três novas lombrigas!"))
 	for(var/i in 1 to 3)
 		new /mob/living/basic/slime/random(get_turf(user))
 	return ..()

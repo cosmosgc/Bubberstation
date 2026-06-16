@@ -52,7 +52,7 @@
 	attack_verb_simple = list("sting")
 
 /obj/item/food/grown/nettle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está comendo um pouco de[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está comendo um pouco de [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return (BRUTELOSS|TOXLOSS)
 
 /obj/item/food/grown/nettle/death

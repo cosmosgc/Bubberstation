@@ -105,12 +105,12 @@
 		return
 	var/turf/loc_turf = get_turf(src)
 	if(loc_turf.density)
-		to_chat(user, span_warning("[src]Está bloqueado!"))
+		to_chat(user, span_warning("[src] Está bloqueado!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!isfloorturf(loc_turf))
-		to_chat(user, span_warning("[src]Os parafusos devem ser apertados no chão!"))
+		to_chat(user, span_warning("[src] Os parafusos devem ser apertados no chão!"))
 		return ITEM_INTERACT_SUCCESS
-	user.visible_message(span_notice("[user]aperta alguns parafusos na parede."), span_notice("Você aperta os parafusos na parede."))
+	user.visible_message(span_notice("[user] aperta alguns parafusos na parede."), span_notice("Você aperta os parafusos na parede."))
 	ChangeToWall()
 	return ITEM_INTERACT_SUCCESS
 
@@ -128,7 +128,7 @@
 	return
 
 /obj/structure/falsewall/proc/dismantle(mob/user, disassembled=TRUE, obj/item/tool = null)
-	user.visible_message(span_notice("[user]Desmantela a parede falsa."), span_notice("Você desmantela a parede falsa."))
+	user.visible_message(span_notice("[user] Desmantela a parede falsa."), span_notice("Você desmantela a parede falsa."))
 	if(tool)
 		tool.play_tool_sound(src, 100)
 	else
@@ -400,7 +400,7 @@
 
 /obj/structure/falsewall/material/finalize_material_effects(list/materials)
 	. = ..()
-	desc = "Um enorme pedaço de[get_material_english_list(materials)]Costumava separar quartos."
+	desc = "Um enorme pedaço de [get_material_english_list(materials)] Costumava separar quartos."
 
 /obj/structure/falsewall/material/toggle_open()
 	if(!QDELETED(src))

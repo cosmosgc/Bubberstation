@@ -38,10 +38,10 @@
 /datum/antagonist/obsessed/admin_add(datum/mind/new_owner,mob/admin)
 	var/mob/living/carbon/C = new_owner.current
 	if(!istype(C))
-		to_chat(admin, "[roundend_category]Vem de um trauma cerebral, então eles precisam pelo menos ser um carbono!")
+		to_chat(admin, "[roundend_category] Vem de um trauma cerebral, então eles precisam pelo menos ser um carbono!")
 		return
 	if(!C.get_organ_by_type(/obj/item/organ/brain)) // If only I had a brain
-		to_chat(admin, "[roundend_category]Eles precisam ter um cérebro.")
+		to_chat(admin, "[roundend_category] Eles precisam ter um cérebro.")
 		return
 	message_admins("[key_name_admin(admin)] made [key_name_admin(new_owner)] into [name].")
 	log_admin("[key_name(admin)] made [key_name(new_owner)] into [name].")
@@ -163,11 +163,11 @@
 				break
 	if(trauma)
 		if(trauma.total_time_creeping > 0)
-			report += span_greentext("O[name]gastou um total de[DisplayTimeText(trauma.total_time_creeping)]Estar perto[trauma.obsession]!")
+			report += span_greentext("O [name] gastou um total de [DisplayTimeText(trauma.total_time_creeping)] Estar perto [trauma.obsession]!")
 		else
-			report += span_redtext("O[name]Não se aproximou de sua obsessão durante todo o round! Isso é extremamente impressionante!")
+			report += span_redtext("O [name] Não se aproximou de sua obsessão durante todo o round! Isso é extremamente impressionante!")
 	else
-		report += span_redtext("O[name]Não tinha nenhum trauma ligado a seus modos antagonistas! Ou ele furou ou um administrador deu incorretamente este bom antag samaritano e quebrou! Você pode muito bem aparecer!")
+		report += span_redtext("O [name] Não tinha nenhum trauma ligado a seus modos antagonistas! Ou ele furou ou um administrador deu incorretamente este bom antag samaritano e quebrou! Você pode muito bem aparecer!")
 
 	if(objectives.len == 0 || objectives_complete)
 		report += "<span class='greentext big'>The [name] was successful!</span>"

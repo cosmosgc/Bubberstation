@@ -16,7 +16,7 @@
 	if(!iscarbon(tapped_atom))
 		return
 	var/mob/living/carbon/carbon = tapped_atom
-	carbon.visible_message(span_notice("[user]Análises[tapped_atom]Os sinais vitais."))
+	carbon.visible_message(span_notice("[user] Análises [tapped_atom] Os sinais vitais."))
 	last_record = healthscan(user, carbon, 1, tochat = FALSE)
 	var/datum/tgui/active_ui = SStgui.get_open_ui(user, computer)
 	if(active_ui)

@@ -142,7 +142,7 @@
 				return PROJECTILE_PIERCE_PHASE
 
 		if(victim.can_block_magic(MAGIC_RESISTANCE))
-			visible_message(span_warning("[src]cai no chão e derrete em contato.[victim]!"))
+			visible_message(span_warning("[src] cai no chão e derrete em contato.[victim]!"))
 			return PROJECTILE_DELETE_WITHOUT_HITTING
 
 	return ..()

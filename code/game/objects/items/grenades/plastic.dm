@@ -101,7 +101,7 @@
 	if(!newtime || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	det_time = newtime
-	to_chat(user, "Timer pronto para para[det_time]Segundos.")
+	to_chat(user, "Timer pronto para para [det_time] Segundos.")
 
 /obj/item/grenade/c4/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	// Here lies C4 ghosts. We hardly knew ye
@@ -115,7 +115,7 @@
 		to_chat(user, span_warning("Você não quer machucar outros seres vivos!"))
 		return FALSE
 
-	to_chat(user, span_notice("Você começa a plantar[src]O temporizador está definido para[det_time]..."))
+	to_chat(user, span_notice("Você começa a plantar [src] O temporizador está definido para [det_time]..."))
 
 	if(!do_after(user, 3 SECONDS, target = bomb_target))
 		return FALSE
@@ -171,7 +171,7 @@
 	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [src] at [ADMIN_VERBOSEJMP(user)]")
 	user.log_message("suicided with [src].", LOG_ATTACK)
 	log_game("[key_name(user)] suicided with [src] at [AREACOORD(user)]")
-	user.visible_message(span_suicide("[user]Ativa.[src]e o segura acima[user.p_their()]Cabeça! Parece que...[user.p_theyre()]Saindo com um estrondo!"))
+	user.visible_message(span_suicide("[user] Ativa.[src] e o segura acima [user.p_their()] Cabeça! Parece que...[user.p_theyre()] Saindo com um estrondo!"))
 	shout_syndicate_crap(user)
 	explosion(user, heavy_impact_range = 2, explosion_cause = src) //Cheap explosion imitation because putting detonate() here causes runtimes
 	user.gib(DROP_BODYPARTS)

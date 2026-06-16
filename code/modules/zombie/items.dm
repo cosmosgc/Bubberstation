@@ -65,10 +65,10 @@
 	if(!infection)
 		infection = new()
 		infection.Insert(target)
-		to_chat(user, span_alien("Viu?[target]Estremeça por um momento.[target.p_their()]A cabeça está coberta de\a [infection] - [target.p_Theyve()]foi infectado."))
+		to_chat(user, span_alien("Viu?[target] Estremeça por um momento.[target.p_their()] A cabeça está coberta de\a [infection] - [target.p_Theyve()] foi infectado."))
 
 /obj/item/mutant_hand/zombie/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está rasgando[user.p_their()]Cérebros para fora! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está rasgando [user.p_their()] Cérebros para fora! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	var/obj/item/bodypart/head = user.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
 		head.dismember()

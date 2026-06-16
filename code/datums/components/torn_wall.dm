@@ -85,7 +85,7 @@
 /datum/component/torn_wall/proc/on_examined(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	var/intensity = (current_stage == TORN_WALL_INITIAL) ? "slightly" : "badly"
-	examine_list += span_notice("Parece[intensity]Danificado.")
+	examine_list += span_notice("Parece [intensity] Danificado.")
 	examine_list += span_info("Você pode ser capaz de repará-lo usando uma ferramenta de solda.")
 
 /// Show a little crack on here

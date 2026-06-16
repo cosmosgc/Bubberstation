@@ -114,7 +114,7 @@
 
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
 	. = ..()
-	. += span_notice("Ogerador tem[sheets]Unidades de[sheet_name]Combustível deixado, produzindo[display_power(power_gen)].")
+	. += span_notice("Ogerador tem [sheets] Unidades de [sheet_name] Combustível deixado, produzindo [display_power(power_gen)].")
 	if(anchored)
 		. += span_notice("Está ancorado ao chão.")
 
@@ -180,9 +180,9 @@
 		var/obj/item/stack/addstack = O
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
-			to_chat(user, span_notice("\The [src]Está cheio!"))
+			to_chat(user, span_notice("\The [src] Está cheio!"))
 			return
-		to_chat(user, span_notice("Você acrescenta[amount]Lençóis para\the [src]."))
+		to_chat(user, span_notice("Você acrescenta [amount] Lençóis para\the [src]."))
 		sheets += amount
 		addstack.use(amount)
 		return

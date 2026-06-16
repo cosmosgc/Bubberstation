@@ -38,7 +38,7 @@
 		return
 
 	user.visible_message(
-		span_warning("[user]Puxa.[src]É alavanca com um brilho em[user.p_their()]Olhos!"),
+		span_warning("[user] Puxa.[src] É alavanca com um brilho em [user.p_their()] Olhos!"),
 		span_warning("Você sente uma drenagem enquanto puxa a alavanca, mas sabe que valerá a pena."),
 	)
 
@@ -112,7 +112,7 @@
 /obj/structure/cursed_money/proc/collapse()
 	if(QDELETED(src))
 		return
-	visible_message(span_warning("[src]cai sobre si mesmo, com a tela apodrecendo e o conteúdo desaparecendo."))
+	visible_message(span_warning("[src] cai sobre si mesmo, com a tela apodrecendo e o conteúdo desaparecendo."))
 	qdel(src)
 
 /obj/structure/cursed_money/attack_hand(mob/living/user, list/modifiers)
@@ -120,7 +120,7 @@
 	if(.)
 		return
 	user.visible_message(
-		span_warning("[user]Abra um saco e remova um dado."),
+		span_warning("[user] Abra um saco e remova um dado."),
 		span_warning("[span_boldwarning("You open the bag...!")] But all you see is a bag full of dice. Confused, you take one..."),
 	)
 	var/turf/location = get_turf(user)

@@ -584,7 +584,7 @@
 	var/mob/living/carbon/human/stolen_from = stealing
 	var/obj/item/real_stolen_item = find_desired_thing(stealing)
 	stolen_from.Unconscious(10 SECONDS)
-	to_chat(stolen_from, span_warning("Você sente algo faltando onde seu[real_stolen_item.name]Uma vez foi."))
+	to_chat(stolen_from, span_warning("Você sente algo faltando onde seu [real_stolen_item.name] Uma vez foi."))
 	return ..(real_stolen_item, spy)
 
 /datum/spy_bounty/targets_person/some_item/target_found(mob/crewmember)

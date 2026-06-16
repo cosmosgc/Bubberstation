@@ -54,31 +54,31 @@
 	if(anchored)
 		return active ? Deactivate(user) : Activate(user)
 	else
-		to_chat(user, span_warning("Você precisa transar.\the [src]Para o chão primeiro!"))
+		to_chat(user, span_warning("Você precisa transar.\the [src] Para o chão primeiro!"))
 
 /obj/machinery/power/singularity_beacon/wrench_act(mob/living/user, obj/item/tool)
 	. = TRUE
 	if(active)
-		to_chat(user, span_warning("Você precisa desativar.\the [src]Primero!"))
+		to_chat(user, span_warning("Você precisa desativar.\the [src] Primero!"))
 		return
 
 	if(anchored)
 		tool.play_tool_sound(src, 50)
 		set_anchored(FALSE)
-		to_chat(user, span_notice("Você destranca.\the [src]do chão e separe-o do cabo."))
+		to_chat(user, span_notice("Você destranca.\the [src] do chão e separe-o do cabo."))
 		disconnect_from_network()
 		return
 	else
 		if(!connect_to_network())
-			to_chat(user, span_warning("\The [src]Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
+			to_chat(user, span_warning("\The [src] Deve ser colocado sobre um nó de cabo exposto e alimentado!"))
 			return
 		tool.play_tool_sound(src, 50)
 		set_anchored(TRUE)
-		to_chat(user, span_notice("Você vai embora.\the [src]para o chão e prenda-o ao cabo."))
+		to_chat(user, span_notice("Você vai embora.\the [src] para o chão e prenda-o ao cabo."))
 		return
 
 /obj/machinery/power/singularity_beacon/screwdriver_act(mob/living/user, obj/item/tool)
-	user.visible_message( 			"[user]Mexe com\the [src]Por um tempo.", 			span_notice("Você não pode colocar a chave de fenda\the [src]São parafusos! Tente usar uma chave inglesa."))
+	user.visible_message( 			"[user] Mexe com\the [src] Por um tempo.", 			span_notice("Você não pode colocar a chave de fenda\the [src] São parafusos! Tente usar uma chave inglesa."))
 	return TRUE
 
 /obj/machinery/power/singularity_beacon/Destroy()
@@ -163,11 +163,11 @@
 	tool.play_tool_sound(src, 50)
 	if(anchored)
 		set_anchored(FALSE)
-		to_chat(user, span_notice("Você destranca.\the [src]Do chão."))
+		to_chat(user, span_notice("Você destranca.\the [src] Do chão."))
 		return
 	else
 		set_anchored(TRUE)
-		to_chat(user, span_notice("Você vai embora.\the [src]Para o chão."))
+		to_chat(user, span_notice("Você vai embora.\the [src] Para o chão."))
 		return
 
 /obj/machinery/power/singularity_beacon/syndicate/no_escape/screwdriver_act(mob/living/user, obj/item/tool)

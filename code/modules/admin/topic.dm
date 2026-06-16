@@ -31,7 +31,7 @@
 		if(AH)
 			AH.Action(href_list["ahelp_action"])
 		else
-			to_chat(usr, "Bilhete[ahelp_ref]Foi deletado!", confidential = TRUE)
+			to_chat(usr, "Bilhete [ahelp_ref] Foi deletado!", confidential = TRUE)
 
 	else if(href_list["ahelp_tickets"])
 		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
@@ -150,7 +150,7 @@
 		if(!shuttle_console)
 			return
 		shuttle_console.admin_controlled = !shuttle_console.admin_controlled
-		to_chat(usr, "[shuttle_console]era[shuttle_console.admin_controlled ? "trancado" : "destrancado"].", confidential = TRUE)
+		to_chat(usr, "[shuttle_console] era[shuttle_console.admin_controlled ? "trancado" : "destrancado"].", confidential = TRUE)
 
 	else if(href_list["delay_round_end"])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/delay_round_end)
@@ -234,10 +234,10 @@
 			if(tgui_alert(usr, "Chute.[key_name(M)]?", "Confirm", list("Yes", "No")) != "Yes")
 				return
 			if(!M)
-				to_chat(usr, span_danger("Erro:[M]Não existe mais!"), confidential = TRUE)
+				to_chat(usr, span_danger("Erro:[M] Não existe mais!"), confidential = TRUE)
 				return
 			if(!M.client)
-				to_chat(usr, span_danger("Erro:[M]Não tem mais um cliente!"), confidential = TRUE)
+				to_chat(usr, span_danger("Erro:[M] Não tem mais um cliente!"), confidential = TRUE)
 				return
 			to_chat(M, span_danger("Você foi chutado do servidor por[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"]."), confidential = TRUE)
 			log_admin("[key_name(usr)] kicked [key_name(M)].")
@@ -429,7 +429,7 @@
 			to_chat(usr, "isso só pode ser usado em casos de tipo /mob / vivo / carbono / humano.", confidential = TRUE)
 			return
 		if(!target.client)
-			to_chat(usr, "[target]Não tem cliente!", confidential = TRUE)
+			to_chat(usr, "[target] Não tem cliente!", confidential = TRUE)
 			return
 		SSquirks.AssignQuirks(target, target.client)
 		log_admin("[key_name(usr)] applied client quirks to [key_name(target)].")
@@ -470,7 +470,7 @@
 			return
 
 		if(!M.client)
-			to_chat(usr, span_warning("[M]Não parece ter um cliente ativo."), confidential = TRUE)
+			to_chat(usr, span_warning("[M] Não parece ter um cliente ativo."), confidential = TRUE)
 			return
 
 		if(tgui_alert(usr, "Enviar[key_name(M)]De volta ao Lobby?", "Message", list("Yes", "No")) != "Yes")
@@ -641,10 +641,10 @@
 			return
 
 		if(original_mob == target_mob)
-			to_chat(usr, span_warning("[target_ckey]Ainda está em sua máfia original:[original_mob]."))
+			to_chat(usr, span_warning("[target_ckey] Ainda está em sua máfia original:[original_mob]."))
 			return
 
-		to_chat(usr, span_notice("Saltando para[target_ckey]Nova multidão:[target_mob]!"))
+		to_chat(usr, span_notice("Saltando para [target_ckey] Nova multidão:[target_mob]!"))
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/show_player_panel, target_mob)
 
 	else if(href_list["adminplayerobservefollow"])
@@ -778,7 +778,7 @@
 				var/newslots = null
 				newslots = input(usr, "How many job slots do you want?", "Add job slots", "[newslots]") as num|null
 				if(!isnull(newslots))
-					to_chat(src.owner, "Espaços de trabalho para[job.title]Pronto para[newslots]" , confidential = TRUE)
+					to_chat(src.owner, "Espaços de trabalho para [job.title] Pronto para [newslots]" , confidential = TRUE)
 					job.total_positions = newslots
 					log_job_debug("[key_name(usr)] set the job cap for [job.title] to [newslots]")
 					break

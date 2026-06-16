@@ -76,19 +76,19 @@
 /obj/machinery/coffeemaker/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("Você está muito longe para examinar.[src]O conteúdo e a exibição!")
+		. += span_warning("Você está muito longe para examinar.[src] O conteúdo e a exibição!")
 		return
 
 	if(brewing)
-		. += span_warning("\The [src]está se preparando.")
+		. += span_warning("\The [src] está se preparando.")
 		return
 
 	if(panel_open)
-		. += span_notice("[src]A escotilha de manutenção está aberta!")
+		. += span_notice("[src] A escotilha de manutenção está aberta!")
 		return
 
 	if(coffeepot || cartridge)
-		. += span_notice("\The [src]contém:")
+		. += span_notice("\The [src] contém:")
 		if(coffeepot)
 			. += span_notice("- \A [coffeepot].")
 		if(cartridge)
@@ -99,30 +99,30 @@
 		. += "[span_notice("The status display reads:")]\n"+		span_notice("- Cozinhando café na<b>[speed*100]%</b>.")
 		if(coffeepot)
 			for(var/datum/reagent/consumable/cawfee as anything in coffeepot.reagents.reagent_list)
-				. += span_notice("- [cawfee.volume]unidades de café na panela.")
+				. += span_notice("- [cawfee.volume] unidades de café na panela.")
 		if(cartridge)
 			if(cartridge.charges < 1)
 				. += span_notice("- O cartucho está vazio.")
 			else
-				. += span_notice("- O cartucho do chão tem[cartridge.charges]Acusações restantes.")
+				. += span_notice("- O cartucho do chão tem [cartridge.charges] Acusações restantes.")
 
 	if (coffee_cups >= 1)
-		. += span_notice("Ali.[coffee_cups == 1 ? "is" : "are"] [coffee_cups]xícara de café[coffee_cups != 1 && "s"]Esquerda.")
+		. += span_notice("Ali.[coffee_cups == 1 ? "is" : "are"] [coffee_cups] xícara de café[coffee_cups != 1 && "s"]Esquerda.")
 	else
 		. += span_notice("Não há mais copos.")
 
 	if (sugar_packs >= 1)
-		. += span_notice("Ali.[sugar_packs == 1 ? "is" : "are"] [sugar_packs]Pacote[sugar_packs != 1 && "s"]de açúcar esquerda.")
+		. += span_notice("Ali.[sugar_packs == 1 ? "is" : "are"] [sugar_packs] Pacote[sugar_packs != 1 && "s"]de açúcar esquerda.")
 	else
 		. += span_notice("Não sobrou açúcar.")
 
 	if (sweetener_packs >= 1)
-		. += span_notice("Ali.[sweetener_packs == 1 ? "is" : "are"] [sweetener_packs]Pacote[sweetener_packs != 1 && "s"]de adoçante esquerda.")
+		. += span_notice("Ali.[sweetener_packs == 1 ? "is" : "are"] [sweetener_packs] Pacote[sweetener_packs != 1 && "s"]de adoçante esquerda.")
 	else
 		. += span_notice("Não há mais adoçante.")
 
 	if (creamer_packs > 1)
-		. += span_notice("Ali.[creamer_packs == 1 ? "is" : "are"] [creamer_packs]Pacote[creamer_packs != 1 && "s"]de creme esquerda.")
+		. += span_notice("Ali.[creamer_packs == 1 ? "is" : "are"] [creamer_packs] Pacote[creamer_packs != 1 && "s"]de creme esquerda.")
 	else
 		. += span_notice("Não tem mais creme.")
 
@@ -449,7 +449,7 @@
 /obj/item/coffee_cartridge/examine(mob/user)
 	. = ..()
 	if(charges)
-		. += span_warning("O cartucho tem[charges]Porções de terreno restantes.")
+		. += span_warning("O cartucho tem [charges] Porções de terreno restantes.")
 	else
 		. += span_warning("O cartucho não tem nenhum terreno não gasto.")
 
@@ -542,7 +542,7 @@
 /obj/machinery/coffeemaker/impressa/examine(mob/user)
 	. = ..()
 	if(coffee)
-		. += span_notice("O moedor interno contém[length(coffee)]colher de grãos de café")
+		. += span_notice("O moedor interno contém [length(coffee)] colher de grãos de café")
 
 /obj/machinery/coffeemaker/impressa/update_overlays()
 	. = ..()

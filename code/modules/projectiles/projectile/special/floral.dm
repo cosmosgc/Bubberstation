@@ -35,7 +35,7 @@
 	hit_plant.adjust_tox_loss(rand(3, 6))
 	hit_plant.Paralyze(10 SECONDS)
 	hit_plant.visible_message(
-		span_warning("[hit_plant]Se contorce de dor como[hit_plant.p_their()]Vacúolos fervem."),
+		span_warning("[hit_plant] Se contorce de dor como [hit_plant.p_their()] Vacúolos fervem."),
 		span_userdanger("Você se contorce de dor enquanto seus vacúolos fervem!"),
 		span_hear("Você ouve o esmagamento das folhas."),
 	)

@@ -72,7 +72,7 @@
 		balloon_alert_to_viewers("dud...")
 		active = FALSE
 		return
-	visible_message(span_warning("[src]Sai, completo decapitando[brian]!"), span_hear("Você ouve um boom carnudo!"))
+	visible_message(span_warning("[src] Sai, completo decapitando [brian]!"), span_hear("Você ouve um boom carnudo!"))
 	playsound(src, SFX_EXPLOSION, 30, TRUE)
 	brian.apply_damage(200, BRUTE, BODY_ZONE_HEAD)
 	var/obj/item/bodypart/head/myhead = brian.get_bodypart(BODY_ZONE_HEAD)

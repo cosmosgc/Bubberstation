@@ -145,8 +145,8 @@
 	// Similar to a normal punch, should we have a value of 0 for our lower force, we simply miss outright.
 	if(!lower_force)
 		playsound(defender.loc, active_arm.unarmed_miss_sound, 25, TRUE, -1)
-		defender.visible_message(span_warning("[attacker]O soco erra.[defender]!"), 			span_danger("Você evita[attacker]É ponche!"), span_hear("Você ouve um shoosh!"), COMBAT_MESSAGE_RANGE, attacker)
-		to_chat(attacker, span_warning("Seu soco erra[defender]!"))
+		defender.visible_message(span_warning("[attacker] O soco erra.[defender]!"), 			span_danger("Você evita [attacker] É ponche!"), span_hear("Você ouve um shoosh!"), COMBAT_MESSAGE_RANGE, attacker)
+		to_chat(attacker, span_warning("Seu soco erra [defender]!"))
 		log_combat(attacker, defender, "attempted to hit", "punch (boxing) ")
 		return FALSE
 
@@ -230,7 +230,7 @@
 
 	defender.visible_message(
 		span_danger("[attacker] [current_atk_verb] [defender]!"),
-		span_userdanger("Você é[current_atk_verbed]Por que[attacker]!"),
+		span_userdanger("Você é [current_atk_verbed] Por que [attacker]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
@@ -277,26 +277,26 @@
 /datum/martial_art/boxing/proc/crit_effect(mob/living/attacker, mob/living/defender, armor_block = 0, damage_type = STAMINA, damage = 0)
 	if(defender.get_timed_status_effect_duration(/datum/status_effect/staggered))
 		defender.visible_message(
-			span_danger("[attacker]Bate.[defender]Saia com um fingidor de feno!"),
+			span_danger("[attacker] Bate.[defender] Saia com um fingidor de feno!"),
 			span_userdanger("Você está inconsciente.[attacker]!"),
 			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
-		to_chat(attacker, span_danger("Você bate.[defender]Saia com um fingidor de feno!"))
+		to_chat(attacker, span_danger("Você bate.[defender] Saia com um fingidor de feno!"))
 		defender.apply_effect(20 SECONDS, EFFECT_KNOCKDOWN, armor_block)
 		defender.SetSleeping(10 SECONDS)
 		log_combat(attacker, defender, "knocked out (boxing) ")
 	else
 		defender.visible_message(
-			span_danger("[attacker]Vagabundos.[defender]Com um fazedor de feno!"),
-			span_userdanger("Você quase foi derrubado por seus pés[attacker]!"),
+			span_danger("[attacker] Vagabundos.[defender] Com um fazedor de feno!"),
+			span_userdanger("Você quase foi derrubado por seus pés [attacker]!"),
 			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
 		defender.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 10 SECONDS)
-		to_chat(attacker, span_danger("Você cambaleia.[defender]Com um fazedor de feno!"))
+		to_chat(attacker, span_danger("Você cambaleia.[defender] Com um fazedor de feno!"))
 		log_combat(attacker, defender, "staggered (boxing) ")
 
 	if(attacker.pulling == defender && attacker.grab_state >= GRAB_AGGRESSIVE) // dubious a normal boxer will be in a state where this happens, buuuut.
@@ -365,7 +365,7 @@
 		perform_extra_effect(boxer, attacker)
 
 	boxer.visible_message(
-		span_danger("[boxer] [block_text]S[attack_text]!"),
+		span_danger("[boxer] [block_text] S [attack_text]!"),
 		span_userdanger("Você.[block_text] [attack_text]!"),
 	)
 	if(block_text == "evade")
@@ -481,13 +481,13 @@
 	var/second_word_pick = pick(second_word_strike)
 
 	defender.visible_message(
-		span_danger("[attacker]Tira o bajeezus absolvuto de[defender]usando o aterrorizante[first_word_pick][second_word_pick]!!!"),
-		span_userdanger("Você tem o bajeezus absoluto para fora de você por[attacker]!!!"),
+		span_danger("[attacker] Tira o bajeezus absolvuto de [defender] usando o aterrorizante [first_word_pick][second_word_pick]!!!"),
+		span_userdanger("Você tem o bajeezus absoluto para fora de você por [attacker]!!!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você derruba o bajeezus absoluto de[defender]com o aterrorizante[first_word_pick][second_word_pick]!!!"))
+	to_chat(attacker, span_danger("Você derruba o bajeezus absoluto de [defender] com o aterrorizante [first_word_pick][second_word_pick]!!!"))
 	if(ishuman(attacker))
 		var/mob/living/carbon/human/human_attacker = attacker
 		human_attacker.force_say()

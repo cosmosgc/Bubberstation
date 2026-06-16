@@ -8,7 +8,7 @@
 	var/uses = 3
 
 /obj/item/boulder_beacon/attack_self()
-	visible_message(span_warning("\The [src]Começa a tocar alto!"))
+	visible_message(span_warning("\The [src] Começa a tocar alto!"))
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 1 SECONDS)
 
 /**

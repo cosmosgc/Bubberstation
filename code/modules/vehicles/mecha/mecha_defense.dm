@@ -64,7 +64,7 @@
 	user.changeNext_move(CLICK_CD_MELEE) // Ugh. Ideally we shouldn't be setting cooldowns outside of click code.
 	user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 	playsound(loc, 'sound/items/weapons/tap.ogg', 40, TRUE, -1)
-	user.visible_message(span_danger("[user]hits[src]Nada acontece."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_danger("[user] hits [src] Nada acontece."), null, null, COMBAT_MESSAGE_RANGE)
 	log_message("Attack by hand/paw (no damage). Attacker - [user].", LOG_MECHA, color="red")
 
 /obj/vehicle/sealed/mecha/attack_paw(mob/user, list/modifiers)
@@ -354,8 +354,8 @@
 
 	var/hit_verb = length(attacking_item.attack_verb_simple) ? "[pick(attacking_item.attack_verb_simple)]" : "hit"
 	user.visible_message(
-		span_danger("[user] [hit_verb][plural_s(hit_verb)] [src]com[attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
-		span_danger("Você.[hit_verb] [src]com[attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
+		span_danger("[user] [hit_verb][plural_s(hit_verb)] [src] com [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
+		span_danger("Você.[hit_verb] [src] com [attacking_item][damage_taken ? "." : ", without leaving a mark!"]"),
 		span_hear("Você ouve...[hit_verb]."),
 		COMBAT_MESSAGE_RANGE,
 	)
@@ -516,7 +516,7 @@
 			else
 				gun.projectiles_cache = gun.projectiles_cache + ammo_needed
 			playsound(get_turf(user),A.load_audio,50,TRUE)
-			to_chat(user, span_notice("Você acrescenta[ammo_needed] [A.ammo_type][ammo_needed > 1?"s":""]para\the [gun]"))
+			to_chat(user, span_notice("Você acrescenta [ammo_needed] [A.ammo_type][ammo_needed > 1?"s":""]para\the [gun]"))
 			A.rounds = A.rounds - ammo_needed
 			if(A.custom_materials)	//Change material content of the ammo box according to the amount of ammo deposited into the weapon
 				/// list of materials contained in the ammo box after we put it through the equation so we can stick this list into set_custom_materials()
@@ -535,7 +535,7 @@
 		else
 			gun.projectiles_cache = gun.projectiles_cache + A.rounds
 		playsound(get_turf(user),A.load_audio,50,TRUE)
-		to_chat(user, span_notice("Você acrescenta[A.rounds] [A.ammo_type][A.rounds > 1?"s":""]para\the [gun]"))
+		to_chat(user, span_notice("Você acrescenta [A.rounds] [A.ammo_type][A.rounds > 1?"s":""]para\the [gun]"))
 		if(A.qdel_on_empty)
 			qdel(A)
 			return TRUE

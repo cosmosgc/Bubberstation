@@ -138,8 +138,8 @@
 		var/datum/job/job = guilty_conscience.assigned_role
 		if(job.departments_bitflags & (DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SECURITY))
 			return
-	to_chat(owner, span_notice("[user]é agora considerado culpado por[GLOB.deity] [reason]"))
-	to_chat(user, span_danger("[GLOB.deity]Não te considero mais inocente!"))
+	to_chat(owner, span_notice("[user] é agora considerado culpado por [GLOB.deity] [reason]"))
+	to_chat(user, span_danger("[GLOB.deity] Não te considero mais inocente!"))
 	guilty += user
 
 ///Signal sent by the relay_attackers element. It makes the attacker guilty unless the damage was stamina or it was a shove.
@@ -205,14 +205,14 @@
 		if(SCHOOL_HOLY, SCHOOL_MIME, SCHOOL_RESTORATION, SCHOOL_PSYCHIC)
 			return
 		if(SCHOOL_NECROMANCY, SCHOOL_FORBIDDEN, SCHOOL_SANGUINE)
-			to_chat(user, span_userdanger("[GLOB.deity]está enfurecido com seu uso de magia proibida!"))
+			to_chat(user, span_userdanger("[GLOB.deity] está enfurecido com seu uso de magia proibida!"))
 			lightningbolt(user)
 			user.mind.set_holy_role(NONE)
 			qdel(src)
 			owner.add_mood_event("honorbound", /datum/mood_event/banished) //add mood event after we already cleared our events
 			to_chat(user, span_userdanger("Você foi excomungado! Você não é mais santo!"))
 		else
-			to_chat(user, span_userdanger("[GLOB.deity]está irritado com o seu uso de[school == SCHOOL_UNSET ? "strange" : school]Magia!"))
+			to_chat(user, span_userdanger("[GLOB.deity] está irritado com o seu uso de[school == SCHOOL_UNSET ? "strange" : school]Magia!"))
 			lightningbolt(user)
 			owner.add_mood_event("honorbound", /datum/mood_event/holy_smite)//permanently lose your moodlet after this
 
@@ -305,7 +305,7 @@
 
 	// also handles any kind of issues with self declarations
 	if(living_cast_on.mind.holy_role)
-		to_chat(owner, span_warning("Seguidores de[GLOB.deity]Não pode ser mau!"))
+		to_chat(owner, span_warning("Seguidores de [GLOB.deity] Não pode ser mau!"))
 		return FALSE
 
 	// cannot declare security as evil

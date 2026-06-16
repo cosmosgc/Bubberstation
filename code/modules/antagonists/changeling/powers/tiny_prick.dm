@@ -68,7 +68,7 @@
 /datum/action/changeling/sting/sting_feedback(mob/user, mob/target)
 	if(!target)
 		return
-	to_chat(user, span_notice("Nós furtivamente ardemos[target.name]."))
+	to_chat(user, span_notice("Nós furtivamente ardemos [target.name]."))
 	if(IS_CHANGELING(target))
 		to_chat(target, span_warning("Você sente uma picadinha."))
 	return 1
@@ -130,10 +130,10 @@
 
 /datum/action/changeling/sting/transformation/sting_action(mob/living/user, mob/living/target)
 	var/final_duration = sting_duration
-	var/final_message = span_notice("Nós nos transformamos[target]em[selected_dna.dna.real_name].")
+	var/final_message = span_notice("Nós nos transformamos [target] em [selected_dna.dna.real_name].")
 	if(ismonkey(target))
 		final_duration = INFINITY
-		final_message = span_warning("Nossos genes gritam enquanto transformamos a forma menor de[target]em[selected_dna.dna.real_name]permanentemente!")
+		final_message = span_warning("Nossos genes gritam enquanto transformamos a forma menor de [target] em [selected_dna.dna.real_name] permanentemente!")
 
 	if(target.apply_status_effect(/datum/status_effect/temporary_transformation/trans_sting, final_duration, selected_dna.dna))
 		..()
@@ -169,13 +169,13 @@
 
 	var/obj/item/held = target.get_active_held_item()
 	if(held && !target.dropItemToGround(held))
-		to_chat(user, span_warning("[held]está preso a[target.p_their()]Mão, não podemos deixar crescer uma falsa lâmina sobre ela!"))
+		to_chat(user, span_warning("[held] está preso a [target.p_their()] Mão, não podemos deixar crescer uma falsa lâmina sobre ela!"))
 		return
 
 	..()
 	log_combat(user, target, "stung", object = "false armblade sting")
 	if(ismonkey(target))
-		to_chat(user, span_notice("Nossos genes gritam enquanto ardemos[target.name]!"))
+		to_chat(user, span_notice("Nossos genes gritam enquanto ardemos [target.name]!"))
 
 	var/obj/item/melee/arm_blade/false/blade = new(target,1)
 	target.put_in_hands(blade)
@@ -187,8 +187,8 @@
 
 /datum/action/changeling/sting/false_armblade/proc/remove_fake(mob/target, obj/item/melee/arm_blade/false/blade)
 	playsound(target, 'sound/effects/blob/blobattack.ogg', 30, TRUE)
-	target.visible_message(span_warning("Com uma crise doentia,[target]Reformas[target.p_their()] [blade.name]Em um braço!"),
-	span_warning("[blade]reformas de volta ao normal."), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
+	target.visible_message(span_warning("Com uma crise doentia,[target] Reformas [target.p_their()] [blade.name] Em um braço!"),
+	span_warning("[blade] reformas de volta ao normal."), span_italics("Você ouve matéria orgânica rasgando e rasgando!"))
 
 	qdel(blade)
 	target.update_held_items()

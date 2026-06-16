@@ -61,7 +61,7 @@
 		if (0 to 1)
 			synth_string = "[ceil(synth_content * 100)]%"
 
-	result += span_notice("[target.p_They()] [target.p_have()] [rounded_volume]Unidade[rounded_volume == 1 ? "" : "s"]de sangue[growth_string]. [target.p_Their()]Sangue é<b>[synth_string]</b>Sintético.")
+	result += span_notice("[target.p_They()] [target.p_have()] [rounded_volume] Unidade[rounded_volume == 1 ? "" : "s"]de sangue [growth_string]. [target.p_Their()] Sangue é<b>[synth_string]</b>Sintético.")
 
 /mob/living/basic/blood_worm/get_status_tab_items()
 	return ..() + get_special_status_tab_items()

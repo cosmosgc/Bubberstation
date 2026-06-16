@@ -62,7 +62,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SILICONS))
 		to_chat(user, span_warning("O Comando Central baniu temporariamente a consciência do posicérebro neste setor..."))
 	if(is_occupied())
-		to_chat(user, span_warning("Isto.[name]Já está ativo!"))
+		to_chat(user, span_warning("Isto.[name] Já está ativo!"))
 		return
 	if(next_ask > world.time)
 		to_chat(user, recharge_message)
@@ -113,14 +113,14 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(QDELETED(brainmob))
 		return
 	if(user.ckey in ckeys_entered)
-		to_chat(user, span_warning("Você não pode voltar.[src]Uma segunda vez!"))
+		to_chat(user, span_warning("Você não pode voltar.[src] Uma segunda vez!"))
 		return
 	if(is_occupied() || is_banned_from(user.ckey, ROLE_POSIBRAIN) || QDELETED(src) || QDELETED(user))
 		return
 	//BUBBER EDIT BEGIN: SILICON FLAVOR TEXT
 	if(CONFIG_GET(flag/min_flavor_text))
 		if((length_char(user.client?.prefs.read_preference(/datum/preference/text/silicon_flavor_text))) <= CONFIG_GET(number/silicon_flavor_text_character_requirement))
-			to_chat(user, span_warning("Seu texto de sabor de silício precisa ser pelo menos[CONFIG_GET(number/silicon_flavor_text_character_requirement)]personagens para desempenhar este papel. Vá para o criador de personagens e escreva mais!"))
+			to_chat(user, span_warning("Seu texto de sabor de silício precisa ser pelo menos [CONFIG_GET(number/silicon_flavor_text_character_requirement)] personagens para desempenhar este papel. Vá para o criador de personagens e escreva mais!"))
 			return
 	//BUBBER EDIT END: SILICON FLAVOR TEXT
 	var/posi_ask = tgui_alert(user, "Torne-se...[name]Você não pode mais ser revivido, e todas as vidas passadas serão esquecidas!", "Confirm", list("Yes","No"))
@@ -154,7 +154,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(QDELETED(brainmob))
 		return
 	if(is_occupied()) //Prevents hostile takeover if two ghosts get the prompt or link for the same brain.
-		to_chat(candidate, span_warning("Isto.[name]Foi tomada antes de você chegar lá! Talvez possa estar disponível mais tarde?"))
+		to_chat(candidate, span_warning("Isto.[name] Foi tomada antes de você chegar lá! Talvez possa estar disponível mais tarde?"))
 		return FALSE
 	if(candidate.mind && !isobserver(candidate))
 		candidate.mind.transfer_to(brainmob)
@@ -187,7 +187,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 		. += "[dead_message]"
 		if(ask_role)
 			. += span_notice("Semente de consciência atual:\"[ask_role]\"")
-		. += span_boldnotice("Alt-clique para definir uma semente de consciência, especificando o que[src]será usado para. Isso pode ajudar a gerar uma personalidade interessada nesse papel.")
+		. += span_boldnotice("Alt-clique para definir uma semente de consciência, especificando o que [src] será usado para. Isso pode ajudar a gerar uma personalidade interessada nesse papel.")
 
 /obj/item/mmi/posibrain/Initialize(mapload, autoping = TRUE)
 	. = ..()

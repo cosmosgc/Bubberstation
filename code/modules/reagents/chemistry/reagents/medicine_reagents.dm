@@ -257,7 +257,7 @@
 	var/mob/living/carbon/patient = exposed_mob
 	if(functional_react_volume >= 5 && HAS_TRAIT(patient, TRAIT_HUSK) && patient.get_fire_loss() < UNHUSK_DAMAGE_THRESHOLD) //One carp yields 12u rezadone. // BUBBER EDIT CHANGE - Synthflesh works on ling husks - Original: HAS_TRAIT_FROM(patient, TRAIT_HUSK, BURN)
 		patient.cure_husk() // BUBBER EDIT CHANGE - Synthflesh works on ling husks - Original: patient.cure_husk(BURN)
-		patient.visible_message(span_nicegreen("[patient]O corpo absorve rapidamente a umidade do ambiente, assumindo uma aparência mais saudável."))
+		patient.visible_message(span_nicegreen("[patient] O corpo absorve rapidamente a umidade do ambiente, assumindo uma aparência mais saudável."))
 
 /datum/reagent/medicine/spaceacillin
 	name = "Spaceacillin"
@@ -929,12 +929,12 @@
 	new_eyes = new new_eyes(affected_mob)
 	new_eyes.Insert(affected_mob)
 	playsound(affected_mob, 'sound/effects/cartoon_sfx/cartoon_pop.ogg', 50, TRUE)
-	affected_mob.visible_message(span_danger("[affected_mob]'s[eyes ? eyes : "eye holes"]De repente brotam talos e se transformam em[new_eyes]!"))
+	affected_mob.visible_message(span_danger("[affected_mob]'s[eyes ? eyes : "eye holes"]De repente brotam talos e se transformam em [new_eyes]!"))
 	ASYNC
 		affected_mob.emote("scream")
 		sleep(5 SECONDS)
 		if(!QDELETED(eyes))
-			eyes.visible_message(span_danger("[eyes]rapidamente virar pó."))
+			eyes.visible_message(span_danger("[eyes] rapidamente virar pó."))
 			eyes.dust()
 
 /datum/reagent/medicine/inacusiate
@@ -1132,32 +1132,32 @@
 		return ..()
 
 	if(HAS_TRAIT(exposed_mob, TRAIT_SUICIDED)) //they are never coming back
-		exposed_mob.visible_message(span_warning("[exposed_mob]O corpo não reage..."))
+		exposed_mob.visible_message(span_warning("[exposed_mob] O corpo não reage..."))
 		return
 
 	if(iscarbon(exposed_mob) && !(methods & (INGEST|INHALE))) //simplemobs can still be splashed
 		return ..()
 
 	if(HAS_TRAIT(exposed_mob, TRAIT_HUSK))
-		exposed_mob.visible_message(span_warning("[exposed_mob]O corpo solta uma fumaça..."))
+		exposed_mob.visible_message(span_warning("[exposed_mob] O corpo solta uma fumaça..."))
 		return
 
 	if((exposed_mob.get_brute_loss() + exposed_mob.get_fire_loss()) > (exposed_mob.getMaxHealth() * max_revive_damage_ratio))
-		exposed_mob.visible_message(span_warning("[exposed_mob]O corpo convulsa violentamente, antes de cair ainda..."))
+		exposed_mob.visible_message(span_warning("[exposed_mob] O corpo convulsa violentamente, antes de cair ainda..."))
 		return
 
 	var/needed_to_revive = calculate_amount_needed_to_revive(exposed_mob)
 	if(reac_volume < needed_to_revive)
-		exposed_mob.visible_message(span_warning("[exposed_mob]O corpo convulsa um pouco, e então cai ainda mais uma vez."))
+		exposed_mob.visible_message(span_warning("[exposed_mob] O corpo convulsa um pouco, e então cai ainda mais uma vez."))
 		exposed_mob.do_jitter_animation(10)
 		return
 
 	if(!pre_rez_check(exposed_mob))
-		exposed_mob.visible_message(span_warning("[exposed_mob]O corpo treme ligeiramente."))
+		exposed_mob.visible_message(span_warning("[exposed_mob] O corpo treme ligeiramente."))
 		exposed_mob.do_jitter_animation(1)
 		return
 
-	exposed_mob.visible_message(span_warning("[exposed_mob]O corpo começa a convulsão!"))
+	exposed_mob.visible_message(span_warning("[exposed_mob] O corpo começa a convulsão!"))
 	exposed_mob.notify_revival("Your body is being revived with Strange Reagent!")
 	exposed_mob.do_jitter_animation(10)
 

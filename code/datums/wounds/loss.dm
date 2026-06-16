@@ -40,9 +40,9 @@
 	else
 		occur_text = dismembered_part.get_dismember_message(wounding_type, outright)
 
-	var/msg = span_bolddanger("[victim]'s[dismembered_part.plaintext_zone] [occur_text]")
+	var/msg = span_bolddanger("[victim]'s [dismembered_part.plaintext_zone] [occur_text]")
 
-	victim.visible_message(msg, span_userdanger("Sua[dismembered_part.plaintext_zone] [self_msg ? self_msg : occur_text]"))
+	victim.visible_message(msg, span_userdanger("Sua [dismembered_part.plaintext_zone] [self_msg ? self_msg : occur_text]"))
 
 	loss_wounding_type = wounding_type
 

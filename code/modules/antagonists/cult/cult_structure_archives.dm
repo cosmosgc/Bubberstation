@@ -26,12 +26,12 @@
 		CURSE_ORB = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/antags/cult/items.dmi', icon_state = "shuttlecurse"),
 			OUTPUT_ITEMS = list(/obj/item/shuttle_curse),
-			RADIAL_DESC = "Produz um delicado[/obj/item/shuttle_curse::name]que pode ser destruído para amaldiçoar a nave auxiliar se for chamado, atrasando sua chegada por algum tempo. Apenas[MAX_SHUTTLE_CURSES]Pode ser usado.",
+			RADIAL_DESC = "Produz um delicado [/obj/item/shuttle_curse::name] que pode ser destruído para amaldiçoar a nave auxiliar se for chamado, atrasando sua chegada por algum tempo. Apenas [MAX_SHUTTLE_CURSES] Pode ser usado.",
 			),
 		VEIL_WALKER = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/antags/cult/items.dmi', icon_state = "shifter"),
 			OUTPUT_ITEMS = list(/obj/item/cult_shift),
-			RADIAL_DESC = "Cria\a [/obj/item/cult_shift::name], uma varinha pequena que teleporta o usuário - e qualquer um que o usuário está arrastando - para a frente alguma distância. Tem[/obj/item/cult_shift::uses]usa.",
+			RADIAL_DESC = "Cria\a [/obj/item/cult_shift::name], uma varinha pequena que teleporta o usuário - e qualquer um que o usuário está arrastando - para a frente alguma distância. Tem [/obj/item/cult_shift::uses] usa.",
 			),
 	)
 
@@ -47,12 +47,12 @@
 	return list(CRIMSON_MEDALLION = list(
 			PREVIEW_IMAGE = image(icon = 'icons/obj/clothing/neck.dmi', icon_state = "crimson_medallion"),
 			OUTPUT_ITEMS = list(/obj/item/clothing/neck/heretic_focus/crimson_medallion),
-			RADIAL_DESC = "Cria um[/obj/item/clothing/neck/heretic_focus/crimson_medallion::name], um artefato poderoso que fornece cura passiva e a capacidade de preparar um feitiço adicional. Também pode ser espremido na mão, consumindo-o para um poderoso efeito de cura.",
+			RADIAL_DESC = "Cria um [/obj/item/clothing/neck/heretic_focus/crimson_medallion::name], um artefato poderoso que fornece cura passiva e a capacidade de preparar um feitiço adicional. Também pode ser espremido na mão, consumindo-o para um poderoso efeito de cura.",
 			),
 	)
 
 /obj/structure/destructible/cult/item_dispenser/archives/succcess_message(mob/living/user, obj/item/spawned_item)
-	to_chat(user, span_cult_italic("Você convoca[spawned_item]De[src]!"))
+	to_chat(user, span_cult_italic("Você convoca [spawned_item] De [src]!"))
 
 // Preset for the library that doesn't spawn runed metal on destruction, or glow.
 /obj/structure/destructible/cult/item_dispenser/archives/library

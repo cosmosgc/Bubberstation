@@ -181,7 +181,7 @@
 		. += span_notice("A bateria está carregada.[cell.percent()]%. <b>Botão direito</b>com uma mão vazia para removê-lo.")
 	else
 		. += span_notice("Falta uma bateria, uma pode ser instalada clicando com uma célula de energia nela.")
-	. += span_notice("A ID MODlink é[mod_link.id], frequência é[mod_link.frequency || "unset"]. <b>Botão direito</b>com multitool para copiar/imprimir frequência.")
+	. += span_notice("A ID MODlink é [mod_link.id], frequência é[mod_link.frequency || "unset"]. <b>Botão direito</b>com multitool para copiar/imprimir frequência.")
 	. += span_notice("Use na mão para definir o nome.")
 
 /obj/item/clothing/neck/link_scryer/equipped(mob/living/user, slot)

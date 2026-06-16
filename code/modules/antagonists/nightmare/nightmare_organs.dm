@@ -20,7 +20,7 @@
 
 	if(brain_owner.dna.species.id != SPECIES_NIGHTMARE)
 		brain_owner.set_species(/datum/species/shadow/nightmare, replace_missing = FALSE)
-		visible_message(span_warning("[brain_owner]Bates como[src]Se enraiza[brain_owner.p_their()]Corpo!"))
+		visible_message(span_warning("[brain_owner] Bates como [src] Se enraiza [brain_owner.p_their()] Corpo!"))
 
 	our_jaunt = new(brain_owner)
 	our_jaunt.Grant(brain_owner)
@@ -63,8 +63,8 @@
 /datum/status_effect/shadow/nightmare/proc/dodge_bullets(mob/living/carbon/human/source, obj/projectile/hitting_projectile, def_zone)
 	SIGNAL_HANDLER
 	source.visible_message(
-		span_danger("[source]Dança nas sombras, fugindo[hitting_projectile]!"),
-		span_danger("Você foge.[hitting_projectile]Com a cobertura da escuridão!"),
+		span_danger("[source] Dança nas sombras, fugindo [hitting_projectile]!"),
+		span_danger("Você foge.[hitting_projectile] Com a cobertura da escuridão!"),
 	)
 	playsound(source, SFX_BULLET_MISS, 75, TRUE)
 	return COMPONENT_BULLET_PIERCED
@@ -96,13 +96,13 @@
 	if(M != user)
 		return ..()
 	user.visible_message(
-		span_warning("[user]Aumentos.[src]Para[user.p_their()]boca e lágrimas nele com[user.p_their()]Dentes!"),
-		span_danger("[src]sente frio anormal em suas mãos. Você levanta.[src]Para sua boca e devorá-lo!")
+		span_warning("[user] Aumentos.[src] Para [user.p_their()] boca e lágrimas nele com [user.p_their()] Dentes!"),
+		span_danger("[src] sente frio anormal em suas mãos. Você levanta.[src] Para sua boca e devorá-lo!")
 	)
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 
 	user.visible_message(
-		span_warning("O sangue entra em erupção.[user]É o braço enquanto se transforma em uma arma!"),
+		span_warning("O sangue entra em erupção.[user] É o braço enquanto se transforma em uma arma!"),
 		span_userdanger("Sangue gelado bombeia em suas veias enquanto seu braço se reforma!")
 	)
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
@@ -118,7 +118,7 @@
 	. = ..()
 	respawn_progress = 0
 	if(blade && special != HEART_SPECIAL_SHADOWIFY)
-		heart_owner.visible_message(span_warning("\The [blade]Desintegrar!"))
+		heart_owner.visible_message(span_warning("\The [blade] Desintegrar!"))
 		QDEL_NULL(blade)
 
 /obj/item/organ/heart/nightmare/Stop()
@@ -144,7 +144,7 @@
 		Insert(old_owner, HEART_SPECIAL_SHADOWIFY)
 		to_chat(owner, span_userdanger("Você sente as sombras invadirem sua pele, pulando no centro do seu peito! Você está vivo!"))
 		SEND_SOUND(owner, sound('sound/effects/ghost.ogg'))
-	owner.visible_message(span_warning("[owner]Cambaleando para[owner.p_their()]Pés!"))
+	owner.visible_message(span_warning("[owner] Cambaleando para [owner.p_their()] Pés!"))
 	playsound(owner, 'sound/effects/hallucinations/far_noise.ogg', 50, TRUE)
 	respawn_progress = 0
 

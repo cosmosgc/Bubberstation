@@ -38,7 +38,7 @@
 		return
 
 	if(time_until_stoppage > ATTACK_CURE_THRESHOLD)
-		owner.visible_message(span_nicegreen("[owner]Relaxa.[owner.p_their()]corpo e pára de agarrar em[owner.p_their()]Baú!"), span_nicegreen("A dor em seu peito diminuiu. Você está curado!"))
+		owner.visible_message(span_nicegreen("[owner] Relaxa.[owner.p_their()] corpo e pára de agarrar em [owner.p_their()] Baú!"), span_nicegreen("A dor em seu peito diminuiu. Você está curado!"))
 		qdel(src)
 		return
 
@@ -126,7 +126,7 @@
 		return
 	var/mob/living/carbon/human/human_owner = owner
 	var/cannot_grasp = (human_owner.usable_hands <= 0 || owner.incapacitated & INCAPABLE_RESTRAINTS || HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
-	return span_warning("[owner.p_they()]Parece estar dobrando" + "[cannot_grasp ? " in pain!" : ", clutching [owner.p_their()] chest in pain!"]")
+	return span_warning("[owner.p_they()] Parece estar dobrando" + "[cannot_grasp ? " in pain!" : ", clutching [owner.p_their()] chest in pain!"]")
 
 /datum/status_effect/heart_attack/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_DISEASELIKE_SEVERITY_HIGH, type)
@@ -150,7 +150,7 @@
 /datum/status_effect/heart_attack/proc/defib_shock(obj/item/shockpaddles/source)
 	SIGNAL_HANDLER
 	time_until_stoppage += 50 //Three shocks should save pretty much anyone.
-	owner.visible_message(span_nicegreen("[owner]Parece estar aliviado de sua dor como eles estão chocados com o[source]!"), span_nicegreen("O[source]Choca seu coração acordado, e você sente a dor em seu peito aliviar!"))
+	owner.visible_message(span_nicegreen("[owner] Parece estar aliviado de sua dor como eles estão chocados com o [source]!"), span_nicegreen("O [source] Choca seu coração acordado, e você sente a dor em seu peito aliviar!"))
 
 ///Slightly reduces your timer, just like the minor shock signal. Slightly more relief because these use cases are generally more dangerous.
 /datum/status_effect/heart_attack/proc/electrocuted(datum/source, shock_damage)

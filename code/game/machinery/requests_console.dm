@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 
 			// Check cooldown RETA
 			if(origin_dept && target_dept && reta_on_cooldown(origin_dept, target_dept))
-				to_chat(usr, span_alert("Chamadas de emergência para[target_dept]Estão na refrigeração."))
+				to_chat(usr, span_alert("Chamadas de emergência para [target_dept] Estão na refrigeração."))
 				return
 
 			emergency = emergency_type

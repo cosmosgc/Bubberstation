@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		obj_flags |= EMAGGED
 		playsound(src, 'sound/mobs/non-humanoids/dog/growl2.ogg', 50, FALSE)
 		balloon_alert(user, "Migrado para Syndienet 2.0")
-		to_chat(user, span_warning("Uma imagem aparece em[src]Tela por um momento com Ian no boné de um oficial do Sindicato."))
+		to_chat(user, span_warning("Uma imagem aparece em [src] Tela por um momento com Ian no boné de um oficial do Sindicato."))
 		return TRUE
 	return FALSE
 
@@ -207,7 +207,7 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 			return FALSE
 		clean_spray.reagents.remove_reagent(/datum/reagent/space_cleaner, clean_spray.amount_per_transfer_from_this)
 		playsound(loc, 'sound/effects/spray3.ogg', 50, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
-		user.visible_message(span_notice("[user]Limpa.\the [src]."), span_notice("Você limpa.\the [src]."))
+		user.visible_message(span_notice("[user] Limpa.\the [src]."), span_notice("Você limpa.\the [src]."))
 		jammed = FALSE
 		return TRUE
 	if (istype(item, /obj/item/soap) || istype(item, /obj/item/rag))
@@ -215,9 +215,9 @@ GLOBAL_VAR_INIT(fax_autoprinting, FALSE)
 		if (istype(item, /obj/item/soap))
 			var/obj/item/soap/used_soap = item
 			cleanspeed = used_soap.cleanspeed
-		user.visible_message(span_notice("[user]Começa a limpar.\the [src]."), span_notice("Você começa a limpar\the [src]..."))
+		user.visible_message(span_notice("[user] Começa a limpar.\the [src]."), span_notice("Você começa a limpar\the [src]..."))
 		if (do_after(user, cleanspeed, target = src))
-			user.visible_message(span_notice("[user]Limpa.\the [src]."), span_notice("Você limpa.\the [src]."))
+			user.visible_message(span_notice("[user] Limpa.\the [src]."), span_notice("Você limpa.\the [src]."))
 			jammed = FALSE
 		return TRUE
 	return FALSE

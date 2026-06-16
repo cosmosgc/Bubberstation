@@ -38,7 +38,7 @@
 	target.repair_damage(heal_amount)
 	fixer.Beam(target, icon_state = "sendbeam", time = 0.4 SECONDS)
 	fixer.visible_message(
-		span_danger("[fixer]reparos[target]."),
+		span_danger("[fixer] reparos [target]."),
 		span_danger("Você conserta.[target], deixando-o em<b>[round(target.get_integrity() * 100 / target.max_integrity)]%</b>estabilidade."),
 	)
 

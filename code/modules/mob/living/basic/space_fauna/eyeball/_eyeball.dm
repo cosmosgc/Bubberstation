@@ -110,7 +110,7 @@
 /mob/living/basic/eyeball/proc/heal_eye_damage(mob/living/target, obj/item/organ/eyes/eyes)
 	if(!COOLDOWN_FINISHED(src, eye_healing))
 		return
-	to_chat(target, span_warning("[src]Parece estar curando seu[eyes.zone]!"))
+	to_chat(target, span_warning("[src] Parece estar curando seu [eyes.zone]!"))
 	eyes.apply_organ_damage(-1 * healing_factor)
 	new /obj/effect/temp_visual/heal(get_turf(target), COLOR_HEALING_CYAN)
 	befriend(target)

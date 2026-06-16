@@ -10,7 +10,7 @@
 	if(owner.layer == hide_layer)
 		owner.layer = initial(owner.layer)
 		owner.visible_message(
-			span_notice("[owner]Espreita lentamente do chão..."),
+			span_notice("[owner] Espreita lentamente do chão..."),
 			span_noticealien("Pare de se esconder."),
 		)
 		ADD_TRAIT(owner, TRAIT_IGNORE_ELEVATION, ACTION_TRAIT)
@@ -18,7 +18,7 @@
 	else
 		owner.layer = hide_layer
 		owner.visible_message(
-			span_name("[owner]Corre para o chão!"),
+			span_name("[owner] Corre para o chão!"),
 			span_noticealien("Agora você está se escondendo."),
 		)
 		REMOVE_TRAIT(owner, TRAIT_IGNORE_ELEVATION, ACTION_TRAIT)

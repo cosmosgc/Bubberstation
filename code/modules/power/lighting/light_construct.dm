@@ -57,7 +57,7 @@
 			. += span_notice("A cápsula está fechada.")
 	if(cell_connectors)
 		if(cell)
-			. += span_notice("Viu?[cell]dentro da cápsula.")
+			. += span_notice("Viu?[cell] dentro da cápsula.")
 		else
 			. += span_notice("O invólucro não tem célula de energia para reserva.")
 	else
@@ -66,7 +66,7 @@
 /obj/structure/light_construct/attack_hand(mob/user, list/modifiers)
 	if(!cell)
 		return
-	user.visible_message(span_notice("[user]Remover[cell]De[src]!"), span_notice("Você tira.[cell]."))
+	user.visible_message(span_notice("[user] Remover [cell] De [src]!"), span_notice("Você tira.[cell]."))
 	user.put_in_hands(cell)
 	cell = null
 	add_fingerprint(user)
@@ -84,23 +84,23 @@
 	add_fingerprint(user)
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(!cell_connectors)
-			to_chat(user, span_warning("Isto.[name]Não posso suportar uma célula de energia!"))
+			to_chat(user, span_warning("Isto.[name] Não posso suportar uma célula de energia!"))
 			return
 		if(HAS_TRAIT(tool, TRAIT_NODROP))
-			to_chat(user, span_warning("[tool]está preso em sua mão!"))
+			to_chat(user, span_warning("[tool] está preso em sua mão!"))
 			return
 		if(cell)
 			to_chat(user, span_warning("Já tem uma célula de energia instalada!"))
 			return
 		if(user.temporarilyRemoveItemFromInventory(tool))
-			user.visible_message(span_notice("[user]Ele se liga.[tool]Para[src]."), 			span_notice("Você acrescenta[tool]Para[src]."))
+			user.visible_message(span_notice("[user] Ele se liga.[tool] Para [src]."), 			span_notice("Você acrescenta [tool] Para [src]."))
 			playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 			tool.forceMove(src)
 			cell = tool
 			add_fingerprint(user)
 			return
 	if(istype(tool, /obj/item/light))
-		to_chat(user, span_warning("Isto.[name]Ainda não acabou de ser armado!"))
+		to_chat(user, span_warning("Isto.[name] Ainda não acabou de ser armado!"))
 		return
 
 	switch(stage)
@@ -109,9 +109,9 @@
 				if(cell)
 					to_chat(user, span_warning("Você tem que remover a cela primeiro!"))
 					return
-				to_chat(user, span_notice("Você começa a desconstruir[src]..."))
+				to_chat(user, span_notice("Você começa a desconstruir [src]..."))
 				if (tool.use_tool(src, user, 30, volume=50))
-					user.visible_message(span_notice("[user.name]Desconstruir[src]."), 						span_notice("Você desconstrui.[src]."), span_hear("Você ouve uma catraca."))
+					user.visible_message(span_notice("[user.name] Desconstruir [src]."), 						span_notice("Você desconstrui.[src]."), span_hear("Você ouve uma catraca."))
 					playsound(src, 'sound/items/deconstruct.ogg', 75, TRUE)
 					deconstruct()
 				return
@@ -121,7 +121,7 @@
 				if(coil.use(1))
 					icon_state = "[fixture_type]-construct-stage2"
 					stage = LIGHT_CONSTRUCT_WIRED
-					user.visible_message(span_notice("[user.name]Adicionona fios a[src]."), 						span_notice("Você adiciona fios para[src]."))
+					user.visible_message(span_notice("[user.name] Adicionona fios a [src]."), 						span_notice("Você adiciona fios para [src]."))
 				else
 					to_chat(user, span_warning("Você precisa de um fio de cabo.[src]!"))
 				return
@@ -134,12 +134,12 @@
 				stage = LIGHT_CONSTRUCT_EMPTY
 				icon_state = "[fixture_type]-construct-stage1"
 				new /obj/item/stack/cable_coil(drop_location(), 1, "red")
-				user.visible_message(span_notice("[user.name]remove a fiação de[src]."), 					span_notice("Você remove a fiação de[src]."), span_hear("Você ouve o clique."))
+				user.visible_message(span_notice("[user.name] remove a fiação de [src]."), 					span_notice("Você remove a fiação de [src]."), span_hear("Você ouve o clique."))
 				tool.play_tool_sound(src, 100)
 				return
 
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user.name]Fecha.[src]É a cápsula."), 					span_notice("Você fecha.[src]É a cápsula."), span_hear("Você ouve transando."))
+				user.visible_message(span_notice("[user.name] Fecha.[src] É a cápsula."), 					span_notice("Você fecha.[src] É a cápsula."), span_hear("Você ouve transando."))
 				tool.play_tool_sound(src, 75)
 				switch(fixture_type)
 					if("tube")

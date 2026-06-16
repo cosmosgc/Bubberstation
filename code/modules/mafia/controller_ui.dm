@@ -125,7 +125,7 @@
 				var/done = FALSE
 
 				while(!done)
-					to_chat(usr, "Você tem uma contagem total de jogadores[counterlist_sum(debug_setup)]nesta configuração.")
+					to_chat(usr, "Você tem uma contagem total de jogadores [counterlist_sum(debug_setup)] nesta configuração.")
 					var/chosen_role_name = tgui_input_list(usr, "Select a role!", "Custom Setup Creation", rolelist_dict)
 					if(!chosen_role_name)
 						return
@@ -167,7 +167,7 @@
 						to_chat(usr, span_notice("Você não vai mais votar para começar o jogo mais cedo."))
 					else
 						GLOB.mafia_early_votes[ghost_client.ckey] = ghost_client
-						to_chat(usr, span_notice("Você vota para começar o jogo mais cedo ([length(GLOB.mafia_early_votes)]Fora[max(round(length(GLOB.mafia_signup + GLOB.pda_mafia_signup) / 2), round(MAFIA_MIN_PLAYER_COUNT / 2))])."))
+						to_chat(usr, span_notice("Você vota para começar o jogo mais cedo ([length(GLOB.mafia_early_votes)] Fora [max(round(length(GLOB.mafia_signup + GLOB.pda_mafia_signup) / 2), round(MAFIA_MIN_PLAYER_COUNT / 2))])."))
 						if(check_start_votes()) //See if we have enough votes to start
 							forced_setup()
 				else
@@ -179,7 +179,7 @@
 						to_chat(usr, span_notice("Você não vai mais votar para começar o jogo mais cedo."))
 					else
 						GLOB.mafia_early_votes[modpc] = modpc
-						to_chat(usr, span_notice("Você vota para começar o jogo mais cedo ([length(GLOB.mafia_early_votes)]Fora[max(round(length(GLOB.mafia_signup + GLOB.pda_mafia_signup) / 2), round(MAFIA_MIN_PLAYER_COUNT / 2))])."))
+						to_chat(usr, span_notice("Você vota para começar o jogo mais cedo ([length(GLOB.mafia_early_votes)] Fora [max(round(length(GLOB.mafia_signup + GLOB.pda_mafia_signup) / 2), round(MAFIA_MIN_PLAYER_COUNT / 2))])."))
 						if(check_start_votes()) //See if we have enough votes to start
 							forced_setup()
 		return TRUE

@@ -290,7 +290,7 @@
 
 /obj/effect/overloader_trap/proc/trap_alerted()
 	if(host_machine in loc) //if someone breaks or moves the machine before the trap goes off, this should fail to do anything
-		visible_message(span_boldwarning("As faíscas voam de[host_machine]como ela treme vigorosamente!"))
+		visible_message(span_boldwarning("As faíscas voam de [host_machine] como ela treme vigorosamente!"))
 		do_sparks(number = 3, source = host_machine)
 		host_machine.Shake(2, 1, trigger_delay)
 		addtimer(CALLBACK(src, PROC_REF(trap_effect)), trigger_delay)

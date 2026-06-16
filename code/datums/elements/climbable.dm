@@ -55,14 +55,14 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(climbed_thing)
 		structure_climber.Paralyze(40)
-		structure_climber.visible_message(span_warning("[structure_climber]é derrubado[climbed_thing]."), span_warning("Você está morto.[climbed_thing]!"), span_hear("Você ouve um grito de[structure_climber], seguido de uma batida."))
+		structure_climber.visible_message(span_warning("[structure_climber] é derrubado [climbed_thing]."), span_warning("Você está morto.[climbed_thing]!"), span_hear("Você ouve um grito de [structure_climber], seguido de uma batida."))
 
 
 /datum/element/climbable/proc/climb_structure(atom/climbed_thing, mob/living/user, params)
 	if(!can_climb(climbed_thing, user))
 		return
 	climbed_thing.add_fingerprint(user)
-	user.visible_message(span_warning("[user]Começa a subir[climbed_thing]."), 								span_notice("Você começa a subir[climbed_thing]..."))
+	user.visible_message(span_warning("[user] Começa a subir [climbed_thing]."), 								span_notice("Você começa a subir [climbed_thing]..."))
 	// Time in deciseoncds it takes to complete the climb do_after()
 	var/adjusted_climb_time = climb_time
 	// Time in deciseonds that the mob is stunned after climbing successfully.
@@ -91,7 +91,7 @@
 		if(QDELETED(climbed_thing)) //Checking if structure has been destroyed
 			return
 		if(do_climb(climbed_thing, user, params))
-			user.visible_message(span_warning("[user]sobe em lima[climbed_thing]."), 								span_notice("Você sobe em[climbed_thing]."))
+			user.visible_message(span_warning("[user] sobe em lima [climbed_thing]."), 								span_notice("Você sobe em [climbed_thing]."))
 			log_combat(user, climbed_thing, "climbed onto")
 			if(adjusted_climb_stun)
 				user.Stun(adjusted_climb_stun)
@@ -101,7 +101,7 @@
 					buckle_target.buckle_mob(user)
 			user.mind?.adjust_experience(/datum/skill/athletics, round(ATHLETICS_SKILL_MISC_EXP/(fitness_level || 1), 1)) //Get a bit fitter with every climb. But it has diminishing returns at a certain point.
 		else
-			to_chat(user, span_warning("Você não consegue subir[climbed_thing]."))
+			to_chat(user, span_warning("Você não consegue subir [climbed_thing]."))
 	LAZYREMOVEASSOC(current_climbers, climbed_thing, user)
 
 

@@ -165,7 +165,7 @@
 	. += span_notice("Está trancada com uma fechadura de privacidade, e só pode ser desbloqueada pela identidade do comprador.")
 	// BUBBER EDIT START - show department account on examine if bought with departmental funds
 	if(department_purchase)
-		. += span_notice("Esta caixa foi comprada com fundos departamentais de[department_account.account_holder], e pode ser aberto por qualquer um que tem uma identidade ligada a uma conta com um pagamento desse departamento.")
+		. += span_notice("Esta caixa foi comprada com fundos departamentais de [department_account.account_holder], e pode ser aberto por qualquer um que tem uma identidade ligada a uma conta com um pagamento desse departamento.")
 		. += span_notice("Ou substituído por alguém com acesso ao capitão.")
 	// BUBBER EDIT END
 
@@ -190,8 +190,8 @@
 						if(iscarbon(user))
 							add_fingerprint(user)
 						locked = !locked
-						user.visible_message(span_notice("[user]Destranca.[src]Fechamento de privacidade."),
-										span_notice("Você abre.[src]Fechamento de privacidade."))
+						user.visible_message(span_notice("[user] Destranca.[src] Fechamento de privacidade."),
+										span_notice("Você abre.[src] Fechamento de privacidade."))
 						privacy_lock = FALSE
 						update_appearance()
 					else if(!silent)
@@ -201,7 +201,7 @@
 			else if(!silent)
 				to_chat(user, span_warning("Nenhuma identificação detectada!"))
 		else if(!silent)
-			to_chat(user, span_warning("[src]Está quebrado!"))
+			to_chat(user, span_warning("[src] Está quebrado!"))
 	else ..()
 
 /obj/structure/closet/crate/secure/freezer/interdyne

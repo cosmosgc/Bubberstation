@@ -327,7 +327,7 @@ GLOBAL_PROTECT(poll_options)
 	if(IsAdminAdvancedProcCall())
 		usr.log_message("attempted to rig the vote by voting as [key].", LOG_ADMIN)
 		message_admins("[key_name_admin(usr)] attempted to rig the vote by voting as [key].")
-		to_chat(usr, span_danger("Você não parece estar[key]."))
+		to_chat(usr, span_danger("Você não parece estar [key]."))
 		to_chat(src, span_danger("Algo deu terrivelmente errado processando seu voto. Por favor, contate um administrador, eles deveriam ter recebido uma mensagem sobre isso."))
 		return
 	var/admin_rank
@@ -512,7 +512,7 @@ GLOBAL_PROTECT(poll_options)
 	var/vote_count = 0
 	for(var/h in href_list)
 		if(vote_count == poll.options_allowed)
-			to_chat(src, span_danger("Contagem de opções permitida ultrapassada, apenas a primeira.[poll.options_allowed]opções selecionadas foram salvas."))
+			to_chat(src, span_danger("Contagem de opções permitida ultrapassada, apenas a primeira.[poll.options_allowed] opções selecionadas foram salvas."))
 			break
 		vote_count++
 		var/datum/poll_option/option = locate(h) in poll.options

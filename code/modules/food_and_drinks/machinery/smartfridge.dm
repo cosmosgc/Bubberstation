@@ -63,8 +63,8 @@
 			return ITEM_INTERACT_BLOCKING
 
 		user.visible_message(
-			span_notice("[user.name]Começa a cortar\the [src]Livre do chão."),
-			span_notice("Você começa a cortar[src]Livre do chão..."),
+			span_notice("[user.name] Começa a cortar\the [src] Livre do chão."),
+			span_notice("Você começa a cortar [src] Livre do chão..."),
 			span_hear("Você ouve solda."),
 		)
 
@@ -72,7 +72,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		welded_down = FALSE
-		to_chat(user, span_notice("Você cortou.[src]Livre do chão."))
+		to_chat(user, span_notice("Você cortou.[src] Livre do chão."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!anchored)
@@ -83,8 +83,8 @@
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user.name]começa a soldar\the [src]Para o chão."),
-		span_notice("Você começa a soldar[src]Para o chão..."),
+		span_notice("[user.name] começa a soldar\the [src] Para o chão."),
+		span_notice("Você começa a soldar [src] Para o chão..."),
 		span_hear("Você ouve solda."),
 	)
 
@@ -92,7 +92,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	welded_down = TRUE
-	to_chat(user, span_notice("Você solda[src]Para o chão."))
+	to_chat(user, span_notice("Você solda [src] Para o chão."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/smartfridge/welder_act_secondary(mob/living/user, obj/item/tool)
@@ -104,8 +104,8 @@
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]está reparando.[src]."),
-		span_notice("Você começa a reparar[src]..."),
+		span_notice("[user] está reparando.[src]."),
+		span_notice("Você começa a reparar [src]..."),
 		span_hear("Você ouve solda."),
 	)
 
@@ -261,7 +261,7 @@
 
 		if(!(weapon.item_flags & ABSTRACT) && 			!(weapon.flags_1 & HOLOGRAM_1) && 			accept_check(weapon) 		)
 			load(weapon, user)
-			user.visible_message(span_notice("[user]adiciona\the [weapon]Para\the [src]."), span_notice("Você acrescenta\the [weapon]Para\the [src]."))
+			user.visible_message(span_notice("[user] adiciona\the [weapon] Para\the [src]."), span_notice("Você acrescenta\the [weapon] Para\the [src]."))
 			SStgui.update_uis(src)
 			if(visible_contents)
 				update_appearance()
@@ -280,24 +280,24 @@
 
 			if(loaded)
 				if(shown_contents_length >= max_n_of_items)
-					user.visible_message(span_notice("[user]Cargas.\the [src]Com\the [weapon]."), 						span_notice("Você enche.\the [src]Com\the [weapon]."))
+					user.visible_message(span_notice("[user] Cargas.\the [src] Com\the [weapon]."), 						span_notice("Você enche.\the [src] Com\the [weapon]."))
 				else
-					user.visible_message(span_notice("[user]Cargas.\the [src]Com\the [weapon]."), 						span_notice("Você carrega.\the [src]Com\the [weapon]."))
+					user.visible_message(span_notice("[user] Cargas.\the [src] Com\the [weapon]."), 						span_notice("Você carrega.\the [src] Com\the [weapon]."))
 				if(weapon.contents.len)
 					to_chat(user, span_warning("Alguns itens são recusados."))
 				if (visible_contents)
 					update_appearance()
 				return TRUE
 			else
-				to_chat(user, span_warning("Não há nada dentro[weapon]Para colocar em[src]!"))
+				to_chat(user, span_warning("Não há nada dentro [weapon] Para colocar em [src]!"))
 				return FALSE
 
 	if(!powered())
-		to_chat(user, span_warning("\The [src]A porta magnética não abre sem energia!"))
+		to_chat(user, span_warning("\The [src] A porta magnética não abre sem energia!"))
 		return FALSE
 
 	if(!user.combat_mode || (weapon.item_flags & NOBLUDGEON))
-		to_chat(user, span_warning("\The [src]Inteligentemente se recusa[weapon]."))
+		to_chat(user, span_warning("\The [src] Inteligentemente se recusa [weapon]."))
 		return FALSE
 
 	else
@@ -326,7 +326,7 @@
 	if(ismob(weapon.loc))
 		var/mob/owner = weapon.loc
 		if(!owner.transferItemToLoc(weapon, src))
-			to_chat(owner, span_warning("\the [weapon]está preso em sua mão, você não pode colocá-lo em\the [src]!"))
+			to_chat(owner, span_warning("\the [weapon] está preso em sua mão, você não pode colocá-lo em\the [src]!"))
 			return FALSE
 		return TRUE
 	else
@@ -388,7 +388,7 @@
 			var/dispensed_amount = 0
 
 			if(isAI(living_mob))
-				to_chat(living_mob, span_warning("[src]Não respeita sua autoridade!"))
+				to_chat(living_mob, span_warning("[src] Não respeita sua autoridade!"))
 				return TRUE
 
 			for(var/obj/item/dispensed_item in contents)

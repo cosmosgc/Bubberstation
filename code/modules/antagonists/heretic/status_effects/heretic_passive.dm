@@ -131,7 +131,7 @@
 /datum/status_effect/heretic_passive/blade/proc/z_impact_react(datum/source, levels, turf/fell_on)
 	SIGNAL_HANDLER
 	new /obj/effect/temp_visual/mook_dust(fell_on)
-	owner.visible_message(span_notice("[owner]Aterrissando[fell_on]Com segurança, e com muita elegância.[p_their()]Pés!"))
+	owner.visible_message(span_notice("[owner] Aterrissando [fell_on] Com segurança, e com muita elegância.[p_their()] Pés!"))
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/atom, SpinAnimation), 0.5 SECONDS, 0)
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob/, emote), "flip")
 	return ZIMPACT_CANCEL_DAMAGE | ZIMPACT_NO_MESSAGE | ZIMPACT_NO_SPIN
@@ -198,8 +198,8 @@
 	playsound(get_turf(source), 'sound/items/weapons/parry.ogg', 100, TRUE)
 	source.balloon_alert(source, "Riposte Usado")
 	source.visible_message(
-		span_warning("[source]Inclina-se em[attack_text]E faz uma repentina réplica em[target]!"),
-		span_warning("Você se inclina para[attack_text]e entregar uma repentina réplica em[target]!"),
+		span_warning("[source] Inclina-se em [attack_text] E faz uma repentina réplica em [target]!"),
+		span_warning("Você se inclina para [attack_text] e entregar uma repentina réplica em [target]!"),
 		span_hear("Você ouve um clink, seguido de uma facada."),
 	)
 	weapon.melee_attack_chain(source, target)

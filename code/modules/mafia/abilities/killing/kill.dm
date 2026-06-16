@@ -18,9 +18,9 @@
 		return FALSE
 
 	if(!target_role.kill(game, host_role, FALSE))
-		host_role.send_message_to_player(span_danger("Sua tentativa de matar[target_role.body.real_name]Foi impedido!"))
+		host_role.send_message_to_player(span_danger("Sua tentativa de matar [target_role.body.real_name] Foi impedido!"))
 	else
-		target_role.send_message_to_player(span_userdanger("Você foi[attack_action] \a [host_role.name]!"))
+		target_role.send_message_to_player(span_userdanger("Você foi [attack_action] \a [host_role.name]!"))
 		if(honorable && (target_role.team & MAFIA_TEAM_TOWN))
 			host_role.send_message_to_player(span_userdanger("Você matou um tripulante inocente. Você vai morrer amanhã à noite."))
 			RegisterSignal(game, COMSIG_MAFIA_SUNDOWN, PROC_REF(internal_affairs))

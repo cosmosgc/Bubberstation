@@ -165,7 +165,7 @@
 /obj/item/mod/module/timeline_jumper/on_use(mob/activator)
 	if(!phased_mob)
 		//phasing out
-		mod.visible_message(span_warning("[mod.wearer]Sai da linha do tempo!"))
+		mod.visible_message(span_warning("[mod.wearer] Sai da linha do tempo!"))
 		mod.wearer.SetAllImmobility(0)
 		mod.wearer.set_stamina_loss(0)
 		phased_mob = new(get_turf(mod.wearer.loc), mod.wearer)
@@ -175,7 +175,7 @@
 		phased_mob.eject_jaunter()
 		phased_mob = null
 		UnregisterSignal(mod, COMSIG_MOD_ACTIVATE)
-		mod.visible_message(span_warning("[mod.wearer]Cai na linha do tempo!"))
+		mod.visible_message(span_warning("[mod.wearer] Cai na linha do tempo!"))
 
 	//probably justifies its own sound but whatever
 	playsound(src, 'sound/items/modsuit/time_anchor_set.ogg', 50, TRUE)

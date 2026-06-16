@@ -166,7 +166,7 @@
 	if(I.tool_behaviour != TOOL_MINING)
 		return
 	. = TRUE
-	to_chat(user, span_notice("Você começa a cavar[src]..."))
+	to_chat(user, span_notice("Você começa a cavar [src]..."))
 	if(I.use_tool(src, user, 40, volume=50))
 		to_chat(user, span_notice("Termine de cavar."))
 		deconstruct(TRUE)
@@ -175,29 +175,29 @@
 	..()
 	. = TRUE
 	if(anchored)
-		to_chat(user, span_warning("[src]Ainda está firmemente seguro no chão!"))
+		to_chat(user, span_warning("[src] Ainda está firmemente seguro no chão!"))
 		return
 
-	user.visible_message(span_notice("[user]Começa a se separar[src]!"), span_notice("Você começa a soldar[src]."))
+	user.visible_message(span_notice("[user] Começa a se separar [src]!"), span_notice("Você começa a soldar [src]."))
 	if(!I.use_tool(src, user, 60, 5, 50))
-		to_chat(user, span_warning("Você falhou em se separar[src]!"))
+		to_chat(user, span_warning("Você falhou em se separar [src]!"))
 		return
 
-	user.visible_message(span_notice("[user]Soldado.[src]em pedaços!"), span_notice("Você se separou.[src]!"))
+	user.visible_message(span_notice("[user] Soldado.[src] em pedaços!"), span_notice("Você se separou.[src]!"))
 	deconstruct(TRUE)
 
 /obj/structure/mineral_door/proc/crowbar_door(mob/living/user, obj/item/I) //if the door is flammable, call this in crowbar_act() so we can still decon it
 	. = TRUE
 	if(anchored)
-		to_chat(user, span_warning("[src]Ainda está firmemente seguro no chão!"))
+		to_chat(user, span_warning("[src] Ainda está firmemente seguro no chão!"))
 		return
 
-	user.visible_message(span_notice("[user]Começa a se separar[src]!"), span_notice("Você começa a se afastar[src]."))
+	user.visible_message(span_notice("[user] Começa a se separar [src]!"), span_notice("Você começa a se afastar [src]."))
 	if(!I.use_tool(src, user, 60, volume = 50))
-		to_chat(user, span_warning("Você falhou em se separar[src]!"))
+		to_chat(user, span_warning("Você falhou em se separar [src]!"))
 		return
 
-	user.visible_message(span_notice("[user]Invadido[src]em pedaços!"), span_notice("Você se separou[src]!"))
+	user.visible_message(span_notice("[user] Invadido [src] em pedaços!"), span_notice("Você se separou [src]!"))
 	deconstruct(TRUE)
 
 
@@ -323,11 +323,11 @@
 		return
 
 	if((!user.combat_mode) && istype(I, /obj/item/paper) && (atom_integrity < max_integrity))
-		user.visible_message(span_notice("[user]Começa a remendar os buracos[src]."), span_notice("Você começa a remendar alguns dos buracos[src]!"))
+		user.visible_message(span_notice("[user] Começa a remendar os buracos [src]."), span_notice("Você começa a remendar alguns dos buracos [src]!"))
 		if(do_after(user, 2 SECONDS, src))
 			atom_integrity = min(atom_integrity+4,max_integrity)
 			qdel(I)
-			user.visible_message(span_notice("[user]Remenda alguns dos buracos.[src]."), span_notice("Você faz alguns dos buracos[src]!"))
+			user.visible_message(span_notice("[user] Remenda alguns dos buracos.[src]."), span_notice("Você faz alguns dos buracos [src]!"))
 			return TRUE
 
 	return ..()

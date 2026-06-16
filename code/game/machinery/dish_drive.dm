@@ -61,7 +61,7 @@
 		var/dish_name = dish_amount == 1 ? initial(dish.name) : "[initial(dish.name)][plural_s(initial(dish.name))]"
 		dish_list += list("[dish_amount] [dish_name]")
 
-	. += span_info("Ele contém[english_list(dish_list)].\n[peek(dish_drive_contents)]está no topo da pilha.")
+	. += span_info("Ele contém [english_list(dish_list)].\n [peek(dish_drive_contents)] está no topo da pilha.")
 
 /obj/machinery/dish_drive/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -91,7 +91,7 @@
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		LAZYADD(dish_drive_contents, tool)
-		balloon_alert(user, "[tool]Colocado no drive")
+		balloon_alert(user, "[tool] Colocado no drive")
 		playsound(src, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 		flick("synthesizer_beam", src)
 		return ITEM_INTERACT_SUCCESS
@@ -131,7 +131,7 @@
 		if(is_type_in_list(dish, collectable_items) && dish.loc != src && (!dish.reagents || !dish.reagents.total_volume) && (dish.contents.len < 1))
 			if(dish.Adjacent(src))
 				LAZYADD(dish_drive_contents, dish)
-				visible_message(span_notice("[src]Vigas para cima[dish]!"))
+				visible_message(span_notice("[src] Vigas para cima [dish]!"))
 				dish.forceMove(src)
 				playsound(src, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 				flick("synthesizer_beam", src)
@@ -151,12 +151,12 @@
 /obj/machinery/dish_drive/proc/do_the_dishes(manual)
 	if(!LAZYLEN(dish_drive_contents))
 		if(manual)
-			visible_message(span_notice("[src]Está vazio!"))
+			visible_message(span_notice("[src] Está vazio!"))
 		return
 	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) //SKYRAT EDIT CHANGE
 	if(!bin)
 		if(manual)
-			visible_message(span_warning("[src]Buzzes. Não há lixeiras ao alcance!"))
+			visible_message(span_warning("[src] Buzzes. Não há lixeiras ao alcance!"))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 		return
 	var/disposed = 0
@@ -169,7 +169,7 @@
 			dish.forceMove(bin)
 			disposed++
 	if (disposed)
-		visible_message(span_notice("[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")]e vigas[disposed]Armazenados na vizinhança.[bin.name]."))
+		visible_message(span_notice("[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")]e vigas [disposed] Armazenados na vizinhança.[bin.name]."))
 		playsound(src, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 		playsound(bin, 'sound/items/pshoom/pshoom.ogg', 50, TRUE)
 		Beam(bin, icon_state = "rped_upgrade", time = 5)
@@ -177,6 +177,6 @@
 		flick("synthesizer_beam", src)
 	else
 		if(manual)
-			visible_message(span_notice("Não há itens descartáveis em[src]!"))
+			visible_message(span_notice("Não há itens descartáveis em [src]!"))
 		return
 	COOLDOWN_START(src, time_since_dishes, 1 MINUTES)

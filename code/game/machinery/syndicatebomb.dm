@@ -188,9 +188,9 @@
 	if(!tool.tool_start_check(user, amount=1))
 		return TRUE
 
-	to_chat(user, span_notice("Você começa a cortar[src]Separados..."))
+	to_chat(user, span_notice("Você começa a cortar [src] Separados..."))
 	if(tool.use_tool(src, user, 20, volume=50))
-		to_chat(user, span_notice("Você cortou.[src]Separados."))
+		to_chat(user, span_notice("Você cortou.[src] Separados."))
 		new /obj/item/stack/sheet/plasteel(loc, 5)
 		qdel(src)
 	return TRUE
@@ -206,9 +206,9 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			payload = I
-			to_chat(user, span_notice("Seu lugar.[payload]Em[src]."))
+			to_chat(user, span_notice("Seu lugar.[payload] Em [src]."))
 		else
-			to_chat(user, span_warning("[payload]já está carregado em[src]Você terá que removê-lo primeiro."))
+			to_chat(user, span_warning("[payload] já está carregado em [src] Você terá que removê-lo primeiro."))
 	else
 		var/old_integ = atom_integrity
 		. = ..()
@@ -266,14 +266,14 @@
 	if(!new_timer || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	timer_set = new_timer
-	visible_message(span_notice("[icon2html(src, viewers(src))]cronômetro pronto para[timer_set]Segundos."))
+	visible_message(span_notice("[icon2html(src, viewers(src))] cronômetro pronto para [timer_set] Segundos."))
 	var/choice = tgui_alert(user, "Gostaria de começar a contagem regressiva agora?", "Bomb Timer", list("Yes","No"))
 	if(choice != "Yes" || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	if(active)
 		to_chat(user, span_warning("A bomba já está ativa!"))
 		return
-	visible_message(span_danger("[icon2html(src, viewers(loc))] [timer_set]segundos até a detonação, por favor, saiam da área."))
+	visible_message(span_danger("[icon2html(src, viewers(loc))] [timer_set] segundos até a detonação, por favor, saiam da área."))
 	activate()
 	add_fingerprint(user)
 	// We don't really concern ourselves with duds or fakes after this
@@ -427,7 +427,7 @@
 	var/obj/machinery/syndicatebomb/holder = loc
 	if(istype(holder))
 		attempts++
-		holder.loc.visible_message(span_danger("[icon2html(holder, viewers(holder))]A bomba detonou. Sua pontuação é agora.[defusals]Para[attempts]Reiniciando Fios..."))
+		holder.loc.visible_message(span_danger("[icon2html(holder, viewers(holder))] A bomba detonou. Sua pontuação é agora.[defusals] Para [attempts] Reiniciando Fios..."))
 		reset()
 	else
 		qdel(src)
@@ -437,7 +437,7 @@
 	if(istype(holder))
 		attempts++
 		defusals++
-		holder.loc.visible_message(span_notice("[icon2html(holder, viewers(holder))]A bomba foi desativada. Sua pontuação é agora.[defusals]Para[attempts]Reiniciando os Fios em 5 segundos..."))
+		holder.loc.visible_message(span_notice("[icon2html(holder, viewers(holder))] A bomba foi desativada. Sua pontuação é agora.[defusals] Para [attempts] Reiniciando os Fios em 5 segundos..."))
 		addtimer(CALLBACK(src, PROC_REF(reset)), 5 SECONDS) //Just in case someone is trying to remove the bomb core this gives them a little window to crowbar it out
 
 /obj/item/bombcore/badmin
@@ -566,9 +566,9 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			beakers += I
-			to_chat(user, span_notice("Você carrega.[src]Com[I]."))
+			to_chat(user, span_notice("Você carrega.[src] Com [I]."))
 		else
-			to_chat(user, span_warning("[I]Não cabe!\The [src]só pode aguentar[max_beakers]Contêineres."))
+			to_chat(user, span_warning("[I] Não cabe!\The [src] só pode aguentar [max_beakers] Contêineres."))
 			return
 	..()
 
@@ -678,7 +678,7 @@
 		chosen_theme = null
 	else
 		chosen_theme = picked
-	balloon_alert(user, "Pronto para[chosen_theme?.name || DIMENSION_CHOICE_RANDOM]")
+	balloon_alert(user, "Pronto para [chosen_theme?.name || DIMENSION_CHOICE_RANDOM]")
 
 /obj/item/bombcore/dimensional/proc/check_menu(mob/user)
 	if(!user.is_holding(src) || user.incapacitated)
@@ -730,7 +730,7 @@
 				detonated++
 			existent++
 		playsound(user, 'sound/machines/click.ogg', 20, TRUE)
-		to_chat(user, span_notice("[existent]Encontrei,[detonated]Acionado."))
+		to_chat(user, span_notice("[existent] Encontrei,[detonated] Acionado."))
 		if(detonated)
 			detonated--
 			log_bomber(user, "remotely detonated [detonated ? "syndicate bombs" : "a syndicate bomb"] using a", src)

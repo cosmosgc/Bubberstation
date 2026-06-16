@@ -186,7 +186,7 @@
 	if (istype(item, /obj/item/chromosome))
 		item.forceMove(src)
 		stored_chromosomes += item
-		to_chat(user, span_notice("Você insere[item]."))
+		to_chat(user, span_notice("Você insere [item]."))
 		return
 
 	// Insert data disk if console disk slot is empty
@@ -200,7 +200,7 @@
 			eject_disk(user)
 		// Set the new diskette.
 		diskette = item
-		to_chat(user, span_notice("Você insere[item]."))
+		to_chat(user, span_notice("Você insere [item]."))
 		return
 
 	// Recycle non-activator used injectors
@@ -213,19 +213,19 @@
 					var/c_typepath = generate_chromosome()
 					var/obj/item/chromosome/CM = new c_typepath (src)
 					stored_chromosomes += CM
-					to_chat(user,span_notice("[capitalize(CM.name)]adicionado ao armazenamento."))
+					to_chat(user,span_notice("[capitalize(CM.name)] adicionado ao armazenamento."))
 				else
 					to_chat(user, span_notice("Não havia dados genéticos suficientes para extrair um cromossomo viável."))
 			if(activator.crispr_charge)
 				crispr_charges++
 				to_chat(user, span_notice("Carga CRISPR adicionada."))
 			qdel(item)
-			to_chat(user,span_notice("Reciclado[item]."))
+			to_chat(user,span_notice("Reciclado [item]."))
 			return
 		else
 			//recycle unused activators
 			qdel(item)
-			to_chat(user, span_notice("Reciclagem não utilizada[item]."))
+			to_chat(user, span_notice("Reciclagem não utilizada [item]."))
 			return
 	return ..()
 
@@ -1877,7 +1877,7 @@
 		var/type = delayed_action["type"]
 		var/buffer_slot = delayed_action["buffer_slot"]
 		if(apply_genetic_makeup(type, buffer_slot))
-			to_chat(connected_scanner.occupant, span_notice("[src]Ativar!"))
+			to_chat(connected_scanner.occupant, span_notice("[src] Ativar!"))
 		delayed_action = null
 
 /**
@@ -2334,7 +2334,7 @@
 	if(!diskette)
 		return
 
-	to_chat(user, span_notice("Você ejeta.[diskette]De[src]."))
+	to_chat(user, span_notice("Você ejeta.[diskette] De [src]."))
 
 	// Reset the state to console storage.
 	tgui_view_state["storageMode"] = "console"

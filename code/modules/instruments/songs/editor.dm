@@ -210,7 +210,7 @@
 		for(var/l in lines)
 			if(length_char(l) > MUSIC_MAXLINECHARS)
 				if(user)
-					to_chat(user, "Linha[linenum]Muito tempo!")
+					to_chat(user, "Linha [linenum] Muito tempo!")
 				lines.Remove(l)
 			else
 				linenum++

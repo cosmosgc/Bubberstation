@@ -90,12 +90,12 @@
 /obj/machinery/power/turbine/examine(mob/user)
 	. = ..()
 	if(installed_part)
-		. += span_notice("Atualmente em nível[installed_part.current_tier].")
+		. += span_notice("Atualmente em nível [installed_part.current_tier].")
 		if(installed_part.current_tier + 1 < TURBINE_PART_TIER_FOUR)
-			. += span_notice("Pode ser melhorado usando uma camada[installed_part.current_tier + 1]Parte.")
-		. += span_notice("\The [installed_part]Pode ser[EXAMINE_HINT("pried")]Fora.")
+			. += span_notice("Pode ser melhorado usando uma camada [installed_part.current_tier + 1] Parte.")
+		. += span_notice("\The [installed_part] Pode ser[EXAMINE_HINT("pried")]Fora.")
 	else
-		. += span_warning("Está faltando um[initial(part_path.name)].")
+		. += span_warning("Está faltando um [initial(part_path.name)].")
 	. += span_notice("Seu painel de manutenção pode ser[EXAMINE_HINT("screwed")] [panel_open ? "closed" : "open"].")
 	if(panel_open)
 		. += span_notice("Ele pode girar com um[EXAMINE_HINT("wrench")]")
@@ -200,7 +200,7 @@
 		balloon_alert(user, "Sem rotor instalado!")
 		return
 	if(is_active())
-		balloon_alert(user, "[src]Está ligado!")
+		balloon_alert(user, "[src] Está ligado!")
 		return
 
 	user.put_in_hands(installed_part)
@@ -466,7 +466,7 @@
 	balloon_alert(user, "Todas como partes ligadas")
 	var/obj/item/multitool/multitool = tool
 	multitool.set_buffer(src)
-	to_chat(user, span_notice("Você armazena informações de ligação em[tool]É um amortecedor."))
+	to_chat(user, span_notice("Você armazena informações de ligação em [tool] É um amortecedor."))
 
 	//success
 	return ITEM_INTERACT_SUCCESS

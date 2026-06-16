@@ -133,7 +133,7 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "skull",
 		SPECIES_PERK_NAME = "Minor Undead",
-		SPECIES_PERK_DESC = "[name]são mortos-vivos menores. Mortos-vivos menores apreciam algumas das vantagens de estar mortos, como não precisar respirar ou comer, mas não obter muitas das imunidades ambientais envolvidas em ser totalmente mortos-vivos.",
+		SPECIES_PERK_DESC = "[name] são mortos-vivos menores. Mortos-vivos menores apreciam algumas das vantagens de estar mortos, como não precisar respirar ou comer, mas não obter muitas das imunidades ambientais envolvidas em ser totalmente mortos-vivos.",
 	))
 
 	return to_add
@@ -168,12 +168,12 @@
 	if(!istype(used_item, /obj/item/reagent_containers/blood))
 		return NONE
 	if(used_item.reagents?.total_volume <= 0)
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]Apunhalamentos[used_item]Com[user.p_their()]dentes afiados e drena seu conteúdo!"),
-		span_notice("Você esfaqueia.[used_item]Com seus dentes afiados e drenar seu conteúdo!"),
+		span_notice("[user] Apunhalamentos [used_item] Com [user.p_their()] dentes afiados e drena seu conteúdo!"),
+		span_notice("Você esfaqueia.[used_item] Com seus dentes afiados e drenar seu conteúdo!"),
 		span_hear("Você ouve um som de esfaqueamento! Seguido por um deslize?"),
 		COMBAT_MESSAGE_RANGE,
 	)
@@ -184,7 +184,7 @@
 	if(!do_after(user, time, bloodbag))
 		return
 
-	to_chat(user, span_notice("Você engoliu um gole de[src]."))
+	to_chat(user, span_notice("Você engoliu um gole de [src]."))
 	playsound(bloodbag, 'sound/items/drink.ogg', 50, TRUE) //slurp
 	bloodbag.reagents.trans_to(user, bloodbag.reagents.maximum_volume * 0.05, transferred_by = user, methods = INGEST)
 	if(bloodbag.reagents.total_volume > 0)
@@ -220,23 +220,23 @@
 	var/blood_name = LOWER_TEXT(user.get_bloodtype()?.get_blood_name())
 	if(!victim.get_blood_volume() || victim.get_blood_reagent() != user.get_blood_reagent())
 		if (blood_name)
-			to_chat(user, span_warning("[victim]não tem[blood_name]!"))
+			to_chat(user, span_warning("[victim] não tem [blood_name]!"))
 		else
-			to_chat(user, span_warning("[victim]Não tem nada dentro deles que você possa comer!"))
+			to_chat(user, span_warning("[victim] Não tem nada dentro deles que você possa comer!"))
 		return FALSE
 	COOLDOWN_START(licker_drinker, drain_cooldown, 3 SECONDS)
 	if(victim.can_block_magic(MAGIC_RESISTANCE_HOLY, charge_cost = 0))
-		victim.show_message(span_warning("[user]Tenta te morder, mas pára antes de te tocar!"))
-		to_chat(user, span_warning("[victim]É abençoado! Pare bem na hora para evitar pegar fogo."))
+		victim.show_message(span_warning("[user] Tenta te morder, mas pára antes de te tocar!"))
+		to_chat(user, span_warning("[victim] É abençoado! Pare bem na hora para evitar pegar fogo."))
 		return FALSE
 	if(victim.has_reagent(/datum/reagent/consumable/garlic))
-		victim.show_message(span_warning("[user]Tenta mordê-lo, mas se enoja!"))
-		to_chat(user, span_warning("[victim]Fede a alho! Você não pode drenar esse sangue contaminado."))
+		victim.show_message(span_warning("[user] Tenta mordê-lo, mas se enoja!"))
+		to_chat(user, span_warning("[victim] Fede a alho! Você não pode drenar esse sangue contaminado."))
 		return FALSE
 	if(!do_after(user, 3 SECONDS, target = victim, hidden = TRUE))
 		return FALSE
 
-	victim.show_message(span_danger("[user]Está drenando seu sangue!"))
+	victim.show_message(span_danger("[user] Está drenando seu sangue!"))
 	to_chat(user, span_notice("Você drena sangue!"))
 	playsound(user, 'sound/items/drink.ogg', 30, TRUE, -2)
 
@@ -249,7 +249,7 @@
 	victim.adjust_blood_volume(-amount_drained)
 
 	if(!victim.get_blood_volume())
-		to_chat(user, span_notice("Você termina.[victim]'s[blood_name]Fornecimento."))
+		to_chat(user, span_notice("Você termina.[victim]'s [blood_name] Fornecimento."))
 	return TRUE
 
 /obj/item/organ/heart/vampire

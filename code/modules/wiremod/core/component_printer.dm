@@ -77,9 +77,9 @@
 		var/amount_inserted = materials.insert_item(tool, user_data = ID_DATA(user))
 
 		if(amount_inserted)
-			to_chat(user, span_notice("[tool]Vale a pena.[amount_inserted / SHEET_MATERIAL_AMOUNT]Folhas de material foram consumidas por[src]"))
+			to_chat(user, span_notice("[tool] Vale a pena.[amount_inserted / SHEET_MATERIAL_AMOUNT] Folhas de material foram consumidas por [src]"))
 		else
-			to_chat(user, span_warning("[tool]foi rejeitado por[src]"))
+			to_chat(user, span_warning("[tool] foi rejeitado por [src]"))
 
 		return amount_inserted > 0 ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_FAILURE
 

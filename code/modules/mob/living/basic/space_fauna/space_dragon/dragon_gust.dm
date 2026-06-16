@@ -73,7 +73,7 @@
 	for (var/mob/living/candidate in view(gust_distance, owner))
 		if(candidate == owner || candidate.faction_check_atom(owner))
 			continue
-		owner.visible_message(span_boldwarning("[candidate]Foi derrubado pela rajada!"))
+		owner.visible_message(span_boldwarning("[candidate] Foi derrubado pela rajada!"))
 		to_chat(candidate, span_userdanger("Você foi derrubado pela rajada!"))
 		var/dir_to_target = get_dir(get_turf(owner), get_turf(candidate))
 		var/throwtarget = get_edge_target_turf(target, dir_to_target)

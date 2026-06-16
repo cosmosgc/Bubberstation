@@ -31,7 +31,7 @@
 		if(card_template.cardtype == "Creature")
 			if(!user.transferItemToLoc(current_card, src))
 				return
-			to_chat(user, span_notice("Você colocou o[current_card]cartão em[src]."))
+			to_chat(user, span_notice("Você colocou o [current_card] cartão em [src]."))
 			icon_state = "card_holder_active"
 			update_appearance()
 			current_summon = new(locate(x + summon_offset_x, y + summon_offset_y, z))
@@ -40,7 +40,7 @@
 			current_summon.team_color = team_color
 			current_summon.load_model()
 		else
-			to_chat(user, span_notice("O[src]Rejeita inteligentemente o cartão de não-criatura."))
+			to_chat(user, span_notice("O [src] Rejeita inteligentemente o cartão de não-criatura."))
 			current_card = null
 			return ..()
 	else
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 			if("Pickup")
 				if(current_card)
 					user.put_in_hands(current_card)
-					to_chat(user, span_notice("Você pega o[current_card]cartão fora de[src]."))
+					to_chat(user, span_notice("Você pega o [current_card] cartão fora de [src]."))
 					current_card = null
 				else
 					to_chat(user, span_notice("O cartão em branco desmaterializa."))
@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 			if(null)
 				return
 	else
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 	add_fingerprint(user)
 	return ..()
 
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 		current_summon.team_color = team_color
 		current_summon.load_model()
 	else
-		to_chat(user, span_notice("O[src]Já contém um cartão."))
+		to_chat(user, span_notice("O [src] Já contém um cartão."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/trading_card_holder/proc/check_menu(mob/living/user)
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(tcgcard_machine_radial_choices)
 /obj/machinery/trading_card_holder/examine(mob/user)
 	. = ..()
 	if(card_template)
-		. += span_notice("Há atualmente um[card_template.name]Cartão inserido.")
+		. += span_notice("Há atualmente um [card_template.name] Cartão inserido.")
 	else
 		if(current_summon)
 			. += span_notice("Há atualmente um cartão em branco inserido.")
@@ -447,7 +447,7 @@ GLOBAL_LIST_EMPTY(tcgcard_health_bar_radial_choices)
 
 /obj/effect/trading_card_panel/examine(mob/user)
 	. = ..()
-	. += span_notice("Ele está mostrando atualmente[gems]Fora[gem_slots] [gem_title].")
+	. += span_notice("Ele está mostrando atualmente [gems] Fora [gem_slots] [gem_title].")
 
 ///A variant of the display panel for life shards, this one is set up to display two columns.
 /obj/effect/trading_card_panel/health

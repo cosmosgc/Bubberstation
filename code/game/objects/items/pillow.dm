@@ -63,7 +63,7 @@
 		to_chat(user, span_notice("Você não pode se machucar.[victim]"))
 		return
 	if((victim.body_position == LYING_DOWN) || ((user.grab_state >= GRAB_AGGRESSIVE) && (user.pulling == victim)))
-		user.visible_message("[user]Começa a sufocar.[victim]", span_notice("Você começa a sufocar.[victim]"), vision_distance = COMBAT_MESSAGE_RANGE)
+		user.visible_message("[user] Começa a sufocar.[victim]", span_notice("Você começa a sufocar.[victim]"), vision_distance = COMBAT_MESSAGE_RANGE)
 		INVOKE_ASYNC(src, PROC_REF(smothering), user, victim)
 
 /obj/item/pillow/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -93,7 +93,7 @@
 /obj/item/pillow/examine(mob/user)
 	. = ..()
 	if(bricked)
-		. += span_info("[p_They()]Sentir[p_s()]Anormalmente pesado.")
+		. += span_info("[p_They()] Sentir [p_s()] Anormalmente pesado.")
 	if(pillow_trophy)
 		. += span_notice("Alt-click para remover a etiqueta!")
 
@@ -143,7 +143,7 @@
 		if(!do_after(user, 1 SECONDS, victim))
 			break
 		victim.losebreath += 1
-	victim.visible_message("[victim]Consegue escalpar sento sufocado!", span_notice("Você está livre!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	victim.visible_message("[victim] Consegue escalpar sento sufocado!", span_notice("Você está livre!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 /obj/item/pillow/random
 

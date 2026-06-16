@@ -11,10 +11,10 @@
 
 /datum/skill/fishing/New()
 	. = ..()
-	levelUpMessages[SKILL_LEVEL_NOVICE] = span_nicegreen("Estou começando a descobrir o que[name]Realmente é! Posso adivinhar o tamanho e o peso de um peixe.")
-	levelUpMessages[SKILL_LEVEL_APPRENTICE] = span_nicegreen("Estou ficando um pouco melhor em[name]Posso dizer se um peixe está com fome, morrendo ou não.")
-	levelUpMessages[SKILL_LEVEL_JOURNEYMAN] = span_nicegreen("Sinto que me tornei bastante eficiente em[name]Posso dizer que peixes posso pegar em qualquer ponto de pesca.")
-	levelUpMessages[SKILL_LEVEL_MASTER] = span_nicegreen("Comecei a entender a surpreendente profundidade por trás.[name]Como um mestre[title]Posso adivinhar o que vou pegar agora!")
+	levelUpMessages[SKILL_LEVEL_NOVICE] = span_nicegreen("Estou começando a descobrir o que [name] Realmente é! Posso adivinhar o tamanho e o peso de um peixe.")
+	levelUpMessages[SKILL_LEVEL_APPRENTICE] = span_nicegreen("Estou ficando um pouco melhor em [name] Posso dizer se um peixe está com fome, morrendo ou não.")
+	levelUpMessages[SKILL_LEVEL_JOURNEYMAN] = span_nicegreen("Sinto que me tornei bastante eficiente em [name] Posso dizer que peixes posso pegar em qualquer ponto de pesca.")
+	levelUpMessages[SKILL_LEVEL_MASTER] = span_nicegreen("Comecei a entender a surpreendente profundidade por trás.[name] Como um mestre [title] Posso adivinhar o que vou pegar agora!")
 
 /datum/skill/fishing/level_gained(datum/mind/mind, new_level, old_level, silent)
 	. = ..()

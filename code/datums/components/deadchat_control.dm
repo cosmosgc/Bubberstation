@@ -76,12 +76,12 @@
 			return
 		var/cooldown = ckey_to_cooldown[source.ckey] - world.time
 		if(cooldown > 0)
-			to_chat(source, span_warning("Suas entradas de controle de bate-papo ainda estão na refrigeração para outra.[CEILING(cooldown * 0.1, 1)]Segundo."))
+			to_chat(source, span_warning("Suas entradas de controle de bate-papo ainda estão na refrigeração para outra.[CEILING(cooldown * 0.1, 1)] Segundo."))
 			return MOB_DEADSAY_SIGNAL_INTERCEPT
 		ckey_to_cooldown[source.ckey] = world.time + input_cooldown
 		addtimer(CALLBACK(src, PROC_REF(end_cooldown), source.ckey), input_cooldown)
 		inputs[message].Invoke()
-		to_chat(source, span_notice("\"[message]\"Entrada aceita. Você está agora na refrigeração para[input_cooldown * 0.1]Segundo."))
+		to_chat(source, span_notice("\"[message]\"Entrada aceita. Você está agora na refrigeração para [input_cooldown * 0.1] Segundo."))
 		return MOB_DEADSAY_SIGNAL_INTERCEPT
 
 	if(deadchat_mode & DEMOCRACY_MODE)
@@ -187,7 +187,7 @@
 		if(QDELETED(src))
 			return
 
-		to_chat(user, span_notice("Deadchat não pode mais controlar[parent]."))
+		to_chat(user, span_notice("Deadchat não pode mais controlar [parent]."))
 		log_admin("[key_name(user)] has removed deadchat control from [parent]")
 		message_admins(span_notice("[key_name(user)] has removed deadchat control from [parent]"))
 
@@ -200,12 +200,12 @@
 	if(!isobserver(user))
 		return
 
-	examine_list += span_notice("[A.p_Theyre()]Atualmente sob controle de bate-papo usando o[(deadchat_mode & DEMOCRACY_MODE) ? "democracy" : "anarchy"]Regras!")
+	examine_list += span_notice("[A.p_Theyre()] Atualmente sob controle de bate-papo usando o[(deadchat_mode & DEMOCRACY_MODE) ? "democracy" : "anarchy"]Regras!")
 
 	if(deadchat_mode & DEMOCRACY_MODE)
-		examine_list += span_notice("Digite um comando em bate-papo para votar em uma ação. Isso acontece uma vez a cada[input_cooldown * 0.1]Segundo.")
+		examine_list += span_notice("Digite um comando em bate-papo para votar em uma ação. Isso acontece uma vez a cada [input_cooldown * 0.1] Segundo.")
 	else if(deadchat_mode & ANARCHY_MODE)
-		examine_list += span_notice("Digite um comando em bate-papo para executar. Você pode fazer isso uma vez a cada[input_cooldown * 0.1]Segundo.")
+		examine_list += span_notice("Digite um comando em bate-papo para executar. Você pode fazer isso uma vez a cada [input_cooldown * 0.1] Segundo.")
 
 	var/extended_examine = "<span class='notice'>Command list:"
 
@@ -222,7 +222,7 @@
 	var/mob/ghost = get_mob_by_ckey(ghost_ckey)
 	if(!ghost || isliving(ghost))
 		return
-	to_chat(ghost, "[FOLLOW_LINK(ghost, parent)] <span class='nicegreen'>Suas entradas de controle de bate-papo para[parent]Não estão mais na refrigeração.</span>")
+	to_chat(ghost, "[FOLLOW_LINK(ghost, parent)] <span class='nicegreen'>Suas entradas de controle de bate-papo para [parent] Não estão mais na refrigeração.</span>")
 
 /**
  * Deadchat Moves Things

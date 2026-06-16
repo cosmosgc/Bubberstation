@@ -152,7 +152,7 @@
 
 	if(user.transferItemToLoc(attacking_item, parent))
 		add_container(attacking_item, user)
-		to_chat(user, span_notice("Você colocou[attacking_item]em frente[parent]."))
+		to_chat(user, span_notice("Você colocou [attacking_item] em frente [parent]."))
 	return COMPONENT_NO_AFTERATTACK
 
 /datum/component/stove/proc/on_exited(obj/machinery/source, atom/movable/gone, direction)

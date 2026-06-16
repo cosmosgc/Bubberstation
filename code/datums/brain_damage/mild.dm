@@ -322,14 +322,14 @@
 
 	ADD_TRAIT(my_thing, TRAIT_NODROP, TRAUMA_TRAIT)
 	RegisterSignals(my_thing, list(COMSIG_ITEM_DROPPED, COMSIG_MOVABLE_MOVED), PROC_REF(clear_trait))
-	to_chat(owner, span_warning("Você sente a necessidade de manter[my_thing]Feche..."))
+	to_chat(owner, span_warning("Você sente a necessidade de manter [my_thing] Feche..."))
 	addtimer(CALLBACK(src, PROC_REF(relax), my_thing), rand(30 SECONDS, 3 MINUTES), TIMER_DELETE_ME)
 
 /datum/brain_trauma/mild/possessive/proc/relax(obj/item/my_thing)
 	if(QDELETED(my_thing))
 		return
 	if(HAS_TRAIT_FROM_ONLY(my_thing, TRAIT_NODROP, TRAUMA_TRAIT)) // in case something else adds nodrop, somehow?
-		to_chat(owner, span_notice("Você se sente mais confortável deixando ir[my_thing]."))
+		to_chat(owner, span_notice("Você se sente mais confortável deixando ir [my_thing]."))
 	clear_trait(my_thing)
 
 /datum/brain_trauma/mild/possessive/proc/clear_trait(obj/item/my_thing, ...)

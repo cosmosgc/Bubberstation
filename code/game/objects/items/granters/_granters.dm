@@ -56,7 +56,7 @@
 
 /// Called when the user starts to read the granter.
 /obj/item/book/granter/proc/on_reading_start(mob/living/user)
-	to_chat(user, span_notice("Você começa a ler[name]..."))
+	to_chat(user, span_notice("Você começa a ler [name]..."))
 	return TRUE
 
 /// Called when the reading is interrupted without finishing.
@@ -95,16 +95,16 @@
 	if(!granted_action)
 		CRASH("Someone attempted to learn [type], which did not have an action set.")
 	if(locate(granted_action) in user.actions)
-		to_chat(user, span_warning("Você já sabe tudo sobre[action_name]!"))
+		to_chat(user, span_warning("Você já sabe tudo sobre [action_name]!"))
 		return FALSE
 	return TRUE
 
 /obj/item/book/granter/action/on_reading_start(mob/living/user)
-	to_chat(user, span_notice("Você começa a ler sobre[action_name]..."))
+	to_chat(user, span_notice("Você começa a ler sobre [action_name]..."))
 	return TRUE
 
 /obj/item/book/granter/action/on_reading_finished(mob/living/user)
-	to_chat(user, span_notice("Você se sente como se tivesse um bom controle[action_name]!"))
+	to_chat(user, span_notice("Você se sente como se tivesse um bom controle [action_name]!"))
 	// Action goes on the mind as the user actually learns the thing in your brain
 	var/datum/action/new_action = new granted_action(user.mind || user)
 	new_action.Grant(user)

@@ -46,7 +46,7 @@
 		return
 
 	playsound(get_turf(owner), 'sound/effects/nightmare_poof.ogg', 50, TRUE, -1, ignore_walls = FALSE)
-	cast_on.visible_message(span_boldwarning("[cast_on]Derrete nas sombras!"))
+	cast_on.visible_message(span_boldwarning("[cast_on] Derrete nas sombras!"))
 	cast_on.SetAllImmobility(0)
 	cast_on.set_stamina_loss(0, FALSE)
 	enter_jaunt(cast_on)
@@ -105,9 +105,9 @@
 
 	if(istype(reveal_turf))
 		if(forced_out)
-			reveal_turf.visible_message(span_boldwarning("[jaunter]é revelado pela luz!"))
+			reveal_turf.visible_message(span_boldwarning("[jaunter] é revelado pela luz!"))
 		else
-			reveal_turf.visible_message(span_boldwarning("[jaunter]emerge da escuridão!"))
+			reveal_turf.visible_message(span_boldwarning("[jaunter] emerge da escuridão!"))
 		playsound(reveal_turf, 'sound/effects/nightmare_reappear.ogg', 50, TRUE, -1, ignore_walls = FALSE)
 
 	return ..()

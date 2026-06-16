@@ -45,13 +45,13 @@
 		unlink_scanner()
 		link_scanner(multi_tool.buffer)
 		balloon_alert(user, "Scanner conectado")
-		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer]Com\the [src]."))
+		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer] Com\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 	if (istype(multi_tool.buffer, /obj/machinery/experimental_cloner))
 		unlink_pod()
 		link_pod(multi_tool.buffer)
 		balloon_alert(user, "pod linked")
-		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer]Com\the [src]."))
+		to_chat(user, span_notice("Você liga.\the [multi_tool.buffer] Com\the [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/experimental_cloner/ui_interact(mob/user, datum/tgui/ui)

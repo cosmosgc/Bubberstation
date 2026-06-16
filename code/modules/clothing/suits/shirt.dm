@@ -17,10 +17,10 @@
 	. = ..()
 	if(wash_count <= 5)
 		transform *= TRANSFORM_USING_VARIABLE(0.8, 1)
-		washer.visible_message("[src]Parece ter enchido depois de ser lavado.")
+		washer.visible_message("[src] Parece ter enchido depois de ser lavado.")
 		wash_count += 1
 	else
-		washer.visible_message("[src]Implode devido à lavagem repetida.")
+		washer.visible_message("[src] Implode devido à lavagem repetida.")
 		qdel(src)
 
 /obj/item/clothing/suit/costume/wellworn_shirt/skub

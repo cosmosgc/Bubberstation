@@ -68,17 +68,17 @@
 	if(isassembly(item) && !istype(assembly) && removable_assembly)
 		var/obj/item/assembly/new_assembly = item
 		if(!(new_assembly.assembly_behavior & ASSEMBLY_FUNCTIONAL_OUTPUT))
-			to_chat(L, span_warning("\The [item]não parece que faria muito de qualquer coisa dentro de[src]..."))
+			to_chat(L, span_warning("\The [item] não parece que faria muito de qualquer coisa dentro de [src]..."))
 			return
 		if(L.transferItemToLoc(item, src))
 			assembly = item
 			SEND_SIGNAL(item, COMSIG_ASSEMBLY_ADDED_TO_PRESSURE_PLATE, src, L)
-		to_chat(L, span_notice("Você anexa[item]Para[src]!"))
+		to_chat(L, span_notice("Você anexa [item] Para [src]!"))
 	return ..()
 
 /obj/item/pressure_plate/attack_self(mob/living/L)
 	if(removable_assembly && istype(assembly))
-		to_chat(L, span_notice("Você tira.[assembly]De[src]."))
+		to_chat(L, span_notice("Você tira.[assembly] De [src]."))
 		SEND_SIGNAL(assembly, COMSIG_ASSEMBLY_REMOVED_FROM_PRESSURE_PLATE, src, L)
 		if(!L.put_in_hands(assembly))
 			assembly.forceMove(get_turf(src))
@@ -91,9 +91,9 @@
 		return CLICK_ACTION_BLOCKING
 	active = !active
 	if (active)
-		to_chat(user, span_notice("Você vira.[src]Vamos."))
+		to_chat(user, span_notice("Você vira.[src] Vamos."))
 	else
-		to_chat(user, span_notice("Você vira.[src]Fora."))
+		to_chat(user, span_notice("Você vira.[src] Fora."))
 	return CLICK_ACTION_SUCCESS
 
 ///Called from COMSIG_OBJ_HIDE to toggle the active part, because yeah im not making a special exception on the element to support it

@@ -131,7 +131,7 @@
 		new_xeno.RemoveInvisibility(type)
 
 	if(gib_on_success)
-		new_xeno.visible_message(span_danger("[new_xeno]Esturou.[owner]em um banho de sangue!"), span_userdanger("Você sai.[owner], seu anfitrião anterior."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
+		new_xeno.visible_message(span_danger("[new_xeno] Esturou.[owner] em um banho de sangue!"), span_userdanger("Você sai.[owner], seu anfitrião anterior."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 		//owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS) // SKYRAT EDIT REMOVAL - ALIEN QOL - don't ever gib host.
 		//owner.gib(DROP_ORGANS|DROP_BODYPARTS)
 		// SKYRAT EDIT ADDITION BEGIN - ALIEN QOL - You aren't getting gibbed but you aren't going to be having fun
@@ -141,7 +141,7 @@
 		owner.investigate_log("has been chestbursted.", INVESTIGATE_DEATHS)
 		// SKYRAT EDIT ADDITION END - ALIEN QOL
 	else
-		new_xeno.visible_message(span_danger("[new_xeno]Se contorcer[owner]!"), span_userdanger("Você sai.[owner], seu anfitrião anterior."))
+		new_xeno.visible_message(span_danger("[new_xeno] Se contorcer [owner]!"), span_userdanger("Você sai.[owner], seu anfitrião anterior."))
 		owner.log_message("had an alien larva within them escape (without being gibbed).", LOG_ATTACK, log_globally = FALSE)
 		owner.adjust_brute_loss(40)
 		owner.cut_overlay(overlay)

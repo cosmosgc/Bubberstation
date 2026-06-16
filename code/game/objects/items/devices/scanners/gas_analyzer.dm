@@ -54,16 +54,16 @@
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
-	. += span_notice("Botão direito[src]para abrir a referência de gás.")
-	. += span_notice("Alt-click[src]para ativar a função do barômetro.")
+	. += span_notice("Botão direito [src] para abrir a referência de gás.")
+	. += span_notice("Alt-click [src] para ativar a função do barômetro.")
 
 /obj/item/analyzer/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]começa a analisar[user.p_them()]ego com[src]A exibição mostra que[user.p_theyre()]Morto!"))
+	user.visible_message(span_suicide("[user] começa a analisar [user.p_them()] ego com [src] A exibição mostra que [user.p_theyre()] Morto!"))
 	return BRUTELOSS
 
 /obj/item/analyzer/click_alt(mob/user) //Barometer output for measuring when the next storm happens
 	if(cooldown)
-		to_chat(user, span_warning("[src]A função do barômetro está se preparando."))
+		to_chat(user, span_warning("[src] A função do barômetro está se preparando."))
 		return CLICK_ACTION_BLOCKING
 
 	var/turf/T = get_turf(user)
@@ -75,7 +75,7 @@
 	var/datum/weather/ongoing_weather = null
 
 	if(!user_area.outdoors)
-		to_chat(user, span_warning("[src]A função do barômetro não funciona dentro de casa!"))
+		to_chat(user, span_warning("[src] A função do barômetro não funciona dentro de casa!"))
 		return CLICK_ACTION_BLOCKING
 
 	for(var/V in SSweather.processing)
@@ -86,19 +86,19 @@
 
 	if(ongoing_weather)
 		if((ongoing_weather.stage == MAIN_STAGE) || (ongoing_weather.stage == WIND_DOWN_STAGE))
-			to_chat(user, span_warning("[src]A função do barômetro não pode rastrear nada enquanto a tempestade está[ongoing_weather.stage == MAIN_STAGE ? "already here!" : "winding down."]"))
+			to_chat(user, span_warning("[src] A função do barômetro não pode rastrear nada enquanto a tempestade está[ongoing_weather.stage == MAIN_STAGE ? "already here!" : "winding down."]"))
 			return CLICK_ACTION_BLOCKING
 
-		to_chat(user, span_notice("O próximo[ongoing_weather]Vai bater em[butchertime(ongoing_weather.next_hit_time - world.time)]."))
+		to_chat(user, span_notice("O próximo [ongoing_weather] Vai bater em [butchertime(ongoing_weather.next_hit_time - world.time)]."))
 		if(!(ongoing_weather.weather_flags & FUNCTIONAL_WEATHER))
-			to_chat(user, span_warning("[src]A função do barômetro diz que a próxima tempestade passará."))
+			to_chat(user, span_warning("[src] A função do barômetro diz que a próxima tempestade passará."))
 	else
 		var/next_hit = SSweather.next_hit_by_zlevel["[T.z]"]
 		var/fixed = next_hit ? timeleft(next_hit) : -1
 		if(fixed < 0)
-			to_chat(user, span_warning("[src]A função do barômetro não conseguiu rastrear nenhum padrão climático."))
+			to_chat(user, span_warning("[src] A função do barômetro não conseguiu rastrear nenhum padrão climático."))
 		else
-			to_chat(user, span_warning("[src]A função do barômetro diz que uma tempestade pousará em aproximadamente[butchertime(fixed)]."))
+			to_chat(user, span_warning("[src] A função do barômetro diz que uma tempestade pousará em aproximadamente [butchertime(fixed)]."))
 	cooldown = TRUE
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/analyzer, ping)), cooldown_time)
 	return CLICK_ACTION_SUCCESS
@@ -106,7 +106,7 @@
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, span_notice("[src]A função do barômetro está pronta!"))
+		to_chat(L, span_notice("[src] A função do barômetro está pronta!"))
 	playsound(src, 'sound/machines/click.ogg', 100)
 	cooldown = FALSE
 
@@ -189,8 +189,8 @@
 	var/message = list()
 	if(!silent && isliving(user))
 		playsound(user, SFX_INDUSTRIAL_SCAN, 20, TRUE, -2, TRUE, FALSE)
-		user.visible_message(span_notice("[user]Usa o analisador em[icon2html(icon, viewers(user))] [target]."), span_notice("Você usa o analisador em[icon2html(icon, user)] [target]."))
-	message += span_boldnotice("Resultados da análise de[icon2html(icon, user)] [target].")
+		user.visible_message(span_notice("[user] Usa o analisador em [icon2html(icon, viewers(user))] [target]."), span_notice("Você usa o analisador em [icon2html(icon, user)] [target]."))
+	message += span_boldnotice("Resultados da análise de [icon2html(icon, user)] [target].")
 
 	var/list/airs = islist(mixture) ? mixture : list(mixture)
 	for(var/datum/gas_mixture/air as anything in airs)
@@ -208,20 +208,20 @@
 		var/thermal_energy = air.thermal_energy()
 
 		if(total_moles > 0)
-			message += span_notice("Moles:[round(total_moles, 0.01)]mol")
+			message += span_notice("Moles:[round(total_moles, 0.01)] mol")
 
 			var/list/cached_gases = air.gases
 			for(var/id in cached_gases)
 				var/gas_concentration = cached_gases[id][MOLES]/total_moles
-				message += span_notice("[cached_gases[id][GAS_META][META_GAS_NAME]]: [round(cached_gases[id][MOLES], 0.01)]mol ([round(gas_concentration*100, 0.01)] %)")
-			message += span_notice("Temperatura:[round(temperature - T0C,0.01)]&deg;C ([round(temperature, 0.01)]K)")
-			message += span_notice("Volume:[volume]L.")
-			message += span_notice("Pressão:[round(pressure, 0.01)]kPa")
+				message += span_notice("[cached_gases [id][GAS_META][META_GAS_NAME]]: [round(cached_gases [id][MOLES], 0.01)]mol ([round(gas_concentration*100, 0.01)] %)")
+			message += span_notice("Temperatura:[round(temperature - T0C,0.01)]&deg;C ([round(temperature, 0.01)] K)")
+			message += span_notice("Volume:[volume] L.")
+			message += span_notice("Pressão:[round(pressure, 0.01)] kPa")
 			message += span_notice("Capacidade de Calor:[display_energy(heat_capacity)]/ K")
 			message += span_notice("Energia térmica:[display_energy(thermal_energy)]")
 		else
-			message += airs.len > 1 ? span_notice("Este nó está vazio!") : span_notice("[target]Está vazio!")
-			message += span_notice("Volume:[volume]L.") // don't want to change the order volume appears in, suck it
+			message += airs.len > 1 ? span_notice("Este nó está vazio!") : span_notice("[target] Está vazio!")
+			message += span_notice("Volume:[volume] L.") // don't want to change the order volume appears in, suck it
 
 	// we let the join apply newlines so we do need handholding
 	to_chat(user, boxed_message(jointext(message, "\n")), type = MESSAGE_TYPE_INFO)

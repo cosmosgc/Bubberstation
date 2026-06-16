@@ -88,7 +88,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	. = ..()
 	if(has_water_reclaimer)
 		. += span_notice("Um reciclador de água está instalado. Parece que você poderia tirá-lo.")
-	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume]Líquidos restantes.")
+	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume] Líquidos restantes.")
 
 /obj/structure/sink/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -113,7 +113,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		washing_face = TRUE
 
 	playsound(src, 'sound/machines/sink-faucet.ogg', 50)
-	user.visible_message(span_notice("[user]Começa a lavar.[user.p_their()] [washing_face ? "face" : "hands"]..."), 						span_notice("Você começa a lavar o seu[washing_face ? "face" : "hands"]..."))
+	user.visible_message(span_notice("[user] Começa a lavar.[user.p_their()] [washing_face ? "face" : "hands"]..."), 						span_notice("Você começa a lavar o seu[washing_face ? "face" : "hands"]..."))
 	busy = TRUE
 
 	if(!do_after(user, 4 SECONDS, target = src))
@@ -134,7 +134,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	else
 		user.wash(CLEAN_WASH)
 
-	user.visible_message(span_notice("[user]Lava.[user.p_their()] [washing_face ? "face" : "hands"]Usando[src]."), 						span_notice("Você lava o seu[washing_face ? "face" : "hands"]Usando[src]."))
+	user.visible_message(span_notice("[user] Lava.[user.p_their()] [washing_face ? "face" : "hands"]Usando [src]."), 						span_notice("Você lava o seu[washing_face ? "face" : "hands"]Usando [src]."))
 
 /obj/structure/sink/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = NONE
@@ -145,24 +145,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	if(is_reagent_container(tool))
 		var/obj/item/reagent_containers/RG = tool
 		if(!reagents.total_volume)
-			to_chat(user, span_notice("\The [src]está seco."))
+			to_chat(user, span_notice("\The [src] está seco."))
 			return ITEM_INTERACT_FAILURE
 		if(RG.is_refillable())
 			if(!RG.reagents.holder_full())
 				reagents.trans_to(RG, RG.amount_per_transfer_from_this, transferred_by = user)
 				START_PROCESSING(SSobj, src)
-				to_chat(user, span_notice("Você enche.[RG]De[src]."))
+				to_chat(user, span_notice("Você enche.[RG] De [src]."))
 				return ITEM_INTERACT_SUCCESS
-			to_chat(user, span_notice("\The [RG]Está cheio."))
+			to_chat(user, span_notice("\The [RG] Está cheio."))
 		return ITEM_INTERACT_FAILURE
 
 	if(istype(tool, /obj/item/mop) || astype(tool, /obj/item/rag)?.blood_level == 0)
 		if(!reagents.total_volume)
-			to_chat(user, span_notice("\The [src]está seco."))
+			to_chat(user, span_notice("\The [src] está seco."))
 			return ITEM_INTERACT_FAILURE
 		reagents.trans_to(tool, 5, transferred_by = user)
 		START_PROCESSING(SSobj, src)
-		to_chat(user, span_notice("Você está molhado.[tool]Em[src]."))
+		to_chat(user, span_notice("Você está molhado.[tool] Em [src]."))
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 		return ITEM_INTERACT_SUCCESS
 
@@ -199,7 +199,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 			flick("baton_active", src)
 			user.Paralyze(baton.knockdown_time)
 			user.set_stutter(baton.knockdown_time)
-			user.visible_message(span_warning("[user]Choques.[user.p_them()]Auto-enquanto tenta lavar o ativo[baton.name]!"), 								span_userdanger("Você insensato tentar lavar[baton]Enquanto ainda está ligado."))
+			user.visible_message(span_warning("[user] Choques.[user.p_them()] Auto-enquanto tenta lavar o ativo [baton.name]!"), 								span_userdanger("Você insensato tentar lavar [baton] Enquanto ainda está ligado."))
 			playsound(src, baton.on_stun_sound, 50, TRUE)
 			return ITEM_INTERACT_FAILURE
 
@@ -212,7 +212,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 		reagents.expose(tool, TOUCH, 5 / max(reagents.total_volume, 5))
 		reagents.remove_all(5)
 		START_PROCESSING(SSobj, src)
-		user.visible_message(span_notice("[user]Lava.[tool]Usando[src]."), 							span_notice("Você lava.[tool]Usando[src]."))
+		user.visible_message(span_notice("[user] Lava.[tool] Usando [src]."), 							span_notice("Você lava.[tool] Usando [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/structure/sink/wrench_act(mob/living/user, obj/item/tool)
@@ -230,7 +230,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	tool.play_tool_sound(src)
 	has_water_reclaimer = FALSE
 	new/obj/item/stock_parts/water_recycler(get_turf(loc))
-	to_chat(user, span_notice("Você remove o recuperador de água de[src]."))
+	to_chat(user, span_notice("Você remove o recuperador de água de [src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/sink/process(seconds_per_tick)

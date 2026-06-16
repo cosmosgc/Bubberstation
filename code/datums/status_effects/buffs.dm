@@ -34,7 +34,7 @@
 	var/His = HG.word
 	var/Him = HG.word2
 	name = "[His] Grace"
-	desc = "[His]Grace tem fome, e você deve se alimentar.[Him]."
+	desc = "[His] Grace tem fome, e você deve se alimentar.[Him]."
 	icon_state = "[LOWER_TEXT(His)]_grace"
 	desc += "<br><font size=3><b>Current Bloodthirst: [HG.bloodlust]</b></font>	<br>Becomes undroppable at <b>[HIS_GRACE_FAMISHED]</b>	<br>Will consume you at <b>[HIS_GRACE_CONSUME_OWNER]</b>"
 	return ..()
@@ -43,7 +43,7 @@
 	owner.add_stun_absorption(
 		source = id,
 		priority = 3,
-		self_message = span_boldwarning("[word]Grace protege você do choque!"),
+		self_message = span_boldwarning("[word] Grace protege você do choque!"),
 	)
 	return ..()
 
@@ -82,7 +82,7 @@
 
 /datum/status_effect/wish_granters_gift/on_remove()
 	owner.revive(ADMIN_HEAL_ALL)
-	owner.visible_message(span_warning("[owner]Parece concordar dos mortos, tendendo curado todas como feridas!"), span_notice("Você se regenerou."))
+	owner.visible_message(span_warning("[owner] Parece concordar dos mortos, tendendo curado todas como feridas!"), span_notice("Você se regenerou."))
 
 
 /atom/movable/screen/alert/status_effect/wish_granters_gift
@@ -295,7 +295,7 @@
 	owner.remove_traits(list(TRAIT_PACIFISM, TRAIT_HIPPOCRATIC_OATH, TRAIT_MEDICAL_HUD), HIPPOCRATIC_OATH_TRAIT)
 
 /datum/status_effect/hippocratic_oath/get_examine_text()
-	return span_notice("[owner.p_They()]Parece.[owner.p_s()]ter uma aura de cura e ajuda sobre[owner.p_them()].")
+	return span_notice("[owner.p_They()] Parece.[owner.p_s()] ter uma aura de cura e ajuda sobre [owner.p_them()].")
 
 /datum/status_effect/hippocratic_oath/tick(seconds_between_ticks)
 	if(owner.stat == DEAD)
@@ -337,7 +337,7 @@
 				itemUser.updatehealth()
 
 /datum/status_effect/hippocratic_oath/proc/consume_owner()
-	owner.visible_message(span_notice("[owner]A alma é absorvida na vara, aliviando a cobra anterior de seu dever."))
+	owner.visible_message(span_notice("[owner] A alma é absorvida na vara, aliviando a cobra anterior de seu dever."))
 	var/list/chems = list(/datum/reagent/medicine/sal_acid, /datum/reagent/medicine/c2/convermol, /datum/reagent/medicine/oxandrolone)
 	var/mob/living/basic/snake/spawned = new(owner.loc, pick(chems))
 	spawned.name = "Asclepius's Snake"

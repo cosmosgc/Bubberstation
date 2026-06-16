@@ -49,7 +49,7 @@
 				continue
 			O_limit++
 			if(O_limit >= 20)
-				audible_message(span_notice("[src]Sai um grito, não parece ser capaz de lidar com a carga."))
+				audible_message(span_notice("[src] Sai um grito, não parece ser capaz de lidar com a carga."))
 				break
 			use_energy(power_per_obj)
 			O.throw_at(target, drive_range * power, power)

@@ -299,7 +299,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	if(param_var_name)
 		if(!(param_var_name in O.vars))
-			to_chat(src, "Uma variável com este nome ([param_var_name]Não existe neste dado.[O])", confidential = TRUE)
+			to_chat(src, "Uma variável com este nome ([param_var_name] Não existe neste dado.[O])", confidential = TRUE)
 			return
 		variable = param_var_name
 

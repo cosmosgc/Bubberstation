@@ -32,6 +32,6 @@
 	if(!reagent_to_extract)
 		return ITEM_INTERACT_BLOCKING
 	if(!container.reagents.add_reagent(reagent_to_extract, rand(5, 10)))
-		to_chat(user, span_warning("[container]Está cheio."))
-	user.visible_message(span_notice("[user]colheres[LOWER_TEXT(reagent_to_extract::name)]De[source]com[container]."), span_notice("Você vai embora.[LOWER_TEXT(reagent_to_extract::name)]De[source]usando[container]."))
+		to_chat(user, span_warning("[container] Está cheio."))
+	user.visible_message(span_notice("[user] colheres [LOWER_TEXT(reagent_to_extract::name)] De [source] com [container]."), span_notice("Você vai embora.[LOWER_TEXT(reagent_to_extract::name)] De [source] usando [container]."))
 	return ITEM_INTERACT_SUCCESS

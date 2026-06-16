@@ -386,7 +386,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	if(length(paint_jobs))
 		. += span_notice("Pode ser.[EXAMINE_HINT("painted")]com outra textura.")
 	if(HAS_TRAIT(user, TRAIT_SKITTISH) && divable)
-		. += span_notice("Se você esbarrar[p_them()]Enquanto correr, você vai pular para dentro.")
+		. += span_notice("Se você esbarrar [p_them()] Enquanto correr, você vai pular para dentro.")
 
 	if(can_install_electronics)
 		if(!secure)
@@ -481,13 +481,13 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		if(!(user.mobility_flags & MOBILITY_USE))
 			return FALSE
 	if(pulledby && user && HAS_TRAIT(src, TRAIT_STRONGPULL) && user != pulledby)
-		to_chat(user, span_danger("[pulledby]tem um aperto incrivelmente forte[src], impedindo que se abra."))
+		to_chat(user, span_danger("[pulledby] tem um aperto incrivelmente forte [src], impedindo que se abra."))
 		return FALSE
 	var/turf/T = get_turf(src)
 	for(var/mob/living/L in T)
 		if(L.anchored || horizontal && L.mob_size > MOB_SIZE_TINY && L.density)
 			if(user)
-				to_chat(user, span_danger("Há algo grande em cima de[src], impedindo que se abra."))
+				to_chat(user, span_danger("Há algo grande em cima de [src], impedindo que se abra."))
 			return FALSE
 	return TRUE
 
@@ -496,12 +496,12 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	for(var/obj/structure/closet/closet in T)
 		if(closet != src && !closet.wall_mounted)
 			if(user)
-				balloon_alert(user, "[closet.name]Está no caminho!")
+				balloon_alert(user, "[closet.name] Está no caminho!")
 			return FALSE
 	for(var/mob/living/L in T)
 		if(L.anchored || horizontal && L.mob_size > MOB_SIZE_TINY && L.density)
 			if(user)
-				to_chat(user, span_danger("Há algo muito grande dentro[src], impedindo que se feche."))
+				to_chat(user, span_danger("Há algo muito grande dentro [src], impedindo que se feche."))
 			return FALSE
 	return TRUE
 
@@ -786,7 +786,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		update_appearance()
 
 	else if(istype(weapon, /obj/item/electronics/airlock) && can_install_airlock_electronics(user))
-		user.visible_message(span_notice("[user]instala a eletrônica no[src]."),			span_notice("Você começa a instalar eletrônicos no[src]..."))
+		user.visible_message(span_notice("[user] instala a eletrônica no [src]."),			span_notice("Você começa a instalar eletrônicos no [src]..."))
 
 		if(!do_after(user, 4 SECONDS, target = src, extra_checks = CALLBACK(src, PROC_REF(can_install_airlock_electronics), user)))
 			return
@@ -801,7 +801,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		update_appearance()
 
 	else if(weapon.tool_behaviour == TOOL_SCREWDRIVER && can_unscrew_airlock_electronics(user))
-		user.visible_message(span_notice("[user]começa a remover os eletrônicos do[src]."),			span_notice("Você começa a remover os eletrônicos do[src]..."))
+		user.visible_message(span_notice("[user] começa a remover os eletrônicos do [src]."),			span_notice("Você começa a remover os eletrônicos do [src]..."))
 
 		if (!weapon.use_tool(src, user, 40, volume = 50, extra_checks = CALLBACK(src, PROC_REF(can_unscrew_airlock_electronics), user)))
 			return
@@ -822,7 +822,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		update_appearance()
 
 	else if(istype(weapon, /obj/item/stock_parts/card_reader) && can_install_card_reader(user))
-		user.visible_message(span_notice("[user]está instalando um leitor de cartões."),
+		user.visible_message(span_notice("[user] está instalando um leitor de cartões."),
 					span_notice("Você começa a instalar o leitor de cartões."))
 
 		if(!do_after(user, 4 SECONDS, target = src, extra_checks = CALLBACK(src, PROC_REF(can_install_card_reader), user)))
@@ -834,7 +834,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		balloon_alert(user, "Leitor de cartões instalado")
 
 	else if(weapon.tool_behaviour == TOOL_CROWBAR && can_pryout_card_reader(user))
-		user.visible_message(span_notice("[user]começa a tirar o leitor de cartão de[src]."),			span_notice("Você começa a tirar o leitor de cartão de[src]..."))
+		user.visible_message(span_notice("[user] começa a tirar o leitor de cartão de [src]."),			span_notice("Você começa a tirar o leitor de cartão de [src]..."))
 
 		if(!weapon.use_tool(src, user, 4 SECONDS, extra_checks = CALLBACK(src, PROC_REF(can_pryout_card_reader), user)))
 			return
@@ -875,9 +875,9 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 				set_access(list())
 
 		if(!isnull(id_card))
-			balloon_alert(user, "Agora possuído por[id.registered_name]")
+			balloon_alert(user, "Agora possuído por [id.registered_name]")
 		else
-			balloon_alert(user, "Pronto para[choice]")
+			balloon_alert(user, "Pronto para [choice]")
 
 	else if(opened)
 		if(istype(weapon, cutting_tool))
@@ -885,17 +885,17 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 				if(!weapon.tool_start_check(user, amount=1))
 					return
 
-				to_chat(user, span_notice("Você começa a cortar\the [src]Separados..."))
+				to_chat(user, span_notice("Você começa a cortar\the [src] Separados..."))
 				if(weapon.use_tool(src, user, 40, volume=50))
 					if(!opened)
 						return
-					user.visible_message(span_notice("[user]Cortes separados\the [src]."),
-									span_notice("Você cortou.\the [src]Separado com\the [weapon]."),
+					user.visible_message(span_notice("[user] Cortes separados\the [src]."),
+									span_notice("Você cortou.\the [src] Separado com\the [weapon]."),
 									span_hear("Você ouve solda."))
 					deconstruct(TRUE)
 				return
 			else // for example cardboard box is cut with wirecutters
-				user.visible_message(span_notice("[user]Cortado.\the [src]."), 									span_notice("Você cortou.\the [src]Separado com\the [weapon]."))
+				user.visible_message(span_notice("[user] Cortado.\the [src]."), 									span_notice("Você cortou.\the [src] Separado com\the [weapon]."))
 				deconstruct(TRUE)
 				return
 		if (user.combat_mode)
@@ -913,7 +913,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 			welded = !welded
 			after_weld(welded)
 			user.visible_message(span_notice("[user] [welded ? "welds shut" : "unwelded"] \the [src]."),
-							span_notice("Você.[welded ? "weld" : "unwelded"] \the [src]com\the [weapon]."),
+							span_notice("Você.[welded ? "weld" : "unwelded"] \the [src] com\the [weapon]."),
 							span_hear("Você ouve solda."))
 			user.log_message("[welded ? "welded":"unwelded"] closet [src] with [weapon]", LOG_GAME)
 			update_appearance()
@@ -959,10 +959,10 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		return
 	var/turf/T = get_turf(src)
 	add_fingerprint(user)
-	user.visible_message(span_warning("[user] [actuallyismob ? "tries to ":""]Coisas.[O]em[src]."), 		span_warning("Você.[actuallyismob ? "try to ":""]Coisas.[O]em[src]."), 		span_hear("Você ouve barulho."))
+	user.visible_message(span_warning("[user] [actuallyismob ? "tries to ":""]Coisas.[O] em [src]."), 		span_warning("Você.[actuallyismob ? "try to ":""]Coisas.[O] em [src]."), 		span_hear("Você ouve barulho."))
 	if(actuallyismob)
 		if(do_after(user, 4 SECONDS, O))
-			user.visible_message(span_notice("[user]Coisas.[O]em[src]."), 				span_notice("Sua coisa.[O]em[src]."), 				span_hear("Você ouve um barulho de metal alto."))
+			user.visible_message(span_notice("[user] Coisas.[O] em [src]."), 				span_notice("Sua coisa.[O] em [src]."), 				span_hear("Você ouve um barulho de metal alto."))
 			var/mob/living/L = O
 			if(!issilicon(L))
 				L.Paralyze(40)
@@ -981,7 +981,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	if(locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, span_warning("[src]A porta não se mexe!"))
+			to_chat(user, span_warning("[src] A porta não se mexe!"))
 		return
 	container_resist_act(user)
 
@@ -1056,7 +1056,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	//okay, so the closet is either welded or locked... resist!!!
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_warning("[src]Começa a tremer violentamente!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve bater de[src]."))
+	user.visible_message(span_warning("[src] Começa a tremer violentamente!"), 		span_notice("Você se apoia na parte de trás de [src] E começar a empurrar a porta aberta...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve bater de [src]."))
 
 	addtimer(CALLBACK(src, PROC_REF(check_if_shake)), 1 SECONDS)
 
@@ -1064,7 +1064,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		if(!user || user.stat != CONSCIOUS || (loc_required && (user.loc != src)) || opened || (!locked && !welded) )
 			return
 		//we check after a while whether there is a point of resisting anymore and whether the user is capable of resisting
-		user.visible_message(span_danger("[user]Com sucesso, fugiu.[src]!"),
+		user.visible_message(span_danger("[user] Com sucesso, fugiu.[src]!"),
 							span_notice("Você conseguiu escapar.[src]!"))
 		bust_open()
 	else
@@ -1177,7 +1177,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 
 /obj/structure/closet/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(secure && !broken)
-		visible_message(span_warning("As faíscas voam de[src]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
+		visible_message(span_warning("As faíscas voam de [src]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
 		balloon_alert(user, "Fechamento quebrado")
 		playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		broken = TRUE
@@ -1242,10 +1242,10 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	else
 		target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 	update_icon()
-	target.visible_message(span_danger("[shover.name]Empurra.[target.name]em[src]!"),
-		span_userdanger("Você está enfiado em[src]por[shover.name]!"),
+	target.visible_message(span_danger("[shover.name] Empurra.[target.name] em [src]!"),
+		span_userdanger("Você está enfiado em [src] por [shover.name]!"),
 		span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, shover)
-	to_chat(src, span_danger("Você empurra.[target.name]em[src]!"))
+	to_chat(src, span_danger("Você empurra.[target.name] em [src]!"))
 	log_combat(shover, target, "shoved", "into [src] (locker/crate)[weapon ? " with [weapon]" : ""]")
 	return COMSIG_LIVING_SHOVE_HANDLED
 
@@ -1279,8 +1279,8 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 		HIDE_ATTACK_MESSAGES(attack_modifiers)
 		MODIFY_ATTACK_FORCE_MULTIPLIER(attack_modifiers, 2)
 		user.visible_message(
-			span_danger("[user]Apunhala com precisão[src]É eletrônica com[attacking_item]!"),
-			span_danger("Você esfaqueia com precisão.[src]É eletrônica com[attacking_item]!"),
+			span_danger("[user] Apunhala com precisão [src] É eletrônica com [attacking_item]!"),
+			span_danger("Você esfaqueia com precisão.[src] É eletrônica com [attacking_item]!"),
 			null,
 			COMBAT_MESSAGE_RANGE,
 		)

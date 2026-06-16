@@ -51,7 +51,7 @@
 		return
 	if(world.time < last_synth+time_per_syringe)
 		return
-	to_chat(loc, span_warning("Você ouve um clique como[src]sintetiza um novo dardo."))
+	to_chat(loc, span_warning("Você ouve um clique como [src] sintetiza um novo dardo."))
 	syringes_left++
 	if(chambered && !chambered.loaded_projectile)
 		chambered.newshot()

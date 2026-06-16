@@ -29,12 +29,12 @@
 	var/datum/mind/examiner_mind = user.mind
 
 	if(examiner_mind == owner)
-		examine_list += span_notice("É o seu precioso[family_name]Herança da família. Mantenha-o seguro!")
+		examine_list += span_notice("É o seu precioso [family_name] Herança da família. Mantenha-o seguro!")
 		return
 
 	var/datum/antagonist/obsessed/our_creeper = examiner_mind?.has_antag_datum(/datum/antagonist/obsessed)
 	if(our_creeper?.trauma.obsession == owner)
-		examine_list += span_nicegreen("Isso deve ser...[owner]A herança da família! Cheira como eles...")
+		examine_list += span_nicegreen("Isso deve ser...[owner] A herança da família! Cheira como eles...")
 		return
 
-	examine_list += span_notice("É o[family_name]Herança de família, pertencente a[owner].")
+	examine_list += span_notice("É o [family_name] Herança de família, pertencente a [owner].")

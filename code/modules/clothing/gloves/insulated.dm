@@ -54,11 +54,11 @@
 	var/success = C.equip_to_slot_if_possible(new /obj/item/clothing/gloves/color/yellow/sprayon, ITEM_SLOT_GLOVES, qdel_on_fail = TRUE, disable_warning = TRUE)
 	if(success)
 		if(C == user)
-			C.visible_message(span_notice("[U]Sprays suas mãos com borracha brilhante!"))
+			C.visible_message(span_notice("[U] Sprays suas mãos com borracha brilhante!"))
 		else
-			C.visible_message(span_warning("[U]sprays de borracha brilhante nas mãos de[C]!"))
+			C.visible_message(span_warning("[U] sprays de borracha brilhante nas mãos de [C]!"))
 	else
-		C.visible_message(span_warning("A borracha não se apega[C]Mãos!"))
+		C.visible_message(span_warning("A borracha não se apega [C] Mãos!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/clothing/gloves/color/yellow/sprayon
@@ -89,7 +89,7 @@
 	charges_remaining--
 	if(charges_remaining <= 0)
 		var/turf/location = get_turf(src)
-		location.visible_message(span_warning("[src]Destruir[p_s()]Para longe em nada.")) // just like my dreams after working with .dm
+		location.visible_message(span_warning("[src] Destruir [p_s()] Para longe em nada.")) // just like my dreams after working with .dm
 		qdel(src)
 
 	. |= COMPONENT_CLEANED

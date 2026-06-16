@@ -50,7 +50,7 @@
 
 /obj/item/hot_potato/proc/detonate()
 	var/atom/location = loc
-	location.visible_message(span_userdanger("[src] [detonate_explosion? "explodes" : "activates"]!"), span_userdanger("[src]Ativar! Você ficou sem tempo!"))
+	location.visible_message(span_userdanger("[src] [detonate_explosion? "explodes" : "activates"]!"), span_userdanger("[src] Ativar! Você ficou sem tempo!"))
 	if(detonate_explosion && isliving(loc))
 		var/mob/living/victim_mob = loc
 		if(victim_mob.is_holding(src))
@@ -65,7 +65,7 @@
 
 /obj/item/hot_potato/attack_self(mob/user)
 	if(activate(timer, user))
-		user.visible_message(span_boldwarning("[user]Aperta[src], que rapidamente começa a piscar cores vermelhas quentes!"), span_boldwarning("Você aperta.[src], ativando sua contagem regressiva e mecanismo de fixação!"),
+		user.visible_message(span_boldwarning("[user] Aperta [src], que rapidamente começa a piscar cores vermelhas quentes!"), span_boldwarning("Você aperta.[src], ativando sua contagem regressiva e mecanismo de fixação!"),
 		span_boldwarning("Você ouve um clique mecânico e um bip alto!"))
 		return
 	return ..()
@@ -89,14 +89,14 @@
 /obj/item/hot_potato/examine(mob/user)
 	. = ..()
 	if(active)
-		. += span_warning("[src]Está piscando fogo vermelho! Você deveria se livrar dele!")
+		. += span_warning("[src] Está piscando fogo vermelho! Você deveria se livrar dele!")
 		if(show_timer)
-			. += span_warning("[src]Timer parece estar em[DisplayTimeText(activation_time - world.time)]!")
+			. += span_warning("[src] Timer parece estar em [DisplayTimeText(activation_time - world.time)]!")
 
 /obj/item/hot_potato/equipped(mob/user)
 	. = ..()
 	if(active)
-		to_chat(user, span_userdanger("Você tem um mau pressentimento sobre[src]!"))
+		to_chat(user, span_userdanger("Você tem um mau pressentimento sobre [src]!"))
 
 /obj/item/hot_potato/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -109,9 +109,9 @@
 	if(!istype(victim) || user != loc || victim == user)
 		return FALSE
 	if(!victim.client)
-		to_chat(user, span_boldwarning("[src]Se recusa a se apegar a uma criatura não-sapiente!"))
+		to_chat(user, span_boldwarning("[src] Se recusa a se apegar a uma criatura não-sapiente!"))
 	if(victim.stat != CONSCIOUS || !victim.usable_legs)
-		to_chat(user, span_boldwarning("[src]Se recusa a se apegar a alguém incapaz de usá-lo!"))
+		to_chat(user, span_boldwarning("[src] Se recusa a se apegar a alguém incapaz de usá-lo!"))
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	. = FALSE
 	if(!victim.put_in_hands(src))
@@ -127,11 +127,11 @@
 		. = TRUE
 	if(.)
 		log_combat(user, victim, "forced a hot potato with explosive variables ([detonate_explosion]-[detonate_dev_range]/[detonate_heavy_range]/[detonate_light_range]/[detonate_flash_range]/[detonate_fire_range]) onto")
-		user.visible_message(span_userdanger("[user]forças[src]em frente[victim]!"), span_userdanger("Você força[src]em frente[victim]!"), span_boldwarning("Você ouve um clique mecânico e um bip."))
+		user.visible_message(span_userdanger("[user] forças [src] em frente [victim]!"), span_userdanger("Você força [src] em frente [victim]!"), span_boldwarning("Você ouve um clique mecânico e um bip."))
 		colorize(null)
 	else
 		log_combat(user, victim, "tried to force a hot potato with explosive variables ([detonate_explosion]-[detonate_dev_range]/[detonate_heavy_range]/[detonate_light_range]/[detonate_flash_range]/[detonate_fire_range]) onto")
-		user.visible_message(span_boldwarning("[user]Tentei forçar[src]em frente[victim], mas não poderia anexar!"), span_boldwarning("Você tenta forçar[src]em frente[victim], mas é incapaz de anexar!"), span_boldwarning("Você ouve um clique mecânico e dois zumbidos."))
+		user.visible_message(span_boldwarning("[user] Tentei forçar [src] em frente [victim], mas não poderia anexar!"), span_boldwarning("Você tenta forçar [src] em frente [victim], mas é incapaz de anexar!"), span_boldwarning("Você ouve um clique mecânico e dois zumbidos."))
 		user.put_in_hands(src)
 
 /obj/item/hot_potato/dropped(mob/user)

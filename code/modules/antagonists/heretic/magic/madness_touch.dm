@@ -23,11 +23,11 @@
 
 /datum/action/cooldown/spell/touch/mad_touch/on_antimagic_triggered(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	victim.visible_message(
-		span_danger("O feitiço salta de[victim]!"),
+		span_danger("O feitiço salta de [victim]!"),
 		span_danger("O feitiço sai de você!"),
 	)
 
 /datum/action/cooldown/spell/touch/mad_touch/cast_on_hand_hit(obj/item/melee/touch_attack/hand, mob/living/carbon/human/victim, mob/living/carbon/caster)
-	to_chat(caster, span_warning("[victim.name]Foi amaldiçoado!"))
+	to_chat(caster, span_warning("[victim.name] Foi amaldiçoado!"))
 	victim.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 	return TRUE

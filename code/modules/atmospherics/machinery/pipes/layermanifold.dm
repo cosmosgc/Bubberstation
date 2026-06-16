@@ -135,7 +135,7 @@
 		user.ventcrawl_layer = clamp(user.ventcrawl_layer + 1, PIPING_LAYER_MIN, PIPING_LAYER_MAX)
 	if((SOUTH|WEST) & direction)
 		user.ventcrawl_layer = clamp(user.ventcrawl_layer - 1, PIPING_LAYER_MIN, PIPING_LAYER_MAX)
-	to_chat(user, "Você se alinha com o[user.ventcrawl_layer]\tSaída.")
+	to_chat(user, "Você se alinha com o [user.ventcrawl_layer]\tSaída.")
 
 /obj/machinery/atmospherics/pipe/layer_manifold/visible
 	hide = FALSE

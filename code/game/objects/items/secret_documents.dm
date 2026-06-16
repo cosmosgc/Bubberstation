@@ -75,5 +75,5 @@
 			name = "[C.crayon_color] secret documents"
 			icon_state = "docs_[C.crayon_color]"
 			forgedseal = C.crayon_color
-			to_chat(user, span_notice("Você forja o selo oficial com um[C.crayon_color]Lâmina de cera. Ninguém vai notar... certo?"))
+			to_chat(user, span_notice("Você forja o selo oficial com um [C.crayon_color] Lâmina de cera. Ninguém vai notar... certo?"))
 			update_appearance()

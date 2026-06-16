@@ -20,7 +20,7 @@
 	var/unseal_time = 2 SECONDS
 
 /obj/item/door_seal/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está selando[user.p_them()]e se afastar do mundo com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está selando [user.p_them()] e se afastar do mundo com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/tools/jaws_pry.ogg', 30, TRUE)
 	return BRUTELOSS
 

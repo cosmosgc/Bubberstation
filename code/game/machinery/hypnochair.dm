@@ -120,7 +120,7 @@
 	update_appearance()
 	var/temp_trigger = trigger_phrase
 	trigger_phrase = "" //Erase evidence, in case the subject is able to look at the panel afterwards
-	audible_message(span_notice("[src]Pings!"))
+	audible_message(span_notice("[src] Pings!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 	if(QDELETED(victim) || victim != occupant)
@@ -175,17 +175,17 @@
 /obj/machinery/hypnochair/container_resist_act(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("Viu?[user]Chutando contra a porta de[src]!"), 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a porta aberta...[DisplayTimeText(600)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
+	user.visible_message(span_notice("Viu?[user] Chutando contra a porta de [src]!"), 		span_notice("Você se apoia na parte de trás de [src] E começar a empurrar a porta aberta...[DisplayTimeText(600)].)"), 		span_hear("Você ouve um metal rangendo de [src]."))
 	if(do_after(user,(600), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
+		user.visible_message(span_warning("[user] Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 
 /obj/machinery/hypnochair/relaymove(mob/living/user, direction)
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, span_warning("[src]A porta não se mexe!"))
+		to_chat(user, span_warning("[src] A porta não se mexe!"))
 
 
 /obj/machinery/hypnochair/mouse_drop_receive(atom/target, mob/user, params)

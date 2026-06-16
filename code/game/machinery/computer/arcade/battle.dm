@@ -189,7 +189,7 @@
 
 	enemy_icon_id = rand(1,6)
 	enemy_name = make_boss_name(boss_adjective = (boss ? "Big Boss" : null))
-	feedback_message = "Novo jogo começou contra[enemy_name]"
+	feedback_message = "Novo jogo começou contra [enemy_name]"
 
 	if(obj_flags & EMAGGED)
 		enemy_name = "Cuban Pete"
@@ -267,7 +267,7 @@
 		lose_game(user)
 		return
 
-	feedback_message = "O usuário pegou.[damage_taken]Dano!"
+	feedback_message = "O usuário pegou.[damage_taken] Dano!"
 	playsound(loc, 'sound/machines/arcade/hit.ogg', 40, TRUE, extrarange = -3)
 	SStgui.update_uis(src)
 
@@ -293,7 +293,7 @@
 	if(!damage_dealt)
 		return
 	enemy_hp -= round(max(0, damage_dealt), 1)
-	feedback_message = "[enemy_name]Tomada.[damage_dealt]Dano!"
+	feedback_message = "[enemy_name] Tomada.[damage_dealt] Dano!"
 	playsound(loc, 'sound/machines/arcade/hit.ogg', 40, TRUE, extrarange = -3)
 	process_enemy_turn(user)
 
@@ -302,7 +302,7 @@
 	var/datum/battle_arcade_gear/weapon = equipped_gear[WEAPON_SLOT]
 	var/damage_dealt = (rand(20, 30) * (!isnull(weapon) ? weapon.bonus_modifier : 1))
 	enemy_hp -= round(max(0, damage_dealt), 1)
-	feedback_message = "Usuário contra-atacado por[damage_dealt]Dano!"
+	feedback_message = "Usuário contra-atacado por [damage_dealt] Dano!"
 	playsound(loc, 'sound/machines/arcade/boom.ogg', 40, TRUE, extrarange = -3)
 	if(enemy_hp <= 0)
 		on_battle_win(user)
@@ -318,15 +318,15 @@
 		bomb_cooldown--
 		switch(bomb_cooldown)
 			if(18)
-				feedback_message = "[enemy_name]Pega duas válvulas e as liga, o que ele planeja?"
+				feedback_message = "[enemy_name] Pega duas válvulas e as liga, o que ele planeja?"
 			if(15)
-				feedback_message = "[enemy_name]Adiciona um controle remoto ao deus bronzeado é uma bomba?"
+				feedback_message = "[enemy_name] Adiciona um controle remoto ao deus bronzeado é uma bomba?"
 			if(12)
-				feedback_message = "[enemy_name]Se jogar a bomba ao seu lado, está com medo de pegá-la."
+				feedback_message = "[enemy_name] Se jogar a bomba ao seu lado, está com medo de pegá-la."
 			if(6)
-				feedback_message = "[enemy_name]A mão escova o controle remoto ligado à bomba, seu coração pulou uma batida."
+				feedback_message = "[enemy_name] A mão escova o controle remoto ligado à bomba, seu coração pulou uma batida."
 			if(2)
-				feedback_message = "[enemy_name]Vai apertar o botão! É agora ou nunca!"
+				feedback_message = "[enemy_name] Vai apertar o botão! É agora ou nunca!"
 			if(0)
 				player_current_hp = 0 //instant death
 	addtimer(CALLBACK(src, PROC_REF(perform_enemy_turn), user, defending_flags), 1 SECONDS)
@@ -347,7 +347,7 @@
 			var/healed_amount = rand(10, 20)
 			enemy_hp = round(min(enemy_max_hp, enemy_hp + healed_amount), 1)
 			enemy_mp -= round(max(0, 10), 1)
-			feedback_message = "[enemy_name]Curada para[healed_amount]Pontos de saúde!"
+			feedback_message = "[enemy_name] Curada para [healed_amount] Pontos de saúde!"
 			playsound(loc, 'sound/machines/arcade/heal.ogg', 40, TRUE, extrarange = -3)
 			SStgui.update_uis(src)
 			return
@@ -355,7 +355,7 @@
 			var/healed_amount = rand(5, 10)
 			player_current_mp -= round(max(0, healed_amount), 1)
 			enemy_mp += healed_amount
-			feedback_message = "[enemy_name]Roubou.[healed_amount]MP de você!"
+			feedback_message = "[enemy_name] Roubou.[healed_amount] MP de você!"
 			playsound(loc, 'sound/machines/arcade/steal.ogg', 40, TRUE)
 			SStgui.update_uis(src)
 			return

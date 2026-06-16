@@ -40,7 +40,7 @@
 	acid = 50
 
 /obj/item/katana/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está cortando[user.p_their()]estômago aberto com[src]! Parece que...[user.p_theyre()]Tentando cometer seppuku!"))
+	user.visible_message(span_suicide("[user] Está cortando [user.p_their()] estômago aberto com [src]! Parece que...[user.p_theyre()] Tentando cometer seppuku!"))
 	return BRUTELOSS
 
 /obj/item/katana/cursed //used by wizard events, see the tendril_loot.dm file for the miner one

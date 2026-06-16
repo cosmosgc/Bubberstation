@@ -24,8 +24,8 @@
 		return .
 	if(!was_already_seeing)
 		to_show.visible_message(
-			span_notice("[to_show]começa a olhar através do conteúdo de[parent]!"),
-			span_notice("Você começa a olhar para o conteúdo de[parent]."),
+			span_notice("[to_show] começa a olhar através do conteúdo de [parent]!"),
+			span_notice("Você começa a olhar para o conteúdo de [parent]."),
 		)
 	return .
 
@@ -38,6 +38,6 @@
 	if(QDELING(src))
 		return .
 	if(was_actually_seeing)
-		real_location.visible_message(span_notice("[parent]é embaralhado depois de olhar através dele."))
+		real_location.visible_message(span_notice("[parent] é embaralhado depois de olhar através dele."))
 		real_location.contents = shuffle(real_location.contents)
 	return .

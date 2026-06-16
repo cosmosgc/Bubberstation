@@ -76,7 +76,7 @@
 	if(!CAN_IRRADIATE(interacting_with))
 		return NONE
 
-	user.visible_message(span_notice("[user]scans[interacting_with]Com[src]."), span_notice("Você verifica.[interacting_with]Os níveis de radiação com[src]..."))
+	user.visible_message(span_notice("[user] scans [interacting_with] Com [src]."), span_notice("Você verifica.[interacting_with] Os níveis de radiação com [src]..."))
 	addtimer(CALLBACK(src, PROC_REF(scan), interacting_with, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents
 	return ITEM_INTERACT_SUCCESS
 
@@ -112,9 +112,9 @@
 
 /obj/item/geiger_counter/click_alt(mob/living/user)
 	if(!scanning)
-		to_chat(user, span_warning("[src]Deve ser para reiniciar seu nível de radiação!"))
+		to_chat(user, span_warning("[src] Deve ser para reiniciar seu nível de radiação!"))
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("Você dá descarga.[src]Contagem de radiação, reajustando para o normal."))
+	to_chat(user, span_notice("Você dá descarga.[src] Contagem de radiação, reajustando para o normal."))
 	last_perceived_radiation_danger = null
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS

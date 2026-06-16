@@ -77,7 +77,7 @@
 	return ..()
 
 /obj/item/spear/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a espadartear\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a espadartear\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if (!do_after(user, 4 SECONDS, target = src))
 		return SHAME
 	var/obj/item/bodypart/head/head = user.get_bodypart(BODY_ZONE_HEAD)
@@ -277,7 +277,7 @@
 	spear.set_material_slot(/datum/material_slot/handle/spear, get_master_material())
 	spear.set_material_slot(/datum/material_slot/weapon_head/speartip, shard_mat)
 	spear.set_custom_materials(list((rod_material) = custom_materials[rod_material], (shard_mat) = tool.custom_materials[shard_mat]))
-	to_chat(user, span_notice("Você anexa[tool]Para[src]É gorjeta."))
+	to_chat(user, span_notice("Você anexa [tool] Para [src] É gorjeta."))
 
 	if (istype(tool, /obj/item/stack))
 		var/obj/item/stack/stack = tool
@@ -310,7 +310,7 @@
 		QDEL_NULL(explosive)
 	G.forceMove(src)
 	explosive = G
-	desc = "Uma lança improvisada com[G]Apegado a ele"
+	desc = "Uma lança improvisada com [G] Apegado a ele"
 
 /obj/item/spear/explosive/on_craft_completion(list/components, datum/crafting_recipe/current_recipe, atom/crafter)
 	var/obj/item/grenade/nade = locate() in components
@@ -322,7 +322,7 @@
 	return ..()
 
 /obj/item/spear/explosive/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a espadartear\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a espadartear\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.say("[war_cry]", forced="spear warcry")
 	explosive.forceMove(user)
 	explosive.detonate()
@@ -568,7 +568,7 @@
 		return
 	var/time_left = S_TIMER_COOLDOWN_TIMELEFT(target, COOLDOWN_SKYBULGE_JUMP)
 	if(time_left)
-		owner.balloon_alert(owner, "[FLOOR(time_left * 0.1, 0.1)]Acalme-se!")
+		owner.balloon_alert(owner, "[FLOOR(time_left * 0.1, 0.1)] Acalme-se!")
 		return
 	//do after shows the progress bar as feedback, so nothing here.
 	if(LAZYACCESS(owner.do_afters, target))

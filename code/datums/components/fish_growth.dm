@@ -76,7 +76,7 @@
 	else
 		result = new result_type (location)
 		if(location != source.loc)
-			result.visible_message(span_boldnotice("\A [result]pula para fora[source.loc]!"))
+			result.visible_message(span_boldnotice("\A [result] pula para fora [source.loc]!"))
 			playsound(result, 'sound/effects/fish_splash.ogg', 60)
 		if(isbasicmob(result))
 			for(var/trait_type in source.fish_traits)

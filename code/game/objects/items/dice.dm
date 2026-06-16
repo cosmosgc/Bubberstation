@@ -31,7 +31,7 @@
 	new picked(src)
 
 /obj/item/storage/dice/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está jogando com a morte! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está jogando com a morte! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/storage/dice/hazard/PopulateContents()
@@ -101,12 +101,12 @@
 
 	if(in_hand) //Dice was rolled in someone's hand
 		user.visible_message(
-			span_notice("[user]Rolos[src]Ele pousa em[result]. [comment]"),
-			span_notice("Você rola.[src]Ele pousa em[result]. [comment]"),
-			span_hear("Você ouve.[src]rodando, soa como um[fake_result]."),
+			span_notice("[user] Rolos [src] Ele pousa em [result]. [comment]"),
+			span_notice("Você rola.[src] Ele pousa em [result]. [comment]"),
+			span_hear("Você ouve.[src] rodando, soa como um [fake_result]."),
 		)
 	else
-		visible_message(span_notice("[src]Rola para uma parada, pousando em[result]. [comment]"))
+		visible_message(span_notice("[src] Rola para uma parada, pousando em [result]. [comment]"))
 
 	return .
 
@@ -127,7 +127,7 @@
 	return original
 
 /obj/item/dice/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está jogando com a morte! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está jogando com a morte! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/dice/d1
@@ -290,7 +290,7 @@
 
 /obj/item/dice/d20/fate/diceroll(mob/user, in_hand=FALSE)
 	if(!COOLDOWN_FINISHED(src, roll_cd))
-		to_chat(user, span_warning("Espere,[src]Não está com seu último rolo!"))
+		to_chat(user, span_warning("Espere,[src] Não está com seu último rolo!"))
 		return
 
 	. = ..()
@@ -305,7 +305,7 @@
 		used = TRUE
 
 	var/turf/selected_turf = get_turf(src)
-	selected_turf.visible_message(span_userdanger("[src]Arde rapidamente."))
+	selected_turf.visible_message(span_userdanger("[src] Arde rapidamente."))
 
 	addtimer(CALLBACK(src, PROC_REF(effect), user, .), 1 SECONDS)
 	COOLDOWN_START(src, roll_cd, 2.5 SECONDS)
@@ -322,37 +322,37 @@
 	switch(roll)
 		if(1)
 			//Dust
-			selected_turf.visible_message(span_userdanger("[user]Vira pó!"))
+			selected_turf.visible_message(span_userdanger("[user] Vira pó!"))
 			user.investigate_log("has been dusted by a die of fate.", INVESTIGATE_DEATHS)
 			user.dust()
 		if(2)
 			//Death
-			selected_turf.visible_message(span_userdanger("[user]De repente morre!"))
+			selected_turf.visible_message(span_userdanger("[user] De repente morre!"))
 			user.investigate_log("has been killed by a die of fate.", INVESTIGATE_DEATHS)
 			user.death()
 		if(3)
 			//Swarm of creatures
-			selected_turf.visible_message(span_userdanger("Um enxame de criaturas ao redor[user]!"))
+			selected_turf.visible_message(span_userdanger("Um enxame de criaturas ao redor [user]!"))
 			for(var/direction in GLOB.alldirs)
 				var/turf/stepped_turf = get_step(get_turf(user), direction)
 				do_sparks(3, FALSE, stepped_turf)
 				new /mob/living/basic/creature(stepped_turf)
 		if(4)
 			//Destroy Equipment
-			selected_turf.visible_message(span_userdanger("Tudo.[user]Está segurando e usando desaparece!"))
+			selected_turf.visible_message(span_userdanger("Tudo.[user] Está segurando e usando desaparece!"))
 			var/list/belongings = user.get_all_gear(NONE) //don't delete prosthetics or abstract items.
 			QDEL_LIST(belongings)
 		if(5)
 			//Monkeying
-			selected_turf.visible_message(span_userdanger("[user]se transforma em um macaco!"))
+			selected_turf.visible_message(span_userdanger("[user] se transforma em um macaco!"))
 			user.monkeyize()
 		if(6)
 			//Cut speed
-			selected_turf.visible_message(span_userdanger("[user]Começa a andar mais devagar!"))
+			selected_turf.visible_message(span_userdanger("[user] Começa a andar mais devagar!"))
 			user.add_movespeed_modifier(/datum/movespeed_modifier/die_of_fate)
 		if(7)
 			//Throw
-			selected_turf.visible_message(span_userdanger("Forças invisíveis lançam[user]!"))
+			selected_turf.visible_message(span_userdanger("Forças invisíveis lançam [user]!"))
 			user.Stun(60)
 			user.adjust_brute_loss(50)
 			var/throw_dir = pick(GLOB.cardinals)
@@ -360,12 +360,12 @@
 			user.throw_at(throw_target, 200, 4)
 		if(8)
 			//Fuel tank Explosion
-			selected_turf.visible_message(span_userdanger("Uma explosão explode em torno de[user]!"))
+			selected_turf.visible_message(span_userdanger("Uma explosão explode em torno de [user]!"))
 			explosion(get_turf(user), devastation_range = -1, light_impact_range = 2, flame_range = 2, explosion_cause = src)
 		if(9)
 			//Cold
 			var/datum/disease/cold = new /datum/disease/cold()
-			selected_turf.visible_message(span_userdanger("[user]Parece um pouco indisposto!"))
+			selected_turf.visible_message(span_userdanger("[user] Parece um pouco indisposto!"))
 			user.ForceContractDisease(cold, FALSE, TRUE)
 		if(10)
 			//Nothing
@@ -378,11 +378,11 @@
 			ooh_a_cookie.name = "Cookie of Fate"
 		if(12)
 			//Healing
-			selected_turf.visible_message(span_userdanger("[user]Parece muito saudável!"))
+			selected_turf.visible_message(span_userdanger("[user] Parece muito saudável!"))
 			user.revive(ADMIN_HEAL_ALL)
 		if(13)
 			//Mad Dosh
-			selected_turf.visible_message(span_userdanger("Dosh louco atira para fora[src]!"))
+			selected_turf.visible_message(span_userdanger("Dosh louco atira para fora [src]!"))
 			var/turf/Start = get_turf(src)
 			for(var/direction in GLOB.alldirs)
 				var/turf/dirturf = get_step(Start,direction)
@@ -404,7 +404,7 @@
 			new /obj/item/book/granter/action/spell/random(drop_location())
 		if(16)
 			//Servant & Servant Summon
-			selected_turf.visible_message(span_userdanger("[user]Ondulações com novo poder mágico!"))
+			selected_turf.visible_message(span_userdanger("[user] Ondulações com novo poder mágico!"))
 			var/datum/action/cooldown/spell/summon_mob/dice/summon_servant = new(user.mind || user)
 			summon_servant.Grant(user)
 		if(17)
@@ -419,13 +419,13 @@
 			do_smoke(0, src, drop_location())
 		if(19)
 			//Instrinct Resistance
-			selected_turf.visible_message(span_userdanger("[user]Parece muito robusto!"))
+			selected_turf.visible_message(span_userdanger("[user] Parece muito robusto!"))
 			user.physiology.brute_mod *= 0.5
 			user.physiology.burn_mod *= 0.5
 
 		if(20)
 			//Free wizard!
-			selected_turf.visible_message(span_userdanger("A magia flui para fora[src]e em[user]!"))
+			selected_turf.visible_message(span_userdanger("A magia flui para fora [src] e em [user]!"))
 			user.mind.make_wizard()
 
 #undef MIN_SIDES_ALERT

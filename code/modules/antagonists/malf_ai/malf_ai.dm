@@ -263,9 +263,9 @@
 	var/special_role_text = LOWER_TEXT(name)
 
 	if(malf_ai_won)
-		result += span_greentext("O[special_role_text]Foi bem sucedido!")
+		result += span_greentext("O [special_role_text] Foi bem sucedido!")
 	else
-		result += span_redtext("O[special_role_text]Falhou!")
+		result += span_redtext("O [special_role_text] Falhou!")
 		if(owner.current)
 			SEND_SOUND(owner.current, 'sound/ambience/misc/ambifailure.ogg')
 

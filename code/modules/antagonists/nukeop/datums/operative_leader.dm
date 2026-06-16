@@ -24,7 +24,7 @@
 
 /datum/antagonist/nukeop/leader/greet()
 	play_stinger()
-	to_chat(owner, "<span class='warningplain'><B>Você é o Sindicato[title]para esta missão. Você é responsável por guiar sua equipe.</B></span>")
+	to_chat(owner, "<span class='warningplain'><B>Você é o Sindicato [title] para esta missão. Você é responsável por guiar sua equipe.</B></span>")
 	to_chat(owner, "<span class='warningplain'><B>Se acha que não está à altura dessa tarefa, troque seu fone de ouvido com outro agente.</B></span>")
 	if(!CONFIG_GET(flag/disable_warops))
 		to_chat(owner, "<span class='warningplain'><B>Em sua mão você encontrará um item especial capaz de desencadear um desafio maior para sua equipe. Examine com cuidado e consulte seus colegas antes de ativá-lo.</B></span>")

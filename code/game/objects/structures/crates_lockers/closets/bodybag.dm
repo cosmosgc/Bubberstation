@@ -85,11 +85,11 @@
 	if(!istype(the_folder))
 		return
 	if(opened)
-		to_chat(the_folder, span_warning("Você luta com[src], mas não vai dobrar enquanto descompactado."))
+		to_chat(the_folder, span_warning("Você luta com [src], mas não vai dobrar enquanto descompactado."))
 		return
 	for(var/content_thing in contents)
 		if(istype(content_thing, /mob) || isobj(content_thing))
-			to_chat(the_folder, span_warning("Há muitas coisas dentro de[src]Dobrar!"))
+			to_chat(the_folder, span_warning("Há muitas coisas dentro de [src] Dobrar!"))
 			return
 	// toto we made it!
 	return TRUE
@@ -101,7 +101,7 @@
  * * the_folder - aka user
  */
 /obj/structure/closet/body_bag/proc/perform_fold(mob/living/carbon/human/the_folder)
-	visible_message(span_notice("[the_folder]Dobra-se.[src]."))
+	visible_message(span_notice("[the_folder] Dobra-se.[src]."))
 	the_folder.put_in_hands(undeploy_bodybag(the_folder.loc))
 
 /// Makes the bag into an item, returns that item
@@ -134,15 +134,15 @@
 	if(!istype(the_folder))
 		return
 	if(opened)
-		to_chat(the_folder, span_warning("Você luta com[src], mas não vai dobrar enquanto descompactado."))
+		to_chat(the_folder, span_warning("Você luta com [src], mas não vai dobrar enquanto descompactado."))
 		return
 	//end copypaste zone
 	if(contents.len >= mob_storage_capacity / 2)
-		to_chat(the_folder, span_warning("Há muitas coisas dentro de[src]Dobrar!"))
+		to_chat(the_folder, span_warning("Há muitas coisas dentro de [src] Dobrar!"))
 		return
 
 	if(the_folder.in_contents_of(src))
-		to_chat(the_folder, span_warning("Você não pode desistir[src]Enquanto você está dentro dele!"))
+		to_chat(the_folder, span_warning("Você não pode desistir [src] Enquanto você está dentro dele!"))
 		return
 
 	for(var/obj/item/bodybag/bluespace/B in src)
@@ -151,7 +151,7 @@
 	return TRUE
 
 /obj/structure/closet/body_bag/bluespace/perform_fold(mob/living/carbon/human/the_folder)
-	visible_message(span_notice("[the_folder]Dobra-se.[src]."))
+	visible_message(span_notice("[the_folder] Dobra-se.[src]."))
 	var/obj/item/bodybag/folding_bodybag = undeploy_bodybag(the_folder.loc)
 	var/max_weight_of_contents = initial(folding_bodybag.w_class)
 	for(var/am in contents)
@@ -328,7 +328,7 @@
 
 /obj/structure/closet/body_bag/environmental/prisoner/attempt_fold(mob/living/carbon/human/the_folder)
 	if(sinched)
-		to_chat(the_folder, span_warning("Você luta com[src], mas ele não vai dobrar enquanto suas alças estão presas."))
+		to_chat(the_folder, span_warning("Você luta com [src], mas ele não vai dobrar enquanto suas alças estão presas."))
 		return FALSE
 	return ..()
 
@@ -338,7 +338,7 @@
 		return FALSE
 
 	if(sinched && !force)
-		to_chat(user, span_danger("Como cincolas[src]estão singadas, impedindo que se abra."))
+		to_chat(user, span_danger("Como cincolas [src] estão singadas, impedindo que se abra."))
 		return FALSE
 
 	sinched = FALSE //in case it was forced open unsinch it
@@ -358,12 +358,12 @@
 
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_warning("Alguém em[src]Começa a se contorcer!"), 		span_notice("Você começa a se contorcer, tentando se soltar[src]Como cincolas...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve o tecido tenso de[src]."))
+	user.visible_message(span_warning("Alguém em [src] Começa a se contorcer!"), 		span_notice("Você começa a se contorcer, tentando se soltar [src] Como cincolas...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve o tecido tenso de [src]."))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || opened || !sinched )
 			return
 		//we check after a while whether there is a point of resisting anymore and whether the user is capable of resisting
-		user.visible_message(span_danger("[user]Com sucesso, fugiu.[src]!"),
+		user.visible_message(span_danger("[user] Com sucesso, fugiu.[src]!"),
 							span_notice("Você conseguiu escapar.[src]!"))
 		if(istype(loc, /obj/machinery/disposal))
 			return ..()
@@ -386,7 +386,7 @@
 
 /obj/structure/closet/body_bag/environmental/prisoner/togglelock(mob/living/user, silent)
 	if(opened)
-		to_chat(user, span_warning("Você não pode fechar as fivelas enquanto[src]Está aberto!"))
+		to_chat(user, span_warning("Você não pode fechar as fivelas enquanto [src] Está aberto!"))
 		return
 	if(user in contents)
 		to_chat(user, span_warning("Você não pode alcançar as fivelas daqui!"))
@@ -395,8 +395,8 @@
 		add_fingerprint(user)
 	if(!sinched)
 		for(var/mob/living/target in contents)
-			to_chat(target, span_userdanger("Você sente o forro de[src]Aperte ao seu redor! Logo, você não será capaz de escapar!"))
-		user.visible_message(span_notice("[user]Começa a descer as fivelas[src]."))
+			to_chat(target, span_userdanger("Você sente o forro de [src] Aperte ao seu redor! Logo, você não será capaz de escapar!"))
+		user.visible_message(span_notice("[user] Começa a descer as fivelas [src]."))
 		if(!(do_after(user,(sinch_time),target = src)))
 			return
 	sinched = !sinched
@@ -404,7 +404,7 @@
 		playsound(loc, sinch_sound, 15, TRUE, -2)
 	user.visible_message(span_notice("[user] [sinched ? null : "un"]Sinches.[src]."),
 							span_notice("Você.[sinched ? null : "un"]Aperte.[src]."),
-							span_hear("Você ouve alongamento seguido de metal clicando de[src]."))
+							span_hear("Você ouve alongamento seguido de metal clicando de [src]."))
 	user.log_message("[sinched ? "sinched":"unsinched"] secure environmental bag [src]", LOG_GAME)
 	update_appearance()
 
@@ -622,13 +622,13 @@
 	user.changeNext_move(6 SECONDS)
 	user.last_special = world.time + 6 SECONDS
 	user.visible_message(
-		span_warning("Algo dentro[src]Começa a se contorcer!"),
-		span_notice("Você começa a se contorcer, tentando sair[src]... (Isso vai levar cerca de[DisplayTimeText(breakout_time)].)"),
-		span_hear("Você ouve o tecido tenso de[src]."),
+		span_warning("Algo dentro [src] Começa a se contorcer!"),
+		span_notice("Você começa a se contorcer, tentando sair [src]... (Isso vai levar cerca de [DisplayTimeText(breakout_time)].)"),
+		span_hear("Você ouve o tecido tenso de [src]."),
 	)
 	if(do_after(user, breakout_time, src, timed_action_flags = IGNORE_TARGET_LOC_CHANGE, extra_checks = CALLBACK(src, PROC_REF(breakout_checks), user)))
 		user.visible_message(
-			span_danger("[user]Subindo para fora[src]!"),
+			span_danger("[user] Subindo para fora [src]!"),
 			span_notice("Você conseguiu sair.[src]!"),
 		)
 		open(user, force = TRUE, special_effects = FALSE)
@@ -645,7 +645,7 @@
 	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
 		new /obj/effect/decal/cleanable/shreds(loc, name)
 		new /obj/item/stack/sheet/cloth(loc, 4)
-	loc.visible_message(span_warning("[src]Descontrai-se em fio!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	loc.visible_message(span_warning("[src] Descontrai-se em fio!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	playsound(loc, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE, frequency = 0.5)
 	for(var/mob/living/left_behind in src)
 		left_behind.Knockdown(3 SECONDS)

@@ -79,7 +79,7 @@
 
 /datum/action/cooldown/spell/pointed/is_valid_target(atom/cast_on)
 	if(cast_on == owner)
-		to_chat(owner, span_warning("Você não pode lançar[src]Em você mesmo!"))
+		to_chat(owner, span_warning("Você não pode lançar [src] Em você mesmo!"))
 		return FALSE
 
 	return TRUE

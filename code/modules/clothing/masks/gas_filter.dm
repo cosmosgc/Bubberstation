@@ -53,7 +53,7 @@
 
 /obj/item/gas_filter/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]Está em<b>[filter_status]%</b>Durabilidade.")
+	. += span_notice("[src] Está em<b>[filter_status]%</b>Durabilidade.")
 
 /**
  * called by the gas mask where the filter is installed, lower the filter_status depending on the breath gas composition and by the strength of the filter

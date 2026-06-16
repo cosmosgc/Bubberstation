@@ -33,7 +33,7 @@
 			to_chat(c, span_notice("[initial(object.name)] ([object.type]) selecionado."))
 			BM.preview_selected_item(objholder)
 		else
-			to_chat(c, span_notice("[initial(object.name)]Não é um território, objeto ou multidão! Por favor, selecione novamente."))
+			to_chat(c, span_notice("[initial(object.name)] Não é um território, objeto ou multidão! Por favor, selecione novamente."))
 	else if(left_click)
 		if(ispath(objholder,/turf))
 			var/turf/T = get_turf(object)

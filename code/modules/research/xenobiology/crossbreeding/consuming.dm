@@ -20,16 +20,16 @@ Consuming extracts:
 		return NONE
 
 	if(last_produced + cooldown > world.time)
-		to_chat(user, span_warning("[src]Ainda está digerindo após sua última refeição!"))
+		to_chat(user, span_warning("[src] Ainda está digerindo após sua última refeição!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/datum/reagent/nutriments = tool.reagents.has_reagent(/datum/reagent/consumable/nutriment)
 	if(!nutriments)
-		to_chat(user, span_warning("[src]Burbles infelizmente na oferta."))
+		to_chat(user, span_warning("[src] Burbles infelizmente na oferta."))
 		return ITEM_INTERACT_BLOCKING
 
 	nutriment_eaten += nutriments.volume
-	to_chat(user, span_notice("[src]abre-se e engole[tool]Inteiro!"))
+	to_chat(user, span_notice("[src] abre-se e engole [tool] Inteiro!"))
 	qdel(tool)
 	playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
 
@@ -37,7 +37,7 @@ Consuming extracts:
 		return ITEM_INTERACT_SUCCESS
 
 	nutriment_eaten = 0
-	user.visible_message(span_notice("[src]Incha e produz uma pequena pilha de biscoitos!"))
+	user.visible_message(span_notice("[src] Incha e produz uma pequena pilha de biscoitos!"))
 	playsound(src, 'sound/effects/splat.ogg', 40, TRUE)
 	last_produced = world.time
 	for(var/i in 1 to cookies)
@@ -71,13 +71,13 @@ Consuming extracts:
 	var/mob/living/living_mob = interacting_with
 	var/fed = FALSE
 	if(living_mob == user)
-		living_mob.visible_message(span_notice("[user]come[src]!"), span_notice("Você come.[src]."))
+		living_mob.visible_message(span_notice("[user] come [src]!"), span_notice("Você come.[src]."))
 		fed = TRUE
 	else
-		living_mob.visible_message(span_danger("[user]Tenta forçar[living_mob]Para comer[src]!"), span_userdanger("[user]Tenta forçá-lo a comer[src]!"))
+		living_mob.visible_message(span_danger("[user] Tenta forçar [living_mob] Para comer [src]!"), span_userdanger("[user] Tenta forçá-lo a comer [src]!"))
 		if(do_after(user, 2 SECONDS, target = living_mob))
 			fed = TRUE
-			living_mob.visible_message(span_danger("[user]forças[living_mob]Para comer[src]!"), span_warning("[user]te força a comer.[src]."))
+			living_mob.visible_message(span_danger("[user] forças [living_mob] Para comer [src]!"), span_warning("[user] te força a comer.[src]."))
 	if(fed)
 		if(!HAS_TRAIT(living_mob, TRAIT_AGEUSIA))
 			to_chat(living_mob, span_notice("Você pode provar.[taste]."))
@@ -291,7 +291,7 @@ Consuming extracts:
 
 /obj/item/slime_cookie/cerulean/do_effect(mob/living/M, mob/user)
 	if(prob(50))
-		to_chat(M, span_notice("Um pedaço de[src]Se rompe enquanto mastiga, e cai no chão."))
+		to_chat(M, span_notice("Um pedaço de [src] Se rompe enquanto mastiga, e cai no chão."))
 		var/obj/item/slime_cookie/cerulean/C = new(get_turf(M))
 		C.taste = taste + " and a sugar cookie"
 

@@ -34,4 +34,4 @@
 			var/mob/living/basic/blob_minion/spore/minion/spore = overmind.create_spore(get_turf(exposed_mob))
 			spore.zombify(exposed_mob)
 			overmind.add_points(-5)
-			to_chat(overmind, span_notice("Gastou 5 recursos para a zombificação de[exposed_mob]."))
+			to_chat(overmind, span_notice("Gastou 5 recursos para a zombificação de [exposed_mob]."))

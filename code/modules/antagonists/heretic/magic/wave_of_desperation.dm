@@ -26,10 +26,10 @@
 		return
 
 	if(cast_on.handcuffed)
-		cast_on.visible_message(span_danger("[cast_on.handcuffed]Vamos.[cast_on]Quebre!"))
+		cast_on.visible_message(span_danger("[cast_on.handcuffed] Vamos.[cast_on] Quebre!"))
 		QDEL_NULL(cast_on.handcuffed)
 	if(cast_on.legcuffed)
-		cast_on.visible_message(span_danger("[cast_on.legcuffed]Vamos.[cast_on]Quebras!"))
+		cast_on.visible_message(span_danger("[cast_on.legcuffed] Vamos.[cast_on] Quebras!"))
 		QDEL_NULL(cast_on.legcuffed)
 
 	cast_on.apply_status_effect(/datum/status_effect/heretic_lastresort)

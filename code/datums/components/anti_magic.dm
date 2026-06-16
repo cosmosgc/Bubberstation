@@ -128,7 +128,7 @@
 		if(!(antimagic_flags & magic_spell.antimagic_flags))
 			continue
 
-		to_chat(equipper, span_warning("[parent]Está interferindo com sua habilidade de lançar magia!"))
+		to_chat(equipper, span_warning("[parent] Está interferindo com sua habilidade de lançar magia!"))
 		alert_caster_on_equip = FALSE
 		break
 

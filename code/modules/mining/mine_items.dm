@@ -248,16 +248,16 @@
 		return
 	if(get_integrity() <= max_integrity * 0.05)
 		smacked.visible_message(
-			span_danger("[src]Bate em[smacked], quebrando em pedaços!"),
-			span_userdanger("Você foi golpeado[src]como ele quebra em pedaços!"),
+			span_danger("[src] Bate em [smacked], quebrando em pedaços!"),
+			span_userdanger("Você foi golpeado [src] como ele quebra em pedaços!"),
 		)
 		playsound(src, 'sound/effects/break_stone.ogg', 50, vary = TRUE)
 		momentum = 0
 
 	else
 		smacked.visible_message(
-			span_danger("[src]Bate em[smacked]!"),
-			span_userdanger("Você foi golpeado[src]!"),
+			span_danger("[src] Bate em [smacked]!"),
+			span_userdanger("Você foi golpeado [src]!"),
 		)
 	playsound(src, 'sound/effects/bang.ogg', 50, vary = TRUE)
 	take_damage(max_integrity * 0.05)
@@ -440,10 +440,10 @@
 	// Can't go straight and cant turn = STOP
 	GLOB.move_manager.stop_looping(src, SSconveyors)
 	if(momentum >= 8)
-		visible_message(span_warning("[src]Vamos parar!"))
+		visible_message(span_warning("[src] Vamos parar!"))
 		throw_contents()
 	else
-		visible_message(span_notice("[src]chega a uma parada lenta."))
+		visible_message(span_notice("[src] chega a uma parada lenta."))
 	momentum = 0
 	return MOVELOOP_SKIP_STEP
 
@@ -456,9 +456,9 @@
 		// There is a break and it is powered, so STOP
 		if(stop_break && cable?.avail(10 KILO JOULES))
 			if(momentum >= 8)
-				visible_message(span_notice("[src]chega a uma parada repentina."))
+				visible_message(span_notice("[src] chega a uma parada repentina."))
 			else
-				visible_message(span_notice("[src]chega a um ponto."))
+				visible_message(span_notice("[src] chega a um ponto."))
 			momentum = 0
 			GLOB.move_manager.stop_looping(src, SSconveyors)
 			cable.add_delayedload(10 KILO JOULES)
@@ -479,7 +479,7 @@
 	// No more momentum = STOP
 	if(momentum <= 0)
 		GLOB.move_manager.stop_looping(src, SSconveyors)
-		visible_message(span_notice("[src]chega a uma parada lenta."))
+		visible_message(span_notice("[src] chega a uma parada lenta."))
 		return
 
 	// Handles slowing down the move loop / cart
@@ -513,7 +513,7 @@
 
 	if(!length(to_yeet))
 		if(!was_open)
-			visible_message(span_warning("[src]Se abre!"))
+			visible_message(span_warning("[src] Se abre!"))
 		return
 
 	var/throw_distance = clamp(ceil(momentum / 3) - 4, 1, 5)
@@ -522,10 +522,10 @@
 		yeeten.throw_at(some_distant_turf, throw_distance, 3, quickstart = TRUE)
 
 	if(was_open)
-		visible_message(span_warning("[src]derrama seu conteúdo!"))
+		visible_message(span_warning("[src] derrama seu conteúdo!"))
 	else
 		// Update this message if someone allows multiple people to ride one minecart
-		visible_message(span_warning("[src]Se abre, derramando seu conteúdo[yeet_rider ? " and throwing its rider":""]!"))
+		visible_message(span_warning("[src] Se abre, derramando seu conteúdo[yeet_rider ? " and throwing its rider":""]!"))
 
 /obj/structure/minecart_rail
 	name = "cart rail"

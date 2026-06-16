@@ -126,7 +126,7 @@
 						var/datum/reagents/tempr = our_turf.liquids.take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_BREATH_AMOUNT)
 						tempr.trans_to(src, tempr.total_volume, methods = INGEST)
 						qdel(tempr)
-						visible_message("<span class='warning'>[src]Engasga-se.[our_turf.liquids.reagents_to_text()]!</span>", 									"<span class='userdanger'>Você está sufocando.[our_turf.liquids.reagents_to_text()]!</span>")
+						visible_message("<span class='warning'>[src] Engasga-se.[our_turf.liquids.reagents_to_text()]!</span>", 									"<span class='userdanger'>Você está sufocando.[our_turf.liquids.reagents_to_text()]!</span>")
 					return FALSE
 				//SKYRAT EDIT END
 				var/breath_moles = 0

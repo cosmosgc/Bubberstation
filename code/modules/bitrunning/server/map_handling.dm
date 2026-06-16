@@ -14,7 +14,7 @@
 	balloon_alert_to_viewers("notifying clients...")
 	playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 100, vary = TRUE)
 	user.visible_message(
-		span_danger("[user]Começa a desactivar o servidor!"),
+		span_danger("[user] Começa a desactivar o servidor!"),
 		span_notice("Você começa a desconectar clientes..."),
 		span_danger("Você ouve teclas frenéticas em um teclado."),
 	)

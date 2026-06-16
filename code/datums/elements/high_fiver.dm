@@ -22,7 +22,7 @@
 	SIGNAL_HANDLER
 
 	offerer.visible_message(
-		span_notice("[offerer]Aumentos[offerer.p_their()]Braço, procurando um \"toca aqui\"!"),
+		span_notice("[offerer] Aumentos [offerer.p_their()] Braço, procurando um \"toca aqui\"!"),
 		span_notice("Você postou, procurando um \"toca aqui\"!"),
 		vision_distance = 2,
 	)
@@ -50,7 +50,7 @@
 	var/descriptor = "high-[high_ten ? "ten" : "five"]"
 
 	if(open_hands_taker <= 0)
-		to_chat(taker, span_warning("Você não pode.[descriptor] [offerer]Sem mãos abertas!"))
+		to_chat(taker, span_warning("Você não pode.[descriptor] [offerer] Sem mãos abertas!"))
 		taker.add_mood_event(descriptor, /datum/mood_event/high_five_full_hand) // not so successful now!
 		return COMPONENT_OFFER_INTERRUPT
 
@@ -59,9 +59,9 @@
 	taker.add_mob_memory(/datum/memory/high_five, deuteragonist = offerer, high_five_type = descriptor, high_ten = high_ten)
 
 	if(high_ten)
-		to_chat(taker, span_nicegreen("Você dá alta atenção[offerer]Seu tudo!"))
+		to_chat(taker, span_nicegreen("Você dá alta atenção [offerer] Seu tudo!"))
 		offerer.visible_message(
-			span_notice("[taker]Entusiasticamente altas-tens[offerer]!"),
+			span_notice("[taker] Entusiasticamente altas-tens [offerer]!"),
 			span_nicegreen("Uau! Você está em alta.[taker]!"),
 			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			ignored_mobs = taker,
@@ -72,8 +72,8 @@
 	else
 		to_chat(taker, span_nicegreen("Bate aqui.[offerer]!"))
 		offerer.visible_message(
-			span_notice("[taker]Toca aqui.[offerer]!"),
-			span_nicegreen("Tudo bem! Você está chapado por[taker]!"),
+			span_notice("[taker] Toca aqui.[offerer]!"),
+			span_nicegreen("Tudo bem! Você está chapado por [taker]!"),
 			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			ignored_mobs = taker,
 		)

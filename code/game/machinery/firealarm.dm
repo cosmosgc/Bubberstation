@@ -213,7 +213,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	update_appearance()
-	visible_message(span_warning("As faíscas voam para fora[src]!"))
+	visible_message(span_warning("As faíscas voam para fora [src]!"))
 	if(user)
 		balloon_alert(user, "Circuito Frito")
 		user.log_message("emagged [src].", LOG_ATTACK)

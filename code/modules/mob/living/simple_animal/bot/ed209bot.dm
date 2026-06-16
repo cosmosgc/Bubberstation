@@ -38,7 +38,7 @@
 	icon_state = "ed209[get_bot_flag(bot_mode_flags, BOT_MODE_ON)]"
 	set_weapon()
 	balloon_alert(user, "Travas desativadas")
-	audible_message(span_bolddanger("[src]Apita ameaçadoramente!"))
+	audible_message(span_bolddanger("[src] Apita ameaçadoramente!"))
 	return TRUE
 
 /mob/living/simple_animal/bot/secbot/ed209/handle_automated_action()

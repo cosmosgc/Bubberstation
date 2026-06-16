@@ -402,12 +402,12 @@
 				say("Alert: safeties triggered, occupant detected!")
 				return
 			else if (!helmet && !mask && !suit && !mod && !storage && !occupant)
-				to_chat(user, "Não há nada dentro[src]Desinfetar!")
+				to_chat(user, "Não há nada dentro [src] Desinfetar!")
 				return
 			else
 				if (occupant)
 					var/mob/living/mob_occupant = occupant
-					to_chat(mob_occupant, span_userdanger("[src]Os limites crescem quentes, depois quentes, depois escaldantes. Você está sendo queimado.[!mob_occupant.stat ? "alive" : "away"]!"))
+					to_chat(mob_occupant, span_userdanger("[src] Os limites crescem quentes, depois quentes, depois escaldantes. Você está sendo queimado.[!mob_occupant.stat ? "alive" : "away"]!"))
 				cook()
 		if ("lock", "unlock")
 			if(locked && !access_check(user))
@@ -462,17 +462,17 @@
 		return
 
 	if(target == user)
-		user.visible_message(span_warning("[user]Começa a apertar[src]!"), span_notice("Você começa a trabalhar o seu caminho para[src]..."))
+		user.visible_message(span_warning("[user] Começa a apertar [src]!"), span_notice("Você começa a trabalhar o seu caminho para [src]..."))
 	else
-		target.visible_message(span_warning("[user]Começa a empurrar.[target]Em[src]!"), span_userdanger("[user]Começa a te empurrar para[src]!"))
+		target.visible_message(span_warning("[user] Começa a empurrar.[target] Em [src]!"), span_userdanger("[user] Começa a te empurrar para [src]!"))
 
 	if(do_after(user, 3 SECONDS, target))
 		if(occupant || helmet || suit || storage)
 			return
 		if(target == user)
-			user.visible_message(span_warning("[user]Escorrega.[src]e fecha a porta atrás[user.p_them()]!"), span_notice("Você entra[src]É espaço apertado e fecha a porta."))
+			user.visible_message(span_warning("[user] Escorrega.[src] e fecha a porta atrás [user.p_them()]!"), span_notice("Você entra [src] É espaço apertado e fecha a porta."))
 		else
-			target.visible_message(span_warning("[user]Empurra[target]Em[src]e fecha a porta!"), span_userdanger("[user]Empurra você para dentro[src]E fecha a porta!"))
+			target.visible_message(span_warning("[user] Empurra [target] Em [src] e fecha a porta!"), span_userdanger("[user] Empurra você para dentro [src] E fecha a porta!"))
 		close_machine(target)
 		add_fingerprint(user)
 
@@ -505,7 +505,7 @@
 		uv = FALSE
 		locked = FALSE
 		if(uv_super)
-			visible_message(span_warning("[src]A porta range com um barulho alto. Uma nuvem de fumaça negra escapa de sua câmara."))
+			visible_message(span_warning("[src] A porta range com um barulho alto. Uma nuvem de fumaça negra escapa de sua câmara."))
 			playsound(src, 'sound/machines/airlock/airlock_alien_prying.ogg', 50, TRUE)
 			do_smoke(0, src, src, smoke_type = /datum/effect_system/fluid_spread/smoke/bad/black)
 			QDEL_NULL(helmet)
@@ -517,9 +517,9 @@
 			wires.cut_all()
 		else
 			if(!mob_occupant)
-				visible_message(span_notice("[src]A porta se abre. As luzes amarelas brilhantes diminuem para um verde suave."))
+				visible_message(span_notice("[src] A porta se abre. As luzes amarelas brilhantes diminuem para um verde suave."))
 			else
-				visible_message(span_warning("[src]A porta se abre, te enchendo com o céu nauseante de carne queimada."))
+				visible_message(span_warning("[src] A porta se abre, te enchendo com o céu nauseante de carne queimada."))
 				qdel(mob_occupant.GetComponent(/datum/component/irradiated))
 			playsound(src, 'sound/machines/airlock/airlockclose.ogg', 25, TRUE)
 			var/list/things_to_clear = list() //Done this way since using GetAllContents on the SSU itself would include circuitry and such.
@@ -569,7 +569,7 @@
 	if(locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, span_warning("[src]A porta não se mexe!"))
+			to_chat(user, span_warning("[src] A porta não se mexe!"))
 		return
 	open_machine()
 	dump_inventory_contents()
@@ -581,17 +581,17 @@
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(span_notice("Viu?[user]Chutando contra as portas de[src]!"), 		span_notice("Você começa a chutar contra as portas...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve uma batida de[src]."))
+	user.visible_message(span_notice("Viu?[user] Chutando contra as portas de [src]!"), 		span_notice("Você começa a chutar contra as portas...[DisplayTimeText(breakout_time)].)"), 		span_hear("Você ouve uma batida de [src]."))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
-		user.visible_message(span_warning("[user]Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
+		user.visible_message(span_warning("[user] Com sucesso, fugiu.[src]!"), 			span_notice("Você conseguiu escapar.[src]!"))
 		open_machine()
 		dump_inventory_contents()
 
 	add_fingerprint(user)
 	if(locked)
-		visible_message(span_notice("Viu?[user]Chutando contra as portas de[src]!"), 			span_notice("Você começa a bater contra as portas..."))
+		visible_message(span_notice("Viu?[user] Chutando contra as portas de [src]!"), 			span_notice("Você começa a bater contra as portas..."))
 		addtimer(CALLBACK(src, PROC_REF(resist_open), user), 30 SECONDS)
 	else
 		open_machine()
@@ -599,7 +599,7 @@
 
 /obj/machinery/suit_storage_unit/proc/resist_open(mob/user)
 	if(!state_open && occupant && (user in src) && user.stat == CONSCIOUS) // Check they're still here.
-		visible_message(span_notice("Viu?[user]Esturou.[src]!"), 			span_notice("Você escapa dos limites apertados de[src]!"))
+		visible_message(span_notice("Viu?[user] Esturou.[src]!"), 			span_notice("Você escapa dos limites apertados de [src]!"))
 		open_machine()
 
 /obj/machinery/suit_storage_unit/multitool_act(mob/living/user, obj/item/tool)
@@ -630,7 +630,7 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if(istype(tool, /obj/item/stock_parts/card_reader) && can_install_card_reader(user))
-		user.visible_message(span_notice("[user]está instalando um leitor de cartões."),
+		user.visible_message(span_notice("[user] está instalando um leitor de cartões."),
 					span_notice("Você começa a instalar o leitor de cartões."))
 		if(!do_after(user, 4 SECONDS, target = src, extra_checks = CALLBACK(src, PROC_REF(can_install_card_reader), user)))
 			return ITEM_INTERACT_BLOCKING
@@ -665,10 +665,10 @@
 			if("Personal") // only the player who swiped their id has access
 				id_card = WEAKREF(id)
 				name = "[id.registered_name] suit storage unit"
-				desc = "Propriedade de[id.registered_name]. [initial(desc)]"
+				desc = "Propriedade de [id.registered_name]. [initial(desc)]"
 			if("Departmental") // anyone who has the same access permissions as this id has access
 				name = "[id.assignment] suit storage unit"
-				desc = "É um...[id.assignment]Armazém de roupas.[initial(desc)]"
+				desc = "É um...[id.assignment] Armazém de roupas.[initial(desc)]"
 				set_access(id.GetAccess())
 			if("None") // free for all
 				name = initial(name)
@@ -677,9 +677,9 @@
 				req_one_access = null
 				set_access(list())
 		if(!isnull(id_card))
-			balloon_alert(user, "Agora possuído por[id.registered_name]")
+			balloon_alert(user, "Agora possuído por [id.registered_name]")
 		else
-			balloon_alert(user, "Pronto para[choice]")
+			balloon_alert(user, "Pronto para [choice]")
 		return ITEM_INTERACT_SUCCESS
 
 	if(state_open && is_operational)
@@ -718,7 +718,7 @@
 			if(!user.transferItemToLoc(tool, src))
 				return ITEM_INTERACT_BLOCKING
 			storage = tool
-		visible_message(span_notice("[user]Inserções[tool]Em[src]"), span_notice("Você carrega.[tool]Em[src]."))
+		visible_message(span_notice("[user]Inserções[tool]Em[src]"), span_notice("Você carrega.[tool] Em [src]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 

@@ -19,21 +19,21 @@
 	var/over_what_fp = source.loc == user ? "your [source.name]" : source
 	if(prob(10))
 		user.visible_message(
-			span_warning("[user]Slips[match]Câmbio.[over_what_tp]Mas nada acontece."),
-			span_warning("Você rouba[match]Câmbio.[over_what_fp], mas ele falha em acender."),
+			span_warning("[user] Slips [match] Câmbio.[over_what_tp] Mas nada acontece."),
+			span_warning("Você rouba [match] Câmbio.[over_what_fp], mas ele falha em acender."),
 		)
 		return ITEM_INTERACT_SUCCESS
 	if(prob((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_HULK)) ? 33 : 2))
 		user.visible_message(
-			span_warning("[user]Slips[match]Câmbio.[over_what_tp], acidentalmente estalando."),
-			span_warning("Você rouba[match]Câmbio.[over_what_fp]Muito rápido, quebrando ao meio."),
+			span_warning("[user] Slips [match] Câmbio.[over_what_tp], acidentalmente estalando."),
+			span_warning("Você rouba [match] Câmbio.[over_what_fp] Muito rápido, quebrando ao meio."),
 		)
 		match.snap()
 		return ITEM_INTERACT_SUCCESS
 
 	user.visible_message(
-		span_rose("[user]Slips[match]Câmbio.[over_what_tp], acendendo."),
-		span_rose("Você rouba[match]Câmbio.[over_what_fp], acendendo."),
+		span_rose("[user] Slips [match] Câmbio.[over_what_tp], acendendo."),
+		span_rose("Você rouba [match] Câmbio.[over_what_fp], acendendo."),
 	)
 	match.matchignite()
 	return ITEM_INTERACT_SUCCESS

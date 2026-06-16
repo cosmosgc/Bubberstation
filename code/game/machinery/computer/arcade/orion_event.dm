@@ -110,7 +110,7 @@
 
 /datum/orion_event/electronic_part/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/gamer)
 	playsound(game, 'sound/effects/empulse.ogg', 50, TRUE)
-	game.visible_message(span_danger("[game]Falhas, randomização de estatísticas no jogo!"))
+	game.visible_message(span_danger("[game] Falhas, randomização de estatísticas no jogo!"))
 	var/oldfood = game.food
 	var/oldfuel = game.fuel
 	game.food = rand(10,80) / rand(1,2)
@@ -120,9 +120,9 @@
 
 /datum/orion_event/electronic_part/proc/revert_random(obj/machinery/computer/arcade/orion_trail/game, oldfood, oldfuel)
 	if(oldfuel > game.fuel && oldfood > game.food)
-		game.audible_message(span_danger("[game]Deixa Sair Um Tom Confortante."))
+		game.audible_message(span_danger("[game] Deixa Sair Um Tom Confortante."))
 	else if(oldfuel < game.fuel || oldfood < game.food)
-		game.audible_message(span_danger("[game]Deixa Sair Um Tom Sinistro."))
+		game.audible_message(span_danger("[game] Deixa Sair Um Tom Sinistro."))
 	game.food = oldfood
 	game.fuel = oldfuel
 	playsound(game, 'sound/machines/chime.ogg', 50, TRUE)

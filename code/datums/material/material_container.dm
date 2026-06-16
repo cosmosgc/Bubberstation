@@ -103,7 +103,7 @@
 		var/datum/material/M = I
 		var/amt = materials[I] / SHEET_MATERIAL_AMOUNT
 		if(amt)
-			examine_texts += span_notice("Tem.[amt]Folhas de[LOWER_TEXT(M.name)]Armazenado.")
+			examine_texts += span_notice("Tem.[amt] Folhas de [LOWER_TEXT(M.name)] Armazenado.")
 
 /datum/material_container/vv_edit_var(var_name, var_value)
 	var/old_flags = mat_container_flags
@@ -323,7 +323,7 @@
 			//duffle bags needs to be unzipped
 			if(target_item.atom_storage?.locked)
 				if(!(mat_container_flags & MATCONTAINER_SILENT))
-					to_chat(user, span_warning("[target_item]tem seu armazenamento trancado"))
+					to_chat(user, span_warning("[target_item] tem seu armazenamento trancado"))
 				return
 
 			//anything that isn't a stack cannot be split so find out if we have enough space, we don't want to consume half the contents of an object & leave it in a broken state
@@ -334,7 +334,7 @@
 					total_amount += get_item_material_amount(weapon)
 				if(!has_space(total_amount))
 					if(!(mat_container_flags & MATCONTAINER_SILENT))
-						to_chat(user, span_warning("[parent]não tem espaço suficiente para[target_item]!"))
+						to_chat(user, span_warning("[parent] não tem espaço suficiente para [target_item]!"))
 					return
 
 			first_checks = FALSE
@@ -462,28 +462,28 @@
 							var/obj/item/stack/stack = item
 							var/sheets = min(count, amount) //minimum between sheets inserted vs sheets consumed(values differ for alloys)
 							if (sheets > 1)
-								to_chat(user, span_notice("[sheets] [stack.singular_name][plural_s(stack.singular_name)]foram adicionados a[parent]."))
+								to_chat(user, span_notice("[sheets] [stack.singular_name][plural_s(stack.singular_name)] foram adicionados a [parent]."))
 							else
-								to_chat(user, span_notice("O[stack.singular_name]Foi adicionado a[parent]."))
+								to_chat(user, span_notice("O [stack.singular_name] Foi adicionado a [parent]."))
 						else
 							if (count > 1)
-								to_chat(user, span_notice("[count] [item.name][plural_s(item.name)], vale[amount]sheet, foram indicados a[parent]."))
+								to_chat(user, span_notice("[count] [item.name][plural_s(item.name)], vale [amount] sheet, foram indicados a [parent]."))
 							else
-								to_chat(user, span_notice("\The [item], vale[amount]Folha,[item.p_were()]somado a[parent]."))
+								to_chat(user, span_notice("\The [item], vale [amount] Folha,[item.p_were()] somado a [parent]."))
 					if(MATERIAL_INSERT_ITEM_NO_SPACE) //no space
-						to_chat(user, span_warning("[parent]Não tem espaço para aceitar.\the [item]!"))
+						to_chat(user, span_warning("[parent] Não tem espaço para aceitar.\the [item]!"))
 					if(MATERIAL_INSERT_ITEM_NO_MATS) //no materials inside these items
 						if(isstack(item))
 							var/obj/item/stack/stack = item
-							to_chat(user, span_warning("O[stack.singular_name]Não tem materiais que possam ser aceitos por[parent]!"))
+							to_chat(user, span_warning("O [stack.singular_name] Não tem materiais que possam ser aceitos por [parent]!"))
 						else
-							to_chat(user, span_warning("\The [item][count > 1 ? "[plural_s(item.name)] have" : " [item.p_have()]"]Nenhum material que possa ser aceito por[parent]!"))
+							to_chat(user, span_warning("\The [item][count > 1 ? "[plural_s(item.name)] have" : " [item.p_have()]"]Nenhum material que possa ser aceito por [parent]!"))
 					if(MATERIAL_INSERT_ITEM_FAILURE) //could be because the material type was not accepted or other stuff
 						if (isstack(item))
 							var/obj/item/stack/stack = item
-							to_chat(user, span_warning("O[stack.singular_name]Foi rejeitado por[parent]!"))
+							to_chat(user, span_warning("O [stack.singular_name] Foi rejeitado por [parent]!"))
 						else
-							to_chat(user, span_warning("\The [item][count > 1 ? "[plural_s(item.name)] were" : " [item.p_were()]"]Rejeitado por[parent]!"))
+							to_chat(user, span_warning("\The [item][count > 1 ? "[plural_s(item.name)] were" : " [item.p_were()]"]Rejeitado por [parent]!"))
 
 	//finally delete the items
 	for(var/obj/item/deleting as anything in to_delete)

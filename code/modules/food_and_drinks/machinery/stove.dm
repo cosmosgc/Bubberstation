@@ -84,23 +84,23 @@
 			ingredient_amounts[ingredient.type] += 1
 
 		for(var/obj/item/ingredient_type as anything in ingredient_amounts)
-			examine_list += "&bull;[ingredient_amounts[ingredient_type]] [initial(ingredient_type.name)]\s"
+			examine_list += "&bull;[ingredient_amounts [ingredient_type]] [initial(ingredient_type.name)]\s"
 
 		var/unknown_volume = 0
 		for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
 			if(can_see_insides 				|| istype(current_reagent, /datum/reagent/water) 				|| istype(current_reagent, /datum/reagent/consumable) 			)
-				examine_list += "&bull;[round(current_reagent.volume, 0.01)]Unidades de[current_reagent.name]"
+				examine_list += "&bull;[round(current_reagent.volume, 0.01)] Unidades de [current_reagent.name]"
 			else
 				unknown_volume += current_reagent.volume
 
 		if(unknown_volume > 0)
-			examine_list += "&bull;[round(unknown_volume, 0.01)]Unidades de reagentes desconhecidos"
+			examine_list += "&bull;[round(unknown_volume, 0.01)] Unidades de reagentes desconhecidos"
 
 		if(reagents.total_volume > 0)
 			if(can_see_insides)
-				examine_list += span_notice("O conteúdo de[src]tem uma temperatura de[reagents.chem_temp]K.")
+				examine_list += span_notice("O conteúdo de [src] tem uma temperatura de [reagents.chem_temp] K.")
 			else if(reagents.chem_temp > WATER_BOILING_POINT) // boiling point
-				examine_list += span_notice("O conteúdo de[src]estão fervendo.")
+				examine_list += span_notice("O conteúdo de [src] estão fervendo.")
 
 	else
 		examine_list += "Nothing."
@@ -138,7 +138,7 @@
 			loaded++
 			LAZYADD(added_ingredients, tray_item)
 	if(loaded)
-		to_chat(user, span_notice("Você insere[loaded]- Sim.\the [src]."))
+		to_chat(user, span_notice("Você insere [loaded]- Sim.\the [src]."))
 		update_appearance(UPDATE_OVERLAYS)
 	return TRUE
 

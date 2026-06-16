@@ -47,7 +47,7 @@
 		//don't display the message if little mac is already KO'd
 		if(!source.IsUnconscious())
 			source.visible_message(
-				span_warning("[source]É nocauteado!"),
+				span_warning("[source] É nocauteado!"),
 				span_userdanger("Você é nocauteado!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 		)

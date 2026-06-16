@@ -70,7 +70,7 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	if(C.tool_behaviour == TOOL_WIRECUTTER)
-		to_chat(user, span_notice("Cortando.[name]Articulações..."))
+		to_chat(user, span_notice("Cortando.[name] Articulações..."))
 		deconstruct()
 	else
 		var/turf/T = get_turf(src)
@@ -187,9 +187,9 @@
 		return
 	var/obj/item/stack/tile/iron/attacking_tiles = attacking_item
 	if(!attacking_tiles.use(1))
-		to_chat(user, span_warning("Você precisa de um piso para construir em cima[src]."))
+		to_chat(user, span_warning("Você precisa de um piso para construir em cima [src]."))
 		return
-	to_chat(user, span_notice("Você constrói um novo revestimento com[src]Como apoio."))
+	to_chat(user, span_notice("Você constrói um novo revestimento com [src] Como apoio."))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 
 	var/turf/turf_we_place_on = get_turf(src)
@@ -237,7 +237,7 @@
  * Handles platforms deleting themselves with a visual effect and message.
  */
 /obj/structure/lattice/catwalk/boulder/proc/self_destruct()
-	visible_message(span_notice("\The [src]Afunda e desaparece!"))
+	visible_message(span_notice("\The [src] Afunda e desaparece!"))
 	playsound(src, 'sound/effects/gas_hissing.ogg', 20)
 	remove_shared_particles(warning_particle)
 	deconstruct()

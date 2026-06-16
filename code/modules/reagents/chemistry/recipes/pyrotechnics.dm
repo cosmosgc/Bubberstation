@@ -176,7 +176,7 @@
 				deity = GLOB.deity
 			else
 				deity = "Christ"
-			to_chat(ghostie, span_userdanger("O poder de[deity]Compele você!"))
+			to_chat(ghostie, span_userdanger("O poder de [deity] Compele você!"))
 			ghostie.apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 2 SECONDS)
 			ghostie.apply_status_effect(/datum/status_effect/revenant/revealed, 10 SECONDS)
 			ghostie.adjust_health(50)
@@ -394,7 +394,7 @@
 		return
 	var/mob/living/carbon/victim = holder.my_atom
 	if (victim.stat != DEAD)
-		victim.visible_message(span_warning("[victim]Começa a tossir fumaça violentamente!"))
+		victim.visible_message(span_warning("[victim] Começa a tossir fumaça violentamente!"))
 	victim.adjust_organ_loss(ORGAN_SLOT_LUNGS, created_volume / 5)
 
 /datum/chemical_reaction/smoke_powder_smoke
@@ -416,7 +416,7 @@
 		return
 	var/mob/living/carbon/victim = holder.my_atom
 	if (victim.stat != DEAD)
-		victim.visible_message(span_warning("[victim]Começa a tossir fumaça violentamente!"))
+		victim.visible_message(span_warning("[victim] Começa a tossir fumaça violentamente!"))
 	victim.adjust_organ_loss(ORGAN_SLOT_LUNGS, created_volume / 10)
 
 /datum/chemical_reaction/sonic_powder

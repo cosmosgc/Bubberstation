@@ -59,11 +59,11 @@
 	. = ..()
 	if(HAS_MIND_TRAIT(user, TRAIT_ENTRAILS_READER)|| isobserver(user))
 		if(liked_foodtypes)
-			. += span_info("Esta língua tem uma afinidade pelo sabor de[english_list(bitfield_to_list(liked_foodtypes, FOOD_FLAGS_IC))].")
+			. += span_info("Esta língua tem uma afinidade pelo sabor de [english_list(bitfield_to_list(liked_foodtypes, FOOD_FLAGS_IC))].")
 		if(disliked_foodtypes)
-			. += span_info("Esta língua tem uma aversão para o gosto de[english_list(bitfield_to_list(disliked_foodtypes, FOOD_FLAGS_IC))].")
+			. += span_info("Esta língua tem uma aversão para o gosto de [english_list(bitfield_to_list(disliked_foodtypes, FOOD_FLAGS_IC))].")
 		if(toxic_foodtypes)
-			. += span_info("A fisiologia desta língua faz[english_list(bitfield_to_list(toxic_foodtypes, FOOD_FLAGS_IC))]Tóxico.")
+			. += span_info("A fisiologia desta língua faz [english_list(bitfield_to_list(toxic_foodtypes, FOOD_FLAGS_IC))] Tóxico.")
 
 /**
  * Used in setting up the "languages possible" list.
@@ -270,7 +270,7 @@
 	var/is_statue = owner.loc == statue
 	if(!is_statue)
 		owner.visible_message(
-			span_notice("[owner]Tem uma postura gloriosa."),
+			span_notice("[owner] Tem uma postura gloriosa."),
 			span_notice("Você faz uma bela pose quando se torna uma estátua!"),
 		)
 
@@ -285,14 +285,14 @@
 	statue.desc = "statue depicting [owner.real_name]"
 
 	if(is_statue)
-		statue.visible_message(span_danger("[statue]Fico animado!"))
+		statue.visible_message(span_danger("[statue] Fico animado!"))
 		owner.forceMove(get_turf(statue))
 		statue.moveToNullspace()
 		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 
 	else
 		owner.visible_message(
-			span_notice("[owner]endurece em uma estátua de prata."),
+			span_notice("[owner] endurece em uma estátua de prata."),
 			span_notice("Você se tornou uma estátua de prata!"),
 		)
 		statue.set_visuals(owner.appearance)
@@ -387,11 +387,11 @@
 		return
 
 	if(tongue.mothership == mothership)
-		to_chat(tongue_holder, span_notice("[src]Já está sintonizado com o mesmo canal que o seu."))
+		to_chat(tongue_holder, span_notice("[src] Já está sintonizado com o mesmo canal que o seu."))
 
-	tongue_holder.visible_message(span_notice("[tongue_holder]Segura.[src]em suas mãos, e concentra-se por um momento."), span_notice("Você tenta modificar a atenuação de[src]."))
+	tongue_holder.visible_message(span_notice("[tongue_holder] Segura.[src] em suas mãos, e concentra-se por um momento."), span_notice("Você tenta modificar a atenuação de [src]."))
 	if(do_after(tongue_holder, delay=15, target=src))
-		to_chat(tongue_holder, span_notice("Você atune[src]para o seu próprio canal."))
+		to_chat(tongue_holder, span_notice("Você atune [src] para o seu próprio canal."))
 		mothership = tongue.mothership
 
 /obj/item/organ/tongue/abductor/examine(mob/examining_mob)
@@ -401,7 +401,7 @@
 		if(!mothership)
 			. += span_notice("Não está ligado a uma nave-mãe específica.")
 		else
-			. += span_notice("Está em sintonia com[mothership].")
+			. += span_notice("Está em sintonia com [mothership].")
 
 /obj/item/organ/tongue/abductor/modify_speech(datum/source, list/speech_args)
 	//Hacks
@@ -578,7 +578,7 @@
 /obj/item/organ/tongue/robot/on_mob_insert(mob/living/carbon/receiver)
 	. = ..()
 	receiver.grant_language(/datum/language/machine, source = LANGUAGE_TONGUE)
-	to_chat(receiver, span_boldnotice("Você ganha uma nova compreensão de[/datum/language/machine::name]."))
+	to_chat(receiver, span_boldnotice("Você ganha uma nova compreensão de [/datum/language/machine::name]."))
 
 /obj/item/organ/tongue/robot/on_mob_remove(mob/living/carbon/owner)
 	. = ..()

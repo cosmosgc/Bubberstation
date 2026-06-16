@@ -284,8 +284,8 @@
 			if (emptied > 0)
 				owner.apply_damage(emptied * 5, BRUTE, BODY_ZONE_CHEST, wound_bonus = CANT_WOUND, wound_clothing = FALSE)
 				playsound(get_turf(src), 'sound/effects/splat.ogg', 50)
-				owner.visible_message(span_danger("Conteúdo de[owner]Os intestinos saem de um enorme corte[owner.p_their()] [chest]!"),
-					span_userdanger("Conteúdo de seus intestinos derramam de um enorme corte em seu[chest]!"))
+				owner.visible_message(span_danger("Conteúdo de [owner] Os intestinos saem de um enorme corte [owner.p_their()] [chest]!"),
+					span_userdanger("Conteúdo de seus intestinos derramam de um enorme corte em seu [chest]!"))
 			return
 
 	// Digest the stuff in our stomach, just a bit
@@ -325,7 +325,7 @@
 		if (HAS_TRAIT(owner, TRAIT_ANALGESIA))
 			continue
 
-		owner.visible_message(span_warning("[owner]Dobra com dor!"), span_userdanger("Você sente uma sensação aguda e ardente no seu estômago!"))
+		owner.visible_message(span_warning("[owner] Dobra com dor!"), span_userdanger("Você sente uma sensação aguda e ardente no seu estômago!"))
 		owner.Paralyze(1 SECONDS)
 		owner.adjust_eye_blur(5 SECONDS)
 
@@ -421,7 +421,7 @@
 		return
 	if (owner.vomit(MOB_VOMIT_MESSAGE | MOB_VOMIT_FORCE))
 		// Since we vomited with a force flag, we should've vomited out at least one item
-		owner.visible_message(span_danger("[owner]Dobre de[attacker]É soco, vomitando o conteúdo de[owner.p_their()]estômago!"))
+		owner.visible_message(span_danger("[owner] Dobre de [attacker] É soco, vomitando o conteúdo de [owner.p_their()] estômago!"))
 
 /// 60% chance to spew out each item when vomiting
 /obj/item/organ/stomach/proc/on_vomit(mob/living/carbon/vomiter, distance, force)
@@ -446,7 +446,7 @@
 		var/emptied = empty_contents()
 		if (emptied > 0)
 			playsound(get_turf(src), 'sound/effects/splat.ogg', 50)
-		user.visible_message(span_warning("[user]Cortes.[src]Abra.[emptied ? "!" : ", but it's empty."]"), span_notice("Você cortou.[src]Abra.[emptied ? "." : ", but there's nothing inside."]"))
+		user.visible_message(span_warning("[user] Cortes.[src] Abra.[emptied ? "!" : ", but it's empty."]"), span_notice("Você cortou.[src] Abra.[emptied ? "." : ", but there's nothing inside."]"))
 		cut_open_damage += apply_organ_damage(maxHealth * 0.5)
 		return ITEM_INTERACT_SUCCESS
 

@@ -20,7 +20,7 @@
 
 	if(length(user.held_items) < 0 || iscyborg(user) || source.anchored)
 		return
-	examine_list += span_smallnotice("Você poderia amarrar[source.p_them()]ao seu pulso com um par de algemas...")
+	examine_list += span_smallnotice("Você poderia amarrar [source.p_them()] ao seu pulso com um par de algemas...")
 
 ///Give context to players holding a pair of handcuffs when hovering the item
 /datum/element/cuffable_item/proc/on_requesting_context_from_item(datum/source, list/context, obj/item/held_item, mob/user)
@@ -48,7 +48,7 @@
 		return
 
 	if(HAS_TRAIT_FROM(source, TRAIT_NODROP, CUFFED_ITEM_TRAIT))
-		to_chat(user, span_warning("[source]Já está algemado ao seu pulso!"))
+		to_chat(user, span_warning("[source] Já está algemado ao seu pulso!"))
 		return
 
 	if(cuffs.handcuffs_clumsiness_check(user))

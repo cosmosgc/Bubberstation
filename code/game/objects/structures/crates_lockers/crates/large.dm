@@ -37,7 +37,7 @@
 			tear_manifest(user)
 		if(!open(user))
 			return FALSE
-		user.visible_message(span_notice("[user]Pries\the [src]Abra."), 			span_notice("Você abre\the [src]."), 			span_hear("Você ouve madeira."))
+		user.visible_message(span_notice("[user] Pries\the [src] Abra."), 			span_notice("Você abre\the [src]."), 			span_hear("Você ouve madeira."))
 		playsound(src.loc, 'sound/items/weapons/slashmiss.ogg', 75, TRUE)
 
 		var/turf/T = get_turf(src)

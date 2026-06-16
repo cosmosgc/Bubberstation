@@ -132,15 +132,15 @@
 		return
 
 	if(terror_buildup >= TERROR_BUILDUP_HEART_ATTACK)
-		examine_list += span_danger("[source.p_They()] [source.p_are()]Esto prestes a cair de medo!")
+		examine_list += span_danger("[source.p_They()] [source.p_are()] Esto prestes a cair de medo!")
 	else if(terror_buildup > TERROR_BUILDUP_PANIC)
-		examine_list += span_boldwarning("[source.p_They()] [source.p_are()]Tremendo e tremendo, mal de pé!")
+		examine_list += span_boldwarning("[source.p_They()] [source.p_are()] Tremendo e tremendo, mal de pé!")
 	else if(terror_buildup >= TERROR_BUILDUP_TERROR)
-		examine_list += span_boldwarning("[source]é visivelmente tremendo e tremendo.[source.p_They()] [source.p_are()]Claramente em perigo!")
+		examine_list += span_boldwarning("[source] é visivelmente tremendo e tremendo.[source.p_They()] [source.p_are()] Claramente em perigo!")
 	else if(terror_buildup >= TERROR_BUILDUP_FEAR)
-		examine_list += span_warning("[source]Parece muito preocupado com algo.[capitalize(source.p_are())] [source.p_they()]Certo?")
+		examine_list += span_warning("[source] Parece muito preocupado com algo.[capitalize(source.p_are())] [source.p_they()] Certo?")
 	else if (terror_buildup)
-		examine_list += span_smallnotice("[source]Parece ansioso.[source.p_They()]Eu poderia usar um abraço...")
+		examine_list += span_smallnotice("[source] Parece ansioso.[source.p_They()] Eu poderia usar um abraço...")
 
 /datum/component/fearful/proc/comfort_owner(mob/living/carbon/source, mob/living/hugger)
 	SIGNAL_HANDLER
@@ -163,7 +163,7 @@
 			source.Knockdown(0.5 SECONDS)
 			terror_buildup += HUG_TERROR_AMOUNT
 			source.visible_message(
-				span_warning("[source]Recua no medo como[hugger]Ondas[hugger.p_their()]Braços e gritos em[source.p_them()]!"),
+				span_warning("[source] Recua no medo como [hugger] Ondas [hugger.p_their()] Braços e gritos em [source.p_them()]!"),
 				span_boldwarning("As sombras atacam você, e você cai no chão com medo!"),
 				span_hear("Você ouve alguém gritando de medo. Que vergonha!"),
 				)
@@ -176,16 +176,16 @@
 	if (hug_buildup > 0)
 		terror_buildup += hug_buildup
 		source.visible_message(
-			span_warning("[source]Recua no medo como[hugger]Tentando abraçar[source.p_them()]!"),
-			span_boldwarning("Você recua em terror como[hugger]Tenta te abraçar!"),
+			span_warning("[source] Recua no medo como [hugger] Tentando abraçar [source.p_them()]!"),
+			span_boldwarning("Você recua em terror como [hugger] Tenta te abraçar!"),
 			span_hear("Você ouve alguém gritando de medo. Que vergonha!"),
 			)
 		return COMPONENT_BLOCK_MISC_HELP
 
 	terror_buildup -= HUG_TERROR_AMOUNT
 	source.visible_message(
-		span_notice("[source]Parece relaxa como[hugger]dá[source.p_them()]Um abraço reconfortante."),
-		span_nicegreen("Você se sente calmo como[hugger]te dá um abraço reconfortante."),
+		span_notice("[source] Parece relaxa como [hugger] dá [source.p_them()] Um abraço reconfortante."),
+		span_nicegreen("Você se sente calmo como [hugger] te dá um abraço reconfortante."),
 		span_hear("Você ouve baralhar e um suspiro de alívio."),
 	)
 

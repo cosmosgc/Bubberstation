@@ -49,9 +49,9 @@
 			else if(!IS_LYING_OR_CANNOT_LIE(patient))
 				patient.balloon_alert(src, "Não deitado!")
 			else
-				patient.balloon_alert(src, "Nada a ver com[realtool.name]!")
+				patient.balloon_alert(src, "Nada a ver com [realtool.name]!")
 		else
-			operating.balloon_alert(src, "Nada a ver com[realtool.name]!")
+			operating.balloon_alert(src, "Nada a ver com [realtool.name]!")
 		//  ...then, block attacking. prevents the surgeon from viciously stabbing the patient on a mistake
 		return ITEM_INTERACT_BLOCKING
 
@@ -140,8 +140,8 @@
 		return ITEM_INTERACT_BLOCKING
 
 	visible_message(
-		span_notice("[src]Tenta fechar[p_their()]Mesmo.[limb.plaintext_zone]com[tool]..."),
-		span_notice("Você tenta fechar seu próprio[limb.plaintext_zone]com[tool]..."),
+		span_notice("[src] Tenta fechar [p_their()] Mesmo.[limb.plaintext_zone] com [tool]..."),
+		span_notice("Você tenta fechar seu próprio [limb.plaintext_zone] com [tool]..."),
 		span_hear("Você ouve.[tool?.get_temperature() ? "singeing" : "stitching"]Sons."),
 		vision_distance = 5,
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
@@ -156,8 +156,8 @@
 		return ITEM_INTERACT_BLOCKING
 
 	visible_message(
-		span_notice("[src]Fecha.[p_their()]Mesmo.[limb.plaintext_zone]com[tool]."),
-		span_notice("Você fecha o seu.[limb.plaintext_zone]com[tool]."),
+		span_notice("[src] Fecha.[p_their()] Mesmo.[limb.plaintext_zone] com [tool]."),
+		span_notice("Você fecha o seu.[limb.plaintext_zone] com [tool]."),
 		span_hear("Você ouve.[tool?.get_temperature() ? "singeing" : "stitching"]Sons."),
 		vision_distance = 5,
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
@@ -1131,9 +1131,9 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a operar[display_target]..."),
-		span_notice("[surgeon]Começa a operar[display_target]."),
-		span_notice("[surgeon]Começa a operar[display_target]."),
+		span_notice("Você começa a operar [display_target]..."),
+		span_notice("[surgeon] Começa a operar [display_target]."),
+		span_notice("[surgeon] Começa a operar [display_target]."),
 	)
 
 /**
@@ -1164,8 +1164,8 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 		surgeon,
 		patient,
 		span_notice("Você tem sucesso."),
-		span_notice("[surgeon]Bem sucedido!"),
-		span_notice("[surgeon]Termina."),
+		span_notice("[surgeon] Bem sucedido!"),
+		span_notice("[surgeon] Termina."),
 	)
 
 /**
@@ -1213,8 +1213,8 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 		surgeon,
 		patient,
 		span_warning("Você estragou tudo![screwedmessage]"),
-		span_warning("[surgeon]Estraga tudo!"),
-		span_notice("[surgeon]Termina."),
+		span_warning("[surgeon] Estraga tudo!"),
+		span_notice("[surgeon] Termina."),
 		TRUE, //By default the patient will notice if the wrong thing has been cut
 	)
 

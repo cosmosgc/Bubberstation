@@ -218,7 +218,7 @@
 
 /obj/structure/closet/secure_closet/brig/genpop/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Botão direito</b>com uma identificação de nível de segurança para reiniciar[src]Identidade registrada.")
+	. += span_notice("<b>Botão direito</b>com uma identificação de nível de segurança para reiniciar [src] Identidade registrada.")
 
 /obj/structure/closet/secure_closet/brig/genpop/attackby(obj/item/card/id/advanced/prisoner/user_id, mob/user, list/modifiers, list/attack_modifiers)
 	if(!secure || !istype(user_id))

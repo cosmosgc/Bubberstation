@@ -63,7 +63,7 @@
 	. = ..()
 	playsound(src, 'sound/mobs/non-humanoids/pony/snort.ogg', 50)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/pony)
-	visible_message(span_notice("[src]Cheira alegre."))
+	visible_message(span_notice("[src] Cheira alegre."))
 	new /obj/effect/temp_visual/heart(loc)
 
 	ai_controller.replace_planning_subtrees(list(

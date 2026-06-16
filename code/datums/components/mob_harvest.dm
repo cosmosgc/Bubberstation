@@ -97,11 +97,11 @@
 	SIGNAL_HANDLER
 
 	if(amount_ready < 1)
-		examine_list += span_notice("[parent]Parece que precisa de mais tempo.")
+		examine_list += span_notice("[parent] Parece que precisa de mais tempo.")
 	if(amount_ready > 1)
-		examine_list += span_notice("[parent]Parece que eles podem ser colhidos sobre[amount_ready]Tempos.")
+		examine_list += span_notice("[parent] Parece que eles podem ser colhidos sobre [amount_ready] Tempos.")
 	if(amount_ready == 1)
-		examine_list += span_notice("[parent]Parece pronto para ser colhido.")
+		examine_list += span_notice("[parent] Parece pronto para ser colhido.")
 
 ///signal called on parent being attacked with an item
 /datum/component/mob_harvest/proc/on_attackby(datum/source, obj/item/used_item, mob/user)
@@ -138,7 +138,7 @@
  */
 /datum/component/mob_harvest/proc/remove_wait_time(mob/user)
 	if(amount_ready >= max_ready)
-		to_chat(user, span_warning("[parent]Parece muito cheio para continuar se alimentar!"))
+		to_chat(user, span_warning("[parent] Parece muito cheio para continuar se alimentar!"))
 		return
 	item_generation_time -= item_reduction_time
 	to_chat(user, span_notice("Você se alimenta.[parent]."))
@@ -152,12 +152,12 @@
  */
 /datum/component/mob_harvest/proc/harvest_item(mob/user)
 	if(amount_ready < 1)
-		to_chat(user, span_warning("[parent]não parece ter o suficiente[produced_item_desc]para a colheita."))
+		to_chat(user, span_warning("[parent] não parece ter o suficiente [produced_item_desc] para a colheita."))
 		return
-	to_chat(user, span_notice("Você começa a colher[produced_item_desc]De[parent]..."))
+	to_chat(user, span_notice("Você começa a colher [produced_item_desc] De [parent]..."))
 	if(do_after(user, item_harvest_time, target = parent))
 		playsound(parent, item_harvest_sound, 20, TRUE)
-		to_chat(user, span_notice("Você colhe um pouco[produced_item_desc]De[parent]."))
+		to_chat(user, span_notice("Você colhe um pouco [produced_item_desc] De [parent]."))
 		amount_ready--
 		if(!iscarbon(parent))
 			var/mob/living/living_parent = parent

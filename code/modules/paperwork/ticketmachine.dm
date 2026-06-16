@@ -47,8 +47,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/machinery/ticket_machine/examine(mob/user)
 	. = ..()
-	. += span_notice("A máquina de bilhetes mostra o bilhete.[current_number]está sendo servido atualmente.")
-	. += span_notice("Você pode tirar uma passagem com<b>Clique à esquerda.</b>para ser número[ticket_number + 1]Na fila.")
+	. += span_notice("A máquina de bilhetes mostra o bilhete.[current_number] está sendo servido atualmente.")
+	. += span_notice("Você pode tirar uma passagem com<b>Clique à esquerda.</b>para ser número [ticket_number + 1] Na fila.")
 
 /obj/machinery/ticket_machine/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
@@ -64,7 +64,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 	obj_flags |= EMAGGED
 	if(tickets.len)
 		for(var/obj/item/ticket_machine_ticket/ticket in tickets)
-			ticket.audible_message(span_notice("\the [ticket]Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+			ticket.audible_message(span_notice("\the [ticket] Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 			qdel(ticket)
 		tickets.Cut()
 	update_appearance()
@@ -82,7 +82,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 ///If we have a current ticket, remove it from the top of our tickets list and replace it with the next one if applicable
 /obj/machinery/ticket_machine/proc/increment()
 	if(!(obj_flags & EMAGGED) && current_ticket)
-		current_ticket.audible_message(span_notice("\the [current_ticket]Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+		current_ticket.audible_message(span_notice("\the [current_ticket] Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 		tickets.Cut(1,2)
 		QDEL_NULL(current_ticket)
 	if(LAZYLEN(tickets))
@@ -91,7 +91,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 		playsound(src, 'sound/announcer/announcement/announce_dig.ogg', 50, FALSE)
 		say("Now serving [current_ticket]!")
 		if(!(obj_flags & EMAGGED))
-			current_ticket.audible_message(span_notice("\the [current_ticket]Vibra!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+			current_ticket.audible_message(span_notice("\the [current_ticket] Vibra!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 		update_appearance() //Update our icon here rather than when they take a ticket to show the current ticket number being served
 
 /obj/machinery/button/ticket_machine
@@ -117,7 +117,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 		controller.ticket_machine_ref = WEAKREF(M.buffer)
 		id = null
 		controller.id = null
-		to_chat(user, span_warning("Você ligou.[src]Para[M.buffer]."))
+		to_chat(user, span_warning("Você ligou.[src] Para [M.buffer]."))
 
 /obj/item/assembly/control/ticket_machine
 	name = "ticket machine controller"
@@ -182,17 +182,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 	..()
 	if(istype(I, /obj/item/hand_labeler_refill))
 		if(!(ticket_number >= max_number))
-			to_chat(user, span_notice("[src]Se recusa.[I]Ali.[max_number - ticket_number == 1 ? "is" : "are"]Ainda.[max_number - ticket_number]O bilhete saiu!"))
+			to_chat(user, span_notice("[src] Se recusa.[I] Ali.[max_number - ticket_number == 1 ? "is" : "are"]Ainda.[max_number - ticket_number] O bilhete saiu!"))
 			return
-		to_chat(user, span_notice("Você começa a encher[src]O dono da passagem (fazer isso irá redefinir sua contagem de ingressos!)."))
+		to_chat(user, span_notice("Você começa a encher [src] O dono da passagem (fazer isso irá redefinir sua contagem de ingressos!)."))
 		if(do_after(user, 3 SECONDS, target = src))
-			to_chat(user, span_notice("Você insere[I]Em[src]como ela soa sem descrição."))
+			to_chat(user, span_notice("Você insere [I] Em [src] como ela soa sem descrição."))
 			qdel(I)
 			ticket_number = 0
 			current_number = 0
 			if(tickets.len)
 				for(var/obj/item/ticket_machine_ticket/ticket in tickets)
-					ticket.audible_message(span_notice("\the [ticket]Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
+					ticket.audible_message(span_notice("\the [ticket] Dispersos!"), hearing_distance = SAMETILE_MESSAGE_RANGE)
 					qdel(ticket)
 				tickets.Cut()
 			max_number = initial(max_number)
@@ -216,7 +216,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 		return
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 100, FALSE)
 	ticket_number++
-	to_chat(user, span_notice("Você pega uma passagem de[src]Parece que você é o número[ticket_number]Na fila..."))
+	to_chat(user, span_notice("Você pega uma passagem de [src] Parece que você é o número [ticket_number] Na fila..."))
 	var/obj/item/ticket_machine_ticket/theirticket = new (get_turf(src), ticket_number)
 	theirticket.source = src
 	theirticket.owner_ref = user_ref
@@ -259,9 +259,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 /obj/item/ticket_machine_ticket/examine(mob/user)
 	. = ..()
 	if(!isnull(number))
-		. += span_notice("O bilhete diz que você é o número.[number]Na fila.")
+		. += span_notice("O bilhete diz que você é o número.[number] Na fila.")
 		if(source)
-			. += span_notice("Abaixo disso, você pode ver que você é[number - source.current_number]Está longe de ser servido.")
+			. += span_notice("Abaixo disso, você pode ver que você é [number - source.current_number] Está longe de ser servido.")
 
 /obj/item/ticket_machine_ticket/attack_hand(mob/user, list/modifiers)
 	. = ..()

@@ -72,9 +72,9 @@
 	check_amount()
 
 	if(into_hands)
-		user.visible_message(span_notice("[user]dispensa um deleite nas mãos de[atom_dispensed_to]."), span_notice("Você dispensa um presente nas mãos de[atom_dispensed_to]."), span_hear("Você ouve um clique."))
+		user.visible_message(span_notice("[user] dispensa um deleite nas mãos de [atom_dispensed_to]."), span_notice("Você dispensa um presente nas mãos de [atom_dispensed_to]."), span_hear("Você ouve um clique."))
 	else
-		user.visible_message(span_notice("[user]Dispensa um deleite."), span_notice("Você dispensa um deleite."), span_hear("Você ouve um clique."))
+		user.visible_message(span_notice("[user] Dispensa um deleite."), span_notice("Você dispensa um deleite."), span_hear("Você ouve um clique."))
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	return TRUE
@@ -95,7 +95,7 @@
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	lollipop.fire_casing(target, user, params, 0, 0, null, 0, src)
-	user.visible_message(span_warning("[user]Explodir um pirulito voor em[target]!"))
+	user.visible_message(span_warning("[user] Explodir um pirulito voor em [target]!"))
 	check_amount()
 
 /// Shoot a gumball
@@ -114,7 +114,7 @@
 	gumball.loaded_projectile.color = rgb(rand(0, 255), rand(0, 255), rand(0, 255))
 	playsound(src.loc, 'sound/items/weapons/bulletflyby3.ogg', 50, TRUE)
 	gumball.fire_casing(target, user, params, 0, 0, null, 0, src)
-	user.visible_message(span_warning("[user]Atira um chiclete de alta velocidade em[target]!"))
+	user.visible_message(span_warning("[user] Atira um chiclete de alta velocidade em [target]!"))
 	check_amount()
 
 /obj/item/borg/lollipop/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)

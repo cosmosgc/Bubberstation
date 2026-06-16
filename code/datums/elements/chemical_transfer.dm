@@ -48,7 +48,7 @@
 			probability_description = "often"
 		if(100)
 			probability_description = "always"
-	examine_list += span_notice("Atacando com[target]Will.[probability_description]Transfira reagentes dentro de você para sua vítima.")
+	examine_list += span_notice("Atacando com [target] Will.[probability_description] Transfira reagentes dentro de você para sua vítima.")
 
 ///signal called on parent being used to attack a victim
 /datum/element/chemical_transfer/proc/on_attack(datum/target, mob/living/transfer_victim, mob/living/transfer_attacker)

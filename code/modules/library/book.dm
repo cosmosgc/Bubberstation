@@ -43,7 +43,7 @@
 /obj/item/book/examine(mob/user)
 	. = ..()
 	if(carved)
-		. += span_notice("[src]foi esvaziado.")
+		. += span_notice("[src] foi esvaziado.")
 
 /obj/item/book/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(isnull(held_item))
@@ -123,7 +123,7 @@
 	if(!can_read_book(user))
 		return
 
-	user.visible_message(span_notice("[user]abre um livro intitulado\"[book_data.title]\"e começa a ler atentamente."))
+	user.visible_message(span_notice("[user] abre um livro intitulado\"[book_data.title]\"e começa a ler atentamente."))
 	credit_book_to_reader(user)
 	display_content(user)
 

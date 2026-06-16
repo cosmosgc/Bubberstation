@@ -482,7 +482,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		initiator.current_ticket = src
 	send2adminchat("Ticket #[id]:", "Reopened!") // BUBBER EDIT - LOG ALL AHELPS TO DISCORD
 	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>", player_message = "Ticket reopened!")
-	var/msg = span_adminhelp("Bilhete.[TicketHref("#[id]")]Reaberto por[key_name_admin(usr)].")
+	var/msg = span_adminhelp("Bilhete.[TicketHref("#[id]")]Reaberto por [key_name_admin(usr)].")
 	message_admins(msg)
 	log_admin_private(msg)
 	SSblackbox.LogAhelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)

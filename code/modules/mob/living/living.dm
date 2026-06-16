@@ -91,8 +91,8 @@
 				emote("spin")
 
 			visible_message(
-				span_notice("[src]faz uma aterrissagem difícil[impacted_turf]mas permanece ileso da queda.[graceful_landing ? " and stays on [p_their()] feet" : " by tucking in rolling into the landing"]."),
-				span_notice("Prepare-se para a queda. Você faz uma aterrissagem difícil em[impacted_turf], mas permanecer ileso[graceful_landing ? " while landing on your feet" : " by tucking in and rolling into the landing"]."),
+				span_notice("[src] faz uma aterrissagem difícil [impacted_turf] mas permanece ileso da queda.[graceful_landing ? " and stays on [p_their()] feet" : " by tucking in rolling into the landing"]."),
+				span_notice("Prepare-se para a queda. Você faz uma aterrissagem difícil em [impacted_turf], mas permanecer ileso[graceful_landing ? " while landing on your feet" : " by tucking in and rolling into the landing"]."),
 			)
 			return . | ZIMPACT_NO_MESSAGE
 
@@ -105,8 +105,8 @@
 		skip_knockdown = TRUE
 		if(small_surface_area || isfeline(src)) // SKYRAT EDIT CHANGE - ORIGINAL: if(small_surface_area)
 			visible_message(
-				span_notice("[src]faz uma aterrissagem difícil[impacted_turf], mas pousa em segurança[p_their()]Pés!"),
-				span_notice("Você faz uma aterrissagem difícil em[impacted_turf]Mas pouse em segurança em seus pés!"),
+				span_notice("[src] faz uma aterrissagem difícil [impacted_turf], mas pousa em segurança [p_their()] Pés!"),
+				span_notice("Você faz uma aterrissagem difícil em [impacted_turf] Mas pouse em segurança em seus pés!"),
 			)
 			new /obj/effect/temp_visual/mook_dust/small(impacted_turf)
 			return .
@@ -115,8 +115,8 @@
 		add_movespeed_modifier(/datum/movespeed_modifier/landed_on_feet)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, remove_movespeed_modifier), /datum/movespeed_modifier/landed_on_feet), levels * 2 SECONDS)
 		visible_message(
-			span_danger("[src]faz uma aterrissagem difícil[impacted_turf], aterrissando em[p_their()]Pés dolorosamente!"),
-			span_userdanger("Você faz uma aterrissagem difícil em[impacted_turf], e instintivamente cair em seus pés - dolorosamente!"),
+			span_danger("[src] faz uma aterrissagem difícil [impacted_turf], aterrissando em [p_their()] Pés dolorosamente!"),
+			span_userdanger("Você faz uma aterrissagem difícil em [impacted_turf], e instintivamente cair em seus pés - dolorosamente!"),
 		)
 		new /obj/effect/temp_visual/mook_dust(impacted_turf)
 
@@ -192,7 +192,7 @@
 		//Should stop you pushing a restrained person out of the way
 		if(L.pulledby && L.pulledby != src && HAS_TRAIT(L, TRAIT_RESTRAINED))
 			if(!(world.time % 5))
-				to_chat(src, span_warning("[L]é contido, você não pode passar."))
+				to_chat(src, span_warning("[L] é contido, você não pode passar."))
 			return TRUE
 
 		if(L.pulling)
@@ -200,7 +200,7 @@
 				var/mob/P = L.pulling
 				if(HAS_TRAIT(P, TRAIT_RESTRAINED))
 					if(!(world.time % 5))
-						to_chat(src, span_warning("[L]é a restrição[P]Você não pode passar."))
+						to_chat(src, span_warning("[L] é a restrição [P] Você não pode passar."))
 					return TRUE
 		//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 		if(L.gunpointed.len)
@@ -211,11 +211,11 @@
 					break
 			if(!is_pointing)
 				if(!(world.time % 5))
-					to_chat(src, "<span class='warning'>[L]Não é sábio pressioná-lo.</span>")
+					to_chat(src, "<span class='warning'>[L] Não é sábio pressioná-lo.</span>")
 				return TRUE
 		if(L.gunpointing)
 			if(!(world.time % 5))
-				to_chat(src, "<span class='warning'>[L]Está apontando uma arma, não pode passar.</span>")
+				to_chat(src, "<span class='warning'>[L] Está apontando uma arma, não pode passar.</span>")
 			return TRUE
 		//SKYRAT EDIT ADDITION END
 
@@ -417,8 +417,8 @@
 
 	if(AM.pulledby)
 		if(!supress_message)
-			AM.visible_message(span_danger("[src]puxa[AM]De[AM.pulledby]O aperto."), 							span_danger("[src]Te puxa de[AM.pulledby]O aperto."), null, null, src)
-			to_chat(src, span_notice("Você puxa.[AM]De[AM.pulledby]'s aperto!"))
+			AM.visible_message(span_danger("[src] puxa [AM] De [AM.pulledby] O aperto."), 							span_danger("[src] Te puxa de [AM.pulledby] O aperto."), null, null, src)
+			to_chat(src, span_notice("Você puxa.[AM] De [AM.pulledby]'s aperto!"))
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 
@@ -446,18 +446,18 @@
 			//SKYRAT EDIT START - Tail coiling
 			if(ishuman(M))
 				if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL) && src.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL))
-					M.visible_message(span_warning("[src]Bobina sua cauda com[AM]Está tudo bem em público?"), "[src]Entrelaçou a cauda deles com a sua!")
-					to_chat(src, "Você entrelaça seu rabo com[AM]")
+					M.visible_message(span_warning("[src] Bobina sua cauda com [AM] Está tudo bem em público?"), "[src] Entrelaçou a cauda deles com a sua!")
+					to_chat(src, "Você entrelaça seu rabo com [AM]")
 				else
 					var/mob/living/carbon/human/grabbed_human = M
 					var/grabbed_by_hands = (zone_selected == "l_arm" || zone_selected == "r_arm") && grabbed_human.usable_hands > 0
-					M.visible_message(span_warning("[src]Pega.[M] [grabbed_by_hands ? "by their hands":"passively"]!"), 									span_warning("[src]Pega você.[grabbed_by_hands ? "by your hands":"passively"]!"), null, null, src)
-					to_chat(src, span_notice("Você agarra[M] [grabbed_by_hands ? "by their hands":"passively"]!"))
+					M.visible_message(span_warning("[src] Pega.[M] [grabbed_by_hands ? "by their hands":"passively"]!"), 									span_warning("[src] Pega você.[grabbed_by_hands ? "by your hands":"passively"]!"), null, null, src)
+					to_chat(src, span_notice("Você agarra [M] [grabbed_by_hands ? "by their hands":"passively"]!"))
 			// SKYRAT EDIT END
 					grabbed_human.share_blood_on_touch(src, grabbed_by_hands ? ITEM_SLOT_GLOVES : ITEM_SLOT_ICLOTHING|ITEM_SLOT_OCLOTHING)
 			else
-				M.visible_message(span_warning("[src]Pega.[M]passivamente!"), 								span_warning("[src]Pega você passivamente!"), null, null, src)
-				to_chat(src, span_notice("Você agarra[M]passivamente!"))
+				M.visible_message(span_warning("[src] Pega.[M] passivamente!"), 								span_warning("[src] Pega você passivamente!"), null, null, src)
+				to_chat(src, span_notice("Você agarra [M] passivamente!"))
 
 		if(isliving(M))
 			var/mob/living/L = M
@@ -568,7 +568,7 @@
 	if(!..())
 		return FALSE
 	log_message("points at [pointing_at]", LOG_EMOTE)
-	visible_message(span_infoplain("[span_name("[src]")]Pontos em[pointing_at]."), span_notice("Você aponta para[pointing_at]."))
+	visible_message(span_infoplain("[span_name("[src]")]Pontos em [pointing_at]."), span_notice("Você aponta para [pointing_at]."))
 
 /mob/living/verb/succumb(whispered as num|null)
 	set hidden = TRUE
@@ -754,10 +754,10 @@
 			get_up_speed = GET_UP_SLOW
 	if(!instant)
 		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
-			visible_message(span_notice("[src]Tenta fracamente se levantar."), span_notice("Você fracamente tenta se levantar."))
+			visible_message(span_notice("[src] Tenta fracamente se levantar."), span_notice("Você fracamente tenta se levantar."))
 			if(!do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP, hidden = TRUE))
 				if(!body_position == STANDING_UP)
-					visible_message(span_warning("[src]Não consegue se levantar."), span_warning("Você não consegue se levantar."))
+					visible_message(span_warning("[src] Não consegue se levantar."), span_warning("Você não consegue se levantar."))
 				return
 		else
 			if(!do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP, hidden = TRUE))
@@ -1145,7 +1145,7 @@
 	if (silent)
 		return applied_damage > 0
 	var/visible_part = isnull(target_part) ? "side" : target_part.plaintext_zone
-	visible_message("[can_scratch ? span_warning("[src] scratches [p_their()] [visible_part].") : ""]", span_warning("Sua[visible_part]Coceira.[can_scratch ? "You scratch it." : ""]"))
+	visible_message("[can_scratch ? span_warning("[src] scratches [p_their()] [visible_part].") : ""]", span_warning("Sua [visible_part] Coceira.[can_scratch ? "You scratch it." : ""]"))
 	return TRUE
 
 /mob/living/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0)
@@ -1284,22 +1284,22 @@
 			//SKYRAT EDIT ADDITION
 			// Akula break-out flavor
 			if(HAS_TRAIT(src, TRAIT_SLIPPERY))
-				visible_message(span_cyan("[src]Desliza livre de[pulledby]'s aperto!"), 								span_cyan("Você se livra de[pulledby]'s aperto!"), null, null, pulledby)
-				to_chat(pulledby, span_cyan("[src]Escorrega do seu aperto!"))
+				visible_message(span_cyan("[src] Desliza livre de [pulledby]'s aperto!"), 								span_cyan("Você se livra de [pulledby]'s aperto!"), null, null, pulledby)
+				to_chat(pulledby, span_cyan("[src] Escorrega do seu aperto!"))
 				playsound(loc, 'sound/misc/slip.ogg', 50, TRUE, -1)
 				log_combat(pulledby, src, "broke grab")
 				pulledby.stop_pulling()
 				return FALSE
 			//SKYRAT EDIT END
-			visible_message(span_danger("[src]Quebras livres de[pulledby]'s aperto!"), 							span_danger("Você se liberta.[pulledby]'s aperto!"), null, null, pulledby)
-			to_chat(pulledby, span_warning("[src]Se solta do seu aperto!"))
+			visible_message(span_danger("[src] Quebras livres de [pulledby]'s aperto!"), 							span_danger("Você se liberta.[pulledby]'s aperto!"), null, null, pulledby)
+			to_chat(pulledby, span_warning("[src] Se solta do seu aperto!"))
 			log_combat(pulledby, src, "broke grab")
 			pulledby.stop_pulling()
 			return FALSE
 		else
 			adjust_stamina_loss(damage_on_resist_fail) //Do some stamina damage if we fail to resist
-			visible_message(span_danger("[src]Lutas como elas não conseguem se libertar[pulledby]'s aperto!"), 							span_warning("Você luta enquanto não consegue se libertar.[pulledby]'s aperto!"), null, null, pulledby)
-			to_chat(pulledby, span_danger("[src]Lutas como eles falham em se libertar de seu aperto!"))
+			visible_message(span_danger("[src] Lutas como elas não conseguem se libertar [pulledby]'s aperto!"), 							span_warning("Você luta enquanto não consegue se libertar.[pulledby]'s aperto!"), null, null, pulledby)
+			to_chat(pulledby, span_danger("[src] Lutas como eles falham em se libertar de seu aperto!"))
 		if(moving_resist && client) //we resisted by trying to move
 			client.move_delay = world.time + 4 SECONDS
 	else
@@ -1495,7 +1495,7 @@
 		to_chat(src, span_warning("Você é incapaz de disparar isso!"))
 		return FALSE
 	if(G.trigger_guard != TRIGGER_GUARD_ALLOW_ALL && (!ISADVANCEDTOOLUSER(src) && !HAS_TRAIT(src, TRAIT_GUN_NATURAL)))
-		to_chat(src, span_warning("Você tenta atirar[G], mas não pode usar o gatilho!"))
+		to_chat(src, span_warning("Você tenta atirar [G], mas não pode usar o gatilho!"))
 		return FALSE
 	return TRUE
 
@@ -1780,7 +1780,7 @@
 	if(!new_mob)
 		return
 
-	to_chat(src, span_hypnophrase(span_big("Sua forma se transforma na de um[what_to_randomize]!")))
+	to_chat(src, span_hypnophrase(span_big("Sua forma se transforma na de um [what_to_randomize]!")))
 
 	// And of course, make sure they get policy for being transformed
 	var/poly_msg = get_policy(POLICY_POLYMORPH)
@@ -2002,7 +2002,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 // used by secbot and monkeys Crossed
 /mob/living/proc/knockOver(mob/living/carbon/C)
 	if(C.key) //save us from monkey hordes
-		C.visible_message(span_warning(pick( 						"[C]Mergulha para fora[src]É isso aí!", 						"[C]tropeça[src]!", 						"[C]pula para fora[src]O caminho!", 						"[C]Viagens[src]E cai!", 						"[C]Derruba.[src]!", 						"[C]pula para fora[src]É isso aí!")))
+		C.visible_message(span_warning(pick( 						"[C] Mergulha para fora [src] É isso aí!", 						"[C] tropeça [src]!", 						"[C] pula para fora [src] O caminho!", 						"[C] Viagens [src] E cai!", 						"[C] Derruba.[src]!", 						"[C] pula para fora [src] É isso aí!")))
 	C.Paralyze(40)
 
 /mob/living/can_be_pulled(user, force)
@@ -2075,7 +2075,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 /mob/living/proc/mob_pickup(mob/living/user)
 	var/obj/item/mob_holder/holder = new inhand_holder_type(get_turf(src), src, held_state, head_icon, held_lh, held_rh, worn_slot_flags)
 	SEND_SIGNAL(src, COMSIG_LIVING_SCOOPED_UP, user, holder)
-	user.visible_message(span_warning("[user]Pegamos.[src]!"))
+	user.visible_message(span_warning("[user] Pegamos.[src]!"))
 	user.put_in_hands(holder)
 
 /mob/living/proc/set_name()
@@ -2089,17 +2089,17 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if (!user.num_hands)
 			return
 		if (user.mob_size <= mob_size)
-			to_chat(user, span_warning("[src]É muito grande para atender!"))
+			to_chat(user, span_warning("[src] É muito grande para atender!"))
 			return
 	if(!user.get_empty_held_indexes())
 		to_chat(user, span_warning("Suas mãos estão cheias!"))
 		return FALSE
 	if(buckled)
-		to_chat(user, span_warning("[src]Está preso a alguma coisa!"))
+		to_chat(user, span_warning("[src] Está preso a alguma coisa!"))
 		return FALSE
 	if(!instant)
-		user.visible_message(span_warning("[user]Começa a tentar pegar[src]!"), 						span_danger("Você começa a tentar pegar[src]..."), null, null, src)
-		to_chat(src, span_userdanger("[user]Começa a tentar te pegar!"))
+		user.visible_message(span_warning("[user] Começa a tentar pegar [src]!"), 						span_danger("Você começa a tentar pegar [src]..."), null, null, src)
+		to_chat(src, span_userdanger("[user] Começa a tentar te pegar!"))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return FALSE
 	mob_pickup(user)
@@ -2753,14 +2753,14 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 	if(isplatingturf(loc))
 		var/turf/open/floor/smashed_plating = loc
-		visible_message(span_danger("[src]é jogado violentamente em[smashed_plating], esmagando-o e batendo direto através dele!"),
-				span_userdanger("Você é jogado violentamente em[smashed_plating], esmagando-o e batendo direto através dele!"))
+		visible_message(span_danger("[src] é jogado violentamente em [smashed_plating], esmagando-o e batendo direto através dele!"),
+				span_userdanger("Você é jogado violentamente em [smashed_plating], esmagando-o e batendo direto através dele!"))
 		apply_damage(rand(5,20), BRUTE, BODY_ZONE_CHEST)
 		smashed_plating.ScrapeAway(1, CHANGETURF_INHERIT_AIR)
 
 	for(var/obj/structure/lattice/lattice in loc)
-		visible_message(span_danger("[src]é jogado violentamente em[lattice], esmagando-o e batendo direto através dele!"),
-			span_userdanger("Você é jogado violentamente em[lattice], esmagando-o e batendo direto através dele!"))
+		visible_message(span_danger("[src] é jogado violentamente em [lattice], esmagando-o e batendo direto através dele!"),
+			span_userdanger("Você é jogado violentamente em [lattice], esmagando-o e batendo direto através dele!"))
 		apply_damage(rand(5,10), BRUTE, BODY_ZONE_CHEST)
 		lattice.deconstruct(FALSE)
 
@@ -2882,7 +2882,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		reviver.log_message("has revived mob [key_name(src)] with a malfunctioning lazarus injector.", LOG_GAME)
 		if(!isnull(src.mind))
 			src.mind.enslave_mind_to_creator(reviver)
-		to_chat(src, span_userdanger("Sirva[reviver.real_name], e ajudar[reviver.p_them()]completando[reviver.p_their()]Gols a qualquer custo."))
+		to_chat(src, span_userdanger("Sirva [reviver.real_name], e ajudar [reviver.p_them()] completando [reviver.p_their()] Gols a qualquer custo."))
 		lazarus_policy = get_policy(ROLE_LAZARUS_BAD) || "You have been revived by a malfunctioning lazarus injector! You are now enslaved by whoever revived you."
 	to_chat(src, span_boldnotice(lazarus_policy))
 
@@ -2943,7 +2943,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 
 	if(!cause_hallucination(chosen, "admin forced by [key_name_admin(admin)]"))
-		to_chat(admin, "Essa alucinação.[chosen]Não poderia ser executado - pode ser inválido com este tipo de multidão ou não tem efeitos.")
+		to_chat(admin, "Essa alucinação.[chosen] Não poderia ser executado - pode ser inválido com este tipo de multidão ou não tem efeitos.")
 		return
 
 	message_admins("[key_name_admin(admin)] gave [ADMIN_LOOKUPFLW(src)] a hallucination. (Type: [chosen])")
@@ -3084,7 +3084,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		scouter.set_jitter_if_lower(comparative_fitness SECONDS)
 		return "[span_notice("You'd estimate [p_their()] fitness level at about...")] [span_boldwarning("What?!? [our_fitness_level]???")]"
 
-	return span_notice("Você estimaria[p_their()]nível de fitness em cerca de[our_fitness_level]. [comparative_fitness <= 0.33 ? "Pathetic." : ""]")
+	return span_notice("Você estimaria [p_their()] nível de fitness em cerca de [our_fitness_level]. [comparative_fitness <= 0.33 ? "Pathetic." : ""]")
 
 ///Performs the aftereffects of blocking a projectile.
 /mob/living/proc/block_projectile_effects()

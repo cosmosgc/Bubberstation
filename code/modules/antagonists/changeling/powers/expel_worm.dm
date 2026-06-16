@@ -23,7 +23,7 @@
 	if(!.)
 		return
 	var/mob/living/basic/blood_worm/invader = locate() in owner.loc
-	to_chat(owner, span_danger("Você expulsa\the [invader]Do seu corpo!"))
+	to_chat(owner, span_danger("Você expulsa\the [invader] Do seu corpo!"))
 	to_chat(invader, span_userdanger("Você é expulso pelo corpo de\the [owner.loc]!"))
 	invader.leave_host() // hasta la vista, worm
 	return TRUE

@@ -14,9 +14,9 @@
 		return
 
 	if(quickdraw)
-		to_chat(user, span_notice("Você desliza discretamente[to_insert]Em[parent]Clique com o botão direito para removê-lo."))
+		to_chat(user, span_notice("Você desliza discretamente [to_insert] Em [parent] Clique com o botão direito para removê-lo."))
 	else
-		to_chat(user, span_notice("Você desliza discretamente[to_insert]Em[parent]."))
+		to_chat(user, span_notice("Você desliza discretamente [to_insert] Em [parent]."))
 
 ///Small pockets
 /datum/storage/pockets/small

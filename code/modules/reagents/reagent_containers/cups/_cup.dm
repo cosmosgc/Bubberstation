@@ -54,7 +54,7 @@
 	. = ..()
 	if(drink_type)
 		var/list/types = bitfield_to_list(drink_type, FOOD_FLAGS)
-		. += span_notice("O rótulo diz que contém[LOWER_TEXT(english_list(types))]Ingredientes.")
+		. += span_notice("O rótulo diz que contém [LOWER_TEXT(english_list(types))] Ingredientes.")
 	if(can_lid)
 		if(has_lid)
 			. += span_notice("Está selado com uma tampa de borracha laranja brilhante[!isnull(lid_assembly) ? "with an assembly attached ontop of it" : ""].")
@@ -101,16 +101,16 @@
 		if(DOING_INTERACTION_WITH_TARGET(user, target_mob))
 			return ITEM_INTERACT_BLOCKING
 		target_mob.visible_message(
-			span_danger("[user]Tentativas de se alimentar[target_mob]Algo de[src]."),
-			span_userdanger("[user]Tenta te alimentar de algo.[src]."),
+			span_danger("[user] Tentativas de se alimentar [target_mob] Algo de [src]."),
+			span_userdanger("[user] Tenta te alimentar de algo.[src]."),
 		)
 		if(!do_after(user, 3 SECONDS, target_mob))
 			return ITEM_INTERACT_BLOCKING
 		if(!reagents || !reagents.total_volume)
 			return ITEM_INTERACT_BLOCKING // The drink might be empty after the delay, such as by spam-feeding
 		target_mob.visible_message(
-			span_danger("[user]ração[target_mob]Algo de[src]."),
-			span_userdanger("[user]Te comida de algo[src]."),
+			span_danger("[user] ração [target_mob] Algo de [src]."),
+			span_userdanger("[user] Te comida de algo [src]."),
 		)
 		if(target_mob.is_blind())
 			to_chat(target_mob, span_notice("Você sente que alguém te dá algo."))
@@ -121,19 +121,19 @@
 			if(DOING_INTERACTION_WITH_TARGET(user, user))
 				return ITEM_INTERACT_BLOCKING
 			user.visible_message(
-				span_danger("[user]Tentando beber de[src]."),
-				span_userdanger("[user]Tentando beber de[src]."),
+				span_danger("[user] Tentando beber de [src]."),
+				span_userdanger("[user] Tentando beber de [src]."),
 			)
 			if(!do_after(user, 1.25 SECONDS, user))
 				return ITEM_INTERACT_BLOCKING
 			if(!reagents || !reagents.total_volume)
 				return ITEM_INTERACT_BLOCKING
 			user.visible_message(
-				span_danger("[user]bebidas de[src]."),
-				span_userdanger("[user]bebidas de[src]."),
+				span_danger("[user] bebidas de [src]."),
+				span_userdanger("[user] bebidas de [src]."),
 				ignored_mobs = list(user),
 			)
-		to_chat(user, span_notice("Você engoliu um gole de[src]."))
+		to_chat(user, span_notice("Você engoliu um gole de [src]."))
 
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, target_mob, user)
 	SEND_SIGNAL(target_mob, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
@@ -188,7 +188,7 @@
 /obj/item/reagent_containers/cup/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(has_lid && istype(tool, /obj/item/assembly_holder))
 		if (lid_assembly)
-			to_chat(user, span_warning("[src]A tampa já tem uma montagem ligada a ela!"))
+			to_chat(user, span_warning("[src] A tampa já tem uma montagem ligada a ela!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (attach_assembly(tool, user))
@@ -198,18 +198,18 @@
 
 	if (lid_assembly && istype(tool, /obj/item/stock_parts/power_store/cell))
 		if (attached_cell)
-			to_chat(user, span_warning("[src]Já tem.\a [attached_cell]Apegado a ele!"))
+			to_chat(user, span_warning("[src] Já tem.\a [attached_cell] Apegado a ele!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (isnull(locate(/obj/item/assembly/igniter) in lid_assembly))
-			to_chat(user, span_warning("[lid_assembly]não tem uma ignição para conectar[src]Pará!"))
+			to_chat(user, span_warning("[lid_assembly] não tem uma ignição para conectar [src] Pará!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if (!user.transferItemToLoc(tool, src))
-			to_chat(user, span_warning("[tool]está preso em sua mão!"))
+			to_chat(user, span_warning("[tool] está preso em sua mão!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("Você anexa[tool]Por baixo.[src]Um tampa."))
+		to_chat(user, span_notice("Você anexa [tool] Por baixo.[src] Um tampa."))
 		add_fingerprint(user)
 		log_bomber(user, "attached [tool.name] to", src)
 		attached_cell = tool
@@ -221,7 +221,7 @@
 
 	if (attached_cell && istype(tool, /obj/item/stack/cable_coil))
 		if (cell_wired)
-			to_chat(user, span_warning("[attached_cell]Já está ligado a[lid_assembly]!"))
+			to_chat(user, span_warning("[attached_cell] Já está ligado a [lid_assembly]!"))
 			return ITEM_INTERACT_BLOCKING
 
 		var/obj/item/stack/cable_coil/cable = tool
@@ -229,7 +229,7 @@
 			to_chat(user, span_warning("Você precisa de pelo menos 5 cabos de arame.[attached_cell]!"))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("Você liga.[attached_cell]Para[lid_assembly]."))
+		to_chat(user, span_notice("Você liga.[attached_cell] Para [lid_assembly]."))
 		add_fingerprint(user)
 		cell_wired = TRUE
 		update_appearance()
@@ -240,9 +240,9 @@
 
 	if(istype(tool, /obj/item/food/egg)) //breaking eggs
 		if(reagents.holder_full())
-			to_chat(user, span_notice("[src]Está cheio."))
+			to_chat(user, span_notice("[src] Está cheio."))
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você quebra[tool]Em[src]."))
+		to_chat(user, span_notice("Você quebra [tool] Em [src]."))
 		tool.reagents.trans_to(src, tool.reagents.total_volume, transferred_by = user)
 		qdel(tool)
 		return ITEM_INTERACT_SUCCESS
@@ -341,10 +341,10 @@
 
 /obj/item/reagent_containers/cup/proc/attach_assembly(obj/item/assembly_holder/assembly, mob/living/user)
 	if (!user.transferItemToLoc(assembly, src))
-		to_chat(user, span_warning("[assembly]está preso em sua mão!"))
+		to_chat(user, span_warning("[assembly] está preso em sua mão!"))
 		return FALSE
 
-	to_chat(user, span_notice("Você anexa[assembly]Para[src]Um tampa."))
+	to_chat(user, span_notice("Você anexa [assembly] Para [src] Um tampa."))
 	add_fingerprint(user)
 	lid_assembly = assembly
 	lid_assembly.master = src
@@ -580,7 +580,7 @@
 		playsound(src, 'sound/effects/slosh.ogg', 25, TRUE)
 		return ITEM_INTERACT_SUCCESS
 	if(isprox(tool)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
-		to_chat(user, span_notice("Você acrescenta[tool]Para[src]."))
+		to_chat(user, span_notice("Você acrescenta [tool] Para [src]."))
 		qdel(tool)
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
@@ -609,7 +609,7 @@
 	. = ..()
 	if (slot & ITEM_SLOT_HEAD)
 		if(reagents.total_volume)
-			to_chat(user, span_userdanger("[src]O conteúdo está espalhando em você!"))
+			to_chat(user, span_userdanger("[src] O conteúdo está espalhando em você!"))
 			reagents.expose(user, TOUCH)
 			reagents.clear_reagents()
 		update_container_flags(NONE)
@@ -684,7 +684,7 @@
 				return juice_item(grinded, user) ? ITEM_INTERACT_BLOCKING : ITEM_INTERACT_SUCCESS
 			if("Grind")
 				return grind_item(grinded, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você tenta moer o próprio morteiro em vez de[grinded]Você falhou."))
+		to_chat(user, span_notice("Você tenta moer o próprio morteiro em vez de [grinded] Você falhou."))
 		return ITEM_INTERACT_BLOCKING
 	if(grinded)
 		to_chat(user, span_warning("Já tem algo lá dentro!"))
@@ -703,22 +703,22 @@
 
 /obj/item/reagent_containers/cup/mortar/proc/grind_item(obj/item/item, mob/living/carbon/human/user)
 	if(item.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("Você tenta moer[item], mas Desapareça!"))
+		to_chat(user, span_notice("Você tenta moer [item], mas Desapareça!"))
 		qdel(item)
 		return
 
 	if(!item.grind(reagents, user))
 		if(isstack(item))
-			to_chat(user, span_notice("[src]Tenta moer tantas peças de[item]o mais possível."))
+			to_chat(user, span_notice("[src] Tenta moer tantas peças de [item] o mais possível."))
 		else
-			to_chat(user, span_danger("Você falha em moer[item]."))
+			to_chat(user, span_danger("Você falha em moer [item]."))
 		return
 
-	to_chat(user, span_notice("Você moe[item]em um bom pó."))
+	to_chat(user, span_notice("Você moe [item] em um bom pó."))
 
 /obj/item/reagent_containers/cup/mortar/proc/juice_item(obj/item/item, mob/living/carbon/human/user)
 	if(item.flags_1 & HOLOGRAM_1)
-		to_chat(user, span_notice("Você tenta suco[item], mas Desapareça!"))
+		to_chat(user, span_notice("Você tenta suco [item], mas Desapareça!"))
 		qdel(item)
 		return
 
@@ -726,7 +726,7 @@
 		to_chat(user, span_notice("Você não tem suco.[item]."))
 		return
 
-	to_chat(user, span_notice("Seu suco.[item]em um líquido fino."))
+	to_chat(user, span_notice("Seu suco.[item] em um líquido fino."))
 
 //Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
 /obj/item/reagent_containers/cup/coffeepot
@@ -758,5 +758,5 @@
 	can_lid = TRUE
 
 /obj/item/reagent_containers/cup/tube/attach_assembly(obj/item/assembly_holder/assembly, mob/living/user)
-	to_chat(user, span_warning("[src]A tampa é muito pequena para caber.[assembly]!"))
+	to_chat(user, span_warning("[src] A tampa é muito pequena para caber.[assembly]!"))
 	return FALSE

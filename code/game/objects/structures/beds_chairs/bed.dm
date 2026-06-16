@@ -45,14 +45,14 @@
 
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler]Deite-se em[src]."),
-			span_notice("Você se deita[src]."),
+			span_notice("[buckler] Deite-se em [src]."),
+			span_notice("Você se deita [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler]Deitados[being_buckled]Para baixo.[src]."),
-			span_notice("[buckler]Deita você em cima[src]."),
+			span_notice("[buckler] Deitados [being_buckled] Para baixo.[src]."),
+			span_notice("[buckler] Deita você em cima [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -62,14 +62,14 @@
 
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]levanta-se de[src]."),
-			span_notice("Você se levanta de[src]."),
+			span_notice("[unbuckler] levanta-se de [src]."),
+			span_notice("Você se levanta de [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]puxa[being_unbuckled]Para cima de[src]."),
-			span_notice("[unbuckler]te puxa de[src]."),
+			span_notice("[unbuckler] puxa [being_unbuckled] Para cima de [src]."),
+			span_notice("[unbuckler] te puxa de [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -219,13 +219,13 @@
 		if(has_buckled_mobs())
 			if(buckled_mobs.len > 1)
 				unbuckle_all_mobs()
-				user.visible_message(span_notice("[user]Solta todas as criaturas de[src]."))
+				user.visible_message(span_notice("[user] Solta todas as criaturas de [src]."))
 			else
 				user_unbuckle_mob(buckled_mobs[1],user)
 		else
 			silicon_bed.loaded = src
 			forceMove(silicon_bed)
-			user.visible_message(span_notice("[user]Coleta[src]."), span_notice("Você coleciona[src]."))
+			user.visible_message(span_notice("[user] Coleta [src]."), span_notice("Você coleciona [src]."))
 		return TRUE
 	else
 		return ..()
@@ -239,7 +239,7 @@
 	if(has_buckled_mobs())
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	user.visible_message(span_notice("[user]colapsos[src]."), span_notice("Você colapsa.[src]."))
+	user.visible_message(span_notice("[user] colapsos [src]."), span_notice("Você colapsa.[src]."))
 	var/obj/structure/bed/medical/emergency/folding_bed = new foldable_type(get_turf(src))
 	user.put_in_hands(folding_bed)
 	qdel(src)
@@ -259,10 +259,10 @@
 	if(istype(item, /obj/item/emergency_bed/silicon))
 		var/obj/item/emergency_bed/silicon/silicon_bed = item
 		if(silicon_bed.loaded)
-			to_chat(user, span_warning("[silicon_bed]Já tem uma cama carregada!"))
+			to_chat(user, span_warning("[silicon_bed] Já tem uma cama carregada!"))
 			return
 
-		user.visible_message(span_notice("[user]Cargas[src]."), span_notice("Você carrega.[src]em[silicon_bed]."))
+		user.visible_message(span_notice("[user] Cargas [src]."), span_notice("Você carrega.[src] em [silicon_bed]."))
 		silicon_bed.loaded = new/obj/structure/bed/medical/emergency(silicon_bed)
 		qdel(src) //"Load"
 		return
@@ -301,7 +301,7 @@
 /obj/item/emergency_bed/silicon/deploy_bed(mob/user, atom/location)
 	if(loaded)
 		loaded.forceMove(location)
-		user.visible_message(span_notice("[user]implante[loaded]."), span_notice("Você vai embora.[loaded]."))
+		user.visible_message(span_notice("[user] implante [loaded]."), span_notice("Você vai embora.[loaded]."))
 		loaded = null
 	else
 		to_chat(user, span_warning("A doca está vazia!"))
@@ -359,7 +359,7 @@
 
 	owned = TRUE
 	name = "[furball]'s bed"
-	desc = "[furball]A cama! Parece confortável."
+	desc = "[furball] A cama! Parece confortável."
 	return TRUE // Let any callers know that this bed is ours now
 
 /obj/structure/bed/dogbed/buckle_mob(mob/living/furball, force, check_loc)

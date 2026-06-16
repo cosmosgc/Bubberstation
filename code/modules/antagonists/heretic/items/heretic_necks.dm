@@ -66,10 +66,10 @@
 
 /obj/item/clothing/neck/heretic_focus/crimson_medallion/attack_self(mob/living/user, modifiers)
 	. = ..()
-	to_chat(user, span_danger("Você começa apertando forte[src]..."))
+	to_chat(user, span_danger("Você começa apertando forte [src]..."))
 	if(!do_after(user, 1.25 SECONDS, src))
 		return
-	to_chat(user, span_danger("[src]explode em uma chuva de sangue e sangue, molhando seu braço. Você pode sentir o sangue escorrendo na sua pele. Você se sente imediatamente melhor, mas logo, a sensação fica oca como suas veias coçam."))
+	to_chat(user, span_danger("[src] explode em uma chuva de sangue e sangue, molhando seu braço. Você pode sentir o sangue escorrendo na sua pele. Você se sente imediatamente melhor, mas logo, a sensação fica oca como suas veias coçam."))
 	new /obj/effect/gibspawner/generic(get_turf(src))
 	var/heal_amt = user.adjust_brute_loss(-50)
 	user.adjust_fire_loss( -(50 - abs(heal_amt)) ) // no double dipping

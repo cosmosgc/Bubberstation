@@ -63,10 +63,10 @@
 		return
 
 	if(on_cooldown)
-		to_chat(user, span_warning("[src]Foi abalado recentemente, precisa de tempo para se resolver."))
+		to_chat(user, span_warning("[src] Foi abalado recentemente, precisa de tempo para se resolver."))
 		return
 
-	user.visible_message(span_notice("[user]Começa a tremer.[src]."), span_notice("Você começa a tremer[src]."), span_hear("Você ouve tremores e golpes."))
+	user.visible_message(span_notice("[user] Começa a tremer.[src]."), span_notice("Você começa a tremer [src]."), span_hear("Você ouve tremores e golpes."))
 
 	shaking = TRUE
 
@@ -130,7 +130,7 @@
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/item/toy/eightball/haunted/attack_ghost(mob/user)
 	if(!shaking)
-		to_chat(user, span_warning("[src]Não está sendo abalado no momento."))
+		to_chat(user, span_warning("[src] Não está sendo abalado no momento."))
 		return
 	interact(user)
 	return ..()

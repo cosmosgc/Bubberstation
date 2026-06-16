@@ -69,7 +69,7 @@
 		morph_back()
 
 /obj/item/hardened_spike/proc/morph_back()
-	visible_message(span_warning("[src]rachaduras e torções, mudando de forma!"))
+	visible_message(span_warning("[src] rachaduras e torções, mudando de forma!"))
 	for(var/obj/tongue as anything in contents)
 		tongue.forceMove(get_turf(src))
 	qdel(src)
@@ -175,6 +175,6 @@
 	var/mob/living/carbon/spike_owner = chem_spike.get_embed()?.owner
 	// Message first because it'll shift back into a tongue right after moving
 	if (istype(spike_owner))
-		spike_owner.visible_message(span_notice("[chem_spike]Cai fora.[spike_owner]!"))
+		spike_owner.visible_message(span_notice("[chem_spike] Cai fora.[spike_owner]!"))
 	chem_spike.forceMove(get_turf(chem_spike))
 	return TRUE

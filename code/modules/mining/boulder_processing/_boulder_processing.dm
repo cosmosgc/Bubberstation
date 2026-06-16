@@ -78,8 +78,8 @@
 	var/boulder_count = 0
 	for(var/obj/item/boulder/potential_boulder in contents)
 		boulder_count += 1
-	. += span_notice("Capacidade de armazenamento =<b>[boulder_count]/[boulders_held_max]Pedras</b>.")
-	. += span_notice("Pode processar até<b>[boulders_processing_count]Pedras</b>de uma vez.")
+	. += span_notice("Capacidade de armazenamento =<b>[boulder_count]/[boulders_held_max] Pedras</b>.")
+	. += span_notice("Pode processar até<b>[boulders_processing_count] Pedras</b>de uma vez.")
 
 	if(anchored)
 		. += span_notice("É...[EXAMINE_HINT("anchored")]No lugar.")
@@ -208,7 +208,7 @@
 	PROTECTED_PROC(TRUE)
 
 	Shake(duration = 1 SECONDS)
-	rockman.visible_message(span_warning("[rockman]é processado por[src]!"), span_userdanger("Você é processado em pedaços por[src]!"))
+	rockman.visible_message(span_warning("[rockman] é processado por [src]!"), span_userdanger("Você é processado em pedaços por [src]!"))
 	rockman.investigate_log("was gibbed by [src] for being a golem", INVESTIGATE_DEATHS)
 	rockman.gib(DROP_ALL_REMAINS)
 
@@ -272,7 +272,7 @@
 			amount = points_held
 		id_card.registered_account.mining_points += amount
 		points_held = round(points_held - amount)
-		to_chat(user, span_notice("Você diz[amount]Pontos de mineração de\the [src]para[id_card]."))
+		to_chat(user, span_notice("Você diz [amount] Pontos de mineração de\the [src] para [id_card]."))
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE

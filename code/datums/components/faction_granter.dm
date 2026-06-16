@@ -20,7 +20,7 @@
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 	if(!grant_message) //Yes we could do this in the init call with default args, but it scares people
-		grant_message = "Você se tornou amigo de[faction_to_grant]"
+		grant_message = "Você se tornou amigo de [faction_to_grant]"
 	src.faction_to_grant = faction_to_grant
 	src.holy_role_required = holy_role_required
 	src.grant_message = grant_message
@@ -36,18 +36,18 @@
 /datum/component/faction_granter/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(used)
-		examine_list += span_notice("[parent]O favor de conceder energia foi usado.")
+		examine_list += span_notice("[parent] O favor de conceder energia foi usado.")
 	else
-		examine_list += span_notice("Usando[parent]Em suas mãos lhe concederá favor com[faction_to_grant]\s")
+		examine_list += span_notice("Usando [parent] Em suas mãos lhe concederá favor com [faction_to_grant]\s")
 
 ///signal called on parent being interacted with in hand
 /datum/component/faction_granter/proc/on_self_attack(atom/source, mob/user)
 	SIGNAL_HANDLER
 	if(used)
-		to_chat(user, span_warning("O poder de[parent]Foi usado!"))
+		to_chat(user, span_warning("O poder de [parent] Foi usado!"))
 		return
 	if(user.mind?.holy_role < holy_role_required)
-		to_chat(user, span_warning("Você não é santa o suficiente para invocar o poder de[parent]!"))
+		to_chat(user, span_warning("Você não é santa o suficiente para invocar o poder de [parent]!"))
 		return
 
 	to_chat(user, grant_message)

@@ -52,7 +52,7 @@
 		return
 	var/mob/living/silicon/ai/malf_candidate = law_datum.owner
 	if(!istype(malf_candidate)) //If you are using it on cyborg upload console or a cyborg
-		to_chat(sender, span_warning("Você deve usar[src]Em um console de upload de IA ou o núcleo de IA em si."))
+		to_chat(sender, span_warning("Você deve usar [src] Em um console de upload de IA ou o núcleo de IA em si."))
 		return
 	if(malf_candidate.mind?.has_antag_datum(/datum/antagonist/malf_ai)) //Already malf
 		to_chat(sender, span_warning("Erro desconhecido ocorreu. Processo de envio abortado."))

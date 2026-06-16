@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(ticker)
 				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
-			to_chat(world, span_notice("<b>Bem-vindo a[station_name()]!</b>"))
+			to_chat(world, span_notice("<b>Bem-vindo a [station_name()]!</b>"))
 			for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
 				// BUBBER EDIT CHANGE BEGIN - Replace with more rich message
 				// send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
@@ -323,7 +323,7 @@ SUBSYSTEM_DEF(ticker)
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore,SetRoundStart))
 
-	to_chat(world, span_notice(span_bold("Bem-vindo a[station_name()]Aprovar sua estadia!")))
+	to_chat(world, span_notice(span_bold("Bem-vindo a [station_name()] Aprovar sua estadia!")))
 	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
 	current_state = GAME_STATE_PLAYING
@@ -408,9 +408,9 @@ SUBSYSTEM_DEF(ticker)
 		if(!iter_human.hardcore_survival_score)
 			continue
 		if(iter_human.is_antag())
-			to_chat(iter_human, span_notice("Você vai ganhar.[round(iter_human.hardcore_survival_score) * 2]Pontos aleatórios hardcore se você texto verde esta rodada!"))
+			to_chat(iter_human, span_notice("Você vai ganhar.[round(iter_human.hardcore_survival_score) * 2] Pontos aleatórios hardcore se você texto verde esta rodada!"))
 		else
-			to_chat(iter_human, span_notice("Você vai ganhar.[round(iter_human.hardcore_survival_score)]Pontos aleatórios se sobreviver a essa rodada!"))
+			to_chat(iter_human, span_notice("Você vai ganhar.[round(iter_human.hardcore_survival_score)] Pontos aleatórios se sobreviver a essa rodada!"))
 
 /datum/controller/subsystem/ticker/proc/display_roundstart_logout_report()
 	var/list/msg = list("[span_boldnotice("Roundstart logout report")]\n\n")
@@ -749,47 +749,47 @@ SUBSYSTEM_DEF(ticker)
 	switch(news_report)
 		// The nuke was detonated on the syndicate recon outpost
 		if(NUKE_SYNDICATE_BASE)
-			news_message = "Em um ataque ousado, a equipe heróica de[decoded_station_name]Detonou um dispositivo nuclear no coração de uma base terrorista."
+			news_message = "Em um ataque ousado, a equipe heróica de [decoded_station_name] Detonou um dispositivo nuclear no coração de uma base terrorista."
 		// The station was destroyed by nuke ops
 		if(STATION_DESTROYED_NUKE)
-			news_message = "Gostaríamos de assegurar a todos os funcionários que os relatórios de um Sindicato apoiaram o ataque nuclear em[decoded_station_name]são, de fato, uma farsa. Tenha um dia seguro!"
+			news_message = "Gostaríamos de assegurar a todos os funcionários que os relatórios de um Sindicato apoiaram o ataque nuclear em [decoded_station_name] são, de fato, uma farsa. Tenha um dia seguro!"
 		// The station was evacuated (normal result)
 		if(STATION_EVACUATED)
 			// Had an emergency reason supplied to pass along
 			if(emergency_reason)
-				news_message = "[decoded_station_name]Foi evacuado após transmitir o seguinte sinal de socorro:\n\n[decoded_emergency_reason]"
+				news_message = "[decoded_station_name] Foi evacuado após transmitir o seguinte sinal de socorro:\n\n [decoded_emergency_reason]"
 			else
-				news_message = "A tripulação de[decoded_station_name]Foi evacuado em meio a relatos não confirmados de atividade inimiga."
+				news_message = "A tripulação de [decoded_station_name] Foi evacuado em meio a relatos não confirmados de atividade inimiga."
 		// A blob won
 		if(BLOB_WIN)
-			news_message = "[decoded_station_name]foi superado por um surto biológico desconhecido, matando toda a tripulação a bordo. Não deixe isso acontecer com você! Lembre-se, uma estação de trabalho limpa é uma estação de trabalho segura."
+			news_message = "[decoded_station_name] foi superado por um surto biológico desconhecido, matando toda a tripulação a bordo. Não deixe isso acontecer com você! Lembre-se, uma estação de trabalho limpa é uma estação de trabalho segura."
 		// A blob was destroyed
 		if(BLOB_DESTROYED)
-			news_message = "[decoded_station_name]está passando por procedimentos de descontaminação após a destruição de um perigo biológico. Como um lembrete, qualquer tripulante com cãibras ou inchaço deve reportar-se imediatamente à segurança para incineração."
+			news_message = "[decoded_station_name] está passando por procedimentos de descontaminação após a destruição de um perigo biológico. Como um lembrete, qualquer tripulante com cãibras ou inchaço deve reportar-se imediatamente à segurança para incineração."
 		// A certain percentage of all cultists managed to escape at the end of round
 		if(CULT_ESCAPE)
 			news_message = "Alerta de segurança, um grupo de fanáticos religiosos escapou.[decoded_station_name]."
 		// Cult was completely or almost completely wiped out
 		if(CULT_FAILURE)
-			news_message = "Após o desmantelamento de um culto restrito a bordo[decoded_station_name]Gostaríamos de lembrar a todos os funcionários que a adoração fora da Capela é estritamente proibida, e causa de demissão."
+			news_message = "Após o desmantelamento de um culto restrito a bordo [decoded_station_name] Gostaríamos de lembrar a todos os funcionários que a adoração fora da Capela é estritamente proibida, e causa de demissão."
 		// Cult summoned Nar'sie
 		if(CULT_SUMMON)
-			news_message = "Os funcionários da companhia gostariam de esclarecer que[decoded_station_name]foi programado para ser desactivado após danos de meteoros no início deste ano. Relatos anteriores de um terrível Eldritch foram feitos em erro."
+			news_message = "Os funcionários da companhia gostariam de esclarecer que [decoded_station_name] foi programado para ser desactivado após danos de meteoros no início deste ano. Relatos anteriores de um terrível Eldritch foram feitos em erro."
 		// Nuke detonated, but missed the station entirely
 		if(NUKE_MISS)
-			news_message = "O Sindicato estragou um ataque terrorista.[decoded_station_name]Detonando uma arma nuclear no espaço vazio próximo."
+			news_message = "O Sindicato estragou um ataque terrorista.[decoded_station_name] Detonando uma arma nuclear no espaço vazio próximo."
 		// All nuke ops got killed
 		if(OPERATIVES_KILLED)
-			news_message = "Reparos para[decoded_station_name]Estão em andamento depois que um esquadrão de elite do Sindicato da Morte foi exterminado pela tripulação."
+			news_message = "Reparos para [decoded_station_name] Estão em andamento depois que um esquadrão de elite do Sindicato da Morte foi exterminado pela tripulação."
 		// Nuke ops results inconclusive - Crew escaped without the disk, or nukies were left alive, or something
 		if(OPERATIVE_SKIRMISH)
-			news_message = "Uma luta entre as forças de segurança e agentes do Sindicato a bordo.[decoded_station_name]Terminou com os lados sangrande, mas intacto."
+			news_message = "Uma luta entre as forças de segurança e agentes do Sindicato a bordo.[decoded_station_name] Terminou com os lados sangrande, mas intacto."
 		// Revolution victory
 		if(REVS_WIN)
-			news_message = "Autoridades da companhia tranquilizaram investidores que apesar de uma revolta sindical levou a bordo[decoded_station_name]Não haverá aumentos salariais para os trabalhadores."
+			news_message = "Autoridades da companhia tranquilizaram investidores que apesar de uma revolta sindical levou a bordo [decoded_station_name] Não haverá aumentos salariais para os trabalhadores."
 		// Revolution defeat
 		if(REVS_LOSE)
-			news_message = "[decoded_station_name]Coloque rapidamente uma tentativa equivocada de motim. Lembre-se, sindicalizar é ilegal!"
+			news_message = "[decoded_station_name] Coloque rapidamente uma tentativa equivocada de motim. Lembre-se, sindicalizar é ilegal!"
 		// All wizards (plus apprentices) have been killed
 		if(WIZARD_KILLED)
 			news_message = "As tensões aumentaram com a Federação do Feiticeiro Espacial após a morte de um de seus membros a bordo.[decoded_station_name]."
@@ -801,17 +801,17 @@ SUBSYSTEM_DEF(ticker)
 					if(overmind.max_count < overmind.announcement_size)
 						continue
 
-					news_message = "[decoded_station_name]está atualmente em processo de descontaminação após uma explosão controlada de radiação ser usada para remover uma gosma biológica. Todos os funcionários foram evacuados em segurança antes, e estão desfrutando de férias relaxantes."
+					news_message = "[decoded_station_name] está atualmente em processo de descontaminação após uma explosão controlada de radiação ser usada para remover uma gosma biológica. Todos os funcionários foram evacuados em segurança antes, e estão desfrutando de férias relaxantes."
 					break
 			// A self destruct or something else
 			else
-				news_message = "[decoded_station_name]ativou seu dispositivo de autodestruição por razões desconhecidas. Tentativas de clonar o Capitão para prisão e execução estão em andamento."
+				news_message = "[decoded_station_name] ativou seu dispositivo de autodestruição por razões desconhecidas. Tentativas de clonar o Capitão para prisão e execução estão em andamento."
 		// The emergency escape shuttle was hijacked
 		if(SHUTTLE_HIJACK)
-			news_message = "Durante procedimentos de evacuação de rotina, o transporte de emergência de[decoded_station_name]Tinha seus protocolos de navegação corrompidos e saiu do curso, mas foi recuperado pouco depois. O seguinte sinal de socorro foi enviado antes da evacuação.\n\n[Gibberish(decoded_emergency_reason, FALSE, 8)]"
+			news_message = "Durante procedimentos de evacuação de rotina, o transporte de emergência de [decoded_station_name] Tinha seus protocolos de navegação corrompidos e saiu do curso, mas foi recuperado pouco depois. O seguinte sinal de socorro foi enviado antes da evacuação.\n\n [Gibberish(decoded_emergency_reason, FALSE, 8)]"
 		// A supermatter cascade triggered
 		if(SUPERMATTER_CASCADE)
-			news_message = "Oficiais estão aconselhando colônias próximas sobre uma zona de exclusão recentemente declarada no setor em torno[decoded_station_name]."
+			news_message = "Oficiais estão aconselhando colônias próximas sobre uma zona de exclusão recentemente declarada no setor em torno [decoded_station_name]."
 
 	//SKYRAT EDIT - START
 	if(SSblackbox.first_death)
@@ -867,7 +867,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, span_boldannounce("Um administrador atrasou a final."))
 		return
 
-	to_chat(world, span_boldannounce("Reiniciando o Mundo em[DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, span_boldannounce("Reiniciando o Mundo em [DisplayTimeText(delay)]. [reason]"))
 
 	var/statspage = CONFIG_GET(string/roundstatsurl)
 	var/gamelogloc = CONFIG_GET(string/gamelogurl)

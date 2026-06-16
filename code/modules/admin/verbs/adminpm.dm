@@ -400,7 +400,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		admin_ticket_log(recipient,
 			"<font color='purple'>PM From [name_key_with_link]: [keyword_parsed_msg]</font>",
 			log_in_blackbox = FALSE,
-			player_message = "<font color='purple'>PM De[link_to_us]: [send_message]</font>")
+			player_message = "<font color='purple'>PM De [link_to_us]: [send_message]</font>")
 
 		if(!already_logged) //Reply to an existing ticket
 			SSblackbox.LogAhelp(recipient_ticket_id, "Reply", send_message, recip_ckey, our_ckey)

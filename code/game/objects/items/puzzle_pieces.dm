@@ -130,7 +130,7 @@
 		return
 	var/obj/item/keycard/key = attacking_item
 	if(!try_puzzle_open(key.puzzle_id))
-		to_chat(user, span_notice("[src]Buzzes. Esta não deve ser a chave certa."))
+		to_chat(user, span_notice("[src] Buzzes. Esta não deve ser a chave certa."))
 
 //Test doors. Gives admins a few doors to use quickly should they so choose for events.
 /obj/machinery/door/puzzle/keycard/yellow_required
@@ -302,7 +302,7 @@
 	for(var/checking_light in light_list)
 		if(!checking_light)
 			return
-	visible_message(span_boldnotice("[src]Fica totalmente carregado!"))
+	visible_message(span_boldnotice("[src] Fica totalmente carregado!"))
 	powered = TRUE
 	SEND_SIGNAL(src, COMSIG_PUZZLE_COMPLETED)
 	playsound(src, 'sound/machines/synth/synth_yes.ogg', 100, TRUE)
@@ -362,7 +362,7 @@
 		return
 	used = single_use
 	update_icon_state()
-	visible_message(span_notice("[user]Aperte um botão.[src]."), span_notice("Aperte um botão.[src]."))
+	visible_message(span_notice("[user] Aperte um botão.[src]."), span_notice("Aperte um botão.[src]."))
 	playsound(src, 'sound/machines/terminal/terminal_button07.ogg', 45, TRUE)
 	on_puzzle_complete()
 

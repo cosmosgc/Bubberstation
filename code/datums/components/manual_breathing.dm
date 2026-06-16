@@ -58,14 +58,14 @@
 	var/next_text = initial(next_breath_type.key)
 	if(world.time > (last_breath + check_every + grace_period))
 		if(!warn_dying)
-			to_chat(C, span_userdanger("Você começa a sufocar, você precisa[next_text]!"))
+			to_chat(C, span_userdanger("Você começa a sufocar, você precisa [next_text]!"))
 			warn_dying = TRUE
 
 		L.apply_organ_damage(damage_rate)
 		C.losebreath += 0.8
 	else if(world.time > (last_breath + check_every))
 		if(!warn_grace)
-			to_chat(C, span_danger("Você sente a necessidade de[next_text]!"))
+			to_chat(C, span_danger("Você sente a necessidade de [next_text]!"))
 			warn_grace = TRUE
 
 /datum/component/manual_breathing/proc/check_added_organ(mob/who_cares, obj/item/organ/O)

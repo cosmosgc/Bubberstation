@@ -818,7 +818,7 @@
 		/datum/component/anti_magic, 		antimagic_flags = MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, 		inventory_flags = ITEM_SLOT_OCLOTHING, 		charges = 1, 		block_magic = CALLBACK(src, PROC_REF(drain_antimagic)), 		expiration = CALLBACK(src, PROC_REF(decay)) 	)
 
 /obj/item/clothing/suit/armor/durability/holymelon/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src]Perde um pouco de brilho e brilho..."))
+	to_chat(user, span_warning("[src] Perde um pouco de brilho e brilho..."))
 
 /obj/item/clothing/suit/armor/durability/holymelon/proc/decay()
 	take_damage(8, BRUTE, 0, 0)

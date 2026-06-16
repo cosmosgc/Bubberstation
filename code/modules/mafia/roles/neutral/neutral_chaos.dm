@@ -34,7 +34,7 @@
 		modpc.update_static_data_for_all_viewers()
 	else
 		game.update_static_data(body)
-	send_message_to_player(span_userdanger("Sua obsessão é[obsession.body.real_name]Linchá-los para ganhar!"))
+	send_message_to_player(span_userdanger("Sua obsessão é [obsession.body.real_name] Linchá-los para ganhar!"))
 	RegisterSignal(obsession, COMSIG_MAFIA_ON_KILL, PROC_REF(check_victory))
 	UnregisterSignal(game, COMSIG_MAFIA_SUNDOWN)
 
@@ -49,7 +49,7 @@
 		game.award_role(winner_award, src)
 		reveal_role(game, FALSE)
 	else
-		to_chat(body, span_userdanger("Você falhou no seu objetivo de linchar[obsession.body.real_name]!"))
+		to_chat(body, span_userdanger("Você falhou no seu objetivo de linchar [obsession.body.real_name]!"))
 
 /datum/mafia_role/clown
 	name = "Clown"

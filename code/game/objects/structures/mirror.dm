@@ -85,10 +85,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(!deconstructable)
 		balloon_alert(user, "A magia impede o desapego!")
 		return NONE
-	user.visible_message(span_notice("[user]Começa a se separar.[src]..."), span_notice("Você começa a se separar.[src]..."))
+	user.visible_message(span_notice("[user] Começa a se separar.[src]..."), span_notice("Você começa a se separar.[src]..."))
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 3 SECONDS))
-		user.visible_message(span_notice("[user]Detaches[src]!"), span_notice("Você se desprende.[src]Da parede."))
+		user.visible_message(span_notice("[user] Detaches [src]!"), span_notice("Você se desprende.[src] Da parede."))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct()
 		return ITEM_INTERACT_SUCCESS
@@ -283,7 +283,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	. = ..()
 	if(broken || . <= 0) // breaking a mirror truly gets you bad luck!
 		return
-	to_chat(user, span_warning("Um frio escorre pela sua espinha como[src]Estilhaços..."))
+	to_chat(user, span_warning("Um frio escorre pela sua espinha como [src] Estilhaços..."))
 	user.AddComponent(/datum/component/omen, incidents_left = 7)
 
 /obj/structure/mirror/bullet_act(obj/projectile/proj)
@@ -293,7 +293,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	. = ..()
 	if(broken) // breaking a mirror truly gets you bad luck!
 		var/mob/living/unlucky_dude = proj.firer
-		to_chat(unlucky_dude, span_warning("Um frio escorre pela sua espinha como[src]Estilhaços..."))
+		to_chat(unlucky_dude, span_warning("Um frio escorre pela sua espinha como [src] Estilhaços..."))
 		unlucky_dude.AddComponent(/datum/component/omen, incidents_left = 7)
 
 /obj/structure/mirror/atom_break(damage_flag, mapload)
@@ -431,7 +431,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if (!changed || QDELETED(user) || !IN_GIVEN_RANGE(user, src, 3)) // 3 range gives a tiny bit of leeway if you try to run away after using it
 		return
 	user.visible_message(
-		span_bolddanger("O chão se divide por baixo[user]Como[user.p_their()]Mão deixa o espelho!"),
+		span_bolddanger("O chão se divide por baixo [user] Como [user.p_their()] Mão deixa o espelho!"),
 		span_notice("Perfeito. Muito melhor! Agora.<i>Ninguém.</i>Será capaz de resistir..."),
 	)
 

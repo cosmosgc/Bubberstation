@@ -100,7 +100,7 @@
 		if(sameside)
 			. += span_notice("Este rato serve sob você.")
 		else
-			. += span_warning("Este camponês serve um rei diferente! Strike.[p_them()]Abaixe-se!")
+			. += span_warning("Este camponês serve um rei diferente! Strike.[p_them()] Abaixe-se!")
 
 	else if(user != src && ismouse(user))
 		if(sameside)
@@ -121,7 +121,7 @@
 	var/aheal_included = full_heal_flags & HEAL_ADMIN
 	var/cap = CONFIG_GET(number/ratcap)
 	if(!aheal_included && !ckey && length(SSmobs.cheeserats) >= cap)
-		visible_message(span_warning("[src]Mas não continua se movendo devido à esmagadora população de roedores na estação!"))
+		visible_message(span_warning("[src] Mas não continua se movendo devido à esmagadora população de roedores na estação!"))
 		return
 
 	. = ..()
@@ -190,7 +190,7 @@
 	SIGNAL_HANDLER
 
 	if(ishuman(entered) && stat == CONSCIOUS)
-		to_chat(entered, span_notice("[icon2html(src, entered)]Squeak!"))
+		to_chat(entered, span_notice("[icon2html(src, entered)] Squeak!"))
 
 /// Called when a mouse is hand-fed some cheese, it will stop being afraid of humans
 /mob/living/basic/mouse/tamed(mob/living/tamer, obj/item/food/cheese/cheese)
@@ -205,7 +205,7 @@
 	// Royal cheese will evolve us into a regal rat
 	if(istype(cheese, /obj/item/food/cheese/royal))
 		visible_message(
-			span_warning("[src]devora[cheese]Eles se transformam em algo... maior!"),
+			span_warning("[src] devora [cheese] Eles se transformam em algo... maior!"),
 			span_notice("Você devora.[cheese], e começar a transformar em algo ... maior!"),
 		)
 		evolve_into_regal_rat()
@@ -216,7 +216,7 @@
 	// Normal cheese will either heal us
 	if(prob(90) || health < maxHealth)
 		visible_message(
-			span_notice("[src]Biscoitos[cheese]."),
+			span_notice("[src] Biscoitos [cheese]."),
 			span_notice("Você morde.[cheese][health < maxHealth ? ", restoring your health" : ""].")
 		)
 		adjust_health(-maxHealth)
@@ -225,13 +225,13 @@
 	// ...if the rat cap allows us, that is
 	else if(length(SSmobs.cheeserats) >= cap)
 		visible_message(
-			span_warning("[src]Come com cuidado.[cheese], escondendo-o do[cap]Ratos na estação!"),
-			span_notice("Você morde com cuidado.[cheese], escondendo-o do[cap]outros ratos a bordo da estação.")
+			span_warning("[src] Come com cuidado.[cheese], escondendo-o do [cap] Ratos na estação!"),
+			span_notice("Você morde com cuidado.[cheese], escondendo-o do [cap] outros ratos a bordo da estação.")
 		)
 	else
 		visible_message(
-			span_notice("[src]Morde através[cheese], atraindo outro rato!"),
-			span_notice("Você morde[cheese], atraindo outro rato!")
+			span_notice("[src] Morde através [cheese], atraindo outro rato!"),
+			span_notice("Você morde [cheese], atraindo outro rato!")
 		)
 		create_a_new_rat()
 
@@ -252,8 +252,8 @@
 /mob/living/basic/mouse/proc/try_bite_cable(obj/structure/cable/cable)
 	if(cable.avail() && !HAS_TRAIT(src, TRAIT_SHOCKIMMUNE) && prob(cable_zap_prob))
 		visible_message(
-			span_warning("[src]Mastiga através\the [cable]Está torrado!"),
-			span_userdanger("Enquanto você morde profundamente[cable]De repente você percebe que pode ter sido uma má ideia."),
+			span_warning("[src] Mastiga através\the [cable] Está torrado!"),
+			span_userdanger("Enquanto você morde profundamente [cable] De repente você percebe que pode ter sido uma má ideia."),
 			span_hear("Você ouve a eletricidade quebrar."),
 		)
 		// Finely toasted
@@ -265,7 +265,7 @@
 
 	else
 		visible_message(
-			span_warning("[src]Mastiga através\the [cable]."),
+			span_warning("[src] Mastiga através\the [cable]."),
 			span_notice("Você mastiga\the [cable]."),
 		)
 
@@ -365,7 +365,7 @@
 /obj/item/food/deadmouse/examine(mob/user)
 	. = ..()
 	if (reagents?.has_reagent(/datum/reagent/yuck) || reagents?.has_reagent(/datum/reagent/fuel))
-		. += span_warning("[p_Theyre()]Pintando de combustível e cheirando mal.")
+		. += span_warning("[p_Theyre()] Pintando de combustível e cheirando mal.")
 
 ///Spawn a new mouse from this dead mouse item when hit by a lazarus injector and conditions are met.
 /obj/item/food/deadmouse/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
@@ -407,7 +407,7 @@
 	var/datum/reagents/target_reagents = interacting_with.reagents
 	var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
 	if(target_reagents.has_reagent(/datum/reagent/fuel) && target_reagents.trans_to(src, trans_amount))
-		to_chat(user, span_notice("Você mergulha.[src]em[interacting_with]."))
+		to_chat(user, span_notice("Você mergulha.[src] em [interacting_with]."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/food/deadmouse/moldy

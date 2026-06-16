@@ -19,7 +19,7 @@
 	if(istype(cast_on.loc, /obj/structure/closet))
 		var/obj/structure/closet/open_closet = cast_on.loc
 		open_closet.open(force = TRUE)
-		open_closet.visible_message(span_warning("[open_closet]De arrependimento, voa!"))
+		open_closet.visible_message(span_warning("[open_closet] De arrependimento, voa!"))
 
 	return ..()
 
@@ -49,7 +49,7 @@
 			var/mob/living/victim_living = victim
 			victim_living.Paralyze(10 SECONDS)
 			victim_living.adjust_brute_loss(5)
-			to_chat(victim, span_userdanger("Você está batendo no chão por[caster]!"))
+			to_chat(victim, span_userdanger("Você está batendo no chão por [caster]!"))
 	else
 		if(sparkle_path)
 			// Created sparkles will disappear on their own
@@ -58,7 +58,7 @@
 		if(isliving(victim))
 			var/mob/living/victim_living = victim
 			victim_living.Paralyze(4 SECONDS)
-			to_chat(victim, span_userdanger("Você é jogado de volta por[caster]!"))
+			to_chat(victim, span_userdanger("Você é jogado de volta por [caster]!"))
 
 		// So stuff gets tossed around at the same time.
 		victim.safe_throw_at(

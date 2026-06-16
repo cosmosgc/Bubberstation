@@ -83,7 +83,7 @@
 		return
 	if (!(user in source.ai_controller?.blackboard[BB_FRIENDS_LIST]))
 		return
-	examine_list += span_notice("[source.p_They()]Parece.[source.p_s()]Feliz em vê-lo!")
+	examine_list += span_notice("[source.p_They()] Parece.[source.p_s()] Feliz em vê-lo!")
 
 /datum/component/obeys_commands/proc/on_key_pressed(mob/living/friend)
 	SIGNAL_HANDLER

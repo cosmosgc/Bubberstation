@@ -119,7 +119,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	if(stored_extinguisher)
 		stored_extinguisher.forceMove(loc)
-		to_chat(user, span_notice("Você remove telecinicamente.[stored_extinguisher]De[src]."))
+		to_chat(user, span_notice("Você remove telecinicamente.[stored_extinguisher] De [src]."))
 		stored_extinguisher = null
 		opened = TRUE
 		playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)

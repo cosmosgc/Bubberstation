@@ -20,14 +20,14 @@
 
 /obj/item/rag/examine(mob/user)
 	. = ..()
-	. += span_notice("Adicionando[/datum/reagent/water::name]UO[/datum/reagent/space_cleaner::name]para torná-lo um pouco melhor em esfregar.")
+	. += span_notice("Adicionando [/datum/reagent/water::name] UO [/datum/reagent/space_cleaner::name] para torná-lo um pouco melhor em esfregar.")
 	switch(blood_level)
 		if(1 to 4)
-			. += span_info("O[name]é um pouco sujo, mas ainda deve ser bom para a limpeza.")
+			. += span_info("O [name] é um pouco sujo, mas ainda deve ser bom para a limpeza.")
 		if(5 to 9)
-			. += span_warning("Isto.[name]Está sujo! Mas ainda deve ter alguns lenços.")
+			. += span_warning("Isto.[name] Está sujo! Mas ainda deve ter alguns lenços.")
 		if(10 to INFINITY)
-			. += span_warning("Isto.[name]Está imundo! Não pude limpar nada com isso!")
+			. += span_warning("Isto.[name] Está imundo! Não pude limpar nada com isso!")
 
 /obj/item/rag/interact(mob/user)
 	. = ..()
@@ -53,7 +53,7 @@
 			return ITEM_INTERACT_BLOCKING
 
 		if(reagents.holder_full())
-			balloon_alert(user, "[name]Está cheio!")
+			balloon_alert(user, "[name] Está cheio!")
 			return ITEM_INTERACT_BLOCKING
 
 		tool.reagents.trans_to(reagents, tool.reagents.total_volume, transferred_by = user)
@@ -72,7 +72,7 @@
 		holder.add_blood_DNA(GET_ATOM_BLOOD_DNA(src))
 
 /obj/item/rag/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está sufocando.[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está sufocando.[user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/rag/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -84,12 +84,12 @@
 	var/log_object = "containing [reagentlist]"
 	if(!carbon_target.is_mouth_covered())
 		reagents.trans_to(carbon_target, reagents.total_volume, transferred_by = user, methods = INGEST)
-		carbon_target.visible_message(span_danger("[user]Sufoca.\the [carbon_target]Com\the [src]!"), span_userdanger("[user]Sufoca você com\the [src]!"), span_hear("Você ouve gritos de surpresa."))
+		carbon_target.visible_message(span_danger("[user] Sufoca.\the [carbon_target] Com\the [src]!"), span_userdanger("[user] Sufoca você com\the [src]!"), span_hear("Você ouve gritos de surpresa."))
 		log_combat(user, carbon_target, "smothered", src, log_object)
 	else
 		reagents.expose(carbon_target, TOUCH)
 		reagents.clear_reagents()
-		carbon_target.visible_message(span_notice("[user]Toques\the [carbon_target]Com\the [src]."))
+		carbon_target.visible_message(span_notice("[user] Toques\the [carbon_target] Com\the [src]."))
 		log_combat(user, carbon_target, "touched", src, log_object)
 	return ITEM_INTERACT_SUCCESS
 
@@ -111,7 +111,7 @@
 		// snowflakeeeee check to make it a bit more intuitive when cleaning the rag.
 		if(istype(atom_to_clean, /obj/structure/sink))
 			return CLEAN_BLOCKED|CLEAN_DONT_BLOCK_INTERACTION
-		atom_to_clean.balloon_alert(cleaner, "[name]Está muito sujo!")
+		atom_to_clean.balloon_alert(cleaner, "[name] Está muito sujo!")
 		return CLEAN_BLOCKED
 	if(loc == cleaner)
 		return CLEAN_ALLOWED
@@ -146,7 +146,7 @@
 		add_blood_DNA(all_blood_dna)
 	update_appearance()
 	if(blood_level >= 10)
-		to_chat(cleaner, span_warning("[src]é muito sujo para limpar qualquer outra coisa! Lave primeiro!"))
+		to_chat(cleaner, span_warning("[src] é muito sujo para limpar qualquer outra coisa! Lave primeiro!"))
 	if(prob(10 * blood_level))
 		bloody_holder(cleaner)
 

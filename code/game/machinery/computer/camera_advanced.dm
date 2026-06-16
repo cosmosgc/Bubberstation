@@ -164,7 +164,7 @@
 	/* We're attempting to initialize the eye past this point */
 
 	if(!CreateEye())
-		to_chat(user, span_warning("\The [src]Faz um monte de erros intermináveis na tela. Algo está errado."))
+		to_chat(user, span_warning("\The [src] Faz um monte de erros intermináveis na tela. Algo está errado."))
 		return
 
 	SEND_SIGNAL(src, COMSIG_ADVANCED_CAMERA_EYE_CREATED, eyeobj)

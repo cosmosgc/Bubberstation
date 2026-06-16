@@ -321,7 +321,7 @@
 /obj/structure/table/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	if(!deconstruction_ready)
 		return NONE
-	to_chat(user, span_notice("Você começa a desmontar[src]..."))
+	to_chat(user, span_notice("Você começa a desmontar [src]..."))
 	if(tool.use_tool(src, user, 2 SECONDS, volume=50))
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
@@ -329,7 +329,7 @@
 /obj/structure/table/wrench_act_secondary(mob/living/user, obj/item/tool)
 	if(!deconstruction_ready)
 		return NONE
-	to_chat(user, span_notice("Você começa a desconstruir[src]..."))
+	to_chat(user, span_notice("Você começa a desconstruir [src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		frame = null
@@ -366,7 +366,7 @@
 	for(var/obj/item/thing in used_tray.contents)
 		AfterPutItemOnTable(thing, user)
 	used_tray.atom_storage.remove_all(drop_location())
-	user.visible_message(span_notice("[user]Vazios[used_tray]Vamos.[src]."))
+	user.visible_message(span_notice("[user] Vazios [used_tray] Vamos.[src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/table/proc/deck_act(mob/living/user, obj/item/toy/cards/deck/dealer_deck, list/modifiers, flip)
@@ -440,7 +440,7 @@
 /obj/structure/table/greyscale/finalize_material_effects(list/materials)
 	. = ..()
 	var/english_list = get_material_english_list(materials)
-	desc = "Um quadrado.[(length(materials) > 1) ? "amalgamation" : "piece"]de[english_list]em quatro pernas. Não pode se mover."
+	desc = "Um quadrado.[(length(materials) > 1) ? "amalgamation" : "piece"]de [english_list] em quatro pernas. Não pode se mover."
 
 ///Table on wheels
 /obj/structure/table/rolling
@@ -472,16 +472,16 @@
 		return
 
 	if(rable.loaded)
-		to_chat(user, span_warning("Você já tem.\a [rable.loaded]Atracado!"))
+		to_chat(user, span_warning("Você já tem.\a [rable.loaded] Atracado!"))
 		return ITEM_INTERACT_FAILURE
 
 	if(locate(/mob/living) in loc.get_all_contents())
-		to_chat(user, span_warning("Você não pode cobrar.\the [src]Com tanto em cima!"))
+		to_chat(user, span_warning("Você não pode cobrar.\the [src] Com tanto em cima!"))
 		return ITEM_INTERACT_FAILURE
 
 	rable.loaded = src
 	forceMove(rable)
-	user.visible_message(span_notice("[user]Coleta\the [src]."), span_notice("Você coleciona\the [src]."))
+	user.visible_message(span_notice("[user] Coleta\the [src]."), span_notice("Você coleciona\the [src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/table/rolling/AfterPutItemOnTable(obj/item/thing, mob/living/user)
@@ -569,7 +569,7 @@
 		table_shatter(M)
 
 /obj/structure/table/glass/proc/table_shatter(mob/living/victim)
-	visible_message(span_warning("[src]Quebra!"),
+	visible_message(span_warning("[src] Quebra!"),
 		span_danger("Você ouve vidros quebrando."))
 
 	playsound(loc, SFX_SHATTER, 50, TRUE)
@@ -630,7 +630,7 @@
 	if(QDELETED(src) || prob(66))
 		return
 	visible_message(
-		span_warning("[src]Bate em pedaços!"),
+		span_warning("[src] Bate em pedaços!"),
 		blind_message = span_hear("Você ouve o barulho da madeira sendo quebrada."),
 	)
 
@@ -948,14 +948,14 @@
 
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler]Deite-se em[src]."),
-			span_notice("Você se deita[src]."),
+			span_notice("[buckler] Deite-se em [src]."),
+			span_notice("Você se deita [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler]Deitados[being_buckled]Para baixo.[src]."),
-			span_notice("[buckler]Deita você em cima[src]."),
+			span_notice("[buckler] Deitados [being_buckled] Para baixo.[src]."),
+			span_notice("[buckler] Deita você em cima [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -965,14 +965,14 @@
 
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]levanta-se de[src]."),
-			span_notice("Você se levanta de[src]."),
+			span_notice("[unbuckler] levanta-se de [src]."),
+			span_notice("Você se levanta de [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]puxa[being_unbuckled]Para cima de[src]."),
-			span_notice("[unbuckler]te puxa de[src]."),
+			span_notice("[unbuckler] puxa [being_unbuckled] Para cima de [src]."),
+			span_notice("[unbuckler] te puxa de [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -1213,15 +1213,15 @@
 /obj/structure/table/optable/examine(mob/user)
 	. = ..()
 	if (air_tank)
-		. += span_notice("Tem.\a [air_tank]Seguro com um par de[EXAMINE_HINT("bolts")].")
+		. += span_notice("Tem.\a [air_tank] Seguro com um par de[EXAMINE_HINT("bolts")].")
 		if (patient)
-			. += span_info("Você pode se conectar[patient]É interno para\the [air_tank]arrastando\the [src]em cima deles.")
+			. += span_info("Você pode se conectar [patient] É interno para\the [air_tank] arrastando\the [src] em cima deles.")
 	else
 		. += span_notice("Tem um espaço para um tanque de ar embaixo.")
 	if (breath_mask)
-		. += span_notice("Tem.\a [breath_mask]ligado ao seu lado, o tubo seguro com um único[EXAMINE_HINT("screw")].")
+		. += span_notice("Tem.\a [breath_mask] ligado ao seu lado, o tubo seguro com um único[EXAMINE_HINT("screw")].")
 		if (breath_mask.loc == src)
-			. += span_info("Você pode soltar a máscara com o botão direito.\the [src]com uma mão vazia.")
+			. += span_info("Você pode soltar a máscara com o botão direito.\the [src] com uma mão vazia.")
 	else
 		. += span_notice("Há uma porta para um tubo de máscara de respiração do lado dele.")
 
@@ -1237,7 +1237,7 @@
 		balloon_alert(user, "Mãos ocupadas!")
 		return TRUE
 
-	to_chat(user, span_notice("Você vai embora.\the [breath_mask]De\the [src]."))
+	to_chat(user, span_notice("Você vai embora.\the [breath_mask] De\the [src]."))
 	update_appearance()
 	return TRUE
 
@@ -1260,8 +1260,8 @@
 		balloon_alert(user, "Sem conector interno!")
 		return
 
-	user.visible_message(span_notice("[user]Começa a se conectar.[src]'s[air_tank]para[patient]'s[internals]."), span_notice("Você começa a se conectar.[src]'s[air_tank]para[patient]'s[internals]..."), ignored_mobs = patient)
-	to_chat(patient, span_userdanger("[user]Começa a se conectar.[src]'s[air_tank]para o seu[internals]!"))
+	user.visible_message(span_notice("[user] Começa a se conectar.[src]'s [air_tank] para [patient]'s [internals]."), span_notice("Você começa a se conectar.[src]'s [air_tank] para [patient]'s [internals]..."), ignored_mobs = patient)
+	to_chat(patient, span_userdanger("[user] Começa a se conectar.[src]'s [air_tank] para o seu [internals]!"))
 
 	if (!do_after(user, 4 SECONDS, patient))
 		return
@@ -1270,8 +1270,8 @@
 		return
 
 	carbon_patient.open_internals(air_tank, is_external = TRUE)
-	to_chat(user, span_notice("Você se conecta.[src]'s[air_tank]para[patient]'s[internals]."))
-	to_chat(patient, span_userdanger("[user]conecta[src]'s[air_tank]para o seu[internals]!"))
+	to_chat(user, span_notice("Você se conecta.[src]'s [air_tank] para [patient]'s [internals]."))
+	to_chat(patient, span_userdanger("[user] conecta [src]'s [air_tank] para o seu [internals]!"))
 
 /obj/structure/table/optable/proc/on_mask_moved(datum/source, atom/oldloc, direction)
 	SIGNAL_HANDLER
@@ -1295,9 +1295,9 @@
 
 	if(isliving(loc))
 		var/mob/living/user = loc
-		to_chat(user, span_warning("[breath_mask]O tubo se estende demais e sai das suas mãos!"))
+		to_chat(user, span_warning("[breath_mask] O tubo se estende demais e sai das suas mãos!"))
 	else
-		visible_message(span_notice("[breath_mask]E volta para dentro.\the [src]."))
+		visible_message(span_notice("[breath_mask] E volta para dentro.\the [src]."))
 	snap_mask_back()
 
 /obj/structure/table/optable/proc/snap_mask_back()
@@ -1396,7 +1396,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
-	user.visible_message(span_danger("[user]Chutes[src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_danger("[user] Chutes [src]."), null, null, COMBAT_MESSAGE_RANGE)
 	take_damage(rand(4,8), BRUTE, MELEE, 1)
 
 /obj/structure/rack/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
@@ -1468,7 +1468,7 @@
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
 		var/obj/structure/rack/R = new /obj/structure/rack(get_turf(src))
-		user.visible_message(span_notice("[user]montar\a [R]."), span_notice("Você se reúne.\a [R]."))
+		user.visible_message(span_notice("[user] montar\a [R]."), span_notice("Você se reúne.\a [R]."))
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE

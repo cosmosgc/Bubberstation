@@ -49,7 +49,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/noticeboard, 32)
 				return
 			notices++
 			update_appearance(UPDATE_ICON)
-			to_chat(user, span_notice("Você prende o[O]Para o quadrado de olhos."))
+			to_chat(user, span_notice("Você prende o [O] Para o quadrado de olhos."))
 		else
 			to_chat(user, span_warning("A placa está cheia!"))
 	else

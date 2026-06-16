@@ -44,7 +44,7 @@
 	if (!found_part)
 		return
 
-	to_chat(mod.wearer, span_danger("[src]faz um som sinistro..."))
+	to_chat(mod.wearer, span_danger("[src] faz um som sinistro..."))
 	playsound(src, 'sound/items/modsuit/springlock.ogg', 75, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(snap_shut)), rand(3 SECONDS, 5 SECONDS))
 	RegisterSignals(mod, list(COMSIG_MOD_ACTIVATE, COMSIG_MOD_PART_RETRACTING), PROC_REF(on_activate_spring_block))
@@ -79,7 +79,7 @@
 	UnregisterSignal(mod, list(COMSIG_MOD_ACTIVATE, COMSIG_MOD_PART_RETRACTING))
 	if(!mod.wearer) //while there is a guaranteed user when on_wearer_exposed() fires, that isn't the same case for this proc
 		return
-	mod.wearer.visible_message("[src]Dentro.[mod.wearer]'s[mod.name]Fecha, mutila o usuário lá dentro!", span_userdanger("SNAP"))
+	mod.wearer.visible_message("[src] Dentro.[mod.wearer]'s [mod.name] Fecha, mutila o usuário lá dentro!", span_userdanger("SNAP"))
 	mod.wearer.emote("scream")
 	playsound(mod.wearer, 'sound/effects/snap.ogg', 75, TRUE, frequency = 0.5)
 	playsound(mod.wearer, 'sound/effects/splat.ogg', 50, TRUE, frequency = 0.5)
@@ -262,7 +262,7 @@
 		if(crisp_paper in mod.wearer.held_items)
 			mod.wearer.dropItemToGround(crisp_paper, force = TRUE)
 		crisp_paper.balloon_alert(mod.wearer, UNLINT("Carta de carga PC!"))
-		crisp_paper.visible_message(span_warning("[crisp_paper]Está muito crocante!"))
+		crisp_paper.visible_message(span_warning("[crisp_paper] Está muito crocante!"))
 		crisp_paper.fire_act(1000, 100)
 
 	drain_power(use_energy_cost)
@@ -326,7 +326,7 @@
 /obj/item/mod/module/atrocinator/on_activation(mob/activator)
 	// Auto-unbuckle anyone being carried to avoid lag issues
 	if(length(mod.wearer.buckled_mobs))
-		mod.wearer.visible_message("Como[mod.wearer]Flips,[mod.wearer.buckled_mobs[1]]Voa para fora[mod.wearer.p_their()]Para trás!")
+		mod.wearer.visible_message("Como [mod.wearer] Flips,[mod.wearer.buckled_mobs [1]]Voa para fora [mod.wearer.p_their()] Para trás!")
 		mod.wearer.unbuckle_all_mobs()
 
 	playsound(src, 'sound/effects/curse/curseattack.ogg', 50)

@@ -59,10 +59,10 @@
 		return NONE
 
 	if(target.get_embed()?.type == conferred_embed)
-		to_chat(user, span_warning("[target]já está revestido em[src]!"))
+		to_chat(user, span_warning("[target] já está revestido em [src]!"))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user]Começa a embrulhar[target]Com[src]."), span_notice("Você começa a embrulhar[target]Com[src]."))
+	user.visible_message(span_notice("[user] Começa a embrulhar [target] Com [src]."), span_notice("Você começa a embrulhar [target] Com [src]."))
 	playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 
 	if(!do_after(user, 3 SECONDS, target=target))
@@ -72,17 +72,17 @@
 	use(1)
 	if(istype(target, /obj/item/clothing/gloves/fingerless))
 		var/obj/item/clothing/gloves/tackler/offbrand/O = new /obj/item/clothing/gloves/tackler/offbrand
-		to_chat(user, span_notice("Você vira.[target]Em[O]Com[src]."))
+		to_chat(user, span_notice("Você vira.[target] Em [O] Com [src]."))
 		QDEL_NULL(target)
 		user.put_in_hands(O)
 		return ITEM_INTERACT_SUCCESS
 
 	if(target.get_embed()?.type == conferred_embed)
-		to_chat(user, span_warning("[target]já está revestido em[src]!"))
+		to_chat(user, span_warning("[target] já está revestido em [src]!"))
 		return ITEM_INTERACT_BLOCKING
 
 	target.set_embed(conferred_embed)
-	to_chat(user, span_notice("Termine de Embrulhar.[target]Com[src]."))
+	to_chat(user, span_notice("Termine de Embrulhar.[target] Com [src]."))
 	target.name = "[prefix] [target.name]"
 
 	if(isgrenade(target))
@@ -177,10 +177,10 @@
 		var/robot_is_damaged = robotic_pal.get_brute_loss()
 
 		if(!robot_is_damaged)
-			user.balloon_alert(user, "[robotic_pal]Não está danificado!")
+			user.balloon_alert(user, "[robotic_pal] Não está danificado!")
 			return ITEM_INTERACT_BLOCKING
 
-		user.visible_message(span_notice("[user]Começa a reparar.[robotic_pal]Com[src]."), span_notice("Você começa a reparar[robotic_pal]Com[src]."))
+		user.visible_message(span_notice("[user] Começa a reparar.[robotic_pal] Com [src]."), span_notice("Você começa a reparar [robotic_pal] Com [src]."))
 		playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 
 		if(!do_after(user, 3 SECONDS, target = robotic_pal))
@@ -188,7 +188,7 @@
 
 		robotic_pal.adjust_brute_loss(-object_repair_value)
 		use(1)
-		to_chat(user, span_notice("Você termina de consertar.[interacting_with]Com[src]."))
+		to_chat(user, span_notice("Você termina de consertar.[interacting_with] Com [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!isobj(interacting_with) || iseffect(interacting_with))
@@ -202,10 +202,10 @@
 	var/object_is_damaged = object_to_repair.get_integrity() < object_to_repair.max_integrity
 
 	if(!object_is_damaged)
-		user.balloon_alert(user, "[object_to_repair]Não está danificado!")
+		user.balloon_alert(user, "[object_to_repair] Não está danificado!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user]Começa a reparar.[object_to_repair]Com[src]."), span_notice("Você começa a reparar[object_to_repair]Com[src]."))
+	user.visible_message(span_notice("[user] Começa a reparar.[object_to_repair] Com [src]."), span_notice("Você começa a reparar [object_to_repair] Com [src]."))
 	playsound(user, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
 
 	if(!do_after(user, 3 SECONDS, target = object_to_repair))
@@ -218,5 +218,5 @@
 		object_to_repair.repair_damage(object_repair_value)
 
 	use(1)
-	to_chat(user, span_notice("Você termina de consertar.[interacting_with]Com[src]."))
+	to_chat(user, span_notice("Você termina de consertar.[interacting_with] Com [src]."))
 	return ITEM_INTERACT_SUCCESS

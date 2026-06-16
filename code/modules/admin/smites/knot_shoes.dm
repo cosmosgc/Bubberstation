@@ -10,6 +10,6 @@
 	var/mob/living/carbon/dude = target
 	var/obj/item/clothing/shoes/sick_kicks = dude.shoes
 	if (!sick_kicks || sick_kicks.fastening_type == SHOES_SLIPON)
-		to_chat(user, span_warning("[dude]Não tem sapatos para nós!"), confidential = TRUE)
+		to_chat(user, span_warning("[dude] Não tem sapatos para nós!"), confidential = TRUE)
 		return
 	sick_kicks.adjust_laces(SHOES_KNOTTED)

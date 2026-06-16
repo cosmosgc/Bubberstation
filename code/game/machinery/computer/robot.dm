@@ -150,13 +150,13 @@
 			if(allowed(usr))
 				var/mob/living/basic/drone/drone = locate(params["ref"]) in GLOB.mob_list
 				if(drone.hacked)
-					to_chat(usr, span_danger("ERRO:[drone]não está respondendo a comandos externos."))
+					to_chat(usr, span_danger("ERRO:[drone] não está respondendo a comandos externos."))
 				else
 					var/turf/T = get_turf(drone)
 					message_admins("[ADMIN_LOOKUPFLW(usr)] detonated [key_name_admin(drone)] at [ADMIN_VERBOSEJMP(T)]!")
 					log_silicon("[key_name(usr)] detonated [key_name(drone)]!")
 					do_sparks(3, TRUE< drone)
-					drone.visible_message(span_danger("\the [drone]Autodestruição!"))
+					drone.visible_message(span_danger("\the [drone] Autodestruição!"))
 					drone.investigate_log("has been gibbed by a robotics console.", INVESTIGATE_DEATHS)
 					drone.gib()
 
@@ -172,7 +172,7 @@
 	R.SetLockdown(!R.lockcharge)
 	to_chat(R, !R.lockcharge ? span_notice("Seu confinamento foi suspenso!") : span_alert("Você foi preso!"))
 	if(!isnull(console_location))
-		to_chat(R, span_alert("A localização aproximada do console que o mantém trancado é[console_location]"))
+		to_chat(R, span_alert("A localização aproximada do console que o mantém trancado é [console_location]"))
 	if(R.connected_ai)
 		to_chat(R.connected_ai, "[!R.lockcharge ? span_notice("NOTICE - Cyborg lockdown lifted") : span_alert("ALERT - Cyborg lockdown detected")]: <a href='byond://?src=[REF(R.connected_ai)];track=[html_encode(R.name)]'>[R.name]</a><br>")
 

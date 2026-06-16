@@ -146,7 +146,7 @@
 	// Give feedback from the slap.
 	// Additional feedback for if a rider did it
 	if (clicker != owner)
-		to_chat(clicker, span_notice("Você comanda.[owner]Para bater[target]com seus tentáculos."))
+		to_chat(clicker, span_notice("Você comanda.[owner] Para bater [target] com seus tentáculos."))
 
 	return TRUE
 
@@ -154,8 +154,8 @@
 	var/mob/living/living_to_slap = to_slap
 
 	owner.visible_message(
-		span_warning("[owner]tapas[to_slap]com seu tentáculo!"),
-		span_notice("Você bate.[to_slap]com seu tentáculo."),
+		span_warning("[owner] tapas [to_slap] com seu tentáculo!"),
+		span_notice("Você bate.[to_slap] com seu tentáculo."),
 	)
 	playsound(owner, 'sound/effects/emotes/assslap.ogg', 90)
 	var/atom/throw_target = get_edge_target_turf(to_slap, owner.dir)

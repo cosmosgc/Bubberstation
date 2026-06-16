@@ -127,7 +127,7 @@
 /obj/machinery/power/tracker/crowbar_act(mob/user, obj/item/I)
 	if(I.use_tool(src, user, 0))
 		playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-		user.visible_message(span_notice("[user]Cansado do copo.[src]."), span_notice("Você tira o copo.[src]."))
+		user.visible_message(span_notice("[user] Cansado do copo.[src]."), span_notice("Você tira o copo.[src]."))
 		deconstruct(TRUE)
 	return TRUE
 

@@ -89,21 +89,21 @@
 	if (target_mob == user) // no need for a target message
 		puff_timer = canister.self_administer_delay
 
-		pre_use_visible_message = span_notice("[user]coloca[src]Para[user.p_their()]lábios, dedos na lata...")
-		pre_use_self_message = span_notice("Você colocou[src]Em seus lábios e coloque pressão no recipiente...")
+		pre_use_visible_message = span_notice("[user] coloca [src] Para [user.p_their()] lábios, dedos na lata...")
+		pre_use_self_message = span_notice("Você colocou [src] Em seus lábios e coloque pressão no recipiente...")
 
-		post_use_visible_message = span_notice("[user]Toma uma tragada de[src]!")
-		post_use_self_message = span_notice("Você toma um gole de[src]!")
+		post_use_visible_message = span_notice("[user] Toma uma tragada de [src]!")
+		post_use_self_message = span_notice("Você toma um gole de [src]!")
 	else
 		puff_timer = canister.other_administer_delay
 
-		pre_use_visible_message = span_warning("[user]Tenta forçar[src]Entre[target_mob]Os lábios...")
-		pre_use_self_message = span_notice("Você tenta colocar[src]Para[target_mob]Os lábios...")
-		pre_use_target_message = span_userdanger("[user]Tenta forçar[src]entre seus lábios!")
+		pre_use_visible_message = span_warning("[user] Tenta forçar [src] Entre [target_mob] Os lábios...")
+		pre_use_self_message = span_notice("Você tenta colocar [src] Para [target_mob] Os lábios...")
+		pre_use_target_message = span_userdanger("[user] Tenta forçar [src] entre seus lábios!")
 
-		post_use_visible_message = span_warning("[user]forças[src]Entre[target_mob]Os lábios e empurra o cilindro para baixo!")
-		post_use_self_message = span_notice("Você força[src]Entre[target_mob]Lábios e pressione o cilindro!")
-		post_use_target_message = span_userdanger("[user]forças[src]entre seus lábios e prensas no recipiente, enchendo seus pulmões com aerossol!")
+		post_use_visible_message = span_warning("[user] forças [src] Entre [target_mob] Os lábios e empurra o cilindro para baixo!")
+		post_use_self_message = span_notice("Você força [src] Entre [target_mob] Lábios e pressione o cilindro!")
+		post_use_target_message = span_userdanger("[user] forças [src] entre seus lábios e prensas no recipiente, enchendo seus pulmões com aerossol!")
 
 	if (puff_timer > 0)
 		user.visible_message(pre_use_visible_message, ignored_mobs = list(user, target_mob))
@@ -260,11 +260,11 @@
 
 /obj/item/reagent_containers/inhaler_canister/handle_deconstruct(disassembled)
 	if (!reagents?.total_volume)
-		visible_message(span_warning("[src]Se abre, mas está vazio!"))
+		visible_message(span_warning("[src] Se abre, mas está vazio!"))
 		return ..()
 
 	do_chem_smoke(1, src, get_turf(src), carry = reagents, log = TRUE)
-	visible_message(span_warning("[src]Se abre e pulveriza seu conteúdo aerossilizado em todo lugar!"))
+	visible_message(span_warning("[src] Se abre e pulveriza seu conteúdo aerossilizado em todo lugar!"))
 	return ..()
 
 /obj/item/inhaler/medical

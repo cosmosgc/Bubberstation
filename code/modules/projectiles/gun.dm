@@ -193,9 +193,9 @@
 		if(pin)
 			. += "It has \a [pin] installed."
 			if(pin.pin_removable)
-				. += span_info("[pin]Parece que...[pin.p_they()]poderia ser removido com alguns<b>Ferramentas.</b>.")
+				. += span_info("[pin] Parece que...[pin.p_they()] poderia ser removido com alguns<b>Ferramentas.</b>.")
 			else
-				. += span_info("[pin]Parece que...[pin.p_theyre()]Firmemente trancado,[pin.p_they()]Parece impossível de remover.")
+				. += span_info("[pin] Parece que...[pin.p_theyre()] Firmemente trancado,[pin.p_they()] Parece impossível de remover.")
 		else
 			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
 
@@ -254,36 +254,36 @@
 		return FALSE
 	if(tk_firing(user))
 		visible_message(
-			span_danger("[src]O próprio fogo.[pointblank ? " point blank at [pbtarget]!" : "!"]"),
+			span_danger("[src] O próprio fogo.[pointblank ? " point blank at [pbtarget]!" : "!"]"),
 			blind_message = span_hear("Você ouve um tiro!"),
 			vision_distance = COMBAT_MESSAGE_RANGE
 		)
 	else if(pointblank)
 		if(user == pbtarget)
 			user.visible_message(
-				span_danger("[user]Fogos.[src]Ponto em branco.[user.p_them()]Eu!"),
-				span_userdanger("Você atira.[src]Acerte em si mesmo!"),
+				span_danger("[user] Fogos.[src] Ponto em branco.[user.p_them()] Eu!"),
+				span_userdanger("Você atira.[src] Acerte em si mesmo!"),
 				span_hear("Você ouve um tiro!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		else
 			user.visible_message(
-				span_danger("[user]Fogos.[src]Ponto em branco.[pbtarget]!"),
-				span_danger("Você atira.[src]Ponto em branco.[pbtarget]!"),
+				span_danger("[user] Fogos.[src] Ponto em branco.[pbtarget]!"),
+				span_danger("Você atira.[src] Ponto em branco.[pbtarget]!"),
 				span_hear("Você ouve um tiro!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 				ignored_mobs = pbtarget,
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
-			to_chat(pbtarget, span_userdanger("[user]Fogos.[src]Ponto em branco para você!"))
+			to_chat(pbtarget, span_userdanger("[user] Fogos.[src] Ponto em branco para você!"))
 		if(pb_knockback > 0 && ismob(pbtarget))
 			var/mob/PBT = pbtarget
 			var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
 			PBT.throw_at(throw_target, pb_knockback, 2)
 	else if(!tk_firing(user))
 		user.visible_message(
-			span_danger("[user]Fogos.[src]!"),
+			span_danger("[user] Fogos.[src]!"),
 			span_danger("Você atira.[src]!"),
 			span_hear("Você ouve um tiro!"),
 			vision_distance = COMBAT_MESSAGE_RANGE,
@@ -300,7 +300,7 @@
 		return ..()
 	var/mob/living/holder = loc
 	if(holder.is_holding(src) && holder.stat < UNCONSCIOUS)
-		to_chat(holder, span_boldwarning("[src]Derruba!"))
+		to_chat(holder, span_boldwarning("[src] Derruba!"))
 		holder.playsound_local(get_turf(src), 'sound/items/weapons/smash.ogg', 50, TRUE)
 	return ..()
 
@@ -330,15 +330,15 @@
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(40))
 		// yes this will sound silly for bows and wands, but that's a "gun" moment for you
 		user.visible_message(
-			span_danger("Enquanto tentava virar[src] [user]Puxa o gatilho acidentalmente!"),
-			span_userdanger("Enquanto tentava virar[src]Você puxa o gatilho acidentalmente!"),
+			span_danger("Enquanto tentava virar [src] [user] Puxa o gatilho acidentalmente!"),
+			span_userdanger("Enquanto tentava virar [src] Você puxa o gatilho acidentalmente!"),
 		)
 		process_fire(user, user, FALSE, user.get_random_valid_zone(even_weights = TRUE))
 		user.dropItemToGround(src, TRUE)
 	else
 		user.visible_message(
-			span_notice("[user]Gira.[src]Por aí.[user.p_their()]Dedo pelo gatilho. Isso é muito foda."),
-			span_notice("Você gira[src]ao redor do dedo pelo gatilho. Isso é muito foda."),
+			span_notice("[user] Gira.[src] Por aí.[user.p_their()] Dedo pelo gatilho. Isso é muito foda."),
+			span_notice("Você gira [src] ao redor do dedo pelo gatilho. Isso é muito foda."),
 		)
 		playsound(src, 'sound/items/handling/ammobox_pickup.ogg', 20, FALSE)
 
@@ -439,7 +439,7 @@
 				var/target_zone = user.get_random_valid_zone(blacklisted_parts = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM), even_weights = TRUE, bypass_warning = TRUE)
 				if(!target_zone)
 					return
-				to_chat(user, span_userdanger("Você se atira no pé com[src]!"))
+				to_chat(user, span_userdanger("Você se atira no pé com [src]!"))
 				process_fire(user, user, FALSE, null, target_zone)
 				SEND_SIGNAL(user, COMSIG_MOB_CLUMSY_SHOOT_FOOT)
 				if(!tk_firing(user) && !HAS_TRAIT(src, TRAIT_NODROP))
@@ -461,7 +461,7 @@
 			pin.auth_fail(user)
 			return FALSE
 	else
-		to_chat(user, span_warning("[src]O gatilho está travado. Esta arma não tem um alfinete de disparo instalado!"))
+		to_chat(user, span_warning("[src] O gatilho está travado. Esta arma não tem um alfinete de disparo instalado!"))
 		balloon_alert(user, "gatilho travado, alfinete de disparo necessário!")
 	return FALSE
 
@@ -479,7 +479,7 @@
 	if(chambered?.loaded_projectile)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
-				to_chat(user, span_warning("[src]Está mortífero! Não quer arriscar machucar ninguém..."))
+				to_chat(user, span_warning("[src] Está mortífero! Não quer arriscar machucar ninguém..."))
 				firing_burst = FALSE
 				return FALSE
 		var/sprd
@@ -578,7 +578,7 @@
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 				if(chambered.harmful) // Is the bullet chambered harmful?
-					to_chat(user, span_warning("[src]Está mortífero! Não quer arriscar machucar ninguém..."))
+					to_chat(user, span_warning("[src] Está mortífero! Não quer arriscar machucar ninguém..."))
 					return NONE
 			var/sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * total_random_spread)
 			before_firing(target,user)
@@ -616,13 +616,13 @@
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	if(pin?.pin_removable && user.is_holding(src))
-		user.visible_message(span_warning("[user]Removedor Tenta.[pin]De[src]Com[I]."),
-		span_notice("Você tenta remover[pin]De[src]Vai levar[DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
+		user.visible_message(span_warning("[user] Removedor Tenta.[pin] De [src] Com [I]."),
+		span_notice("Você tenta remover [pin] De [src] Vai levar [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
-			user.visible_message(span_notice("[pin]é retirado de[src]Por que[user], destruir o pino no processo."),
-								span_warning("Você se intromete.[pin]Fora com[I], destruir o pino no processo."), null, 3)
+			user.visible_message(span_notice("[pin] é retirado de [src] Por que [user], destruir o pino no processo."),
+								span_warning("Você se intromete.[pin] Fora com [I], destruir o pino no processo."), null, 3)
 			QDEL_NULL(pin)
 			return ITEM_INTERACT_SUCCESS
 
@@ -633,13 +633,13 @@
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	if(pin?.pin_removable && user.is_holding(src))
-		user.visible_message(span_warning("[user]Removedor Tenta.[pin]De[src]Com[I]."),
-		span_notice("Você tenta remover[pin]De[src]Vai levar[DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
+		user.visible_message(span_warning("[user] Removedor Tenta.[pin] De [src] Com [I]."),
+		span_notice("Você tenta remover [pin] De [src] Vai levar [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, 5, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
-			user.visible_message(span_notice("[pin]é cortado fora de[src]Por que[user], derretendo parte do pino no processo."),
-								span_warning("Você se encaixa.[pin]Fora[src]Com[I], derretendo parte do pino no processo."), null, 3)
+			user.visible_message(span_notice("[pin] é cortado fora de [src] Por que [user], derretendo parte do pino no processo."),
+								span_warning("Você se encaixa.[pin] Fora [src] Com [I], derretendo parte do pino no processo."), null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
@@ -650,13 +650,13 @@
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	if(pin?.pin_removable && user.is_holding(src))
-		user.visible_message(span_warning("[user]Removedor Tenta.[pin]De[src]Com[I]."),
-		span_notice("Você tenta remover[pin]De[src]Vai levar[DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
+		user.visible_message(span_warning("[user] Removedor Tenta.[pin] De [src] Com [I]."),
+		span_notice("Você tenta remover [pin] De [src] Vai levar [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
-			user.visible_message(span_notice("[pin]é arrancado de[src]Por que[user]Mexendo o pino no processo."),
-								span_warning("Você rasga[pin]Fora[src]Com[I]Mexendo o pino no processo."), null, 3)
+			user.visible_message(span_notice("[pin] é arrancado de [src] Por que [user] Mexendo o pino no processo."),
+								span_warning("Você rasga [pin] Fora [src] Com [I] Mexendo o pino no processo."), null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
@@ -671,24 +671,24 @@
 		return NONE
 
 	if(user == target)
-		target.visible_message(span_warning("[user]Palitos.[src]Em[user.p_their()]Boca, pronto para jogar o gatilho..."), 			span_userdanger("Você pega.[src]Na sua boca, pronto para puxar o gatilho..."))
+		target.visible_message(span_warning("[user] Palitos.[src] Em [user.p_their()] Boca, pronto para jogar o gatilho..."), 			span_userdanger("Você pega.[src] Na sua boca, pronto para puxar o gatilho..."))
 	else
-		target.visible_message(span_warning("[user]Ponto[src]Em[target]A cabeça, pronta para puxar o gatilho..."), 			span_userdanger("[user]Ponto[src]na sua cabeça, pronto para puxar o gatilho..."))
+		target.visible_message(span_warning("[user] Ponto [src] Em [target] A cabeça, pronta para puxar o gatilho..."), 			span_userdanger("[user] Ponto [src] na sua cabeça, pronto para puxar o gatilho..."))
 
 	fire_cd = TRUE
 
 	if(!bypass_timer && (!do_after(user, 12 SECONDS, target) || user.zone_selected != BODY_ZONE_PRECISE_MOUTH))
 		if(user)
 			if(user == target)
-				user.visible_message(span_notice("[user]Decidiu não atirar."))
+				user.visible_message(span_notice("[user] Decidiu não atirar."))
 			else if(target?.Adjacent(user))
-				target.visible_message(span_notice("[user]Decidiu poupar[target]"), span_notice("[user]Decidiu poupar sua vida!"))
+				target.visible_message(span_notice("[user] Decidiu poupar [target]"), span_notice("[user] Decidiu poupar sua vida!"))
 		fire_cd = FALSE
 		return ITEM_INTERACT_BLOCKING
 
 	fire_cd = FALSE
 
-	target.visible_message(span_warning("[user]Puxa o gatilho!"), span_userdanger("[(user == target) ? "You pull" : "[user] pulls"]O gatilho!"))
+	target.visible_message(span_warning("[user] Puxa o gatilho!"), span_userdanger("[(user == target) ? "You pull" : "[user] pulls"]O gatilho!"))
 
 	if(!chambered?.loaded_projectile)
 		shoot_with_empty_chamber()
@@ -724,7 +724,7 @@
 /obj/item/gun/proc/fire_at_opener(mob/user, obj/item/mail/traitor/letter)
 	if(!user.put_in_hands(src)) //this won't ever fail under normal circumstances, but will happen with the admin versions
 		forceMove(user.loc)
-	to_chat(user, span_danger("Enquanto você abre[letter]Você vê?[src]Para dentro![about_to_shoot_inside_mail_text]"))
+	to_chat(user, span_danger("Enquanto você abre [letter] Você vê?[src] Para dentro![about_to_shoot_inside_mail_text]"))
 	if(!can_shoot())
 		shoot_with_empty_chamber(user)
 		return

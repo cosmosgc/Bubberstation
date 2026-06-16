@@ -94,7 +94,7 @@
 		var/area/A = get_area(user)
 		if(istype(A, /area/centcom/wizard_station))
 			add_fingerprint(user)
-			to_chat(user, span_warning("Você sabe melhor do que violar a segurança do Den, é melhor esperar até sair para usar[src]."))
+			to_chat(user, span_warning("Você sabe melhor do que violar a segurança do Den, é melhor esperar até sair para usar [src]."))
 			return
 		else
 			no_den_usage = FALSE // Well you're probably not going back
@@ -143,10 +143,10 @@
 	return 1
 
 /obj/item/gun/magic/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	to_chat(user, span_warning("\The [src]Whizzles silenciosamente."))
+	to_chat(user, span_warning("\The [src] Whizzles silenciosamente."))
 
 /obj/item/gun/magic/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está girando[src]Acima.[user.p_their()]Cabeça, lançando uma explosão mágica! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está girando [src] Acima.[user.p_their()] Cabeça, lançando uma explosão mágica! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if (can_user_shoot(user))
 		charges--
 		return do_suicide(user)

@@ -218,7 +218,7 @@
 	. = ..()
 	if(!.)
 		return
-	mod.wearer.visible_message(span_warning("[mod.wearer]Começa a carregar um chute!"), 		blind_message = span_hear("Você ouve um som de carga."))
+	mod.wearer.visible_message(span_warning("[mod.wearer] Começa a carregar um chute!"), 		blind_message = span_hear("Você ouve um som de carga."))
 	playsound(src, 'sound/items/modsuit/loader_charge.ogg', 75, TRUE)
 	balloon_alert(mod.wearer, "Você começa a carregar...")
 	animate(mod.wearer, 0.3 SECONDS, pixel_z = 16, flags = ANIMATION_RELATIVE, easing = SINE_EASING|EASE_OUT)

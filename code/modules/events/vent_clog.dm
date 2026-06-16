@@ -153,7 +153,7 @@
 
 	var/mob/new_mob = new spawned_mob(vent_loc) // we spawn it early so we can actually use is_blocked_turf
 	living_mobs += WEAKREF(new_mob)
-	vent.visible_message(span_warning("[new_mob]Rasteja para fora[vent]!"))
+	vent.visible_message(span_warning("[new_mob] Rasteja para fora [vent]!"))
 
 	var/list/potential_locations = list(vent_loc) // already confirmed to be accessable via the 2nd if check of the proc
 
@@ -178,7 +178,7 @@
 ///Handles the actual unclogging action and ends the event on completion.
 /datum/round_event/vent_clog/proc/attempt_unclog(mob/user)
 	if(vent.welded)
-		to_chat(user, span_notice("Você não pode bombear.[vent]Se estiver soldada!"))
+		to_chat(user, span_notice("Você não pode bombear.[vent] Se estiver soldada!"))
 		return
 
 	user.balloon_alert_to_viewers("plunging vent...", "plunging clogged vent...")

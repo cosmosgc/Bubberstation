@@ -156,18 +156,18 @@ Stabilized extracts:
 		to_chat(user, span_notice("Você arremesso.[src], estremeceligeiramente."))
 		START_PROCESSING(SSobj, src)
 	if(choice == "Familiar Species")
-		to_chat(user, span_notice("Você aperta.[src]E uma forma parece mudar para dentro."))
+		to_chat(user, span_notice("Você aperta.[src] E uma forma parece mudar para dentro."))
 		generate_mobtype()
 		START_PROCESSING(SSobj, src)
 	if(choice == "Familiar Sentience")
-		to_chat(user, span_notice("Você cutuca.[src]E deixa sair um pulso brilhante."))
+		to_chat(user, span_notice("Você cutuca.[src] E deixa sair um pulso brilhante."))
 		saved_mind = null
 		START_PROCESSING(SSobj, src)
 	if(choice == "Familiar Name")
 		var/newname = sanitize_name(tgui_input_text(user, "Would you like to change the name of [mob_name]", "Name change", mob_name, MAX_NAME_LEN))
 		if(newname)
 			mob_name = newname
-		to_chat(user, span_notice("Você fala suavemente em[src], e tremeligeiramente em resposta."))
+		to_chat(user, span_notice("Você fala suavemente em [src], e tremeligeiramente em resposta."))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/slimecross/stabilized/oil
@@ -197,10 +197,10 @@ Stabilized extracts:
 		return NONE
 
 	if(regencore)
-		to_chat(user, span_warning("[src]Já tem um cruzamento regenerativo armazenado nele!"))
+		to_chat(user, span_warning("[src] Já tem um cruzamento regenerativo armazenado nele!"))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Seu lugar.[tool]Em[src]Preparando o extrato para aplicação automática!"))
+	to_chat(user, span_notice("Seu lugar.[tool] Em [src] Preparando o extrato para aplicação automática!"))
 	regencore = tool
 	tool.forceMove(src)
 	return ITEM_INTERACT_SUCCESS

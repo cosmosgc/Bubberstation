@@ -70,7 +70,7 @@
 		return FALSE
 
 	if(IS_HERETIC(to_curse) && to_curse != user)
-		to_chat(user, span_warning("[to_curse.p_their()]Os laços com o Mansus são muito fortes. Você é incapaz de amaldiçoar[to_curse]."))
+		to_chat(user, span_warning("[to_curse.p_their()] Os laços com o Mansus são muito fortes. Você é incapaz de amaldiçoar [to_curse]."))
 		return TRUE
 
 	if(to_curse.can_block_magic(MAGIC_RESISTANCE|MAGIC_RESISTANCE_HOLY, charge_cost = 0))
@@ -80,7 +80,7 @@
 	log_combat(user, to_curse, "cursed via heretic ritual", addition = "([name])")
 	var/obj/item/codex_cicatrix/morbus/cursed_book = locate() in selected_atoms
 	curse(to_curse, cursed_book)
-	to_chat(user, span_hierophant("Você lançou um[name]Sobre[to_curse.real_name]."))
+	to_chat(user, span_hierophant("Você lançou um [name] Sobre [to_curse.real_name]."))
 
 	fingerprints = null
 	blood_samples = null

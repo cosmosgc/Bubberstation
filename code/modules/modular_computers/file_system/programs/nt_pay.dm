@@ -83,7 +83,7 @@
 		return NT_PAY_STATUS_INVALID_MONEY
 	if(token == current_user.pay_token)
 		if(user)
-			to_chat(user, span_notice("Você não pode enviar[MONEY_NAME]para você mesmo."))
+			to_chat(user, span_notice("Você não pode enviar [MONEY_NAME] para você mesmo."))
 		return NT_PAY_SATUS_SENDER_IS_RECEIVER
 
 	for(var/account in SSeconomy.bank_accounts_by_id)

@@ -62,9 +62,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a extirpar carne infectada de[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a extirpar a carne infectada de[FORMAT_LIMB_OWNER(limb)]Com[tool]."),
-		span_notice("[surgeon]Começa a extirpar a carne infectada de[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a extirpar carne infectada de [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a extirpar a carne infectada de [FORMAT_LIMB_OWNER(limb)] Com [tool]."),
+		span_notice("[surgeon] Começa a extirpar a carne infectada de [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "The infection in your [limb.plaintext_zone] stings like hell! It feels like you're being stabbed!")
 
@@ -76,9 +76,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você extirpa com sucesso parte da carne infectada de[FORMAT_LIMB_OWNER(limb)][get_progress(wound)]."),
-		span_notice("[surgeon]Com sucesso extirpa parte da carne infectada de[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-		span_notice("[surgeon]Com sucesso extirpa parte da carne infectada de[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você extirpa com sucesso parte da carne infectada de [FORMAT_LIMB_OWNER(limb)][get_progress(wound)]."),
+		span_notice("[surgeon] Com sucesso extirpa parte da carne infectada de [FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+		span_notice("[surgeon] Com sucesso extirpa parte da carne infectada de [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/debride/on_failure(obj/item/bodypart/limb, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -86,7 +86,7 @@
 		surgeon,
 		limb.owner,
 		span_notice("Você esculpi um pouco da carne saudável.[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Esculpe parte da carne saudável de[FORMAT_LIMB_OWNER(limb)]Com[tool]!"),
-		span_notice("[surgeon]Esculpe parte da carne saudável de[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon] Esculpe parte da carne saudável de [FORMAT_LIMB_OWNER(limb)] Com [tool]!"),
+		span_notice("[surgeon] Esculpe parte da carne saudável de [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	limb.receive_damage(rand(4, 8), wound_bonus = CANT_WOUND, sharpness = tool.get_sharpness(), damage_source = tool)

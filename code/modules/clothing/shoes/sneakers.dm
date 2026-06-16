@@ -149,7 +149,7 @@
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if(attached_cuffs)
-		to_chat(user, span_notice("Você tira.[attached_cuffs]De[src]."))
+		to_chat(user, span_notice("Você tira.[attached_cuffs] De [src]."))
 		if(Adjacent(user)) //tk is love, tk is life.
 			user.put_in_hands(attached_cuffs)
 		else

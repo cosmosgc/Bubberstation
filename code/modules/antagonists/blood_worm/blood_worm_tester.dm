@@ -42,18 +42,18 @@
 
 	if (target_mob != user)
 		user.visible_message(
-			message = span_danger("\The [user] jab[user.p_s()] \the [target_mob] with \the [src]!"),
-			self_message = span_danger("Você soca.\the [target_mob]com\the [src]!"),
+			message = span_danger("\The [user] jab [user.p_s()] \the [target_mob] with \the [src]!"),
+			self_message = span_danger("Você soca.\the [target_mob] com\the [src]!"),
 			ignored_mobs = target_mob,
 		)
 
 		target_mob.show_message(
-			msg = span_userdanger("\The [user] jab[user.p_s()] you with \the [src]!"),
+			msg = span_userdanger("\The [user] jab [user.p_s()] you with \the [src]!"),
 			type = MSG_VISUAL,
 		)
 	else
 		user.visible_message(
-			message = span_notice("\The [user] jab[user.p_s()] [user.p_themselves()] with \the [src]."),
+			message = span_notice("\The [user] jab [user.p_s()] [user.p_themselves()] with \the [src]."),
 			self_message = span_notice("Você se espeta com\the [src]."),
 		)
 

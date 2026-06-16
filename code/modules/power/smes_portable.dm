@@ -208,7 +208,7 @@
 	if(connected_port)
 		if(!wrench.use_tool(src, user, 8 SECONDS))
 			return ITEM_INTERACT_BLOCKING
-		user.visible_message( 			"[user]Desligador[src].", 			span_notice("Você desaperta.[src]De[connected_port]."), 			span_hear("Você ouve uma catraca."))
+		user.visible_message( 			"[user] Desligador [src].", 			span_notice("Você desaperta.[src] De [connected_port]."), 			span_hear("Você ouve uma catraca."))
 		investigate_log("was disconnected from [connected_port] by [key_name(user)].", INVESTIGATE_ENGINE)
 		disconnect_port()
 		update_appearance(UPDATE_OVERLAYS)
@@ -219,7 +219,7 @@
 		return ITEM_INTERACT_BLOCKING
 	if(!connect_port(possible_connector, user))
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message( 		"[user]conecta[src].", 		span_notice("Você aperta.[src]Para[possible_connector]."), 		span_hear("Você ouve uma catraca."))
+	user.visible_message( 		"[user] conecta [src].", 		span_notice("Você aperta.[src] Para [possible_connector]."), 		span_hear("Você ouve uma catraca."))
 	update_appearance(UPDATE_OVERLAYS)
 	investigate_log("was connected to [possible_connector] by [key_name(user)].", INVESTIGATE_ENGINE)
 	return ITEM_INTERACT_SUCCESS
@@ -233,7 +233,7 @@
 
 /obj/machinery/smesbank/crowbar_act(mob/living/user, obj/item/tool)
 	if(connected_port)
-		balloon_alert(user, "Desligador de[connected_port]Primero!")
+		balloon_alert(user, "Desligador de [connected_port] Primero!")
 		return ITEM_INTERACT_FAILURE
 
 	return default_deconstruction_crowbar(user, tool)

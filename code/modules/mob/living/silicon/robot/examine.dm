@@ -12,29 +12,29 @@
 	. += get_status_effect_examinations()
 	if (get_brute_loss())
 		if (get_brute_loss() < maxHealth*0.5)
-			. += span_warning("[p_They()]Veja.[p_s()]levemente amassado.")
+			. += span_warning("[p_They()] Veja.[p_s()] levemente amassado.")
 		else
-			. += span_boldwarning("[p_They()]Veja.[p_s()]Muito amassado!")
+			. += span_boldwarning("[p_They()] Veja.[p_s()] Muito amassado!")
 	if (get_fire_loss() || get_tox_loss())
 		var/overall_fireloss = get_fire_loss() + get_tox_loss()
 		if (overall_fireloss < maxHealth * 0.5)
-			. += span_warning("[p_They()]Veja.[p_s()]levemente carbonizado.")
+			. += span_warning("[p_They()] Veja.[p_s()] levemente carbonizado.")
 		else
-			. += span_boldwarning("[p_They()]Veja.[p_s()]severamente queimados e aquecidos!")
+			. += span_boldwarning("[p_They()] Veja.[p_s()] severamente queimados e aquecidos!")
 	if (health < -maxHealth*0.5)
-		. += span_warning("[p_They()]Veja.[p_s()]Mal operacional.")
+		. += span_warning("[p_They()] Veja.[p_s()] Mal operacional.")
 	if (fire_stacks < 0)
-		. += span_warning("[p_Theyre()]coberta de água.")
+		. += span_warning("[p_Theyre()] coberta de água.")
 	else if (fire_stacks > 0)
-		. += span_warning("[p_Theyre()]revestida de algo inflamável.")
+		. += span_warning("[p_Theyre()] revestida de algo inflamável.")
 
 	if(opened)
-		. += span_warning("[p_Their()]A cobertura está aberta e a célula de energia está[cell ? "installed" : "missing"].")
+		. += span_warning("[p_Their()] A cobertura está aberta e a célula de energia está[cell ? "installed" : "missing"].")
 	else
 		. += "[p_Their()] cover is closed[locked ? "" : ", and looks unlocked"]."
 
 	if(cell && cell.charge <= 0)
-		. += span_warning("[p_Their()]O indicador de bateria está piscando vermelho!")
+		. += span_warning("[p_Their()] O indicador de bateria está piscando vermelho!")
 
 	switch(stat)
 		if(CONSCIOUS)
@@ -43,9 +43,9 @@
 			else if(!client)
 				. += "[p_They()] appear[p_s()] to be in stand-by mode." //afk
 		if(SOFT_CRIT, UNCONSCIOUS, HARD_CRIT)
-			. += span_warning("[p_They()]Faça[p_es()]Não parece estar respondendo.")
+			. += span_warning("[p_They()] Faça [p_es()] Não parece estar respondendo.")
 		if(DEAD)
-			. += span_deadsay("[p_They()]Veja.[p_s()]como seu sistema está corrompido e requer um reset.")
+			. += span_deadsay("[p_They()] Veja.[p_s()] como seu sistema está corrompido e requer um reset.")
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	. += get_silicon_flavortext()
 	//SKYRAT EDIT ADDITION END

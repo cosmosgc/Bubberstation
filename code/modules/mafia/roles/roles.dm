@@ -111,7 +111,7 @@
 			return
 	if(mafia_game_controller.phase == MAFIA_PHASE_NIGHT)
 		return
-	var/message = "[source]: [html_decode(speech_args[SPEECH_MESSAGE])]"
+	var/message = "[source]: [html_decode(speech_args [SPEECH_MESSAGE])]"
 	mafia_game_controller.send_message(message, log_only = TRUE)
 
 ///Same as handle_speech, but for dead players.
@@ -155,7 +155,7 @@
 /datum/mafia_role/proc/greet()
 	mafia_alert = new(body, src)
 	SEND_SOUND(body, 'sound/ambience/misc/ambifailure.ogg')
-	to_chat(body, span_danger("Você é o[name]."))
+	to_chat(body, span_danger("Você é o [name]."))
 	to_chat(body, span_danger("[desc]"))
 	switch(team)
 		if(MAFIA_TEAM_MAFIA)
@@ -199,5 +199,5 @@
 			the = FALSE
 	result += span_notice("O[span_bold("[name]")]está alinhado com[the ? "the " : ""]<span class='[team_span]'>[team_desc]</span>")
 	result += "<span class='bold notice'>\"[initial(desc)]\"</span>"
-	result += span_notice("[name]Ganha quando eles[win_condition]")
+	result += span_notice("[name] Ganha quando eles [win_condition]")
 	to_chat(clueless, result.Join("</br>"))

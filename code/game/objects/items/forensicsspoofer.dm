@@ -57,7 +57,7 @@
 		return
 	playsound(src, SFX_INDUSTRIAL_SCAN, 20, TRUE, -2, TRUE, FALSE)
 	user.visible_message(
-		span_notice("\The [user]Ponto\the [src]Em\the [target]e faz uma varredura forense.")
+		span_notice("\The [user] Ponto\the [src] Em\the [target] e faz uma varredura forense.")
 	)
 
 /obj/item/forensics_spoofer/proc/clear_values(list/the_list)

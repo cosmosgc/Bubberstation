@@ -86,7 +86,7 @@
 
 	target_slime.applied_crossbreed_amount++
 	qdel(src)
-	to_chat(user, span_notice("Você alimenta o lodo[src], [target_slime.applied_crossbreed_amount == 1 ? "starting to mutate its core." : "further mutating its core."]"))
+	to_chat(user, span_notice("Você alimenta o lodo [src], [target_slime.applied_crossbreed_amount == 1 ? "starting to mutate its core." : "further mutating its core."]"))
 	playsound(target_slime, 'sound/effects/blob/attackblob.ogg', 50, TRUE)
 
 	if(target_slime.applied_crossbreed_amount >= SLIME_EXTRACT_CROSSING_REQUIRED)
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			to_chat(user, span_notice("Cuspiu um cubo de macaco."))
 			return 120
 		if(SLIME_ACTIVATE_MAJOR)
-			to_chat(user, span_notice("Sua[name]Começa a pulsar..."))
+			to_chat(user, span_notice("Sua [name] Começa a pulsar..."))
 			if(do_after(user, 4 SECONDS, target = user))
 				var/mob/living/basic/slime/new_slime = new(get_turf(user), /datum/slime_type/grey)
 				playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
@@ -186,16 +186,16 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 /obj/item/slime_extract/gold/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			user.visible_message(span_warning("[user]Começa a tremer!"),span_notice("Sua[name]Começa a pulsar suavemente..."))
+			user.visible_message(span_warning("[user] Começa a tremer!"),span_notice("Sua [name] Começa a pulsar suavemente..."))
 			if(do_after(user, 4 SECONDS, target = user))
 				var/mob/living/spawned_mob = create_random_mob(user.drop_location(), FRIENDLY_SPAWN)
 				spawned_mob.add_faction(FACTION_NEUTRAL)
 				playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-				user.visible_message(span_warning("[user]Cuspindo[spawned_mob]!"), span_notice("Você cuspiu.[spawned_mob]!"))
+				user.visible_message(span_warning("[user] Cuspindo [spawned_mob]!"), span_notice("Você cuspiu.[spawned_mob]!"))
 				return 300
 
 		if(SLIME_ACTIVATE_MAJOR)
-			user.visible_message(span_warning("[user]Começa a tremer violentamente!"),span_warning("Sua[name]Começa a pulsar violentamente..."))
+			user.visible_message(span_warning("[user] Começa a tremer violentamente!"),span_warning("Sua [name] Começa a pulsar violentamente..."))
 			if(do_after(user, 5 SECONDS, target = user))
 				var/mob/living/spawned_mob = create_random_mob(user.drop_location(), HOSTILE_SPAWN)
 				if(!user.combat_mode)
@@ -203,7 +203,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 				else
 					spawned_mob.add_faction(FACTION_SLIME)
 				playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-				user.visible_message(span_warning("[user]Cuspindo[spawned_mob]!"), span_warning("Você cuspiu.[spawned_mob]!"))
+				user.visible_message(span_warning("[user] Cuspindo [spawned_mob]!"), span_warning("Você cuspiu.[spawned_mob]!"))
 				return 600
 
 /obj/item/slime_extract/silver
@@ -222,7 +222,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(food_item))
 				food_item.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[food_item]!"), span_notice("Você cuspiu.[food_item]!"))
+			user.visible_message(span_warning("[user] Cuspindo [food_item]!"), span_notice("Você cuspiu.[food_item]!"))
 			return 200
 		if(SLIME_ACTIVATE_MAJOR)
 			var/drink_type = get_random_drink()
@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 200
 
 /obj/item/slime_extract/metal
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 150
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 200
 
 /obj/item/slime_extract/purple
@@ -266,7 +266,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		if(SLIME_ACTIVATE_MINOR)
 			user.adjust_nutrition(50)
 			user.adjust_blood_volume(50)
-			to_chat(user, span_notice("Você ativa.[src]E seu corpo está cheio de geléia fresca!"))
+			to_chat(user, span_notice("Você ativa.[src] E seu corpo está cheio de geléia fresca!"))
 			return 150
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -286,14 +286,14 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 150
 
 		if(SLIME_ACTIVATE_MAJOR)
 			var/turf/open/T = get_turf(user)
 			if(istype(T))
 				T.atmos_spawn_air("[GAS_PLASMA]=20")
-			to_chat(user, span_warning("Você ativa.[src]E uma nuvem de plasma sai da sua pele!"))
+			to_chat(user, span_warning("Você ativa.[src] E uma nuvem de plasma sai da sua pele!"))
 			return 900
 
 /obj/item/slime_extract/orange
@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 /obj/item/slime_extract/orange/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			to_chat(user, span_notice("Você ativa.[src]Você começa a se sentir quente!"))
+			to_chat(user, span_notice("Você ativa.[src] Você começa a se sentir quente!"))
 			user.reagents.add_reagent(/datum/reagent/consumable/capsaicin,10)
 			return 150
 
@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			user.reagents.add_reagent(/datum/reagent/phosphorus,5)//
 			user.reagents.add_reagent(/datum/reagent/potassium,5) // = smoke, along with any reagents inside mr. slime
 			user.reagents.add_reagent(/datum/reagent/consumable/sugar,5)     //
-			to_chat(user, span_warning("Você ativa.[src]E uma nuvem de fumaça sai da sua pele!"))
+			to_chat(user, span_warning("Você ativa.[src] E uma nuvem de fumaça sai da sua pele!"))
 			return 450
 
 /obj/item/slime_extract/yellow
@@ -331,11 +331,11 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			to_chat(user, span_notice("Você começa a brilhar mais."))
 
 		if(SLIME_ACTIVATE_MAJOR)
-			user.visible_message(span_warning("[user]A pele começa a piscar intermitentemente..."), span_warning("Sua pele começa a piscar intermitentemente..."))
+			user.visible_message(span_warning("[user] A pele começa a piscar intermitentemente..."), span_warning("Sua pele começa a piscar intermitentemente..."))
 			if(do_after(user, 2.5 SECONDS, target = user))
 				empulse(user, 1, 2, emp_source = src)
 				user.log_message("triggered EMP using [src] in [AREACOORD(src)]", LOG_GAME)
-				user.visible_message(span_warning("[user]A pele brilha!"), span_warning("Sua pele brilha enquanto emite um pulso eletromagnético!"))
+				user.visible_message(span_warning("[user] A pele brilha!"), span_warning("Sua pele brilha enquanto emite um pulso eletromagnético!"))
 				return 600
 
 /obj/item/slime_extract/red
@@ -346,15 +346,15 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 /obj/item/slime_extract/red/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			to_chat(user, span_notice("Você ativa.[src]Você começa a se sentir rápido!"))
+			to_chat(user, span_notice("Você ativa.[src] Você começa a se sentir rápido!"))
 			user.reagents.add_reagent(/datum/reagent/medicine/ephedrine,5)
 			return 450
 
 		if(SLIME_ACTIVATE_MAJOR)
-			user.visible_message(span_warning("[user]A pele fica vermelha por um momento..."), span_warning("Sua pele fica vermelha quando emite feromônios indutores de raiva..."))
+			user.visible_message(span_warning("[user] A pele fica vermelha por um momento..."), span_warning("Sua pele fica vermelha quando emite feromônios indutores de raiva..."))
 			for(var/mob/living/basic/slime/slime in viewers(get_turf(user), null))
 				slime.ai_controller?.set_blackboard_key(BB_SLIME_RABID, TRUE)
-				slime.visible_message(span_danger("O[slime]é levado a um frenesi!"))
+				slime.visible_message(span_danger("O [slime] é levado a um frenesi!"))
 			return 600
 
 /obj/item/slime_extract/blue
@@ -365,14 +365,14 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 /obj/item/slime_extract/blue/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			to_chat(user, span_notice("Você ativa.[src]Seu genoma parece mais estável!"))
+			to_chat(user, span_notice("Você ativa.[src] Seu genoma parece mais estável!"))
 			user.reagents.add_reagent(/datum/reagent/medicine/mutadone, 10)
 			user.reagents.add_reagent(/datum/reagent/medicine/potass_iodide, 10)
 			return 250
 
 		if(SLIME_ACTIVATE_MAJOR)
 			user.reagents.create_foam(/datum/effect_system/fluid_spread/foam, 20, log = TRUE)
-			user.visible_message(span_danger("Espuma vomita de[user]Pele!"), span_warning("Você ativa.[src]E a espuma sai da sua pele!"))
+			user.visible_message(span_danger("Espuma vomita de [user] Pele!"), span_warning("Você ativa.[src] E a espuma sai da sua pele!"))
 			return 600
 
 /obj/item/slime_extract/darkblue
@@ -383,7 +383,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 /obj/item/slime_extract/darkblue/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			to_chat(user, span_notice("Você ativa.[src]Você começa a sentir mais frio!"))
+			to_chat(user, span_notice("Você ativa.[src] Você começa a sentir mais frio!"))
 			user.extinguish_mob()
 			user.adjust_wet_stacks(20)
 			user.reagents.add_reagent(/datum/reagent/consumable/frostoil,6)
@@ -394,7 +394,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			var/turf/open/T = get_turf(user)
 			if(istype(T))
 				T.atmos_spawn_air("[GAS_N2]=40;[TURF_TEMPERATURE(2.7)]")
-			to_chat(user, span_warning("Você ativa.[src]E o ar gelado sai da sua pele!"))
+			to_chat(user, span_warning("Você ativa.[src] E o ar gelado sai da sua pele!"))
 			return 900
 
 /obj/item/slime_extract/pink
@@ -411,14 +411,14 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 
 			if(user.gender == MALE)
 				user.gender = FEMALE
-				user.visible_message(span_boldnotice("[user]De repente parece mais feminino!"), span_boldwarning("De repente você se sente mais feminina!"))
+				user.visible_message(span_boldnotice("[user] De repente parece mais feminino!"), span_boldwarning("De repente você se sente mais feminina!"))
 			else
 				user.gender = MALE
-				user.visible_message(span_boldnotice("[user]De repente parece mais masculino!"), span_boldwarning("Você de repente se sente mais masculino!"))
+				user.visible_message(span_boldnotice("[user] De repente parece mais masculino!"), span_boldwarning("Você de repente se sente mais masculino!"))
 			return 100
 
 		if(SLIME_ACTIVATE_MAJOR)
-			user.visible_message(span_warning("[user]A pele começa a piscar hipnoticamente..."), span_notice("Sua pele começa a formar padrões estranhos, pacificando criaturas ao seu redor."))
+			user.visible_message(span_warning("[user] A pele começa a piscar hipnoticamente..."), span_notice("Sua pele começa a formar padrões estranhos, pacificando criaturas ao seu redor."))
 			for(var/mob/living/carbon/C in viewers(user, null))
 				if(C != user)
 					C.reagents.add_reagent(/datum/reagent/pax,2)
@@ -459,7 +459,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 150
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -467,7 +467,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 450
 
 /obj/item/slime_extract/black
@@ -504,14 +504,14 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			return 450
 
 		if(SLIME_ACTIVATE_MAJOR)
-			user.visible_message(span_warning("[user]A pele começa a pulsar e a brilhar ameaçadoramente..."), span_userdanger("Você se sente instável..."))
+			user.visible_message(span_warning("[user] A pele começa a pulsar e a brilhar ameaçadoramente..."), span_userdanger("Você se sente instável..."))
 			if(do_after(user, 6 SECONDS, target = user))
 				to_chat(user, span_userdanger("Você explode!"))
 				explosion(user, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 6, explosion_cause = src)
 				user.investigate_log("has been gibbed by an oil slime extract explosion.", INVESTIGATE_DEATHS)
 				user.gib(DROP_ALL_REMAINS)
 				return
-			to_chat(user, span_notice("Pare de se alimentar.[src]E o sentimento passa."))
+			to_chat(user, span_notice("Pare de se alimentar.[src] E o sentimento passa."))
 
 /obj/item/slime_extract/adamantine
 	name = "adamantine slime extract"
@@ -590,7 +590,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 150
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -600,7 +600,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 250
 
 /obj/item/slime_extract/cerulean
@@ -619,7 +619,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			var/turf/open/T = get_turf(user)
 			if(istype(T))
 				T.atmos_spawn_air("[GAS_O2]=11;[GAS_N2]=41;[TURF_TEMPERATURE(T20C)]")
-				to_chat(user, span_warning("Você ativa.[src]E o ar fresco sai da sua pele!"))
+				to_chat(user, span_warning("Você ativa.[src] E o ar fresco sai da sua pele!"))
 				return 600
 
 /obj/item/slime_extract/sepia
@@ -634,7 +634,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 150
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -664,7 +664,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 			if(!user.put_in_active_hand(O))
 				O.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
-			user.visible_message(span_warning("[user]Cuspindo[O]!"), span_notice("Você cuspiu.[O]!"))
+			user.visible_message(span_warning("[user] Cuspindo [O]!"), span_notice("Você cuspiu.[O]!"))
 			return 150
 
 ////Slime-derived potions///
@@ -687,7 +687,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 
 /obj/item/slimepotion/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(is_reagent_container(interacting_with))
-		to_chat(user, span_warning("Você não pode transferir.[src]para[interacting_with]! Parece que a poção deve ser dada diretamente a um lodo ou outro objeto para absorver.") )
+		to_chat(user, span_warning("Você não pode transferir.[src] para [interacting_with]! Parece que a poção deve ser dada diretamente a um lodo ou outro objeto para absorver.") )
 		return ITEM_INTERACT_BLOCKING
 	return NONE
 
@@ -698,7 +698,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 	if(isslime(interacting_with))
 		return interact_with_slime(interacting_with, user, modifiers)
 	else
-		to_chat(user, span_warning("Parece[src]deve ser dado diretamente a um lodo para absorver."))
+		to_chat(user, span_warning("Parece [src] deve ser dado diretamente a um lodo para absorver."))
 		return NONE
 
 /obj/item/slimepotion/slime/proc/interact_with_slime(mob/living/basic/slime/interacting_slime, mob/living/user, list/modifiers)
@@ -867,15 +867,15 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		prompted = 0
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Você bebe a poção e coloca as mãos[switchy_mob]..."))
+	to_chat(user, span_notice("Você bebe a poção e coloca as mãos [switchy_mob]..."))
 
 	user.mind.transfer_to(switchy_mob)
 	SEND_SIGNAL(switchy_mob, COMSIG_SIMPLEMOB_TRANSFERPOTION, user)
 	SET_FACTION_AND_ALLIES_FROM( switchy_mob, user)
 	switchy_mob.copy_languages(user, LANGUAGE_MIND)
 	user.death()
-	to_chat(switchy_mob, span_notice("Em um flash rápido, você sente sua consciência fluir para[switchy_mob]!"))
-	to_chat(switchy_mob, span_warning("Agora você é.[switchy_mob]Suas lealdades, alianças e papel ainda são as mesmas que eram antes da transferência de consciência!"))
+	to_chat(switchy_mob, span_notice("Em um flash rápido, você sente sua consciência fluir para [switchy_mob]!"))
+	to_chat(switchy_mob, span_warning("Agora você é.[switchy_mob] Suas lealdades, alianças e papel ainda são as mesmas que eram antes da transferência de consciência!"))
 	switchy_mob.name = "[user.real_name]"
 	qdel(src)
 	if(isanimal(switchy_mob))
@@ -963,7 +963,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		return NONE
 
 	if(HAS_TRAIT(interacting_with, TRAIT_SPEED_POTIONED))
-		to_chat(user, span_warning("[interacting_with]Não pode ser mais rápido!"))
+		to_chat(user, span_warning("[interacting_with] Não pode ser mais rápido!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(isitem(interacting_with))
@@ -971,7 +971,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		if(apply_to.slowdown <= 0 || (apply_to.item_flags & IMMUTABLE_SLOW) || HAS_TRAIT(apply_to, TRAIT_NO_SPEED_POTION))
 			if(interacting_with.atom_storage)
 				return NONE // lets us put the potion in the bag
-			to_chat(user, span_warning("[apply_to]Não pode ser mais rápido!"))
+			to_chat(user, span_warning("[apply_to] Não pode ser mais rápido!"))
 			return ITEM_INTERACT_BLOCKING
 
 	if(SEND_SIGNAL(interacting_with, COMSIG_SPEED_POTION_APPLIED, src, user) & SPEED_POTION_STOP)
@@ -981,7 +981,7 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		var/obj/item/apply_to = interacting_with
 		apply_to.slowdown = 0
 
-	to_chat(user, span_notice("Você desliza o cocô vermelho sobre o[interacting_with], tornando mais rápido."))
+	to_chat(user, span_notice("Você desliza o cocô vermelho sobre o [interacting_with], tornando mais rápido."))
 	interacting_with.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	interacting_with.add_atom_colour(color_transition_filter(COLOR_RED, SATURATION_OVERRIDE), FIXED_COLOUR_PRIORITY)
 	interacting_with.drag_slowdown = 0
@@ -1008,9 +1008,9 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 		to_chat(user, span_warning("A poção só pode ser usada em roupas!"))
 		return NONE
 	if(clothing.max_heat_protection_temperature >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
-		to_chat(user, span_warning("O[clothing]Já é à prova de fogo!"))
+		to_chat(user, span_warning("O [clothing] Já é à prova de fogo!"))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você esfrega a gosma azul sobre o[clothing], à prova de fogo."))
+	to_chat(user, span_notice("Você esfrega a gosma azul sobre o [clothing], à prova de fogo."))
 	clothing.name = "fireproofed [clothing.name]"
 	clothing.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	clothing.add_atom_colour(color_transition_filter(COLOR_NAVY, SATURATION_OVERRIDE), FIXED_COLOUR_PRIORITY)
@@ -1044,10 +1044,10 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 
 	if(living_mob.gender == MALE)
 		living_mob.gender = FEMALE
-		living_mob.visible_message(span_boldnotice("[living_mob]De repente parece mais feminino!"), span_boldwarning("De repente você se sente mais feminina!"))
+		living_mob.visible_message(span_boldnotice("[living_mob] De repente parece mais feminino!"), span_boldwarning("De repente você se sente mais feminina!"))
 	else
 		living_mob.gender = MALE
-		living_mob.visible_message(span_boldnotice("[living_mob]De repente parece mais masculino!"), span_boldwarning("Você de repente se sente mais masculino!"))
+		living_mob.visible_message(span_boldnotice("[living_mob] De repente parece mais masculino!"), span_boldwarning("Você de repente se sente mais masculino!"))
 	living_mob.regenerate_icons()
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -1069,12 +1069,12 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 	if(being_used)
 		return ITEM_INTERACT_BLOCKING
 	if(!renaming_mob.ckey) //only works on animals that aren't player controlled
-		to_chat(user, span_warning("[renaming_mob]não é consciente de si mesmo, e não pode escolher seu próprio nome."))
+		to_chat(user, span_warning("[renaming_mob] não é consciente de si mesmo, e não pode escolher seu próprio nome."))
 		return ITEM_INTERACT_BLOCKING
 
 	being_used = TRUE
 
-	to_chat(user, span_notice("Você oferece[src]para[user]..."))
+	to_chat(user, span_notice("Você oferece [src] para [user]..."))
 
 	var/new_name = sanitize_name(tgui_input_text(renaming_mob, "What would you like your name to be?", "Input a name", renaming_mob.real_name, MAX_NAME_LEN))
 
@@ -1104,14 +1104,14 @@ GLOBAL_LIST_INIT(slime_extract_auto_activate_reactions, init_slime_auto_activate
 	if(!isliving(interacting_with))
 		return NONE
 	if(!isanimal_or_basicmob(interacting_with))
-		to_chat(user, span_warning("[interacting_with]É muito complexo para a poção!"))
+		to_chat(user, span_warning("[interacting_with] É muito complexo para a poção!"))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/radio_head = interacting_with
 	if(radio_head.stat)
-		to_chat(user, span_warning("[radio_head]Está morto!"))
+		to_chat(user, span_warning("[radio_head] Está morto!"))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Você alimenta a poção para[radio_head]."))
+	to_chat(user, span_notice("Você alimenta a poção para [radio_head]."))
 	to_chat(radio_head, span_notice("Sua mente treme quando é alimentada com a poção. Você pode ouvir ondas de rádio agora!"))
 	var/obj/item/implant/radio/slime/imp = new(src)
 	imp.implant(radio_head, user)

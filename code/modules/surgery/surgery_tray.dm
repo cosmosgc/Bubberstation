@@ -98,7 +98,7 @@
 	is_portable = new_mode
 	density = !is_portable
 	if(user)
-		user.visible_message(span_notice("[user] [is_portable ? "retracts" : "extends"] [src]Rodas."), span_notice("Você.[is_portable ? "retract" : "extend"] [src]Rodas."))
+		user.visible_message(span_notice("[user] [is_portable ? "retracts" : "extends"] [src] Rodas."), span_notice("Você.[is_portable ? "retract" : "extend"] [src] Rodas."))
 
 	if(is_portable)
 		interaction_flags_item |= INTERACT_ITEM_ATTACK_HAND_PICKUP
@@ -144,11 +144,11 @@
 /obj/item/surgery_tray/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("Você começa a desmontar[src]."))
+	to_chat(user, span_notice("Você começa a desmontar [src]."))
 	if(!tool.use_tool(src, user, 1 SECONDS))
 		return
 	deconstruct(TRUE)
-	to_chat(user, span_notice("[src]Foi desmontado."))
+	to_chat(user, span_notice("[src] Foi desmontado."))
 
 /obj/item/surgery_tray/dump_contents()
 	var/atom/drop_point = drop_location()

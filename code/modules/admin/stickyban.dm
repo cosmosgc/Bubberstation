@@ -59,7 +59,7 @@
 
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 			if (tgui_alert(usr,"Tem certeza que quer remover a proibição pegajosa de[ckey]?","Are you sure",list("Yes","No")) == "No")
 				return
@@ -90,12 +90,12 @@
 			var/alt = ckey(data["alt"])
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 
 			var/key = LAZYACCESS(ban["keys"], alt)
 			if (!key)
-				to_chat(usr, span_adminnotice("Erro:[alt]Não está ligado a[ckey]É uma proibição pegajosa!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro:[alt] Não está ligado a [ckey] É uma proibição pegajosa!"), confidential = TRUE)
 				return
 
 			if (tgui_alert(usr,"Tem certeza que quer dissociar[alt]De[ckey]É proibido?\nNota: nada impede de voltar a ligá-los, use \[E]para os isentar.","Are you sure",list("Yes","No")) == "No")
@@ -110,7 +110,7 @@
 			key = LAZYACCESS(ban["keys"], alt)
 
 			if (!key)
-				to_chat(usr, span_adminnotice("Erro:[alt]link para[ckey]A proibição pegajosa desapareceu."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro:[alt] link para [ckey] A proibição pegajosa desapareceu."), confidential = TRUE)
 				return
 
 			LAZYREMOVE(ban["keys"], alt)
@@ -135,7 +135,7 @@
 			var/ckey = data["ckey"]
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 			var/oldreason = ban["message"]
 			var/reason = input(usr,"Reason","Reason","[ban["message"]]") as text|null
@@ -172,12 +172,12 @@
 			var/alt = ckey(data["alt"])
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 
 			var/key = LAZYACCESS(ban["keys"], alt)
 			if (!key)
-				to_chat(usr, span_adminnotice("Erro:[alt]Não está ligado a[ckey]É uma proibição pegajosa!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro:[alt] Não está ligado a [ckey] É uma proibição pegajosa!"), confidential = TRUE)
 				return
 
 			if (tgui_alert(usr,"Tem certeza que quer isentar[alt]De[ckey]É proibido?","Are you sure",list("Yes","No")) == "No")
@@ -192,7 +192,7 @@
 			key = LAZYACCESS(ban["keys"], alt)
 
 			if (!key)
-				to_chat(usr, span_adminnotice("Erro:[alt]'s link para[ckey]A proibição pegajosa desapareceu."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro:[alt]'s link para [ckey] A proibição pegajosa desapareceu."), confidential = TRUE)
 				return
 			LAZYREMOVE(ban["keys"], alt)
 			key["exempt"] = TRUE
@@ -222,12 +222,12 @@
 			var/alt = ckey(data["alt"])
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 
 			var/key = LAZYACCESS(ban["whitelist"], alt)
 			if (!key)
-				to_chat(usr, span_adminnotice("Erro:[alt]Não está isenta de[ckey]É uma proibição pegajosa!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro:[alt] Não está isenta de [ckey] É uma proibição pegajosa!"), confidential = TRUE)
 				return
 
 			if (tgui_alert(usr,"Tem certeza de que quer se desinteressar?[alt]De[ckey]É proibido?","Are you sure",list("Yes","No")) == "No")
@@ -241,7 +241,7 @@
 
 			key = LAZYACCESS(ban["whitelist"], alt)
 			if (!key)
-				to_chat(usr, span_adminnotice("Erro:[alt]'s isenção de[ckey]A proibição pegajosa desapareceu."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro:[alt]'s isenção de [ckey] A proibição pegajosa desapareceu."), confidential = TRUE)
 				return
 
 			LAZYREMOVE(ban["whitelist"], alt)
@@ -276,7 +276,7 @@
 				return
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 
 			ban["timeout"] = TRUE
@@ -307,7 +307,7 @@
 				cachedban["timeout"] = FALSE
 			if (!ban)
 				if (!cachedban)
-					to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+					to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 					return
 				ban = cachedban
 
@@ -327,11 +327,11 @@
 				return
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Sem proibição pegajosa para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem proibição pegajosa para [ckey] Achei!"), confidential = TRUE)
 				return
 			var/cached_ban = SSstickyban.cache[ckey]
 			if (!cached_ban)
-				to_chat(usr, span_adminnotice("Erro: sem banimento grudento em cache para[ckey]Achei!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: sem banimento grudento em cache para [ckey] Achei!"), confidential = TRUE)
 			world.SetConfig("ban",ckey,null)
 
 			log_admin_private("[key_name(usr)] has reverted [ckey]'s sticky ban to its state at round start.")

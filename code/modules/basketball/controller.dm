@@ -201,11 +201,11 @@ GLOBAL_VAR(basketball_game)
 		if(is_player_referee)
 			to_chat(baller, span_notice("Você é um árbitro. Certifique-se que os times joguem limpo e use seu apito para chamar faltas apropriadamente."))
 		else
-			to_chat(baller, span_notice("Você é um jogador de basquete para o[team_name]Marque o máximo que puder antes que o tempo acabe."))
+			to_chat(baller, span_notice("Você é um jogador de basquete para o [team_name] Marque o máximo que puder antes que o tempo acabe."))
 			to_chat(baller, span_info("LMB para passar a bola enquanto na intenção de ajuda (zero resistência custo /) - penalidade de precisão ao marcar)"))
-			to_chat(baller, span_info("RMB para atirar a bola ([STAMINA_COST_SHOOTING]Isso passa por cima das cabeças dos jogadores."))
-			to_chat(baller, span_info("Clique diretamente no aro, enquanto adjacente ao mergulho.[STAMINA_COST_DUNKING]Esforço custo)"))
-			to_chat(baller, span_info("Girando diminui outros jogadores desarmar chance contra você, mas reduz a precisão de tiro ([STAMINA_COST_SPINNING]Esforço custo)"))
+			to_chat(baller, span_info("RMB para atirar a bola ([STAMINA_COST_SHOOTING] Isso passa por cima das cabeças dos jogadores."))
+			to_chat(baller, span_info("Clique diretamente no aro, enquanto adjacente ao mergulho.[STAMINA_COST_DUNKING] Esforço custo)"))
+			to_chat(baller, span_info("Girando diminui outros jogadores desarmar chance contra você, mas reduz a precisão de tiro ([STAMINA_COST_SPINNING] Esforço custo)"))
 
 /**
  * Called after the game is finished. Sends end game notifications to teams and dusts the losers.
@@ -238,12 +238,12 @@ GLOBAL_VAR(basketball_game)
 		for(var/ckey in winner_team_ckeys)
 			var/mob/living/competitor = get_mob_by_ckey(ckey)
 			if(competitor in minigame_basketball_mobs)
-				to_chat(competitor, span_hypnophrase("[winner_team_name]Equipe ganha!"))
+				to_chat(competitor, span_hypnophrase("[winner_team_name] Equipe ganha!"))
 
 		for(var/ckey in loser_team_ckeys)
 			var/mob/living/competitor = get_mob_by_ckey(ckey)
 			if(competitor in minigame_basketball_mobs)
-				to_chat(competitor, span_hypnophrase("[winner_team_name]Equipe ganha!"))
+				to_chat(competitor, span_hypnophrase("[winner_team_name] Equipe ganha!"))
 				competitor.dust()
 
 	addtimer(CALLBACK(src, PROC_REF(end_game)), 20 SECONDS) // give winners time for a victory lap

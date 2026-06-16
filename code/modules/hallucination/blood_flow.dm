@@ -31,7 +31,7 @@
 	RegisterSignals(bleeding_bodypart, list(COMSIG_QDELETING, COMSIG_BODYPART_REMOVED), PROC_REF(stop_bleeding))
 	RegisterSignal(hallucinator, COMSIG_LIVING_UPDATE_BLOOD_STATUS, PROC_REF(stop_bleeding))
 
-	to_chat(hallucinator, span_warning("Sua[bleeding_bodypart.plaintext_zone]Solta um spray de sangue!"))
+	to_chat(hallucinator, span_warning("Sua [bleeding_bodypart.plaintext_zone] Solta um spray de sangue!"))
 	var/bleed_duration = rand(16 SECONDS, 40 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(stop_bleeding)), bleed_duration)
 	if(prob(25))
@@ -57,7 +57,7 @@
 	if(QDELETED(src) || QDELETED(hallucinator) || QDELETED(bleeding_bodypart))
 		return
 
-	to_chat(hallucinator, span_warning("O sangue não pára de fluir, ainda.[bleeding_bodypart.plaintext_zone]Não parece doer..."))
+	to_chat(hallucinator, span_warning("O sangue não pára de fluir, ainda.[bleeding_bodypart.plaintext_zone] Não parece doer..."))
 
 /datum/hallucination/blood_flow/proc/on_update_blood_status(datum/source, had_blood, has_blood, old_blood_volume, new_blood_volume)
 	SIGNAL_HANDLER
@@ -69,7 +69,7 @@
 	UnregisterSignal(bleeding_bodypart, list(COMSIG_QDELETING, COMSIG_BODYPART_REMOVED))
 	UnregisterSignal(hallucinator, COMSIG_LIVING_UPDATE_BLOOD_STATUS)
 	if(!QDELETED(bleeding_bodypart))
-		to_chat(hallucinator, span_warning("Sua[bleeding_bodypart.plaintext_zone]Pare de sangrar."))
+		to_chat(hallucinator, span_warning("Sua [bleeding_bodypart.plaintext_zone] Pare de sangrar."))
 	if(!QDELETED(src))
 		qdel(src)
 

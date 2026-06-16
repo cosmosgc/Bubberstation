@@ -38,7 +38,7 @@
 	if(!process_scan) //since it's not scanning on process, it scans here.
 		scan_for_target()
 	toggle_on()
-	user.visible_message(span_notice("[user] [active ? "" : "de"]Ativa.[user.p_their()]Ponto."), span_notice("Você.[active ? "" : "de"]Ative seu localizador."))
+	user.visible_message(span_notice("[user] [active ? "" : "de"]Ativa.[user.p_their()] Ponto."), span_notice("Você.[active ? "" : "de"]Ative seu localizador."))
 
 /obj/item/pinpointer/examine(mob/user)
 	. = ..()
@@ -119,7 +119,7 @@
 /obj/item/pinpointer/crew/attack_self(mob/living/user)
 	if(active)
 		toggle_on()
-		user.visible_message(span_notice("[user]Desativa[user.p_their()]Ponto."), span_notice("Você desativa seu localizador."))
+		user.visible_message(span_notice("[user] Desativa [user.p_their()] Ponto."), span_notice("Você desativa seu localizador."))
 		return
 
 	if (has_owner && !pinpointer_owner)
@@ -145,12 +145,12 @@
 
 		while(crewmember_name in name_counts)
 			name_counts[crewmember_name]++
-			crewmember_name = "[crewmember_name] ([name_counts[crewmember_name]])"
+			crewmember_name = "[crewmember_name] ([name_counts [crewmember_name]])"
 		names[crewmember_name] = H
 		name_counts[crewmember_name] = 1
 
 	if(!length(names))
-		user.visible_message(span_notice("[user]O localizador não detecta um sinal."), span_notice("Seu localizador não detecta um sinal."))
+		user.visible_message(span_notice("[user] O localizador não detecta um sinal."), span_notice("Seu localizador não detecta um sinal."))
 		return
 	var/pinpoint_target = tgui_input_list(user, "Person to track", "Pinpoint", sort_list(names))
 	if(isnull(pinpoint_target))
@@ -161,7 +161,7 @@
 		return
 	target = names[pinpoint_target]
 	toggle_on()
-	user.visible_message(span_notice("[user]Ativa.[user.p_their()]Ponto."), span_notice("Ative seu localizador."))
+	user.visible_message(span_notice("[user] Ativa.[user.p_their()] Ponto."), span_notice("Ative seu localizador."))
 
 /obj/item/pinpointer/crew/scan_for_target()
 	if(target)

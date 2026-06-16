@@ -43,12 +43,12 @@
 							. += "&bull; [round(current_reagent.volume, CHEMICAL_VOLUME_ROUNDING)] units of [current_reagent.name]"
 						if(reagents.is_reacting)
 							. += span_warning("Está reagindo agora!")
-						. += span_notice("O pH da solução é[round(reagents.ph, 0.01)]e tem uma temperatura de[reagents.chem_temp]K.")
+						. += span_notice("O pH da solução é [round(reagents.ph, 0.01)] e tem uma temperatura de [reagents.chem_temp] K.")
 				else
 					. += "It contains:<br>Nothing."
 			else if(reagents.flags & AMOUNT_VISIBLE)
 				if(reagents.total_volume)
-					. += span_notice("Tem.[reagents.total_volume]Unidade esquerda.")
+					. += span_notice("Tem.[reagents.total_volume] Unidade esquerda.")
 				else
 					. += span_danger("Está vazio.")
 
@@ -70,10 +70,10 @@
 	if(!sniffer.get_bodypart(BODY_ZONE_HEAD)) // Need a nose to smell
 		return
 	if(sniffer.is_mouth_covered())
-		return span_warning("Você não pode sentir o cheiro de[src]Com seu rosto coberto.")
+		return span_warning("Você não pode sentir o cheiro de [src] Com seu rosto coberto.")
 
 	var/smell_message = generate_reagents_taste_message(reagents.reagent_list, sniffer, 10)
-	return span_notice("Você sente o cheiro[src]Cheira como[smell_message].")
+	return span_notice("Você sente o cheiro [src] Cheira como [smell_message].")
 
 /**
  * A list of "tags" displayed after atom's description in examine.
@@ -135,7 +135,7 @@
 	var/mats_list = list()
 	for(var/custom_material in custom_materials)
 		var/datum/material/current_material = SSmaterials.get_material(custom_material)
-		mats_list += span_tooltip("É feito de[current_material.name].", current_material.name)
+		mats_list += span_tooltip("É feito de [current_material.name].", current_material.name)
 	. += "made of [english_list(mats_list)]"
 
 /**
@@ -170,7 +170,7 @@
 				material_string += span_tooltip("[property]: [tooltip_hint]", descriptor)
 
 		if (length(material_string))
-			. += span_info("[capitalize(material.name)]É[english_list(material_string)].")
+			. += span_info("[capitalize(material.name)] É [english_list(material_string)].")
 
 /**
  * Get the name of this object for examine

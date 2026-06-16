@@ -89,8 +89,8 @@
 		addtimer(CALLBACK(true_parent, TYPE_PROC_REF(/atom/movable, throw_at), thrown_by, boomerang_throw_range, throwingdatum.speed, thrown_by, TRUE), 0.1 SECONDS)
 		COOLDOWN_START(src, last_boomerang_throw, BOOMERANG_REBOUND_INTERVAL)
 	true_parent.visible_message(
-		span_danger("[true_parent]está voando de volta para[thrown_by]!"),
-		span_danger("Viu?[true_parent]Voar de volta para você!"),
+		span_danger("[true_parent] está voando de volta para [thrown_by]!"),
+		span_danger("Viu?[true_parent] Voar de volta para você!"),
 		span_hear("Você ouve um woosh aerodinâmico!"),
 	)
 

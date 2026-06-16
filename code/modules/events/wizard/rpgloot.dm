@@ -41,7 +41,7 @@
 	target.AddComponent(/datum/component/fantasy, upgrade_amount, null, null, can_backfire, TRUE)
 	uses -= 1
 	if(!uses)
-		visible_message(span_warning("[src]desaparece, sua magia completamente consumida da fortificação."))
+		visible_message(span_warning("[src] desaparece, sua magia completamente consumida da fortificação."))
 		qdel(src)
 	return TRUE
 

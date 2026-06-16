@@ -175,17 +175,17 @@
 		return
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	if(shuttle.master_blueprint?.resolve() != src)
-		to_chat(user, span_warning("Apenas a planta mestre para\the [shuttle]Ele admite o direito de recrisen.[shuttle.p_them()]!"))
+		to_chat(user, span_warning("Apenas a planta mestre para\the [shuttle] Ele admite o direito de recrisen.[shuttle.p_them()]!"))
 		return
 	var/turf/user_turf = get_turf(user)
 	if(user_turf && isshuttleturf(user_turf))
-		to_chat(user, span_warning("Você não pode rechristen\the [shuttle]De dentro de[shuttle.p_them()]!"))
+		to_chat(user, span_warning("Você não pode rechristen\the [shuttle] De dentro de [shuttle.p_them()]!"))
 		return
 	if(!source.isGlass)
-		to_chat(user, span_warning("Você não pode quebrar[source]Contra[attacked]!"))
+		to_chat(user, span_warning("Você não pode quebrar [source] Contra [attacked]!"))
 		return
 	if(source.reagents.total_volume < CHEMICAL_QUANTISATION_LEVEL)
-		to_chat(user, span_warning("Você deveria colocar um pouco de fluido de batismo[source]!"))
+		to_chat(user, span_warning("Você deveria colocar um pouco de fluido de batismo [source]!"))
 		return
 	INVOKE_ASYNC(src, PROC_REF(christen), user, shuttle, attacked, user.active_hand_index)
 
@@ -277,8 +277,8 @@
 		user.visible_message(span_warning(msg), span_warning(self_msg))
 	else
 		user.visible_message(
-			span_notice("[user]Batiza a nave como<b>\the [new_name]</b>Com[hitting_implement.get_examine_name()]			[(bottle.reagents.total_volume < 30) ? "" : ", though the dearth of christening fluid makes for an unimpressive display"]."),
-			span_notice("Você batiza a nave como<b>\the [new_name]</b>Com[hitting_implement.get_examine_name()].")
+			span_notice("[user] Batiza a nave como<b>\the [new_name]</b>Com [hitting_implement.get_examine_name()]			[(bottle.reagents.total_volume < 30) ? "" : ", though the dearth of christening fluid makes for an unimpressive display"]."),
+			span_notice("Você batiza a nave como<b>\the [new_name]</b>Com [hitting_implement.get_examine_name()].")
 		)
 		user.do_attack_animation(attacked, used_item = bottle)
 		bottle.smash(attacked, user)
@@ -433,9 +433,9 @@
 	if(!shuttle)
 		. += span_notice("Tem planos para uma nave que não existe mais. Pode ser reutilizado para construir uma nova nave.")
 	else
-		. += span_notice("Tem os planos para\the [shuttle]e pode ser usado para expandir[shuttle.p_them()]U modificar[shuttle.p_their()]áreas.")
+		. += span_notice("Tem os planos para\the [shuttle] e pode ser usado para expandir [shuttle.p_them()] U modificar [shuttle.p_their()] áreas.")
 		if(shuttle.master_blueprint.resolve() == src)
-			. += span_notice("Esta é a planta principal para\the [shuttle]Você pode copiar para um conjunto em branco de plantas, ou para um cyborg de engenharia com um módulo de banco de dados de shuttle instalado.")
+			. += span_notice("Esta é a planta principal para\the [shuttle] Você pode copiar para um conjunto em branco de plantas, ou para um cyborg de engenharia com um módulo de banco de dados de shuttle instalado.")
 
 /obj/item/shuttle_blueprints/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()
@@ -727,9 +727,9 @@
 	if(!shuttle)
 		. += span_notice("Os planos atualmente carregados são para uma nave que não existe mais. Será padrão para o modo de construção.")
 	else
-		. += span_notice("Tem os planos para\the [shuttle]atualmente carregado, e pode ser usado para expandir[shuttle.p_them()]U modificar[shuttle.p_their()]áreas.")
+		. += span_notice("Tem os planos para\the [shuttle] atualmente carregado, e pode ser usado para expandir [shuttle.p_them()] U modificar [shuttle.p_their()] áreas.")
 		if(shuttle.master_blueprint.resolve() == src)
-			. += span_notice("Esta é a planta principal para\the [shuttle]Você pode copiar para um conjunto em branco de plantas, ou para outro cyborg de engenharia com um módulo de banco de dados de shuttle instalado.")
+			. += span_notice("Esta é a planta principal para\the [shuttle] Você pode copiar para um conjunto em branco de plantas, ou para outro cyborg de engenharia com um módulo de banco de dados de shuttle instalado.")
 
 /obj/item/shuttle_blueprints/borg/unlink(removing)
 	if(removing)

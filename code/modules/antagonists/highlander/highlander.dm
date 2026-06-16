@@ -43,7 +43,7 @@
 	. = ..()
 
 /datum/antagonist/highlander/greet()
-	to_chat(owner, span_bolddanger("Sua[sword.name]clama por sangue. Reclame as vidas dos outros, e sua própria será restaurada!\nAtive-o em sua mão, e ele vai levar ao alvo mais próximo. Ataque o disco de autenticação nuclear com ele, e você vai armazená-lo."))
+	to_chat(owner, span_bolddanger("Sua [sword.name] clama por sangue. Reclame as vidas dos outros, e sua própria será restaurada!\nAtive-o em sua mão, e ele vai levar ao alvo mais próximo. Ataque o disco de autenticação nuclear com ele, e você vai armazená-lo."))
 
 	owner.announce_objectives()
 

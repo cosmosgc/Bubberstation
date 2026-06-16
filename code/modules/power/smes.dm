@@ -255,7 +255,7 @@
 			if(isnull(choice) 				|| !user.is_holding(installing_cable) 				|| !user.Adjacent(src) 				|| user.incapacitated 				|| !can_place_terminal(user, installing_cable, silent = TRUE) 			)
 				return ITEM_INTERACT_BLOCKING
 			terminal_cable_layer = GLOB.cable_name_to_layer[choice]
-		user.visible_message(span_notice("[user.name]Começa a adicionar cabos para[src]."))
+		user.visible_message(span_notice("[user.name] Começa a adicionar cabos para [src]."))
 		balloon_alert(user, "Adicionando cabos...")
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
@@ -271,7 +271,7 @@
 			do_sparks(5, TRUE, src)
 			return ITEM_INTERACT_BLOCKING
 		cable.use(10)
-		user.visible_message(span_notice("[user.name]adiciona cabos para[src]."))
+		user.visible_message(span_notice("[user.name] adiciona cabos para [src]."))
 		balloon_alert(user, "Cabos adicionados")
 
 		//build the terminal and link it to the network

@@ -108,12 +108,12 @@
 	var/escape_count = 0 //counts the number of xenomorphs that were born in captivity who ended the round outside of it
 	var/captive_count = 0 //counts the number of xenomorphs born in captivity who remained there until the end of the round (losers)
 
-	parts += span_header("O[name]Foram:<br>")
+	parts += span_header("O [name] Foram:<br>")
 
 	if(check_captivity(progenitor.current) == CAPTIVE_XENO_PASS)
-		parts += span_greentext("O progenitor desta colmeia foi[progenitor.key], como[progenitor], que escapou com sucesso do cativeiro!") + "<br>"
+		parts += span_greentext("O progenitor desta colmeia foi [progenitor.key], como [progenitor], que escapou com sucesso do cativeiro!") + "<br>"
 	else
-		parts += span_redtext("O progenitor desta colmeia foi[progenitor.key], como[progenitor], que falhou em escalar do cativeiro") + "<br>"
+		parts += span_redtext("O progenitor desta colmeia foi [progenitor.key], como [progenitor], que falhou em escalar do cativeiro") + "<br>"
 
 	for(var/datum/mind/alien_mind in members)
 		if(alien_mind == progenitor)

@@ -75,7 +75,7 @@
 	if(. || !consequences)
 		return
 
-	rider.visible_message(span_warning("[rider]Queda de[living_parent]!"), 					span_warning("Você cai de[living_parent]!"))
+	rider.visible_message(span_warning("[rider] Queda de [living_parent]!"), 					span_warning("Você cai de [living_parent]!"))
 	rider.Paralyze(1 SECONDS)
 	rider.Knockdown(4 SECONDS)
 	living_parent.unbuckle_mob(rider)
@@ -114,7 +114,7 @@
 	if(!keycheck(user))
 		if(ispath(keytype, /obj/item))
 			var/obj/item/key = keytype
-			to_chat(user, span_warning("Você precisa de um...[initial(key.name)]Para cavalgar[movable_parent]!"))
+			to_chat(user, span_warning("Você precisa de um...[initial(key.name)] Para cavalgar [movable_parent]!"))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/mob/living/living_parent = parent
 	step(living_parent, direction)
@@ -146,7 +146,7 @@
 	if(!iscyborg(movable_parent) && !isanimal_or_basicmob(movable_parent))
 		return
 	var/turf/target = get_edge_target_turf(movable_parent, movable_parent.dir)
-	rider.visible_message(span_warning("[rider]é jogado fora de[movable_parent]!"), 	span_warning("Você está fora de[movable_parent]!"))
+	rider.visible_message(span_warning("[rider] é jogado fora de [movable_parent]!"), 	span_warning("Você está fora de [movable_parent]!"))
 	rider.throw_at(target, throw_range, throw_speed, movable_parent, gentle = gentle)
 
 /// If we're a cyborg or animal and we spin, we yeet whoever's on us off us
@@ -191,11 +191,11 @@
 		return COMPONENT_RIDDEN_ALLOW_Z_MOVE
 	if(!can_be_driven)
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("[movable_parent]Não pode ser conduzido por aí. Solte-me.[movable_parent.p_them()]Primero."))
+			to_chat(rider, span_warning("[movable_parent] Não pode ser conduzido por aí. Solte-me.[movable_parent.p_them()] Primero."))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	if(!ride_check(rider, FALSE))
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(rider, span_warning("Você é incapaz de montar[movable_parent]Agora!"))
+			to_chat(rider, span_warning("Você é incapaz de montar [movable_parent] Agora!"))
 		return COMPONENT_RIDDEN_STOP_Z_MOVE
 	return COMPONENT_RIDDEN_ALLOW_Z_MOVE
 
@@ -280,14 +280,14 @@
 		rider.Paralyze(1 SECONDS)
 		rider.Knockdown(4 SECONDS)
 		human_parent.visible_message(
-			span_danger("[rider]Derruba.[human_parent]Como ambos caem no chão!"),
-			span_warning("Você cai no chão, trazendo[rider]Com você!"),
+			span_danger("[rider] Derruba.[human_parent] Como ambos caem no chão!"),
+			span_warning("Você cai no chão, trazendo [rider] Com você!"),
 			span_hear("Você ouve duas batidas consecutivas."),
 			COMBAT_MESSAGE_RANGE,
 			ignored_mobs = rider,
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
-		to_chat(rider, span_danger("[human_parent]Cai no chão, trazendo você junto.[human_parent.p_them()]!"))
+		to_chat(rider, span_danger("[human_parent] Cai no chão, trazendo você junto.[human_parent.p_them()]!"))
 
 /datum/component/riding/creature/human/get_rider_offsets_and_layers(pass_index, mob/offsetter)
 	var/mob/living/carbon/human/seat = parent
@@ -369,8 +369,8 @@
 	rider.Paralyze(1 SECONDS)
 	rider.Knockdown(4 SECONDS)
 	rider.visible_message(
-		span_warning("[seat]Empurra[rider]Fora de[seat.p_them()]!"),
-		span_warning("[seat]Te empurra para fora[seat.p_them()]!"),
+		span_warning("[seat] Empurra [rider] Fora de [seat.p_them()]!"),
+		span_warning("[seat] Te empurra para fora [seat.p_them()]!"),
 	)
 
 
@@ -385,7 +385,7 @@
 	. = user.usable_hands
 	if(!. && consequences)
 		Unbuckle(user)
-		to_chat(user, span_warning("Você não pode agarrar[robot_parent]Sem mãos!"))
+		to_chat(user, span_warning("Você não pode agarrar [robot_parent] Sem mãos!"))
 
 /datum/component/riding/creature/cyborg/get_rider_offsets_and_layers(pass_index, mob/offsetter)
 	var/mob/living/silicon/robot/robot_parent = parent

@@ -40,12 +40,12 @@
 		return
 	if(istype(tool, /obj/item/storage/bag/trash))
 		if(trash_bag)
-			to_chat(user, span_warning("[src]Já tem um lixo viciado!"))
+			to_chat(user, span_warning("[src] Já tem um lixo viciado!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 
-		to_chat(user, span_notice("Você prende o saco de lixo[src]."))
+		to_chat(user, span_notice("Você prende o saco de lixo [src]."))
 		trash_bag = tool
 		RegisterSignal(trash_bag, COMSIG_QDELETING, PROC_REF(bag_deleted))
 		SEND_SIGNAL(src, COMSIG_VACUUM_BAG_ATTACH, tool)
@@ -54,13 +54,13 @@
 
 	if(istype(tool, /obj/item/janicart_upgrade))
 		if(installed_upgrade)
-			to_chat(user, span_warning("[src]Já tem uma atualização instalada! Use uma chave de fenda para removê-la."))
+			to_chat(user, span_warning("[src] Já tem uma atualização instalada! Use uma chave de fenda para removê-la."))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/janicart_upgrade/new_upgrade = tool
 		new_upgrade.forceMove(src)
 		new_upgrade.install(src)
 		installed_upgrade = new_upgrade
-		to_chat(user, span_notice("Você se atualiza.[src]Com[new_upgrade]."))
+		to_chat(user, span_notice("Você se atualiza.[src] Com [new_upgrade]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -76,7 +76,7 @@
 	installed_upgrade.uninstall(src)
 	installed_upgrade.forceMove(get_turf(user))
 	user.put_in_hands(installed_upgrade)
-	to_chat(user, span_notice("Você tira.[installed_upgrade]De[src]"))
+	to_chat(user, span_notice("Você tira.[installed_upgrade] De [src]"))
 	installed_upgrade = null
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS

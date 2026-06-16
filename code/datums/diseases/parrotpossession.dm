@@ -37,8 +37,8 @@
 		UnregisterSignal(inside_parrot, list(COMSIG_PREQDELETED, COMSIG_MOVABLE_MOVED))
 		inside_parrot.forceMove(affected_mob.drop_location())
 		affected_mob.visible_message(
-			span_danger("[inside_parrot]é violentamente expulso de[affected_mob]!"),
-			span_userdanger("[inside_parrot]Explode do seu peito!"),
+			span_danger("[inside_parrot] é violentamente expulso de [affected_mob]!"),
+			span_userdanger("[inside_parrot] Explode do seu peito!"),
 		)
 	parrot_controller = null
 	return ..()

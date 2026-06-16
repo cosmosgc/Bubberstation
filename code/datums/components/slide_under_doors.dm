@@ -59,7 +59,7 @@
 		return
 
 	user.visible_message(
-		message = span_danger("\The [user] start[user.p_s()] sliding under \the [door]!"),
+		message = span_danger("\The [user] start [user.p_s()] sliding under \the [door]!"),
 		self_message = span_notice("Você começa a deslizar\the [door]."),
 		blind_message = span_hear("Você ouve apertando."),
 	)
@@ -95,8 +95,8 @@
 
 /datum/component/slide_under_doors/proc/slide_under_door(mob/living/user, obj/machinery/door/door)
 	user.visible_message(
-		message = span_danger("\The [user] slide[user.p_s()] under \the [door] with a pop!"),
-		self_message = span_notice("Você desliza para baixo\the [door]Comum pop!"),
+		message = span_danger("\The [user] slide [user.p_s()] under \the [door] with a pop!"),
+		self_message = span_notice("Você desliza para baixo\the [door] Comum pop!"),
 		blind_message = span_hear("Você ouve um estouro."),
 	)
 
@@ -141,8 +141,8 @@
 		user.Move(get_step(user, move_dir), move_dir)
 
 	user.visible_message(
-		message = span_danger("\The [user] slide[user.p_s()] out from under \the [door] with a pop!"),
-		self_message = span_notice("Você desliza para baixo\the [door]Comum pop!"),
+		message = span_danger("\The [user] slide [user.p_s()] out from under \the [door] with a pop!"),
+		self_message = span_notice("Você desliza para baixo\the [door] Comum pop!"),
 		blind_message = span_hear("Você ouve um estouro."),
 	)
 

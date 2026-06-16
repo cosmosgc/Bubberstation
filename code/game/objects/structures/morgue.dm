@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(locked)
 		if(COOLDOWN_FINISHED(src, breakout_message_cooldown))
 			COOLDOWN_START(src, breakout_message_cooldown, BREAKOUT_COOLDOWN)
-			to_chat(user, span_warning("[src]A porta não se mexe!"))
+			to_chat(user, span_warning("[src] A porta não se mexe!"))
 		return
 	open()
 
@@ -109,13 +109,13 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message(null, 		span_notice("Você se apoia na parte de trás de[src]E começar a empurrar a bandeja aberta...[DisplayTimeText(BREAKDOWN_TIME)].)"), 		span_hear("Você ouve um metal rangendo de[src]."))
+	user.visible_message(null, 		span_notice("Você se apoia na parte de trás de [src] E começar a empurrar a bandeja aberta...[DisplayTimeText(BREAKDOWN_TIME)].)"), 		span_hear("Você ouve um metal rangendo de [src]."))
 	if(!do_after(user, BREAKDOWN_TIME, target = src))
 		return
 	if(!user || user.stat != CONSCIOUS || user.loc != src)
 		return
 	user.visible_message(
-		span_warning("[user]Com sucesso, fugiu.[src]!"),
+		span_warning("[user] Com sucesso, fugiu.[src]!"),
 		span_notice("Você conseguiu escapar.[src]!"),
 	)
 	open()
@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	return ..()
 
 /obj/structure/bodycontainer/crematorium/attack_robot(mob/user) //Borgs can't use crematoriums without help
-	to_chat(user, span_warning("[src]Está travado contra você."))
+	to_chat(user, span_warning("[src] Está travado contra você."))
 	return
 
 /obj/structure/bodycontainer/crematorium/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
@@ -581,7 +581,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 			return
 	O.forceMove(src.loc)
 	if (user != O)
-		visible_message(span_warning("[user]Coisas.[O]em[src]."))
+		visible_message(span_warning("[user] Coisas.[O] em [src]."))
 
 /*
  * Crematorium tray

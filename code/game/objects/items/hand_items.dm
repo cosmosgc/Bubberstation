@@ -53,7 +53,7 @@
 		return
 
 	if(owner == sucker) // big mood
-		to_chat(owner, span_danger("Espere um segundo... Você só olhou para o seu próprio[src.name]!"))
+		to_chat(owner, span_danger("Espere um segundo... Você só olhou para o seu próprio [src.name]!"))
 		addtimer(CALLBACK(src, PROC_REF(selfGottem), owner), 1 SECONDS)
 	else
 		to_chat(sucker, span_danger("Espere um segundo... Isso foi..."))
@@ -65,7 +65,7 @@
 		return
 
 	playsound(get_turf(owner), 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
-	owner.visible_message(span_danger("[owner]Vergonhosamente bops[owner.p_them()]ego com[owner.p_their()] [src.name]."), span_userdanger("Você vergonhosamente bop-se com o seu[src.name]."), 		span_hear("Você ouve uma batida chata!"))
+	owner.visible_message(span_danger("[owner] Vergonhosamente bops [owner.p_them()] ego com [owner.p_their()] [src.name]."), span_userdanger("Você vergonhosamente bop-se com o seu [src.name]."), 		span_hear("Você ouve uma batida chata!"))
 	log_combat(owner, owner, "bopped", src.name, "(self)")
 	owner.do_attack_animation(owner)
 	owner.apply_damage(100, STAMINA)
@@ -82,11 +82,11 @@
 		return
 
 	if(!in_range(owner, sucker) || !(owner.mobility_flags & MOBILITY_USE))
-		to_chat(sucker, span_notice("Ufa... você se mudou antes.[owner]Notei que você viu[owner.p_their()] [src.name]..."))
+		to_chat(sucker, span_notice("Ufa... você se mudou antes.[owner] Notei que você viu [owner.p_their()] [src.name]..."))
 		return
 
-	to_chat(owner, span_warning("[sucker]Olhe para baixo para o seu[src.name]Antes de tentar evitar[sucker.p_their()]Olhos, mas é tarde demais!"))
-	to_chat(sucker, span_danger("<b>[owner]Vê o medo em seus olhos enquanto tenta desviar o olhar[owner.p_their()] [src.name]!</b>"))
+	to_chat(owner, span_warning("[sucker] Olhe para baixo para o seu [src.name] Antes de tentar evitar [sucker.p_their()] Olhos, mas é tarde demais!"))
+	to_chat(sucker, span_danger("<b>[owner] Vê o medo em seus olhos enquanto tenta desviar o olhar [owner.p_their()] [src.name]!</b>"))
 
 	owner.face_atom(sucker)
 	if(owner.client)
@@ -96,18 +96,18 @@
 	owner.do_attack_animation(sucker)
 
 	if(HAS_TRAIT(owner, TRAIT_HULK))
-		owner.visible_message(span_danger("[owner]Bops[sucker]Com[owner.p_their()] [src.name]Muito mais difícil do que pretendia, enviando[sucker.p_them()]Voando!"), 			span_danger("Seu bop.[sucker]com o seu[src.name]Muito mais difícil do que pretendia, enviando[sucker.p_them()]Voando!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), ignored_mobs=list(sucker))
-		to_chat(sucker, span_userdanger("[owner]Você é incrivelmente duro com[owner.p_their()] [src.name]Mandando você voar!"))
+		owner.visible_message(span_danger("[owner] Bops [sucker] Com [owner.p_their()] [src.name] Muito mais difícil do que pretendia, enviando [sucker.p_them()] Voando!"), 			span_danger("Seu bop.[sucker] com o seu [src.name] Muito mais difícil do que pretendia, enviando [sucker.p_them()] Voando!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), ignored_mobs=list(sucker))
+		to_chat(sucker, span_userdanger("[owner] Você é incrivelmente duro com [owner.p_their()] [src.name] Mandando você voar!"))
 		sucker.apply_damage(50, STAMINA)
 		sucker.Knockdown(50)
 		log_combat(owner, sucker, "bopped", src.name, "(setup- Hulk)")
 		var/atom/throw_target = get_edge_target_turf(sucker, owner.dir)
 		sucker.throw_at(throw_target, 6, 3, owner)
 	else
-		owner.visible_message(span_danger("[owner]Bops[sucker]Com[owner.p_their()] [src.name]!"), span_danger("Seu bop.[sucker]com o seu[src.name]!"), 			span_hear("Você ouve uma batida chata!"), ignored_mobs=list(sucker))
+		owner.visible_message(span_danger("[owner] Bops [sucker] Com [owner.p_their()] [src.name]!"), span_danger("Seu bop.[sucker] com o seu [src.name]!"), 			span_hear("Você ouve uma batida chata!"), ignored_mobs=list(sucker))
 		sucker.apply_damage(15, STAMINA)
 		log_combat(owner, sucker, "bopped", src.name, "(setup)")
-		to_chat(sucker, span_userdanger("[owner]Eu te acompanho.[owner.p_their()] [src.name]!"))
+		to_chat(sucker, span_userdanger("[owner] Eu te acompanho.[owner.p_their()] [src.name]!"))
 	qdel(src)
 
 
@@ -122,7 +122,7 @@
 		return
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("Você não pode fazer nada.[target]Você não quer arriscar machucar ninguém..."))
+		to_chat(user, span_warning("Você não pode fazer nada.[target] Você não quer arriscar machucar ninguém..."))
 		return
 
 	if(!(target?.get_bodypart(BODY_ZONE_HEAD)) || user.pulling != target || user.grab_state < GRAB_AGGRESSIVE || user.get_stamina_loss() > 80)
@@ -130,7 +130,7 @@
 
 	var/obj/item/bodypart/head/the_head = target.get_bodypart(BODY_ZONE_HEAD)
 	if(!(the_head.biological_state & (BIO_FLESH|BIO_CHITIN)))
-		to_chat(user, span_warning("Você não pode dormir[target], [target.p_they()] [target.p_have()]Sem pele.[target.p_their()]Cabeça!"))
+		to_chat(user, span_warning("Você não pode dormir [target], [target.p_they()] [target.p_have()] Sem pele.[target.p_their()] Cabeça!"))
 		return
 
 	// [user] gives [target] a [prefix_desc] noogie[affix_desc]!
@@ -141,7 +141,7 @@
 
 	if(HAS_TRAIT(target, TRAIT_ANTENNAE))
 		prefix_desc = "violent"
-		affix_desc = "Vamos.[target.p_their()]antenas sensíveis"
+		affix_desc = "Vamos.[target.p_their()] antenas sensíveis"
 		affix_desc_target = "on your highly sensitive antennae"
 		brutal_noogie = TRUE
 	if(HAS_TRAIT(user, TRAIT_HULK))
@@ -151,12 +151,12 @@
 	var/message_others = "[prefix_desc] noogie[affix_desc]"
 	var/message_target = "[prefix_desc] noogie[affix_desc_target]"
 
-	user.visible_message(span_danger("[user]começa a dar[target]a[message_others]!"), span_warning("Você começa a dar[target]a[message_others]!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
-	to_chat(target, span_userdanger("[user]começa a te dar um[message_target]!"))
+	user.visible_message(span_danger("[user] começa a dar [target] a [message_others]!"), span_warning("Você começa a dar [target] a [message_others]!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
+	to_chat(target, span_userdanger("[user] começa a te dar um [message_target]!"))
 
 	if(!do_after(user, 1.5 SECONDS, target))
-		to_chat(user, span_warning("Você não dá[target]Um noogie!"))
-		to_chat(target, span_danger("[user]Não dá um \"não\"!"))
+		to_chat(user, span_warning("Você não dá [target] Um noogie!"))
+		to_chat(target, span_danger("[user] Não dá um \"não\"!"))
 		return
 
 	if(brutal_noogie)
@@ -172,8 +172,8 @@
 		return FALSE
 
 	if(user.get_stamina_loss() > 80)
-		to_chat(user, span_warning("Você está muito cansado para continuar dando[target]Um noogie!"))
-		to_chat(target, span_danger("[user]Está muito cansado para continuar dando-lhe um nó!"))
+		to_chat(user, span_warning("Você está muito cansado para continuar dando [target] Um noogie!"))
+		to_chat(target, span_danger("[user] Está muito cansado para continuar dando-lhe um nó!"))
 		return
 
 	var/damage = rand(1, 5)
@@ -191,12 +191,12 @@
 	playsound(get_turf(user), SFX_RUSTLE, 50)
 
 	if(prob(33))
-		user.visible_message(span_danger("[user]Continuando noogie'ing[target]!"), span_warning("Você continua dando[target]Um noogie!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
-		to_chat(target, span_userdanger("[user]Continua dando-lhe um nó!"))
+		user.visible_message(span_danger("[user] Continuando noogie'ing [target]!"), span_warning("Você continua dando [target] Um noogie!"), vision_distance=COMBAT_MESSAGE_RANGE, ignored_mobs=target)
+		to_chat(target, span_userdanger("[user] Continua dando-lhe um nó!"))
 
 	if(!do_after(user, 1 SECONDS + (iteration * 2), target))
-		to_chat(user, span_warning("Você não dá[target]Um noogie!"))
-		to_chat(target, span_danger("[user]Não dá um \"não\"!"))
+		to_chat(user, span_warning("Você não dá [target] Um noogie!"))
+		to_chat(target, span_danger("[user] Não dá um \"não\"!"))
 		return
 
 	iteration++
@@ -231,12 +231,12 @@
 	var/datum/status_effect/offering/kiss_check = slapped.has_status_effect(/datum/status_effect/offering)
 	if(kiss_check && istype(kiss_check.offered_item, /obj/item/hand_item/kisser) && (user in kiss_check.possible_takers))
 		user.visible_message(
-			span_danger("[user]Escarnece em[slapped]O avanço, o vento, e os tapas[slapped.p_them()]Difícil para o chão!"),
-			span_notice("Que coragem! Você volta a sua mão e bate[slapped]O suficiente para bater.[slapped.p_them()]Câmbio!"),
+			span_danger("[user] Escarnece em [slapped] O avanço, o vento, e os tapas [slapped.p_them()] Difícil para o chão!"),
+			span_notice("Que coragem! Você volta a sua mão e bate [slapped] O suficiente para bater.[slapped.p_them()] Câmbio!"),
 			span_hear("Você ouve alguém levar uma surra!"),
 			ignored_mobs = slapped,
 		)
-		to_chat(slapped, span_userdanger("Viu?[user]Escarneça e puxe para trás[user.p_their()]Braço, então de repente você está no chão com um zumbido ímpio em seus ouvidos!"))
+		to_chat(slapped, span_userdanger("Viu?[user] Escarneça e puxe para trás [user.p_their()] Braço, então de repente você está no chão com um zumbido ímpio em seus ouvidos!"))
 		slap_volume = 120
 		SEND_SOUND(slapped, sound('sound/items/weapons/flash_ring.ogg'))
 		shake_camera(slapped, 2, 2)
@@ -246,7 +246,7 @@
 	else if(user.zone_selected == BODY_ZONE_HEAD || user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		if(user == slapped)
 			user.visible_message(
-				span_notice("[user]Palmas facais!"),
+				span_notice("[user] Palmas facais!"),
 				span_notice("Sua palma da cara."),
 				span_hear("Você ouve um tapa."),
 			)
@@ -254,8 +254,8 @@
 		else
 			if(slapped.IsSleeping() || slapped.IsUnconscious())
 				user.visible_message(
-					span_notice("[user]tapas[slapped]Na cara, tentando concordar[slapped.p_them()]Levante-se!"),
-					span_notice("Você bate.[slapped]Na cara, tentando concordar[slapped.p_them()]Levante-se!"),
+					span_notice("[user] tapas [slapped] Na cara, tentando concordar [slapped.p_them()] Levante-se!"),
+					span_notice("Você bate.[slapped] Na cara, tentando concordar [slapped.p_them()] Levante-se!"),
 					span_hear("Você ouve um tapa."),
 				)
 
@@ -265,19 +265,19 @@
 
 			else
 				user.visible_message(
-					span_danger("[user]tapas[slapped]Na cara!"),
-					span_notice("Você bate.[slapped]Na cara!"),
+					span_danger("[user] tapas [slapped] Na cara!"),
+					span_notice("Você bate.[slapped] Na cara!"),
 					span_hear("Você ouve um tapa."),
 				)
 	else if(user.zone_selected == BODY_ZONE_L_ARM || user.zone_selected == BODY_ZONE_R_ARM)
 		user.visible_message(
-			span_danger("[user]dá[slapped]Um tapa no pulso!"),
-			span_notice("Você dá[slapped]Um tapa no pulso!"),
+			span_danger("[user] dá [slapped] Um tapa no pulso!"),
+			span_notice("Você dá [slapped] Um tapa no pulso!"),
 			span_hear("Você ouve um tapa."),
 		)
 	else
 		user.visible_message(
-			span_danger("[user]tapas[slapped]!"),
+			span_danger("[user] tapas [slapped]!"),
 			span_notice("Você bate.[slapped]!"),
 			span_hear("Você ouve um tapa."),
 		)
@@ -302,7 +302,7 @@
 /obj/item/hand_item/slapper/proc/slap_table(obj/structure/table/table, mob/living/user)
 	user.do_attack_animation(table)
 	playsound(get_turf(table), 'sound/effects/tableslam.ogg', 40, TRUE)
-	user.visible_message(span_notice("[user]tapas[user.p_their()]Mão sobre[table]."), span_notice("Você bate na sua mão[table]."), vision_distance=COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_notice("[user] tapas [user.p_their()] Mão sobre [table]."), span_notice("Você bate na sua mão [table]."), vision_distance=COMBAT_MESSAGE_RANGE)
 
 	table_smacks_left--
 	if(table_smacks_left <= 0)
@@ -313,7 +313,7 @@
 				var/extra_wound = 0
 				if(HAS_TRAIT(user, TRAIT_HULK))
 					extra_wound = 20
-				user.visible_message(span_danger("[user.name]Bate com a mão\the [table]!"),
+				user.visible_message(span_danger("[user.name] Bate com a mão\the [table]!"),
 					span_userdanger("Você quebra sua mão\the [table]!"), span_hear("Você ouve um barulho de vidro quebrado!"), COMBAT_MESSAGE_RANGE, user)
 				active_arm?.receive_damage(brute = 10, wound_bonus = extra_wound)
 				user.apply_damage(30, STAMINA)
@@ -396,13 +396,13 @@
 		offered = locate(/mob/living/carbon) in orange(1, offerer)
 
 	if(offered && istype(offered) && offered.body_position == LYING_DOWN)
-		offerer.visible_message(span_notice("[offerer]OFERTAS[offerer.p_their()]Mão para[offered], procurando ajudá-los!"),
-			span_notice("Você oferece[offered]Sua mão, para tentar ajudá-los a levantar!"), null, 2)
+		offerer.visible_message(span_notice("[offerer] OFERTAS [offerer.p_their()] Mão para [offered], procurando ajudá-los!"),
+			span_notice("Você oferece [offered] Sua mão, para tentar ajudá-los a levantar!"), null, 2)
 
 		offerer.apply_status_effect(/datum/status_effect/offering/no_item_received/needs_resting, src, /atom/movable/screen/alert/give/hand/helping, offered)
 		return
 
-	offerer.visible_message(span_notice("[offerer]Se estende.[offerer.p_their()]Mão."),
+	offerer.visible_message(span_notice("[offerer] Se estende.[offerer.p_their()] Mão."),
 		span_notice("Estenda sua mão."), null, 2)
 
 	offerer.apply_status_effect(/datum/status_effect/offering/no_item_received, src, /atom/movable/screen/alert/give/hand)
@@ -422,8 +422,8 @@
 		if(taker.body_position == LYING_DOWN)
 			return // That didn't help them. Awkwaaaaard.
 
-		offerer.visible_message(span_notice("[offerer]Ajuda.[taker]Levante-se!"), span_nicegreen("Você ajuda.[taker]Levante-se!"), span_hear("Você ouve alguém ajudando outra pessoa!"), ignored_mobs = taker)
-		to_chat(taker, span_nicegreen("Você pega.[offerer]'s mão, deixando[offerer.p_them()]Ajude a levantar! Que gentil da parte dele!"))
+		offerer.visible_message(span_notice("[offerer] Ajuda.[taker] Levante-se!"), span_nicegreen("Você ajuda.[taker] Levante-se!"), span_hear("Você ouve alguém ajudando outra pessoa!"), ignored_mobs = taker)
+		to_chat(taker, span_nicegreen("Você pega.[offerer]'s mão, deixando [offerer.p_them()] Ajude a levantar! Que gentil da parte dele!"))
 
 		offerer.add_mob_memory(/datum/memory/helped_up, protagonist = offerer, deuteragonist = taker)
 		taker.add_mob_memory(/datum/memory/helped_up, protagonist = offerer, deuteragonist = taker)
@@ -447,8 +447,8 @@
 	if(did_we_pull == FALSE)
 		return // That didn't work for one reason or the other. No need to display anything.
 
-	to_chat(offerer, span_notice("[taker]Pegue sua mão, permitindo que você puxe[taker.p_them()]Vamos."))
-	to_chat(taker, span_notice("Você pega.[offerer]A mão, que permite[offerer.p_them()]Para puxar você junto. Que educado!"))
+	to_chat(offerer, span_notice("[taker] Pegue sua mão, permitindo que você puxe [taker.p_them()] Vamos."))
+	to_chat(taker, span_notice("Você pega.[offerer] A mão, que permite [offerer.p_them()] Para puxar você junto. Que educado!"))
 
 	qdel(src)
 
@@ -473,15 +473,15 @@
 	if (user.body_position != LYING_DOWN)
 		return
 	var/obj/item/clothing/shoes/item_to_strip = target_human.shoes
-	user.visible_message(span_warning("[user]Começa a roubar.[target_human]'s[item_to_strip.name]!"), 		span_danger("Você começa a roubar.[target_human]'s[item_to_strip.name]..."))
-	to_chat(target_human, span_userdanger("[user]Começa a roubar o seu[item_to_strip.name]!"))
+	user.visible_message(span_warning("[user] Começa a roubar.[target_human]'s [item_to_strip.name]!"), 		span_danger("Você começa a roubar.[target_human]'s [item_to_strip.name]..."))
+	to_chat(target_human, span_userdanger("[user] Começa a roubar o seu [item_to_strip.name]!"))
 	if (!do_after(user, item_to_strip.strip_delay, target_human))
 		return
 	if(!target_human.dropItemToGround(item_to_strip))
 		return
 	user.put_in_hands(item_to_strip)
-	user.visible_message(span_warning("[user]Roubou.[target_human]'s[item_to_strip.name]!"), 		span_notice("Você roubou.[target_human]'s[item_to_strip.name]!"))
-	to_chat(target_human, span_userdanger("[user]Roubou seu[item_to_strip.name]!"))
+	user.visible_message(span_warning("[user] Roubou.[target_human]'s [item_to_strip.name]!"), 		span_notice("Você roubou.[target_human]'s [item_to_strip.name]!"))
+	to_chat(target_human, span_userdanger("[user] Roubou seu [item_to_strip.name]!"))
 
 /obj/item/hand_item/kisser
 	name = "kiss"
@@ -499,7 +499,7 @@
 
 /obj/item/hand_item/kisser/ranged_interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	var/obj/projectile/blown_kiss = new kiss_type(get_turf(user))
-	user.visible_message("<b>[user]</b>Golpes.\a [blown_kiss]Em[target]!", span_notice("Você sopra.\a [blown_kiss]Em[target]!"))
+	user.visible_message("<b>[user]</b>Golpes.\a [blown_kiss] Em [target]!", span_notice("Você sopra.\a [blown_kiss] Em [target]!"))
 
 	//Shooting Code:
 	blown_kiss.original = target
@@ -516,7 +516,7 @@
 		return TRUE
 
 	cheek_kiss = (offerer.zone_selected != BODY_ZONE_PRECISE_MOUTH)
-	offerer.visible_message(span_notice("[offerer]Inclina-se ligamente, oferecendo um beijo[cheek_kiss ? " on the cheek" : ""]!"),
+	offerer.visible_message(span_notice("[offerer] Inclina-se ligamente, oferecendo um beijo[cheek_kiss ? " on the cheek" : ""]!"),
 		span_notice("Você se inclina ligeiramente, indicando que gostaria de oferecer um beijo.[cheek_kiss ? " on the cheek" : ""]!"), null, 2)
 	offerer.apply_status_effect(/datum/status_effect/offering/no_item_received, src)
 	return TRUE
@@ -527,8 +527,8 @@
 		return
 
 	var/obj/projectile/blown_kiss = new kiss_type(get_turf(offerer))
-	offerer.visible_message("<b>[offerer]</b>dá[taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!!", span_notice("Você dá[taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"), ignored_mobs = taker)
-	to_chat(taker, span_nicegreen("[offerer]te dá\a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"))
+	offerer.visible_message("<b>[offerer]</b>dá [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!!", span_notice("Você dá [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"), ignored_mobs = taker)
+	to_chat(taker, span_nicegreen("[offerer] te dá\a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"))
 	offerer.face_atom(taker)
 	taker.face_atom(offerer)
 	offerer.do_item_attack_animation(taker, used_item = src, animation_type = ATTACK_ANIMATION_BLUNT)
@@ -614,7 +614,7 @@
 /obj/projectile/kiss/proc/harmless_on_hit(mob/living/living_target)
 	playsound(get_turf(living_target), hitsound, 100, TRUE)
 	if(!suppressed)  // direct
-		living_target.visible_message(span_danger("[living_target]é atingido por\a [src]."), span_userdanger("Você foi atingido por\a [src]!"), vision_distance=COMBAT_MESSAGE_RANGE)
+		living_target.visible_message(span_danger("[living_target] é atingido por\a [src]."), span_userdanger("Você foi atingido por\a [src]!"), vision_distance=COMBAT_MESSAGE_RANGE)
 
 	living_target.add_mob_memory(/datum/memory/kissed, deuteragonist = firer)
 	living_target.add_mood_event("kiss", /datum/mood_event/kiss, firer, suppressed)
@@ -716,7 +716,7 @@
 	if(!living_target.has_reagent(/datum/reagent/consumable/garlic))
 		//Phwoar
 		living_target.reagents.add_reagent(/datum/reagent/consumable/garlic, 1)
-	living_target.visible_message("[living_target]Tem um olhar engraçado[living_target.p_their()]Cara.", "Uau, isso é um sabor forte depois do alho!", vision_distance=COMBAT_MESSAGE_RANGE)
+	living_target.visible_message("[living_target] Tem um olhar engraçado [living_target.p_their()] Cara.", "Uau, isso é um sabor forte depois do alho!", vision_distance=COMBAT_MESSAGE_RANGE)
 
 /obj/projectile/kiss/chef
 	name = "chef's kiss"
@@ -734,17 +734,17 @@
 	// From here on, no message
 	suppressed = SUPPRESSED_VERY
 	if(!(kisser.mind && HAS_TRAIT_FROM(target, TRAIT_FOOD_CHEF_MADE, REF(kisser.mind))))
-		to_chat(firer, span_warning("Espere um segundo, você não fez isso.[target.name]Como pode reivindicá-lo como seu?"))
+		to_chat(firer, span_warning("Espere um segundo, você não fez isso.[target.name] Como pode reivindicá-lo como seu?"))
 		return
 	if(target.reagents.has_reagent(/datum/reagent/love))
-		to_chat(firer, span_warning("Você já abençoou[target.name]com seu coração e alma."))
+		to_chat(firer, span_warning("Você já abençoou [target.name] com seu coração e alma."))
 		return
 
 	var/amount_nutriment = target.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment, type_check = REAGENT_PARENT_TYPE)
 	if(amount_nutriment <= 0)
-		to_chat(firer, span_warning("Não há nutrição suficiente em[target.name]para ser uma refeição adequada."))
+		to_chat(firer, span_warning("Não há nutrição suficiente em [target.name] para ser uma refeição adequada."))
 		return
 
-	to_chat(firer, span_green("Você entrega um beijo de chef[target], declarando-o perfeito."))
-	target.visible_message(span_notice("[firer]entrega um beijo de chef[target]."), ignored_mobs = firer)
+	to_chat(firer, span_green("Você entrega um beijo de chef [target], declarando-o perfeito."))
+	target.visible_message(span_notice("[firer] entrega um beijo de chef [target]."), ignored_mobs = firer)
 	target.reagents.add_reagent(/datum/reagent/love, clamp(amount_nutriment / 4, 1, 10)) // clamped to about half of the most dense food I think we have (super bite burger)

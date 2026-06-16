@@ -118,7 +118,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 /obj/item/integrated_circuit/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("O médico de carga diz[cell ? round(cell.percent(), 1) : 0]%.")
+		. += span_notice("O médico de carga diz [cell ? round(cell.percent(), 1) : 0]%.")
 	else
 		. += span_notice("Não há nenhuma célula de energia instalada.")
 
@@ -161,11 +161,11 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 
 		set_cell(tool)
 		tool.add_fingerprint(user)
-		user.visible_message(span_notice("[user]insere uma célula de energia em[src]."), span_notice("Você insere a célula de energia em[src]."))
+		user.visible_message(span_notice("[user] insere uma célula de energia em [src]."), span_notice("Você insere a célula de energia em [src]."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(isidcard(tool))
-		balloon_alert(user, "ID do proprietário definido para[tool]")
+		balloon_alert(user, "ID do proprietário definido para [tool]")
 		owner_id = WEAKREF(tool)
 		return ITEM_INTERACT_SUCCESS
 		
@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
-	user.visible_message(span_notice("[user]Desenrosca a célula de energia de[src]."), span_notice("Você desaparafusa a célula de energia de[src]."))
+	user.visible_message(span_notice("[user] Desenrosca a célula de energia de [src]."), span_notice("Você desaparafusa a célula de energia de [src]."))
 	cell.forceMove(drop_location())
 	set_cell(null)
 	return ITEM_INTERACT_SUCCESS
@@ -558,7 +558,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 					if(!marked_atom)
 						return TRUE
 					port.set_input(marked_atom)
-					balloon_alert(usr, "Atualizado[port.name]O valor do objeto marcado.")
+					balloon_alert(usr, "Atualizado [port.name] O valor do objeto marcado.")
 					return TRUE
 				if(!marker.marked_atom)
 					port.set_input(null)
@@ -591,7 +591,7 @@ GLOBAL_LIST_EMPTY_TYPED(integrated_circuits, /obj/item/integrated_circuit)
 			var/string_form = copytext("[value]", 1, PORT_MAX_STRING_DISPLAY)
 			if(length(string_form) >= PORT_MAX_STRING_DISPLAY-1)
 				string_form += "..."
-			balloon_alert(usr, "[port.name]Valor:[string_form]")
+			balloon_alert(usr, "[port.name] Valor:[string_form]")
 			. = TRUE
 		if("set_display_name")
 			var/new_name = params["display_name"]

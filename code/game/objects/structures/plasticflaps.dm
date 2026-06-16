@@ -97,12 +97,12 @@
 
 /obj/structure/plasticflaps/atom_break(damage_flag)
 	if(damage_flag == FIRE)
-		visible_message(span_warning("[src]Começar a derreter do calor!"))
+		visible_message(span_warning("[src] Começar a derreter do calor!"))
 	return ..()
 
 /obj/structure/plasticflaps/atom_destruction(damage_flag)
 	if(damage_flag == FIRE)
-		visible_message(span_warning("[src]Derreter 's longe em plástico goo!"))
+		visible_message(span_warning("[src] Derreter 's longe em plástico goo!"))
 	return ..()
 
 /obj/structure/plasticflaps/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
@@ -143,9 +143,9 @@
 /obj/structure/plasticflaps/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("[src]são<b>Está ferrado.</b>Para o chão.")
+		. += span_notice("[src] são<b>Está ferrado.</b>Para o chão.")
 	else
-		. += span_notice("[src]não são mais<i>Está ferrado.</i>para o chão, e as abas podem ser<b>Corta.</b>Separados.")
+		. += span_notice("[src] não são mais<i>Está ferrado.</i>para o chão, e as abas podem ser<b>Corta.</b>Separados.")
 
 /obj/structure/plasticflaps/screwdriver_act(mob/living/user, obj/item/W)
 	if(..())
@@ -153,13 +153,13 @@
 	add_fingerprint(user)
 	var/action = anchored ? "unscrews [src] from" : "screws [src] to"
 	var/uraction = anchored ? "unscrew [src] from" : "screw [src] to"
-	user.visible_message(span_warning("[user] [action]O chão."), span_notice("Você começa a[uraction]O chão..."), span_hear("Você ouve barulhos de roubo."))
+	user.visible_message(span_warning("[user] [action] O chão."), span_notice("Você começa a [uraction] O chão..."), span_hear("Você ouve barulhos de roubo."))
 	if(!W.use_tool(src, user, 100, volume=100, extra_checks = CALLBACK(src, PROC_REF(check_anchored_state), anchored)))
 		return TRUE
 	set_anchored(!anchored)
 	update_atmos_behaviour()
 	air_update_turf(TRUE)
-	to_chat(user, span_notice("Você.[uraction]O chão."))
+	to_chat(user, span_notice("Você.[uraction] O chão."))
 	return TRUE
 
 ///Update the flaps behaviour to gases, if not anchored will let air pass through
@@ -169,11 +169,11 @@
 /obj/structure/plasticflaps/wirecutter_act(mob/living/user, obj/item/W)
 	. = ..()
 	if(!anchored)
-		user.visible_message(span_warning("[user]Cortem-se.[src]."), span_notice("Você começa a se separar[src]."), span_hear("Você ouve o corte."))
+		user.visible_message(span_warning("[user] Cortem-se.[src]."), span_notice("Você começa a se separar [src]."), span_hear("Você ouve o corte."))
 		if(W.use_tool(src, user, 50, volume=100))
 			if(anchored)
 				return TRUE
-			to_chat(user, span_notice("Você se cortou[src]."))
+			to_chat(user, span_notice("Você se cortou [src]."))
 			var/obj/item/stack/sheet/plastic/five/P = new(loc)
 			if (!QDELETED(P))
 				P.add_fingerprint(user)

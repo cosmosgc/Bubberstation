@@ -13,6 +13,6 @@
 	SIGNAL_HANDLER
 
 	if(istype(hit, /obj/structure/window))
-		owner.visible_message(span_notice("\The [owner]Focinhos\the [hit]!"))
+		owner.visible_message(span_notice("\The [owner] Focinhos\the [hit]!"))
 		new /obj/effect/temp_visual/heart(hit.loc)
 		return COMPONENT_CANCEL_ATTACK_CHAIN

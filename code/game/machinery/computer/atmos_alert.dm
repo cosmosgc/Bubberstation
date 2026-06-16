@@ -42,11 +42,11 @@
 		if("clear")
 			var/zone = params["zone"]
 			if(zone in priority_alarms)
-				to_chat(usr, span_notice("Alarme prioritário para[zone]Limpo."))
+				to_chat(usr, span_notice("Alarme prioritário para [zone] Limpo."))
 				priority_alarms -= zone
 				. = TRUE
 			if(zone in minor_alarms)
-				to_chat(usr, span_notice("Pequeno alarme para[zone]Limpo."))
+				to_chat(usr, span_notice("Pequeno alarme para [zone] Limpo."))
 				minor_alarms -= zone
 				. = TRUE
 	update_appearance()

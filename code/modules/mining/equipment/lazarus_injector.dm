@@ -46,7 +46,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/lazarus_injector/proc/expend(atom/revived_target, mob/user)
-	user.visible_message(span_notice("[user]Injeções[revived_target]com[src]Revivendo."))
+	user.visible_message(span_notice("[user] Injeções [revived_target] com [src] Revivendo."))
 	SSblackbox.record_feedback("tally", "lazarus_injector", 1, revived_target.type)
 	loaded = FALSE
 	playsound(src,'sound/effects/refill.ogg',50,TRUE)
@@ -62,6 +62,6 @@
 /obj/item/lazarus_injector/examine(mob/user)
 	. = ..()
 	if(!loaded)
-		. += span_info("[src]Está vazio.")
+		. += span_info("[src] Está vazio.")
 	if(malfunctioning)
-		. += span_info("A exibição em[src]Parece estar piscando.")
+		. += span_info("A exibição em [src] Parece estar piscando.")

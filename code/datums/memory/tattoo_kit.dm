@@ -24,7 +24,7 @@
 	if(!uses)
 		. += span_warning("Este kit não tem utilidade!")
 	else
-		. += span_notice("Este kit tem tinta suficiente para[uses]Use o 's'.")
+		. += span_notice("Este kit tem tinta suficiente para [uses] Use o 's'.")
 	. += span_boldnotice("Você pode usar um cartucho de toner para encher isso.")
 
 /obj/item/tattoo_kit/item_interaction(mob/living/user, obj/item/toner/ink_cart, list/modifiers)
@@ -71,7 +71,7 @@
 	if(!memory_to_tattoo || !tattoo_artist.Adjacent(tattoo_holder) || !tattoo_holder.get_bodypart(selected_zone))
 		return
 
-	tattoo_artist.visible_message(span_notice("[tattoo_artist]começa a tatuar algo em[tattoo_target]de[tattoo_holder]..."))
+	tattoo_artist.visible_message(span_notice("[tattoo_artist] começa a tatuar algo em [tattoo_target] de [tattoo_holder]..."))
 	if(!do_after(tattoo_artist, 5 SECONDS, tattoo_holder))
 		return
 	if(!tattoo_holder.get_bodypart(selected_zone))

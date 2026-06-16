@@ -255,9 +255,9 @@
 	parent_item.update_appearance()
 
 	if(iscyborg(user))
-		to_chat(user, span_notice("Você dedica seu módulo a[parent]."))
+		to_chat(user, span_notice("Você dedica seu módulo a [parent]."))
 	else
-		to_chat(user, span_notice("Você agarra[parent]com as duas mãos."))
+		to_chat(user, span_notice("Você agarra [parent] com as duas mãos."))
 
 	// Play sound if one is set
 	if(wieldsound)
@@ -327,7 +327,7 @@
 			else if(HAS_TRAIT(parent, TRAIT_NEEDS_TWO_HANDS))
 				to_chat(user, span_notice("Você caiu.[parent]."))
 			else
-				to_chat(user, span_notice("Agora você está carregando[parent]com uma mão."))
+				to_chat(user, span_notice("Agora você está carregando [parent] com uma mão."))
 
 	// Play sound if set
 	if(unwieldsound)

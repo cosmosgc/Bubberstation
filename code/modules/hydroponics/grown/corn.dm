@@ -55,7 +55,7 @@
 
 /obj/item/grown/corncob/attackby(obj/item/grown/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
-		to_chat(user, span_notice("Você usa[W]Para fazer um cachimbo fora da espia de milho!"))
+		to_chat(user, span_notice("Você usa [W] Para fazer um cachimbo fora da espia de milho!"))
 		new /obj/item/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
 	else

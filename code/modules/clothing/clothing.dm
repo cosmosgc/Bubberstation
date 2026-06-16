@@ -133,9 +133,9 @@
 		if(CLOTHING_SHREDDED)
 			var/obj/item/stack/cloth_repair = weapon
 			if(cloth_repair.amount < 3)
-				to_chat(user, span_warning("Você precisa de três.[cloth_repair.name]Para reparar[src]."))
+				to_chat(user, span_warning("Você precisa de três.[cloth_repair.name] Para reparar [src]."))
 				return ITEM_INTERACT_BLOCKING
-			to_chat(user, span_notice("Você começa a consertar o dano para[src]Com[cloth_repair]..."))
+			to_chat(user, span_notice("Você começa a consertar o dano para [src] Com [cloth_repair]..."))
 			if(!do_after(user, 6 SECONDS, src) || !cloth_repair.use(3))
 				return ITEM_INTERACT_BLOCKING
 			repair(user)
@@ -151,7 +151,7 @@
 	damage_by_parts = null
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
-		to_chat(user, span_notice("Você conserta o dano em[src]."))
+		to_chat(user, span_notice("Você conserta o dano em [src]."))
 	update_appearance()
 
 /**
@@ -202,7 +202,7 @@
 	if(iscarbon(loc))
 		var/mob/living/carbon/carbon_loc = loc
 		zone_name = carbon_loc.parse_zone_with_bodypart(def_zone)
-		carbon_loc.visible_message(span_danger("O[zone_name]Vamos.[carbon_loc]'s[src.name]É[break_verb]Afaste-se!"), span_userdanger("O[zone_name]Na sua[src.name]É[break_verb]Afaste-se!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		carbon_loc.visible_message(span_danger("O [zone_name] Vamos.[carbon_loc]'s [src.name] É [break_verb] Afaste-se!"), span_userdanger("O [zone_name] Na sua [src.name] É [break_verb] Afaste-se!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		RegisterSignal(carbon_loc, COMSIG_MOVABLE_MOVED, PROC_REF(bristle), override = TRUE)
 	else
 		zone_name = parse_zone(def_zone)
@@ -322,7 +322,7 @@
 /obj/item/clothing/examine(mob/user)
 	. = ..()
 	if(damaged_clothes == CLOTHING_SHREDDED)
-		. += span_warning("<b>[p_Theyre()]Completamente triturado e exigir[p_s()]Consertando antes.[p_they()]Pode ser usado de novo!</b>")
+		. += span_warning("<b>[p_Theyre()] Completamente triturado e exigir [p_s()] Consertando antes.[p_they()] Pode ser usado de novo!</b>")
 		return
 
 	for(var/zone in damage_by_parts)
@@ -330,11 +330,11 @@
 		var/zone_name = parse_zone(zone)
 		switch(pct_damage_part)
 			if(100 to INFINITY)
-				. += span_warning("<b>O[zone_name]é inútil e requer conserto!</b>")
+				. += span_warning("<b>O [zone_name] é inútil e requer conserto!</b>")
 			if(60 to 99)
-				. += span_warning("O[zone_name]Está muito rasgado!")
+				. += span_warning("O [zone_name] Está muito rasgado!")
 			if(30 to 59)
-				. += span_danger("O[zone_name]está parcialmente rasgado.")
+				. += span_danger("O [zone_name] está parcialmente rasgado.")
 
 	if(atom_storage)
 		var/list/how_cool_are_your_threads = list("<span class='notice'>")
@@ -486,9 +486,9 @@
 	if(isliving(loc)) //It's not important enough to warrant a message if it's not on someone
 		var/mob/living/M = loc
 		if(src in M.get_equipped_items())
-			to_chat(M, span_warning("Sua[name]Comece.[p_s()]Destruir-se!"))
+			to_chat(M, span_warning("Sua [name] Comece.[p_s()] Destruir-se!"))
 		else
-			to_chat(M, span_warning("[src]Comece.[p_s()]Destruir-se!"))
+			to_chat(M, span_warning("[src] Comece.[p_s()] Destruir-se!"))
 
 // you just dont get the same feeling with handwashed clothes
 /obj/item/clothing/machine_wash()
@@ -606,7 +606,7 @@ BLIND     // can't see anything
 		new /obj/effect/decal/cleanable/shreds(current_position, name)
 		if(isliving(loc))
 			var/mob/living/possessing_mob = loc
-			possessing_mob.visible_message(span_danger("[src]é consumido até nada, mas restos permanecem!"), span_boldwarning("[src]Cai em pedaços!"))
+			possessing_mob.visible_message(span_danger("[src] é consumido até nada, mas restos permanecem!"), span_boldwarning("[src] Cai em pedaços!"))
 		deconstruct(FALSE)
 	else
 		body_parts_covered = NONE
@@ -615,10 +615,10 @@ BLIND     // can't see anything
 		if(isliving(loc))
 			var/mob/living/M = loc
 			if(src in M.get_equipped_items()) //make sure they were wearing it and not attacking the item in their hands
-				M.visible_message(span_danger("[M]'s[src.name]Queda.[p_s()]Fora.[p_theyre()]Retalhado completo!"), span_warning("<b>Sua[src.name]Queda.[p_s()]Fora.[p_theyre()]Retalhado completo!</b>"), vision_distance = COMBAT_MESSAGE_RANGE)
+				M.visible_message(span_danger("[M]'s [src.name] Queda.[p_s()] Fora.[p_theyre()] Retalhado completo!"), span_warning("<b>Sua [src.name] Queda.[p_s()] Fora.[p_theyre()] Retalhado completo!</b>"), vision_distance = COMBAT_MESSAGE_RANGE)
 				M.dropItemToGround(src)
 			else
-				M.visible_message(span_danger("[src]Queda.[p_s()]Separados, completos triturados!"), vision_distance = COMBAT_MESSAGE_RANGE)
+				M.visible_message(span_danger("[src] Queda.[p_s()] Separados, completos triturados!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		name = "shredded [initial(name)]" // change the name -after- the message, not before.
 		update_appearance()
 	SEND_SIGNAL(src, COMSIG_ATOM_DESTRUCTION, damage_flag)
@@ -630,7 +630,7 @@ BLIND     // can't see anything
 	if(!istype(L))
 		return
 	if(prob(0.2))
-		to_chat(L, span_warning("Os Fios Danificados em seu[src.name]Chafe!"))
+		to_chat(L, span_warning("Os Fios Danificados em seu [src.name] Chafe!"))
 
 /obj/item/clothing/apply_fantasy_bonuses(bonus)
 	. = ..()

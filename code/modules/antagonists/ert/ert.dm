@@ -60,9 +60,9 @@
 /datum/antagonist/ert/official/greet()
 	. = ..()
 	if (ert_team)
-		to_chat(owner, "<span class='warningplain'>O Comando Central está enviando você para[station_name()]Com a tarefa:[ert_team.mission.explanation_text]</span>")
+		to_chat(owner, "<span class='warningplain'>O Comando Central está enviando você para [station_name()] Com a tarefa:[ert_team.mission.explanation_text]</span>")
 	else
-		to_chat(owner, "<span class='warningplain'>O Comando Central está enviando você para[station_name()]Com a tarefa:[mission.explanation_text]</span>")
+		to_chat(owner, "<span class='warningplain'>O Comando Central está enviando você para [station_name()] Com a tarefa:[mission.explanation_text]</span>")
 
 /datum/antagonist/ert/official/forge_objectives()
 	if (ert_team)
@@ -251,7 +251,7 @@
 	if(!ert_team)
 		return
 
-	to_chat(owner, "<span class='warningplain'><B><font size=3 color=red>Você é o[name].</font></B></span>")
+	to_chat(owner, "<span class='warningplain'><B><font size=3 color=red>Você é o [name].</font></B></span>")
 
 	var/missiondesc = "Your squad is being sent on a mission to [station_name()] by Nanotrasen's Security Division."
 	if(leader) //If Squad Leader

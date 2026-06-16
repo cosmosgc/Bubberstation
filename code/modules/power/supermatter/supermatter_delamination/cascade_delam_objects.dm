@@ -59,10 +59,10 @@
 
 	for(var/atom/movable/checked_atom as anything in next_turf)
 		if(isliving(checked_atom))
-			sm_comp.dust_mob(src, checked_atom, span_danger("\The [src]Pulgas para fora[checked_atom], tocando[checked_atom.p_them()]... 					[checked_atom.p_their()]O corpo começa a brilhar com uma luz brilhante antes de cristalizar de dentro para fora e unir\the [src]!"),
+			sm_comp.dust_mob(src, checked_atom, span_danger("\The [src] Pulgas para fora [checked_atom], tocando [checked_atom.p_them()]... 					[checked_atom.p_their()] O corpo começa a brilhar com uma luz brilhante antes de cristalizar de dentro para fora e unir\the [src]!"),
 				span_userdanger("A massa de cristal bate em você e bate no peito. Como sua visão está cheia de uma luz ofuscante, você pensa para si mesmo.\"Droga.\""))
 		else if(istype(checked_atom, /obj/cascade_portal))
-			checked_atom.visible_message(span_userdanger("\The [checked_atom]Grita e se fecha quando é atingido.\a [src]Tarde demais!"))
+			checked_atom.visible_message(span_userdanger("\The [checked_atom] Grita e se fecha quando é atingido.\a [src] Tarde demais!"))
 			playsound(get_turf(checked_atom), 'sound/effects/magic/charge.ogg', 50, TRUE)
 			playsound(get_turf(checked_atom), 'sound/effects/supermatter.ogg', 50, TRUE)
 			qdel(checked_atom)
@@ -76,7 +76,7 @@
 	SIGNAL_HANDLER
 
 	visible_message(
-		span_warning("[hitting_projectile]Voa para dentro[src]com uma rachadura alta, antes de piscar rapidamente em cinzas."),
+		span_warning("[hitting_projectile] Voa para dentro [src] com uma rachadura alta, antes de piscar rapidamente em cinzas."),
 		null,
 		span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."),
 	)
@@ -150,8 +150,8 @@
  */
 /obj/cascade_portal/proc/consume(atom/movable/consumed_object)
 	if(isliving(consumed_object))
-		consumed_object.visible_message(span_danger("\The [consumed_object]Entra.\the [src]Uma luz ofuscante cobre[consumed_object.p_their()]Corpo ante de Desaparecer completo!"),
-			span_userdanger("Você entra\the [src]como seu corpo é lavado com uma luz azul poderosa. Você pensa nessa decisão antes de pousar primeiro no chão frio e duro."),
+		consumed_object.visible_message(span_danger("\The [consumed_object] Entra.\the [src] Uma luz ofuscante cobre [consumed_object.p_their()] Corpo ante de Desaparecer completo!"),
+			span_userdanger("Você entra\the [src] como seu corpo é lavado com uma luz azul poderosa. Você pensa nessa decisão antes de pousar primeiro no chão frio e duro."),
 			span_hear("Você ouve um barulho alto enquanto uma distorção passa por você."))
 
 		var/list/arrival_turfs = get_area_turfs(/area/centcom/central_command_areas/evacuation)
@@ -171,7 +171,7 @@
 		new /obj/effect/particle_effect/sparks(consumed_object)
 		playsound(consumed_object, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	else if(isitem(consumed_object))
-		consumed_object.visible_message(span_danger("\The [consumed_object]Bate em\the [src]e desaparecer de vista."), null,
+		consumed_object.visible_message(span_danger("\The [consumed_object] Bate em\the [src] e desaparecer de vista."), null,
 			span_hear("Você ouve um barulho alto enquanto uma pequena distorção passa por você."))
 
 		qdel(consumed_object)

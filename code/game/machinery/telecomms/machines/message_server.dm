@@ -27,7 +27,7 @@
 		if(Adjacent(user))
 			user.put_in_hands(stored)
 		stored = null
-		to_chat(user, span_notice("Você remove a caixa preta de[src]Como fitas param de girar."))
+		to_chat(user, span_notice("Você remove a caixa preta de [src] Como fitas param de girar."))
 		update_appearance()
 		return
 	else
@@ -37,9 +37,9 @@
 /obj/machinery/blackbox_recorder/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/blackbox))
 		if(HAS_TRAIT(attacking_item, TRAIT_NODROP) || !user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("[attacking_item]está preso em sua mão!"))
+			to_chat(user, span_warning("[attacking_item] está preso em sua mão!"))
 			return
-		user.visible_message(span_notice("[user]Estalidos.[attacking_item]Em[src]!"), 		span_notice("Você pressiona o dispositivo para[src], e ele clica no lugar. As fitas começam a girar novamente."))
+		user.visible_message(span_notice("[user] Estalidos.[attacking_item] Em [src]!"), 		span_notice("Você pressiona o dispositivo para [src], e ele clica no lugar. As fitas começam a girar novamente."))
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		stored = attacking_item
 		update_appearance()

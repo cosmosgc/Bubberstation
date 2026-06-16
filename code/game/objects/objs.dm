@@ -109,8 +109,8 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 			message_verb_continuous = "ineffectively " + message_verb_continuous
 
 		user.visible_message(
-			span_danger("[user] [message_verb_continuous] [src]com[attacking_item][damage ? "." : ", [no_damage_feedback]!"]"),
-			span_danger("Você.[message_verb_simple] [src]com[attacking_item][damage ? "." : ", [no_damage_feedback]!"]"),
+			span_danger("[user] [message_verb_continuous] [src] com [attacking_item][damage ? "." : ", [no_damage_feedback]!"]"),
+			span_danger("Você.[message_verb_simple] [src] com [attacking_item][damage ? "." : ", [no_damage_feedback]!"]"),
 			null,
 			COMBAT_MESSAGE_RANGE,
 		)
@@ -276,7 +276,7 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 /// If we can unwrench this object; returns SUCCESSFUL_UNFASTEN and FAILED_UNFASTEN, which are both TRUE, or CANT_UNFASTEN, which isn't.
 /obj/proc/can_be_unfasten_wrench(mob/user, silent)
 	if(!(isfloorturf(loc) || isindestructiblefloor(loc)) && !anchored)
-		to_chat(user, span_warning("[src]Precisa estar no chão para estar seguro!"))
+		to_chat(user, span_warning("[src] Precisa estar no chão para estar seguro!"))
 		return FAILED_UNFASTEN
 	return SUCCESSFUL_UNFASTEN
 
@@ -287,20 +287,20 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 
 	var/turf/ground = get_turf(src)
 	if(!anchored && ground.is_blocked_turf(exclude_mobs = TRUE, source_atom = src))
-		to_chat(user, span_notice("Você falhou em garantir[src]."))
+		to_chat(user, span_notice("Você falhou em garantir [src]."))
 		return CANT_UNFASTEN
 	var/can_be_unfasten = can_be_unfasten_wrench(user)
 	if(!can_be_unfasten || can_be_unfasten == FAILED_UNFASTEN)
 		return can_be_unfasten
 	if(time)
-		to_chat(user, span_notice("Você começa.[anchored ? "un" : ""]Segurando[src]..."))
+		to_chat(user, span_notice("Você começa.[anchored ? "un" : ""]Segurando [src]..."))
 	wrench.play_tool_sound(src, 50)
 	var/prev_anchored = anchored
 	//as long as we're the same anchored state and we're either on a floor or are anchored, toggle our anchored state
 	if(!wrench.use_tool(src, user, time, extra_checks = CALLBACK(src, PROC_REF(unfasten_wrench_check), prev_anchored, user)))
 		return FAILED_UNFASTEN
 	if(!anchored && ground.is_blocked_turf(exclude_mobs = TRUE, source_atom = src))
-		to_chat(user, span_notice("Você falhou em garantir[src]."))
+		to_chat(user, span_notice("Você falhou em garantir [src]."))
 		return CANT_UNFASTEN
 	to_chat(user, span_notice("Você.[anchored ? "un" : ""]Seguro.[src]."))
 	set_anchored(!anchored)

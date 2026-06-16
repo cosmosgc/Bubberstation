@@ -15,5 +15,5 @@
 
 /obj/item/book/granter/action/spell/summonitem/recoil(mob/living/user)
 	. = ..()
-	to_chat(user,span_warning("[src]De repente desaparece!"))
+	to_chat(user,span_warning("[src] De repente desaparece!"))
 	qdel(src)

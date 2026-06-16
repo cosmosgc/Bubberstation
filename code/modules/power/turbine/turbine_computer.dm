@@ -23,16 +23,16 @@
 /obj/machinery/computer/turbine_computer/multitool_act(mob/living/user, obj/item/multitool/multitool)
 	. = ITEM_INTERACT_FAILURE
 	if(!istype(multitool.buffer, /obj/machinery/power/turbine/core_rotor))
-		to_chat(user, span_notice("Tipo máquina errada em[multitool]Tampão..."))
+		to_chat(user, span_notice("Tipo máquina errada em [multitool] Tampão..."))
 		return
 	if(turbine_core)
-		to_chat(user, span_notice("Mudando[src]Rede bluespace..."))
+		to_chat(user, span_notice("Mudando [src] Rede bluespace..."))
 	if(!do_after(user, 0.2 SECONDS, src))
 		return
 
 	playsound(get_turf(user), 'sound/machines/click.ogg', 10, TRUE)
 	register_machine(multitool.buffer)
-	to_chat(user, span_notice("Você liga.[src]Para o console em[multitool]É um amortecedor."))
+	to_chat(user, span_notice("Você liga.[src] Para o console em [multitool] É um amortecedor."))
 	return ITEM_INTERACT_SUCCESS
 
 /**

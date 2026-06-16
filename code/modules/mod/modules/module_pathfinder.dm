@@ -60,9 +60,9 @@
 		balloon_alert(user, "Não posso implantar!")
 		return
 	if(target == user)
-		to_chat(user, span_notice("Você se implantou com[implant]."))
+		to_chat(user, span_notice("Você se implantou com [implant]."))
 	else
-		target.visible_message(span_notice("[user]implante[target]."), span_notice("[user]Implante você com[implant]."))
+		target.visible_message(span_notice("[user] implante [target]."), span_notice("[user] Implante você com [implant]."))
 	playsound(src, 'sound/effects/spray.ogg', 30, TRUE, -6)
 
 /obj/item/mod/module/pathfinder/on_use(mob/activator)

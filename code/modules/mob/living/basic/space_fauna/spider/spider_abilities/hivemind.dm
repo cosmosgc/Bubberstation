@@ -71,7 +71,7 @@
  * Formats the string to have an appropiate size and text color
  */
 /datum/action/cooldown/mob_cooldown/command_spiders/proc/format_message(mob/living/user, message)
-	return span_spiderbroodmother("<b>Comando de[user]:</b> [message]")
+	return span_spiderbroodmother("<b>Comando de [user]:</b> [message]")
 
 /**
  * Sends a small message to all currently living spiders.
@@ -83,7 +83,7 @@
 	button_icon_state = "message"
 
 /datum/action/cooldown/mob_cooldown/command_spiders/communication_spiders/format_message(mob/living/user, message)
-	return span_spiderscout("<b>Relatório de[user]:</b> [message]")
+	return span_spiderscout("<b>Relatório de [user]:</b> [message]")
 
 /**
  * Sends a smaller message to all currently living spiders.
@@ -95,5 +95,5 @@
 	button_icon_state = "warning"
 
 /datum/action/cooldown/mob_cooldown/command_spiders/warning_spiders/format_message(mob/living/user, message)
-	return span_spiderbreacher("<b>Aviso de[user]:</b> [message]")
+	return span_spiderbreacher("<b>Aviso de [user]:</b> [message]")
 

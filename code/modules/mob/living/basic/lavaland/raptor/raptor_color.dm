@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 	var/mob/living/carbon/human/rider = potential_rider
 	if (rider.mob_height > HUMAN_HEIGHT_SHORTEST)
-		to_chat(rider, span_warning("Sua alta estatura vai esmagar[source]Estava tentando montar[source.p_them()]!"))
+		to_chat(rider, span_warning("Sua alta estatura vai esmagar [source] Estava tentando montar [source.p_them()]!"))
 		return COMPONENT_BLOCK_BUCKLE
 
 // Purple raptors never "fully" grow up, and remain usable as backpacks
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 			user.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/raptor)
 		user.AddElement(/datum/element/forced_gravity, 0)
 		passtable_on(user, REF(src))
-		to_chat(user, span_notice("Você começa gentilmente pairando sobre o solo como[held_mob]em suas costas começa furiosamente batendo[held_mob.p_their()]Asas[struggling ? ", struggling to keep you up in the air" : ""]!"))
+		to_chat(user, span_notice("Você começa gentilmente pairando sobre o solo como [held_mob] em suas costas começa furiosamente batendo [held_mob.p_their()] Asas[struggling ? ", struggling to keep you up in the air" : ""]!"))
 		user.set_resting(FALSE, TRUE)
 		user.refresh_gravity()
 		START_PROCESSING(SSprocessing, src)

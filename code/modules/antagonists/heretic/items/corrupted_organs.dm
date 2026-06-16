@@ -51,7 +51,7 @@
 		viewer.adjust_timed_status_effect(5 SECONDS, /datum/status_effect/temporary_blindness) //debounce basically.
 		var/obj/item/organ/eyes/parboiled = viewer.get_organ_slot(ORGAN_SLOT_EYES)
 		parboiled?.apply_organ_damage(40) //enough to blind, but not enough to blind *permanently*
-	return "[owner.p_Their()]Olhos[span_hypnophrase(penlight_message)]"
+	return "[owner.p_Their()] Olhos [span_hypnophrase(penlight_message)]"
 
 /// Sometimes speak in incomprehensible tongues
 /obj/item/organ/tongue/corrupt
@@ -221,7 +221,7 @@
 		hearer.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/speech/slurring/heretic)
 		var/obj/item/bodypart/head/regret = hearer.get_bodypart(BODY_ZONE_HEAD)
 		regret?.force_wound_upwards(/datum/wound/pierce/bleed/severe/magicalearpain, wound_source = "stethoscoped a corrupted heart")
-	return "[owner.p_Their()]O coração produz[span_hypnophrase(beat_noise)]"
+	return "[owner.p_Their()] O coração produz [span_hypnophrase(beat_noise)]"
 
 /// Sometimes cough out some kind of dangerous gas
 /obj/item/organ/lungs/corrupt
@@ -265,7 +265,7 @@
 		hearer.emote("scream")
 		hearer.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 		hearer.sound_damage(10, 40 SECONDS)
-	return "[owner.p_Their()]pulmões emitem[span_hypnophrase(breath_noise)]"
+	return "[owner.p_Their()] pulmões emitem [span_hypnophrase(breath_noise)]"
 
 /// It's full of worms
 /obj/item/organ/appendix/corrupt

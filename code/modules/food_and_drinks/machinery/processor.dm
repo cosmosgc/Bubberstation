@@ -85,7 +85,7 @@
 
 /obj/machinery/processor/wrench_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src]está em processo de processamento!"))
+		to_chat(user, span_warning("[src] está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	default_unfasten_wrench(user, tool)
@@ -93,14 +93,14 @@
 
 /obj/machinery/processor/screwdriver_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src]está em processo de processamento!"))
+		to_chat(user, span_warning("[src] está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/processor/crowbar_act(mob/living/user, obj/item/tool)
 	if(processing)
-		to_chat(user, span_warning("[src]está em processo de processamento!"))
+		to_chat(user, span_warning("[src] está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	return default_pry_open(user, tool, close_after_pry = TRUE, deconstruct_on_fail = TRUE)
@@ -110,7 +110,7 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if(processing)
-		to_chat(user, span_warning("[src]está em processo de processamento!"))
+		to_chat(user, span_warning("[src] está em processo de processamento!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/storage/bag/tray))
@@ -124,15 +124,15 @@
 				LAZYADD(processor_contents, content_item)
 				loaded++
 		if(loaded)
-			to_chat(user, span_notice("Você insere[loaded]itens em[src]."))
+			to_chat(user, span_notice("Você insere [loaded] itens em [src]."))
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
 
 	var/datum/food_processor_process/recipe = PROCESSOR_SELECT_RECIPE(tool)
 	if(recipe && user.transferItemToLoc(tool, src))
 		user.visible_message(
-			span_notice("[user]colocar[tool]em[src]."),
-			span_notice("Você colocou[tool]em[src]."),
+			span_notice("[user] colocar [tool] em [src]."),
+			span_notice("Você colocou [tool] em [src]."),
 		)
 		LAZYADD(processor_contents, tool)
 		return ITEM_INTERACT_SUCCESS
@@ -146,22 +146,22 @@
 
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
-		to_chat(user, span_warning("[src]está em processo de processamento!"))
+		to_chat(user, span_warning("[src] está em processo de processamento!"))
 		return TRUE
 	if(ismob(user.pulling) && PROCESSOR_SELECT_RECIPE(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
 			to_chat(user, span_warning("Você precisa de um aperto melhor para fazer isso!"))
 			return
 		var/mob/living/pushed_mob = user.pulling
-		visible_message(span_warning("[user]Coisas.[pushed_mob]em[src]!"))
+		visible_message(span_warning("[user] Coisas.[pushed_mob] em [src]!"))
 		pushed_mob.forceMove(src)
 		LAZYADD(processor_contents, pushed_mob)
 		user.stop_pulling()
 		return
 	if(!LAZYLEN(processor_contents))
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 		return TRUE
-	user.visible_message(span_notice("[user]Liga.[src]."), 		span_notice("Você liga.[src]."), 		span_hear("Você ouve um processador de comida."))
+	user.visible_message(span_notice("[user] Liga.[src]."), 		span_notice("Você liga.[src]."), 		span_hear("Você ouve um processador de comida."))
 	processing()
 
 
@@ -189,7 +189,7 @@
 			continue
 		process_food(recipe, content_item)
 	processing = FALSE
-	visible_message(span_notice("\The [src]Termina o processamento."))
+	visible_message(span_notice("\The [src] Termina o processamento."))
 
 /obj/machinery/processor/verb/eject()
 	set name = "Eject Contents"
@@ -207,7 +207,7 @@
 
 /obj/machinery/processor/container_resist_act(mob/living/user)
 	user.forceMove(drop_location())
-	user.visible_message(span_notice("[user]Está livre do processador!"))
+	user.visible_message(span_notice("[user] Está livre do processador!"))
 
 /obj/machinery/processor/slime
 	name = "slime processor"
@@ -257,7 +257,7 @@
 			break
 	if(!LAZYLEN(picked_slimes))
 		return
-	visible_message(span_notice("[jointext(picked_slimes, ", ")] [LAZYLEN(picked_slimes) > 1 ? "are" : "is"]sugado para dentro[src]."))
+	visible_message(span_notice("[jointext(picked_slimes, ", ")] [LAZYLEN(picked_slimes) > 1 ? "are" : "is"]sugado para dentro [src]."))
 	for(var/mob/living/basic/slime/slime_to_add in picked_slimes)
 		LAZYADD(processor_contents, slime_to_add)
 		slime_to_add.forceMove(src)

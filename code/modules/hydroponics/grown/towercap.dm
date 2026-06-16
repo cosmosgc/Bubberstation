@@ -175,7 +175,7 @@
 		if(LAZYLEN(buckled_mobs))
 			return
 		if(buckle_mob(fallen_mob, TRUE))
-			to_chat(fallen_mob, span_userdanger("Você está empalado por[src]!"))
+			to_chat(fallen_mob, span_userdanger("Você está empalado por [src]!"))
 			fallen_mob.apply_damage(25 * levels, BRUTE, sharpness = SHARP_POINTY)
 			if(iscarbon(fallen_mob))
 				var/mob/living/carbon/fallen_carbon = fallen_mob
@@ -186,7 +186,7 @@
 /obj/structure/punji_sticks/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
 	if(force)
 		return ..()
-	to_chat(buckled_mob, span_warning("Você começa a subir para fora[src]."))
+	to_chat(buckled_mob, span_warning("Você começa a subir para fora [src]."))
 	buckled_mob.apply_damage(5, BRUTE, sharpness = SHARP_POINTY)
 	if(!do_after(buckled_mob, 5 SECONDS, target = src))
 		to_chat(buckled_mob, span_userdanger("Você não consegue se separar.[src]."))

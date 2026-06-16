@@ -203,7 +203,7 @@
 
 /proc/cleanup_ghosts(list/delete_list)
 	for(var/mob/living/mob_to_delete as anything in delete_list)
-		mob_to_delete.visible_message(span_alert("O[mob_to_delete]uiva enquanto é rasgado de volta para o vazio!"), span_alert("Você solta uma última lamentação enquanto é sugado de volta para o reino dos mortos. Então, de repente, você está de volta no abraço reconfortante da vida após a morte."), span_hear("Você ouve o choro etéreo."))
+		mob_to_delete.visible_message(span_alert("O [mob_to_delete] uiva enquanto é rasgado de volta para o vazio!"), span_alert("Você solta uma última lamentação enquanto é sugado de volta para o reino dos mortos. Então, de repente, você está de volta no abraço reconfortante da vida após a morte."), span_hear("Você ouve o choro etéreo."))
 		playsound(mob_to_delete, pick(delete_list), 50)
 		new /obj/effect/temp_visual/revenant/cracks(get_turf(mob_to_delete))
 		new /obj/effect/decal/cleanable/greenglow/ecto(get_turf(mob_to_delete))

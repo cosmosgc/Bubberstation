@@ -68,13 +68,13 @@
 	return . || NONE
 
 /obj/structure/platform/screwdriver_act_secondary(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("Você começa a desmontar[src]..."))
+	to_chat(user, span_notice("Você começa a desmontar [src]..."))
 	if(tool.use_tool(src, user, 2 SECONDS, volume=50))
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/platform/wrench_act_secondary(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("Você começa a desconstruir[src]..."))
+	to_chat(user, span_notice("Você começa a desconstruir [src]..."))
 	if(tool.use_tool(src, user, 4 SECONDS, volume=50))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		deconstruct(TRUE)

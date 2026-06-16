@@ -115,9 +115,9 @@
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
 	if (user.is_blind())
-		user.visible_message(span_suicide("[user]está colocando[src]Perto de[user.p_their()]olhos e ligá-lo... mas[user.p_theyre()]Cego!"))
+		user.visible_message(span_suicide("[user] está colocando [src] Perto de [user.p_their()] olhos e ligá-lo... mas [user.p_theyre()] Cego!"))
 		return SHAME
-	user.visible_message(span_suicide("[user]está colocando[src]Perto de[user.p_their()]Olho e língua! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está colocando [src] Perto de [user.p_their()] Olho e língua! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return FIRELOSS
 
 /obj/item/flashlight/proc/eye_examine(mob/living/carbon/human/patient, mob/living/user)
@@ -131,14 +131,14 @@
 	var/obj/item/organ/zombie_infection/tumor = patient.get_organ_slot(ORGAN_SLOT_ZOMBIE) //this slot only ever holds zombie tumors, so we can just check if this exists
 	var/braaaainz = tumor?.causes_damage //prevents steath tumors (admin bullshittery or romerol) from showing up to preserve stealthiness
 	if(!eyes)
-		to_chat(user, span_warning("[patient]Não tem olhos!"))
+		to_chat(user, span_warning("[patient] Não tem olhos!"))
 		return
 
 	patient.flash_act(visual = TRUE, length = (user.combat_mode) ? 2.5 SECONDS : 1 SECONDS) // Apply a 1 second flash effect to the target. The duration increases to 2.5 Seconds if you have combat mode on.
 
 	if(patient == user) //they're using it on themselves
-		user.visible_message(span_warning("[user]Brilha.[src]Em[patient.p_their()]Olhos."), ignored_mobs = user)
-		. += span_info("Você dirige.[src]Em seus olhos:\n")
+		user.visible_message(span_warning("[user] Brilha.[src] Em [patient.p_their()] Olhos."), ignored_mobs = user)
+		. += span_info("Você dirige.[src] Em seus olhos:\n")
 
 		if(patient.is_blind())
 			. += span_notice_ml("Não tem certeza do que esperava...\n")
@@ -146,26 +146,26 @@
 			. += span_notice_ml("Trippy!\n")
 
 	else
-		user.visible_message(span_warning("[user]Direções[src]Para[patient]Os olhos."), ignored_mobs = user)
-		. += span_info("Você dirige.[src]Para[patient]Os olhos:\n")
+		user.visible_message(span_warning("[user] Direções [src] Para [patient] Os olhos."), ignored_mobs = user)
+		. += span_info("Você dirige.[src] Para [patient] Os olhos:\n")
 
 		if(patient.stat == DEAD || patient.is_blind() || patient.get_eye_protection() >= FLASH_PROTECTION_WELDER) //this used to be just > but literally nothing accessable in the game gave greater than welder without also covering eyes
-			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name]Não reaja à luz!\n")//mob is dead
+			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name] Não reaja à luz!\n")//mob is dead
 		else if(brain.damage > 20)
-			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name]Contra-desigual!\n")//mob has sustained damage to their brain
+			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name] Contra-desigual!\n")//mob has sustained damage to their brain
 		else
-			. += span_notice_ml("[patient.p_Their()] [eyes.pupils_name]Estreito.\n")//they're okay :D
+			. += span_notice_ml("[patient.p_Their()] [eyes.pupils_name] Estreito.\n")//they're okay :D
 
 		if(HAS_TRAIT(patient, TRAIT_XRAY_VISION))
-			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name]Dê um brilho assustador!\n")//mob has X-ray vision
+			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name] Dê um brilho assustador!\n")//mob has X-ray vision
 		if(eyes.penlight_message != /obj/item/organ/eyes::penlight_message) //prevent default eyes from cluttering text, if this still happens somehow it displays "default message please report"
 			. += span_notice_ml("[eyes.penlight_examine(user, src)]\n")
 		if(braaaainz)
-			. += span_danger_ml("<b>[patient.p_Their()]Os olhos são dobrados por tentáculos negros fibrosos!</b>\n")
+			. += span_danger_ml("<b>[patient.p_Their()] Os olhos são dobrados por tentáculos negros fibrosos!</b>\n")
 		if(patient.has_status_effect(/datum/status_effect/drugginess) || patient.has_status_effect(/datum/status_effect/trance))
-			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name]são sensíveis, mas totalmente desfocados.")
+			. += span_danger_ml("[patient.p_Their()] [eyes.pupils_name] são sensíveis, mas totalmente desfocados.")
 		if(patient.has_status_effect(/datum/status_effect/stoned))
-			. += span_danger_ml("[patient.p_Their()]olhos largos, preguiçosos, e tiros de sangue.") //this shit is GAS, batman. *wheezing chuckle*
+			. += span_danger_ml("[patient.p_Their()] olhos largos, preguiçosos, e tiros de sangue.") //this shit is GAS, batman. *wheezing chuckle*
 	return .
 
 /obj/item/flashlight/proc/mouth_examine(mob/living/carbon/human/patient, mob/living/user)
@@ -209,8 +209,8 @@
 					if(WEST)
 						can_use_mirror = mirror.pixel_x < 0
 
-		patient.visible_message(span_notice("[patient]Direções[src]Para[patient.p_their()]Boca."), ignored_mobs = user)
-		. += span_info_ml("Você aponta.[src]Na sua boca:\n")
+		patient.visible_message(span_notice("[patient] Direções [src] Para [patient.p_their()] Boca."), ignored_mobs = user)
+		. += span_info_ml("Você aponta.[src] Na sua boca:\n")
 		if(!can_use_mirror)
 			to_chat(user, span_notice("Não dá para ver nada sem um espelho."))
 			return
@@ -219,17 +219,17 @@
 		else
 			. += span_notice_ml("Não há nada dentro da sua boca.\n")
 		if(pill_count)
-			. += span_notice_ml("Você tem[pill_count]Pílula implantada[pill_count > 1 ? "s" : ""].\n")
+			. += span_notice_ml("Você tem [pill_count] Pílula implantada[pill_count > 1 ? "s" : ""].\n")
 
 	else //if we're looking in someone elses mouth
-		user.visible_message(span_notice("[user]Direções[src]Para[patient]Uma boca."), ignored_mobs = user)
-		. += span_info_ml("Você aponta.[src]Em[patient]'s boca:\n")
+		user.visible_message(span_notice("[user] Direções [src] Para [patient] Uma boca."), ignored_mobs = user)
+		. += span_info_ml("Você aponta.[src] Em [patient]'s boca:\n")
 		if(organ_count)
-			. += span_notice_ml("Dentro.[patient.p_their()]Boca.[organ_count > 1 ? "are" : "is"] [organ_list].\n")
+			. += span_notice_ml("Dentro.[patient.p_their()] Boca.[organ_count > 1 ? "are" : "is"] [organ_list].\n")
 		else
-			. += span_notice_ml("[patient]não tem nenhum órgão dentro[patient.p_their()]Boca.\n")
+			. += span_notice_ml("[patient] não tem nenhum órgão dentro [patient.p_their()] Boca.\n")
 		if(pill_count)
-			. += span_notice_ml("[patient]Tem.[pill_count]pílula[pill_count > 1 ? "s" : ""]implantado em[patient.p_their()]Dentes.\n")
+			. += span_notice_ml("[patient] Tem.[pill_count] pílula[pill_count > 1 ? "s" : ""]implantado em [patient.p_their()] Dentes.\n")
 
 	//assess any suffocation damage
 	var/hypoxia_status = patient.get_oxy_loss() > 20
@@ -241,15 +241,15 @@
 			. += span_notice_ml("Seus lábios parecem saudáveis.\n")//you're okay!
 	else
 		if(hypoxia_status)
-			. += span_danger_ml("[patient.p_Their()]Os lábios parecem azuis!\n")//they have suffocation damage
+			. += span_danger_ml("[patient.p_Their()] Os lábios parecem azuis!\n")//they have suffocation damage
 		else
-			. += span_notice_ml("[patient.p_Their()]Os lábios parecem saudáveis.\n")//they're okay!
+			. += span_notice_ml("[patient.p_Their()] Os lábios parecem saudáveis.\n")//they're okay!
 
 	//assess blood level
 	if(patient == user)
 		. += span_info_ml("Você aperta um dedo na gengiva.\n")
 	else
-		. += span_info_ml("Você aperta um dedo para[patient.p_their()]Gomas:\n")
+		. += span_info_ml("Você aperta um dedo para [patient.p_their()] Gomas:\n")
 
 	var/cached_blood_volume = patient.get_blood_volume(apply_modifiers = TRUE)
 
@@ -278,10 +278,10 @@
 		return
 	var/mob/living/scanning = interacting_with
 	if(!scanning.get_bodypart(BODY_ZONE_HEAD))
-		to_chat(user, span_warning("[scanning]Não tem cabeça!"))
+		to_chat(user, span_warning("[scanning] Não tem cabeça!"))
 		return
 	if(light_power < 0.5)
-		to_chat(user, span_warning("[src]Não é brilhante o suficiente para ver nada!"))
+		to_chat(user, span_warning("[src] Não é brilhante o suficiente para ver nada!"))
 		return
 
 	var/list/render_list = list()
@@ -353,7 +353,7 @@
 	if(!living_target || (living_target == user))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(living_target, span_boldnotice("[user]Está oferecendo assistência médica. Por favor, parem suas ações."))
+	to_chat(living_target, span_boldnotice("[user] Está oferecendo assistência médica. Por favor, parem suas ações."))
 	new /obj/effect/temp_visual/medical_holosign(target_turf, user) //produce a holographic glow
 	COOLDOWN_START(src, holosign_cooldown, 10 SECONDS)
 	return ITEM_INTERACT_SUCCESS
@@ -381,7 +381,7 @@
 	. = ..()
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE) //make some noise!
 	if(creator)
-		visible_message(span_danger("[creator]Criou um holograma médico!"))
+		visible_message(span_danger("[creator] Criou um holograma médico!"))
 
 /obj/item/flashlight/seclite
 	name = "seclite"
@@ -574,7 +574,7 @@
 
 /obj/item/flashlight/flare/attack_self(mob/user)
 	if(ignition(user) == SUCCESS)
-		user.visible_message(span_notice("[user]Luzes\the [src]."), span_notice("Você acende.\the [initial(src.name)]!"))
+		user.visible_message(span_notice("[user] Luzes\the [src]."), span_notice("Você acende.\the [initial(src.name)]!"))
 
 /obj/item/flashlight/flare/get_temperature()
 	return light_on * heat
@@ -673,14 +673,14 @@
 			cig.light()
 			if(cig.loc == user)
 				user.visible_message(
-					span_rose("[user]Segura.[user.p_their()] [cig.name]Para[src]e acende, como um verdadeiro romântico."),
-					span_rose("Você segura o seu[cig.name]Para[src]e acendê-lo, como um verdadeiro romântico."),
+					span_rose("[user] Segura.[user.p_their()] [cig.name] Para [src] e acende, como um verdadeiro romântico."),
+					span_rose("Você segura o seu [cig.name] Para [src] e acendê-lo, como um verdadeiro romântico."),
 					visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 				)
 			else
 				user.visible_message(
-					span_rose("[user]Luzes[cig]Com[src]Como um verdadeiro romântico."),
-					span_rose("Você acende.[cig]Com[src]Como um verdadeiro romântico."),
+					span_rose("[user] Luzes [cig] Com [src] Como um verdadeiro romântico."),
+					span_rose("Você acende.[cig] Com [src] Como um verdadeiro romântico."),
 					visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 				)
 			return ITEM_INTERACT_SUCCESS
@@ -700,13 +700,13 @@
 	if(!get_temperature())
 		return ""
 	if(isitem(A) && A.loc == user)
-		return span_rose("[user]Segura.[A]Na Chama de[src]Deixando pegar nevoeiro.")
-	return span_rose("[user]Luzes[A]Em Chamas com[src]Como um verdadeiro romântico.")
+		return span_rose("[user] Segura.[A] Na Chama de [src] Deixando pegar nevoeiro.")
+	return span_rose("[user] Luzes [A] Em Chamas com [src] Como um verdadeiro romântico.")
 
 /obj/item/flashlight/flare/candle/attack_self(mob/user)
 	if(light_on && (fuel != INFINITY || !can_be_extinguished)) // can't extinguish eternal candles
 		turn_off()
-		user.visible_message(span_notice("[user]Snuffs[src]."))
+		user.visible_message(span_notice("[user] Snuffs [src]."))
 
 /obj/item/flashlight/flare/candle/process(seconds_per_tick)
 	. = ..()
@@ -847,13 +847,13 @@
 		if(ismob(interacting_with))
 			var/mob/empd = interacting_with
 			log_combat(user, empd, "attacked", "EMP-light")
-			empd.visible_message(span_danger("[user]Blinks\the [src]Em\the [empd]."), 								span_userdanger("[user]Blinks\the [src]Você."))
+			empd.visible_message(span_danger("[user] Blinks\the [src] Em\the [empd]."), 								span_userdanger("[user] Blinks\the [src] Você."))
 		else
-			interacting_with.visible_message(span_danger("[user]Blinks\the [src]Em\the [interacting_with]."))
-		to_chat(user, span_notice("\The [src]Agora tem[emp_cur_charges]Carregar."))
+			interacting_with.visible_message(span_danger("[user] Blinks\the [src] Em\the [interacting_with]."))
+		to_chat(user, span_notice("\The [src] Agora tem [emp_cur_charges] Carregar."))
 		interacting_with.emp_act(EMP_HEAVY)
 	else
-		to_chat(user, span_warning("\The [src]Precisa de tempo para recuperar!"))
+		to_chat(user, span_warning("\The [src] Precisa de tempo para recuperar!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/flashlight/emp/debug //for testing emp_act()
@@ -1002,18 +1002,18 @@
 
 	. = ..()
 	if(.)
-		user.visible_message(span_notice("[user]Rachaduras e tremores[src]."), span_notice("Você quebra e balança[src]Ligando!"))
+		user.visible_message(span_notice("[user] Rachaduras e tremores [src]."), span_notice("Você quebra e balança [src] Ligando!"))
 		turn_on()
 
 /obj/item/flashlight/glowstick/suicide_act(mob/living/carbon/human/user)
 	if(!get_fuel())
-		user.visible_message(span_suicide("[user]Está tentando esguichar[src]É fluído em[user.p_their()]Olhos... mas está vazio!"))
+		user.visible_message(span_suicide("[user] Está tentando esguichar [src] É fluído em [user.p_their()] Olhos... mas está vazio!"))
 		return SHAME
 	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!eyes)
-		user.visible_message(span_suicide("[user]Está tentando esguichar[src]É fluído em[user.p_their()]Olhos... mas...[user.p_they()]Não tenho nenhum!"))
+		user.visible_message(span_suicide("[user] Está tentando esguichar [src] É fluído em [user.p_their()] Olhos... mas...[user.p_they()] Não tenho nenhum!"))
 		return SHAME
-	user.visible_message(span_suicide("[user]Está esguichando.[src]É fluído em[user.p_their()]Olhos! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está esguichando.[src] É fluído em [user.p_their()] Olhos! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	burn_loop(get_fuel())
 	return FIRELOSS
 

@@ -65,16 +65,16 @@
 		return NONE
 
 	if(inserted_item.w_class > minimum_weight_class)
-		to_chat(user, span_warning("[inserted_item]Não vai caber[parent]."))
+		to_chat(user, span_warning("[inserted_item] Não vai caber [parent]."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!QDELETED(stored_item))
-		to_chat(user, span_warning("Há algo dentro[parent]."))
+		to_chat(user, span_warning("Há algo dentro [parent]."))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]começa a inserir[inserted_item]Em[parent]."),
-		span_notice("Você começa a inserir o[inserted_item]Em[parent]."),
+		span_notice("[user] começa a inserir [inserted_item] Em [parent]."),
+		span_notice("Você começa a inserir o [inserted_item] Em [parent]."),
 	)
 
 	INVOKE_ASYNC(src, PROC_REF(insert_item), inserted_item, user)
@@ -95,7 +95,7 @@
 	if(!food.can_interact(user))
 		return CLICK_ACTION_BLOCKING
 
-	user.visible_message(span_notice("[user]Começa a rasgar[parent]."), 					span_notice("Você começa a rasgar[parent]."))
+	user.visible_message(span_notice("[user] Começa a rasgar [parent]."), 					span_notice("Você começa a rasgar [parent]."))
 
 	INVOKE_ASYNC(src, PROC_REF(begin_remove_item), user)
 	return CLICK_ACTION_SUCCESS
@@ -110,11 +110,11 @@
 	if(!do_after(user, 1.5 SECONDS, target = parent))
 		return
 	if(!user.temporarilyRemoveItemFromInventory(inserted_item))
-		to_chat(user, span_warning("Você não consegue inserir[inserted_item]Em[parent]."))
+		to_chat(user, span_warning("Você não consegue inserir [inserted_item] Em [parent]."))
 		return
 
 	var/atom/food = parent
-	to_chat(user, span_notice("Você escorrega.[inserted_item]Dentro.[parent]."))
+	to_chat(user, span_notice("Você escorrega.[inserted_item] Dentro.[parent]."))
 	inserted_item.forceMove(food)
 	user.log_message("inserted [inserted_item] into [parent].", LOG_ATTACK)
 	food.add_fingerprint(user)
@@ -131,7 +131,7 @@
 	if(!do_after(user, 10 SECONDS, target = parent))
 		return
 	if(QDELETED(stored_item))
-		to_chat(user, span_warning("Não há nada dentro[parent]."))
+		to_chat(user, span_warning("Não há nada dentro [parent]."))
 		return
 	remove_item(user)
 
@@ -140,9 +140,9 @@
  */
 /datum/component/food_storage/proc/remove_item(mob/user)
 	if(user.put_in_hands(stored_item))
-		user.visible_message(span_warning("[user]Lentamente puxa[stored_item]Fora[parent]."), 							span_warning("Você puxa lentamente[stored_item]Fora[parent]."))
+		user.visible_message(span_warning("[user] Lentamente puxa [stored_item] Fora [parent]."), 							span_warning("Você puxa lentamente [stored_item] Fora [parent]."))
 	else
-		stored_item.visible_message(span_warning("[stored_item]Cai fora.[parent]."))
+		stored_item.visible_message(span_warning("[stored_item] Cai fora.[parent]."))
 
 	update_stored_item()
 
@@ -174,7 +174,7 @@
 	var/discovered = FALSE
 	if(prob(good_chance_of_discovery)) //finding the item, without biting it
 		discovered = TRUE
-		to_chat(target, span_warning("Parece que há algo dentro[parent]...!"))
+		to_chat(target, span_warning("Parece que há algo dentro [parent]...!"))
 
 	else if(prob(bad_chance_of_discovery)) //finding the item, BY biting it
 		user.log_message("just fed [key_name(target)] \a [stored_item] which was hidden in [parent].", LOG_ATTACK)

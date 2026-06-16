@@ -188,7 +188,7 @@
 			if(!msg)
 				return
 			name = msg
-			desc = "Propriedade de[player_card.registered_account.account_holder], tira diretamente de[user.p_their()]Conta."
+			desc = "Propriedade de [player_card.registered_account.account_holder], tira diretamente de [user.p_their()] Conta."
 			my_card = player_card
 			RegisterSignal(my_card, COMSIG_QDELETING, PROC_REF(on_my_card_deleted))
 			to_chat(user, span_notice("Você liga a roda à sua conta."))
@@ -426,15 +426,15 @@
 /obj/machinery/roulette/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(machine_stat & MAINT)
-		to_chat(user, span_notice("Você começa a re-ligar a seção superior de[src]..."))
+		to_chat(user, span_notice("Você começa a re-ligar a seção superior de [src]..."))
 		if(I.use_tool(src, user, 30, volume=50))
-			to_chat(user, span_notice("Você recolocou a parte de cima do[src]."))
+			to_chat(user, span_notice("Você recolocou a parte de cima do [src]."))
 			set_machine_stat(machine_stat & ~MAINT)
 			icon_state = "idle"
 	else
-		to_chat(user, span_notice("Você começa a soldar a seção superior de[src]..."))
+		to_chat(user, span_notice("Você começa a soldar a seção superior de [src]..."))
 		if(I.use_tool(src, user, 30, volume=50))
-			to_chat(user, span_notice("Você removeu a parte de cima de[src]."))
+			to_chat(user, span_notice("Você removeu a parte de cima de [src]."))
 			set_machine_stat(machine_stat | MAINT)
 			icon_state = "open"
 
@@ -453,7 +453,7 @@
 /obj/item/roulette_wheel_beacon/attack_self()
 	if(used)
 		return
-	loc.visible_message(span_warning("\The [src]Começa a tocar alto!"))
+	loc.visible_message(span_warning("\The [src] Começa a tocar alto!"))
 	used = TRUE
 	addtimer(CALLBACK(src, PROC_REF(launch_payload)), 4 SECONDS)
 

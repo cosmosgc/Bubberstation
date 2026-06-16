@@ -57,7 +57,7 @@
 		if(special_attaching_interaction(attach_right, M, user))
 			return ITEM_INTERACT_SUCCESS //The rest is handled in the special interactions proc
 		attach(M, attach_right)
-		user.visible_message(span_notice("[user]APENAS[src]Para[M]."), span_notice("Você anexa[src]Para[M]."))
+		user.visible_message(span_notice("[user] APENAS [src] Para [M]."), span_notice("Você anexa [src] Para [M]."))
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING
 
@@ -161,17 +161,17 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/default_can_attach(obj/vehicle/sealed/mecha/mech, attach_right = FALSE, mob/user)
 	if(!(mech_flags & mech.mech_type))
-		to_chat(user, span_warning("\The [src]É incompatível com[mech]!"))
+		to_chat(user, span_warning("\The [src] É incompatível com [mech]!"))
 		return FALSE
 	if(equipment_slot == MECHA_WEAPON)
 		if(attach_right)
 			// We need to check for length in case a mech doesn't support any arm attachments at all
 			if((!isnull(mech.equip_by_category[MECHA_R_ARM]) || !mech.max_equip_by_category[MECHA_R_ARM]) && (!special_attaching_interaction(attach_right, mech, user, checkonly = TRUE)))
-				to_chat(user, span_warning("\The [mech]O braço direito está cheio![mech.equip_by_category[MECHA_L_ARM] || !mech.max_equip_by_category[MECHA_L_ARM] ? "" : " Try left arm!"]"))
+				to_chat(user, span_warning("\The [mech] O braço direito está cheio![mech.equip_by_category [MECHA_L_ARM] || !mech.max_equip_by_category [MECHA_L_ARM] ? "" : " Try left arm!"]"))
 				return FALSE
 		else
 			if((!isnull(mech.equip_by_category[MECHA_L_ARM]) || !mech.max_equip_by_category[MECHA_L_ARM]) && (!special_attaching_interaction(attach_right, mech, user, checkonly = TRUE)))
-				to_chat(user, span_warning("\The [mech]O braço esquerdo está cheio![mech.equip_by_category[MECHA_R_ARM] || !mech.max_equip_by_category[MECHA_R_ARM] ? "" : " Try right arm!"]"))
+				to_chat(user, span_warning("\The [mech] O braço esquerdo está cheio![mech.equip_by_category [MECHA_R_ARM] || !mech.max_equip_by_category [MECHA_R_ARM] ? "" : " Try right arm!"]"))
 				return FALSE
 		return TRUE
 	if(unstackable)

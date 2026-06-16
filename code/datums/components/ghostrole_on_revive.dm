@@ -148,7 +148,7 @@
 
 	else if(refuse_revival_if_failed)
 		reviving.death()
-		reviving.visible_message(span_deadsay("[reviving]A alma está lutando para voltar!"))
+		reviving.visible_message(span_deadsay("[reviving] A alma está lutando para voltar!"))
 
 
 /datum/component/ghostrole_on_revive/proc/add_orbit_twitching(mob/living/parent_mob)

@@ -94,7 +94,7 @@
 	if ((isnull(selected_experiment) && !(config_flags & EXPERIMENT_CONFIG_ALWAYS_ACTIVE)) || (config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 		return
 	playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 25)
-	to_chat(user, span_notice("[target]Não está relacionado com seu experimento atualmente selecionado."))
+	to_chat(user, span_notice("[target] Não está relacionado com seu experimento atualmente selecionado."))
 
 /**
  * Checks that an experiment can be run using the provided target, used for preventing the cancellation of the attack chain inappropriately
@@ -137,7 +137,7 @@
 		user.mind.adjust_experience(/datum/skill/research, 5) //SKYRAT EDIT: Research Skill (simple research)
 	else if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 25)
-		to_chat(user, span_notice("[target]Não está relacionado com seu experimento atualmente selecionado."))
+		to_chat(user, span_notice("[target] Não está relacionado com seu experimento atualmente selecionado."))
 
 /**
  * Hooks on destructive scans to try and run an experiment (When using a handheld handler)

@@ -48,7 +48,7 @@
 	signaler.set_frequency(sanitize_frequency(rand(MIN_FREE_FREQ, MAX_FREE_FREQ)))
 	signaler.code = rand(1, 100)
 	buyer.put_in_hands(signaler)
-	to_chat(buyer, span_notice("A[signaler]Aparece[buyer.is_holding(signaler) ? "in your hands" : "at your feet"]!"))
+	to_chat(buyer, span_notice("A [signaler] Aparece[buyer.is_holding(signaler) ? "in your hands" : "at your feet"]!"))
 
 /datum/market_item/hostage/proc/clear_signaler_ref(datum/source)
 	SIGNAL_HANDLER

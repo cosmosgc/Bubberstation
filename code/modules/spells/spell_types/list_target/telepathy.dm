@@ -42,7 +42,7 @@
 
 	var/failure_message_for_ghosts = ""
 
-	to_chat(owner, "<span class='[bold_telepathy_span]'>Você transmite para[cast_on]:</span> [formatted_message]")
+	to_chat(owner, "<span class='[bold_telepathy_span]'>Você transmite para [cast_on]:</span> [formatted_message]")
 	/* BUBBER EDIT REMOVAL START
 	if(!cast_on.can_block_magic(antimagic_flags, charge_cost = 0)) //hear no evil
 	*/ //BUBBER EDIT REMOVAL END

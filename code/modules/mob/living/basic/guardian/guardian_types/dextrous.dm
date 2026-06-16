@@ -41,7 +41,7 @@
 	. = ..()
 	if(isnull(internal_storage) || (internal_storage.item_flags & ABSTRACT))
 		return
-	. += span_info("Está segurando.[internal_storage.examine_title(user)]Em seu armamento interno.")
+	. += span_info("Está segurando.[internal_storage.examine_title(user)] Em seu armamento interno.")
 
 /mob/living/basic/guardian/dextrous/manifest_effects()
 	. = ..()

@@ -120,8 +120,8 @@
 	if(!(target in devour_turf))
 		to_chat(devourer, span_warning("Alguém roubou seu jantar!"))
 		return
-	to_chat(target, span_userdanger("Você está consumido por[devourer]!"))
-	devourer.visible_message(span_warning("[devourer]Consome[target]!"))
+	to_chat(target, span_userdanger("Você está consumido por [devourer]!"))
+	devourer.visible_message(span_warning("[devourer] Consome [target]!"))
 	devourer.fully_heal()
 	playsound(devourer, 'sound/effects/splat.ogg', 50, TRUE)
 	//to be received on death

@@ -62,7 +62,7 @@
 
 	//do the pulse & the scan
 	pulse()
-	audible_message(span_infoplain("[icon2html(src, hearers(src))]Bip, bip"))
+	audible_message(span_infoplain("[icon2html(src, hearers(src))] Bip, bip"))
 	playsound(src, 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	toggle_scan()
 

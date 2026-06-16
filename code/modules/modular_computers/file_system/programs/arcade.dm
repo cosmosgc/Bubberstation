@@ -166,10 +166,10 @@
 				to_chat(gamer, span_notice("A impressora está sem papel."))
 				return
 			else
-				computer.visible_message(span_notice("\The [computer]Imprime papel."))
+				computer.visible_message(span_notice("\The [computer] Imprime papel."))
 				if(ticket_count >= 1)
 					new /obj/item/stack/arcadeticket((get_turf(computer)))
-					to_chat(gamer, span_notice("[computer]Distribua um bilhete!"))
+					to_chat(gamer, span_notice("[computer] Distribua um bilhete!"))
 					ticket_count -= 1
 					computer.stored_paper -= 1
 				else

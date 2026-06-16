@@ -111,9 +111,9 @@
 	. = list()
 	if(health < maxHealth)
 		if(health >= maxHealth/2)
-			. += span_warning("[p_They()]Veja.[p_s()]Levemente amassado.")
+			. += span_warning("[p_They()] Veja.[p_s()] Levemente amassado.")
 		else
-			. += span_warning(span_bold("[p_They()]Veja.[p_s()]Muito bem!"))
+			. += span_warning(span_bold("[p_They()] Veja.[p_s()] Muito bem!"))
 
 	return .
 

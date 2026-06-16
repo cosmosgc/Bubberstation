@@ -82,8 +82,8 @@
 	return ..()
 
 /obj/machinery/sleeper/container_resist_act(mob/living/user)
-	visible_message(span_notice("[occupant]emerge de[src]!"),
-		span_notice("Você sai[src]!"))
+	visible_message(span_notice("[occupant] emerge de [src]!"),
+		span_notice("Você sai [src]!"))
 	open_machine()
 
 /obj/machinery/sleeper/Exited(atom/movable/gone, direction)
@@ -122,10 +122,10 @@
 
 /obj/machinery/sleeper/screwdriver_act(mob/living/user, obj/item/I)
 	if(occupant)
-		to_chat(user, span_warning("[src]Está ocupado no momento!"))
+		to_chat(user, span_warning("[src] Está ocupado no momento!"))
 		return ITEM_INTERACT_BLOCKING
 	if(state_open)
-		to_chat(user, span_warning("[src]deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
+		to_chat(user, span_warning("[src] deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
 		return ITEM_INTERACT_BLOCKING
 	return default_deconstruction_screwdriver(user, I)
 
@@ -158,7 +158,7 @@
 
 /obj/machinery/sleeper/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click[src]Para[state_open ? "close" : "open"]Ele.")
+	. += span_notice("Alt-click [src] Para[state_open ? "close" : "open"]Ele.")
 
 /obj/machinery/sleeper/process()
 	use_energy(idle_power_usage)

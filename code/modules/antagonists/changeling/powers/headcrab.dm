@@ -27,7 +27,7 @@
 		return
 	active = TRUE
 	..()
-	user.visible_message(span_boldwarning("[user]O corpo começa a pulsar e inchar de forma anormal!"))
+	user.visible_message(span_boldwarning("[user] O corpo começa a pulsar e inchar de forma anormal!"))
 	playsound(user, 'sound/effects/wounds/crack1.ogg', 100, TRUE)
 	animate(user, transform = user.transform * 1.5, color = COLOR_RED, time = 1 SECONDS)
 	if(is_walled(user))
@@ -54,7 +54,7 @@
 /// Creates a light explosion, blinds and confuses mobs in range
 /datum/action/changeling/headcrab/proc/gore_explosion(mob/living/user)
 	var/list/user_DNA = user.get_blood_dna_list()
-	user.visible_message(span_boldwarning("[user]O corpo se rompe em uma violenta explosão de biomassa!"))
+	user.visible_message(span_boldwarning("[user] O corpo se rompe em uma violenta explosão de biomassa!"))
 	playsound(user, 'sound/effects/goresplat.ogg', 100, TRUE) //yuck!!
 	explosion(user, light_impact_range = LAST_RESORT_EXPLOSION_RANGE, flame_range = 0, flash_range = 0, adminlog = TRUE, silent = TRUE, explosion_cause = src)
 	user.spawn_gibs()
@@ -66,7 +66,7 @@
 	for(var/mob/living/blinded in view(LAST_RESORT_BLIND_RANGE, user))
 		if(blinded == user)
 			continue
-		blinded.visible_message(span_danger("[blinded]está cheio de sangue!"), span_userdanger("Você está cheio de sangue!"))
+		blinded.visible_message(span_danger("[blinded] está cheio de sangue!"), span_userdanger("Você está cheio de sangue!"))
 		blinded.add_blood_DNA(user_DNA)
 		blinded.add_mood_event("splattered_with_blood", /datum/mood_event/splattered_with_blood)
 		playsound(blinded, 'sound/effects/splat.ogg', 50, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE)
@@ -98,7 +98,7 @@
 
 /// Ruptures nearby walls using the torn_wall component. Also it destroys objects with density.
 /datum/action/changeling/headcrab/proc/escaping_prison(mob/living/user)
-	user.visible_message(span_boldwarning("[user]A forma em expansão começa a esmagar os obstáculos ao redor!"))
+	user.visible_message(span_boldwarning("[user] A forma em expansão começa a esmagar os obstáculos ao redor!"))
 	var/list/walls_to_destroy = list()
 
 	for(var/turf/nearby_turf in range(1, user))

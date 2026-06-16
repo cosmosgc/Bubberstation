@@ -74,7 +74,7 @@
 	if(stat == DEAD)
 		return
 	visible_message(
-		span_danger("[src]mostra uma forte reação depois de provar um pouco de sal!"),
+		span_danger("[src] mostra uma forte reação depois de provar um pouco de sal!"),
 		span_userdanger("Você mostra uma forte reação depois de provar um pouco de sal."),
 	)
 	apply_damage(500) //ouch

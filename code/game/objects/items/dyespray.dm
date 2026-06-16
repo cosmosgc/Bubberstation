@@ -44,7 +44,7 @@
 		dyables -= "Facial Hair"
 	if(!length(dyables))
 		if(target != user)
-			to_chat(user, span_warning("[human_target]não tem nada que possa ser tingido."))
+			to_chat(user, span_warning("[human_target] não tem nada que possa ser tingido."))
 		else
 			to_chat(user, span_warning("Não tem nada para pintar."))
 		return

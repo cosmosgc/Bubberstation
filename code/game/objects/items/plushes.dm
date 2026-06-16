@@ -61,11 +61,11 @@
 	if(!offspring_type)
 		offspring_type = type
 
-	love_message = list("\n[src] is so happy, \he could rip a seam!")
-	partner_message = list("\n[src] has a ring on \his finger! It says bound to my dear [partner].")
-	heartbroken_message = list("\n[src] looks so sad.")
-	vowbroken_message = list("\n[src] lost \his ring...")
-	parent_message = list("\n[src] can't remember what sleep is.")
+	love_message = list("\n [src] is so happy, \he could rip a seam!")
+	partner_message = list("\n [src] has a ring on \his finger! It says bound to my dear [partner].")
+	heartbroken_message = list("\n [src] looks so sad.")
+	vowbroken_message = list("\n [src] lost \his ring...")
+	parent_message = list("\n [src] can't remember what sleep is.")
 
 	normal_desc = desc
 

@@ -3,8 +3,8 @@
 /** Simple price check */
 /mob/eye/blob/proc/can_buy(cost = 15)
 	if(blob_points < cost)
-		to_chat(src, span_warning("Você não pode pagar isso, você precisa pelo menos[cost]recursos!"))
-		balloon_alert(src, "Necessidade[cost-blob_points]Mais recursos!")
+		to_chat(src, span_warning("Você não pode pagar isso, você precisa pelo menos [cost] recursos!"))
+		balloon_alert(src, "Necessidade [cost-blob_points] Mais recursos!")
 		return FALSE
 	add_points(-cost)
 	return TRUE
@@ -133,7 +133,7 @@
 	if(min_separation)
 		for(var/obj/structure/blob/other_blob in orange(min_separation, tile))
 			if(other_blob.type == blobstrain)
-				to_chat(src, span_warning("Há uma bolha similar perto, mover-se mais do que[min_separation]Tiles longe dele!"))
+				to_chat(src, span_warning("Há uma bolha similar perto, mover-se mais do que [min_separation] Tiles longe dele!"))
 				other_blob.balloon_alert(src, "Perto demais!")
 				return FALSE
 	if(!can_buy(price))
@@ -154,7 +154,7 @@
 	var/obj/structure/blob/shield/shield = locate(/obj/structure/blob/shield) in tile
 	if(!shield)
 		shield = create_special(BLOB_UPGRADE_STRONG_COST, /obj/structure/blob/shield, 0, FALSE, tile)
-		shield?.balloon_alert(src, "atualizado para[shield.name]!")
+		shield?.balloon_alert(src, "atualizado para [shield.name]!")
 		return FALSE
 
 	if(!can_buy(BLOB_UPGRADE_REFLECTOR_COST))
@@ -167,7 +167,7 @@
 
 	to_chat(src, span_warning("Você secreta uma mancha refletiva sobre o escudo, permitindo que reflita projéteis ao custo de integridade reduzida."))
 	shield = shield.change_to(/obj/structure/blob/shield/reflective, src)
-	shield.balloon_alert(src, "atualizado para[shield.name]!")
+	shield.balloon_alert(src, "atualizado para [shield.name]!")
 
 /** Preliminary check before polling ghosts. */
 /mob/eye/blob/proc/create_blobbernaut()
@@ -268,8 +268,8 @@
 
 	if(blob.point_return)
 		add_points(blob.point_return)
-		to_chat(src, span_notice("Ganhado[blob.point_return]recursos de remover\the [blob]."))
-		blob.balloon_alert(src, "+[blob.point_return]recurso\s")
+		to_chat(src, span_notice("Ganhado [blob.point_return] recursos de remover\the [blob]."))
+		blob.balloon_alert(src, "+[blob.point_return] recurso\s")
 
 	qdel(blob)
 
@@ -360,7 +360,7 @@
 /** Opens the reroll menu to change strains */
 /mob/eye/blob/proc/strain_reroll()
 	if (!free_strain_rerolls && blob_points < BLOB_POWER_REROLL_COST)
-		to_chat(src, span_warning("Você precisa pelo menos[BLOB_POWER_REROLL_COST]recursos para refazer sua tensão novamente!"))
+		to_chat(src, span_warning("Você precisa pelo menos [BLOB_POWER_REROLL_COST] recursos para refazer sua tensão novamente!"))
 		return FALSE
 
 	open_reroll_menu()

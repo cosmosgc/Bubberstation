@@ -22,7 +22,7 @@
 
 /obj/item/card/emag/attack_self(mob/user) //for traitors with balls of plastitanium
 	if(Adjacent(user))
-		user.visible_message(span_notice("[user]Mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra[src]."))
+		user.visible_message(span_notice("[user] Mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra [src]."))
 	add_fingerprint(user)
 
 /obj/item/card/emag/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -39,8 +39,8 @@
 		return FALSE
 
 	user.visible_message(
-		span_notice("[user]Segura.[emag_card]Para[src],Juntando como duas cartas!"),
-		span_notice("Enquanto você segura[emag_card]Para[src], [emag_card.p_their()]ímãs se atraem uns aos outros, e[emag_card.p_they()]Fiquem junto!"),
+		span_notice("[user] Segura.[emag_card] Para [src],Juntando como duas cartas!"),
+		span_notice("Enquanto você segura [emag_card] Para [src], [emag_card.p_their()] ímãs se atraem uns aos outros, e [emag_card.p_they()] Fiquem junto!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	playsound(src, 'sound/effects/bang.ogg', 33, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -105,7 +105,7 @@
 
 /obj/item/card/emagfake/attack_self(mob/user) //for assistants with balls of plasteel
 	if(Adjacent(user))
-		user.visible_message(span_notice("[user]Mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra[src]."))
+		user.visible_message(span_notice("[user] Mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra [src]."))
 	add_fingerprint(user)
 
 /obj/item/card/emagfake/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -113,7 +113,7 @@
 		playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE, frequency = 2)
 	else if(obj_flags & EMAGGED)
 		log_bomber(user, "triggered", src, "(rigged/emagged)")
-		visible_message(span_boldwarning("[src]Começa a aquecer!"))
+		visible_message(span_boldwarning("[src] Começa a aquecer!"))
 		playsound(src, 'sound/items/bikehorn.ogg', 100, TRUE, frequency = 0.25)
 		addtimer(CALLBACK(src, PROC_REF(blow_up)), 1 SECONDS, TIMER_DELETE_ME)
 		exploding = TRUE
@@ -122,7 +122,7 @@
 	return ITEM_INTERACT_SKIP_TO_ATTACK // So it does the attack animation.
 
 /obj/item/card/emagfake/proc/blow_up()
-	visible_message(span_boldwarning("[src]Explodir!"))
+	visible_message(span_boldwarning("[src] Explodir!"))
 	explosion(src, light_impact_range = 1, explosion_cause = src)
 	qdel(src)
 
@@ -158,7 +158,7 @@
 /obj/item/card/emag/proc/can_emag(atom/target, mob/user)
 	for (var/subtypelist in type_blacklist)
 		if (target.type in subtypelist)
-			to_chat(user, span_warning("O[target]Não pode ser afetado pelo[src]Um dispositivo de hacker mais especializado é necessário."))
+			to_chat(user, span_warning("O [target] Não pode ser afetado pelo [src] Um dispositivo de hacker mais especializado é necessário."))
 			return FALSE
 	return TRUE
 
@@ -188,7 +188,7 @@
 
 /obj/item/card/emag/doorjack/proc/use_charge(mob/user)
 	charges --
-	to_chat(user, span_notice("Você usa[src]Agora tem[charges]Carregar.[charges == 1 ? "" : "s"]Restaurando."))
+	to_chat(user, span_notice("Você usa [src] Agora tem [charges] Carregar.[charges == 1 ? "" : "s"]Restaurando."))
 	charge_timers.Add(addtimer(CALLBACK(src, PROC_REF(recharge)), charge_time, TIMER_STOPPABLE))
 
 /obj/item/card/emag/doorjack/proc/recharge(mob/user)
@@ -198,7 +198,7 @@
 
 /obj/item/card/emag/doorjack/examine(mob/user)
 	. = ..()
-	. += span_notice("Tem.[charges]Acusações restantes.")
+	. += span_notice("Tem.[charges] Acusações restantes.")
 	if (length(charge_timers))
 		. += "[span_notice("<b>A small display on the back reads:")]</b>"
 	for (var/i in 1 to length(charge_timers))
@@ -208,12 +208,12 @@
 
 /obj/item/card/emag/doorjack/can_emag(atom/target, mob/user)
 	if (charges <= 0)
-		to_chat(user, span_warning("[src]Está recarregando!"))
+		to_chat(user, span_warning("[src] Está recarregando!"))
 		return FALSE
 	for (var/list/subtypelist in type_whitelist)
 		if (target.type in subtypelist)
 			return TRUE
-	to_chat(user, span_warning("[src]é incapaz de se conectar com isso. Só parece caber na câmara eletrônica."))
+	to_chat(user, span_warning("[src] é incapaz de se conectar com isso. Só parece caber na câmara eletrônica."))
 	return FALSE
 
 /*
@@ -231,7 +231,7 @@
 
 /obj/item/card/emag/battlecruiser/proc/use_charge(mob/user)
 	used = TRUE
-	to_chat(user, span_boldwarning("Você usa[src], e ele se conecta com o console de comunicação. Sem voltar..."))
+	to_chat(user, span_boldwarning("Você usa [src], e ele se conecta com o console de comunicação. Sem voltar..."))
 
 /obj/item/card/emag/battlecruiser/examine(mob/user)
 	. = ..()
@@ -239,9 +239,9 @@
 
 /obj/item/card/emag/battlecruiser/can_emag(atom/target, mob/user)
 	if(used)
-		to_chat(user, span_warning("[src]é usado para cima."))
+		to_chat(user, span_warning("[src] é usado para cima."))
 		return FALSE
 	if(!istype(target, /obj/machinery/computer/communications))
-		to_chat(user, span_warning("[src]é incapaz de se conectar com isso. Só parece interagir com o console de comunicação."))
+		to_chat(user, span_warning("[src] é incapaz de se conectar com isso. Só parece interagir com o console de comunicação."))
 		return FALSE
 	return TRUE

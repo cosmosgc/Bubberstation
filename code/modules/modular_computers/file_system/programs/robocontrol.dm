@@ -140,7 +140,7 @@
 			var/area/current_area = get_area(current_user)
 			if(!current_area || QDELETED(current_user))
 				return
-			var/msg = span_boldnotice("NÃO DRONE PING:[current_user.name]: [params["ping_type"]]Alerta de prioridade em[current_area.name]!")
+			var/msg = span_boldnotice("NÃO DRONE PING:[current_user.name]: [params["ping_type"]]Alerta de prioridade em [current_area.name]!")
 			_alert_drones(msg, TRUE, current_user)
 			to_chat(current_user, msg)
 			playsound(src, 'sound/machines/terminal/terminal_success.ogg', 15, TRUE)

@@ -168,7 +168,7 @@
 
 	delta_cable(insert_amount, decrement = FALSE)
 	update_appearance(UPDATE_ICON_STATE)
-	balloon_alert(user, "Inserido[insert_amount]Cabo.")
+	balloon_alert(user, "Inserido [insert_amount] Cabo.")
 
 /// modify cable properties according to its layer
 /obj/item/rwd/proc/modify_cable(obj/item/stack/cable_coil/target_cable)

@@ -23,7 +23,7 @@
 /obj/machinery/nuclearbomb/beer/examine(mob/user)
 	. = ..()
 	if(keg.reagents.total_volume)
-		. += span_notice("Tem.[keg.reagents.total_volume]Unidade esquerda.")
+		. += span_notice("Tem.[keg.reagents.total_volume] Unidade esquerda.")
 	else
 		. += span_danger("Está vazio.")
 
@@ -46,7 +46,7 @@
 	if(is_station_level(bomb_location.z))
 		addtimer(CALLBACK(src, PROC_REF(really_actually_explode)), 11 SECONDS)
 	else
-		visible_message(span_notice("[src]Tem um som sinistro."))
+		visible_message(span_notice("[src] Tem um som sinistro."))
 		addtimer(CALLBACK(src, PROC_REF(local_foam)), 11 SECONDS)
 
 /obj/machinery/nuclearbomb/beer/disarm_nuke(mob/disarmer)

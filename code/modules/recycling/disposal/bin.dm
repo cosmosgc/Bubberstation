@@ -148,7 +148,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 
 /// The regal rat spawns ratty treasures from the disposal
 /obj/machinery/disposal/proc/rat_rummage(mob/living/basic/regal_rat/king)
-	king.visible_message(span_warning("[king]Começa a vasculhar[src]."),span_notice("Você revira[src]..."))
+	king.visible_message(span_warning("[king] Começa a vasculhar [src]."),span_notice("Você revira [src]..."))
 	if (!do_after(king, 2 SECONDS, src, interaction_key = "regalrat"))
 		return
 
@@ -177,15 +177,15 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 		var/mob/living/basic/mouse/new_subject = new(king.drop_location())
 		ADD_TRAIT(new_subject, TRAIT_SPAWNED_MOB, INNATE_TRAIT)
 		playsound(new_subject, 'sound/mobs/non-humanoids/mouse/mousesqueek.ogg', 100)
-		visible_message(span_warning("[new_subject]Subindo para fora[src]!"))
+		visible_message(span_warning("[new_subject] Subindo para fora [src]!"))
 
 /// Moves an item into the diposal bin
 /obj/machinery/disposal/proc/place_item_in_disposal(obj/item/disposing_item, mob/user)
 	if(!user.transferItemToLoc(disposing_item, newloc = src))
 		return FALSE
 	user.visible_message(
-		span_notice("[user.name]Lugares\the [disposing_item]Em\the [src]."),
-		span_notice("Seu lugar.\the [disposing_item]Em\the [src]."),
+		span_notice("[user.name] Lugares\the [disposing_item] Em\the [src]."),
+		span_notice("Seu lugar.\the [disposing_item] Em\the [src]."),
 	)
 	return TRUE
 
@@ -211,20 +211,20 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	if(target.buckled || target.has_buckled_mobs())
 		return FALSE
 	if(target.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, span_warning("[target]não cabe dentro[src]!"))
+		to_chat(user, span_warning("[target] não cabe dentro [src]!"))
 		return FALSE
 	add_fingerprint(user)
 	if(user == target)
-		user.visible_message(span_warning("[user]Começa a subir para[src]."), span_notice("Você começa a subir[src]..."))
+		user.visible_message(span_warning("[user] Começa a subir para [src]."), span_notice("Você começa a subir [src]..."))
 	else
-		target.visible_message(span_danger("[user]Começa a colocar[target]Em[src]."), span_userdanger("[user]começa a colocá-lo em[src]!"))
+		target.visible_message(span_danger("[user] Começa a colocar [target] Em [src]."), span_userdanger("[user] começa a colocá-lo em [src]!"))
 	if(!do_after(user, 2 SECONDS, target) || QDELETED(src))
 		return FALSE
 	target.forceMove(src)
 	if(user == target)
-		user.visible_message(span_warning("[user]Subindo em[src]."), span_notice("Você sobe em[src]."))
+		user.visible_message(span_warning("[user] Subindo em [src]."), span_notice("Você sobe em [src]."))
 	else
-		target.visible_message(span_danger("[user]Lugares[target]Em[src]."), span_userdanger("[user]Te coloca em[src]."))
+		target.visible_message(span_danger("[user] Lugares [target] Em [src]."), span_userdanger("[user] Te coloca em [src]."))
 		log_combat(user, target, "stuffed", addition="into [src]")
 	update_appearance()
 	return TRUE
@@ -234,22 +234,22 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 		bag.undeploy_bodybag(src)
 		qdel(bag)
 		user.visible_message(
-			span_warning("[user]O que é isso?[bag.name]Em[src]."),
-			span_notice("Você enche o vazio.[bag.name]Em[src].")
+			span_warning("[user] O que é isso?[bag.name] Em [src]."),
+			span_notice("Você enche o vazio.[bag.name] Em [src].")
 		)
 		return TRUE
 
 	user.visible_message(
-		span_warning("[user]Começa a colocar[bag]Em[src]."),
-		span_notice("Você começa a colocar[bag]Em[src]...")
+		span_warning("[user] Começa a colocar [bag] Em [src]."),
+		span_notice("Você começa a colocar [bag] Em [src]...")
 	)
 
 	if(!do_after(user, 4 SECONDS, bag) || QDELETED(src))
 		return FALSE
 
 	user.visible_message(
-		span_warning("[user]Lugares[bag]Em[src]."),
-		span_notice("Seu lugar.[bag]Em[src].")
+		span_warning("[user] Lugares [bag] Em [src]."),
+		span_notice("Seu lugar.[bag] Em [src].")
 	)
 
 	if(!length(bag.contents))
@@ -356,7 +356,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 
 	. = STORAGE_DUMP_HANDLED
 
-	to_chat(user, span_notice("Você despejou.[storage.parent]Em[src]."))
+	to_chat(user, span_notice("Você despejou.[storage.parent] Em [src]."))
 
 	for(var/obj/item/to_dump in storage.real_location)
 		if(user.active_storage != storage && to_dump.on_found(user))
@@ -370,12 +370,12 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 
 /obj/machinery/disposal/force_pushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	. = ..()
-	visible_message(span_warning("[src]é arrancado do chão!"))
+	visible_message(span_warning("[src] é arrancado do chão!"))
 	deconstruct()
 
 /obj/machinery/disposal/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	. = ..()
-	visible_message(span_warning("[src]é arrancado do chão!"))
+	visible_message(span_warning("[src] é arrancado do chão!"))
 	deconstruct()
 
 
@@ -401,9 +401,9 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	density = cur_density
 	target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 	target.forceMove(src)
-	target.visible_message(span_danger("[shover.name]Empurra.[target.name]Em\the [src]!"),
-		span_userdanger("Você está enfiado em\the [src]Por que[target.name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, shover)
-	to_chat(src, span_danger("Você empurra.[target.name]Em\the [src]!"))
+	target.visible_message(span_danger("[shover.name] Empurra.[target.name] Em\the [src]!"),
+		span_userdanger("Você está enfiado em\the [src] Por que [target.name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, shover)
+	to_chat(src, span_danger("Você empurra.[target.name] Em\the [src]!"))
 	log_combat(shover, target, "shoved", "into [src] (disposal bin)[weapon ? " with [weapon]" : ""]")
 	return COMSIG_LIVING_SHOVE_HANDLED
 
@@ -418,7 +418,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	items_to_sweep.Cut()
 
 	update_appearance()
-	to_chat(user, span_notice("Você varre o monte de lixo em[src]."))
+	to_chat(user, span_notice("Você varre o monte de lixo em [src]."))
 	playsound(broom.loc, 'sound/items/weapons/thudswoosh.ogg', 30, TRUE, -1)
 
 
@@ -469,7 +469,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 			balloon_alert(user, "preso na sua mão!")
 			return
 		new_tagger.moveToNullspace()
-		user.visible_message(span_notice("[user]Snaps\the [new_tagger]em frente[src]!"))
+		user.visible_message(span_notice("[user] Snaps\the [new_tagger] em frente [src]!"))
 		balloon_alert(user, "Tagger Voltau.")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		mounted_tagger = new_tagger
@@ -487,7 +487,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 		balloon_alert(user, "O marcador de destino cai!")
 		mounted_tagger = null
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	user.visible_message(span_notice("[user]Soltem o[mounted_tagger]De[src]."))
+	user.visible_message(span_notice("[user] Soltem o [mounted_tagger] De [src]."))
 	balloon_alert(user, "Tagger Puxado")
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 	mounted_tagger = null
@@ -499,7 +499,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	if(isnull(mounted_tagger))
 		. += span_notice("O tagger de destino está vazio.")
 	else
-		. += span_notice("\The [mounted_tagger]Está pendurado no lado. Clique para remover.")
+		. += span_notice("\The [mounted_tagger] Está pendurado no lado. Clique para remover.")
 
 /obj/machinery/disposal/bin/Destroy()
 	if(!isnull(mounted_tagger))
@@ -568,10 +568,10 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 		var/mob/thrower = throwingdatum?.get_thrower()
 		if((istype(thrower) && HAS_TRAIT(thrower, TRAIT_THROWINGARM)) || prob(75))
 			AM.forceMove(src)
-			visible_message(span_notice("[AM]Aterra em[src]."))
+			visible_message(span_notice("[AM] Aterra em [src]."))
 			update_appearance()
 		else
-			visible_message(span_notice("[AM]Rebater de[src]Aro!"))
+			visible_message(span_notice("[AM] Rebater de [src] Aro!"))
 			return ..()
 	else
 		return ..()
@@ -629,7 +629,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	var/turf/final_turf = length(open_turfs) ? pick(open_turfs) : drop_location()
 	var/mob/living/startled_animal = new contained_animal(drop_location())
 	startled_animal.Move(final_turf)
-	visible_message(span_notice("Um susto.[startled_animal]Pula para fora[src]."))
+	visible_message(span_notice("Um susto.[startled_animal] Pula para fora [src]."))
 	contained_animal = null
 
 /// Initiates flushing

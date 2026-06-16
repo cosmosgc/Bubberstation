@@ -107,7 +107,7 @@
 	var/target_temp = round(target_temperature - T0C, 1)
 	var/min_temp = max(settable_temperature_median - settable_temperature_range, TCMB) - T0C
 	var/max_temp = settable_temperature_median + settable_temperature_range - T0C
-	return span_notice("A exibição de status diz:<br>Poder de aquecimento:<b>[display_power(heating_energy, convert = TRUE, scheduler = SSair)]em[(efficiency / 20) * 100]Eficiência em %.</b><br>Temperatura do alvo:<b>[target_temp]°C[min_temp]°C...[max_temp]°C]</b>\n")
+	return span_notice("A exibição de status diz:<br>Poder de aquecimento:<b>[display_power(heating_energy, convert = TRUE, scheduler = SSair)] em [(efficiency / 20) * 100] Eficiência em %.</b><br>Temperatura do alvo:<b>[target_temp]°C [min_temp]°C...[max_temp]°C]</b>\n")
 
 /obj/machinery/space_heater/update_icon_state()
 	. = ..()
@@ -227,8 +227,8 @@
 		cell = tool
 		tool.add_fingerprint(usr)
 		user.visible_message(
-			span_notice("[user]Inserções[tool]em[src]."),
-			span_notice("Você insere[tool]em[src]."),
+			span_notice("[user] Inserções [tool] em [src]."),
+			span_notice("Você insere [tool] em [src]."),
 		)
 		SStgui.update_uis(src)
 		return ITEM_INTERACT_SUCCESS
@@ -431,7 +431,7 @@
 		cell = item
 		item.add_fingerprint(usr)
 
-		user.visible_message(span_notice("\The [user]insere uma célula de energia em\the [src]."), span_notice("Você insere a célula de energia em\the [src]."))
+		user.visible_message(span_notice("\The [user] insere uma célula de energia em\the [src]."), span_notice("Você insere a célula de energia em\the [src]."))
 		SStgui.update_uis(src)
 	//reagent containers
 	if(is_reagent_container(item) && !(item.item_flags & ABSTRACT) && item.is_open_container())
@@ -440,7 +440,7 @@
 		if(!user.transferItemToLoc(container, src))
 			return
 		replace_beaker(user, container)
-		to_chat(user, span_notice("Você acrescenta[container]para[src]É um banho de água."))
+		to_chat(user, span_notice("Você acrescenta [container] para [src] É um banho de água."))
 		ui_interact(user)
 		return
 	//Dropper tools

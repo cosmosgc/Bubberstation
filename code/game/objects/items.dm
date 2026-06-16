@@ -552,9 +552,9 @@
 		var/announce = FALSE
 		//Apply fantasy with affix. failing this should never happen, but if it does it should not be silent.
 		if(AddComponent(/datum/component/fantasy, fantasy_quality, list(affix), canFail, announce) == COMPONENT_INCOMPATIBLE)
-			to_chat(usr, span_warning("Componente fantasia não compatível com[src]."))
+			to_chat(usr, span_warning("Componente fantasia não compatível com [src]."))
 			CRASH("fantasy component incompatible with object of type: [type]")
-		to_chat(usr, span_notice("[before_name]Agora tem[picked_affix_name]!"))
+		to_chat(usr, span_notice("[before_name] Agora tem [picked_affix_name]!"))
 		log_admin("[key_name(usr)] has added [picked_affix_name] fantasy affix to [before_name]")
 		message_admins(span_notice("[key_name(usr)] has added [picked_affix_name] fantasy affix to [before_name]"))
 
@@ -578,7 +578,7 @@
 		var/grav = user.has_gravity()
 		if(grav > STANDARD_GRAVITY)
 			var/grav_power = min(3,grav - STANDARD_GRAVITY)
-			to_chat(user,span_notice("Você começa a pegar[src]..."))
+			to_chat(user,span_notice("Você começa a pegar [src]..."))
 			if(!do_after(user, 30 * grav_power, src))
 				return
 
@@ -645,7 +645,7 @@
 		return TRUE
 
 	if(prob(final_block_chance))
-		owner.visible_message(span_danger("[owner]Blocos[attack_text]com[src]!"))
+		owner.visible_message(span_danger("[owner] Blocos [attack_text] com [src]!"))
 		var/owner_turf = get_turf(owner)
 		new block_effect(owner_turf, COLOR_YELLOW)
 		playsound(src, block_sound, BLOCK_SOUND_VOLUME, vary = TRUE)
@@ -993,7 +993,7 @@
 /// If an object can successfully be used as a fire starter it will return a message
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature() >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
-		. = span_notice("[user]Luzes[A]com[src].")
+		. = span_notice("[user] Luzes [A] com [src].")
 	else
 		. = ""
 
@@ -1385,7 +1385,7 @@
 		return
 	user.dropItemToGround(src, silent = TRUE)
 	if(throwforce && (HAS_TRAIT(user, TRAIT_PACIFISM)) || HAS_TRAIT(user, TRAIT_NO_THROWING))
-		to_chat(user, span_notice("Você está pronto.[src]Deite-se suavemente no chão."))
+		to_chat(user, span_notice("Você está pronto.[src] Deite-se suavemente no chão."))
 		return
 	return src
 
@@ -1412,7 +1412,7 @@
 /obj/item/proc/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
 	if(get_sharpness() && force >= 5) //if we've got something sharp with a decent force (ie, not plastic)
 		INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
-		victim.visible_message(span_warning("[victim]Parece que...[victim.p_theyve()]Só mordeu algo que não deveriam!"), 							span_boldwarning("Oh Deus! Foi uma crise? Isso não foi nada bom!"))
+		victim.visible_message(span_warning("[victim] Parece que...[victim.p_theyve()] Só mordeu algo que não deveriam!"), 							span_boldwarning("Oh Deus! Foi uma crise? Isso não foi nada bom!"))
 
 		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10, sharpness = TRUE)
 		victim.losebreath += 2
@@ -1456,7 +1456,7 @@
 			discover_after = FALSE
 
 		victim.adjust_disgust(33)
-		victim.visible_message(span_warning("[victim]Parece que...[victim.p_theyve()]Só mordi em algo difícil."), 						span_warning("Eugh! Mordi em alguma coisa?"))
+		victim.visible_message(span_warning("[victim] Parece que...[victim.p_theyve()] Só mordi em algo difícil."), 						span_warning("Eugh! Mordi em alguma coisa?"))
 		return discover_after
 
 	if(w_class > WEIGHT_CLASS_TINY) //small items like soap or toys that don't have mat datums
@@ -1474,7 +1474,7 @@
 	if(victim_cavity.cavity_item)
 		victim.vomit(vomit_flags = (MOB_VOMIT_MESSAGE | MOB_VOMIT_HARM), lost_nutrition = 5, distance = 0)
 		forceMove(drop_location())
-		to_chat(victim, span_warning("Você vomita um[name]! [source_item? "Was that in \the [source_item]?" : ""]"))
+		to_chat(victim, span_warning("Você vomita um [name]! [source_item? "Was that in \the [source_item]?" : ""]"))
 		return FALSE
 
 	victim.transferItemToLoc(src, victim, TRUE)
@@ -1856,15 +1856,15 @@
 	if(show_visible_message)
 		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_OBJECT))
 			target.visible_message(
-				span_danger("[user]Tenta colocar[equipping]Vamos.[target]."),
-				span_userdanger("[user]Tenta colocar[equipping]Você."),
+				span_danger("[user] Tenta colocar [equipping] Vamos.[target]."),
+				span_userdanger("[user] Tenta colocar [equipping] Você."),
 				ignored_mobs = user,
 			)
 
 		else
 			target.visible_message(
-				span_notice("[user]Tenta colocar[equipping]Vamos.[target]."),
-				span_notice("[user]Tenta colocar[equipping]Você."),
+				span_notice("[user] Tenta colocar [equipping] Vamos.[target]."),
+				span_notice("[user] Tenta colocar [equipping] Você."),
 				ignored_mobs = user,
 			)
 
@@ -1879,7 +1879,7 @@
 				to_chat(target, span_userdanger("Você sente alguém tentando colocar algo em você."))
 	user.do_item_attack_animation(target, used_item = equipping, animation_type = ATTACK_ANIMATION_BLUNT)
 
-	to_chat(user, span_notice("Você tenta colocar[equipping]Vamos.[target]..."))
+	to_chat(user, span_notice("Você tenta colocar [equipping] Vamos.[target]..."))
 
 	user.log_message("is putting [equipping] on [key_name(target)]", LOG_ATTACK, color="red")
 	target.log_message("is having [equipping] put on them by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)

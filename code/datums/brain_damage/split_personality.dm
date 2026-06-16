@@ -310,7 +310,7 @@
 		qdel(src)
 		return
 	else if(duration_in_seconds <= 60 && !(duration_in_seconds % 20))
-		to_chat(owner, span_warning("Você tem[duration_in_seconds]segundos para ficar sóbrio!"))
+		to_chat(owner, span_warning("Você tem [duration_in_seconds] segundos para ficar sóbrio!"))
 	if(prob(10) && !HAS_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER))
 		ADD_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER, TRAUMA_TRAIT)
 		owner.balloon_alert(owner, "Destreza reduzida temporariamente!")

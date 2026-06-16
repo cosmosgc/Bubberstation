@@ -57,7 +57,7 @@
 			if(beaker)
 				return
 			beaker = new /obj/item/reagent_containers/cup/beaker/bluespace(src)
-			visible_message(span_notice("[src]Dispensa um copo do espaço azul."))
+			visible_message(span_notice("[src] Dispensa um copo do espaço azul."))
 			return TRUE
 
 		if("amount")

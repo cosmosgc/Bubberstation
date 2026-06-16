@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(summoned_magic_objectives, list(
 
 	var/in_hand = to_equip.put_in_hands(spawned_gun) // not always successful
 
-	to_chat(to_equip, span_warning("\A [spawned_gun]Aparece[in_hand ? "in your hand" : "at your feet"]!"))
+	to_chat(to_equip, span_warning("\A [spawned_gun] Aparece[in_hand ? "in your hand" : "at your feet"]!"))
 
 /*
  * Gives [to_equip] a random magical spell from a list.
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(summoned_magic_objectives, list(
 
 	var/in_hand = to_equip.put_in_hands(spawned_magic)
 
-	to_chat(to_equip, span_warning("\A [spawned_magic]Aparece[in_hand ? "in your hand" : "at your feet"]!"))
+	to_chat(to_equip, span_warning("\A [spawned_magic] Aparece[in_hand ? "in your hand" : "at your feet"]!"))
 	if(magic_type in GLOB.summoned_special_magic)
 		to_chat(to_equip, span_notice("Você se sente incrivelmente sortudo."))
 

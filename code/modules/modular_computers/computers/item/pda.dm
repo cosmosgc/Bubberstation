@@ -123,7 +123,7 @@
 		to_chat(user, span_notice("Sem acusações de vírus."))
 		return ..()
 
-	to_chat(user, span_notice("Você carrega o vírus para[target]!"))
+	to_chat(user, span_notice("Você carrega o vírus para [target]!"))
 	var/sig_list = list(COMSIG_ATOM_ATTACK_HAND)
 	if(istype(target,/obj/machinery/door/airlock))
 		sig_list = list(COMSIG_AIRLOCK_OPEN, COMSIG_AIRLOCK_CLOSE)
@@ -220,7 +220,7 @@
 			alt_type = MSG_AUDIBLE,
 		)
 	else
-		visible_message(span_danger("[src]Explode!"), span_warning("Você ouve um som alto!"))
+		visible_message(span_danger("[src] Explode!"), span_warning("Você ouve um som alto!"))
 
 	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
 

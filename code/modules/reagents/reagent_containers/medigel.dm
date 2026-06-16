@@ -58,38 +58,38 @@
 
 /obj/item/reagent_containers/medigel/mode_change_message(mob/user)
 	var/squirt_mode = amount_per_transfer_from_this == initial(amount_per_transfer_from_this)
-	to_chat(user, span_notice("Agora você vai aplicar o conteúdo do Medigel em[squirt_mode ? "extended sprays":"short bursts"]Agora você vai usar[amount_per_transfer_from_this]Unidades por uso."))
+	to_chat(user, span_notice("Agora você vai aplicar o conteúdo do Medigel em[squirt_mode ? "extended sprays":"short bursts"]Agora você vai usar [amount_per_transfer_from_this] Unidades por uso."))
 
 /obj/item/reagent_containers/medigel/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, span_warning("[src]Está vazio!"))
+		to_chat(user, span_warning("[src] Está vazio!"))
 		return ITEM_INTERACT_BLOCKING
 
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(interacting_with == user)
-		interacting_with.visible_message(span_notice("[user]Tentando[apply_method] [src]Vamos.[user.p_them()]Eu."))
+		interacting_with.visible_message(span_notice("[user] Tentando [apply_method] [src] Vamos.[user.p_them()] Eu."))
 		if(self_delay)
 			if(!do_after(user, self_delay, interacting_with))
 				return ITEM_INTERACT_BLOCKING
 			if(!reagents || !reagents.total_volume)
 				return ITEM_INTERACT_BLOCKING
-		to_chat(interacting_with, span_notice("Você.[apply_method]você mesmo com[src]."))
+		to_chat(interacting_with, span_notice("Você.[apply_method] você mesmo com [src]."))
 
 	else
 		log_combat(user, interacting_with, "attempted to apply", src, reagents.get_reagent_log_string())
 		interacting_with.visible_message(
-			span_danger("[user]Tentando[apply_method] [src]Vamos.[interacting_with]."),
-			span_userdanger("[user]Tentando[apply_method] [src]Você."),
+			span_danger("[user] Tentando [apply_method] [src] Vamos.[interacting_with]."),
+			span_userdanger("[user] Tentando [apply_method] [src] Você."),
 		)
 		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), interacting_with))
 			return ITEM_INTERACT_BLOCKING
 		if(!reagents || !reagents.total_volume)
 			return ITEM_INTERACT_BLOCKING
 		interacting_with.visible_message(
-			span_danger("[user] [apply_method]S[interacting_with]Abaixo com[src]."),
-			span_userdanger("[user] [apply_method]Você está com[src]."),
+			span_danger("[user] [apply_method] S [interacting_with] Abaixo com [src]."),
+			span_userdanger("[user] [apply_method] Você está com [src]."),
 		)
 
 	log_combat(user, interacting_with, "applied", src, reagents.get_reagent_log_string())
@@ -129,7 +129,7 @@
 		var/mob/living/carbon/carbies = interacting_with
 		if(HAS_TRAIT_FROM(carbies, TRAIT_HUSK, BURN) && carbies.get_fire_loss() > UNHUSK_DAMAGE_THRESHOLD * 2.5)
 			// give them a warning if the mob is a husk but synthflesh won't unhusk yet
-			carbies.visible_message(span_boldwarning("[carbies]As queimaduras precisam ser reparadas antes que o Synthflesh desperte!"))
+			carbies.visible_message(span_boldwarning("[carbies] As queimaduras precisam ser reparadas antes que o Synthflesh desperte!"))
 
 	return ..()
 

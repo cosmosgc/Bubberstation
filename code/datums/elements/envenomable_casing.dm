@@ -38,7 +38,7 @@
 	var/amount_applied = min(venom_applied.volume, amount_allowed)
 
 	casing.loaded_projectile.AddElement(/datum/element/venomous, venom_applied.type, amount_applied)
-	to_chat(user, span_notice("Seu casaco.[casing]em[venom_applied]."))
+	to_chat(user, span_notice("Seu casaco.[casing] em [venom_applied]."))
 	target.reagents.remove_reagent(venom_applied.type, amount_applied)
 	///stops further poison application
 	UnregisterSignal(casing, COMSIG_ITEM_INTERACTING_WITH_ATOM)

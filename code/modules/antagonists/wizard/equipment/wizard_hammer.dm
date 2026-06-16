@@ -100,7 +100,7 @@
 	target.Knockdown(10 SECONDS)
 	var/datum/effect_system/basic/lightning_spread/lightning = new(target.loc, 5, TRUE)
 	lightning.start()
-	target.visible_message(span_danger("[target.name]está chocado com[src]!"), 		span_userdanger("Você sente um poderoso curso de choque através de seu corpo enviando você voando!"), 		span_hear("Você ouve uma forte rachadura elétrica!"))
+	target.visible_message(span_danger("[target.name] está chocado com [src]!"), 		span_userdanger("Você sente um poderoso curso de choque através de seu corpo enviando você voando!"), 		span_hear("Você ouve uma forte rachadura elétrica!"))
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
 	target.throw_at(throw_target, 200, 4)
 

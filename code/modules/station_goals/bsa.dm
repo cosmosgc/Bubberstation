@@ -87,12 +87,12 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 	if(istype(tool.buffer, /obj/machinery/bsa/back))
 		back_ref = WEAKREF(tool.buffer)
-		to_chat(user, span_notice("Você liga.[src]com[tool.buffer]."))
+		to_chat(user, span_notice("Você liga.[src] com [tool.buffer]."))
 		tool.set_buffer(null)
 		return ITEM_INTERACT_SUCCESS
 	else if(istype(tool.buffer, /obj/machinery/bsa/front))
 		front_ref = WEAKREF(tool.buffer)
-		to_chat(user, span_notice("Você liga.[src]com[tool.buffer]."))
+		to_chat(user, span_notice("Você liga.[src] com [tool.buffer]."))
 		tool.set_buffer(null)
 		return ITEM_INTERACT_SUCCESS
 
@@ -389,6 +389,6 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 		return FALSE
 	obj_flags |= EMAGGED
 	balloon_alert(user, "Armado para explodir.")
-	to_chat(user, span_warning("Você emagrece[src]e ouvir o cristal de foco curto para fora. Você tem a sensação que não seria sábio ficar perto[src]Quando a BSA dispara..."))
+	to_chat(user, span_warning("Você emagrece [src] e ouvir o cristal de foco curto para fora. Você tem a sensação que não seria sábio ficar perto [src] Quando a BSA dispara..."))
 	return TRUE
 */

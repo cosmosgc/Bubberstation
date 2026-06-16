@@ -65,13 +65,13 @@
 	if(!computer)
 		return NONE
 	if(stored_card)
-		to_chat(user, span_warning("Você tenta inserir\the [used_aicard]Em\the [computer.name]Mas a vaga está ocupada."))
+		to_chat(user, span_warning("Você tenta inserir\the [used_aicard] Em\the [computer.name] Mas a vaga está ocupada."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(used_aicard, computer))
 		return ITEM_INTERACT_BLOCKING
 
 	stored_card = used_aicard
-	to_chat(user, span_notice("Você insere\the [used_aicard]Em\the [computer.name]."))
+	to_chat(user, span_notice("Você insere\the [used_aicard] Em\the [computer.name]."))
 	return ITEM_INTERACT_SUCCESS
 
 /datum/computer_file/program/ai_restorer/try_eject(mob/living/user, forced = FALSE)
@@ -86,7 +86,7 @@
 		return FALSE
 
 	if(user && computer.Adjacent(user))
-		to_chat(user, span_notice("Você tira.[stored_card]De[computer.name]."))
+		to_chat(user, span_notice("Você tira.[stored_card] De [computer.name]."))
 		user.put_in_hands(stored_card)
 	else
 		stored_card.forceMove(computer.drop_location())

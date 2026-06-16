@@ -66,8 +66,8 @@
 	if(!change_id || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	id = change_id
-	balloon_alert(user, "id definido para[id]")
-	to_chat(user, span_notice("Você muda a identidade para[id]."))
+	balloon_alert(user, "id definido para [id]")
+	to_chat(user, span_notice("Você muda a identidade para [id]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/igniter/incinerator_ordmix
@@ -210,8 +210,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 	if(!change_id || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	id = change_id
-	balloon_alert(user, "id definido para[id]")
-	to_chat(user, span_notice("Você muda a identidade para[id]."))
+	balloon_alert(user, "id definido para [id]")
+	to_chat(user, span_notice("Você muda a identidade para [id]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/sparker/update_icon_state()
@@ -231,9 +231,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 	tool.play_tool_sound(src, 50)
 	disable = !disable
 	if (disable)
-		user.visible_message(span_notice("[user]Desativa\the [src]!"), span_notice("Você desativa a conexão com\the [src]."))
+		user.visible_message(span_notice("[user] Desativa\the [src]!"), span_notice("Você desativa a conexão com\the [src]."))
 	if (!disable)
-		user.visible_message(span_notice("[user]Reconectar\the [src]!"), span_notice("Você conserta a conexão com\the [src]."))
+		user.visible_message(span_notice("[user] Reconectar\the [src]!"), span_notice("Você conserta a conexão com\the [src]."))
 	update_appearance()
 	return TRUE
 

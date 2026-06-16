@@ -791,16 +791,16 @@
 /turf/closed/mineral/gibtonite/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers, exp_multiplier = 1)
 	var/previous_stage = stage
 	if(istype(attacking_item, /obj/item/goliath_infuser_hammer) && stage == GIBTONITE_ACTIVE)
-		user.visible_message(span_notice("[user]Escava.[attacking_item]Para[src]..."), span_notice("Seu martelo tendil escava e enrola instictivamente[src]Para parar..."))
+		user.visible_message(span_notice("[user] Escava.[attacking_item] Para [src]..."), span_notice("Seu martelo tendil escava e enrola instictivamente [src] Para parar..."))
 		defuse(user)
 	else if(istype(attacking_item, /obj/item/mining_scanner) || istype(attacking_item, /obj/item/t_scanner/adv_mining_scanner) && stage == GIBTONITE_ACTIVE)
-		user.visible_message(span_notice("[user]Segura.[attacking_item]Para[src]..."), span_notice("Você usa[attacking_item]Para localizar onde cortar a reação em cadeia e tentar pará-la..."))
+		user.visible_message(span_notice("[user] Segura.[attacking_item] Para [src]..."), span_notice("Você usa [attacking_item] Para localizar onde cortar a reação em cadeia e tentar pará-la..."))
 		defuse(user)
 	. = ..()
 	if(istype(attacking_item, /obj/item/clothing/gloves/gauntlets) && previous_stage == GIBTONITE_UNSTRUCK && stage == GIBTONITE_ACTIVE && istype(user))
 		user.Immobilize(0.5 SECONDS)
 		user.throw_at(get_ranged_target_turf(src, get_dir(src, user), 5), range = 5, speed = 3, spin = FALSE)
-		user.visible_message(span_danger("[user]Bata em gibtonita com[attacking_item.name], lançando[user.p_them()]Para trás!"), span_danger("Você bateu em gibtonita! Sua[attacking_item.name]lançá-lo de volta!"))
+		user.visible_message(span_danger("[user] Bata em gibtonita com [attacking_item.name], lançando [user.p_them()] Para trás!"), span_danger("Você bateu em gibtonita! Sua [attacking_item.name] lançá-lo de volta!"))
 
 /turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null)
 	if(stage == GIBTONITE_UNSTRUCK)
@@ -842,7 +842,7 @@
 		stage = GIBTONITE_STABLE
 		if(det_time < 0)
 			det_time = 0
-		visible_message(span_notice("A reação em cadeia parou! A gibtonita tinha[det_time]Reações deixadas até a explosão!"))
+		visible_message(span_notice("A reação em cadeia parou! A gibtonita tinha [det_time] Reações deixadas até a explosão!"))
 		if(defuser)
 			SEND_SIGNAL(defuser, COMSIG_LIVING_DEFUSED_GIBTONITE, det_time)
 

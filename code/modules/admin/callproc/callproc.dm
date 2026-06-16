@@ -131,12 +131,12 @@ ADMIN_VERB(advanced_proc_call, R_DEBUG, "Advanced ProcCall", "Call a proc on any
 
 	if(targetselected)
 		if(!hascall(target, procname))
-			to_chat(usr, span_warning("Erro: callproc (): tipo[target.type]Não tem[proctype]Nomeado[procpath]."), confidential = TRUE)
+			to_chat(usr, span_warning("Erro: callproc (): tipo [target.type] Não tem [proctype] Nomeado [procpath]."), confidential = TRUE)
 			return
 	else
 		procpath = "/[proctype]/[procname]"
 		if(!text2path(procpath))
-			to_chat(usr, span_warning("Erro: callproc ():[procpath]Não existe."), confidential = TRUE)
+			to_chat(usr, span_warning("Erro: callproc ():[procpath] Não existe."), confidential = TRUE)
 			return
 
 	var/list/lst = get_callproc_args()
@@ -185,7 +185,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		return
 
 	if(target != GLOBAL_PROC && !target.CanProcCall(procname))
-		to_chat(usr, "Procall on[target.type]PROC/[procname]É proibido!", confidential = TRUE)
+		to_chat(usr, "Procall on [target.type] PROC/[procname] É proibido!", confidential = TRUE)
 		return
 	var/current_caller = GLOB.AdminProcCaller
 	var/user_identifier = usr ? usr.client?.ckey : GLOB.AdminProcCaller
@@ -235,7 +235,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(call_proc_datum, R_DEBUG, "Atom ProcCall", datum/th
 	if(!procname)
 		return
 	if(!hascall(thing, procname))
-		to_chat(user, "<font color='red'>Erro: callproc datum (): tipo[thing.type]Não tem nenhum processo chamado[procname].</font>", confidential = TRUE)
+		to_chat(user, "<font color='red'>Erro: callproc datum (): tipo [thing.type] Não tem nenhum processo chamado [procname].</font>", confidential = TRUE)
 		return
 	var/list/lst = user.get_callproc_args()
 	if(!lst)

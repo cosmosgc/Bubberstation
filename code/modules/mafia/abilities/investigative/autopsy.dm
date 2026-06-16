@@ -13,5 +13,5 @@
 	if(!.)
 		return FALSE
 
-	to_chat(host_role.body, span_warning("Seu relatório da autópsia sobre[target_role.body.real_name]revela que seu papel era<b>[target_role.name]<b>."))
+	to_chat(host_role.body, span_warning("Seu relatório da autópsia sobre [target_role.body.real_name] revela que seu papel era<b>[target_role.name]<b>."))
 	return TRUE

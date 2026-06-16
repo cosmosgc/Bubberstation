@@ -24,7 +24,7 @@
 		balloon_alert(user, "Imagem inválida")
 		return FALSE
 	printpicture(user, selection)
-	user.visible_message(span_notice("Uma imagem aparece em cima do chassi de[pai.name]!"), span_notice("Você imprime uma fotografia."))
+	user.visible_message(span_notice("Uma imagem aparece em cima do chassi de [pai.name]!"), span_notice("Você imprime uma fotografia."))
 	return TRUE
 
 /**

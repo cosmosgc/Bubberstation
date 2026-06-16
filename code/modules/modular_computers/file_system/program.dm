@@ -137,7 +137,7 @@
 /datum/computer_file/program/proc/is_supported_by_hardware(hardware_flag = NONE, loud = FALSE, mob/user)
 	if(!(hardware_flag & can_run_on_flags))
 		if(loud && computer && user)
-			to_chat(user, span_danger("\The [computer]Espreme a\"Erro de hardware - Software incompatível\"Aviso."))
+			to_chat(user, span_danger("\The [computer] Espreme a\"Erro de hardware - Software incompatível\"Aviso."))
 		return FALSE
 	return TRUE
 
@@ -181,7 +181,7 @@
 
 		if(!accesscard)
 			if(loud && user)
-				to_chat(user, span_danger("\The [computer]Esclarece um\"Erro RFID - Incapaz de digitalizar ID\"Aviso."))
+				to_chat(user, span_danger("\The [computer] Esclarece um\"Erro RFID - Incapaz de digitalizar ID\"Aviso."))
 			return FALSE
 		access = accesscard.GetAccess()
 
@@ -190,7 +190,7 @@
 			return TRUE
 
 	if(loud && user)
-		to_chat(user, span_danger("\The [computer]Esclarece um\"Acesso negado\"Aviso."))
+		to_chat(user, span_danger("\The [computer] Esclarece um\"Acesso negado\"Aviso."))
 	return FALSE
 
 /**

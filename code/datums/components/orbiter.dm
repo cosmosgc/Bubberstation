@@ -113,7 +113,7 @@
 		orbiter.glide_size = movable_parent.glide_size
 
 	orbiter.abstract_move(get_turf(parent))
-	to_chat(orbiter, span_notice("Agora orbitando[parent]."))
+	to_chat(orbiter, span_notice("Agora orbitando [parent]."))
 
 /datum/component/orbiter/proc/orbiter_before_shuttle_move(atom/source)
 	SIGNAL_HANDLER

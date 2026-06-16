@@ -120,9 +120,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você tenta consertar um pouco de[patient]'s[woundtype]."),
-		span_notice("[surgeon]Tenta remendar alguns dos[patient]'s[woundtype]."),
-		span_notice("[surgeon]Tenta remendar alguns dos[patient]'s[woundtype]."),
+		span_notice("Você tenta consertar um pouco de [patient]'s [woundtype]."),
+		span_notice("[surgeon] Tenta remendar alguns dos [patient]'s [woundtype]."),
+		span_notice("[surgeon] Tenta remendar alguns dos [patient]'s [woundtype]."),
 	)
 	display_pain(patient, "Your [woundtype] sting like hell!")
 
@@ -220,8 +220,8 @@
 		surgeon,
 		patient,
 		span_warning("Você estragou tudo!"),
-		span_warning("[surgeon]Estraga tudo!"),
-		span_notice("[surgeon]Conserta um pouco de[patient]São feridas."),
+		span_warning("[surgeon] Estraga tudo!"),
+		span_notice("[surgeon] Conserta um pouco de [patient] São feridas."),
 		target_detailed = TRUE,
 	)
 	var/brute_dealt = operation_args[OPERATION_BRUTE_HEAL] * 0.8

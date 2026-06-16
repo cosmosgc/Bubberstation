@@ -33,7 +33,7 @@
 ///Handles all injection checks, injection and logging.
 /obj/item/reagent_containers/hypospray/proc/inject(mob/living/affected_mob, mob/user)
 	if(used_up)
-		to_chat(user, span_warning("[src]A ponta está quebrada e agora é inutilizável!"))
+		to_chat(user, span_warning("[src] A ponta está quebrada e agora é inutilizável!"))
 		return FALSE
 	if(!iscarbon(affected_mob))
 		return FALSE
@@ -48,7 +48,7 @@
 
 	if(!used_up && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))) // Ignore flag should be checked first or there will be an error message.
 		to_chat(affected_mob, span_warning("Você sente um pinto minúsculo!"))
-		to_chat(user, span_notice("Você injeta.[affected_mob]com[src]."))
+		to_chat(user, span_notice("Você injeta.[affected_mob] com [src]."))
 		if(!stealthy)
 			playsound(affected_mob, 'sound/items/hypospray.ogg', 50, TRUE)
 		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
@@ -61,7 +61,7 @@
 			else
 				reagents.expose(affected_mob, INJECT, fraction)
 				trans = reagents.trans_to(affected_mob, amount_per_transfer_from_this, methods = INJECT, copy_only = TRUE)
-			to_chat(user, span_notice("[trans]Unidade injetada.[reagents.total_volume]Unidade permanecendo em[src]."))
+			to_chat(user, span_notice("[trans] Unidade injetada.[reagents.total_volume] Unidade permanecendo em [src]."))
 			log_combat(user, affected_mob, "injected", src, "([contained])")
 		return TRUE
 	return FALSE
@@ -136,7 +136,7 @@
 	var/label_text
 
 /obj/item/reagent_containers/hypospray/medipen/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a engasgar-se.\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a engasgar-se.\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS//ironic. he could save others from oxyloss, but not himself.
 
 /obj/item/reagent_containers/hypospray/medipen/inject(mob/living/affected_mob, mob/user)

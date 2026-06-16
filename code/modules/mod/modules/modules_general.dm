@@ -41,9 +41,9 @@
 		return
 	if(!atom_storage?.attempt_insert(mod.wearer.s_store, mod.wearer, override = TRUE))
 		balloon_alert(mod.wearer, "O armamento falhou!")
-		to_chat(mod.wearer, span_warning("[src]Não consegue armazenar[mod.wearer.s_store]dentro de si mesmo!"))
+		to_chat(mod.wearer, span_warning("[src] Não consegue armazenar [mod.wearer.s_store] dentro de si mesmo!"))
 		return
-	to_chat(mod.wearer, span_notice("[src]Lojas[mod.wearer.s_store]dentro de si mesmo."))
+	to_chat(mod.wearer, span_notice("[src] Lojas [mod.wearer.s_store] dentro de si mesmo."))
 	mod.wearer.temporarilyRemoveItemFromInventory(mod.wearer.s_store)
 
 /obj/item/mod/module/storage/large_capacity
@@ -182,7 +182,7 @@
 	mod.wearer.apply_status_effect(/datum/status_effect/jump_jet)
 	var/turf/launch_from = get_turf(mod.wearer)
 	if (mod.wearer.zMove(UP, z_move_flags = ZMOVE_CHECK_PULLS))
-		launch_from.visible_message(span_warning("[mod.wearer]Foguetes no ar!"))
+		launch_from.visible_message(span_warning("[mod.wearer] Foguetes no ar!"))
 	new /obj/effect/temp_visual/jet_plume(launch_from)
 
 	var/obj/item/mod/module/jetpack/linked_jetpack = locate() in mod.modules
@@ -506,8 +506,8 @@
 		mod.wearer.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH * levels, 10 SECONDS)
 
 	mod.wearer.visible_message(
-		span_notice("[mod.wearer]Aterrissando[fell_on]Com segurança.[extreme_fall ? ", but barely manages to stay on [p_their()] feet." : ", and quite stylishly on [p_their()] feet" ]."),
-		span_notice("[src]Protege você dos danos!"),
+		span_notice("[mod.wearer] Aterrissando [fell_on] Com segurança.[extreme_fall ? ", but barely manages to stay on [p_their()] feet." : ", and quite stylishly on [p_their()] feet" ]."),
+		span_notice("[src] Protege você dos danos!"),
 	)
 	return ZIMPACT_CANCEL_DAMAGE|ZIMPACT_NO_MESSAGE|ZIMPACT_NO_SPIN
 
@@ -898,7 +898,7 @@
 	. = ..()
 	. += span_info("Você pode.[EXAMINE_HINT("right-click")]As luvas para abrir a interface da vara de pesca uma vez conectada e ativada.")
 	if(equipped)
-		. += span_info("Tem...[icon2html(equipped, user)]Instalado.[EXAMINE_HINT("Right-Click")]para removê-lo.")
+		. += span_info("Tem...[icon2html(equipped, user)] Instalado.[EXAMINE_HINT("Right-Click")]para removê-lo.")
 
 /obj/item/mod/module/fishing_glove/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/fishing_rod))

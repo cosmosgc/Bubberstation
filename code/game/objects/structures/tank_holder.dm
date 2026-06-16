@@ -54,7 +54,7 @@
 			to_chat(user, span_notice("Você com sucesso.[anchored ? "unwrench" : "wrench"] [src]."))
 			set_anchored(!anchored)
 	else if(!SEND_SIGNAL(W, COMSIG_CONTAINER_TRY_ATTACH, src, user))
-		to_chat(user, span_warning("[W]Não se encaixa.[src]."))
+		to_chat(user, span_warning("[W] Não se encaixa.[src]."))
 	return
 
 /obj/structure/tank_holder/screwdriver_act(mob/living/user, obj/item/I)
@@ -80,7 +80,7 @@
 		return ..()
 	if(!Adjacent(user) || issilicon(user))
 		return ..()
-	to_chat(user, span_notice("Você pega.[tank]De[src]."))
+	to_chat(user, span_notice("Você pega.[tank] De [src]."))
 	add_fingerprint(user)
 	tank.add_fingerprint(user)
 	user.put_in_hands(tank)

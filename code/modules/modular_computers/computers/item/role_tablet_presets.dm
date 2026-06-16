@@ -341,7 +341,7 @@
 	if(isnull(slipper))
 		return TRUE
 	if(!istype(slipper.get_item_by_slot(ITEM_SLOT_FEET), /obj/item/clothing/shoes/clown_shoes))
-		to_chat(slipper,span_warning("[src]Não conseguiu escapar de ninguém. Talvez eu não devesse ter abandonado meu legado..."))
+		to_chat(slipper,span_warning("[src] Não conseguiu escapar de ninguém. Talvez eu não devesse ter abandonado meu legado..."))
 		return FALSE
 	return TRUE
 
@@ -357,7 +357,7 @@
 			playsound(src,'sound/machines/ping.ogg',30,TRUE)
 
 /obj/item/modular_computer/pda/clown/proc/after_sitcom_laugh(mob/victim)
-	victim.visible_message("[src]Deixa sair uma explosão de risadas!")
+	victim.visible_message("[src] Deixa sair uma explosão de risadas!")
 
 /obj/item/modular_computer/pda/mime
 	name = "mime PDA"

@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_config/old_config = current_map
 		current_map = config.defaultmap
 		if(!current_map || current_map.defaulted)
-			to_chat(world, span_boldannounce("Incapaz de carregar a configuração do mapa seguinte ou padrão, predefinida para[old_config.map_name]."))
+			to_chat(world, span_boldannounce("Incapaz de carregar a configuração do mapa seguinte ou padrão, predefinida para [old_config.map_name]."))
 			current_map = old_config
 	plane_offset_to_true = list()
 	true_to_offset_planes = list()
@@ -600,13 +600,13 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 			if(!mapfile)
 				return
 			away_name = "[mapfile] custom"
-			to_chat(user, span_notice("Carregando[away_name]..."), MESSAGE_TYPE_DEBUG)
+			to_chat(user, span_notice("Carregando [away_name]..."), MESSAGE_TYPE_DEBUG)
 			var/datum/map_template/template = new(mapfile, "Away Mission")
 			away_level = template.load_new_z(secret)
 		else
 			if(answer in GLOB.potentialRandomZlevels)
 				away_name = answer
-				to_chat(user, span_notice("Carregando[away_name]..."), MESSAGE_TYPE_DEBUG)
+				to_chat(user, span_notice("Carregando [away_name]..."), MESSAGE_TYPE_DEBUG)
 				var/datum/map_template/template = new(away_name, "Away Mission")
 				away_level = template.load_new_z(secret)
 			else

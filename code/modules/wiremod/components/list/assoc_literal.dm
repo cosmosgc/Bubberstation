@@ -49,7 +49,7 @@
 	for(var/index in 1 to length(entry_ports))
 		// To prevent people from infinitely making lists to crash the server
 		if(islist(entry_ports[index].value) && get_list_count(entry_ports[index].value, max_list_count) >= max_list_count)
-			visible_message("[src]Começa a superaquecer!")
+			visible_message("[src] Começa a superaquecer!")
 			return
 		var/value_to_add = value_handler.convert_value(port, entry_ports[index].value)
 		if(isdatum(value_to_add))

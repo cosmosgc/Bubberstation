@@ -81,7 +81,7 @@
 		stored_dna_animal.Cut()
 	target.check_goal()
 	playsound(target, 'sound/machines/compiler/compiler-stage1.ogg', 50)
-	to_chat(user, span_notice("[uploaded]Novos pontos de dados carregados."))
+	to_chat(user, span_notice("[uploaded] Novos pontos de dados carregados."))
 	return uploaded
 
 /obj/item/dna_probe/proc/scan_dna(atom/target, mob/user)
@@ -183,7 +183,7 @@
 	if(!carp_dna_loaded)
 		to_chat(user, span_notice("O DNA da carpa espacial é necessário para usar o mecanismo de auto-mutação!"))
 		return
-	to_chat(user, span_notice("Você puxa a agulha de[src]e ligar o interruptor, e começar a se injetar com ele."))
+	to_chat(user, span_notice("Você puxa a agulha de [src] e ligar o interruptor, e começar a se injetar com ele."))
 	if(!do_after(user, CARP_MIX_DNA_TIMER))
 		return
 	var/mob/living/basic/space_dragon/new_dragon = user.change_mob_type(/mob/living/basic/space_dragon, location = loc, delete_old_mob = TRUE)

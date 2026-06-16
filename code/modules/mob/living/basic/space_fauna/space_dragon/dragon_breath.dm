@@ -10,7 +10,7 @@
 /datum/action/cooldown/mob_cooldown/fire_breath/carp/on_burn_mob(mob/living/barbecued, mob/living/source)
 	if (!source.faction_check_atom(barbecued))
 		return ..()
-	to_chat(barbecued, span_notice("[source]A respiração ardente enche você de energia!"))
+	to_chat(barbecued, span_notice("[source] A respiração ardente enche você de energia!"))
 	barbecued.apply_status_effect(/datum/status_effect/carp_invigoration)
 
 /// Makes you run faster for the duration

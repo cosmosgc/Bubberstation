@@ -26,7 +26,7 @@
 	petrified_mob = living
 	if(living.buckled)
 		living.buckled.unbuckle_mob(living, force = TRUE)
-	living.visible_message(span_warning("[living]A pele se transforma rapidamente em mármore!"), span_userdanger("Seu corpo congela! Não consigo... me mover... não consigo... pensar..."))
+	living.visible_message(span_warning("[living] A pele se transforma rapidamente em mármore!"), span_userdanger("Seu corpo congela! Não consigo... me mover... não consigo... pensar..."))
 	living.forceMove(src)
 	living.add_traits(list(TRAIT_GODMODE, TRAIT_MUTE, TRAIT_NOBLOOD), STATUE_MUTE)
 	living.add_faction(FACTION_MIMIC) //Stops mimics from instaqdeling people in statues
@@ -85,7 +85,7 @@
 				carbon_brain.name = "petrified [carbon_brain.name]"
 				carbon_brain.desc = "[carbon_brain.desc] This one seems a bit more... smooth than a normal brain. Probably'd still work."
 				carbon_brain.add_atom_colour(list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0)), FIXED_COLOUR_PRIORITY)
-				destruction_message = "[src]Quebras, um cérebro sólido caindo!"
+				destruction_message = "[src] Quebras, um cérebro sólido caindo!"
 			petrified_mob.dust()
 	visible_message(span_danger(destruction_message))
 

@@ -40,11 +40,11 @@
 		return
 	var/datum/martial_art/source = target
 	if (source.streak == "neck_chop")
-		owner.visible_message(span_danger("[owner]assume uma posição neutra."), "<b><i>Seu próximo ataque está liberado.</i></b>")
+		owner.visible_message(span_danger("[owner] assume uma posição neutra."), "<b><i>Seu próximo ataque está liberado.</i></b>")
 		owner.balloon_alert(owner, "cleared")
 		source.streak = ""
 	else
-		owner.visible_message(span_danger("[owner]Assume a posição de Pescoço!"), "<b><i>Seu próximo ataque será um Pescoço.</i></b>")
+		owner.visible_message(span_danger("[owner] Assume a posição de Pescoço!"), "<b><i>Seu próximo ataque será um Pescoço.</i></b>")
 		owner.balloon_alert(owner, "pescoço costeleta")
 		source.streak = "neck_chop"
 
@@ -61,11 +61,11 @@
 		return
 	var/datum/martial_art/source = target
 	if (source.streak == "low_sweep")
-		owner.visible_message(span_danger("[owner]assume uma posição neutra."), "<b><i>Seu próximo ataque está liberado.</i></b>")
+		owner.visible_message(span_danger("[owner] assume uma posição neutra."), "<b><i>Seu próximo ataque está liberado.</i></b>")
 		owner.balloon_alert(owner, "cleared")
 		source.streak = ""
 	else
-		owner.visible_message(span_danger("[owner]Assume a posição de baixo varrimento!"), "<b><i>Seu próximo ataque será um Low Sweep.</i></b>")
+		owner.visible_message(span_danger("[owner] Assume a posição de baixo varrimento!"), "<b><i>Seu próximo ataque será um Low Sweep.</i></b>")
 		owner.balloon_alert(owner, "Varredura baixa.")
 		source.streak = "low_sweep"
 
@@ -82,24 +82,24 @@
 		return
 	var/datum/martial_art/source = target
 	if (source.streak == "quick_choke")
-		owner.visible_message(span_danger("[owner]assume uma posição neutra."), "<b><i>Seu próximo ataque está liberado.</i></b>")
+		owner.visible_message(span_danger("[owner] assume uma posição neutra."), "<b><i>Seu próximo ataque está liberado.</i></b>")
 		owner.balloon_alert(owner, "cleared")
 		source.streak = ""
 	else
-		owner.visible_message(span_danger("[owner]Assume a posição de soco pulmonar!"), "<b><i>Seu próximo ataque será um soco pulmonar.</i></b>")
+		owner.visible_message(span_danger("[owner] Assume a posição de soco pulmonar!"), "<b><i>Seu próximo ataque será um soco pulmonar.</i></b>")
 		owner.balloon_alert(owner, "soco pulmonar")
 		source.streak = "quick_choke"//internal name for lung punch
 
 /datum/martial_art/kaza_ruk/activate_style(mob/living/new_holder)
 	. = ..()
-	to_chat(new_holder, span_userdanger("Você conhece as artes de[name]!"))
+	to_chat(new_holder, span_userdanger("Você conhece as artes de [name]!"))
 	to_chat(new_holder, span_danger("Coloque seu cursor sobre um movimento no topo da tela para ver o que ele faz."))
 	neckchop.Grant(new_holder)
 	lowsweep.Grant(new_holder)
 	lungpunch.Grant(new_holder)
 
 /datum/martial_art/kaza_ruk/deactivate_style(mob/living/remove_from)
-	to_chat(remove_from, span_userdanger("Você de repente esquece as artes de[name]..."))
+	to_chat(remove_from, span_userdanger("Você de repente esquece as artes de [name]..."))
 	neckchop?.Remove(remove_from)
 	lowsweep?.Remove(remove_from)
 	lungpunch?.Remove(remove_from)
@@ -137,13 +137,13 @@
 			sweeping_language = "tail"
 
 	defender.visible_message(
-		span_warning("[attacker] [sweeping_language]Varredura[defender]!"),
-		span_userdanger("Suas pernas são varridas por[attacker]!"),
+		span_warning("[attacker] [sweeping_language] Varredura [defender]!"),
+		span_userdanger("Suas pernas são varridas por [attacker]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você.[sweeping_language]Varrer[defender]!"))
+	to_chat(attacker, span_danger("Você.[sweeping_language] Varrer [defender]!"))
 	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 
 	if(tail_sweeping)
@@ -157,13 +157,13 @@
 /datum/martial_art/kaza_ruk/proc/quick_choke(mob/living/attacker, mob/living/defender)//is actually lung punch
 	attacker.do_attack_animation(defender)
 	defender.visible_message(
-		span_warning("[attacker]libras[defender]No peito!"),
-		span_userdanger("Seu peito está batido.[attacker]Você não pode respirar!"),
+		span_warning("[attacker] libras [defender] No peito!"),
+		span_userdanger("Seu peito está batido.[attacker] Você não pode respirar!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você bate[defender]No peito!"))
+	to_chat(attacker, span_danger("Você bate [defender] No peito!"))
 	playsound(attacker, 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
 	if(defender.losebreath <= 10)
 		defender.losebreath = clamp(defender.losebreath + 5, 0, 10)
@@ -176,13 +176,13 @@
 		return MARTIAL_ATTACK_INVALID // Does 10 damage, so we can't let pacifists neck chop.
 	attacker.do_attack_animation(defender)
 	defender.visible_message(
-		span_warning("[attacker]Costeletas de karatê[defender]O pescoço!"),
-		span_userdanger("Seu pescoço é karatê cortado por[attacker], tornando-o incapaz de falar!"),
+		span_warning("[attacker] Costeletas de karatê [defender] O pescoço!"),
+		span_userdanger("Seu pescoço é karatê cortado por [attacker], tornando-o incapaz de falar!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Seu caratê.[defender]'s pescoço, renderização[defender.p_them()]incapaz de falar!"))
+	to_chat(attacker, span_danger("Seu caratê.[defender]'s pescoço, renderização [defender.p_them()] incapaz de falar!"))
 	playsound(attacker, 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
 	defender.apply_damage(10, attacker.get_attack_type(), BODY_ZONE_HEAD)
 	defender.adjust_silence_up_to(20 SECONDS, 20 SECONDS)
@@ -207,8 +207,8 @@
 	if(prob(60) && stuff_in_hand && defender.temporarilyRemoveItemFromInventory(stuff_in_hand))
 		attacker.put_in_hands(stuff_in_hand)
 		defender.visible_message(
-			span_danger("[attacker]Desarmar.[defender]!"),
-			span_userdanger("Você está desarmado por[attacker]!"),
+			span_danger("[attacker] Desarmar.[defender]!"),
+			span_userdanger("Você está desarmado por [attacker]!"),
 			span_hear("Você ouve baralhar agressivo!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
@@ -249,8 +249,8 @@
 			strike_language = "a whiplash tail spin"
 
 	source.visible_message(
-		span_warning("[source]segue com[kicking ? kick_language : strike_language]contra[target]!"),
-		span_notice("Você entrega.[kicking ? kick_language : strike_language]contra[target]!"),
+		span_warning("[source] segue com [kicking ? kick_language : strike_language] contra [target]!"),
+		span_notice("Você entrega.[kicking ? kick_language : strike_language] contra [target]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 	)
 	if(tail_usage)

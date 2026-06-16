@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(garbage)
 					var/client/admin = c
 					if(!check_rights_for(admin, R_ADMIN))
 						continue
-					to_chat(admin, "Teste: GC:[ADMIN_VV(D)] | [type]foi incapaz de ser GC'd -")
+					to_chat(admin, "Teste: GC:[ADMIN_VV(D)] | [type] foi incapaz de ser GC'd -")
 				#endif
 				I.failures++
 

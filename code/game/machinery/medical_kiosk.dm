@@ -129,7 +129,7 @@
 	if(!user.transferItemToLoc(tool, src))
 		balloon_alert(user, "preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user]Snaps[tool]em frente[src]!"))
+	user.visible_message(span_notice("[user] Snaps [tool] em frente [src]!"))
 	balloon_alert(user, "Varinha de volta")
 	//This will be the scanner returning scanner_wand's selected_target variable and assigning it to the altPatient var
 	if(wand.selected_target)
@@ -137,7 +137,7 @@
 		if(patient_ref != target_ref)
 			clearScans()
 		patient_ref = target_ref
-		user.visible_message(span_notice("[wand.return_patient()]foi definido como o paciente atual."))
+		user.visible_message(span_notice("[wand.return_patient()] foi definido como o paciente atual."))
 		wand.selected_target = null
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	scanner_wand = tool
@@ -156,7 +156,7 @@
 		balloon_alert(user, "Varinha de scanner cai!")
 		scanner_wand = null
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	user.visible_message(span_notice("[user]Soltem o[scanner_wand]De[src]."))
+	user.visible_message(span_notice("[user] Soltem o [scanner_wand] De [src]."))
 	balloon_alert(user, "scanner puxado")
 	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 	scanner_wand = null
@@ -172,7 +172,7 @@
 		return
 	if(user)
 		if (emag_card)
-			user.visible_message(span_warning("[user]Acende um cartão suspeito pela[src]É um scanner biométrico!"))
+			user.visible_message(span_warning("[user] Acende um cartão suspeito pela [src] É um scanner biométrico!"))
 		balloon_alert(user, "Sensores sobrecarregados.")
 	obj_flags |= EMAGGED
 	var/obj/item/circuitboard/board = circuit
@@ -183,14 +183,14 @@
 /obj/machinery/medical_kiosk/examine(mob/user)
 	. = ..()
 	if(scanner_wand == null)
-		. += span_notice("\The [src]Está faltando o scanner.")
+		. += span_notice("\The [src] Está faltando o scanner.")
 	else
-		. += span_notice("\The [src]tem seu scanner cortado para o lado. Clique para remover.")
+		. += span_notice("\The [src] tem seu scanner cortado para o lado. Clique para remover.")
 
 /obj/machinery/medical_kiosk/ui_interact(mob/user, datum/tgui/ui)
 	var/patient_distance = 0
 	if(!ishuman(user))
-		to_chat(user, span_warning("[src]é incapaz de interagir com não-humanóides!"))
+		to_chat(user, span_warning("[src] é incapaz de interagir com não-humanóides!"))
 		if (ui)
 			ui.close()
 		return

@@ -158,9 +158,9 @@
 
 	if(ismob(source))
 		// Examining a mob wearing the clothes, wearing the dogtag will also show the message
-		examine_list += "Uma dogtag está por aí.[source.p_their()]Pescoço:[display]"
+		examine_list += "Uma dogtag está por aí.[source.p_their()] Pescoço:[display]"
 	else
-		examine_list += "Uma dogtag está ligada a[source]: [display]"
+		examine_list += "Uma dogtag está ligada a [source]: [display]"
 
 /obj/item/clothing/accessory/dogtag/allergy
 	name = "Allergy dogtag"
@@ -301,10 +301,10 @@
 	if(user.combat_mode)
 		playsound(interacting_living, 'sound/items/weapons/throw.ogg', 30)
 		interacting_living.examinate(src)
-		to_chat(interacting_living, span_userdanger("[user]Empurra o[src]No seu rosto!"))
-		user.visible_message(span_warning("[user]Empurrou um[src]Em[interacting_living]Cara."))
+		to_chat(interacting_living, span_userdanger("[user] Empurra o [src] No seu rosto!"))
+		user.visible_message(span_warning("[user] Empurrou um [src] Em [interacting_living] Cara."))
 	else
 		playsound(interacting_living, 'sound/items/weapons/throwsoft.ogg', 20)
 		interacting_living.examinate(src)
-		to_chat(interacting_living, span_boldwarning("[user]Mostra o[src]para você."))
-		user.visible_message(span_notice("[user]Mostra a[src]Para[interacting_living]."))
+		to_chat(interacting_living, span_boldwarning("[user] Mostra o [src] para você."))
+		user.visible_message(span_notice("[user] Mostra a [src] Para [interacting_living]."))

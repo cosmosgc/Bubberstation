@@ -164,7 +164,7 @@
 	for (var/mob/living/carbon/victim in viewers(NARSIE_CONSUME_RANGE, src))
 		if (victim.stat == CONSCIOUS)
 			if (!IS_CULTIST(victim))
-				to_chat(victim, span_cult("Você sente o pensamento consciente desmoronar em um instante enquanto você olha para[src]..."))
+				to_chat(victim, span_cult("Você sente o pensamento consciente desmoronar em um instante enquanto você olha para [src]..."))
 				victim.apply_effect(NARSIE_MESMERIZE_EFFECT, EFFECT_STUN)
 
 /// Narsie rewards her cultists with being devoured first, then picks a ghost to follow.

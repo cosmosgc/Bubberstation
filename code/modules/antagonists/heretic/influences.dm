@@ -118,7 +118,7 @@
 		return TRUE
 
 	if(prob(25))
-		to_chat(human_user, span_userdanger("Uma presença outra palavra lágrimas e atomiza seu[their_poor_arm.name]enquanto você tenta tocar o buraco no próprio tecido da realidade!"))
+		to_chat(human_user, span_userdanger("Uma presença outra palavra lágrimas e atomiza seu [their_poor_arm.name] enquanto você tenta tocar o buraco no próprio tecido da realidade!"))
 		if (their_poor_arm.dismember())
 			their_poor_arm.forceMove(src) // stored for later fishage
 	else
@@ -140,11 +140,11 @@
 	// You see, these tendrils are psychic. That's why you can't see them. Definitely not laziness. Just psychic. The character can feel but not see them.
 	// Because they're psychic. Yeah.
 	if(human_user.can_block_magic(MAGIC_RESISTANCE_MIND))
-		visible_message(span_danger("Endros psíquicos atacam de[src], lutando ineficazmente em[user]A cabeça."))
+		visible_message(span_danger("Endros psíquicos atacam de [src], lutando ineficazmente em [user] A cabeça."))
 		return
 
 	// A very elaborate way to suicide
-	visible_message(span_userdanger("Os tentáculos psíquicos atacam[src], psiquicamente agarrando[user]A mente psiquicamente sensível e rasgando[user.p_their()]Tire a cabeça!"))
+	visible_message(span_userdanger("Os tentáculos psíquicos atacam [src], psiquicamente agarrando [user] A mente psiquicamente sensível e rasgando [user.p_their()] Tire a cabeça!"))
 	var/obj/item/bodypart/head/head = human_user.get_bodypart(BODY_ZONE_HEAD)
 	if(head?.dismember())
 		head.forceMove(src) // stored for later fishage
@@ -267,7 +267,7 @@
 /obj/effect/heretic_influence/proc/after_drain(mob/living/user)
 	if(user)
 		to_chat(user, span_hypnophrase(pick_list(HERETIC_INFLUENCE_FILE, "drain_message")))
-		to_chat(user, span_warning("[src]começa a desaparecer na realidade!"))
+		to_chat(user, span_warning("[src] começa a desaparecer na realidade!"))
 
 	var/obj/effect/visible_heretic_influence/illusion = new /obj/effect/visible_heretic_influence(drop_location())
 	illusion.name = "\improper" + pick_list(HERETIC_INFLUENCE_FILE, "drained") + " " + format_text(name)

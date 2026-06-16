@@ -38,10 +38,10 @@
 		if(LAZYLEN(contents) < capacity)
 			if(!user.transferItemToLoc(I, src))
 				return
-			to_chat(user, span_notice("Seu lugar.[I]em[src]."))
+			to_chat(user, span_notice("Seu lugar.[I] em [src]."))
 			update_appearance()
 		else
-			to_chat(user, span_warning("[src]Está cheio."))
+			to_chat(user, span_warning("[src] Está cheio."))
 		return
 
 	else if(!user.combat_mode)

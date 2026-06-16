@@ -120,7 +120,7 @@
 /datum/browser/proc/open(use_on_close = TRUE)
 	if(isnull(window_id)) //null check because this can potentially nuke goonchat
 		WARNING("Browser [title] tried to open with a null ID")
-		to_chat(user, span_userdanger("O[title]O navegador que você tentou abrir falhou em uma verificação de sanidade! Por favor, relate isso em GitHub!"))
+		to_chat(user, span_userdanger("O [title] O navegador que você tentou abrir falhou em uma verificação de sanidade! Por favor, relate isso em GitHub!"))
 		return
 
 	var/window_size = ""

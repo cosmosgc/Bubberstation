@@ -10,4 +10,4 @@
 	. = ..()
 	levelUpMessages[1] = span_nicegreen("Estou começando a entender os controles desses jogos...")
 	levelUpMessages[4] = span_nicegreen("Estou começando a pegar o meta desses jogos de arcade. Se eu fosse para minmax a estratégia ideal e acentuar meu estilo de jogo em torno de tecnologia bem refinado ...")
-	levelUpMessages[6] = span_nicegreen("Através de incrível determinação e esforço, atingi o auge da minha[name]Habilidades. Me pergunto como posso me tornar mais poderoso... Talvez o combustível do jogador me ajude a jogar melhor?")
+	levelUpMessages[6] = span_nicegreen("Através de incrível determinação e esforço, atingi o auge da minha [name] Habilidades. Me pergunto como posso me tornar mais poderoso... Talvez o combustível do jogador me ajude a jogar melhor?")

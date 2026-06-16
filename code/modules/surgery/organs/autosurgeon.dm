@@ -36,11 +36,11 @@
 /obj/item/autosurgeon/proc/load_organ(obj/item/organ/loaded_organ, mob/living/user)
 	if(user)
 		if(stored_organ)
-			to_chat(user, span_alert("[src]Já tem um implante armazenado."))
+			to_chat(user, span_alert("[src] Já tem um implante armazenado."))
 			return
 
 		if(uses <= 0)
-			to_chat(user, span_alert("[src]é usado e não pode ser carregado com mais implantes."))
+			to_chat(user, span_alert("[src] é usado e não pode ser carregado com mais implantes."))
 			return
 
 		if(organ_whitelist.len)
@@ -50,11 +50,11 @@
 					organ_whitelisted = TRUE
 					break
 			if(!organ_whitelisted)
-				to_chat(user, span_alert("[src]Não é compatível com[loaded_organ]."))
+				to_chat(user, span_alert("[src] Não é compatível com [loaded_organ]."))
 				return
 
 		if(!user.transferItemToLoc(loaded_organ, src))
-			to_chat(user, span_alert("[loaded_organ]está preso em sua mão!"))
+			to_chat(user, span_alert("[loaded_organ] está preso em sua mão!"))
 			return
 
 	stored_organ = loaded_organ
@@ -65,28 +65,28 @@
 
 /obj/item/autosurgeon/proc/use_autosurgeon(mob/living/target, mob/living/user, implant_time)
 	if(!stored_organ)
-		to_chat(user, span_alert("[src]Atualmente não tem nenhum implante armazenado."))
+		to_chat(user, span_alert("[src] Atualmente não tem nenhum implante armazenado."))
 		return
 
 	if(uses <= 0)
-		to_chat(user, span_alert("[src]Já foi usado. As ferramentas são chatas e não vão reativar."))
+		to_chat(user, span_alert("[src] Já foi usado. As ferramentas são chatas e não vão reativar."))
 		return
 
 	if(implant_time)
 		user.visible_message(
-			span_notice("[user]Prepara-se para usar[src]Vamos.[target]."),
-			span_notice("Você se prepara para usar[src]Vamos.[target]."),
+			span_notice("[user] Prepara-se para usar [src] Vamos.[target]."),
+			span_notice("Você se prepara para usar [src] Vamos.[target]."),
 		)
 		if(!do_after(user, (implant_time * surgery_speed), target))
 			return
 
 	if(target != user)
 		log_combat(user, target, "autosurgeon implanted [stored_organ] into", "[src]", "in [AREACOORD(target)]")
-		user.visible_message(span_notice("[user]Aperte um botão.[src]Como ele mergulha em[target]Ó corpo."), span_notice("Aperte um botão.[src]Como ele mergulha em[target]Ó corpo."))
+		user.visible_message(span_notice("[user] Aperte um botão.[src] Como ele mergulha em [target] Ó corpo."), span_notice("Aperte um botão.[src] Como ele mergulha em [target] Ó corpo."))
 	else
 		user.visible_message(
-			span_notice("[user]Aperte um botão.[src]Como ele mergulha em[user.p_their()]Corpo."),
-			span_notice("Aperte um botão.[src]como ele mergulha em seu corpo."),
+			span_notice("[user] Aperte um botão.[src] Como ele mergulha em [user.p_their()] Corpo."),
+			span_notice("Aperte um botão.[src] como ele mergulha em seu corpo."),
 		)
 
 	if (stored_organ.valid_zones && user.get_held_index_of_item(src))
@@ -112,7 +112,7 @@
 
 	uses--
 	if(uses <= 0)
-		desc = "[initial(desc)]Parece que foi usado."
+		desc = "[initial(desc)] Parece que foi usado."
 
 /obj/item/autosurgeon/attack_self(mob/user)//when the object it used...
 	use_autosurgeon(user, user)
@@ -131,18 +131,18 @@
 	if(..())
 		return TRUE
 	if(!stored_organ)
-		to_chat(user, span_warning("Não há implante em[src]Para você se retirar!"))
+		to_chat(user, span_warning("Não há implante em [src] Para você se retirar!"))
 	else
 		var/atom/drop_loc = user.drop_location()
 		for(var/atom/movable/stored_implant as anything in src)
 			stored_implant.forceMove(drop_loc)
-			to_chat(user, span_notice("Você remove o[stored_organ]De[src]."))
+			to_chat(user, span_notice("Você remove o [stored_organ] De [src]."))
 			stored_organ = null
 
 		screwtool.play_tool_sound(src)
 		uses--
 		if(uses <= 0)
-			desc = "[initial(desc)]Parece que foi usado."
+			desc = "[initial(desc)] Parece que foi usado."
 		update_appearance(UPDATE_ICON)
 	return TRUE
 

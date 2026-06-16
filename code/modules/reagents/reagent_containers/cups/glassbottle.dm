@@ -72,7 +72,7 @@
 /obj/item/reagent_containers/cup/glass/bottle/examine(mob/user)
 	. = ..()
 	if(message_in_a_bottle)
-		. += span_info("Tem.\a [message_in_a_bottle]dentro dele. Quebre-o para tirá-lo, ou encontrar uma praia ou oceano e jogá-lo com[EXAMINE_HINT("right-click")].")
+		. += span_info("Tem.\a [message_in_a_bottle] dentro dele. Quebre-o para tirá-lo, ou encontrar uma praia ou oceano e jogá-lo com[EXAMINE_HINT("right-click")].")
 	else if(isGlass)
 		. += span_tinynoticeital("Você poderia colocar um papel, foto ou dinheiro espacial dentro dele...")
 
@@ -89,7 +89,7 @@
 	if(!user.temporarilyRemoveItemFromInventory(src))
 		balloon_alert(user, "está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user]Atirar[src]Em[target]"), span_notice("Você joga[src]Em[target]"), span_notice("Você ouve um barulho."))
+	user.visible_message(span_notice("[user]Atirar[src]Em[target]"), span_notice("Você joga [src] Em [target]"), span_notice("Você ouve um barulho."))
 	SSpersistence.save_message_bottle(message_in_a_bottle, type)
 	playsound(target, 'sound/effects/bigsplash.ogg', 70)
 	qdel(src)
@@ -164,14 +164,14 @@
 	// Displays a custom message which follows the attack
 	if(target == user)
 		user.visible_message(
-			span_warning("[user]Esmaga.[src] [head_hitter ? "over [user.p_their()] head" : "against [user.p_them()]selves"]!"),
-			span_warning("Você quebra[src] [head_hitter ? "over your head" : "against yourself"]!"),
+			span_warning("[user] Esmaga.[src] [head_hitter ? "over [user.p_their()] head" : "against [user.p_them()]selves"]!"),
+			span_warning("Você quebra [src] [head_hitter ? "over your head" : "against yourself"]!"),
 		)
 
 	else
 		user.visible_message(
-			span_warning("[user]Esmaga.[src] [head_hitter ? "over [target]'s head" : "against [target]"]!"),
-			span_warning("[user]Esmaga.[src] [head_hitter ? "over your head" : "against you"]!"),
+			span_warning("[user] Esmaga.[src] [head_hitter ? "over [target]'s head" : "against [target]"]!"),
+			span_warning("[user] Esmaga.[src] [head_hitter ? "over your head" : "against you"]!"),
 		)
 
 	// Finally, smash the bottle. This kills (del) the bottle and also does all the logging for us
@@ -194,7 +194,7 @@
 	var/amount_lost = intensity * 5
 	reagents.remove_all(amount_lost)
 
-	visible_message(span_warning("Alguns de[name]O conteúdo está solto!"))
+	visible_message(span_warning("Alguns de [name] O conteúdo está solto!"))
 	var/intensity_state = null
 	switch(intensity)
 		if(1)
@@ -519,7 +519,7 @@
 
 	// Actually finally setting the new name and desc
 	name = "[shortname] [name]"
-	desc = "[desc] [fullname]Inc."
+	desc = "[desc] [fullname] Inc."
 
 
 /obj/item/reagent_containers/cup/glass/bottle/absinthe/premium
@@ -717,8 +717,8 @@
 		return pop_cork(user, sabrage = TRUE, froth_severity = severity_to_pass) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_danger("[user]Estraga o sabre e corta[src]Ao meio, derramando sobre si mesmos!"),
-		span_danger("Você falha no seu truque e corta[src]ao meio, derramando sobre você!"),
+		span_danger("[user] Estraga o sabre e corta [src] Ao meio, derramando sobre si mesmos!"),
+		span_danger("Você falha no seu truque e corta [src] ao meio, derramando sobre você!"),
 		)
 	user.add_mood_event("sabrage_fail", /datum/mood_event/sabrage_fail)
 	return smash(target = user, break_top = TRUE) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -736,14 +736,14 @@
 /obj/item/reagent_containers/cup/glass/bottle/champagne/proc/pop_cork(mob/living/user, sabrage, froth_severity)
 	if(!sabrage)
 		user.visible_message(
-			span_danger("[user]Solta a rolha de[src], fazendo-o sair da garrafa com grande força."),
-			span_nicegreen("Você elegantemente afrouxar a rolha de[src], fazendo-o sair da garrafa com grande força."),
+			span_danger("[user] Solta a rolha de [src], fazendo-o sair da garrafa com grande força."),
+			span_nicegreen("Você elegantemente afrouxar a rolha de [src], fazendo-o sair da garrafa com grande força."),
 			)
 	else
 		sabraged = TRUE
 		user.visible_message(
-			span_danger("[user]limpamente corta a rocha de[src], fazendo-o voar para fora da garrafa com grande força."),
-			span_nicegreen("Você elegantemente cortar a rolha fora[src], fazendo-o voar para fora da garrafa com grande força."),
+			span_danger("[user] limpamente corta a rocha de [src], fazendo-o voar para fora da garrafa com grande força."),
+			span_nicegreen("Você elegantemente cortar a rolha fora [src], fazendo-o voar para fora da garrafa com grande força."),
 			)
 		for(var/mob/living/carbon/stunt_witness in view(7, user))
 			stunt_witness.clear_mood_event("sabrage_success")
@@ -945,7 +945,7 @@
 	active = TRUE
 	log_bomber(user, "has primed a", src, "for detonation")
 
-	to_chat(user, span_info("Você acende.[src]Está pegando fogo."))
+	to_chat(user, span_info("Você acende.[src] Está pegando fogo."))
 	add_overlay(custom_fire_overlay() || GLOB.fire_overlay)
 	if(!isGlass)
 		addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
@@ -968,7 +968,7 @@
 		if(!isGlass)
 			to_chat(user, span_danger("A chama se espalhou muito!"))
 			return
-		to_chat(user, span_info("Você apaga a chama[src]."))
+		to_chat(user, span_info("Você apaga a chama [src]."))
 		cut_overlay(custom_fire_overlay() || GLOB.fire_overlay)
 		active = FALSE
 		return
@@ -1026,7 +1026,7 @@
 	icon_state = "trashbag1" // pruno releases air as it ferments, we don't want to simulate this in atmos, but we can make it look like it did
 	for (var/mob/living/M in view(2, get_turf(src))) // letting people and/or narcs know when the pruno is done
 		if(HAS_TRAIT(M, TRAIT_ANOSMIA))
-			to_chat(M, span_info("Um menino Pungente emana de[src]Como frutas vomitando suas entranhas."))
+			to_chat(M, span_info("Um menino Pungente emana de [src] Como frutas vomitando suas entranhas."))
 		playsound(get_turf(src), 'sound/effects/bubbles/bubbles2.ogg', 25, TRUE)
 
 /**

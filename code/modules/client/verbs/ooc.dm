@@ -15,7 +15,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(!client_initalized)
 			unvalidated_client_error() // we only want to throw this warning message when it's directly related to client failure.
 
-		to_chat(usr, span_warning("Não conseguiu enviar sua mensagem de COO. Você tentou enviar a seguinte mensagem:\n[span_big(msg)]"))
+		to_chat(usr, span_warning("Não conseguiu enviar sua mensagem de COO. Você tentou enviar a seguinte mensagem:\n [span_big(msg)]"))
 		return
 
 	if(isnull(holder))
@@ -281,7 +281,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	// Check if the selected player is on our ignore list
 	if(selection in prefs.ignoring)
 		// Express that the selected player is already on our ignore list in chat
-		to_chat(src, span_infoplain("Você já está ignorando[selection]!"))
+		to_chat(src, span_infoplain("Você já está ignorando [selection]!"))
 
 		// Stop running
 		return
@@ -293,7 +293,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	prefs.save_preferences()
 
 	// Express that we've ignored the selected player in chat
-	to_chat(src, span_infoplain("Você está ignorando[selection]no canal OOC."))
+	to_chat(src, span_infoplain("Você está ignorando [selection] no canal OOC."))
 
 // Unignore verb
 /client/verb/select_unignore()
@@ -331,7 +331,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	prefs.save_preferences()
 
 	// Express that we've unignored the selected player in chat
-	to_chat(src, span_infoplain("Você não está mais ignorando[selection]no canal OOC."))
+	to_chat(src, span_infoplain("Você não está mais ignorando [selection] no canal OOC."))
 
 /client/proc/show_previous_roundend_report()
 	set name = "Your Last Round"

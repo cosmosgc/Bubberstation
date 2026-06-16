@@ -67,7 +67,7 @@
 /obj/item/paperplane/suicide_act(mob/living/user)
 	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	user.Stun(20 SECONDS)
-	user.visible_message(span_suicide("[user]Compotas[src]Em[user.p_their()]Nariz. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Compotas [src] Em [user.p_their()] Nariz. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
 		eyes.apply_organ_damage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
@@ -93,7 +93,7 @@
 
 /obj/item/paperplane/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(IS_WRITING_UTENSIL(attacking_item))
-		to_chat(user, span_warning("Você deve se desdobrar[src]Antes de lamar!"))
+		to_chat(user, span_warning("Você deve se desdobrar [src] Antes de lamar!"))
 		return
 	else if(istype(attacking_item, /obj/item/stamp)) //we don't randomize stamps on a paperplane
 		internal_paper.attackby(attacking_item, user) //spoofed attack to update internal paper.
@@ -117,7 +117,7 @@
 		return
 	if(hit_human.is_eyes_covered())
 		return
-	visible_message(span_danger("\The [src]hits[hit_human]nos olhos[eyes ? "" : " socket"]!"))
+	visible_message(span_danger("\The [src] hits [hit_human] nos olhos[eyes ? "" : " socket"]!"))
 	hit_human.adjust_eye_blur(12 SECONDS)
 	eyes?.apply_organ_damage(rand(6, 8))
 	hit_human.Paralyze(4 SECONDS)

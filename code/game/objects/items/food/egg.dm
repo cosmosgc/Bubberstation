@@ -81,7 +81,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		return
 	var/spawned_chickens = prob(97) ? 1 : min(4, chickens_remaining) // We don't want to go over the limit
 	if (spawned_chickens > 1) // Chicken jackpot!
-		visible_message(span_notice("[spawned_chickens]Garotas saem do ovo! Jackpot!"))
+		visible_message(span_notice("[spawned_chickens] Garotas saem do ovo! Jackpot!"))
 	else
 		visible_message(span_notice("Uma garota sai do ovo rachado!"))
 	for(var/i in 1 to spawned_chickens)
@@ -94,10 +94,10 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		var/clr = crayon.crayon_color
 
 		if(!(clr in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, span_notice("[src]Se recusa a tomar essa cor!"))
+			to_chat(usr, span_notice("[src] Se recusa a tomar essa cor!"))
 			return
 
-		to_chat(usr, span_notice("Você color[src]com[item]."))
+		to_chat(usr, span_notice("Você color [src] com [item]."))
 		icon_state = "egg-[clr]"
 
 	else if(istype(item, /obj/item/stamp/clown))
@@ -105,18 +105,18 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 			"krusty", "bozo", "pennywise", "ronald", "jacobs", "kelly", "popov", "cluwne")
 		icon_state = "egg-clown-[clowntype]"
 		desc = "Um ovo que foi decorado com a semelhança grotesca e robusta do rosto de um palhaço."
-		to_chat(usr, span_notice("Você carimbe[src]com[item], criando uma aparência artística e não remotamente horrível de maquiagem de palhaço."))
+		to_chat(usr, span_notice("Você carimbe [src] com [item], criando uma aparência artística e não remotamente horrível de maquiagem de palhaço."))
 
 	else if(is_reagent_container(item))
 		var/obj/item/reagent_containers/dunk_test_container = item
 		if (!dunk_test_container.is_drainable() || !dunk_test_container.reagents.has_reagent(/datum/reagent/water))
 			return
 
-		to_chat(user, span_notice("Você verifica se[src]está podre."))
+		to_chat(user, span_notice("Você verifica se [src] está podre."))
 		if(istype(src, /obj/item/food/egg/rotten))
-			to_chat(user, span_warning("[src]flutua no[dunk_test_container]!"))
+			to_chat(user, span_warning("[src] flutua no [dunk_test_container]!"))
 		else
-			to_chat(user, span_notice("[src]Afunda na[dunk_test_container]!"))
+			to_chat(user, span_notice("[src] Afunda na [dunk_test_container]!"))
 	else
 		..()
 
@@ -137,7 +137,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	reagents.trans_to(broken_egg, reagents.total_volume, copy_only = TRUE)
 
 	hit_griddle.AddToGrill(broken_egg, user)
-	interacting_with.balloon_alert(user, "Quebros[src]Abra.")
+	interacting_with.balloon_alert(user, "Quebros [src] Abra.")
 
 	qdel(src)
 	return ITEM_INTERACT_BLOCKING
@@ -282,7 +282,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 			to_chat(user, span_warning("Já tem omelete no garfo!"))
 		else
 			fork.icon_state = "forkloaded"
-			user.visible_message(span_notice("[user]Leva um pedaço de omelete com[user.p_their()]Garfo!"), 				span_notice("Pegue um pedaço de omelete com seu garfo."))
+			user.visible_message(span_notice("[user] Leva um pedaço de omelete com [user.p_their()] Garfo!"), 				span_notice("Pegue um pedaço de omelete com seu garfo."))
 
 			var/datum/reagent/reagent = pick(reagents.reagent_list)
 			reagents.remove_reagent(reagent.type, 1)
@@ -377,7 +377,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	reagents.trans_to(broken_egg, reagents.total_volume, copy_only = TRUE)
 
 	hit_griddle.AddToGrill(broken_egg, user)
-	interacting_with.balloon_alert(user, "Quebros[src]Abra.")
+	interacting_with.balloon_alert(user, "Quebros [src] Abra.")
 
 	qdel(src)
 	return ITEM_INTERACT_BLOCKING

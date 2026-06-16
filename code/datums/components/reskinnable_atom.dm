@@ -266,7 +266,7 @@
 		return
 
 	set_skin_by_name(pick, user)
-	to_chat(user, span_info("[parent]está agora esfolado como '[pick].'"))
+	to_chat(user, span_info("[parent] está agora esfolado como '[pick].'"))
 
 	if(!infinite_reskin)
 		qdel(src)

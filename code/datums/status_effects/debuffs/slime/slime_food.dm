@@ -44,7 +44,7 @@
 	if(user == feeder)
 		examine_list += span_boldnotice("Seu cheiro lembra a serenidade e a si mesmo.")
 	else
-		examine_list += span_boldnotice("Seu cheiro lembra a serenidade e[feeder].")
+		examine_list += span_boldnotice("Seu cheiro lembra a serenidade e [feeder].")
 
 ///Handles a slime completely draining someone
 /datum/status_effect/slime_food/proc/on_drained(datum/source, mob/living/basic/slime/draining_slime)

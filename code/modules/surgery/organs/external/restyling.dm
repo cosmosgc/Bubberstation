@@ -71,12 +71,12 @@
 	var/new_style = tgui_input_list(trimmer, "Select a new style", "Grooming", restyles)
 
 	trimmer.visible_message(
-		span_notice("[trimmer]Tenta lamar[original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
+		span_notice("[trimmer] Tenta lamar[original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
 		span_notice("Você tenta mudar[original_target == trimmer ? "your" : original_target.name + "'s"] [name].")
 	)
 	if(new_style && do_after(trimmer, style_speed, target = original_target))
 		trimmer.visible_message(
-			span_notice("[trimmer]com sucesso muda[original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
+			span_notice("[trimmer] com sucesso muda[original_target == trimmer ? trimmer.p_their() : original_target.name + "'s"] [name]."),
 			span_notice("Você mudou com sucesso.[original_target == trimmer ? "your" : original_target.name + "'s"] [name].")
 		)
 

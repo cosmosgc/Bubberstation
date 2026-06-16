@@ -99,7 +99,7 @@
 		applying = stack_parent.split_stack(1)
 
 	else if(!user.temporarilyRemoveItemFromInventory(applying))
-		target.balloon_alert(user, "Não posso me separar[applying.name]!")
+		target.balloon_alert(user, "Não posso me separar [applying.name]!")
 		return
 
 	applying_to.apply_item(applying, apply_category, override_existing)

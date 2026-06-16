@@ -91,7 +91,7 @@
 		if(ventcrawl_target.welded) // in case it got welded during our sleep
 			to_chat(src, span_warning("Você não pode rastejar em torno de uma ventilação soldada!"))
 			return
-		visible_message(span_notice("[src]Sai dos dutos de ventilação!"), span_notice("Você sai dos dutos de ventilação."))
+		visible_message(span_notice("[src] Sai dos dutos de ventilação!"), span_notice("Você sai dos dutos de ventilação."))
 		forceMove(ventcrawl_target.loc)
 		REMOVE_TRAIT(src, TRAIT_MOVE_VENTCRAWLING, VENTCRAWLING_TRAIT)
 		update_pipe_vision()
@@ -107,7 +107,7 @@
 				enter_time = 2.5 SECONDS // Default time if the signal doesn't return anything
 			// BUBBER ADDITION END - VENTCRAWLING SIGNAL
 			ventcrawl_target.flick_overlay_static(image('icons/effects/vent_indicator.dmi', "arrow", ABOVE_MOB_LAYER, dir = get_dir(src.loc, ventcrawl_target.loc)), 2 SECONDS)
-			visible_message(span_notice("[src]Começa a subir no sistema de ventilação...") ,span_notice("Você começa a subir no sistema de ventilação..."))
+			visible_message(span_notice("[src] Começa a subir no sistema de ventilação...") ,span_notice("Você começa a subir no sistema de ventilação..."))
 			if(!do_after(src, enter_time, target = ventcrawl_target, extra_checks = CALLBACK(src, PROC_REF(can_enter_vent), ventcrawl_target))) // BUBBER CHANGE - VENTCRAWLING SIGNAL
 				SEND_SIGNAL(src, COMSIG_VENTCRAWL_PRE_CANCEL, ventcrawl_target) // BUBBER ADDITION - VENTCRAWLING SIGNAL
 				return
@@ -117,7 +117,7 @@
 				to_chat(src, span_warning("Você não pode rastejar em torno de uma ventilação soldada!"))
 				return
 			ventcrawl_target.flick_overlay_static(image('icons/effects/vent_indicator.dmi', "insert", ABOVE_MOB_LAYER), 1 SECONDS)
-			visible_message(span_notice("[src]Entra nos dutos de ventilação!"), span_notice("Você entra nos dutos de ventilação."))
+			visible_message(span_notice("[src] Entra nos dutos de ventilação!"), span_notice("Você entra nos dutos de ventilação."))
 			move_into_vent(ventcrawl_target)
 			SEND_SIGNAL(src, COMSIG_VENTCRAWL_ENTER, ventcrawl_target) // BUBBER ADDITION - VENTCRAWLING SIGNAL
 		else

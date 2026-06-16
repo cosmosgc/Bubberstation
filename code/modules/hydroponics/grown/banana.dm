@@ -46,7 +46,7 @@
 		return FOOD_LIKED
 
 /obj/item/food/grown/banana/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está mirando[src]Em[user.p_them()]Eu! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está mirando [src] Em [user.p_them()] Eu! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/items/bikehorn.ogg', 50, TRUE, -1)
 	sleep(2.5 SECONDS)
 	if(!user)
@@ -84,7 +84,7 @@
 	return list(/datum/reagent/medicine/coagulant/banana_peel = seed.potency * 0.2)
 
 /obj/item/grown/bananapeel/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está deliberadamente escorregando[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está deliberadamente escorregando [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/misc/slip.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 

@@ -66,7 +66,7 @@
 /datum/action/cooldown/spell/shadow_cloak/proc/cloak_mob(mob/living/cast_on)
 	playsound(cast_on, 'sound/effects/chemistry/ahaha.ogg', 50, TRUE, -1, extrarange = SILENCED_SOUND_EXTRARANGE, frequency = 0.5)
 	cast_on.visible_message(
-		span_warning("[cast_on]Desapareça nas sombras!"),
+		span_warning("[cast_on] Desapareça nas sombras!"),
 		span_notice("Você desaparece nas sombras, tornando-se inidentificável."),
 	)
 
@@ -84,7 +84,7 @@
 	playsound(cast_on, 'sound/effects/curse/curseattack.ogg', 50)
 	if(show_message)
 		cast_on.visible_message(
-			span_warning("[cast_on]Aparece das Sombras!"),
+			span_warning("[cast_on] Aparece das Sombras!"),
 			span_notice("Você aparece das sombras, identificável mais uma vez."),
 		)
 
@@ -99,7 +99,7 @@
 	var/mob/living/removed = source.owner
 	uncloak_mob(removed, show_message = FALSE)
 	removed.visible_message(
-		span_warning("[removed]é tirado das sombras!"),
+		span_warning("[removed] é tirado das sombras!"),
 		span_userdanger("Você foi tirado das sombras!"),
 	)
 
@@ -114,7 +114,7 @@
 
 	uncloak_mob(source, show_message = FALSE)
 	source.visible_message(
-		span_warning("[source]De arrependimento aparece das sombras!"),
+		span_warning("[source] De arrependimento aparece das sombras!"),
 		span_userdanger("Como você perde seu foco, você é retirado das sombras!"),
 	)
 	StartCooldown(uncloak_time / 3)

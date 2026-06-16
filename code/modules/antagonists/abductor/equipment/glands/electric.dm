@@ -16,7 +16,7 @@
 	REMOVE_TRAIT(gland_owner, TRAIT_SHOCKIMMUNE, ABDUCTOR_GLAND_TRAIT)
 
 /obj/item/organ/heart/gland/electric/activate()
-	owner.visible_message(span_danger("[owner]A pele começa a emitir arcos elétricos!"),	span_warning("Você sente energia elétrica crescendo dentro de você!"))
+	owner.visible_message(span_danger("[owner] A pele começa a emitir arcos elétricos!"),	span_warning("Você sente energia elétrica crescendo dentro de você!"))
 	playsound(get_turf(owner), SFX_SPARKS, 100, TRUE, -1, SHORT_RANGE_SOUND_EXTRARANGE)
 	addtimer(CALLBACK(src, PROC_REF(zap)), rand(3 SECONDS, 10 SECONDS))
 

@@ -59,11 +59,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/match/update_desc(updates)
 	. = ..()
 	if(lit)
-		desc = "[initial(desc)]Este está iluminado."
+		desc = "[initial(desc)] Este está iluminado."
 	else if(burnt)
-		desc = "[initial(desc)]Este já viu dias melhores."
+		desc = "[initial(desc)] Este já viu dias melhores."
 	else if(broken)
-		desc = "[initial(desc)]Este está quebrado."
+		desc = "[initial(desc)] Este está quebrado."
 	else
 		desc = initial(desc)
 
@@ -145,11 +145,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 
 	if(cig.lit)
-		to_chat(user, span_warning("[cig]Já está acesa!"))
+		to_chat(user, span_warning("[cig] Já está acesa!"))
 	if(M == user)
 		cig.attackby(src, user)
 	else
-		cig.light(span_notice("[user]Segura.[src]Fora para[M], e luzes[cig]."))
+		cig.light(span_notice("[user] Segura.[src] Fora para [M], e luzes [cig]."))
 
 /// Finds a cigarette on another mob to help light.
 /obj/item/proc/help_light_cig(mob/living/M)
@@ -327,7 +327,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	to_edit.layer = new_layer
 
 /obj/item/cigarette/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está ofegante[src]tão rápido quanto[user.p_they()]Pode! Parece que...[user.p_theyre()]Tentando dar[user.p_them()]câncer de si mesmo."))
+	user.visible_message(span_suicide("[user] Está ofegante [src] tão rápido quanto [user.p_they()] Pode! Parece que...[user.p_theyre()] Tentando dar [user.p_them()] câncer de si mesmo."))
 	return (TOXLOSS|OXYLOSS)
 
 /obj/item/cigarette/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
@@ -368,12 +368,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(istype(glass, /obj/item/reagent_containers/cup/mortar))
 		return NONE
 	if(glass.reagents.trans_to(src, chem_volume, transferred_by = user)) //if reagents were transferred, show the message
-		to_chat(user, span_notice("Você mergulha.\the [src]Em\the [glass]."))
+		to_chat(user, span_notice("Você mergulha.\the [src] Em\the [glass]."))
 	//if not, either the beaker was empty, or the cigarette was full
 	else if(!glass.reagents.total_volume)
-		to_chat(user, span_warning("[glass]Está vazio!"))
+		to_chat(user, span_warning("[glass] Está vazio!"))
 	else
-		to_chat(user, span_warning("[src]Está cheio!"))
+		to_chat(user, span_warning("[src] Está cheio!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/cigarette/update_icon_state()
@@ -420,11 +420,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	// Custom handling for the hallucination effect
 	if(reagents?.has_reagent(/datum/reagent/flash_powder))
 		if(!isliving(loc))
-			loc.visible_message(span_hear("\The [src]Queima!"))
+			loc.visible_message(span_hear("\The [src] Queima!"))
 			qdel(src)
 			return
 		var/mob/living/user = loc
-		loc.visible_message(span_hear("[user]'s[name]Arde como[p_they(user)]Cair no chão!"), span_danger("A solução explode violentamente!"))
+		loc.visible_message(span_hear("[user]'s [name] Arde como [p_they(user)] Cair no chão!"), span_danger("A solução explode violentamente!"))
 		user.flash_act(INFINITY, visual = TRUE, length = 5 SECONDS)
 		user.playsound_local(get_turf(user), SFX_EXPLOSION, 50, TRUE)
 		user.cause_hallucination(/datum/hallucination/death, "trick trick [name]")
@@ -466,7 +466,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	update_appearance(UPDATE_ICON)
 	set_light_on(FALSE)
 	if(ismob(loc))
-		to_chat(loc, span_notice("Sua[name]Sai."))
+		to_chat(loc, span_notice("Sua [name] Sai."))
 	QDEL_NULL(cig_smoke)
 	QDEL_NULL(mob_smoke)
 
@@ -487,23 +487,23 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	if(isnull(guy_infront))
 		smoker.visible_message(
-			span_notice("[smoker]Exala uma grande nuvem de fumaça de[src]."),
-			span_notice("Você exala uma grande nuvem de fumaça de[src]."),
+			span_notice("[smoker] Exala uma grande nuvem de fumaça de [src]."),
+			span_notice("Você exala uma grande nuvem de fumaça de [src]."),
 		)
 
 	else if(ishuman(guy_infront) && guy_infront.get_bodypart(BODY_ZONE_HEAD) && !guy_infront.is_pepper_proof())
 		smoker.visible_message(
-			span_notice("[smoker]Exala uma grande nuvem de fumaça de[src]Diretamente em[guy_infront]Ó rosto!"),
-			span_notice("Você exala uma grande nuvem de fumaça de[src]Diretamente em[guy_infront]O rosto."),
+			span_notice("[smoker] Exala uma grande nuvem de fumaça de [src] Diretamente em [guy_infront] Ó rosto!"),
+			span_notice("Você exala uma grande nuvem de fumaça de [src] Diretamente em [guy_infront] O rosto."),
 			ignored_mobs = guy_infront,
 		)
-		to_chat(guy_infront, span_warning("Você tem um rosto cheio de fumaça.[smoker]'s[name]!"))
+		to_chat(guy_infront, span_warning("Você tem um rosto cheio de fumaça.[smoker]'s [name]!"))
 		smoke_in_face(guy_infront)
 
 	else
 		smoker.visible_message(
-			span_notice("[smoker]Exala uma grande nuvem de fumaça de[src]Em[guy_infront]."),
-			span_notice("Você exala uma grande nuvem de fumaça de[src]Em[guy_infront]."),
+			span_notice("[smoker] Exala uma grande nuvem de fumaça de [src] Em [guy_infront]."),
+			span_notice("Você exala uma grande nuvem de fumaça de [src] Em [guy_infront]."),
 		)
 
 	if(!isturf(smoker.loc))
@@ -585,14 +585,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!isnull(user))
 		if(done_early)
 			if(isfloorturf(location) && location.has_gravity())
-				user.visible_message(span_notice("[user]Calma, calma, calma.[src]Apagando instantâneamente."))
+				user.visible_message(span_notice("[user] Calma, calma, calma.[src] Apagando instantâneamente."))
 				new /obj/effect/decal/cleanable/ash(location)
 				long_exhale(user)
 			else
-				user.visible_message(span_notice("[user]Pinças para fora.[src]."))
+				user.visible_message(span_notice("[user] Pinças para fora.[src]."))
 			how_long_have_we_been_smokin = 0 SECONDS
 		else
-			to_chat(user, span_notice("Sua[name]Sai."))
+			to_chat(user, span_notice("Sua [name] Sai."))
 	new type_butt(location)
 	qdel(src)
 
@@ -600,18 +600,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!istype(M))
 		return ..()
 	if(M.on_fire && !lit)
-		light(span_notice("[user]Luzes[src]Com[M]Está queimando o corpo. Que durão de sangue frio."))
+		light(span_notice("[user] Luzes [src] Com [M] Está queimando o corpo. Que durão de sangue frio."))
 		return
 	var/obj/item/cigarette/cig = help_light_cig(M)
 	if(!lit || !cig || user.combat_mode)
 		return ..()
 
 	if(cig.lit)
-		to_chat(user, span_warning("\The [cig]Já está acesa!"))
+		to_chat(user, span_warning("\The [cig] Já está acesa!"))
 	if(M == user)
 		cig.attackby(src, user)
 	else
-		cig.light(span_notice("[user]Segura.\the [src]Fora para[M], e luzes[M.p_their()] [cig.name]."))
+		cig.light(span_notice("[user] Segura.\the [src] Fora para [M], e luzes [M.p_their()] [cig.name]."))
 
 /obj/item/cigarette/fire_act(exposed_temperature, exposed_volume)
 	light()
@@ -946,11 +946,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/cigarette/pipe/put_out(mob/user, done_early = FALSE)
 	lit = FALSE
 	if(done_early)
-		user.visible_message(span_notice("[user]Apaga.[src]."), span_notice("Você apagou.[src]."))
+		user.visible_message(span_notice("[user] Apaga.[src]."), span_notice("Você apagou.[src]."))
 
 	else
 		if(user)
-			to_chat(user, span_notice("Sua[name]Sai."))
+			to_chat(user, span_notice("Sua [name] Sai."))
 		packeditem = null
 	update_appearance(UPDATE_ICON)
 	set_light_on(FALSE)
@@ -970,7 +970,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		to_chat(user, span_warning("Tem que ser seco primeiro!"))
 		return
 
-	to_chat(user, span_notice("Sua coisa.[to_smoke]Em[src]."))
+	to_chat(user, span_notice("Sua coisa.[to_smoke] Em [src]."))
 	smoketime = 13 MINUTES
 	packeditem = to_smoke.name
 	update_name()
@@ -982,7 +982,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/cigarette/pipe/attack_self(mob/user)
 	var/atom/location = drop_location()
 	if(packeditem && !lit)
-		to_chat(user, span_notice("Você está vazio.[src]em frente[location]."))
+		to_chat(user, span_notice("Você está vazio.[src] em frente [location]."))
 		new /obj/effect/decal/cleanable/ash(location)
 		packeditem = null
 		smoketime = 0
@@ -1067,7 +1067,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	reagents.add_reagent(/datum/reagent/drug/nicotine, 50)
 
 /obj/item/vape/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]é Puffin duro em dat vape,[user.p_they()]Tentando se juntar ao Vape Life em um avião inteiro!"))//it doesn't give you cancer, it is cancer
+	user.visible_message(span_suicide("[user] é Puffin duro em dat vape,[user.p_they()] Tentando se juntar ao Vape Life em um avião inteiro!"))//it doesn't give you cancer, it is cancer
 	return (TOXLOSS|OXYLOSS)
 
 /obj/item/vape/screwdriver_act(mob/living/user, obj/item/tool)
@@ -1096,17 +1096,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(screw && !(obj_flags & EMAGGED))//also kinky
 		if(!super)
 			super = TRUE
-			to_chat(user, span_notice("Você aumenta a tensão de[src]."))
+			to_chat(user, span_notice("Você aumenta a tensão de [src]."))
 			icon_state = "vapeopen_med"
 			set_greyscale(new_config = /datum/greyscale_config/vape/open_med)
 		else
 			super = FALSE
-			to_chat(user, span_notice("Você diminui a tensão de[src]."))
+			to_chat(user, span_notice("Você diminui a tensão de [src]."))
 			icon_state = "vapeopen_low"
 			set_greyscale(new_config = /datum/greyscale_config/vape/open_low)
 
 	if(screw && (obj_flags & EMAGGED))
-		to_chat(user, span_warning("[src]Não pode ser modificado!"))
+		to_chat(user, span_warning("[src] Não pode ser modificado!"))
 
 /obj/item/vape/emag_act(mob/user, obj/item/card/emag/emag_card) // I WON'T REGRET WRITTING THIS, SURLY.
 
@@ -1131,7 +1131,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		balloon_alert(user, "Abra a tampa primeiro!")
 		return
 	if(reagents.total_volume > 0)
-		to_chat(user, span_notice("Você está vazio.[src]de todos os reagentes."))
+		to_chat(user, span_notice("Você está vazio.[src] de todos os reagentes."))
 		reagents.clear_reagents()
 
 /obj/item/vape/equipped(mob/user, slot)
@@ -1188,7 +1188,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	if(!reagents.total_volume)
 		if(ismob(loc))
-			to_chat(M, span_warning("[src]Está vazio!"))
+			to_chat(M, span_warning("[src] Está vazio!"))
 			STOP_PROCESSING(SSobj, src)
 			//it's reusable so it won't unequip when empty
 		return
@@ -1208,7 +1208,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			M.apply_damage(20, BURN, BODY_ZONE_HEAD)
 			M.Paralyze(300)
 			do_sparks(5, TRUE, src)
-			to_chat(M, span_userdanger("[src]De arrependimento explodir em sua boca!"))
+			to_chat(M, span_userdanger("[src] De arrependimento explodir em sua boca!"))
 			qdel(src)
 			return
 	else if(super)

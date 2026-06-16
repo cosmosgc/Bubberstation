@@ -229,15 +229,15 @@
 	if(istype(C, /obj/item/cigarette))
 		var/obj/item/cigarette/ciggie = C
 		if(ciggie.lit)
-			to_chat(user, span_warning("\The [ciggie]Já está acesa!"))
+			to_chat(user, span_warning("\The [ciggie] Já está acesa!"))
 			return TRUE
 		var/clumsy_modifier = HAS_TRAIT(user, TRAIT_CLUMSY) ? 2 : 1
 		if(prob(25 * clumsy_modifier) && isliving(user))
-			ciggie.light(span_warning("[user]habilmente mergulha\the [ciggie.name]em[src], juntamente com o resto de[user.p_their()]Braço. Que idiota."))
+			ciggie.light(span_warning("[user] habilmente mergulha\the [ciggie.name] em [src], juntamente com o resto de [user.p_their()] Braço. Que idiota."))
 			var/mob/living/burned_guy = user
 			burned_guy.apply_damage(90, BURN, user.get_active_hand())
 		else
-			ciggie.light(span_rose("[user]habilmente mergulha\the [ciggie.name]em[src], iluminando-o com o calor abrasador do planeta. Testemunhar tal feito é quase o suficiente para fazê-lo chorar."))
+			ciggie.light(span_rose("[user] habilmente mergulha\the [ciggie.name] em [src], iluminando-o com o calor abrasador do planeta. Testemunhar tal feito é quase o suficiente para fazê-lo chorar."))
 		return TRUE
 
 /turf/open/lava/proc/is_safe()
@@ -461,14 +461,14 @@
 		burn_human.del_and_replace_bodypart(plasmalimb, special = TRUE)
 		burn_human.update_body_parts()
 		burn_human.emote("scream")
-		burn_human.visible_message(span_warning("[burn_human]'s[burn_limb.plaintext_zone]Derrete até o osso!"), 			span_userdanger("Você grita com dor como seu[burn_limb.plaintext_zone]Derrete até o osso, mantido unido apenas por fios de fungo roxo!"))
+		burn_human.visible_message(span_warning("[burn_human]'s [burn_limb.plaintext_zone] Derrete até o osso!"), 			span_userdanger("Você grita com dor como seu [burn_limb.plaintext_zone] Derrete até o osso, mantido unido apenas por fios de fungo roxo!"))
 
 	// If all of your limbs are plasma then congrats: you are plasma man
 	if(length(immune_parts) || length(transform_parts))
 		return
 	burn_human.ignite_mob()
 	burn_human.set_species(/datum/species/plasmaman)
-	burn_human.visible_message(span_warning("[burn_human]explode em chamas como o último de[burn_human.p_their()]O corpo está coberto de fungos!"), 		span_userdanger("Seus sentidos dormem como o que restou de sua carne desliza, revelando o osso incrustado de plasma embaixo!"))
+	burn_human.visible_message(span_warning("[burn_human] explode em chamas como o último de [burn_human.p_their()] O corpo está coberto de fungos!"), 		span_userdanger("Seus sentidos dormem como o que restou de sua carne desliza, revelando o osso incrustado de plasma embaixo!"))
 
 //mafia specific tame happy plasma (normal atmos, no slowdown)
 /turf/open/lava/plasma/mafia

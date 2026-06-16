@@ -74,7 +74,7 @@
 		atom_storage.set_locked(STORAGE_NOT_LOCKED)
 		balloon_alert(user, "Trava destruída.")
 		if (emag_card && user)
-			user.visible_message(span_warning("[user]Slips[emag_card]Câmbio.[src]Quebrando!"))
+			user.visible_message(span_warning("[user] Slips [emag_card] Câmbio.[src] Quebrando!"))
 		return TRUE
 	return FALSE
 
@@ -283,7 +283,7 @@
 /obj/item/storage/lockbox/order/examine(mob/user)
 	. = ..()
 	if(department_purchase)
-		. += span_notice("Esta caixa foi comprada com fundos departamentais de[department_account.account_holder], e pode ser aberto por qualquer um que tem uma identidade ligada a uma conta com um pagamento desse departamento.")
+		. += span_notice("Esta caixa foi comprada com fundos departamentais de [department_account.account_holder], e pode ser aberto por qualquer um que tem uma identidade ligada a uma conta com um pagamento desse departamento.")
 		. += span_notice("Ou substituído por alguém com acesso ao capitão.")
 // BUBBER EDIT END
 

@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 		return
 	var/contestant_count = length(implanted_implants)
 	if (contestant_count < required_contestants)
-		balloon_alert(user, "[required_contestants - contestant_count]Competidores precisam!")
+		balloon_alert(user, "[required_contestants - contestant_count] Competidores precisam!")
 		return
 
 	GLOB.battle_royale_master.start_battle(implanted_implants)

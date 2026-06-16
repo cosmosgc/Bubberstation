@@ -45,9 +45,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a fazer uma incisão em[patient]..."),
-		span_notice("[surgeon]começa a fazer uma incisão em[patient]."),
-		span_notice("[surgeon]começa a fazer uma incisão em[patient]."),
+		span_notice("Você começa a fazer uma incisão em [patient]..."),
+		span_notice("[surgeon] começa a fazer uma incisão em [patient]."),
+		span_notice("[surgeon] começa a fazer uma incisão em [patient]."),
 	)
 	display_pain(patient, "You feel a sharp stabbing sensation!")
 
@@ -102,9 +102,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a ver através[patient]Ossos..."),
-		span_notice("[surgeon]começa a serrar[patient]Ossos."),
-		span_notice("[surgeon]começa a serrar[patient]Ossos."),
+		span_notice("Você começa a ver através [patient] Ossos..."),
+		span_notice("[surgeon] começa a serrar [patient] Ossos."),
+		span_notice("[surgeon] começa a serrar [patient] Ossos."),
 	)
 	display_pain(patient, "You feel a horrid ache spread through your insides!")
 
@@ -115,9 +115,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você viu.[patient]Abra."),
-		span_notice("[surgeon]Serras.[patient]Abra!"),
-		span_notice("[surgeon]Serras.[patient]Abra!"),
+		span_notice("Você viu.[patient] Abra."),
+		span_notice("[surgeon] Serras.[patient] Abra!"),
+		span_notice("[surgeon] Serras.[patient] Abra!"),
 	)
 	display_pain(patient, "It feels like something just broke!")
 
@@ -170,9 +170,9 @@
 	display_results(
 		surgeon,
 		patient,
-		span_notice("Você começa a consertar a incisão[patient]..."),
-		span_notice("[surgeon]Começa a consertar a incisão em[patient]."),
-		span_notice("[surgeon]Começa a consertar a incisão em[patient]."),
+		span_notice("Você começa a consertar a incisão [patient]..."),
+		span_notice("[surgeon] Começa a consertar a incisão em [patient]."),
+		span_notice("[surgeon] Começa a consertar a incisão em [patient]."),
 	)
 	display_pain(patient, "You are being [istype(tool, /obj/item/stack/medical/suture) ? "pinched" : "burned"]!")
 

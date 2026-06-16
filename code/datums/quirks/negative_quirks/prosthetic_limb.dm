@@ -30,7 +30,7 @@
 	human_holder.del_and_replace_bodypart(surplus, special = TRUE)
 
 /datum/quirk/prosthetic_limb/post_add()
-	to_chat(quirk_holder, span_bolddanger("Sua[slot_string]foi substituído por uma prótese excedente. Ele quase não tem força muscular, e faz você não ser saudável só por tê-la. Além disso, você precisa usar uma ferramenta de solda e cabos para repará-lo, ao invés de suturas e malhas regenerativas."))
+	to_chat(quirk_holder, span_bolddanger("Sua [slot_string] foi substituído por uma prótese excedente. Ele quase não tem força muscular, e faz você não ser saudável só por tê-la. Além disso, você precisa usar uma ferramenta de solda e cabos para repará-lo, ao invés de suturas e malhas regenerativas."))
 
 /datum/quirk/prosthetic_limb/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder

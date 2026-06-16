@@ -54,7 +54,7 @@
 
 //Now squeezable for imitation carpmeat
 /obj/item/food/grown/koibeans/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user]Quedas.[src]em um pedaço de carne carpa."), span_notice("Você esmaga[src]em algo que se parece com um pedaço de carne carpa."))
+	user.visible_message(span_notice("[user] Quedas.[src] em um pedaço de carne carpa."), span_notice("Você esmaga [src] em algo que se parece com um pedaço de carne carpa."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/fishmeat/carp/imitation/fishie = new(null)
 	fishie.reagents.set_all_reagents_purity(seed.get_reagent_purity())
@@ -86,7 +86,7 @@
 	distill_reagent = /datum/reagent/consumable/yoghurt
 
 /obj/item/food/grown/butterbeans/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user]Quedas.[src]em um tapinha de manteiga."), span_notice("Você esmaga[src]em algo que se parece com manteiga."))
+	user.visible_message(span_notice("[user] Quedas.[src] em um tapinha de manteiga."), span_notice("Você esmaga [src] em algo que se parece com manteiga."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/butterslice/butties = new(null)
 	butties.reagents.set_all_reagents_purity(seed.get_reagent_purity())

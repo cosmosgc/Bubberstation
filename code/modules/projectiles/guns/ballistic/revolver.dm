@@ -70,7 +70,7 @@
 
 	if(do_spin())
 		playsound(usr, SFX_REVOLVER_SPIN, 30, FALSE)
-		visible_message(span_notice("[user]gira[src]Câmara."), span_notice("Você gira[src]Câmara."))
+		visible_message(span_notice("[user] gira [src] Câmara."), span_notice("Você gira [src] Câmara."))
 		balloon_alert(user, "Câmara girada")
 	else
 		verbs -= /obj/item/gun/ballistic/revolver/verb/spin
@@ -98,7 +98,7 @@
 
 /obj/item/gun/ballistic/revolver/ignition_effect(atom/A, mob/user)
 	if(last_fire && last_fire + 15 SECONDS > world.time)
-		return span_rose("[user]toca o fim de[src]para\the [A], usando o calor residual para incendiá-lo em um sopro de fumaça. Que fodão.")
+		return span_rose("[user] toca o fim de [src] para\the [A], usando o calor residual para incendiá-lo em um sopro de fumaça. Que fodão.")
 
 /obj/item/gun/ballistic/revolver/c38
 	name = "\improper .38 revolver"
@@ -234,7 +234,7 @@
 	if(loc != user || user.incapacitated)
 		return CLICK_ACTION_BLOCKING
 	aim_time = new_aim_time * (1 SECONDS)
-	to_chat(user, span_warning("Você vai parar.[aim_time]Segundo antes de puxar o gatilho[aim_time == 0 ? "... Good luck" : ""]."))
+	to_chat(user, span_warning("Você vai parar.[aim_time] Segundo antes de puxar o gatilho[aim_time == 0 ? "... Good luck" : ""]."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/gun/ballistic/revolver/russian/dropped(mob/user, silent)
@@ -277,12 +277,12 @@
 		shoot_with_empty_chamber(user)
 		spun = FALSE
 		user.visible_message(
-			span_danger("[user]Tenta atirar\the [src]mirar em outra coisa, mas só consegue parecer um idiota."),
-			span_danger("\The [src]O mecanismo anti-combate o impede de atirar em qualquer um além de você mesmo!"),
+			span_danger("[user] Tenta atirar\the [src] mirar em outra coisa, mas só consegue parecer um idiota."),
+			span_danger("\The [src] O mecanismo anti-combate o impede de atirar em qualquer um além de você mesmo!"),
 		)
 		return TRUE // no melee attack
 	if(!spun)
-		to_chat(user, span_warning("Você precisa girar\the [src]A câmara primeiro!"))
+		to_chat(user, span_warning("Você precisa girar\the [src] A câmara primeiro!"))
 		return TRUE // no melee attack
 	if(HAS_TRAIT(user, TRAIT_CURSED)) // I cannot live, I cannot die, trapped in myself, body my holding cell.
 		to_chat(user, span_warning("Que noite horrível... Ter uma maldição!"))
@@ -301,8 +301,8 @@
 	if(aim_time <= 0)
 		return FALSE
 	user.visible_message(
-		span_danger("[user]Objetivos\the [src]em[user.p_their()] [parse_zone(user.zone_selected)]..."),
-		span_userdanger("Você aponta\the [src]em seu[parse_zone(user.zone_selected)]..."),
+		span_danger("[user] Objetivos\the [src] em [user.p_their()] [parse_zone(user.zone_selected)]..."),
+		span_userdanger("Você aponta\the [src] em seu [parse_zone(user.zone_selected)]..."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	if(prob(10) && !HAS_TRAIT(user, TRAIT_FEARLESS))
@@ -310,8 +310,8 @@
 	if(!do_after(user, aim_time, target))
 		if(!user.incapacitated)
 			user.visible_message(
-				span_danger("[user]perde[user.p_their()]Enerva e coloca\the [src]Abaixe-se."),
-				span_userdanger("Você perde a coragem e coloca\the [src]Abaixe-se."),
+				span_danger("[user] perde [user.p_their()] Enerva e coloca\the [src] Abaixe-se."),
+				span_userdanger("Você perde a coragem e coloca\the [src] Abaixe-se."),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 		return TRUE
@@ -342,8 +342,8 @@
 		if(loaded_rounds && is_target_face)
 			user.add_mood_event("russian_roulette_win", /datum/mood_event/russian_roulette_win, loaded_rounds)
 		user.visible_message(
-			span_danger("[user][is_target_face ? "": " cowardly"]Pontos\the [src]em[user.p_their()] [aimed_at_readable], puxa o gatilho, e ... nada acontece!"),
-			span_danger("Você.[is_target_face ? "": " cowardly"]Ponto\the [src]em seu[aimed_at_readable], puxe o gatilho, e ... nada acontece!"),
+			span_danger("[user][is_target_face ? "": " cowardly"]Pontos\the [src] em [user.p_their()] [aimed_at_readable], puxa o gatilho, e ... nada acontece!"),
+			span_danger("Você.[is_target_face ? "": " cowardly"]Ponto\the [src] em seu [aimed_at_readable], puxe o gatilho, e ... nada acontece!"),
 			span_hear("Você ouve um clique!"),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
@@ -351,8 +351,8 @@
 		return TRUE // so they don't hit themselves in the forehead. because returning FALSE translates to "do melee attack" for whatever reason
 
 	user.visible_message(
-		span_danger("[user][is_target_face ? "": " cowardly"]Objetivos\the [src]em[user.p_their()] [aimed_at_readable]Quando ele explodir!"),
-		span_danger("Você.[is_target_face ? "": " cowardly"]Apontar\the [src]em seu[aimed_at_readable]Quando ele explodir![user.stat >= HARD_CRIT ? " <b>Everything suddenly goes black.</b>" : ""]"),
+		span_danger("[user][is_target_face ? "": " cowardly"]Objetivos\the [src] em [user.p_their()] [aimed_at_readable] Quando ele explodir!"),
+		span_danger("Você.[is_target_face ? "": " cowardly"]Apontar\the [src] em seu [aimed_at_readable] Quando ele explodir![user.stat >= HARD_CRIT ? " <b>Everything suddenly goes black.</b>" : ""]"),
 		span_hear("Você ouve um grunhido[user.stat == CONSCIOUS ? "" : ", followed by a thud"]!"),
 		vision_distance = COMBAT_MESSAGE_RANGE,
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
@@ -384,14 +384,14 @@
 			qdel(stone)
 			return
 		user.visible_message(
-			span_danger("[user]A alma é capturada por\the [src]!"),
+			span_danger("[user] A alma é capturada por\the [src]!"),
 			span_userdanger("Você perdeu a aposta! Sua alma está perdida!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 		return
 
 	user.visible_message(
-		span_danger("[user]é punido por tentar enganar o jogo!"),
+		span_danger("[user] é punido por tentar enganar o jogo!"),
 		span_userdanger("Você perdeu a aposta! Não só sua alma está perdida, mas é levada para longe por tentar enganar a morte!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
@@ -406,7 +406,7 @@
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) || is_clown_job(user.mind?.assigned_role))
 		return ..()
 	if(process_fire(user, user, FALSE, null, BODY_ZONE_HEAD))
-		user.visible_message(span_warning("[user]De alguma forma consegue atirar[user.p_them()]Na cara!"), span_userdanger("De alguma forma você atira na sua cara! Como diabos?"))
+		user.visible_message(span_warning("[user] De alguma forma consegue atirar [user.p_them()] Na cara!"), span_userdanger("De alguma forma você atira na sua cara! Como diabos?"))
 		user.emote("scream")
 		user.drop_all_held_items()
 		user.Paralyze(80)

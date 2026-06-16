@@ -140,7 +140,7 @@
 
 	console = multi_tool.buffer
 	console.machine = src
-	to_chat(user, span_notice("Você liga.[src]Para o console em[multi_tool]É um amortecedor."))
+	to_chat(user, span_notice("Você liga.[src] Para o console em [multi_tool] É um amortecedor."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mineral/stacking_machine/proc/rotate(input)

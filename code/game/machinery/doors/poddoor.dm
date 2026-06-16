@@ -53,7 +53,7 @@
 	if(panel_open)
 		if(deconstruction == BLASTDOOR_FINISHED)
 			. += span_notice("O painel de manutenção está aberto e os eletrônicos podem ser<b>Invadido</b>Fora.")
-			. += span_notice("\The [src]poderia ser calibrado para uma identificação de controlador de porta de explosão com um<b>Controlador de porta de explosão</b>.")
+			. += span_notice("\The [src] poderia ser calibrado para uma identificação de controlador de porta de explosão com um<b>Controlador de porta de explosão</b>.")
 		else if(deconstruction == BLASTDOOR_NEEDS_ELECTRONICS)
 			. += span_notice("O<i>Eletrônicos</i>estão faltando e há alguns<b>Fios.</b>Saindo.")
 		else if(deconstruction == BLASTDOOR_NEEDS_WIRES)
@@ -140,7 +140,7 @@
 			controller_item.id = "[new_id]"
 		id = controller_item.id
 		owner = WEAKREF(user)
-		balloon_alert(user, "Id mudou para[id]")
+		balloon_alert(user, "Id mudou para [id]")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -259,7 +259,7 @@
 /obj/machinery/door/poddoor/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
 	if(density & !(resistance_flags & INDESTRUCTIBLE))
 		add_fingerprint(user)
-		user.visible_message(span_warning("[user]Começa a se abrir.[src]."),					span_noticealien("Você começa a cavar suas garras[src]Com toda a sua força!"),					span_warning("Você ouve metal gemendo..."))
+		user.visible_message(span_warning("[user] Começa a se abrir.[src]."),					span_noticealien("Você começa a cavar suas garras [src] Com toda a sua força!"),					span_warning("Você ouve metal gemendo..."))
 		playsound(src, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 
 		var/time_to_open = 5 SECONDS
@@ -268,7 +268,7 @@
 
 		if(do_after(user, time_to_open, src))
 			if(density && !open(TRUE)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
-				to_chat(user, span_warning("Apesar de seus esforços,[src]Conseguiu resistir suas tentativas de abri-lo!"))
+				to_chat(user, span_warning("Apesar de seus esforços,[src] Conseguiu resistir suas tentativas de abri-lo!"))
 
 	else
 		return ..()

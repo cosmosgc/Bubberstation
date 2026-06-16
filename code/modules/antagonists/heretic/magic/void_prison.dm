@@ -28,7 +28,7 @@
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
 		cast_on.visible_message(
-			span_danger("Um giro, vazio frio se envolve[cast_on]Mas eles se soltam em uma onda de calor!"),
+			span_danger("Um giro, vazio frio se envolve [cast_on] Mas eles se soltam em uma onda de calor!"),
 			span_danger("Um vazio bocejante começa a abrir-se diante de você, mas uma grande onda de calor o destrói! Você está protegido!")
 		)
 		return

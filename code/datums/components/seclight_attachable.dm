@@ -161,7 +161,7 @@
 	var/successful_toggle = light.toggle_light(user)
 	if(!successful_toggle)
 		return TRUE
-	user.balloon_alert(user, "[light.name]Alternado.[light.light_on ? "on":"off"]")
+	user.balloon_alert(user, "[light.name] Alternado.[light.light_on ? "on":"off"]")
 	update_light()
 	return TRUE
 

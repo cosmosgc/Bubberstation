@@ -87,18 +87,18 @@
 	. = ..()
 
 	if (inert)
-		to_chat(target_carbon, span_notice("[src]Derruba quando tenta inserí-lo."))
+		to_chat(target_carbon, span_notice("[src] Derruba quando tenta inserí-lo."))
 		qdel(src)
 		return FALSE
 	if (!decay_timer)
 		return TRUE
 	preserve(TRUE)
-	target_carbon.visible_message(span_notice("[src]estabiliza quando está inserido."))
+	target_carbon.visible_message(span_notice("[src] estabiliza quando está inserido."))
 	return TRUE
 
 /obj/item/organ/monster_core/on_mob_remove(mob/living/carbon/target_carbon, special, movement_flags)
 	if (!inert && !special)
-		target_carbon?.visible_message(span_notice("[src]Decai rapidamente quando é removido."))
+		target_carbon?.visible_message(span_notice("[src] Decai rapidamente quando é removido."))
 		go_inert()
 	return ..()
 

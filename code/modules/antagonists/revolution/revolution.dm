@@ -194,11 +194,11 @@
 	if(flashed.stat == DEAD || issilicon(flashed) || isdrone(flashed))
 		return
 	if(flashed.stat != CONSCIOUS)
-		to_chat(source, span_warning("[flashed.p_They()]Deve estar consciente antes de se converter.[flashed.p_them()]!"))
+		to_chat(source, span_warning("[flashed.p_They()] Deve estar consciente antes de se converter.[flashed.p_them()]!"))
 		return
 
 	if(isnull(flashed.mind) || !GET_CLIENT(flashed))
-		to_chat(source, span_warning("[flashed]A mente é tão vazia que não é suscetível à influência!"))
+		to_chat(source, span_warning("[flashed] A mente é tão vazia que não é suscetível à influência!"))
 		return
 
 	var/holiday_meme_chance = check_holidays(APRIL_FOOLS) && prob(10)
@@ -207,7 +207,7 @@
 			INVOKE_ASYNC(src, PROC_REF(_async_holiday_meme_say), flashed)
 		flash.times_used-- // Flashes are less likely to burn out for headrevs, when used for conversion
 	else
-		to_chat(source, span_warning("[flashed]Parece resistente a[flash]!"))
+		to_chat(source, span_warning("[flashed] Parece resistente a [flash]!"))
 
 /// Used / called async from [proc/on_flash] to deliver a funny meme line
 /datum/antagonist/rev/head/proc/_async_holiday_meme_say(mob/living/carbon/flashed)
@@ -296,7 +296,7 @@
 		return
 	owner.current.balloon_alert_to_viewers("deconverted!")
 	if(ishuman(owner.current))
-		owner.current.visible_message(span_deconversion_message("[owner.current]Parece que...[owner.current.p_theyve()]Acabei de lembrar.[owner.current.p_their()]Uma verdadeira lealdade!"), null, null, null, owner.current)
+		owner.current.visible_message(span_deconversion_message("[owner.current] Parece que...[owner.current.p_theyve()] Acabei de lembrar.[owner.current.p_their()] Uma verdadeira lealdade!"), null, null, null, owner.current)
 		to_chat(owner, "<span class='deconversion_message bold'>Você não é mais um revolucionário lavagem cerebral! Sua memória está confusa desde que você foi rebelde... a única coisa que você se lembra é o nome de quem fez lavagem cerebral em você...</span>")
 	else if(issilicon(owner.current))
 		owner.current.visible_message(span_deconversion_message("O quadro apita satisfeito, removendo o engrama de memória hostil do MMI antes de inicializá-lo."), null, null, null, owner.current)
@@ -308,7 +308,7 @@
 	owner.current.balloon_alert_to_viewers("deconverted!")
 	if((ishuman(owner.current)))
 		if(owner.current.stat != DEAD)
-			owner.current.visible_message(span_deconversion_message("[owner.current]Parece que...[owner.current.p_theyve()]Acabei de lembrar.[owner.current.p_their()]Uma verdadeira lealdade!"), null, null, null, owner.current)
+			owner.current.visible_message(span_deconversion_message("[owner.current] Parece que...[owner.current.p_theyve()] Acabei de lembrar.[owner.current.p_their()] Uma verdadeira lealdade!"), null, null, null, owner.current)
 			to_chat(owner, "<span class='deconversion_message bold'>Você desistiu de sua causa de derrubar a equipe de comando. Você não é mais um chefe revolucionário.</span>")
 		else
 			to_chat(owner, "<span class='deconversion_message bold'>A doce libertação da morte. Você não é mais um chefe revolucionário.</span>")
@@ -345,7 +345,7 @@
 	if(give_flash)
 		var/where = carbon_owner.equip_conspicuous_item(new /obj/item/assembly/flash/handheld)
 		if (where)
-			to_chat(carbon_owner, "O flash em seu[where]Te ajudará a convencer a tripulação a se juntar à sua causa.")
+			to_chat(carbon_owner, "O flash em seu [where] Te ajudará a convencer a tripulação a se juntar à sua causa.")
 		else
 			to_chat(carbon_owner, "Infelizmente, o Sindicato não conseguiu te dar um flash.")
 

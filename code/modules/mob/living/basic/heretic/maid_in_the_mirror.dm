@@ -53,8 +53,8 @@
 	// If we have health, we take some damage
 	if(health > (maxHealth * 0.02))
 		visible_message(
-				span_warning("[src]Parece que entra e sai ligeiramente."),
-				span_userdanger("[user]O olhar penetra em cada ser!"),
+				span_warning("[src] Parece que entra e sai ligeiramente."),
+				span_userdanger("[user] O olhar penetra em cada ser!"),
 		)
 
 		recent_examiner_refs += user_ref
@@ -67,8 +67,8 @@
 	// If we're examined on low enough health we die straight up
 	else
 		visible_message(
-				span_danger("[src]Desaparece da existência!"),
-				span_userdanger("[user]Seu olhar quebra sua forma, destruindo você!"),
+				span_danger("[src] Desaparece da existência!"),
+				span_userdanger("[user] Seu olhar quebra sua forma, destruindo você!"),
 		)
 
 		death()

@@ -291,7 +291,7 @@
 	else
 		burst_size = initial(burst_size)
 		fire_delay = initial(fire_delay)
-		balloon_alert(user, "Mudou para[burst_size]- Roubo redondo")
+		balloon_alert(user, "Mudou para [burst_size]- Roubo redondo")
 
 	if(burst_select_sound)
 		playsound(user, burst_select_sound, 50, TRUE)
@@ -338,8 +338,8 @@
 						if(CASING_CATCH_FAILED_SPICY)
 							hitting_ground = TRUE
 							wielder.visible_message(
-								span_warning("[wielder]Esforça-se para\the [casing]Como ele ejeta de[src], e pega... antes de estragar porque é um invólucro quente. Não é legal!"),
-								span_warning("Você alcança e pega\the [casing]Como ele ejeta de[src]... antes de derrubá-lo, porque é uma cápsula quente! Ouch! Não é legal!"),
+								span_warning("[wielder] Esforça-se para\the [casing] Como ele ejeta de [src], e pega... antes de estragar porque é um invólucro quente. Não é legal!"),
+								span_warning("Você alcança e pega\the [casing] Como ele ejeta de [src]... antes de derrubá-lo, porque é uma cápsula quente! Ouch! Não é legal!"),
 								span_notice("Você ouve alguém tentando alcançar algo antes de um assobio de dor e o som de algo batendo."),
 							)
 							var/obj/item/bodypart/affecting = wielder.get_inactive_hand()
@@ -347,30 +347,30 @@
 						if(CASING_CATCH_FAILED_CLUMSY)
 							hitting_ground = TRUE
 							wielder.visible_message(
-								span_warning("[wielder]Esforça-se para\the [casing]Como ele ejeta de[src]... antes de estragá-lo de uma maneira incrivelmente improvável e cômica! Não é legal!"),
-								span_warning("Você alcança e pega\the [casing]Como ele ejeta de[src]... antes de estragá-lo de uma maneira incrivelmente improvável e cômica! Não é legal!"),
+								span_warning("[wielder] Esforça-se para\the [casing] Como ele ejeta de [src]... antes de estragá-lo de uma maneira incrivelmente improvável e cômica! Não é legal!"),
+								span_warning("Você alcança e pega\the [casing] Como ele ejeta de [src]... antes de estragá-lo de uma maneira incrivelmente improvável e cômica! Não é legal!"),
 								span_notice("Você ouve alguém tentando alcançar algo, logo seguido por um barulhento e cômico."),
 							)
 							if(!(world.time >= casing.shot_timestamp + CASING_HOT_DELAY))
 								var/obj/item/bodypart/affecting = wielder.get_inactive_hand()
-								to_chat(wielder, span_warning("Como se fosse um insulto à lesão,\the [casing]Aterra da maneira perfeita... para queimar seu[affecting.plaintext_zone]."))
+								to_chat(wielder, span_warning("Como se fosse um insulto à lesão,\the [casing] Aterra da maneira perfeita... para queimar seu [affecting.plaintext_zone]."))
 								wielder.apply_damage(5, BURN, affecting, wound_bonus = CANT_WOUND)
 						if(CASING_CATCH_FAILED_PLACEMENT)
 							hitting_ground = TRUE
 							wielder.visible_message(
-								span_warning("[wielder]Esforça-se para\the [casing]Como ele ejeta de[src]e se desfaz devoto a[wielder.p_their()]Mãos cheias. Não é legal!"),
-								span_warning("Você tenta alcançar\the [casing]Como ele ejeta de[src], e estragar porque suas mãos estão cheias. Não é legal!"),
+								span_warning("[wielder] Esforça-se para\the [casing] Como ele ejeta de [src] e se desfaz devoto a [wielder.p_their()] Mãos cheias. Não é legal!"),
+								span_warning("Você tenta alcançar\the [casing] Como ele ejeta de [src], e estragar porque suas mãos estão cheias. Não é legal!"),
 								span_notice("Você ouve alguém tentando algo, antes de um barulho metálico."),
 							)
 						if(CASING_CATCH_SUCCESSFUL)
 							hitting_ground = FALSE
 							casing.update_appearance()
-							to_chat(wielder, span_notice("Você alcança e pega\the [casing]Como ele ejeta de[src]Incrível."))
+							to_chat(wielder, span_notice("Você alcança e pega\the [casing] Como ele ejeta de [src] Incrível."))
 						if(CASING_CATCH_SUCCESSFUL_OUCH)
 							hitting_ground = FALSE
 							casing.update_appearance()
 							var/obj/item/bodypart/affecting = wielder.get_inactive_hand()
-							to_chat(wielder, span_notice("Você alcança e pega\the [casing]Como ele ejeta de[src]Incrível. Sua[affecting.plaintext_zone]Mas dói."))
+							to_chat(wielder, span_notice("Você alcança e pega\the [casing] Como ele ejeta de [src] Incrível. Sua [affecting.plaintext_zone] Mas dói."))
 							wielder.apply_damage(4, BURN, affecting, wound_bonus = CANT_WOUND)
 				if(hitting_ground)
 					casing.bounce_away(TRUE)
@@ -436,11 +436,11 @@
 	if (bolt_type == BOLT_TYPE_OPEN)
 		if(!bolt_locked) //If it's an open bolt, racking again would do nothing
 			if (user)
-				balloon_alert(user, "[bolt_wording]Já está armado!")
+				balloon_alert(user, "[bolt_wording] Já está armado!")
 			return
 		bolt_locked = FALSE
 	if (user)
-		balloon_alert(user, "[bolt_wording]Rasgado.")
+		balloon_alert(user, "[bolt_wording] Rasgado.")
 	process_chamber(!chambered, FALSE)
 	if (bolt_type == BOLT_TYPE_LOCKING && !chambered)
 		bolt_locked = TRUE
@@ -453,7 +453,7 @@
 /obj/item/gun/ballistic/proc/drop_bolt(mob/user = null)
 	playsound(src, bolt_drop_sound, bolt_drop_sound_volume, FALSE)
 	if (user)
-		balloon_alert(user, "[bolt_wording]Largado.")
+		balloon_alert(user, "[bolt_wording] Largado.")
 	chamber_round()
 	bolt_locked = FALSE
 	update_appearance()
@@ -461,12 +461,12 @@
 ///Handles all the logic needed for magazine insertion
 /obj/item/gun/ballistic/proc/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message = TRUE)
 	if(!istype(AM, accepted_magazine_type))
-		balloon_alert(user, "[AM.name]Não cabe!")
+		balloon_alert(user, "[AM.name] Não cabe!")
 		return FALSE
 	if(user.transferItemToLoc(AM, src))
 		magazine = AM
 		if (display_message)
-			balloon_alert(user, "[magazine_wording]Carregado.")
+			balloon_alert(user, "[magazine_wording] Carregado.")
 		if (magazine.ammo_count())
 			playsound(src, load_sound, load_sound_volume, load_sound_vary)
 		else
@@ -476,7 +476,7 @@
 		update_appearance()
 		return TRUE
 	else
-		to_chat(user, span_warning("Você parece não conseguir[src]Fora de suas mãos!"))
+		to_chat(user, span_warning("Você parece não conseguir [src] Fora de suas mãos!"))
 		return FALSE
 
 ///Handles all the logic of magazine ejection, if tac_load is set that magazine will be tacloaded in the place of the old eject
@@ -491,9 +491,9 @@
 	var/obj/item/ammo_box/magazine/old_mag = magazine
 	if (tac_load)
 		if (insert_magazine(user, tac_load, FALSE))
-			balloon_alert(user, "[magazine_wording]Trocado.")
+			balloon_alert(user, "[magazine_wording] Trocado.")
 		else
-			to_chat(user, span_warning("Você deixou cair o velho[magazine_wording]Mas o novo não se encaixa. Que vergonha."))
+			to_chat(user, span_warning("Você deixou cair o velho [magazine_wording] Mas o novo não se encaixa. Que vergonha."))
 			magazine = null
 	else
 		magazine = null
@@ -538,7 +538,7 @@
 
 	if(istype(tool, /obj/item/suppressor))
 		if(!can_suppress)
-			balloon_alert(user, "[tool.name]Não cabe!")
+			balloon_alert(user, "[tool.name] Não cabe!")
 			return ITEM_INTERACT_FAILURE
 
 		if(!user.is_holding(src))
@@ -553,7 +553,7 @@
 			balloon_alert(user, "Não posso anexar!")
 			return ITEM_INTERACT_FAILURE
 
-		balloon_alert(user, "[tool.name]Anexado")
+		balloon_alert(user, "[tool.name] Anexado")
 		install_suppressor(tool)
 		return ITEM_INTERACT_SUCCESS
 
@@ -587,7 +587,7 @@
 /obj/item/gun/ballistic/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	var/could_it_misfire = can_misfire || chambered.can_misfire
 	if(target != user && chambered.loaded_projectile && could_it_misfire && prob(misfire_probability) && blow_up(user))
-		to_chat(user, span_userdanger("[src]Falas de nevoeiro!"))
+		to_chat(user, span_userdanger("[src] Falas de nevoeiro!"))
 		return
 
 	if (sawn_off)
@@ -629,7 +629,7 @@
 		return CLICK_ACTION_BLOCKING
 	if(!user.is_holding(src))
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "[suppressor.name]Removido")
+	balloon_alert(user, "[suppressor.name] Removido")
 	user.put_in_hands(suppressor)
 	clear_suppressor()
 	return CLICK_ACTION_SUCCESS
@@ -697,7 +697,7 @@
 		return
 
 	if (!forced)
-		balloon_alert(user, "[num_unloaded] [cartridge_wording]Descarregado.")
+		balloon_alert(user, "[num_unloaded] [cartridge_wording] Descarregado.")
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // BUBBER EDIT ADDITION - this is normally handled by eject_magazine() but internal magazines are a special case
 	playsound(user, eject_sound, eject_sound_volume, eject_sound_vary)
 	update_appearance()
@@ -716,7 +716,7 @@
 	if(can_misfire)
 		. += span_danger("Você tem a sensação de que isso pode explodir se você atirar...")
 		if(misfire_probability > 0)
-			. += span_danger("Dado o estado da arma, há um[misfire_probability]Uma chance de falhar.")
+			. += span_danger("Dado o estado da arma, há um [misfire_probability] Uma chance de falhar.")
 	else if(misfire_probability > 0)
 		. += span_warning("Você sente que isso pode explodir se você atirar com as munições erradas...")
 		. += span_warning("Dado o estado da arma, há um[EXAMINE_HINT("[misfire_probability]%")]Pode falhar.")
@@ -745,12 +745,12 @@
 /obj/item/gun/ballistic/suicide_act(mob/living/user)
 	var/obj/item/organ/brain/B = user.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if (B && chambered && chambered.loaded_projectile && can_trigger_gun(user) && chambered.loaded_projectile.damage > 0)
-		user.visible_message(span_suicide("[user]está colocando o barril de[src]Em[user.p_their()]Boca. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está colocando o barril de [src] Em [user.p_their()] Boca. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		sleep(2.5 SECONDS)
 		if(user.is_holding(src))
 			var/turf/T = get_turf(user)
 			process_fire(user, user, FALSE, null, BODY_ZONE_HEAD)
-			user.visible_message(span_suicide("[user]Golpes.[user.p_their()]cérebro[user.p_s()]Fora com[src]!"))
+			user.visible_message(span_suicide("[user] Golpes.[user.p_their()] cérebro [user.p_s()] Fora com [src]!"))
 			var/turf/target = get_ranged_target_turf(user, REVERSE_DIR(user.dir), BRAINS_BLOWN_THROW_RANGE)
 			B.Remove(user)
 			B.forceMove(T)
@@ -758,10 +758,10 @@
 			B.throw_at(target, BRAINS_BLOWN_THROW_RANGE, BRAINS_BLOWN_THROW_SPEED, callback=gibspawner)
 			return BRUTELOSS
 		else
-			user.visible_message(span_suicide("[user]Entra em pânico e começa a sufocar até a morte!"))
+			user.visible_message(span_suicide("[user] Entra em pânico e começa a sufocar até a morte!"))
 			return OXYLOSS
 	else
-		user.visible_message(span_suicide("[user]está fingindo soprar[user.p_their()]cérebro[user.p_s()]Fora com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!</b>"))
+		user.visible_message(span_suicide("[user] está fingindo soprar [user.p_their()] cérebro [user.p_s()] Fora com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!</b>"))
 		playsound(src, dry_fire_sound, 30, TRUE)
 		return OXYLOSS
 
@@ -784,18 +784,18 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	if (SEND_SIGNAL(src, COMSIG_GUN_BEING_SAWNOFF, user) & COMPONENT_CANCEL_SAWING_OFF)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_notice("[user]começa a encurtar[src]."), span_notice("Você começa a encurtar[src]..."))
+	user.visible_message(span_notice("[user] começa a encurtar [src]."), span_notice("Você começa a encurtar [src]..."))
 
 	//if there's any live ammo inside the gun, makes it go off
 	if(blow_up(user))
-		user.visible_message(span_danger("[src]Vai!"), span_danger("[src]Vai na sua cara!"))
+		user.visible_message(span_danger("[src] Vai!"), span_danger("[src] Vai na sua cara!"))
 		return
 
 	if(!do_after(user, 3 SECONDS, target = src))
 		return
 	if(sawn_off)
 		return
-	user.visible_message(span_notice("[user]Encurta[src]!"), span_notice("Você encurta[src]."))
+	user.visible_message(span_notice("[user] Encurta [src]!"), span_notice("Você encurta [src]."))
 	sawn_off = TRUE
 	SEND_SIGNAL(src, COMSIG_GUN_SAWN_OFF)
 	if(!handle_modifications)
@@ -842,13 +842,13 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 		if(alternative_ammo_misfires)
 			can_misfire = TRUE
 		fire_sound = alternative_fire_sound
-		to_chat(user, span_notice("Você modifica.[src]Agora vai mudar.[alternative_caliber]Rodadas."))
+		to_chat(user, span_notice("Você modifica.[src] Agora vai mudar.[alternative_caliber] Rodadas."))
 	else
 		magazine.caliber = initial_caliber
 		if(alternative_ammo_misfires)
 			can_misfire = FALSE
 		fire_sound = initial_fire_sound
-		to_chat(user, span_notice("Você reset[src]Agora vai mudar.[initial_caliber]Rodadas."))
+		to_chat(user, span_notice("Você reset [src] Agora vai mudar.[initial_caliber] Rodadas."))
 
 ///used for sawing guns, causes the gun to fire without the input of the user
 /obj/item/gun/ballistic/proc/blow_up(mob/user)

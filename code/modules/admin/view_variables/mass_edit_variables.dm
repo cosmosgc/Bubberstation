@@ -98,7 +98,7 @@
 		if(VV_RESTORE_DEFAULT)
 			to_chat(src, "Contrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
-			to_chat(src, "Mudando.[items.len]Itens...", confidential = TRUE)
+			to_chat(src, "Mudando.[items.len] Itens...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -124,7 +124,7 @@
 
 			to_chat(src, "Contrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
-			to_chat(src, "Mudando.[items.len]Itens...", confidential = TRUE)
+			to_chat(src, "Mudando.[items.len] Itens...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -152,7 +152,7 @@
 			var/type = value["type"]
 			to_chat(src, "Contrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
-			to_chat(src, "Mudando.[items.len]Itens...", confidential = TRUE)
+			to_chat(src, "Mudando.[items.len] Itens...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -170,7 +170,7 @@
 		else
 			to_chat(src, "Contrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
-			to_chat(src, "Mudando.[items.len]Itens...", confidential = TRUE)
+			to_chat(src, "Mudando.[items.len] Itens...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -190,7 +190,7 @@
 		to_chat(src, "Cada objeto rejeitou sua edição.", confidential = TRUE)
 		return
 	if (rejected)
-		to_chat(src, "[rejected]Fora[count]objetos rejeitaram sua edição", confidential = TRUE)
+		to_chat(src, "[rejected] Fora [count] objetos rejeitaram sua edição", confidential = TRUE)
 
 	log_world("### MassVarEdit by [src]: [target.type] (A/R [accepted]/[rejected]) [variable]=[html_encode("[target.vars[variable]]")]([list2params(value)])")
 	log_admin("[key_name(src)] mass modified [original_name]'s [variable] to [target.vars[variable]] ([accepted] objects modified)")

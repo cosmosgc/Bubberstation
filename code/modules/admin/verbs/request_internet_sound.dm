@@ -34,7 +34,7 @@
 			return
 
 	GLOB.requests.music_request(usr.client, request_url, credit)
-	to_chat(usr, span_info("Você pediu.[span_linkify(request_url)]para ser jogado."), confidential = TRUE)
+	to_chat(usr, span_info("Você pediu.[span_linkify(request_url)] para ser jogado."), confidential = TRUE)
 
 	var/list/admin_message = list()
 	admin_message += ("[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)] has requested the following to be played:<br>")

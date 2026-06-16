@@ -153,7 +153,7 @@
 
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/arena_escape_enrage() // you ran somehow / teleported away from my arena attack now i'm mad fucker
 	SLEEP_CHECK_DEATH(0, src)
-	visible_message(span_boldwarning("[src]começa a brilhar vibrantemente enquanto suas feridas se fecham!"))
+	visible_message(span_boldwarning("[src] começa a brilhar vibrantemente enquanto suas feridas se fecham!"))
 	adjust_brute_loss(-250) // yeah you're gonna pay for that, don't run nerd
 	add_atom_colour(rgb(255, 255, 0), TEMPORARY_COLOUR_PRIORITY)
 	move_to_delay = move_to_delay / 2

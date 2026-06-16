@@ -159,7 +159,7 @@
 	if(!I.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return TRUE
 
-	to_chat(user, span_notice("Você começa a cortar[src]..."))
+	to_chat(user, span_notice("Você começa a cortar [src]..."))
 	if(I.use_tool(src, user, 30, volume=50))
 		deconstruct()
 		to_chat(user, span_notice("Você corta.[src]."))

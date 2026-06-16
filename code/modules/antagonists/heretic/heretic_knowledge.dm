@@ -529,15 +529,15 @@
 
 	var/list/requirements_string = list()
 
-	to_chat(user, span_hierophant("O[name]Requer o seguinte:"))
+	to_chat(user, span_hierophant("O [name] Requer o seguinte:"))
 	for(var/obj/item/path as anything in required_atoms)
 		var/amount_needed = required_atoms[path]
 		to_chat(user, span_hypnophrase("[amount_needed] [initial(path.name)]\s..."))
 		requirements_string += "[amount_needed == 1 ? "":"[amount_needed] "][initial(path.name)]\s"
 
-	to_chat(user, span_hierophant("Completá-lo vai recompensá-lo[KNOWLEDGE_RITUAL_POINTS]Pontos de conhecimento. Você pode verificar o conhecimento em seu conhecimento pesquisado para ser lembrado."))
+	to_chat(user, span_hierophant("Completá-lo vai recompensá-lo [KNOWLEDGE_RITUAL_POINTS] Pontos de conhecimento. Você pode verificar o conhecimento em seu conhecimento pesquisado para ser lembrado."))
 
-	desc = "Permite que você transmute[english_list(requirements_string)]Para[KNOWLEDGE_RITUAL_POINTS]Pontos de conhecimento bônus. Isso só pode ser concluído uma vez."
+	desc = "Permite que você transmute [english_list(requirements_string)] Para [KNOWLEDGE_RITUAL_POINTS] Pontos de conhecimento bônus. Isso só pode ser concluído uma vez."
 
 /datum/heretic_knowledge/knowledge_ritual/can_be_invoked(datum/antagonist/heretic/invoker)
 	return !was_completed
@@ -550,7 +550,7 @@
 	our_heretic.adjust_knowledge_points(KNOWLEDGE_RITUAL_POINTS)
 	was_completed = TRUE
 
-	to_chat(user, span_boldnotice("[name]Completo!"))
+	to_chat(user, span_boldnotice("[name] Completo!"))
 	to_chat(user, span_hypnophrase(span_big("[pick_list(HERETIC_INFLUENCE_FILE, "drain_message")]")))
 	desc += " (Completed!)"
 	log_heretic_knowledge("[key_name(user)] completed a [name] at [gameTimestamp()].")

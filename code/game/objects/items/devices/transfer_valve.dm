@@ -124,7 +124,7 @@
 		if(!user.transferItemToLoc(item, src))
 			return
 		attached_device = A
-		to_chat(user, span_notice("Você anexa o[item]Para o controle da válvula e prenda-a."))
+		to_chat(user, span_notice("Você anexa o [item] Para o controle da válvula e prenda-a."))
 		A.holder = src
 		A.on_attach()
 		A.toggle_secure() //this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).
@@ -286,7 +286,7 @@
 		var/attachment_message
 		if(attachment)
 			admin_attachment_message = "A bomba tinha...[attachment], que foi anexado por[attacher ? ADMIN_LOOKUPFLW(attacher) : "Unknown"]"
-			attachment_message = "com[attachment]Apegado por[attacher ? key_name_admin(attacher) : "Unknown"]"
+			attachment_message = "com [attachment] Apegado por[attacher ? key_name_admin(attacher) : "Unknown"]"
 
 		var/mob/bomber = get_mob_by_key(fingerprintslast)
 		var/admin_bomber_message

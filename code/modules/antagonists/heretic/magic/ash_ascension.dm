@@ -149,13 +149,13 @@
 
 		for(var/mob/living/L in T.contents)
 			if(L.can_block_magic())
-				L.visible_message(span_danger("O feitiço salta de[L]!"), span_danger("O feitiço sai de você!"))
+				L.visible_message(span_danger("O feitiço salta de [L]!"), span_danger("O feitiço sai de você!"))
 				continue
 			if((L in hit_list) || L == source)
 				continue
 			hit_list += L
 			L.adjust_fire_loss(20)
-			to_chat(L, span_userdanger("Você foi atingido por[source]Como Chamas de Eldritch!"))
+			to_chat(L, span_userdanger("Você foi atingido por [source] Como Chamas de Eldritch!"))
 
 		new /obj/effect/hotspot(T)
 		T.hotspot_expose(700,50,1)

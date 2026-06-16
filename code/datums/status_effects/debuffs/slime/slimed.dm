@@ -109,10 +109,10 @@
 			"Your skin feels like it's coming off",
 			"Your body feels like it's melting together"
 		))
-		to_chat(owner, span_userdanger("[feedback_text]Como a cama de lodo te devora!"))
+		to_chat(owner, span_userdanger("[feedback_text] Como a cama de lodo te devora!"))
 
 /datum/status_effect/slimed/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_are()]Coberto de lama borbulhante!")
+	return span_warning("[owner.p_They()] [owner.p_are()] Coberto de lama borbulhante!")
 
 #undef MIN_HEALTH
 #undef MIN_WATER_STACKS

@@ -285,7 +285,7 @@
 	. = ..()
 	if(prob(hit_reaction_chance))
 		return
-	owner.visible_message(span_danger("[owner]'s[src]emite um barulho alto como[owner]É atingido!"))
+	owner.visible_message(span_danger("[owner]'s [src] emite um barulho alto como [owner] É atingido!"))
 	var/static/list/directional_shot_angles = list(0, 45, 90, 135, 180, 225, 270, 315)
 	playsound(get_turf(owner), 'sound/effects/magic/clockwork/invoke_general.ogg', 20, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(reactionshot), owner), 1 SECONDS)

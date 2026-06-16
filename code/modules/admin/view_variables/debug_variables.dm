@@ -48,7 +48,7 @@
 		#ifdef VARSICON
 		var/icon/icon_value = icon(value)
 		var/rnd = rand(1,10000)
-		var/rname = "tmp[REF(icon_value)][rnd].png"
+		var/rname = "tmp [REF(icon_value)][rnd].png"
 		usr << browse_rsc(icon_value, rname)
 		return "(<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else

@@ -120,7 +120,7 @@
 			to_chat(user, span_warning("Sem troca de vezes em torno de uma rodada vai!"))
 			return FALSE
 		else if(friendly_team_members.len > enemy_team_members.len)
-			to_chat(user, span_warning("[team_color]tem mais membros da equipe que[team]Tente se juntar[team]Equipe para equilibrar como coisas."))
+			to_chat(user, span_warning("[team_color] tem mais membros da equipe que [team] Tente se juntar [team] Equipe para equilibrar como coisas."))
 			return FALSE
 	return TRUE
 

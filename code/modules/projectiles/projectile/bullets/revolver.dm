@@ -184,7 +184,7 @@
 			reagents.trans_to(target, reagents.total_volume, methods = INJECT)
 			return BULLET_ACT_HIT
 		blocked = 100
-		target.visible_message(span_danger("\The [src]Está desviado!"), span_userdanger("Você está protegido contra\the [src]!"))
+		target.visible_message(span_danger("\The [src] Está desviado!"), span_userdanger("Você está protegido contra\the [src]!"))
 	. = ..()
 	if(reagents.flags & NO_REACT) //first impact on a noncarbon
 		reagents.flags &= ~(NO_REACT)

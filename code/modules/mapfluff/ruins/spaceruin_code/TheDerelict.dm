@@ -163,7 +163,7 @@
 
 ///Overrides screwdriver act to prevent all deconstruction and hacking. Override for extra tuff fluff
 /obj/machinery/door/airlock/vault/derelict/screwdriver_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_danger("A marca robusta de[src]torna impossível acessar o painel de qualquer forma!"))
+	to_chat(user, span_danger("A marca robusta de [src] torna impossível acessar o painel de qualquer forma!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/fluff/oldturret

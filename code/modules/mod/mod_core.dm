@@ -535,7 +535,7 @@
 	set_theme(stone.theme)
 	for(var/mob/living/basic/shade/shade in stone)
 		shade.forceMove(get_turf(src))
-		shade.visible_message(span_warning("[shade]é expulso de[stone]como é inserido em[src]!"), span_warning("Você está expulso de[stone]como é inserido em[src]!"))
+		shade.visible_message(span_warning("[shade] é expulso de [stone] como é inserido em [src]!"), span_warning("Você está expulso de [stone] como é inserido em [src]!"))
 	return ..()
 
 /obj/item/mod/core/soul/proc/set_theme(new_theme)

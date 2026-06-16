@@ -61,8 +61,8 @@
 		return
 
 	food.visible_message(
-		span_danger("Algo escuro dentro[eater]Choca em[food]E[food.p_their()]Uma luz se apaga num instante!"),
-		span_userdanger("Você sente algo escuro[eater]Rasgue e roa sua luz em um instante! Recua tão rápido, mas você pode sentir isso.[eater.p_theyve()]Deixou algo com fome para trás."),
+		span_danger("Algo escuro dentro [eater] Choca em [food] E [food.p_their()] Uma luz se apaga num instante!"),
+		span_userdanger("Você sente algo escuro [eater] Rasgue e roa sua luz em um instante! Recua tão rápido, mas você pode sentir isso.[eater.p_theyve()] Deixou algo com fome para trás."),
 		span_danger("Você sente um pulso roendo comer à sua vista.")
 	)
 

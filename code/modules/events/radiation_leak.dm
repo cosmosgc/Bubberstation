@@ -89,7 +89,7 @@
 	for(var/tool_method in methods_to_fix)
 		signals_to_add += COMSIG_ATOM_TOOL_ACT(how_do_we_fix_it[tool_method])
 
-	the_source_of_our_problems.visible_message(span_danger("[the_source_of_our_problems]Começa a emanar um gás verde horrível!"))
+	the_source_of_our_problems.visible_message(span_danger("[the_source_of_our_problems] Começa a emanar um gás verde horrível!"))
 	// Add the component that makes the thing radioactive
 	the_source_of_our_problems.AddComponent(
 		/datum/component/radioactive_emitter, 		cooldown_time = 2 SECONDS, 		range = 5, 		threshold = RAD_MEDIUM_INSULATION, 		examine_text = span_green("<i>Está emanando um gás verde... Você provavelmente poderia parar por[english_list(methods_to_fix, and_text = " or ")].</i>"), 	)
@@ -118,7 +118,7 @@
 	if(!the_end_of_our_problems)
 		return
 
-	the_end_of_our_problems.visible_message(span_notice("O gás que emana de[the_end_of_our_problems]Se dissepa."))
+	the_end_of_our_problems.visible_message(span_notice("O gás que emana de [the_end_of_our_problems] Se dissepa."))
 	qdel(the_end_of_our_problems.GetComponent(/datum/component/radioactive_emitter))
 	if(length(signals_to_add))
 		UnregisterSignal(the_end_of_our_problems, signals_to_add)

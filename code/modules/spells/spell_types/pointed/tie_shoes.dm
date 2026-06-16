@@ -58,7 +58,7 @@
 	if(isanimal_or_basicmob(cast_on))
 		cast_on.add_movespeed_modifier(/datum/movespeed_modifier/magic_ties)
 		addtimer(CALLBACK(cast_on, TYPE_PROC_REF(/mob/living, remove_movespeed_modifier), /datum/movespeed_modifier/magic_ties), 3 SECONDS * spell_level, TIMER_UNIQUE|TIMER_OVERRIDE)
-		to_chat(owner, span_warning("Você amarra.[cast_on]com laços fracos e mágicos!"))
+		to_chat(owner, span_warning("Você amarra.[cast_on] com laços fracos e mágicos!"))
 		if(invocation_type != INVOCATION_NONE) // extra feedback since it's weird for them
 			cast_on.balloon_alert_to_viewers("magically tied!")
 		else
@@ -77,7 +77,7 @@
 
 	if(isnull(shoes_to_tie))
 		if(!summons_shoes)
-			to_chat(owner, span_warning("[cast_on]Não está usando sapatos!"))
+			to_chat(owner, span_warning("[cast_on] Não está usando sapatos!"))
 			return FALSE
 
 		shoes_to_tie = new shoe_to_cast(cast_on)
@@ -92,26 +92,26 @@
 		if(SHOES_TIED)
 			if(shoes_to_tie.fastening_type == SHOES_SLIPON)
 				if(bypass_tie_status)
-					to_chat(owner, span_warning("Você magicamente concede laços para[cast_on]Sapatos!"))
+					to_chat(owner, span_warning("Você magicamente concede laços para [cast_on] Sapatos!"))
 					cast_on.balloon_alert(owner, "Amarrado!")
 					shoes_to_tie.fastening_type = SHOES_LACED
 					if(invocation_type != INVOCATION_NONE)
 						playsound(cast_on, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 					return TRUE
 				else
-					to_chat(owner, span_warning("[cast_on]Está usando sapatos sem renda!"))
+					to_chat(owner, span_warning("[cast_on] Está usando sapatos sem renda!"))
 					cast_on.balloon_alert(owner, "Sem laços!")
 					return FALSE
 
-			to_chat(owner, span_warning("Você desamarrou.[cast_on]Sapatos!"))
+			to_chat(owner, span_warning("Você desamarrou.[cast_on] Sapatos!"))
 			cast_on.balloon_alert(owner, "Desamarrado!")
 			shoes_to_tie.adjust_laces(SHOES_UNTIED, force_lacing = TRUE)
 		if(SHOES_UNTIED)
-			to_chat(owner, span_warning("Seu nó.[cast_on]Os laços!"))
+			to_chat(owner, span_warning("Seu nó.[cast_on] Os laços!"))
 			cast_on.balloon_alert(owner, "Atado!")
 			shoes_to_tie.adjust_laces(SHOES_KNOTTED, force_lacing = TRUE)
 		if(SHOES_KNOTTED)
-			to_chat(owner, span_warning("[cast_on]Os laços já estão atados!"))
+			to_chat(owner, span_warning("[cast_on] Os laços já estão atados!"))
 			return FALSE
 
 // We need to override this, as trying to change next_use_time in cast() will just result in it being overridden.

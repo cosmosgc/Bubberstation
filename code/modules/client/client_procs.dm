@@ -249,10 +249,10 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	if (holder)
 		var/admin_max_file_size = CONFIG_GET(number/upload_limit_admin)
 		if(filelength > admin_max_file_size)
-			to_chat(src, span_warning("Erro: AllowUpload(): Arquivo Upload muito grande. Limite de envio:[admin_max_file_size/1024]KiB."))
+			to_chat(src, span_warning("Erro: AllowUpload(): Arquivo Upload muito grande. Limite de envio:[admin_max_file_size/1024] KiB."))
 			return FALSE
 	else if(filelength > client_max_file_size)
-		to_chat(src, span_warning("Erro: AllowUpload(): Arquivo Upload muito grande. Limite de envio:[client_max_file_size/1024]KiB."))
+		to_chat(src, span_warning("Erro: AllowUpload(): Arquivo Upload muito grande. Limite de envio:[client_max_file_size/1024] KiB."))
 		return FALSE
 	return TRUE
 
@@ -422,8 +422,8 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		if (num2text(byond_build) in GLOB.blacklisted_builds)
 			log_access("Failed login: [key] - blacklisted byond version")
 			to_chat_immediate(src, span_userdanger("Sua versão do byond está na lista negra."))
-			to_chat_immediate(src, span_danger("Byond build[byond_build] ([byond_version].[byond_build]) está na lista negra pela seguinte razão:[GLOB.blacklisted_builds[num2text(byond_build)]]."))
-			to_chat_immediate(src, span_danger("Por favor, baixe uma nova versão do byond. Se[byond_build]é a última, você pode ir para<a href=\"https://secure.byond.com/download/build\">O site de BYOND</a>para baixar outras versões."))
+			to_chat_immediate(src, span_danger("Byond build [byond_build] ([byond_version].[byond_build]) está na lista negra pela seguinte razão:[GLOB.blacklisted_builds [num2text(byond_build)]]."))
+			to_chat_immediate(src, span_danger("Por favor, baixe uma nova versão do byond. Se [byond_build] é a última, você pode ir para<a href=\"https://secure.byond.com/download/build\">O site de BYOND</a>para baixar outras versões."))
 			if(connecting_admin)
 				to_chat_immediate(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
 			else
@@ -491,7 +491,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			to_chat(src, span_danger("<b>Sua versão do byond pode estar ficando desatualizada.</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
 			to_chat(src, "Sua versão:[byond_version].[byond_build]")
-			to_chat(src, "Versão necessária para remover esta mensagem:[warn_version].[warn_build]Ou mais tarde")
+			to_chat(src, "Versão necessária para remover esta mensagem:[warn_version].[warn_build] Ou mais tarde")
 			to_chat(src, "Visita<a href=\"https://secure.byond.com/download\">O site de BYOND</a>para obter a última versão de BYOND.")
 
 	if (connection == "web" && !connecting_admin)
@@ -725,7 +725,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 				var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 				if(panic_addr && !connectiontopic_a["redirect"])
 					var/panic_name = CONFIG_GET(string/panic_server_name)
-					to_chat_immediate(src, span_notice("Enviando você para[panic_name ? panic_name : panic_addr]."))
+					to_chat_immediate(src, span_notice("Enviando você para [panic_name ? panic_name : panic_addr]."))
 					winset(src, null, "command=.options")
 					src << link("[panic_addr]?redirect=1")
 				qdel(query_client_in_db)
@@ -748,7 +748,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 			if(panic_addr && !connectiontopic_a["redirect"])
 				var/panic_name = CONFIG_GET(string/panic_server_name)
-				to_chat(src, "<span class='notice'>Enviando você para[panic_name ? panic_name : panic_addr].</span>")
+				to_chat(src, "<span class='notice'>Enviando você para [panic_name ? panic_name : panic_addr].</span>")
 				winset(src, null, "command=.options")
 				src << link("[panic_addr]?redirect=1")
 			qdel(query_client_in_db)

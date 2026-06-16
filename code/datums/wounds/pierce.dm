@@ -12,11 +12,11 @@
 
 	switch(severity)
 		if(WOUND_SEVERITY_TRIVIAL)
-			return span_danger("Está vazando sangue de um pequeno[LOWER_TEXT(undiagnosed_name || name)].")
+			return span_danger("Está vazando sangue de um pequeno [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_MODERATE)
-			return span_warning("Está vazando sangue de[LOWER_TEXT(undiagnosed_name || name)].")
+			return span_warning("Está vazando sangue de [LOWER_TEXT(undiagnosed_name || name)].")
 		if(WOUND_SEVERITY_SEVERE)
-			return span_boldwarning("Está vazando sangue de um sério[LOWER_TEXT(undiagnosed_name || name)]!")
+			return span_boldwarning("Está vazando sangue de um sério [LOWER_TEXT(undiagnosed_name || name)]!")
 		if(WOUND_SEVERITY_CRITICAL)
 			return span_boldwarning("Está vazando sangue de um major.[LOWER_TEXT(undiagnosed_name || name)]!!")
 
@@ -60,23 +60,23 @@
 			victim.bleed(blood_bled, TRUE)
 		if(7 to 13)
 			victim.visible_message(
-				span_smalldanger("Gotas de sangue voam do buraco[victim]'s[limb.plaintext_zone]."),
-				span_danger("Você tossiu um pouco de sangue do golpe para o seu[limb.plaintext_zone]."),
+				span_smalldanger("Gotas de sangue voam do buraco [victim]'s [limb.plaintext_zone]."),
+				span_danger("Você tossiu um pouco de sangue do golpe para o seu [limb.plaintext_zone]."),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			victim.bleed(blood_bled, TRUE)
 		if(14 to 19)
 			victim.visible_message(
-				span_smalldanger("Um pequeno fluxo de sangue jorra do buraco dentro[victim]'s[limb.plaintext_zone]!"),
-				span_danger("Você cuspiu uma corda de sangue do golpe para o seu[limb.plaintext_zone]!"),
+				span_smalldanger("Um pequeno fluxo de sangue jorra do buraco dentro [victim]'s [limb.plaintext_zone]!"),
+				span_danger("Você cuspiu uma corda de sangue do golpe para o seu [limb.plaintext_zone]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			victim.create_splatter(victim.dir)
 			victim.bleed(blood_bled)
 		if(20 to INFINITY)
 			victim.visible_message(
-				span_danger("Um borrifo de correntes de sangue do corte.[victim]'s[limb.plaintext_zone]!"),
-				span_bolddanger("Você engasga com um spray de sangue do golpe para o seu[limb.plaintext_zone]!"),
+				span_danger("Um borrifo de correntes de sangue do corte.[victim]'s [limb.plaintext_zone]!"),
+				span_bolddanger("Você engasga com um spray de sangue do golpe para o seu [limb.plaintext_zone]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			victim.bleed(blood_bled)
@@ -106,7 +106,7 @@
 			if(QDELETED(src))
 				return
 			if(SPT_PROB(2.5, seconds_per_tick))
-				to_chat(victim, span_notice("Você sente o[LOWER_TEXT(undiagnosed_name || name)]em seu[limb.plaintext_zone]se firmando do frio!"))
+				to_chat(victim, span_notice("Você sente o [LOWER_TEXT(undiagnosed_name || name)] em seu [limb.plaintext_zone] se firmando do frio!"))
 
 		if(HAS_TRAIT(victim, TRAIT_BLOOD_FOUNTAIN))
 			adjust_blood_flow(0.25 * seconds_per_tick) // old heparin used to just add +2 bleed stacks per tick, this adds 0.5 bleed flow to all open cuts which is probably even stronger as long as you can cut them first
@@ -126,7 +126,7 @@
 	if(blood_flow > WOUND_MAX_BLOODFLOW)
 		blood_flow = WOUND_MAX_BLOODFLOW
 	if(blood_flow <= 0 && !QDELETED(src))
-		to_chat(victim, span_green("Os buracos no seu[limb.plaintext_zone]ter[!limb.can_bleed() ? "healed up" : "stopped bleeding"]!"))
+		to_chat(victim, span_green("Os buracos no seu [limb.plaintext_zone] ter[!limb.can_bleed() ? "healed up" : "stopped bleeding"]!"))
 		qdel(src)
 
 /datum/wound/pierce/bleed/check_grab_treatments(obj/item/tool, mob/user)
@@ -158,9 +158,9 @@
 
 	if(HAS_TRAIT(src, TRAIT_WOUND_SCANNED))
 		treatment_delay *= 0.5
-		user.visible_message(span_danger("[user]Começa a cauterizar[victim]'s[limb.plaintext_zone]com[I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]com[I], mantendo as indicações de holo-imagem em mente ..."))
+		user.visible_message(span_danger("[user] Começa a cauterizar [victim]'s [limb.plaintext_zone] com [I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone] com [I], mantendo as indicações de holo-imagem em mente ..."))
 	else
-		user.visible_message(span_danger("[user]Começa a cauterizar[victim]'s[limb.plaintext_zone]com[I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone]com[I]..."))
+		user.visible_message(span_danger("[user] Começa a cauterizar [victim]'s [limb.plaintext_zone] com [I]..."), span_warning("Você começa a cauterizar[user == victim ? "your" : "[victim]'s"] [limb.plaintext_zone] com [I]..."))
 
 	playsound(user, 'sound/items/handling/surgery/cautery1.ogg', 75, TRUE)
 
@@ -170,7 +170,7 @@
 	playsound(user, 'sound/items/handling/surgery/cautery2.ogg', 75, TRUE)
 
 	var/bleeding_wording = (!limb.can_bleed() ? "holes" : "bleeding")
-	user.visible_message(span_green("[user]Cauteriza alguns dos[bleeding_wording]Vamos.[victim]."), span_green("Você cauteriza alguns dos[bleeding_wording]Vamos.[victim]."))
+	user.visible_message(span_green("[user] Cauteriza alguns dos [bleeding_wording] Vamos.[victim]."), span_green("Você cauteriza alguns dos [bleeding_wording] Vamos.[victim]."))
 	victim.apply_damage(2 + severity, BURN, limb, wound_bonus = CANT_WOUND)
 	if(prob(30))
 		victim.emote("scream")

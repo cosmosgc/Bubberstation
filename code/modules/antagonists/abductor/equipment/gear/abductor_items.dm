@@ -72,7 +72,7 @@
 /obj/item/abductor/gizmo/proc/scan(atom/target, mob/living/user)
 	if(ishuman(target))
 		console.AddSnapshot(target)
-		to_chat(user, span_notice("Você verifica.[target]e adicionar[target.p_them()]Para o banco de dados."))
+		to_chat(user, span_notice("Você verifica.[target] e adicionar [target.p_them()] Para o banco de dados."))
 
 /obj/item/abductor/gizmo/proc/mark(atom/target, mob/living/user)
 	var/mob/living/marked = marked_target_weakref?.resolve()
@@ -81,7 +81,7 @@
 		return
 	if(isabductor(target) || iscow(target))
 		marked_target_weakref = WEAKREF(target)
-		to_chat(user, span_notice("Você marca.[target]para recuperação futura."))
+		to_chat(user, span_notice("Você marca.[target] para recuperação futura."))
 	else
 		prepare(target,user)
 
@@ -89,10 +89,10 @@
 	if(get_dist(target,user)>1)
 		to_chat(user, span_warning("Você precisa estar ao lado do espécime para prepará-lo para transporte!"))
 		return
-	to_chat(user, span_notice("Você começa a se preparar.[target]Para transportar..."))
+	to_chat(user, span_notice("Você começa a se preparar.[target] Para transportar..."))
 	if(do_after(user, 10 SECONDS, target = target))
 		marked_target_weakref = WEAKREF(target)
-		to_chat(user, span_notice("Você termina de se preparar.[target]Para transporte."))
+		to_chat(user, span_notice("Você termina de se preparar.[target] Para transporte."))
 
 /obj/item/abductor/gizmo/Destroy()
 	if(console)
@@ -130,7 +130,7 @@
 	for(human_target in view(2,targloc))
 		if(human_target == user)
 			continue
-		to_chat(user, span_notice("Silêncio![human_target]Dispositivos de rádio."))
+		to_chat(user, span_notice("Silêncio![human_target] Dispositivos de rádio."))
 		radio_off_mob(human_target)
 
 /obj/item/abductor/silencer/proc/radio_off_mob(mob/living/carbon/human/target)
@@ -265,7 +265,7 @@
 
 /obj/item/gun/energy/shrink_ray/suicide_act(mob/living/user)
 	. = ..()
-	user.visible_message(span_suicide("[user]Ponto[src]Em[user.p_their()]Cabeça, parece que...[user.p_theyre()]Vai cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Ponto [src] Em [user.p_their()] Cabeça, parece que...[user.p_theyre()] Vai cometer suicídio!"))
 	// we want an animation, so lets manually handle suicide.
 	addtimer(CALLBACK(src, PROC_REF(shrink_death), user), 0)
 	return MANUAL_SUICIDE
@@ -369,7 +369,7 @@ Return to step 11 of normal process."}
 	log_stun_attack = is_stun_mode // other modes have their own log entries.
 	on_stun_sound = is_stun_or_sleep ? 'sound/items/weapons/egloves.ogg' : null
 
-	to_chat(usr, span_notice("Você muda o bastão para[txt]Modo."))
+	to_chat(usr, span_notice("Você muda o bastão para [txt] Modo."))
 	update_appearance()
 
 /obj/item/melee/baton/abductor/update_icon_state()
@@ -394,8 +394,8 @@ Return to step 11 of normal process."}
 /obj/item/melee/baton/abductor/baton_effect(mob/living/target, mob/living/user, modifiers, stun_override, clumsy)
 	switch (mode)
 		if(BATON_STUN)
-			target.visible_message(span_danger("[user]ATORDOAMENTOS[target]Com[src]!"),
-				span_userdanger("[user]Te atordoa com[src]!"), visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE)
+			target.visible_message(span_danger("[user] ATORDOAMENTOS [target] Com [src]!"),
+				span_userdanger("[user] Te atordoa com [src]!"), visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE)
 			target.set_jitter_if_lower(40 SECONDS)
 			target.set_confusion_if_lower(10 SECONDS)
 			target.set_stutter_if_lower(16 SECONDS)
@@ -423,20 +423,20 @@ Return to step 11 of normal process."}
 	if(INCAPACITATED_IGNORING(target, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB))
 		if(target.can_block_magic(MAGIC_RESISTANCE_MIND))
 			to_chat(user, span_warning("O espécime tem algum tipo de proteção mental que está interferindo na indução do sono! Parece que você foi frustrado."))
-			target.visible_message(span_danger("[user]Tentar entender o sono em[target]Com[src], mas não tem sucesso!"), 			span_userdanger("Você sente uma estranha onda de sonolência pesada."))
+			target.visible_message(span_danger("[user] Tentar entender o sono em [target] Com [src], mas não tem sucesso!"), 			span_userdanger("Você sente uma estranha onda de sonolência pesada."))
 			target.adjust_drowsiness(4 SECONDS)
 			return
-		target.visible_message(span_danger("[user]Induz o sono.[target]Com[src]!"), 		span_userdanger("Você de repente se sente muito sonolento!"))
+		target.visible_message(span_danger("[user] Induz o sono.[target] Com [src]!"), 		span_userdanger("Você de repente se sente muito sonolento!"))
 		target.Sleeping(sleep_time)
 		log_combat(user, target, "put to sleep")
 	else
 		if(target.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
 			to_chat(user, span_warning("O espécime tem algum tipo de proteção mental que está bloqueando completamente nossos métodos de indução do sono! Parece que você foi frustrado."))
-			target.visible_message(span_danger("[user]Tentei imuzir o sono.[target]Com[src], mas não tem sucesso!"), 			span_userdanger("Qualquer sensação de sonolência é rapidamente diminuída!"))
+			target.visible_message(span_danger("[user] Tentei imuzir o sono.[target] Com [src], mas não tem sucesso!"), 			span_userdanger("Qualquer sensação de sonolência é rapidamente diminuída!"))
 			return
 		target.adjust_drowsiness(2 SECONDS)
 		to_chat(user, span_warning("A indução do sono só funciona em espécimes atordoados!"))
-		target.visible_message(span_danger("[user]Tentei imuzir o sono.[target]Com[src]!"), 							span_userdanger("De repente você está sonolento!"))
+		target.visible_message(span_danger("[user] Tentei imuzir o sono.[target] Com [src]!"), 							span_userdanger("De repente você está sonolento!"))
 
 /obj/item/melee/baton/abductor/proc/CuffAttack(mob/living/victim, mob/living/user)
 	if(!iscarbon(victim))
@@ -445,19 +445,19 @@ Return to step 11 of normal process."}
 	if(!carbon_victim.handcuffed)
 		if(carbon_victim.canBeHandcuffed())
 			playsound(src, 'sound/items/weapons/cablecuff.ogg', 30, TRUE, -2)
-			carbon_victim.visible_message(span_danger("[user]Começa a restrição.[carbon_victim]Com[src]!"), 									span_userdanger("[user]começa a moldar um campo de energia em torno de suas mãos!"))
+			carbon_victim.visible_message(span_danger("[user] Começa a restrição.[carbon_victim] Com [src]!"), 									span_userdanger("[user] começa a moldar um campo de energia em torno de suas mãos!"))
 			if(do_after(user, time_to_cuff, carbon_victim) && carbon_victim.canBeHandcuffed())
 				if(!carbon_victim.handcuffed)
 					carbon_victim.set_handcuffed(new /obj/item/restraints/handcuffs/energy(carbon_victim))
 					to_chat(user, span_notice("Você se retém.[carbon_victim]."))
 					log_combat(user, carbon_victim, "handcuffed")
 			else
-				to_chat(user, span_warning("Você não consegue conter[carbon_victim]."))
+				to_chat(user, span_warning("Você não consegue conter [carbon_victim]."))
 		else
-			to_chat(user, span_warning("[carbon_victim]não tem duas mãos..."))
+			to_chat(user, span_warning("[carbon_victim] não tem duas mãos..."))
 
 /obj/item/melee/baton/abductor/proc/ProbeAttack(mob/living/victim, mob/living/user)
-	victim.visible_message(span_danger("[user]Sondas.[victim]Com[src]!"), 						span_userdanger("[user]sonda você!"))
+	victim.visible_message(span_danger("[user] Sondas.[victim] Com [src]!"), 						span_userdanger("[user] sonda você!"))
 
 	var/species = span_warning("Espécie desconhecida")
 	var/helptext = span_warning("Espécie inadequada para experimentos.")
@@ -488,7 +488,7 @@ Return to step 11 of normal process."}
 
 /obj/item/restraints/handcuffs/energy/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
-	wearer.visible_message(span_danger("[wearer]'s[name]Quebra uma descarga de energia!"), span_userdanger("[wearer]'s[name]Quebra uma descarga de energia!"))
+	wearer.visible_message(span_danger("[wearer]'s [name] Quebra uma descarga de energia!"), span_userdanger("[wearer]'s [name] Quebra uma descarga de energia!"))
 	do_sparks(4, FALSE, wearer.loc)
 	qdel(src)
 
@@ -531,7 +531,7 @@ Return to step 11 of normal process."}
 
 /obj/item/abductor_machine_beacon/attack_self(mob/user)
 	..()
-	user.visible_message(span_notice("[user]Para baixo.[src]E ativa."), span_notice("Você coloca para baixo[src]Etive-o."))
+	user.visible_message(span_notice("[user] Para baixo.[src] E ativa."), span_notice("Você coloca para baixo [src] Etive-o."))
 	user.dropItemToGround(src)
 	playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 50)
 	addtimer(CALLBACK(src, PROC_REF(try_spawn_machine)), 3 SECONDS)
@@ -547,7 +547,7 @@ Return to step 11 of normal process."}
 	if(viable)
 		playsound(src, 'sound/effects/phasein.ogg', 50, TRUE)
 		var/new_machine = new spawned_machine(loc)
-		visible_message(span_notice("[new_machine]Dobras em cima do farol!"))
+		visible_message(span_notice("[new_machine] Dobras em cima do farol!"))
 		qdel(src)
 	else
 		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50)

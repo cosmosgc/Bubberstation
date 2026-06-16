@@ -181,7 +181,7 @@
 
 	// Cutting out skill chips.
 	if(length(skillchips) && item.get_sharpness() == SHARP_EDGED)
-		to_chat(user,span_notice("Você começa a extirpar chips de habilidade de[src]."))
+		to_chat(user,span_notice("Você começa a extirpar chips de habilidade de [src]."))
 		if(do_after(user, 15 SECONDS, target = src))
 			for(var/chip in skillchips)
 				var/obj/item/skillchip/skillchip = chip
@@ -209,21 +209,21 @@
 		user.do_attack_animation(src)
 		playsound(loc, 'sound/effects/meatslap.ogg', 50)
 		set_organ_damage(maxHealth) //fails the brain as the brain was attacked, they're pretty fragile.
-		visible_message(span_danger("[user]hits[src]Com[item]!"))
-		to_chat(user, span_danger("Você bateu.[src]Com[item]!"))
+		visible_message(span_danger("[user] hits [src] Com [item]!"))
+		to_chat(user, span_danger("Você bateu.[src] Com [item]!"))
 
 /obj/item/organ/brain/proc/check_for_repair(obj/item/item, mob/user)
 	if(damage && item.is_drainable() && item.reagents.has_reagent(/datum/reagent/medicine/mannitol) && (organ_flags & ORGAN_ORGANIC)) //attempt to heal the brain
 		if(brainmob?.health <= HEALTH_THRESHOLD_DEAD) //if the brain is fucked anyway, do nothing
-			to_chat(user, span_warning("[src]Está muito danificado, não há mais nada que possamos fazer por isso!"))
+			to_chat(user, span_warning("[src] Está muito danificado, não há mais nada que possamos fazer por isso!"))
 			return TRUE
 
-		user.visible_message(span_notice("[user]Começa lentamente a derramar o conteúdo de[item]em frente[src]."), span_notice("Você começa lentamente a derramar o conteúdo de[item]em frente[src]."))
+		user.visible_message(span_notice("[user] Começa lentamente a derramar o conteúdo de [item] em frente [src]."), span_notice("Você começa lentamente a derramar o conteúdo de [item] em frente [src]."))
 		if(!do_after(user, 3 SECONDS, src))
-			to_chat(user, span_warning("Você falhou em despejar o conteúdo de[item]em frente[src]!"))
+			to_chat(user, span_warning("Você falhou em despejar o conteúdo de [item] em frente [src]!"))
 			return TRUE
 		var/and_bright_shade = !shade_color ? "" : " and turn a slightly brighter shade of [shade_color]"
-		user.visible_message(span_notice("[user]derrama o conteúdo de[item]em frente[src], fazendo-o reformar sua forma original[and_bright_shade]."), span_notice("Você derrama o conteúdo de[item]em frente[src], fazendo-o reformar sua forma original[and_bright_shade]."))
+		user.visible_message(span_notice("[user] derrama o conteúdo de [item] em frente [src], fazendo-o reformar sua forma original [and_bright_shade]."), span_notice("Você derrama o conteúdo de [item] em frente [src], fazendo-o reformar sua forma original [and_bright_shade]."))
 		var/amount = item.reagents.get_reagent_amount(/datum/reagent/medicine/mannitol)
 		var/healto = max(0, damage - amount * 2)
 		item.reagents.remove_all(ROUND_UP(item.reagents.total_volume / amount * (damage - healto) * 0.5)) //only removes however much solution is needed while also taking into account how much of the solution is mannitol
@@ -265,7 +265,7 @@
 		var/trauma_desc = ""
 		switch(trauma.resilience)
 			if(TRAUMA_RESILIENCE_BASIC)
-				trauma_desc = conditional_tooltip("Mild ", "Reparo através de cirurgia cerebral ou medicação como[/datum/reagent/medicine/neurine::name].", add_tooltips)
+				trauma_desc = conditional_tooltip("Mild ", "Reparo através de cirurgia cerebral ou medicação como [/datum/reagent/medicine/neurine::name].", add_tooltips)
 			if(TRAUMA_RESILIENCE_SURGERY)
 				trauma_desc = conditional_tooltip("Severe ", "Reparo através de cirurgia cerebral.", add_tooltips)
 			if(TRAUMA_RESILIENCE_LOBOTOMY)
@@ -306,7 +306,7 @@
 	var/target_has_brain = C.get_organ_by_type(/obj/item/organ/brain)
 
 	if(!target_has_brain && C.is_eyes_covered())
-		to_chat(user, span_warning("Você vai precisar remover[C.p_their()]Primeiro a cobertura da cabeça!"))
+		to_chat(user, span_warning("Você vai precisar remover [C.p_their()] Primeiro a cobertura da cabeça!"))
 		return
 
 	//since these people will be dead M != usr
@@ -322,10 +322,10 @@
 						span_userdanger("[msg]"))
 
 		if(C != user)
-			to_chat(C, span_notice("[user]Inserções[src]na sua cabeça."))
-			to_chat(user, span_notice("Você insere[src]Em[C]A cabeça."))
+			to_chat(C, span_notice("[user] Inserções [src] na sua cabeça."))
+			to_chat(user, span_notice("Você insere [src] Em [C] A cabeça."))
 		else
-			to_chat(user, span_notice("Você insere[src]na sua cabeça.") )
+			to_chat(user, span_notice("Você insere [src] na sua cabeça.") )
 
 		Insert(C)
 	else

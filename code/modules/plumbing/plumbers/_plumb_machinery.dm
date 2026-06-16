@@ -54,10 +54,10 @@
 	if(isobserver(user) || !in_range(src, user))
 		return
 
-	. += span_notice("A exibição de volume máximo diz:<b>[reagents.maximum_volume]U capacidade</b>Contém:")
+	. += span_notice("A exibição de volume máximo diz:<b>[reagents.maximum_volume] U capacidade</b>Contém:")
 	if(reagents.total_volume)
 		for(var/datum/reagent/reg as anything in reagents.reagent_list)
-			. += span_notice("[round(reg.volume, CHEMICAL_VOLUME_ROUNDING)]Você de[reg.name]")
+			. += span_notice("[round(reg.volume, CHEMICAL_VOLUME_ROUNDING)] Você de [reg.name]")
 	else
 		. += span_notice("Nothing.")
 
@@ -90,10 +90,10 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(I.tool_start_check(user, amount = 1))
-		to_chat(user, span_notice("Você começa a cortar\the [src]Separados."))
+		to_chat(user, span_notice("Você começa a cortar\the [src] Separados."))
 		if(I.use_tool(src, user, 1.5 SECONDS, volume = 50))
 			deconstruct(TRUE)
-			to_chat(user, span_notice("Você corta.\the [src]Separados."))
+			to_chat(user, span_notice("Você corta.\the [src] Separados."))
 			return ITEM_INTERACT_SUCCESS
 
 	return ITEM_INTERACT_BLOCKING

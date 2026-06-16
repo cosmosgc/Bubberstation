@@ -61,7 +61,7 @@
 		return
 	var/mob/mob_parent = parent
 	held_disk.forceMove(mob_parent.drop_location())
-	mob_parent.visible_message(span_danger("[mob_parent]Gotas[held_disk]Para o chão!"))
+	mob_parent.visible_message(span_danger("[mob_parent] Gotas [held_disk] Para o chão!"))
 	disky = null
 	mob_parent.update_appearance(updates = UPDATE_ICON)
 
@@ -72,7 +72,7 @@
 	if (!held_disk)
 		return
 	var/mob/mob_parent = parent
-	examine_list += span_notice("Espere...[mob_parent.p_are()] [mob_parent.p_they()]Segurando[held_disk]?")
+	examine_list += span_notice("Espere...[mob_parent.p_are()] [mob_parent.p_they()] Segurando [held_disk]?")
 
 /// Drop the disk when we are killed
 /datum/component/nuclear_bomb_operator/proc/on_death(atom/parent_atom)

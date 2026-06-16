@@ -50,8 +50,8 @@ Slimecrossing Items
 	if(user == target)
 		to_chat(user, span_notice("Tire uma selfie!"))
 	else
-		to_chat(user, span_notice("Você tira uma foto com[target]!"))
-		to_chat(target, span_notice("[user]Tira uma foto com você!"))
+		to_chat(user, span_notice("Você tira uma foto com [target]!"))
+		to_chat(target, span_notice("[user] Tira uma foto com você!"))
 	to_chat(target, span_boldnotice("Você vai se lembrar deste momento para sempre!"))
 
 	target.AddComponent(/datum/component/dejavu, 2)
@@ -94,7 +94,7 @@ Slimecrossing Items
 		return
 	to_chat(user, span_notice("Você aperta.[src]."))
 	var/obj/B = new /obj/structure/barricade/slime(get_turf(loc))
-	B.visible_message(span_warning("[src]de arrependimento cresce em uma grande barreira gelatinosa!"))
+	B.visible_message(span_warning("[src] de arrependimento cresce em uma grande barreira gelatinosa!"))
 	qdel(src)
 
 //Slime barricade - Chilling Grey
@@ -172,22 +172,22 @@ Slimecrossing Items
 		to_chat(user, span_warning("O dispositivo de captura só funciona em criaturas simples."))
 		return
 	if(pokemon.mind)
-		to_chat(user, span_notice("Você oferece o dispositivo para[pokemon]."))
+		to_chat(user, span_notice("Você oferece o dispositivo para [pokemon]."))
 		if(tgui_alert(pokemon, "Gostaria de entrar?[user]O dispositivo de captura?", "Gold Capture Device", list("Yes", "No")) == "Yes")
 			if(user.can_perform_action(src) && user.can_perform_action(pokemon))
-				to_chat(user, span_notice("Você armazena.[pokemon]Sem dispositivo de captura."))
+				to_chat(user, span_notice("Você armazena.[pokemon] Sem dispositivo de captura."))
 				to_chat(pokemon, span_notice("O mundo deforma ao seu redor, e de repente você está em um vazio infinito, com uma janela para o lado de fora flutuando na sua frente."))
 				store(pokemon, user)
 			else
-				to_chat(user, span_warning("Você estava muito longe de[pokemon]."))
-				to_chat(pokemon, span_warning("Você estava muito longe de[user]."))
+				to_chat(user, span_warning("Você estava muito longe de [pokemon]."))
+				to_chat(pokemon, span_warning("Você estava muito longe de [user]."))
 		else
-			to_chat(user, span_warning("[pokemon]Recusou a entrada sem dispositivo."))
+			to_chat(user, span_warning("[pokemon] Recusou a entrada sem dispositivo."))
 			return
 	else if(!pokemon.has_faction(FACTION_NEUTRAL))
 		to_chat(user, span_warning("Esta criatura é muito agressiva para ser capturada."))
 		return
-	to_chat(user, span_notice("Você armazena.[pokemon]Sem dispositivo de captura."))
+	to_chat(user, span_notice("Você armazena.[pokemon] Sem dispositivo de captura."))
 	store(pokemon)
 
 /obj/item/capturedevice/attack_self(mob/user)

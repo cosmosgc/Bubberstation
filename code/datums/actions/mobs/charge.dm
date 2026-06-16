@@ -174,7 +174,7 @@
 
 /// Actually hit someone
 /datum/action/cooldown/mob_cooldown/charge/proc/hit_target(atom/movable/source, mob/living/target, damage_dealt)
-	target.visible_message(span_danger("[source]Bate em[target]!"), span_userdanger("[source]Atropela você no chão!"))
+	target.visible_message(span_danger("[source] Bate em [target]!"), span_userdanger("[source] Atropela você no chão!"))
 	target.apply_damage(damage_dealt, BRUTE, wound_bonus = CANT_WOUND)
 	playsound(get_turf(target), 'sound/effects/meteorimpact.ogg', 100, TRUE)
 	shake_camera(target, 4, 3)
@@ -211,7 +211,7 @@
 		living_source = source
 
 	if(!isliving(target))
-		source.visible_message(span_danger("[source]Bate em[target]!"))
+		source.visible_message(span_danger("[source] Bate em [target]!"))
 		living_source?.Stun(recoil_duration, ignore_canstun = TRUE)
 		return
 
@@ -222,7 +222,7 @@
 			living_source.Stun(recoil_duration, ignore_canstun = TRUE)
 			return
 
-	living_target.visible_message(span_danger("[source]Carrega em[living_target]!"), span_userdanger("[source]Carrega em você!"))
+	living_target.visible_message(span_danger("[source] Carrega em [living_target]!"), span_userdanger("[source] Carrega em você!"))
 	living_target.Knockdown(knockdown_duration)
 
 /datum/status_effect/tired_post_charge

@@ -137,7 +137,7 @@
 		to_chat(harbinger, span_warning("Este corpo morreu, é inútil!"))
 		return
 	if (new_body.key)
-		to_chat(harbinger, span_warning("[parent]Já se tornou sapiente!"))
+		to_chat(harbinger, span_warning("[parent] Já se tornou sapiente!"))
 		qdel(src)
 		return
 	if (extra_control_checks && !extra_control_checks.Invoke(harbinger))

@@ -29,7 +29,7 @@
 			new /obj/effect/goliath_tentacle(adjacent_target)
 
 	if (isliving(target))
-		owner.visible_message(span_warning("[owner]Cava seus tentáculos sob[target]!"))
+		owner.visible_message(span_warning("[owner] Cava seus tentáculos sob [target]!"))
 	StartCooldown()
 	return TRUE
 
@@ -52,7 +52,7 @@
 		var/turf/adjacent_target = get_step(target, dir)
 		if(adjacent_target)
 			new /obj/effect/goliath_tentacle(adjacent_target)
-	owner.visible_message(span_warning("[owner]Solta tentáculos do chão ao redor!"))
+	owner.visible_message(span_warning("[owner] Solta tentáculos do chão ao redor!"))
 	StartCooldown()
 	return TRUE
 
@@ -72,7 +72,7 @@
 /datum/action/cooldown/mob_cooldown/tentacle_grasp/Activate(atom/target)
 	new /obj/effect/temp_visual/effect_trail/burrowed_tentacle(owner.loc, target)
 	if (isliving(target))
-		owner.visible_message(span_warning("[owner]Chega para[target]Com seus tentáculos!"))
+		owner.visible_message(span_warning("[owner] Chega para [target] Com seus tentáculos!"))
 	StartCooldown()
 	return TRUE
 

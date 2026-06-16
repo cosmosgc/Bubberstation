@@ -41,7 +41,7 @@
 
 	target_temperature = max_temperature
 	investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "Temperatura do Alvo Definida para[target_temperature]K.")
+	balloon_alert(user, "Temperatura do Alvo Definida para [target_temperature] K.")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -131,7 +131,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
+		to_chat(user, span_warning("Você não pode destrancar [src] Desligue isso primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/temperature_gate/multitool_act(mob/living/user, obj/item/multitool/I)
@@ -139,9 +139,9 @@
 	if (istype(I))
 		inverted = !inverted
 		if(inverted)
-			to_chat(user, span_notice("Você definir o[src]Os sensores liberam gases quando a temperatura é maior do que a fixa."))
+			to_chat(user, span_notice("Você definir o [src] Os sensores liberam gases quando a temperatura é maior do que a fixa."))
 		else
-			to_chat(user, span_notice("Você definir o[src]Os sensores das configurações padrão."))
+			to_chat(user, span_notice("Você definir o [src] Os sensores das configurações padrão."))
 	return TRUE
 
 //mapping

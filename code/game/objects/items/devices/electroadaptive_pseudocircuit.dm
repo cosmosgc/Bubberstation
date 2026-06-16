@@ -34,13 +34,13 @@
 		to_chat(R, span_warning("Precisa de uma célula de energia instalada para isso."))
 		return
 	if(recharging)
-		to_chat(R, span_warning("[src]Precisa de tempo para recarregar primeiro."))
+		to_chat(R, span_warning("[src] Precisa de tempo para recarregar primeiro."))
 		return
 	if(!R.cell.use(circuit_cost))
 		to_chat(R, span_warning("Você não tem energia para isso.[display_energy(circuit_cost)].)"))
 		return
 	if(!circuits)
-		to_chat(R, span_warning("Você precisa de mais material. Use[src]em circuitos simples existentes para quebrá-los."))
+		to_chat(R, span_warning("Você precisa de mais material. Use [src] em circuitos simples existentes para quebrá-los."))
 		return
 	playsound(R, 'sound/items/tools/rped.ogg', 50, TRUE)
 	recharging = TRUE
@@ -59,8 +59,8 @@
 	circuits++
 	maptext = MAPTEXT(circuits)
 	user.visible_message(
-		span_notice("O usuário quebra[interacting_with]com[src]."),
-		span_notice("Você recicla.[interacting_with]em[src]Agora tem material para<b>[circuits]</b>Circuitos.")
+		span_notice("O usuário quebra [interacting_with] com [src]."),
+		span_notice("Você recicla.[interacting_with] em [src] Agora tem material para<b>[circuits]</b>Circuitos.")
 	)
 	playsound(user, 'sound/items/deconstruct.ogg', 50, TRUE)
 	qdel(interacting_with)

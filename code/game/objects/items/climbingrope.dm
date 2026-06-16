@@ -47,7 +47,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	var/away_dir = get_dir(trans_vertical, interacting_with)
-	user.visible_message(span_notice("[user]Começa a subir.[interacting_with.z > user.z ? "up" : "down"]Com[src]."), span_notice("Você começa a trabalhar em corretamente gancho[src]e indo[interacting_with.z > user.z ? "up" : "down"]."))
+	user.visible_message(span_notice("[user] Começa a subir.[interacting_with.z > user.z ? "up" : "down"]Com [src]."), span_notice("Você começa a trabalhar em corretamente gancho [src] e indo[interacting_with.z > user.z ? "up" : "down"]."))
 	// BUBBER EDIT BEGIN - climbsound
 	playsound(interacting_with, climbsound, 50) //plays twice so people above and below can hear
 	playsound(user_turf, climbsound, 50)

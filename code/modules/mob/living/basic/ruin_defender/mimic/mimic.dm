@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 	if(!. || !knockdown_people || !prob(15) || !istype(target))
 		return
 	target.Paralyze(4 SECONDS)
-	target.visible_message(span_danger("\The [src]Derruba.\the [target]!"), 		span_userdanger("\The [src]Derruba você!"))
+	target.visible_message(span_danger("\The [src] Derruba.\the [target]!"), 		span_userdanger("\The [src] Derruba você!"))
 
 
 // ****************************
@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 	if(user.combat_mode)
 		return ..()
 	if(trigger())
-		to_chat(user, span_danger("Enquanto você tenta abrir[src]Ele.[length(contents) ? "stiffens up and " : ""]Quase prende seus dedos!"))
+		to_chat(user, span_danger("Enquanto você tenta abrir [src] Ele.[length(contents) ? "stiffens up and " : ""]Quase prende seus dedos!"))
 		return TRUE
 	toggle_open(user)
 	return TRUE
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 		return FALSE
 	if(ai_controller.ai_status != AI_STATUS_OFF)
 		return FALSE
-	visible_message(span_danger("[src]Começa a se mexer!"))
+	visible_message(span_danger("[src] Começa a se mexer!"))
 	REMOVE_TRAIT(src, TRAIT_AI_PAUSED, INNATE_TRAIT)
 	ai_controller.set_ai_status(AI_STATUS_ON)
 	if(length(contents))
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 	return ..()
 
 /mob/living/basic/mimic/copy/wabbajack(what_to_randomize, change_flags = WABBAJACK)
-	visible_message(span_warning("[src]resiste à polimorfa em uma nova criatura!"))
+	visible_message(span_warning("[src] resiste à polimorfa em uma nova criatura!"))
 
 /mob/living/basic/mimic/copy/animate_atom_living(mob/living/owner)
 	change_owner(owner)

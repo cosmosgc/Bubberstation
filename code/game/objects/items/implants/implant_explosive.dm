@@ -68,7 +68,7 @@
 	if(cause == "death" && HAS_TRAIT(imp_in, TRAIT_PREVENT_IMPLANT_AUTO_EXPLOSION))
 		return FALSE
 	if(announce_activation)
-		to_chat(imp_in, span_notice("Você ativa o seu[name]."))
+		to_chat(imp_in, span_notice("Você ativa o seu [name]."))
 	active = TRUE
 	var/turf/boomturf = get_turf(imp_in)
 	message_admins("[ADMIN_LOOKUPFLW(imp_in)] has activated their [name] at [ADMIN_VERBOSEJMP(boomturf)], with cause of [cause].")
@@ -118,9 +118,9 @@
  */
 /obj/item/implant/explosive/proc/timed_explosion()
 	if (isnull(imp_in))
-		visible_message(span_warning("[src]Começa a apitar de forma ameaçadora!"))
+		visible_message(span_warning("[src] Começa a apitar de forma ameaçadora!"))
 	else
-		imp_in.visible_message(span_warning("[imp_in]Começa a apitar de forma ameaçadora!"))
+		imp_in.visible_message(span_warning("[imp_in] Começa a apitar de forma ameaçadora!"))
 		if(notify_ghosts)
 			notify_ghosts(
 				"[imp_in.real_name] is about to detonate their explosive implant!",
@@ -135,7 +135,7 @@
 	if(!panic_beep_sound)
 		sleep(delay * 0.25)
 	if(imp_in && !imp_in.stat && !no_paralyze)
-		imp_in.visible_message(span_warning("[imp_in]Dobra com dor!"))
+		imp_in.visible_message(span_warning("[imp_in] Dobra com dor!"))
 		imp_in.Paralyze(14 SECONDS)
 
 	if(!panic_beep_sound)

@@ -118,7 +118,7 @@
 			return ITEM_INTERACT_FAILURE
 
 		playsound(src, SFX_WRITING_PEN, 30)
-		to_chat(user, span_notice("Você assina o[src]."))
+		to_chat(user, span_notice("Você assina o [src]."))
 
 		custom_description = newdescription
 		set_sticker_icon_state(pick("o_text1", "o_text2", "o_text3"))
@@ -156,7 +156,7 @@
 		return CLICK_ACTION_BLOCKING
 
 	set_sticker_icon_state(sticker_variants[pick])
-	to_chat(user, span_notice("Você muda o adesivo.[src]Para '[pick]'."))
+	to_chat(user, span_notice("Você muda o adesivo.[src] Para '[pick]'."))
 	return CLICK_ACTION_SUCCESS
 
 /// Can we select a new sticker?

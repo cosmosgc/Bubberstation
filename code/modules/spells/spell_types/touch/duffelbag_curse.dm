@@ -29,8 +29,8 @@
 	return iscarbon(cast_on)
 
 /datum/action/cooldown/spell/touch/duffelbag/on_antimagic_triggered(obj/item/melee/touch_attack/hand, mob/living/carbon/victim, mob/living/carbon/caster)
-	to_chat(caster, span_warning("O feitiço não parece afetar[victim]!"))
-	to_chat(victim, span_warning("Você realmente não sente vontade de falar sobre o seu[pick(elaborate_backstory)]com completos estranhos hoje."))
+	to_chat(caster, span_warning("O feitiço não parece afetar [victim]!"))
+	to_chat(victim, span_warning("Você realmente não sente vontade de falar sobre o seu [pick(elaborate_backstory)] com completos estranhos hoje."))
 
 /datum/action/cooldown/spell/touch/duffelbag/cast_on_hand_hit(obj/item/melee/touch_attack/hand, mob/living/carbon/victim, mob/living/carbon/caster)
 
@@ -42,15 +42,15 @@
 
 	// If someone's already cursed, don't try to give them another
 	if(istype(victim.back, /obj/item/storage/backpack/duffelbag/cursed))
-		to_chat(caster, span_warning("O fardo de[victim]A mochila se torna demais, empurrando-os para o chão!"))
+		to_chat(caster, span_warning("O fardo de [victim] A mochila se torna demais, empurrando-os para o chão!"))
 		to_chat(victim, span_warning("O peso deste saco se torna sobrecarregador!"))
 		return TRUE
 
 	// However if they're uncursed, they're fresh for getting a cursed bag
 	var/obj/item/storage/backpack/duffelbag/cursed/conjured_duffel = new get_turf(victim)
 	victim.visible_message(
-		span_danger("Um saco rosnado aparece em[victim]!"),
-		span_danger("Você sente algo se prendendo a você, e um forte desejo de discutir seu[pick(elaborate_backstory)]De longe!"),
+		span_danger("Um saco rosnado aparece em [victim]!"),
+		span_danger("Você sente algo se prendendo a você, e um forte desejo de discutir seu [pick(elaborate_backstory)] De longe!"),
 	)
 
 	conjured_duffel.pickup(victim)

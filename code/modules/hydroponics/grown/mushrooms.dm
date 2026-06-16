@@ -204,7 +204,7 @@
 	if(seed.potency < 95)
 		return ..()
 
-	to_chat(user, span_notice("Você esconde a cantora com[I]."))
+	to_chat(user, span_notice("Você esconde a cantora com [I]."))
 	remove_item_from_storage(user)
 	if(seed.resistance_flags & FIRE_PROOF)
 		user.put_in_hands(new /obj/item/clothing/head/wizard/chanterelle/fr())
@@ -272,7 +272,7 @@
 	if(isspaceturf(user.loc))
 		return FALSE
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("Você precisa de mais espaço para plantar[src]."))
+		to_chat(user, span_warning("Você precisa de mais espaço para plantar [src]."))
 		return FALSE
 	var/count = 0
 	var/maxcount = 1

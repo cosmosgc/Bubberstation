@@ -35,7 +35,7 @@
 	SSshuttle.registerTradeBlockade(src)
 	AddComponent(/datum/component/gps, "Nautical Signal")
 	active = TRUE
-	to_chat(user,span_notice("Você comuta[src] [active ? "on":"off"]."))
+	to_chat(user,span_notice("Você comuta [src] [active ? "on":"off"]."))
 	to_chat(user,span_warning("O sinal pode ser rastreado pelo GPS."))
 	START_PROCESSING(SSobj,src)
 
@@ -65,7 +65,7 @@
 /obj/machinery/shuttle_scrambler/proc/dump_loot(mob/user)
 	if(credits_stored) // Prevents spamming empty holochips
 		new /obj/item/holochip(drop_location(), credits_stored)
-		to_chat(user,span_notice("Você recupera o siphoned[MONEY_NAME]!"))
+		to_chat(user,span_notice("Você recupera o siphoned [MONEY_NAME]!"))
 		credits_stored = 0
 	else
 		to_chat(user,span_notice("Não há nada para retirar."))
@@ -255,7 +255,7 @@
 /obj/machinery/computer/piratepad_control/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
 	if (istype(I) && istype(I.buffer,/obj/machinery/piratepad))
-		to_chat(user, span_notice("Você liga.[src]com[I.buffer]em[I]Tampão."))
+		to_chat(user, span_notice("Você liga.[src] com [I.buffer] em [I] Tampão."))
 		pad_ref = WEAKREF(I.buffer)
 		return TRUE
 
@@ -357,7 +357,7 @@
 	if(!value)
 		status_report += "Nothing"
 
-	pad.visible_message(span_notice("[pad]Ativar!"))
+	pad.visible_message(span_notice("[pad] Ativar!"))
 	pad.finish_sending()
 	sending = FALSE
 
@@ -393,17 +393,17 @@
 	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
 	if(!pad)
 		status_report = "No pad detected. Build or link a pad."
-		pad.audible_message(span_notice("[pad]Apita."))
+		pad.audible_message(span_notice("[pad] Apita."))
 		return
 	if(pad?.panel_open)
 		status_report = "Please screwdrive pad closed to send. "
-		pad.audible_message(span_notice("[pad]Apita."))
+		pad.audible_message(span_notice("[pad] Apita."))
 		return
 	if(sending)
 		return
 	sending = TRUE
 	status_report = "Sending... "
-	pad.visible_message(span_notice("[pad]Começa a carregar."))
+	pad.visible_message(span_notice("[pad] Começa a carregar."))
 	pad.set_is_sending(TRUE)
 	sending_timer = addtimer(CALLBACK(src, PROC_REF(send), check_global, user), warmup_time, TIMER_STOPPABLE)
 	if(load_holding_facility)

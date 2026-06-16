@@ -101,7 +101,7 @@
 
 /datum/action/cooldown/alien/make_structure/lay_egg/Activate(atom/target)
 	. = ..()
-	owner.visible_message(span_alertalien("[owner]Põe um ovo!"))
+	owner.visible_message(span_alertalien("[owner] Põe um ovo!"))
 
 //Button to let queen choose her praetorian.
 /datum/action/cooldown/alien/promote
@@ -115,7 +115,7 @@
 	. = ..()
 	//not free
 	if(promotion_plasma_cost != 0)
-		name = "[initial(name)] ([promotion_plasma_cost]P)"
+		name = "[initial(name)] ([promotion_plasma_cost] P)"
 
 /datum/action/cooldown/alien/promote/IsAvailable(feedback = FALSE)
 	. = ..()
@@ -148,7 +148,7 @@
 		to_chat(owner, span_noticealien("Você não consegue preparar um parasita."))
 		return FALSE
 
-	to_chat(owner, span_noticealien("Use[new_promotion]em um de seus filhos para promovê-la a um pretoriano!"))
+	to_chat(owner, span_noticealien("Use [new_promotion] em um de seus filhos para promovê-la a um pretoriano!"))
 	return TRUE
 
 /obj/item/queen_promotion
@@ -180,9 +180,9 @@
 
 	queen.adjustPlasma(-promotion.promotion_plasma_cost)
 
-	to_chat(queen, span_noticealien("Você tem promovido[to_promote]Para um pretono!"))
+	to_chat(queen, span_noticealien("Você tem promovido [to_promote] Para um pretono!"))
 	to_promote.visible_message(
-		span_alertalien("[to_promote]começa a expandir, girar e contorcer!"),
+		span_alertalien("[to_promote] começa a expandir, girar e contorcer!"),
 		span_noticealien("A rainha lhe concedeu uma promoção ao pretoriano!"),
 	)
 

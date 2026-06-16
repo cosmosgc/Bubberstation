@@ -25,7 +25,7 @@
 	if(user.gender == FEMALE)
 		return
 	var/mob/living/carbon/human/H = user
-	user.visible_message(span_suicide("[user]Está donando.[src]! Parece que...[user.p_theyre()]Tentando ser legal com garotas."))
+	user.visible_message(span_suicide("[user] Está donando.[src]! Parece que...[user.p_theyre()] Tentando ser legal com garotas."))
 	user.say("M'lady.", forced = "fedora suicide")
 	sleep(1 SECONDS)
 	H.facial_hairstyle = "Neckbeard"

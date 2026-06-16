@@ -15,10 +15,10 @@
 
 /obj/item/key/security/suicide_act(mob/living/carbon/user)
 	if(!user.emote("spin")) //In the off chance that someone attempts this suicide while under the effects of mime's bane they deserve the silliness.
-		user.visible_message(span_suicide("[user]está colocando\the [src]Em[user.p_their()]Ouvir e começar[user.p_their()]Motor! Parece que...[user.p_theyre()]Tentando cometer suicídio... Mas[user.p_they()]Sputters e stalls para fora!"))
+		user.visible_message(span_suicide("[user] está colocando\the [src] Em [user.p_their()] Ouvir e começar [user.p_their()] Motor! Parece que...[user.p_theyre()] Tentando cometer suicídio... Mas [user.p_they()] Sputters e stalls para fora!"))
 		playsound(src, 'sound/misc/sadtrombone.ogg', 50, TRUE, -1)
 		return SHAME
-	user.visible_message(span_suicide("[user]está colocando\the [src]Em[user.p_their()]Ouvir e começar[user.p_their()]Motor! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está colocando\the [src] Em [user.p_their()] Ouvir e começar [user.p_their()] Motor! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.say("Vroom vroom!!", forced="secway key suicide") //Not doing a shamestate here, because even if they fail to speak they're spinning.
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/, gib)), 2 SECONDS)
 	return MANUAL_SUICIDE
@@ -46,23 +46,23 @@
 /obj/item/key/janitor/suicide_act(mob/living/carbon/user)
 	switch(user.mind?.get_skill_level(/datum/skill/cleaning))
 		if(SKILL_LEVEL_NONE to SKILL_LEVEL_NOVICE) //Their mind is too weak to ascend as a janny
-			user.visible_message(span_suicide("[user]está colocando\the [src]Em[user.p_their()]boca e está tentando se tornar um com o janicart, mas não tem idéia por onde começar! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+			user.visible_message(span_suicide("[user] está colocando\the [src] Em [user.p_their()] boca e está tentando se tornar um com o janicart, mas não tem idéia por onde começar! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 			user.gib(DROP_ALL_REMAINS)
 			return MANUAL_SUICIDE
 		if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_JOURNEYMAN) //At least they tried
-			user.visible_message(span_suicide("[user]está colocando\the [src]Em[user.p_their()]boca e ineficientemente se tornou um com o janicart! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+			user.visible_message(span_suicide("[user] está colocando\the [src] Em [user.p_their()] boca e ineficientemente se tornou um com o janicart! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 			user.AddElement(/datum/element/cleaning)
 			addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 5.1 SECONDS)
 			return MANUAL_SUICIDE
 		if(SKILL_LEVEL_EXPERT to SKILL_LEVEL_MASTER) //They are worthy enough, but can it go even further beyond?
-			user.visible_message(span_suicide("[user]está colocando\the [src]Em[user.p_their()]boca e habilmente se tornou um com o janicart! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+			user.visible_message(span_suicide("[user] está colocando\the [src] Em [user.p_their()] boca e habilmente se tornou um com o janicart! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 			user.AddElement(/datum/element/cleaning)
 			for(var/i in 1 to 100)
 				addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, add_atom_colour), (i % 2)? "#a245bb" : "#7a7d82", ADMIN_COLOUR_PRIORITY), i)
 			addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), 101)
 			return MANUAL_SUICIDE
 		if(SKILL_LEVEL_LEGENDARY to INFINITY) //Holy shit, look at that janny go!
-			user.visible_message(span_suicide("[user]está colocando\the [src]Em[user.p_their()]boca e épicamente tornou-se um com o janicart, e eles estão mesmo em modo overdrive! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+			user.visible_message(span_suicide("[user] está colocando\the [src] Em [user.p_their()] boca e épicamente tornou-se um com o janicart, e eles estão mesmo em modo overdrive! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 			user.AddElement(/datum/element/cleaning)
 			playsound(src, 'sound/effects/magic/lightning_chargeup.ogg', 50, TRUE, -1)
 			user.reagents.add_reagent(/datum/reagent/drug/methamphetamine, 10) //Gotta go fast!
@@ -74,7 +74,7 @@
 /obj/item/key/proc/manual_suicide(mob/living/user)
 	if(user)
 		user.remove_atom_colour(ADMIN_COLOUR_PRIORITY)
-		user.visible_message(span_suicide("[user]Esqueci.[user.p_they()]Não é realmente um janicart! Isso é um paddlin!"))
+		user.visible_message(span_suicide("[user] Esqueci.[user.p_they()] Não é realmente um janicart! Isso é um paddlin!"))
 		if(user.mind?.get_skill_level(/datum/skill/cleaning) >= SKILL_LEVEL_LEGENDARY) //Janny janny janny janny janny
 			playsound(src, 'sound/effects/adminhelp.ogg', 50, TRUE, -1)
 		user.adjust_oxy_loss(200)

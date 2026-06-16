@@ -99,6 +99,6 @@
 /datum/computer_file/program/proc/event_networkfailure(background)
 	kill_program()
 	if(background)
-		computer.visible_message(span_danger("\The [computer]'s tela exibe uma\"Processo[filename].[filetype](PID[rand(100,999)]) terminado - Erro de rede\"Erro"))
+		computer.visible_message(span_danger("\The [computer]'s tela exibe uma\"Processo [filename].[filetype](PID [rand(100,999)]) terminado - Erro de rede\"Erro"))
 	else
-		computer.visible_message(span_danger("\The [computer]A tela rapidamente congela e então mostra\"ERRO DE REDE - NTNet conexão perdida. Por favor, tente novamente. Se o problema persistir, contate o administrador do sistema.\"Erro."))
+		computer.visible_message(span_danger("\The [computer] A tela rapidamente congela e então mostra\"ERRO DE REDE - NTNet conexão perdida. Por favor, tente novamente. Se o problema persistir, contate o administrador do sistema.\"Erro."))

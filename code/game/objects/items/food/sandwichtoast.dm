@@ -285,7 +285,7 @@
 		return
 	if(check_liked(user) == FOOD_LIKED)
 		return
-	to_chat(user, span_warning("Você se imagina comendo[src]Você sente um gosto azedo na boca, e uma sensação horrível de que fez algo errado."))
+	to_chat(user, span_warning("Você se imagina comendo [src] Você sente um gosto azedo na boca, e uma sensação horrível de que fez algo errado."))
 	user.adjust_disgust(33)
 
 // Override for after_eat and check_liked callbacks.
@@ -318,7 +318,7 @@
 	consumer.ForceContractDisease(new /datum/disease/death_sandwich_poisoning())
 
 /obj/item/food/sandwich/death/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a empurrar[src]Para baixo.[user.p_their()]Garganta do jeito errado. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a empurrar [src] Para baixo.[user.p_their()] Garganta do jeito errado. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	qdel(src)
 	user.gib()
 	return MANUAL_SUICIDE

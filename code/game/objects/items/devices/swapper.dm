@@ -31,10 +31,10 @@
 	if(istype(I, /obj/item/swapper))
 		var/obj/item/swapper/other_swapper = I
 		if(other_swapper.linked_swapper)
-			to_chat(user, span_warning("[other_swapper]Já está ligado. Quebre o link atual para estabelecer um novo."))
+			to_chat(user, span_warning("[other_swapper] Já está ligado. Quebre o link atual para estabelecer um novo."))
 			return
 		if(linked_swapper)
-			to_chat(user, span_warning("[src]Já está ligado. Quebre o link atual para estabelecer um novo."))
+			to_chat(user, span_warning("[src] Já está ligado. Quebre o link atual para estabelecer um novo."))
 			return
 		to_chat(user, span_notice("Você estabelece uma ligação quântica entre os dois dispositivos."))
 		linked_swapper = other_swapper
@@ -46,23 +46,23 @@
 
 /obj/item/swapper/attack_self(mob/living/user)
 	if(world.time < next_use)
-		to_chat(user, span_warning("[src]Ainda está recarregando."))
+		to_chat(user, span_warning("[src] Ainda está recarregando."))
 		return
 	//SKYRAT EDIT BEGIN
 	var/turf/my_turf = get_turf(src)
 	if(is_away_level(my_turf.z))
-		to_chat(user, "<span class='warning'>[src]Não pode ser usado aqui!</span>")
+		to_chat(user, "<span class='warning'>[src] Não pode ser usado aqui!</span>")
 		return
 	//SKYRAT EDIT END
 	if(QDELETED(linked_swapper))
-		to_chat(user, span_warning("[src]não está ligado com outro trocador."))
+		to_chat(user, span_warning("[src] não está ligado com outro trocador."))
 		return
 	playsound(src, 'sound/items/weapons/flash.ogg', 25, TRUE)
 	to_chat(user, span_notice("Você ativa.[src]."))
 	playsound(linked_swapper, 'sound/items/weapons/flash.ogg', 25, TRUE)
 	if(ismob(linked_swapper.loc))
 		var/mob/holder = linked_swapper.loc
-		to_chat(holder, span_notice("[linked_swapper]Começa a zumbir."))
+		to_chat(holder, span_notice("[linked_swapper] Começa a zumbir."))
 	next_use = world.time + cooldown //only the one used goes on cooldown
 	addtimer(CALLBACK(src, PROC_REF(swap), user), 2.5 SECONDS)
 
@@ -103,4 +103,4 @@
 		do_teleport(container_B, target_A, channel = TELEPORT_CHANNEL_QUANTUM)
 		if(ismob(container_B))
 			var/mob/swapped_mob = container_B
-			to_chat(swapped_mob, span_warning("[linked_swapper]Ativa, e você se encontra em outro lugar."))
+			to_chat(swapped_mob, span_warning("[linked_swapper] Ativa, e você se encontra em outro lugar."))

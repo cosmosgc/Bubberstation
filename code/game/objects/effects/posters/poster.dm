@@ -67,7 +67,7 @@
 	if(!user.transferItemToLoc(I, src))
 		return
 
-	to_chat(user, span_notice("Você esconde\the [I]dentro do cartaz enrolado."))
+	to_chat(user, span_notice("Você esconde\the [I] dentro do cartaz enrolado."))
 
 /obj/item/poster/interact_with_atom(turf/closed/wall_structure, mob/living/user, list/modifiers)
 	if(!isclosedturf(wall_structure))
@@ -255,7 +255,7 @@
 
 	to_chat(user, span_warning("Tem algo afiado atrás disso! Que diabos?"))
 	if(!can_embed_trap(user) || !payload.force_embed(user, user.get_active_hand()))
-		visible_message(span_notice("A[payload.name]cai por trás do cartaz.") )
+		visible_message(span_notice("A [payload.name] cai por trás do cartaz.") )
 		payload.forceMove(user.drop_location())
 
 /obj/structure/sign/poster/proc/can_embed_trap(mob/living/carbon/human/user)
@@ -285,7 +285,7 @@
 	to_chat(user, span_notice("Coloque o pôster!"))
 
 /obj/structure/sign/poster/proc/tear_poster(mob/user)
-	visible_message(span_notice("[user]Rips[src]em um único movimento decisivo!") )
+	visible_message(span_notice("[user] Rips [src] em um único movimento decisivo!") )
 	playsound(src.loc, 'sound/items/poster/poster_ripped.ogg', 100, TRUE)
 	spring_trap(user)
 

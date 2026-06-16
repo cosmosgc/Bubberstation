@@ -159,7 +159,7 @@
 /datum/component/religious_tool/proc/perform_rite(mob/living/user, path)
 	if(user.mind.holy_role < HOLY_ROLE_PRIEST)
 		if(user.mind.holy_role == HOLY_ROLE_DEACON)
-			to_chat(user, span_warning("Você é apenas um diácono de[GLOB.deity], e, portanto, não pode realizar ritos."))
+			to_chat(user, span_warning("Você é apenas um diácono de [GLOB.deity], e, portanto, não pode realizar ritos."))
 		else
 			to_chat(user, span_warning("Você não é santo e, portanto, não pode realizar rituais."))
 		return
@@ -259,7 +259,7 @@
 
 	if(!can_i_see)
 		return
-	examine_list += span_notice("Use um.[catalyst_type::name]para interagir com isso.")
+	examine_list += span_notice("Use um.[catalyst_type::name] para interagir com isso.")
 	if(isnull(easy_access_sect))
 		if(operation_flags & RELIGION_TOOL_SECTSELECT)
 			examine_list += span_notice("Parece que pode ser usado para selecionar uma seita.")

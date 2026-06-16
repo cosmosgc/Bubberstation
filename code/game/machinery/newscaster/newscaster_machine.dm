@@ -495,7 +495,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		if(!user.temporarilyRemoveItemFromInventory(attacking_item))
 			return
 		paper_remaining++
-		to_chat(user, span_notice("Você insere[attacking_item]Em[src]Ele agora segura[paper_remaining]Folhas de papel."))
+		to_chat(user, span_notice("Você insere [attacking_item] Em [src] Ele agora segura [paper_remaining] Folhas de papel."))
 		qdel(attacking_item)
 		return
 	return ..()
@@ -509,7 +509,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 	. = ITEM_INTERACT_SUCCESS
 	if(!(machine_stat & BROKEN))
-		to_chat(user, span_notice("[src]Não precisa de reparos."))
+		to_chat(user, span_notice("[src] Não precisa de reparos."))
 		return
 	if(!tool.tool_start_check(user, amount=1))
 		return
@@ -523,12 +523,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	set_machine_stat(machine_stat & ~BROKEN)
 
 /obj/machinery/newscaster/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("Você começa.[anchored ? "un" : ""]Segurando[src]..."))
+	to_chat(user, span_notice("Você começa.[anchored ? "un" : ""]Segurando [src]..."))
 	if(!tool.use_tool(src, user, 60, volume=50))
 		return
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 	if((machine_stat & BROKEN))
-		to_chat(user, span_warning("Os restos quebrados de[src]Caia no chão."))
+		to_chat(user, span_warning("Os restos quebrados de [src] Caia no chão."))
 		new /obj/item/stack/sheet/iron(loc, 5)
 		new /obj/item/shard(loc)
 		new /obj/item/shard(loc)
@@ -698,7 +698,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	user.log_message("is about to create a cross-sector newscaster channel with the following name: [channel_name]", LOG_GAME)
 	to_chat(
 		GLOB.admins,
-		span_adminnotice( 			"<b color='orange'>Criação de canais intersetoriais.</b> [ADMIN_LOOKUPFLW(user)]está prestes a criar um canal intersetorial de televisão.\"[html_encode(channel_name)]\"(vai auto-aprovar[DisplayTimeText(approval_time)]): 			<b><a href='byond://?src=[REF(src)];reject_channel_creation=1'>REJEITO</a></b>"		)
+		span_adminnotice( 			"<b color='orange'>Criação de canais intersetoriais.</b> [ADMIN_LOOKUPFLW(user)] está prestes a criar um canal intersetorial de televisão.\"[html_encode(channel_name)]\"(vai auto-aprovar [DisplayTimeText(approval_time)]): 			<b><a href='byond://?src=[REF(src)];reject_channel_creation=1'>REJEITO</a></b>"		)
 	)
 	channel_approval_timer = addtimer(CALLBACK(src, PROC_REF(finish_channel_creation), user, channel_locked, TRUE, approval_time), approval_time, TIMER_STOPPABLE)
 

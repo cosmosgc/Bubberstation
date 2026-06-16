@@ -141,13 +141,13 @@
 
 /obj/item/melee/ghost_sword/attack(mob/living/target, mob/living/carbon/human/user)
 	var/ghost_counter = ghost_check()
-	user.visible_message(span_danger("[user]Ataques com a força de[ghost_counter]Espíritos vingativos!"))
+	user.visible_message(span_danger("[user] Ataques com a força de [ghost_counter] Espíritos vingativos!"))
 	. = ..()
 
 /obj/item/melee/ghost_sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	var/ghost_counter = ghost_check()
 	final_block_chance += clamp((ghost_counter * 5), 0, 75)
-	owner.visible_message(span_danger("[owner]é protegido por um anel de[ghost_counter]Fantasmas!"))
+	owner.visible_message(span_danger("[owner] é protegido por um anel de [ghost_counter] Fantasmas!"))
 	return ..()
 
 // Dragon's blood
@@ -289,14 +289,14 @@
 			return ITEM_INTERACT_FAILURE
 
 		COOLDOWN_START(src, use_cooldown, reset_cooldown)
-		user.visible_message(span_danger("[user]Vira.\the [old_name]em[reset_string]!"))
+		user.visible_message(span_danger("[user] Vira.\the [old_name] em [reset_string]!"))
 		playsound(target_turf,'sound/effects/magic/fireball.ogg', 200, TRUE)
 		return ITEM_INTERACT_SUCCESS
 
 	var/obj/effect/temp_visual/lavastaff/lava_visual = new /obj/effect/temp_visual/lavastaff(target_turf)
 	lava_visual.alpha = 0
 	animate(lava_visual, alpha = 255, time = create_delay)
-	user.visible_message(span_danger("[user]Pontos[src]em[target_turf]!"))
+	user.visible_message(span_danger("[user] Pontos [src] em [target_turf]!"))
 	COOLDOWN_START(src, use_cooldown, create_delay + 1)
 
 	if(!do_after(user, create_delay, target_turf))
@@ -310,7 +310,7 @@
 		qdel(lava_visual)
 		return ITEM_INTERACT_FAILURE
 
-	user.visible_message(span_danger("[user]Vira.\the [old_name]em[transform_string]!"))
+	user.visible_message(span_danger("[user] Vira.\the [old_name] em [transform_string]!"))
 	message_admins("[ADMIN_LOOKUPFLW(user)] fired the lava staff at [ADMIN_VERBOSEJMP(target_turf)]")
 	user.log_message("fired the lava staff at [AREACOORD(target_turf)].", LOG_ATTACK)
 	COOLDOWN_START(src, use_cooldown, create_cooldown)

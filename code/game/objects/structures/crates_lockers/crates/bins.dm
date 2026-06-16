@@ -66,5 +66,5 @@
 
 	items_to_sweep.Cut()
 
-	to_chat(user, span_notice("Você varre o monte de lixo em[src]."))
+	to_chat(user, span_notice("Você varre o monte de lixo em [src]."))
 	playsound(broom.loc, 'sound/items/weapons/thudswoosh.ogg', 30, TRUE, -1)

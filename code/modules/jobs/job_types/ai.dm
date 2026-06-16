@@ -52,7 +52,7 @@
 			sync_target.notify_ai(AI_NOTIFICATION_AI_SHELL)
 		else
 			sync_target.notify_ai(TRUE)
-		sync_target.visible_message(span_notice("[sync_target]Com cuidado."), span_notice("Protocolo LawSync Ativado."))
+		sync_target.visible_message(span_notice("[sync_target] Com cuidado."), span_notice("Protocolo LawSync Ativado."))
 		log_combat(ai_spawn, sync_target, "forcibly synced cyborg laws via spawning in")
 		sync_target.lawsync()
 		sync_target.lawupdate = TRUE

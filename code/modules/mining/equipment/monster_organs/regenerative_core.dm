@@ -38,10 +38,10 @@
 /obj/item/organ/monster_core/regenerative_core/apply_to(mob/living/target, mob/user)
 	target.add_mood_event("legion_core", /datum/mood_event/healsbadman)
 	if (target != user)
-		target.visible_message(span_notice("[user]forças[target]para aplicar[src]...tendrils pretos entrelaçam e reforçam[target.p_them()]!"))
+		target.visible_message(span_notice("[user] forças [target] para aplicar [src]...tendrils pretos entrelaçam e reforçam [target.p_them()]!"))
 		SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "other"))
 	else
-		to_chat(user, span_notice("Você começa a manchar[src]Você mesmo. Tentáculos nojentos os mantêm juntos e permitem que continuem andando, mas por quanto tempo?"))
+		to_chat(user, span_notice("Você começa a manchar [src] Você mesmo. Tentáculos nojentos os mantêm juntos e permitem que continuem andando, mas por quanto tempo?"))
 		SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "self"))
 	return ..()
 

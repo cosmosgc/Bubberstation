@@ -25,10 +25,10 @@
 
 /obj/item/station_charter/attack_self(mob/living/user)
 	if(used)
-		to_chat(user, span_warning("O[name_type]Já foi nomeado!"))
+		to_chat(user, span_warning("O [name_type] Já foi nomeado!"))
 		return
 	if(!ignores_timeout && (world.time-SSticker.round_start_time > STATION_RENAME_TIME_LIMIT)) //5 minutes
-		to_chat(user, span_warning("A tripulação já se instalou no turno. Provavelmente não seria bom renomear o[name_type]Agora."))
+		to_chat(user, span_warning("A tripulação já se instalou no turno. Provavelmente não seria bom renomear o [name_type] Agora."))
 		return
 	if(response_timer_id)
 		to_chat(user, span_warning("Você ainda está esperando aprovação de seus empregadores sobre sua mudança de nome proposta, seria melhor esperar por agora."))
@@ -53,7 +53,7 @@
 	// Autoapproves after a certain time
 	response_timer_id = addtimer(CALLBACK(src, PROC_REF(rename_station), new_name, user.name, user.real_name, key_name(user)), approval_time, TIMER_STOPPABLE)
 	to_chat(GLOB.admins,
-		span_adminnotice("<b><font color=orange>ESTAÇÃO ADUANEIRA RENAME:</font></b>[ADMIN_LOOKUPFLW(user)]Propõe-se renomear o[name_type]Para[new_name](vai auto-aprovar[DisplayTimeText(approval_time)]). [ADMIN_SMITE(user)] (<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];reject_custom_name=[REF(src)]'>REJEITO</A>) [ADMIN_CENTCOM_REPLY(user)]"),
+		span_adminnotice("<b><font color=orange>ESTAÇÃO ADUANEIRA RENAME:</font></b>[ADMIN_LOOKUPFLW(user)] Propõe-se renomear o [name_type] Para [new_name](vai auto-aprovar [DisplayTimeText(approval_time)]). [ADMIN_SMITE(user)] (<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];reject_custom_name=[REF(src)]'>REJEITO</A>) [ADMIN_CENTCOM_REPLY(user)]"),
 		type = MESSAGE_TYPE_PRAYER)
 	for(var/client/admin_client in GLOB.admins)
 		if(admin_client.prefs.toggles & SOUND_ADMINHELP)
@@ -66,7 +66,7 @@
 	if(!response_timer_id)
 		return
 	var/turf/T = get_turf(src)
-	T.visible_message(span_warning("As mudanças propostas desaparecem de[src]Parece que eles foram rejeitados."))
+	T.visible_message(span_warning("As mudanças propostas desaparecem de [src] Parece que eles foram rejeitados."))
 	var/m = "[key_name(user)] has rejected the proposed station name."
 
 	message_admins(m)
@@ -81,7 +81,7 @@
 	log_game("[ukey] has renamed the station as [station_name()].")
 
 	name = "station charter for [station_name()]"
-	desc = "Um documento oficial confiando a governança de[station_name()]e espaço circundante para o capitão[uname]."
+	desc = "Um documento oficial confiando a governança de [station_name()] e espaço circundante para o capitão [uname]."
 	SSblackbox.record_feedback("text", "station_renames", 1, "[station_name()]")
 	if(!unlimited_uses)
 		used = TRUE
@@ -108,7 +108,7 @@
 	minor_announce("[ureal_name] has designated the [name_type] as [html_decode(station_name())]", "Captain's Banner") //decode station_name to avoid minor_announce double encode
 	log_game("[ukey] has renamed the [name_type] as [station_name()].")
 	name = "banner of [station_name()]"
-	desc = "A bandeira leva o brasão oficial de Nanotrasen, significando que[station_name()]Foi reivindicado pelo Capitão.[uname]Em nome da empresa."
+	desc = "A bandeira leva o brasão oficial de Nanotrasen, significando que [station_name()] Foi reivindicado pelo Capitão.[uname] Em nome da empresa."
 	SSblackbox.record_feedback("text", "station_renames", 1, "[station_name()]")
 	if(!unlimited_uses)
 		used = TRUE

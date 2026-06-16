@@ -145,7 +145,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	add_fingerprint(user)
 
 /obj/structure/pipe_cleaner/proc/cut_pipe_cleaner(mob/user)
-	user.visible_message(span_notice("[user]Puxa o limpador de tubos."), span_notice("Você puxa o limpador de tubos."))
+	user.visible_message(span_notice("[user] Puxa o limpador de tubos."), span_notice("Você puxa o limpador de tubos."))
 	stored.add_fingerprint(user)
 	investigate_log("was pulled up by [key_name(usr)] in [AREACOORD(src)]", INVESTIGATE_WIRES)
 	deconstruct()
@@ -245,9 +245,9 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/item/stack/pipe_cleaner_coil/suicide_act(mob/living/user)
 	if(locate(/obj/structure/chair/stool) in get_turf(user))
-		user.visible_message(span_suicide("[user]está fazendo uma forca com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está fazendo uma forca com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	else
-		user.visible_message(span_suicide("[user]Está estrangulando[user.p_them()]ego com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Está estrangulando [user.p_them()] ego com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/stack/pipe_cleaner_coil/Initialize(mapload, new_amount = null, list/mat_override=null, mat_amt=1, param_color = null)

@@ -46,7 +46,7 @@
 	if (growth_progress < RAPTOR_EGG_GROWTH_PROGRESS || islava(loc))
 		return
 
-	visible_message(span_notice("[src]escotilhas com um som de rachadura silencioso."))
+	visible_message(span_notice("[src] escotilhas com um som de rachadura silencioso."))
 	new /mob/living/basic/raptor(loc, child_color, inherited_stats)
 	inherited_stats = null
 	qdel(src)

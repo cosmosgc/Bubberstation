@@ -82,5 +82,5 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, span_notice("Você derruba[src]."))
+	to_chat(user, span_notice("Você derruba [src]."))
 	deconstruct(TRUE)

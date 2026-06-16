@@ -138,7 +138,7 @@
 			if (ISNOTSTUB(target_dir))
 				p_init_dir = target_dir
 			else
-				to_chat(usr, span_warning("\The [src]A tela pisca um aviso: não pode configurar um tubo para se conectar apenas em uma direção."))
+				to_chat(usr, span_warning("\The [src] A tela pisca um aviso: não pode configurar um tubo para se conectar apenas em uma direção."))
 
 		if("init_reset")
 			p_init_dir = ALL_CARDINALS
@@ -154,7 +154,7 @@
 /obj/machinery/pipedispenser/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
-		to_chat(usr, span_notice("Você colocou[W]De volta para[src]."))
+		to_chat(usr, span_notice("Você colocou [W] De volta para [src]."))
 		qdel(W)
 		return
 	else

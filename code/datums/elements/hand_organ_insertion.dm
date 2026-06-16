@@ -35,8 +35,8 @@
 	var/zone_name = user.parse_zone_with_bodypart(organ.zone)
 
 	user.visible_message(
-		message = span_danger("\The [user] begin[user.p_s()] inserting \the [organ] into [user.p_their()] [zone_name]!"),
-		self_message = span_danger("Você começa a inserir\the [organ]em seu[zone_name]!"),
+		message = span_danger("\The [user] begin [user.p_s()] inserting \the [organ] into [user.p_their()] [zone_name]!"),
+		self_message = span_danger("Você começa a inserir\the [organ] em seu [zone_name]!"),
 		blind_message = span_hear("Você ouve o barulho!")
 	)
 
@@ -51,8 +51,8 @@
 	zone_name = user.parse_zone_with_bodypart(organ.zone)
 
 	user.visible_message(
-		message = span_danger("\The [user] insert[user.p_s()] \the [organ] into [user.p_their()] [zone_name]!"),
-		self_message = span_danger("Você insere\the [organ]em seu[zone_name]!"),
+		message = span_danger("\The [user] insert [user.p_s()] \the [organ] into [user.p_their()] [zone_name]!"),
+		self_message = span_danger("Você insere\the [organ] em seu [zone_name]!"),
 		blind_message = span_hear("Você ouve um barulho final!")
 	)
 
@@ -66,12 +66,12 @@
 
 /datum/element/hand_organ_insertion/proc/can_insert_organ(mob/living/carbon/user, obj/item/organ/organ, feedback = FALSE)
 	if (!user.get_bodypart(deprecise_zone(organ.zone)))
-		user.balloon_alert(user, "Você não tem[parse_zone(organ.zone)]!")
+		user.balloon_alert(user, "Você não tem [parse_zone(organ.zone)]!")
 		return FALSE
 
 	var/obj/item/organ/existing_organ = user.get_organ_slot(organ.slot)
 	if (existing_organ)
-		user.balloon_alert(user, "Sua[existing_organ] [existing_organ.p_are()]No caminho!")
+		user.balloon_alert(user, "Sua [existing_organ] [existing_organ.p_are()] No caminho!")
 		return FALSE
 
 	if (!organ.useable)

@@ -31,7 +31,7 @@
 		// This isn't clean and we are repeating [/obj/machinery/power/supermatter_crystal/proc/calculate_damage], sorry for this.
 		var/damage_to_be = damage + external_damage_immediate * clamp((emergency_point - damage) / emergency_point, 0, 1)
 		if(damage_to_be > danger_point)
-			visible_message(span_notice("[src]Comprima sob estresse, resista a outros impactos!"))
+			visible_message(span_notice("[src] Comprima sob estresse, resista a outros impactos!"))
 		playsound(src, 'sound/effects/supermatter.ogg', 50, TRUE)
 	if(istype(projectile, /obj/projectile/beam/emitter/hitscan))
 		var/obj/projectile/beam/emitter/hitscan/mahlaser = projectile
@@ -52,7 +52,7 @@
 	var/gain = 100
 	investigate_log("was consumed by a singularity.", INVESTIGATE_ENGINE)
 	message_admins("Singularity has consumed a supermatter shard and can now become stage six.")
-	visible_message(span_userdanger("[src]é consumido pela singularidade!"))
+	visible_message(span_userdanger("[src] é consumido pela singularidade!"))
 	var/turf/sm_turf = get_turf(src)
 	for(var/mob/hearing_mob as anything in GLOB.player_list)
 		if(!is_valid_z_level(get_turf(hearing_mob), sm_turf))
@@ -78,43 +78,43 @@
 /obj/machinery/power/supermatter_crystal/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(item, /obj/item/scalpel/supermatter))
 		var/obj/item/scalpel/supermatter/scalpel = item
-		to_chat(user, span_notice("Você cuidadosamente começa a raspar\the [src]Com\the [scalpel]..."))
+		to_chat(user, span_notice("Você cuidadosamente começa a raspar\the [src] Com\the [scalpel]..."))
 		if(!scalpel.use_tool(src, user, 60, volume=100))
 			return
 		if (scalpel.usesLeft)
-			to_chat(user, span_danger("Você extrai um pedaço de\the [src]. \The [src]Começa a reagir violentamente!"))
+			to_chat(user, span_danger("Você extrai um pedaço de\the [src]. \The [src] Começa a reagir violentamente!"))
 			new /obj/item/nuke_core/supermatter_sliver(src.drop_location())
 			supermatter_sliver_removed = TRUE
 			external_power_trickle += 800
 			log_activation(who = user, how = scalpel)
 			scalpel.usesLeft--
 			if (!scalpel.usesLeft)
-				to_chat(user, span_notice("Um pedacinho de\the [scalpel]Cai, tornando-o inútil!"))
+				to_chat(user, span_notice("Um pedacinho de\the [scalpel] Cai, tornando-o inútil!"))
 		else
-			to_chat(user, span_warning("Você não consegue extrair um pedaço de\the [src]! \The [scalpel]Não é mais afiado o suficiente."))
+			to_chat(user, span_warning("Você não consegue extrair um pedaço de\the [src]! \The [scalpel] Não é mais afiado o suficiente."))
 		return
 
 	if(istype(item, /obj/item/hemostat/supermatter))
-		to_chat(user, span_warning("Você cutuca.[src]Com[item]Pontas de hiper-noblium. Nada de descontece."))
+		to_chat(user, span_warning("Você cutuca.[src] Com [item] Pontas de hiper-noblium. Nada de descontece."))
 		return
 
 	if(istype(item, /obj/item/destabilizing_crystal))
 		var/obj/item/destabilizing_crystal/destabilizing_crystal = item
 
 		if(!is_main_engine)
-			to_chat(user, span_warning("Você não pode usar\the [destabilizing_crystal]Vamos.\a [name]."))
+			to_chat(user, span_warning("Você não pode usar\the [destabilizing_crystal] Vamos.\a [name]."))
 			return
 
 		if(get_integrity_percent() < SUPERMATTER_CASCADE_PERCENT)
-			to_chat(user, span_warning("Você só pode se candidatar.\the [destabilizing_crystal]Para\a [name]Isso é pelo menos[SUPERMATTER_CASCADE_PERCENT]Está intacto."))
+			to_chat(user, span_warning("Você só pode se candidatar.\the [destabilizing_crystal] Para\a [name] Isso é pelo menos [SUPERMATTER_CASCADE_PERCENT] Está intacto."))
 			return
 
-		to_chat(user, span_warning("Você começa a anexar\the [destabilizing_crystal]Para\the [src]..."))
+		to_chat(user, span_warning("Você começa a anexar\the [destabilizing_crystal] Para\the [src]..."))
 		if(do_after(user, 3 SECONDS, src))
 			message_admins("[ADMIN_LOOKUPFLW(user)] attached [destabilizing_crystal] to the supermatter at [ADMIN_VERBOSEJMP(src)].")
 			user.log_message("attached [destabilizing_crystal] to the supermatter", LOG_GAME)
 			user.investigate_log("attached [destabilizing_crystal] to a supermatter crystal.", INVESTIGATE_ENGINE)
-			to_chat(user, span_danger("\The [destabilizing_crystal]Encaixou.\the [src]."))
+			to_chat(user, span_danger("\The [destabilizing_crystal] Encaixou.\the [src]."))
 			set_delam(SM_DELAM_PRIO_IN_GAME, /datum/sm_delam/cascade)
 			external_damage_immediate += 10
 			external_power_trickle += 500

@@ -37,11 +37,11 @@
 /obj/structure/kitchenspike_frame/welder_act(mob/living/user, obj/item/tool)
 	if(!tool.tool_start_check(user, amount = 0, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return FALSE
-	to_chat(user, span_notice("Você começa a cortar\the [src]Separados..."))
+	to_chat(user, span_notice("Você começa a cortar\the [src] Separados..."))
 	if(!tool.use_tool(src, user, 5 SECONDS, volume = 50))
 		return TRUE
-	visible_message(span_notice("[user]Cortes separadas\the [src]."),
-		span_notice("Você cortou.\the [src]Separado com\the [tool]."),
+	visible_message(span_notice("[user] Cortes separadas\the [src]."),
+		span_notice("Você cortou.\the [src] Separado com\the [tool]."),
 		span_hear("Você ouve solda."))
 	new /obj/item/stack/sheet/iron(loc, MEATSPIKE_IRONROD_REQUIREMENT)
 	qdel(src)
@@ -63,7 +63,7 @@
 		transfer_fingerprints_to(new_meatspike)
 		qdel(src)
 		return
-	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT]Varetas necessárias!")
+	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT] Varetas necessárias!")
 
 /obj/structure/kitchenspike_frame/examine(mob/user)
 	. = ..()
@@ -88,11 +88,11 @@
 /obj/structure/kitchenspike_frame/welder_act(mob/living/user, obj/item/tool)
 	if(!tool.tool_start_check(user, amount = 0))
 		return FALSE
-	to_chat(user, span_notice("Você começa a cortar\the [src]Separados..."))
+	to_chat(user, span_notice("Você começa a cortar\the [src] Separados..."))
 	if(!tool.use_tool(src, user, 5 SECONDS, volume = 50))
 		return TRUE
-	visible_message(span_notice("[user]Cortes separadas\the [src]."),
-		span_notice("Você cortou.\the [src]Separado com\the [tool]."),
+	visible_message(span_notice("[user] Cortes separadas\the [src]."),
+		span_notice("Você cortou.\the [src] Separado com\the [tool]."),
 		span_hear("Você ouve solda."))
 	new /obj/item/stack/sheet/iron(loc, MEATSPIKE_IRONROD_REQUIREMENT)
 	qdel(src)
@@ -114,7 +114,7 @@
 		transfer_fingerprints_to(new_meatspike)
 		qdel(src)
 		return
-	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT]Varetas necessárias!")
+	balloon_alert(user, "[MEATSPIKE_IRONROD_REQUIREMENT] Varetas necessárias!")
 
 /obj/structure/kitchenspike//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "meat spike"
@@ -188,14 +188,14 @@
 
 /obj/structure/kitchenspike/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if(buckled_mob != user)
-		buckled_mob.visible_message(span_notice("[user]Tenta Puxar[buckled_mob]Livre de[src]!"),			span_notice("[user]está tentando te puxar[src], abrando novas feridas!"),			span_hear("Você ouve um barulho molhado."))
+		buckled_mob.visible_message(span_notice("[user] Tenta Puxar [buckled_mob] Livre de [src]!"),			span_notice("[user] está tentando te puxar [src], abrando novas feridas!"),			span_hear("Você ouve um barulho molhado."))
 		if(!do_after(user, 30 SECONDS, target = src))
 			if(buckled_mob?.buckled)
-				buckled_mob.visible_message(span_notice("[user]Não consegue libertar[buckled_mob]!"),					span_notice("[user]Não consegue puxá-lo[src]."))
+				buckled_mob.visible_message(span_notice("[user] Não consegue libertar [buckled_mob]!"),					span_notice("[user] Não consegue puxá-lo [src]."))
 			return
 
 	else
-		buckled_mob.visible_message(span_warning("[buckled_mob]Lutas para se libertar[src]!"),		span_notice("Você luta para se libertar[src], exacerbando suas feridas! Fique parado por dois minutos."),		span_hear("Você ouve um barulho molhado..."))
+		buckled_mob.visible_message(span_warning("[buckled_mob] Lutas para se libertar [src]!"),		span_notice("Você luta para se libertar [src], exacerbando suas feridas! Fique parado por dois minutos."),		span_hear("Você ouve um barulho molhado..."))
 		buckled_mob.adjust_brute_loss(30)
 		if(!do_after(buckled_mob, 2 MINUTES, target = src, hidden = TRUE))
 			if(buckled_mob?.buckled)

@@ -244,7 +244,7 @@ Behavior that's still missing from this component that original food items had t
 	var/quality = get_perceived_food_quality(user)
 	if(quality > 0)
 		var/quality_label = GLOB.food_quality_description[quality]
-		examine_list += span_green("Você encontra esta refeição[quality_label].")
+		examine_list += span_green("Você encontra esta refeição [quality_label].")
 	else if (quality == 0)
 		examine_list += span_notice("Você acha esta refeição comestível.")
 	else if (quality <= FOOD_QUALITY_DANGEROUS)
@@ -270,23 +270,23 @@ Behavior that's still missing from this component that original food items had t
 
 	var/datum/mind/mind = user.mind
 	if(mind && HAS_TRAIT_FROM(owner, TRAIT_FOOD_CHEF_MADE, REF(mind)))
-		examine_list += span_green("[owner]Foi feito por você!")
+		examine_list += span_green("[owner] Foi feito por você!")
 
 	if(!(food_flags & FOOD_IN_CONTAINER))
 		switch(bitecount)
 			if(0)
 				pass()
 			if(1)
-				examine_list += span_notice("[owner]Foi mordido por alguém!")
+				examine_list += span_notice("[owner] Foi mordido por alguém!")
 			if(2, 3)
-				examine_list += span_notice("[owner]Foi morto.[bitecount]Tempos!")
+				examine_list += span_notice("[owner] Foi morto.[bitecount] Tempos!")
 			else
-				examine_list += span_notice("[owner]foi mordida várias vezes!")
+				examine_list += span_notice("[owner] foi mordida várias vezes!")
 
 	if(GLOB.debugging_enabled)
 		examine_list += span_notice("Reagentes de purezas:")
 		for(var/datum/reagent/reagent as anything in owner.reagents.reagent_list)
-			examine_list += span_notice("- [reagent.name] [reagent.volume]U:[round(reagent.purity * 100)]% puro")
+			examine_list += span_notice("- [reagent.name] [reagent.volume] U:[round(reagent.purity * 100)]% puro")
 
 	if(!HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
 		return
@@ -417,19 +417,19 @@ Behavior that's still missing from this component that original food items had t
 				return
 		else if(fullness > 500)
 			if(HAS_TRAIT(eater, TRAIT_VORACIOUS))
-				message_to_nearby_audience = span_notice("[eater] [eatverb]s \the [parent].")
+				message_to_nearby_audience = span_notice("[eater] [eatverb] s \the [parent].")
 				message_to_consumer = span_notice("You [eatverb] \the [parent].")
 			else
-				message_to_nearby_audience = span_notice("[eater] unwillingly [eatverb]s a bit of \the [parent].")
+				message_to_nearby_audience = span_notice("[eater] unwillingly [eatverb] s a bit of \the [parent].")
 				message_to_consumer = span_notice("You unwillingly [eatverb] a bit of \the [parent].")
 		else if(fullness > 150)
-			message_to_nearby_audience = span_notice("[eater] [eatverb]s \the [parent].")
+			message_to_nearby_audience = span_notice("[eater] [eatverb] s \the [parent].")
 			message_to_consumer = span_notice("You [eatverb] \the [parent].")
 		else if(fullness > 50)
-			message_to_nearby_audience = span_notice("[eater] hungrily [eatverb]s \the [parent].")
+			message_to_nearby_audience = span_notice("[eater] hungrily [eatverb] s \the [parent].")
 			message_to_consumer = span_notice("You hungrily [eatverb] \the [parent].")
 		else
-			message_to_nearby_audience = span_notice("[eater] hungrily [eatverb]s \the [parent], gobbling it down!")
+			message_to_nearby_audience = span_notice("[eater] hungrily [eatverb] s \the [parent], gobbling it down!")
 			message_to_consumer = span_notice("You hungrily [eatverb] \the [parent], gobbling it down!")
 
 		//if we're blind, we want to feel how hungrily we ate that food
@@ -439,19 +439,19 @@ Behavior that's still missing from this component that original food items had t
 
 	else //If you're feeding it to someone else.
 		if(isbrain(eater))
-			to_chat(feeder, span_warning("[eater]Não parece ter boca!"))
+			to_chat(feeder, span_warning("[eater] Não parece ter boca!"))
 			return
 		if(fullness <= (600 * (1 + eater.overeatduration / (2000 SECONDS))) || HAS_TRAIT(eater, TRAIT_VORACIOUS))
 			eater.visible_message(
-				span_danger("[feeder]Tentando[eater.get_bodypart(BODY_ZONE_HEAD) ? "feed [eater] [parent]." : "stuff [parent] down [eater]'s throat hole! Gross."]"),
-				span_userdanger("[feeder]Tentando[eater.get_bodypart(BODY_ZONE_HEAD) ? "feed you [parent]." : "stuff [parent] down your throat hole! Gross."]")
+				span_danger("[feeder] Tentando[eater.get_bodypart(BODY_ZONE_HEAD) ? "feed [eater] [parent]." : "stuff [parent] down [eater]'s throat hole! Gross."]"),
+				span_userdanger("[feeder] Tentando[eater.get_bodypart(BODY_ZONE_HEAD) ? "feed you [parent]." : "stuff [parent] down your throat hole! Gross."]")
 			)
 			if(eater.is_blind())
 				to_chat(eater, span_userdanger("Sente alguém tentando te alimentar!"))
 		else
 			eater.visible_message(
-				span_danger("[feeder]Não pode forçar mais[parent]Para baixo.[eater]'s[eater.get_bodypart(BODY_ZONE_HEAD) ? "throat!" : "throat hole! Eugh."]"),
-				span_userdanger("[feeder]Não pode forçar mais[parent]Para baixo seu[eater.get_bodypart(BODY_ZONE_HEAD) ? "throat!" : "throat hole! Eugh."]")
+				span_danger("[feeder] Não pode forçar mais [parent] Para baixo.[eater]'s[eater.get_bodypart(BODY_ZONE_HEAD) ? "throat!" : "throat hole! Eugh."]"),
+				span_userdanger("[feeder] Não pode forçar mais [parent] Para baixo seu[eater.get_bodypart(BODY_ZONE_HEAD) ? "throat!" : "throat hole! Eugh."]")
 			)
 			if(eater.is_blind())
 				to_chat(eater, span_userdanger("Você está muito cheio para comer o que está sendo alimentado para você!"))
@@ -462,8 +462,8 @@ Behavior that's still missing from this component that original food items had t
 			return
 		log_combat(feeder, eater, "fed", owner.reagents.get_reagent_log_string())
 		eater.visible_message(
-			span_danger("[feeder]forças[eater]Para comer[parent]!"),
-			span_userdanger("[feeder]te força a comer.[parent]!")
+			span_danger("[feeder] forças [eater] Para comer [parent]!"),
+			span_userdanger("[feeder] te força a comer.[parent]!")
 		)
 		if(eater.is_blind())
 			to_chat(eater, span_userdanger("Você é forçado a comer alguma coisa!"))
@@ -563,9 +563,9 @@ Behavior that's still missing from this component that original food items had t
 
 	if(food.flags_1 & HOLOGRAM_1)
 		if(eater == feeder)
-			to_chat(eater, span_notice("Você tenta dar uma mordida[food], mas Desapareça!"))
+			to_chat(eater, span_notice("Você tenta dar uma mordida [food], mas Desapareça!"))
 		else
-			to_chat(feeder, span_notice("Você tenta se alimentar[eater] [food], mas Desapareça!"))
+			to_chat(feeder, span_notice("Você tenta se alimentar [eater] [food], mas Desapareça!"))
 
 		qdel(food)
 		return FALSE
@@ -636,7 +636,7 @@ Behavior that's still missing from this component that original food items had t
 	gourmand.add_mood_event("quality_food", /datum/mood_event/food, food_quality, timeout_mod)
 	gourmand.adjust_disgust(-5 + -2 * food_quality * fraction)
 	var/quality_label = GLOB.food_quality_description[food_quality]
-	to_chat(gourmand, span_notice("Isso é...\an [quality_label]Refeição."))
+	to_chat(gourmand, span_notice("Isso é...\an [quality_label] Refeição."))
 
 /// Get the complexity of the crafted food
 /datum/component/edible/proc/get_recipe_complexity()
@@ -704,7 +704,7 @@ Behavior that's still missing from this component that original food items had t
 	if (QDELETED(parent)) // might be destroyed by the callback
 		return
 
-	to_chat(feeder, span_warning("Não sobrou nada de[parent]Não!"))
+	to_chat(feeder, span_warning("Não sobrou nada de [parent] Não!"))
 	if(isturf(parent))
 		var/turf/T = parent
 		T.ScrapeAway(1, CHANGETURF_INHERIT_AIR)
@@ -721,7 +721,7 @@ Behavior that's still missing from this component that original food items had t
 	var/atom/food = parent
 
 	if(food.flags_1 & HOLOGRAM_1)
-		to_chat(doggy, span_notice("Você tenta dar uma mordida[food], mas Desapareça!"))
+		to_chat(doggy, span_notice("Você tenta dar uma mordida [food], mas Desapareça!"))
 		qdel(food)
 		return
 
@@ -762,13 +762,13 @@ Behavior that's still missing from this component that original food items had t
 	var/atom/food = parent
 
 	if(food.flags_1 & HOLOGRAM_1)
-		to_chat(eater, span_notice("Você tenta dar uma mordida[food], mas Desapareça!"))
+		to_chat(eater, span_notice("Você tenta dar uma mordida [food], mas Desapareça!"))
 		qdel(food)
 		return COMPONENT_ATOM_EATEN
 
 	if(foodtypes & edible_flags)
 		food.reagents.trans_to(eater, food.reagents.total_volume, transferred_by = eater)
-		eater.visible_message(span_warning("[eater]Venha.[food]!"), span_notice("Você come.[food]."))
+		eater.visible_message(span_warning("[eater] Venha.[food]!"), span_notice("Você come.[food]."))
 		playsound(get_turf(eater),'sound/items/eatfood.ogg', rand(30,50), TRUE)
 		qdel(food)
 		return COMPONENT_ATOM_EATEN

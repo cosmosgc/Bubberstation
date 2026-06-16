@@ -51,7 +51,7 @@
 
 	var/datum/mind/dead_mind = HAS_TRAIT(died, TRAIT_SUICIDED) ? null : died.mind // There is a way out of the cycle
 	if (!isnull(dead_mind))
-		to_chat(died, span_boldnotice("Seu espírito sobe! Você vai voltar à vida em[DisplayTimeText(IMMORTAL_PRE_ACTIVATION_TIME + IMMORTAL_RESURRECT_TIME)]."))
+		to_chat(died, span_boldnotice("Seu espírito sobe! Você vai voltar à vida em [DisplayTimeText(IMMORTAL_PRE_ACTIVATION_TIME + IMMORTAL_RESURRECT_TIME)]."))
 	animate(died, alpha = died.alpha, time = IMMORTAL_PRE_ACTIVATION_TIME / 2, flags = ANIMATION_PARALLEL)
 	animate(alpha = 0, time = IMMORTAL_PRE_ACTIVATION_TIME / 2, easing = SINE_EASING | EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(reverse_death), died, dead_mind, died_turf, body_type, saved_appearance), IMMORTAL_PRE_ACTIVATION_TIME, TIMER_DELETE_ME)
@@ -201,7 +201,7 @@
 	SIGNAL_HANDLER
 	if (isnull(corpse))
 		return
-	visible_message(span_boldnotice("[corpse]de arrependimento, treme para a vida!"))
+	visible_message(span_boldnotice("[corpse] de arrependimento, treme para a vida!"))
 	corpse.remove_traits(list(TRAIT_NO_TELEPORT, TRAIT_AI_PAUSED), MAGIC_TRAIT)
 	corpse.remove_status_effect(/datum/status_effect/grouped/stasis, MAGIC_TRAIT)
 	corpse.forceMove(loc)

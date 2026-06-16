@@ -70,7 +70,7 @@
 				report += span_redtext(span_header("A necrópole foi destruída, a tribo caiu...<br>"))
 
 		if(length(objectives))
-			report += span_header("O[name]Os outros objetivos eram:")
+			report += span_header("O [name] Os outros objetivos eram:")
 			printobjectives(objectives)
 
 		report += "The [name] managed to perform <b>[sacrifices_made]</b> sacrifices to the Necropolis. From this, the Necropolis produced <b>[eggs_created]</b> Ash Walker eggs."

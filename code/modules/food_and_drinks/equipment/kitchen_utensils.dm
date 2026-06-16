@@ -52,7 +52,7 @@
 	AddElement(/datum/element/eyestab)
 
 /obj/item/kitchen/fork/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Apunhalamentos\the [src]em[user.p_their()]Baú! Parece que...[user.p_theyre()]Tentando dar uma mordida[user.p_them()]Eu!"))
+	user.visible_message(span_suicide("[user] Apunhalamentos\the [src] em [user.p_their()] Baú! Parece que...[user.p_theyre()] Tentando dar uma mordida [user.p_them()] Eu!"))
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
 	return BRUTELOSS
 
@@ -62,10 +62,10 @@
 
 	if(forkload)
 		if(M == user)
-			M.visible_message(span_notice("[user]come um delicioso garfo de omelete!"))
+			M.visible_message(span_notice("[user] come um delicioso garfo de omelete!"))
 			M.reagents.add_reagent(forkload.type, 1)
 		else
-			M.visible_message(span_notice("[user]ração[M]Um delicioso garfo de omelete!"))
+			M.visible_message(span_notice("[user] ração [M] Um delicioso garfo de omelete!"))
 			M.reagents.add_reagent(forkload.type, 1)
 		icon_state = "fork"
 		forkload = null
@@ -138,7 +138,7 @@
 	playsound(get_turf(user), 'sound/items/tools/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour != TOOL_ROLLINGPIN)
 		tool_behaviour = TOOL_ROLLINGPIN
-		to_chat(user, span_notice("Você prende a parte do rolo ao[src]."))
+		to_chat(user, span_notice("Você prende a parte do rolo ao [src]."))
 		icon_state = "sili_rolling_pin"
 		force = 8
 		sharpness = NONE
@@ -148,7 +148,7 @@
 
 	else
 		tool_behaviour = TOOL_KNIFE
-		to_chat(user, span_notice("Você coloca a faca no[src]."))
+		to_chat(user, span_notice("Você coloca a faca no [src]."))
 		icon_state = "sili_knife"
 		force = 0
 		sharpness = SHARP_EDGED
@@ -191,7 +191,7 @@
 	exposed_wound_bonus = 14
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a achatar.[user.p_their()]cabeça com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a achatar.[user.p_their()] cabeça com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 /* Trays  moved to /obj/item/storage/bag */
 
@@ -259,12 +259,12 @@
 		if(target_mob == user)
 			target_mob.balloon_alert(user, "Não posso comer com a boca coberta!")
 		else
-			target_mob.balloon_alert(user, "[target_mob.p_their()]A boca está coberta!")
+			target_mob.balloon_alert(user, "[target_mob.p_their()] A boca está coberta!")
 		return TRUE
 
 	if(target_mob == user)
 		user.visible_message(
-			span_notice("[user]Colhe uma colher em[user.p_their()]Boca."),
+			span_notice("[user] Colhe uma colher em [user.p_their()] Boca."),
 			span_notice("Enfia uma colher na boca.")
 		)
 
@@ -277,8 +277,8 @@
 
 		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "You are forced to" : "[user] forces you to"]Engolir uma colher cheia de algo!"))
 		user.visible_message(
-			span_danger("[user]Colhe uma colher em[target_mob]A boca."),
-			span_notice("Você pega uma colher em[target_mob]A boca.")
+			span_danger("[user] Colhe uma colher em [target_mob] A boca."),
+			span_notice("Você pega uma colher em [target_mob] A boca.")
 		)
 
 	playsound(target_mob, 'sound/items/drink.ogg', rand(10,50), vary = TRUE)
@@ -397,7 +397,7 @@
 		return TRUE
 	if (!COOLDOWN_FINISHED(src, clack_cooldown))
 		return TRUE
-	user.visible_message(span_notice("[user]clacs[user.p_their()] [name]Juntos como um caranguejo. Click clack!"))
+	user.visible_message(span_notice("[user] clacs [user.p_their()] [name] Juntos como um caranguejo. Click clack!"))
 	click_clack()
 	return TRUE
 
@@ -405,7 +405,7 @@
 /obj/item/kitchen/tongs/proc/drop_tonged()
 	if (isnull(tonged))
 		return
-	visible_message(span_notice("[tonged]Cai no chão!"))
+	visible_message(span_notice("[tonged] Cai no chão!"))
 	var/turf/location = drop_location()
 	tonged.forceMove(location)
 	tonged.do_drop_animation(location)

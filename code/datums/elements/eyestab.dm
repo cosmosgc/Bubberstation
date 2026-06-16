@@ -60,13 +60,13 @@
 	user.do_attack_animation(target)
 	if (target == user)
 		user.visible_message(
-			span_danger("[user]Apunhalamentos[user.p_them()]Eu mesmo no olho com[item]!"),
-			span_userdanger("Você se esfaqueia no olho com[item]!"),
+			span_danger("[user] Apunhalamentos [user.p_them()] Eu mesmo no olho com [item]!"),
+			span_userdanger("Você se esfaqueia no olho com [item]!"),
 		)
 	else
 		target.visible_message(
-			span_danger("[user]Apunhalamentos[target]nos olhos com[item]!"),
-			span_userdanger("[user]Te apunhala no olho com[item]!"),
+			span_danger("[user] Apunhalamentos [target] nos olhos com [item]!"),
+			span_userdanger("[user] Te apunhala no olho com [item]!"),
 		)
 
 	if (target_limb)

@@ -173,12 +173,12 @@
 		reagents.del_reagent(/datum/reagent/fuel) // not actually used for the explosion
 	if(reagents.total_volume)
 		if(!fuel_amt)
-			visible_message(span_danger("\The [src]Rupturas!"))
+			visible_message(span_danger("\The [src] Rupturas!"))
 		// Leave it up to future terrorists to figure out the best way to mix reagents with fuel for a useful boom here
 		chem_splash(loc, null, 2 + floor((reagents.total_volume + fuel_amt) / 1000), list(reagents), extra_heat=(fuel_amt / 50),adminlog=(fuel_amt<25))
 
 	if(fuel_amt) // with that done, actually explode
-		visible_message(span_danger("\The [src]Explodir!"))
+		visible_message(span_danger("\The [src] Explodir!"))
 		// old code for reference:
 		// standard fuel tank = 1000 units = heavy_impact_range = 1, light_impact_range = 5, flame_range = 5
 		// big fuel tank = 5000 units = devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12
@@ -307,10 +307,10 @@
 	var/obj/item/weldingtool/refilling_welder = attacking_item
 	if(istype(refilling_welder) && !refilling_welder.welding)
 		if(refilling_welder.reagents.has_reagent(/datum/reagent/fuel, refilling_welder.max_fuel))
-			to_chat(user, span_warning("Sua[refilling_welder.name]Já está cheio!"))
+			to_chat(user, span_warning("Sua [refilling_welder.name] Já está cheio!"))
 			return
 		reagents.trans_to(refilling_welder, refilling_welder.max_fuel, transferred_by = user)
-		user.visible_message(span_notice("[user]Recheios.[user.p_their()] [refilling_welder.name]."), span_notice("Você enche.[refilling_welder]."))
+		user.visible_message(span_notice("[user] Recheios.[user.p_their()] [refilling_welder.name]."), span_notice("Você enche.[refilling_welder]."))
 		playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 		refilling_welder.update_appearance()
 		return
@@ -318,18 +318,18 @@
 	var/obj/item/lighter/refilling_lighter = attacking_item
 	if(istype(refilling_lighter) && !refilling_lighter.lit)
 		if(refilling_lighter.reagents.has_reagent(/datum/reagent/fuel, refilling_lighter.maximum_fuel))
-			to_chat(user, span_warning("Sua[refilling_lighter.name]Já está cheio!"))
+			to_chat(user, span_warning("Sua [refilling_lighter.name] Já está cheio!"))
 			return
 		reagents.trans_to(refilling_lighter, refilling_lighter.maximum_fuel, transferred_by = user)
-		user.visible_message(span_notice("[user]Recheios.[user.p_their()] [refilling_lighter.name]."), span_notice("Você enche.[refilling_lighter]."))
+		user.visible_message(span_notice("[user] Recheios.[user.p_their()] [refilling_lighter.name]."), span_notice("Você enche.[refilling_lighter]."))
 		playsound(src, 'sound/effects/refill.ogg', 25, TRUE)
 		return
 
 	if(!reagents.has_reagent(/datum/reagent/fuel))
-		to_chat(user, span_warning("[src]Está sem combustível!"))
+		to_chat(user, span_warning("[src] Está sem combustível!"))
 		return
 	user.visible_message(
-		span_danger("[user]catastróficamente falha em reabastecer[user.p_their()] [attacking_item.name]!"),
+		span_danger("[user] catastróficamente falha em reabastecer [user.p_their()] [attacking_item.name]!"),
 		span_userdanger("Isso foi estúpido de sua parte."))
 	log_bomber(user, "detonated a", src, "via [attacking_item.name]")
 	boom()
@@ -430,7 +430,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 	if(!paper_cups)
 		to_chat(user, span_warning("Não sobrou nenhum copo!"))
 		return
-	user.visible_message(span_notice("[user]Pega uma xícara de[src]."), span_notice("Você pega um copo de papel de[src]."))
+	user.visible_message(span_notice("[user] Pega uma xícara de [src]."), span_notice("Você pega um copo de papel de [src]."))
 	var/obj/item/reagent_containers/cup/glass/sillycup/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)
 	paper_cups--
@@ -531,7 +531,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 	if(QDELETED(src))
 		return
 	if(reagents.total_volume)
-		visible_message(span_danger("\The [src]Vira de lado e derrama em todo lugar!"))
+		visible_message(span_danger("\The [src] Vira de lado e derrama em todo lugar!"))
 		chem_splash(get_turf(src), null, 2 + floor((reagents.total_volume) / 1000), list(reagents))
 	eject_jug(throw_away = TRUE)
 	playsound(src, 'sound/effects/glass/glassbash.ogg', 100)

@@ -35,14 +35,14 @@
 
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler]Sente-se.[src]."),
+			span_notice("[buckler] Sente-se.[src]."),
 			span_notice("Sente-se.[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler]Sente-se[being_buckled]Para baixo.[src]."),
-			span_notice("[buckler]Sente-se em você[src]."),
+			span_notice("[buckler] Sente-se [being_buckled] Para baixo.[src]."),
+			span_notice("[buckler] Sente-se em você [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -52,14 +52,14 @@
 
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Levante-se de[src]."),
-			span_notice("Você se levanta[src]."),
+			span_notice("[unbuckler] Levante-se de [src]."),
+			span_notice("Você se levanta [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]De pé.[being_unbuckled]Para cima de[src]."),
-			span_notice("[unbuckler]Te deixa de pé.[src]."),
+			span_notice("[unbuckler] De pé.[being_unbuckled] Para cima de [src]."),
+			span_notice("[unbuckler] Te deixa de pé.[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -67,7 +67,7 @@
 	. = ..()
 	. += span_notice("É mantido unido por alguns<b>Parafusos</b>.")
 	if(!has_buckled_mobs() && can_buckle)
-		. += span_notice("Enquanto estava em pé[src], arraste e solte sua imagem[src]Para cinco-lo.")
+		. += span_notice("Enquanto estava em pé [src], arraste e solte sua imagem [src] Para cinco-lo.")
 
 ///This proc adds the rotate component, overwrite this if you for some reason want to change some specific args.
 /obj/structure/chair/proc/MakeRotate()
@@ -158,7 +158,7 @@
 	handle_layer()
 	//SKYRAT EDIT ADDITION
 	if(HAS_TRAIT(M, TRAIT_OVERSIZED))
-		visible_message(span_warning("[src]cincolas solb o peso de[M]Fazendo ele quebrar!"))
+		visible_message(span_warning("[src] cincolas solb o peso de [M] Fazendo ele quebrar!"))
 		playsound(src, 'modular_skyrat/modules/oversized/sound/chair_break.ogg', 70, TRUE)
 		deconstruct()
 	//SKYRAT EDIT END
@@ -256,28 +256,28 @@
 /obj/structure/chair/comfy/shuttle/buckle_feedback(mob/living/being_buckled, mob/buckler)
 	if(being_buckled == buckler)
 		being_buckled.visible_message(
-			span_notice("[buckler]Sente-se.[src], puxando o controle superior para baixo para garantir[buckler.p_them()]Eu."),
+			span_notice("[buckler] Sente-se.[src], puxando o controle superior para baixo para garantir [buckler.p_them()] Eu."),
 			span_notice("Sente-se.[src], puxando o controle para baixo para se proteger."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_buckled.visible_message(
-			span_notice("[buckler]Sente-se[being_buckled]Para baixo.[src], puxando o controle superior para baixo para garantir[buckler.p_them()]."),
-			span_notice("[buckler]Sente-se em você[src], puxando o controle de cima para baixo para protegê-lo."),
+			span_notice("[buckler] Sente-se [being_buckled] Para baixo.[src], puxando o controle superior para baixo para garantir [buckler.p_them()]."),
+			span_notice("[buckler] Sente-se em você [src], puxando o controle de cima para baixo para protegê-lo."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
 /obj/structure/chair/comfy/shuttle/unbuckle_feedback(mob/living/being_unbuckled, mob/unbuckler)
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Vira o controle de cima para cima, em pé de[src]."),
-			span_notice("Você vira o controle de cima para cima, de pé[src]."),
+			span_notice("[unbuckler] Vira o controle de cima para cima, em pé de [src]."),
+			span_notice("Você vira o controle de cima para cima, de pé [src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Vira o controle superior para cima, de pé[being_unbuckled]Para cima de[src]."),
-			span_notice("[unbuckler]Vira o controle de cima para cima, de pé.[src]."),
+			span_notice("[unbuckler] Vira o controle superior para cima, de pé [being_unbuckled] Para cima de [src]."),
+			span_notice("[unbuckler] Vira o controle de cima para cima, de pé.[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -360,7 +360,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool, 0)
 		qdel(src)
 		return
 
-	user.visible_message(span_notice("[user]Pega.\the [src.name]."), span_notice("Você agarra\the [src.name]."))
+	user.visible_message(span_notice("[user] Pega.\the [src.name]."), span_notice("Você agarra\the [src.name]."))
 	var/obj/item/chair_item = new item_chair(loc)
 	chair_item.set_custom_materials(custom_materials)
 	TransferComponents(chair_item)
@@ -425,7 +425,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	AddElement(/datum/element/cuffable_item)
 
 /obj/item/chair/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a bater[user.p_them()]ego com\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a bater [user.p_them()] ego com\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src,hitsound,50,TRUE)
 	return BRUTELOSS
 
@@ -443,7 +443,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 		to_chat(user, span_warning("Você precisa de terreno para plantar isso!"))
 		return
 	if(!user.dropItemToGround(src))
-		to_chat(user, span_warning("[src]está preso em sua mão!"))
+		to_chat(user, span_warning("[src] está preso em sua mão!"))
 		return
 	if(flags_1 & HOLOGRAM_1)
 		to_chat(user, span_notice("Você tenta colocar para baixo\the [src], mas Desapareça!"))
@@ -458,7 +458,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 			to_chat(user, span_warning("Já tem alguma coisa aqui!"))
 			return
 
-	user.visible_message(span_notice("[user]Direitos\the [src.name]."), span_notice("Você está certo.\the [name]."))
+	user.visible_message(span_notice("[user] Direitos\the [src.name]."), span_notice("Você está certo.\the [name]."))
 	var/obj/structure/chair/chair = new origin_type(turf)
 	chair.set_custom_materials(custom_materials)
 	TransferComponents(chair)
@@ -481,7 +481,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/item/chair/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
 	if(attack_type == UNARMED_ATTACK && prob(hit_reaction_chance) || attack_type == LEAP_ATTACK && prob(hit_reaction_chance))
-		owner.visible_message(span_danger("[owner]Se afasta.[attack_text]Com[src]!"))
+		owner.visible_message(span_danger("[owner] Se afasta.[attack_text] Com [src]!"))
 		if(take_chair_damage(damage, damage_type, MELEE)) // Our chair takes our incoming damage for us, which can result in it smashing.
 			smash(owner)
 		return TRUE
@@ -502,7 +502,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	if(!take_chair_damage(damage_to_inflict, damtype, MELEE)) // If we would do enough damage to bring our chair's integrity to 0, we instead go past the check to smash it against our target
 		return
 
-	user.visible_message(span_danger("[user]Esmaga.[src]em pedaços contra[give_this_fucker_the_chair]"))
+	user.visible_message(span_danger("[user] Esmaga.[src] em pedaços contra [give_this_fucker_the_chair]"))
 	if(!HAS_TRAIT(give_this_fucker_the_chair, TRAIT_BRAWLING_KNOCKDOWN_BLOCKED))
 		if(vulnerable_hit || give_this_fucker_the_chair.get_timed_status_effect_duration(/datum/status_effect/staggered))
 			give_this_fucker_the_chair.Knockdown(2 SECONDS, daze_amount = daze_amount)
@@ -608,10 +608,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 /obj/structure/chair/bronze/click_alt(mob/user)
 	turns = 0
 	if(!(datum_flags & DF_ISPROCESSING))
-		user.visible_message(span_notice("[user]Gira.[src]E os últimos vestígios da tecnologia Ratvarian o mantêm girando para sempre."), 		span_notice("Cadeiras giratórias automatizadas. O auge da antiga tecnologia Ratvariana."))
+		user.visible_message(span_notice("[user] Gira.[src] E os últimos vestígios da tecnologia Ratvarian o mantêm girando para sempre."), 		span_notice("Cadeiras giratórias automatizadas. O auge da antiga tecnologia Ratvariana."))
 		START_PROCESSING(SSfastprocess, src)
 	else
-		user.visible_message(span_notice("[user]Pare.[src]É incontrolável."), 		span_notice("Você agarra[src]e parar de girar."))
+		user.visible_message(span_notice("[user] Pare.[src] É incontrolável."), 		span_notice("Você agarra [src] e parar de girar."))
 		STOP_PROCESSING(SSfastprocess, src)
 	return CLICK_ACTION_SUCCESS
 
@@ -661,7 +661,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	if (Mob.nutrition >= NUTRITION_LEVEL_FAT)
 		to_chat(Mob, span_warning("A cadeira começa a estourar, você é muito pesado!"))
 		if(do_after(Mob, 6 SECONDS, progress = FALSE))
-			Mob.visible_message(span_notice("A cadeira de plástico estala embaixo[Mob]Ó peso!"))
+			Mob.visible_message(span_notice("A cadeira de plástico estala embaixo [Mob] Ó peso!"))
 			new /obj/effect/decal/cleanable/plastic(loc)
 			qdel(src)
 
@@ -735,8 +735,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 /obj/structure/handrail/proc/stop_buckle(mob/living/source, ...)
 	SIGNAL_HANDLER
 	source.visible_message(
-		span_warning("[source]Perde[source.p_their()]Segura-se.[src]!"),
-		span_warning("Você perde o controle[src]!"),
+		span_warning("[source] Perde [source.p_their()] Segura-se.[src]!"),
+		span_warning("Você perde o controle [src]!"),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		vision_distance = COMBAT_MESSAGE_RANGE,
 	)
@@ -744,8 +744,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/handrail/buckle_feedback(mob/living/being_buckled, mob/buckler)
 	buckler.visible_message(
-		span_notice("[buckler]Pega.[src]Apertado, mantendo[buckler.p_them()]Ereto."),
-		span_notice("Você agarra[src]apertado, mantendo-se em pé."),
+		span_notice("[buckler] Pega.[src] Apertado, mantendo [buckler.p_them()] Ereto."),
+		span_notice("Você agarra [src] apertado, mantendo-se em pé."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		vision_distance = COMBAT_MESSAGE_RANGE,
 	)
@@ -753,15 +753,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 /obj/structure/handrail/unbuckle_feedback(mob/living/being_unbuckled, mob/unbuckler)
 	if(being_unbuckled == unbuckler)
 		being_unbuckled.visible_message(
-			span_notice("[unbuckler]Vamos.[src]."),
+			span_notice("[unbuckler] Vamos.[src]."),
 			span_notice("Solte-me.[src]."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = COMBAT_MESSAGE_RANGE,
 		)
 	else
 		being_unbuckled.visible_message(
-			span_warning("[unbuckler]forças[being_unbuckled]Para soltar[src]!"),
-			span_warning("[unbuckler]Força você a deixar ir.[src]!"),
+			span_warning("[unbuckler] forças [being_unbuckled] Para soltar [src]!"),
+			span_warning("[unbuckler] Força você a deixar ir.[src]!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			vision_distance = COMBAT_MESSAGE_RANGE,
 		)

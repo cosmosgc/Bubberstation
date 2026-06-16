@@ -74,7 +74,7 @@
 
 /obj/item/tank/internals/anesthetic/examine(mob/user)
 	. = ..()
-	. += span_notice("Um aviso está gravado em[src]...")
+	. += span_notice("Um aviso está gravado em [src]...")
 	. += span_warning("Não há nenhum processo no corpo que use N2O, então os pacientes exalarão o N2O... expondo você a ele. Certifique-se de trabalhar em um espaço bem ventilado para evitar acidentes sonolentos.")
 
 /obj/item/tank/internals/anesthetic/pure

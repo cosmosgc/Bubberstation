@@ -297,7 +297,7 @@ ADMIN_VERB(respawn_character, R_ADMIN, "Respawn Character", "Respawn a player th
 				G_found.mind.transfer_to(new_monkey) //be careful when doing stuff like this! I've already checked the mind isn't in use
 				new_monkey.PossessByPlayer(G_found.key)
 				to_chat(new_monkey, "Você foi totalmente reabastecido. Aproveite o jogo.", confidential = TRUE)
-				var/msg = span_adminnotice("[key_name_admin(user)]Respirou[new_monkey.key]Como um macaco imundo.")
+				var/msg = span_adminnotice("[key_name_admin(user)] Respirou [new_monkey.key] Como um macaco imundo.")
 				message_admins(msg)
 				admin_ticket_log(new_monkey, msg)
 				return //all done. The ghost is auto-deleted
@@ -366,7 +366,7 @@ ADMIN_VERB(respawn_character, R_ADMIN, "Respawn Character", "Respawn a player th
 		if(tgui_alert(new_character,"Gostaria que uma IA ativa anunciasse esse personagem?",,list("No","Yes")) == "Yes")
 			announce_arrival(new_character, new_character.mind.assigned_role.title)
 
-	var/msg = span_adminnotice("[admin]Respirou[player_key]Como[new_character.real_name].")
+	var/msg = span_adminnotice("[admin] Respirou [player_key] Como [new_character.real_name].")
 	message_admins(msg)
 	admin_ticket_log(new_character, msg)
 

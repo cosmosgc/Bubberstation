@@ -51,9 +51,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a cortar[limb.owner]É excesso de gordura..."),
-		span_notice("[surgeon]Começa a cortar[limb.owner]É excesso de gordura."),
-		span_notice("[surgeon]Começa a cortar[limb.owner]'s[limb.plaintext_zone]Com[tool]."),
+		span_notice("Você começa a cortar [limb.owner] É excesso de gordura..."),
+		span_notice("[surgeon] Começa a cortar [limb.owner] É excesso de gordura."),
+		span_notice("[surgeon] Começa a cortar [limb.owner]'s [limb.plaintext_zone] Com [tool]."),
 	)
 	display_pain(limb.owner, "You feel a stabbing in your [limb.plaintext_zone]!")
 
@@ -61,9 +61,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você remove com sucesso o excesso de gordura de[limb.owner]Ó corpo!"),
-		span_notice("[surgeon]com sucesso remova o excesso de gordura de[limb.owner]Ó corpo!"),
-		span_notice("[surgeon]Termina de Cortar o excesso de Gordura de[limb.owner]'s[limb.plaintext_zone]."),
+		span_notice("Você remove com sucesso o excesso de gordura de [limb.owner] Ó corpo!"),
+		span_notice("[surgeon] com sucesso remova o excesso de gordura de [limb.owner] Ó corpo!"),
+		span_notice("[surgeon] Termina de Cortar o excesso de Gordura de [limb.owner]'s [limb.plaintext_zone]."),
 	)
 	var/removednutriment = limb.owner.nutrition
 	limb.owner.overeatduration = 0 //patient is unfatted

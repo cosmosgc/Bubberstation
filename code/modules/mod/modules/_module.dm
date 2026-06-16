@@ -126,7 +126,7 @@
 		for(var/slot in required_slots)
 			var/list/slot_list = parse_slot_flags(slot)
 			slot_strings += (length(slot_list) == 1 ? "" : "one of ") + english_list(slot_list, and_text = " or ")
-		to_chat(activator, span_warning("[src]requer que esses slots sejam implantados:[english_list(slot_strings)]"))
+		to_chat(activator, span_warning("[src] requer que esses slots sejam implantados:[english_list(slot_strings)]"))
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
 	if(module_type != MODULE_USABLE)
@@ -169,13 +169,13 @@
 				RegisterSignal(mod.wearer, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
 				RegisterSignal(mod.wearer, COMSIG_KB_MOB_DROPITEM_DOWN, PROC_REF(dropkey))
 			else
-				balloon_alert(activator, "Não posso estender[device]!")
+				balloon_alert(activator, "Não posso estender [device]!")
 				mod.wearer.transferItemToLoc(device, src, force = TRUE)
 				return FALSE
 		else
 			var/used_button = mod.wearer.client?.prefs.read_preference(/datum/preference/choiced/mod_select) || MIDDLE_CLICK
 			update_signal(used_button)
-			balloon_alert(mod.wearer, "[src]ativado,[used_button]-clique para usar") // As of now, only wearers can "use" mods
+			balloon_alert(mod.wearer, "[src] ativado,[used_button]-clique para usar") // As of now, only wearers can "use" mods
 	active = TRUE
 	SEND_SIGNAL(src, COMSIG_MODULE_ACTIVATED)
 	SEND_SIGNAL(mod, COMSIG_MOD_MODULE_ACTIVATED, src)
@@ -189,7 +189,7 @@
 	if(module_type == MODULE_ACTIVE)
 		mod.selected_module = null
 		if(display_message)
-			balloon_alert(mod.wearer, device ? "[device]Retraído" : "[src]Desativado.")
+			balloon_alert(mod.wearer, device ? "[device]Retraído" : "[src] Desativado.")
 		if(device)
 			mod.wearer.transferItemToLoc(device, src, force = TRUE)
 			UnregisterSignal(mod.wearer, COMSIG_ATOM_EXITED)

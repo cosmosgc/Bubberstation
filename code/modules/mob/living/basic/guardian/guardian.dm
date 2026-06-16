@@ -133,9 +133,9 @@
 		to_chat(src, span_boldholoparasite("Por alguma razão, de alguma forma, você não tem intimador. Por favor, relate este bug imediatamente."))
 		stack_trace("Guardian created with client but no summoner.")
 	else
-		to_chat(src, span_holoparasite("Você é...<b>[theme.name]</b>, obrigado a servir[summoner.real_name]."))
-		to_chat(src, span_holoparasite("Você é capaz de se manifestar ou se lembrar de seu mestre com os botões no seu HUD. Você também encontrará um botão para se comunicar com[summoner.p_them()]Em particular lá."))
-		to_chat(src, span_holoparasite("Embora pessoalmente invencível, você morrerá se[summoner.real_name]Faz, e qualquer dano causado a você terá uma parte passada para[summoner.p_them()]enquanto você se alimenta[summoner.p_them()]Para se sustentar."))
+		to_chat(src, span_holoparasite("Você é...<b>[theme.name]</b>, obrigado a servir [summoner.real_name]."))
+		to_chat(src, span_holoparasite("Você é capaz de se manifestar ou se lembrar de seu mestre com os botões no seu HUD. Você também encontrará um botão para se comunicar com [summoner.p_them()] Em particular lá."))
+		to_chat(src, span_holoparasite("Embora pessoalmente invencível, você morrerá se [summoner.real_name] Faz, e qualquer dano causado a você terá uma parte passada para [summoner.p_them()] enquanto você se alimenta [summoner.p_them()] Para se sustentar."))
 	to_chat(src, playstyle_string)
 	if (!isnull(guardian_colour))
 		return // Already set up so we don't need to do it again
@@ -176,7 +176,7 @@
 	if (!new_name) //redo proc until we get a good name
 		to_chat(src, span_warning("Nome inválido, tente novamente."))
 		return guardian_rename()
-	to_chat(src, span_notice("Seu novo nome.[span_name(new_name)]ancora-se em sua mente."))
+	to_chat(src, span_notice("Seu novo nome.[span_name(new_name)] ancora-se em sua mente."))
 	fully_replace_character_name(null, new_name)
 
 /// Picks a random name as a suggestion
@@ -198,7 +198,7 @@
 
 /mob/living/basic/guardian/death(gibbed)
 	if (!QDELETED(summoner))
-		to_chat(summoner, span_bolddanger("Sua[name]Morreu de alguma forma!"))
+		to_chat(summoner, span_bolddanger("Sua [name] Morreu de alguma forma!"))
 		summoner.dust()
 	return ..()
 
@@ -295,18 +295,18 @@
 	if (!isnull(former_owner.loc))
 		forceMove(former_owner.loc)
 	to_chat(src, span_danger("Sua intimadora morreu!"))
-	visible_message(span_bolddanger("\The [src]morre junto com seu usuário!"))
-	former_owner.visible_message(span_bolddanger("[former_owner]O corpo é completamente consumido pela tensão de sustentar[src]!"))
+	visible_message(span_bolddanger("\The [src] morre junto com seu usuário!"))
+	former_owner.visible_message(span_bolddanger("[former_owner] O corpo é completamente consumido pela tensão de sustentar [src]!"))
 	former_owner.dust(drop_items = TRUE)
 
 /// Called when our health changes, inform our owner of why they are getting hurt (if they are)
 /mob/living/basic/guardian/proc/on_harm(mob/living/source, mob/living/summoner, amount)
 	if (QDELETED(src) || QDELETED(summoner) || amount <= 2)
 		return
-	to_chat(summoner, span_bolddanger("[name]Está sob ataque! Você se fere!"))
-	summoner.visible_message(span_bolddanger("Pulso de sangue de[summoner]Como[src]Se danifica!"))
+	to_chat(summoner, span_bolddanger("[name] Está sob ataque! Você se fere!"))
+	summoner.visible_message(span_bolddanger("Pulso de sangue de [summoner] Como [src] Se danifica!"))
 	if(summoner.stat == UNCONSCIOUS || summoner.stat == HARD_CRIT)
-		to_chat(summoner, span_bolddanger("Seus quilos da cabeça, você não pode suportar a tensão de sustentar[src]nesta condição!"))
+		to_chat(summoner, span_bolddanger("Seus quilos da cabeça, você não pode suportar a tensão de sustentar [src] nesta condição!"))
 		summoner.adjust_organ_loss(ORGAN_SLOT_BRAIN, amount * 0.5)
 
 /// When our owner is deleted, we go too.
@@ -327,7 +327,7 @@
 /mob/living/basic/guardian/proc/on_summoner_shapeshifted(mob/living/source, mob/living/new_shape)
 	SIGNAL_HANDLER
 	set_summoner(new_shape)
-	to_chat(src, span_holoparasite("Sua convocadora se transformou em uma[new_shape]!"))
+	to_chat(src, span_holoparasite("Sua convocadora se transformou em uma [new_shape]!"))
 
 /// Signal proc for [COMSIG_LIVING_UNSHAPESHIFTED], when our summoner unshapeshifts go back to that mob
 /mob/living/basic/guardian/proc/on_summoner_unshapeshifted(mob/living/source, mob/living/old_summoner)
@@ -336,7 +336,7 @@
 	to_chat(src, span_holoparasite("Sua convocadora voltou à forma normal!"))
 
 /mob/living/basic/guardian/wabbajack(what_to_randomize, change_flags = WABBAJACK)
-	visible_message(span_warning("[src]resiste ao polimorfo!")) // Ha, no
+	visible_message(span_warning("[src] resiste ao polimorfo!")) // Ha, no
 
 /mob/living/basic/guardian/can_suicide()
 	return FALSE // You gotta persuade your boss to end it instead, sorry

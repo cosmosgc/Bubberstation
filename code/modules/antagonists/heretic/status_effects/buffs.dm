@@ -28,7 +28,7 @@
 	location = null
 
 /datum/status_effect/crucible_soul/get_examine_text()
-	return span_notice("[owner.p_They()] [owner.p_do()]Não parece estar tudo aqui.")
+	return span_notice("[owner.p_They()] [owner.p_do()] Não parece estar tudo aqui.")
 
 /datum/action/cancel_crucible_soul
 	name = "Recall"
@@ -236,8 +236,8 @@
 
 	playsound(get_turf(source), 'sound/items/weapons/parry.ogg', 100, TRUE)
 	source.visible_message(
-		span_warning("[to_remove]orbitando[source]Snaps na frente de[attack_text], bloqueando-o antes de desaparecer!"),
-		span_warning("[to_remove]orbitando você estala na frente de[attack_text], bloqueando-o antes de desaparecer!"),
+		span_warning("[to_remove] orbitando [source] Snaps na frente de [attack_text], bloqueando-o antes de desaparecer!"),
+		span_warning("[to_remove] orbitando você estala na frente de [attack_text], bloqueando-o antes de desaparecer!"),
 		span_hear("Você ouve um clink."),
 	)
 
@@ -316,17 +316,17 @@
 	UnregisterSignal(owner, COMSIG_CARBON_CUFF_ATTEMPTED)
 	UnregisterSignal(owner, COMSIG_BEING_STRIPPED)
 	owner.visible_message(
-		span_warning("A neblina ao redor[owner]Desaparece, deixando-os materializados!"),
+		span_warning("A neblina ao redor [owner] Desaparece, deixando-os materializados!"),
 		span_notice("Você sai do refúgio."),
 	)
 
 /datum/status_effect/caretaker_refuge/get_examine_text()
-	return span_warning("[owner.p_Theyre()]Envolto em uma névoa profana!")
+	return span_warning("[owner.p_Theyre()] Envolto em uma névoa profana!")
 
 /datum/status_effect/caretaker_refuge/proc/nullrod_handler(datum/source, obj/item/weapon)
 	SIGNAL_HANDLER
 	playsound(get_turf(owner), 'sound/effects/curse/curse1.ogg', 80, TRUE)
-	owner.visible_message(span_warning("[weapon]repele a neblina ao redor.[owner]!"))
+	owner.visible_message(span_warning("[weapon] repele a neblina ao redor.[owner]!"))
 	owner.remove_status_effect(type)
 
 /datum/status_effect/caretaker_refuge/proc/on_focus_lost()
@@ -336,7 +336,7 @@
 
 /datum/status_effect/caretaker_refuge/proc/no_strip(atom/source, mob/user, obj/item/equipping)
 	SIGNAL_HANDLER
-	to_chat(user, span_warning("Você não consegue colocar nada.[source]como são incorpóreos!"))
+	to_chat(user, span_warning("Você não consegue colocar nada.[source] como são incorpóreos!"))
 	return COMPONENT_CANT_STRIP
 
 /datum/status_effect/caretaker_refuge/proc/prevent_spell_usage(datum/source, datum/spell)

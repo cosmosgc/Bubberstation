@@ -17,7 +17,7 @@
 
 /obj/item/book/granter/action/spell/mindswap/on_reading_finished()
 	. = ..()
-	visible_message(span_notice("[src]Começa a tremer e mudar."))
+	visible_message(span_notice("[src] Começa a tremer e mudar."))
 	action_name = pick(
 		"fireball",
 		"smoke",
@@ -48,10 +48,10 @@
 
 	if(swapper.swap_minds(user, real_stored_swap))
 		to_chat(user, span_warning("De repente você está em outro lugar... e em outro?"))
-		to_chat(real_stored_swap, span_warning("De repente você está olhando[src]De novo... Onde você está, quem é você?"))
+		to_chat(real_stored_swap, span_warning("De repente você está olhando [src] De novo... Onde você está, quem é você?"))
 
 	else
 		// if the mind_transfer failed to transfer mobs (likely due to the target being catatonic).
-		user.visible_message(span_warning("[src]Falhe ligeiramente enquanto pára de brilhar!"))
+		user.visible_message(span_warning("[src] Falhe ligeiramente enquanto pára de brilhar!"))
 
 	stored_swap_ref = null

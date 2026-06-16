@@ -783,7 +783,7 @@
 			human_target.reagents.add_reagent(/datum/reagent/toxin, 10)
 			return FALSE
 		else
-			to_chat(user, span_notice("Você termina de implantar[human_target]Mas você não percebe uma diferença. Huh."))
+			to_chat(user, span_notice("Você termina de implantar [human_target] Mas você não percebe uma diferença. Huh."))
 			to_chat(human_target, span_userdanger("Nada parece realmente acontecer, mas você começa a se sentir um pouco doente."))
 			human_target.reagents.add_reagent(/datum/reagent/toxin, 2)
 			return FALSE

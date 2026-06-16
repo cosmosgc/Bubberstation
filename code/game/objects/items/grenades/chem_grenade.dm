@@ -53,11 +53,11 @@
 		if (stage == GRENADE_READY || !(length(beakers)))
 			return
 		if (length(beakers) == 2 && beakers[1].name == beakers[2].name)
-			. += span_notice("Você vê dois.[beakers[1].name]Está dentro da granada.")
+			. += span_notice("Você vê dois.[beakers [1].name]Está dentro da granada.")
 			return
 
 		for (var/obj/item/beaker as anything in beakers)
-			. += span_notice("Você vê...[beaker.name]dentro da grana.")
+			. += span_notice("Você vê...[beaker.name] dentro da grana.")
 
 	if (!length(beakers))
 		. += span_notice("Você escaneia a granada, mas não detecta nada.")
@@ -67,7 +67,7 @@
 
 	for (var/obj/item/beaker as anything in beakers)
 		for (var/datum/reagent/reagent in beaker.reagents.reagent_list)
-			. += span_notice("[reagent.volume]Unidades de[reagent.name]Em\the [beaker].")
+			. += span_notice("[reagent.volume] Unidades de [reagent.name] Em\the [beaker].")
 
 	if (length(beakers) == 1)
 		. += span_notice("Você não detecta nenhum segundo copo na granada.")
@@ -87,7 +87,7 @@
 		if (GRENADE_EMPTY)
 			desc = "Faça você mesmo.[initial(name)]! [initial(casedesc)]"
 		if (GRENADE_WIRED)
-			desc = "Um não seguro[initial(name)]Reunião."
+			desc = "Um não seguro [initial(name)] Reunião."
 		if (GRENADE_READY)
 			desc = initial(desc)
 	return ..()
@@ -128,12 +128,12 @@
 	if (stage == GRENADE_WIRED)
 		if (length(beakers))
 			stage_change(GRENADE_READY)
-			to_chat(user, span_notice("Você tranca o[initial(name)]Reunião."))
+			to_chat(user, span_notice("Você tranca o [initial(name)] Reunião."))
 			tool.play_tool_sound(src, 25)
 			return ITEM_INTERACT_SUCCESS
 
 		if (!landminemode || !(landminemode.scanning || landminemode.timing))
-			to_chat(user, span_warning("Você precisa adicionar pelo menos um copo antes de trancar o[initial(name)]Montagem!"))
+			to_chat(user, span_warning("Você precisa adicionar pelo menos um copo antes de trancar o [initial(name)] Montagem!"))
 			return ITEM_INTERACT_BLOCKING
 
 		landminemode.timing = FALSE
@@ -151,7 +151,7 @@
 		landminemode.time = det_time * 0.1 //overwrites the proxy sensor activation timer
 
 	tool.play_tool_sound(src, 25)
-	to_chat(user, span_notice("Você modifica o atraso. Está pronto para[DisplayTimeText(det_time)]."))
+	to_chat(user, span_notice("Você modifica o atraso. Está pronto para [DisplayTimeText(det_time)]."))
 	return TRUE
 
 /obj/item/grenade/chem_grenade/wirecutter_act(mob/living/user, obj/item/tool)
@@ -160,7 +160,7 @@
 
 	tool.play_tool_sound(src)
 	stage_change(GRENADE_WIRED)
-	to_chat(user, span_notice("Você destranca o[initial(name)]Reunião."))
+	to_chat(user, span_notice("Você destranca o [initial(name)] Reunião."))
 	return TRUE
 
 /obj/item/grenade/chem_grenade/wrench_act(mob/living/user, obj/item/tool)
@@ -172,10 +172,10 @@
 		wires.detach_assembly(wires.get_wire(1))
 		new /obj/item/stack/cable_coil(get_turf(src), 1)
 		stage_change(GRENADE_EMPTY)
-		to_chat(user, span_notice("Você remove o mecanismo de ativação do[initial(name)]Reunião."))
+		to_chat(user, span_notice("Você remove o mecanismo de ativação do [initial(name)] Reunião."))
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_notice("Você abre o[initial(name)]Juntar-se e aposentar uma carga."))
+	to_chat(user, span_notice("Você abre o [initial(name)] Juntar-se e aposentar uma carga."))
 	for(var/obj/item/beaker as anything in beakers)
 		beaker.forceMove(drop_location())
 		if(!beaker.reagents)
@@ -197,7 +197,7 @@
 
 		det_time = 5 SECONDS // In case the cable_coil was removed and readded.
 		stage_change(GRENADE_WIRED)
-		to_chat(user, span_notice("Você manipula o[initial(name)]Reunião."))
+		to_chat(user, span_notice("Você manipula o [initial(name)] Reunião."))
 		return ITEM_INTERACT_SUCCESS
 
 	if (stage != GRENADE_WIRED)
@@ -207,17 +207,17 @@
 		return NONE
 
 	if(is_type_in_list(item, banned_containers))
-		to_chat(user, span_warning("[src]É muito pequeno para caber.[item]!")) // this one hits home huh anon?
+		to_chat(user, span_warning("[src] É muito pequeno para caber.[item]!")) // this one hits home huh anon?
 		return ITEM_INTERACT_BLOCKING
 
 	if (length(beakers) == 2)
-		to_chat(user, span_warning("[src]Não posso segurar mais contêineres!"))
+		to_chat(user, span_warning("[src] Não posso segurar mais contêineres!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(item, src))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("Você acrescenta[item]Parao[initial(name)]Reunião."))
+	to_chat(user, span_notice("Você acrescenta [item] Parao [initial(name)] Reunião."))
 	beakers += item
 	var/reagent_list = pretty_string_from_reagent_list(item.reagents.reagent_list)
 	user.log_message("inserted [item] ([reagent_list]) into [src]", LOG_GAME)
@@ -253,9 +253,9 @@
 		add_fingerprint(user)
 		if (msg)
 			if (landminemode)
-				to_chat(user, span_warning("Você prime[src]Ativando seu sensor de proximidade."))
+				to_chat(user, span_warning("Você prime [src] Ativando seu sensor de proximidade."))
 			else
-				to_chat(user, span_warning("Você prime[src]! [DisplayTimeText(det_time)]!"))
+				to_chat(user, span_warning("Você prime [src]! [DisplayTimeText(det_time)]!"))
 
 	active = TRUE
 	update_icon_state()
@@ -383,7 +383,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	unit_spread = newspread
-	to_chat(user, span_notice("Você definir o tempo de liberação para[unit_spread]Unidades por detonação."))
+	to_chat(user, span_notice("Você definir o tempo de liberação para [unit_spread] Unidades por detonação."))
 	return ..()
 
 /obj/item/grenade/chem_grenade/adv_release/detonate(mob/living/lanced_by)

@@ -60,7 +60,7 @@
 		return ..()
 
 	if(newloc != model)
-		to_chat(src, span_notice("Você não pode largar o seu[item_dropping.name]Módulo."))
+		to_chat(src, span_notice("Você não pode largar o seu [item_dropping.name] Módulo."))
 		return FALSE
 
 	var/module_num = get_selected_module()
@@ -115,7 +115,7 @@
 			disabled_modules |= BORG_MODULE_ALL_DISABLED
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 75, TRUE, TRUE)
-			audible_message(span_warning("[src]Parece um alarme!\"Todos os módulos desligados.\""))
+			audible_message(span_warning("[src] Parece um alarme!\"Todos os módulos desligados.\""))
 
 			if(builtInCamera)
 				builtInCamera.camera_enabled = FALSE
@@ -130,8 +130,8 @@
 			disabled_modules |= BORG_MODULE_TWO_DISABLED
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 60, TRUE, TRUE)
-			audible_message(span_warning("[src]Parece um alarme!\"Módulo[module_num]Desligado.\""))
-			to_chat(src, span_userdanger("Módulo[module_num]Desligado."))
+			audible_message(span_warning("[src] Parece um alarme!\"Módulo [module_num] Desligado.\""))
+			to_chat(src, span_userdanger("Módulo [module_num] Desligado."))
 
 		if(BORG_CHOOSE_MODULE_THREE)
 			if(disabled_modules & BORG_MODULE_THREE_DISABLED)
@@ -140,8 +140,8 @@
 			disabled_modules |= BORG_MODULE_THREE_DISABLED
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 50, TRUE, TRUE)
-			audible_message(span_warning("[src]Parece um alarme!\"Módulo[module_num]Desligado.\""))
-			to_chat(src, span_userdanger("Módulo[module_num]Desligado."))
+			audible_message(span_warning("[src] Parece um alarme!\"Módulo [module_num] Desligado.\""))
+			to_chat(src, span_userdanger("Módulo [module_num] Desligado."))
 
 	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_CYBORG_MODULE(module_num)]
 	if(module)
@@ -187,7 +187,7 @@
 
 			disabled_modules &= ~BORG_MODULE_THREE_DISABLED
 
-	to_chat(src, span_notice("Módulo[module_num]Voltando à ativa."))
+	to_chat(src, span_notice("Módulo [module_num] Voltando à ativa."))
 	var/atom/movable/screen/robot/module_slot/module = hud_used?.screen_objects[HUD_KEY_CYBORG_MODULE(module_num)]
 	if(module)
 		module.icon_state = module.base_icon_state

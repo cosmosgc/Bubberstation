@@ -102,7 +102,7 @@
 	consumed.forceMove(get_turf(consumer))
 	new_hand.held_gibtonite = null
 	qdel(new_hand)
-	consumer.visible_message(span_warning("[consumer]Não posso ficar.[consumed]Para baixo, e tosse no chão!"))
+	consumer.visible_message(span_warning("[consumer] Não posso ficar.[consumed] Para baixo, e tosse no chão!"))
 
 /datum/golem_food_buff/bluespace
 	exclusive = FALSE

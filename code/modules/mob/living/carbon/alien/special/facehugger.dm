@@ -83,9 +83,9 @@
 		return
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
-			. += span_bolddanger("[src]Não está se movendo.")
+			. += span_bolddanger("[src] Não está se movendo.")
 		if(CONSCIOUS)
-			. += span_bolddanger("[src]Parece estar ativo!")
+			. += span_bolddanger("[src] Parece estar ativo!")
 	if (sterile)
 		. += span_bolddanger("Parece que o proboscis foi removido.")
 
@@ -159,18 +159,18 @@
 	if(target.wear_mask && istype(target.wear_mask, /obj/item/clothing/mask/facehugger))
 		return FALSE
 	// passed initial checks - time to leap!
-	target.visible_message(span_danger("[src]pula sobre[target]O rosto!"), 						span_userdanger("[src]pula na sua cara!"))
+	target.visible_message(span_danger("[src] pula sobre [target] O rosto!"), 						span_userdanger("[src] pula na sua cara!"))
 
 	// probiscis-blocker handling
 	if(target.is_mouth_covered(ITEM_SLOT_HEAD))
-		target.visible_message(span_danger("[src]Esmaga contra[target]'s[target.head]!"), 							span_userdanger("[src]Esmaga contra o seu[target.head]!"))
+		target.visible_message(span_danger("[src] Esmaga contra [target]'s [target.head]!"), 							span_userdanger("[src] Esmaga contra o seu [target.head]!"))
 		Die()
 		return FALSE
 
 	if(target.wear_mask)
 		var/obj/item/clothing/worn_mask = target.wear_mask
 		if(target.dropItemToGround(worn_mask))
-			target.visible_message(span_danger("[src]Lágrimas[worn_mask]fora de[target]O rosto!"), 								span_userdanger("[src]Lágrimas[worn_mask]Saia da sua frente!"))
+			target.visible_message(span_danger("[src] Lágrimas [worn_mask] fora de [target] O rosto!"), 								span_userdanger("[src] Lágrimas [worn_mask] Saia da sua frente!"))
 
 	if(!target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1))
 		log_combat(target, src, "failed facehugged by")
@@ -213,7 +213,7 @@
 			return
 
 	if(!sterile)
-		target.visible_message(span_danger("[src]Caem mancando depois de violar[target]O rosto!"), 								span_userdanger("[src]Fica mole depois de violar seu rosto!"))
+		target.visible_message(span_danger("[src] Caem mancando depois de violar [target] O rosto!"), 								span_userdanger("[src] Fica mole depois de violar seu rosto!"))
 
 		Die()
 		icon_state = "[base_icon_state]_impregnated"
@@ -228,7 +228,7 @@
 				target.apply_status_effect(/datum/status_effect/nest_sustenance)
 
 	else
-		target.visible_message(span_danger("[src]viola[target]O rosto!"), 								span_userdanger("[src]viola seu rosto!"))
+		target.visible_message(span_danger("[src] viola [target] O rosto!"), 								span_userdanger("[src] viola seu rosto!"))
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
 	if(stat == DEAD || stat == CONSCIOUS)
@@ -257,7 +257,7 @@
 	inhand_icon_state = "facehugger_inactive"
 	stat = DEAD
 
-	visible_message(span_danger("[src]se enrola em uma bola!"))
+	visible_message(span_danger("[src] se enrola em uma bola!"))
 
 	// chest maybe because getting slammed in the chest would knock it off your face while dead
 	AddComponent(/datum/component/knockoff, knockoff_chance = 40, target_zones = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST), slots_knockoffable = slot_flags)
@@ -266,7 +266,7 @@
 	if(!real || sterile || stat == DEAD || user.get_organ_by_type(/obj/item/organ/body_egg/alien_embryo))
 		return ..()
 	if(user.get_item_by_slot(slot_flags) == src)
-		to_chat(user, span_userdanger("[src]Está muito apertado! Peça ajuda ou espere que ele solte!"))
+		to_chat(user, span_userdanger("[src] Está muito apertado! Peça ajuda ou espere que ele solte!"))
 		return FALSE
 	return ..()
 
@@ -277,7 +277,7 @@
 	if(!real || sterile || user.get_organ_by_type(/obj/item/organ/body_egg/alien_embryo))
 		return ..()
 	if(wearer.get_item_by_slot(slot_flags) == src && stat != DEAD)
-		to_chat(user, span_userdanger("[src]Está muito apertado! Peça ajuda ou espere que ele solte!"))
+		to_chat(user, span_userdanger("[src] Está muito apertado! Peça ajuda ou espere que ele solte!"))
 		return
 	return ..()
 

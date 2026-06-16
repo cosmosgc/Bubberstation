@@ -20,11 +20,11 @@
 			to_chat(user, span_alert("Você não escolheu nada para transmitir leis!"))
 			return
 		if(!can_upload_to(current))
-			to_chat(user, span_alert("O carregamento falhou! Verifique para ter certeza[current.name]está funcionando corretamente."))
+			to_chat(user, span_alert("O carregamento falhou! Verifique para ter certeza [current.name] está funcionando corretamente."))
 			current = null
 			return
 		if(!is_valid_z_level(get_turf(current), get_turf(user)))
-			to_chat(user, span_alert("O carregamento falhou! Incapaz de estabelecer uma conexão com[current.name]Você está muito longe!"))
+			to_chat(user, span_alert("O carregamento falhou! Incapaz de estabelecer uma conexão com [current.name] Você está muito longe!"))
 			current = null
 			return
 		M.install(current.laws, user)
@@ -53,7 +53,7 @@
 	if (!current)
 		to_chat(user, span_alert("Nenhuma IA ativa detectada!"))
 	else
-		to_chat(user, span_notice("[current.name]Selecionado para mudanças na lei."))
+		to_chat(user, span_notice("[current.name] Selecionado para mudanças na lei."))
 
 /obj/machinery/computer/upload/ai/can_upload_to(mob/living/silicon/ai/A)
 	if(!A || !isAI(A))
@@ -74,7 +74,7 @@
 	if(!current)
 		to_chat(user, span_alert("Nenhum ciborgue ativo não-escravo detectado."))
 	else
-		to_chat(user, span_notice("[current.name]Selecionado para mudanças na lei."))
+		to_chat(user, span_notice("[current.name] Selecionado para mudanças na lei."))
 
 /obj/machinery/computer/upload/borg/can_upload_to(mob/living/silicon/robot/B)
 	if(!B || !iscyborg(B))

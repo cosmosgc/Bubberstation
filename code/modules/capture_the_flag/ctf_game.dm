@@ -110,7 +110,7 @@
 				to_chat(user, span_warning("Você ainda não pode reavivar!"))
 		return
 	if(ctf_game.team_valid_to_join(team, user))
-		to_chat(user, span_userdanger("Agora você é um membro de[src.team]Pegue a bandeira inimiga e traga de volta para o controle da sua equipe!"))
+		to_chat(user, span_userdanger("Agora você é um membro de [src.team] Pegue a bandeira inimiga e traga de volta para o controle da sua equipe!"))
 		ctf_game.add_player(team, user.ckey)
 		var/client/new_team_member = user.client
 		spawn_team_member(new_team_member)
@@ -252,7 +252,7 @@
 		if(!user.dropItemToGround(src))
 			return
 	if(!isnull(ctf_game))
-		ctf_game.message_all_teams(span_userdanger("\The [initial(name)]Foi tomada!"))
+		ctf_game.message_all_teams(span_userdanger("\The [initial(name)] Foi tomada!"))
 	STOP_PROCESSING(SSobj, src)
 	anchored = FALSE // Hacky usage that bypasses set_anchored(), because normal checks need this to be FALSE to pass
 	. = ..() //this is the actual normal item checks
@@ -260,7 +260,7 @@
 		anchored = TRUE // Avoid directly assigning to anchored and prefer to use set_anchored() on normal circumstances.
 		return
 	//passing means the user picked up the flag so we can now apply this
-	to_chat(user, span_userdanger("Tome.\the [initial(name)]Para o controle da sua equipe!"))
+	to_chat(user, span_userdanger("Tome.\the [initial(name)] Para o controle da sua equipe!"))
 	user.set_anchored(TRUE)
 	user.status_flags &= ~CANPUSH
 
@@ -270,7 +270,7 @@
 
 	var/obj/item/ctf_flag/flag = item
 	if(flag.team != team)
-		to_chat(user, span_userdanger("Tome.\the [initial(flag.name)]Para o controle da sua equipe!"))
+		to_chat(user, span_userdanger("Tome.\the [initial(flag.name)] Para o controle da sua equipe!"))
 		user.playsound_local(get_turf(user), 'sound/machines/buzz/buzz-sigh.ogg', 100, vary = FALSE, use_reverb = FALSE)
 
 /obj/item/ctf_flag/dropped(mob/user)
@@ -280,7 +280,7 @@
 	reset_cooldown = world.time + 20 SECONDS
 	START_PROCESSING(SSobj, src)
 	if(!isnull(ctf_game))
-		ctf_game.message_all_teams(span_userdanger("\The [initial(name)]Foi derrubado!"))
+		ctf_game.message_all_teams(span_userdanger("\The [initial(name)] Foi derrubado!"))
 	anchored = TRUE // Avoid directly assigning to anchored and prefer to use set_anchored() on normal circumstances.
 
 /obj/item/ctf_flag/red

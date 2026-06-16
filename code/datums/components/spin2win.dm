@@ -54,12 +54,12 @@
 /datum/component/spin2win/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("Usando[parent]Em suas mãos vai fazê-lo girar sua arma por alguns momentos, atacando todos perto de você repetidamente!")
+	examine_list += span_notice("Usando [parent] Em suas mãos vai fazê-lo girar sua arma por alguns momentos, atacando todos perto de você repetidamente!")
 	if(spinning)
 		examine_list += span_warning("...que você está fazendo agora mesmo!")
 		return
 	if(COOLDOWN_FINISHED(src, spin_cooldown))
-		examine_list += span_notice("Ele tem um atraso de[DisplayTimeText(spin_cooldown_time)].")
+		examine_list += span_notice("Ele tem um atraso de [DisplayTimeText(spin_cooldown_time)].")
 	else
 		examine_list += span_notice("Estará pronto para girar novamente.[DisplayTimeText(COOLDOWN_TIMELEFT(src, spin_cooldown))].")
 

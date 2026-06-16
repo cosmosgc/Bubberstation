@@ -148,7 +148,7 @@
 
 
 /obj/effect/client_image_holder/bluespace_stream/attack_tk(mob/user)
-	to_chat(user, span_warning("\The [src]Ativamente rejeita sua mente, e as energias do espaço azul ao seu redor interrompem sua telecinese!"))
+	to_chat(user, span_warning("\The [src] Ativamente rejeita sua mente, e as energias do espaço azul ao seu redor interrompem sua telecinese!"))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/brain_trauma/special/quantum_alignment
@@ -207,7 +207,7 @@
 	entangle(get_turf(owner))
 
 /datum/brain_trauma/special/quantum_alignment/proc/entangle(atom/target)
-	to_chat(owner, span_notice("Você começa a sentir um forte senso de conexão com[target]."))
+	to_chat(owner, span_notice("Você começa a sentir um forte senso de conexão com [target]."))
 	linked_target = target
 	linked = TRUE
 	COOLDOWN_START(src, snapback_cooldown, rand(45 SECONDS, 10 MINUTES))
@@ -217,7 +217,7 @@
 		linked_target = null
 		linked = FALSE
 		return
-	to_chat(owner, span_warning("Sua conexão com[linked_target]De repente se sente extremamente forte... você pode sentir isso puxando você!"))
+	to_chat(owner, span_warning("Sua conexão com [linked_target] De repente se sente extremamente forte... você pode sentir isso puxando você!"))
 	owner.playsound_local(owner, 'sound/effects/magic/lightning_chargeup.ogg', 75, FALSE)
 	returning = TRUE
 	addtimer(CALLBACK(src, PROC_REF(snapback)), 10 SECONDS)
@@ -397,7 +397,7 @@
 
 	if(get_dist(owner, beepsky) <= 1)
 		owner.playsound_local(owner, 'sound/items/weapons/egloves.ogg', 50)
-		owner.visible_message(span_warning("[owner]O corpo se masturba como se estuvesse chocado."), span_userdanger("Você sente o punho da lei."))
+		owner.visible_message(span_warning("[owner] O corpo se masturba como se estuvesse chocado."), span_userdanger("Você sente o punho da lei."))
 		owner.adjust_stamina_loss(rand(40, 70))
 		QDEL_NULL(beepsky)
 

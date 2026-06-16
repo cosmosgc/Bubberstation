@@ -52,7 +52,7 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/Activate(atom/target)
 	owner.visible_message(
-		message = span_danger("\The [owner] start[owner.p_s()] growing a cocoon!"),
+		message = span_danger("\The [owner] start [owner.p_s()] growing a cocoon!"),
 		self_message = span_notice("Você começa a cultivar um casulo."),
 		blind_message = span_hear("Você começa a ouvir tricô carnudo!")
 	)
@@ -61,7 +61,7 @@
 		return FALSE
 
 	owner.visible_message(
-		message = span_danger("\The [owner] enter[owner.p_s()] a cocoon!"),
+		message = span_danger("\The [owner] enter [owner.p_s()] a cocoon!"),
 		self_message = span_green("Você entra no seu casulo recém crescido!"),
 		blind_message = span_hear("Pare de ouvir tricô carnudo!")
 	)
@@ -147,7 +147,7 @@
 /// Cancels the incubation process, destroying the cocoon early.
 /datum/action/cooldown/mob_cooldown/blood_worm/cocoon/proc/cancel()
 	cocoon.visible_message(
-		message = span_danger("\The [cocoon] fall[cocoon.p_s()] apart, expelling \the [owner] within."),
+		message = span_danger("\The [cocoon] fall [cocoon.p_s()] apart, expelling \the [owner] within."),
 		blind_message = span_danger("Você ouve uma batida!"),
 		ignored_mobs = owner
 	)
@@ -202,7 +202,7 @@
 
 	if (total_consumed_blood < total_blood_required)
 		if (feedback)
-			worm.balloon_alert(worm, "Apenas em[FLOOR(total_consumed_blood / total_blood_required * 100, 1)]% do crescimento necessário!")
+			worm.balloon_alert(worm, "Apenas em [FLOOR(total_consumed_blood / total_blood_required * 100, 1)]% do crescimento necessário!")
 		return FALSE
 	return TRUE
 

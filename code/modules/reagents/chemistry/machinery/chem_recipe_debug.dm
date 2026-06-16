@@ -104,7 +104,7 @@
 /obj/machinery/chem_recipe_debug/examine(mob/user)
 	. = ..()
 	if(!QDELETED(container))
-		. += span_notice("Um destinatário de[container.reagents.maximum_volume]A capacidade está dentro.")
+		. += span_notice("Um destinatário de [container.reagents.maximum_volume] A capacidade está dentro.")
 	else
 		. += span_notice("Nenhum contêiner está presente. Um novo será criado quando ejetar.")
 

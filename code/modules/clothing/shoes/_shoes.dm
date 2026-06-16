@@ -35,7 +35,7 @@
 
 /obj/item/clothing/shoes/suicide_act(mob/living/carbon/user)
 	if(prob(50))
-		user.visible_message(span_suicide("[user]Começa a apertar\the [src]Muito apertado! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Começa a apertar\the [src] Muito apertado! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		var/obj/item/bodypart/leg/left = user.get_bodypart(BODY_ZONE_L_LEG)
 		var/obj/item/bodypart/leg/right = user.get_bodypart(BODY_ZONE_R_LEG)
 		if(left)
@@ -45,7 +45,7 @@
 		playsound(user, SFX_DESECRATION, 50, TRUE, -1)
 		return BRUTELOSS
 	else//didnt realize this suicide act existed (was in miscellaneous.dm) and didnt want to remove it, so made it a 50/50 chance. Why not!
-		user.visible_message(span_suicide("[user]Está batendo[user.p_their()]A própria cabeça com[src]Isso não é um chute na cabeça?"))
+		user.visible_message(span_suicide("[user] Está batendo [user.p_their()] A própria cabeça com [src] Isso não é um chute na cabeça?"))
 		for(var/i in 1 to 3)
 			sleep(0.3 SECONDS)
 			playsound(user, 'sound/items/weapons/genhit2.ogg', 50, TRUE)
@@ -163,17 +163,17 @@
 		return
 
 	if(!in_range(user, our_guy))
-		to_chat(user, span_warning("Você não está perto o suficiente para interagir com[src]'s[fastening_type]!"))
+		to_chat(user, span_warning("Você não está perto o suficiente para interagir com [src]'s [fastening_type]!"))
 		return
 
 	if(user == loc && tied != SHOES_TIED) // if they're our own shoes, go tie-wards
 		if(DOING_INTERACTION_WITH_TARGET(user, our_guy))
-			to_chat(user, span_warning("Você já está interagindo com[src]!"))
+			to_chat(user, span_warning("Você já está interagindo com [src]!"))
 			return
-		user.visible_message(span_notice("[user]Começa[tied ? "unknotting" : "[fastening_verb()]"]O[fastening_type]de[user.p_their()] [src.name]."), span_notice("Você começa.[tied ? "unknotting" : "[fastening_verb()]"]O[fastening_type]da sua[src.name]..."))
+		user.visible_message(span_notice("[user] Começa[tied ? "unknotting" : "[fastening_verb()]"]O [fastening_type] de [user.p_their()] [src.name]."), span_notice("Você começa.[tied ? "unknotting" : "[fastening_verb()]"]O [fastening_type] da sua [src.name]..."))
 
 		if(do_after(user, lace_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
-			to_chat(user, span_notice("Você.[tied ? "unknot" : "[fasten_verb()]"]O[fastening_type]da sua[src.name]."))
+			to_chat(user, span_notice("Você.[tied ? "unknot" : "[fasten_verb()]"]O [fastening_type] da sua [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_TIED, user)
 			else
@@ -181,17 +181,17 @@
 
 	else // if they're someone else's shoes, go knot-wards
 		if(user.body_position == STANDING_UP)
-			to_chat(user, span_warning("Você deve estar no chão para interagir com[src]!"))
+			to_chat(user, span_warning("Você deve estar no chão para interagir com [src]!"))
 			return
 		if(tied == SHOES_KNOTTED)
-			to_chat(user, span_warning("O[fastening_type]Vamos.[loc]'s[src.name]Já são uma confusão irremediavelmente emaranhada!"))
+			to_chat(user, span_warning("O [fastening_type] Vamos.[loc]'s [src.name] Já são uma confusão irremediavelmente emaranhada!"))
 			return
 		if(DOING_INTERACTION_WITH_TARGET(user, our_guy))
-			to_chat(user, span_warning("Você já está interagindo com[src]!"))
+			to_chat(user, span_warning("Você já está interagindo com [src]!"))
 			return
 
 		var/mod_time = lace_time
-		to_chat(user, span_notice("Você silenciosamente pronto para trabalhar[tied ? "un[fastening_verb()]" : "knotting"] [loc]'s[src.name]..."))
+		to_chat(user, span_notice("Você silenciosamente pronto para trabalhar[tied ? "un[fastening_verb()]" : "knotting"] [loc]'s [src.name]..."))
 		if(HAS_TRAIT(user, TRAIT_CLUMSY)) // based clowns trained their whole lives for this
 			mod_time *= 0.75
 		// SKYRAT EDIT ADDITION START
@@ -199,14 +199,14 @@
 			mod_time *= 0.5
 		// SKYRAT EDIT ADDITION END
 		if(do_after(user, mod_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy), hidden = TRUE))
-			to_chat(user, span_notice("Você.[tied ? "un[fasten_verb()]" : "knot"]O[fastening_type]Vamos.[loc]'s[src.name]."))
+			to_chat(user, span_notice("Você.[tied ? "un[fasten_verb()]" : "knot"]O [fastening_type] Vamos.[loc]'s [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_KNOTTED, user)
 			else
 				adjust_laces(SHOES_UNTIED, user)
 		else // if one of us moved
-			user.visible_message(span_danger("[our_guy]Selos em[user]A mão, no meio...[tied ? "knotting" : "un[fastening_verb()]"]!"), span_userdanger("Ow![our_guy]Selos em sua mão!"), list(our_guy))
-			to_chat(our_guy, span_userdanger("Você marca em[user]A mão! Mas que...[user.p_they()] [user.p_were()] [tied ? "knotting" : "un[fastening_verb()]"]Sua[fastening_type]!"))
+			user.visible_message(span_danger("[our_guy] Selos em [user] A mão, no meio...[tied ? "knotting" : "un[fastening_verb()]"]!"), span_userdanger("Ow![our_guy] Selos em sua mão!"), list(our_guy))
+			to_chat(our_guy, span_userdanger("Você marca em [user] A mão! Mas que...[user.p_they()] [user.p_were()] [tied ? "knotting" : "un[fastening_verb()]"]Sua [fastening_type]!"))
 			user.emote("scream")
 			user.apply_damage(10, BRUTE, user.get_active_hand(), wound_bonus = CANT_WOUND)
 			user.apply_damage(40, STAMINA)
@@ -226,7 +226,7 @@
 	if(tied == SHOES_KNOTTED)
 		our_guy.Paralyze(5)
 		our_guy.Knockdown(10)
-		our_guy.visible_message(span_danger("[our_guy]Viagens em[our_guy.p_their()]Atado.[fastening_type]E cai! Que desastrado!"), span_userdanger("Você tropeça no seu nó[fastening_type]E cair!"))
+		our_guy.visible_message(span_danger("[our_guy] Viagens em [our_guy.p_their()] Atado.[fastening_type] E cai! Que desastrado!"), span_userdanger("Você tropeça no seu nó [fastening_type] E cair!"))
 		our_guy.add_mood_event("trip", /datum/mood_event/tripped) // well we realized they're knotted now!
 		our_alert_ref = WEAKREF(our_guy.throw_alert(ALERT_SHOES_KNOT, /atom/movable/screen/alert/shoes/knotted))
 
@@ -237,21 +237,21 @@
 				our_guy.Paralyze(5)
 				our_guy.Knockdown(10)
 				our_guy.add_mood_event("trip", /datum/mood_event/tripped) // well we realized they're knotted now!
-				our_guy.visible_message(span_danger("[our_guy]Viagens em[our_guy.p_their()] [untied_adjective()] [fastening_type]E cai! Que desastrado!"), span_userdanger("Você tropeça em seu[untied_adjective()] [fastening_type]E cair!"))
+				our_guy.visible_message(span_danger("[our_guy] Viagens em [our_guy.p_their()] [untied_adjective()] [fastening_type] E cai! Que desastrado!"), span_userdanger("Você tropeça em seu [untied_adjective()] [fastening_type] E cair!"))
 
 			if(2 to 5) // .4% chance to stumble and lurch forward
 				our_guy.throw_at(get_step(our_guy, our_guy.dir), 3, 2)
-				to_chat(our_guy, span_danger("Você tropeça em seu[untied_adjective()] [fastening_type]E avançar!"))
+				to_chat(our_guy, span_danger("Você tropeça em seu [untied_adjective()] [fastening_type] E avançar!"))
 
 			if(6 to 13) // .7% chance to stumble and fling what we're holding
 				var/have_anything = FALSE
 				for(var/obj/item/I in our_guy.held_items)
 					have_anything = TRUE
 					our_guy.accident(I)
-				to_chat(our_guy, span_danger("Você tropeça em seu[fastening_type]Um pouco.[have_anything ? ", flinging what you were holding" : ""]!"))
+				to_chat(our_guy, span_danger("Você tropeça em seu [fastening_type] Um pouco.[have_anything ? ", flinging what you were holding" : ""]!"))
 
 			if(14 to 25) // 1.3ish% chance to stumble and be a bit off balance (like being disarmed)
-				to_chat(our_guy, span_danger("Você tropeça um pouco no seu[untied_adjective()] [fastening_type]!"))
+				to_chat(our_guy, span_danger("Você tropeça um pouco no seu [untied_adjective()] [fastening_type]!"))
 				our_guy.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 10 SECONDS)
 
 			if(26 to 1000)
@@ -276,13 +276,13 @@
 		return
 
 	if(DOING_INTERACTION_WITH_TARGET(user, src))
-		to_chat(user, span_warning("Você já está interagindo com[src]!"))
+		to_chat(user, span_warning("Você já está interagindo com [src]!"))
 		return
 
-	to_chat(user, span_notice("Você começa.[tied ? "un" : ""][fastening_verb()]O[fastening_type]Vamos.[src]..."))
+	to_chat(user, span_notice("Você começa.[tied ? "un" : ""][fastening_verb()] O [fastening_type] Vamos.[src]..."))
 
 	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
-		to_chat(user, span_notice("Você.[tied ? "un" : ""][fasten_verb()]O[fastening_type]Vamos.[src]."))
+		to_chat(user, span_notice("Você.[tied ? "un" : ""][fasten_verb()] O [fastening_type] Vamos.[src]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)
 
 /obj/item/clothing/shoes/apply_fantasy_bonuses(bonus)

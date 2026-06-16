@@ -17,7 +17,7 @@
 	for (var/obj/item/stored in contents)
 		stored.add_mob_blood(implantee)
 	atom_storage.remove_all()
-	implantee.visible_message(span_warning("Um bolso do espaço azul abre ao redor[src]como ele sai[implantee], vomitando seu conteúdo e rompendo o tecido circundante!"))
+	implantee.visible_message(span_warning("Um bolso do espaço azul abre ao redor [src] como ele sai [implantee], vomitando seu conteúdo e rompendo o tecido circundante!"))
 	implantee.apply_damage(20, BRUTE, BODY_ZONE_CHEST)
 	QDEL_NULL(atom_storage)
 	return ..()

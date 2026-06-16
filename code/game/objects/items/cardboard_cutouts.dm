@@ -49,7 +49,7 @@
 /obj/item/cardboard_cutout/attack_hand(mob/living/user, list/modifiers)
 	if(!user.combat_mode || pushed_over || !isturf(loc))
 		return ..()
-	user.visible_message(span_warning("[user]Empurra sobre[src]!"), span_danger("Você empurra.[src]!"))
+	user.visible_message(span_warning("[user] Empurra sobre [src]!"), span_danger("Você empurra.[src]!"))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 	push_over()
 
@@ -64,7 +64,7 @@
 
 /obj/item/cardboard_cutout/proc/push_over()
 	appearance = initial(appearance)
-	desc = "[initial(desc)]Foi empurrado."
+	desc = "[initial(desc)] Foi empurrado."
 	icon_state = "cutout_pushed_over"
 	remove_atom_colour(FIXED_COLOUR_PRIORITY)
 	pushed_over = TRUE
@@ -129,7 +129,7 @@
 		return FALSE
 	if(!check_menu(user, crayon))
 		return FALSE
-	user.visible_message(span_notice("[user]dá[src]Um novo visual."), span_notice("Voila! Você dá[src]Um novo visual."))
+	user.visible_message(span_notice("[user] dá [src] Um novo visual."), span_notice("Voila! Você dá [src] Um novo visual."))
 	crayon.use_charges(1)
 	crayon.check_empty(user)
 	alpha = 255
@@ -153,7 +153,7 @@
 	if(user.incapacitated)
 		return FALSE
 	if(pushed_over)
-		to_chat(user, span_warning("Certo.[src]Primeiro!"))
+		to_chat(user, span_warning("Certo.[src] Primeiro!"))
 		return FALSE
 	if(!crayon || !user.is_holding(crayon))
 		return FALSE

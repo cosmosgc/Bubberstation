@@ -22,7 +22,7 @@
 
 /obj/item/hourglass/proc/toggle(mob/user)
 	if(!timing_id)
-		to_chat(user,span_notice("Você vira o[src]."))
+		to_chat(user,span_notice("Você vira o [src]."))
 		start()
 		flick("hourglass_flip",src)
 	else
@@ -55,7 +55,7 @@
 	update_appearance()
 
 /obj/item/hourglass/proc/finish()
-	visible_message(span_notice("[src]Pare."))
+	visible_message(span_notice("[src] Pare."))
 	stop()
 
 /obj/item/hourglass/Destroy()

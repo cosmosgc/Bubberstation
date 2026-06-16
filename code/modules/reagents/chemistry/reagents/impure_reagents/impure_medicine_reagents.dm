@@ -311,7 +311,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 /datum/reagent/inverse/healing/tirimol/on_mob_delete(mob/living/affected_mob)
 	. = ..()
 	if(affected_mob.IsSleeping())
-		affected_mob.visible_message(span_notice("[icon2html(affected_mob, viewers(DEFAULT_MESSAGE_RANGE, src))] [affected_mob]Vamos ressonar!"))//small way of letting people know the supersnooze is ended
+		affected_mob.visible_message(span_notice("[icon2html(affected_mob, viewers(DEFAULT_MESSAGE_RANGE, src))] [affected_mob] Vamos ressonar!"))//small way of letting people know the supersnooze is ended
 	for(var/datum/reagent/reagent as anything in cached_reagent_list)
 		if(!reagent)
 			continue
@@ -547,7 +547,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	if(affected_mob.health < -500 || heart.organ_flags & ORGAN_FAILING)//Honestly commendable if you get -500
 		explosion(affected_mob, light_impact_range = 1, explosion_cause = src)
 		qdel(heart)
-		affected_mob.visible_message(span_boldwarning("[affected_mob]O coração explode!"))
+		affected_mob.visible_message(span_boldwarning("[affected_mob] O coração explode!"))
 
 /datum/reagent/inverse/penthrite/overdose_start(mob/living/carbon/affected_mob, metabolization_ratio)
 	. = ..()
@@ -560,7 +560,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		return ..()
 	explosion(affected_mob, light_impact_range = 1, explosion_cause = src)
 	qdel(heart)
-	affected_mob.visible_message(span_boldwarning("[affected_mob]O coração explode!"))
+	affected_mob.visible_message(span_boldwarning("[affected_mob] O coração explode!"))
 	return..()
 
 /datum/reagent/inverse/penthrite/proc/remove_buffs(mob/living/carbon/affected_mob)

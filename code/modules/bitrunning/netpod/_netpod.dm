@@ -100,7 +100,7 @@
 		. += span_infoplain("Está desocupado.")
 		return
 
-	. += span_infoplain("Está ocupado atualmente por[occupant].")
+	. += span_infoplain("Está ocupado atualmente por [occupant].")
 
 	if(isobserver(user))
 		. += span_notice("Como observador, você pode clicar neste netpod para saltar para o seu avatar.")

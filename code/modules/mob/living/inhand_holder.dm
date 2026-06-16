@@ -61,7 +61,7 @@
 	if((item_flags & ABSTRACT) || HAS_TRAIT(src, TRAIT_NODROP))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_notice("Você está pronto.[src]Deite-se suavemente no chão."))
+		to_chat(user, span_notice("Você está pronto.[src] Deite-se suavemente no chão."))
 		release()
 		return
 
@@ -83,13 +83,13 @@
 	if(isliving(loc))
 		var/mob/living/captor = loc
 		if(display_messages)
-			to_chat(captor, span_warning("[released_mob]Se contorcer livre!"))
+			to_chat(captor, span_warning("[released_mob] Se contorcer livre!"))
 		captor.dropItemToGround(src)
 	released_mob.forceMove(drop_location())
 	released_mob.reset_perspective()
 	released_mob.setDir(SOUTH)
 	if(display_messages)
-		released_mob.visible_message(span_warning("[released_mob]Desembucha!"))
+		released_mob.visible_message(span_warning("[released_mob] Desembucha!"))
 	if(!QDELETED(src))
 		qdel(src)
 	return TRUE
@@ -107,8 +107,8 @@
 
 /obj/item/mob_holder/on_found(mob/finder)
 	if(held_mob?.will_escape_storage())
-		to_chat(finder, span_warning("\A [held_mob.name]Sai!"))
-		finder.visible_message(span_warning("\A [held_mob.name]Sai do receptor.[finder]Está abrindo!"), ignored_mobs = finder)
+		to_chat(finder, span_warning("\A [held_mob.name] Sai!"))
+		finder.visible_message(span_warning("\A [held_mob.name] Sai do receptor.[finder] Está abrindo!"), ignored_mobs = finder)
 		release(display_messages = FALSE)
 		return
 

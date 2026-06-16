@@ -144,7 +144,7 @@
 		return
 	var/mob/living/carbon/human/suffocater = user
 	suffocater.say("WHAT THE FUCK IS CARBON DIOXIDE?")
-	suffocater.visible_message(span_suicide("[user]Está sufocando.[user.p_them()]ego com[src]Parece que...[user.p_they()]Não li o que aquela mochila diz!"))
+	suffocater.visible_message(span_suicide("[user] Está sufocando.[user.p_them()] ego com [src] Parece que...[user.p_they()] Não li o que aquela mochila diz!"))
 	return OXYLOSS
 
 /obj/item/tank/jetpack/emp_act(severity)

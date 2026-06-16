@@ -21,7 +21,7 @@ Doesn't work on other aliens/AI.*/
 	. = ..()
 	//not free
 	if(plasma_cost != 0)
-		name = "[initial(name)] ([plasma_cost]P)"
+		name = "[initial(name)] ([plasma_cost] P)"
 
 /datum/action/cooldown/alien/IsAvailable(feedback = FALSE)
 	. = ..()
@@ -85,7 +85,7 @@ Doesn't work on other aliens/AI.*/
 /datum/action/cooldown/alien/make_structure/proc/check_for_duplicate()
 	var/obj/structure/existing_thing = locate(made_structure_type) in owner.loc
 	if(existing_thing)
-		to_chat(owner, span_warning("Já existe.\a [existing_thing]Aqui!"))
+		to_chat(owner, span_warning("Já existe.\a [existing_thing] Aqui!"))
 		return FALSE
 
 	return TRUE
@@ -110,7 +110,7 @@ Doesn't work on other aliens/AI.*/
 	made_structure_type = /obj/structure/alien/weeds/node
 
 /datum/action/cooldown/alien/make_structure/plant_weeds/Activate(atom/target)
-	owner.visible_message(span_alertalien("[owner]Planta algumas ervas daninhas alienígenas!"))
+	owner.visible_message(span_alertalien("[owner] Planta algumas ervas daninhas alienígenas!"))
 	return ..()
 
 /datum/action/cooldown/alien/whisper
@@ -136,12 +136,12 @@ Doesn't work on other aliens/AI.*/
 	if(QDELETED(chosen_recipient) || QDELETED(src) || QDELETED(owner) || !IsAvailable(feedback = TRUE) || !to_whisper)
 		return FALSE
 	if(chosen_recipient.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
-		to_chat(owner, span_warning("Enquanto você alcança[chosen_recipient]Você é parado por um bloqueio mental. Parece que você foi frustrado."))
+		to_chat(owner, span_warning("Enquanto você alcança [chosen_recipient] Você é parado por um bloqueio mental. Parece que você foi frustrado."))
 		return FALSE
 
 	log_directed_talk(owner, chosen_recipient, to_whisper, LOG_SAY, tag = "alien whisper")
 	to_chat(chosen_recipient, "[span_noticealien("You hear a strange, alien voice in your head...")][to_whisper]")
-	to_chat(owner, span_noticealien("Você disse:\"[to_whisper]\"para[chosen_recipient]"))
+	to_chat(owner, span_noticealien("Você disse:\"[to_whisper]\"para [chosen_recipient]"))
 	for(var/mob/dead_mob as anything in GLOB.dead_mob_list)
 		if(!isobserver(dead_mob))
 			continue
@@ -184,8 +184,8 @@ Doesn't work on other aliens/AI.*/
 	donation_target.adjustPlasma(amount)
 	carbon_owner.adjustPlasma(-amount)
 
-	to_chat(donation_target, span_noticealien("[owner]Foi transferido.[amount]plasma para você."))
-	to_chat(owner, span_noticealien("Você se transferiu.[amount]plasma para[donation_target]."))
+	to_chat(donation_target, span_noticealien("[owner] Foi transferido.[amount] plasma para você."))
+	to_chat(owner, span_noticealien("Você se transferiu.[amount] plasma para [donation_target]."))
 	return TRUE
 
 /datum/action/cooldown/alien/acid
@@ -236,8 +236,8 @@ Doesn't work on other aliens/AI.*/
 		return FALSE
 
 	owner.visible_message(
-		span_alertalien("[owner]Vómitos de coisas vis por toda parte.[target]Começa a ferver e derreter sob a bagunça borbulhante de ácido!"),
-		span_noticealien("Você vomita bolhas de ácido sobre[target]Começa a ferver e derreter."),
+		span_alertalien("[owner] Vómitos de coisas vis por toda parte.[target] Começa a ferver e derreter sob a bagunça borbulhante de ácido!"),
+		span_noticealien("Você vomita bolhas de ácido sobre [target] Começa a ferver e derreter."),
 	)
 	return TRUE
 
@@ -289,7 +289,7 @@ Doesn't work on other aliens/AI.*/
 
 	var/modifiers = params2list(params)
 	clicker.visible_message(
-		span_danger("[clicker]Cuspiu neurotoxina!"),
+		span_danger("[clicker] Cuspiu neurotoxina!"),
 		span_alertalien("Você cuspiu neurotoxina."),
 	)
 	var/obj/projectile/neurotoxin/neurotoxin = new /obj/projectile/neurotoxin(clicker.loc)
@@ -335,8 +335,8 @@ Doesn't work on other aliens/AI.*/
 		return FALSE
 
 	owner.visible_message(
-		span_notice("[owner]vomita uma substância púrpura grossa e começa a moldá-la."),
-		span_notice("Você forma um[choice]Sem resina."),
+		span_notice("[owner] vomita uma substância púrpura grossa e começa a moldá-la."),
+		span_notice("Você forma um [choice] Sem resina."),
 	)
 	//SKYRAT EDIT START - Roundstart xenohybrid organs
 	if(build_duration && !do_after(owner, build_duration))
@@ -369,13 +369,13 @@ Doesn't work on other aliens/AI.*/
 	var/mob/living/carbon/alien/adult/alieninated_owner = owner
 	var/obj/item/organ/stomach/alien/melting_pot = alieninated_owner.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!melting_pot)
-		owner.visible_message(span_clown("[src]Gags, e cospe um pouco de líquido roxo. Ewwww."), 			span_alien("Sente uma dor no seu peito? Não há nada lá não há nada lá não..."))
+		owner.visible_message(span_clown("[src] Gags, e cospe um pouco de líquido roxo. Ewwww."), 			span_alien("Sente uma dor no seu peito? Não há nada lá não há nada lá não..."))
 		return
 
 	if(!length(melting_pot.stomach_contents))
 		to_chat(owner, span_alien("Não tem nada no seu estômago, o que planeja cuspir?"))
 		return
-	owner.visible_message(span_danger("[owner]Lança fora o conteúdo de seu estômago!"))
+	owner.visible_message(span_danger("[owner] Lança fora o conteúdo de seu estômago!"))
 	var/dir_angle = dir2angle(owner.dir)
 
 	playsound(owner, 'sound/mobs/non-humanoids/alien/alien_york.ogg', 100)

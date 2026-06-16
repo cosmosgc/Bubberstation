@@ -44,7 +44,7 @@
 /datum/component/living_heart/proc/on_organ_removed(obj/item/organ/source, mob/living/carbon/old_owner)
 	SIGNAL_HANDLER
 
-	to_chat(old_owner, span_userdanger("Como sua vida[source.name]Deixe seu corpo, você se sente menos ligado ao Mansus!"))
+	to_chat(old_owner, span_userdanger("Como sua vida [source.name] Deixe seu corpo, você se sente menos ligado ao Mansus!"))
 	qdel(src)
 
 /**
@@ -174,7 +174,7 @@
 	if(ismob(tracked_thing))
 		var/mob/tracked_mob = tracked_thing
 		if(tracked_mob.stat == DEAD)
-			to_chat(owner, span_hierophant("[tracked_mob]Está morto. Traga-os para uma runa de transmutação e invoque\"[sac_knowledge.name]\"para sacrificá-los!"))
+			to_chat(owner, span_hierophant("[tracked_mob] Está morto. Traga-os para uma runa de transmutação e invoque\"[sac_knowledge.name]\"para sacrificá-los!"))
 
 	StartCooldown()
 	return TRUE

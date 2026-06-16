@@ -109,14 +109,14 @@
 	burn_evilly()
 
 /obj/item/coupon/proc/burn_evilly()
-	visible_message(span_warning("[src]Queima em um sinistro flash, tomando uma energia maligna com ele..."))
+	visible_message(span_warning("[src] Queima em um sinistro flash, tomando uma energia maligna com ele..."))
 	burn()
 
 /obj/item/coupon/attack_atom(obj/attacked_obj, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!istype(attacked_obj, /obj/machinery/computer/cargo))
 		return ..()
 	if(discount_pct_off == COUPON_OMEN)
-		to_chat(user, span_warning("\The [attacked_obj]valida o cupom como autêntico, mas se recusa a aceitá-lo..."))
+		to_chat(user, span_warning("\The [attacked_obj] valida o cupom como autêntico, mas se recusa a aceitá-lo..."))
 		attacked_obj.say("Coupon fulfillment already in progress...")
 		return
 

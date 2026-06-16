@@ -327,7 +327,7 @@
 		return
 
 	if (atom_storage.attempt_insert(weapon, source, override = TRUE) && source.put_in_hands(target))
-		source.visible_message(span_notice("[source]Trocas rápidas[weapon]Fora com[target]!"), span_notice("Você troca rapidamente.[weapon]com[target]."))
+		source.visible_message(span_notice("[source] Trocas rápidas [weapon] Fora com [target]!"), span_notice("Você troca rapidamente.[weapon] com [target]."))
 	else
 		source.balloon_alert(source, "Incapaz de bater!")
 

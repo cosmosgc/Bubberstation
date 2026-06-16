@@ -36,7 +36,7 @@
 /datum/religion_rites/proc/perform_rite(mob/living/user, atom/religious_tool)
 	if(!can_afford(user))
 		return FALSE
-	to_chat(user, span_notice("Você começa a realizar o ritual de[name]..."))
+	to_chat(user, span_notice("Você começa a realizar o ritual de [name]..."))
 	if(!ritual_invocations)
 		if(do_after(user, ritual_length))
 			return TRUE
@@ -98,7 +98,7 @@
 			to_chat(user, span_warning("Este rito requer um dispositivo religioso para o qual os indivíduos podem ser presos."))
 			return FALSE
 		if(isandroid(user))
-			to_chat(user, span_warning("Você já se converteu. Para converter os outros, eles devem ser dobrados para[movable_reltool]."))
+			to_chat(user, span_warning("Você já se converteu. Para converter os outros, eles devem ser dobrados para [movable_reltool]."))
 			return FALSE
 		to_chat(user, span_warning("Você vai se converter com este ritual."))
 	return ..()
@@ -119,7 +119,7 @@
 	if(!rite_target)
 		return FALSE
 	rite_target.set_species(/datum/species/android)
-	rite_target.visible_message(span_notice("[rite_target]Foi convertido pelo rito de[name]!"))
+	rite_target.visible_message(span_notice("[rite_target] Foi convertido pelo rito de [name]!"))
 	return TRUE
 
 
@@ -304,7 +304,7 @@
 			continue
 		mold_target = could_mold //moldify this o great one
 		return ..()
-	to_chat(user, span_warning("Você precisa colocar comida em[religious_tool]Para fazer isso!"))
+	to_chat(user, span_warning("Você precisa colocar comida em [religious_tool] Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/adapted_food/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -314,7 +314,7 @@
 	if(QDELETED(moldify) || !(get_turf(religious_tool) == moldify.loc)) //check if the same food is still there
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	to_chat(user, span_warning("[moldify]Fica rançoso!"))
+	to_chat(user, span_warning("[moldify] Fica rançoso!"))
 	user.emote("laugh")
 	new /obj/item/food/badrecipe/moldy(get_turf(religious_tool))
 	qdel(moldify)
@@ -343,7 +343,7 @@
 	if(QDELETED(padala) || !(get_turf(religious_tool) == padala.loc)) //check if the same food is still there
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	to_chat(user, span_warning("[padala]Transforma-se em um totem!"))
+	to_chat(user, span_warning("[padala] Transforma-se em um totem!"))
 	if(!padala.use(1))//use one wood
 		return
 	user.emote("laugh")
@@ -365,7 +365,7 @@
 			continue
 		contract_target = could_contract
 		return ..()
-	to_chat(user, span_warning("Você precisa colocar papel em branco[religious_tool]Para fazer isso!"))
+	to_chat(user, span_warning("Você precisa colocar papel em branco [religious_tool] Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/sparring_contract/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -376,11 +376,11 @@
 	if(QDELETED(blank_paper) || !(tool_turf == blank_paper.loc)) //check if the same paper is still there
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	blank_paper.visible_message(span_notice("As palavras magicamente se formam em[blank_paper]!"))
+	blank_paper.visible_message(span_notice("As palavras magicamente se formam em [blank_paper]!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
 	var/datum/religion_sect/spar/sect = GLOB.religious_sect
 	if(sect.existing_contract)
-		sect.existing_contract.visible_message(span_warning("[src]Não faz nada!"))
+		sect.existing_contract.visible_message(span_warning("[src] Não faz nada!"))
 		qdel(sect.existing_contract)
 	sect.existing_contract = new /obj/item/sparring_contract(tool_turf)
 	qdel(blank_paper)
@@ -411,7 +411,7 @@
 	. = ..()
 	var/datum/religion_sect/spar/sect = GLOB.religious_sect
 	sect.arenas[area_instance.name] = area_instance.type
-	to_chat(user, span_warning("[area_instance]Agora é uma opção para escolher em contratos de treino."))
+	to_chat(user, span_warning("[area_instance] Agora é uma opção para escolher em contratos de treino."))
 
 /datum/religion_rites/ceremonial_weapon
 	name = "Forge Ceremonial Gear"
@@ -438,7 +438,7 @@
 		return ..()
 	// We've found a material but it wasn't solid enough.
 	if(not_rigid)
-		to_chat(user, span_warning("[not_rigid]Não é adequado para ser transformado em engrenagem!"))
+		to_chat(user, span_warning("[not_rigid] Não é adequado para ser transformado em engrenagem!"))
 	else
 		to_chat(user, span_warning("Você precisa de pelo menos 5 folhas de um material rígido que pode ser transformado em engrenagem!"))
 	return FALSE
@@ -452,7 +452,7 @@
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
 	var/material_used = used_for_blade.material_type
-	to_chat(user, span_warning("[used_for_blade]Transforma-se em uma lâmina cerimonial!"))
+	to_chat(user, span_warning("[used_for_blade] Transforma-se em uma lâmina cerimonial!"))
 	if(!used_for_blade.use(5))//use 5 of the material
 		return
 	var/obj/item/ceremonial_blade/blade = new(altar_turf)
@@ -476,7 +476,7 @@
 
 /datum/religion_rites/unbreakable/invoke_effect(mob/living/carbon/human/user, atom/movable/religious_tool)
 	..()
-	to_chat(user, span_nicegreen("Você sente[GLOB.deity]A vontade de continuar lutando derramando em você!"))
+	to_chat(user, span_nicegreen("Você sente [GLOB.deity] A vontade de continuar lutando derramando em você!"))
 	user.AddComponent(/datum/component/unbreakable)
 
 /datum/religion_rites/tenacious
@@ -496,5 +496,5 @@
 
 /datum/religion_rites/tenacious/invoke_effect(mob/living/carbon/human/user, atom/movable/religious_tool)
 	..()
-	to_chat(user, span_nicegreen("Você sente[GLOB.deity]A tenacidade está caindo em você!"))
+	to_chat(user, span_nicegreen("Você sente [GLOB.deity] A tenacidade está caindo em você!"))
 	user.AddElement(/datum/element/tenacious)

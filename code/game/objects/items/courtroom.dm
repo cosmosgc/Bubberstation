@@ -21,7 +21,7 @@
 	AddElement(/datum/element/kneejerk)
 
 /obj/item/gavelhammer/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Condenado.[user.p_them()]e eu morrer com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Condenado.[user.p_them()] e eu morrer com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/items/gavel.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 
@@ -39,7 +39,7 @@
 /obj/item/gavelblock/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(I, /obj/item/gavelhammer))
 		playsound(loc, 'sound/items/gavel.ogg', 100, TRUE)
-		user.visible_message(span_warning("[user]Strikes[src]com[I]."))
+		user.visible_message(span_warning("[user] Strikes [src] com [I]."))
 		user.changeNext_move(CLICK_CD_MELEE)
 	else
 		return ..()

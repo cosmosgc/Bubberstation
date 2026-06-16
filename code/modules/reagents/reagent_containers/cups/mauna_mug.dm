@@ -21,7 +21,7 @@
 
 /obj/item/reagent_containers/cup/maunamug/examine(mob/user)
 	. = ..()
-	. += span_notice("A exibição de status diz: Temperatura atual:<b>[reagents.chem_temp]K.</b>Carga atual:[cell ? "[cell.charge / cell.maxcharge * 100]%" : "No cell found"].")
+	. += span_notice("A exibição de status diz: Temperatura atual:<b>[reagents.chem_temp] K.</b>Carga atual:[cell ? "[cell.charge / cell.maxcharge * 100]%" : "No cell found"].")
 	if(open)
 		. += span_notice("A bateria está aberta.")
 	if(cell && cell.charge > 0)
@@ -85,7 +85,7 @@
 	else if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
 	cell = tool
-	user.visible_message(span_notice("[user]insere uma célula de energia em[src]."), span_notice("Você insere a célula de energia em[src]."))
+	user.visible_message(span_notice("[user] insere uma célula de energia em [src]."), span_notice("Você insere a célula de energia em [src]."))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
@@ -93,7 +93,7 @@
 	if(cell && open)
 		user.put_in_hands(cell)
 		cell = null
-		to_chat(user, span_notice("Você remove a célula de energia de[src]."))
+		to_chat(user, span_notice("Você remove a célula de energia de [src]."))
 		on = FALSE
 		update_appearance()
 		return TRUE

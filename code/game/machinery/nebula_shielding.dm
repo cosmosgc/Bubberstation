@@ -73,7 +73,7 @@
 /obj/machinery/nebula_shielding/emergency/examine(mob/user)
 	. = ..()
 
-	. += span_notice("[p_They()]Vai fazer a nebulosa para[round(detonate_in / (1 MINUTES))]minutos com uma força de escudo de[shielding_strength].")
+	. += span_notice("[p_They()] Vai fazer a nebulosa para [round(detonate_in / (1 MINUTES))] minutos com uma força de escudo de [shielding_strength].")
 
 /obj/machinery/nebula_shielding/emergency/get_nebula_shielding()
 	return shielding_strength //no strings attached, we will always produce shielding
@@ -99,7 +99,7 @@
 /obj/machinery/nebula_shielding/radiation/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Passivamente gera trítio. Fornece[shielding_strength]níveis de nebulosa protegendo quando ativo.")
+	. += span_notice("Passivamente gera trítio. Fornece [shielding_strength] níveis de nebulosa protegendo quando ativo.")
 
 /obj/machinery/nebula_shielding/radiation/generate_reward()
 	var/turf/open/turf = get_turf(src)

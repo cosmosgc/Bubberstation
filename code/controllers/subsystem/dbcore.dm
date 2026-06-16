@@ -486,7 +486,7 @@ Ignore_errors instructes mysql to continue inserting rows if some of them have e
 			if (has_col)
 				query_parts += ", "
 			if (has_question_mark[column])
-				var/name = "p[arguments.len]"
+				var/name = "p [arguments.len]"
 				query_parts += replacetext(columns[column], "?", ":[name]")
 				arguments[name] = row[column]
 			else

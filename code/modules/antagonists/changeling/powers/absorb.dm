@@ -39,7 +39,7 @@
 		return
 
 	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Absorb DNA", "4"))
-	owner.visible_message(span_danger("[owner]suga os fluidos de[target]!"), span_notice("Nós absorvemos[target]."))
+	owner.visible_message(span_danger("[owner] suga os fluidos de [target]!"), span_notice("Nós absorvemos [target]."))
 
 	if(target.client && target.mind)
 		var/mob/eye/imaginary_friend/hivemind/new_member = new(target.loc)
@@ -52,7 +52,7 @@
 
 	var/true_absorbtion = (!isnull(target.client) || !isnull(target.mind) || !isnull(target.last_mind))
 	if (!true_absorbtion)
-		to_chat(owner, span_changeling(span_bold("Você absorve[target]Mas seu DNA fraco não é suficiente para satisfazer sua fome.")))
+		to_chat(owner, span_changeling(span_bold("Você absorve [target] Mas seu DNA fraco não é suficiente para satisfazer sua fome.")))
 
 	if(!changeling.has_profile_with_dna(target.dna))
 		changeling.add_new_profile(target)
@@ -117,17 +117,17 @@
 
 	if(recent_speech.len)
 		changeling.antag_memory += "Some of [target]'s speech patterns, we should study these to better impersonate [target.p_them()]: "
-		to_chat(owner, span_boldnotice("Alguns de[target]Os padrões de fala, devemos estudar estes para melhor personificar[target.p_them()]!"))
+		to_chat(owner, span_boldnotice("Alguns de [target] Os padrões de fala, devemos estudar estes para melhor personificar [target.p_them()]!"))
 		for(var/spoken_memory in recent_speech)
 			changeling.antag_memory += " \"[spoken_memory]\""
 			to_chat(owner, span_notice("\"[spoken_memory]\""))
 		changeling.antag_memory += ". We have no more knowledge of [target]'s speech patterns. "
-		to_chat(owner, span_boldnotice("Não temos mais conhecimento[target]Os padrões de fala."))
+		to_chat(owner, span_boldnotice("Não temos mais conhecimento [target] Os padrões de fala."))
 
 
 	var/datum/antagonist/changeling/target_ling = IS_CHANGELING(target)
 	if(target_ling)//If the target was a changeling, suck out their extra juice and objective points!
-		to_chat(owner, span_boldnotice("[target]era um de nós. Absorvemos o poder deles."))
+		to_chat(owner, span_boldnotice("[target] era um de nós. Absorvemos o poder deles."))
 
 		// Gain half of their genetic points.
 		var/genetic_points_to_add = round(target_ling.total_genetic_points / 2)
@@ -154,10 +154,10 @@
 			if(1)
 				to_chat(owner, span_notice("Esta criatura é compatível. Devemos ficar parados..."))
 			if(2)
-				owner.visible_message(span_warning("[owner]estende um proboscis!"), span_notice("Vamos estender um proboscis."))
+				owner.visible_message(span_warning("[owner] estende um proboscis!"), span_notice("Vamos estender um proboscis."))
 			if(3)
 				absorbing_loop = new(owner, start_immediately = TRUE)
-				owner.visible_message(span_danger("[owner]Apunhalamentos[target]Com os proboscis!"), span_notice("Nós esfaqueamos[target]com os proboscis."))
+				owner.visible_message(span_danger("[owner] Apunhalamentos [target] Com os proboscis!"), span_notice("Nós esfaqueamos [target] com os proboscis."))
 				to_chat(target, span_userdanger("Você sente uma dor afiada!"))
 				target.take_overall_damage(40)
 

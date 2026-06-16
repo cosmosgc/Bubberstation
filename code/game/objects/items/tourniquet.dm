@@ -21,7 +21,7 @@
 	return ..()
 
 /obj/item/tourniquet/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a embrulhar[src]Por aí.[p_their()]O pescoço está muito apertado! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a embrulhar [src] Por aí.[p_their()] O pescoço está muito apertado! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(!do_after(user, 5 SECONDS, user))
 		return SHAME
 	var/obj/item/bodypart/head = user.get_bodypart(BODY_ZONE_HEAD)
@@ -92,44 +92,44 @@
 
 	if(limb.body_zone == BODY_ZONE_HEAD)
 		user.visible_message(
-			span_warning("[user]começa a aplicar[src]Para[user == patient ? p_their() : "[patient]'s"]pescoço..."),
-			span_userdanger("Você começa a aplicar[src]Para[user == patient ? "your" : "[patient]'s"]pescoço, embora você comece a pensar se isso é uma boa idéia...?"),
+			span_warning("[user] começa a aplicar [src] Para[user == patient ? p_their() : "[patient]'s"]pescoço..."),
+			span_userdanger("Você começa a aplicar [src] Para[user == patient ? "your" : "[patient]'s"]pescoço, embora você comece a pensar se isso é uma boa idéia...?"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			ignored_mobs = patient,
 		)
 		if(user != patient)
 			patient.show_message(
-				span_userdanger("[user]começa a aplicar[src]No seu pescoço! Não pode ser uma boa ideia!"),
+				span_userdanger("[user] começa a aplicar [src] No seu pescoço! Não pode ser uma boa ideia!"),
 				MSG_VISUAL,
-				span_userdanger("Você sente[user]Comece a embrulhar algo apertado no pescoço! Não pode ser uma boa ideia!"),
+				span_userdanger("Você sente [user] Comece a embrulhar algo apertado no pescoço! Não pode ser uma boa ideia!"),
 			)
 
 	else if(speed_boosted)
 		user.visible_message(
-			span_notice("[user]começa a aplicar-se habilmente.[src]Para[user == patient ? p_their() : "[patient]'s"]Mesmo.[limb.plaintext_zone]..."),
-			span_notice("Você começa a aplicar habilmente[src]Para[user == patient ? "your" : "[patient]'s"]Mesmo.[limb.plaintext_zone], mantendo as indicações de holo-imagem em mente ..."),
+			span_notice("[user] começa a aplicar-se habilmente.[src] Para[user == patient ? p_their() : "[patient]'s"]Mesmo.[limb.plaintext_zone]..."),
+			span_notice("Você começa a aplicar habilmente [src] Para[user == patient ? "your" : "[patient]'s"]Mesmo.[limb.plaintext_zone], mantendo as indicações de holo-imagem em mente ..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			ignored_mobs = patient,
 		)
 		if(user != patient)
 			patient.show_message(
-				span_notice("[user]começa a aplicar-se habilmente.[src]para o seu[limb.plaintext_zone]..."),
+				span_notice("[user] começa a aplicar-se habilmente.[src] para o seu [limb.plaintext_zone]..."),
 				MSG_VISUAL,
-				span_notice("Você sente[user]Comece a embrulhar algo ao redor do seu[limb.plaintext_zone]Com precisão..."),
+				span_notice("Você sente [user] Comece a embrulhar algo ao redor do seu [limb.plaintext_zone] Com precisão..."),
 			)
 
 	else
 		user.visible_message(
-			span_warning("[user]começa a aplicar[src]Para[user == patient ? p_their() : "[patient]'s"] [limb.plaintext_zone]..."),
-			span_warning("Você começa a aplicar[src]Para[user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]..."),
+			span_warning("[user] começa a aplicar [src] Para[user == patient ? p_their() : "[patient]'s"] [limb.plaintext_zone]..."),
+			span_warning("Você começa a aplicar [src] Para[user == patient ? "your" : "[patient]'s"] [limb.plaintext_zone]..."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			ignored_mobs = patient,
 		)
 		if(user != patient)
 			patient.show_message(
-				span_warning("[user]começa a aplicar[src]para o seu[limb.plaintext_zone]..."),
+				span_warning("[user] começa a aplicar [src] para o seu [limb.plaintext_zone]..."),
 				MSG_VISUAL,
-				span_warning("Você sente[user]Comece a embrulhar algo ao redor do seu[limb.plaintext_zone]..."),
+				span_warning("Você sente [user] Comece a embrulhar algo ao redor do seu [limb.plaintext_zone]..."),
 			)
 
 	if(!do_after(user, 5 SECONDS * speed_multiplier, patient))

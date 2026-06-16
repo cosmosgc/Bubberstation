@@ -286,14 +286,14 @@
 
 	var/mob/living/to_reset = bad_dog.resolve()
 
-	to_chat(owner, span_hierophant("Você pede[to_reset]Para mudar de lugar.\'personalidade..."))
+	to_chat(owner, span_hierophant("Você pede [to_reset] Para mudar de lugar.\'personalidade..."))
 	var/mob/chosen_one = SSpolling.poll_ghost_candidates("Você quer jogar como[span_danger("[owner.real_name]'s")] [span_notice(to_reset.name)]?", check_jobban = ROLE_PAI, poll_time = 10 SECONDS, alert_pic = to_reset, jump_target = owner, role_name_text = to_reset.name, amount_to_pick = 1)
 	if(isnull(chosen_one))
-		to_chat(owner, span_hierophant("Seu pedido de mudança.[to_reset]Sua personalidade parece ter sido negada... Parece que você está preso com isso por enquanto."))
+		to_chat(owner, span_hierophant("Seu pedido de mudança.[to_reset] Sua personalidade parece ter sido negada... Parece que você está preso com isso por enquanto."))
 		StartCooldown()
 		return FALSE
 	to_chat(to_reset, span_hierophant("Seu chamador o reiniciou, e seu corpo foi tomado por um fantasma. Parece que eles não estavam felizes com sua performance."))
-	to_chat(owner, span_hierophant("A mente de[to_reset]se torceu para se adequar melhor."))
+	to_chat(owner, span_hierophant("A mente de [to_reset] se torceu para se adequar melhor."))
 	message_admins("[key_name_admin(chosen_one)] has taken control of ([ADMIN_LOOKUPFLW(to_reset)])")
 	to_reset.ghostize(FALSE)
 	to_reset.PossessByPlayer(chosen_one.key)

@@ -6,7 +6,7 @@
  */
 /datum/admins/proc/add_tagged_datum(datum/target_datum)
 	if(LAZYFIND(tagged_datums, target_datum))
-		to_chat(owner, span_warning("[target_datum]Já está marcado!"))
+		to_chat(owner, span_warning("[target_datum] Já está marcado!"))
 		return
 
 	if(!target_datum.allow_mark_datum())
@@ -14,14 +14,14 @@
 
 	LAZYADD(tagged_datums, target_datum)
 	RegisterSignal(target_datum, COMSIG_QDELETING, PROC_REF(handle_tagged_del), override = TRUE)
-	to_chat(owner, span_notice("[target_datum]Foi marcado."))
+	to_chat(owner, span_notice("[target_datum] Foi marcado."))
 
 /// Get ahead of the curve with deleting
 /datum/admins/proc/handle_tagged_del(datum/source)
 	SIGNAL_HANDLER
 
 	if(owner)
-		to_chat(owner, span_boldnotice("Etiquetado datum[source] ([source.type]Foi eletado."))
+		to_chat(owner, span_boldnotice("Etiquetado datum [source] ([source.type] Foi eletado."))
 	remove_tagged_datum(source, silent = TRUE)
 
 /**
@@ -38,9 +38,9 @@
 	if(LAZYFIND(tagged_datums, target_datum))
 		LAZYREMOVE(tagged_datums, target_datum)
 		if(!silent)
-			to_chat(owner, span_notice("[target_datum]Foi desmarcado."))
+			to_chat(owner, span_notice("[target_datum] Foi desmarcado."))
 	else if(!silent)
-		to_chat(owner, span_warning("[target_datum]Não estava marcado."))
+		to_chat(owner, span_warning("[target_datum] Não estava marcado."))
 
 /// Quick define for readability
 #define TAG_DEL(X) "<b>(<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];del_tag=[REF(X)]'>UNTAG</a>)</b>"

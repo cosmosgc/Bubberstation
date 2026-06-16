@@ -208,7 +208,7 @@
 /obj/structure/trap/eldritch/alert/trap_effect(mob/living/victim)
 	var/mob/living/real_owner = owner?.resolve()
 	if(real_owner)
-		to_chat(real_owner, span_userdanger("[victim.real_name]Pisou na rua de alerta[get_area(src)]!"))
+		to_chat(real_owner, span_userdanger("[victim.real_name] Pisou na rua de alerta [get_area(src)]!"))
 		real_owner.playsound_local(get_turf(real_owner), 'sound/effects/magic/curse.ogg', 50, TRUE)
 
 /obj/structure/trap/eldritch/tentacle

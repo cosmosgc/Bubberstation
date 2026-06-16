@@ -104,10 +104,10 @@
 
 
 	user.visible_message(
-		span_notice("\The [user]Ponto\the [src]Em\the [scanned_atom]e faz uma varredura forense."),
+		span_notice("\The [user] Ponto\the [src] Em\the [scanned_atom] e faz uma varredura forense."),
 		ignored_mobs = user
 	)
-	to_chat(user, span_notice("Você verifica.\the [scanned_atom]O scanner está analisando os resultados..."))
+	to_chat(user, span_notice("Você verifica.\the [scanned_atom] O scanner está analisando os resultados..."))
 
 
 	// GATHER INFORMATION

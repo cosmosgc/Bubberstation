@@ -22,7 +22,7 @@
 
 /obj/item/gun_maintenance_supplies/examine(mob/user)
 	. = ..()
-	. += span_info("Este kit tem[uses]usa fora de[max_uses]Esquerda.")
+	. += span_info("Este kit tem [uses] usa fora de [max_uses] Esquerda.")
 
 /obj/item/gun_maintenance_supplies/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()

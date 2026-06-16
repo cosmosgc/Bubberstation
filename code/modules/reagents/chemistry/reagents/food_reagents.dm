@@ -173,13 +173,13 @@
 	if(!isitem(exposed_obj) || HAS_TRAIT(exposed_obj, TRAIT_FOOD_FRIED))
 		return
 	if(is_type_in_typecache(exposed_obj, GLOB.oilfry_blacklisted_items) || (exposed_obj.resistance_flags & INDESTRUCTIBLE))
-		exposed_obj.visible_message(span_notice("O óleo quente não tem efeito sobre[exposed_obj]!"))
+		exposed_obj.visible_message(span_notice("O óleo quente não tem efeito sobre [exposed_obj]!"))
 		return
 	if(exposed_obj.atom_storage)
-		exposed_obj.visible_message(span_notice("O óleo quente escorre sobre como[exposed_obj]Toque-o. Parece muito cheio para cozinhar corretamente!"))
+		exposed_obj.visible_message(span_notice("O óleo quente escorre sobre como [exposed_obj] Toque-o. Parece muito cheio para cozinhar corretamente!"))
 		return
 
-	exposed_obj.visible_message(span_warning("[exposed_obj]Batatas fritas rapidamente como é salpicado com óleo quente! De alguma forma."))
+	exposed_obj.visible_message(span_warning("[exposed_obj] Batatas fritas rapidamente como é salpicado com óleo quente! De alguma forma."))
 	exposed_obj.AddElement(/datum/element/fried_item, volume SECONDS)
 	exposed_obj.reagents.add_reagent(type, reac_volume, data, holder.chem_temp)
 
@@ -195,7 +195,7 @@
 	if(HAS_TRAIT(exposed_mob, TRAIT_OIL_FRIED))
 		return
 
-	exposed_mob.visible_message(span_warning("O óleo fervente ferve enquanto cobre[exposed_mob]!"), 	span_userdanger("Você está coberto de óleo fervente!"))
+	exposed_mob.visible_message(span_warning("O óleo fervente ferve enquanto cobre [exposed_mob]!"), 	span_userdanger("Você está coberto de óleo fervente!"))
 	if(FryLoss)
 		exposed_mob.emote("scream")
 		exposed_mob.adjust_fire_loss(FryLoss)
@@ -532,13 +532,13 @@
 	adjust_blood_flow(-0.06 * reac_volume, initial_flow * 0.6) // 20u of a salt shacker * 0.1 = -1.6~ blood flow, but is always clamped to, at best, third blood loss from that wound.
 	// Crystal irritation worsening recovery.
 	gauzed_clot_rate *= 0.65
-	to_chat(carbies, span_notice("Os pedaços de sal se infiltram e se apegam[LOWER_TEXT(src)], dolorosamente irritante a pele, mas absorvendo a maior parte do sangue."))
+	to_chat(carbies, span_notice("Os pedaços de sal se infiltram e se apegam [LOWER_TEXT(src)], dolorosamente irritante a pele, mas absorvendo a maior parte do sangue."))
 
 /datum/wound/slash/flesh/on_salt(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.1 * reac_volume, initial_flow * 0.5) // 20u of a salt shacker * 0.1 = -2~ blood flow, but is always clamped to, at best, halve blood loss from that wound.
 	// Crystal irritation worsening recovery.
 	clot_rate *= 0.75
-	to_chat(carbies, span_notice("Os pedaços de sal se infiltram e se apegam[LOWER_TEXT(src)], dolorosamente irritante a pele, mas absorvendo a maior parte do sangue."))
+	to_chat(carbies, span_notice("Os pedaços de sal se infiltram e se apegam [LOWER_TEXT(src)], dolorosamente irritante a pele, mas absorvendo a maior parte do sangue."))
 
 /datum/wound/burn/flesh/on_salt(reac_volume)
 	// Slightly sanitizes and disinfects, but also increases infestation rate (some bacteria are aided by salt), and decreases flesh healing (can damage the skin from moisture absorption)
@@ -546,7 +546,7 @@
 	infection -= max(VALUE_PER(0.3, 30) * reac_volume, 0)
 	infection_rate += VALUE_PER(0.12, 30) * reac_volume
 	flesh_healing -= max(VALUE_PER(5, 30) * reac_volume, 0)
-	to_chat(victim, span_notice("Os pedaços de sal se infiltram e se apegam[LOWER_TEXT(src)], dolorosamente irritante a pele! Depois de alguns momentos, me sinto marginalmente melhor."))
+	to_chat(victim, span_notice("Os pedaços de sal se infiltram e se apegam [LOWER_TEXT(src)], dolorosamente irritante a pele! Depois de alguns momentos, me sinto marginalmente melhor."))
 
 /datum/reagent/consumable/blackpepper
 	name = "Black Pepper"
@@ -706,18 +706,18 @@
 
 /datum/wound/pierce/bleed/on_flour(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.015 * reac_volume) // 30u of a flour sack * 0.015 = -0.45~ blood flow, prettay good
-	to_chat(carbies, span_notice("A farinha se infiltra em[LOWER_TEXT(src)], dolorosamente secando-o e absorvendo um pouco do sangue."))
+	to_chat(carbies, span_notice("A farinha se infiltra em [LOWER_TEXT(src)], dolorosamente secando-o e absorvendo um pouco do sangue."))
 	// When some nerd adds infection for wounds, make this increase the infection
 
 /datum/wound/slash/flesh/on_flour(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.04 * reac_volume) // 30u of a flour sack * 0.04 = -1.25~ blood flow, pretty good!
-	to_chat(carbies, span_notice("A farinha se infiltra em[LOWER_TEXT(src)]Secando um pouco e absorvendo um pouco de sangue."))
+	to_chat(carbies, span_notice("A farinha se infiltra em [LOWER_TEXT(src)] Secando um pouco e absorvendo um pouco de sangue."))
 	// When some nerd adds infection for wounds, make this increase the infection
 
 // Don't pour flour onto burn wounds, it increases infection risk! Very unwise. Backed up by REAL info from REAL professionals.
 // https://www.reuters.com/article/uk-factcheck-flour-burn-idUSKCN26F2N3
 /datum/wound/burn/flesh/on_flour(reac_volume)
-	to_chat(victim, span_notice("A farinha se infiltra em[LOWER_TEXT(src)]Te cutucando com dor intensa! Não foi uma boa ideia..."))
+	to_chat(victim, span_notice("A farinha se infiltra em [LOWER_TEXT(src)] Te cutucando com dor intensa! Não foi uma boa ideia..."))
 	sanitization -= min(0, 1)
 	infection += 0.2
 	return
@@ -817,18 +817,18 @@
 
 /datum/wound/pierce/bleed/on_starch(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.03 * reac_volume)
-	to_chat(carbies, span_notice("O amido pegajoso se infiltra em[LOWER_TEXT(src)]Secando um pouco e absorvendo um pouco de sangue."))
+	to_chat(carbies, span_notice("O amido pegajoso se infiltra em [LOWER_TEXT(src)] Secando um pouco e absorvendo um pouco de sangue."))
 	// When some nerd adds infection for wounds, make this increase the infection
 	return
 
 /datum/wound/slash/flesh/on_starch(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.06 * reac_volume)
-	to_chat(carbies, span_notice("O amido pegajoso se infiltra em[LOWER_TEXT(src)], dolorosamente secando-o e absorvendo um pouco do sangue."))
+	to_chat(carbies, span_notice("O amido pegajoso se infiltra em [LOWER_TEXT(src)], dolorosamente secando-o e absorvendo um pouco do sangue."))
 	// When some nerd adds infection for wounds, make this increase the infection
 	return
 
 /datum/wound/burn/flesh/on_starch(reac_volume, mob/living/carbon/carbies)
-	to_chat(carbies, span_notice("O amido pegajoso se infiltra em[LOWER_TEXT(src)]Te cutucando com dor intensa! Não foi uma boa ideia..."))
+	to_chat(carbies, span_notice("O amido pegajoso se infiltra em [LOWER_TEXT(src)] Te cutucando com dor intensa! Não foi uma boa ideia..."))
 	sanitization -= min(0, 0.5)
 	infection += 0.1
 	return

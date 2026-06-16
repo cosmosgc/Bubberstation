@@ -10,7 +10,7 @@
 	if(!user.combat_mode)
 		if (stat == DEAD)
 			return
-		visible_message(span_notice("[user] [response_help_continuous] [src]."), 						span_notice("[user] [response_help_continuous]Você."), null, null, user)
+		visible_message(span_notice("[user] [response_help_continuous] [src]."), 						span_notice("[user] [response_help_continuous] Você."), null, null, user)
 		to_chat(user, span_notice("Você.[response_help_simple] [src]."))
 		playsound(loc, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	else
@@ -20,7 +20,7 @@
 		if(check_block(user, harm_intent_damage, "[user]'s punch", UNARMED_ATTACK, 0, BRUTE))
 			return
 		user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-		visible_message(span_danger("[user] [response_harm_continuous] [src]!"),						span_userdanger("[user] [response_harm_continuous]Você!"), null, COMBAT_MESSAGE_RANGE, user)
+		visible_message(span_danger("[user] [response_harm_continuous] [src]!"),						span_userdanger("[user] [response_harm_continuous] Você!"), null, COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("Você.[response_harm_simple] [src]!"))
 		playsound(loc, attacked_sound, 25, TRUE, -1)
 		apply_damage(harm_intent_damage)
@@ -38,14 +38,14 @@
 		COMBAT_MESSAGE_RANGE,
 		list(src),
 	)
-	to_chat(src, span_userdanger("Você é[moved ? "pushed" : "shoved"]Por que[shover.name]!"))
+	to_chat(src, span_userdanger("Você é[moved ? "pushed" : "shoved"]Por que [shover.name]!"))
 
 /mob/living/simple_animal/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return
 	playsound(loc, SFX_PUNCH, 25, TRUE, -1)
-	visible_message(span_danger("[user]Socos.[src]!"), 					span_userdanger("Você é socado por[user]!"), null, COMBAT_MESSAGE_RANGE, user)
+	visible_message(span_danger("[user] Socos.[src]!"), 					span_userdanger("Você é socado por [user]!"), null, COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_danger("Você soca.[src]!"))
 	adjust_brute_loss(15)
 
@@ -55,7 +55,7 @@
 			return apply_damage(rand(1, 3))
 	if (!user.combat_mode)
 		if (health > 0)
-			visible_message(span_notice("[user.name] [response_help_continuous] [src]."), 							span_notice("[user.name] [response_help_continuous]Você."), null, COMBAT_MESSAGE_RANGE, user)
+			visible_message(span_notice("[user.name] [response_help_continuous] [src]."), 							span_notice("[user.name] [response_help_continuous] Você."), null, COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_notice("Você.[response_help_simple] [src]."))
 			playsound(loc, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
@@ -64,13 +64,13 @@
 	if(..()) //if harm or disarm intent.
 		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			playsound(loc, 'sound/items/weapons/pierce.ogg', 25, TRUE, -1)
-			visible_message(span_danger("[user] [response_disarm_continuous] [name]!"), 							span_userdanger("[user] [response_disarm_continuous]Você!"), null, COMBAT_MESSAGE_RANGE, user)
+			visible_message(span_danger("[user] [response_disarm_continuous] [name]!"), 							span_userdanger("[user] [response_disarm_continuous] Você!"), null, COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("Você.[response_disarm_simple] [name]!"))
 			log_combat(user, src, "disarmed")
 		else
 			var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
-			visible_message(span_danger("[user]Cortes em[src]!"), 							span_userdanger("Você é cortado por[user]!"), null, COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, span_danger("Você corta em[src]!"))
+			visible_message(span_danger("[user] Cortes em [src]!"), 							span_userdanger("Você é cortado por [user]!"), null, COMBAT_MESSAGE_RANGE, user)
+			to_chat(user, span_danger("Você corta em [src]!"))
 			playsound(loc, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
 			apply_damage(damage)
 			log_combat(user, src, "attacked")
@@ -152,9 +152,9 @@
 	if(mob_biotypes & MOB_ROBOTIC)
 		switch (severity)
 			if (EMP_LIGHT)
-				visible_message(span_danger("[src]Treme violentamente, suas partes se soltam!"))
+				visible_message(span_danger("[src] Treme violentamente, suas partes se soltam!"))
 				apply_damage(maxHealth * 0.6)
 				Shake(duration = 1 SECONDS)
 			if (EMP_HEAVY)
-				visible_message(span_danger("[src]De arrependimento estorou!"))
+				visible_message(span_danger("[src] De arrependimento estorou!"))
 				apply_damage(maxHealth)

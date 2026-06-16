@@ -49,7 +49,7 @@
 		var/name = living_mob.name
 		while(name in names)
 			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
+			name = "[name] ([namecounts [name]])"
 		names.Add(name)
 		namecounts[name] = 1
 
@@ -180,7 +180,7 @@
 	if(isnull(mob_ref))
 		to_chat(tracker, span_notice("O alvo não está nem perto de nenhuma câmera ativa. O rastreamento falhou."))
 		return
-	to_chat(tracker, span_notice("Agora rastreando[tracked_mob_name]na câmera."))
+	to_chat(tracker, span_notice("Agora rastreando [tracked_mob_name] na câmera."))
 	set_tracked_mob(mob_ref.resolve())
 
 /**

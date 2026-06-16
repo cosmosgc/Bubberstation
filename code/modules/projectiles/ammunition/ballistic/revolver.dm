@@ -116,6 +116,6 @@
 		return
 	var/obj/item/food/grown/peas/peas = new(user.drop_location())
 	user.put_in_hands(peas)
-	to_chat(user, span_notice("Vocês se separam.[peas]De[src]."))
+	to_chat(user, span_notice("Vocês se separam.[peas] De [src]."))
 	loaded_projectile = null
 	update_appearance()

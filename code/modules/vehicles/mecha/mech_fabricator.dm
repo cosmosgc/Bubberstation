@@ -291,7 +291,7 @@
 	var/turf/exit = get_step(src, drop_direction)
 	if(exit.density)
 		say("Error! The part outlet is obstructed.")
-		desc = "Está tentando dispensar o fabricado.[dispensed_design.name]Mas a tomada está obstruída."
+		desc = "Está tentando dispensar o fabricado.[dispensed_design.name] Mas a tomada está obstruída."
 		stored_part = built_part
 		return FALSE
 
@@ -505,14 +505,14 @@
 
 /obj/machinery/mecha_part_fabricator/screwdriver_act(mob/living/user, obj/item/I)
 	if(being_built)
-		to_chat(user, span_warning("\The [src]está atualmente processando! Por favor, espere até a conclusão."))
+		to_chat(user, span_warning("\The [src] está atualmente processando! Por favor, espere até a conclusão."))
 		return NONE
 
 	return default_deconstruction_screwdriver(user, I)
 
 /obj/machinery/mecha_part_fabricator/crowbar_act(mob/living/user, obj/item/I)
 	if(being_built)
-		to_chat(user, span_warning("\The [src]está atualmente processando! Por favor, espere até a conclusão."))
+		to_chat(user, span_warning("\The [src] está atualmente processando! Por favor, espere até a conclusão."))
 		return NONE
 
 	return default_deconstruction_crowbar(user, I)

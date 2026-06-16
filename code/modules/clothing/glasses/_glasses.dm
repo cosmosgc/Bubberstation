@@ -38,7 +38,7 @@
 		AddElement(/datum/element/wearable_client_colour, glass_colour_type, ITEM_SLOT_EYES, GLASSES_TRAIT, forced = forced_glass_color, comsig_toggle = COMSIG_CLICK_ALT_SECONDARY)
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Está esfaqueando.\the [src]Em[user.p_their()]Olhos! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está esfaqueando.\the [src] Em [user.p_their()] Olhos! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/visor_toggling()
@@ -61,7 +61,7 @@
 		var/obj/item/organ/eyes/eyes = H.get_organ_slot(ORGAN_SLOT_EYES)
 		if(!H.is_blind())
 			if(H.glasses == src)
-				to_chat(H, span_danger("[src]Sobrecarrega e cega você!"))
+				to_chat(H, span_danger("[src] Sobrecarrega e cega você!"))
 				H.flash_act(visual = 1)
 				H.adjust_temp_blindness(6 SECONDS)
 				H.set_eye_blur_if_lower(10 SECONDS)
@@ -90,7 +90,7 @@
 	equip_sound = SFX_GOGGLES_EQUIP
 
 /obj/item/clothing/glasses/meson/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]está colocando\the [src]Para[user.p_their()]Olhos e sobrecarregando o brilho! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está colocando\the [src] Para [user.p_their()] Olhos e sobrecarregando o brilho! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/meson/night
@@ -141,7 +141,7 @@
 	acid = 100
 
 /obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Está apertando.\the [src]As alças ao redor[user.p_their()]pescoço! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está apertando.\the [src] As alças ao redor [user.p_their()] pescoço! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return OXYLOSS
 
 /obj/item/clothing/glasses/science/night
@@ -328,7 +328,7 @@
 		var/mob/living/crusher = movable
 		if(crusher.move_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & MOVETYPES_NOT_TOUCHING_GROUND) || crusher.buckled))
 			playsound(src, 'sound/effects/footstep/glass_step.ogg', 30, TRUE)
-			visible_message(span_warning("[crusher]Vamos lá.[src]Danificando!"))
+			visible_message(span_warning("[crusher] Vamos lá.[src] Danificando!"))
 			take_damage(100, sound_effect = FALSE)
 
 /obj/item/clothing/glasses/regular/atom_destruction(damage_flag)
@@ -342,7 +342,7 @@
 	if(!I.tool_start_check(user, amount=1))
 		return
 	if(I.use_tool(src, user, 10, volume=30))
-		user.visible_message(span_notice("[user]Soldas[src]De volta junta."),					span_notice("Você solda[src]De volta junta."))
+		user.visible_message(span_notice("[user] Soldas [src] De volta junta."),					span_notice("Você solda [src] De volta junta."))
 		repair()
 		return TRUE
 
@@ -476,7 +476,7 @@
 		return
 	to_chat(user, span_notice("Os contatos se fundem perfeitamente com sua íris."))
 	eyes.flash_protect += FLASH_PROTECTION_WELDER
-	to_chat(user, span_warning("\The [src]Se desintegrar em nada."))
+	to_chat(user, span_warning("\The [src] Se desintegrar em nada."))
 	qdel(src)
 
 /obj/item/clothing/glasses/welding

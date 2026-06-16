@@ -220,7 +220,7 @@
 
 /obj/structure/ladder/singularity_pull(atom/singularity, current_size)
 	if (!(resistance_flags & INDESTRUCTIBLE))
-		visible_message(span_danger("[src]é despedaçado pela atração gravitacional!"))
+		visible_message(span_danger("[src] é despedaçado pela atração gravitacional!"))
 		qdel(src)
 
 /obj/structure/ladder/proc/use(mob/user, going_up = TRUE)
@@ -295,7 +295,7 @@
 	var/up_down = going_up ? "up" : "down"
 
 	//POV of players around the source
-	visible_message(span_notice("[user]escala[up_down] [src]."))
+	visible_message(span_notice("[user] escala [up_down] [src]."))
 	//POV of players around the destination
 	user.balloon_alert_to_viewers("climbed [up_down]")
 

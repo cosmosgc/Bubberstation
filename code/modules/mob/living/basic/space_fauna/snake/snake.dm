@@ -65,7 +65,7 @@
 	. = ..()
 	if(!.)
 		return
-	visible_message("[src]Assobia feliz como parece se relacionar com[new_friend].")
+	visible_message("[src] Assobia feliz como parece se relacionar com [new_friend].")
 
 /// Snakes are primarily concerned with getting those tasty, tasty mice, but aren't afraid to strike back at those who attack them
 /datum/ai_controller/basic_controller/snake

@@ -150,7 +150,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/disk/design_disk/limbs))
-		user.visible_message(span_notice("[user]começa a carregar\the [tool]em\the [src]..."),
+		user.visible_message(span_notice("[user] começa a carregar\the [tool] em\the [src]..."),
 			span_notice("Você começa a carregar projetos de\the [tool]..."),
 			span_hear("Você ouve o barulho de um drive flexível."))
 		busy = TRUE
@@ -223,7 +223,7 @@
 			for(var/reagent_id in consumed_reagents_list)
 				consumed_reagents_list[reagent_id] *= production_coefficient
 				if(!reagents.has_reagent(reagent_id, consumed_reagents_list[reagent_id]))
-					audible_message(span_notice("[src]Buzzes."))
+					audible_message(span_notice("[src] Buzzes."))
 					playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 					return
 
@@ -249,7 +249,7 @@
 /obj/machinery/limbgrower/proc/build_item(list/modified_consumed_reagents_list)
 	for(var/reagent_id in modified_consumed_reagents_list)
 		if(!reagents.has_reagent(reagent_id, modified_consumed_reagents_list[reagent_id]))
-			audible_message(span_notice("O[src]Buzzes."))
+			audible_message(span_notice("O [src] Buzzes."))
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 			break
 
@@ -309,7 +309,7 @@
 /obj/machinery/limbgrower/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("A exibição de status diz:<b>[reagents.maximum_volume]U</b>de reagentes.<br>Taxa de consumo de reagente em<b>[production_coefficient * 100]%</b>.")
+		. += span_notice("A exibição de status diz:<b>[reagents.maximum_volume] U</b>de reagentes.<br>Taxa de consumo de reagente em<b>[production_coefficient * 100]%</b>.")
 
 /**
  * Check if the limb grower is currently busy.

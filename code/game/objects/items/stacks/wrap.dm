@@ -29,8 +29,8 @@
 /obj/item/stack/wrapping_paper/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	user.visible_message(
-		span_warning("[user]Baps[target_mob]na cabeça com[src]!"),
-		span_warning("Seu bap.[target_mob]na cabeça com[src]!"),
+		span_warning("[user] Baps [target_mob] na cabeça com [src]!"),
+		span_warning("Seu bap.[target_mob] na cabeça com [src]!"),
 	)
 	target_mob.add_mood_event("roll", /datum/mood_event/bapped)
 
@@ -99,7 +99,7 @@
 	return list(/datum/reagent/cellulose = 5)
 
 /obj/item/stack/package_wrap/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Começa a embrulhar[user.p_them()]Eu estou dentro\the [src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a embrulhar [user.p_them()] Eu estou dentro\the [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	if(use(3))
 		var/obj/item/delivery/big/parcel = new(get_turf(user.loc))
 		parcel.base_icon_state = "deliverypackage5"
@@ -214,7 +214,7 @@
 		balloon_alert(user, "Não posso embrulhar!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user]Envoltório[interacting_with]."))
+	user.visible_message(span_notice("[user] Envoltório [interacting_with]."))
 	user.log_message("has used [name] on [key_name(interacting_with)]", LOG_ATTACK, color="blue")
 	return ITEM_INTERACT_SUCCESS
 
@@ -252,7 +252,7 @@
 /obj/item/c_tube/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	user.visible_message(
-		span_warning("[user]Baps[target_mob]na cabeça com[src]!"),
-		span_warning("Seu bap.[target_mob]na cabeça com[src]!"),
+		span_warning("[user] Baps [target_mob] na cabeça com [src]!"),
+		span_warning("Seu bap.[target_mob] na cabeça com [src]!"),
 	)
 	target_mob.add_mood_event("roll", /datum/mood_event/bapped)

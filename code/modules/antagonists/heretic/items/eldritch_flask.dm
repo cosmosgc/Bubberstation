@@ -32,21 +32,21 @@
 	if(living_target == user)
 		return ITEM_INTERACT_BLOCKING
 	if(reagents.total_volume >= reagents.maximum_volume)
-		to_chat(user, span_notice("[src]Está cheio."))
+		to_chat(user, span_notice("[src] Está cheio."))
 		return ITEM_INTERACT_BLOCKING
 	if(living_target.can_block_magic(MAGIC_RESISTANCE_HOLY))
-		to_chat(user, span_warning("Você é incapaz de tirar sangue de[living_target]!"))
+		to_chat(user, span_warning("Você é incapaz de tirar sangue de [living_target]!"))
 		COOLDOWN_START(src, drain_cooldown, 5 SECONDS)
 		to_chat(living_target, span_warning("Você sente uma tentativa de roubar seu sangue, mas é repelido!"))
 		return ITEM_INTERACT_BLOCKING
 	var/drawn_amount = min(reagents.maximum_volume - reagents.total_volume, 5)
 	if(living_target.transfer_blood_to(src, drawn_amount))
-		to_chat(user, span_notice("Você pega uma amostra de sangue de[living_target]."))
+		to_chat(user, span_notice("Você pega uma amostra de sangue de [living_target]."))
 		to_chat(living_target, span_warning("Você sente um pinto minúsculo!"))
 		COOLDOWN_START(src, drain_cooldown, 5 SECONDS)
 		playsound(src, 'sound/effects/chemistry/catalyst.ogg', 20, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_exponent = 10)
 	else
-		to_chat(user, span_warning("Você é incapaz de tirar sangue de[living_target]!"))
+		to_chat(user, span_warning("Você é incapaz de tirar sangue de [living_target]!"))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/reagent_containers/cup/phylactery/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)

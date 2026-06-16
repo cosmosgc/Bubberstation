@@ -23,11 +23,11 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 			continue
 		if(length(eigen_targets[already_linked]) > 1) //Eigenstates are notorious for having cliques!
 			if(!subtle)
-				target.visible_message("[target]Fizzes, já está ligado a outra coisa!")
+				target.visible_message("[target] Fizzes, já está ligado a outra coisa!")
 			targets -= target
 			continue
 		if(!subtle)
-			target.visible_message("[target]Esfregando sua única função de onda nos outros!") //If we're in a eigenlink all on our own and are open to new friends
+			target.visible_message("[target] Esfregando sua única função de onda nos outros!") //If we're in a eigenlink all on our own and are open to new friends
 		remove_eigen_entry(target) //clearup for new stuff
 	//Do we still have targets?
 	if(!length(targets))
@@ -35,7 +35,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 	var/atom/visible_atom = targets[1] //The object that'll handle the messages
 	if(length(targets) == 1)
 		if(!subtle)
-			visible_atom.visible_message("[targets[1]]Fizzes, não há nada que possa ligar!")
+			visible_atom.visible_message("[targets [1]]Fizzes, não há nada que possa ligar!")
 		return FALSE
 
 	var/subtle_keyword = subtle ? "subtle" : ""
@@ -122,7 +122,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 ///Prevents tool use on the item
 /datum/closet_teleport_controller/proc/tool_interact(atom/source, mob/user, obj/item/item)
 	SIGNAL_HANDLER
-	to_chat(user, span_notice("A natureza instável de[source]torna impossível de usar.[item]Vamos.[source.p_them()]!"))
+	to_chat(user, span_notice("A natureza instável de [source] torna impossível de usar.[item] Vamos.[source.p_them()]!"))
 	return ITEM_INTERACT_BLOCKING
 
 // For testing purposes, primarily

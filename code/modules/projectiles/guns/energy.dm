@@ -88,7 +88,7 @@
 
 /obj/item/gun/energy/get_cell(atom/movable/interface, mob/user)
 	if(istype(interface, /obj/item/inducer))
-		to_chat(user, span_alert("Erro: incapaz de interagir com[interface]."))
+		to_chat(user, span_alert("Erro: incapaz de interagir com [interface]."))
 		return null
 	return cell
 
@@ -241,7 +241,7 @@
 	if (shot.muzzle_flash_color)
 		set_light_color(shot.muzzle_flash_color)
 	if (shot.select_name && user)
-		balloon_alert(user, "Pronto para[shot.select_name]")
+		balloon_alert(user, "Pronto para [shot.select_name]")
 	chambered = null
 	recharge_newshot(TRUE)
 	update_appearance()
@@ -308,20 +308,20 @@
 
 /obj/item/gun/energy/suicide_act(mob/living/user)
 	if(istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
-		user.visible_message(span_suicide("[user]está colocando o barril de[src]em[user.p_their()]Boca. Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] está colocando o barril de [src] em [user.p_their()] Boca. Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		sleep(2.5 SECONDS)
 		if(user.is_holding(src))
-			user.visible_message(span_suicide("[user]derrete[user.p_their()]De cara para fora com[src]!"))
+			user.visible_message(span_suicide("[user] derrete [user.p_their()] De cara para fora com [src]!"))
 			playsound(loc, fire_sound, 50, TRUE, -1)
 			var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 			cell.use(shot.e_cost)
 			update_appearance()
 			return FIRELOSS
 		else
-			user.visible_message(span_suicide("[user]Entra em pânico e começa a sufocar até a morte!"))
+			user.visible_message(span_suicide("[user] Entra em pânico e começa a sufocar até a morte!"))
 			return OXYLOSS
 	else
-		user.visible_message(span_suicide("[user]Está fingindo derreter[user.p_their()]De cara para fora com[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!</b>"))
+		user.visible_message(span_suicide("[user] Está fingindo derreter [user.p_their()] De cara para fora com [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!</b>"))
 		playsound(src, dry_fire_sound, 30, TRUE)
 		return OXYLOSS
 
@@ -345,13 +345,13 @@
 		if(!loaded_projectile)
 			. = ""
 		else if(loaded_projectile.damage <= 0 || loaded_projectile.damage_type == STAMINA)
-			user.visible_message(span_danger("[user]Tenta acender[A.loc == user ? "[user.p_their()] [A.name]" : A]com[src]Mas não faz nada. Imbecil."))
+			user.visible_message(span_danger("[user] Tenta acender[A.loc == user ? "[user.p_their()] [A.name]" : A]com [src] Mas não faz nada. Imbecil."))
 			playsound(user, E.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
 			cell.use(E.e_cost)
 			. = ""
 		else if(loaded_projectile.damage_type != BURN)
-			user.visible_message(span_danger("[user]Tenta acender[A.loc == user ? "[user.p_their()] [A.name]" : A]com[src]Mas só consegue destruí-la completamente. Imbecil."))
+			user.visible_message(span_danger("[user] Tenta acender[A.loc == user ? "[user.p_their()] [A.name]" : A]com [src] Mas só consegue destruí-la completamente. Imbecil."))
 			playsound(user, E.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
 			cell.use(E.e_cost)
@@ -361,7 +361,7 @@
 			playsound(user, E.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
 			cell.use(E.e_cost)
-			. = span_rose("[user]Luzes casuais[A.loc == user ? "[user.p_their()] [A.name]" : A]com[src]Droga.")
+			. = span_rose("[user] Luzes casuais[A.loc == user ? "[user.p_their()] [A.name]" : A]com [src] Droga.")
 
 /obj/item/gun/energy/proc/instant_recharge()
 	SIGNAL_HANDLER

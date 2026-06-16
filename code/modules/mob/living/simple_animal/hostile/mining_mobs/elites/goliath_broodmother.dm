@@ -124,19 +124,19 @@
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
-	visible_message(span_warning("[src]Cava seus tentáculos sob[target]!"))
+	visible_message(span_warning("[src] Cava seus tentáculos sob [target]!"))
 	new /obj/effect/goliath_tentacle/broodmother/patch(tturf, src)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/spawn_children(target)
 	ranged_cooldown = world.time + 40
-	visible_message(span_boldwarning("O chão gira para trás[src]!"))
+	visible_message(span_boldwarning("O chão gira para trás [src]!"))
 	for(var/i in 1 to 2)
 		if(children_list.len >= 8)
 			return
 		var/mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/new_child = new /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child(loc)
 		new_child.GiveTarget(target)
 		SET_FACTION_AND_ALLIES_FROM(new_child, src)
-		visible_message(span_boldwarning("[new_child]aparece abaixo.[src]!"))
+		visible_message(span_boldwarning("[new_child] aparece abaixo.[src]!"))
 		register_child(new_child)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/register_child(atom/child)
@@ -157,7 +157,7 @@
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/rage()
 	ranged_cooldown = world.time + 100
 	playsound(src,'sound/misc/insane_low_laugh.ogg', 200, 1)
-	visible_message(span_warning("[src]Começa a ganhar velocidade!"))
+	visible_message(span_warning("[src] Começa a ganhar velocidade!"))
 	color = COLOR_RED
 	set_varspeed(0)
 	move_to_delay = 3
@@ -170,7 +170,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother/proc/call_children()
 	ranged_cooldown = world.time + 60
-	visible_message(span_warning("O chão treme perto[src]!"))
+	visible_message(span_warning("O chão treme perto [src]!"))
 	var/list/directions = GLOB.cardinals.Copy() + GLOB.diagonals.Copy()
 	for(var/mob/child in children_list)
 		var/spawndir = pick_n_take(directions)
@@ -216,12 +216,12 @@
 	if(!isturf(tturf))
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so it can't attack people off-screen
-		visible_message(span_warning("[src]Cava um de seus tentáculos debaixo[target]!"))
+		visible_message(span_warning("[src] Cava um de seus tentáculos debaixo [target]!"))
 		new /obj/effect/goliath_tentacle/broodmother(tturf, src)
 
 /mob/living/simple_animal/hostile/asteroid/elite/broodmother_child/death()
 	. = ..()
-	visible_message(span_warning("[src]Explodir!"))
+	visible_message(span_warning("[src] Explodir!"))
 	explosion(src, flame_range = 3, adminlog = FALSE)
 	gib(DROP_ALL_REMAINS)
 

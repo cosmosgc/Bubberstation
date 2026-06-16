@@ -132,9 +132,9 @@
 	var/shown_name = get_face_name()
 	var/obj/item/organ/brain/brain = locate(/obj/item/organ/brain) in src
 	if(!brain)
-		. += span_info("O cérebro foi removido de[src].")
+		. += span_info("O cérebro foi removido de [src].")
 	else if(brain.suicided || (brain.brainmob && HAS_TRAIT(brain.brainmob, TRAIT_SUICIDED)))
-		. += span_info("Há uma expressão miserável em[shown_name]Eles devem ter odiado a vida. Não há esperança de recuperação.")
+		. += span_info("Há uma expressão miserável em [shown_name] Eles devem ter odiado a vida. Não há esperança de recuperação.")
 	else if(brain.brainmob)
 		if(brain.brainmob?.health <= HEALTH_THRESHOLD_DEAD)
 			. += span_info("Está vazando algum tipo de fluido? O cérebro lá dentro deve estar muito mal.")
@@ -148,13 +148,13 @@
 		. += span_info("É completamente sem vida.")
 
 	if(!(locate(/obj/item/organ/eyes) in src))
-		. += span_info("[shown_name]Os olhos foram removidos.")
+		. += span_info("[shown_name] Os olhos foram removidos.")
 
 	if(!(locate(/obj/item/organ/ears) in src))
-		. += span_info("[shown_name]Como orelhas foram removidas.")
+		. += span_info("[shown_name] Como orelhas foram removidas.")
 
 	if(!(locate(/obj/item/organ/tongue) in src))
-		. += span_info("[shown_name]A língua foi removida.")
+		. += span_info("[shown_name] A língua foi removida.")
 
 /obj/item/bodypart/head/proc/get_face_name()
 	if (HAS_TRAIT(src, TRAIT_DISFIGURED))
@@ -172,10 +172,10 @@
 
 /obj/item/bodypart/head/drop_organs(mob/user, violent_removal)
 	if(user)
-		user.visible_message(span_warning("[user]Serras.[src]abre e puxa um cérebro!"), span_notice("Você viu.[src]Abra e puxe um cérebro."))
+		user.visible_message(span_warning("[user] Serras.[src] abre e puxa um cérebro!"), span_notice("Você viu.[src] Abra e puxe um cérebro."))
 	var/obj/item/organ/brain/brain = locate(/obj/item/organ/brain) in src
 	if(brain && violent_removal && prob(90)) //ghetto surgery can damage the brain.
-		to_chat(user, span_warning("[brain]Foi danificado no processo!"))
+		to_chat(user, span_warning("[brain] Foi danificado no processo!"))
 		brain.set_organ_damage(brain.maxHealth)
 	return ..()
 

@@ -240,13 +240,13 @@
 		if (merge_stacks)
 			if (istype(active_stack) && active_stack.can_merge(item_stack, inhand = TRUE))
 				if (item_stack.merge(active_stack))
-					to_chat(usr, span_notice("Sua[active_stack.name]pilha agora contém[active_stack.get_amount()] [active_stack.singular_name]\s."))
+					to_chat(usr, span_notice("Sua [active_stack.name] pilha agora contém [active_stack.get_amount()] [active_stack.singular_name]\s."))
 					return TRUE
 			else
 				var/obj/item/stack/inactive_stack = get_inactive_held_item()
 				if (istype(inactive_stack) && inactive_stack.can_merge(item_stack, inhand = TRUE))
 					if (item_stack.merge(inactive_stack))
-						to_chat(usr, span_notice("Sua[inactive_stack.name]pilha agora contém[inactive_stack.get_amount()] [inactive_stack.singular_name]\s."))
+						to_chat(usr, span_notice("Sua [inactive_stack.name] pilha agora contém [inactive_stack.get_amount()] [inactive_stack.singular_name]\s."))
 						return TRUE
 
 	if(put_in_active_hand(I, forced, ignore_animation, visuals_only))

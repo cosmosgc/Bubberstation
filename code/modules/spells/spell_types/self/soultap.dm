@@ -51,7 +51,7 @@
 		to_chat(cast_on, span_userdanger("Sua alma enfraquecida é completamente consumida pela torneira!"))
 		ADD_TRAIT(cast_on, TRAIT_NO_SOUL, MAGIC_TRAIT)
 
-		cast_on.visible_message(span_danger("[cast_on]De repente morre!"), ignored_mobs = cast_on)
+		cast_on.visible_message(span_danger("[cast_on] De repente morre!"), ignored_mobs = cast_on)
 		cast_on.investigate_log("has been killed by soul tap.", INVESTIGATE_DEATHS)
 		cast_on.death()
 

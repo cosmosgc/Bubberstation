@@ -414,11 +414,11 @@
 	var/datum/martial_art/next = GET_NEXT_MARTIAL_ART(src)
 
 	if(current.locked_to_use)
-		to_chat(src, span_warning("Você não pode parar de praticar.[current]Está muito enraizado na sua memória muscular."))
+		to_chat(src, span_warning("Você não pode parar de praticar.[current] Está muito enraizado na sua memória muscular."))
 		return
 
 	switch_style(GET_ACTIVE_MARTIAL_ART(src), GET_NEXT_MARTIAL_ART(src))
-	to_chat(src, span_notice("Pare de praticar.[current]E começar a praticar[next]."))
+	to_chat(src, span_notice("Pare de praticar.[current] E começar a praticar [next]."))
 
 /// Deactivates the current martial art and activates the next one.
 /mob/living/proc/switch_style(datum/martial_art/current_martial, datum/martial_art/next_martial)

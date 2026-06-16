@@ -19,7 +19,7 @@
 		if(isturf(object))
 			return
 		throw_atom = object
-		to_chat(c, "Objeto selecionado[throw_atom]'")
+		to_chat(c, "Objeto selecionado [throw_atom]'")
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(throw_atom)
 			throw_atom.throw_at(object, 10, 1, c.mob)

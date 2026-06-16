@@ -70,7 +70,7 @@
 		return
 
 	if(!Adjacent(attack_target))
-		to_chat(src, span_warning("Você está muito longe para usar seu ataque contra[attack_target]!"))
+		to_chat(src, span_warning("Você está muito longe para usar seu ataque contra [attack_target]!"))
 		return
 
 	if(!COOLDOWN_FINISHED(src, slam_cooldown))
@@ -83,11 +83,11 @@
 	victim.take_bodypart_damage(brute = 20, wound_bonus = wound_bonus) // don't worry, there's more punishment when they hit something
 
 	visible_message(
-		span_danger("[src]Bate em[victim]com força monstruosa!"),
-		span_danger("Você bate em[victim]com força monstruosa!"),
+		span_danger("[src] Bate em [victim] com força monstruosa!"),
+		span_danger("Você bate em [victim] com força monstruosa!"),
 		ignored_mobs = victim,
 	)
-	to_chat(victim, span_userdanger("[src]Bate em você com força monstruosa, mandando você voar como uma boneca!"))
+	to_chat(victim, span_userdanger("[src] Bate em você com força monstruosa, mandando você voar como uma boneca!"))
 
 	var/turf/yeet_target = get_edge_target_turf(victim, dir)
 	victim.throw_at(yeet_target, 10, 5, src)

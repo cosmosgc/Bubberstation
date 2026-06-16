@@ -186,7 +186,7 @@
 	for(var/datum/mind/chosen_mind as anything in final_targets)
 		heretic_datum.add_sacrifice_target(chosen_mind.current)
 		if(!silent)
-			to_chat(user, span_danger("[chosen_mind.current.real_name], o[chosen_mind.assigned_role?.title]."))
+			to_chat(user, span_danger("[chosen_mind.current.real_name], o [chosen_mind.assigned_role?.title]."))
 
 	return TRUE
 
@@ -344,7 +344,7 @@
 			brain.revive()
 			brain.leave_modsuit()
 	//BUBBERSTATION EDIT END
-	sac_target.visible_message(span_danger("[sac_target]Começa a tremer violentamente como tentáculos escuros começam a arrastá-los para o ar!"))
+	sac_target.visible_message(span_danger("[sac_target] Começa a tremer violentamente como tentáculos escuros começam a arrastá-los para o ar!"))
 	sac_target.equip_to_slot_or_del(new /obj/item/restraints/handcuffs/cult, ITEM_SLOT_HANDCUFFED, indirect_action = TRUE)
 	sac_target.dropItemToGround(sac_target.legcuffed, TRUE)
 
@@ -358,7 +358,7 @@
 	// If our target is dead, try to revive them
 	// and if we fail to revive them, don't proceede the chain
 	sac_target.adjust_oxy_loss(-100, FALSE)
-	if(!sac_target.heal_and_revive(50, span_danger("[sac_target]O coração começa a bater com uma força profana quando voltam da morte!")))
+	if(!sac_target.heal_and_revive(50, span_danger("[sac_target] O coração começa a bater com uma força profana quando voltam da morte!")))
 		return
 
 	if(sac_target.AdjustUnconscious(SACRIFICE_SLEEP_DURATION))
@@ -403,7 +403,7 @@
 	// and we fail to revive them (using a lower number than before),
 	// just disembowel them and stop the chain
 	sac_target.adjust_oxy_loss(-100, FALSE)
-	if(!sac_target.heal_and_revive(60, span_danger("[sac_target]O coração começa a bater com uma força profana quando voltam da morte!")))
+	if(!sac_target.heal_and_revive(60, span_danger("[sac_target] O coração começa a bater com uma força profana quando voltam da morte!")))
 		disembowel_target(sac_target)
 		return
 
@@ -433,7 +433,7 @@
 		to_give.Insert(sac_target)
 
 	new /obj/effect/gibspawner/human/bodypartless(get_turf(sac_target), sac_target)
-	sac_target.visible_message(span_boldwarning("Vários órgãos se forçam a sair[sac_target]!"))
+	sac_target.visible_message(span_boldwarning("Vários órgãos se forçam a sair [sac_target]!"))
 
 /**
  * This proc is called from [proc/after_target_sleeps] when the [sac_target] should be waking up.)
@@ -634,7 +634,7 @@
 		sac_target.investigate_log("has been killed by heretic sacrifice.", INVESTIGATE_DEATHS)
 		sac_target.death()
 	sac_target.visible_message(
-		span_danger("[sac_target]Os órgãos são retirados de[sac_target.p_their()]peito por mãos sombrias!"),
+		span_danger("[sac_target] Os órgãos são retirados de [sac_target.p_their()] peito por mãos sombrias!"),
 		span_userdanger("Seus órgãos são violentamente arrancados do seu peito por mãos sombrias!")
 	)
 

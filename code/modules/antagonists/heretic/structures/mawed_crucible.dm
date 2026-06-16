@@ -20,7 +20,7 @@
 
 /obj/structure/destructible/eldritch_crucible/Initialize(mapload)
 	. = ..()
-	break_message = span_warning("[src]Caiu aos pedaços com uma batida!")
+	break_message = span_warning("[src] Caiu aos pedaços com uma batida!")
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/destructible/eldritch_crucible/process(seconds_per_tick)
@@ -36,7 +36,7 @@
 /obj/structure/destructible/eldritch_crucible/atom_deconstruct(disassembled = TRUE)
 	// Create a spillage if we were destroyed with leftover mass
 	if(current_mass)
-		break_message = span_warning("[src]Se desfaz com uma batida, derramando extrato brilhante por toda parte!")
+		break_message = span_warning("[src] Se desfaz com uma batida, derramando extrato brilhante por toda parte!")
 		var/turf/our_turf = get_turf(src)
 
 		new /obj/effect/decal/cleanable/greenglow(our_turf)
@@ -57,11 +57,11 @@
 
 	if(current_mass < max_mass)
 		var/to_fill = max_mass - current_mass
-		. += span_notice("[src]Requer<b>[to_fill]</b>Mais órgão.[to_fill == 1 ? "":"s"]U parte do corpo[to_fill == 1 ? "":"s"].")
+		. += span_notice("[src] Requer<b>[to_fill]</b>Mais órgão.[to_fill == 1 ? "":"s"]U parte do corpo[to_fill == 1 ? "":"s"].")
 	else
-		. += span_boldnotice("[src]está borbulhando até a borda com líquido viscoso, e está pronto para usar.")
+		. += span_boldnotice("[src] está borbulhando até a borda com líquido viscoso, e está pronto para usar.")
 
-	. += span_notice("Você pode.<b>[anchored ? "unanchor and move":"anchor in place"]</b> [src]Comum<b>Códice Cicatrix</b>UO<b>Mansus Grasp</b>.")
+	. += span_notice("Você pode.<b>[anchored ? "unanchor and move":"anchor in place"]</b> [src] Comum<b>Códice Cicatrix</b>UO<b>Mansus Grasp</b>.")
 	. += span_info("As seguintes poções podem ser feitas:")
 	for(var/obj/item/eldritch_potion/potion as anything in subtypesof(/obj/item/eldritch_potion))
 		var/potion_string = span_info("\tO" + initial(potion.name) + " - " + initial(potion.crucible_tip))
@@ -192,7 +192,7 @@
 	var/obj/item/spawned_pot = new spawned_type(drop_location())
 
 	playsound(src, 'sound/effects/desecration/desecration-02.ogg', 75, TRUE)
-	visible_message(span_notice("[src]É líquido brilhante drena em um frasco, criando um[spawned_pot.name]!"))
+	visible_message(span_notice("[src] É líquido brilhante drena em um frasco, criando um [spawned_pot.name]!"))
 	balloon_alert(user, "Poção criada")
 
 	current_mass = 0
@@ -211,7 +211,7 @@
 	if(QDELETED(arm))
 		return
 
-	to_chat(user, span_userdanger("[src]Pega o seu[arm.plaintext_zone]!"))
+	to_chat(user, span_userdanger("[src] Pega o seu [arm.plaintext_zone]!"))
 	arm.dismember()
 	consume_fuel(consumed = arm)
 
@@ -227,7 +227,7 @@
 
 	current_mass++
 	playsound(src, 'sound/items/eatfood.ogg', 100, TRUE)
-	visible_message(span_notice("[src]Devora[consumed]e se enche com um pouco de líquido!"))
+	visible_message(span_notice("[src] Devora [consumed] e se enche com um pouco de líquido!"))
 
 	if(feeder)
 		balloon_alert(feeder, "ração crubile ([current_mass] / [max_mass])")
@@ -275,13 +275,13 @@
 	playsound(src, 'sound/effects/bubbles/bubbles.ogg', 50, TRUE)
 
 	if(!IS_HERETIC_OR_MONSTER(user))
-		to_chat(user, span_danger("Você tomou um pouco do líquido de[src]O sabor faz com que você retch, e o copo desaparece."))
+		to_chat(user, span_danger("Você tomou um pouco do líquido de [src] O sabor faz com que você retch, e o copo desaparece."))
 		user.reagents?.add_reagent(/datum/reagent/eldritch, 10)
 		user.adjust_disgust(50)
 		qdel(src)
 		return TRUE
 
-	to_chat(user, span_notice("Você bebe o líquido viscoso de[src], causando a desmaterialização do vidro."))
+	to_chat(user, span_notice("Você bebe o líquido viscoso de [src], causando a desmaterialização do vidro."))
 	potion_effect(user)
 	qdel(src)
 	return TRUE

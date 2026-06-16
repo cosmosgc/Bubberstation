@@ -95,8 +95,8 @@
 	if(prob(paralyze_prob + boost))
 		victim.Paralyze(paralyze_value + boost)
 		victim.visible_message(
-			span_danger("[src]Derruba.[victim]!"),
-			span_userdanger("[src]Derruba você!"),
+			span_danger("[src] Derruba.[victim]!"),
+			span_userdanger("[src] Derruba você!"),
 		)
 
 /datum/ai_controller/basic_controller/tree

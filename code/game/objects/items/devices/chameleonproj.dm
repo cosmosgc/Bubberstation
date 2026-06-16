@@ -34,7 +34,7 @@
 	if (isturf(user.loc) || istype(user.loc, /obj/structure) || active_dummy)
 		toggle(user)
 	else
-		to_chat(user, span_warning("Você não pode usar[src]dentro de Alguma Eisa!"))
+		to_chat(user, span_warning("Você não pode usar [src] dentro de Alguma Eisa!"))
 
 /obj/item/chameleon/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!can_copy(interacting_with) || SHOULD_SKIP_INTERACTION(interacting_with, src, user))

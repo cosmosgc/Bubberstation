@@ -29,9 +29,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a se esticar[organ.owner]Traqueia, tentando evitar vasos sanguíneos próximos..."),
-		span_notice("[surgeon]começa a esticar[organ.owner]Traqueia, evitando vasos sanguíneos próximos."),
-		span_notice("[surgeon]começa a esticar[organ.owner]É traqueia."),
+		span_notice("Você começa a se esticar [organ.owner] Traqueia, tentando evitar vasos sanguíneos próximos..."),
+		span_notice("[surgeon] começa a esticar [organ.owner] Traqueia, evitando vasos sanguíneos próximos."),
+		span_notice("[surgeon] começa a esticar [organ.owner] É traqueia."),
 	)
 	display_pain(organ.owner, "You feel an agonizing stretching sensation in your neck!")
 
@@ -45,9 +45,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você se estica.[organ.owner]É a traqueia com[tool], conseguindo evitar os vasos sanguíneos próximos."),
-		span_notice("[surgeon]Tem sucesso no alongamento.[organ.owner]É a traqueia com[tool], evitando os vasos sanguíneos próximos."),
-		span_notice("[surgeon]termina de esticar[organ.owner]É traqueia.")
+		span_notice("Você se estica.[organ.owner] É a traqueia com [tool], conseguindo evitar os vasos sanguíneos próximos."),
+		span_notice("[surgeon] Tem sucesso no alongamento.[organ.owner] É a traqueia com [tool], evitando os vasos sanguíneos próximos."),
+		span_notice("[surgeon] termina de esticar [organ.owner] É traqueia.")
 	)
 
 /datum/surgery_operation/organ/asthmatic_bypass/on_failure(obj/item/organ/lungs/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -60,9 +60,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você se estica.[organ.owner]É a traqueia com[tool], mas acidentalmente cortar algumas artérias!"),
-		span_warning("[surgeon]Tem sucesso no alongamento.[organ.owner]É a traqueia com[tool]Mas acidentalmente corta algumas artérias!"),
-		span_warning("[surgeon]termina de esticar[organ.owner]É traqueia, mas estraga tudo!"),
+		span_warning("Você se estica.[organ.owner] É a traqueia com [tool], mas acidentalmente cortar algumas artérias!"),
+		span_warning("[surgeon] Tem sucesso no alongamento.[organ.owner] É a traqueia com [tool] Mas acidentalmente corta algumas artérias!"),
+		span_warning("[surgeon] termina de esticar [organ.owner] É traqueia, mas estraga tudo!"),
 	)
 
 	organ.owner.losebreath++

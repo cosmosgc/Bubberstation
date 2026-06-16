@@ -82,13 +82,13 @@
 
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 	defender.visible_message(
-		span_danger("[attacker]violentamente torce[defender]'s[affecting]!"),
-		span_userdanger("[attacker]violentamente torce seu[affecting]!"),
+		span_danger("[attacker] violentamente torce [defender]'s [affecting]!"),
+		span_userdanger("[attacker] violentamente torce seu [affecting]!"),
 		span_hear("Você ouve um barulho doentio de osso estalando!"),
 		null,
 		attacker,
 	)
-	to_chat(attacker, span_danger("Você violentamente torce[defender]'s[affecting]!"))
+	to_chat(attacker, span_danger("Você violentamente torce [defender]'s [affecting]!"))
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
 	log_combat(attacker, defender, "wrist wrenched (Sleeping Carp)")
 	defender.apply_damage(20, BRUTE, affecting, wound_bonus = 30)
@@ -99,8 +99,8 @@
 /datum/martial_art/the_sleeping_carp/proc/launch_kick(mob/living/attacker, mob/living/defender)
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
 	defender.visible_message(
-		span_warning("[attacker]Chutes.[defender]Quadrado no peito, mandando-os voar!"),
-		span_userdanger("Você é chutado quadrado no peito por[attacker]Mandando você voar!"),
+		span_warning("[attacker] Chutes.[defender] Quadrado no peito, mandando-os voar!"),
+		span_userdanger("Você é chutado quadrado no peito por [attacker] Mandando você voar!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
@@ -118,10 +118,10 @@
 	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 	if(defender.body_position == STANDING_UP)
 		defender.Knockdown(4 SECONDS)
-		defender.visible_message(span_warning("[attacker]Chutes.[defender]na cabeça, mandando-os primeiro para o chão!"), 					span_userdanger("Você é chutado na cabeça por[attacker]Mandando você cair no chão!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), COMBAT_MESSAGE_RANGE, attacker)
+		defender.visible_message(span_warning("[attacker] Chutes.[defender] na cabeça, mandando-os primeiro para o chão!"), 					span_userdanger("Você é chutado na cabeça por [attacker] Mandando você cair no chão!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), COMBAT_MESSAGE_RANGE, attacker)
 	else
 		defender.drop_all_held_items()
-		defender.visible_message(span_warning("[attacker]Chutes.[defender]Na cabeça!"), 					span_userdanger("Você é chutado na cabeça por[attacker]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), COMBAT_MESSAGE_RANGE, attacker)
+		defender.visible_message(span_warning("[attacker] Chutes.[defender] Na cabeça!"), 					span_userdanger("Você é chutado na cabeça por [attacker]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), COMBAT_MESSAGE_RANGE, attacker)
 	defender.apply_damage(40, STAMINA)
 	defender.adjust_dizzy_up_to(10 SECONDS, 10 SECONDS)
 	defender.adjust_temp_blindness_up_to(2 SECONDS, 10 SECONDS)
@@ -133,8 +133,8 @@
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
 	playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 	defender.visible_message(
-		span_warning("[attacker]violentamente Bate[attacker.p_their()]JOELHO EM[defender]!"),
-		span_userdanger("Você bate o joelho direito em[defender]!"),
+		span_warning("[attacker] violentamente Bate [attacker.p_their()] JOELHO EM [defender]!"),
+		span_userdanger("Você bate o joelho direito em [defender]!"),
 		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
@@ -163,8 +163,8 @@
 	playsound(defender, 'sound/items/weapons/punch1.ogg', 25, TRUE, -1)
 	if(defender.stat != DEAD && !defender.IsUnconscious() && defender.get_stamina_loss() >= 80) //We put our target to sleep.
 		defender.visible_message(
-			span_danger("[attacker]Cuidado com o nervo.[defender]O pescoço, derrubando-os!"),
-			span_userdanger("[attacker]belisca algo no pescoço, e você cai inconsciente!"),
+			span_danger("[attacker] Cuidado com o nervo.[defender] O pescoço, derrubando-os!"),
+			span_userdanger("[attacker] belisca algo no pescoço, e você cai inconsciente!"),
 		)
 		grab_log_description = "grabbed and nerve pinched"
 		defender.Unconscious(10 SECONDS)
@@ -178,12 +178,12 @@
 		if(!isnull(head))
 			playsound(defender, 'sound/effects/wounds/crack1.ogg', 100)
 			defender.visible_message(
-				span_danger("[attacker]quebra o pescoço de[defender]!"),
+				span_danger("[attacker] quebra o pescoço de [defender]!"),
 				span_userdanger("Seu pescoço está quebrado.[attacker]!"),
 				span_hear("Você ouve um estalo nojento!"),
 				ignored_mobs = attacker
 			)
-			to_chat(attacker, span_danger("Em um movimento rápido, você quebra o pescoço de[defender]!"))
+			to_chat(attacker, span_danger("Em um movimento rápido, você quebra o pescoço de [defender]!"))
 			log_combat(attacker, defender, "snapped neck")
 			defender.apply_damage(100, BRUTE, BODY_ZONE_HEAD, wound_bonus=CANT_WOUND)
 			if(!HAS_TRAIT(defender, TRAIT_NODEATH))
@@ -252,7 +252,7 @@
 
 
 	carp_user.visible_message(
-		span_danger("[carp_user]Esforçosamente swats[hitting_projectile]Fora![carp_user.p_They()]Pode fazer bloquear balas com[carp_user.p_their()]Mãos nuas!"),
+		span_danger("[carp_user] Esforçosamente swats [hitting_projectile] Fora![carp_user.p_They()] Pode fazer bloquear balas com [carp_user.p_their()] Mãos nuas!"),
 		span_userdanger("Você se desvia.[hitting_projectile]!"),
 	)
 	playsound(carp_user, SFX_BULLET_MISS, 75, TRUE)
@@ -270,8 +270,8 @@
 		return
 	var/obj/item/melee/touch_attack/touch_weapon = attack_weapon
 	carp_user.visible_message(
-		span_danger("[carp_user]Com cuidado se esquiva.[attacker]'s[touch_weapon]!"),
-		span_userdanger("Você toma muito cuidado para permanecer intocado por[attacker]'s[touch_weapon]!"),
+		span_danger("[carp_user] Com cuidado se esquiva.[attacker]'s [touch_weapon]!"),
+		span_userdanger("Você toma muito cuidado para permanecer intocado por [attacker]'s [touch_weapon]!"),
 	)
 	return COMPONENT_NO_AFTERATTACK
 
@@ -291,7 +291,7 @@
 		return NONE
 
 	carp_user.visible_message(
-		span_danger("[carp_user]De forma limpa evita[attack_text]Com velocidade incrível!"),
+		span_danger("[carp_user] De forma limpa evita [attack_text] Com velocidade incrível!"),
 		span_userdanger("Você se esquiva.[attack_text]"),
 	)
 	playsound(carp_user.loc, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
@@ -404,7 +404,7 @@
 /obj/item/staff/bostaff/attack(mob/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-		to_chat(user, span_warning("Você bate na cabeça com[src]."))
+		to_chat(user, span_warning("Você bate na cabeça com [src]."))
 		user.Paralyze(6 SECONDS)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -427,18 +427,18 @@
 			return ..()
 		var/mob/living/carbon/human/H = target
 		var/list/fluffmessages = list("club", "smack", "broadside", "beat", "slam")
-		H.visible_message(span_warning("[user] [pick(fluffmessages)]S[H]Com[src]!"), 						span_userdanger("[user] [pick(fluffmessages)]Você está com[src]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
-		to_chat(user, span_danger("Você.[pick(fluffmessages)] [H]Com[src]!"))
+		H.visible_message(span_warning("[user] [pick(fluffmessages)] S [H] Com [src]!"), 						span_userdanger("[user] [pick(fluffmessages)] Você está com [src]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
+		to_chat(user, span_danger("Você.[pick(fluffmessages)] [H] Com [src]!"))
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, TRUE, -1)
 		H.adjust_stamina_loss(rand(13,20))
 		if(prob(10))
-			H.visible_message(span_warning("[H]Colapsos!"), 							span_userdanger("Suas pernas se desfazem!"))
+			H.visible_message(span_warning("[H] Colapsos!"), 							span_userdanger("Suas pernas se desfazem!"))
 			H.Paralyze(8 SECONDS)
 		if(H.staminaloss && !H.IsSleeping())
 			var/total_health = (H.health - H.staminaloss)
 			if(total_health <= HEALTH_THRESHOLD_CRIT && !H.stat)
-				H.visible_message(span_warning("[user]Dá um golpe pesado para[H]'s cabeça, batendo[H.p_them()]Está frio!"), 								span_userdanger("Você está inconsciente.[user]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
-				to_chat(user, span_danger("Você entrega um golpe pesado para[H]'s cabeça, batendo[H.p_them()]Está frio!"))
+				H.visible_message(span_warning("[user] Dá um golpe pesado para [H]'s cabeça, batendo [H.p_them()] Está frio!"), 								span_userdanger("Você está inconsciente.[user]!"), span_hear("Você ouve um som doentio de carne batendo em carne!"), null, user)
+				to_chat(user, span_danger("Você entrega um golpe pesado para [H]'s cabeça, batendo [H.p_them()] Está frio!"))
 				H.SetSleeping(60 SECONDS)
 				H.adjust_organ_loss(ORGAN_SLOT_BRAIN, 15, 150)
 	else

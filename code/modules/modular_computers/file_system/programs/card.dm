@@ -142,7 +142,7 @@
 				return TRUE
 			else
 				playsound(computer, 'sound/machines/terminal/terminal_on.ogg', 50, FALSE)
-				computer.visible_message(span_notice("\The [computer]imprime um papel."))
+				computer.visible_message(span_notice("\The [computer] imprime um papel."))
 			return TRUE
 		// Used to fire someone. Wipes all access from their card and modifies their assignment.
 		if("PRG_terminate")

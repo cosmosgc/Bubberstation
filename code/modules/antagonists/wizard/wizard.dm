@@ -271,7 +271,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 	wiz_age = APPRENTICE_AGE_MIN
 
 /datum/antagonist/wizard/apprentice/greet()
-	to_chat(owner, "<B>Você é.[master.current.real_name]O aprendiz! Você está obrigado por um contrato mágico para seguir[master.p_their()]ordens e ajuda.[master.p_them()]em realizar[master.p_their()]Gols.")
+	to_chat(owner, "<B>Você é.[master.current.real_name] O aprendiz! Você está obrigado por um contrato mágico para seguir [master.p_their()] ordens e ajuda.[master.p_them()] em realizar [master.p_their()] Gols.")
 	owner.announce_objectives()
 
 /datum/antagonist/wizard/apprentice/assign_ritual()
@@ -291,14 +291,14 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 				/datum/action/cooldown/spell/aoe/magic_missile,
 				/datum/action/cooldown/spell/pointed/projectile/fireball,
 			)
-			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob[master.current.real_name]Você aprendeu feitiços poderosos e destrutivos. Você é capaz de lançar mísseis mágicos e bola de fogo."))
+			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob [master.current.real_name] Você aprendeu feitiços poderosos e destrutivos. Você é capaz de lançar mísseis mágicos e bola de fogo."))
 
 		if(APPRENTICE_BLUESPACE)
 			spells_to_grant = list(
 				/datum/action/cooldown/spell/teleport/area_teleport/wizard,
 				/datum/action/cooldown/spell/jaunt/ethereal_jaunt,
 			)
-			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob[master.current.real_name]Você aprendeu feitiços de mobilidade que dominam a realidade. Você é capaz de lançar teletransporte e passeio etéreo."))
+			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob [master.current.real_name] Você aprendeu feitiços de mobilidade que dominam a realidade. Você é capaz de lançar teletransporte e passeio etéreo."))
 
 		if(APPRENTICE_HEALING)
 			spells_to_grant = list(
@@ -308,13 +308,13 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 			items_to_grant = list(
 				/obj/item/gun/magic/staff/healing,
 			)
-			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob[master.current.real_name]Você aprendeu feitiços de sobrevivência salva-vidas. Você é capaz de lançar carga e fortificação, e tem um bastão de cura."))
+			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob [master.current.real_name] Você aprendeu feitiços de sobrevivência salva-vidas. Você é capaz de lançar carga e fortificação, e tem um bastão de cura."))
 		if(APPRENTICE_ROBELESS)
 			spells_to_grant = list(
 				/datum/action/cooldown/spell/aoe/knock,
 				/datum/action/cooldown/spell/pointed/mind_transfer,
 			)
-			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob[master.current.real_name]Você aprendeu feitiços furtivos e sem vestes. Você é capaz de lançar batidas e mentes wap."))
+			to_chat(owner, span_bold("Seu serviço não foi sem recompensa, no entanto. Estudando sob [master.current.real_name] Você aprendeu feitiços furtivos e sem vestes. Você é capaz de lançar batidas e mentes wap."))
 
 	for(var/spell_type in spells_to_grant)
 		var/datum/action/cooldown/spell/new_spell = new spell_type(owner)
@@ -429,10 +429,10 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		purchases += "[amount > 1 ? "[amount]x ":""][initial(bought.name)]"
 
 	if(length(purchases))
-		parts += span_bold("[owner.name]usou os seguintes feitiços:")
+		parts += span_bold("[owner.name] usou os seguintes feitiços:")
 		parts += purchases.Join(", ")
 	else
-		parts += span_bold("[owner.name]Não comprei feitiços!")
+		parts += span_bold("[owner.name] Não comprei feitiços!")
 
 	return parts.Join("<br>")
 
@@ -440,10 +440,10 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 /datum/team/wizard/roundend_report()
 	var/list/parts = list()
 
-	parts += span_header("Wizards/witches de[master_wizard.owner.name]Equipe eram:")
+	parts += span_header("Wizards/witches de [master_wizard.owner.name] Equipe eram:")
 	parts += master_wizard.roundend_report()
 	parts += " "
-	parts += span_header("[master_wizard.owner.name]Os aprendizes e os asseclas eram:")
+	parts += span_header("[master_wizard.owner.name] Os aprendizes e os asseclas eram:")
 	parts += printplayerlist(members - master_wizard.owner)
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"

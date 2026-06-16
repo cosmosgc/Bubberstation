@@ -16,7 +16,7 @@
 	if(owner)
 		return ..()
 	add_fingerprint(user)
-	to_chat(user, span_notice("Seu animal de estimação.[src]Você jura que olha para você."))
+	to_chat(user, span_notice("Seu animal de estimação.[src] Você jura que olha para você."))
 	owner = user
 	RegisterSignal(owner, COMSIG_QDELETING, PROC_REF(owner_deleted))
 
@@ -25,7 +25,7 @@
 		return
 	swelling = TRUE
 	desc = "Está crescendo!"
-	visible_message(span_notice("[src]Incha!"))
+	visible_message(span_notice("[src] Incha!"))
 
 	//Animation
 	icon = 'icons/mob/simple/carp.dmi'
@@ -34,7 +34,7 @@
 	addtimer(CALLBACK(src, PROC_REF(spawn_carp)), 0.6 SECONDS)
 
 /obj/item/toy/plush/carpplushie/dehy_carp/suicide_act(mob/living/carbon/human/user)
-	user.visible_message(span_suicide("[user]Começa a comer.[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a comer.[src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/eatfood.ogg', 50, TRUE)
 	if(!istype(user))
 		return BRUTELOSS
@@ -63,7 +63,7 @@
 		spawned_mob.set_allies(list("[REF(owner)]"))
 		spawned_mob.grant_language(/datum/language/common, UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
 	for(var/mob/living/viewer in viewers(5, get_turf(src)))
-		to_chat(viewer, viewer == owner ? span_notice("O recém crescido[spawned_mob.name]Olha para você com olhos amigáveis.") : span_warning("Você tem um mau pressentimento sobre isso."))
+		to_chat(viewer, viewer == owner ? span_notice("O recém crescido [spawned_mob.name] Olha para você com olhos amigáveis.") : span_warning("Você tem um mau pressentimento sobre isso."))
 	qdel(src)
 
 /obj/item/toy/plush/carpplushie/dehy_carp/proc/owner_deleted(datum/source)

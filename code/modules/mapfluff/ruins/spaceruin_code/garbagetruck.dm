@@ -32,8 +32,8 @@
 		eye_snatch_enthusiasm *= 0.7
 	user.do_attack_animation(target, used_item = src)
 	target.visible_message(
-		span_warning("[user]Pressiona[src]Contra[target]O crânio!"),
-		span_userdanger("[user]Pressiona[src]Contra o seu crânio!"))
+		span_warning("[user] Pressiona [src] Contra [target] O crânio!"),
+		span_userdanger("[user] Pressiona [src] Contra o seu crânio!"))
 	if(!do_after(user, eye_snatch_enthusiasm, target = target, extra_checks = CALLBACK(src, PROC_REF(eyeballs_exist), eyeballies, head, target)))
 		return
 
@@ -47,7 +47,7 @@
 
 	target.apply_damage(20, BRUTE, BODY_ZONE_HEAD, wound_bonus = rand(min_wound, max_wound + 10), attacking_item = src)
 	target.visible_message(
-		span_danger("[src]Perfura através[target]É o crânio, mutilando os olhos!"),
+		span_danger("[src] Perfura através [target] É o crânio, mutilando os olhos!"),
 		span_userdanger("Algo penetra seu crânio, mutilando seus olhos! Puta merda!"),
 		span_hear("Você ouve um som doentio de carne penetrante de metal!")
 	)
@@ -66,7 +66,7 @@
 		var/obj/item/clothing/glasses/eyepatch/new_patch = new(target.loc)
 		target.equip_to_slot_if_possible(new_patch, ITEM_SLOT_EYES, disable_warning = TRUE)
 
-	to_chat(user, span_notice("Você extrai com sucesso[target]Os olhos."))
+	to_chat(user, span_notice("Você extrai com sucesso [target] Os olhos."))
 	playsound(target, 'sound/items/handling/surgery/retractor2.ogg', 100, TRUE)
 	playsound(target, 'sound/effects/pop.ogg', 100, TRAIT_MUTE)
 	eyeballies.Remove(target)

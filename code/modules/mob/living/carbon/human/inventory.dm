@@ -20,7 +20,7 @@
 		return FALSE
 	if(HAS_TRAIT_NOT_FROM(equip_target, TRAIT_NODROP, TRAIT_GLUED_ITEM) && (equip_target in held_items))
 		if(!disable_warning)
-			to_chat(src, span_warning("[equip_target]É impossível colocá-lo!"))
+			to_chat(src, span_warning("[equip_target] É impossível colocá-lo!"))
 		return FALSE
 	return dna.species.can_equip(equip_target, slot, disable_warning, src, bypass_equip_delay_self, ignore_equipped, indirect_action)
 
@@ -314,10 +314,10 @@
 	// Notify user of missing valid breathing apparatus.
 	if (wear_mask)
 		// Invalid mask
-		to_chat(src, span_warning("[wear_mask]Não posso usar[tank]!"))
+		to_chat(src, span_warning("[wear_mask] Não posso usar [tank]!"))
 	else if (head)
 		// Invalid headgear
-		to_chat(src, span_warning("[head]Não é hermético! Você precisa de uma máscara!"))
+		to_chat(src, span_warning("[head] Não é hermético! Você precisa de uma máscara!"))
 	else
 		// Not wearing any breathing apparatus.
 		to_chat(src, span_warning("Você precisa de uma máscara!"))
@@ -376,7 +376,7 @@
 		thing_reject = SEND_SIGNAL(thing, COMSIG_HUMAN_NON_STORAGE_HOTKEY, src, equipped_item)
 	if(!equipped_item) // We also let you equip an item like this
 		if(!thing)
-			to_chat(src, span_warning("Você não tem[slot_item_name]para tirar alguma coisa!"))
+			to_chat(src, span_warning("Você não tem [slot_item_name] para tirar alguma coisa!"))
 			return
 		if(equip_to_slot_if_possible(thing, slot_type))
 			update_held_items()
@@ -388,19 +388,19 @@
 		else
 			if(thing_reject & COMPONENT_STORAGE_HOTKEY_HANDLED)
 				return
-			to_chat(src, span_warning("Você não cabe.[thing]em seu[equipped_item.name]!"))
+			to_chat(src, span_warning("Você não cabe.[thing] em seu [equipped_item.name]!"))
 		return
 	if(!storage.supports_smart_equip)
 		return
 	if (equipped_item.atom_storage.locked) // Determines if container is locked before trying to put something in or take something out so we dont give out information on contents (or lack of)
-		to_chat(src, span_warning("\The [equipped_item]Está trancada!"))
+		to_chat(src, span_warning("\The [equipped_item] Está trancada!"))
 		return
 	if(thing) // put thing in storage item
 		if(!equipped_item.atom_storage?.attempt_insert(thing, src))
-			to_chat(src, span_warning("Você não cabe.[thing]em seu[equipped_item.name]!"))
+			to_chat(src, span_warning("Você não cabe.[thing] em seu [equipped_item.name]!"))
 		return
 	if(!storage.real_location.contents.len) // nothing to take out
-		to_chat(src, span_warning("Não há nada em seu[equipped_item.name]Derrubar!"))
+		to_chat(src, span_warning("Não há nada em seu [equipped_item.name] Derrubar!"))
 		return
 	var/obj/item/stored = storage.real_location.contents[storage.real_location.contents.len]
 	if(!stored || stored.on_found(src))

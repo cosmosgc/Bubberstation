@@ -236,7 +236,7 @@ SUBSYSTEM_DEF(vote)
 	var/to_display = current_vote.initiate_vote(vote_initiator_name, duration)
 
 	log_vote(to_display)
-	to_chat(world, custom_boxed_message("Centro da caixa roxa", span_infoplain(vote_font("[span_bold(to_display)]<br>Tipo<b>Votação</b>ou clique<a href='byond://winset?command=vote'>Aqui.</a>Para colocar seus votos.\nVocê tem[DisplayTimeText(duration)]para votar."))))
+	to_chat(world, custom_boxed_message("Centro da caixa roxa", span_infoplain(vote_font("[span_bold(to_display)]<br>Tipo<b>Votação</b>ou clique<a href='byond://winset?command=vote'>Aqui.</a>Para colocar seus votos.\nVocê tem [DisplayTimeText(duration)] para votar."))))
 
 	// And now that it's going, give everyone a voter action
 	for(var/client/new_voter as anything in GLOB.clients)
@@ -272,7 +272,7 @@ SUBSYSTEM_DEF(vote)
 	var/next_allowed_time = last_vote_time + CONFIG_GET(number/vote_delay)
 	if(next_allowed_time > world.time)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("Um voto foi iniciado recentemente. Você deve esperar.[DisplayTimeText(next_allowed_time - world.time)]Antes que uma nova votação possa ser iniciada!"))
+			to_chat(vote_initiator, span_warning("Um voto foi iniciado recentemente. Você deve esperar.[DisplayTimeText(next_allowed_time - world.time)] Antes que uma nova votação possa ser iniciada!"))
 		return FALSE
 
 	if(current_vote)

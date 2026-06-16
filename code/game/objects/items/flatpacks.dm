@@ -88,7 +88,7 @@
 	board = null
 	var/obj/machinery/new_machine = new leaving_circuit.build_path(loc, board = leaving_circuit)
 	new_machine.on_construction(user)
-	loc.visible_message(span_warning("[src]Implementação!"))
+	loc.visible_message(span_warning("[src] Implementação!"))
 	playsound(src, 'sound/machines/terminal/terminal_eject.ogg', 70, TRUE)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS

@@ -54,7 +54,7 @@
 		return
 
 	if(!is_jaunting(owner))
-		owner.visible_message(span_danger("[owner]Enterra no chão, desaparecendo da vista!"))
+		owner.visible_message(span_danger("[owner] Enterra no chão, desaparecendo da vista!"))
 		playsound(get_turf(owner), 'sound/effects/break_stone.ogg', 50, TRUE, -1)
 		holder = new /obj/effect/dummy/phased_mob/grub_burrow(current_loc, owner)
 		return TRUE
@@ -62,7 +62,7 @@
 	holder = owner.loc
 	holder.eject_jaunter()
 	holder = null
-	owner.visible_message(span_danger("[owner]Sai do chão!"))
+	owner.visible_message(span_danger("[owner] Sai do chão!"))
 
 	if(ismineralturf(current_loc))
 		var/turf/closed/mineral/mineral_turf = current_loc

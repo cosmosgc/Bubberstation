@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(voice_of_god_commands, init_voice_of_god_commands())
 	for(var/mob/living/candidate in candidates)
 		if(candidate.stat != DEAD && !HAS_TRAIT(candidate, TRAIT_DEAF))
 			if(candidate.can_block_magic(MAGIC_RESISTANCE_HOLY|MAGIC_RESISTANCE_MIND, charge_cost = 0))
-				to_chat(user, span_userdanger("Algo está errado![candidate]Parece estar resistindo aos seus comandos."))
+				to_chat(user, span_userdanger("Algo está errado![candidate] Parece estar resistindo aos seus comandos."))
 				continue
 
 			listeners += candidate

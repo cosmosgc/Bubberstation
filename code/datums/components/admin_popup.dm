@@ -104,7 +104,7 @@
 
 	last_color_index = (last_color_index % colors.len) + 1
 
-	var/message = "<span style='color: [colors[last_color_index]]; text-align: center; font-size: 24pt'>"
+	var/message = "<span style='color: [colors [last_color_index]]; text-align: center; font-size: 24pt'>"
 	message += "HEY!<br>An admin is trying to talk to you!<br>Check your chat window,<br>and click their name to respond!"
 	message += "</span>"
 
@@ -118,7 +118,7 @@
 
 	var/datum/admin_help/current_ticket = target.current_ticket
 	if (!current_ticket)
-		to_chat(admin, span_warning("[key_name(target)]Não teve ajuda ativa, abortando."))
+		to_chat(admin, span_warning("[key_name(target)] Não teve ajuda ativa, abortando."))
 		return
 
 	admin.cmd_admin_pm(target, message)

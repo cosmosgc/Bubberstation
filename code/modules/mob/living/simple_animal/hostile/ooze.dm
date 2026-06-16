@@ -95,7 +95,7 @@
 		return TRUE
 	if(silent || !isitem(eat_target)) //Don't bother reporting it for everything
 		return FALSE
-	to_chat(src, span_warning("[eat_target]Não pode ser comido!"))
+	to_chat(src, span_warning("[eat_target] Não pode ser comido!"))
 	return FALSE
 
 ///* Gelatinious Ooze code below *\\\
@@ -226,7 +226,7 @@
 		to_chat(src, span_warning("Você precisa estar puxando uma criatura para que isso funcione!"))
 		return FALSE
 	var/mob/living/eat_target = ooze.pulling
-	owner.visible_message(span_warning("[ooze]Começa a tentar[devour_verb] [eat_target]!"), span_notice("Você começa a tentar[devour_verb] [eat_target]."))
+	owner.visible_message(span_warning("[ooze] Começa a tentar [devour_verb] [eat_target]!"), span_notice("Você começa a tentar [devour_verb] [eat_target]."))
 	if(!do_after(ooze, devour_time, eat_target))
 		return FALSE
 
@@ -241,7 +241,7 @@
 	vored_mob.forceMove(owner) ///AAAAAAAAAAAAAAAAAAAAAAHHH!!!
 	RegisterSignal(vored_mob, COMSIG_QDELETING, PROC_REF(stop_consuming))
 	playsound(owner,'sound/items/eatfood.ogg', rand(30,50), TRUE)
-	owner.visible_message(span_warning("[owner] [devour_verb]S[target]!"), span_notice("Você.[devour_verb] [target]."))
+	owner.visible_message(span_warning("[owner] [devour_verb] S [target]!"), span_notice("Você.[devour_verb] [target]."))
 	START_PROCESSING(SSprocessing, src)
 	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
 
@@ -253,7 +253,7 @@
 		return
 	vored_mob.forceMove(get_turf(owner))
 	playsound(get_turf(owner), 'sound/effects/splat.ogg', 50, TRUE)
-	owner.visible_message(span_warning("[owner]Vomite.[vored_mob]!"), span_notice("Você vomita.[vored_mob]."))
+	owner.visible_message(span_warning("[owner] Vomite.[vored_mob]!"), span_notice("Você vomita.[vored_mob]."))
 	UnregisterSignal(vored_mob, COMSIG_QDELETING)
 	vored_mob = null
 	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
@@ -366,7 +366,7 @@
 	// for passing into aim_projectile, so we'll handle it here instead.
 	// We just need to make sure Pre-activate and Activate return TRUE so we make it this far
 	clicker.visible_message(
-		span_nicegreen("[clicker]Lança um globule remendador!"),
+		span_nicegreen("[clicker] Lança um globule remendador!"),
 		span_notice("Você lança um globule reparador."),
 	)
 
@@ -442,7 +442,7 @@
 	if(!iscarbon(ooze.pulling))
 		to_chat(src, span_warning("Você precisa estar puxando uma criatura inteligente o suficiente para ajudá-lo com um casulo!"))
 		return FALSE
-	owner.visible_message(span_nicegreen("[ooze]Começa a tentar colocar[target]em um casulo de gel!"), span_notice("Você começa a tentar colocar[target]em um casulo de gel."))
+	owner.visible_message(span_nicegreen("[ooze] Começa a tentar colocar [target] em um casulo de gel!"), span_notice("Você começa a tentar colocar [target] em um casulo de gel."))
 	if(!do_after(ooze, 1.5 SECONDS, target = ooze.pulling))
 		return FALSE
 
@@ -461,7 +461,7 @@
 /datum/action/cooldown/gel_cocoon/proc/put_in_cocoon(mob/living/carbon/target)
 	var/obj/structure/gel_cocoon/cocoon = new /obj/structure/gel_cocoon(get_turf(target))
 	cocoon.insert_target(target)
-	owner.visible_message(span_nicegreen("[owner]Tem colocado[target]em um casulo de gel!"), span_notice("Você colocou[target]em um casulo de gel."))
+	owner.visible_message(span_nicegreen("[owner] Tem colocado [target] em um casulo de gel!"), span_notice("Você colocou [target] em um casulo de gel."))
 
 /obj/structure/gel_cocoon
 	name = "gel cocoon"
@@ -478,7 +478,7 @@
 
 /obj/structure/gel_cocoon/container_resist_act(mob/living/user)
 	. = ..()
-	user.visible_message(span_notice("Viu?[user]Fugindo de[src]!"), 		span_notice("Você começa a rasgar o tecido mole do casulo de gel"))
+	user.visible_message(span_notice("Viu?[user] Fugindo de [src]!"), 		span_notice("Você começa a rasgar o tecido mole do casulo de gel"))
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		return FALSE
 	dump_inhabitant()
@@ -494,7 +494,7 @@
 	inhabitant.forceMove(get_turf(src))
 	playsound(get_turf(inhabitant), 'sound/effects/splat.ogg', 50, TRUE)
 	inhabitant.Paralyze(10)
-	inhabitant.visible_message(span_warning("[inhabitant]Cai fora.[src]!"), span_notice("Você cai fora[src]."))
+	inhabitant.visible_message(span_warning("[inhabitant] Cai fora.[src]!"), span_notice("Você cai fora [src]."))
 	if(destroy_after)
 		qdel(src)
 

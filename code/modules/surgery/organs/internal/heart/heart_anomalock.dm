@@ -246,6 +246,6 @@
 		to_chat(hearer, span_danger("Um arco elétrico atinge seu estetoscópio, conduzindo em você!"))
 	if(hearer.electrocute_act(15, "stethoscope", flags = SHOCK_NOGLOVES)) //the stethoscope is in your ears. (returns true if it does damage so we only scream in that case)
 		hearer.emote("scream")
-	return span_danger("[owner.p_Their()]O coração produz[beat_noise].")
+	return span_danger("[owner.p_Their()] O coração produz [beat_noise].")
 
 #undef DOAFTER_IMPLANTING_HEART

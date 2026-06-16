@@ -133,7 +133,7 @@ Bonus
 			Asphyxiate(M, A)
 			M.emote("gasp")
 			if(M.get_oxy_loss() >= (M.maxHealth / (200/120)))
-				M.visible_message(span_warning("[M]Pare de respirar, como se seus pulmões tivessem colapsado!"))
+				M.visible_message(span_warning("[M] Pare de respirar, como se seus pulmões tivessem colapsado!"))
 				Asphyxiate_death(M, A)
 	return
 

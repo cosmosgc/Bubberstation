@@ -48,7 +48,7 @@
 		say("ERROR: Central Command has temporarily outlawed monkey sentience helmets in this sector. NEAREST LAWFUL SECTOR: 2.537 million light years away.")
 		return
 	magnification = user //this polls ghosts
-	visible_message(span_warning("[src]Energias para Cima!"))
+	visible_message(span_warning("[src] Energias para Cima!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, PROC_REF(make_fall_off))
 	polling = TRUE
@@ -59,27 +59,27 @@
 	if(isnull(chosen_one))
 		UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 		magnification = null
-		visible_message(span_notice("[src]cai em silêncio e cai no chão. Talvez devesse tentar de novo mais tarde?"))
+		visible_message(span_notice("[src] cai em silêncio e cai no chão. Talvez devesse tentar de novo mais tarde?"))
 		if (particle_path)
 			remove_shared_particles(particle_path)
 		switch(rage_chance)
 			if(-7 to 0)
-				user.visible_message(span_notice("[src]cai em silêncio e cai no chão. Tentar mais tarde?"))
+				user.visible_message(span_notice("[src] cai em silêncio e cai no chão. Tentar mais tarde?"))
 				playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 				particle_path = null
 			if(7 to 13)
-				user.visible_message(span_notice("[src]Brilha momentaneamente, então cai em silêncio e cai no chão. Talvez devesse tentar de novo mais tarde?"))
+				user.visible_message(span_notice("[src] Brilha momentaneamente, então cai em silêncio e cai no chão. Talvez devesse tentar de novo mais tarde?"))
 				playsound(src, SFX_SPARKS, 30, TRUE)
 				do_sparks(2, FALSE, src)
 				particle_path = /particles/smoke/steam/mild
 			if(14 to 21)
-				user.visible_message(span_notice("[src]Brilhas e quebras ominosamente, então cai em silêncio e cai no chão. Talvez não devesse tentar de novo mais tarde."))
+				user.visible_message(span_notice("[src] Brilhas e quebras ominosamente, então cai em silêncio e cai no chão. Talvez não devesse tentar de novo mais tarde."))
 				do_sparks(4, FALSE, src)
 				playsound(src, SFX_SPARKS, 15, TRUE)
 				playsound(src, SFX_SHATTER, 30, TRUE)
 				particle_path = /particles/smoke/steam/bad
 			if(21 to INFINITY)
-				user.visible_message(span_notice("[src]Buzine e fume muito, então cai em silêncio e cai no chão. Isso é claramente uma má ideia."))
+				user.visible_message(span_notice("[src] Buzine e fume muito, então cai em silêncio e cai no chão. Isso é claramente uma má ideia."))
 				do_sparks(6, FALSE, src)
 				playsound(src, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 				particle_path = /particles/smoke/steam
@@ -119,7 +119,7 @@
 	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 	playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	visible_message(span_warning("[src]Estraga e quebra!"))
+	visible_message(span_warning("[src] Estraga e quebra!"))
 	magnification = null
 	new /obj/effect/decal/cleanable/ash(drop_location()) //just in case they're in a locker or other containers it needs to use crematorium ash, see the path itself for an explanation
 
@@ -144,6 +144,6 @@
 /obj/item/clothing/head/helmet/monkey_sentience/proc/make_fall_off()
 	SIGNAL_HANDLER
 	if(magnification)
-		visible_message(span_warning("[src]Queda de[magnification]A cabeça muda de forma!"))
+		visible_message(span_warning("[src] Queda de [magnification] A cabeça muda de forma!"))
 		magnification.dropItemToGround(src)
 */

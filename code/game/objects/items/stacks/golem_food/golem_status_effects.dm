@@ -112,13 +112,13 @@
 	status_alert?.update_details(buff_time = buff_duration)
 
 /datum/status_effect/golem/on_remove()
-	to_chat(owner, span_warning("O efeito do[mineral_name]Desaparece."))
+	to_chat(owner, span_warning("O efeito do [mineral_name] Desaparece."))
 	QDEL_LIST(active_overlays)
 	owner.remove_filter("[id]_filter")
 	return ..()
 
 /datum/status_effect/golem/get_examine_text()
-	return span_notice("[owner.p_Their()]O corpo foi aumentado com veias de[mineral_name].")
+	return span_notice("[owner.p_Their()] O corpo foi aumentado com veias de [mineral_name].")
 
 /// Body part overlays applied by golem status effects
 /datum/bodypart_overlay/simple/golem_overlay

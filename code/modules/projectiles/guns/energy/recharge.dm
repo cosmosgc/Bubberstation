@@ -84,7 +84,7 @@
 	if(!suppressed && recharge_sound)
 		playsound(src.loc, recharge_sound, 60, TRUE)
 	else
-		to_chat(loc, span_warning("[src]Silênciosamente carrega."))
+		to_chat(loc, span_warning("[src] Silênciosamente carrega."))
 	update_appearance()
 
 /obj/item/gun/energy/recharge/update_overlays()

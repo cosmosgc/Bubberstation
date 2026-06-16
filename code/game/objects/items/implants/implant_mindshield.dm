@@ -14,7 +14,7 @@
 	if(target.mind)
 		if((SEND_SIGNAL(target.mind, COMSIG_PRE_MINDSHIELD_IMPLANT, user) & COMPONENT_MINDSHIELD_RESISTED))
 			if(!silent)
-				target.visible_message(span_warning("[target]Parece resistir ao implante!"), span_warning("Sente algo interferindo no seu condicionamento mental, mas resiste!"))
+				target.visible_message(span_warning("[target] Parece resistir ao implante!"), span_warning("Sente algo interferindo no seu condicionamento mental, mas resiste!"))
 			removed(target, TRUE)
 			qdel(src)
 			return TRUE

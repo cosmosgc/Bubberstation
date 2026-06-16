@@ -299,18 +299,18 @@
 
 /datum/wound/pierce/bleed/on_saltwater(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.06 * reac_volume, initial_flow * 0.6)
-	to_chat(carbies, span_notice("A água salgada respinga[LOWER_TEXT(src)], absorvendo o sangue."))
+	to_chat(carbies, span_notice("A água salgada respinga [LOWER_TEXT(src)], absorvendo o sangue."))
 
 /datum/wound/slash/flesh/on_saltwater(reac_volume, mob/living/carbon/carbies)
 	adjust_blood_flow(-0.1 * reac_volume, initial_flow * 0.5)
-	to_chat(carbies, span_notice("A água salgada respinga[LOWER_TEXT(src)], absorvendo o sangue."))
+	to_chat(carbies, span_notice("A água salgada respinga [LOWER_TEXT(src)], absorvendo o sangue."))
 
 /datum/wound/burn/flesh/on_saltwater(reac_volume)
 	// Similar but better stats from normal salt.
 	sanitization += VALUE_PER(0.6, 30) * reac_volume
 	infection -= max(VALUE_PER(0.5, 30) * reac_volume, 0)
 	infection_rate += VALUE_PER(0.07, 30) * reac_volume
-	to_chat(victim, span_notice("A água salgada respinga[LOWER_TEXT(src)], absorvendo os... fluidos diversos. Me sinto um pouco melhor depois."))
+	to_chat(victim, span_notice("A água salgada respinga [LOWER_TEXT(src)], absorvendo os... fluidos diversos. Me sinto um pouco melhor depois."))
 	return
 
 /datum/reagent/water/holywater
@@ -373,7 +373,7 @@
 		if(IS_CULTIST(affected_mob) && SPT_PROB(10, seconds_per_tick))
 			affected_mob.say(pick("Av'te Nar'Sie","Pa'lid Mors","INO INO ORA ANA","SAT ANA!","Daim'niodeis Arc'iai Le'eones","R'ge Na'sie","Diabo us Vo'iscum","Eld' Mon Nobis"), forced = "holy water")
 			if(prob(10))
-				affected_mob.visible_message(span_danger("[affected_mob]Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
+				affected_mob.visible_message(span_danger("[affected_mob] Começa a ter uma convulsão!"), span_userdanger("Você tem uma convulsão!"))
 				affected_mob.Unconscious(12 SECONDS)
 				to_chat(affected_mob, span_cult_large("[pick("Your blood is your bond - you are nothing without it", "Do not forget your place", 					"All that power, and you still fail?", "If you cannot scour this poison, I shall scour your meager life!")]."))
 		else if(HAS_TRAIT(affected_mob, TRAIT_EVIL) && SPT_PROB(25, seconds_per_tick)) //Congratulations, your committment to evil has now made holy water a deadly poison to you!
@@ -654,9 +654,9 @@
 		affected_human.update_body(is_creating = TRUE)
 		if(SPT_PROB(3.5, seconds_per_tick))
 			if(affected_human.w_uniform)
-				affected_mob.visible_message(pick("<b>[affected_mob]</b>A coleira aparece sem aviso prévio.</span>", "<b>[affected_mob]</b>flexões[affected_mob.p_their()]Braços."))
+				affected_mob.visible_message(pick("<b>[affected_mob]</b>A coleira aparece sem aviso prévio.</span>", "<b>[affected_mob]</b>flexões [affected_mob.p_their()] Braços."))
 			else
-				affected_mob.visible_message("<b>[affected_mob]</b>flexões[affected_mob.p_their()]Braços.")
+				affected_mob.visible_message("<b>[affected_mob]</b>flexões [affected_mob.p_their()] Braços.")
 	if(SPT_PROB(5, seconds_per_tick))
 		affected_mob.say(pick("Shit was SO cash.", "You are everything bad in the world.", "What sports do you play, other than 'jack off to naked drawn Japanese people?'", "Don???t be a stranger. Just hit me with your best shot.", "My name is John and I hate every single one of you."), forced = /datum/reagent/spraytan)
 
@@ -1446,7 +1446,7 @@
 /datum/reagent/space_cleaner/on_burn_wound_processing(datum/wound/burn/flesh/burn_wound)
 	burn_wound.sanitization += 0.3
 	if(prob(5))
-		to_chat(burn_wound.victim, span_notice("Sua[burn_wound]Arde e queima de[src]Cobrindo! Ele.<i>Sim.</i>Mas parece bem limpo."))
+		to_chat(burn_wound.victim, span_notice("Sua [burn_wound] Arde e queima de [src] Cobrindo! Ele.<i>Sim.</i>Mas parece bem limpo."))
 		burn_wound.victim.apply_damage(0.5, TOX)
 		burn_wound.victim.apply_damage(0.5, BURN, burn_wound.limb, wound_bonus = CANT_WOUND)
 
@@ -3249,7 +3249,7 @@
 /datum/reagent/ants/on_mob_end_metabolize(mob/living/living_anthill)
 	. = ..()
 	ant_ticks = 0
-	to_chat(living_anthill, span_notice("Você se sente como o último de\the [src]estão fora do seu sistema."))
+	to_chat(living_anthill, span_notice("Você se sente como o último de\the [src] estão fora do seu sistema."))
 
 /datum/reagent/ants/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)
 	. = ..()

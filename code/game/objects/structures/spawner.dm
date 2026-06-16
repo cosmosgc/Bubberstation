@@ -50,9 +50,9 @@
 /// Tag the spawner, prefixing its GPS entry with an identifier - or giving it one, if nonexistent.
 /obj/structure/spawner/proc/gps_tag(mob/user)
 	if(gps_tagged)
-		to_chat(user, span_warning("[src]Já tem uma holotag anexada!"))
+		to_chat(user, span_warning("[src] Já tem uma holotag anexada!"))
 		return
-	to_chat(user, span_notice("Você coloca uma holotag em[src]."))
+	to_chat(user, span_notice("Você coloca uma holotag em [src]."))
 	playsound(src, 'sound/machines/beep/twobeep.ogg', 100)
 	gps_tagged = TRUE
 	assigned_tag = "\[[mob_gps_id]-[rand(100,999)]\] " + spawner_gps_id
@@ -205,7 +205,7 @@
 	if(isskeleton(user) || iszombie(user))
 		to_chat(user, span_notice("Você não quer ir para casa ainda..."))
 	else
-		user.visible_message(span_warning("[user]é violentamente puxado para o link!"), 							span_userdanger("Ao tocar o portal, você é rapidamente puxado para um mundo de horror inimaginável!"))
+		user.visible_message(span_warning("[user] é violentamente puxado para o link!"), 							span_userdanger("Ao tocar o portal, você é rapidamente puxado para um mundo de horror inimaginável!"))
 		contents.Add(user)
 
 /obj/structure/spawner/nether/process(seconds_per_tick)
@@ -217,7 +217,7 @@
 			var/mob/living/basic/blankbody/newmob = new(loc)
 			newmob.name = "[living_mob]"
 			newmob.desc = "It's [living_mob], but [living_mob.p_their()] flesh has an ashy texture, and [living_mob.p_their()] face is featureless save an eerie smile."
-			src.visible_message(span_warning("[living_mob]Reemerges da ligação!"))
+			src.visible_message(span_warning("[living_mob] Reemerges da ligação!"))
 			qdel(living_mob)
 
 /obj/structure/spawner/sentient
@@ -266,14 +266,14 @@
 	if(!IS_CULTIST(user) && isliving(user))
 		var/mob/living/living_user = user
 		living_user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 15)
-		. += span_danger("As vozes do maldito eco incansavelmente em sua mente, constantemente rebobinando nas paredes de seu eu quanto mais você se concentrar em[src]Seus quilos da cabeça, melhor ficar longe...")
+		. += span_danger("As vozes do maldito eco incansavelmente em sua mente, constantemente rebobinando nas paredes de seu eu quanto mais você se concentrar em [src] Seus quilos da cabeça, melhor ficar longe...")
 	else
-		. += span_cult("O portal criará um proteon fraco construir cada[spawn_time * 0.1]segundos, até um total de[max_mobs], que pode ser controlado pelos espíritos dos mortos.")
+		. += span_cult("O portal criará um proteon fraco construir cada [spawn_time * 0.1] segundos, até um total de [max_mobs], que pode ser controlado pelos espíritos dos mortos.")
 
 /obj/structure/spawner/sentient/proteon_spawner/became_player_controlled(mob/living/basic/construct/proteon/proteon)
 	proteon.mind.add_antag_datum(/datum/antagonist/cult)
 	proteon.add_filter("awoken_proteon", 3, list("type" = "outline", "color" = COLOR_CULT_RED, "size" = 2))
-	visible_message(span_cult_bold("[proteon]Desperta, brilhando um vermelho assutador se agito de seu estupor!"))
+	visible_message(span_cult_bold("[proteon] Desperta, brilhando um vermelho assutador se agito de seu estupor!"))
 	playsound(proteon, 'sound/items/haunted/ghostitemattack.ogg', 100, TRUE)
 	proteon.balloon_alert_to_viewers("awoken!")
 	addtimer(CALLBACK(src, PROC_REF(remove_wake_outline), proteon), 8 SECONDS)
@@ -284,4 +284,4 @@
 
 /obj/structure/spawner/sentient/proteon_spawner/handle_deconstruct(disassembled)
 	playsound(src, 'sound/effects/hallucinations/veryfar_noise.ogg', 75)
-	visible_message(span_cult_bold("[src]completamente desmoronou, os gritos dos condenados alcançando um passo febril antes de lentamente desaparecer em nada."))
+	visible_message(span_cult_bold("[src] completamente desmoronou, os gritos dos condenados alcançando um passo febril antes de lentamente desaparecer em nada."))

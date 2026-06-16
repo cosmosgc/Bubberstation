@@ -62,7 +62,7 @@
 		return
 	if (steps_travelled < steps_to_hatch)
 		return
-	visible_message(span_boldnotice("[src]Se divide e desembaraça em um bebê Observador!"))
+	visible_message(span_boldnotice("[src] Se divide e desembaraça em um bebê Observador!"))
 	playsound(new_loc, 'sound/effects/splat.ogg', 50, TRUE)
 	new /obj/effect/decal/cleanable/greenglow(new_loc)
 	new /obj/item/watcher_hatchling(new_loc)
@@ -247,13 +247,13 @@
 /// We must guard this corpse
 /obj/effect/watcher_orbiter/proc/on_parent_died(mob/living/parent)
 	SIGNAL_HANDLER
-	visible_message(span_notice("[src]Emite um lamento penoso em luto[parent]!"))
+	visible_message(span_notice("[src] Emite um lamento penoso em luto [parent]!"))
 	fire_delay /= on_death_multiplier
 
 /// Exit hyperactive mode
 /obj/effect/watcher_orbiter/proc/on_parent_revived(mob/living/parent)
 	SIGNAL_HANDLER
-	visible_message(span_notice("[src]Chirps feliza como[parent]Suspirando de arrependimento para respirar!"))
+	visible_message(span_notice("[src] Chirps feliza como [parent] Suspirando de arrependimento para respirar!"))
 	fire_delay *= on_death_multiplier
 
 

@@ -27,7 +27,7 @@
 		return
 	var/area/local_area = get_area(user)
 	if(!local_area.static_lighting)
-		to_chat(user, span_warning("Você não pode colocar[src]nesta área!"))
+		to_chat(user, span_warning("Você não pode colocar [src] nesta área!"))
 		return
 	return TRUE
 
@@ -55,8 +55,8 @@
 		return
 
 	playsound(src.loc, 'sound/machines/click.ogg', 75, TRUE)
-	user.visible_message(span_notice("[user.name]APENAS[src]Para o chão."),
-		span_notice("Você anexa[src]Para o chão."),
+	user.visible_message(span_notice("[user.name] APENAS [src] Para o chão."),
+		span_notice("Você anexa [src] Para o chão."),
 		span_hear("Você ouve o clique."))
 
 	new /obj/structure/light_construct/floor(local_turf)

@@ -59,7 +59,7 @@
 /obj/machinery/brm/examine(mob/user)
 	. = ..()
 	. += span_notice("A pequena tela diz que há[span_boldnotice("[SSore_generation.available_boulders.len] boulders")]disponível para teletransporte.")
-	. += span_notice("Pode pegar até<b>[boulders_processing_max]Pedras.</b>De uma vez.")
+	. += span_notice("Pode pegar até<b>[boulders_processing_max] Pedras.</b>De uma vez.")
 	. += span_notice("Recuperação automática de pedras pode ser trocada.[EXAMINE_HINT("[toggled_on ? "Off" : "On"]")]Com[EXAMINE_HINT("Right Click")].")
 
 	if(anchored)

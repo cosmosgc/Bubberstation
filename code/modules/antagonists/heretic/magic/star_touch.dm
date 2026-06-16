@@ -100,7 +100,7 @@
 		QDEL_NULL(second_rune)
 
 /obj/item/melee/touch_attack/star_touch/ignition_effect(atom/to_light, mob/user)
-	. = span_rose("[user]Esforçosamente estala[user.p_their()]Dedos preto[to_light], acendendo-o com energias cósmicas. Maldito fodão!")
+	. = span_rose("[user] Esforçosamente estala [user.p_their()] Dedos preto [to_light], acendendo-o com energias cósmicas. Maldito fodão!")
 	remove_hand_with_no_refund(user)
 
 /obj/item/melee/touch_attack/star_touch/attack_self(mob/living/user)
@@ -194,7 +194,7 @@
 	SIGNAL_HANDLER
 	if(successful_teleport)
 		return
-	to_chat(owner, span_warning("Sua ligação cósmica para[current_target]Foi quebrado!"))
+	to_chat(owner, span_warning("Sua ligação cósmica para [current_target] Foi quebrado!"))
 	active = FALSE
 	lose_target()
 	duration = 0

@@ -19,7 +19,7 @@
 	UnregisterSignal(owner, list(COMSIG_CARBON_PRE_BREATHE, COMSIG_ATOM_TOOL_ACT(TOOL_WIRECUTTER), COMSIG_CARBON_PRE_MISC_HELP))
 
 /datum/status_effect/strandling/get_examine_text()
-	return span_warning("[owner.p_They()]Parece.[owner.p_s()]para ser sufocado por alguns fios de durathread. Você pode ser capaz de<b>Corta.</b>Eles estão fora.")
+	return span_warning("[owner.p_They()] Parece.[owner.p_s()] para ser sufocado por alguns fios de durathread. Você pode ser capaz de<b>Corta.</b>Eles estão fora.")
 
 /// Signal proc for [COMSIG_CARBON_PRE_BREATHE], causes losebreath whenever we're trying to breathe
 /datum/status_effect/strandling/proc/on_breathe(mob/living/source)
@@ -61,7 +61,7 @@
 		return
 
 	user.visible_message(
-		span_notice("[user]Tentando[tool ? "cut":"remove"]O fio ao redor.[owner == user ? "[owner.p_their()]":"[owner]'s"]pescoço..."),
+		span_notice("[user] Tentando[tool ? "cut":"remove"]O fio ao redor.[owner == user ? "[owner.p_their()]":"[owner]'s"]pescoço..."),
 		span_notice("Você tenta[tool ? "cut":"remove"]O fio ao redor.[owner == user ? "your":"[owner]'s"]pescoço..."),
 	)
 
@@ -77,7 +77,7 @@
 	tool?.play_tool_sound(owner)
 
 	user.visible_message(
-		span_notice("[user]Com sucesso.[tool ? "cut":"remove"]O fio ao redor.[owner == user ? "[owner.p_their()]":"[owner]'s"]pescoço."),
+		span_notice("[user] Com sucesso.[tool ? "cut":"remove"]O fio ao redor.[owner == user ? "[owner.p_their()]":"[owner]'s"]pescoço."),
 		span_notice("Você com sucesso.[tool ? "cut":"remove"]O fio ao redor.[owner == user ? "your":"[owner]'s"]pescoço."),
 	)
 	qdel(src)

@@ -112,8 +112,8 @@
  */
 /obj/item/plant_analyzer/proc/plant_biotype_health_scan(mob/living/scanned_mob, mob/living/carbon/human/user)
 	user.visible_message(
-		span_notice("[user]Análises[scanned_mob]Os sinais vitais."),
-		span_notice("Você analisa.[scanned_mob]Os sinais vitais.")
+		span_notice("[user] Análises [scanned_mob] Os sinais vitais."),
+		span_notice("Você analisa.[scanned_mob] Os sinais vitais.")
 		)
 
 	healthscan(user, scanned_mob, advanced = TRUE)
@@ -127,8 +127,8 @@
  */
 /obj/item/plant_analyzer/proc/plant_biotype_chem_scan(mob/living/scanned_mob, mob/living/carbon/human/user)
 	user.visible_message(
-		span_notice("[user]Análises[scanned_mob]A corrente sanguínea."),
-		span_notice("Você analisa.[scanned_mob]A corrente sanguínea.")
+		span_notice("[user] Análises [scanned_mob] A corrente sanguínea."),
+		span_notice("Você analisa.[scanned_mob] A corrente sanguínea.")
 		)
 	chemscan(user, scanned_mob)
 	add_fingerprint(user)

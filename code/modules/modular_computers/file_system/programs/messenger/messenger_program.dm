@@ -640,7 +640,7 @@
 		return FALSE
 
 	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
-	sender.visible_message(span_notice("[sender]O PDA toca com o som suave das teclas."), vision_distance = COMBAT_MESSAGE_RANGE)
+	sender.visible_message(span_notice("[sender] O PDA toca com o som suave das teclas."), vision_distance = COMBAT_MESSAGE_RANGE)
 	// SKYRAT EDIT END
 
 	var/shell_addendum = ""
@@ -675,9 +675,9 @@
 
 	if(sender)
 		if(subtle)
-			to_chat(sender, span_subtlepda("Subtil mensagem PDA enviada para[signal.format_target()]: \"[message]\""))
+			to_chat(sender, span_subtlepda("Subtil mensagem PDA enviada para [signal.format_target()]: \"[message]\""))
 		else
-			to_chat(sender, span_info("Mensagem PDA enviada para[signal.format_target()]: \"[message]\""))
+			to_chat(sender, span_info("Mensagem PDA enviada para [signal.format_target()]: \"[message]\""))
 	// BUBBER EDIT CHANGE END
 
 	if (alert_able && !alert_silenced)
@@ -760,9 +760,9 @@
 		var/photo_message = signal.data["photo"] ? " (<a href='byond://?src=[REF(src)];choice=[photo_href];skiprefresh=1;target=[REF(chat)]'>Photo Attached</a>)" : ""
 		// BUBBER EDIT CHANGE BEGIN - SUBTLE MESSAGES
 		if(is_subtle)
-			to_chat(messaged_mob, span_subtlepda("[icon2html(computer, messaged_mob)] <b>Sútil mensagem PDA de[sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
+			to_chat(messaged_mob, span_subtlepda("[icon2html(computer, messaged_mob)] <b>Sútil mensagem PDA de [sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
 		else
-			to_chat(messaged_mob, span_infoplain("[icon2html(computer, messaged_mob)] <b>Mensagem PDA de[sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
+			to_chat(messaged_mob, span_infoplain("[icon2html(computer, messaged_mob)] <b>Mensagem PDA de [sender_title], </b>\"[inbound_message]\"[photo_message] [reply]"))
 		// BUBBER EDIT CHANGE END - SUBTLE MESSAGES
 
 		SEND_SIGNAL(computer, COMSIG_COMPUTER_RECEIVED_MESSAGE, sender_title, inbound_message, photo_message)

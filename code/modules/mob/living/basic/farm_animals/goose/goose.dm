@@ -67,7 +67,7 @@
 	if (!food.has_material_type(/datum/material/plastic))
 		return NONE
 
-	visible_message(span_boldwarning("[src]Está se engasgando.\the [food]!"))
+	visible_message(span_boldwarning("[src] Está se engasgando.\the [food]!"))
 	food.forceMove(src)
 	choke(food)
 
@@ -102,7 +102,7 @@
 	// 5% chance every round to have anarchy mode deadchat control on birdboat.
 	if (!prob(5))
 		return
-	desc = "[initial(desc)]Está balançando mais que o normal. Parece estar possuído."
+	desc = "[initial(desc)] Está balançando mais que o normal. Parece estar possuído."
 	deadchat_plays()
 
 /mob/living/basic/goose/vomit/Destroy()
@@ -123,7 +123,7 @@
 	if (length(contents) > GOOSE_SATIATED)
 		if (COOLDOWN_FINISHED(src, eat_fail_feedback_cooldown))
 			if (feeder)
-				visible_message(span_notice("[src]Parece muito queijo para comer.\the [food]!"))
+				visible_message(span_notice("[src] Parece muito queijo para comer.\the [food]!"))
 			COOLDOWN_START(src, eat_fail_feedback_cooldown, 5 SECONDS)
 		return COMSIG_MOB_TERMINATE_EAT
 
@@ -142,7 +142,7 @@
 /mob/living/basic/goose/vomit/choke(obj/item/not_food_after_all)
 	if (prob(75))
 		return ..()
-	visible_message(span_warning("[src]Está engasgado.\the [not_food_after_all]!"))
+	visible_message(span_warning("[src] Está engasgado.\the [not_food_after_all]!"))
 	manual_emote("gags!")
 	addtimer(CALLBACK(src, PROC_REF(vomit)), 5 SECONDS)
 

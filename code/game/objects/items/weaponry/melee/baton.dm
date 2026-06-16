@@ -164,8 +164,8 @@
 	// clumsy people redirect this attack - yes, this bypasses IWASBATONED and such
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		user.visible_message(
-			span_danger("[user]Acidentalmente bate[user.p_them()]ego sobre a cabeça com[src]Que idiota!"),
-			span_userdanger("Você acidentalmente bateu na cabeça com[src]!"),
+			span_danger("[user] Acidentalmente bate [user.p_them()] ego sobre a cabeça com [src] Que idiota!"),
+			span_userdanger("Você acidentalmente bateu na cabeça com [src]!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 
@@ -271,19 +271,19 @@
 /obj/item/melee/baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	PROTECTED_PROC(TRUE)
 	. = list()
-	.["visible"] = span_danger("[user]Bate.[target]Abaixo com[src]!")
-	.["local"] = span_userdanger("[user]Derruba você com[src]!")
+	.["visible"] = span_danger("[user] Bate.[target] Abaixo com [src]!")
+	.["local"] = span_userdanger("[user] Derruba você com [src]!")
 
 /// Default message for stunning a cyborg.
 /obj/item/melee/baton/proc/get_cyborg_stun_description(mob/living/target, mob/living/user)
 	PROTECTED_PROC(TRUE)
 	. = list()
 	if(affect_cyborg)
-		.["visible"] = span_danger("[user]pulsações[target]Os sensores com o bastão!")
-		.["local"] = span_danger("Você pulsa.[target]Os sensores com o bastão!")
+		.["visible"] = span_danger("[user] pulsações [target] Os sensores com o bastão!")
+		.["local"] = span_danger("Você pulsa.[target] Os sensores com o bastão!")
 	else
-		.["visible"] = span_danger("[user]Tenta derrubar[target]Com[src]E previsivelmente falha!") //look at this duuuuuude
-		.["local"] = span_userdanger("[user]Tenta te derrubar com...[src]?") //look at the top of his head!
+		.["visible"] = span_danger("[user] Tenta derrubar [target] Com [src] E previsivelmente falha!") //look at this duuuuuude
+		.["local"] = span_userdanger("[user] Tenta te derrubar com...[src]?") //look at the top of his head!
 
 /// Contains any special effects that we apply to living, non-cyborg mobs we stun. Does not include applying a knockdown, dealing stamina damage, etc.
 /obj/item/melee/baton/proc/additional_effects_non_cyborg(mob/living/target, mob/living/user)
@@ -359,7 +359,7 @@
 	var/mob/living/carbon/human/human_user = user
 	var/obj/item/organ/brain/our_brain = human_user.get_organ_by_type(/obj/item/organ/brain)
 
-	user.visible_message(span_suicide("[user]Coisas.[src]Para cima.[user.p_their()]Nariz e aperta o botão \"Extensor\"Parece que...[user.p_theyre()]Tentando limpar[user.p_their()]Mente."))
+	user.visible_message(span_suicide("[user] Coisas.[src] Para cima.[user.p_their()] Nariz e aperta o botão \"Extensor\"Parece que...[user.p_theyre()] Tentando limpar [user.p_their()] Mente."))
 	if(active)
 		playsound(src, on_sound, 50, TRUE)
 		add_fingerprint(user)
@@ -519,11 +519,11 @@
 
 /obj/item/melee/baton/security/suicide_act(mob/living/user)
 	if(cell?.charge && active)
-		user.visible_message(span_suicide("[user]é colocar o vivo[name]Em[user.p_their()]Boca! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] é colocar o vivo [name] Em [user.p_their()] Boca! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		finalize_baton_attack(user, user)
 		return FIRELOSS
 	else
-		user.visible_message(span_suicide("[user]Está empurrando\the [src]Pela garganta dele! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Está empurrando\the [src] Pela garganta dele! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		return OXYLOSS
 
 /obj/item/melee/baton/security/Destroy()
@@ -579,9 +579,9 @@
 /obj/item/melee/baton/security/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("\The [src]É[round(cell.percent())]Está carregado.")
+		. += span_notice("\The [src] É [round(cell.percent())] Está carregado.")
 	else
-		. += span_warning("\The [src]não tem uma fonte de energia instalada.")
+		. += span_warning("\The [src] não tem uma fonte de energia instalada.")
 
 /obj/item/melee/baton/security/screwdriver_act(mob/living/user, obj/item/tool)
 	if(tryremovecell(user))
@@ -592,15 +592,15 @@
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
 		var/obj/item/stock_parts/power_store/cell/active_cell = item
 		if(cell)
-			to_chat(user, span_warning("[src]Já tem uma cela!"))
+			to_chat(user, span_warning("[src] Já tem uma cela!"))
 		else
 			if(active_cell.maxcharge < cell_hit_cost)
-				to_chat(user, span_notice("[src]requer uma célula de maior capacidade."))
+				to_chat(user, span_notice("[src] requer uma célula de maior capacidade."))
 				return
 			if(!user.transferItemToLoc(item, src))
 				return
 			cell = item
-			to_chat(user, span_notice("Você instala uma célula em[src]."))
+			to_chat(user, span_notice("Você instala uma célula em [src]."))
 			update_appearance()
 	else
 		return ..()
@@ -608,7 +608,7 @@
 /obj/item/melee/baton/security/proc/tryremovecell(mob/user)
 	if(cell && can_remove_cell)
 		cell.forceMove(drop_location())
-		to_chat(user, span_notice("Você remove a célula de[src]."))
+		to_chat(user, span_notice("Você remove a célula de [src]."))
 		return TRUE
 	return FALSE
 
@@ -660,8 +660,8 @@
 /obj/item/melee/baton/security/try_stun(mob/living/target, mob/living/user, harmbatonning)
 	if(!active && !harmbatonning && !user.combat_mode)
 		target.visible_message(
-			span_warning("[user]Golpes.[target]Com[src]Felizmente estava desligada."),
-			span_warning("[user]Te cutuca com[src]Felizmente estava desligada."),
+			span_warning("[user] Golpes.[target] Com [src] Felizmente estava desligada."),
+			span_warning("[user] Te cutuca com [src] Felizmente estava desligada."),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 		return FALSE
@@ -702,14 +702,14 @@
 /obj/item/melee/baton/security/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] = span_danger("[user]ATORDOAMENTOS[target]Com[src]!")
-	.["local"] = span_userdanger("[user]Te atordoa com[src]!")
+	.["visible"] = span_danger("[user] ATORDOAMENTOS [target] Com [src]!")
+	.["local"] = span_userdanger("[user] Te atordoa com [src]!")
 
 /obj/item/melee/baton/security/get_cyborg_stun_description(mob/living/target, mob/living/user)
 	. = ..()
 	if(!affect_cyborg)
-		.["visible"] = span_danger("[user]Tenta atordoar[target]Com[src]E previsivelmente falha!")
-		.["local"] = span_userdanger("[user]Tenta... te atordoar com[src]?")
+		.["visible"] = span_danger("[user] Tenta atordoar [target] Com [src] E previsivelmente falha!")
+		.["local"] = span_userdanger("[user] Tenta... te atordoar com [src]?")
 
 /obj/item/melee/baton/security/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
@@ -852,10 +852,10 @@
 		our_crystal.use(1)
 		our_prod = /obj/item/melee/baton/security/cattleprod/telecrystalprod
 	else
-		to_chat(user, span_notice("Você não acha\the [item]fará qualquer coisa para melhorar.\the [src]."))
+		to_chat(user, span_notice("Você não acha\the [item] fará qualquer coisa para melhorar.\the [src]."))
 		return ..()
 
-	to_chat(user, span_notice("Seu lugar.\the [item]Firme em\the [sparkler]."))
+	to_chat(user, span_notice("Seu lugar.\the [item] Firme em\the [sparkler]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	var/obj/item/melee/baton/security/cattleprod/brand_new_prod = new our_prod(user.loc)
@@ -935,10 +935,10 @@
 	if(!user || !stuff_in_hand || !target.temporarilyRemoveItemFromInventory(stuff_in_hand))
 		return
 	if(user.put_in_inactive_hand(stuff_in_hand))
-		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand]De arrependimento apareceu em[user]A mão!"))
+		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand] De arrependimento apareceu em [user] A mão!"))
 	else
 		stuff_in_hand.forceMove(user.drop_location())
-		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand]De arrependimento apareceu!"))
+		stuff_in_hand.loc.visible_message(span_warning("[stuff_in_hand] De arrependimento apareceu!"))
 
 	if(clumsy && user.dropItemToGround(src, force = TRUE, silent = TRUE))
 		do_teleport(src, get_turf(user), 50, channel = TELEPORT_CHANNEL_BLUESPACE) //Wait, where did it go?
@@ -998,9 +998,9 @@
 // Deep Lore //
 
 /obj/item/melee/baton/security/add_deep_lore()
-	AddElement(/datum/element/examine_lore, 		lore_hint = span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre[src]."), 		lore = "O Dispositivo de Apreensão Segura (às vezes referido como o DAU nos manuais de treinamento de oficiais) é a união profana de um maça e um pé de gado. Este dispositivo não letal foi projetado para acabar com rufiões, canalhas, ne'er-do-wells e criminosos onde quer que eles possam levantar suas cabeças feias.<br>		<br>Um símbolo das forças de segurança de Nanotrasen, o bastão de choque é a principal ferramenta que os oficiais empregam contra a escória ilegal e a vilania do Spinward e no exterior. Treinada para \"Baton primeiro, interroga depois\", a segurança de Nanotrasen ganhou uma reputação mista. Capaz de desligar rapidamente o sistema nervoso central de um criminoso com apenas algumas aplicações diretas da cabeça condutora do dispositivo, poucos possíveis encrenqueiros querem encontrar-se no lado errado de um oficial brandindo este bastão.<br>		<br>A polícia de Terragov evitou a adoção de bastões de choque devido a vários dilemas éticos colocados por seu uso, em grande parte devido às ramificações físicas e mentais de longo prazo de ser atingido por um gado humano. Grupos de defesa de direitos dos cidadãos protestam contra a proliferação de morcegos atordoados como uma ferramenta de policiamento, argumentando que eles são 'desumanos' e 'autoritários'. Nanotrasen, por outro lado, não teve tais escrúpulos ao implantar bastões de choque como medida de conformidade em todas as estações e instalações existentes contra membros indisciplinados do pessoal." 	)
+	AddElement(/datum/element/examine_lore, 		lore_hint = span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre [src]."), 		lore = "O Dispositivo de Apreensão Segura (às vezes referido como o DAU nos manuais de treinamento de oficiais) é a união profana de um maça e um pé de gado. Este dispositivo não letal foi projetado para acabar com rufiões, canalhas, ne'er-do-wells e criminosos onde quer que eles possam levantar suas cabeças feias.<br>		<br>Um símbolo das forças de segurança de Nanotrasen, o bastão de choque é a principal ferramenta que os oficiais empregam contra a escória ilegal e a vilania do Spinward e no exterior. Treinada para \"Baton primeiro, interroga depois\", a segurança de Nanotrasen ganhou uma reputação mista. Capaz de desligar rapidamente o sistema nervoso central de um criminoso com apenas algumas aplicações diretas da cabeça condutora do dispositivo, poucos possíveis encrenqueiros querem encontrar-se no lado errado de um oficial brandindo este bastão.<br>		<br>A polícia de Terragov evitou a adoção de bastões de choque devido a vários dilemas éticos colocados por seu uso, em grande parte devido às ramificações físicas e mentais de longo prazo de ser atingido por um gado humano. Grupos de defesa de direitos dos cidadãos protestam contra a proliferação de morcegos atordoados como uma ferramenta de policiamento, argumentando que eles são 'desumanos' e 'autoritários'. Nanotrasen, por outro lado, não teve tais escrúpulos ao implantar bastões de choque como medida de conformidade em todas as estações e instalações existentes contra membros indisciplinados do pessoal." 	)
 
 // Contractor Baton
 
 /obj/item/melee/baton/telescopic/contractor_baton/add_deep_lore()
-	AddElement(/datum/element/examine_lore, 		lore_hint = span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre[src]."), 		lore = "O Dispositivo de Aquisição de Contratos (às vezes referido como CAD em correspondência criptografada) é um dos exemplos mais frequentes de armamento das Indústrias Cybersun. Extremamente parecido com o próprio dispositivo de apreensão segura de Nanotrasen (também simplesmente conhecido como bastão de choque), o bastão contratante é capaz de induzir a ruptura do SNC em um alvo para torná-los indefesos. Também é capaz de devastador trauma contundente se usado como um espancamento. O bastão do empreiteiro também é capaz de implantação telescópica, permitindo discrição enquanto faz uma aproximação para um alvo.<br>		<br>O bastão do empreiteiro está associado com empreiteiros, agentes de campo da Cybersun. Enquanto o agente padrão muitas vezes seria encarregado de sabotagem, terrorismo, assassinato ou roubo, empreiteiros têm a tarefa crítica de sequestrar pessoal de alto valor. Qualquer um com potencial para possuir dados confidenciais ou sensíveis sobre sistemas de segurança e dispositivos Nanotrasen pode ser um alvo para Cybersun.<br>		<br>Extrair essa informação é mais fácil em indivíduos vivos. Como tal, o bastão foi projetado com incapacidade não letal em mente. No entanto, as Indústrias Cybersun há muito tempo encontraram soluções para extrair dados do falecido, caso o empreiteiro se encontre com apenas um cadáver para enviar de volta. A morte não pode poupá-lo das maquinações das Indústrias Cybersun se considerarem você um bem valioso para seus objetivos.<br>		<br>Nanotrasen utiliza uma série de contramedidas para insurgências de empreiteiros, tais como empregar memória seletiva limpando ou falsa injeção de memória, a criação de pessoal de comando 'dummy' através da aceleração artificial de membros de outra forma incompetentes mas úteis da tripulação (cuja incompetência muitas vezes resultará em um grau aceitável de interrupção operacional), que fornece bodes expiatórios convenientes no caso de uma quebra de segurança, bem como rotatividade frequente de pessoal e reatribuição." 	)
+	AddElement(/datum/element/examine_lore, 		lore_hint = span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre [src]."), 		lore = "O Dispositivo de Aquisição de Contratos (às vezes referido como CAD em correspondência criptografada) é um dos exemplos mais frequentes de armamento das Indústrias Cybersun. Extremamente parecido com o próprio dispositivo de apreensão segura de Nanotrasen (também simplesmente conhecido como bastão de choque), o bastão contratante é capaz de induzir a ruptura do SNC em um alvo para torná-los indefesos. Também é capaz de devastador trauma contundente se usado como um espancamento. O bastão do empreiteiro também é capaz de implantação telescópica, permitindo discrição enquanto faz uma aproximação para um alvo.<br>		<br>O bastão do empreiteiro está associado com empreiteiros, agentes de campo da Cybersun. Enquanto o agente padrão muitas vezes seria encarregado de sabotagem, terrorismo, assassinato ou roubo, empreiteiros têm a tarefa crítica de sequestrar pessoal de alto valor. Qualquer um com potencial para possuir dados confidenciais ou sensíveis sobre sistemas de segurança e dispositivos Nanotrasen pode ser um alvo para Cybersun.<br>		<br>Extrair essa informação é mais fácil em indivíduos vivos. Como tal, o bastão foi projetado com incapacidade não letal em mente. No entanto, as Indústrias Cybersun há muito tempo encontraram soluções para extrair dados do falecido, caso o empreiteiro se encontre com apenas um cadáver para enviar de volta. A morte não pode poupá-lo das maquinações das Indústrias Cybersun se considerarem você um bem valioso para seus objetivos.<br>		<br>Nanotrasen utiliza uma série de contramedidas para insurgências de empreiteiros, tais como empregar memória seletiva limpando ou falsa injeção de memória, a criação de pessoal de comando 'dummy' através da aceleração artificial de membros de outra forma incompetentes mas úteis da tripulação (cuja incompetência muitas vezes resultará em um grau aceitável de interrupção operacional), que fornece bodes expiatórios convenientes no caso de uma quebra de segurança, bem como rotatividade frequente de pessoal e reatribuição." 	)

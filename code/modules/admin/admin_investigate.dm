@@ -60,7 +60,7 @@ ADMIN_VERB(investigate_show, R_NONE, "Investigate", "Browse various detailed log
 
 	var/F = file("[GLOB.log_directory]/[selected].html")
 	if(!fexists(F))
-		to_chat(user, span_danger("Não.[selected]O arquivo de registro foi encontrado."), confidential = TRUE)
+		to_chat(user, span_danger("Não.[selected] O arquivo de registro foi encontrado."), confidential = TRUE)
 		return
 
 	var/datum/browser/browser = new(user, "investigate[selected]", "Investigation of [selected]", 800, 300)

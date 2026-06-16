@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 /obj/item/book/bible/proc/on_intercepted_bullet(mob/living/victim, obj/projectile/bullet)
 	victim.add_mood_event("blessing", /datum/mood_event/blessing)
 	playsound(victim, 'sound/effects/magic/magic_block_holy.ogg', 50, TRUE)
-	victim.visible_message(span_warning("[src]Toma.[bullet]em[victim]É o lugar!"))
+	victim.visible_message(span_warning("[src] Toma.[bullet] em [victim] É o lugar!"))
 	var/obj/structure/fluff/paper/stack/pages = new(get_turf(src))
 	pages.setDir(pick(GLOB.alldirs))
 	name = "punctured bible"
@@ -104,12 +104,12 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 /obj/item/book/bible/examine(mob/user)
 	. = ..()
 	if(deity_name)
-		. += span_notice("Esta Bíblia foi aprovada por[deity_name].")
+		. += span_notice("Esta Bíblia foi aprovada por [deity_name].")
 	if(user.mind?.holy_role)
 		if(GLOB.chaplain_altars.len)
-			. += span_notice("[src]tem um pacote de expansão para substituir qualquer Altar quebrado.")
+			. += span_notice("[src] tem um pacote de expansão para substituir qualquer Altar quebrado.")
 		else
-			. += span_notice("[src]pode ser desembalado batendo no chão de uma área sagrada com ele.")
+			. += span_notice("[src] pode ser desembalado batendo no chão de uma área sagrada com ele.")
 
 /obj/item/book/bible/get_attack_self_context(mob/living/user)
 	if(can_set_bible_skin(user))
@@ -129,11 +129,11 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		user.client?.give_award(/datum/award/achievement/misc/gods_wrath, user)
 		user.gib(DROP_ALL_REMAINS)
 	else
-		to_chat(user, span_userdanger("[deity_name]Lançai uma maldição sobre vós!"))
+		to_chat(user, span_userdanger("[deity_name] Lançai uma maldição sobre vós!"))
 		user.AddComponent(/datum/component/omen/bible)
 
 /obj/item/book/bible/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está oferecendo[user.p_them()]eu mesmo para[deity_name]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está oferecendo [user.p_them()] eu mesmo para [deity_name]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/book/bible/proc/can_set_bible_skin(mob/living/user)
@@ -224,8 +224,8 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		if(affecting.heal_damage(heal_amt, heal_amt, required_bodytype = BODYTYPE_ORGANIC))
 			built_in_his_image.update_damage_overlays()
 
-	built_in_his_image.visible_message(span_notice("[user]cura[built_in_his_image]com o poder de[deity_name]!"))
-	to_chat(built_in_his_image, span_boldnotice("Que o poder de[deity_name]Obrigá-lo a ser curado!"))
+	built_in_his_image.visible_message(span_notice("[user] cura [built_in_his_image] com o poder de [deity_name]!"))
+	to_chat(built_in_his_image, span_boldnotice("Que o poder de [deity_name] Obrigá-lo a ser curado!"))
 	playsound(built_in_his_image, SFX_PUNCH, 25, TRUE, -1)
 	built_in_his_image.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		return
 
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		to_chat(user, span_danger("[src]Sai da sua mão e bate com a cabeça."))
+		to_chat(user, span_danger("[src] Sai da sua mão e bate com a cabeça."))
 		user.take_bodypart_damage(10)
 		user.Unconscious(40 SECONDS)
 		return
@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 	if(target_mob.stat == DEAD)
 		if(GLOB.religious_sect?.sect_dead_bless(target_mob, user) == BLESSING_FAILED)
-			target_mob.visible_message(span_danger("[user]Strocks[target_mob]O cadáver sem vida com[src]."))
+			target_mob.visible_message(span_danger("[user] Strocks [target_mob] O cadáver sem vida com [src]."))
 			playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
 		return
 
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		if(!istype(carbon_target.head, /obj/item/clothing/head/helmet))
 			carbon_target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 5, 60)
 			carbon_target.balloon_alert(carbon_target, "Você se sente mais idiota!")
-	target_mob.visible_message(span_danger("[user]batidas[target_mob]sobre a cabeça com[src]!"), 			span_userdanger("[user]batidas[target_mob]sobre a cabeça com[src]!"))
+	target_mob.visible_message(span_danger("[user] batidas [target_mob] sobre a cabeça com [src]!"), 			span_userdanger("[user] batidas [target_mob] sobre a cabeça com [src]!"))
 	playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
 	log_combat(user, target_mob, "attacked", src)
 
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		if(do_after(user, 12 SECONDS, target = sword))
 			playsound(src,'sound/effects/pray_chaplain.ogg',60,TRUE)
 			new /obj/item/nullrod/nullblade(get_turf(sword))
-			user.visible_message(span_notice("[user]Exorcises[sword]!"))
+			user.visible_message(span_notice("[user] Exorcises [sword]!"))
 			qdel(sword)
 			return ITEM_INTERACT_SUCCESS
 		return ITEM_INTERACT_BLOCKING
@@ -376,7 +376,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 /obj/item/book/bible/syndicate/examine(mob/user)
 	. = ..()
 	if(owner_name)
-		. += span_warning("O nome[owner_name]está escrito em sangue dentro da capa.")
+		. += span_warning("O nome [owner_name] está escrito em sangue dentro da capa.")
 
 /obj/item/book/bible/syndicate/get_attack_self_context(mob/living/user)
 	if(uses)

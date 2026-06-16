@@ -29,7 +29,7 @@
 
 /obj/machinery/atmospherics/components/unary/hypertorus/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]pode ser girado pela primeira abertura do painel com uma chave de fenda e, em seguida, usando uma chave de fenda nele.")
+	. += span_notice("[src] pode ser girado pela primeira abertura do painel com uma chave de fenda e, em seguida, usando uma chave de fenda nele.")
 
 /obj/machinery/atmospherics/components/unary/hypertorus/screwdriver_act(mob/living/user, obj/item/tool)
 	return fusion_started ? NONE : default_deconstruction_screwdriver(user, tool)
@@ -110,7 +110,7 @@
 
 /obj/machinery/hypertorus/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]pode ser girado pela primeira abertura do painel com uma chave de fenda e, em seguida, usando uma chave de fenda nele.")
+	. += span_notice("[src] pode ser girado pela primeira abertura do painel com uma chave de fenda e, em seguida, usando uma chave de fenda nele.")
 
 /obj/machinery/hypertorus/screwdriver_act(mob/living/user, obj/item/tool)
 	return fusion_started ? NONE : default_deconstruction_screwdriver(user, tool)

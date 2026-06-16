@@ -89,16 +89,16 @@ no power level overlay is currently in the overlays list.
 
 /obj/machinery/field/generator/interact(mob/user)
 	if(state != FG_WELDED)
-		to_chat(user, span_warning("[src]Precisa ser firmemente seguro no chão primeiro!"))
+		to_chat(user, span_warning("[src] Precisa ser firmemente seguro no chão primeiro!"))
 		return
 	if(get_dist(src, user) > 1)//Need to actually touch the thing to turn it on
 		return
 	if(active >= FG_CHARGING)
-		to_chat(user, span_warning("Você é incapaz de desligar.[src]Uma vez que esteja online!"))
+		to_chat(user, span_warning("Você é incapaz de desligar.[src] Uma vez que esteja online!"))
 		return TRUE
 
 	user.visible_message(
-		span_notice("[user]Liga.[src]."),
+		span_notice("[user] Liga.[src]."),
 		span_notice("Você liga.[src]."),
 		span_hear("Você ouve droning pesado."))
 	turn_on()
@@ -117,12 +117,12 @@ no power level overlay is currently in the overlays list.
 /obj/machinery/field/generator/can_be_unfasten_wrench(mob/user, silent)
 	if(active)
 		if(!silent)
-			to_chat(user, span_warning("Vire.\the [src]Fora primeiro!"))
+			to_chat(user, span_warning("Vire.\the [src] Fora primeiro!"))
 		return FAILED_UNFASTEN
 
 	else if(state == FG_WELDED)
 		if(!silent)
-			to_chat(user, span_warning("[src]Está soldada ao chão!"))
+			to_chat(user, span_warning("[src] Está soldada ao chão!"))
 		return FAILED_UNFASTEN
 
 	return ..()
@@ -135,19 +135,19 @@ no power level overlay is currently in the overlays list.
 /obj/machinery/field/generator/welder_act(mob/living/user, obj/item/welder)
 	. = ..()
 	if(active)
-		to_chat(user, span_warning("[src]Precisa sair!"))
+		to_chat(user, span_warning("[src] Precisa sair!"))
 		return TRUE
 
 	switch(state)
 		if(FG_UNSECURED)
-			to_chat(user, span_warning("[src]Precisa ser puxado para o chão!"))
+			to_chat(user, span_warning("[src] Precisa ser puxado para o chão!"))
 
 		if(FG_SECURED)
 			if(!welder.tool_start_check(user, amount=1))
 				return TRUE
 			user.visible_message(
-				span_notice("[user]começa a soldar[src]Para o chão."),
-				span_notice("Você começa a soldar\the [src]Para o chão..."),
+				span_notice("[user] começa a soldar [src] Para o chão."),
+				span_notice("Você começa a soldar\the [src] Para o chão..."),
 				span_hear("Você ouve solda."))
 			if(welder.use_tool(src, user, 20, volume=50) && state == FG_SECURED)
 				state = FG_WELDED
@@ -157,12 +157,12 @@ no power level overlay is currently in the overlays list.
 			if(!welder.tool_start_check(user, amount=1))
 				return TRUE
 			user.visible_message(
-				span_notice("[user]Começa a cortar[src]Livre do chão."),
-				span_notice("Você começa a cortar\the [src]Livre do chão..."),
+				span_notice("[user] Começa a cortar [src] Livre do chão."),
+				span_notice("Você começa a cortar\the [src] Livre do chão..."),
 				span_hear("Você ouve solda."))
 			if(welder.use_tool(src, user, 20, volume=50) && state == FG_WELDED)
 				state = FG_SECURED
-				to_chat(user, span_notice("Você cortou.\the [src]Livre do chão."))
+				to_chat(user, span_notice("Você cortou.\the [src] Livre do chão."))
 
 	return TRUE
 
@@ -170,7 +170,7 @@ no power level overlay is currently in the overlays list.
 /obj/machinery/field/generator/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(user.environment_smash == ENVIRONMENT_SMASH_RWALLS && active == FG_OFFLINE && state != FG_UNSECURED)
 		set_anchored(FALSE)
-		user.visible_message(span_warning("[user]Rips[src]Livre de suas amarras!"))
+		user.visible_message(span_warning("[user] Rips [src] Livre de suas amarras!"))
 	else
 		..()
 	if(!anchored)
@@ -252,7 +252,7 @@ no power level overlay is currently in the overlays list.
 		check_power_level()
 		return TRUE
 	else
-		visible_message(span_danger("\The [src]Desliga!"), span_hear("Você ouve algo se fechando."))
+		visible_message(span_danger("\The [src] Desliga!"), span_hear("Você ouve algo se fechando."))
 		turn_off()
 		investigate_log("ran out of power and DEACTIVATED.", INVESTIGATE_ENGINE)
 		power = 0

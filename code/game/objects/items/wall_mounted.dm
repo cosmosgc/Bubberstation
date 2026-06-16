@@ -56,8 +56,8 @@
 		return ITEM_INTERACT_FAILURE
 
 	playsound(loc, 'sound/machines/click.ogg', 75, TRUE)
-	user.visible_message(span_notice("[user.name]APENAS[src]Para um parede."),
-		span_notice("Você anexa[src]Para um parede."),
+	user.visible_message(span_notice("[user.name] APENAS [src] Para um parede."),
+		span_notice("Você anexa [src] Para um parede."),
 		span_hear("Você ouve o clique."))
 
 	var/floor_to_support = get_dir(user, support_structure)

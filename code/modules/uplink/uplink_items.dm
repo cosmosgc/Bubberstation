@@ -175,9 +175,9 @@
 			ADD_TRAIT(contained, TRAIT_CONTRABAND, INNATE_TRAIT)
 	var/mob/living/carbon/human/human_user = user
 	if(istype(human_user) && isitem(spawned_item) && human_user.put_in_hands(spawned_item))
-		to_chat(human_user, span_boldnotice("[spawned_item]se materializa em suas mãos!"))
+		to_chat(human_user, span_boldnotice("[spawned_item] se materializa em suas mãos!"))
 	else
-		to_chat(user, span_boldnotice("[spawned_item]Se materializa no chão!"))
+		to_chat(user, span_boldnotice("[spawned_item] Se materializa no chão!"))
 	SEND_SIGNAL(uplink_handler, COMSIG_ON_UPLINK_PURCHASE, spawned_item, user)
 	return spawned_item
 

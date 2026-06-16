@@ -199,7 +199,7 @@
 	projectile.aim_projectile(attacked_atom, src)
 	projectile.firer = src
 	projectile.fire(null, attacked_atom)
-	visible_message(span_danger("[src]Fogos em[attacked_atom]!"), span_notice("Você atira em[attacked_atom]!"))
+	visible_message(span_danger("[src] Fogos em [attacked_atom]!"), span_notice("Você atira em [attacked_atom]!"))
 	playsound(src, 'sound/effects/magic/fireball.ogg', 50, TRUE)
 
 /obj/item/soulscythe/proc/slash_target(atom/attacked_atom)
@@ -208,7 +208,7 @@
 		if(attacked_mob.stat != DEAD)
 			give_blood(15)
 		attacked_mob.apply_damage(damage = force * (ismining(attacked_mob) ? 2 : 1), sharpness = SHARP_EDGED, exposed_wound_bonus = 5)
-		to_chat(attacked_mob, span_userdanger("Você foi cortado por[src]!"))
+		to_chat(attacked_mob, span_userdanger("Você foi cortado por [src]!"))
 	else if((ismachinery(attacked_atom) || isstructure(attacked_atom)) && use_blood(5))
 		var/obj/attacked_obj = attacked_atom
 		attacked_obj.take_damage(force, BRUTE, MELEE, FALSE)
@@ -218,7 +218,7 @@
 	animate(src)
 	SpinAnimation(5)
 	addtimer(CALLBACK(src, PROC_REF(reset_spin)), 1 SECONDS)
-	visible_message(span_danger("[src]Cortes.[attacked_atom]!"), span_notice("Você corta.[attacked_atom]!"))
+	visible_message(span_danger("[src] Cortes.[attacked_atom]!"), span_notice("Você corta.[attacked_atom]!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE)
 	do_attack_animation(attacked_atom, ATTACK_EFFECT_SLASH)
 
@@ -228,12 +228,12 @@
 	COOLDOWN_START(src, attack_cooldown, 5 SECONDS)
 	animate(src)
 	charging = TRUE
-	visible_message(span_danger("[src]Começa a carregar..."))
+	visible_message(span_danger("[src] Começa a carregar..."))
 	balloon_alert(soul, "Você começa a carregar...")
 	if(!do_after(soul, 2 SECONDS, target = src, timed_action_flags = IGNORE_TARGET_LOC_CHANGE))
 		balloon_alert(soul, "Interrompido!")
 		return
-	visible_message(span_danger("[src]Cargas em[attacked_atom]!"), span_notice("Você carrega em[attacked_atom]!"))
+	visible_message(span_danger("[src] Cargas em [attacked_atom]!"), span_notice("Você carrega em [attacked_atom]!"))
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 	playsound(src, 'sound/items/weapons/thudswoosh.ogg', 50, TRUE)
 	SpinAnimation(1)

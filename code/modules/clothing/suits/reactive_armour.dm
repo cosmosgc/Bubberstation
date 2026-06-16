@@ -23,7 +23,7 @@
 		var/armour_path = is_path_in_list(anomaly.anomaly_type, anomaly_armour_types, TRUE)
 		if(!armour_path)
 			armour_path = /obj/item/clothing/suit/armor/reactive/stealth //Lets not cheat the player if an anomaly type doesnt have its own armour coded
-		to_chat(user, span_notice("Você insere[anomaly]Não sei, e a arma suavemente murmura para a vida."))
+		to_chat(user, span_notice("Você insere [anomaly] Não sei, e a arma suavemente murmura para a vida."))
 		new armour_path(get_turf(src))
 		qdel(src)
 		qdel(anomaly)
@@ -67,7 +67,7 @@
 
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
 	active = !active
-	to_chat(user, span_notice("[src]é agora[active ? "active" : "inactive"]."))
+	to_chat(user, span_notice("[src] é agora[active ? "active" : "inactive"]."))
 	update_icon()
 	add_fingerprint(user)
 
@@ -126,14 +126,14 @@
 	var/tele_range = 6
 
 /obj/item/clothing/suit/armor/reactive/teleport/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("O sistema de teletransporte se move.[owner]Livre de[attack_text]!"))
+	owner.visible_message(span_danger("O sistema de teletransporte se move.[owner] Livre de [attack_text]!"))
 	playsound(get_turf(owner),'sound/effects/magic/blink.ogg', 100, TRUE)
 	do_teleport(owner, get_turf(owner), tele_range, no_effects = TRUE, channel = TELEPORT_CHANNEL_BLUESPACE)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/teleport/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("O sistema de teletransporte reativo se solta.[attack_text]Deixando alguém para trás no processo!"))
+	owner.visible_message(span_danger("O sistema de teletransporte reativo se solta.[attack_text] Deixando alguém para trás no processo!"))
 	owner.dropItemToGround(src, TRUE, TRUE)
 	playsound(get_turf(owner),'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 	playsound(get_turf(owner),'sound/effects/magic/blink.ogg', 100, TRUE)
@@ -150,7 +150,7 @@
 	emp_message = span_warning("A armadura incendiária reativa começa a reiniciar...")
 
 /obj/item/clothing/suit/armor/reactive/fire/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], enviando jatos de chamas!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], enviando jatos de chamas!"))
 	playsound(get_turf(owner),'sound/effects/magic/fireball.ogg', 100, TRUE)
 	for(var/mob/living/carbon/carbon_victim in range(6, get_turf(src)))
 		if(carbon_victim != owner)
@@ -161,7 +161,7 @@
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/fire/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Apenas faz[attack_text]Pior jogando morte derretida em[owner]!"))
+	owner.visible_message(span_danger("[src] Apenas faz [attack_text] Pior jogando morte derretida em [owner]!"))
 	playsound(get_turf(owner),'sound/effects/magic/fireball.ogg', 100, TRUE)
 	owner.adjust_fire_stacks(12)
 	owner.ignite_mob()
@@ -204,7 +204,7 @@
 	)
 	owner.alpha = 0
 	in_stealth = TRUE
-	owner.visible_message(span_danger("[owner]é atingido por[attack_text]Não sei!")) //We pretend to be hit, since blocking it would stop the message otherwise
+	owner.visible_message(span_danger("[owner] é atingido por [attack_text] Não sei!")) //We pretend to be hit, since blocking it would stop the message otherwise
 	addtimer(CALLBACK(src, PROC_REF(end_stealth), owner), stealth_time)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
@@ -217,7 +217,7 @@
 	if(!isliving(hitby))
 		return FALSE //it just doesn't activate
 	var/mob/living/attacker = hitby
-	owner.visible_message(span_danger("[src]Ativa, Camuflando a pessoa errada!"))
+	owner.visible_message(span_danger("[src] Ativa, Camuflando a pessoa errada!"))
 	attacker.alpha = 0
 	addtimer(VARSET_CALLBACK(attacker, alpha, initial(attacker.alpha)), 4 SECONDS)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
@@ -244,13 +244,13 @@
 	..()
 
 /obj/item/clothing/suit/armor/reactive/tesla/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], enviando arcos de raios!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], enviando arcos de raios!"))
 	tesla_zap(source = owner, zap_range = zap_range, power = zap_power, cutoff = 1e3, zap_flags = zap_flags)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/tesla/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], mas puxa uma carga maciça de energia para[owner]Faça ambiente circundante!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], mas puxa uma carga maciça de energia para [owner] Faça ambiente circundante!"))
 	REMOVE_CLOTHING_TRAIT(owner, TRAIT_TESLA_SHOCKIMMUNE) //oops! can't shock without this!
 	electrocute_mob(owner, get_area(src), src, 1)
 	ADD_CLOTHING_TRAIT(owner, TRAIT_TESLA_SHOCKIMMUNE)
@@ -268,7 +268,7 @@
 
 /obj/item/clothing/suit/armor/reactive/repulse/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	playsound(get_turf(owner),'sound/effects/magic/repulse.ogg', 100, TRUE)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], convertendo o ataque em uma onda de força!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], convertendo o ataque em uma onda de força!"))
 	var/turf/owner_turf = get_turf(owner)
 	var/list/thrown_items = list()
 	for(var/atom/movable/repulsed in range(owner_turf, 7))
@@ -283,7 +283,7 @@
 
 /obj/item/clothing/suit/armor/reactive/repulse/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	playsound(get_turf(owner),'sound/effects/magic/repulse.ogg', 100, TRUE)
-	owner.visible_message(span_danger("[src]Não bloqueie[attack_text], e em vez disso gera uma força de atração!"))
+	owner.visible_message(span_danger("[src] Não bloqueie [attack_text], e em vez disso gera uma força de atração!"))
 	var/turf/owner_turf = get_turf(owner)
 	var/list/thrown_items = list()
 	for(var/atom/movable/repulsed in range(owner_turf, 7))
@@ -303,8 +303,8 @@
 	var/tele_range = 10
 
 /obj/item/clothing/suit/armor/reactive/table/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("O sistema de teletransporte se move.[owner]Livre de[attack_text]E bater[owner.p_them()]Em uma mesa fabricada!"))
-	owner.visible_message("<font color='red' size='3'>[owner]Vai na Mesa!</font>")
+	owner.visible_message(span_danger("O sistema de teletransporte se move.[owner] Livre de [attack_text] E bater [owner.p_them()] Em uma mesa fabricada!"))
+	owner.visible_message("<font color='red' size='3'>[owner] Vai na Mesa!</font>")
 	owner.Knockdown(30)
 	owner.apply_damage(10, BRUTE)
 	owner.apply_damage(40, STAMINA)
@@ -316,8 +316,8 @@
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/table/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("O sistema de teletransporte se move.[owner]Livre de[attack_text]E bater[owner.p_them()]em uma mesa de vidro fabricada!"))
-	owner.visible_message("<font color='red' size='3'>[owner]Vai na mesa de vídeo!</font>")
+	owner.visible_message(span_danger("O sistema de teletransporte se move.[owner] Livre de [attack_text] E bater [owner.p_them()] em uma mesa de vidro fabricada!"))
+	owner.visible_message("<font color='red' size='3'>[owner] Vai na mesa de vídeo!</font>")
 	do_teleport(owner, get_turf(owner), tele_range, no_effects = TRUE, channel = TELEPORT_CHANNEL_BLUESPACE)
 	var/obj/structure/table/glass/shattering_table = new /obj/structure/table/glass(get_turf(owner))
 	shattering_table.table_shatter(owner)
@@ -339,7 +339,7 @@
 	return ..()
 
 /obj/item/clothing/suit/armor/reactive/hallucinating/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], enviando pulsos mentonais!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], enviando pulsos mentonais!"))
 	visible_hallucination_pulse(
 		center = get_turf(owner),
 		radius = 3,
@@ -350,7 +350,7 @@
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/hallucinating/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], mas puxa uma carga maciça de energia mental em[owner]Faça ambiente circundante!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], mas puxa uma carga maciça de energia mental em [owner] Faça ambiente circundante!"))
 	owner.adjust_hallucinations_up_to(50 SECONDS, 240 SECONDS)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
@@ -392,13 +392,13 @@
 	..()
 
 /obj/item/clothing/suit/armor/reactive/bioscrambling/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], corpo de risco biológico liberado!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], corpo de risco biológico liberado!"))
 	bioscrambler_pulse(owner, FALSE)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/bioscrambling/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], mas puxa uma carga maciça de material de risco biológico para[owner]Faça ambiente circundante!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], mas puxa uma carga maciça de material de risco biológico para [owner] Faça ambiente circundante!"))
 	bioscrambler_pulse(owner, TRUE)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
@@ -419,7 +419,7 @@
 
 /obj/item/clothing/suit/armor/reactive/barricade/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	playsound(get_turf(owner),'sound/effects/magic/repulse.ogg', 100, TRUE)
-	owner.visible_message(span_danger("A armadura reativa interpõe matéria de outro mundo entre[src]E[attack_text]!"))
+	owner.visible_message(span_danger("A armadura reativa interpõe matéria de outro mundo entre [src] E [attack_text]!"))
 	for (var/atom/movable/target in repulse_targets(owner))
 		repulse(target, owner)
 
@@ -481,7 +481,7 @@
 
 /obj/item/clothing/suit/armor/reactive/ectoplasm/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	playsound(get_turf(owner),'sound/effects/hallucinations/veryfar_noise.ogg', 100, TRUE)
-	owner.visible_message(span_danger("O[src]Solta uma explosão de energia de outro mundo!"))
+	owner.visible_message(span_danger("O [src] Solta uma explosão de energia de outro mundo!"))
 
 	haunt_outburst(epicenter = get_turf(owner), range = 5, haunt_chance = 85, duration = 30 SECONDS)
 
@@ -499,7 +499,7 @@
 	reactivearmor_cooldown_duration = 30 SECONDS
 
 /obj/item/clothing/suit/armor/reactive/weather/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("Uma arma reativa altera o tempo ao refazer.[owner], protegendo[owner.p_them()]De[attack_text]!"))
+	owner.visible_message(span_danger("Uma arma reativa altera o tempo ao refazer.[owner], protegendo [owner.p_them()] De [attack_text]!"))
 	playsound(src, 'sound/effects/magic/lightningshock.ogg', 33, TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 
 	var/datum/effect_system/basic/steam_spread/steam = new(owner.loc, 10, FALSE)
@@ -521,7 +521,7 @@
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/weather/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type)
-	owner.visible_message(span_danger("A arma reativa avaria, chamando uma tempestade sobre[owner.p_them()]!"))
+	owner.visible_message(span_danger("A arma reativa avaria, chamando uma tempestade sobre [owner.p_them()]!"))
 	playsound(src, 'sound/effects/magic/lightningshock.ogg', 33, TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 
 	var/datum/effect_system/basic/steam_spread/steam = new(owner.loc, 2, FALSE)

@@ -49,8 +49,8 @@
 /obj/item/melee/sabre/proc/bane_effects(element_owner, mob/living/carbon/human/baned_target)
 	SIGNAL_HANDLER
 	baned_target.visible_message(
-		span_warning("[src]Lágrimas através[baned_target]com facilidade não natural!"),
-		span_userdanger("Como[src]lágrimas em seu corpo, você sente o peso da autoridade cair em suas feridas!"),
+		span_warning("[src] Lágrimas através [baned_target] com facilidade não natural!"),
+		span_userdanger("Como [src] lágrimas em seu corpo, você sente o peso da autoridade cair em suas feridas!"),
 	)
 	INVOKE_ASYNC(baned_target, TYPE_PROC_REF(/mob/living/carbon/human, emote), "scream")
 
@@ -66,7 +66,7 @@
 	playsound(container.parent, 'sound/items/sheath.ogg', 25, TRUE)
 
 /obj/item/melee/sabre/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está tentando cortar tudo[user.p_their()]Membros com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está tentando cortar tudo [user.p_their()] Membros com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	var/i = 0
 	ADD_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
 	if(iscarbon(user))

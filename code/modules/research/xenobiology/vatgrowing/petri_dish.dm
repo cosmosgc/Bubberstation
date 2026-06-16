@@ -30,7 +30,7 @@
 	. = ..()
 	if(!sample || !istype(A, /obj/structure/sink))
 		return FALSE
-	to_chat(user, span_notice("Você lava a amostra de[src]."))
+	to_chat(user, span_notice("Você lava a amostra de [src]."))
 	sample = null
 	update_appearance()
 
@@ -47,7 +47,7 @@
 
 /obj/item/petri_dish/proc/deposit_sample(user, datum/biological_sample/deposited_sample)
 	sample = deposited_sample
-	to_chat(user, span_notice("Você deposita uma amostra em[src]."))
+	to_chat(user, span_notice("Você deposita uma amostra em [src]."))
 	update_appearance()
 
 /// Petri dish with random sample already in it.

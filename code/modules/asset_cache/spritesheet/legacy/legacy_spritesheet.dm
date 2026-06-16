@@ -110,7 +110,7 @@
 		var/file_path = size[SPRSZ_STRIPPED]
 		var/file_hash = rustg_hash_file(RUSTG_HASH_MD5, file_path)
 		SSassets.transport.register_asset("[name]_[size_id].png", file_path, file_hash=file_hash)
-	var/css_name = "spritesheet_[name].css"
+	var/css_name = "spritesheet_ [name].css"
 	var/file_directory = "data/spritesheets/[css_name]"
 	fdel(file_directory)
 	var/css = generate_css()
@@ -167,7 +167,7 @@
 			continue
 
 		// save flattened version
-		var/png_name = "[name]_[size_id].png"
+		var/png_name = "[name] _ [size_id].png"
 		var/file_directory = "data/spritesheets/[png_name]"
 		fcopy(size[SPRSZ_ICON], file_directory)
 		var/error = rustg_dmi_strip_metadata(file_directory)
@@ -229,7 +229,7 @@
 		replaced_css = replacetext(replaced_css, find_background_urls.match, "background-image:url('[asset_url]')")
 		LAZYADD(cached_spritesheets_needed, asset_id)
 
-	var/finalized_name = "spritesheet_[name].css"
+	var/finalized_name = "spritesheet_ [name].css"
 	var/replaced_css_filename = "data/spritesheets/[finalized_name]"
 	var/css_hash = rustg_hash_string(RUSTG_HASH_MD5, replaced_css)
 	rustg_file_write(replaced_css, replaced_css_filename)

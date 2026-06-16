@@ -51,7 +51,7 @@
 		if(!prob(10))
 			return
 		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
-		audible_message(pick(list(span_notice("[src]Grunhidos!"), span_notice("[src]Faz barulho!"), span_notice("[src]Desleixados!"))))
+		audible_message(pick(list(span_notice("[src] Grunhidos!"), span_notice("[src] Faz barulho!"), span_notice("[src] Desleixados!"))))
 	use_energy(active_power_usage * seconds_per_tick)
 
 /obj/machinery/vatgrower/item_interaction(mob/living/user, obj/item/tool, list/modifiers)

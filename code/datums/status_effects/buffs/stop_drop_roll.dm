@@ -37,7 +37,7 @@
 
 /datum/status_effect/stop_drop_roll/proc/start_rolling()
 	owner.visible_message(
-		span_danger("[owner]Rola no chão, tentando colocar[owner.p_them()]Se auto-fora!"),
+		span_danger("[owner] Rola no chão, tentando colocar [owner.p_them()] Se auto-fora!"),
 		span_notice("Pare, solte e papel!"),
 	)
 	// Start with one weaker roll
@@ -75,7 +75,7 @@
 /// Called when we've successfully extinguished ourselves.
 /datum/status_effect/stop_drop_roll/proc/stop_rolling_successful()
 	owner.visible_message(
-		span_danger("[owner]Com sucesso se apaga.[owner.p_them()]Eu!"),
+		span_danger("[owner] Com sucesso se apaga.[owner.p_them()] Eu!"),
 		span_notice("Você se extinguiu."),
 	)
 	qdel(src)
@@ -101,7 +101,7 @@
 
 /datum/status_effect/stop_drop_roll/hallucinating/start_rolling()
 	owner.visible_message(
-		span_danger("[owner]Começa a rolar no chão, balançando!"),
+		span_danger("[owner] Começa a rolar no chão, balançando!"),
 		span_notice("Pare, solte e papel!"),
 	)
 	reduce_firestacks(1) // more effective cause it's not real
@@ -124,7 +124,7 @@
 		hallucination.clear_fire()
 
 	owner.visible_message(
-		span_danger("[owner]Pare de vacilar no chão."),
+		span_danger("[owner] Pare de vacilar no chão."),
 		span_notice("Você se extinguiu."),
 	)
 	qdel(src)

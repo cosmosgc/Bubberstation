@@ -240,7 +240,7 @@
 	var/atom/play_from = owner || src
 	var/stomach_text = owner ? "\the [owner]'s stomach" : "\the [src]"
 	if(prob(25))
-		play_from.audible_message(span_warning("Você ouve algo rugindo por dentro[stomach_text]..."), 			span_warning("Você ouve algo rugindo."), 4,			self_message = span_userdanger("Algo está rugindo dentro do seu estômago!"))
+		play_from.audible_message(span_warning("Você ouve algo rugindo por dentro [stomach_text]..."), 			span_warning("Você ouve algo rugindo."), 4,			self_message = span_userdanger("Algo está rugindo dentro do seu estômago!"))
 
 	if(user.client)
 		user.client.move_delay = world.time + 1.5 SECONDS
@@ -271,7 +271,7 @@
 		if(damage_ratio < part_dam_ratio)
 			damage_ratio = part_dam_ratio
 
-	play_from.visible_message(span_danger("[user] [attack_verb] [stomach_text]parede com o[attack_name]!"), 			span_userdanger("[user] [attack_verb]sua parede do estômago com o[attack_name]!"))
+	play_from.visible_message(span_danger("[user] [attack_verb] [stomach_text] parede com o [attack_name]!"), 			span_userdanger("[user] [attack_verb] sua parede do estômago com o [attack_name]!"))
 
 	// At 100% damage, the stomach burts
 	// Otherwise, we give them a -50% -> 50% chance scaling with damage dealt
@@ -298,9 +298,9 @@
 		return
 	// Failure condition
 	if(isalienadult(user))
-		play_from.visible_message(span_danger("[user]Explode um buraco[stomach_text]E escapa!"), 			span_userdanger("Enquanto a comida da sua colmeia sai do seu estômago, um pensamento enche sua mente.\"Então é assim que o outro lado se sente\""))
+		play_from.visible_message(span_danger("[user] Explode um buraco [stomach_text] E escapa!"), 			span_userdanger("Enquanto a comida da sua colmeia sai do seu estômago, um pensamento enche sua mente.\"Então é assim que o outro lado se sente\""))
 	else // Just to be safe ya know?
-		play_from.visible_message(span_danger("[user]Explode um buraco[stomach_text]E escapa!"), 			span_userdanger("[user]escapa de seu[stomach_text]Diabos, isso dói."))
+		play_from.visible_message(span_danger("[user] Explode um buraco [stomach_text] E escapa!"), 			span_userdanger("[user] escapa de seu [stomach_text] Diabos, isso dói."))
 
 	playsound(get_turf(play_from), 'sound/mobs/non-humanoids/alien/alien_explode.ogg', 100, extrarange = 4)
 	eject_stomach(border_diamond_range_turfs(play_from, 6), 5, 1.5, 1, 8)

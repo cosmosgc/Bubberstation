@@ -38,7 +38,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/steps/screwdriver_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("Você começa a desmontar[src]..."))
+	to_chat(user, span_notice("Você começa a desmontar [src]..."))
 	if(tool.use_tool(src, user, 2 SECONDS, volume=50))
 		deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS

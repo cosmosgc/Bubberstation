@@ -216,7 +216,7 @@ GLOBAL_DATUM(ai_camera_room_landmark, /obj/effect/landmark/ai_multicam_room)
 		return
 	if(multicam_screens.len >= max_multicams)
 		if(!silent)
-			to_chat(src, span_warning("Não pode colocar mais do que[max_multicams]Janelas multicâmara."))
+			to_chat(src, span_warning("Não pode colocar mais do que [max_multicams] Janelas multicâmara."))
 		return
 	var/atom/movable/screen/movable/pic_in_pic/ai/C = new /atom/movable/screen/movable/pic_in_pic/ai()
 	C.set_view_size(3, 3, FALSE)

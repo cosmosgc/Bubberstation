@@ -40,7 +40,7 @@
 	// stop swooped target movement
 	swooping = TRUE
 	owner.add_traits(list(TRAIT_GODMODE, TRAIT_UNDENSE), SWOOPING_TRAIT)
-	owner.visible_message(span_boldwarning("[owner]Vamos lá para cima!"))
+	owner.visible_message(span_boldwarning("[owner] Vamos lá para cima!"))
 
 	var/negative
 	var/initial_x = owner.x
@@ -104,7 +104,7 @@
 				throw_dir = pick(GLOB.alldirs)
 			var/throwtarget = get_edge_target_turf(owner, throw_dir)
 			victim.throw_at(throwtarget, 3)
-			owner.visible_message(span_warning("[victim]é jogado fora de[owner]!"))
+			owner.visible_message(span_warning("[victim] é jogado fora de [owner]!"))
 	for(var/obj/vehicle/sealed/mecha/mech in orange(1, owner))
 		mech.take_damage(75, BRUTE, MELEE, 1)
 
@@ -136,7 +136,7 @@
 	var/turf/target_turf = get_turf(target)
 	if(QDELETED(target) || !isliving(target) || target_turf.z != owner.z)
 		return
-	target.visible_message(span_boldwarning("[owner]Enfia você numa arena de fogo!"))
+	target.visible_message(span_boldwarning("[owner] Enfia você numa arena de fogo!"))
 	var/amount = 3
 	var/turf/center = get_turf(owner)
 	var/list/walled = RANGE_TURFS(3, center) - RANGE_TURFS(2, center)

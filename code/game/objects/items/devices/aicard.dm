@@ -44,7 +44,7 @@
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/aicard/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está tentando carregar[user.p_them()]Ego[src]Isso não vai dar certo!"))
+	user.visible_message(span_suicide("[user] está tentando carregar [user.p_them()] Ego [src] Isso não vai dar certo!"))
 	return BRUTELOSS
 
 /obj/item/aicard/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -178,7 +178,7 @@
 			. = TRUE
 		if("wireless")
 			AI.set_control_disabled(!AI.control_disabled)
-			to_chat(AI, span_warning("[src]A porta sem fio foi[AI.control_disabled ? "disabled" : "enabled"]!"))
+			to_chat(AI, span_warning("[src] A porta sem fio foi[AI.control_disabled ? "disabled" : "enabled"]!"))
 			. = TRUE
 		if("radio")
 			AI.radio_enabled = !AI.radio_enabled

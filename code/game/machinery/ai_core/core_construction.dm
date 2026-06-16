@@ -126,7 +126,7 @@
 			return ITEM_INTERACT_BLOCKING
 		if(CORE_STATE_CABLED)
 			if(core_mmi)
-				balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)]Sem caminho!")
+				balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)] Sem caminho!")
 				return ITEM_INTERACT_BLOCKING
 
 			if(!tool.use_tool(src, user, 0 SECONDS, 0, 50, CHECK_STATE_CALLBACK(CORE_STATE_CABLED)) || core_mmi)
@@ -199,13 +199,13 @@
 		if(QDELETED(src) || QDELETED(user) || QDELETED(mmi) || !user.is_holding(mmi) || !Adjacent(user))
 			return FALSE
 		if(mmi.brainmob && HAS_TRAIT(mmi.brainmob, TRAIT_SUICIDED))
-			balloon_alert(user, "[AI_CORE_BRAIN(mmi)]é inútil!")
+			balloon_alert(user, "[AI_CORE_BRAIN(mmi)] é inútil!")
 			return FALSE
 	else
 		var/mob/living/brain/mmi_brainmob = mmi.brainmob
 		if(!CONFIG_GET(flag/allow_ai) || (mmi_brainmob && is_banned_from(mmi_brainmob.ckey, JOB_AI)))
 			if(!QDELETED(src) && !QDELETED(user) && !QDELETED(mmi) && user.is_holding(mmi) && Adjacent(user))
-				balloon_alert(user, "[mmi]Não cabe!")
+				balloon_alert(user, "[mmi] Não cabe!")
 			return FALSE
 
 	if(state != CORE_STATE_CABLED)
@@ -222,10 +222,10 @@
 		balloon_alert(user, "Nenhum cérebro instalado!")
 		return FALSE
 	if(!core_mmi.brainmob || !core_mmi.brainmob?.mind || suicide_check())
-		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)]Está inativo!")
+		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)] Está inativo!")
 		return FALSE
 	if(core_mmi.laws.id != DEFAULT_AI_LAWID)
-		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)]Já estabeleceu leis!")
+		balloon_alert(user, "[AI_CORE_BRAIN(core_mmi)] Já estabeleceu leis!")
 		return FALSE
 
 	module.install(laws, user)

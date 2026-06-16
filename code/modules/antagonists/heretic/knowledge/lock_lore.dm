@@ -212,7 +212,7 @@
 		if(body.stat != DEAD)
 			continue
 		if(LAZYLEN(body.get_organs_for_zone(BODY_ZONE_CHEST)))
-			to_chat(user, span_hierophant_warning("[body]tem órgãos no peito."))
+			to_chat(user, span_hierophant_warning("[body] tem órgãos no peito."))
 			continue
 
 		selected_atoms += body

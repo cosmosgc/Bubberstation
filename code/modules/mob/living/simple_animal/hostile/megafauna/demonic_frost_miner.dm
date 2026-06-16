@@ -159,7 +159,7 @@ Difficulty: Extremely Hard
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/ex_act(severity, target)
 	adjust_brute_loss(-30 * severity)
-	visible_message(span_danger("[src]absorve a explosão!"), span_userdanger("Você absorve a explosão!"))
+	visible_message(span_danger("[src] absorve a explosão!"), span_userdanger("Você absorve a explosão!"))
 	return TRUE
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/Goto(target, delay, minimum_distance)

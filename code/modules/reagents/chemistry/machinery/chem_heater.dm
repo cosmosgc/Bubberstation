@@ -67,7 +67,7 @@
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("A exibição de status diz:<b>[heater_coefficient * 1000]%</b>Velocidade.")
 		if(!QDELETED(beaker))
-			. += span_notice("Tem um copo de[beaker.reagents.total_volume]Capacidade das unidades.")
+			. += span_notice("Tem um copo de [beaker.reagents.total_volume] Capacidade das unidades.")
 			if(beaker.reagents.is_reacting)
 				. += span_notice("Seu conteúdo está reagindo.")
 		else

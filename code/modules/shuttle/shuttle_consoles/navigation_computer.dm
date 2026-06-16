@@ -207,7 +207,7 @@
 	var/mob/eye/camera/remote/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = checkLandingSpot()
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
-		to_chat(current_user, span_warning("Alvo local de trânsito, por favor aguarde[DisplayTimeText(designate_time)]..."))
+		to_chat(current_user, span_warning("Alvo local de trânsito, por favor aguarde [DisplayTimeText(designate_time)]..."))
 		designating_target_loc = the_eye.loc
 		var/wait_completed = do_after(current_user, designate_time, designating_target_loc, timed_action_flags = IGNORE_HELD_ITEM, extra_checks = CALLBACK(src, TYPE_PROC_REF(/obj/machinery/computer/camera_advanced/shuttle_docker, canDesignateTarget)))
 		designating_target_loc = null
@@ -479,6 +479,6 @@
 		return
 	playsound(console, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 25, FALSE)
 	remote_eye.setLoc(T)
-	to_chat(owner, span_notice("Saltou para[selected]."))
+	to_chat(owner, span_notice("Saltou para [selected]."))
 	owner.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
 	owner.clear_fullscreen("flash", 3)

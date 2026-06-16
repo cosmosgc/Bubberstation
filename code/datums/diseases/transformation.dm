@@ -85,7 +85,7 @@
 /datum/disease/transformation/proc/replace_banned_player(mob/living/new_mob) // This can run well after the mob has been transferred, so need a handle on the new mob to kill it if needed.
 	set waitfor = FALSE
 
-	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Você quer jogar como[span_notice(affected_mob.real_name)]?", check_jobban = bantype, role = bantype, poll_time = 5 SECONDS, checked_target = affected_mob, alert_pic = affected_mob, role_name_text = "Vítima de transformação")
+	var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Você quer jogar como [span_notice(affected_mob.real_name)]?", check_jobban = bantype, role = bantype, poll_time = 5 SECONDS, checked_target = affected_mob, alert_pic = affected_mob, role_name_text = "Vítima de transformação")
 	if(chosen_one)
 		to_chat(affected_mob, span_userdanger("Sua multidão foi tomada por um fantasma! Apelar para sua proibição de trabalho se quiser evitar isso no futuro!"))
 		message_admins("[key_name_admin(chosen_one)] has taken control of ([key_name_admin(affected_mob)]) to replace a jobbanned player.")

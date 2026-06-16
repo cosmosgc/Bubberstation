@@ -15,7 +15,7 @@
 /obj/item/organ/heart/gland/plasma/proc/vomit_plasma()
 	if(!owner)
 		return
-	owner.visible_message(span_danger("[owner]Vomite uma nuvem de plasma!"))
+	owner.visible_message(span_danger("[owner] Vomite uma nuvem de plasma!"))
 	var/turf/open/T = get_turf(owner)
 	if(istype(T))
 		T.atmos_spawn_air("[GAS_PLASMA]=50;[TURF_TEMPERATURE(T20C)]")

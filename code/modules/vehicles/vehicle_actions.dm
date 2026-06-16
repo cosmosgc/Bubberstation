@@ -241,8 +241,8 @@
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_CAR_HONK))
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_CAR_HONK, 2 SECONDS)
-	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target]Buzine alto!"))
-	to_chat(owner, span_notice("Você pressiona.[vehicle_entered_target]É o chifre."))
+	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] Buzine alto!"))
+	to_chat(owner, span_notice("Você pressiona.[vehicle_entered_target] É o chifre."))
 	if(istype(vehicle_target.inserted_key, /obj/item/bikehorn))
 		vehicle_target.inserted_key.attack_self(owner) //The bikehorn plays a sound instead
 		return
@@ -272,7 +272,7 @@
 	. = ..()
 	if(!.)
 		return
-	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target]Começa a jogar as pessoas dentro dele."))
+	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] Começa a jogar as pessoas dentro dele."))
 	vehicle_entered_target.dump_specific_mobs(VEHICLE_CONTROL_KIDNAPPED)
 
 
@@ -371,7 +371,7 @@
 		vehicle.unbuckle_mob(rider)
 		rider.throw_at(landing_turf, 2, 2)
 		rider.Paralyze(40)
-		vehicle.visible_message(span_danger("[rider]Erra a aterrissagem e cai[rider.p_their()]Cara!"))
+		vehicle.visible_message(span_danger("[rider] Erra a aterrissagem e cai [rider.p_their()] Cara!"))
 		return
 	if((locate(/obj/structure/table) in landing_turf) || (locate(/obj/structure/fluff/tram_rail) in landing_turf))
 		if(locate(/obj/structure/fluff/tram_rail) in vehicle.loc.contents)
@@ -413,20 +413,20 @@
 		rider.Paralyze(50)
 		if(prob(15))
 			rider.visible_message(
-				span_danger("[rider]Erra a aterrissagem e cai[rider.p_their()]Cara!"),
+				span_danger("[rider] Erra a aterrissagem e cai [rider.p_their()] Cara!"),
 				span_userdanger("Você bate no tabuleiro, com força."),
 			)
 			rider.emote("scream")
 			rider.adjust_brute_loss(10)  // thats gonna leave a mark
 			return
 		rider.visible_message(
-			span_danger("[rider]Erra a aterrissagem e cai[rider.p_their()]Cara!"),
+			span_danger("[rider] Erra a aterrissagem e cai [rider.p_their()] Cara!"),
 			span_userdanger("Você cai na prancha!"),
 		)
 		return
 
 	rider.visible_message(
-		span_notice("[rider]Faz um kickflip doente e pega[rider.p_their()]Embarque no ar."),
+		span_notice("[rider] Faz um kickflip doente e pega [rider.p_their()] Embarque no ar."),
 		span_notice("Você faz um kickflip doente, pegar o tabuleiro no ar! Elegante."),
 	)
 	playsound(board, 'sound/vehicles/skateboard_ollie.ogg', 50, vary = TRUE)

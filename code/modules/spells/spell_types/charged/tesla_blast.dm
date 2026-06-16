@@ -30,7 +30,7 @@
 
 	if(to_beam.can_block_magic(antimagic_flags))
 		to_beam.visible_message(
-			span_warning("[to_beam]absorve o feitiço, permanecendo ileso!"),
+			span_warning("[to_beam] absorve o feitiço, permanecendo ileso!"),
 			span_userdanger("Você absorve o feitiço, permanece ileso!"),
 		)
 

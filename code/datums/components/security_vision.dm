@@ -29,10 +29,10 @@
 	var/threat_level = perp.assess_threat(judgement_criteria)
 	switch(threat_level)
 		if (THREAT_ASSESS_MAXIMUM to INFINITY)
-			examine_strings += span_boldwarning("Avaliado nível de ameaça de[threat_level]Extremo perigo de atividade criminosa!")
+			examine_strings += span_boldwarning("Avaliado nível de ameaça de [threat_level] Extremo perigo de atividade criminosa!")
 		if (THREAT_ASSESS_DANGEROUS to THREAT_ASSESS_MAXIMUM)
-			examine_strings += span_warning("Avaliado nível de ameaça de[threat_level]Escória criminosa detectada!")
+			examine_strings += span_warning("Avaliado nível de ameaça de [threat_level] Escória criminosa detectada!")
 		if (1 to THREAT_ASSESS_DANGEROUS)
-			examine_strings += span_notice("Avaliado nível de ameaça de[threat_level]Provavelmente não é perigoso... ainda.")
+			examine_strings += span_notice("Avaliado nível de ameaça de [threat_level] Provavelmente não é perigoso... ainda.")
 		else
 			examine_strings += span_notice("Parece ser um indivíduo confiável.")

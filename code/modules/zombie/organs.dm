@@ -89,7 +89,7 @@
 	var/stand_up = (target.stat == DEAD) || (target.stat == UNCONSCIOUS)
 
 	//Fully heal the zombie's damage the first time they rise
-	if(!target.heal_and_revive(0, span_danger("[target]de repente convulsões, como[target.p_they()][stand_up ? " stagger to [target.p_their()] feet and" : ""]Ganhar uma fome voraz em[target.p_their()]Olhos!")))
+	if(!target.heal_and_revive(0, span_danger("[target] de repente convulsões, como [target.p_they()][stand_up ? " stagger to [target.p_their()] feet and" : ""]Ganhar uma fome voraz em [target.p_their()] Olhos!")))
 		return
 
 	zombie_welcome(target)

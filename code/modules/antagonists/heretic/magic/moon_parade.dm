@@ -64,7 +64,7 @@
 
 	// Anti-magic destroys the projectile for consistency and counterplay
 	if(victim.can_block_magic(MAGIC_RESISTANCE_MOON))
-		visible_message(span_warning("O desfile bate[victim]E uma onda repentina de clareza vem sobre você!"))
+		visible_message(span_warning("O desfile bate [victim] E uma onda repentina de clareza vem sobre você!"))
 		return PROJECTILE_DELETE_WITHOUT_HITTING
 
 	return ..()

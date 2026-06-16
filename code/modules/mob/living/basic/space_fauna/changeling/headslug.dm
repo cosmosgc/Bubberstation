@@ -86,8 +86,8 @@
 		target.forceMove(egg)
 
 	visible_message(
-		span_warning("[src]planta algo em[victim]É carne!"),
-		span_danger("Nós injetamos nosso ovo em[victim]O corpo!"),
+		span_warning("[src] planta algo em [victim] É carne!"),
+		span_danger("Nós injetamos nosso ovo em [victim] O corpo!"),
 	)
 
 	return TRUE

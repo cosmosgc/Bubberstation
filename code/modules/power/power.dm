@@ -69,7 +69,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	cable_layer = GLOB.cable_name_to_layer[choice]
-	balloon_alert(user, "agora operando no[choice]")
+	balloon_alert(user, "agora operando no [choice]")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/proc/add_avail(amount)

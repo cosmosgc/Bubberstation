@@ -117,7 +117,7 @@
 	var/point_type = (transfer_type == TRANSFER_TYPE_PICKUP) ? "pickup" : "dropoff"
 
 	if(length(current_points) + 1 > interaction_point_limit)
-		balloon_alert(user, "[point_type]Ponto limite alcançado!")
+		balloon_alert(user, "[point_type] Ponto limite alcançado!")
 		return FALSE
 
 	var/datum/stock_part/servo/locate_servo = locate() in component_parts
@@ -359,7 +359,7 @@
 
 /obj/machinery/big_manipulator/can_be_unfasten_wrench(mob/user, silent)
 	if(current_task != CURRENT_TASK_NONE || on)
-		to_chat(user, span_warning("[src]Está ativado!"))
+		to_chat(user, span_warning("[src] Está ativado!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -543,11 +543,11 @@
 
 /obj/machinery/big_manipulator/ui_interact(mob/user, datum/tgui/ui)
 	if(id_lock)
-		to_chat(user, span_warning("[src]Está trancada atrás da autenticação de identificação!"))
+		to_chat(user, span_warning("[src] Está trancada atrás da autenticação de identificação!"))
 		ui?.close()
 		return
 	if(!anchored)
-		to_chat(user, span_warning("[src]Não está preso ao chão!"))
+		to_chat(user, span_warning("[src] Não está preso ao chão!"))
 		ui?.close()
 		return
 	ui = SStgui.try_update_ui(user, src, ui)

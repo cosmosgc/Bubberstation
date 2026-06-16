@@ -394,7 +394,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	if(obj_flags & EMAGGED)
 		return FALSE
 	balloon_alert(user, "Circuitos de avaliação de ameaças encurtados.")
-	audible_message(span_hear("[src]Humsstranhamente..."))
+	audible_message(span_hear("[src] Humsstranhamente..."))
 	obj_flags |= EMAGGED
 	controllock = TRUE
 	set_disabled(6 SECONDS)
@@ -739,7 +739,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return FALSE
 	if(remote_controller)
 		if(warning_message)
-			to_chat(remote_controller, span_warning("Seu uplink para[src]Foi cortado!"))
+			to_chat(remote_controller, span_warning("Seu uplink para [src] Foi cortado!"))
 		quit_action.Remove(remote_controller)
 		toggle_action.Remove(remote_controller)
 		remote_controller.click_intercept = null

@@ -33,7 +33,7 @@
 		return FALSE
 	if(!to_enchant.force)
 		if(feedback)
-			to_chat(owner, span_warning("[to_enchant]É muito fraco para poder! Encontre algo que machuque alguém!"))
+			to_chat(owner, span_warning("[to_enchant] É muito fraco para poder! Encontre algo que machuque alguém!"))
 		return FALSE
 	return ..()
 
@@ -44,7 +44,7 @@
 	if(!to_enchant)
 		//this shouldn't have passed can_cast_spell, but sanity is needed
 		return
-	to_chat(cast_on, span_notice("[to_enchant]Começa a brilhar vermelho..."))
+	to_chat(cast_on, span_notice("[to_enchant] Começa a brilhar vermelho..."))
 	apply_enchantment(to_enchant)
 	//true cooldown starts when you use the item or drop it
 	StartCooldown(INFINITY)
@@ -81,7 +81,7 @@
 /// signal called from dropping the enchanted item
 /datum/action/cooldown/spell/sanguine_strike/proc/on_dropped(obj/item/enchanted, mob/dropper)
 	SIGNAL_HANDLER
-	to_chat(dropper, span_notice("[enchanted]parece perder seu brilho vermelho."))
+	to_chat(dropper, span_notice("[enchanted] parece perder seu brilho vermelho."))
 	end_enchantment(enchanted)
 
 /// ends the enchantment, starting the cooldown (which was frozen until you attacked)

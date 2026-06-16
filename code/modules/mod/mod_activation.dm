@@ -51,7 +51,7 @@
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	var/deploy = check_retracted()
-	wearer.visible_message(span_notice("[wearer]'s[src] [deploy ? "deploys" : "retracts"]suas partes com um som mecânico."),
+	wearer.visible_message(span_notice("[wearer]'s [src] [deploy ? "deploys" : "retracts"]suas partes com um som mecânico."),
 		span_notice("[src] [deploy ? "deploys" : "retracts"]suas partes com um som mecânico."),
 		span_hear("Você ouve um assobio mecânico."))
 	playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -88,8 +88,8 @@
 		wearer.update_clothing(slot_flags|part.slot_flags)
 		SEND_SIGNAL(src, COMSIG_MOD_PART_DEPLOYED, user, part_datum)
 		if(user)
-			wearer.visible_message(span_notice("[wearer]'s[part.name]implantar[part.p_s()]com um assobio mecânico."),
-				span_notice("[part]implantar[part.p_s()]com um assobio mecânico."),
+			wearer.visible_message(span_notice("[wearer]'s [part.name] implantar [part.p_s()] com um assobio mecânico."),
+				span_notice("[part] implantar [part.p_s()] com um assobio mecânico."),
 				span_hear("Você ouve um assobio mecânico."))
 			playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(!active || part_datum.sealed)
@@ -141,8 +141,8 @@
 	wearer.update_clothing(slot_flags|part.slot_flags)
 	if(!user)
 		return TRUE
-	wearer.visible_message(span_notice("[wearer]'s[part.name]Retrair[part.p_s()]De volta para[src]com um assobio mecânico."),
-		span_notice("[part]Retrair[part.p_s()]De volta para[src]com um assobio mecânico."),
+	wearer.visible_message(span_notice("[wearer]'s [part.name] Retrair [part.p_s()] De volta para [src] com um assobio mecânico."),
+		span_notice("[part] Retrair [part.p_s()] De volta para [src] com um assobio mecânico."),
 		span_hear("Você ouve um assobio mecânico."))
 	if (!unsealing)
 		playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

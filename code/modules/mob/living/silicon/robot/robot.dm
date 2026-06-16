@@ -808,7 +808,7 @@
 		to_chat(user, span_danger("Erro de atualização."))
 		new_upgrade.forceMove(loc) //gets lost otherwise
 		return FALSE
-	to_chat(user, span_notice("Você aplica a atualização para[src]."))
+	to_chat(user, span_notice("Você aplica a atualização para [src]."))
 	add_to_upgrades(new_upgrade)
 
 ///Moves the upgrade inside the robot and registers relevant signals.
@@ -962,10 +962,10 @@
 	if(incapacitated)
 		return FALSE
 	if(!HAS_TRAIT(target, TRAIT_CAN_MOUNT_CYBORGS))
-		target.visible_message(span_warning("[target]Realmente não consigo montar[src]..."))
+		target.visible_message(span_warning("[target] Realmente não consigo montar [src]..."))
 		return FALSE
 	if(model && !model.allow_riding)
-		target.visible_message(span_boldwarning("Infelizmente,[target]Não consigo me segurar.[src]!"))
+		target.visible_message(span_boldwarning("Infelizmente,[target] Não consigo me segurar.[src]!"))
 		return FALSE
 
 	return ..()
@@ -1069,7 +1069,7 @@
 	if(!length(buckled_mobs))
 		return
 	for(var/mob/living/buckled_mob as anything in buckled_mobs)
-		buckled_mob.visible_message(span_warning("[buckled_mob]é derrubado de[src]Pela carga em[src]O chassi é induzido pelo campo de amortecimento hipercinético!"))
+		buckled_mob.visible_message(span_warning("[buckled_mob] é derrubado de [src] Pela carga em [src] O chassi é induzido pelo campo de amortecimento hipercinético!"))
 		buckled_mob.Paralyze(1 SECONDS)
 		unbuckle_mob(buckled_mob)
 	do_sparks(5, 0, src)

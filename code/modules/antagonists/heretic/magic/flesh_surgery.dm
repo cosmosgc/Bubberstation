@@ -165,8 +165,8 @@
 	new /obj/effect/temp_visual/cult/sparks(get_turf(to_heal))
 	var/condition = (to_heal.damage > 0) ? "better" : "perfect"
 	caster.visible_message(
-		span_warning("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]restaurar\the [to_heal]para[condition]Condição!"),
-		span_notice("Sua mão brilha um vermelho brilhante enquanto você restaura\the [to_heal]para[condition]Condição!"),
+		span_warning("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] restaurar\the [to_heal] para [condition] Condição!"),
+		span_notice("Sua mão brilha um vermelho brilhante enquanto você restaura\the [to_heal] para [condition] Condição!"),
 	)
 
 	return TRUE
@@ -174,7 +174,7 @@
 /// If cast on a heretic monster who's not dead we'll heal it a bit.
 /datum/action/cooldown/spell/touch/flesh_surgery/proc/heal_heretic_monster(obj/item/melee/touch_attack/hand, mob/living/to_heal, mob/living/carbon/caster)
 	var/what_are_we = ishuman(to_heal) ? "minion" : "summon"
-	to_heal.balloon_alert(caster, "curando[what_are_we]...")
+	to_heal.balloon_alert(caster, "curando [what_are_we]...")
 	if(!do_after(caster, 1 SECONDS, to_heal, extra_checks = CALLBACK(src, PROC_REF(heal_checks), hand, to_heal, caster)))
 		to_heal.balloon_alert(caster, "Interrompido!")
 		return FALSE
@@ -186,8 +186,8 @@
 	playsound(to_heal, 'sound/effects/magic/staff_healing.ogg', 30)
 	new /obj/effect/temp_visual/cult/sparks(get_turf(to_heal))
 	caster.visible_message(
-		span_warning("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]restaurar[caster.p_s()] [to_heal]Em boas condições!"),
-		span_notice("Sua mão brilha um vermelho brilhante enquanto você restaura[to_heal]Em boas condições!"),
+		span_warning("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] restaurar [caster.p_s()] [to_heal] Em boas condições!"),
+		span_notice("Sua mão brilha um vermelho brilhante enquanto você restaura [to_heal] Em boas condições!"),
 	)
 	return TRUE
 
@@ -235,17 +235,17 @@
 
 		time_it_takes = 6 SECONDS
 		caster.visible_message(
-			span_danger("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]Alcançar[caster.p_es()]diretamente em[caster.p_their()]Mesmo.[parsed_zone]!"),
-			span_userdanger("Sua mão brilha um vermelho brilhante como você chegar diretamente em sua própria[parsed_zone]!"),
+			span_danger("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] Alcançar [caster.p_es()] diretamente em [caster.p_their()] Mesmo.[parsed_zone]!"),
+			span_userdanger("Sua mão brilha um vermelho brilhante como você chegar diretamente em sua própria [parsed_zone]!"),
 		)
 
 	else
 		carbon_victim.visible_message(
-			span_danger("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]Alcançar[caster.p_es()]diretamente em[carbon_victim]'s[parsed_zone]!"),
-			span_userdanger("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]Alcançar[caster.p_es()]diretamente em seu[parsed_zone]!"),
+			span_danger("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] Alcançar [caster.p_es()] diretamente em [carbon_victim]'s [parsed_zone]!"),
+			span_userdanger("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] Alcançar [caster.p_es()] diretamente em seu [parsed_zone]!"),
 		)
 
-	carbon_victim.balloon_alert(caster, "extraindo[chosen_organ]...")
+	carbon_victim.balloon_alert(caster, "extraindo [chosen_organ]...")
 	playsound(victim, 'sound/items/weapons/slice.ogg', 50, TRUE)
 	carbon_victim.add_atom_colour(COLOR_DARK_RED, TEMPORARY_COLOUR_PRIORITY)
 	if(!do_after(caster, time_it_takes, carbon_victim, extra_checks = CALLBACK(src, PROC_REF(extraction_checks), picked_organ, hand, victim, caster)))
@@ -257,14 +257,14 @@
 	// Mainly so it gets across if you're taking the eyes of someone who's conscious
 	if(carbon_victim == caster)
 		caster.visible_message(
-			span_bolddanger("[caster]puxa[caster.p_their()]Mesmo.[chosen_organ]Fora[caster.p_their()] [parsed_zone]!!"),
-			span_userdanger("Você puxa o seu próprio[chosen_organ]fora de seu[parsed_zone]!!"),
+			span_bolddanger("[caster] puxa [caster.p_their()] Mesmo.[chosen_organ] Fora [caster.p_their()] [parsed_zone]!!"),
+			span_userdanger("Você puxa o seu próprio [chosen_organ] fora de seu [parsed_zone]!!"),
 		)
 
 	else
 		carbon_victim.visible_message(
-			span_bolddanger("[caster]puxa[carbon_victim]'s[chosen_organ]Fora[carbon_victim.p_their()] [parsed_zone]!!"),
-			span_userdanger("[caster]Puxa o seu[chosen_organ]fora de seu[parsed_zone]!!"),
+			span_bolddanger("[caster] puxa [carbon_victim]'s [chosen_organ] Fora [carbon_victim.p_their()] [parsed_zone]!!"),
+			span_userdanger("[caster] Puxa o seu [chosen_organ] fora de seu [parsed_zone]!!"),
 		)
 
 	picked_organ.Remove(carbon_victim)
@@ -320,16 +320,16 @@
 
 	if(using_on_self)
 		caster.visible_message(
-			span_danger("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]Comece.[caster.p_es()]forçando[inserted_organ]em[caster.p_their()] [zone_organ_goes_in]!!"),
-			span_userdanger("Você começa a forçar[inserted_organ]em seu[zone_organ_goes_in]!")
+			span_danger("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] Comece.[caster.p_es()] forçando [inserted_organ] em [caster.p_their()] [zone_organ_goes_in]!!"),
+			span_userdanger("Você começa a forçar [inserted_organ] em seu [zone_organ_goes_in]!")
 		)
 	else
 		caster.visible_message(
-			span_danger("[caster]A mão brilha um vermelho brilhante como[caster.p_they()]Comece.[caster.p_es()]forçando[inserted_organ]em[victim]'s[zone_organ_goes_in]!!"),
-			span_notice("Você começa a forçar[inserted_organ]em[victim]'s[zone_organ_goes_in].")
+			span_danger("[caster] A mão brilha um vermelho brilhante como [caster.p_they()] Comece.[caster.p_es()] forçando [inserted_organ] em [victim]'s [zone_organ_goes_in]!!"),
+			span_notice("Você começa a forçar [inserted_organ] em [victim]'s [zone_organ_goes_in].")
 		)
 
-	victim.balloon_alert(caster, "inserindo[inserted_organ]...")
+	victim.balloon_alert(caster, "inserindo [inserted_organ]...")
 	playsound(victim, 'sound/items/weapons/slice.ogg', 50, TRUE)
 	victim.add_atom_colour(COLOR_DARK_RED, TEMPORARY_COLOUR_PRIORITY)
 	if(!do_after(caster, time_it_takes, victim, extra_checks = CALLBACK(src, PROC_REF(insertion_checks), inserted_organ, hand, victim, caster)))
@@ -341,13 +341,13 @@
 
 	if(using_on_self)
 		caster.visible_message(
-			span_danger("[caster]Crams[inserted_organ]em[caster.p_their()]Mesmo.[zone_organ_goes_in][organ_victim_already_has ? ", forcing out [caster.p_their()] [organ_victim_already_has.name]": ""]!"),
-			span_userdanger("Você termina de inserir[inserted_organ]em seu[zone_organ_goes_in][organ_victim_already_has ? ", forcing out your [organ_victim_already_has]" : ""]!")
+			span_danger("[caster] Crams [inserted_organ] em [caster.p_their()] Mesmo.[zone_organ_goes_in][organ_victim_already_has ? ", forcing out [caster.p_their()] [organ_victim_already_has.name]": ""]!"),
+			span_userdanger("Você termina de inserir [inserted_organ] em seu [zone_organ_goes_in][organ_victim_already_has ? ", forcing out your [organ_victim_already_has]" : ""]!")
 		)
 	else
 		caster.visible_message(
-			span_danger("[caster]Crams[inserted_organ]em[victim]'s[zone_organ_goes_in][organ_victim_already_has ? ", forcing out [victim.p_their()] [organ_victim_already_has.name]": ""]!"),
-			span_notice("Você termina de inserir[inserted_organ]em[victim]'s[zone_organ_goes_in][organ_victim_already_has ? ", forcing out [victim.p_their()] [organ_victim_already_has.name]": ""].")
+			span_danger("[caster] Crams [inserted_organ] em [victim]'s [zone_organ_goes_in][organ_victim_already_has ? ", forcing out [victim.p_their()] [organ_victim_already_has.name]": ""]!"),
+			span_notice("Você termina de inserir [inserted_organ] em [victim]'s [zone_organ_goes_in][organ_victim_already_has ? ", forcing out [victim.p_their()] [organ_victim_already_has.name]": ""].")
 		)
 
 	unregister_held_organ(inserted_organ)

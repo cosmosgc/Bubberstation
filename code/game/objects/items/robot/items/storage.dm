@@ -238,11 +238,11 @@
 
 /obj/item/borg/apparatus/organ_storage/click_alt(mob/living/silicon/robot/user)
 	if(!stored)
-		to_chat(user, span_notice("[src]Está vazio."))
+		to_chat(user, span_notice("[src] Está vazio."))
 		return CLICK_ACTION_BLOCKING
 
 	var/obj/item/organ = stored
-	user.visible_message(span_notice("[user]lixões.[organ]De[src]."), span_notice("Você despejou.[organ]De[src]."))
+	user.visible_message(span_notice("[user] lixões.[organ] De [src]."), span_notice("Você despejou.[organ] De [src]."))
 	organ.forceMove(drop_location())
 	return CLICK_ACTION_SUCCESS
 

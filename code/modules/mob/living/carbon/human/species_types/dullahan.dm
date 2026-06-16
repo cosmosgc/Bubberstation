@@ -172,7 +172,7 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "skull",
 		SPECIES_PERK_NAME = "Minor Undead",
-		SPECIES_PERK_DESC = "[name]são mortos-vivos menores. Mortos-vivos menores apreciam algumas das vantagens de estar mortos, como não precisar respirar ou comer, mas não obter muitas das imunidades ambientais envolvidas em ser totalmente mortos-vivos.",
+		SPECIES_PERK_DESC = "[name] são mortos-vivos menores. Mortos-vivos menores apreciam algumas das vantagens de estar mortos, como não precisar respirar ou comer, mas não obter muitas das imunidades ambientais envolvidas em ser totalmente mortos-vivos.",
 	))
 
 	return to_add

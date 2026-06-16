@@ -25,7 +25,7 @@
 	return S
 
 /obj/item/seeds/kudzu/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Engole o pacote de sementes de kudzu! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Engole o pacote de sementes de kudzu! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	plant(user)
 	return BRUTELOSS
 
@@ -33,7 +33,7 @@
 	if(isspaceturf(user.loc))
 		return
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("Você precisa de mais espaço para plantar[src]."))
+		to_chat(user, span_warning("Você precisa de mais espaço para plantar [src]."))
 		return FALSE
 	if(locate(/obj/structure/spacevine) in user.loc)
 		to_chat(user, span_warning("Há muito kudzu aqui para plantar.[src]."))
@@ -45,7 +45,7 @@
 	qdel(src)
 
 /obj/item/seeds/kudzu/attack_self(mob/user)
-	user.visible_message(span_danger("[user]Começa a jogar sementes no chão..."))
+	user.visible_message(span_danger("[user] Começa a jogar sementes no chão..."))
 	if(do_after(user, 5 SECONDS, target = user.drop_location(), progress = TRUE))
 		plant(user)
 		to_chat(user, span_notice("Você planta o kudzu. Seu monstro."))

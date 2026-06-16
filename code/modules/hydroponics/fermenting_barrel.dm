@@ -51,8 +51,8 @@
 	if(open)
 		var/fruit_count = contents.len
 		if(fruit_count)
-			. += span_notice("Ele contém[fruit_count]Frutas prontas para serem fermentadas.")
-			. += span_notice("[EXAMINE_HINT("Right-click")]Para tirá-los de[src].")
+			. += span_notice("Ele contém [fruit_count] Frutas prontas para serem fermentadas.")
+			. += span_notice("[EXAMINE_HINT("Right-click")]Para tirá-los de [src].")
 		. += span_notice("Está aberto atualmente, deixando você preenchê-lo com frutas ou reagentes.")
 	else
 		. += span_notice("Está atualmente fechado, deixando fermentar frutas ou tirar reagentes de sua torneira.")
@@ -70,7 +70,7 @@
 					break
 				inserted_fruits++
 			if(inserted_fruits)
-				balloon_alert(user, "Adicionado.[inserted_fruits]Fruta.")
+				balloon_alert(user, "Adicionado.[inserted_fruits] Fruta.")
 	else if(object.is_refillable())
 		return //so we can refill them via their afterattack.
 	return ..()

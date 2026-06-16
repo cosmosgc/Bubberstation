@@ -161,11 +161,11 @@
 	if(!slot_string)
 		return
 	if(isbodypart(old_part))
-		to_chat(quirk_holder, span_bolddanger("Sua[slot_string]foi substituído por um membro robótico. Você precisa usar uma ferramenta de solda e cabos para repará-lo, em vez de suturas e malhas regenerativas."))
+		to_chat(quirk_holder, span_bolddanger("Sua [slot_string] foi substituído por um membro robótico. Você precisa usar uma ferramenta de solda e cabos para repará-lo, em vez de suturas e malhas regenerativas."))
 	else if (old_part.name == "eyes")
 		to_chat(quirk_holder, span_bolddanger("Você substituiu seus olhos por lanternas, não câmeras. Você não pode ver nada!"))
 	else if (isorgan(old_part))
-		to_chat(quirk_holder, span_bolddanger("Sua[slot_string]te traz um passo mais perto da perfeição do silício, mas você sente que ainda não está lá."))
+		to_chat(quirk_holder, span_bolddanger("Sua [slot_string] te traz um passo mais perto da perfeição do silício, mas você sente que ainda não está lá."))
 
 /datum/quirk/transhumanist/process(seconds_per_tick)
 	var/organics_nearby = 0

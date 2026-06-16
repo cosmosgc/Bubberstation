@@ -41,9 +41,9 @@
 /datum/component/spirit_holding/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(!bound_spirit)
-		examine_list += span_notice("[parent]Dorme.[allow_channeling ? " Use [parent] in your hands to attempt to awaken it." : ""]")
+		examine_list += span_notice("[parent] Dorme.[allow_channeling ? " Use [parent] in your hands to attempt to awaken it." : ""]")
 		return
-	examine_list += span_notice("[parent]está vivo.")
+	examine_list += span_notice("[parent] está vivo.")
 
 ///signal fired on self attacking parent
 /datum/component/spirit_holding/proc/on_attack_self(datum/source, mob/user)
@@ -57,7 +57,7 @@
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
 		thing.balloon_alert(user, "Espíritos não estão dispostos!")
-		to_chat(user, span_warning("Energias anômalas de outro mundo te impedem de acordar[parent]!"))
+		to_chat(user, span_warning("Energias anômalas de outro mundo te impedem de acordar [parent]!"))
 		return
 	if(!allow_channeling && bound_spirit)
 		to_chat(user, span_warning("Tente como quiser, o espírito dentro do sono."))
@@ -148,7 +148,7 @@
 	if(!allow_exorcism)
 		return // just in case
 	var/atom/movable/exorcised_movable = parent
-	to_chat(exorcist, span_notice("Você começa a exorcizar[parent]..."))
+	to_chat(exorcist, span_notice("Você começa a exorcizar [parent]..."))
 	playsound(parent, 'sound/effects/hallucinations/veryfar_noise.ogg',40,TRUE)
 	if(!do_after(exorcist, 4 SECONDS, target = exorcised_movable))
 		return
@@ -158,7 +158,7 @@
 	to_chat(bound_spirit, span_userdanger("Você foi exorcizado!"))
 	QDEL_NULL(bound_spirit)
 	exorcised_movable.name = initial(exorcised_movable.name)
-	exorcist.visible_message(span_notice("[exorcist]Exorcises[exorcised_movable]!"), 						span_notice("Você exorcizou com sucesso.[exorcised_movable]!"))
+	exorcist.visible_message(span_notice("[exorcist] Exorcises [exorcised_movable]!"), 						span_notice("Você exorcizou com sucesso.[exorcised_movable]!"))
 	return COMSIG_END_BIBLE_CHAIN
 
 ///signal fired from parent being destroyed

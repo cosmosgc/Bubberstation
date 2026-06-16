@@ -65,9 +65,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]Os pulmões..."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]."),
+		span_notice("Você começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)] Os pulmões..."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)]."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)]."),
 	)
 	display_pain(organ.owner, "You feel a stabbing pain in your chest!")
 
@@ -76,9 +76,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você excisou com sucesso.[FORMAT_ORGAN_OWNER(organ)]É o lobo mais danificado."),
-		span_notice("[surgeon]Com sucesso excisos[FORMAT_ORGAN_OWNER(organ)]É o lobo mais danificado."),
-		span_notice("[surgeon]Com sucesso excisos[FORMAT_ORGAN_OWNER(organ)]É o lobo mais danificado."),
+		span_notice("Você excisou com sucesso.[FORMAT_ORGAN_OWNER(organ)] É o lobo mais danificado."),
+		span_notice("[surgeon] Com sucesso excisos [FORMAT_ORGAN_OWNER(organ)] É o lobo mais danificado."),
+		span_notice("[surgeon] Com sucesso excisos [FORMAT_ORGAN_OWNER(organ)] É o lobo mais danificado."),
 	)
 
 /datum/surgery_operation/organ/repair/lobectomy/on_failure(obj/item/organ/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
@@ -87,9 +87,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você estraga tudo, falha em extirpar[FORMAT_ORGAN_OWNER(organ)]lóbulo danificado!"),
-		span_warning("[surgeon]Estraga tudo!"),
-		span_warning("[surgeon]Estraga tudo!"),
+		span_warning("Você estraga tudo, falha em extirpar [FORMAT_ORGAN_OWNER(organ)] lóbulo danificado!"),
+		span_warning("[surgeon] Estraga tudo!"),
+		span_warning("[surgeon] Estraga tudo!"),
 	)
 	display_pain(organ.owner, "You feel a sharp stab in your chest; the wind is knocked out of you and it hurts to catch your breath!")
 
@@ -130,9 +130,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a cortar um pedaço danificado de[FORMAT_ORGAN_OWNER(organ)]Fígado..."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]."),
+		span_notice("Você começa a cortar um pedaço danificado de [FORMAT_ORGAN_OWNER(organ)] Fígado..."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)]."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)]."),
 	)
 	display_pain(organ.owner, "Your abdomen burns in horrific stabbing pain!")
 
@@ -141,9 +141,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você removeu com sucesso a parte danificada de[FORMAT_ORGAN_OWNER(organ)]Fígado."),
-		span_notice("[surgeon]Com sucesso, remova uma parte danificada de[FORMAT_ORGAN_OWNER(organ)]Fígado."),
-		span_notice("[surgeon]Com sucesso, remova uma parte danificada de[FORMAT_ORGAN_OWNER(organ)]Fígado."),
+		span_notice("Você removeu com sucesso a parte danificada de [FORMAT_ORGAN_OWNER(organ)] Fígado."),
+		span_notice("[surgeon] Com sucesso, remova uma parte danificada de [FORMAT_ORGAN_OWNER(organ)] Fígado."),
+		span_notice("[surgeon] Com sucesso, remova uma parte danificada de [FORMAT_ORGAN_OWNER(organ)] Fígado."),
 	)
 	display_pain(organ.owner, "The pain receeds slightly!")
 
@@ -152,9 +152,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você cortou a parte errada de[FORMAT_ORGAN_OWNER(organ)]Fígado!"),
-		span_warning("[surgeon]Corta a parte errada de[FORMAT_ORGAN_OWNER(organ)]Fígado!"),
-		span_warning("[surgeon]Corta a parte errada de[FORMAT_ORGAN_OWNER(organ)]Fígado!"),
+		span_warning("Você cortou a parte errada de [FORMAT_ORGAN_OWNER(organ)] Fígado!"),
+		span_warning("[surgeon] Corta a parte errada de [FORMAT_ORGAN_OWNER(organ)] Fígado!"),
+		span_warning("[surgeon] Corta a parte errada de [FORMAT_ORGAN_OWNER(organ)] Fígado!"),
 	)
 	display_pain(organ.owner, "The pain in your abdomen intensifies!")
 
@@ -193,9 +193,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a enxertar um bypass[FORMAT_ORGAN_OWNER(organ)]O coração..."),
-		span_notice("[surgeon]Começa a enxertar um bypass em[FORMAT_ORGAN_OWNER(organ)]O coração."),
-		span_notice("[surgeon]Começa a enxertar um bypass em[FORMAT_ORGAN_OWNER(organ)]O coração."),
+		span_notice("Você começa a enxertar um bypass [FORMAT_ORGAN_OWNER(organ)] O coração..."),
+		span_notice("[surgeon] Começa a enxertar um bypass em [FORMAT_ORGAN_OWNER(organ)] O coração."),
+		span_notice("[surgeon] Começa a enxertar um bypass em [FORMAT_ORGAN_OWNER(organ)] O coração."),
 	)
 	display_pain(organ.owner, "The pain in your chest is unbearable! You can barely take it anymore!")
 
@@ -204,9 +204,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você enxertou com sucesso um bypass em[FORMAT_ORGAN_OWNER(organ)]O coração."),
-		span_notice("[surgeon]Com sucesso enxerta um bypass em[FORMAT_ORGAN_OWNER(organ)]O coração."),
-		span_notice("[surgeon]Com sucesso enxerta um bypass em[FORMAT_ORGAN_OWNER(organ)]O coração."),
+		span_notice("Você enxertou com sucesso um bypass em [FORMAT_ORGAN_OWNER(organ)] O coração."),
+		span_notice("[surgeon] Com sucesso enxerta um bypass em [FORMAT_ORGAN_OWNER(organ)] O coração."),
+		span_notice("[surgeon] Com sucesso enxerta um bypass em [FORMAT_ORGAN_OWNER(organ)] O coração."),
 	)
 	display_pain(organ.owner, "The pain in your chest throbs, but your heart feels better than ever!")
 
@@ -218,8 +218,8 @@
 		surgeon,
 		organ.owner,
 		span_warning("Você estraga a fixação do enxerto, e ele arranca, rasgando parte do coração!"),
-		span_warning("[surgeon]Estraga tudo, causando[blood_name]Para sair de[FORMAT_ORGAN_OWNER(organ)]É peito profusamente!"),
-		span_warning("[surgeon]Estraga tudo, causando[blood_name]Para sair de[FORMAT_ORGAN_OWNER(organ)]É peito profusamente!"),
+		span_warning("[surgeon] Estraga tudo, causando [blood_name] Para sair de [FORMAT_ORGAN_OWNER(organ)] É peito profusamente!"),
+		span_warning("[surgeon] Estraga tudo, causando [blood_name] Para sair de [FORMAT_ORGAN_OWNER(organ)] É peito profusamente!"),
 	)
 	display_pain(organ.owner, "Your chest burns; you feel like you're going insane!")
 
@@ -268,9 +268,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a cortar um pedaço danificado de[FORMAT_ORGAN_OWNER(organ)]O estômago..."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_ORGAN_OWNER(organ)]."),
+		span_notice("Você começa a cortar um pedaço danificado de [FORMAT_ORGAN_OWNER(organ)] O estômago..."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)]."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_ORGAN_OWNER(organ)]."),
 	)
 	display_pain(organ.owner, "You feel a horrible stab in your gut!")
 
@@ -279,9 +279,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você removeu com sucesso a parte danificada de[FORMAT_ORGAN_OWNER(organ)]Estômago."),
-		span_notice("[surgeon]Com sucesso, remova uma parte danificada de[FORMAT_ORGAN_OWNER(organ)]Estômago."),
-		span_notice("[surgeon]Com sucesso, remova uma parte danificada de[FORMAT_ORGAN_OWNER(organ)]Estômago."),
+		span_notice("Você removeu com sucesso a parte danificada de [FORMAT_ORGAN_OWNER(organ)] Estômago."),
+		span_notice("[surgeon] Com sucesso, remova uma parte danificada de [FORMAT_ORGAN_OWNER(organ)] Estômago."),
+		span_notice("[surgeon] Com sucesso, remova uma parte danificada de [FORMAT_ORGAN_OWNER(organ)] Estômago."),
 	)
 	display_pain(organ.owner, "The pain in your gut receeds slightly!")
 
@@ -290,9 +290,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você cortou a parte errada de[FORMAT_ORGAN_OWNER(organ)]O estômago!"),
-		span_warning("[surgeon]Corta a parte errada de[FORMAT_ORGAN_OWNER(organ)]O estômago!"),
-		span_warning("[surgeon]Corta a parte errada de[FORMAT_ORGAN_OWNER(organ)]O estômago!"),
+		span_warning("Você cortou a parte errada de [FORMAT_ORGAN_OWNER(organ)] O estômago!"),
+		span_warning("[surgeon] Corta a parte errada de [FORMAT_ORGAN_OWNER(organ)] O estômago!"),
+		span_warning("[surgeon] Corta a parte errada de [FORMAT_ORGAN_OWNER(organ)] O estômago!"),
 	)
 	display_pain(organ.owner, "The pain in your gut intensifies!")
 
@@ -342,9 +342,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a consertar[FORMAT_ORGAN_OWNER(organ)]Como Orelhas..."),
-		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(organ)]Orelhas."),
-		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]Orelhas."),
+		span_notice("Você começa a consertar [FORMAT_ORGAN_OWNER(organ)] Como Orelhas..."),
+		span_notice("[surgeon] Começa a consertar.[FORMAT_ORGAN_OWNER(organ)] Orelhas."),
+		span_notice("[surgeon] Começa a operar em [FORMAT_ORGAN_OWNER(organ)] Orelhas."),
 	)
 	display_pain(organ.owner, "You feel a dizzying pain in your head!")
 
@@ -355,9 +355,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você conseguiu consertar.[FORMAT_ORGAN_OWNER(organ)]Orelhas."),
-		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]Orelhas."),
-		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]Orelhas."),
+		span_notice("Você conseguiu consertar.[FORMAT_ORGAN_OWNER(organ)] Orelhas."),
+		span_notice("[surgeon] Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)] Orelhas."),
+		span_notice("[surgeon] Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)] Orelhas."),
 	)
 	display_pain(organ.owner, "Your head swims, but it seems like you can feel your hearing coming back!")
 
@@ -367,18 +367,18 @@
 		display_results(
 			surgeon,
 			organ.owner,
-			span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro! Ou teria, se[FORMAT_ORGAN_OWNER(organ)]Tinha um cérebro."),
-			span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro! Ou teria, se[FORMAT_ORGAN_OWNER(organ)]Tinha um cérebro."),
-			span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
+			span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro! Ou teria, se [FORMAT_ORGAN_OWNER(organ)] Tinha um cérebro."),
+			span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro! Ou teria, se [FORMAT_ORGAN_OWNER(organ)] Tinha um cérebro."),
+			span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
 		)
 		return
 
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
-		span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
-		span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
+		span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
+		span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
+		span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
 	)
 	display_pain(organ.owner, "You feel a visceral stabbing pain right through your head, into your brain!")
 	organ.apply_organ_damage(70)
@@ -416,9 +416,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a consertar[FORMAT_ORGAN_OWNER(organ)]Os olhos..."),
-		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(organ)]Os olhos."),
-		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]Os olhos."),
+		span_notice("Você começa a consertar [FORMAT_ORGAN_OWNER(organ)] Os olhos..."),
+		span_notice("[surgeon] Começa a consertar.[FORMAT_ORGAN_OWNER(organ)] Os olhos."),
+		span_notice("[surgeon] Começa a operar em [FORMAT_ORGAN_OWNER(organ)] Os olhos."),
 	)
 	display_pain(organ.owner, "You feel a stabbing pain in your eyes!")
 
@@ -429,9 +429,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você conseguiu consertar.[FORMAT_ORGAN_OWNER(organ)]Os olhos."),
-		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]Os olhos."),
-		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]Os olhos."),
+		span_notice("Você conseguiu consertar.[FORMAT_ORGAN_OWNER(organ)] Os olhos."),
+		span_notice("[surgeon] Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)] Os olhos."),
+		span_notice("[surgeon] Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)] Os olhos."),
 	)
 	display_pain(organ.owner, "Your vision blurs, but it seems like you can see a little better now!")
 
@@ -441,18 +441,18 @@
 		display_results(
 			surgeon,
 			organ.owner,
-			span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro! Ou teria, se[FORMAT_ORGAN_OWNER(organ)]Tinha um cérebro."),
-			span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro! Ou teria, se[FORMAT_ORGAN_OWNER(organ)]Tinha um cérebro."),
-			span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
+			span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro! Ou teria, se [FORMAT_ORGAN_OWNER(organ)] Tinha um cérebro."),
+			span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro! Ou teria, se [FORMAT_ORGAN_OWNER(organ)] Tinha um cérebro."),
+			span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
 		)
 		return
 
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
-		span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
-		span_warning("[surgeon]Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)]bem no cérebro!"),
+		span_warning("Você acidentalmente esfaqueou.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
+		span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
+		span_warning("[surgeon] Apunhala acidentalmente.[FORMAT_ORGAN_OWNER(organ)] bem no cérebro!"),
 	)
 	display_pain(organ.owner, "You feel a visceral stabbing pain right through your head, into your brain!")
 	organ.apply_organ_damage(70)
@@ -485,9 +485,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você começa a consertar[FORMAT_ORGAN_OWNER(organ)]O cérebro..."),
-		span_notice("[surgeon]Começa a consertar.[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
-		span_notice("[surgeon]Começa a operar em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("Você começa a consertar [FORMAT_ORGAN_OWNER(organ)] O cérebro..."),
+		span_notice("[surgeon] Começa a consertar.[FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
+		span_notice("[surgeon] Começa a operar em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head pounds with unimaginable pain!")
 
@@ -496,9 +496,9 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("Você consegue consertar.[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
-		span_notice("[surgeon]Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)]Cérebro!"),
-		span_notice("[surgeon]Completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_notice("Você consegue consertar.[FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
+		span_notice("[surgeon] Conserta com sucesso.[FORMAT_ORGAN_OWNER(organ)] Cérebro!"),
+		span_notice("[surgeon] Completa a cirurgia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "The pain in your head receeds, thinking becomes a bit easier!")
 	if (organ.owner)
@@ -507,7 +507,7 @@
 		organ.brainmob.mind?.remove_antag_datum(/datum/antagonist/brainwashed)
 	organ.cure_all_traumas(TRAUMA_RESILIENCE_SURGERY)
 	if(organ.damage > organ.maxHealth * 0.1)
-		to_chat(surgeon, "[FORMAT_ORGAN_OWNER(organ)]O cérebro parece que pode ser consertado.")
+		to_chat(surgeon, "[FORMAT_ORGAN_OWNER(organ)] O cérebro parece que pode ser consertado.")
 
 /datum/surgery_operation/organ/repair/brain/on_failure(obj/item/organ/brain/organ, mob/living/surgeon, obj/item/tool, list/operation_args)
 	. = ..()
@@ -515,8 +515,8 @@
 		surgeon,
 		organ.owner,
 		span_warning("Você estraga tudo, causando mais danos!"),
-		span_warning("[surgeon]Estraga tudo, causando danos cerebrais!"),
-		span_notice("[surgeon]Completa a cirurgia em[FORMAT_ORGAN_OWNER(organ)]É o cérebro."),
+		span_warning("[surgeon] Estraga tudo, causando danos cerebrais!"),
+		span_notice("[surgeon] Completa a cirurgia em [FORMAT_ORGAN_OWNER(organ)] É o cérebro."),
 	)
 	display_pain(organ.owner, "Your head throbs with horrible pain; thinking hurts!")
 	organ.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)

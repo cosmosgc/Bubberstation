@@ -16,7 +16,7 @@
 	reagents_add = list(/datum/reagent/water = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.2)
 
 /obj/item/seeds/watermelon/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]é engolir[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] é engolir [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	user.gib(DROP_ALL_REMAINS)
 	new product(drop_location())
 	qdel(src)
@@ -50,7 +50,7 @@
 	if(seed)
 		melon_pulp_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "Arrancado para fora[melon_pulp_count]Polpa(s)")
+	user.balloon_alert(user, "Arrancado para fora [melon_pulp_count] Polpa(s)")
 	for(var/i in 1 to melon_pulp_count)
 		new /obj/item/food/watermelonmush(user.loc)
 
@@ -63,13 +63,13 @@
 			melon_armour = new /obj/item/clothing/suit/armor/durability/watermelon/fire_resist
 		else
 			melon_armour = new /obj/item/clothing/suit/armor/durability/watermelon
-		to_chat(user, span_notice("Você oco o melão em um capacete com[I]."))
+		to_chat(user, span_notice("Você oco o melão em um capacete com [I]."))
 	else
 		if(seed.resistance_flags & FIRE_PROOF)
 			melon_armour = new /obj/item/clothing/head/helmet/durability/watermelon/fire_resist
 		else
 			melon_armour = new /obj/item/clothing/head/helmet/durability/watermelon
-		to_chat(user, span_notice("Você oco o melão em um peitoral com[I]."))
+		to_chat(user, span_notice("Você oco o melão em um peitoral com [I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(melon_armour)
@@ -122,7 +122,7 @@
 	if(seed)
 		holymelon_pulp_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "Arrancado para fora[holymelon_pulp_count]Polpa(s)")
+	user.balloon_alert(user, "Arrancado para fora [holymelon_pulp_count] Polpa(s)")
 	for(var/i in 1 to holymelon_pulp_count)
 		new /obj/item/food/holymelonmush(user.loc)
 
@@ -135,13 +135,13 @@
 			holymelon_armour = new /obj/item/clothing/suit/armor/durability/holymelon/fire_resist
 		else
 			holymelon_armour = new /obj/item/clothing/suit/armor/durability/holymelon
-		to_chat(user, span_notice("Você oca o holymelon em um capacete com[I]."))
+		to_chat(user, span_notice("Você oca o holymelon em um capacete com [I]."))
 	else
 		if(seed.resistance_flags & FIRE_PROOF)
 			holymelon_armour = new /obj/item/clothing/head/helmet/durability/holymelon/fire_resist
 		else
 			holymelon_armour = new /obj/item/clothing/head/helmet/durability/holymelon
-		to_chat(user, span_notice("Você oca o holymelon em um peitoral com[I]."))
+		to_chat(user, span_notice("Você oca o holymelon em um peitoral com [I]."))
 	remove_item_from_storage(user)
 	qdel(src)
 	user.put_in_hands(holymelon_armour)
@@ -195,7 +195,7 @@
 	if(seed)
 		barrelmelon_pulp_count += round(seed.potency / 25)
 
-	user.balloon_alert(user, "Arrancado para fora[barrelmelon_pulp_count]Polpa(s)")
+	user.balloon_alert(user, "Arrancado para fora [barrelmelon_pulp_count] Polpa(s)")
 	for(var/i in 1 to barrelmelon_pulp_count)
 		new /obj/item/food/barrelmelonmush(user.loc)
 
@@ -208,13 +208,13 @@
 			barrelmelon_armour = new /obj/item/clothing/suit/armor/durability/barrelmelon/fire_resist
 		else
 			barrelmelon_armour = new /obj/item/clothing/suit/armor/durability/barrelmelon
-		to_chat(user, span_notice("Você oca o barril de melancia em um capacete com[I]."))
+		to_chat(user, span_notice("Você oca o barril de melancia em um capacete com [I]."))
 	else
 		if(seed.resistance_flags & FIRE_PROOF)
 			barrelmelon_armour = new /obj/item/clothing/head/helmet/durability/barrelmelon/fire_resist
 		else
 			barrelmelon_armour = new /obj/item/clothing/head/helmet/durability/barrelmelon
-		to_chat(user, span_notice("Você oca o barril de melancia em um peitoral com[I]."))
+		to_chat(user, span_notice("Você oca o barril de melancia em um peitoral com [I]."))
 
 	remove_item_from_storage(user)
 	qdel(src)

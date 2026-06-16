@@ -112,14 +112,14 @@
 	DO_FLOATING_ANIM(src)
 
 /obj/item/fish/starfish/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src], e olha para cima..."))
+	user.visible_message(span_suicide("[user] Andorinhas [src], e olha para cima..."))
 	if (prob(20))
 		user.say("I must go. My people need me.", forced = "starfish suicide")
 	addtimer(CALLBACK(src, PROC_REF(ascension), user), 1 SECONDS)
 	return MANUAL_SUICIDE
 
 /obj/item/fish/starfish/proc/ascension(mob/living/user)
-	user.visible_message(span_suicide("[user]Abandona[user.p_their()]Forma cabo!"))
+	user.visible_message(span_suicide("[user] Abandona [user.p_their()] Forma cabo!"))
 	user.drop_everything()
 	user.add_filter("space", 1, layering_filter(icon = icon('icons/mob/human/textures.dmi', "spacey"), blend_mode = BLEND_INSET_OVERLAY))
 	user.apply_status_effect(/datum/status_effect/go_away/deletes_mob)
@@ -171,16 +171,16 @@
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/fish/baby_carp/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Andorinhas[src]Inteiro!"))
+	user.visible_message(span_suicide("[user] Andorinhas [src] Inteiro!"))
 	src.forceMove(user)
 	if(status == FISH_DEAD)
 		user.emote("gasp")
-		user.visible_message(span_suicide("[user]Engasga-se.[src]E morte!"))
+		user.visible_message(span_suicide("[user] Engasga-se.[src] E morte!"))
 		return OXYLOSS
 
 	// the fish grows
 	addtimer(CALLBACK(src, PROC_REF(gestation), user), 20 SECONDS)
-	user.visible_message(span_suicide("[user]começa a crescer de forma anormal..."))
+	user.visible_message(span_suicide("[user] começa a crescer de forma anormal..."))
 
 	var/matrix/M = matrix()
 	M.Scale(1.8, 1.2)

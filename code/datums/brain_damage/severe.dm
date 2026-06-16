@@ -104,8 +104,8 @@
 			subject = "your left leg"
 			paralysis_traits = list(TRAIT_PARALYSIS_L_LEG)
 
-	gain_text = span_warning("Você não pode sentir[subject]Mais!")
-	lose_text = span_notice("Você pode sentir[subject]De novo!")
+	gain_text = span_warning("Você não pode sentir [subject] Mais!")
+	lose_text = span_notice("Você pode sentir [subject] De novo!")
 
 /datum/brain_trauma/severe/paralysis/on_gain()
 	. = ..()
@@ -189,7 +189,7 @@
 		if(prob(50))
 			owner.emote("yawn")
 		else if(prob(33)) //rarest message is a custom emote
-			owner.visible_message("Esfrega[owner.p_their()]Olhos.", visible_message_flags = EMOTE_MESSAGE)
+			owner.visible_message("Esfrega [owner.p_their()] Olhos.", visible_message_flags = EMOTE_MESSAGE)
 	//drowsy, so fall asleep. you've had your chance to remedy it
 	else
 		to_chat(owner, span_warning("Você adormece."))

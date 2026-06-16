@@ -85,4 +85,4 @@
 	if(isnull(.))
 		return
 	SET_FACTION_AND_ALLIES_FROM(src, new_friend)
-	visible_message(span_notice("[src]Abaixa.[src.p_their()]focinho em[new_friend]Está oferecendo e começa a abanar[src.p_their()]cauda."))
+	visible_message(span_notice("[src] Abaixa.[src.p_their()] focinho em [new_friend] Está oferecendo e começa a abanar [src.p_their()] cauda."))

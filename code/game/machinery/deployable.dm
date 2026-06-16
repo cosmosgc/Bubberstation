@@ -172,7 +172,7 @@
 		if(HORIZONTAL)
 			mode = SINGLE
 
-	to_chat(user, span_notice("[src]está agora em[mode]Modo."))
+	to_chat(user, span_notice("[src] está agora em [mode] Modo."))
 
 /obj/item/grenade/barrier/detonate(mob/living/lanced_by)
 	. = ..()

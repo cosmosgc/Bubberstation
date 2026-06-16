@@ -503,7 +503,7 @@ GLOBAL_LIST_EMPTY(virtual_pets_list)
 			else if(hat_selections[chosen_type])
 				var/datum/award/required_cheevo = cheevo_hats[chosen_type]
 				if(length(SSachievements.achievements) && required_cheevo && !ui.user.client.get_award_status(required_cheevo))
-					to_chat(ui.user, span_info("Esta personalização requer o\"[span_bold(initial(required_cheevo.name))]Uma conquista a ser desbloqueada."))
+					to_chat(ui.user, span_info("Esta personalização requer o\"[span_bold(initial(required_cheevo.name))] Uma conquista a ser desbloqueada."))
 				else
 					selected_hat["type"] = chosen_type
 					var/state_to_use = initial(chosen_type.worn_icon_state) || initial(chosen_type.icon_state)

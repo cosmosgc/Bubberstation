@@ -374,7 +374,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-	to_chat(user, span_warning("Você bateu.[src]Mas salte!"))
+	to_chat(user, span_warning("Você bateu.[src] Mas salte!"))
 	playsound(src.loc, 'sound/items/weapons/tap.ogg', 100, TRUE)
 
 /// A metal foam variant which produces slightly sturdier walls.
@@ -458,7 +458,7 @@
 		if(!comp.welded)
 			comp.welded = TRUE
 			comp.update_appearance()
-			comp.visible_message(span_danger("[comp]Selado fechado!"))
+			comp.visible_message(span_danger("[comp] Selado fechado!"))
 
 	for(var/mob/living/potential_tinder in location)
 		potential_tinder.extinguish_mob()

@@ -13,7 +13,7 @@
 
 /datum/antagonist/pirate/greet()
 	. = ..()
-	to_chat(owner, "<B>A estação se recusou a pagar pela sua proteção. Proteger a nave, desviar o[MONEY_NAME]Da estação, e o ataque para mais saques.</B>")
+	to_chat(owner, "<B>A estação se recusou a pagar pela sua proteção. Proteger a nave, desviar o [MONEY_NAME] Da estação, e o ataque para mais saques.</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/pirate/get_team()

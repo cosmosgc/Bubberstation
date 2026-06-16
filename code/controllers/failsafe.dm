@@ -80,7 +80,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 						to_chat(GLOB.admins, span_adminnotice("MC reiniciado com sucesso"))
 					else if(rtn < 0)
 						log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
-						to_chat(GLOB.admins, span_boldannounce("DEFCON[defcon_pretty()]Não foi possível reiniciar MC, tempo de execução encontrado. Vou continuar em silêncio tentando novamente."))
+						to_chat(GLOB.admins, span_boldannounce("DEFCON [defcon_pretty()] Não foi possível reiniciar MC, tempo de execução encontrado. Vou continuar em silêncio tentando novamente."))
 				// Check if processing is done yet.
 				if(Master.iteration == master_iteration)
 					switch(defcon)
@@ -92,11 +92,11 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 							--defcon
 
 						if(2)
-							to_chat(GLOB.admins, span_boldannounce("DEFCON:[defcon_pretty()]O controlador mestre não disparou no último[(5-defcon) * processing_interval]Tiques. Reiniciar automáticamente.[processing_interval]Tiques."))
+							to_chat(GLOB.admins, span_boldannounce("DEFCON:[defcon_pretty()] O controlador mestre não disparou no último [(5-defcon) * processing_interval] Tiques. Reiniciar automáticamente.[processing_interval] Tiques."))
 							--defcon
 
 						if(1)
-							to_chat(GLOB.admins, span_boldannounce("DEFCON:[defcon_pretty()]O Mestre Controlador ainda não disparou no último[(5-defcon) * processing_interval]Tiques. Matar e Reiniciar..."))
+							to_chat(GLOB.admins, span_boldannounce("DEFCON:[defcon_pretty()] O Mestre Controlador ainda não disparou no último [(5-defcon) * processing_interval] Tiques. Matar e Reiniciar..."))
 							--defcon
 							var/rtn = Recreate_MC()
 							if(rtn > 0)
@@ -105,7 +105,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 								to_chat(GLOB.admins, span_adminnotice("MC reiniciado com sucesso"))
 							else if(rtn < 0)
 								log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
-								to_chat(GLOB.admins, span_boldannounce("DEFCON[defcon_pretty()]Não foi possível reiniciar MC, tempo de execução encontrado. Vou continuar em silêncio tentando novamente."))
+								to_chat(GLOB.admins, span_boldannounce("DEFCON [defcon_pretty()] Não foi possível reiniciar MC, tempo de execução encontrado. Vou continuar em silêncio tentando novamente."))
 							//if the return number was 0, it just means the mc was restarted too recently, and it just needs some time before we try again
 							//no need to handle that specially when defcon 0 can handle it
 

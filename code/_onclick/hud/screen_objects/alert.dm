@@ -434,7 +434,7 @@
 	var/obj/item/receiving = offer.offered_item
 	var/receiving_name = get_receiving_name(taker, offerer, receiving)
 	name = "[offerer] is offering [receiving_name]"
-	desc = "[offerer]está oferecendo[receiving_name]. [additional_desc_text]"
+	desc = "[offerer] está oferecendo [receiving_name]. [additional_desc_text]"
 	icon_state = "template"
 	cut_overlays()
 	add_overlay(receiving)
@@ -473,7 +473,7 @@
 
 	return list(
 		span_boldnotice(name),
-		span_info("[offer.owner]Está lhe oferecendo o seguinte item (clique no alerta para tomá-lo!):"),
+		span_info("[offer.owner] Está lhe oferecendo o seguinte item (clique no alerta para tomá-lo!):"),
 		"<hr>[jointext(offer.offered_item.examine(user), "\n")]",
 	)
 
@@ -521,8 +521,8 @@
 		return
 
 	too_slowing_this_guy = TRUE
-	offerer.visible_message(span_notice("[rube]Corre para bater Cinco.[offerer]Mas..."), span_nicegreen("[rube]Se apaixona pelo seu truque como planejado, lutando por um \"Toca aqui\" que não existe mais! Clássico!"), ignored_mobs=rube)
-	to_chat(rube, span_nicegreen("Você entra.[offerer]Toca aqui, mas..."))
+	offerer.visible_message(span_notice("[rube] Corre para bater Cinco.[offerer] Mas..."), span_nicegreen("[rube] Se apaixona pelo seu truque como planejado, lutando por um \"Toca aqui\" que não existe mais! Clássico!"), ignored_mobs=rube)
+	to_chat(rube, span_nicegreen("Você entra.[offerer] Toca aqui, mas..."))
 	addtimer(CALLBACK(src, PROC_REF(too_slow_p2), offerer, rube), 0.5 SECONDS)
 
 /// Part two of the ultimate prank
@@ -530,7 +530,7 @@
 	var/mob/living/rube = owner
 	var/mob/living/offerer = offer?.owner
 	if(!QDELETED(rube) && !QDELETED(offerer))
-		offerer.visible_message(span_danger("[offerer]Afasta-se de[rube]É um tapa no último segundo, esquivando-se do \"Toca aqui\"Totalmente!"), span_nicegreen("[rube]não faz contato com sua mão, fazendo um completo tolo de[rube.p_them()]Eu!"), span_hear("Você ouve um som decepcionante de carne não batendo em carne!"), ignored_mobs=rube)
+		offerer.visible_message(span_danger("[offerer] Afasta-se de [rube] É um tapa no último segundo, esquivando-se do \"Toca aqui\"Totalmente!"), span_nicegreen("[rube] não faz contato com sua mão, fazendo um completo tolo de [rube.p_them()] Eu!"), span_hear("Você ouve um som decepcionante de carne não batendo em carne!"), ignored_mobs=rube)
 		to_chat(rube, span_userdanger("[uppertext("NO! [offerer] PULLS [offerer.p_their()] HAND AWAY FROM YOURS! YOU'RE TOO SLOW!")]"))
 		playsound(offerer, 'sound/items/weapons/thudswoosh.ogg', 100, TRUE, 1)
 		rube.Knockdown(1 SECONDS)
@@ -545,7 +545,7 @@
 	SIGNAL_HANDLER
 
 	if(QDELETED(offer.offered_item))
-		examine_list += span_warning("[source]O braço parece tenso, como se[source.p_they()]Planejo puxar de volta de arrependimento...")
+		examine_list += span_warning("[source] O braço parece tenso, como se [source.p_they()] Planejo puxar de volta de arrependimento...")
 
 /atom/movable/screen/alert/give/hand
 	screentip_override_text = "Pegue a Mão"
@@ -662,7 +662,7 @@
 	// construct track
 	if(construct_owner?.seeking && construct_owner.construct_master)
 		blood_target = construct_owner.construct_master
-		desc = "Seu senso de sangue está levando você a[construct_owner.construct_master]"
+		desc = "Seu senso de sangue está levando você a [construct_owner.construct_master]"
 
 	// cult track
 	var/datum/antagonist/cult/antag = owner.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
@@ -681,7 +681,7 @@
 				angle = 0
 				cut_overlays()
 				icon_state = "runed_sense0"
-				desc = "Nar'Sie exige que[sac_objective.target]ser sacrificado antes que o ritual de convocação possa começar."
+				desc = "Nar'Sie exige que [sac_objective.target] ser sacrificado antes que o ritual de convocação possa começar."
 				add_overlay(sac_objective.sac_image)
 			else
 				var/datum/objective/eldergod/summon_objective = locate() in antag.cult_team.objectives
@@ -690,7 +690,7 @@
 				var/list/location_list = list()
 				for(var/area/area_to_check in summon_objective.summon_spots)
 					location_list += area_to_check.get_original_area_name()
-				desc = "O sacrifício está completo, convoque Nar'Sie! A convocação só pode ocorrer em[english_list(location_list)]!"
+				desc = "O sacrifício está completo, convoque Nar'Sie! A convocação só pode ocorrer em [english_list(location_list)]!"
 				if(icon_state == "runed_sense1")
 					return
 				animate(src, transform = null, time = 1, loop = 0)
@@ -709,9 +709,9 @@
 		return
 	if(isliving(blood_target))
 		var/mob/living/real_target = blood_target
-		desc = "Você está rastreando[real_target.real_name]Em[get_area_name(blood_target)]."
+		desc = "Você está rastreando [real_target.real_name] Em [get_area_name(blood_target)]."
 	else
-		desc = "Você está rastreando[blood_target]Em[get_area_name(blood_target)]."
+		desc = "Você está rastreando [blood_target] Em [get_area_name(blood_target)]."
 
 	var/target_angle = get_angle(Q, P)
 	var/target_dist = get_dist(P, Q)

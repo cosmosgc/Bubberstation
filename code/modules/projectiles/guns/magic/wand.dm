@@ -43,7 +43,7 @@
 		return FALSE
 	if(target == user)
 		if(no_den_usage && istype(get_area(user), /area/centcom/wizard_station))
-			to_chat(user, span_warning("Você sabe melhor do que violar a segurança do Den, é melhor esperar até sair para usar[src]."))
+			to_chat(user, span_warning("Você sabe melhor do que violar a segurança do Den, é melhor esperar até sair para usar [src]."))
 			return FALSE
 		zap_self(user)
 		. = TRUE
@@ -57,7 +57,7 @@
 
 /// Called if we poke ourselves with the wand
 /obj/item/gun/magic/wand/proc/zap_self(mob/living/user, suicide = FALSE)
-	user.visible_message(span_danger("[user]Zaps[user.p_them()]ego com[src]."))
+	user.visible_message(span_danger("[user] Zaps [user.p_them()] ego com [src]."))
 	playsound(user, fire_sound, 50, TRUE)
 	user.log_message("zapped [user.p_them()]self with a <b>[src]</b>", LOG_ATTACK)
 
@@ -80,7 +80,7 @@
 	. = ..()
 	charges--
 	if(user.can_block_magic())
-		user.visible_message(span_warning("[src]Não tem efeito sobre[user]!"))
+		user.visible_message(span_warning("[src] Não tem efeito sobre [user]!"))
 		return
 	if(isliving(user))
 		if(user.mob_biotypes & MOB_UNDEAD) //negative energy heals the undead
@@ -95,7 +95,7 @@
 	. = ..()
 	if (user.stat == DEAD)
 		return MANUAL_SUICIDE
-	user.visible_message(span_suicide("...mas se alguma coisa[user.p_they()]Parece mais saudável do que antes."))
+	user.visible_message(span_suicide("...mas se alguma coisa [user.p_they()] Parece mais saudável do que antes."))
 	return SHAME
 
 /obj/item/gun/magic/wand/death/debug
@@ -121,7 +121,7 @@
 	..()
 	charges--
 	if(user.can_block_magic())
-		user.visible_message(span_warning("[src]Não tem efeito sobre[user]!"))
+		user.visible_message(span_warning("[src] Não tem efeito sobre [user]!"))
 		return
 	if(isliving(user))
 		var/mob/living/L = user
@@ -138,7 +138,7 @@
 	. = ..()
 	if (user.stat == DEAD)
 		return MANUAL_SUICIDE
-	user.visible_message(span_suicide("...mas se alguma coisa[user.p_they()]Parece mais saudável do que antes."))
+	user.visible_message(span_suicide("...mas se alguma coisa [user.p_they()] Parece mais saudável do que antes."))
 	return SHAME
 
 /obj/item/gun/magic/wand/resurrection/debug //for testing
@@ -294,7 +294,7 @@
 	playsound(loc, fire_sound, 50, TRUE, -1)
 	var/mob/living/carbon/suicider = user
 	var/obj/item/bodypart/chest = suicider.get_bodypart(BODY_ZONE_CHEST) // I think it's impossible not to have a chest so we'll just assume they have one
-	user.visible_message(span_suicide("[user]O peito se abre como uma porta!"))
+	user.visible_message(span_suicide("[user] O peito se abre como uma porta!"))
 	chest.dismember(BRUTE, silent = FALSE, wounding_type = WOUND_SLASH)
 	return BRUTELOSS
 
@@ -384,7 +384,7 @@
 /obj/item/gun/magic/wand/shrink/do_suicide(mob/living/user)
 	playsound(user, fire_sound, 50, TRUE)
 	user.unequip_everything()
-	user.visible_message(span_suicide("[user]encolhe em nada!"), span_suicide("Você não encolhe em nada!"))
+	user.visible_message(span_suicide("[user] encolhe em nada!"), span_suicide("Você não encolhe em nada!"))
 	user.Stun(20 SECONDS, ignore_canstun = TRUE)
 	user.set_suicide(TRUE)
 	user.ghostize()

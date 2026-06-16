@@ -84,11 +84,11 @@
 	var/turf/safe_turf = find_safe_turf(z, extended_safety_checks = TRUE)
 	if(check_usability(user))
 		if(do_teleport(user, safe_turf, channel = TELEPORT_CHANNEL_MAGIC))
-			to_chat(user, span_warning("Enquanto você quebra[src]Você sente uma rajada de energia fluindo pelo seu corpo.[after_use_message]"))
+			to_chat(user, span_warning("Enquanto você quebra [src] Você sente uma rajada de energia fluindo pelo seu corpo.[after_use_message]"))
 		else
-			to_chat(user, span_warning("Você quebra[src]Mas seu pedido não foi respondido."))
+			to_chat(user, span_warning("Você quebra [src] Mas seu pedido não foi respondido."))
 	else
-		to_chat(user,span_warning("Você quebra[src]."))
+		to_chat(user,span_warning("Você quebra [src]."))
 	playsound(src, SFX_SHATTER, 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
 	qdel(src)
 

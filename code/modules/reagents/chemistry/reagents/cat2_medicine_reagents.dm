@@ -526,7 +526,7 @@
 	if(need_mob_update)
 		carbies.updatehealth()
 		if(show_message)
-			carbies.visible_message(span_nicegreen("Um líquido de borracha parcialmente revestimentos[carbies]Queimaduras."))
+			carbies.visible_message(span_nicegreen("Um líquido de borracha parcialmente revestimentos [carbies] Queimaduras."))
 			if(carbies.stat != DEAD)
 				to_chat(carbies, span_danger("Você sente suas queimaduras e contusões curando! Dói pra caramba!"))
 				carbies.add_mood_event("painful_medicine", /datum/mood_event/painful_medicine)
@@ -538,7 +538,7 @@
 	//don't try to unhusk mobs above burn damage threshold
 	if(carbies.get_fire_loss() > UNHUSK_DAMAGE_THRESHOLD)
 		if(show_message && !need_mob_update)
-			carbies.visible_message(span_minoralert("O líquido não está bem colado[carbies]. [carbies]Como queimaduras precisam ser reparadas primeiro!"))
+			carbies.visible_message(span_minoralert("O líquido não está bem colado [carbies]. [carbies] Como queimaduras precisam ser reparadas primeiro!"))
 		return
 
 	var/datum/reagent/synthflesh = carbies.reagents.has_reagent(/datum/reagent/medicine/c2/synthflesh)
@@ -554,16 +554,16 @@
 		carbies.cure_husk() // BUBBER EDIT CHANGE - Synthflesh works on ling husks - Original: carbies.cure_husk(BURN)
 		carbies.reagents.remove_reagent(/datum/reagent/medicine/c2/synthflesh, current_volume) // consume the synthflesh, it won't do anything in their blood
 		//we're avoiding using the phrases "burnt flesh" and "burnt skin" here because carbies could be a skeleton or a golem or something
-		carbies.visible_message(span_nicegreen("Um casaco líquido de borracha[carbies]Queimaduras.[carbies]Parece muito mais saudável!"))
+		carbies.visible_message(span_nicegreen("Um casaco líquido de borracha [carbies] Queimaduras.[carbies] Parece muito mais saudável!"))
 	else if(show_message && !need_mob_update)
 		// if they are laying in a pool of synthflesh, we don't want it sending a message every tick
 		if(methods & TOUCH)
 			if(TIMER_COOLDOWN_RUNNING(carbies, REF(carbies)))
 				return
 			TIMER_COOLDOWN_START(carbies, REF(carbies), 16 SECONDS)
-			carbies.visible_message(span_boldnotice("O líquido não está bem colado[carbies]Não há o suficiente para desamarrar!"))
+			carbies.visible_message(span_boldnotice("O líquido não está bem colado [carbies] Não há o suficiente para desamarrar!"))
 		else
-			carbies.visible_message(span_nicegreen("Um líquido de borracha conserta parcialmente[carbies]Parece que é preciso mais para desapegar completamente!"))
+			carbies.visible_message(span_nicegreen("Um líquido de borracha conserta parcialmente [carbies] Parece que é preciso mais para desapegar completamente!"))
 
 /******ORGAN HEALING******/
 /*Suffix: -rite*/

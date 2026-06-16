@@ -54,7 +54,7 @@
 		spark_system.start()
 
 /obj/effect/meteor/dark_matteor/shield_defense(obj/machinery/satellite/meteor_shield/defender)
-	defender.visible_message(span_danger("[defender]O raio é refletido por[src]!"))
+	defender.visible_message(span_danger("[defender] O raio é refletido por [src]!"))
 	new /obj/effect/temp_visual/explosion/fast(get_turf(defender))
 	qdel(defender)
 	return FALSE

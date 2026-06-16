@@ -89,7 +89,7 @@
 /mob/living/basic/morph/death(gibbed)
 	if(HAS_TRAIT(src, TRAIT_DISGUISED))
 		visible_message(
-			span_warning("[src]Se transformar em uma pilha de carne verde!"),
+			span_warning("[src] Se transformar em uma pilha de carne verde!"),
 			span_userdanger("Sua pele rompe! Sua carne se parte! Nenhum disfarce pode afastar..."),
 		)
 
@@ -112,8 +112,8 @@
 	med_hud_set_status() //we're an object honest
 
 	visible_message(
-		span_warning("[src]De repente, torce e muda de forma, tornando-se uma cópia de[target]!"),
-		span_notice("Você torce seu corpo e assume a forma de[target]."),
+		span_warning("[src] De repente, torce e muda de forma, tornando-se uma cópia de [target]!"),
+		span_notice("Você torce seu corpo e assume a forma de [target]."),
 	)
 
 	form_weakref = WEAKREF(target)
@@ -123,7 +123,7 @@
 /mob/living/basic/morph/proc/on_undisguise()
 	SIGNAL_HANDLER
 	visible_message(
-		span_warning("[src]De arrependimento cai em si mesmo, dissolvendo-se em uma pilha de carne verde!"),
+		span_warning("[src] De arrependimento cai em si mesmo, dissolvendo-se em uma pilha de carne verde!"),
 		span_notice("Você muda para seu corpo normal."),
 	)
 
@@ -190,7 +190,7 @@
 		return FALSE
 
 	log_combat(src, eatable, "ate", addition = "as morph")
-	visible_message(span_warning("[src]Andorinhas[eatable]Inteiro!"))
+	visible_message(span_warning("[src] Andorinhas [eatable] Inteiro!"))
 	eatable.forceMove(src)
 	if(update_health != 0)
 		adjust_health(update_health)

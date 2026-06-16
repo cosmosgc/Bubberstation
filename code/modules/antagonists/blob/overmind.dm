@@ -119,9 +119,9 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	if (had_strain)
 		to_chat(src, span_notice("Sua tensão é agora:<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>!"))
-		to_chat(src, span_notice("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>strain[blobstrain.description]"))
+		to_chat(src, span_notice("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>strain [blobstrain.description]"))
 		if(blobstrain.effectdesc)
-			to_chat(src, span_notice("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>strain[blobstrain.effectdesc]"))
+			to_chat(src, span_notice("O<b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font>strain [blobstrain.effectdesc]"))
 	SEND_SIGNAL(src, COMSIG_BLOB_SELECTED_STRAIN, blobstrain)
 
 /mob/eye/blob/can_z_move(direction, turf/start, turf/destination, z_move_flags = NONE, mob/living/rider)
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		if(!placed)
 			if(manualplace_min_time && world.time >= manualplace_min_time)
 				to_chat(src, span_boldnotice("Agora você pode colocar seu núcleo de bolhas."))
-				to_chat(src, span_bolddanger("Você automaticamente colocará seu núcleo de bolhas em[DisplayTimeText(autoplace_max_time - world.time)]."))
+				to_chat(src, span_bolddanger("Você automaticamente colocará seu núcleo de bolhas em [DisplayTimeText(autoplace_max_time - world.time)]."))
 				manualplace_min_time = 0
 			if(autoplace_max_time && world.time >= autoplace_max_time)
 				place_blob_core(BLOB_RANDOM_PLACEMENT)
@@ -207,7 +207,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		if(main_objective)
 			main_objective.completed = TRUE
 
-	to_chat(world, span_blobannounce("[real_name]consumiu a estação em uma maré imparável!"))
+	to_chat(world, span_blobannounce("[real_name] consumiu a estação em uma maré imparável!"))
 	SSticker.news_report = BLOB_WIN
 	SSticker.force_ending = FORCE_END_ROUND
 
@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		return FALSE
 	to_chat(src, span_blobannounce("Você é o cérebro!"))
 	if(!placed && autoplace_max_time <= world.time)
-		to_chat(src, span_bolddanger("Você automaticamente colocará seu núcleo de bolhas em[DisplayTimeText(autoplace_max_time - world.time)]."))
+		to_chat(src, span_bolddanger("Você automaticamente colocará seu núcleo de bolhas em [DisplayTimeText(autoplace_max_time - world.time)]."))
 		to_chat(src, span_bolddanger("Você.[manualplace_min_time ? "will be able to":"can"]Coloque manualmente seu núcleo de bolhas pressionando o botão Place Blob Core no canto inferior direito da tela."))
 	update_health_hud()
 	add_points(0)

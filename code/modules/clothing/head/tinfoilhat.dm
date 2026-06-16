@@ -58,7 +58,7 @@
 
 /// When the foilhat is drained an anti-magic charge.
 /obj/item/clothing/head/costume/foilhat/proc/drain_antimagic(mob/user)
-	to_chat(user, span_warning("[src]Amassa levemente. Algo está tentando entrar na sua mente!"))
+	to_chat(user, span_warning("[src] Amassa levemente. Algo está tentando entrar na sua mente!"))
 
 /obj/item/clothing/head/costume/foilhat/proc/warp_up()
 	name = "scorched tinfoil hat"
@@ -97,7 +97,7 @@
 	return OXYLOSS
 
 /obj/item/clothing/head/costume/foilhat/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Tem um olhar louco.[user.p_their()]Olhos![capitalize(user.p_they())] [user.p_have()]Testemunhou a verdade, e tentou cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Tem um olhar louco.[user.p_their()] Olhos![capitalize(user.p_they())] [user.p_have()] Testemunhou a verdade, e tentou cometer suicídio!"))
 	var/static/list/conspiracy_line = list(
 		";THEY'RE HIDING CAMERAS IN THE CEILINGS! THEY WITNESS EVERYTHING WE DO!!",
 		";HOW CAN I LIVE IN A WORLD WHERE MY FATE AND EXISTENCE IS DECIDED BY A GROUP OF INDIVIDUALS?!!",

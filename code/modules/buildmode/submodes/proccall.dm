@@ -28,7 +28,7 @@
 		return
 
 	if(!hascall(object, proc_name))
-		to_chat(target_client, span_warning("Erro: callproc datum(): tipo[object.type]Não tem nenhum processo chamado[proc_name]."), confidential = TRUE)
+		to_chat(target_client, span_warning("Erro: callproc datum(): tipo [object.type] Não tem nenhum processo chamado [proc_name]."), confidential = TRUE)
 		return
 
 	if(!is_valid_src(object))

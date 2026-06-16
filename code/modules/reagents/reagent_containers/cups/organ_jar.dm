@@ -47,7 +47,7 @@
 	if(!istype(tool, /obj/item/organ))
 		return ..()
 	if(held_organ)
-		balloon_alert(user, "O jarro já contém[held_organ]")
+		balloon_alert(user, "O jarro já contém [held_organ]")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
@@ -55,7 +55,7 @@
 	balloon_alert(user, "Inserido[tool]")
 	held_organ = tool
 	name = "[tool.name] in a jar"
-	desc = "Um frasco com\the [tool]dentro dele."
+	desc = "Um frasco com\the [tool] dentro dele."
 	check_organ_freeze()
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS

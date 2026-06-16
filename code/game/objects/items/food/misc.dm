@@ -398,7 +398,7 @@
 		return ..()
 	var/obj/item/stack/rods/rods = item
 	if(!rods.use(1))//borgs can still fail this if they have no metal
-		to_chat(user, span_warning("Você não tem ferro suficiente para colocar.[src]Em um pau!"))
+		to_chat(user, span_warning("Você não tem ferro suficiente para colocar.[src] Em um pau!"))
 		return ..()
 	to_chat(user, span_notice("Você enfia a vara no pedaço de manteiga."))
 	user.temporarilyRemoveItemFromInventory(src)
@@ -862,5 +862,5 @@
 	if(can_splat_on)
 		victim.adjust_temp_blindness_up_to(2.5 SECONDS, 3 SECONDS)
 		victim.adjust_confusion_up_to(2.5 SECONDS, 3 SECONDS)
-	victim.visible_message(span_warning("[victim]é pintado por[src]!"), span_userdanger("Você foi pintado por[src]!"))
+	victim.visible_message(span_warning("[victim] é pintado por [src]!"), span_userdanger("Você foi pintado por [src]!"))
 	playsound(victim, SFX_DESECRATION, 50, TRUE)

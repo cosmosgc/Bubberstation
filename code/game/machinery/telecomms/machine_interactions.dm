@@ -120,7 +120,7 @@
 				tempfreq = text2num(params["value"]) * 10
 		if("freq")
 			if(tempfreq in banned_frequencies)
-				to_chat(current_user, span_warning("Interferência impedindo a frequência de filtragem:\"[tempfreq / 10]kHz\""))
+				to_chat(current_user, span_warning("Interferência impedindo a frequência de filtragem:\"[tempfreq / 10] kHz\""))
 				playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 			else
 				if(!(tempfreq in freq_listening))

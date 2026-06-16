@@ -82,7 +82,7 @@
 	for(var/mob/living/carbon/human/potential_victim in range(1, get_turf(src)))
 		var/datum/antagonist/fugitive/fug_antag = potential_victim.mind.has_antag_datum(/datum/antagonist/fugitive)
 		if(fug_antag)
-			potential_victim.visible_message(span_alert("[potential_victim]é violentamente sugado para o[src]!"))
+			potential_victim.visible_message(span_alert("[potential_victim] é violentamente sugado para o [src]!"))
 			add_prisoner(potential_victim, fug_antag)
 
 /// Psyker gear
@@ -110,7 +110,7 @@
 	return ..()
 
 /obj/item/clothing/suit/armor/reactive/psykerboost/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], psykerboosting[owner]Os poderosos!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], psykerboosting [owner] Os poderosos!"))
 	for(var/datum/action/cooldown/spell/psychic_ability in owner.actions)
 		if(psychic_ability.school == SCHOOL_PSYCHIC)
 			psychic_ability.reset_spell_cooldown()
@@ -118,7 +118,7 @@
 	return TRUE
 
 /obj/item/clothing/suit/armor/reactive/psykerboost/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	owner.visible_message(span_danger("[src]Blocos.[attack_text], dranando[owner]Os poderosos!"))
+	owner.visible_message(span_danger("[src] Blocos.[attack_text], dranando [owner] Os poderosos!"))
 	for(var/datum/action/cooldown/spell/psychic_ability in owner.actions)
 		if(psychic_ability.school == SCHOOL_PSYCHIC)
 			psychic_ability.StartCooldown()

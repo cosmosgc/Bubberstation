@@ -10,10 +10,10 @@
 	var/mob/living/carbon/dude = target
 	var/obj/item/card/id/card = dude.get_idcard(TRUE)
 	if (!card)
-		to_chat(user, span_warning("[dude]Não tem um cartão de identificação!"), confidential = TRUE)
+		to_chat(user, span_warning("[dude] Não tem um cartão de identificação!"), confidential = TRUE)
 		return
 	if (!card.registered_account)
-		to_chat(user, span_warning("[dude]Não tem um cartão de identidade com uma conta!"), confidential = TRUE)
+		to_chat(user, span_warning("[dude] Não tem um cartão de identidade com uma conta!"), confidential = TRUE)
 		return
 	if (card.registered_account.account_balance == 0)
 		to_chat(user,  span_warning("Cartão de identificação não tem fundos. Sem pagamento para atracar."))

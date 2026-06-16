@@ -202,7 +202,7 @@
 
 		// Uh oh we reached the top of the pot, the soup's gonna boil over.
 		if(holder.total_volume >= holder.maximum_volume * 0.95)
-			below_pot.visible_message(span_warning("[pot]Começa a ferver!"))
+			below_pot.visible_message(span_warning("[pot] Começa a ferver!"))
 			// Create a spread of dirty foam
 			do_foam(1, pot, below_pot, carry = holder, foam_type = /datum/effect_system/fluid_spread/foam/dirty, stop_reactions = TRUE, reagent_scale = 0.1)
 			// Loses a bit from the foam

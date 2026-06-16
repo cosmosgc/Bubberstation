@@ -104,7 +104,7 @@
 						log_admin(msg)
 						if (message)
 							message_admins(msg)
-							addclientmessage(ckey,span_adminnotice("Administrador.[ckey]foi autorizado a contornar uma proibição de não-admin correspondente em[i["key"]] [i["ip"]]-[i["computerid"]]."))
+							addclientmessage(ckey,span_adminnotice("Administrador.[ckey] foi autorizado a contornar uma proibição de não-admin correspondente em[i["key"]] [i["ip"]]-[i["computerid"]]."))
 						continue
 				var/expires = "This is a permanent ban."
 				var/global_ban = "This is a global ban from all of our servers." //SKYRAT EDIT ADDITION - MULTISERVER

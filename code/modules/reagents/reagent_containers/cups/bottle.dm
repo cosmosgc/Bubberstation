@@ -554,7 +554,7 @@
 
 	var/transfer_amount = round(reagents.trans_to(tool, amount_per_transfer_from_this, transferred_by = user), CHEMICAL_VOLUME_ROUNDING)
 	if(transfer_amount)
-		balloon_alert(user, "Transferido.[transfer_amount]Unidade")
+		balloon_alert(user, "Transferido.[transfer_amount] Unidade")
 	flick("syrup_anim",src)
 	tool.update_appearance()
 	update_appearance()

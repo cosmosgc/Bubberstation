@@ -129,7 +129,7 @@
 			continue
 		nearby_mob.apply_status_effect(/datum/status_effect/star_mark)
 		nearby_mob.apply_damage(10)
-		to_chat(nearby_mob, span_userdanger("\The [src] [attack_verb_continuous]Você!"))
+		to_chat(nearby_mob, span_userdanger("\The [src] [attack_verb_continuous] Você!"))
 		do_attack_animation(nearby_mob, ATTACK_EFFECT_SLASH)
 		log_combat(src, nearby_mob, "slashed")
 
@@ -360,7 +360,7 @@
 				if(living_victim.stat > CONSCIOUS)
 					playsound(living_victim, 'sound/effects/supermatter.ogg', 80, TRUE)
 					living_victim.visible_message(
-						span_danger("Viu?[living_victim]engolido na ira ardente do cosmos. Por um momento, você vê seu flail silhueta em agonia antes de desaparecer para meros átomos."),
+						span_danger("Viu?[living_victim] engolido na ira ardente do cosmos. Por um momento, você vê seu flail silhueta em agonia antes de desaparecer para meros átomos."),
 						span_boldbig(span_hypnophrase("O poder dos Cósmos se espalha sobre sua forma. As ondas de calor vigiam seu corpo, empurrando-o para o lado das costuras. Sua total aniquilação leva apenas um momento antes de você ser reduzido de volta ao que você sempre foi. Motes de mero pó..."))
 						)
 					living_victim.dust()

@@ -83,14 +83,14 @@
 		var/mob/living/carbon/carbon_user = user
 		var/obj/item/bodypart/user_head = carbon_user.get_bodypart(BODY_ZONE_HEAD)
 		if(isnull(user_head)) // So no head?
-			user.visible_message(span_suicide("[user]Tenta decapitar[user.p_them()]ego com[src], mas[user.p_they()] [user.p_were()]Já está perdendo! Que vergonha!"))
+			user.visible_message(span_suicide("[user] Tenta decapitar [user.p_them()] ego com [src], mas [user.p_they()] [user.p_were()] Já está perdendo! Que vergonha!"))
 			return SHAME
-		user.visible_message(span_suicide("[user]Está decapitando.[user.p_them()]ego com[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+		user.visible_message(span_suicide("[user] Está decapitando.[user.p_them()] ego com [src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 		user_head.drop_limb()
 		playsound(loc, SFX_DESECRATION, 50, TRUE, -1)
 		return BRUTELOSS
 	// If we have no blade, just beat ourselves up
-	user.visible_message(span_suicide("[user]Repetentemente Bate[src]Contra[user.p_them()]Eu! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Repetentemente Bate [src] Contra [user.p_them()] Eu! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/items/gavel.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 

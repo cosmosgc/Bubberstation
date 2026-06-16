@@ -56,7 +56,7 @@
 	if(master && !master.can_terminal_dismantle())
 		return
 
-	user.visible_message(span_notice("[user.name]Desmonta o terminal de cabo de[master]."))
+	user.visible_message(span_notice("[user.name] Desmonta o terminal de cabo de [master]."))
 	balloon_alert(user, "Cortar os cabos...")
 
 	playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)

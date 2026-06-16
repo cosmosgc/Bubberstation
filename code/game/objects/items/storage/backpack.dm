@@ -71,7 +71,7 @@
 	acid = 50
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está pulando em[src]! Parece que...[user.p_theyre()]Tentando cometer suicídio."))
+	user.visible_message(span_suicide("[user] está pulando em [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio."))
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(2 SECONDS)
@@ -93,7 +93,7 @@
 	regenerate_presents()
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Lugares[src]Câmbio.[user.p_their()]cabeça e puxa apertado! Parece que...[user.p_they()] [user.p_are()]Não no espírito natalino..."))
+	user.visible_message(span_suicide("[user] Lugares [src] Câmbio.[user.p_their()] cabeça e puxa apertado! Parece que...[user.p_they()] [user.p_are()] Não no espírito natalino..."))
 	return OXYLOSS
 
 /obj/item/storage/backpack/santabag/proc/regenerate_presents()

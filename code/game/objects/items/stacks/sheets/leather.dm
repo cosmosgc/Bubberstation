@@ -319,9 +319,9 @@ GLOBAL_LIST_INIT(bear_pelt_recipes, list ( 	new/datum/stack_recipe("bear costume
 /obj/item/stack/sheet/animalhide/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
 		playsound(loc, 'sound/items/weapons/slice.ogg', 50, TRUE, -1)
-		user.visible_message(span_notice("[user]Começa a cortar o cabelo.\the [src]."), span_notice("Você começa a cortar o cabelo\the [src]..."), span_hear("Você ouve o som de uma faca esfregando na carne."))
+		user.visible_message(span_notice("[user] Começa a cortar o cabelo.\the [src]."), span_notice("Você começa a cortar o cabelo\the [src]..."), span_hear("Você ouve o som de uma faca esfregando na carne."))
 		if(do_after(user, 5 SECONDS, target = src))
-			to_chat(user, span_notice("Você cortou o cabelo de[src.name]."))
+			to_chat(user, span_notice("Você cortou o cabelo de [src.name]."))
 			new /obj/item/stack/sheet/hairlesshide(user.drop_location(), amount)
 			use(amount)
 	else
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(bear_pelt_recipes, list ( 	new/datum/stack_recipe("bear costume
 	AddComponent(/datum/component/bakeable, /obj/item/stack/sheet/leather, rand(15 SECONDS, 20 SECONDS), TRUE, TRUE)
 
 /obj/item/stack/sheet/wethide/burn()
-	visible_message(span_notice("[src]Seca!"))
+	visible_message(span_notice("[src] Seca!"))
 	new /obj/item/stack/sheet/leather(loc, amount) // all the sheets to incentivize not losing your whole stack by accident
 	qdel(src)
 

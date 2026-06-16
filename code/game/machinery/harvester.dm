@@ -63,7 +63,7 @@
 /obj/machinery/harvester/click_alt(mob/user)
 	if(panel_open)
 		output_dir = turn(output_dir, -90)
-		to_chat(user, span_notice("Você muda.[src]configurações de saída, definindo a saída para[dir2text(output_dir)]."))
+		to_chat(user, span_notice("Você muda.[src] configurações de saída, definindo a saída para [dir2text(output_dir)]."))
 		return CLICK_ACTION_SUCCESS
 	if(harvesting || state_open || !can_harvest())
 		return CLICK_ACTION_BLOCKING
@@ -107,7 +107,7 @@
 	operation_order = reverse_range(carbon_occupant.get_bodyparts())   //Chest and head are first in bodyparts, so we invert it to make them suffer more
 	warming_up = TRUE
 	harvesting = TRUE
-	visible_message(span_notice("\The [src]Começa a aquecer!"))
+	visible_message(span_notice("\The [src] Começa a aquecer!"))
 	say("Initializing harvest protocol.")
 	update_appearance()
 	addtimer(CALLBACK(src, PROC_REF(harvest)), interval)
@@ -151,10 +151,10 @@
 
 /obj/machinery/harvester/screwdriver_act(mob/living/user, obj/item/tool)
 	if(occupant)
-		to_chat(user, span_warning("[src]Está ocupado no momento!"))
+		to_chat(user, span_warning("[src] Está ocupado no momento!"))
 		return ITEM_INTERACT_BLOCKING
 	if(state_open)
-		to_chat(user, span_warning("[src]deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
+		to_chat(user, span_warning("[src] deve ser fechado para[panel_open ? "close" : "open"]Sua escotilha de manutenção!"))
 		return ITEM_INTERACT_BLOCKING
 	return default_deconstruction_screwdriver(user, tool)
 
@@ -175,11 +175,11 @@
 
 /obj/machinery/harvester/container_resist_act(mob/living/user)
 	if(!harvesting)
-		visible_message(span_notice("[occupant]emerge de[src]!"),
-			span_notice("Você sai[src]!"))
+		visible_message(span_notice("[occupant] emerge de [src]!"),
+			span_notice("Você sai [src]!"))
 		open_machine()
 	else
-		to_chat(user,span_warning("[src]está ativo e não pode ser aberto!")) //rip
+		to_chat(user,span_warning("[src] está ativo e não pode ser aberto!")) //rip
 
 /obj/machinery/harvester/Exited(atom/movable/gone, direction)
 	if (!state_open && gone == occupant)
@@ -195,8 +195,8 @@
 	if(machine_stat & BROKEN)
 		return
 	if(state_open)
-		. += span_notice("[src]Deve ser feito antes da colheita.")
+		. += span_notice("[src] Deve ser feito antes da colheita.")
 	else if(!harvesting)
-		. += span_notice("Alt-click[src]para começar a colheita.")
+		. += span_notice("Alt-click [src] para começar a colheita.")
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("A exibição de status diz:<b>[interval*0.1]</b>segundos por órgão. Saindo para o<b>[dir2text(output_dir)]</b>.")

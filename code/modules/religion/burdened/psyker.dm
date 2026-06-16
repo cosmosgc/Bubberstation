@@ -110,7 +110,7 @@
 		if(HAS_TRAIT(possible_rod, TRAIT_NULLROD_ITEM))
 			transformation_target = possible_rod
 			return ..()
-	to_chat(human_user, span_warning("Você precisa colocar uma vara nula[religious_tool]Para fazer isso!"))
+	to_chat(human_user, span_warning("Você precisa colocar uma vara nula [religious_tool] Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/nullrod_transformation/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -120,7 +120,7 @@
 	if(QDELETED(null_rod) || null_rod.loc != get_turf(religious_tool))
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	to_chat(user, span_warning("[null_rod]Vira uma arma!"))
+	to_chat(user, span_warning("[null_rod] Vira uma arma!"))
 	user.emote("smile")
 	qdel(null_rod)
 	new /obj/item/gun/ballistic/revolver/chaplain(get_turf(religious_tool))

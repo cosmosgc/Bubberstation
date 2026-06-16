@@ -43,7 +43,7 @@
 		connected_botpad.connected_remote = src
 		connected_botpad.id = id
 		multitool.set_buffer(null)
-		to_chat(user, span_notice("Você conecta o controlador ao bloco com dados de\the [multitool]É um amortecedor."))
+		to_chat(user, span_notice("Você conecta o controlador ao bloco com dados de\the [multitool] É um amortecedor."))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/botpad_remote/proc/try_launch(mob/living/user)

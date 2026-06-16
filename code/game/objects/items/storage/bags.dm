@@ -52,13 +52,13 @@
 	// Otherwise, we're gonna dump into the dest object
 	var/turf/dump_onto = get_turf(dest_object)
 	user.visible_message(
-		span_notice("[user]Descarta o conteúdo de[src]Todos para fora\the [dump_onto]"),
-		span_notice("O resto do lixo em\the [src]cai em cima\the [dump_onto]"),
+		span_notice("[user] Descarta o conteúdo de [src] Todos para fora\the [dump_onto]"),
+		span_notice("O resto do lixo em\the [src] cai em cima\the [dump_onto]"),
 	)
 	source.remove_all(dump_onto)
 
 /obj/item/storage/bag/trash/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]coloca[src]Câmbio.[user.p_their()]cabeça e começa a mastigar por dentro! Nojento!"))
+	user.visible_message(span_suicide("[user] coloca [src] Câmbio.[user.p_their()] cabeça e começa a mastigar por dentro! Nojento!"))
 	playsound(loc, 'sound/items/eatfood.ogg', 50, TRUE, -1)
 	return TOXLOSS
 
@@ -141,7 +141,7 @@
 
 /obj/item/storage/bag/ore/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/boulder))
-		to_chat(user, span_warning("Você não cabe.[tool]em[src]Talvez você deva quebrar primeiro, ou encontrar uma caixa de minério."))
+		to_chat(user, span_warning("Você não cabe.[tool] em [src] Talvez você deva quebrar primeiro, ou encontrar uma caixa de minério."))
 		return ITEM_INTERACT_BLOCKING
 	return NONE
 
@@ -188,14 +188,14 @@
 	if (box)
 		balloon_alert(user, "colheres de minério em caixa")
 		user.visible_message(
-			span_notice("[user]Descarrega os minérios abaixo[user.p_them()]em[box]."),
+			span_notice("[user] Descarrega os minérios abaixo [user.p_them()] em [box]."),
 			ignored_mobs = user
 		)
 		return
 
 	balloon_alert(user, "colheres de minério em saco")
 	user.visible_message(
-		span_notice("[user]Recolhe os minérios abaixo[user.p_them()]."),
+		span_notice("[user] Recolhe os minérios abaixo [user.p_them()]."),
 		ignored_mobs = user
 	)
 

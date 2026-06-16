@@ -77,14 +77,14 @@
 ///Dispenses the proper prizes and gives them a positive mood event. If valid, has a small chance to give a pulse rifle.
 /obj/machinery/computer/arcade/proc/prizevend(mob/living/user, prizes = 1)
 	if(user.mind?.get_skill_level(/datum/skill/gaming) >= SKILL_LEVEL_LEGENDARY && HAS_TRAIT(user, TRAIT_GAMERGOD))
-		visible_message(span_notice("[user]Introduz um código de fraude intenso!"),		span_notice("Você ouve um barulho de botões sendo pressionados."))
+		visible_message(span_notice("[user] Introduz um código de fraude intenso!"),		span_notice("Você ouve um barulho de botões sendo pressionados."))
 		say("CODE ACTIVATED: EXTRA PRIZES.")
 		prizes *= 2
 	for(var/i in 1 to prizes)
 		user.add_mood_event("arcade", /datum/mood_event/arcade)
 		if(prob(0.0001)) //1 in a million
 			new /obj/item/gun/energy/pulse/prize(get_turf(src))
-			visible_message(span_notice("[src]Uma arma! Muito legal."), span_notice("Você ouve um sino e um tiro."))
+			visible_message(span_notice("[src] Uma arma! Muito legal."), span_notice("Você ouve um sino e um tiro."))
 			user.client.give_award(/datum/award/achievement/misc/pulse, user)
 			continue
 
@@ -95,11 +95,11 @@
 			prizeselect = pick_weight_recursive(GLOB.arcade_prize_pool) //BUBBERSTATION CHANGE: USES PICK WEIGHT RECURSIVE
 		var/atom/movable/the_prize = new prizeselect(get_turf(src))
 		playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
-		visible_message(span_notice("[src]Dispensa[the_prize]!"), span_notice("Você ouve um sino e um barulho."))
+		visible_message(span_notice("[src] Dispensa [the_prize]!"), span_notice("Você ouve um sino e um barulho."))
 
 /obj/machinery/computer/arcade/proc/victory_tickets(tickets, sound = TRUE)
 	SEND_SIGNAL(src, COMSIG_ARCADE_VICTORY)
-	visible_message(span_notice("[src]Dispensa[tickets]Passagem!"))
+	visible_message(span_notice("[src] Dispensa [tickets] Passagem!"))
 	new /obj/item/stack/arcadeticket((get_turf(src)), tickets)
 	if(sound)
 		playsound(loc, 'sound/machines/arcade/win.ogg', 40)

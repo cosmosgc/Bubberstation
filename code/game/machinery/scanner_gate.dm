@@ -113,7 +113,7 @@
 /obj/machinery/scanner_gate/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Está programado para procurar[span_boldnotice(scangate_mode)].")
+	. += span_notice("Está programado para procurar [span_boldnotice(scangate_mode)].")
 	if(locked)
 		. += span_notice("O painel de controle está bloqueado. Use uma identidade válida para destravá-la.")
 	else

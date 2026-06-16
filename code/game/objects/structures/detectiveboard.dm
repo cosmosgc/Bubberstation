@@ -64,7 +64,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 		cases[current_case].notices++
 		var/datum/evidence/evidence = new (name, desc, item)
 		cases[current_case].evidences += evidence
-		to_chat(user, span_notice("Você prende o[item]Para o conselho de defesa."))
+		to_chat(user, span_notice("Você prende o [item] Para o conselho de defesa."))
 		attaching_evidence = FALSE
 		update_appearance(UPDATE_ICON)
 		return
@@ -104,7 +104,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 			switch(evidence.evidence_type)
 				if(EVIDENCE_TYPE_PHOTO)
 					var/obj/item/photo/photo = evidence.item
-					var/tmp_picture_name = "evidence_photo[REF(photo)].png"
+					var/tmp_picture_name = "evidence_photo [REF(photo)].png"
 					user << browse_rsc(photo.picture.picture_image, tmp_picture_name)
 					data_evidence["photo_url"] = tmp_picture_name
 				if(EVIDENCE_TYPE_PAPER)

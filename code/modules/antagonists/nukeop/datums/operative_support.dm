@@ -6,7 +6,7 @@
 
 /datum/antagonist/nukeop/support/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/machines/printer.ogg', 100, 0, use_reverb = FALSE)
-	to_chat(owner, span_big("Você é...[name]Você foi designado temporariamente para monitorar a câmera e gerenciar comunicações para uma equipe nuclear!"))
+	to_chat(owner, span_big("Você é...[name] Você foi designado temporariamente para monitorar a câmera e gerenciar comunicações para uma equipe nuclear!"))
 	to_chat(owner, span_red("Use suas ferramentas para configurar seu equipamento como quiser, mas não tente deixar seu posto avançado."))
 	owner.announce_objectives()
 

@@ -27,7 +27,7 @@
 	. = ..()
 	if (stored_mob_type)
 		var/mob/living/will_become = stored_mob_type
-		. += span_notice("Ele contém digitalizado[initial(will_become.name)]DNA.")
+		. += span_notice("Ele contém digitalizado [initial(will_become.name)] DNA.")
 	if (!active)
 		. += span_warning("Requer um Núcleo de Anomalia Bioescrambler para funcionar.")
 
@@ -83,10 +83,10 @@
 		balloon_alert(user, "Ocupado!")
 		return TRUE
 	balloon_alert(user, "escaneando...")
-	visible_message(span_notice("[user]começa a varredura[target_mob]Com[src]."))
+	visible_message(span_notice("[user] começa a varredura [target_mob] Com [src]."))
 	if (!do_after(user, delay = 5 SECONDS, target = target_mob))
 		return TRUE
-	visible_message(span_notice("[user]scans[target_mob]Com[src]."))
+	visible_message(span_notice("[user] scans [target_mob] Com [src]."))
 	stored_mob_type = target_mob.type
 	update_transform_action()
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
@@ -155,7 +155,7 @@
 		animate(cast_on, transform = matrix(), time = 0, easing = SINE_EASING)
 		cast_on.transform = old_transform
 		return . | SPELL_CANCEL_CAST
-	cast_on.visible_message(span_warning("[cast_on]O corpo se reorganiza com um som horrível!"))
+	cast_on.visible_message(span_warning("[cast_on] O corpo se reorganiza com um som horrível!"))
 	playsound(cast_on, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 
 /datum/action/cooldown/spell/shapeshift/polymorph_belt/after_cast(atom/cast_on)
@@ -171,7 +171,7 @@
 	shapeshift_type = transform_type
 	possible_shapes = list(transform_type)
 	var/mob/living/will_become = transform_type
-	desc = "Assumir o seu[initial(will_become.name)]Formar!"
+	desc = "Assumir o seu [initial(will_become.name)] Formar!"
 	build_all_button_icons(update_flags = UPDATE_BUTTON_NAME)
 
 /// Subtype of the polymorph status effect which tracks arbitrary mob transformation

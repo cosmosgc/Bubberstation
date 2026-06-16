@@ -38,7 +38,7 @@
 		return
 
 	ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
-	to_chat(user, span_userdanger("[src]Aperta firmemente seu rosto enquanto sente sua alma drenando!"))
+	to_chat(user, span_userdanger("[src] Aperta firmemente seu rosto enquanto sente sua alma drenando!"))
 
 /obj/item/clothing/mask/madness_mask/dropped(mob/M)
 	local_user = null

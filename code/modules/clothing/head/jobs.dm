@@ -88,10 +88,10 @@
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 /obj/item/clothing/head/utility/chefhat/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está donando.[src]Parece que...[user.p_theyre()]Tentando se rasgar um chef."))
+	user.visible_message(span_suicide("[user] Está donando.[src] Parece que...[user.p_theyre()] Tentando se rasgar um chef."))
 	user.say("Bork Bork Bork!", forced = "chef hat suicide")
 	sleep(2 SECONDS)
-	user.visible_message(span_suicide("[user]sobe em um forno imaginário!"))
+	user.visible_message(span_suicide("[user] sobe em um forno imaginário!"))
 	user.say("BOOORK!", forced = "chef hat suicide")
 	playsound(user, 'sound/machines/ding.ogg', 50, TRUE)
 	return FIRELOSS
@@ -293,7 +293,7 @@
 	for(var/found_regex in phrases_by_regex)
 		var/found_phrase = phrases_by_regex[found_regex]
 		var/obj/item/found_item = items_by_regex[found_regex]
-		. += span_notice("[icon2html(found_item, user)]Você pode remover[found_item]Dizendo<b>\"[prefix] [found_phrase]\"</b>!")
+		. += span_notice("[icon2html(found_item, user)] Você pode remover [found_item] Dizendo<b>\"[prefix] [found_phrase]\"</b>!")
 
 /obj/item/clothing/head/fedora/inspector_hat/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
 	. = ..()
@@ -308,7 +308,7 @@
 			continue
 		var/obj/item/found_item = items_by_regex[found_regex]
 		if(wearer.put_in_hands(found_item))
-			wearer.visible_message(span_warning("[src]Gotas[found_item]nas mãos de[wearer]!"))
+			wearer.visible_message(span_warning("[src] Gotas [found_item] nas mãos de [wearer]!"))
 			. = TRUE
 		else
 			balloon_alert(wearer, "Não posso colocar em mãos!")
@@ -333,7 +333,7 @@
 	if(item.loc != user || !user.transferItemToLoc(item, src))
 		return
 
-	to_chat(user, span_notice("Você instala.[item]Parao[thtotext(contents.len)]slot of[src]."))
+	to_chat(user, span_notice("Você instala.[item] Parao [thtotext(contents.len)] slot of [src]."))
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 	set_phrase(desired_phrase,item)
 
@@ -716,10 +716,10 @@
 	if(!human_examined.get_bodypart(BODY_ZONE_HEAD))
 		return
 	if(!examiner.has_light_nearby())
-		examine_list += span_warning("Você tenta usar o seu[name]Para examinar[examining]A cabeça está melhor... mas está muito escuro. Devia ter investido em uma lâmpada.")
+		examine_list += span_warning("Você tenta usar o seu [name] Para examinar [examining] A cabeça está melhor... mas está muito escuro. Devia ter investido em uma lâmpada.")
 		return
 	if(examiner.dir == examining.dir) // disallow examine from behind - every other dir is OK
-		examine_list += span_warning("Você tenta usar o seu[name]Para examinar[examining]A cabeça está melhor... mas...[examining.p_theyre()]De frente para o lado errado.")
+		examine_list += span_warning("Você tenta usar o seu [name] Para examinar [examining] A cabeça está melhor... mas...[examining.p_theyre()] De frente para o lado errado.")
 		return
 
 	var/list/final_message = list("You examine [examining]'s head closer with your [name], you notice [examining.p_they()] [examining.p_have()]...")

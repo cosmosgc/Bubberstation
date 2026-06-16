@@ -23,7 +23,7 @@
 	generators |= tool.buffer
 	RegisterSignal(tool.buffer, COMSIG_QDELETING, PROC_REF(generator_deleted))
 	tool.set_buffer(null)
-	to_chat(user, span_notice("Você carrega os dados do[tool]Tampão."))
+	to_chat(user, span_notice("Você carrega os dados do [tool] Tampão."))
 	return ITEM_INTERACT_SUCCESS
 
 ///checks if all connected generators exist

@@ -397,10 +397,10 @@
 /obj/item/gun/ballistic/automatic/battle_rifle/examine(mob/user)
 	. = ..()
 	if(shots_before_degradation)
-		. += span_notice("[src]Pode atirar[shots_before_degradation]Mais vezes antes da degradação do sistema.")
+		. += span_notice("[src] Pode atirar [shots_before_degradation] Mais vezes antes da degradação do sistema.")
 	else
-		. += span_notice("[src]está em processo de degradação do sistema. Está no momento.[degradation_stage]De[degradation_stage_max]Use uma multitool.[src]Para recalibrar. Alternativamente, insira em um carrinho de armas.")
-	. += span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre[src].")
+		. += span_notice("[src] está em processo de degradação do sistema. Está no momento.[degradation_stage] De [degradation_stage_max] Use uma multitool.[src] Para recalibrar. Alternativamente, insira em um carrinho de armas.")
+	. += span_notice("Você pode.[EXAMINE_HINT("look closer")]Para apresentar um poco mais sobre [src].")
 
 
 

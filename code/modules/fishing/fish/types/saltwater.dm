@@ -33,7 +33,7 @@
 
 // become lubeman. but you suicide
 /obj/item/fish/clownfish/lube/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Se você quiser[src]É resíduo, engole-o inteiro! Parece que...[user.p_theyre()]Tentando lubide cometer!"))
+	user.visible_message(span_suicide("[user] Se você quiser [src] É resíduo, engole-o inteiro! Parece que...[user.p_theyre()] Tentando lubide cometer!"))
 	user.AddComponent(/datum/component/slippery, 8 SECONDS, SLIDE|GALOSHES_DONT_HELP)
 	user.AddElement(/datum/element/lube_walking)
 	qdel(src)
@@ -104,7 +104,7 @@
 	beauty = FISH_BEAUTY_GOOD
 
 /obj/item/fish/pufferfish/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Morde em[src]E começa a chupar! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Morde em [src] E começa a chupar! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/fish/lanternfish
@@ -253,16 +253,16 @@
 	fish_traits = list(/datum/fish_trait/heavy, /datum/fish_trait/carnivore, /datum/fish_trait/predator, /datum/fish_trait/ink, /datum/fish_trait/camouflage, /datum/fish_trait/wary)
 
 /obj/item/fish/squid/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Ponto[src]As glândulas de tinta no rosto e pressionam com força! Parece que...[user.p_theyre()]Tentando comer lula!"))
+	user.visible_message(span_suicide("[user] Ponto [src] As glândulas de tinta no rosto e pressionam com força! Parece que...[user.p_theyre()] Tentando comer lula!"))
 
 	// No head? Bozo.
 	var/obj/item/bodypart/head = user.get_bodypart(BODY_ZONE_HEAD)
 	if(isnull(head))
-		user.visible_message(span_suicide("[user]Não tem cabeça! A tinta passa voando!"))
+		user.visible_message(span_suicide("[user] Não tem cabeça! A tinta passa voando!"))
 		return SHAME
 
 	// get inked.
-	user.visible_message(span_warning("[user]é pintado por[src]!"), span_userdanger("Você foi pintado por[src]!"))
+	user.visible_message(span_warning("[user] é pintado por [src]!"), span_userdanger("Você foi pintado por [src]!"))
 	user.AddComponent(/datum/component/face_decal/splat, 		color = COLOR_NEARLY_ALL_BLACK, 		memory_type = /datum/memory/witnessed_inking, 		mood_event_type = /datum/mood_event/inked, 	)
 	playsound(user, SFX_DESECRATION, 50, TRUE)
 
@@ -270,7 +270,7 @@
 		return OXYLOSS
 
 	head.dismember(silent = FALSE)
-	user.visible_message(span_suicide("[user]A cabeça voa do jato de tinta pressurizado!"))
+	user.visible_message(span_suicide("[user] A cabeça voa do jato de tinta pressurizado!"))
 	return MANUAL_SUICIDE
 
 /obj/item/fish/squid/get_fish_taste()

@@ -42,7 +42,7 @@
 			break
 
 	balloon_alert(user, "Preparar.[selected_platform]")
-	to_chat(user, span_notice("Você muda a identificação da plataforma.[src]Para[selected_platform]."))
+	to_chat(user, span_notice("Você muda a identificação da plataforma.[src] Para [selected_platform]."))
 
 ///set safety bypass
 /obj/item/assembly/control/transport/remote/item_ctrl_click(mob/user)

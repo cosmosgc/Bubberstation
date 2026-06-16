@@ -67,7 +67,7 @@
 			if(prob(eyes.damage - eyes.low_threshold + 1))
 				if(remove_eyes)
 					infected_mob.visible_message(
-						span_warning("[infected_mob]Os olhos caem de suas órbitas!"),
+						span_warning("[infected_mob] Os olhos caem de suas órbitas!"),
 						span_userdanger("Seus olhos caem de suas órbitas!"),
 					)
 					eyes.Remove(infected_mob)

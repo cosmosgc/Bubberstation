@@ -74,13 +74,13 @@
 		if(body.stat != DEAD)
 			continue
 		if(!IS_VALID_GHOUL_MOB(body) || HAS_TRAIT(body, TRAIT_HUSK))
-			to_chat(user, span_hierophant_warning("[body]Não está em um estado válido para ser transformado em um fantasma."))
+			to_chat(user, span_hierophant_warning("[body] Não está em um estado válido para ser transformado em um fantasma."))
 			continue
 		if(!body.mind)
-			to_chat(user, span_hierophant_warning("[body]é descuidado e não pode ser transformado em um fantasma."))
+			to_chat(user, span_hierophant_warning("[body] é descuidado e não pode ser transformado em um fantasma."))
 			continue
 		if(!body.client && !body.mind.get_ghost(ghosts_with_clients = TRUE))
-			to_chat(user, span_hierophant_warning("[body]é sem alma e não pode ser transformado em um fantasma."))
+			to_chat(user, span_hierophant_warning("[body] é sem alma e não pode ser transformado em um fantasma."))
 			continue
 
 		// We will only accept valid bodies with a mind, or with a ghost connected that used to control the body

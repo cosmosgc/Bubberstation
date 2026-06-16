@@ -103,12 +103,12 @@
 			if(istype(used, /obj/item/gun/energy)) //the gun installation part
 				var/obj/item/gun/energy/egun = used
 				if(egun.gun_flags & TURRET_INCOMPATIBLE)
-					to_chat(user, span_notice("Você não acha que seria certo adicionar[used]Para a torre"))
+					to_chat(user, span_notice("Você não acha que seria certo adicionar [used] Para a torre"))
 					return
 				if(!user.transferItemToLoc(egun, src))
 					return
 				installed_gun = egun
-				to_chat(user, span_notice("Você acrescenta[used]Para uma torre."))
+				to_chat(user, span_notice("Você acrescenta [used] Para uma torre."))
 				build_step = PTURRET_GUN_EQUIPPED
 				return
 			else if(used.tool_behaviour == TOOL_WRENCH)
@@ -210,7 +210,7 @@
 			build_step = PTURRET_INTERNAL_ARMOUR_ON
 
 			installed_gun.forceMove(loc)
-			to_chat(user, span_notice("Você tira.[installed_gun]da armação da torre."))
+			to_chat(user, span_notice("Você tira.[installed_gun] da armação da torre."))
 			installed_gun = null
 
 		if(PTURRET_SENSORS_ON)

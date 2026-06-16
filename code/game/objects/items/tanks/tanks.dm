@@ -156,7 +156,7 @@
 			. += span_notice("Se quiser mais informações, precisa se aproximar.")
 		return
 
-	. += span_notice("O medidor de pressão diz[round(air_contents.return_pressure(),0.01)]KPa.")
+	. += span_notice("O medidor de pressão diz [round(air_contents.return_pressure(),0.01)] KPa.")
 
 	var/celsius_temperature = air_contents.temperature-T0C
 	var/descriptive
@@ -174,7 +174,7 @@
 	else
 		descriptive = "furiously hot"
 
-	. += span_notice("Parece[descriptive].")
+	. += span_notice("Parece [descriptive].")
 
 	if(tank_assembly)
 		. += span_warning("Há algum tipo de dispositivo.[EXAMINE_HINT("rigged")]Para o tanque!")
@@ -188,7 +188,7 @@
 
 /obj/item/tank/suicide_act(mob/living/user)
 	var/mob/living/carbon/human/human_user = user
-	user.visible_message(span_suicide("[user]está colocando[src]'s válvula para[user.p_their()]Lábios! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está colocando [src]'s válvula para [user.p_their()] Lábios! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(loc, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	if(!QDELETED(human_user) && air_contents && air_contents.return_pressure() >= 1000)
 		var/obj/item/bodypart/head = human_user.get_bodypart(BODY_ZONE_HEAD)
@@ -196,7 +196,7 @@
 			ADD_TRAIT(head, TRAIT_DISFIGURED, TRAIT_GENERIC)
 		human_user.inflate_gib()
 		return MANUAL_SUICIDE
-	to_chat(user, span_warning("Não há pressão suficiente.[src]cometer suicídio com..."))
+	to_chat(user, span_warning("Não há pressão suficiente.[src] cometer suicídio com..."))
 	return SHAME
 
 /obj/item/tank/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -380,7 +380,7 @@
 
 	if(atom_integrity < 0) // So we don't play the alerts while we are exploding or rupturing.
 		return
-	visible_message(span_warning("[src]Molha um vazamento!"))
+	visible_message(span_warning("[src] Molha um vazamento!"))
 	playsound(src, 'sound/effects/spray.ogg', 10, TRUE, -3)
 
 /// Handles rupturing and fragmenting
@@ -446,7 +446,7 @@
 	return TRUE
 
 /obj/item/tank/receive_signal() //This is mainly called by the sensor through sense() to the holder, and from the holder to here.
-	audible_message(span_warning("[icon2html(src, hearers(src))]Bip, bip"))
+	audible_message(span_warning("[icon2html(src, hearers(src))] Bip, bip"))
 	playsound(src, 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(ignite)), 1 SECONDS)
 

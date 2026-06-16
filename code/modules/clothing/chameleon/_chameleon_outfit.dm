@@ -68,7 +68,7 @@
 		next_custom_outfit = 1
 
 	LAZYSET(custom_outfits, "Custom Outfit #[next_custom_outfit]", saved_paths)
-	owner.balloon_alert(user, "Roupas salvas em slot[next_custom_outfit]")
+	owner.balloon_alert(user, "Roupas salvas em slot [next_custom_outfit]")
 	next_custom_outfit += 1
 
 /datum/action/chameleon_outfit/proc/select_outfit(mob/user)

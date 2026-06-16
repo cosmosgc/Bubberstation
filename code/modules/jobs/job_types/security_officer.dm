@@ -158,7 +158,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	if(player_client)
 		if(department)
-			to_chat(player_client, "<b>Você foi designado para[department]!</b>")
+			to_chat(player_client, "<b>Você foi designado para [department]!</b>")
 		else
 			to_chat(player_client, "<b>Você não foi designado para nenhum departamento. Patrulhe os corredores e ajude onde for necessário.</b>")
 

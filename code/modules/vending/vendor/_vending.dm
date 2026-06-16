@@ -366,13 +366,13 @@
 	var/list/total_stock = total_stock()
 	if(total_stock[2])
 		if(total_stock[1] < total_stock[2])
-			. += span_notice("\The [src]pode ser reabastecido com[span_boldnotice("\a [initial(refill_canister.machine_name)] [initial(refill_canister.name)]")]com o painel aberto.")
+			. += span_notice("\The [src] pode ser reabastecido com[span_boldnotice("\a [initial(refill_canister.machine_name)] [initial(refill_canister.name)]")]com o painel aberto.")
 		else
-			. += span_notice("\The [src]está totalmente abastecido.")
+			. += span_notice("\The [src] está totalmente abastecido.")
 	if(credits_contained < CREDITS_DUMP_THRESHOLD && credits_contained > 0)
-		. += span_notice("Deve ter um punhado de[MONEY_NAME]Armazenado com base nos itens desaparecidos.")
+		. += span_notice("Deve ter um punhado de [MONEY_NAME] Armazenado com base nos itens desaparecidos.")
 	else if (credits_contained > PAYCHECK_CREW)
-		. += span_notice("Deve ter pelo menos um salário total de[MONEY_NAME]Para dentro!")
+		. += span_notice("Deve ter pelo menos um salário total de [MONEY_NAME] Para dentro!")
 
 /obj/machinery/vending/update_appearance(updates = ALL)
 	. = ..()

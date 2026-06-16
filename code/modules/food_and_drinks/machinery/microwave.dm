@@ -165,7 +165,7 @@
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		if(capacitor.tier >= 2)
 			vampire_charging_capable = TRUE
-			visible_message(span_notice("O[EXAMINE_HINT("Charge Ready")]Luz acesa.\the [src]Brilha para a vida."))
+			visible_message(span_notice("O[EXAMINE_HINT("Charge Ready")]Luz acesa.\the [src] Brilha para a vida."))
 			break
 
 /obj/machinery/microwave/examine(mob/user)
@@ -184,17 +184,17 @@
 		. += span_notice("[EXAMINE_HINT("Right-click")]para começar[vampire_charging_enabled ? "charging" : "cooking"]Ciclo.")
 
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("Você está muito longe para examinar.[src]O conteúdo e a exibição!")
+		. += span_warning("Você está muito longe para examinar.[src] O conteúdo e a exibição!")
 		return
 	if(operating)
-		. += span_notice("\The [src]está operando.")
+		. += span_notice("\The [src] está operando.")
 		return
 
 	if(length(ingredients))
 		if(issilicon(user))
-			. += span_notice("\The [src]A câmera mostra:")
+			. += span_notice("\The [src] A câmera mostra:")
 		else
-			. += span_notice("\The [src]contém:")
+			. += span_notice("\The [src] contém:")
 		var/list/items_counts = new
 		for(var/i in ingredients)
 			if(isstack(i))
@@ -204,12 +204,12 @@
 				var/atom/movable/single_item = i
 				items_counts[single_item.name]++
 		for(var/item in items_counts)
-			. += span_notice("- [items_counts[item]]x[item].")
+			. += span_notice("- [items_counts [item]]x [item].")
 	else
-		. += span_notice("\The [src]Está vazio.")
+		. += span_notice("\The [src] Está vazio.")
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += "[span_notice("The status display reads:")]\n"+		"[span_notice("- Mode: <b>[vampire_charging_enabled ? "Charge" : "Cook"]</b>.")]\n"+		"[span_notice("- Capacity: <b>[max_n_of_items]</b> items.")]\n"+		span_notice("- Poder:<b>[efficiency * TIER_1_CELL_CHARGE_RATE]W</b>.")
+		. += "[span_notice("The status display reads:")]\n"+		"[span_notice("- Mode: <b>[vampire_charging_enabled ? "Charge" : "Cook"]</b>.")]\n"+		"[span_notice("- Capacity: <b>[max_n_of_items]</b> items.")]\n"+		span_notice("- Poder:<b>[efficiency * TIER_1_CELL_CHARGE_RATE] W</b>.")
 
 		if(cell_powered)
 			. += span_notice("- Carga:<b>[isnull(cell) ? "INSERT CELL" : "[round(cell.percent())]%"]</b>.")
@@ -327,16 +327,16 @@
 		return NONE
 
 	user.visible_message(
-		span_notice("[user]Começa a consertar parte de[src]."),
-		span_notice("Você começa a consertar parte de[src]..."),
+		span_notice("[user] Começa a consertar parte de [src]."),
+		span_notice("Você começa a consertar parte de [src]..."),
 	)
 
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]Conserta parte de[src]."),
-		span_notice("Você conserta parte de[src]."),
+		span_notice("[user] Conserta parte de [src]."),
+		span_notice("Você conserta parte de [src]."),
 	)
 	broken = KINDA_BROKEN // Fix it a bit
 	update_appearance()
@@ -347,15 +347,15 @@
 		return NONE
 
 	user.visible_message(
-		span_notice("[user]Começa a consertar parte de[src]."),
-		span_notice("Você começa a consertar parte de[src]..."),
+		span_notice("[user] Começa a consertar parte de [src]."),
+		span_notice("Você começa a consertar parte de [src]..."),
 	)
 
 	if(!tool.use_tool(src, user, 2 SECONDS, amount = 1, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(
-		span_notice("[user]Consertos[src]."),
+		span_notice("[user] Consertos [src]."),
 		span_notice("Você conserta.[src]."),
 	)
 	broken = NOT_BROKEN
@@ -429,7 +429,7 @@
 
 		ingredients += item
 		open(autoclose = 0.6 SECONDS)
-		user.visible_message(span_notice("[user]adiciona\a [item]Para\the [src]."), span_notice("Você acrescenta[item]Para\the [src]."))
+		user.visible_message(span_notice("[user] adiciona\a [item] Para\the [src]."), span_notice("Você acrescenta [item] Para\the [src]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
@@ -446,7 +446,7 @@
 	var/loaded = 0
 	if(!istype(tool, /obj/item/storage/bag/tray))
 		// Non-tray dumping requires a do_after
-		to_chat(user, span_notice("Você começa a despejar o conteúdo de[tool]Em[src]..."))
+		to_chat(user, span_notice("Você começa a despejar o conteúdo de [tool] Em [src]..."))
 		if(!do_after(user, 2 SECONDS, target = tool))
 			return
 
@@ -462,7 +462,7 @@
 
 	if(loaded)
 		open(autoclose = 0.6 SECONDS)
-		to_chat(user, span_notice("Você insere[loaded]- Sim.\the [src]."))
+		to_chat(user, span_notice("Você insere [loaded]- Sim.\the [src]."))
 		update_appearance()
 
 /obj/machinery/microwave/mouse_drop_receive(obj/item/tool, mob/user, params)
@@ -488,7 +488,7 @@
 	balloon_alert(user, "Pronto para[vampire_charging_enabled ? "charge" : "cook"]")
 	playsound(src, 'sound/machines/beep/twobeep_high.ogg', 50, FALSE)
 	if(HAS_SILICON_ACCESS(user))
-		visible_message(span_notice("[user]Sets\the [src]Para[vampire_charging_enabled ? "charge" : "cook"]."), blind_message = span_notice("Você ouve.\the [src]Faça um bip informativo!"))
+		visible_message(span_notice("[user] Sets\the [src] Para[vampire_charging_enabled ? "charge" : "cook"]."), blind_message = span_notice("Você ouve.\the [src] Faça um bip informativo!"))
 	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/microwave/click_ctrl(mob/user)
@@ -628,14 +628,14 @@
 			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
 			return
 
-	visible_message(span_notice("\The [src]Liga."), null, span_hear("Você ouve um microondas zumbindo."))
+	visible_message(span_notice("\The [src] Liga."), null, span_hear("Você ouve um microondas zumbindo."))
 	operating = TRUE
 	set_light(l_range = 1.5, l_power = 1.2, l_on = TRUE)
 	soundloop.start()
 	update_appearance()
 
 /obj/machinery/microwave/proc/spark()
-	visible_message(span_warning("As faíscas voam[src]!"))
+	visible_message(span_warning("As faíscas voam [src]!"))
 	do_sparks(2, TRUE, src)
 
 /**
@@ -701,7 +701,7 @@
 			for(var/mob/smeller in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, src))
 				if(HAS_TRAIT(smeller, TRAIT_ANOSMIA))
 					cant_smell += smeller
-			visible_message(span_danger("Você sente um cheiro queimado vindo de[src]!"), ignored_mobs = cant_smell)
+			visible_message(span_danger("Você sente um cheiro queimado vindo de [src]!"), ignored_mobs = cant_smell)
 			add_shared_particles(/particles/smoke)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, remove_shared_particles), /particles/smoke), 10 SECONDS)
 			Shake(duration = 1 SECONDS)
@@ -768,7 +768,7 @@
 	cook_loop(type = MICROWAVE_NORMAL, cycles = 10, cooker = cooker)
 
 /obj/machinery/microwave/proc/muck_finish()
-	visible_message(span_warning("\The [src]Fica coberto de lama!"))
+	visible_message(span_warning("\The [src] Fica coberto de lama!"))
 
 	dirty = MAX_MICROWAVE_DIRTINESS
 	dirty_anim_playing = FALSE

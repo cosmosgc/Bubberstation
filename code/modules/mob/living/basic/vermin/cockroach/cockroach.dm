@@ -104,7 +104,7 @@
 	for(var/turf/messy_turf in view(src, 2))
 		new /obj/effect/decal/cleanable/blood(messy_turf)
 		for(var/mob/living/mob_in_turf in messy_turf)
-			mob_in_turf.visible_message(span_danger("[mob_in_turf]está cheio de sangue!"), span_userdanger("Você está cheio de sangue!"))
+			mob_in_turf.visible_message(span_danger("[mob_in_turf] está cheio de sangue!"), span_userdanger("Você está cheio de sangue!"))
 			mob_in_turf.add_blood_DNA(list("Non-human DNA" = random_human_blood_type()))
 			mob_in_turf.add_mood_event("splattered_with_blood", /datum/mood_event/splattered_with_blood)
 			playsound(mob_in_turf, 'sound/effects/splat.ogg', 50, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE)
@@ -140,9 +140,9 @@
 	if(!istype(living_target))
 		return FALSE //We failed to run the invoke. Might be because we're a structure. Let the squashable element handle it then!
 	if(!HAS_TRAIT(living_target, TRAIT_PIERCEIMMUNE))
-		living_target.visible_message(span_danger("[living_target]Passos em[cockroach]É o Spike!"), span_userdanger("Você pisa em[cockroach]É o Spike!"))
+		living_target.visible_message(span_danger("[living_target] Passos em [cockroach] É o Spike!"), span_userdanger("Você pisa em [cockroach] É o Spike!"))
 		return TRUE
-	living_target.visible_message(span_notice("[living_target]Squash.[cockroach], nem mesmo notei seu pico."), span_notice("Você esmagou.[cockroach], nem mesmo notei seu pico."))
+	living_target.visible_message(span_notice("[living_target] Squash.[cockroach], nem mesmo notei seu pico."), span_notice("Você esmagou.[cockroach], nem mesmo notei seu pico."))
 	return FALSE
 
 /// Regal rat royal escort

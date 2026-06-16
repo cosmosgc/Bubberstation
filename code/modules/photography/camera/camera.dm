@@ -94,14 +94,14 @@
 
 /obj/item/camera/examine(mob/user)
 	. = ..()
-	. += span_notice("Tem.[pictures_left]Faltam fotos.")
+	. += span_notice("Tem.[pictures_left] Faltam fotos.")
 	. += span_notice("Alt-clique para mudar seu foco, permitindo definir o tamanho de uma área que ele capturará.")
 	. += span_notice("As dimensões atuais da imagem são[EXAMINE_HINT("[APERTURE_TO_METERS(picture_size_x)]x[APERTURE_TO_METERS(picture_size_y)]")]")
 
 	if(isnull(disk))
 		. += span_notice("Tem um espaço para um disco hologravador.")
 	else
-		. += span_notice("Tem.\an [disk.name]inserido.")
+		. += span_notice("Tem.\an [disk.name] inserido.")
 
 /obj/item/camera/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -327,7 +327,7 @@
 
 		new_photo = new(src, picture)
 
-		to_chat(user, span_notice("[pictures_left]Faltam fotos."))
+		to_chat(user, span_notice("[pictures_left] Faltam fotos."))
 
 		var/name_customized = FALSE
 		if(can_customise)
@@ -355,7 +355,7 @@
 
 		new_photo = new(get_turf(src), picture)
 
-		to_chat(holder, span_notice("[pictures_left]Faltam fotos."))
+		to_chat(holder, span_notice("[pictures_left] Faltam fotos."))
 
 	new_photo.set_picture(picture, TRUE, TRUE)
 	if(CONFIG_GET(flag/picture_logging_camera))

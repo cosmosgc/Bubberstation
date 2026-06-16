@@ -95,7 +95,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if (load_delay > 0)
-		user.visible_message(span_warning("[user]Começa a carregar.[src]."))
+		user.visible_message(span_warning("[user] Começa a carregar.[src]."))
 		if(!do_after(user, load_delay, target = src))
 			return ITEM_INTERACT_BLOCKING
 
@@ -315,7 +315,7 @@
 		return ..()
 
 	if (load_delay > 0)
-		user.visible_message(span_warning("[user]Começa a enrolar.[src]."))
+		user.visible_message(span_warning("[user] Começa a enrolar.[src]."))
 		if(!do_after(user, load_delay, target = src))
 			return
 
@@ -382,7 +382,7 @@
 
 	playsound(src, 'sound/items/weapons/draw_bow.ogg', 50, FALSE, 5)
 	if (load_delay > 0)
-		user.visible_message(span_warning("[user]Começa a carregar.[src]."))
+		user.visible_message(span_warning("[user] Começa a carregar.[src]."))
 		if (!do_after(user, load_delay, target = src))
 			return ITEM_INTERACT_BLOCKING
 

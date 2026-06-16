@@ -78,10 +78,10 @@
 
 /datum/action/cooldown/mob_cooldown/wrap/proc/cocoon(atom/movable/to_wrap)
 	if(isliving(to_wrap))
-		to_chat(to_wrap, span_userdanger("[owner]Começa a segregar uma substância pegajosa ao seu redor."))
+		to_chat(to_wrap, span_userdanger("[owner] Começa a segregar uma substância pegajosa ao seu redor."))
 	owner.visible_message(
-		span_notice("[owner]começa a secretar uma substância pegajosa ao redor[to_wrap]."),
-		span_notice("Você começa a embrulhar[to_wrap]Em um casulo."),
+		span_notice("[owner] começa a secretar uma substância pegajosa ao redor [to_wrap]."),
+		span_notice("Você começa a embrulhar [to_wrap] Em um casulo."),
 	)
 	if(do_after(owner, wrap_time, target = to_wrap, interaction_key = DOAFTER_SOURCE_SPIDER))
 		wrap_target(to_wrap)
@@ -100,15 +100,15 @@
 				egg_power.charges++
 				egg_power.build_all_button_icons()
 				owner.visible_message(
-					span_danger("[owner]Enfia um proboscis em[living_wrapped]e suga uma substância viscosa para fora."),
-					span_notice("Você suga o alimento de[living_wrapped], alimentando você o suficiente para colocar um grupo de ovos enriquecidos."),
+					span_danger("[owner] Enfia um proboscis em [living_wrapped] e suga uma substância viscosa para fora."),
+					span_notice("Você suga o alimento de [living_wrapped], alimentando você o suficiente para colocar um grupo de ovos enriquecidos."),
 				)
 			ADD_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED, TRAIT_GENERIC)
 			living_wrapped.investigate_log("has been killed by being wrapped in a cocoon.", INVESTIGATE_DEATHS)
 			living_wrapped.death() //you just ate them, they're dead.
 			log_combat(owner, living_wrapped, "spider cocooned")
 		else
-			to_chat(owner, span_warning("[living_wrapped]Não é comestível!"))
+			to_chat(owner, span_warning("[living_wrapped] Não é comestível!"))
 
 	to_wrap.forceMove(casing)
 	if(isliving(to_wrap)&& (to_wrap.mob_biotypes & MOB_HUMANOID))

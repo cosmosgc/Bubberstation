@@ -58,7 +58,7 @@
 
 /// Create a laser in the direction we are facing
 /datum/action/cooldown/mob_cooldown/brimbeam/proc/fire_laser()
-	owner.visible_message(span_danger("[owner]Dispara um abajur!"))
+	owner.visible_message(span_danger("[owner] Dispara um abajur!"))
 	playsound(owner, 'sound/mobs/non-humanoids/brimdemon/brimdemon.ogg', 150, FALSE, 0, 3)
 	var/turf/target_turf = get_ranged_target_turf(owner, owner.dir, beam_range)
 	var/turf/origin_turf = get_turf(owner)
@@ -79,7 +79,7 @@
 		new_brimbeam.assign_creator(owner)
 		for(var/mob/living/hit_mob in affected_turf.contents)
 			hit_mob.apply_damage(damage = 25, damagetype = BURN)
-			to_chat(hit_mob, span_userdanger("Você está explodido por[owner]É abajur!"))
+			to_chat(hit_mob, span_userdanger("Você está explodido por [owner] É abajur!"))
 		RegisterSignal(new_brimbeam, COMSIG_QDELETING, PROC_REF(extinguish_laser)) // In case idk a singularity eats it or something
 	if(!length(beam_parts))
 		return FALSE
@@ -135,7 +135,7 @@
 /// Hurt the passed mob
 /obj/effect/brimbeam/proc/damage(mob/living/hit_mob)
 	hit_mob.apply_damage(damage = 5, damagetype = BURN)
-	to_chat(hit_mob, span_danger("Você está danificado por[src]!"))
+	to_chat(hit_mob, span_danger("Você está danificado por [src]!"))
 
 /// Ignore damage dealt to this mob
 /obj/effect/brimbeam/proc/assign_creator(mob/living/maker)

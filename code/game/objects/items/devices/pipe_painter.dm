@@ -14,7 +14,7 @@
 		var/obj/machinery/atmospherics/target_pipe = interacting_with
 		target_pipe.paint(GLOB.pipe_paint_colors[paint_color])
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-		balloon_alert(user, "Pintado em[paint_color]cor")
+		balloon_alert(user, "Pintado em [paint_color] cor")
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(interacting_with, /obj/item/pipe))
@@ -23,7 +23,7 @@
 		target_pipe.pipe_color = color
 		target_pipe.add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-		balloon_alert(user, "Pintado em[paint_color]cor")
+		balloon_alert(user, "Pintado em [paint_color] cor")
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE
@@ -33,4 +33,4 @@
 
 /obj/item/pipe_painter/examine(mob/user)
 	. = ..()
-	. += span_notice("Está definido para[paint_color].")
+	. += span_notice("Está definido para [paint_color].")

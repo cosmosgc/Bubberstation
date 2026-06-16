@@ -401,11 +401,11 @@
 
 	playsound(computer, 'sound/items/nuke_toy_lowpower.ogg', 50, FALSE)
 	if(isliving(computer.loc))
-		to_chat(computer.loc, span_userdanger("Sua[computer.name]vibra e solta um alarme sinistro. Uh oh."))
+		to_chat(computer.loc, span_userdanger("Sua [computer.name] vibra e solta um alarme sinistro. Uh oh."))
 	else
 		computer.audible_message(
-			span_danger("[computer]vibra e solta um alarme sinistro. Uh oh."),
-			span_notice("[computer]Começa a vibrar rapidamente. O que isso significa?"),
+			span_danger("[computer] vibra e solta um alarme sinistro. Uh oh."),
+			span_notice("[computer] Começa a vibrar rapidamente. O que isso significa?"),
 		)
 
 

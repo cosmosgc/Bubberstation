@@ -475,7 +475,7 @@
 	if(!owner.is_blind())
 		to_chat(owner, span_danger("Seus olhos brilham agonizantemente como a luz brilha neles!"))
 		apply_organ_damage(20 * examtool.light_power) //that's 0.5 lightpower for a penlight, so one penlight shining is equivalent to two seconds in a lit area
-	return span_danger("[owner.p_Their()]Olhos.[penlight_message]")
+	return span_danger("[owner.p_Their()] Olhos.[penlight_message]")
 
 /obj/item/organ/eyes/night_vision/maintenance_adapted/on_life(seconds_per_tick)
 	if(owner.get_eye_protection() <= FLASH_PROTECTION_SENSITIVE && !owner.is_blind() && isturf(owner.loc) && owner.has_light_nearby(light_amount=0.5)) //we allow a little more than usual so we can produce light from the adapted eyes
@@ -777,11 +777,11 @@
 	var/threat_level = victim.assess_threat(threat_flags, lasercolor)
 	switch (threat_level)
 		if (THREAT_ASSESS_MAXIMUM to INFINITY)
-			override_strings += span_boldwarning("Avaliado nível de ameaça de[threat_level]Extremo perigo de atividade criminosa!")
+			override_strings += span_boldwarning("Avaliado nível de ameaça de [threat_level] Extremo perigo de atividade criminosa!")
 		if (THREAT_ASSESS_DANGEROUS to THREAT_ASSESS_MAXIMUM)
-			override_strings += span_warning("Avaliado nível de ameaça de[threat_level]Escória criminosa detectada!")
+			override_strings += span_warning("Avaliado nível de ameaça de [threat_level] Escória criminosa detectada!")
 		if (1 to THREAT_ASSESS_DANGEROUS)
-			override_strings += span_notice("Avaliado nível de ameaça de[threat_level]Provavelmente não é perigoso... ainda.")
+			override_strings += span_notice("Avaliado nível de ameaça de [threat_level] Provavelmente não é perigoso... ainda.")
 		else
 			override_strings += span_notice("Parece ser um indivíduo confiável.")
 

@@ -301,7 +301,7 @@
 	stored_id = inserting_id
 
 	if(!isnull(user))
-		to_chat(user, span_notice("Você insere\the [inserting_id]Para o jogo de cartas."))
+		to_chat(user, span_notice("Você insere\the [inserting_id] Para o jogo de cartas."))
 		balloon_alert(user, "Identifique-se.")
 
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
@@ -332,7 +332,7 @@
 
 	alt_stored_id = secondary_id
 	if(!isnull(user))
-		to_chat(user, span_notice("Você insere\the [secondary_id]Para o cartão secundário."))
+		to_chat(user, span_notice("Você insere\the [secondary_id] Para o cartão secundário."))
 		balloon_alert(user, "ID secundário inserido")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 
@@ -358,7 +358,7 @@
 	alt_stored_id = null
 
 	if(!silent && !isnull(user))
-		to_chat(user, span_notice("Você tira.\the [lost_id]do cartão secundário."))
+		to_chat(user, span_notice("Você tira.\the [lost_id] do cartão secundário."))
 		balloon_alert(user, "ID secundário removido")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 
@@ -386,7 +386,7 @@
 	SEND_SIGNAL(src, COMSIG_MODULAR_COMPUTER_REMOVED_ID, stored_id, user) // BUBBER EDIT ADDITION - Signal on ID removal
 
 	if(!silent && !isnull(user))
-		to_chat(user, span_notice("Você tira.\the [lost_id]fazer jogo de cartas."))
+		to_chat(user, span_notice("Você tira.\the [lost_id] fazer jogo de cartas."))
 		balloon_alert(user, "Removido.")
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 
@@ -420,7 +420,7 @@
 	if(obj_flags & EMAGGED)
 		balloon_alert(user, "já emagado!")
 		if (emag_card)
-			to_chat(user, span_notice("Você rouba\the [src]Com[emag_card]Uma janela de console enche a tela, mas se fecha rapidamente depois que apenas algumas linhas são escritas para ela."))
+			to_chat(user, span_notice("Você rouba\the [src] Com [emag_card] Uma janela de console enche a tela, mas se fecha rapidamente depois que apenas algumas linhas são escritas para ela."))
 		return FALSE
 
 	. = ..()
@@ -431,7 +431,7 @@
 	if(user)
 		balloon_alert(user, "SyndieOS carregado.")
 		if (emag_card)
-			to_chat(user, span_notice("Você rouba\the [src]Com[emag_card]Uma janela de console preenche momentaneamente a tela, com texto branco passando rapidamente."))
+			to_chat(user, span_notice("Você rouba\the [src] Com [emag_card] Uma janela de console preenche momentaneamente a tela, com texto branco passando rapidamente."))
 	return TRUE
 
 /obj/item/modular_computer/examine(mob/user)
@@ -447,11 +447,11 @@
 
 	if(long_ranged)
 		. += "It is upgraded with an experimental long-ranged network capabilities, picking up NTNet frequencies while further away."
-	. += span_notice("Tem.[max_capacity]GQ de capacidade de armamento.")
+	. += span_notice("Tem.[max_capacity] GQ de capacidade de armamento.")
 
 	if(stored_id)
 		if(Adjacent(user))
-			. += "Tem.\the [stored_id]Cartão inserido em seu slot de cartão.[alt_stored_id ? "" : " [span_info("Alt-click to eject it.")]"]"
+			. += "Tem.\the [stored_id] Cartão inserido em seu slot de cartão.[alt_stored_id ? "" : " [span_info("Alt-click to eject it.")]"]"
 		else
 			. += "Its identification card slot is currently occupied."
 
@@ -462,7 +462,7 @@
 			. += "Its secondary identification card slot is currently occupied."
 
 	if(internal_cell)
-		. += span_info("Clique com o botão direito com uma chave de fenda para ejetar o[internal_cell].")
+		. += span_info("Clique com o botão direito com uma chave de fenda para ejetar o [internal_cell].")
 
 /obj/item/modular_computer/examine_more(mob/user)
 	. = ..()
@@ -555,7 +555,7 @@
 	if(atom_integrity <= integrity_failure * max_integrity)
 		if(user)
 			if(issynth)
-				to_chat(user, span_warning("Você envia um sinal de ativação para\the [src]Mas responde com um código de erro. Deve estar danificado."))
+				to_chat(user, span_warning("Você envia um sinal de ativação para\the [src] Mas responde com um código de erro. Deve estar danificado."))
 			else
 				to_chat(user, span_warning("Você aperta o botão de energia, mas o computador não inicializa, exibindo vários erros antes de desligar novamente."))
 		return FALSE
@@ -567,7 +567,7 @@
 		update_appearance()
 		if(user)
 			if(issynth)
-				to_chat(user, span_notice("Você envia um sinal de ativação para\the [src]Ligando."))
+				to_chat(user, span_notice("Você envia um sinal de ativação para\the [src] Ligando."))
 			else
 				to_chat(user, span_notice("Aperte o botão de energia e comece.\the [src]."))
 			if(open_ui)
@@ -577,9 +577,9 @@
 	else // Unpowered
 		if(user)
 			if(issynth)
-				to_chat(user, span_warning("Você envia um sinal de ativação para\the [src]Mas não responde."))
+				to_chat(user, span_warning("Você envia um sinal de ativação para\the [src] Mas não responde."))
 			else
-				to_chat(user, span_warning("Você aperta o botão de energia, mas\the [src]Não responde."))
+				to_chat(user, span_warning("Você aperta o botão de energia, mas\the [src] Não responde."))
 		return FALSE
 
 // Process currently calls handle_power(), may be expanded in future if more things are added.
@@ -622,7 +622,7 @@
 	if(!call_source || !call_source.alert_able || call_source.alert_silenced || !alerttext) //Yeah, we're checking alert_able. No, you don't get to make alerts that the user can't silence.
 		return FALSE
 	playsound(src, sound, 50, TRUE)
-	physical.loc.visible_message(span_notice("[icon2html(physical, viewers(physical.loc))] \The [src]Mostra a[call_source.filedesc]Notificação:[alerttext]"))
+	physical.loc.visible_message(span_notice("[icon2html(physical, viewers(physical.loc))] \The [src] Mostra a [call_source.filedesc] Notificação:[alerttext]"))
 
 /obj/item/modular_computer/proc/ring(ringtone, list/balloon_alertees) // bring bring
 	if(!use_energy(check_programs = FALSE))
@@ -699,7 +699,7 @@
 
 	if(isnull(program) || !istype(program)) // Program not found or it's not executable program.
 		if(user)
-			to_chat(user, span_danger("\The [src]A tela mostra\"ERRO DE I/O - Incapaz de executar o programa\"Aviso."))
+			to_chat(user, span_danger("\The [src] A tela mostra\"ERRO DE I/O - Incapaz de executar o programa\"Aviso."))
 		return FALSE
 
 	if(active_program == program)
@@ -722,12 +722,12 @@
 
 	if(idle_threads.len > max_idle_programs)
 		if(user)
-			to_chat(user, span_danger("\The [src]Mostra a\"Carga máxima da CPU atingida. Incapaz de executar outro programa.\"Erro."))
+			to_chat(user, span_danger("\The [src] Mostra a\"Carga máxima da CPU atingida. Incapaz de executar outro programa.\"Erro."))
 		return FALSE
 
 	if(program.program_flags & PROGRAM_REQUIRES_NTNET && !get_ntnet_status()) // The program requires NTNet connection, but we are not connected to NTNet.
 		if(user)
-			to_chat(user, span_danger("\The [src]A tela mostra\"Incapaz de se conectar à NTNet. Por favor, tente novamente. Se o problema persistir, contate o administrador do sistema.\"Aviso."))
+			to_chat(user, span_danger("\The [src] A tela mostra\"Incapaz de se conectar à NTNet. Por favor, tente novamente. Se o problema persistir, contate o administrador do sistema.\"Aviso."))
 		return FALSE
 
 	if(!program.on_start(user))
@@ -782,7 +782,7 @@
 	if(looping_sound)
 		soundloop.stop()
 	if(physical && loud)
-		physical.visible_message(span_notice("\The [src]Desliga."))
+		physical.visible_message(span_notice("\The [src] Desliga."))
 	enabled = FALSE
 	update_appearance()
 	SEND_SIGNAL(src, COMSIG_MODULAR_COMPUTER_SHUT_DOWN, loud)
@@ -883,7 +883,7 @@
 /obj/item/modular_computer/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("\The [src]Não precisa de reparos."))
+		to_chat(user, span_warning("\The [src] Não precisa de reparos."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!tool.tool_start_check(user, amount=1))
@@ -959,12 +959,12 @@
 	if(ismachinery(physical))
 		return ITEM_INTERACT_BLOCKING
 	if(internal_cell)
-		to_chat(user, span_warning("Você tenta se conectar\the [new_cell]Para\the [src]Mas seus conectores estão ocupados."))
+		to_chat(user, span_warning("Você tenta se conectar\the [new_cell] Para\the [src] Mas seus conectores estão ocupados."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_cell, src))
 		return ITEM_INTERACT_BLOCKING
 	internal_cell = new_cell
-	to_chat(user, span_notice("Você liga.\the [new_cell]Para\the [src]."))
+	to_chat(user, span_notice("Você liga.\the [new_cell] Para\the [src]."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/modular_computer/proc/photo_act(mob/user, obj/item/photo/scanned_photo)
@@ -1000,7 +1000,7 @@
 	if(!papers_added)
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert(user, "Papel inserido.")
-	to_chat(user, span_notice("Adicionado em[papers_added]Lençóis novos. Você agora tem[stored_paper] / [max_paper]Papel de impressão armazenado."))
+	to_chat(user, span_notice("Adicionado em [papers_added] Lençóis novos. Você agora tem [stored_paper] / [max_paper] Papel de impressão armazenado."))
 	playsound(src, 'sound/machines/computer/paper_insert.ogg', 40, vary = TRUE)
 	bin.update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -1026,7 +1026,7 @@
 	alt_stored_id?.forceMove(droploc)
 	inserted_disk?.forceMove(droploc)
 	if (!disassembled)
-		physical.visible_message(span_notice("\The [src]Se separam!"))
+		physical.visible_message(span_notice("\The [src] Se separam!"))
 	new /obj/item/stack/sheet/iron(droploc, steel_sheet_cost * (disassembled ? 1 : 0.5))
 	relay_qdel()
 

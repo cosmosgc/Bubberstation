@@ -82,9 +82,9 @@
 
 	if(ismouse(user))
 		if(user.faction_check_atom(src, exact_match = TRUE))
-			. += span_notice("Este é o seu rei. Vida longa[p_their()]Majestade!")
+			. += span_notice("Este é o seu rei. Vida longa [p_their()] Majestade!")
 		else
-			. += span_warning("Este é um falso rei! Strike.[p_them()]Abaixe-se!")
+			. += span_warning("Este é um falso rei! Strike.[p_them()] Abaixe-se!")
 		return
 
 	. += special_moniker
@@ -212,8 +212,8 @@
 		return FALSE
 
 	visible_message(
-		span_warning("[src]Começa a lamber[target]Com paixão!"),
-		span_notice("Você começa a lamber[target]..."),
+		span_warning("[src] Começa a lamber [target] Com paixão!"),
+		span_notice("Você começa a lamber [target]..."),
 		span_warning("Você ouve um som nojento..."),
 	)
 

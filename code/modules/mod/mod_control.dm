@@ -133,7 +133,7 @@
 	var/atom/visible_atom = wearer || src
 	if(wearer)
 		clean_up()
-	visible_atom.visible_message(span_bolddanger("[src]Queda.[p_s()]Separados, completamente destruídos!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	visible_atom.visible_message(span_bolddanger("[src] Queda.[p_s()] Separados, completamente destruídos!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	for(var/obj/item/mod/module/module as anything in modules)
 		uninstall(module)
 	if(ai_assistant)
@@ -162,13 +162,13 @@
 		. += span_notice("Você poderia atualizar o bloqueio de acesso com um<b>ID</b>.")
 		. += span_notice("Você poderia acessar o painel de arame com um<b>Ferramenta de arame</b>.")
 		if(core)
-			. += span_notice("Você poderia remover[core]Comum<b>Chave Inglesa.</b>.")
+			. += span_notice("Você poderia remover [core] Comum<b>Chave Inglesa.</b>.")
 		else
 			. += span_notice("Você poderia usar um<b>Núcleo MOD</b>bele para instalar um.")
 		if(isnull(ai_assistant))
 			. += span_notice("Você poderia instalar uma IA ou uma IAP usando o seu<b>Cartão de armazenamento</b>.")
 		else if(isAI(ai_assistant))
-			. += span_notice("Você poderia remover[ai_assistant]com uma<b>Intellicard</b>.")
+			. += span_notice("Você poderia remover [ai_assistant] com uma<b>Intellicard</b>.")
 	. += span_notice("Você poderia copiar / definir frequência de ligação com um<b>Multitool</b>.")
 	. += span_notice("<i>Você poderia examiná-lo mais detalhadamente...</i>")
 
@@ -394,7 +394,7 @@
 		return
 	selected_module?.deactivate(display_message = TRUE)
 	wearer.apply_damage(5 / severity, BURN, spread_damage=TRUE)
-	to_chat(wearer, span_danger("Você sente[src]esquentar do PEM, queimando você ligeiramente."))
+	to_chat(wearer, span_danger("Você sente [src] esquentar do PEM, queimando você ligeiramente."))
 	if(wearer.stat < UNCONSCIOUS && prob(10))
 		wearer.emote("scream")
 
@@ -435,8 +435,8 @@
 
 		if("deploy", "undeploy")
 			owner.visible_message(
-				span_warning("[user]Tenta.[action_key] [owner]'s[src]..."),
-				span_userdanger("[user]está tentando[action_key]Sua[src]!"),
+				span_warning("[user] Tenta.[action_key] [owner]'s [src]..."),
+				span_userdanger("[user] está tentando [action_key] Sua [src]!"),
 				blind_message = span_hear("Você ouve barulho."),
 				ignored_mobs = user,
 			)
@@ -445,8 +445,8 @@
 
 		if("activate_mod", "deactivate_mod")
 			owner.visible_message(
-				span_warning("[user]\"Tenta pressionar\"[owner]'s[src]O botão de energia..."),
-				span_userdanger("[user]está tentando pressionar seu[src]O botão de energia!"),
+				span_warning("[user]\"Tenta pressionar\"[owner]'s [src] O botão de energia..."),
+				span_userdanger("[user] está tentando pressionar seu [src] O botão de energia!"),
 				blind_message = span_hear("Você ouve barulho."),
 				ignored_mobs = user,
 			)
@@ -460,8 +460,8 @@
 	if(!do_after(user, strip_delay, owner))
 		return
 	owner.visible_message(
-		span_warning("[user] [message]S[owner]'s[src]."),
-		span_userdanger("[user] [message]É o seu[src]!"),
+		span_warning("[user] [message] S [owner]'s [src]."),
+		span_userdanger("[user] [message] É o seu [src]!"),
 		ignored_mobs = user,
 	)
 	quick_deploy(user)
@@ -470,8 +470,8 @@
 	if(!do_after(user, strip_delay, owner))
 		return
 	owner.visible_message(
-		span_warning("[user]Pressiona[owner]'s[src]O botão de energia."),
-		span_userdanger("[user]Pressiona o seu[src]O botão de energia!"),
+		span_warning("[user] Pressiona [owner]'s [src] O botão de energia."),
+		span_userdanger("[user] Pressiona o seu [src] O botão de energia!"),
 		ignored_mobs = user,
 	)
 	toggle_activate(user)
@@ -629,7 +629,7 @@
 	for(var/obj/item/mod/module/old_module as anything in modules)
 		if(is_type_in_list(new_module, old_module.incompatible_modules) || is_type_in_list(old_module, new_module.incompatible_modules))
 			if(user && !silent) // Bubber Edit: Silent arg
-				balloon_alert(user, "incompatível com[old_module]!")
+				balloon_alert(user, "incompatível com [old_module]!")
 				playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE //Bubber Edit: Return False
 	var/complexity_with_module = complexity
@@ -667,7 +667,7 @@
 		new_module.on_part_activation()
 		new_module.part_activated = TRUE
 	if(user) // Bubber Edit: Silent Arg
-		balloon_alert(user, "[new_module]Adicionado.")
+		balloon_alert(user, "[new_module] Adicionado.")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return TRUE // Bubber Edit: Return True
 /obj/item/mod/control/proc/uninstall(obj/item/mod/module/old_module, deleting = FALSE)
@@ -814,14 +814,14 @@
 	SIGNAL_HANDLER
 
 	if(HAS_TRAIT(src, TRAIT_SPEED_POTIONED))
-		to_chat(user, span_warning("[src]Já foi revestido de vermelho, que é o mais rápido que vai!"))
+		to_chat(user, span_warning("[src] Já foi revestido de vermelho, que é o mais rápido que vai!"))
 		return SPEED_POTION_STOP
 
 	if(active)
-		to_chat(user, span_warning("É muito perigoso manchar[speed_potion]Vamos.[src]Enquanto está ativo!"))
+		to_chat(user, span_warning("É muito perigoso manchar [speed_potion] Vamos.[src] Enquanto está ativo!"))
 		return SPEED_POTION_STOP
 
-	to_chat(user, span_notice("Você desfaz a gosma vermelha[src], tornando mais rápido."))
+	to_chat(user, span_notice("Você desfaz a gosma vermelha [src], tornando mais rápido."))
 	set_mod_color(color_transition_filter(COLOR_RED))
 	ADD_TRAIT(src, TRAIT_SPEED_POTIONED, SLIME_POTION_TRAIT)
 	update_speed()

@@ -59,13 +59,13 @@
 	if(attacker.combat_mode)
 		return ..()
 	if(victim.is_mouth_covered(ITEM_SLOT_HEAD))
-		to_chat(attacker, span_notice("[victim]A boca está coberta."))
+		to_chat(attacker, span_notice("[victim] A boca está coberta."))
 		return
 	if(!mob_can_equip(victim, ITEM_SLOT_MASK))
-		to_chat(attacker, span_notice("[victim]Já está usando algo no rosto."))
+		to_chat(attacker, span_notice("[victim] Já está usando algo no rosto."))
 		return
 	balloon_alert(attacker, "Boca tatuada...")
-	to_chat(victim, span_userdanger("[attacker]Está tentando fechar a boca!"))
+	to_chat(victim, span_userdanger("[attacker] Está tentando fechar a boca!"))
 	if(!do_after(attacker, equip_delay_other, target = victim))
 		return
 	victim.equip_to_slot_if_possible(src, ITEM_SLOT_MASK)

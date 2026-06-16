@@ -21,11 +21,11 @@
 
 /// When the plant our gene is hosted in is drained of an anti-magic charge.
 /datum/plant_gene/trait/anti_magic/proc/drain_antimagic(mob/user, obj/item/our_plant)
-	to_chat(user, span_warning("[our_plant]Humsligeiramente, e parece se deteriorar um pouco."))
+	to_chat(user, span_warning("[our_plant] Humsligeiramente, e parece se deteriorar um pouco."))
 
 /// When the plant our gene is hosted in is drained of all of its anti-magic charges.
 /datum/plant_gene/trait/anti_magic/proc/expire(mob/user, obj/item/our_plant)
-	to_chat(user, span_warning("[our_plant]Rápido, se transforma em cinzas!"))
+	to_chat(user, span_warning("[our_plant] Rápido, se transforma em cinzas!"))
 	new /obj/effect/decal/cleanable/ash(our_plant.drop_location())
 	qdel(our_plant)
 
@@ -94,7 +94,7 @@
 		return
 
 	// When our force degrades to zero or below, we're all done
-	to_chat(user, span_warning("Todos os[degradation_noun]Caíram[our_plant]De golpes violentos!"))
+	to_chat(user, span_warning("Todos os [degradation_noun] Caíram [our_plant] De golpes violentos!"))
 	qdel(our_plant)
 
 /// Novaflower's attack effects (sets people on fire) + degradation on attack
@@ -111,7 +111,7 @@
 		return
 
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
-	to_chat(target, span_danger("Você está aceso com o calor intenso de[our_plant]!"))
+	to_chat(target, span_danger("Você está aceso com o calor intenso de [our_plant]!"))
 	target.adjust_fire_stacks(round(our_seed.potency / 20))
 	if(target.ignite_mob())
 		message_admins("[ADMIN_LOOKUPFLW(user)] set [ADMIN_LOOKUPFLW(target)] on fire with [our_plant] at [AREACOORD(user)]")
@@ -127,10 +127,10 @@
 /datum/plant_gene/trait/attack/sunflower_attack/after_attack_effect(obj/item/our_plant, atom/target, mob/user, list/modifiers)
 	if(ismob(target))
 		var/mob/target_mob = target
-		user.visible_message("<font color='green'>[user]Strocks.[target_mob]Com[user.p_their()] [our_plant.name]! <font color='orange'><b>Poder das flores!</b></font></font>", ignored_mobs = list(target_mob, user))
+		user.visible_message("<font color='green'>[user] Strocks.[target_mob] Com [user.p_their()] [our_plant.name]! <font color='orange'><b>Poder das flores!</b></font></font>", ignored_mobs = list(target_mob, user))
 		if(target_mob != user)
-			to_chat(target_mob, "<font color='green'>[user]Bate em você com[our_plant]!<font color='orange'><b>Poder das flores!</b></font></font>")
-		to_chat(user, "<font color='green'>Sua[our_plant.name]'s<font color='orange'><b>PODER DE FLORES</b></font>Strikes[target_mob]!</font>")
+			to_chat(target_mob, "<font color='green'>[user] Bate em você com [our_plant]!<font color='orange'><b>Poder das flores!</b></font></font>")
+		to_chat(user, "<font color='green'>Sua [our_plant.name]'s<font color='orange'><b>PODER DE FLORES</b></font>Strikes [target_mob]!</font>")
 
 	return ..()
 
@@ -191,10 +191,10 @@
 /datum/plant_gene/trait/backfire/rose_thorns/backfire_effect(obj/item/our_plant, mob/living/carbon/user)
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	if(!our_seed.get_gene(/datum/plant_gene/trait/sticky) && prob(66))
-		to_chat(user, span_danger("[our_plant]Os espinhos quase picam sua mão. Melhor ter cuidado."))
+		to_chat(user, span_danger("[our_plant] Os espinhos quase picam sua mão. Melhor ter cuidado."))
 		return
 
-	to_chat(user, span_danger("[our_plant]Os espinhos picam sua mão. Ouch."))
+	to_chat(user, span_danger("[our_plant] Os espinhos picam sua mão. Ouch."))
 	our_plant.investigate_log("rose-pricked [key_name(user)] at [AREACOORD(user)]", INVESTIGATE_BOTANY)
 	user.apply_damage(2, BRUTE, user.get_active_hand())
 
@@ -206,7 +206,7 @@
 	trait_flags = TRAIT_SHOW_EXAMINE
 
 /datum/plant_gene/trait/backfire/novaflower_heat/backfire_effect(obj/item/our_plant, mob/living/carbon/user)
-	to_chat(user, span_danger("[our_plant]Cante sua mão nua!"))
+	to_chat(user, span_danger("[our_plant] Cante sua mão nua!"))
 	our_plant.investigate_log("self-burned [key_name(user)] for [our_plant.force] at [AREACOORD(user)]", INVESTIGATE_BOTANY)
 	user.apply_damage(our_plant.force, our_plant.damtype, user.get_active_hand(), wound_bonus = CANT_WOUND)
 
@@ -217,7 +217,7 @@
 	trait_flags = TRAIT_SHOW_EXAMINE
 
 /datum/plant_gene/trait/backfire/nettle_burn/backfire_effect(obj/item/our_plant, mob/living/carbon/user)
-	to_chat(user, span_danger("[our_plant]Queima sua mão nua!"))
+	to_chat(user, span_danger("[our_plant] Queima sua mão nua!"))
 	our_plant.investigate_log("self-burned [key_name(user)] for [our_plant.force] at [AREACOORD(user)]", INVESTIGATE_BOTANY)
 	user.apply_damage(our_plant.force, our_plant.damtype, user.get_active_hand(), wound_bonus = CANT_WOUND)
 
@@ -232,7 +232,7 @@
 		return
 
 	user.Paralyze(10 SECONDS)
-	to_chat(user, span_userdanger("Você está atordoado pelos ácidos poderosos de[our_plant]!"))
+	to_chat(user, span_userdanger("Você está atordoado pelos ácidos poderosos de [our_plant]!"))
 
 /// Ghost-Chili heating up on backfire
 /datum/plant_gene/trait/backfire/chili_heat
@@ -289,7 +289,7 @@
 
 	our_mob.adjust_bodytemperature(7.5 * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick)
 	if(SPT_PROB(5, seconds_per_tick))
-		to_chat(our_mob, span_warning("Sua mão segurando[our_plant]Queimaduras!"))
+		to_chat(our_mob, span_warning("Sua mão segurando [our_plant] Queimaduras!"))
 
 /// Bluespace Tomato squashing on the user on backfire
 /datum/plant_gene/trait/backfire/bluespace
@@ -302,7 +302,7 @@
 	if(prob(50))
 		return
 
-	to_chat(user, span_danger("[our_plant]Sai da sua mão!"))
+	to_chat(user, span_danger("[our_plant] Sai da sua mão!"))
 
 	var/obj/item/seeds/our_seed = our_plant.get_plant_seed()
 	var/datum/plant_gene/trait/squash/squash_gene = our_seed.get_gene(/datum/plant_gene/trait/squash)
@@ -355,8 +355,8 @@
 		return
 
 	if(target != user)
-		to_chat(user, span_warning("[our_plant]está se contorcendo e tremendo, impedindo você de alimentá-lo para[target]."))
-	to_chat(target, span_warning("[our_plant]está se contorcendo e tremendo, impedindo que você coma."))
+		to_chat(user, span_warning("[our_plant] está se contorcendo e tremendo, impedindo você de alimentá-lo para [target]."))
+	to_chat(target, span_warning("[our_plant] está se contorcendo e tremendo, impedindo que você coma."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /*
@@ -373,10 +373,10 @@
 		return
 
 	if(dangerous && HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_notice("Você decide não acordar.[our_plant]Pode ser muito perigoso!"))
+		to_chat(user, span_notice("Você decide não acordar.[our_plant] Pode ser muito perigoso!"))
 		return
 
-	to_chat(user, span_notice("Você começa a acordar[our_plant]..."))
+	to_chat(user, span_notice("Você começa a acordar [our_plant]..."))
 	begin_awaken(our_plant, 3 SECONDS)
 	our_plant.investigate_log("was awakened by [key_name(user)] at [AREACOORD(user)].", INVESTIGATE_BOTANY)
 
@@ -390,7 +390,7 @@
 	SIGNAL_HANDLER
 
 	if(!awakening && !isspaceturf(user.loc) && prob(25))
-		our_plant.visible_message(span_danger("[our_plant]Começa a rosnar e tremer!"))
+		our_plant.visible_message(span_danger("[our_plant] Começa a rosnar e tremer!"))
 		begin_awaken(our_plant, 1 SECONDS)
 		our_plant.investigate_log("was awakened (via plant backfire) by [key_name(user)] at [AREACOORD(user)].", INVESTIGATE_BOTANY)
 
@@ -433,7 +433,7 @@
 		spawned_basicmob.set_varspeed(calculated_speed)
 
 	our_plant.forceMove(our_plant.drop_location())
-	spawned_mob.visible_message(span_notice("[our_plant]Rosna quando se arrependeu de concordar!"))
+	spawned_mob.visible_message(span_notice("[our_plant] Rosna quando se arrependeu de concordar!"))
 	qdel(our_plant)
 
 /// Killer Tomato's transformation gene.
@@ -533,8 +533,8 @@
 
 	playsound(our_plant, 'sound/effects/fuse.ogg', our_seed.potency, FALSE)
 	user.visible_message(
-		span_warning("[user]Arranca o caule de[our_plant]!"),
-		span_userdanger("Você arranca o caule de[our_plant], que começa a assobiar alto!"),
+		span_warning("[user] Arranca o caule de [our_plant]!"),
+		span_userdanger("Você arranca o caule de [our_plant], que começa a assobiar alto!"),
 	)
 	log_bomber(user, "primed a", our_plant, "for detonation")
 	detonate(our_plant)
@@ -582,8 +582,8 @@
 
 /datum/plant_gene/trait/bomb_plant/potency_based/trigger_detonation(obj/item/our_plant, mob/living/user)
 	user.visible_message(
-		span_warning("[user]Primes.[our_plant]!"),
-		span_userdanger("Você prime[our_plant]!"),
+		span_warning("[user] Primes.[our_plant]!"),
+		span_userdanger("Você prime [our_plant]!"),
 	)
 	log_bomber(user, "primed a", our_plant, "for detonation")
 
@@ -711,13 +711,13 @@
 		return NONE
 
 	if(source.age < 10)
-		to_chat(user, span_warning("O[LOWER_TEXT(source.myseed.plantname)]São muito jovens para extrair seiva!"))
+		to_chat(user, span_warning("O [LOWER_TEXT(source.myseed.plantname)] São muito jovens para extrair seiva!"))
 		return ITEM_INTERACT_FAILURE
 	if(source.age > 19)
-		to_chat(user, span_warning("O[LOWER_TEXT(source.myseed.plantname)]São muito velhos para extrair seiva!"))
+		to_chat(user, span_warning("O [LOWER_TEXT(source.myseed.plantname)] São muito velhos para extrair seiva!"))
 		return ITEM_INTERACT_FAILURE
 	if(extracted)
-		to_chat(user, span_warning("O[LOWER_TEXT(source.myseed.plantname)]Já foram colhidas por seiva!"))
+		to_chat(user, span_warning("O [LOWER_TEXT(source.myseed.plantname)] Já foram colhidas por seiva!"))
 		return ITEM_INTERACT_FAILURE
 
 	extracted = TRUE
@@ -725,8 +725,8 @@
 	playsound(src, 'sound/effects/bubbles/bubbles.ogg', 30, TRUE)
 	playsound(tool, 'sound/items/weapons/bladeslice.ogg', 30, TRUE)
 	user.visible_message(
-		span_notice("[user]Cuidado, Fatias abrar um[source.myseed.species]Pod, extraindo uma seiva."),
-		span_notice("Você corta cuidadosamente o[source.myseed.species]A cápsula, coletando a seiva perfumada e sedutora."),
+		span_notice("[user] Cuidado, Fatias abrar um [source.myseed.species] Pod, extraindo uma seiva."),
+		span_notice("Você corta cuidadosamente o [source.myseed.species] A cápsula, coletando a seiva perfumada e sedutora."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
 	return ITEM_INTERACT_SUCCESS

@@ -54,9 +54,9 @@
 
 	switch(timeleft(crystalize_timer_id))
 		if(0 to CRYSTALIZE_STAGE_ENGULFING)
-			examine_list += span_warning("Cristais estão quase engolindo[examined_human]! ")
+			examine_list += span_warning("Cristais estão quase engolindo [examined_human]! ")
 		if(CRYSTALIZE_STAGE_ENGULFING to CRYSTALIZE_STAGE_ENCROACHING)
-			examine_list += span_notice("Cristais estão começando a cobrir[examined_human]. ")
+			examine_list += span_notice("Cristais estão começando a cobrir [examined_human]. ")
 		if(CRYSTALIZE_STAGE_SMALL to INFINITY)
 			examine_list += span_notice("Alguns cristais estão saindo.[examined_human]. ")
 
@@ -80,7 +80,7 @@
 		return // no reviving during mafia, or other inconvenient times.
 
 	to_chat(victim, span_nicegreen("Cristais começam a se formar em torno do seu cadáver."))
-	victim.visible_message(span_notice("Cristais começam a se formar[victim]."), ignored_mobs = victim)
+	victim.visible_message(span_notice("Cristais começam a se formar [victim]."), ignored_mobs = victim)
 
 	ADD_TRAIT(victim, TRAIT_CORPSELOCKED, SPECIES_TRAIT)
 
@@ -94,7 +94,7 @@
 /obj/item/organ/heart/ethereal/proc/reset_crystalizing(mob/living/defender, mob/living/attacker, zone, obj/item/weapon)
 	SIGNAL_HANDLER
 	defender.visible_message(
-		span_notice("Os críticos em[defender]estão suavemente quebrados."),
+		span_notice("Os críticos em [defender] estão suavemente quebrados."),
 		span_notice("Os cristais em seu cadáver são gentilmente quebrados, e vai precisar de algum tempo para se recuperar."),
 	)
 	deltimer(crystalize_timer_id)
@@ -152,7 +152,7 @@
 	var/mob/living/carbon/human/ethereal = source
 
 	ethereal.visible_message(
-		span_notice("Os críticos em[ethereal]estão completamente despedaçados e pararam de crescer."),
+		span_notice("Os críticos em [ethereal] estão completamente despedaçados e pararam de crescer."),
 		span_warning("Os críticos em seu corpo quebraram completamente."),
 	)
 
@@ -216,7 +216,7 @@
 	for(var/mob/living/living in contents)
 		living.forceMove(get_turf(src))
 		REMOVE_TRAIT(living, TRAIT_CORPSELOCKED, SPECIES_TRAIT)
-		visible_message(span_notice("Os críticos quebram, causando[living]Para cair."))
+		visible_message(span_notice("Os críticos quebram, causando [living] Para cair."))
 
 	deltimer(crystal_heal_timer)
 	return ..()

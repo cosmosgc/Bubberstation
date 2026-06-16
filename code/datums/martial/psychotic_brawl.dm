@@ -40,13 +40,13 @@
 					if(grab_attack)
 						log_combat(attacker, defender, "grabbed", addition="aggressively")
 						defender.visible_message(
-							span_warning("[attacker]violentamente agarra[defender]!"),
-							span_userdanger("Você está violentamente agarrado por[attacker]!"),
+							span_warning("[attacker] violentamente agarra [defender]!"),
+							span_userdanger("Você está violentamente agarrado por [attacker]!"),
 							span_hear("Você ouve sons de carinho agressivo!"),
 							null,
 							attacker,
 						)
-						to_chat(attacker, span_danger("Você agarra violentamente[defender]!"))
+						to_chat(attacker, span_danger("Você agarra violentamente [defender]!"))
 						attacker.setGrabState(GRAB_AGGRESSIVE) //Instant aggressive grab
 					else
 						log_combat(attacker, defender, "grabbed", addition="passively")
@@ -60,8 +60,8 @@
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 			attacker.emote("flip")
 			defender.visible_message(
-				span_danger("[attacker] [atk_verb]S[defender]!"),
-				span_userdanger("Você é[atk_verb]ed por[attacker]!"),
+				span_danger("[attacker] [atk_verb] S [defender]!"),
+				span_userdanger("Você é [atk_verb] ed por [attacker]!"),
 				span_hear("Você ouve um som doentio de carne batendo em carne!"),
 				null,
 				attacker,
@@ -85,13 +85,13 @@
 
 			attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 			defender.visible_message(
-				span_danger("[attacker] [atk_verb]S[defender]com tanta força desumana que envia[defender.p_them()]Voando para trás!"),
-				span_userdanger("Você é[atk_verb]ed por[attacker]Com tanta força desumana que te faz voar para trás!"),
+				span_danger("[attacker] [atk_verb] S [defender] com tanta força desumana que envia [defender.p_them()] Voando para trás!"),
+				span_userdanger("Você é [atk_verb] ed por [attacker] Com tanta força desumana que te faz voar para trás!"),
 				span_hear("Você ouve um som doentio de carne batendo em carne!"),
 				null,
 				attacker,
 			)
-			to_chat(attacker, span_danger("Você.[atk_verb] [defender]com tanta força desumana que envia[defender.p_them()]Voando para trás!"))
+			to_chat(attacker, span_danger("Você.[atk_verb] [defender] com tanta força desumana que envia [defender.p_them()] Voando para trás!"))
 			defender.apply_damage(rand(15, 30), attacker.get_attack_type())
 			playsound(defender, 'sound/effects/meteorimpact.ogg', 25, TRUE, -1)
 			var/throwtarget = get_edge_target_turf(attacker, get_dir(attacker, get_step_away(defender, attacker)))

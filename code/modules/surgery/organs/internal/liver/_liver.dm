@@ -204,11 +204,11 @@
 		return
 	switch(failure_time)
 		if(0 to 3 * LIVER_FAILURE_STAGE_SECONDS - 1)
-			examine_list += span_notice("[owner]Os olhos são ligeiramente amarelos.")
+			examine_list += span_notice("[owner] Os olhos são ligeiramente amarelos.")
 		if(3 * LIVER_FAILURE_STAGE_SECONDS to 4 * LIVER_FAILURE_STAGE_SECONDS - 1)
-			examine_list += span_notice("[owner]Os olhos são completamente amarelos, e[owner.p_they()] [owner.p_are()]Visivelmente sofrendo.")
+			examine_list += span_notice("[owner] Os olhos são completamente amarelos, e [owner.p_they()] [owner.p_are()] Visivelmente sofrendo.")
 		if(4 * LIVER_FAILURE_STAGE_SECONDS to INFINITY)
-			examine_list += span_danger("[owner]Os olhos estão completamente amarelos e inchados com pus.[owner.p_They()] [owner.p_do()]Não parece[owner.p_they()]estará vivo por muito mais tempo.")
+			examine_list += span_danger("[owner] Os olhos estão completamente amarelos e inchados com pus.[owner.p_They()] [owner.p_do()] Não parece [owner.p_they()] estará vivo por muito mais tempo.")
 
 /obj/item/organ/liver/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutantliver

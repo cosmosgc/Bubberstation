@@ -696,7 +696,7 @@
 	var/obj/item/bodypart/head/to_explode = human_wearer.get_bodypart(BODY_ZONE_HEAD)
 	if(!to_explode)
 		return
-	human_wearer.visible_message(span_warning("[human_wearer]É a cabeça doendo!"), ignored_mobs = list(human_wearer))
+	human_wearer.visible_message(span_warning("[human_wearer] É a cabeça doendo!"), ignored_mobs = list(human_wearer))
 	new /obj/effect/gibspawner/generic(get_turf(human_wearer), human_wearer)
 	to_explode.dismember(dam_type = BRUTE, silent = TRUE)
 	to_explode.drop_organs()
@@ -1196,7 +1196,7 @@
 		loc.remove_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTCOLD), REF(src))
 		REMOVE_TRAIT(loc, TRAIT_RESISTLOWPRESSURE, REF(src))
 		loc.balloon_alert(loc, "camuflagem escondida")
-		loc.visible_message(span_notice("A luz se desloca[loc], tornando o manto em torno deles invisíveis!"))
+		loc.visible_message(span_notice("A luz se desloca [loc], tornando o manto em torno deles invisíveis!"))
 
 /// Makes our cloak "visible" again.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_visible()
@@ -1206,4 +1206,4 @@
 	if(isliving(loc))
 		loc.add_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_RESISTCOLD), REF(src))
 		loc.balloon_alert(loc, "Capa revelada.")
-		loc.visible_message(span_notice("Um caleidoscópio de cores desmorona ao redor[loc], uma capa aparecendo de repente em torno de sua pessoa!"))
+		loc.visible_message(span_notice("Um caleidoscópio de cores desmorona ao redor [loc], uma capa aparecendo de repente em torno de sua pessoa!"))

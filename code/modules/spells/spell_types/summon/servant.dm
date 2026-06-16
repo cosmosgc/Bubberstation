@@ -27,7 +27,7 @@
 
 /datum/action/cooldown/spell/summon_mob/Grant(mob/grant_to)
 	. = ..()
-	owner.balloon_alert(owner, "conjurando um novo[servant_title]...")
+	owner.balloon_alert(owner, "conjurando um novo [servant_title]...")
 	find_servant()
 
 /datum/action/cooldown/spell/summon_mob/before_cast(mob/living/invoker, feedback)
@@ -36,14 +36,14 @@
 		if(summoning_servant)
 			owner.balloon_alert(owner, "Ainda conjurando!")
 			return SPELL_CANCEL_CAST
-		owner.balloon_alert(owner, "conjurando[servant_title]...")
+		owner.balloon_alert(owner, "conjurando [servant_title]...")
 		find_servant()
 		return SPELL_CANCEL_CAST
 
 	var/mob/living/to_summon = summon_weakref?.resolve()
 
 	if(QDELETED(to_summon))
-		to_chat(owner, span_warning("Você não consegue invocar seu[servant_title]Parece que desapareceram da realidade, ou nunca existiram..."))
+		to_chat(owner, span_warning("Você não consegue invocar seu [servant_title] Parece que desapareceram da realidade, ou nunca existiram..."))
 		return SPELL_CANCEL_CAST
 
 /datum/action/cooldown/spell/summon_mob/cast()
@@ -51,7 +51,7 @@
 
 	var/mob/living/to_summon = summon_weakref?.resolve()
 
-	to_summon.visible_message(span_alert("[to_summon]de repente desaparece no ar!"), span_alert("Você foi chamado para servir!"), span_hear("Você ouve algo se teletransportar de perto, para servir..."))
+	to_summon.visible_message(span_alert("[to_summon] de repente desaparece no ar!"), span_alert("Você foi chamado para servir!"), span_hear("Você ouve algo se teletransportar de perto, para servir..."))
 
 	do_teleport(
 		to_summon,
@@ -76,7 +76,7 @@
 
 	message_admins("[ADMIN_LOOKUPFLW(chosen_one)] was spawned as a Magical Servant ([servant_title])")
 	var/turf/spawn_location = get_turf(owner)
-	spawn_location.visible_message(span_userdanger("Um mágico.[servant_title]aparece em uma nuvem de fumaça!"))
+	spawn_location.visible_message(span_userdanger("Um mágico.[servant_title] aparece em uma nuvem de fumaça!"))
 	var/mob/living/carbon/human/human_servant = new(spawn_location)
 	human_servant.equipOutfit(/datum/outfit/butler)
 	do_smoke(0, src, spawn_location)

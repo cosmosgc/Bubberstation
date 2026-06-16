@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 		name = pick(strings(EXODRONE_FILE,"probe_names"))
 		if(name_counter[name])
 			name_counter[name]++
-			name = "[name] \Roman[name_counter[name]]"
+			name = "[name] \Roman [name_counter[name]]"
 		else
 			name_counter[name] = 1
 	else
@@ -364,7 +364,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /obj/machinery/exodrone_launcher/examine(user)
 	. = ..()
 	if(fuel_canister)
-		. += span_notice("Você pode remover o[fuel_canister]com um<b>Ferramenta intrometida</b>.")
+		. += span_notice("Você pode remover o [fuel_canister] com um<b>Ferramenta intrometida</b>.")
 
 /obj/machinery/exodrone_launcher/attackby(obj/item/weapon, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(weapon, /obj/item/fuel_pellet))
@@ -386,7 +386,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 	if(!fuel_canister)
 		return
 
-	to_chat(user, span_notice("Você tira.[fuel_canister]De[src]."))
+	to_chat(user, span_notice("Você tira.[fuel_canister] De [src]."))
 	fuel_canister.forceMove(drop_location())
 	fuel_canister = null
 	update_icon()

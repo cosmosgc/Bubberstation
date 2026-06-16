@@ -447,7 +447,7 @@
 		/obj/item/food/ink_sac,
 	)
 
-	visible_message(span_warning("[src]Venha.[eaten_atom]!"), span_notice("Você come.[eaten_atom]."))
+	visible_message(span_warning("[src] Venha.[eaten_atom]!"), span_notice("Você come.[eaten_atom]."))
 	if(is_type_in_list(eaten_atom, funny_items))
 		eaten_atom.forceMove(src)
 		prank_pouch += eaten_atom

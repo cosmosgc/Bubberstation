@@ -101,10 +101,10 @@
 /datum/action/cooldown/spell/summonitem/proc/try_unlink_item(mob/living/caster)
 	to_chat(caster, span_notice("Você começa a remover a marca.[marked_item]..."))
 	if(!do_after(caster, 5 SECONDS, marked_item))
-		to_chat(caster, span_notice("Você decide ficar[marked_item]Marcado."))
+		to_chat(caster, span_notice("Você decide ficar [marked_item] Marcado."))
 		return FALSE
 
-	to_chat(caster, span_notice("Você remove a marca.[marked_item]Para usar em outro lugar."))
+	to_chat(caster, span_notice("Você remove a marca.[marked_item] Para usar em outro lugar."))
 	unmark_item()
 	return TRUE
 
@@ -133,9 +133,9 @@
 
 				// Items in silicons warp the whole silicon
 				var/mob/holding_mark = item_to_retrieve.loc
-				holding_mark.loc.visible_message(span_warning("[holding_mark]De arrependimento desaparecer!"))
+				holding_mark.loc.visible_message(span_warning("[holding_mark] De arrependimento desaparecer!"))
 				holding_mark.forceMove(caster.loc)
-				holding_mark.loc.visible_message(span_warning("[holding_mark]De arrependimento apareceu!"))
+				holding_mark.loc.visible_message(span_warning("[holding_mark] De arrependimento apareceu!"))
 				SEND_SIGNAL(holding_mark, COMSIG_MAGIC_RECALL, caster, item_to_retrieve)
 				playsound(holding_mark, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 				return
@@ -166,13 +166,13 @@
 		if (!holder.dropItemToGround(item_to_retrieve, force = TRUE))
 			return
 
-	item_to_retrieve.loc?.visible_message(span_warning("[item_to_retrieve]De arrependimento desaparecer!"))
+	item_to_retrieve.loc?.visible_message(span_warning("[item_to_retrieve] De arrependimento desaparecer!"))
 
 	if(isitem(item_to_retrieve) && caster.put_in_hands(item_to_retrieve))
-		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve]De arrependimento apareceu em[caster]A mão!"))
+		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve] De arrependimento apareceu em [caster] A mão!"))
 	else
 		item_to_retrieve.forceMove(caster.drop_location())
-		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve]De arrependimento apareceu!"))
+		item_to_retrieve.loc.visible_message(span_warning("[item_to_retrieve] De arrependimento apareceu!"))
 
 	playsound(get_turf(item_to_retrieve), 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 
@@ -195,11 +195,11 @@
 		return .
 
 	if(!istype(potential_mark, /obj/item/melee/baton/abductor))
-		to_chat(caster, span_warning("[potential_mark]Não tem cristais de translocação para ligar!"))
+		to_chat(caster, span_warning("[potential_mark] Não tem cristais de translocação para ligar!"))
 		return FALSE
 
 	return TRUE
 
 /datum/action/cooldown/spell/summonitem/abductor/try_unlink_item(mob/living/caster)
-	to_chat(caster, span_warning("Você não pode desvincular[marked_item]Cristais de translocação."))
+	to_chat(caster, span_warning("Você não pode desvincular [marked_item] Cristais de translocação."))
 	return FALSE

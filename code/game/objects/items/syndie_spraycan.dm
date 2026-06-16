@@ -135,12 +135,12 @@
 /// Copying the functionality from normal spraycans, but doesn't need all the optional checks
 /obj/item/traitor_spraycan/suicide_act(mob/living/user)
 	if(expended)
-		user.visible_message(span_suicide("[user]Agitando.[src]com um chocalho e leva-o para[user.p_their()]Boa, mas nada mesmo!"))
+		user.visible_message(span_suicide("[user] Agitando.[src] com um chocalho e leva-o para [user.p_their()] Boa, mas nada mesmo!"))
 		user.say("MEDIOCRE!!", forced="spraycan suicide")
 		return SHAME
 
 	var/mob/living/carbon/human/suicider = user
-	user.visible_message(span_suicide("[user]Agitando.[src]com um chocalho e leva-o para[user.p_their()]boca, spray de tinta através[user.p_their()]Dentes!"))
+	user.visible_message(span_suicide("[user] Agitando.[src] com um chocalho e leva-o para [user.p_their()] boca, spray de tinta através [user.p_their()] Dentes!"))
 	user.say("WITNESS ME!!", forced="spraycan suicide")
 	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 	suicider.AddComponent(/datum/component/face_decal, "spray", EXTERNAL_ADJACENT, paint_color)

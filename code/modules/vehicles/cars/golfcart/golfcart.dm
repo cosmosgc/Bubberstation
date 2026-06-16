@@ -96,7 +96,7 @@
 	if (!isturf(loc))
 		user.balloon_alert(user, "Deite-se primeiro!")
 		return ITEM_INTERACT_BLOCKING
-	user.visible_message(span_notice("[user]Começa a montar o[src]..."), span_notice("Você começa a montar o[src]..."))
+	user.visible_message(span_notice("[user] Começa a montar o [src]..."), span_notice("Você começa a montar o [src]..."))
 	var/unboxing_duration = 7 SECONDS
 	INVOKE_ASYNC(src, PROC_REF(play_building_noises), user, unboxing_duration * tool.toolspeed)
 	if(!tool.use_tool(src, user, unboxing_duration))
@@ -104,7 +104,7 @@
 	if (!isturf(loc))
 		return ITEM_INTERACT_BLOCKING
 	var/obj/vehicle/ridden/golfcart/cart = new(get_turf(src))
-	user.visible_message(span_notice("[user]monta o[cart]!"), span_notice("Você reunir o[cart]."))
+	user.visible_message(span_notice("[user] monta o [cart]!"), span_notice("Você reunir o [cart]."))
 	qdel(src)
 
 /obj/vehicle/ridden/golfcart/atom_break()
@@ -156,8 +156,8 @@
 	mob.throw_at(get_edge_target_turf(mob, dir), 2, 3)
 	RegisterSignal(mob, COMSIG_MOVABLE_THROW_LANDED, PROC_REF(thrown_mob_landed))
 	mob.visible_message(
-		span_danger("[src]hits[mob]Em velocidade máxima!"),
-		span_userdanger("[src]Bate em você!"),
+		span_danger("[src] hits [mob] Em velocidade máxima!"),
+		span_userdanger("[src] Bate em você!"),
 	)
 
 ///Called when a resting victim is run over
@@ -173,8 +173,8 @@
 			playsound(src, 'sound/effects/pop_expl.ogg', 50, TRUE)
 			playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 			victim.visible_message(
-				span_danger("[src]Chega.[victim]!"),
-				span_userdanger("[src]Passa por cima de você!"),
+				span_danger("[src] Chega.[victim]!"),
+				span_userdanger("[src] Passa por cima de você!"),
 			)
 
 			var/damage = rand(GOLFCART_RUN_OVER_DAMAGE - GOLFCART_RUN_OVER_DAMAGE / 5, GOLFCART_RUN_OVER_DAMAGE + GOLFCART_RUN_OVER_DAMAGE / 5)
@@ -316,15 +316,15 @@
 	. = CLICK_ACTION_SUCCESS
 	toggle_hood()
 	if (hood_open)
-		to_chat(user, span_notice("Você estoura.\the [src]É capô."))
+		to_chat(user, span_notice("Você estoura.\the [src] É capô."))
 	else
-		to_chat(user, span_notice("Você se cala.\the [src]É capô."))
+		to_chat(user, span_notice("Você se cala.\the [src] É capô."))
 
 /obj/vehicle/ridden/golfcart/examine_more(mob/user)
 	. = ..()
 	if (!child.cargo)
 		return
-	. += span_slightly_larger("Ele está transportando o[child.cargo]")
+	. += span_slightly_larger("Ele está transportando o [child.cargo]")
 	. += child.cargo.examine(user)
 
 /obj/vehicle/ridden/golfcart/examine(mob/user)
@@ -333,24 +333,24 @@
 	if (child.cargo)
 		. += span_info("A cama está segurando.\the [child.cargo].")
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("Você está muito longe para examinar.[src]De preto.")
+		. += span_warning("Você está muito longe para examinar.[src] De preto.")
 		return
 	if (!engine)
 		var/power = 0
 		if (cell)
 			power = floor(cell.charge / cell.maxcharge * 100)
-		. += span_info("Está atualmente em[power]Carga em %.")
+		. += span_info("Está atualmente em [power] Carga em %.")
 	if (hood_open)
 		. += span_warning("O capô está aberto!")
 		if (engine)
-			. += span_info("Você pode ver\the [engine]Dentro.")
+			. += span_info("Você pode ver\the [engine] Dentro.")
 			if (engine_state == ENGINE_UNWRENCHED)
 				. += span_notice("Precisa ser[EXAMINE_HINT("wrenched")]Nenhum lugar.")
 			else if (engine_state == ENGINE_WRENCHED)
 				. += span_notice("Precisa ser[EXAMINE_HINT("welded")]Abaixe-se.")
 			// last state is ENGINE_WELDED
 		else if (cell)
-			. += span_info("Você pode ver\the [cell]Dentro.")
+			. += span_info("Você pode ver\the [cell] Dentro.")
 			. += span_smallnotice("Se você remover a célula você provavelmente poderia instalar outra fonte de energia...")
 		else
 			. += span_info("Não há nenhuma célula de energia instalada.")

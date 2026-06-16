@@ -9,7 +9,7 @@
 	for(var/crafting_recipe_type in crafting_recipe_types)
 		user.mind.teach_crafting_recipe(crafting_recipe_type)
 		var/datum/crafting_recipe/recipe = locate(crafting_recipe_type) in GLOB.crafting_recipes + GLOB.cooking_recipes
-		to_chat(user, span_notice("Você aprendeu a fazer[recipe.name]."))
+		to_chat(user, span_notice("Você aprendeu a fazer [recipe.name]."))
 
 /obj/item/book/granter/crafting_recipe/dusting
 	icon_state = "book1"

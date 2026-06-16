@@ -109,7 +109,7 @@
 	return list(/datum/reagent/consumable/flour = 0, /datum/reagent/blood = 0)
 
 /obj/item/food/grown/meatwheat/attack_self(mob/living/user)
-	user.visible_message(span_notice("[user]Quedas[src]em carne."), span_notice("Você esmaga[src]em algo que se parece com carne."))
+	user.visible_message(span_notice("[user] Quedas [src] em carne."), span_notice("Você esmaga [src] em algo que se parece com carne."))
 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
 	var/obj/item/food/meat/slab/meatwheat/meaties = new(null)
 	meaties.reagents.set_all_reagents_purity(seed.get_reagent_purity())

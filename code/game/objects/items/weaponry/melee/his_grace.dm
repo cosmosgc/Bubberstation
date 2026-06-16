@@ -43,7 +43,7 @@
 				desc = "Uma caixa de ferramentas pintada de rosa brilhante. Olhar para ele te deixa desconfortável."
 			icon_state = "pink"
 			inhand_icon_state = "toolbox_pink"
-			T.visible_message(span_boldwarning("[src]Começa a parecer um pouco... feminina?"))
+			T.visible_message(span_boldwarning("[src] Começa a parecer um pouco... feminina?"))
 		else if(gender == FEMALE)
 			gender = MALE
 			if(awakened)
@@ -52,7 +52,7 @@
 				desc = "Uma caixa de ferramentas pintada de verde brilhante. Olhar para ele te deixa desconfortável."
 			icon_state = "green"
 			inhand_icon_state = "toolbox_green"
-			T.visible_message(span_boldwarning("[src]Começa a parecer um pouco mais... viril?"))
+			T.visible_message(span_boldwarning("[src] Começa a parecer um pouco mais... viril?"))
 		if(holder)
 			holder.remove_status_effect(/datum/status_effect/his_grace)
 		qdel(tool)
@@ -120,24 +120,24 @@
 	if(awakened)
 		switch(bloodthirst)
 			if(HIS_GRACE_SATIATED to HIS_GRACE_PECKISH)
-				. += span_his_grace("[src]Não está com muita fome. Ainda não.")
+				. += span_his_grace("[src] Não está com muita fome. Ainda não.")
 			if(HIS_GRACE_PECKISH to HIS_GRACE_HUNGRY)
-				. += span_his_grace("[src]Gostaria de um lanche.")
+				. += span_his_grace("[src] Gostaria de um lanche.")
 			if(HIS_GRACE_HUNGRY to HIS_GRACE_FAMISHED)
-				. += span_his_grace("[src]Está com muita fome agora.")
+				. += span_his_grace("[src] Está com muita fome agora.")
 			if(HIS_GRACE_FAMISHED to HIS_GRACE_STARVING)
-				. += span_his_grace("[src]está salivando abertamente ao vê-lo. Tenha cuidado.")
+				. += span_his_grace("[src] está salivando abertamente ao vê-lo. Tenha cuidado.")
 			if(HIS_GRACE_STARVING to HIS_GRACE_CONSUME_OWNER)
 				. += "<span class='his_grace bold'>You walk a fine line. [src] is very close to devouring you.</span>"
 			if(HIS_GRACE_CONSUME_OWNER to HIS_GRACE_FALL_ASLEEP)
 				. += "<span class='his_grace bold'>[src] is shaking violently and staring directly at you.</span>"
 	else
-		. += span_his_grace("[src]Está fechado.")
+		. += span_his_grace("[src] Está fechado.")
 
 /obj/item/his_grace/relaymove(mob/living/user, direction) //Allows changelings, etc. to climb out of Him after they revive, provided He isn't active
 	if(!awakened)
 		user.forceMove(get_turf(src))
-		user.visible_message(span_warning("[user]Mexidos para fora[src]!"), span_notice("Você sai[src]!"))
+		user.visible_message(span_warning("[user] Mexidos para fora [src]!"), span_notice("Você sai [src]!"))
 
 /obj/item/his_grace/process(seconds_per_tick)
 	if(!bloodthirst)
@@ -151,7 +151,7 @@
 	if(!isnull(master) && (src in master.held_items))
 		switch(bloodthirst)
 			if(HIS_GRACE_CONSUME_OWNER to HIS_GRACE_FALL_ASLEEP)
-				master.visible_message(span_boldwarning("[src]Liga.[master]!"), "<span class='his_grace big bold'>[src]Se vira contra você!</span>")
+				master.visible_message(span_boldwarning("[src] Liga.[master]!"), "<span class='his_grace big bold'>[src] Se vira contra você!</span>")
 				do_attack_animation(master, null, src)
 				master.emote("scream")
 				master.remove_status_effect(/datum/status_effect/his_grace)
@@ -177,7 +177,7 @@
 	step_to(src, L)
 	if(Adjacent(L))
 		if(!L.stat)
-			L.visible_message(span_warning("[src]Pulmões em[L]!"), "<span class='his_grace big bold'>[src]Pulgas em você!</span>")
+			L.visible_message(span_warning("[src] Pulmões em [L]!"), "<span class='his_grace big bold'>[src] Pulgas em você!</span>")
 			do_attack_animation(L, null, src)
 			playsound(L, 'sound/items/weapons/smash.ogg', 50, TRUE)
 			playsound(L, 'sound/effects/desecration/desecration-01.ogg', 50, TRUE)
@@ -190,7 +190,7 @@
 	if(awakened)
 		return
 	awakened = TRUE
-	user.visible_message(span_boldwarning("[src]Começa a chocalhar.[p_They()]sedes."), span_his_grace("Você filma[src]Está travado. Você espera que isso seja uma boa ideia."))
+	user.visible_message(span_boldwarning("[src] Começa a chocalhar.[p_They()] sedes."), span_his_grace("Você filma [src] Está travado. Você espera que isso seja uma boa ideia."))
 	name = p_Their() + " Grace"
 	desc = "Um artefato sanguinário criado por um rito profano."
 	adjust_bloodthirst(1)
@@ -216,7 +216,7 @@
 	if(!awakened || ascended)
 		return
 	var/turf/T = get_turf(src)
-	T.visible_message(span_boldwarning("[src]lentamente pára de bater e cai ainda,[p_Their()]Fechando o fecho."))
+	T.visible_message(span_boldwarning("[src] lentamente pára de bater e cai ainda,[p_Their()] Fechando o fecho."))
 	playsound(loc, 'sound/items/weapons/batonextend.ogg', 100, TRUE)
 	name = initial(name)
 	if(gender == MALE)
@@ -234,7 +234,7 @@
 	if(!meal)
 		return
 	var/victims = 0
-	meal.visible_message(span_warning("[src]Balance e devora[meal]!"), "<span class='his_grace big bold'>[src]Te consome!</span>")
+	meal.visible_message(span_warning("[src] Balance e devora [meal]!"), "<span class='his_grace big bold'>[src] Te consome!</span>")
 	meal.adjust_brute_loss(200)
 	playsound(meal, 'sound/effects/desecration/desecration-02.ogg', 75, TRUE)
 	playsound(src, 'sound/items/eatfood.ogg', 100, TRUE)
@@ -268,33 +268,33 @@
 	switch(bloodthirst)
 		if(HIS_GRACE_CONSUME_OWNER to HIS_GRACE_FALL_ASLEEP)
 			if(HIS_GRACE_CONSUME_OWNER > prev_bloodthirst)
-				master.visible_message(span_userdanger("[src]Entra em um frenesi!"))
+				master.visible_message(span_userdanger("[src] Entra em um frenesi!"))
 		if(HIS_GRACE_STARVING to HIS_GRACE_CONSUME_OWNER)
 			ADD_TRAIT(src, TRAIT_NODROP, HIS_GRACE_TRAIT)
 			if(HIS_GRACE_STARVING > prev_bloodthirst)
-				master.visible_message(span_boldwarning("[src]Está faminto!"), "<span class='his_grace big'>[src]A sede de sangue te vence.[src]deve ser alimentado, ou você vai se tornar[p_Their()]Refeição.[force_bonus < 15 ? " And still, [p_Their()] power grows.":""]</span>")
+				master.visible_message(span_boldwarning("[src] Está faminto!"), "<span class='his_grace big'>[src] A sede de sangue te vence.[src] deve ser alimentado, ou você vai se tornar [p_Their()] Refeição.[force_bonus < 15 ? " And still, [p_Their()] power grows.":""]</span>")
 				force_bonus = max(force_bonus, 15)
 		if(HIS_GRACE_FAMISHED to HIS_GRACE_STARVING)
 			ADD_TRAIT(src, TRAIT_NODROP, HIS_GRACE_TRAIT)
 			if(HIS_GRACE_FAMISHED > prev_bloodthirst)
-				master.visible_message(span_warning("[src]Está com muita fome!"), "<span class='his_grace big'>Espinhos afundam em sua mão.[src]Deve se alimentar imediatamente.[force_bonus < 10 ? " [p_Their()] power grows.":""]</span>")
+				master.visible_message(span_warning("[src] Está com muita fome!"), "<span class='his_grace big'>Espinhos afundam em sua mão.[src] Deve se alimentar imediatamente.[force_bonus < 10 ? " [p_Their()] power grows.":""]</span>")
 				force_bonus = max(force_bonus, 10)
 			if(prev_bloodthirst >= HIS_GRACE_STARVING)
-				master.visible_message(span_warning("[src]Agora só tem muita fome!"), "<span class='his_grace big'>Sua sede de sangue diminui.</span>")
+				master.visible_message(span_warning("[src] Agora só tem muita fome!"), "<span class='his_grace big'>Sua sede de sangue diminui.</span>")
 		if(HIS_GRACE_HUNGRY to HIS_GRACE_FAMISHED)
 			if(HIS_GRACE_HUNGRY > prev_bloodthirst)
-				master.visible_message(span_warning("[src]está ficando com fome."), "<span class='his_grace big'>Você sente[src]Está com fome dentro de você.[force_bonus < 5 ? " [p_Their()] power grows.":""]</span>")
+				master.visible_message(span_warning("[src] está ficando com fome."), "<span class='his_grace big'>Você sente [src] Está com fome dentro de você.[force_bonus < 5 ? " [p_Their()] power grows.":""]</span>")
 				force_bonus = max(force_bonus, 5)
 			if(prev_bloodthirst >= HIS_GRACE_FAMISHED)
-				master.visible_message(span_warning("[src]está agora apenas um pouco faminto."), span_his_grace("[src]A fome diminui um pouco..."))
+				master.visible_message(span_warning("[src] está agora apenas um pouco faminto."), span_his_grace("[src] A fome diminui um pouco..."))
 		if(HIS_GRACE_PECKISH to HIS_GRACE_HUNGRY)
 			if(HIS_GRACE_PECKISH > prev_bloodthirst)
-				master.visible_message(span_warning("[src]está se sentindo como um lanche."), span_his_grace("[src]começa a fome."))
+				master.visible_message(span_warning("[src] está se sentindo como um lanche."), span_his_grace("[src] começa a fome."))
 			if(prev_bloodthirst >= HIS_GRACE_HUNGRY)
-				master.visible_message(span_warning("[src]Agora está com um pouco de fome."), "<span class='his_grace big'>[src]A fome diminui um pouco...</span>")
+				master.visible_message(span_warning("[src] Agora está com um pouco de fome."), "<span class='his_grace big'>[src] A fome diminui um pouco...</span>")
 		if(HIS_GRACE_SATIATED to HIS_GRACE_PECKISH)
 			if(prev_bloodthirst >= HIS_GRACE_PECKISH)
-				master.visible_message(span_warning("[src]Está saciado."), "<span class='his_grace big'>[src]A fome diminui...</span>")
+				master.visible_message(span_warning("[src] Está saciado."), "<span class='his_grace big'>[src] A fome diminui...</span>")
 	force = initial(force) + force_bonus
 
 /obj/item/his_grace/proc/ascend()

@@ -98,7 +98,7 @@
 	..()
 	mode %= modes.len
 	mode++
-	to_chat(user, span_notice("Você está pronto.[src]em[modes[mode]]Modo."))
+	to_chat(user, span_notice("Você está pronto.[src] em [modes[mode]]Modo."))
 	listening = FALSE
 	recorded = ""
 	return TRUE

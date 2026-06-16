@@ -130,7 +130,7 @@
 		return //Somehow we're not in a pipe, shits probably fucked
 	var/obj/structure/disposalpipe/transport_cylinder = loc
 	if(active)
-		to_chat(escapee, span_danger("Você desliza[loc]e são incapazes de manter seu controle!"))
+		to_chat(escapee, span_danger("Você desliza [loc] e são incapazes de manter seu controle!"))
 		return
 	if(src in escapee.do_afters)
 		return //already trying to escape

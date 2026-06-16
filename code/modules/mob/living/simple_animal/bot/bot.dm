@@ -304,7 +304,7 @@
 	return ..()
 
 /mob/living/simple_animal/bot/proc/explode()
-	visible_message(span_boldnotice("[src]Vai pelos ares!"))
+	visible_message(span_boldnotice("[src] Vai pelos ares!"))
 	do_sparks(3, TRUE, src)
 	var/atom/location_destroyed = drop_location()
 	if(prob(50))
@@ -340,15 +340,15 @@
 			. += "[src]'s parts look very loose!"
 	else
 		. += "[src] is in pristine condition."
-	. += span_notice("[p_Their()]painel de manutenção é[bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
+	. += span_notice("[p_Their()] painel de manutenção é[bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "open" : "closed"].")
 	. += span_info("Você pode usar um<b>Chave de fenda</b>para[bot_cover_flags & BOT_COVER_MAINTS_OPEN ? "close" : "open"]Ele.")
 	if(bot_cover_flags & BOT_COVER_MAINTS_OPEN)
-		. += span_notice("[p_Their()]painel de controle é[bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
+		. += span_notice("[p_Their()] painel de controle é[bot_cover_flags & BOT_COVER_LOCKED ? "trancado" : "destrancado"].")
 		var/is_sillycone = HAS_SILICON_ACCESS(user)
 		if(!(bot_cover_flags & BOT_COVER_EMAGGED) && (is_sillycone || user.Adjacent(src)))
-			. += span_info("Alt-click[is_sillycone ? "" : "or use your ID on "]Ele para[bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]Trava[p_their()]Painel de controle.")
+			. += span_info("Alt-click[is_sillycone ? "" : "or use your ID on "]Ele para[bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]Trava [p_their()] Painel de controle.")
 	if(paicard)
-		. += span_notice("[p_They()]tem um dispositivo PAI instalado.")
+		. += span_notice("[p_They()] tem um dispositivo PAI instalado.")
 		if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN))
 			. += span_info("Você pode usar um<b>hemostat</b>para removê-lo.")
 	if(access_card)
@@ -411,7 +411,7 @@
 	if(!topic_denied(user))
 		ui_interact(user)
 	else
-		to_chat(user, span_warning("[src]A interface não está respondendo!"))
+		to_chat(user, span_warning("[src] A interface não está respondendo!"))
 
 /mob/living/simple_animal/bot/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -453,7 +453,7 @@
 		return FALSE
 
 	if(health >= maxHealth)
-		to_chat(user, span_warning("[src]Não precisa de reparo!"))
+		to_chat(user, span_warning("[src] Não precisa de reparo!"))
 		return ITEM_INTERACT_SUCCESS
 	if(!(bot_cover_flags & BOT_COVER_MAINTS_OPEN))
 		to_chat(user, span_warning("Incapaz de reparar com o painel de manutenção fechado!"))
@@ -461,7 +461,7 @@
 
 	if(tool.use_tool(src, user, 0 SECONDS, volume=40))
 		adjustHealth(-10)
-		user.visible_message(span_notice("[user]reparos[src]!"),span_notice("Você conserta.[src]."))
+		user.visible_message(span_notice("[user] reparos [src]!"),span_notice("Você conserta.[src]."))
 		return ITEM_INTERACT_SUCCESS
 
 /mob/living/simple_animal/bot/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -478,7 +478,7 @@
 			balloon_alert(user, "removendo PAI...")
 			if(!do_after(user, 3 SECONDS, target = src) || !paicard)
 				return
-			user.visible_message(span_notice("[user]usa[attacking_item]Para puxar[paicard]Fora[initial(src.name)]!"),span_notice("Você puxa.[paicard]Fora[initial(src.name)]com[attacking_item]."))
+			user.visible_message(span_notice("[user] usa [attacking_item] Para puxar [paicard] Fora [initial(src.name)]!"),span_notice("Você puxa.[paicard] Fora [initial(src.name)] com [attacking_item]."))
 			ejectpai(user)
 		return
 	return ..()
@@ -508,7 +508,7 @@
 	new /obj/effect/temp_visual/emp(loc)
 	if(paicard)
 		paicard.emp_act(severity)
-		src.visible_message(span_notice("[paicard]É voar para fora[initial(src.name)]!"), span_warning("Você foi expulso com força.[initial(src.name)]!"))
+		src.visible_message(span_notice("[paicard] É voar para fora [initial(src.name)]!"), span_warning("Você foi expulso com força.[initial(src.name)]!"))
 		ejectpai()
 
 	if (QDELETED(src))
@@ -711,9 +711,9 @@ Pass a positive integer as an argument to override a bot's default speed.
 		access_card.set_access(REGION_ACCESS_ALL_STATION) //Give the bot all-access while under the AI's command.
 		if(client)
 			reset_access_timer_id = addtimer(CALLBACK (src, PROC_REF(bot_reset)), 60 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE) //if the bot is player controlled, they get the extra access for a limited time
-			to_chat(src, span_notice("[span_big("Priority waypoint set by [icon2html(calling_ai, src)] <b>[summoner]</b>. Proceed to <b>[end_area]</b>.")]<br>[path.len-1]metros para o destino. Você recebeu acesso adicional por 60 segundos."))
+			to_chat(src, span_notice("[span_big("Priority waypoint set by [icon2html(calling_ai, src)] <b>[summoner]</b>. Proceed to <b>[end_area]</b>.")]<br>[path.len-1] metros para o destino. Você recebeu acesso adicional por 60 segundos."))
 		if(message)
-			to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [name]Chamado para[end_area]. [path.len-1]metros para o destino."))
+			to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [name] Chamado para [end_area]. [path.len-1] metros para o destino."))
 		pathset = TRUE
 		mode = BOT_RESPONDING
 		tries = 0
@@ -898,7 +898,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 		if("patrolon")
 			to_chat(src, "<span class='warning big'>Iniciar PATROL</span>")
 		if("summon")
-			to_chat(src, "<span class='warning big'>Priority Alert:[user]em[get_area_name(user)]!</span>")
+			to_chat(src, "<span class='warning big'>Priority Alert:[user] em [get_area_name(user)]!</span>")
 		if("stop")
 			to_chat(src, "<span class='warning big'>Pare!</span>")
 
@@ -1011,7 +1011,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 				return
 			if(!(bot_cover_flags & BOT_COVER_EMAGGED))
 				bot_cover_flags |= (BOT_COVER_EMAGGED|BOT_COVER_HACKED|BOT_COVER_LOCKED)
-				to_chat(user, span_warning("Você está sobrecarregado.[src]'s[hackables]."))
+				to_chat(user, span_warning("Você está sobrecarregado.[src]'s [hackables]."))
 				message_admins("Safety lock of [ADMIN_LOOKUPFLW(src)] was disabled by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(src)]")
 				user.log_message("disabled safety lock of [src]", LOG_GAME)
 				bot_reset()
@@ -1019,10 +1019,10 @@ Pass a positive integer as an argument to override a bot's default speed.
 				to_chat(src, span_boldnotice(get_emagged_message()))
 				return
 			if(!(bot_cover_flags & BOT_COVER_HACKED))
-				to_chat(user, span_bolddanger("Você não consegue consertar.[src]'s[hackables]."))
+				to_chat(user, span_bolddanger("Você não consegue consertar.[src]'s [hackables]."))
 				return
 			bot_cover_flags &= ~(BOT_COVER_EMAGGED|BOT_COVER_HACKED)
-			to_chat(user, span_notice("Você redefiniu o[src]'s[hackables]."))
+			to_chat(user, span_notice("Você redefiniu o [src]'s [hackables]."))
 			user.log_message("re-enabled safety lock of [src]", LOG_GAME)
 			bot_reset()
 			to_chat(src, span_userdanger("Software restaurado ao padrão."))
@@ -1030,7 +1030,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 		if("eject_pai")
 			if(!paicard)
 				return
-			to_chat(user, span_notice("Você ejeta.[paicard]De[initial(src.name)]."))
+			to_chat(user, span_notice("Você ejeta.[paicard] De [initial(src.name)]."))
 			ejectpai(user)
 		if("toggle_personality")
 			if (can_be_possessed)
@@ -1081,9 +1081,9 @@ Pass a positive integer as an argument to override a bot's default speed.
 		paicard.pai.fold_in()
 	copy_languages(paicard.pai, source_override = LANGUAGE_PAI)
 	set_active_language(paicard.pai.get_selected_language())
-	user.visible_message(span_notice("[user]Inserções[card]em[src]!"), span_notice("Você insere[card]em[src]."))
+	user.visible_message(span_notice("[user] Inserções [card] em [src]!"), span_notice("Você insere [card] em [src]."))
 	paicard.pai.mind.transfer_to(src)
-	to_chat(src, span_notice("Você sente sua mudança de forma como você é carregado em[src]."))
+	to_chat(src, span_notice("Você sente sua mudança de forma como você é carregado em [src]."))
 	name = paicard.pai.name
 	original_faction = get_faction()
 	original_allies = allies
@@ -1114,7 +1114,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 	else
 		log_combat(src, paicard.pai, "ejected")
 	if(announce)
-		to_chat(paicard.pai, span_notice("Você sente seu controle desaparecer como[paicard]Ejeta de[initial(src.name)]."))
+		to_chat(paicard.pai, span_notice("Você sente seu controle desaparecer como [paicard] Ejeta de [initial(src.name)]."))
 	paicard = null
 	name = initial(src.name)
 	set_faction(original_faction)

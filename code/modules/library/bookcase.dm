@@ -168,7 +168,7 @@
 				found_anything = TRUE
 
 		if (found_anything)
-			balloon_alert(user, "Esvaziado em[src]")
+			balloon_alert(user, "Esvaziado em [src]")
 			update_appearance()
 			return
 

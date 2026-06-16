@@ -41,7 +41,7 @@
 	// similar to context, we don't want a bunch of text revealing "THIS IS A DISGUISED ITEM" to everyone on examine.
 	// despite the fact that anyone can use it, we'll only show it to traitors, everyone else just has to figure it out.
 	. += span_red("Há um pequeno botão no lado inferior. Você reconhece isso como um oculto<i>Scanner Camaleão 6000</i>.")
-	. += span_red("<b>Clique esquerdo</b>vai escanear furtivamente um alvo até[scan_range]metros de distância e carregar a roupa deles como uma roupa personalizada para você usar.")
+	. += span_red("<b>Clique esquerdo</b>vai escanear furtivamente um alvo até [scan_range] metros de distância e carregar a roupa deles como uma roupa personalizada para você usar.")
 	. += span_red("<b>Clique em direito.</b>fará o mesmo, mas instantaneamente equipará o equipamento que você obter.")
 
 /obj/item/chameleon_scanner/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)

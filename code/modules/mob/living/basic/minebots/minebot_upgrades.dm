@@ -27,11 +27,11 @@
 
 /obj/item/mine_bot_upgrade/health/upgrade_bot(mob/living/basic/mining_drone/minebot, mob/user)
 	if(minebot.maxHealth != initial(minebot.maxHealth))
-		to_chat(user, span_warning("[minebot]Já tem armadura reforçada!"))
+		to_chat(user, span_warning("[minebot] Já tem armadura reforçada!"))
 		return
 	minebot.maxHealth += 45
 	minebot.updatehealth()
-	to_chat(user, span_notice("Você reforça a armadura de[minebot]."))
+	to_chat(user, span_notice("Você reforça a armadura de [minebot]."))
 	qdel(src)
 
 //AI

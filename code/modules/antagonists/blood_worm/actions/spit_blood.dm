@@ -27,7 +27,7 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/set_click_ability(mob/on_who)
 	. = ..()
 	var/right_click_message = ishuman(owner) ? ", right-click to melt restraints" : (burst_projectile_type ? ", right-click for a burst" : "")
-	to_chat(owner, span_notice("Você enche o seu[ishuman(owner) ? "mouth" : "maw"]Com sangue.<b>Clique em esquerdo para cuspir sangue corrosivo[right_click_message]!</b>"))
+	to_chat(owner, span_notice("Você enche o seu[ishuman(owner) ? "mouth" : "maw"]Com sangue.<b>Clique em esquerdo para cuspir sangue corrosivo [right_click_message]!</b>"))
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/unset_click_ability(mob/on_who, refund_cooldown)
 	. = ..()
@@ -86,7 +86,7 @@
 		return
 
 	owner.visible_message(
-		message = span_danger("\The [owner] spit[owner.p_s()] corrosive blood!"),
+		message = span_danger("\The [owner] spit [owner.p_s()] corrosive blood!"),
 		self_message = span_danger("Você cuspiu sangue corrosivo!"),
 		blind_message = span_hear("Você ouve cuspir.")
 	)
@@ -107,7 +107,7 @@
 		return
 
 	owner.visible_message(
-		message = span_danger("\The [owner] spit[owner.p_s()] a burst of corrosive blood!"),
+		message = span_danger("\The [owner] spit [owner.p_s()] a burst of corrosive blood!"),
 		self_message = span_danger("Você cuspiu uma explosão de sangue corrosivo!"),
 		blind_message = span_hear("Você ouve cuspir.")
 	)
@@ -172,11 +172,11 @@
 	if (!istype(restraints))
 		return FALSE
 	if (restraints.resistance_flags & (INDESTRUCTIBLE | UNACIDABLE | ACID_PROOF))
-		host.balloon_alert(host, "\the [restraints] [restraints.p_are()]Muito duro!")
+		host.balloon_alert(host, "\the [restraints] [restraints.p_are()] Muito duro!")
 		return FALSE
 
 	host.visible_message(
-		message = span_danger("\The [host] spit[host.p_s()] corrosive blood all over \the [restraints]!"),
+		message = span_danger("\The [host] spit [host.p_s()] corrosive blood all over \the [restraints]!"),
 		self_message = span_danger("Você cuspiu sangue corrosivo por toda parte.\the [restraints]!"),
 		blind_message = span_hear("Você ouve as brasas.")
 	)
@@ -187,13 +187,13 @@
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/proc/finish_melting_restraints(obj/restraints)
-	restraints.visible_message(span_danger("\The [restraints]Derreter[restraints.p_s()]em uma pilha de sangue goopy!"))
+	restraints.visible_message(span_danger("\The [restraints] Derreter [restraints.p_s()] em uma pilha de sangue goopy!"))
 	new /obj/effect/decal/cleanable/blood/old(get_turf(restraints))
 	qdel(restraints)
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/proc/melt_closet(mob/living/carbon/human/host, obj/structure/closet/closet)
 	if (closet.resistance_flags & (INDESTRUCTIBLE | UNACIDABLE | ACID_PROOF))
-		host.balloon_alert(host, "\the [closet] [closet.p_are()]Muito duro!")
+		host.balloon_alert(host, "\the [closet] [closet.p_are()] Muito duro!")
 		return FALSE
 
 	closet.visible_message(
@@ -202,7 +202,7 @@
 		ignored_mobs = host
 	)
 
-	to_chat(host, span_danger("Você cuspiu sangue corrosivo por toda parte.\the [closet]As dobradiças interiores!"))
+	to_chat(host, span_danger("Você cuspiu sangue corrosivo por toda parte.\the [closet] As dobradiças interiores!"))
 
 	log_combat(host, closet, "melted", addition = "(Spit Blood)")
 
@@ -210,7 +210,7 @@
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/proc/finish_melting_closet(obj/structure/closet/closet)
-	closet.visible_message(span_danger("\The [closet]As dobradiças derretem em uma pilha de sangue goopy!"))
+	closet.visible_message(span_danger("\The [closet] As dobradiças derretem em uma pilha de sangue goopy!"))
 	new /obj/effect/decal/cleanable/blood/old(get_turf(closet))
 
 	closet.welded = FALSE
@@ -220,7 +220,7 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/proc/melt_cocoon(mob/living/carbon/human/host, obj/structure/spider/cocoon/cocoon)
 	if (cocoon.resistance_flags & (INDESTRUCTIBLE | UNACIDABLE | ACID_PROOF))
-		host.balloon_alert(host, "\the [cocoon] [cocoon.p_are()]Muito duro!")
+		host.balloon_alert(host, "\the [cocoon] [cocoon.p_are()] Muito duro!")
 		return FALSE
 
 	cocoon.visible_message(
@@ -237,7 +237,7 @@
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/proc/finish_melting_cocoon(obj/structure/spider/cocoon/cocoon)
-	cocoon.visible_message(span_danger("\The [cocoon]Derreter[cocoon.p_s()]em uma pilha de sangue goopy!"))
+	cocoon.visible_message(span_danger("\The [cocoon] Derreter [cocoon.p_s()] em uma pilha de sangue goopy!"))
 	new /obj/effect/decal/cleanable/blood/old(get_turf(cocoon))
 	qdel(cocoon)
 

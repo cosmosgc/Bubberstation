@@ -63,7 +63,7 @@
 
 /obj/machinery/recycler/can_be_unfasten_wrench(mob/user, silent)
 	if(!(isfloorturf(loc) || isindestructiblefloor(loc)) && !anchored)
-		to_chat(user, span_warning("[src]Precisa estar no chão para estar seguro!"))
+		to_chat(user, span_warning("[src] Precisa estar no chão para estar seguro!"))
 		return FAILED_UNFASTEN
 	return SUCCESSFUL_UNFASTEN
 
@@ -149,7 +149,7 @@
 		if(thing.flags_1 & HOLOGRAM_1)
 			for(var/atom/movable/hologram_content as anything in thing.contents)
 				hologram_content.forceMove(loc) // we shouldn't qdel() the non-holographic content of the hologram.
-			visible_message(span_notice("[thing]Desapareça!"))
+			visible_message(span_notice("[thing] Desapareça!"))
 			qdel(thing)
 			continue
 

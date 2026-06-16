@@ -25,7 +25,7 @@
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
 		to_chat(cast_on, span_danger("Você sente um puxão leve, mas de outra forma está bem, você foi protegido pela santidade!"))
-		to_chat(owner, span_danger("[cast_on]é protegido por forças sagradas!"))
+		to_chat(owner, span_danger("[cast_on] é protegido por forças sagradas!"))
 		return FALSE
 
 	var/obj/storage_item = cast_on.get_item_by_slot(ITEM_SLOT_BACK)
@@ -37,6 +37,6 @@
 	if(isnull(item))
 		return FALSE
 
-	to_chat(cast_on, span_warning("Sua[storage_item]Parece mais leve..."))
-	to_chat(owner, span_notice("Com um piscar de olhos, você puxa[item]Fora[cast_on][p_s()] [storage_item]."))
+	to_chat(cast_on, span_warning("Sua [storage_item] Parece mais leve..."))
+	to_chat(owner, span_notice("Com um piscar de olhos, você puxa [item] Fora [cast_on][p_s()] [storage_item]."))
 	owner.put_in_active_hand(item)

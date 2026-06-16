@@ -76,7 +76,7 @@
 		return
 
 	playsound(parent, 'sound/items/weapons/cablecuff.ogg', 30, TRUE)
-	human_target.visible_message(span_danger("[parent]Está tentando colocar zíperes[human_target]!"),		span_danger("[parent]Está tentando colocar zíperes em você!"))
+	human_target.visible_message(span_danger("[parent] Está tentando colocar zíperes [human_target]!"),		span_danger("[parent] Está tentando colocar zíperes em você!"))
 
 	if(!do_after(parent, handcuff_timer, human_target))
 		return
@@ -92,6 +92,6 @@
 	log_combat(parent, human_target, "honked")
 
 	human_target.visible_message(
-		span_danger("[parent]atordoamentos[human_target]!"), 		span_userdanger("[parent]Te atordoa!"), 	)
+		span_danger("[parent] atordoamentos [human_target]!"), 		span_userdanger("[parent] Te atordoa!"), 	)
 	COOLDOWN_START(src, stun_cooldown, stun_cooldown_timer)
 	post_stun_callback?.Invoke(human_target)

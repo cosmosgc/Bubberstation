@@ -20,7 +20,7 @@
 			displayed = I
 			update_appearance()
 		else
-			to_chat(user, span_warning("\The [src]Já contém uma foto."))
+			to_chat(user, span_warning("\The [src] Já contém uma foto."))
 	..()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
@@ -139,7 +139,7 @@
 		return FALSE
 	tool.play_tool_sound(src)
 	framed.forceMove(drop_location())
-	user.visible_message(span_warning("[user]Corte-os.[framed]De[src]!"))
+	user.visible_message(span_warning("[user] Corte-os.[framed] De [src]!"))
 	set_and_save_framed(null)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -149,7 +149,7 @@
 
 	if(istype(I, /obj/item/photo))
 		if(framed)
-			to_chat(user, span_warning("\The [src]Já contém uma foto."))
+			to_chat(user, span_warning("\The [src] Já contém uma foto."))
 			return TRUE
 		var/obj/item/photo/P = I
 		if(!user.transferItemToLoc(P, src))

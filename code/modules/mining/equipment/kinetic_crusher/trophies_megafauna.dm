@@ -229,10 +229,10 @@
 		return
 	var/mob/living/LivingUser = user
 	if(next_use_time > world.time)
-		LivingUser.visible_message(span_warning("[LivingUser]Agita o[src]Mas nada mesmo..."))
+		LivingUser.visible_message(span_warning("[LivingUser] Agita o [src] Mas nada mesmo..."))
 		to_chat(LivingUser, "<b>Você precisa esperar mais para usar isso de novo.</b>")
 		return
-	LivingUser.visible_message(span_boldwarning("[LivingUser]Agita o[src]e convoca um crânio da legião!"))
+	LivingUser.visible_message(span_boldwarning("[LivingUser] Agita o [src] e convoca um crânio da legião!"))
 
 	var/mob/living/basic/mining/legion_brood/minion = new (LivingUser.loc)
 	minion.assign_creator(LivingUser)

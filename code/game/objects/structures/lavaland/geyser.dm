@@ -87,7 +87,7 @@
 
 		var/obj/item/card/id/card = living.get_idcard()
 		if(card)
-			to_chat(user, span_notice("[point_value]Os pontos de mineração foram pagos!"))
+			to_chat(user, span_notice("[point_value] Os pontos de mineração foram pagos!"))
 			card.registered_account.mining_points += point_value
 
 /obj/structure/geyser/wittel
@@ -122,7 +122,7 @@
 
 	true_name = "[initial(reagent_id.name)] geyser"
 
-	discovery_message = "É um...[true_name]Como isso funciona?" //it doesnt
+	discovery_message = "É um...[true_name] Como isso funciona?" //it doesnt
 
 	return ..()
 
@@ -165,7 +165,7 @@
 		var/mob/living/carbon/H = hit_atom
 		if(!H.wear_mask)
 			H.equip_to_slot_if_possible(src, ITEM_SLOT_MASK)
-			H.visible_message(span_warning("O êmbolo bate em[H]Ó rosto!"), span_warning("O êmbolo aspira no seu rosto!"))
+			H.visible_message(span_warning("O êmbolo bate em [H] Ó rosto!"), span_warning("O êmbolo aspira no seu rosto!"))
 
 /obj/item/plunger/attack_self(mob/user)
 	. = ..()

@@ -21,7 +21,7 @@
 	if(got_limbs_back)
 		playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 		carbon_user.visible_message(
-			span_warning("[user]Os membros desaparecidos reformam, fazendo um som alto e grotesco!"),
+			span_warning("[user] Os membros desaparecidos reformam, fazendo um som alto e grotesco!"),
 			span_userdanger("Seus membros cresceram, fazendo um som alto, crocante e dando-lhe uma grande dor!"),
 			span_hear("Você ouve matéria orgânica rasgando e rasgando!"),
 		)

@@ -38,7 +38,7 @@
 		. += span_danger("Sistemas de segurança presentes no console. Qualquer adulteração não autorizada resultará em um anúncio de emergência.")
 	if(user?.mind?.get_hijack_speed())
 		. += span_danger("Alt clique nisso para tentar sequestrar a nave auxiliar. Isso vai levar várias tentativas (atual: estágio)[SSshuttle.emergency.hijack_status]/[HIJACK_COMPLETED]).")
-		. += span_notice("Vai levá-lo.[(hijack_stage_time * user.mind.get_hijack_speed()) / 10]segundos para reprogramar uma fase do firmware de navegação da nave, e o console será submetido a bloqueio automático de tempo para[hijack_stage_cooldown/10]segundos após cada etapa.")
+		. += span_notice("Vai levá-lo.[(hijack_stage_time * user.mind.get_hijack_speed()) / 10] segundos para reprogramar uma fase do firmware de navegação da nave, e o console será submetido a bloqueio automático de tempo para [hijack_stage_cooldown/10] segundos após cada etapa.")
 		if(hijack_announce)
 			. += span_warning("É melhor fortalecer sua posição para ser ininterrupta durante a tentativa, dado os anúncios automáticos.")
 
@@ -227,14 +227,14 @@
 	if(!IsReachableBy(user))
 		return
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
-		to_chat(user, span_warning("Você precisa de suas mãos livres antes de poder manipular[src]."))
+		to_chat(user, span_warning("Você precisa de suas mãos livres antes de poder manipular [src]."))
 		return
 	var/area/my_area = get_area(src)
 	if(!istype(my_area, /area/shuttle/escape))
 		say("Error - Network connectivity: Console has lost connection to the shuttle.")
 		return
 	if(!user?.mind?.get_hijack_speed())
-		to_chat(user, span_warning("Você consegue abrir uma shell de modo de usuário em[src], e centenas de linhas de saída de depuração voar através de sua visão. É melhor deixar isso em paz."))
+		to_chat(user, span_warning("Você consegue abrir uma shell de modo de usuário em [src], e centenas de linhas de saída de depuração voar através de sua visão. É melhor deixar isso em paz."))
 		return
 	if(!EMERGENCY_AT_LEAST_DOCKED) // prevent advancing hijack stages on BYOS shuttles until the shuttle has "docked"
 		to_chat(user, span_warning("Os planos de voo da nave ainda não foram carregados, não pode hackear isso agora."))
@@ -248,7 +248,7 @@
 		say("Error - Catastrophic software error detected. Input is currently on timeout.")
 		return
 	hijack_hacking = TRUE
-	to_chat(user, span_boldwarning("Você.[SSshuttle.emergency.hijack_status == HIJACK_NOT_BEGUN? "begin" : "continue"]para substituir[src]Protocolos de navegação."))
+	to_chat(user, span_boldwarning("Você.[SSshuttle.emergency.hijack_status == HIJACK_NOT_BEGUN? "begin" : "continue"]para substituir [src] Protocolos de navegação."))
 	say("Software override initiated.")
 	var/turf/console_hijack_turf = get_turf(src)
 	message_admins("[src] is being overriden for hijack by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(console_hijack_turf)]")
@@ -260,9 +260,9 @@
 		message_admins("[ADMIN_LOOKUPFLW(user)] has hijacked [src] in [ADMIN_VERBOSEJMP(console_hijack_turf)].  Hijack stage increased to stage [SSshuttle.emergency.hijack_status] out of [HIJACK_COMPLETED].")
 		user.log_message("has hijacked [src]. Hijack stage increased to stage [SSshuttle.emergency.hijack_status] out of [HIJACK_COMPLETED].", LOG_GAME)
 		. = TRUE
-		to_chat(user, span_notice("Você reprograma um pouco de[src]Está programando, colocando-o em tempo limite para[hijack_stage_cooldown/10]segundos."))
+		to_chat(user, span_notice("Você reprograma um pouco de [src] Está programando, colocando-o em tempo limite para [hijack_stage_cooldown/10] segundos."))
 		visible_message(
-			span_warning("[user.name]Parece estar adulterando[src]."),
+			span_warning("[user.name] Parece estar adulterando [src]."),
 			blind_message = span_hear("Você ouve alguém tocando chaves do computador."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user

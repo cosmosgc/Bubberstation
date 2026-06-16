@@ -106,7 +106,7 @@
 /obj/item/gun/energy/plasmacutter/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("[src]É[round(cell.percent())]Está carregado.")
+		. += span_notice("[src] É [round(cell.percent())] Está carregado.")
 
 /obj/item/gun/energy/plasmacutter/attackby(obj/item/I, mob/user)
 	var/charge_multiplier = 0 //2 = Refined stack, 1 = Ore
@@ -128,7 +128,7 @@
 	. = ..()
 	if(isliving(loc))
 		var/mob/living/user = loc
-		user.visible_message(span_danger("Descargas de plasma concentradas de[src]em frente[user]Queimá-los!"), span_userdanger("[src]Mau funcionamento, cuspindo plasma concentrado em você! Queima!"))
+		user.visible_message(span_danger("Descargas de plasma concentradas de [src] em frente [user] Queimá-los!"), span_userdanger("[src] Mau funcionamento, cuspindo plasma concentrado em você! Queima!"))
 		user.adjust_fire_stacks(4)
 		user.ignite_mob()
 
@@ -145,7 +145,7 @@
 		balloon_alert(user, "Insuficiência de carga!")
 		return FALSE
 	if(heat < heat_required)
-		to_chat(user, span_warning("[src]Não é quente o suficiente para completar esta tarefa!"))
+		to_chat(user, span_warning("[src] Não é quente o suficiente para completar esta tarefa!"))
 		return FALSE
 
 	return TRUE
@@ -201,7 +201,7 @@
 
 /obj/item/gun/energy/wormhole_projector/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/assembly/signaler/anomaly/bluespace))
-		to_chat(user, span_notice("Você insere[C]no projetor do buraco de minhoca e a arma suavemente sussurra para a vida."))
+		to_chat(user, span_notice("Você insere [C] no projetor do buraco de minhoca e a arma suavemente sussurra para a vida."))
 		firing_core = TRUE
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 		qdel(C)
@@ -342,7 +342,7 @@
 
 /obj/item/gun/energy/gravity_gun/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/assembly/signaler/anomaly/grav))
-		to_chat(user, span_notice("Você insere[C]no manipulador gravitacional e a arma suavemente sussurra para a vida."))
+		to_chat(user, span_notice("Você insere [C] no manipulador gravitacional e a arma suavemente sussurra para a vida."))
 		firing_core = TRUE
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 		qdel(C)
@@ -478,7 +478,7 @@ it is often confused with the mech weapon of the same name, since it is a bit mo
 
 	var/turf/target_turf = get_offset_target_turf(target, rand(-1, 1), rand(-1, 1)) // choose a random tile adjacent to the clicked one
 	playsound(user.loc, 'sound/effects/coin2.ogg', 50, TRUE)
-	user.visible_message(span_warning("[user]lança uma moeda em direção[target]!"), span_danger("Você joga uma moeda em direção[target]!"))
+	user.visible_message(span_warning("[user] lança uma moeda em direção [target]!"), span_danger("Você joga uma moeda em direção [target]!"))
 	var/obj/projectile/bullet/coin/new_coin = new(get_turf(user), target_turf, user)
 	new_coin.aim_projectile(target_turf, user)
 	new_coin.fire()

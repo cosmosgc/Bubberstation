@@ -23,7 +23,7 @@
 			addtimer(CALLBACK(modularInterface.silicon_owner, TYPE_PROC_REF(/mob/living/silicon/robot/, death)), 2 SECONDS, TIMER_UNIQUE)
 			return
 
-		computer.visible_message(span_notice("\The [computer]A tela brilha e alto zumbido elétrico é ouvido."))
+		computer.visible_message(span_notice("\The [computer] A tela brilha e alto zumbido elétrico é ouvido."))
 		computer.enabled = FALSE
 		computer.update_appearance()
 
@@ -33,7 +33,7 @@
 
 		if(computer.internal_cell && prob(25))
 			QDEL_NULL(computer.internal_cell)
-			computer.visible_message(span_notice("\The [computer]A bateria explode na chuva de faíscas."))
+			computer.visible_message(span_notice("\The [computer] A bateria explode na chuva de faíscas."))
 			do_sparks(3, FALSE, src)
 
 /datum/computer_file/program/revelation/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)

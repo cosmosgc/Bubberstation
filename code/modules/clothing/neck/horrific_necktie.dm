@@ -47,7 +47,7 @@
 		return ..()
 
 	using = TRUE
-	to_chat(user, span_notice("Você mergulha nas profundezas do seu Império Inland. Sussurros parecem emanar de[src]Como se ganhado vida."))
+	to_chat(user, span_notice("Você mergulha nas profundezas do seu Império Inland. Sussurros parecem emanar de [src] Como se ganhado vida."))
 
 	var/list/candidates = SSpolling.poll_ghost_candidates(
 		question = "Do you want to play as the spirit of [span_danger("[user.real_name]'s")] [span_notice("horrific necktie")]?",
@@ -59,7 +59,7 @@
 		ignore_category = POLL_IGNORE_HORRIFIC_NECKTIE,
 	)
 	if(!length(candidates))
-		to_chat(user, span_warning("Os sussurros vistos de[src]Desaparecer e ficar em silêncio novamente... Foi toda a sua imaginação? Talvez possa tentar de novo mais tarde."))
+		to_chat(user, span_warning("Os sussurros vistos de [src] Desaparecer e ficar em silêncio novamente... Foi toda a sua imaginação? Talvez possa tentar de novo mais tarde."))
 		using = FALSE
 		return
 	hears_us = user.mind
@@ -103,7 +103,7 @@
 	RegisterSignal(new_soul, COMSIG_LIVING_SEND_SPEECH, PROC_REF(on_speech_sent))
 	RegisterSignal(new_soul, COMSIG_QDELETING, PROC_REF(on_deleting))
 	possessed_souls += new_soul
-	to_chat(hears_us.current, span_notice("Você olha para baixo[src]e sentir que há outro processo de pensamento entrando em sua mente."))
+	to_chat(hears_us.current, span_notice("Você olha para baixo [src] e sentir que há outro processo de pensamento entrando em sua mente."))
 
 ///Called when a voice in the tie speaks, we use this to remove all listeners except the voices and creator.
 /obj/item/clothing/neck/tie/disco/proc/on_speech_sent(atom/source, list/listeners)

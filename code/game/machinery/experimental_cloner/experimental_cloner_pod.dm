@@ -55,11 +55,11 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 
 	if (!tool.tool_start_check(user, amount = 5))
 		return ITEM_INTERACT_BLOCKING
-	to_chat(user, span_notice("Você começa a cortar\the [src]Separados."))
+	to_chat(user, span_notice("Você começa a cortar\the [src] Separados."))
 	if(!tool.use_tool(src, user, 6 SECONDS, amount = 5, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 	deconstruct(disassembled = TRUE)
-	to_chat(user, span_notice("Você corta.\the [src]Separados."))
+	to_chat(user, span_notice("Você corta.\the [src] Separados."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/experimental_cloner/multitool_act(mob/living/user, obj/item/multitool/tool)
@@ -126,7 +126,7 @@ GLOBAL_VAR_INIT(experimental_cloner_fuckup_chance, 50)
 
 	chosen_one.log_message("took control of experimental clone of [result].", LOG_GAME)
 	result.PossessByPlayer(chosen_one.ckey)
-	to_chat(chosen_one, span_boldnotice("Você é.[loaded_record.name]Você não tem certeza de onde está ou como chegou aqui."))
+	to_chat(chosen_one, span_boldnotice("Você é.[loaded_record.name] Você não tem certeza de onde está ou como chegou aqui."))
 	var/policy = get_policy(ROLE_EXPERIMENTAL_CLONER)
 	if (policy)
 		to_chat(chosen_one, span_notice(policy))

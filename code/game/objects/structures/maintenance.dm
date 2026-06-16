@@ -73,7 +73,7 @@ at the cost of risking a vicious bite.**/
 	if(iscyborg(user) || isalien(user))
 		return
 	if(!CanReachInside(user))
-		to_chat(user, span_warning("Você precisa se deitar para alcançar[src]."))
+		to_chat(user, span_warning("Você precisa se deitar para alcançar [src]."))
 		return
 	to_chat(user, span_notice("Você alcança a água fria da bacia."))
 	playsound(src,'sound/effects/submerge.ogg', 25, TRUE)
@@ -81,13 +81,13 @@ at the cost of risking a vicious bite.**/
 		return
 	if(hidden_item)
 		user.put_in_hands(hidden_item)
-		to_chat(user, span_notice("Enquanto você cutuca por dentro[src]Você sente os contornos de algo escondido sob as águas escuras.</span>\n<span class='nicegreen'>Você recupera.[hidden_item]De[src]."))
+		to_chat(user, span_notice("Enquanto você cutuca por dentro [src] Você sente os contornos de algo escondido sob as águas escuras.</span>\n<span class='nicegreen'>Você recupera.[hidden_item] De [src]."))
 		hidden_item = null
 		return
 	if(critter_infested && prob(50) && iscarbon(user))
 		var/mob/living/carbon/bite_victim = user
 		var/obj/item/bodypart/affecting = bite_victim.get_active_hand()
-		to_chat(user, span_danger("Você sente uma dor aguda como uma criatura invisível afunda sua[pick("fangs", "beak", "proboscis")]em seu[affecting.plaintext_zone]!"))
+		to_chat(user, span_danger("Você sente uma dor aguda como uma criatura invisível afunda sua[pick("fangs", "beak", "proboscis")]em seu [affecting.plaintext_zone]!"))
 		bite_victim.apply_damage(30, BRUTE, affecting)
 		playsound(src,'sound/items/weapons/bite.ogg', 70, TRUE)
 		return
@@ -105,16 +105,16 @@ at the cost of risking a vicious bite.**/
 		var/obj/item/reagent_containers/reagent_container = I
 		if(reagent_container.is_open_container())
 			reagent_container.reagents.add_reagent(/datum/reagent/water, min(reagent_container.volume - reagent_container.reagents.total_volume, reagent_container.amount_per_transfer_from_this))
-			to_chat(user, span_notice("Você enche.[reagent_container]De[src]."))
+			to_chat(user, span_notice("Você enche.[reagent_container] De [src]."))
 			return
 	if(hidden_item)
 		to_chat(user, span_warning("Já tem algo dentro.[src]."))
 		return
 	if(!user.transferItemToLoc(I, src))
-		to_chat(user, span_warning("\The [I]está preso em sua mão, você não pode colocá-lo em[src]!"))
+		to_chat(user, span_warning("\The [I] está preso em sua mão, você não pode colocá-lo em [src]!"))
 		return
 	hidden_item = I
-	to_chat(user, span_notice("Você se esconde.[I]dentro da bacia."))
+	to_chat(user, span_notice("Você se esconde.[I] dentro da bacia."))
 	playsound(src,'sound/effects/splash.ogg', 55, TRUE)
 
 #define ALTAR_INACTIVE 0
@@ -140,7 +140,7 @@ at the cost of risking a vicious bite.**/
 
 /obj/structure/destructible/cult/pants_altar/attackby(obj/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/melee/cultblade/dagger) && IS_CULTIST(user) && status)
-		to_chat(user, span_notice("[src]está criando algo, você não pode movê-lo!"))
+		to_chat(user, span_notice("[src] está criando algo, você não pode movê-lo!"))
 		return
 	return ..()
 
@@ -160,7 +160,7 @@ at the cost of risking a vicious bite.**/
 				pants_color = chosen_color
 		if("Create Artefact")
 			if(!COOLDOWN_FINISHED(src, use_cooldown) || status != ALTAR_INACTIVE)
-				to_chat(user, span_warning("[src]Não está pronto para criar algo novo ainda..."))
+				to_chat(user, span_warning("[src] Não está pronto para criar algo novo ainda..."))
 				return
 			pants_stageone()
 	return TRUE
@@ -192,7 +192,7 @@ at the cost of risking a vicious bite.**/
 /obj/structure/destructible/cult/pants_altar/proc/pants_stageone()
 	status = ALTAR_STAGEONE
 	update_icon()
-	visible_message(span_warning("[src]Começa a criar algo..."))
+	visible_message(span_warning("[src] Começa a criar algo..."))
 	playsound(src, 'sound/effects/magic/pantsaltar.ogg', 60)
 	addtimer(CALLBACK(src, PROC_REF(pants_stagetwo)), ALTAR_TIME)
 
@@ -219,7 +219,7 @@ at the cost of risking a vicious bite.**/
 /obj/structure/destructible/cult/pants_altar/proc/pants_create()
 	status = ALTAR_INACTIVE
 	update_icon()
-	visible_message(span_danger("[src]Emite um flash de luz e cria... calças?"))
+	visible_message(span_danger("[src] Emite um flash de luz e cria... calças?"))
 	for(var/mob/living/viewing_mob in viewers(7, src))
 		viewing_mob.flash_act()
 	var/obj/item/clothing/under/pants/slacks/altar/pants = new(get_turf(src))

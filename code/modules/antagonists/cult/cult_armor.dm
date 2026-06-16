@@ -117,7 +117,7 @@
 		return
 	playsound(src, 'sound/effects/pray_chaplain.ogg', 60, TRUE)
 
-	exorcist.visible_message(span_notice("[exorcist]Purifica[src]!"))
+	exorcist.visible_message(span_notice("[exorcist] Purifica [src]!"))
 	var/new_item_path = GLOB.holy_armor_type || pick(subtypesof(/obj/item/storage/box/holy))
 	var/obj/item/new_item = new new_item_path()
 	//take everything out and delete the box.
@@ -158,7 +158,7 @@
 	))
 	var/datum/wound/wound_of_choice = new wound_type()
 	wound_of_choice.apply_wound(bone_to_wound, wound_source = "cultist robes")
-	to_chat(wearer, span_alert("[src]Começa a brilhar e, de repente, nota ferimentos em você mesmo!"))
+	to_chat(wearer, span_alert("[src] Começa a brilhar e, de repente, nota ferimentos em você mesmo!"))
 
 /obj/item/clothing/head/hooded/cult_hoodie/hardened
 	name = "\improper Nar'Sien hardened helmet"
@@ -214,10 +214,10 @@
 
 ///Callback when the shield breaks, since cult robes are stupid and have different effects.
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/proc/shield_damaged(mob/living/wearer, attack_text, new_current_charges)
-	wearer.visible_message(span_danger("[wearer]Como coletes neutralizam[attack_text]em uma explosão de faíscas vermelhas de sangue!"))
+	wearer.visible_message(span_danger("[wearer] Como coletes neutralizam [attack_text] em uma explosão de faíscas vermelhas de sangue!"))
 	new /obj/effect/temp_visual/cult/sparks(get_turf(wearer))
 	if(new_current_charges == 0)
-		wearer.visible_message(span_danger("O escudo em volta.[wearer]De arrependimento desaparecer!"))
+		wearer.visible_message(span_danger("O escudo em volta.[wearer] De arrependimento desaparecer!"))
 
 /obj/item/clothing/head/hooded/cult_hoodie/cult_shield
 	name = "empowered cultist helmet"
@@ -261,4 +261,4 @@
 	if(!eyes.apply_organ_damage(1))
 		return
 	if(SPT_PROB(3, seconds_per_tick))
-		to_chat(wearer, span_danger("Você sente[src]cavando em seus olhos, queimando[eyes.p_them()]Levante-se!"))
+		to_chat(wearer, span_danger("Você sente [src] cavando em seus olhos, queimando [eyes.p_them()] Levante-se!"))

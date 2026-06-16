@@ -14,7 +14,7 @@
 
 /datum/computer_file/program/robotact/on_start(mob/living/user)
 	if(!istype(computer, /obj/item/modular_computer/pda/silicon))
-		to_chat(user, span_warning("Um olhar passa\the [computer]Dispositivo Incompatível."))
+		to_chat(user, span_warning("Um olhar passa\the [computer] Dispositivo Incompatível."))
 		return FALSE
 	. = ..()
 	if(.)

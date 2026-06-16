@@ -51,12 +51,12 @@
 		return
 	playsound(target, 'sound/effects/wounds/crackandbleed.ogg', 100, TRUE)
 	if(target.stat == DEAD)
-		user.visible_message(span_warning("[user]Gores[target]com[src]!"), span_warning("Você vai.[target]com[src], o que não faz muito, mas faz você se sentir um pouco melhor."))
+		user.visible_message(span_warning("[user] Gores [target] com [src]!"), span_warning("Você vai.[target] com [src], o que não faz muito, mas faz você se sentir um pouco melhor."))
 	else if(!HAS_TRAIT(target, TRAIT_HULK) && (iscarbon(target) || issilicon(target)))
-		user.visible_message(span_boldwarning("[user]Gores[target]com[src], fazendo-os parar!"), span_userdanger("Você vai.[target]com[src], fazendo-os parar!"))
+		user.visible_message(span_boldwarning("[user] Gores [target] com [src], fazendo-os parar!"), span_userdanger("Você vai.[target] com [src], fazendo-os parar!"))
 		target.Paralyze(issilicon(target) ? 2 SECONDS : 1 SECONDS)
 	else
-		user.visible_message(span_boldwarning("[user]Gores[target]com[src], rasgando neles!"), span_userdanger("Você vai.[target]com[src], rasgando neles!"))
+		user.visible_message(span_boldwarning("[user] Gores [target] com [src], rasgando neles!"), span_userdanger("Você vai.[target] com [src], rasgando neles!"))
 		target.apply_damage(damage = force, forced = TRUE)
 	remove_crit()
 

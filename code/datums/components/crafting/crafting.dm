@@ -359,7 +359,7 @@
 		for(var/direction in GLOB.cardinals)
 			nearby_turf = get_step(dest_turf, direction)
 			if(locate(recipe.result) in nearby_turf)
-				to_chat(crafter, span_warning("\The [recipe.name]Não deve ser construído diretamente adjacente a outro!"))
+				to_chat(crafter, span_warning("\The [recipe.name] Não deve ser construído diretamente adjacente a outro!"))
 				return ", can't be adjacent to another!"
 
 	if(recipe.placement_checks & STACK_CHECK_ADJACENT)
@@ -584,7 +584,7 @@
 	else if(ismovable(result) && !istype(result, /obj/effect/spawner))
 		var/atom/movable/movable = result
 		movable.forceMove(user.drop_location())
-	to_chat(user, span_notice("[recipe.name]Feito."))
+	to_chat(user, span_notice("[recipe.name] Feito."))
 	user.investigate_log("crafted [recipe]", INVESTIGATE_CRAFTING)
 	return TRUE
 
@@ -604,7 +604,7 @@
 				while(make_action(crafting_recipe, user))
 					crafted_items++
 				if(crafted_items)
-					to_chat(user, span_notice("Você fez[crafted_items]item."))
+					to_chat(user, span_notice("Você fez [crafted_items] item."))
 			else
 				make_action(crafting_recipe, user)
 			busy = FALSE

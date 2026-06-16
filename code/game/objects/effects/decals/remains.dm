@@ -4,7 +4,7 @@
 	icon = 'icons/effects/blood.dmi'
 
 /obj/effect/decal/remains/acid_act()
-	visible_message(span_warning("[src]dissolver[gender == PLURAL?"":"s"]em uma poça de gosma escaldante!"))
+	visible_message(span_warning("[src] dissolver[gender == PLURAL?"":"s"]em uma poça de gosma escaldante!"))
 	playsound(src, 'sound/items/tools/welder.ogg', 150, TRUE)
 	new /obj/effect/decal/cleanable/greenglow(drop_location())
 	qdel(src)
@@ -48,7 +48,7 @@
 
 ///Releases a cloud of smoke based on the randomly generated reagent in Initialize().
 /obj/effect/decal/remains/human/smokey/proc/release_smoke(mob/living/smoke_releaser)
-	visible_message(span_warning("[smoke_releaser]Perturbações[src], que libera uma enorme nuvem de gás!"))
+	visible_message(span_warning("[smoke_releaser] Perturbações [src], que libera uma enorme nuvem de gás!"))
 	do_chem_smoke(2, src, get_turf(src), that_shit_that_killed_saddam, 15)
 
 ///Subtype of smokey remains used for rare maintenance spawns.

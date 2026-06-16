@@ -291,10 +291,10 @@
 	to_chat(user, span_notice("Agora soldando o limpador."))
 	if(welder.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message(span_notice("[user]Solda o esfregão."),span_notice("Você solda o esfregão fechado."), span_hear("Você ouve solda."))
+			user.visible_message(span_notice("[user] Solda o esfregão."),span_notice("Você solda o esfregão fechado."), span_hear("Você ouve solda."))
 			welded = TRUE
 		else
-			user.visible_message(span_notice("[user]Desembaraça o limpador."), span_notice("Você desgastou o limpador."), span_hear("Você ouve solda."))
+			user.visible_message(span_notice("[user] Desembaraça o limpador."), span_notice("Você desgastou o limpador."), span_hear("Você ouve solda."))
 			welded = FALSE
 		update_appearance(UPDATE_ICON)
 		pipe_vision_img = image(src, loc, dir = dir)
@@ -306,7 +306,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
+		to_chat(user, span_warning("Você não pode destrancar [src] Desligue isso primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/examine(mob/user)
@@ -317,7 +317,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/attack_alien(mob/user, list/modifiers)
 	if(!welded || !(do_after(user, 2 SECONDS, target = src)))
 		return
-	user.visible_message(span_warning("[user]Garras furiosas em[src]!"), span_notice("Você consegue limpar as coisas bloqueando o limpador."), span_hear("Você ouve barulhos altos."))
+	user.visible_message(span_warning("[user] Garras furiosas em [src]!"), span_notice("Você consegue limpar as coisas bloqueando o limpador."), span_hear("Você ouve barulhos altos."))
 	welded = FALSE
 	update_appearance(UPDATE_ICON)
 	pipe_vision_img = image(src, loc, dir = dir)

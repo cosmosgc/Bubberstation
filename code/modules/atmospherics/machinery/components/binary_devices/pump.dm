@@ -47,7 +47,7 @@
 
 	target_pressure = MAX_OUTPUT_PRESSURE
 	investigate_log("was set to [target_pressure] kPa by [key_name(user)]", INVESTIGATE_ATMOS)
-	balloon_alert(user, "Saída de pressão ajustada para[target_pressure]kPa")
+	balloon_alert(user, "Saída de pressão ajustada para [target_pressure] kPa")
 	update_appearance(UPDATE_ICON)
 	return CLICK_ACTION_SUCCESS
 
@@ -103,7 +103,7 @@
 /obj/machinery/atmospherics/components/binary/pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("Você não pode destrancar[src]Desligue isso primeiro!"))
+		to_chat(user, span_warning("Você não pode destrancar [src] Desligue isso primeiro!"))
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/pump/layer2

@@ -91,7 +91,7 @@
 		return
 
 	if (!isturf(new_loc))
-		to_chat(source, span_warning("[tether_name]impede que você entre.[new_loc]!"))
+		to_chat(source, span_warning("[tether_name] impede que você entre.[new_loc]!"))
 		return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 	// If this was called, we know its a movable
@@ -101,13 +101,13 @@
 	// Ignore distance limitations if we're attempting to move the other part of the tether
 	if (get_dist(anchor, new_loc) > cur_dist && !force_moving_target)
 		if (!istype(anchor) || anchor.anchored || anchor.move_resist > movable_source.move_force)
-			to_chat(source, span_warning("[tether_name]Fica sem folga e evita que você se mova!"))
+			to_chat(source, span_warning("[tether_name] Fica sem folga e evita que você se mova!"))
 			return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 		force_moving_target = TRUE
 		if (!try_adjust_position(anchor, new_loc, source))
 			force_moving_target = FALSE
-			to_chat(source, span_warning("[tether_name]Fica sem folga e evita que você se mova!"))
+			to_chat(source, span_warning("[tether_name] Fica sem folga e evita que você se mova!"))
 			return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 		force_moving_target = FALSE
@@ -115,12 +115,12 @@
 	var/atom/blocker = check_line(anchor, new_loc, list(source))
 	if (blocker)
 		if (!istype(anchor) || anchor.anchored || anchor.move_resist > movable_source.move_force)
-			to_chat(source, span_warning("[tether_name]Fica sem folga e evita que você se mova!"))
+			to_chat(source, span_warning("[tether_name] Fica sem folga e evita que você se mova!"))
 			return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 		// If the tether would snag on something when we move, see if we could move to the side to get LOS back
 		if (!try_adjust_position(anchor, new_loc, source))
-			to_chat(source, span_warning("[tether_name]Pegando[blocker]E impede que você se mova!"))
+			to_chat(source, span_warning("[tether_name] Pegando [blocker] E impede que você se mova!"))
 			return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 
 /// Try adjust the anchor's position to move closer to the target or regain LOS
@@ -251,7 +251,7 @@
 	SIGNAL_HANDLER
 
 	var/atom/atom_target = parent
-	atom_target.visible_message(span_warning("[atom_target]'s[tether_name]Snaps!"), span_userdanger("Sua[tether_name]Snaps!"), span_hear("Você ouve um cabo estalando."))
+	atom_target.visible_message(span_warning("[atom_target]'s [tether_name] Snaps!"), span_userdanger("Sua [tether_name] Snaps!"), span_hear("Você ouve um cabo estalando."))
 	playsound(atom_target, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)
 
@@ -297,7 +297,7 @@
 
 		qdel(src)
 		location.balloon_alert(user, "Corte de corda!")
-		to_chat(parent, span_danger("Sua[tether_name]Foi cortado!"))
+		to_chat(parent, span_danger("Sua [tether_name] Foi cortado!"))
 		return
 
 	if (LAZYACCESS(modifiers, RIGHT_CLICK))

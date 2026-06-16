@@ -101,7 +101,7 @@
 /obj/structure/spider/stickyweb/proc/stuck_react(mob/living/victim)
 	if(victim.get_stamina_loss() > 90)
 		if(victim.body_position != LYING_DOWN)
-			to_chat(victim, span_warning("Você tropeça\the [src]devido à exaustão!"))
+			to_chat(victim, span_warning("Você tropeça\the [src] devido à exaustão!"))
 
 		victim.SetKnockdown(3 SECONDS)
 		return
@@ -234,7 +234,7 @@
 	var/breakout_time = 600
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	to_chat(user, span_notice("Você luta contra os laços apertados... (Isso vai levar cerca de[DisplayTimeText(breakout_time)].)"))
+	to_chat(user, span_notice("Você luta contra os laços apertados... (Isso vai levar cerca de [DisplayTimeText(breakout_time)].)"))
 	visible_message(span_notice("Você vê algo lutando e se contorcendo\the [src]!"))
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src)
@@ -243,7 +243,7 @@
 
 /obj/structure/spider/cocoon/Destroy()
 	var/turf/T = get_turf(src)
-	src.visible_message(span_warning("\The [src]Separações abertas."))
+	src.visible_message(span_warning("\The [src] Separações abertas."))
 	for(var/atom/movable/A in contents)
 		A.forceMove(T)
 	return ..()

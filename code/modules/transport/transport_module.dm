@@ -332,7 +332,7 @@
 				playsound(hit_wall, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 
 			for(var/mob/living/crushed in dest_turf.contents)
-				to_chat(crushed, span_userdanger("Você está esmagado por[src]!"))
+				to_chat(crushed, span_userdanger("Você está esmagado por [src]!"))
 				if(violent_landing)
 					// Violent landing = gibbed. But the nicest kind of gibbing, keeping everything intact.
 					crushed.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
@@ -389,13 +389,13 @@
 				if(!is_type_in_typecache(victim_structure, transport_controller_datum.ignored_smashthroughs))
 					if((PLANE_TO_TRUE(victim_structure.plane) == FLOOR_PLANE && victim_structure.layer > TRAM_RAIL_LAYER) || (PLANE_TO_TRUE(victim_structure.plane) == GAME_PLANE && victim_structure.layer > LOW_OBJ_LAYER) )
 						if(victim_structure.anchored && initial(victim_structure.anchored) == TRUE)
-							visible_message(span_danger("[src]Esmaga através[victim_structure]!"))
+							visible_message(span_danger("[src] Esmaga através [victim_structure]!"))
 							victim_structure.deconstruct(FALSE)
 
 						else
 							if(!throw_target)
 								throw_target = get_edge_target_turf(src, turn(travel_direction, pick(45, -45)))
-							visible_message(span_danger("[src]violentamente Carneiros[victim_structure]Saiam do caminho!"))
+							visible_message(span_danger("[src] violentamente Carneiros [victim_structure] Saiam do caminho!"))
 							victim_structure.anchored = FALSE
 							victim_structure.take_damage(rand(20, 25) * collision_lethality)
 							victim_structure.throw_at(throw_target, 200 * collision_lethality, 4 * collision_lethality)
@@ -409,7 +409,7 @@
 					continue
 				if(victim_machine.layer >= LOW_OBJ_LAYER) //avoids stuff that is probably flush with the ground
 					playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-					visible_message(span_danger("[src]Esmaga através[victim_machine]!"))
+					visible_message(span_danger("[src] Esmaga através [victim_machine]!"))
 					qdel(victim_machine)
 
 			for(var/mob/living/victim_living in dest_turf.contents)
@@ -428,7 +428,7 @@
 
 				if(transport_controller_datum.ignored_smashthroughs[victim_living.type])
 					continue
-				to_chat(victim_living, span_userdanger("[src]colide em você!"))
+				to_chat(victim_living, span_userdanger("[src] colide em você!"))
 				SEND_SIGNAL(victim_living, COMSIG_LIVING_HIT_BY_TRAM, src)
 				playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 				var/damage = 0
@@ -765,10 +765,10 @@
  */
 /obj/structure/transport/linear/proc/show_fluff_message(direction, mob/user)
 	if(direction == UP)
-		user.visible_message(span_notice("[user]Mova o elevador para Cima."), span_notice("Você move o elevador para cima."))
+		user.visible_message(span_notice("[user] Mova o elevador para Cima."), span_notice("Você move o elevador para cima."))
 
 	if(direction == DOWN)
-		user.visible_message(span_notice("[user]Mova o elevador para baixo."), span_notice("Você move o elevador para baixo."))
+		user.visible_message(span_notice("[user] Mova o elevador para baixo."), span_notice("Você move o elevador para baixo."))
 
 /obj/machinery/door/poddoor/lift
 	name = "elevator door"

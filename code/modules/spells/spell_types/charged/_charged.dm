@@ -33,7 +33,7 @@
 /datum/action/cooldown/spell/charged/New(Target, original)
 	. = ..()
 	if(!channel_message)
-		channel_message = span_notice("Você começa a chanelling[src]...")
+		channel_message = span_notice("Você começa a chanelling [src]...")
 
 	if(charge_sound)
 		charge_sound_instance = sound(charge_sound, channel = CHANNEL_CHARGED_SPELL)

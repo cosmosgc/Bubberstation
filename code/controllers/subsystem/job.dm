@@ -866,7 +866,7 @@ SUBSYSTEM_DEF(job)
 	if(acting_captain)
 		to_chat(new_captain, span_notice("Devido à sua posição na cadeia de comando, você foi promovido a Capitão Interino. Você pode encontrar em nota importante sobre isso.[where]."))
 	else
-		to_chat(new_captain, span_notice("Você pode encontrar o código para obter sua identidade extra do cofre seguro na Ponte[where]."))
+		to_chat(new_captain, span_notice("Você pode encontrar o código para obter sua identidade extra do cofre seguro na Ponte [where]."))
 		new_captain.add_mob_memory(/datum/memory/key/captains_spare_code, safe_code = SSid_access.spare_id_safe_code)
 
 	// Force-give their ID card bridge access.

@@ -92,12 +92,12 @@
 			if(!I.tool_start_check(user, amount=1))
 				return
 
-			to_chat(user, span_notice("Você começa a reparar[src]..."))
+			to_chat(user, span_notice("Você começa a reparar [src]..."))
 			if(I.use_tool(src, user, 40, volume=50))
 				atom_integrity = max_integrity
 				to_chat(user, span_notice("Você conserta.[src]."))
 		else
-			to_chat(user, span_warning("[src]Já está em boas condições!"))
+			to_chat(user, span_warning("[src] Já está em boas condições!"))
 		return
 
 

@@ -100,7 +100,7 @@
 			for(var/mob/smeller in get_hearers_in_view(DEFAULT_MESSAGE_RANGE, src))
 				if(HAS_TRAIT(smeller, TRAIT_ANOSMIA))
 					asomnia_hadders += smeller
-			visible_message(span_danger("Você sente um cheiro queimado vindo de[src]!"), ignored_mobs = asomnia_hadders)
+			visible_message(span_danger("Você sente um cheiro queimado vindo de [src]!"), ignored_mobs = asomnia_hadders)
 	set_smoke_state(worst_cooked_food_state)
 	update_appearance()
 	use_energy(active_power_usage)
@@ -110,7 +110,7 @@
 		return ..()
 
 	if(user.transferItemToLoc(item, src, silent = FALSE))
-		to_chat(user, span_notice("Você colocou[item]Em[src]."))
+		to_chat(user, span_notice("Você colocou [item] Em [src]."))
 		add_tray_to_oven(item, user)
 
 /obj/machinery/oven/item_interaction(mob/living/user, obj/item/item, list/modifiers)
@@ -290,7 +290,7 @@
 
 	if(!istype(item, /obj/item/storage/bag/tray))
 		// Non-tray dumping requires a do_after
-		to_chat(user, span_notice("Você começa a despejar o conteúdo de[item]Em[src]..."))
+		to_chat(user, span_notice("Você começa a despejar o conteúdo de [item] Em [src]..."))
 		if(!do_after(user, 2 SECONDS, target = item))
 			return ITEM_INTERACT_BLOCKING
 
@@ -304,7 +304,7 @@
 			loaded++
 			AddToPlate(tray_item, user)
 	if(loaded)
-		to_chat(user, span_notice("Você insere[loaded]item 's em[src]."))
+		to_chat(user, span_notice("Você insere [loaded] item 's em [src]."))
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 	return ITEM_INTERACT_BLOCKING

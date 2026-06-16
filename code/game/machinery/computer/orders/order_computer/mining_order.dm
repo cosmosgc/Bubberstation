@@ -99,7 +99,7 @@
 
 /obj/item/card/mining_point_card/examine(mob/user)
 	. = ..()
-	. += span_notice("Tem.[points]Ponto no cartão.")
+	. += span_notice("Tem.[points] Ponto no cartão.")
 
 /obj/item/card/mining_point_card/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(!isidcard(attacking_item))
@@ -118,13 +118,13 @@
 				amount = points
 			attacking_id.registered_account.mining_points += amount
 			points -= amount
-			to_chat(user, span_notice("Você se transferiu.[amount]Pontos de mineração de[src]Para[attacking_id]."))
+			to_chat(user, span_notice("Você se transferiu.[amount] Pontos de mineração de [src] Para [attacking_id]."))
 		if(TO_POINT_CARD)
 			if(amount > attacking_id.registered_account.mining_points)
 				amount = attacking_id.registered_account.mining_points
 			attacking_id.registered_account.mining_points -= amount
 			points += amount
-			to_chat(user, span_notice("Você se transferiu.[amount]Pontos de mineração de[attacking_id]Para[src]."))
+			to_chat(user, span_notice("Você se transferiu.[amount] Pontos de mineração de [attacking_id] Para [src]."))
 
 #undef TO_POINT_CARD
 #undef TO_USER_ID

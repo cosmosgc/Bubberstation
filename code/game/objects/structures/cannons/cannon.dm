@@ -26,7 +26,7 @@
 
 /obj/structure/cannon/examine(mob/user)
 	. = ..()
-	. += span_notice("[src]aceita pólvora ou combustível de solda.")
+	. += span_notice("[src] aceita pólvora ou combustível de solda.")
 	. += span_warning("Usando combustível de solda irá enfraquecer a força do projétil disparado.")
 
 /obj/structure/cannon/proc/fire()
@@ -73,7 +73,7 @@
 
 	else if(ignition_message)
 		if(!reagents.has_reagent(/datum/reagent/gunpowder,charge_size) && !reagents.has_reagent(/datum/reagent/fuel,charge_size))
-			balloon_alert(user, "Necessidades[reagents.maximum_volume]U de carga!")
+			balloon_alert(user, "Necessidades [reagents.maximum_volume] U de carga!")
 			return
 		visible_message(ignition_message)
 		user.log_message("fired a cannon", LOG_ATTACK)
@@ -90,24 +90,24 @@
 			return ..()
 
 		if(!powder_keg.reagents.total_volume)
-			balloon_alert(user, "[powder_keg]Está vazio!")
+			balloon_alert(user, "[powder_keg] Está vazio!")
 			return
 		if(reagents.total_volume == reagents.maximum_volume)
-			balloon_alert(user, "[src]Está cheio!")
+			balloon_alert(user, "[src] Está cheio!")
 			return
 		var/has_enough_gunpowder = powder_keg.reagents.has_reagent(/datum/reagent/gunpowder, charge_size)
 		var/has_enough_alt_fuel = powder_keg.reagents.has_reagent(/datum/reagent/fuel, charge_size)
 		if(!has_enough_gunpowder && !has_enough_alt_fuel)
-			balloon_alert(user, "[powder_keg]Precisa de 15u de carga para carregar!")
-			to_chat(user, span_warning("[powder_keg]não tem pelo menos 15u de pólvora para encher.[src]!"))
+			balloon_alert(user, "[powder_keg] Precisa de 15u de carga para carregar!")
+			to_chat(user, span_warning("[powder_keg] não tem pelo menos 15u de pólvora para encher.[src]!"))
 			return
 		if(has_enough_gunpowder)
 			powder_keg.reagents.trans_to(src, charge_size, target_id = /datum/reagent/gunpowder)
-			balloon_alert(user, "[src]Carregado com pólvora.")
+			balloon_alert(user, "[src] Carregado com pólvora.")
 			return
 		if(has_enough_alt_fuel)
 			powder_keg.reagents.trans_to(src, charge_size, target_id = /datum/reagent/fuel)
-			balloon_alert(user, "[src]Carregado com combustível de solda")
+			balloon_alert(user, "[src] Carregado com combustível de solda")
 			return
 	..()
 
@@ -130,11 +130,11 @@
 	if(used_alt_fuel)
 		fires_before_deconstruction--
 	if(prob(explode_chance))
-		visible_message(span_userdanger("[src]Explodir!"))
+		visible_message(span_userdanger("[src] Explodir!"))
 		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
 		return
 	if(fires_before_deconstruction <= 0)
-		visible_message(span_warning("[src]Cai fora da operação!"))
+		visible_message(span_warning("[src] Cai fora da operação!"))
 		qdel(src)
 
 /obj/structure/cannon/trash/Destroy()

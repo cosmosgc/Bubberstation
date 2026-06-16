@@ -99,7 +99,7 @@
 				continue
 
 			if(player.client?.is_afk() || player.stat != CONSCIOUS || HAS_TRAIT(player, TRAIT_HANDS_BLOCKED))//no playing with braindeads or corpses or handcuffed dudes.
-				to_chat(ghost, span_warning("[player]Não parece estar prestando atenção..."))
+				to_chat(ghost, span_warning("[player] Não parece estar prestando atenção..."))
 				continue
 
 			users_in_range++

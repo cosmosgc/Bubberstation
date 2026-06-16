@@ -324,9 +324,9 @@
 
 		var/study_length = 1 SECONDS * floor(min(photo.picture.psize_x, photo.picture.psize_y) / 32)
 		if(study_length >= 4 SECONDS)
-			to_chat(user, span_notice("<i>Você espreme[photo]Há plantas na moldura! Queria que a foto fosse ampliada. É difícil entender os fios.</i>"))
+			to_chat(user, span_notice("<i>Você espreme [photo] Há plantas na moldura! Queria que a foto fosse ampliada. É difícil entender os fios.</i>"))
 		else
-			to_chat(user, span_notice("<i>Você olha[photo]Procurando fios nas plantas.</i>"))
+			to_chat(user, span_notice("<i>Você olha [photo] Procurando fios nas plantas.</i>"))
 
 		if(do_after(user, study_length, holder, interaction_key = STUDY_INTERACTION_KEY, hidden = TRUE))
 			LAZYSET(studied_photos, REF(user.mind), REF(photo))

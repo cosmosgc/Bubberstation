@@ -23,7 +23,7 @@
 	if (current_mob)
 		to_chat(current_mob, span_big("Você é.[current_mob.real_name]."))
 		to_chat(current_mob, span_hypnophrase("Você é o<b>Apenas</b> [current_mob.real_name]."))
-		to_chat(current_mob, span_boldwarning("Qualquer outra pessoa fingindo ser[current_mob.real_name]Deve ser punido."))
+		to_chat(current_mob, span_boldwarning("Qualquer outra pessoa fingindo ser [current_mob.real_name] Deve ser punido."))
 	owner.announce_objectives()
 
 /datum/antagonist/evil_clone/forge_objectives()

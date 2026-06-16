@@ -13,7 +13,7 @@
 	hand_path = /obj/item/melee/touch_attack/flesh_to_stone
 
 /datum/action/cooldown/spell/touch/flesh_to_stone/on_antimagic_triggered(obj/item/melee/touch_attack/hand, mob/living/victim, mob/living/carbon/caster)
-	to_chat(caster, span_warning("O feitiço não parece afetar[victim]!"))
+	to_chat(caster, span_warning("O feitiço não parece afetar [victim]!"))
 	to_chat(victim, span_warning("Você sente sua carne virar pedra por um momento, e então volta atrás!"))
 
 /datum/action/cooldown/spell/touch/flesh_to_stone/cast_on_hand_hit(obj/item/melee/touch_attack/hand, mob/living/victim, mob/living/carbon/caster)

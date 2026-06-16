@@ -102,7 +102,7 @@
 	if(!COOLDOWN_FINISHED(src, cooldown_time))
 		return FALSE
 	caster.Shake(1.4, 0.8, 0.3 SECONDS)
-	caster.visible_message(span_danger("[caster]Treme violentamente!"))
+	caster.visible_message(span_danger("[caster] Treme violentamente!"))
 	playsound(caster, 'sound/items/weapons/drill.ogg', 120 , TRUE)
 	slash_em(caster)
 	StartCooldown(cooldown_time)
@@ -112,7 +112,7 @@
 		if(victim.has_faction(immune_factions) && victim.IsReachableBy(owner))
 			continue
 		to_chat(caster, span_warning("Você corta.[victim]!"))
-		to_chat(victim, span_warning("Você está cortado por[caster]Lâminas!"))
+		to_chat(victim, span_warning("Você está cortado por [caster] Lâminas!"))
 		victim.apply_damage(damage = damage_dealt, damagetype = BRUTE, def_zone = pick(valid_targets), sharpness = SHARP_EDGED)
 
 #undef SPIN_SLASH_ABILITY_TYPEPATH

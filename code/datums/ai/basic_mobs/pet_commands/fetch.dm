@@ -68,10 +68,10 @@
 	var/mob/pawn = controller.pawn
 	var/obj/item/carried_item = controller.blackboard[storage_key]
 	if(QDELETED(carried_item) || carried_item.loc != pawn)
-		pawn.visible_message(span_notice("[pawn]Olha em volta como se[pawn.p_they()] [pawn.p_have()]Perdeu Algo."))
+		pawn.visible_message(span_notice("[pawn] Olha em volta como se [pawn.p_they()] [pawn.p_have()] Perdeu Algo."))
 		return FALSE
 
-	pawn.visible_message(span_notice("[pawn]Entrega.[carried_item]Para[return_target]."))
+	pawn.visible_message(span_notice("[pawn] Entrega.[carried_item] Para [return_target]."))
 	carried_item.forceMove(get_turf(return_target))
 	controller.clear_blackboard_key(storage_key)
 	return TRUE

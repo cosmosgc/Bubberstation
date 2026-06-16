@@ -10,7 +10,7 @@
 	. = ..()
 	var/turf/tool_turf = get_turf(religious_tool)
 	var/obj/item/instrument/violin/fidis = new /obj/item/instrument/violin/festival(get_turf(religious_tool))
-	fidis.visible_message(span_notice("[fidis]Aparece!"))
+	fidis.visible_message(span_notice("[fidis] Aparece!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
 
 /datum/religion_rites/portable_song_tuning
@@ -27,7 +27,7 @@
 	for(var/obj/item/instrument/could_empower in get_turf(religious_tool))
 		instrument_target = could_empower
 		return ..()
-	to_chat(user, span_warning("Você precisa colocar um instrumento em[religious_tool]Para fazer isso!"))
+	to_chat(user, span_warning("Você precisa colocar um instrumento em [religious_tool] Para fazer isso!"))
 	return FALSE
 
 /datum/religion_rites/portable_song_tuning/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -38,7 +38,7 @@
 	if(QDELETED(empower_target) || !(tool_turf == empower_target.loc)) //check if the instrument is still there
 		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
-	empower_target.visible_message(span_notice("[empower_target]Brilha por um momento."))
+	empower_target.visible_message(span_notice("[empower_target] Brilha por um momento."))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
 	var/list/allowed_rites_from_bible = subtypesof(/datum/religion_rites/song_tuner)
 	empower_target.AddComponent( 		/datum/component/religious_tool, 		operation_flags = RELIGION_TOOL_INVOKE, 		force_catalyst_afterattack = FALSE, 		after_sect_select_cb = null, 		catalyst_type = /obj/item/book/bible, 		charges = 5, 		rite_types_allowlist = allowed_rites_from_bible, 	)

@@ -88,7 +88,7 @@
 			add_uses(GLASS_SHEET_USES)
 			user.balloon_alert(user, "vidro inserido.")
 		else
-			user.balloon_alert(user, "Necessidade[LIGHTBULB_COST]Folhas de vidro!")
+			user.balloon_alert(user, "Necessidade [LIGHTBULB_COST] Folhas de vidro!")
 		return TRUE
 
 	if(insert.type == /obj/item/shard) //we don't want to insert plasma, titanium or other types of shards
@@ -156,7 +156,7 @@
 			if(uses == max_uses)
 				user.balloon_alert(user, "já cheio!")
 			else
-				user.balloon_alert(user, "Nada utilizável em[storage_to_empty]!")
+				user.balloon_alert(user, "Nada utilizável em [storage_to_empty]!")
 			return TRUE
 
 		user.balloon_alert(user, "Luzes inseridas.")
@@ -168,7 +168,7 @@
 	obj_flags |= EMAGGED
 	playsound(loc, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	update_appearance()
-	to_chat(user, span_warning("[src]As luzes estão cheias de plasma! Tenha cuidado para apenas instalá-los em dispositivos de luz desativados, para que não explodam!"))
+	to_chat(user, span_warning("[src] As luzes estão cheias de plasma! Tenha cuidado para apenas instalá-los em dispositivos de luz desativados, para que não explodam!"))
 	return FALSE
 
 /obj/item/lightreplacer/update_name(updates)
@@ -205,7 +205,7 @@
 		replace_light(target, user)
 		on_a_light = TRUE
 	if(!on_a_light) //So we don't give a balloon alert when we just used replace_light
-		user.balloon_alert(user, "[uses]Luzes,[bulb_shards]/[BULB_SHARDS_REQUIRED]Fragmentos")
+		user.balloon_alert(user, "[uses] Luzes,[bulb_shards]/[BULB_SHARDS_REQUIRED] Fragmentos")
 
 /**
  * attempts to fix lights, flood lights & lights on a turf
@@ -230,7 +230,7 @@
 			if(bluespace_toggle)
 				user.Beam(target, icon_state = "rped_upgrade", time = 0.5 SECONDS)
 				playsound(src, 'sound/items/pshoom/pshoom.ogg', 40, 1)
-			to_chat(user, span_notice("Você termina.\the [frame]com um tubo de luz."))
+			to_chat(user, span_notice("Você termina.\the [frame] com um tubo de luz."))
 			qdel(frame)
 		return TRUE
 
@@ -269,7 +269,7 @@
 	if(bulb_shards >= BULB_SHARDS_REQUIRED)
 		bulb_shards = 0
 		add_uses(1)
-		to_chat(user, span_notice("\The [src]Fabrica uma nova lâmpada do vidro quebrado que armazenou.[status_string()]"))
+		to_chat(user, span_notice("\The [src] Fabrica uma nova lâmpada do vidro quebrado que armazenou.[status_string()]"))
 		playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE)
 		return TRUE
 	return FALSE

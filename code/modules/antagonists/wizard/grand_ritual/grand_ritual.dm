@@ -128,7 +128,7 @@
 
 	target_area = pick(possible_areas)
 	if (validate_area()) // Well this is risky but probably not every area on the station is going to get deleted, right?
-		to_chat(owner, span_alert("O próximo nexo de poder está dentro[initial(target_area.name)]"))
+		to_chat(owner, span_alert("O próximo nexo de poder está dentro [initial(target_area.name)]"))
 
 /// Checks if you're actually able to draw a rune here
 /datum/action/cooldown/grand_ritual/proc/start_drawing_rune()

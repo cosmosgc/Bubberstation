@@ -40,7 +40,7 @@
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
 		to_chat(cast_on, span_warning("Sente alguém tentando sujeitar sua mente a terríveis maquinações!"))
-		to_chat(owner, span_warning("[cast_on]resiste à sua dominação!"))
+		to_chat(owner, span_warning("[cast_on] resiste à sua dominação!"))
 		return FALSE
 
 	var/turf/cast_turf = get_turf(cast_on)

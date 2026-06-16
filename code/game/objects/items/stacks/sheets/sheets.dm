@@ -61,7 +61,7 @@
 			material_string += span_tooltip("[property]: [tooltip_hint]", descriptor)
 
 	if (length(material_string))
-		. += span_info("[capitalize(material.name)]É[english_list(material_string)].")
+		. += span_info("[capitalize(material.name)] É [english_list(material_string)].")
 
 /obj/item/stack/sheet/add(_amount)
 	. = ..()
@@ -96,7 +96,7 @@
 	if(!shards.len)
 		return FALSE
 	if(!use(1))
-		to_chat(user, is_cyborg ? span_warning("Não há material suficiente no sintetizador para produzir um fragmento!") : span_warning("De alguma forma, não há o suficiente de[src]Para quebrar!"))
+		to_chat(user, is_cyborg ? span_warning("Não há material suficiente no sintetizador para produzir um fragmento!") : span_warning("De alguma forma, não há o suficiente de [src] Para quebrar!"))
 		if(!is_cyborg)
 			stack_trace("A stack of sheet material was attempted to be shattered into shards while having less than 1 sheets remaining.")
 		return FALSE
@@ -107,6 +107,6 @@
 		var/obj/item/new_shard = new shard_to_create(target)
 		new_shard.add_fingerprint(user)
 		shards_created += "[new_shard.name]"
-	user.visible_message(span_notice("[user]Quebre a folha de[name]Vamos.[target], deixando[english_list(shards_created)]."), 		span_notice("Você quebrou o lençol de[name]Vamos.[target], deixando[english_list(shards_created)]."))
+	user.visible_message(span_notice("[user] Quebre a folha de [name] Vamos.[target], deixando [english_list(shards_created)]."), 		span_notice("Você quebrou o lençol de [name] Vamos.[target], deixando [english_list(shards_created)]."))
 	return TRUE
 

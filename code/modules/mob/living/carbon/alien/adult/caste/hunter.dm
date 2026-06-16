@@ -84,7 +84,7 @@
 				if(H.check_block(src, 0, "\the [src]", attack_type = LEAP_ATTACK))
 					blocked = TRUE
 			if(!blocked)
-				L.visible_message(span_danger("[src]Pula sobre[L]!"), span_userdanger("[src]Ataca sobre você!"))
+				L.visible_message(span_danger("[src] Pula sobre [L]!"), span_userdanger("[src] Ataca sobre você!"))
 				L.Paralyze(5 SECONDS)
 				sleep(0.2 SECONDS)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src,L)
@@ -93,7 +93,7 @@
 
 			toggle_leap(0)
 		else if(hit_atom.density && !hit_atom.CanPass(src, get_dir(hit_atom, src)))
-			visible_message(span_danger("[src]Bate em[hit_atom]!"), span_alertalien("[src]Bate em[hit_atom]!"))
+			visible_message(span_danger("[src] Bate em [hit_atom]!"), span_alertalien("[src] Bate em [hit_atom]!"))
 			Paralyze(40, ignore_canstun = TRUE)
 
 #undef MAX_ALIEN_LEAP_DIST

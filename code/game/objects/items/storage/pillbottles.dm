@@ -22,7 +22,7 @@
 	VAR_PROTECTED/obj/item/reagent_containers/applicator/pill/spawn_type
 
 /obj/item/storage/pill_bottle/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]Está tentando tirar o boné.[src]Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Está tentando tirar o boné.[src] Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return TOXLOSS
 
 /obj/item/storage/pill_bottle/PopulateContents()
@@ -155,7 +155,7 @@
 		spawn_count = rand(1,7)
 	. = ..()
 	var/obj/item/reagent_containers/applicator/pill/P = locate() in src
-	name = "bottle of [P.name]s"
+	name = "bottle of [P.name] s"
 
 /obj/item/storage/pill_bottle/maintenance_pill/full
 	spawn_count = 7

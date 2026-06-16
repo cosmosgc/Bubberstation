@@ -482,7 +482,7 @@
 		owner.emote(pick("gasp", "gag", "choke"))
 
 /datum/status_effect/neck_slice/get_examine_text()
-	return span_warning("[owner.p_Their()]O pescoço foi cortado e está sangrando profusamente!")
+	return span_warning("[owner.p_Their()] O pescoço foi cortado e está sangrando profusamente!")
 
 /// Applies a curse with various possible effects
 /mob/living/proc/apply_necropolis_curse(set_curse)
@@ -622,7 +622,7 @@
 	to_chat(owner, span_warning("Você sai do seu transe!"))
 
 /datum/status_effect/trance/get_examine_text()
-	return span_warning("[owner.p_They()]Parece.[owner.p_s()]Devagar e sem foco.")
+	return span_warning("[owner.p_They()] Parece.[owner.p_s()] Devagar e sem foco.")
 
 /datum/status_effect/trance/proc/hypnotize(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
@@ -710,7 +710,7 @@
 		var/obj/item/I = H.get_active_held_item()
 		if(I && H.dropItemToGround(I))
 			H.visible_message(
-				span_notice("[H]Convulsões de mão, e eles deixam cair seus[I.name]!"),
+				span_notice("[H] Convulsões de mão, e eles deixam cair seus [I.name]!"),
 				span_userdanger("Sua mão convulsa violentamente, e você larga o que estava segurando!"),
 			)
 			H.adjust_jitter(10 SECONDS)
@@ -912,7 +912,7 @@
 		return COMPONENT_CLEANED|COMPONENT_CLEANED_GAIN_XP
 
 /datum/status_effect/ants/get_examine_text()
-	return span_warning("[owner.p_They()] [owner.p_are()]Coberto de formigas!")
+	return span_warning("[owner.p_They()] [owner.p_are()] Coberto de formigas!")
 
 /datum/status_effect/ants/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/victim = owner

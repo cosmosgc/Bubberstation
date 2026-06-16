@@ -180,10 +180,10 @@
 		to_chat(user, span_warning("Não posso injetar isso!"))
 		return
 	if(attachment)
-		visible_message(span_warning("[attachment.attached_to]está separado de[src]."))
+		visible_message(span_warning("[attachment.attached_to] está separado de [src]."))
 		QDEL_NULL(attachment)
 		update_appearance(UPDATE_ICON)
-	user.visible_message(span_warning("[user]APENAS[src]para[target]."), span_notice("Você anexa[src]para[target]."))
+	user.visible_message(span_warning("[user] APENAS [src] para [target]."), span_notice("Você anexa [src] para [target]."))
 	attach_iv(target, user)
 
 /obj/machinery/iv_drip/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
@@ -232,7 +232,7 @@
 			attached_mob.apply_damage(3, BRUTE, chosen_limb, wound_bonus = CANT_WOUND)
 			attached_mob.cause_wound_of_type_and_severity(WOUND_PIERCE, chosen_limb, WOUND_SEVERITY_MODERATE, wound_source = "IV needle")
 		else
-			visible_message(span_warning("[attached_to]está separado de[src]."))
+			visible_message(span_warning("[attached_to] está separado de [src]."))
 		detach_iv()
 		return PROCESS_KILL
 
@@ -256,12 +256,12 @@
 		// If the beaker is full, ping
 		if(!amount)
 			set_transfer_rate(MIN_IV_TRANSFER_RATE)
-			audible_message(span_hear("[src]Pings."))
+			audible_message(span_hear("[src] Pings."))
 			return
 
 		// If the human is losing too much blood, beep.
 		if(attached_mob.get_blood_volume(apply_modifiers = TRUE) < BLOOD_VOLUME_SAFE && prob(5))
-			audible_message(span_hear("[src]Apita alto."))
+			audible_message(span_hear("[src] Apita alto."))
 			playsound(loc, 'sound/machines/beep/twobeep_high.ogg', 50, TRUE)
 		var/atom/movable/target = use_internal_storage ? src : reagent_container
 		attached_mob.transfer_blood_to(target, amount)
@@ -276,7 +276,7 @@
 
 /obj/machinery/iv_drip/proc/quick_toggle(mob/user)
 	if(attachment)
-		visible_message(span_notice("[attachment.attached_to]está separado de[src]."))
+		visible_message(span_notice("[attachment.attached_to] está separado de [src]."))
 		detach_iv()
 	else if(reagent_container)
 		eject_beaker(user)
@@ -287,12 +287,12 @@
 ///called when an IV is attached
 /obj/machinery/iv_drip/proc/attach_iv(atom/target, mob/user)
 	if(isliving(target))
-		user.visible_message(span_warning("[usr]Começa a anexar[src]para[target]..."), span_warning("Você começa a anexar[src]para[target]."))
+		user.visible_message(span_warning("[usr] Começa a anexar [src] para [target]..."), span_warning("Você começa a anexar [src] para [target]."))
 		if(!do_after(usr, 1 SECONDS, target))
 			return
 	else
 		mode = IV_INJECTING
-	usr.visible_message(span_warning("[usr]APENAS[src]para[target]."), span_notice("Você anexa[src]para[target]."))
+	usr.visible_message(span_warning("[usr] APENAS [src] para [target]."), span_notice("Você anexa [src] para [target]."))
 	var/datum/reagents/container = get_reagents()
 	log_combat(usr, target, "fixado", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
@@ -311,7 +311,7 @@
 ///Called when an iv is detached. doesnt include chat stuff because there's multiple options and its better handled by the caller
 /obj/machinery/iv_drip/proc/detach_iv()
 	if(attachment)
-		visible_message(span_notice("[attachment.attached_to]está separado de[src]."))
+		visible_message(span_notice("[attachment.attached_to] está separado de [src]."))
 		if(isliving(attachment.attached_to))
 			var/mob/living/attached_mob = attachment.attached_to
 			attached_mob.clear_alert(ALERT_IV_CONNECTED, /atom/movable/screen/alert/iv_connected)
@@ -336,7 +336,7 @@
 		return
 	if(reagent_container)
 		if(attachment)
-			visible_message(span_warning("[attachment?.attached_to]está separado de[src]."))
+			visible_message(span_warning("[attachment?.attached_to] está separado de [src]."))
 			detach_iv()
 		reagent_container.forceMove(drop_location())
 		reagent_container = null
@@ -369,9 +369,9 @@
 	. += "[src] is [mode ? "injecting" : "taking blood"]."
 	if(reagent_container)
 		if(reagent_container.reagents && reagent_container.reagents.reagent_list.len)
-			. += span_notice("Anexado é\a [reagent_container]com[reagent_container.reagents.total_volume]Unidades de líquido.")
+			. += span_notice("Anexado é\a [reagent_container] com [reagent_container.reagents.total_volume] Unidades de líquido.")
 		else
-			. += span_notice("Anexado é um vazio[reagent_container.name].")
+			. += span_notice("Anexado é um vazio [reagent_container.name].")
 	else if(use_internal_storage)
 		. += span_notice("Tem um depósito químico interno.")
 	else

@@ -107,7 +107,7 @@
 	for(var/mob/shade_to_deconvert in contents)
 		assign_master(shade_to_deconvert, exorcist)
 
-	exorcist.visible_message(span_notice("[exorcist]Purifica[src]!"))
+	exorcist.visible_message(span_notice("[exorcist] Purifica [src]!"))
 	UnregisterSignal(src, COMSIG_BIBLE_SMACKED)
 
 /**
@@ -143,7 +143,7 @@
 /obj/item/soulstone/pickup(mob/living/user)
 	..()
 	if(!role_check(user))
-		to_chat(user, span_danger("Uma sensação esmagadora de medo vem sobre você enquanto você pega[src]Seria sábio se livrar disso rapidamente."))
+		to_chat(user, span_danger("Uma sensação esmagadora de medo vem sobre você enquanto você pega [src] Seria sábio se livrar disso rapidamente."))
 
 /obj/item/soulstone/examine(mob/user)
 	. = ..()
@@ -167,7 +167,7 @@
 	return ..()
 
 /obj/item/soulstone/proc/hot_potato(mob/living/user)
-	to_chat(user, span_userdanger("Santa magia residente em[src]Queime sua mão!"))
+	to_chat(user, span_userdanger("Santa magia residente em [src] Queime sua mão!"))
 	user.apply_damage(10, BURN, user.get_active_hand())
 	user.emote("scream")
 	user.update_damage_overlays()
@@ -228,7 +228,7 @@
 				to_chat(captured_shade, span_bold("Você foi libertado de sua prisão, mas ainda está ligado à vontade do culto. Ajude-os a ter sucesso em seus objetivos a todo custo."))
 
 			else if(role_check(user))
-				to_chat(captured_shade, span_bold("Você foi liberado de sua prisão, mas você ainda está obrigado a[user.real_name]É o testamento. Socorro![user.p_them()]Ter sucesso em[user.p_their()]Gols a todo custo."))
+				to_chat(captured_shade, span_bold("Você foi liberado de sua prisão, mas você ainda está obrigado a [user.real_name] É o testamento. Socorro![user.p_them()] Ter sucesso em [user.p_their()] Gols a todo custo."))
 		var/datum/antagonist/cult/shade/shade_datum = captured_shade.mind?.has_antag_datum(/datum/antagonist/cult/shade)
 		if(shade_datum)
 			shade_datum.release_time = world.time
@@ -248,8 +248,8 @@
 		to_chat(user, span_userdanger("Seu corpo está cheio de dor debilitante!"))
 		return ITEM_INTERACT_BLOCKING
 
-	user.visible_message(span_notice("[user]Segura.[src]Acima.[user.p_their()]cabeça e força-o em[target_toolbox]com um clarão de luz!"), 		span_notice("Você espera.[src]acima de sua cabeça brevemente, então forçá-lo a[target_toolbox], transferindo o[occupant]Uma alma!"), ignored_mobs = occupant)
-	to_chat(occupant, span_userdanger("[user]te segura brevemente, então te força a[target_toolbox]!"))
+	user.visible_message(span_notice("[user] Segura.[src] Acima.[user.p_their()] cabeça e força-o em [target_toolbox] com um clarão de luz!"), 		span_notice("Você espera.[src] acima de sua cabeça brevemente, então forçá-lo a [target_toolbox], transferindo o [occupant] Uma alma!"), ignored_mobs = occupant)
+	to_chat(occupant, span_userdanger("[user] te segura brevemente, então te força a [target_toolbox]!"))
 	to_chat(occupant, span_deadsay("<b>Sua alma eterna foi sacrificada para restaurar a alma de uma caixa de ferramentas. Eles são os intervalos!</b>"))
 
 	occupant.client?.give_award(/datum/award/achievement/misc/toolbox_soul, occupant)
@@ -281,7 +281,7 @@
 	if(istype(O, /obj/item/soulstone))
 		var/obj/item/soulstone/SS = O
 		if(!IS_CULTIST(user) && !HAS_MIND_TRAIT(user, TRAIT_MAGICALLY_GIFTED) && !SS.theme == THEME_HOLY)
-			to_chat(user, span_danger("Uma sensação esmagadora de medo vem sobre você enquanto você tenta colocar[SS]na concha. Seria sábio se livrar disso rapidamente."))
+			to_chat(user, span_danger("Uma sensação esmagadora de medo vem sobre você enquanto você tenta colocar [SS] na concha. Seria sábio se livrar disso rapidamente."))
 			if(isliving(user))
 				var/mob/living/living_user = user
 				living_user.set_dizzy_if_lower(1 MINUTES)
@@ -344,12 +344,12 @@
 		return
 	if(contents.len)
 		to_chat(user, span_userdanger("A captura falhou!"))
-		to_chat(user, span_danger("[src]Está cheio! Liberte uma alma existente para dar espaço."))
+		to_chat(user, span_danger("[src] Está cheio! Liberte uma alma existente para dar espaço."))
 		return FALSE
 	shade.AddComponent(/datum/component/soulstoned, src)
 	update_appearance()
 
-	to_chat(shade, span_notice("Sua alma foi capturada por[src]Suas energias arcanas estão redecorando sua forma etérea."))
+	to_chat(shade, span_notice("Sua alma foi capturada por [src] Suas energias arcanas estão redecorando sua forma etérea."))
 
 	var/datum/antagonist/cult/shade/shade_datum = shade.mind?.has_antag_datum(/datum/antagonist/cult/shade)
 	if(shade_datum)
@@ -416,7 +416,7 @@
 		if(IS_CULTIST(user))
 			to_chat(soulstone_spirit, span_bold("Sua alma foi capturada! Você está agora ligado à vontade do culto. Ajude-os a ter sucesso em seus objetivos a todo custo."))
 		else if(role_check(user))
-			to_chat(soulstone_spirit, span_bold("Sua alma foi capturada! Você está agora obrigado[user.real_name]É o testamento. Socorro![user.p_them()]Ter sucesso em[user.p_their()]Gols a todo custo."))
+			to_chat(soulstone_spirit, span_bold("Sua alma foi capturada! Você está agora obrigado [user.real_name] É o testamento. Socorro![user.p_them()] Ter sucesso em [user.p_their()] Gols a todo custo."))
 			assign_master(soulstone_spirit, user)
 
 		if(message_user)
@@ -528,7 +528,7 @@
 		to_chat(stoner, span_userdanger("O implante de Shell falhou!"))
 		to_chat(stoner, span_warning("A alma já fugiu de seu corpo mortal. Você tenta trazê-lo de volta..."))
 		target = SSpolling.poll_ghosts_for_target(
-			"Você quer jogar como[span_danger(newstruct.real_name)]?",
+			"Você quer jogar como [span_danger(newstruct.real_name)]?",
 			check_jobban = ROLE_CULTIST,
 			role = ROLE_CULTIST,
 			poll_time = 10 SECONDS,
@@ -549,7 +549,7 @@
 			return
 
 		if (!QDELETED(stoner))
-			to_chat(stoner, span_notice("Uma nova alma possuiu[newstruct]!"))
+			to_chat(stoner, span_notice("Uma nova alma possuiu [newstruct]!"))
 		newstruct.PossessByPlayer(target.ckey)
 	else
 		target.mind.transfer_to(newstruct, force_key_move = TRUE)
@@ -560,7 +560,7 @@
 	if(cultoverride || (stoner && IS_CULTIST(stoner)))
 		to_chat(newstruct, span_cult_bold("Você ainda é obrigado a servir o culto[stoner ? " and [stoner]" : ""], siga[stoner?.p_their() || "their"]Ordens e ajuda.[stoner?.p_them() || "them"]Completo[stoner?.p_their() || "their"]Gols a todo custo."))
 	else if(stoner)
-		to_chat(newstruct, span_boldwarning("Você ainda é obrigado a servir seu criador,[stoner], siga[stoner.p_their()]Ordens e ajuda.[stoner.p_them()]Completo[stoner.p_their()]Gols a todo custo."))
+		to_chat(newstruct, span_boldwarning("Você ainda é obrigado a servir seu criador,[stoner], siga [stoner.p_their()] Ordens e ajuda.[stoner.p_them()] Completo [stoner.p_their()] Gols a todo custo."))
 	newstruct.clear_alert("bloodsense")
 	sense_alert = newstruct.throw_alert("bloodsense", /atom/movable/screen/alert/bloodsense)
 	if(sense_alert)
@@ -581,7 +581,7 @@
 	return list(/datum/reagent/hauntium = 25)
 
 /obj/item/ectoplasm/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está inalando.[src]Parece que...[user.p_theyre()]Tentando visitar o plano astral!"))
+	user.visible_message(span_suicide("[user] está inalando.[src] Parece que...[user.p_theyre()] Tentando visitar o plano astral!"))
 	return OXYLOSS
 
 /obj/item/soulstone/mystic
@@ -619,7 +619,7 @@
 	. = ..()
 	name = "[GLOB.deity]'s punishment"
 	base_name = name
-	desc = "Uma prisão para aqueles que perderam[GLOB.deity]É o jogo."
+	desc = "Uma prisão para aqueles que perderam [GLOB.deity] É o jogo."
 
 /obj/item/soulstone/anybody/mining
 	grab_sleeping = FALSE

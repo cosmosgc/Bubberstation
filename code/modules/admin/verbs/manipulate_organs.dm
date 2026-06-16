@@ -36,7 +36,7 @@ ADMIN_VERB(manipulate_organs, R_DEBUG, "Manipulate Organs", "Manipulate the orga
 			implant_to_grant = organs[implant_to_grant]
 			implant_to_grant = new implant_to_grant
 			if(!implant_to_grant.implant(carbon_victim))
-				to_chat(user, span_notice("[carbon_victim]é incapaz de segurar este implante!"))
+				to_chat(user, span_notice("[carbon_victim] é incapaz de segurar este implante!"))
 				qdel(implant_to_grant)
 				return
 			log_admin("[key_name(user)] has added implant [implant_to_grant.type] to [key_name(carbon_victim)]")

@@ -27,7 +27,7 @@
 
 	var/obj/structure/puzzgrid_effect/puzzgrid_effect = new(target.loc, target, puzzgrid, timer, gib_on_loss)
 	target.forceMove(puzzgrid_effect)
-	puzzgrid_effect.visible_message(span_warning("[target]de repente se transformou em um enigma diabólico!"))
+	puzzgrid_effect.visible_message(span_warning("[target] de repente se transformou em um enigma diabólico!"))
 
 	playsound(puzzgrid_effect, 'sound/effects/magic.ogg', 70)
 
@@ -69,7 +69,7 @@
 	victim.forceMove(loc)
 	victim.Paralyze(5 SECONDS)
 	victim.visible_message(
-		span_notice("[victim]está livre de sua maldita prisão!"),
+		span_notice("[victim] está livre de sua maldita prisão!"),
 		span_notice("Você está livre de sua maldita prisão!"),
 	)
 
@@ -82,7 +82,7 @@
 /obj/structure/puzzgrid_effect/proc/loss_gib()
 	victim.forceMove(loc)
 	victim.visible_message(
-		span_bolddanger("Você foi incapaz de libertar[victim]De sua prisão demoníaca, deixando-os como nada mais do que um lamaçal!"),
+		span_bolddanger("Você foi incapaz de libertar [victim] De sua prisão demoníaca, deixando-os como nada mais do que um lamaçal!"),
 		span_bolddanger("Seus compatriotas foram incapazes de libertá-lo de sua prisão demoníaca, deixando-o como nada mais do que um golpe de lama!"),
 	)
 	victim.gib(DROP_ALL_REMAINS)
@@ -95,7 +95,7 @@
 	if (isnull(puzzgrid))
 		victim.forceMove(loc)
 		victim.Paralyze(5 SECONDS)
-		victim.visible_message(span_bolddanger("Apesar de falhar completamente no quebra-cabeça, através de sorte inacreditável,[victim]Ele consegue fugir de qualquer maneira!"))
+		victim.visible_message(span_bolddanger("Apesar de falhar completamente no quebra-cabeça, através de sorte inacreditável,[victim] Ele consegue fugir de qualquer maneira!"))
 		victim.remove_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED), "[type]")
 		qdel(src)
 		victim = null

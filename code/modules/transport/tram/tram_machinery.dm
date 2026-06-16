@@ -25,7 +25,7 @@
 
 	id = change_platform.platform_code
 	balloon_alert(user, "Plataforma lamada.")
-	to_chat(user, span_notice("Você muda a identificação da plataforma para[change_platform.name]."))
+	to_chat(user, span_notice("Você muda a identificação da plataforma para [change_platform.name]."))
 
 /obj/item/assembly/control/transport/call_button
 	name = "tram call button"

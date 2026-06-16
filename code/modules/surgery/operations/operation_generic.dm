@@ -46,9 +46,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a fazer uma incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a fazer uma incisão em [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a fazer uma incisão em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a stabbing in your [limb.plaintext_zone].")
 
@@ -68,9 +68,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("[blood_name]Poças ao redor da incisão em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[blood_name]Poças ao redor da incisão em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[blood_name]Poças ao redor da incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[blood_name] Poças ao redor da incisão em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[blood_name] Poças ao redor da incisão em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[blood_name] Poças ao redor da incisão em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 
 /// Subtype for thick skinned creatures (Xenomorphs)
@@ -123,9 +123,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a retrair a pele[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a retrair a pele[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a retrair a pele[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a retrair a pele [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a retrair a pele [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a retrair a pele [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a severe stinging pain spreading across your [limb.plaintext_zone] as the skin is pulled back.")
 
@@ -192,9 +192,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a consertar a incisão[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a consertar a incisão em[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a consertar a incisão em[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a consertar a incisão [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a consertar a incisão em [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a consertar a incisão em [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "Your [limb.plaintext_zone] is being [istype(tool, /obj/item/stack/medical/suture) ? "pinched" : "burned"]!")
 
@@ -233,9 +233,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a grampear os sangramentos[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a clampear hemorragias.[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a clampear hemorragias.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a grampear os sangramentos [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] Começa a clampear hemorragias.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a clampear hemorragias.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a pinch as the bleeding in your [limb.plaintext_zone] is slowed.")
 
@@ -283,8 +283,8 @@
 		surgeon,
 		limb.owner,
 		span_notice("Você começa a desapertar hemorragias.[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]Começa a desapertar os sangramentos.[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Começa a desapertar os sangramentos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a desapertar os sangramentos.[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Começa a desapertar os sangramentos.[FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a pressure release as blood starts flowing in your [limb.plaintext_zone] again.")
 
@@ -340,9 +340,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a ver através do osso dentro[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a serrar através do osso[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a serrar através do osso[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a ver através do osso dentro [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a serrar através do osso [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a serrar através do osso [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a horrid ache spread through the inside of your [limb.plaintext_zone]!")
 
@@ -353,9 +353,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você viu.[FORMAT_LIMB_OWNER(limb)]Abra."),
-		span_notice("[surgeon]Serras.[FORMAT_LIMB_OWNER(limb)]Abra!"),
-		span_notice("[surgeon]Serras.[FORMAT_LIMB_OWNER(limb)]Abra!"),
+		span_notice("Você viu.[FORMAT_LIMB_OWNER(limb)] Abra."),
+		span_notice("[surgeon] Serras.[FORMAT_LIMB_OWNER(limb)] Abra!"),
+		span_notice("[surgeon] Serras.[FORMAT_LIMB_OWNER(limb)] Abra!"),
 	)
 	display_pain(limb.owner, "It feels like something just broke in your [limb.plaintext_zone]!")
 
@@ -403,9 +403,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a fixar os ossos[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a fixar os ossos[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a fixar os ossos[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a fixar os ossos [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a fixar os ossos [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a fixar os ossos [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a grinding sensation in your [limb.plaintext_zone] as the bones are set back in place.")
 
@@ -448,9 +448,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a perfurar o osso[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a perfurar o osso dentro[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a perfurar o osso dentro[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a perfurar o osso [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a perfurar o osso dentro [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a perfurar o osso dentro [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a horrible piercing pain in your [limb.plaintext_zone]!")
 
@@ -460,9 +460,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você perfura[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]Perfura em[FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon]Perfura em[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você perfura [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] Perfura em [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon] Perfura em [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 
 /datum/surgery_operation/limb/incise_organs
@@ -500,9 +500,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você começa a fazer uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]..."),
-		span_notice("[surgeon]começa a fazer uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]começa a fazer uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("Você começa a fazer uma incisão nos órgãos dentro [FORMAT_LIMB_OWNER(limb)]..."),
+		span_notice("[surgeon] começa a fazer uma incisão nos órgãos dentro [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] começa a fazer uma incisão nos órgãos dentro [FORMAT_LIMB_OWNER(limb)]."),
 	)
 	display_pain(limb.owner, "You feel a stabbing in your [limb.plaintext_zone].")
 
@@ -513,9 +513,9 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_notice("Você faz uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]."),
-		span_notice("[surgeon]faz uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]!"),
-		span_notice("[surgeon]faz uma incisão nos órgãos dentro[FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("Você faz uma incisão nos órgãos dentro [FORMAT_LIMB_OWNER(limb)]."),
+		span_notice("[surgeon] faz uma incisão nos órgãos dentro [FORMAT_LIMB_OWNER(limb)]!"),
+		span_notice("[surgeon] faz uma incisão nos órgãos dentro [FORMAT_LIMB_OWNER(limb)]!"),
 	)
 	display_pain(limb.owner, "You feel a sharp pain from inside your [limb.plaintext_zone]!")
 

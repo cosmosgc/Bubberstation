@@ -25,7 +25,7 @@
 
 /obj/item/clothing/gloves/boxing/proc/on_mail_unwrap(atom/source, mob/user, obj/item/mail/traitor/letter)
 	SIGNAL_HANDLER
-	to_chat(user, span_danger("Enquanto você abre[letter], luvas de boxe sair e entregar-lhe um rápido uppercut!"))
+	to_chat(user, span_danger("Enquanto você abre [letter], luvas de boxe sair e entregar-lhe um rápido uppercut!"))
 	var/mob/living/userasliving = user
 	playsound(user, SFX_PUNCH, 25, TRUE)
 	userasliving.Knockdown((extrapower ? 2 : 4) SECONDS, (extrapower ? 4 : 6) SECONDS)

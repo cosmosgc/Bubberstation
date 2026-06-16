@@ -91,7 +91,7 @@
 		return FALSE
 
 	balloon_alert(user, "Circuitos de avaliação de ameaças encurtados.")
-	audible_message(span_hear("[parent_turret]Hums estranhamente..."))
+	audible_message(span_hear("[parent_turret] Hums estranhamente..."))
 	parent_turret.obj_flags |= EMAGGED
 	parent_turret.on = FALSE
 	addtimer(VARSET_CALLBACK(parent_turret, on, TRUE), 4 SECONDS)

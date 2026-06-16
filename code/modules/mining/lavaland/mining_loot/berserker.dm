@@ -73,7 +73,7 @@
 
 /obj/item/clothing/head/hooded/berserker/examine()
 	. = ..()
-	. += span_notice("O modo Berserk é[berserk_charge]Está carregado.")
+	. += span_notice("O modo Berserk é [berserk_charge] Está carregado.")
 
 /obj/item/clothing/head/hooded/berserker/process(seconds_per_tick)
 	if(berserk_active)

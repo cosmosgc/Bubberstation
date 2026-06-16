@@ -32,7 +32,7 @@ All ShuttleMove procs go here
 			living_thing.buckled?.unbuckle_mob(living_thing, force = TRUE)
 			living_thing.pulledby?.stop_pulling()
 			living_thing.stop_pulling()
-			living_thing.visible_message(span_warning("[shuttle]Bate em[living_thing]!"))
+			living_thing.visible_message(span_warning("[shuttle] Bate em [living_thing]!"))
 			SSblackbox.record_feedback("tally", "shuttle_gib", 1, living_thing.type)
 			log_shuttle("[key_name(living_thing)] was shuttle gibbed by [shuttle].")
 			living_thing.investigate_log("has been gibbed by [shuttle].", INVESTIGATE_DEATHS)

@@ -44,9 +44,9 @@
 		return ..() //if any arms or legs exist, attack
 
 	carbon_target.Paralyze(6 SECONDS)
-	visible_message(span_danger("[src]Bate.[carbon_target]Abaixe-se!"))
+	visible_message(span_danger("[src] Bate.[carbon_target] Abaixe-se!"))
 	if(theme == THEME_CULT)
-		to_chat(src, span_cult_large("\"Traga.[carbon_target.p_them()]Para mim.\""))
+		to_chat(src, span_cult_large("\"Traga.[carbon_target.p_them()] Para mim.\""))
 
 /datum/action/innate/seek_master
 	name = "Seek your Master"
@@ -160,8 +160,8 @@
 
 /mob/living/basic/construct/harvester/heretic/proc/on_master_death(mob/self, mob/master)
 	SIGNAL_HANDLER
-	to_chat(src, span_userdanger("Sua ligação com o mansus de repente quebra como seu mestre[construct_master]Pereceu! Sem[construct_master.p_their()]Suporte, seu corpo desmorona..."))
-	visible_message(span_alert("[src]de repente se desfaz ao pó!"))
+	to_chat(src, span_userdanger("Sua ligação com o mansus de repente quebra como seu mestre [construct_master] Pereceu! Sem [construct_master.p_their()] Suporte, seu corpo desmorona..."))
+	visible_message(span_alert("[src] de repente se desfaz ao pó!"))
 	death()
 
 /mob/living/basic/construct/harvester/heretic/attack_animal(mob/living/simple_animal/user, list/modifiers)
@@ -174,7 +174,7 @@
 	AddElement(/datum/element/wall_walker, or_trait = TRAIT_RUSTY)
 	AddElement(/datum/element/rust_healing)
 	AddComponent(		/datum/component/amputating_limbs,		surgery_time = 1.5 SECONDS,		surgery_verb = "slicing",		minimum_stat = CONSCIOUS,		pre_hit_callback = CALLBACK(src, PROC_REF(is_cultist_handler)),	)
-	AddComponent(/datum/component/damage_aura,		range = 3,		brute_damage = 0.5,		burn_damage = 0.5,		toxin_damage = 0.5,		stamina_damage = 4,		simple_damage = 1.5,		immune_factions = list(FACTION_HERETIC),		damage_message = span_boldwarning("Seu corpo murcha e murcha quando se aproxima.[src]É aura."),		message_probability = 7,		current_owner = src,	)
+	AddComponent(/datum/component/damage_aura,		range = 3,		brute_damage = 0.5,		burn_damage = 0.5,		toxin_damage = 0.5,		stamina_damage = 4,		simple_damage = 1.5,		immune_factions = list(FACTION_HERETIC),		damage_message = span_boldwarning("Seu corpo murcha e murcha quando se aproxima.[src] É aura."),		message_probability = 7,		current_owner = src,	)
 	var/datum/action/innate/seek_master/heretic/seek = new(src)
 	seek.Grant(src)
 	seek.Activate()

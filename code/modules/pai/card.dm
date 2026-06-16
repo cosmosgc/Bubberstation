@@ -37,7 +37,7 @@
 			to_chat(user, span_alert("Portas de chave de criptografia não configuradas."))
 			return
 		pai.radio.attackby(used, user, modifiers)
-		to_chat(user, span_notice("Você insere[used]Parao[src]."))
+		to_chat(user, span_notice("Você insere [used] Parao [src]."))
 		return
 	return ..()
 
@@ -79,7 +79,7 @@
 		return pai.on_saboteur(source, disrupt_duration)
 
 /obj/item/pai_card/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está olhando tristemente para[src]! [user.p_They()]Não posso continuar vivendo sem intimidade humana de verdade!"))
+	user.visible_message(span_suicide("[user] está olhando tristemente para [src]! [user.p_They()] Não posso continuar vivendo sem intimidade humana de verdade!"))
 	return OXYLOSS
 
 /obj/item/pai_card/update_overlays()
@@ -200,7 +200,7 @@
 	add_alert()
 	addtimer(CALLBACK(src, PROC_REF(remove_alert)), 5 SECONDS)
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-	visible_message(span_notice("[src]Uma nova personalidade disponível para download!"), blind_message = span_notice("[src]Vibra com um alerta."))
+	visible_message(span_notice("[src] Uma nova personalidade disponível para download!"), blind_message = span_notice("[src] Vibra com um alerta."))
 
 /**
  * Downloads a candidate from the list and removes them from SSpai.candidates

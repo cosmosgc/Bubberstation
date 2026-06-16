@@ -21,7 +21,7 @@
 	var/datum/mafia_role/pda_role = game.get_role_player(computer)
 	if(!pda_role)
 		return ..()
-	game.send_message(span_notice("[pda_role.body]deletou o jogo de seu PDA, e, portanto, deixou o jogo."))
+	game.send_message(span_notice("[pda_role.body] deletou o jogo de seu PDA, e, portanto, deixou o jogo."))
 	pda_role.kill(game)
 	return ..()
 

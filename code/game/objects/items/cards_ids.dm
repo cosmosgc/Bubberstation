@@ -36,7 +36,7 @@
 	var/honorific_title
 
 /obj/item/card/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user]Começa a deslizar[user.p_their()]pescoço com\the [src]! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] Começa a deslizar [user.p_their()] pescoço com\the [src]! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	return BRUTELOSS
 
 /obj/item/card/update_overlays()
@@ -565,7 +565,7 @@
 		var/minor
 		if(registered_name && registered_age && registered_age < AGE_MINOR)
 			minor = " <b>[registered_age]</b>" //SKYRAT EDIT CHANGE
-		user.visible_message(span_notice("[user]mostra-lhe:[icon2html(src, viewers(user))] [src.name][minor]."), span_notice("Você mostra\the [src.name][minor]."))
+		user.visible_message(span_notice("[user] mostra-lhe:[icon2html(src, viewers(user))] [src.name][minor]."), span_notice("Você mostra\the [src.name][minor]."))
 	add_fingerprint(user)
 
 /obj/item/card/id/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
@@ -722,7 +722,7 @@
 		var/money_added = mass_insert_money(money_contained, user)
 		if(!money_added)
 			return ITEM_INTERACT_BLOCKING
-		to_chat(user, span_notice("Você coloca o conteúdo no cartão! Eles desaparecem em um sopro de fumaça do espaço azul, acrescentando[money_added]Vale a pena.[MONEY_NAME]para a conta ligada."))
+		to_chat(user, span_notice("Você coloca o conteúdo no cartão! Eles desaparecem em um sopro de fumaça do espaço azul, acrescentando [money_added] Vale a pena.[MONEY_NAME] para a conta ligada."))
 		return ITEM_INTERACT_SUCCESS
 	/// SKYRAT EDIT BEGINS - Trim Tokens - Proc defined in modular_skyrat/modules/trim_tokens/code/cards_id.dm
 	else if(istype(tool, /obj/item/trim_token))
@@ -746,21 +746,21 @@
 		physical_currency = TRUE
 
 	if(!registered_account)
-		to_chat(user, span_warning("[src]não tem uma conta ligada ao depósito[money]dentro!"))
+		to_chat(user, span_warning("[src] não tem uma conta ligada ao depósito [money] dentro!"))
 		return FALSE
 	var/cash_money = money.get_item_credit_value()
 	if(!cash_money)
-		to_chat(user, span_warning("[money]Não parece valer nada!"))
+		to_chat(user, span_warning("[money] Não parece valer nada!"))
 		return FALSE
 	registered_account.adjust_money(cash_money, "System: Deposit")
 	SSblackbox.record_feedback("amount", "credits_inserted", cash_money)
 	log_econ("[cash_money] [MONEY_NAME] were inserted into [src] owned by [src.registered_name]")
 	if(physical_currency)
-		to_chat(user, span_notice("Sua coisa.[money]em[src]Ele desaparece em um pequeno sopro de fumaça do espaço azul, acrescentando[cash_money] [MONEY_NAME]para a conta ligada."))
+		to_chat(user, span_notice("Sua coisa.[money] em [src] Ele desaparece em um pequeno sopro de fumaça do espaço azul, acrescentando [cash_money] [MONEY_NAME] para a conta ligada."))
 	else
-		to_chat(user, span_notice("Você insere[money]em[src], acrescentando[cash_money] [MONEY_NAME]para a conta ligada."))
+		to_chat(user, span_notice("Você insere [money] em [src], acrescentando [cash_money] [MONEY_NAME] para a conta ligada."))
 
-	to_chat(user, span_notice("A conta ligada agora relata um saldo de[registered_account.account_balance] [MONEY_SYMBOL]."))
+	to_chat(user, span_notice("A conta ligada agora relata um saldo de [registered_account.account_balance] [MONEY_SYMBOL]."))
 	qdel(money)
 	return TRUE
 
@@ -773,7 +773,7 @@
  */
 /obj/item/card/id/proc/mass_insert_money(list/money, mob/user)
 	if(!registered_account)
-		to_chat(user, span_warning("[src]Não tem uma conta ligada para depositar!"))
+		to_chat(user, span_warning("[src] Não tem uma conta ligada para depositar!"))
 		return FALSE
 
 	if (!money || !length(money))
@@ -818,7 +818,7 @@
 		to_chat(user, span_warning("O número de identificação da conta é inválido."))
 		return FALSE
 	set_account(account, transfer_funds = TRUE)
-	to_chat(user, span_notice("A conta fornecida foi ligada a este cartão de identidade. Ele contém[account.account_balance] [MONEY_NAME]."))
+	to_chat(user, span_notice("A conta fornecida foi ligada a este cartão de identidade. Ele contém [account.account_balance] [MONEY_NAME]."))
 	return TRUE
 
 /obj/item/card/id/click_alt(mob/living/user)
@@ -851,11 +851,11 @@
 		return CLICK_ACTION_BLOCKING
 	if(!registered_account.adjust_money(-amount_to_remove, "System: Withdrawal"))
 		var/difference = amount_to_remove - registered_account.account_balance
-		registered_account.bank_card_talk(span_warning("A conta ligada requer[difference]Mais[MONEY_NAME_AUTOPURAL(difference)]para realizar essa retirada."), TRUE)
+		registered_account.bank_card_talk(span_warning("A conta ligada requer [difference] Mais [MONEY_NAME_AUTOPURAL(difference)] para realizar essa retirada."), TRUE)
 		return CLICK_ACTION_BLOCKING
 	var/obj/item/holochip/holochip = new (user.drop_location(), amount_to_remove)
 	user.put_in_hands(holochip)
-	to_chat(user, span_notice("Você se retira.[amount_to_remove] [MONEY_NAME]em um holochip."))
+	to_chat(user, span_notice("Você se retira.[amount_to_remove] [MONEY_NAME] em um holochip."))
 	SSblackbox.record_feedback("amount", "credits_removed", amount_to_remove)
 	log_econ("[amount_to_remove] [MONEY_NAME] were removed from [src] owned by [registered_name]")
 	return CLICK_ACTION_SUCCESS
@@ -874,7 +874,7 @@
 	var/prev_debt = registered_account.account_debt
 	var/amount_paid = registered_account.pay_debt(amount_to_pay)
 	if(amount_paid)
-		var/message = span_notice("Você paga.[amount_to_pay] [MONEY_NAME]de uma[prev_debt] [MONEY_SYMBOL]Dívida.[registered_account.account_debt] [MONEY_SYMBOL]Para ir.")
+		var/message = span_notice("Você paga.[amount_to_pay] [MONEY_NAME] de uma [prev_debt] [MONEY_SYMBOL] Dívida.[registered_account.account_debt] [MONEY_SYMBOL] Para ir.")
 		if(!registered_account.account_debt)
 			message = span_nicegreen("You pay the last [amount_to_pay] [MONEY_NAME] of your debt, extinguishing it. Congratulations!")
 		to_chat(user, message)
@@ -921,22 +921,22 @@
 	if(!user.can_read(src))
 		return
 
-	. += span_notice("<i>Você examina.[src]Mais perto, e note o seguinte...</i>")
+	. += span_notice("<i>Você examina.[src] Mais perto, e note o seguinte...</i>")
 
 	if(registered_age)
-		. += "O cartão indica que o titular é[registered_age]Tem anos.[(registered_age < AGE_MINOR) ? "There's a holographic stripe that reads <b>[span_danger("'MINOR: DO NOT SERVE ALCOHOL OR TOBACCO'")]</b> along the bottom of the card." : ""]"
+		. += "O cartão indica que o titular é [registered_age] Tem anos.[(registered_age < AGE_MINOR) ? "There's a holographic stripe that reads <b>[span_danger("'MINOR: DO NOT SERVE ALCOHOL OR TOBACCO'")]</b> along the bottom of the card." : ""]"
 	if(registered_account)
 		if(registered_account.mining_points)
 			. += "There's [registered_account.mining_points] mining point\s loaded onto the card's bank account."
 		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of [registered_account.account_balance] [MONEY_SYMBOL]."
 		if(registered_account.account_debt)
-			. += span_warning("A conta está atualmente em dívida para[registered_account.account_debt] [MONEY_SYMBOL]. [100*DEBT_COLLECTION_COEFF]% de todos os ganhos irá para extingui-lo.")
+			. += span_warning("A conta está atualmente em dívida para [registered_account.account_debt] [MONEY_SYMBOL]. [100*DEBT_COLLECTION_COEFF]% de todos os ganhos irá para extingui-lo.")
 		if(registered_account.account_job)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_job.paycheck_department)
 			if(D)
 				. += "The [D.account_holder] reports a balance of [D.account_balance] [MONEY_SYMBOL]."
 		. += span_info("Alt-Clique na identificação para pegar dinheiro da conta ligada na forma de holochips.")
-		. += span_info("Você pode inserir[MONEY_NAME]na conta ligada pressionando holochips, dinheiro, ou moedas contra a identificação.")
+		. += span_info("Você pode inserir [MONEY_NAME] na conta ligada pressionando holochips, dinheiro, ou moedas contra a identificação.")
 		if(registered_account.replaceable)
 			. += span_info("Alt-Right-Clique na identificação para mudar a conta bancária vinculada.")
 		if(registered_account.civilian_bounty)
@@ -1147,7 +1147,7 @@
 	if(department_account)
 		set_account(department_account)
 		name = "departmental card ([department_name])"
-		desc = "Fornece acesso ao[department_name]."
+		desc = "Fornece acesso ao [department_name]."
 	SSeconomy.dep_cards += src
 
 /obj/item/card/id/departmental_budget/Destroy()
@@ -1587,7 +1587,7 @@
 	if(isnull(choice) || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH) || !user.is_holding(src))
 		return ITEM_INTERACT_BLOCKING
 	time_to_assign = choice
-	to_chat(user, "Você define o tempo da sentença para[DisplayTimeText(time_to_assign * 10)].")
+	to_chat(user, "Você define o tempo da sentença para [DisplayTimeText(time_to_assign * 10)].")
 	timed = TRUE
 	return ITEM_INTERACT_SUCCESS
 
@@ -1602,11 +1602,11 @@
 
 	if(timed)
 		if(time_to_assign > 0)
-			. += span_notice("O temporizador digital no cartão está definido para[DisplayTimeText(time_to_assign * 10)]O temporizador começará assim que o prisioneiro passar pelo portal da prisão.")
+			. += span_notice("O temporizador digital no cartão está definido para [DisplayTimeText(time_to_assign * 10)] O temporizador começará assim que o prisioneiro passar pelo portal da prisão.")
 		else if(time_left <= 0)
 			. += span_notice("O temporizador digital no cartão tem zero segundos restantes. Você deixa um homem diferente, mas um homem livre.")
 		else
-			. += span_notice("O temporizador digital no cartão tem[DisplayTimeText(time_left * 10)]Restando. Não cometa o crime se não puder cumprir a pena.")
+			. += span_notice("O temporizador digital no cartão tem [DisplayTimeText(time_left * 10)] Restando. Não cometa o crime se não puder cumprir a pena.")
 
 	. += span_notice("[EXAMINE_HINT("Swipe")]uma identificação de segurança no cartão para[timed ? "re" : ""]Ajuste o tempo da sentença do Genpop.")
 	. += span_notice("Lembre-se[EXAMINE_HINT("swipe")]o cartão de um armário Genpop para ligá-lo.")
@@ -1620,7 +1620,7 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/card/id/advanced/prisoner/attack_self(mob/user)
-	to_chat(usr, span_notice("Você acumulou[points]fora da[goal]Pontos que você precisa para a liberdade."))
+	to_chat(usr, span_notice("Você acumulou [points] fora da [goal] Pontos que você precisa para a liberdade."))
 
 /obj/item/card/id/advanced/prisoner/one
 	name = "Prisoner #13-001"
@@ -2153,7 +2153,7 @@
 /obj/item/card/cardboard/attack_self(mob/user)
 	if(!Adjacent(user))
 		return
-	user.visible_message(span_notice("[user]mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra\the [name]."))
+	user.visible_message(span_notice("[user] mostra-lhe:[icon2html(src, viewers(user))] [name]."), span_notice("Você mostra\the [name]."))
 	add_fingerprint(user)
 
 /obj/item/card/cardboard/update_name()

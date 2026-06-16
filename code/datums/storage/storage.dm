@@ -279,7 +279,7 @@
 		return
 
 	if(href_list["show_valid_pocket_items"])
-		to_chat(user, span_notice("[source]Pode segurar:[can_hold_description]"))
+		to_chat(user, span_notice("[source] Pode segurar:[can_hold_description]"))
 
 /datum/storage/proc/handle_examination(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -295,7 +295,7 @@
 	if(isnull(can_hold_description))
 		return
 
-	examine_list += span_notice("[source]Pode segurar:[can_hold_description]")
+	examine_list += span_notice("[source] Pode segurar:[can_hold_description]")
 
 /// Almost 100% of the time the lists passed into set_holdable are reused for each instance
 /// Just fucking cache it 4head
@@ -580,10 +580,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		playsound(parent, rustle_sound, 50, rustle_vary, -5)
 
 	if(!silent_for_user)
-		to_chat(user, span_notice("Você coloca [thing] [insert_preposition]Em.[parent]."))
+		to_chat(user, span_notice("Você coloca [thing] [insert_preposition] Em.[parent]."))
 	for(var/mob/viewing in oviewers(user))
 		if(in_range(user, viewing) || (thing?.w_class >= WEIGHT_CLASS_NORMAL))
-			viewing.show_message(span_notice("[user]coloca[thing] [insert_preposition]Em.[parent]."), MSG_VISUAL)
+			viewing.show_message(span_notice("[user] coloca [thing] [insert_preposition] Em.[parent]."), MSG_VISUAL)
 
 
 /**
@@ -858,7 +858,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	// Storage to storage transfer is instant
 	if(dest_object.atom_storage)
-		to_chat(user, span_notice("Você despeja o conteúdo de [parent]Em.[dest_object]."))
+		to_chat(user, span_notice("Você despeja o conteúdo de [parent] Em.[dest_object]."))
 
 		if(do_rustle && rustle_sound)
 			playsound(parent, rustle_sound, 50, TRUE, -5)
@@ -870,7 +870,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 
 	// Storage to loc transfer requires a do_after
-	to_chat(user, span_notice("Você começa a despejar o conteúdo de [parent]Em.[dest_object]..."))
+	to_chat(user, span_notice("Você começa a despejar o conteúdo de [parent] Em.[dest_object]..."))
 	if(!do_after(user, 2 SECONDS, target = dest_object))
 		return
 
@@ -986,8 +986,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 			INVOKE_ASYNC(src, PROC_REF(put_in_hands_async), to_show, to_remove)
 			if(!silent)
 				to_show.visible_message(
-					span_warning("[to_show]\"Desejos\"[to_remove]De[parent]!"),
-					span_notice("Você desenha.[to_remove]De[parent]."),
+					span_warning("[to_show]\"Desejos\"[to_remove] De [parent]!"),
+					span_notice("Você desenha.[to_remove] De [parent]."),
 				)
 			return TRUE
 
@@ -1205,7 +1205,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!attempt_remove(changed, parent.drop_location()))
 		return
 
-	changed.visible_message(span_warning("[changed]Cai fora.[parent]!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	changed.visible_message(span_warning("[changed] Cai fora.[parent]!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 ///Assign a new value to the locked variable. If it's higher than NOT_LOCKED, close the UIs and update the appearance of the parent.
 /datum/storage/proc/set_locked(new_locked)

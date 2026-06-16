@@ -77,7 +77,7 @@
 
 /obj/machinery/spaceship_navigation_beacon/examine()
 	.=..()
-	. += span_notice("'[FREQ_RADIO_NAV_BEACON / 10]KHz é impresso ao lado.")
+	. += span_notice("'[FREQ_RADIO_NAV_BEACON / 10] KHz é impresso ao lado.")
 	if(locked)
 		. += span_warning("A luz vermelha piscando na frente indica que este farol está trancado.")
 	else
@@ -106,4 +106,4 @@
 /obj/item/folded_navigation_gigabeacon/examine()
 	.=..()
 	. += span_notice("O traseiro tem instruções em várias línguas galácticas detalhando como isso pode ser implantado.<b>na mão</b>sem nenhuma ferramenta especial.")
-	. += span_notice("'[FREQ_RADIO_NAV_BEACON / 10]KHz é impresso ao lado.")
+	. += span_notice("'[FREQ_RADIO_NAV_BEACON / 10] KHz é impresso ao lado.")

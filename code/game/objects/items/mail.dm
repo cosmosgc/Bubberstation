@@ -160,9 +160,9 @@
 		. += span_notice("<i>Você percebe o carimbo na frente do correio...</i>")
 	var/datum/mind/recipient = recipient_ref.resolve()
 	if(recipient)
-		. += span_info("[postmarked ? "Certified NT" : "Uncertfieid"]Correio para[recipient].")
+		. += span_info("[postmarked ? "Certified NT" : "Uncertfieid"]Correio para [recipient].")
 	else if(postmarked)
-		. += span_info("Correio certificado para[GLOB.station_name].")
+		. += span_info("Correio certificado para [GLOB.station_name].")
 	else
 		. += span_info("Esta é uma carta morta sem destinatário.")
 	. += span_info("Distribuir à mão ou através de etiquetador de destino usando o sistema de eliminação NT certificado.")

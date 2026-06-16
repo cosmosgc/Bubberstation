@@ -28,13 +28,13 @@
 	if(cast_on.can_block_magic())
 		owner.balloon_alert(owner, "Feitiço bloqueado!")
 		cast_on.visible_message(
-			span_danger("O feitiço salta de[cast_on]!"),
+			span_danger("O feitiço salta de [cast_on]!"),
 			span_danger("O feitiço sai de você!"),
 		)
 		return FALSE
 
 	cast_on.visible_message(
-		span_danger("[cast_on]Fica pálido como um brilho vermelho envolve[cast_on.p_them()]!"),
+		span_danger("[cast_on] Fica pálido como um brilho vermelho envolve [cast_on.p_them()]!"),
 		span_danger("Você pálido como um brilho vermelho enevoa você!"),
 	)
 

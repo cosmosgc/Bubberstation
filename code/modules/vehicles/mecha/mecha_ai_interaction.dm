@@ -19,7 +19,7 @@
 		return
 
 	if(data_tracker || user.can_dominate_mechs)
-		output += span_notice("[icon2html(src, user)] [name]Relatório de Estado do Exosuit\n")
+		output += span_notice("[icon2html(src, user)] [name] Relatório de Estado do Exosuit\n")
 		output += data_tracker?.get_mecha_info()
 
 	if(user.can_dominate_mechs)
@@ -46,13 +46,13 @@
 	switch(interaction)
 		if(AI_TRANS_TO_CARD) //Upload AI from mech to AI card.
 			if(!(mecha_flags & PANEL_OPEN)) //Mech must be in maint mode to allow carding.
-				to_chat(user, span_warning("[name]Devem ter protocolos de manutenção ativos para permitir uma transferência."))
+				to_chat(user, span_warning("[name] Devem ter protocolos de manutenção ativos para permitir uma transferência."))
 				return
 			var/list/ai_pilots = list()
 			for(var/mob/living/silicon/ai/aipilot in occupants)
 				ai_pilots += aipilot
 			if(!length(ai_pilots)) //Mech does not have an AI for a pilot
-				to_chat(user, span_warning("Nenhuma IA detetada em\the [src]Está a bordo do computador."))
+				to_chat(user, span_warning("Nenhuma IA detetada em\the [src] Está a bordo do computador."))
 				return
 			if(length(ai_pilots) > 1) //Input box for multiple AIs, but if there's only one we'll default to them.
 				AI = tgui_input_list(user, "Which AI do you wish to card?", "AI Selection", sort_list(ai_pilots))
@@ -91,15 +91,15 @@
 				to_chat(user, span_warning("Não há IA instalada neste dispositivo."))
 				return
 			if(!(mecha_flags & AI_COMPATIBLE)) //If the mech isn't compatible with an AI transfer, early return.
-				to_chat(user, span_warning("Um IA não pode ser instalado em[src]."))
+				to_chat(user, span_warning("Um IA não pode ser instalado em [src]."))
 				return
 			if(AI.deployed_shell) //Recall AI if shelled so it can be checked for a client
 				AI.disconnect_shell()
 			if(AI.stat || !AI.client)
-				to_chat(user, span_warning("[AI.name]está sem resposta e não pode ser carregado."))
+				to_chat(user, span_warning("[AI.name] está sem resposta e não pode ser carregado."))
 				return
 			if((LAZYLEN(occupants) >= max_occupants) || dna_lock) //Normal AIs cannot steal mechs!
-				to_chat(user, span_warning("Acesso negado.[name]É[LAZYLEN(occupants) >= max_occupants ? "currently fully occupied" : "secured with a DNA lock"]."))
+				to_chat(user, span_warning("Acesso negado.[name] É[LAZYLEN(occupants) >= max_occupants ? "currently fully occupied" : "secured with a DNA lock"]."))
 				return
 			AI.set_control_disabled(FALSE)
 			AI.radio_enabled = TRUE

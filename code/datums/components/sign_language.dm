@@ -145,16 +145,16 @@
 
 	switch(check_signables_state())
 		if(SIGN_HANDS_FULL) // Full hands
-			carbon_parent.visible_message("Tenta assinar, mas não pode com[carbon_parent.p_their()]Mãos cheias!", visible_message_flags = EMOTE_MESSAGE)
+			carbon_parent.visible_message("Tenta assinar, mas não pode com [carbon_parent.p_their()] Mãos cheias!", visible_message_flags = EMOTE_MESSAGE)
 			return COMPONENT_CANNOT_SPEAK
 
 		if(SIGN_HANDS_COMPLETELY_RESTRAINED) // Restrained
-			carbon_parent.visible_message("Tenta assinar, mas não pode com[carbon_parent.p_their()]Mãos amarradas!", visible_message_flags = EMOTE_MESSAGE)
+			carbon_parent.visible_message("Tenta assinar, mas não pode com [carbon_parent.p_their()] Mãos amarradas!", visible_message_flags = EMOTE_MESSAGE)
 			return COMPONENT_CANNOT_SPEAK
 
 		// If we're handcuffed, we can still sign, but it's slow
 		if(SIGN_SLOWLY_FROM_CUFFS)
-			carbon_parent.visible_message("Lutas, assinar lentamente com[carbon_parent.p_their()]Mãos algemadas...", visible_message_flags = EMOTE_MESSAGE)
+			carbon_parent.visible_message("Lutas, assinar lentamente com [carbon_parent.p_their()] Mãos algemadas...", visible_message_flags = EMOTE_MESSAGE)
 			return COMPONENT_IGNORE_CAN_SPEAK
 
 		if(SIGN_ARMLESS) // No arms
@@ -232,7 +232,7 @@
 		return NONE // Run normal checks
 	else if(check_signables_state() != SIGN_OKAY || HAS_MIND_TRAIT(carbon_parent, TRAIT_MIMING)) // Cannot cast if miming or not SIGN_OKAY
 		if(feedback)
-			to_chat(carbon_parent, span_warning("Você não pode assinar as palavras para invocar[spell]!"))
+			to_chat(carbon_parent, span_warning("Você não pode assinar as palavras para invocar [spell]!"))
 		return SPELL_INVOCATION_FAIL
 
 	return SPELL_INVOCATION_ALWAYS_SUCCEED
@@ -316,9 +316,9 @@
 			return // You can't see someone's expression if their face is obscured (or disfigured)
 	switch(emote_tone)
 		if(TONE_INQUISITIVE)
-			carbon_parent.visible_message(span_bold("peculiares[carbon_parent.p_their()]Sobrancelhas quizicamente."), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
+			carbon_parent.visible_message(span_bold("peculiares [carbon_parent.p_their()] Sobrancelhas quizicamente."), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 		if(TONE_EMPHATIC)
-			carbon_parent.visible_message(span_bold("Alarga[carbon_parent.p_their()]olhos enfaticamente!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
+			carbon_parent.visible_message(span_bold("Alarga [carbon_parent.p_their()] olhos enfaticamente!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 		if(TONE_INQUISITIVE_EMPHATIC)
 			carbon_parent.visible_message(span_bold("Usa uma expressão intensa e confusa!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 

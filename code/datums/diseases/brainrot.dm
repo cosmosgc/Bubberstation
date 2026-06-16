@@ -49,7 +49,7 @@
 					to_chat(affected_mob, span_danger("Estranho zumbido enche sua cabeça, removendo todos os pensamentos."))
 			if(SPT_PROB(1.5, seconds_per_tick))
 				to_chat(affected_mob, span_danger("Você perde a consciência..."))
-				affected_mob.visible_message(span_warning("[affected_mob]De repente desmorona!"), 											span_userdanger("Você de repente desmorona!"))
+				affected_mob.visible_message(span_warning("[affected_mob] De repente desmorona!"), 											span_userdanger("Você de repente desmorona!"))
 				affected_mob.Unconscious(rand(100, 200))
 				if(prob(1))
 					affected_mob.emote("snore")

@@ -442,7 +442,7 @@
 	ui_interact(remote_user)
 	remote_user.log_message("remotely accessed [src].", LOG_GAME)
 	say("Remote access detected.[locked ? " Interface unlocked." : ""]")
-	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)]Ligado.[src]."))
+	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Ligado.[src]."))
 	if(locked)
 		playsound(src, 'sound/machines/terminal/terminal_on.ogg', 25, FALSE)
 		locked = FALSE
@@ -459,7 +459,7 @@
 	if(isnull(remote_control_user))
 		return
 	locked = TRUE
-	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)]Desligado de[src]."))
+	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Desligado de [src]."))
 	if(!mute)
 		say("Remote access canceled. Interface locked.")
 		playsound(src, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)

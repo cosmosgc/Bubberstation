@@ -21,9 +21,9 @@
 	var/list/analysis = list()
 	//check tempo and lines
 	var/song_length = song.lines.len * song.tempo
-	analysis += span_revenbignotice("[src]Fala com você...")
+	analysis += span_revenbignotice("[src] Fala com você...")
 	analysis += span_revennotice("\"Esta canção tem<b>[song.lines.len]</b>linhas e um ritmo de<b>[song.tempo]</b>.\"")
 	analysis += span_revennotice("\"Multiplicar estes juntos dá uma música longa de<b>[song_length]</b>.\"")
-	analysis += span_revennotice("\"Para obter um efeito bônus de[GLOB.deity]Ao terminar uma apresentação, você precisa de uma música longa de<b>[FESTIVAL_SONG_LONG_ENOUGH]</b>.\"")
+	analysis += span_revennotice("\"Para obter um efeito bônus de [GLOB.deity] Ao terminar uma apresentação, você precisa de uma música longa de<b>[FESTIVAL_SONG_LONG_ENOUGH]</b>.\"")
 
 	to_chat(playing_song, analysis.Join("\n"))

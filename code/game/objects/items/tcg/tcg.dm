@@ -217,7 +217,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 
 /obj/item/tcgcard_deck/examine(mob/user)
 	. = ..()
-	. += span_notice("\The [src]Tem[contents.len]Cartas dentro.")
+	. += span_notice("\The [src] Tem [contents.len] Cartas dentro.")
 
 /obj/item/tcgcard_deck/attack_hand(mob/user, list/modifiers)
 	var/list/choices = list(
@@ -279,7 +279,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	user.put_in_hands(drawn_card)
 	drawn_card.flipped = flipped //If it's a face down deck, it'll be drawn face down, if it's a face up pile you'll draw it face up.
 	drawn_card.update_icon_state()
-	user.visible_message(span_notice("[user]Tira uma carta de\the [src]!"), 					span_notice("Você tira uma carta de\the [src]!"))
+	user.visible_message(span_notice("[user] Tira uma carta de\the [src]!"), 					span_notice("Você tira uma carta de\the [src]!"))
 	if(contents.len <= 1)
 		var/obj/item/tcgcard/final_card = contents[1]
 		user.transferItemToLoc(final_card, drop_location())
@@ -298,7 +298,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	if(user.active_storage)
 		user.active_storage.hide_contents(user)
 	if(visable)
-		user.visible_message(span_notice("[user]Embaralha.\the [src]!"), 						span_notice("Você embaralha.\the [src]!"))
+		user.visible_message(span_notice("[user] Embaralha.\the [src]!"), 						span_notice("Você embaralha.\the [src]!"))
 
 
 /**

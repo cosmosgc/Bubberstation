@@ -107,7 +107,7 @@
 
 	var/list/unique_list = unique_list(wanted_flavors)
 	if(wanted_flavors.len > 1 && length(unique_list) == 1)
-		icecream_name = "[make_tuple(wanted_flavors.len)] [wanted_flavors[1]] ice cream ([initial(cone_type.name)])"
+		icecream_name = "[make_tuple(wanted_flavors.len)] [wanted_flavors [1]] ice cream ([initial(cone_type.name)])"
 	else
 		sortTim(wanted_flavors, cmp = GLOBAL_PROC_REF(cmp_text_asc))
 		icecream_name = "[english_list(wanted_flavors)] ice cream ([initial(cone_type.name)])"
@@ -189,8 +189,8 @@
 
 /datum/custom_order/reagent/drink/handle_get_order(mob/living/basic/robot_customer/customer_pawn, obj/item/order_item)
 	customer_pawn.visible_message(
-		span_danger("[customer_pawn]Esvaziar[order_item]De uma vez!"),
-		span_danger("Você se desfaz.[order_item]De uma vez."),
+		span_danger("[customer_pawn] Esvaziar [order_item] De uma vez!"),
+		span_danger("Você se desfaz.[order_item] De uma vez."),
 	)
 	return ..()
 
@@ -215,7 +215,7 @@
 
 /datum/custom_order/reagent/soup/handle_get_order(mob/living/basic/robot_customer/customer_pawn, obj/item/order_item)
 	customer_pawn.visible_message(
-		span_danger("[customer_pawn]Derrama.[order_item]Para baixo.[customer_pawn.p_their()]Escotilha!"),
-		span_danger("Você derrama[order_item]Desça sua escotilha de uma vez."),
+		span_danger("[customer_pawn] Derrama.[order_item] Para baixo.[customer_pawn.p_their()] Escotilha!"),
+		span_danger("Você derrama [order_item] Desça sua escotilha de uma vez."),
 	)
 	return ..()

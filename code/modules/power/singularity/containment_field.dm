@@ -72,7 +72,7 @@
 		qdel(src)
 		return
 	if(ismegafauna(user))
-		user.visible_message(span_warning("[user]Brilha ferozmente enquanto o campo de contenção brilha!"))
+		user.visible_message(span_warning("[user] Brilha ferozmente enquanto o campo de contenção brilha!"))
 		field_gen_1.calc_power(INFINITY) //rip that 'containment' field
 		user.adjustHealth(-user.obj_damage)
 	else
@@ -145,7 +145,7 @@
 		if(prob(20))
 			user.Stun(40)
 		user.take_overall_damage(burn = shock_damage)
-		user.visible_message(span_danger("[user.name]está chocado com\the [src]!"), 		span_userdanger("Pulso de energia detectado, sistema danificado!"), 		span_hear("Você ouve uma rachadura elétrica."))
+		user.visible_message(span_danger("[user.name] está chocado com\the [src]!"), 		span_userdanger("Pulso de energia detectado, sistema danificado!"), 		span_hear("Você ouve uma rachadura elétrica."))
 
 	user.updatehealth()
 	bump_field(user)

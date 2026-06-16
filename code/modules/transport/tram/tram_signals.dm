@@ -185,7 +185,7 @@
 			if(OUTBOUND)
 				sign_dir = INBOUND
 
-		to_chat(user, span_notice("Você vira as direções[src]."))
+		to_chat(user, span_notice("Você vira as direções [src]."))
 		update_appearance()
 
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

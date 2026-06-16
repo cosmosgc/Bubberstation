@@ -84,7 +84,7 @@
 	if(.)
 		return
 	if (moving && obj_flags & EMAGGED)
-		visible_message(span_warning("O[src]O painel de controle falha ligeiramente."))
+		visible_message(span_warning("O [src] O painel de controle falha ligeiramente."))
 		return
 	switch(action)
 		if("toggle")
@@ -117,7 +117,7 @@
 		to_chat(user, span_warning("A caixa de ferramentas está presa! Não se mexe!"))
 		return
 	attach_item(target)
-	to_chat(user, span_notice("Você anexa\the [attached_item]ao dispositivo de treinamento."))
+	to_chat(user, span_notice("Você anexa\the [attached_item] ao dispositivo de treinamento."))
 	playsound(src, SFX_RUSTLE, 50, TRUE)
 
 /**
@@ -184,7 +184,7 @@
 	if (obj_flags & EMAGGED)
 		to_chat(user, span_warning("A caixa de ferramentas está presa! Não se mexe!"))
 		return CLICK_ACTION_BLOCKING
-	to_chat(user, span_notice("Você tira.\the [attached_item]do dispositivo de treinamento."))
+	to_chat(user, span_notice("Você tira.\the [attached_item] do dispositivo de treinamento."))
 	remove_attached_item(user)
 	playsound(src, SFX_RUSTLE, 50, TRUE)
 	return CLICK_ACTION_SUCCESS
@@ -329,7 +329,7 @@
 	. = ..()
 	var/has_buckled_mob = has_buckled_mobs()
 	if(has_buckled_mob)
-		. += span_notice("<b>Alt-Click para soltar\the [buckled_mobs[1]]</b>")
+		. += span_notice("<b>Alt-Click para soltar\the [buckled_mobs [1]]</b>")
 	if (obj_flags & EMAGGED)
 		. += span_warning("Tem uma caixa de ferramentas perigosa, e o painel de controle está fumando...")
 	else if (!has_buckled_mob && attached_item) //Can't removed the syndicate toolbox!

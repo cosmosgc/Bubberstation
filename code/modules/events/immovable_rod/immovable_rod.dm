@@ -97,14 +97,14 @@
 			var/direction = z_diff > 0 ? UP : DOWN
 			var/turf/target_z_turf = get_step_multiz(src, direction)
 
-			visible_message(span_danger("[src]Fases fora da realidade."))
+			visible_message(span_danger("[src] Fases fora da realidade."))
 
 			if(!do_teleport(src, target_z_turf))
 				// We failed to teleport. Might as well admit defeat.
 				qdel(src)
 				return
 
-			visible_message(span_danger("[src]Fases na realidade."))
+			visible_message(span_danger("[src] Fases na realidade."))
 			GLOB.move_manager.home_onto(src, special_target)
 
 		if(loc == target_turf)
@@ -160,7 +160,7 @@
 	// If rod meets rod, they collapse into a singularity. Yes, this means that if two wizard rods collide,
 	// they ALSO collapse into a singulo.
 	if(istype(clong, /obj/effect/immovablerod))
-		visible_message(span_danger("[src]colide com[clong]! Isso não pode acabar bem."))
+		visible_message(span_danger("[src] colide com [clong]! Isso não pode acabar bem."))
 		do_smoke(2, src, get_turf(src))
 		var/obj/singularity/bad_luck = new(get_turf(src))
 		bad_luck.energy = 800
@@ -196,7 +196,7 @@
 	CRASH("[src] Bump()ed into non-atom thing [clong] ([clong.type])")
 
 /obj/effect/immovablerod/proc/penetrate(mob/living/smeared_mob)
-	smeared_mob.visible_message(span_danger("[smeared_mob]é penetrado por uma vara imóvel!") , span_userdanger("A vara penetra em você!") , span_danger("Você ouve um clang!"))
+	smeared_mob.visible_message(span_danger("[smeared_mob] é penetrado por uma vara imóvel!") , span_userdanger("A vara penetra em você!") , span_danger("Você ouve um clang!"))
 
 	if(smeared_mob.stat != DEAD)
 		num_mobs_hit++
@@ -239,8 +239,8 @@
 /obj/effect/immovablerod/proc/suplex_rod(mob/living/strongman)
 	strongman.client?.give_award(/datum/award/achievement/jobs/feat_of_strength, strongman)
 	strongman.visible_message(
-		span_boldwarning("[strongman]Suplexes[src]Para o chão!"),
-		span_warning("Como você suplex[src]No chão, seu corpo ondula com poder!")
+		span_boldwarning("[strongman] Suplexes [src] Para o chão!"),
+		span_warning("Como você suplex [src] No chão, seu corpo ondula com poder!")
 		)
 	new /obj/structure/festivus/anchored(drop_location())
 	new /obj/effect/anomaly/flux(drop_location())

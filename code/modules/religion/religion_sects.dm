@@ -75,7 +75,7 @@
 /datum/religion_sect/proc/can_sacrifice(obj/item/sacrifice, mob/living/chap)
 	. = TRUE
 	if(chap.mind.holy_role == HOLY_ROLE_DEACON)
-		to_chat(chap, span_warning("Você é apenas um diácono de[GLOB.deity], e, portanto, não pode realizar ritos."))
+		to_chat(chap, span_warning("Você é apenas um diácono de [GLOB.deity], e, portanto, não pode realizar ritos."))
 		return
 	if(!is_type_in_typecache(sacrifice, desired_items_typecache))
 		return FALSE
@@ -113,7 +113,7 @@
 	var/mob/living/carbon/human/blessed = target
 	for(var/obj/item/bodypart/bodypart as anything in blessed.get_bodyparts())
 		if(IS_ROBOTIC_LIMB(bodypart))
-			to_chat(chap, span_warning("[GLOB.deity]Se recusa a curar essa mancha metálica!"))
+			to_chat(chap, span_warning("[GLOB.deity] Se recusa a curar essa mancha metálica!"))
 			return BLESSING_IGNORED
 
 	var/heal_amt = 10
@@ -126,8 +126,8 @@
 		if(affecting.heal_damage(heal_amt, heal_amt, required_bodytype = BODYTYPE_ORGANIC))
 			blessed.update_damage_overlays()
 
-	blessed.visible_message(span_notice("[chap]Cura[blessed]com o poder de[GLOB.deity]!"))
-	to_chat(blessed, span_boldnotice("Que o poder de[GLOB.deity]Obrigá-lo a ser curado!"))
+	blessed.visible_message(span_notice("[chap] Cura [blessed] com o poder de [GLOB.deity]!"))
+	to_chat(blessed, span_boldnotice("Que o poder de [GLOB.deity] Obrigá-lo a ser curado!"))
 	playsound(chap, SFX_PUNCH, 25, TRUE, -1)
 	blessed.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
@@ -164,8 +164,8 @@
 		if(target.mind?.holy_role == HOLY_ROLE_HIGHPRIEST)
 			charge_amount *= 2
 		R.cell?.charge += charge_amount
-		R.visible_message(span_notice("[chap]Cargas.[R]com o poder de[GLOB.deity]!"))
-		to_chat(R, span_boldnotice("Você está carregado pelo poder de[GLOB.deity]!"))
+		R.visible_message(span_notice("[chap] Cargas.[R] com o poder de [GLOB.deity]!"))
+		to_chat(R, span_boldnotice("Você está carregado pelo poder de [GLOB.deity]!"))
 		R.add_mood_event("blessing", /datum/mood_event/blessing)
 		playsound(chap, 'sound/effects/bang.ogg', 25, TRUE, -1)
 		return BLESSING_SUCCESS
@@ -186,11 +186,11 @@
 	var/obj/item/bodypart/bodypart = blessed.get_bodypart(chap.zone_selected)
 	if(IS_ORGANIC_LIMB(bodypart))
 		if(!did_we_charge)
-			to_chat(chap, span_warning("[GLOB.deity]Escarnece da idéia de curar tal matéria carnuda!"))
+			to_chat(chap, span_warning("[GLOB.deity] Escarnece da idéia de curar tal matéria carnuda!"))
 			return BLESSING_IGNORED
 
-		blessed.visible_message(span_notice("[chap]Cargas.[blessed]com o poder de[GLOB.deity]!"))
-		to_chat(blessed, span_boldnotice("Você se sente carregado pelo poder de[GLOB.deity]!"))
+		blessed.visible_message(span_notice("[chap] Cargas.[blessed] com o poder de [GLOB.deity]!"))
+		to_chat(blessed, span_boldnotice("Você se sente carregado pelo poder de [GLOB.deity]!"))
 		blessed.add_mood_event("blessing", /datum/mood_event/blessing)
 		playsound(chap, 'sound/machines/synth/synth_yes.ogg', 25, TRUE, -1)
 		return BLESSING_SUCCESS
@@ -199,8 +199,8 @@
 	if(bodypart.heal_damage(5,5,BODYTYPE_ROBOTIC))
 		blessed.update_damage_overlays()
 
-	blessed.visible_message(span_notice("[chap] [did_we_charge ? "repairs and charges" : "repairs"] [blessed]com o poder de[GLOB.deity]!"))
-	to_chat(blessed, span_boldnotice("As maquinações internas de[GLOB.deity] [did_we_charge ? "repairs and charges" : "repairs"]Você!"))
+	blessed.visible_message(span_notice("[chap] [did_we_charge ? "repairs and charges" : "repairs"] [blessed] com o poder de [GLOB.deity]!"))
+	to_chat(blessed, span_boldnotice("As maquinações internas de [GLOB.deity] [did_we_charge ? "repairs and charges" : "repairs"]Você!"))
 	playsound(chap, 'sound/effects/bang.ogg', 25, TRUE, -1)
 	blessed.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
@@ -210,11 +210,11 @@
 		return
 
 	if(power_cell.charge() < 0.3 * STANDARD_CELL_CHARGE)
-		to_chat(chap, span_notice("[GLOB.deity]não aceita piedade de quantidade de poder."))
+		to_chat(chap, span_notice("[GLOB.deity] não aceita piedade de quantidade de poder."))
 		return
 
 	adjust_favor(round(power_cell.charge() / (0.3 * STANDARD_CELL_CHARGE)), chap)
-	to_chat(chap, span_notice("Você oferece[power_cell]O poder de[GLOB.deity]Agradá-los."))
+	to_chat(chap, span_notice("Você oferece [power_cell] O poder de [GLOB.deity] Agradá-los."))
 	qdel(power_cell)
 	return TRUE
 
@@ -245,7 +245,7 @@
 	if(!offering.light_on)
 		to_chat(user, span_notice("A vela precisa ser acesa para ser oferecida!"))
 		return
-	to_chat(user, span_notice("[GLOB.deity]está satisfeito com seu sacrifício."))
+	to_chat(user, span_notice("[GLOB.deity] está satisfeito com seu sacrifício."))
 	adjust_favor(40, user) //it's not a lot but hey there's a pacifist favor option at least
 	qdel(offering)
 	return TRUE
@@ -275,13 +275,13 @@
 		return BLESSING_IGNORED
 
 	if(account.account_balance < GREEDY_HEAL_COST)
-		to_chat(chap, span_warning("Curando de[GLOB.deity]Custos[GREEDY_HEAL_COST] [MONEY_NAME]Por 30 de saúde!"))
+		to_chat(chap, span_warning("Curando de [GLOB.deity] Custos [GREEDY_HEAL_COST] [MONEY_NAME] Por 30 de saúde!"))
 		return BLESSING_IGNORED
 
 	var/mob/living/carbon/human/blessed = blessed_living
 	for(var/obj/item/bodypart/robolimb as anything in blessed.get_bodyparts())
 		if(IS_ROBOTIC_LIMB(robolimb))
-			to_chat(chap, span_warning("[GLOB.deity]Se recusa a curar essa mancha metálica!"))
+			to_chat(chap, span_warning("[GLOB.deity] Se recusa a curar essa mancha metálica!"))
 			return BLESSING_IGNORED
 
 	account.adjust_money(-GREEDY_HEAL_COST, "Church Donation: Treatment")
@@ -294,8 +294,8 @@
 		if(affecting.heal_damage(heal_amt, heal_amt, required_bodytype = BODYTYPE_ORGANIC))
 			blessed.update_damage_overlays()
 
-	blessed.visible_message(span_notice("[chap]Bartender uma cura para[blessed]De[GLOB.deity]!"))
-	to_chat(blessed, span_boldnotice("Que o poder de[GLOB.deity]Obrigá-lo a ser curado! Obrigado por escolher.[GLOB.deity]!"))
+	blessed.visible_message(span_notice("[chap] Bartender uma cura para [blessed] De [GLOB.deity]!"))
+	to_chat(blessed, span_boldnotice("Que o poder de [GLOB.deity] Obrigá-lo a ser curado! Obrigado por escolher.[GLOB.deity]!"))
 	playsound(chap, 'sound/effects/cashregister.ogg', 60, TRUE)
 	blessed.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
@@ -316,7 +316,7 @@
 /datum/religion_sect/burden/on_conversion(mob/living/carbon/human/new_convert)
 	..()
 	if(!ishuman(new_convert))
-		to_chat(new_convert, span_warning("[GLOB.deity]Precisa de criaturas de nível superior para compreender completamente o sofrimento. Você não está sobrecarregado."))
+		to_chat(new_convert, span_warning("[GLOB.deity] Precisa de criaturas de nível superior para compreender completamente o sofrimento. Você não está sobrecarregado."))
 		return
 	new_convert.gain_trauma(/datum/brain_trauma/special/burdened, TRAUMA_RESILIENCE_ABSOLUTE)
 
@@ -395,8 +395,8 @@
 		to_chat(chaplain, span_warning("Eles não têm nenhum fardo!"))
 		return BLESSING_IGNORED
 
-	target.visible_message(span_notice("[chaplain]Encaixe.[target]O fardo!"))
-	to_chat(target, span_boldnotice("Que o poder de[GLOB.deity]Obrigá-lo a ser curado!"))
+	target.visible_message(span_notice("[chaplain] Encaixe.[target] O fardo!"))
+	to_chat(target, span_boldnotice("Que o poder de [GLOB.deity] Obrigá-lo a ser curado!"))
 	playsound(chaplain, SFX_PUNCH, 25, vary = TRUE, extrarange = -1)
 	target.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS
@@ -416,7 +416,7 @@
 /datum/religion_sect/honorbound/on_conversion(mob/living/carbon/new_convert)
 	..()
 	if(!ishuman(new_convert))
-		to_chat(new_convert, span_warning("[GLOB.deity]Não tem respeito por criaturas inferiores, e se recusa a torná-lo honrado."))
+		to_chat(new_convert, span_warning("[GLOB.deity] Não tem respeito por criaturas inferiores, e se recusa a torná-lo honrado."))
 		return FALSE
 	new_convert.gain_trauma(/datum/brain_trauma/special/honorbound, TRAUMA_RESILIENCE_MAGIC)
 
@@ -443,12 +443,12 @@
 
 	var/mob/living/carbon/human/blessed = blessed_living
 	if(blessed.reagents.has_reagent(/datum/reagent/drug/maint/sludge))
-		to_chat(blessed, span_warning("[GLOB.deity]Já os empoderou."))
+		to_chat(blessed, span_warning("[GLOB.deity] Já os empoderou."))
 		return BLESSING_IGNORED
 
 	blessed.reagents.add_reagent(/datum/reagent/drug/maint/sludge, 5)
-	blessed.visible_message(span_notice("[chap]Empoderamento[blessed]com o poder de[GLOB.deity]!"))
-	to_chat(blessed, span_boldnotice("O poder de[GLOB.deity]te tornou mais difícil de ferir por um tempo!"))
+	blessed.visible_message(span_notice("[chap] Empoderamento [blessed] com o poder de [GLOB.deity]!"))
+	to_chat(blessed, span_boldnotice("O poder de [GLOB.deity] te tornou mais difícil de ferir por um tempo!"))
 	playsound(chap, SFX_PUNCH, 25, TRUE, -1)
 	blessed.add_mood_event("blessing", /datum/mood_event/blessing)
 	return BLESSING_SUCCESS //trust me, you'll be feeling the pain from the maint drugs all well enough
@@ -459,9 +459,9 @@
 	var/datum/reagent/yuck/wanted_yuck = offering.reagents.has_reagent(/datum/reagent/yuck, MINIMUM_YUCK_REQUIRED)
 	var/favor_earned = offering.reagents.get_reagent_amount(/datum/reagent/yuck)
 	if(!wanted_yuck)
-		to_chat(user, span_warning("[offering]não tem pasta orgânica suficiente para[GLOB.deity]Para desfrutar."))
+		to_chat(user, span_warning("[offering] não tem pasta orgânica suficiente para [GLOB.deity] Para desfrutar."))
 		return
-	to_chat(user, span_notice("[GLOB.deity]adora pasta orgânica."))
+	to_chat(user, span_notice("[GLOB.deity] adora pasta orgânica."))
 	adjust_favor(favor_earned, user)
 	playsound(get_turf(offering), 'sound/items/drink.ogg', 50, TRUE)
 	offering.reagents.clear_reagents()

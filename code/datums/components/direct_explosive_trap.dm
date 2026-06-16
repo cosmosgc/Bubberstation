@@ -72,9 +72,9 @@
 		return
 	if (!isnull(explosive_checks) && !explosive_checks.Invoke(victim))
 		return
-	to_chat(victim, span_bolddanger("[source]Foi uma armadilha!"))
+	to_chat(victim, span_bolddanger("[source] Foi uma armadilha!"))
 	if (!isnull(saboteur))
-		to_chat(saboteur, span_bolddanger("Sucesso! Sua armadilha[source]Pegado.[victim.name]!"))
+		to_chat(saboteur, span_bolddanger("Sucesso! Sua armadilha [source] Pegado.[victim.name]!"))
 	var/atom/parent_atom = parent
 	message_admins("Direct EX_ACT explosion with severity [explosive_force] on [ADMIN_LOOKUPFLW(victim)]. Caused by direct_explosive_trap on: [ADMIN_VERBOSEJMP(parent_atom)]. Set by: [key_name(saboteur)].")
 	log_game("Direct EX_ACT explosion with severity [explosive_force] on [key_name(victim)]. Caused by direct_explosive_trap on: [parent_atom.name] at [AREACOORD(parent_atom)]. Set by: [key_name(saboteur)].")

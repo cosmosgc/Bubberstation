@@ -143,15 +143,15 @@
 		to_chat(user, span_warning("O botão já contém um dispositivo!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!(new_device.assembly_behavior & ASSEMBLY_FUNCTIONAL_OUTPUT))
-		to_chat(user, span_warning("\The [new_device]Não fará nada significativo dentro do botão..."))
+		to_chat(user, span_warning("\The [new_device] Não fará nada significativo dentro do botão..."))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_device, src, silent = FALSE))
-		to_chat(user, span_warning("\The [new_device]Está preso a você!"))
+		to_chat(user, span_warning("\The [new_device] Está preso a você!"))
 		return ITEM_INTERACT_BLOCKING
 
 	device = new_device
 	SEND_SIGNAL(new_device, COMSIG_ASSEMBLY_ADDED_TO_BUTTON, src, user)
-	to_chat(user, span_notice("Você acrescenta\the [new_device]No botão."))
+	to_chat(user, span_notice("Você acrescenta\the [new_device] No botão."))
 
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -161,7 +161,7 @@
 		to_chat(user, span_warning("O botão já contém uma tábua!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(new_board, src, silent = FALSE))
-		to_chat(user, span_warning("\The [new_board]Está preso a você!"))
+		to_chat(user, span_warning("\The [new_board] Está preso a você!"))
 		return ITEM_INTERACT_BLOCKING
 
 	board = new_board
@@ -169,7 +169,7 @@
 		req_one_access = board.accesses
 	else
 		req_access = board.accesses
-	to_chat(user, span_notice("Você acrescenta\the [new_board]No botão."))
+	to_chat(user, span_notice("Você acrescenta\the [new_board] No botão."))
 
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -279,7 +279,7 @@
 /obj/machinery/button/proc/remove_assembly(mob/user)
 	SEND_SIGNAL(device, COMSIG_ASSEMBLY_REMOVED_FROM_BUTTON, src, user)
 	user.put_in_hands(device)
-	to_chat(user, span_notice("Você tira.\the [device]Da moldura do botão."))
+	to_chat(user, span_notice("Você tira.\the [device] Da moldura do botão."))
 	device = null
 	update_appearance(UPDATE_ICON)
 
@@ -337,9 +337,9 @@
 	if(!panel_open)
 		return
 	if(device)
-		. += span_notice("Há\a [device]dentro, que poderia ser removido com um<b>Mão vazia</b>.")
+		. += span_notice("Há\a [device] dentro, que poderia ser removido com um<b>Mão vazia</b>.")
 	if(board)
-		. += span_notice("Há\a [board]dentro, que poderia ser removido com um<b>Mão vazia</b>.")
+		. += span_notice("Há\a [board] dentro, que poderia ser removido com um<b>Mão vazia</b>.")
 	if(isnull(board) && isnull(device))
 		. += span_notice("Não há nada atualmente instalado em\the [src].")
 

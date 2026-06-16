@@ -22,12 +22,12 @@
 		if(iter_living.stat != CONSCIOUS || !HAS_TRAIT(iter_living, TRAIT_HATED_BY_DOGS))
 			continue
 		if(!isnull(dog.buckled))
-			dog.audible_message(span_notice("[dog]Rosna em[iter_living], ainda[dog.p_they()] [dog.p_are()]Muito confortável para se mover."), hearing_distance = COMBAT_MESSAGE_RANGE)
+			dog.audible_message(span_notice("[dog] Rosna em [iter_living], ainda [dog.p_they()] [dog.p_are()] Muito confortável para se mover."), hearing_distance = COMBAT_MESSAGE_RANGE)
 			continue
 		if(!targeting_strategy.can_attack(dog, iter_living))
 			continue
 
-		dog.audible_message(span_warning("[dog]Rosna em[iter_living], aparentemente irritado por[iter_living.p_their()]Presença."), hearing_distance = COMBAT_MESSAGE_RANGE)
+		dog.audible_message(span_warning("[dog] Rosna em [iter_living], aparentemente irritado por [iter_living.p_their()] Presença."), hearing_distance = COMBAT_MESSAGE_RANGE)
 		controller.set_blackboard_key(target_key, iter_living)
 		controller.set_blackboard_key(BB_DOG_HARASS_HARM, FALSE)
 		return TRUE

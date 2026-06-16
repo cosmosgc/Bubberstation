@@ -50,7 +50,7 @@
 
 		if(item.blacklisted_roles && equipping && (equipping.title in item.blacklisted_roles))
 			if(preference_source.parent)
-				to_chat(preference_source.parent, span_warning("Você não conseguiu um item de carga.[initial(item.item_path.name)]Devido ao trabalho lista negra!"))
+				to_chat(preference_source.parent, span_warning("Você não conseguiu um item de carga.[initial(item.item_path.name)] Devido ao trabalho lista negra!"))
 			loadout_datums -= item
 			continue
 

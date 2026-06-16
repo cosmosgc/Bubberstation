@@ -35,11 +35,11 @@
 				var/obj/item/bodypart/bodypart = organ_owner.get_bodypart(selected_part) //We're so sorry skeletons, you're so misunderstood
 				if(bodypart)
 					playsound(organ_owner, SFX_DESECRATION, 50, vary = TRUE) //You just want to socialize
-					organ_owner.visible_message(span_warning("[organ_owner]Bate alto e balança!"), span_danger("Seus ossos doem tanto que seu espasmo muscular perdido!"))
+					organ_owner.visible_message(span_warning("[organ_owner] Bate alto e balança!"), span_danger("Seus ossos doem tanto que seu espasmo muscular perdido!"))
 					INVOKE_ASYNC(organ_owner, TYPE_PROC_REF(/atom/movable, say), "OOF!!", forced = chem.type)
 					organ_owner.apply_damage(200, BRUTE, bodypart)
 				else
-					to_chat(organ_owner, span_warning("Seu desaparecimento.[parse_zone(selected_part)]Dói de onde você deixou."))
+					to_chat(organ_owner, span_warning("Seu desaparecimento.[parse_zone(selected_part)] Dói de onde você deixou."))
 					INVOKE_ASYNC(organ_owner, TYPE_PROC_REF(/mob, emote), "sigh")
 		organ_owner.reagents.remove_reagent(chem.type, chem.metabolization_rate * seconds_per_tick)
 		return COMSIG_MOB_STOP_REAGENT_TICK // Stop metabolism

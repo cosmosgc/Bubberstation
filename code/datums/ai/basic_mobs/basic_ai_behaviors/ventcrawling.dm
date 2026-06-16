@@ -39,7 +39,7 @@
 
 	if(prob(50))
 		cached_pawn.visible_message(
-			span_warning("[src]Entra nos dutos de ventilação!"),
+			span_warning("[src] Entra nos dutos de ventilação!"),
 			span_hear("Você ouve algo correndo pelos dutos de ventilação."),
 		)
 

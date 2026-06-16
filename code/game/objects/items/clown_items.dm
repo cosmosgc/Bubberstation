@@ -129,7 +129,7 @@
 	)
 
 /obj/item/soap/omega/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]está usando[src]Para se limparem da linha do tempo! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] está usando [src] Para se limparem da linha do tempo! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	new /obj/structure/chrono_field(user.loc, user)
 	return MANUAL_SUICIDE
 
@@ -140,7 +140,7 @@
 
 /obj/item/soap/suicide_act(mob/living/user)
 	user.say(";FFFFFFFFFFFFFFFFUUUUUUUDGE!!", forced="soap suicide")
-	user.visible_message(span_suicide("[user]Elevações[src]para[user.p_their()]boca e roe furiosamente, produzindo uma espuma grossa![user.p_They()]Nunca vou conseguir essa arma agora!"))
+	user.visible_message(span_suicide("[user] Elevações [src] para [user.p_their()] boca e roe furiosamente, produzindo uma espuma grossa![user.p_They()] Nunca vou conseguir essa arma agora!"))
 	do_foam(1, src, get_turf(user))
 	return TOXLOSS
 
@@ -170,14 +170,14 @@
 		noUses(user)
 
 /obj/item/soap/proc/noUses(mob/user)
-	to_chat(user, span_warning("[src]Se desfaz em pedacinhos!"))
+	to_chat(user, span_warning("[src] Se desfaz em pedacinhos!"))
 	qdel(src)
 
 /obj/item/soap/nanotrasen/cyborg
 	name = "built-in soap"
 
 /obj/item/soap/nanotrasen/cyborg/noUses(mob/user)
-	to_chat(user, span_warning("[src]Acabou a química! Vá para um recarregá-lo."))
+	to_chat(user, span_warning("[src] Acabou a química! Vá para um recarregá-lo."))
 
 /obj/item/soap/nanotrasen/cyborg/should_clean(datum/cleaning_source, atom/atom_to_clean, mob/living/cleaner)
 	if(uses <= 0)
@@ -222,7 +222,7 @@
 	return ..()
 
 /obj/item/bikehorn/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user]solenemente pontos[src]em[user.p_their()]templo! Parece que...[user.p_theyre()]Tentando cometer suicídio!"))
+	user.visible_message(span_suicide("[user] solenemente pontos [src] em [user.p_their()] templo! Parece que...[user.p_theyre()] Tentando cometer suicídio!"))
 	playsound(src, 'sound/items/bikehorn.ogg', 50, TRUE)
 	return BRUTELOSS
 

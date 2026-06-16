@@ -36,17 +36,17 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 /obj/item/hilbertshotel/attack(mob/living/M, mob/living/user)
 	if(M.mind)
-		to_chat(user, span_notice("Você convida.[M]Para o hotel."))
+		to_chat(user, span_notice("Você convida.[M] Para o hotel."))
 		promptAndCheckIn(user, M)
 	else
-		to_chat(user, span_warning("[M]Não é inteligente o suficiente para entender como usar este dispositivo!"))
+		to_chat(user, span_warning("[M] Não é inteligente o suficiente para entender como usar este dispositivo!"))
 
 /obj/item/hilbertshotel/attack_self(mob/user)
 	. = ..()
 	promptAndCheckIn(user, user)
 
 /obj/item/hilbertshotel/attack_tk(mob/user)
-	to_chat(user, span_notice("\The [src]Ativamente rejeita sua mente como as energias do espaço azul que a rodeiam perturbam sua telecinese."))
+	to_chat(user, span_notice("\The [src] Ativamente rejeita sua mente como as energias do espaço azul que a rodeiam perturbam sua telecinese."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/item/hilbertshotel/proc/promptAndCheckIn(mob/user, mob/target)
@@ -61,7 +61,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	if(!chosenRoomNumber)
 		return
 	if(chosenRoomNumber > SHORT_REAL_LIMIT)
-		to_chat(target, span_warning("Você tem que verificar o primeiro[SHORT_REAL_LIMIT]quartos antes de você pode ir para um maior número um!"))
+		to_chat(target, span_warning("Você tem que verificar o primeiro [SHORT_REAL_LIMIT] quartos antes de você pode ir para um maior número um!"))
 		return
 	if((chosenRoomNumber < 1) || (chosenRoomNumber != round(chosenRoomNumber)))
 		to_chat(target, span_warning("Esse não é um número de quarto válido!"))
@@ -69,18 +69,18 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 	// Orb is not adjacent to the target. No teleporties.
 	if(!src.Adjacent(target))
-		to_chat(target, span_warning("Você está muito longe\the [src]Para entrar!"))
+		to_chat(target, span_warning("Você está muito longe\the [src] Para entrar!"))
 
 	// If the target is incapacitated after selecting a room, they're not allowed to teleport.
 	if(target.incapacitated)
-		to_chat(target, span_warning("Você não é capaz de ativar\the [src]Mais!"))
+		to_chat(target, span_warning("Você não é capaz de ativar\the [src] Mais!"))
 
 	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
 	if(get_atom_on_turf(src, /mob) != user)
 		if(user == target)
-			to_chat(user, span_warning("\The [src]Não está mais em sua posse!"))
+			to_chat(user, span_warning("\The [src] Não está mais em sua posse!"))
 		else
-			to_chat(target, span_warning("\The [src]Não está mais na posse de[user]!"))
+			to_chat(target, span_warning("\The [src] Não está mais na posse de [user]!"))
 		return
 
 	// If the player is using it on themselves, we've got some logic to deal with.
@@ -89,7 +89,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		// The item should be on the user or in the user's inventory somewhere.
 		// However, if they're not holding it, it may be in a pocket? In a backpack? Who knows! Still, they can't just drop it to the floor anymore...
 		if(!user.get_held_index_of_item(src))
-			to_chat(user, span_warning("Você tenta cair\the [src]Mas é tarde demais! Não está mais em suas mãos! Prepare-se para consequências imprevistas..."))
+			to_chat(user, span_warning("Você tenta cair\the [src] Mas é tarde demais! Não está mais em suas mãos! Prepare-se para consequências imprevistas..."))
 		// Okay, so they HAVE to be holding it here, because it's in their hand from the above check. Try to drop the item and if it fails, oh dear...
 		else if(!user.dropItemToGround(src))
 			to_chat(user, span_warning("Você não consegue cair.\the [src]! Deve estar preso à sua mão de alguma forma! Prepare-se para consequências imprevistas..."))
@@ -428,7 +428,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	// Turns out giving anyone who grabs a Hilbert's Hotel a free, complementary warp whistle is probably bad.
 	// Let's gib the last person to have selected a room number in it.
 	if(unforeseen_consequences)
-		to_chat(unforeseen_consequences, span_warning("\The [H]Começa a ressoar. Forçá-lo a entrar em si mesmo induz um paradoxo do espaço azul, violentamente destruindo seu corpo."))
+		to_chat(unforeseen_consequences, span_warning("\The [H] Começa a ressoar. Forçá-lo a entrar em si mesmo induz um paradoxo do espaço azul, violentamente destruindo seu corpo."))
 		unforeseen_consequences.investigate_log("has been gibbed by using [H] while inside of it.", INVESTIGATE_DEATHS)
 		unforeseen_consequences.gib(DROP_ALL_REMAINS)
 
@@ -441,7 +441,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 
 	log_game("[H] entered itself. Moving it to [loc_name(targetturf)].")
 	message_admins("[H] entered itself. Moving it to [ADMIN_VERBOSEJMP(targetturf)].")
-	H.visible_message(span_danger("[H]quase implode sobre si mesmo, mas rapidamente se recupera, atirando em um ponto aleatório no espaço!"))
+	H.visible_message(span_danger("[H] quase implode sobre si mesmo, mas rapidamente se recupera, atirando em um ponto aleatório no espaço!"))
 	H.forceMove(targetturf)
 
 /area/misc/hilbertshotel/Exited(atom/movable/gone, direction)

@@ -79,9 +79,9 @@
 	var/obj/item/organ/removing_organ = pick(removable_organs)
 
 	if (carbon_owner.vomit(vomit_flags = VOMIT_CATEGORY_BLOOD))
-		carbon_owner.visible_message(span_boldwarning("[carbon_owner]Vomite para fora.[carbon_owner.p_their()] [removing_organ]"))
+		carbon_owner.visible_message(span_boldwarning("[carbon_owner] Vomite para fora.[carbon_owner.p_their()] [removing_organ]"))
 	else
-		carbon_owner.visible_message(span_boldwarning("[carbon_owner]'s[removing_organ]Rasga-se de[carbon_owner.p_their()]Baú!"))
+		carbon_owner.visible_message(span_boldwarning("[carbon_owner]'s [removing_organ] Rasga-se de [carbon_owner.p_their()] Baú!"))
 
 	removing_organ.Remove(carbon_owner)
 

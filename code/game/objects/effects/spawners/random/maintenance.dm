@@ -21,7 +21,7 @@
 
 /obj/effect/spawner/random/maintenance/examine(mob/user)
 	. = ..()
-	. += span_info("Este desova tem uma contagem de saques eficaz de[get_effective_lootcount()].")
+	. += span_info("Este desova tem uma contagem de saques eficaz de [get_effective_lootcount()].")
 
 /obj/effect/spawner/random/maintenance/Initialize(mapload)
 	switch(loot_table)

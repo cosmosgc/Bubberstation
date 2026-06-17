@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 	report += printplayerlist(members)
 
 	if(objectives.len)
-		report += span_header("Team had following objectives:")
+		report += span_header("A equipe tinha os seguintes objetivos:")
 		var/win = TRUE
 		var/objective_count = 1
 		for(var/datum/objective/objective as anything in objectives)

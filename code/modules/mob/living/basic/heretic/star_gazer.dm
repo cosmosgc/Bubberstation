@@ -1,6 +1,6 @@
 /mob/living/basic/heretic_summon/star_gazer
 	name = "\improper Star Gazer"
-	desc = "A creature that has been tasked to watch over the stars."
+	desc = "Uma criatura que foi incumbida de cuidar das estrelas."
 	icon = 'icons/mob/nonhuman-player/96x96eldritch_mobs.dmi'
 	icon_state = "star_gazer"
 	icon_living = "star_gazer"
@@ -102,7 +102,7 @@
 		ignore_category = POLL_IGNORE_HERETIC_MONSTER,
 		alert_pic = mutable_appearance('icons/effects/eldritch.dmi', "cosmic_diamond"),
 		jump_target = src,
-		role_name_text = "star gazer",
+		role_name_text = "Estrelinha",
 		amount_to_pick = 1
 	)
 	if(chosen_ghost)
@@ -141,7 +141,7 @@
 
 /datum/action/cooldown/recall_stargazer
 	name = "Seek master"
-	desc = "Teleports you to your master"
+	desc = "Teletransporta você para seu mestre."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -160,8 +160,8 @@
 
 /datum/action/cooldown/spell/stargazer_laser
 	name = "Star Gaze"
-	desc = "Generates a massive death beam that eradicates everything in it's path. \
-			Has it's own gravitational pull, sucking in new victims."
+	desc = "Gera um enorme raio de morte que erradica tudo em seu caminho.\
+Tem sua própria força gravitacional, sugando novas vítimas."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -369,10 +369,10 @@
 					living_victim.visible_message(
 						span_danger("You see [living_victim] engulfed in the scorching wrath of the cosmos. \
 							For a moment, you see their silhouette flail in agony before fading to mere atoms."),
-						span_boldbig(span_hypnophrase("THE POWER OF THE COSMOS ITSELF POURS OUT OVER YOUR FORM. \
-							WAVES OF HEAT LATCH ONTO YOUR BODY, PULLING IT APART AT THE SEAMS. \
-							YOUR TOTAL ANNIHILATION TAKES ONLY A MOMENT BEFORE YOU ARE REDUCED BACK TO WHAT YOU ALWAYS WERE. \
-							MOTES OF MERE DUST..."))
+						span_boldbig(span_hypnophrase("O poder dos Cósmos se espalha sobre sua forma.\
+As ondas de calor vigiam seu corpo, empurrando-o para o lado das costuras.\
+Sua total aniquilação leva apenas um momento antes de você ser reduzido de volta ao que você sempre foi.\
+Motes de mero pó..."))
 						)
 					living_victim.dust()
 				living_victim.emote("scream")

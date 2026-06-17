@@ -35,7 +35,7 @@
  */
 /obj/machinery/vending
 	name = "\improper Vendomat"
-	desc = "A generic vending machine."
+	desc = "Uma máquina de venda genérica."
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "generic"
 	abstract_type = /obj/machinery/vending
@@ -420,7 +420,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "product lock disabled")
+	balloon_alert(user, "Bloqueio de produto desativado")
 	return TRUE
 
 

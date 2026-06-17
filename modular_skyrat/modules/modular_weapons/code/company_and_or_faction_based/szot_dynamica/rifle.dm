@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/lanca
 	name = "\improper Lanca Battle Rifle"
-	desc = "A relatively compact, long barreled bullpup battle rifle chambered for .310 Strilka."
+	desc = "Um rifle de batalha relativamente compacto, longo e canoso, com câmara de Strilka .310."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_48.dmi'
 	icon_state = "lanca"
@@ -49,7 +49,7 @@
 
 /obj/item/gun/ballistic/automatic/lanca/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/lanca/examine_more(mob/user)
 	. = ..()
@@ -75,8 +75,8 @@
 
 /obj/item/gun/ballistic/automatic/wylom
 	name = "\improper Wyłom Anti-Materiel Rifle"
-	desc = "A massive, outdated beast of an anti materiel rifle that was once in use by CIN military forces. Fires the devastating .60 Strela caseless round, \
-		the massively overperforming penetration of which being the reason this weapon was discontinued."
+	desc = "Uma besta massiva e desatualizada de um rifle anti materiel que já foi usado pelas forças militares do CIN. Dispara o devastador .60 Strela sem caso,\
+A penetração super-performante da qual foi a razão pela qual esta arma foi descontinuada."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_64.dmi'
 	base_pixel_x = -16 // This baby is 64 pixels wide
 	pixel_x = -16
@@ -112,7 +112,7 @@
 
 /obj/item/gun/ballistic/automatic/wylom/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/wylom/examine_more(mob/user)
 	. = ..()

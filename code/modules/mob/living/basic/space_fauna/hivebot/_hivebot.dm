@@ -1,6 +1,6 @@
 /mob/living/basic/hivebot
 	name = "hivebot"
-	desc = "A small robot."
+	desc = "Um robô pequeno."
 	icon = 'icons/mob/simple/hivebot.dmi'
 	icon_state = "basic"
 	icon_living = "basic"
@@ -27,7 +27,7 @@
 	faction = list(FACTION_HIVEBOT)
 	combat_mode = TRUE
 	speech_span = SPAN_ROBOT
-	death_message = "blows apart!"
+	death_message = "Vai pelos ares!"
 
 	habitable_atmos = null
 	minimum_survivable_temperature = TCMB
@@ -53,7 +53,7 @@
 
 /mob/living/basic/hivebot/range
 	name = "hivebot"
-	desc = "A smallish robot, this one is armed!"
+	desc = "Um robô pequeno, este está armado!"
 	icon_state = "ranged"
 	icon_living = "ranged"
 	icon_dead = "ranged"
@@ -73,7 +73,7 @@
 	icon_state = "strong"
 	icon_living = "strong"
 	icon_dead = "strong"
-	desc = "A robot, this one is armed and looks tough!"
+	desc = "Um robô, este está armado e parece durão!"
 	health = 80
 	maxHealth = 80
 	ranged_attacker = TRUE
@@ -84,7 +84,7 @@
 	icon_state = "strong"
 	icon_living = "strong"
 	icon_dead = "strong"
-	desc = "A robot built for base upkeep, intended for use inside hivebot colonies."
+	desc = "Um robô construído para manutenção da base, destinado a ser usado dentro de colônias de hivebots."
 	health = 60
 	maxHealth = 60
 	gold_core_spawnable = HOSTILE_SPAWN
@@ -112,26 +112,26 @@
 
 /mob/living/basic/hivebot/mechanic/proc/repair_machine(obj/machinery/fixable)
 	if(fixable.get_integrity() >= fixable.max_integrity)
-		to_chat(src, span_warning("Diagnostics indicate that this machine is at peak integrity."))
+		to_chat(src, span_warning("Os diagnósticos indicam que esta máquina está em integridade máxima."))
 		return
 	if(!COOLDOWN_FINISHED(src, repair_cooldown))
-		balloon_alert(src, "recharging!")
+		balloon_alert(src, "Recarregando!")
 		return
 	fixable.repair_damage(fixable.max_integrity - fixable.get_integrity())
 	do_sparks(number = 3, cardinal_only = TRUE, source = fixable)
-	to_chat(src, span_warning("Repairs complete!"))
+	to_chat(src, span_warning("Reparos completos!"))
 	COOLDOWN_START(src, repair_cooldown, 50 SECONDS)
 
 /mob/living/basic/hivebot/mechanic/proc/repair_hivebot(mob/living/basic/bot_target)
 	if(bot_target.health >= bot_target.maxHealth)
-		to_chat(src, span_warning("Diagnostics indicate that this unit is at peak integrity."))
+		to_chat(src, span_warning("Os diagnósticos indicam que esta unidade está em integridade máxima."))
 		return
 	if(!COOLDOWN_FINISHED(src, repair_cooldown))
-		balloon_alert(src, "recharging!")
+		balloon_alert(src, "Recarregando!")
 		return
 	bot_target.revive(HEAL_ALL)
 	do_sparks(number = 3, cardinal_only = TRUE, source = bot_target)
-	to_chat(src, span_warning("Repairs complete!"))
+	to_chat(src, span_warning("Reparos completos!"))
 	COOLDOWN_START(src, repair_cooldown, 50 SECONDS)
 
 /obj/item/ammo_casing/hivebot

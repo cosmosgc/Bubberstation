@@ -58,12 +58,12 @@
 		return
 	vampire.adjust_blood_volume(-0.125 * seconds_per_tick)
 	if(vampire.get_blood_volume(apply_modifiers = TRUE) <= BLOOD_VOLUME_SURVIVE)
-		to_chat(vampire, span_danger("You ran out of blood!"))
+		to_chat(vampire, span_danger("Você ficou sem sangue!"))
 		vampire.investigate_log("has been dusted by a lack of blood (vampire).", INVESTIGATE_DEATHS)
 		vampire.dust()
 	var/area/A = get_area(vampire)
 	if(istype(A, /area/station/service/chapel))
-		to_chat(vampire, span_warning("You don't belong here!"))
+		to_chat(vampire, span_warning("Você não pertence aqui!"))
 		vampire.adjust_fire_loss(10 * seconds_per_tick)
 		vampire.adjust_fire_stacks(3 * seconds_per_tick)
 		vampire.ignite_mob()
@@ -101,21 +101,21 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bed",
 			SPECIES_PERK_NAME = "Coffin Brooding",
-			SPECIES_PERK_DESC = "Vampires can delay The Thirst and heal by resting in a coffin. So THAT'S why they do that!",
+			SPECIES_PERK_DESC = "Vampiros podem atrasar a sede e curar descansando em um caixão. Então é por isso que eles fazem isso!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "book-dead",
 			SPECIES_PERK_NAME = "Vampire Clans",
-			SPECIES_PERK_DESC = "Vampires belong to one of two clans - the Inoculated, and the Outcast. The Outcast \
-				don't follow many vampiric traditions, while the Inoculated are given unique names and flavor.",
+			SPECIES_PERK_DESC = "Vampiros pertencem a um dos dois clãs, os inoculados e os excluídos. O Excluído\
+Não siga muitas tradições vampíricas, enquanto os inoculados recebem nomes únicos e sabor.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "cross",
 			SPECIES_PERK_NAME = "Against God and Nature",
-			SPECIES_PERK_DESC = "Almost all higher powers are disgusted by the existence of \
-				Vampires, and entering the Chapel is essentially suicide. Do not do it!",
+			SPECIES_PERK_DESC = "Quase todos os poderes superiores são enojados pela existência de\
+Vampiros, e entrar na Capela é essencialmente suicídio. Não faça isso!",
 		),
 	)
 
@@ -129,11 +129,11 @@
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "tint",
 		SPECIES_PERK_NAME = "The Thirst",
-		SPECIES_PERK_DESC = "In place of eating, Vampires suffer from The Thirst. \
-			Thirst of what? Blood! Their tongue allows them to grab people and drink \
-			their blood, and they will die if they run out. As a note, it doesn't \
-			matter whose blood you drink, it will all be converted into your blood \
-			type when consumed.",
+		SPECIES_PERK_DESC = "Em vez de comer, os vampiros sofrem da Sede.\
+Sede de quê? Sangue! Sua língua lhes permite agarrar pessoas e beber.\
+Seu sangue, e eles vão morrer se eles correrem para fora. Como uma nota, ele não\
+Seja qual for o sangue que você beber, tudo será convertido em seu sangue.\
+tipo quando consumido.",
 	))
 
 	return to_add
@@ -156,7 +156,7 @@
 
 /obj/item/organ/tongue/vampire
 	name = "vampire teeth"
-	desc = "The only thing with which it's acceptable to say \"I will suck you dry!\""
+	desc = "A única coisa com a qual é aceitável dizer\"Vou te chupar até secar!\""
 	icon_state = "tongue_vampire"
 	actions_types = list(/datum/action/item_action/organ_action/vampire)
 	organ_traits = list(
@@ -189,7 +189,7 @@
 	user.visible_message(
 		span_notice("[user] stabs [used_item] with [user.p_their()] sharp teeth and drains its contents!"),
 		span_notice("You stab [used_item] with your sharp teeth and drain its contents!"),
-		span_hear("You hear a stabbing sound! ... Followed by slurping?"),
+		span_hear("Você ouve um som de esfaqueamento! Seguido por um deslize?"),
 		COMBAT_MESSAGE_RANGE,
 	)
 	INVOKE_ASYNC(src, PROC_REF(async_stab_bloodbag), user, used_item)
@@ -207,7 +207,7 @@
 
 /datum/action/item_action/organ_action/vampire
 	name = "Drain Victim"
-	desc = "Leech blood from any carbon victim you are passively grabbing."
+	desc = "Sangue de sangue de qualquer vítima de carbono que esteja pegando passivamente."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "drain_victim"
 	background_icon_state = "bg_vampire"
@@ -219,7 +219,7 @@
 	var/mob/living/carbon/user = owner
 	var/obj/item/organ/tongue/vampire/licker_drinker = target
 	if(!COOLDOWN_FINISHED(licker_drinker, drain_cooldown))
-		to_chat(user, span_warning("You just drained blood, wait a few seconds!"))
+		to_chat(user, span_warning("Acabou de drenar sangue, espere alguns segundos!"))
 		return FALSE
 
 	if(!iscarbon(user.pulling))
@@ -227,10 +227,10 @@
 
 	var/mob/living/carbon/victim = user.pulling
 	if(user.get_blood_volume() >= BLOOD_VOLUME_MAXIMUM)
-		to_chat(user, span_warning("You're already full!"))
+		to_chat(user, span_warning("Você já está cheio!"))
 		return FALSE
 	if(victim.stat == DEAD)
-		to_chat(user, span_warning("You need a living victim!"))
+		to_chat(user, span_warning("Você precisa de uma vítima viva!"))
 		return FALSE
 	var/blood_name = LOWER_TEXT(user.get_bloodtype()?.get_blood_name())
 	if(!victim.get_blood_volume() || victim.get_blood_reagent() != user.get_blood_reagent())
@@ -252,7 +252,7 @@
 		return FALSE
 
 	victim.show_message(span_danger("[user] is draining your blood!"))
-	to_chat(user, span_notice("You drain some blood!"))
+	to_chat(user, span_notice("Você drena sangue!"))
 	playsound(user, 'sound/items/drink.ogg', 30, TRUE, -2)
 
 	// Since we adjust the user first, we need to take the victim's blood volume into account.
@@ -270,7 +270,7 @@
 /obj/item/organ/heart/vampire
 	name = "vampire heart"
 	icon_state = "heart_vampire"
-	desc = "Some guy stabbed his brother 6,000 years ago so now you have this."
+	desc = "Um cara esfaqueou o irmão há 6 mil anos, então agora você tem isso."
 
 #undef VAMPIRES_PER_HOUSE
 #undef VAMP_DRAIN_AMOUNT

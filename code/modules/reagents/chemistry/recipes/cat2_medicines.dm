@@ -5,7 +5,7 @@
 /datum/chemical_reaction/medicine/helbital
 	results = list(/datum/reagent/medicine/c2/helbital = 3)
 	required_reagents = list(/datum/reagent/consumable/sugar = 1, /datum/reagent/fluorine = 1, /datum/reagent/carbon = 1)
-	mix_message = "The mixture turns into a thick, yellow powder."
+	mix_message = "A mistura se transforma em um pó amarelo espesso."
 	//FermiChem vars:
 	required_temp = 250
 	optimal_temp = 1000
@@ -155,7 +155,7 @@
 	if(off_cooldown(holder, equilibrium, 2, "hercuri_freeze"))
 		return
 	playsound(holder.my_atom, 'sound/effects/magic/ethereal_exit.ogg', 50, 1)
-	holder.my_atom.visible_message("The reaction frosts over, releasing its chilly contents!")
+	holder.my_atom.visible_message("A reação congela, libertando seu conteúdo frio!")
 	var/radius = max((equilibrium.step_target_vol/50), 1)
 	freeze_radius(holder, equilibrium, 200, radius, 60 SECONDS) //drying agent exists
 	explode_shockwave(holder, equilibrium, sound_and_text = FALSE)
@@ -167,7 +167,7 @@
 	results = list(/datum/reagent/medicine/c2/convermol = 3)
 	required_reagents = list(/datum/reagent/hydrogen = 1, /datum/reagent/fluorine = 1, /datum/reagent/fuel/oil = 1)
 	required_temp = 370
-	mix_message = "The mixture rapidly turns into a dense pink liquid."
+	mix_message = "A mistura rapidamente se transforma em um denso líquido rosa."
 	optimal_temp = 420
 	overheat_temp = 570 //Ash will be created before this - so it's pretty rare that overheat is actually triggered
 	optimal_ph_min = 3.045 //Rigged to blow once without oxygen
@@ -210,7 +210,7 @@
 	results = list(/datum/reagent/medicine/c2/tirimol = 5)
 	required_reagents = list(/datum/reagent/nitrogen = 3, /datum/reagent/acetone = 2)
 	required_catalysts = list(/datum/reagent/toxin/acid = 1, /datum/reagent/oxygen = 1)
-	mix_message = "The mixture turns into a tired reddish pink liquid."
+	mix_message = "A mistura se transforma em um líquido rosa avermelhado cansado."
 	optimal_temp = 900
 	overheat_temp = 720
 	optimal_ph_min = 5
@@ -246,7 +246,7 @@
 /datum/chemical_reaction/medicine/seiver
 	results = list(/datum/reagent/medicine/c2/seiver = 3)
 	required_reagents = list(/datum/reagent/nitrogen = 1, /datum/reagent/potassium = 1, /datum/reagent/aluminium = 1)
-	mix_message = "The mixture gives out a goopy slorp."
+	mix_message = "A mistura dá um slorp goopy."
 	is_cold_recipe = TRUE
 	required_temp = 320
 	optimal_temp = 280
@@ -266,7 +266,7 @@
 /datum/chemical_reaction/medicine/multiver
 	results = list(/datum/reagent/medicine/c2/multiver = 2)
 	required_reagents = list(/datum/reagent/ash = 1, /datum/reagent/consumable/salt = 1)
-	mix_message = "The mixture yields a fine black powder."
+	mix_message = "A mistura produz um fino pó preto."
 	required_temp = 380
 	optimal_temp = 400
 	overheat_temp = 410

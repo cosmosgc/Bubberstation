@@ -1,6 +1,6 @@
 /obj/item/ammo_box/magazine/m12g
 	name = "shotgun magazine (12g buckshot shells)"
-	desc = "A drum magazine of shotgun shells, suitable for the Bulldog combat shotgun."
+	desc = "Uma revista de tambores de balas de espingarda, adequada para a espingarda de combate Bulldog."
 	icon_state = "m12gb"
 	base_icon_state = "m12gb"
 	ammo_type = /obj/item/ammo_casing/shotgun/buckshot/milspec
@@ -50,8 +50,8 @@
 
 /obj/item/ammo_box/magazine/m12g/donk
 	name = "shotgun magazine (12g Donk Co. 'Donk Spike' flechette)"
-	desc = "A drum magazine of shotgun shells, suitable for the Bulldog combat shotgun. It is covered in Donk Co. scratch-and-sniff \
-		stickers. You're not sure you want to try and get a whiff..."
+	desc = "Uma revista de tambores de balas de espingarda, adequada para a espingarda de combate Bulldog. Está coberto com Donk Co. Scratch-and-sniff\
+adesivos. Não tem certeza se quer tentar cheirar..."
 	icon_state = "m12gd"
 	base_icon_state = "m12gd"
 	ammo_type = /obj/item/ammo_casing/shotgun/flechette/donk
@@ -63,7 +63,7 @@
 
 	var/mob/living/carbon/human/human_sniffer = user
 	if(!HAS_TRAIT(human_sniffer, TRAIT_ANOSMIA) && human_sniffer.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING|FORBID_TELEKINESIS_REACH))
-		. += span_notice("You scratch and sniff the stickers.")
-		. += span_warning("<i>Oh god, where did they pull this from, a landfill?</i>")
+		. += span_notice("Você coça e cheira os adesivos.")
+		. += span_warning("<i>Oh Deus, de onde tiraram isso, um aterro?</i>")
 		human_sniffer.add_mood_event("stink-pocket", /datum/mood_event/disgusted)
 

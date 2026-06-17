@@ -4,7 +4,7 @@
 	weight = 15
 	min_players = 20
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Emps the telecomm processors, scrambling radio speech. Might blow up a few."
+	description = "Esvazia os processadores de telecomunicações, esbarra o discurso de rádio. Pode explodir alguns."
 
 /datum/round_event/processor_overload
 	announce_when = 1

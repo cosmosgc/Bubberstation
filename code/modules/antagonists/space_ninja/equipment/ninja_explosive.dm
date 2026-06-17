@@ -8,7 +8,7 @@
  */
 /obj/item/grenade/c4/ninja
 	name = "spider charge"
-	desc = "A modified C-4 charge supplied by the Spider Clan. It has great explosive power, but is keyed to only work in one specific area."
+	desc = "Uma carga C-4 modificada fornecida pelo Clã Aranha. Ele tem grande poder explosivo, mas é a chave para apenas trabalhar em uma área específica."
 	icon_state = "ninja-explosive0"
 	inhand_icon_state = "ninja-explosive"
 	boom_sizes = list(4, 8, 12)
@@ -27,7 +27,7 @@
 	if (!IS_SPACE_NINJA(user))
 		return
 	if (isnull(detonation_area))
-		. += span_notice("This one was provided with no destination set, and cannot be used.")
+		. += span_notice("Este foi fornecido sem destino definido, e não pode ser usado.")
 	else
 		. += span_notice("This device will only function in [detonation_area].")
 
@@ -89,10 +89,10 @@
  */
 /obj/item/grenade/c4/ninja/proc/check_loc(atom/bomb_target, mob/user)
 	if(isnull(detonation_area))
-		balloon_alert(user, "no location set!")
+		balloon_alert(user, "Sem localização definida!")
 		return FALSE
 	if(get_area(bomb_target) != detonation_area)
 		if (!active)
-			balloon_alert(user, "wrong location!")
+			balloon_alert(user, "Localização errada!")
 		return FALSE
 	return TRUE

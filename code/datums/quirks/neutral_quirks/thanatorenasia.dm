@@ -1,13 +1,13 @@
 /datum/quirk/death_dnr_poll
 	name = "Thanatorenasia"
-	desc = "Whenever you die and elect to \"Do Not Resuscitate\", your body may be taken over by another ghost upon revival - \
-		giving it an entirely new personality and fresh set of memories."
+	desc = "Sempre que você morrer e escolher\"Não ressuscite\", seu corpo pode ser tomado por outro fantasma após reavivamento -\
+dando-lhe uma nova personalidade e novas memórias."
 	icon = FA_ICON_ZAP
 	value = 0
-	medical_record_text = "Patient has Thanatorenasia - in the event of their death and resuscitation, \
-		they may experience memory loss or a change in personality."
-	medical_symptom_text = "In the event of the patient's death and resuscitation, \
-		they may experience memory loss or a change in personality."
+	medical_record_text = "O paciente tem Tanatorenasia no caso de sua morte e ressuscitação,\
+Eles podem sentir perda de memória ou uma mudança de personalidade."
+	medical_symptom_text = "Em caso de morte e ressuscitação do paciente,\
+Eles podem sentir perda de memória ou uma mudança de personalidade."
 	quirk_flags = QUIRK_NO_TRANSFER
 
 	// Used the the spawners menu to describe the quirk

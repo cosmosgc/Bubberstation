@@ -2,7 +2,7 @@
 
 /obj/structure/closet/crate/necropolis
 	name = "necropolis chest"
-	desc = "It's watching you closely."
+	desc = "Está te observando de perto."
 	icon_state = "necrocrate"
 	base_icon_state = "necrocrate"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -11,7 +11,7 @@
 	can_weld_shut = FALSE
 
 /obj/structure/closet/crate/necropolis/tendril
-	desc = "It's watching you suspiciously. You need a skeleton key to open it."
+	desc = "Está te observando de forma suspeita. Precisa de uma chave para abri-la."
 	integrity_failure = 0 //prevents bust_open from firing
 	/// var to check if it got opened by a key
 	var/spawned_loot = FALSE
@@ -25,7 +25,7 @@
 
 	spawned_loot = TRUE
 	qdel(item)
-	to_chat(user, span_notice("You disable the magic lock, revealing the loot."))
+	to_chat(user, span_notice("Você desativa a fechadura mágica, revelando o saque."))
 
 /obj/structure/closet/crate/necropolis/tendril/before_open(mob/living/user, force)
 	. = ..()
@@ -33,7 +33,7 @@
 		return FALSE
 
 	if(!broken && !force && !spawned_loot)
-		balloon_alert(user, "its locked!")
+		balloon_alert(user, "Está trancada!")
 		return FALSE
 
 	return TRUE
@@ -68,7 +68,7 @@
 
 /obj/structure/closet/crate/necropolis/bubblegum
 	name = "\improper Ancient Sarcophagus"
-	desc = "Once guarded by the King of Demons, this sarcophagus contains the relics of an ancient soldier."
+	desc = "Uma vez guardado pelo Rei dos Demônios, este sarcófago contém as relíquias de um antigo soldado."
 	icon_state = "necro_bubblegum"
 	base_icon_state = "necro_bubblegum"
 	lid_icon_state = "necro_bubblegum_lid"
@@ -132,7 +132,7 @@
 
 /obj/item/skeleton_key
 	name = "skeleton key"
-	desc = "An artifact usually found in the hands of the natives of lavaland, which NT now holds a monopoly on."
+	desc = "Um artefato geralmente encontrado nas mãos dos nativos de lavalândia, no qual o NT agora detém o monopólio."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "skeleton_key"
 	w_class = WEIGHT_CLASS_SMALL

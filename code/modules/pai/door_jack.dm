@@ -19,7 +19,7 @@
 			return TRUE
 		if(PAI_DOOR_JACK_CANCEL)
 			QDEL_NULL(hacking_cable)
-			visible_message(span_notice("The cable retracts into the pAI."))
+			visible_message(span_notice("O cabo se retrai para o IAP."))
 			return TRUE
 	return FALSE
 
@@ -38,12 +38,12 @@
 	RegisterSignal(hacking_cable, COMSIG_QDELETING, PROC_REF(on_hacking_cable_del))
 	var/mob/living/carbon/hacker = get_holder()
 	if(hacker?.put_in_hands(hacking_cable)) //important to double check since get_holder can return non-null values that aren't carbons.
-		hacker.visible_message(span_notice("A port on [src] opens to reveal a cable, which [hacker] quickly grabs."), span_notice("A port on [src] opens to reveal a cable, which you quickly grab."), span_hear("You hear the soft click of a plastic component and manage to catch the falling cable."))
+		hacker.visible_message(span_notice("A port on [src] opens to reveal a cable, which [hacker] quickly grabs."), span_notice("A port on [src] opens to reveal a cable, which you quickly grab."), span_hear("Você ouve o clique suave de um componente plástico e consegue pegar o cabo caindo."))
 		track_pai()
 		track_thing(hacking_cable)
 		return TRUE
 	hacking_cable.forceMove(drop_location())
-	hacking_cable.visible_message(message = span_notice("A port on [src] opens to reveal a cable, which promptly falls to the floor."), blind_message = span_hear("You hear the soft click of a plastic component fall to the ground."))
+	hacking_cable.visible_message(message = span_notice("A port on [src] opens to reveal a cable, which promptly falls to the floor."), blind_message = span_hear("Você ouve o clique suave de um componente plástico cair no chão."))
 	track_pai()
 	track_thing(hacking_cable)
 	return TRUE
@@ -89,7 +89,7 @@
  * Handles deleting the hacking cable and notifying the user.
  */
 /mob/living/silicon/pai/proc/retract_cable()
-	balloon_alert(src, "cable retracted")
+	balloon_alert(src, "Cabo retraído")
 	QDEL_NULL(hacking_cable)
 	return TRUE
 
@@ -105,13 +105,13 @@
 	if(!hacking_cable)
 		return FALSE
 	if(!hacking_cable.hacking_machine)
-		balloon_alert(src, "nothing connected")
+		balloon_alert(src, "Nada conectado.")
 		return FALSE
 	playsound(src, 'sound/machines/airlock/airlock_alien_prying.ogg', 50, TRUE)
 	balloon_alert(src, "overriding...")
 	// Now begin hacking
 	if(!do_after(src, 15 SECONDS, hacking_cable.hacking_machine, timed_action_flags = NONE,	progress = TRUE))
-		balloon_alert(src, "failed! retracting...")
+		balloon_alert(src, "Falhou! Retraindo...")
 		QDEL_NULL(hacking_cable)
 		return FALSE
 	var/obj/machinery/door/door = hacking_cable.hacking_machine

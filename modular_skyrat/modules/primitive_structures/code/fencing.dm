@@ -2,7 +2,7 @@
 
 /obj/structure/railing/wooden_fencing
 	name = "wooden fence"
-	desc = "A basic wooden fence meant to prevent people like you either in or out of somewhere."
+	desc = "Uma cerca de madeira para impedir pessoas como você de entrar ou sair de algum lugar."
 	icon = 'modular_skyrat/modules/primitive_structures/icons/wooden_fence.dmi'
 	icon_state = "fence"
 	layer = BELOW_OBJ_LAYER // I think this is the default but lets be safe?
@@ -31,7 +31,7 @@
 
 /obj/structure/railing/wooden_fencing/gate
 	name = "wooden fence gate"
-	desc = "A basic wooden gate meant to prevent animals like you escaping."
+	desc = "Um portão de madeira básico para evitar que animais como você escapem."
 	icon_state = "gate"
 	random_icons = FALSE
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 5)
@@ -47,7 +47,7 @@
 /// Proc that checks if the gate is open or not, then closes/opens the gate repsectively
 /obj/structure/railing/wooden_fencing/gate/proc/open_or_close(mob/user)
 	if(!user.can_interact_with(src))
-		balloon_alert(user, "can't interact")
+		balloon_alert(user, "Não posso interagir.")
 		return
 	opened = !opened
 	set_density(!opened)

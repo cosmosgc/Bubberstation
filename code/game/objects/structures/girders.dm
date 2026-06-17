@@ -3,7 +3,7 @@
 	name = "girder"
 	base_icon_state = "girder"
 	icon_state = "girder-0"
-	desc = "A large structural assembly made out of metal; It requires a layer of iron before it can be considered a wall."
+	desc = "Um grande conjunto estrutural feito de metal; Requer uma camada de ferro antes que possa ser considerada uma parede."
 	anchored = TRUE
 	density = TRUE
 	max_integrity = 200
@@ -38,20 +38,20 @@
 	. = ..()
 	switch(state)
 		if(GIRDER_REINF)
-			. += span_notice("The support struts are <b>screwed</b> in place.")
+			. += span_notice("Os suportes são<b>Está ferrado.</b>No lugar.")
 		if(GIRDER_REINF_STRUTS)
-			. += span_notice("The support struts are <i>unscrewed</i> and the inner <b>grille</b> is intact.")
+			. += span_notice("Os suportes são<i>Desenroscado</i>e o interior<b>Grelha</b>está intacto.")
 		if(GIRDER_NORMAL)
 			if(can_displace)
-				. += span_notice("The bolts are <b>wrenched</b> in place.")
+				. += span_notice("Os parafusos são<b>Estrangulada.</b>No lugar.")
 		if(GIRDER_DISPLACED)
 			. += span_notice("The bolts are <i>loosened</i>, but the <b>screws</b> are holding [src] together.")
 		if(GIRDER_TRAM)
 			. += span_notice("[src] is designed for tram usage. Deconstructed with a screwdriver!")
 	if (can_weld_apart)
-		. += span_notice("The frame looks weak enough to be <b>welded</b> apart.")
+		. += span_notice("O quadro parece fraco o suficiente para ser<b>soldado</b>Separados.")
 	else
-		. += span_notice("The frame could be sliced apart with a <b>plasmacutter</b>.")
+		. += span_notice("A moldura pode ser cortada com um<b>Cutter de plasma</b>.")
 
 /obj/structure/girder/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (user.combat_mode)
@@ -92,7 +92,7 @@
 /obj/structure/girder/wrench_act(mob/user, obj/item/tool)
 	. = ITEM_INTERACT_BLOCKING
 	if (!can_displace)
-		balloon_alert(user, "no bolts!")
+		balloon_alert(user, "Sem parafusos!")
 		return
 	switch (state)
 		if (GIRDER_NORMAL)
@@ -108,7 +108,7 @@
 	. = ITEM_INTERACT_BLOCKING
 	// Plasmacutters can always slice apart girders.
 	if (!can_weld_apart && !istype(tool, /obj/item/gun/energy/plasmacutter))
-		balloon_alert(user, "can't weld apart!")
+		balloon_alert(user, "Não podemos nos separar!")
 		return
 	if (try_construction_step(user, tool, 4 SECONDS, start_alert = "slicing apart..."))
 		deconstruct(disassembled = TRUE)
@@ -129,7 +129,7 @@
 	if (!isnull(req_state) && req_state != state)
 		return FALSE
 	if (req_floor && !isfloorturf(loc))
-		balloon_alert(user, "needs a floor!")
+		balloon_alert(user, "Precisa de um chão!")
 		return FALSE
 	return TRUE
 
@@ -187,7 +187,7 @@
 
 /obj/structure/girder/tram
 	name = "tram girder"
-	desc = "Titanium framework to construct tram walls. Can be plated with <b>titanium glass</b> or other wall materials."
+	desc = "Estrutura de titânio para construir paredes de bonde. Pode ser banhado com<b>vidro de titânio</b>ou outros materiais de parede."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "tram"
 	state = GIRDER_TRAM
@@ -204,7 +204,7 @@
 
 /obj/structure/girder/cult
 	name = "runed girder"
-	desc = "Framework made of a strange and shockingly cold metal. It doesn't seem to have any bolts."
+	desc = "Framework feito de um metal estranho e chocantemente frio. Não parece ter parafusos."
 	icon = 'icons/obj/antags/cult/structures.dmi'
 	icon_state= "cultgirder"
 	can_displace = FALSE
@@ -251,7 +251,7 @@
 
 /obj/structure/girder/bronze
 	name = "wall gear"
-	desc = "A girder made out of sturdy bronze, made to resemble a gear."
+	desc = "Uma viga feita de bronze resistente, feita para parecer uma engrenagem."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "wall_gear"
 	can_displace = FALSE

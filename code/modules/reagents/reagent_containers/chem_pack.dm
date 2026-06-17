@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/chem_pack
 	name = "intravenous medicine bag"
-	desc = "A plastic pressure bag, or 'chem pack', for IV administration of drugs. It is fitted with a thermosealing strip."
+	desc = "Um saco de pressão plástico, ou \"pacote químico\", para administração intravenosa de drogas. Está equipado com uma faixa termosselante."
 	icon = 'icons/obj/medical/bloodpack.dmi'
 	icon_state = "chempack"
 	volume = 100
@@ -13,11 +13,11 @@
 
 /obj/item/reagent_containers/chem_pack/click_alt(mob/living/user)
 	if(reagents.flags & SEALED_CONTAINER)
-		balloon_alert(user, "already sealed!")
+		balloon_alert(user, "Já selada!")
 		return CLICK_ACTION_BLOCKING
 
 	if(iscarbon(user) && (HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50)))
-		to_chat(user, span_warning("Uh... whoops! You accidentally spill the content of the bag onto yourself."))
+		to_chat(user, span_warning("Uh... whoops! Você acidentalmente derramou o conteúdo do saco em si mesmo."))
 		splash_reagents(user, user, allow_closed_splash = TRUE)
 		return CLICK_ACTION_BLOCKING
 
@@ -28,6 +28,6 @@
 /obj/item/reagent_containers/chem_pack/examine()
 	. = ..()
 	if(reagents.flags & SEALED_CONTAINER)
-		. += span_notice("The bag is sealed shut.")
+		. += span_notice("A bolsa está fechada.")
 	else
-		. += span_notice("Alt-click to seal it.")
+		. += span_notice("Alt-click para selar.")

@@ -1,7 +1,7 @@
 // Badges, pins, and other very small items that slot onto a shirt.
 /obj/item/clothing/accessory/lawyers_badge
 	name = "attorney's badge"
-	desc = "Fills you with the conviction of JUSTICE. Lawyers tend to want to show it to everyone they meet."
+	desc = "Te enche com a convicção da Justiça. Advogados tendem a mostrar para todos que conhecem."
 	icon_state = "lawyerbadge"
 
 /obj/item/clothing/accessory/lawyers_badge/Initialize(mapload)
@@ -24,11 +24,11 @@
 	SIGNAL_HANDLER
 
 	ASYNC
-		source.say("Objection!!", spans = list(SPAN_YELL), forced = "[src]")
+		source.say("Protesto!", spans = list(SPAN_YELL), forced = "[src]")
 
 /obj/item/clothing/accessory/clown_enjoyer_pin
 	name = "\improper Clown Pin"
-	desc = "A pin to show off your appreciation for clowns and clowning!"
+	desc = "Um broche para mostrar seu apreço por palhaços e palhaços!"
 	icon_state = "clown_enjoyer_pin"
 
 /obj/item/clothing/accessory/clown_enjoyer_pin/can_attach_accessory(obj/item/clothing/under/attach_to, mob/living/user)
@@ -37,7 +37,7 @@
 		return
 	if(locate(/obj/item/clothing/accessory/mime_fan_pin) in attach_to.attached_accessories)
 		if(user)
-			attach_to.balloon_alert(user, "can't pick both sides!")
+			attach_to.balloon_alert(user, "Não posso escolher os dois lados!")
 		return FALSE
 	return TRUE
 
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/accessory/mime_fan_pin
 	name = "\improper Mime Pin"
-	desc = "A pin to show off your appreciation for mimes and miming!"
+	desc = "Um broche para mostrar seu apreço por mimes e mimes!"
 	icon_state = "mime_fan_pin"
 
 /obj/item/clothing/accessory/mime_fan_pin/can_attach_accessory(obj/item/clothing/under/attach_to, mob/living/user)
@@ -65,7 +65,7 @@
 		return
 	if(locate(/obj/item/clothing/accessory/clown_enjoyer_pin) in attach_to.attached_accessories)
 		if(user)
-			attach_to.balloon_alert(user, "can't pick both sides!")
+			attach_to.balloon_alert(user, "Não posso escolher os dois lados!")
 		return FALSE
 	return TRUE
 
@@ -84,7 +84,7 @@
 
 /obj/item/clothing/accessory/pocketprotector
 	name = "pocket protector"
-	desc = "Can protect your clothing from ink stains, but you'll look like a nerd if you're using one."
+	desc = "Pode proteger suas roupas de manchas de tinta, mas vai parecer um nerd se usar uma."
 	icon_state = "pocketprotector"
 
 /obj/item/clothing/accessory/pocketprotector/Initialize(mapload)
@@ -98,7 +98,7 @@
 
 	if(!isnull(attach_to.atom_storage))
 		if(user)
-			attach_to.balloon_alert(user, "not compatible!")
+			attach_to.balloon_alert(user, "Não é compatível!")
 		return FALSE
 	return TRUE
 
@@ -119,7 +119,7 @@
 
 /obj/item/clothing/accessory/dogtag
 	name = "Dogtag"
-	desc = "Can't wear a collar, but this is fine?"
+	desc = "Não pode usar colarinho, mas tudo bem?"
 	icon_state = "allergy"
 	w_class = WEIGHT_CLASS_TINY
 	attachment_slot = NONE // actually NECK but that doesn't make sense
@@ -164,7 +164,7 @@
 
 /obj/item/clothing/accessory/dogtag/allergy
 	name = "Allergy dogtag"
-	desc = "A dogtag with a listing of allergies."
+	desc = "Uma dogtag com uma lista de alergia."
 
 /obj/item/clothing/accessory/dogtag/allergy/Initialize(mapload, allergy_string)
 	. = ..()
@@ -215,7 +215,7 @@
 
 /obj/item/clothing/accessory/pride
 	name = "pride pin"
-	desc = "A Nanotrasen Diversity & Inclusion Center-sponsored holographic pin to show off your pride, reminding the crew of their unwavering commitment to equity, diversity, and inclusion!"
+	desc = "Um broche holográfico patrocinado pelo Centro de Diversidade e Inclusão Nanotrasen para mostrar seu orgulho, lembrando à tripulação seu compromisso inabalável com equidade, diversidade e inclusão!"
 	icon_state = "pride"
 	obj_flags = UNIQUE_RENAME
 
@@ -224,19 +224,19 @@
 
 /obj/item/clothing/accessory/deaf_pin
 	name = "deaf personnel pin"
-	desc = "Indicates that the wearer is deaf."
+	desc = "Indica que o usuário é surdo."
 	icon_state = "deaf_pin"
 
 ///Awarded for being dutiful and extinguishing the debt from the "Indebted" quirk.
 /obj/item/clothing/accessory/debt_payer_pin
 	name = "debt payer pin"
-	desc = "I've paid my debt and all I've got was this pin."
+	desc = "Eu paguei minha dívida e tudo o que tenho foi este broche."
 	icon_state = "debt_payer_pin"
 
 /// Self-identify as a dangerous subversive
 /obj/item/clothing/accessory/anti_sec_pin
 	name = "subversive pin"
-	desc = "A badge which loudly and proudly proclaims your hostility to the Nanotrasen Security Team, and authority in general."
+	desc = "Um distintivo que proclama em voz alta e orgulhosa sua hostilidade à Equipe de Segurança Nanotrasen, e autoridade em geral."
 	icon_state = "anti_sec"
 
 /obj/item/clothing/accessory/anti_sec_pin/Initialize(mapload)
@@ -268,7 +268,7 @@
 
 /obj/item/clothing/accessory/press_badge
 	name = "press badge"
-	desc = "A blue press badge that clearly identifies the wearer as a member of the media. While it signifies press affiliation, it does not grant any special privileges or rights no matter how much the wearer yells about it."
+	desc = "Um crachá azul que claramente identifica o usuário como membro da mídia. Embora signifique afiliação à imprensa, não concede privilégios ou direitos especiais, não importa o quanto o usuário grite sobre isso."
 	desc_controls = "Click person with it to show them it"
 	icon_state = "press_badge"
 	attachment_slot = NONE // actually NECK but that doesn't make sense
@@ -280,7 +280,7 @@
 /obj/item/clothing/accessory/press_badge/examine(mob/user)
 	. = ..()
 	if(!journalist_name || !press_name)
-		. += span_notice("Use it in hand to input information")
+		. += span_notice("Use-o na mão para inserir informações.")
 		return
 
 	. += span_notice("It belongs to <b>[journalist_name]</b>, <b>[press_name]</b>")

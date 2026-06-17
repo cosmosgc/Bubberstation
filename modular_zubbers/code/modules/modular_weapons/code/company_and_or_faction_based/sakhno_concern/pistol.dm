@@ -3,9 +3,9 @@
 
 /obj/item/gun/ballistic/derringer
 	name = "\improper Yinbi Derringer"
-	desc = "A very compact twin-barreled pistol, chambered in .310 strilka. \
-		Despite using a rifle cartridge, the short barrels leave a lot to \
-		be desired for ballistic performance and suffer from immense dropoff."
+	desc = "Uma pistola de cano duplo muito compacta, com .310.\
+Apesar de usar um cartucho de rifle, os barris curtos deixam muito para\
+ser desejado para o desempenho balístico e sofrer de imenso abandono."
 	icon = 'modular_zubbers/icons/obj/guns/sakhno_concern_guns32x.dmi'
 	icon_state = "derringer"
 	w_class = WEIGHT_CLASS_SMALL

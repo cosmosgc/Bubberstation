@@ -1,6 +1,6 @@
 /obj/item/book
 	name = "book"
-	desc = "Crack it open, inhale the musk of its pages, and learn something new."
+	desc = "Abra-a, inale o almíscar de suas páginas, e aprenda algo novo."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state ="book"
 	worn_icon_state = "book"
@@ -91,18 +91,18 @@
 /// Proc that checks if the user is capable of reading the book, for UI interactions and otherwise. Returns TRUE if they can, FALSE if they can't.
 /obj/item/book/proc/can_read_book(mob/living/user)
 	if(user.is_blind())
-		to_chat(user, span_warning("You are blind and can't read anything!"))
+		to_chat(user, span_warning("Você é cego e não sabe ler nada!"))
 		return FALSE
 
 	if(!user.can_read(src))
 		return FALSE
 
 	if(carved)
-		balloon_alert(user, "book is carved out!")
+		balloon_alert(user, "O livro está esculpido!")
 		return FALSE
 
 	if(!length(book_data.get_content()))
-		balloon_alert(user, "book is blank!")
+		balloon_alert(user, "O livro está em branco!")
 		return FALSE
 
 	return TRUE
@@ -141,13 +141,13 @@
 	if(!user.can_perform_action(src) || !user.can_write(tool, TRUE))
 		return FALSE
 	if(user.is_blind())
-		to_chat(user, span_warning("As you are trying to write on the book, you suddenly feel very stupid!"))
+		to_chat(user, span_warning("Como você está tentando escrever no livro, você de repente se sente muito estúpido!"))
 		return FALSE
 	if(unique)
-		to_chat(user, span_warning("These pages don't seem to take the ink well! Looks like you can't modify it."))
+		to_chat(user, span_warning("Estas páginas não parecem levar bem a tinta! Parece que você não pode modificá-lo."))
 		return FALSE
 	if(carved)
-		to_chat(user, span_warning("The book has been carved out! There is nothing to be vandalized."))
+		to_chat(user, span_warning("O livro foi esculpido! Não há nada para ser vandalizado."))
 		return FALSE
 	return TRUE
 
@@ -194,10 +194,10 @@
 /obj/item/book/proc/vandalize_title(mob/living/user, obj/item/tool)
 	var/newtitle = reject_bad_text(tgui_input_text(user, "Write a new title", "Book Title", max_length = 30))
 	if(!newtitle)
-		balloon_alert(user, "invalid input!")
+		balloon_alert(user, "Entrada inválida!")
 		return ITEM_INTERACT_BLOCKING
 	if(length_char(newtitle) > 30)
-		balloon_alert(user, "too long!")
+		balloon_alert(user, "Muito tempo!")
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
@@ -210,7 +210,7 @@
 /obj/item/book/proc/vandalize_contents(mob/living/user, obj/item/tool)
 	var/content = tgui_input_text(user, "Write your book's contents (HTML NOT allowed)", "Book Contents", max_length = MAX_PAPER_LENGTH, multiline = TRUE)
 	if(!content)
-		balloon_alert(user, "invalid input!")
+		balloon_alert(user, "Entrada inválida!")
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
@@ -222,7 +222,7 @@
 /obj/item/book/proc/vandalize_author(mob/living/user, obj/item/tool)
 	var/author = tgui_input_text(user, "Write the author's name", "Author Name", max_length = MAX_NAME_LEN)
 	if(!author)
-		balloon_alert(user, "invalid input!")
+		balloon_alert(user, "Entrada inválida!")
 		return ITEM_INTERACT_BLOCKING
 	if(!can_vandalize(user, tool))
 		return ITEM_INTERACT_BLOCKING
@@ -234,15 +234,15 @@
 /// Called when user clicks on the book with a carving utensil. Attempts to carve the book.
 /obj/item/book/proc/carving_act(mob/living/user, obj/item/tool)
 	if(carved)
-		balloon_alert(user, "already carved!")
+		balloon_alert(user, "Já esculpiram!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "carving out...")
+	balloon_alert(user, "Esculpir...")
 	if(!do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "carved out")
+	balloon_alert(user, "Esculpido.")
 	playsound(src, 'sound/effects/cloth_rip.ogg', vol = 75, vary = TRUE)
 	carve_out()
 	return ITEM_INTERACT_SUCCESS
@@ -261,7 +261,7 @@
 /// When designing a UI book you can send a "play_flip_sound" act to play the page turn sound
 /obj/item/tgui_book
 	name = "book"
-	desc = "Must be one of those new fangled electronic books."
+	desc = "Deve ser um daqueles novos livros eletrônicos."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state ="book"
 	worn_icon_state = "book"
@@ -303,9 +303,9 @@
 
 /obj/item/tgui_book/manual/dsm
 	name = "\improper SDSM-35" // 35 was picked based on the current edition plus the average years between edition divided by 500
-	desc = "The Space Diagnostic and Statistical Manual of Mental Disorders, \
-		a comprehensive book on all known mental disorders. \
-		On its 35th edition - though it's due for an update..."
+	desc = "O Manual de Diagnóstico Espacial e Estatística de Transtornos Mentais,\
+Um livro abrangente sobre todos os transtornos mentais conhecidos.\
+Na sua 35a edição, embora seja para uma atualização..."
 	icon_state = "book8"
 	ui_name = "DSMBook"
 
@@ -381,9 +381,9 @@
 
 /obj/item/tgui_book/manual/idc
 	name = "\improper IDC-27" // 27 was picked based on the current edition plus the average years between edition divided by 500
-	desc = "The Interplanetary Classification of Diseases, \
-		a comprehensive book on all known diseases and ailments. \
-		On its 27th edition - though it's due for an update..."
+	desc = "A Classificação Interplanetária de Doenças,\
+Um livro abrangente sobre todas as doenças e doenças conhecidas.\
+Em sua 27a edição, embora seja para uma atualização..."
 	icon_state = "book7"
 	ui_name = "IDCBook"
 

@@ -1,10 +1,10 @@
 ///NIFSoft Remover. This is mostly here so that security and antags have a way to remove NIFSofts from someome
 /obj/item/nifsoft_remover
 	name = "Lopland 'Wrangler' NIF-Cutter"
-	desc = "A small device that lets the user remove NIFSofts from a NIF user"
-	special_desc = "Given the relatively recent and sudden proliferation of NIFs, their use in crime both petty and organized has skyrocketed in recent years. \
-	The existence of nanomachine-based real-time burst communication that cannot be effectively monitored or hacked into has given most PMCs cause enough for concern \
-	to invent their own devices. This one is a 'Wrangler' model NIF-Cutter, used for crudely wiping programs directly off a user's Framework."
+	desc = "Um pequeno dispositivo que permite ao usuário remover NIFSofts de um usuário NIF"
+	special_desc = "Dada a relativamente recente e súbita proliferação de NIFs, seu uso no crime tanto mesquinho quanto organizado disparou nos últimos anos.\
+A existência de comunicações de explosão em tempo real baseadas em nanomáquinas que não podem ser monitoradas ou hackeadas efetivamente deu à maioria dos PMCs causa bastante preocupação\
+para inventar seus próprios dispositivos. Este é um modelo \"Wrangler\" NIF-Cutter, usado para limpar programas diretamente do Framework de um usuário."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "nifsoft_remover"
 
@@ -27,11 +27,11 @@
 
 	user.visible_message(span_warning("[user] starts to use [src] on [target_mob]"), span_notice("You start to use [src] on [target_mob]"))
 	if(!do_after(user, 5 SECONDS, target_mob))
-		balloon_alert(user, "removal cancelled!")
+		balloon_alert(user, "Remoção cancelada!")
 		return FALSE
 
 	if(!target_nif.remove_nifsoft(nifsoft_to_remove))
-		balloon_alert(user, "removal failed!")
+		balloon_alert(user, "A remoção falhou!")
 		return FALSE
 
 	to_chat(user, span_notice("You successfully remove [nifsoft_to_remove]."))
@@ -50,19 +50,19 @@
 
 /obj/item/nifsoft_remover/syndie
 	name = "Cybersun 'Scalpel' NIF-Cutter"
-	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk."
-	special_desc = "In the upper echelons of the corporate world, Nanite Implant Frameworks are everywhere. Valuable targets will almost always be in constant NIF communication with at least one or two points of contact in the event of an emergency. To bypass this unfortunate conundrum, Cybersun Industries invented the 'Scalpel' NIF-Cutter. A device no larger than a PDA, this gift to the field of neurological theft is capable of extracting specific programs from a target in five seconds or less. On top of that, high-grade programming allows for the tool to copy the specific 'soft to a disk for the wielder's own use."
+	desc = "Uma versão modificada de um removedor NIFSoft que permite ao usuário remover um NIFSoft e ter uma cópia em branco do NIFSoft removido salvo em um disco."
+	special_desc = "Nos escalões superiores do mundo corporativo, Nanite Implant Frameworks estão em toda parte. Alvos valiosos quase sempre estarão em constante comunicação NIF com pelo menos um ou dois pontos de contato em caso de emergência. Para contornar este dilema infeliz, as Indústrias Cybersun inventaram o NIF-Cutter. Um dispositivo não maior que um PDA, este presente para o campo de roubo neurológico é capaz de extrair programas específicos de um alvo em cinco segundos ou menos. Além disso, a programação de alta qualidade permite que a ferramenta copie o 'soft' específico para um disco para uso próprio do empunhador."
 	icon_state = "nifsoft_remover_syndie"
 	create_disk = TRUE
 
 ///NIF Repair Kit.
 /obj/item/nif_repair_kit
 	name = "Cerulean NIF Regenerator"
-	desc = "A repair kit that allows for NIFs to be repaired without the use of surgery"
-	special_desc = "The effects of capitalism and industry run deep, and they run within the Nanite Implant Framework industry as well. \
-	Frameworks, complicated devices as they are, are normally locked at the firmware level to requiring specific 'approved' brands of repair paste or repair-docks. \
-	This hacked-kit has been developed by the Altspace Coven as a freeware alternative, spread far and wide throughout extra-Terran space for quality of life \
-	for users located on the peripheries of society."
+	desc = "Um kit de reparo que permite que NIFs sejam reparados sem o uso de cirurgia."
+	special_desc = "Os efeitos do capitalismo e da indústria são profundos, e eles funcionam dentro da indústria Nanite Implant Framework também.\
+Frameworks, dispositivos complicados como eles são, normalmente estão bloqueados no nível de firmware para exigir marcas específicas 'aprovadas' de pasta de reparo ou docas de reparo.\
+Este kit hackeado foi desenvolvido pelo Coven Altspace como uma alternativa de freeware, espalhado por todo o espaço extra-terreno para a qualidade de vida.\
+para usuários localizados nas periferias da sociedade."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "repair_paste"
 	w_class = WEIGHT_CLASS_SMALL
@@ -79,11 +79,11 @@
 		balloon_alert(user, "[mob_to_repair] lacks a NIF")
 
 	if(!do_after(user, 5 SECONDS, mob_to_repair))
-		balloon_alert(user, "repair cancelled")
+		balloon_alert(user, "reparação cancelada")
 		return FALSE
 
 	if(!installed_nif.adjust_durability(repair_amount))
-		balloon_alert(user, "target NIF is at max duarbility")
+		balloon_alert(user, "O alvo NIF está em máxima duarbilidade.")
 		return FALSE
 
 	to_chat(user, span_notice("You successfully repair [mob_to_repair]'s NIF"))
@@ -95,7 +95,7 @@
 
 /obj/item/nif_hud_adapter
 	name = "Scrying Lens Adapter"
-	desc = "A kit that modifies select glasses to display HUDs for NIFs"
+	desc = "Um kit que modifica óculos selecionados para exibir HUDs para NIFs"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit"
 
@@ -141,11 +141,11 @@
 /obj/item/nif_hud_adapter/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/obj/item/clothing/glasses/target_glasses = interacting_with
 	if(!istype(target_glasses) || !is_type_in_list(target_glasses, glasses_whitelist))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return NONE
 
 	if(HAS_TRAIT(target_glasses, TRAIT_NIFSOFT_HUD_GRANTER))
-		balloon_alert(user, "already upgraded!")
+		balloon_alert(user, "Já está atualizado!")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] upgrades [target_glasses] with [src]."), span_notice("You upgrade [target_glasses] to be NIF HUD compatible."))

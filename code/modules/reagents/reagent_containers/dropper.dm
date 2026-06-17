@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/dropper
 	name = "dropper"
-	desc = "A dropper. Holds up to 5 units."
+	desc = "Um conta-gotas. Tem até 5 unidades."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dropper0"
 	inhand_icon_state = "dropper"

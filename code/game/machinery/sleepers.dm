@@ -1,6 +1,6 @@
 /obj/machinery/sleeper
 	name = "sleeper"
-	desc = "An enclosed machine used to stabilize and heal patients."
+	desc = "Uma máquina fechada usada para estabilizar e curar pacientes."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"
@@ -22,7 +22,7 @@
 	///Whether this sleeper can be deconstructed and drop the board, if its on mapload.
 	var/deconstructable = FALSE
 	///Message sent when a user enters the machine.
-	var/enter_message = span_boldnotice("You feel cool air surround you. You go numb as your senses turn inward.")
+	var/enter_message = span_boldnotice("Você sente o ar fresco ao seu redor. Você fica dormente quando seus sentidos se tornam para dentro.")
 
 	///List of currently available chems.
 	var/list/available_chems = list()
@@ -240,13 +240,13 @@
 			if(inject_chem(chem, usr))
 				. = TRUE
 				if((obj_flags & EMAGGED) && prob(5))
-					to_chat(usr, span_warning("Chemical system re-route detected, results may not be as expected!"))
+					to_chat(usr, span_warning("Sistema químico redirecionado detectado, os resultados podem não ser como esperado!"))
 
 /obj/machinery/sleeper/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
 
-	balloon_alert(user, "interface scrambled")
+	balloon_alert(user, "A interface está confusa.")
 	obj_flags |= EMAGGED
 
 	var/list/av_chem = available_chems.Copy()
@@ -308,13 +308,13 @@
 
 /obj/machinery/sleeper/party
 	name = "party pod"
-	desc = "'Sleeper' units were once known for their healing properties, until a lengthy investigation revealed they were also dosing patients with deadly lead acetate. This appears to be one of those old 'sleeper' units repurposed as a 'Party Pod'. It’s probably not a good idea to use it."
+	desc = "Unidades \"sonolentas\" já foram conhecidas por suas propriedades curativas, até que uma longa investigação revelou que também estavam doando pacientes com acetato de chumbo mortal. Esta parece ser uma daquelas antigas unidades de sono reaproveitadas como um \"Pod de Festa\". Provavelmente não é uma boa ideia usá-la."
 	icon_state = "partypod"
 	base_icon_state = "partypod"
 	circuit = /obj/item/circuitboard/machine/sleeper/party
 	controls_inside = TRUE
 	deconstructable = TRUE
-	enter_message = span_boldnotice("You're surrounded by some funky music inside the chamber. You zone out as you feel waves of krunk vibe within you.")
+	enter_message = span_boldnotice("Você está cercado por uma música estranha dentro da câmara. Você se afasta enquanto sente ondas de vibração krunk dentro de você.")
 
 	//Exclusively uses non-lethal, "fun" chems. At an obvious downside.
 	possible_chems = list(

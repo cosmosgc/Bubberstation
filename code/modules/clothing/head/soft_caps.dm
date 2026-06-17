@@ -1,6 +1,6 @@
 /obj/item/clothing/head/soft
 	name = "cargo cap"
-	desc = "It's a baseball hat in a tasteful brown colour."
+	desc = "É um chapéu de beisebol de uma cor marrom de bom gosto."
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "cargosoft"
@@ -36,10 +36,10 @@
 		flipped = !flipped
 		if(flipped)
 			icon_state = "[soft_type][soft_suffix]_flipped"
-			to_chat(user, span_notice("You flip the hat backwards."))
+			to_chat(user, span_notice("Você vira o chapéu para trás."))
 		else
 			icon_state = "[soft_type][soft_suffix]"
-			to_chat(user, span_notice("You flip the hat back in normal position."))
+			to_chat(user, span_notice("Você vira o chapéu de volta em posição normal."))
 		update_icon()
 		usr.update_worn_head() //so our mob-overlays update
 
@@ -49,70 +49,70 @@
 
 /obj/item/clothing/head/soft/red
 	name = "red cap"
-	desc = "It's a baseball hat in a tasteless red colour."
+	desc = "É um chapéu de beisebol com uma cor vermelha sem gosto."
 	icon_state = "redsoft"
 	soft_type = "red"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/blue
 	name = "blue cap"
-	desc = "It's a baseball hat in a tasteless blue colour."
+	desc = "É um chapéu de beisebol de uma cor azul sem gosto."
 	icon_state = "bluesoft"
 	soft_type = "blue"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/green
 	name = "green cap"
-	desc = "It's a baseball hat in a tasteless green colour."
+	desc = "É um chapéu de beisebol de uma cor verde sem gosto."
 	icon_state = "greensoft"
 	soft_type = "green"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/yellow
 	name = "yellow cap"
-	desc = "It's a baseball hat in a tasteless yellow colour."
+	desc = "É um chapéu de beisebol de cor amarela sem gosto."
 	icon_state = "yellowsoft"
 	soft_type = "yellow"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/grey
 	name = "grey cap"
-	desc = "It's a baseball hat in a tasteful grey colour."
+	desc = "É um chapéu de beisebol de uma cor cinza de bom gosto."
 	icon_state = "greysoft"
 	soft_type = "grey"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/orange
 	name = "orange cap"
-	desc = "It's a baseball hat in a tasteless orange colour."
+	desc = "É um chapéu de beisebol de cor laranja sem gosto."
 	icon_state = "orangesoft"
 	soft_type = "orange"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/mime
 	name = "white cap"
-	desc = "It's a baseball hat in a tasteless white colour."
+	desc = "É um chapéu de beisebol de uma cor branca sem gosto."
 	icon_state = "mimesoft"
 	soft_type = "mime"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/purple
 	name = "purple cap"
-	desc = "It's a baseball hat in a tasteless purple colour."
+	desc = "É um chapéu de beisebol de cor roxa."
 	icon_state = "purplesoft"
 	soft_type = "purple"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/black
 	name = "black cap"
-	desc = "It's a baseball hat in a tasteless black colour."
+	desc = "É um chapéu de beisebol com uma cor negra sem gosto."
 	icon_state = "blacksoft"
 	soft_type = "black"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/rainbow
 	name = "rainbow cap"
-	desc = "It's a baseball hat in a bright rainbow of colors."
+	desc = "É um chapéu de beisebol em um arco-íris brilhante de cores."
 	icon_state = "rainbowsoft"
 	inhand_icon_state = "rainbow_softcap"
 	soft_type = "rainbow"
@@ -120,7 +120,7 @@
 
 /obj/item/clothing/head/soft/sec
 	name = "security cap"
-	desc = "It's a robust baseball hat in tasteful red colour."
+	desc = "É um chapéu de beisebol robusto de cor vermelha de bom gosto."
 	icon_state = "secsoft"
 	soft_type = "sec"
 	armor_type = /datum/armor/cosmetic_sec
@@ -129,7 +129,7 @@
 
 /obj/item/clothing/head/soft/veteran
 	name = "veteran cap"
-	desc = "It's a robust baseball hat in tasteful black colour with a golden connotation to \"REMEMBER\"."
+	desc = "É um chapéu de beisebol robusto de cor preta de bom gosto com uma conotação dourada para\"Lembre-se\"."
 	icon_state = "veteransoft"
 	soft_type = "veteran"
 	armor_type = /datum/armor/cosmetic_sec
@@ -138,19 +138,19 @@
 
 /obj/item/clothing/head/soft/paramedic
 	name = "paramedic cap"
-	desc = "It's a baseball hat with a dark turquoise color and a reflective cross on the top."
+	desc = "É um chapéu de beisebol com uma cor turquesa escura e uma cruz reflexiva no topo."
 	icon_state = "paramedicsoft"
 	soft_type = "paramedic"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/fishing_hat
 	name = "legendary fishing hat"
-	desc = "An ancient relic of a bygone era of bountiful catches and endless rivers. Printed on the front is a poem:<i>\n\
-		Women Fear Me\n\
-		Fish Fear Me\n\
-		Men Turn Their Eyes Away From Me\n\
-		As I Walk No Beast Dares Make A Sound In My Presence\n\
-		I Am Alone On This Barren Earth.</i>"
+	desc = "Uma antiga relíquia de uma era passada de abundantes capturas e infindáveis rios. Impresso na frente é um poema:<i>\n\
+As mulheres me temem\n\
+Peixe Me Tem medo\n\
+Os homens se afastam de mim\n\
+Enquanto eu ando, nenhum animal dá um som em minha presença.\n\
+Estou sozinho nesta terra estéril.</i>"
 	icon_state = "fishing_hat"
 	soft_type = "fishing_hat"
 	inhand_icon_state = "fishing_hat"
@@ -171,7 +171,7 @@
 
 /obj/item/clothing/head/soft/propeller_hat
 	name = "propeller hat"
-	desc = "A colorful hat with a spinning propeller sat on top."
+	desc = "Um chapéu colorido com uma hélice girando sentado em cima."
 	icon_state = "propeller_hat"
 	soft_type = "propeller_hat"
 	inhand_icon_state = "rainbow_softcap"
@@ -187,7 +187,7 @@
 
 /obj/item/clothing/head/soft/propeller_hat/attack_self(mob/user)
 	active = !active
-	balloon_alert(user, (active ? "started propeller" : "stopped propeller"))
+	balloon_alert(user, (active ? "A hélice começou." : "A hélice parou."))
 	update_icon()
 	user.update_worn_head()
 	add_fingerprint(user)

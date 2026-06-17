@@ -1,7 +1,7 @@
 
 /obj/vehicle/ridden/secway
 	name = "secway"
-	desc = "A brave security cyborg gave its life to help you look like a complete tool."
+	desc = "Um bravo cyborg de segurança deu sua vida para ajudá-lo a parecer uma ferramenta completa."
 	icon_state = "secway"
 	max_integrity = 60
 	armor_type = /datum/armor/ridden_secway
@@ -37,24 +37,24 @@
 		return NONE
 
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing it!")
+		balloon_alert(user, "Você já está consertando!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "Não está danificado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!tool.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return ITEM_INTERACT_BLOCKING
 
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
-	audible_message(span_hear("You hear welding."))
+	audible_message(span_hear("Você ouve solda."))
 	var/did_the_thing
 	while(atom_integrity < max_integrity)
 		if(tool.use_tool(src, user, 2.5 SECONDS, volume=50))
 			did_the_thing = TRUE
 			atom_integrity += min(10, (max_integrity - atom_integrity))
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 		else
 			break
 
@@ -94,7 +94,7 @@
 /obj/vehicle/ridden/secway/examine(mob/user)
 	. = ..()
 	if(eddie_murphy)
-		. += span_warning("Something appears to be stuck in its exhaust...")
+		. += span_warning("Algo parece estar preso em seu escapamento...")
 
 /obj/vehicle/ridden/secway/atom_destruction()
 	explosion(src, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 4)

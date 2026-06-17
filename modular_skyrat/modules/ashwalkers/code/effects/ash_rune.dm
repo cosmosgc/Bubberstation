@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 
 /obj/effect/ash_rune
 	name = "ash rune"
-	desc = "A remnant of a civilization that was once powerful enough to harness strange energy for transmutations."
+	desc = "Um remanescente de uma civilização que já foi poderosa o suficiente para aproveitar energia estranha para transmutações."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ash_ritual.dmi'
 	icon_state = "rune"
 	anchored = TRUE
@@ -18,11 +18,11 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 /obj/effect/ash_rune/examine(mob/user)
 	. = ..()
 	if(!current_ritual)
-		. += span_notice("<br>There is no selected ritual at this moment-- use the central rune to select a ritual.")
+		. += span_notice("<br>Não há ritual selecionado neste momento. Use a runa central para selecionar um ritual.")
 		return
 	. += span_notice("<br>The current ritual is: [current_ritual.name]")
 	. += span_notice(current_ritual.desc)
-	. += span_warning("<br>The required components are as follows:")
+	. += span_warning("<br>Os componentes necessários são os seguintes:")
 	for(var/the_components in current_ritual.required_components)
 		var/atom/component_name = current_ritual.required_components[the_components]
 		. += span_warning("[the_components] component is [initial(component_name.name)]")
@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 
 // this is solely for aesthetics... though the central rune will check the directions, of which this is on
 /obj/effect/side_rune
-	desc = "This rune seems to have some weird vacuum to it."
+	desc = "Essa runa parece ter um aspirador estranho."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ash_ritual.dmi'
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	anchored = TRUE

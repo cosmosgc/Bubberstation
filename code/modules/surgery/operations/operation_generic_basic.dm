@@ -3,8 +3,8 @@
 /datum/surgery_operation/basic/incise_skin
 	name = "make incision"
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
-	desc = "Make an incision in the patient's skin to access internals. \
-		Causes \"cut skin\" surgical state."
+	desc = "Faça uma incisão na pele do paciente para acessar os internos.\
+Causas\"pele cortada\"estado cirúrgico."
 	implements = list(
 		TOOL_SCALPEL = 1,
 		/obj/item/melee/energy/sword = 1.33,
@@ -58,8 +58,8 @@
 
 /datum/surgery_operation/basic/saw_bone
 	name = "saw bone"
-	desc = "Saw through the patient's bones to access their internal organs. \
-		Causes \"bone sawed\" surgical state."
+	desc = "Vi através dos ossos do paciente para acessar seus órgãos internos.\
+Causas\"Osso serrado\"estado cirúrgico."
 	implements = list(
 		TOOL_SAW = 1,
 		/obj/item/shovel/serrated = 1.33,
@@ -126,8 +126,8 @@
 // Closing of skin for basic mobs
 /datum/surgery_operation/basic/close_skin
 	name = "mend incision"
-	desc = "Mend the incision in the patient's skin, closing it up. \
-		Clears most surgical states."
+	desc = "Conserte a incisão na pele do paciente, fechando.\
+Limpa a maioria dos estados cirúrgicos."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		/obj/item/stack/medical/suture = 1,

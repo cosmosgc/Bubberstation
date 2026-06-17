@@ -6,7 +6,7 @@
 
 /obj/item/reagent_containers/borghypo/centcom
 	name = "Basic Injector"
-	desc = "Provides basic medical assistance."
+	desc = "Fornece assistência médica básica."
 	default_reagent_types = BASE_CENTCOM_REAGENTS
 
 #undef BASE_CENTCOM_REAGENTS

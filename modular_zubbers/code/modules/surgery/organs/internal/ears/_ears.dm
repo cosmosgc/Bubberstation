@@ -1,7 +1,7 @@
 //Copy and paste of monkey's super kitty ears
 /obj/item/organ/ears/cat/super
 	name = "Super Kitty Ears"
-	desc = "A pair of kitty ears that harvest the true energy of cats. Mrow!"
+	desc = "Um par de orelhas de gatinho que colhem a verdadeira energia dos gatos. Srow!"
 	icon = 'modular_zubbers/icons/obj/clothing/head/costume.dmi'
 	icon_state = "superkitty"
 	decay_factor = 0
@@ -50,7 +50,7 @@
 
 	user.visible_message(
 		span_warning("\The [src] melt into [user]'s head!"),
-		span_userdanger("Everything is so much louder!"),
+		span_userdanger("Tudo é muito mais alto!"),
 	)
 
 	user.temporarilyRemoveItemFromInventory(src, force = TRUE)

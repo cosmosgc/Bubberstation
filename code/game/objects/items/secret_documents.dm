@@ -9,7 +9,7 @@
 */
 /obj/item/documents
 	name = "secret documents"
-	desc = "\"Top Secret\" documents."
+	desc = "\"Top Secret\"Documentos."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "docs_generic"
 	inhand_icon_state = "paper"
@@ -23,28 +23,28 @@
 
 ///Nanotrasen documents
 /obj/item/documents/nanotrasen
-	desc = "\"Top Secret\" Nanotrasen documents, filled with complex diagrams and lists of names, dates and coordinates."
+	desc = "\"Top Secret\"Documentos de Nanotrasen, cheios de diagramas complexos e listas de nomes, datas e coordenadas."
 	icon_state = "docs_verified"
 
 ///Syndicate documents
 /obj/item/documents/syndicate
-	desc = "\"Top Secret\" documents detailing sensitive Syndicate operational intelligence."
+	desc = "\"Top Secret\"Documentos detalhando informações operacionais confidenciais do Sindicato."
 
 ///Syndicate documents with a red seal
 /obj/item/documents/syndicate/red
 	name = "red secret documents"
-	desc = "\"Top Secret\" documents detailing sensitive Syndicate operational intelligence. These documents are verified with a red wax seal."
+	desc = "\"Top Secret\"Documentos detalhando informações operacionais confidenciais do Sindicato. Estes documentos são verificados com um selo de cera vermelha."
 	icon_state = "docs_red"
 
 ///Syndicate documents with a blue seal
 /obj/item/documents/syndicate/blue
 	name = "blue secret documents"
-	desc = "\"Top Secret\" documents detailing sensitive Syndicate operational intelligence. These documents are verified with a blue wax seal."
+	desc = "\"Top Secret\"Documentos detalhando informações operacionais confidenciais do Sindicato. Esses documentos são verificados com um selo de cera azul."
 	icon_state = "docs_blue"
 
 ///Syndicate mining documents
 /obj/item/documents/syndicate/mining
-	desc = "\"Top Secret\" documents detailing Syndicate plasma mining operations."
+	desc = "\"Top Secret\"Documentos detalhando operações de mineração de plasma."
 
 /**
  * # secret documents (photocopy)
@@ -52,7 +52,7 @@
  * Outcome of photocopying documents. Can be copied, and can have a blue/red seal forged.
 */
 /obj/item/documents/photocopy
-	desc = "A copy of some top-secret documents. Nobody will notice they aren't the originals... right?"
+	desc = "Uma cópia de alguns documentos secretos. Ninguém vai notar que não são os originais, certo?"
 	///What seal was forged on the documents (color name string)
 	var/forgedseal = 0
 	///What was copied

@@ -1,6 +1,6 @@
 /obj/structure/speaking_tile
 	name = "strange tile"
-	desc = "A weird tile that beckons you towards it. Maybe it can help you get out of this mess..."
+	desc = "Um azulejo estranho que acena para ele. Talvez possa te ajudar a sair dessa bagunça..."
 	verb_say = "intones"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "speaking_tile"
@@ -115,7 +115,7 @@
 
 /obj/item/rupee
 	name = "weird crystal"
-	desc = "Your excitement boils away as you realize it's just colored glass. Why would someone hoard these things?"
+	desc = "Sua excitação ferve como você percebe que é apenas vidro colorido. Por que alguém iria guardar essas coisas?"
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "rupee"
 	w_class = WEIGHT_CLASS_SMALL

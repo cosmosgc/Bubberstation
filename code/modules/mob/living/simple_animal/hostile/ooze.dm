@@ -106,14 +106,14 @@
 ///Its good stats and high mobility makes this a good assasin type creature. It's vulnerabilites against cold, shotguns and
 /mob/living/simple_animal/hostile/ooze/gelatinous
 	name = "Gelatinous Cube"
-	desc = "A cubic ooze native to Sholus VII.\nSince the advent of space travel this species has established itself in the waste treatment facilities of several space colonies.\nIt is often considered to be the third most infamous invasive species due to its highly aggressive and predatory nature."
+	desc = "Uma mancha cúbica nativa de Sholus VII.\nDesde o advento da viagem espacial esta espécie se estabeleceu nas instalações de tratamento de resíduos de várias colônias espaciais.\nÉ frequentemente considerada a terceira espécie invasora mais infame devido à sua natureza altamente agressiva e predadora."
 	speed = 1
 	damage_coeff = list(BRUTE = 1, BURN = 0.6, TOX = 0.5, STAMINA = 0, OXY = 1)
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	armour_penetration = 15
 	obj_damage = 20
-	death_message = "collapses into a pile of goo!"
+	death_message = "Cai em uma pilha de gosma!"
 	///The ability to consume mobs
 	var/datum/action/consume/consume
 
@@ -142,7 +142,7 @@
 ///This ability lets the gelatinious ooze speed up for a little bit
 /datum/action/cooldown/metabolicboost
 	name = "Metabolic boost"
-	desc = "Gain a temporary speed boost. Costs 10 nutrition and slowly raises your temperature"
+	desc = "Ganhar um aumento de velocidade temporário. Custa 10 nutrientes e lentamente aumenta sua temperatura."
 	background_icon_state = "bg_hive"
 	overlay_icon_state = "bg_hive_border"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -176,7 +176,7 @@
 	ooze.add_movespeed_modifier(/datum/movespeed_modifier/metabolicboost)
 	var/timerid = addtimer(CALLBACK(src, PROC_REF(HeatUp)), 1 SECONDS, TIMER_STOPPABLE | TIMER_LOOP) //Heat up every second
 	addtimer(CALLBACK(src, PROC_REF(FinishSpeedup), timerid), 6 SECONDS)
-	to_chat(ooze, span_notice("You start feel a lot quicker."))
+	to_chat(ooze, span_notice("Você começa a se sentir muito mais rápido."))
 	active = TRUE
 	ooze.adjust_ooze_nutrition(-10)
 
@@ -189,7 +189,7 @@
 /datum/action/cooldown/metabolicboost/proc/FinishSpeedup(timerid)
 	var/mob/living/simple_animal/hostile/ooze/ooze = owner
 	ooze.remove_movespeed_modifier(/datum/movespeed_modifier/metabolicboost)
-	to_chat(ooze, span_notice("You start slowing down again."))
+	to_chat(ooze, span_notice("Você começa a desacelerar novamente."))
 	deltimer(timerid)
 	active = FALSE
 	StartCooldown()
@@ -198,7 +198,7 @@
 ///This action lets you consume the mob you're currently pulling. I'M GONNA CONSUUUUUME (this is considered one of the funny memes in the 2019-2020 era)
 /datum/action/consume
 	name = "Consume"
-	desc = "Consume a mob that you are dragging to gain nutrition from them."
+	desc = "Consuma uma multidão que você está arrastando para obter nutrição deles."
 	background_icon_state = "bg_hive"
 	overlay_icon_state = "bg_hive_border"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -226,7 +226,7 @@
 		stop_consuming()
 		return FALSE
 	if(!isliving(ooze.pulling))
-		to_chat(src, span_warning("You need to be pulling a creature for this to work!"))
+		to_chat(src, span_warning("Você precisa estar puxando uma criatura para que isso funcione!"))
 		return FALSE
 	var/mob/living/eat_target = ooze.pulling
 	owner.visible_message(span_warning("[ooze] starts attempting to [devour_verb] [eat_target]!"), span_notice("You start attempting to [devour_verb] [eat_target]."))
@@ -234,7 +234,7 @@
 		return FALSE
 
 	if(!(eat_target.mob_biotypes & MOB_ORGANIC) || eat_target.stat == DEAD)
-		to_chat(src, span_warning("This creature isn't to my tastes!"))
+		to_chat(src, span_warning("Esta criatura não é do meu gosto!"))
 		return FALSE
 	start_consuming(eat_target)
 
@@ -280,10 +280,10 @@
 /datum/action/consume/update_button_name(atom/movable/screen/movable/action_button/button, force)
 	if(vored_mob)
 		name = "Eject Mob"
-		desc = "Eject the mob you're currently consuming."
+		desc = "Ejete a multidão que está consumindo."
 	else
 		name = "Consume"
-		desc = "Consume a mob that you are dragging to gain nutrition from them."
+		desc = "Consuma uma multidão que você está arrastando para obter nutrição deles."
 	return ..()
 
 /datum/action/consume/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force)
@@ -295,7 +295,7 @@
 ///Child of the ooze mob which is orientated at being a healer type creature.
 /mob/living/simple_animal/hostile/ooze/grapes
 	name = "Sholean grapes"
-	desc = "A botryoidal ooze from Sholus VII.\nXenobiologists consider it to be one of the calmer and more agreeable species on the planet, but so far little is known about its behaviour in the wild.\nIt undulates in a comforting manner."
+	desc = "Uma gosma botrioidal de Sholus VII.\nXenobiologistas consideram que é uma das espécies mais calmas e agradáveis do planeta, mas até agora pouco se sabe sobre seu comportamento na natureza.\nOndula de forma reconfortante."
 	icon_state = "grapes"
 	icon_living = "grapes"
 	icon_dead = "grapes_dead"
@@ -306,7 +306,7 @@
 	melee_damage_lower = 12
 	melee_damage_upper = 12
 	obj_damage = 15
-	death_message = "deflates and spills its vital juices!"
+	death_message = "Deflata e derrama seus sucos vitais!"
 	edible_food_types = MEAT | VEGETABLES
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION - These guys can be helpful... maybe players will be helpful.
 
@@ -323,7 +323,7 @@
 ///Ability that allows the owner to fire healing globules at mobs, targeting specific limbs.
 /datum/action/cooldown/globules
 	name = "Fire Mending globule"
-	desc = "Fires a mending globule at someone, healing a specific limb of theirs."
+	desc = "Dispara um glóbulo em alguém, curando um membro específico deles."
 	background_icon_state = "bg_hive"
 	overlay_icon_state = "bg_hive_border"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -337,7 +337,7 @@
 	if(!.)
 		return
 
-	to_chat(on_who, span_notice("You prepare to launch a mending globule. <B>Left-click to fire at a target!</B>"))
+	to_chat(on_who, span_notice("Prepare-se para lançar um globule reparador.<B>Click esquerdo para atirar em um alvo!</B>"))
 
 /datum/action/cooldown/globules/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
 	. = ..()
@@ -345,7 +345,7 @@
 		return
 
 	if(refund_cooldown)
-		to_chat(on_who, span_notice("You stop preparing your mending globules."))
+		to_chat(on_who, span_notice("Pare de preparar seus globules."))
 
 /datum/action/cooldown/globules/Activate(atom/target)
 	. = ..()
@@ -355,7 +355,7 @@
 	var/mob/living/simple_animal/hostile/ooze/oozy_owner = owner
 	if(istype(oozy_owner))
 		if(oozy_owner.ooze_nutrition < 5)
-			to_chat(oozy_owner, span_warning("You need at least 5 nutrition to launch a mending globule."))
+			to_chat(oozy_owner, span_warning("Você precisa de pelo menos 5 nutrição para lançar um globule reparador."))
 			return FALSE
 
 	return TRUE
@@ -371,7 +371,7 @@
 	// We just need to make sure Pre-activate and Activate return TRUE so we make it this far
 	clicker.visible_message(
 		span_nicegreen("[clicker] launches a mending globule!"),
-		span_notice("You launch a mending globule."),
+		span_notice("Você lança um globule reparador."),
 	)
 
 	var/mob/living/simple_animal/hostile/ooze/oozy = clicker
@@ -403,7 +403,7 @@
 ///This item is what is embedded into the mob
 /obj/item/mending_globule
 	name = "mending globule"
-	desc = "It somehow heals those who touch it."
+	desc = "De alguma forma, cura aqueles que o tocam."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "globule"
 	var/heals_left = 35
@@ -427,7 +427,7 @@
 ///This action lets you put a mob inside of a cacoon that will inject it with some chemicals.
 /datum/action/cooldown/gel_cocoon
 	name = "Gel Cocoon"
-	desc = "Puts a mob inside of a cocoon, allowing it to slowly heal."
+	desc = "Coloca uma multidão dentro de um casulo, permitindo que ele se cure lentamente."
 	background_icon_state = "bg_hive"
 	overlay_icon_state = "bg_hive_border"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
@@ -444,7 +444,7 @@
 /datum/action/cooldown/gel_cocoon/proc/gel_cocoon()
 	var/mob/living/simple_animal/hostile/ooze/grapes/ooze = owner
 	if(!iscarbon(ooze.pulling))
-		to_chat(src, span_warning("You need to be pulling an intelligent enough creature to assist it with a cocoon!"))
+		to_chat(src, span_warning("Você precisa estar puxando uma criatura inteligente o suficiente para ajudá-lo com um casulo!"))
 		return FALSE
 	owner.visible_message(span_nicegreen("[ooze] starts attempting to put [target] into a gel cocoon!"), span_notice("You start attempting to put [target] into a gel cocoon."))
 	if(!do_after(ooze, 1.5 SECONDS, target = ooze.pulling))
@@ -469,7 +469,7 @@
 
 /obj/structure/gel_cocoon
 	name = "gel cocoon"
-	desc = "It looks gross, but helpful."
+	desc = "Parece nojento, mas útil."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "gel_cocoon"
 	max_integrity = 50
@@ -483,7 +483,7 @@
 /obj/structure/gel_cocoon/container_resist_act(mob/living/user)
 	. = ..()
 	user.visible_message(span_notice("You see [user] breaking out of [src]!"), \
-		span_notice("You start tearing the soft tissue of the gel cocoon"))
+		span_notice("Você começa a rasgar o tecido mole do casulo de gel"))
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		return FALSE
 	dump_inhabitant()

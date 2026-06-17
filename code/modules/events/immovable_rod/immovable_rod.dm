@@ -1,7 +1,7 @@
 /// "What the fuck was that?!"
 /obj/effect/immovablerod
 	name = "immovable rod"
-	desc = "What the fuck is that?"
+	desc = "Que porra é essa?"
 	icon = 'icons/obj/anomaly.dmi'
 	icon_state = "immrod"
 	throwforce = 100
@@ -62,7 +62,7 @@
 		return
 
 	if(!num_mobs_hit)
-		. += span_notice("So far, this rod has not hit any mobs.")
+		. += span_notice("Até agora, esta vara não atingiu nenhuma multidão.")
 		return
 
 	. += "\t<span class='notice'>So far, this rod has hit: \n\
@@ -155,7 +155,7 @@
 /obj/effect/immovablerod/Bump(atom/clong)
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-		audible_message(span_danger("You hear a CLANG!"))
+		audible_message(span_danger("Você ouve um clang!"))
 
 	if(special_target && clong == special_target)
 		complete_trajectory()
@@ -199,7 +199,7 @@
 	CRASH("[src] Bump()ed into non-atom thing [clong] ([clong.type])")
 
 /obj/effect/immovablerod/proc/penetrate(mob/living/smeared_mob)
-	smeared_mob.visible_message(span_danger("[smeared_mob] is penetrated by an immovable rod!") , span_userdanger("The rod penetrates you!") , span_danger("You hear a CLANG!"))
+	smeared_mob.visible_message(span_danger("[smeared_mob] is penetrated by an immovable rod!") , span_userdanger("A vara penetra em você!") , span_danger("Você ouve um clang!"))
 
 	if(smeared_mob.stat != DEAD)
 		num_mobs_hit++

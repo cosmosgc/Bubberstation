@@ -1,6 +1,6 @@
 /obj/structure/punching_bag
 	name = "punching bag"
-	desc = "A punching bag. Can you get to speed level 4???"
+	desc = "Um saco de pancada. Consegue chegar ao nível 4?"
 	icon = 'icons/obj/fluff/gym_equipment.dmi'
 	icon_state = "punchingbag"
 	anchored = TRUE
@@ -78,7 +78,7 @@
 
 /obj/structure/punching_bag/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "still secured!")
+		balloon_alert(user, "Ainda seguro!")
 		return FALSE
 	tool.play_tool_sound(src)
 	balloon_alert(user, "deconstructing...")

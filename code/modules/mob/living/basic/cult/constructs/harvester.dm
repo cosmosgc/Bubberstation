@@ -1,7 +1,7 @@
 /mob/living/basic/construct/harvester
 	name = "Harvester"
 	real_name = "Harvester"
-	desc = "A long, thin construct built to herald Nar'Sie's rise. It'll be all over soon."
+	desc = "Uma construção longa e fina construída para anunciar a ascensão de Nar'Sie. Vai acabar logo."
 	icon_state = "harvester"
 	icon_living = "harvester"
 	maxHealth = 40
@@ -58,7 +58,7 @@
 
 /datum/action/innate/seek_master
 	name = "Seek your Master"
-	desc = "You and your master share a soul-link that informs you of their location"
+	desc = "Você e seu mestre compartilham um link de alma que informa a localização deles."
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 
@@ -84,22 +84,22 @@
 		the_construct.construct_master = cult_status.cult_team.blood_target
 
 	if(!the_construct.construct_master)
-		to_chat(the_construct, span_cult_italic("You have no master to seek!"))
+		to_chat(the_construct, span_cult_italic("Você não tem mestre para procurar!"))
 		the_construct.seeking = FALSE
 		return
 	if(tracking)
 		tracking = FALSE
 		the_construct.seeking = FALSE
-		to_chat(the_construct, span_cult_italic("You are no longer tracking your master."))
+		to_chat(the_construct, span_cult_italic("Você não está mais rastreando seu mestre."))
 		return
 	else
 		tracking = TRUE
 		the_construct.seeking = TRUE
-		to_chat(the_construct, span_cult_italic("You are now tracking your master."))
+		to_chat(the_construct, span_cult_italic("Você está agora rastreando seu mestre."))
 
 /datum/action/innate/seek_prey
 	name = "Seek the Harvest"
-	desc = "None can hide from Nar'Sie, activate to track a survivor attempting to flee the red harvest!"
+	desc = "Ninguém pode se esconder de Nar'Sie, ativar para rastrear um sobrevivente tentando fugir da colheita vermelha!"
 	button_icon = 'icons/mob/actions/actions_cult.dmi'
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
@@ -113,27 +113,27 @@
 	var/mob/living/basic/construct/harvester/the_construct = owner
 
 	if(the_construct.seeking)
-		desc = "None can hide from Nar'Sie, activate to track a survivor attempting to flee the red harvest!"
+		desc = "Ninguém pode se esconder de Nar'Sie, ativar para rastrear um sobrevivente tentando fugir da colheita vermelha!"
 		button_icon_state = "cult_mark"
 		the_construct.seeking = FALSE
-		to_chat(the_construct, span_cult_italic("You are now tracking Nar'Sie, return to reap the harvest!"))
+		to_chat(the_construct, span_cult_italic("Você está agora rastreando Nar'Sie, volte para colher a colheita!"))
 		return
 
 	if(!LAZYLEN(GLOB.cult_narsie.souls_needed))
-		to_chat(the_construct, span_cult_italic("Nar'Sie has completed her harvest!"))
+		to_chat(the_construct, span_cult_italic("Nar'Sie completou sua colheita!"))
 		return
 
 	the_construct.construct_master = pick(GLOB.cult_narsie.souls_needed)
 	var/mob/living/real_target = the_construct.construct_master //We can typecast this way because Narsie only allows /mob/living into the souls list
 	to_chat(the_construct, span_cult_italic("You are now tracking your prey, [real_target.real_name] - harvest [real_target.p_them()]!"))
-	desc = "Activate to track Nar'Sie!"
+	desc = "Ativar para rastrear Nar'Sie!"
 	button_icon_state = "sintouch"
 	the_construct.seeking = TRUE
 
 /mob/living/basic/construct/harvester/heretic
 	name = "Rusted Harvester"
 	real_name = "Rusted Harvester"
-	desc = "A long, thin, decrepit construct originally built to herald Nar'Sie's rise, corrupted and rusted by the forces of the Mansus to spread its will instead."
+	desc = "Uma construção longa, fina e decrépita originalmente construída para anunciar a ascensão de Nar'sie, corrompida e enferrujada pelas forças do Mansus para espalhar sua vontade."
 	icon_state = "harvester"
 	icon_living = "harvester"
 	construct_spells = list(
@@ -220,14 +220,14 @@
 	do_rust_heretic_act(land)
 
 	if(prob(7))
-		to_chat(src, span_notice("Eldritch energies emanate from your body."))
+		to_chat(src, span_notice("Energias de Eldritch emanam de seu corpo."))
 
 /mob/living/basic/construct/harvester/heretic/proc/is_cultist_handler(mob/victim)
 	return IS_CULTIST(victim)
 
 /datum/action/innate/seek_master/heretic
 	name = "Seek your Master"
-	desc = "Use your direct link to the Mansus to sense where your master is located via the arrow on the top-right of your HUD."
+	desc = "Use sua ligação direta com o Mansus para sentir onde seu mestre está localizado através da flecha na parte superior direita do seu HUD."
 	button_icon = 'icons/mob/actions/actions_cult.dmi'
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"

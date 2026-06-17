@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/defender
 	name = "alien defender"
-	desc = "A heavy looking alien with a wrecking ball-like tail that'd probably hurt to get hit by."
+	desc = "Um alienígena de aparência pesada com uma cauda de bola que provavelmente machucaria ser atingido."
 	caste = "defender"
 	maxHealth = 300
 	health = 300
@@ -35,7 +35,7 @@
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep
 	name = "Crushing Tail Sweep"
-	desc = "Throw back attackers with a sweep of your tail, likely breaking some bones in the process."
+	desc = "Retorne os atacantes com uma varredura de sua cauda, provavelmente quebrando alguns ossos no processo."
 
 	cooldown_time = 60 SECONDS
 
@@ -100,7 +100,7 @@
 
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender
 	name = "Charge Attack"
-	desc = "Allows you to charge at a position, trampling anything in your path."
+	desc = "Permite-lhe carregar em uma posição, pisoteando qualquer coisa em seu caminho."
 	cooldown_time = 15 SECONDS
 	charge_delay = 0.3 SECONDS
 	charge_distance = 5

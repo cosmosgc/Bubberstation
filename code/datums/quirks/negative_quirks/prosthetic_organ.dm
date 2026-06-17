@@ -1,10 +1,10 @@
 /datum/quirk/prosthetic_organ
 	name = "Prosthetic Organ"
-	desc = "An accident caused you to lose one of your organs. Because of this, you now have a surplus prosthetic!"
+	desc = "Um acidente fez você perder um de seus órgãos. Por causa disso, você agora tem uma prótese excedente!"
 	icon = FA_ICON_LUNGS
 	value = -3
-	medical_record_text = "During physical examination, patient was found to have a low-budget prosthetic organ. \
-		<b>Removal of these organs is known to be dangerous to the patient as well as the practitioner.</b>"
+	medical_record_text = "Durante o exame físico, o paciente tinha um órgão protético de baixo orçamento.\
+		<b>A remoção desses órgãos é conhecida por ser perigosa tanto para o paciente quanto para o médico.</b>"
 	hardcore_value = 3
 	mail_goodies = list(/obj/item/storage/organbox)
 	/// The slot to replace, in string form

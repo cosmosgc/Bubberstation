@@ -2,7 +2,7 @@
 	set name = VERB_PRAY
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(src, span_danger("Speech is currently admin-disabled."), confidential = TRUE)
+		to_chat(src, span_danger("A fala está desativada."), confidential = TRUE)
 		return
 
 	message = copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN)
@@ -11,7 +11,7 @@
 	log_prayer("[src.key]/([src.name]): [message]")
 	if(src.client)
 		if(src.client.prefs.muted & MUTE_PRAY)
-			to_chat(src, span_danger("You cannot pray (muted)."), confidential = TRUE)
+			to_chat(src, span_danger("Você não pode rezar."), confidential = TRUE)
 			return
 		if(src.client.handle_spam_prevention(message, MUTE_PRAY))
 			return

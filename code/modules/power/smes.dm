@@ -3,7 +3,7 @@
 // SKYRAT EDIT COMMENT: Modularized Power change in modular_nova\master_files\code\modules\power\smes.dm
 /obj/machinery/power/smes
 	name = "power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
+	desc = "Uma unidade supercondutora de alta capacidade de armazenamento de energia magnética."
 	icon_state = "smes"
 	base_icon_state = "smes"
 	density = TRUE
@@ -224,19 +224,19 @@
 	var/turf/terminal_turf = get_turf(user)
 	if(!panel_open)
 		if(!silent && user)
-			balloon_alert(user, "open the maintenance panel!")
+			balloon_alert(user, "Abra o painel de manutenção!")
 		return FALSE
 	if(terminal_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
 		if(!silent && user)
-			balloon_alert(user, "remove the floor plating!")
+			balloon_alert(user, "Remova o revestimento do chão!")
 		return FALSE
 	if(terminal)
 		if(!silent && user)
-			balloon_alert(user, "already wired!")
+			balloon_alert(user, "Já está ligado!")
 		return FALSE
 	if(installing_cable.get_amount() < 10)
 		if(!silent && user)
-			balloon_alert(user, "need ten lengths of cable!")
+			balloon_alert(user, "Preciso de dez comprimentos de cabo!")
 		return FALSE
 	return TRUE
 
@@ -261,7 +261,7 @@
 				return ITEM_INTERACT_BLOCKING
 			terminal_cable_layer = GLOB.cable_name_to_layer[choice]
 		user.visible_message(span_notice("[user.name] starts adding cables to [src]."))
-		balloon_alert(user, "adding cables...")
+		balloon_alert(user, "Adicionando cabos...")
 		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 		//use cable
@@ -277,7 +277,7 @@
 			return ITEM_INTERACT_BLOCKING
 		cable.use(10)
 		user.visible_message(span_notice("[user.name] adds cables to [src]."))
-		balloon_alert(user, "cables added")
+		balloon_alert(user, "Cabos adicionados")
 
 		//build the terminal and link it to the network
 		terminal = new(turf)
@@ -303,7 +303,7 @@
 
 /obj/machinery/power/smes/crowbar_act(mob/living/user, obj/item/tool)
 	if(terminal)
-		balloon_alert(user, "remove the power terminal!")
+		balloon_alert(user, "Remova o terminal de energia!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(default_deconstruction_crowbar(user, tool))
@@ -324,15 +324,15 @@
 			if(term && term.dir == REVERSE_DIR(dir))
 				terminal = term
 				terminal.master = src
-				to_chat(user, span_notice("Terminal found."))
+				to_chat(user, span_notice("Terminal encontrado."))
 				set_machine_stat(machine_stat & ~BROKEN)
 				update_appearance(UPDATE_OVERLAYS)
 				return ITEM_INTERACT_SUCCESS
-		to_chat(user, span_alert("No power terminal found."))
+		to_chat(user, span_alert("Nenhum terminal de energia encontrado."))
 
 /obj/machinery/power/smes/cable_layer_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
-		balloon_alert(user, "open panel first!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -532,7 +532,7 @@
 // Variant of SMES that starts with super power cells for higher longevity
 /obj/machinery/power/smes/super
 	name = "super capacity power storage unit"
-	desc = "A super-capacity superconducting magnetic energy storage (SMES) unit. Relatively rare, and typically installed in long-range outposts where minimal maintenance is expected."
+	desc = "Uma super-capacidade supercondutora unidade de armazenamento de energia magnética. Relativamente raro, e tipicamente instalado em postos avançados de longo alcance onde se espera manutenção mínima."
 	circuit = /obj/item/circuitboard/machine/smes/super
 
 /obj/machinery/power/smes/super/full
@@ -550,7 +550,7 @@
 
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
+	desc = "Uma unidade supercondutora de alta capacidade de armazenamento de energia magnética. Magicamente produz poder."
 
 /obj/machinery/power/smes/magical/adjust_charge(charge_adjust)
 	//give charge without consuming anything

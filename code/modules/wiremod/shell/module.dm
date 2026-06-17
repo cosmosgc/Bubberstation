@@ -1,6 +1,6 @@
 /obj/item/mod/module/circuit
 	name = "MOD circuit adapter module"
-	desc = "A module shell that allows a circuit to be inserted into, and interface with, a MODsuit."
+	desc = "Uma concha de módulo que permite que um circuito seja inserido em, e interface com, um MODsuit."
 	module_type = MODULE_USABLE
 	complexity = 1
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.5
@@ -125,7 +125,7 @@
 		return FALSE
 	if(!mod.active || mod.activating)
 		if(mod.wearer)
-			module.balloon_alert(mod.wearer, "not active!")
+			module.balloon_alert(mod.wearer, "Não está ativo!")
 		return FALSE
 	circuit_component.user.set_output(owner)
 	circuit_component.signal.set_output(COMPONENT_SIGNAL)
@@ -136,8 +136,8 @@
 	. = ..()
 
 /obj/item/circuit_component/mod_adapter_core
-	display_name = "MOD circuit adapter core"
-	desc = "Provides a reference to the MODsuit's occupant and allows the circuit to toggle the MODsuit."
+	display_name = "Núcleo adaptador de circuito MOD"
+	desc = "Fornece uma referência ao ocupante do traje e permite que o circuito mude o traje."
 
 	/// The MODsuit module this circuit is associated with
 	var/obj/item/mod/module/attached_module

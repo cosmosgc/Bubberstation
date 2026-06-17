@@ -1,9 +1,9 @@
 /datum/quirk/perch
 	name = "Perch"
-	desc = "In some way, you're able to hang from the ceiling. Only devious things can come of this."
+	desc = "De alguma forma, você é capaz de pendurar no teto. Só coisas sinuosas podem vir disso."
 	value = 0
 	icon = FA_ICON_HAND_POINT_UP
-	medical_record_text = "Patient's body produces an adhesive surface on their skin."
+	medical_record_text = "O corpo do paciente produz uma superfície adesiva na pele."
 	/// The ceiling ability we have given our owner. Nullable, if we have no owner.
 	var/datum/action/cooldown/spell/perch/perch_ability
 
@@ -23,7 +23,7 @@
 
 /datum/action/cooldown/spell/perch
 	name = "Perch"
-	desc = "Hang from the ceiling!"
+	desc = "Pendure no teto!"
 	button_icon_state = "negative"
 	button_icon = 'icons/hud/screen_alert.dmi'
 	cooldown_time = 1 SECONDS
@@ -57,6 +57,6 @@
 	var/turf/open/current_turf = get_turf(target)
 	var/turf/open/openspace/turf_above = get_step_multiz(target, UP)
 	if(current_turf && istype(turf_above))
-		to_chat(target, span_warning("There's only open air above you, nothing to hang from!"))
+		to_chat(target, span_warning("Só há ar livre acima de você, nada para pendurar!"))
 		return FALSE
 	return TRUE

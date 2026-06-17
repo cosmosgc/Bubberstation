@@ -1,6 +1,6 @@
 /obj/item/clothing/ears/kinky_headphones
 	name = "kinky headphones"
-	desc = "Protect your ears from loud noises. It has a switch on the right hand side."
+	desc = "Proteja seus ouvidos de barulhos altos. Tem um interruptor no lado direito."
 	icon_state = "kinkphones_pink_off"
 	base_icon_state = "kinkphones"
 	inhand_icon_state = "kinkphones_pink_off"
@@ -61,7 +61,7 @@
 	if(!(src == user.ears))
 		return
 	REMOVE_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-	to_chat(user, span_purple("You can finally hear the world around you once more."))
+	to_chat(user, span_purple("Você pode finalmente ouvir o mundo ao seu redor mais uma vez."))
 
 
 //to make it change model on click
@@ -88,7 +88,7 @@
 
 /datum/action/item_action/toggle_kinky_headphones
 	name = "Toggle kinky headphones"
-	desc = "Plays some nice relaxing music"
+	desc = "Toca uma música relaxante."
 
 /datum/action/item_action/toggle_kinky_headphones/Trigger(trigger_flags)
 	if(!..())

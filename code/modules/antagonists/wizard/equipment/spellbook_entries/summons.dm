@@ -4,9 +4,9 @@
 
 /datum/spellbook_entry/summon/ghosts
 	name = "Summon Ghosts"
-	desc = "Spook the crew out by making them see dead people. \
-		Be warned, ghosts are capricious and occasionally vindicative, \
-		and some will use their incredibly minor abilities to frustrate you."
+	desc = "Assustaram a tripulação fazendo-os ver pessoas mortas.\
+Esteja avisado, fantasmas são caprichosos e ocasionalmente vingativos,\
+E alguns usarão suas habilidades incrivelmente menores para frustrar você."
 	cost = 0
 
 /datum/spellbook_entry/summon/ghosts/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy = TRUE)
@@ -16,8 +16,8 @@
 
 /datum/spellbook_entry/summon/guns
 	name = "Summon Guns"
-	desc = "Nothing could possibly go wrong with arming a crew of lunatics just itching for an excuse to kill you. \
-		There is a good chance that they will shoot each other first."
+	desc = "Nada poderia dar errado em armar uma equipe de lunáticos só querendo uma desculpa para matá-lo.\
+Há uma boa chance de eles atirarem um no outro primeiro."
 
 /datum/spellbook_entry/summon/guns/can_be_purchased()
 	// Must be a high chaos round + Also must be config enabled
@@ -30,8 +30,8 @@
 
 /datum/spellbook_entry/summon/magic
 	name = "Summon Magic"
-	desc = "Share the wonders of magic with the crew and show them \
-		why they aren't to be trusted with it at the same time."
+	desc = "Compartilhe as maravilhas da magia com a tripulação e mostre-lhes\
+Por que não são confiáveis ao mesmo tempo."
 
 /datum/spellbook_entry/summon/magic/can_be_purchased()
 	// Must be a high chaos round + Also must be config enabled
@@ -44,9 +44,9 @@
 
 /datum/spellbook_entry/summon/events
 	name = "Summon Events"
-	desc = "Give Murphy's law a little push and replace all events with \
-		special wizard ones that will confound and confuse everyone. \
-		Multiple castings increase the rate of these events."
+	desc = "Dê à lei de Murphy um empurrãozinho e substitua todos os eventos por\
+Magos especiais que confundirão e confundirão todos.\
+Múltiplos lançamentos aumentam a taxa desses eventos."
 	cost = 2
 	limit = 5 // Each purchase can intensify it.
 
@@ -61,7 +61,7 @@
 
 /datum/spellbook_entry/summon/curse_of_madness
 	name = "Curse of Madness"
-	desc = "Curses the station, warping the minds of everyone inside, causing lasting traumas. Warning: this spell can affect you if not cast from a safe distance."
+	desc = "Amaldiçoa a estação, distorcendo as mentes de todos dentro, causando traumas duradouros. Aviso: este feitiço pode afetá-lo se não for lançado de uma distância segura."
 	cost = 4
 
 /datum/spellbook_entry/summon/curse_of_madness/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book, log_buy = TRUE)
@@ -76,8 +76,8 @@
 /// This includes item entries (which will be given to everyone) but disincludes other rituals like itself
 /datum/spellbook_entry/summon/specific_spell
 	name = "Mass Wizard Teaching"
-	desc = "Teach a specific spell (or give a specific item) to everyone on the station. \
-		The cost of this is increased by the cost of the spell you choose. And don't worry - you, too, will learn the spell!"
+	desc = "Ensine um feitiço específico (ou dê um item específico) para todos na estação.\
+O custo disto é aumentado pelo custo do feitiço que você escolhe. E não se preocupe - você também, vai aprender o feitiço!"
 	cost = 3 // cheapest is 4 cost, most expensive is 7 cost
 	limit = 1
 

@@ -18,7 +18,7 @@ GLOBAL_DATUM(tower_of_babel, /datum/tower_of_babel)
 			// wizards are not only immune but can speak all languages to taunt their victims over the radio
 			target.grant_all_languages(source = LANGUAGE_BABEL)
 			ADD_TRAIT(target.mind, TRAIT_TOWER_OF_BABEL, MAGIC_TRAIT)
-			to_chat(target, span_reallybig(span_hypnophrase("You feel a magical force improving your speech patterns!")))
+			to_chat(target, span_reallybig(span_hypnophrase("Você sente uma força mágica melhorando seus padrões de fala!")))
 			continue
 
 		if(target.stat == DEAD)
@@ -50,7 +50,7 @@ GLOBAL_DATUM(tower_of_babel, /datum/tower_of_babel)
 		return
 
 	if(to_curse.can_block_magic(MAGIC_RESISTANCE|MAGIC_RESISTANCE_MIND) || HAS_MIND_TRAIT(to_curse, TRAIT_TOWER_OF_BABEL))
-		to_chat(to_curse, span_notice("You have a strange feeling for a moment, but then it passes."))
+		to_chat(to_curse, span_notice("Você tem uma sensação estranha por um momento, mas depois passa."))
 		return
 
 	to_curse.apply_status_effect(/datum/status_effect/tower_of_babel/magical, INFINITY)
@@ -71,7 +71,7 @@ GLOBAL_DATUM(tower_of_babel, /datum/tower_of_babel)
 
 /client/proc/tower_of_babel()
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(usr,"The game hasn't started yet!")
+		tgui_alert(usr,"O jogo ainda não começou!")
 		return
 
 	GLOB.tower_of_babel = new /datum/tower_of_babel(usr)

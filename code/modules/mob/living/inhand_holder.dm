@@ -2,7 +2,7 @@
 //Currently works for head and hands.
 /obj/item/mob_holder
 	name = "bugged mob"
-	desc = "Yell at coderbrush."
+	desc = "Grite em coderbrush."
 	icon = null
 	icon_state = ""
 	slot_flags = NONE
@@ -124,7 +124,7 @@
 		qdel(src)
 		return
 	name = "drone (hiding)"
-	desc = "This drone is scared and has curled up into a ball!"
+	desc = "Este drone está assustado e enrolou-se em uma bola!"
 
 /obj/item/mob_holder/drone/update_visuals(mob/living/contained)
 	var/mob/living/basic/drone/drone = contained

@@ -1,6 +1,6 @@
 /datum/mutation/olfaction
 	name = "Transcendent Olfaction"
-	desc = "Your sense of smell is comparable to that of a canine."
+	desc = "Seu olfato é comparável ao de um canino."
 	quality = POSITIVE
 	difficulty = 12
 	text_gain_indication = span_notice("Smells begin to make more sense...")
@@ -19,8 +19,8 @@
 
 /datum/action/cooldown/spell/olfaction
 	name = "Remember the Scent"
-	desc = "Get a scent off of the item you're currently holding to track it. \
-		With an empty hand, you'll track the scent you've remembered."
+	desc = "Sinta o cheiro do item que está segurando para rastreá-lo.\
+Com uma mão vazia, vai rastrear o cheiro que lembrou."
 	button_icon_state = "nose"
 
 	cooldown_time = 10 SECONDS
@@ -37,11 +37,11 @@
 
 	var/mob/living/living_cast_on = cast_on
 	if(ishuman(living_cast_on) && !living_cast_on.get_bodypart(BODY_ZONE_HEAD))
-		to_chat(owner, span_warning("You have no nose!"))
+		to_chat(owner, span_warning("Você não tem nariz!"))
 		return FALSE
 
 	if(HAS_TRAIT(living_cast_on, TRAIT_ANOSMIA)) //Anosmia quirk holders can't smell anything
-		to_chat(owner, span_warning("You can't smell!"))
+		to_chat(owner, span_warning("Você não pode cheirar!"))
 		return FALSE
 
 	return TRUE
@@ -54,8 +54,8 @@
 
 	if(cached_gases[/datum/gas/miasma])
 		cast_on.adjust_disgust(sensitivity * 45)
-		to_chat(cast_on, span_warning("With your overly sensitive nose, \
-			you get a whiff of stench and feel sick! Try moving to a cleaner area!"))
+		to_chat(cast_on, span_warning("Com seu nariz sensível demais,\
+Sente cheiro de fedor e se sente mal! Tente se mudar para uma área mais limpa!"))
 		return
 
 	var/atom/sniffed = cast_on.get_active_held_item()
@@ -86,10 +86,10 @@
 	if(QDELETED(new_target))
 		// We don't have a new target OR an old target
 		if(QDELETED(old_target))
-			to_chat(caster, span_warning("You decide against remembering any scents. \
-				Instead, you notice your own nose in your peripheral vision. \
-				This goes on to remind you of that one time you started breathing manually and couldn't stop. \
-				What an awful day that was."))
+			to_chat(caster, span_warning("Você decide contra lembrar de qualquer cheiro.\
+Em vez disso, você percebe seu próprio nariz em sua visão periférica.\
+Isso lembra que uma vez começou a respirar manualmente e não conseguiu parar.\
+Que dia horrível."))
 			tracking_ref = null
 
 		// We don't have a new target, but we have an old target to fall back on
@@ -109,8 +109,8 @@
 	// Either our weakref failed to resolve (our target's gone),
 	// or we never had a target in the first place
 	if(QDELETED(current_target))
-		to_chat(caster, span_warning("You're not holding anything to smell, \
-			and you haven't smelled anything you can track. You smell your skin instead; it's kinda salty."))
+		to_chat(caster, span_warning("Você não está segurando nada para cheirar,\
+E você não sentiu nada que pudesse rastrear. Você sente o cheiro da pele, é meio salgado."))
 		tracking_ref = null
 		return
 
@@ -123,22 +123,22 @@
 	var/turf/current_target_turf = get_turf(current_target)
 	var/turf/caster_turf = get_turf(caster)
 	if(!current_target)
-		to_chat(caster, span_warning("You're not tracking a scent, but the game thought you were. \
-			Something's gone wrong! Report this as a bug."))
+		to_chat(caster, span_warning("Você não está rastreando um cheiro, mas o jogo pensou que estava.\
+Algo deu errado! Relate isso como um inseto."))
 		stack_trace("[type] - on_the_trail was called when no tracking target was set.")
 		tracking_ref = null
 		return
 
 	if(current_target == caster)
-		to_chat(caster, span_warning("You smell out the trail to yourself. Yep, it's you."))
+		to_chat(caster, span_warning("Você sente o cheiro da trilha para si mesmo. Sim, é você."))
 		return
 
 	if(caster_turf.z < current_target_turf.z)
-		to_chat(caster, span_warning("The trail leads... way up above you? Huh. They must be really, really far away."))
+		to_chat(caster, span_warning("A trilha leva... bem acima de você? Huh. Devem estar muito, muito longe."))
 		return
 
 	else if(caster_turf.z > current_target_turf.z)
-		to_chat(caster, span_warning("The trail leads... way down below you? Huh. They must be really, really far away."))
+		to_chat(caster, span_warning("A trilha leva... bem abaixo de você? Huh. Devem estar muito, muito longe."))
 		return
 
 	var/direction_text = span_bold("[dir2text(get_dir(caster_turf, current_target_turf))]")

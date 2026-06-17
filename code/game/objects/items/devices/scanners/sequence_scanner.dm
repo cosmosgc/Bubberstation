@@ -6,7 +6,7 @@
 	worn_icon_state = "healthanalyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	desc = "A hand-held scanner for analyzing someones gene sequence on the fly. Use on a DNA console to update the internal database."
+	desc = "Um scanner portátil para analisar a sequência genética de alguém. Use em um console de DNA para atualizar o banco de dados interno."
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
@@ -28,7 +28,7 @@
 
 /obj/item/sequence_scanner/examine(mob/user)
 	. = ..()
-	. += span_notice("Use primary attack to scan mutations, Secondary attack to scan genetic makeup")
+	. += span_notice("Use ataque primário para escanear mutações, ataque secundário para escanear a composição genética.")
 	if(LAZYLEN(genetic_makeup_buffer) > 0)
 		. += span_notice("It has the genetic makeup of \"[genetic_makeup_buffer["name"]]\" stored inside its buffer")
 
@@ -39,7 +39,7 @@
 			to_chat(user, span_notice("[name] linked to central research database."))
 			discovered = console.stored_research.discovered_mutations
 		else
-			to_chat(user,span_warning("No database to update from."))
+			to_chat(user,span_warning("Nenhum banco de dados para atualizar."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!isliving(interacting_with))
@@ -50,7 +50,7 @@
 	//no scanning if its a husk or DNA-less Species
 	if (!HAS_TRAIT(interacting_with, TRAIT_GENELESS) && !HAS_TRAIT(interacting_with, TRAIT_BADDNA))
 		user.visible_message(span_notice("[user] analyzes [interacting_with]'s genetic sequence."))
-		balloon_alert(user, "sequence analyzed")
+		balloon_alert(user, "Sequência analisada")
 		playsound(user, 'sound/items/healthanalyzer.ogg', 50) // close enough
 		gene_scan(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS
@@ -74,11 +74,11 @@
 	if (!HAS_TRAIT(interacting_with, TRAIT_GENELESS) && !HAS_TRAIT(interacting_with, TRAIT_BADDNA) && !HAS_TRAIT(interacting_with, TRAIT_NO_DNA_COPY))
 		user.visible_message(span_warning("[user] is scanning [interacting_with]'s genetic makeup."))
 		if(!do_after(user, 3 SECONDS, interacting_with))
-			balloon_alert(user, "scan failed!")
+			balloon_alert(user, "A varredura falhou!")
 			user.visible_message(span_warning("[user] fails to scan [interacting_with]'s genetic makeup."))
 			return ITEM_INTERACT_BLOCKING
 		makeup_scan(interacting_with, user)
-		balloon_alert(user, "makeup scanned")
+		balloon_alert(user, "Maquiagem escaneada.")
 		return ITEM_INTERACT_SUCCESS
 
 	user.visible_message(span_notice("[user] fails to analyze [interacting_with]'s genetic makeup."), span_warning("[interacting_with] has no readable genetic makeup!"))

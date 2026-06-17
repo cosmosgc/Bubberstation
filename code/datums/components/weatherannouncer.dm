@@ -221,12 +221,12 @@
 	if(isnull(time_until_next))
 		return
 	if (time_until_next == 0)
-		examine_texts += span_warning("A storm is currently active, please seek shelter.")
+		examine_texts += span_warning("Uma tempestade está ativa, procurem abrigo.")
 	else
 		examine_texts += span_notice("The next storm is inbound in [DisplayTimeText(time_until_next)].")
 
 	if(!check_accuracy())
-		examine_texts += span_smallnoticeital("Due to insufficient radar coverage, the timing of this forecast may be inaccurate.")
+		examine_texts += span_smallnoticeital("Devido à cobertura insuficiente do radar, o tempo dessa previsão pode ser incorreto.")
 
 /datum/component/weather_announcer/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))

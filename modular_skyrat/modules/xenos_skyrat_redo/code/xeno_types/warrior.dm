@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/warrior
 	name = "alien warrior"
-	desc = "If there are aliens to call walking tanks, this would be one of them, with both the heavy armor and strong arms to back that claim up."
+	desc = "Se há alienígenas para chamar tanques ambulantes, este seria um deles, com a armadura pesada e braços fortes para apoiar essa reivindicação."
 	caste = "warrior"
 	maxHealth = 400
 	health = 400
@@ -35,7 +35,7 @@
 
 /datum/action/cooldown/alien/skyrat/warrior_agility
 	name = "Agility Mode"
-	desc = "Drop onto all fours, increasing your speed at the cost of damage and being unable to use most abilities."
+	desc = "Desça para os quatros, aumentando sua velocidade ao custo de danos e sendo incapaz de usar a maioria das habilidades."
 	button_icon_state = "the_speed_is_alot"
 	cooldown_time = 1 SECONDS
 	can_be_used_always = TRUE
@@ -54,8 +54,8 @@
 /// Handles the visual indication and code activation of the warrior agility ability (say that five times fast)
 /datum/action/cooldown/alien/skyrat/warrior_agility/proc/begin_agility()
 	var/mob/living/carbon/alien/adult/skyrat/agility_target = owner
-	agility_target.balloon_alert(agility_target, "agility active")
-	to_chat(agility_target, span_danger("We drop onto all fours, allowing us to move at much greater speed at expense of being able to use most abilities."))
+	agility_target.balloon_alert(agility_target, "agilidade ativa")
+	to_chat(agility_target, span_danger("Nós caímos sobre os quatros, permitindo-nos mover a uma velocidade muito maior em detrimento de ser capaz de usar a maioria das habilidades."))
 	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
 	agility_target.icon_state = "alien[agility_target.caste]_mobility"
 
@@ -69,7 +69,7 @@
 /// Handles the visual indicators and code side of deactivating the agility ability
 /datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility()
 	var/mob/living/carbon/alien/adult/skyrat/agility_target = owner
-	agility_target.balloon_alert(agility_target, "agility ended")
+	agility_target.balloon_alert(agility_target, "A agilidade terminou.")
 	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9) //Warrior runs up on all fours, stands upright, screams at you
 	agility_target.icon_state = "alien[agility_target.caste]"
 

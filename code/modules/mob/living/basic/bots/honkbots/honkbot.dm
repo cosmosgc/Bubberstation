@@ -1,6 +1,6 @@
 /mob/living/basic/bot/secbot/honkbot
 	name = "\improper Honkbot"
-	desc = "A little robot. It looks happy with its bike horn."
+	desc = "Um pequeno robô. Parece feliz com sua buzina de bicicleta."
 	icon_state = "honkbot"
 	base_icon_state = "honkbot"
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, STAMINA = 0, OXY = 0)
@@ -15,7 +15,7 @@
 	path_image_color = "#FF69B4"
 	data_hud_type = TRAIT_SECURITY_HUD_ID_ONLY
 	additional_access = /datum/id_trim/job/clown
-	possessed_message = "You are a honkbot! Make sure the crew are having a great time!"
+	possessed_message = "Você é um honkbot! Certifique-se de que a tripulação está se divertindo!"
 	security_mode_flags = parent_type::security_mode_flags | HONKBOT_MODE_SLIP
 	///our voicelines
 	var/static/list/honkbot_sounds = list(

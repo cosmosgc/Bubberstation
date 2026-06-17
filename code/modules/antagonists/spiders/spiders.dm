@@ -21,7 +21,7 @@
 	owner.announce_objectives()
 
 /datum/objective/spider
-	explanation_text = "Spread the infestation."
+	explanation_text = "Espalhe a infestação."
 
 /datum/objective/spider/New(directive)
 	..()
@@ -52,6 +52,6 @@
 
 /datum/antagonist/spider/flesh/greet()
 	. = ..()
-	to_chat(owner, span_boldwarning("An abomination of flesh set upon the station by changelings, \
-		you are aggressive to all living beings outside of your species and know no loyalties... even to your creator. \
-		<br>Your malleable flesh quickly regenerates if you can avoid taking damage for a few seconds."))
+	to_chat(owner, span_boldwarning("Uma abominação de carne posta sobre a estação por metamorfos,\
+Você é agressivo para todos os seres vivos fora de sua espécie e não conhece lealdades... mesmo para seu criador.\
+		<br>Sua carne maleável regenera-se rapidamente se puder evitar danos por alguns segundos."))

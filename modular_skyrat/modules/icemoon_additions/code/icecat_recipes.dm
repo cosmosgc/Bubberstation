@@ -1,6 +1,6 @@
 /obj/item/anointing_oil
 	name = "anointing bloodresin"
-	desc = "And so Helgar Knife-Arm spoke to the Hearth, and decreed that all of the Kin who gave name to beasts would do so with conquest and blood."
+	desc = "Então Helgar Knife-Arm falou com o Hearth, e decretou que todos os Kin que deram nome a bestas fariam isso com conquista e sangue."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "potred"
 	throwforce = 0
@@ -10,12 +10,12 @@
 
 /obj/item/anointing_oil/attack(mob/living/target_mob, mob/living/user, params)
 	if (!is_species(user, /datum/species/human/felinid/primitive))
-		to_chat(user, span_warning("You have no idea what this disgusting concoction is used for."))
+		to_chat(user, span_warning("Você não tem ideia para que essa mistura nojenta é usada."))
 		return
 	if(being_used || !ismob(target_mob)) //originally this was going to check if the mob was friendly, but if an icecat wants to name some terror mob while it's tearing chunks out of them, why not?
 		return
 	if(target_mob.ckey)
-		to_chat(user, span_warning("You would never shame a creature so intelligent by not allowing it to choose its own name."))
+		to_chat(user, span_warning("Você nunca envergonharia uma criatura tão inteligente ao não permitir que ela escolhesse seu próprio nome."))
 		return
 
 	if(try_anoint(target_mob, user))
@@ -49,7 +49,7 @@
 /obj/item/anointing_oil/examine(mob/user)
 	. = ..()
 	if(is_species(user, /datum/species/human/felinid/primitive))
-		. += span_info("Using this on the local wildlife will allow you to give them a name.")
+		. += span_info("Usar isso na vida selvagem local lhe permitirá dar um nome.")
 
 /datum/crafting_recipe/anointing_oil
 	name = "Anointing Bloodresin"

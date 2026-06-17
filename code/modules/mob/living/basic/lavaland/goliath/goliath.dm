@@ -1,7 +1,7 @@
 /// Slow moving mob which attempts to immobilise its target
 /mob/living/basic/mining/goliath
 	name = "goliath"
-	desc = "A hulking, armor-plated beast with long tendrils arching from its back."
+	desc = "Uma besta hulking, blindada com tentáculos longos arqueando de suas costas."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "goliath"
 	icon_living = "goliath"
@@ -22,7 +22,7 @@
 	attack_sound = 'sound/items/weapons/punch1.ogg'
 	attack_verb_continuous = "pulverizes"
 	attack_verb_simple = "pulverize"
-	throw_blocked_message = "does nothing to the tough hide of"
+	throw_blocked_message = "Não faz nada para a pele dura de"
 	move_force = MOVE_FORCE_VERY_STRONG
 	move_resist = MOVE_FORCE_VERY_STRONG
 	pull_force = MOVE_FORCE_VERY_STRONG
@@ -91,7 +91,7 @@
 /mob/living/basic/mining/goliath/examine(mob/user)
 	. = ..()
 	if (saddled)
-		. += span_info("Someone appears to have attached a saddle to this one.")
+		. += span_info("Parece que alguém prendeu uma sela a esta.")
 
 // Goliaths can summon tentacles more frequently as they take damage, scary.
 /mob/living/basic/mining/goliath/apply_damage(damage, damagetype, def_zone, blocked, forced, spread_damage, wound_bonus, exposed_wound_bonus, sharpness, attack_direction, attacking_item, wound_clothing)
@@ -105,18 +105,18 @@
 	if (!istype(attacking_item, /obj/item/goliath_saddle))
 		return ..()
 	if (!tameable)
-		balloon_alert(user, "doesn't fit!")
+		balloon_alert(user, "Não cabe!")
 		return
 	if (saddled)
-		balloon_alert(user, "already saddled!")
+		balloon_alert(user, "Já selada!")
 		return
 	if (!HAS_TRAIT(src, TRAIT_TAMED))
-		balloon_alert(user, "too rowdy!")
+		balloon_alert(user, "Muito barulhento!")
 		return
-	balloon_alert(user, "affixing saddle...")
+	balloon_alert(user, "Sela afixada...")
 	if (!do_after(user, delay = 5.5 SECONDS, target = src))
 		return
-	balloon_alert(user, "ready to ride")
+	balloon_alert(user, "Pronto para montar")
 	qdel(attacking_item)
 	make_rideable()
 
@@ -182,7 +182,7 @@
 /// Legacy Goliath mob with different sprites, largely the same behaviour
 /mob/living/basic/mining/goliath/ancient
 	name = "ancient goliath"
-	desc = "A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions."
+	desc = "Uma besta maciça que usa tentáculos longos para enlaçar sua presa, ameaçando-os não é aconselhada sob quaisquer condições."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "ancient_goliath"
 	icon_living = "ancient_goliath"
@@ -193,8 +193,8 @@
 /// Rare Goliath variant which occasionally replaces the normal mining mob, releases shitloads of tentacles
 /mob/living/basic/mining/goliath/ancient/immortal
 	name = "immortal goliath"
-	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. \
-		This one is clearly ancient, and its tentacles constantly churn the earth around it."
+	desc = "Golias são biologicamente imortais, e espécimes raros sobreviveram por séculos.\
+Este é claramente antigo, e seus tentáculos constantemente agitam a terra ao seu redor."
 	maxHealth = 400
 	health = 400
 	crusher_drop_chance = 100
@@ -232,6 +232,6 @@
 /// Use this to ride a goliath
 /obj/item/goliath_saddle
 	name = "goliath saddle"
-	desc = "This rough saddle will give you a serviceable seat upon a goliath! Provided you can get one to stand still."
+	desc = "Esta sela áspera lhe dará um assento útil sobre um golias! Desde que consiga um parado."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "goliath_saddle"

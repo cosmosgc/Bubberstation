@@ -6,7 +6,7 @@
 
 /obj/effect/weakpoint
 	name = "weakpoint crack"
-	desc = "A suspicious crack runs along the ground."
+	desc = "Uma rachadura suspeita corre pelo chão."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "weakpoint"
 	base_icon_state = "weakpoint"
@@ -179,13 +179,13 @@
 	notify_ghosts(
 		"A new crack has been spawned in [get_area(src)].",
 		source = pick(new_cracks),
-		header = "Weakpoint created",
+		header = "Fraqueza criada",
 		ghost_sound = 'sound/effects/hit_kick.ogg',
 	)
 
 /obj/effect/weakpoint/big
 	name = "dangerous weakpoint"
-	desc = "A suspicious crack runs along the ground. This one makes you feel particuarly uneasy."
+	desc = "Uma rachadura suspeita corre pelo chão. Este faz você se sentir particularmente desconfortável."
 	icon_state = "weakpoint"
 	crack_length = 15
 	crack_split_count = 6

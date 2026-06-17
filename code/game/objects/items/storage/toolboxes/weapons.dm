@@ -10,7 +10,7 @@
 
 	// BUBBER EDIT ADDITION BEGIN: Just a normal toolbox.
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox."
+	special_desc = "Uma caixa de ferramentas fabricada pelo Sindicato contendo ferramentas táticas extras. Feito de materiais mais robustos que a caixa de ferramentas média."
 	// BUBBER EDIT ADDITION END: Just a normal toolbox.
 
 /obj/item/storage/toolbox/syndicate/PopulateContents()
@@ -25,7 +25,7 @@
 
 /obj/item/storage/toolbox/ammobox
 	name = "ammo canister"
-	desc = "A metal canister designed to hold ammunition"
+	desc = "Uma lata de metal projetada para conter munição."
 	icon_state = "ammobox"
 	inhand_icon_state = "ammobox"
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
@@ -42,8 +42,8 @@
 
 /obj/item/storage/toolbox/ammobox/strilka310
 	name = ".310 Strilka ammo box (Surplus?)"
-	desc = "It contains a few clips. Goddamn, this thing smells awful. \
-		Has this been sitting in a warehouse for the last several centuries?"
+	desc = "Contém alguns clipes. Droga, essa coisa cheira mal.\
+Isso está em um armazém há vários séculos?"
 	ammo_to_spawn = /obj/item/ammo_box/speedloader/strilka310
 
 /obj/item/storage/toolbox/ammobox/strilka310/surplus
@@ -60,7 +60,7 @@
 
 /obj/item/storage/toolbox/guncase
 	name = "gun case"
-	desc = "A weapon's case. Has a blood-red 'S' stamped on the cover."
+	desc = "Um caso de arma. Tem um \"S\" vermelho-sangue estampado na capa."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "infiltrator_case"
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
@@ -82,7 +82,7 @@
 
 /obj/item/storage/toolbox/guncase/traitor
 	name = "makarov gun case"
-	desc = "A weapon's case. Has a blood-red 'S' stamped on the cover. There seems to be a strange switch along the side inside a plastic flap."
+	desc = "Um caso de arma. Tem um \"S\" vermelho-sangue estampado na capa. Parece haver um interruptor estranho ao longo do lado dentro de uma aba plástica."
 	icon_state = "pistol_case"
 	base_icon_state = "pistol_case"
 	// What ammo box do we spawn in our case?
@@ -98,7 +98,7 @@
 
 /obj/item/storage/toolbox/guncase/traitor/examine(mob/user)
 	. = ..()
-	. += span_notice("Activate the Evidence Disposal Explosive using Alt-Right-Click.")
+	. += span_notice("Ativar o explosivo de eliminação de evidências usando Alt-Right-Click.")
 
 /obj/item/storage/toolbox/guncase/traitor/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -122,10 +122,10 @@
 /obj/item/storage/toolbox/guncase/traitor/click_alt_secondary(mob/user)
 	. = ..()
 	if(currently_exploding)
-		user.balloon_alert(user, "already exploding!")
+		user.balloon_alert(user, "Já explodindo!")
 		return
 
-	var/i_dont_even_think_once_about_blowing_stuff_up = tgui_alert(user, "Would you like to activate the evidence disposal bomb now?", "BYE BYE", list("Yes","No"))
+	var/i_dont_even_think_once_about_blowing_stuff_up = tgui_alert(user, "Gostaria de ativar a bomba de eliminação de evidências agora?", "BYE BYE", list("Yes","No"))
 
 	if(i_dont_even_think_once_about_blowing_stuff_up != "Yes" || currently_exploding || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING))
 		return
@@ -250,7 +250,7 @@
 
 /obj/item/storage/toolbox/guncase/soviet
 	name = "ancient gun case"
-	desc = "A weapon's case. Has the symbol of the Third Soviet Union stamped on the side."
+	desc = "Um caso de arma. Tem o símbolo da Terceira União Soviética estampado ao lado."
 	icon_state = "sakhno_case"
 	inhand_icon_state = "sakhno_case"
 	weapon_to_spawn = /obj/effect/spawner/random/sakhno
@@ -258,7 +258,7 @@
 
 /obj/item/storage/toolbox/guncase/monkeycase
 	name = "monkey gun case"
-	desc = "Everything a monkey needs to truly go ape-shit. There's a paw-shaped hand scanner lock on the front of the case."
+	desc = "Tudo que um macaco precisa para realmente enlouquecer. Há um scanner em forma de pata na frente do caso."
 	storage_type = /datum/storage/toolbox/guncase/monkey
 
 /obj/item/storage/toolbox/guncase/monkeycase/attack_self(mob/user, modifiers)
@@ -284,7 +284,7 @@
 		to_chat(user, span_notice("You place your paw on the paw scanner, and hear a soft click as [src] unlocks!"))
 		playsound(src, 'sound/items/click.ogg', 25, TRUE)
 		return TRUE
-	to_chat(user, span_warning("You put your hand on the hand scanner, and it rejects it with an angry chimpanzee screech!"))
+	to_chat(user, span_warning("Você coloca a mão no scanner, e ele rejeita com um chimpanzé irritado!"))
 	playsound(src, SFX_SCREECH, 75, TRUE)
 	return FALSE
 
@@ -316,7 +316,7 @@
 	new /obj/item/storage/backpack/messenger(src)
 
 /obj/item/storage/toolbox/emergency/turret
-	desc = "You feel a strange urge to hit this with a wrench."
+	desc = "Você sente uma estranha vontade de acertar isso com uma chave inglesa."
 
 /obj/item/storage/toolbox/emergency/turret/PopulateContents()
 	new /obj/item/screwdriver(src)
@@ -337,7 +337,7 @@
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 20))
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "constructed!")
+	balloon_alert(user, "Construído!")
 	user.visible_message(
 		span_danger("[user] bashes [src] with [tool]!"),
 		span_danger("You bash [src] with [tool]!"),

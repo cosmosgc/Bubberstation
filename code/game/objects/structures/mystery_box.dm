@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 
 /obj/structure/mystery_box
 	name = "mystery box"
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "wooden"
 	pixel_y = -4
@@ -255,25 +255,25 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 		user.put_in_hands(extra_mag)
 
 /obj/structure/mystery_box/guns
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear. This one seems focused on firearms."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem. Este parece focado em armas de fogo."
 
 /obj/structure/mystery_box/guns/generate_valid_types()
 	valid_types = GLOB.summoned_guns
 
 /obj/structure/mystery_box/tdome
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear. This one has an extended array of weaponry."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem. Este tem uma grande variedade de armas."
 
 /obj/structure/mystery_box/tdome/generate_valid_types()
 	valid_types = GLOB.mystery_box_guns + GLOB.mystery_box_extended
 
 /obj/structure/mystery_box/wands
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different magical items."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes itens mágicos."
 
 /obj/structure/mystery_box/wands/generate_valid_types()
 	valid_types = GLOB.mystery_magic
 
 /obj/structure/mystery_box/wildcard
-	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different pieces of gear. This one has an EXTREAMLY extended array of weaponry."
+	desc = "Uma caixa de madeira que parece igualmente mágica e misteriosa, capaz de conceder ao usuário todos os tipos de diferentes peças de engrenagem. Este tem uma grande variedade de armas."
 
 /obj/structure/mystery_box/wildcard/generate_valid_types()
 	valid_types = GLOB.summoned_all_guns
@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 ///A fishing and pirate-themed mystery box, rarely found by fishing in the ocean, then another cannot be caught for the next 30 minutes.
 /obj/structure/mystery_box/fishing
 	name = "treasure chest"
-	desc = "A piratey coffer equally magical and mysterious, capable of granting different pieces of gear to whoever opens it."
+	desc = "Um cofre pirata igualmente mágico e misterioso, capaz de conceder diferentes peças de equipamento a quem o abrir."
 	icon_state = "treasure"
 	uses_left = 18
 	max_integrity = 100
@@ -305,7 +305,7 @@ GLOBAL_LIST_INIT(mystery_fishing, list(
 /// This represents the item that comes out of the box and is constantly changing before the box finishes deciding. Can probably be just an /atom or /movable.
 /obj/effect/abstract/mystery_box_item
 	name = "???"
-	desc = "Who knows what it'll be??"
+	desc = "Quem sabe o que vai ser?"
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "revolver"
 	pixel_z = -4

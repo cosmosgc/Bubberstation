@@ -1,5 +1,5 @@
 /obj/vehicle/sealed/mecha/marauder
-	desc = "Heavy-duty, combat exosuit, developed after the Durand model. Rarely found among civilian populations. Its bleeding edge armour ensures maximum usability and protection at the cost of some modularity."
+	desc = "Pesado, exosuit de combate, desenvolvido após o modelo Durand. Raramente encontrado entre populações civis. Sua armadura de borda sangrenta garante máxima usabilidade e proteção ao custo de alguma modularidade."
 	name = "\improper Marauder"
 	icon_state = "marauder"
 	base_icon_state = "marauder"
@@ -91,7 +91,7 @@
 	build_all_button_icons()
 
 /obj/vehicle/sealed/mecha/marauder/seraph
-	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
+	desc = "Um exossuit pesado, tipo comando. Este é um modelo personalizado, utilizado apenas por militares de alto escalão."
 	name = "\improper Seraph"
 	icon_state = "seraph"
 	base_icon_state = "seraph"
@@ -127,7 +127,7 @@
 
 
 /obj/vehicle/sealed/mecha/marauder/mauler
-	desc = "Heavy-duty, combat exosuit, developed off of the existing Marauder model, its hardened exterior prevents the use of add-on armor packages."
+	desc = "Pesado, exosuit de combate, desenvolvido fora do modelo Marauder existente, seu exterior endurecido impede o uso de pacotes de armadura adicionais."
 	name = "\improper Mauler"
 	ui_theme = "syndicate"
 	icon_state = "mauler"

@@ -25,7 +25,7 @@
 
 /obj/structure/beebox
 	name = "apiary"
-	desc = "Dr. Miles Manners is just your average wasp-themed super hero by day, but by night he becomes DR. BEES!"
+	desc = "Dr. Miles Manners é apenas um super herói temático de vespas de dia, mas à noite ele se torna DR. Bees!"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "beebox"
 	anchored = TRUE
@@ -124,11 +124,11 @@
 	. = ..()
 
 	if(!queen_bee)
-		. += span_warning("There is no queen bee! There won't bee any honeycomb without a queen!")
+		. += span_warning("Não há abelha rainha! Não haverá favo de mel sem uma rainha!")
 
 	var/half_bee = get_max_bees()*0.5
 	if(half_bee && (bees.len >= half_bee))
-		. += span_notice("This place is aBUZZ with activity... there are lots of bees!")
+		. += span_notice("Este lugar é aBUZZ com atividade... há muitas abelhas!")
 
 	. += span_notice("[bee_resources]/100 resource supply.")
 	. += span_notice("[bee_resources]% towards a new honeycomb.")
@@ -139,7 +139,7 @@
 		. += span_notice("There [plural? "are" : "is"] [honeycombs.len] uncollected honeycomb[plural ? "s":""] in the apiary.")
 
 	if(honeycombs.len >= get_max_honeycomb())
-		. += span_warning("There's no room for more honeycomb!")
+		. += span_warning("Não há espaço para mais favo de mel!")
 
 /obj/structure/beebox/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -155,12 +155,12 @@
 				return
 			honey_frames += frame
 		else
-			to_chat(user, span_warning("There's no room for any more frames in the apiary!"))
+			to_chat(user, span_warning("Não há espaço para mais quadros no apiário!"))
 		return
 
 	if(istype(item, /obj/item/queen_bee))
 		if(queen_bee)
-			to_chat(user, span_warning("This hive already has a queen!"))
+			to_chat(user, span_warning("Esta colmeia já tem uma rainha!"))
 			return
 
 		var/obj/item/queen_bee/new_queen = item
@@ -182,10 +182,10 @@
 						relocating_bee.forceMove(drop_location())
 					relocated++
 			if(relocated)
-				to_chat(user, span_warning("This queen has a different reagent to some of the bees who live here, those bees will not return to this apiary!"))
+				to_chat(user, span_warning("Esta rainha tem um reagente diferente para algumas das abelhas que vivem aqui, essas abelhas não vão voltar para este apiário!"))
 
 		else
-			to_chat(user, span_warning("The queen bee disappeared! Disappearing bees have been in the news lately..."))
+			to_chat(user, span_warning("A abelha rainha desapareceu! Abelhas desaparecidas têm estado nas notícias ultimamente..."))
 
 		return
 
@@ -207,13 +207,13 @@
 		else
 			visible_message(span_danger("[user] disturbs \the [src] to no effect!"))
 	else
-		var/option = tgui_alert(user, "Which piece do you wish to remove?", "Apiary Adjustment", list("Honey Frame", "Queen Bee"))
+		var/option = tgui_alert(user, "Que peça você deseja remover?", "Apiary Adjustment", list("Honey Frame", "Queen Bee"))
 		if(!option || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, NEED_DEXTERITY))
 			return
 		switch(option)
 			if("Honey Frame")
 				if(!honey_frames.len)
-					to_chat(user, span_warning("There are no honey frames to remove!"))
+					to_chat(user, span_warning("Não há quadros de mel para remover!"))
 					return
 
 				var/obj/item/honey_frame/frame = pick_n_take(honey_frames)
@@ -236,7 +236,7 @@
 
 			if("Queen Bee")
 				if(!queen_bee || queen_bee.loc != src)
-					to_chat(user, span_warning("There is no queen bee to remove!"))
+					to_chat(user, span_warning("Não há nenhuma abelha rainha para remover!"))
 					return
 				var/obj/item/queen_bee/queen = new()
 				queen_bee.forceMove(queen)

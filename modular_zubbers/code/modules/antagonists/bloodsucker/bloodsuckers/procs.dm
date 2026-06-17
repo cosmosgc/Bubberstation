@@ -40,8 +40,8 @@
 	if(broke_masquerade)
 		return
 	owner.current.playsound_local(null, 'modular_zubbers/sound/bloodsucker/lunge_warn.ogg', 100, FALSE, pressure_affected = FALSE)
-	to_chat(owner.current, span_cult_bold_italic("You have broken the Masquerade!"))
-	to_chat(owner.current, span_warning("Bloodsucker Tip: When you break the Masquerade, you become open for termination by fellow Bloodsuckers, and your Ghouls are no longer completely loyal to you, as other Bloodsuckers can steal them for themselves!"))
+	to_chat(owner.current, span_cult_bold_italic("Você quebrou a máscara!"))
+	to_chat(owner.current, span_warning("Quando você quebra o Masquerade, você se torna aberto para demissão por companheiros Bloodsuckers, e seus Ghouls não são mais completamente leais a você, como outros Bloodsuckers podem roubá-los para si mesmos!"))
 	broke_masquerade = TRUE
 	antag_hud_name = "masquerade_broken"
 	add_team_hud(owner.current)
@@ -51,7 +51,7 @@
 /datum/antagonist/bloodsucker/proc/fix_masquerade(mob/admin)
 	if(!broke_masquerade)
 		return
-	to_chat(owner.current, span_cult_bold_italic("You have re-entered the Masquerade."))
+	to_chat(owner.current, span_cult_bold_italic("Você voltou a entrar na Mascarada."))
 	broke_masquerade = FALSE
 	antag_hud_name = "bloodsucker"
 	add_team_hud(owner.current)
@@ -70,13 +70,13 @@
 		return
 	AdjustUnspentRank(1)
 	if(!my_clan)
-		to_chat(owner.current, span_notice("You have gained a rank. Join a Clan to spend it."))
+		to_chat(owner.current, span_notice("Você ganhou uma patente. Junte-se a um clã para gastá-lo."))
 		return
 	// Spend Rank Immediately?
 	if(!is_valid_coffin())
-		to_chat(owner, span_notice("<EM>You have grown more ancient! Sleep in a coffin (or put your Favorite Ghoul on a persuasion rack for Ventrue) that you have claimed to thicken your blood and become more powerful.</EM>"))
+		to_chat(owner, span_notice("<EM>Você ficou mais velho! Durma em um caixão (ou coloque seu Ghoul favorito em uma prateleira de persuasão para Ventrue) que você alegou engrossar seu sangue e se tornar mais poderoso.</EM>"))
 		if(bloodsucker_level_unspent >= 2)
-			to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
+			to_chat(owner, span_announce("Se não achar ou roubar um caixão para usar, pode construir um de madeira ou metal."))
 		return
 	SpendRank()
 
@@ -171,11 +171,11 @@
 	var/mob/living/carbon/user = owner.current
 	if(blood_level_gain < level_cost)
 		if(!silent)
-			user.balloon_alert(user, "not enough blood thickening points!")
+			user.balloon_alert(user, "Não há pontos de espessamento de sangue suficientes!")
 		return FALSE
 	if(requires_blood && bloodsucker_blood_volume < level_cost)
 		if(!silent)
-			user.balloon_alert(user, "not enough blood!")
+			user.balloon_alert(user, "Não há sangue suficiente!")
 		return FALSE
 	return TRUE
 
@@ -217,7 +217,7 @@
 	if(HAS_TRAIT_FROM_ONLY(old_owner, TRAIT_NODEATH, BLOODSUCKER_TRAIT))
 		torpor_end(TRUE)
 	to_chat(old_owner, span_userdanger("You have lost your [organ.slot]!"))
-	to_chat(old_owner, span_warning("This means you will no longer enter torpor nor revive from death, and you will no longer heal any damage, nor can you use your abilities."))
+	to_chat(old_owner, span_warning("Isso significa que você não vai mais entrar em Torpor nem reviver da morte, e você não vai mais curar nenhum dano, nem pode usar suas habilidades."))
 
 /// checks if we're a brainmob inside a brain & the brain is inside a head
 /datum/antagonist/bloodsucker/proc/is_head(mob/living/poor_fucker)
@@ -279,7 +279,7 @@
 /datum/antagonist/bloodsucker/proc/regain_heart(mob/living/carbon/target, obj/structure/closet/crate/coffin/coffin)
 	var/obj/item/organ/heart = locate(/obj/item/organ/heart) in coffin.contents
 	if(heart && !target.get_organ_slot(ORGAN_SLOT_HEART) && heart.Insert(target))
-		to_chat(target, span_warning("You have regained your heart!"))
+		to_chat(target, span_warning("Você recuperou seu coração!"))
 
 /datum/antagonist/bloodsucker/proc/allow_head_to_talk(mob/speaker, message, ignore_spam, forced)
 	SIGNAL_HANDLER
@@ -325,8 +325,8 @@
 	if(stake_can_kill())
 		FinalDeath()
 	else
-		to_chat(target, span_userdanger("You have been staked! Your powers are useless, your death forever, while it remains in place."))
-		target.balloon_alert(target, "you have been staked!")
+		to_chat(target, span_userdanger("Você foi estacado! Seus poderes são inúteis, sua morte para sempre, enquanto ela permanece no lugar."))
+		target.balloon_alert(target, "Você foi estacado!")
 
 /// is it something that is close enough to a coffin to let us heal/level up in it?
 /datum/antagonist/bloodsucker/proc/is_valid_coffin()
@@ -356,8 +356,8 @@
 	var/mob/living/carbon/user = owner.current
 	//Level up if possible.
 	if(!my_clan)
-		user.balloon_alert(user, "enter a clan!")
-		to_chat(user, span_notice("You must enter a Clan to rank up. Do it in the antag menu, which you can see by pressing the action button in the top left."))
+		user.balloon_alert(user, "Entre num clã!")
+		to_chat(user, span_notice("Você deve entrar em um clã para se classificar. Faça no menu de antag, que você pode ver pressionando o botão de ação no canto superior esquerdo."))
 	else if(!frenzied)
 		if(GetUnspentRank() < 1)
 			blood_level_gain()

@@ -5,7 +5,7 @@
  */
 /obj/item/newspaper
 	name = "newspaper"
-	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
+	desc = "Um número do Griffon, o jornal circulando a bordo das Estações Espaciais Nanotrasen."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "newspaper"
 	inhand_icon_state = "newspaper"
@@ -85,7 +85,7 @@
 /obj/item/newspaper/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (tool.tool_behaviour == TOOL_SCREWDRIVER || tool.tool_behaviour == TOOL_WIRECUTTER || tool.sharpness)
 		if (punctured)
-			balloon_alert(user, "already has holes!")
+			balloon_alert(user, "Já tem buracos!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/used_verb = "cutting out"
@@ -94,7 +94,7 @@
 
 		balloon_alert(user, "[used_verb] peekholes...")
 		if (!do_after(user, 3 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "Interrompido!")
 			return ITEM_INTERACT_BLOCKING
 
 		playsound(src, 'sound/items/duct_tape/duct_tape_rip.ogg', 50, TRUE)
@@ -110,7 +110,7 @@
 		return NONE
 
 	if (scribble_page == current_page)
-		user.balloon_alert(user, "already scribbled!")
+		user.balloon_alert(user, "Já rabiscado!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/new_scribble_text = tgui_input_text(user, "What do you want to scribble?", "Write something", max_length = MAX_MESSAGE_LEN)
@@ -121,10 +121,10 @@
 	user.balloon_alert(user, "scribbling...")
 	playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 	if (!do_after(user, 2 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.balloon_alert(user, "scribbled!")
+	user.balloon_alert(user, "Escrevo!")
 	scribble_page = current_page
 	scribble_text = new_scribble_text
 	return ITEM_INTERACT_SUCCESS
@@ -176,7 +176,7 @@
 /obj/item/newspaper/examine(mob/user)
 	. = ..()
 	if (punctured)
-		. += span_notice("It has a pair of small peek holes punctured near the top.")
+		. += span_notice("Tem um par de pequenos buracos perfurados perto do topo.")
 	else
 		. += span_notice("You can cut out some peek holes using something [span_bolditalic("sharp")] or [span_bolditalic("pointy")]...")
 

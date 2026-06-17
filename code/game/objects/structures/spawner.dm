@@ -87,7 +87,7 @@
 	name = "warp beacon"
 	icon = 'icons/obj/machines/beacon.dmi'
 	icon_state = "syndbeacon"
-	spawn_text = "warps in from"
+	spawn_text = "Deformações de"
 	mob_types = list(/mob/living/basic/trooper/syndicate/ranged)
 	faction = list(ROLE_SYNDICATE)
 	mob_gps_id = "SYN" // syndicate
@@ -95,21 +95,21 @@
 
 /obj/structure/spawner/skeleton
 	name = "bone pit"
-	desc = "A pit full of bones, and some still seem to be moving..."
+	desc = "Um poço cheio de ossos, e alguns ainda parecem estar se movendo..."
 	icon_state = "hole"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	max_integrity = 150
 	max_mobs = 15
 	spawn_time = 15 SECONDS
 	mob_types = list(/mob/living/basic/skeleton)
-	spawn_text = "climbs out of"
+	spawn_text = "Subindo para fora"
 	faction = list(FACTION_SKELETON)
 	mob_gps_id = "SKL" // skeletons
 	spawner_gps_id = "Bone Pit"
 
 /obj/structure/spawner/clown
 	name = "Laughing Larry"
-	desc = "A laughing, jovial figure. Something seems stuck in his throat."
+	desc = "Uma figura jovial. Algo parece preso na garganta dele."
 	icon_state = "clownbeacon"
 	icon = 'icons/obj/machines/beacon.dmi'
 	max_integrity = 200
@@ -127,19 +127,19 @@
 		/mob/living/basic/clown/longface,
 		/mob/living/basic/clown/lube,
 	)
-	spawn_text = "climbs out of"
+	spawn_text = "Subindo para fora"
 	faction = list(FACTION_CLOWN)
 	mob_gps_id = "???" // clowns
 	spawner_gps_id = "Clown Planet Distortion"
 
 /obj/structure/spawner/mining
 	name = "monster den"
-	desc = "A hole dug into the ground, harboring all kinds of monsters found within most caves or mining asteroids."
+	desc = "Um buraco escavado no chão, abrigando todos os tipos de monstros encontrados na maioria das cavernas ou minerando asteróides."
 	icon_state = "hole"
 	max_integrity = 200
 	max_mobs = 3
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
-	spawn_text = "crawls out of"
+	spawn_text = "Rasteja para fora"
 	mob_types = list(
 		/mob/living/basic/mining/basilisk,
 		/mob/living/basic/mining/goldgrub,
@@ -151,31 +151,31 @@
 
 /obj/structure/spawner/mining/goldgrub
 	name = "goldgrub den"
-	desc = "A den housing a nest of goldgrubs, annoying but arguably much better than anything else you'll find in a nest."
+	desc = "Um covil abrigando um ninho de dourados, irritante, mas indiscutivelmente muito melhor do que qualquer outra coisa que você encontrará em um ninho."
 	mob_types = list(/mob/living/basic/mining/goldgrub)
 	mob_gps_id = "GG"
 
 /obj/structure/spawner/mining/goliath
 	name = "goliath den"
-	desc = "A den housing a nest of goliaths, oh god why?"
+	desc = "Um covil abrigando um ninho de golias, por quê?"
 	mob_types = list(/mob/living/basic/mining/goliath/ancient)
 	mob_gps_id = "GL|A"
 
 /obj/structure/spawner/mining/hivelord
 	name = "hivelord den"
-	desc = "A den housing a nest of hivelords."
+	desc = "Uma toca abrigando um ninho de colmeias."
 	mob_types = list(/mob/living/basic/mining/hivelord)
 	mob_gps_id = "HL"
 
 /obj/structure/spawner/mining/basilisk
 	name = "basilisk den"
-	desc = "A den housing a nest of basilisks, bring a coat."
+	desc = "Uma toca abrigando um ninho de basilisks, traga um casaco."
 	mob_types = list(/mob/living/basic/mining/basilisk)
 	mob_gps_id = "BK"
 
 /obj/structure/spawner/mining/wumborian
 	name = "wumborian fugu den"
-	desc = "A den housing a nest of wumborian fugus, how do they all even fit in there?"
+	desc = "Uma toca abrigando um ninho de fugus wumborianos, como eles se encaixam lá?"
 	mob_types = list(/mob/living/basic/wumborian_fugu)
 	mob_gps_id = "WF"
 
@@ -187,7 +187,7 @@
 	spawn_time = 60 SECONDS
 	max_mobs = 15
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
-	spawn_text = "crawls through"
+	spawn_text = "Rasteja através"
 	mob_types = list(
 		/mob/living/basic/blankbody,
 		/mob/living/basic/creature,
@@ -212,10 +212,10 @@
 /obj/structure/spawner/nether/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(isskeleton(user) || iszombie(user))
-		to_chat(user, span_notice("You don't feel like going home yet..."))
+		to_chat(user, span_notice("Você não quer ir para casa ainda..."))
 	else
 		user.visible_message(span_warning("[user] is violently pulled into the link!"), \
-							span_userdanger("Touching the portal, you are quickly pulled through into a world of unimaginable horror!"))
+							span_userdanger("Ao tocar o portal, você é rapidamente puxado para um mundo de horror inimaginável!"))
 		contents.Add(user)
 
 /obj/structure/spawner/nether/process(seconds_per_tick)
@@ -239,7 +239,7 @@
 	notify_ghosts(
 		"A [name] has been created in \the [get_area(src)]!",
 		source = src,
-		header = "Sentient Spawner Created",
+		header = "Senciente Spawner Criado",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
 
@@ -256,7 +256,7 @@
 
 /obj/structure/spawner/sentient/proteon_spawner
 	name = "eldritch gateway"
-	desc = "A dizzying structure that somehow links into Nar'Sie's own domain. The screams of the damned echo continously."
+	desc = "Uma estrutura vertiginosa que de alguma forma se liga ao domínio de Nar'Sie. Os gritos do maldito eco continuamente."
 	icon = 'icons/obj/antags/cult/structures.dmi'
 	icon_state = "hole"
 	light_power = 2
@@ -266,7 +266,7 @@
 	max_mobs = 2
 	spawn_time = 15 SECONDS
 	mob_types = list(/mob/living/basic/construct/proteon/hostile)
-	spawn_text = "arises from"
+	spawn_text = "surge de"
 	faction = list(FACTION_CULT)
 	role_name = "A proteon cult construct"
 	assumed_control_message = null

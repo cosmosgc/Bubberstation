@@ -5,7 +5,7 @@
  */
 /obj/item/experi_scanner
 	name = "Experi-Scanner"
-	desc = "A handheld scanner used for completing the many experiments of modern science."
+	desc = "Um scanner portátil usado para completar as muitas experiências da ciência moderna."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "experiscanner"

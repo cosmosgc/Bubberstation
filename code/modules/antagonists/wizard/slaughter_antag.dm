@@ -20,7 +20,7 @@
 /datum/antagonist/slaughter/greet()
 	. = ..()
 	owner.announce_objectives()
-	to_chat(owner, span_warning("You have a powerful alt-attack that slams people backwards that you can activate by right-clicking your target!"))
+	to_chat(owner, span_warning("Você tem um poderoso ataque que bate as pessoas para trás que você pode ativar clicando com o botão direito do mouse no seu alvo!"))
 
 /datum/antagonist/slaughter/forge_objectives()
 	if(summoner)

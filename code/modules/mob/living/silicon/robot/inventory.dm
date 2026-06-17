@@ -27,18 +27,18 @@
 		CRASH("activate_module called with item_module not in model.modules")
 
 	if(activated(item_module))
-		to_chat(src, span_warning("That module is already activated."))
+		to_chat(src, span_warning("Esse módulo já está ativado."))
 		return FALSE
 
 	if(disabled_modules & BORG_MODULE_ALL_DISABLED)
-		to_chat(src, span_warning("All modules are disabled!"))
+		to_chat(src, span_warning("Todos os módulos estão desativados!"))
 		return FALSE
 
 	/// What's the first free slot for the borg?
 	var/first_free_slot = !held_items[1] ? 1 : (!held_items[2] ? 2 : (!held_items[3] ? 3 : null))
 
 	if(!first_free_slot || is_invalid_module_number(first_free_slot))
-		to_chat(src, span_warning("Deactivate a module first!"))
+		to_chat(src, span_warning("Desativar um módulo primeiro!"))
 		return FALSE
 
 	return put_in_hand(item_module, first_free_slot)
@@ -102,9 +102,9 @@
 
 			if(builtInCamera)
 				builtInCamera.camera_enabled = FALSE
-				to_chat(src, span_userdanger("CRITICAL ERROR: Built in security camera OFFLINE."))
+				to_chat(src, span_userdanger("Construído em câmera de segurança offline."))
 
-			to_chat(src, span_userdanger("CRITICAL ERROR: ALL modules OFFLINE."))
+			to_chat(src, span_userdanger("Todos os módulos desligados."))
 
 		if(BORG_CHOOSE_MODULE_TWO)
 			if(disabled_modules & BORG_MODULE_TWO_DISABLED)
@@ -156,7 +156,7 @@
 			disabled_modules &= ~BORG_MODULE_ALL_DISABLED
 			if(builtInCamera)
 				builtInCamera.camera_enabled = TRUE
-				to_chat(src, span_notice("You hear your built in security camera focus adjust as it comes back online!"))
+				to_chat(src, span_notice("Você ouve seu foco na câmera de segurança se ajustar quando ele volta on-line!"))
 
 		if(BORG_CHOOSE_MODULE_TWO)
 			if(!(disabled_modules & BORG_MODULE_TWO_DISABLED))

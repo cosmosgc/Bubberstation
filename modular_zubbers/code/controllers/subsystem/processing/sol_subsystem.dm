@@ -33,8 +33,8 @@ PROCESSING_SUBSYSTEM_DEF(sunlight)
 			SEND_SIGNAL(src, COMSIG_SOL_END)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SOL_ENDED,
-				vampire_warning_message = span_announce("The solar flare has ended, and the daylight danger has passed... for now."),
-				ghoul_warning_message = span_announce("The solar flare has ended, and the daylight danger has passed... for now."),
+				vampire_warning_message = span_announce("A erupção solar terminou, e o perigo da luz do dia passou... por enquanto."),
+				ghoul_warning_message = span_announce("A erupção solar terminou, e o perigo da luz do dia passou... por enquanto."),
 			)
 		return ..()
 
@@ -55,7 +55,7 @@ PROCESSING_SUBSYSTEM_DEF(sunlight)
 		if(TIME_BLOODSUCKER_BURN_INTERVAL)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_THIRD_WARNING,
-				vampire_warning_message = span_userdanger("Seek cover, for Sol rises!"),
+				vampire_warning_message = span_userdanger("Procurem cobertura, Sol sobe!"),
 			)
 		if(NONE)
 			sunlight_active = TRUE
@@ -65,7 +65,7 @@ PROCESSING_SUBSYSTEM_DEF(sunlight)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SOL_ROSE,
 				vampire_warning_message = span_userdanger("Solar flares bombard the station with deadly UV light! Stay in cover for the next [TIME_BLOODSUCKER_DAY / 60] minutes or risk Final Death!"),
-				ghoul_warning_message = span_userdanger("Solar flares bombard the station with UV light!"),
+				ghoul_warning_message = span_userdanger("Explosões solares bombardeiam a estação com luz UV!"),
 			)
 	..()
 

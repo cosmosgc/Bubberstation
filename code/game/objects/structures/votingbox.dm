@@ -3,7 +3,7 @@
 
 /obj/structure/votebox
 	name = "voting box"
-	desc = "An automatic voting box."
+	desc = "Uma caixa de votação automática."
 
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "votebox_maint"
@@ -64,7 +64,7 @@
 	if(!can_interact(user))
 		return
 	if(!is_operator(user))
-		to_chat(user,span_warning("Voting box operator authorization required!"))
+		to_chat(user,span_warning("Autorização do operador da caixa de votação necessária!"))
 		return
 
 	if(href_list["act"])
@@ -77,7 +77,7 @@
 			if("reset_voted")
 				if(voted)
 					voted.Cut()
-				to_chat(user,span_notice("You reset the voter buffer. Everyone can vote again."))
+				to_chat(user,span_notice("Você redefiniu o buffer do eleitor. Todos podem votar novamente."))
 			if("raffle")
 				raffle(user)
 			if("shred")
@@ -114,7 +114,7 @@
 		if(!voted)
 			voted = list()
 		voted += voter_card
-		to_chat(user,span_notice("You cast your vote."))
+		to_chat(user,span_notice("Você votou."))
 
 /obj/structure/votebox/proc/valid_vote(obj/item/paper/voting_slip)
 	if(voting_slip.get_total_length() > VOTE_TEXT_LIMIT)
@@ -128,7 +128,7 @@
 /obj/structure/votebox/proc/shred(mob/user)
 	for(var/obj/item/paper/P in contents)
 		qdel(P)
-	to_chat(user,span_notice("You shred the current votes."))
+	to_chat(user,span_notice("Você destrói os votos atuais."))
 
 /obj/structure/votebox/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -138,10 +138,10 @@
 /obj/structure/votebox/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(voting_active)
-		to_chat(user,span_warning("You can only retrieve votes if maintenance mode is active!"))
+		to_chat(user,span_warning("Você só pode recuperar votos se o modo de manutenção estiver ativo!"))
 		return FALSE
 	dump_contents()
-	to_chat(user,span_notice("You open vote retrieval hatch and dump all the votes."))
+	to_chat(user,span_notice("Você abre a escotilha de recuperação de votos e larga todos os votos."))
 	return TRUE
 
 /obj/structure/votebox/dump_contents()

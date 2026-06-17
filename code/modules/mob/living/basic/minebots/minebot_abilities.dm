@@ -22,7 +22,7 @@
 		return TRUE
 
 	if(feedback)
-		owner.balloon_alert(owner, "no ore!")
+		owner.balloon_alert(owner, "Sem minério!")
 	return FALSE
 
 /datum/action/cooldown/mob_cooldown/minedrone/dump_ore/Activate()
@@ -55,7 +55,7 @@
 	button_icon_state = "84mm-heap"
 	background_icon_state = "bg_default"
 	overlay_icon_state = "bg_default_border"
-	desc = "Launch a missile towards the target!"
+	desc = "Lançar um míssil em direção ao alvo!"
 	cooldown_time = 10 SECONDS
 	shared_cooldown = NONE
 	///how long before we launch said missile
@@ -68,7 +68,7 @@
 	if(lavaland_equipment_pressure_check(get_turf(owner)))
 		return TRUE
 	if(feedback)
-		owner.balloon_alert(owner, "cant be used here!")
+		owner.balloon_alert(owner, "Não pode ser usado aqui!")
 	return FALSE
 
 /datum/action/cooldown/mob_cooldown/missile_launcher/Activate(atom/target)
@@ -92,7 +92,7 @@
 
 /datum/action/cooldown/mob_cooldown/drop_landmine
 	name = "Landmine"
-	desc = "Drop a landmine!"
+	desc = "Largue uma mina terrestre!"
 	button_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "landmine"
 	background_icon_state = "bg_default"
@@ -108,7 +108,7 @@
 	if(lavaland_equipment_pressure_check(get_turf(owner)))
 		return TRUE
 	if(feedback)
-		owner.balloon_alert(owner, "cant be used here!")
+		owner.balloon_alert(owner, "Não pode ser usado aqui!")
 	return FALSE
 
 /datum/action/cooldown/mob_cooldown/drop_landmine/Activate(atom/target)

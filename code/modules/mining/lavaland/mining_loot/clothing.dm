@@ -1,7 +1,7 @@
 // Memento Mori
 /obj/item/clothing/neck/necklace/memento_mori
 	name = "Memento Mori"
-	desc = "A mysterious pendant. An inscription on it says: \"Certain death tomorrow means certain life today.\""
+	desc = "Um pingente misterioso. Uma inscrição diz:\"Morte certa amanhã significa vida certa hoje.\""
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "memento_mori"
 	worn_icon_state = "memento"
@@ -24,11 +24,11 @@
 	return ..()
 
 /obj/item/clothing/neck/necklace/memento_mori/proc/memento(mob/living/carbon/human/user)
-	to_chat(user, span_warning("You feel your life being drained by the pendant..."))
+	to_chat(user, span_warning("Você sente sua vida sendo drenada pelo pingente..."))
 	if (!do_after(user, 4 SECONDS, target = user))
 		return
 
-	to_chat(user, span_notice("Your lifeforce is now linked to the pendant! You feel like removing it would kill you, and yet you instinctively know that until then, you won't die."))
+	to_chat(user, span_notice("Sua força vital está agora ligada ao pingente! Você sente como se removê-lo iria matá-lo, e ainda assim você instintivamente sabe que até então, você não vai morrer."))
 	user.add_traits(list(TRAIT_NODEATH, TRAIT_NOHARDCRIT, TRAIT_NOCRITDAMAGE), CLOTHING_TRAIT)
 	RegisterSignal(user, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(check_health))
 	icon_state = "memento_mori_active"
@@ -41,7 +41,7 @@
 	UnregisterSignal(active_owner, COMSIG_LIVING_HEALTH_UPDATE)
 	var/mob/living/carbon/human/stored_owner = active_owner //to avoid infinite looping when dust unequips the pendant
 	active_owner = null
-	to_chat(stored_owner, span_userdanger("You feel your life rapidly slipping away from you!"))
+	to_chat(stored_owner, span_userdanger("Você sente sua vida se afastando rapidamente de você!"))
 	stored_owner.dust(just_ash = TRUE, drop_items = TRUE)
 
 /obj/item/clothing/neck/necklace/memento_mori/proc/check_health(mob/living/source)
@@ -65,19 +65,19 @@
 	new /obj/effect/temp_visual/guardian/phase/out(get_turf(guardian))
 	guardian.locked = TRUE
 	guardian.forceMove(src)
-	to_chat(guardian, span_userdanger("You have been locked away in your summoner's pendant!"))
+	to_chat(guardian, span_userdanger("Você foi trancado no pingente do seu intimador!"))
 	guardian.playsound_local(get_turf(guardian), 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 
 /obj/item/clothing/neck/necklace/memento_mori/proc/regurgitate_guardian(mob/living/basic/guardian/guardian)
 	guardian.locked = FALSE
 	guardian.recall(forced = TRUE)
-	to_chat(guardian, span_notice("You have been returned back from your summoner's pendant!"))
+	to_chat(guardian, span_notice("Você foi devolvido do pingente do seu intimador!"))
 	guardian.playsound_local(get_turf(guardian), 'sound/effects/magic/repulse.ogg', 50, TRUE)
 
 /datum/action/item_action/hands_free/memento_mori
 	check_flags = NONE
 	name = "Memento Mori"
-	desc = "Bind your life to the pendant."
+	desc = "Prenda sua vida ao pingente."
 
 /datum/action/item_action/hands_free/memento_mori/do_effect(trigger_flags)
 	var/obj/item/clothing/neck/necklace/memento_mori/memento = target
@@ -91,7 +91,7 @@
 
 /obj/item/clothing/gloves/gauntlets
 	name = "concussive gauntlets"
-	desc = "Pickaxes... for your hands!"
+	desc = "Pickaxes... para suas mãos!"
 	icon_state = "concussive_gauntlets"
 	inhand_icon_state = null
 	toolspeed = 0.1

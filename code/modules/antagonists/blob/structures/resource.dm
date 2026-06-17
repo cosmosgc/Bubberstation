@@ -2,7 +2,7 @@
 	name = "resource blob"
 	icon = 'icons/mob/nonhuman-player/blob.dmi'
 	icon_state = "blob_resource"
-	desc = "A thin spire of slightly swaying tendrils."
+	desc = "Uma ponta fina de tentáculos ligeiramente oscilantes."
 	max_integrity = BLOB_RESOURCE_MAX_HP
 	point_return = BLOB_REFUND_RESOURCE_COST
 	resistance_flags = LAVA_PROOF

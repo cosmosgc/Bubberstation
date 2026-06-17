@@ -8,7 +8,7 @@
 	maxHealth = 1 * STANDARD_ORGAN_THRESHOLD
 	zone = "chest"
 	slot = "stomach"
-	desc = "A specialised mini reactor, for synthetic use only. Has a low-power mode to ensure baseline functions. Without this, synthetics are unable to stay powered."
+	desc = "Um mini reator especializado, só para uso sintético. Tem um modo de baixa potência para garantir funções básicas. Sem isso, sintéticos são incapazes de manter a energia."
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 
 /obj/item/organ/stomach/synth/emp_act(severity)
@@ -23,16 +23,16 @@
 			if(EMP_HEAVY)
 				owner.nutrition = max(0, owner.nutrition - SYNTH_STOMACH_HEAVY_EMP_CHARGE_LOSS)
 				apply_organ_damage(SYNTH_ORGAN_HEAVY_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
-				to_chat(owner, span_warning("Alert: Severe battery discharge!"))
+				to_chat(owner, span_warning("Alta descarga de bateria!"))
 
 			if(EMP_LIGHT)
 				owner.nutrition = max(0, owner.nutrition - SYNTH_STOMACH_LIGHT_EMP_CHARGE_LOSS)
 				apply_organ_damage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
-				to_chat(owner, span_warning("Alert: Minor battery discharge!"))
+				to_chat(owner, span_warning("Alerta: descarga de bateria menor!"))
 
 /datum/design/synth_stomach
 	name = "Synthetic Bio-Reactor"
-	desc = "A specialised mini reactor, for synthetic use only. Has a low-power mode to ensure baseline functions. Without this, synthetics are unable to stay powered."
+	desc = "Um mini reator especializado, só para uso sintético. Tem um modo de baixa potência para garantir funções básicas. Sem isso, sintéticos são incapazes de manter a energia."
 	id = "synth_stomach"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS

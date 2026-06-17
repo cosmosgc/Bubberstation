@@ -1,6 +1,6 @@
 /obj/machinery/automatic_respawner
 	name = "Automatic Respawner"
-	desc = "Allows for lost souls to find a new body."
+	desc = "Permite que almas perdidas encontrem um novo corpo."
 	icon = 'modular_skyrat/modules/mapping/icons/machinery/automatic_respawner.dmi'
 	icon_state = "respawner"
 	use_power = FALSE //It doesn't make sense for this to require power in most of the use cases.
@@ -39,7 +39,7 @@
 		to_chat(user, span_warning("[src] has [COOLDOWN_TIMELEFT(src, respawn_cooldown) / 10] seconds left before it can be used again. Please try again later."))
 		return FALSE
 
-	var/choice = tgui_alert(user, "Do you wish to use the respawner? If you have a body, you will not be able to return to it.", name, list("Yes", "No"))
+	var/choice = tgui_alert(user, "Você deseja usar o respawner? Se tiver um corpo, não poderá voltar para ele.", name, list("Yes", "No"))
 	if(choice != "Yes")
 		return FALSE
 
@@ -79,7 +79,7 @@
 
 /obj/item/respawn_implant //Not actually an implanter
 	name = "Respawn Implanter"
-	desc = "Life doesn't end after death."
+	desc = "A vida não acaba depois da morte."
 	icon = 'modular_skyrat/modules/aesthetics/implanter/implanter.dmi'
 	icon_state = "implanter0"
 	inhand_icon_state = "syringe_0"

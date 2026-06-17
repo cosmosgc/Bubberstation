@@ -1,7 +1,7 @@
 ///Used to make mobs from microbiological samples. Grow grow grow.
 /obj/machinery/vatgrower
 	name = "growing vat"
-	desc = "Tastes just like the chef's soup."
+	desc = "Tem gosto de sopa de chef."
 	icon = 'icons/obj/science/vatgrowing.dmi'
 	icon_state = "growing_vat"
 	density = TRUE
@@ -85,29 +85,29 @@
 		return
 	if(!anchored)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	var/warning = tgui_alert(user, "Are you sure you want to empty the soup container?","Flush soup container?", list("Flush", "Cancel"))
+	var/warning = tgui_alert(user, "Tem certeza que quer esvaziar o recipiente de sopa?","Flush soup container?", list("Flush", "Cancel"))
 	if(warning == "Flush" && user.can_perform_action(src))
 		reagents.clear_reagents()
 		if(biological_sample)
 			QDEL_NULL(biological_sample)
-		balloon_alert(user, "container empty")
+		balloon_alert(user, "recipiente vazio")
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 ///Creates a clone of the supplied sample and puts it in the vat
 /obj/machinery/vatgrower/proc/deposit_sample(mob/user, obj/item/petri_dish/petri)
 	if(!petri.sample)
-		balloon_alert(user, "dish empty")
+		balloon_alert(user, "prato vazio")
 		return ITEM_INTERACT_FAILURE
 	if(biological_sample)
-		balloon_alert(user, "already has a sample")
+		balloon_alert(user, "Já tem uma amostra.")
 		return ITEM_INTERACT_FAILURE
 	biological_sample = new
 	for(var/datum/micro_organism/m in petri.sample.micro_organisms)
 		biological_sample.micro_organisms += new m.type()
 	biological_sample.sample_layers = petri.sample.sample_layers
 	biological_sample.sample_color = petri.sample.sample_color
-	balloon_alert(user, "added sample")
+	balloon_alert(user, "Amostra adicionada")
 	playsound(src, 'sound/effects/bubbles/bubbles.ogg', 50, TRUE)
 	update_appearance()
 	RegisterSignal(biological_sample, COMSIG_SAMPLE_GROWTH_COMPLETED, PROC_REF(on_sample_growth_completed))
@@ -118,7 +118,7 @@
 	. = ..()
 	if(!biological_sample)
 		return
-	. += span_notice("It seems to have a sample in it!")
+	. += span_notice("Parece ter uma amostra!")
 	for(var/i in biological_sample.micro_organisms)
 		var/datum/micro_organism/MO = i
 		. += MO.get_details(HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER))
@@ -159,7 +159,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "resampling circuit overloaded")
+	balloon_alert(user, "Reamostrando o circuito sobrecarregado.")
 	flick("growing_vat_emagged", src)
 	return TRUE
 
@@ -174,7 +174,7 @@
 
 /obj/machinery/vatgrower/small
 	name = "small growing vat"
-	desc = "Tastes just like the chef's soup. Fit for growing organ tissue samples."
+	desc = "Tem gosto de sopa de chef. Adequado para amostras de órgãos."
 	icon_state = "growing_vat_small"
 	density = FALSE
 	pass_flags_self = PASSMACHINE | LETPASSTHROW

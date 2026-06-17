@@ -9,7 +9,7 @@
 
 	var/mob/living/hit_plant = target
 	if(!(hit_plant.mob_biotypes & MOB_PLANT))
-		hit_plant.show_message(span_notice("The radiation beam dissipates harmlessly through your body."))
+		hit_plant.show_message(span_notice("O feixe de radiação se dissipa inofensivamente através de seu corpo."))
 		return BULLET_ACT_BLOCK
 
 	. = ..()
@@ -29,15 +29,15 @@
 /obj/projectile/energy/flora/mut/on_hit_plant_effect(mob/living/hit_plant)
 	if(prob(85))
 		hit_plant.adjust_fire_loss(rand(5, 15))
-		hit_plant.show_message(span_userdanger("The radiation beam singes you!"))
+		hit_plant.show_message(span_userdanger("O raio de radiação te chama!"))
 		return
 
 	hit_plant.adjust_tox_loss(rand(3, 6))
 	hit_plant.Paralyze(10 SECONDS)
 	hit_plant.visible_message(
 		span_warning("[hit_plant] writhes in pain as [hit_plant.p_their()] vacuoles boil."),
-		span_userdanger("You writhe in pain as your vacuoles boil!"),
-		span_hear("You hear the crunching of leaves."),
+		span_userdanger("Você se contorce de dor enquanto seus vacúolos fervem!"),
+		span_hear("Você ouve o esmagamento das folhas."),
 	)
 	if(iscarbon(hit_plant) && hit_plant.has_dna())
 		var/mob/living/carbon/carbon_plant = hit_plant
@@ -61,7 +61,7 @@
 	icon_state = "energy3"
 
 /obj/projectile/energy/flora/evolution/on_hit_plant_effect(mob/living/hit_plant)
-	hit_plant.show_message(span_notice("The radiation beam leaves you feeling disoriented!"))
+	hit_plant.show_message(span_notice("O raio de radiação deixa você desorientado!"))
 	hit_plant.set_dizzy_if_lower(30 SECONDS)
 	hit_plant.emote("flip")
 	hit_plant.emote("spin")

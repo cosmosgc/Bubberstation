@@ -1,6 +1,6 @@
 /obj/machinery/ai_slipper
 	name = "foam dispenser"
-	desc = "A remotely-activatable dispenser for crowd-controlling foam."
+	desc = "Um dispositivo remotamente ativado para controlar a multidão."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "ai-slipper0"
 	base_icon_state = "ai-slipper"
@@ -37,7 +37,7 @@
 
 /obj/machinery/ai_slipper/interact(mob/user)
 	if(!allowed(user))
-		to_chat(user, span_danger("Access denied."))
+		to_chat(user, span_danger("Acesso negado."))
 		return
 	if(!uses)
 		to_chat(user, span_warning("[src] is out of foam and cannot be activated!"))

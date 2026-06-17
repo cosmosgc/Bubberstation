@@ -37,7 +37,7 @@
 		return .
 
 	if(owner.stat == CONSCIOUS)
-		to_chat(owner, span_notice("You're too exhausted to keep going..."))
+		to_chat(owner, span_notice("Está exausta demais para continuar..."))
 	owner.add_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED, TRAIT_FLOORED), STAMINA)
 	return .
 
@@ -66,7 +66,7 @@
 		return NONE
 
 	if(COOLDOWN_FINISHED(src, warn_cd) && owner.stat == CONSCIOUS)
-		to_chat(owner, span_notice("You start to recover from the exhaustion!"))
+		to_chat(owner, span_notice("Você começa a se recuperar da exaustão!"))
 		owner.visible_message(span_warning("[owner] starts to recover from the exhaustion!"), ignored_mobs = owner)
 		COOLDOWN_START(src, warn_cd, 2.5 SECONDS)
 

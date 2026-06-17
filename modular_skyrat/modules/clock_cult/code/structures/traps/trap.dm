@@ -1,7 +1,7 @@
 //Thing that you stick on the floor
 /obj/item/clockwork/trap_placer
 	name = "trap"
-	desc = "don't trust it"
+	desc = "Não confie nisso."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	w_class = WEIGHT_CLASS_HUGE
 	/// The path of the trap to make when this is set down
@@ -32,7 +32,7 @@
 		if(!istype(trap, result_path))
 			continue
 
-		user.balloon_alert(user, "space occupied!")
+		user.balloon_alert(user, "Espaço ocupado!")
 		return
 
 	to_chat(user, span_brass("You place [src], use a <b>clockwork slab</b> to link it to other traps."))
@@ -44,7 +44,7 @@
 //Thing you stick on the wall
 /obj/item/wallframe/clocktrap
 	name = "clockwork trap item"
-	desc = "It's a... Wait what?"
+	desc = "É um... Esperar o quê?"
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	pixel_shift = 24
 	w_class = WEIGHT_CLASS_HUGE
@@ -61,11 +61,11 @@
 //Wall item (either spawned by a wallframe or directly)
 /obj/structure/destructible/clockwork/trap
 	name = "clockwork trap item"
-	desc = "Probably doesn't do much."
+	desc = "Provavelmente não faz muito."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	density = FALSE
 	layer = LOW_OBJ_LAYER
-	break_message = span_warning("The intricate looking device falls apart.")
+	break_message = span_warning("O intrincado dispositivo de aparência desmorona.")
 	/// What item's produced when this structure is unwrenched
 	var/unwrench_path = /obj/item/wallframe/clocktrap
 	/// The component used for the trap's back-end
@@ -151,7 +151,7 @@
 			slab.buffer = null
 
 		else
-			to_chat(user, span_brass("That device does not accept input."))
+			to_chat(user, span_brass("Esse dispositivo não aceita entrada."))
 
 	else
 
@@ -161,7 +161,7 @@
 
 		else
 
-			to_chat(user, span_brass("That device does not output anything."))
+			to_chat(user, span_brass("Esse dispositivo não produz nada."))
 
 /// Sends a signal to activate to every outputting component in `outputs`
 /datum/component/clockwork_trap/proc/trigger_connected()

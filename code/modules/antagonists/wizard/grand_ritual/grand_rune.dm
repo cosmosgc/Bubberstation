@@ -12,7 +12,7 @@
  */
 /obj/effect/grand_rune
 	name = "grand rune"
-	desc = "A flowing circle of shapes and runes is etched into the floor, the lines twist and move before your eyes."
+	desc = "Um círculo fluindo de formas e runas é gravado no chão, as linhas giram e se movem diante de seus olhos."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "wizard_rune"
 	pixel_x = -33
@@ -94,7 +94,7 @@
 /obj/effect/grand_rune/examine(mob/user)
 	. = ..()
 	if (times_invoked >= GRAND_RUNE_INVOKES_TO_COMPLETE)
-		. += span_notice("Its power seems to have been expended.")
+		. += span_notice("Seu poder parece ter sido gasto.")
 		return
 	if(!IS_WIZARD(user))
 		return
@@ -121,11 +121,11 @@
 /obj/effect/grand_rune/proc/invoke_rune(mob/living/user)
 	is_in_use = TRUE
 	add_channel_effect(user)
-	user.balloon_alert(user, "invoking rune...")
+	user.balloon_alert(user, "invocando runa...")
 
 	if(!do_after(user, invoke_time, src))
 		remove_channel_effect(user)
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "Interrompido!")
 		is_in_use = FALSE
 		return
 
@@ -345,7 +345,7 @@
 		var/round_time_passed = world.time - SSticker.round_start_time
 		if(picked_finale.minimum_time >= round_time_passed)
 			to_chat(user, span_warning("The chosen grand finale will only be available in <b>[DisplayTimeText(picked_finale.minimum_time - round_time_passed)]</b>!"))
-			to_chat(user, span_warning("Be patient, or select another option."))
+			to_chat(user, span_warning("Seja paciente, ou escolha outra opção."))
 			return
 	chosen_effect = TRUE
 	if (pick == PICK_NOTHING)
@@ -376,7 +376,7 @@
  */
 /obj/effect/grand_rune/finale/cheesy
 	name = "especially grand rune"
-	desc = "A ritual circle of maddening shapes and outlines, its mere presence an insult to reason."
+	desc = "Um círculo ritual de formas e contornos loucos, sua mera presença é um insulto à razão."
 	icon_state = "wizard_rune_cheese"
 	magic_words = list("Greetings! Salutations!", "Welcome! Now go away.", "Leave. Run. Or die.")
 	remains_typepath = /obj/effect/decal/cleanable/grand_remains/cheese
@@ -393,7 +393,7 @@
  */
 /obj/effect/decal/cleanable/grand_remains
 	name = "circle of ash"
-	desc = "Looks like someone's been drawing weird shapes with ash on the ground."
+	desc = "Parece que alguém está desenhando formas estranhas com cinzas no chão."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "wizard_rune_burned"
 	pixel_x = -28
@@ -406,7 +406,7 @@
 
 /obj/effect/decal/cleanable/grand_remains/cheese
 	name = "cheese soot marks"
-	desc = "The bizarre shapes on the ground turn out to be a cheese crust burned to black tar."
+	desc = "As formas bizarras no chão acabam sendo uma crosta de queijo queimada até o alcatrão preto."
 	icon_state = "wizard_rune_cheese_burned"
 
 #undef PICK_NOTHING

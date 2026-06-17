@@ -4,12 +4,12 @@
  */
 /obj/item/skillchip/big_pointer
 	name = "Kommand skillchip"
-	desc = "A biochip detailing various techniques employed by historical leaders to points at things like a true boss."
+	desc = "Um biochip detalhando várias técnicas empregadas por líderes históricos para apontar coisas como um verdadeiro chefe."
 	skill_name = "Enhanced pointing"
-	skill_description = "Learn to point at things in a more noticeable way."
+	skill_description = "Aprenda a apontar as coisas de uma forma mais perceptível."
 	skill_icon = FA_ICON_ARROW_DOWN
-	activate_message = span_notice("From \"The Definitive Compendium of Body Language for the Aspiring Leader\", page 164, paragraph 3...")
-	deactivate_message = span_notice("So, uh, yeah, how do I point at things again?")
+	activate_message = span_notice("De\"O Compêndio Definitivo da Linguagem Corporal para o Líder aspirante\", página 164, parágrafo 3...")
+	deactivate_message = span_notice("Então, como posso apontar para as coisas de novo?")
 
 	actions_types = list(/datum/action/change_pointer_color)
 
@@ -40,7 +40,7 @@
 
 /datum/action/change_pointer_color
 	name = "Change Pointer Color"
-	desc = "Set your custom pointer color, or reset it to the default."
+	desc = "Defina sua cor de ponteiro personalizada, ou restaure-a para o padrão."
 	button_icon = /obj/effect/temp_visual/point::icon
 	button_icon_state = "arrow_large_still"
 	check_flags = AB_CHECK_CONSCIOUS
@@ -61,14 +61,14 @@
 	if(!arrow_color)
 		pick_color(user)
 		return
-	var/choice = tgui_alert(owner, "Reset or update pointer color?","Pointer Color", list("Reset","Update"))
+	var/choice = tgui_alert(owner, "Reiniciar ou atualizar a cor do ponteiro?","Pointer Color", list("Reset","Update"))
 	if(user != owner || !choice || !IsAvailable(feedback = TRUE))
 		return
 	if(choice == "Update")
 		pick_color(user)
 	else
 		arrow_color = null
-		owner.balloon_alert(owner, "pointer reset")
+		owner.balloon_alert(owner, "Ponto reset")
 		build_all_button_icons(update_flags = UPDATE_BUTTON_ICON, force = TRUE)
 
 /datum/action/change_pointer_color/proc/pick_color(mob/user)
@@ -76,7 +76,7 @@
 	if(user != owner || !IsAvailable(feedback = TRUE))
 		return
 	arrow_color = ncolor
-	owner.balloon_alert(owner, "pointer updated")
+	owner.balloon_alert(owner, "ponteiro atualizado")
 	build_all_button_icons(update_flags = UPDATE_BUTTON_ICON, force = TRUE)
 
 /datum/action/change_pointer_color/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)

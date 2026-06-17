@@ -2,7 +2,7 @@
 
 /obj/item/hairbrush
 	name = "hairbrush"
-	desc = "A small, circular brush with an ergonomic grip for efficient brush application."
+	desc = "Um pequeno pincel circular com uma aderência ergonômica para uma aplicação eficiente."
 	icon = 'modular_skyrat/modules/hairbrush/icons/hairbrush.dmi'
 	icon_state = "brush"
 	inhand_icon_state = "inhand"
@@ -13,7 +13,7 @@
 
 /obj/item/hairbrush/attack(mob/target, mob/user)
 	if(target.stat == DEAD)
-		to_chat(usr, span_warning("There isn't much point brushing someone who can't appreciate it!"))
+		to_chat(usr, span_warning("Não tem muito sentido escovar alguém que não pode apreciar!"))
 		return
 	brush(target, user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -42,7 +42,7 @@
 
 		// Brush their hair
 		if(human_target == user)
-			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
+			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("Você escova o cabelo."))
 			human_target.add_mood_event("brushed", /datum/mood_event/brushed/self)
 		else
 			user.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."), ignored_mobs=list(human_target))

@@ -80,7 +80,7 @@
 
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
-		less_input_message = " - Notice: Observer freelook is currently disabled."
+		less_input_message = "Observação: o observador Freelook está desativado."
 	// Don't convert this to tgui please, it's way too important
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") //SKYRAT EDIT CHANGE
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
@@ -94,11 +94,11 @@
 
 	observer.started_as_observer = TRUE
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-	to_chat(src, span_notice("Now teleporting."))
+	to_chat(src, span_notice("Agora teletransportando."))
 	if (O)
 		observer.forceMove(O.loc)
 	else
-		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
+		to_chat(src, span_notice("O teletransporte falhou. Ajude um administrador, por favor."))
 		stack_trace("There's no freaking observer landmark available on this map or you're making observers before the map is initialised")
 
 	observer.PossessByPlayer(key)
@@ -191,7 +191,7 @@
 	// Check that they're picking someone new for new character respawning
 	if(CONFIG_GET(flag/allow_respawn) == RESPAWN_FLAG_NEW_CHARACTER)
 		if("[client.prefs.default_slot]" in persistent_client.joined_as_slots)
-			tgui_alert(usr, "You already have played this character in this round!")
+			tgui_alert(usr, "Você já jogou este personagem nesta rodada!")
 			return FALSE
 
 	var/error = IsJobUnavailable(rank)
@@ -201,7 +201,7 @@
 
 	if(SSshuttle.arrivals)
 		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
-			tgui_alert(usr,"The arrivals shuttle is currently malfunctioning! You cannot join.")
+			tgui_alert(usr,"A nave auxiliar de chegada está com defeito no momento! Você não pode entrar.")
 			return FALSE
 
 		if(CONFIG_GET(flag/arrivals_shuttle_require_undocked))
@@ -214,7 +214,7 @@
 	var/datum/job/job = SSjob.get_job(rank)
 
 	if(!SSjob.assign_role(src, job, TRUE))
-		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
+		tgui_alert(usr, "Houve um erro inesperado colocando você no seu trabalho solicitado. Se você não pode se juntar a qualquer trabalho, você deve contatar um administrador.")
 		return FALSE
 
 	var/latejoin_period = CEILING(STATION_TIME_PASSED() / (5 MINUTES), 5)
@@ -362,8 +362,8 @@
 	var/has_antags = length(client.prefs.be_special) > 0
 	if(client.prefs.job_preferences.len == 0)
 		if(warn)
-			to_chat(src, span_danger("You have no jobs enabled, along with return to lobby if job is unavailable. \
-				This makes you ineligible for any round start role, please update your job preferences."))
+			to_chat(src, span_danger("Você não tem trabalhos habilitados, junto com o retorno ao lobby se o trabalho não estiver disponível.\
+Isso o torna inelegível para qualquer papel inicial, por favor atualize suas preferências de trabalho."))
 		ready = PLAYER_NOT_READY
 		if(has_antags)
 			log_admin("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] \

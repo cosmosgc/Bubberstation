@@ -36,7 +36,7 @@
 
 /obj/item/ai_module/supplied/safeguard/install(datum/ai_laws/law_datum, mob/user)
 	if(!targetName)
-		to_chat(user, span_alert("No name detected on module, please enter one."))
+		to_chat(user, span_alert("Nenhum nome detectado no módulo, por favor digite um."))
 		return 0
 	..()
 

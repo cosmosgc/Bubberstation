@@ -1,6 +1,6 @@
 /obj/item/banhammer/real
 	name = "\improper REAL banhammer"
-	desc = "A hammer that has been banned in several sectors. Careful when using this."
+	desc = "Um martelo que foi banido em vários setores. Cuidado ao usar isso."
 	desc_controls = "Click to temporarily send someone to the void. Click with combat mode on to permabrig someone. Click in hand to set ban reason."
 	var/static/list/area/areas_to_teleport_to = list( //A list of areas to teleport to. Sorted by priority (first one is set first, if the area exists).
 		/area/station/security/prison/safe,

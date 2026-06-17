@@ -1,5 +1,5 @@
 /obj/machinery/computer/shuttle/custom_shuttle
-	desc = "A shuttle control computer."
+	desc = "Um computador de controle da nave auxiliar."
 	shuttleId = ""
 	possible_destinations = "whiteship_home;"
 	circuit = /obj/item/circuitboard/computer/shuttle/flight_control
@@ -148,7 +148,7 @@
 		return	//Only way this would happen is if someone else delinks the console while in use somehow
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	if(M?.mode != SHUTTLE_IDLE)
-		to_chat(usr, "<span class='warning'>You cannot target locations while in transit.</span>")
+		to_chat(usr, "<span class='warning'>Você não pode mirar locais enquanto estiver em trânsito.</span>")
 		return
 	..()
 
@@ -165,7 +165,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/custom/attack_hand(mob/user)
 	if(!shuttleId)
-		to_chat(user, "<span class='warning'>You must link the console to a shuttle first.</span>")
+		to_chat(user, "<span class='warning'>Você deve ligar o console a uma nave auxiliar primeiro.</span>")
 		return
 	return ..()
 

@@ -322,7 +322,7 @@
 	if(M != user && (get_turf(M) != get_turf(src)))
 		M.visible_message(span_warning("[user] starts buckling [M] to [src]!"),\
 			span_userdanger("[user] starts buckling you to [src]!"),\
-			span_hear("You hear metal clanking."))
+			span_hear("Você ouve metal tocando."))
 		if(!do_after(user, buckle_delay, M))
 			return FALSE
 
@@ -341,13 +341,13 @@
 		being_buckled.visible_message(
 			span_notice("[buckler] buckles [buckler.p_them()]self to [src]."),
 			span_notice("You buckle yourself to [src]."),
-			span_hear("You hear metal clanking."),
+			span_hear("Você ouve metal tocando."),
 		)
 	else
 		being_buckled.visible_message(
 			span_warning("[buckler] buckles [being_buckled] to [src]!"),
 			span_warning("[buckler] buckles you to [src]!"),
-			span_hear("You hear metal clanking."),
+			span_hear("Você ouve metal tocando."),
 		)
 
 /**
@@ -377,11 +377,11 @@
 		unbuckled_mob.visible_message(
 			span_notice("[unbuckler] unbuckles [unbuckler.p_them()]self from [src]."),
 			span_notice("You unbuckle yourself from [src]."),
-			span_hear("You hear metal clanking."),
+			span_hear("Você ouve metal tocando."),
 		)
 	else
 		unbuckled_mob.visible_message(
 			span_notice("[unbuckler] unbuckles [unbuckled_mob] from [src]."),
 			span_notice("[unbuckler] unbuckles you from [src]."),
-			span_hear("You hear metal clanking."),
+			span_hear("Você ouve metal tocando."),
 		)

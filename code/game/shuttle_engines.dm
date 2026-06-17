@@ -6,7 +6,7 @@
 
 /obj/machinery/power/shuttle_engine
 	name = "engine"
-	desc = "A bluespace engine used to make shuttles move."
+	desc = "Um motor do espaço azul usado para mover as naves."
 	icon = 'icons/turf/shuttle.dmi'
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS
@@ -138,7 +138,7 @@
 
 			user.visible_message(span_notice("[user.name] starts to weld \the [src] to the floor."), \
 				span_notice("You start to weld \the [src] to the floor..."), \
-				span_hear("You hear welding."))
+				span_hear("Você ouve solda."))
 
 			if(tool.use_tool(src, user, ENGINE_WELDTIME, volume = 50))
 				engine_state = ENGINE_WELDED
@@ -151,7 +151,7 @@
 
 			user.visible_message(span_notice("[user.name] starts to cut \the [src] free from the floor."), \
 				span_notice("You start to cut \the [src] free from the floor..."), \
-				span_hear("You hear welding."))
+				span_hear("Você ouve solda."))
 
 			if(tool.use_tool(src, user, ENGINE_WELDTIME, volume = 50))
 				engine_state = ENGINE_WRENCHED
@@ -166,7 +166,7 @@
 
 /obj/machinery/power/shuttle_engine/heater
 	name = "engine heater"
-	desc = "Directs energy into compressed particles in order to power engines."
+	desc = "Dirige energia em partículas comprimidas para alimentar motores."
 	icon_state = "heater"
 	circuit = /obj/item/circuitboard/machine/engine/heater
 	engine_power = 0 // todo make these into 2x1 parts
@@ -174,7 +174,7 @@
 /obj/machinery/power/shuttle_engine/propulsion
 	name = "propulsion engine"
 	icon_state = "propulsion"
-	desc = "A standard reliable bluespace engine used by many forms of shuttles."
+	desc = "Um motor padrão e confiável do espaço azul usado por muitas formas de naves."
 	circuit = /obj/item/circuitboard/machine/engine/propulsion
 	opacity = TRUE
 
@@ -188,7 +188,7 @@
 
 /obj/machinery/power/shuttle_engine/propulsion/burst
 	name = "burst engine"
-	desc = "An engine that releases a large bluespace burst to propel it."
+	desc = "Um motor que libera uma grande explosão de espaço azul para propulsioná-lo."
 
 /obj/machinery/power/shuttle_engine/propulsion/burst/left
 	name = "left burst engine"
@@ -202,7 +202,7 @@
 	name = "engine"
 	icon = 'icons/obj/fluff/2x2.dmi'
 	icon_state = "large_engine"
-	desc = "A very large bluespace engine used to propel very large ships."
+	desc = "Um grande motor de espaço azul usado para impulsionar naves muito grandes."
 	circuit = null
 	opacity = TRUE
 	bound_width = 64
@@ -213,7 +213,7 @@
 	name = "engine"
 	icon = 'icons/obj/fluff/3x3.dmi'
 	icon_state = "huge_engine"
-	desc = "An extremely large bluespace engine used to propel extremely large ships."
+	desc = "Um motor de espaço azul extremamente grande usado para impulsionar naves extremamente grandes."
 	circuit = null
 	opacity = TRUE
 	bound_width = 96

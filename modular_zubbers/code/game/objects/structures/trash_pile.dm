@@ -1,6 +1,6 @@
 /obj/structure/trash_pile
 	name = "trash pile"
-	desc = "A heap of dense garbage. Perhaps there is something interesting inside?"
+	desc = "Um monte de lixo denso. Talvez haja algo interessante dentro?"
 	icon = 'modular_skyrat/master_files/icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
 	density = TRUE
@@ -103,11 +103,11 @@
 				searched_by_ckeys[user.ckey] = 0
 		if(istype(hidden_atom, /mob/living))
 			var/mob/living/hidden_mob = hidden_atom
-			balloon_alert(user, "someone is inside!")
+			balloon_alert(user, "Alguém está lá dentro!")
 			eject_mob(hidden_mob)
 		else if (istype(hidden_atom, /obj/item))
 			var/obj/item/hidden_item = hidden_atom
-			balloon_alert(user, "found something!")
+			balloon_alert(user, "Encontrei algo!")
 			hidden_item.forceMove(get_turf(src))
 		return
 
@@ -126,7 +126,7 @@
 	if(spawned_item)
 		balloon_alert(user, "found [spawned_item.name]!")
 	else
-		balloon_alert(user, "found nothing...")
+		balloon_alert(user, "Não encontrei nada...")
 
 	searched_by_ckeys[user.ckey] = 1
 
@@ -140,10 +140,10 @@
 		return ..()
 
 	if(length(contents) >= 10)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "Está cheio!")
 		return
 
-	balloon_alert(user, "hiding item...")
+	balloon_alert(user, "Esconder itens...")
 	if(!do_after(user, hide_item_time, user))
 		return
 
@@ -151,7 +151,7 @@
 		return
 
 	if(user.transferItemToLoc(attacking_item, src))
-		balloon_alert(user, "item hidden!")
+		balloon_alert(user, "item escondido!")
 
 /obj/structure/trash_pile/mouse_drop_receive(atom/movable/dropped_atom, mob/user, params)
 
@@ -178,7 +178,7 @@
 		return
 
 	for(var/mob/hidden_mob in contents)
-		balloon_alert(user, "someone is inside!")
+		balloon_alert(user, "Alguém está lá dentro!")
 		eject_mob(hidden_mob)
 		return
 

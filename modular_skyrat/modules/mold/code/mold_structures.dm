@@ -127,7 +127,7 @@
  */
 /obj/structure/mold/resin
 	name = "mold"
-	desc = "It looks like mold, but it seems alive."
+	desc = "Parece mofo, mas parece vivo."
 	icon = 'modular_skyrat/modules/mold/icons/blob_resin.dmi'
 	icon_state = "blob_floor"
 	density = FALSE
@@ -303,7 +303,7 @@
  */
 /obj/structure/mold/structure/wall
 	name = "mold wall"
-	desc = "Looks like some kind of thick resin."
+	desc = "Parece um tipo de resina grossa."
 	icon = 'icons/obj/smooth_structures/alien/resin_wall.dmi'
 	icon_state = "resin_wall-0"
 	base_icon_state = "resin_wall"
@@ -326,7 +326,7 @@
  */
 /obj/structure/mold/structure/conditioner
 	name = "pulsating vent"
-	desc = "An unsightly vent, it appears to be puffing something out."
+	desc = "Uma ventilação feia, parece estar soprando algo para fora."
 	density = FALSE
 	icon = 'modular_skyrat/modules/mold/icons/blob_spawner.dmi'
 	icon_state = "blob_vent"

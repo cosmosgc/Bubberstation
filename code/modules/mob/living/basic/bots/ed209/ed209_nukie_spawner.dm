@@ -1,6 +1,6 @@
 /obj/item/antag_spawner/nuke_ops/ed209_nukie
 	name = "Syndicate ED209 Robot"
-	desc = "A single-use beacon designed to quickly launch reinforcement operatives into the field."
+	desc = "Um farol de uso único projetado para lançar rapidamente agentes de reforço para o campo."
 
 
 /obj/item/antag_spawner/nuke_ops/ed209_nukie/attack_self(mob/user)

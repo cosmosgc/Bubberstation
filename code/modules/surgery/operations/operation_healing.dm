@@ -8,7 +8,7 @@
 /datum/surgery_operation/basic/tend_wounds
 	name = "tend wounds"
 	rnd_name = "Tend Wounds"
-	desc = "Perform superficial wound care on a patient's bruises and burns."
+	desc = "Cuidados superficiais nas feridas e queimaduras de um paciente."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCREWDRIVER = 1.5,
@@ -219,7 +219,7 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You screwed up!"),
+		span_warning("Você estragou tudo!"),
 		span_warning("[surgeon] screws up!"),
 		span_notice("[surgeon] fixes some of [patient]'s wounds."),
 		target_detailed = TRUE,

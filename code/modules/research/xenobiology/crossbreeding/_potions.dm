@@ -7,7 +7,7 @@ Slimecrossing Potions
 //Extract cloner - Charged Grey
 /obj/item/slimepotion/extract_cloner
 	name = "extract cloning potion"
-	desc = "A more powerful version of the extract enhancer potion, capable of cloning regular slime extracts."
+	desc = "Uma versão mais poderosa da poção de potenciador de extrato, capaz de clonar extratos regulares de lodo."
 	icon_state = "potgold"
 
 /obj/item/slimepotion/extract_cloner/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -33,7 +33,7 @@ Slimecrossing Potions
 //Peace potion - Charged Light Pink
 /obj/item/slimepotion/peacepotion
 	name = "pacification potion"
-	desc = "A light pink solution of chemicals, smelling like liquid peace. And mercury salts."
+	desc = "Uma solução rosa leve de produtos químicos, cheirando a paz líquida. E sais de mercúrio."
 	icon_state = "potlightpink"
 
 /obj/item/slimepotion/peacepotion/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -71,7 +71,7 @@ Slimecrossing Potions
 //Love potion - Charged Pink
 /obj/item/slimepotion/lovepotion
 	name = "love potion"
-	desc = "A pink chemical mix thought to inspire feelings of love."
+	desc = "Uma mistura química rosa pensada para inspirar sentimentos de amor."
 	icon_state = "potpink"
 
 /obj/item/slimepotion/lovepotion/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -80,13 +80,13 @@ Slimecrossing Potions
 		return .
 	var/mob/living/love_target = interacting_with
 	if(!isliving(love_target) || love_target.stat == DEAD)
-		to_chat(user, span_warning("The love potion only works on living things, sicko!"))
+		to_chat(user, span_warning("A poção do amor só funciona em coisas vivas, doente!"))
 		return ITEM_INTERACT_BLOCKING
 	if(ismegafauna(love_target))
-		to_chat(user, span_warning("The love potion does not work on beings of pure evil!"))
+		to_chat(user, span_warning("A poção do amor não funciona em seres de puro mal!"))
 		return ITEM_INTERACT_BLOCKING
 	if(user == love_target)
-		to_chat(user, span_warning("You can't drink the love potion. What are you, a narcissist?"))
+		to_chat(user, span_warning("Não pode beber a poção do amor. Você é narcisista?"))
 		return ITEM_INTERACT_BLOCKING
 	if(love_target.has_status_effect(/datum/status_effect/in_love))
 		to_chat(user, span_warning("[love_target] is already lovestruck!"))
@@ -107,7 +107,7 @@ Slimecrossing Potions
 //Pressure potion - Charged Dark Blue
 /obj/item/slimepotion/spaceproof
 	name = "slime pressurization potion"
-	desc = "A potent chemical sealant that will render any article of clothing airtight. Has two uses."
+	desc = "Um potente selante químico que tornará qualquer peça de roupa hermética. Tem duas utilidades."
 	icon_state = "potblack"
 	var/uses = 2
 
@@ -120,7 +120,7 @@ Slimecrossing Potions
 		return ITEM_INTERACT_BLOCKING
 	var/obj/item/clothing/clothing = interacting_with
 	if(!istype(clothing))
-		to_chat(user, span_warning("The potion can only be used on clothing!"))
+		to_chat(user, span_warning("A poção só pode ser usada em roupas!"))
 		return ITEM_INTERACT_BLOCKING
 	if(istype(clothing, /obj/item/clothing/suit/space))
 		to_chat(user, span_warning("The [interacting_with] is already pressure-resistant!"))
@@ -143,13 +143,13 @@ Slimecrossing Potions
 //Enhancer potion - Charged Cerulean
 /obj/item/slimepotion/enhancer/max
 	name = "extract maximizer"
-	desc = "An extremely potent chemical mix that will maximize a slime extract's uses."
+	desc = "Uma mistura química extremamente potente que maximiza os usos de um extrato de lodo."
 	icon_state = "potcerulean"
 
 //Lavaproofing potion - Charged Red
 /obj/item/slimepotion/lavaproof
 	name = "slime lavaproofing potion"
-	desc = "A strange, reddish goo said to repel lava as if it were water, without reducing flammability. Has two uses."
+	desc = "Um goo estranho e avermelhado disse para repelir lava como se fosse água, sem reduzir a inflamabilidade. Tem duas utilidades."
 	icon_state = "potyellow"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	var/uses = 2
@@ -162,7 +162,7 @@ Slimecrossing Potions
 		qdel(src)
 		return ITEM_INTERACT_BLOCKING
 	if(!isitem(interacting_with))
-		to_chat(user, span_warning("You can't coat this with lavaproofing fluid!"))
+		to_chat(user, span_warning("Você não pode cobrir isso com fluido de lavagem!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/clothing = interacting_with
@@ -183,7 +183,7 @@ Slimecrossing Potions
 //Revival potion - Charged Grey
 /obj/item/slimepotion/slime_reviver
 	name = "slime revival potion"
-	desc = "Infused with plasma and compressed gel, this brings dead slimes back to life."
+	desc = "Infundido com plasma e gel comprimido, isso traz lodo morto de volta à vida."
 	icon_state = "potgrey"
 
 /obj/item/slimepotion/slime_reviver/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -192,13 +192,13 @@ Slimecrossing Potions
 		return .
 	var/mob/living/basic/slime/revive_target = interacting_with
 	if(!isslime(revive_target))
-		to_chat(user, span_warning("The potion only works on slimes!"))
+		to_chat(user, span_warning("A poção só funciona em lodo!"))
 		return ITEM_INTERACT_BLOCKING
 	if(revive_target.stat != DEAD)
-		to_chat(user, span_warning("The slime is still alive!"))
+		to_chat(user, span_warning("O lodo ainda está vivo!"))
 		return ITEM_INTERACT_BLOCKING
 	if(revive_target.maxHealth <= 0)
-		to_chat(user, span_warning("The slime is too unstable to return!"))
+		to_chat(user, span_warning("O lodo é muito instável para voltar!"))
 		return ITEM_INTERACT_BLOCKING
 	user.do_attack_animation(interacting_with)
 	revive_target.revive(HEAL_ALL)
@@ -213,18 +213,18 @@ Slimecrossing Potions
 //Stabilizer potion - Charged Blue
 /obj/item/slimepotion/slime/chargedstabilizer
 	name = "slime omnistabilizer"
-	desc = "An extremely potent chemical mix that will stop a slime from mutating completely."
+	desc = "Uma mistura química extremamente potente que impedirá um lodo de sofrer uma mutação completa."
 	icon_state = "potcyan"
 
 /obj/item/slimepotion/slime/chargedstabilizer/interact_with_slime(mob/living/basic/slime/interacting_slime, mob/living/user, list/modifiers)
 	if(interacting_slime.stat)
-		to_chat(user, span_warning("The slime is dead!"))
+		to_chat(user, span_warning("O lodo está morto!"))
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_slime.mutation_chance == 0)
-		to_chat(user, span_warning("The slime already has no chance of mutating!"))
+		to_chat(user, span_warning("O lodo já não tem chance de sofrer mutação!"))
 		return ITEM_INTERACT_BLOCKING
 
-	to_chat(user, span_notice("You feed the slime the omnistabilizer. It will not mutate this cycle!"))
+	to_chat(user, span_notice("Você alimenta o lodo, o onistabilizador. Não vai mudar este ciclo!"))
 	interacting_slime.mutation_chance = 0
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS

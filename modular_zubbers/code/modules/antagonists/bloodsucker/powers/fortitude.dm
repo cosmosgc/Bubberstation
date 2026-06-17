@@ -1,7 +1,7 @@
 #define FORTITUDE_STUN_IMMUNITY_LEVEL 4
 /datum/action/cooldown/bloodsucker/fortitude
 	name = "Fortitude"
-	desc = "Withstand egregious physical wounds and walk away from attacks that would stun, pierce, and dismember lesser beings, but will render you unable to heal."
+	desc = "Resistir a feridas físicas horríveis e sair de ataques que iriam atordoar, perfurar e desmembrar seres inferiores, mas torná-lo incapaz de curar."
 	button_icon_state = "power_fortitude"
 	power_flags = BP_CONTINUOUS_EFFECT|BP_AM_COSTLESS_UNCONSCIOUS
 	check_flags = BP_CANT_USE_IN_TORPOR|BP_CANT_USE_IN_FRENZY
@@ -29,8 +29,8 @@
 		traits_to_add |= TRAIT_STUNIMMUNE
 
 /datum/action/cooldown/bloodsucker/fortitude/ActivatePower(atom/target)
-	owner.balloon_alert(owner, "fortitude turned on.")
-	to_chat(owner, span_notice("Your flesh, skin, and muscles become as steel."))
+	owner.balloon_alert(owner, "A força se acendeu.")
+	to_chat(owner, span_notice("Sua carne, pele e músculos se tornam aço."))
 	// Traits & Effects
 	owner.add_traits(traits_to_add, BLOODSUCKER_TRAIT)
 
@@ -80,7 +80,7 @@
 	/// Prevents running while on Fortitude
 	if(user.move_intent != MOVE_INTENT_WALK)
 		user.toggle_move_intent()
-		user.balloon_alert(user, "you attempt to run, crushing yourself.")
+		user.balloon_alert(user, "Tenta correr, esmagar-se.")
 		user.adjust_brute_loss(rand(5,15))
 	/// We don't want people using fortitude being able to use vehicles
 	if(user.buckled && istype(user.buckled, /obj/vehicle))
@@ -104,7 +104,7 @@
 
 	if(was_running && bloodsucker_user.move_intent == MOVE_INTENT_WALK)
 		bloodsucker_user.toggle_move_intent()
-	owner.balloon_alert(owner, "fortitude turned off.")
+	owner.balloon_alert(owner, "A força desligou.")
 	fortitude_resist = 1
 	UnregisterSignal(owner, list(COMSIG_LIVING_ADJUST_BRUTE_DAMAGE, COMSIG_LIVING_ADJUST_BURN_DAMAGE))
 	return ..()

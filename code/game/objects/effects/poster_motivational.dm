@@ -2,7 +2,7 @@
 
 /obj/item/poster/quirk
 	name = "placeholder quirk poster"
-	desc = "Uh oh! You shouldn't have this!"
+	desc = "Uh oh! Você não deveria ter isso!"
 	icon_state = "rolled_poster_legit"
 	/// People from the selected department will gain a mood buff. If no department is specified applies to the entire crew.
 	var/quirk_poster_department = NONE
@@ -20,13 +20,13 @@
 /obj/item/poster/quirk/attackby(obj/item/postertool, mob/user, list/modifiers, list/attack_modifiers)
 	if(!user.is_antag() || !HAS_TRAIT(user, TRAIT_POSTERBOY) || !istype(postertool, /obj/item/toy/crayon))
 		return ..()
-	balloon_alert(user, "converting poster...")
+	balloon_alert(user, "Convertendo cartaz...")
 	if(!do_after(user, 5 SECONDS, user))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return
 	var/obj/item/poster/traitor/quirkspawn = new(get_turf(src))
 	user.put_in_hands(quirkspawn)
-	to_chat(user, span_notice("You have converted one of your posters!"))
+	to_chat(user, span_notice("Você converteu um de seus cartazes!"))
 	qdel(src)
 
 /// Screentip for the above
@@ -39,9 +39,9 @@
 
 /obj/structure/sign/poster/quirk
 	name = "quirk poster"
-	desc = "A large piece of homemade space-resistant printed paper."
+	desc = "Um grande pedaço de papel impresso caseiro resistente ao espaço."
 	poster_item_name = "homemade poster"
-	poster_item_desc = "A poster made with love, some people will enjoy seeing it."
+	poster_item_desc = "Um cartaz feito com amor, algumas pessoas vão gostar de vê-lo."
 	poster_item_icon_state = "rolled_legit"
 	var/quirk_poster_department = NONE
 	var/datum/proximity_monitor/advanced/quirk_posters/mood_buff
@@ -99,11 +99,11 @@
 	var/viewer_department = viewer.mind.assigned_role.paycheck_department
 	if(department != NONE && viewer_department != department)
 		return
-	to_chat(viewer, span_notice("Wow, great poster!"))
+	to_chat(viewer, span_notice("Uau, ótimo pôster!"))
 	viewer.add_mood_event(POSTER_MOOD_CAT, /datum/mood_event/poster_mood)
 
 /datum/mood_event/poster_mood
-	description = "That poster is really motivating me!"
+	description = "Esse cartaz está me motivando!"
 	mood_change = 2
 
 // random posters
@@ -126,30 +126,30 @@
 
 /obj/structure/sign/poster/quirk/festive
 	name = "Together For The Holidays."
-	desc = "A poster holding hands and reminding us of the holidays we spend together. \
-	When people read this poster they'll feel better!"
+	desc = "Um pôster de mãos dadas e nos lembrando dos feriados que passamos juntos.\
+Quando as pessoas lerem este pôster elas se sentirão melhor!"
 	icon_state = "quirk_festive"
 	never_random = TRUE
 
 /obj/structure/sign/poster/quirk/crew
-	poster_item_desc = "A poster made with love, everyone will enjoy seeing it."
+	poster_item_desc = "Um cartaz feito com amor, todos vão gostar de vê-lo."
 
 /obj/structure/sign/poster/quirk/crew/hang
 	name = "Hang In There"
-	desc = "A poster with a cat hanging on a branch. Just hang in there. \
-	When people read this poster they'll feel better!"
+	desc = "Um cartaz com um gato pendurado em um galho. Aguente firme.\
+Quando as pessoas lerem este pôster elas se sentirão melhor!"
 	icon_state = "hang_in_there"
 
 /obj/structure/sign/poster/quirk/crew/renault
 	name = "Captain's Pet"
-	desc = "A poster depicting the Captains beloved Renault. He's ok. \
-	When people read this poster they'll feel better!"
+	desc = "Um pôster retratando os capitães amados Renault. Ele está bem.\
+Quando as pessoas lerem este pôster elas se sentirão melhor!"
 	icon_state = "renault"
 
 /obj/structure/sign/poster/quirk/crew/bike
 	name = "Someday..."
-	desc = "A poster depicting a bike. Someday it WILL be yours! \
-	When people read this poster they'll feel better!"
+	desc = "Um cartaz retratando uma bicicleta. Algum dia será seu!\
+Quando as pessoas lerem este pôster elas se sentirão melhor!"
 	icon_state = "bike"
 
 // Departmental posters
@@ -160,8 +160,8 @@
 
 /obj/structure/sign/poster/quirk/cargo_logo
 	name = "Cargo logo"
-	desc = "A poster made with love depicting a box, a banner for Cargonia. \
-	When members of the cargo department read this poster they'll feel better!"
+	desc = "Um cartaz feito com amor retratando uma caixa, uma faixa para Cargonia.\
+Quando os membros do departamento de carga lerem este cartaz, vão se sentir melhor!"
 	icon_state = "cargo_logo"
 
 /obj/item/poster/quirk/cargo_slogan
@@ -170,8 +170,8 @@
 
 /obj/structure/sign/poster/quirk/cargo_slogan
 	name = "Cargo Strong"
-	desc = "Cargo is Stronger Together! Cargo Workers Unite! \
-	When members of the cargo department read this poster they'll feel better!"
+	desc = "A carga é mais forte juntos! Os trabalhadores de carga se unem!\
+Quando os membros do departamento de carga lerem este cartaz, vão se sentir melhor!"
 	icon_state = "cargo_slogan"
 
 /obj/item/poster/quirk/engineering_logo
@@ -180,8 +180,8 @@
 
 /obj/structure/sign/poster/quirk/engineering_logo
 	name = "Engineering logo"
-	desc = "A poster made with love depicting a wrench. \
-	When members of the engineering department read this poster they'll feel better!"
+	desc = "Um cartaz feito com amor retratando uma chave inglesa.\
+Quando os membros do departamento de engenharia lerem este cartaz, vão se sentir melhor!"
 	icon_state = "engineering_logo"
 
 /obj/item/poster/quirk/engineering_slogan
@@ -190,8 +190,8 @@
 
 /obj/structure/sign/poster/quirk/engineering_slogan
 	name = "No Delamination"
-	desc = "The engine won't delaminate today! \
-	When members of the engineering department read this poster they'll feel better!"
+	desc = "O motor não vai deslaminar hoje!\
+Quando os membros do departamento de engenharia lerem este cartaz, vão se sentir melhor!"
 	icon_state = "engineering_slogan"
 
 /obj/item/poster/quirk/medical_logo
@@ -200,8 +200,8 @@
 
 /obj/structure/sign/poster/quirk/medical_logo
 	name = "Blue Cross"
-	desc = "A poster made with love depicting the Blue Cross. \
-	When members of the medical department read this poster they'll feel better!"
+	desc = "Um pôster feito com amor retratando a Cruz Azul.\
+Quando os membros do departamento médico lerem este pôster eles se sentirão melhor!"
 	icon_state = "medical_logo"
 
 /obj/item/poster/quirk/medical_slogan
@@ -210,8 +210,8 @@
 
 /obj/structure/sign/poster/quirk/medical_slogan
 	name = "Heal and Mend"
-	desc = "Heal all who ask and Mend all who need. \
-	When members of the medical department read this poster they'll feel better!"
+	desc = "Cure todos que pedirem e conserte todos que precisarem.\
+Quando os membros do departamento médico lerem este pôster eles se sentirão melhor!"
 	icon_state = "medical_slogan"
 
 /obj/item/poster/quirk/science_logo
@@ -220,8 +220,8 @@
 
 /obj/structure/sign/poster/quirk/science_logo
 	name = "Science logo"
-	desc = "A poster made with love depicting an atom. \
-	When members of the science department read this poster they'll feel better!"
+	desc = "Um cartaz feito com amor retratando um átomo.\
+Quando os membros do Departamento de Ciências lerem este cartaz, vão se sentir melhor!"
 	icon_state = "science_logo"
 
 /obj/item/poster/quirk/science_slogan
@@ -230,8 +230,8 @@
 
 /obj/structure/sign/poster/quirk/science_slogan
 	name = "Research and Develop"
-	desc = "Research the unknown and Develop the impossible! \
-	When members of the science department read this poster they'll feel better!"
+	desc = "Pesquise o desconhecido e desenvolva o impossível!\
+Quando os membros do Departamento de Ciências lerem este cartaz, vão se sentir melhor!"
 	icon_state = "science_slogan"
 
 /obj/item/poster/quirk/security_logo
@@ -240,8 +240,8 @@
 
 /obj/structure/sign/poster/quirk/security_logo
 	name = "Security logo"
-	desc = "A poster made with love depicting a shield. \
-	When members of the security department read this poster they'll feel better!"
+	desc = "Um cartaz feito com amor retratando um escudo.\
+Quando os membros do Departamento de Segurança lerem este cartaz, vão se sentir melhor!"
 	icon_state = "security_logo"
 
 /obj/item/poster/quirk/security_logo
@@ -250,8 +250,8 @@
 
 /obj/structure/sign/poster/quirk/security_slogan
 	name = "Protect and Serve"
-	desc = "To protect the innocent crew and serve justice! \
-	When members of the security department read this poster they'll feel better!"
+	desc = "Para proteger a tripulação inocente e servir a justiça!\
+Quando os membros do Departamento de Segurança lerem este cartaz, vão se sentir melhor!"
 	icon_state = "security_slogan"
 
 /obj/item/poster/quirk/service_logo
@@ -260,8 +260,8 @@
 
 /obj/structure/sign/poster/quirk/service_logo
 	name = "Service corgi"
-	desc = "A poster made with love depicting a certain corgi. \
-	When members of the service department read this poster they'll feel better!"
+	desc = "Um cartaz feito com amor retratando um certo corgi.\
+Quando os membros do departamento de serviço lerem este cartaz, eles se sentirão melhor!"
 	icon_state = "service_logo"
 
 /obj/item/poster/quirk/service_slogan
@@ -270,8 +270,8 @@
 
 /obj/structure/sign/poster/quirk/service_slogan
 	name = "Share Joy"
-	desc = "Share joy with each action. Bring happiness through creation. \
-	When members of the service department read this poster they'll feel better!"
+	desc = "Compartilhe alegria com cada ação. Trazer felicidade através da criação.\
+Quando os membros do departamento de serviço lerem este cartaz, eles se sentirão melhor!"
 	icon_state = "service_slogan"
 
 #undef POSTER_MOOD_CAT

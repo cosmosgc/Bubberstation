@@ -4,7 +4,7 @@
 /obj/item/paint
 	gender= PLURAL
 	name = "paint"
-	desc = "Used to recolor floors and walls. Can be removed by the janitor."
+	desc = "Costumava recolorir pisos e paredes. Pode ser removido pelo zelador."
 	icon = 'icons/obj/art/paint.dmi'
 	icon_state = "paint_neutral"
 	inhand_icon_state = "paintcan"
@@ -65,7 +65,7 @@
 
 /obj/item/paint/anycolor/attack_self(mob/user)
 	if(paintleft <= 0)
-		balloon_alert(user, "no paint left!")
+		balloon_alert(user, "Não sobrou tinta!")
 		return	// Don't do any of the following because there's no paint left to be able to change the color of
 	var/list/possible_colors = list(
 		"black" = image(icon = src.icon, icon_state = "paint_black"),
@@ -129,7 +129,7 @@
 /obj/item/paint/paint_remover
 	gender = PLURAL
 	name = "paint remover"
-	desc = "Used to remove color from anything."
+	desc = "Costumava remover a cor de qualquer coisa."
 	icon_state = "paint_neutral"
 
 /obj/item/paint/paint_remover/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)

@@ -1,6 +1,6 @@
 /obj/item/spanking_pad
 	name = "spanking pad"
-	desc = "A leather pad with a handle."
+	desc = "Uma almofada de couro com alça."
 	icon_state = "spankpad_pink"
 	base_icon_state = "spankpad"
 	inhand_icon_state = "spankpad_pink"
@@ -46,7 +46,7 @@
 /obj/item/spanking_pad/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 
 /obj/item/spanking_pad/click_alt(mob/user)
 	if(color_changed)

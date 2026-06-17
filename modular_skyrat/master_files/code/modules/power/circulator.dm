@@ -3,7 +3,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator
 	name = "circulator"
-	desc = "A gas circulating turbine and heat exchanger."
+	desc = "Uma turbina de gás circulante e trocador de calor."
 	icon = 'modular_skyrat/master_files/icons/obj/machines/thermoelectric.dmi'
 	icon_state = "circ-unassembled-0"
 	density = TRUE
@@ -141,7 +141,7 @@
 /obj/machinery/atmospherics/components/binary/circulator/wrench_act(mob/living/user, obj/item/I)
 
 	if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return TRUE
 
 	if(generator)
@@ -214,7 +214,7 @@
 	if(..())
 		return TRUE
 	if(generator)
-		balloon_alert(user, "disconnect the generator first!")
+		balloon_alert(user, "Desligue o gerador primeiro!")
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)

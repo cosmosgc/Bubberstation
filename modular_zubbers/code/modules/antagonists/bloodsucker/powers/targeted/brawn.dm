@@ -3,13 +3,13 @@
 #define BRAWN_AIRLOCK_LEVEL 4
 /datum/action/cooldown/bloodsucker/targeted/brawn
 	name = "Brawn"
-	desc = "Snap restraints, break lockers and doors at higher levels, or deal terrible damage with your bare hands."
+	desc = "Amarrar, quebrar armários e portas em níveis mais altos, ou causar danos terríveis com suas próprias mãos."
 	button_icon_state = "power_strength"
 	purchase_flags = BLOODSUCKER_CAN_BUY|GHOUL_CAN_BUY
 	bloodcost = 10
 	cooldown_time = 12 SECONDS
 	target_range = 1
-	prefire_message = "Select a target."
+	prefire_message = "Selecione um alvo."
 
 /datum/action/cooldown/bloodsucker/targeted/brawn/get_power_explanation_extended()
 	. = list()
@@ -31,14 +31,14 @@
 		if(level_current >= BRAWN_BREAKOUT_LEVEL && escape_puller())
 			PowerActivatedSuccesfully()
 			return FALSE
-		owner.balloon_alert(owner, "ability level too low to break free!")
+		owner.balloon_alert(owner, "Nível de habilidade muito baixo para se libertar!")
 	// Did neither, now we can PUNCH.
 	if(HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
-		owner.balloon_alert(owner, "your hands are blocked!")
+		owner.balloon_alert(owner, "Suas mãos estão bloqueadas!")
 		return FALSE
 	// check if we have atleast one arm
 	if(!owner.get_active_hand())
-		owner.balloon_alert(owner, "you need a usable arm!")
+		owner.balloon_alert(owner, "Você precisa de um braço utilizável!")
 		return FALSE
 	return TRUE
 
@@ -76,7 +76,7 @@
 		if(hand_cuffs || leg_cuffs)
 			user.visible_message(
 				span_warning("[user] discards their restraints like it's nothing!"),
-				span_warning("We break through our restraints!"),
+				span_warning("Quebramos nossas amarras!"),
 			)
 			return TRUE
 
@@ -155,12 +155,12 @@
 	// Target Type: Locker
 	else if(istype(target, /obj/structure/closet))
 		if(level_current <= BRAWN_BREAKOUT_LEVEL)
-			target.balloon_alert(user, "ability level too low to break open!")
+			target.balloon_alert(user, "Nível de habilidade muito baixo para se abrir!")
 			return FALSE
 		var/obj/structure/closet/target_closet = target
 		user.balloon_alert(user, "you prepare to bash [target_closet] open...")
 		if(!do_after(user, 2.5 SECONDS, target_closet))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "Interrompido!")
 			return FALSE
 		target_closet.visible_message(span_danger("[target_closet] breaks open as [user] bashes it!"))
 		addtimer(CALLBACK(src, PROC_REF(break_closet), user, target_closet), 1)
@@ -168,13 +168,13 @@
 	// Target Type: Door
 	else if(istype(target, /obj/machinery/door))
 		if(level_current <= BRAWN_AIRLOCK_LEVEL)
-			target.balloon_alert(user, "ability level too low to break open!")
+			target.balloon_alert(user, "Nível de habilidade muito baixo para se abrir!")
 			return FALSE
 		var/obj/machinery/door/target_airlock = target
 		playsound(get_turf(user), 'sound/machines/airlock/airlock_alien_prying.ogg', 40, TRUE, -1)
 		owner.balloon_alert(owner, "you prepare to tear open [target_airlock]...")
 		if(!do_after(user, 2.5 SECONDS, target_airlock))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "Interrompido!")
 			return FALSE
 		if(target_airlock.Adjacent(user))
 			target_airlock.visible_message(span_danger("[target_airlock] breaks open as [user] bashes it!"))

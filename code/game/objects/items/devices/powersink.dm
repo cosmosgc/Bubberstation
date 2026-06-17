@@ -10,7 +10,7 @@
 
 /obj/item/powersink
 	name = "power sink"
-	desc = "A power sink which drains energy from electrical systems and converts it to heat. Ensure short workloads and ample time to cool down if used in high energy systems."
+	desc = "Um dissipador de energia que drena energia de sistemas elétricos e o converte em calor. Garanta cargas de trabalho curtas e tempo suficiente para esfriar se usado em sistemas de alta energia."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "powersink0"
 	inhand_icon_state = "electronic"
@@ -87,7 +87,7 @@
 				user.visible_message( \
 					"[user] attaches \the [src] to the cable.", \
 					span_notice("You bolt \the [src] into the floor and connect it to the cable."),
-					span_hear("You hear some wires being connected to something."))
+					span_hear("Você ouve alguns fios sendo conectados a algo."))
 		else
 			to_chat(user, span_warning("\The [src] must be placed over an exposed, powered cable node!"))
 	else
@@ -95,7 +95,7 @@
 		user.visible_message( \
 			"[user] detaches \the [src] from the cable.", \
 			span_notice("You unbolt \the [src] from the floor and detach it from the cable."),
-			span_hear("You hear some wires being disconnected from something."))
+			span_hear("Você ouve alguns fios sendo desconectados de algo."))
 
 /obj/item/powersink/screwdriver_act(mob/living/user, obj/item/tool)
 	user.visible_message( \
@@ -121,13 +121,13 @@
 			user.visible_message( \
 				"[user] activates \the [src]!", \
 				span_notice("You activate \the [src]."),
-				span_hear("You hear a click."))
+				span_hear("Você ouve um clique."))
 			message_admins("Power sink activated by [ADMIN_LOOKUPFLW(user)] at [ADMIN_VERBOSEJMP(src)]")
 			user.log_message("activated a powersink", LOG_GAME)
 			notify_ghosts(
 				"[user.real_name] has activated a power sink!",
 				source = src,
-				header = "Shocking News!",
+				header = "Notícias chocantes!",
 			)
 			set_mode(OPERATING)
 
@@ -135,7 +135,7 @@
 			user.visible_message( \
 				"[user] deactivates \the [src]!", \
 				span_notice("You deactivate \the [src]."),
-				span_hear("You hear a click."))
+				span_hear("Você ouve um clique."))
 			user.log_message("deactivated the powersink", LOG_GAME)
 			set_mode(CLAMPED_OFF)
 
@@ -192,7 +192,7 @@
 			notify_ghosts(
 				"[src] is about to reach critical heat capacity!",
 				source = src,
-				header = "Power Sunk",
+				header = "Poder afundado",
 			)
 		playsound(src, 'sound/effects/screech.ogg', 100, TRUE, TRUE)
 

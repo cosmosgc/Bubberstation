@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 
 /obj/machinery/deepfryer
 	name = "deep fryer"
-	desc = "Deep fried <i>everything</i>."
+	desc = "Deep fried<i>Tudo.</i>."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "fryer_off"
 	base_icon_state = "fryer"
@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 
 	else if(user.pulling && iscarbon(user.pulling) && reagents.total_volume)
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, span_warning("You need a better grip to do that!"))
+			to_chat(user, span_warning("Você precisa de um aperto melhor para fazer isso!"))
 			return
 		var/mob/living/carbon/dunking_target = user.pulling
 		log_combat(user, dunking_target, "dunked", null, "into [src]")

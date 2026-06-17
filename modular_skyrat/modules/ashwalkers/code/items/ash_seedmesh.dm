@@ -1,6 +1,6 @@
 /obj/item/seed_mesh
 	name = "seed mesh"
-	desc = "A little mesh that, when paired with sand, has the possibility of filtering out large seeds."
+	desc = "Uma pequena malha que, quando emparelhada com areia, tem a possibilidade de filtrar sementes grandes."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
 	icon_state = "mesh"
 	var/static/list/seeds_blacklist = list(
@@ -18,7 +18,7 @@
 		while(ore_item.amount >= ore_usage)
 			var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
 			if(!do_after(user, 5 SECONDS * skill_modifier, src))
-				user.balloon_alert(user, "have to stand still!")
+				user.balloon_alert(user, "Tem que ficar parado!")
 				return
 
 			if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))

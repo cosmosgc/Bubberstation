@@ -1,6 +1,6 @@
 /obj/machinery/quantumpad
 	name = "quantum pad"
-	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
+	desc = "Um telepad ligado quântico do espaço azul usado para teletransportar objetos para outras plataformas quânticas."
 	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "qpad-idle"
 	base_icon_state = "qpad"
@@ -34,9 +34,9 @@
 	. = ..()
 	. += span_notice("It is [ linked_pad ? "currently" : "not"] linked to another pad.")
 	if(!panel_open)
-		. += span_notice("The panel is <i>screwed</i> in, obstructing the linking device.")
+		. += span_notice("O painel é<i>Está ferrado.</i>Entrando, obstruindo o dispositivo de ligação.")
 	else
-		. += span_notice("The <i>linking</i> device is now able to be <i>scanned<i> with a multitool.")
+		. += span_notice("O<i>ligando</i>dispositivo agora é capaz de ser<i>Escaneado.<i>com uma multitool.")
 
 /obj/machinery/quantumpad/RefreshParts()
 	. = ..()
@@ -55,19 +55,19 @@
 /obj/machinery/quantumpad/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	if(panel_open)
 		multi_tool.set_buffer(src)
-		balloon_alert(user, "saved to multitool buffer")
+		balloon_alert(user, "salvo em multitool buffer")
 		to_chat(user, span_notice("You save the data in [multi_tool] buffer. It can now be saved to pads with closed panels."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(multi_tool.buffer, /obj/machinery/quantumpad))
 		if(multi_tool.buffer == src)
-			balloon_alert(user, "cannot link to self!")
+			balloon_alert(user, "Não pode se ligar a si mesmo!")
 			return ITEM_INTERACT_BLOCKING
 		linked_pad = multi_tool.buffer
-		balloon_alert(user, "data uploaded from buffer")
+		balloon_alert(user, "Dados carregados do buffer")
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "no quantum pad data found!")
+	balloon_alert(user, "Nenhum dado quântico encontrado!")
 	return NONE
 
 /obj/machinery/quantumpad/screwdriver_act(mob/living/user, obj/item/tool)
@@ -104,7 +104,7 @@
 		if(map_pad_link_id && initMappedLink())
 			target_pad = linked_pad
 		else
-			to_chat(user, span_warning("Target pad not found!"))
+			to_chat(user, span_warning("Alvo não encontrado!"))
 			return
 	//SKYRAT EDIT ADDITION
 	var/turf/my_turf = get_turf(src)
@@ -122,11 +122,11 @@
 		return
 
 	if(target_pad.teleporting)
-		to_chat(user, span_warning("Target pad is busy. Please wait."))
+		to_chat(user, span_warning("O alvo está ocupado. Por favor, espere."))
 		return
 
 	if(target_pad.machine_stat & NOPOWER)
-		to_chat(user, span_warning("Target pad is not responding to ping."))
+		to_chat(user, span_warning("O alvo não está respondendo ao sinal."))
 		return
 	add_fingerprint(user)
 	doteleport(user, target_pad)
@@ -159,7 +159,7 @@
 		return
 	if(QDELETED(target_pad) || target_pad.machine_stat & NOPOWER)
 		if(user)
-			to_chat(user, span_warning("Linked pad is not responding to ping. Teleport aborted."))
+			to_chat(user, span_warning("A plataforma ligada não está respondendo ao sinal. Teletransporte abortado."))
 		return
 
 	last_teleport = world.time
@@ -199,11 +199,11 @@
 
 /obj/item/paper/guides/quantumpad
 	name = "Quantum Pad For Dummies"
-	default_raw_text = "<center><b>Dummies Guide To Quantum Pads</b></center><br><br><center>Do you hate the concept of having to use your legs, let alone <i>walk</i> to places? Well, with the Quantum Pad (tm), never again will the fear of cardio keep you from going places!<br><br><c><b>How to set up your Quantum Pad(tm)</b></center><br><br>1.Unscrew the Quantum Pad(tm) you wish to link.<br>2. Use your multi-tool to cache the buffer of the Quantum Pad(tm) you wish to link.<br>3. Apply the multi-tool to the secondary Quantum Pad(tm) you wish to link to the first Quantum Pad(tm)<br><br><center>If you followed these instructions carefully, your Quantum Pad(tm) should now be properly linked together for near-instant movement across the station! Bear in mind that this is technically a one-way teleport, so you'll need to do the same process with the secondary pad to the first one if you wish to travel between both.</center>"
+	default_raw_text = "<center><b>Manequins guiam para almofadas quânticas</b></center><br><br><center>Você odeia o conceito de ter que usar suas pernas, muito menos<i>Ande.</i>Para lugares? Bem, com o Bloco Quântico (Tm), nunca mais o medo de cardio vai te impedir de ir a lugares!<br><br><c><b>Como montar sua almofada quântica</b></center><br><br>1. Desenrole o Bloco Quântico que deseja ligar.<br>2. Use sua multi-ferramenta para armazenar o buffer do Quantum Pad (tm) que deseja ligar.<br>3. Aplique a multi-ferramenta na Pad (tm) Quantum secundária que deseja ligar à primeira Pad (tm) Quantum.<br><br><center>Se você seguiu estas instruções cuidadosamente, seu Quantum Pad (tm) agora deve ser devidamente ligado juntos para movimento quase instantânea através da estação! Lembre-se que este é tecnicamente um teletransporte só de ida, então você precisará fazer o mesmo processo com o bloco secundário para o primeiro se quiser viajar entre ambos.</center>"
 
 /obj/item/circuit_component/quantumpad
-	display_name = "Quantum Pad"
-	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
+	display_name = "Pad Quântico"
+	desc = "Um telepad ligado quântico do espaço azul usado para teletransportar objetos para outras plataformas quânticas."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL
 
 	var/datum/port/input/target_pad

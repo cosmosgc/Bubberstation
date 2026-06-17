@@ -4,7 +4,7 @@
 /// A mob that gets mad at people at random and tries to eat nearby objects
 /mob/living/basic/goose
 	name = "goose"
-	desc = "It's loose."
+	desc = "Está solto."
 	icon_state = "goose"
 	icon_living = "goose"
 	icon_dead = "goose_dead"
@@ -81,7 +81,7 @@
 /mob/living/basic/goose/vomit
 	name = "Birdboat"
 	real_name = "Birdboat"
-	desc = "It's a sick-looking goose, probably ate too much maintenance trash. Best not to move it around too much."
+	desc = "É um ganso doente, provavelmente comeu muito lixo de manutenção. É melhor não mexer muito."
 	gender = MALE
 	faction = list(FACTION_NEUTRAL, FACTION_MAINT_CREATURES)
 	gold_core_spawnable = NO_SPAWN
@@ -117,7 +117,7 @@
 
 /mob/living/basic/goose/vomit/examine(mob/user)
 	. = ..()
-	. += span_notice("Somehow, it still looks hungry.")
+	. += span_notice("De alguma forma, ainda parece com fome.")
 
 /mob/living/basic/goose/vomit/on_gobbled(atom/source, obj/item/food, mob/feeder)
 	if (length(contents) > GOOSE_SATIATED)

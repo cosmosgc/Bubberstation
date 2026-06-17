@@ -31,12 +31,12 @@
 /datum/component/soul_stealer/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("It will steal the soul of anyone it defeats in battle.")
+	examine_list += span_notice("Roubará a alma de qualquer um que derrotar em batalha.")
 
 	var/num_souls = length(soulstones)
 	switch(num_souls)
 		if(0)
-			examine_list += span_notice("It has not consumed any souls yet.")
+			examine_list += span_notice("Ainda não consumiu almas.")
 		if(1 to 9)
 			examine_list += span_notice("There are <b>[num_souls]</b> souls trapped within it.")
 		if(10 to INFINITY)

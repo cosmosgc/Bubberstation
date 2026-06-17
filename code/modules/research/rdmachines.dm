@@ -132,22 +132,22 @@
 //whether the machine can have an item inserted in its current state.
 /obj/machinery/rnd/proc/is_insertion_ready(mob/user)
 	if(panel_open)
-		balloon_alert(user, "panel open!")
+		balloon_alert(user, "Painel aberto!")
 		return FALSE
 	if(disabled)
-		balloon_alert(user, "belts disabled!")
+		balloon_alert(user, "Cintos desativados!")
 		return FALSE
 	if(busy)
-		balloon_alert(user, "still busy!")
+		balloon_alert(user, "Ainda ocupado!")
 		return FALSE
 	if(machine_stat & BROKEN)
-		balloon_alert(user, "machine broken!")
+		balloon_alert(user, "Máquina quebrada!")
 		return FALSE
 	if(machine_stat & NOPOWER)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "Sem energia!")
 		return FALSE
 	if(loaded_item)
-		balloon_alert(user, "item already loaded!")
+		balloon_alert(user, "item já carregado!")
 		return FALSE
 	return TRUE
 

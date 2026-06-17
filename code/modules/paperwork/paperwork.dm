@@ -12,7 +12,7 @@
 
 /obj/item/paperwork
 	name = "paperwork documents"
-	desc = "A disorganized mess of documents, research results, and investigation findings."
+	desc = "Uma bagunça desorganizada de documentos, resultados de pesquisa e resultados de investigação."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "docs_part"
 	inhand_icon_state = "paper"
@@ -37,7 +37,7 @@
 /obj/item/paperwork/Initialize(mapload)
 	. = ..()
 
-	detailed_desc = span_notice("<i>As you sift through the papers, you slowly start to piece together what you're reading.</i>")
+	detailed_desc = span_notice("<i>Quando você vasculha os jornais, você lentamente começa a juntar o que está lendo.</i>")
 
 /obj/item/paperwork/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -49,7 +49,7 @@
 
 	if(istype(attacking_item, stamp_requested))
 		add_stamp()
-		to_chat(user, span_notice("You skim through the papers until you find a field reading 'STAMP HERE', and complete the paperwork."))
+		to_chat(user, span_notice("Você vasculha os jornais até encontrar um campo de leitura 'STAMP AQUI', e completar a papelada."))
 		return TRUE
 	var/datum/action/item_action/chameleon/change/stamp/stamp_action = locate() in attacking_item.actions
 	if(isnull(stamp_action))
@@ -70,7 +70,7 @@
 			. += detailed_desc
 		else
 			if(stamped)
-				. += span_info("It looks like these documents have already been stamped. Now they can be returned to Central Command.")
+				. += span_info("Parece que esses documentos já foram carimbados. Agora eles podem ser devolvidos ao Comando Central.")
 			else
 				var/datum/job/stamp_title = stamp_job
 				var/title = initial(stamp_title.title)
@@ -124,10 +124,10 @@
 /obj/item/paperwork/cargo/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" The papers are a mess of shipping order paperwork. There's no rhyme or reason to how these documents are sorted at all.")
-	detailed_desc += span_info(" By the looks of it, there's nothing out of the ordinary here besides a high-priority request for a second engine.")
-	detailed_desc += span_info(" The 'priority request reason' field is scribbled out, but a note in the margins reads 'we just want to try two engines, don't worry about it'.")
-	detailed_desc += span_info(" Despite how disorganized the documents are, they're all appropriately filled in. You should probably stamp this.")
+	detailed_desc += span_info("Os papéis são uma bagunça de ordem de envio. Não há razão para como esses documentos são resolvidos.")
+	detailed_desc += span_info("Pelo que parece, não há nada fora do comum aqui além de um pedido de alta prioridade para um segundo motor.")
+	detailed_desc += span_info("O campo 'prioridade pedido razão' é rabiscar, mas uma nota nas margens diz 'nós só queremos tentar dois motores, não se preocupe com isso'.")
+	detailed_desc += span_info("Apesar da desorganização dos documentos, estão todos devidamente preenchidos. Deveria carimbar isso.")
 
 /obj/item/paperwork/security
 	stamp_requested = /obj/item/stamp/head/hos
@@ -137,10 +137,10 @@
 /obj/item/paperwork/security/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" The stack of documents is related to a civil case being processed by a neighboring installation.")
-	detailed_desc += span_info(" The document requests that you review a conduct report submitted by the lawyer of the station.")
-	detailed_desc += span_info(" The case file details accusations against the station's security department, including misconduct, harassment, an-")
-	detailed_desc += span_info(" What a bunch of crap, the security team were clearly just doing what they had to. You should probably stamp this.")
+	detailed_desc += span_info("A pilha de documentos está relacionada com um caso civil sendo processado por uma instalação vizinha.")
+	detailed_desc += span_info("O documento pede que reveja um relatório de conduta apresentado pelo advogado da delegacia.")
+	detailed_desc += span_info("O caso detalha acusações contra o departamento de segurança da estação, incluindo má conduta, assédio, e...")
+	detailed_desc += span_info("Que merda, a equipe de segurança estava fazendo o que tinha que fazer. Deveria carimbar isso.")
 
 /obj/item/paperwork/service
 	stamp_requested = /obj/item/stamp/head/hop
@@ -150,10 +150,10 @@
 /obj/item/paperwork/service/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" You begin scanning over the document. This is a standard Nanotrasen NT-435Z3 form used for requests to Central Command.")
-	detailed_desc += span_info(" Looks like a nearby station has sent in a MAXIMUM priority request for coal, in seemingly ridiculous quantities.")
-	detailed_desc += span_info(" The reason listed for the request seems to be hastily filled in -- 'Seeking alternative methods to power the station.'")
-	detailed_desc += span_info(" A MAXIMUM priority request like this is nothing to balk at. You should probably stamp this.")
+	detailed_desc += span_info("Comece a analisar o documento. Este é um formulário padrão Nanotrasen NT-435Z3 usado para pedidos ao Comando Central.")
+	detailed_desc += span_info("Parece que uma estação próxima enviou um pedido de prioridade máxima para carvão, em quantidades aparentemente ridículas.")
+	detailed_desc += span_info("A razão listada para o pedido parece ser rapidamente preenchido - 'Procurando métodos alternativos para a energia da estação.'")
+	detailed_desc += span_info("Um pedido de prioridade máxima como este não é nada para negar. Deveria carimbar isso.")
 
 /obj/item/paperwork/medical
 	stamp_requested = /obj/item/stamp/head/cmo
@@ -163,10 +163,10 @@
 /obj/item/paperwork/medical/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" The stack of documents appears to be a medical report from a nearby station, detailing the autopsy of an unknown xenofauna.")
-	detailed_desc += span_info(" Skipping to the end of the report reveals that the specimen was the station bartender's pet monkey.")
-	detailed_desc += span_info(" The specimen had been exposed to radiation during an 'unrelated incident with the engine', leading to its mutated form.")
-	detailed_desc += span_info(" Regardless, the autopsy results look like they could be useful. You should probably stamp this.")
+	detailed_desc += span_info("A pilha de documentos parece ser um relatório médico de uma estação próxima, detalhando a autópsia de uma xenofauna desconhecida.")
+	detailed_desc += span_info("Saltando para o final do relatório revela que o espécime era o macaco de estimação do barman.")
+	detailed_desc += span_info("O espécime foi exposto à radiação durante um \"incidente não relacionado com o motor\", levando à sua forma mutada.")
+	detailed_desc += span_info("Apesar disso, os resultados da autópsia parecem ser úteis. Deveria carimbar isso.")
 
 
 /obj/item/paperwork/engineering
@@ -177,10 +177,10 @@
 /obj/item/paperwork/engineering/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" These papers are a power output report from a neighboring station. It details the power output and other engineering data regarding the station during a typical shift.")
-	detailed_desc += span_info(" Checking the logs, you notice the energy output and engine temperature spike dramatically, and shortly after, the surrounding department appears to be depressurized by an unknown force.")
-	detailed_desc += span_info(" Clearly the station's engineering department was testing an experimental engine setup, and had to use the air in the nearby rooms to help cool the engine. Totally.")
-	detailed_desc += span_info(" Damn, that's impressive stuff. You should probably stamp this.")
+	detailed_desc += span_info("Estes papéis são um relatório de energia de uma estação vizinha. Ele detalha a potência e outros dados de engenharia sobre a estação durante uma mudança típica.")
+	detailed_desc += span_info("Verificando os registros, nota-se o pico de energia e temperatura do motor dramaticamente, e logo depois, o departamento circundante parece ser despressurizado por uma força desconhecida.")
+	detailed_desc += span_info("Claramente o departamento de engenharia da estação estava testando uma instalação experimental do motor, e teve que usar o ar nas salas próximas para ajudar a esfriar o motor. Totalmente.")
+	detailed_desc += span_info("Droga, isso é impressionante. Deveria carimbar isso.")
 
 /obj/item/paperwork/research
 	stamp_requested = /obj/item/stamp/head/rd
@@ -190,10 +190,10 @@
 /obj/item/paperwork/research/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" The documents detail the results of a standard ordnance test that occured on a nearby station.")
-	detailed_desc += span_info(" As you read further, you realize something strange with the results -- The epicenter doesn't seem to be correct.")
-	detailed_desc += span_info(" If your math is correct, this explosion didn't happen at the station's ordnance site, it occured in the station's engine room.")
-	detailed_desc += span_info(" Regardless, they're still perfectly usable test results. You should probably stamp this.")
+	detailed_desc += span_info("Os documentos detalham os resultados de um teste padrão de artilharia que ocorreu em uma estação próxima.")
+	detailed_desc += span_info("Ao ler mais, percebe algo estranho com os resultados... O epicentro não parece estar correto.")
+	detailed_desc += span_info("Se a sua matemática está correta, esta explosão não aconteceu no local de artilharia da estação, ocorreu na sala de máquinas da estação.")
+	detailed_desc += span_info("Mesmo assim, ainda são resultados de testes perfeitamente utilizáveis. Deveria carimbar isso.")
 
 /obj/item/paperwork/captain
 	stamp_requested = /obj/item/stamp/head/captain
@@ -203,16 +203,16 @@
 /obj/item/paperwork/captain/Initialize(mapload)
 	. = ..()
 
-	detailed_desc += span_info(" The documents are an unsigned correspondence from the captain's desk of a nearby station.")
-	detailed_desc += span_info(" It seems to be a standard check-in message, reporting that the station is functioning at optimal efficiency.")
-	detailed_desc += span_info(" The message repeatedly asserts that the engine is functioning 'perfectly fine' and is generating 'buttloads' of power.")
-	detailed_desc += span_info(" Everything checks out. You should probably stamp this.")
+	detailed_desc += span_info("Os documentos são uma correspondência não assinada da mesa do capitão de uma estação próxima.")
+	detailed_desc += span_info("Parece ser uma mensagem padrão de check-in, informando que a estação está funcionando com eficiência ótima.")
+	detailed_desc += span_info("A mensagem repetidamente afirma que o motor está funcionando 'perfeitamente bem' e está gerando 'cargas de bunda' de energia.")
+	detailed_desc += span_info("Tudo confere. Deveria carimbar isso.")
 
 //Photocopied paperwork. These are created when paperwork, whether stamped or otherwise, is printed. If it is stamped, it can be sold to cargo at the risk of the paperwork not being accepted (which takes a small fee from cargo).
 //If it is unstamped it will lose you money like normal, unless it has been marked with a VOID stamp
 /obj/item/paperwork/photocopy
 	name = "photocopied paperwork documents"
-	desc = "An even more disorganized mess of photocopied documents and paperwork. Did these even copy in the right order?"
+	desc = "Uma bagunça ainda mais desorganizada de documentos e documentos copiados. Será que estes sequer copiam na ordem certa?"
 	stamp_icon = "paper_stamp-pc"
 	/// Has the photocopy been marked with a "void" stamp. Used to prevent documents from draining money if they somehow make their way to cargo.
 	var/voided = FALSE
@@ -220,18 +220,18 @@
 /obj/item/paperwork/photocopy/Initialize(mapload)
 	. = ..()
 
-	detailed_desc = span_notice("The print job on this paperwork has rendered it almost entirely unreadable.")
+	detailed_desc = span_notice("O trabalho de impressão nesta papelada o tornou quase totalmente ilegível.")
 
 /obj/item/paperwork/photocopy/examine_more(mob/user)
 	. = ..()
 
 	if(stamped)
 		if(voided)
-			. += span_notice("It looks like it's been marked as 'VOID' on the front. It's unlikely that anyone will accept these now.")
+			. += span_notice("Parece que foi marcado como \"VOID\" na frente. É improvável que alguém aceite isso agora.")
 		else
-			. += span_notice("The stamp on the front appears to be smudged and faded. Central Command will probably still accept these, right?")
+			. += span_notice("O selo na frente parece estar manchado e desbotado. O Comando Central provavelmente ainda vai aceitar isso, certo?")
 	else
-		. += span_notice("These appear to just be a photocopy of the original documents.")
+		. += span_notice("Estes parecem ser apenas uma fotocópia dos documentos originais.")
 
 /obj/item/paperwork/photocopy/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attacking_item, /obj/item/stamp/void) && !stamped && !voided)
@@ -249,12 +249,12 @@
 
 /obj/item/paperwork/ancient
 	name = "ancient paperwork"
-	desc = "A dusty, ugly mess of paper scraps. You can't recognize a single name, date, or topic mentioned within. How old are these?"
+	desc = "Uma bagunça feia e empoeirada de pedaços de papel. Você não pode reconhecer um único nome, data ou tópico mencionado dentro. Quantos anos tem?"
 
 /obj/item/paperwork/ancient/Initialize(mapload)
 	. = ..()
 
-	detailed_desc = span_notice("It's impossible to really tell how old these are or what they're for, but Central Command might appreciate them anyway.")
+	detailed_desc = span_notice("É impossível dizer a idade deles ou para que servem, mas o Comando Central pode apreciá-los.")
 
 	var/static/list/paperwork_to_use //Make the ancient paperwork function like one of the main types
 	if(!paperwork_to_use)

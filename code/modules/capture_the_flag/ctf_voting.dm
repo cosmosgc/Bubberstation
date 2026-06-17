@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(ctf_voting_controllers)
 		return
 
 	volunteers -= user.ckey
-	to_chat(user, span_notice("Removed vote for CTF."))
+	to_chat(user, span_notice("Voto removido para CTF."))
 
 /// Returns the existing [/datum/ctf_voting_controller] for the given ID, or makes one
 /proc/get_ctf_voting_controller(game_id)

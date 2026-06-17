@@ -1,6 +1,6 @@
 /obj/machinery/dryer
 	name = "hand dryer"
-	desc = "The Breath Of Lizards-3000, an experimental dryer."
+	desc = "O Breath of Lizards-3000, um secador experimental."
 	icon = 'modular_skyrat/modules/salon/icons/dryer.dmi'
 	icon_state = "dryer"
 	density = FALSE
@@ -15,10 +15,10 @@
 		return
 
 	if(busy)
-		to_chat(user, span_warning("Someone's already drying here."))
+		to_chat(user, span_warning("Alguém já está secando aqui."))
 		return
 
-	to_chat(user, span_notice("You start drying your hands."))
+	to_chat(user, span_notice("Começa a secar as mãos."))
 	playsound(src, 'modular_skyrat/modules/salon/sound/drying.ogg', 50)
 	add_fingerprint(user)
 	busy = TRUE

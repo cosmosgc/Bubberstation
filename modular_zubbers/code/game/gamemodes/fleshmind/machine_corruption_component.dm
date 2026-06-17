@@ -219,7 +219,7 @@
 /datum/component/machine_corruption/proc/on_examine(atom/examined, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += "<b>It has strange wires wrappped around it!</b>"
+	examine_list += "<b>Tem fios estranhos enrolados em torno dele!</b>"
 
 /**
  * Infected machines are considered alive, they react to damage, trying to stop the agressor!

@@ -2,7 +2,7 @@
 
 /obj/item/food/candy_corn
 	name = "candy corn"
-	desc = "It's a handful of candy corn. Can be stored in a detective's hat."
+	desc = "É um punhado de milho doce. Pode ser guardado num chapéu de detetive."
 	icon_state = "candy_corn"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -16,7 +16,7 @@
 
 /obj/item/food/candy_corn/prison
 	name = "desiccated candy corn"
-	desc = "If this candy corn were any harder Security would confiscate it for being a potential shiv."
+	desc = "Se esse milho fosse mais difícil, a segurança confiscaria por ser uma faca em potencial."
 	force = 1 // the description isn't lying
 	throwforce = 1 // if someone manages to bust out of jail with candy corn god bless them
 	tastes = list("bitter wax" = 1)
@@ -24,7 +24,7 @@
 
 /obj/item/food/candiedapple
 	name = "candied apple"
-	desc = "An apple coated in sugary sweetness."
+	desc = "Uma maçã coberta de açúcar."
 	icon_state = "candiedapple"
 	bite_consumption = 3
 	food_reagents = list(
@@ -39,7 +39,7 @@
 
 /obj/item/food/mint
 	name = "mint"
-	desc = "It is only wafer thin."
+	desc = "É apenas um wafer fino."
 	icon_state = "mint"
 	bite_consumption = 1
 	food_reagents = list(/datum/reagent/consumable/mintextract = 2)
@@ -49,7 +49,7 @@
 
 /obj/item/food/ant_candy
 	name = "ant candy"
-	desc = "A colony of ants suspended in hardened sugar. Those things are dead, right?"
+	desc = "Uma colônia de formigas suspensas em açúcar temperado. Essas coisas estão mortas, certo?"
 	icon_state = "ant_pop"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 1,
@@ -66,7 +66,7 @@
 // Chocolates
 /obj/item/food/chocolatebar
 	name = "chocolate bar"
-	desc = "Such, sweet, fattening food."
+	desc = "Que doce, comida de engorda."
 	icon_state = "chocolatebar"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -81,7 +81,7 @@
 
 /obj/item/food/virtual_chocolate
 	name = "virtual chocolate bar"
-	desc = "Digital food only gives off the sensation of eating... without any of the nutritional benefits."
+	desc = "Comida digital só dá a sensação de comer... sem nenhum dos benefícios nutricionais."
 	icon_state = "virtual_chocolate"
 	tastes = list("nothing" = 1)
 	foodtypes = NONE
@@ -90,7 +90,7 @@
 
 /obj/item/food/chococoin
 	name = "chocolate coin"
-	desc = "A completely edible but non-flippable festive coin."
+	desc = "Uma moeda festiva completamente comestível, mas não flippável."
 	icon_state = "chococoin"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -105,7 +105,7 @@
 
 /obj/item/food/fudgedice
 	name = "fudge dice"
-	desc = "A little cube of chocolate that tends to have a less intense taste if you eat too many at once."
+	desc = "Um pequeno cubo de chocolate que tende a ter um sabor menos intenso se você comer muitos ao mesmo tempo."
 	icon_state = "chocodice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -121,7 +121,7 @@
 
 /obj/item/food/chocoorange
 	name = "chocolate orange"
-	desc = "A festive chocolate orange."
+	desc = "Uma laranja de chocolate festiva."
 	icon_state = "chocoorange"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -135,7 +135,7 @@
 
 /obj/item/food/bonbon
 	name = "bon bon"
-	desc = "A tiny and sweet chocolate."
+	desc = "Um chocolate pequeno e doce."
 	icon_state = "tiny_chocolate"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 1,
@@ -149,7 +149,7 @@
 
 /obj/item/food/bonbon/caramel_truffle
 	name = "caramel truffle"
-	desc = "A bite-sized chocolate truffle with a chewy caramel filling."
+	desc = "Uma trufa de chocolate com caramelo mastigado."
 	icon_state = "caramel_truffle"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -160,7 +160,7 @@
 
 /obj/item/food/bonbon/chocolate_truffle
 	name = "chocolate truffle"
-	desc = "A bite-sized chocolate truffle with a rich chocolate mousse filling."
+	desc = "Uma trufa de chocolate do tamanho de uma mordida com um rico recheio de mousse de chocolate."
 	icon_state = "chocolate_truffle"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -169,7 +169,7 @@
 
 /obj/item/food/bonbon/peanut_truffle
 	name = "peanut truffle"
-	desc = "A bite-sized chocolate truffle with crunchy peanuts mixed in."
+	desc = "Uma trufa de chocolate com amendoim crocante."
 	icon_state = "peanut_truffle"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -181,7 +181,7 @@
 
 /obj/item/food/bonbon/peanut_butter_cup
 	name = "peanut butter cup"
-	desc = "An ultra-sweet chocolate treat with a savory peanut butter filling."
+	desc = "Um chocolate super doce com um recheio de manteiga de amendoim."
 	icon_state = "peanut_butter_cup"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -194,7 +194,7 @@
 // Gum
 /obj/item/food/bubblegum
 	name = "bubblegum"
-	desc = "A rubbery strip of gum. Not exactly filling, but it keeps you busy."
+	desc = "Um chiclete de borracha. Não exatamente enchendo, mas te mantém ocupado."
 	icon_state = "bubblegum"
 	inhand_icon_state = null
 	color = "#E48AB5" // craftable custom gums someday?
@@ -224,14 +224,14 @@
 
 /obj/item/food/bubblegum/happiness
 	name = "\improper HP+ gum"
-	desc = "A rubbery strip of gum. It smells funny."
+	desc = "Um chiclete de borracha. Cheira estranho."
 	food_reagents = list(/datum/reagent/drug/happiness = 15)
 	tastes = list("paint thinner" = 1)
 	color = "#EE35FF"
 
 /obj/item/food/bubblegum/bubblegum
 	name = "bubblegum gum"
-	desc = "A rubbery strip of gum. You don't feel like eating it is a good idea."
+	desc = "Um chiclete de borracha. Você não acha que comer é uma boa ideia."
 	color = "#913D3D"
 	food_reagents = list(/datum/reagent/blood = 15)
 	tastes = list("hell" = 1, "people" = 1)
@@ -263,7 +263,7 @@
 
 /obj/item/food/gumball
 	name = "gumball"
-	desc = "A colorful, sugary gumball."
+	desc = "Uma bola de chiclete colorida e açucarada."
 	icon = 'icons/obj/food/lollipop.dmi'
 	icon_state = "gumball"
 	worn_icon_state = "bubblegum"
@@ -284,7 +284,7 @@
 // Lollipop
 /obj/item/food/lollipop
 	name = "lollipop"
-	desc = "A delicious lollipop. Makes for a great Valentine's present."
+	desc = "Um delicioso pirulito. É um ótimo presente para os namorados."
 	icon = 'icons/obj/food/lollipop.dmi'
 	icon_state = "lollipop_stick"
 	inhand_icon_state = null
@@ -331,7 +331,7 @@
 
 /obj/item/food/spiderlollipop
 	name = "spider lollipop"
-	desc = "Still gross, but at least it has a mountain of sugar on it."
+	desc = "Ainda é nojento, mas pelo menos tem uma montanha de açúcar."
 	icon_state = "spiderlollipop"
 	worn_icon_state = "lollipop_stick"
 	food_reagents = list(
@@ -353,7 +353,7 @@
 
 /obj/item/food/swirl_lollipop
 	name = "swirl lollipop"
-	desc = "A massive rainbow swirlled lollipop. Said to contain extra sugar."
+	desc = "Um enorme pirulito de arco-íris. Disse para conter açúcar extra."
 	icon_state = "swirl_lollipop"
 	worn_icon_state = "lollipop_stick"
 	inhand_icon_state = "swirl_lollipop"

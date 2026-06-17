@@ -3,7 +3,7 @@
 
 /obj/machinery/smoke_machine
 	name = "smoke machine"
-	desc = "A machine with a centrifuge installed into it. It produces smoke with any reagents you put into the machine."
+	desc = "Uma máquina com uma centrífuga instalada nela. Produz fumaça com qualquer reagente que colocar na máquina."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "smoke0"
 	base_icon_state = "smoke"
@@ -122,7 +122,7 @@
 
 /obj/machinery/smoke_machine/wrench_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(default_unfasten_wrench(user, tool, time = 4 SECONDS) == SUCCESSFUL_UNFASTEN)
@@ -132,14 +132,14 @@
 
 /obj/machinery/smoke_machine/screwdriver_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/smoke_machine/crowbar_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)

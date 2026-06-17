@@ -21,7 +21,7 @@
 
 /atom/movable/screen/alert/status_effect/hooked
 	name = "Snagged By Hook"
-	desc = "You're being caught like a fish by some asshat! Click to safely remove the hook or move away far enough to snap it off."
+	desc = "Você está sendo pego como um peixe por um idiota! Clique para remover o gancho ou se afastar o suficiente para tirá-lo."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "hooked"
 	clickable_glow = TRUE
@@ -32,11 +32,11 @@
 		return
 	if(!owner.can_resist())
 		return
-	owner.balloon_alert(owner, "removing hook...")
+	owner.balloon_alert(owner, "removendo gancho...")
 	var/datum/status_effect/grouped/hooked/effect = owner.has_status_effect(attached_effect.type)
 	if(!effect.try_unhook())
 		return
-	owner.balloon_alert(owner, "hook removed")
+	owner.balloon_alert(owner, "Gancho removido")
 	var/datum/beam/fishing_line/rand_source = pick(effect.sources)
 	qdel(rand_source)
 
@@ -58,6 +58,6 @@
 
 /atom/movable/screen/alert/status_effect/hooked/jaws
 	name = "Snagged By Jaws"
-	desc = "You've been snagged by some sort of beartrap-slash-fishing-hook-gizmo! Click to safely remove the hook or move away far enough to snap it off."
+	desc = "Você foi pego por algum tipo de urso-armadilha-pesca-gancho-gizmo! Clique para remover o gancho ou se afastar o suficiente para tirá-lo."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "hooked_jaws"

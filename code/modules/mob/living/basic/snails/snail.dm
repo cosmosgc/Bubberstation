@@ -1,6 +1,6 @@
 /mob/living/basic/snail
 	name = "snail"
-	desc = "Is petting this thing sanitary?"
+	desc = "Acariciar essa coisa é higiênico?"
 	icon_state = "snail"
 	icon_living = "snail"
 	icon_dead = "snail_dead"
@@ -75,7 +75,7 @@
 		return
 	visible_message(
 		span_danger("[src] shows a strong reaction after tasting some salt!"),
-		span_userdanger("You show a strong reaction after tasting some salt."),
+		span_userdanger("Você mostra uma forte reação depois de provar um pouco de sal."),
 	)
 	apply_damage(500) //ouch
 
@@ -119,11 +119,11 @@
 
 	. = ITEM_INTERACT_BLOCKING
 	if(held_mob.stat == DEAD)
-		user.balloon_alert(user, "it's dead!")
+		user.balloon_alert(user, "Está morto!")
 		return
 
 	if(locate(type) in interacting_with)
-		user.balloon_alert(user, "already has snail!")
+		user.balloon_alert(user, "Já tem caracol!")
 		return
 
 	if(!do_after(user, 2 SECONDS, interacting_with))

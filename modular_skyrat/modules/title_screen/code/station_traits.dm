@@ -1,7 +1,7 @@
 // STANDARD JOB TRAIT HANDLING
 /datum/station_trait/job/on_lobby_button_click(mob/dead/new_player/user)
 	if(SSticker.HasRoundStarted())
-		to_chat(user, span_redtext("The round has already started!"))
+		to_chat(user, span_redtext("A rodada já começou!"))
 		return
 	if (LAZYFIND(lobby_candidates, user))
 		LAZYREMOVE(lobby_candidates, user)

@@ -17,14 +17,14 @@
 		to_chat(src, span_warning(fail_message))
 		return
 	if(mind?.assigned_role.title == ROLE_GHOST_CAFE)
-		to_chat(src, span_warning("You have to be inside the current round to request an opfor."))
+		to_chat(src, span_warning("Você tem que estar dentro da rodada atual para pedir uma operação."))
 		return
 	if(is_banned_from(ckey, BAN_ANTAGONIST))
-		to_chat(src, span_warning("You are antagonist banned!"))
+		to_chat(src, span_warning("Você é um antagonista banido!"))
 		return
 
 	if(is_banned_from(ckey, BAN_OPFOR))
-		to_chat(src, span_warning("You are OPFOR banned!"))
+		to_chat(src, span_warning("Você está banido!"))
 		return
 
 	if(!mind.opposing_force)

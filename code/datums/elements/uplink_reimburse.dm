@@ -34,7 +34,7 @@
 	SIGNAL_HANDLER
 
 	if(!IS_TRAITOR(user) && !IS_NUKE_OP(user))
-		examine_list += span_warning("There's a label on the side, but it's written in indecipherable gibberish. You have no idea what it means!")
+		examine_list += span_warning("Há um rótulo ao lado, mas está escrito em palavras indecifráveis. Você não tem ideia do que significa!")
 		return
 
 	examine_list += span_notice("There's a label written in codespeak on the side, saying that this item can be refunded for [refundable_tc] by applying it onto an uplink.")

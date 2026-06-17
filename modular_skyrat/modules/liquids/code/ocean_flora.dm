@@ -10,7 +10,7 @@
 /obj/structure/flora/ocean/glowweed
 	name = "glow weed"
 	icon_state = "glowweed"
-	desc = "A plant with glowing bulbs at the end of it."
+	desc = "Uma planta com lâmpadas brilhantes no final."
 	random_variants = 3
 	light_color = LIGHT_COLOR_CYAN
 	light_range = 1.5
@@ -18,19 +18,19 @@
 /obj/structure/flora/ocean/seaweed
 	name = "sea weed"
 	icon_state = "seaweed"
-	desc = "Just your regular seaweed."
+	desc = "Apenas suas algas normais."
 	random_variants = 5
 
 /obj/structure/flora/ocean/longseaweed
 	name ="sea weed"
 	icon_state = "longseaweed"
-	desc = "Less so regular seaweed. This one is very long."
+	desc = "Menos algas normais. Este é muito longo."
 	random_variants = 4
 
 /obj/structure/flora/ocean/coral
 	name = "coral"
 	icon_state = "coral"
-	desc = "Beautiful coral."
+	desc = "Lindo coral."
 	random_variants = 3
 	density = TRUE
 
@@ -42,7 +42,7 @@
 
 /obj/structure/flora/scrap
 	name = "scrap metal"
-	desc = "A huge chunk of metal, rusted and worn. Perhaps it can still be salvaged into something useful."
+	desc = "Um enorme pedaço de metal, enferrujado e desgastado. Talvez ainda possa ser recuperado em algo útil."
 	icon = 'modular_skyrat/modules/liquids/icons/obj/flora/scrap.dmi'
 	icon_state = "scrap"
 	anchored = FALSE

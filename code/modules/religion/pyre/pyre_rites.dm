@@ -8,7 +8,7 @@
 
 /datum/religion_rites/fireproof
 	name = "Unmelting Protection"
-	desc = "Grants fire immunity to any piece of clothing."
+	desc = "Concede imunidade a qualquer peça de roupa."
 	ritual_length = 12 SECONDS
 	ritual_invocations = list("And so to support the holder of the Ever-Burning candle ...",
 	"... allow this unworthy apparel to serve you ...",
@@ -37,13 +37,13 @@
 		chosen_clothing = null //our lord and savior no longer cares about this apparel
 		return TRUE
 	chosen_clothing = null
-	to_chat(user, span_warning("The clothing that was chosen for the rite is no longer on the altar!"))
+	to_chat(user, span_warning("A roupa que foi escolhida para o ritual não está mais no altar!"))
 	return FALSE
 
 
 /datum/religion_rites/burning_sacrifice
 	name = "Burning Offering"
-	desc = "Sacrifice a buckled burning or husked corpse for favor, the more burn damage the corpse has the more favor you will receive."
+	desc = "Sacrifique um cadáver queimado ou descascado por favor, quanto mais dano à queimadura, mais favor receberá."
 	ritual_length = 15 SECONDS
 	ritual_invocations = list("Burning body ...",
 	"... cleansed by the flame ...",
@@ -55,39 +55,39 @@
 
 /datum/religion_rites/burning_sacrifice/perform_rite(mob/living/user, atom/religious_tool)
 	if(!ismovable(religious_tool))
-		to_chat(user, span_warning("This rite requires a religious device that individuals can be buckled to."))
+		to_chat(user, span_warning("Este rito requer um dispositivo religioso para o qual os indivíduos podem ser presos."))
 		return FALSE
 	var/atom/movable/movable_reltool = religious_tool
 	if(!movable_reltool)
 		return FALSE
 	if(!LAZYLEN(movable_reltool.buckled_mobs))
-		to_chat(user, span_warning("Nothing is buckled to the altar!"))
+		to_chat(user, span_warning("Nada está preso ao altar!"))
 		return FALSE
 	for(var/corpse in movable_reltool.buckled_mobs)
 		if(!iscarbon(corpse))// only works with carbon corpse since most normal mobs can't be set on fire.
-			to_chat(user, span_warning("Only carbon lifeforms can be properly burned for the sacrifice!"))
+			to_chat(user, span_warning("Só formas de vida de carbono podem ser devidamente queimadas para o sacrifício!"))
 			return FALSE
 		chosen_sacrifice = corpse
 		if(chosen_sacrifice.stat != DEAD)
-			to_chat(user, span_warning("You can only sacrifice dead bodies, this one is still alive!"))
+			to_chat(user, span_warning("Você só pode sacrificar cadáveres, este ainda está vivo!"))
 			return FALSE
 		if(!chosen_sacrifice.on_fire && !HAS_TRAIT_FROM(chosen_sacrifice, TRAIT_HUSK, BURN))
-			to_chat(user, span_warning("This corpse needs to be on fire or husked to be sacrificed!"))
+			to_chat(user, span_warning("Este cadáver precisa ser queimado ou descascado para ser sacrificado!"))
 			return FALSE
 		return ..()
 
 /datum/religion_rites/burning_sacrifice/invoke_effect(mob/living/user, atom/movable/religious_tool)
 	..()
 	if(!(chosen_sacrifice in religious_tool.buckled_mobs)) //checks one last time if the right corpse is still buckled
-		to_chat(user, span_warning("The right sacrifice is no longer on the altar!"))
+		to_chat(user, span_warning("O sacrifício certo não está mais no altar!"))
 		chosen_sacrifice = null
 		return FALSE
 	if(!chosen_sacrifice.on_fire && !HAS_TRAIT_FROM(chosen_sacrifice, TRAIT_HUSK, BURN))
-		to_chat(user, span_warning("The sacrifice has to be on fire or husked to finish the end of the rite!"))
+		to_chat(user, span_warning("O sacrifício tem que ser em chamas ou descascado para terminar o rito!"))
 		chosen_sacrifice = null
 		return FALSE
 	if(chosen_sacrifice.stat != DEAD)
-		to_chat(user, span_warning("The sacrifice has to stay dead for the rite to work!"))
+		to_chat(user, span_warning("O sacrifício tem que ficar morto para que o ritual funcione!"))
 		chosen_sacrifice = null
 		return FALSE
 	var/favor_gained = 100 + round(chosen_sacrifice.get_fire_loss())
@@ -100,7 +100,7 @@
 
 /datum/religion_rites/infinite_candle
 	name = "Immortal Candles"
-	desc = "Creates 5 candles that never run out of wax."
+	desc = "Cria 5 velas que nunca ficam sem cera."
 	ritual_length = 10 SECONDS
 	invoke_msg = "Burn bright, little candles, for you will only extinguish along with the universe."
 	favor_cost = 200
@@ -115,7 +115,7 @@
 
 /datum/religion_rites/blazing_star
 	name = "Blazing Star"
-	desc = "Enchants a holy arrow to set someone on fire on hit, or if the victim is already on fire... note, this consumes the arrow."
+	desc = "Incendeia uma flecha sagrada para incendiar alguém, ou se a vítima já está em chamas... nota, isso consome a flecha."
 	ritual_length = 15 SECONDS
 	ritual_invocations = list(
 		"And so to keep the Ever-Burning candle protected ...",
@@ -142,7 +142,7 @@
 	var/turf/tool_turf = get_turf(religious_tool)
 	enchant_target = null
 	if(QDELETED(enchanting) || !(tool_turf == enchanting.loc)) //check if the arrow is still there
-		to_chat(user, span_warning("Your target left the altar!"))
+		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
 	enchanting.visible_message(span_notice("[enchant_target] is blessed by holy fire!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)

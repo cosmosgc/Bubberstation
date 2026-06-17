@@ -1,6 +1,6 @@
 /datum/mutation/geladikinesis
 	name = "Geladikinesis"
-	desc = "Allows the user to concentrate moisture and sub-zero forces into snow."
+	desc = "Permite ao usuário concentrar umidade e forças abaixo de zero na neve."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your hand feels cold.")
 	instability = POSITIVE_INSTABILITY_MINOR
@@ -10,7 +10,7 @@
 
 /datum/action/cooldown/spell/conjure_item/snow
 	name = "Create Snow"
-	desc = "Concentrates cryokinetic forces to create snow, useful for snow-like construction."
+	desc = "Concentra forças criocinéticas para criar neve, útil para a construção de neve."
 	button_icon_state = "snow"
 
 	cooldown_time = 5 SECONDS
@@ -22,7 +22,7 @@
 
 /datum/mutation/cryokinesis
 	name = "Cryokinesis"
-	desc = "Draws negative energy from the sub-zero void to freeze surrounding temperatures at subject's will."
+	desc = "Tira energia negativa do vazio abaixo de zero para congelar as temperaturas ao redor à vontade do sujeito."
 	quality = POSITIVE //upsides and downsides
 	text_gain_indication = span_notice("Your hand feels cold.")
 	instability = POSITIVE_INSTABILITY_MODERATE
@@ -33,7 +33,7 @@
 
 /datum/action/cooldown/spell/pointed/projectile/cryo
 	name = "Cryobeam"
-	desc = "This power fires a frozen bolt at a target."
+	desc = "Essa energia dispara um parafuso congelado em um alvo."
 	button_icon_state = "icebeam"
 	base_icon_state = "icebeam"
 	active_overlay_icon_state = "bg_spell_border_active_blue"

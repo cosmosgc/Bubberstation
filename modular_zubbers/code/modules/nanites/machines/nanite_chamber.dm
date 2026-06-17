@@ -1,6 +1,6 @@
 /obj/machinery/nanite_chamber
 	name = "nanite chamber"
-	desc = "A device that can scan, reprogram, and inject nanites."
+	desc = "Um dispositivo que pode escanear, reprogramar e injetar nanites."
 	circuit = /obj/item/circuitboard/machine/nanite_chamber
 	icon = 'icons/obj/machines/bci_implanter.dmi'
 	icon_state = "bci_implanter"
@@ -134,7 +134,7 @@
 
 /obj/machinery/nanite_chamber/proc/toggle_open(mob/user)
 	if(panel_open)
-		to_chat(user, span_notice("Close the maintenance panel first."))
+		to_chat(user, span_notice("Feche o painel de manutenção primeiro."))
 		return
 
 	if(state_open)
@@ -142,7 +142,7 @@
 		return
 
 	else if(locked)
-		to_chat(user, span_notice("The bolts are locked down, securing the door shut."))
+		to_chat(user, span_notice("Os parafusos estão trancados, mantendo a porta fechada."))
 		return
 
 	open_machine()
@@ -192,7 +192,7 @@
 /obj/machinery/nanite_chamber/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(occupant)
-		balloon_alert(user, "occupied!")
+		balloon_alert(user, "Ocupado!")
 		return ITEM_INTERACT_BLOCKING
 	return default_deconstruction_screwdriver(user, tool)
 

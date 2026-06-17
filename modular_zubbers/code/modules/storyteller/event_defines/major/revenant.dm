@@ -9,7 +9,7 @@
 	tags = list(TAG_DESTRUCTIVE, TAG_SPOOKY)
 	max_occurrences = 1
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Spawns an angry, soul sucking ghost."
+	description = "Spawns um fantasma com raiva e alma sugando."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 

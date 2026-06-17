@@ -4,8 +4,8 @@
  * Points a laser at a tile or mob
  */
 /obj/item/circuit_component/laserpointer
-	display_name = "Laser Pointer"
-	desc = "A component that shines a high powered light at a target."
+	display_name = "Ponto Laser"
+	desc = "Um componente que ilumina uma luz de alta potência em um alvo."
 	category = "Action"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 

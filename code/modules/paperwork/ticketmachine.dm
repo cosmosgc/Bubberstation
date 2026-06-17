@@ -6,7 +6,7 @@
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "ticketmachine"
 	base_icon_state = "ticketmachine"
-	desc = "A marvel of bureaucratic engineering encased in an efficient plastic shell. It can be refilled with a hand labeler refill roll and linked to buttons with a multitool."
+	desc = "Uma maravilha de engenharia burocrática envolto em uma eficiente casca plástica. Pode ser enchido com um rolo de recarga de etiquetas e ligado a botões com uma multitool."
 	density = FALSE
 	maptext_height = 26
 	maptext_width = 32
@@ -52,13 +52,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/machinery/ticket_machine/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/ticket_machine/emag_act(mob/user, obj/item/card/emag/emag_card) //Emag the ticket machine to dispense burning tickets, as well as randomize its number to destroy the HoP's mind.
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "bureaucratic nightmare engaged")
+	balloon_alert(user, "pesadelo burocrático envolvido")
 	ticket_number = rand(0,max_number)
 	current_number = ticket_number
 	obj_flags |= EMAGGED
@@ -72,7 +72,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/item/wallframe/ticket_machine
 	name = "ticket machine frame"
-	desc = "An unmounted ticket machine. Attach it to a wall to use."
+	desc = "Uma máquina de bilhetes desmontada. Coloque em uma parede para usar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "ticketmachine_off"
 	result_path = /obj/machinery/ticket_machine
@@ -96,7 +96,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/machinery/button/ticket_machine
 	name = "increment ticket counter"
-	desc = "Use this button after you've served someone to tell the next person to come forward."
+	desc = "Use este botão depois de ter servido alguém para dizer à próxima pessoa para se apresentar."
 	device_type = /obj/item/assembly/control/ticket_machine
 	req_access = list()
 	id = "ticket_machine_default"
@@ -121,7 +121,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/item/assembly/control/ticket_machine
 	name = "ticket machine controller"
-	desc = "A remote controller for the HoP's ticket machine."
+	desc = "Um controle remoto para a máquina de bilhetes do HoP."
 	///Weakref to our ticket machine
 	var/datum/weakref/ticket_machine_ref
 
@@ -153,7 +153,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 	cooldown = TRUE
 	machine.increment()
 	if(isnull(machine.current_ticket))
-		to_chat(activator, span_notice("The button light indicates that there are no more tickets to be processed."))
+		to_chat(activator, span_notice("A luz do botão indica que não há mais ingressos para serem processados."))
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 SECONDS)
 
 /obj/machinery/ticket_machine/update_icon()
@@ -205,14 +205,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 /obj/machinery/ticket_machine/attack_hand(mob/living/carbon/user, list/modifiers)
 	. = ..()
 	if(!ready)
-		to_chat(user,span_warning("You press the button, but nothing happens..."))
+		to_chat(user,span_warning("Você aperta o botão, mas nada acontece..."))
 		return
 	if(ticket_number >= max_number)
-		to_chat(user,span_warning("Ticket supply depleted, please refill this unit with a hand labeller refill cartridge!"))
+		to_chat(user,span_warning("Fornecimento esgotado, por favor, encha esta unidade com um cartucho de recarga de etiquetador de mãos!"))
 		return
 	var/user_ref = REF(user)
 	if((user_ref in ticket_holders) && !(obj_flags & EMAGGED))
-		to_chat(user, span_warning("You already have a ticket!"))
+		to_chat(user, span_warning("Você já tem uma passagem!"))
 		return
 	playsound(src, 'sound/machines/terminal/terminal_insert_disc.ogg', 100, FALSE)
 	ticket_number++
@@ -234,7 +234,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/ticket_machine, 32)
 
 /obj/item/ticket_machine_ticket
 	name = "\improper ticket"
-	desc = "A ticket which shows your place in the Head of Personnel's line. Made from Nanotrasen patented NanoPaper®. Though solid, its form seems to shimmer slightly. Feels (and burns) just like the real thing."
+	desc = "Uma passagem que mostra seu lugar na linha do Chefe de Pessoal. Feito de Nanotrasen patenteado NanoPaper®. Embora sólida, sua forma parece brilhar ligeiramente. Parece (e queima) como a coisa real."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "ticket"
 	maptext_x = 7

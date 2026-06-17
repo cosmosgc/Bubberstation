@@ -228,7 +228,7 @@
 	if(drunk_value >= 81)
 		owner.adjust_tox_loss(1)
 		if(owner.stat == CONSCIOUS && prob(5))
-			to_chat(owner, span_warning("Maybe you should lie down for a bit..."))
+			to_chat(owner, span_warning("Talvez devesse se deitar um pouco..."))
 
 	// Over 91, we gain even more toxloss, brain damage, and have a chance of dropping into a long sleep
 	if(drunk_value >= 91)
@@ -246,7 +246,7 @@
 	var/mob/living/carbon/drunkard = owner
 	if(drunkard.has_trauma_type(/datum/brain_trauma/severe/split_personality/blackout))// prevent ping spamming
 		if(prob(10))
-			to_chat(owner, span_warning("You stumbled and fall over!"))
+			to_chat(owner, span_warning("Você tropeçou e caiu!"))
 			owner.slip(1 SECONDS)
 		return
 	if(drunkard.gain_trauma(/datum/brain_trauma/severe/split_personality/blackout, TRAUMA_LIMIT_ABSOLUTE))
@@ -254,15 +254,15 @@
 		return
 	*/ // SKYRAT EDIT REMOVAL END
 	if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
-		to_chat(owner, span_warning("You're so tired... but you can't miss that shuttle..."))
+		to_chat(owner, span_warning("Você está tão cansado... mas não pode perder aquela nave auxiliar..."))
 	else
 		owner.Sleeping(90 SECONDS)
 
 /// Status effect for being fully drunk (not tipsy).
 /atom/movable/screen/alert/status_effect/drunk
 	name = "Drunk"
-	desc = "All that alcohol you've been drinking is impairing your speech, \
-		motor skills, and mental cognition. Make sure to act like it."
+	desc = "Todo o álcool que tem bebido está prejudicando seu discurso,\
+habilidades motoras, e cognição mental. Certifique-se de agir como tal."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "drunk"
 

@@ -90,7 +90,7 @@
 			examine_list += span_green("<i>There's [num_resurrections] notches in the side of it.</i>")
 
 	else
-		examine_list += span_green("A terrible aura surrounds this item. Its very existence is offensive to life itself...")
+		examine_list += span_green("Uma aura terrível cerca este item. Sua própria existência é ofensiva para a própria vida...")
 
 /**
  * Signal proc for [COMSIG_QDELETING] registered on the lich's mind.
@@ -190,7 +190,7 @@
 	lich.set_species(/datum/species/skeleton)
 	lich.dna.generate_unique_enzymes()
 
-	to_chat(lich, span_green("Your bones clatter and shudder as you are pulled back into this world!"))
+	to_chat(lich, span_green("Seus ossos tremem e tremem quando você é puxado de volta para este mundo!"))
 	num_resurrections++
 	lich.Paralyze(stun_per_resurrection * num_resurrections)
 

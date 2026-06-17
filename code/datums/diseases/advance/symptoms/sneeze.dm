@@ -8,7 +8,7 @@
 */
 /datum/symptom/sneeze
 	name = "Sneezing"
-	desc = "The virus causes irritation of the nasal cavity, making the host sneeze occasionally. Sneezes from this symptom will spread the virus in a 4 meter cone in front of the host."
+	desc = "O vírus causa irritação da cavidade nasal, fazendo o hospedeiro espirrar ocasionalmente. Os escárnios deste sintoma espalharão o vírus em um cone de 4 metros na frente do hospedeiro."
 	illness = "Bard Flu"
 	stealth = -2
 	resistance = 3
@@ -55,7 +55,7 @@
 			affected_mob.emote("sneeze")
 			active_disease.airborne_spread(spread_range = src.spread_range, force_spread = TRUE, require_facing = TRUE)
 			if(cartoon_sneezing) //Yeah, this can fling you around even if you have a space suit helmet on. It's, uh, bluespace snot, yeah.
-				to_chat(affected_mob, span_userdanger("You are launched violently backwards by an all-mighty sneeze!"))
+				to_chat(affected_mob, span_userdanger("Você é lançado violentamente para trás por um espirro todo-poderoso!"))
 				var/sneeze_distance = rand(2,4) //twice as far as a normal baseball bat strike will fling you
 				var/turf/target = get_ranged_target_turf(affected_mob, REVERSE_DIR(affected_mob.dir), sneeze_distance)
 				affected_mob.throw_at(target, sneeze_distance, rand(1,4)) //with the wounds update, sneezing at 7 speed was causing peoples bones to spontaneously explode, turning cartoonish sneezing into a nightmarishly lethal GBS 2.0 outbreak

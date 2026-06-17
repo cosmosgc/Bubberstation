@@ -2,13 +2,13 @@
 	name = "The Flu"
 	max_stages = 3
 	spread_text = "Airborne"
-	cure_text = /datum/reagent/medicine/spaceacillin::name + ", abated by rest"
+	cure_text = /datum/reagent/medicine/spaceacillin::name + ", abatido pelo descanso"
 	cures = list(/datum/reagent/medicine/spaceacillin)
 	cure_chance = 5
 	agent = "H13N1 Flu Virion"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	spreading_modifier = 0.75
-	desc = "A common, mildly annoying contagion. If left untreated the subject will feel quite unwell."
+	desc = "Um contágio comum, levemente irritante. Se não for tratado, o sujeito não se sentirá bem."
 	severity = DISEASE_SEVERITY_MINOR
 	required_organ = ORGAN_SLOT_LUNGS
 
@@ -30,15 +30,15 @@
 			if(SPT_PROB(0.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your muscles ache."))
+				to_chat(affected_mob, span_danger("Seus músculos doem."))
 				if(prob(20))
 					affected_mob.take_bodypart_damage(1, updating_health = FALSE)
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your stomach hurts."))
+				to_chat(affected_mob, span_danger("Seu estômago dói."))
 				if(prob(20))
 					affected_mob.adjust_tox_loss(1, FALSE)
 			if(affected_mob.body_position == LYING_DOWN && SPT_PROB(10, seconds_per_tick))
-				to_chat(affected_mob, span_notice("You feel better."))
+				to_chat(affected_mob, span_notice("Você se sente melhor."))
 				stage--
 				return
 
@@ -48,14 +48,14 @@
 			if(SPT_PROB(0.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your muscles ache."))
+				to_chat(affected_mob, span_danger("Seus músculos doem."))
 				if(prob(20))
 					affected_mob.take_bodypart_damage(1, updating_health = FALSE)
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your stomach hurts."))
+				to_chat(affected_mob, span_danger("Seu estômago dói."))
 				if(prob(20))
 					affected_mob.adjust_tox_loss(1, FALSE)
 			if(affected_mob.body_position == LYING_DOWN && SPT_PROB(7.5, seconds_per_tick))
-				to_chat(affected_mob, span_notice("You feel better."))
+				to_chat(affected_mob, span_notice("Você se sente melhor."))
 				stage--
 				return

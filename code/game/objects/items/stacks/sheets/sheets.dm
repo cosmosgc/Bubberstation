@@ -43,7 +43,7 @@
 /obj/item/stack/sheet/examine(mob/user)
 	. = ..()
 	if (manufactured && gulag_valid)
-		. += span_notice("It has been embossed with a manufacturer's mark of guaranteed quality.")
+		. += span_notice("Foi gravado com uma marca do fabricante de qualidade garantida.")
 
 	var/datum/material/material = get_master_material()
 	if (!HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER) || !material)
@@ -96,7 +96,7 @@
 	if(!shards.len)
 		return FALSE
 	if(!use(1))
-		to_chat(user, is_cyborg ? span_warning("There is not enough material in the synthesizer to produce a shard!") : span_warning("Somehow, there is not enough of [src] to shatter!"))
+		to_chat(user, is_cyborg ? span_warning("Não há material suficiente no sintetizador para produzir um fragmento!") : span_warning("Somehow, there is not enough of [src] to shatter!"))
 		if(!is_cyborg)
 			stack_trace("A stack of sheet material was attempted to be shattered into shards while having less than 1 sheets remaining.")
 		return FALSE

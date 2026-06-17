@@ -2,7 +2,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	name = "glass gas mask"
-	desc = "A face-covering mask that can be connected to an air supply. This one doesn't obscure your face however."
+	desc = "Uma máscara que pode ser conectada a um suprimento de ar. Mas este não obscurece seu rosto."
 	icon_state = "gas_clear"
 	flags_inv = NONE
 
@@ -10,7 +10,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	name = "advanced gas mask"
-	desc = "A face-covering mask that can be connected to an air supply. This one doesn't obscure your face however."
+	desc = "Uma máscara que pode ser conectada a um suprimento de ar. Mas este não obscurece seu rosto."
 	icon_state = "gas_clear"
 	flags_inv = NONE
 
@@ -21,21 +21,21 @@
 
 /obj/item/clothing/mask/gas/german
 	name = "black gas mask"
-	desc = "A black gas mask. Are you my Mummy?"
+	desc = "Uma máscara preta de gás. Você é minha mamãe?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "m38_mask"
 
 /obj/item/clothing/mask/gas/hecu1
 	name = "modern gas mask"
-	desc = "MY. ASS. IS. HEAVY."
+	desc = "Minha nossa."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu"
 
 /obj/item/clothing/mask/gas/hecu2
 	name = "M40 gas mask"
-	desc = "A deprecated field protective mask developed during the 20th century in Sol-3. It's designed to protect from chemical agents, biological agents, and nuclear fallout particles. It does not protect the user from ammonia or from lack of oxygen, though the filter can be replaced with a tube for any air tank."
+	desc = "Uma máscara de proteção de campo desactualizada desenvolvida durante o século 20 em Sol-3. É projetado para proteger de agentes químicos, agentes biológicos e partículas nucleares. Não protege o usuário da amônia ou da falta de oxigênio, embora o filtro possa ser substituído por um tubo para qualquer tanque de ar."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/mask.dmi'
@@ -43,14 +43,14 @@
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"
-	desc = "A white gas mask with a green filter, there's a small sticker verifying it's Asbestos free! An even smaller sticker has been torn off. Nothing to worry about."
+	desc = "Uma máscara de gás branco com um filtro verde, há um pequeno adesivo verificando que é livre de amianto! Um adesivo ainda menor foi arrancado. Nada para se preocupar."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "gp5_mask"
 
 /obj/item/clothing/mask/gas/clown_colourable
 	name = "colourable clown mask"
-	desc = "The face of pure evil, now multicoloured."
+	desc = "O rosto do mal puro, agora multicolorido."
 	icon = 'icons/map_icons/clothing/mask.dmi'
 	icon_state = "/obj/item/clothing/mask/gas/clown_colourable"
 	post_init_icon_state = "gags_mask"
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/mask/gas/clownbald
 	name = "bald clown mask"
-	desc = "HE'S BALD, HE'S FUCKIN' BALDIN!"
+	desc = "Ele é careca, ele é o maldito Baldin!"
 	clothing_flags = MASKINTERNALS
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
@@ -75,7 +75,7 @@
 
 /obj/item/clothing/mask/gas/respirator
 	name = "half mask respirator"
-	desc = "A half mask respirator that's really just a standard gas mask with the glass taken off."
+	desc = "Um respirador meia máscara que é realmente apenas uma máscara de gás padrão com o vidro tirado."
 	icon = 'icons/map_icons/clothing/mask.dmi'
 	icon_state = "/obj/item/clothing/mask/gas/respirator"
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/mask/gas/respirator/examine(mob/user)
 	. = ..()
-	. += span_notice("You can toggle its ability to muffle your TTS voice with <b>control click</b>.")
+	. += span_notice("Você pode mudar sua capacidade de abafar sua voz TTS com<b>Click de controle</b>.")
 
 /obj/item/clothing/mask/gas/respirator/item_ctrl_click(mob/living/user)
 	if(!isliving(user))
@@ -109,7 +109,7 @@
 	to_chat(user, span_notice("Mask voice muffling [voice_filter ? "enabled" : "disabled"]."))
 
 /obj/item/clothing/mask/gas/clown_hat/vox
-	desc = "A true prankster's facial attire. A clown is incomplete without his wig and mask. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	desc = "O traje facial de um verdadeiro brincalhão. Um palhaço está incompleto sem peruca e máscara. Este tem um porto de alimentação de fácil acesso para ser mais adequado para os membros da tripulação Vox."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
@@ -151,7 +151,7 @@
 		return TRUE
 
 /obj/item/clothing/mask/gas/mime/vox
-	desc = "The traditional mime's mask. It has an eerie facial posture. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	desc = "A máscara de mímica tradicional. Tem uma postura facial assustadora. Este tem um porto de alimentação de fácil acesso para ser mais adequado para os membros da tripulação Vox."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
@@ -201,7 +201,7 @@
 		return TRUE
 
 /obj/item/clothing/mask/gas/atmos/vox
-	desc = "Improved gas mask utilized by atmospheric technicians. It's flameproof! This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	desc = "Máscara de gás melhorada usada por técnicos atmosféricos. É à prova de chamas! Este tem um porto de alimentação de fácil acesso para ser mais adequado para os membros da tripulação Vox."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
@@ -209,7 +209,7 @@
 	starting_filter_type = /obj/item/gas_filter/vox
 
 /obj/item/clothing/mask/gas/sechailer/vox
-	desc = "A standard issue Security gas mask with integrated 'Compli-o-nator 3000' device. Plays over a dozen pre-recorded compliance phrases designed to get scumbags to stand still whilst you tase them. Do not tamper with the device. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	desc = "Uma máscara de gás padrão com dispositivo integrado \"Compli-o-nator 3000\". Reproduz mais de uma dúzia de frases pré-gravadas para fazer os canalhas ficarem parados enquanto você bate neles. Não mexa no dispositivo. Este tem um porto de alimentação de fácil acesso para ser mais adequado para os membros da tripulação Vox."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'

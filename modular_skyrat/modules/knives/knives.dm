@@ -3,7 +3,7 @@
 
 /obj/item/knife/bowie
 	name = "\improper Bowie knife"
-	desc = "A frontiersman's classic, closer to a shortsword than a knife. It boasts a full-tanged build, a brass handguard and pommel, a wicked sharp point, and a large, heavy blade, It's almost everything you could want in a knife, besides portability."
+	desc = "Clássico de um homem das fronteiras, mais perto de uma espada curta do que uma faca. Ele tem um corpo bronzeado, um protetor de bronze e pommel, um ponto afiado e uma lâmina grande e pesada, é quase tudo que você poderia querer em uma faca, além de portabilidade."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
 	icon_state = "bowiehand"
 	inhand_icon_state = "bowiehand"
@@ -18,7 +18,7 @@
 
 /obj/item/storage/belt/bowie_sheath
 	name = "\improper Bowie knife sheath"
-	desc = "A dressed-up leather sheath featuring a brass tip. It has a large pocket clip right in the center, for ease of carrying an otherwise burdensome knife."
+	desc = "Uma bainha de couro vestida com uma ponta de latão. Ele tem um grande clipe de bolso bem no centro, para facilidade de carregar uma faca de outra forma pesada."
 	icon = 'modular_skyrat/modules/knives/icons/bowiepocket.dmi'
 	icon_state = "bowiesheath"
 	slot_flags = ITEM_SLOT_POCKETS

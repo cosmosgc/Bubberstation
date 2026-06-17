@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/sentinel
 	name = "alien sentinel"
-	desc = "An alien that'd be unremarkable if not for the bright coloring and visible acid glands that cover it."
+	desc = "Um alienígena que não seria notável se não fosse pela coloração brilhante e glândulas ácidas visíveis que o cobrem."
 	caste = "sentinel"
 	maxHealth = 200
 	health = 200
@@ -29,7 +29,7 @@
 
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
-	desc = "Spits neurotoxin at someone, exhausting them."
+	desc = "Cospe neurotoxina em alguém, esgotando-os."
 	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 40
@@ -125,7 +125,7 @@
 
 /datum/action/cooldown/alien/acid/skyrat/lethal
 	name = "Spit Acid"
-	desc = "Spits neurotoxin at someone, burning them."
+	desc = "Cospe neurotoxina em alguém, queimando-os."
 	acid_projectile = /obj/projectile/neurotoxin/skyrat/acid
 	button_icon_state = "acidspit_0"
 	projectile_name = "acid"

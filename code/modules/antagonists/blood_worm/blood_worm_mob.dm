@@ -249,7 +249,7 @@
 	// Checks if we still have a host since setBruteLoss() can kill us, causing us to leave our host.
 	if (!already_ejecting && cached_blood_volume <= get_eject_volume_threshold())
 		// Sent before leave_host() for the correct message order in chat
-		to_chat_self(span_userdanger("You run out of blood to control your host with!"))
+		to_chat_self(span_userdanger("Você está sem sangue para controlar seu hospedeiro!"))
 
 		leave_host()
 
@@ -271,7 +271,7 @@
 
 /mob/living/basic/blood_worm/hatchling
 	name = "hatchling blood worm"
-	desc = "A freshly hatched blood worm. It looks hungry and weak, requiring blood to grow further."
+	desc = "Um verme recém-eclodido. Parece faminto e fraco, exigindo sangue para crescer mais."
 
 	icon_state = "hatchling"
 	icon_living = "hatchling"
@@ -313,7 +313,7 @@
 
 /mob/living/basic/blood_worm/juvenile
 	name = "juvenile blood worm"
-	desc = "A mid-sized blood worm. It looks bloodthirsty and has numerous long and extremely sharp teeth."
+	desc = "Um verme de sangue médio. Parece sanguinário e tem vários dentes longos e extremamente afiados."
 
 	icon_state = "juvenile"
 	icon_living = "juvenile"
@@ -356,7 +356,7 @@
 
 /mob/living/basic/blood_worm/adult
 	name = "adult blood worm"
-	desc = "A monstrosity of a blood worm. It'd probably be better to put your head in an industrial shredder rather than its maw."
+	desc = "Uma monstruosidade de um verme de sangue. Provavelmente seria melhor colocar sua cabeça em um triturador industrial ao invés de sua mãe."
 
 	icon = 'icons/mob/nonhuman-player/blood_worm_32x48.dmi'
 

@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/bicycle
 	name = "bicycle"
-	desc = "Keep away from electricity."
+	desc = "Fique longe da eletricidade."
 	icon_state = "bicycle"
 	max_integrity = 150
 	integrity_failure = 0.5
@@ -13,7 +13,7 @@
 /obj/vehicle/ridden/bicycle/zap_act(power, zap_flags) // :::^^^)))
 	//This didn't work for 3 years because none ever tested it I hate life
 	name = "fried bicycle"
-	desc = "Well spent."
+	desc = "Bem gasto."
 	color = rgb(63, 23, 4)
 	can_buckle = FALSE
 	fried = TRUE
@@ -26,23 +26,23 @@
 		return
 	. = TRUE
 	if(fried)
-		balloon_alert(user, "it's fried!")
+		balloon_alert(user, "Está frito!")
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing it!")
+		balloon_alert(user, "Você já está consertando!")
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "Não está danificado!")
 		return
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
-	audible_message(span_hear("You hear welding."))
+	audible_message(span_hear("Você ouve solda."))
 	var/did_the_thing
 	while(atom_integrity < max_integrity)
 		if(W.use_tool(src, user, 2.5 SECONDS, volume=50, extra_checks = CALLBACK(src, PROC_REF(can_still_fix))))
 			did_the_thing = TRUE
 			atom_integrity += min(10, (max_integrity - atom_integrity))
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 		else
 			break
 	if(did_the_thing)

@@ -3,7 +3,7 @@
 /obj/structure/spider
 	name = "web"
 	icon = 'icons/effects/web.dmi'
-	desc = "It's stringy and sticky."
+	desc = "É grudento e pegajoso."
 	anchored = TRUE
 	density = FALSE
 	max_integrity = 15
@@ -70,7 +70,7 @@
 		return
 	loc.balloon_alert_to_viewers("weaving...")
 	if(!do_after(user, 2 SECONDS))
-		loc.balloon_alert(user, "interrupted!")
+		loc.balloon_alert(user, "Interrompido!")
 		return
 	qdel(src)
 	var/obj/item/stack/sheet/cloth/woven_cloth = new /obj/item/stack/sheet/cloth
@@ -107,14 +107,14 @@
 		return
 
 	if(prob(25))
-		loc.balloon_alert(victim, "stuck in web!")
+		loc.balloon_alert(victim, "Preso na teia!")
 		victim.Shake(duration = 0.2 SECONDS)
 
 	victim.adjust_stamina_loss(rand(10, 15))
 
 /// Web made by geneticists, needs special handling to allow them to pass through their own webs
 /obj/structure/spider/stickyweb/genetic
-	desc = "It's stringy, sticky, and came out of your coworker."
+	desc = "É grudento, pegajoso, e saiu do seu colega de trabalho."
 	/// Mob with special permission to cross this web
 	var/mob/living/allowed_mob
 
@@ -133,7 +133,7 @@
 /// Web with a 100% chance to intercept movement
 /obj/structure/spider/stickyweb/very_sticky
 	max_integrity = 20
-	desc = "Extremely sticky silk, you're not easily getting through there."
+	desc = "Seda extremamente pegajosa, não é fácil passar por lá."
 	stuck_chance = 100
 	projectile_stuck_chance = 100
 
@@ -152,7 +152,7 @@
 /// Web 'wall'
 /obj/structure/spider/stickyweb/sealed
 	name = "sealed web"
-	desc = "A solid wall of web, dense enough to block air flow."
+	desc = "Uma parede sólida de teia, densa o suficiente para bloquear o fluxo de ar."
 	icon = 'icons/obj/smooth_structures/webwall.dmi'
 	base_icon_state = "webwall"
 	icon_state = "webwall-0"
@@ -171,7 +171,7 @@
 /// Walls which reflects lasers
 /obj/structure/spider/stickyweb/sealed/reflector
 	name = "reflective silk screen"
-	desc = "Hardened webbing treated with special chemicals which cause it to repel projectiles."
+	desc = "Tecelagem endurecida tratada com produtos químicos especiais que a fazem repelir projéteis."
 	icon = 'icons/obj/smooth_structures/webwall_reflector.dmi'
 	base_icon_state = "webwall_reflector"
 	icon_state = "webwall_reflector-0"
@@ -185,7 +185,7 @@
 /// Opaque and durable web 'wall'
 /obj/structure/spider/stickyweb/sealed/tough
 	name = "hardened web"
-	desc = "Webbing hardened through a chemical process into a durable barrier."
+	desc = "Tecelagem endurecida através de um processo químico em uma barreira durável."
 	icon = 'icons/obj/smooth_structures/webwall_dark.dmi'
 	base_icon_state = "webwall_dark"
 	icon_state = "webwall_dark-0"
@@ -199,7 +199,7 @@
 /// Web 'door', blocks atmos but not movement
 /obj/structure/spider/passage
 	name = "web passage"
-	desc = "An opaque curtain of web which seals in air but doesn't impede passage."
+	desc = "Uma cortina de teia opaca que sela no ar, mas não impede a passagem."
 	icon = 'icons/obj/smooth_structures/stickyweb_rotated.dmi'
 	base_icon_state = "stickyweb_rotated"
 	icon_state = "stickyweb_rotated-0"
@@ -222,7 +222,7 @@
 
 /obj/structure/spider/cocoon
 	name = "cocoon"
-	desc = "Something wrapped in silky spider web."
+	desc = "Algo enrolado em teia de aranha sedosa."
 	icon_state = "cocoon1"
 	max_integrity = 60
 
@@ -251,7 +251,7 @@
 /// Web caltrops
 /obj/structure/spider/spikes
 	name = "web spikes"
-	desc = "Silk hardened into small yet deadly spikes."
+	desc = "Seda endurecida em pequenos mas mortais espinhos."
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
 	icon = 'icons/obj/smooth_structures/stickyweb_spikes.dmi'
@@ -271,7 +271,7 @@
 
 /obj/structure/spider/effigy
 	name = "web effigy"
-	desc = "A giant spider! Fortunately, this one is just a statue of hardened webbing."
+	desc = "Uma aranha gigante! Felizmente, esta é apenas uma estátua de tecelagem endurecida."
 	icon_state = "effigy"
 	max_integrity = 125
 	density = TRUE

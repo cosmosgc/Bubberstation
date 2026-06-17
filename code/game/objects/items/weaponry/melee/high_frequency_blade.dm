@@ -1,7 +1,7 @@
 /obj/item/highfrequencyblade
 	name = "high frequency blade"
-	desc = "A sword reinforced by a powerful alternating current and resonating at extremely high vibration frequencies. \
-		This oscillation weakens the molecular bonds of anything it cuts, thereby increasing its cutting ability."
+	desc = "Uma espada reforçada por uma poderosa corrente alternada e ressoando em frequências de vibração extremamente altas.\
+Esta oscilação enfraquece as ligações moleculares de qualquer coisa que ele corta, aumentando assim sua capacidade de corte."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "hfrequency0"
 	worn_icon_state = "hfrequency0"
@@ -96,7 +96,7 @@
 		living_target.apply_damage(force*damage_mod, BRUTE, sharpness = SHARP_EDGED, wound_bonus = wound_bonus, exposed_wound_bonus = exposed_wound_bonus, def_zone = user.zone_selected)
 		log_combat(user, living_target, "slashed", src)
 		if(living_target.stat == DEAD && prob(force*damage_mod*0.5))
-			living_target.visible_message(span_danger("[living_target] explodes in a shower of gore!"), blind_message = span_hear("You hear organic matter ripping and tearing!"))
+			living_target.visible_message(span_danger("[living_target] explodes in a shower of gore!"), blind_message = span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 			living_target.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
 			living_target.gib(DROP_ALL_REMAINS)
 			log_combat(user, living_target, "gibbed", src)
@@ -139,7 +139,7 @@
 	animate(src, duration*0.5, color = slash_color, transform = scaled_transform, alpha = 255)
 
 /obj/item/highfrequencyblade/wizard
-	desc = "A blade that was mastercrafted by a legendary blacksmith. Its enchantments let it slash through anything."
+	desc = "Uma lâmina feita por um ferreiro lendário. Seus encantos deixam que corte qualquer coisa."
 	force = 8
 	throwforce = 20
 	wound_bonus = 20
@@ -147,6 +147,6 @@
 
 /obj/item/highfrequencyblade/wizard/attack_self(mob/user, modifiers)
 	if(!HAS_MIND_TRAIT(user, TRAIT_MAGICALLY_GIFTED))
-		balloon_alert(user, "you're too weak!")
+		balloon_alert(user, "Você é muito fraco!")
 		return
 	return ..()

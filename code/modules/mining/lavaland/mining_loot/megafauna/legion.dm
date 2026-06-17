@@ -2,7 +2,7 @@
 
 /obj/item/storm_staff
 	name = "staff of storms"
-	desc = "An ancient staff retrieved from the remains of Legion. The wind stirs as you move it."
+	desc = "Um antigo bastão recuperado dos restos da Legião. O vento se agita enquanto você o move."
 	icon_state = "staffofstorms"
 	inhand_icon_state = "staffofstorms"
 	icon_angle = -45
@@ -26,15 +26,15 @@
 /obj/item/storm_staff/examine(mob/user)
 	. = ..()
 	. += span_notice("It has [thunder_charges] charges remaining.")
-	. += span_notice("Use it in hand to dispel storms.")
-	. += span_notice("Use it on targets to summon thunderbolts from the sky.")
-	. += span_notice("The thunderbolts are boosted if in an area with weather effects.")
+	. += span_notice("Use-o para dissipar tempestades.")
+	. += span_notice("Use-o em alvos para invocar raios do céu.")
+	. += span_notice("Os raios são impulsionados em uma área com efeitos climáticos.")
 
 /obj/item/storm_staff/attack_self(mob/user)
 	var/area/user_area = get_area(user)
 	var/turf/user_turf = get_turf(user)
 	if(!user_area || !user_turf || (is_type_in_list(user_area, excluded_areas)))
-		to_chat(user, span_warning("Something is preventing you from using the staff here."))
+		to_chat(user, span_warning("Algo está impedindo você de usar a equipe aqui."))
 		return
 	var/datum/weather/affected_weather
 	for(var/datum/weather/weather as anything in SSweather.processing)
@@ -44,14 +44,14 @@
 	if(!affected_weather)
 		return
 	if(affected_weather.stage == END_STAGE)
-		balloon_alert(user, "already ended!")
+		balloon_alert(user, "Já acabou!")
 		return
 	if(affected_weather.stage == WIND_DOWN_STAGE)
-		balloon_alert(user, "already ending!")
+		balloon_alert(user, "Já está terminando!")
 		return
-	balloon_alert(user, "you hold the staff up...")
+	balloon_alert(user, "Você segura o cajado...")
 	if(!do_after(user, 3 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return
 	user.visible_message(span_warning("[user] holds [src] skywards as an orange beam travels into the sky!"), \
 	span_notice("You hold [src] skyward, dispelling the storm!"))
@@ -72,18 +72,18 @@
 
 /obj/item/storm_staff/proc/thunder_blast(atom/target, mob/user)
 	if(!thunder_charges)
-		balloon_alert(user, "needs to charge!")
+		balloon_alert(user, "Precisa atacar!")
 		return FALSE
 	var/turf/target_turf = get_turf(target)
 	var/area/target_area = get_area(target)
 	if(!target_turf || !target_area || (is_type_in_list(target_area, excluded_areas)))
-		balloon_alert(user, "can't bolt here!")
+		balloon_alert(user, "Não posso fugir daqui!")
 		return FALSE
 	if(target_turf in targeted_turfs)
-		balloon_alert(user, "already targeted!")
+		balloon_alert(user, "Já é o alvo!")
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		balloon_alert(user, "you don't want to harm!")
+		balloon_alert(user, "Você não quer machucar!")
 		return FALSE
 	var/power_boosted = FALSE
 	for(var/datum/weather/weather as anything in SSweather.processing)
@@ -119,7 +119,7 @@
 	for(var/turf/turf as anything in affected_turfs)
 		new /obj/effect/temp_visual/electricity(turf)
 		for(var/mob/living/hit_mob in turf)
-			to_chat(hit_mob, span_userdanger("You've been struck by lightning!"))
+			to_chat(hit_mob, span_userdanger("Você foi atingido por um raio!"))
 			hit_mob.electrocute_act(15 * (isanimal_or_basicmob(hit_mob) ? 3 : 1) * (turf == target ? 2 : 1) * (boosted ? 2 : 1), src, flags = SHOCK_TESLA|SHOCK_NOSTUN)
 
 		for(var/obj/hit_thing in turf)

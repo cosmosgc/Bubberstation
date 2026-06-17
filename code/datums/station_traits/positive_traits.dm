@@ -6,7 +6,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 1
 	show_in_report = TRUE
-	report_message = "Your station has won the grand prize of the annual station charity event. Free snacks will be delivered to the bar every now and then."
+	report_message = "Sua estação ganhou o grande prêmio do evento anual de caridade. Lanches grátis serão entregues no bar de vez em quando."
 	trait_processes = TRUE
 	COOLDOWN_DECLARE(party_cooldown)
 
@@ -46,7 +46,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Your station has been selected for a special grant. Some extra funds has been made available to your cargo department."
+	report_message = "Sua estação foi selecionada para uma bolsa especial. Alguns fundos extras foram disponibilizados ao seu departamento de carga."
 
 /datum/station_trait/galactic_grant/on_round_start()
 	var/datum/bank_account/cargo_bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -57,7 +57,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "The internals boxes for your crew have been upsized and filled with bonus equipment."
+	report_message = "As caixas internas da sua equipe foram ampliadas e cheias de equipamento bônus."
 	trait_to_give = STATION_TRAIT_PREMIUM_INTERNALS
 
 /datum/station_trait/bountiful_bounties
@@ -66,7 +66,7 @@
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
 	show_in_report = TRUE
-	report_message = "It seems collectors in this system are extra keen to on bounties, and will pay more to see their completion."
+	report_message = "Parece que os colecionadores neste sistema estão muito interessados em recompensas, e pagarão mais para ver sua conclusão."
 
 /datum/station_trait/bountiful_bounties/on_round_start()
 	SSeconomy.bounty_modifier *= 1.2
@@ -77,7 +77,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 2
 	show_in_report = TRUE
-	report_message = "We've glowsticks upon glowsticks to spare, so we scattered some around maintenance (plus a couple floor lights)."
+	report_message = "Temos bastões de luz sobrando, então espalhamos alguns pela manutenção (mais algumas luzes do chão)."
 
 /datum/station_trait/glowsticks/New()
 	..()
@@ -124,7 +124,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Prices are low in this system, BUY BUY BUY!"
+	report_message = "Os preços são baixos neste sistema, comprar comprar comprar!"
 	blacklist = list(/datum/station_trait/distant_supply_lines)
 
 /datum/station_trait/strong_supply_lines/on_round_start()
@@ -136,7 +136,7 @@
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
 	show_in_report = TRUE
-	report_message = "Our workers accidentally forgot more of their personal belongings in the maintenance areas."
+	report_message = "Nossos trabalhadores acidentalmente esqueceram mais de seus pertences pessoais nas áreas de manutenção."
 	blacklist = list(/datum/station_trait/empty_maint)
 	trait_to_give = STATION_TRAIT_FILLED_MAINT
 
@@ -148,7 +148,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Due to proximity to our supply station, the cargo shuttle will have a quicker flight time to your cargo department."
+	report_message = "Devido à proximidade com nossa estação de suprimentos, o transporte de carga terá um tempo de vôo mais rápido para o seu departamento de carga."
 	blacklist = list(/datum/station_trait/slow_shuttle)
 
 /datum/station_trait/quick_shuttle/on_round_start()
@@ -232,7 +232,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	show_in_report = TRUE
 	weight = 1
-	report_message = "All members of the station have received an implant to notify each other if one of them dies. This should help improve job-safety!"
+	report_message = "Todos os membros da estação receberam um implante para notificar uns aos outros se um deles morrer. Isso deve ajudar a melhorar a segurança no trabalho!"
 	var/datum/deathrattle_group/deathrattle_group
 
 /datum/station_trait/deathrattle_all/New()
@@ -253,7 +253,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	show_in_report = TRUE
 	weight = 1
-	report_message = "The new trends in cybernetics have come to the station! Everyone has some form of cybernetic implant."
+	report_message = "As novas tendências da cibernética chegaram à estação! Todo mundo tem alguma forma de implante cibernético."
 	trait_to_give = STATION_TRAIT_CYBERNETIC_REVOLUTION
 	/// List of all job types with the cybernetics they should receive.
 	var/static/list/job_to_cybernetic = list(
@@ -331,7 +331,7 @@
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Due to good performance, we've provided your station with luxury escape pods."
+	report_message = "Devido ao bom desempenho, nós fornecemos sua estação com cápsulas de fuga de luxo."
 	trait_to_give = STATION_TRAIT_BIGGER_PODS
 	blacklist = list(/datum/station_trait/cramped_escape_pods)
 
@@ -341,12 +341,12 @@
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
 	show_in_report = TRUE
-	report_message = "Your station's medibots have received a hardware upgrade, enabling expanded healing capabilities."
+	report_message = "Os medibots da sua estação receberam uma atualização de hardware, permitindo capacidades de cura ampliadas."
 	trait_to_give = STATION_TRAIT_MEDBOT_MANIA
 
 /datum/station_trait/random_event_weight_modifier/shuttle_loans
 	name = "Loaner Shuttle"
-	report_message = "Due to an uptick in pirate attacks around your sector, there are few supply vessels in nearby space willing to assist with special requests. Expect to receive more shuttle loan opportunities, with slightly higher payouts."
+	report_message = "Devido a um aumento nos ataques piratas em torno de seu setor, há poucas naves de abastecimento no espaço próximo dispostas a ajudar com pedidos especiais. Espero receber mais oportunidades de empréstimo, com pagamentos um pouco maiores."
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 4
 	event_control_path = /datum/round_event_control/shuttle_loan
@@ -356,7 +356,7 @@
 
 /datum/station_trait/random_event_weight_modifier/wise_cows
 	name = "Wise Cow Invasion"
-	report_message = "Bluespace harmonic readings show unusual interpolative signals between your sector and agricultural sector MMF-D-02. Expect an increase in cow encounters. Encownters, if you will."
+	report_message = "As leituras harmônicas do espaço azul mostram sinais interpolativos incomuns entre seu setor e o setor agrícola MMF-D-02. Espere um aumento nos encontros de vacas. Encorpadores, por favor."
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 1
 	event_control_path = /datum/round_event_control/wisdomcow
@@ -370,7 +370,7 @@
 
 /datum/station_trait/bright_day
 	name = "Bright Day"
-	report_message = "The stars shine bright and the clouds are scarcer than usual. It's a bright day here on the Ice Moon's surface."
+	report_message = "As estrelas brilham e as nuvens são mais escassas que o normal. Está um dia brilhante aqui na superfície da Lua de Gelo."
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	show_in_report = TRUE
@@ -379,7 +379,7 @@
 
 /datum/station_trait/shuttle_sale
 	name = "Shuttle Firesale"
-	report_message = "The Nanotrasen Emergency Dispatch team is celebrating a record number of shuttle calls in the recent quarter. Some of your emergency shuttle options have been discounted!"
+	report_message = "A equipe de emergência Nanotrasen está comemorando um número recorde de chamadas de transporte no último trimestre. Algumas de suas opções de transporte de emergência foram descontadas!"
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 4
 	trait_to_give = STATION_TRAIT_SHUTTLE_SALE
@@ -387,7 +387,7 @@
 
 /datum/station_trait/missing_wallet
 	name = "Misplaced Wallet"
-	report_message = "A repair technician left their wallet in a locker somewhere. They would greatly appreciate if you could locate and return it to them when the shift has ended."
+	report_message = "Um técnico deixou a carteira em algum lugar. Eles apreciariam muito se você pudesse localizá-lo e devolvê-lo a eles quando o turno terminar."
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 5
 	cost = STATION_TRAIT_COST_LOW
@@ -414,7 +414,7 @@
 
 /obj/item/card/id/advanced/technician_id
 	name = "Repair Technician ID"
-	desc = "Repair Technician? We don't have those in this sector, just a bunch of lazy engineers! This must have been from the between-shift crew..."
+	desc = "Técnico de reparos? Não temos isso neste setor, apenas um bando de engenheiros preguiçosos! Isso deve ter sido da equipe entre turnos..."
 	registered_name = "Pluoxium LXVII"
 	registered_age = 67
 	trim = /datum/id_trim/technician_id
@@ -428,7 +428,7 @@
 /// Spawns assistants with some gear, either gimmicky or functional. Maybe, one day, it will inspire an assistant to do something productive or fun
 /datum/station_trait/assistant_gimmicks
 	name = "Geared Assistants Pilot"
-	report_message = "The Nanotrassen Assistant Affairs division is performing a pilot to see if different assistant equipment helps improve productivity!"
+	report_message = "A Divisão de Assuntos Assistentes Nanotrassen está realizando um piloto para ver se diferentes equipamentos assistentes ajudam a melhorar a produtividade!"
 	trait_type = STATION_TRAIT_POSITIVE
 	weight = 3
 	trait_to_give = STATION_TRAIT_ASSISTANT_GIMMICKS

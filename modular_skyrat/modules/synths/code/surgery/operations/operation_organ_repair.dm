@@ -10,7 +10,7 @@
 /datum/surgery_operation/organ/repair/coronary_bypass/mechanic/synth
 	name = "access hydraulic pump internals"
 	rnd_name = "Hydraulic Pump Maintenance"
-	desc = "A mechanical surgery procedure designed to repair an androids internal hydraulic pump."
+	desc = "Um procedimento cirúrgico mecânico projetado para reparar uma bomba hidráulica interna dos andróides."
 	implements = list(
 		TOOL_CROWBAR = 0.8,
 		TOOL_SCALPEL = 1.5,
@@ -75,7 +75,7 @@
 /datum/surgery_operation/organ/repair/hepatectomy/mechanic/synth
 	name = "perform reagent processor maintenance"
 	rnd_name = "Reagent Processor Maintenance (Reagent Processor Repair)"
-	desc = "A mechanical surgery procedure designed to repair an android's reagent processor."
+	desc = "Uma cirurgia mecânica projetada para reparar o processador reagente de um andróide."
 	implements = list(
 		TOOL_WRENCH = 0.8,
 		TOOL_SCALPEL = 1.5,
@@ -139,7 +139,7 @@
 /datum/surgery_operation/organ/repair/lobectomy/mechanic/synth
 	name = "heatsink maintenance"
 	rnd_name = "Heatsink Diagnostic (Heatsink Repair)"
-	desc = "A mechanical surgery procedure designed to repair an android's internal heatsink."
+	desc = "Um procedimento cirúrgico mecânico projetado para reparar o dissipador interno de um andróide."
 	implements = list(
 		TOOL_WRENCH = 1.05,
 		TOOL_RETRACTOR = 1.5,
@@ -200,7 +200,7 @@
 /datum/surgery_operation/organ/repair/gastrectomy/mechanic/synth
 	name = "fuel cell maintenance"
 	rnd_name = "Fuel Cell Diagnostic (Fuel Cell Repair)"
-	desc = "A mechanical surgery procedure designed to repair an android's internal fuel cell."
+	desc = "Um procedimento mecânico para reparar a célula de combustível interna de um andróide."
 	implements = list(
 		TOOL_SCREWDRIVER = 1.05,
 		TOOL_SCALPEL = 1.5,
@@ -265,7 +265,7 @@
 /datum/surgery_operation/organ/repair/brain/mechanic/synth
 	name = "perform neural debugging"
 	rnd_name = "Reset Logic Core (Posi Repair)"
-	desc = "A surgical procedure that restores the default behavior logic and personality matrix of an synthetic humanoid's neural network."
+	desc = "Um procedimento cirúrgico que restaura a lógica de comportamento padrão e a matriz de personalidade da rede neural de um humanóide sintético."
 	implements = list(
 		TOOL_MULTITOOL = 1.05,
 		TOOL_SCREWDRIVER = 4.85,
@@ -330,7 +330,7 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You screw up, fragmenting their data!"),
+		span_warning("Você estraga tudo, fragmentando os dados deles!"),
 		span_warning("[surgeon] screws up, causing damage to the circuits!"),
 		span_notice("[surgeon] completes the surgery on [FORMAT_ORGAN_OWNER(organ)]'s [brain_type]. Or so they thought."),
 	)
@@ -347,7 +347,7 @@
 /datum/surgery_operation/organ/repair/ears/synth
 	name = "ear repair"
 	rnd_name = "Repair Auditory Microphones (Hearing Repair)" // source: i made it up
-	desc = "Repair a patient's damaged ears to restore hearing."
+	desc = "Reparar as orelhas danificadas do paciente para restaurar a audição."
 	implements = list(
 		TOOL_MULTITOOL = 1.15,
 		TOOL_SCREWDRIVER = 4.85,

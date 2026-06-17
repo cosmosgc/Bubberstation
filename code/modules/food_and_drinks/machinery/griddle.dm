@@ -1,6 +1,6 @@
 /obj/machinery/griddle
 	name = "griddle"
-	desc = "Because using pans is for pansies."
+	desc = "Porque usar panelas é para maricas."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "griddle1_off"
 	density = TRUE
@@ -96,7 +96,7 @@
 		return NONE
 
 	if(length(contents) >= max_items)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "Está cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!istype(item, /obj/item/storage/bag/tray))
@@ -225,7 +225,7 @@
 
 /obj/machinery/griddle/stand
 	name = "griddle stand"
-	desc = "A more commercialized version of your traditional griddle. What happened to the good old days where people griddled with passion?"
+	desc = "Uma versão mais comercializada do seu tradicional griddle. O que aconteceu com os bons velhos tempos onde as pessoas se apegavam à paixão?"
 	variant = "stand"
 
 /obj/machinery/griddle/stand/update_overlays()

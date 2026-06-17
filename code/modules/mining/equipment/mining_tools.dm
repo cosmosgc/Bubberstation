@@ -29,7 +29,7 @@
 
 /obj/item/pickaxe/rusted
 	name = "rusty pickaxe"
-	desc = "A pickaxe that's been left to rust."
+	desc = "Uma picareta que ficou enferrujada."
 	attack_verb_continuous = list("ineffectively hits")
 	attack_verb_simple = list("ineffectively hit")
 	force = 1
@@ -37,7 +37,7 @@
 
 /obj/item/pickaxe/mini
 	name = "compact pickaxe"
-	desc = "A smaller, compact version of the standard pickaxe."
+	desc = "Uma versão menor e compacta da picareta padrão."
 	icon_state = "minipick"
 	worn_icon_state = "pickaxe"
 	force = 10
@@ -51,7 +51,7 @@
 	icon_state = "spickaxe"
 	inhand_icon_state = "spickaxe"
 	toolspeed = 0.5 //mines faster than a normal pickaxe, bought from mining vendor
-	desc = "A silver-plated pickaxe that mines slightly faster than standard-issue."
+	desc = "Uma picareta prateada que mina um pouco mais rápido que o padrão."
 	force = 17
 
 /obj/item/pickaxe/diamond
@@ -59,7 +59,7 @@
 	icon_state = "dpickaxe"
 	inhand_icon_state = "dpickaxe"
 	toolspeed = 0.3
-	desc = "A pickaxe with a diamond pick head. Extremely robust at cracking rock walls and digging up dirt."
+	desc = "Uma picareta com cabeça de diamante. Extremamente robusto em quebrar paredes de rocha e cavar terra."
 	force = 19
 
 /obj/item/pickaxe/drill
@@ -71,7 +71,7 @@
 	toolspeed = 0.6 //available from roundstart, faster than a pickaxe.
 	usesound = 'sound/items/weapons/drill.ogg'
 	hitsound = 'sound/items/weapons/drill.ogg'
-	desc = "An electric mining drill for the especially scrawny."
+	desc = "Um exercício de mineração elétrica para os especialmente magros."
 
 /obj/item/pickaxe/drill/Initialize(mapload)
 	. = ..()
@@ -82,7 +82,7 @@
 	icon_state = "diamonddrill"
 	inhand_icon_state = "diamonddrill"
 	toolspeed = 0.2
-	desc = "Yours is the drill that will pierce the heavens!"
+	desc = "Seu é o exercício que vai perfurar os céus!"
 
 /obj/item/pickaxe/drill/jackhammer
 	name = "sonic jackhammer"
@@ -91,11 +91,11 @@
 	toolspeed = 0.1 //the epitome of powertools. extremely fast mining
 	usesound = 'sound/items/weapons/sonic_jackhammer.ogg'
 	hitsound = 'sound/items/weapons/sonic_jackhammer.ogg'
-	desc = "Cracks rocks with sonic blasts."
+	desc = "Quebra pedras com explosões sônicas."
 
 /obj/item/pickaxe/improvised
 	name = "improvised pickaxe"
-	desc = "A pickaxe made with a knife and crowbar taped together, how does it not break?"
+	desc = "Uma picareta feita com uma faca e um pé de cabra colados, como ela não quebra?"
 	icon_state = "ipickaxe"
 	inhand_icon_state = "ipickaxe"
 	worn_icon_state = "pickaxe"
@@ -108,7 +108,7 @@
 
 /obj/item/shovel
 	name = "shovel"
-	desc = "A large tool for digging and moving dirt."
+	desc = "Uma grande ferramenta para cavar e mover terra."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "shovel"
 	inhand_icon_state = "shovel"
@@ -146,7 +146,7 @@
 
 /obj/item/shovel/spade
 	name = "spade"
-	desc = "A small tool for digging and moving dirt."
+	desc = "Uma pequena ferramenta para cavar e mover terra."
 	icon_state = "spade"
 	inhand_icon_state = "spade"
 	icon_angle = -135
@@ -166,8 +166,8 @@
 
 /obj/item/shovel/serrated
 	name = "serrated bone shovel"
-	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient lavaland tribal designs. \
-		It seems less capable of harming inorganic creatures. Who knows why."
+	desc = "Uma ferramenta perversa que atravessa a terra tão facilmente quanto a carne. O design foi desenhado em homenagem aos antigos projetos tribais de lavalândia.\
+Parece menos capaz de prejudicar criaturas inorgânicas. Quem sabe o porquê."
 	icon_state = "shovel_bone"
 	worn_icon_state = "shovel_serr"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
@@ -191,19 +191,19 @@
 	. = ..()
 	if( !(user.mind && HAS_TRAIT(user.mind, TRAIT_MORBID)) )
 		return
-	. += span_deadsay("You feel an intense, strange craving to 'dig' straight through living flesh with this shovel. Why else would it be serrated? The thought is mesmerizing...")
+	. += span_deadsay("Você sente um desejo intenso e estranho de \"caçar\" direto através da carne viva com esta pá. Por que mais seria serrilhada? O pensamento é fascinante...")
 
 // Coroner mail version
 /obj/item/shovel/serrated/dull
 	name = "dull bone shovel"
-	desc = "An ancient, dull bone shovel with a strange design and markings. Visually, it seems pretty weak, but you get the feeling there's more to it than meets the eye..."
+	desc = "Uma antiga pá de ossos com um design estranho e marcas. Visualmente, parece muito fraco, mas você tem a sensação de que há mais do que parece..."
 	force = 8
 	throwforce = 10
 	toolspeed = 0.8
 
 /obj/item/trench_tool
 	name = "entrenching tool"
-	desc = "The multi-purpose tool you always needed."
+	desc = "A ferramenta multi-uso que sempre precisou."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "trench_tool"
 	inhand_icon_state = "trench_tool"
@@ -231,9 +231,9 @@
 
 /obj/item/trench_tool/examine(mob/user)
 	. = ..()
-	. += span_notice("Use in hand to switch configuration.")
+	. += span_notice("Use na mão para mudar de configuração.")
 	. += span_notice("It functions as a [tool_behaviour] tool.")
-	. += span_danger("<i>This weapon has no random critical hits.</i>")
+	. += span_danger("<i>Esta arma não tem nenhum ataque crítico aleatório.</i>")
 
 /obj/item/trench_tool/update_icon_state()
 	. = ..()
@@ -294,7 +294,7 @@
 
 /obj/item/shovel/giant_wrench
 	name = "Big Slappy"
-	desc = "A gigantic wrench made illegal because of its many incidents involving this tool."
+	desc = "Uma chave gigante tornou ilegal por causa de seus muitos incidentes envolvendo esta ferramenta."
 	icon_state = "giant_wrench"
 	icon = 'icons/obj/weapons/giant_wrench.dmi'
 	icon_angle = 0
@@ -381,5 +381,5 @@
 		target_mob.Knockdown(2 SECONDS)
 	var/body_zone = pick(user.get_all_limbs())
 	user.apply_damage(force / recoil_factor, BRUTE, body_zone, user.run_armor_check(body_zone, MELEE))
-	to_chat(user, span_danger("The weight of the Big Slappy recoils!"))
+	to_chat(user, span_danger("O peso do Grande Slappy recua!"))
 	log_combat(user, user, "recoiled Big Slappy into")

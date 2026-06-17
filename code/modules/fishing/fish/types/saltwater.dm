@@ -1,7 +1,7 @@
 /obj/item/fish/clownfish
 	name = "clownfish"
 	fish_id = "clownfish"
-	desc = "Clownfish catch prey by swimming onto the reef, attracting larger fish, and luring them back to the anemone. The anemone will sting and eat the larger fish, leaving the remains for the clownfish."
+	desc = "Os peixes-palhaços capturam presas nadando no recife, atraindo peixes maiores, e atraindo-os de volta para a anêmona. A anêmona vai picar e comer o peixe maior, deixando os restos para o peixe palhaço."
 	icon_state = "clownfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	sprite_width = 7
@@ -21,7 +21,7 @@
 /obj/item/fish/clownfish/lube
 	name = "lubefish"
 	fish_id = "lube"
-	desc = "A clownfish exposed to cherry-flavored lube for far too long. First discovered the days following a cargo incident around the seas of Europa, when thousands of thousands of thousands..."
+	desc = "Um peixe-palhaço exposto ao lubrificante com sabor de cereja por muito tempo. Descobriu os dias seguintes a um incidente de carga em torno dos mares de Europa, quando milhares de milhares de milhares..."
 	icon_state = "lubefish"
 	random_case_rarity = FISH_RARITY_VERY_RARE
 	fish_traits = list(/datum/fish_trait/picky_eater, /datum/fish_trait/lubed)
@@ -42,7 +42,7 @@
 /obj/item/fish/cardinal
 	name = "cardinalfish"
 	fish_id = "cardinal"
-	desc = "Cardinalfish are often found near sea urchins, where the fish hide when threatened."
+	desc = "Cardinalfish é encontrado perto de ouriços do mar, onde os peixes se escondem quando ameaçados."
 	icon_state = "cardinalfish"
 	sprite_width = 6
 	sprite_height = 3
@@ -57,7 +57,7 @@
 /obj/item/fish/greenchromis
 	name = "green chromis"
 	fish_id = "greenchromis"
-	desc = "The Chromis can vary in color from blue to green depending on the lighting and distance from the lights."
+	desc = "Os Chromis podem variar de cor de azul a verde dependendo da iluminação e distância das luzes."
 	icon_state = "greenchromis"
 	sprite_width = 5
 	sprite_height = 3
@@ -73,7 +73,7 @@
 /obj/item/fish/firefish
 	name = "firefish goby"
 	fish_id = "firefish"
-	desc = "To communicate in the wild, the firefish uses its dorsal fin to alert others of potential danger."
+	desc = "Para se comunicar na natureza, o peixe usa sua barbatana dorsal para alertar outros de potencial perigo."
 	icon_state = "firefish"
 	sprite_width = 5
 	sprite_height = 3
@@ -89,7 +89,7 @@
 /obj/item/fish/pufferfish
 	name = "pufferfish"
 	fish_id = "pufferfish"
-	desc = "They say that one pufferfish contains enough toxins to kill 30 people, although in the last few decades they've been genetically engineered en masse to be less poisonous."
+	desc = "Dizem que um baiacu contém toxinas suficientes para matar 30 pessoas, embora nas últimas décadas tenham sido geneticamente projetadas em massa para serem menos venenosas."
 	icon_state = "pufferfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	sprite_width = 8
@@ -110,7 +110,7 @@
 /obj/item/fish/lanternfish
 	name = "lanternfish"
 	fish_id = "lanternfish"
-	desc = "Typically found in areas below 6600 feet below the surface of the ocean, they live in complete darkness."
+	desc = "Tipicamente encontrados em áreas abaixo de 6600 pés abaixo da superfície do oceano, eles vivem em completa escuridão."
 	icon_state = "lanternfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	random_case_rarity = FISH_RARITY_VERY_RARE
@@ -127,7 +127,7 @@
 /obj/item/fish/stingray
 	name = "stingray"
 	fish_id = "stingray"
-	desc = "A type of ray, most known for its venomous stinger. Despite that, They're normally docile, if not a bit easily frightened."
+	desc = "Um tipo de raio, mais conhecido por seu ferrão venenoso. Apesar disso, normalmente são dóceis, se não facilmente assustados."
 	icon_state = "stingray"
 	stable_population = 4
 	sprite_height = 7
@@ -142,7 +142,7 @@
 /obj/item/fish/swordfish
 	name = "swordfish"
 	fish_id = "swordfish"
-	desc = "A large billfish, most famous for its elongated bill, while also fairly popular for cooking, and as a fearsome weapon in the hands of a veteran spess-fisherman."
+	desc = "Um grande billfish, mais famoso por seu projeto de lei alongado, enquanto também bastante popular para cozinhar, e como uma arma temível nas mãos de um veterano spess-fisherman."
 	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "swordfish"
 	inhand_icon_state = "swordfish"
@@ -239,7 +239,7 @@
 /obj/item/fish/squid
 	name = "squid"
 	fish_id = "squid"
-	desc = "An elongated mollusk with eight tentacles, natural camouflage and ink clouds to spray at predators. One of the most intelligent, well-equipped invertebrates out there."
+	desc = "Um molusco alongado com oito tentáculos, camuflagem natural e nuvens de tinta para pulverizar predadores. Um dos invertebrados mais inteligentes e bem equipados lá fora."
 	icon_state = "squid"
 	sprite_width = 4
 	sprite_height = 5
@@ -286,7 +286,7 @@
 /obj/item/fish/monkfish
 	name = "monkfish"
 	fish_id = "monkfish"
-	desc = "A member of the Lophiid family of anglerfish. It goes by several different names, however none of them will make it look any prettier, nor be any less delicious."
+	desc = "Um membro da família Lophiid de pescadores. Tem vários nomes diferentes, mas nenhum deles fará parecer mais bonito, nem será menos delicioso."
 	icon_state = "monkfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	sprite_height = 7
@@ -313,7 +313,7 @@
 /obj/item/fish/plaice
 	name = "plaice"
 	fish_id = "plaice"
-	desc = "Perhaps the most prominent flatfish in the space-market. Nature really pulled out the rolling pin on this one."
+	desc = "Talvez o peixe flat mais proeminente do mercado espacial. A natureza realmente puxou o rolo desta vez."
 	icon_state = "plaice"
 	sprite_height = 7
 	sprite_width = 6

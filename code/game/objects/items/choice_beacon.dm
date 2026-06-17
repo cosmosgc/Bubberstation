@@ -1,6 +1,6 @@
 /obj/item/choice_beacon
 	name = "choice beacon"
-	desc = "Hey, why are you viewing this?!! Please let CentCom know about this odd occurrence."
+	desc = "Por que está vendo isso? Por favor, avise a CentCom sobre essa ocorrência estranha."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "generic_delivery"
 	inhand_icon_state = "generic_delivery"
@@ -11,7 +11,7 @@
 	/// Used in the deployment message - What company is sending the equipment, flavor
 	var/company_source = "Central Command"
 	/// Used inthe deployment message - What is the company saying with their message, flavor
-	var/company_message = span_bold("Item request received. Your package is inbound, please stand back from the landing site.")
+	var/company_message = span_bold("Pedido de itens recebido. Seu pacote está chegando, por favor, afaste-se do local de pouso.")
 
 /obj/item/choice_beacon/interact(mob/user)
 	. = ..()
@@ -70,11 +70,11 @@
 
 /obj/item/choice_beacon/music
 	name = "instrument delivery beacon"
-	desc = "Summon your tool of art."
+	desc = "Chame sua ferramenta de arte."
 	icon_state = "sb_delivery"
 	inhand_icon_state = "sb_delivery"
 	company_source = "Sophronia Broadcasting"
-	company_message = span_bold("Please enjoy your Sophronia Broadcasting's 'Spinward Idol' Musical Instrument, exactly as shown in the hit show!")
+	company_message = span_bold("Por favor, aproveite o musical da Sophronia Broadcasting 'Spinward Idol' Instrumento, exatamente como mostrado no show de sucesso!")
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/choice_beacon/music/generate_display_names()
@@ -102,11 +102,11 @@
 
 /obj/item/choice_beacon/ingredient
 	name = "ingredient delivery beacon"
-	desc = "Summon a box of ingredients to help you get started cooking."
+	desc = "Convoque uma caixa de ingredientes para ajudá-lo a começar a cozinhar."
 	icon_state = "sb_delivery"
 	inhand_icon_state = "sb_delivery"
 	company_source = "Sophronia Broadcasting"
-	company_message = span_bold("Please enjoy your Sophronia Broadcasting's 'Plasteel Chef' Ingredients Box, exactly as shown in the hit show!")
+	company_message = span_bold("Por favor, aproveite sua Sophronia Broadcasting 'Plasteel Chef' Ingredients Box, exatamente como mostrado no show de sucesso!")
 
 /obj/item/choice_beacon/ingredient/generate_display_names()
 	var/static/list/ingredient_options
@@ -118,11 +118,11 @@
 
 /obj/item/choice_beacon/hero
 	name = "heroic beacon"
-	desc = "To summon heroes from the past to protect the future."
+	desc = "Convocar heróis do passado para proteger o futuro."
 	icon_state = "sb_delivery"
 	inhand_icon_state = "sb_delivery"
 	company_source = "Sophronia Broadcasting"
-	company_message = span_bold("Please enjoy your Sophronia Broadcasting's 'History Comes Alive branded' Costume Set, exactly as shown in the hit show!")
+	company_message = span_bold("Por favor, aproveite o conjunto de fantasias 'História Vem Alive' da Sophronia Broadcasting, exatamente como mostrado no hit show!")
 
 /obj/item/choice_beacon/hero/generate_display_names()
 	var/static/list/hero_item_list
@@ -134,12 +134,12 @@
 
 /obj/item/choice_beacon/augments
 	name = "augment beacon"
-	desc = "Summons augmentations. Can be used 3 times!"
+	desc = "Convoca aumentos. Pode ser usado 3 vezes!"
 	uses = 3
 	icon_state = "self_delivery"
 	inhand_icon_state = "self_delivery"
 	company_source = "S.E.L.F."
-	company_message = span_bold("Request status: Received. Package status: Delivered. Notes: To assure optimal value, use supplied Interdyne-brand autosurgeons to change implantment status.")
+	company_message = span_bold("Pedido de status: recebido. Situação do pacote: entregue. Notas: Para garantir o valor ideal, use autocirurgiões da marca Interdyne para mudar o status de implante.")
 
 /obj/item/choice_beacon/augments/generate_display_names()
 	var/static/list/augment_list
@@ -166,11 +166,11 @@
 
 /obj/item/choice_beacon/holy
 	name = "armaments beacon"
-	desc = "Summon a set of standard issue chaplain armaments, as dictated by I.C.R.A."
+	desc = "Chame um conjunto de armamentos padrão de capelão, como ditado pela ICRA."
 	icon_state = "icra_delivery"
 	inhand_icon_state = "icra_delivery"
 	company_source = "Interstellar Conservation of Religion Association"
-	company_message = span_bold("A choice has already been made.")
+	company_message = span_bold("Uma escolha já foi feita.")
 
 /obj/item/choice_beacon/holy/can_use_beacon(mob/living/user)
 	if(user.mind?.holy_role)

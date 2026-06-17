@@ -1,6 +1,6 @@
 /datum/mutation/void
 	name = "Void Magnet"
-	desc = "A rare genome that attracts odd forces not usually observed."
+	desc = "Um genoma raro que atrai forças estranhas não observadas."
 	quality = MINOR_NEGATIVE //upsides and downsides
 	text_gain_indication = span_notice("You feel a heavy, dull force just beyond the walls watching you.")
 	instability = POSITIVE_INSTABILITY_MODERATE // useful, but has large drawbacks
@@ -20,7 +20,7 @@
 /// The base "void invocation" action. No side effects.
 /datum/action/cooldown/spell/void
 	name = "Invoke Void"
-	desc = "Pulls you into a pocket of the void temporarily, making you invincible."
+	desc = "Coloca você em um bolso do vazio temporariamente, tornando-o invencível."
 	button_icon_state = "void_magnet"
 
 	school = SCHOOL_EVOCATION
@@ -41,7 +41,7 @@
 /// The cursed "void invocation" action, that has a chance of casting itself on its owner randomly on life ticks.
 /datum/action/cooldown/spell/void/cursed
 	name = "Convoke Void" //magic the gathering joke here
-	desc = "A rare genome that attracts odd forces not usually observed. May sometimes pull you in randomly."
+	desc = "Um genoma raro que atrai forças estranhas não observadas. Às vezes, pode te puxar aleatoriamente."
 	/// A multiplier applied to the probability of the curse appearing every life tick
 	var/curse_probability_modifier = 1
 

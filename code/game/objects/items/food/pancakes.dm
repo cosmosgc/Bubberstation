@@ -2,7 +2,7 @@
 
 /obj/item/food/pancakes
 	name = "pancake"
-	desc = "A fluffy pancake. The softer, superior relative of the waffle."
+	desc = "Uma panqueca fofa. O parente mais suave e superior do waffle."
 	icon_state = "pancakes_1"
 	inhand_icon_state = null
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
@@ -16,7 +16,7 @@
 
 /obj/item/food/pancakes/raw
 	name = "goopy pancake"
-	desc = "A barely cooked mess that some may mistake for a pancake. It longs for the griddle."
+	desc = "Uma bagunça mal cozinhada que alguns podem confundir com uma panqueca. Ela anseia pelo griddle."
 	icon_state = "rawpancakes_1"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
 	tastes = list("milky batter" = 1)
@@ -52,11 +52,11 @@
 /obj/item/food/pancakes/raw/examine(mob/user)
 	. = ..()
 	if(name == initial(name))
-		. += span_notice("You can modify the pancake by adding <b>blueberries</b> or <b>chocolate</b> before finishing the griddle.")
+		. += span_notice("Você pode modificar a panqueca adicionando<b>Mirtilos</b>ou<b>chocolate</b>Antes de terminar a grelha.")
 
 /obj/item/food/pancakes/blueberry
 	name = "blueberry pancake"
-	desc = "A fluffy and delicious blueberry pancake."
+	desc = "Uma deliciosa panqueca de mirtilo."
 	icon_state = "bbpancakes_1"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -68,7 +68,7 @@
 
 /obj/item/food/pancakes/chocolatechip
 	name = "chocolate chip pancake"
-	desc = "A fluffy and delicious chocolate chip pancake."
+	desc = "Uma panqueca fofa e deliciosa de chocolate."
 	icon_state = "ccpancakes_1"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -104,13 +104,13 @@
 		if(0)
 			desc = initial(desc)
 		if(1 to 2)
-			desc = "A stack of fluffy pancakes."
+			desc = "Uma pilha de panquecas fofas."
 		if(3 to 6)
-			desc = "A fat stack of fluffy pancakes!"
+			desc = "Uma pilha de panquecas macias!"
 		if(7 to 9)
-			desc = "A grand tower of fluffy, delicious pancakes!"
+			desc = "Uma grande torre de panquecas macias e deliciosas!"
 		if(PANCAKE_MAX_STACK to INFINITY)
-			desc = "A massive towering spire of fluffy, delicious pancakes. It looks like it could tumble over!"
+			desc = "Uma enorme torrente de panquecas fofas e deliciosas. Parece que pode cair!"
 	. = ..()
 	if (pancakeCount)
 		for(var/obj/item/food/pancakes/ING in contents)

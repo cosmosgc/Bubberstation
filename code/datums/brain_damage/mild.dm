@@ -7,12 +7,12 @@
 
 /datum/brain_trauma/mild/hallucinations
 	name = "Hallucinations"
-	desc = "Patient suffers constant hallucinations."
+	desc = "O paciente sofre alucinações constantes."
 	scan_desc = "schizophrenia"
 	symptoms = "Experiences frequent hallucinations (either visual or auditory) or delusions \
 		which subside on being administered Mindbreaker Toxin."
-	gain_text = span_warning("You feel your grip on reality slipping...")
-	lose_text = span_notice("You feel more grounded.")
+	gain_text = span_warning("Você sente seu aperto na realidade escorregando...")
+	lose_text = span_notice("Você se sente mais de castigo.")
 	/// Whether the hallucinations we give are uncapped, ie all the wacky ones
 	var/uncapped = FALSE
 
@@ -35,11 +35,11 @@
 
 /datum/brain_trauma/mild/stuttering
 	name = "Stuttering"
-	desc = "Patient can't speak properly."
-	scan_desc = "reduced mouth coordination"
+	desc = "O paciente não pode falar direito."
+	scan_desc = "coordenação oral reduzida"
 	symptoms = "Has difficulty speaking fluently, often repeating or prolonging sounds or syllables."
-	gain_text = span_warning("Speaking clearly is getting harder.")
-	lose_text = span_notice("You feel in control of your speech.")
+	gain_text = span_warning("Falar claramente está ficando mais difícil.")
+	lose_text = span_notice("Você se sente no controle do seu discurso.")
 
 /datum/brain_trauma/mild/stuttering/on_life(seconds_per_tick)
 	owner.adjust_stutter_up_to(5 SECONDS * seconds_per_tick, 50 SECONDS)
@@ -50,11 +50,11 @@
 
 /datum/brain_trauma/mild/dumbness
 	name = "Dumbness"
-	desc = "Patient has reduced brain activity, making them less intelligent."
+	desc = "O paciente reduziu uma atividade cerebral, rasgando-os menos inteligentes."
 	symptoms = "Exhibits a noticeable decline in cognitive functions, including speech, memory, motorics, and problem-solving abilities."
-	scan_desc = "reduced brain activity"
-	gain_text = span_warning("You feel dumber.")
-	lose_text = span_notice("You feel smart again.")
+	scan_desc = "Atividade cerebral reduzida"
+	gain_text = span_warning("Você se sente mais idiota.")
+	lose_text = span_notice("Você se sente inteligente de novo.")
 
 /datum/brain_trauma/mild/dumbness/on_gain()
 	ADD_TRAIT(owner, TRAIT_DUMB, TRAUMA_TRAIT)
@@ -76,11 +76,11 @@
 
 /datum/brain_trauma/mild/speech_impediment
 	name = "Speech Impediment"
-	desc = "Patient is unable to form coherent sentences."
-	scan_desc = "communication disorder"
+	desc = "O paciente é incapaz de formar frases coerentes."
+	scan_desc = "Transtorno de comunicação"
 	symptoms = "Struggles to articulate thoughts into coherent speech, often resulting in jumbled or nonsensical sentences."
-	gain_text = span_danger("You can't seem to form any coherent thoughts!")
-	lose_text = span_danger("Your mind feels more clear.")
+	gain_text = span_danger("Você não consegue formar pensamentos coerentes!")
+	lose_text = span_danger("Sua mente parece mais clara.")
 
 /datum/brain_trauma/mild/speech_impediment/on_gain()
 	ADD_TRAIT(owner, TRAIT_UNINTELLIGIBLE_SPEECH, TRAUMA_TRAIT)
@@ -92,11 +92,11 @@
 
 /datum/brain_trauma/mild/concussion
 	name = "Concussion"
-	desc = "Patient's brain is concussed."
+	desc = "O cérebro do paciente está contuso."
 	symptoms = "Experiences headaches, dizziness, nausea, confusion, and occasional loss of consciousness."
 	scan_desc = "concussion"
-	gain_text = span_warning("Your head hurts!")
-	lose_text = span_notice("The pressure inside your head starts fading.")
+	gain_text = span_warning("Sua cabeça dói!")
+	lose_text = span_notice("A pressão dentro da sua cabeça começa a desaparecer.")
 
 /datum/brain_trauma/mild/concussion/on_life(seconds_per_tick)
 	if(SPT_PROB(2.5, seconds_per_tick))
@@ -111,22 +111,22 @@
 			if(6 to 9)
 				owner.adjust_slurring(1 MINUTES)
 			if(10)
-				to_chat(owner, span_notice("You forget for a moment what you were doing."))
+				to_chat(owner, span_notice("Esqueceu por um momento o que estava fazendo."))
 				owner.Stun(20)
 			if(11)
-				to_chat(owner, span_warning("You faint."))
+				to_chat(owner, span_warning("Você desmaiou."))
 				owner.Unconscious(80)
 
 	..()
 
 /datum/brain_trauma/mild/healthy
 	name = "Anosognosia"
-	desc = "Patient always feels healthy, regardless of their condition."
-	scan_desc = "self-awareness deficit"
+	desc = "O paciente sempre se sente saudável, independente de sua condição."
+	scan_desc = "déficit de autoconsciência"
 	symptoms = "Exhibits a lack of awareness or denial of their own medical conditions, \
 		often insisting they are perfectly healthy despite clear evidence to the contrary."
-	gain_text = span_notice("You feel great!")
-	lose_text = span_warning("You no longer feel perfectly healthy.")
+	gain_text = span_notice("Você se sente ótimo!")
+	lose_text = span_warning("Você não se sente mais perfeitamente saudável.")
 
 /datum/brain_trauma/mild/healthy/on_gain()
 	owner.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
@@ -141,18 +141,18 @@
 
 /datum/brain_trauma/mild/muscle_weakness
 	name = "Muscle Weakness"
-	desc = "Patient experiences occasional bouts of muscle weakness."
-	scan_desc = "weak motor nerve signal"
+	desc = "O paciente experimenta ocasionalmente ataques de fraqueza muscular."
+	scan_desc = "Sinal Fraco do Nervo Motor"
 	symptoms = "Experiences sudden episodes of muscle weakness, resulting in weak grip strength, difficulty moving, and occasional falls."
-	gain_text = span_warning("Your muscles feel oddly faint.")
-	lose_text = span_notice("You feel in control of your muscles again.")
+	gain_text = span_warning("Seus músculos estão estranhamente fracos.")
+	lose_text = span_notice("Você se sente no controle de seus músculos novamente.")
 
 /datum/brain_trauma/mild/muscle_weakness/on_life(seconds_per_tick)
 	var/fall_chance = 1
 	if(owner.move_intent == MOVE_INTENT_RUN)
 		fall_chance += 2
 	if(SPT_PROB(0.5 * fall_chance, seconds_per_tick) && owner.body_position == STANDING_UP)
-		to_chat(owner, span_warning("Your leg gives out!"))
+		to_chat(owner, span_warning("Sua perna se desfaz!"))
 		owner.Paralyze(35)
 
 	else if(owner.get_active_held_item())
@@ -163,17 +163,17 @@
 			to_chat(owner, span_warning("You drop [I]!"))
 
 	else if(SPT_PROB(1.5, seconds_per_tick))
-		to_chat(owner, span_warning("You feel a sudden weakness in your muscles!"))
+		to_chat(owner, span_warning("Você sente uma fraqueza repentina em seus músculos!"))
 		owner.adjust_stamina_loss(50)
 	..()
 
 /datum/brain_trauma/mild/muscle_spasms
 	name = "Muscle Spasms"
-	desc = "Patient has occasional muscle spasms, causing them to move unintentionally."
-	scan_desc = "nervous fits"
+	desc = "O paciente tem espasmos musculares ocasionais, fazendo com que se movam sem querer."
+	scan_desc = "Nervosos se encaixam."
 	symptoms = "Experiences involuntary muscle contractions leading to sudden, brief movements or twitches, which can interfere with normal motor functions."
-	gain_text = span_warning("Your muscles feel oddly faint.")
-	lose_text = span_notice("You feel in control of your muscles again.")
+	gain_text = span_warning("Seus músculos estão estranhamente fracos.")
+	lose_text = span_notice("Você se sente no controle de seus músculos novamente.")
 
 /datum/brain_trauma/mild/muscle_spasms/on_gain()
 	owner.apply_status_effect(/datum/status_effect/spasms)
@@ -185,11 +185,11 @@
 
 /datum/brain_trauma/mild/nervous_cough
 	name = "Nervous Cough"
-	desc = "Patient feels a constant need to cough."
-	scan_desc = "nervous cough"
+	desc = "O paciente sente uma constante necessidade de tosse."
+	scan_desc = "tosse nervosa"
 	symptoms = "Experiences a persistent, uncontrollable urge to cough, which may disrupt normal activities and social interactions."
-	gain_text = span_warning("Your throat itches incessantly...")
-	lose_text = span_notice("Your throat stops itching.")
+	gain_text = span_warning("Sua garganta coça incessantemente...")
+	lose_text = span_notice("Sua garganta pára de coçar.")
 
 /datum/brain_trauma/mild/nervous_cough/on_life(seconds_per_tick)
 	if(SPT_PROB(6, seconds_per_tick) && !HAS_TRAIT(owner, TRAIT_SOOTHED_THROAT))
@@ -204,11 +204,11 @@
 
 /datum/brain_trauma/mild/expressive_aphasia
 	name = "Expressive Aphasia"
-	desc = "Patient is affected by partial loss of speech leading to a reduced vocabulary."
-	scan_desc = "inability to form complex sentences"
+	desc = "O paciente é afetado por perda parcial de fala levando a um vocabulário reduzido."
+	scan_desc = "Incapacidade de formar frases complexas"
 	symptoms = "Struggles to express thoughts verbally, often substituting complex words with simpler alternatives or nonsensical sounds."
-	gain_text = span_warning("You lose your grasp on complex words.")
-	lose_text = span_notice("You feel your vocabulary returning to normal again.")
+	gain_text = span_warning("Você perde o controle sobre palavras complexas.")
+	lose_text = span_notice("Você sente seu vocabulário voltando ao normal novamente.")
 
 /datum/brain_trauma/mild/expressive_aphasia/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -247,11 +247,11 @@
 
 /datum/brain_trauma/mild/mind_echo
 	name = "Mind Echo"
-	desc = "Patient's language neurons do not terminate properly, causing previous speech patterns to occasionally resurface spontaneously."
-	scan_desc = "looping neural pattern"
+	desc = "Os neurônios da linguagem do paciente não terminam corretamente, fazendo com que os padrões de fala anteriores reapareçam espontaneamente."
+	scan_desc = "fazendo loop no padrão neural."
 	symptoms = "Experiences involuntary repetition of previously heard or spoken phrases, leading to persistent moments of déjà vu in both hearing and speech."
-	gain_text = span_warning("You feel a faint echo of your thoughts...")
-	lose_text = span_notice("The faint echo fades away.")
+	gain_text = span_warning("Você sente um eco fraco de seus pensamentos...")
+	lose_text = span_notice("O eco fraco desaparecer.")
 	var/list/hear_dejavu = list()
 	var/list/speak_dejavu = list()
 
@@ -287,11 +287,11 @@
 
 /datum/brain_trauma/mild/color_blindness
 	name = "Achromatopsia"
-	desc = "Patient's occipital lobe is unable to recognize and interpret color, rendering the patient completely colorblind."
+	desc = "O lobo occipital do paciente é incapaz de reconhecer e interpretar a cor, tornando o paciente completamente cego."
 	scan_desc = "colorblindness"
 	symptoms = "Exhibits a complete inability to perceive colors, seeing the world in shades of gray, black, and white."
-	gain_text = span_warning("The world around you seems to lose its color.")
-	lose_text = span_notice("The world feels bright and colorful again.")
+	gain_text = span_warning("O mundo ao seu redor parece perder sua cor.")
+	lose_text = span_notice("O mundo parece brilhante e colorido novo.")
 
 /datum/brain_trauma/mild/color_blindness/on_gain()
 	owner.add_client_colour(/datum/client_colour/monochrome, TRAUMA_TRAIT)
@@ -303,12 +303,12 @@
 
 /datum/brain_trauma/mild/possessive
 	name = "Possessive"
-	desc = "Patient is extremely possessive of their belongings."
+	desc = "O paciente é extremamente possessivo de seus pertences."
 	scan_desc = "possessiveness"
 	symptoms = "Exhibits an overwhelming need to keep personal belongings close, \
 		often resulting in an intense grip on held items that persists even when forced to let go."
-	gain_text = span_warning("You start to worry about your belongings.")
-	lose_text = span_notice("You worry less about your belongings.")
+	gain_text = span_warning("Você começa a se preocupar com seus pertences.")
+	lose_text = span_notice("Você se preocupa menos com seus pertences.")
 
 /datum/brain_trauma/mild/possessive/on_lose(silent)
 	. = ..()

@@ -3,7 +3,7 @@
 
 /obj/item/gun/medbeam/afad
 	name = "Automated First Aid Device"
-	desc = "Usually supplied in medkits, the AFAD is a revolutionary device meant for fixing scrapes and bruises, and totally not a knockoff of the legendary medibeam. A label on the underside reminds you not to cross the beams."
+	desc = "Normalmente fornecido em kits médicos, o AFAD é um dispositivo revolucionário destinado a consertar arranhões e hematomas, e totalmente não uma imitação do lendário medibeam. Uma etiqueta na parte de baixo te lembra de não cruzar as vigas."
 	icon = 'icons/obj/chronos.dmi'
 	icon_state = "chronogun"
 	inhand_icon_state = "chronogun"

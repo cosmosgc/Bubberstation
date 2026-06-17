@@ -17,7 +17,7 @@
 
 /datum/antagonist/wishgranter/greet()
 	. = ..()
-	to_chat(owner, "<B>Your inhibitions are swept away, the bonds of loyalty broken, you are free to murder as you please!</B>")
+	to_chat(owner, "<B>Suas inibições foram varridas, os laços de lealdade quebrados, você está livre para matar como quiser!</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/wishgranter/proc/give_powers()

@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(raptor_population)
 
 /mob/living/basic/raptor
 	name = "raptor"
-	desc = "A trusty, powerful steed. Taming it might prove difficult..."
+	desc = "Um corcel confiável e poderoso. Domar pode ser difícil..."
 	icon = 'icons/mob/simple/lavaland/raptor_big.dmi'
 	icon_state = "raptor_red"
 	base_icon_state = "raptor"
@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY(raptor_population)
 		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
 	var/obj/ore_food = locate(/obj/item/stack/ore) in target
 	if(isnull(ore_food))
-		balloon_alert(src, "no food!")
+		balloon_alert(src, "Sem comida!")
 	else
 		UnarmedAttack(ore_food, TRUE, modifiers)
 	return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
@@ -341,14 +341,14 @@ GLOBAL_LIST_EMPTY(raptor_population)
 	switch (new_stage)
 		if (RAPTOR_BABY)
 			name = "baby raptor"
-			desc = "Will this grow into something useful?"
+			desc = "Isso vai se tornar algo útil?"
 			icon = 'icons/mob/simple/lavaland/raptor_baby.dmi'
 			base_icon_state = "baby"
 			base_pixel_w = 0
 			mob_size = MOB_SIZE_TINY
 		if (RAPTOR_YOUNG)
 			name = "raptor youngling"
-			desc = "A young raptor that can grow into a robust, trusty steed. Rather naive at such an age, it shouldn't be too hard to tame."
+			desc = "Um jovem raptor que pode se tornar um corcel robusto e confiável. Ingênuo em tal idade, não deve ser muito difícil de domar."
 			icon = 'icons/mob/simple/lavaland/raptor_big.dmi'
 			base_icon_state = "young"
 			base_pixel_w = initial(base_pixel_w)

@@ -1,10 +1,10 @@
 // Used to stop synth structural damage
 /obj/item/stack/medical/wound_recovery/robofoam
 	name = "robotic repair spray"
-	singular_name = "robotic repair spray"
-	desc = "A needle-tip foam gun filled with an advanced synthetic foam that rapidly \
-		fills and stabilizes structural damage in synthetics. The damaged area will be \
-		vulnerable to further damage while the foam hardens."
+	singular_name = "Spray de reparo robótico"
+	desc = "Uma pistola de espuma de ponta de agulha cheia de uma espuma sintética avançada que rapidamente\
+enche e estabiliza danos estruturais em sintéticos. A área danificada será\
+vulnerável a danos adicionais enquanto a espuma endurece."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "robofoam"
 	inhand_icon_state = "implantcase"
@@ -19,7 +19,7 @@
 
 /obj/item/stack/medical/wound_recovery/robofoam/examine(mob/user)
 	. = ..()
-	. += span_notice("This <b>cheaper</b> foam can only be used to fill <b>structural</b> wounds on synthetics.")
+	. += span_notice("Isto.<b>mais barato.</b>A espuma só pode ser usada para encher<b>estrutural</b>feridas em sintéticos.")
 	return .
 
 /obj/item/stack/medical/wound_recovery/robofoam/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
@@ -30,12 +30,12 @@
 // Used to cure practically any synthetic wound
 /obj/item/stack/medical/wound_recovery/robofoam_super
 	name = "premium robotic repair spray"
-	singular_name = "premium robotic repair spray"
-	desc = "A needle-tip foam gun filled with an advanced synthetic foam that rapidly \
-		fills and stabilizes structural damage in synthetics. The damaged area will be \
-		vulnerable to further damage while the foam hardens. \
-		This special premium type can also be used to repair almost any possible type \
-		of synthetic damage."
+	singular_name = "Spray de reparo robótico premium"
+	desc = "Uma pistola de espuma de ponta de agulha cheia de uma espuma sintética avançada que rapidamente\
+enche e estabiliza danos estruturais em sintéticos. A área danificada será\
+vulnerável a danos adicionais enquanto a espuma endurece.\
+Este tipo especial de prêmio também pode ser usado para reparar quase qualquer tipo possível.\
+De danos sintéticos."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "robofoam_super"
 	inhand_icon_state = "implantcase"
@@ -53,7 +53,7 @@
 
 /obj/item/stack/medical/wound_recovery/robofoam_super/examine(mob/user)
 	. = ..()
-	. += span_notice("This more <b>expensive</b> foam can be used to fill <b>any</b> type of wound on synthetics.")
+	. += span_notice("Isso é mais.<b>caro.</b>Espuma pode ser usada para encher<b>qualquer</b>tipo de ferimento em sintéticos.")
 	return .
 
 /obj/item/stack/medical/wound_recovery/robofoam_super/post_heal_effects(amount_healed, mob/living/carbon/healed_mob, mob/user)
@@ -65,7 +65,7 @@
 // Synth repair patch, gives the synth a small amount of healing chems
 /obj/item/reagent_containers/applicator/pill/robotic_patch
 	name = "robotic patch"
-	desc = "A chemical patch for touch-based applications on synthetics."
+	desc = "Um adesivo químico para aplicações de toque em sintéticos."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "synth_patch"
 	inhand_icon_state = null
@@ -78,10 +78,10 @@
 	if(ishuman(L))
 		var/obj/item/bodypart/affecting = L.get_bodypart(check_zone(user.zone_selected))
 		if(!affecting)
-			to_chat(user, span_warning("The limb is missing!"))
+			to_chat(user, span_warning("O membro está faltando!"))
 			return
 		if(!IS_ROBOTIC_LIMB(affecting))
-			to_chat(user, span_notice("Robotic patches won't work on an organic limb!"))
+			to_chat(user, span_notice("Manchas robóticas não funcionam em um membro orgânico!"))
 			return
 	return ..()
 
@@ -93,7 +93,7 @@
 // The actual patch
 /obj/item/reagent_containers/applicator/pill/robotic_patch/synth_repair
 	name = "robotic repair patch"
-	desc = "A sealed patch with a small nanite swarm along with electrical coagulant reagents to repair small amounts of synthetic damage."
+	desc = "Um remendo selado com um pequeno enxame de nanites junto com reagentes coagulantes elétricos para reparar pequenas quantidades de danos sintéticos."
 	icon_state = "synth_patch"
 	list_reagents = list(
 		/datum/reagent/medicine/nanite_slurry = 10,

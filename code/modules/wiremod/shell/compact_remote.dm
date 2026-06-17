@@ -22,8 +22,8 @@
 	), SHELL_CAPACITY_SMALL)
 
 /obj/item/circuit_component/compact_remote
-	display_name = "Compact Remote"
-	desc = "Used to receive inputs from the compact remote shell. Use the shell in hand to trigger the output signal."
+	display_name = "Compacto Remoto"
+	desc = "Costumava receber entradas da camada remota compacta. Use o escudo para ativar o sinal de saída."
 
 	/// Called when attack_self is called on the shell.
 	var/datum/port/output/signal
@@ -45,7 +45,7 @@
  */
 /obj/item/circuit_component/compact_remote/proc/send_trigger(atom/source, mob/user)
 	SIGNAL_HANDLER
-	source.balloon_alert(user, "clicked primary button")
+	source.balloon_alert(user, "botão primário clicado")
 	playsound(source, SFX_TERMINAL_TYPE, 25, FALSE)
 	entity.set_output(user)
 	signal.set_output(COMPONENT_SIGNAL)

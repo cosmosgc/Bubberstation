@@ -12,7 +12,7 @@
 
 /obj/item/implant/explosive
 	name = "microbomb implant"
-	desc = "And boom goes the weasel."
+	desc = "E boom vai a doninha."
 	icon_state = "explosive"
 	actions_types = list(/datum/action/item_action/explosive_implant) //Explosive implant action is always available.
 	///Whether the implant's explosion sequence has been activated or not
@@ -89,7 +89,7 @@
 		if(istype(target_implant, /obj/item/implant/explosive)) //we don't use our own type here, because macrobombs inherit this proc and need to be able to upgrade microbombs
 			var/obj/item/implant/explosive/other_implant = target_implant
 			if(other_implant.master_implant && master_implant) //we cant have two master implants at once
-				target.balloon_alert(user, "cannot fit implant!")
+				target.balloon_alert(user, "Não cabem implantes!")
 				return FALSE
 			if(master_implant)
 				merge_implants(src, other_implant)
@@ -131,7 +131,7 @@
 			notify_ghosts(
 				"[imp_in.real_name] is about to detonate their explosive implant!",
 				source = src,
-				header = "Tick Tick Tick...",
+				header = "Tique-taque Tique-taque...",
 				notify_flags = NOTIFY_CATEGORY_NOFLASH,
 				ghost_sound = 'sound/machines/warning-buzzer.ogg',
 				notify_volume = 75,
@@ -176,7 +176,7 @@
 ///Macrobomb has the strength and delay of 10 microbombs
 /obj/item/implant/explosive/macro
 	name = "macrobomb implant"
-	desc = "And boom goes the weasel. And everything else nearby."
+	desc = "E boom vai a doninha. E todo o resto por perto."
 	icon_state = "explosive"
 	delay = 10 * MICROBOMB_DELAY
 	explosion_light = 10 * MICROBOMB_EXPLOSION_LIGHT
@@ -192,7 +192,7 @@
 ///Microbomb which prevents you from going into critical condition but also explodes after a timer when you reach critical condition in the first place.
 /obj/item/implant/explosive/deniability
 	name = "tactical deniability implant"
-	desc = "An enhanced version of the microbomb that directly plugs into the brain. No downsides, promise!"
+	desc = "Uma versão melhorada da microbomba que se conecta diretamente ao cérebro. Sem desvantagens, prometo!"
 	delay = 10 SECONDS
 	panic_beep_sound = TRUE
 	no_paralyze = TRUE
@@ -241,7 +241,7 @@
 
 /obj/item/implantcase/explosive
 	name = "implant case - 'Explosive'"
-	desc = "A glass case containing an explosive implant."
+	desc = "Uma caixa de vidro contendo um implante explosivo."
 	imp_type = /obj/item/implant/explosive
 
 /obj/item/implanter/explosive_macro

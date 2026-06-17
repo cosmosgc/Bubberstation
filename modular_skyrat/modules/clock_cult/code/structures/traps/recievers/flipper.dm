@@ -3,18 +3,18 @@
 
 /obj/item/clockwork/trap_placer/flipper
 	name = "flipper"
-	desc = "A steam powered rotating floor panel. When input is received it will fling anyone on top of it."
+	desc = "Um painel giratório movido a vapor. Quando a entrada é recebida, vai atirar qualquer um em cima dela."
 	icon_state = "pressure_sensor"
 	result_path = /obj/structure/destructible/clockwork/trap/flipper
-	clockwork_desc = "A floor panel capable of flinging anyone back when triggered."
+	clockwork_desc = "Um painel de chão capaz de atirar qualquer um quando acionado."
 
 /obj/structure/destructible/clockwork/trap/flipper
 	name = "flipper"
-	desc = "A steam powered rotating floor panel. When input is received it will fling anyone on top of it."
+	desc = "Um painel giratório movido a vapor. Quando a entrada é recebida, vai atirar qualquer um em cima dela."
 	icon_state = "flipper"
 	component_datum = /datum/component/clockwork_trap/flipper
 	unwrench_path = /obj/item/clockwork/trap_placer/flipper
-	clockwork_desc = "A floor panel capable of flinging anyone back when triggered. However, it does have a cooldown between uses."
+	clockwork_desc = "Um painel de chão capaz de atirar qualquer um quando acionado. No entanto, ele tem um arrefecimento entre usos."
 	COOLDOWN_DECLARE(flip_cooldown)
 	/// Time between possible flips
 	var/cooldown_flip = 10 SECONDS
@@ -23,7 +23,7 @@
 	. = ..()
 
 	if(!COOLDOWN_FINISHED(src, flip_cooldown) && IS_CLOCK(user))
-		. += span_brass("It's not ready to activate again yet!")
+		. += span_brass("Não está pronto para ativar de novo!")
 
 /// Send all `atom/movable`s flying in the set direction for a decent distance
 /obj/structure/destructible/clockwork/trap/flipper/proc/flip()

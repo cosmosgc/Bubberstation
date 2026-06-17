@@ -1,6 +1,6 @@
 /obj/item/assembly/control
 	name = "blast door controller"
-	desc = "A small electronic device able to control a blast door remotely."
+	desc = "Um pequeno dispositivo eletrônico capaz de controlar uma porta de explosão remotamente."
 	icon_state = "control"
 	/// The ID of the blast door electronics to match to the ID of the blast door being used.
 	var/id = -1
@@ -25,8 +25,8 @@
 		if(id != -1)
 			. += span_notice("Its channel ID is '[id]'.")
 		else
-			. += span_notice("Interact with pod door to generate an new id")
-	. += span_notice("You can interact with another controller to copy its ID.")
+			. += span_notice("Interaja com a porta da cápsula para gerar uma nova identidade.")
+	. += span_notice("Você pode interagir com outro controlador para copiar sua identidade.")
 
 /obj/item/assembly/control/multitool_act(mob/living/user)
 	var/list/door_ids = list()
@@ -53,17 +53,17 @@
 			id = "[change_id[start]]"
 		else
 			id = copytext(change_id, start, end)
-	balloon_alert(user, "id changed")
+	balloon_alert(user, "Id mudou.")
 	if(id != -1)
 		to_chat(user, span_notice("You change the ID to [id]."))
 	else
-		to_chat(user, span_notice("You now must interact with an pod door to generate an unique ID."))
+		to_chat(user, span_notice("Agora você deve interagir com uma porta pod para gerar uma identificação única."))
 
 /obj/item/assembly/control/interact_with_atom(obj/item/assembly/control/interacting_with, mob/living/user, list/modifiers)
 	. = NONE
 	if(istype(interacting_with))
 		id = interacting_with.id
-		balloon_alert(user, "id changed")
+		balloon_alert(user, "Id mudou.")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/assembly/control/activate()
@@ -80,7 +80,7 @@
 
 /obj/item/assembly/control/curtain
 	name = "curtain controller"
-	desc = "A small electronic device able to control a mechanical curtain remotely."
+	desc = "Um pequeno dispositivo eletrônico capaz de controlar uma cortina mecânica remotamente."
 
 /obj/item/assembly/control/curtain/examine(mob/user)
 	. = ..()
@@ -102,7 +102,7 @@
 
 /obj/item/assembly/control/airlock
 	name = "airlock controller"
-	desc = "A small electronic device able to control an airlock remotely."
+	desc = "Um pequeno dispositivo eletrônico capaz de controlar uma câmara remotamente."
 	id = "badmin" // Set it to null for MEGAFUN.
 	var/specialfunctions = OPEN
 	/*
@@ -150,7 +150,7 @@
 
 /obj/item/assembly/control/massdriver
 	name = "mass driver controller"
-	desc = "A small electronic device able to control a mass driver."
+	desc = "Um pequeno dispositivo eletrônico capaz de controlar um motorista em massa."
 
 /obj/item/assembly/control/massdriver/activate()
 	if(cooldown)
@@ -179,7 +179,7 @@
 
 /obj/item/assembly/control/igniter
 	name = "ignition controller"
-	desc = "A remote controller for a mounted igniter."
+	desc = "Um controlador remoto para uma ignição montada."
 
 /obj/item/assembly/control/igniter/activate()
 	if(cooldown)
@@ -197,7 +197,7 @@
 
 /obj/item/assembly/control/flasher
 	name = "flasher controller"
-	desc = "A remote controller for a mounted flasher."
+	desc = "Um controlador remoto para um flasher montado."
 
 /obj/item/assembly/control/flasher/activate()
 	if(cooldown)
@@ -212,7 +212,7 @@
 
 /obj/item/assembly/control/crematorium
 	name = "crematorium controller"
-	desc = "An evil-looking remote controller for a crematorium."
+	desc = "Um controlador remoto para um crematório."
 
 /obj/item/assembly/control/crematorium/activate()
 	if(cooldown)

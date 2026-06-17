@@ -1,7 +1,7 @@
 /// A shambling mob made out of a crew member
 /mob/living/basic/blob_minion/zombie
 	name = "blob zombie"
-	desc = "A shambling corpse animated by the blob."
+	desc = "Um cadáver arrepiante animado pela bolha."
 	icon_state = "zombie"
 	icon_living = "zombie"
 	health_doll_icon = "blobpod"
@@ -19,7 +19,7 @@
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/items/weapons/genhit1.ogg'
-	death_message = "collapses to the ground!"
+	death_message = "Cai no chão!"
 	gold_core_spawnable = NO_SPAWN
 	basic_mob_flags = DEL_ON_DEATH
 	ai_controller = /datum/ai_controller/basic_controller/blob_zombie

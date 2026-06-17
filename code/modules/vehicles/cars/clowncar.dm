@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/car/clowncar
 	name = "clown car"
-	desc = "How someone could even fit in there is byond me."
+	desc = "Como alguém poderia caber lá dentro está em mim."
 	icon_state = "clowncar"
 	max_integrity = 150
 	armor_type = /datum/armor/car_clowncar
@@ -72,7 +72,7 @@
 			if(reagent_amount >= 30)
 				message_admins("[ADMIN_LOOKUPFLW(forced_mob)] was forced into a clown car with [reagent_amount] unit(s) of Irish Car Bomb, causing an explosion.")
 				forced_mob.log_message("was forced into a clown car with [reagent_amount] unit(s) of Irish Car Bomb, causing an explosion.", LOG_GAME)
-				audible_message(span_userdanger("You hear a rattling sound coming from the engine. That can't be good..."), null, 1)
+				audible_message(span_userdanger("Você ouve um barulho vindo do motor. Isso não pode ser bom..."), null, 1)
 				addtimer(CALLBACK(src, PROC_REF(irish_car_bomb)), 5 SECONDS)
 
 /obj/vehicle/sealed/car/clowncar/proc/irish_car_bomb()
@@ -181,7 +181,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "fun mode engaged")
+	balloon_alert(user, "Modo desviado.")
 	to_chat(user, span_danger("You scramble [src]'s child safety lock, and a panel with six colorful buttons appears!"))
 	initialize_controller_action_type(/datum/action/vehicle/sealed/roll_the_dice, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/cannon, VEHICLE_CONTROL_DRIVE)
@@ -207,7 +207,7 @@
 /obj/vehicle/sealed/car/clowncar/proc/roll_the_dice(mob/user)
 	playsound(src, 'sound/vehicles/clown_car/button_press.ogg', 50, TRUE, MEDIUM_RANGE_SOUND_EXTRARANGE)
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_CLOWNCAR_RANDOMNESS))
-		to_chat(user, span_notice("The button panel is currently recharging."))
+		to_chat(user, span_notice("O painel de botões está recarregando."))
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_CLOWNCAR_RANDOMNESS, dice_cooldown_time)
 	switch(rand(1,6))
@@ -255,7 +255,7 @@
 ///Toggles the on and off state of the clown cannon that shoots random kidnapped people
 /obj/vehicle/sealed/car/clowncar/proc/toggle_cannon(mob/user)
 	if(cannonmode == CLOWN_CANNON_BUSY)
-		to_chat(user, span_notice("Please wait for the vehicle to finish its current action first."))
+		to_chat(user, span_notice("Por favor, espere o veículo terminar sua ação atual primeiro."))
 		return
 	if(cannonmode) //canon active, deactivate
 		flick("clowncar_fromfire", src)

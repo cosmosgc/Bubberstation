@@ -1,6 +1,6 @@
 /obj/effect/mob_spawn/ghost_role/borer_egg
 	name = "borer egg"
-	desc = "An egg of a creature that is known to crawl inside of you, be careful."
+	desc = "Um ovo de criatura que se sabe rastejar dentro de você, tenha cuidado."
 	icon = 'modular_skyrat/modules/cortical_borer/icons/animal.dmi'
 	icon_state = "brainegg"
 	layer = BELOW_MOB_LAYER
@@ -10,15 +10,15 @@
 	mob_type = /mob/living/basic/cortical_borer
 	role_ban = ROLE_ALIEN
 	show_flavor = FALSE
-	prompt_name = "cortical borer"
-	you_are_text = "You are a Cortical Borer."
-	flavour_text = "You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! \
-					You only grow/heal/talk when inside a host!"
-	important_text = "As a borer, you have the option to be friendly or not. \
-					Note that how you act will determine how a host responds. \
-					Do not wordlessly resort to mechanics within a host. \
-					You can talk to other borers using ; and your host by just speaking normally. \
-					You are unable to speak outside of a host, but are able to emote."
+	prompt_name = "Buraco cortical"
+	you_are_text = "Você é um Cortical Borer."
+	flavour_text = "Você é um furo cortical! Você pode temer alguém para fazê-los parar de se mover, mas certifique-se de habitá-los!\
+Você só cresce/cura/fala quando dentro de um hospedeiro!"
+	important_text = "Como um chato, você tem a opção de ser amigável ou não.\
+Note que como você age determinará como um hospedeiro responde.\
+Não recorra sem palavras à mecânica dentro de um hospedeiro.\
+Você pode falar com outros furadores usando; e seu anfitrião apenas falando normalmente.\
+Você é incapaz de falar fora de um hospedeiro, mas é capaz de emocionar."
 	///what the generation of the borer egg is
 	var/generation = 1
 	///the egg that is attached to this mob spawn
@@ -50,7 +50,7 @@
 
 /obj/item/borer_egg
 	name = "borer egg"
-	desc = "An egg of a creature that is known to crawl inside of you, be careful."
+	desc = "Um ovo de criatura que se sabe rastejar dentro de você, tenha cuidado."
 	icon = 'modular_skyrat/modules/cortical_borer/icons/animal.dmi'
 	icon_state = "brainegg"
 	layer = BELOW_MOB_LAYER
@@ -83,13 +83,13 @@
 	icon_state = "empowered_brainegg"
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/traitor
-	prompt_name = "cortical borer (traitor spawned)"
+	prompt_name = "Borracha cortical (traidor gerado)"
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/opfor
-	prompt_name = "cortical borer (OPFOR spawned)"
+	prompt_name = "Borracha cortical (OPFOR desovada)"
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/empowered
 	name = "empowered borer egg"
-	desc = "An egg of a creature that came crawling out of someone instead of into them."
+	desc = "Um ovo de uma criatura que saiu rastejando de alguém em vez de dentro dela."
 	mob_type = /mob/living/basic/cortical_borer/empowered
 	host_egg = /obj/item/borer_egg/empowered

@@ -32,7 +32,7 @@
 /datum/action/innate/slime/evolve
 	name = "Evolve"
 	button_icon_state = "slimegrow"
-	desc = "This will let you evolve from baby to adult slime."
+	desc = "Isso vai deixar você evoluir de bebê para gosma adulta."
 	life_stage_required = SLIME_LIFE_STAGE_BABY
 	needs_growth = TRUE
 	nutrition_cost = SLIME_EVOLUTION_COST
@@ -42,16 +42,16 @@
 	var/mob/living/basic/slime/slime_owner = owner
 
 	if(slime_owner.stat)
-		slime_owner.balloon_alert(slime_owner, "unconscious!")
+		slime_owner.balloon_alert(slime_owner, "inconsciente!")
 		return
 	if(slime_owner.life_stage == SLIME_LIFE_STAGE_ADULT)
-		slime_owner.balloon_alert(slime_owner, "already adult!")
+		slime_owner.balloon_alert(slime_owner, "Já é adulto!")
 		return
 	if(slime_owner.amount_grown < SLIME_EVOLUTION_THRESHOLD)
-		slime_owner.balloon_alert(slime_owner, "need to grow!")
+		slime_owner.balloon_alert(slime_owner, "Precisa crescer!")
 		return
 	if(slime_owner.nutrition < nutrition_cost)
-		slime_owner.balloon_alert(slime_owner, "need food!")
+		slime_owner.balloon_alert(slime_owner, "Precisa de comida!")
 		return
 
 	slime_owner.adjust_nutrition(-nutrition_cost)
@@ -67,7 +67,7 @@
 /datum/action/innate/slime/reproduce
 	name = "Reproduce"
 	button_icon_state = "slimesplit"
-	desc = "This will make you split into four slimes."
+	desc = "Isso fará você se dividir em quatro lombrigas."
 	life_stage_required = SLIME_LIFE_STAGE_ADULT
 	needs_growth = TRUE
 
@@ -79,18 +79,18 @@
 /mob/living/basic/slime/proc/reproduce()
 
 	if(stat != CONSCIOUS)
-		balloon_alert(src, "not conscious!")
+		balloon_alert(src, "Não consciente!")
 		return
 
 	if(!isopenturf(loc))
-		balloon_alert(src, "not here!")
+		balloon_alert(src, "Não aqui!")
 
 	if(life_stage != SLIME_LIFE_STAGE_ADULT)
-		balloon_alert(src, "not adult!")
+		balloon_alert(src, "Não é adulto!")
 		return
 
 	if(amount_grown < SLIME_EVOLUTION_THRESHOLD)
-		balloon_alert(src, "need growth!")
+		balloon_alert(src, "Precisa crescer!")
 		return
 
 	var/list/friends_list = list()
@@ -103,7 +103,7 @@
 
 	overcrowded = length(friends_list) >= SLIME_OVERCROWD_AMOUNT
 	if(overcrowded)
-		balloon_alert(src, "overcrowded!")
+		balloon_alert(src, "superlotada!")
 		return
 
 	var/new_nutrition = floor(nutrition * 0.9)

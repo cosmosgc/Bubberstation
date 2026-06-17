@@ -6,7 +6,7 @@
 	damage_coeff = list(BRUTE = 0.75, BURN = 0.75, TOX = 0.75, STAMINA = 0, OXY = 0.75)
 	playstyle_string = span_holoparasite("As a <b>gravitokinetic</b> type, you can right-click to make the gravity on the ground stronger, and punching applies this effect to a target.")
 	creator_name = "Gravitokinetic"
-	creator_desc = "Attacks will apply crushing gravity to the target. Can target the ground as well to slow targets advancing on you, but you are not immune to your own such effects."
+	creator_desc = "Ataques aplicarão gravidade esmagadora ao alvo. Pode mirar no chão também para alvos lentos avançando em você, mas você não é imune a seus próprios efeitos."
 	creator_icon = "gravitokinetic"
 	/// Targets we have applied our gravity effects on.
 	var/list/gravity_targets = list()
@@ -44,7 +44,7 @@
 /mob/living/basic/guardian/gravitokinetic/recall_effects()
 	. = ..()
 	if (length(gravity_targets))
-		to_chat(src, span_bolddanger("You have released your gravitokinetic powers!"))
+		to_chat(src, span_bolddanger("Você libertou seus poderes gravitocinéticos!"))
 	clear_gravity()
 
 /mob/living/basic/guardian/gravitokinetic/melee_attack(atom/target, list/modifiers, ignore_cooldown)
@@ -53,7 +53,7 @@
 		return
 	to_chat(src, span_bolddanger("Your punch has applied heavy gravity to [target]!"))
 	add_gravity(target, punch_gravity)
-	to_chat(target, span_userdanger("Everything feels really heavy!"))
+	to_chat(target, span_userdanger("Tudo parece muito pesado!"))
 	return TRUE
 
 /mob/living/basic/guardian/gravitokinetic/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)

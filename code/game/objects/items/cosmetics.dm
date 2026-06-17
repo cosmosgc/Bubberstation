@@ -1,7 +1,7 @@
 /obj/item/lipstick
 	gender = PLURAL
 	name = "red lipstick"
-	desc = "A generic brand of lipstick."
+	desc = "Uma marca genérica de batom."
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "lipstick"
 	base_icon_state = "lipstick"
@@ -101,13 +101,13 @@
 
 /obj/item/lipstick/black/death
 	name = "\improper Kiss of Death"
-	desc = "An incredibly potent tube of lipstick made from the venom of the dreaded Yellow Spotted Space Lizard, as deadly as it is chic. Try not to smear it!"
+	desc = "Um tubo de batom incrivelmente potente feito do veneno do temido lagarto espacial manchado amarelo, tão mortal quanto chique. Tente não manchar!"
 	lipstick_trait = TRAIT_KISS_OF_DEATH
 	random_spawn = FALSE
 
 /obj/item/lipstick/syndie
 	name = "syndie lipstick"
-	desc = "Syndicate branded lipstick with a killer dose of kisses. Observe safety regulations!"
+	desc = "Baton marcado com uma dose de beijos. Observe as regras de segurança!"
 	icon_state = "slipstick"
 	base_icon_state = "slipstick"
 	lipstick_color = COLOR_SYNDIE_RED
@@ -142,7 +142,7 @@
 		return
 
 	if(!ishuman(M))
-		to_chat(user, span_warning("Where are the lips on that?"))
+		to_chat(user, span_warning("Onde estão os lábios disso?"))
 		return
 
 	var/mob/living/carbon/human/target = M
@@ -150,7 +150,7 @@
 		to_chat(user, span_warning("Remove [ target == user ? "your" : "[target.p_their()]" ] mask!"))
 		return
 	if(target.lip_style) //if they already have lipstick on
-		to_chat(user, span_warning("You need to wipe off the old lipstick first!"))
+		to_chat(user, span_warning("Você precisa limpar o batom velho primeiro!"))
 		return
 
 	if(target == user)
@@ -188,7 +188,7 @@
 /* SKYRAT EDIT REMOVAL
 /obj/item/razor
 	name = "electric razor"
-	desc = "The latest and greatest power razor born from the science of shaving."
+	desc = "A mais recente e mais poderosa navalha nascida da ciência de barbear."
 	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "razor"
 	inhand_icon_state = "razor"
@@ -225,7 +225,7 @@
 		if(!user.combat_mode)
 			if(human_target.gender == MALE)
 				if(human_target == user)
-					to_chat(user, span_warning("You need a mirror to properly style your own facial hair!"))
+					to_chat(user, span_warning("Precisa de um espelho para estilizar seu próprio cabelo facial!"))
 					return
 				if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 					return
@@ -237,7 +237,7 @@
 					to_chat(user, span_warning("[covering] is in the way!"))
 					return
 				if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-					to_chat(user, span_warning("There is no facial hair to style!"))
+					to_chat(user, span_warning("Não há cabelo facial para estilizar!"))
 					return
 				if(HAS_TRAIT(human_target, TRAIT_SHAVED))
 					to_chat(user, span_warning("[human_target] is just way too shaved. Like, really really shaved."))
@@ -256,10 +256,10 @@
 				to_chat(user, span_warning("[covering] is in the way!"))
 				return
 			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-				to_chat(user, span_warning("There is no facial hair to shave!"))
+				to_chat(user, span_warning("Não há pêlos faciais para barbear!"))
 				return
 			if(human_target.facial_hairstyle == "Shaved")
-				to_chat(user, span_warning("Already clean-shaven!"))
+				to_chat(user, span_warning("Já barbeado!"))
 				return
 
 			if(human_target == user) //shaving yourself
@@ -283,7 +283,7 @@
 	else if(location == BODY_ZONE_HEAD)
 		if(!user.combat_mode)
 			if(human_target == user)
-				to_chat(user, span_warning("You need a mirror to properly style your own hair!"))
+				to_chat(user, span_warning("Você precisa de um espelho para fazer seu próprio cabelo!"))
 				return
 			if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 				return
@@ -291,10 +291,10 @@
 			if(isnull(new_style))
 				return
 			if(!human_target.is_location_accessible(location))
-				to_chat(user, span_warning("The headgear is in the way!"))
+				to_chat(user, span_warning("O capacete está no caminho!"))
 				return
 			if(!(noggin.head_flags & HEAD_HAIR))
-				to_chat(user, span_warning("There is no hair to style!"))
+				to_chat(user, span_warning("Não há cabelo para estilizar!"))
 				return
 			if(HAS_TRAIT(human_target, TRAIT_BALD))
 				to_chat(user, span_warning("[human_target] is just way too bald. Like, really really bald."))
@@ -307,13 +307,13 @@
 				return
 		else
 			if(!human_target.is_location_accessible(location))
-				to_chat(user, span_warning("The headgear is in the way!"))
+				to_chat(user, span_warning("O capacete está no caminho!"))
 				return
 			if(!(noggin.head_flags & HEAD_HAIR))
-				to_chat(user, span_warning("There is no hair to shave!"))
+				to_chat(user, span_warning("Não há cabelo para barbear!"))
 				return
 			if(human_target.hairstyle == "Bald" || human_target.hairstyle == "Balding Hair" || human_target.hairstyle == "Skinhead")
-				to_chat(user, span_warning("There is not enough hair left to shave!"))
+				to_chat(user, span_warning("Não há cabelo suficiente para se barbear!"))
 				return
 
 			if(human_target == user) //shaving yourself
@@ -339,7 +339,7 @@
 
 /obj/item/razor/surgery
 	name = "surgical razor"
-	desc = "A medical grade razor. Its precision blades provide a clean shave for surgical preparation."
+	desc = "Uma navalha de grau médico. Suas lâminas de precisão fornecem um barbear limpo para preparação cirúrgica."
 	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "medrazor"
 

@@ -1,6 +1,6 @@
 /obj/effect/mine
 	name = "dummy mine"
-	desc = "Better stay away from that thing."
+	desc = "Melhor ficar longe daquela coisa."
 	density = FALSE
 	anchored = TRUE
 	icon = 'icons/obj/weapons/grenade.dmi'
@@ -34,11 +34,11 @@
 /obj/effect/mine/examine(mob/user)
 	. = ..()
 	if(!armed)
-		. += span_info("It appears to be inactive...")
+		. += span_info("Parece estar inativo...")
 
 	var/atom/movable/unlucky_sod = foot_on_mine?.resolve()
 	if(user == unlucky_sod)
-		. += span_bolddanger("The pressure plate is depressed. Any movement you make will set it off now.")
+		. += span_bolddanger("A placa de pressão está depressiva. Qualquer movimento que fizer vai detoná-lo agora.")
 	else if(!isnull(unlucky_sod))
 		. += span_danger("The pressure plate is depressed by [unlucky_sod]. Any move they make'll set it off now.")
 
@@ -191,7 +191,7 @@
 
 /obj/effect/mine/kickmine/mineEffect(mob/victim)
 	if(isliving(victim) && victim.client && Adjacent(victim))
-		to_chat(victim, span_userdanger("You have been kicked FOR NO REISIN!"))
+		to_chat(victim, span_userdanger("Você foi chutado por nenhuma resina!"))
 		qdel(victim.client)
 
 /obj/effect/mine/gas
@@ -249,7 +249,7 @@
 
 /obj/effect/mine/shrapnel/capspawn
 	name = "\improper AP mine"
-	desc = "A defensive landmine filled with 'AP shrapnel', good for defending cramped spaces without breaching hulls. The AP stands for 'Asset Protection', though it's still plenty nasty against any fool who sets it off."
+	desc = "Uma mina defensiva cheia de estilhaços, boa para defender espaços apertados sem romper cascos. O AP significa 'Proteção de Ativos', embora ainda seja muito desagradável contra qualquer idiota que o detone."
 	shrapnel_type = /obj/projectile/bullet/pellet/capmine
 	shrapnel_magnitude = 4
 	shred_triggerer = TRUE
@@ -264,7 +264,7 @@
 
 /obj/item/minespawner
 	name = "landmine deployment device"
-	desc = "When activated, will deploy an Asset Protection landmine after 3 seconds passes, perfect for high ranking NT officers looking to cover their assets from afar."
+	desc = "Quando ativado, irá implantar uma mina de proteção de ativos após 3 segundos de passagem, perfeito para oficiais de alto escalão do NT que querem cobrir seus bens de longe."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "beacon"
 

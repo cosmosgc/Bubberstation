@@ -1,7 +1,7 @@
 /datum/mod_theme/asset_protection
 	name = "Asset Protection"
-	desc = "A weaker version of the Apocryphal Modsuit, chiefly worn by Nanotrasen Asset Protection."
-	extended_desc = "A weaker version of the Apocryphal Modsuit meant for the Nanotrasen Asset Protection Division. This suit boasts higher speed and advanced actuators that make moving feel almost weightless, with advanced features for the savvy bodyguard."
+	desc = "Uma versão mais fraca do Modsuit Apócrifo, usado principalmente pela Nanotrasen Asset Protection."
+	extended_desc = "Uma versão mais fraca do Modsuit Apócrifo para a Divisão de Proteção de Ativos Nanotrasen. Este terno possui maior velocidade e atuadores avançados que fazem se sentir quase sem peso, com características avançadas para o guarda-costas experiente."
 	default_skin = "asset_protection"
 	armor_type = /datum/armor/mod_theme_ap
 	resistance_flags = FIRE_PROOF|ACID_PROOF
@@ -116,7 +116,7 @@
 //// Sprites done by Toriate - Commissioned by The Sharkenning
 /datum/mod_theme/lustwish
 	name = "lustwish"
-	desc = "A specialty designed lustwish themed modsuit which is based entirely off of earlier civilian modsuits."
+	desc = "Uma especialidade projetada luxúria modsuit temáticos que é baseado inteiramente fora de modsuits civis anteriores."
 	default_skin = "lustwish"
 	hardlight_theme = ROYAL_PURPLE
 	ui_theme = "ntos_darkmode"

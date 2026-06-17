@@ -109,8 +109,8 @@
 
 /obj/machinery/air_sensor/examine(mob/user)
 	. = ..()
-	. += span_notice("Use a multitool to link it to an injector, vent, or air alarm, or reset its ports.")
-	. += span_notice("Click with hand to turn it off.")
+	. += span_notice("Use uma multitool para ligá-lo a um injetor, ventilação, alarme de ar, ou redefinir suas portas.")
+	. += span_notice("Clique com a mão para desligar.")
 
 /obj/machinery/air_sensor/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -118,7 +118,7 @@
 	//switched off version of this air sensor but still anchored to the ground
 	var/obj/item/air_sensor/sensor = new(drop_location())
 	sensor.set_anchored(TRUE)
-	sensor.balloon_alert(user, "sensor turned off")
+	sensor.balloon_alert(user, "Sensor desligado.")
 
 	//delete self
 	qdel(src)
@@ -139,7 +139,7 @@
 ///right click with multi tool to disconnect everything
 /obj/machinery/air_sensor/multitool_act_secondary(mob/living/user, obj/item/tool)
 	reset()
-	balloon_alert(user, "ports reset")
+	balloon_alert(user, "Portas reiniciadas")
 	return TRUE
 
 /obj/machinery/air_sensor/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
@@ -164,7 +164,7 @@
  */
 /obj/item/air_sensor
 	name = "Air Sensor"
-	desc = "A device designed to detect gases and their concentration in an area."
+	desc = "Um dispositivo projetado para detectar gases e sua concentração em uma área."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "gsensor0"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT + SMALL_MATERIAL_AMOUNT * 0.3, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.2)
@@ -194,7 +194,7 @@
 	else
 		. += span_notice("It should be [EXAMINE_HINT("wrenched")] in place to turn it on.")
 	. +=  span_notice("It could be [EXAMINE_HINT("welded")] apart.")
-	. +=  span_notice("Click with hand to turn it on.")
+	. +=  span_notice("Clique com a mão para ligá-lo.")
 
 /obj/item/air_sensor/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -234,7 +234,7 @@
 
 		//make real air sensor in its place
 		var/obj/machinery/air_sensor/new_sensor = new sensor(get_turf(src))
-		new_sensor.balloon_alert(user, "sensor turned on")
+		new_sensor.balloon_alert(user, "Sensor ligado.")
 		qdel(src)
 
 		break
@@ -247,10 +247,10 @@
 	if(!tool.tool_start_check(user, amount = 1))
 		return ITEM_INTERACT_BLOCKING
 
-	loc.balloon_alert(user, "dismantling sensor")
+	loc.balloon_alert(user, "Desmontando sensor")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 30, amount = 1))
 		return ITEM_INTERACT_BLOCKING
-	loc.balloon_alert(user, "sensor dismanteled")
+	loc.balloon_alert(user, "sensor desmantelado.")
 
 	deconstruct(TRUE)
 	return ITEM_INTERACT_SUCCESS

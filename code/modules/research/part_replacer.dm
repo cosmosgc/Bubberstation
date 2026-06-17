@@ -1,7 +1,7 @@
 ///RPED. Allows installing & exchaging parts on machines
 /obj/item/storage/part_replacer
 	name = "rapid part exchange device"
-	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
+	desc = "Módulo mecânico especial feito para armazenar, classificar e aplicar peças de máquinas padrão."
 	icon_state = "RPED"
 	inhand_icon_state = "RPED"
 	worn_icon_state = "RPED"
@@ -53,7 +53,7 @@
 ///Bluespace RPED. Allows exchanging parts from a distance & through cameras
 /obj/item/storage/part_replacer/bluespace
 	name = "bluespace rapid part exchange device"
-	desc = "A version of the RPED that allows for replacement of parts and scanning from a distance, along with higher capacity for parts."
+	desc = "Uma versão do RPED que permite substituir peças e escanear à distância, junto com maior capacidade para peças."
 	icon_state = "BS_RPED"
 	inhand_icon_state = "BS_RPED"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -168,7 +168,7 @@
 ///Cyborg variant
 /obj/item/storage/part_replacer/cyborg
 	name = "rapid part exchange device"
-	desc = "Special mechanical module made to store, sort, and apply standard machine parts. This one has an extra large compartment for more parts."
+	desc = "Módulo mecânico especial feito para armazenar, classificar e aplicar peças de máquinas padrão. Este tem um compartimento extra grande para mais peças."
 	icon_state = "borgrped"
 	inhand_icon_state = "RPED"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -176,6 +176,6 @@
 	storage_type = /datum/storage/rped/bluespace
 
 /obj/item/storage/part_replacer/cyborg/small
-	desc = "Special mechanical module made to store, sort, and apply standard machine parts. This one has as much space, as your regular RPED"
+	desc = "Módulo mecânico especial feito para armazenar, classificar e aplicar peças de máquinas padrão. Este tem tanto espaço, como o seu RPED regular"
 	icon_state = "RPED"
 	storage_type = /datum/storage/rped

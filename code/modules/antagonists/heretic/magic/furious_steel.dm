@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/pointed/projectile/furious_steel
 	name = "Furious Steel"
-	desc = "Summon three silver blades which orbit you. \
-		While orbiting you, these blades will protect you from attacks, but will be consumed on use. \
-		Additionally, you can click to fire the blades at a target, dealing damage and causing bleeding."
+	desc = "Chame três lâminas de prata que orbitam você.\
+Ao orbitar você, essas lâminas o protegerão de ataques, mas serão consumidas no uso.\
+Além disso, você pode clicar para disparar as lâminas em um alvo, causando danos e sangramento."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -166,9 +166,9 @@
 
 /datum/action/cooldown/spell/pointed/projectile/furious_steel/haunted
 	name = "Cursed Steel"
-	desc = "Summon two cursed blades which orbit you. \
-		While orbiting you, these blades will protect you from attacks, but will be consumed on use. \
-		Additionally, you can click to fire the blades at a target, dealing damage and causing bleeding."
+	desc = "Chame duas lâminas amaldiçoadas que orbitam você.\
+Ao orbitar você, essas lâminas o protegerão de ataques, mas serão consumidas no uso.\
+Além disso, você pode clicar para disparar as lâminas em um alvo, causando danos e sangramento."
 	background_icon_state = "bg_heretic" // kept intentionally
 	overlay_icon_state = "bg_cult_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'

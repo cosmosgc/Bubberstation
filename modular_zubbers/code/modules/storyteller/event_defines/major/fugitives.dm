@@ -9,7 +9,7 @@
 	min_players = 20
 	earliest_start = 30 MINUTES //deadchat sink, lets not even consider it early on.
 	category = EVENT_CATEGORY_INVASION
-	description = "Fugitives will hide on the station, followed by hunters."
+	description = "Fugitivos se esconderão na estação, seguidos de caçadores."
 	map_flags = EVENT_SPACE_ONLY
 
 /datum/round_event/ghost_role/fugitives
@@ -147,13 +147,13 @@
 				notify_ghosts(
 					"[spawner.prompt_name] has awoken: [spawned_mob]!",
 					source = spawned_mob,
-					header = "Come look!",
+					header = "Venha ver!",
 				)
 			else
 				notify_ghosts(
 					"[spawner.prompt_name] spawner has been created!",
 					source = spawner,
-					header = "Spawn Here!",
+					header = "Aqui é Spawn!",
 				)
 
 	var/list/announcement_text_list = list()

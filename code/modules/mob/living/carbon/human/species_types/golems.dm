@@ -113,8 +113,8 @@
 	if(source.appears_alive())
 		return
 
-	examine_text += span_warning("This golem appears to be in a state of disrepair. \
-		It may be possible to rebuild it by adding minerals into its form.")
+	examine_text += span_warning("Este golem parece estar em um estado de desânimo.\
+Pode ser possível reconstruí-lo adicionando minerais em sua forma.")
 
 /datum/species/golem/proc/rebuild_check(mob/living/carbon/human/source, mob/living/user, obj/item/tool, ...)
 	SIGNAL_HANDLER
@@ -180,7 +180,7 @@
 		if(source.revive(excess_healing = 10)) // give a bit of organ/tox/oxy healing for free
 			source.visible_message(
 				span_notice("[source] stabilizes and reforms into a functional state!"),
-				span_boldnotice("You stabilize and reform into a functional state!"),
+				span_boldnotice("Você estabiliza e se transforma em um estado funcional!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 			source.set_resting(FALSE, silent = TRUE, instant = TRUE)
@@ -221,8 +221,8 @@
 		if(!early_warning && COOLDOWN_FINISHED(src, warning_cd) && source.stat < UNCONSCIOUS)
 			source.visible_message(
 				span_warning("[source] shudders weakly as their form begins to destabilize!"),
-				span_bolddanger("You feel your form destabilizing as you run low on material to sustain yourself! \
-					Find some minerals to eat soon, or you may crumble!"),
+				span_bolddanger("Você sente sua forma se desestabilizando enquanto falta material para se sustentar!\
+Encontre alguns minerais para comer em breve, ou você pode desmoronar!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 			early_warning = TRUE
@@ -235,8 +235,8 @@
 		if(!final_warning && COOLDOWN_FINISHED(src, warning_cd) && source.stat < UNCONSCIOUS)
 			source.visible_message(
 				span_warning("[source] looks like they're on the verge of falling apart!"),
-				span_userdanger("Your form shudders violently as you near complete destabilization! \
-					Eat some minerals quickly, or you may crumble!"),
+				span_userdanger("Sua forma estremece violentamente enquanto você quase completa desestabilização!\
+Coma alguns minerais rapidamente, ou você pode desmoronar!"),
 				visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 			)
 			final_warning = TRUE
@@ -248,7 +248,7 @@
 	if(source.nutrition < 2 && source.stat != DEAD)
 		source.visible_message(
 			span_warning("[source] shudders and crumbles into a pile of inert rocks!"),
-			span_userdanger("You run our of material to sustain your animated form, and crumble into a pile of inert rocks!"),
+			span_userdanger("Você corre nosso material para sustentar sua forma animada, e se desintegra em uma pilha de pedras inertes!"),
 			visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 		)
 		source.investigate_log("starved to death as a golem", INVESTIGATE_DEATHS)
@@ -275,32 +275,32 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "user-shield",
 		SPECIES_PERK_NAME = "Lithoid",
-		SPECIES_PERK_DESC = "Lithoids are creatures made out of minerals instead of \
-			blood and flesh. They are strong and immune to many environmental and personal dangers \
-			such as fire, radiation, lack of air, lava, viruses, and dismemberment.",
+		SPECIES_PERK_DESC = "Litóides são criaturas feitas de minerais em vez de\
+Sangue e carne. Eles são fortes e imunes a muitos perigos ambientais e pessoais.\
+como fogo, radiação, falta de ar, lava, vírus e desmembramento.",
 	))
 
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "gem",
 		SPECIES_PERK_NAME = "Metamorphic Rock",
-		SPECIES_PERK_DESC = "Consuming minerals can grant Lithoids temporary benefits based on the type consumed.",
+		SPECIES_PERK_DESC = "O consumo de minerais pode conceder benefícios temporários aos Lithoids baseados no tipo consumido.",
 	))
 
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "tools",
 		SPECIES_PERK_NAME = "Natural Miners",
-		SPECIES_PERK_DESC = "Golems can see dimly in the dark, sense minerals, break boulders, and mine stone with their bare hands. \
-			They can even smelt ores in an internal furnace, if their surrounding environment is hot enough.",
+		SPECIES_PERK_DESC = "Os Golems podem ver pouco nas trevas, minerais de sentido, pedras quebradas, e minha pedra com suas próprias mãos.\
+Eles podem até mesmo cheirar minérios em uma fornalha interna, se seu ambiente ao redor é quente o suficiente.",
 	))
 
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "bolt",
 		SPECIES_PERK_NAME = "Anima",
-		SPECIES_PERK_DESC = "Maintaining the force animating stone is taxing. Lithoids must eat frequently \
-			in order to avoid returning to inanimate statues, and only derive nutrition from eating minerals.",
+		SPECIES_PERK_DESC = "Manter a pedra animadora da força é difícil. Litóides devem comer com frequência.\
+para evitar o retorno a estátuas inanimadas, e apenas derivar nutrição de comer minerais.",
 	))
 
 	return to_add

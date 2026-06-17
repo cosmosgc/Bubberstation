@@ -14,8 +14,8 @@
 
 	// What're the odds someone uses 2000 uses of an infinite use book?
 	if(uses >= INFINITY - 2000)
-		to_chat(caster, span_notice("This book is infinite use and can't be recharged, \
-			yet the magic has improved it somehow..."))
+		to_chat(caster, span_notice("Este livro é de uso infinito e não pode ser recarregado.\
+Mas a magia melhorou de alguma forma..."))
 		pages_to_mastery = max(pages_to_mastery - 1, 1)
 		return COMPONENT_ITEM_CHARGED|COMPONENT_ITEM_BURNT_OUT
 
@@ -74,7 +74,7 @@
 /// A more volatile granter that can potentially have any spell within. Use wisely.
 /obj/item/book/granter/action/spell/true_random
 	icon_state = "random_book"
-	desc = "You feel as if anything could be gained from this book."
+	desc = "Você sente como se algo pudesse ser ganho com este livro."
 	/// A list of schools we probably shouldn't grab, for various reasons
 	var/static/list/blacklisted_schools = list(SCHOOL_UNSET, SCHOOL_HOLY, SCHOOL_MIME)
 

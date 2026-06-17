@@ -3,14 +3,14 @@
 	set category = "Mentor"
 	set name = "Mentor PM"
 	if(!is_mentor())
-		to_chat(src, span_danger("Error: Mentor-PM-Panel: Only Mentors and Admins may use this command."))
+		to_chat(src, span_danger("Apenas Mentores e Administradores podem usar este comando."))
 		return
 	var/list/client/targets[0]
 	for(var/client/T) // What a cursed proc this is
 		targets["[T]"] = T
 
 	var/list/sorted = sort_list(targets)
-	var/target = input(src, "To whom shall we send a message?", "Mentor PM", null) in sorted|null
+	var/target = input(src, "A quem enviaremos uma mensagem?", "Mentor PM", null) in sorted|null
 	cmd_mentor_pm(targets[target], null)
 	SSblackbox.record_feedback("tally", "Mentor_verb", TRUE, "APM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -33,7 +33,7 @@
 		target = whom
 	if(!target)
 		if(is_mentor())
-			to_chat(src, span_danger("Error: Mentor-PM: Client not found."))
+			to_chat(src, span_danger("Erro: cliente não encontrado."))
 		else
 			mentorhelp(msg)	//Mentor we are replying to left. Mentorhelp instead(check below)
 		return
@@ -52,7 +52,7 @@
 
 		if(!target)
 			if(is_mentor())
-				to_chat(src, span_danger("Error: Mentor-PM: Client not found."))
+				to_chat(src, span_danger("Erro: cliente não encontrado."))
 			else
 				mentorhelp(msg)	//Mentor we are replying to has vanished, Mentorhelp instead (how the fuck does this work?let's hope it works,shrug)
 				return

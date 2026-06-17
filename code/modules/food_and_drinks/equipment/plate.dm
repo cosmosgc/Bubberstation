@@ -1,6 +1,6 @@
 /obj/item/plate
 	name = "plate"
-	desc = "Holds food, powerful. Good for morale when you're not eating your spaghetti off of a desk."
+	desc = "Segura a comida, poderosa. Bom para a moral quando você não está comendo seu espaguete de uma mesa."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "plate"
 	sound_vary = TRUE
@@ -31,10 +31,10 @@
 	if(!IS_EDIBLE(tool))
 		return NONE
 	if(tool.w_class > biggest_w_class)
-		balloon_alert(user, "too big!")
+		balloon_alert(user, "Muito grande!")
 		return ITEM_INTERACT_BLOCKING
 	if(contents.len >= max_items)
-		balloon_alert(user, "can't fit!")
+		balloon_alert(user, "Não cabe!")
 		return ITEM_INTERACT_BLOCKING
 	//Center the icon where the user clicked.
 	if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
@@ -102,7 +102,7 @@
 
 /obj/item/plate/large
 	name = "buffet plate"
-	desc = "A large plate made for the professional catering industry but also apppreciated by mukbangers and other persons of considerable size and heft."
+	desc = "Um grande prato feito para a indústria de catering profissional, mas também apreciado por mukbangers e outras pessoas de considerável tamanho e peso."
 	icon_state = "plate_large"
 	max_items = 12
 	max_x_offset = 8
@@ -111,7 +111,7 @@
 
 /obj/item/plate/small
 	name = "appetizer plate"
-	desc = "A small plate, perfect for appetizers, desserts or trendy modern cusine."
+	desc = "Um prato pequeno, perfeito para aperitivos, sobremesas ou moderno moderno cusine."
 	icon_state = "plate_small"
 	max_items = 4
 	max_x_offset = 4

@@ -1,6 +1,6 @@
 /obj/item/circuit_component/equipment_action
-	display_name = "Equipment Action"
-	desc = "Represents an action the user can take when using supported shells."
+	display_name = "Ação de Equipamentos"
+	desc = "Representa uma ação que o usuário pode tomar ao usar shells suportados."
 	required_shells = list(/obj/item/organ/cyberimp/bci, /obj/item/mod/module/circuit)
 
 	/// The icon of the button

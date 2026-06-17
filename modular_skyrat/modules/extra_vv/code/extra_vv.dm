@@ -44,14 +44,14 @@
 		return
 
 	if(!client)
-		to_chat(usr, span_warning("No client found!"))
+		to_chat(usr, span_warning("Nenhum cliente encontrado!"))
 		return
 
 	if(!ishuman(src))
-		to_chat(usr, span_warning("Mob is not human!"))
+		to_chat(usr, span_warning("A máfia não é humana!"))
 		return
 
-	var/notice = tgui_alert(usr, "Are you sure you want to load the clients current prefs onto their mob?", "Load Preferences", list("Yes", "No"))
+	var/notice = tgui_alert(usr, "Tem certeza que quer colocar os clientes atuais na máfia?", "Load Preferences", list("Yes", "No"))
 	if(notice != "Yes")
 		return
 

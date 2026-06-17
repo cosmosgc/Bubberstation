@@ -1,7 +1,7 @@
 /// Component printer, creates components for integrated circuits.
 /obj/machinery/component_printer
 	name = "component printer"
-	desc = "Produces components for the creation of integrated circuits."
+	desc = "Produz componentes para a criação de circuitos integrados."
 	icon = 'icons/obj/machines/wiremod_fab.dmi'
 	icon_state = "fab-idle"
 	base_icon_state = "fab"
@@ -230,7 +230,7 @@
 
 	circuit.linked_component_printer = WEAKREF(src)
 	circuit.update_static_data_for_all_viewers()
-	balloon_alert(user, "successfully linked to the integrated circuit")
+	balloon_alert(user, "com sucesso ligado ao circuito integrado")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/component_printer/crowbar_act(mob/living/user, obj/item/tool)
@@ -253,7 +253,7 @@
 
 /obj/machinery/debug_component_printer
 	name = "debug component printer"
-	desc = "Produces components for the creation of integrated circuits."
+	desc = "Produz componentes para a criação de circuitos integrados."
 	icon = 'icons/obj/machines/wiremod_fab.dmi'
 	icon_state = "fab-idle"
 
@@ -337,7 +337,7 @@
 /// Module duplicator, allows you to save and recreate module components.
 /obj/machinery/module_duplicator
 	name = "module duplicator"
-	desc = "Allows you to duplicate module components so that you don't have to recreate them. Scan a module component over this machine to add it as an entry."
+	desc = "Permite duplicar componentes do módulo para que não tenha que recriar. Analise um componente de módulo sobre esta máquina para adicioná-lo como uma entrada."
 	icon = 'icons/obj/machines/wiremod_fab.dmi'
 	icon_state = "module-fab-idle"
 	base_icon_state = "module-fab"
@@ -456,7 +456,7 @@
 	if(istype(tool, /obj/item/circuit_component/module))
 		var/obj/item/circuit_component/module/module = tool
 		if(HAS_TRAIT(module, TRAIT_CIRCUIT_UNDUPABLE))
-			balloon_alert(user, "integrated circuit cannot be saved!")
+			balloon_alert(user, "Circuito integrado não pode ser salvo!")
 			return ITEM_INTERACT_BLOCKING
 
 		data["dupe_data"] = list()
@@ -468,7 +468,7 @@
 	else if(istype(tool, /obj/item/integrated_circuit))
 		var/obj/item/integrated_circuit/integrated_circuit = tool
 		if(HAS_TRAIT(integrated_circuit, TRAIT_CIRCUIT_UNDUPABLE))
-			balloon_alert(user, "integrated circuit cannot be saved!")
+			balloon_alert(user, "Circuito integrado não pode ser salvo!")
 			return ITEM_INTERACT_BLOCKING
 
 		data["dupe_data"] = integrated_circuit.convert_to_json()
@@ -488,12 +488,12 @@
 		return NONE
 
 	if(!data["name"])
-		balloon_alert(user, "it needs a name!")
+		balloon_alert(user, "Precisa de um nome!")
 		return ITEM_INTERACT_BLOCKING
 
 	for(var/list/component_data as anything in scanned_designs)
 		if(component_data["name"] == data["name"])
-			balloon_alert(user, "name already exists!")
+			balloon_alert(user, "O nome já existe!")
 			return ITEM_INTERACT_BLOCKING
 
 	flick("module-fab-scan", src)
@@ -503,7 +503,7 @@
 /obj/machinery/module_duplicator/proc/finish_module_scan(mob/user, data)
 	scanned_designs += list(data)
 
-	balloon_alert(user, "module has been saved.")
+	balloon_alert(user, "O módulo foi salvo.")
 	playsound(src, 'sound/machines/ping.ogg', 50)
 
 	update_static_data_for_all_viewers()

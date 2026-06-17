@@ -4,10 +4,10 @@
 
 /obj/machinery/power/smes/battery_pack
 	name = "stationary battery"
-	desc = "An about table-height block of power storage, commonly seen in low storage high output power applications. \
-		Smaller units such as these tend to have a respectively <b>smaller energy storage</b>, though also are capable of \
-		<b>higher maximum output</b> than some larger units. Most commonly seen being used not for their ability to store \
-		power, but rather for use in regulating power input and output."
+	desc = "Um bloco de altura de mesa de armazenamento de energia, comumente visto em aplicações de alta potência de armazenamento de baixa potência.\
+Unidades menores como essas tendem a ter um respectivamente.<b>armazenamento de energia menor</b>Embora também sejam capazes de\
+		<b>maior potência máxima.</b>que algumas unidades maiores. Mais comumente visto sendo usado não para sua capacidade de armazenar\
+energia, mas sim para usar na regulação de entrada e saída de energia."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/power_storage_unit/small_battery.dmi'
 	total_capacity = 7.5 * STANDARD_BATTERY_CHARGE
 	input_level_max = 400 KILO WATTS
@@ -85,10 +85,10 @@
 
 /obj/machinery/power/smes/battery_pack/large
 	name = "large stationary battery"
-	desc = "A massive block of power storage, commonly seen in high storage low output power applications. \
-		Larger units such as these tend to have a respectively <b>larger energy storage</b>, though only capable of \
-		<b>low maximum output</b> compared to smaller units. Most commonly seen as large backup batteries, or simply \
-		for large power storage where throughput is not a concern."
+	desc = "Um bloco maciço de armazenamento de energia, comumente visto em aplicações de baixa potência de armazenamento de alta potência.\
+Unidades maiores como estas tendem a ter um respectivamente.<b>armazenamento de energia maior</b>, embora só capaz de\
+		<b>Baixa potência máxima.</b>comparado a unidades menores. Mais comumente visto como baterias de backup grandes, ou simplesmente\
+para grande armazenamento de energia onde o rendimento não é uma preocupação."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/power_storage_unit/large_battery.dmi'
 	total_capacity = 100 * STANDARD_BATTERY_CHARGE
 	input_level_max = 50 KILO WATTS

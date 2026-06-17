@@ -1,6 +1,6 @@
 /mob/living/basic/sheep
 	name = "sheep"
-	desc = "Known for their soft wool and use in sacrificial rituals. Big fan of grass."
+	desc = "Conhecido por sua lã macia e uso em rituais de sacrifício. Grande fã de grama."
 	icon = 'icons/mob/simple/sheep.dmi'
 	icon_state = "sheep"
 	icon_dead = "sheep_dead"

@@ -83,7 +83,7 @@
 /datum/objective/escape_captivity
 
 /datum/objective/escape_captivity/New()
-	explanation_text = "Escape from captivity."
+	explanation_text = "Fugir do cativeiro."
 
 /datum/objective/escape_captivity/check_completion()
 	if(!istype(get_area(owner), GLOB.communications_controller.captivity_area))
@@ -92,7 +92,7 @@
 /datum/objective/advance_hive
 
 /datum/objective/advance_hive/New()
-	explanation_text = "Survive and advance the Hive."
+	explanation_text = "Sobreviver e avançar a Colmeia."
 
 /datum/objective/advance_hive/check_completion()
 	return owner.current && owner.current.stat != DEAD
@@ -133,9 +133,9 @@
 
 	var/thank_you_message
 	if(captive_count > escape_count)
-		thank_you_message = "xenobiological containment architecture"
+		thank_you_message = "Arquitetura de contenção xenobiológica"
 	else
-		thank_you_message = "xenofauna combat effectiveness"
+		thank_you_message = "Xenofauna eficácia de combate"
 
 	parts += "<span class='neutraltext'>Nanotrasen thanks the crew of [station_name()] for providing much needed research data on <b>[thank_you_message]</b>.</span>"
 

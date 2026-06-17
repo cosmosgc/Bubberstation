@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/eye/blob
 	name = "Blob Overmind"
 	real_name = "Blob Overmind"
-	desc = "The overmind. It controls the blob."
+	desc = "A mente. Controla a bolha."
 	icon = 'icons/mob/eyemob.dmi'
 	icon_state = "marker"
 	mouse_opacity = MOUSE_OPACITY_ICON
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	var/turf/target_turf = .
 	if(!is_valid_turf(target_turf)) // Allows unplaced blobs to travel through station z-levels
 		if(z_move_flags & ZMOVE_FEEDBACK)
-			to_chat(src, span_warning("Your destination is invalid. Move somewhere else and try again."))
+			to_chat(src, span_warning("Seu destino é inválido. Vá para outro lugar e tente de novo."))
 		return null
 
 /mob/eye/blob/proc/is_valid_turf(turf/tile)
@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	if(!blob_core)
 		if(!placed)
 			if(manualplace_min_time && world.time >= manualplace_min_time)
-				to_chat(src, span_boldnotice("You may now place your blob core."))
+				to_chat(src, span_boldnotice("Agora você pode colocar seu núcleo de bolhas."))
 				to_chat(src, span_bolddanger("You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)]."))
 				manualplace_min_time = 0
 			if(autoplace_max_time && world.time >= autoplace_max_time)
@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		begin_victory()
 
 	else if(!free_strain_rerolls && (last_reroll_time + BLOB_POWER_REROLL_FREE_TIME<world.time))
-		to_chat(src, span_boldnotice("You have gained another free strain re-roll."))
+		to_chat(src, span_boldnotice("Você ganhou outra cepa livre re-roll."))
 		free_strain_rerolls = 1
 
 	if(!victory_in_progress && max_count < blobs_legit.len)
@@ -206,7 +206,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		max_blob_points = INFINITY
 		blob_points = INFINITY
 	else
-		to_chat(src, span_blob("You've reached critical mass, but something feels terribly wrong, stopping you from expanding further. All you can do now is fight as long as you can..."))
+		to_chat(src, span_blob("Você chegou à massa crítica, mas algo parece terrivelmente errado, impedindo você de se expandir mais. Tudo que pode fazer agora é lutar o máximo que puder..."))
 	addtimer(CALLBACK(src, PROC_REF(victory)), 45 SECONDS)
 
 /// Actually *do* the blob's victory: give them their greentext and, depending on the end_round_on_victory variable, decide if everyone dies or if it's just a jumpscare.
@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_blobannounce("You are the overmind!"))
+	to_chat(src, span_blobannounce("Você é o cérebro!"))
 	if(!placed && autoplace_max_time <= world.time)
 		to_chat(src, span_bolddanger("You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)]."))
 		to_chat(src, span_bolddanger("You [manualplace_min_time ? "will be able to":"can"] manually place your blob core by pressing the Place Blob Core button in the bottom right corner of the screen."))
@@ -338,7 +338,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_boldwarning("You cannot send IC messages (muted)."))
+			to_chat(src, span_boldwarning("Você não pode enviar mensagens de IC."))
 			return
 		if (!(ignore_spam || forced) && src.client.handle_spam_prevention(message, MUTE_IC))
 			return

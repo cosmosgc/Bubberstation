@@ -29,7 +29,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum
 	name = "bubblegum"
-	desc = "In what passes for a hierarchy among slaughter demons, this one is king."
+	desc = "No que passa por uma hierarquia entre demônios assassinos, este é rei."
 	health = 2500
 	maxHealth = 2500
 	attack_verb_continuous = "rends"
@@ -66,7 +66,7 @@ Difficulty: Hard
 	achievement_type = /datum/award/achievement/boss/bubblegum_kill
 	crusher_achievement_type = /datum/award/achievement/boss/bubblegum_crusher
 	score_achievement_type = /datum/award/score/bubblegum_score
-	death_message = "sinks into a pool of blood, fleeing the battle. You've won, for now... "
+	death_message = "Afunda em uma poça de sangue, fugindo da batalha. Você ganhou, por enquanto..."
 	death_sound = 'sound/effects/magic/enter_blood.ogg'
 	faction = list(FACTION_MINING, FACTION_BOSS, FACTION_HELL)
 	summon_line = "GRAAAAAAAHHHHHHHHH!"
@@ -300,7 +300,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/projectile_hit(obj/projectile/hitting_projectile, def_zone, piercing_hit, blocked)
 	if(BUBBLEGUM_IS_ENRAGED)
-		visible_message(span_danger("[src] deflects the [hitting_projectile]! [p_They()] can't be hit with ranged weapons while enraged!"), span_userdanger("You deflect the projectile!"))
+		visible_message(span_danger("[src] deflects the [hitting_projectile]! [p_They()] can't be hit with ranged weapons while enraged!"), span_userdanger("Você desvia o projétil!"))
 		playsound(src, SFX_BULLET_MISS, 300, TRUE)
 		return BULLET_ACT_BLOCK
 	return ..()
@@ -318,7 +318,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination
 	name = "bubblegum's hallucination"
-	desc = "Is that really just a hallucination?"
+	desc = "Isso é mesmo uma alucinação?"
 	health = 1
 	maxHealth = 1
 	alpha = 127.5
@@ -327,7 +327,7 @@ Difficulty: Hard
 	achievement_type = null
 	crusher_achievement_type = null
 	score_achievement_type = null
-	death_message = "Explodes into a pool of blood!"
+	death_message = "Explode em uma poça de sangue!"
 	death_sound = 'sound/effects/splat.ogg'
 	true_spawn = FALSE
 	var/move_through_mob
@@ -364,7 +364,7 @@ Difficulty: Hard
 
 /obj/effect/decal/cleanable/blood/gibs/bubblegum
 	name = "thick blood"
-	desc = "Thick, splattered blood."
+	desc = "Sangue grosso e espalhado."
 	random_icon_states = list("gib3", "gib5", "gib6")
 	bloodiness = 20
 

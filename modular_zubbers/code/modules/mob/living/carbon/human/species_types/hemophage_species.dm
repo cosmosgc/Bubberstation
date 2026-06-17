@@ -20,7 +20,7 @@
 
 // BLOODSUCKER SPECIFIC FIXES
 /datum/species/hemophage/on_bloodsucker_gain(mob/living/carbon/human/target)
-	to_chat(target, span_warning("Your hemophage features have been removed, your nature as a bloodsucker abates the hemophage virus."))
+	to_chat(target, span_warning("Suas características hemofágicas foram removidas, sua natureza como um sanguessuga elimina o vírus hemofágico."))
 	// Without this any new organs would get corrupted again.
 	target.RemoveElement(/datum/element/tumor_corruption)
 	for(var/obj/item/organ/organ in target.organs)

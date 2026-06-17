@@ -1,6 +1,6 @@
 /obj/item/toy/cards/cardhand
 	name = "hand of cards"
-	desc = "A number of cards not in a deck, customarily held in ones hand."
+	desc = "Um número de cartas não em um baralho, normalmente seguradas em uma mão."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "nothing"
 	w_class = WEIGHT_CLASS_TINY
@@ -108,7 +108,7 @@
 			dealer_deck.draw(user)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("You can't hold any more cards in your hand!"))
+	to_chat(user, span_warning("Não pode segurar mais cartas na mão!"))
 	return ITEM_INTERACT_BLOCKING
 
 #define CARDS_MAX_DISPLAY_LIMIT 5 // the amount of cards that are displayed in a hand

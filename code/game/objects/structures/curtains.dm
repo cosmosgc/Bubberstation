@@ -3,7 +3,7 @@
  */
 /obj/structure/curtain
 	name = "curtain"
-	desc = "Contains less than 1% mercury."
+	desc = "Contém menos de 1% de mercúrio."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "bathroom-open"
 	color = "#ACD1E9" //Default color, didn't bother hardcoding other colors, mappers can and should easily change it.
@@ -59,7 +59,7 @@
 		return TRUE
 
 	user.visible_message(span_warning("[user] cuts apart [src]."),
-		span_notice("You start to cut apart [src]."), span_hear("You hear cutting."))
+		span_notice("You start to cut apart [src]."), span_hear("Você ouve o corte."))
 	if(I.use_tool(src, user, 50, volume=100) && !anchored)
 		to_chat(user, span_notice("You cut apart [src]."))
 		deconstruct()

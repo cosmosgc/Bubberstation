@@ -23,7 +23,7 @@
 
 	offerer.visible_message(
 		span_notice("[offerer] raises [offerer.p_their()] arm, looking for a high-five!"),
-		span_notice("You post up, looking for a high-five!"),
+		span_notice("Você postou, procurando um \"toca aqui\"!"),
 		vision_distance = 2,
 	)
 	offerer.apply_status_effect(/datum/status_effect/offering/no_item_received/high_five, source, /atom/movable/screen/alert/give/highfive)
@@ -63,7 +63,7 @@
 		offerer.visible_message(
 			span_notice("[taker] enthusiastically high-tens [offerer]!"),
 			span_nicegreen("Wow! You're high-tenned [taker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			ignored_mobs = taker,
 		)
 
@@ -74,7 +74,7 @@
 		offerer.visible_message(
 			span_notice("[taker] high-fives [offerer]!"),
 			span_nicegreen("All right! You're high-fived by [taker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			ignored_mobs = taker,
 		)
 

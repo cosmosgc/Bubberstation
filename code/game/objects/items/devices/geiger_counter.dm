@@ -1,6 +1,6 @@
 /obj/item/geiger_counter //DISCLAIMER: I know nothing about how real-life Geiger counters work. This will not be realistic. ~Xhuis
 	name = "\improper Geiger counter"
-	desc = "A handheld device used for detecting and measuring radiation pulses."
+	desc = "Um dispositivo portátil usado para detectar e medir pulsos de radiação."
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "geiger_off"
 	inhand_icon_state = "multitool"
@@ -25,18 +25,18 @@
 	. = ..()
 	if(!scanning)
 		return
-	. += span_info("Alt-click it to clear stored radiation levels.")
+	. += span_info("Alt-clique para limpar os níveis de radiação armazenados.")
 	switch(last_perceived_radiation_danger)
 		if(null)
-			. += span_notice("Ambient radiation level count reports that all is well.")
+			. += span_notice("O nível de radiação ambiente diz que está tudo bem.")
 		if(PERCEIVED_RADIATION_DANGER_LOW)
-			. += span_alert("Ambient radiation levels slightly above average.")
+			. += span_alert("Níveis de radiação ambiente ligeiramente acima da média.")
 		if(PERCEIVED_RADIATION_DANGER_MEDIUM)
-			. += span_warning("Ambient radiation levels above average.")
+			. += span_warning("Níveis de radiação ambiente acima da média.")
 		if(PERCEIVED_RADIATION_DANGER_HIGH)
-			. += span_danger("Ambient radiation levels highly above average.")
+			. += span_danger("Níveis de radiação ambiente acima da média.")
 		if(PERCEIVED_RADIATION_DANGER_EXTREME)
-			. += span_suicide("Ambient radiation levels reaching critical level!")
+			. += span_suicide("Níveis de radiação ambiente atingindo nível crítico!")
 
 /obj/item/geiger_counter/update_icon_state()
 	if(!scanning)

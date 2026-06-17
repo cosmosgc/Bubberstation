@@ -22,9 +22,9 @@
 
 /obj/machinery/piratepad/syndiepad
 	name = "interdyne bounty pad"
-	desc = "A standard NT citizen bounty pad, hacked by Gorlex Industries to \
-	sell any (non-living) object to an distant off-sector black market \
-	for processing. No returns!"
+	desc = "Uma plataforma de recompensa padrão do cidadão NT, hackeada pelas Indústrias Gorlex para\
+vender qualquer objeto (não vivo) para um mercado negro distante fora do setor\
+para processamento. Sem retorno!"
 	circuit = /obj/item/circuitboard/machine/syndiepad
 	var/warmup_reduction = 0
 
@@ -51,8 +51,8 @@
 
 /obj/machinery/computer/piratepad_control/syndiepad
 	name = "interdyne bounty control terminal"
-	desc = "A hacked console for the modified citizen bounty pad. \
-	Proudly brought to you by Gorlex Industries."
+	desc = "Um console hackeado para a plataforma de recompensa do cidadão modificado.\
+Orgulhosamente trazido a você pelas Indústrias Gorlex."
 	status_report = "Ready for delivery."
 	icon_screen = "civ_bounty"
 	icon_keyboard = "syndie_key"
@@ -139,9 +139,9 @@
 
 /obj/machinery/piratepad/syndiepad/tarkon
 	name = "Tarkon bounty pad"
-	desc = "A standard Tarkon bounty pad used by Tarkon Industries \
-	send any (non-living) object to an distant off-sector\ \
-	for processing. No returns!"
+	desc = "Um bloco padrão de recompensa Tarkon usado pelas Indústrias Tarkon\
+enviar qualquer objeto (não vivo) para um distante fora do setor\
+para processamento. Sem retorno!"
 	circuit = /obj/item/circuitboard/machine/syndiepad/tarkon
 
 
@@ -151,6 +151,6 @@
 
 /obj/machinery/computer/piratepad_control/syndiepad/tarkon
 	name = "Tarkon bounty control terminal"
-	desc = "A console for an old model of a citizen bounty pad."
+	desc = "Um console para um velho modelo de uma plataforma de recompensa cidadã."
 	circuit = /obj/item/circuitboard/computer/syndiepad/tarkon
 	credits_account = ACCOUNT_TAR

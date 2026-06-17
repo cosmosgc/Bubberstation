@@ -58,7 +58,7 @@
 	original_mind.quick_copy_all_memories(owner)
 
 /datum/antagonist/paradox_clone/roundend_report_header()
-	return span_header("A paradox clone appeared on the station!<br>")
+	return span_header("Um clone paradoxo apareceu na estação!<br>")
 
 /datum/objective/paradox_clone_replace
 	name = "clone replace"

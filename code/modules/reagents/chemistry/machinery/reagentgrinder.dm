@@ -1,7 +1,7 @@
 
 /obj/machinery/reagentgrinder
 	name = "all-in-one grinder"
-	desc = "From BlenderTech. Will It Blend? Let's test it out!"
+	desc = "Da BlenderTech. Vai se misturar? Vamos testar!"
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "juicer"
 	base_icon_state = "juicer"
@@ -96,7 +96,7 @@
 		to_process["[target.name]"] += amount
 		total_weight += target.w_class
 	if(to_process.len)
-		. += span_notice("Currently holding:")
+		. += span_notice("Atualmente segurando:")
 		for(var/target_name in to_process)
 			. += span_notice("[to_process[target_name]] [target_name]")
 		. += span_notice("Filled to <b>[round((total_weight / maximum_weight) * 100)]%</b> capacity.")
@@ -110,9 +110,9 @@
 			. += span_notice("Nothing.")
 		. += span_notice("[EXAMINE_HINT("Right click")] with empty hand to remove beaker.")
 	else
-		. += span_warning("It's missing a beaker.")
+		. += span_warning("Está faltando um copo.")
 
-	. += span_notice("You can drag a storage item to dump its contents in the grinder.")
+	. += span_notice("Você pode arrastar um item de armazenamento para jogar seu conteúdo no moedor.")
 	if(anchored)
 		. += span_notice("It can be [EXAMINE_HINT("wrenched")] loose.")
 	else
@@ -248,7 +248,7 @@
 		//add the items
 		var/items_added = load_items(user, to_add)
 		if(!items_added)
-			to_chat(user, span_warning("No items were added."))
+			to_chat(user, span_warning("Nenhum item foi adicionado."))
 			return ITEM_INTERACT_BLOCKING
 		to_chat(user, span_notice("[items_added] items were added from [tool] to [src]."))
 		return ITEM_INTERACT_SUCCESS
@@ -274,7 +274,7 @@
 
 /obj/machinery/reagentgrinder/wrench_act(mob/living/user, obj/item/tool)
 	if(operating)
-		balloon_alert(user, "still operating!")
+		balloon_alert(user, "Continua operando!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
@@ -285,14 +285,14 @@
 
 /obj/machinery/reagentgrinder/screwdriver_act(mob/living/user, obj/item/tool)
 	if(operating)
-		balloon_alert(user, "still operating!")
+		balloon_alert(user, "Continua operando!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/reagentgrinder/crowbar_act(mob/living/user, obj/item/tool)
 	if(operating)
-		balloon_alert(user, "still operating!")
+		balloon_alert(user, "Continua operando!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)

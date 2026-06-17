@@ -1,7 +1,7 @@
 // The organ jar - a 120u beaker that can hold a single organ
 /obj/item/reagent_containers/cup/beaker/organ_jar
 	name = "organ jar"
-	desc = "A large shatter-resistant jar, unwieldy for the sake of chemistry, but big enough to put an organ inside of."
+	desc = "Um grande frasco resistente a quebras, desarrumado para o bem da química, mas grande o suficiente para colocar um órgão dentro."
 	icon_state = "organ_jar"
 	fill_icon_state = "organ_jar"
 	// The plastic makes it more shatter-proof!
@@ -20,9 +20,9 @@
 
 /obj/item/reagent_containers/cup/beaker/organ_jar/examine(mob/user)
 	. = ..()
-	. += span_info("Any organ inside the jar will be preserved if it is entirely filled with formaldehyde.")
+	. += span_info("Qualquer órgão dentro do frasco será preservado se estiver cheio de formaldeído.")
 	if(held_organ && held_organ.GetComponent(/datum/component/ghostrole_on_revive))
-		. += span_smallnoticeital("The brain is twitching...") // Guaranteed to be a brain if it has that component
+		. += span_smallnoticeital("O cérebro está tremendo...") // Guaranteed to be a brain if it has that component
 
 /obj/item/reagent_containers/cup/beaker/organ_jar/Destroy(force)
 	. = ..()
@@ -109,24 +109,24 @@
 
 /obj/item/reagent_containers/cup/beaker/organ_jar/brain_in_a_jar/examine(mob/user)
 	. = ..()
-	. += span_notice("<i>You can see a note attached to the bottom..</i>")
+	. += span_notice("<i>Você pode ver uma nota anexada ao fundo.</i>")
 
 /obj/item/reagent_containers/cup/beaker/organ_jar/brain_in_a_jar/examine_more(mob/user)
 	. = ..()
 	// Flavor for why the brain is scarred
 	switch(note_type)
 		if(NOTE_STUCK_IN_MAIL)
-			. += span_notice("According to the note, this jar must've been stuck in the mail for at least 50 years...")
+			. += span_notice("De acordo com o bilhete, este frasco deve ter ficado preso no correio por pelo menos 50 anos...")
 		if(NOTE_MORBID_GIFT)
-			. += span_notice("It reads...")
-			. += span_notice("Greetings, XXX. I stumbled upon a hermit in my travels, \
-			whose quirks immediately piqued my interest. I'm sure his brain will be as useful to your research \
-			as it has been to mine. Signed, YYY.")
+			. += span_notice("Está escrito...")
+			. += span_notice("Saudações, XXX. Eu tropecei em um eremita em minhas viagens,\
+cujas peculiaridades imediatamente despertaram meu interesse. Tenho certeza que o cérebro dele será útil para sua pesquisa.\
+como tem sido para mim. Assinado, YYY.")
 		if(NOTE_DISCARDED_LOST_CREW)
-			. += span_notice("It reads...")
-			. += span_notice("Hey, XXX. Management wanted me to discard this poor schmuck's brain, \
-			claiming it's 'too damaged to viably recover', so I figured I might as well throw you a bone. \
-			I know you like these sorts of things. Signed, ZZZ.")
+			. += span_notice("Está escrito...")
+			. += span_notice("Ei, XXX. A gerência queria que eu descartasse o cérebro desse pobre idiota,\
+Alegando que está muito danificado para se recuperar, então achei melhor te dar um osso.\
+Sei que gosta desse tipo de coisa. Assinado, ZZZ.")
 
 
 /obj/item/reagent_containers/cup/beaker/organ_jar/brain_in_a_jar/Initialize(mapload)
@@ -142,7 +142,7 @@
 	held_organ = scarred_brain // Put the brain inside the jar
 	reagents.add_reagent(/datum/reagent/toxin/formaldehyde, reagents.maximum_volume) // Fill the jar with formaldehyde
 	name = "brain in a jar" // Set a custom name&description
-	desc = "A brain in a jar. You can see it twitching..."
+	desc = "Um cérebro em um frasco. Você pode vê-lo se contorcer..."
 	update_appearance()
 
 // All this does is add a random special brain trauma + add recovered crew antag datum for logging

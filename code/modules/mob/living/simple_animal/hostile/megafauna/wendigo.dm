@@ -8,7 +8,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/wendigo
 	name = "wendigo"
-	desc = "A mythological man-eating legendary creature, the sockets of its eyes track you with an unsatiated hunger."
+	desc = "Uma criatura lendária comedora de homens mitológicos, as órbitas de seus olhos te perseguem com uma fome insaciada."
 	health = 2500
 	maxHealth = 2500
 	icon_state = "wendigo"
@@ -42,7 +42,7 @@ Difficulty: Hard
 	achievement_type = /datum/award/achievement/boss/wendigo_kill
 	crusher_achievement_type = /datum/award/achievement/boss/wendigo_crusher
 	score_achievement_type = /datum/award/score/wendigo_score
-	death_message = "falls to the ground in a bloody heap, shaking the arena."
+	death_message = "cai no chão em um monte de sangue, balançando a arena."
 	death_sound = 'sound/effects/gravhit.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	summon_line = "GwaHOOOOOOOOOOOOOOOOOOOOO"

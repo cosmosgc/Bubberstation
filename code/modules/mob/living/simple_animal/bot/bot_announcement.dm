@@ -1,7 +1,7 @@
 /// Say something and play a corresponding sound effect
 /datum/action/cooldown/bot_announcement
 	name = "Make automated announcement"
-	desc = "Play a prerecorded message for the benefit of those around you."
+	desc = "Toque uma mensagem pré-gravada para o benefício daqueles ao seu redor."
 	background_icon_state = "bg_tech_blue"
 	overlay_icon_state = "bg_tech_blue_border"
 	button_icon = 'icons/obj/machines/wallmounts.dmi'
@@ -25,11 +25,11 @@
 		return
 	if (!isbot(owner))
 		if (feedback)
-			owner.balloon_alert(owner, "no announcement system!")
+			owner.balloon_alert(owner, "Sem sistema de anúncio!")
 		return FALSE
 	if (!length(automated_announcements))
 		if (feedback)
-			owner.balloon_alert(owner, "no valid announcements!")
+			owner.balloon_alert(owner, "Nenhum anúncio válido!")
 		return FALSE
 	return TRUE
 
@@ -170,7 +170,7 @@
 	return ..()
 
 /datum/action/cooldown/bot_announcement_shortcut
-	desc = "Play a prerecorded message for the benefit of those around you."
+	desc = "Toque uma mensagem pré-gravada para o benefício daqueles ao seu redor."
 	shared_cooldown = MOB_SHARED_COOLDOWN_BOT_ANNOUNCMENT
 	background_icon_state = "bg_tech_blue"
 	overlay_icon_state = "bg_tech_blue_border"

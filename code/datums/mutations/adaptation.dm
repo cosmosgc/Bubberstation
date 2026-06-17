@@ -1,6 +1,6 @@
 /datum/mutation/adaptation
 	name = "Adaptation"
-	desc = "A strange mutation that renders the host immune to damage from extreme temperatures. Does not protect from vacuums."
+	desc = "Uma mutação estranha que torna o hospedeiro imune a danos de temperaturas extremas. Não protege do vácuo."
 	quality = POSITIVE
 	difficulty = 16
 	text_gain_indication = span_notice("Your body feels normal!")
@@ -22,7 +22,7 @@
 
 /datum/mutation/adaptation/cold
 	name = "Cold Adaptation"
-	desc = "A strange mutation that renders the host immune to damage from low temperature environments. It also prevents the host from slipping on ice."
+	desc = "Uma mutação estranha que torna o hospedeiro imune a danos de ambientes de baixa temperatura. Também impede que o hospedeiro escorregue no gelo."
 	text_gain_indication = span_notice("Your body feels refreshingly cold.")
 	instability = POSITIVE_INSTABILITY_MODERATE
 	mutation_traits = list(TRAIT_RESISTCOLD, TRAIT_NO_SLIP_ICE)
@@ -31,7 +31,7 @@
 
 /datum/mutation/adaptation/heat
 	name = "Heat Adaptation"
-	desc = "A strange mutation that renders the host immune to damage from high temperature, including being set alight, though the flame itself still burns clothing. It also seems to make the host resist ash storms."
+	desc = "Uma mutação estranha que torna o hospedeiro imune a danos causados pela alta temperatura, incluindo ser incendiado, embora a própria chama ainda queime roupas. Também parece fazer o hospedeiro resistir às tempestades de cinzas."
 	text_gain_indication = span_notice("Your body feels invigoratingly warm.")
 	instability = POSITIVE_INSTABILITY_MODERATE
 	mutation_traits = list(TRAIT_RESISTHEAT, TRAIT_ASHSTORM_IMMUNE)
@@ -40,7 +40,7 @@
 
 /datum/mutation/adaptation/thermal
 	name = "Thermal Adaptation"
-	desc = "A strange mutation that renders the host immune to damage from both low and high temperature environments. Does not protect from high or low pressure environments."
+	desc = "Uma mutação estranha que torna o hospedeiro imune a danos de ambientes de baixa e alta temperatura. Não protege de ambientes de alta ou baixa pressão."
 	difficulty = 32
 	text_gain_indication = span_notice("Your body feels pleasantly room temperature.")
 	instability = POSITIVE_INSTABILITY_MAJOR
@@ -50,7 +50,7 @@
 
 /datum/mutation/adaptation/pressure
 	name = "Pressure Adaptation"
-	desc = "A strange mutation that renders the host immune to damage from both low and high pressure environments. Does not protect from temperature, including the cold of space."
+	desc = "Uma mutação estranha que torna o hospedeiro imune a danos de ambientes de baixa e alta pressão. Não protege da temperatura, incluindo o frio do espaço."
 	text_gain_indication = span_notice("Your body feels impressively pressurized.")
 	instability = POSITIVE_INSTABILITY_MODERATE
 	adapt_icon = "pressure"

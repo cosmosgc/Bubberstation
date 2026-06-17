@@ -1,5 +1,5 @@
 /obj/item/clothing/under/abductor
-	desc = "The most advanced form of jumpsuit known to reality, looks uncomfortable."
+	desc = "A forma mais avançada de macacão conhecido pela realidade, parece desconfortável."
 	name = "alien jumpsuit"
 	icon = 'icons/obj/clothing/under/syndicate.dmi'
 	icon_state = "abductor"
@@ -14,7 +14,7 @@
 //AGENT VEST
 /obj/item/clothing/suit/armor/abductor/vest
 	name = "agent vest"
-	desc = "A vest outfitted with advanced stealth technology. It has two modes - combat and stealth."
+	desc = "Um colete equipado com tecnologia avançada. Tem dois modos: combate e furtividade."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "vest_stealth"
 	inhand_icon_state = "armor"
@@ -157,7 +157,7 @@
 /obj/item/clothing/suit/armor/abductor/vest/proc/Adrenaline()
 	if(ishuman(loc))
 		if(combat_cooldown < initial(combat_cooldown))
-			to_chat(loc, span_warning("Combat injection is still recharging."))
+			to_chat(loc, span_warning("A injeção de combate ainda está recarregando."))
 			return
 		var/mob/living/carbon/human/wearer = loc
 		wearer.adjust_stamina_loss(-75)

@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/nifsoft/hivemind
 	name = "Hivemind"
-	program_desc = "Hivemind is a program developed as a more reliable simulacrum of the mysterious means of communication that some varieties of slime share. It's built on a specific configuration of the NIF capable of generating a localized subspace network; the content the user's very thoughts, serving as a high-tech means of telepathic communication between NIF users."
+	program_desc = "Hivemind é um programa desenvolvido como um simulacro mais confiável dos meios misteriosos de comunicação que algumas variedades de lodo compartilham. É construída sobre uma configuração específica do NIF capaz de gerar uma rede subespacial localizada, o conteúdo dos pensamentos do usuário, servindo como um meio de comunicação telepática de alta tecnologia entre os usuários do NIF."
 	activation_cost = 10
 	active_mode = TRUE
 	active_cost = 0.2
@@ -152,11 +152,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/mob/living/carbon/human/user = owner
 	if(user in GLOB.hivemind_users)
 		GLOB.hivemind_users -= user
-		to_chat(user, span_abductor("You are now unable to receive invites."))
+		to_chat(user, span_abductor("Agora você não pode receber convites."))
 		return
 
 	GLOB.hivemind_users += user
-	to_chat(user, span_abductor("You are now able to receive invites."))
+	to_chat(user, span_abductor("Agora você pode receber convites."))
 
 /datum/action/innate/hivemind_keyboard
 	name = "Hivemind Keyboard"
@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /obj/item/hivemind_keyboard
 	name = "Hivemind Interface Device"
-	desc = "A holographic gesture controller, hooked to hand and finger signals of the user's own choice. This is paired with the Hivemind program itself, used as a means of filtering out unwanted thoughts from being added to the network, ensuring that only intentional thoughts of communication can go through."
+	desc = "Um controlador de gestos holográficos, viciado em sinais de mãos e dedos da própria escolha do usuário. Isso é emparelhado com o próprio programa Hivemind, usado como um meio de filtrar pensamentos indesejados de serem adicionados à rede, garantindo que apenas pensamentos intencionais de comunicação possam passar."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "designator_mining"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -282,7 +282,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return
 
 	if(QDELETED(connected_network))
-		to_chat(user, span_warning("The link seems to have been severed."))
+		to_chat(user, span_warning("A ligação parece ter sido cortada."))
 		return
 
 	var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)

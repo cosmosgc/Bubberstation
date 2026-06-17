@@ -3,7 +3,7 @@
 
 /obj/item/clockwork/replica_fabricator
 	name = "replica fabricator"
-	desc = "A strange, brass device with many twisting cogs and vents."
+	desc = "Um estranho dispositivo de latão com muitas engrenagens e aberturas."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
@@ -40,10 +40,10 @@
 	. = ..()
 	if(IS_CLOCK(user))
 		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("J / ")][span_clockyellow("[max_power]")] [span_brass("J.")]"
-		. += span_brass("Use on brass to convert it into power.")
-		. += span_brass("Use on other materials to convert them into power, but less efficiently.")
-		. += span_brass("<b>Use</b> in-hand to select what to fabricate.")
-		. += span_brass("<b>Right Click</b> in-hand to fabricate bronze sheets.")
+		. += span_brass("Use em latão para convertê-lo em poder.")
+		. += span_brass("Use em outros materiais para convertê-los em energia, mas menos eficientemente.")
+		. += span_brass("<b>Use</b>Na mão para selecionar o que fabricar.")
+		. += span_brass("<b>Clique direito</b>Na mão para fabricar folhas de bronze.")
 
 
 /obj/item/clockwork/replica_fabricator/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -60,7 +60,7 @@
 	var/turf/creation_turf = get_turf(interacting_with)
 
 	if(locate(selected_output.to_create_path) in creation_turf)
-		to_chat(user, span_clockyellow("There is already one of these on this tile!"))
+		to_chat(user, span_clockyellow("Já tem um desses nesse azulejo!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(power < selected_output.cost)

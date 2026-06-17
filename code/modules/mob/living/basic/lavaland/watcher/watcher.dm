@@ -1,7 +1,7 @@
 /// A floating eyeball which keeps its distance and sometimes make you look away.
 /mob/living/basic/mining/watcher
 	name = "watcher"
-	desc = "A levitating, monocular creature held aloft by wing-like veins. A sharp spine of crystal protrudes from its body."
+	desc = "Uma criatura levitante e monocular mantida no alto por veias de asas. Uma espinha afiada de cristal se projeta de seu corpo."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "watcher"
 	icon_living = "watcher"
@@ -82,7 +82,7 @@
 /// More durable, burning projectiles
 /mob/living/basic/mining/watcher/magmawing
 	name = "magmawing watcher"
-	desc = "Presented with extreme temperatures, adaptive watchers absorb heat through their circulatory wings and repurpose it as a weapon."
+	desc = "Apresentados com temperaturas extremas, observadores adaptativos absorvem o calor através de suas asas circulatórias e reuso como uma arma."
 	icon_state = "watcher_magmawing"
 	icon_living = "watcher_magmawing"
 	icon_dead = "watcher_magmawing_dead"
@@ -97,7 +97,7 @@
 /// Less durable, freezing projectiles
 /mob/living/basic/mining/watcher/icewing
 	name = "icewing watcher"
-	desc = "Watchers which fail to absorb enough heat during their development become fragile, but share their internal chill with their enemies."
+	desc = "Observadores que não absorvem calor suficiente durante seu desenvolvimento tornam-se frágeis, mas compartilham seu frio interno com seus inimigos."
 	icon_state = "watcher_icewing"
 	icon_living = "watcher_icewing"
 	icon_dead = "watcher_icewing_dead"

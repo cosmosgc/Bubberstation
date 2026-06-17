@@ -61,7 +61,7 @@
 		if(feedback_delivered || !helped)
 			continue
 
-		to_chat(affected_mob, span_notice("A euphoric feeling hits you as blood's warmth washes through your insides. Your body feels more alive, your wounds healthier."))
+		to_chat(affected_mob, span_notice("Um sentimento eufórico atinge você enquanto o calor do sangue se lava por dentro. Seu corpo se sente mais vivo, suas feridas mais saudáveis."))
 		feedback_delivered = TRUE
 
 

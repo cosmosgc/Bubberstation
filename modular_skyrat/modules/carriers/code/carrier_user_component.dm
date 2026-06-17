@@ -99,7 +99,7 @@
 		return FALSE
 
 	if(!can_communicate())
-		to_chat(parent, span_warning("You are unable to speak!"))
+		to_chat(parent, span_warning("Você é incapaz de falar!"))
 		return FALSE
 
 	if(!message_to_say)
@@ -120,7 +120,7 @@
 		return FALSE
 
 	if(!can_communicate(TRUE))
-		to_chat(parent, span_warning("You are unable to speak!"))
+		to_chat(parent, span_warning("Você é incapaz de falar!"))
 		return FALSE
 
 	if(!message_to_say)

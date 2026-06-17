@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(cursed_vermin_by_stage, list(
 /// Makes you cough out rats, bugs, etc
 /datum/disease/verminous_plague
 	name = "Verminous Plague"
-	desc = "You can't stop germinating small animals."
+	desc = "Você não pode parar de germinar pequenos animais."
 	form = "Affliction"
 	agent = "Wizard's Curse"
 	cure_text = "Exorcism"

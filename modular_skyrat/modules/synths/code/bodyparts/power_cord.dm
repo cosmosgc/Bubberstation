@@ -1,13 +1,13 @@
 /obj/item/organ/cyberimp/arm/toolkit/power_cord
 	name = "charging implant"
-	desc = "An internal power cord. Useful if you run on elecricity. Not so much otherwise."
+	desc = "Um cabo interno. Útil se você correr com eleciedade. Não tanto assim."
 	items_to_create = list(/obj/item/synth_powercord)
 	zone = BODY_ZONE_L_ARM
 	slot = ORGAN_SLOT_LEFT_ARM_AUG
 
 /obj/item/synth_powercord
 	name = "power cord"
-	desc = "An internal power cord. Useful if you run on electricity. Not so much otherwise."
+	desc = "Um cabo interno. Útil se você usar eletricidade. Não tanto assim."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wire1"
 	///Object basetypes which the powercord is allowed to connect to.
@@ -47,7 +47,7 @@
 		return
 
 	if(nutrition_level_joules >= SYNTH_CHARGE_ALMOST_FULL)
-		user.balloon_alert(user, "cell fully charged!")
+		user.balloon_alert(user, "Célula totalmente carregada!")
 		return
 
 	user.visible_message(span_notice("[user] inserts a power connector into [target]."), span_notice("You begin to draw power from [target]."))
@@ -83,7 +83,7 @@
 	var/minimum_cell_charge = target_apc ? SYNTH_APC_MINIMUM_PERCENT : 0
 
 	if(!target_cell || target_cell.percent() < minimum_cell_charge)
-		user.balloon_alert(user, UNLINT("APC charge low!"))
+		user.balloon_alert(user, UNLINT("Carga APC baixa!"))
 		return
 
 	var/energy_needed
@@ -93,13 +93,13 @@
 		nutrition_level_joules = user.nutrition * SYNTH_JOULES_PER_NUTRITION
 		energy_needed = SYNTH_CHARGE_MAX - nutrition_level_joules
 		if(energy_needed < (SYNTH_CHARGE_MAX - SYNTH_CHARGE_ALMOST_FULL))
-			user.balloon_alert(user, "cell fully charged!")
+			user.balloon_alert(user, "Célula totalmente carregada!")
 			break
 
 		// Check if the charge level of the cell is below the minimum.
 		// Prevents synths from overloading the cell.
 		if(target_cell.percent() < minimum_cell_charge)
-			user.balloon_alert(user, UNLINT("APC charge low!"))
+			user.balloon_alert(user, UNLINT("Carga APC baixa!"))
 			break
 
 		// Attempt to drain charge from the cell.
@@ -114,7 +114,7 @@
 			// The cell could be sabotaged, which causes it to explode and qdelete.
 			if(QDELETED(target_cell))
 				return
-			user.balloon_alert(user, UNLINT("APC failure!"))
+			user.balloon_alert(user, UNLINT("Falha do APC!"))
 			break
 
 		// If charging was successful, then increase user nutrition and emit sparks.

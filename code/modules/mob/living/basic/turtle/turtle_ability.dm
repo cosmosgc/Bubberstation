@@ -3,7 +3,7 @@
 
 /datum/action/cooldown/mob_cooldown/turtle_tree
 	name = "Tree Ability"
-	desc = "Invoke your tree's special ability."
+	desc = "Invoque a habilidade especial da sua árvore."
 	cooldown_time = 2 MINUTES
 	click_to_activate = FALSE
 	button_icon = 'icons/mob/simple/pets.dmi'

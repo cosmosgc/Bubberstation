@@ -7,7 +7,7 @@
 
 /atom/movable/screen/alert/status_effect/agent_pinpointer/ghoul_edition
 	name = "Blood Bond"
-	desc = "You always know where your master is."
+	desc = "Você sempre sabe onde seu mestre está."
 
 /datum/status_effect/agent_pinpointer/ghoul_edition
 	id = "agent_pinpointer"
@@ -27,5 +27,5 @@
 
 /datum/status_effect/agent_pinpointer/ghoul_edition/Destroy()
 	if(scan_target)
-		to_chat(owner, span_notice("You've lost your master's trail."))
+		to_chat(owner, span_notice("Você perdeu o rastro do seu mestre."))
 	return ..()

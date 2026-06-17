@@ -1,6 +1,6 @@
 /obj/item/mecha_ammo
 	name = "generic ammo box"
-	desc = "A box of ammo for an unknown weapon."
+	desc = "Uma caixa de munição para uma arma desconhecida."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/weapons/guns/mecha_ammo.dmi'
 	icon_state = "empty"
@@ -19,7 +19,7 @@
 
 /obj/item/mecha_ammo/update_desc()
 	. = ..()
-	desc = rounds ? initial(desc) : "An exosuit ammuniton box that has since been emptied. It can be safely folded for recycling."
+	desc = rounds ? initial(desc) : "Uma caixa de ammuniton de exossuit que foi esvaziada desde então. Pode ser dobrado para reciclagem."
 
 /obj/item/mecha_ammo/update_icon_state()
 	icon_state = rounds ? initial(icon_state) : "[initial(icon_state)]_e"
@@ -28,7 +28,7 @@
 /obj/item/mecha_ammo/attack_self(mob/user)
 	..()
 	if(rounds)
-		to_chat(user, span_warning("You cannot flatten the ammo box until it's empty!"))
+		to_chat(user, span_warning("Você não pode achatar a caixa de munição até que esteja vazia!"))
 		return
 
 	to_chat(user, span_notice("You fold [src] flat."))
@@ -41,11 +41,11 @@
 	if(rounds)
 		. += "There [rounds > 1?"are":"is"] [rounds] [ammo_type][rounds > 1?"s":""] left."
 	else
-		. += span_notice("Use in-hand to fold it into a sheet of iron.")
+		. += span_notice("Use na mão para dobrar em uma folha de ferro.")
 
 /obj/item/mecha_ammo/incendiary
 	name = "incendiary ammo box"
-	desc = "A box of incendiary ammunition for use with exosuit weapons."
+	desc = "Uma caixa de munição incendiária para uso com armas de exosuit."
 	icon_state = "incendiary"
 	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*3)
 	rounds = 24
@@ -53,7 +53,7 @@
 
 /obj/item/mecha_ammo/scattershot
 	name = "scattershot ammo box"
-	desc = "A box of scaled-up buckshot, for use in exosuit shotguns."
+	desc = "Uma caixa de chumbo escalonado, para uso em espingardas de exosuit."
 	icon_state = "scattershot"
 	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*3)
 	rounds = 40
@@ -61,7 +61,7 @@
 
 /obj/item/mecha_ammo/lmg
 	name = "machine gun ammo box"
-	desc = "A box of linked ammunition, designed for the Ultra AC 2 exosuit weapon."
+	desc = "Uma caixa de munição ligada, projetada para a arma de exossuit Ultra AC 2."
 	icon_state = "lmg"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*2)
 	rounds = 300
@@ -71,7 +71,7 @@
 /// SRM-8 Missile type - Used by Nuclear Operatives
 /obj/item/mecha_ammo/missiles_srm
 	name = "short range missiles"
-	desc = "A box of large missiles, ready for loading into an SRM-8 exosuit missile rack."
+	desc = "Uma caixa de mísseis grandes, prontos para carregar em um rack de mísseis SRM-8."
 	icon_state = "missile_he"
 	rounds = 8
 	direct_load = TRUE
@@ -81,7 +81,7 @@
 /// PEP-6 Missile type - Used by Robotics
 /obj/item/mecha_ammo/missiles_pep
 	name = "precision explosive missiles"
-	desc = "A box of large missiles, ready for loading into a PEP-6 exosuit missile rack."
+	desc = "Uma caixa de mísseis grandes, prontos para carregar em um rack de mísseis de exosuit PEP-6."
 	icon_state = "missile_br"
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*4,/datum/material/gold=SMALL_MATERIAL_AMOUNT*5)
 	rounds = 6
@@ -91,7 +91,7 @@
 
 /obj/item/mecha_ammo/flashbang
 	name = "launchable flashbangs"
-	desc = "A box of smooth flashbangs, for use with a large exosuit launcher. Cannot be primed by hand."
+	desc = "Uma caixa de flashbangs suaves, para uso com um grande lançador de exosuits. Não pode ser preparado à mão."
 	icon_state = "flashbang"
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*2,/datum/material/gold=SMALL_MATERIAL_AMOUNT*5)
 	rounds = 6
@@ -99,7 +99,7 @@
 
 /obj/item/mecha_ammo/clusterbang
 	name = "launchable flashbang clusters"
-	desc = "A box of clustered flashbangs, for use with a specialized exosuit cluster launcher. Cannot be primed by hand."
+	desc = "Uma caixa de flashbangs agrupados, para uso com um lançador de cluster de exosuit especializado. Não pode ser preparado à mão."
 	icon_state = "clusterbang"
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*3,/datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT * 1.5,/datum/material/uranium=HALF_SHEET_MATERIAL_AMOUNT * 1.5)
 	rounds = 3

@@ -21,7 +21,7 @@
 	icon = 'modular_skyrat/modules/hyposprays/icons/hypokits.dmi'
 	icon_state = "hypo2"
 	greyscale_config = /datum/greyscale_config/hypospray_mkii
-	desc = "A new development from DeForest Medical, this hypospray takes 50-unit vials as the drug supply for easy swapping."
+	desc = "Um novo desenvolvimento da DeForest Medical, esse hipospray leva frascos de 50 unidades como fonte de drogas para troca fácil."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
 	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
@@ -54,7 +54,7 @@
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
 	icon_state = "combathypo2"
 	gags_bodystate = "hypo2_combat"
-	desc = "The combat variant of DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly self-inject the user in combat scenarios."
+	desc = "A variante de combate da série DeForest Hypospray Mk. II, capaz de perfurar a armadura grossa e rapidamente auto-injetar o usuário em cenários de combate."
 	inject_wait = WAIT_INJECT
 	spray_wait = WAIT_SPRAY
 	spray_self = COMBAT_SELF_SPRAY
@@ -66,7 +66,7 @@
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
 	icon_state = "piercinghypo2"
 	gags_bodystate = "hypo2_piercing"
-	desc = "The advanced variant in the DeForest Hypospray Mk. II series, able to pierce through thick armor and quickly spray or inject the chemicals."
+	desc = "A variante avançada da série DeForest Hypospray Mk. II, capaz de perfurar a armadura grossa e rapidamente pulverizar ou injetar os químicos."
 	spray_self = DELUXE_SELF_INJECT
 	inject_self = DELUXE_SELF_SPRAY
 	penetrates = INJECT_CHECK_PENETRATE_THICK
@@ -74,7 +74,7 @@
 // Deluxe hypo upgrade Kit
 /obj/item/device/custom_kit/deluxe_hypo2
 	name = "hypospray Mk. II deluxe bodykit"
-	desc = "Upgrades the DeForest Hypospray Mk. II to support larger vials."
+	desc = "Atualiza o DeForest Hypospray Mk. II para suportar frascos maiores."
 	// don't tinker with a loaded (medi)gun. fool
 	from_obj = /obj/item/hypospray/mkii
 	to_obj = /obj/item/hypospray/mkii/deluxe
@@ -82,10 +82,10 @@
 /obj/item/device/custom_kit/deluxe_hypo2/pre_convert_check(obj/target_obj, mob/user)
 	var/obj/item/hypospray/mkii/our_hypo = target_obj
 	if(our_hypo.type in subtypesof(/obj/item/hypospray/mkii/))
-		balloon_alert(user, "only works on basic mk. ii hypos!")
+		balloon_alert(user, "Só funciona com MK básico. Eu hipos!")
 		return FALSE
 	if(our_hypo.vial != null)
-		balloon_alert(user, "unload the vial first!")
+		balloon_alert(user, "Descarregue o frasco primeiro!")
 		return FALSE
 	return TRUE
 
@@ -93,14 +93,14 @@
 	name = "hypospray Mk.II deluxe"
 	icon_state = "bighypo2"
 	gags_bodystate = "hypo2_deluxe"
-	desc = "The deluxe variant of the Hypospray Mk. II, able to take both 100u and 50u vials."
+	desc = "A variante de luxo do Hypospray Mk. II, capaz de pegar frascos de 100u e 50u."
 	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
 
 /obj/item/hypospray/mkii/deluxe/cmo
 	name = "hypospray Mk.II deluxe: CMO edition"
 	icon_state = "cmo2"
 	gags_bodystate = "hypo2_cmo"
-	desc = "The CMO's prized Hypospray Mk. II Deluxe, able to take both 100u and 50u vials, acting faster and able to deliver more reagents per spray."
+	desc = "O prêmio da CMO Hypospray Mk. II Deluxe, capaz de pegar frascos de 100u e 50u, agindo mais rápido e capaz de fornecer mais reagentes por spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
@@ -112,7 +112,7 @@
 	name = "hypospray Mk.II deluxe: combat edition"
 	icon_state = "combat2"
 	gags_bodystate = "hypo2_tactical"
-	desc = "A variant of the Hypospray Mk. II Deluxe, able to take both 100u and 50u vials, with overcharged applicators and an armor-piercing tip."
+	desc = "Uma variante do Hypospray Mk. II Deluxe, capaz de pegar frascos de 100u e 50u, com aplicadores sobrecarregados e uma ponta perfurante."
 	// Made non-indestructible since this is typically an admin spawn.  still robust though!
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	inject_wait = COMBAT_WAIT_INJECT
@@ -159,7 +159,7 @@
 		. += "[vial] has [vial.reagents.total_volume]u remaining."
 	else
 		. += "It has no vial loaded in."
-	. += span_notice("Ctrl-Shift-Click to change up the colors or reset them.")
+	. += span_notice("Ctrl-Shift-Clique para mudar as cores ou redefini-las.")
 
 /obj/item/hypospray/mkii/click_ctrl_shift(mob/user)
 	var/choice = tgui_input_list(user, "GAGSify the hypo or reset to default?", "Fashion", list("GAGS", "Nope"))
@@ -190,7 +190,7 @@
 		update_icon()
 		playsound(loc, 'sound/items/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, span_notice("This hypo isn't loaded!"))
+		to_chat(user, span_notice("A hipoglicemia não está carregada!"))
 		return
 
 /obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user)
@@ -265,7 +265,7 @@
 	if(iscarbon(injectee))
 		var/obj/item/bodypart/affecting = injectee.get_bodypart(check_zone(user.zone_selected))
 		if(!affecting)
-			to_chat(user, span_warning("The limb is missing!"))
+			to_chat(user, span_warning("O membro está faltando!"))
 			return ITEM_INTERACT_BLOCKING
 	//Always log attemped injections for admins
 	var/contained = vial.reagents.get_reagent_log_string()
@@ -327,7 +327,7 @@
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Left-Click</b> on patients to spray, <b>Right-Click</b> to inject.")
+	. += span_notice("<b>Clique à esquerda.</b>em pacientes para pulverizar,<b>Click direito</b>para injetar.")
 
 #undef HYPO_INJECT
 #undef HYPO_SPRAY

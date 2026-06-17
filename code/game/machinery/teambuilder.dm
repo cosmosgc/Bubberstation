@@ -3,7 +3,7 @@
  */
 /obj/machinery/teambuilder
 	name = "Teambuilding Machine"
-	desc = "A machine that, when passed, colors you based on the color of your team. Lead free!"
+	desc = "Uma máquina que, quando passa, colore você baseado na cor da sua equipe. Livre-se!"
 	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "lpad-idle"
 	density = FALSE
@@ -27,7 +27,7 @@
 
 /obj/machinery/teambuilder/examine_more(mob/user)
 	. = ..()
-	. += span_notice("You see a hastily written note on the side, it says '1215-1217, PICK A SIDE'.")
+	. += span_notice("Você vê um bilhete escrito apressadamente no lado, que diz '1215-1217, Escolha um lado'.")
 
 /obj/machinery/teambuilder/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -46,14 +46,14 @@
 
 /obj/machinery/teambuilder/red
 	name = "Teambuilding Machine (Red)"
-	desc = "A machine that, when passed, colors you based on the color of your team. Go red team!"
+	desc = "Uma máquina que, quando passa, colore você baseado na cor da sua equipe. Vamos equipe vermelha!"
 	humans_only = TRUE
 	team_color = COLOR_RED
 	team_radio = FREQ_CTF_RED
 
 /obj/machinery/teambuilder/blue
 	name = "Teambuilding Machine (Blue)"
-	desc = "A machine that, when passed, colors you based on the color of your team. Go blue team!"
+	desc = "Uma máquina que, quando passa, colore você baseado na cor da sua equipe. Vamos equipe azul!"
 	humans_only = TRUE
 	team_color = COLOR_BLUE
 	team_radio = FREQ_CTF_BLUE

@@ -1,6 +1,6 @@
 /obj/effect/forcefield/wizard/heretic
 	name = "labyrinth pages"
-	desc = "A field of papers flying in the air, repulsing heathens with impossible force."
+	desc = "Um campo de papéis voando no ar, repelindo pagãos com força impossível."
 	icon_state = "lintel"
 	initial_duration = 15 SECONDS
 
@@ -20,7 +20,7 @@
 ///A heretic item that spawns a barrier at the clicked turf, 3 uses
 /obj/item/heretic_labyrinth_handbook
 	name = "labyrinth handbook"
-	desc = "A book containing the laws and regulations of the Locked Labyrinth, penned on an unknown substance. Its pages squirm and strain, looking to lash out and escape."
+	desc = "Um livro contendo as leis e regulamentos do Labirinto Fechado, escrito sobre uma substância desconhecida. Suas páginas se contorcem e se contorcem, procurando atacar e escapar."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "heretichandbook"
 	force = 10
@@ -49,7 +49,7 @@
 	. = ..()
 	if(!IS_HERETIC_OR_MONSTER(user))
 		return
-	. += span_hypnophrase("Materializes a barrier upon any tile in sight, which only you can pass through. Lasts 8 seconds.")
+	. += span_hypnophrase("Materializa uma barreira sobre qualquer azulejo à vista, que só você pode passar. Dura 8 segundos.")
 	. += span_notice("It has <b>[charges]</b> charge\s remaining.")
 
 /obj/item/heretic_labyrinth_handbook/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -61,21 +61,21 @@
 	if(!IS_HERETIC(user))
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
-			to_chat(human_user, span_userdanger("Your mind burns as you stare deep into the book, a headache setting in like your brain is on fire!"))
+			to_chat(human_user, span_userdanger("Sua mente queima enquanto você olha para o livro, uma dor de cabeça se pondo como se seu cérebro estivesse em chamas!"))
 			human_user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 30, 190)
 			human_user.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 			human_user.dropItemToGround(src)
 		return ITEM_INTERACT_BLOCKING
 
 	if(charges <= 0)
-		balloon_alert(user, "no charges!")
+		balloon_alert(user, "Sem acusações!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/turf/turf_target = get_turf(interacting_with)
 	if(locate(barrier_type) in turf_target)
-		user.balloon_alert(user, "already occupied!")
+		user.balloon_alert(user, "Já ocupado!")
 		return ITEM_INTERACT_BLOCKING
-	turf_target.visible_message(span_warning("A storm of paper materializes!"))
+	turf_target.visible_message(span_warning("Uma tempestade de papel se materializa!"))
 	new /obj/effect/temp_visual/paper_scatter(turf_target)
 	playsound(turf_target, 'sound/effects/magic/smoke.ogg', 30)
 	new barrier_type(turf_target, user)

@@ -7,8 +7,8 @@
 /datum/status_effect/organ_set_bonus/carp
 	id = "organ_set_bonus_carp"
 	organs_needed = 4
-	bonus_activate_text = span_notice("Carp DNA is deeply infused with you! You've learned how to propel yourself through space!")
-	bonus_deactivate_text = span_notice("Your DNA is once again mostly yours, and so fades your ability to space-swim...")
+	bonus_activate_text = span_notice("O DNA da carpa está profundamente infundido em você! Você aprendeu a se impulsionar pelo espaço!")
+	bonus_deactivate_text = span_notice("Seu DNA é mais uma vez seu, e assim desaparece sua habilidade de nadar no espaço...")
 	bonus_traits = list(TRAIT_SPACEWALK)
 	bonus_biotype = MOB_AQUATIC
 	limb_overlay = /datum/bodypart_overlay/texture/carpskin
@@ -18,7 +18,7 @@
 /// Inverts behavior of lungs. Bypasses suffocation due to space / lack of gas, but also allows Oxygen to suffocate.
 /obj/item/organ/lungs/carp
 	name = "mutated carp-lungs"
-	desc = "Carp DNA infused into what was once some normal lungs."
+	desc = "DNA de carpa infundido no que já foi alguns pulmões normais."
 	// Oxygen causes suffocation.
 	safe_oxygen_min = 0
 	safe_oxygen_max = 15
@@ -38,7 +38,7 @@
 ///occasionally sheds carp teeth, stronger melee (bite) attacks, but you can't cover your mouth anymore.
 /obj/item/organ/tongue/carp
 	name = "mutated carp-jaws"
-	desc = "Carp DNA infused into what was once some normal teeth."
+	desc = "DNA de carpa infundido em dentes normais."
 
 	say_mod = "gnashes"
 
@@ -104,14 +104,14 @@
 
 /obj/item/knife/carp
 	name = "carp tooth"
-	desc = "Looks sharp. Sharp enough to poke someone's eye out. Holy fuck it's big."
+	desc = "Parece afiado. Afiado o suficiente para arrancar o olho de alguém. Puta merda, é grande."
 	icon_state = "carptooth"
 	icon_angle = -45
 
 ///carp brain. you need to occasionally go to a new zlevel. think of it as... walking your dog!
 /obj/item/organ/brain/carp
 	name = "mutated carp-brain"
-	desc = "Carp DNA infused into what was once a normal brain."
+	desc = "DNA de carpa infundido no que já foi um cérebro normal."
 
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/brain/carp"
@@ -156,7 +156,7 @@
 /// makes you cold resistant, but heat-weak.
 /obj/item/organ/heart/carp
 	name = "mutated carp-heart"
-	desc = "Carp DNA infused into what was once a normal heart."
+	desc = "DNA de carpa infundido no que já foi um coração normal."
 
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/heart/carp"

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/stimpack
 	name = "Magic Stimpack"
-	desc = "This spell magically injects stimulants straight into your blood. Won't work on species with no reagent reactions!"
+	desc = "Este feitiço injeta magicamente estimulantes direto no seu sangue. Não funcionará em espécies sem reações reagentes!"
 	school = "transmutation"
 	cooldown_time = 10 SECONDS
 	cooldown_reduction_per_rank = 1.25 SECONDS
@@ -10,7 +10,7 @@
 
 /datum/action/cooldown/spell/stimpack/cast(mob/living/cast_on)
 	. = ..()
-	cast_on.balloon_alert(cast_on, "speeding up")
+	cast_on.balloon_alert(cast_on, "acelerando.")
 	cast_on.SetKnockdown(0)
 	cast_on.set_stamina_loss(0)
 	cast_on.set_resting(FALSE)

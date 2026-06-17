@@ -42,4 +42,4 @@
 /datum/element/disarm_attack/proc/examine(obj/item/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(can_disarm_attack(source, user, user, FALSE))
-		examine_list += span_notice("You can use it to <b>shove</b> people with <b>right-click</b>.")
+		examine_list += span_notice("Você pode usá-lo para<b>Empurre.</b>Pessoas com<b>botão direito</b>.")

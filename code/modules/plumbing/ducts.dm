@@ -252,14 +252,14 @@
 	user.visible_message( \
 	"[user] ununfastens \the [src].", \
 	span_notice("You unfasten \the [src]."), \
-	span_hear("You hear ratcheting."))
+	span_hear("Você ouve ratching."))
 
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/stack/ducts
 	name = "stack of duct"
-	desc = "A stack of fluid ducts."
+	desc = "Uma pilha de dutos fluidos."
 	singular_name = "duct"
 	icon = 'icons/obj/pipes_n_cables/hydrochem/fluid_ducts.dmi'
 	icon_state = "ducts"
@@ -321,7 +321,7 @@
 	// Turn into a duct stack and then merge to the in-hand stack.
 	if(istype(interacting_with, /obj/machinery/duct))
 		if(amount == max_amount)
-			balloon_alert(user, "stack full!")
+			balloon_alert(user, "Pilha cheia!")
 			return ITEM_INTERACT_FAILURE
 		qdel(interacting_with)
 		add(1)

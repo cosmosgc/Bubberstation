@@ -1,7 +1,7 @@
 /// Machine that you put someone in to scan them for the experimental cloner
 /obj/machinery/experimental_cloner_scanner
 	name = "experimental cloning scanner"
-	desc = "An old prototype DNA scanner, compatible with an experimental cloning setup."
+	desc = "Um antigo scanner de DNA, compatível com clonagem experimental."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "scanner"
 	base_icon_state = "scanner"
@@ -107,7 +107,7 @@
 		span_notice("You lean on the back of [src] and start pushing the door open..."), \
 		span_hear("You hear a metallic creaking from [src]."))
 
-	balloon_alert(user, "breaking out...")
+	balloon_alert(user, "Fugindo...")
 	if (!do_after(user,(breakout_time), target = src))
 		return
 	if (!user || user.stat != CONSCIOUS || user.loc != src || state_open || !locked)
@@ -122,7 +122,7 @@
 	if (user.stat || locked)
 		if (COOLDOWN_FINISHED(src, message_cooldown))
 			COOLDOWN_START(src, message_cooldown, breakout_time)
-			balloon_alert(user, "door locked!")
+			balloon_alert(user, "Porta trancada!")
 			container_resist_act(user)
 		return
 	open_machine()
@@ -142,7 +142,7 @@
 		return
 
 	if (locked)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "Está trancada!")
 		return
 
 	open_machine()
@@ -162,5 +162,5 @@
 
 /obj/machinery/experimental_cloner_scanner/multitool_act(mob/living/user, obj/item/multitool/tool)
 	tool.set_buffer(src)
-	balloon_alert(user, "frequency stored")
+	balloon_alert(user, "frequência armazenada")
 	return ITEM_INTERACT_SUCCESS

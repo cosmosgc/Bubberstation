@@ -1,6 +1,6 @@
 /obj/structure/reagent_anvil
 	name = "smithing anvil"
-	desc = "Essentially a big block of metal that you can hammer other metals on top of, crucial for anyone working metal by hand."
+	desc = "Essencialmente um grande bloco de metal que você pode martelar outros metais em cima de, crucial para qualquer um trabalhando metal à mão."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "anvil_empty"
 
@@ -25,8 +25,8 @@
 
 /obj/structure/reagent_anvil/examine(mob/user)
 	. = ..()
-	. += span_notice("You can place <b>hot metal objects</b> on this using some <b>tongs</b>.")
-	. += span_notice("It can be (un)secured with <b>Right Click</b>")
+	. += span_notice("Você pode colocar<b>Objetos de metal quente</b>neste usando algum<b>Tongs</b>.")
+	. += span_notice("Pode ser (in)seguro com<b>Clique direito</b>")
 
 	if(length(contents))
 		. += span_notice("It has [contents[1]] sitting on it.")
@@ -63,7 +63,7 @@
 	var/obj/obj_anvil_search = locate() in contents
 
 	if(forge_item.in_use)
-		balloon_alert(user, "already in use")
+		balloon_alert(user, "já em uso")
 		return ITEM_INTERACT_SUCCESS
 
 	var/obj/obj_tong_search = locate() in forge_item.contents
@@ -90,7 +90,7 @@
 			return ITEM_INTERACT_SUCCESS
 
 		if(COOLDOWN_FINISHED(locate_incomplete, heating_remainder))
-			balloon_alert(user, "metal too cool")
+			balloon_alert(user, "Metal muito legal.")
 			locate_incomplete.times_hit -= 3
 			return ITEM_INTERACT_SUCCESS
 
@@ -99,17 +99,17 @@
 			COOLDOWN_START(locate_incomplete, striking_cooldown, skill_modifier)
 			locate_incomplete.times_hit++
 			if(prob(user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_PROBS_MODIFIER)))
-				balloon_alert(user, "perfect hit!")
+				balloon_alert(user, "Perfeito golpe!")
 				locate_incomplete.current_perfects++
 				user.mind.adjust_experience(/datum/skill/smithing, 10) //A perfect hit gives good experience
 				return ITEM_INTERACT_SUCCESS
 
-			balloon_alert(user, "good hit")
+			balloon_alert(user, "Bom golpe.")
 			user.mind.adjust_experience(/datum/skill/smithing, 1) //A good hit gives minimal experience
 			return ITEM_INTERACT_SUCCESS
 
 		locate_incomplete.times_hit -= 3
-		balloon_alert(user, "bad hit")
+		balloon_alert(user, "Batida ruim.")
 
 		if(locate_incomplete.times_hit <= -locate_incomplete.average_hits)
 			balloon_alert_to_viewers("[locate_incomplete] breaks")
@@ -131,20 +131,20 @@
 		if(locate_obj.GetComponent(/datum/component/reagent_clothing))
 			var/datum/component/reagent_clothing/reagent_component = locate_obj.GetComponent(/datum/component/reagent_clothing)
 			if(length(reagent_component.imbued_reagent) && user.mind.get_skill_level(/datum/skill/smithing) < SKILL_LEVEL_EXPERT)
-				to_chat(user, span_danger("You need more experience to repair imbued weapons!"))
+				to_chat(user, span_danger("Precisa de mais experiência para consertar armas imbuídas!"))
 				return ITEM_INTERACT_SUCCESS
 		else if(locate_obj.GetComponent(/datum/component/reagent_weapon))
 			var/datum/component/reagent_weapon/reagent_component = locate_obj.GetComponent(/datum/component/reagent_weapon)
 			if(length(reagent_component.imbued_reagent) && user.mind.get_skill_level(/datum/skill/smithing) < SKILL_LEVEL_EXPERT)
-				to_chat(user, span_danger("You need more experience to repair imbued weapons!"))
+				to_chat(user, span_danger("Precisa de mais experiência para consertar armas imbuídas!"))
 				return ITEM_INTERACT_SUCCESS
 		if(locate_obj.get_integrity() >= locate_obj.max_integrity)
-			balloon_alert(user, "already repaired")
+			balloon_alert(user, "Já reparado.")
 			return ITEM_INTERACT_SUCCESS
 
 		while(locate_obj.get_integrity() < locate_obj.max_integrity)
 			if(!do_after(user, 1 SECONDS, src))
-				balloon_alert(user, "stopped repairing")
+				balloon_alert(user, "Pare de consertar.")
 				return ITEM_INTERACT_SUCCESS
 
 			locate_obj.repair_damage(locate_obj.get_integrity() + 10)

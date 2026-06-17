@@ -80,7 +80,7 @@
 			message += "<BR><B>No idea what they're talking about though. I didn't steal any secrets, I just <i>borrowed</i> some of the prototypes my team and I had worked on.</B>"
 			message += "<BR><B>I worked on them, I MADE them. Now they want MY toys back? Not until I'm done playing with them...</B>"
 	to_chat(owner, "[message]</span>")
-	to_chat(owner, "<span class='warningplain'><font color=red><B>You are not an antagonist in that you may kill whomever you please, but you can do anything to avoid capture.</B></font></span>")
+	to_chat(owner, "<span class='warningplain'><font color=red><B>Você não é um antagonista, pois pode matar quem quiser, mas pode fazer qualquer coisa para evitar ser capturado.</B></font></span>")
 	owner.announce_objectives()
 
 /datum/antagonist/fugitive/create_team(datum/team/fugitive/new_team)

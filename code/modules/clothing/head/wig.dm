@@ -1,6 +1,6 @@
 /obj/item/clothing/head/wig
 	name = "wig"
-	desc = "A bunch of hair without a head attached."
+	desc = "Um monte de cabelo sem a cabeça presa."
 	icon = 'icons/mob/human/human_face.dmi'   // default icon for all hairs
 	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	icon_state = "hair_vlong"
@@ -102,7 +102,7 @@
 
 /obj/item/clothing/head/wig/natural
 	name = "natural wig"
-	desc = "A bunch of hair without a head attached. This one changes color to match the hair of the wearer. Nothing natural about that."
+	desc = "Um monte de cabelo sem a cabeça presa. Essa muda de cor para combinar com o cabelo do usuário. Nada de natural nisso."
 	color = COLOR_WHITE
 	adjustablecolor = FALSE
 	custom_price = PAYCHECK_COMMAND

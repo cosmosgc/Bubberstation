@@ -72,7 +72,7 @@
 		to_chat(src, span_notice("Please wait [DisplayTimeText(announcing_vox - world.time)]."))
 		return
 
-	var/message = input(src, "WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", src.last_announcement) as text|null
+	var/message = input(src, "O mau uso deste verbo pode resultar em você ser banido do trabalho. Mais ajuda está disponível em 'Annunciation Help'", "Announcement", src.last_announcement) as text|null
 
 	if(!message || announcing_vox > world.time)
 		return
@@ -83,7 +83,7 @@
 		return
 
 	if(control_disabled)
-		to_chat(src, span_warning("Wireless interface disabled, unable to interact with announcement PA."))
+		to_chat(src, span_warning("Interface sem fio desativada, incapaz de interagir com o anúncio PA."))
 		return
 
 	var/list/words = splittext(trim(message), " ")

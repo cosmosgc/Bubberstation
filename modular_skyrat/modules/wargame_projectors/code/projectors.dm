@@ -1,6 +1,6 @@
 /obj/item/wargame_projector
 	name = "holographic projector"
-	desc = "A handy-dandy holographic projector developed by Nanotrasen Naval Command for playing wargames with, this one seems broken."
+	desc = "Um projetor holográfico desenvolvido pelo Comando Naval Nanotrasen para jogar jogos de guerra, este parece quebrado."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/wargame_projector"
 	post_init_icon_state = "projector"
@@ -59,9 +59,9 @@
 	. = ..()
 	if(projections)
 		. += span_notice("It is currently maintaining <b>[projections.len]/[max_signs]</b> projections.")
-	. += span_notice("Use the projector <b>in hand</b> to change what type of hologram it creates.")
-	. += span_notice("<b>Alt clicking</b> the projector will let you change the color of the next hologram it makes.")
-	. += span_warning("<b>Control clicking</b> the projector will allow you to clear all active holograms.")
+	. += span_notice("Use o projetor.<b>na mão</b>para mudar o tipo de holograma que cria.")
+	. += span_notice("<b>Alt clicando</b>O projetor vai deixar você mudar a cor do próximo holograma que ele faz.")
+	. += span_warning("<b>Controle clicando</b>O projetor permitirá que você limpe todos os hologramas ativos.")
 
 /obj/item/wargame_projector/proc/populate_radial_choice_lists()
 	if(!length(radial_choices) || !length(projection_names_to_path))
@@ -90,16 +90,16 @@
 /obj/item/wargame_projector/click_alt(mob/user)
 	var/selected_color = tgui_input_list(user, "Select a color", "Color Selection", color_options)
 	if(isnull(selected_color))
-		balloon_alert(user, "no color change")
+		balloon_alert(user, "Sem mudança de cor.")
 		return
 	var/color_to_set_to = color_options[selected_color]
 	holosign_color = color_to_set_to
-	balloon_alert(user, "color changed")
+	balloon_alert(user, "A cor mudou.")
 	set_greyscale(holosign_color)
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/wargame_projector/item_ctrl_click(mob/user)
-	if(tgui_alert(user,"Clear all currently active holograms?", "Hologram Removal", list("Yes", "No")) == "Yes")
+	if(tgui_alert(user,"Limpar todos os hologramas ativos?", "Hologram Removal", list("Yes", "No")) == "Yes")
 		for(var/hologram in projections)
 			qdel(hologram)
 
@@ -111,7 +111,7 @@
 	if(target_turf.is_blocked_turf(TRUE))
 		return FALSE
 	if(LAZYLEN(projections) >= max_signs)
-		balloon_alert(user, "max capacity!")
+		balloon_alert(user, "Capacidade máxima!")
 		return FALSE
 	return TRUE
 
@@ -152,7 +152,7 @@ Actual projector types, split between the 'categories' of things they can projec
 
 /obj/item/wargame_projector/ships
 	name = "holographic unit projector"
-	desc = "A handy-dandy holographic projector developed by Nanotrasen Naval Command for playing wargames with, this one creates markers for 'units'."
+	desc = "Um projetor holográfico habilidoso desenvolvido pelo Comando Naval Nanotrasen para jogar jogos de guerra, este cria marcadores para \"unidades\"."
 	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1
 	max_signs = 30
 	holosign_color = COLOR_BLUE_LIGHT
@@ -176,7 +176,7 @@ Actual projector types, split between the 'categories' of things they can projec
 
 /obj/item/wargame_projector/terrain
 	name = "holographic terrain projector"
-	desc = "A handy-dandy holographic projector developed by Nanotrasen Naval Command for playing wargames with, this one creates markers for space 'terrain'."
+	desc = "Um projetor holográfico habilidoso desenvolvido pelo Comando Naval Nanotrasen para jogar jogos de guerra, este cria marcadores para o espaço 'terreno'."
 	flags_1 = parent_type::flags_1 | NO_NEW_GAGS_PREVIEW_1
 	max_signs = 30
 	holosign_color = COLOR_GRAY

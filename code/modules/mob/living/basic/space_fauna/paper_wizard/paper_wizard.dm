@@ -1,6 +1,6 @@
 /mob/living/basic/paper_wizard
 	name = "Mjor the Creative"
-	desc = "A wizard with a taste for the arts."
+	desc = "Um mago com gosto pelas artes."
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	faction = list(FACTION_HOSTILE, FACTION_STICKMAN)
 	icon = 'icons/mob/simple/simple_human.dmi'
@@ -99,7 +99,7 @@
 		return pick(empty_papers)
 
 /mob/living/basic/paper_wizard/copy
-	desc = "'Tis a ruse!"
+	desc = "É um truque!"
 	health = 1
 	maxHealth = 1
 	alpha = 200
@@ -125,13 +125,13 @@
 
 	if(!(attack_flags & (ATTACKER_STAMINA_ATTACK|ATTACKER_SHOVING)))
 		attacker.adjust_brute_loss(20)
-		to_chat(attacker, span_warning("The clone casts a spell to damage you before he dies!"))
+		to_chat(attacker, span_warning("O clone lança um feitiço para danificá-lo antes que ele morra!"))
 
 
 /mob/living/basic/paper_wizard/copy/examine(mob/user)
 	. = ..()
 	if(isobserver(user))
-		. += span_notice("It's an illusion - what is it hiding?")
+		. += span_notice("É uma ilusão. O que está escondendo?")
 	else
 		new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 		qdel(src) //I see through your ruse!
@@ -139,7 +139,7 @@
 //fancy effects
 /obj/effect/temp_visual/paper_scatter
 	name = "scattering paper"
-	desc = "Pieces of paper scattering to the wind."
+	desc = "Pedaços de papel espalhando ao vento."
 	layer = ABOVE_NORMAL_TURF_LAYER
 	plane = GAME_PLANE
 	icon = 'icons/effects/effects.dmi'
@@ -150,7 +150,7 @@
 
 /obj/effect/temp_visual/paperwiz_dying
 	name = "craft portal"
-	desc = "A wormhole sucking the wizard into the void. Neat."
+	desc = "Um buraco de minhoca sugando o mago para o vazio. Puro."
 	layer = ABOVE_NORMAL_TURF_LAYER
 	plane = GAME_PLANE
 	icon = 'icons/effects/effects.dmi'
@@ -161,7 +161,7 @@
 
 /obj/effect/temp_visual/paperwiz_dying/Initialize(mapload)
 	. = ..()
-	visible_message(span_bolddanger("The wizard cries out in pain as a gate appears behind him, sucking him in!"))
+	visible_message(span_bolddanger("O mago grita de dor quando um portão aparece atrás dele, sugando-o!"))
 	playsound(get_turf(src), 'sound/effects/magic/mandswap.ogg', 50, vary = TRUE, pressure_affected = TRUE)
 	playsound(get_turf(src), 'sound/effects/hallucinations/wail.ogg', 50, vary = TRUE, pressure_affected = TRUE)
 	RegisterSignal(src, COMSIG_PREQDELETED, PROC_REF(on_delete))

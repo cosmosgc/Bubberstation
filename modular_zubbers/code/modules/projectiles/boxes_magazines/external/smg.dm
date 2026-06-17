@@ -10,7 +10,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntmp5
 	name = "large disabling power pack"
-	desc = "A rechargeable power pack for the NT22-HCS-MP 'Lancer'. Synthesizes up to twenty .22HL bullets that tire targets."
+	desc = "Um pacote de energia recarregável para o 'Lancer' NT22-HCS-MP. Sintetiza até vinte balas 22HL que se cansam de alvos."
 	parent_type = /obj/item/ammo_box/magazine/recharge/ntusp
 	ammo_type = /obj/item/ammo_casing/caseless/c22hl/ntmp5
 	base_icon_state = "powerpack"
@@ -47,7 +47,7 @@
 
 /obj/item/ammo_box/magazine/recharge/ntmp5/laser
 	name = "large lethal power pack"
-	desc = "A rechargeable power pack for the NT22-HCS-MP 'Lancer' that has been modified. Synthesizes up to sixteen .22LS bullets that fire lasers."
+	desc = "Um pacote de energia recarregável para o 'Lancer' NT22-HCS-MP que foi modificado. Sintetiza até 16 balas 22LS que disparam lasers."
 	ammo_type = /obj/item/ammo_casing/caseless/c22ls/ntmp5
 	base_icon_state = "powerpack-l"
 	icon_state = "powerpack-l"

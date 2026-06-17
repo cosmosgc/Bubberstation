@@ -1,6 +1,6 @@
 /mob/living/basic/bot/secbot/ed209
 	name = "\improper ED-209 Security Robot"
-	desc = "A security robot. He looks less than thrilled."
+	desc = "Um robô de segurança. Ele parece menos do que entusiasmado."
 	icon_state = "ed209"
 	base_icon_state = "ed209"
 	light_color = "#f84e4e"
@@ -79,7 +79,7 @@
 /mob/living/basic/bot/secbot/ed209/examine(mob/user)
 	. = ..()
 	if(sheriffized)
-		. += span_notice("Fastest hand in the west.")
+		. += span_notice("A mão mais rápida do oeste.")
 
 /mob/living/basic/bot/secbot/ed209/bot_reset(bypass_ai_reset = FALSE)
 	. = ..()
@@ -93,7 +93,7 @@
 	. = ..()
 	icon_state = "ed209[bot_mode_flags & BOT_MODE_ON]"
 	set_weapon()
-	balloon_alert(user, "safeties disabled")
+	balloon_alert(user, "Seguranças desativadas.")
 	audible_message(span_bolddanger("[src] buzzes menacingly!"))
 	return TRUE
 
@@ -154,7 +154,7 @@
 
 /mob/living/basic/bot/secbot/ed209/nukie
 	name = "\improper ED-209(+1) Syndicate Robot"
-	desc = "Wait this one's red? This cannot be good... right??"
+	desc = "Espera, esse é vermelho? Isso não pode ser bom, certo?"
 	icon_state = "red209"
 	light_color = "#5c0909"
 	faction = list(ROLE_SYNDICATE)

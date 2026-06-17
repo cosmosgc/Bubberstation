@@ -10,7 +10,7 @@
 	range = 13
 	playstyle_string = span_holoparasite("As a <b>ranged</b> type, you have only light damage resistance, but are capable of spraying shards of crystal at incredibly high speed. You can also deploy surveillance snares to monitor enemy movement. Finally, you can switch to scout mode, in which you can't attack, but can move without limit.")
 	creator_name = "Ranged"
-	creator_desc = "Has two modes. Ranged; which fires a constant stream of weak, armor-ignoring projectiles. Scout; where it cannot attack, but can move through walls and is quite hard to see. Can lay surveillance snares, which alert it when crossed, in either mode."
+	creator_desc = "Tem dois modos. Ranged, que dispara um fluxo constante de projéteis fracos, que ignoram armaduras. Scout, onde não pode atacar, mas pode se mover através das paredes e é muito difícil de ver. Pode colocar armadilhas de vigilância, que alertam quando atravessado, em qualquer modo."
 	creator_icon = "ranged"
 	see_invisible = SEE_INVISIBLE_LIVING
 	toggle_button_type = /datum/action/cooldown/guardian/toggle_mode
@@ -29,7 +29,7 @@
 
 /mob/living/basic/guardian/ranged/toggle_modes()
 	if(is_deployed() && !isnull(summoner))
-		balloon_alert(src, "must not be manifested!")
+		balloon_alert(src, "Não se deve manifestar!")
 		return
 	if (has_status_effect(/datum/status_effect/guardian_scout_mode))
 		remove_status_effect(/datum/status_effect/guardian_scout_mode)
@@ -76,7 +76,7 @@
 
 	var/mob/living/basic/guardian/guardian_mob = owner
 	guardian_mob.unleash()
-	to_chat(owner, span_bolddanger("You enter scouting mode."))
+	to_chat(owner, span_bolddanger("Você entra no modo de reconhecimento."))
 	return TRUE
 
 /datum/status_effect/guardian_scout_mode/on_remove()
@@ -87,7 +87,7 @@
 		COMSIG_GUARDIAN_RECALLED,
 		COMSIG_MOB_CLICKON,
 	))
-	to_chat(owner, span_bolddanger("You return to your normal mode."))
+	to_chat(owner, span_bolddanger("Volte ao seu modo normal."))
 	var/mob/living/basic/guardian/guardian_mob = owner
 	guardian_mob.leash_to(owner, guardian_mob.summoner)
 
@@ -109,13 +109,13 @@
 /// We can't do any ranged attacks while in scout mode.
 /datum/status_effect/guardian_scout_mode/proc/on_ranged_attack()
 	SIGNAL_HANDLER
-	owner.balloon_alert(owner, "need to be in ranged mode!")
+	owner.balloon_alert(owner, "Precisa estar em modo variado!")
 	return COMPONENT_CANCEL_RANGED_ATTACK
 
 /// Place an invisible trap which alerts the guardian when it is crossed
 /datum/action/cooldown/mob_cooldown/guardian_alarm_snare
 	name = "Surveillance Snare"
-	desc = "Place an invisible snare which will alert you when it is crossed."
+	desc = "Coloque uma armadilha invisível que irá alertá-lo quando for cruzada."
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
 	button_icon_state = "eye"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -141,7 +141,7 @@
 		StartCooldown(0)
 		return FALSE
 
-	owner.balloon_alert(owner, "snare deployed") // We need feedback because they are invisible
+	owner.balloon_alert(owner, "Armadilha lançada.") // We need feedback because they are invisible
 	var/turf/snare_loc = get_turf(owner)
 	var/obj/effect/abstract/surveillance_snare/new_snare = new(snare_loc, owner)
 	new_snare.assign_owner(owner)
@@ -160,7 +160,7 @@
 /// An invisible marker placed by a ranged guardian, alerts the owner when crossed
 /obj/effect/abstract/surveillance_snare
 	name = "surveillance snare"
-	desc = "This thing is invisible, how are you examining it?"
+	desc = "Essa coisa é invisível, como está examinando?"
 	invisibility = INVISIBILITY_ABSTRACT
 	/// Who do we notify when someone steps on us?
 	var/mob/living/owner

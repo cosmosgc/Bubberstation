@@ -2,7 +2,7 @@
 	name = "reflector base"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "reflector_map"
-	desc = "A base for reflector assemblies."
+	desc = "Uma base para conjuntos de refletores."
 	anchored = FALSE
 	density = FALSE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
@@ -45,10 +45,10 @@
 		. += "It is set to [rotation_angle] degrees, and the rotation is [can_rotate ? "unlocked" : "locked"]."
 		if(!admin)
 			if(can_rotate)
-				. += span_notice("Use your <b>hand</b> to adjust its direction.")
-				. += span_notice("Use a <b>screwdriver</b> to lock the rotation.")
+				. += span_notice("Use o seu<b>Mão</b>para ajustar sua direção.")
+				. += span_notice("Use um.<b>Chave de fenda</b>para bloquear a rotação.")
 			else
-				. += span_notice("Use <b>screwdriver</b> to unlock the rotation.")
+				. += span_notice("Use<b>Chave de fenda</b>para desbloquear a rotação.")
 
 /obj/structure/reflector/proc/set_angle(new_angle)
 	if(can_rotate)
@@ -109,7 +109,7 @@
 	if(atom_integrity < max_integrity)
 		user.visible_message(span_notice("[user] starts to repair [src]."),
 							span_notice("You begin repairing [src]..."),
-							span_hear("You hear welding."))
+							span_hear("Você ouve solda."))
 		if(tool.use_tool(src, user, 4 SECONDS, volume=40))
 			atom_integrity = max_integrity
 			user.visible_message(span_notice("[user] repairs [src]."), \
@@ -117,14 +117,14 @@
 	else if(!anchored)
 		user.visible_message(span_notice("[user] starts to weld [src] to the floor."),
 							span_notice("You start to weld [src] to the floor..."),
-							span_hear("You hear welding."))
+							span_hear("Você ouve solda."))
 		if (tool.use_tool(src, user, 2 SECONDS, volume=50))
 			set_anchored(TRUE)
 			to_chat(user, span_notice("You weld [src] to the floor."))
 	else
 		user.visible_message(span_notice("[user] starts to cut [src] free from the floor."),
 							span_notice("You start to cut [src] free from the floor..."),
-							span_hear("You hear welding."))
+							span_hear("Você ouve solda."))
 		if (tool.use_tool(src, user, 2 SECONDS, volume=50))
 			set_anchored(FALSE)
 			to_chat(user, span_notice("You cut [src] free from the floor."))
@@ -144,14 +144,14 @@
 				new /obj/structure/reflector/single(drop_location())
 				qdel(src)
 			else
-				to_chat(user, span_warning("You need five sheets of glass to create a reflector!"))
+				to_chat(user, span_warning("Você precisa de cinco folhas de vidro para criar um refletor!"))
 				return
 		if(istype(S, /obj/item/stack/sheet/rglass))
 			if(S.use(10))
 				new /obj/structure/reflector/double(drop_location())
 				qdel(src)
 			else
-				to_chat(user, span_warning("You need ten sheets of reinforced glass to create a double reflector!"))
+				to_chat(user, span_warning("Você precisa de dez folhas de vidro reforçado para criar um refletor duplo!"))
 				return
 		if(istype(S, /obj/item/stack/sheet/mineral/diamond))
 			if(S.use(1))
@@ -162,7 +162,7 @@
 
 /obj/structure/reflector/proc/rotate(mob/user)
 	if (!can_rotate || admin)
-		to_chat(user, span_warning("The rotation is locked!"))
+		to_chat(user, span_warning("A rotação está bloqueada!"))
 		return FALSE
 	var/new_angle = tgui_input_number(user, "New angle for primary reflection face", "Reflector Angle", rotation_angle, 360)
 	if(isnull(new_angle) || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
@@ -177,7 +177,7 @@
 /obj/structure/reflector/single
 	name = "reflector"
 	deflector_icon_state = "reflector"
-	desc = "An angled mirror for reflecting laser beams."
+	desc = "Um espelho angular para refletir raios laser."
 	density = TRUE
 	finished = TRUE
 	buildstacktype = /obj/item/stack/sheet/glass
@@ -203,7 +203,7 @@
 /obj/structure/reflector/double
 	name = "double sided reflector"
 	deflector_icon_state = "reflector_double"
-	desc = "A double sided angled mirror for reflecting laser beams."
+	desc = "Um espelho com dois lados para refletir raios laser."
 	density = TRUE
 	finished = TRUE
 	buildstacktype = /obj/item/stack/sheet/rglass
@@ -229,7 +229,7 @@
 /obj/structure/reflector/box
 	name = "reflector box"
 	deflector_icon_state = "reflector_box"
-	desc = "A box with an internal set of mirrors that reflects all laser beams in a single direction."
+	desc = "Uma caixa com um conjunto interno de espelhos que reflete todos os raios laser em uma única direção."
 	density = TRUE
 	finished = TRUE
 	buildstacktype = /obj/item/stack/sheet/mineral/diamond
@@ -262,7 +262,7 @@
 
 /obj/item/circuit_component/reflector
 	display_name = "Reflector"
-	desc = "Allows you to adjust the angle of a reflector."
+	desc = "Permite ajustar o ângulo de um refletor."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL
 
 	///angle the reflector will be set to at trigger unless locked
@@ -289,10 +289,10 @@
 
 /obj/structure/reflector/ui_interact(mob/user, datum/tgui/ui)
 	if(!finished)
-		user.balloon_alert(user, "nothing to rotate!")
+		user.balloon_alert(user, "Nada para girar!")
 		return
 	if(!can_rotate)
-		user.balloon_alert(user, "can't rotate!")
+		user.balloon_alert(user, "Não consigo girar!")
 		ui?.close()
 		return
 	ui = SStgui.try_update_ui(user, src, ui)

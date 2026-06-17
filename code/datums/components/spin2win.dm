@@ -56,7 +56,7 @@
 
 	examine_list += span_notice("Using [parent] in your hands will make you spin your weapon around for a few moments, attacking everyone near you repeatedly!")
 	if(spinning)
-		examine_list += span_warning("...Of which you are currently doing right now!")
+		examine_list += span_warning("...que você está fazendo agora mesmo!")
 		return
 	if(COOLDOWN_FINISHED(src, spin_cooldown))
 		examine_list += span_notice("It has a cooldown of [DisplayTimeText(spin_cooldown_time)].")
@@ -67,10 +67,10 @@
 	SIGNAL_HANDLER
 
 	if(spinning)
-		user.balloon_alert(user, "already active!")
+		user.balloon_alert(user, "Já está ativo!")
 		return
 	if(!COOLDOWN_FINISHED(src, spin_cooldown))
-		user.balloon_alert(user, "on cooldown!")
+		user.balloon_alert(user, "Na refrigeração!")
 		return
 
 	start_spinning(user)

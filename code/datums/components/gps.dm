@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	if(!user.can_perform_action(parent, ALLOW_RESTING | ALLOW_PAI))
 		return //user not valid to use gps
 	if(emped)
-		to_chat(user, span_warning("It's busted!"))
+		to_chat(user, span_warning("Está quebrado!"))
 		return
 	var/atom/A = parent
 	if(tracking)

@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/shuttle/syndicate
 	name = "syndicate shuttle terminal"
-	desc = "The terminal used to control the syndicate transport shuttle."
+	desc = "O terminal usado para controlar o transporte do sindicato."
 	circuit = /obj/item/circuitboard/computer/syndicate_shuttle
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
@@ -29,12 +29,12 @@
 
 /obj/machinery/computer/shuttle/syndicate/recall
 	name = "syndicate shuttle recall terminal"
-	desc = "Use this if your friends left you behind."
+	desc = "Use isso se seus amigos te deixarem para trás."
 	possible_destinations = "syndicate_away"
 
 /obj/machinery/computer/shuttle/syndicate/drop_pod
 	name = "syndicate assault pod control"
-	desc = "Controls the drop pod's launch system."
+	desc = "Controla o sistema de lançamento da cápsula."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "pod_off"
 	icon_keyboard = null
@@ -49,13 +49,13 @@
 	if(!.)
 		return FALSE
 	if(!is_reserved_level(z))
-		to_chat(user, span_warning("Pods are one way!"))
+		to_chat(user, span_warning("Pods são um caminho!"))
 		return FALSE
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate
 	name = "syndicate shuttle navigation computer"
-	desc = "Used to designate a precise transit location for the syndicate shuttle."
+	desc = "Usado para designar um local preciso para o transporte do sindicato."
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
 	shuttleId = "syndicate"

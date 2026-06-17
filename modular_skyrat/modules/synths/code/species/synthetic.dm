@@ -76,7 +76,7 @@
 		human.adjust_fire_loss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		human.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
-			to_chat(human, span_warning("Alert: Critical damage taken, all systems failing."))
+			to_chat(human, span_warning("Dano crítico tomado, todos os sistemas falhando."))
 			do_sparks(3, TRUE, human)
 
 	var/obj/item/organ/lungs/lungs = human.get_organ_slot(ORGAN_SLOT_LUNGS)
@@ -85,7 +85,7 @@
 		human.adjust_bodytemperature(50)
 		human.adjust_fire_loss(1)
 		if(prob(10))
-			to_chat(human, span_warning("Alert: Cooling system is non-functional or missing, OVERHEATING is imminent."))
+			to_chat(human, span_warning("Alerta: o sistema de refrigeração não funciona ou está faltando."))
 			do_sparks(3, TRUE, human)
 
 	var/obj/item/organ/heart/heart = human.get_organ_slot(ORGAN_SLOT_HEART)
@@ -93,19 +93,19 @@
 		// No heart or failing heart present, apply slowdown
 		human.adjust_staggered_up_to(STAGGERED_SLOWDOWN_LENGTH, 5 SECONDS)
 		if(prob(10))
-			to_chat(human, span_warning("Alert: Oil pump is non-functional or missing. Hydraulics efficiency reduced."))
+			to_chat(human, span_warning("A bomba de óleo não funciona ou está faltando. Eficiência hidráulica reduzida."))
 
 	var/obj/item/organ/liver/liver = human.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(!liver || (liver.organ_flags & ORGAN_FAILING))
 		// No liver or failing liver present, apply message informing of the missing liver
 		if(prob(10))
-			to_chat(human, span_warning("Alert: Reagent processing unit is non-functional or missing. Systems clogging."))
+			to_chat(human, span_warning("Alerta: a unidade de processamento de reagente não está funcional ou desaparecida. Sistemas entupindo."))
 
 /datum/species/synthetic/spec_revival(mob/living/carbon/human/transformer)
 	switch_to_screen(transformer, "Console")
 	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, saved_screen), 5 SECONDS)
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
-	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
+	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("Todos os sistemas normais. Você está de volta!"))
 
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons = TRUE)
 	. = ..()
@@ -188,7 +188,7 @@
 		return
 	emag_effect = TRUE
 	playsound(source.loc, 'sound/misc/interference.ogg', 50)
-	to_chat(source, span_warning("Alert: Security breach detected in central processing unit. Error Code: 540-EXO"))
+	to_chat(source, span_warning("Falha de segurança detectada na unidade central de processamento. Código de erro: 540-EXO"))
 
 /**
  * Makes the IPC screen switch to BSOD followed by a blank screen
@@ -232,8 +232,8 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "robot",
 		SPECIES_PERK_NAME = "Synthetic Benefits",
-		SPECIES_PERK_DESC = "Unlike organics, you DON'T explode when faced with a vacuum! Additionally, your chassis is built with such strength as to \
-		grant you immunity to OVERpressure! Just make sure that the extreme cold or heat doesn't fry your circuitry."
+		SPECIES_PERK_DESC = "Ao contrário dos orgânicos, você não explode diante de um vácuo! Além disso, seu chassis é construído com tanta força quanto\
+Conceda imunidade à superpressão! Apenas certifique-se que o frio extremo ou calor não frite seus circuitos."
 	))
 
 	perk_descriptions += list(list(

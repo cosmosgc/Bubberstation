@@ -8,7 +8,7 @@
 //Admin sound emitters with highly customizable functions!
 /obj/effect/sound_emitter
 	name = "sound emitter"
-	desc = "Emits sounds, presumably."
+	desc = "Emits soa, presumivelmente."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield2"
 	invisibility = INVISIBILITY_OBSERVER
@@ -56,7 +56,7 @@
 		return CLICK_ACTION_BLOCKING
 
 	activate(user)
-	to_chat(user, span_notice("Sound emitter activated."), confidential = TRUE)
+	to_chat(user, span_notice("Emissor de som ativado."), confidential = TRUE)
 	return CLICK_ACTION_SUCCESS
 
 /obj/effect/sound_emitter/proc/edit_emitter(mob/user)
@@ -87,7 +87,7 @@
 		maptext = MAPTEXT(new_label)
 		to_chat(user, span_notice("Label set to [maptext]."), confidential = TRUE)
 	if(href_list["edit_sound_file"])
-		var/new_file = input(user, "Choose a sound file.", "Sound Emitter") as null|sound
+		var/new_file = input(user, "Escolha um arquivo de som.", "Emissor de Som") as null|sound
 		if(!new_file)
 			return
 		sound_file = new_file

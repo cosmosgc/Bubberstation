@@ -5,7 +5,7 @@
 
 /obj/machinery/prisongate
 	name = "prison gate scanner"
-	desc = "A hardlight gate with an ID scanner attached to the side. Good at deterring even the most persistent temporarily embarrassed employee."
+	desc = "Um portão de luz dura com um scanner de identificação ligado ao lado. Bom em deter até mesmo o funcionário mais persistente temporariamente envergonhado."
 	icon = 'icons/obj/machines/sec.dmi'
 	icon_state = "prisongate_on"
 	/// roughly the same health/armor as an airlock
@@ -83,7 +83,7 @@
 				return FALSE
 
 	if(COOLDOWN_FINISHED(src, spam_cooldown_time))
-		to_chat(the_toucher, span_warning("You try to push through the hardlight barrier with little effect."))
+		to_chat(the_toucher, span_warning("Você tenta atravessar a barreira da luz dura com pouco efeito."))
 		COOLDOWN_START(src, spam_cooldown_time, SPAM_CD)
 	return FALSE
 

@@ -1,7 +1,7 @@
 /mob/living/basic/mining/scorpion
 
 	name = "giant scorpion"
-	desc = "A giant mutated scorpion with a tough external carapace. Watch that stinger!"
+	desc = "Um escorpião mutante gigante com uma carapaça externa dura. Cuidado com o ferrão!"
 
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "scorpion"
@@ -41,7 +41,7 @@
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 
-	throw_blocked_message = "does nothing to the tough carapace of"
+	throw_blocked_message = "Não faz nada com a carapaça dura de"
 
 	speed = 5
 	movement_type = GROUND
@@ -62,17 +62,17 @@
 /datum/reagent/toxin/scorpion
 	name = "Scorpion Venom"
 	toxpwr = 2
-	description = "A toxic chemical produced by giant scorpions. Makes you feel woozy."
+	description = "Um químico tóxico produzido por escorpiões gigantes. Faz você se sentir tonto."
 	health_required = 20
 	liver_damage_multiplier = 0
 
 /datum/reagent/toxin/scorpion/on_mob_add(mob/living/carbon/affected_mob)
 	. = ..()
-	to_chat(affected_mob, span_danger("You feel a little woozy..."))
+	to_chat(affected_mob, span_danger("Você se sente um pouco tonto..."))
 
 /obj/item/reagent_containers/cup/tube/scorpion_venom
 	name = "scorpion venom vial"
-	desc = "A small vial. Contains cazador venom."
+	desc = "Um pequeno frasco. Contém veneno de causador."
 	list_reagents = list(/datum/reagent/toxin/scorpion = 15)
 
 /mob/living/simple_animal/hostile/scorpion

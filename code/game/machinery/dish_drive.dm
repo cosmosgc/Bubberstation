@@ -1,8 +1,8 @@
 /obj/machinery/dish_drive
 	name = "dish drive"
-	desc = "A culinary marvel that uses matter-to-energy conversion to store dishes and shards. Convenient! \
-	Additional features include a vacuum function to suck in nearby dishes, and an automatic transfer beam that empties its contents into nearby disposal bins every now and then. \
-	Or you can just drop your plates on the floor, like civilized folk."
+	desc = "Uma maravilha culinária que usa conversão matéria-energia para armazenar pratos e fragmentos. Conveniente!\
+Outras características incluem uma função de vácuo para sugar pratos próximos, e um feixe de transferência automática que esvazia seu conteúdo em lixeiras próximas de vez em quando.\
+Ou pode largar seus pratos no chão, como pessoas civilizadas."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "synthesizer"
 	base_icon_state = "synthesizer"
@@ -45,7 +45,7 @@
 /obj/machinery/dish_drive/examine(mob/user)
 	. = ..()
 	if(user.Adjacent(src))
-		. += span_notice("Alt-click it to beam its contents to any nearby disposal bins.")
+		. += span_notice("Alt-clique para transportar seu conteúdo para qualquer lixeira próxima.")
 	if(!LAZYLEN(dish_drive_contents))
 		. += "[src] is empty!"
 		return
@@ -68,7 +68,7 @@
 /obj/machinery/dish_drive/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!LAZYLEN(dish_drive_contents))
-		balloon_alert(user, "drive empty")
+		balloon_alert(user, "Dirija vazio.")
 		return
 	var/obj/item/dish = LAZYACCESS(dish_drive_contents, LAZYLEN(dish_drive_contents)) //the most recently-added item
 	LAZYREMOVE(dish_drive_contents, dish)
@@ -143,7 +143,7 @@
 /obj/machinery/dish_drive/attack_ai(mob/living/user)
 	if(machine_stat)
 		return
-	balloon_alert(user, "disposal signal sent")
+	balloon_alert(user, "Sinal de eliminação enviado.")
 	do_the_dishes(TRUE)
 
 /obj/machinery/dish_drive/click_alt(mob/living/user)

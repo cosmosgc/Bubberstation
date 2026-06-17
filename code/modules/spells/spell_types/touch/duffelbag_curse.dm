@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/touch/duffelbag
 	name = "Bestow Cursed Duffel Bag"
-	desc = "A spell that summons a duffel bag demon on the target, slowing them down and slowly eating them."
+	desc = "Um feitiço que invoca um demônio de saco no alvo, atrasando-os e lentamente comendo-os."
 	button_icon_state = "duffelbag_curse"
 	sound = 'sound/effects/magic/mm_hit.ogg'
 
@@ -43,7 +43,7 @@
 	// If someone's already cursed, don't try to give them another
 	if(istype(victim.back, /obj/item/storage/backpack/duffelbag/cursed))
 		to_chat(caster, span_warning("The burden of [victim]'s duffel bag becomes too much, shoving them to the floor!"))
-		to_chat(victim, span_warning("The weight of this bag becomes overburdening!"))
+		to_chat(victim, span_warning("O peso deste saco se torna sobrecarregador!"))
 		return TRUE
 
 	// However if they're uncursed, they're fresh for getting a cursed bag
@@ -81,7 +81,7 @@
 
 /obj/item/melee/touch_attack/duffelbag
 	name = "\improper burdening touch"
-	desc = "Where is the bar from here?"
+	desc = "Onde fica o bar daqui?"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "duffelcurse"
 	inhand_icon_state = "duffelcurse"

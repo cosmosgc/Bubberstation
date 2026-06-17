@@ -90,7 +90,7 @@
 
 	else
 		if(!do_after(user, loom_time * skill_modifier, target)) //SKYRAT EDIT
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(user, "Interrompido!")
 			return
 
 		qdel(source)

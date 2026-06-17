@@ -7,7 +7,7 @@
 
 /obj/item/crusher_trophy/gladiator
 	name = "ashen bones"
-	desc = "A set of soot-coated ribs from a worthy warrior. Suitable as a trophy for a kinetic crusher."
+	desc = "Um conjunto de costelas cobertas de fuligem de um guerreiro digno. Adequado como troféu para um triturador cinético."
 	icon_state = "demon_claws"
 	color = "#808080"
 	gender = PLURAL
@@ -29,7 +29,7 @@
 
 /obj/item/clothing/neck/warrior_cape
 	name = "cloak of the marked one"
-	desc = "A cloak worn by those that have faced death in the eyes and prevailed."
+	desc = "Um manto usado por aqueles que enfrentaram a morte nos olhos e prevaleceram."
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	icon_state = "berk_cape"
@@ -38,16 +38,16 @@
 
 /obj/item/clothing/neck/warrior_cape/loadout //Subtype for loadout item so i can make it not "indestructible"
 	name = "tattered cloak"
-	desc = "A cloak from a once feared foe now worn by those that have faced death in the eyes and prevailed, it looks rather worn as not as pristine as it used to be"
+	desc = "Um manto de um outrora temido inimigo agora usado por aqueles que têm enfrentado a morte nos olhos e prevaleceu, parece bastante usado como não tão puro como costumava ser"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/neck/warrior_cape/examine()
 	. = ..()
-	. += span_warning("Struggle against the tide, no matter how strong it may be.")
+	. += span_warning("Lute contra a maré, não importa o quão forte seja.")
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
 	name = "berserker armor"
-	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body."
+	desc = "Uma armadura antiga imbuída de poderoso magnetismo espiritual, capaz de aumentar maciçamente as habilidades de combate de um usuário ao custo de devastar sua mente e exercitar seu corpo."
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -84,11 +84,11 @@
 
 /obj/item/clothing/suit/hooded/berserker/gatsu/examine()
 	. = ..()
-	. += span_warning("Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.")
+	. += span_warning("O modo Berserk requer que o capacete do terno esteja equipado, e só pode ser carregado por danos.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu
 	name = "berserker helmet"
-	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside."
+	desc = "Um capacete de estilo único com olhos vermelhos horríveis que sela o usuário."
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -105,7 +105,7 @@
 
 /obj/item/clothing/head/hooded/berserker/gatsu/examine()
 	. = ..()
-	. += span_warning("Berserk mode is usable at 100% charge and requires the helmet to be closed in order to remain active.") //woag!!!
+	. += span_warning("O modo Berserk é utilizável a 100% e requer que o capacete seja fechado para permanecer ativo.") //woag!!!
 
 /obj/item/clothing/head/hooded/berserker/gatsu/process(seconds_per_tick)
 	if(berserk_active)
@@ -126,7 +126,7 @@
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
 	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, BERSERK_MAX_CHARGE)
 	if(berserk_charge >= BERSERK_MAX_CHARGE)
-		balloon_alert(owner, "berserk charged")
+		balloon_alert(owner, "Berserk carregado.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
 	if(berserk_active)
@@ -134,7 +134,7 @@
 
 /obj/item/claymore/dragonslayer
 	name = "\proper Dragonslayer"
-	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron."
+	desc = "Uma lâmina que parece grande demais para ser chamada de espada. Muito grande, muito grosso, muito pesado, e muito áspero, é mais como um grande pedaço de ferro cru."
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
 	inhand_icon_state = "dragonslayer"
@@ -166,7 +166,7 @@
 
 /obj/item/claymore/dragonslayer/examine()
 	. = ..()
-	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
+	. += span_warning("Temperados contra inimigos e chefes de lavalândia através de energias sobrenaturais. Clique direito para desviar ao custo da resistência.")
 
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE

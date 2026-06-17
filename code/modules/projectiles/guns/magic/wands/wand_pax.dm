@@ -3,7 +3,7 @@
  */
 /obj/item/gun/magic/wand/pax
 	name = "rod of compassion"
-	desc = "A wand which supernaturally connects victim and target, which renders both unable to fight and makes them feel a little better."
+	desc = "Uma varinha que liga sobrenaturalmente vítima e alvo, o que torna ambos incapazes de lutar e os faz sentir um pouco melhor."
 	school = SCHOOL_RESTORATION
 	ammo_type = /obj/item/ammo_casing/magic/pax
 	icon_state = "peacewand"
@@ -51,7 +51,7 @@
 
 /datum/status_effect/pacify/visible/on_apply()
 	if (!HAS_TRAIT(owner, TRAIT_PACIFISM))
-		owner.visible_message(span_notice("[owner] seems to relax."), span_notice("You feel your muscles loosen and your will to fight melt away."))
+		owner.visible_message(span_notice("[owner] seems to relax."), span_notice("Você sente seus músculos afrouxando e sua vontade de lutar derretendo."))
 	return ..()
 
 /datum/status_effect/pacify/visible/on_remove()
@@ -59,9 +59,9 @@
 	// Might have it from somewhere else
 	if (HAS_TRAIT(owner, TRAIT_PACIFISM))
 		return
-	owner.visible_message(span_warning("[owner] suddenly tenses up."), span_notice("You suddenly remember that violence is an option."))
+	owner.visible_message(span_warning("[owner] suddenly tenses up."), span_notice("Você se lembra que violência é uma opção."))
 
 /atom/movable/screen/alert/status_effect/pacified
 	name = "Pacified"
-	desc = "You find yourself temporarily incapable of violence."
+	desc = "Você se acha temporariamente incapaz de violência."
 	icon_state = "in_love"

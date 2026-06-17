@@ -25,10 +25,10 @@
 
 /obj/item/book/granter/attack_self(mob/living/user)
 	if(reading)
-		to_chat(user, span_warning("You're already reading this!"))
+		to_chat(user, span_warning("Você já está lendo isso!"))
 		return FALSE
 	if(user.is_blind())
-		to_chat(user, span_warning("You are blind and can't read anything!"))
+		to_chat(user, span_warning("Você é cego e não sabe ler nada!"))
 		return FALSE
 	if(!isliving(user) || !user.can_read(src))
 		return FALSE
@@ -61,7 +61,7 @@
 
 /// Called when the reading is interrupted without finishing.
 /obj/item/book/granter/proc/on_reading_stopped(mob/living/user)
-	to_chat(user, span_notice("You stop reading..."))
+	to_chat(user, span_notice("Pare de ler..."))
 
 /// Called when the reading is completely finished. This is where the actual granting should happen.
 /obj/item/book/granter/proc/on_reading_finished(mob/living/user)

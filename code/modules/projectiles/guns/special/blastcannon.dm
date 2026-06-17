@@ -11,7 +11,7 @@
  */
 /obj/item/gun/blastcannon
 	name = "blast cannon"
-	desc = "A surprisingly portable device used to concentrate a bomb's blast energy to a narrow wave. Small enough to stow in a bag."
+	desc = "Um dispositivo surpreendentemente portátil usado para concentrar a energia de uma bomba em uma onda estreita. Pequeno o suficiente para guardar em um saco."
 	icon = 'icons/obj/weapons/guns/wide_guns.dmi'
 	icon_state = "blastcannon_empty"
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
@@ -73,7 +73,7 @@
 /obj/item/gun/blastcannon/examine(mob/user)
 	. = ..()
 	if(bomb)
-		. += span_notice("A bomb is loaded inside.")
+		. += span_notice("Uma bomba está carregada lá dentro.")
 
 /obj/item/gun/blastcannon/attack_self(mob/user)
 	if(bomb)
@@ -97,7 +97,7 @@
 		to_chat(user, span_warning("[bomb] is already attached to [src]!"))
 		return
 	if(!bomb_to_attach.ready())
-		to_chat(user, span_warning("What good would an incomplete bomb do?"))
+		to_chat(user, span_warning("De que adiantaria uma bomba incompleta?"))
 		return FALSE
 	if(!user.transferItemToLoc(bomb_to_attach, src))
 		to_chat(user, span_warning("[bomb_to_attach] seems to be stuck to your hand!"))

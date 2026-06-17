@@ -5,7 +5,7 @@
 
 /obj/structure/butterchurn
 	name = "butter churn"
-	desc = "A small wooden barrel with a stick that thickens milk into a rich cream, or even butter. Just add an absolutely inordinate amount of effort."
+	desc = "Um pequeno barril de madeira com uma vara que engrossa leite em um creme rico, ou até manteiga. Basta adicionar uma quantidade absolutamente excessiva de esforço."
 	icon = 'modular_zubbers/icons/obj/structures/butterchurn.dmi'
 	icon_state = "butterchurn"
 	density = TRUE
@@ -66,15 +66,15 @@
 		return
 
 	if(user.get_stamina_loss() > CHURN_STAMINA_MINIMUM)
-		balloon_alert(user, "too tired")
+		balloon_alert(user, "Muito cansado.")
 		return
 
 	if(!reagents.has_reagent(/datum/reagent/consumable/milk) && !reagents.has_reagent(/datum/reagent/consumable/cream))
-		balloon_alert(user, "nothing to churn")
+		balloon_alert(user, "Nada para fazer")
 		return
 
 	if(!reagents.has_reagent(/datum/reagent/consumable/milk) && reagents.has_reagent(/datum/reagent/consumable/cream) && reagents.get_reagent_amount(/datum/reagent/consumable/cream) < CHURN_BUTTER_RATIO)
-		balloon_alert(user, "not enough cream")
+		balloon_alert(user, "Não tem creme suficiente.")
 		return
 
 	balloon_alert_to_viewers("churning...")

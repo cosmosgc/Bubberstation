@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system
 	density = TRUE
 	name = "\improper Automated Announcement System"
-	desc = "An automated announcement system that handles minor announcements over the radio."
+	desc = "Um sistema de anúncio automático que lida com pequenos anúncios pelo rádio."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 	base_icon_state = "AAS"
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		return FALSE
 	obj_flags |= EMAGGED
 	act_up()
-	balloon_alert(user, "announcement strings corrupted")
+	balloon_alert(user, "Cordas de anúncio corrompidas")
 	return TRUE
 
 /obj/machinery/announcement_system/ui_interact(mob/user, datum/tgui/ui)
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & EMPED)
-		visible_message(span_warning("[src] buzzes."), span_hear("You hear a faint buzz."))
+		visible_message(span_warning("[src] buzzes."), span_hear("Você ouve um zumbido fraco."))
 		playsound(src.loc, 'sound/machines/buzz/buzz-two.ogg', 50, TRUE)
 		return
 

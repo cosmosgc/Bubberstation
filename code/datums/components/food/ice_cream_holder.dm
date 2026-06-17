@@ -111,7 +111,7 @@
 /datum/component/ice_cream_holder/proc/on_examine(atom/source, mob/mob, list/examine_list)
 	SIGNAL_HANDLER
 	if(length(scoops) < max_scoops)
-		examine_list += span_tinynoticeital("you could use a ice cream vat to fill it with yummy ice cream...")
+		examine_list += span_tinynoticeital("Você poderia usar uma cuba de sorvete para enchê-la de sorvete gostoso...")
 
 /datum/component/ice_cream_holder/proc/on_examine_more(atom/source, mob/mob, list/examine_list)
 	SIGNAL_HANDLER
@@ -124,7 +124,7 @@
 		if(flavour?.desc) //I scream.
 			examine_list += "[source.p_Theyre()] filled with scoops of [flavour ? flavour.name : "broken, unhappy"] ice cream."
 		else
-			examine_list += replacetext(replacetext("[source.p_Theyre()] [flavour.desc]", "$CONE_NAME", initial(source.name)), "$CUSTOM_NAME", key)
+			examine_list += replacetext(replacetext("[source.p_Theyre()] [flavour.desc]", "♪ ♪ ♪ ♪ ♪ ♪ ♪ ♪", initial(source.name)), "$CUSTOM NAME", key)
 	else /// Many flavours.
 		examine_list += "[source.p_Theyre()] filled with scoops of [english_list(scoops)] ice cream. That's as many as [scoops_len] scoops!"
 
@@ -148,7 +148,7 @@
 	if(!istype(target, /obj/machinery/icecream_vat))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	if(length(scoops) >= max_scoops)
-		target.balloon_alert(user, "too many scoops!")
+		target.balloon_alert(user, "Muitas bolas!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	var/obj/machinery/icecream_vat/dispenser = target
 	dispenser.add_flavor_to_cone(src, user, source)
@@ -256,81 +256,81 @@ GLOBAL_LIST_INIT_TYPED(ice_cream_flavours, /datum/ice_cream_flavour, init_ice_cr
 
 /datum/ice_cream_flavour/vanilla
 	name = ICE_CREAM_VANILLA
-	desc = "filled with vanilla ice cream. All the other ice creams take content from it."
+	desc = "Cheio de sorvete de baunilha. Todos os outros sorvetes tiram conteúdo dele."
 	reagent_type = /datum/reagent/consumable/vanilla
 
 /datum/ice_cream_flavour/chocolate
 	name = ICE_CREAM_CHOCOLATE
 	color = COLOR_ICECREAM_CHOCOLATE
-	desc = "filled with chocolate ice cream. Surprisingly, made with real cocoa."
+	desc = "Cheio de sorvete de chocolate. Surpreendentemente, feito com cacau de verdade."
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/coco)
 	reagent_type = /datum/reagent/consumable/coco
 
 /datum/ice_cream_flavour/strawberry
 	name = ICE_CREAM_STRAWBERRY
 	color = COLOR_ICECREAM_STRAWBERRY
-	desc = "filled with strawberry ice cream. Definitely not made with real strawberries."
+	desc = "Cheio de sorvete de morango. Definitivamente não feito com morangos de verdade."
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/berryjuice)
 	reagent_type = /datum/reagent/consumable/berryjuice
 
 /datum/ice_cream_flavour/blue
 	name = ICE_CREAM_BLUE
 	color = COLOR_ICECREAM_BLUE
-	desc = "filled with blue ice cream. Made with real... blue?"
+	desc = "Cheio de sorvete azul. Feito com... azul de verdade?"
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/ethanol/singulo)
 	reagent_type = /datum/reagent/consumable/ethanol/singulo
 
 /datum/ice_cream_flavour/lemon
 	name = ICE_CREAM_LEMON
 	color = COLOR_ICECREAM_LEMON
-	desc = "filled with lemon sorbet. Like frozen lemonade in a cone."
+	desc = "Cheio de sorvete de limão. Como limonada congelada em um cone."
 	ingredients = list(/datum/reagent/consumable/ice, /datum/reagent/consumable/lemonjuice) //contains no milk
 	reagent_type = /datum/reagent/consumable/lemonjuice
 
 /datum/ice_cream_flavour/caramel
 	name = ICE_CREAM_CARAMEL
 	color = COLOR_ICECREAM_CARAMEL
-	desc = "filled with caramel ice cream. It is deliciously sweet."
+	desc = "Cheio de sorvete de caramelo. É deliciosamente doce."
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/caramel)
 	reagent_type = /datum/reagent/consumable/caramel
 
 /datum/ice_cream_flavour/banana
 	name = ICE_CREAM_BANANA
 	color = COLOR_YELLOW
-	desc = "filled with banana ice cream. Honk!"
+	desc = "Cheio de sorvete de banana. Honk!"
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/banana)
 	reagent_type = /datum/reagent/consumable/banana
 
 /datum/ice_cream_flavour/orange_cream
 	name = ICE_CREAM_ORANGE_CREAM
 	color = COLOR_ICECREAM_ORANGESICLE
-	desc = "filled with orange creamsicle. Not quite the same off the stick..."
+	desc = "Cheio de sorvete de laranja. Não é bem o mesmo do pau..."
 	ingredients = list(/datum/reagent/consumable/cream, /datum/reagent/consumable/ice, /datum/reagent/consumable/orangejuice)
 	reagent_type = /datum/reagent/consumable/orangejuice
 
 /datum/ice_cream_flavour/peach
 	name = ICE_CREAM_PEACH
 	color = COLOR_ICECREAM_PEACH
-	desc = "filled with limited edition peach flavour. Enjoy it while it lasts!"
+	desc = "Cheio de sabor de pêssego de edição limitada. Aproveite enquanto dura!"
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/peachjuice)
 	reagent_type = /datum/reagent/consumable/peachjuice
 
 /datum/ice_cream_flavour/vanilla/korta
 	name = ICE_CREAM_KORTA_VANILLA
-	desc = "filled with vanilla ice cream made with korta milk. Lizards love it!"
+	desc = "Cheio de sorvete de baunilha feito com leite korta. Os lagartos adoram!"
 	ingredients = list(/datum/reagent/consumable/korta_milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/vanilla)
 
 /datum/ice_cream_flavour/cherry_chocolate
 	name = ICE_CREAM_CHERRY_CHOCOLATE
 	color = COLOR_ICECREAM_CHERRY_CHOCOLATE
-	desc = "filled with cherry chocolate chip ice cream. It is wonderfully tangy and sweet."
+	desc = "Cheio de sorvete de chocolate. É maravilhosamente picante e doce."
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice, /datum/reagent/consumable/coco, /datum/reagent/consumable/cherryjelly)
 	reagent_type = /datum/reagent/consumable/cherryjelly
 
 /datum/ice_cream_flavour/mob
 	name = ICE_CREAM_MOB
 	color = COLOR_ICECREAM_STRAWBERRY
-	desc = "filled with bright red ice cream. That's probably not strawberry..."
+	desc = "Cheio de sorvete vermelho brilhante. Isso provavelmente não é morango..."
 	desc_prefix = "A suspicious $CONE_NAME"
 	reagent_type = /datum/reagent/consumable/liquidgibs
 	hidden = TRUE
@@ -338,16 +338,16 @@ GLOBAL_LIST_INIT_TYPED(ice_cream_flavours, /datum/ice_cream_flavour, init_ice_cr
 /datum/ice_cream_flavour/custom
 	name = ICE_CREAM_CUSTOM
 	color = COLOR_STARLIGHT //has its own mutable appearance overlay it will be overwritten with anyways.
-	desc = "filled with artisanal ice cream. Made with real $CUSTOM_NAME. Ain't that something."
+	desc = "Cheio de sorvete artesanal. Feito com real $CUSTOM NAME. Não é demais?"
 	ingredients = list(/datum/reagent/consumable/milk, /datum/reagent/consumable/ice)
-	ingredients_text = "optional flavorings"
+	ingredients_text = "sabores opcionais"
 	takes_custom_ingredients = TRUE
 
 /datum/ice_cream_flavour/custom/korta
 	name = ICE_CREAM_KORTA_CUSTOM
-	desc = "filled with artisanal lizard-friendly ice cream. Made with real $CUSTOM_NAME. Ain't that something."
+	desc = "Cheio de sorvete artesanal para lagartos. Feito com real $CUSTOM NAME. Não é demais?"
 	ingredients = list(/datum/reagent/consumable/korta_milk, /datum/reagent/consumable/ice)
-	ingredients_text = "optional flavorings"
+	ingredients_text = "sabores opcionais"
 
 /datum/ice_cream_flavour/custom/add_flavour(datum/component/ice_cream_holder/target, datum/reagents/custom_ingredients)
 	if(!custom_ingredients || custom_ingredients.total_volume < 4) //consumable reagents have stronger taste so higher volume are required to allow non-food flavourings to break through better.
@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT_TYPED(ice_cream_flavours, /datum/ice_cream_flavour, init_ice_cr
 /datum/ice_cream_flavour/bland
 	name = ICE_CREAM_BLAND
 	color = COLOR_ICECREAM_CUSTOM
-	desc = "filled with anemic, flavorless ice cream. You wonder why this was ever scooped..."
+	desc = "Cheio de sorvete anêmico e sem sabor. Você se pergunta por que isso foi escavado..."
 	hidden = TRUE
 
 #undef SWEETENER_PER_SCOOP

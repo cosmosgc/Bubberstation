@@ -289,7 +289,7 @@
 
 	if(istype(to_insert, /obj/item/storage/backpack) && length(to_insert.contents))
 		if(messages && user)
-			parent.balloon_alert(user, "can't store filled backpacks!")
+			parent.balloon_alert(user, "Não posso guardar mochilas cheias!")
 		return FALSE
 
 	return TRUE
@@ -314,7 +314,7 @@
 	SIGNAL_HANDLER
 
 	if(user && messages)
-		parent.balloon_alert(user, "garment bag is in the way!")
+		parent.balloon_alert(user, "A bolsa está no caminho!")
 	return BLOCK_STORAGE_INSERT
 
 ///Quiver bag

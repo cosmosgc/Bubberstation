@@ -1,8 +1,8 @@
 /datum/religion_rites/dream_portent
 	name = "Dream Portent"
-	desc = "Immediately fall into a slumber and receive a portent of the future. \
-		The vision may be difficult to interpret, but will likely come true in some form. \
-		Any form of harm will awaken you and disrupt the vision."
+	desc = "Caia imediatamente em um sono e receba um sinal do futuro.\
+A visão pode ser difícil de interpretar, mas provavelmente se tornará realidade de alguma forma.\
+Qualquer forma de dano irá acordá-lo e perturbar a visão."
 	favor_cost = 50
 	rite_flags = NONE
 	ritual_length = 6 SECONDS
@@ -18,13 +18,13 @@
 	if(!..())
 		return FALSE
 	if(!iscarbon(user))
-		to_chat(user, span_warning("You are not the sort of creature that can receive a portent."))
+		to_chat(user, span_warning("Você não é o tipo de criatura que pode receber um sinal."))
 		return FALSE
 	return TRUE
 
 /datum/religion_rites/dream_portent/invoke_effect(mob/living/user, atom/religious_tool)
 	if(!user.SetSleeping(10 SECONDS))
-		to_chat(user, span_warning("You fail to fall asleep."))
+		to_chat(user, span_warning("Você não consegue dormir."))
 		return FALSE
 
 	user.visible_message(span_notice("[user] suddenly falls into a deep slumber, [user.p_their()] eyes fluttering..."))
@@ -59,7 +59,7 @@
 	if(istype(current_dream, /datum/dream/specific_portent))
 		return
 
-	to_chat(dreamer, span_cyan("Your mind wanders, yet you receive no clear vision... You must try again later."))
+	to_chat(dreamer, span_cyan("Sua mente vagueia, mas não recebe visão clara... Você deve tentar novamente mais tarde."))
 	refund(0.8)
 	dreamer.adjust_drowsiness(10 SECONDS)
 	dreamer.add_mood_event("dream_failed", /datum/mood_event/dream_failed)
@@ -70,7 +70,7 @@
 	if(!prob(damage_amount * 10)) // higher damage = higher chance to interrupt
 		return
 
-	to_chat(dreamer, span_warning("Your dream is interrupted as you are harmed!"))
+	to_chat(dreamer, span_warning("Seu sonho é interrompido enquanto você é ferido!"))
 	dreamer.SetSleeping(0)
 	dreamer.adjust_drowsiness(10 SECONDS)
 	dreamer.add_mood_event("dream_interrupted", /datum/mood_event/dream_interrupted)
@@ -82,12 +82,12 @@
 
 /datum/mood_event/dream_interrupted
 	mood_change = -2
-	description = "I was rudely awakened from my dreams!"
+	description = "Fui rudemente desperta dos meus sonhos!"
 	timeout = 5 MINUTES
 
 /datum/mood_event/dream_failed
 	mood_change = -2
-	description = "I couldn't receive a clear vision from my dreams!"
+	description = "Eu não poderia receber uma visão clara dos meus sonhos!"
 	timeout = 5 MINUTES
 
 /datum/dream/specific_portent
@@ -96,7 +96,7 @@
 
 /datum/dream/specific_portent/GenerateDream(mob/living/carbon/dreamer)
 	. = list()
-	. += span_cyan("a portent of the future")
+	. += span_cyan("Um sinal do futuro")
 
 	var/list/portent_types = list(
 		"[GLOB.deity] greets you warmly" = "[GLOB.deity] bids you farewell, though you feel their presence watch over you",

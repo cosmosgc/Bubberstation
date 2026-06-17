@@ -5,8 +5,8 @@
 /// Kill yourself and probably a bunch of other people
 /datum/grand_finale/armageddon
 	name = "Annihilation"
-	desc = "This crew have offended you beyond the realm of pranks. Make the ultimate sacrifice to teach them a lesson your elders can really respect. \
-		YOU WILL NOT SURVIVE THIS."
+	desc = "Esta tripulação o ofendeu além das brincadeiras. Faça o sacrifício final para ensinar-lhes uma lição que os mais velhos realmente respeitam.\
+Você não vai sobreviver a isso."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "legion_head"
 	minimum_time = 90 MINUTES // This will probably immediately end the round if it gets finished.

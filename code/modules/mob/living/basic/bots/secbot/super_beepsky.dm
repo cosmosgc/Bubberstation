@@ -1,6 +1,6 @@
 /mob/living/basic/bot/secbot/grievous //This bot is powerful. If you managed to get 4 eswords somehow, you deserve this horror. Emag him for best results.
 	name = "General Beepsky"
-	desc = "Is that a secbot with four eswords in its arms...?"
+	desc = "É um secbot com quatro espadas nos braços?"
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "grievous"
 	base_icon_state = "grievous"
@@ -92,7 +92,7 @@
 
 /mob/living/basic/bot/secbot/grievous/toy //A toy version of general beepsky!
 	name = "Genewul Bweepskee"
-	desc = "An adorable looking secbot with four toy swords taped to its arms"
+	desc = "Um adorável secbot com quatro espadas de brinquedo coladas em seus braços."
 	health = 50
 	maxHealth = 50
 	block_chance = 0

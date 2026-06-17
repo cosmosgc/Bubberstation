@@ -4,8 +4,8 @@
  * Return an associative list literal.
  */
 /obj/item/circuit_component/assoc_literal
-	display_name = "Associative List Literal"
-	desc = "A component that returns an associative list consisting of the inputs."
+	display_name = "Lista Associativa Literal"
+	desc = "Um componente que devolve uma lista associativa composta pelas entradas."
 	category = "List"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 

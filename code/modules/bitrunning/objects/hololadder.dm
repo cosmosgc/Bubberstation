@@ -2,7 +2,7 @@
 	name = "hololadder"
 
 	anchored = TRUE
-	desc = "An abstract representation of the means to disconnect from the virtual domain."
+	desc = "Uma representação abstrata dos meios para se desconectar do domínio virtual."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "ladder11"
 	obj_flags = BLOCK_Z_OUT_DOWN
@@ -30,14 +30,14 @@
 	. = ..()
 
 	if(isnull(server_ref.resolve()))
-		. += span_infoplain("It's not connected to anything.")
+		. += span_infoplain("Não está ligado a nada.")
 		return
 
 	if(isobserver(user))
-		. += span_notice("Left click to view the server that this ladder is connected to.")
+		. += span_notice("Clique esquerdo para ver o servidor ao qual esta escada está conectada.")
 		return
 
-	. += span_infoplain("This ladder is connected to a server. You can click on it or walk over it to disconnect.")
+	. += span_infoplain("Esta escada está conectada a um servidor. Você pode clicar nele ou andar sobre ele para desconectar.")
 
 
 /obj/structure/hololadder/attack_hand(mob/user, list/modifiers)
@@ -69,11 +69,11 @@
 		for(var/datum/weakref/ghostrole_weakref as anything in our_server.spawned_threat_refs)
 			var/mob/living/ghostrole = ghostrole_weakref.resolve()
 			if(ghostrole?.stat == CONSCIOUS && ghostrole.client && ghostrole.mind.has_antag_datum(/datum/antagonist/bitrunning_glitch))
-				to_chat(user, span_danger("A being in the simulation is preventing your retreat. You must either complete your mission or remove the obstacle before safe exit will be possible."))
+				to_chat(user, span_danger("Um ser na simulação está impedindo sua retirada. Você deve completar sua missão ou remover o obstáculo antes que a saída segura seja possível."))
 				return
 
 	if(!HAS_TRAIT(user, TRAIT_TEMPORARY_BODY))
-		balloon_alert(user, "no connection detected")
+		balloon_alert(user, "Nenhuma conexão detectada.")
 		return
 
 	balloon_alert(user, "disconnecting...")

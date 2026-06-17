@@ -1,8 +1,8 @@
 /obj/item/fish/goldfish
 	name = "goldfish"
 	fish_id = "goldfish"
-	desc = "Despite common belief, goldfish do not have three-second memories. \
-		They can actually remember things that happened up to three months ago."
+	desc = "Apesar da crença comum, peixes dourados não têm memórias de três segundos.\
+Eles podem se lembrar de coisas que aconteceram até três meses atrás."
 	icon_state = "goldfish"
 	dedicated_in_aquarium_icon_state = "fish_greyscale"
 	aquarium_vc_color = "#D8540D"
@@ -24,7 +24,7 @@
 
 /obj/item/fish/goldfish/gill
 	name = "McGill"
-	desc = "A great rubber duck tool for Lawyers who can't get a grasp over their case."
+	desc = "Uma grande ferramenta de pato de borracha para advogados que não conseguem entender o caso."
 	fish_id_redirect_path = /obj/item/fish/goldfish
 	stable_population = 1
 	random_case_rarity = FISH_RARITY_NOPE
@@ -39,7 +39,7 @@
 /obj/item/fish/goldfish/three_eyes
 	name = "three-eyed goldfish"
 	fish_id = "three_eyes"
-	desc = "A goldfish with an extra half a pair of eyes. You wonder what it's been feeding on lately..."
+	desc = "Um peixe dourado com mais meio par de olhos. Você se pergunta com o que tem se alimentado ultimamente..."
 	icon_state = "three_eyes"
 	stable_population = 4
 	fish_traits = list(/datum/fish_trait/recessive, /datum/fish_trait/shiny_lover)
@@ -61,7 +61,7 @@
 
 /obj/item/fish/goldfish/three_eyes/gill
 	name = "McGill"
-	desc = "A great rubber duck tool for Lawyers who can't get a grasp over their case. It looks kinda different today..."
+	desc = "Uma grande ferramenta de pato de borracha para advogados que não conseguem entender o caso. Parece meio diferente hoje..."
 	fish_id_redirect_path = /obj/item/fish/goldfish/three_eyes
 	compatible_types = list(/obj/item/fish/goldfish, /obj/item/fish/goldfish/three_eyes)
 	beauty = FISH_BEAUTY_GREAT
@@ -75,7 +75,7 @@
 /obj/item/fish/angelfish
 	name = "angelfish"
 	fish_id = "angelfish"
-	desc = "Young Angelfish often live in groups, while adults prefer solitary life. They become territorial and aggressive toward other fish when they reach adulthood."
+	desc = "Os jovens Angelfish vivem em grupos, enquanto os adultos preferem a vida solitária. Tornam-se territoriais e agressivos com outros peixes quando atingem a idade adulta."
 	icon_state = "angelfish"
 	sprite_width = 4
 	sprite_height = 7
@@ -89,7 +89,7 @@
 /obj/item/fish/guppy
 	name = "guppy"
 	fish_id = "guppy"
-	desc = "Guppy is also known as rainbow fish because of the brightly colored body and fins."
+	desc = "Guppy também é conhecido como peixe arco-íris por causa do corpo brilhantemente colorido e barbatanas."
 	icon_state = "guppy"
 	sprite_width = 5
 	sprite_height = 2
@@ -104,7 +104,7 @@
 /obj/item/fish/plasmatetra
 	name = "plasma tetra"
 	fish_id = "plasmatetra"
-	desc = "Due to their small size, tetras are prey to many predators in their watery world, including eels, crustaceans, and invertebrates."
+	desc = "Devido ao seu tamanho pequeno, tetras são presas de muitos predadores em seu mundo aquoso, incluindo enguias, crustáceos e invertebrados."
 	icon_state = "plastetra"
 	sprite_width = 4
 	sprite_height = 2
@@ -121,7 +121,7 @@
 /obj/item/fish/catfish
 	name = "catfish"
 	fish_id = "catfish"
-	desc = "A catfish has about 100,000 taste buds, and their bodies are covered with them to help detect chemicals present in the water and also to respond to touch."
+	desc = "Um bagre tem cerca de 100.000 papilas gustativas, e seus corpos estão cobertos com elas para ajudar a detectar substâncias químicas presentes na água e também para responder ao toque."
 	icon_state = "catfish"
 	sprite_width = 8
 	sprite_height = 4
@@ -142,7 +142,7 @@
 /obj/item/fish/zipzap
 	name = "anxious zipzap"
 	fish_id = "zipzap"
-	desc = "A fish overflowing with crippling anxiety and electric potential. Worried about the walls of its tank closing in constantly. Both literally and as a general metaphorical unease about life's direction."
+	desc = "Um peixe transbordando de ansiedade incapacitante e potencial elétrico. Preocupado com as paredes de seu tanque se fechando constantemente. Literalmente e como um desconforto metafórico geral sobre a direção da vida."
 	icon_state = "zipzap"
 	icon_state_dead = "zipzap_dead"
 	sprite_width = 6
@@ -163,7 +163,7 @@
 	//anxiety naturally limits the amount of zipzaps per tank, so they are stronger alone
 	electrogenesis_power = 6.7 MEGA JOULES
 	beauty = FISH_BEAUTY_GOOD
-	suicide_slap_text = "*ZAP!*"
+	suicide_slap_text = "ZAP!"
 
 /obj/item/fish/zipzap/get_fish_taste()
 	return list("raw fish" = 2, "anxiety" = 1)
@@ -182,7 +182,7 @@
 /obj/item/fish/tadpole
 	name = "tadpole"
 	fish_id = "tadpole"
-	desc = "The larval spawn of an amphibian. A very miniscule, round creature with a long tail it uses to swim around."
+	desc = "A cria larval de um anfíbio. Uma criatura muito minúscula e redonda com uma cauda longa que usa para nadar."
 	icon_state = "tadpole"
 	average_size = 3
 	average_weight = 10
@@ -269,7 +269,7 @@
 /obj/item/fish/perch
 	name = "perch"
 	fish_id = "perch"
-	desc = "An all around popular panfish, game fish and unfortunate prey to other, bigger predators."
+	desc = "Um panfish popular, peixes de caça e presas infelizes para outros predadores maiores."
 	icon_state = "perch"
 	dedicated_in_aquarium_icon_state = "fish_greyscale"
 	aquarium_vc_color = "#9D8C64"
@@ -293,7 +293,7 @@
 /obj/item/fish/sacabambaspis
 	name = "sacabambaspis"
 	fish_id = "sacabambaspis"
-	desc = "A jawless fish ought to be extinct by the end of the Ordovician period. Some speculate alien intervention may have been behind its survival and inevitable evolution as a dweller of hot springs."
+	desc = "Um peixe sem mandíbula deve ser extinto até o final do período Ordoviciano. Alguns especulam que a intervenção alienígena pode ter sido por trás de sua sobrevivência e evolução inevitável como um morador de fontes termais."
 	icon_state = "sacabambaspis"
 	sprite_width = 5
 	sprite_height = 3

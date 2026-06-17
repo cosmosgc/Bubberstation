@@ -1,7 +1,7 @@
 /datum/surgery_operation/basic/core_removal
 	name = "extract core"
 	rnd_name = "Corectomy (Extract Core)" // source: i made it up
-	desc = "Remove the core from a slime."
+	desc = "Remova o núcleo de um lodo."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_CROWBAR = 1,

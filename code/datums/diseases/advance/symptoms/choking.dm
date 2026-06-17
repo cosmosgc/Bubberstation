@@ -9,7 +9,7 @@
 
 /datum/symptom/choking
 	name = "Choking"
-	desc = "The virus causes inflammation of the host's air conduits, leading to intermittent choking."
+	desc = "O vírus causa inflamação dos conduítes de ar do hospedeiro, levando a asfixia intermitente."
 	illness = "Pneumatic Tubes"
 	stealth = -1
 	resistance = 0
@@ -88,7 +88,7 @@ Bonus
 
 /datum/symptom/asphyxiation
 	name = "Acute respiratory distress syndrome"
-	desc = "The virus causes shrinking of the host's lungs, causing severe asphyxiation. May also lead to heart attacks."
+	desc = "O vírus causa encolhimento dos pulmões do hospedeiro, causando asfixia severa. Também pode levar a ataques cardíacos."
 	illness = "Iron Lungs"
 	stealth = -2
 	resistance = 0

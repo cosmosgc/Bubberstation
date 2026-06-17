@@ -32,7 +32,7 @@
 		return NONE
 
 	if (target.get_integrity() >= target.max_integrity)
-		target.balloon_alert(fixer, "not damaged!")
+		target.balloon_alert(fixer, "Não está danificado!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	target.repair_damage(heal_amount)

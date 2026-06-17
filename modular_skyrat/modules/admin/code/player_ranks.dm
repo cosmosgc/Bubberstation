@@ -15,7 +15,7 @@ ADMIN_VERB(manage_player_ranks, R_ADMIN, "Manage Player Ranks", "Manage who has 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/choice = tgui_alert(usr, "Which rank would you like to manage?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS)
+	var/choice = tgui_alert(usr, "Qual é o posto que você gostaria de gerenciar?", "Manage Player Ranks", SKYRAT_PLAYER_RANKS)
 	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
 		return
 
@@ -39,7 +39,7 @@ ADMIN_VERB(manage_player_ranks, R_ADMIN, "Manage Player Ranks", "Manage who has 
 	var/group_title = LOWER_TEXT(group)
 
 	var/list/choices = list("Add", "Remove")
-	switch(tgui_alert(usr, "What would you like to do?", "Manage [group]s", choices))
+	switch(tgui_alert(usr, "O que gostaria de fazer?", "Manage [group]s", choices))
 		if("Add")
 			var/name = input(usr, "Please enter the CKEY (case-insensitive) of the person you would like to make a [group_title]:", "Add a [group_title]") as null|text
 			if(!name)
@@ -95,7 +95,7 @@ ADMIN_VERB(migrate_player_ranks, R_ADMIN|R_DEBUG|R_SERVER, "Migrate Player Ranks
 	if(!CONFIG_GET(flag/sql_enabled))
 		return
 
-	var/choice = tgui_alert(usr, "Which rank would you like to migrate?", "Migrate Player Ranks", SKYRAT_PLAYER_RANKS)
+	var/choice = tgui_alert(usr, "Que posto gostaria de migrar?", "Migrate Player Ranks", SKYRAT_PLAYER_RANKS)
 	if(!choice || !(choice in SKYRAT_PLAYER_RANKS))
 		return
 

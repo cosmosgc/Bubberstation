@@ -1,6 +1,6 @@
 /obj/item/scissors
 	name = "barber's scissors"
-	desc = "Some say a barbers best tool is his electric razor, that is not the case. These are used to cut hair in a professional way!"
+	desc = "Alguns dizem que um barbeiro melhor ferramenta é sua navalha elétrica, que não é o caso. São usados para cortar cabelo de forma profissional!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "scissors"
 	w_class = WEIGHT_CLASS_TINY
@@ -18,11 +18,11 @@
 
 	var/location = user.zone_selected
 	if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !user.combat_mode)
-		to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
+		to_chat(user, span_warning("Pare, olhe para o que está segurando e pense em si mesmo.\"Deve ser usado no cabelo ou no cabelo facial.\""))
 		return
 
 	if(target_human.hairstyle == "Bald" && target_human.facial_hairstyle == "Shaved")
-		balloon_alert(user, "what hair? They have none!")
+		balloon_alert(user, "Que cabelo? Eles não têm nenhum!")
 		return
 
 	if(user.zone_selected != BODY_ZONE_HEAD)
@@ -35,7 +35,7 @@
 
 	if(selected_part == "Hair")
 		if(!target_human.hairstyle == "Bald" && target_human.head)
-			balloon_alert(user, "they have no hair to cut!")
+			balloon_alert(user, "Eles não têm cabelo para cortar!")
 			return
 
 		var/hair_id = tgui_input_list(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece", SSaccessories.hairstyles_list)
@@ -55,7 +55,7 @@
 			new /obj/effect/decal/cleanable/hair(get_turf(src))
 	else
 		if(!target_human.facial_hairstyle == "Shaved" && target_human.wear_mask)
-			balloon_alert(user, "they have no facial hair to cut!")
+			balloon_alert(user, "Eles não têm pelos faciais para cortar!")
 			return
 
 		var/facial_hair_id = tgui_input_list(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece", SSaccessories.facial_hairstyles_list)

@@ -1,7 +1,7 @@
 /// A mob that slaps people around and can be tamed as a mount
 /mob/living/basic/vatbeast
 	name = "vatbeast"
-	desc = "A strange molluscoidal creature carrying a busted growing vat.\nYou wonder if this burden is a voluntary undertaking in order to achieve comfort and protection, or simply because the creature is fused to its metal shell?"
+	desc = "Uma estranha criatura moluscoidal carregando um tanque de crescimento quebrado.\nVocê se pergunta se este fardo é um compromisso voluntário para alcançar conforto e proteção, ou simplesmente porque a criatura está fundida à sua concha de metal?"
 	icon = 'icons/mob/vatgrowing.dmi'
 	icon_state = "vat_beast"
 	icon_living = "vat_beast"
@@ -97,7 +97,7 @@
 /// For vatbeats, this ability is shared with the rider.
 /datum/action/cooldown/tentacle_slap
 	name = "Tentacle slap"
-	desc = "Slap a creature with your tentacles."
+	desc = "Bata em uma criatura com seus tentáculos."
 	background_icon_state = "bg_revenant"
 	overlay_icon_state = "bg_revenant_border"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -135,7 +135,7 @@
 		return FALSE
 
 	if (!owner.Adjacent(target))
-		owner.balloon_alert(clicker, "too far!")
+		owner.balloon_alert(clicker, "Muito longe!")
 		return FALSE
 
 	// Do the slap

@@ -1,6 +1,6 @@
 /datum/action/item_action/adjust/papermask
 	name = "Adjust paper mask"
-	desc = "LMB: Change mask face. RMB: Adjust mask."
+	desc = "Troque de máscara. Ajuste a máscara."
 
 /datum/action/item_action/adjust/papermask/Trigger(trigger_flags)
 	. = ..()
@@ -14,7 +14,7 @@
 
 /obj/item/clothing/mask/paper
 	name = "paper mask"
-	desc = "It's true. Once you wear a mask for so long, you forget about who you are. Wonder if that happens with shitty paper ones."
+	desc = "É verdade. Quando usa uma máscara por tanto tempo, esquece quem é. Será que isso acontece com os papéis de merda?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "mask_paper"
@@ -166,7 +166,7 @@
 /obj/item/clothing/mask/paper/proc/check_pen(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(!user.is_holding_item_of_type(/obj/item/pen))
-		balloon_alert(user, "must be holding a pen!")
+		balloon_alert(user, "Deve estar segurando uma caneta!")
 		return CLICK_ACTION_BLOCKING
 	return NONE
 

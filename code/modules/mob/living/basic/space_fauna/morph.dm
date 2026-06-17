@@ -2,7 +2,7 @@
 /mob/living/basic/morph
 	name = "morph"
 	real_name = "morph"
-	desc = "A revolting, pulsating pile of flesh."
+	desc = "Uma pilha revoltante e pulsante de carne."
 	speak_emote = list("gurgles")
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "morph"
@@ -70,7 +70,7 @@
 		. = form_reference.examine(user)
 
 	if(get_dist(user, src) <= 3) // always add this because if the form_reference somehow nulls out we still want to have something look "weird" about an item when someone is close
-		. += span_warning("It doesn't look quite right...")
+		. += span_warning("Não parece bem...")
 
 /mob/living/basic/morph/med_hud_set_health()
 	if(isliving(form_typepath))
@@ -90,7 +90,7 @@
 	if(HAS_TRAIT(src, TRAIT_DISGUISED))
 		visible_message(
 			span_warning("[src] twists and dissolves into a pile of green flesh!"),
-			span_userdanger("Your skin ruptures! Your flesh breaks apart! No disguise can ward off de--"),
+			span_userdanger("Sua pele rompe! Sua carne se parte! Nenhum disfarce pode afastar..."),
 		)
 
 	return ..()
@@ -124,7 +124,7 @@
 	SIGNAL_HANDLER
 	visible_message(
 		span_warning("[src] suddenly collapses in on itself, dissolving into a pile of green flesh!"),
-		span_notice("You reform to your normal body."),
+		span_notice("Você muda para seu corpo normal."),
 	)
 
 	//Baseline stats
@@ -153,7 +153,7 @@
 		return
 
 	if(HAS_TRAIT(src, TRAIT_DISGUISED) && (melee_damage_disguised <= 0))
-		balloon_alert(src, "can't attack while disguised!")
+		balloon_alert(src, "Não pode atacar disfarçado!")
 		return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
 
 	if(isliving(target)) //Eat Corpses to regen health
@@ -182,7 +182,7 @@
 		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_DISGUISED) && !eat_while_disguised)
-		balloon_alert(src, "can't eat while disguised!")
+		balloon_alert(src, "Não posso comer disfarçado!")
 		return FALSE
 
 	balloon_alert(src, "eating...")

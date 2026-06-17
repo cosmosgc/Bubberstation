@@ -45,7 +45,7 @@
 					playsound(owner, 'sound/machines/click.ogg', 25)
 					qdel(component)
 				else if(species_modsuit.wearer == owner)
-					to_chat(owner, span_notice("You already look like yourself!"))
+					to_chat(owner, span_notice("Você já se parece consigo mesmo!"))
 				else
 					playsound(owner, 'sound/machines/click.ogg', 25)
 					species_modsuit.wearer.AddComponent(/datum/component/transformation, source = owner)
@@ -63,7 +63,7 @@
 
 /datum/action/protean
 	name = "Protean Interface"
-	desc = "<b>Left Click</b> Opens the Protean interface.<br><b>Right Click</b> toggles suit transformation."
+	desc = "<b>Clique à esquerda</b>Abre a interface proteica.<br><b>Clique direito</b>Alterna a transformação do terno."
 	button_icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
 	button_icon_state = "standard-control-sealed"
 

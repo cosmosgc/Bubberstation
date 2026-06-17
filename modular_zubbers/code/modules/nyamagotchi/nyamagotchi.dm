@@ -11,7 +11,7 @@
 
 /obj/item/toy/nyamagotchi
 	name = "Nyamagotchi"
-	desc = "A small electronic 'pet' that requires care and attention. An ancient relic sure to evoke nostalgic feelings."
+	desc = "Um pequeno \"pet\" eletrônico que requer cuidado e atenção. Uma relíquia antiga certamente evoca sentimentos nostálgicos."
 	icon = 'modular_zubbers/icons/obj/toys/toys.dmi'
 	icon_state = "nya"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -132,9 +132,9 @@
 	if(in_range(src, user) || isobserver(user))
 		. += "[readout()]"
 		if(!COOLDOWN_FINISHED(src, mute_pet))
-			. += span_notice("<b>Alt-click</b> to disable mute feature.")
+			. += span_notice("<b>Alt-click</b>para desativar o recurso mudo.")
 		else
-			. += span_notice("<b>Alt-click</b> to temporarily mute notifications.")
+			. += span_notice("<b>Alt-click</b>para temporariamente silenciar notificações.")
 
 /obj/item/toy/nyamagotchi/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	context[SCREENTIP_CONTEXT_LMB] = "Interact"
@@ -189,12 +189,12 @@
 
 	if(COOLDOWN_FINISHED(src, mute_pet))
 		COOLDOWN_START(src, mute_pet, update_rate * 5.75)
-		user.balloon_alert(user, "muted!")
+		user.balloon_alert(user, "Mutado!")
 		to_chat(user, span_notice("You turn on [src]'s mute feature."))
 
 	else
 		COOLDOWN_RESET(src, mute_pet)
-		user.balloon_alert(user, "unmuted!")
+		user.balloon_alert(user, "Sem som!")
 		to_chat(user, span_notice("You turn off [src]'s mute feature."))
 		be_known(sfx = MEOW_NORMAL)
 
@@ -307,7 +307,7 @@
 		be_known(sfx = EAT_FOOD, speech = pick(feed_messages))
 		last_task = "eating"
 	else
-		usr.balloon_alert(usr, "not hungry!")
+		usr.balloon_alert(usr, "Não estou com fome!")
 
 /obj/item/toy/nyamagotchi/proc/play()
 	if(!action_check())
@@ -318,7 +318,7 @@
 		be_known(sfx = PURR_PLAY, speech = pick(play_messages))
 		last_task = "playing"
 	else
-		usr.balloon_alert(usr, "not bored!")
+		usr.balloon_alert(usr, "Não entediada!")
 
 /obj/item/toy/nyamagotchi/proc/rest()
 	if(!action_check())
@@ -329,7 +329,7 @@
 		be_known(sfx = PURR_SLEEP, speech = pick(rest_messages))
 		last_task = "resting"
 	else
-		usr.balloon_alert(usr, "not tired!")
+		usr.balloon_alert(usr, "Não estou cansado!")
 
 // Function for when the nyamagotchi dies
 /obj/item/toy/nyamagotchi/proc/die()

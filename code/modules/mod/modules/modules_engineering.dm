@@ -3,9 +3,9 @@
 ///Welding Protection - Makes the helmet protect from flashes and welding.
 /obj/item/mod/module/welding
 	name = "MOD welding protection module"
-	desc = "A module installed into the visor of the suit, this projects a \
-		polarized, holographic overlay in front of the user's eyes. It's rated high enough for \
-		immunity against extremities such as spot and arc welding, solar eclipses, and handheld flashlights."
+	desc = "Um módulo instalado na viseira do terno, isso projeta um\
+polarizado, sobreposição holográfica na frente dos olhos do usuário. É avaliado alto o suficiente para\
+Imunidade contra extremidades, como solda de manchas e arcos, eclipses solares e lanternas portáteis."
 	icon_state = "welding"
 	complexity = 1
 	incompatible_modules = list(/obj/item/mod/module/welding)
@@ -59,9 +59,9 @@
 ///T-Ray Scan - Scans the terrain for undertile objects.
 /obj/item/mod/module/t_ray
 	name = "MOD t-ray scan module"
-	desc = "A module installed into the visor of the suit, allowing the user to use a pulse of terahertz radiation \
-		to essentially echolocate things beneath the floor, mostly cables and pipes. \
-		A staple of atmospherics work, and counter-smuggling work."
+	desc = "Um módulo instalado na viseira do traje, permitindo que o usuário use um pulso de radiação terahertz.\
+para essencialmente ecolocar as coisas sob o chão, principalmente cabos e tubos.\
+Um grampo da atmosfera funciona, e contra-troca de trabalho."
 	icon_state = "tray"
 	module_type = MODULE_TOGGLE
 	complexity = 1
@@ -77,10 +77,10 @@
 ///Magnetic Stability - Gives the user a slowdown but makes them negate gravity and be immune to slips.
 /obj/item/mod/module/magboot
 	name = "MOD magnetic stability module"
-	desc = "These are powerful electromagnets fitted into the suit's boots, allowing users both \
-		excellent traction no matter the condition indoors, and to essentially hitch a ride on the exterior of a hull. \
-		However, these basic models do not feature computerized systems to automatically toggle them on and off, \
-		so numerous users report a certain stickiness to their steps."
+	desc = "Estes são poderosos eletroímãs encaixados nas botas do terno, permitindo aos usuários ambos\
+Excelente tração, não importa a condição dentro de casa, e para essencialmente pegar uma carona no exterior de um casco.\
+No entanto, estes modelos básicos não possuem sistemas computadorizados para automaticamente ligá-los e desligá-los,\
+muitos usuários relatam certa aderência aos seus passos."
 	icon_state = "magnet"
 	module_type = MODULE_TOGGLE
 	complexity = 2
@@ -122,9 +122,9 @@
 ///Emergency Tether - Shoots a grappling hook projectile in 0g that throws the user towards it.
 /obj/item/mod/module/tether
 	name = "MOD emergency tether module"
-	desc = "A custom-built grappling-hook powered by a winch capable of hauling the user. \
-		While some older models of cargo-oriented grapples have capacities of a few tons, \
-		these are only capable of working in zero-gravity environments, a blessing to some Engineers."
+	desc = "Um gancho personalizado alimentado por um guincho capaz de transportar o usuário.\
+Enquanto alguns modelos mais antigos de grapples orientados para carga têm capacidades de algumas toneladas,\
+Estes só são capazes de trabalhar em ambientes de gravidade zero, uma bênção para alguns engenheiros."
 	icon_state = "tether"
 	module_type = MODULE_ACTIVE
 	complexity = 2
@@ -135,7 +135,7 @@
 
 /obj/item/mod/module/tether/used()
 	if(HAS_TRAIT_FROM(mod.wearer, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(mod.wearer, "already tethered!")
+		balloon_alert(mod.wearer, "Já amarrado!")
 		playsound(src, 'sound/items/weapons/gun/general/dry_fire.ogg', 25, TRUE)
 		return FALSE
 	return ..()
@@ -251,7 +251,7 @@
 
 /obj/item/tether_anchor
 	name = "tether anchor"
-	desc = "A reinforced anchor with a tether attachment point. A centuries old EVA tool which saved countless engineers' lives."
+	desc = "Uma âncora reforçada com um ponto de ligação. Uma ferramenta EVA centenária que salvou a vida de inúmeros engenheiros."
 	icon_state = "tether_latched"
 	icon = 'icons/obj/clothing/modsuit/mod_modules.dmi'
 	max_integrity = 60
@@ -274,7 +274,7 @@
 /obj/item/tether_anchor/examine(mob/user)
 	. = ..()
 	. += span_info("It can be secured by using a wrench on it. Use right-click to tether yourself to [src].")
-	. += span_info("LMB shortens the tether while RMB lengthens it. Ctrl-click to cut the tether.")
+	. += span_info("LMB encurta o cabo enquanto RMB o alonga. Ctrl-clique para cortar a corda.")
 
 /obj/item/tether_anchor/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -290,14 +290,14 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "Já amarrado!")
 		return
 
 	if (parent_module && HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(parent_module)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "Já amarrado!")
 		return
 
-	balloon_alert(user, "attached tether")
+	balloon_alert(user, "Amarrado.")
 	user.AddComponent(/datum/component/tether, src, 7, "tether", tether_trait_source = REF(src))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -316,32 +316,32 @@
 		return
 
 	if(HAS_TRAIT_FROM(target, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "Já amarrado!")
 		return
 
 	if (parent_module && HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(parent_module)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "Já amarrado!")
 		return
 
 	if (target == user)
-		balloon_alert(user, "attached tether")
+		balloon_alert(user, "Amarrado.")
 		user.AddComponent(/datum/component/tether, src, 7, "tether", tether_trait_source = REF(src), no_target_trait = TRUE)
 		return
 
-	balloon_alert(user, "attaching tether...")
+	balloon_alert(user, "Ligando o cabo...")
 	to_chat(target, span_userdanger("[user] is trying to attach a tether to you!"))
 	if (!do_after(user, 5 SECONDS, target))
 		return
 
 	if(HAS_TRAIT_FROM(target, TRAIT_TETHER_ATTACHED, REF(src)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "Já amarrado!")
 		return
 
 	if (parent_module && HAS_TRAIT_FROM(user, TRAIT_TETHER_ATTACHED, REF(parent_module)))
-		balloon_alert(user, "already tethered!")
+		balloon_alert(user, "Já amarrado!")
 		return
 
-	balloon_alert(user, "attached tether")
+	balloon_alert(user, "Amarrado.")
 	to_chat(target, span_userdanger("[user] attaches a tether to you!"))
 	target.AddComponent(/datum/component/tether, src, 7, "tether", tether_trait_source = REF(src), no_target_trait = TRUE)
 
@@ -367,9 +367,9 @@
 ///Radiation Protection - Protects the user from radiation, gives them a geiger counter and rad info in the panel.
 /obj/item/mod/module/rad_protection
 	name = "MOD radiation protection module"
-	desc = "A module utilizing polymers and reflective shielding to protect the user against ionizing radiation; \
-		a common danger in space. This comes with software to notify the wearer that they're even in a radioactive area, \
-		giving a voice to an otherwise silent killer."
+	desc = "Um módulo que utiliza polímeros e blindagem reflexiva para proteger o usuário contra radiação ionizante;\
+um perigo comum no espaço. Isso vem com software para avisar o usuário que eles estão em uma área radioativa,\
+Dando voz a um assassino silencioso."
 	icon_state = "radshield"
 	complexity = 2
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
@@ -409,10 +409,10 @@
 ///Constructor - Lets you build quicker and create RCD holograms.
 /obj/item/mod/module/constructor
 	name = "MOD constructor module"
-	desc = "This module entirely occupies the wearer's forearm, notably causing conflict with \
-		advanced arm servos meant to carry crewmembers. However, it functions as an \
-		extremely advanced construction hologram scanner, as well as containing the \
-		latest engineering schematics combined with inbuilt memory to help the user build walls."
+	desc = "Este módulo ocupa inteiramente o antebraço do usuário, notavelmente causando conflito com\
+Servos de braço avançados para carregar tripulantes. No entanto, funciona como um\
+Escâner de holograma de construção extremamente avançado, além de conter o\
+Esquemas de engenharia mais recentes combinados com memória incorporada para ajudar o usuário a construir paredes."
 	icon_state = "constructor"
 	module_type = MODULE_USABLE
 	complexity = 2
@@ -435,11 +435,11 @@
 ///Safety-First Head Protection - Protects your brain matter from sudden impacts.
 /obj/item/mod/module/headprotector
 	name = "MOD safety-first head protection module"
-	desc = "A series of dampening plates are installed along the back and upper areas of \
-		the helmet. These plates absorb abrupt kinetic shocks delivered to the skull. \
-		The bulk of this module prevents it from being installed in any suit that is capable \
-		of combat armor adjustments. However, the rudimentry nature of the module makes it \
-		relatively easy to install into most other suits."
+	desc = "Uma série de placas de amortecimento são instaladas ao longo das áreas de trás e superior de\
+O capacete. Essas placas absorvem choques cinéticos bruscos entregues ao crânio.\
+A maior parte deste módulo impede que ele seja instalado em qualquer terno que seja capaz\
+de ajustes de armadura de combate. No entanto, a natureza rudimentar do módulo o torna\
+relativamente fácil de instalar na maioria dos outros ternos."
 	icon_state = "welding"
 	complexity = 1
 	incompatible_modules = list(/obj/item/mod/module/welding/syndicate, /obj/item/mod/module/infiltrator)
@@ -454,7 +454,7 @@
 ///Mister - Sprays water over an area.
 /obj/item/mod/module/mister
 	name = "MOD water mister module"
-	desc = "A module containing a mister, able to spray it over areas."
+	desc = "Um módulo contendo um senhor, capaz de pulverizá-lo sobre áreas."
 	icon_state = "mister"
 	module_type = MODULE_ACTIVE
 	complexity = 2
@@ -473,7 +473,7 @@
 ///Resin Mister - Sprays resin over an area.
 /obj/item/mod/module/mister/atmos
 	name = "MOD resin mister module"
-	desc = "An atmospheric resin mister, able to fix up areas quickly."
+	desc = "Uma resina atmosférica, capaz de consertar áreas rapidamente."
 	device = /obj/item/extinguisher/mini/nozzle/mod
 	volume = 250
 
@@ -483,4 +483,4 @@
 
 /obj/item/extinguisher/mini/nozzle/mod
 	name = "MOD atmospheric mister"
-	desc = "An atmospheric resin mister with three modes, mounted as a module."
+	desc = "Uma resina atmosférica senhor com três modos, montada como um módulo."

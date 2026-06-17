@@ -1,6 +1,6 @@
 /obj/item/food/monkeycube
 	name = "monkey cube"
-	desc = "Just add water!"
+	desc = "Basta adicionar água!"
 	icon_state = "monkeycube"
 	bite_consumption = 12
 	food_reagents = list(/datum/reagent/monkey_powder = 30)
@@ -92,7 +92,7 @@
 
 /obj/item/food/monkeycube/gorilla
 	name = "gorilla cube"
-	desc = "A Waffle Corp. brand gorilla cube. Now with extra molecules!"
+	desc = "Um cubo de gorila da Waffle Corp. Agora com moléculas extras!"
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/monkey_powder = 30,
@@ -103,7 +103,7 @@
 
 /obj/item/food/monkeycube/chicken
 	name = "chicken cube"
-	desc = "A new Nanotrasen classic, the chicken cube. Tastes like everything!"
+	desc = "Um novo clássico de Nanotrasen, o cubo de frango. Tem gosto de tudo!"
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/consumable/eggyolk = 30,
@@ -114,7 +114,7 @@
 
 /obj/item/food/monkeycube/bee
 	name = "bee cube"
-	desc = "We were sure it was a good idea. Just add water."
+	desc = "Tínhamos certeza que era uma boa ideia. Basta adicionar água."
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/consumable/honey = 10,
@@ -126,7 +126,7 @@
 
 /obj/item/food/monkeycube/dangerous_horse
 	name = "a pony cube"
-	desc = "This is a cube that, when water is added, creates a syndicate pony powerful enough to break the enemy's face!"
+	desc = "Este é um cubo que, quando a água é adicionada, cria um pónei do sindicato poderoso o suficiente para quebrar o rosto do inimigo!"
 	bite_consumption = 10
 	food_reagents = list(
 		/datum/reagent/toxin = 15,
@@ -137,7 +137,7 @@
 
 /obj/item/food/monkeycube/random
 	name = "monster cube"
-	desc = "A cube that, when water is added, creates a random creature. Who knows what's inside?"
+	desc = "Um cubo que, quando água é adicionada, cria uma criatura aleatória. Quem sabe o que tem dentro?"
 	food_reagents = list(
 		/datum/reagent/toxin = 15,
 		/datum/reagent/medicine/strange_reagent = 1,

@@ -1,6 +1,6 @@
 /mob/living/basic/snake/banded
 	name = "banded snake"
-	desc = "A colourful stripy snake. It's either a harmless asteroid kingsnake or a highly venomous and aggressive nebula viper. There's a mnemonic to tell them apart, you just need to look at the colours and examine them closely..."
+	desc = "Uma cobra listra colorida. Ou é uma inofensiva cobra-reina ou uma altamente venenosa e agressiva víbora nebulosa. Há uma mnemônica para diferenciá-los, você só precisa olhar para as cores e examiná-las de perto..."
 	icon_state = "bandedsnake"
 	icon_living = "bandedsnake"
 	icon_dead = "bandedsnake_dead"
@@ -32,13 +32,13 @@
 
 /mob/living/basic/snake/banded/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>You examine the bands on the snake very closely...</i>")
+	. += span_notice("<i>Você examina as bandas da cobra de perto...</i>")
 	if(src.poison_reagent == (/datum/reagent/consumable/milk))
 		. += span_info("[pick(src.rhymes_harmless)]")
-		. += span_notice("This snake is not dangerous!")
+		. += span_notice("Esta cobra não é perigosa!")
 	else
 		. += span_info("[pick(src.rhymes_dangerous)]")
-		. += span_notice("This snake is dangerous!")
+		. += span_notice("Esta cobra é perigosa!")
 	return .
 
 /datum/ai_controller/basic_controller/snake/banded

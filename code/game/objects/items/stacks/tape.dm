@@ -1,7 +1,7 @@
 /obj/item/stack/medical/wrap/sticky_tape
 	name = "sticky tape"
-	singular_name = "sticky tape"
-	desc = "Used for sticking to things for sticking said things to people."
+	singular_name = "Fita adesiva."
+	desc = "Usado para se apegar às coisas por se prender às pessoas."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/stack/medical/wrap/sticky_tape"
 	post_init_icon_state = "tape"
@@ -45,7 +45,7 @@
 		var/new_tape_gag = new tape_gag(src)
 		user.put_in_hands(new_tape_gag)
 		use(1)
-		to_chat(user, span_notice("You rip off a piece of tape."))
+		to_chat(user, span_notice("Você arranca um pedaço de fita."))
 		playsound(user, 'sound/items/duct_tape/duct_tape_snap.ogg', 50, TRUE)
 		return TRUE
 	return ..()
@@ -93,8 +93,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/super
 	name = "super sticky tape"
-	singular_name = "super sticky tape"
-	desc = "Quite possibly the most mischievous substance in the galaxy. Use with extreme lack of caution."
+	singular_name = "Super fita adesiva"
+	desc = "Possivelmente a substância mais travessa da galáxia. Use com extrema falta de cuidado."
 	prefix = "super sticky"
 	conferred_embed = /datum/embedding/sticky_tape/super
 	splint_factor = 0.4
@@ -111,8 +111,8 @@
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/stack/medical/wrap/sticky_tape/pointy"
 	post_init_icon_state = "tape_spikes"
-	singular_name = "pointy tape"
-	desc = "Used for sticking to things for sticking said things inside people."
+	singular_name = "Fita pontuda."
+	desc = "Usado para se apegar às coisas por enfiar coisas ditas dentro das pessoas."
 	prefix = "pointy"
 	conferred_embed = /datum/embedding/pointy_tape
 	merge_type = /obj/item/stack/medical/wrap/sticky_tape/pointy
@@ -125,8 +125,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/pointy/super
 	name = "super pointy tape"
-	singular_name = "super pointy tape"
-	desc = "You didn't know tape could look so sinister. Welcome to Space Station 13."
+	singular_name = "Fita super pontuda"
+	desc = "Você não sabia que fita podia parecer tão sinistro. Bem-vindo à Estação Espacial 13."
 	prefix = "super pointy"
 	conferred_embed = /datum/embedding/pointy_tape/super
 	merge_type = /obj/item/stack/medical/wrap/sticky_tape/pointy/super
@@ -138,8 +138,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/surgical
 	name = "surgical tape"
-	singular_name = "surgical tape"
-	desc = "Made for patching broken bones back together alongside bone gel, not for playing pranks."
+	singular_name = "Fita cirúrgica."
+	desc = "Feito para remendar ossos quebrados juntos ao lado de gel de osso, não para brincadeiras."
 	prefix = "surgical"
 	conferred_embed = /datum/embedding/sticky_tape/surgical
 	splint_factor = 0.5
@@ -156,8 +156,8 @@
 
 /obj/item/stack/medical/wrap/sticky_tape/duct
 	name = "duct tape"
-	singular_name = "duct tape"
-	desc = "Tape designed for sealing punctures, holes and breakages in objects. Engineers swear by this stuff for practically all kinds of repairs. Maybe a little TOO much..."
+	singular_name = "Fita adesiva."
+	desc = "Fita projetada para selar perfurações, furos e quebras em objetos. Engenheiros juram por isso para praticamente todos os tipos de reparos. Talvez um pouco demais..."
 	prefix = "duct taped"
 	conferred_embed = /datum/embedding/sticky_tape/duct
 	merge_type = /obj/item/stack/medical/wrap/sticky_tape/duct
@@ -195,7 +195,7 @@
 		return NONE
 
 	if(HAS_TRAIT(interacting_with, TRAIT_DUCT_TAPE_UNREPAIRABLE))
-		user.balloon_alert(user, "cannot be repaired with duct tape!")
+		user.balloon_alert(user, "Não pode ser reparado com fita adesiva!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/object_to_repair = interacting_with

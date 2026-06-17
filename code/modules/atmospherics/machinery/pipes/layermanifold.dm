@@ -2,7 +2,7 @@
 	name = "layer adaptor"
 	icon = 'icons/obj/pipes_n_cables/manifold.dmi'
 	icon_state = "manifoldlayer"
-	desc = "A special pipe to bridge pipe layers with."
+	desc = "Um tubo especial para cobrir camadas de tubos."
 	dir = SOUTH
 	initialize_directions = NORTH|SOUTH
 	pipe_flags = PIPING_ALL_LAYER | PIPING_DEFAULT_LAYER_ONLY | PIPING_CARDINAL_AUTONORMALIZE | PIPING_BRIDGE

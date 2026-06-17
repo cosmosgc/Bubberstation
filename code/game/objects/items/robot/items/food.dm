@@ -5,7 +5,7 @@
 
 /obj/item/borg/lollipop
 	name = "treat fabricator"
-	desc = "Reward humans with various treats. Toggle in-module to switch between dispensing and high velocity ejection modes."
+	desc = "Recompensar humanos com várias guloseimas. Alternar o módulo para alternar entre a dispensação e os modos de ejeção de alta velocidade."
 	icon_state = "lollipop"
 	/// The current amount of available candy
 	var/candy = 5
@@ -45,7 +45,7 @@
 ///Dispenses a lollipop
 /obj/item/borg/lollipop/proc/dispense(atom/atom_dispensed_to, mob/user)
 	if(candy <= 0)
-		to_chat(user, span_warning("No treats left in storage!"))
+		to_chat(user, span_warning("Não sobraram guloseimas no depósito!"))
 		return FALSE
 	var/turf/turf_to_dispense_to = get_turf(atom_dispensed_to)
 	if(!turf_to_dispense_to || !isopenturf(turf_to_dispense_to))
@@ -72,9 +72,9 @@
 	check_amount()
 
 	if(into_hands)
-		user.visible_message(span_notice("[user] dispenses a treat into the hands of [atom_dispensed_to]."), span_notice("You dispense a treat into the hands of [atom_dispensed_to]."), span_hear("You hear a click."))
+		user.visible_message(span_notice("[user] dispenses a treat into the hands of [atom_dispensed_to]."), span_notice("You dispense a treat into the hands of [atom_dispensed_to]."), span_hear("Você ouve um clique."))
 	else
-		user.visible_message(span_notice("[user] dispenses a treat."), span_notice("You dispense a treat."), span_hear("You hear a click."))
+		user.visible_message(span_notice("[user] dispenses a treat."), span_notice("Você dispensa um deleite."), span_hear("Você ouve um clique."))
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	return TRUE
@@ -82,7 +82,7 @@
 /// Shoot a lollipop
 /obj/item/borg/lollipop/proc/shootL(atom/target, mob/living/user, params)
 	if(candy <= 0)
-		to_chat(user, span_warning("Not enough lollipops left!"))
+		to_chat(user, span_warning("Não sobraram pirulitos suficientes!"))
 		return FALSE
 	candy--
 
@@ -101,7 +101,7 @@
 /// Shoot a gumball
 /obj/item/borg/lollipop/proc/shootG(atom/target, mob/living/user, params)
 	if(candy <= 0)
-		to_chat(user, span_warning("Not enough gumballs left!"))
+		to_chat(user, span_warning("Faltam chicletes!"))
 		return FALSE
 	candy--
 	var/obj/item/ammo_casing/gumball/gumball
@@ -122,7 +122,7 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 		if(!robot_user.cell?.use(0.012 * STANDARD_CELL_CHARGE))
-			to_chat(user, span_warning("Not enough power."))
+			to_chat(user, span_warning("Não há energia suficiente."))
 			return ITEM_INTERACT_BLOCKING
 
 	switch(mode)
@@ -141,7 +141,7 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 		if(!robot_user.cell?.use(0.012 * STANDARD_CELL_CHARGE))
-			to_chat(user, span_warning("Not enough power."))
+			to_chat(user, span_warning("Não há energia suficiente."))
 			return ITEM_INTERACT_BLOCKING
 
 	switch(mode)
@@ -159,20 +159,20 @@
 	switch(mode)
 		if(DISPENSE_LOLLIPOP_MODE)
 			mode = THROW_LOLLIPOP_MODE
-			to_chat(user, span_notice("Module is now throwing lollipops."))
+			to_chat(user, span_notice("Módulo agora está jogando pirulitos."))
 		if(THROW_LOLLIPOP_MODE)
 			mode = THROW_GUMBALL_MODE
-			to_chat(user, span_notice("Module is now blasting gumballs."))
+			to_chat(user, span_notice("O módulo está explodindo chicletes."))
 		if(THROW_GUMBALL_MODE)
 			mode = DISPENSE_ICECREAM_MODE
-			to_chat(user, span_notice("Module is now dispensing ice cream."))
+			to_chat(user, span_notice("Módulo agora está distribuindo sorvete."))
 		if(DISPENSE_ICECREAM_MODE)
 			mode = DISPENSE_LOLLIPOP_MODE
-			to_chat(user, span_notice("Module is now dispensing lollipops."))
+			to_chat(user, span_notice("Módulo agora está distribuindo pirulitos."))
 
 /obj/item/borg/lollipop/ice_cream
 	name = "ice cream fabricator"
-	desc = "Reward humans with vanilla ice cream. Can't go wrong with it."
+	desc = "Recompensa humanos com sorvete de baunilha. Não dá para errar."
 	candy = 4
 	candymax = 4
 	charge_delay = 15 SECONDS
@@ -183,7 +183,7 @@
 
 /obj/item/ammo_casing/gumball
 	name = "Gumball"
-	desc = "Why are you seeing this?!"
+	desc = "Por que está vendo isso?"
 	projectile_type = /obj/projectile/bullet/gumball
 	click_cooldown_override = 2
 
@@ -196,7 +196,7 @@
 
 /obj/projectile/bullet/gumball
 	name = "gumball"
-	desc = "Oh noes! A fast-moving gumball!"
+	desc = "Oh noes! Um chiclete rápido!"
 	icon_state = "gumball"
 	damage = 0
 	speed = 2
@@ -216,7 +216,7 @@
 
 /obj/item/ammo_casing/lollipop //NEEDS RANDOMIZED COLOR LOGIC.
 	name = "Lollipop"
-	desc = "Why are you seeing this?!"
+	desc = "Por que está vendo isso?"
 	projectile_type = /obj/projectile/bullet/lollipop
 	click_cooldown_override = 2
 
@@ -229,7 +229,7 @@
 
 /obj/projectile/bullet/lollipop
 	name = "lollipop"
-	desc = "Oh noes! A fast-moving lollipop!"
+	desc = "Oh noes! Um pirulito em movimento rápido!"
 	icon_state = "lollipop_1"
 	damage = 0
 	speed = 2
@@ -271,7 +271,7 @@
 
 /obj/item/borg/cookbook
 	name = "Codex Cibus Mechanicus"
-	desc = "It's a robot cookbook!"
+	desc = "É um livro de receitas robô!"
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "cooked_book"
 	item_flags = NOBLUDGEON

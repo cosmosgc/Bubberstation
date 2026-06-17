@@ -2,7 +2,7 @@
 
 /obj/machinery/vending/runic_vendor
 	name = "\improper Runic Vending Machine"
-	desc = "This vending machine was designed for warfare! A perfect bait for Nanotrasen's crew thirst for consumerism."
+	desc = "Esta máquina foi projetada para a guerra! Uma isca perfeita para a tripulação de Nanotrasen sede de consumismo."
 	icon_state = "RunicVendor"
 	panel_type = "panel10"
 	product_slogans = "Come get free magic!;50% off on Mjollnirs today!; Buy a warp whistle and get another one free!"
@@ -79,7 +79,7 @@
 		for(var/mob/living/mob_to_be_pulsed_back in pulsing_turf.contents)
 			hit_things += mob_to_be_pulsed_back
 			var/atom/target = get_edge_target_turf(mob_to_be_pulsed_back, get_dir(src, get_step_away(mob_to_be_pulsed_back, src)))
-			to_chat(mob_to_be_pulsed_back, span_userdanger("The field repels you with tremendous force!"))
+			to_chat(mob_to_be_pulsed_back, span_userdanger("O campo repele você com uma força tremenda!"))
 			playsound(src, 'sound/effects/gravhit.ogg', 50, TRUE)
 			mob_to_be_pulsed_back.throw_at(target, 4, 4)
 

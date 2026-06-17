@@ -90,7 +90,7 @@
 	// At over 10 damage we apply a lot of eye blur
 	target.adjust_eye_blur_up_to(30 SECONDS, EYESTAB_MAX_BLUR)
 	if (target.stat != DEAD && started_bleeding)
-		to_chat(target, span_danger("Your eyes start to bleed profusely!"))
+		to_chat(target, span_danger("Seus olhos começam a sangrar profusamente!"))
 
 	// At over 10 damage, we cause at least enough eye damage to force nearsightedness
 	if (!target.is_nearsighted_from(EYE_DAMAGE) && eyes.damage <= eyes.low_threshold)
@@ -100,7 +100,7 @@
 	if (prob(50) && target.stat != DEAD)
 		var/list/dropped = target.drop_all_held_items()
 		if(length(dropped))
-			to_chat(target, span_danger("You drop what you're holding and clutch at your eyes!"))
+			to_chat(target, span_danger("Largue o que está segurando e segure nos olhos!"))
 		target.adjust_eye_blur_up_to(20 SECONDS, EYESTAB_MAX_BLUR)
 		target.Unconscious(2 SECONDS)
 		target.Paralyze(4 SECONDS)

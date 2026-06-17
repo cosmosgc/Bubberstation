@@ -42,7 +42,7 @@
 /datum/element/simple_rotation/proc/ExamineMessage(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(rotation_flags & ROTATION_REQUIRE_WRENCH)
-		examine_list += span_notice("This requires a wrench to be rotated.")
+		examine_list += span_notice("Isso requer uma chave para ser girada.")
 
 /datum/element/simple_rotation/proc/rotate_right(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -89,14 +89,14 @@
 		var/obj/item/tool = user.get_active_held_item()
 		if(!tool || tool.tool_behaviour != TOOL_WRENCH)
 			if(!silent)
-				object_to_rotate.balloon_alert(user, "need a wrench!")
+				object_to_rotate.balloon_alert(user, "Precisa de uma chave inglesa!")
 			return FALSE
 
 	if(!(rotation_flags & ROTATION_IGNORE_ANCHORED) && object_to_rotate.anchored)
 		if(istype(object_to_rotate, /obj/structure/window) && !silent)
-			object_to_rotate.balloon_alert(user, "need to unscrew!")
+			object_to_rotate.balloon_alert(user, "Preciso desaparafusar!")
 		else if(!silent)
-			object_to_rotate.balloon_alert(user, "need to unwrench!")
+			object_to_rotate.balloon_alert(user, "Preciso soltar a chave!")
 		return FALSE
 
 	if(rotation_flags & ROTATION_NEEDS_ROOM)
@@ -105,14 +105,14 @@
 		var/fulltile = istype(window_to_rotate) ? window_to_rotate.fulltile : FALSE
 		if(!valid_build_direction(object_to_rotate.loc, target_dir, is_fulltile = fulltile))
 			if(!silent)
-				object_to_rotate.balloon_alert(user, "can't rotate in that direction!")
+				object_to_rotate.balloon_alert(user, "Não pode girar nessa direção!")
 			return FALSE
 
 	if(rotation_flags & ROTATION_NEEDS_UNBLOCKED)
 		var/turf/rotate_turf = get_turf(object_to_rotate)
 		if(rotate_turf.is_blocked_turf(source_atom = object_to_rotate))
 			if(!silent)
-				object_to_rotate.balloon_alert(user, "rotation is blocked!")
+				object_to_rotate.balloon_alert(user, "A rotação está bloqueada!")
 			return FALSE
 
 	return TRUE

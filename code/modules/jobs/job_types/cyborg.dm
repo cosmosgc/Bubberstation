@@ -1,6 +1,6 @@
 /datum/job/cyborg
 	title = JOB_CYBORG
-	description = "Assist the crew, follow your laws, obey your AI."
+	description = "Ajude a tripulação, siga suas leis, obedeça sua IA."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
 	total_positions = 3	// SKYRAT EDIT: Original value (0)
@@ -39,12 +39,12 @@
 			robot_spawn.notify_ai(AI_NOTIFICATION_AI_SHELL)
 		else
 			robot_spawn.notify_ai(TRUE)
-		robot_spawn.visible_message(span_notice("[robot_spawn] gently chimes."), span_notice("LawSync protocol engaged."))
+		robot_spawn.visible_message(span_notice("[robot_spawn] gently chimes."), span_notice("Protocolo LawSync ativado."))
 		robot_spawn.lawupdate = TRUE
 		robot_spawn.lawsync()
 		robot_spawn.show_laws()
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_HOS_AI))
-			robot_spawn.visible_message(self_message = span_alert("Securityborg has been enabled for this shift."))
+			robot_spawn.visible_message(self_message = span_alert("Securityborg foi habilitado para este turno."))
 	//SKYRAT EDIT END
 	if(!robot_spawn.connected_ai) // Only log if there's no Master AI
 		robot_spawn.log_current_laws()

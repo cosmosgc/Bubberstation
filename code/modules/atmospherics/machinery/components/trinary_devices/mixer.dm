@@ -3,7 +3,7 @@
 	density = FALSE
 
 	name = "gas mixer"
-	desc = "Very useful for mixing gasses."
+	desc = "Muito útil para misturar gases."
 
 	can_unwrench = TRUE
 	construction_type = /obj/item/pipe/trinary/flippable

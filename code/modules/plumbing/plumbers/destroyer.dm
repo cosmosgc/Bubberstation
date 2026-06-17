@@ -3,7 +3,7 @@
 
 /obj/machinery/plumbing/disposer
 	name = "chemical disposer"
-	desc = "Breaks down chemicals and annihilates them."
+	desc = "Quebra produtos químicos e os aniquila."
 	icon_state = "disposal"
 	base_icon_state = "disposal"
 	pass_flags_self = PASSMACHINE | LETPASSTHROW // Small
@@ -22,7 +22,7 @@
 /obj/machinery/plumbing/disposer/examine(mob/user)
 	. = ..()
 	. += span_notice("It is disposing [disposal_rate]u reagents per second.")
-	. += span_notice("Use hand to change disposal rate.")
+	. += span_notice("Use a mão para mudar a taxa de eliminação.")
 
 /obj/machinery/plumbing/disposer/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(isnull(held_item))

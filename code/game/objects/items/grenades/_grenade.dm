@@ -3,7 +3,7 @@
  */
 /obj/item/grenade
 	name = "grenade"
-	desc = "It has an adjustable timer."
+	desc = "Tem um temporizador ajustável."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "grenade"
@@ -112,7 +112,7 @@
 
 	var/clumsy = HAS_TRAIT(user, TRAIT_CLUMSY)
 	if(clumsy && (clumsy_check == GRENADE_CLUMSY_FUMBLE) && prob(50))
-		to_chat(user, span_warning("Huh? How does this thing work?"))
+		to_chat(user, span_warning("Huh? Como isso funciona?"))
 		arm_grenade(user, 5, FALSE)
 		return TRUE
 	else if(!clumsy && (clumsy_check == GRENADE_NONCLUMSY_FUMBLE))
@@ -225,7 +225,7 @@
 	if(change_det_time())
 		tool.play_tool_sound(src)
 		if(det_time == 0)
-			to_chat(user, span_notice("You modify the time delay. It's set to be instantaneous."))
+			to_chat(user, span_notice("Você modifica o atraso. Está definido para ser instantâneo."))
 		else
 			to_chat(user, span_notice("You modify the time delay. It's set for [DisplayTimeText(det_time)]."))
 		return TRUE
@@ -243,7 +243,7 @@
 	if(!user.can_perform_action(src))
 		return
 	if(newtime == "Instant" && change_det_time(0))
-		to_chat(user, span_notice("You modify the time delay. It's set to be instantaneous."))
+		to_chat(user, span_notice("Você modifica o atraso. Está definido para ser instantâneo."))
 		return
 	newtime = round(text2num(newtime))
 	if(change_det_time(newtime))

@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/security
 	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "Costumava acessar as várias câmeras da estação."
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
 	circuit = /obj/item/circuitboard/computer/security
@@ -189,7 +189,7 @@
 // SECURITY MONITORS
 /obj/machinery/computer/security/wooden_tv
 	name = "security camera monitor"
-	desc = "An old TV hooked into the station's camera network."
+	desc = "Uma velha TV ligada à rede de câmeras da estação."
 	icon_state = "television"
 	icon_keyboard = null
 	icon_screen = "detective_tv"
@@ -197,7 +197,7 @@
 
 /obj/machinery/computer/security/mining
 	name = "outpost camera console"
-	desc = "Used to access the various cameras on the outpost."
+	desc = "Costumava acessar as várias câmeras no posto avançado."
 	icon_screen = "mining"
 	icon_keyboard = "mining_key"
 	network = list(CAMERANET_NETWORK_MINE, CAMERANET_NETWORK_AUXBASE)
@@ -205,25 +205,25 @@
 
 /obj/machinery/computer/security/research
 	name = "research camera console"
-	desc = "Used to access the various cameras in science."
+	desc = "Costumava acessar as várias câmeras da ciência."
 	network = list(CAMERANET_NETWORK_RD)
 	circuit = /obj/item/circuitboard/computer/research
 
 /obj/machinery/computer/security/hos
 	name = "\improper Head of Security's camera console"
-	desc = "A custom security console with added access to the labor camp network."
+	desc = "Um console de segurança personalizado com acesso adicional à rede de campos de trabalho."
 	network = list(CAMERANET_NETWORK_SS13, CAMERANET_NETWORK_LABOR)
 	circuit = null
 
 /obj/machinery/computer/security/labor
 	name = "labor camp monitoring"
-	desc = "Used to access the various cameras on the labor camp."
+	desc = "Costumava acessar as várias câmeras do campo de trabalho."
 	network = list(CAMERANET_NETWORK_LABOR)
 	circuit = null
 
 /obj/machinery/computer/security/qm
 	name = "\improper Quartermaster's camera console"
-	desc = "A console with access to the mining, auxiliary base and vault camera networks."
+	desc = "Um console com acesso à mineração, base auxiliar e rede de câmeras."
 	network = list(CAMERANET_NETWORK_MINE, CAMERANET_NETWORK_AUXBASE, CAMERANET_NETWORK_VAULT)
 	circuit = null
 

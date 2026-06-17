@@ -2,13 +2,13 @@
 
 /datum/scripture/marauder
 	name = "Summon Clockwork Marauder"
-	desc = "Summons a Clockwork Marauder, a powerful warrior that can deflect ranged attacks. Requires 100 vitality."
+	desc = "Invoca uma Marauder Clockwork, um poderoso guerreiro que pode desviar ataques variados. Requer 100 de vitalidade."
 	tip = "Use Clockwork Marauders as a powerful soldier to send into combat when the fighting gets rough."
 	button_icon_state = "Clockwork Marauder"
 	power_cost = 2000
 	vitality_cost = 100
 	invocation_time = 30 SECONDS
-	invocation_text = list("Through the fires and flames...", "nothing outshines Eng'Ine!")
+	invocation_text = list("Através dos fogos e chamas...", "Nada supera Eng'Ine!")
 	category = SPELLTYPE_PRESERVATION
 	cogs_required = 6
 	invokers_required = 3
@@ -27,7 +27,7 @@
 		selected = pick(candidates)
 
 	if(!selected)
-		to_chat(invoker, span_brass("<i>There are no ghosts willing to be a Clockwork Marauder!</i>"))
+		to_chat(invoker, span_brass("<i>Não há fantasmas dispostos a ser um Marauder Clockwork!</i>"))
 		invoke_fail()
 
 		if(invocation_chant_timer)

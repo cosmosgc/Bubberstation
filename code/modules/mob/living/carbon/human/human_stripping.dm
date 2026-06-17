@@ -112,14 +112,14 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		return
 
 	if(!user.Adjacent(source))
-		source.balloon_alert(user, "can't reach!")
+		source.balloon_alert(user, "Não consigo alcançar!")
 		return
 
 	to_chat(source, span_notice("[user] is trying to adjust your [jumpsuit.name]'s sensor."))
 	if(!do_after(user, jumpsuit.strip_delay * 0.5, source) || !jumpsuit.set_sensor_mode(new_mode)) // takes the same amount of time as adjusting it
-		source.balloon_alert(user, "failed!")
+		source.balloon_alert(user, "Falhou!")
 		return
-	source.balloon_alert(user, "changed sensors")
+	source.balloon_alert(user, "Os sensores foram alterados.")
 	to_chat(source, span_notice("[user] successfully adjusted your [jumpsuit.name]'s sensor."))
 	user.log_message("changed suit sensors of [key_name(source)] to [new_mode_str]", LOG_ATTACK, color="red")
 	source.log_message("suit sensors changed to [new_mode_str] by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
@@ -137,12 +137,12 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		return
 
 	if(!user.Adjacent(source))
-		source.balloon_alert(user, "can't reach!")
+		source.balloon_alert(user, "Não consigo alcançar!")
 		return
 
 	to_chat(source, span_notice("[user] is trying to take [chosen_accessory] off of [jumpsuit]!"))
 	if(!do_after(user, chosen_accessory.strip_delay, source))
-		source.balloon_alert(user, "failed!")
+		source.balloon_alert(user, "Falhou!")
 		return
 
 	to_chat(source, span_notice("[user] has taken [chosen_accessory] off of [jumpsuit]."))

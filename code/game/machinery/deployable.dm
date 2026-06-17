@@ -10,7 +10,7 @@
 
 /obj/structure/barricade
 	name = "chest high wall"
-	desc = "Looks like this would make good cover."
+	desc = "Parece que isso daria um bom disfarce."
 	anchored = TRUE
 	density = TRUE
 	max_integrity = 100
@@ -36,7 +36,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "already full integrity!")
+		balloon_alert(user, "Já integridade total!")
 		return ITEM_INTERACT_BLOCKING
 
 	user.balloon_alert_to_viewers("repairing [src]...", "repairing...")
@@ -65,7 +65,7 @@
 /////BARRICADE TYPES///////
 /obj/structure/barricade/wooden
 	name = "wooden barricade"
-	desc = "This space is blocked off by a wooden barricade."
+	desc = "Este espaço está bloqueado por uma barricada de madeira."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "woodenbarricade"
 	resistance_flags = FLAMMABLE
@@ -84,10 +84,10 @@
 	AddElement(/datum/element/uses_girder_wall_recipes)
 
 /obj/structure/barricade/wooden/crowbar_act(mob/living/user, obj/item/tool)
-	balloon_alert(user, "deconstructing barricade...")
+	balloon_alert(user, "Desconstruindo barricada...")
 	if(!tool.use_tool(src, user, 2 SECONDS, volume=50))
 		return
-	loc.balloon_alert(user, "barricade deconstructed")
+	loc.balloon_alert(user, "Barricada desconstruída.")
 	tool.play_tool_sound(src)
 	new /obj/item/stack/sheet/mineral/wood(get_turf(src), drop_amount)
 	qdel(src)
@@ -95,7 +95,7 @@
 
 /obj/structure/barricade/wooden/crude
 	name = "crude plank barricade"
-	desc = "This space is blocked off by a crude assortment of planks."
+	desc = "Este espaço é bloqueado por uma variedade de tábuas."
 	icon_state = "plankbarricade"
 	drop_amount = 1
 	max_integrity = 50
@@ -103,7 +103,7 @@
 	layer = SIGN_LAYER
 
 /obj/structure/barricade/wooden/crude/snow
-	desc = "This space is blocked off by a crude assortment of planks. It seems to be covered in a layer of snow."
+	desc = "Este espaço é bloqueado por uma variedade de tábuas. Parece estar coberto de uma camada de neve."
 	icon_state = "plankbarricade_snow"
 	max_integrity = 75
 
@@ -112,7 +112,7 @@
 
 /obj/structure/barricade/sandbags
 	name = "sandbags"
-	desc = "Bags of sand. Self explanatory."
+	desc = "Sacos de areia. Auto explicativo."
 	icon = 'icons/obj/smooth_structures/sandbags.dmi'
 	icon_state = "sandbags-0"
 	base_icon_state = "sandbags"
@@ -131,7 +131,7 @@
 
 /obj/structure/barricade/security
 	name = "security barrier"
-	desc = "A deployable barrier. Provides good cover in fire fights."
+	desc = "Uma barreira implantável. Oferece boa cobertura em lutas de fogo."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrier1"
 	max_integrity = 180
@@ -148,7 +148,7 @@
 
 /obj/item/grenade/barrier
 	name = "barrier grenade"
-	desc = "Instant cover."
+	desc = "Cobertura instantânea."
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "wallbang"
 	inhand_icon_state = "flashbang"
@@ -157,7 +157,7 @@
 
 /obj/item/grenade/barrier/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to toggle modes.")
+	. += span_notice("Alt-click para alternar modos.")
 
 /obj/item/grenade/barrier/click_alt(mob/living/carbon/user)
 	toggle_mode(user)
@@ -204,7 +204,7 @@
 
 /obj/item/deployable_turret_folded
 	name = "folded heavy machine gun"
-	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
+	desc = "Uma metralhadora pesada dobrada e descarregada, pronta para ser usada."
 	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "folded_hmg"
 	inhand_icon_state = "folded_hmg"

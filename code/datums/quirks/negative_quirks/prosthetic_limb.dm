@@ -1,6 +1,6 @@
 /datum/quirk/prosthetic_limb
 	name = "Prosthetic Limb"
-	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a surplus prosthetic!"
+	desc = "Um acidente fez você perder um de seus membros. Por causa disso, você agora tem uma prótese excedente!"
 	icon = "tg-prosthetic-leg"
 	value = -3
 	hardcore_value = 3

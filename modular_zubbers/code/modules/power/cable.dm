@@ -17,7 +17,7 @@
 	if(isnull(preferred_limb) || !IS_ROBOTIC_LIMB(preferred_limb))
 		return NONE
 	if(!(preferred_limb.burn_dam > 0))
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 	var/list/damaged_limbs = list()
 	for(var/obj/item/bodypart/limb as anything in carbon_patient.bodyparts)
@@ -33,7 +33,7 @@
 		var/list/updated_damaged_limbs = damaged_limbs
 		updated_damaged_limbs.Remove(repaired)
 		if(!length(damaged_limbs))
-			user.balloon_alert(user, "fully repaired")
+			user.balloon_alert(user, "totalmente reparado.")
 			return ITEM_INTERACT_SUCCESS
 		user.balloon_alert(user, "repairing [updated_damaged_limbs[1]]")
 		INVOKE_ASYNC(src, PROC_REF(try_auto_heal), interacting_with, user, updated_damaged_limbs, preferred_limb)

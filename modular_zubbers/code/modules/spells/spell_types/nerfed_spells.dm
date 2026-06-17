@@ -2,11 +2,11 @@
 //Barnyard Curse. Clears the curse after 3 minutes.
 /datum/spellbook_entry/barnyard
 	name = "Lesser Barnyard Curse"
-	desc = "This spell dooms an unlucky soul to possess the speech and facial attributes of a barnyard animal. Lasts 3 minutes."
+	desc = "Este feitiço condena uma alma azarada a possuir a fala e atributos faciais de um animal de celeiro. Dura 3 minutos."
 
 /datum/action/cooldown/spell/pointed/barnyardcurse
 	name = "Lesser Barnyard Curse"
-	desc = "This spell dooms an unlucky soul to possess the speech and facial attributes of a barnyard animal. Lasts 3 minutes."
+	desc = "Este feitiço condena uma alma azarada a possuir a fala e atributos faciais de um animal de celeiro. Dura 3 minutos."
 
 /obj/item/clothing/mask/animal/make_cursed()
 	. = ..()
@@ -17,11 +17,11 @@
 //Mind Transfer. Can no longer be used on targets with minds.
 /datum/spellbook_entry/mindswap
 	name = "Lesser Mind Swap"
-	desc = "Allows you to switch bodies with a <b>soulless</b> target next to you. You will both fall asleep when this happens, and it will be quite obvious that you are the target's body if someone watches you do it."
+	desc = "Permite que você troque de corpo com um<b>Sem alma</b>Alvo ao seu lado. Vocês dois dormirão quando isso acontecer, e será bem óbvio que você é o corpo do alvo se alguém assistir você fazer isso."
 
 /datum/action/cooldown/spell/pointed/mind_transfer
 	name = "Lesser Mind Swap"
-	desc = "This spell allows the user to switch bodies with a target next to them. Only works on \"soulless\" targets."
+	desc = "Este feitiço permite ao usuário trocar corpos com um alvo ao lado deles. Só funciona em\"Sem alma\"Alvos."
 	target_requires_key = FALSE
 	target_requires_mind = FALSE
 
@@ -41,11 +41,11 @@
 
 /datum/spellbook_entry/disintegrate
 	name = "Lesser Smite"
-	desc = "Charges your hand with an unholy energy, causing a touched victim to instantly die and their corpse flung a great distance."
+	desc = "Carrega sua mão com uma energia profana, fazendo com que uma vítima tocada morra instantaneamente e seu cadáver jogue uma grande distância."
 
 /datum/action/cooldown/spell/touch/smite
 	name = "Lesser Smite"
-	desc = "This spell charges your hand with an unholy energy, causing a touched victim to instantly die and their corpse flung a great distance."
+	desc = "Este feitiço carrega sua mão com uma energia profana, fazendo com que uma vítima tocada morra instantaneamente e seu cadáver jogue uma grande distância."
 	invocation = "YA'YEET!!"
 	button_icon = 'icons/mob/nonhuman-player/cult.dmi'
 	button_icon_state = "shade_wizard"
@@ -74,25 +74,25 @@
 // Funny mechanic, but it was INSANELY generous on what you could imbue, causing near immortality. Mechanical changes are in the non-modular file of lichdom.dm
 /datum/spellbook_entry/lichdom
 	name = "Bind Fiery Soul"
-	desc = "An infernal necromantic pact that can forever bind your soul to a bulky item of your choosing, \
-		turning you into an immortal Lich. So long as the item remains intact, you will revive from death, \
-		no matter the circumstances. Be wary - with each revival, your body will become weaker, and \
-		it will become easier for others to find your item of power. \
-		Note that the fiery nature of the spell also requires it to be cast on a non-fireproof item, as the magic can't penetrate that way."
+	desc = "Um pacto necrômano infernal que pode ligar sua alma a um item volumosos de sua escolha.\
+Transformá-lo em um Lich imortal. Enquanto o item permanecer intacto, você reviverá da morte,\
+Não importa as circunstâncias. Tenha cuidado - com cada reavivamento, seu corpo ficará mais fraco, e\
+Será mais fácil para os outros acharem seu poder.\
+Note que a natureza ardente do feitiço também requer que ele seja lançado em um item não à prova de fogo, já que a magia não pode penetrar assim."
 
 /datum/action/cooldown/spell/lichdom
-	desc = "A fiery spell from the depths of hell that binds your soul to an item in your hands. \
-		Binding your soul to an item will turn you into an immortal Lich. \
-		So long as the item remains intact, you will revive from death, \
-		no matter the circumstances. \
-		Cannot be used on objects smaller than bulky or fireproof objects."
+	desc = "Um feitiço ardente das profundezas do inferno que liga sua alma a um item em suas mãos.\
+Amarrar sua alma a um item o transformará em um Lich imortal.\
+Enquanto o item permanecer intacto, você reviverá da morte,\
+Não importa as circunstâncias.\
+Não pode ser usado em objetos menores que objetos volumosos ou à prova de fogo."
 
 
 // High Frequency Spellblade. Holy fuck just looking at the code is nonsense holy fuck. Can slash through walls, and also gib people who are dead. Absolutely silly.
 // Replaces it with a banhammer that can send you to the perma brig because that's funnier.
 /datum/spellbook_entry/item/highfrequencyblade
 	name = "REAL Banhammer"
-	desc = "A completely REAL Banhammer that sends anyone it hits to the void for a short period of time. Stonger hits send people to the station's permabrig, if one exists."
+	desc = "Um Banhammer completamente REAL que manda qualquer um para o vazio por um curto período de tempo. Ataques mais fortes enviam pessoas para o Permabrig da estação, se existir."
 	item_path = /obj/item/banhammer/real
 	category = "Offensive"
 	cost = 2

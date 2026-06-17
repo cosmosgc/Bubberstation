@@ -186,12 +186,12 @@
 	if(cost_rank && bloodsuckerdatum.GetUnspentRank() <= 0)
 		return FALSE
 	if(blood_cost && bloodsuckerdatum.GetBloodVolume() < blood_cost)
-		human_user.balloon_alert(human_user, "not enough blood!")
+		human_user.balloon_alert(human_user, "Não há sangue suficiente!")
 		to_chat(human_user, span_notice("You need at the very least [blood_cost] blood to thicken your blood."))
 		return FALSE
 	// Prevent Bloodsuckers from purchasing a power while outside of their Coffin.
 	if(requires_coffin && !istype(human_user.loc, /obj/structure/closet/crate/coffin))
-		to_chat(human_user, span_warning("You must be in your Coffin to purchase Powers."))
+		to_chat(human_user, span_warning("Você deve estar no seu caixão para comprar Powers."))
 		return FALSE
 	if(!(initial(power.purchase_flags) & buy_power_flags))
 		to_chat(human_user, span_notice("[initial(power.name)] is not available for purchase."))
@@ -241,7 +241,7 @@
 		bloodsuckerdatum.owner.teach_crafting_recipe(/datum/crafting_recipe/candelabrum)
 		bloodsuckerdatum.owner.teach_crafting_recipe(/datum/crafting_recipe/bloodthrone)
 		bloodsuckerdatum.owner.teach_crafting_recipe(/datum/crafting_recipe/meatcoffin)
-		bloodsuckerdatum.owner.current.balloon_alert(bloodsuckerdatum.owner.current, "new recipes learned! Ghouling unlocked!")
+		bloodsuckerdatum.owner.current.balloon_alert(bloodsuckerdatum.owner.current, "Novas receitas aprendidas! Desbloqueado!")
 	return TRUE
 
 
@@ -272,13 +272,13 @@
 	var/mob/living/carbon/human/master = bloodsuckerdatum.owner.current
 	var/mob/living/carbon/human/servant = ghouldatum.owner.current
 	if(ghouldatum.special_type || IS_BLOODSUCKER(servant))
-		to_chat(master, span_notice("This Ghoul was already assigned a special position."))
+		to_chat(master, span_notice("Este Ghoul já tinha uma posição especial."))
 		return FALSE
 	if(!ghouldatum.owner.can_make_special(creator = bloodsuckerdatum.owner))
-		to_chat(master, span_notice("This Ghoul is unable to gain a Special rank due to innate features."))
+		to_chat(master, span_notice("Este Ghoul é incapaz de ganhar um posto especial devido a características inatas."))
 		return FALSE
 	if(bloodsuckerdatum.GetBloodVolume() < SPECIAL_GHOUL_COST)
-		to_chat(master, span_notice("You need at least 150 blood to make a Ghoul a Favorite Ghoul."))
+		to_chat(master, span_notice("Precisa de pelo menos 150 sangue para fazer um Ghoul um Ghoul Favorito."))
 		return FALSE
 	var/list/options = list()
 	var/list/radial_display = list()
@@ -294,7 +294,7 @@
 		option.info = "[initial(ghouldatums.name)] - [span_boldnotice(initial(ghouldatums.ghoul_description))]"
 		radial_display[initial(ghouldatums.name)] = option
 	if(!length(options))
-		master.balloon_alert(master, "out of Special Ghoul slots!")
+		master.balloon_alert(master, "Fora das slots especiais Ghoul!")
 		return FALSE
 
 	to_chat(master, span_notice("You can change who this Ghoul is, who are they to you? This will cost [SPECIAL_GHOUL_COST] blood."))
@@ -306,16 +306,16 @@
 	// let's ask if the ghoul themselves actually wants to be a favorite
 #ifndef BLOODSUCKER_TESTING
 	servant.balloon_alert(master, "asking...")
-	var/ghoul_permission = tgui_alert(servant, initial(ghoul_type.ghoul_description), "Become a Special Ghoul?", list("Yes", "No"), 1 MINUTES) == "Yes"
+	var/ghoul_permission = tgui_alert(servant, initial(ghoul_type.ghoul_description), "Tornar-se um Ghoul Especial?", list("Yes", "No"), 1 MINUTES) == "Yes"
 	if(!ghoul_permission)
-		servant.balloon_alert(master, "refused!")
+		servant.balloon_alert(master, "Recusado!")
 		return FALSE
 #endif
 	if(QDELETED(src) || QDELETED(master) || QDELETED(servant) || !ghoul_type)
 		return FALSE
 
 	if(bloodsuckerdatum.GetBloodVolume() < SPECIAL_GHOUL_COST)
-		to_chat(master, span_notice("You took too long to make your ghoul, you no longer have enough blood!"))
+		to_chat(master, span_notice("Você demorou muito para fazer seu ghoul, você não tem mais sangue suficiente!"))
 		return FALSE
 	ghouldatum.make_special(ghoul_type)
 	bloodsuckerdatum.AdjustBloodVolume(-SPECIAL_GHOUL_COST)

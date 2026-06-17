@@ -6,7 +6,7 @@
 	earliest_start = 10 MINUTES
 	max_occurrences = 6
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Summons a school of space carp."
+	description = "Chama uma escola de carpa espacial."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 3
 	admin_setup = list(/datum/event_admin_setup/carp_migration)
@@ -84,10 +84,10 @@
 
 /datum/event_admin_setup/carp_migration/prompt_admins()
 	targets_per_z = list()
-	if (tgui_alert(usr, "Direct carp to your current location? Only applies to your current Z level.", "Carp Direction", list("Yes", "No")) != "Yes")
+	if (tgui_alert(usr, "Carpa direta para sua localização atual? Só se aplica ao seu nível Z atual.", "Carp Direction", list("Yes", "No")) != "Yes")
 		return
 	record_admin_location()
-	while (tgui_alert(usr, "Add additional locations? Only applies to your current Z level.", "More Carp Direction", list("Yes", "No")) == "Yes")
+	while (tgui_alert(usr, "Adicionar locais adicionais? Só se aplica ao seu nível Z atual.", "More Carp Direction", list("Yes", "No")) == "Yes")
 		record_admin_location()
 
 /// Stores the admin's current location corresponding to the z level of that location

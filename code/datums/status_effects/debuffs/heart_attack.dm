@@ -38,7 +38,7 @@
 		return
 
 	if(time_until_stoppage > ATTACK_CURE_THRESHOLD)
-		owner.visible_message(span_nicegreen("[owner] relaxes [owner.p_their()] body and stops clutching at [owner.p_their()] chest!"), span_nicegreen("The pain in your chest has subsided. You're cured!"))
+		owner.visible_message(span_nicegreen("[owner] relaxes [owner.p_their()] body and stops clutching at [owner.p_their()] chest!"), span_nicegreen("A dor em seu peito diminuiu. Você está curado!"))
 		qdel(src)
 		return
 
@@ -61,13 +61,13 @@
 			owner.med_hud_set_status()
 			visible = TRUE //We do not reset this status until it's fully cured. Once it's been made apparent, there's no reason to hide it again until it is resolved. It will only confuse players.
 		if(SPT_PROB(15, seconds_between_ticks))
-			to_chat(owner, span_danger("You feel a sharp pain in your chest!"))
+			to_chat(owner, span_danger("Você sente uma dor aguda no peito!"))
 			if(SPT_PROB(15, seconds_between_ticks))
 				human_owner.vomit(VOMIT_CATEGORY_DEFAULT, lost_nutrition = 95)
 			owner.emote("cough")
 			oxyloss_sum += 1
 		if(SPT_PROB(8, seconds_between_ticks))
-			to_chat(owner, span_danger("You feel very weak and dizzy..."))
+			to_chat(owner, span_danger("Você se sente muito fraco e tonto..."))
 			owner.adjust_confusion_up_to(6 SECONDS, 10 SECONDS)
 			owner.adjust_stamina_loss(20)
 			owner.emote("cough")
@@ -76,7 +76,7 @@
 	if(time_until_stoppage <= ATTACK_STAGE_FOUR) //And now we compound it with even worse effects.
 
 		if(SPT_PROB(5, seconds_between_ticks))
-			to_chat(owner, span_userdanger("It feels like you're shutting down..."))
+			to_chat(owner, span_userdanger("Parece que você está desligando..."))
 			owner.adjust_dizzy_up_to(4 SECONDS, 10 SECONDS)
 			owner.adjust_eye_blur_up_to(4 SECONDS, 20 SECONDS)
 			owner.adjust_stamina_loss(20)
@@ -84,10 +84,10 @@
 		if(SPT_PROB(5, seconds_between_ticks))
 			owner.emote("cough")
 			if(SPT_PROB(5, seconds_between_ticks))
-				to_chat(owner, span_userdanger("You cough. Everything goes dark. You're going to die soon."))
+				to_chat(owner, span_userdanger("Você tosse. Tudo fica escuro. Você vai morrer logo."))
 				owner.adjust_temp_blindness(10 SECONDS) //Are you panicking yet? You should be panicking by now.
 			else
-				to_chat(owner, span_userdanger("As you cough, your chest surges in pain and darkness closes in around your sight."))
+				to_chat(owner, span_userdanger("Ao tossir, seu peito surge de dor e escuridão ao redor de sua vista."))
 				owner.adjust_temp_blindness(2 SECONDS)
 				owner.adjust_eye_blur_up_to(4 SECONDS, 20 SECONDS)
 			oxyloss_sum += 8
@@ -99,7 +99,7 @@
 
 	if(time_until_stoppage <= 0)
 		if(owner.stat == CONSCIOUS)
-			to_chat(owner, span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"))
+			to_chat(owner, span_userdanger("Você sente uma dor terrível no peito, como se seu coração tivesse parado!"))
 		owner.adjust_eye_blur(20 SECONDS)
 		human_owner.set_heartattack(TRUE)
 		owner.apply_status_effect(/datum/status_effect/heart_desperation) // To give the victim a final chance to shock their heart before losing consciousness
@@ -144,7 +144,7 @@
 	SIGNAL_HANDLER
 	time_until_stoppage += 18 //Good for keeping yourself up. Won't be easy to get over the cure threshold by yourself. You're going to need security beating the crap out of you with stunbatons, but it'll work.
 	if(prob(50)) //Also good for crafty solos who want to stunbaton themselves back to health. Timing will be key.
-		to_chat(owner, span_nicegreen("Something about being shocked makes the pain in your chest ease up!"))
+		to_chat(owner, span_nicegreen("Algo sobre ficar chocado faz a dor no seu peito aliviar!"))
 
 ///Makes major progress towards curing the attack.
 /datum/status_effect/heart_attack/proc/defib_shock(obj/item/shockpaddles/source)
@@ -157,7 +157,7 @@
 	SIGNAL_HANDLER
 	time_until_stoppage += (20 + shock_damage * 1.15)
 	if(prob(50))
-		to_chat(owner, span_nicegreen("Something about being electrocuted makes the pain in your chest ease up!"))
+		to_chat(owner, span_nicegreen("Algo sobre ser eletrocutado faz a dor no seu peito aliviar!"))
 
 ///Alternative to penthrite that keeps you up for a few seconds after having a heart attack. Gives a bit of time to call for help regardless of when/where you've collapsed.
 /datum/status_effect/heart_desperation

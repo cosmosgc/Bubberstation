@@ -1,7 +1,7 @@
 ///A bluespace input pipe for plumbing
 /obj/machinery/plumbing/sender
 	name = "chemical beacon"
-	desc = "A bluespace anchor for chemicals. Does not require power. Use a multitool linked to a Chemical Recipient on this machine to start teleporting reagents."
+	desc = "Uma âncora para produtos químicos. Não requer poder. Use uma multitool ligada a um receptor químico nesta máquina para começar a teletransportar reagentes."
 	icon_state = "beacon"
 	density = FALSE
 
@@ -14,7 +14,7 @@
 
 /obj/machinery/plumbing/sender/multitool_act(mob/living/user, obj/item/multitool/M)
 	if(!istype(M.buffer, /obj/machinery/plumbing/receiver))
-		to_chat(user, span_warning("Invalid buffer."))
+		to_chat(user, span_warning("Tampão inválido."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(target)
@@ -45,8 +45,8 @@
 ///A bluespace output pipe for plumbing. Supports multiple recipients. Must be constructed with a circuit board
 /obj/machinery/plumbing/receiver
 	name = "chemical recipient"
-	desc = "Receives chemicals from one or more chemical beacons. Use a multitool on this machine and then all subsequent chemical beacons. Reset by opening the \
-	panel and cutting the main wire."
+	desc = "Recebe produtos químicos de um ou mais faróis químicos. Use uma multitool nesta máquina e depois todos os sinais químicos subsequentes. Reinicie abrindo o\
+Painel e corte o fio principal."
 	icon_state = "recipient"
 	base_icon_state = "recipient"
 
@@ -65,7 +65,7 @@
 
 /obj/machinery/plumbing/receiver/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/plumbing/receiver/process(seconds_per_tick)

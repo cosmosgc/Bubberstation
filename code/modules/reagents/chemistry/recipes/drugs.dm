@@ -6,7 +6,7 @@
 /datum/chemical_reaction/krokodil
 	results = list(/datum/reagent/drug/krokodil = 6)
 	required_reagents = list(/datum/reagent/medicine/diphenhydramine = 1, /datum/reagent/medicine/morphine = 1, /datum/reagent/space_cleaner = 1, /datum/reagent/potassium = 1, /datum/reagent/phosphorus = 1, /datum/reagent/fuel = 1)
-	mix_message = "The mixture dries into a pale blue powder."
+	mix_message = "A mistura seca em um pó azul pálido."
 	required_temp = 380
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG
 

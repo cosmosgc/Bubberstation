@@ -4,7 +4,7 @@
 /mob/living/basic/spider/growing/young/guard
 	grow_as = /mob/living/basic/spider/giant/guard
 	name = "young guard spider"
-	desc = "Furry and brown, it looks defenseless. This one has sparkling red eyes."
+	desc = "Furo e marrom, parece indefeso. Este tem olhos vermelhos brilhantes."
 	maxHealth = 70
 	health = 70
 	melee_damage_lower = 10
@@ -20,7 +20,7 @@
 /mob/living/basic/spider/growing/young/ambush
 	grow_as = /mob/living/basic/spider/giant/ambush
 	name = "young ambush spider"
-	desc = "Furry and white, it looks defenseless. This one has sparkling pink eyes."
+	desc = "Furo e branco, parece indefeso. Este tem olhos rosa brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_ambush"
 	icon_dead = "young_ambush_dead"
@@ -40,7 +40,7 @@
 /mob/living/basic/spider/growing/young/scout
 	grow_as = /mob/living/basic/spider/giant/scout
 	name = "young scout spider"
-	desc = "Furry and black, it looks defenseless. This one has sparkling blue eyes."
+	desc = "Furo e preto, parece indefeso. Este tem olhos azuis brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_scout"
 	icon_dead = "young_scout_dead"
@@ -61,7 +61,7 @@
 /mob/living/basic/spider/growing/young/hunter
 	grow_as = /mob/living/basic/spider/giant/hunter
 	name = "young hunter spider"
-	desc = "Furry and black, it looks defenseless. This one has sparkling purple eyes."
+	desc = "Furo e preto, parece indefeso. Este tem olhos roxos brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_hunter"
 	icon_dead = "young_hunter_dead"
@@ -81,7 +81,7 @@
 /mob/living/basic/spider/growing/young/nurse
 	grow_as = /mob/living/basic/spider/giant/nurse
 	name = "young nurse spider"
-	desc = "Furry and black, it looks defenseless. This one has sparkling green eyes."
+	desc = "Furo e preto, parece indefeso. Este tem olhos verdes brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_nurse"
 	icon_dead = "young_nurse_dead"
@@ -112,7 +112,7 @@
 /mob/living/basic/spider/growing/young/tangle
 	grow_as = /mob/living/basic/spider/giant/tangle
 	name = "young tangle spider"
-	desc = "Furry and brown, it looks defenseless. This one has dim brown eyes."
+	desc = "Furo e marrom, parece indefeso. Este tem olhos castanhos escuros."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_tangle"
 	icon_dead = "young_tangle_dead"
@@ -145,7 +145,7 @@
 /// Prevent you from healing other tangle spiders, or healing when on fire
 /mob/living/basic/spider/growing/young/tangle/proc/can_mend(mob/living/source, mob/living/target)
 	if (on_fire)
-		balloon_alert(src, "on fire!")
+		balloon_alert(src, "Fogo!")
 		return FALSE
 	return TRUE
 
@@ -154,7 +154,7 @@
 /mob/living/basic/spider/growing/young/tank
 	grow_as = /mob/living/basic/spider/giant/tank
 	name = "young tank spider"
-	desc = "Furry and purple, it looks defenseless. This one has dim yellow eyes."
+	desc = "Furo e roxo, parece indefeso. Este tem olhos amarelos escuros."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_tank"
 	icon_dead = "young_tank_dead"
@@ -184,7 +184,7 @@
 /// Prevent you from healing when on fire
 /mob/living/basic/spider/growing/young/tank/proc/can_mend(mob/living/source, mob/living/target)
 	if (on_fire)
-		balloon_alert(src, "on fire!")
+		balloon_alert(src, "Fogo!")
 		return FALSE
 	return TRUE
 
@@ -192,7 +192,7 @@
 /mob/living/basic/spider/growing/young/breacher
 	grow_as = /mob/living/basic/spider/giant/breacher
 	name = "young breacher spider"
-	desc = "Furry and beige, it looks defenseless. This one has dim red eyes."
+	desc = "Furo e bege, parece indefeso. Este tem olhos vermelhos escuros."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_breacher"
 	icon_dead = "young_breacher_dead"
@@ -211,7 +211,7 @@
 /mob/living/basic/spider/growing/young/midwife
 	grow_as = /mob/living/basic/spider/giant/midwife
 	name = "young broodmother spider"
-	desc = "Furry and black, it looks defenseless. This one has scintillating green eyes. Might also be hiding a real knife somewhere."
+	desc = "Furo e preto, parece indefeso. Este tem brilhantes olhos verdes. Pode estar escondendo uma faca de verdade em algum lugar."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_midwife"
 	icon_dead = "young_midwife_dead"
@@ -232,7 +232,7 @@
 /mob/living/basic/spider/growing/young/viper
 	grow_as = /mob/living/basic/spider/giant/viper
 	name = "young viper spider"
-	desc = "Furry and black, it looks defenseless. This one has sparkling magenta eyes."
+	desc = "Furo e preto, parece indefeso. Este tem olhos magenta brilhantes."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_viper"
 	icon_dead = "young_viper_dead"
@@ -248,7 +248,7 @@
 /mob/living/basic/spider/growing/young/tarantula
 	grow_as = /mob/living/basic/spider/giant/tarantula
 	name = "young tarantula spider"
-	desc = "Furry and black, it looks defenseless. This one has abyssal red eyes."
+	desc = "Furo e preto, parece indefeso. Este tem olhos vermelhos abissais."
 	icon = 'icons/mob/simple/arachnoid.dmi'
 	icon_state = "young_tarantula"
 	icon_dead = "young_tarantula_dead"

@@ -1,7 +1,7 @@
 /datum/action/changeling/defib_grasp
 	name = "Defibrillator Grasp"
-	desc = "We prepare ourselves while in stasis. If one of our enemies attempts to defibrillate us, \
-		we will snatch their arms off and instantly finalize our stasis."
+	desc = "Nos preparamos enquanto estamos em estase. Se um de nossos inimigos tentar nos desfibrilar,\
+Vamos arrancar seus braços e instantaneamente finalizar nossa estase."
 	helptext = "This ability is passive, and will trigger when a defibrillator paddle is applied to our chest \
 		while we are dead or in stasis. Will also stun cyborgs momentarily."
 	button_icon_state = "defibrillator_grasp"

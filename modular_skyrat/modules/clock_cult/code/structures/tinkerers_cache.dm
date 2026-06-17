@@ -1,11 +1,11 @@
 /obj/structure/destructible/clockwork/gear_base/powered/tinkerers_cache
 	name = "tinkerer's cache"
-	desc = "A bronze store filled with parts and components."
+	desc = "Uma loja de bronze cheia de peças e componentes."
 	icon_state = "tinkerers_cache"
 	base_icon_state = "tinkerers_cache"
-	clockwork_desc = "Can be used to forge powerful Ratvarian items and traps at the cost of power and time."
+	clockwork_desc = "Pode ser usado para forjar poderosos itens e armadilhas Ratvarian ao custo de energia e tempo."
 	anchored = TRUE
-	break_message = span_warning("The tinkerer's cache melts into a pile of brass.")
+	break_message = span_warning("O tesouro do lanchista derrete em uma pilha de latão.")
 	has_on_icon = FALSE
 	has_off_icon = FALSE
 	has_power_toggle = FALSE
@@ -59,11 +59,11 @@
 		return
 
 	if(!LAZYLEN(transmission_sigils))
-		to_chat(user, span_brass("This needs to be connected to a transmission sigil!"))
+		to_chat(user, span_brass("Isso precisa ser conectado a um sinal de transmissão!"))
 		return
 
 	if(!use_power(initial(chosen_item.power_use)))
-		to_chat(user, span_brass("You need more power to forge this item."))
+		to_chat(user, span_brass("Você precisa de mais poder para forjar este item."))
 		return
 
 	COOLDOWN_START(src, use_cooldown, 4 MINUTES * initial(chosen_item.time_delay_mult))

@@ -5,7 +5,7 @@
 // Accumulates junk liberally
 /datum/blobstrain/debris_devourer
 	name = "Debris Devourer"
-	description = "will launch accumulated debris into targets. Does very low brute damage without debris-launching."
+	description = "lançará detritos acumulados em alvos. Faz muito baixo dano bruto sem lançamento de detritos."
 	analyzerdescdamage = "Does very low brute damage and may grab onto melee weapons."
 	analyzerdesceffect = "Devours loose items left on the station, and releases them when attacking or attacked."
 	color = "#8B1000"
@@ -65,13 +65,13 @@
 	else
 		switch (round(max(min(DEBRIS_DENSITY, 10),0)))
 			if (0)
-				. += span_notice("There is not currently enough absorbed debris to reduce damage.")
+				. += span_notice("Não há detritos absorvidos o suficiente para reduzir os danos.")
 			if (1 to 3)
-				. += span_notice("Absorbed debris is currently reducing incoming damage by a very low amount.") // these roughly correspond with force description strings
+				. += span_notice("Escombros absorvidos estão reduzindo os danos em uma quantidade muito baixa.") // these roughly correspond with force description strings
 			if (4 to 7)
-				. += span_notice("Absorbed debris is currently reducing incoming damage by a low amount.")
+				. += span_notice("Escombros absorvidos estão reduzindo os danos em baixa quantidade.")
 			if (8 to 10)
-				. += span_notice("Absorbed debris is currently reducing incoming damage by a medium amount.")
+				. += span_notice("Escombros absorvidos estão reduzindo os danos em média.")
 
 /datum/blobstrain/debris_devourer/on_blobmob_atom_interacted(mob/living/minion, atom/interacted_atom, adjacent, modifiers)
 	. = ..()
@@ -79,7 +79,7 @@
 		return
 
 	if(minion.contents.len >= minion.mob_size * 5)
-		to_chat(minion, span_warning("You feel too full to eat more trash."))
+		to_chat(minion, span_warning("Está muito cheio para comer mais lixo."))
 		return
 
 	playsound(minion, 'sound/items/eatfood.ogg', 60, TRUE)

@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 
 /obj/item/cargo_teleporter
 	name = "cargo teleporter"
-	desc = "An item that can set down a set number of markers, allowing them to teleport items within a tile to the set markers."
+	desc = "Um item que pode definir um número de marcadores, permitindo que eles teletransportem itens dentro de um azulejo para os marcadores."
 	icon = 'modular_skyrat/modules/cargo_teleporter/icons/cargo_teleporter.dmi'
 	icon_state = "cargo_tele"
 	///the list of markers spawned by this item
@@ -12,8 +12,8 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 
 /obj/item/cargo_teleporter/examine(mob/user)
 	. = ..()
-	. += span_notice("Attack itself to set down the markers!")
-	. += span_notice("ALT-CLICK to remove all markers!")
+	. += span_notice("Ataque-se para baixar os marcadores!")
+	. += span_notice("ALT-CLICK para remover todos os marcadores!")
 
 /obj/item/cargo_teleporter/Destroy()
 	if(length(marker_children))
@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	if(length(marker_children) >= 3)
 		to_chat(user, span_warning("You may only have three spawned markers from [src]!"))
 		return
-	to_chat(user, span_notice("You place a cargo marker below your feet."))
+	to_chat(user, span_notice("Você coloca um marcador de carga abaixo dos pés."))
 	var/obj/effect/decal/cleanable/cargo_mark/spawned_marker = new /obj/effect/decal/cleanable/cargo_mark(get_turf(src))
 	playsound(src, 'sound/machines/click.ogg', 50)
 	spawned_marker.parent_item = src
@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 
 /datum/design/cargo_teleporter
 	name = "Cargo Teleporter"
-	desc = "A wonderful item that can set markers and teleport things to those markers."
+	desc = "Um item maravilhoso que pode colocar marcadores e teletransportar coisas para esses marcadores."
 	id = "cargotele"
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/cargo_teleporter
@@ -90,8 +90,8 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 
 /datum/techweb_node/cargo_teleporter
 	id = TECHWEB_NODE_CARGO_TELEPORTER
-	display_name = "Cargo Teleporter"
-	description = "We can teleport items across long distances, as long as they are not blocked."
+	display_name = "Teletransportador de Carga"
+	description = "Podemos teletransportar itens por longas distâncias, desde que não estejam bloqueados."
 	prereq_ids = list(TECHWEB_NODE_BLUESPACE_THEORY)
 	design_ids = list(
 		"cargotele",
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 
 /obj/effect/decal/cleanable/cargo_mark
 	name = "cargo mark"
-	desc = "A mark left behind by a cargo teleporter, which allows targeted teleportation. Can be removed by the cargo teleporter."
+	desc = "Uma marca deixada por um teletransportador, que permite teletransporte. Pode ser removido pelo teletransportador de carga."
 	icon = 'modular_skyrat/modules/cargo_teleporter/icons/cargo_teleporter.dmi'
 	icon_state = "marker"
 	///the reference to the item that spawned the cargo mark

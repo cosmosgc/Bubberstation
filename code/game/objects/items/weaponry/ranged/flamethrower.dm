@@ -1,6 +1,6 @@
 /obj/item/flamethrower
 	name = "flamethrower"
-	desc = "You are a firestarter!"
+	desc = "Você é um incendiário!"
 	icon = 'icons/obj/weapons/flamethrower.dmi'
 	icon_state = "flamethrowerbase"
 	inhand_icon_state = "flamethrower_0"
@@ -176,10 +176,10 @@
 
 /obj/item/flamethrower/proc/toggle_igniter(mob/user)
 	if(!ptank)
-		to_chat(user, span_notice("Attach a plasma tank first!"))
+		to_chat(user, span_notice("Coloque um tanque de plasma primeiro!"))
 		return
 	if(!status)
-		to_chat(user, span_notice("Secure the igniter first!"))
+		to_chat(user, span_notice("Segurem a ignição primeiro!"))
 		return
 	to_chat(user, span_notice("You [lit ? "extinguish" : "ignite"] [src]!"))
 	lit = !lit

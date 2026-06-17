@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 
 /obj/machinery/monkey_recycler
 	name = "monkey recycler"
-	desc = "A machine used for recycling dead monkeys into monkey cubes."
+	desc = "Uma máquina usada para reciclar macacos mortos em cubos de macacos."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "grinder"
 	base_icon_state = "grinder"
@@ -63,13 +63,13 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	if(!istype(target))
 		return
 	if(target.stat == CONSCIOUS)
-		to_chat(user, span_warning("The monkey is struggling far too much to put it in the recycler."))
+		to_chat(user, span_warning("O macaco está lutando demais para colocá-lo na reciclagem."))
 		return
 	if(target.buckled || target.has_buckled_mobs())
-		to_chat(user, span_warning("The monkey is attached to something."))
+		to_chat(user, span_warning("O macaco está preso a algo."))
 		return
 	qdel(target)
-	to_chat(user, span_notice("You stuff the monkey into the machine."))
+	to_chat(user, span_notice("Você enfia o macaco na máquina."))
 	playsound(src.loc, 'sound/machines/juicer.ogg', 50, TRUE)
 	var/offset = prob(50) ? -2 : 2
 	animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = 200) //start shaking
@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 
 /obj/machinery/monkey_recycler/interact(mob/user)
 	if(stored_matter >= 1)
-		to_chat(user, span_notice("The machine hisses loudly as it condenses the ground monkey meat. After a moment, it dispenses a brand new monkey cube."))
+		to_chat(user, span_notice("A máquina assobia alto enquanto condensa a carne de macaco moído. Depois de um momento, dispensa um novo cubo de macaco."))
 		playsound(src.loc, 'sound/machines/hiss.ogg', 50, TRUE)
 		for(var/i in 1 to floor(stored_matter))
 			new /obj/item/food/monkeycube(src.loc)
@@ -93,5 +93,5 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	. = ..()
 	if(istype(I))
 		I.set_buffer(src)
-		balloon_alert(user, "saved to multitool buffer")
+		balloon_alert(user, "salvo em multitool buffer")
 		return TRUE

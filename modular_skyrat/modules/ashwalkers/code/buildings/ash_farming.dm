@@ -58,7 +58,7 @@
  * check_examine is meant to listen for the COMSIG_ATOM_EXAMINE signal, where it will put additional information in the examine
  */
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
-	examine_list += span_notice("<br>You are able to plant seeds here!")
+	examine_list += span_notice("<br>Você é capaz de plantar sementes aqui!")
 
 /**
  * delete_farm is meant to be called when the parent of this component has been deleted-- thus deleting the ability to grow the simple farm
@@ -73,7 +73,7 @@
 
 /obj/structure/simple_farm
 	name = "simple farm"
-	desc = "A small little plant that has adapted to the surrounding environment."
+	desc = "Uma pequena planta que se adaptou ao ambiente circundante."
 	//it needs to be able to be walked through
 	density = FALSE
 	//it should not be pulled by anything
@@ -120,9 +120,9 @@
 	. = ..()
 	. += span_notice("<br>[src] will be ready for harvest in [DisplayTimeText(COOLDOWN_TIMELEFT(src, harvest_timer))]")
 	if(farm_level < SKILL_LEVEL_LEGENDARY)
-		. += span_notice("<br>You can use <b>worm fertilizer</b> to increase the level of the farm.")
+		. += span_notice("<br>Você pode usar<b>Adubo de minhoca</b>para aumentar o nível da fazenda.")
 	if(stored_worms < 5)
-		. += span_notice("<br>You can use <b>worms</b> to increase the performance of the farm.")
+		. += span_notice("<br>Você pode usar<b>Vermes</b>para aumentar o desempenho da fazenda.")
 
 /obj/structure/simple_farm/process(seconds_per_tick)
 	update_appearance()
@@ -150,7 +150,7 @@
 
 /obj/structure/simple_farm/attack_hand(mob/living/user, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, harvest_timer))
-		balloon_alert(user, "plant not ready for harvest!")
+		balloon_alert(user, "Planta não pronta para a colheita!")
 		return
 
 	COOLDOWN_START(src, harvest_timer, harvest_cooldown)
@@ -182,14 +182,14 @@
 	else if(istype(attacking_item, /obj/item/stack/worm_fertilizer))
 		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		if(farm_level >= SKILL_LEVEL_LEGENDARY)
-			balloon_alert(user, "farm already max level!")
+			balloon_alert(user, "Fazenda já no nível máximo!")
 			return
 
 		var/obj/item/stack/worm_fertilizer/fertilizer = attacking_item
 		if(!fertilizer.use(1))
 			return
 
-		balloon_alert(user, "increased farm level")
+		balloon_alert(user, "Aumento do nível da fazenda")
 		farm_level++
 		return
 
@@ -197,10 +197,10 @@
 	else if(istype(attacking_item, /obj/item/food/bait/worm))
 		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		if(stored_worms >= 5)
-			balloon_alert(user, "plant already full on worms!")
+			balloon_alert(user, "Planta já cheia de vermes!")
 			return
 
-		balloon_alert(user, "applied worm")
+		balloon_alert(user, "Verme aplicado")
 		qdel(attacking_item)
 		stored_worms++
 		return

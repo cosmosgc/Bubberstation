@@ -40,7 +40,7 @@
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	gold_core_spawnable = NO_SPAWN
 	death_sound = 'sound/mobs/non-humanoids/hiss/hiss6.ogg'
-	death_message = "lets out a waning guttural screech, green blood bubbling from its maw..."
+	death_message = "deixa sair um grito gutural minguante, sangue verde borbulhando de sua mãe..."
 
 	habitable_atmos = null
 	unsuitable_atmos_damage = FALSE

@@ -6,7 +6,7 @@
 
 /obj/structure/reagent_crafting_bench
 	name = "forging workbench"
-	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for blacksmithing."
+	desc = "Um banco de artesanato equipado com ferramentas, mecanismos de segurança, e uma superfície estável para ferreiro."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "crafting_bench_empty"
 
@@ -83,10 +83,10 @@
 
 	var/obj/resulting_item = selected_recipe.resulting_item
 	. += span_notice("The selected recipe's resulting item is: <b>[initial(resulting_item.name)]</b> <br>")
-	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then start <b>hammering</b> to complete it! <br>")
+	. += span_notice("Reúna os materiais necessários, listados abaixo,<b>perto do banco</b>, então comece<b>martelando</b>Para completá-lo!<br>")
 
 	if(!length(selected_recipe.recipe_requirements))
-		. += span_boldwarning("Somehow, this recipe has no requirements, report this as this shouldn't happen.")
+		. += span_boldwarning("De alguma forma, esta receita não tem requisitos, relatar isso como isso não deveria acontecer.")
 		return
 
 	for(var/obj/requirement_item as anything in selected_recipe.recipe_requirements)
@@ -135,13 +135,13 @@
 	var/chosen_recipe = show_radial_menu(user, src, radial_choice_list, radius = 38, require_near = TRUE, tooltips = TRUE)
 
 	if(!chosen_recipe)
-		balloon_alert(user, "no recipe choice")
+		balloon_alert(user, "Sem escolha de receita.")
 		return
 
 	var/datum/crafting_bench_recipe/recipe_to_use = recipe_names_to_path[chosen_recipe]
 	selected_recipe = new recipe_to_use
 
-	balloon_alert(user, "recipe chosen")
+	balloon_alert(user, "receita escolhida")
 	update_appearance()
 
 /// Clears the current recipe and sets hits to completion to zero
@@ -169,7 +169,7 @@
 
 /obj/structure/reagent_crafting_bench/proc/attempt_place(obj/item/attacking_item, mob/user)
 	if(length(contents))
-		balloon_alert(user, "already full")
+		balloon_alert(user, "Já está cheio.")
 		return
 
 	attacking_item.forceMove(src)
@@ -186,7 +186,7 @@
 	conditional_pref_sound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', vol = 35, vary = TRUE, extrarange = MEDIUM_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE, pref_to_check = /datum/preference/numeric/volume/sound_ambience_volume)
 	if(length(contents))
 		if(!istype(contents[1], /obj/item/forging/complete))
-			balloon_alert(user, "invalid item")
+			balloon_alert(user, "item inválido")
 			return ITEM_INTERACT_SUCCESS
 
 		var/obj/item/forging/complete/weapon_to_finish = contents[1]
@@ -200,7 +200,7 @@
 		)
 
 		if(!can_we_craft_this(wood_required_for_weapons))
-			balloon_alert(user, "not enough wood")
+			balloon_alert(user, "Não há madeira suficiente.")
 			return ITEM_INTERACT_SUCCESS
 
 		var/list/things_to_use = can_we_craft_this(wood_required_for_weapons, TRUE)
@@ -215,11 +215,11 @@
 		return ITEM_INTERACT_SUCCESS
 
 	if(!selected_recipe)
-		balloon_alert(user, "no recipe selected")
+		balloon_alert(user, "nenhuma receita selecionada")
 		return ITEM_INTERACT_SUCCESS
 
 	if(!can_we_craft_this(selected_recipe.recipe_requirements))
-		balloon_alert(user, "missing ingredients")
+		balloon_alert(user, "Faltam ingredientes.")
 		return ITEM_INTERACT_SUCCESS
 
 	var/skill_modifier = user.mind.get_skill_modifier(selected_recipe.relevant_skill, SKILL_SPEED_MODIFIER) * 1 SECONDS
@@ -232,7 +232,7 @@
 			clear_recipe()
 			return ITEM_INTERACT_SUCCESS
 
-		balloon_alert(user, "bad hit")
+		balloon_alert(user, "Batida ruim.")
 		return ITEM_INTERACT_SUCCESS
 
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
@@ -244,7 +244,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 	current_hits_to_completion++
-	balloon_alert(user, "good hit")
+	balloon_alert(user, "Bom golpe.")
 	user.mind.adjust_experience(selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward / 15) // Good hits towards the current item grants experience in that skill
 	return ITEM_INTERACT_SUCCESS
 

@@ -71,7 +71,7 @@
 	if(we_ate_heart == previous_heart)
 		return
 	if (!HAS_TRAIT(we_ate_heart, TRAIT_ORGAN_USED_BY_PLAYER))
-		to_chat(eater, span_warning("This heart is utterly lifeless, you won't receive any boons from consuming it!"))
+		to_chat(eater, span_warning("Este coração é totalmente sem vida, você não vai receber nenhuma bênção de consumi-lo!"))
 		return
 	bites_taken = 0
 
@@ -92,7 +92,7 @@
 	eater.dna?.species?.damage_modifier += 10
 	remember_modifier += 10
 	healing_heart(eater)
-	to_chat(eater, span_warning("This heart is perfect. You feel a surge of vital energy."))
+	to_chat(eater, span_warning("Este coração é perfeito. Você sente uma onda de energia vital."))
 
 ///Not Perfect heart give random mutation.
 /datum/component/heart_eater/proc/not_perfect_heart(mob/living/carbon/human/eater)
@@ -161,20 +161,20 @@
 		interaction_key = "[DOAFTER_SOURCE_RIP_HEART]_[hand_index]",
 		max_interact_count = 1,
 		))
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "Interrompido!")
 		return
 	var/obj/item/bodypart/chest = target.get_bodypart(BODY_ZONE_CHEST)
 	chest.force_wound_upwards(/datum/wound/blunt/bone/critical, wound_source = "heart ripped")
 	var/obj/item/organ/heart = target.get_organ_slot(ORGAN_SLOT_HEART)
 	if(!heart)
-		target.balloon_alert(user, "no heart!?")
+		target.balloon_alert(user, "Sem coração?")
 		return
 	heart.Remove(target)
 	to_chat(user, span_warning("You rip [target]'s [heart.name] out of [target.p_their()] chest!"))
 	target.visible_message(
 		span_warning("[user] rips [target]'s [heart.name] out of [target.p_their()] chest!"),
 		span_userdanger("[user] rips your [heart.name] out of your chest!"),
-		span_userdanger("You feel something being torn out of your chest!"),
+		span_userdanger("Sente algo sendo arrancado do seu peito!"),
 		ignored_mobs = list(user),
 		)
 	if(!user.put_in_hand(heart, hand_index))

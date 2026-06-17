@@ -62,7 +62,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	switch(length(csa))
 		if(0)
 			remove_verb(src, /mob/dead/proc/server_hop)
-			to_chat(src, span_notice("Server Hop has been disabled."))
+			to_chat(src, span_notice("O servidor Hop foi desativado."))
 		if(1)
 			pick = csa[1]
 		else

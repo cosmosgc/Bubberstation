@@ -153,12 +153,12 @@
 		return
 
 	if(attached_hat)
-		movable_parent.balloon_alert(user, "hat already attached!")
+		movable_parent.balloon_alert(user, "O chapéu já está preso!")
 		return
 	if(isclothing(hitting_item))
 		var/obj/item/clothing/hat = hitting_item
 		if(hat.clothing_flags & STACKABLE_HELMET_EXEMPT)
-			movable_parent.balloon_alert(user, "invalid hat!")
+			movable_parent.balloon_alert(user, "Chapéu inválido!")
 			return
 
 	if(!user.transferItemToLoc(hitting_item, parent, force = FALSE, silent = TRUE))
@@ -173,7 +173,7 @@
 	head_angle = pick(1, -1)
 
 	if (!isnull(user))
-		movable_parent.balloon_alert(user, "hat attached")
+		movable_parent.balloon_alert(user, "Chapéu preso.")
 
 	if (!isclothing(parent))
 		movable_parent.update_appearance()
@@ -204,7 +204,7 @@
 		return
 	var/atom/movable/movable_parent = parent
 	if (remove_hat(user))
-		movable_parent.balloon_alert(user, "hat removed")
+		movable_parent.balloon_alert(user, "Chapéu removido.")
 	else
 		movable_parent.balloon_alert_to_viewers("the hat falls to the floor!")
 

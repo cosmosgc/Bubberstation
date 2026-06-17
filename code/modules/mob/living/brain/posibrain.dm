@@ -2,7 +2,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 
 /obj/item/mmi/posibrain
 	name = "positronic brain"
-	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves."
+	desc = "Um cubo de metal brilhante, quatro polegadas para um lado e coberto de sulcos rasos."
 	icon = 'icons/obj/devices/assemblies.dmi'
 	icon_state = "posibrain"
 	base_icon_state = "posibrain"
@@ -11,17 +11,17 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	braintype = "Android"
 
 	///Message sent to the user when polling ghosts
-	var/begin_activation_message = span_notice("You carefully locate the manual activation switch and start the positronic brain's boot process.")
+	var/begin_activation_message = span_notice("Localize cuidadosamente o interruptor de ativação manual e inicie o processo de inicialização do cérebro positrônico.")
 	///Message sent as a visible message on success
-	var/success_message = span_notice("The positronic brain pings, and its lights start flashing. Success!")
+	var/success_message = span_notice("Os sinais cerebrais positrônicos, e suas luzes começam a piscar. Sucesso!")
 	///Message sent as a visible message on failure
-	var/fail_message = span_notice("The positronic brain buzzes quietly, and the golden lights fade away. Perhaps you could try again?")
+	var/fail_message = span_notice("O cérebro positrônico zumbi silenciosamente, e as luzes douradas desaparecem. Talvez você possa tentar de novo?")
 	///Visible message sent when a player possesses the brain
-	var/new_mob_message = span_notice("The positronic brain chimes quietly.")
+	var/new_mob_message = span_notice("O cérebro positrônico soa silenciosamente.")
 	///Examine message when the posibrain has no mob
-	var/dead_message = span_deadsay("It appears to be completely inactive. The reset light is blinking.")
+	var/dead_message = span_deadsay("Parece estar completamente inativo. A luz está piscando.")
 	///Examine message when the posibrain cannot poll ghosts due to cooldown
-	var/recharge_message = span_warning("The positronic brain isn't ready to activate again yet! Give it some time to recharge.")
+	var/recharge_message = span_warning("O cérebro positrônico não está pronto para ativar de novo! Dê algum tempo para recarregar.")
 
 	///Can be set to tell ghosts what the brain will be used for
 	var/ask_role = ""
@@ -46,7 +46,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 		notify_ghosts(
 			"[name] [msg] in [get_area(src)]! [ask_role ? "Personality requested: \[[ask_role]\]" : ""]",
 			source = src,
-			header = "Ghost in the Machine",
+			header = "Fantasma na Máquina",
 			click_interact = TRUE,
 			ghost_sound = !newlymade ? 'sound/effects/ghost2.ogg':null,
 			ignore_key = POLL_IGNORE_POSIBRAIN,
@@ -60,7 +60,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(!brainmob)
 		set_brainmob(new /mob/living/brain(src))
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SILICONS))
-		to_chat(user, span_warning("Central Command has temporarily outlawed posibrain sentience in this sector..."))
+		to_chat(user, span_warning("O Comando Central baniu temporariamente a consciência do posicérebro neste setor..."))
 	if(is_occupied())
 		to_chat(user, span_warning("This [name] is already active!"))
 		return
@@ -182,7 +182,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 				if(!brainmob.client)
 					. += "It appears to be in stand-by mode." //afk
 			if(DEAD)
-				. += span_deadsay("It appears to be completely inactive.")
+				. += span_deadsay("Parece estar completamente inativo.")
 	else
 		. += "[dead_message]"
 		if(ask_role)
@@ -223,7 +223,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 
 /obj/item/mmi/posibrain/display
 	name = "display positronic brain"
-	desc = "A small positronic brain that doesn't allow the downloading of personalities."
+	desc = "Um pequeno cérebro positrônico que não permite baixar personalidades."
 
 /obj/item/mmi/posibrain/display/is_occupied()
 	return TRUE
@@ -231,8 +231,8 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 /// Posibrains but spherical. They can roll around and you can kick them
 /obj/item/mmi/posibrain/sphere
 	name = "positronic sphere"
-	desc = "Recent developments on cost-cutting measures have allowed us to cut positronic brain cubes into twice-as-cheap spheres. \
-	Unfortunately, it also allows them to move around the lab via rolling maneuvers."
+	desc = "Os recentes desenvolvimentos em medidas de redução de custos nos permitiram cortar cubos cerebrais positrônicos em esferas duplamente baratas.\
+Infelizmente, também permite que eles se movam pelo laboratório através de manobras de rolamento."
 	icon_state = "spheribrain"
 	base_icon_state = "spheribrain"
 	immobilize = FALSE

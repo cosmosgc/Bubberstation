@@ -1,7 +1,7 @@
 /// Short stairs you can use to climb tables quickly
 /obj/structure/steps
 	name = "steps"
-	desc = "A small set of steps you can use to reach high shelves or climb onto platforms, just watch your ankles."
+	desc = "Um pequeno conjunto de passos que você pode usar para alcançar prateleiras altas ou subir em plataformas, basta olhar seus tornozelos."
 	icon = 'icons/obj/small_stairs.dmi'
 	icon_state = "iron"
 	anchored = TRUE

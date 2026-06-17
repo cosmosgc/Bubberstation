@@ -1,9 +1,9 @@
 /datum/action/cooldown/spell/lichdom
 	name = "Bind Soul"
-	desc = "A spell that binds your soul to an item in your hands. \
-		Binding your soul to an item will turn you into an immortal Lich. \
-		So long as the item remains intact, you will revive from death, \
-		no matter the circumstances."
+	desc = "Um feitiço que liga sua alma a um item em suas mãos.\
+Amarrar sua alma a um item o transformará em um Lich imortal.\
+Enquanto o item permanecer intacto, você reviverá da morte,\
+Não importa as circunstâncias."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "skeleton"
 
@@ -23,7 +23,7 @@
 	// We call this here so we can get feedback if they try to cast it when they shouldn't.
 	if(!is_valid_target(owner))
 		if(feedback)
-			to_chat(owner, span_warning("You don't have a soul to bind!"))
+			to_chat(owner, span_warning("Você não tem uma alma para amarrar!"))
 		return FALSE
 
 	return TRUE
@@ -65,10 +65,10 @@
 	marked_item.AddComponent(/datum/component/phylactery, cast_on.mind)
 
 	cast_on.set_species(/datum/species/skeleton)
-	to_chat(cast_on, span_userdanger("With a hideous feeling of emptiness you watch in horrified fascination \
-		as skin sloughs off bone! Blood boils, nerves disintegrate, eyes boil in their sockets! \
-		As your organs crumble to dust in your fleshless chest you come to terms with your choice. \
-		You're a lich!"))
+	to_chat(cast_on, span_userdanger("Com uma sensação horrível de vazio você assiste em fascínio horrorizado\
+como a pele arranca o osso! Sangue ferve, nervos se desintegram, olhos fervem em suas órbitas!\
+À medida que seus órgãos se desfazem em pó em seu peito sem carne, você aceita sua escolha.\
+Você é um lich!"))
 
 	if(iscarbon(cast_on))
 		var/mob/living/carbon/carbon_cast_on = cast_on

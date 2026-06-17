@@ -11,7 +11,7 @@
 
 /obj/item/storage/backpack
 	name = "backpack"
-	desc = "You wear this on your back and put items into it."
+	desc = "Você usa isso nas costas e coloca itens nele."
 	icon = 'icons/obj/storage/backpack.dmi'
 	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	icon_state = "backpack"
@@ -38,7 +38,7 @@
 
 /obj/item/bag_of_holding_inert
 	name = "inert bag of holding"
-	desc = "What is currently a just an unwieldy block of metal with a slot ready to accept a bluespace anomaly core."
+	desc = "O que atualmente é apenas um bloco de metal com uma fenda pronta para aceitar um núcleo de anomalia do espaço azul."
 	icon = 'icons/obj/storage/backpack.dmi'
 	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	icon_state = "bag_of_holding-inert"
@@ -56,7 +56,7 @@
 
 /obj/item/storage/backpack/holding
 	name = "bag of holding"
-	desc = "A backpack that opens into a localized pocket of bluespace."
+	desc = "Uma mochila que se abre em um bolso localizado de espaço azul."
 	icon_state = "bag_of_holding"
 	inhand_icon_state = "holdingpack"
 	resistance_flags = FIRE_PROOF
@@ -82,7 +82,7 @@
 
 /obj/item/storage/backpack/santabag
 	name = "Santa's Gift Bag"
-	desc = "Space Santa uses this to deliver presents to all the nice children in space in Christmas! Wow, it's pretty big!"
+	desc = "O Papai Noel do Espaço usa isso para entregar presentes para todas as crianças legais no espaço no Natal! Uau, é bem grande!"
 	icon_state = "giftbag0"
 	inhand_icon_state = "giftbag"
 	w_class = WEIGHT_CLASS_BULKY
@@ -111,137 +111,137 @@
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
-	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
+	desc = "É útil para carregar equipamento extra e orgulhosamente declarar sua loucura."
 	icon_state = "backpack-cult"
 	inhand_icon_state = "backpack"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 
 /obj/item/storage/backpack/clown
 	name = "Giggles von Honkerton"
-	desc = "It's a backpack made by Honk! Co."
+	desc = "É uma mochila feita por Honk! Co."
 	icon_state = "backpack-clown"
 	inhand_icon_state = "clownpack"
 
 /obj/item/storage/backpack/explorer
 	name = "explorer bag"
-	desc = "A robust backpack for stashing your loot."
+	desc = "Uma mochila robusta para esconder seu saque."
 	icon_state = "backpack-explorer"
 	inhand_icon_state = "explorerpack"
 
 /obj/item/storage/backpack/mime
 	name = "Parcel Parceaux"
-	desc = "A silent backpack made for those silent workers. Silence Co."
+	desc = "Uma mochila silenciosa feita para aqueles trabalhadores silenciosos. Silêncio."
 	icon_state = "backpack-mime"
 	inhand_icon_state = "mimepack"
 
 /obj/item/storage/backpack/medic
 	name = "medical backpack"
-	desc = "It's a backpack especially designed for use in a sterile environment."
+	desc = "É uma mochila especialmente projetada para ser usada em um ambiente estéril."
 	icon_state = "backpack-medical"
 	inhand_icon_state = "medicalpack"
 
 /obj/item/storage/backpack/chief_medic
 	name = "chief medical officer's backpack"
-	desc = "A backpack with just enough pockets to carry the chief medical officer's equipment."
+	desc = "Uma mochila com bolsos suficientes para carregar o equipamento do médico chefe."
 	icon_state = "backpack-chiefmedical"
 	inhand_icon_state = "medicalpack"
 
 /obj/item/storage/backpack/coroner
 	name = "coroner backpack"
-	desc = "It's a backpack especially designed for use in an undead environment."
+	desc = "É uma mochila especialmente projetada para ser usada em um ambiente morto-vivo."
 	icon_state = "backpack-coroner"
 	inhand_icon_state = "coronerpack"
 
 /obj/item/storage/backpack/security
 	name = "security backpack"
-	desc = "It's a very robust backpack."
+	desc = "É uma mochila muito robusta."
 	icon_state = "backpack-security"
 	inhand_icon_state = "securitypack"
 
 /obj/item/storage/backpack/captain
 	name = "captain's backpack"
-	desc = "It's a special backpack made exclusively for Nanotrasen officers."
+	desc = "É uma mochila especial feita exclusivamente para oficiais Nanotrasen."
 	icon_state = "backpack-captain"
 	inhand_icon_state = "captainpack"
 
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
-	desc = "It's a tough backpack for the daily grind of station life."
+	desc = "É uma mochila dura para a vida diária da estação."
 	icon_state = "backpack-engineering"
 	inhand_icon_state = "engiepack"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/botany
 	name = "botany backpack"
-	desc = "It's a backpack made of all-natural fibers."
+	desc = "É uma mochila feita de fibras naturais."
 	icon_state = "backpack-hydroponics"
 	inhand_icon_state = "botpack"
 
 /obj/item/storage/backpack/chemistry
 	name = "chemistry backpack"
-	desc = "A backpack specially designed to repel stains and hazardous liquids."
+	desc = "Uma mochila especialmente projetada para repelir manchas e líquidos perigosos."
 	icon_state = "backpack-chemistry"
 	inhand_icon_state = "chempack"
 
 /obj/item/storage/backpack/genetics
 	name = "genetics backpack"
-	desc = "A bag designed to be super tough, just in case someone hulks out on you."
+	desc = "Um saco feito para ser super duro, só para o caso de alguém te atacar."
 	icon_state = "backpack-genetics"
 	inhand_icon_state = "genepack"
 
 /obj/item/storage/backpack/science
 	name = "science backpack"
-	desc = "A specially designed backpack. It's fire resistant and smells vaguely of plasma."
+	desc = "Uma mochila especialmente projetada. É resistente ao fogo e cheira vagamente a plasma."
 	icon_state = "backpack-science"
 	inhand_icon_state = "scipack"
 
 /obj/item/storage/backpack/virology
 	name = "virology backpack"
-	desc = "A backpack made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey."
+	desc = "Uma mochila feita de fibras hipoalergênicas. É projetado para ajudar a prevenir a propagação de doenças. Cheira a macaco."
 	icon_state = "backpack-virology"
 	inhand_icon_state = "viropack"
 
 /obj/item/storage/backpack/floortile
 	name = "floortile backpack"
-	desc = "It's a backpack especially designed for use in floortiles..."
+	desc = "É uma mochila especialmente projetada para uso em pisos..."
 	icon_state = "floortile_backpack"
 	inhand_icon_state = "backpack"
 
 /obj/item/storage/backpack/ert
 	name = "emergency response team commander backpack"
-	desc = "A spacious backpack with lots of pockets, worn by the Commander of an Emergency Response Team."
+	desc = "Uma mochila espaçosa com muitos bolsos, usada pelo Comandante de uma equipe de emergência."
 	icon_state = "ert_commander"
 	inhand_icon_state = "securitypack"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/ert/security
 	name = "emergency response team security backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Security Officers of an Emergency Response Team."
+	desc = "Uma mochila espaçosa com muitos bolsos, usada pelos oficiais de segurança de uma equipe de emergência."
 	icon_state = "ert_security"
 
 /obj/item/storage/backpack/ert/medical
 	name = "emergency response team medical backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Medical Officers of an Emergency Response Team."
+	desc = "Uma mochila espaçosa com muitos bolsos, usada por oficiais médicos de uma equipe de emergência."
 	icon_state = "ert_medical"
 
 /obj/item/storage/backpack/ert/engineer
 	name = "emergency response team engineer backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Engineers of an Emergency Response Team."
+	desc = "Uma mochila espaçosa com muitos bolsos, usada pelos engenheiros de uma equipe de emergência."
 	icon_state = "ert_engineering"
 
 /obj/item/storage/backpack/ert/janitor
 	name = "emergency response team janitor backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Janitors of an Emergency Response Team."
+	desc = "Uma mochila espaçosa com muitos bolsos, usada por zeladores de uma equipe de emergência."
 	icon_state = "ert_janitor"
 
 /obj/item/storage/backpack/ert/clown
 	name = "emergency response team clown backpack"
-	desc = "A spacious backpack with lots of pockets, worn by Clowns of an Emergency Response Team."
+	desc = "Uma mochila espaçosa com muitos bolsos, usada por palhaços de uma equipe de emergência."
 	icon_state = "ert_clown"
 
 /obj/item/storage/backpack/saddlepack
 	name = "saddlepack"
-	desc = "A backpack designed to be saddled on a mount or carried on your back, and switch between the two on the fly. It's quite spacious, at the cost of making you feel like a literal pack mule."
+	desc = "Uma mochila projetada para ser selada em um monte ou carregada em suas costas, e alternar entre os dois na mosca. É bastante espaçoso, ao custo de fazer você se sentir como uma mula literal."
 	icon = 'icons/obj/storage/ethereal.dmi'
 	worn_icon = 'icons/mob/clothing/back/ethereal.dmi'
 	icon_state = "saddlepack"
@@ -251,7 +251,7 @@
 
 /obj/item/storage/backpack/meat
 	name = "\improper MEAT"
-	desc = "MEAT MEAT MEAT MEAT MEAT MEAT"
+	desc = "CARNE DE CARNE CARNE CARNE"
 	icon_state = "meatmeatmeat"
 	inhand_icon_state = "meatmeatmeat"
 	force = 15
@@ -292,13 +292,13 @@
 
 /obj/item/storage/backpack/satchel
 	name = "satchel"
-	desc = "A trendy looking satchel."
+	desc = "Uma bolsa elegante."
 	icon_state = "satchel-norm"
 	inhand_icon_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
-	desc = "It's a very fancy satchel made with fine leather."
+	desc = "É uma bolsa muito chique feita com couro fino."
 	icon_state = "satchel-leather"
 	inhand_icon_state = "satchel"
 
@@ -310,80 +310,80 @@
 
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
-	desc = "A tough satchel with extra pockets."
+	desc = "Uma bolsa dura com bolsos extras."
 	icon_state = "satchel-engineering"
 	inhand_icon_state = "satchel-eng"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/satchel/med
 	name = "medical satchel"
-	desc = "A sterile satchel used in medical departments."
+	desc = "Uma bolsa esterilizada usada nos departamentos médicos."
 	icon_state = "satchel-medical"
 	inhand_icon_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/chief_medic
 	name = "chief medical officer's satchel"
-	desc = "A satchel with barely enough pockets to carry the chief medical officer's equipment."
+	desc = "Uma bolsa com poucos bolsos para carregar o equipamento do médico chefe."
 	icon_state = "satchel-chiefmedical"
 	inhand_icon_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/vir
 	name = "virologist satchel"
-	desc = "A sterile satchel with virologist colours."
+	desc = "Uma bolsa estéril com cores virologistas."
 	icon_state = "satchel-virology"
 	inhand_icon_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
 	name = "chemist satchel"
-	desc = "A sterile satchel with chemist colours."
+	desc = "Uma bolsa estéril com cores químicas."
 	icon_state = "satchel-chemistry"
 	inhand_icon_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/coroner
 	name = "coroner satchel"
-	desc = "A satchel used to carry whatever's left of human bodies."
+	desc = "Uma bolsa usada para carregar o que sobrou de corpos humanos."
 	icon_state = "satchel-coroner"
 	inhand_icon_state = "satchel-coroner"
 
 /obj/item/storage/backpack/satchel/gen
 	name = "geneticist satchel"
-	desc = "A sterile satchel with geneticist colours."
+	desc = "Uma bolsa estéril com cores geneticistas."
 	icon_state = "satchel-genetics"
 	inhand_icon_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/science
 	name = "scientist satchel"
-	desc = "Useful for holding research materials."
+	desc = "Útil para manter materiais de pesquisa."
 	icon_state = "satchel-science"
 	inhand_icon_state = "satchel-sci"
 
 /obj/item/storage/backpack/satchel/hyd
 	name = "botanist satchel"
-	desc = "A satchel made of all natural fibers."
+	desc = "Uma bolsa feita de fibras naturais."
 	icon_state = "satchel-hydroponics"
 	inhand_icon_state = "satchel-hyd"
 
 /obj/item/storage/backpack/satchel/sec
 	name = "security satchel"
-	desc = "A robust satchel for security related needs."
+	desc = "Uma bolsa robusta para necessidades relacionadas à segurança."
 	icon_state = "satchel-security"
 	inhand_icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/explorer
 	name = "explorer satchel"
-	desc = "A robust satchel for stashing your loot."
+	desc = "Uma bolsa robusta para esconder seu saque."
 	icon_state = "satchel-explorer"
 	inhand_icon_state = "satchel-explorer"
 
 /obj/item/storage/backpack/satchel/cap
 	name = "captain's satchel"
-	desc = "An exclusive satchel for Nanotrasen officers."
+	desc = "Uma bolsa exclusiva para oficiais Nanotrasen."
 	icon_state = "satchel-captain"
 	inhand_icon_state = "satchel-cap"
 
 /obj/item/storage/backpack/satchel/flat
 	name = "smuggler's satchel"
-	desc = "A very slim satchel that can easily fit into tight spaces. Its contents cannot be detected by contraband scanners."
+	desc = "Uma bolsa muito fina que pode caber facilmente em espaços apertados. Seu conteúdo não pode ser detectado por escaneadores de contrabando."
 	icon_state = "satchel-flat"
 	inhand_icon_state = "satchel-flat"
 	w_class = WEIGHT_CLASS_NORMAL //Can fit in backpacks itself.
@@ -411,7 +411,7 @@
 /// Messenger Bag Types
 /obj/item/storage/backpack/messenger
 	name = "messenger bag"
-	desc = "A trendy looking messenger bag; sometimes known as a courier bag. Fashionable and portable."
+	desc = "Uma bolsa de correio na moda, às vezes conhecida como bolsa de correio. Moda e portátil."
 	icon_state = "messenger"
 	inhand_icon_state = "messenger"
 	icon = 'icons/obj/storage/backpack.dmi'
@@ -421,79 +421,79 @@
 
 /obj/item/storage/backpack/messenger/eng
 	name = "industrial messenger bag"
-	desc = "A tough messenger bag made of advanced treated leather for fireproofing. It also has more pockets than usual."
+	desc = "Um saco de mensageiro feito de couro tratado para a prova de fogo. Também tem mais bolsos do que de costume."
 	icon_state = "messenger_engineering"
 	inhand_icon_state = "messenger_engineering"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/messenger/med
 	name = "medical messenger bag"
-	desc = "A sterile messenger bag well loved by medics for its portability and sleek profile."
+	desc = "Um mensageiro estéril bem amado por médicos por sua portabilidade e perfil elegante."
 	icon_state = "messenger_medical"
 	inhand_icon_state = "messenger_medical"
 
 /obj/item/storage/backpack/messenger/chief_medic
 	name = "chief medical officer's messenger bag"
-	desc = "A slim messenger bag appreciated by chief medical officers for staying out of their way while working - unlike their chemists."
+	desc = "Uma bolsa de recados apreciada por oficiais médicos por ficar fora de seu caminho enquanto trabalham, ao contrário de seus químicos."
 	icon_state = "messenger_chiefmedical"
 	inhand_icon_state = "messenger_medical"
 
 /obj/item/storage/backpack/messenger/vir
 	name = "virologist messenger bag"
-	desc = "A sterile messenger bag with virologist colours, useful for deploying biohazards in record times."
+	desc = "Um mensageiro estéril com cores virologistas, útil para implantar riscos biológicos em tempos recordes."
 	icon_state = "messenger_virology"
 	inhand_icon_state = "messenger_virology"
 
 /obj/item/storage/backpack/messenger/chem
 	name = "chemist messenger bag"
-	desc = "A sterile messenger bag with chemist colours, good for getting to your alleyway deals on time."
+	desc = "Um saco estérei com cores químicas, bom para chegar aos seus negócios no beco a tempo."
 	icon_state = "messenger_chemistry"
 	inhand_icon_state = "messenger_chemistry"
 
 /obj/item/storage/backpack/messenger/coroner
 	name = "coroner messenger bag"
-	desc = "A messenger bag used to sneak your way out of graveyards at a good pace."
+	desc = "Um mensageiro costumava sair de cemitérios a um bom ritmo."
 	icon_state = "messenger_coroner"
 	inhand_icon_state = "messenger_coroner"
 
 /obj/item/storage/backpack/messenger/gen
 	name = "geneticist messenger bag"
-	desc = "A sterile messenger bag with geneticist colours, making a remarkably cute accessory for hulks."
+	desc = "Um saco de mensageiro estéril com cores geneticistas, fazendo um acessório incrivelmente bonito para Hulks."
 	icon_state = "messenger_genetics"
 	inhand_icon_state = "messenger_genetics"
 
 /obj/item/storage/backpack/messenger/science
 	name = "scientist messenger bag"
-	desc = "Useful for holding research materials, and for speeding your way to different scan objectives."
+	desc = "Útil para manter materiais de pesquisa, e para acelerar seu caminho para diferentes objetivos de varredura."
 	icon_state = "messenger_science"
 	inhand_icon_state = "messenger_science"
 
 /obj/item/storage/backpack/messenger/hyd
 	name = "botanist messenger bag"
-	desc = "A messenger bag made of all natural fibers, great for getting to the sesh in time."
+	desc = "Um saco de mensageiro feito de todas as fibras naturais, ótimo para chegar à Sesh a tempo."
 	icon_state = "messenger_hydroponics"
 	inhand_icon_state = "messenger_hydroponics"
 
 /obj/item/storage/backpack/messenger/sec
 	name = "security messenger bag"
-	desc = "A robust messenger bag for security related needs."
+	desc = "Um saco de mensageiro robusto para necessidades relacionadas à segurança."
 	icon_state = "messenger_security"
 	inhand_icon_state = "messenger_security"
 
 /obj/item/storage/backpack/messenger/explorer
 	name = "explorer messenger bag"
-	desc = "A robust messenger bag for stashing your loot, as well as making a remarkably cute accessory for your drakebone armor."
+	desc = "Um saco de mensageiro robusto para esconder seu saque, além de fazer um acessório incrivelmente bonito para sua armadura de Drakebone."
 	icon_state = "messenger_explorer"
 	inhand_icon_state = "messenger_explorer"
 
 /obj/item/storage/backpack/messenger/cap
 	name = "captain's messenger bag"
-	desc = "An exclusive messenger bag for Nanotrasen officers, made of real whale leather."
+	desc = "Uma bolsa exclusiva para oficiais Nanotrasen, feita de couro de baleia."
 	icon_state = "messenger_captain"
 	inhand_icon_state = "messenger_captain"
 
 /obj/item/storage/backpack/messenger/clown
 	name = "Giggles von Honkerton Jr."
-	desc = "The latest in storage 'technology' from Honk Co. Hey, how does this fit so much with such a small profile anyway? The wearer will definitely never tell you."
+	desc = "A última tecnologia de armazenamento da Honk Co. Ei, como isso se encaixa tanto com um perfil tão pequeno? O usuário definitivamente nunca lhe dirá."
 	icon_state = "messenger_clown"
 	inhand_icon_state = "messenger_clown"

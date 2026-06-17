@@ -1,7 +1,7 @@
 /// The Greatest (animal) Of All Time. Cud chewing, shin-kicking, kitchen-dwelling nuisance.
 /mob/living/basic/goat
 	name = "goat"
-	desc = "Not known for their pleasant disposition."
+	desc = "Não são conhecidos por sua disposição agradável."
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"

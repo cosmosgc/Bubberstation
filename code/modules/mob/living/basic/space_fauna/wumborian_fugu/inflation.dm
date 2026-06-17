@@ -5,7 +5,7 @@
  */
 /datum/action/cooldown/fugu_expand
 	name = "Inflate"
-	desc = "Temporarily increases your size, making you significantly more dangerous and durable!"
+	desc = "Temporariamente aumenta seu tamanho, tornando você significativamente mais perigoso e durável!"
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "expand"
 	background_icon_state = "bg_fugu"
@@ -18,11 +18,11 @@
 		return FALSE
 	if(!istype(owner, /mob/living/basic/wumborian_fugu)) // A shame but there's not any good way to make this work on other mobs
 		if (feedback)
-			owner.balloon_alert(owner, "not stretchy enough!")
+			owner.balloon_alert(owner, "Não esticado o suficiente!")
 		return FALSE
 	if(HAS_TRAIT(owner, TRAIT_FUGU_GLANDED))
 		if (feedback)
-			owner.balloon_alert(owner, "already large!")
+			owner.balloon_alert(owner, "Já é grande!")
 		return FALSE
 	return TRUE
 
@@ -42,7 +42,7 @@
 
 /atom/movable/screen/alert/status_effect/inflated
 	name = "WUMBO"
-	desc = "You feel big and strong!"
+	desc = "Você se sente grande e forte!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "gross"
 

@@ -4,11 +4,11 @@
 
 /datum/heretic_knowledge/void_cloak
 	name = "Void Cloak"
-	desc = "Allows you to transmute a glass shard, a bedsheet, and any outer clothing item (such as armor or a suit jacket) \
-		to create a Void Cloak. While the hood is down, the cloak functions as a focus and protects you from space. \
-		While the hood is up, the cloak is completely invisible. It also provide decent armor and \
-		has pockets which can hold one of your blades, various ritual components (such as organs), and small heretical trinkets."
-	gain_text = "The Owl is the keeper of things that are not quite in practice, but in theory are. Many things are."
+	desc = "Permite que transmute um pedaço de vidro, um lençol, e qualquer item de roupa exterior (como armadura ou jaqueta de terno)\
+Para criar um Vazio. Enquanto o capô está para baixo, a capa funciona como foco e protege você do espaço.\
+Enquanto o capuz está levantado, o manto é completamente invisível. Também fornece uma armadura decente e\
+tem bolsos que podem segurar uma de suas lâminas, vários componentes rituais (como órgãos) e pequenas bugigangas heréticas."
+	gain_text = "O Coruja é o guardião das coisas que não estão na prática, mas em teoria estão. Muitas coisas são."
 	required_atoms = list(
 		/obj/item/shard = 1,
 		/obj/item/clothing/suit = 1,
@@ -22,9 +22,9 @@
 
 /datum/heretic_knowledge/medallion
 	name = "Ashen Eyes"
-	desc = "Allows you to transmute a pair of eyes, a candle, and a glass shard into an Eldritch Medallion. \
-		The Eldritch Medallion grants you thermal vision while worn, and also functions as a focus."
-	gain_text = "Piercing eyes guided them through the mundane. Neither darkness nor terror could stop them."
+	desc = "Permite que transmute um par de olhos, uma vela, e um caco de vidro em um medalhão de Eldritch.\
+O Medalhão Eldritch lhe concede visão térmica enquanto é usado, e também funciona como foco."
+	gain_text = "Olhos penetrantes os guiaram através do mundano. Nem a escuridão nem o terror poderiam detê-los."
 	required_atoms = list(
 		/obj/item/organ/eyes = 1,
 		/obj/item/shard = 1,
@@ -38,10 +38,10 @@
 
 /datum/heretic_knowledge/essence // AKA Eldritch Flask
 	name = "Priest's Ritual"
-	desc = "Allows you to transmute a tank of water and a glass shard into a Flask of Eldritch Essence. \
-		Eldritch Essence can be consumed for potent healing, or given to heathens for deadly poisoning."
-	gain_text = "This is an old recipe. The Owl whispered it to me. \
-		Created by the Priest - the Liquid that both was and is not."
+	desc = "Permite que transmute um tanque de água e um pedaço de vidro em um Flask de Eldritch Essence.\
+Eldritch Essence pode ser consumido por uma cura potente, ou dado a pagãos por envenenamento mortal."
+	gain_text = "Esta é uma receita antiga. A Coruja sussurrou para mim.\
+Criado pelo padre, o líquido que ambos eram e não são."
 	required_atoms = list(
 		/obj/structure/reagent_dispensers/watertank = 1,
 		/obj/item/shard = 1,
@@ -54,10 +54,10 @@
 
 /datum/heretic_knowledge/phylactery
 	name = "Phylactery of Damnation"
-	desc = "Allows you to transmute a sheet of glass and a poppy into a Phylactery that can instantly draw blood, even from long distances. \
-		Be warned, your target may still feel a prick."
-	gain_text = "A tincture twisted into the shape of a bloodsucker vermin. \
-		Whether it chose the shape for itself, or this is the humor of the sickened mind that conjured this vile implement into being is something best not pondered."
+	desc = "Permite transmutar uma folha de vidro e uma papoula para uma filactaria que pode tirar sangue instantaneamente, mesmo de longas distâncias.\
+Esteja avisado, seu alvo ainda pode sentir um pau."
+	gain_text = "Uma tintura torcida na forma de um verme sanguessuga.\
+Se ele escolheu a forma para si mesmo, ou este é o humor da mente doente que conjurou este implemento vil em ser é algo melhor não ponderado."
 	required_atoms = list(
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/food/grown/poppy = 1,
@@ -70,10 +70,10 @@
 
 /datum/heretic_knowledge/crucible
 	name = "Mawed Crucible"
-	desc = "Allows you to transmute a portable water tank and a table to create a Mawed Crucible. \
-		The Mawed Crucible can brew powerful potions for combat and utility, but must be fed bodyparts and organs between uses."
-	gain_text = "This is pure agony. I wasn't able to summon the figure of the Aristocrat, \
-		but with the Priest's attention I stumbled upon a different recipe..."
+	desc = "Permite que transmute um tanque de água portátil e uma mesa para criar um Crucible Mawed.\
+O Crucible Mawed pode fazer poções poderosas para combate e utilidade, mas deve ser alimentado com partes do corpo e órgãos entre usos."
+	gain_text = "Isso é pura agonia. Não pude invocar a figura do Aristocrata.\
+Mas com a atenção do padre encontrei uma receita diferente..."
 	required_atoms = list(
 		/obj/structure/reagent_dispensers/watertank = 1,
 		/obj/structure/table = 1,
@@ -86,11 +86,11 @@
 
 /datum/heretic_knowledge/eldritch_coin
 	name = "Eldritch Coin"
-	desc = "Allows you to transmute a sheet of plasma and a diamond to create an Eldritch Coin. \
-		The coin will open or close nearby doors when landing on heads and toggle their bolts \
-		when landing on tails. If you insert the coin into an airlock, it will be consumed \
-		to fry its electronics, opening the airlock permanently unless bolted. "
-	gain_text = "The Mansus is a place of all sorts of sins. But greed held a special role."
+	desc = "Permite que transmute uma folha de plasma e um diamante para criar uma moeda Eldritch.\
+A moeda abrirá ou fechará portas próximas quando pousarem em cabeças e trocarem seus parafusos.\
+Quando aterrissamos em caudas. Se você inserir a moeda em uma câmara de ar, ela será consumida.\
+para fritar seus eletrônicos, abrindo a câmara de ar permanentemente, a menos que seja aparafusado."
+	gain_text = "O Mansus é um lugar de todos os tipos de pecados. Mas a ganância tinha um papel especial."
 	required_atoms = list(
 		/obj/item/stack/sheet/mineral/diamond = 1,
 		/obj/item/stack/sheet/mineral/plasma = 1,
@@ -109,11 +109,11 @@
  */
 /datum/heretic_knowledge/codex_cicatrix
 	name = "Codex Cicatrix"
-	desc = "Allows you to transmute a book, any pen, and your pick from any carcass (animal or human), leather, or hide to create a Codex Cicatrix. \
-		The Codex Cicatrix can be used when draining influences to gain additional knowledge, but comes at greater risk of being noticed. \
-		It can also be used to draw and remove transmutation runes easier, and as a spell focus in a pinch."
-	gain_text = "The occult leaves fragments of knowledge and power anywhere and everywhere. The Codex Cicatrix is one such example. \
-		Within the leather-bound faces and age old pages, a path into the Mansus is revealed."
+	desc = "Permite transmutar um livro, qualquer caneta, e sua picareta de qualquer carcaça (animal ou humana), couro, ou se esconder para criar um Códice Cicatrix.\
+O Codex Cicatrix pode ser usado quando drena influências para obter mais conhecimento, mas corre maior risco de ser notado.\
+Ele também pode ser usado para desenhar e remover runas de transmutação mais fácil, e como um foco de feitiço em uma pitada."
+	gain_text = "O oculto deixa fragmentos de conhecimento e poder em qualquer lugar e em todo lugar. O Códice Cicatrix é um exemplo.\
+Dentro dos rostos de couro e páginas antigas, um caminho para o Mansus é revelado."
 	required_atoms = list(
 		list(/obj/item/toy/eldritch_book, /obj/item/book) = 1,
 		/obj/item/pen = 1,
@@ -191,12 +191,12 @@
  */
 /datum/heretic_knowledge/bookworm
 	name = "Warren King's Welcome"
-	desc = "Allows you to transmute 10 cable pieces, a piece of paper, and a multitool to brand nearby ID cards and airlocks. \
-		Branded ID cards will gain access to maintenance, external airlocks, as well to branded airlocks. \
-		Branded airlocks will only be accessible by those with a branded ID card."
-	gain_text = "Gnawed into vicious-stained fingerbones, my grim invitation snaps my nauseous and clouded mind towards the heavy-set door. \
-		Slowly, the light dances between a crawling darkness, blanketing the fetid promenade with infinite machinations. \
-		But the King will soon take his pound of flesh. Even here, the taxman takes their cut. For there are a thousands mouths to feed."
+	desc = "Permite que transmute 10 peças de cabo, um pedaço de papel, e uma multitool para marcar cartões de identificação e comportas.\
+Cartões de identificação marcados terão acesso à manutenção, câmaras de ar externas, bem como câmaras de ar marcadas.\
+As câmaras de ar de marca só serão acessíveis por aqueles com um cartão de identificação."
+	gain_text = "Torcido em ossos dedos manchados de víveres, meu triste convite tira minha mente enjoada e turva em direção à porta pesada.\
+Lentamente, a luz dança entre uma escuridão rastejante, cobrindo o passeio fétido com infinitas maquinações.\
+Mas o Rei em breve levará seu quilo de carne. Mesmo aqui, o fiscal pega a parte deles. Pois há milhares de bocas para alimentar."
 	required_atoms = list(
 		/obj/item/stack/cable_coil = 10,
 		/obj/item/paper = 1,

@@ -2,7 +2,7 @@
 
 /datum/action/cooldown/spell/pointed/revenant/bloodwriting
 	name = "Bloodwriting"
-	desc = "Write messages on the ground. In BLOOD!!"
+	desc = "Escreva mensagens no chão. Em sangue!"
 	button_icon = 'icons/effects/blood.dmi'
 	button_icon_state = "bubblegumfoot"
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
@@ -62,7 +62,7 @@
 //Crayon stuff neccessary for this
 /obj/item/toy/crayon/revenant
 	name = "bloodwriting"
-	desc = "If you're reading this, something went wrong. yell at coders."
+	desc = "Se está lendo isso, algo deu errado. Grite com programadores."
 	icon = null
 	icon_state = null
 	charges = INFINITE_CHARGES

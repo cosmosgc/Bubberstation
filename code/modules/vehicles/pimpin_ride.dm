@@ -3,7 +3,7 @@
  */
 /obj/vehicle/ridden/janicart
 	name = "janicart (pimpin' ride)"
-	desc = "A brave janitor cyborg gave its life to produce such an amazing combination of speed and utility."
+	desc = "Um valente zelador Cyborg deu sua vida para produzir uma incrível combinação de velocidade e utilidade."
 	icon_state = "pussywagon"
 	key_type = /obj/item/key/janitor
 	movedelay = 1
@@ -177,7 +177,7 @@
  */
 /obj/item/janicart_upgrade
 	name = "base upgrade"
-	desc = "An abstract upgrade for mobile janicarts."
+	desc = "Uma atualização abstrata para janicartes móveis."
 	icon = 'icons/obj/service/janicart_upgrade.dmi'
 	icon_state = "janicart_upgrade"
 	greyscale_config = /datum/greyscale_config/janicart_upgrade
@@ -204,7 +204,7 @@
 
 /obj/item/janicart_upgrade/buffer
 	name = "floor buffer upgrade"
-	desc = "An upgrade for mobile janicarts which adds a floor buffer functionality."
+	desc = "Uma atualização para janicats móveis que adiciona uma funcionalidade de buffer de piso."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/janicart_upgrade/buffer"
 	post_init_icon_state = "janicart_upgrade"
@@ -218,7 +218,7 @@
 
 /obj/item/janicart_upgrade/vacuum
 	name = "vacuum upgrade"
-	desc = "An upgrade for mobile janicarts which adds a vacuum functionality."
+	desc = "Uma atualização para janicats móveis que adiciona uma funcionalidade de vácuo."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/janicart_upgrade/vacuum"
 	post_init_icon_state = "janicart_upgrade"

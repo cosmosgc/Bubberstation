@@ -321,7 +321,7 @@
 	locked = FALSE
 	if(ismob(user))
 		interact(null, user)
-		to_chat(user, span_hear("The computer softly beeps."))
+		to_chat(user, span_hear("O computador apita suavemente."))
 	return COMPONENT_STOP_RINGTONE_CHANGE
 
 /datum/component/uplink/proc/check_detonate()
@@ -356,7 +356,7 @@
 		return
 	locked = FALSE
 	interact(null, user)
-	to_chat(user, "As you whisper the code into your headset, a soft chime fills your ears.")
+	to_chat(user, "Enquanto sussurra o código em seus fones de ouvido, um tom suave preenche seus ouvidos.")
 	return COMPONENT_CANNOT_USE_RADIO
 
 // Pen signal responses
@@ -374,7 +374,7 @@
 		previous_attempts.Cut()
 		master.degrees = 0
 		interact(null, user)
-		to_chat(user, span_warning("Your pen makes a clicking noise, before quickly rotating back to 0 degrees!"))
+		to_chat(user, span_warning("Sua caneta faz um barulho de clique, antes de girar rapidamente para 0 graus!"))
 
 	else if(compare_list(previous_attempts, failsafe_code))
 		failsafe(user)

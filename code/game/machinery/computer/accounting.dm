@@ -4,7 +4,7 @@
 
 /obj/machinery/computer/accounting
 	name = "account lookup console"
-	desc = "Used to view crew member accounts and purchases."
+	desc = "Costumava ver contas e compras de membros da tripulação."
 	icon_screen = "accounts"
 	icon_keyboard = "id_key"
 	circuit = /obj/item/circuitboard/computer/accounting

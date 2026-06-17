@@ -1,6 +1,6 @@
 /obj/structure/life_candle
 	name = "life candle"
-	desc = "You are dead. Insert quarter to continue."
+	desc = "Você está morto. Inserir quarto para continuar."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
 	light_system = OVERLAY_LIGHT

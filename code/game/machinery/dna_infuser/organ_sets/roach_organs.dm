@@ -9,10 +9,10 @@
 /datum/status_effect/organ_set_bonus/roach
 	id = "organ_set_bonus_roach"
 	organs_needed = 4
-	bonus_activate_text = span_notice("Roach DNA is deeply infused with you! \
-		You feel increasingly resistant to explosives, radiation, and viral agents.")
-	bonus_deactivate_text = span_notice("You are no longer majority roach, \
-		and you feel much more vulnerable to nuclear apocalypses.")
+	bonus_activate_text = span_notice("O DNA da barata está profundamente infundido em você!\
+Você se sente cada vez mais resistente a explosivos, radiação e agentes virais.")
+	bonus_deactivate_text = span_notice("Você não é mais uma barata majoritária,\
+E você se sente muito mais vulnerável aos apocalipses nucleares.")
 	// - Immunity to nuke gibs
 	// - Nukes come with radiation (not actually but yknow)
 	bonus_traits = list(TRAIT_NUKEIMMUNE, TRAIT_RADIMMUNE, TRAIT_VIRUS_RESISTANCE)
@@ -41,7 +41,7 @@
 /// but increases duration of knockdowns
 /obj/item/organ/heart/roach
 	name = "mutated roach-heart"
-	desc = "Roach DNA infused into what was once a normal heart."
+	desc = "DNA de barata infundido no que já foi um coração normal."
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 
 	icon = 'icons/map_icons/items/_item.dmi'
@@ -157,7 +157,7 @@
 /// Also makes you more hungry
 /obj/item/organ/stomach/roach
 	name = "mutated roach-stomach"
-	desc = "Roach DNA infused into what was once a normal stomach."
+	desc = "DNA de barata infundido no que era um estômago normal."
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	disgust_metabolism = 32 // Demolishes any disgust we have
 	metabolism_efficiency = 0.033 // Slightly worse at transferring reagents
@@ -177,7 +177,7 @@
 /// Purges toxins at a higher threshold, but takes more damage from them if not purged
 /obj/item/organ/liver/roach
 	name = "mutated roach-liver"
-	desc = "Roach DNA infused into what was once a normal liver."
+	desc = "DNA de barata infundido no que era um fígado normal."
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	toxTolerance = 5 // More tolerance for toxins
 	liver_resistance = 0.25 // But if they manage to get in you're screwed
@@ -212,7 +212,7 @@
 /// No appendicitus! weee!
 /obj/item/organ/appendix/roach
 	name = "mutated roach-appendix"
-	desc = "Roach DNA infused into what was once a normal appendix. It could get <i>worse</i>?"
+	desc = "DNA de barata infundido no que era um apêndice normal. Pode chegar<i>Pior.</i>?"
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 
 	icon = 'icons/map_icons/items/_item.dmi'

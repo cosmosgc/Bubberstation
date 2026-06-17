@@ -107,7 +107,7 @@
 /datum/pet_command/mine_walls
 	command_name = "Mine"
 	radial_icon_state = "mine"
-	command_desc = "Command your pet to mine down walls."
+	command_desc = "Comande seu animal de estimação para minar paredes."
 	speech_commands = list("mine", "smash")
 
 /datum/pet_command/mine_walls/try_activate_command(mob/living/commander, radial_command)

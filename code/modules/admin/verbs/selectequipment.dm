@@ -33,7 +33,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(select_equipment, R_FUN, "Select Equipment", mob/ta
 	user = CLIENT_FROM_VAR(_user)
 
 	if(!ishuman(target) && !isobserver(target))
-		tgui_alert(usr,"Invalid mob")
+		tgui_alert(usr,"Máfia inválida")
 		return
 	target_mob = target
 
@@ -194,7 +194,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(select_equipment, R_FUN, "Select Equipment", mob/ta
 
 /client/proc/admin_apply_outfit(mob/target, dresscode)
 	if(!ishuman(target) && !isobserver(target))
-		tgui_alert(usr,"Invalid mob")
+		tgui_alert(usr,"Máfia inválida")
 		return
 
 	if(!dresscode)
@@ -207,7 +207,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(select_equipment, R_FUN, "Select Equipment", mob/ta
 	else
 		human_target = target
 		if(human_target.l_store || human_target.r_store || human_target.s_store) //saves a lot of time for admins and coders alike
-			if(tgui_alert(usr,"Do you need the items in your pockets?", "Pocket Items", list("Delete Them", "Drop Them")) == "Delete Them")
+			if(tgui_alert(usr,"Precisa dos itens em seus bolsos?", "Pocket Items", list("Delete Them", "Drop Them")) == "Delete Them")
 				delete_pocket = TRUE
 
 	BLACKBOX_LOG_ADMIN_VERB("Select Equipment")

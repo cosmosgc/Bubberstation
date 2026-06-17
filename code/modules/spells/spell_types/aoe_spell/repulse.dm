@@ -71,7 +71,7 @@
 
 /datum/action/cooldown/spell/aoe/repulse/wizard
 	name = "Repulse"
-	desc = "This spell throws everything around the user away."
+	desc = "Este feitiço joga tudo ao redor do usuário."
 	button_icon_state = "repulse"
 	sound = 'sound/effects/magic/repulse.ogg'
 
@@ -85,7 +85,7 @@
 
 /datum/action/cooldown/spell/aoe/repulse/xeno
 	name = "Tail Sweep"
-	desc = "Throw back attackers with a sweep of your tail."
+	desc = "Retorne os atacantes com uma varredura de sua cauda."
 	background_icon_state = "bg_alien"
 	overlay_icon_state = "bg_alien_border"
 	button_icon = 'icons/mob/actions/actions_xeno.dmi'

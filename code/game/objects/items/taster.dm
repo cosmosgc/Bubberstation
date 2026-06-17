@@ -1,6 +1,6 @@
 /obj/item/taster
 	name = "taster"
-	desc = "Tastes things, so you don't have to!"
+	desc = "Prove as coisas, então não precisa!"
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "tongue"
 

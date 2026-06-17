@@ -40,7 +40,7 @@
 
 /obj/item/disk
 	name = "floppy disk"
-	desc = "A generic floppy disk. No way Nanotrasen still uses those, right?"
+	desc = "Um disquete genérico. De jeito nenhum Nanotrasen ainda usa isso, certo?"
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk3"
 	w_class = WEIGHT_CLASS_TINY
@@ -101,13 +101,13 @@
 	. += span_notice("The write-protect tab is set to [span_bold("[read_only ? "protected" : "unprotected"]")].")
 
 	if(custom_description)
-		. += span_notice("There's something scribbled on the sticker:")
+		. += span_notice("Há algo escrito no adesivo:")
 		. += span_notice(span_italics("\"[custom_description]\""))
 
 /obj/item/disk/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/pen))
 		if(sticker_icon_state != STARTING_STICKER)
-			to_chat(user, span_warning("You can't add anything else!"))
+			to_chat(user, span_warning("Você não pode adicionar mais nada!"))
 			return ITEM_INTERACT_FAILURE
 
 		var/newdescription = sanitize_text(tgui_input_text(user, "What do you want to write?", "Floppy Disk", max_length = MAX_TEXT_LENGTH, multiline = TRUE))
@@ -128,7 +128,7 @@
 
 /obj/item/disk/attack_self(mob/user)
 	if(read_only_locked)
-		to_chat(user, span_warning("The write-protect tab seems to be stuck in place!"))
+		to_chat(user, span_warning("A aba de proteção parece estar presa no lugar!"))
 		return
 	read_only = !read_only
 	to_chat(user, span_notice("You flip the write-protect tab to [span_bold("[read_only ? "protected" : "unprotected"]")]."))
@@ -204,7 +204,7 @@
 
 /obj/item/disk_stack
 	name = "stack of floppy disks"
-	desc = "A stack of floppy disks. You wonder what happens if you pull out the bottom one..."
+	desc = "Uma pilha de disquetes. Você se pergunta o que acontece se você puxar o de baixo..."
 	icon = null
 	icon_state = null
 	w_class = WEIGHT_CLASS_SMALL
@@ -237,12 +237,12 @@
 
 /obj/item/disk_stack/proc/add_to_stack(mob/living/user, obj/item/disk/newdisk)
 	if(length(stacked_disks) >= MAX_DISK_STACK_SIZE)
-		balloon_alert(user, "can't add more!")
+		balloon_alert(user, "Não posso adicionar mais!")
 		return ITEM_INTERACT_BLOCKING
 
 	newdisk.forceMove(src)
 	stacked_disks += newdisk
-	balloon_alert(user, "added to top")
+	balloon_alert(user, "adicionado ao topo")
 	update_appearance(UPDATE_OVERLAYS)
 	return ITEM_INTERACT_SUCCESS
 
@@ -264,7 +264,7 @@
 
 	var/obj/item/disk/top = stacked_disks[length(stacked_disks)]
 	user.put_in_hands(top)
-	balloon_alert(user, "removed top disk")
+	balloon_alert(user, "disco superior removido")
 
 	if(length(stacked_disks) > 1)
 		update_appearance(UPDATE_OVERLAYS)
@@ -301,11 +301,11 @@
 	diskstack.update_appearance(UPDATE_OVERLAYS)
 
 	if(!amount_counter)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "Sem espaço!")
 		return ITEM_INTERACT_BLOCKING
 
 	update_appearance(UPDATE_OVERLAYS)
-	to_chat(user, span_notice("You merge two stacks of disks together."))
+	to_chat(user, span_notice("Você junta duas pilhas de discos."))
 
 	if(!length(diskstack.stacked_disks))
 		qdel(diskstack)
@@ -324,7 +324,7 @@
 		each_disk.forceMove(landing)
 		each_disk.throw_at(get_step(src, pick(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST)), 1, 0.8)
 
-	visible_message(span_warning("The stack falls apart!"))
+	visible_message(span_warning("A pilha desmorona!"))
 	qdel(src)
 
 /obj/item/disk_stack/attack_hand_secondary(mob/user, list/modifiers)
@@ -350,7 +350,7 @@
 
 /obj/item/delivery/small/floppy
 	name = "flat parcel"
-	desc = "A flat paper parcel."
+	desc = "Um pacote de papel plano."
 	icon_state = "deliveryfloppy"
 	base_icon_state = "deliveryfloppy"
 
@@ -360,7 +360,7 @@
 
 /obj/item/disk/manipulator
 	name = "manipulator task disk"
-	desc = "A floppy disk containing manipulator tasks."
+	desc = "Um disquete contendo tarefas manipuladoras."
 	var/list/tasks_data = list()
 
 /obj/item/disk/manipulator/proc/set_tasks(list/new_tasks_data)

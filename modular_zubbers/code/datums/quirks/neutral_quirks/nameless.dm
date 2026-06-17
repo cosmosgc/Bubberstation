@@ -1,11 +1,11 @@
 /datum/quirk/nameless
 	name = "Nameless"
-	desc = "You don't have a name. You are known only as a number."
-	medical_record_text = "Subject lacks a name in records."
+	desc = "Você não tem nome. Você é conhecido apenas como um número."
+	medical_record_text = "O sujeito não tem um nome nos registros."
 	value = 0
 	icon = FA_ICON_USER_NINJA
-	gain_text = span_notice("You feel your name slip away.")
-	lose_text = span_notice("You spontaniously remember your full name!")
+	gain_text = span_notice("Você sente seu nome escapar.")
+	lose_text = span_notice("Você se lembra espontaneamente do seu nome completo!")
 	quirk_flags = QUIRK_HIDE_FROM_SCAN
 	var/character_name
 	var/new_name

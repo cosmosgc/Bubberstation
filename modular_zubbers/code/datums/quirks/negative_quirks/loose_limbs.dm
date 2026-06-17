@@ -1,11 +1,11 @@
 /datum/quirk/loose_limbs
 	name = "Loose Limbs"
-	desc = "Your limbs aren't as resilient as others! When you die, they are likely to fall off."
+	desc = "Seus membros não são tão resistentes quanto os outros! Quando você morre, é provável que caiam."
 	icon = FA_ICON_USER_INJURED
 	value = -2
-	gain_text = span_danger("Your joints feel weak.")
-	lose_text = span_notice("Your joints feel strengthened.")
-	medical_record_text = "Patient's joints are quite weak and may fall off."
+	gain_text = span_danger("Suas articulações estão fracas.")
+	lose_text = span_notice("Suas articulações se sentem reforçadas.")
+	medical_record_text = "As articulações do paciente estão fracas e podem cair."
 	hardcore_value = 2
 
 /datum/quirk/loose_limbs/add(client/client_source)

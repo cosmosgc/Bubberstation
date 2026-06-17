@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/boxing
 	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	desc = "Porque precisava de outra desculpa para socar seus colegas."
 	icon_state = "boxing"
 	greyscale_colors = "#f32110"
 	equip_delay_other = 6 SECONDS
@@ -37,7 +37,7 @@
 
 /obj/item/clothing/gloves/boxing/evil
 	name = "evil boxing gloves"
-	desc = "These strange gloves radiate an unusually evil aura."
+	desc = "Essas luvas estranhas irradiam uma aura maléfica."
 	greyscale_colors = "#21211f"
 	style_to_give = /datum/martial_art/boxing/evil
 	extrapower = TRUE
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/gloves/boxing/golden
 	name = "golden gloves"
-	desc = "The reigning champ of the station!"
+	desc = "O atual campeão da estação!"
 	icon_state = "boxinggold"
 	custom_materials = list(/datum/material/gold = SHEET_MATERIAL_AMOUNT*1)  //LITERALLY GOLD
 	material_flags = MATERIAL_EFFECTS | MATERIAL_AFFECT_STATISTICS

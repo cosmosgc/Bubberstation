@@ -1,6 +1,6 @@
 /obj/item/swapper
 	name = "quantum spin inverter"
-	desc = "An experimental device that is able to swap the locations of two entities by switching their particles' spin values. Must be linked to another device to function."
+	desc = "Um dispositivo experimental que é capaz de trocar as localizações de duas entidades trocando os valores de rotação de suas partículas. Deve estar ligado a outro dispositivo para funcionar."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "swapper"
 	inhand_icon_state = "electronic"
@@ -36,7 +36,7 @@
 		if(linked_swapper)
 			to_chat(user, span_warning("[src] is already linked. Break the current link to establish a new one."))
 			return
-		to_chat(user, span_notice("You establish a quantum link between the two devices."))
+		to_chat(user, span_notice("Você estabelece uma ligação quântica entre os dois dispositivos."))
 		linked_swapper = other_swapper
 		other_swapper.linked_swapper = src
 		update_appearance()
@@ -71,12 +71,12 @@
 	if(world.time < next_use)
 		. += span_warning("Time left to recharge: [DisplayTimeText(next_use - world.time)].")
 	if(linked_swapper)
-		. += span_notice("<b>Linked.</b> Alt-Click to break the quantum link.")
+		. += span_notice("<b>Ligado.</b>Alt-Click para quebrar o link quântico.")
 	else
-		. += span_notice("<b>Not Linked.</b> Use on another quantum spin inverter to establish a quantum link.")
+		. += span_notice("<b>Não ligado.</b>Use outro inversor de rotação quântica para estabelecer uma ligação quântica.")
 
 /obj/item/swapper/click_alt(mob/living/user)
-	to_chat(user, span_notice("You break the current quantum link."))
+	to_chat(user, span_notice("Você quebra a ligação quântica atual."))
 	if(!QDELETED(linked_swapper))
 		linked_swapper.linked_swapper = null
 		linked_swapper.update_appearance()

@@ -39,8 +39,8 @@
 
 
 /obj/item/circuit_component/money_dispenser
-	display_name = "Money Dispenser"
-	desc = "Used to dispense money from the money bot. Money is taken from the internal storage of money."
+	display_name = "Dispensador de Dinheiro"
+	desc = "Costumava dispensar dinheiro do bot do dinheiro. O dinheiro é tirado do depósito interno de dinheiro."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// CD before next dispense
@@ -109,9 +109,9 @@
 	new /obj/item/holochip(droploc, to_dispense)
 
 /obj/item/circuit_component/money_bot
-	display_name = "Money Bot"
+	display_name = "Bot dinheiro"
 	var/obj/structure/money_bot/attached_bot
-	desc = "Used to receive input signals when money is inserted into the money bot shell and also keep track of the total money in the shell."
+	desc = "Costumava receber sinais de entrada quando o dinheiro é inserido na caixa de dinheiro e também manter o controle do dinheiro total na caixa."
 
 	/// Total money in the shell
 	var/datum/port/output/total_money
@@ -157,7 +157,7 @@
 
 	var/amount_to_insert = item.get_item_credit_value()
 	if(!amount_to_insert)
-		balloon_alert(attacker, "this has no value!")
+		balloon_alert(attacker, "Isso não tem valor!")
 		return
 
 	attached_bot.add_money(amount_to_insert)

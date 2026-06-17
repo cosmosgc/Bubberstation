@@ -1,6 +1,6 @@
 /obj/item/banner
 	name = "banner"
-	desc = "A banner with Nanotrasen's logo on it."
+	desc = "Uma faixa com o logotipo da Nanotrasen."
 	icon = 'icons/obj/banner.dmi'
 	icon_state = "banner"
 	inhand_icon_state = "banner"
@@ -23,7 +23,7 @@
 /obj/item/banner/examine(mob/user)
 	. = ..()
 	if(inspiration_available)
-		. += span_notice("Activate it in your hand to inspire nearby allies of this banner's allegiance!")
+		. += span_notice("Ative-o em suas mãos para inspirar aliados próximos da lealdade desta bandeira!")
 
 /obj/item/banner/attack_self(mob/living/carbon/human/user)
 	if(!inspiration_available || flags_1 & HOLOGRAM_1)
@@ -84,7 +84,7 @@
 
 /obj/item/banner/security
 	name = "securistan banner"
-	desc = "The banner of Securistan, ruling the station with an iron fist."
+	desc = "A bandeira do Securistan, governando a estação com um punho de ferro."
 	icon_state = "banner_security"
 	inhand_icon_state = "banner_security"
 	warcry = "EVERYONE DOWN ON THE GROUND!!"
@@ -106,7 +106,7 @@
 
 /obj/item/banner/medical
 	name = "meditopia banner"
-	desc = "The banner of Meditopia, generous benefactors that cure wounds and shelter the weak."
+	desc = "A bandeira da Meditopia, genesos benfeitores que curam feridas e abraçam os fracos."
 	icon_state = "banner_medical"
 	inhand_icon_state = "banner_medical"
 	warcry = "No wounds cannot be healed!"
@@ -139,7 +139,7 @@
 
 /obj/item/banner/science
 	name = "sciencia banner"
-	desc = "The banner of Sciencia, bold and daring thaumaturges and researchers that take the path less traveled."
+	desc = "A bandeira de Sciencia, pousadas e lares taumaturgos e pesquisadores que sequem o caminho menos percorrido."
 	icon_state = "banner_science"
 	inhand_icon_state = "banner_science"
 	warcry = "For Cuban Pete!"
@@ -164,7 +164,7 @@
 
 /obj/item/banner/cargo
 	name = "cargonia banner"
-	desc = "The banner of the eternal Cargonia, with the mystical power of conjuring any object into existence."
+	desc = "A bandeira da Cargonia eterna, com o poder místico de invocar qualquer objeto em existência."
 	icon_state = "banner_cargo"
 	inhand_icon_state = "banner_cargo"
 	warcry = "Hail Cargonia!"
@@ -186,7 +186,7 @@
 
 /obj/item/banner/engineering
 	name = "engitopia banner"
-	desc = "The banner of Engitopia, wielders of limitless power."
+	desc = "A bandeira da Engitopia, possuidora de poder limitado."
 	icon_state = "banner_engineering"
 	inhand_icon_state = "banner_engineering"
 	warcry = "All hail lord Singuloth!!"
@@ -211,7 +211,7 @@
 
 /obj/item/banner/command
 	name = "command banner"
-	desc = "The banner of Command, a staunch and ancient line of bureaucratic kings and queens."
+	desc = "A bandeira do Comando, uma linha firme e antiga de reis e rainhas burocráticas."
 	//No icon state here since the default one is the NT banner
 	warcry = "Hail Nanotrasen!"
 
@@ -237,17 +237,17 @@
 	name = "red banner"
 	icon_state = "banner-red"
 	inhand_icon_state = "banner-red"
-	desc = "A banner with the logo of the red deity."
+	desc = "Uma faixa com o logotipo da divindade vermelha."
 
 /obj/item/banner/blue
 	name = "blue banner"
 	icon_state = "banner-blue"
 	inhand_icon_state = "banner-blue"
-	desc = "A banner with the logo of the blue deity."
+	desc = "Uma faixa com o logotipo da divindade azul."
 
 /obj/item/storage/backpack/bannerpack
 	name = "\improper Nanotrasen banner backpack"
-	desc = "It's a backpack with lots of extra room.  A banner with Nanotrasen's logo is attached, that can't be removed."
+	desc = "É uma mochila com muito espaço extra. Uma faixa com o logotipo de Nanotrasen está ligada, que não pode ser removida."
 	icon_state = "backpack-banner"
 
 /obj/item/storage/backpack/bannerpack/Initialize(mapload)
@@ -256,19 +256,19 @@
 
 /obj/item/storage/backpack/bannerpack/red
 	name = "red banner backpack"
-	desc = "It's a backpack with lots of extra room.  A red banner is attached, that can't be removed."
+	desc = "É uma mochila com muito espaço extra. Uma faixa vermelha está presa, que não pode ser removida."
 	icon_state = "backpack-banner_red"
 
 /obj/item/storage/backpack/bannerpack/blue
 	name = "blue banner backpack"
-	desc = "It's a backpack with lots of extra room.  A blue banner is attached, that can't be removed."
+	desc = "É uma mochila com muito espaço extra. Uma faixa azul está presa, que não pode ser removida."
 	icon_state = "backpack-banner_blue"
 
 //this is all part of one item set
 
 /obj/item/clothing/head/helmet/plate/crusader
 	name = "Crusader's Hood"
-	desc = "A brownish hood."
+	desc = "Um capuz marrom."
 	icon = 'icons/obj/clothing/head/chaplain.dmi'
 	worn_icon = 'icons/mob/clothing/head/chaplain.dmi'
 	icon_state = "crusader"
@@ -297,7 +297,7 @@
 //Prophet helmet
 /obj/item/clothing/head/helmet/plate/crusader/prophet
 	name = "Prophet's Hat"
-	desc = "A religious-looking hat."
+	desc = "Um chapéu religioso."
 	icon_state = null
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	inhand_icon_state = null
@@ -327,7 +327,7 @@
 //Structure conversion staff
 /obj/item/godstaff
 	name = "godstaff"
-	desc = "It's a stick..?"
+	desc = "É um pau...?"
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "godstaff-red"
 	icon_angle = -45
@@ -363,7 +363,7 @@
 /obj/item/clothing/gloves/plate
 	name = "plate gauntlets"
 	icon_state = "crusader"
-	desc = "They're like gloves, but made of metal."
+	desc = "São como luvas, mas feitas de metal."
 	siemens_coefficient = 0
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
@@ -378,7 +378,7 @@
 
 /obj/item/clothing/shoes/plate
 	name = "plate boots"
-	desc = "Metal boots, they look heavy."
+	desc = "Botas de metal, paresm pesadas."
 	icon_state = "crusader"
 	w_class = WEIGHT_CLASS_NORMAL
 	armor_type = /datum/armor/shoes_plate
@@ -405,7 +405,7 @@
 	icon_state = "crusader-blue"
 
 /obj/item/claymore/weak
-	desc = "This one is rusted."
+	desc = "Este está enferrujado."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "claymore_old"
 	worn_icon = 'icons/mob/clothing/back.dmi'
@@ -417,7 +417,7 @@
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, alt_continuous, alt_simple, -9)
 
 /obj/item/claymore/weak/ceremonial
-	desc = "A rusted claymore, once at the heart of a powerful scottish clan struck down and oppressed by tyrants, it has been passed down the ages as a symbol of defiance."
+	desc = "Um claymore enferrujado, uma vez no coração de um poderoso clã escocês golpeado e oprimido por tiranos, foi passado pelas eras como um símbolo de desafio."
 	force = 15
 	block_chance = 30
 	armour_penetration = 5

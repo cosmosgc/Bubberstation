@@ -1,6 +1,6 @@
 /obj/item/serviette
 	name = "serviette"
-	desc = "To clean all the mess."
+	desc = "Para limpar toda a bagunça."
 	icon_state = "serviette_clean"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	/// How much time it takes to clean something using it
@@ -12,7 +12,7 @@
 
 /obj/item/serviette_used
 	name = "dirty serviette"
-	desc = "Eww... Throw it in the trash!"
+	desc = "Eca... Jogue no lixo!"
 	icon_state = "serviette_dirty"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -73,7 +73,7 @@
 
 /obj/item/serviette_pack
 	name = "pack of serviettes"
-	desc = "I wonder why LustWish makes them..."
+	desc = "Pergunto-me por que LustWish os faz..."
 	icon_state = "serviettepack_4"
 	base_icon_state = "serviettepack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -99,4 +99,4 @@
 		update_icon()
 		update_icon_state()
 	else
-		to_chat(user, span_notice("There are no serviettes left!"))
+		to_chat(user, span_notice("Não sobrou nenhum serviço!"))

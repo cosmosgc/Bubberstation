@@ -1,6 +1,6 @@
 /obj/machinery/nanite_program_hub
 	name = "nanite program hub"
-	desc = "Compiles nanite programs from the techweb servers and downloads them into disks."
+	desc = "Compila programas nanites dos servidores techweb e os baixa em discos."
 	icon = 'modular_zubbers/icons/obj/machines/nanite_machines.dmi'
 	icon_state = "nanite_program_hub"
 	use_power = IDLE_POWER_USE
@@ -30,7 +30,7 @@
 
 /obj/machinery/nanite_program_hub/examine(mob/user)
 	. = ..()
-	. += span_notice("Use with a linked multitool to link to a techweb server.")
+	. += span_notice("Use com uma multitool ligada para ligar a um servidor techweb.")
 
 /obj/machinery/nanite_program_hub/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -74,7 +74,7 @@
 /obj/machinery/nanite_program_hub/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(!QDELETED(tool.buffer) && istype(tool.buffer, /datum/techweb))
 		linked_techweb = tool.buffer
-		balloon_alert(user, "linked!")
+		balloon_alert(user, "Ligado!")
 		update_static_data_for_all_viewers()
 	return TRUE
 

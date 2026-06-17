@@ -1,6 +1,6 @@
 /obj/item/electropack
 	name = "electropack"
-	desc = "Dance my monkeys! DANCE!!!"
+	desc = "Dancem meus macacos! DANÇA!!"
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "electropack0"
 	inhand_icon_state = "electropack"
@@ -36,7 +36,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.back)
-			to_chat(user, span_warning("You need help taking this off!"))
+			to_chat(user, span_warning("Você precisa de ajuda para tirar isso!"))
 			return
 	return ..()
 
@@ -71,7 +71,7 @@
 		var/mob/living/L = loc
 		step(L, pick(GLOB.cardinals))
 
-		to_chat(L, span_danger("You feel a sharp shock!"))
+		to_chat(L, span_danger("Você sente um choque agudo!"))
 		do_sparks(3, TRUE, L)
 		L.Paralyze(100)
 

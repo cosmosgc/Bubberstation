@@ -3,7 +3,7 @@
  */
 /obj/item/dualsaber
 	name = "double-bladed energy sword"
-	desc = "Handle with care."
+	desc = "Cuide com cuidado."
 	icon = 'icons/obj/weapons/transforming_energy.dmi'
 	icon_state = "dualsaber0"
 	inhand_icon_state = "dualsaber0"
@@ -32,7 +32,7 @@
 	wound_bonus = -10
 	exposed_wound_bonus = 20
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // BUBBER EDIT ADDITION
-	special_desc = "A double bladed energy sword employed by the Syndicate in raids" // BUBBER EDIT ADDITION
+	special_desc = "Uma espada de energia de lâmina dupla empregada pelo Sindicato em ataques" // BUBBER EDIT ADDITION
 	demolition_mod = 1.5 //1.5x damage to objects, robots, etc.
 	item_flags = NO_BLOOD_ON_ITEM
 	var/w_class_on = WEIGHT_CLASS_BULKY
@@ -60,7 +60,7 @@
 /// Specific hulk checks due to reflection chance for balance issues and switches hitsounds.
 /obj/item/dualsaber/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	if(user && HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, span_warning("You lack the grace to wield this!"))
+		to_chat(user, span_warning("Falta-lhe a graça para usar isso!"))
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 	if(HAS_TRAIT_FROM(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT))
 		to_chat(user, span_warning("You can't seem to hold [src] properly!"))
@@ -131,7 +131,7 @@
 
 /obj/item/dualsaber/attack(mob/target, mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, span_warning("You grip the blade too hard and accidentally drop it!"))
+		to_chat(user, span_warning("Você segura a lâmina muito forte e acidentalmente derrubá-la!"))
 		if(HAS_TRAIT(src, TRAIT_WIELDED))
 			user.dropItemToGround(src, force=TRUE)
 			return
@@ -222,6 +222,6 @@
 			saber_color = "rainbow"
 			update_appearance()
 		else
-			to_chat(user, span_warning("It's starting to look like a triple rainbow - no, nevermind."))
+			to_chat(user, span_warning("Está começando a parecer um arco-íris triplo. Não, não importa."))
 	else
 		return ..()

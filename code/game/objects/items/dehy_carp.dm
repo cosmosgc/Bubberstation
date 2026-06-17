@@ -24,7 +24,7 @@
 	if(swelling)
 		return
 	swelling = TRUE
-	desc = "It's growing!"
+	desc = "Está crescendo!"
 	visible_message(span_notice("[src] swells up!"))
 
 	//Animation
@@ -63,7 +63,7 @@
 		spawned_mob.set_allies(list("[REF(owner)]"))
 		spawned_mob.grant_language(/datum/language/common, UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
 	for(var/mob/living/viewer in viewers(5, get_turf(src)))
-		to_chat(viewer, viewer == owner ? span_notice("The newly grown [spawned_mob.name] looks up at you with friendly eyes.") : span_warning("You have a bad feeling about this."))
+		to_chat(viewer, viewer == owner ? span_notice("The newly grown [spawned_mob.name] looks up at you with friendly eyes.") : span_warning("Você tem um mau pressentimento sobre isso."))
 	qdel(src)
 
 /obj/item/toy/plush/carpplushie/dehy_carp/proc/owner_deleted(datum/source)

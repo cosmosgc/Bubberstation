@@ -35,7 +35,7 @@
 	var/mob/living/A = get_duelist(gun_A)
 	var/mob/living/B = get_duelist(gun_B)
 	if(!A || !B)
-		message_duelists(span_warning("To begin the duel, both participants need to be holding paired dueling pistols."))
+		message_duelists(span_warning("Para começar o duelo, ambos os participantes precisam segurar pistolas emparelhadas."))
 		return
 	begin()
 
@@ -67,7 +67,7 @@
 	return G == gun_A ? gun_B : gun_A
 
 /datum/duel/proc/end()
-	message_duelists(span_notice("Duel finished. Re-engaging safety."))
+	message_duelists(span_notice("Duelo terminado. Religando a segurança."))
 	STOP_PROCESSING(SSobj,src)
 	state = DUEL_IDLE
 
@@ -100,18 +100,18 @@
 	countdown_step = countdown_length
 
 /datum/duel/proc/confirm_positioning()
-	message_duelists(span_notice("Position confirmed. Confirm readiness by pulling the trigger once."))
+	message_duelists(span_notice("Posição confirmada. Confirme a prontidão puxando o gatilho uma vez."))
 	state = DUEL_READY
 
 /datum/duel/proc/confirm_ready()
-	message_duelists(span_notice("Readiness confirmed. Starting countdown. Commence firing at zero mark."))
+	message_duelists(span_notice("Pronto. Iniciando contagem regressiva. Iniciar disparo a zero."))
 	state = DUEL_COUNTDOWN
 
 /datum/duel/proc/countdown_step()
 	countdown_step--
 	if(countdown_step == 0)
 		state = DUEL_FIRING
-		message_duelists(span_userdanger("Fire!"))
+		message_duelists(span_userdanger("Fogo!"))
 	else
 		message_duelists(span_userdanger("[countdown_step]!"))
 
@@ -147,7 +147,7 @@
 
 /obj/item/gun/energy/dueling
 	name = "dueling pistol"
-	desc = "High-tech dueling pistol. Launches chaff and projectile according to preset settings."
+	desc = "Pistola de duelo de alta tecnologia. Lança joio e projétil de acordo com as configurações predefinidas."
 	icon_state = "dueling_pistol"
 	inhand_icon_state = "gun"
 	ammo_x_offset = 2
@@ -252,7 +252,7 @@
 		return
 	if(duel.state == DUEL_READY)
 		duel.confirmations[src] = TRUE
-		to_chat(user,span_notice("You confirm your readiness."))
+		to_chat(user,span_notice("Você confirma sua prontidão."))
 		return
 	else if(!is_duelist(target)) //I kinda want to leave this out just to see someone shoot a bystander or missing.
 		to_chat(user,span_warning("[src] safety system prevents shooting anyone but your designated opponent."))

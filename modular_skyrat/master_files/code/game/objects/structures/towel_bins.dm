@@ -1,6 +1,6 @@
 /obj/structure/towel_bin
 	name = "towel bin"
-	desc = "Seeing this really makes you think of how much worse your life would have been without towels. Seriously, who doesn't use towels?"
+	desc = "Ver isso te faz pensar em como sua vida teria sido pior sem toalhas. Sério, quem não usa toalhas?"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE

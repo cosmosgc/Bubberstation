@@ -30,7 +30,7 @@
 /datum/element/easy_ignite/proc/ignite(atom/igniting, mob/user)
 	var/delete_after = TRUE
 
-	igniting.visible_message(span_warning("[igniting] catch[igniting.p_es()] fire!"), span_warning("You ignite into flames!"))
+	igniting.visible_message(span_warning("[igniting] catch[igniting.p_es()] fire!"), span_warning("Você se incendia!"))
 	new /obj/effect/hotspot(isturf(igniting) ? igniting : igniting.loc)
 
 	if(isturf(igniting))

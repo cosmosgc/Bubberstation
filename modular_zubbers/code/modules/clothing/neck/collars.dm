@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/human_petcollar/locked/ringbell
 	name = "ringing bell collar"
-	desc = "A soft collar that chimes for your little pet!"
+	desc = "Um colarinho macio que soa para seu bichinho!"
 	icon_state = "/obj/item/clothing/neck/human_petcollar/locked/ringbell"
 	post_init_icon_state = "ringbell"
 	greyscale_config = /datum/greyscale_config/collar/ringbell
@@ -13,7 +13,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked/gps
 	name = "tracking collar"
-	desc = "A collar that lets you find your pet anywhere with GPS!"
+	desc = "Uma coleira que te permite encontrar seu animal de estimação em qualquer lugar com GPS!"
 	icon_state = "/obj/item/clothing/neck/kink_collar/locked/gps"
 	var/datum/component/gps/gps
 	post_init_icon_state = "gps"
@@ -49,7 +49,7 @@
 ///Calls toggletracking
 /obj/item/clothing/neck/kink_collar/locked/gps/click_alt(mob/user)
 	if(locked)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "Está trancada!")
 		playsound(src, 'sound/items/click.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	else
 		toggletracking(user)

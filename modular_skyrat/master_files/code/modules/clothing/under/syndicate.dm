@@ -24,7 +24,7 @@
 
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"
-	desc = "A snug turtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
+	desc = "Uma gola alta confortável, em fabuloso azul Nanotrasen. Só de olhar para ele faz você querer comprar um café com certificado de NT, ir para o escritório, e trabalhar."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/syndicate.dmi' //Since its an overwrite it needs new icon linking. Woe.
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate.dmi'
 	icon_state = "tactifool_blue"
@@ -54,12 +54,12 @@
 /obj/item/clothing/under/syndicate/tacticool/proc/on_reskin()
 	SIGNAL_HANDLER
 	if(icon_state == "tactifool")
-		desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
+		desc = "Só de olhar para ele faz você querer comprar um SKS, ir para a floresta, e - operar-."
 		inhand_icon_state = "bl_suit"
 
 /obj/item/clothing/under/syndicate/tacticool/skirt //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool skirtleneck"
-	desc = "A snug skirtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
+	desc = "Uma saia confortável, em fabuloso azul Nanotrasen. Só de olhar para ele faz você querer comprar um café com certificado de NT, ir para o escritório, e trabalhar."
 	icon_state = "tactifool_blue_skirt"
 	armor_type = /datum/armor/clothing_under
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -89,7 +89,7 @@
 
 /obj/item/clothing/under/syndicate/skyrat/baseball
 	name = "syndicate baseball tee"
-	desc = "Aaand the Syndicate Snakes are up to bat, ready for one of their signature nuclear home-runs! Lets show these corpos a good time." //NT pitches their plasma/bluespace(something)
+	desc = "As cobras do Sindicato estão prontas para um dos homeruns nucleares. Vamos mostrar a esses corpóreos um bom tempo." //NT pitches their plasma/bluespace(something)
 	icon_state = "syndicate_baseball"
 
 /*
@@ -99,7 +99,7 @@
 // (Multiple non-syndicate things use the base tactical turtleneck, they cant have it red nor reskinnable. OUR version, however, can be.)
 /obj/item/clothing/under/syndicate/skyrat/tactical
 	name = "tactical turtleneck"
-	desc = "A snug syndicate-red turtleneck with charcoal-black cargo pants. Good luck arguing allegiance with this on."
+	desc = "Uma gola rola vermelha com calças pretas. Boa sorte discutindo lealdade com isso."
 	icon_state = "syndicate_red"
 	inhand_icon_state = "r_suit"
 	can_adjust = TRUE
@@ -126,12 +126,12 @@
 /obj/item/clothing/under/syndicate/skyrat/tactical/proc/on_reskin()
 	SIGNAL_HANDLER
 	if(icon_state == "syndicate")
-		desc = "A non-descript and slightly suspicious looking turtleneck with digital camouflage cargo pants."
+		desc = "Uma gola alta e um pouco suspeita com camuflagem digital."
 		inhand_icon_state = "bl_suit"
 
 /obj/item/clothing/under/syndicate/skyrat/tactical/skirt
 	name = "tactical skirtleneck"
-	desc = "A snug syndicate-red skirtleneck with a charcoal-black skirt. Good luck arguing allegiance with this on."
+	desc = "Uma saia vermelha e confortável com uma saia preta. Boa sorte discutindo lealdade com isso."
 	icon_state = "syndicate_red_skirt"
 	inhand_icon_state = "r_suit"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
@@ -156,7 +156,7 @@
 /obj/item/clothing/under/syndicate/skyrat/tactical/skirt/on_reskin()
 	. = ..()
 	if(icon_state == "syndicate_skirt")
-		desc = "A non-descript and slightly suspicious looking skirtleneck."
+		desc = "Um não-descrito e um pouco suspeito, marginal."
 		inhand_icon_state = "bl_suit"
 
 /*
@@ -164,7 +164,7 @@
 */
 /obj/item/clothing/under/syndicate/skyrat/enclave
 	name = "neo-American sergeant uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeants run rampant; of creatures in armor black as night, being led by men or women wearing this uniform. They share one thing: a deep, natonalistic zeal of the dream of America."
+	desc = "Através das estrelas, rumores de cientistas loucos e sargentos furiosos correm desenfreados, de criaturas de armadura negra como a noite, sendo lideradas por homens ou mulheres vestindo este uniforme. Eles compartilham uma coisa: um profundo zelo natonalista do sonho da América."
 	icon_state = "enclave"
 	can_adjust = TRUE
 	armor_type = /datum/armor/clothing_under

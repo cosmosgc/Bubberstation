@@ -15,9 +15,9 @@
 	if(get_malf_status(malf) != APC_AI_NO_HACK)
 		return
 	if(malf.malfhacking)
-		to_chat(malf, span_warning("You are already hacking an APC!"))
+		to_chat(malf, span_warning("Você já está hackeando um APC!"))
 		return
-	to_chat(malf, span_notice("Beginning override of APC systems. This takes some time, and you cannot perform other actions during the process."))
+	to_chat(malf, span_notice("Iniciando a substituição dos sistemas APC. Isso leva algum tempo, e você não pode realizar outras ações durante o processo."))
 	malf.malfhack = src
 	malf.malfhacking = addtimer(CALLBACK(malf, TYPE_PROC_REF(/mob/living/silicon/ai/, malfhacked), src), 30 SECONDS + 10*malf.hacked_apcs.len SECONDS, TIMER_STOPPABLE)
 
@@ -29,17 +29,17 @@
 	if(!istype(malf))
 		return
 	if(istype(malf.loc, /obj/machinery/power/apc)) // Already in an APC
-		to_chat(malf, span_warning("You must evacuate your current APC first!"))
+		to_chat(malf, span_warning("Você deve evacuar seu atual APC primeiro!"))
 		return
 	if(!malf.can_shunt)
-		to_chat(malf, span_warning("You cannot shunt!"))
+		to_chat(malf, span_warning("Você não pode desviar!"))
 		return
 	if(!is_station_level(z))
 		return
 	INVOKE_ASYNC(src, PROC_REF(malfshunt), malf)
 
 /obj/machinery/power/apc/proc/malfshunt(mob/living/silicon/ai/malf)
-	var/confirm = tgui_alert(malf, "Are you sure that you want to shunt? This will take you out of your core!", "Shunt to [name]?", list("Yes", "No"))
+	var/confirm = tgui_alert(malf, "Tem certeza que quer desviar? Isso vai te tirar do seu núcleo!", "Shunt to [name]?", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 	malf.ShutOffDoomsdayDevice()
@@ -100,7 +100,7 @@
 		to_chat(user, span_warning("[occupier] is refusing all attempts at transfer!") )
 		return FALSE
 	if(transfer_in_progress)
-		to_chat(user, span_warning("There's already a transfer in progress!"))
+		to_chat(user, span_warning("Já há uma transferência em andamento!"))
 		return FALSE
 	if(interaction != AI_TRANS_TO_CARD || occupier.stat)
 		return FALSE
@@ -108,16 +108,16 @@
 	if(!user_turf)
 		return FALSE
 	transfer_in_progress = TRUE
-	user.visible_message(span_notice("[user] slots [card] into [src]..."), span_notice("Transfer process initiated. Sending request for AI approval..."))
+	user.visible_message(span_notice("[user] slots [card] into [src]..."), span_notice("Processo de transferência iniciado. Enviando pedido de aprovação da IA..."))
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	SEND_SOUND(occupier, sound('sound/announcer/notice/notice2.ogg')) //To alert the AI that someone's trying to card them if they're tabbed out
 	if(tgui_alert(occupier, "[user] is attempting to transfer you to \a [card.name]. Do you consent to this?", "APC Transfer", list("Yes - Transfer Me", "No - Keep Me Here")) == "No - Keep Me Here")
-		to_chat(user, span_danger("AI denied transfer request. Process terminated."))
+		to_chat(user, span_danger("AI negou o pedido de transferência. Processo encerrado."))
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 		transfer_in_progress = FALSE
 		return FALSE
 	if(user.loc != user_turf)
-		to_chat(user, span_danger("Location changed. Process terminated."))
+		to_chat(user, span_danger("A localização mudou. Processo encerrado."))
 		to_chat(occupier, span_warning("[user] moved away! Transfer canceled."))
 		transfer_in_progress = FALSE
 		return FALSE

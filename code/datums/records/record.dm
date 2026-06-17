@@ -107,9 +107,9 @@
 	/// Crew specific
 	lock_ref,
 	major_disabilities = "None",
-	major_disabilities_desc = "No disabilities have been diagnosed at the moment.",
+	major_disabilities_desc = "Nenhuma deficiência foi diagnosticada no momento.",
 	minor_disabilities = "None",
-	minor_disabilities_desc = "No disabilities have been diagnosed at the moment.",
+	minor_disabilities_desc = "Nenhuma deficiência foi diagnosticada no momento.",
 	physical_status = PHYSICAL_ACTIVE,
 	mental_status = MENTAL_STABLE,
 	quirk_notes,

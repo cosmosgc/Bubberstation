@@ -1,12 +1,12 @@
 /obj/effect/mob_spawn/ghost_role/human/lavaland_gasstation
 	name = "Gas Station Attendant"
-	desc = "Seems like there's somebody inside, peacefully sleeping."
+	desc = "Parece que tem alguém lá dentro, dormindo pacificamente."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	prompt_name = "a gas station worker"
-	you_are_text = "You are a worker at a Lizard's Gas Station close to a mining facility."
-	flavour_text = "Your employer, however, failed to realize that there are hostile megafauna and tribes in the area, so make sure that you can defend yourself. Also sell stuff to people, occasionally."
-	important_text = "Do NOT let your workplace get damaged! Do not abandon it either!"
+	prompt_name = "um trabalhador de posto de gasolina"
+	you_are_text = "Você é um trabalhador em uma estação de gás Lizard perto de uma mina."
+	flavour_text = "Seu patrão, no entanto, não percebeu que há megafauna hostil e tribos na área, então certifique-se de que você pode se defender. Também vender coisas para as pessoas, ocasionalmente."
+	important_text = "Não deixe seu trabalho ser danificado! Não abandone também!"
 	quirks_enabled = TRUE
 	random_appearance = FALSE
 	loadout_enabled = TRUE
@@ -40,4 +40,4 @@
 	if(visualsOnly)
 		return
 	hermit.mind?.teach_crafting_recipe(/datum/crafting_recipe/research_paper)
-	to_chat(hermit, span_notice("You learn the recipe for the <b>research paper</b>, giving you the ability to craft everything from nothing."))
+	to_chat(hermit, span_notice("Você aprende a receita para o<b>Papel de pesquisa</b>, dando-lhe a capacidade de criar tudo do nada."))

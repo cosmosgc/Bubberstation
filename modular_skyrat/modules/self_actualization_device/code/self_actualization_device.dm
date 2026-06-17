@@ -9,7 +9,7 @@
 
 /datum/design/board/self_actualization_device
 	name = "Machine Design (Self-Actualization Device)"
-	desc = "The circuit board for a Self-Actualization Device by Veymed: A Family Company."
+	desc = "A placa de circuito para um dispositivo de auto-realização de Veymed: uma empresa familiar."
 	id = "self_actualization_device"
 	build_path = /obj/item/circuitboard/machine/self_actualization_device
 	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_MEDICAL)
@@ -23,7 +23,7 @@
 
 /obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"
-	desc = "A state of the art medical device that can restore someone's physical appearance to the last known DNA database backup."
+	desc = "Um dispositivo médico de última geração que pode restaurar a aparência física de alguém no último banco de dados de DNA."
 	icon = 'modular_skyrat/modules/self_actualization_device/icons/self_actualization_device.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/self_actualization_device
@@ -109,7 +109,7 @@
 	else
 		. += span_notice("Left-click to <b>[state_open ? "close" : "open"]</b>.")
 		if(!isnull(occupant) && !state_open)
-			. += span_notice("<b>Alt-click</b> to turn on.")
+			. += span_notice("<b>Alt-click</b>para ligar.")
 
 /obj/machinery/self_actualization_device/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	if(!processing)
@@ -186,7 +186,7 @@
 	update_appearance()
 
 	// defaults to rejecting it unless specified otherwise
-	if(tgui_alert(occupant, "The SAD you are within is about to rejuvenate you, resetting your body to its default state (in character preferences). Do you consent?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) == "Yes")
+	if(tgui_alert(occupant, "O SAD que você está dentro está prestes a rejuvenescê-lo, redefinindo seu corpo para seu estado padrão (em preferências de caráter). Você concorda?", "Rejuvenate", list("Yes", "No"), timeout = 10 SECONDS) == "Yes")
 		player_consent = CONSENT_GRANTED
 		say("Starting procedure! Baking for a cycle time of [DisplayTimeText(processing_time)] at laser power [display_power(active_power_usage)].")
 		to_chat(occupant, span_warning("This will take [DisplayTimeText(processing_time)] to complete. To cancel the procedure, hit the RESIST button or hotkey."))
@@ -259,10 +259,10 @@
 		return
 
 	if(COOLDOWN_TIMELEFT(src, sad_processing_time) < BREAKOUT_TIME)
-		to_chat(user, span_warning("The emergency release is not responding! You start pushing against the door, but you feel your body changing... It's too late!"))
+		to_chat(user, span_warning("A liberação de emergência não está respondendo! Você começa a empurrar contra a porta, mas sente seu corpo mudando... É tarde demais!"))
 		return
 
-	to_chat(user, span_notice("The emergency release is not responding! You start pushing against the door!"))
+	to_chat(user, span_notice("A liberação de emergência não está respondendo! Você começa a empurrar contra a porta!"))
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \

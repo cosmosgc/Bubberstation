@@ -118,35 +118,35 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "moon",
 			SPECIES_PERK_NAME = "Darkness Affinity",
-			SPECIES_PERK_DESC = "A Hemophage is only at home in the darkness, the infection \
-								within a Hemophage seeking to return them to a healthy state \
-								whenever it can be in the shadow. However, light artificial or \
-								otherwise irritates their bodies and the cancer keeping them alive, \
-								not harming them but keeping them from regenerating. Modern \
-								Hemophages have been known to use lockers as a convenient \
-								source of darkness, while the extra protection they provide \
-								against background radiations allows their tumor to avoid \
-								having to expend any blood to maintain minimal bodily functions \
-								so long as their host remains stationary in said locker.",
+			SPECIES_PERK_DESC = "Um Hemófago só está em casa na escuridão, a infecção.\
+dentro de um Hemofage procurando devolvê-los a um estado saudável.\
+sempre que pode estar na sombra. No entanto, luz artificial ou\
+Caso contrário, irrita seus corpos e o câncer os mantém vivos,\
+Não os prejudica, mas os impede de se regenerarem. Moderno.\
+Hemofagos têm sido conhecidos por usar armários como um conveniente\
+fonte da escuridão, enquanto a proteção extra que eles fornecem\
+contra radiação de fundo permite que seu tumor para evitar\
+ter que gastar sangue para manter funções corporais mínimas.\
+Contanto que o hospedeiro permaneça parado no armário.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "biohazard",
 			SPECIES_PERK_NAME = "Viral Symbiosis",
-			SPECIES_PERK_DESC = "Hemophages, due to their condition, cannot get infected by \
-								other viruses and don't actually require an external source of oxygen \
-								to stay alive.",
+			SPECIES_PERK_DESC = "Os hemofármacos, devido à sua condição, não podem ser infectados por\
+outros vírus e não precisam de uma fonte externa de oxigênio.\
+para permanecer vivo.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "tint",
 			SPECIES_PERK_NAME = "The Thirst",
-			SPECIES_PERK_DESC = "In place of eating, Hemophages suffer from the Thirst, caused by their tumor. \
-								Thirst of what? Blood! Their tongue allows them to grab people and drink \
-								their blood, and they will suffer severe consequences if they run out. As a note, \
-								it doesn't matter whose blood you drink, it will all be converted into your blood \
-								type when consumed. That being said, the blood of other sentient humanoids seems \
-								to quench their Thirst for longer than otherwise-acquired blood would.",
+			SPECIES_PERK_DESC = "Em vez de comer, os hemofágicos sofrem da sede, causada pelo tumor.\
+Sede de quê? Sangue! Sua língua lhes permite agarrar pessoas e beber.\
+Seu sangue, e sofrerão graves consequências se acabarem. Como uma nota,\
+Não importa de quem você bebe, tudo será convertido em seu sangue.\
+tipo quando consumido. Dito isso, o sangue de outros humanóides sensíveis parece\
+Para apagar a sede por mais tempo do que o sangue adquirido.",
 		),
 	)
 

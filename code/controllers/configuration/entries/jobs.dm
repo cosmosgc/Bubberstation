@@ -55,19 +55,19 @@
 	config_documentation = initial(config_documentation) // Reset to default juuuuust in case.
 
 	if(fexists(file(toml_path)))
-		to_chat(user, span_notice("Generating new jobconfig.toml, pulling from the old config settings."))
+		to_chat(user, span_notice("Gerando novo jobconfig.toml, tirando das configurações antigas."))
 		if(!regenerate_job_config(user))
 			return FALSE
 		return TRUE
 
 	if(fexists(file(jobstext))) // Generate the new TOML format, migrating from the text format.
-		to_chat(user, span_notice("Found jobs.txt in config directory! Generating jobconfig.toml from it."))
+		to_chat(user, span_notice("Encontrei trabalhos. Txt no diretório de configuração! Gerando Jobconfig.Toml dele."))
 		if(!import_config_from_txt(user))
 			return FALSE
 		return TRUE
 
 	// Generate the new TOML format, using codebase defaults.
-	to_chat(user, span_notice("Generating new jobconfig.toml, using codebase defaults."))
+	to_chat(user, span_notice("Gerando novo jobconfig.toml, usando padrões de base de código."))
 	var/list/file_data = list()
 	for(var/datum/job/occupation as anything in joinable_occupations)
 		file_data[occupation.config_tag] = generate_blank_job_config(occupation)
@@ -113,7 +113,7 @@
 	var/list/file_data = list()
 
 	if(!fexists(file(toml_path))) // You need an existing (valid) TOML for this to work. Sanity check if someone calls this directly instead of through 'Generate Job Configuration' verb.
-		to_chat(user, span_notice("No jobconfig.toml found in the config folder! If this is not expected, please notify a server operator or coders. You may need to generate a new config file by running 'Generate Job Configuration' from the Server tab."))
+		to_chat(user, span_notice("Nenhum jobconfig.toml encontrado na pasta de configuração! Se isso não é esperado, por favor notifique um operador de servidor ou codificadores. Você pode precisar gerar um novo arquivo de configuração rodando 'Generate Job Configuration' da guia Servidor."))
 		return FALSE
 
 	var/list/job_config = rustg_read_toml_file(toml_path)

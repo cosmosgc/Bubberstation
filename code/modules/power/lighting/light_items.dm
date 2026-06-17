@@ -53,7 +53,7 @@
 
 /obj/item/light/tube
 	name = "light tube"
-	desc = "A replacement light tube."
+	desc = "Um tubo de luz de substituição."
 	icon_state = "ltube"
 	base_state = "ltube"
 	inhand_icon_state = "ltube"
@@ -75,7 +75,7 @@
 
 /obj/item/light/bulb
 	name = "light bulb"
-	desc = "A replacement light bulb."
+	desc = "Uma lâmpada de substituição."
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	icon_angle = -90
@@ -135,7 +135,7 @@
 
 /obj/item/light/proc/shatter(target)
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		visible_message(span_danger("[src] shatters."),span_hear("You hear a small glass object shatter."))
+		visible_message(span_danger("[src] shatters."),span_hear("Você ouve um objeto de vidro quebrando."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharpness = SHARP_POINTY

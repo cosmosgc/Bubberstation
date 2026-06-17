@@ -56,7 +56,7 @@
 /obj/item/reagent_containers/blood/o_minus/bloodsucker/examine(mob/user)
 	. = ..()
 	if(user.mind.has_antag_datum(/datum/antagonist/ex_ghoul) || user.mind.has_antag_datum(/datum/antagonist/ghoul/revenge))
-		. += span_notice("Seems to be just about the same color as your Master's...")
+		. += span_notice("Parece ser da mesma cor do seu mestre...")
 
 //////////////////////
 //      STAKES      //
@@ -67,7 +67,7 @@
 	user.visible_message(
 		span_notice("[user] begins whittling [src] into a pointy object."),
 		span_notice("You begin whittling [src] into a sharp point at one end."),
-		span_hear("You hear wood carving."),
+		span_hear("Você ouve madeira esculpindo."),
 	)
 	// 5 Second Timer
 	if(!do_after(user, 5 SECONDS, src, NONE, TRUE))
@@ -109,7 +109,7 @@
 
 /obj/item/stake
 	name = "wooden stake"
-	desc = "A simple wooden stake carved to a sharp point."
+	desc = "Uma simples estaca de madeira esculpida até um ponto afiado."
 	icon = 'modular_zubbers/icons/obj/equipment/stakes.dmi'
 	icon_state = "wood"
 	inhand_icon_state = "wood"
@@ -204,7 +204,7 @@
 /// Created by welding and acid-treating a simple stake.
 /obj/item/stake/hardened
 	name = "hardened stake"
-	desc = "A wooden stake carved to a sharp point and hardened by fire."
+	desc = "Uma estaca de madeira esculpida num ponto afiado e resistente pelo nevoeiro."
 	icon_state = "hardened"
 	force = 8
 	throwforce = 12
@@ -223,7 +223,7 @@
 
 /obj/item/stake/hardened/silver
 	name = "silver stake"
-	desc = "Polished and sharp at the end. For when some mofo is always trying to iceskate uphill."
+	desc = "Polido e afiado no final. Para quando algum mofo está sempre tentando iceskate uphill."
 	icon_state = "silver"
 	inhand_icon_state = "silver"
 	siemens_coefficient = 1
@@ -255,7 +255,7 @@
 /obj/item/book/kindred
 	name = "\improper Book of Nod"
 	starting_title = "the Book of Nod"
-	desc = "Cryptic documents explaining hidden truths behind Undead beings. It is said only Curators can decipher what they really mean."
+	desc = "Documentos criptográficos explicando verdades escondidas atrás de seres mortos-vivos. Dizem que só os curadores podem decifrar o que realmente significam."
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/weapons/bloodsucker_lefthand.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/weapons/bloodsucker_righthand.dmi'
@@ -291,7 +291,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, bloodsucker_check_cooldown))
-		user.balloon_alert(user, "your head hurts, wait a minute ")
+		user.balloon_alert(user, "Sua cabeça dói, espere um minuto.")
 		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom, balloon_alert), user, "You feel your head clear up."), cooldown_time)
 		return
 	user.balloon_alert_to_viewers(user, "reading book...")
@@ -313,7 +313,7 @@
 
 /obj/item/book/kindred/attack_self(mob/living/user)
 	if(user.mind && !(HAS_TRAIT(user.mind, TRAIT_BLOODSUCKER_HUNTER) || IS_BLOODSUCKER(user)))
-		to_chat(user, span_warning("You feel your eyes unable to read the boring texts..."))
+		to_chat(user, span_warning("Você sente seus olhos incapazes de ler os textos chatos..."))
 		user.set_eye_blur_if_lower(10 SECONDS)
 		return
 	ui_interact(user)
@@ -336,7 +336,7 @@
 	return data
 
 /obj/structure/displaycase/curator
-	desc = "This book was found inside a coffin of a long dead Curator. It is said to be able to reveal the true nature of those who feed upon mankind."
+	desc = "Este livro foi encontrado dentro de um caixão de um curador morto. Dizem que pode revelar a verdadeira natureza daqueles que se alimentam da humanidade."
 	start_showpiece_type = /obj/item/book/kindred
 	req_access = list(ACCESS_LIBRARY)
 

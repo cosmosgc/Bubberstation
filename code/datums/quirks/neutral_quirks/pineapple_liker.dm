@@ -1,11 +1,11 @@
 /datum/quirk/pineapple_liker
 	name = "Ananas Affinity"
-	desc = "You find yourself greatly enjoying fruits of the ananas genus. You can't seem to ever get enough of their sweet goodness!"
+	desc = "Você está gostando muito das frutas do gênero Ananas. Você nunca se cansa de sua doce bondade!"
 	icon = FA_ICON_THUMBS_UP
 	value = 0
-	gain_text = span_notice("You feel an intense craving for pineapple.")
-	lose_text = span_notice("Your feelings towards pineapples seem to return to a lukewarm state.")
-	medical_record_text = "Patient demonstrates a pathological love of pineapple."
+	gain_text = span_notice("Você sente um intenso desejo por abacaxi.")
+	lose_text = span_notice("Seus sentimentos pelos abacaxis parecem voltar a um estado morno.")
+	medical_record_text = "O paciente demonstra um amor patológico pelo abacaxi."
 	mail_goodies = list(/obj/item/food/pizzaslice/pineapple)
 
 /datum/quirk/pineapple_liker/add(client/client_source)

@@ -4,20 +4,20 @@
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/feet/feet_digi.dmi'
 	worn_icon_teshari = 'modular_zubbers/icons/mob/clothing/feet/feet_teshari.dmi'
 	name = "black divers boots"
-	desc = "An old pair of boots used by a now-defunct mining coalition, it seems close to the ones used by Nanotrasen miners, but without the compartments for fitting small items."
+	desc = "Um velho par de botas usadas por uma coalizão de mineração agora defenda, parece próximo das usadas por mineiros Nanotrasen, mas sem os compartimentos para montar pequenos itens."
 	icon_state = "diver"
 	worn_icon_state = "diver"
 
 /obj/item/clothing/shoes/fancy_heels/cc
 	name = "nanotrasen heels"
-	desc = "Surely these aren't official. Right?"
+	desc = "Certamente não são oficiais. Certo?"
 	icon_state = "/obj/item/clothing/shoes/fancy_heels/cc"
 	greyscale_colors = "#316E4A"
 	flags_1 = null
 
 /obj/item/clothing/shoes/fancy_heels/syndi
 	name = "syndiheels"
-	desc = "Heel in more way than one."
+	desc = "Salto em mais de um sentido."
 	icon_state = "/obj/item/clothing/shoes/fancy_heels/syndi"
 	greyscale_colors = "#18191E"
 	body_parts_covered = parent_type::body_parts_covered | LEGS
@@ -35,7 +35,7 @@
 
 /obj/item/clothing/shoes/fancy_heels/wizard
 	name = "magical heels"
-	desc = "A pair of heels that seem to magically solve all the problems with walking in heels."
+	desc = "Um par de saltos que parecem magicamente resolver todos os problemas de andar de salto."
 	icon_state = "/obj/item/clothing/shoes/fancy_heels/wizard"
 	strip_delay = 2 SECONDS
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/shoes/fancy_heels/red
 	name = "red heels"
-	desc = "A pair of classy red heels."
+	desc = "Um par de saltos vermelhos elegantes."
 	icon_state = "/obj/item/clothing/shoes/fancy_heels/red"
 	greyscale_colors = "#921C25"
 	flags_1 = null
@@ -65,7 +65,7 @@
 
 /obj/item/clothing/shoes/workboots/mining/heeled
 	name = "heeled mining boots"
-	desc = "Steel-toed mining heels for mining in hazardous environments. This was an awful idea."
+	desc = "Saltos de aço para mineração em ambientes perigosos. Foi uma péssima ideia."
 	icon_state = "explorer_heeled"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -80,7 +80,7 @@
 
 /obj/item/clothing/shoes/workboots/heeled
 	name = "heeled work boots"
-	desc = "Nanotrasen-issue Engineering lace-up work heels that seem almost especially designed to cause a workplace accident."
+	desc = "Nanotrasen-tease Engenharia renda-up saltos de trabalho que parecem quase especialmente projetados para causar um acidente de trabalho."
 	icon_state = "workboots_heeled"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -145,7 +145,7 @@
 
 /obj/item/clothing/shoes/jackboots/gogo_boots
 	name = "tactical go-go boots"
-	desc = "Highly tactical footwear designed to give you a better view of the battlefield."
+	desc = "Calçado altamente tático projetado para dar uma visão melhor do campo de batalha."
 	icon_state = "hos_boots"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -164,7 +164,7 @@
 
 /obj/item/clothing/shoes/galoshes/heeled
 	name = "heeled galoshes"
-	desc = "A pair of yellow rubber heels, designed to prevent slipping on wet surfaces. These are even harder to walk in than normal heels."
+	desc = "Um par de saltos de borracha amarelos, projetados para evitar escorregar em superfícies molhadas. Estes são ainda mais difíceis de andar do que saltos normais."
 	icon_state ="galoshes_heeled"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -181,7 +181,7 @@
 
 /obj/item/clothing/shoes/clown_shoes/heeled
 	name = "honk heels"
-	desc = "A pair of high heeled clown shoes. What kind of maniac would design these?"
+	desc = "Um par de sapatos de palhaço. Que tipo de maníaco desenharia isso?"
 	icon_state ="honk_heels"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -229,7 +229,7 @@
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/feet/feet_digi.dmi'
 	name = "banana slippers"
-	desc = "Stylish banana shaped shoes that make it impossible to walk without slipping. Due to the slippery nature of them, removal will require the help of a friend!"
+	desc = "Sapatos elegantes de banana que tornam impossível andar sem escorregar. Devido à natureza escorregadia deles, a remoção exigirá a ajuda de um amigo!"
 	icon_state = "banana_slippers"
 	worn_icon_state = "banana_slippers"
 	fastening_type = SHOES_SLIPON
@@ -301,7 +301,7 @@
 
 /obj/item/clothing/shoes/horseshoe
 	name = "horseshoes"
-	desc = "A pair of horseshoes made out of chains."
+	desc = "Um par de ferraduras feitas de correntes."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
 	icon_state = "horseshoe"
@@ -315,7 +315,7 @@
 // digi sprites by @sippykot
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
-	desc = "Synth-leather jackboots, the material polished to an almost mirror sheen - and with a curious addition of a rather aggressive heel."
+	desc = "Jackboots de couro sintético, o material polido para um brilho quase espelho - e com uma adição curiosa de um calcanhar bastante agressivo."
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/feet/feet_digi.dmi'
@@ -332,7 +332,7 @@
 // Diesel Boots | Sprites by Fluff from Bad Deathclaw
 /obj/item/clothing/shoes/jackboots/diesel_m
 	name = "male diesel boots"
-	desc = "Fancy mens' steel-toed boots."
+	desc = "Botas de aço para homens."
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/feet/feet_digi.dmi'
@@ -340,7 +340,7 @@
 
 /obj/item/clothing/shoes/jackboots/diesel_f
 	name = "female diesel boots"
-	desc = "Fancy womens' knee-high platform boots with shiny steel clasps."
+	desc = "Botas de salto alto de mulheres com fechos de aço brilhantes."
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
 	worn_icon_digi = 'modular_zubbers/icons/mob/clothing/feet/feet_digi.dmi'
@@ -348,7 +348,7 @@
 
 /obj/item/clothing/shoes/jackboots/toeless // Ported from SPLURT
 	name = "toe-less jackboots"
-	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
+	desc = "Um par modificado de botas de macaco, particularmente amigável com as espécies cujos dedos dos pés têm garras."
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	icon_state = "jackboots-toeless"
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -356,7 +356,7 @@
 
 /obj/item/clothing/shoes/workboots/toeless // Ported from SPLURT
 	name = "toe-less workboots"
-	desc = "A pair of toe-less work boots designed for use in industrial settings. Modified for species whose toes have claws."
+	desc = "Um par de botas de trabalho sem dedos projetadas para uso em ambientes industriais. Modificado para espécies cujos dedos têm garras."
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	icon_state = "workboots-toeless"
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -365,7 +365,7 @@
 
 /obj/item/clothing/shoes/jackboots/combine
 	name = "union jackboots"
-	desc = "Crushing cans and crushing skulls."
+	desc = "Esmagando latas e esmagando crânios."
 	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS)
 
 /obj/item/clothing/shoes/jackboots/combine/Initialize(mapload)
@@ -384,7 +384,7 @@
 //MGS stuff sprited by Crumpaloo for onlyplateau, please credit when porting, which you obviously have permission to do.
 /obj/item/clothing/shoes/combat/boss
 	name = "patriot's boots"
-	desc = "There is nothing left inside me now. Nothing at all. No hatred, not even regret."
+	desc = "Não sobrou nada dentro de mim agora. Nada mesmo. Sem ódio, nem arrependimento."
 	icon_state = "boss"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
@@ -392,14 +392,14 @@
 
 /obj/item/clothing/shoes/jackboots/boss
 	name = "mecury woman's boots"
-	desc = "There is nothing left inside me now. Nothing at all. No hatred, not even regret."
+	desc = "Não sobrou nada dentro de mim agora. Nada mesmo. Sem ódio, nem arrependimento."
 	icon_state = "boss"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'
 
 /obj/item/clothing/shoes/jackboots/snake
 	name = "stealth boots"
-	desc = "We will leave our motherlands behind us."
+	desc = "Deixaremos nossas terras-mãe para trás."
 	icon_state = "snake"
 	icon = 'modular_zubbers/icons/obj/clothing/feet/feet.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/feet/feet.dmi'

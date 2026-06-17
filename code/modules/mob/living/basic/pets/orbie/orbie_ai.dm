@@ -119,7 +119,7 @@
 ///command to make our pet turn its lights on, we need to be level 2 to activate this ability
 /datum/pet_command/untargeted_ability/pet_lights
 	command_name = "Lights"
-	command_desc = "Toggle your pet's lights!"
+	command_desc = "Ative as luzes do seu animal de estimação!"
 	radial_icon = 'icons/mob/simple/pets.dmi'
 	radial_icon_state = "orbie_lights_action"
 	speech_commands = list("lights", "light", "toggle")
@@ -136,7 +136,7 @@
 
 /datum/pet_command/use_ability/take_photo
 	command_name = "Photo"
-	command_desc = "Make your pet take a photo!"
+	command_desc = "Faça seu animal tirar uma foto!"
 	radial_icon = 'icons/obj/art/camera.dmi'
 	radial_icon_state = "camera"
 	speech_commands = list("photo", "picture", "image")
@@ -156,7 +156,7 @@
 
 /datum/pet_command/perform_trick_sequence
 	command_name = "Trick Sequence"
-	command_desc = "A trick sequence programmable through your PDA!"
+	command_desc = "Uma sequência de truque programável através do seu PDA!"
 
 /datum/pet_command/perform_trick_sequence/find_command_in_text(spoken_text, check_verbosity = FALSE)
 	var/mob/living/living_pawn = weak_parent.resolve()

@@ -40,8 +40,8 @@
 
 	var/turf/destination_turf = zlevels ? find_safe_turf(zlevels) : get_safe_random_station_turf_equal_weight()
 	if(!destination_turf)
-		source.balloon_alert(user, "uh oh...")
-		to_chat(user, span_warning("Nothing happens. You feel like this is a bad sign."))
+		source.balloon_alert(user, "Uh oh...")
+		to_chat(user, span_warning("Nada acontece. Você acha que isso é um mau sinal."))
 		return
 
 	var/turf/user_turf = get_turf(user)

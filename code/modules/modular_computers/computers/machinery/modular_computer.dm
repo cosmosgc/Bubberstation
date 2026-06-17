@@ -3,7 +3,7 @@
 // Modular Computer - A machinery that is mostly just a host to the Modular Computer item.
 /obj/machinery/modular_computer
 	name = "modular computer"
-	desc = "The frame of an advanced computer" //This should only show up when building a computer, it should examine the processor instead
+	desc = "O quadro de um computador avançado" //This should only show up when building a computer, it should examine the processor instead
 	icon = 'icons/obj/machines/modular_console.dmi'
 	icon_state = "console"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.025
@@ -68,10 +68,10 @@
 		return
 	if(HAS_TRAIT_FROM(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user)))
 		REMOVE_TRAIT(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user))
-		balloon_alert(user, "now interacting with computer")
+		balloon_alert(user, "agora interagindo com o computador")
 	else
 		ADD_TRAIT(src, TRAIT_MODPC_INTERACTING_WITH_FRAME, REF(user))
-		balloon_alert(user, "now interacting with frame")
+		balloon_alert(user, "agora interagindo com o quadro")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/modular_computer/examine(mob/user)
@@ -88,7 +88,7 @@
 
 /obj/machinery/modular_computer/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!cpu)
-		balloon_alert(user, "turn it on first!")
+		balloon_alert(user, "Ligue primeiro!")
 		return FALSE
 	return cpu.emag_act(user)
 

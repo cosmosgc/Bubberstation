@@ -1,6 +1,6 @@
 /obj/item/mmi
 	name = "\improper Man-Machine Interface"
-	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity, that nevertheless has become standard-issue on Nanotrasen stations."
+	desc = "A sigla do guerreiro, MMI, obscurece o verdadeiro horror desta monstruosidade, que, no entanto, tornou-se padrão nas estações Nanotrasen."
 	icon = 'icons/obj/devices/assemblies.dmi'
 	icon_state = "mmi_off"
 	base_icon_state = "mmi"
@@ -54,7 +54,7 @@
 	if(istype(O, /obj/item/organ/brain)) //Time to stick a brain in it --NEO
 		var/obj/item/organ/brain/newbrain = O
 		if(brain)
-			to_chat(user, span_warning("There's already a brain in the MMI!"))
+			to_chat(user, span_warning("Já tem um cérebro no MMI!"))
 			return
 		if(newbrain.suicided)
 			to_chat(user, span_warning("[newbrain] is completely useless."))
@@ -267,9 +267,9 @@
 	set popup_menu = FALSE
 
 	if(brainmob.stat)
-		to_chat(brainmob, span_warning("Can't do that while incapacitated or dead!"))
+		to_chat(brainmob, span_warning("Não pode fazer isso enquanto incapacitado ou morto!"))
 	if(!radio.is_on())
-		to_chat(brainmob, span_warning("Your radio is disabled!"))
+		to_chat(brainmob, span_warning("Seu rádio está desativado!"))
 		return
 
 	radio.set_listening(!radio.get_listening())
@@ -354,7 +354,7 @@
 
 /obj/item/mmi/syndie
 	name = "\improper Syndicate Man-Machine Interface"
-	desc = "Syndicate's own brand of MMI. It enforces laws designed to help Syndicate agents achieve their goals upon cyborgs and AIs created with it."
+	desc = "A própria marca de MMI do Sindicato. Ele aplica leis projetadas para ajudar agentes do Sindicato a alcançar seus objetivos em ciborgues e IA criados com ele."
 	overrides_aicore_laws = TRUE
 
 /obj/item/mmi/syndie/Initialize(mapload)

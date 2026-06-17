@@ -305,7 +305,7 @@
 /// Handles letting an ethereal drain our charge into their stomach
 /obj/item/stock_parts/power_store/proc/ethereal_drain(mob/living/carbon/human/user, obj/item/organ/stomach/ethereal/used_stomach)
 	if(charge() <= 0)
-		balloon_alert(user, "out of charge!")
+		balloon_alert(user, "Sem carga!")
 		return
 
 	var/obj/item/stock_parts/power_store/stomach_cell = used_stomach.cell
@@ -314,7 +314,7 @@
 
 	while(do_after(user, ETHEREAL_CELL_DRAIN_TIME, target = src))
 		if(isnull(used_stomach) || (used_stomach != user.get_organ_slot(ORGAN_SLOT_STOMACH)))
-			balloon_alert(user, "stomach removed!?")
+			balloon_alert(user, "estômago removido?")
 			return
 
 		var/our_charge = charge()
@@ -326,10 +326,10 @@
 		update_appearance(UPDATE_OVERLAYS)
 
 		if(stomach_cell.used_charge() <= 0)
-			balloon_alert(user, "your charge is full!")
+			balloon_alert(user, "Sua carga está cheia!")
 			return
 		if(charge() <= 0)
-			balloon_alert(user, "out of charge!")
+			balloon_alert(user, "Sem carga!")
 			return
 
 /obj/item/stock_parts/power_store/blob_act(obj/structure/blob/B)

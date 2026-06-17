@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/touch/mansus_grasp
 	name = "Mansus Grasp"
-	desc = "A touch spell that lets you channel the power of the Old Gods through your grip."
+	desc = "Um feitiço de toque que permite canalizar o poder dos deuses antigos através de seu aperto."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -26,7 +26,7 @@
 /datum/action/cooldown/spell/touch/mansus_grasp/on_antimagic_triggered(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	victim.visible_message(
 		span_danger("The spell bounces off of [victim]!"),
-		span_danger("The spell bounces off of you!"),
+		span_danger("O feitiço sai de você!"),
 	)
 
 /datum/action/cooldown/spell/touch/mansus_grasp/cast_on_hand_hit(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
@@ -80,9 +80,9 @@
 
 /obj/item/melee/touch_attack/mansus_fist
 	name = "Mansus Grasp"
-	desc = "A sinister looking aura that distorts the flow of reality around it. \
-		Causes knockdown, minor bruises, and major stamina damage. \
-		It gains additional beneficial effects as you expand your knowledge of the Mansus."
+	desc = "Uma aura sinistra que distorce o fluxo da realidade ao seu redor.\
+Causa nocaute, pequenos hematomas e grande dano à resistência.\
+Ele ganha efeitos benéficos adicionais enquanto você expande seu conhecimento do Mansus."
 	icon_state = "mansus"
 	inhand_icon_state = "mansus"
 

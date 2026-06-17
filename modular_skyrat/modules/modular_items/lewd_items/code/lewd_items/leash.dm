@@ -1,6 +1,6 @@
 /obj/item/clothing/erp_leash
 	name = "leash"
-	desc = "A guiding hand's best friend; in a sleek, semi-elastic package. Can either clip to a collar or be affixed to the neck on its own."
+	desc = "O melhor amigo de uma mão guia, em um pacote elegante e semi-elástico. Pode cortar um colar ou ser afixado no pescoço por conta própria."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_belts.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_belts.dmi'
 	icon_state = "neckleash_pink"
@@ -56,7 +56,7 @@
 	/// Actually start the leashing part here
 	to_be_leashed.visible_message(span_warning("[user] raises the [src] to [to_be_leashed]'s neck!"),\
 				span_userdanger("[user] starts to bring the [src] to your neck!"),\
-				span_hear("You hear a light click as pressure builds in the air around your neck."))
+				span_hear("Você ouve um clique de luz enquanto a pressão aumenta no ar ao redor do pescoço."))
 	if(!do_after(user, 2 SECONDS, to_be_leashed))
 		return
 	create_leash(user, to_be_leashed)
@@ -68,7 +68,7 @@
 
 	ouppy.AddComponent(/datum/component/leash/erp, src, 2)
 	if(our_leash_component.resolve()) // The component will immediately delete itself if there's an existing one; this sanity checks for feedback on if it failed.
-		ouppy.balloon_alert(user, "leashed!")
+		ouppy.balloon_alert(user, "Acorrentado!")
 		create_leash_line(ouppy)
 		return
 	else to_chat(user, span_danger("There's a leash attached to [ouppy] already."))
@@ -127,7 +127,7 @@
 			yoinked.adjust_stamina_loss(10)
 			yoinked.visible_message(span_warning("[yoinked] is pulled in as [user] tugs the [source]!"),\
 					span_userdanger("[user] suddenly tugs the [source], pulling you closer!"),\
-					span_userdanger("A sudden tug against your neck pulls you ahead!"))
+					span_userdanger("Um puxão repentino contra seu pescoço te puxa à frente!"))
 			COOLDOWN_START(leash_hookin, tug_cd, 1 SECONDS)
 
 /datum/component/leash/erp/proc/on_item_dropped(datum/source, mob/user)
@@ -147,10 +147,10 @@
 		var/mob/our_parent = parent
 		var/obj/item/our_owner = owner
 		our_parent.visible_message(span_warning("[our_parent] attempts to unhook [our_parent.p_them()]self from the leash!"), \
-			span_userdanger("You start to unhook yourself from the leash..."), \
-			span_userdanger("You fumble in the dark, looking to unhook the leash..."))
+			span_userdanger("Você começa a se soltar da coleira..."), \
+			span_userdanger("Você se mete no escuro, olhando para soltar a coleira..."))
 		if(do_after(our_parent, our_owner.breakouttime, target = our_parent))
-			to_chat(our_parent, span_notice("You unhook yourself from the leash."))
+			to_chat(our_parent, span_notice("Você se solta da coleira."))
 			qdel(src)
 	else qdel(src) // If they're not an item; something is very wrong - qdel anyways without the breakout time.
 

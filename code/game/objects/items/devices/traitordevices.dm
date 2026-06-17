@@ -17,7 +17,7 @@ effective or pretty fucking useless.
 
 /obj/item/batterer
 	name = "mind batterer"
-	desc = "A strange device with twin antennas."
+	desc = "Um dispositivo estranho com antenas gêmeas."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "batterer"
 	throwforce = 5
@@ -37,7 +37,7 @@ effective or pretty fucking useless.
 	if(!user) return
 
 	if(times_used >= max_uses)
-		to_chat(user, span_danger("The mind batterer has been burnt out!"))
+		to_chat(user, span_danger("O destruidor de mentes foi queimado!"))
 		return
 
 	log_combat(user, null, "knocked down people in the area", src)
@@ -46,10 +46,10 @@ effective or pretty fucking useless.
 		if(prob(50))
 
 			M.Paralyze(rand(200,400))
-			to_chat(M, span_userdanger("You feel a tremendous, paralyzing wave flood your mind."))
+			to_chat(M, span_userdanger("Você sente uma tremenda onda paralisante inundando sua mente."))
 
 		else
-			to_chat(M, span_userdanger("You feel a sudden, electric jolt travel through your head."))
+			to_chat(M, span_userdanger("Você se sente como um repentino choque elétrico que passa pela sua cabeça."))
 
 	playsound(src.loc, 'sound/misc/interference.ogg', 50, TRUE)
 	to_chat(user, span_notice("You trigger [src]."))
@@ -99,7 +99,7 @@ effective or pretty fucking useless.
 		addtimer(CALLBACK(src, PROC_REF(radiation_aftereffect), interacting_with, intensity), (intensity+(wavelength*4))*5)
 		return . | ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("The radioactive microlaser is still recharging."))
+	to_chat(user, span_warning("O microlaser radioativo ainda está recarregando."))
 	return . | ITEM_INTERACT_BLOCKING
 
 /obj/item/healthanalyzer/rad_laser/proc/radiation_aftereffect(mob/living/M, passed_intensity)
@@ -204,7 +204,7 @@ effective or pretty fucking useless.
 
 /datum/action/item_action/stealth_mode
 	name = "Toggle Stealth"
-	desc = "Makes you invisible to the naked eye."
+	desc = "Faz você invisível a olho nu."
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "ninja_cloak"
 	/// Whether stealth is active or not
@@ -246,14 +246,14 @@ effective or pretty fucking useless.
 	apply_wibbly_filters(owner)
 	stealth_engaged = TRUE
 	build_all_button_icons(UPDATE_BUTTON_STATUS|UPDATE_BUTTON_BACKGROUND)
-	owner.balloon_alert(owner, "stealth mode engaged")
+	owner.balloon_alert(owner, "Modo furtivo ativado.")
 
 /datum/action/item_action/stealth_mode/proc/stealth_off()
 	owner.alpha = initial(owner.alpha)
 	remove_wibbly_filters(owner)
 	stealth_engaged = FALSE
 	build_all_button_icons(UPDATE_BUTTON_STATUS|UPDATE_BUTTON_BACKGROUND)
-	owner.balloon_alert(owner, "stealth mode disengaged")
+	owner.balloon_alert(owner, "Modo furtivo desligado.")
 
 /datum/action/item_action/stealth_mode/proc/get_alpha()
 	return clamp(255 - (255 * charge / max_charge), min_alpha, 255)
@@ -296,7 +296,7 @@ effective or pretty fucking useless.
 
 /obj/item/shadowcloak
 	name = "cloaker belt"
-	desc = "Makes you invisible for short periods of time. Recharges in darkness, even while active."
+	desc = "Faz você invisível por curtos períodos de tempo. Recarrega na escuridão, mesmo enquanto ativo."
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	inhand_icon_state = "utility"
@@ -310,8 +310,8 @@ effective or pretty fucking useless.
 
 /obj/item/shadowcloak/weaker
 	name = "stealth belt"
-	desc = "Makes you nigh-invisible to the naked eye for a short period of time. \
-		Lasts indefinitely in darkness, but will not recharge unless inactive."
+	desc = "Faz você quase invisível a olho nu por um curto período de tempo.\
+Dura indefinidamente na escuridão, mas não recarregará a menos que inativo."
 	actions_types = list(/datum/action/item_action/stealth_mode/weaker)
 
 /// Checks if a given atom is in range of a radio jammer, returns TRUE if it is.
@@ -323,7 +323,7 @@ effective or pretty fucking useless.
 
 /obj/item/jammer
 	name = "radio jammer"
-	desc = "Device used to disrupt nearby radio communication. Alternate function creates a powerful disruptor wave which disables all nearby listening devices."
+	desc = "Dispositivo usado para interromper a comunicação de rádio nas proximidades. Função alternativa cria uma poderosa onda disruptora que desativa todos os dispositivos de escuta próximos."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "jammer"
 	var/active = FALSE
@@ -350,11 +350,11 @@ effective or pretty fucking useless.
 /obj/item/jammer/attack_self(mob/user, modifiers)
 	. = ..()
 	if (!COOLDOWN_FINISHED(src, jam_cooldown))
-		user.balloon_alert(user, "on cooldown!")
+		user.balloon_alert(user, "Na refrigeração!")
 		return
 
-	user.balloon_alert(user, "disruptor wave released!")
-	to_chat(user, span_notice("You release a disruptor wave, disabling all nearby radio devices."))
+	user.balloon_alert(user, "Onda disruptor liberada!")
+	to_chat(user, span_notice("Você libera uma onda disruptora, desativando todos os dispositivos de rádio próximos."))
 	for (var/atom/potential_owner in view(disruptor_range, user))
 		disable_radios_on(potential_owner, ignore_syndie = TRUE)
 	COOLDOWN_START(src, jam_cooldown, jam_cooldown_duration)
@@ -380,10 +380,10 @@ effective or pretty fucking useless.
 		return
 
 	if (!(interacting_with in view(disruptor_range, user)))
-		user.balloon_alert(user, "out of reach!")
+		user.balloon_alert(user, "Fora de alcance!")
 		return
 
-	interacting_with.balloon_alert(user, "radio disrupted!")
+	interacting_with.balloon_alert(user, "Rádio interrompido!")
 	to_chat(user, span_notice("You release a directed disruptor wave, disabling all radio devices on [interacting_with]."))
 	disable_radios_on(interacting_with)
 
@@ -401,7 +401,7 @@ effective or pretty fucking useless.
 
 /obj/item/jammer/makeshift
 	name = "makeshift radio jammer"
-	desc = "A jury-rigged device that disrupts nearby radio communication. Its crude construction provides a significantly smaller area of effect compared to its Syndicate counterpart."
+	desc = "Um dispositivo com o júri que interrompe a comunicação por rádio. Sua construção bruta fornece uma área de efeito significativamente menor em comparação com sua contraparte do Sindicato."
 	range = 5
 	disruptor_range = 3
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
@@ -430,8 +430,8 @@ effective or pretty fucking useless.
 /obj/machinery/porta_turret/syndicate/toolbox/examine(mob/user)
 	. = ..()
 	if(faction_check_atom(user))
-		. += span_notice("You can repair it by <b>left-clicking</b> with a combat wrench.")
-		. += span_notice("You can fold it by <b>right-clicking</b> with a combat wrench.")
+		. += span_notice("Você pode consertá-lo.<b>Clique com o botão esquerdo.</b>com uma chave inglesa.")
+		. += span_notice("Você pode dobrar por<b>com o botão direito</b>com uma chave inglesa.")
 
 /obj/machinery/porta_turret/syndicate/toolbox/target(atom/movable/target)
 	if(!target)
@@ -456,11 +456,11 @@ effective or pretty fucking useless.
 
 		deconstruct(TRUE)
 		attacking_item.play_tool_sound(src, 50)
-		balloon_alert(user, "deconstructed!")
+		balloon_alert(user, "Desconstruído!")
 
 	else
 		if(atom_integrity == max_integrity)
-			balloon_alert(user, "already repaired!")
+			balloon_alert(user, "Já está consertado!")
 			return
 
 		balloon_alert(user, "repairing...")
@@ -470,7 +470,7 @@ effective or pretty fucking useless.
 
 			repair_damage(10)
 
-		balloon_alert(user, "repaired!")
+		balloon_alert(user, "Consertado!")
 
 /obj/machinery/porta_turret/syndicate/toolbox/on_deconstruction(disassembled)
 	if(disassembled)
@@ -599,4 +599,4 @@ effective or pretty fucking useless.
 /obj/item/clothing/shoes/jackboots/dagger/examine_more(mob/user)
 	. = ..()
 	if(user.is_holding(src))
-		. += span_notice("Upon closer inspection, you notice a dagger embedded into the sole.")
+		. += span_notice("Após uma inspeção mais próxima, nota-se uma adaga cravada na sola.")

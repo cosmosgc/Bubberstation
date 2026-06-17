@@ -293,7 +293,7 @@
 			if(!istype(soulcatcher_carrier))
 				return FALSE
 
-			if(tgui_alert(usr, "Are you sure you want to detach the soulcatcher?", parent, list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "Tem certeza que quer soltar o caça-almas?", parent, list("Yes", "No")) != "Yes")
 				return FALSE
 
 			soulcatcher_carrier.remove_self()
@@ -399,7 +399,7 @@
 			return TRUE
 
 		if("reset_name")
-			if(tgui_alert(usr, "Do you wish to reset your name to default?", "Soulcatcher", list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "Deseja redefinir seu nome como padrão?", "Soulcatcher", list("Yes", "No")) != "Yes")
 				return FALSE
 
 			reset_name()

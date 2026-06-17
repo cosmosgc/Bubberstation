@@ -1,6 +1,6 @@
 /obj/item/assembly/health
 	name = "health sensor"
-	desc = "Used for scanning and monitoring health."
+	desc = "Usado para escanear e monitorar a saúde."
 	icon_state = "health"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*8, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 2)
 	assembly_behavior = ASSEMBLY_TOGGLEABLE_INPUT

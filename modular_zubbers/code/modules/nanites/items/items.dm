@@ -6,7 +6,7 @@
 	worn_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	desc = "A hand-held body scanner able to detect nanites and their programming."
+	desc = "Um scanner portátil capaz de detectar nanites e sua programação."
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
@@ -26,7 +26,7 @@
 
 	var/response = SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, TRUE)
 	if(!response)
-		to_chat(user, span_info("No nanites detected in the subject."))
+		to_chat(user, span_info("Nenhum nanite detectado no sujeito."))
 
 /obj/item/storage/box/disks_nanite
 	name = "nanite program disks box"
@@ -38,7 +38,7 @@
 
 /obj/item/nanite_injector
 	name = "nanite injector"
-	desc = "Injects nanites into the user."
+	desc = "Injeta nanites no usuário."
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'modular_zubbers/icons/obj/devices/nanite_devices.dmi'
 	icon_state = "nanite_remote"

@@ -2,7 +2,7 @@
 	name = "sink"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink"
-	desc = "A sink used for washing one's hands and face. Passively reclaims water over time."
+	desc = "Uma pia usada para lavar as mãos e o rosto. Passivamente recupera água com o tempo."
 	anchored = TRUE
 	layer = ABOVE_OBJ_LAYER
 	pixel_z = 1
@@ -87,7 +87,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 /obj/structure/sink/examine(mob/user)
 	. = ..()
 	if(has_water_reclaimer)
-		. += span_notice("A water recycler is installed. It looks like you could pry it out.")
+		. += span_notice("Um reciclador de água está instalado. Parece que você poderia tirá-lo.")
 	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume] liquids remaining.")
 
 /obj/structure/sink/attack_hand(mob/living/user, list/modifiers)
@@ -101,10 +101,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	if(!Adjacent(user))
 		return
 	if(reagents.total_volume < 5)
-		to_chat(user, span_warning("The sink is dry!"))
+		to_chat(user, span_warning("A pia está seca!"))
 		return
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Alguém já está se lavando aqui!"))
 		return
 
 	var/selected_area = user.parse_zone_with_bodypart(user.zone_selected)
@@ -130,7 +130,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.wash_hands(CLEAN_WASH))
-			to_chat(user, span_warning("Your hands are covered by something!"))
+			to_chat(user, span_warning("Suas mãos estão cobertas por algo!"))
 			return
 	else
 		user.wash(CLEAN_WASH)
@@ -141,7 +141,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 /obj/structure/sink/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = NONE
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Alguém já está se lavando aqui!"))
 		return ITEM_INTERACT_FAILURE
 
 	if(is_reagent_container(tool))
@@ -170,7 +170,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 
 	if(istype(tool, /obj/item/stock_parts/water_recycler))
 		if(has_water_reclaimer)
-			to_chat(user, span_warning("There is already has a water recycler installed."))
+			to_chat(user, span_warning("Já tem um reciclador de água instalado."))
 			return ITEM_INTERACT_FAILURE
 
 		playsound(src, 'sound/machines/click.ogg', 20, TRUE)
@@ -181,16 +181,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 
 	if(istype(tool, /obj/item/storage/fancy/pickles_jar))
 		if(tool.contents.len)
-			to_chat(user, span_notice("Looks like there's something left in the jar"))
+			to_chat(user, span_notice("Parece que sobrou algo no frasco."))
 			return ITEM_INTERACT_FAILURE
 		qdel(tool)
-		to_chat(user, span_notice("You washed the jar, ridding it of the brine."))
+		to_chat(user, span_notice("Você lavou o jarro, livrando-o da salmoura."))
 		user.put_in_active_hand(new /obj/item/reagent_containers/cup/beaker/large(loc))
 		return ITEM_INTERACT_SUCCESS
 
 	if(!user.combat_mode || (tool.item_flags & NOBLUDGEON))
 		if(reagents.total_volume < 5)
-			to_chat(user, span_warning("The sink is dry!"))
+			to_chat(user, span_warning("A pia está seca!"))
 			return ITEM_INTERACT_FAILURE
 
 		to_chat(user, span_notice("You start washing [tool]..."))
@@ -228,7 +228,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	. = ..()
 
 	if(!has_water_reclaimer)
-		to_chat(user, span_warning("There isn't a water recycler to remove."))
+		to_chat(user, span_warning("Não há um reciclador de água para remover."))
 		return ITEM_INTERACT_FAILURE
 
 	tool.play_tool_sound(src)
@@ -253,7 +253,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 
 /obj/structure/sink/gasstation
 	name = "plasma fuel station"
-	desc = "A place to refuel vehicles with liquid plasma. It can also dispense into a container."
+	desc = "Um lugar para reabastecer veículos com plasma líquido. Ele também pode distribuir em um recipiente."
 	icon_state = "sink_gasstation"
 	dispensedreagent = /datum/reagent/toxin/plasma
 	has_water_reclaimer = FALSE
@@ -274,7 +274,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 	name = "sink frame"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink_frame"
-	desc = "A sink frame, that needs a water recycler to finish construction."
+	desc = "Uma estrutura de pia, que precisa de um reciclador de água para terminar a construção."
 	wall_external = TRUE
 	result_path = /obj/structure/sink/greyscale
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
@@ -301,7 +301,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink/kitchen, (-16))
 		qdel(tool)
 		result_path = /obj/structure/sink/greyscale/filled
 		playsound(src, 'sound/machines/click.ogg', 20, TRUE)
-		balloon_alert(user, "water recycler installed!")
+		balloon_alert(user, "Reciclador de água instalado!")
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/wallframe/sinkframe/after_attach(obj/structure/sink/greyscale/attached_to)

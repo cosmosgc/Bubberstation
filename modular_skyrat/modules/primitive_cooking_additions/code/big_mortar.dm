@@ -3,7 +3,7 @@
 
 /obj/structure/large_mortar
 	name = "large mortar"
-	desc = "A large bowl perfect for grinding or juicing a large number of things at once."
+	desc = "Uma tigela grande perfeita para moer ou espremer um grande número de coisas ao mesmo tempo."
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/cooking_structures.dmi'
 	icon_state = "big_mortar"
 	density = TRUE
@@ -26,8 +26,8 @@
 /obj/structure/large_mortar/examine(mob/user)
 	. = ..()
 	. += span_notice("It currently contains <b>[length(contents)]/[maximum_contained_items]</b> items.")
-	. += span_notice("It can be (un)secured with <b>Right Click</b>")
-	. += span_notice("You can empty all of the items out of it with <b>Alt Click</b>")
+	. += span_notice("Pode ser (in)seguro com<b>Clique direito</b>")
+	. += span_notice("Você pode esvaziar todos os itens com<b>Alt Click</b>")
 
 /obj/structure/large_mortar/Destroy()
 	drop_everything_contained()
@@ -35,11 +35,11 @@
 
 /obj/structure/large_mortar/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "nothing inside")
+		balloon_alert(user, "Nada dentro.")
 		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
-	balloon_alert(user, "removed all items")
+	balloon_alert(user, "removeu todos os itens.")
 	return CLICK_ACTION_SUCCESS
 
 /// Drops all contents at the mortar
@@ -74,11 +74,11 @@
 
 	if(istype(tool, /obj/item/storage/bag))
 		if(length(contents) >= maximum_contained_items)
-			balloon_alert(user, "already full!")
+			balloon_alert(user, "Já está cheio!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!length(tool.contents))
-			balloon_alert(user, "nothing to transfer!")
+			balloon_alert(user, "Nada para transferir!")
 			return ITEM_INTERACT_BLOCKING
 
 		for(var/obj/item/target_item in tool.contents)
@@ -98,11 +98,11 @@
 
 	if(istype(tool, /obj/item/pestle))
 		if(!anchored)
-			balloon_alert(user, "not secured!")
+			balloon_alert(user, "Não está seguro!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!length(contents) && reagents.total_volume == 0)
-			balloon_alert(user, "mortar empty!")
+			balloon_alert(user, "Argamassa vazia!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/list/choose_options = list(
@@ -113,7 +113,7 @@
 		var/picked_option = show_radial_menu(user, src, choose_options, radius = 38, require_near = TRUE)
 
 		if(user.get_stamina_loss() > LARGE_MORTAR_STAMINA_MINIMUM)
-			balloon_alert(user, "too tired!")
+			balloon_alert(user, "Muito cansado!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!in_range(src, user) || !user.is_holding(tool) || !picked_option)
@@ -149,7 +149,7 @@
 			if("Juice")
 				for(var/obj/item/target_item as anything in contents)
 					if (reagents.total_volume >= reagents.maximum_volume)
-						balloon_alert(user, "overflowing!")
+						balloon_alert(user, "transbordando!")
 						break
 
 					if (target_item.juice_typepath())
@@ -161,7 +161,7 @@
 			if("Grind")
 				for(var/obj/item/target_item as anything in contents)
 					if (reagents.total_volume >= reagents.maximum_volume)
-						balloon_alert(user, "overflowing!")
+						balloon_alert(user, "transbordando!")
 						break
 
 					if (target_item.grind_results() || target_item.reagents?.total_volume)
@@ -173,11 +173,11 @@
 		return ITEM_INTERACT_SUCCESS
 
 	if(!tool.grind_results() && !tool.juice_typepath() && !tool.reagents?.total_volume)
-		balloon_alert(user, "can't grind this!")
+		balloon_alert(user, "Não posso moer isso!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(length(contents) >= maximum_contained_items)
-		balloon_alert(user, "already full!")
+		balloon_alert(user, "Já está cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.forceMove(src)

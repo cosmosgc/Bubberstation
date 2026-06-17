@@ -7,14 +7,14 @@
 /datum/status_effect/organ_set_bonus/rat
 	id = "organ_set_bonus_rat"
 	organs_needed = 4
-	bonus_activate_text = span_notice("Rodent DNA is deeply infused with you! You've learned how to traverse ventilation!")
-	bonus_deactivate_text = span_notice("Your DNA is no longer majority rat, and so fades your ventilation skills...")
+	bonus_activate_text = span_notice("O DNA de roedores está profundamente infundido em você! Você aprendeu a atravessar a ventilação!")
+	bonus_deactivate_text = span_notice("Seu DNA não é mais um rato majoritário, e assim desaparece suas habilidades de ventilação...")
 	bonus_traits = list(TRAIT_VENTCRAWLER_NUDE)
 
 ///way better night vision, super sensitive. lotta things work like this, huh?
 /obj/item/organ/eyes/night_vision/rat
 	name = "mutated rat-eyes"
-	desc = "Rat DNA infused into what was once a normal pair of eyes."
+	desc = "DNA de rato infundido no que já foi um par de olhos normais."
 	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
 	eye_color_left = COLOR_BLACK
 	eye_color_right = COLOR_BLACK
@@ -37,7 +37,7 @@
 ///increases hunger, disgust recovers quicker, expands what is defined as "food"
 /obj/item/organ/stomach/rat
 	name = "mutated rat-stomach"
-	desc = "Rat DNA infused into what was once a normal stomach."
+	desc = "DNA de rato infundido no que já foi um estômago normal."
 	disgust_metabolism = 3
 
 	icon = 'icons/map_icons/items/_item.dmi'
@@ -55,7 +55,7 @@
 /// makes you smaller, walk over tables, and take 1.5x damage
 /obj/item/organ/heart/rat
 	name = "mutated rat-heart"
-	desc = "Rat DNA infused into what was once a normal heart."
+	desc = "DNA de rato infundido no que já foi um coração normal."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/heart/rat"
 	post_init_icon_state = "heart"
@@ -88,7 +88,7 @@
 /// you occasionally squeak, and have some rat related verbal tics
 /obj/item/organ/tongue/rat
 	name = "mutated rat-tongue"
-	desc = "Rat DNA infused into what was once a normal tongue."
+	desc = "DNA de rato infundido no que já foi uma língua normal."
 	say_mod = "squeaks"
 	modifies_speech = TRUE
 	icon = 'icons/map_icons/items/_item.dmi'

@@ -7,10 +7,10 @@ Reproductive extracts:
 
 /obj/item/slimecross/reproductive
 	name = "reproductive extract"
-	desc = "It pulses with a strange hunger."
+	desc = "Ele pulsa com uma estranha fome."
 	icon_state = "reproductive"
 	effect = "reproductive"
-	effect_desc = "When fed monkey cubes it produces more extracts. Bio bag compatible as well."
+	effect_desc = "Quando se alimentam cubos de macaco, produz mais extratos. Bolsa biológica compatível também."
 	var/extract_type = /obj/item/slime_extract/
 	var/cooldown = 3 SECONDS
 	var/feedAmount = 3
@@ -42,7 +42,7 @@ Reproductive extracts:
 		var/list/inserted = list()
 		tool.atom_storage.remove_type(/obj/item/food/monkeycube, src, feedAmount - length(contents), TRUE, FALSE, user, inserted)
 		if(!inserted.len)
-			to_chat(user, span_warning("There are no monkey cubes in the bio bag!"))
+			to_chat(user, span_warning("Não há cubos de macaco na bolsa biológica!"))
 			return ITEM_INTERACT_BLOCKING
 		to_chat(user, span_notice("You feed [length(inserted)] monkey cube[length(inserted) > 1 ? "s" : ""] to [src], and it pulses gently."))
 		playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)

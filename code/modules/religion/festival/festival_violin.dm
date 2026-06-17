@@ -1,6 +1,6 @@
 /obj/item/instrument/violin/festival
 	name = "Cogitandi Fidis"
-	desc = "A violin that holds a special interest in the songs played from its strings."
+	desc = "Um violino que tem um interesse especial nas músicas tocadas a partir de suas cordas."
 	icon_state = "holy_violin"
 	inhand_icon_state = "holy_violin"
 

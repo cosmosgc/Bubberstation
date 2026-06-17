@@ -2,7 +2,7 @@
 
 /datum/surgery_operation/limb/plastic_surgery
 	name = "plastic surgery"
-	desc = "Reshape or reconstruct a patient's face for cosmetic or functional purposes."
+	desc = "Mudar ou reconstruir o rosto de um paciente para fins cosméticos ou funcionais."
 	implements = list(
 		TOOL_SCALPEL = 1,
 		/obj/item/knife = 2,
@@ -46,7 +46,7 @@
 				names += namelist
 		else
 			if(advanced)
-				to_chat(surgeon, span_warning("You have no picture to base the appearance on!"))
+				to_chat(surgeon, span_warning("Você não tem nenhuma foto para basear a aparência!"))
 
 			for(var/i in 1 to 10)
 				if(limb.owner)
@@ -119,7 +119,7 @@
 
 /datum/surgery_operation/limb/add_plastic
 	name = "apply plastic"
-	desc = "Apply plastic to a patient's face to to allow for greater customization in following plastic surgery."
+	desc = "Aplicar plástico no rosto de um paciente para permitir uma maior personalização após cirurgia plástica."
 	implements = list(
 		/obj/item/stack/sheet/plastic = 1,
 	)

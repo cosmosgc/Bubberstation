@@ -8,7 +8,7 @@
 /datum/surgery_operation/basic/repair_synth
 	name = "structural repairs"
 	rnd_name = "Structural Repairs (Tend Wounds)"
-	desc = "Perform superficial repairs that focuses on fixing the patients chassis and physical frame."
+	desc = "Realizar reparos superficiais que se concentram em consertar o chassis dos pacientes e quadro físico."
 	implements = list(
 		TOOL_WELDER = 1,
 		/obj/item/stack/cable_coil = 1,
@@ -204,7 +204,7 @@
 	display_results(
 		surgeon,
 		patient,
-		span_warning("You screwed up!"),
+		span_warning("Você estragou tudo!"),
 		span_warning("[surgeon] screws up!"),
 		span_notice("[surgeon] repairs some of [patient]'s wounds."),
 		target_detailed = TRUE,

@@ -4,7 +4,7 @@
 	. = ..()
 	if(action == ANTIVIRUS)
 		if(!occupier?.stat)
-			to_chat(usr, span_notice("Dr. Moffson Antivirus is scanning your AI for corruption."))
+			to_chat(usr, span_notice("Dr. Moffson Antivirus está procurando corrupção na sua IA."))
 			playsound(src, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 25, FALSE)
 			restoring = TRUE
 			run_antivirus()
@@ -52,7 +52,7 @@
 /datum/computer_file/program/ai_restorer/ui_act(action, params)
 	. = ..()
 	if(action == ANTIVIRUS)
-		to_chat(usr, span_notice("Dr. Moffson Antivirus is scanning your AI for corruption."))
+		to_chat(usr, span_notice("Dr. Moffson Antivirus está procurando corrupção na sua IA."))
 		playsound(src, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 25, FALSE)
 		restoring = TRUE
 		run_antivirus()

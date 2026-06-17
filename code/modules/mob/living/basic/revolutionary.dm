@@ -1,6 +1,6 @@
 /mob/living/basic/revolutionary
 	name = "Revolutionary"
-	desc = "They stand for a cause..."
+	desc = "Eles representam uma causa..."
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	faction = list(FACTION_HOSTILE)
 	icon = 'icons/mob/simple/simple_human.dmi'
@@ -103,7 +103,7 @@
 			death_sound = pick(male_screams + female_screams + monkey_screeches)
 
 	fully_replace_character_name(name, "[first_name] [pick(GLOB.last_names)]")
-	desc += span_infoplain("\nToday, that cause is: ")
+	desc += span_infoplain("\nHoje, essa causa é:")
 	shuffle_inplace(causes)
 	desc += span_notice("#[pick(causes)].")
 

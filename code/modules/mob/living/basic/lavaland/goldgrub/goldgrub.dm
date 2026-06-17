@@ -1,7 +1,7 @@
 //An ore-devouring but easily scared creature
 /mob/living/basic/mining/goldgrub
 	name = "goldgrub"
-	desc = "A worm that grows fat from eating everything in its sight. Seems to enjoy precious metals and other shiny things, hence the name."
+	desc = "Um verme que engorda ao comer tudo que vê. Parece gostar de metais preciosos e outras coisas brilhantes, daí o nome."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters_wide.dmi'
 	icon_state = "goldgrub"
 	icon_living = "goldgrub"
@@ -22,7 +22,7 @@
 	attack_sound = 'sound/items/weapons/punch1.ogg'
 	combat_mode = FALSE
 	speak_emote = list("screeches")
-	death_message = "stops moving as green liquid oozes from the carcass!"
+	death_message = "Pare de se mover como líquido verde escorre da carcaça!"
 	status_flags = CANPUSH
 	gold_core_spawnable = HOSTILE_SPAWN
 	ai_controller = /datum/ai_controller/basic_controller/goldgrub
@@ -194,7 +194,7 @@
 
 /obj/item/food/egg/green/grub_egg
 	name = "grub egg"
-	desc = "Covered in disgusting fluid."
+	desc = "Coberto de líquido nojento."
 
 
 /obj/item/food/egg/green/grub_egg/Initialize(mapload)

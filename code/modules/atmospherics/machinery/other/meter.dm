@@ -1,6 +1,6 @@
 /obj/machinery/meter
 	name = "gas flow meter"
-	desc = "It measures something."
+	desc = "Mede alguma coisa."
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/machinery/meter"
 	post_init_icon_state = "meter"
@@ -141,7 +141,7 @@
 		user.visible_message(
 			"[user] unfastens \the [src].",
 			span_notice("You unfasten \the [src]."),
-			span_hear("You hear ratchet."))
+			span_hear("Você ouve catraca."))
 		deconstruct()
 	return TRUE
 
@@ -161,8 +161,8 @@
 		deconstruct()
 
 /obj/item/circuit_component/atmos_meter
-	display_name = "Atmospheric Meter"
-	desc = "Allows to read the pressure and temperature of the pipenet."
+	display_name = "Medidor atmosférico"
+	desc = "Permite ler a pressão e a temperatura da pipenet."
 
 	///Signals the circuit to retrieve the pipenet's current pressure and temperature
 	var/datum/port/input/request_data

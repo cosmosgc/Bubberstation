@@ -4,9 +4,9 @@
 
 /datum/heretic_knowledge/summon/rusty
 	name = "Rusted Ritual"
-	desc = "Allows you to transmute a pool of vomit, some cable coil, and 10 sheets of iron into a Rust Walker. \
-		Rust Walkers excel at spreading rust and are moderately strong in combat."
-	gain_text = "I combined my knowledge of creation with my desire for corruption. The Marshal knew my name, and the Rusted Hills echoed out."
+	desc = "Permite que transmute uma piscina de vômito, bobina de cabo, e 10 folhas de ferro em um Rust Walker.\
+A Rust Walkers é excelente em espalhar ferrugem e é moderadamente forte em combate."
+	gain_text = "Combinei meu conhecimento da criação com meu desejo de corrupção. O delegado sabia meu nome, e as Colinas Rusted ecoaram."
 	required_atoms = list(
 		/obj/effect/decal/cleanable/vomit = 1,
 		/obj/item/stack/sheet/iron = 10,
@@ -19,11 +19,11 @@
 
 /datum/heretic_knowledge/summon/maid_in_mirror
 	name = "Maid in the Mirror"
-	desc = "Allows you to transmute five sheets of glass, any suit, and a pair of lungs to create a Maid in the Mirror. \
-			Maid in the Mirrors are decent combatants that can become incorporeal by phasing in and out of the mirror realm, serving as powerful scouts and ambushers. \
-			Their attacks also apply a stack of void chill."
-	gain_text = "Within each reflection, lies a gateway into an unimaginable world of colors never seen and \
-		people never met. The ascent is glass, and the walls are knives. Each step is blood, if you do not have a guide."
+	desc = "Permite que transmute cinco folhas de vidro, qualquer terno, e um par de pulmões para criar uma empregada no espelho.\
+Maid in the Mirrors são combatentes decentes que podem se tornar incorpóreos, entrando e saindo do reino do espelho, servindo como poderosos batedores e emboscadas.\
+Seus ataques também aplicam uma pilha de frio vazio."
+	gain_text = "Dentro de cada reflexão, encontra-se um portal para um inimaginável mundo de cores nunca visto e\
+As pessoas nunca se conheceram. A subida é de vidro, e as paredes são facas. Cada passo é sangue, se você não tiver um guia."
 
 	required_atoms = list(
 		/obj/item/stack/sheet/glass = 5,
@@ -38,11 +38,11 @@
 
 /datum/heretic_knowledge/summon/ashy
 	name = "Ashen Ritual"
-	desc = "Allows you to transmute a Bonfire and a book to create an Ash Spirit. \
-		Ash Spirits have a short range jaunt and the ability to cause bleeding in foes at range. \
-		They also have the ability to create a ring of fire around themselves for a length of time. \
-		They have a low amount of health, but will passively recover given enough time to do so."
-	gain_text = "I combined my principle of hunger with my desire for destruction. The Marshal knew my name, and the Nightwatcher gazed on."
+	desc = "Permite que transmute uma fogueira e um livro para criar um Espírito Ash.\
+Espíritos Cinzas têm uma curta distância e a capacidade de causar sangramento em inimigos ao alcance.\
+Eles também têm a capacidade de criar um anel de fogo em torno de si mesmos por um período de tempo.\
+Eles têm pouca saúde, mas vão se recuperar passivamente, dado tempo suficiente para isso."
+	gain_text = "Combinei meu princípio de fome com meu desejo de destruição. O delegado sabia meu nome, e o Observador da Noite olhou."
 	required_atoms = list(
 		/obj/effect/decal/cleanable/ash = 1,
 		/obj/item/book = 1,
@@ -59,13 +59,13 @@
 
 /datum/heretic_knowledge/limited_amount/risen_corpse
 	name = "Shattered Ritual"
-	desc = "Allows you to transmute a corpse with a soul, a pair of latex or nitrile gloves, and \
-		and any exosuit clothing (such as armor) to create a Shattered Risen. \
-		Shattered Risen are strong ghouls that have 125 health, but cannot hold items, \
-		instead having two brutal weapons for hands. You can only create one at a time."
-	gain_text = "I witnessed a cold, rending force drag this corpse back to near-life. \
-		When it moves, it crunches like broken glass. Its hands are no longer recognizable as human - \
-		each clenched fist contains a brutal nest of sharp bone-shards instead."
+	desc = "Permite que transmute um cadáver com uma alma, um par de luvas de látex ou nitrilo, e\
+e qualquer roupa de exossuit (como armadura) para criar um Shattered Risen.\
+Shattered Ressuscitado são fortes ghouls que têm 125 saúde, mas não pode segurar itens,\
+Em vez disso, tinha duas armas brutais para as mãos. Você só pode criar um de cada vez."
+	gain_text = "Eu testemunhei uma força fria arrastando este cadáver de volta para a vida próxima.\
+Quando se move, ele trinca como vidro quebrado. Suas mãos não são mais reconhecíveis como humanos.\
+Cada punho fechado contém um ninho brutal de ossos afiados."
 
 	required_atoms = list(
 		/obj/item/clothing/suit = 1,
@@ -99,20 +99,20 @@
 		selected_atoms += body
 		return TRUE
 
-	loc.balloon_alert(user, "ritual failed, no valid body!")
+	loc.balloon_alert(user, "ritual falhou, nenhum corpo válido!")
 	return FALSE
 
 /datum/heretic_knowledge/limited_amount/risen_corpse/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	var/mob/living/carbon/human/soon_to_be_ghoul = locate() in selected_atoms
 	if(QDELETED(soon_to_be_ghoul)) // No body? No ritual
 		stack_trace("[type] reached on_finished_recipe without a human in selected_atoms to make a ghoul out of.")
-		loc.balloon_alert(user, "ritual failed, no valid body!")
+		loc.balloon_alert(user, "ritual falhou, nenhum corpo válido!")
 		return FALSE
 
 	soon_to_be_ghoul.grab_ghost()
 	if(!soon_to_be_ghoul.mind || !soon_to_be_ghoul.client)
 		stack_trace("[type] reached on_finished_recipe without a minded / cliented human in selected_atoms to make a ghoul out of.")
-		loc.balloon_alert(user, "ritual failed, no valid body!")
+		loc.balloon_alert(user, "ritual falhou, nenhum corpo válido!")
 		return FALSE
 
 	selected_atoms -= soon_to_be_ghoul
@@ -148,7 +148,7 @@
 /// The "hand" "weapon" used by shattered risen
 /obj/item/mutant_hand/shattered_risen
 	name = "bone-shards"
-	desc = "What once appeared to be a normal human fist, now holds a mauled nest of sharp bone-shards."
+	desc = "O que parecia ser um punho humano normal, agora segura um ninho de ossos afiados."
 	color = "#001aff"
 	hitsound = SFX_SHATTER
 	force = 16
@@ -159,10 +159,10 @@
 
 /datum/heretic_knowledge/summon/fire_shark
 	name = "Scorching Shark"
-	desc = "Allows you to transmute a pool of ash, a liver, and a sheet of plasma into a Fire Shark. \
-		Fire Sharks are fast and strong in groups, but die quickly. They are also highly resistant against fire attacks. \
-		Fire Sharks inject phlogiston into its victims and spawn plasma once they die."
-	gain_text = "The cradle of the nebula was cold, but not dead. Light and heat flits even through the deepest darkness, and is hunted by its own predators."
+	desc = "Permite que transmute uma poça de cinzas, um fígado e uma folha de plasma em um tubarão de fogo.\
+Tubarões de Fogo são rápidos e fortes em grupos, mas morrem rapidamente. Eles também são altamente resistentes contra ataques de fogo.\
+Tubarões de Fogo injetam flogistom em suas vítimas e geram plasma quando morrem."
+	gain_text = "O berço da nebulosa estava frio, mas não morto. A luz e o calor voam até através da escuridão mais profunda, e são caçados por seus próprios predadores."
 
 	required_atoms = list(
 		/obj/effect/decal/cleanable/ash = 1,

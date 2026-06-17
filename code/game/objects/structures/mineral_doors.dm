@@ -168,7 +168,7 @@
 	. = TRUE
 	to_chat(user, span_notice("You start digging [src]..."))
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("You finish digging."))
+		to_chat(user, span_notice("Termine de cavar."))
 		deconstruct(TRUE)
 
 /obj/structure/mineral_door/welder_act(mob/living/user, obj/item/I) //override if the door is supposed to be flammable.
@@ -306,7 +306,7 @@
 /obj/structure/mineral_door/paperframe/examine(mob/user)
 	. = ..()
 	if(atom_integrity < max_integrity)
-		. += span_info("It looks a bit damaged, you may be able to fix it with some <b>paper</b>.")
+		. += span_info("Parece um pouco danificado, você pode ser capaz de corrigi-lo com alguns<b>Papel</b>.")
 
 /obj/structure/mineral_door/paperframe/pickaxe_door(mob/living/user, obj/item/I)
 	return

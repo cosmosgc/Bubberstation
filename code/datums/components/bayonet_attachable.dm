@@ -87,7 +87,7 @@
 	SIGNAL_HANDLER
 
 	if(isnull(bayonet))
-		examine_list += "It has a <b>bayonet</b> lug on it."
+		examine_list += "Tem um<b>baioneta</b>Vamos lá."
 		return
 
 	examine_list += "It has \a [bayonet] [removable ? "" : "permanently "]affixed to it."
@@ -204,7 +204,7 @@
 
 	if (!bayonet || allow_sawnoff)
 		return
-	source.balloon_alert(user, "bayonet must be removed!")
+	source.balloon_alert(user, "Baioneta deve ser removida!")
 	return COMPONENT_CANCEL_SAWING_OFF
 
 /datum/component/bayonet_attachable/proc/on_sawn_off(obj/item/source, mob/user)

@@ -7,7 +7,7 @@
 
 /obj/item/mod/paint
 	name = "MOD paint kit"
-	desc = "This kit will repaint your MODsuit to something unique."
+	desc = "Este kit vai repintar seu MODsuit para algo único."
 	icon = 'icons/obj/clothing/modsuit/mod_construction.dmi'
 	icon_state = "paintkit"
 	var/obj/item/mod/control/editing_mod
@@ -20,8 +20,8 @@
 
 /obj/item/mod/paint/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Left-click</b> a MODsuit to change skin.")
-	. += span_notice("<b>Right-click</b> a MODsuit to recolor.")
+	. += span_notice("<b>Botão esquerdo</b>Um traje para mudar de pele.")
+	. += span_notice("<b>Botão direito</b>Um traje para recolorir.")
 
 /obj/item/mod/paint/ui_interact(mob/user, datum/tgui/ui)
 	if(!editing_mod)
@@ -114,7 +114,7 @@
 
 /obj/item/mod/paint/proc/paint_skin(obj/item/mod/control/mod, mob/user)
 	if(length(mod.theme.variants) <= 1)
-		balloon_alert(user, "no alternate skins!")
+		balloon_alert(user, "Sem peles alternativas!")
 		return
 	var/list/skins = list()
 	for(var/mod_skin_name in mod.theme.variants)
@@ -122,7 +122,7 @@
 		skins[mod_skin_name] = image(icon = mod_skin[MOD_ICON_OVERRIDE] || mod.icon, icon_state = "[mod_skin_name]-control")
 	var/pick = show_radial_menu(user, mod, skins, custom_check = CALLBACK(src, PROC_REF(check_menu), mod, user), require_near = TRUE)
 	if(!pick)
-		balloon_alert(user, "no skin picked!")
+		balloon_alert(user, "Sem pele colhida!")
 		return
 	mod.theme.set_skin(mod, pick)
 
@@ -140,7 +140,7 @@
 
 /obj/item/mod/skin_applier
 	name = "MOD skin applier"
-	desc = "This one-use skin applier will add a skin to MODsuits of a specific type. Must be used on an inactive control unit."
+	desc = "Este aplicador de pele de uso único vai adicionar uma pele para MODsuits de um tipo específico. Deve ser usado em uma unidade de controle inativa."
 	icon = 'icons/obj/clothing/modsuit/mod_construction.dmi'
 	icon_state = "skinapplier"
 	var/skin = "civilian"
@@ -154,18 +154,18 @@
 		return NONE
 	var/obj/item/mod/control/mod = attacked_atom
 	if(mod.active || mod.activating)
-		balloon_alert(user, "unit active!")
+		balloon_alert(user, "Unidade ativa!")
 		return ITEM_INTERACT_BLOCKING
 	if(!(skin in mod.theme.variants))
-		balloon_alert(user, "wrong theme for skin!")
+		balloon_alert(user, "Tema errado para pele!")
 		return ITEM_INTERACT_BLOCKING
 	mod.theme.set_skin(mod, skin)
-	balloon_alert(user, "skin applied")
+	balloon_alert(user, "Pele aplicada")
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/mod/skin_applier/honkerative
-	desc = /obj/item/mod/skin_applier::desc + " Additionally, this kit attempts to install a waddling module. Honk!"
+	desc = /obj/item/mod/skin_applier::desc + "Além disso, este kit tenta instalar um módulo. Honk!"
 	skin = "honkerative"
 
 /obj/item/mod/skin_applier/honkerative/interact_with_atom(obj/item/mod/control/controlunit, mob/living/user, params)

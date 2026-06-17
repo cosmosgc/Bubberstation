@@ -70,7 +70,7 @@
 		return
 	if(owner.get_blood_volume() < BLOOD_VOLUME_OKAY)
 		owner.set_blood_volume(BLOOD_VOLUME_NORMAL)
-		to_chat(owner, span_warning("You feel your blood pulsing within you."))
+		to_chat(owner, span_warning("Você sente seu sangue pulsando dentro de você."))
 		return
 
 	var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
@@ -79,7 +79,7 @@
 		return
 
 /obj/item/organ/heart/gland/heal/proc/reject_implant(obj/item/implant/implant)
-	owner.visible_message(span_warning("[owner] vomits up a tiny mangled implant!"), span_userdanger("You suddenly vomit up a tiny mangled implant!"))
+	owner.visible_message(span_warning("[owner] vomits up a tiny mangled implant!"), span_userdanger("Você de repente vomita um pequeno implante mutilado!"))
 	owner.vomit(REJECTION_VOMIT_FLAGS, lost_nutrition = 0)
 	implant.removed(owner)
 	qdel(implant)
@@ -97,7 +97,7 @@
 		appendix.forceMove(owner.drop_location())
 		owner.visible_message(span_warning("[owner] vomits up his [appendix.name]!"), span_userdanger("You suddenly vomit up your [appendix.name]!"))
 	else
-		to_chat(owner, span_warning("You feel a weird rumble in your bowels..."))
+		to_chat(owner, span_warning("Você sente um barulho estranho em seus intestinos..."))
 
 	var/appendix_type = /obj/item/organ/appendix
 	if(owner?.dna?.species?.mutantappendix)
@@ -112,7 +112,7 @@
 		liver.Remove(owner)
 		liver.forceMove(owner.drop_location())
 	else
-		to_chat(owner, span_warning("You feel a weird rumble in your bowels..."))
+		to_chat(owner, span_warning("Você sente um barulho estranho em seus intestinos..."))
 
 	var/liver_type = /obj/item/organ/liver
 	if(owner?.dna?.species?.mutantliver)
@@ -127,7 +127,7 @@
 		lungs.Remove(owner)
 		lungs.forceMove(owner.drop_location())
 	else
-		to_chat(owner, span_warning("You feel a weird rumble inside your chest..."))
+		to_chat(owner, span_warning("Você sente um barulho estranho dentro do seu peito..."))
 
 	var/lung_type = /obj/item/organ/lungs
 	if(owner.dna.species && owner.dna.species.mutantlungs)
@@ -142,7 +142,7 @@
 		stomach.Remove(owner)
 		stomach.forceMove(owner.drop_location())
 	else
-		to_chat(owner, span_warning("You feel a weird rumble in your bowels..."))
+		to_chat(owner, span_warning("Você sente um barulho estranho em seus intestinos..."))
 
 	var/stomach_type = /obj/item/organ/stomach
 	if(owner?.dna?.species?.mutantstomach)
@@ -157,7 +157,7 @@
 		eyes.Remove(owner)
 		eyes.forceMove(owner.drop_location())
 	else
-		to_chat(owner, span_warning("You feel a weird rumble behind your eye sockets..."))
+		to_chat(owner, span_warning("Se sente um barulho estranho atrás das órbitas..."))
 
 	addtimer(CALLBACK(src, PROC_REF(finish_replace_eyes)), rand(10 SECONDS, 20 SECONDS))
 
@@ -167,7 +167,7 @@
 		eye_type = owner.dna.species.mutanteyes
 	var/obj/item/organ/eyes/new_eyes = new eye_type()
 	new_eyes.Insert(owner)
-	owner.visible_message(span_warning("A pair of new eyes suddenly inflates into [owner]'s eye sockets!"), span_userdanger("A pair of new eyes suddenly inflates into your eye sockets!"))
+	owner.visible_message(span_warning("A pair of new eyes suddenly inflates into [owner]'s eye sockets!"), span_userdanger("Um par de novos olhos de repente infla em seus olhos!"))
 
 /obj/item/organ/heart/gland/heal/proc/replace_limb(body_zone, obj/item/bodypart/limb)
 	if(limb)
@@ -182,12 +182,12 @@
 /obj/item/organ/heart/gland/heal/proc/finish_replace_limb(body_zone)
 	owner.visible_message(span_warning("With a loud snap, [owner]'s [parse_zone(body_zone)] rapidly grows back from [owner.p_their()] body!"),
 	span_userdanger("With a loud snap, your [parse_zone(body_zone)] rapidly grows back from your body!"),
-	span_warning("Your hear a loud snap."))
+	span_warning("Ouça um estalo alto."))
 	playsound(owner, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	owner.regenerate_limb(body_zone)
 
 /obj/item/organ/heart/gland/heal/proc/replace_blood()
-	owner.visible_message(span_warning("[owner] starts vomiting huge amounts of blood!"), span_userdanger("You suddenly start vomiting huge amounts of blood!"))
+	owner.visible_message(span_warning("[owner] starts vomiting huge amounts of blood!"), span_userdanger("Você de repente começa a vomitar grandes quantidades de sangue!"))
 	keep_replacing_blood()
 
 /obj/item/organ/heart/gland/heal/proc/keep_replacing_blood()

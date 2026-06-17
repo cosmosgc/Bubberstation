@@ -16,7 +16,7 @@ ADMIN_VERB(run_weather, R_ADMIN|R_FUN, "Run Weather", "Triggers specific weather
 		return
 
 	var/static/list/custom_options = list("Default", "Custom", "Cancel")
-	var/custom_choice = tgui_alert(user, "How would you like to run the weather settings?", "Custom Weather", custom_options)
+	var/custom_choice = tgui_alert(user, "Como você gostaria de executar as configurações do tempo?", "Custom Weather", custom_options)
 	switch(custom_choice)
 		if("Default")
 			SSweather.run_weather(weather_choice, z_level) // default settings
@@ -47,7 +47,7 @@ ADMIN_VERB(run_weather, R_ADMIN|R_FUN, "Run Weather", "Triggers specific weather
 	var/datum/reagent/reagent_choice
 	if((weather_bitflags & (WEATHER_TURFS|WEATHER_MOBS)))
 		var/static/list/reagent_options = list("Yes", "No", "Cancel")
-		var/reagent_option = tgui_alert(user, "Would you like to make the weather use a custom reagent?", "Weather Reagent", reagent_options)
+		var/reagent_option = tgui_alert(user, "Gostaria de fazer o tempo usar um reagente personalizado?", "Weather Reagent", reagent_options)
 		switch(reagent_option)
 			if("Cancel")
 				return

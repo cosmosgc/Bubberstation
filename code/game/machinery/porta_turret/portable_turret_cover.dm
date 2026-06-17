@@ -38,11 +38,11 @@
 
 /obj/machinery/porta_turret_cover/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	if(parent_turret.locked)
-		user.balloon_alert(user, "controls locked")
+		user.balloon_alert(user, "controles bloqueados")
 		return ITEM_INTERACT_BLOCKING
 
 	multi_tool.set_buffer(parent_turret)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/porta_turret_cover/wrench_act(mob/living/user, obj/item/tool)
@@ -51,14 +51,14 @@
 
 	if(parent_turret.anchored)
 		parent_turret.set_anchored(FALSE)
-		to_chat(user, span_notice("You unsecure the exterior bolts on the turret."))
+		to_chat(user, span_notice("Você não segura os parafusos exteriores na torre."))
 		parent_turret.SetInvisibility(INVISIBILITY_NONE, id=parent_turret.type, priority=INVISIBILITY_PRIORITY_TURRET_COVER)
 		parent_turret.update_appearance()
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS
 
 	parent_turret.set_anchored(TRUE)
-	to_chat(user, span_notice("You secure the exterior bolts on the turret."))
+	to_chat(user, span_notice("Você protege os parafusos exteriores na torre."))
 	parent_turret.SetInvisibility(INVISIBILITY_MAXIMUM, id=parent_turret.type, priority=INVISIBILITY_PRIORITY_TURRET_COVER)
 	parent_turret.update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -67,7 +67,7 @@
 	if(!tool.GetID())
 		return NONE
 	if(!parent_turret.allowed(user))
-		to_chat(user, span_notice("Access denied."))
+		to_chat(user, span_notice("Acesso negado."))
 		return ITEM_INTERACT_BLOCKING
 	parent_turret.locked = !parent_turret.locked
 	to_chat(user, span_notice("Controls are now [parent_turret.locked ? "locked" : "unlocked"]."))
@@ -90,7 +90,7 @@
 	if((parent_turret.obj_flags & EMAGGED))
 		return FALSE
 
-	balloon_alert(user, "threat assessment circuits shorted")
+	balloon_alert(user, "Circuitos de avaliação de ameaças encurtados.")
 	audible_message(span_hear("[parent_turret] hums oddly..."))
 	parent_turret.obj_flags |= EMAGGED
 	parent_turret.on = FALSE

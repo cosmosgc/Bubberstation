@@ -1,6 +1,6 @@
 /obj/structure/altar
 	name = "\improper Altar"
-	desc = "A religious structure. You could lie on it if you wanted to."
+	desc = "Uma estrutura religiosa. Pode mentir se quiser."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "convertaltar"
 	density = TRUE
@@ -46,7 +46,7 @@
 /// This one actually has relevance to chaplains
 /obj/structure/altar/of_gods
 	name = "\improper Altar of the Gods"
-	desc = "An altar which allows the head of the church to choose a sect of religious teachings as well as provide sacrifices to earn favor."
+	desc = "Um altar que permite ao chefe da igreja escolher uma seita de ensinamentos religiosos, bem como oferecer sacrifícios para ganhar favor."
 	///Avoids having to check global everytime by referencing it locally.
 	var/datum/religion_sect/sect_to_altar
 
@@ -103,7 +103,7 @@
 
 /obj/item/ritual_totem
 	name = "ritual totem"
-	desc = "A wooden totem with strange carvings on it."
+	desc = "Um totem de madeira com esculturas estranhas."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "ritual_totem"
 	inhand_icon_state = "sheet-wood"

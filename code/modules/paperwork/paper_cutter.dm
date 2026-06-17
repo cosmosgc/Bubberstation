@@ -1,6 +1,6 @@
 /obj/item/papercutter
 	name = "paper cutter"
-	desc = "Standard office equipment. Precisely cuts paper using a large blade."
+	desc = "Equipamento padrão de escritório. Exatamente corta papel usando uma lâmina grande."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "papercutter"
 	force = 5
@@ -103,7 +103,7 @@
 
 /obj/item/papercutter/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!stored_blade && !blade_secured)
-		balloon_alert(user, "no blade!")
+		balloon_alert(user, "Sem lâmina!")
 		return ITEM_INTERACT_BLOCKING
 
 	tool.play_tool_sound(src)
@@ -114,26 +114,26 @@
 /obj/item/papercutter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/paper))
 		if(is_type_in_list(tool, list(/obj/item/paper/holy_writ, /obj/item/paper/pamphlet, /obj/item/paper/paperslip)))
-			balloon_alert(user, "won't fit!")
+			balloon_alert(user, "Não cabe!")
 			return ITEM_INTERACT_BLOCKING
 		if(stored_paper)
-			balloon_alert(user, "already paper inside!")
+			balloon_alert(user, "Já tem papel dentro!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		playsound(loc, SFX_PAGE_TURN, 60, TRUE)
-		balloon_alert(user, "paper inserted")
+		balloon_alert(user, "Papel inserido.")
 		stored_paper = tool
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/hatchet/cutterblade))
 		if(stored_blade)
-			balloon_alert(user, "already a blade inside!")
+			balloon_alert(user, "Já tem uma lâmina lá dentro!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "blade inserted")
+		balloon_alert(user, "Lâmina inserida.")
 		tool.forceMove(src)
 		stored_blade = tool
 		update_appearance()
@@ -152,11 +152,11 @@
 
 /obj/item/papercutter/attack_hand_secondary(mob/user, list/modifiers)
 	if(!stored_blade)
-		balloon_alert(user, "no blade!")
+		balloon_alert(user, "Sem lâmina!")
 	else if(!blade_secured)
-		balloon_alert(user, "blade unsecured!")
+		balloon_alert(user, "Lâmina não segura!")
 	else if(!stored_paper)
-		balloon_alert(user, "nothing to cut!")
+		balloon_alert(user, "Nada para cortar!")
 	else
 		cut_paper(user)
 
@@ -179,7 +179,7 @@
 
 /obj/item/paper/paperslip
 	name = "paper slip"
-	desc = "A little slip of paper left over after a larger piece was cut. Whoa."
+	desc = "Um pequeno pedaço de papel depois que uma peça maior foi cortada. Whoa."
 	icon_state = "paperslip"
 	inhand_icon_state = "silver_id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
@@ -198,7 +198,7 @@
 ///More fancy and sturdy paper slip which is a "plastic card", used for things like spare ID safe code
 /obj/item/paper/paperslip/corporate
 	name = "corporate plastic card"
-	desc = "A plastic card for confidential corporate matters. Can be written on with pen somehow."
+	desc = "Um cartão de plástico para assuntos corporativos confidenciais. Pode ser escrito com caneta de alguma forma."
 	icon_state = "corppaperslip"
 	custom_materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 3, /datum/material/paper = HALF_SHEET_MATERIAL_AMOUNT / 2)
 	max_integrity = 130 //Slightly more sturdy because of being made out of a plastic
@@ -212,7 +212,7 @@
 
 /obj/item/hatchet/cutterblade
 	name = "paper cutter blade"
-	desc = "The blade of a paper cutter. Most likely removed for polishing or sharpening."
+	desc = "A lâmina de um cortador de papel. Provavelmente removido para polir ou afiar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "cutterblade"
 	inhand_icon_state = "knife"

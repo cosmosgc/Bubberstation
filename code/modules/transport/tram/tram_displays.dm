@@ -1,6 +1,6 @@
 /obj/machinery/transport/destination_sign
 	name = "destination sign"
-	desc = "A display to show you what direction the tram is travelling."
+	desc = "Uma exibição para mostrar em que direção o bonde está viajando."
 	icon = 'icons/obj/tram/tram_display.dmi'
 	icon_state = "desto_blank"
 	base_icon_state = "desto"
@@ -36,7 +36,7 @@
 
 /obj/item/wallframe/indicator_display
 	name = "indicator display frame"
-	desc = "Used to build tram indicator displays, just secure to the wall."
+	desc = "Usado para construir monitores de bonde, seguro na parede."
 	icon_state = "indi_blank"
 	icon = 'icons/obj/tram/tram_indicator.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7)

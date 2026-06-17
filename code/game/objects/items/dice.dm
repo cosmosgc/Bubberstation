@@ -5,7 +5,7 @@
 ///holding bag for dice
 /obj/item/storage/dice
 	name = "bag of dice"
-	desc = "Contains all the luck you'll ever need."
+	desc = "Contém toda a sorte que você vai precisar."
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "dicebag"
 	w_class = WEIGHT_CLASS_SMALL
@@ -47,7 +47,7 @@
 ///this is a prototype for dice, for a real d6 use "/obj/item/dice/d6"
 /obj/item/dice
 	name = "die"
-	desc = "A die with six sides. Basic and serviceable."
+	desc = "Uma morte com seis lados. Básico e útil."
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "d6"
 	w_class = WEIGHT_CLASS_TINY
@@ -132,19 +132,19 @@
 
 /obj/item/dice/d1
 	name = "d1"
-	desc = "A die with only one side. Deterministic!"
+	desc = "Uma morte com apenas um lado. Determinista!"
 	icon_state = "d1"
 	sides = 1
 
 /obj/item/dice/d2
 	name = "d2"
-	desc = "A die with two sides. Coins are undignified!"
+	desc = "Uma morte com dois lados. Moedas são indignos!"
 	icon_state = "d2"
 	sides = 2
 
 /obj/item/dice/d4
 	name = "d4"
-	desc = "A die with four sides. The nerd's caltrop."
+	desc = "Uma morte com quatro lados. O nerd é caltrop."
 	icon_state = "d4"
 	sides = 4
 
@@ -158,13 +158,13 @@
 
 /obj/item/dice/d6/ebony
 	name = "ebony die"
-	desc = "A die with six sides made of dense black wood. It feels cold and heavy in your hand."
+	desc = "Um morrer com seis lados feitos de madeira negra densa. Está frio e pesado em sua mão."
 	icon_state = "de6"
 	microwave_riggable = FALSE // You can't melt wood in the microwave
 
 /obj/item/dice/d6/space
 	name = "space cube"
-	desc = "A die with six sides. 6 TIMES 255 TIMES 255 TILE TOTAL EXISTENCE, SQUARE YOUR MIND OF EDUCATED STUPID: 2 DOES NOT EXIST."
+	desc = "Uma morte com seis lados. 6 vezes 255 vezes 255 Tile Total Existence, Quadra sua mente de estupido educado: 2 não existe."
 	icon_state = "spaced6"
 
 /obj/item/dice/d6/space/Initialize(mapload)
@@ -174,44 +174,44 @@
 
 /obj/item/paper/guides/knucklebone
 	name = "knucklebones rules"
-	default_raw_text = "How to play knucklebones<br>\
+	default_raw_text = "Como jogar skinbones<br>\
 	<ul>\
-	<li>Make two 3x3 grids right next to each other using anything you can find to mark the ground. I like using the bartenders hologram projector.</li>\
-	<li>Take turns rolling the dice and moving the dice into one of the three rows on your 3x3 grid.</li>\
-	<li>Your goal is to get the most points by putting die of the same number in the same row.</li>\
-	<li>If you have two of the same die in the same row, you will add them together and then times the sum by two. Then add that to the rest of the die.</li>\
-	<li>If you have three of the same die in the same row, you will do the same thing but times it by three.</li>\
-	<li>But if your opponent places a die across from one of your rows, you must remove all die that are the same number.</li>\
-	<li>For example, if you have two 5's and a 2 in a row and your opponent places a 5 in the same row you must remove the two 5's from that row.</li>\
-	<li>Note that you do not multiply the die if they are in the same collum. Only if they are in the same row.</li>\
-	<li>If you find it hard to tell whether it multiplies up and down or left and right, base it off the position of your opponents 3x3.</li>\
-	<li>If their rows line up with your rows, those rows are the rows that will multiply your die</li>\
-	<li>The game ends when one person fills up their 3x3. The other person does not get to roll the rest of their die.</li>\
-	<li>The winner is decided by who gets the most points</li>\
-	<li>Have fun!</li>\
+	<li>Faça duas grades 3x3 ao lado uma da outra usando qualquer coisa para marcar o chão. Gosto de usar o projetor holográfico dos bartenders.</li>\
+	<li>Revezem-se jogando os dados e movendo os dados em uma das três linhas em sua grade 3x3.</li>\
+	<li>Seu objetivo é conseguir o máximo de pontos colocando a morte do mesmo número na mesma fila.</li>\
+	<li>Se você tiver dois do mesmo morrer na mesma fileira, você vai adicioná-los juntos e, em seguida, vezes a soma por dois. Então adicione isso ao resto dos mortos.</li>\
+	<li>Se você tem três do mesmo morrer na mesma fila, você vai fazer a mesma coisa mas vezes por três.</li>\
+	<li>Mas se seu oponente coloca um dado em frente a uma de suas fileiras, você deve remover todos os mortos que são o mesmo número.</li>\
+	<li>Por exemplo, se você tem dois 5's e um 2 em uma fileira e seu oponente coloca um 5 na mesma fileira você deve remover os dois 5's dessa fileira.</li>\
+	<li>Note que você não multiplica os dados se eles estão no mesmo collum. Só se estiverem na mesma fila.</li>\
+	<li>Se você acha difícil dizer se ele multiplica para cima e para baixo ou para a esquerda e para a direita, baseá-lo fora da posição de seus adversários 3x3.</li>\
+	<li>Se suas fileiras se alinharem com suas fileiras, essas fileiras serão as fileiras que multiplicarão sua morte.</li>\
+	<li>O jogo termina quando uma pessoa preenche seus 3x3. A outra pessoa não pode rolar o resto de sua morte.</li>\
+	<li>O vencedor é decidido por quem ganha mais pontos.</li>\
+	<li>Divirtam-se!</li>\
 	</ul>"
 /obj/item/dice/fudge
 	name = "fudge die"
-	desc = "A die with six sides but only three results. Is this a plus or a minus? Your mind is drawing a blank..."
+	desc = "Uma morte com seis lados, mas apenas três resultados. Isso é mais ou menos? Sua mente está em branco..."
 	sides = 3 //shhh
 	icon_state = "fudge"
 	special_faces = list("minus","blank" = "You aren't sure how to feel.","plus")
 
 /obj/item/dice/d8
 	name = "d8"
-	desc = "A die with eight sides. It feels... lucky."
+	desc = "Uma morte com oito lados. Parece... sorte."
 	icon_state = "d8"
 	sides = 8
 
 /obj/item/dice/d10
 	name = "d10"
-	desc = "A die with ten sides. Useful for percentages."
+	desc = "Uma morte com dez lados. Útil para porcentagens."
 	icon_state = "d10"
 	sides = 10
 
 /obj/item/dice/d00
 	name = "d00"
-	desc = "A die with ten sides. Works better for d100 rolls than a golf ball."
+	desc = "Uma morte com dez lados. Funciona melhor para 100 rolos do que uma bola de golfe."
 	icon_state = "d00"
 	sides = 10
 
@@ -220,19 +220,19 @@
 
 /obj/item/dice/d12
 	name = "d12"
-	desc = "A die with twelve sides. There's an air of neglect about it."
+	desc = "Uma morte com doze lados. Há um ar de negligência."
 	icon_state = "d12"
 	sides = 12
 
 /obj/item/dice/d20
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Uma morte com vinte lados. O preferido morrer para jogar no GM."
 	icon_state = "d20"
 	sides = 20
 
 /obj/item/dice/d100
 	name = "d100"
-	desc = "A die with one hundred sides! Probably not fairly weighted..."
+	desc = "Uma morte com cem lados! Provavelmente não é bem ponderado..."
 	icon_state = "d100"
 	w_class = WEIGHT_CLASS_SMALL
 	sides = 100
@@ -243,7 +243,7 @@
 
 /obj/item/dice/eightbd20
 	name = "strange d20"
-	desc = "A weird die with raised text printed on the faces. Everything's white on white so reading it is a struggle. What poor design!"
+	desc = "Uma morte estranha com texto levantado impresso nos rostos. Tudo é branco no branco então ler é uma luta. Que pobre projeto!"
 	icon_state = "8bd20"
 	sides = 20
 	special_faces = list("It is certain","It is decidedly so","Without a doubt","Yes, definitely","You may rely on it","As I see it, yes","Most likely","Outlook good","Yes","Signs point to yes","Reply hazy try again","Ask again later","Better not tell you now","Cannot predict now","Concentrate and ask again","Don't count on it","My reply is no","My sources say no","Outlook not so good","Very doubtful")
@@ -254,7 +254,7 @@
 
 /obj/item/dice/fourdd6
 	name = "4d d6"
-	desc = "A die that exists in four dimensional space. Properly interpreting them can only be done with the help of a mathematician, a physicist, and a priest."
+	desc = "Um dado que existe em quatro espaços dimensionais. Interpretá-los corretamente só pode ser feito com a ajuda de um matemático, um físico e um padre."
 	icon_state = "4dd6"
 	sides = 48
 	special_faces = list("Cube-Side: 1-1","Cube-Side: 1-2","Cube-Side: 1-3","Cube-Side: 1-4","Cube-Side: 1-5","Cube-Side: 1-6","Cube-Side: 2-1","Cube-Side: 2-2","Cube-Side: 2-3","Cube-Side: 2-4","Cube-Side: 2-5","Cube-Side: 2-6","Cube-Side: 3-1","Cube-Side: 3-2","Cube-Side: 3-3","Cube-Side: 3-4","Cube-Side: 3-5","Cube-Side: 3-6","Cube-Side: 4-1","Cube-Side: 4-2","Cube-Side: 4-3","Cube-Side: 4-4","Cube-Side: 4-5","Cube-Side: 4-6","Cube-Side: 5-1","Cube-Side: 5-2","Cube-Side: 5-3","Cube-Side: 5-4","Cube-Side: 5-5","Cube-Side: 5-6","Cube-Side: 6-1","Cube-Side: 6-2","Cube-Side: 6-3","Cube-Side: 6-4","Cube-Side: 6-5","Cube-Side: 6-6","Cube-Side: 7-1","Cube-Side: 7-2","Cube-Side: 7-3","Cube-Side: 7-4","Cube-Side: 7-5","Cube-Side: 7-6","Cube-Side: 8-1","Cube-Side: 8-2","Cube-Side: 8-3","Cube-Side: 8-4","Cube-Side: 8-5","Cube-Side: 8-6")
@@ -266,7 +266,7 @@
 // Die of fate stuff
 /obj/item/dice/d20/fate
 	name = "\improper Die of Fate"
-	desc = "A die with twenty sides. You can feel unearthly energies radiating from it. Using this might be VERY risky."
+	desc = "Uma morte com vinte lados. Você pode sentir energias extraterrestres irradiando dela. Usar isso pode ser muito arriscado."
 	icon_state = "d20"
 	sides = 20
 	microwave_riggable = FALSE
@@ -280,7 +280,7 @@
 
 /obj/item/dice/d20/fate/cursed
 	name = "cursed Die of Fate"
-	desc = "A die with twenty sides. You feel that rolling this is a REALLY bad idea."
+	desc = "Uma morte com vinte lados. Você acha que rolar isso é uma péssima ideia."
 	color = "#00BB00"
 
 	rigged = DICE_TOTALLY_RIGGED
@@ -291,7 +291,7 @@
 
 /obj/item/dice/d20/fate/stealth
 	name = "d20"
-	desc = "A die with twenty sides. The preferred die to throw at the GM."
+	desc = "Uma morte com vinte lados. O preferido morrer para jogar no GM."
 
 /obj/item/dice/d20/fate/stealth/one_use
 	reusable = FALSE
@@ -313,7 +313,7 @@
 		return
 
 	if(!ishuman(user) || !user.mind || IS_WIZARD(user))
-		to_chat(user, span_warning("You feel the magic of the dice is restricted to ordinary humans!"))
+		to_chat(user, span_warning("Você sente que a magia dos dados é restrita aos humanos comuns!"))
 		return
 
 	if(!reusable)
@@ -328,7 +328,7 @@
 /obj/item/dice/d20/fate/equipped(mob/user, slot)
 	. = ..()
 	if(!ishuman(user) || !user.mind || IS_WIZARD(user))
-		to_chat(user, span_warning("You feel the magic of the dice is restricted to ordinary humans! You should leave it alone."))
+		to_chat(user, span_warning("Você sente que a magia dos dados é restrita aos humanos comuns! Deveria deixar isso em paz."))
 		user.dropItemToGround(src)
 
 
@@ -384,10 +384,10 @@
 			user.ForceContractDisease(cold, FALSE, TRUE)
 		if(10)
 			//Nothing
-			selected_turf.visible_message(span_userdanger("Nothing seems to happen."))
+			selected_turf.visible_message(span_userdanger("Nada parece acontecer."))
 		if(11)
 			//Cookie
-			selected_turf.visible_message(span_userdanger("A cookie appears out of thin air!"))
+			selected_turf.visible_message(span_userdanger("Um biscoito aparece do nada!"))
 			var/obj/item/food/cookie/ooh_a_cookie = new(drop_location())
 			do_smoke(0, src, drop_location())
 			ooh_a_cookie.name = "Cookie of Fate"
@@ -409,12 +409,12 @@
 					new /obj/item/coin/gold(bag_money)
 		if(14)
 			//Free Gun
-			selected_turf.visible_message(span_userdanger("An impressive gun appears!"))
+			selected_turf.visible_message(span_userdanger("Uma arma impressionante aparece!"))
 			do_smoke(0, src, drop_location())
 			new /obj/item/gun/ballistic/revolver/mateba(drop_location())
 		if(15)
 			//Random One-use spellbook
-			selected_turf.visible_message(span_userdanger("A magical looking book drops to the floor!"))
+			selected_turf.visible_message(span_userdanger("Um livro mágico cai no chão!"))
 			do_smoke(0, src, drop_location())
 			new /obj/item/book/granter/action/spell/random(drop_location())
 		if(16)
@@ -424,12 +424,12 @@
 			summon_servant.Grant(user)
 		if(17)
 			//Tator Kit
-			selected_turf.visible_message(span_userdanger("A suspicious box appears!"))
+			selected_turf.visible_message(span_userdanger("Aparece uma caixa suspeita!"))
 			new /obj/item/storage/box/syndicate/bundle_a(drop_location())
 			do_smoke(0, src, drop_location())
 		if(18)
 			//Captain ID
-			selected_turf.visible_message(span_userdanger("A golden identification card appears!"))
+			selected_turf.visible_message(span_userdanger("Aparece um cartão de identificação dourado!"))
 			new /obj/item/card/id/advanced/gold/captains_spare(drop_location())
 			do_smoke(0, src, drop_location())
 		if(19)

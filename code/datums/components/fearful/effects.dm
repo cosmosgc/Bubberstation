@@ -26,7 +26,7 @@
 		return
 
 	if (COOLDOWN_FINISHED(src, message_cd) && !owner.has_status_effect(/datum/status_effect/jitter)) // Don't display the message if we're already shaking
-		to_chat(owner, span_warning("You can't stop shaking..."))
+		to_chat(owner, span_warning("Não consegue parar de tremer..."))
 		COOLDOWN_START(src, message_cd, TERROR_MESSAGE_CD)
 
 	owner.set_jitter_if_lower(20 SECONDS)
@@ -71,15 +71,15 @@
 			return
 		COOLDOWN_START(src, message_cd, TERROR_MESSAGE_CD)
 		if (terror_buildup < TERROR_BUILDUP_FEAR)
-			to_chat(owner, span_warning("Your heart skips a beat."))
+			to_chat(owner, span_warning("Seu coração pula uma batida."))
 		else
-			to_chat(owner, span_userdanger("You feel your heart lurching in your chest..."))
+			to_chat(owner, span_userdanger("Você sente seu coração escorrendo em seu peito..."))
 		return
 
 	owner.visible_message(
 		span_warning("[owner] clutches [owner.p_their()] chest for a moment, then collapses to the floor."),
-		span_alert("The shadows begin to creep up from the corners of your vision, and then there is nothing..."),
-		span_hear("You hear something heavy collide with the ground."),
+		span_alert("As sombras começam a surgir dos cantos da sua visão, e então não há nada..."),
+		span_hear("Você ouve algo pesado colidir com o chão."),
 	)
 	owner.apply_status_effect(/datum/status_effect/heart_attack)
 	owner.Unconscious(20 SECONDS)
@@ -97,7 +97,7 @@
 		return
 
 	if (SPT_PROB((terror_buildup >= TERROR_BUILDUP_PANIC) ? 3 : 1, seconds_per_tick))
-		to_chat(owner, span_warning("You feel sick..."))
+		to_chat(owner, span_warning("Você se sente mal..."))
 		// Vomit blood if we're *really* freaking out
 		addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon, vomit), terror_buildup >= TERROR_BUILDUP_PASSIVE_MAXIMUM), 5 SECONDS)
 
@@ -141,7 +141,7 @@
 
 	if (!active)
 		active = TRUE
-		to_chat(owner, span_userdanger("You feel your heart racing!"))
+		to_chat(owner, span_userdanger("Você sente seu coração acelerado!"))
 		owner.add_fov_trait(type, FOV_270_DEGREES) // Terror induced tunnel vision
 
 	owner.playsound_local(owner, 'sound/effects/health/slowbeat.ogg', 40, FALSE, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
@@ -161,7 +161,7 @@
 	owner.Knockdown(0.5 SECONDS)
 	breath_loop.start()
 	panic_end_timer = addtimer(CALLBACK(src, PROC_REF(stop_panic_attack)), rand(3 SECONDS, 5 SECONDS), TIMER_UNIQUE|TIMER_STOPPABLE)
-	owner.visible_message(span_warning("[owner] drops to the floor for a moment, clutching their chest."), span_alert("Your heart lurches in your chest. You can't take much more of this!"))
+	owner.visible_message(span_warning("[owner] drops to the floor for a moment, clutching their chest."), span_alert("Seu coração dói no peito. Você não aguenta muito mais disso!"))
 	return PANIC_ATTACK_TERROR_AMOUNT
 
 /datum/terror_handler/panic/proc/stop_panic_attack()
@@ -190,7 +190,7 @@
 	COOLDOWN_START(src, startle_cd, TERROR_STARTLE_COOLDOWN)
 	switch (rand(1, 3))
 		if (1)
-			to_chat(owner, span_warning("You are startled!"))
+			to_chat(owner, span_warning("Você está assustado!"))
 			owner.emote("jump")
 			owner.Immobilize(0.1 SECONDS * (terror_buildup / TERROR_BUILDUP_FEAR))
 
@@ -206,7 +206,7 @@
 					span_warning("You drop \the [held_item]!"), null, COMBAT_MESSAGE_RANGE)
 
 		if (3)
-			to_chat(owner, span_warning("You lose your balance!"))
+			to_chat(owner, span_warning("Você perdeu o equilíbrio!"))
 			owner.adjust_staggered_up_to(2 SECONDS * (terror_buildup / TERROR_BUILDUP_FEAR), 20 SECONDS)
 			owner.add_movespeed_modifier(/datum/movespeed_modifier/status_effect/spooked)
 			addtimer(CALLBACK(src, PROC_REF(speed_up)), 3 SECONDS, TIMER_STOPPABLE | TIMER_DELETE_ME)

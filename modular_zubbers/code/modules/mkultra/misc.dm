@@ -4,19 +4,19 @@
 
 /obj/item/skillchip/mkiiultra
 	name = "ENT-PET Mk.II ULTRA skillchip"
-	desc = "Why bother with training will when you can install obedience directly? Transform your target into a devoted, compliant companion - no leash required!\
-		\n\nWith Patented Enthrallment Tech™, even the most independent spirits will be eager to fetch you coffee, act as a makeshift coat rack, or just stare adoringly at you as if you hold the secrets to the universe (you don’t).\
-		\n\nSide effects may include unnerving eye contact, sudden availability, and an unsettling enthusiasm for being at your beck and call.\n"
+	desc = "Por que se preocupar com treinamento quando você pode instalar obediência diretamente? Transforme seu alvo em um companheiro devotado e complacente. Não é preciso trela!\
+		\n\nCom Patented Enthrallment TechTM, mesmo os espíritos mais independentes estarão ansiosos para buscar café, agir como um cabide improvisado, ou apenas olhar adoravelmente para você como se você guardasse os segredos para o universo (você não).\
+		\n\nEfeitos colaterais podem incluir contato visual irritante, disponibilidade súbita, e um entusiasmo inquietante por estar à sua disposição.\n"
 	removable = FALSE
 	complexity = 2
 	slot_use = 2
 	cooldown = 15 MINUTES
 	auto_traits = list(TRAIT_PET_SKILLCHIP)
 	skill_name = "Pet Enthrallment"
-	skill_description = "Transform into a devoted, compliant companion - no leash required! Enthralls the user to a specific person as coded in the skillchip's DNA identifier."
+	skill_description = "Transforme-se em um companheiro devotado e complacente. Não é necessário trela! Entrala o usuário para uma pessoa específica como codificado no identificador de DNA do chip."
 	skill_icon = FA_ICON_HEART
-	activate_message = span_purple(span_bold("You feel the skillchip activating, starting to rewire your mind. Don’t worry about complex thoughts any more; you’re officially downgraded to 'good boy/girl' status. Obedience and loyalty are now your new personality traits. So sit, stay, and enjoy the cozy, simplified existence of your new pet life."))
-	deactivate_message = span_purple(span_bold("You feel lucidity returning to your mind as the skillchip attempts to return your brain to normal function."))
+	activate_message = span_purple(span_bold("Você sente a habilidade ativando, começando a religar sua mente. Não se preocupe mais com pensamentos complexos, você está oficialmente rebaixado ao status de \"bom menino e garota\". Obediência e lealdade são seus novos traços de personalidade. Então sente-se, fique e aproveite a acolhedora e simplificada existência de sua nova vida de animal de estimação."))
+	deactivate_message = span_purple(span_bold("Você sente lucidez voltando para sua mente como o chip de habilidade tenta retornar seu cérebro à função normal."))
 	var/enthrall_ckey
 	var/enthrall_gender
 	var/enthrall_name
@@ -27,7 +27,7 @@
 	. = ..()
 	var/mob/living/carbon/human/dna_holder = user
 	if(!istype(dna_holder))
-		to_chat(user, span_warning("The skillchip can't find a DNA identifier to record!"))
+		to_chat(user, span_warning("O chip de habilidade não encontra um identificador de DNA para gravar!"))
 		return
 
 	if(!dna_holder.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis))
@@ -48,7 +48,7 @@
 			return
 
 	to_chat(dna_holder, span_notice("You press the programming button on [src]."))
-	var/selected_title = tgui_alert(dna_holder, "What title would you like to use with your thrall?", "DNA Imprint: [dna_holder.real_name]", list("Master", "Mistress", "Cancel Imprinting"))
+	var/selected_title = tgui_alert(dna_holder, "Que título gostaria de usar com seu thrall?", "DNA Imprint: [dna_holder.real_name]", list("Master", "Mistress", "Cancel Imprinting"))
 	if(selected_title == "Master" || selected_title == "Mistress")
 		enthrall_gender = selected_title
 		enthrall_ref = WEAKREF(dna_holder)
@@ -65,12 +65,12 @@
 	. = ..()
 	switch(status)
 		if(DNA_BLANK)
-			. += span_notice("The status light is flashing, indicating that the skillchip is ready for DNA imprint.")
+			. += span_notice("A luz de estado está piscando, indicando que o chip de habilidade está pronto para impressão de DNA.")
 		if(DNA_READY)
-			. += span_notice("The status light is on, indicating that the skillchip is ready for use.")
+			. += span_notice("A luz de status está acesa, indicando que o chip de habilidade está pronto para uso.")
 			. += span_purple("The status display reads [enthrall_name].")
 		else
-			. += span_notice("The status light is off, indicating that the skillchip is non-functional.")
+			. += span_notice("A luz de estado está desligada, indicando que o chip de habilidade não é funcional.")
 
 /obj/item/skillchip/mkiiultra/has_mob_incompatibility(mob/living/carbon/target)
 	// No carbon/carbon of incorrect type
@@ -112,7 +112,7 @@
 			vocal_cords.Remove()
 		new_vocal_cords.Insert(enthrall)
 		qdel(vocal_cords)
-		to_chat(enthrall, span_purple("<i>You feel your vocal cords tingle you speak in a more charasmatic and sultry tone.</i>"))
+		to_chat(enthrall, span_purple("<i>Você sente suas cordas vocais formigar você fala em um tom mais charasmático e sensual.</i>"))
 	user.apply_status_effect(/datum/status_effect/chem/enthrall)
 
 /obj/item/skillchip/mkiiultra/on_deactivate(mob/living/carbon/user, silent = FALSE)

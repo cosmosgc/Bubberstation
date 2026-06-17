@@ -12,7 +12,7 @@
  */
 /obj/structure/filingcabinet
 	name = "filing cabinet"
-	desc = "A large cabinet with drawers."
+	desc = "Um armário grande com gavetas."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
@@ -25,7 +25,7 @@
 
 /obj/structure/filingcabinet/chestdrawer/wheeled
 	name = "rolling chest drawer"
-	desc = "A small cabinet with drawers. This one has wheels!"
+	desc = "Um pequeno armário com gavetas. Este tem rodas!"
 	anchored = FALSE
 
 /obj/structure/filingcabinet/white

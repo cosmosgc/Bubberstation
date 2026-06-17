@@ -3,7 +3,7 @@
 	filedesc = "MODsuit Control"
 	program_open_overlay = "modsuit_control"
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
-	extended_desc = "This program allows people to connect a MODsuit to it, allowing remote control."
+	extended_desc = "Este programa permite que as pessoas conectem um MODsuit a ele, permitindo o controle remoto."
 	size = 2
 	tgui_id = "NtosMODsuit"
 	program_icon = "user-astronaut"
@@ -27,7 +27,7 @@
 		unsync_modsuit()
 	controlled_suit = new_modsuit
 	RegisterSignal(controlled_suit, COMSIG_QDELETING, PROC_REF(unsync_modsuit))
-	user?.balloon_alert(user, "suit updated")
+	user?.balloon_alert(user, "Fato atualizado.")
 
 /datum/computer_file/program/maintenance/modsuit_control/proc/unsync_modsuit(atom/source)
 	SIGNAL_HANDLER

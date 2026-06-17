@@ -3,7 +3,7 @@
 /// The actual organ that the changeling headslug implants into a dead host.
 /obj/item/organ/body_egg/changeling_egg
 	name = "changeling egg"
-	desc = "Twitching and disgusting."
+	desc = "Tremendo e nojento."
 	/// The mind of the original changeling that gave forth to the headslug mob.
 	var/datum/mind/origin
 	/// When we're expected to hatch.

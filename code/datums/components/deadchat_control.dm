@@ -50,7 +50,7 @@
 	notify_ghosts(
 		"[parent_name] is now deadchat controllable!",
 		source = parent,
-		header = "Ghost Possession!",
+		header = "Posse Fantasma!",
 	)
 
 /datum/component/deadchat_control/Destroy(force)

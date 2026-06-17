@@ -40,7 +40,7 @@
 
 	var/is_first_brother = team.members.len == 1
 	if (!is_first_brother)
-		to_chat(carbon_owner, span_boldwarning("The Syndicate have higher expectations from you than others. They have granted you an extra flash to convert one other person."))
+		to_chat(carbon_owner, span_boldwarning("O Sindicato tem expectativas maiores de você do que outras. Eles lhe concederam um flash extra para converter outra pessoa."))
 
 	return ..()
 
@@ -71,7 +71,7 @@
 		return
 
 	if (flashed.stat != CONSCIOUS)
-		flashed.balloon_alert(source, "unconscious!")
+		flashed.balloon_alert(source, "inconsciente!")
 		return
 
 #ifdef TESTING
@@ -86,7 +86,7 @@
 	for(var/datum/objective/brother_objective as anything in source.mind.get_all_objectives())
 		// If the objective has a target, are we flashing them?
 		if(flashed == brother_objective.target?.current)
-			flashed.balloon_alert(source, "that's your target!")
+			flashed.balloon_alert(source, "Esse é o seu alvo!")
 			return
 
 	if (flashed.mind.has_antag_datum(/datum/antagonist/brother))
@@ -98,7 +98,7 @@
 		return
 
 	if (!team.add_brother(flashed, key_name(source))) // Shouldn't happen given the former, more specific checks but just in case
-		flashed.balloon_alert(source, "failed!")
+		flashed.balloon_alert(source, "Falhou!")
 		return
 
 	source.log_message("converted [key_name(flashed)] to blood brother", LOG_ATTACK)
@@ -179,7 +179,7 @@
 	return brother_text
 
 /datum/antagonist/brother/greet()
-	to_chat(owner.current, span_alertsyndie("You are a Blood Brother."))
+	to_chat(owner.current, span_alertsyndie("Você é um irmão de sangue."))
 	owner.announce_objectives()
 
 /datum/antagonist/brother/proc/finalize_brother()
@@ -253,7 +253,7 @@
 
 		to_chat(brother_mind, span_notice("[span_bold("[new_brother.real_name]")] has been converted to aid you as your brother!"))
 		if (brothers_left == 0)
-			to_chat(brother_mind, span_notice("You cannot recruit any more brothers."))
+			to_chat(brother_mind, span_notice("Você não pode recrutar mais irmãos."))
 
 	new_brother.mind.add_antag_datum(/datum/antagonist/brother, src)
 
@@ -313,7 +313,7 @@
 
 /datum/objective/convert_brother
 	name = "convert brother"
-	explanation_text = "Convert a brainwashable person using your flash on them directly. Any handheld flash will work if you lose or break your starting flash."
+	explanation_text = "Converta uma pessoa lavagem cerebral usando seu flash diretamente. Qualquer flash portátil funcionará se perder ou quebrar o flash inicial."
 	admin_grantable = FALSE
 	martyr_compatible = TRUE
 

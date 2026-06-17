@@ -1,6 +1,6 @@
 /mob/living/basic/faithless
 	name = "The Faithless"
-	desc = "The Wish Granter's faith in humanity, incarnate."
+	desc = "A fé de Wish Grant na humanidade, encarnada."
 	icon_state = "faithless"
 	icon_living = "faithless"
 	icon_dead = "faithless_dead"

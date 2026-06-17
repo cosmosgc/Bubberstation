@@ -1,7 +1,7 @@
 //Baseline portable generator. Has all the default handling. Not intended to be used on its own (since it generates unlimited power).
 /obj/machinery/power/port_gen
 	name = "portable generator"
-	desc = "A portable generator for emergency backup power."
+	desc = "Um gerador portátil para energia de emergência."
 	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "portgen0_0"
 	base_icon_state = "portgen0"
@@ -116,7 +116,7 @@
 	. = ..()
 	. += span_notice("The generator has [sheets] units of [sheet_name] fuel left, producing [display_power(power_gen)].")
 	if(anchored)
-		. += span_notice("It is anchored to the ground.")
+		. += span_notice("Está ancorado ao chão.")
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	if(sheets >= 1 / (time_per_sheet / power_output) - sheet_left)
@@ -190,10 +190,10 @@
 		if(O.tool_behaviour == TOOL_WRENCH)
 			if(!anchored && !isinspace())
 				set_anchored(TRUE)
-				to_chat(user, span_notice("You secure the generator to the floor."))
+				to_chat(user, span_notice("Coloque o gerador no chão."))
 			else if(anchored)
 				set_anchored(FALSE)
-				to_chat(user, span_notice("You unsecure the generator from the floor."))
+				to_chat(user, span_notice("Você desencarregou o gerador do chão."))
 
 			playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 			return
@@ -201,9 +201,9 @@
 			toggle_panel_open()
 			O.play_tool_sound(src)
 			if(panel_open)
-				to_chat(user, span_notice("You open the access panel."))
+				to_chat(user, span_notice("Abra o painel de acesso."))
 			else
-				to_chat(user, span_notice("You close the access panel."))
+				to_chat(user, span_notice("Feche o painel de acesso."))
 			return
 		else if(default_deconstruction_crowbar(user, O))
 			return
@@ -213,7 +213,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "maximum power output unlocked")
+	balloon_alert(user, "Saída máxima de energia destrancada")
 	emp_act(EMP_HEAVY)
 	return TRUE
 

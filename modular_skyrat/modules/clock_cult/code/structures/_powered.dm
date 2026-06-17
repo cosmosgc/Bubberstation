@@ -40,14 +40,14 @@
 		return ..()
 
 	if(!anchored)
-		balloon_alert(user, "not fastened!")
+		balloon_alert(user, "Não preso!")
 		return
 
 	if(!has_power_toggle)
 		return
 
 	if(!update_power() && !enabled)
-		balloon_alert(user, "not enough power!")
+		balloon_alert(user, "Não há energia suficiente!")
 		return
 
 	enabled = !enabled

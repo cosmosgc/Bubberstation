@@ -8,9 +8,9 @@
 
 /datum/reagent/drug/aphrodisiac/incubus_draft
 	name = "incubus draft"
-	description = "A volatile collodial mixture derived from various masculine solutions that encourages a larger gentleman's package via a potent testosterone mix."
+	description = "Uma mistura colodial volátil derivada de várias soluções masculinas que incentiva um pacote maior de cavalheiros através de uma potente mistura de testosterona."
 	color = "#888888"
-	taste_description = "chinese dragon powder"
+	taste_description = "Pó de dragão chinês"
 	overdose_threshold = 20 // ODing makes you male and shrinks female genitals if gender change prefs are enabled. Otherwise, grows a cock.
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
@@ -162,7 +162,7 @@
 	if(mob_testicles.genital_size <= balls_big_size)
 		to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
 	else if(mob_testicles.genital_size == balls_max_size)
-		to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
+		to_chat(exposed_mob, span_purple("Você pode sentir suas bolas pesadas girando como eles incham em proporções enormes!"))
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_start(mob/living/carbon/human/exposed_mob)
@@ -172,5 +172,5 @@
 /datum/chemical_reaction/incubus_draft
 	results = list(/datum/reagent/drug/aphrodisiac/incubus_draft = 8)
 	required_reagents = list(/datum/reagent/blood = 5, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/carbon = 2, /datum/reagent/drug/aphrodisiac/crocin = 2, /datum/reagent/medicine/salglu_solution = 1)
-	mix_message = "the reaction gives off a spicy mist."
+	mix_message = "A reação emite uma névoa picante."
 	erp_reaction = TRUE

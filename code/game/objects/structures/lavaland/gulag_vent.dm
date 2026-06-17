@@ -4,7 +4,7 @@
  */
 /obj/structure/gulag_vent
 	name = "work pit"
-	desc = "A timeworn shaft, almost totally mined out. With a bit of effort you might be able to haul something up."
+	desc = "Um poço usado no tempo, quase totalmente minado. Com um pouco de esforço você pode ser capaz de carregar alguma coisa."
 	icon = 'icons/obj/mining_zones/terrain.dmi'
 	icon_state = "ore_vent_active"
 	move_resist = MOVE_FORCE_EXTREMELY_STRONG
@@ -25,7 +25,7 @@
 	if (!isliving(user))
 		return
 	if (occupied)
-		balloon_alert(user, "occupied!")
+		balloon_alert(user, "Ocupado!")
 		return
 	var/mob/living/living_user = user
 	occupied = TRUE

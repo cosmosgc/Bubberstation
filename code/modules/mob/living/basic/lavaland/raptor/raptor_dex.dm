@@ -1,6 +1,6 @@
 /obj/item/raptor_dex
 	name = "\improper RaptorDex"
-	desc = "A device used to analyze lavaland raptors!"
+	desc = "Um dispositivo usado para analisar raptores de lavalândia!"
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "raptor_dex"
 	item_flags = NOBLUDGEON

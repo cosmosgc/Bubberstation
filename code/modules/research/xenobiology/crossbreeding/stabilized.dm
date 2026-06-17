@@ -8,7 +8,7 @@ Stabilized extracts:
 
 /obj/item/slimecross/stabilized
 	name = "stabilized extract"
-	desc = "It seems inert, but anything it touches glows softly..."
+	desc = "Parece inerte, mas tudo que toca brilha suavemente..."
 	effect = "stabilized"
 	icon_state = "stabilized"
 	var/datum/status_effect/linked_effect
@@ -58,71 +58,71 @@ Stabilized extracts:
 //Colors and subtypes:
 /obj/item/slimecross/stabilized/grey
 	colour = SLIME_TYPE_GREY
-	effect_desc = "Makes slimes friendly to the owner"
+	effect_desc = "Faz lodo amigo do dono"
 
 /obj/item/slimecross/stabilized/orange
 	colour = SLIME_TYPE_ORANGE
-	effect_desc = "Passively tries to increase or decrease the owner's body temperature to normal"
+	effect_desc = "Passivamente tenta aumentar ou diminuir a temperatura corporal do dono para normal"
 
 /obj/item/slimecross/stabilized/purple
 	colour = SLIME_TYPE_PURPLE
-	effect_desc = "Provides a regeneration effect"
+	effect_desc = "Proporciona um efeito de regeneração."
 
 /obj/item/slimecross/stabilized/blue
 	colour = SLIME_TYPE_BLUE
-	effect_desc = "Makes the owner immune to slipping on water, soap or foam. Space lube and ice are still too slippery."
+	effect_desc = "Torna o dono imune a escorregar na água, sabão ou espuma. O lubrificante espacial e o gelo ainda são muito escorregadios."
 
 /obj/item/slimecross/stabilized/metal
 	colour = SLIME_TYPE_METAL
-	effect_desc = "Every 30 seconds, adds a sheet of material to a random stack in the owner's backpack."
+	effect_desc = "A cada 30 segundos, adiciona uma folha de material a uma pilha aleatória na mochila do dono."
 
 /obj/item/slimecross/stabilized/yellow
 	colour = SLIME_TYPE_YELLOW
-	effect_desc = "Every ten seconds it recharges a device on the owner by 10%."
+	effect_desc = "A cada dez segundos recarrega um dispositivo no dono em 10%."
 
 /obj/item/slimecross/stabilized/darkpurple
 	colour = SLIME_TYPE_DARK_PURPLE
-	effect_desc = "Gives you burning fingertips, automatically cooking any microwavable food you hold."
+	effect_desc = "Dá a ponta dos dedos queimando, cozinhando automaticamente qualquer alimento microwavable que você segura."
 
 /obj/item/slimecross/stabilized/darkblue
 	colour = SLIME_TYPE_DARK_BLUE
-	effect_desc = "Slowly extinguishes the owner if they are on fire, also wets items like monkey cubes, creating a monkey."
+	effect_desc = "Lentamente apaga o dono se eles estão em chamas, também molha itens como cubos de macaco, criando um macaco."
 
 /obj/item/slimecross/stabilized/silver
 	colour = SLIME_TYPE_SILVER
-	effect_desc = "Slows the rate at which the owner loses nutrition"
+	effect_desc = "Reduz a taxa de perda de nutrição."
 
 /obj/item/slimecross/stabilized/bluespace
 	colour = SLIME_TYPE_BLUESPACE
-	effect_desc = "On a two minute cooldown, when the owner has taken enough damage, they are teleported to a safe place."
+	effect_desc = "Em dois minutos, quando o dono já sofreu danos suficientes, eles são teleportados para um lugar seguro."
 
 /obj/item/slimecross/stabilized/sepia
 	colour = SLIME_TYPE_SEPIA
-	effect_desc = "Randomly adjusts the owner's speed."
+	effect_desc = "Ajusta aleatoriamente a velocidade do dono."
 
 /obj/item/slimecross/stabilized/cerulean
 	colour = SLIME_TYPE_CERULEAN
-	effect_desc = "Creates a duplicate of the owner. If the owner dies they will take control of the duplicate, unless the death was from beheading or gibbing."
+	effect_desc = "Cria uma duplicata do dono. Se o dono morrer, eles assumirão o controle da duplicata, a menos que a morte tenha sido de decapitação ou gibbing."
 
 /obj/item/slimecross/stabilized/pyrite
 	colour = SLIME_TYPE_PYRITE
-	effect_desc = "Randomly colors the owner every few seconds."
+	effect_desc = "Colore aleatoriamente o dono a cada segundo."
 
 /obj/item/slimecross/stabilized/red
 	colour = SLIME_TYPE_RED
-	effect_desc = "Nullifies all equipment based speed change."
+	effect_desc = "Nulifica todas as mudanças de velocidade."
 
 /obj/item/slimecross/stabilized/green
 	colour = SLIME_TYPE_GREEN
-	effect_desc = "Changes the owner's name and appearance while holding this extract."
+	effect_desc = "Muda o nome e aparência do dono enquanto segura este extrato."
 
 /obj/item/slimecross/stabilized/pink
 	colour = SLIME_TYPE_PINK
-	effect_desc = "As long as no creatures are harmed in the owner's presense, they will not attack you. If the peace is broken it takes two minutes to restore."
+	effect_desc = "Enquanto nenhuma criatura for ferida no pressentimento do dono, eles não vão atacar você. Se a paz é quebrada leva dois minutos para restaurar."
 
 /obj/item/slimecross/stabilized/gold
 	colour = SLIME_TYPE_GOLD
-	effect_desc = "Creates a pet when held."
+	effect_desc = "Cria um animal de estimação quando está preso."
 	var/mob_type
 	var/datum/mind/saved_mind
 	var/mob_name = "Familiar"
@@ -172,23 +172,23 @@ Stabilized extracts:
 
 /obj/item/slimecross/stabilized/oil
 	colour = SLIME_TYPE_OIL
-	effect_desc = "The owner will violently explode when they die while holding this extract."
+	effect_desc = "O dono vai explodir violentamente quando eles morrerem enquanto seguram este extrato."
 
 /obj/item/slimecross/stabilized/black
 	colour = SLIME_TYPE_BLACK
-	effect_desc = "While strangling someone, the owner's hands melt around their neck, draining their life in exchange for food and healing."
+	effect_desc = "Enquanto estrangula alguém, as mãos do dono derretem em volta do pescoço, drenando sua vida em troca de comida e cura."
 
 /obj/item/slimecross/stabilized/lightpink
 	colour = SLIME_TYPE_LIGHT_PINK
-	effect_desc = "The owner moves at high speeds while holding this extract, also stabilizes anyone in critical condition around you using Epinephrine."
+	effect_desc = "O dono se move em alta velocidade enquanto segura o extrato, também estabiliza qualquer um em estado crítico ao seu redor usando Epinefrina."
 
 /obj/item/slimecross/stabilized/adamantine
 	colour = SLIME_TYPE_ADAMANTINE
-	effect_desc = "Owner gains a slight boost in damage resistance to all types."
+	effect_desc = "O dono ganha um pequeno impulso na resistência aos danos de todos os tipos."
 
 /obj/item/slimecross/stabilized/rainbow
 	colour = SLIME_TYPE_RAINBOW
-	effect_desc = "Accepts a regenerative extract and automatically uses it if the owner enters a critical condition."
+	effect_desc = "Aceita um extrato regenerativo e o usa automaticamente se o dono entrar em uma condição crítica."
 	/// Regenerative crossbreed stored to be autoused on critted owner
 	var/obj/item/slimecross/regenerative/regencore
 

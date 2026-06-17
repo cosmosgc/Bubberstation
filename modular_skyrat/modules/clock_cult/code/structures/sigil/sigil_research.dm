@@ -2,7 +2,7 @@
 
 /obj/structure/destructible/clockwork/sigil/research
 	name = "large sigil"
-	desc = "A very large, glowing sigil."
+	desc = "Um sigil muito grande e brilhante."
 	max_integrity = 10
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_effects_96.dmi'
 	icon_state = "research_sigil"

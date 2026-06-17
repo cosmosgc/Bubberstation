@@ -126,7 +126,7 @@
 		return
 
 	if(count_cards() == 0)
-		to_chat(user, span_warning("There are no more cards to draw!"))
+		to_chat(user, span_warning("Não há mais cartas para desenhar!"))
 		return
 
 	var/list/cards = fetch_card_atoms()

@@ -1,7 +1,7 @@
 /mob/living/basic/construct/wraith
 	name = "Wraith"
 	real_name = "Wraith"
-	desc = "A wicked, clawed shell constructed to assassinate enemies and sow chaos behind enemy lines."
+	desc = "Uma concha cruel construída para assassinar inimigos e semear o caos atrás das linhas inimigas."
 	icon_state = "wraith"
 	icon_living = "wraith"
 	maxHealth = 65

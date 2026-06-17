@@ -10,7 +10,7 @@
 
 /datum/symptom/fever
 	name = "Fever"
-	desc = "The virus causes a febrile response from the host, raising its body temperature."
+	desc = "O vírus causa uma resposta febril do hospedeiro, aumentando sua temperatura corporal."
 	illness = "Burning Desire"
 	stealth = 0
 	resistance = 3

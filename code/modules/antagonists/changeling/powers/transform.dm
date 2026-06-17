@@ -1,6 +1,6 @@
 /datum/action/changeling/transform
 	name = "Transform"
-	desc = "We take on the appearance and voice of one we have absorbed. Costs 5 chemicals."
+	desc = "Nós assumimos a aparência e a voz de uma que absorvemos. Custa 5 produtos químicos."
 	button_icon_state = "transform"
 	chemical_cost = 5
 	dna_cost = CHANGELING_POWER_INNATE

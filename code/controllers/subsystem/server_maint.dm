@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(server_maint)
 /datum/controller/subsystem/server_maint/Shutdown()
 	if (fexists("tmp/"))
 		fdel("tmp/")
-	kick_clients_in_lobby(span_boldannounce("The round came to an end with you in the lobby."), TRUE) //second parameter ensures only afk clients are kicked
+	kick_clients_in_lobby(span_boldannounce("A rodada terminou com você no saguão."), TRUE) //second parameter ensures only afk clients are kicked
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)

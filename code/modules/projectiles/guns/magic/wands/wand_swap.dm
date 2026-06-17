@@ -3,7 +3,7 @@
  */
 /obj/item/gun/magic/wand/swap
 	name = "switching rod"
-	desc = "Exchanges the position of the wielder and an unanchored object they point at."
+	desc = "Troca a posição do mantenedor e um objeto que eles apontam."
 	school = SCHOOL_TRANSLOCATION
 	ammo_type = /obj/item/ammo_casing/magic/swap
 	icon_state = "swapwand"
@@ -13,7 +13,7 @@
 
 /obj/item/gun/magic/wand/swap/zap_self(mob/living/user, suicide = FALSE)
 	. = ..()
-	to_chat(user, span_notice("You swap places with yourself! Amazing!"))
+	to_chat(user, span_notice("Você troca de lugar consigo mesmo! Incrível!"))
 	var/obj/effect/particle_effect/fluid/smoke/poof_in = new (get_turf(user))
 	poof_in.lifetime = 5 DECISECONDS
 	charges--

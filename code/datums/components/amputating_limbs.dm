@@ -51,7 +51,7 @@
 		return
 
 	if (DOING_INTERACTION_WITH_TARGET(surgeon, victim))
-		surgeon.balloon_alert(surgeon, "already busy!")
+		surgeon.balloon_alert(surgeon, "Já está ocupado!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(pre_hit_callback && !pre_hit_callback.Invoke(victim))

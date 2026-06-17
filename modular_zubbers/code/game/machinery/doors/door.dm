@@ -15,14 +15,14 @@
 		return
 
 	if(world.time < requesters[user.name] + 10 SECONDS)
-		to_chat(user, span_warning("Hold on, let the AI parse your request."))
+		to_chat(user, span_warning("Espere, deixe a IA analisar seu pedido."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(!hasPower())
-		to_chat(user, span_warning("This door isn't powered."))
+		to_chat(user, span_warning("Esta porta não tem energia."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	src.balloon_alert(user, UNLINT("AI requested"))
+	src.balloon_alert(user, UNLINT("AI pediu."))
 
 	for(var/mob/living/silicon/ai/AI as anything in GLOB.ai_list)
 		if(AI.stat == DEAD)

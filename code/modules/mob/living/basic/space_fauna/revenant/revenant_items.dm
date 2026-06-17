@@ -1,7 +1,7 @@
 //reforming
 /obj/item/ectoplasm/revenant
 	name = "glimmering residue"
-	desc = "A pile of fine blue dust. Small tendrils of violet mist swirl around it."
+	desc = "Uma pilha de pó azul fino. Pequenos tentáculos de névoa violeta giram em torno dele."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "revenantEctoplasm"
 	w_class = WEIGHT_CLASS_SMALL
@@ -59,9 +59,9 @@
 /obj/item/ectoplasm/revenant/examine(mob/user)
 	. = ..()
 	if(inert)
-		. += span_revennotice("It seems inert.")
+		. += span_revennotice("Parece inerte.")
 	else
-		. += span_revenwarning("It is shifting and distorted. It would be wise to destroy this.")
+		. += span_revenwarning("Está mudando e distorcido. Seria sábio destruir isso.")
 
 /obj/item/ectoplasm/revenant/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is inhaling [src]! It looks like [user.p_theyre()] trying to visit the shadow realm!"))

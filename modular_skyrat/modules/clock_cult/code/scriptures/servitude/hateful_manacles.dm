@@ -1,11 +1,11 @@
 /datum/scripture/slab/hateful_manacles
 	name = "Hateful Manacles"
-	desc = "Forms replicant manacles around a target's wrists that function like handcuffs, restraining the target."
+	desc = "Forma algemas replicantes em torno dos pulsos de um alvo que funcionam como algemas, restringindo o alvo."
 	tip = "Handcuff a target at close range to subdue them for vitality extraction."
 	button_icon_state = "Hateful Manacles"
 	power_cost = 50
 	invocation_time = 2 SECONDS // 2 to invoke, 3 to cuff
-	invocation_text = list("Shackle the heretic...", "Break them in body and spirit!")
+	invocation_text = list("Balance o herege...", "Quebre-os em corpo e espírito!")
 	slab_overlay = "hateful_manacles"
 	use_time = 20 SECONDS
 	cogs_required = 1
@@ -18,7 +18,7 @@
 		return FALSE
 
 	if(target_carbon.handcuffed)
-		target_carbon.balloon_alert(invoker, "already restrained!")
+		target_carbon.balloon_alert(invoker, "Já está preso!")
 		return FALSE
 
 	playsound(target_carbon, 'sound/items/weapons/handcuffs.ogg', 30, TRUE, -2)
@@ -40,6 +40,6 @@
 
 /obj/item/restraints/handcuffs/clockwork
 	name = "replicant manacles"
-	desc = "Heavy manacles made out of freezing-cold metal. It looks like brass, but feels much more solid."
+	desc = "Algemas pesadas feitas de metal gelado. Parece latão, mas parece muito mais sólido."
 	icon_state = "brass_manacles"
 	item_flags = DROPDEL

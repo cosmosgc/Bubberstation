@@ -5,9 +5,9 @@
 /// Helmet which can turn you into a BEAST!! once an anomaly core is inserted
 /obj/item/clothing/head/helmet/perceptomatrix
 	name = "perceptomatrix helm"
-	desc = "This piece of headgear harnesses the energies of a hallucinatory anomaly to create a safe audiovisual replica of -all- external stimuli directly into the cerebral cortex, \
-		granting the user effective immunity to both psychic threats, and anything that would affect their perception - be it ear, eye, or even brain damage. \
-		It can also violently discharge said energy, inducing hallucinations in others."
+	desc = "Este pedaço de chapéu aproveita as energias de uma anomalia alucinatória para criar uma réplica audiovisual segura de estímulos externos diretamente no córtex cerebral,\
+concedendo imunidade efetiva ao usuário a ambas as ameaças psíquicas, e qualquer coisa que afete sua percepção - seja ouvido, olho, ou até dano cerebral.\
+Também pode violentamente descarregar energia, induzindo alucinações em outros."
 	icon_state = "perceptomatrix_helmet_inactive"
 	worn_icon_state = "perceptomatrix_helmet_inactive"
 	base_icon_state = "perceptomatrix_helmet"
@@ -119,7 +119,7 @@
 /obj/item/clothing/head/helmet/perceptomatrix/examine(mob/user)
 	. = ..()
 	if (!core_installed)
-		. += span_warning("It requires a hallucination anomaly core in order to function.")
+		. += span_warning("Requer um núcleo de anomalia de alucinações para funcionar.")
 
 /obj/item/clothing/head/helmet/perceptomatrix/update_icon_state()
 	icon_state = base_icon_state + (core_installed ? "" : "_inactive")
@@ -144,7 +144,7 @@
 
 /datum/action/cooldown/spell/pointed/percept_hallucination
 	name = "Hallucinate"
-	desc = "Redirect perceptual energies towards a target, staggering them."
+	desc = "Redirecionar as energias perceptuais para um alvo, cambaleando-as."
 	button_icon_state = "blind"
 	ranged_mousepointer = 'icons/effects/mouse_pointers/blind_target.dmi'
 
@@ -218,11 +218,11 @@
 		return
 
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(cast_on, span_notice("You feel psychic energies reflecting off you."))
+		to_chat(cast_on, span_notice("Você sente energias psíquicas refletindo em você."))
 		to_chat(owner, span_warning("[cast_on] deflects the energy!"))
 		return
 
-	to_chat(cast_on, span_warning("Your brain feels like it's on fire!"))
+	to_chat(cast_on, span_warning("Seu cérebro parece estar pegando fogo!"))
 	cast_on.emote("scream")
 	cast_on.set_eye_blur_if_lower(eye_blur_duration)
 	cast_on.adjust_staggered(stagger_duration)

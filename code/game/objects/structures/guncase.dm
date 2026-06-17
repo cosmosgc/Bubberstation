@@ -1,7 +1,7 @@
 //GUNCASES//
 /obj/structure/guncase
 	name = "gun locker"
-	desc = "A locker that holds guns."
+	desc = "Um armário com armas."
 	icon = 'icons/obj/storage/closet.dmi'
 	icon_state = "shotguncase"
 	anchored = FALSE
@@ -123,17 +123,17 @@
 
 /obj/structure/guncase/shotgun
 	name = "shotgun locker"
-	desc = "A locker that holds shotguns."
+	desc = "Um armário com espingardas."
 	case_type = "shotgun"
 	gun_category = /obj/item/gun/ballistic/shotgun
 
 /obj/structure/guncase/ecase
 	name = "energy gun locker"
-	desc = "A locker that holds energy guns."
+	desc = "Um armário com armas de energia."
 	case_type = "egun"
 	gun_category = /obj/item/gun/energy/e_gun
 
 /obj/structure/guncase/wt550
 	name = "WT-550 gun locker"
-	desc = "A locker that holds WT-550 rifles."
+	desc = "Um armário com rifles WT-550."
 	case_type = "wt550"

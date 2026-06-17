@@ -1,7 +1,7 @@
 // Corn
 /obj/item/seeds/corn
 	name = "corn seed pack"
-	desc = "I don't mean to sound corny..."
+	desc = "Não quero parecer brega..."
 	icon_state = "seed-corn"
 	species = "corn"
 	plantname = "Corn Stalks"
@@ -19,7 +19,7 @@
 /obj/item/food/grown/corn
 	seed = /obj/item/seeds/corn
 	name = "ear of corn"
-	desc = "Needs some butter!"
+	desc = "Precisa de manteiga!"
 	icon_state = "corn"
 	trash_type = /obj/item/grown/corncob
 	bite_consumption_mod = 2
@@ -42,7 +42,7 @@
 /obj/item/grown/corncob
 	seed = /obj/item/seeds/corn
 	name = "corn cob"
-	desc = "A reminder of meals gone by."
+	desc = "Um lembrete das refeições que passaram."
 	icon_state = "corncob"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -64,7 +64,7 @@
 // Snapcorn
 /obj/item/seeds/corn/snapcorn
 	name = "snapcorn seed pack"
-	desc = "Oh snap!"
+	desc = "Caramba!"
 	icon_state = "seed-snapcorn"
 	species = "snapcorn"
 	plantname = "Snapcorn Stalks"
@@ -75,7 +75,7 @@
 /obj/item/grown/snapcorn
 	seed = /obj/item/seeds/corn/snapcorn
 	name = "snap corn"
-	desc = "A cob with snap pops."
+	desc = "Uma espiga com pops."
 	icon_state = "snapcorn"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -90,7 +90,7 @@
 
 /obj/item/grown/snapcorn/attack_self(mob/user)
 	..()
-	to_chat(user, span_notice("You pick a snap pop from the cob."))
+	to_chat(user, span_notice("Você escolhe um estalo da espiga."))
 	var/obj/item/toy/snappop/S = new /obj/item/toy/snappop(user.loc)
 	if(ishuman(user))
 		user.put_in_hands(S)
@@ -102,12 +102,12 @@
 /obj/item/grown/corncob/snap
 	seed = /obj/item/seeds/corn/snapcorn
 	name = "snap corn cob"
-	desc = "A reminder of pranks gone by."
+	desc = "Um lembrete de brincadeiras passadas."
 
 //Pepper-corn - Heh funny.
 /obj/item/seeds/corn/pepper
 	name = "pepper-corn seed pack"
-	desc = "If Peter picked a pack of pepper-corn..."
+	desc = "Se Peter pegou um pacote de pimenta..."
 	icon_state = "seed-peppercorn"
 	species = "peppercorn"
 	plantname = "Pepper-Corn Stalks"
@@ -118,7 +118,7 @@
 /obj/item/food/grown/peppercorn
 	seed = /obj/item/seeds/corn/pepper
 	name = "ear of pepper-peppercorn"
-	desc = "This dusty monster needs god..."
+	desc = "Este monstro empoeirado precisa de Deus..."
 	icon_state = "peppercorn"
 	trash_type = /obj/item/grown/corncob/pepper
 	foodtypes = VEGETABLES
@@ -130,4 +130,4 @@
 /obj/item/grown/corncob/pepper
 	seed = /obj/item/seeds/corn/pepper
 	name = "pepper corn cob"
-	desc = "A reminder of genetic abominations gone by."
+	desc = "Um lembrete de abominações genéticas que passaram."

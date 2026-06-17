@@ -4,7 +4,7 @@
 
 /obj/machinery/computer/telecomms/monitor
 	name = "telecommunications monitoring console"
-	desc = "Monitors the details of the telecommunications network it's synced with."
+	desc = "Monitora os detalhes da rede de telecomunicações que está sincronizada."
 	circuit = /obj/item/circuitboard/computer/comm_monitor
 
 	icon_screen = "comm_monitor"
@@ -117,20 +117,20 @@
 				screen = MACHINE_VIEW
 
 			if(isnull(selected_machine_ref))
-				status_message = "OPERATION FAILED: UNABLE TO LOCATE MACHINERY."
+				status_message = "Não é possível localizar máquinas."
 
 			return TRUE
 
 		if("probe")
 			var/network_id = params["id"]
 			if(length(network_id) > MAX_NETWORK_ID_LENGTH)
-				status_message = "OPERATION FAILED: NETWORK ID TOO LONG."
+				status_message = "Identifiquem-se por muito tempo."
 				return TRUE
 
 			list_clear_empty_weakrefs(machine_refs)
 
 			if(length(machine_refs) > 0)
-				status_message = "OPERATION FAILED: CANNOT PROBE WHEN BUFFER FULL."
+				status_message = "A operação falhou: não pode provar quando a carga está cheia."
 				return TRUE
 
 			network = network_id

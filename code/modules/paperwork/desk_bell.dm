@@ -2,7 +2,7 @@
 
 /obj/structure/desk_bell
 	name = "desk bell"
-	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it."
+	desc = "A pedra angular de qualquer serviço ao cliente. Você sente uma vontade interminável de tocar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "desk_bell"
 	layer = OBJ_LAYER
@@ -82,7 +82,7 @@
 
 // Deconstruct
 /obj/structure/desk_bell/wrench_act_secondary(mob/living/user, obj/item/tool)
-	balloon_alert(user, "taking apart...")
+	balloon_alert(user, "Desmontando...")
 	tool.play_tool_sound(src)
 	if(tool.use_tool(src, user, 5 SECONDS))
 		balloon_alert(user, "disassembled")
@@ -123,7 +123,7 @@
 // A warning to all who enter; the ringing sound STACKS. It won't be deafening because it only goes every decisecond,
 // but I did feel like my ears were going to start bleeding when I tested it with my autoclicker.
 /obj/structure/desk_bell/speed_demon
-	desc = "The cornerstone of any customer service job. This one's been modified for hyper-performance."
+	desc = "A pedra angular de qualquer serviço ao cliente. Este foi modificado para hiper desempenho."
 	ring_cooldown_length = 0
 
 /// Handheld bell
@@ -196,9 +196,9 @@
 	var/obj/vehicle/ridden/wheelchair/chair = interacting_with
 
 	if (chair.bell_attached)
-		user.balloon_alert(user, "already has a bell!")
+		user.balloon_alert(user, "Já tem um sino!")
 		return ITEM_INTERACT_FAILURE
-	user.balloon_alert(user, "attaching bell...")
+	user.balloon_alert(user, "Anexando sino...")
 	if (!do_after(user, 0.5 SECONDS, chair))
 		return ITEM_INTERACT_FAILURE
 

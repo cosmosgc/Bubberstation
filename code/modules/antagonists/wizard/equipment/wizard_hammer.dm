@@ -1,7 +1,7 @@
 /////////////////////////////////////////Singularity Hammer///////////////////
 /obj/item/singularityhammer
 	name = "singularity hammer"
-	desc = "The pinnacle of close combat technology, the hammer harnesses the power of a miniaturized singularity to deal crushing blows."
+	desc = "O pináculo da tecnologia de combate, o martelo aproveita o poder de uma singularidade miniaturizada para lidar com golpes esmagadores."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "singularity_hammer0"
 	base_icon_state = "singularity_hammer"
@@ -75,7 +75,7 @@
 /////////////////////////////////////////Mjollnir///////////////////
 /obj/item/mjollnir
 	name = "Mjollnir"
-	desc = "A weapon worthy of a god, able to strike with the force of a lightning bolt. It crackles with barely contained energy."
+	desc = "Uma arma digna de um deus, capaz de atacar com a força de um raio. Ele estala com pouca energia contida."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "mjollnir0"
 	base_icon_state = "mjollnir"
@@ -108,8 +108,8 @@
 	var/datum/effect_system/basic/lightning_spread/lightning = new(target.loc, 5, TRUE)
 	lightning.start()
 	target.visible_message(span_danger("[target.name] is shocked by [src]!"), \
-		span_userdanger("You feel a powerful shock course through your body sending you flying!"), \
-		span_hear("You hear a heavy electrical crack!"))
+		span_userdanger("Você sente um poderoso curso de choque através de seu corpo enviando você voando!"), \
+		span_hear("Você ouve uma forte rachadura elétrica!"))
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
 	target.throw_at(throw_target, 200, 4)
 

@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/pointed/untie_shoes
 	name = "Untie Shoes"
-	desc = "This unassuming spell unties and then knots the target's shoes."
+	desc = "Este feitiço despretensioso desamarra e depois amarra os sapatos do alvo."
 	ranged_mousepointer = 'icons/effects/mouse_pointers/lace.dmi'
 	button_icon_state = "lace"
 
@@ -32,15 +32,15 @@
 	. = ..()
 	if(spell_level == 2)
 		bypass_tie_status = TRUE
-		to_chat(owner, span_notice("You will now summon laces on laceless shoes, such as jackboots."))
+		to_chat(owner, span_notice("Agora você vai invocar cadarços em sapatos sem renda, como botas de macaco."))
 
 	if(spell_level == 3)
 		summons_shoes = TRUE
-		to_chat(owner, span_notice("You will now summon shoes if your target has none."))
+		to_chat(owner, span_notice("Você vai chamar os sapatos se seu alvo não tiver nenhum."))
 
 	if(spell_level == 4)
 		invocation_type = INVOCATION_NONE
-		to_chat(owner, span_boldnotice("Your invocations are now silent!"))
+		to_chat(owner, span_boldnotice("Suas invocações estão agora em silêncio!"))
 
 /datum/action/cooldown/spell/pointed/untie_shoes/is_valid_target(atom/cast_on)
 	return isliving(cast_on)
@@ -52,7 +52,7 @@
 /datum/action/cooldown/spell/pointed/untie_shoes/cast(mob/living/carbon/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(owner, span_warning("The spell had no effect!"))
+		to_chat(owner, span_warning("O feitiço não teve efeito!"))
 		return FALSE
 
 	if(isanimal_or_basicmob(cast_on))
@@ -62,7 +62,7 @@
 		if(invocation_type != INVOCATION_NONE) // extra feedback since it's weird for them
 			cast_on.balloon_alert_to_viewers("magically tied!")
 		else
-			cast_on.balloon_alert(owner, "magically tied!")
+			cast_on.balloon_alert(owner, "Magicamente amarrado!")
 		playsound(cast_on, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 		return TRUE
 
@@ -93,22 +93,22 @@
 			if(shoes_to_tie.fastening_type == SHOES_SLIPON)
 				if(bypass_tie_status)
 					to_chat(owner, span_warning("You magically grant laces to [cast_on]'s shoes!"))
-					cast_on.balloon_alert(owner, "laced!")
+					cast_on.balloon_alert(owner, "Amarrado!")
 					shoes_to_tie.fastening_type = SHOES_LACED
 					if(invocation_type != INVOCATION_NONE)
 						playsound(cast_on, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 					return TRUE
 				else
 					to_chat(owner, span_warning("[cast_on] is wearing laceless shoes!"))
-					cast_on.balloon_alert(owner, "laceless!")
+					cast_on.balloon_alert(owner, "Sem laços!")
 					return FALSE
 
 			to_chat(owner, span_warning("You untie [cast_on]'s shoes!"))
-			cast_on.balloon_alert(owner, "untied!")
+			cast_on.balloon_alert(owner, "Desamarrado!")
 			shoes_to_tie.adjust_laces(SHOES_UNTIED, force_lacing = TRUE)
 		if(SHOES_UNTIED)
 			to_chat(owner, span_warning("You knot [cast_on]'s laces!"))
-			cast_on.balloon_alert(owner, "knotted!")
+			cast_on.balloon_alert(owner, "Atado!")
 			shoes_to_tie.adjust_laces(SHOES_KNOTTED, force_lacing = TRUE)
 		if(SHOES_KNOTTED)
 			to_chat(owner, span_warning("[cast_on]'s laces are already knotted!"))

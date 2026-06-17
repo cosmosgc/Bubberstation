@@ -11,7 +11,7 @@
 /datum/techweb_node/colony_fabricator_flatpacks
 	id = TECHWEB_NODE_COLONY_FLATPACKS
 	display_name = "Colony Fabricator Flatpack Designs"
-	description = "Contains all of the colony fabricator's flatpack machine designs."
+	description = "Contém todos os projetos de máquinas de fabricação de colônias."
 	design_ids = list(
 		"flatpack_solar_panel",
 		"flatpack_solar_tracker",
@@ -35,9 +35,9 @@
 
 /datum/design/flatpack_colony_fabricator
 	name = "Flat-Packed Colony Fabricator"
-	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
-		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
-		and moved to any location you see fit."
+	desc = "Um fabricante implantável capaz de produzir outras máquinas planas e outros equipamentos especiais adaptados para\
+rapidamente construindo estruturas funcionais dadas recursos e poder. Embora não possa ser atualizado, pode ser reembalado.\
+e se mudou para qualquer lugar que você achar adequado."
 	id = "flatpack_colony_fab"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -58,7 +58,7 @@
 
 /datum/design/flatpack_solar_panel
 	name = "Flat-Packed Solar Panel"
-	desc = "A deployable solar panel, able to be repacked after placement for relocation or recycling."
+	desc = "Um painel solar implantável, capaz de ser reembalado após colocação para recolocação ou reciclagem."
 	id = "flatpack_solar_panel"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -74,7 +74,7 @@
 
 /datum/design/flatpack_solar_tracker
 	name = "Flat-Packed Solar Tracker"
-	desc = "A deployable solar tracker, able to be repacked after placement for relocation or recycling."
+	desc = "Um rastreador solar implantável, capaz de ser reembalado após colocação para recolocação ou reciclagem."
 	id = "flatpack_solar_tracker"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -92,8 +92,8 @@
 
 /datum/design/flatpack_arc_furnace
 	name = "Flat-Packed Arc Furnace"
-	desc = "A deployable furnace for refining ores. While slower and less safe than conventional refining methods, \
-		it multiplies the output of refined materials enough to still outperform simply recycling ore."
+	desc = "Um forno para refinar minérios. Enquanto mais lento e menos seguro do que os métodos convencionais de refino,\
+multiplica a produção de materiais refinados o suficiente para ainda superar simplesmente reciclar minério."
 	id = "flatpack_arc_furnace"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -111,7 +111,7 @@
 
 /datum/design/flatpack_power_storage
 	name = "Flat-Packed Stationary Battery"
-	desc = "A deployable station-scale power cell with an overall low capacity, but high input and output rate."
+	desc = "Uma célula de energia em escala de estação com baixa capacidade, mas alta taxa de entrada e saída."
 	id = "flatpack_station_battery"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -128,7 +128,7 @@
 
 /datum/design/flatpack_power_storage_large
 	name = "Flat-Packed Large Stationary Battery"
-	desc = "A deployable station-scale power cell with an overall extremely high capacity, but low input and output rate."
+	desc = "Uma célula de potência em escala de estação com uma capacidade extremamente alta, mas baixa entrada e taxa de saída."
 	id = "flatpack_station_battery_large"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -147,8 +147,8 @@
 
 /datum/design/flatpack_solids_generator
 	name = "Flat-Packed S.O.F.I.E. Generator"
-	desc = "A deployable plasma-burning generator capable of outperforming even upgraded P.A.C.M.A.N. type generators, \
-		at expense of creating hot carbon dioxide exhaust."
+	desc = "Um gerador de queima de plasma implantável capaz de superar até mesmo geradores de P.A.C.M.A.N. atualizados,\
+em detrimento de criar escape quente de dióxido de carbono."
 	id = "flatpack_fuel_generator"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -168,8 +168,8 @@
 
 /datum/design/flatpack_rtg
 	name = "Flat-Packed Radioisotope Thermoelectric Generator"
-	desc = "A deployable radioisotope generator capable of producing a practically free trickle of power. \
-		Free if you can tolerate the radiation that the machine makes while deployed, that is."
+	desc = "Um gerador de radioisótopos implantável capaz de produzir uma corrente de energia praticamente livre.\
+Livre se você pode tolerar a radiação que a máquina faz enquanto está implantada, isto é."
 	id = "flatpack_rtg"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -189,8 +189,8 @@
 
 /datum/design/flatpack_thermomachine
 	name = "Flat-Packed Atmospheric Temperature Regulator"
-	desc = "A deployable temperature control device for use with atmospherics pipe systems. \
-		Limited in its temperature range, however comes with a higher than normal heat capacity."
+	desc = "Um dispositivo de controle de temperatura para uso com sistemas atmosféricos.\
+Limitado em sua faixa de temperatura, no entanto vem com uma capacidade de calor superior à normal."
 	id = "flatpack_thermo"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -208,8 +208,8 @@
 
 /datum/design/flatpack_ore_silo
 	name = "Flat-Packed Ore Silo"
-	desc = "An all-in-one materials management solution. Connects resource-using machines \
-		through a network of distrobution systems."
+	desc = "Uma solução de gerenciamento de materiais. Conecta máquinas de uso de recursos\
+através de uma rede de sistemas de dispersão."
 	id = "flatpack_ore_silo"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -227,9 +227,9 @@
 
 /datum/design/flatpack_turbine_team_fortress_two
 	name = "Flat-Packed Miniature Wind Turbine"
-	desc = "A deployable fabricator capable of producing other flat-packed machines and other special equipment tailored for \
-		rapidly constructing functional structures given resources and power. While it cannot be upgraded, it can be repacked \
-		and moved to any location you see fit. This one makes specialized engineering designs and tools."
+	desc = "Um fabricante implantável capaz de produzir outras máquinas planas e outros equipamentos especiais adaptados para\
+rapidamente construindo estruturas funcionais dadas recursos e poder. Embora não possa ser atualizado, pode ser reembalado.\
+e se mudou para qualquer lugar que você achar adequado. Este faz projetos especializados de engenharia e ferramentas."
 	id = "flatpack_turbine_team_fortress_two"
 	build_type = COLONY_FABRICATOR
 	materials = list(
@@ -248,10 +248,10 @@
 
 /datum/design/flatpack_bootleg_teg
 	name = "Flat-Packed Stirling Generator"
-	desc = "An industrial scale stirling generator. Stirling generators operate by intaking \
-		hot gasses through their inlet pipes, and being cooled by the ambient air around them. \
-		The cycling compression and expansion that this creates creates power, and this one is made \
-		to make power on the scale of small stations and outposts."
+	desc = "Um gerador de agitação industrial. Geradores Stirling operam intaking\
+Gases quentes através de seus canos de entrada, e sendo resfriado pelo ar ambiente ao redor deles.\
+A compressão de ciclismo e expansão que isso cria cria energia, e esta é feita\
+Para fazer energia na escala de pequenas estações e postos avançados."
 	id = "flatpack_bootleg_teg"
 	build_type = COLONY_FABRICATOR
 	materials = list(

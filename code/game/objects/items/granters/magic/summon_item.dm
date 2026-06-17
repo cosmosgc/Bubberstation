@@ -2,7 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/summonitem
 	action_name = "instant summons"
 	icon_state ="booksummons"
-	desc = "This book is bright and garish, very hard to miss."
+	desc = "Este livro é brilhante e elegante, muito difícil de perder."
 	remarks = list(
 		"I can't look away from the book!",
 		"The words seem to pop around the page...",

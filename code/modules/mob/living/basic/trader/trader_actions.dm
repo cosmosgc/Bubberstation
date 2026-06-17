@@ -1,6 +1,6 @@
 /datum/action/setup_shop
 	name = "Setup shop"
-	desc = "Summons a wacky sales sign, and a comfy sitting spot to conduct your business from."
+	desc = "Convoca um sinal de vendas maluco, e um local confortável para conduzir seus negócios."
 	button_icon = 'icons/mob/actions/actions_trader.dmi'
 	button_icon_state = "setup_shop"
 	/// The shop spot
@@ -22,7 +22,7 @@
 		return FALSE
 	if(shop_spot_ref?.resolve())
 		if(feedback)
-			owner.balloon_alert(owner, "already set up!")
+			owner.balloon_alert(owner, "Já está pronto!")
 		return FALSE
 	return TRUE
 

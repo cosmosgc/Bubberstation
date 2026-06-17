@@ -1,6 +1,6 @@
 /obj/item/binoculars
 	name = "binoculars"
-	desc = "Used for long-distance surveillance."
+	desc = "Usado para vigilância de longa distância."
 	inhand_icon_state = "binoculars"
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "binoculars"

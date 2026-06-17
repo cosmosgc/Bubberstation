@@ -5,7 +5,7 @@
 
 /obj/machinery/plumbing/reaction_chamber
 	name = "mixing chamber"
-	desc = "Keeps chemicals separated until given conditions are met."
+	desc = "Mantém os produtos químicos separados até que as condições sejam cumpridas."
 	icon_state = "reaction_chamber"
 	buffer = 200
 	reagents = /datum/reagents/plumbing/reaction_chamber

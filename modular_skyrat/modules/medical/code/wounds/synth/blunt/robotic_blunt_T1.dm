@@ -1,15 +1,15 @@
 /datum/wound/blunt/robotic/moderate
 	name = "Loosened Screws"
-	desc = "Various semi-external fastening instruments have loosened, causing components to jostle, inhibiting limb control."
-	treat_text = "Recommend topical re-fastening of instruments with a screwdriver, though percussive maintenance via low-force bludgeoning may suffice - \
-	albeit at risk of worsening the injury."
-	examine_desc = "appears to be loosely secured"
-	occur_text = "jostles awkwardly and seems to slightly unfasten"
+	desc = "Vários instrumentos de fixação semi-externos se soltaram, causando componentes para mexer, inibindo o controle dos membros."
+	treat_text = "Recomendo re-apertar tópica de instrumentos com uma chave de fenda, embora manutenção percussiva através de golpeamento de baixa força pode ser suficiente -\
+Embora em risco de piorar a lesão."
+	examine_desc = "Parece estar facilmente seguro."
+	occur_text = "E parece desapertar um pouco."
 	severity = WOUND_SEVERITY_MODERATE
-	simple_treat_text = "<b>Bandaging</b> the wound will reduce the impact until it's <b>screws are secured</b> - which is <b>faster</b> if done by \
-	<b>someone else</b>, a <b>roboticist</b>, an <b>engineer</b>, or with a <b>diagnostic HUD</b>."
-	homemade_treat_text = "In a pinch, <b>percussive maintenance</b> can reset the screws - the chance of which is increased if done by <b>someone else</b> or \
-	with a <b>diagnostic HUD</b>!"
+	simple_treat_text = "<b>Enfaixamento</b>A ferida reduzirá o impacto até que<b>Os parafusos estão seguros.</b>- Que é<b>Mais rápido.</b>Se feito por\
+	<b>Outra pessoa.</b>, a<b>Roboticista</b>, um<b>engenheiro</b>, ou com um<b>HUD diagnóstico</b>."
+	homemade_treat_text = "Em um aperto,<b>Manutenção percussiva</b>pode reiniciar os parafusos - cuja chance é aumentada se feito por<b>Outra pessoa.</b>ou\
+com um<b>HUD diagnóstico</b>!"
 	status_effect_type = /datum/status_effect/wound/blunt/robotic/moderate
 	treat_text_short = "Apply screwdriver or percussive maintenance"
 	treatable_tools = list(TOOL_SCREWDRIVER)

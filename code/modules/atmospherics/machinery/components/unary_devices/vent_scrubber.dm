@@ -2,7 +2,7 @@
 	icon_state = "scrub_map-3"
 
 	name = "air scrubber"
-	desc = "Has a valve and pump attached to it."
+	desc = "Tem uma válvula e uma bomba."
 	construction_type = /obj/item/pipe/directional/scrubber
 	use_power = IDLE_POWER_USE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.1
@@ -288,13 +288,13 @@
 	..()
 	if(!welder.tool_start_check(user, amount=1))
 		return TRUE
-	to_chat(user, span_notice("Now welding the scrubber."))
+	to_chat(user, span_notice("Agora soldando o limpador."))
 	if(welder.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message(span_notice("[user] welds the scrubber shut."),span_notice("You weld the scrubber shut."), span_hear("You hear welding."))
+			user.visible_message(span_notice("[user] welds the scrubber shut."),span_notice("Você solda o esfregão fechado."), span_hear("Você ouve solda."))
 			welded = TRUE
 		else
-			user.visible_message(span_notice("[user] unwelds the scrubber."), span_notice("You unweld the scrubber."), span_hear("You hear welding."))
+			user.visible_message(span_notice("[user] unwelds the scrubber."), span_notice("Você desgastou o limpador."), span_hear("Você ouve solda."))
 			welded = FALSE
 		update_appearance(UPDATE_ICON)
 		pipe_vision_img = image(src, loc, dir = dir)
@@ -317,7 +317,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/attack_alien(mob/user, list/modifiers)
 	if(!welded || !(do_after(user, 2 SECONDS, target = src)))
 		return
-	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("You manage to clear away the stuff blocking the scrubber."), span_hear("You hear loud scraping noises."))
+	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("Você consegue limpar as coisas bloqueando o limpador."), span_hear("Você ouve barulhos altos."))
 	welded = FALSE
 	update_appearance(UPDATE_ICON)
 	pipe_vision_img = image(src, loc, dir = dir)

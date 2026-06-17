@@ -82,8 +82,8 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/red
 	color = "red"
-	description = "A resilient breed of raptors, battle-tested and bred for the purpose of humbling its foes in combat, \
-		This breed demonstrates higher combat capabilities than its peers and oozes ruthless aggression."
+	description = "Uma raça resistente de raptores, testados e criados com o propósito de humilhar seus inimigos em combate,\
+Esta raça demonstra maiores capacidades de combate do que seus pares e exala agressão implacável."
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	health = 300
@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/purple
 	color = "purple"
-	description = "A small, nimble breed, these raptors have been bred as travel companions rather than mounts, capable of storing the owner's possessions and helping them escape from danger unscathed."
+	description = "Uma raça pequena, ágil, estes raptores foram criados como companheiros de viagem em vez de montagens, capazes de armazenar os bens do proprietário e ajudá-los a escapar do perigo ileso."
 	health = 140 // smol
 	rideable_component = /datum/component/riding/creature/raptor/small
 	guaranteed_crossbreeds = list(
@@ -246,7 +246,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 		return TRUE
 
 	if (!silent)
-		to_chat(user, span_warning("The atmosphere is too thin for you to fly!"))
+		to_chat(user, span_warning("A atmosfera é muito fina para você voar!"))
 	return FALSE
 
 /obj/item/mob_holder/purple_raptor/proc/check_flight()
@@ -344,8 +344,8 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/green
 	color = "green"
-	description = "A tough breed of raptor, made to withstand the harshest of punishment and to laugh in the face of pain, \
-		this breed is able to withstand more punishment than its peers."
+	description = "Uma raça dura de raptor, feita para suportar o castigo mais duro e rir diante da dor,\
+Esta raça é capaz de suportar mais punição do que seus pares."
 	health = 400
 	// redirect_shots = FALSE // Need to figure out if I want this or not here
 	guaranteed_crossbreeds = list(
@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/white
 	color = "white"
-	description = "A loving sort, it cares for it peers and rushes to their aid with reckless abandon. It is able to heal any raptors' ailments, and rescue its owner in case of an emergency."
+	description = "Um tipo amoroso, ele se importa com seus pares e corre em seu auxílio com abandono imprudente. É capaz de curar doenças de raptores e resgatar seu dono em caso de emergência."
 	rideable_component = /datum/component/riding/creature/raptor/healer
 	guaranteed_crossbreeds = list(
 		/datum/raptor_color/blue = /datum/raptor_color/green,
@@ -409,8 +409,8 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/yellow
 	color = "yellow"
-	description = "This breed possesses greasy fast speed, DEMON speed, making light work of long pilgrimages. \
-		It's said that a thunderclap could be heard when this breed reaches its maximum speed."
+	description = "Esta raça possui velocidade rápida oleosa, velocidade DEMON, fazendo trabalho leve de longas peregrinações.\
+Dizem que um trovão pode ser ouvido quando esta raça atinge sua velocidade máxima."
 	speed = 0
 	guaranteed_crossbreeds = list(
 		/datum/raptor_color/purple = /datum/raptor_color/blue,
@@ -419,7 +419,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/blue
 	color = "blue"
-	description = "Covered in tough, lava-resistant feathers with thick insulated fur underneath, this breed is capable of marching through lava and fire alike."
+	description = "Coberto de penas duras e resistentes à lava, com pêlos grossos e isolados, esta raça é capaz de marchar pela lava e pelo fogo."
 	health = 300
 	guaranteed_crossbreeds = list(
 		/datum/raptor_color/red = /datum/raptor_color/purple,
@@ -432,7 +432,7 @@ GLOBAL_LIST_INIT(raptor_colors, init_raptor_colors())
 
 /datum/raptor_color/black
 	color = "black"
-	description = "An ultra rare breed. Due to its sparse nature, not much is known about this sort. However it is said to possess many of its peers' abilities."
+	description = "Uma raça ultra rara. Devido à sua natureza escassa, não se sabe muito sobre este tipo. No entanto, diz-se que possui muitas das habilidades de seus pares."
 	health = 400
 	speed = 0
 	melee_damage_lower = 20

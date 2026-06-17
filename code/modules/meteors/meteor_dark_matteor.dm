@@ -2,7 +2,7 @@
 /obj/effect/meteor/dark_matteor
 	name = "dark matt-eor"
 	icon_state = "dark_matter"
-	desc = "The most widely accepted theory is that dark matter is made up of weakly interacting massive particles (WIMPs). But seeing this malevolent force of imminent death careening towards you, gotta admit, it doesn't look so WIMPy anymore..."
+	desc = "A teoria mais amplamente aceita é que a matéria escura é composta de partículas maciças fracamente interagindo. Mas ver essa força malévola de morte iminente se importando com você, tenho que admitir, não parece mais tão selvagem..."
 	hits = 15
 	hitpwr = EXPLODE_DEVASTATE
 	heavy = TRUE

@@ -1,6 +1,6 @@
 /datum/action/innate/clockcult/recall_slab
 	name = "Recall Slab"
-	desc = "Recall your latest used Clockwork Slab from anywhere in the universe."
+	desc = "Lembre-se de seu último relojoeiro usado de qualquer lugar do universo."
 	button_icon_state = "Replicant"
 
 	///The slab marked for recall
@@ -27,7 +27,7 @@
 	SIGNAL_HANDLER
 
 	if(owner)
-		to_chat(owner, span_boldwarning("You sense your Clockwork Slab has been destroyed!"))
+		to_chat(owner, span_boldwarning("Você sente que seu Slab Relógio foi destruído!"))
 
 	unmark_item()
 
@@ -41,7 +41,7 @@
 	var/obj/item_to_retrieve = marked_slab
 
 	if(!item_to_retrieve)
-		to_chat(usr, span_brass("You don't have a slab attuned!"))
+		to_chat(usr, span_brass("Você não tem uma placa afinada!"))
 
 	if(!item_to_retrieve.loc)
 		return

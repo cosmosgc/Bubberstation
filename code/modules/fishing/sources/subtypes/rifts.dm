@@ -145,14 +145,14 @@
 	if(ishuman(user))
 		human_user = user
 
-	user.visible_message(span_danger("[user] reels [user.p_their()] [challenge.used_rod] in, catching a glimpse into the world beyond!"), span_notice("You catch.. a glimpse into the workings of the Mansus itself!"))
+	user.visible_message(span_danger("[user] reels [user.p_their()] [challenge.used_rod] in, catching a glimpse into the world beyond!"), span_notice("Você pega... um vislumbre do próprio Mansus!"))
 	// Heretics that fish in the rift gain knowledge.
 	if(IS_HERETIC(user))
 		human_user?.add_mood_event("rift fishing", /datum/mood_event/rift_fishing)
 		var/obj/effect/heretic_influence/fishfluence = challenge.location
 		// But only if it's an open rift
 		if(!istype(fishfluence))
-			to_chat(user, span_notice("You glimpse something fairly uninteresting."))
+			to_chat(user, span_notice("Você vê algo desinteressante."))
 			return
 		fishfluence.after_drain(user)
 		var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)
@@ -162,7 +162,7 @@
 			// They can also gain an extra influence point if they infused their rod.
 			if(HAS_TRAIT(challenge.used_rod, TRAIT_ROD_MANSUS_INFUSED))
 				heretic_datum.adjust_knowledge_points(1)
-			to_chat(user, span_boldnotice("Your infused rod improves your knowledge gain!"))
+			to_chat(user, span_boldnotice("Sua vara infundida melhora seu conhecimento!"))
 		return
 
 	// Non-heretics instead go crazy

@@ -1,6 +1,6 @@
 /obj/item/gun/magic
 	name = "staff of nothing"
-	desc = "This staff is boring to watch because even though it came first you've seen everything it can do in other staves for years."
+	desc = "Este pessoal é chato de assistir porque mesmo que tenha vindo primeiro você viu tudo o que pode fazer em outras pautas por anos."
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	icon_state = "staffofnothing"
 	inhand_icon_state = "staff"
@@ -13,7 +13,7 @@
 	clumsy_check = FALSE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL // Has no trigger at all, uses magic instead
 	pin = /obj/item/firing_pin/magic
-	about_to_shoot_inside_mail_text = "It's humming with energy!"
+	about_to_shoot_inside_mail_text = "Está zumbindo com energia!"
 	/// If true, our fire sound gets lower as our charges decrease
 	var/pitch_with_charges = TRUE
 	/// What kind of magic is this
@@ -152,7 +152,7 @@
 	if (can_user_shoot(user))
 		charges--
 		return do_suicide(user)
-	user.visible_message(span_suicide("...but nothing happens."))
+	user.visible_message(span_suicide("...mas nada acontece."))
 	return SHAME
 
 /// Extend to do something funny

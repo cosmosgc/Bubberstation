@@ -7,7 +7,7 @@
 
 /obj/machinery/atmospherics/miner
 	name = "gas miner"
-	desc = "Gasses mined from the gas giant below (above?) flow out through this massive vent."
+	desc = "Gases extraídos do gigante gasoso abaixo (acima?) fluem através desta ventilação maciça."
 	icon = 'icons/obj/machines/atmospherics/miners.dmi'
 	icon_state = "miner"
 	density = FALSE
@@ -44,25 +44,25 @@
 		return FALSE
 	var/turf/T = get_turf(src)
 	if(!isopenturf(T))
-		broken_message = span_boldnotice("VENT BLOCKED")
+		broken_message = span_boldnotice("VENT BLOQUEADO")
 		set_broken(TRUE)
 		return FALSE
 	var/turf/open/OT = T
 	if(OT.planetary_atmos)
-		broken_message = span_boldwarning("DEVICE NOT ENCLOSED IN A PRESSURIZED ENVIRONMENT")
+		broken_message = span_boldwarning("DISPOSITIVO NÃO ENCERRADO EM UM AMBIENTE PRESSURIZADO")
 		set_broken(TRUE)
 		return FALSE
 	if(isspaceturf(T))
-		broken_message = span_boldnotice("AIR VENTING TO SPACE")
+		broken_message = span_boldnotice("VENTANDO AO ESPAÇO")
 		set_broken(TRUE)
 		return FALSE
 	var/datum/gas_mixture/G = OT.return_air()
 	if(G.return_pressure() > (max_ext_kpa - ((spawn_mol*spawn_temp*R_IDEAL_GAS_EQUATION)/(CELL_VOLUME))))
-		broken_message = span_boldwarning("EXTERNAL PRESSURE OVER THRESHOLD")
+		broken_message = span_boldwarning("PRESSÃO EXTERNA SOBRE TRESHOLD")
 		set_broken(TRUE)
 		return FALSE
 	if(G.total_moles() > max_ext_mol)
-		broken_message = span_boldwarning("EXTERNAL AIR CONCENTRATION OVER THRESHOLD")
+		broken_message = span_boldwarning("CONCENTRAÇÃO AÉREA EXTERNA Sobre Threshol")
 		set_broken(TRUE)
 		return FALSE
 	if(broken)

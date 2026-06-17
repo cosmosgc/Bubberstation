@@ -1,6 +1,6 @@
 /obj/item/hand_item/bonkinghand
 	name = "bonking hand"
-	desc = "Time to bonk someone over the head in comedic fashion."
+	desc = "Hora de bater alguém na cabeça de forma cômica."
 	inhand_icon_state = "nothing"
 	attack_verb_continuous = list("bonks")
 	attack_verb_simple = list("bonk")
@@ -14,7 +14,7 @@
 	var/obj/item/bodypart/bonkers_hand = user.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 	var/obj/item/bodypart/head/bonk_victims_head = bonked.get_bodypart(BODY_ZONE_HEAD)
 	if(user.zone_selected != BODY_ZONE_HEAD)
-		to_chat(user, span_warning("You can't bonk someone on the head if you aren't aiming for their head!"))
+		to_chat(user, span_warning("Você não pode acertar alguém na cabeça se não estiver mirando na cabeça deles!"))
 		return
 
 	if(issilicon(bonked))
@@ -23,7 +23,7 @@
 		user.visible_message(
 			span_danger("[user] bonks [bonked] on the head, leaving their hand red and swollen!"),
 			span_notice("You bonk [bonked] on the head, but hurt your hand on the metal of their head!"),
-			span_hear("You hear a comedic metallic bonk."),
+			span_hear("Você ouve um bonk metálico cômico."),
 		)
 		playsound(bonked, 'sound/items/weapons/smash.ogg', bonk_volume, TRUE, -1)
 
@@ -34,7 +34,7 @@
 			user.visible_message(
 				span_danger("[user] bonks [bonked] on the head, leaving their hand red and swollen!"),
 				span_notice("You bonk [bonked] on the head, but hurt your hand on the metal of their head!"),
-				span_hear("You hear a comedic metallic bonk."),
+				span_hear("Você ouve um bonk metálico cômico."),
 			)
 			playsound(bonked, 'sound/items/weapons/smash.ogg', bonk_volume, FALSE, -1)
 
@@ -42,11 +42,11 @@
 			user.visible_message(
 				span_danger("[user] bonks [bonked] on the head!"),
 				span_notice("You bonk [bonked] on the head!"),
-				span_hear("You hear a comedic bonking sound."),
+				span_hear("Você ouve um som cômico."),
 			)
 			playsound(bonked, 'modular_zubbers/code/modules/emotes/sound/effects/bonk.ogg', bonk_volume, FALSE, -1)
 	else
-		to_chat(user, span_warning("You can't bonk someone on the head if they have no head!"))
+		to_chat(user, span_warning("Você não pode bater em alguém na cabeça se eles não têm cabeça!"))
 		return
 	qdel(src)
 // Successful takes will qdel our hand after

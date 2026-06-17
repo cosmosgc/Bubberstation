@@ -50,7 +50,7 @@
 		notify_ghosts(
 			"[spawner.name] has been activated!",
 			source = spawner,
-			header = "CTF has been activated",
+			header = "CTF foi ativado.",
 		)
 
 /datum/ctf_controller/proc/stop_ctf()
@@ -70,7 +70,7 @@
 ///Some CTF maps may require alternate rulesets, this proc is called by the medisim spawners and CTF maploading.
 /datum/ctf_controller/proc/setup_rules(
 	points_to_win = 3,
-	victory_rejoin_text = "Teams have been cleared. Click on the machines to vote to begin another round.",
+	victory_rejoin_text = "Os times foram liberados. Clique nas máquinas para votar para começar outra rodada.",
 	auto_restart = FALSE,
 )
 	src.points_to_win = points_to_win
@@ -117,7 +117,7 @@
 			continue
 		var/list/enemy_team_members = get_players(team)
 		if(user.ckey in enemy_team_members)
-			to_chat(user, span_warning("No switching teams while the round is going!"))
+			to_chat(user, span_warning("Sem troca de times enquanto a rodada vai!"))
 			return FALSE
 		else if(friendly_team_members.len > enemy_team_members.len)
 			to_chat(user, span_warning("[team_color] has more team members than [team]! Try joining [team] team to even things up."))

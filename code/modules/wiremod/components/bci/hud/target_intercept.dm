@@ -6,8 +6,8 @@
  */
 
 /obj/item/circuit_component/target_intercept
-	display_name = "Target Intercept"
-	desc = "Requires a BCI shell. When activated, this component will allow user to target an object using their brain and will output the reference to said object."
+	display_name = "Intercepto alvo"
+	desc = "Requer um escudo BCI. Quando ativado, este componente permitirá ao usuário atingir um objeto usando seu cérebro e irá produzir a referência ao objeto."
 	category = "BCI"
 
 	required_shells = list(/obj/item/organ/cyberimp/bci)
@@ -45,7 +45,7 @@
 	if(TIMER_COOLDOWN_RUNNING(parent.shell, COOLDOWN_CIRCUIT_TARGET_INTERCEPT))
 		return
 
-	to_chat(owner, "<B>Left-click to trigger target interceptor!</B>")
+	to_chat(owner, "<B>Clique esquerdo para ativar o interceptador alvo!</B>")
 	owner.client.click_intercept = src
 
 /obj/item/circuit_component/target_intercept/proc/on_organ_removed(datum/source, mob/living/carbon/owner)

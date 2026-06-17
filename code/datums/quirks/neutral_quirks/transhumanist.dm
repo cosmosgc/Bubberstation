@@ -15,13 +15,13 @@
 
 /datum/quirk/transhumanist
 	name = "Transhumanist"
-	desc = "You see silicon life as the perfect lifeform and despise organic flesh. You are happier around silicons, but get frustrated when around organics. You seek to replace your failing flesh with perfect silicon. You start with a robotic augmentation."
+	desc = "Você vê a vida de silício como a forma de vida perfeita e despreza a carne orgânica. Você é mais feliz em torno de silícios, mas ficar frustrado quando em torno de orgânicos. Você procura substituir sua carne fracassada por silicone perfeito. Você começa com um aumento robótico."
 	icon = FA_ICON_ROBOT
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_PROCESSES|QUIRK_MOODLET_BASED
 	value = 0
-	gain_text = span_notice("You have a desire to ditch your feeble organic flesh and surround yourself with robots.")
-	lose_text = span_danger("Robots don't seem all that great anymore.")
-	medical_record_text = "Patient reports hating pathetic creatures of meat and bone."
+	gain_text = span_notice("Você tem o desejo de abandonar sua frágil carne orgânica e cercar-se de robôs.")
+	lose_text = span_danger("Robôs não parecem mais tão bons.")
+	medical_record_text = "Paciente relata odiar criaturas patéticas de carne e osso."
 	mail_goodies = list(
 		/obj/item/stock_parts/power_store/cell/potato,
 		/obj/item/stack/cable_coil,
@@ -163,7 +163,7 @@
 	if(isbodypart(old_part))
 		to_chat(quirk_holder, span_bolddanger("Your [slot_string] has been replaced with a robotic limb. You need to use a welding tool and cables to repair it, instead of sutures and regenerative meshes."))
 	else if (old_part.name == "eyes")
-		to_chat(quirk_holder, span_bolddanger("You replaced your eyes with flashlights, not cameras. You can't see a thing!"))
+		to_chat(quirk_holder, span_bolddanger("Você substituiu seus olhos por lanternas, não câmeras. Você não pode ver nada!"))
 	else if (isorgan(old_part))
 		to_chat(quirk_holder, span_bolddanger("Your [slot_string] brings you one step closer to silicon perfection, but you feel you're not quite there yet."))
 

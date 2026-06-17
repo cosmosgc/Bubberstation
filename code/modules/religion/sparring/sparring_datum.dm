@@ -229,9 +229,9 @@
 	cleanup_sparring_match()
 
 	if(chaplain) //flubing means we don't know who is still standing
-		to_chat(chaplain, span_bolddanger("The match was flub'd! No winners, no losers. You may restart the match with another contract."))
+		to_chat(chaplain, span_bolddanger("O fósforo foi amassado! Sem vencedores, sem perdedores. Você pode reiniciar o jogo com outro contrato."))
 	if(opponent)
-		to_chat(opponent, span_bolddanger("The match was flub'd! No winners, no losers."))
+		to_chat(opponent, span_bolddanger("O fósforo foi amassado! Sem vencedores, sem perdedores."))
 	qdel(src)
 
 ///helper to remove all the effects after a match ends
@@ -288,7 +288,7 @@
 				lightningbolt(loser)
 				loser.add_mood_event("sparring", /datum/mood_event/banished)
 				loser.mind.set_holy_role(NONE)
-				to_chat(loser, span_userdanger("You have been excommunicated! You are no longer holy!"))
+				to_chat(loser, span_userdanger("Você foi excomungado! Você não é mais santo!"))
 		if(STAKES_MONEY_MATCH)
 			to_chat(loser, span_userdanger("You've lost all your money to [winner]!"))
 			var/datum/bank_account/loser_account = loser.get_bank_account()

@@ -1,6 +1,6 @@
 /obj/item/melee/chainofcommand
 	name = "chain of command"
-	desc = "A tool used by great men to placate the frothing masses. Can be used to hasten allies with right-click."
+	desc = "Uma ferramenta usada por grandes homens para aplacar as massas espumantes. Pode ser usado para apressar aliados com o botão direito."
 	icon = 'icons/obj/weapons/whip.dmi'
 	icon_state = "chain"
 	inhand_icon_state = "chain"
@@ -42,7 +42,7 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(victim == user)
-		to_chat(user, span_warning("You consider lashing yourself, but hesitate at the thought of how much it would hurt."))
+		to_chat(user, span_warning("Você pensa em se açoitar, mas hesita em pensar no quanto isso iria doer."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	user.do_attack_animation(victim)
@@ -65,13 +65,13 @@
 
 /atom/movable/screen/alert/status_effect/commanded
 	name = "Commanded"
-	desc = "You are inspired to do things faster!"
+	desc = "Você está inspirado a fazer as coisas mais rápido!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "commanded"
 
 /obj/item/melee/chainofcommand/tailwhip
 	name = "liz o' nine tails"
-	desc = "A whip fashioned from the severed tails of lizards."
+	desc = "Um chicote feito de caudas de lagartos."
 	icon_state = "tailwhip"
 	inhand_icon_state = "tailwhip"
 	item_flags = NONE
@@ -79,6 +79,6 @@
 
 /obj/item/melee/chainofcommand/tailwhip/kitty
 	name = "cat o' nine tails"
-	desc = "A whip fashioned from the severed tails of cats."
+	desc = "Um chicote feito das caudas cortadas de gatos."
 	icon_state = "catwhip"
 	inhand_icon_state = "catwhip"

@@ -6,7 +6,7 @@
 	icon_state = "portagrav"
 	base_icon_state = "portagrav"
 	name = "Portable Gravity Unit"
-	desc = "Generates gravity around itself. Powered by wire or cell. Must be anchored before use."
+	desc = "Gera gravidade em torno de si mesma. Alimentado por fio ou célula. Deve estar ancorado antes do uso."
 	max_integrity = 250
 	circuit = /obj/item/circuitboard/machine/portagrav
 	armor_type = /datum/armor/portable_gravity
@@ -100,10 +100,10 @@
 	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
 		return NONE
 	if(!panel_open)
-		balloon_alert(user, "must open panel!")
+		balloon_alert(user, "Tem que abrir o painel!")
 		return ITEM_INTERACT_BLOCKING
 	if(cell)
-		balloon_alert(user, "already has a cell!")
+		balloon_alert(user, "Já tem uma cela!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_FAILURE
@@ -121,7 +121,7 @@
 /obj/machinery/power/portagrav/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "Desligue primeiro!")
 		return
 	default_unfasten_wrench(user, tool)
 	if(anchored && wire_mode)
@@ -153,7 +153,7 @@
 	obj_flags |= EMAGGED
 	visible_message(span_warning("Sparks fly out of [src]!"))
 	if(user)
-		balloon_alert(user, "unsafe gravity unlocked")
+		balloon_alert(user, "gravidade insegura desbloqueada")
 		user.log_message("emagged [src].", LOG_ATTACK)
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -167,14 +167,14 @@
 /obj/machinery/power/portagrav/proc/turn_on(mob/user)
 	if(!anchored)
 		if(!isnull(user))
-			balloon_alert(user, "not anchored!")
+			balloon_alert(user, "Não ancorado!")
 		return FALSE
 	if((!wire_mode && cell?.charge < draw_per_range * range) || (wire_mode && surplus() < draw_per_range * range))
 		if(!isnull(user))
-			balloon_alert(user, "not enough power!")
+			balloon_alert(user, "Não há energia suficiente!")
 		return FALSE
 	if(!isnull(user))
-		balloon_alert(user, "turned on")
+		balloon_alert(user, "Ligado.")
 	on = TRUE
 	START_PROCESSING(SSmachines, src)
 	gravity_field = new(src, range = src.range, gravity = grav_strength)
@@ -183,7 +183,7 @@
 /obj/machinery/power/portagrav/proc/turn_off(mob/user)
 	on = FALSE
 	if(!isnull(user))
-		balloon_alert(user, "turned off")
+		balloon_alert(user, "Desligado.")
 	STOP_PROCESSING(SSmachines, src)
 	QDEL_NULL(gravity_field)
 	update_appearance()

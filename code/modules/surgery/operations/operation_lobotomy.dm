@@ -1,8 +1,8 @@
 /datum/surgery_operation/organ/lobotomy
 	name = "lobotomize"
 	rnd_name = "Lobotomy (Lobotomy)"
-	desc = "Repair most of a patient's brain traumas, with the risk of causing new permanent traumas."
-	rnd_desc = "An invasive surgical procedure which guarantees removal of almost all brain traumas, but might cause another permanent trauma in return."
+	desc = "Reparar a maioria dos traumas cerebrais de um paciente, com o risco de causar novos traumas permanentes."
+	rnd_desc = "Um procedimento cirúrgico invasivo que garante a remoção de quase todos os traumas cerebrais, mas pode causar outro trauma permanente em troca."
 	operation_flags = OPERATION_MORBID | OPERATION_AFFECTS_MOOD | OPERATION_LOCKED | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_SCALPEL = 1.15,
@@ -70,7 +70,7 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_warning("You remove the wrong part, causing more damage!"),
+		span_warning("Você remove a parte errada, causando mais danos!"),
 		span_notice("[surgeon] unsuccessfully attempts to lobotomize [FORMAT_ORGAN_OWNER(organ)]!"),
 		span_notice("[surgeon] completes the surgery on [FORMAT_ORGAN_OWNER(organ)]'s brain."),
 	)

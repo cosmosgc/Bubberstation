@@ -1,13 +1,13 @@
 /obj/effect/decal/cleanable/generic
 	name = "clutter"
-	desc = "Someone should clean that up."
+	desc = "Alguém deveria limpar isso."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "shards"
 	beauty = -50
 
 /obj/effect/decal/cleanable/ash
 	name = "ashes"
-	desc = "Ashes to ashes, dust to dust, and into space."
+	desc = "Cinzas às cinzas, pó ao pó, e ao espaço."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "ash"
 	plane = GAME_PLANE
@@ -34,7 +34,7 @@
 
 /obj/effect/decal/cleanable/glass
 	name = "tiny shards"
-	desc = "Back to sand."
+	desc = "De volta à areia."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "tiny"
 	beauty = -100
@@ -59,11 +59,11 @@
 //Screws that are dropped on the Z level below when deconstructing a reinforced floor plate.
 /obj/effect/decal/cleanable/glass/plastitanium/screws //I don't know how to sprite scattered screws, this can work until a spriter gets their hands on it.
 	name = "pile of screws"
-	desc = "Looks like they fell from the ceiling"
+	desc = "Parece que caíram do teto."
 
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
-	desc = "Someone should clean that up."
+	desc = "Alguém deveria limpar isso."
 	icon = 'icons/effects/dirt_misc.dmi'
 	icon_state = "dirt-flat-0"
 	base_icon_state = "dirt"
@@ -97,7 +97,7 @@
 
 /obj/effect/decal/cleanable/dirt/dust
 	name = "dust"
-	desc = "A thin layer of dust coating the floor."
+	desc = "Uma fina camada de poeira cobrindo o chão."
 	icon_state = "dust"
 	base_icon_state = "dust"
 	is_tileable = FALSE
@@ -108,7 +108,7 @@
 
 /obj/effect/decal/cleanable/greenglow
 	name = "glowing goo"
-	desc = "Jeez. I hope that's not for lunch."
+	desc = "Jesus. Espero que não seja para o almoço."
 	icon_state = "greenglow"
 	light_power = 3
 	light_range = 2
@@ -128,12 +128,12 @@
 
 /obj/effect/decal/cleanable/greenglow/ecto
 	name = "ectoplasmic puddle"
-	desc = "You know who to call."
+	desc = "Você sabe para quem ligar."
 	light_power = 2
 
 /obj/effect/decal/cleanable/greenglow/radioactive
 	name = "radioactive goo"
-	desc = "Holy crap, stop looking at this and move away immediately! It's radioactive!"
+	desc = "Puta merda, pare de olhar isso e vá embora imediatamente! É radioativo!"
 	light_power = 5
 	light_range = 3
 	light_color = LIGHT_COLOR_NUCLEAR
@@ -149,7 +149,7 @@
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"
-	desc = "Somebody should remove that."
+	desc = "Alguém deveria tirar isso."
 	gender = NEUTER
 	plane = GAME_PLANE
 	layer = WALL_OBJ_LAYER
@@ -165,7 +165,7 @@
 
 /obj/effect/decal/cleanable/molten_object
 	name = "gooey grey mass"
-	desc = "It looks like a melted... something."
+	desc = "Parece uma coisa derretida."
 	gender = NEUTER
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "molten"
@@ -183,7 +183,7 @@
 //Vomit (sorry)
 /obj/effect/decal/cleanable/vomit
 	name = "vomit"
-	desc = "Gosh, how unpleasant."
+	desc = "Nossa, que desagradável."
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "vomit_1"
 	random_icon_states = list("vomit_1", "vomit_2", "vomit_3", "vomit_4")
@@ -212,7 +212,7 @@
 
 /obj/effect/decal/cleanable/vomit/nanites
 	name = "nanite-infested vomit"
-	desc = "Gosh, you can see something moving in there."
+	desc = "Nossa, dá para ver algo se movendo lá."
 	icon_state = "vomitnanite_1"
 	random_icon_states = list("vomitnanite_1", "vomitnanite_2", "vomitnanite_3", "vomitnanite_4")
 
@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/vomit/nebula
 	name = "nebula vomit"
-	desc = "Gosh, how... beautiful."
+	desc = "Nossa, que lindo."
 	icon_state = "vomitnebula_1"
 	random_icon_states = list("vomitnebula_1", "vomitnebula_2", "vomitnebula_3", "vomitnebula_4")
 	beauty = 10
@@ -250,7 +250,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/vomit/old
 	name = "crusty dried vomit"
-	desc = "You try not to look at the chunks, and fail."
+	desc = "Você tenta não olhar para os pedaços, e falhar."
 
 /obj/effect/decal/cleanable/vomit/old/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
@@ -259,12 +259,12 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/vomit/old/black_bile
 	name = "black bile"
-	desc = "There's something wiggling in there..."
+	desc = "Tem algo balançando aí..."
 	color = COLOR_DARK
 
 /obj/effect/decal/cleanable/chem_pile
 	name = "chemical pile"
-	desc = "A pile of chemicals. You can't quite tell what's inside it."
+	desc = "Uma pilha de químicos. Não dá para saber o que tem dentro."
 	gender = NEUTER
 	plane = GAME_PLANE
 	layer = CLEANABLE_OBJECT_LAYER
@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/shreds
 	name = "shreds"
-	desc = "The shredded remains of what appears to be clothing."
+	desc = "Os restos rasgados do que parece ser roupa."
 	icon_state = "shreds"
 	gender = PLURAL
 	mergeable_decal = FALSE
@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/glitter
 	name = "generic glitter pile"
-	desc = "The herpes of arts and crafts."
+	desc = "Herpes de artes e ofícios."
 	icon = 'icons/effects/glitter.dmi'
 	icon_state = "glitter"
 	gender = NEUTER
@@ -306,14 +306,14 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/plasma
 	name = "stabilized plasma"
-	desc = "A puddle of stabilized plasma."
+	desc = "Uma poça de plasma estabilizado."
 	icon_state = "flour"
 	icon = 'icons/effects/tomatodecal.dmi'
 	color = "#2D2D2D"
 
 /obj/effect/decal/cleanable/insectguts
 	name = "insect guts"
-	desc = "One bug squashed. Four more will rise in its place."
+	desc = "Um inseto esmagado. Mais quatro subirão em seu lugar."
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
@@ -321,21 +321,21 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/confetti
 	name = "confetti"
-	desc = "Tiny bits of colored paper thrown about for the janitor to enjoy!"
+	desc = "Pequenos pedaços de papel colorido jogados sobre para o zelador para desfrutar!"
 	icon = 'icons/effects/confetti_and_decor.dmi'
 	icon_state = "confetti"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT //the confetti itself might be annoying enough
 
 /obj/effect/decal/cleanable/plastic
 	name = "plastic shreds"
-	desc = "Bits of torn, broken, worthless plastic."
+	desc = "Pedaços de plástico rasgado, quebrado, inútil."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "shards"
 	color = "#c6f4ff"
 
 /obj/effect/decal/cleanable/wrapping
 	name = "wrapping shreds"
-	desc = "Torn pieces of cardboard and paper, left over from a package."
+	desc = "Pedaços de papel e papel rasgados, deixados de um pacote."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "paper_shreds"
 	plane = GAME_PLANE
@@ -354,7 +354,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/garbage
 	name = "decomposing garbage"
-	desc = "A split open garbage bag, its stinking content seems to be partially liquified. Yuck!"
+	desc = "Um saco de lixo aberto, seu conteúdo fedorento parece parcialmente liquefeito. Eca!"
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "garbage"
 	plane = GAME_PLANE
@@ -368,7 +368,7 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/rubble
 	name = "rubble"
-	desc = "A pile of rubble."
+	desc = "Uma pilha de escombros."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "rubble"
 	mergeable_decal = FALSE
@@ -386,4 +386,4 @@ GLOBAL_LIST_EMPTY(nebula_vomits)
 
 /obj/effect/decal/cleanable/can_bits
 	name = "shredded can"
-	desc = "This story doesn't hold water anymore."
+	desc = "Esta história não é mais válida."

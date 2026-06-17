@@ -6,7 +6,7 @@ CONTAINS:
 
 /obj/item/ai_module/core/full/damaged
 		name = "damaged Core AI Module"
-		desc = "An AI Module for programming laws to an AI. It looks slightly damaged."
+		desc = "Um Módulo de IA para programar leis para uma IA. Parece um pouco danificado."
 
 /obj/item/ai_module/core/full/damaged/install(datum/ai_laws/law_datum, mob/user)
 	laws += generate_ion_law()
@@ -17,7 +17,7 @@ CONTAINS:
 
 /obj/item/ai_module/toy_ai // -- Incoming //No actual reason to inherit from ion boards here, either. *sigh* ~Miauw
 	name = "toy AI"
-	desc = "A little toy model AI core with real law uploading action!" //Note: subtle tell
+	desc = "Um pequeno núcleo de IA modelo de brinquedo com real ação de upload de lei!" //Note: subtle tell
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "AI"
 	laws = list("")

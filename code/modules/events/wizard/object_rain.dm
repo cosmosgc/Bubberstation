@@ -11,7 +11,7 @@
 /datum/round_event_control/wizard/object_rain
 	name = "Indoor Weather: Cats and Dogs (and Frogs)"
 	typepath = /datum/round_event/wizard/object_rain/animal
-	description = "Small animals will rain from the sky."
+	description = "Pequenos animais vão chover do céu."
 	weight = 2
 	max_occurrences = 2
 	earliest_start = 0 MINUTES
@@ -22,17 +22,17 @@
 /datum/round_event_control/wizard/object_rain/food
 	name = "Indoor Weather: Chance of Meatballs"
 	typepath = /datum/round_event/wizard/object_rain/food
-	description = "Food will rain from the sky."
+	description = "A comida vai chover do céu."
 
 /datum/round_event_control/wizard/object_rain/cash
 	name = "Indoor Weather: Loose Change"
 	typepath = /datum/round_event/wizard/object_rain/cash
-	description = "Money will rain from the sky."
+	description = "O dinheiro vai chover do céu."
 
 /datum/round_event_control/wizard/object_rain/fish
 	name = "Indoor Weather: Fish"
 	typepath = /datum/round_event/wizard/object_rain/fish
-	description = "Fish will rain from the sky."
+	description = "Peixe vai chover do céu."
 
 /**
  * Event where some kind of object will fall from the sky in a random themed area of the station.
@@ -149,7 +149,7 @@
 
 /// Admin configuration
 /datum/event_admin_setup/listed_options/object_rain
-	input_text = "Where should the rain fall?"
+	input_text = "Onde deve cair a chuva?"
 	normal_run_option = "Random"
 
 /datum/event_admin_setup/listed_options/object_rain/get_list()

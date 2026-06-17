@@ -1,6 +1,6 @@
 /obj/structure/sink/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Alguém já está se lavando aqui!"))
 		return
 
 	if(istype(attacking_item, /obj/item/towel))

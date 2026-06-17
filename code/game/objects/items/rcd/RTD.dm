@@ -12,7 +12,7 @@
  */
 /obj/item/construction/rtd
 	name = "rapid-tiling-device (RTD)"
-	desc = "Used for fast placement & destruction of floor tiles."
+	desc = "Usado para colocação rápida e destruição de azulejos."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rtd"
 	worn_icon_state = "RCD"
@@ -281,7 +281,7 @@
 					return ITEM_INTERACT_SUCCESS
 
 		//can't infer floor type!
-		balloon_alert(user, "design not supported!")
+		balloon_alert(user, "Design não suportado!")
 		return ITEM_INTERACT_BLOCKING
 
 	//resource sanity check before & after delay along with special effects
@@ -308,7 +308,7 @@
 	var/obj/item/stack/tile/final_tile = selected_design.new_tile(user.drop_location(), selected_direction)
 	if(QDELETED(final_tile)) //if you were standing on a stack of tiles this newly spawned tile could get merged with it cause its spawned on your location
 		qdel(rcd_effect)
-		balloon_alert(user, "tile got merged with the stack beneath you!")
+		balloon_alert(user, "O azulejo foi fundido com a pilha abaixo de você!")
 		return ITEM_INTERACT_BLOCKING
 	//step 2 lay tile
 	var/turf/open/new_turf = final_tile.place_tile(floor, user)
@@ -331,7 +331,7 @@
 		return NONE
 
 	if(istype(floor, /turf/open/floor/plating)) //cant deconstruct normal plating thats the RCD's job
-		balloon_alert(user, "nothing to deconstruct!")
+		balloon_alert(user, "Nada para desconstruir!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/floor_designs = GLOB.floor_designs
@@ -350,7 +350,7 @@
 					cost = design_info["tile_cost"]
 					break
 	if(!cost)
-		balloon_alert(user, "can't deconstruct this type!")
+		balloon_alert(user, "Não posso desconstruir esse tipo!")
 		return ITEM_INTERACT_BLOCKING
 
 	//resource sanity check before & after delay along with beam effects
@@ -414,10 +414,10 @@
 	if(!iscyborg(borgy))
 		return FALSE
 	if(!borgy.cell)
-		balloon_alert(user, "no cell found!")
+		balloon_alert(user, "Nenhuma cela encontrada!")
 		return FALSE
 	if(borgy.cell.charge < (amount * RTD_BORG_ENERGY_FACTOR))
-		balloon_alert(user, "insufficient charge!")
+		balloon_alert(user, "Insuficiência de carga!")
 		return FALSE
 	if(!dry_run)
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)

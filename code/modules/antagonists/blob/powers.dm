@@ -19,15 +19,15 @@
 			return FALSE
 		var/turf/placement = get_turf(src)
 		if(placement.density)
-			to_chat(src, span_warning("This spot is too dense to place a blob core on!"))
+			to_chat(src, span_warning("Este lugar é muito denso para colocar um núcleo de bolhas!"))
 			return FALSE
 		if(!is_valid_turf(placement))
-			to_chat(src, span_warning("You cannot place your core here!"))
+			to_chat(src, span_warning("Você não pode colocar seu núcleo aqui!"))
 			return FALSE
 		if(!check_objects_tile(placement))
 			return FALSE
 		if(!pop_override && world.time <= manualplace_min_time && world.time <= autoplace_max_time)
-			to_chat(src, span_warning("It is too early to place your blob core!"))
+			to_chat(src, span_warning("É muito cedo para colocar seu núcleo de bolhas!"))
 			return FALSE
 	else
 		if(placement_override == BLOB_RANDOM_PLACEMENT)
@@ -55,14 +55,14 @@
 		if(player.has_faction(ROLE_BLOB))
 			continue
 		if(player.client)
-			to_chat(src, span_warning("There is someone too close to place your blob core!"))
+			to_chat(src, span_warning("Há alguém muito perto para colocar seu núcleo de bolhas!"))
 			return FALSE
 
 	for(var/mob/living/player in view(13, src))
 		if(player.has_faction(ROLE_BLOB))
 			continue
 		if(player.client)
-			to_chat(src, span_warning("Someone could see your blob core from here!"))
+			to_chat(src, span_warning("Alguém poderia ver seu núcleo de bolhas daqui!"))
 			return FALSE
 
 	return TRUE
@@ -75,11 +75,11 @@
 			if(istype(object, /obj/structure/blob/normal))
 				qdel(object)
 			else
-				to_chat(src, span_warning("There is already a blob here!"))
+				to_chat(src, span_warning("Já tem uma bolha aqui!"))
 				return FALSE
 		else
 			if(object.density)
-				to_chat(src, span_warning("This spot is too dense to place a blob core on!"))
+				to_chat(src, span_warning("Este lugar é muito denso para colocar um núcleo de bolhas!"))
 				return FALSE
 
 	return TRUE
@@ -113,28 +113,28 @@
 		tile = get_turf(src)
 	var/obj/structure/blob/blob = (locate(/obj/structure/blob) in tile)
 	if(!blob)
-		to_chat(src, span_warning("There is no blob here!"))
-		balloon_alert(src, "no blob here!")
+		to_chat(src, span_warning("Não há bolha aqui!"))
+		balloon_alert(src, "Sem bolhas aqui!")
 		return FALSE
 	if(!istype(blob, /obj/structure/blob/normal))
-		to_chat(src, span_warning("Unable to use this blob, find a normal one."))
-		balloon_alert(src, "need normal blob!")
+		to_chat(src, span_warning("Incapaz de usar essa bola, encontre uma normal."))
+		balloon_alert(src, "Preciso de bolas normais!")
 		return FALSE
 	if(needs_node)
 		var/area/area = get_area(src)
 		if(!(area.area_flags & BLOBS_ALLOWED)) //factory and resource blobs must be legit
-			to_chat(src, span_warning("This type of blob must be placed on the station!"))
-			balloon_alert(src, "can't place off-station!")
+			to_chat(src, span_warning("Este tipo de bolha deve ser colocado na estação!"))
+			balloon_alert(src, "Não posso colocar fora de estação!")
 			return FALSE
 		if(nodes_required && !(locate(/obj/structure/blob/special/node) in orange(BLOB_NODE_PULSE_RANGE, tile)) && !(locate(/obj/structure/blob/special/core) in orange(BLOB_CORE_PULSE_RANGE, tile)))
-			to_chat(src, span_warning("You need to place this blob closer to a node or core!"))
-			balloon_alert(src, "too far from node or core!")
+			to_chat(src, span_warning("Você precisa colocar essa bolha mais perto de um nó ou núcleo!"))
+			balloon_alert(src, "longe demais do nó ou núcleo!")
 			return FALSE //handholdotron 2000
 	if(min_separation)
 		for(var/obj/structure/blob/other_blob in orange(min_separation, tile))
 			if(other_blob.type == blobstrain)
 				to_chat(src, span_warning("There is a similar blob nearby, move more than [min_separation] tiles away from it!"))
-				other_blob.balloon_alert(src, "too close!")
+				other_blob.balloon_alert(src, "Muito bem!")
 				return FALSE
 	if(!can_buy(price))
 		return FALSE
@@ -145,9 +145,9 @@
 /mob/eye/blob/proc/toggle_node_req()
 	nodes_required = !nodes_required
 	if(nodes_required)
-		to_chat(src, span_warning("You now require a nearby node or core to place factory and resource blobs."))
+		to_chat(src, span_warning("Agora você precisa de um nó ou núcleo próximo para colocar bolhas de fábrica e recursos."))
 	else
-		to_chat(src, span_warning("You no longer require a nearby node or core to place factory and resource blobs."))
+		to_chat(src, span_warning("Você não precisa mais de um nó ou núcleo próximo para colocar bolhas de fábrica e recursos."))
 
 /** Creates a shield to reflect projectiles */
 /mob/eye/blob/proc/create_shield(turf/tile)
@@ -162,10 +162,10 @@
 
 	if(shield.get_integrity() < shield.max_integrity * 0.5)
 		add_points(BLOB_UPGRADE_REFLECTOR_COST)
-		to_chat(src, span_warning("This shield blob is too damaged to be modified properly!"))
+		to_chat(src, span_warning("Este escudo está muito danificado para ser modificado corretamente!"))
 		return FALSE
 
-	to_chat(src, span_warning("You secrete a reflective ooze over the shield blob, allowing it to reflect projectiles at the cost of reduced integrity."))
+	to_chat(src, span_warning("Você secreta uma mancha refletiva sobre o escudo, permitindo que reflita projéteis ao custo de integridade reduzida."))
 	shield = shield.change_to(/obj/structure/blob/shield/reflective, src)
 	shield.balloon_alert(src, "upgraded to [shield.name]!")
 
@@ -174,19 +174,19 @@
 	var/turf/current_turf = get_turf(src)
 	var/obj/structure/blob/special/factory/factory = locate(/obj/structure/blob/special/factory) in current_turf
 	if(!factory)
-		to_chat(src, span_warning("You must be on a factory blob!"))
+		to_chat(src, span_warning("Você deve estar em uma bolha de fábrica!"))
 		return FALSE
 	if(factory.blobbernaut || factory.is_creating_blobbernaut) //if it already made or making a blobbernaut, it can't do it again
-		to_chat(src, span_warning("This factory blob is already sustaining a blobbernaut."))
+		to_chat(src, span_warning("Esta bolha de fábrica já está sustentando um Blobbernaut."))
 		return FALSE
 	if(factory.get_integrity() < factory.max_integrity * 0.5)
-		to_chat(src, span_warning("This factory blob is too damaged to sustain a blobbernaut."))
+		to_chat(src, span_warning("Esta bolha de fábrica está muito danificada para sustentar um Blobbernaut."))
 		return FALSE
 	if(!can_buy(BLOBMOB_BLOBBERNAUT_RESOURCE_COST))
 		return FALSE
 
 	factory.is_creating_blobbernaut = TRUE
-	to_chat(src, span_notice("You attempt to produce a blobbernaut."))
+	to_chat(src, span_notice("Você tenta produzir um \"Blobbernaut\"."))
 	pick_blobbernaut_candidate(factory)
 
 /// Polls ghosts to get a blobbernaut candidate.
@@ -211,7 +211,7 @@
 /// Called when the ghost poll concludes
 /mob/eye/blob/proc/on_poll_concluded(obj/structure/blob/special/factory/factory, mob/dead/observer/ghost)
 	if(isnull(ghost))
-		to_chat(src, span_warning("You could not conjure a sentience for your blobbernaut. Your points have been refunded. Try again later."))
+		to_chat(src, span_warning("Você não poderia conjurar uma senciência para o seu blobbernaut. Seus pontos foram reembolsados. Tente de novo mais tarde."))
 		add_points(BLOBMOB_BLOBBERNAUT_RESOURCE_COST)
 		factory.assign_blobbernaut(null)
 		return FALSE
@@ -228,16 +228,16 @@
 	var/obj/structure/blob/special/node/blob = locate(/obj/structure/blob/special/node) in tile
 
 	if(!blob)
-		to_chat(src, span_warning("You must be on a blob node!"))
+		to_chat(src, span_warning("Você deve estar em um nó de bolha!"))
 		return FALSE
 
 	if(!blob_core)
-		to_chat(src, span_userdanger("You have no core and are about to die! May you rest in peace."))
+		to_chat(src, span_userdanger("Você não tem núcleo e está prestes a morrer! Que descanse em paz."))
 		return FALSE
 
 	var/area/area = get_area(tile)
 	if(isspaceturf(tile) || area && !(area.area_flags & BLOBS_ALLOWED))
-		to_chat(src, span_warning("You cannot relocate your core here!"))
+		to_chat(src, span_warning("Você não pode mudar seu núcleo aqui!"))
 		return FALSE
 
 	if(!can_buy(BLOB_POWER_RELOCATE_COST))
@@ -255,15 +255,15 @@
 	var/obj/structure/blob/blob = locate() in tile
 
 	if(!blob)
-		to_chat(src, span_warning("There is no blob there!"))
+		to_chat(src, span_warning("Não há nenhuma bolha lá!"))
 		return FALSE
 
 	if(blob.point_return < 0)
-		to_chat(src, span_warning("Unable to remove this blob."))
+		to_chat(src, span_warning("Incapaz de removedor esta bola."))
 		return FALSE
 
 	if(max_blob_points < blob.point_return + blob_points)
-		to_chat(src, span_warning("You have too many resources to remove this blob!"))
+		to_chat(src, span_warning("Você tem muitos recursos para remover essa bolha!"))
 		return FALSE
 
 	if(blob.point_return)
@@ -285,7 +285,7 @@
 		possible_blobs += blob
 
 	if(!length(possible_blobs))
-		to_chat(src, span_warning("There is no blob adjacent to the target tile!"))
+		to_chat(src, span_warning("Não há bolha adjacente ao azulejo alvo!"))
 		return FALSE
 
 	if(!can_buy(BLOB_EXPAND_COST))
@@ -308,7 +308,7 @@
 			blob.blob_attack_animation(tile, src)
 			add_points(BLOB_ATTACK_REFUND)
 		else
-			to_chat(src, span_warning("There is a blob there!"))
+			to_chat(src, span_warning("Há uma bolha lá!"))
 			add_points(BLOB_EXPAND_COST) //otherwise, refund all of the cost
 	else
 		directional_attack(tile, possible_blobs, attack_success)
@@ -347,7 +347,7 @@
 
 /** Rally spores to a location */
 /mob/eye/blob/proc/rally_spores(turf/tile)
-	to_chat(src, "You rally your spores.")
+	to_chat(src, "Você junta seus esporos.")
 	var/list/surrounding_turfs = TURF_NEIGHBORS(tile)
 	if(!length(surrounding_turfs))
 		return FALSE
@@ -407,7 +407,7 @@
 		var/datum/blobstrain/other_strain = _other_strain
 		if (initial(other_strain.name) == strain_result)
 
-			if(!has_announced && initial(other_strain.instant_alert_on_change) && tgui_alert(src, "Selecting this strain will alert the crew that you exist. Are you sure you wish to continue?","*Notices your Strain*", list("Yes","No")) != "Yes")
+			if(!has_announced && initial(other_strain.instant_alert_on_change) && tgui_alert(src, "Se selecionar essa tensão, alertará a tripulação que você existe. Tem certeza que quer continuar?","*Notices your Strain*", list("Yes","No")) != "Yes")
 				return
 
 			if(free_strain_rerolls)

@@ -4,15 +4,15 @@
 
 /datum/quirk/spacer_born
 	name = "Spacer"
-	desc = "You were born in space, and have never known the comfort of a planet's gravity. Your body has adapted to this. \
-		You are more comfortable in zero and artificial gravity and are more resistant to the effects of space, \
-		but travelling to a planet's surface for an extended period of time will make you feel sick."
-	gain_text = span_notice("You feel at home in space.")
-	lose_text = span_danger("You feel homesick.")
+	desc = "Você nasceu no espaço, e nunca soube o conforto da gravidade de um planeta. Seu corpo se adaptou a isso.\
+Você está mais confortável em gravidade zero e artificial e são mais resistentes aos efeitos do espaço,\
+Mas viajar para a superfície de um planeta por um longo período de tempo fará você se sentir doente."
+	gain_text = span_notice("Você se sente em casa no espaço.")
+	lose_text = span_danger("Você sente saudades de casa.")
 	icon = FA_ICON_USER_ASTRONAUT
 	value = 5
 	quirk_flags = QUIRK_CHANGES_APPEARANCE //SKYRAT EDIT CHANGE - ORIGINAL: quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
-	medical_record_text = "Patient is well-adapted to non-terrestrial environments."
+	medical_record_text = "O paciente está bem adaptado a ambientes não terrestres."
 	mail_goodies = list(
 		/obj/item/storage/pill_bottle/ondansetron,
 		/obj/item/reagent_containers/applicator/pill/gravitum,
@@ -149,7 +149,7 @@
 	afflicted.add_mood_event("spacer", /datum/mood_event/spacer/on_planet)
 	afflicted.add_movespeed_modifier(/datum/movespeed_modifier/spacer/on_planet)
 	afflicted.remove_status_effect(/datum/status_effect/spacer) // removes the wellness effect.
-	to_chat(afflicted, span_danger("You feel a bit sick under the gravity here."))
+	to_chat(afflicted, span_danger("Você se sente um pouco doente sob a gravidade aqui."))
 
 /**
  * Ran after remaining on a planet for too long.
@@ -172,7 +172,7 @@
 	afflicted.add_movespeed_modifier(movespeed_mod_picked)
 
 	if(!skip_timers)
-		to_chat(afflicted, span_danger("You've been here for too long. The gravity really starts getting to you."))
+		to_chat(afflicted, span_danger("Você está aqui há muito tempo. A gravidade realmente começa a te atingir."))
 
 // Going back into space
 
@@ -200,7 +200,7 @@
 	afflicted.remove_status_effect(/datum/status_effect/spacer)
 	afflicted.clear_mood_event("spacer")
 	// Does not remove the movement modifier yet, it lingers until you fully recover
-	to_chat(afflicted, span_green("You start feeling better now that you're back in space."))
+	to_chat(afflicted, span_green("Você começa a se sentir melhor agora que está de volta ao espaço."))
 
 /**
  * Ran when living back in space, or just no-grav in general, for a long enough period.
@@ -217,7 +217,7 @@
 	afflicted.add_mood_event("spacer", /datum/mood_event/spacer/in_space)
 	afflicted.add_movespeed_modifier(/datum/movespeed_modifier/spacer/in_space)
 	if(!skip_timers)
-		to_chat(afflicted, span_green("You feel better."))
+		to_chat(afflicted, span_green("Você se sente melhor."))
 
 // On a planet but has no gravity
 
@@ -244,7 +244,7 @@
 	afflicted.add_mood_event("spacer", /datum/mood_event/spacer/on_planet/low_grav)
 	afflicted.add_movespeed_modifier(/datum/movespeed_modifier/spacer/in_space)
 	if(!skip_timers && !was_in_space)
-		to_chat(afflicted, span_green("You feel like you're back in space!"))
+		to_chat(afflicted, span_green("Você sente que está de volta ao espaço!"))
 
 #undef LAST_STATE_PLANET
 #undef LAST_STATE_SPACE

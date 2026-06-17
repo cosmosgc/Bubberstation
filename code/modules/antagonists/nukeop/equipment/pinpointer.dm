@@ -72,13 +72,13 @@
 
 /obj/item/pinpointer/nuke/syndicate // Syndicate pinpointers automatically point towards the infiltrator once the nuke is active.
 	name = "syndicate pinpointer"
-	desc = "A handheld tracking device that locks onto certain signals. It's configured to switch tracking modes once it detects the activation signal of a nuclear device."
+	desc = "Um dispositivo de rastreamento portátil que trava em certos sinais. Está configurado para mudar os modos de rastreamento assim que detectar o sinal de ativação de um dispositivo nuclear."
 	icon_state = "pinpointer_syndicate"
 	worn_icon_state = "pinpointer_black"
 
 /obj/item/pinpointer/syndicate_cyborg // Cyborg pinpointers just look for a random operative.
 	name = "cyborg syndicate pinpointer"
-	desc = "An integrated tracking device, jury-rigged to search for living Syndicate operatives."
+	desc = "Um dispositivo de rastreamento integrado, montado pelo júri para procurar por agentes vivos do Sindicato."
 	flags_1 = NONE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 

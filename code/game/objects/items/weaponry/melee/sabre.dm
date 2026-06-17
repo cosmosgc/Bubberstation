@@ -1,6 +1,6 @@
 /obj/item/melee/sabre
 	name = "officer's sabre"
-	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
+	desc = "Uma arma elegante, sua borda monomolecular é capaz de cortar carne e osso com facilidade."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "sabre"
 	inhand_icon_state = "sabre"
@@ -109,7 +109,7 @@
 
 /obj/item/melee/parsnip_sabre
 	name = "parsnip sabre"
-	desc = "A weird, yet elegant weapon. Surprisingly sharp for something made from a parsnip."
+	desc = "Uma arma estranha, mas elegante. Surpreendentemente afiado para algo feito de um parsnip."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "parsnip_sabre"
 	inhand_icon_state = "parsnip_sabre"

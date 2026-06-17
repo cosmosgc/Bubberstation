@@ -1,6 +1,6 @@
 //detective spyglasses. meant to be an example for map_popups.dm
 /obj/item/clothing/glasses/sunglasses/spy
-	desc = "Made by Nerd. Co's infiltration and surveillance department. Upon closer inspection, there's a small screen in each lens."
+	desc = "Feito por Nerd. Departamento de Infiltração e Vigilância. Após inspeção mais próxima, há uma pequena tela em cada lente."
 	actions_types = list(/datum/action/item_action/activate_remote_view)
 	var/obj/item/clothing/accessory/spy_bug/linked_bug
 
@@ -43,13 +43,13 @@
 
 /datum/action/item_action/activate_remote_view
 	name = "Activate Remote View"
-	desc = "Activates the Remote View of your spy sunglasses."
+	desc = "Ativa a visão remota de seus óculos espiões."
 
 /obj/item/clothing/accessory/spy_bug
 	name = "pocket protector"
 	icon = 'icons/obj/clothing/accessories.dmi'
 	icon_state = "pocketprotector"
-	desc = "An advanced piece of espionage equipment in the shape of a pocket protector. It has a built in 360 degree camera for all your \"admirable\" needs. Microphone not included."
+	desc = "Um equipamento avançado de espionagem em forma de protetor de bolso. Tem uma câmera de 360 graus para todos os seus\"Admirável.\"Necessidades. Microfone não incluído."
 	/// The glasses that you can use to see what this can see
 	var/obj/item/clothing/glasses/sunglasses/spy/linked_glasses
 	/// Our camera display popup
@@ -81,7 +81,7 @@
 /obj/item/paper/fluff/nerddocs
 	name = "Espionage For Dummies"
 	color = COLOR_YELLOW
-	desc = "An eye-gougingly yellow pamphlet with a badly designed image of a detective on it. The subtext says \"The latest way to violate privacy guidelines!\" "
+	desc = "Um panfleto amarelo com uma imagem mal projetada de um detetive. O texto diz:\"A última maneira de violar as diretrizes de privacidade!\" "
 	default_raw_text = @{"
 
 Thank you for your purchase of the Nerd Co SpySpeks <small>tm</small>, this paper will be your quick-start guide to violating the privacy of your crewmates in three easy steps!<br><br>Step One: Nerd Co SpySpeks <small>tm</small> upon your face. <br>

@@ -58,7 +58,7 @@ among other potential differences. This granularity is helpful for things like t
 /// PM9 HEAP rocket - the anti-anything missile you always craved.
 /obj/projectile/bullet/rocket/heap
 	name = "\improper HEAP rocket"
-	desc = "I am become death."
+	desc = "Eu me tornei a morte."
 	icon_state = "84mm-heap"
 	damage = 80
 	armour_penetration = 100
@@ -71,7 +71,7 @@ among other potential differences. This granularity is helpful for things like t
 /// PM9 weak rocket - just kind of a failure
 /obj/projectile/bullet/rocket/weak
 	name = "low-yield rocket"
-	desc = "Boom, but less so."
+	desc = "Boom, mas menos."
 	icon_state = "low_yield_rocket"
 	damage = 30
 
@@ -88,7 +88,7 @@ among other potential differences. This granularity is helpful for things like t
 */
 /obj/projectile/bullet/rocket/srm
 	name = "short range missile"
-	desc = "Today's not your day, pal."
+	desc = "Hoje não é seu dia, amigo."
 
 /** PEP-6 Missile - Used by the PEP-6 Exosuit missile rack.
 * Employed by Roboticists out of spite to put down enemy hereteks, mechanized nuclear operatives, the janitor's hot rod,
@@ -101,7 +101,7 @@ among other potential differences. This granularity is helpful for things like t
 */
 /obj/projectile/bullet/rocket/pep
 	name = "precise explosive missile"
-	desc = "Human friendly, metal unfriendly."
+	desc = "Amigo humano, metal hostil."
 	icon_state = "low_yield_rocket"
 	damage = 30
 	anti_armour_damage = 80 //Doesn't (probably) kill borgs in one shot, but it will hurt
@@ -123,7 +123,7 @@ among other potential differences. This granularity is helpful for things like t
 
 /obj/item/broken_missile
 	name = "broken missile"
-	desc = "A missile that did not detonate. The tail has snapped and it is in no way fit to be used again."
+	desc = "Um míssil que não detonou. A cauda quebrou e não serve para ser usada novamente."
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "missile_broken"
 	w_class = WEIGHT_CLASS_TINY

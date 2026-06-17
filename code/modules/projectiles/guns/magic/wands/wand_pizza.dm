@@ -3,7 +3,7 @@
  */
 /obj/item/gun/magic/wand/pizza
 	name = "wand of snacking"
-	desc = "The incredible power of this wand transforms certain objects and surfaces into edible pizza."
+	desc = "O incrível poder desta varinha transforma certos objetos e superfícies em pizza comestível."
 	school = SCHOOL_TRANSMUTATION
 	ammo_type = /obj/item/ammo_casing/magic/pizza
 	icon_state = "pizzawand"
@@ -12,7 +12,7 @@
 	max_charges = 20
 
 /obj/item/gun/magic/wand/pizza/zap_self(mob/living/user, suicide = FALSE)
-	to_chat(user, span_notice("You can't bring yourself to commit to a permanent transformation into pizza right now."))
+	to_chat(user, span_notice("Você não pode se comprometer com uma transformação permanente em pizza agora."))
 	return
 
 /obj/item/gun/magic/wand/pizza/do_suicide(mob/living/user)

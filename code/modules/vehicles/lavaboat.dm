@@ -1,7 +1,7 @@
 // Boat
 /obj/vehicle/ridden/lavaboat
 	name = "lava boat"
-	desc = "A boat used for traversing lava."
+	desc = "Um barco usado para atravessar lava."
 	icon = 'icons/obj/mining_zones/dragonboat.dmi'
 	icon_state = "goliath_boat"
 	icon_preview = 'icons/obj/fluff/previews.dmi'
@@ -36,7 +36,7 @@
 
 /obj/item/oar
 	name = "oar"
-	desc = "Not to be confused with the kind Research hassles you for."
+	desc = "Não se confunda com o tipo de pesquisa que te incomoda."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "oar"
 	inhand_icon_state = "oar"
@@ -64,7 +64,7 @@
 
 /obj/vehicle/ridden/lavaboat/plasma
 	name = "plasma boat"
-	desc = "A boat used for traversing the streams of plasma without turning into an icecube."
+	desc = "Um barco usado para atravessar as correntes de plasma sem se transformar em um icecube."
 	icon = 'icons/obj/mining_zones/dragonboat.dmi'
 	icon_state = "goliath_boat"
 	resistance_flags = FREEZE_PROOF
@@ -78,13 +78,13 @@
 // Dragon Boat
 /obj/item/ship_in_a_bottle
 	name = "ship in a bottle"
-	desc = "A tiny ship inside a bottle."
+	desc = "Uma nave pequena dentro de uma garrafa."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "ship_bottle"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ship_in_a_bottle/attack_self(mob/user)
-	to_chat(user, span_notice("You're not sure how they get the ships in these things, but you're pretty sure you know how to get it out."))
+	to_chat(user, span_notice("Não tem certeza de como eles colocam as naves nessas coisas, mas tem certeza que sabe como tirá-las."))
 	create_boat(get_turf(src))
 
 /obj/item/ship_in_a_bottle/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -99,7 +99,7 @@
 
 /obj/vehicle/ridden/lavaboat/dragon
 	name = "mysterious boat"
-	desc = "This boat moves where you will it, without the need for an oar."
+	desc = "Este barco se move onde quiser, sem precisar de um remo."
 	icon_state = "dragon_boat"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | FREEZE_PROOF
 	key_type = null
@@ -113,10 +113,10 @@
 	. += span_notice("You can reform [src] into its bottled shape by rubbing the dragon's nose with [EXAMINE_HINT("Alt-Click")].")
 
 /obj/vehicle/ridden/lavaboat/dragon/click_alt(mob/user)
-	balloon_alert(user, "bottling the boat...")
+	balloon_alert(user, "Engarrafando o barco...")
 	if (!do_after(user, 2 SECONDS, src))
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "bottled the boat!")
+	balloon_alert(user, "Engarrafaram o barco!")
 	var/obj/item/ship_in_a_bottle/bottled_ship = new(user.drop_location())
 	user.put_in_hands(bottled_ship)
 	qdel(src)

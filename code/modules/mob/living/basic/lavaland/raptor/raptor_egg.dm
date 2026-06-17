@@ -1,6 +1,6 @@
 /obj/item/food/egg/raptor_egg
 	name = "raptor egg"
-	desc = "An uneven egg with a rough, thick shell."
+	desc = "Um ovo irregular com uma casca áspera e grossa."
 	icon = 'icons/mob/simple/lavaland/raptor_baby.dmi'
 	icon_state = "raptor_egg"
 	resistance_flags = LAVA_PROOF|FIRE_PROOF
@@ -27,7 +27,7 @@
 /obj/item/food/egg/raptor_egg/examine(mob/user)
 	. = ..()
 	if (growth_progress >= RAPTOR_EGG_GROWTH_PROGRESS)
-		. += span_boldnotice("Its noticeably shaking, ready to hatch!")
+		. += span_boldnotice("Está tremendo visivelmente, pronto para eclodir!")
 
 /obj/item/food/egg/raptor_egg/process(seconds_per_tick)
 	if (!isturf(loc) || length(GLOB.raptor_population) >= MAX_RAPTOR_POP)

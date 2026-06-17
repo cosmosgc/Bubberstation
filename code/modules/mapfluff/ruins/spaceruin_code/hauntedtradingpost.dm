@@ -5,77 +5,77 @@
 // clues to traps that exist in the ruin or just insights into the backstory of the place
 /obj/item/paper/fluff/ruins/hauntedtradingpost/warning
 	name = "Last Warning"
-	default_raw_text = "Next person who breaks a vending machine fucking around with those fucking toy guns gets fired on the spot. Try me. I am SICK of this shit.<BR><BR>Signed, Your Fucking Boss (Who Can Fucking Fire Your Ass)"
+	default_raw_text = "A próxima pessoa que quebrar uma máquina de venda com aquelas armas de brinquedo é disparada no local. Tente. Estou doente dessa merda.<BR><BR>Assinado, seu maldito chefe."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/warning/turrets
 	name = "Warning! Important! Read this!"
-	default_raw_text = "Foam darts do not go in the defence turrets! Live ammo only!"
+	default_raw_text = "Dardos de espuma não vão nas torres de defesa! Só munição viva!"
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/brainstorming
 	name = "Notes"
-	default_raw_text = "Branding: Pizza In Your Pocket (check focus groups)<BR><BR>Tomato Mozzerella Basil<BR>etc<BR><BR>Spider 17-02667 Store 31-00314<BR><BR>18,000 approx BSD<BR><BR>common allergens - ?<BR><BR><BR>6127"
+	default_raw_text = "\"Pizza no seu bolso\"<BR><BR>Tomate Mozzerella Basil<BR>etc<BR><BR>Aranha 17-02667 Loja 31-00314<BR><BR>18 mil aproximadamente BSD<BR><BR>Alérgenos comuns?<BR><BR><BR>6127"
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/brainstorming/eureka
-	default_raw_text = "Got some ingredients from the moth trading fleet and used some of our discretionary budget to hire some factory space. Prototypes are going down well with both public and employees. If we can get central to fund mass production we'll be seeing a 18% permanant increase in regional profit according to AI. This fits the local brunch market *perfectly*."
+	default_raw_text = "Consegui alguns ingredientes da frota de comércio de traças e usei alguns do nosso orçamento discricionário para contratar algum espaço de fábrica. Protótipos estão indo bem com público e funcionários. Se conseguirmos financiar a produção em massa, veremos um aumento permanente de 18% no lucro regional de acordo com a IA. Isso se encaixa no mercado de brunch local."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/brainstorming/eureka2
-	default_raw_text = "Early experiments with a fully carb-free recipe going well. Taste tests are all positive, just need a way to reduce costs."
+	default_raw_text = "Experimentos iniciais com uma receita totalmente livre de carboidratos indo bem. Testes de gosto são positivos, só preciso de uma maneira de reduzir os custos."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/brainstorming/eureka3
-	default_raw_text = "PROJECT BIG DONK<BR>RnD has a few prototypes prepared.<BR>Testing will be complete by the end of the week."
+	default_raw_text = "Projeto Big Donk<BR>RND tem alguns protótipos preparados.<BR>Os testes estarão completos no final da semana."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/rpgclub
 	name = "RPG Club"
-	default_raw_text = "RPG Club is every Thursday from 20:00 to 01:00 AM. Entry to the break room is strictly by invitation only during that period of time. <BR> <BR> We apologise for any inconvenience."
+	default_raw_text = "O RPG Club é toda quinta-feira das 20:00 às 01:00 da manhã. A entrada na sala de descanso é estritamente por convite apenas durante esse período de tempo.<BR> <BR>Pedimos desculpas por qualquer inconveniente."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/rpgrules
 	name = "GM Notes"
-	default_raw_text = "Session 4 NPCS <BR> Shadow Warriors <BR> S  A  T  C  H <BR> 40 65 40 15 10 <BR><BR>Shadow Clan Underlord <BR> S  A  T  C  H <BR> 40 65 40 15 10 <BR>Note: Gets shadow magic.<BR><BR><BR>Dire Corgi <BR> S  A  T  C  H <BR> 60 25 65 25 12 <BR><BR>If they beat this let them roll on loot table 4 twice but if it's 65-70 or 15-30 make it magic boots instead."
+	default_raw_text = "Sessão 4 NPCS<BR>Guerreiros das Sombras<BR>S A T C H<BR> 40 65 40 15 10 <BR><BR>Clã das Sombras<BR>S A T C H<BR> 40 65 40 15 10 <BR>Obtém magia de sombra.<BR><BR><BR>Dire Corgi.<BR>S A T C H<BR> 60 25 65 25 12 <BR><BR>Se eles vencerem isso, eles vão rolar na mesa de saques 4 duas vezes, mas se for 65-70 ou 15-30, faça com que seja botas mágicas."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/curatorsnote
 	name = "For Adventurers"
-	default_raw_text = "The food court and the stalls are safe, everywhere else isn't. There's safes in the stalls and I didn't have a way to open them so if you can get whatever's inside, good for you. The employees area can be entered by tailing the bots, but security systems are active back there. I got shot by a turret taking a look, and when I stitched myself up and tried the other door I walked into a booby trap and nearly lost an arm.<BR><BR>If you're investigating this signal - BEWARE.<BR>For the record, I decided nothing in there's worth the risk. If you're braver than me, good luck.<BR>Signed, Curator P."
+	default_raw_text = "A praça de alimentação e as barracas estão seguras, em todos os outros lugares. Há cofres nas barracas e eu não tinha um jeito de abri-los, então se conseguir o que tem dentro, bom para você. A área de funcionários pode ser introduzida seguindo os robôs, mas os sistemas de segurança estão ativos lá atrás. Levei um tiro de uma torre olhando, e quando me costurei e tentei a outra porta, entrei numa armadilha e quase perdi um braço.<BR><BR>Se você está investigando este sinal, tenha cuidado.<BR>Só para constar, eu decidi que nada lá vale o risco. Se for mais corajoso que eu, boa sorte.<BR>Assinado, Curador P."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/officememo
 	name = "Memo"
-	default_raw_text = "The AI-Guided Defense System Will Stay Active Indefinitely To Protect Company Property. Please Ensure All Personal Items Are Removed From The Premises, As They Will Be Impossible To Recover If Forgotten. <BR><BR> Donk Co. Takes No Responsibility For Lost Personal Property Or Affects."
+	default_raw_text = "O sistema de defesa guiado pela IA permanecerá ativo para proteger a propriedade da empresa. Por favor, certifique-se de que todos os itens pessoais sejam removidos das instalações, pois serão impossíveis de recuperar se esquecidos.<BR><BR>Donk Co. não assume nenhuma responsabilidade por propriedade pessoal perdida ou afeta."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/receipt
 	name = "Old Receipt"
-	desc = "A ratty old sales receipt printed on cheap thermal paper."
-	default_raw_text = "DONK CO OUTLET 6013<BR>YOUR SERVER TODAY WAS: COLM<BR><BR>2x DONKPOCKETPIZBOX    400<BR>1x CRYPTOGRAPHICSEQ    800<BR>2x CRYPTOGRAPHICTOY    200<BR>1x DONKPOCKETPLUSHY    120<BR><BR>TOTAL VALUE            1520<BR><BR>PAYMENT: CASH"
+	desc = "Um velho recibo de vendas impresso em papel térmico barato."
+	default_raw_text = "DOnk CO OUTLET 6013<BR>Seu servo de hoje foi:<BR><BR>2x DONKPOCKETPIZBOX 400<BR>1x CRYPTOGRAPHICSEQ 800<BR>2x CRYPTOGRAFICTOY 200<BR>1x DOnkPOCKETPLUSHY 120<BR><BR>VALOR TOTAL 1520<BR><BR>PAGAMENTO:"
 	icon_state = "paperslip"
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/receipt/alternate
-	default_raw_text = "DONK CO OUTLET 6013<BR>YOUR SERVER TODAY WAS: VLAD<BR><BR>1x DONKPOCKETBERBOX    200<BR>1x GORLEXMODSUITRED    1400<BR>1x MODSUITMICROWAVE    200<BR><BR>TOTAL VALUE            1800<BR><BR>PAYMENT: CASH"
+	default_raw_text = "DOnk CO OUTLET 6013<BR>Seu servo de hoje foi:<BR><BR>1x DOnkPOCKETBERBOX 200<BR>1x GORLEX MODSUITED 1400<BR>1x MODUITMICROWAVE 200<BR><BR>VALOR TOTAL 1800<BR><BR>PAGAMENTO:"
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/receipt/alternate_alt
-	default_raw_text = "DONK CO OUTLET 6013<BR>YOUR SERVER TODAY WAS: COLM<BR><BR>10xDONKPOCKETORGBOX   2000<BR>4x GORLEXMODSUITRED    9600<BR>4x MODSUITMICROWAVE    800<BR><BR>TOTAL VALUE           13400<BR><BR>PAYMENT: CARD"
+	default_raw_text = "DOnk CO OUTLET 6013<BR>Seu servo de hoje foi:<BR><BR>10xDONKPOCKETORGBOX 2000<BR>4x GORLEX MOUDEU 9600<BR>4x MODUITMICROWAVE 800<BR><BR>VALOR TOTAL 13400<BR><BR>CARTÃO"
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/nomodsuits
 	name = "Notice"
-	desc = "A bunch of words have been written on this slip of paper. Truly, this is the future."
-	default_raw_text = "We are SOLD OUT of modsuits."
+	desc = "Um monte de palavras foram escritas neste papel. Verdadeiramente, este é o futuro."
+	default_raw_text = "Estamos sem modsuits."
 	icon_state = "paperslip"
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/oldnote
 	name = "Old Note"
-	default_raw_text = "Remember to check all the ammo before it's fed into the turrets. If the wrong caliber is loaded, the turrets will malfunction.<BR>We use 9mm ammunition ONLY."
+	default_raw_text = "Lembre-se de verificar todas as munições antes de serem alimentadas nas torres. Se o calibre errado estiver carregado, as torres vão falhar.<BR>Usamos munição de 9mm."
 
 /obj/item/paper/fluff/ruins/hauntedtradingpost/oldnote/aiclue
 	name = "Old Handwritten Note"
-	default_raw_text = "All the appliances are now hooked up to the AI. If there's any problems, report it to the Cybersun rep (Mr Satung)."
+	default_raw_text = "Todos os aparelhos estão ligados à IA. Se houver algum problema, informe o representante do Cybersun."
 
 // [Outpost ID Cards]
 //ID cards for the space ruin
 /obj/item/card/id/away/donk
 	name = "\improper Donk Co. ID Card"
-	desc = "A plastic card that identifies its bearer as an employee of Donk Co. There are electronic chips embedded to communicate with airlocks and other machines. It does not have a name attached."
+	desc = "Um cartão de plástico que identifica seu portador como um empregado da Donk Co. Há chips eletrônicos embutidos para se comunicar com comportas e outras máquinas. Não tem um nome."
 	icon_state = "card_donk"
 	trim = /datum/id_trim/away/hauntedtradingpost
 
 /obj/item/card/id/away/donk/boss
-	desc = "A plastic card that identifies its bearer as a senior employee of Donk Co. There are electronic chips embedded to communicate with airlocks and other machines. It does not have a name attached."
+	desc = "Um cartão de plástico que identifica seu portador como um funcionário sênior da Donk Co. Há chips eletrônicos embutidos para se comunicar com comportas e outras máquinas. Não tem um nome."
 	icon_state = "card_donkboss"
 	trim = /datum/id_trim/away/hauntedtradingpost/boss
 
@@ -84,7 +84,7 @@
 //aquarium with two donkfish in it
 /obj/structure/aquarium/donkfish
 	name = "office aquarium"
-	desc = "A home for captive fish. This one has 'DONK CO' engraved on the glass."
+	desc = "Um lar para peixes cativos. Este tem \"DONK CO\" gravado no vidro."
 	init_mode = AQUARIUM_MODE_SAFE
 
 /obj/structure/aquarium/donkfish/Initialize(mapload)
@@ -97,7 +97,7 @@
 //gimmick ketchup bottle for healing minor injuries
 /obj/item/reagent_containers/condiment/donksauce
 	name = "\improper Donk Co. Secret Sauce"
-	desc = "The famous ketchup with a highly classified recipe."
+	desc = "O famoso ketchup com uma receita altamente confidencial."
 	list_reagents = list(
 		/datum/reagent/consumable/ketchup = 25,
 		/datum/reagent/medicine/omnizine = 10,
@@ -116,7 +116,7 @@
 //cyborg holobarriers that die when the boss dies, how exciting
 #define SELFDESTRUCT_QUEUE "hauntedtradingpost_sd" //make sure it matches the AI cores ID
 /obj/structure/holosign/barrier/cyborg/cybersun_ai_shield
-	desc = "A fragile holographic energy field projected by an AI core. It keeps unwanted humanoids at safe distance."
+	desc = "Um frágil campo de energia holográfica projetado por um núcleo de IA. Mantém humanóides indesejados a uma distância segura."
 
 /obj/structure/holosign/barrier/cyborg/cybersun_ai_shield/Initialize(mapload)
 	. = ..()
@@ -126,7 +126,7 @@
 //smes that produces power, until the boss dies then it self destructs and you gotta make your own power
 /obj/machinery/power/smes/magical/cybersun
 	name = "cybersun-brand power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. It looks like any other SMES unit, except this one says 'Cybersun' on it."
+	desc = "Uma unidade supercondutora de alta capacidade de armazenamento de energia magnética. Parece com qualquer outra unidade SMES, exceto esta que diz \"Cybersun\"."
 	//is this being used as part of the haunted trading post ruin? if true, will self destruct when boss dies
 	var/donk_ai_slave = FALSE
 
@@ -139,7 +139,7 @@
 //doors get closed and bolted, shutters get cycled open/closed
 /obj/machinery/button/door/invisible_tripwire
 	name = "Sonic Tripwire"
-	desc = "An invisible trigger for shutters and doors. Triggers when someone steps on the tile."
+	desc = "Um gatilho invisível para persianas e portas. Aciona quando alguém pisa no azulejo."
 	max_integrity = 50
 	invisibility = INVISIBILITY_ABSTRACT
 	anchored = TRUE
@@ -220,7 +220,7 @@
 //then it zaps everyone who gets close. disarm by dissassembling the machine, or running out its charges
 /obj/effect/overloader_trap
 	name = "overloader trap"
-	desc = "A trap that overloads machines to electrify people who walk nearby."
+	desc = "Uma armadilha que sobrecarrega máquinas para eletrificar pessoas que andam por perto."
 	alpha = 70
 	max_integrity = 50
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -299,7 +299,7 @@
 	for(var/mob/living/living_mob in range(shock_range, src))
 		if(faction_check_atom(living_mob))
 			continue
-		to_chat(living_mob, span_warning("You are struck by an arc of electricity!"))
+		to_chat(living_mob, span_warning("Você é atingido por um arco de eletricidade!"))
 		src.Beam(living_mob, icon_state = "lightning[rand(1,12)]", time = 0.5 SECONDS)
 		living_mob.electrocute_act(shock_damage, host_machine, 1, SHOCK_NOGLOVES, stun_duration, jitter_time, stutter_time)
 	for(var/obj/item/food/deadmouse in range(shock_range, src))
@@ -325,7 +325,7 @@
 	lethal_projectile = /obj/projectile/bullet/c9mm/blunttip
 	lethal_projectile_sound = 'sound/items/weapons/gun/pistol/shot.ogg'
 	stun_projectile_sound = 'sound/items/weapons/gun/pistol/shot.ogg'
-	desc = "A ballistic machine gun auto-turret with Donk Co. branding. It uses 9mm rounds."
+	desc = "Uma metralhadora balística com marca Donk Co.. Usa balas de 9mm."
 	armor_type = /datum/armor/donk_turret
 	scan_range = 6
 	shot_delay = 1 SECONDS
@@ -352,7 +352,7 @@
 	stun_projectile_sound = 'sound/items/weapons/taser.ogg'
 	lethal_projectile = /obj/projectile/beam/laser/cybersun
 	lethal_projectile_sound = 'sound/items/weapons/lasercannonfire.ogg'
-	desc = "An energy gun auto-turret with Cybersun branding. It fires high-energy plasma beams that do a lot of damage, but it can be fairly slow."
+	desc = "Uma arma de energia automática com marca Cybersun. Dispara feixes de plasma de alta energia que causam muitos danos, mas pode ser bastante lento."
 	armor_type = /datum/armor/syndicate_shuttle
 	scan_range = 6
 	shot_delay = 5 SECONDS
@@ -361,7 +361,7 @@
 
 /obj/projectile/beam/laser/cybersun
 	name = "plasma beam"
-	desc = "A big red plasma beam, currently in flight."
+	desc = "Um grande feixe de plasma vermelho, atualmente em voo."
 	icon_state = "lava"
 	light_color = COLOR_DARK_RED
 	damage = 30

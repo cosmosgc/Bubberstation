@@ -2,7 +2,7 @@
 /obj/item/gun/energy/recharge
 	icon_state = "kineticgun"
 	base_icon_state = "kineticgun"
-	desc = "A self recharging gun. Holds one shot at a time."
+	desc = "Uma arma de recarga. Segura um tiro de cada vez."
 	automatic_charge_overlays = FALSE
 	cell_type = /obj/item/stock_parts/power_store/cell/emproof
 	/// If set to something, instead of an overlay, sets the icon_state directly.
@@ -102,7 +102,7 @@
 
 /obj/item/gun/energy/recharge/ebow
 	name = "mini energy crossbow"
-	desc = "A weapon favored by syndicate stealth specialists."
+	desc = "Uma arma favorecida por especialistas secretos."
 	icon_state = "crossbow"
 	base_icon_state = "crossbow"
 	inhand_icon_state = "crossbow"
@@ -125,7 +125,7 @@
 
 /obj/item/gun/energy/recharge/ebow/halloween
 	name = "candy corn crossbow"
-	desc = "A weapon favored by Syndicate trick-or-treaters."
+	desc = "Uma arma favorecida por pessoas que tratam de doces."
 	icon_state = "crossbow_halloween"
 	base_icon_state = "crossbow_halloween"
 	no_charge_state = "crossbow_halloween_empty"
@@ -133,7 +133,7 @@
 
 /obj/item/gun/energy/recharge/ebow/large
 	name = "energy crossbow"
-	desc = "A reverse engineered weapon using syndicate technology."
+	desc = "Uma arma de engenharia reversa usando tecnologia do sindicato."
 	icon_state = "crossbowlarge"
 	base_icon_state = "crossbowlarge"
 	no_charge_state = "crossbowlarge_empty"
@@ -150,10 +150,10 @@
 /// A silly gun that does literally zero damage, but disrupts electrical sources of light, like flashlights.
 /obj/item/gun/energy/recharge/fisher
 	name = "\improper SC/FISHER disruptor"
-	desc = "A self-recharging, integrally suppressed, modified kinetic accelerator that does no damage, \
-		but disrupts electronics like lights, APCs, and security cameras. \
-		Can fire twice before requiring a recharge. \
-		Bolts can be fired around machinery, but the precise nature of shooting light fixtures demands a skillful hand."
+	desc = "Um auto-recarregador, totalmente suprimido, acelerador cinético modificado que não causa danos,\
+Mas interrompe eletrônicos como luzes, APCs e câmeras de segurança.\
+Pode atirar duas vezes antes de precisar de recarga.\
+Parafusos podem ser disparados em torno de máquinas, mas a natureza precisa de atirar luminárias exige uma mão habilidosa."
 	icon_state = "fisher"
 	base_icon_state = "fisher"
 	dry_fire_sound_volume = 10

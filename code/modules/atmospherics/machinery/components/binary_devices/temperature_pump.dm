@@ -1,7 +1,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_pump
 	icon_state = "tpump_map-3"
 	name = "temperature pump"
-	desc = "A pump that moves heat from one pipeline to another. The input will get cooler, and the output will get hotter."
+	desc = "Uma bomba que move o calor de um oleoduto para outro. A entrada ficará mais fria, e a saída ficará mais quente."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional

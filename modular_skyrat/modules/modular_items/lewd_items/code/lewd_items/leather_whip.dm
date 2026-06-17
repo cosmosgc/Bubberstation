@@ -2,7 +2,7 @@
 
 /obj/item/clothing/mask/leatherwhip
 	name = "leather whip"
-	desc = "A tool used for domination. Hurts in a way you like it."
+	desc = "Uma ferramenta usada para dominar. Dói de um jeito que você gosta."
 	icon_state = "leather_whip_pink_hard"
 	worn_icon_state = "leather_whip"
 	base_icon_state = "leather"
@@ -100,9 +100,9 @@
 /obj/item/clothing/mask/leatherwhip/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 	else if(!form_changed)
-		. += span_notice("Alt-click to change it's form.")
+		. += span_notice("Alt-click para mudar sua forma.")
 
 //to change color
 /obj/item/clothing/mask/leatherwhip/click_alt(mob/user)

@@ -29,7 +29,7 @@
 	for(var/obj/item/restraints/handcuffs/cuff in src.contents)
 		cuffcount++
 	if(cuffcount >= CUFF_MAXIMUM)
-		balloon_alert(user, "baton at maximum cuffs")
+		balloon_alert(user, "batuta no máximo punhos")
 		return
 	attacking_item.forceMove(src)
 	balloon_alert(user, "[attacking_item] inserted")
@@ -66,7 +66,7 @@
 		upgrade.forceMove(src)
 
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded
-	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets. This one seems to have unremovable parts."
+	desc = "Uma batuta compacta e especializada atribuída a empreiteiros do Sindicato. Aplica choques elétricos leves aos alvos. Este parece ter partes irremovíveis."
 
 /obj/item/melee/baton/telescopic/contractor_baton/upgraded/Initialize(mapload)
 	. = ..()
@@ -86,19 +86,19 @@
 
 /obj/item/baton_upgrade/cuff
 	name = "handcuff baton upgrade"
-	desc = "Allows the user to apply restraints to a target via baton, requires to be loaded with up to three prior."
+	desc = "Permite que o usuário aplique restrições a um alvo via bastão, requer ser carregado com até três antes."
 	icon_state = "cuff_upgrade"
 	upgrade_flag = BATON_CUFF_UPGRADE
 
 /obj/item/baton_upgrade/mute
 	name = "mute baton upgrade"
-	desc = "Use of the baton on a target will mute them for a short period."
+	desc = "O uso do bastão em um alvo os silenciará por um curto período."
 	icon_state = "mute_upgrade"
 	upgrade_flag = BATON_MUTE_UPGRADE
 
 /obj/item/baton_upgrade/focus
 	name = "focus baton upgrade"
-	desc = "Use of the baton on a target, should they be the subject of your contract, will be extra exhausted."
+	desc = "O uso do bastão em um alvo, se eles forem o assunto do seu contrato, será extra exausto."
 	icon_state = "focus_upgrade"
 	upgrade_flag = BATON_FOCUS_UPGRADE
 

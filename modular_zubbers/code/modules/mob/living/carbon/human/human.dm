@@ -57,7 +57,7 @@
 
 	// Stat check
 	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't do this right now..."))
+		to_chat(usr, span_warning("Não pode fazer isso agora..."))
 		return
 
 	// Only show the 'reveal all' button if we are already hiding something
@@ -105,7 +105,7 @@
 
 	// Choice to action
 	if(pick == "reveal all")
-		to_chat(usr, span_notice("You are no longer trying to hide your mutant parts."))
+		to_chat(usr, span_notice("Você não está mais tentando esconder suas partes mutantes."))
 		LAZYNULL(try_hide_mutant_parts)
 		update_body_parts()
 		return

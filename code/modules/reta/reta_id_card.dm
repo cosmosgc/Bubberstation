@@ -110,8 +110,8 @@
 	// User feedback before clearing
 	var/mob/living/carbon/human/holder = get_id_holder()
 	if(holder)
-		holder.balloon_alert(holder, "emergency access expired")
-		to_chat(holder, span_warning("Emergency access has expired."))
+		holder.balloon_alert(holder, "Acesso de emergência expirado.")
+		to_chat(holder, span_warning("Acesso de emergência expirado."))
 
 	// Collect all temporary access flags for logging
 	var/list/all_temp_access = list()

@@ -7,7 +7,7 @@
 		CHOICE_TRANSFER,
 		CHOICE_CONTINUE,
 	)
-	default_message = "Vote to initiate a crew transfer."
+	default_message = "Vote para iniciar uma transferência de tripulação."
 
 /datum/vote/transfer_vote/toggle_votable()
 	CONFIG_SET(flag/allow_vote_transfer, !CONFIG_GET(flag/allow_vote_transfer))

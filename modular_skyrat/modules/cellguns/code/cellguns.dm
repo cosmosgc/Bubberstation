@@ -1,6 +1,6 @@
 /obj/item/gun/energy/cell_loaded //The basic cell loaded gun
 	name = "cell-loaded gun"
-	desc = "A energy gun that functions by loading cells for ammo types"
+	desc = "Uma arma de energia que funciona carregando células para tipos de munição"
 
 	/// List containing what cells are allowed to be installed by the gun. This includes all subtypes.
 	var/list/allowed_cells = list()
@@ -18,7 +18,7 @@
 	. = ..()
 	if(maxcells)
 		. += "<b>[installedcells.len]</b> out of <b>[maxcells]</b> cell slots are filled."
-		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted cell from the chamber.")
+		. += span_info("Você pode usar AltClick com uma mão vazia para remover a célula recentemente inserida da câmara.")
 
 		for(var/cell in installedcells)
 			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
@@ -77,7 +77,7 @@
 		to_chat(user, span_notice("The [src] has no cells inside"))
 		return CLICK_ACTION_BLOCKING
 
-	to_chat(user, span_notice("You remove a cell"))
+	to_chat(user, span_notice("Você remove uma cela."))
 	var/obj/item/last_cell = installedcells[installedcells.len]
 
 	if(last_cell)

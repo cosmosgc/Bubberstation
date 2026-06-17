@@ -77,7 +77,7 @@
 
 /datum/escape_menu/proc/see_notes()
 	if(!CONFIG_GET(flag/see_own_notes))
-		to_chat(client.mob, span_notice("Seeing notes has been disabled on this server."))
+		to_chat(client.mob, span_notice("Ver notas foi desativado neste servidor."))
 		return
 	browse_messages(null, client.ckey, null, TRUE)
 	qdel(src)

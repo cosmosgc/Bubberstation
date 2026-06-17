@@ -12,7 +12,7 @@
 
 /obj/structure/fence
 	name = "fence"
-	desc = "A chain link fence. Not as effective as a wall, but generally it keeps people out."
+	desc = "Uma cerca de cadeia. Não tão eficaz quanto uma parede, mas geralmente mantém as pessoas fora."
 	density = TRUE
 	anchored = TRUE
 
@@ -60,14 +60,14 @@
 /obj/structure/fence/attackby(obj/item/W, mob/user)
 	if(W.tool_behaviour == TOOL_WIRECUTTER)
 		if(!cuttable)
-			to_chat(user, span_warning("This section of the fence can't be cut!"))
+			to_chat(user, span_warning("Esta seção da cerca não pode ser cortada!"))
 			return
 		if(invulnerable)
-			to_chat(user, span_warning("This fence is too strong to cut through!"))
+			to_chat(user, span_warning("Esta cerca é muito forte para cortar!"))
 			return
 		var/current_stage = hole_size
 		if(current_stage >= MAX_HOLE_SIZE)
-			to_chat(user, span_warning("This fence has too much cut out of it already!"))
+			to_chat(user, span_warning("Esta cerca já está muito cortada!"))
 			return
 
 		user.visible_message(span_danger("\The [user] starts cutting through \the [src] with \the [W]."),\
@@ -78,7 +78,7 @@
 				switch(++hole_size)
 					if(MEDIUM_HOLE)
 						visible_message(span_notice("\The [user] cuts into \the [src] some more."))
-						to_chat(user, span_info("You could probably fit yourself through that hole now. Although climbing through would be much faster if you made it even bigger."))
+						to_chat(user, span_info("Você provavelmente poderia passar por aquele buraco agora. Embora escalar seria muito mais rápido se o tornasse ainda maior."))
 						AddElement(/datum/element/climbable)
 					if(LARGE_HOLE)
 						visible_message(span_notice("\The [user] completely cuts through \the [src]."))
@@ -107,7 +107,7 @@
 
 /obj/structure/fence/door
 	name = "fence door"
-	desc = "Not very useful without a real lock."
+	desc = "Não é muito útil sem uma fechadura de verdade."
 	icon_state = "door_closed"
 	cuttable = FALSE
 

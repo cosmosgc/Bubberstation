@@ -7,7 +7,7 @@ If the scythe isn't empowered when you sheath it, you take a heap of damage and 
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/scythe
 	name = "sinister shard"
-	desc = "This shard seems to be directly linked to some sinister entity. It might be your god! It also gives you a really horrible rash when you hold onto it for too long."
+	desc = "Este fragmento parece estar diretamente ligado a alguma entidade sinistra. Pode ser o seu deus! Também te dá uma erupção horrível quando você segura por muito tempo."
 	items_to_create = list(/obj/item/vorpalscythe)
 	organ_traits = list(TRAIT_MORBID)
 
@@ -30,7 +30,7 @@ If the scythe isn't empowered when you sheath it, you take a heap of damage and 
 
 /obj/item/vorpalscythe
 	name = "vorpal scythe"
-	desc = "Reap what you sow."
+	desc = "Recolha o que planta."
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "vorpalscythe"
 	inhand_icon_state = "vorpalscythe"
@@ -108,7 +108,7 @@ If the scythe isn't empowered when you sheath it, you take a heap of damage and 
 	var/mob/living/carbon/potential_reaping = victim
 
 	if(HAS_TRAIT(potential_reaping, TRAIT_NODISMEMBER))
-		to_chat(user, span_warning("You do not think you can behead this creature..."))
+		to_chat(user, span_warning("Você não acha que pode decapitar esta criatura..."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/head_name
@@ -116,7 +116,7 @@ If the scythe isn't empowered when you sheath it, you take a heap of damage and 
 
 	reaped_head = potential_reaping.get_bodypart(check_zone(user.zone_selected))
 	if(!reaped_head)
-		to_chat(user, span_warning("There is no head to reap."))
+		to_chat(user, span_warning("Não há cabeça para colher."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	head_name = reaped_head.name
 
@@ -125,7 +125,7 @@ If the scythe isn't empowered when you sheath it, you take a heap of damage and 
 
 	if(!potential_reaping.mind) //We put this here juuuust in case there is something funky with ling checks
 		if(ismonkey(potential_reaping))
-			to_chat(user, span_warning("A pointless existence. You'll get no benefit from this death knell beyond the satisfaction of beheading this foul thing."))
+			to_chat(user, span_warning("Uma existência sem sentido. Você não terá nenhum benefício dessa morte além da satisfação de decapitar essa coisa suja."))
 			potential_empowerment = SCYTHE_WEAK
 		else
 			to_chat(user, span_warning("This soul is almost nonexistent. But [src] can still gain something from this sacrifice. A puppet."))

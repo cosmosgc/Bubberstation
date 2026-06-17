@@ -72,12 +72,12 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 			if(Master.processing && Master.iteration)
 				if (defcon > 1 && (!Master.stack_end_detector || !Master.stack_end_detector.check()))
 
-					to_chat(GLOB.admins, span_boldannounce("ERROR: The Master Controller code stack has exited unexpectedly, Restarting..."))
+					to_chat(GLOB.admins, span_boldannounce("A pilha de códigos do Controlador Mestre saiu inesperadamente, reiniciando..."))
 					defcon = 0
 					var/rtn = Recreate_MC()
 					if(rtn > 0)
 						master_iteration = 0
-						to_chat(GLOB.admins, span_adminnotice("MC restarted successfully"))
+						to_chat(GLOB.admins, span_adminnotice("MC reiniciado com sucesso"))
 					else if(rtn < 0)
 						log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
 						to_chat(GLOB.admins, span_boldannounce("ERROR: DEFCON [defcon_pretty()]. Could not restart MC, runtime encountered. I will silently keep retrying."))
@@ -102,7 +102,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 							if(rtn > 0)
 								defcon = 4
 								master_iteration = 0
-								to_chat(GLOB.admins, span_adminnotice("MC restarted successfully"))
+								to_chat(GLOB.admins, span_adminnotice("MC reiniciado com sucesso"))
 							else if(rtn < 0)
 								log_game("FailSafe: Could not restart MC, runtime encountered. Entering defcon 0")
 								to_chat(GLOB.admins, span_boldannounce("ERROR: DEFCON [defcon_pretty()]. Could not restart MC, runtime encountered. I will silently keep retrying."))
@@ -114,7 +114,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 							if(rtn > 0)
 								defcon = 4
 								master_iteration = 0
-								to_chat(GLOB.admins, span_adminnotice("MC restarted successfully"))
+								to_chat(GLOB.admins, span_adminnotice("MC reiniciado com sucesso"))
 				else
 					defcon = min(defcon + 1,5)
 					master_iteration = Master.iteration
@@ -159,7 +159,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 	if (. == 1) //We were able to create a new master
 		SSticker.Recover(); //Recover the ticket system so the Masters runlevel gets set
 		Master.Initialize(10, FALSE, FALSE) //Need to manually start the MC, normally world.new would do this
-		to_chat(GLOB.admins, span_adminnotice("MC successfully recreated after recovering all subsystems!"))
+		to_chat(GLOB.admins, span_adminnotice("MC recriado com sucesso após recuperar todos os subsistemas!"))
 	else
 		message_admins(span_boldannounce("Failed to create new MC!"))
 
@@ -173,7 +173,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 	if (. == 1) //We were able to create a new master
 		SSticker.Recover(); //Recover the ticket system so the Masters runlevel gets set
 		Master.Initialize(10, FALSE, FALSE) //Need to manually start the MC, normally world.new would do this
-		to_chat(GLOB.admins, span_adminnotice("MC successfully recreated after deleting and recreating all subsystems!"))
+		to_chat(GLOB.admins, span_adminnotice("MC recriado com sucesso após apagar e recriar todos os subsistemas!"))
 	else
 		message_admins(span_boldannounce("Failed to create new MC!"))
 

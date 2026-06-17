@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 
 /obj/machinery/washing_machine
 	name = "washing machine"
-	desc = "Gets rid of those pesky bloodstains, or your money back!"
+	desc = "Se livra dessas manchas de sangue ou do seu dinheiro de volta!"
 	icon = 'icons/obj/machines/washing_machine.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "wm_1_0"
 	density = TRUE
@@ -195,7 +195,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 /obj/machinery/washing_machine/examine(mob/user)
 	. = ..()
 	if(!busy)
-		. += span_notice("<b>Right-click</b> with an empty hand to start a wash cycle.")
+		. += span_notice("<b>Botão direito</b>com uma mão vazia para iniciar um ciclo de lavagem.")
 
 /obj/machinery/washing_machine/RefreshParts()
 	. = ..()
@@ -371,13 +371,13 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	if(user.combat_mode)
 		return NONE
 	if (!state_open)
-		to_chat(user, span_warning("Open the door first!"))
+		to_chat(user, span_warning("Abra a porta primeiro!"))
 		return ITEM_INTERACT_BLOCKING
 	if(bloody_mess)
 		to_chat(user, span_warning("[src] must be cleaned up first!"))
 		return ITEM_INTERACT_BLOCKING
 	if(total_load >= max_wash_capacity)
-		to_chat(user, span_warning("The washing machine is full!"))
+		to_chat(user, span_warning("A máquina de lavar está cheia!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(item, src))
 		to_chat(user, span_warning("\The [item] is stuck to your hand, you cannot put it in the washing machine!"))
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 				update_appearance()
 			else if(ishuman(victim))
 				if(user.grab_state < GRAB_AGGRESSIVE)
-					balloon_alert(user, "grab harder!")
+					balloon_alert(user, "Agarre mais forte!")
 					return
 
 				victim.visible_message(span_danger("[user] is trying to force [victim] into [src]!"))
@@ -438,7 +438,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 		to_chat(user, span_warning("[src] is busy!"))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	if(state_open)
-		to_chat(user, span_warning("Close the door first!"))
+		to_chat(user, span_warning("Feche a porta primeiro!"))
 		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	if(bloody_mess)
 		to_chat(user, span_warning("[src] must be cleaned up first!"))

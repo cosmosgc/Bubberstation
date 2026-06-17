@@ -1,6 +1,6 @@
 /obj/structure/closet/infinite
 	name = "infinite closet"
-	desc = "It's closets, all the way down."
+	desc = "São armários, até o fim."
 	var/replicating_type
 	var/stop_replicating_at = 4
 	var/auto_close_time = 15 SECONDS // Set to 0 to disable auto-closing.

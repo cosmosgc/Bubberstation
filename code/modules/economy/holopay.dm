@@ -1,6 +1,6 @@
 /obj/structure/holopay
 	name = "holographic pay stand"
-	desc = "an unregistered pay stand"
+	desc = "Um posto de pagamento não registrado."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "card_scanner"
 	alpha = 150
@@ -81,8 +81,8 @@
 	/// Users can pay with an ID to skip the UI
 	if(isidcard(held_item))
 		if(istype(held_item, /obj/item/card/id/departmental_budget))
-			balloon_alert(user, "invalid payment card")
-			to_chat(user, span_warning("You cannot use a departamental card for this."))
+			balloon_alert(user, "Cartão de pagamento inválido")
+			to_chat(user, span_warning("Você não pode usar um cartão departamental para isso."))
 			return FALSE
 		if(force_fee && tgui_alert(item_holder, "This holopay has a [force_fee] [MONEY_SYMBOL] fee. Confirm?", "Holopay Fee", list("Pay", "Cancel")) != "Pay")
 			return TRUE
@@ -93,7 +93,7 @@
 		/// Account checks
 		var/obj/item/holochip/chip = held_item
 		if(!chip.credits)
-			balloon_alert(user, "holochip is empty")
+			balloon_alert(user, "O holochip está vazio.")
 			to_chat(user, span_warning("There doesn't seem to be any [MONEY_NAME] here."))
 			return FALSE
 		/// Charges force fee or uses pay what you want
@@ -112,10 +112,10 @@
 		return TRUE
 	/// Throws errors if they try to use space cash
 	if(istype(held_item, /obj/item/stack/spacecash))
-		to_chat(user, "What is this, the 2000s? We only take card here.")
+		to_chat(user, "O que é isso, os anos 2000? Só aceitamos cartão aqui.")
 		return TRUE
 	if(istype(held_item, /obj/item/coin))
-		to_chat(user, "What is this, the 1800s? We only take card here.")
+		to_chat(user, "O que é isso, 1800? Só aceitamos cartão aqui.")
 		return TRUE
 	return ..()
 
@@ -208,7 +208,7 @@
 	name = card.holopay_name
 	add_atom_colour("#77abff", FIXED_COLOUR_PRIORITY)
 	set_light(2)
-	visible_message(span_notice("A holographic pay stand appears."))
+	visible_message(span_notice("Uma banca de pagamento holográfica aparece."))
 	/// Start checking if the source projection is in range
 	track(linked_card)
 	return TRUE
@@ -244,7 +244,7 @@
  */
 /obj/structure/holopay/proc/dissipate()
 	playsound(loc, 'sound/effects/empulse.ogg', 40, TRUE)
-	visible_message(span_notice("The pay stand vanishes."))
+	visible_message(span_notice("O posto de pagamento desaparece."))
 	qdel(src)
 
 /**
@@ -260,17 +260,17 @@
 	var/obj/item/card/id/id_card
 	id_card = user.get_idcard(TRUE)
 	if(isnull(id_card) || id_card.can_be_used_in_payment(user))
-		balloon_alert(user, "invalid account")
-		to_chat(user, span_warning("You don't have a valid account."))
+		balloon_alert(user, "conta inválida")
+		to_chat(user, span_warning("Não tem uma conta válida."))
 		return FALSE
 	var/datum/bank_account/payee = id_card.registered_account
 	if(payee == linked_card?.registered_account)
-		balloon_alert(user, "invalid transaction")
-		to_chat(user, span_warning("You can't pay yourself."))
+		balloon_alert(user, "transação inválida")
+		to_chat(user, span_warning("Você não pode se pagar."))
 		return FALSE
 	if(istype(id_card, /obj/item/card/id/departmental_budget))
-		balloon_alert(user, "invalid payment card")
-		to_chat(user, span_warning("You cannot use a departamental card for this."))
+		balloon_alert(user, "Cartão de pagamento inválido")
+		to_chat(user, span_warning("Você não pode usar um cartão departamental para isso."))
 		return FALSE
 	/// If the user has enough money, ask them the amount or charge the force fee
 	var/amount = force_fee || tgui_input_number(user, "How much? (Max: [payee.account_balance])", "Patronage", max_value = payee.account_balance)
@@ -279,7 +279,7 @@
 		return FALSE
 	if(!payee.adjust_money(-amount, "Holopay: [capitalize(name)]"))
 		balloon_alert(user, "insufficient [MONEY_NAME]")
-		to_chat(user, span_warning("You don't have the money to pay for this."))
+		to_chat(user, span_warning("Você não tem dinheiro para pagar por isso."))
 		return FALSE
 	/// Success: Alert the buyer
 	alert_buyer(user, amount)

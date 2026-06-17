@@ -1,6 +1,6 @@
 /obj/item/clothing/strapon
 	name = "strapon"
-	desc = "Sometimes you need a special way to humiliate someone."
+	desc = "Às vezes você precisa de um jeito especial de humilhar alguém."
 	icon_state = "strapon_human"
 	base_icon_state = "strapon"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -105,7 +105,7 @@
 //button stuff
 /datum/action/item_action/take_strapon
 	name = "Put strapon in hand"
-	desc = "Put the strapon in your hand in order to use it properly."
+	desc = "Coloque a alça na mão para usá-la corretamente."
 
 /datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	if(!..())
@@ -119,7 +119,7 @@
 	if(src == user.belt)
 		toggle(user)
 	else
-		to_chat(user, span_warning("You need to put the strapon around your waist before you can use it!"))
+		to_chat(user, span_warning("Precisa colocar o cinto na cintura antes de poder usá-lo!"))
 
 /obj/item/clothing/strapon/proc/toggle(mob/living/carbon/human/user)
 	conditional_pref_sound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
@@ -167,7 +167,7 @@
 
 /obj/item/strapon_dildo
 	name = "strapon"
-	desc = "An item with which to be menacing and merciless."
+	desc = "Um item com o qual ser ameaçador e impiedoso."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "dildo_human"
 	base_icon_state = "dildo"

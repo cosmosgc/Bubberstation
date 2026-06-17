@@ -2,7 +2,7 @@
 
 /obj/item/seeds/kudzu
 	name = "kudzu seed pack"
-	desc = "These seeds grow into a weed that grows incredibly fast."
+	desc = "Estas sementes crescem em uma erva daninha que cresce incrivelmente rápido."
 	icon_state = "seed-kudzu"
 	plant_icon_offset = 2
 	species = "kudzu"
@@ -48,7 +48,7 @@
 	user.visible_message(span_danger("[user] begins throwing seeds on the ground..."))
 	if(do_after(user, 5 SECONDS, target = user.drop_location(), progress = TRUE))
 		plant(user)
-		to_chat(user, span_notice("You plant the kudzu. You monster."))
+		to_chat(user, span_notice("Você planta o kudzu. Seu monstro."))
 
 /obj/item/seeds/kudzu/get_unique_analyzer_data()
 	var/list/all_mutations = list()
@@ -100,7 +100,7 @@
 /obj/item/food/grown/kudzupod
 	seed = /obj/item/seeds/kudzu
 	name = "kudzu pod"
-	desc = "<I>Pueraria Virallis</I>: An invasive species with vines that rapidly creep and wrap around whatever they contact."
+	desc = "<I>Pueraria Virallis</I>Uma espécie invasora com videiras que rapidamente se arrastam e envolvem o que quer que entrem em contato."
 	icon_state = "kudzupod"
 	foodtypes = VEGETABLES | GROSS
 	tastes = list("kudzu" = 1)

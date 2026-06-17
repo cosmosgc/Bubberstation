@@ -7,7 +7,7 @@
 	picture.picture_name = "Image [number] (taken by [loc.name])"
 	stored[picture] = TRUE
 	playsound(src, SFX_POLAROID, 75, TRUE, -3)
-	balloon_alert(user, "image recorded")
+	balloon_alert(user, "imagem gravada")
 
 /**
  * Handles selecting and printing stored images.
@@ -21,10 +21,10 @@
 	var/mob/living/silicon/pai/pai = loc
 	var/datum/picture/selection = selectpicture(user)
 	if(!istype(selection))
-		balloon_alert(user, "invalid image")
+		balloon_alert(user, "Imagem inválida")
 		return FALSE
 	printpicture(user, selection)
-	user.visible_message(span_notice("A picture appears on top of the chassis of [pai.name]!"), span_notice("You print a photograph."))
+	user.visible_message(span_notice("A picture appears on top of the chassis of [pai.name]!"), span_notice("Você imprime uma fotografia."))
 	return TRUE
 
 /**

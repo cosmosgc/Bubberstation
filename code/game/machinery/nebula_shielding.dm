@@ -84,7 +84,7 @@
 ///We shield against the radioactive nebula and passively generate tritium
 /obj/machinery/nebula_shielding/radiation
 	name = "radioactive nebula shielder"
-	desc = "Generates a field around the station, protecting it from a radioactive nebula."
+	desc = "Gera um campo ao redor da estação, protegendo-o de uma nebulosa radioativa."
 
 	icon_state = "radioactive_shielding"
 	base_icon_state = "radioactive_shielding"
@@ -115,7 +115,7 @@
 ///Emergency shielding so people aren't permanently in a radstorm if shit goes very wrong in engineering
 /obj/machinery/nebula_shielding/emergency/radiation
 	name = "emergency nebula radiation shielder"
-	desc = "Generates a field around the station to protect it from a radioactive nebula."
+	desc = "Gera um campo ao redor da estação para protegê-lo de uma nebulosa radioativa."
 
 	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "portgen1_1"

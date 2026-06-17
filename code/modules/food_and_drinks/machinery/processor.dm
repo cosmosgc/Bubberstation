@@ -2,7 +2,7 @@
 
 /obj/machinery/processor
 	name = "food processor"
-	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
+	desc = "Um moedor industrial usado para processar carne e outros alimentos. Mantenha as mãos longe da área de entrada enquanto opera."
 	icon = 'icons/obj/machines/kitchen.dmi'
 	base_icon_state = "processor"
 	icon_state = "processor"
@@ -137,7 +137,7 @@
 		LAZYADD(processor_contents, tool)
 		return ITEM_INTERACT_SUCCESS
 
-	to_chat(user, span_warning("That probably won't blend!"))
+	to_chat(user, span_warning("Isso provavelmente não vai misturar!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/processor/update_icon_state()
@@ -150,7 +150,7 @@
 		return TRUE
 	if(ismob(user.pulling) && PROCESSOR_SELECT_RECIPE(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, span_warning("You need a better grip to do that!"))
+			to_chat(user, span_warning("Você precisa de um aperto melhor para fazer isso!"))
 			return
 		var/mob/living/pushed_mob = user.pulling
 		visible_message(span_warning("[user] stuffs [pushed_mob] into [src]!"))
@@ -163,7 +163,7 @@
 		return TRUE
 	user.visible_message(span_notice("[user] turns on [src]."), \
 		span_notice("You turn on [src]."), \
-		span_hear("You hear a food processor."))
+		span_hear("Você ouve um processador de comida."))
 	processing()
 
 
@@ -215,11 +215,11 @@
 	name = "slime processor"
 	base_icon_state = "processor_slime"
 	icon_state = "processor_slime"
-	desc = "An industrial grinder with a sticker saying appropriated for science department. Keep hands clear of intake area while operating."
+	desc = "Um moedor industrial com um adesivo escrito apropriado para o departamento de ciência. Mantenha as mãos longe da área de entrada enquanto opera."
 	circuit = /obj/item/circuitboard/machine/processor/slime
 
 /obj/machinery/processor/slime/fullupgrade //fully ugpraded stock parts
-	desc = "An industrial grinder with a sticker saying appropiated for bioterrorism department. keep hands clear of intake while operating."
+	desc = "Um moedor industrial com um adesivo dizendo que se apropriou para o departamento de bioterrorismo. Mantenha as mãos longe da entrada enquanto opera."
 	circuit = /obj/item/circuitboard/machine/processor/slime/fullupgrade
 
 /obj/machinery/processor/slime/Initialize(mapload)
@@ -283,8 +283,8 @@
 	return ..()
 
 /obj/item/circuit_component/slime_processor
-	display_name = "Slime Processor"
-	desc = "Allows to activate process and get the amount of processor contents."
+	display_name = "Processador de lama"
+	desc = "Permite ativar o processo e obter a quantidade de conteúdo do processador."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	///Activate process

@@ -1,6 +1,6 @@
 /obj/item/gun/energy/pulse
 	name = "pulse rifle"
-	desc = "A heavy-duty, multifaceted energy rifle with three modes. Preferred by front-line combat personnel."
+	desc = "Um rifle de energia multifacetado com três modos. Preferido pelo pessoal da linha de frente."
 	icon_state = "pulse"
 	inhand_icon_state = null
 	worn_icon_state = null
@@ -31,7 +31,7 @@
 	notify_ghosts(
 		"Someone won a pulse rifle as a prize!",
 		source = src,
-		header = "Pulse rifle prize",
+		header = "Prêmio de rifle de pulso",
 	)
 
 /obj/item/gun/energy/pulse/loyalpin
@@ -39,7 +39,7 @@
 
 /obj/item/gun/energy/pulse/carbine
 	name = "pulse carbine"
-	desc = "A compact variant of the pulse rifle with less firepower but easier storage."
+	desc = "Uma variante compacta do rifle de pulso com menos poder de fogo, mas mais fácil de armazenar."
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
 	icon_state = "pulse_carbine"
@@ -65,7 +65,7 @@
 
 /obj/item/gun/energy/pulse/destroyer
 	name = "pulse destroyer"
-	desc = "A heavy-duty energy rifle built for pure destruction."
+	desc = "Um rifle de energia pesado construído para pura destruição."
 	worn_icon_state = "pulse"
 	cell_type = /obj/item/stock_parts/power_store/cell/infinite
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/pulse)
@@ -75,7 +75,7 @@
 
 /obj/item/gun/energy/pulse/pistol
 	name = "pulse pistol"
-	desc = "A pulse rifle in an easily concealed handgun package with low capacity."
+	desc = "Um rifle de pulso em um pacote de arma facilmente escondido com baixa capacidade."
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT
 	icon_state = "pulse_pistol"
@@ -91,7 +91,7 @@
 
 /obj/item/gun/energy/pulse/pistol/m1911
 	name = "\improper M1911-P"
-	desc = "A compact pulse core in a classic handgun frame for Nanotrasen officers. It's not the size of the gun, it's the size of the hole it puts through people."
+	desc = "Um núcleo de pulso compacto em uma arma clássica para oficiais Nanotrasen. Não é do tamanho da arma, é do tamanho do buraco que atravessa as pessoas."
 	icon_state = "m1911"
 	inhand_icon_state = "gun"
 	cell_type = /obj/item/stock_parts/power_store/cell/infinite

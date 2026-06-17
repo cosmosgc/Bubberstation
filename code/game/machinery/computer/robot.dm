@@ -1,6 +1,6 @@
 /obj/machinery/computer/robotics
 	name = "robotics control console"
-	desc = "Used to remotely lockdown linked Cyborgs and Drones."
+	desc = "Costumava bloquear remotamente Cyborgs e Drones."
 	icon_screen = "robot"
 	icon_keyboard = "rd_key"
 	req_access = list(ACCESS_ROBOTICS)
@@ -97,7 +97,7 @@
 								R.ai_lockdown = FALSE
 								lock_unlock_borg(R)
 							else
-								to_chat(usr, span_danger("Cyborg locked by an user with superior permissions."))
+								to_chat(usr, span_danger("Cyborg trancado por um usuário com permissão superior."))
 						else
 							R.ai_lockdown = TRUE
 							lock_unlock_borg(R)
@@ -113,11 +113,11 @@
 							R.ai_lockdown = FALSE
 							lock_unlock_borg(R)
 						else if(R.lockcharge&&locked_down_borg!=R)
-							to_chat(usr, span_danger("The cyborg was locked by a different console."))
+							to_chat(usr, span_danger("O cyborg estava trancado por um console diferente."))
 						else
-							to_chat(usr, span_danger("You can lock down only one cyborg at a time."))
+							to_chat(usr, span_danger("Você pode trancar apenas um cyborg de cada vez."))
 			else
-				to_chat(usr, span_danger("Access Denied."))
+				to_chat(usr, span_danger("Acesso negado."))
 			if(!isnull(locked_down_borg))
 				use_power = ACTIVE_POWER_USE
 			else
@@ -170,7 +170,7 @@
 	log_silicon("[key_name(usr)] [!R.lockcharge ? "locked down" : "released"] [key_name(R)]!")
 	log_combat(usr, R, "[!R.lockcharge ? "locked down" : "released"] cyborg")
 	R.SetLockdown(!R.lockcharge)
-	to_chat(R, !R.lockcharge ? span_notice("Your lockdown has been lifted!") : span_alert("You have been locked down!"))
+	to_chat(R, !R.lockcharge ? span_notice("Seu confinamento foi suspenso!") : span_alert("Você foi preso!"))
 	if(!isnull(console_location))
 		to_chat(R, span_alert("The approximate location of the console that is keeping you locked down is [console_location]"))
 	if(R.connected_ai)

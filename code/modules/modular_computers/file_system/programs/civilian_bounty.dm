@@ -8,7 +8,7 @@
 	filedesc = "Civilian Bounties"
 	downloader_category = PROGRAM_CATEGORY_SUPPLY
 	program_open_overlay = "request"
-	extended_desc = "Nanotrasen Civilian Bounty Requisition Network interface for displaying wanted items."
+	extended_desc = "Nanotrasen Civilian Bounty Requisição Interface de rede para exibir itens procurados."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	can_run_on_flags = PROGRAM_LAPTOP | PROGRAM_PDA
 	size = 5

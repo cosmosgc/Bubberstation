@@ -2,7 +2,7 @@
 
 /obj/item/bonesetter/alien
 	name = "alien bonesetter"
-	desc = "A reversed engineered bonesetter... <b> This does not look nice to be on the receiving end of... </b>."
+	desc = "Um maquinista reverso...<b>Isso não parece legal estar no final da recepção...</b>."
 	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	icon_state = "bonesetter"
 	toolspeed = 0.25
@@ -83,7 +83,7 @@
 
 /datum/design/alienbonesetter
 	name = "Alien Bonesetter"
-	desc = "An abomination of reverse engineered tech, designed by a madman."
+	desc = "Uma abominação da engenharia reversa projetada por um louco."
 	id = "alien_bonesetter"
 	build_path = /obj/item/bonesetter/alien
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -95,14 +95,14 @@
 
 /obj/item/blood_filter/alien
 	name = "alien bloodfilter"
-	desc = "A reversed engineered bloodfilter... <b> This does not look nice to be on the receiving end of... </b>."
+	desc = "Um filtro de sangue invertido...<b>Isso não parece legal estar no final da recepção...</b>."
 	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	icon_state = "bloodfilter"
 	toolspeed = 0.25
 
 /datum/design/alienbloodfilter
 	name = "Alien Blood filter"
-	desc = "An abomination of reverse engineered tech, designed by a madman."
+	desc = "Uma abominação da engenharia reversa projetada por um louco."
 	id = "alien_bloodfilter"
 	build_path = /obj/item/blood_filter/alien
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
@@ -114,7 +114,7 @@
 
 /obj/item/blood_filter/advanced
 	name = "medical combitool"
-	desc = "An unholy combination of bonesetter and bloodfilter."
+	desc = "Uma combinação profana de ossos e filtro de sangue."
 	icon = 'modular_skyrat/modules/filtersandsetters/icons/surgery_tools.dmi'
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*6, /datum/material/glass = SHEET_MATERIAL_AMOUNT*2, /datum/material/silver = SHEET_MATERIAL_AMOUNT*2, /datum/material/titanium =SHEET_MATERIAL_AMOUNT * 2.5)
 	icon_state = "combitool"
@@ -164,7 +164,7 @@
 
 /datum/design/combitool
 	name = "Medical Combitool"
-	desc = "This tool can be either used as bloodfilter or bonesetter."
+	desc = "Esta ferramenta pode ser usada como filtro de sangue ou de ossos."
 	id = "combitool"
 	build_path = /obj/item/blood_filter/advanced
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB

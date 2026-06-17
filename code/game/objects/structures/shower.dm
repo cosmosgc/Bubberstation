@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(shower_mode_descriptions, list(
 
 /obj/machinery/shower
 	name = "shower"
-	desc = "The HS-452. Installed in the 2550s by the Nanotrasen Hygiene Division, now with 2560 lead compliance! Passively replenishes itself with water when not in use."
+	desc = "O HS-452. Instalado na década de 2550 pela Divisão de Higiene Nanotrasen, agora com 2560 de conformidade! Se reabastece passivamente com água quando não está em uso."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "shower"
 	density = FALSE
@@ -96,9 +96,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 
 /obj/machinery/shower/examine(mob/user)
 	. = ..()
-	. += span_notice("It looks like the thermostat has a pair of buttons and a manual adjustment screw.") // BUBBER EDIT CHANGE - Original: "It looks like the thermostat has an adjustment screw."
+	. += span_notice("Parece que o termostato tem botões e um parafuso de ajuste manual.") // BUBBER EDIT CHANGE - Original: "Parece que o termostato tem um parafuso de ajuste."
 	if(has_water_reclaimer)
-		. += span_notice("A water recycler is installed. It looks like you could pry it out.")
+		. += span_notice("Um reciclador de água está instalado. Parece que você poderia tirá-lo.")
 	. += span_info("The current shower mode is [span_bold(GLOB.shower_mode_descriptions["[mode]"])].") // BUBBER EDIT CHANGE - Showers have infinite water - Original: "The auto shut-off is programmed to [GLOB.shower_mode_descriptions["[mode]"]]."
 	. += span_notice("[reagents.total_volume]/[reagents.maximum_volume] liquids remaining.")
 
@@ -141,7 +141,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 /obj/machinery/shower/attackby(obj/item/tool, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(tool, /obj/item/stock_parts/water_recycler))
 		if(has_water_reclaimer)
-			to_chat(user, span_warning("There is already has a water recycler installed."))
+			to_chat(user, span_warning("Já tem um reciclador de água instalado."))
 			return
 
 		playsound(src, 'sound/machines/click.ogg', 20, TRUE)
@@ -167,7 +167,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	if(.)
 		return
 	if(!has_water_reclaimer)
-		to_chat(user, span_warning("There isn't a water recycler to remove."))
+		to_chat(user, span_warning("Não há um reciclador de água para remover."))
 		return
 
 	tool.play_tool_sound(src)
@@ -392,7 +392,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	name = "shower frame"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "shower_frame"
-	desc = "A shower frame, that needs a water recycler to finish construction."
+	desc = "Um chuveiro, que precisa de um reciclador de água para terminar a construção."
 	anchored = FALSE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 

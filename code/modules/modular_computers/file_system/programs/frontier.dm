@@ -2,7 +2,7 @@
 	filename = "ntfrontier"
 	filedesc = "NT Frontier"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
-	extended_desc = "Scientific paper publication and navigation software."
+	extended_desc = "Publicação de papel científico e software de navegação."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 12
 	program_open_overlay = "research"
@@ -32,7 +32,7 @@
 	if(QDELETED(used_multitool.buffer) || !istype(used_multitool.buffer, /datum/techweb))
 		return ITEM_INTERACT_BLOCKING
 	linked_techweb = used_multitool.buffer
-	computer.balloon_alert(user, "buffer linked!")
+	computer.balloon_alert(user, "Tampão ligado!")
 	return ITEM_INTERACT_SUCCESS
 
 /datum/computer_file/program/scipaper_program/proc/recheck_file_presence()

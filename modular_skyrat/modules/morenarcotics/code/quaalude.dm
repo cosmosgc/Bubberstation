@@ -6,7 +6,7 @@
 
 /datum/reagent/drug/quaalude
 	name = "Quaalude"
-	description = "Relaxes the user, putting them in a hypnotic, drugged state. A favorite drug of kids from Brooklyn." //THAT WAS THE BEST FUCKIN DRUG EVER MADE
+	description = "Relaxa o usuário, colocando-os em um estado hipnótico, drogado. Uma droga favorita de crianças do Brooklyn." //THAT WAS THE BEST FUCKIN DRUG EVER MADE
 	color = "#ffe669"
 	overdose_threshold = 20
 	ph = 8

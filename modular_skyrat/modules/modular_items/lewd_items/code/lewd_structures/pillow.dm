@@ -6,7 +6,7 @@
 
 /obj/item/fancy_pillow
 	name = "pillow"
-	desc = "A big, soft pillow."
+	desc = "Um travesti grande e macio."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -156,7 +156,7 @@
 
 /obj/structure/bed/pillow_tiny
 	name = "pillow"
-	desc = "A tiny pillow, for tiny heads."
+	desc = "Um pequeno travesseiro, para cabeças pequenas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillow_pink_round"
 	base_icon_state = "pillow"
@@ -232,7 +232,7 @@
 			qdel(src)
 			qdel(used_pillow)
 		else
-			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("Você acha que essas cores se chocariam...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -243,7 +243,7 @@
 
 /obj/structure/chair/pillow_small
 	name = "small pillow pile"
-	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
+	desc = "Uma pequena pilha de travesseiros. Um assento confortável, especialmente para taurs ou nagas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_small_pink"
 	base_icon_state = "pillowpile_small"
@@ -339,7 +339,7 @@
 			qdel(src)
 			qdel(used_pillow)
 		else
-			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("Você acha que essas cores se chocariam...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -354,7 +354,7 @@
 
 /obj/structure/bed/pillow_large
 	name = "large pillow pile"
-	desc = "A large pile of pillows. Jump on it!"
+	desc = "Uma grande pilha de travestis. Pule nele!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large_pink"
 	base_icon_state = "pillowpile_large"

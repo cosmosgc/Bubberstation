@@ -7,7 +7,7 @@
  */
 /mob/living/basic/gorilla
 	name = "Gorilla"
-	desc = "A ground-dwelling, predominantly herbivorous ape which usually inhabits the forests of central Africa but today is quite far away from there."
+	desc = "Um símio predominantemente herbívoro que geralmente habita as florestas da África central, mas hoje está bem longe de lá."
 	icon = 'icons/mob/simple/gorilla.dmi'
 	icon_state = "crawling"
 	icon_living = "crawling"
@@ -73,8 +73,8 @@
 	. = ..()
 	if (!HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FITNESS))
 		return
-	. += span_notice("This animal appears to be in peak physical condition and yet it has probably never worked out a day in its life. \
-		The untapped potential is almost frightening.")
+	. += span_notice("Este animal parece estar em alta condição física e ainda assim provavelmente nunca trabalhou um dia em sua vida.\
+O potencial inexplorado é quase assustador.")
 
 /mob/living/basic/gorilla/update_overlays()
 	. = ..()
@@ -116,7 +116,7 @@
 	return ..()
 
 /mob/living/basic/gorilla/can_use_guns(obj/item/gun)
-	to_chat(src, span_warning("Your meaty finger is much too large for the trigger guard!"))
+	to_chat(src, span_warning("Seu dedo carnudo é muito grande para o gatilho!"))
 	return FALSE
 
 /// Assert your dominance with audio cues
@@ -137,7 +137,7 @@
 /// A smaller gorilla summoned via magic
 /mob/living/basic/gorilla/lesser
 	name = "lesser Gorilla"
-	desc = "An adolescent Gorilla. It may not be fully grown but, much like a banana, that just means it's sturdier and harder to chew!"
+	desc = "Um gorila adolescente. Pode não ser totalmente crescido, mas, muito parecido com uma banana, isso significa que é mais forte e mais difícil de mastigar!"
 	maxHealth = 120
 	health = 120
 	speed = 0.35
@@ -152,7 +152,7 @@
 /mob/living/basic/gorilla/cargorilla
 	name = "Cargorilla" // Overriden, normally
 	icon = 'icons/mob/simple/cargorillia.dmi'
-	desc = "Cargo's pet gorilla. They seem to have an 'I love Mom' tattoo."
+	desc = "O gorila de estimação da carga. Parecem ter uma tatuagem \"Eu amo a mamãe\"."
 	maxHealth = 200
 	health = 200
 	faction = list(FACTION_NEUTRAL, FACTION_MONKEY, FACTION_JUNGLE)
@@ -169,7 +169,7 @@
 	name = "Lab Gorilla"
 	maxHealth = 180
 	health = 180
-	desc = "A gorilla created via \"advanced genetic science\". While not quite as strong as their wildborne brethren, this simian still packs a punch."
+	desc = "Um gorila criado via\"ciência genética avançada\"Apesar de não ser tão forte quanto seus irmãos selvagens, este símio ainda dá um soco."
 	melee_damage_lower = 15
 	melee_damage_upper = 18
 	obj_damage = 25
@@ -181,7 +181,7 @@
 	name = "Feral Gorilla"
 	maxHealth = 180
 	health = 180
-	desc = "A gorilla created via \"advanced genetic science\". While not quite as strong as their wildborne brethren, this simian still packs a punch."
+	desc = "Um gorila criado via\"ciência genética avançada\"Apesar de não ser tão forte quanto seus irmãos selvagens, este símio ainda dá um soco."
 	melee_damage_lower = 15
 	melee_damage_upper = 18
 	obj_damage = 25

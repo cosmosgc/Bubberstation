@@ -205,11 +205,11 @@
 		var/obj/item/clothing/sextoy/existing_item = target.vars[item_index]
 
 		if(!existing_item && !new_item)
-			source.show_message(span_warning("No item to insert or remove!"))
+			source.show_message(span_warning("Nenhum item para inserir ou remover!"))
 			return
 
 		if(!existing_item && !istype(new_item))
-			source.show_message(span_warning("The item you're holding is not a toy!"))
+			source.show_message(span_warning("O item que está segurando não é um brinquedo!"))
 			return
 
 		if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
@@ -218,7 +218,7 @@
 			var/into_or_onto = internal ? "into" : "onto"
 
 			if(existing_item)
-				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("Você ouve alguém tentando remover algo de alguém próximo."), vision_distance = 1, ignored_mobs = list(target))
 			else if (new_item)
 				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
 			if (source != target)
@@ -231,7 +231,7 @@
 				) && can_lewd_strip(source, target, item_index))
 
 				if(existing_item)
-					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
+					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("Você ouve alguém remover algo de alguém próximo."), vision_distance = 1)
 					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
 					target.vars[item_index] = null
 				else if (new_item)

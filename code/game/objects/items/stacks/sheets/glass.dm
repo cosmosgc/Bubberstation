@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 
 /obj/item/stack/sheet/glass
 	name = "glass"
-	desc = "HOLY SHEET! That is a lot of glass."
-	singular_name = "glass sheet"
+	desc = "Santo Deus! Isso é muito vidro."
+	singular_name = "Folha de vidro"
 	icon_state = "sheet-glass"
 	inhand_icon_state = "sheet-glass"
 	mats_per_unit = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT)
@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if (get_amount() < 1 || CC.get_amount() < 5)
-			to_chat(user, span_warning("You need five lengths of coil and one sheet of glass to make wired glass!"))
+			to_chat(user, span_warning("Você precisa de cinco comprimentos de bobina e uma folha de vidro para fazer vidro com fio!"))
 			return
 		CC.use(5)
 		use(1)
@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 			if(QDELETED(src) && replace && !QDELETED(RG))
 				user.put_in_hands(RG)
 		else
-			to_chat(user, span_warning("You need one rod and one sheet of glass to make reinforced glass!"))
+			to_chat(user, span_warning("Você precisa de uma haste e uma folha de vidro para fazer vidro reforçado!"))
 		return
 	return ..()
 
@@ -91,8 +91,8 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 
 /obj/item/stack/sheet/plasmaglass
 	name = "plasma glass"
-	desc = "A glass sheet made out of a plasma-silicate alloy. It looks extremely tough and heavily fire resistant."
-	singular_name = "plasma glass sheet"
+	desc = "Uma folha de vidro feita de uma liga de silício de plasma. Parece extremamente resistente e resistente ao fogo."
+	singular_name = "Folha de vidro de plasma"
 	icon_state = "sheet-pglass"
 	inhand_icon_state = "sheet-pglass"
 	mats_per_unit = list(/datum/material/alloy/plasmaglass=SHEET_MATERIAL_AMOUNT)
@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 			if(QDELETED(src) && replace)
 				user.put_in_hands(RG)
 		else
-			to_chat(user, span_warning("You need one rod and one sheet of plasma glass to make reinforced plasma glass!"))
+			to_chat(user, span_warning("Você precisa de uma haste e uma folha de vidro de plasma para fazer vidro de plasma reforçado!"))
 			return
 	else
 		return ..()
@@ -151,8 +151,8 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 
 /obj/item/stack/sheet/rglass
 	name = "reinforced glass"
-	desc = "Glass which seems to have rods or something stuck in them."
-	singular_name = "reinforced glass sheet"
+	desc = "Vidro que parece ter varas ou algo preso neles."
+	singular_name = "Folha de vidro reforçada"
 	icon_state = "sheet-rglass"
 	inhand_icon_state = "sheet-rglass"
 	mats_per_unit = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 0.5, /datum/material/glass=SHEET_MATERIAL_AMOUNT)
@@ -191,8 +191,8 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 
 /obj/item/stack/sheet/plasmarglass
 	name = "reinforced plasma glass"
-	desc = "A glass sheet made out of a plasma-silicate alloy and a rod matrix. It looks hopelessly tough and nearly fire-proof!"
-	singular_name = "reinforced plasma glass sheet"
+	desc = "Uma folha de vidro feita de uma liga de silicone de plasma e uma matriz de haste. Parece irremediavelmente duro e quase à prova de fogo!"
+	singular_name = "Folha de vidro de plasma reforçada"
 	icon_state = "sheet-prglass"
 	inhand_icon_state = "sheet-prglass"
 	mats_per_unit = list(/datum/material/alloy/plasmaglass=SHEET_MATERIAL_AMOUNT, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 0.5)
@@ -228,8 +228,8 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 
 /obj/item/stack/sheet/titaniumglass
 	name = "titanium glass"
-	desc = "A glass sheet made out of a titanium-silicate alloy."
-	singular_name = "titanium glass sheet"
+	desc = "Uma folha de vidro feita de uma liga de silicato de titânio."
+	singular_name = "Folha de vidro de titânio"
 	icon_state = "sheet-titaniumglass"
 	inhand_icon_state = "sheet-titaniumglass"
 	mats_per_unit = list(/datum/material/alloy/titaniumglass=SHEET_MATERIAL_AMOUNT)
@@ -259,8 +259,8 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 /obj/item/stack/sheet/plastitaniumglass
 	name = "plastitanium glass"
-	desc = "A glass sheet made out of a plasma-titanium-silicate alloy."
-	singular_name = "plastitanium glass sheet"
+	desc = "Uma folha de vidro feita de uma liga de silicone de plasma."
+	singular_name = "Folha de vidro de plastânio"
 	icon_state = "sheet-plastitaniumglass"
 	inhand_icon_state = "sheet-plastitaniumglass"
 	mats_per_unit = list(/datum/material/alloy/plastitaniumglass=SHEET_MATERIAL_AMOUNT)
@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 /obj/item/shard
 	name = "shard"
-	desc = "A nasty looking shard of glass."
+	desc = "Um pedaço de vidro feio."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "large"
 	icon_angle = -45
@@ -406,7 +406,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 /obj/item/shard/plasma
 	name = "purple shard"
-	desc = "A nasty looking shard of plasma glass."
+	desc = "Um pedaço de vidro de plasma feio."
 	force = 6
 	throwforce = 11
 	icon_state = "plasmalarge"
@@ -419,7 +419,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 /obj/item/shard/titanium
 	name = "bright shard"
-	desc = "A nasty looking shard of titanium infused glass."
+	desc = "Um pedaço desagradável de vidro infundido em titânio."
 	throwforce = 12
 	icon_state = "titaniumlarge"
 	inhand_icon_state = "shard-titanium"
@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 
 /obj/item/shard/plastitanium
 	name = "dark shard"
-	desc = "A nasty looking shard of titanium infused plasma glass."
+	desc = "Um pedaço desagradável de titânio infundido em vidro de plasma."
 	force = 7
 	throwforce = 12
 	icon_state = "plastitaniumlarge"

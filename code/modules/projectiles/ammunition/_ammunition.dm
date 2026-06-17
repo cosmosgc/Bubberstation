@@ -1,6 +1,6 @@
 /obj/item/ammo_casing
 	name = "bullet casing"
-	desc = "A bullet casing."
+	desc = "Um cartucho de bala."
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	icon_state = "s-casing"
 	worn_icon_state = "bullet"
@@ -151,7 +151,7 @@
 				box.update_appearance()
 				to_chat(user, span_notice("You collect [boolets] [box.casing_phrasing]\s. [box] now contains [box.stored_ammo.len] [box.casing_phrasing]\s."))
 			else
-				to_chat(user, span_warning("You fail to collect anything!"))
+				to_chat(user, span_warning("Você não consegue coletar nada!"))
 	else
 		return ..()
 

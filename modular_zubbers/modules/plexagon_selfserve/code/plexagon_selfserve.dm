@@ -7,7 +7,7 @@
 	filedesc = "Plexagon Punch Clock"
 	downloader_category = PROGRAM_CATEGORY_SECURITY
 	program_open_overlay = "id"
-	extended_desc = "Allows crew members to remotely punch in or out of their job assignment, giving the impression they have a semblance of control over their lives."
+	extended_desc = "Permite que os tripulantes entrem ou saiam do trabalho, dando a impressão de que eles têm uma aparência de controle sobre suas vidas."
 	program_flags = PROGRAM_ON_NTNET_STORE
 	size = 4
 	tgui_id = "NtosSelfServe"
@@ -71,11 +71,11 @@
 
 	var/important = job_is_CMD_or_SEC()
 	if(important)
-		if(tgui_alert(usr, "You are a member of security and/or command, make sure that you ahelp before punching out! If you decide to punch back in later, you will need to go to the Head of Personnel or Head of Security. Do you wish to continue?", "[src]", list("No", "Yes")) != "Yes")
+		if(tgui_alert(usr, "Você é um membro da segurança e/ou comando, certifique-se de que você ajuda antes de bater para fora! Se você decidir voltar mais tarde, você vai precisar ir para o Chefe de Pessoal ou Chefe de Segurança. Quer continuar?", "[src]", list("No", "Yes")) != "Yes")
 			return FALSE
 
 	if(istype(authenticated_card.trim, /datum/id_trim/job/prisoner))
-		tgui_alert(usr, "You cannot clock out of prison. Nice try, inmate.")
+		tgui_alert(usr, "Você não pode sair da prisão. Boa tentativa, detenta.")
 		return TRUE
 
 	log_econ("[authenticated_card.registered_name] clocked out from role [authenticated_card.get_trim_assignment()]")
@@ -234,7 +234,7 @@
 
 	shame_box.locked_contents = english_list(shamebox_items)
 	do_harmless_sparks(number = 4, source = shame_box)
-	to_chat(human_user, span_warning("You feel weight lifted off your shoulders as items are teleported off your body!"))
+	to_chat(human_user, span_warning("Você sente o peso tirado dos ombros enquanto os itens são teleportados do seu corpo!"))
 	to_chat(human_user, span_notice("Items moved to lockbox: [shame_box.locked_contents]."))
 	computer.say(
 		message = "A service contract between Nanotrasen and Lustwish stipulates that company issued batons, masks, restraints, and other equipment are not to be used for recreational purposes. Employees may purchase recreational provisions from an approved vendor. Your restricted items have been placed in a lockbox to be retrieved after punch in.",

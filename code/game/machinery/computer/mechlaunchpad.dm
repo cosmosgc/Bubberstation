@@ -1,6 +1,6 @@
 /obj/machinery/computer/mechpad
 	name = "orbital mech pad console"
-	desc = "A computer designed to handle the calculations and routing required for sending and receiving mechs from orbit. Requires a link to a nearby Orbital Mech Pad to function."
+	desc = "Um computador projetado para lidar com os cálculos e roteamento necessários para enviar e receber mechs de órbita. Requer um link para um Mech Pad orbital próximo para funcionar."
 	icon_screen = "mechpad"
 	icon_keyboard = "teleport_key"
 	circuit = /obj/item/circuitboard/computer/mechpad
@@ -51,10 +51,10 @@
 	if(user.combat_mode || machine_stat & (NOPOWER|BROKEN) || DOING_INTERACTION_WITH_TARGET(user, src))
 		return ..()
 	var/mech_dir = mecha_attacker.dir
-	balloon_alert(user, "carefully starting launch process...")
+	balloon_alert(user, "Iniciando cuidadosamente o processo de lançamento...")
 	INVOKE_ASYNC(src, PROC_REF(random_beeps), user, MECH_LAUNCH_TIME, 0.5 SECONDS, 1.5 SECONDS)
 	if(!do_after(user, MECH_LAUNCH_TIME, src, extra_checks = CALLBACK(src, PROC_REF(do_after_checks), mecha_attacker, mech_dir)))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return
 	var/obj/machinery/mechpad/current_pad = mechpads[selected_id]
 	try_launch(user, current_pad)
@@ -145,7 +145,7 @@
 /obj/machinery/computer/mechpad/proc/can_launch(mob/user, obj/machinery/mechpad/where, silent = FALSE)
 	if(QDELETED(where))
 		if(!silent)
-			to_chat(user, span_warning("No destination!"))
+			to_chat(user, span_warning("Sem destino!"))
 		return FALSE
 	if(!connected_mechpad)
 		if(!silent)
@@ -153,11 +153,11 @@
 		return FALSE
 	if(connected_mechpad.machine_stat & (BROKEN|NOPOWER) || where.machine_stat & (BROKEN|NOPOWER))
 		if(!silent)
-			to_chat(user, span_warning("Pads are nonfunctional!"))
+			to_chat(user, span_warning("Almofadas não funcionam!"))
 		return FALSE
 	if(connected_mechpad.panel_open || where.panel_open)
 		if(!silent)
-			to_chat(user, span_warning("Pads have open panels!"))
+			to_chat(user, span_warning("Pads têm painéis abertos!"))
 		return FALSE
 	var/obj/vehicle/sealed/mecha/mech = locate() in get_turf(connected_mechpad)
 	if(!mech)
@@ -166,7 +166,7 @@
 		return FALSE
 	if(where.mech_only && (locate(/mob/living) in mech.get_all_contents()))
 		if(!silent)
-			to_chat(user, span_warning("The target pad does not allow lifeforms!"))
+			to_chat(user, span_warning("A plataforma alvo não permite formas de vida!"))
 		return FALSE
 	return TRUE
 
@@ -219,7 +219,7 @@
 				return
 			current_pad.display_name = new_name
 		if("remove")
-			if(usr && tgui_alert(usr, "Are you sure?", "Unlink Orbital Pad", list("I'm Sure", "Abort")) == "I'm Sure")
+			if(usr && tgui_alert(usr, "Tem certeza?", "Unlink Orbital Pad", list("I'm Sure", "Abort")) == "I'm Sure")
 				remove_pad(current_pad)
 				selected_id = null
 		if("launch")

@@ -9,14 +9,14 @@
 
 /datum/supply_pack/service/export_gate
 	name = "Bounty Cube Export Gate"
-	desc = "Automatically registers bounty cube exports, for the logistics automation nerd in you."
+	desc = "Registra automaticamente as exportações de cubos de recompensa, para o nerd da automação logística em você."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/flatpack/export_gate)
-	crate_name = "export gate crate"
+	crate_name = "Caixa do portão de exportação"
 
 /obj/machinery/export_gate
 	name = "export gate"
-	desc = "Automatically registers bounty cube exports, for the logistics automation nerd in you. Pays out to active cargo techs."
+	desc = "Registra automaticamente as exportações de cubos de recompensa, para o nerd da automação logística em você. Paga para técnicos de carga ativos."
 	icon = 'icons/obj/machines/scangate.dmi'
 	icon_state = "scangate_black"
 	circuit = /obj/item/circuitboard/machine/export_gate
@@ -110,14 +110,14 @@
 
 /obj/machinery/export_gate/examine()
 	. = ..()
-	. += span_notice("The status display reads:")
+	. += span_notice("A exibição de status diz:")
 	. += span_info("Income last cycle: <b>[income_previous] cr.</b>")
 	. += span_info("Share per account last cycle: <b>[income_share] cr.</b>")
 	. += span_info("Payment mode: <b>[display_payment_mode()].</b>")
 	. += span_info("Registered crew accounts last cycle: <b>[LAZYLEN(payment_accounts)]</b>")
 	. += span_info("Total cubes registered: <b>[cubes_registered]</b>")
 	. += span_info("Total income: <b>[income_total] cr.</b>")
-	. += span_notice("The payment mode can be changed by swiping an authorized command ID card.")
+	. += span_notice("O modo de pagamento pode ser alterado com um cartão de identificação autorizado.")
 
 /obj/machinery/export_gate/wrench_act(mob/living/user, obj/item/tool)
 	default_unfasten_wrench(user, tool)
@@ -309,7 +309,7 @@
 			set_payment_mode(user, id_card)
 			return ITEM_INTERACT_SUCCESS
 		else
-			user.balloon_alert(user, "insufficient access!")
+			user.balloon_alert(user, "Acessível!")
 			return ITEM_INTERACT_BLOCKING
 
 /datum/controller/subsystem/economy/issue_paydays()
@@ -370,7 +370,7 @@
 
 /datum/design/board/export_gate
 	name = "Export Gate Board"
-	desc = "The circuit board for an export gate."
+	desc = "A placa de circuito para um portão de exportação."
 	id = "export_gate"
 	build_path = /obj/item/circuitboard/machine/export_gate
 	category = list(

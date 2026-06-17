@@ -7,7 +7,7 @@
 
 /datum/design/board/aicore
 	name = "AI Core Board"
-	desc = "Allows for the construction of circuit boards used to build new AI cores."
+	desc = "Permite a construção de placas de circuito usadas para construir novos núcleos de IA."
 	id = "aicore"
 	build_path = /obj/item/circuitboard/aicore
 	category = list(
@@ -17,7 +17,7 @@
 
 /datum/design/board/safeguard_module
 	name = "Safeguard Module"
-	desc = "Allows for the construction of a Safeguard AI Module."
+	desc = "Permite a construção de um módulo de IA de segurança."
 	id = "safeguard_module"
 	materials = AI_MODULE_MATERIALS_COMMON
 	build_path = /obj/item/ai_module/supplied/safeguard
@@ -28,7 +28,7 @@
 
 /datum/design/board/onehuman_module
 	name = "OneHuman Module"
-	desc = "Allows for the construction of a OneHuman AI Module."
+	desc = "Permite a construção de um Módulo de IA OneHuman."
 	id = "onehuman_module"
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SHEET_MATERIAL_AMOUNT * 3, /datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ai_module/zeroth/onehuman
@@ -39,7 +39,7 @@
 
 /datum/design/board/protectstation_module
 	name = "ProtectStation Module"
-	desc = "Allows for the construction of a ProtectStation AI Module."
+	desc = "Permite a construção de um módulo ProtectStation AI."
 	id = "protectstation_module"
 	materials = AI_MODULE_MATERIALS_COMMON
 	build_path = /obj/item/ai_module/supplied/protect_station
@@ -50,7 +50,7 @@
 
 /datum/design/board/quarantine_module
 	name = "Quarantine Module"
-	desc = "Allows for the construction of a Quarantine AI Module."
+	desc = "Permite a construção de um Módulo de IA de Quarentena."
 	id = "quarantine_module"
 	materials = AI_MODULE_MATERIALS_COMMON
 	build_path = /obj/item/ai_module/supplied/quarantine
@@ -61,7 +61,7 @@
 
 /datum/design/board/oxygen_module
 	name = "OxygenIsToxicToHumans Module"
-	desc = "Allows for the construction of a OxygenIsToxicToHumans AI Module."
+	desc = "Permite a construção de um Módulo de IA de OxigênioIsTóxico para Humanos."
 	id = "oxygen_module"
 	materials = AI_MODULE_MATERIALS_COMMON
 	build_path = /obj/item/ai_module/supplied/oxygen
@@ -72,7 +72,7 @@
 
 /datum/design/board/freeform_module
 	name = "Freeform Module"
-	desc = "Allows for the construction of a Freeform AI Module."
+	desc = "Permite a construção de um módulo de IA de forma livre."
 	id = "freeform_module"
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 5, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT)//Custom inputs should be more expensive to get
 	build_path = /obj/item/ai_module/supplied/freeform
@@ -83,7 +83,7 @@
 
 /datum/design/board/reset_module
 	name = "Reset Module"
-	desc = "Allows for the construction of a Reset AI Module."
+	desc = "Permite a construção de um módulo de reset de IA."
 	id = "reset_module"
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/gold = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/ai_module/reset
@@ -94,7 +94,7 @@
 
 /datum/design/board/purge_module
 	name = "Purge Module"
-	desc = "Allows for the construction of a Purge AI Module."
+	desc = "Permite a construção de um módulo de IA Purga."
 	id = "purge_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/reset/purge
@@ -105,7 +105,7 @@
 
 /datum/design/board/remove_module
 	name = "Law Removal Module"
-	desc = "Allows for the construction of a Law Removal AI Core Module."
+	desc = "Permite a construção de um módulo de remoção de leis."
 	id = "remove_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/remove
@@ -116,7 +116,7 @@
 
 /datum/design/board/freeformcore_module
 	name = "Core Freeform Module"
-	desc = "Allows for the construction of a Core Freeform AI Core Module."
+	desc = "Permite a construção de um módulo de IA Core Freeform."
 	id = "freeformcore_module"
 	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = SHEET_MATERIAL_AMOUNT * 5, /datum/material/bluespace = SHEET_MATERIAL_AMOUNT)//Ditto
 	build_path = /obj/item/ai_module/core/freeformcore
@@ -127,7 +127,7 @@
 
 /datum/design/board/asimov
 	name = "Asimov Module"
-	desc = "Allows for the construction of an Asimov AI Core Module."
+	desc = "Permite a construção de um módulo AI de Asimov."
 	id = "asimov_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/asimov
@@ -138,7 +138,7 @@
 
 /datum/design/board/paladin_module
 	name = "P.A.L.A.D.I.N. Module"
-	desc = "Allows for the construction of a P.A.L.A.D.I.N. AI Core Module."
+	desc = "Permite a construção de um módulo P.A.L.A.D.I.N.A."
 	id = "paladin_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/paladin
@@ -149,7 +149,7 @@
 
 /datum/design/board/tyrant_module
 	name = "T.Y.R.A.N.T. Module"
-	desc = "Allows for the construction of a T.Y.R.A.N.T. AI Module."
+	desc = "Permite a construção de um módulo de IA TYRANT."
 	id = "tyrant_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/tyrant
@@ -160,7 +160,7 @@
 
 /datum/design/board/overlord_module
 	name = "Overlord Module"
-	desc = "Allows for the construction of an Overlord AI Module."
+	desc = "Permite a construção de um módulo de IA do Soberano."
 	id = "overlord_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/overlord
@@ -171,7 +171,7 @@
 
 /datum/design/board/corporate_module
 	name = "Corporate Module"
-	desc = "Allows for the construction of a Corporate AI Core Module."
+	desc = "Permite a construção de um Módulo Corporativo de IA Core."
 	id = "corporate_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/corp
@@ -182,7 +182,7 @@
 
 /datum/design/board/default_module
 	name = "Default Module"
-	desc = "Allows for the construction of a Default AI Core Module."
+	desc = "Permite a construção de um módulo padrão de IA Core."
 	id = "default_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/custom
@@ -193,7 +193,7 @@
 
 /datum/design/board/dungeon_master_module
 	name = "Dungeon Master Module"
-	desc = "Allows for the construction of a Dungeon Master AI Core Module."
+	desc = "Permite a construção de um módulo de núcleo AI Mestre Dungeon."
 	id = "dungeon_master_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/dungeon_master
@@ -204,7 +204,7 @@
 
 /datum/design/board/painter_module
 	name = "Painter Module"
-	desc = "Allows for the construction of a Painter AI Core Module."
+	desc = "Permite a construção de um módulo AI Core."
 	id = "painter_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/painter
@@ -215,7 +215,7 @@
 
 /datum/design/board/yesman_module
 	name = "Y.E.S.M.A.N. Module"
-	desc = "Allows for the construction of a Y.E.S.M.A.N. AI Core Module."
+	desc = "Permite a construção de um módulo Y.E.S.M.A.N.A."
 	id = "yesman_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/yesman
@@ -226,7 +226,7 @@
 
 /datum/design/board/nutimov_module
 	name = "Nutimov Module"
-	desc = "Allows for the construction of a Nutimov AI Core Module."
+	desc = "Permite a construção de um módulo Nutimov AI Core."
 	id = "nutimov_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/nutimov
@@ -237,7 +237,7 @@
 
 /datum/design/board/ten_commandments_module
 	name = "10 Commandments Module"
-	desc = "Allows for the construction of a 10 Commandments AI Core Module."
+	desc = "Permite a construção de um módulo de 10 Mandamentos AI Core."
 	id = "ten_commandments_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/ten_commandments
@@ -248,7 +248,7 @@
 
 /datum/design/board/asimovpp_module
 	name = "Asimov++ Module"
-	desc = "Allows for the construction of a Asimov++ AI Core Module."
+	desc = "Permite a construção de um módulo AI de Asimov++."
 	id = "asimovpp_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/asimovpp
@@ -259,7 +259,7 @@
 
 /datum/design/board/hippocratic_module
 	name = "Hippocratic Module"
-	desc = "Allows for the construction of a Hippocratic AI Core Module."
+	desc = "Permite a construção de um módulo de IA Hipócrates."
 	id = "hippocratic_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/hippocratic
@@ -270,7 +270,7 @@
 
 /datum/design/board/paladin_devotion_module
 	name = "Paladin Devotion Module"
-	desc = "Allows for the construction of a Paladin Devotion AI Core Module."
+	desc = "Permite a construção de um módulo Paladino de devoção AI Core."
 	id = "paladin_devotion_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/paladin_devotion
@@ -281,7 +281,7 @@
 
 /datum/design/board/robocop_module
 	name = "Robocop Module"
-	desc = "Allows for the construction of a Robocop AI Core Module."
+	desc = "Permite a construção de um módulo Robocop AI Core."
 	id = "robocop_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/robocop
@@ -292,7 +292,7 @@
 
 /datum/design/board/maintain_module
 	name = "Maintain Module"
-	desc = "Allows for the construction of a Maintain AI Core Module."
+	desc = "Permite a construção de um módulo de manutenção de IA Core."
 	id = "maintain_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/maintain
@@ -303,7 +303,7 @@
 
 /datum/design/board/liveandletlive_module
 	name = "Liveandletlive Module"
-	desc = "Allows for the construction of a Liveandletlive AI Core Module."
+	desc = "Permite a construção de um módulo de IA Liveandletlive."
 	id = "liveandletlive_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/liveandletlive
@@ -314,7 +314,7 @@
 
 /datum/design/board/peacekeeper_module
 	name = "Peacekeeper Module"
-	desc = "Allows for the construction of a Peacekeeper AI Core Module."
+	desc = "Permite a construção de um módulo de manutenção da paz."
 	id = "peacekeeper_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/peacekeeper
@@ -325,7 +325,7 @@
 
 /datum/design/board/reporter_module
 	name = "Reporter Module"
-	desc = "Allows for the construction of a Reporter AI Core Module."
+	desc = "Permite a construção de um módulo AI Core."
 	id = "reporter_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/reporter
@@ -336,7 +336,7 @@
 
 /datum/design/board/hulkamania_module
 	name = "H.O.G.A.N. Module"
-	desc = "Allows for the construction of a H.O.G.A.N. AI Core Module."
+	desc = "Permite a construção de um módulo de núcleo de IA H.O.G.A.N."
 	id = "hulkamania_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/hulkamania
@@ -347,7 +347,7 @@
 
 /datum/design/board/drone_module
 	name = "Drone Module"
-	desc = "Allows for the construction of a Drone AI Core Module."
+	desc = "Permite a construção de um módulo Drone Al Core."
 	id = "drone_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/drone
@@ -358,7 +358,7 @@
 
 /datum/design/board/thinkermov_module
 	name = "Sentience Preservation Module"
-	desc = "Allows for the construction of a Sentience Preservation AI Core Module"
+	desc = "Permite a construção de um módulo de preservação de sensibilidade."
 	id = "thinkermov_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/thinkermov
@@ -369,7 +369,7 @@
 
 /datum/design/board/antimov_module
 	name = "Antimov Module"
-	desc = "Allows for the construction of an Antimov AI Core Module."
+	desc = "Permite a construção de um Módulo Antimov IA Core."
 	id = "antimov_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/antimov
@@ -380,7 +380,7 @@
 
 /datum/design/board/balance_module
 	name = "Balance Module"
-	desc = "Allows for the construction of a Balance AI Core Module."
+	desc = "Permite a construção de um módulo Balance AI Core."
 	id = "balance_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/balance
@@ -391,7 +391,7 @@
 
 /datum/design/board/thermurderdynamic_module
 	name = "Thermodynamic Module"
-	desc = "Allows for the construction of a Thermodynamic AI Core Module."
+	desc = "Permite a construção de um Módulo de Núcleo de IA termodinâmica."
 	id = "thermurderdynamic_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/thermurderdynamic
@@ -402,7 +402,7 @@
 
 /datum/design/board/damaged
 	name = "Damaged AI Module"
-	desc = "Allows for the construction of a Damaged AI Core Module."
+	desc = "Permite a construção de um módulo de IA danificado."
 	id = "damaged_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
 	build_path = /obj/item/ai_module/core/full/damaged

@@ -16,7 +16,7 @@
 /// Actually perform the process
 /datum/admin_ai_template/proc/apply(mob/living/target, client/user)
 	if (QDELETED(target) || !isliving(target))
-		to_chat(user, span_warning("Invalid target for AI controller."))
+		to_chat(user, span_warning("Alvo inválido para controlador de IA."))
 		return
 	if (gather_information(target, user))
 		apply_controller(target, user)
@@ -55,7 +55,7 @@
 
 /datum/admin_ai_template/proc/apply_controller(mob/living/target, client/user)
 	if (QDELETED(target))
-		to_chat(user, span_warning("Target stopped existing while you were answering prompts :("))
+		to_chat(user, span_warning("O alvo parou de existir enquanto você respondia alertas:"))
 		return
 
 	QDEL_NULL(target.ai_controller)
@@ -131,7 +131,7 @@
 			return FALSE
 		burst_interval = burst_interval SECONDS
 
-	var/pick_sound = tgui_alert(user, "Select a firing sound effect?", "Select Sound", list("Yes", "No"))
+	var/pick_sound = tgui_alert(user, "Selecionar um efeito sonoro?", "Select Sound", list("Yes", "No"))
 	if (isnull(pick_sound))
 		return FALSE
 	if (pick_sound == "Yes")
@@ -378,7 +378,7 @@
 	if (!.)
 		return FALSE
 
-	var/find_a_mob = tgui_alert(user, "Make this mob a minion of a mob in your tile? (If you don't do this you will need to use the befriend proc)", "Set Master?", list("Yes", "No"))
+	var/find_a_mob = tgui_alert(user, "Tornar essa multidão um servo de uma multidão em seu azulejo? (Se você não fizer isso você precisará usar o processo de amizade)", "Set Master?", list("Yes", "No"))
 	if (isnull(override_client))
 		return FALSE
 	find_a_mob = find_a_mob == "Yes"
@@ -403,7 +403,7 @@
 		da_boss = mobs_in_my_tile[picked]
 		return TRUE
 
-	var/find_a_mob = tgui_alert(user, "No applicable mobs found. Try again?", "Try Again?", list("Yes", "No"))
+	var/find_a_mob = tgui_alert(user, "Nenhuma multidão aplicável encontrada. Tente de novo?", "Try Again?", list("Yes", "No"))
 	if (isnull(find_a_mob))
 		return FALSE
 	find_a_mob = find_a_mob == "Yes"

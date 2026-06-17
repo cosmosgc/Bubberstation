@@ -1,7 +1,7 @@
 /// Cowardly mob with a charging attack
 /mob/living/basic/mining/lobstrosity
 	name = "arctic lobstrosity"
-	desc = "These hairy crustaceans creep and multiply in underground lakes deep below the ice. They have a particular taste for fingers."
+	desc = "Estes crustáceos peludos rastejam e se multiplicam em lagos subterrâneos bem abaixo do gelo. Eles têm um gosto particular por dedos."
 	icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi'
 	icon_state = "arctic_lobstrosity"
 	icon_living = "arctic_lobstrosity"
@@ -109,7 +109,7 @@
 /// Lavaland lobster variant, it basically just looks different
 /mob/living/basic/mining/lobstrosity/lava
 	name = "chasm lobstrosity"
-	desc = "Twitching crustaceans boiled red by the sulfurous fumes of the chasms in which they lurk. They have a particular taste for fingers."
+	desc = "Crustáceos se contorcendo fervidos de vermelho pelos gases sulfúricos dos abismos em que se escondem. Eles têm um gosto particular por dedos."
 	icon_state = "lobstrosity"
 	icon_living = "lobstrosity"
 	icon_dead = "lobstrosity_dead"
@@ -142,7 +142,7 @@
 ///A weaker, yet somewhat faster lobstrosity. Sources include aquarium chasm chrabs, chasms, plasma rivers and perhaps xenobio.
 /mob/living/basic/mining/lobstrosity/juvenile
 	name = "juvenile arctic lobstrosity"
-	desc = "A youngling of the behemothic arctic lobstrosity. They usually stay put in the underground lakes they reside in until they're fully grown."
+	desc = "Um jovem da lobstrosidade beemótica do ártico. Eles geralmente ficam nos lagos subterrâneos em que residem até crescerem."
 	icon_state = "arctic_juveline_lobstrosity"
 	icon_living = "arctic_juveline_lobstrosity"
 	icon_dead = "arctic_juveline_lobstrosity_dead"
@@ -245,7 +245,7 @@
 
 /mob/living/basic/mining/lobstrosity/juvenile/lava
 	name = "juvenile chasm lobstrosity"
-	desc = "A youngling of the behemothic lobstrosity. They usually don't crawl out of the vents they reside in until they're fully grown."
+	desc = "Um jovem da lobstrosidade beemótica. Eles geralmente não rastejam para fora dos respiradouros em que residem até que estejam totalmente crescidos."
 	icon_state = "juveline_lobstrosity"
 	icon_living = "juveline_lobstrosity"
 	icon_dead = "juveline_lobstrosity_dead"
@@ -265,7 +265,7 @@
 ///Command the lobster to charge at someone.
 /datum/pet_command/use_ability/lob_charge
 	command_name = "Charge"
-	command_desc = "Command your lobstrosity to charge against someone."
+	command_desc = "Comande sua lobstrosidade para acusar alguém."
 	radial_icon = 'icons/mob/actions/actions_items.dmi'
 	radial_icon_state = "sniper_zoom"
 	speech_commands = list("charge", "slam", "tackle")

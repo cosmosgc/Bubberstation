@@ -1,6 +1,6 @@
 /obj/item/clicker
 	name = "clicker"
-	desc = "A small clicking toy that fits in the palm of your hand, typically used to condition pets into obedience. It makes a satisfying 'click' sound when pressed."
+	desc = "Um pequeno brinquedo que se encaixa na palma da sua mão, normalmente usado para condicionar animais de estimação em obediência. Faz um som satisfatório de 'clique' quando pressionado."
 	icon = 'modular_zubbers/icons/obj/lewd.dmi'
 	icon_state = "clicker_pink"
 	throwforce = 0
@@ -23,7 +23,7 @@
 
 /obj/item/clicker/proc/click(atom/source, mob/user)
 	SIGNAL_HANDLER
-	source.balloon_alert(user, "click!")
+	source.balloon_alert(user, "Clique!")
 	playsound(source, "modular_zubbers/sound/lewd/clicker.ogg", 40, FALSE)
 
 /obj/item/clicker/attack_self(mob/user)
@@ -80,6 +80,6 @@
 			TIMER_COOLDOWN_START(living_user, DOMINANT_COOLDOWN_SNAP, 10 SECONDS)
 
 /datum/mood_event/good_pet
-	description = span_nicegreen("Being obedient feels rewarding!")
+	description = span_nicegreen("Ser obediente é gratificante!")
 	mood_change = 2
 	timeout = 2 MINUTES

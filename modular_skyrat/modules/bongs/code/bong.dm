@@ -1,6 +1,6 @@
 /obj/item/bong
 	name = "bong"
-	desc = "Technically known as a water pipe."
+	desc = "Tecnicamente conhecido como cano de água."
 	icon = 'modular_skyrat/modules/bongs/icons/bong.dmi'
 	lefthand_file = 'modular_skyrat/modules/bongs/icons/lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/bongs/icons/righthand.dmi'
@@ -39,10 +39,10 @@
 	if(istype(used_item, /obj/item/food/grown))
 		var/obj/item/food/grown/grown_item = used_item
 		if(packed_item)
-			balloon_alert(user, "already packed!")
+			balloon_alert(user, "Já fiz as malas!")
 			return
 		if(!HAS_TRAIT(grown_item, TRAIT_DRIED))
-			balloon_alert(user, "needs to be dried!")
+			balloon_alert(user, "Precisa ser seco!")
 			return
 		to_chat(user, span_notice("You stuff [grown_item] into [src]."))
 		bong_hits = max_hits
@@ -54,7 +54,7 @@
 
 	else if(istype(used_item, /obj/item/reagent_containers/hash)) //for hash/dabs
 		if(packed_item)
-			balloon_alert(user, "already packed!")
+			balloon_alert(user, "Já fiz as malas!")
 			return
 		to_chat(user, span_notice("You stuff [used_item] into [src]."))
 		bong_hits = max_hits
@@ -68,7 +68,7 @@
 		if(!lighting_text)
 			return ..()
 		if(bong_hits <= 0)
-			balloon_alert(user, "nothing to smoke!")
+			balloon_alert(user, "Nada para fumar!")
 			return ..()
 		light(lighting_text)
 		name = "lit [initial(name)]"
@@ -109,7 +109,7 @@
 		else
 			hit_mob.emote("cough")
 	if(bong_hits <= 0)
-		balloon_alert(hit_mob, "out of uses!")
+		balloon_alert(hit_mob, "Sem uso!")
 		lit = FALSE
 		packed_item = FALSE
 		icon_state = icon_off
@@ -174,7 +174,7 @@
 
 /obj/item/bong/lungbuster
 	name = "lungbuster"
-	desc = "30 inches of doom."
+	desc = "30 polegadas de destruição."
 	icon_state = "lungbusteroff"
 	inhand_icon_state = "lungbusteroff"
 	icon_on = "lungbusteron"

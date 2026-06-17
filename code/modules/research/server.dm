@@ -13,7 +13,7 @@
 
 /obj/machinery/rnd/server
 	name = "\improper R&D Server"
-	desc = "A computer system running a deep neural network that processes arbitrary information to produce data useable in the development of new technologies. In layman's terms, it makes research points."
+	desc = "Um sistema de computador executando uma rede neural profunda que processa informações arbitrárias para produzir dados utilizáveis no desenvolvimento de novas tecnologias. Em termos leigos, faz parte da pesquisa."
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "RD-server-on"
 	base_icon_state = "RD-server"
@@ -111,7 +111,7 @@
 	if(!stored_research)
 		return
 	tool.set_buffer(stored_research)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return TRUE
 
 /// Master R&D server. As long as this still exists and still holds the HDD for the theft objective, research points generate at normal speed. Destroy it or an antag steals the HDD? Half research speed.
@@ -163,7 +163,7 @@
 	if(!user.is_antag())
 		if(user.combat_mode)
 			return ITEM_INTERACT_SKIP_TO_ATTACK
-		balloon_alert(user, "you can't find an obvious maintenance hatch!")
+		balloon_alert(user, "Você não pode encontrar uma porta de manutenção óbvia!")
 		return ITEM_INTERACT_BLOCKING
 	return ..()
 
@@ -172,15 +172,15 @@
 		return NONE
 	switch(deconstruction_state)
 		if(HDD_PANEL_CLOSED)
-			balloon_alert(user, "you can't find a place to insert it!")
+			balloon_alert(user, "Você não pode encontrar um lugar para instá-lo!")
 		if(HDD_PANEL_OPEN)
-			balloon_alert(user, "you weren't trained to install this!")
+			balloon_alert(user, "Você não foi treinado para instalar isso!")
 		if(HDD_PRIED)
-			balloon_alert(user, "the HDD housing is completely broken, it won't fit!")
+			balloon_alert(user, "A caixa HDD está completamente quebrada, não vai caber!")
 		if(HDD_CUT_LOOSE)
-			balloon_alert(user, "the HDD housing is completely broken and all the wires are cut!")
+			balloon_alert(user, "A caixa HDD está completamente quebrada e todos os fios cortados!")
 		if(HDD_OVERLOADED)
-			balloon_alert(user, "the inside is scorched and all the wires are burned!")
+			balloon_alert(user, "O interior está queimado e todos os fios estão queimados!")
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/rnd/server/master/screwdriver_act(mob/living/user, obj/item/tool)

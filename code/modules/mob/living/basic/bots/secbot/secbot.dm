@@ -1,6 +1,6 @@
 /mob/living/basic/bot/secbot
 	name = "\improper Securitron"
-	desc = "A little security robot. He looks less than thrilled."
+	desc = "Um robô de segurança. Ele parece menos do que entusiasmado."
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "secbot"
 	base_icon_state = "secbot"
@@ -24,7 +24,7 @@
 	data_hud_type = TRAIT_SECURITY_HUD
 	hackables = "target identification systems"
 	path_image_color = COLOR_RED
-	possessed_message = "You are a securitron! Guard the station to the best of your ability!"
+	possessed_message = "Você é um securitron! Protejam a estação o melhor que puderem!"
 	additional_access = /datum/id_trim/job/detective
 
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.2, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 3.2)
@@ -147,7 +147,7 @@
 	// Turns an oversight into a feature. Beepsky will now announce when pacifists taunt him over sec comms.
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		user.visible_message(span_notice("[user] taunts [src], daring [p_them()] to give chase!"), \
-			span_notice("You taunt [src], daring [p_them()] to chase you!"), span_hear("You hear someone shout a daring taunt!"), DEFAULT_MESSAGE_RANGE, user)
+			span_notice("You taunt [src], daring [p_them()] to chase you!"), span_hear("Você ouve alguém gritar uma provocação ousada!"), DEFAULT_MESSAGE_RANGE, user)
 		speak("Taunted by pacifist scumbag [RUNECHAT_BOLD("[user]")] in [get_area(src)].", radio_channel)
 
 		// Interrupt the attack chain. We've already handled this scenario for pacifists.
@@ -163,7 +163,7 @@
 	if(!(bot_access_flags & BOT_COVER_EMAGGED))
 		return
 	if(user)
-		balloon_alert(user, "target assessment circuits shorted")
+		balloon_alert(user, "Circuitos de avaliação de alvos encurtados.")
 
 	retrieve_emag_message()
 	security_mode_flags &= ~SECBOT_DECLARE_ARRESTS

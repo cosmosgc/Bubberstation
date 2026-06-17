@@ -4,7 +4,7 @@
 //Used by engineering cyborgs in place of generic circuits.
 /obj/item/electroadaptive_pseudocircuit
 	name = "electroadaptive pseudocircuit"
-	desc = "An all-in-one circuit imprinter, designer, synthesizer, outfitter, creator, and chef. It can be used in place of any generic circuit board during construction."
+	desc = "Um impressor de circuito único, designer, sintetizador, maquinista, criador e chef. Pode ser usado no lugar de qualquer placa de circuito genérico durante a construção."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "boris"
 	w_class = WEIGHT_CLASS_TINY
@@ -27,13 +27,13 @@
 	if(iscyborg(user))
 		. += "[span_notice("It has material for <b>[circuits]</b> circuit[circuits == 1 ? "" : "s"]. Use the pseudocircuit on existing circuits to gain material.")]\n"+\
 		"[span_notice("Serves as a substitute for <b>fire/air alarm</b>, <b>firelock</b>, and <b>APC</b> electronics.")]\n"+\
-		span_notice("It can also be used on an APC with no power cell to <b>fabricate a low-capacity cell</b> at a high power cost.")
+		span_notice("Também pode ser usado em um APC sem célula de energia para<b>Fabricar uma célula de baixa capacidade</b>com um alto custo de energia.")
 
 /obj/item/electroadaptive_pseudocircuit/proc/adapt_circuit(mob/living/silicon/robot/R, circuit_cost = 0)
 	if(QDELETED(R) || !istype(R))
 		return
 	if(!R.cell)
-		to_chat(R, span_warning("You need a power cell installed for that."))
+		to_chat(R, span_warning("Precisa de uma célula de energia instalada para isso."))
 		return
 	if(recharging)
 		to_chat(R, span_warning("[src] needs some time to recharge first."))

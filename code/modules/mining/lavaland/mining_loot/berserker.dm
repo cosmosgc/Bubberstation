@@ -6,10 +6,10 @@
 
 /obj/item/clothing/suit/hooded/berserker
 	name = "berserker armor"
-	desc = "This hulking armor seems to possess some kind of dark force within; howling in rage, hungry for carnage. \
-		The self-sealing stem bolts that allowed this suit to be spaceworthy have long since corroded. However, the entity \
-		sealed within the suit seems to hunger for the fleeting lifeforce found in the remains left in the remains of drakes. \
-		Feeding it drake remains seems to empower a suit piece, though turns the remains back to lifeless ash."
+	desc = "Esta armadura hulking parece possuir algum tipo de força escura dentro, uivando em raiva, faminto por carnificina.\
+Os parafusos auto-selantes que permitiram que este terno fosse espaço há muito tempo corroem. No entanto, a entidade\
+Selado dentro do traje parece ter fome da força vital fugaz encontrada nos restos deixados nos restos de Drakes.\
+Alimentá-lo parece dar força a uma peça de terno, embora transforme os restos de volta em cinzas sem vida."
 	icon_state = "berserker"
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
@@ -50,10 +50,10 @@
 
 /obj/item/clothing/head/hooded/berserker
 	name = "berserker helmet"
-	desc = "This burdensome helmet seems to possess some kind of dark force within; howling in rage, hungry for carnage. \
-		The self-sealing stem bolts that allowed this helmet to be spaceworthy have long since corroded. However, the entity \
-		sealed within the suit seems to hunger for the fleeting lifeforce found in the remains left in the remains of drakes. \
-		Feeding it drake remains seems to empower a suit piece, though turns the remains back to lifeless ash."
+	desc = "Este capacete pesado parece possuir algum tipo de força negra dentro, uivando de raiva, com fome de carnificina.\
+Os parafusos auto-selados que permitiram que este capacete fosse espaço há muito tempo corroem. No entanto, a entidade\
+Selado dentro do traje parece ter fome da força vital fugaz encontrada nos restos deixados nos restos de Drakes.\
+Alimentá-lo parece dar força a uma peça de terno, embora transforme os restos de volta em cinzas sem vida."
 	icon_state = "berserker"
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
@@ -102,8 +102,8 @@
 	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
 	if(berserk_charge >= MAX_BERSERK_CHARGE)
 		var/datum/action/item_action/berserk_mode/ragemode = locate() in actions
-		to_chat(owner, span_cult_large("Berserk mode is fully charged."))
-		balloon_alert(owner, "berserk charged")
+		to_chat(owner, span_cult_large("O modo Berserk está totalmente carregado."))
+		balloon_alert(owner, "Berserk carregado.")
 		ragemode?.build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /obj/item/clothing/head/hooded/berserker/IsReflect()
@@ -112,7 +112,7 @@
 /// Starts berserk, reducing incoming brute by 50%, doubled attacking speed, NOGUNS trait, adding a color and giving them the berserk movespeed modifier
 /obj/item/clothing/head/hooded/berserker/proc/berserk_mode(mob/living/carbon/human/user)
 	var/datum/action/item_action/berserk_mode/ragemode = locate() in actions
-	to_chat(user, span_cult("You enter berserk mode."))
+	to_chat(user, span_cult("Você entra no modo berserk."))
 	playsound(user, 'sound/effects/magic/staff_healing.ogg', 50)
 	user.add_movespeed_modifier(/datum/movespeed_modifier/berserk)
 	user.physiology.brute_mod *= 0.5
@@ -133,7 +133,7 @@
 		return
 	var/datum/action/item_action/berserk_mode/ragemode = locate() in actions
 	ragemode?.build_all_button_icons(UPDATE_BUTTON_STATUS)
-	to_chat(user, span_cult("You exit berserk mode."))
+	to_chat(user, span_cult("Você sai do modo berserk."))
 	playsound(user, 'sound/effects/magic/summonitems_generic.ogg', 50)
 	user.remove_movespeed_modifier(/datum/movespeed_modifier/berserk)
 	user.physiology.brute_mod *= 2

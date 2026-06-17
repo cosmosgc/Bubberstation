@@ -7,10 +7,10 @@
 // Cult altar. Gives out consumable items.
 /obj/structure/destructible/cult/item_dispenser/altar
 	name = "altar"
-	desc = "A bloodstained altar dedicated to Nar'Sie."
+	desc = "Um altar manchado de sangue dedicado a Nar'Sie."
 	cult_examine_tip = "Can be used to create eldritch whetstones, construct shells, and flasks of unholy water."
 	icon_state = "talismanaltar"
-	break_message = span_warning("The altar shatters, leaving only the wailing of the damned!")
+	break_message = span_warning("O altar quebra, deixando apenas o lamento dos condenados!")
 	mansus_conversion_path = /obj/effect/heretic_rune
 	custom_materials = list(/datum/material/runedmetal = SHEET_MATERIAL_AMOUNT * 3)
 

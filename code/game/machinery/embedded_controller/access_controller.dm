@@ -28,7 +28,7 @@
 	req_access = list()
 	req_one_access = list()
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "access controller shorted")
+	balloon_alert(user, "Controlador de acesso encurtado")
 	return TRUE
 
 /obj/machinery/door_buttons/access_button
@@ -36,7 +36,7 @@
 	icon_state = "access_button_standby"
 	base_icon_state = "access_button"
 	name = "access button"
-	desc = "A button used for the explicit purpose of opening an airlock."
+	desc = "Um botão usado para o propósito explícito de abrir uma câmara de ar."
 	var/idDoor
 	var/obj/machinery/door/airlock/door
 	var/obj/machinery/door_buttons/airlock_controller/controller
@@ -58,7 +58,7 @@
 	if(busy)
 		return
 	if(!allowed(user))
-		to_chat(user, span_warning("Access denied."))
+		to_chat(user, span_warning("Acesso negado."))
 		return
 	if(controller && !controller.busy && door)
 		if(controller.machine_stat & NOPOWER)
@@ -105,7 +105,7 @@
 
 /obj/machinery/door_buttons/airlock_controller
 	name = "access console"
-	desc = "A small console that can cycle opening between two airlocks."
+	desc = "Um pequeno console que pode circular abrindo entre duas comportas de ar."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "access_control_standby"
 	base_icon_state = "access_control"

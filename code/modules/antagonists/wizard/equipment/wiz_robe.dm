@@ -1,6 +1,6 @@
 /obj/item/clothing/head/wizard
 	name = "wizard hat"
-	desc = "Strange-looking hat-wear that most certainly belongs to a real magic user."
+	desc = "Chapéu estranho que certamente pertence a um verdadeiro usuário de magia."
 	icon = 'icons/obj/clothing/head/wizard.dmi'
 	worn_icon = 'icons/mob/clothing/head/wizard.dmi'
 	icon_state = "wizard"
@@ -31,25 +31,25 @@
 
 /obj/item/clothing/head/wizard/red
 	name = "red wizard hat"
-	desc = "Strange-looking red hat-wear that most certainly belongs to a real magic user."
+	desc = "Uma roupa vermelha estranha que certamente pertence a um verdadeiro usuário de magia."
 	icon_state = "redwizard"
 	dog_fashion = /datum/dog_fashion/head/red_wizard
 
 /obj/item/clothing/head/wizard/yellow
 	name = "yellow wizard hat"
-	desc = "Strange-looking yellow hat-wear that most certainly belongs to a powerful magic user."
+	desc = "Uma roupa amarela estranha que certamente pertence a um poderoso usuário de magia."
 	icon_state = "yellowwizard"
 	dog_fashion = null
 
 /obj/item/clothing/head/wizard/black
 	name = "black wizard hat"
-	desc = "Strange-looking black hat-wear that most certainly belongs to a real skeleton. Spooky."
+	desc = "Um chapéu preto estranho que certamente pertence a um esqueleto de verdade. Assustador."
 	icon_state = "blackwizard"
 	dog_fashion = null
 
 /obj/item/clothing/head/wizard/fake
 	name = "wizard hat"
-	desc = "It has WIZZARD written across it in sequins. Comes with a cool beard."
+	desc = "Tem WIZZARD escrito em lantejoulas. Vem com uma barba legal."
 	icon_state = "wizard-fake"
 	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/head/wizard/chanterelle
 	name = "chanterelle hat"
-	desc = "An oversized chanterelle with hollow out space to fit a head in. Kinda looks like wizard's hat."
+	desc = "Uma cantora enorme com espaço vazio para caber uma cabeça. Parece um chapéu de mago."
 	icon_state = "chanterelle"
 	inhand_icon_state = "chanterellehat"
 	armor_type = /datum/armor/none
@@ -69,7 +69,7 @@
 
 /obj/item/clothing/head/wizard/marisa
 	name = "witch hat"
-	desc = "Strange-looking hat-wear. Makes you want to cast fireballs."
+	desc = "Vestido de chapéu estranho. Faz você querer lançar bolas de fogo."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/wizard/marisa"
 	post_init_icon_state = "witch_hat"
@@ -81,7 +81,7 @@
 
 /obj/item/clothing/head/wizard/tape
 	name = "tape hat"
-	desc = "A magically attuned hat made exclusively from duct tape. You can barely see."
+	desc = "Um chapéu magicamente afinado feito exclusivamente de fita adesiva. Você mal consegue ver."
 	icon_state = "tapehat"
 	inhand_icon_state = "tapehat"
 	dog_fashion = null
@@ -92,7 +92,7 @@
 /obj/item/clothing/head/wizard/magus
 	name = "\improper Magus helm"
 	icon_state = "magus"
-	desc = "A mysterious helmet that hums with an unearthly power."
+	desc = "Um misterioso capacete que canta com um poder sobrenatural."
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDEEARS|HIDEEYES|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	inhand_icon_state = null
@@ -112,7 +112,7 @@
 
 /obj/item/clothing/suit/wizrobe
 	name = "wizard robe"
-	desc = "A magnificent, gem-lined robe that seems to radiate power."
+	desc = "Um roupão magnífico e forrado que parece irradiar poder."
 	icon = 'icons/obj/clothing/suits/wizard.dmi'
 	icon_state = "wizard"
 	worn_icon = 'icons/mob/clothing/suits/wizard.dmi'
@@ -145,57 +145,57 @@
 
 /obj/item/clothing/suit/wizrobe/red
 	name = "red wizard robe"
-	desc = "A magnificent red gem-lined robe that seems to radiate power."
+	desc = "Um roupão vermelho magnífico que parece irradiar poder."
 	icon_state = "redwizard"
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/yellow
 	name = "yellow wizard robe"
-	desc = "A magnificent yellow gem-lined robe that seems to radiate power."
+	desc = "Um roupão amarelo magnífico que parece irradiar poder."
 	icon_state = "yellowwizard"
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/black
 	name = "black wizard robe"
-	desc = "An unnerving black gem-lined robe that reeks of death and decay."
+	desc = "Uma túnica negra enervante que cheira a morte e decadência."
 	icon_state = "blackwizard"
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/marisa
 	name = "witch robe"
-	desc = "Magic is all about the spell power, ZE!"
+	desc = "Magia é tudo sobre o poder do feitiço, ZE!"
 	icon_state = "marisa"
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/tape
 	name = "tape robe"
-	desc = "A fine robe made from magically attuned duct tape."
+	desc = "Um belo roupão feito com fita adesiva mágicamente afinada."
 	icon_state = "taperobe"
 	inhand_icon_state = "taperobe"
 
 /obj/item/clothing/suit/wizrobe/magusblue
 	name = "\improper Magus robe"
-	desc = "A set of armored robes that seem to radiate a dark power."
+	desc = "Um conjunto de vestes blindadas que parecem irradiar um poder negro."
 	icon_state = "magusblue"
 	inhand_icon_state = null
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
 /obj/item/clothing/suit/wizrobe/magusred
 	name = "\improper Magus robe"
-	desc = "A set of armored robes that seem to radiate a dark power."
+	desc = "Um conjunto de vestes blindadas que parecem irradiar um poder negro."
 	icon_state = "magusred"
 	inhand_icon_state = null
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
 /obj/item/clothing/suit/wizrobe/santa
 	name = "Santa's suit"
-	desc = "Festive!"
+	desc = "Festivo!"
 	icon_state = "santa"
 	inhand_icon_state = "santa"
 
 /obj/item/clothing/suit/wizrobe/fake
 	name = "wizard robe"
-	desc = "A rather dull blue robe meant to mimic real wizard robes."
+	desc = "Um roupão azul um tanto monótono para imitar vestes mágicas."
 	icon_state = "wizard-fake"
 	inhand_icon_state = "wizrobe"
 	armor_type = /datum/armor/none
@@ -211,14 +211,14 @@
 
 /obj/item/clothing/head/wizard/tape/fake
 	name = "tape hat"
-	desc = "A hat designed exclusively from duct tape. You can barely see."
+	desc = "Um chapéu projetado exclusivamente a partir de fita adesiva. Você mal consegue ver."
 	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
 	fishing_modifier = -2
 
 /obj/item/clothing/suit/wizrobe/marisa/fake
 	name = "witch robe"
-	desc = "Magic is all about the spell power, ZE!"
+	desc = "Magia é tudo sobre o poder do feitiço, ZE!"
 	icon_state = "marisa"
 	inhand_icon_state = null
 	armor_type = /datum/armor/none
@@ -227,14 +227,14 @@
 
 /obj/item/clothing/suit/wizrobe/tape/fake
 	name = "tape robe"
-	desc = "An outfit designed exclusively from duct tape. It was hard to put on."
+	desc = "Uma roupa projetada exclusivamente a partir de fita adesiva. Foi difícil de colocar."
 	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
 	fishing_modifier = -3
 
 /obj/item/clothing/suit/wizrobe/durathread
 	name = "durathread robe"
-	desc = "A rather dull durathread robe; not quite as protective as a proper piece of armour, but much more stylish."
+	desc = "Um robe de Durathread um tanto monótono, não tão protetor como uma armadura adequada, mas muito mais elegante."
 	icon_state = "durathread-fake"
 	inhand_icon_state = null
 	armor_type = /datum/armor/robe_durathread
@@ -252,32 +252,32 @@
 
 /obj/item/clothing/suit/wizrobe/durathread/fire
 	name = "pyromancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as woven armour, but much more stylish."
+	desc = "Um manto de Durathread um tanto chato, não tão protetor quanto armadura tecida, mas muito mais elegante."
 	icon_state = "durathread-fire"
 
 /obj/item/clothing/suit/wizrobe/durathread/ice
 	name = "pyromancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as woven armour, but much more stylish."
+	desc = "Um manto de Durathread um tanto chato, não tão protetor quanto armadura tecida, mas muito mais elegante."
 	icon_state = "durathread-ice"
 
 /obj/item/clothing/suit/wizrobe/durathread/electric
 	name = "electromancer robe"
-	desc = "Doesn't actually conduit or isolate from electricity. Though it does have some durability on account of being made from durathread."
+	desc = "Na verdade, não conduta ou isole da eletricidade. Embora tenha alguma durabilidade por ser feita de Durathread."
 	icon_state = "durathread-electric"
 
 /obj/item/clothing/suit/wizrobe/durathread/earth
 	name = "geomancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as woven armour, but much more stylish."
+	desc = "Um manto de Durathread um tanto chato, não tão protetor quanto armadura tecida, mas muito mais elegante."
 	icon_state = "durathread-earth"
 
 /obj/item/clothing/suit/wizrobe/durathread/necro
 	name = "necromancer robe"
-	desc = "A rather dull durathread robe; not quite as protective as woven armour, but much more stylish."
+	desc = "Um manto de Durathread um tanto chato, não tão protetor quanto armadura tecida, mas muito mais elegante."
 	icon_state = "durathread-necro"
 
 /obj/item/clothing/suit/wizrobe/paper
 	name = "papier-mache robe" // no non-latin characters!
-	desc = "A robe held together by various bits of clear-tape and paste."
+	desc = "Um manto unido por vários pedaços de fita clara e pasta."
 	icon_state = "wizard-paper"
 	inhand_icon_state = null
 	COOLDOWN_DECLARE(summoning_cooldown)
@@ -288,7 +288,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, summoning_cooldown))
-		user.balloon_alert(user, "robe recharging!")
+		user.balloon_alert(user, "roupão recarregando!")
 		return
 
 	conjure_stickmen(user)

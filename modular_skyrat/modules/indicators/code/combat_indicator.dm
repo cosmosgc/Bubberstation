@@ -170,8 +170,8 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /datum/keybinding/living/combat_indicator
 	hotkey_keys = list("C")
 	name = "combat_indicator"
-	full_name = "Combat Indicator"
-	description = "Indicates that you're escalating to mechanics. YOU NEED TO USE THIS"
+	full_name = "Indicador de combate"
+	description = "Indica que está aumentando para mecânica. Você precisa usar isso."
 	keybind_signal = COMSIG_KB_LIVING_COMBAT_INDICATOR
 
 /datum/keybinding/living/combat_indicator/down(client/user)
@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 // Surrender shit
 /atom/movable/screen/alert/status_effect/surrender/
-	desc = "You're either in combat or being held up. Click here to surrender and show that you don't wish to fight. You will be incapacitated. (You can also say '*surrender' at any time to do this.)"
+	desc = "Ou você está em combate ou está preso. Clique aqui para se render e mostrar que não deseja lutar. Você ficará incapacitado. (Você também pode dizer '* Renda-se' a qualquer momento para fazer isso.)"
 
 /datum/emote/living/surrender
 	message = "drops to the floor and raises their hands defensively! They surrender%s!"

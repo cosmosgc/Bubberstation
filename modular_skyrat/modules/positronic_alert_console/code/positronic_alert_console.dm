@@ -1,6 +1,6 @@
 /obj/machinery/posialert
 	name = "automated positronic alert console"
-	desc = "A console that will ping when a positronic personality is available for download."
+	desc = "Um console que tocará quando uma personalidade positrônica estiver disponível para download."
 	icon = 'modular_skyrat/modules/positronic_alert_console/icons/terminals.dmi'
 	icon_state = "posialert"
 	// to create a cooldown so if roboticists are tired of ghosts
@@ -21,7 +21,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/posialert, 28)
 	if(!COOLDOWN_FINISHED(src, robotics_cooldown))
 		. += span_notice("Remaining time on mute is [COOLDOWN_TIMELEFT(src, robotics_cooldown) * 0.1] seconds.")
 		. += span_notice("Mute reason: [mute_reason]")
-	. += span_notice("Press the screen to mute or unmute the console.")
+	. += span_notice("Pressione a tela para silenciar ou soltar o console.")
 
 /obj/machinery/posialert/Initialize(mapload)
 	. = ..()

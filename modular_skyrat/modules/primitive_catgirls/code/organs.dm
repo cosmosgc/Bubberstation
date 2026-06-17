@@ -4,7 +4,7 @@
 
 /obj/item/organ/lungs/icebox_adapted
 	name = "hardy lungs"
-	desc = "Lungs adapted to frozen environments that would be otherwise inhospitable to most races. Feels cold."
+	desc = "Pulmões adaptados a ambientes congelados que seriam inóspitos para a maioria das raças. Está frio."
 
 /obj/item/organ/lungs/icebox_adapted/Initialize(mapload)
 	. = ..()

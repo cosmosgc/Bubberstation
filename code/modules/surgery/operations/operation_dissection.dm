@@ -1,8 +1,8 @@
 /datum/surgery_operation/basic/dissection
 	name = "experimental dissection"
 	rnd_name = "Experimental Androtomy (Experimental Dissection and Autopsy)"
-	desc = "Perform an experimental dissection on a patient to obtain research points."
-	rnd_desc = "An experimental surgical procedure that dissects bodies in exchange for research points at ancient R&D consoles."
+	desc = "Faça uma dissecção experimental em um paciente para obter pontos de pesquisa."
+	rnd_desc = "Um procedimento cirúrgico experimental que disseca corpos em troca de pontos de pesquisa em antigos consoles de P&D."
 	implements = list(
 		/obj/item/autopsy_scanner = 1,
 		TOOL_SCALPEL = 1.66,
@@ -92,7 +92,7 @@
 
 /obj/item/research_notes
 	name = "research notes"
-	desc = "Valuable scientific data. Use it in an ancient research server to turn it in."
+	desc = "Dados científicos valiosos. Use em um antigo servidor de pesquisa para entregá-lo."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper"
 	w_class = WEIGHT_CLASS_SMALL

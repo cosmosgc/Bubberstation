@@ -1,6 +1,6 @@
 /obj/item/implant/spell
 	name = "spell implant"
-	desc = "Allows you to cast a spell as if you were a wizard."
+	desc = "Permite lançar um feitiço como se fosse um mago."
 	actions_types = null
 
 	/// Whether to make the spell robeless
@@ -65,5 +65,5 @@
 
 /obj/item/implantcase/spell
 	name = "implant case - 'Wizardry'"
-	desc = "A glass case containing an implant that can teach the user the arts of Wizardry."
+	desc = "Uma caixa de vidro contendo um implante que pode ensinar ao usuário as artes da magia."
 	imp_type = /obj/item/implant/spell

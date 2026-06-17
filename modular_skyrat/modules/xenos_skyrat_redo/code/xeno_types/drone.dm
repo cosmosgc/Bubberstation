@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/drone
 	name = "alien drone"
-	desc = "As plain looking as you could call an alien with armored black chitin and large claws."
+	desc = "Tão simples quanto você poderia chamar um alienígena com chitim preto blindado e garras grandes."
 	caste = "drone"
 	maxHealth = 200
 	health = 200
@@ -29,7 +29,7 @@
 
 /datum/action/cooldown/alien/skyrat/heal_aura
 	name = "Healing Aura"
-	desc = "Friendly xenomorphs in a short range around yourself will receive passive healing."
+	desc = "Xenomorfos amigáveis em curto alcance ao seu redor receberão cura passiva."
 	button_icon_state = "healaura"
 	plasma_cost = 100
 	cooldown_time = 90 SECONDS
@@ -49,9 +49,9 @@
 /datum/action/cooldown/alien/skyrat/heal_aura/Activate()
 	. = ..()
 	if(aura_active)
-		owner.balloon_alert(owner, "already healing")
+		owner.balloon_alert(owner, "Já está curando.")
 		return FALSE
-	owner.balloon_alert(owner, "healing aura started")
+	owner.balloon_alert(owner, "Aura de cura começou.")
 	to_chat(owner, span_danger("We emit pheromones that encourage sisters near us to heal themselves for the next [aura_duration / 10] seconds."))
 	addtimer(CALLBACK(src, PROC_REF(aura_deactivate)), aura_duration)
 	aura_active = TRUE
@@ -63,4 +63,4 @@
 		return
 	aura_active = FALSE
 	QDEL_NULL(aura_healing_component)
-	owner.balloon_alert(owner, "healing aura ended")
+	owner.balloon_alert(owner, "Aura de cura terminou.")

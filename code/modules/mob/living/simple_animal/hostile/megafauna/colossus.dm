@@ -22,7 +22,7 @@
  */
 /mob/living/simple_animal/hostile/megafauna/colossus
 	name = "colossus"
-	desc = "A monstrous creature protected by heavy shielding."
+	desc = "Uma criatura monstruosa protegida por escudos pesados."
 	health = 2500
 	maxHealth = 2500
 	attack_verb_continuous = "judges"
@@ -54,7 +54,7 @@
 	loot = list(/obj/structure/closet/crate/necropolis/colossus)
 	crusher_loot = /obj/structure/closet/crate/necropolis/colossus/crusher
 	replace_crusher_drop = TRUE
-	death_message = "disintegrates, leaving a glowing core in its wake."
+	death_message = "desintegra-se, deixando um núcleo brilhante em seu rastro."
 	death_sound = 'sound/effects/magic/demon_dies.ogg'
 	summon_line = "Your trial begins now."
 	/// Spiral shots ability
@@ -104,7 +104,7 @@
 
 	if(enrage(target))
 		if(move_to_delay == initial(move_to_delay))
-			visible_message(span_colossus("\"<b>You can't dodge.</b>\""))
+			visible_message(span_colossus("\"<b>Você não pode fugir.</b>\""))
 		ranged_cooldown = world.time + 3 SECONDS
 		telegraph()
 		dir_shots.fire_in_directions(src, target, GLOB.alldirs)
@@ -167,7 +167,7 @@
 
 /obj/effect/temp_visual/at_shield
 	name = "anti-toolbox field"
-	desc = "A shimmering forcefield protecting the colossus."
+	desc = "Um campo de força brilhante protegendo o colosso."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "at_shield2"
 	layer = FLY_LAYER

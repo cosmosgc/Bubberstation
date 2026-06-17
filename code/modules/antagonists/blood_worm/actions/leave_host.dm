@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/eject
 	name = "Leave Host"
-	desc = "Leave your host, taking their blood with you."
+	desc = "Deixe seu hospedeiro, levando o sangue deles com você."
 
 	button_icon_state = "leave_host"
 
@@ -25,7 +25,7 @@
 		ignored_mobs = owner
 	)
 
-	to_chat(owner, span_danger("You begin leaving your host..."))
+	to_chat(owner, span_danger("Você começa a deixar seu anfitrião..."))
 
 	host.add_traits(list(TRAIT_FLOORED, TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED), REF(src))
 

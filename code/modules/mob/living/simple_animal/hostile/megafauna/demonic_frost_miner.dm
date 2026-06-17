@@ -9,7 +9,7 @@ Difficulty: Extremely Hard
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner
 	name = "demonic-frost miner"
-	desc = "An extremely well-geared miner, driven crazy or possessed by the demonic forces here, either way a terrifying enemy."
+	desc = "Um mineiro extremamente bem equipado, levado à loucura ou possuído pelas forças demoníacas aqui, de qualquer forma um inimigo aterrorizante."
 	health = 1500
 	maxHealth = 1500
 	icon_state = "demonic_miner"
@@ -40,7 +40,7 @@ Difficulty: Extremely Hard
 	achievement_type = /datum/award/achievement/boss/demonic_miner_kill
 	crusher_achievement_type = /datum/award/achievement/boss/demonic_miner_crusher
 	score_achievement_type = /datum/award/score/demonic_miner_score
-	death_message = "falls to the ground, decaying into plasma particles."
+	death_message = "cai no chão, decaindo em partículas de plasma."
 	death_sound = SFX_BODYFALL
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	summon_line = "I'M WIDE AWAKE! AND YOU'RE WIIIIIIIDE OPEN!"
@@ -159,7 +159,7 @@ Difficulty: Extremely Hard
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/ex_act(severity, target)
 	adjust_brute_loss(-30 * severity)
-	visible_message(span_danger("[src] absorbs the explosion!"), span_userdanger("You absorb the explosion!"))
+	visible_message(span_danger("[src] absorbs the explosion!"), span_userdanger("Você absorve a explosão!"))
 	return TRUE
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/Goto(target, delay, minimum_distance)
@@ -247,13 +247,13 @@ Difficulty: Extremely Hard
 
 /atom/movable/screen/alert/status_effect/ice_block_talisman
 	name = "Frozen Solid"
-	desc = "You're frozen inside an ice cube, and cannot move!"
+	desc = "Você está congelado dentro de um cubo de gelo, e não pode se mover!"
 	icon_state = "frozen"
 
 /datum/status_effect/ice_block_talisman/on_apply()
 	RegisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(owner_moved))
 	if(!owner.stat)
-		to_chat(owner, span_userdanger("You become frozen in a cube!"))
+		to_chat(owner, span_userdanger("Você fica congelado em um cubo!"))
 	cube = icon('icons/effects/freeze.dmi', "ice_cube")
 	var/list/icon_dimensions = get_icon_dimensions(owner.icon)
 	cube.Scale(icon_dimensions["width"], icon_dimensions["height"])
@@ -272,13 +272,13 @@ Difficulty: Extremely Hard
 
 /datum/status_effect/ice_block_talisman/on_remove()
 	if(!owner.stat)
-		to_chat(owner, span_notice("The cube melts!"))
+		to_chat(owner, span_notice("O cubo derrete!"))
 	owner.cut_overlay(cube)
 	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
 
 /obj/structure/frost_miner_prism
 	name = "frost miner light prism"
-	desc = "A magical crystal enhanced by a demonic presence."
+	desc = "Um cristal mágico reforçado por uma presença demoníaca."
 	icon = 'icons/obj/science/slimecrossing.dmi'
 	icon_state = "lightprism"
 	density = FALSE

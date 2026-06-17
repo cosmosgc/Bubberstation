@@ -217,7 +217,7 @@
 
 	tipped_mob.visible_message(
 		span_notice("[tipped_mob] rights itself."),
-		span_notice("You right yourself.")
+		span_notice("Você está certo.")
 		)
 
 /**

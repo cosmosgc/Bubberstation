@@ -21,13 +21,13 @@
 			ban["ckey"] = ckey
 
 			if (get_stickyban_from_ckey(ckey))
-				to_chat(usr, span_adminnotice("Error: Can not add a stickyban: User already has a current sticky ban"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: não é possível adicionar uma barra pegajosa."), confidential = TRUE)
 				return
 
 			if (data["reason"])
 				ban["message"] = data["reason"]
 			else
-				var/reason = input(usr,"Reason","Reason","Ban Evasion") as text|null
+				var/reason = input(usr,"Reason","Reason","Banir a Evasão") as text|null
 				if (!reason)
 					return
 				ban["message"] = "[reason]"
@@ -64,7 +64,7 @@
 			if (tgui_alert(usr,"Are you sure you want to remove the sticky ban on [ckey]?","Are you sure",list("Yes","No")) == "No")
 				return
 			if (!get_stickyban_from_ckey(ckey))
-				to_chat(usr, span_adminnotice("Error: The ban disappeared."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: a proibição desapareceu."), confidential = TRUE)
 				return
 			world.SetConfig("ban",ckey, null)
 			SSstickyban.cache -= ckey
@@ -104,7 +104,7 @@
 			//we have to do this again incase something changes
 			ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Error: The ban disappeared."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: a proibição desapareceu."), confidential = TRUE)
 				return
 
 			key = LAZYACCESS(ban["keys"], alt)
@@ -144,7 +144,7 @@
 			//we have to do this again incase something changed while we waited for input
 			ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Error: The ban disappeared."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: a proibição desapareceu."), confidential = TRUE)
 				return
 			ban["message"] = "[reason]"
 
@@ -186,7 +186,7 @@
 			//we have to do this again incase something changes
 			ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Error: The ban disappeared."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: a proibição desapareceu."), confidential = TRUE)
 				return
 
 			key = LAZYACCESS(ban["keys"], alt)
@@ -236,7 +236,7 @@
 			//we have to do this again incase something changes
 			ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
-				to_chat(usr, span_adminnotice("Error: The ban disappeared."), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Erro: a proibição desapareceu."), confidential = TRUE)
 				return
 
 			key = LAZYACCESS(ban["whitelist"], alt)
@@ -267,7 +267,7 @@
 			if (!data["ckey"])
 				return
 			if (!SSdbcore.Connect())
-				to_chat(usr, span_adminnotice("No database connection!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem conexão com o banco de dados!"), confidential = TRUE)
 				return
 
 			var/ckey = data["ckey"]
@@ -294,7 +294,7 @@
 			if (!data["ckey"])
 				return
 			if (!SSdbcore.Connect())
-				to_chat(usr, span_adminnotice("No database connection!"), confidential = TRUE)
+				to_chat(usr, span_adminnotice("Sem conexão com o banco de dados!"), confidential = TRUE)
 				return
 			var/ckey = data["ckey"]
 

@@ -26,7 +26,7 @@
 			defender.visible_message(
 				span_danger("[attacker]'s tail [atk_verb] [defender] down to the ground!"),
 				span_userdanger("Your body twists as you're [atk_verb] to the ground by [attacker]'s tail!"),
-				span_hear("You hear a snap, followed by a thud!"),
+				span_hear("Você ouve um estalo, seguido de um baque!"),
 				null,
 				attacker,
 			)
@@ -47,7 +47,7 @@
 			defender.visible_message(
 				span_danger("[attacker]'s tail [atk_verb] [defender] in one quick motion!"),
 				span_userdanger("You feel a sharp sting as you're [atk_verb] by [attacker]!"),
-				span_hear("You hear a sharp whipping noise!"),
+				span_hear("Você ouve um barulho agudo!"),
 				null,
 				attacker,
 			)
@@ -67,7 +67,7 @@
 			defender.visible_message(
 				span_danger("[attacker] [atk_verb]s [defender] violently!"),
 				span_userdanger("You're viciously [atk_verb]ed by [attacker]!"),
-				span_hear("You hear a violent gnawing sound!"),
+				span_hear("Você ouve um roer violento!"),
 				null,
 				attacker,
 			)

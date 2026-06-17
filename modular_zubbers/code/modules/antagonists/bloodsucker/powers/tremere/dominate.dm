@@ -104,9 +104,9 @@
 			attempt_ghoulize(target, user)
 		else
 			if(IS_GHOUL(target_mob))
-				owner.balloon_alert(owner, "too far to revive!")
+				owner.balloon_alert(owner, "Muito longe para reviver!")
 			else
-				owner.balloon_alert(owner, "too far to ghoul!")
+				owner.balloon_alert(owner, "Muito longe para Ghoul!")
 		return TRUE
 	return ..()
 
@@ -116,31 +116,31 @@
 	if(!victim_has_blood(target))
 		return FALSE
 	if(ghoul)
-		owner.balloon_alert(owner, "attempting to revive.")
+		owner.balloon_alert(owner, "Tentando reviver.")
 	else
-		owner.balloon_alert(owner, "attempting to ghoul.")
+		owner.balloon_alert(owner, "Tentando fugir.")
 	if(!do_after(user, 6 SECONDS, target, NONE, TRUE))
 		return FALSE
 	if(!victim_has_blood(target))
 		return FALSE
 	if(ghoul?.master == bloodsuckerdatum_power)
 		if(target.stat != DEAD)
-			owner.balloon_alert(owner, "not dead!")
+			owner.balloon_alert(owner, "Não morto!")
 			return FALSE
 		PowerActivatedSuccesfully(get_ghoulize_cooldown())
 		to_chat(user, span_warning("We revive [target]!"))
-		owner.balloon_alert(owner, "successfully revived!")
+		owner.balloon_alert(owner, "com sucesso revivido!")
 		target.mind?.grab_ghost()
 		target.revive(ADMIN_HEAL_ALL)
 		pay_cost(TEMP_GHOULIZE_COST - bloodcost)
 		log_combat(owner, target, "tremere revived", addition="Revived their ghoul using dominate")
 		return FALSE
 	if(!bloodsuckerdatum_power.make_ghoul(target))
-		owner.balloon_alert(owner, "not a valid target for ghouling!.")
+		owner.balloon_alert(owner, "Não é um alvo válido para ghouling!")
 		return
 
 	/*if(IS_MONSTERHUNTER(target))
-		to_chat(target, span_notice("Their body refuses to react..."))
+		to_chat(target, span_notice("Seu corpo se recusa a reagir..."))
 		return*/
 	PowerActivatedSuccesfully(get_ghoulize_cooldown())
 	to_chat(user, span_warning("We revive [target]!"))
@@ -169,7 +169,7 @@
 	if(IS_GHOUL(target))
 		return TRUE
 	if(target.blood_volume < BLOOD_VOLUME_BAD)
-		owner.balloon_alert(owner, "not enough blood in victim!")
+		owner.balloon_alert(owner, "Não há sangue suficiente na vítima!")
 		return FALSE
 	return TRUE
 
@@ -198,9 +198,9 @@
 	if(!HAS_TRAIT(user, TRAIT_NOBLOOD))
 		user.blood_volume = 0
 	if(!IS_GHOUL(user))
-		to_chat(user, span_warning("You feel the blood keeping you alive run out!"))
+		to_chat(user, span_warning("Você sente o sangue te mantendo vivo."))
 		return
-	to_chat(user, span_warning("You feel the Blood of your Master run out!"))
+	to_chat(user, span_warning("Você sente o sangue do seu Mestre acabar!"))
 	user.mind?.remove_antag_datum(/datum/antagonist/ghoul)
 	if(user.stat == DEAD)
 		return

@@ -1,6 +1,6 @@
 /datum/action/changeling/absorb_dna
 	name = "Absorb DNA"
-	desc = "Absorb the DNA of our victim. Requires us to strangle them."
+	desc = "Absorva o DNA da vítima. Exige que os estrangulemos."
 	button_icon_state = "absorb_dna"
 	chemical_cost = 0
 	dna_cost = CHANGELING_POWER_INNATE
@@ -14,14 +14,14 @@
 		return
 
 	if(is_absorbing)
-		owner.balloon_alert(owner, "already absorbing!")
+		owner.balloon_alert(owner, "Já absorvendo!")
 		return
 
 	if(!owner.pulling || !iscarbon(owner.pulling))
-		owner.balloon_alert(owner, "needs grab!")
+		owner.balloon_alert(owner, "Precisa pegar!")
 		return
 	if(owner.grab_state <= GRAB_NECK)
-		owner.balloon_alert(owner, "needs tighter grip!")
+		owner.balloon_alert(owner, "Precisa de mais força!")
 		return
 
 	var/mob/living/carbon/target = owner.pulling
@@ -152,18 +152,18 @@
 	for(var/absorbing_iteration in 1 to 3)
 		switch(absorbing_iteration)
 			if(1)
-				to_chat(owner, span_notice("This creature is compatible. We must hold still..."))
+				to_chat(owner, span_notice("Esta criatura é compatível. Devemos ficar parados..."))
 			if(2)
-				owner.visible_message(span_warning("[owner] extends a proboscis!"), span_notice("We extend a proboscis."))
+				owner.visible_message(span_warning("[owner] extends a proboscis!"), span_notice("Vamos estender um proboscis."))
 			if(3)
 				absorbing_loop = new(owner, start_immediately = TRUE)
 				owner.visible_message(span_danger("[owner] stabs [target] with the proboscis!"), span_notice("We stab [target] with the proboscis."))
-				to_chat(target, span_userdanger("You feel a sharp stabbing pain!"))
+				to_chat(target, span_userdanger("Você sente uma dor afiada!"))
 				target.take_overall_damage(40)
 
 		SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("Absorb DNA", "[absorbing_iteration]"))
 		if(!do_after(owner, 15 SECONDS, target, hidden = TRUE))
-			owner.balloon_alert(owner, "interrupted!")
+			owner.balloon_alert(owner, "Interrompido!")
 			qdel(absorbing_loop)
 			is_absorbing = FALSE
 			return FALSE
@@ -171,7 +171,7 @@
 
 /mob/eye/imaginary_friend/hivemind
 	name = "hivemind member"
-	desc = "A drifting thought in the ocean that is the changeling hivemind."
+	desc = "Um pensamento à deriva no oceano que é a colmeia metamorfo."
 	distance_allowance = 5
 	require_los = TRUE
 	hidden = TRUE
@@ -191,7 +191,7 @@
 /mob/eye/imaginary_friend/hivemind/greet()
 
 	var/greet_message = ""
-	greet_message += separator_hr(span_danger(span_slightly_larger("You are absorbed by the changeling!")))
+	greet_message += separator_hr(span_danger(span_slightly_larger("Você é absorvido pelo metamorfo!")))
 	greet_message += "You are now a part of the changeling hivemind, and can communicate with them freely by speaking. \
 		Your knowledge may be useful to them..."
 	greet_message += "<br>You may also choose to <a href='byond://?src=[REF(src)];exit_hivemind=1'>exit the hivemind</a> \
@@ -217,8 +217,8 @@
 		exit_hivemind()
 
 /mob/eye/imaginary_friend/hivemind/proc/exit_hivemind()
-	var/response = tgui_alert(src, "Are you sure you want to exit the hivemind? \
-		You can't re-enter it, though you can still be revived.", "Confirm Exit", list("Exit", "Stay"))
+	var/response = tgui_alert(src, "Tem certeza que quer sair da colmeia?\
+Você não pode entrar novamente, embora ainda possa ser revivido.", "Confirm Exit", list("Exit", "Stay"))
 	if(response != "Exit" || QDELETED(src))
 		return
 	ghostize(TRUE)
@@ -255,7 +255,7 @@
 
 /datum/action/innate/exit_hivemind
 	name = "Exit Hivemind"
-	desc = "Exit the changeling hivemind permanently. You may still be revived later."
+	desc = "Saia da colmeia metamorfo permanentemente. Você ainda pode ser revivido mais tarde."
 	// button_icon_state = "exit_hivemind"
 
 /datum/action/innate/exit_hivemind/Activate()
@@ -265,7 +265,7 @@
 /// Allow the changeling to nuke people griffing them
 /datum/action/changeling/eject_from_hivemind
 	name = "Eject from Hivemind"
-	desc = "Eject an unwanted member from the hivemind."
+	desc = "Ejetar um membro indesejado da colmeia."
 	// button_icon_state = "eject_hivemind"
 	chemical_cost = 0
 	dna_cost = CHANGELING_POWER_UNOBTAINABLE
@@ -285,7 +285,7 @@
 	if(QDELETED(freeloader) || QDELETED(src))
 		return FALSE
 
-	to_chat(freeloader, span_userdanger("You have been ejected from the changeling hivemind!"))
+	to_chat(freeloader, span_userdanger("Você foi expulso da colmeia mutante!"))
 	qdel(freeloader)
 	..()
 	return TRUE

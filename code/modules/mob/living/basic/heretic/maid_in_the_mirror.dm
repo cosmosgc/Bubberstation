@@ -2,7 +2,7 @@
 /mob/living/basic/heretic_summon/maid_in_the_mirror
 	name = "\improper Maid in the Mirror"
 	real_name = "Maid in the Mirror"
-	desc = "A floating and flowing wisp of chilled air. Glancing at it causes it to shimmer slightly."
+	desc = "Um vento flutuante e fluindo de ar gelado. Olhar para ele faz com que brilhe um pouco."
 	icon = 'icons/mob/simple/mob.dmi'
 	icon_state = "stand"
 	icon_living = "stand" // Placeholder sprite... still
@@ -15,7 +15,7 @@
 	melee_damage_lower = 12
 	melee_damage_upper = 16
 	sight = SEE_MOBS | SEE_OBJS | SEE_TURFS
-	death_message = "shatters and vanishes, releasing a gust of cold air."
+	death_message = "Destrui e desaparece, libertando uma rajada de ar frio."
 	/// Whether we take damage when someone looks at us
 	var/harmed_by_examine = TRUE
 	/// How often being examined by a specific mob can hurt us

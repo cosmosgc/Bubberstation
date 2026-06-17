@@ -17,7 +17,7 @@
 		return
 
 	if(!ishuman(attacked_mob))
-		to_chat(user, span_warning("Where are the lips on that?"))
+		to_chat(user, span_warning("Onde estão os lábios disso?"))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(async_set_color), attacked_mob, user)
@@ -37,7 +37,7 @@
 		to_chat(user, span_warning("Remove [ target == user ? "your" : "[target.p_their()]" ] mask!"))
 		return
 	if(target.lip_style) //if they already have lipstick on
-		to_chat(user, span_warning("You need to wipe off the old lipstick first!"))
+		to_chat(user, span_warning("Você precisa limpar o batom velho primeiro!"))
 		return
 
 	if(target == user)
@@ -56,13 +56,13 @@
 
 /obj/item/hairbrush/comb
 	name = "comb"
-	desc = "A rather simple tool, used to straighten out hair and knots in it."
+	desc = "Uma ferramenta simples, usada para endireitar o cabelo e nós nele."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "blackcomb"
 
 /obj/item/hairstyle_preview_magazine
 	name = "hip hairstyles magazine"
-	desc = "A magazine featuring a magnitude of hairsytles!"
+	desc = "Uma revista com uma magnitude de penteados!"
 
 /obj/item/hairstyle_preview_magazine/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -75,7 +75,7 @@
 
 /obj/item/razor
 	name = "electric razor"
-	desc = "The latest and greatest power razor born from the science of shaving."
+	desc = "A mais recente e mais poderosa navalha nascida da ciência de barbear."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "razor"
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -112,12 +112,12 @@
 		return
 
 	if(!(location in head_zones) && !user.combat_mode)
-		to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\""))
+		to_chat(user, span_warning("Pare, olhe para o que está segurando e pense em si mesmo.\"Deve ser usado no cabelo ou no cabelo facial.\""))
 		return
 
 	if(location == BODY_ZONE_PRECISE_MOUTH)
 		if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-			to_chat(user, span_warning("There is no facial hair to shave!"))
+			to_chat(user, span_warning("Não há pêlos faciais para barbear!"))
 			return
 
 		var/covering = target_human.is_mouth_covered()
@@ -130,7 +130,7 @@
 			return
 
 		if(target_human.facial_hairstyle == "Shaved")
-			to_chat(user, span_warning("Already clean-shaven!"))
+			to_chat(user, span_warning("Já barbeado!"))
 			return
 
 		var/self_shaving = target_human == user // Shaving yourself?
@@ -145,15 +145,15 @@
 
 	else if(location == BODY_ZONE_HEAD)
 		if(!(noggin.head_flags & HEAD_HAIR))
-			to_chat(user, span_warning("There is no hair to shave!"))
+			to_chat(user, span_warning("Não há cabelo para barbear!"))
 			return
 
 		if(!target_human.is_location_accessible(location))
-			to_chat(user, span_warning("The headgear is in the way!"))
+			to_chat(user, span_warning("O capacete está no caminho!"))
 			return
 
 		if(target_human.hairstyle == "Bald" || target_human.hairstyle == "Balding Hair" || target_human.hairstyle == "Skinhead")
-			to_chat(user, span_warning("There is not enough hair left to shave!"))
+			to_chat(user, span_warning("Não há cabelo suficiente para se barbear!"))
 			return
 
 		if(HAS_TRAIT(target_human, TRAIT_SHAVED))
@@ -176,7 +176,7 @@
 
 /obj/structure/sign/barber
 	name = "barbershop sign"
-	desc = "A glowing red-blue-white stripe you won't mistake for any other!"
+	desc = "Uma faixa vermelha-azul-branca brilhante que você não vai confundir com qualquer outro!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "barber"
 	buildable_sign = FALSE // Don't want them removed, they look too jank.

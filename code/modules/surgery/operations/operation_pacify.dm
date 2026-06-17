@@ -1,8 +1,8 @@
 /datum/surgery_operation/organ/pacify
 	name = "pacification"
 	rnd_name = "Paxopsy (Pacification)"
-	desc = "Remove aggressive tendencies from a patient's brain."
-	rnd_desc = "A surgical procedure which permanently inhibits the aggression center of the brain, making the patient unwilling to cause direct harm."
+	desc = "Remova tendências agressivas do cérebro de um paciente."
+	rnd_desc = "Um procedimento cirúrgico que inibe permanentemente o centro de agressão do cérebro, fazendo o paciente não querer causar dano direto."
 	operation_flags = OPERATION_MORBID | OPERATION_LOCKED | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -56,7 +56,7 @@
 /datum/surgery_operation/organ/pacify/mechanic
 	name = "delete aggression programming"
 	rnd_name = "Aggression Suppression Programming (Pacification)"
-	rnd_desc = "Install malware which permanently inhibits the aggression programming of the patient's neural network, making the patient unwilling to cause direct harm."
+	rnd_desc = "Instale malware que inibe permanentemente a programação de agressão da rede neural do paciente, fazendo o paciente não querer causar danos diretos."
 	implements = list(
 		TOOL_MULTITOOL = 1,
 		TOOL_HEMOSTAT = 2.85,

@@ -1,5 +1,5 @@
 /obj/vehicle/sealed/mecha/phazon
-	desc = "This is a Phazon exosuit. The pinnacle of scientific research and pride of Nanotrasen, it uses cutting edge anomalous technology and expensive materials."
+	desc = "Este é um exossuit Phazon. O auge da pesquisa científica e orgulho de Nanotrasen, usa tecnologia anômala de ponta e materiais caros."
 	name = "\improper Phazon"
 	icon_state = "phazon"
 	base_icon_state = "phazon"
@@ -51,13 +51,13 @@
 	switch(chassis.damtype)
 		if(TOX)
 			new_damtype = BRUTE
-			chassis.balloon_alert(owner, "your punches will now deal brute damage")
+			chassis.balloon_alert(owner, "Seus socos agora vão causar danos brutais.")
 		if(BRUTE)
 			new_damtype = BURN
-			chassis.balloon_alert(owner, "your punches will now deal burn damage")
+			chassis.balloon_alert(owner, "Seus socos agora vão causar danos.")
 		if(BURN)
 			new_damtype = TOX
-			chassis.balloon_alert(owner,"your punches will now deal toxin damage")
+			chassis.balloon_alert(owner,"Seus socos agora vão causar danos nas toxinas.")
 	chassis.damtype = new_damtype
 	button_icon_state = "mech_damtype_[new_damtype]"
 	playsound(chassis, 'sound/vehicles/mecha/mechmove01.ogg', 50, TRUE)

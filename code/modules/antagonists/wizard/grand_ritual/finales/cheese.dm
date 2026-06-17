@@ -18,10 +18,10 @@
 		if (crewmate == invoker) //everyone but the wizard is royally fucked, no matter who they are
 			continue
 		if (crewmate.has_trauma_type(/datum/brain_trauma/mild/hallucinations)) //for an already insane person, this is retribution
-			to_chat(crewmate, span_boldwarning("Your surroundings suddenly fill with a cacophony of manic laughter and psychobabble..."))
-			to_chat(crewmate, span_nicegreen("...but as the moment passes, you realise that whatever eldritch power behind the event happened to affect you \
-				has resonated within the ruins of your already shattered mind, creating a singularity of mental instability! \
-				As it collapses unto itself, you feel... at peace, finally."))
+			to_chat(crewmate, span_boldwarning("Seu ambiente de repente se enche de uma cacofonia de risos maníacos e psicodistúrbios..."))
+			to_chat(crewmate, span_nicegreen("...mas quando o momento passa, você percebe que qualquer poder de eldritch por trás do evento aconteceu para afetá-lo\
+Ressoou dentro das ruínas de sua mente já destruída, criando uma singularidade de instabilidade mental!\
+Quando ela se desmorona, você se sente... em paz, finalmente."))
 			if(crewmate.has_quirk(/datum/quirk/insanity))
 				crewmate.remove_quirk(/datum/quirk/insanity)
 			else

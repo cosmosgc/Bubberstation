@@ -1,6 +1,6 @@
 /datum/mafia_role/mafia
 	name = "Changeling"
-	desc = "You're a member of the changeling hive. Talk during the Night period to coordinate with your allies, and kill all non-Changelings."
+	desc = "Você é um membro da colméia metamorfo. Fale durante o período da noite para coordenar com seus aliados, e matar todos os não-Changelings."
 	team = MAFIA_TEAM_MAFIA
 	role_type = MAFIA_REGULAR
 	role_flags = ROLE_CAN_KILL
@@ -21,12 +21,12 @@
 /datum/mafia_role/mafia/proc/mafia_text(datum/mafia_controller/source)
 	SIGNAL_HANDLER
 
-	to_chat(body, "<b>Vote for who to kill tonight. The killer will be chosen randomly from voters.</b>")
+	to_chat(body, "<b>Vote em quem matar esta noite. O assassino será escolhido aleatoriamente dos eleitores.</b>")
 
 /datum/mafia_role/mafia/thoughtfeeder
 	name = "Thoughtfeeder"
-	desc = "You're a changeling variant that feeds on the memories of others. Talk during the Night period to coordinate with your allies, \
-		and kill all non-Changelings, using your ability to learn people's roles to your advantage."
+	desc = "Você é uma variante metamorfo que se alimenta das memórias dos outros. Conversar durante o período noturno para coordenar com seus aliados,\
+E matar todos os não-Changelings, usando sua habilidade de aprender os papéis das pessoas em sua vantagem."
 	role_type = MAFIA_SPECIAL
 	hud_icon = "hudthoughtfeeder"
 	winner_award = /datum/award/achievement/mafia/thoughtfeeder

@@ -43,7 +43,7 @@
 
 /obj/item/instrument/violin
 	name = "space violin"
-	desc = "A wooden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
+	desc = "Um instrumento musical de madeira com quatro cordas e um arco.\"O diabo foi para o espaço, ele estava procurando um assistente para o luto.\""
 	icon_state = "violin"
 	inhand_icon_state = "violin"
 	hitsound = SFX_SWING_HIT
@@ -52,7 +52,7 @@
 
 /obj/item/instrument/violin/golden
 	name = "golden violin"
-	desc = "A golden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
+	desc = "Um instrumento musical dourado com quatro cordas e um arco.\"O diabo foi para o espaço, ele estava procurando um assistente para o luto.\""
 	icon_state = "golden_violin"
 	inhand_icon_state = "golden_violin"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -60,7 +60,7 @@
 
 /obj/item/instrument/banjo
 	name = "banjo"
-	desc = "A 'Mura' brand banjo. It's pretty much just a drum with a neck and strings."
+	desc = "Um banjo da marca 'Mura'. É basicamente um tambor com pescoço e cordas."
 	icon_state = "banjo"
 	inhand_icon_state = "banjo"
 	attack_verb_continuous = list("scruggs-styles", "hum-diggitys", "shin-digs", "clawhammers")
@@ -70,7 +70,7 @@
 
 /obj/item/instrument/guitar
 	name = "guitar"
-	desc = "It's made of wood and has bronze strings."
+	desc = "É feito de madeira e tem cordas de bronze."
 	icon_state = "guitar"
 	inhand_icon_state = "guitar"
 	attack_verb_continuous = list("plays metal on", "serenades", "crashes", "smashes")
@@ -80,7 +80,7 @@
 
 /obj/item/instrument/eguitar
 	name = "electric guitar"
-	desc = "Makes all your shredding needs possible."
+	desc = "Torna possível todas as suas necessidades de trituração."
 	icon_state = "eguitar"
 	inhand_icon_state = "eguitar"
 	force = 12
@@ -91,28 +91,28 @@
 
 /obj/item/instrument/glockenspiel
 	name = "glockenspiel"
-	desc = "Smooth metal bars perfect for any marching band."
+	desc = "Barras de metal lisas perfeitas para qualquer banda."
 	icon_state = "glockenspiel"
 	allowed_instrument_ids = list("glockenspiel","crvibr", "sgmmbox", "r3celeste")
 	inhand_icon_state = "glockenspiel"
 
 /obj/item/instrument/accordion
 	name = "accordion"
-	desc = "Pun-Pun not included."
+	desc = "Pun-Pun não incluído."
 	icon_state = "accordion"
 	allowed_instrument_ids = list("crack", "crtango", "accordion")
 	inhand_icon_state = "accordion"
 
 /obj/item/instrument/trumpet
 	name = "trumpet"
-	desc = "To announce the arrival of the king!"
+	desc = "Para anunciar a chegada do rei!"
 	icon_state = "trumpet"
 	allowed_instrument_ids = "crtrumpet"
 	inhand_icon_state = "trumpet"
 
 /obj/item/instrument/trumpet/spectral
 	name = "spectral trumpet"
-	desc = "Things are about to get spooky!"
+	desc = "As coisas estão prestes a ficar assustadoras!"
 	icon_state = "spectral_trumpet"
 	inhand_icon_state = "spectral_trumpet"
 	force = 0
@@ -133,14 +133,14 @@
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
-	desc = "This soothing sound will be sure to leave your audience in tears."
+	desc = "Este som calmante deixará seu público em lágrimas."
 	icon_state = "saxophone"
 	allowed_instrument_ids = "saxophone"
 	inhand_icon_state = "saxophone"
 
 /obj/item/instrument/saxophone/spectral
 	name = "spectral saxophone"
-	desc = "This spooky sound will be sure to leave mortals in bones."
+	desc = "Este som assustador certamente deixará mortais nos ossos."
 	icon_state = "saxophone"
 	inhand_icon_state = "saxophone"
 	force = 0
@@ -161,14 +161,14 @@
 
 /obj/item/instrument/trombone
 	name = "trombone"
-	desc = "How can any pool table ever hope to compete?"
+	desc = "Como uma mesa de bilhar pode querer competir?"
 	icon_state = "trombone"
 	allowed_instrument_ids = list("crtrombone", "crbrass", "trombone")
 	inhand_icon_state = "trombone"
 
 /obj/item/instrument/trombone/spectral
 	name = "spectral trombone"
-	desc = "A skeleton's favorite instrument. Apply directly on the mortals."
+	desc = "O instrumento favorito de um esqueleto. Aplicar diretamente nos mortais."
 	icon_state = "trombone"
 	inhand_icon_state = "trombone"
 	force = 0
@@ -189,7 +189,7 @@
 
 /obj/item/instrument/recorder
 	name = "recorder"
-	desc = "Just like in school, playing ability and all."
+	desc = "Como na escola, jogando habilidade e tudo mais."
 	force = 5
 	icon_state = "recorder"
 	allowed_instrument_ids = "recorder"
@@ -197,7 +197,7 @@
 
 /obj/item/instrument/harmonica
 	name = "harmonica"
-	desc = "For when you get a bad case of the space blues."
+	desc = "Para quando você tiver um caso ruim de blues espaciais."
 	icon_state = "harmonica"
 	allowed_instrument_ids = list("crharmony", "harmonica")
 	inhand_icon_state = "harmonica"
@@ -223,12 +223,12 @@
 		return
 	if(!ismob(loc))
 		CRASH("[src] was still registered to listen in on [source] but was not found to be on their mob.")
-	to_chat(loc, span_warning("You stop playing the harmonica to talk..."))
+	to_chat(loc, span_warning("Pare de tocar gaita para falar..."))
 	song.playing = FALSE
 
 /datum/action/item_action/instrument
 	name = "Use Instrument"
-	desc = "Use the instrument specified"
+	desc = "Use o instrumento especificado."
 
 /datum/action/item_action/instrument/do_effect(trigger_flags)
 	if(!istype(target, /obj/item/instrument))
@@ -239,7 +239,7 @@
 
 /obj/item/instrument/bikehorn
 	name = "gilded bike horn"
-	desc = "An exquisitely decorated bike horn, capable of honking in a variety of notes."
+	desc = "Uma corneta de bicicleta finamente decorada, capaz de buzinar em uma variedade de notas."
 	icon_state = "bike_horn"
 	inhand_icon_state = "bike_horn"
 	lefthand_file = 'icons/mob/inhands/equipment/horns_lefthand.dmi'
@@ -255,7 +255,7 @@
 
 /obj/item/instrument/musicalmoth
 	name = "musical moth"
-	desc = "Despite its popularity, this controversial musical toy was eventually banned due to its unethically sampled sounds of moths screaming in agony."
+	desc = "Apesar de sua popularidade, este controverso brinquedo musical foi eventualmente banido devido aos seus sons antiético amostrados de mariposas gritando em agonia."
 	icon_state = "mothsician"
 	allowed_instrument_ids = "mothscream"
 	attack_verb_continuous = list("flutters", "flaps")

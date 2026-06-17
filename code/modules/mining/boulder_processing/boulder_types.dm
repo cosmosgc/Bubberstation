@@ -4,7 +4,7 @@
 ///Boulders with special artificats that can give higher mining points
 /obj/item/boulder/artifact
 	name = "artifact boulder"
-	desc = "This boulder is brimming with strange energy. Cracking it open could contain something unusual for science."
+	desc = "Esta rocha está cheia de energia estranha. Abri-la pode conter algo incomum para a ciência."
 	icon_state = "boulder_artifact"
 	/// This is the type of item that will be inside the boulder. Default is a strange object.
 	var/artifact_type = /obj/item/relic/lavaland
@@ -56,7 +56,7 @@
 ///Boulders usually spawned in lavaland labour camp area
 /obj/item/boulder/gulag
 	name = "low-quality boulder"
-	desc = "This rocks. It's a low quality boulder, so it's probably not worth as much."
+	desc = "Isso é demais. É uma pedra de baixa qualidade, então provavelmente não vale tanto."
 
 /obj/item/boulder/gulag/Initialize(mapload)
 	. = ..()
@@ -77,7 +77,7 @@
 ///Boulders usually spawned in lavaland labour camp area but with bluespace material
 /obj/item/boulder/gulag_expanded
 	name = "low-density boulder"
-	desc = "This rocks. It's not very well packed, and can't contain as many minerals."
+	desc = "Isso é demais. Não está muito bem embalado, e não pode conter tantos minerais."
 
 /obj/item/boulder/gulag_expanded/Initialize(mapload)
 	. = ..()
@@ -98,7 +98,7 @@
 ///lowgrade boulder, Exists as an admin spawn for testing
 /obj/item/boulder/shabby
 	name = "shabby boulder"
-	desc = "A bizarre, twisted boulder. Wait, wait no, it's just a rock."
+	desc = "Uma pedra bizarra e torcida. Espere, é só uma pedra."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.1, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.1)
 	durability = 1
 

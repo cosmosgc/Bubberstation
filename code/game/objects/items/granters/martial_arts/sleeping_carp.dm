@@ -2,7 +2,7 @@
 	martial = /datum/martial_art/the_sleeping_carp
 	name = "mysterious scroll"
 	martial_name = "sleeping carp"
-	desc = "A scroll filled with strange markings. It seems to be drawings of some sort of martial art."
+	desc = "Um pergaminho cheio de marcas estranhas. Parecem desenhos de algum tipo de arte marcial."
 	greet = span_sciradio("You have learned the ancient martial art of the Sleeping Carp! Your hand-to-hand combat has become much more effective, and you are now able to deflect any projectiles \
 		directed toward you while in Combat Mode. You are also able to sometimes dodge melee and unarmed attacks against you, but only as long as you dress in appropriate martial arts clothing. Or \
 		carp-themed clothing. Your body has also hardened itself, granting extra protection against lasting wounds that would otherwise mount during extended combat. However, you are also unable to \
@@ -28,7 +28,7 @@
 	. = ..()
 	if(uses <= 0)
 		name = "empty scroll"
-		desc = "It's completely blank."
+		desc = "Está completamente em branco."
 		icon_state = "blankscroll"
 	else
 		name = initial(name)

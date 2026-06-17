@@ -1,12 +1,12 @@
 /obj/item/organ/cyberimp/chest
 	name = "cybernetic torso implant"
-	desc = "Implants for the organs in your torso."
+	desc = "Implantes para os órgãos em seu torso."
 	abstract_type = /obj/item/organ/cyberimp/chest
 	zone = BODY_ZONE_CHEST
 
 /obj/item/organ/cyberimp/chest/nutriment
 	name = "nutriment pump implant"
-	desc = "This implant will synthesize and pump into your bloodstream a small amount of nutriment when you are starving."
+	desc = "Este implante irá sintetizar e bombear em sua corrente sanguínea uma pequena quantidade de nutrientes quando você está faminto."
 	icon_state = "nutriment_implant"
 	aug_overlay = "nutripump"
 	var/hunger_threshold = NUTRITION_LEVEL_STARVING
@@ -22,7 +22,7 @@
 
 	if(owner.nutrition <= hunger_threshold)
 		synthesizing = TRUE
-		to_chat(owner, span_notice("You feel less hungry..."))
+		to_chat(owner, span_notice("Você sente menos fome..."))
 		owner.adjust_nutrition(25 * seconds_per_tick)
 		addtimer(CALLBACK(src, PROC_REF(synth_cool)), 5 SECONDS)
 
@@ -34,12 +34,12 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 	owner.reagents.add_reagent(/datum/reagent/toxin/bad_food, poison_amount / severity)
-	to_chat(owner, span_warning("You feel like your insides are burning."))
+	to_chat(owner, span_warning("Você sente como se suas entranhas estivessem queimando."))
 
 
 /obj/item/organ/cyberimp/chest/nutriment/plus
 	name = "nutriment pump implant PLUS"
-	desc = "This implant will synthesize and pump into your bloodstream a small amount of nutriment when you are hungry."
+	desc = "Este implante irá sintetizar e bombear em sua corrente sanguínea uma pequena quantidade de nutrientes quando você estiver com fome."
 	icon_state = "adv_nutriment_implant"
 	aug_overlay = "nutripump_adv"
 	hunger_threshold = NUTRITION_LEVEL_HUNGRY
@@ -47,7 +47,7 @@
 
 /obj/item/organ/cyberimp/chest/reviver
 	name = "reviver implant"
-	desc = "This implant will attempt to revive and heal you if you lose consciousness. For the faint of heart!"
+	desc = "Este implante vai tentar reviver e curar você se você perder a consciência. Para os fracos de coração!"
 	icon_state = "reviver_implant"
 	aug_overlay = "reviver"
 	emissive_overlay = TRUE
@@ -83,7 +83,7 @@
 	if(owner.stat != CONSCIOUS)
 		revive_cost = 0
 		reviving = TRUE
-		to_chat(owner, span_notice("You feel a faint buzzing as your reviver implant starts patching your wounds..."))
+		to_chat(owner, span_notice("Você sente um zumbido fraco quando seu implante reanimador começa a remendar suas feridas..."))
 		COOLDOWN_START(src, defib_cooldown, 8 SECONDS) // 5 seconds after heal proc delay
 
 
@@ -112,7 +112,7 @@
 		owner.updatehealth()
 
 	if(body_damage_patched && prob(35)) // healing is called every few seconds, not every tick
-		owner.visible_message(span_warning("[owner]'s body twitches a bit."), span_notice("You feel like something is patching your injured body."))
+		owner.visible_message(span_warning("[owner]'s body twitches a bit."), span_notice("Você sente como se algo estivesse remendando seu corpo ferido."))
 
 
 /obj/item/organ/cyberimp/chest/reviver/proc/revive_dead()
@@ -149,7 +149,7 @@
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.stat != DEAD && prob(50 / severity) && human_owner.can_heartattack())
 			human_owner.set_heartattack(TRUE)
-			to_chat(human_owner, span_userdanger("You feel a horrible agony in your chest!"))
+			to_chat(human_owner, span_userdanger("Você sente uma agonia horrível em seu peito!"))
 			addtimer(CALLBACK(src, PROC_REF(undo_heart_attack)), 600 / severity)
 
 /obj/item/organ/cyberimp/chest/reviver/proc/undo_heart_attack()
@@ -158,13 +158,13 @@
 		return
 	human_owner.set_heartattack(FALSE)
 	if(human_owner.stat == CONSCIOUS)
-		to_chat(human_owner, span_notice("You feel your heart beating again!"))
+		to_chat(human_owner, span_notice("Você sente seu coração batendo novamente!"))
 
 
 /obj/item/organ/cyberimp/chest/thrusters
 	name = "implantable thrusters set"
-	desc = "An implantable set of thruster ports. They use the gas from environment or subject's internals for propulsion in zero-gravity areas. \
-	Unlike regular jetpacks, this device has no stabilization system."
+	desc = "Um conjunto implantável de portas propulsoras. Eles usam o gás do ambiente ou dos internos do sujeito para propulsão em áreas de gravidade zero.\
+Ao contrário de jetpacks normais, este dispositivo não tem sistema de estabilização."
 	slot = ORGAN_SLOT_THRUSTERS
 	icon_state = "imp_jetpack"
 	base_icon_state = "imp_jetpack"
@@ -207,7 +207,7 @@
 		return
 	if(organ_flags & ORGAN_FAILING)
 		if(!silent)
-			to_chat(owner, span_warning("Your thrusters set seems to be broken!"))
+			to_chat(owner, span_warning("Seus propulsores parecem estar quebrados!"))
 		return
 	if(SEND_SIGNAL(src, COMSIG_THRUSTER_ACTIVATED, owner) & THRUSTER_ACTIVATION_FAILED)
 		return
@@ -215,7 +215,7 @@
 	on = TRUE
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/cybernetic)
 	if(!silent)
-		to_chat(owner, span_notice("You turn your thrusters set on."))
+		to_chat(owner, span_notice("Ligue os propulsores."))
 	update_appearance()
 	owner.update_body_parts()
 
@@ -225,7 +225,7 @@
 	SEND_SIGNAL(src, COMSIG_THRUSTER_DEACTIVATED, owner)
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/cybernetic)
 	if(!silent)
-		to_chat(owner, span_notice("You turn your thrusters set off."))
+		to_chat(owner, span_notice("Você desliga os propulsores."))
 	on = FALSE
 	update_appearance()
 	owner.update_body_parts()
@@ -279,8 +279,8 @@
 
 /obj/item/organ/cyberimp/chest/spine
 	name = "\improper Herculean gravitronic spinal implant"
-	desc = "This gravitronic spinal interface is able to improve the athletics of a user, allowing them greater physical ability. \
-		Contains a slot which can be upgraded with a gravity anomaly core, improving its performance."
+	desc = "Esta interface raquidiana gravitrônica é capaz de melhorar o atletismo de um usuário, permitindo-lhes maior capacidade física.\
+Contém um espaço que pode ser atualizado com um núcleo de anomalia de gravidade, melhorando seu desempenho."
 	icon_state = "herculean_implant"
 	slot = ORGAN_SLOT_SPINE
 	/// How much faster does the spinal implant improve our lifting speed, workout ability, reducing falling damage and improving climbing and standing speed
@@ -300,7 +300,7 @@
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
-	to_chat(owner, span_warning("You feel shearing pain as your body is crushed like a soda can!"))
+	to_chat(owner, span_warning("Você sente dor cortante como seu corpo é esmagado como uma lata de refrigerante!"))
 	owner.apply_damage(20/severity, BRUTE, def_zone = BODY_ZONE_CHEST)
 
 /obj/item/organ/cyberimp/chest/spine/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags)
@@ -327,10 +327,10 @@
 		return NONE
 
 	if(core_applied)
-		user.balloon_alert(user, "core already installed!")
+		user.balloon_alert(user, "O núcleo já está instalado!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.balloon_alert(user, "core installed")
+	user.balloon_alert(user, "núcleo instalado")
 	name = /obj/item/organ/cyberimp/chest/spine/atlas::name
 	desc = /obj/item/organ/cyberimp/chest/spine/atlas::desc
 	athletics_boost_multiplier = /obj/item/organ/cyberimp/chest/spine/atlas::athletics_boost_multiplier
@@ -345,10 +345,10 @@
 
 /obj/item/organ/cyberimp/chest/spine/atlas
 	name = "\improper Atlas gravitonic spinal implant"
-	desc = "This gravitronic spinal interface is able to improve the athletics of a user, allowing them greater physical ability. \
-		This one has been improved through the installation of a gravity anomaly core, allowing for personal gravity manipulation. \
-		Not only can you walk with your feet planted firmly on the ground even during a loss of environmental gravity, but you also \
-		carry heavier loads with relative ease."
+	desc = "Esta interface raquidiana gravitrônica é capaz de melhorar o atletismo de um usuário, permitindo-lhes maior capacidade física.\
+Este foi melhorado através da instalação de um núcleo de anomalia de gravidade, permitindo manipulação de gravidade pessoal.\
+Não só você pode andar com seus pés plantados firmemente no chão, mesmo durante uma perda de gravidade ambiental, mas você também\
+Carregar cargas mais pesadas com relativa facilidade."
 	icon_state = "herculean_implant_core"
 	athletics_boost_multiplier = 0.25
 	added_throw_speed = 6

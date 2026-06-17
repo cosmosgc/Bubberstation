@@ -1,6 +1,6 @@
 /obj/item/pai_card
 	custom_premium_price = PAYCHECK_COMMAND * 1.25
-	desc = "Downloads personal AI assistants to accompany its owner or others."
+	desc = "Transfere assistentes pessoais de IA para acompanhar seu dono ou outros."
 	icon = 'icons/obj/aicards.dmi'
 	icon_state = "pai"
 	inhand_icon_state = "electronic"
@@ -34,7 +34,7 @@
 /obj/item/pai_card/attackby(obj/item/used, mob/user, list/modifiers, list/attack_modifiers)
 	if(pai && istype(used, /obj/item/encryptionkey))
 		if(!pai.encrypt_mod)
-			to_chat(user, span_alert("Encryption Key ports not configured."))
+			to_chat(user, span_alert("Portas de chave de criptografia não configuradas."))
 			return
 		pai.radio.attackby(used, user, modifiers)
 		to_chat(user, span_notice("You insert [used] into the [src]."))
@@ -214,7 +214,7 @@
 		return FALSE
 	var/datum/pai_candidate/candidate = SSpai.candidates[ckey]
 	if(!candidate?.check_ready())
-		balloon_alert(user, "download interrupted")
+		balloon_alert(user, "download interrompido")
 		return FALSE
 	var/mob/living/silicon/pai/new_pai = new(src)
 	new_pai.name = candidate.name || pick(GLOB.ninja_names)
@@ -235,20 +235,20 @@
 	if(pai)
 		return FALSE
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SILICONS))
-		balloon_alert(user, "unavailable: NT blacklisted")
+		balloon_alert(user, "Não disponível: NT na lista negra")
 		return FALSE
 	if(request_spam)
-		balloon_alert(user, "request sent too recently")
+		balloon_alert(user, "Requisito enviado muito recentemente")
 		return FALSE
 	request_spam = TRUE
 	playsound(src, 'sound/machines/ping.ogg', 20, TRUE)
-	balloon_alert(user, "pAI assistance requested")
+	balloon_alert(user, "Assistência do PAI solicitada")
 	var/mutable_appearance/alert_overlay = mutable_appearance('icons/obj/aicards.dmi', "pai")
 
 	notify_ghosts(
 		"[user.real_name] is requesting a pAI companion! Use the pAI button to submit yourself as one.",
 		source = user,
-		header = "pAI Request!",
+		header = "Pedido de paz!",
 		alert_overlay = alert_overlay,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		ignore_key = POLL_IGNORE_PAI,

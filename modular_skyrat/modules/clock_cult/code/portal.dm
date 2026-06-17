@@ -1,6 +1,6 @@
 /obj/effect/portal/permanent/one_way/reebe
 	name = "whirring portal"
-	desc = "A tall, glowing portal. A low emination of moving cogs can be heard. You don't feel like coming back will be the easiest."
+	desc = "Um portal alto e brilhante. Uma baixa eliminação de engrenagens móveis pode ser ouvida. Não acha que voltar será fácil."
 	id = "reebe_entry"
 	color = "#fcbe03"
 
@@ -25,7 +25,7 @@
 
 
 /obj/effect/portal/permanent/one_way/reebe/leaving
-	desc = "For those who wish or require to leave the holy outpost."
+	desc = "Para aqueles que desejam ou exigem deixar o posto sagrado."
 	id = "reebe_exit"
 
 

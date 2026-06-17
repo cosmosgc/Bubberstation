@@ -1,18 +1,18 @@
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl
 	name = "hole in the ground"
-	desc = "A clearly hand dug hole in the ground that appears to lead into a small cave of some kind? It's pretty dark in there."
-	prompt_name = "icemoon dweller"
+	desc = "Um buraco claramente escavado no chão que parece levar a uma pequena caverna de algum tipo? Está muito escuro lá dentro."
+	prompt_name = "Morador da lua de gelo"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "hole"
 	mob_species = /datum/species/human/felinid/primitive
 	outfit = /datum/outfit/primitive_catgirl
 	density = FALSE
-	you_are_text = "You are an icemoon dweller."
-	flavour_text = "For as long as you can remember, the icemoon has been your home. \
-		It's been the home of your ancestors, and their ancestors, and the ones before them. \
-		Currently, you and your kin live in uneasy tension with your nearby human-and-otherwise \
-		neighbors. Keep your village and your Kin safe, but bringing death on their heads from \
-		being reckless with the outsiders will not have the Gods be so kind."
+	you_are_text = "Você é um morador de lua de gelo."
+	flavour_text = "Desde que se lembra, a lua de gelo tem sido sua casa.\
+Tem sido a casa de seus ancestrais, e seus ancestrais, e os anteriores a eles.\
+Atualmente, você e sua família vivem em uma tensão inquieta com o seu próximo humano-e-seguidamente\
+Vizinhos. Mantenha sua aldeia e seu Kin seguros, mas trazendo a morte em suas cabeças de\
+Ser imprudente com os forasteiros não fará com que os deuses sejam tão gentis."
 	spawner_job_path = /datum/job/primitive_catgirl
 
 	/// The team the spawner will assign players to and use to keep track of people that have already used the spawner
@@ -66,7 +66,7 @@
 	if(uses)
 		. += span_notice("You can see <b>[uses]</b> figures sound asleep down there.")
 	else
-		. += span_notice("It looks pretty empty.")
+		. += span_notice("Parece bem vazio.")
 
 	return .
 
@@ -74,7 +74,7 @@
 	if(!(user.key in team.players_spawned)) // One spawn per person
 		return TRUE
 	if(!silent)
-		to_chat(user, span_warning("It'd be weird if there were multiple of you in that cave, wouldn't it?"))
+		to_chat(user, span_warning("Seria estranho se houvesse vários de vocês naquela caverna, não seria?"))
 	return FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/special(mob/living/spawned_mob, mob/mob_possessor, apply_prefs)
@@ -93,7 +93,7 @@
 	team.players_spawned += (spawned_human.ckey)
 
 /datum/job/primitive_catgirl
-	title = "Icemoon Dweller"
+	title = "Morador da Lua de Gelo"
 
 // Antag and team datums
 
@@ -105,7 +105,7 @@
 /datum/team/primitive_catgirls/roundend_report()
 	var/list/report = list()
 
-	report += span_header("An Ice Walker Tribe inhabited the wastes...</span><br>")
+	report += span_header("Uma tribo Ice Walker habitava os resíduos...</span><br>")
 	if(length(members))
 		report += "The [member_name]s were:"
 		report += printplayerlist(members)

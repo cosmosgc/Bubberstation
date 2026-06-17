@@ -8,7 +8,7 @@
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	desc = "An AI Module for programming laws to an AI."
+	desc = "Um Módulo de IA para programar leis para uma IA."
 	obj_flags = CONDUCTS_ELECTRICITY
 	force = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -57,7 +57,7 @@
 //The proc other things should be calling
 /obj/item/ai_module/proc/install(datum/ai_laws/law_datum, mob/user)
 	if(!bypass_law_amt_check && (!laws.len || laws[1] == "")) //So we don't loop trough an empty list and end up with runtimes.
-		to_chat(user, span_warning("ERROR: No laws found on board."))
+		to_chat(user, span_warning("Nenhuma lei encontrada a bordo."))
 		return
 
 	var/overflow = FALSE
@@ -87,7 +87,7 @@
 		to_chat(user, span_notice("Upload complete. [law_datum.owner]'s laws have been modified."))
 		law_datum.owner.law_change_counter++
 	else
-		to_chat(user, span_notice("Upload complete."))
+		to_chat(user, span_notice("Envio completo."))
 
 	var/time = round_timestamp()
 	var/ainame = law_datum.owner ? law_datum.owner.name : "empty AI core"
@@ -119,7 +119,7 @@
 		to_chat(law_datum.owner, span_userdanger("[sender] has uploaded a change to the laws you must follow using a [name]."))
 
 /obj/item/ai_module/core
-	desc = "An AI Module for programming core laws to an AI."
+	desc = "Um Módulo de IA para programar leis nucleares para uma IA."
 
 /obj/item/ai_module/core/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	for(var/templaw in laws)

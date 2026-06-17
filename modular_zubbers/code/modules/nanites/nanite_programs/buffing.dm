@@ -2,7 +2,7 @@
 
 /datum/nanite_program/nervous
 	name = "Nerve Support"
-	desc = "The nanites act as a secondary nervous system, reducing the amount of time the host is stunned."
+	desc = "Os nanites agem como um sistema nervoso secundário, reduzindo o tempo que o hospedeiro está atordoado."
 	use_rate = 1.5
 	rogue_types = list(/datum/nanite_program/nerve_decay)
 
@@ -20,10 +20,10 @@
 
 /datum/nanite_program/dermal_armor
 	name = "Dermal Hardening"
-	desc = "The nanites form a mesh under the host's skin, protecting them from melee and bullet impacts. \
-			Each hit costs nanites two times to damage, but the more nanites you have, the more protection you get. \
-			50 nanites = 1 flat armor, with each hit costing two times it's damage in nanites. \
-			Will not turn on with other dermal armor programs."
+	desc = "Os nanites formam uma malha sob a pele do hospedeiro, protegendo-os de melee e impactos de bala.\
+Cada golpe custa nanites duas vezes para danificar, mas quanto mais nanites você tem, mais proteção você tem.\
+50 nanites = 1 armadura plana, com cada golpe custando duas vezes é dano em nanites.\
+Não ligará com outros programas de armaduras."
 	use_rate = 2
 	rogue_types = list(/datum/nanite_program/skin_decay)
 	var/damage_type = BRUTE
@@ -95,7 +95,7 @@
 	if(actual_damage >= nanites.nanite_volume)
 		playsound(host_mob, SFX_SHATTER)
 		host_mob.Knockdown(1 SECONDS)
-		to_chat(host_mob, span_warning("Something shatters under your skin, and you feel a sharp pain!"))
+		to_chat(host_mob, span_warning("Algo quebra sob sua pele, e você sente uma dor aguda!"))
 		disable_passive_effect()
 		return
 
@@ -171,10 +171,10 @@
 
 /datum/nanite_program/dermal_armor/refractive
 	name = "Dermal Refractive Surface"
-	desc = "The nanites form a membrane above the host's skin, reducing the effect of laser and energy impacts. \
-			Each hit costs nanites equilavent to damage, but the more nanites you have, the more protection you get. \
-			50 nanites = 1 flat armor, with each hit costing two times it's damage in nanites. \
-			Will not turn on with other dermal armor programs."
+	desc = "Os nanites formam uma membrana acima da pele do hospedeiro, reduzindo o efeito do laser e impactos de energia.\
+Cada golpe custa nanites equilavent para danificar, mas quanto mais nanites você tem, mais proteção você tem.\
+50 nanites = 1 armadura plana, com cada golpe custando duas vezes é dano em nanites.\
+Não ligará com outros programas de armaduras."
 	damage_type = BURN
 	rgb_color = list(255, 255, 0)
 
@@ -188,7 +188,7 @@
 
 /datum/nanite_program/coagulating
 	name = "Vein Repressurization"
-	desc = "The nanites re-route circulating blood away from open wounds, dramatically reducing bleeding rate."
+	desc = "Os nanites redirecionam sangue circulando para longe de feridas abertas, reduzindo drasticamente a taxa de sangramento."
 	use_rate = 0.20
 	rogue_types = list(/datum/nanite_program/suffocating)
 
@@ -206,7 +206,7 @@
 
 /datum/nanite_program/conductive
 	name = "Electric Conduction"
-	desc = "The nanites act as a grounding rod for electric shocks, protecting the host. Shocks can still damage the nanites themselves."
+	desc = "Os nanites agem como uma haste de aterramento para choques elétricos, protegendo o hospedeiro. Choques ainda podem danificar os nanites."
 	use_rate = 0.20
 	program_flags = NANITE_SHOCK_IMMUNE
 	rogue_types = list(/datum/nanite_program/nerve_decay)
@@ -221,7 +221,7 @@
 
 /datum/nanite_program/mindshield
 	name = "Mental Barrier"
-	desc = "The nanites form a protective membrane around the host's brain, shielding them from abnormal influences while they're active."
+	desc = "Os nanites formam uma membrana protetora ao redor do cérebro do hospedeiro, protegendo-os de influências anormais enquanto estão ativos."
 	use_rate = 0.40
 	rogue_types = list(/datum/nanite_program/brain_decay, /datum/nanite_program/brain_misfire)
 

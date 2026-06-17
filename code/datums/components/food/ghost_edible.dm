@@ -31,7 +31,7 @@
 	notify_ghosts(
 		"[parent_name] is edible by ghosts!",
 		source = parent,
-		header = "Something Tasty!",
+		header = "Algo gostoso!",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
 

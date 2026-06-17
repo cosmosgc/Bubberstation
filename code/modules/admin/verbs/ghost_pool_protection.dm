@@ -71,7 +71,7 @@ ADMIN_VERB(ghost_pool_protection, R_ADMIN, "Ghost Pool Protection", "Choose whic
 		if("no_roles")
 			new_role_flags = NONE
 		if("apply_settings")
-			to_chat(usr, "Settings Applied!")
+			to_chat(usr, "Configurações aplicadas!")
 			var/msg
 			switch(new_role_flags)
 				if(ALL)

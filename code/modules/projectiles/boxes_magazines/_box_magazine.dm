@@ -1,7 +1,7 @@
 //Boxes of ammo
 /obj/item/ammo_box
 	name = "ammo box (null_reference_exception)"
-	desc = "A box of ammo."
+	desc = "Uma caixa de munição."
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	abstract_type = /obj/item/ammo_box
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -196,11 +196,11 @@
 /obj/item/ammo_box/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(IS_WRITING_UTENSIL(tool))
 		if(!ammo_band_icon)
-			balloon_alert(user, "no indicator support!")
+			balloon_alert(user, "Sem suporte indicador!")
 			return
 		var/new_color = tgui_color_picker(user, "Set a new ammo band color, cancel to remove indicator", "Ammo Box Indicator Color", ammo_band_color)
 		ammo_band_color = new_color
-		balloon_alert(user, "indicator updated")
+		balloon_alert(user, "indicador atualizado")
 		update_appearance()
 		return
 
@@ -298,7 +298,7 @@
 
 /obj/item/ammo_box/magazine
 	name = "A magazine (what?)"
-	desc = "A magazine of rounds, they look like error signs... this should probably be reported somewhere."
+	desc = "Uma revista de rondas, eles parecem sinais de erro... isso provavelmente deve ser relatado em algum lugar."
 	abstract_type = /obj/item/ammo_box/magazine
 	ammo_box_multiload = AMMO_BOX_MULTILOAD_IN // so you can't use a magazine like a bootleg speedloader
 	drop_sound = 'sound/items/handling/gun/ballistics/magazine/magazine_drop1.ogg'

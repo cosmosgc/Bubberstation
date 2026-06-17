@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/pointed/apetra_vulnera
 	name = "Apetra Vulnera"
-	desc = "Causes severe bleeding on every limb of a target which has more than 15 brute damage. \
-		Wounds a random limb if no limb is sufficiently damaged."
+	desc = "Causa hemorragia grave em cada membro de um alvo que tem mais de 15 danos brutos.\
+Feri um membro aleatório se nenhum membro estiver suficientemente danificado."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -33,7 +33,7 @@
 	if(cast_on.can_block_magic(antimagic_flags))
 		cast_on.visible_message(
 			span_danger("[cast_on]'s bruises briefly glow, but repels the effect!"),
-			span_danger("Your bruises sting a little, but you are protected!")
+			span_danger("Suas contusões ardem um pouco, mas você está protegido!")
 		)
 		return FALSE
 
@@ -51,7 +51,7 @@
 
 	cast_on.visible_message(
 		span_danger("[cast_on]'s scratches and bruises are torn open by an unholy force!"),
-		span_danger("Your scratches and bruises are torn open by some horrible unholy force!")
+		span_danger("Seus arranhões e contusões são rasgados por uma horrível força profana!")
 	)
 
 	new /obj/effect/temp_visual/cleave(get_turf(cast_on))

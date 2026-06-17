@@ -8,8 +8,8 @@
  */
 /obj/item/earthcracker
 	name = "E-2 Earthcracker"
-	desc = "A nasty automated pilebunker can be used to create a massive weakpoint in flooring,\
-		which can be triggered afterwards by a sufficiently strong enough explosion."
+	desc = "Um pilebunker automatizado desagradável pode ser usado para criar um ponto fraco enorme no piso,\
+que pode ser desencadeada depois por uma explosão suficientemente forte."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "earthcracker"
 	base_icon_state = "earthcracker"
@@ -39,7 +39,7 @@
 		if(EARTHCRACKER_ACTIVE)
 			if(activation_timer)
 				return FALSE
-			var/response = tgui_alert(user, "Activate the earthcracker?", "Activate?", list("Yes", "No")) == "Yes"
+			var/response = tgui_alert(user, "Ativar o quebra-terra?", "Activate?", list("Yes", "No")) == "Yes"
 			if(!response)
 				return FALSE
 			if(!user.Adjacent(src))
@@ -51,7 +51,7 @@
 			activation_timer = addtimer(CALLBACK(src, PROC_REF(strike_the_earth)), 1.2 SECONDS)
 			return TRUE
 		if(EARTHCRACKER_SPENT)
-			balloon_alert(user, "used up!")
+			balloon_alert(user, "Usado!")
 			return FALSE
 
 /obj/item/earthcracker/update_icon_state()
@@ -66,15 +66,15 @@
 
 /obj/item/earthcracker/wrench_act(mob/living/user, obj/item/tool)
 	if(anchored && status == EARTHCRACKER_SPENT)
-		balloon_alert(user, "it falls apart")
+		balloon_alert(user, "Se desfaz.")
 		animate(src, 0.6 SECONDS, alpha = 0, easing = CIRCULAR_EASING|EASE_IN)
 		addtimer(CALLBACK(src, PROC_REF(post_break)), 0.6 SECONDS)
 		return ITEM_INTERACT_SUCCESS
 	if(!anchored && status == EARTHCRACKER_READY)
-		balloon_alert(user, "arm in hands first!")
+		balloon_alert(user, "Primeiro o braço nas mãos!")
 		return ITEM_INTERACT_SUCCESS
 	if(anchored && status == EARTHCRACKER_ACTIVE)
-		balloon_alert(user, "unfastening from the floor...")
+		balloon_alert(user, "Desapertando do chão...")
 		if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
 			return ITEM_INTERACT_FAILURE
 		anchored = FALSE
@@ -103,15 +103,15 @@
 	if(!arm_location)
 		return FALSE
 	if(isgroundlessturf(arm_location))
-		balloon_alert(user, "can't deploy here")
+		balloon_alert(user, "Não posso entrar aqui.")
 		return FALSE
 
 	if(status == EARTHCRACKER_SPENT)
-		balloon_alert(user, "used up!")
+		balloon_alert(user, "Usado!")
 		return FALSE
 	balloon_alert(user, "arming...")
 	if(!do_after(user, 3 SECONDS, src))
-		balloon_alert(user, "failed to arm")
+		balloon_alert(user, "falhou em armar")
 		return FALSE
 
 	forceMove(arm_location)
@@ -168,9 +168,9 @@
 /// Small subtype for shenanigans.
 /obj/item/earthcracker/small
 	name = "E-1 Earthcracker"
-	desc = "A rusty automated pilebunker can be used to create a weakpoint in flooring,\
-		which can be triggered afterwards by a sufficiently strong enough explosion.\
-		You're pretty sure the mining company that used to make these got bought by Nanotrasen ages ago."
+	desc = "Um pilebunker enferrujado e automatizado pode ser usado para criar um ponto fraco no piso,\
+que pode ser desencadeada depois por uma explosão suficientemente forte.\
+Tem certeza que a mineradora que fazia isso foi comprada por Nanotrasen há muito tempo."
 	weakpoint_type = /obj/effect/weakpoint
 
 #undef EARTHCRACKER_READY

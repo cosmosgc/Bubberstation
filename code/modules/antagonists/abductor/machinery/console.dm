@@ -14,7 +14,7 @@
 
 /obj/machinery/abductor/console
 	name = "abductor console"
-	desc = "Ship command center."
+	desc = "Centro de comando da nave."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "console"
 	density = TRUE
@@ -67,7 +67,7 @@
 	if(.)
 		return
 	if(!HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_TRAINING))
-		to_chat(user, span_warning("You start mashing alien buttons at random!"))
+		to_chat(user, span_warning("Você começa a esmagar botões alienígenas ao acaso!"))
 		if(do_after(user,100, target = src))
 			TeleporterSend()
 
@@ -200,12 +200,12 @@
 
 /obj/machinery/abductor/console/proc/SetDroppoint(turf/open/location,user)
 	if(!istype(location))
-		to_chat(user, span_warning("That place is not safe for the specimen."))
+		to_chat(user, span_warning("Aquele lugar não é seguro para o espécime."))
 		return
 
 	if(pad)
 		pad.teleport_target = location
-		to_chat(user, span_notice("Location marked as test subject release point."))
+		to_chat(user, span_notice("Localização marcada como ponto de liberação do objeto de teste."))
 
 /obj/machinery/abductor/console/post_machine_initialize()
 	. = ..()
@@ -268,9 +268,9 @@
 
 /obj/machinery/abductor/console/attackby(obj/O, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(O, /obj/item/abductor/gizmo) && AddGizmo(O))
-		to_chat(user, span_notice("You link the tool to the console."))
+		to_chat(user, span_notice("Você liga a ferramenta ao console."))
 	else if(istype(O, /obj/item/clothing/suit/armor/abductor/vest) && AddVest(O))
-		to_chat(user, span_notice("You link the vest to the console."))
+		to_chat(user, span_notice("Você liga o colete ao console."))
 	else
 		return ..()
 

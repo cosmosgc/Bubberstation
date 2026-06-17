@@ -1,6 +1,6 @@
 /obj/structure/statue/petrified
 	name = "statue"
-	desc = "An incredibly lifelike marble carving."
+	desc = "Uma escultura de mármore incrivelmente realista."
 	icon_state = "human_male"
 	density = TRUE
 	anchored = TRUE
@@ -26,7 +26,7 @@
 	petrified_mob = living
 	if(living.buckled)
 		living.buckled.unbuckle_mob(living, force = TRUE)
-	living.visible_message(span_warning("[living]'s skin rapidly turns to marble!"), span_userdanger("Your body freezes up! Can't... move... can't... think..."))
+	living.visible_message(span_warning("[living]'s skin rapidly turns to marble!"), span_userdanger("Seu corpo congela! Não consigo... me mover... não consigo... pensar..."))
 	living.forceMove(src)
 	living.add_traits(list(TRAIT_GODMODE, TRAIT_MUTE, TRAIT_NOBLOOD), STATUE_MUTE)
 	living.add_faction(FACTION_MIMIC) //Stops mimics from instaqdeling people in statues
@@ -63,7 +63,7 @@
 		if(statue_mob.mind)
 			if(petrified_mob)
 				statue_mob.mind.transfer_to(petrified_mob)
-				to_chat(petrified_mob, span_notice("You slowly come back to your senses. You are in control of yourself again!"))
+				to_chat(petrified_mob, span_notice("Você lentamente volta aos seus sentidos. Você está no controle de si mesmo novamente!"))
 		qdel(statue_mob)
 
 	for(var/obj/statue_contents in src)

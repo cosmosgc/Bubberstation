@@ -219,8 +219,8 @@
 		var/other_shock_text = ""
 		var/self_shock_text = ""
 		if (!limb_can_shock)
-			other_shock_text = ", and is striken by golden bolts of electricity"
-			self_shock_text = ", but are immediately shocked by the electricity contained within"
+			other_shock_text = ", e é atingido por parafusos dourados de eletricidade"
+			self_shock_text = ", mas ficam imediatamente chocados com a eletricidade contida dentro"
 		message = span_boldwarning("[user] tears open [their_or_other] [limb.plaintext_zone] with [user.p_their()] crowbar[other_shock_text]!")
 		self_message = span_warning("You tear open [your_or_other] [limb.plaintext_zone] with your crowbar[self_shock_text]!")
 		if (user != victim)

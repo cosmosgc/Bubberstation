@@ -3,7 +3,7 @@
 /mob/living/basic/pet/dog/pug
 	name = "\improper pug"
 	real_name = "pug"
-	desc = "They're a pug."
+	desc = "Eles são um pug."
 	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "pug"
 	icon_living = "pug"
@@ -21,14 +21,14 @@
 /mob/living/basic/pet/dog/pug/mcgriff
 	name = "McGriff"
 	real_name = "McGriff"
-	desc = "This dog can tell something smells around here, and that something is CRIME!"
+	desc = "Este cão pode dizer algo cheirando por aqui, e que algo é crime!"
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
 
 /mob/living/basic/pet/dog/bullterrier
 	name = "\improper bull terrier"
 	real_name = "bull terrier"
-	desc = "They're a bull terrier."
+	desc = "Eles são um terrier touro."
 	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "bullterrier"
 	icon_living = "bullterrier"
@@ -40,7 +40,7 @@
 
 /mob/living/basic/pet/dog/bullterrier/lavaland_party
 	name = "Saint Nick's Helpful Associate"
-	desc = "Undergraduate in 'Being a Good Boy'."
+	desc = "Licenciatura em \"Ser um Bom Menino\"."
 	habitable_atmos = null
 	gold_core_spawnable = NO_SPAWN
 	unique_pet = TRUE
@@ -48,7 +48,7 @@
 /mob/living/basic/pet/dog/bullterrier/guarddog //hostile dog variant for space ruins
 	name = "\improper guard dog"
 	real_name = "guard dog"
-	desc = "A vicious bull terrier. They look aggressive and territorial."
+	desc = "Um terrier touro cruel. Parecem agressivos e territoriais."
 	collar_icon_state = "spiked"
 	//slightly weaker than a bear, but not as slow
 	health = 60
@@ -82,7 +82,7 @@
 /mob/living/basic/pet/dog/breaddog //Most of the code originates from Cak
 	name = "Kobun"
 	real_name = "Kobun"
-	desc = "It is a dog made out of bread. 'The universe is definitely half full'."
+	desc = "É um cachorro feito de pão. O universo está definitivamente meio cheio."
 	icon_state = "breaddog"
 	icon_living = "breaddog"
 	icon_dead = "breaddog_dead"

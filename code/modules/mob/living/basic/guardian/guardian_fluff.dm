@@ -58,7 +58,7 @@
 
 /// Output an appropriate fluff string for our guardian when it is created
 /datum/guardian_fluff/proc/get_fluff_string(guardian_type)
-	return span_holoparasite(guardian_fluff[guardian_type] || "You bring forth a glitching abomination, something which should not be! Please contact a coder about it.")
+	return span_holoparasite(guardian_fluff[guardian_type] || "Você traz uma abominação, algo que não deveria ser! Por favor, contate um programador sobre isso.")
 
 /// Used by holoparasites in the Traitor uplink
 /datum/guardian_fluff/tech
@@ -104,7 +104,7 @@
 /datum/guardian_fluff/carp
 	name = "Holocarp"
 	fluff_type = GUARDIAN_TECH
-	desc = "A mysterious fish that swims by its charge, ever fingilant."
+	desc = "Um peixe misterioso que nada por sua carga, sempre fingilante."
 	icon_state = null // Handled entirely by the overlay
 	bubble_icon = "holo"
 	overlay_state = "carp"

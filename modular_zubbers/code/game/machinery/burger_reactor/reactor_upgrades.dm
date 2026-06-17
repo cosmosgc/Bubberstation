@@ -1,7 +1,7 @@
 
 /obj/item/rbmk_upgrade
 	name = "\improper RB-MK2 software upgrade disk"
-	desc = "It seems to be empty. Good fucking job, coders."
+	desc = "Parece estar vazio. Bom trabalho, programadores."
 	icon = 'icons/obj/devices/floppy_disks.dmi'
 	icon_state = "datadisk2"
 
@@ -18,9 +18,9 @@
 		var/obj/item/rbmk_upgrade/upgrade_disk = tool
 		if(upgrade_disk.can_upgrade(src))
 			upgrade_disk.apply_upgrade(src)
-			balloon_alert(user, "upgraded!")
+			balloon_alert(user, "Atualizado!")
 		else
-			balloon_alert(user, "can't upgrade!")
+			balloon_alert(user, "Não posso atualizar!")
 		return TRUE
 
 
@@ -30,7 +30,7 @@
 //Auto Vent
 /obj/item/rbmk_upgrade/auto_vent
 	name = "\improper RB-MK2 software upgrade disk - auto vent"
-	desc = "A disk that allows you to install an upgrade into the RB-MK that automatically controls vent usage to maximize power gain at all temperature setups."
+	desc = "Um disco que permite instalar uma atualização no RB-MK que controla automaticamente o uso da ventilação para maximizar o ganho de energia em todas as configurações de temperatura."
 
 /obj/item/rbmk_upgrade/auto_vent/apply_upgrade(obj/machinery/power/rbmk2/machine)
 	machine.auto_vent_upgrade = TRUE
@@ -42,7 +42,7 @@
 //Safeties
 /obj/item/rbmk_upgrade/safeties
 	name = "\improper RB-MK2 software upgrade disk - safeties optimization"
-	desc = "A disk that allows you to install an upgrade into the RB-MK that effectively decreases the safeties threshold from 75% to 95%, preventing premature ejectulation."
+	desc = "Um disco que permite instalar uma atualização no RB-MK que efetivamente diminui o limiar de segurança de 75% para 95%, evitando ejeção prematura."
 
 /obj/item/rbmk_upgrade/safeties/apply_upgrade(obj/machinery/power/rbmk2/machine)
 	machine.safeties_upgrade = TRUE
@@ -55,7 +55,7 @@
 //Overclock
 /obj/item/rbmk_upgrade/overclock
 	name = "\improper RB-MK2 software upgrade disk - overclock"
-	desc = "A disk that allows you to install an upgrade into the RB-MK that enables overlocking of the reactor."
+	desc = "Um disco que permite instalar uma atualização no RB-MK que permite bloquear o reator."
 
 /obj/item/rbmk_upgrade/overclock/apply_upgrade(obj/machinery/power/rbmk2/machine)
 	machine.overclocked_upgrade = TRUE

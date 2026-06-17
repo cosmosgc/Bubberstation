@@ -54,7 +54,7 @@
 
 /obj/item/clockwork/weapon/brass_spear
 	name = "brass spear"
-	desc = "A razor-sharp spear made of brass. It thrums with barely-contained energy."
+	desc = "Uma lança afiada feita de bronze. Ele bate com energia mal contida."
 	icon_state = "ratvarian_spear"
 	embed_type = /datum/embedding/spear/brass
 	throwforce = 36
@@ -67,14 +67,14 @@
 
 /obj/item/clockwork/weapon/brass_battlehammer
 	name = "brass battle-hammer"
-	desc = "A brass hammer glowing with energy."
+	desc = "Um martelo de bronze brilhando com energia."
 	base_icon_state = "ratvarian_hammer"
 	icon_state = "ratvarian_hammer0"
 	throwforce = 25
 	armour_penetration = 6
 	attack_verb_simple = list("bash", "hammer", "attack", "smash")
 	attack_verb_continuous = list("bashes", "hammers", "attacks", "smashes")
-	clockwork_desc = "Enemies hit by this will be flung back while you are on bronze tiles."
+	clockwork_desc = "Inimigos atingidos por isso serão lançados de volta enquanto você está em bronze azulejos."
 	sharpness = 0
 	hitsound = 'sound/items/weapons/smash.ogg'
 
@@ -101,14 +101,14 @@
 
 /obj/item/clockwork/weapon/brass_sword
 	name = "brass longsword"
-	desc = "A large sword made of brass."
+	desc = "Uma grande espada feita de bronze."
 	icon_state = "ratvarian_sword"
 	force = 26
 	throwforce = 20
 	armour_penetration = 12
 	attack_verb_simple = list("attack", "slash", "cut", "tear", "gore")
 	attack_verb_continuous = list("attacks", "slashes", "cuts", "tears", "gores")
-	clockwork_desc = "Enemies and mechs will be struck with a powerful electromagnetic pulse while you are on bronze tiles, with a cooldown."
+	clockwork_desc = "Inimigos e mechs serão atingidos com um pulso eletromagnético poderoso enquanto você está em azulejos de bronze, com um arrefecimento."
 	COOLDOWN_DECLARE(emp_cooldown)
 
 
@@ -151,7 +151,7 @@
 
 /obj/item/gun/ballistic/bow/clockwork // SKYRAT TODO - Make Arrow icon independent from sprite
 	name = "brass bow"
-	desc = "A bow made from brass and other components that you can't quite understand. It glows with a deep energy and frabricates arrows by itself."
+	desc = "Um arco feito de latão e outros componentes que você não consegue entender. Ele brilha com uma energia profunda e frabrica flechas por si só."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
@@ -194,7 +194,7 @@
 	if(!do_after(user, 0.5 SECONDS, src))
 		return
 
-	to_chat(user, span_notice("You draw back the bowstring."))
+	to_chat(user, span_notice("Você puxa de volta o cordão."))
 	drawn = TRUE
 	playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
 	update_icon()
@@ -224,7 +224,7 @@
 
 /obj/item/ammo_casing/arrow/clockbolt
 	name = "energy bolt"
-	desc = "An arrow made from a strange energy."
+	desc = "Uma flecha feita de uma energia estranha."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/ammo.dmi'
 	icon_state = "arrow_redlight"
 	projectile_type = /obj/projectile/energy/clockbolt
@@ -240,7 +240,7 @@
 
 /obj/item/gun/ballistic/rifle/lionhunter/clockwork
 	name = "brass rifle"
-	desc = "An antique, brass rifle made with the finest of care. It has an ornate scope in the shape of a cog built into the top."
+	desc = "Um rifle antigo, feito com o melhor cuidado. Tem um escopo ornamentado na forma de uma engrenagem construída no topo."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons_40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
@@ -289,7 +289,7 @@
 
 /obj/item/ammo_box/speedloader/strilka310/lionhunter/clock
 	name = "stripper clip (.310 brass)"
-	desc = "A stripper clip that's just as brass as the rounds it holds."
+	desc = "Um clipe de stripper que é tão forte quanto as balas."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/ammo.dmi'
 	icon_state = "762_brass"
 	ammo_type = /obj/item/ammo_casing/strilka310/lionhunter/clock

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt
 	name = "Ethereal Jaunt"
-	desc = "This spell turns your form ethereal, temporarily making you invisible and able to pass through walls."
+	desc = "Este feitiço transforma sua forma etérea, temporariamente tornando-a invisível e capaz de atravessar paredes."
 	button_icon_state = "jaunt"
 	sound = 'sound/effects/magic/ethereal_enter.ogg'
 
@@ -86,7 +86,7 @@
 	if(!found_exit)
 		// It's possible no exit was found, because we literally didn't even move
 		if(get_turf(cast_on) != start_point)
-			to_chat(cast_on, span_danger("Unable to find an unobstructed space, you find yourself ripped back to where you started."))
+			to_chat(cast_on, span_danger("Incapaz de encontrar um espaço desobstruído, você se encontra rasgado de volta para onde começou."))
 		// Either way, default to where we started
 		found_exit = start_point
 
@@ -171,7 +171,7 @@
 
 /datum/action/cooldown/spell/jaunt/ethereal_jaunt/shift
 	name = "Phase Shift"
-	desc = "This spell allows you to pass through walls."
+	desc = "Este feitiço permite que você atravesse paredes."
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 
@@ -221,7 +221,7 @@
 	if(!.)
 		return
 	if (locate(/obj/effect/blessing) in .)
-		to_chat(user, span_warning("Holy energies block your path!"))
+		to_chat(user, span_warning("As energias sagradas bloqueiam seu caminho!"))
 		return null
 
 /// Red coloured variant

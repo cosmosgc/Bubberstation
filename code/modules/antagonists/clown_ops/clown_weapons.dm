@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/spray/waterflower/lube
 	name = "water flower"
-	desc = "A seemingly innocent sunflower...with a twist. A <i>slippery</i> twist."
+	desc = "Um girassol aparentemente inocente... com uma reviravolta. A<i>escorregadio.</i>Torça."
 	icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	icon_state = "sunflower"
 	inhand_icon_state = "sunflower"
@@ -65,7 +65,7 @@
 /obj/item/melee/energy/sword/bananium/attackby(obj/item/weapon, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(COOLDOWN_FINISHED(src, next_trombone_allowed) && istype(weapon, /obj/item/melee/energy/sword/bananium))
 		COOLDOWN_START(src, next_trombone_allowed, 5 SECONDS)
-		to_chat(user, span_warning("You slap the two swords together. Sadly, they do not seem to fit!"))
+		to_chat(user, span_warning("Você bate as duas espadas juntas. Infelizmente, eles não parecem caber!"))
 		playsound(src, 'sound/misc/sadtrombone.ogg', 50)
 		return TRUE
 	return ..()
@@ -82,7 +82,7 @@
 
 /obj/item/shield/energy/bananium
 	name = "bananium energy shield"
-	desc = "A shield that stops most melee attacks, protects user from almost all energy projectiles, and can be thrown to slip opponents."
+	desc = "Um escudo que impede a maioria dos ataques, protege o usuário de quase todos os projéteis de energia, e pode ser jogado para deslizar adversários."
 	icon_state = "bananaeshield"
 	inhand_icon_state = "bananaeshield"
 	throw_speed = 1
@@ -124,7 +124,7 @@
 
 /obj/item/seeds/banana/bombanana
 	name = "bombanana seed pack"
-	desc = "They're seeds that grow into bombanana trees. When grown, give to the clown."
+	desc = "São sementes que crescem em árvores bombananas. Quando crescer, dê ao palhaço."
 	plantname = "Bombanana Tree"
 	product = /obj/item/food/grown/banana/bombanana
 
@@ -152,7 +152,7 @@
 	return NONE
 
 /obj/item/grown/bananapeel/bombanana
-	desc = parent_type::desc + " Why is it beeping?"
+	desc = parent_type::desc + "Por que está bipando?"
 	seed = /obj/item/seeds/banana/bombanana
 	/// How long we have until we explode.
 	var/det_time = 5 SECONDS
@@ -187,7 +187,7 @@
 
 /obj/item/grenade/chem_grenade/teargas/moustache
 	name = "tear-stache grenade"
-	desc = "A handsomely-attired teargas grenade."
+	desc = "Uma granada de gás lacrimogêneo."
 	icon_state = "moustacheg"
 	clumsy_check = GRENADE_NONCLUMSY_FUMBLE
 

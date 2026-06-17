@@ -1,6 +1,6 @@
 /obj/structure/lattice
 	name = "lattice"
-	desc = "A lightweight support lattice. These hold our station together."
+	desc = "Um suporte leve. Eles mantêm nossa estação unida."
 	icon = 'icons/obj/smooth_structures/lattice.dmi'
 	icon_state = "lattice-255"
 	base_icon_state = "lattice"
@@ -53,7 +53,7 @@
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)
-	return span_notice("The rods look like they could be <b>cut</b>. There's space for more <i>rods</i> or a <i>tile</i>.")
+	return span_notice("As hastes parecem que podem ser<b>Corta.</b>Há espaço para mais<i>Varas</i>ou um<i>azulejo</i>.")
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
@@ -114,7 +114,7 @@
 
 /obj/structure/lattice/catwalk
 	name = "catwalk"
-	desc = "A catwalk for easier EVA maneuvering and cable placement."
+	desc = "Uma passarela para manobras de EVA e colocação de cabo."
 	icon = 'icons/obj/smooth_structures/catwalk.dmi'
 	icon_state = "catwalk-0"
 	base_icon_state = "catwalk"
@@ -126,7 +126,7 @@
 	give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_LAVA_STOPPED, TRAIT_CHASM_STOPPED, TRAIT_IMMERSE_STOPPED, TRAIT_HYPERSPACE_STOPPED)
 
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
-	return span_notice("The supporting rods look like they could be <b>cut</b>.")
+	return span_notice("As barras de apoio parecem que podem ser<b>Corta.</b>.")
 
 /obj/structure/lattice/catwalk/Move()
 	var/turf/T = loc
@@ -155,7 +155,7 @@
 
 /obj/structure/lattice/catwalk/mining
 	name = "reinforced catwalk"
-	desc = "A heavily reinforced catwalk used to build bridges in hostile environments. It doesn't look like anything could make this budge."
+	desc = "Uma passarela fortemente reforçada usada para construir pontes em ambientes hostis. Não parece que algo possa fazer esse movimento."
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/structure/lattice/catwalk/mining/attackby(obj/item/C, mob/user, list/modifiers, list/attack_modifiers)
@@ -170,7 +170,7 @@
 
 /obj/structure/lattice/catwalk/lava
 	name = "heatproof catwalk"
-	desc = "A specialized catwalk for building across lava. Watch your step."
+	desc = "Uma passarela especializada para construir em lava. Cuidado onde pisa."
 	icon = 'icons/obj/smooth_structures/catwalk.dmi'
 	icon_state = "catwalk-0"
 	base_icon_state = "catwalk"
@@ -179,7 +179,7 @@
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
 
 /obj/structure/lattice/catwalk/lava/deconstruction_hints(mob/user)
-	return span_notice("The rods look like they could be <b>cut</b>, but the <i>heat treatment will shatter off</i>. There's space for a <i>tile</i>.")
+	return span_notice("As hastes parecem que podem ser<b>Corta.</b>, mas o<i>O tratamento térmico vai acabar.</i>Há espaço para<i>azulejo</i>.")
 
 /obj/structure/lattice/catwalk/lava/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -199,7 +199,7 @@
 
 /obj/structure/lattice/catwalk/boulder
 	name = "boulder platform"
-	desc = "A boulder, floating on the molten hot deadly lava. More like a BOATlder."
+	desc = "Uma pedra, flutuando na lava mortífera quente derretida. Mais como um barco."
 	icon = 'icons/obj/smooth_structures/boulder_platform.dmi'
 	icon_state = "boulder_platform-0"
 	base_icon_state = "boulder_platform"
@@ -216,7 +216,7 @@
 
 /obj/structure/lattice/catwalk/boulder/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(ismetaltile(attacking_item))
-		balloon_alert(user, "too unstable!")
+		balloon_alert(user, "Muito instável!")
 		return FALSE
 	return ..()
 

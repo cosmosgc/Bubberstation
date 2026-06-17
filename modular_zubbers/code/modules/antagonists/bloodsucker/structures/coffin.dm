@@ -4,10 +4,10 @@
 	// ALREADY CLAIMED
 	if(claimed.resident)
 		if(claimed.resident != owner.current)
-			claimed.balloon_alert(owner.current, "already claimed by another!")
+			claimed.balloon_alert(owner.current, "Já reivindicado por outro!")
 		return FALSE
 	if(!(GLOB.the_station_areas.Find(current_area.type)))
-		claimed.balloon_alert(owner.current, "not part of station!")
+		claimed.balloon_alert(owner.current, "Não faz parte da estação!")
 		return
 	return TRUE
 
@@ -18,7 +18,7 @@
 	coffin = claimed
 	bloodsucker_haven_area = current_area
 	to_chat(owner, span_userdanger("You have claimed the [claimed] as your place of immortal rest! Your haven is now [bloodsucker_haven_area]."))
-	to_chat(owner, span_announce("Bloodsucker Tip: Find new haven recipes in the Structures tab of the <i>Crafting Menu</i>, including the <i>Persuasion Rack</i> for converting crew into Ghouls."))
+	to_chat(owner, span_announce("Encontre novas receitas de refúgio na aba de Estruturas da<i>Menu de Criação</i>, incluindo o<i>Persuasão Rack</i>para converter a tripulação em Ghouls."))
 	return TRUE
 
 /// From crate.dm
@@ -32,15 +32,15 @@
 /obj/structure/closet/crate/coffin/examine(mob/user)
 	. = ..()
 	if(user == resident)
-		. += span_cult("This is your Claimed Coffin.")
-		. += span_cult("Rest in it while injured to enter Torpor. Entering it with unspent Ranks will allow you to spend one.")
-		. += span_cult("Going inside while it contains a heart will put it in your chest, letting you regain your might.")
-		. += span_cult("Alt-Click while inside the Coffin to Lock/Unlock. This also fixes the lock if it's broken.")
-		. += span_cult("Alt-Click while outside of your Coffin to Unclaim it, unwrenching it and all your other structures as a result.")
+		. += span_cult("Este é o seu caixão reivindicado.")
+		. += span_cult("Descanse enquanto está ferido para entrar em Torpor. Entrar nele com Ranks não gastos permitirá que você gaste um.")
+		. += span_cult("Entrar enquanto contém um coração vai colocá-lo em seu peito, deixando você recuperar sua força.")
+		. += span_cult("Alt-Click dentro do caixão para fechar/desbloquear. Isso também conserta a fechadura se estiver quebrada.")
+		. += span_cult("Alt-Click enquanto fora do seu caixão para desaclará-lo, desapertando-o e todas as suas outras estruturas como resultado.")
 
 /obj/structure/closet/crate/coffin/blackcoffin
 	name = "black coffin"
-	desc = "For those departed who are not so dear."
+	desc = "Para aqueles que partiram que não são tão queridos."
 	icon_state = "coffin"
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
 	open_sound = 'modular_zubbers/sound/machines/coffin_open.ogg'
@@ -63,7 +63,7 @@
 
 /obj/structure/closet/crate/coffin/securecoffin
 	name = "secure coffin"
-	desc = "For those too scared of having their place of rest disturbed."
+	desc = "Para aqueles com medo de ter seu lugar de descanso perturbado."
 	icon_state = "securecoffin"
 	base_icon_state = "securecoffin"
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
@@ -87,7 +87,7 @@
 
 /obj/structure/closet/crate/coffin/meatcoffin
 	name = "meat coffin"
-	desc = "When you're ready to meat your maker, the steaks can never be too high."
+	desc = "Quando você está pronto para comer seu fabricante, os bifes nunca podem ser muito altos."
 	icon_state = "meatcoffin"
 	base_icon_state = "meatcoffin"
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
@@ -115,7 +115,7 @@
 
 /obj/structure/closet/crate/coffin/metalcoffin
 	name = "metal coffin"
-	desc = "A big metal sardine can inside of another big metal sardine can, in space."
+	desc = "Uma grande lata de sardinha de metal dentro de outra lata de sardinha de metal, no espaço."
 	icon_state = "metalcoffin"
 	base_icon_state = "metalcoffin"
 	icon = 'modular_zubbers/icons/obj/structures/vamp_obj.dmi'
@@ -196,9 +196,9 @@
 			bloodsucker_structure.unbolt()
 	if(!silent)
 		if(manual)
-			to_chat(resident, span_cult_italic("You have unclaimed your coffin! This also unclaims all your other Bloodsucker structures!"))
+			to_chat(resident, span_cult_italic("Você não reclamou seu caixão! Isso também não reclama todas as suas outras estruturas Bloodsucker!"))
 		else
-			to_chat(resident, span_cult_italic("You sense that the link with your coffin and your sacred haven has been broken! You will need to seek another."))
+			to_chat(resident, span_cult_italic("Você sente que a ligação com seu caixão e seu paraíso sagrado foi quebrado! Você precisará procurar outro."))
 	// Remove resident. Because this object isnt removed from the game immediately (GC?) we need to give them a way to see they don't have a home anymore.
 	resident = null
 	if(interaction_flags_click & ALLOW_RESTING)
@@ -224,7 +224,7 @@
 			if(prompt_coffin_claim(bloodsuckerdatum))
 				enlarge(user)
 			else
-				user.balloon_alert(user, "already claimed by another!")
+				user.balloon_alert(user, "Já reivindicado por outro!")
 	. = ..()
 	if(!.)
 		return FALSE
@@ -254,7 +254,7 @@
 /obj/structure/closet/crate/proc/enlarge(mob/living/user)
 	ADD_TRAIT(src, TRAIT_COFFIN_ENLARGED, "bloodsucker_coffin")
 	max_mob_size = user.mob_size
-	to_chat(user, span_warning("The coffin creaks and squeaks as you try to squeeze into it. It's a tight fit but you manage it make it fit you."))
+	to_chat(user, span_warning("O caixão range e range enquanto você tenta se espremer nele. É um ajuste apertado, mas você consegue fazê-lo caber em você."))
 	playsound(src, 'modular_skyrat/modules/aesthetics/airlock/sound/creaking.ogg')
 	animate(src, 1 SECONDS, FALSE, BOUNCE_EASING, transform = transform.Scale(user.mob_size * COFFIN_ENLARGE_MULT))
 
@@ -319,7 +319,7 @@
 		return CLICK_ACTION_SUCCESS
 
 	if(user == resident && user.Adjacent(src))
-		balloon_alert(user, "unclaim coffin?")
+		balloon_alert(user, "Não reclamar caixão?")
 		var/static/list/unclaim_options = list(
 			"Yes" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_yes"),
 			"No" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_no"))
@@ -343,7 +343,7 @@
 		if(!do_after(resident, 5 SECONDS, src))
 			to_chat(resident, span_notice("You fail to fix [src]'s mechanism."))
 			return FALSE
-		to_chat(resident, span_notice("You fix the mechanism and lock it."))
+		to_chat(resident, span_notice("Conserte o mecanismo e tranque."))
 		broken = FALSE
 		locked = TRUE
 		return TRUE

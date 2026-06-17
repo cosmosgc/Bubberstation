@@ -8,7 +8,7 @@
 
 /obj/structure/detectiveboard
 	name = "detective notice board"
-	desc = "A board for linking evidence to crimes."
+	desc = "Um conselho para ligar evidências a crimes."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	density = FALSE
@@ -44,11 +44,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 /obj/structure/detectiveboard/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(item, /obj/item/paper) || istype(item, /obj/item/photo))
 		if(!cases.len)
-			to_chat(user, "There are no cases!")
+			to_chat(user, "Não há casos!")
 			return
 
 		if(attaching_evidence)
-			to_chat(user, "You already attaching evidence!")
+			to_chat(user, "Você já está anexando evidências!")
 			return
 		attaching_evidence = TRUE
 		var/name = tgui_input_text(user, "Please enter the evidence name", "Detective's Board", max_length = MAX_NAME_LEN)
@@ -245,7 +245,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 	item.forceMove(drop_location())
 	if(user)
 		user.put_in_hands(item)
-		balloon_alert(user, "removed from board")
+		balloon_alert(user, "Removido do tabuleiro.")
 	cases[current_case].notices--
 	update_appearance(UPDATE_ICON)
 
@@ -259,7 +259,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/detectiveboard, 32)
 
 /obj/item/wallframe/detectiveboard
 	name = "detective notice board"
-	desc = "A board for linking evidence to crimes."
+	desc = "Um conselho para ligar evidências a crimes."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "noticeboard"
 	custom_materials = list(

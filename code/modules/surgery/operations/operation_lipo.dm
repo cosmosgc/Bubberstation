@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/lipoplasty
 	name = "excise excess fat"
 	rnd_name = "Lipoplasty (Excise Fat)"
-	desc = "Remove excess fat from a patient's body."
+	desc = "Remova o excesso de gordura do corpo de um paciente."
 	operation_flags = OPERATION_NOTABLE | OPERATION_AFFECTS_MOOD
 	implements = list(
 		TOOL_SAW = 1,

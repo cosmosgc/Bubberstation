@@ -73,7 +73,7 @@
 		return FALSE
 	if(time_left() <= 0)
 		if(!silent)
-			to_chat(candidate, span_danger("Sorry, you were too late for the consideration!"))
+			to_chat(candidate, span_danger("Desculpe, você chegou tarde demais para a consideração!"))
 			SEND_SOUND(candidate, 'sound/machines/buzz/buzz-sigh.ogg')
 		return FALSE
 
@@ -131,12 +131,12 @@
 	if(!ignore_list)
 		GLOB.poll_ignore[ignoring_category] = list()
 	GLOB.poll_ignore[ignoring_category] += candidate.ckey
-	to_chat(candidate, span_danger("Choice registered: Never for this round."))
+	to_chat(candidate, span_danger("Escolha registrada: nunca para esta rodada."))
 	remove_candidate(candidate, silent = TRUE)
 
 /datum/candidate_poll/proc/undo_never_for_this_round(mob/candidate)
 	GLOB.poll_ignore[ignoring_category] -= candidate.ckey
-	to_chat(candidate, span_notice("Choice registered: Eligible for this round"))
+	to_chat(candidate, span_notice("Escolha registrada:"))
 
 /datum/candidate_poll/proc/trim_candidates()
 	list_clear_nulls(signed_up)

@@ -1,6 +1,6 @@
 /obj/item/toy/eightball
 	name = "magic eightball"
-	desc = "A black ball with a stenciled number eight in white on the side. It seems full of dark liquid.\nThe instructions state that you should ask your question aloud, and then shake."
+	desc = "Uma bola preta com uma stenciled número oito em branco no lado. Parece cheio de líquido escuro.\nAs instruções dizem que você deve fazer sua pergunta em voz alta, e então tremer."
 
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "eightball"
@@ -66,7 +66,7 @@
 		to_chat(user, span_warning("[src] was shaken recently, it needs time to settle."))
 		return
 
-	user.visible_message(span_notice("[user] starts shaking [src]."), span_notice("You start shaking [src]."), span_hear("You hear shaking and sloshing."))
+	user.visible_message(span_notice("[user] starts shaking [src]."), span_notice("You start shaking [src]."), span_hear("Você ouve tremores e golpes."))
 
 	shaking = TRUE
 
@@ -97,7 +97,7 @@
 
 /obj/item/toy/eightball/broken
 	name = "broken magic eightball"
-	desc = "A black ball with a stenciled number eight in white on the side. It is cracked and seems empty."
+	desc = "Uma bola preta com uma stenciled número oito em branco no lado. Está rachado e parece vazio."
 	var/fixed_answer
 
 /obj/item/toy/eightball/broken/Initialize(mapload)
@@ -138,13 +138,13 @@
 /obj/item/toy/eightball/haunted/start_shaking(mob/user)
 	// notify ghosts that someone's shaking a haunted eightball
 	// and inform them of the message, (hopefully a yes/no question)
-	selected_message = tgui_input_text(user, "What is your question?", "Eightball", max_length = CHAT_MESSAGE_MAX_LENGTH) || initial(selected_message)
+	selected_message = tgui_input_text(user, "Qual é a sua pergunta?", "Eightball", max_length = CHAT_MESSAGE_MAX_LENGTH) || initial(selected_message)
 	if (!(src in user.held_items))
 		return FALSE
 	notify_ghosts(
 		"[user.real_name] is shaking [src], hoping to get an answer to \"[selected_message]\"",
 		source = src,
-		header = "Magic eightball",
+		header = "Bola oito mágica",
 		click_interact = TRUE,
 	)
 	return TRUE

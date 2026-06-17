@@ -4,7 +4,7 @@
 
 /obj/item/latexballoon
 	name = "latex glove"
-	desc = "Sterile and airtight."
+	desc = "Estéril e hermético."
 	icon_state = "latexballoon"
 	icon = 'icons/obj/weapons/hand.dmi'
 	inhand_icon_state = "greyscale_gloves"
@@ -47,9 +47,9 @@
 	. = ..()
 	switch(state)
 		if(INFLATED)
-			desc = "It's a blown up latex glove on a string."
+			desc = "É uma luva de látex explodida em uma corda."
 		if(POPPED)
-			desc = "The remains of a latex glove."
+			desc = "Os restos de uma luva de látex."
 
 /obj/item/latexballoon/proc/blow(obj/item/tank/tank, mob/user)
 	if(state == POPPED)
@@ -58,7 +58,7 @@
 	air_contents = tank.remove_air_volume(3)
 
 	if(isnull(air_contents))
-		balloon_alert(user, "tank is empty!")
+		balloon_alert(user, "O tanque está vazio!")
 		return
 
 	if(state == INFLATED)
@@ -67,7 +67,7 @@
 
 	playsound(src, 'sound/items/modsuit/inflate_bloon.ogg', 50, TRUE)
 
-	balloon_alert(user, "you blow up the balloon!") // because it's a balloon obviously
+	balloon_alert(user, "Você explode o balão!") // because it's a balloon obviously
 
 	set_state(INFLATED)
 

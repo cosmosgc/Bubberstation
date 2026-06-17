@@ -201,7 +201,7 @@
 
 /obj/structure/thing_boss_phase_depleter
 	name = "Molecular Accelerator"
-	desc = "Weird-ass lab equipment."
+	desc = "Equipamento de laboratório estranho."
 	icon_state = "thingdepleter"
 	anchored = TRUE
 	density = TRUE
@@ -238,7 +238,7 @@
 
 /obj/structure/thing_boss_phase_depleter/examine(mob/user)
 	. = ..()
-	. += density ? span_boldnotice("It may be possible to overload this and destroy that things defenses...") : span_bolddanger("The machine is currently being restrained by tendrils.")
+	. += density ? span_boldnotice("Pode ser possível sobrecarregar isso e destruir que as coisas defesas...") : span_bolddanger("A máquina está sendo contida por tentáculos.")
 
 /obj/structure/thing_boss_phase_depleter/proc/set_circuit_floor(state)
 	for(var/turf/open/floor/circuit/circuit in RANGE_TURFS(1, loc))
@@ -291,7 +291,7 @@
 
 /obj/structure/aggro_gate
 	name = "biohazard gate"
-	desc = "A wall of solid light, only activating when a human is endangered by a biohazard, unfortunately that does little for safety as it locks you in with said biohazard. Virtually indestructible, you must evade (or kill) the threat."
+	desc = "Uma parede de luz sólida, ativando apenas quando um humano é ameaçado por um perigo biológico, infelizmente, isso faz pouco por segurança enquanto o prende com o dito perigo biológico. Virtualmente indestrutível, você deve evitar (ou matar) a ameaça."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "wave2"
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | ACID_PROOF | LAVA_PROOF

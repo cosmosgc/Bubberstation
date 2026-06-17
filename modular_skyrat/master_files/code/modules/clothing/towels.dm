@@ -31,7 +31,7 @@
 
 /obj/item/towel
 	name = "towel"
-	desc = "Everyone knows what a towel is. Use it to dry yourself, or wear it around your chest, your waist or even your head!"
+	desc = "Todos sabem o que é uma toalha. Use-o para secar ou use-o em volta do peito, da cintura ou até da cabeça!"
 	icon = TOWEL_OBJ_ICON
 	worn_icon = TOWEL_WORN_ICON
 	worn_icon_digi = TOWEL_WORN_ICON_DIGI
@@ -71,7 +71,7 @@
 	. = ..()
 
 	if(wet)
-		. += span_notice("\nIt appears to be wet.")
+		. += span_notice("\nParece estar molhado.")
 
 
 	if(!ishuman(user) && !iscyborg(user))
@@ -257,12 +257,12 @@
 
 /obj/item/towel/item_ctrl_click(mob/user)
 	if(!wet && shape == TOWEL_FOLDED) // You can't fold a wet towel, so you can't get a folded towel that's also wet. And you can't fold what's already folded, obviously.
-		to_chat(user, span_warning("You can't fold a towel that's already folded!"))
+		to_chat(user, span_warning("Você não pode dobrar uma toalha que já está dobrada!"))
 		return
 
 	if(ishuman(user) || iscyborg(user))
 		if(iscyborg(user) && wet) // Cyborgs can't wring towels.
-			to_chat(user, span_warning("Folding a wet towel doesn't really make sense. You stop yourself before doing that."))
+			to_chat(user, span_warning("Dobrar uma toalha molhada não faz sentido. Pare antes de fazer isso."))
 			return
 
 		var/in_hands = TRUE

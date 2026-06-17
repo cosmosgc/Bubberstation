@@ -8,7 +8,7 @@
 
 /obj/machinery/breath_machine
 	name = "portable breath machine"
-	desc = "A stand on wheels with a digital regulator, similar to an IV drip, that can hold a canister of gas along with a gas mask.<br>Is it N2 for humans and N2O for vox again? Other way? What's O2? I'm not the doctor here."
+	desc = "Um estande sobre rodas com um regulador digital, semelhante a um soro, que pode segurar um cilindro de gás junto com uma máscara de gás.<br>É N2 para humanos e N2O para vox de novo? Para o outro lado? O que é O2? Não sou o médico aqui."
 	icon = 'modular_zubbers/icons/obj/medical/breath_machine.dmi'
 	icon_state = "breath_machine"
 	anchored = FALSE
@@ -250,7 +250,7 @@
 /// A boxed version of the breath Machine. This is what is printed from the medical prolathe.
 /obj/item/breath_machine_kit
 	name = "breath stand parts kit"
-	desc = "Contains all of the parts needed to assemble a portable breath stand. Use in hand to construct."
+	desc = "Contém todas as peças necessárias para montar um suporte de respiração portátil. Use em mãos para construir."
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "plasticbox"

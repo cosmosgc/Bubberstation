@@ -14,7 +14,7 @@
 
 	// Handle power damage (oxy)
 	if (battery <= 0 && lacks_power())
-		to_chat(src, span_warning("Your backup battery's output drops below usable levels. It takes only a moment longer for your systems to fail, corrupted and unusable."))
+		to_chat(src, span_warning("Sua bateria de backup cai abaixo dos níveis utilizáveis. Leva apenas mais um momento para seus sistemas falharem, corrompidos e inutilizáveis."))
 		adjust_oxy_loss(200)
 
 	if(aiRestorePowerRoutine)
@@ -83,7 +83,7 @@
 
 
 /mob/living/silicon/ai/proc/start_RestorePowerRoutine()
-	to_chat(src, span_notice("Backup battery online. Scanners, camera, and radio interface offline. Beginning fault-detection."))
+	to_chat(src, span_notice("Bateria de backup on-line. Scanners, câmera e interface de rádio offline. Iniciando detecção de falhas."))
 	end_multicam()
 	sleep(5 SECONDS)
 	var/turf/T = get_turf(src)
@@ -92,16 +92,16 @@
 		if(!isspaceturf(T))
 			ai_restore_power()
 			return
-	to_chat(src, span_notice("Fault confirmed: missing external power. Shutting down main control system to save power."))
+	to_chat(src, span_notice("Falha confirmada: falta de energia externa. Desligando o sistema de controle principal para economizar energia."))
 	sleep(2 SECONDS)
-	to_chat(src, span_notice("Emergency control system online. Verifying connection to power network."))
+	to_chat(src, span_notice("Sistema de controle de emergência online. Verificando conexão com a rede de energia."))
 	sleep(5 SECONDS)
 	T = get_turf(src)
 	if(isspaceturf(T))
-		to_chat(src, span_alert("Unable to verify! No power connection detected!"))
+		to_chat(src, span_alert("Incapaz de verificar! Nenhuma conexão de energia detectada!"))
 		setAiRestorePowerRoutine(POWER_RESTORATION_SEARCH_APC)
 		return
-	to_chat(src, span_notice("Connection verified. Searching for APC in power network."))
+	to_chat(src, span_notice("Conexão verificada. Procurando por APC na rede de energia."))
 	sleep(5 SECONDS)
 	var/obj/machinery/power/apc/theAPC = null
 
@@ -114,9 +114,9 @@
 		if (!theAPC)
 			switch(PRP)
 				if(1)
-					to_chat(src, span_alert("Unable to locate APC!"))
+					to_chat(src, span_alert("Incapaz de localizar o APC!"))
 				else
-					to_chat(src, span_alert("Lost connection with the APC!"))
+					to_chat(src, span_alert("Perdeu a conexão com o APC!"))
 			setAiRestorePowerRoutine(POWER_RESTORATION_SEARCH_APC)
 			return
 		if(AIarea.power_equip)
@@ -125,15 +125,15 @@
 				return
 		switch(PRP)
 			if (1)
-				to_chat(src, span_notice("APC located. Optimizing route to APC to avoid needless power waste."))
+				to_chat(src, span_notice("APC localizado. Otimizando rota para APC para evitar desperdício de energia."))
 			if (2)
-				to_chat(src, span_notice("Best route identified. Hacking offline APC power port."))
+				to_chat(src, span_notice("Melhor rota identificada. Hackeando a porta de energia APC offline."))
 			if (3)
-				to_chat(src, span_notice("Power port upload access confirmed. Loading control program into APC power port software."))
+				to_chat(src, span_notice("Acesso à porta de energia confirmado. Carregando o programa de controle no software APC."))
 			if (4)
-				to_chat(src, span_notice("Transfer complete. Forcing APC to execute program."))
+				to_chat(src, span_notice("Transferência completa. Forçando a APC a executar o programa."))
 				sleep(5 SECONDS)
-				to_chat(src, span_notice("Receiving control information from APC."))
+				to_chat(src, span_notice("Recebendo informações de controle da APC."))
 				sleep(0.2 SECONDS)
 				to_chat(src, "<A href=byond://?src=[REF(src)];emergencyAPC=[TRUE]>APC ready for connection.</A>")
 				apc_override = theAPC
@@ -145,11 +145,11 @@
 /mob/living/silicon/ai/proc/ai_restore_power()
 	if(aiRestorePowerRoutine)
 		if(aiRestorePowerRoutine == POWER_RESTORATION_APC_FOUND)
-			to_chat(src, span_notice("Alert cancelled. Power has been restored."))
+			to_chat(src, span_notice("Alerta cancelado. A energia foi restaurada."))
 			if(apc_override)
-				to_chat(src, span_notice("APC backdoor has been closed.")) //Fluff for why we have to hack every time.
+				to_chat(src, span_notice("A APC foi fechada.")) //Fluff for why we have to hack every time.
 		else
-			to_chat(src, span_notice("Alert cancelled. Power has been restored without our assistance."))
+			to_chat(src, span_notice("Alerta cancelado. A energia foi restaurada sem nossa ajuda."))
 		setAiRestorePowerRoutine(POWER_RESTORATION_OFF)
 		remove_status_effect(/datum/status_effect/temporary_blindness)
 		apc_override = null
@@ -160,5 +160,5 @@
 	setAiRestorePowerRoutine(POWER_RESTORATION_START)
 	adjust_temp_blindness(2 SECONDS)
 	update_sight()
-	to_chat(src, span_alert("You've lost power!"))
+	to_chat(src, span_alert("Você perdeu o poder!"))
 	addtimer(CALLBACK(src, PROC_REF(start_RestorePowerRoutine)), 2 SECONDS)

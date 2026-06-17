@@ -89,7 +89,7 @@
 			for(var/storyteller_type in storytellers)
 				var/datum/storyteller/storyboy = storytellers[storyteller_type]
 				name_list[storyboy.name] = storyboy.type
-			var/new_storyteller_name = input(usr, "Choose new storyteller (circumvents voted one):", "Storyteller")  as null|anything in name_list
+			var/new_storyteller_name = input(usr, "Escolha um novo contador de histórias.", "Storyteller")  as null|anything in name_list
 			if(!new_storyteller_name)
 				return
 			message_admins("[key_name_admin(usr)] has changed the Storyteller to [new_storyteller_name].")
@@ -104,7 +104,7 @@
 					var/num = tgui_input_number(\
 					usr, \
 					"Set [track_to_adjust] track points",
-					title = "Track points", \
+					title = "Pontos de trilha", \
 					default = event_track_points[track_to_adjust], \
 					max_value = point_thresholds[track_to_adjust]*5, \
 					)

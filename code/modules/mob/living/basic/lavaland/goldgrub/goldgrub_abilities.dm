@@ -1,18 +1,18 @@
 /datum/action/cooldown/mob_cooldown/spit_ore
 	name = "Spit Ore"
-	desc = "Vomit out all of your consumed ores."
+	desc = "Vomite todos os seus minérios consumidos."
 	click_to_activate = FALSE
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/mob_cooldown/spit_ore/IsAvailable(feedback)
 	if(is_jaunting(owner))
 		if(feedback)
-			owner.balloon_alert(owner, "currently underground!")
+			owner.balloon_alert(owner, "No momento subterrâneo!")
 		return FALSE
 
 	if(!length(owner.contents))
 		if(feedback)
-			owner.balloon_alert(owner, "no ores to spit!")
+			owner.balloon_alert(owner, "Sem minérios para cuspir!")
 		return FALSE
 	return TRUE
 
@@ -24,7 +24,7 @@
 
 /datum/action/cooldown/mob_cooldown/burrow
 	name = "Burrow"
-	desc = "Burrow under soft ground, evading predators and increasing your speed."
+	desc = "Burrow sob solo macio, evitando predadores e aumentando sua velocidade."
 	cooldown_time = 7 SECONDS
 	click_to_activate = FALSE
 
@@ -36,7 +36,7 @@
 
 	if(!isasteroidturf(location) && !ismineralturf(location))
 		if(feedback)
-			owner.balloon_alert(owner, "available only on mining floor or wall!")
+			owner.balloon_alert(owner, "disponível apenas no chão ou parede de mineração!")
 		return FALSE
 
 	return TRUE
@@ -50,7 +50,7 @@
 		return
 
 	if(get_turf(owner) != current_loc)
-		to_chat(owner, span_warning("Action cancelled, as you moved while reappearing."))
+		to_chat(owner, span_warning("Ação cancelada, como você se moveu enquanto reapareceva."))
 		return
 
 	if(!is_jaunting(owner))
@@ -85,5 +85,5 @@
 		return
 
 	if(!ismineralturf(.) && !isasteroidturf(.))
-		to_chat(user, span_warning("You cannot dig through this floor!"))
+		to_chat(user, span_warning("Você não pode cavar através deste chão!"))
 		return null

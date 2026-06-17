@@ -13,7 +13,7 @@
 
 /obj/item/soap
 	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
+	desc = "Uma barra barata de sabão. Não cheira mal."
 	gender = PLURAL
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "soap"
@@ -58,7 +58,7 @@
 	. += span_notice("[msg]")
 
 /obj/item/soap/homemade
-	desc = "A homemade bar of soap. Smells of... well...."
+	desc = "Uma barra caseira de sabão. Cheira a... bem..."
 	icon_state = "soapgibs"
 	inhand_icon_state = "soapgibs"
 	worn_icon_state = "soapgibs"
@@ -68,7 +68,7 @@
 	return list(/datum/reagent/consumable/liquidgibs = 9, /datum/reagent/lye = 9)
 
 /obj/item/soap/nanotrasen
-	desc = "A heavy duty bar of Nanotrasen brand soap. Smells of plasma."
+	desc = "Uma barra pesada de sabão da marca Nanotrasen. Cheira a plasma."
 	icon_state = "soapnt"
 	inhand_icon_state = "soapnt"
 	worn_icon_state = "soapnt"
@@ -79,7 +79,7 @@
 	return list(/datum/reagent/toxin/plasma = 10, /datum/reagent/lye = 10)
 
 /obj/item/soap/deluxe
-	desc = "A deluxe Waffle Corporation brand bar of soap. Smells of high-class luxury."
+	desc = "Uma barra de sabão da Deluxe Waffle Corporation. Cheira a luxo de alta classe."
 	icon_state = "soapdeluxe"
 	inhand_icon_state = "soapdeluxe"
 	worn_icon_state = "soapdeluxe"
@@ -89,7 +89,7 @@
 	return list(/datum/reagent/consumable/aloejuice = 10, /datum/reagent/lye = 10)
 
 /obj/item/soap/syndie
-	desc = "An untrustworthy bar of soap made of strong chemical agents that dissolve blood faster."
+	desc = "Uma barra de sabão não confiável feita de agentes químicos fortes que dissolvem o sangue mais rápido."
 	icon_state = "soapsyndie"
 	inhand_icon_state = "soapsyndie"
 	worn_icon_state = "soapsyndie"
@@ -107,7 +107,7 @@
 
 /obj/item/soap/omega
 	name = "\improper Omega soap"
-	desc = "The most advanced soap known to mankind. The beginning of the end for germs."
+	desc = "O sabão mais avançado conhecido pela humanidade. O começo do fim dos germes."
 	icon_state = "soapomega"
 	inhand_icon_state = "soapomega"
 	worn_icon_state = "soapomega"
@@ -140,8 +140,8 @@
 
 /obj/item/paper/fluff/stations/soap
 	name = "ancient janitorial poem"
-	desc = "An old paper that has passed many hands."
-	default_raw_text = "<h1><b>The Legend of the Omega Soap</b></h1><br><br>Essence of <b>potato</b>, juice, not grind.<br>A <b>lizard's</b> tail, turned into wine.<br><b>Powder of monkey</b>, to help the workload.<br>Some <b>Krokodil</b>, because meth would explode.<br><b>Nitric acid</b> and <b>Baldium</b>, for organic dissolving.<br>A cup full of <b>hooch</b>, for sins' absolving.<br>A dash of <b>bluespace dust</b>, for removal of stains.<br>A syringe of <b>Pump-Up</b>, Security's worst of pains.<br>A can of <b>Space Cola</b>, to watch the dirt fade.<br><b>Heat</b> as hot as possible, let the soap be your blade.<br>With <b>ten</b> units of each, the soap that topples all will be made."
+	desc = "Um papel velho que já passou por muitas mãos."
+	default_raw_text = "<h1><b>A Lenda do Sabão Ómega</b></h1><br><br>Essência de<b>Batata</b>, suco, não moer.<br>A<b>Lagarto.</b>Tail, virou vinho.<br><b>Pó de macaco</b>, para ajudar a carga de trabalho.<br>Alguns<b>Krokodil</b>Porque a metanfetamina explodiria.<br><b>Ácido nítrico</b>e<b>Baldio.</b>, para dissolução orgânica.<br>Uma xícara cheia de<b>Hooch.</b>, para absolver pecados.<br>Uma pitada de<b>Pó do espaço azul</b>, para remoção de manchas.<br>Uma seringa de<b>Pump-Up</b>A segurança é a pior das dores.<br>Uma lata de<b>Cola do Espaço</b>, para ver a sujeira desaparecer.<br><b>Calor</b>O mais quente possível, deixe o sabão ser sua lâmina.<br>Com<b>Dez.</b>Unidades de cada, o sabão que derruba tudo será feito."
 
 /obj/item/soap/suicide_act(mob/living/user)
 	user.say(";FFFFFFFFFFFFFFFFUUUUUUUDGE!!", forced="soap suicide")
@@ -195,7 +195,7 @@
 
 /obj/item/bikehorn
 	name = "bike horn"
-	desc = "A horn off of a bicycle. Rumour has it that they're made from recycled clowns."
+	desc = "Uma buzina de bicicleta. Dizem que são feitos de palhaços reciclados."
 	icon = 'icons/obj/art/horn.dmi'
 	icon_state = "bike_horn"
 	inhand_icon_state = "bike_horn"
@@ -234,7 +234,7 @@
 //air horn
 /obj/item/bikehorn/airhorn
 	name = "air horn"
-	desc = "Damn son, where'd you find this?"
+	desc = "Filho, onde achou isso?"
 	icon_state = "air_horn"
 	worn_icon_state = "horn_air"
 	sound_file = 'sound/items/airhorn/airhorn2.ogg'
@@ -251,7 +251,7 @@
 //golden bikehorn
 /obj/item/bikehorn/golden
 	name = "golden bike horn"
-	desc = "Golden? Clearly, it's made with bananium! Honk!"
+	desc = "Ouro? Claramente, é feito com banânio! Honk!"
 	icon_state = "gold_horn"
 	inhand_icon_state = "gold_horn"
 	worn_icon_state = "horn_gold"
@@ -277,12 +277,12 @@
 
 /obj/item/bikehorn/rubberducky/plasticducky
 	name = "plastic ducky"
-	desc = "It's a cheap plastic knockoff of a loveable bathtime toy."
+	desc = "É uma imitação barata de plástico de um brinquedo adorável."
 	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/bikehorn/rubberducky
 	name = "rubber ducky"
-	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
+	desc = "Pato de borracha que você é tão bom, você faz muito banho. Pato de borracha Eu sou terrivelmente fooound de yooooouuu~" //thanks doohl
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "rubberducky"
 	inhand_icon_state = "rubberducky"
@@ -294,7 +294,7 @@
 //canned laughter
 /obj/item/reagent_containers/cup/soda_cans/canned_laughter
 	name = "Canned Laughter"
-	desc = "Just looking at this makes you want to giggle."
+	desc = "Só de olhar para isso, dá vontade de rir."
 	icon_state = "laughter"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/laughter = 50)
@@ -302,7 +302,7 @@
 //balloon mallet
 /obj/item/balloon_mallet
 	name = "balloon mallet"
-	desc = "It's a mallet, a weapon known for being heavy, but made from notoriously light balloons. Air inside removes any force from the swings. It'd be quite embarrassing to get hit by this."
+	desc = "É um martelo, uma arma conhecida por ser pesada, mas feita de balões notoriamente leves. O ar dentro remove qualquer força dos balanços. Seria muito embaraçoso ser atingido por isso."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "balloon_mallet"
 	inhand_icon_state = "balloon_mallet"

@@ -57,7 +57,7 @@
 /// Called if we sit too long without going off
 /datum/component/direct_explosive_trap/proc/bomb_expired()
 	if (!isnull(saboteur))
-		to_chat(saboteur, span_bolddanger("Failure! Your trap didn't catch anyone this time..."))
+		to_chat(saboteur, span_bolddanger("Falha! Sua armadilha não pegou ninguém desta vez..."))
 	qdel(src)
 
 /// Let people know something is up

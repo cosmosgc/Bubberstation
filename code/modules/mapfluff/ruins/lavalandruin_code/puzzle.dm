@@ -287,7 +287,7 @@
 
 /obj/effect/sliding_puzzle/prison/Destroy()
 	if(prisoner)
-		to_chat(prisoner,span_userdanger("With the cube broken by force, you can feel your body falling apart."))
+		to_chat(prisoner,span_userdanger("Com o cubo quebrado à força, você pode sentir seu corpo caindo aos pedaços."))
 		prisoner.investigate_log("has died from their prison puzzle being destroyed.", INVESTIGATE_DEATHS)
 		prisoner.death()
 		qdel(prisoner)
@@ -316,7 +316,7 @@
 
 /obj/item/prisoncube
 	name = "prison cube"
-	desc = "Dusty cube with humanoid imprint on it."
+	desc = "Cubo empoeirado com impressão humanóide."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "prison_cube"
 
@@ -348,7 +348,7 @@
 	//First grab the prisoner and move them temporarily into the generator so they won't get thrown around.
 	ADD_TRAIT(prisoner, TRAIT_NO_TRANSFORM, cube.element_type)
 	prisoner.forceMove(cube)
-	to_chat(prisoner,span_userdanger("You're trapped by the prison cube! You will remain trapped until someone solves it."))
+	to_chat(prisoner,span_userdanger("Você está preso pelo cubo da prisão! Você ficará preso até que alguém resolva isso."))
 
 	//Clear the area from objects (and cube user)
 	var/list/things_to_throw = list()

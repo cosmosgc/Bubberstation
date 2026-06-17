@@ -10,7 +10,7 @@
 	filedesc = "Spectre-Meter"
 	power_cell_use = PROGRAM_BASIC_CELL_USE * 2
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
-	extended_desc = "A program used to somehow detect nearby spectral presence. Combine with the camera app to take photos of ghosts."
+	extended_desc = "Um programa usado para detectar presença espectral próxima. Combine com o aplicativo da câmera para tirar fotos de fantasmas."
 	size = 7
 	can_run_on_flags = PROGRAM_LAPTOP|PROGRAM_PDA
 	tgui_id = "NtosSpectreMeter"

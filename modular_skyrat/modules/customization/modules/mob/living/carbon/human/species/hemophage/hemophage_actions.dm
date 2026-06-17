@@ -18,7 +18,7 @@
 
 /datum/action/cooldown/hemophage/toggle_dormant_state
 	name = "Enter Dormant State"
-	desc = "Causes the tumor inside of you to enter a dormant state, causing it to need just a minimum amount of blood to survive. However, as the tumor living in your body is the only thing keeping you still alive, rendering it latent cuts both it and you to just the essential functions to keep standing. It will no longer mend your body even in the darkness, and the lack of blood pumping through you will have you the weakest you've ever felt; and leave you hardly able to run. It is not on a switch, and it will take some time for it to awaken."
+	desc = "Faz o tumor entrar em um estado de dormência, fazendo com que precise de uma quantidade mínima de sangue para sobreviver. No entanto, como o tumor que vive em seu corpo é a única coisa que o mantém ainda vivo, tornando-o latente corta tanto ele quanto você para apenas as funções essenciais para continuar de pé. Não consertará mais seu corpo nem mesmo na escuridão, e a falta de sangue pulsando através de você terá você o mais fraco que você já sentiu, e deixá-lo dificilmente capaz de correr. Não está em um interruptor, e levará algum tempo para acordar."
 	cooldown_time = 3 MINUTES
 	background_icon = 'modular_zubbers/icons/mob/actions/bloodsucker.dmi'
 	active_background_icon_state = "vamp_power_on"
@@ -36,7 +36,7 @@
 	owner.balloon_alert(owner, "[tumor.is_dormant ? "leaving" : "entering"] dormant state")
 
 	if(!do_after(owner, 3 SECONDS))
-		owner.balloon_alert(owner, "cancelled state change")
+		owner.balloon_alert(owner, "mudança de estado cancelada")
 		return
 
 	to_chat(owner, span_notice("[tumor.is_dormant ? DORMANT_STATE_END_MESSAGE : DORMANT_STATE_START_MESSAGE]"))
@@ -48,7 +48,7 @@
 
 	if(tumor.is_dormant)
 		name = "Exit Dormant State"
-		desc =  "Causes the pitch-black mass living inside of you to awaken, allowing your circulation to return and blood to pump freely once again. It fills your legs to let you run again, and longs for the darkness as it did before. You start to feel strength rather than the weakness you felt before. However, the tumor giving you life is not on a switch, and it will take some time to subdue it again."
+		desc =  "Faz com que a massa negra viva dentro de você para despertar, permitindo que sua circulação retorne e sangue para bombear livremente novamente. Enche suas pernas para deixar você correr novamente, e anseia pela escuridão como antes. Você começa a sentir força ao invés da fraqueza que sentiu antes. No entanto, o tumor lhe dando vida não está em um interruptor, e levará algum tempo para dominá-lo novamente."
 	else
 		name = initial(name)
 		desc = initial(desc)

@@ -29,7 +29,7 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 		log_admin("[key_name(user)] is changing the map to a custom map")
 		var/datum/map_config/virtual_map = new
 
-		var/map_file = input(user, "Pick file:", "Map File") as null|file
+		var/map_file = input(user, "Escolha o arquivo:", "Arquivo do mapa") as null|file
 		if(isnull(map_file))
 			return
 
@@ -55,7 +55,7 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 		qdel(M)
 		var/config_file = null
 		var/list/json_value = list()
-		var/config = tgui_alert(user,"Would you like to upload an additional config for this map?", "Map Config", list("Yes", "No"))
+		var/config = tgui_alert(user,"Gostaria de carregar uma configuração adicional para este mapa?", "Map Config", list("Yes", "No"))
 		if(config == "Yes")
 			config_file = input(user, "Pick file:", "Config JSON File") as null|file
 			if(isnull(config_file))
@@ -75,14 +75,14 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 				return
 		else
 			virtual_map = load_map_config()
-			virtual_map.map_name = input(user, "Choose the name for the map", "Map Name") as null|text
+			virtual_map.map_name = input(user, "Escolha o nome do mapa.", "Nome do mapa") as null|text
 			if(isnull(virtual_map.map_name))
 				virtual_map.map_name = "Custom"
 
-			var/shuttles = tgui_alert(user,"Do you want to modify the shuttles?", "Map Shuttles", list("Yes", "No"))
+			var/shuttles = tgui_alert(user,"Quer modificar as naves?", "Map Shuttles", list("Yes", "No"))
 			if(shuttles == "Yes")
 				for(var/s in virtual_map.shuttles)
-					var/shuttle = input(user, s, "Map Shuttles") as null|text
+					var/shuttle = input(user, s, "Naves de mapa") as null|text
 					if(!shuttle)
 						continue
 					if(!SSmapping.shuttle_templates[shuttle])

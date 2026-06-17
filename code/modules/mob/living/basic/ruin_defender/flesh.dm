@@ -21,7 +21,7 @@
 
 /mob/living/basic/living_limb_flesh
 	name = "living flesh"
-	desc = "A vaguely leg or arm shaped flesh abomination. It pulses, like a heart."
+	desc = "Uma vaga abominação em forma de perna ou braço. Pulso, como um coração."
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "limb"
 	icon_living = "limb"

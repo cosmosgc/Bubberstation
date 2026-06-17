@@ -1,7 +1,7 @@
 /obj/machinery/space_heater/wall_mounted
 	name = "mounted heater"
-	desc = "A compact heating and cooling device for small scale applications, made to mount onto walls up and out of the way. \
-		Like other, more free-standing space heaters however, these still require cell power to function."
+	desc = "Um dispositivo compacto de aquecimento e resfriamento para aplicações em pequena escala, feito para montar em paredes para cima e para fora do caminho.\
+No entanto, como outros aquecedores de ambiente, estes ainda requerem energia celular para funcionar."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/space_heater.dmi'
 	anchored = TRUE
 	density = FALSE
@@ -52,8 +52,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/space_heater/wall_mounted, 29)
 
 /obj/item/wallframe/wall_heater
 	name = "unmounted wall heater"
-	desc = "A compact heating and cooling device for small scale applications, made to mount onto walls up and out of the way. \
-		Like other, more free-standing space heaters however, these still require cell power to function."
+	desc = "Um dispositivo compacto de aquecimento e resfriamento para aplicações em pequena escala, feito para montar em paredes para cima e para fora do caminho.\
+No entanto, como outros aquecedores de ambiente, estes ainda requerem energia celular para funcionar."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/space_heater.dmi'
 	icon_state = "sheater-off"
 	w_class = WEIGHT_CLASS_NORMAL

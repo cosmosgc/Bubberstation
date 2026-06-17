@@ -1,7 +1,7 @@
 /**********************Jaunter**********************/
 /obj/item/wormhole_jaunter
 	name = "wormhole jaunter"
-	desc = "A single use device harnessing outdated wormhole technology, Nanotrasen has since turned its eyes to bluespace for more accurate teleportation. The wormholes it creates are unpleasant to travel through, to say the least.\nThanks to modifications provided by the Free Golems, this jaunter can be worn on the belt to provide protection from chasms."
+	desc = "Um dispositivo de uso único que utiliza tecnologia de wormhole desatualizada, Nanotrasen tem virado seus olhos para o espaço azul para teletransporte mais preciso. Os buracos de minhoca que ele cria são desagradáveis para viajar, para dizer o mínimo.\nGraças às modificações fornecidas pelos Golems Livres, este jaunter pode ser usado no cinto para fornecer proteção contra abismos."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "Jaunter"
 	inhand_icon_state = "electronic"
@@ -109,7 +109,7 @@
 	name = "jaunt tunnel"
 	icon = 'icons/effects/anomalies.dmi'
 	icon_state = "vortex"
-	desc = "A stable hole in the universe made by a wormhole jaunter. Turbulent doesn't even begin to describe how rough passage through one of these is, but at least it will always get you somewhere near a beacon."
+	desc = "Um buraco estável no universo feito por um batedor de fendas. Turbulento nem sequer começa a descrever como é difícil passar por um desses, mas pelo menos ele sempre vai levá-lo a algum lugar perto de um farol."
 	mech_sized = TRUE //save your ripley
 	innate_accuracy_penalty = 6
 	light_on = FALSE

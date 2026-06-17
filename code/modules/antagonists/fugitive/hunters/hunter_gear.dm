@@ -2,7 +2,7 @@
 
 /obj/machinery/fugitive_capture
 	name = "bluespace capture machine"
-	desc = "Much, MUCH bigger on the inside to transport prisoners safely."
+	desc = "Muito, muito maior por dentro para transportar prisioneiros em segurança."
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "bluespace-prison"
 	density = TRUE
@@ -11,7 +11,7 @@
 
 /obj/machinery/fugitive_capture/examine(mob/user)
 	. = ..()
-	. += span_notice("Add a prisoner by dragging them into the machine.")
+	. += span_notice("Adicione um prisioneiro arrastando-os para dentro da máquina.")
 
 /obj/machinery/fugitive_capture/mouse_drop_receive(mob/target, mob/user, params)
 	var/mob/living/fugitive_hunter = user
@@ -20,7 +20,7 @@
 	var/mob/living/carbon/human/fugitive = target
 	var/datum/antagonist/fugitive/fug_antag = fugitive.mind.has_antag_datum(/datum/antagonist/fugitive)
 	if(!fug_antag)
-		to_chat(fugitive_hunter, span_warning("This is not a wanted fugitive!"))
+		to_chat(fugitive_hunter, span_warning("Este não é um fugitivo procurado!"))
 		return
 	if(do_after(fugitive_hunter, 5 SECONDS, target = fugitive))
 		add_prisoner(fugitive, fug_antag)
@@ -28,7 +28,7 @@
 /obj/machinery/fugitive_capture/proc/add_prisoner(mob/living/carbon/human/fugitive, datum/antagonist/fugitive/antag)
 	fugitive.forceMove(src)
 	antag.is_captured = TRUE
-	to_chat(fugitive, span_userdanger("You are thrown into a vast void of bluespace, and as you fall further into oblivion the comparatively small entrance to reality gets smaller and smaller until you cannot see it anymore. You have failed to avoid capture."))
+	to_chat(fugitive, span_userdanger("Você é jogado em um vasto vazio do espaço azul, e à medida que você cai no esquecimento, a entrada relativamente pequena da realidade fica menor e menor até que você não possa mais vê-la. Você falhou em evitar ser capturado."))
 	fugitive.ghostize(TRUE) //so they cannot suicide, round end stuff.
 	use_energy(active_power_usage)
 
@@ -40,7 +40,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/hunter
 	name = "shuttle navigation computer"
-	desc = "Used to designate a precise transit location to travel to."
+	desc = "Usado para designar um local de trânsito preciso para viajar."
 	shuttleId = "huntership"
 	lock_override = CAMERA_LOCK_STATION
 	shuttlePortId = "huntership_custom"
@@ -68,7 +68,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/hunter/psyker
 	name = "psyker navigation warper"
-	desc = "Uses amplified brainwaves to designate and map a precise transit location for the psyker shuttle."
+	desc = "Usa ondas cerebrais amplificadas para designar e mapear um local de trânsito preciso para a nave psyker."
 	icon_screen = "recharge_comp_on"
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON //blind friendly
 	x_offset = 0
@@ -76,7 +76,7 @@
 
 /obj/machinery/fugitive_capture/psyker
 	name = "psyker recreation cell"
-	desc = "A repurposed recreation chamber frequently used by psykers, which soothes its user by bombarding them with loud noises and painful stimuli. Repurposed for the storage of prisoners, and should have no (lasting) side effects on non-psykers forced into it."
+	desc = "Uma câmara de recreação reaproveitada frequentemente usada por psykers, que acalma seu usuário bombardeando-os com ruídos altos e estímulos dolorosos. Repropósito para o armazenamento de prisioneiros, e não deve ter efeitos colaterais (durantes) em não-psicóticos forçados a isso."
 
 /obj/machinery/fugitive_capture/psyker/process() //I have no fucking idea how to make click-dragging work for psykers so this one just sucks them in.
 	for(var/mob/living/carbon/human/potential_victim in range(1, get_turf(src)))
@@ -88,7 +88,7 @@
 /// Psyker gear
 /obj/item/reagent_containers/hypospray/medipen/gore
 	name = "gore autoinjector"
-	desc = "A ghetto-looking autoinjector filled with gore, aka dirty kronkaine. You probably shouldn't take this while on the job, but it is a super-stimulant. Don't take two at once."
+	desc = "Um autoinjetor de aparência de gueto cheio de sangue, conhecido como coroa suja. Não deveria fazer isso enquanto trabalha, mas é muito estimulante. Não tome dois ao mesmo tempo."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	list_reagents = list(/datum/reagent/drug/kronkaine/gore = 15)
@@ -100,9 +100,9 @@
 
 /obj/item/clothing/suit/armor/reactive/psykerboost
 	name = "reactive psykerboost armor"
-	desc = "An experimental suit of armor psykers use to push their mind further. Reacts to hostiles by powering up the wearer's psychic abilities."
-	cooldown_message = span_danger("The psykerboost armor's mental coils are still cooling down!")
-	emp_message = span_danger("The psykerboost armor's mental coils recalibrate for a moment with a soft whine.")
+	desc = "Uma armadura experimental que os psicopatas usam para empurrar a mente. Reage aos hostis alimentando as habilidades psíquicas do usuário."
+	cooldown_message = span_danger("As bobinas mentais da armadura psykerboost ainda estão esfriando!")
+	emp_message = span_danger("As bobinas mentais da armadura psykerboost recalibram por um momento com um choro suave.")
 	color = "#d6ad8b"
 
 /obj/item/clothing/suit/armor/reactive/psykerboost/cooldown_activation(mob/living/carbon/human/owner)
@@ -127,7 +127,7 @@
 
 /obj/structure/bouncy_castle
 	name = "bouncy castle"
-	desc = "And if you do drugs, you go to hell before you die. Please."
+	desc = "E se você usa drogas, você vai para o inferno antes de morrer. Por favor."
 	icon = 'icons/obj/toys/bouncy_castle.dmi'
 	icon_state = "bouncy_castle"
 	anchored = TRUE
@@ -160,8 +160,8 @@
 
 /obj/item/paper/crumpled/fluff/fortune_teller
 	name = "scribbled note"
-	default_raw_text = "<b>Remember!</b> The customers love that gumball we have as a crystal ball. \
-		Even if it's completely useless to us, resist the urge to chew it."
+	default_raw_text = "<b>Lembre-se!</b>Os clientes adoram o chiclete que temos como bola de cristal.\
+Mesmo que seja completamente inútil para nós, resista ao desejo de mastigá-lo."
 
 /**
  * # Bounty Locator
@@ -173,8 +173,8 @@
  */
 /obj/machinery/fugitive_locator
 	name = "Bounty Locator"
-	desc = "Tracks the signatures of bounty targets in your sector. Nobody actually knows what mechanism this thing uses to track its targets. \
-		Whether it be bluespace entanglement or a simple RFID implant, this machine will find you who you're looking for no matter where they're hiding."
+	desc = "Rastreia as assinaturas de alvos de recompensa no seu setor. Ninguém sabe que mecanismo essa coisa usa para rastrear seus alvos.\
+Seja emaranhamento de espaço azul ou um implante RFID simples, esta máquina vai encontrar você quem você está procurando, não importa onde eles estão escondidos."
 	icon = 'icons/obj/machines/dominator.dmi'
 	icon_state = "dominator-Purple"
 	density = TRUE
@@ -210,7 +210,7 @@
 
 /obj/item/radio/headset/psyker
 	name = "psychic headset"
-	desc = "A headset designed to boost psychic waves. Protects ears from flashbangs."
+	desc = "Um fone projetado para aumentar as ondas psíquicas. Protege as orelhas das granadas."
 	icon_state = "psyker_headset"
 	worn_icon_state = "syndie_headset"
 	freerange = TRUE
@@ -233,7 +233,7 @@
 
 /obj/item/radio/headset/psyker_seer
 	name = "psychic seer headset"
-	desc = "A psychic headset designed for the elite psyker seers."
+	desc = "Um fone de ouvido para videntes de elite."
 	icon_state = "med_headset_alt"
 	worn_icon_state = "med_headset_alt"
 	freerange = TRUE

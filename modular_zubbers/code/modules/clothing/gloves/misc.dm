@@ -2,20 +2,20 @@
 	icon = 'modular_zubbers/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/hands.dmi'
 	name = "black divers gloves"
-	desc = "An old pair of gloves used by a now-defunct mining coalition."
+	desc = "Um velho par de luvas usadas por uma coalizão de mineração agora defenda."
 	icon_state = "diver"
 	worn_icon_state = "diver"
 
 /obj/item/clothing/gloves/latex/allamerican
 	name = "all-american diner latex gloves"
-	desc = "A sterile pair of gloves for preparing food without the risk of contamination! The old fashion american style."
+	desc = "Um par estéril de luvas para preparar comida sem risco de contaminação! O velho estilo americano."
 	icon_state = "latex_black"
 	worn_icon_state = "latex_black"
 
 //Cat Gloves seemingly by Taomayo of MonkeStation
 
 /obj/item/clothing/gloves/cat
-	desc = "\"High Tech\" paw shaped gloves perfect for cosplay enthusiasts, streamers and general weirdos. hewwo everynyaan!!"
+	desc = "\"Alta Tecnologia.\"Luvas em forma de patas perfeitas para entusiastas de cosplay, serpentinas e esquisitões. Hewwo everyaan!"
 	name = "cat gloves"
 	icon = 'icons/map_icons/clothing/_clothing.dmi'
 	icon_state = "/obj/item/clothing/gloves/cat"
@@ -82,7 +82,7 @@
 	siemens_coefficient = 0
 	name = "insulated [name]"
 	if(desc == initial(desc))
-		desc = "A pair of cat gloves with a pair of insulated gloves awkwardly crammed inside them. Somehow this works."
+		desc = "Um par de luvas de gato com um par de luvas isoladas, encaixotada dentro delas. De alguma forma isso funciona."
 	qdel(item)
 	update_appearance()
 	return TRUE
@@ -100,7 +100,7 @@
 //Metrocop Gloves by ... Dun dun dun, HL13 station.
 /obj/item/clothing/gloves/color/black/security/metrocop
 	name = "metrocop gloves"
-	desc = "Now you can pick up that can! Uses advanced GigaSlop brand Matrixes to allow alternative varients!"
+	desc = "Agora você pode pegar essa lata! Usa avançada marca GigaSlop Matrixes para permitir variações alternativas!"
 	icon = 'modular_zubbers/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/hands.dmi'
 	icon_state = "civilprotection"
@@ -123,7 +123,7 @@
 //MGS stuff sprited by Crumpaloo for onlyplateau, please credit when porting, which you obviously have permission to do.
 /obj/item/clothing/gloves/color/black/security/snake
 	name = "stealth gloves"
-	desc = "We will forsake our countries."
+	desc = "Abandonaremos nossos países."
 	icon = 'modular_zubbers/icons/obj/clothing/gloves/gloves.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/gloves/gloves.dmi'
 	icon_state = "snake"
@@ -136,5 +136,5 @@
 
 /obj/item/clothing/gloves/bubber/snake
 	name = "big boss' gloves"
-	desc = "We will forsake our countries."
+	desc = "Abandonaremos nossos países."
 	icon_state = "snake"

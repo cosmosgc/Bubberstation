@@ -243,7 +243,7 @@
 /datum/uplink_item/special_equipment
 	category = /datum/uplink_category/objective_special
 	name = "Objective-Specific Equipment"
-	desc = "Equipment necessary for accomplishing specific objectives. If you are seeing this, something has gone wrong."
+	desc = "Equipamento necessário para alcançar objetivos específicos. Se está vendo isso, algo deu errado."
 	limited_stock = 1
 	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 	purchasable_from = parent_type::purchasable_from & ~UPLINK_SPY // Ditto

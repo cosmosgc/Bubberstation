@@ -1,6 +1,6 @@
 /obj/machinery/autolathe
 	name = "autolathe"
-	desc = "It produces items using iron, glass, plastic and maybe some more."
+	desc = "Produz itens usando ferro, vidro, plástico e talvez mais."
 	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "autolathe"
 	base_icon_state = "autolathe"
@@ -436,7 +436,7 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(busy)
-		balloon_alert(user, "printing started!")
+		balloon_alert(user, "A impressão começou!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
@@ -448,9 +448,9 @@
 	if(!drop_direction)
 		return CLICK_ACTION_BLOCKING
 	if(busy)
-		balloon_alert(user, "busy printing!")
+		balloon_alert(user, "Impressão ocupada!")
 		return CLICK_ACTION_SUCCESS
-	balloon_alert(user, "drop direction reset")
+	balloon_alert(user, "Reset da direção de queda")
 	drop_direction = 0
 	return CLICK_ACTION_SUCCESS
 
@@ -459,7 +459,7 @@
 		return ..()
 
 	if(busy)
-		balloon_alert(user, "it's busy!")
+		balloon_alert(user, "Está ocupado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(panel_open && is_wire_tool(tool))
@@ -473,18 +473,18 @@
 		return ..()
 
 	if(panel_open)
-		balloon_alert(user, "close the panel first!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] begins to load \the [tool] in \the [src]..."),
-		balloon_alert(user, "uploading design..."),
-		span_hear("You hear the chatter of a floppy drive."))
+		balloon_alert(user, "Carregando design..."),
+		span_hear("Você ouve a conversa de um drive flexível."))
 	busy = TRUE
 
 	if(!do_after(user, 1.5 SECONDS, target = src))
 		busy = FALSE
 		update_static_data_for_all_viewers()
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/disk/design_disk/disky = tool

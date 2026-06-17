@@ -1,7 +1,7 @@
 /// Spawns a little worm nearby
 /datum/action/cooldown/mob_cooldown/skull_launcher
 	name = "Launch Legion"
-	desc = "Propel a living piece of your body to a distant location."
+	desc = "Propulse um pedaço vivo do seu corpo para um local distante."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "legion_head"
 	background_icon_state = "bg_demon"
@@ -22,7 +22,7 @@
 	if (!.)
 		return
 	if (!isturf(owner.loc))
-		owner.balloon_alert(owner, "no room!")
+		owner.balloon_alert(owner, "Não há espaço!")
 		return FALSE
 	return TRUE
 
@@ -40,7 +40,7 @@
 		if (length(near_turfs))
 			target_turf = pick(near_turfs)
 		else if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
-			owner.balloon_alert(owner, "no room!")
+			owner.balloon_alert(owner, "Não há espaço!")
 			StartCooldown(0.5 SECONDS)
 			return
 

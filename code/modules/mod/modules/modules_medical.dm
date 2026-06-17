@@ -7,9 +7,9 @@
 ///Health Analyzer - Gives the user a ranged health analyzer and their health status in the panel.
 /obj/item/mod/module/health_analyzer
 	name = "MOD health analyzer module"
-	desc = "A module installed into the glove of the suit. This is a high-tech biological scanning suite, \
-		allowing the user indepth information on the vitals and injuries of others even at a distance, \
-		all with the flick of the wrist. Data is displayed in a convenient package, but it's up to you to do something with it."
+	desc = "Um módulo instalado na luva do terno. Esta é uma suíte de varredura biológica de alta tecnologia,\
+permitindo ao usuário informações detalhadas sobre os sinais vitais e lesões de outros, mesmo à distância,\
+Tudo com o movimento do pulso. Os dados são exibidos em um pacote conveniente, mas cabe a você fazer algo com ele."
 	icon_state = "health"
 	module_type = MODULE_ACTIVE
 	complexity = 1
@@ -66,8 +66,8 @@
 ///Quick Carry - Lets the user carry bodies quicker.
 /obj/item/mod/module/quick_carry
 	name = "MOD quick carry module"
-	desc = "A suite of advanced servos, redirecting power from the suit's arms to help carry the wounded; \
-		or simply for fun. However, Nanotrasen has locked the module's ability to assist in hand-to-hand combat."
+	desc = "Um conjunto de servos avançados, redirecionando a energia dos braços do terno para ajudar a carregar os feridos;\
+Ou simplesmente por diversão. No entanto, Nanotrasen bloqueou a capacidade do módulo de ajudar em combate corpo a corpo."
 	icon_state = "carry"
 	complexity = 1
 	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
@@ -94,9 +94,9 @@
 ///Injector - Gives the suit an extendable large-capacity piercing syringe.
 /obj/item/mod/module/injector
 	name = "MOD injector module"
-	desc = "A module installed into the wrist of the suit, this functions as a high-capacity syringe, \
-		with a tip fine enough to locate the emergency injection ports on any suit of armor, \
-		penetrating it with ease. Even yours."
+	desc = "Um módulo instalado no pulso do terno, funciona como uma seringa de alta capacidade,\
+com uma dica fina o suficiente para localizar as portas de injeção de emergência em qualquer armadura,\
+penetrando com facilidade. Até o seu."
 	icon_state = "injector"
 	module_type = MODULE_ACTIVE
 	complexity = 1
@@ -108,8 +108,8 @@
 
 /obj/item/reagent_containers/syringe/mod
 	name = "MOD injector syringe"
-	desc = "A high-capacity syringe, with a tip fine enough to locate \
-		the emergency injection ports on any suit of armor, penetrating it with ease. Even yours."
+	desc = "Uma seringa de alta capacidade, com uma ponta fina o suficiente para localizar\
+As portas de injeção de emergência em qualquer armadura, penetrando com facilidade. Até o seu."
 	icon_state = "mod_0"
 	base_icon_state = "mod"
 	amount_per_transfer_from_this = 30
@@ -126,11 +126,11 @@
 ///Organizer - Lets you shoot organs, immediately replacing them if the target has the organ manipulation surgery.
 /obj/item/mod/module/organizer
 	name = "MOD organizer module"
-	desc = "A device recovered from a crashed Interdyne Pharmaceuticals vessel, \
-		this module has been unearthed for better or for worse. \
-		It's an arm-mounted device utilizing technology similar to modern rapid part exchange devices, \
-		capable of instantly replacing up to 5 organs at once in surgery without the need to remove them first, even from range. \
-		It's recommended by the DeForest Medical Corporation to not inform patients it has been used."
+	desc = "Um dispositivo recuperado de uma nave da Interdyne Pharmaceuticals,\
+Este módulo foi descoberto para melhor ou para pior.\
+É um dispositivo montado no braço que utiliza tecnologia similar à moderna troca rápida de peças.\
+capaz de substituir instantaneamente até 5 órgãos de uma vez na cirurgia sem a necessidade de removê-los primeiro, mesmo fora do alcance.\
+É recomendado pela DeForest Medical Corporation para não informar os pacientes que foi usado."
 	icon_state = "organizer"
 	module_type = MODULE_ACTIVE
 	complexity = 2
@@ -153,7 +153,7 @@
 			return
 		var/atom/movable/organ = target
 		if(length(organ_list) >= max_organs)
-			balloon_alert(mod.wearer, "too many organs!")
+			balloon_alert(mod.wearer, "Muitos órgãos!")
 			return
 		organ_list += organ
 		organ.forceMove(src)
@@ -215,12 +215,12 @@
 ///Patrient Transport - Generates hardlight bags you can put people in.
 /obj/item/mod/module/criminalcapture/patienttransport
 	name = "MOD patient transport module"
-	desc = "A module built into the forearm of the suit. Countless waves of mostly-lost mining teams being sent to \
-		Indecipheries and other hazardous locations have taught the DeForest Medical Company many lessons. \
-		Physical bodybags are difficult to store, hard to deploy, and even worse to keep intact in tough scenarios. \
-		Enter the hardlight transport bag. Summonable with merely a gesture, weightless, and immunized against \
-		any extreme scenario the wearer could think of, this bag is perfectly designed for \
-		transport of any body in any environment, any time."
+	desc = "Um módulo construído no antebraço do terno. Inúmeras ondas de equipes de mineração perdidas sendo enviadas para\
+Indecifrações e outros locais perigosos ensinaram à Companhia Médica DeForest muitas lições.\
+Bodybags físicos são difíceis de armazenar, difíceis de implantar, e ainda pior para manter intacto em cenários difíceis.\
+Entre na bolsa de transporte. Invocável com apenas um gesto, sem peso, e imunizado contra\
+Qualquer cenário extremo que o usuário possa pensar, este saco é perfeitamente projetado para\
+Transporte de qualquer corpo em qualquer ambiente, a qualquer momento."
 	icon_state = "patient_transport"
 	bodybag_type = /obj/structure/closet/body_bag/environmental/hardlight
 	capture_time = 1.5 SECONDS
@@ -229,12 +229,12 @@
 ///Defibrillator - Gives the suit an extendable pair of shock paddles.
 /obj/item/mod/module/defibrillator
 	name = "MOD defibrillator module"
-	desc = "A module built into the gauntlets of the suit; commonly known as the 'Healing Hands' by medical professionals. \
-		The user places their palms above the patient. Onboard computers in the suit calculate the necessary voltage, \
-		and a modded targeting computer determines the best position for the user to push. \
-		Twenty five pounds of force are applied to the patient's skin. Shocks travel from the suit's gloves \
-		and counter-shock the heart, and the wearer returns to Medical a hero. Don't you even think about using it as a weapon; \
-		regulations on manufacture and software locks expressly forbid it."
+	desc = "Um módulo construído nas luvas do terno, conhecido como \"Mãos Curadoras\" por profissionais médicos.\
+O usuário coloca as mãos acima do paciente. Computadores de bordo no terno calculam a tensão necessária,\
+e um computador de alvo modificado determina a melhor posição para o usuário empurrar.\
+Vinte e cinco quilos de força são aplicados na pele do paciente. Choques viajam das luvas do terno.\
+e contra-choque o coração, e o usuário retorna para o médico um herói. Nem pense em usá-la como arma.\
+Regras sobre fabricação e bloqueios de software expressamente proíbem."
 	icon_state = "defibrillator"
 	module_type = MODULE_ACTIVE
 	complexity = 2
@@ -265,15 +265,15 @@
 
 /obj/item/mod/module/defibrillator/combat
 	name = "MOD combat defibrillator module"
-	desc = "A module built into the gauntlets of the suit; commonly known as the 'Healing Hands' by medical professionals. \
-		The user places their palms above the patient. Onboard computers in the suit calculate the necessary voltage, \
-		and a modded targeting computer determines the best position for the user to push. \
-		Twenty five pounds of force are applied to the patient's skin. Shocks travel from the suit's gloves \
-		and counter-shock the heart, and the wearer returns to Medical a hero. \
-		Interdyne Pharmaceutics marketed the domestic version of the Healing Hands as foolproof and unusable as a weapon. \
-		But when it came time to provide their operatives with usable medical equipment, they didn't hesitate to remove \
-		those in-built safeties. Operatives in the field can benefit from what they dub as 'Stun Gloves', able to apply shocks \
-		straight to a victims heart to disable them, or maybe even outright stop their heart with enough power."
+	desc = "Um módulo construído nas luvas do terno, conhecido como \"Mãos Curadoras\" por profissionais médicos.\
+O usuário coloca as mãos acima do paciente. Computadores de bordo no terno calculam a tensão necessária,\
+e um computador de alvo modificado determina a melhor posição para o usuário empurrar.\
+Vinte e cinco quilos de força são aplicados na pele do paciente. Choques viajam das luvas do terno.\
+e contra-choque o coração, e o usuário retorna para o médico um herói.\
+A Interdyne Pharmaceutics comercializava a versão doméstica das Mãos Curadoras como infalível e inutilizável como uma arma.\
+Mas quando chegou a hora de fornecer aos seus agentes equipamentos médicos utilizáveis, eles não hesitaram em remover\
+Essas seguranças construídas. Os agentes no campo podem se beneficiar do que chamam de \"Luvas de Sol\", capazes de aplicar choques.\
+direto para um coração das vítimas para desativá-los, ou talvez até mesmo parar seu coração com energia suficiente."
 	complexity = 1
 	module_type = MODULE_ACTIVE
 	overlay_state_inactive = "module_defibrillator_combat"
@@ -291,14 +291,14 @@
 ///Thread Ripper - Temporarily rips apart clothing to make it not cover the body.
 /obj/item/mod/module/thread_ripper
 	name = "MOD thread ripper module"
-	desc = "A custom-built module integrated with the suit's wrist. The thread ripper is built from \
-		recent technology dating back to the start of 2562, after an attempt by a well-known Nanotrasen researcher to \
-		expand on the rapid-tailoring technology found in Autodrobes. Rather than being capable of creating \
-		any fabric pattern under the suns, the thread ripper is capable of rapid disassembly of them. \
-		Anything from kevlar-weave, to leather, to durathread can be quickly pulled open to the wearer's specification \
-		and sewn back together, a development commonly utilized by Medical workers to obtain easy access for \
-		surgery, defibrillation, or injection of chemicals to ease patients into not worrying about their \
-		brand-name fashion being marred."
+	desc = "Um módulo personalizado integrado com o pulso do terno. O estripador de fios é construído a partir de\
+a recente tecnologia que remonta ao início de 2562, após uma tentativa de um conhecido pesquisador de Nanotrasen para\
+Expandir a tecnologia de cauda rápida encontrada em Autodrobes. Em vez de ser capaz de criar\
+Qualquer padrão de tecido sob os sóis, o estripador de fios é capaz de desmontar rapidamente deles.\
+Qualquer coisa de kevlar-weave, couro, a durathread pode ser rapidamente puxado aberto para as especificações do usuário\
+e costurados novamente, um desenvolvimento comumente utilizado pelos médicos para obter fácil acesso para\
+cirurgia, desfibrilação, ou injeção de produtos químicos para facilitar os pacientes a não se preocuparem com seus\
+A moda da marca está sendo arruinada."
 	icon_state = "thread_ripper"
 	module_type = MODULE_ACTIVE
 	complexity = 2
@@ -315,16 +315,16 @@
 	if(!.)
 		return
 	if(!mod.wearer.Adjacent(target) || !iscarbon(target) || target == mod.wearer)
-		balloon_alert(mod.wearer, "invalid target!")
+		balloon_alert(mod.wearer, "Alvo inválido!")
 		return
 	var/mob/living/carbon/carbon_target = target
 	if(length(ripped_clothing))
-		balloon_alert(mod.wearer, "already ripped!")
+		balloon_alert(mod.wearer, "Já estourou!")
 		return
-	balloon_alert(mod.wearer, "ripping clothing...")
+	balloon_alert(mod.wearer, "rasgar roupas...")
 	playsound(src, 'sound/items/zip/zip.ogg', 25, TRUE, frequency = -1)
 	if(!do_after(mod.wearer, 1.5 SECONDS, target = carbon_target))
-		balloon_alert(mod.wearer, "interrupted!")
+		balloon_alert(mod.wearer, "Interrompido!")
 		return
 	var/target_zones = body_zone2cover_flags(mod.wearer.zone_selected)
 	for(var/obj/item/clothing as anything in carbon_target.get_equipped_items())
@@ -354,7 +354,7 @@
 		ripped_clothing -= clothing
 	if(zipped)
 		playsound(src, 'sound/items/zip/zip.ogg', 25, TRUE)
-		balloon_alert(mod.wearer, "clothing mended")
+		balloon_alert(mod.wearer, "Roupas consertadas")
 
 /obj/item/mod/module/thread_ripper/on_part_deactivation(deleting = FALSE)
 	if(!length(ripped_clothing))
@@ -371,8 +371,8 @@
 ///Surgical Processor - Lets you do advanced surgeries portably.
 /obj/item/mod/module/surgical_processor
 	name = "MOD surgical processor module"
-	desc = "A module using an onboard surgical computer which can be connected to other computers to download and \
-		perform advanced surgeries on the go."
+	desc = "Um módulo usando um computador cirúrgico de bordo que pode ser conectado a outros computadores para baixar e\
+Faça cirurgias avançadas em movimento."
 	icon_state = "surgical_processor"
 	module_type = MODULE_ACTIVE
 	complexity = 2
@@ -385,8 +385,8 @@
 	name = "MOD surgical processor"
 
 /obj/item/mod/module/surgical_processor/preloaded
-	desc = "A module using an onboard surgical computer which can be connected to other computers to download and \
-		perform advanced surgeries on the go. This one came pre-loaded with some advanced surgeries."
+	desc = "Um módulo usando um computador cirúrgico de bordo que pode ser conectado a outros computadores para baixar e\
+Faça cirurgias avançadas em movimento. Este veio com cirurgias avançadas."
 	device = /obj/item/surgical_processor/mod/preloaded
 
 /obj/item/surgical_processor/mod/preloaded
@@ -415,8 +415,8 @@
 	)
 
 /obj/item/mod/module/surgical_processor/emergency
-	desc = "A module using an onboard surgical computer which can be connected to other computers to download and \
-		perform advanced surgeries on the go. This one came pre-loaded with some emergency surgeries."
+	desc = "Um módulo usando um computador cirúrgico de bordo que pode ser conectado a outros computadores para baixar e\
+Faça cirurgias avançadas em movimento. Este veio pré-carregado com algumas cirurgias de emergência."
 	device = /obj/item/surgical_processor/mod/emergency
 
 /obj/item/surgical_processor/mod/emergency

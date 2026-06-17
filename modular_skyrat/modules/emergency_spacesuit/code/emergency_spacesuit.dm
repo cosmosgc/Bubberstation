@@ -6,7 +6,7 @@
 // The suit
 /obj/item/clothing/suit/space/emergency
 	name = "emergency space suit"
-	desc = "A fragile looking emergency spacesuit for limited use in space."
+	desc = "Um traje espacial de emergência frágil para uso limitado no espaço."
 	icon_state = "syndicate-orange"
 	inhand_icon_state = "syndicate-orange"
 	heat_protection = NONE
@@ -51,13 +51,13 @@
 /obj/item/clothing/suit/space/emergency/examine(mob/user)
 	. = ..()
 	if(torn)
-		. += span_danger("It looks torn and useless!")
+		. += span_danger("Parece rasgado e inútil!")
 
 
 // The helmet
 /obj/item/clothing/head/helmet/space/emergency
 	name = "emergency space helmet"
-	desc = "A fragile looking emergency spacesuit helmet for limited use in space."
+	desc = "Um frágil capacete de emergência para uso limitado no espaço."
 	icon_state = "syndicate-helm-orange"
 	inhand_icon_state = "syndicate-helm-orange"
 	heat_protection = NONE
@@ -76,7 +76,7 @@
 
 /obj/item/storage/box/emergency_spacesuit
 	name = "emergency space suit case"
-	desc =  "A small case containing an emergency space suit and helmet."
+	desc =  "Um pequeno caso contendo um traje espacial de emergência e capacete."
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	icon_state = "briefcase_suit"
 	illustration = null

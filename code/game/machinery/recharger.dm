@@ -3,7 +3,7 @@
 	icon = 'icons/obj/machines/sec.dmi'
 	icon_state = "recharger"
 	base_icon_state = "recharger"
-	desc = "A charging dock for energy based weaponry, PDAs, and other devices."
+	desc = "Uma doca de carga para armamento baseado em energia, PDAs e outros dispositivos."
 	circuit = /obj/item/circuitboard/machine/recharger
 	pass_flags = PASSTABLE
 	/// The item currently inserted into the charger
@@ -41,13 +41,13 @@
 	var/status_display_message_shown = FALSE
 	if(using_power)
 		status_display_message_shown = TRUE
-		. += span_notice("The status display reads:")
+		. += span_notice("A exibição de status diz:")
 		. += span_notice("- Recharging efficiency: <b>[recharge_coeff*100]%</b>.")
 
 	if(isnull(charging))
 		return
 	if(!status_display_message_shown)
-		. += span_notice("The status display reads:")
+		. += span_notice("A exibição de status diz:")
 
 	var/obj/item/stock_parts/power_store/charging_cell = charging.get_cell()
 	if(charging_cell)
@@ -101,14 +101,14 @@
 	if(istype(tool, /obj/item/gun/energy))
 		var/obj/item/gun/energy/energy_gun = tool
 		if(!energy_gun.can_charge)
-			to_chat(user, span_notice("Your gun has no external power connector."))
+			to_chat(user, span_notice("Sua arma não tem conector externo."))
 			return ITEM_INTERACT_BLOCKING
 	user.transferItemToLoc(tool, src)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/recharger/wrench_act(mob/living/user, obj/item/tool)
 	if(charging)
-		to_chat(user, span_notice("Remove the charging item first!"))
+		to_chat(user, span_notice("Retire o item de carga primeiro!"))
 		return ITEM_INTERACT_BLOCKING
 	set_anchored(!anchored)
 	power_change()

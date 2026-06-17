@@ -1,6 +1,6 @@
 /obj/item/storage/backpack/duffelbag
 	name = "duffel bag"
-	desc = "A large duffel bag for holding extra things."
+	desc = "Um saco grande para segurar coisas extras."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
 	actions_types = list(/datum/action/item_action/zipper)
@@ -56,7 +56,7 @@
 	playsound(src, unzip_sfx, 100, FALSE)
 	var/datum/callback/can_unzip = CALLBACK(src, PROC_REF(zipper_matches), TRUE)
 	if(!do_after(user, unzip_duration, src, extra_checks = can_unzip))
-		user.balloon_alert(user, "unzip failed!")
+		user.balloon_alert(user, "A abertura falhou!")
 		return
 	balloon_alert(user, "unzipped")
 	set_zipper(FALSE)
@@ -73,7 +73,7 @@
 	playsound(src, zip_up_sfx, 100, FALSE)
 	var/datum/callback/can_zip = CALLBACK(src, PROC_REF(zipper_matches), FALSE)
 	if(!do_after(user, zip_up_duration, src, extra_checks = can_zip))
-		user.balloon_alert(user, "zip failed!")
+		user.balloon_alert(user, "O zíper falhou!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	balloon_alert(user, "zipped")
 	set_zipper(TRUE)
@@ -108,9 +108,9 @@
 
 /obj/item/storage/backpack/duffelbag/cursed
 	name = "living duffel bag"
-	desc = "A cursed clown duffel bag that hungers for food of any kind. A warning label suggests that it eats food inside. \
-		If that food happens to be a horribly ruined mess or the chef scrapped out of the microwave, or poisoned in some way, \
-		then it might have negative effects on the bag..."
+	desc = "Um saco de palhaço amaldiçoado que tem fome de comida de qualquer tipo. Uma etiqueta de aviso sugere que ele come comida lá dentro.\
+Se essa comida acontecer de ser uma bagunça horrivelmente arruinada ou o chef arrancado do microondas, ou envenenado de alguma forma,\
+Então pode ter efeitos negativos na bolsa..."
 	icon_state = "duffel-curse"
 	inhand_icon_state = "duffel-curse"
 	zip_slowdown = 2
@@ -122,73 +122,73 @@
 
 /obj/item/storage/backpack/duffelbag/captain
 	name = "captain's duffel bag"
-	desc = "A large duffel bag for holding extra captainly goods."
+	desc = "Uma bolsa grande para guardar mercadorias extra."
 	icon_state = "duffel-captain"
 	inhand_icon_state = "duffel-captain"
 
 /obj/item/storage/backpack/duffelbag/med
 	name = "medical duffel bag"
-	desc = "A large duffel bag for holding extra medical supplies."
+	desc = "Um saco grande para guardar suprimentos médicos extras."
 	icon_state = "duffel-medical"
 	inhand_icon_state = "duffel-med"
 
 /obj/item/storage/backpack/duffelbag/chief_medic
 	name = "chief medical officer's duffel bag"
-	desc = "A large duffel bag for handling the duties of the entire medical department at once."
+	desc = "Um saco grande para lidar com os deveres de todo o departamento médico imediatamente."
 	icon_state = "duffel-chiefmedical"
 	inhand_icon_state = "duffel-med"
 
 /obj/item/storage/backpack/duffelbag/coroner
 	name = "coroner duffel bag"
-	desc = "A large duffel bag for holding large amounts of organs at once."
+	desc = "Uma bolsa grande para segurar grandes quantidades de órgãos ao mesmo tempo."
 	icon_state = "duffel-coroner"
 	inhand_icon_state = "duffel-coroner"
 
 /obj/item/storage/backpack/duffelbag/explorer
 	name = "explorer duffel bag"
-	desc = "A large duffel bag for holding extra exotic treasures."
+	desc = "Um saco grande para guardar tesouros exóticos."
 	icon_state = "duffel-explorer"
 	inhand_icon_state = "duffel-explorer"
 
 /obj/item/storage/backpack/duffelbag/hydroponics
 	name = "hydroponic's duffel bag"
-	desc = "A large duffel bag for holding extra gardening tools."
+	desc = "Um saco grande para guardar ferramentas de jardinagem extra."
 	icon_state = "duffel-hydroponics"
 	inhand_icon_state = "duffel-hydroponics"
 
 /obj/item/storage/backpack/duffelbag/chemistry
 	name = "chemistry duffel bag"
-	desc = "A large duffel bag for holding extra chemical substances."
+	desc = "Um saco grande para segurar substâncias químicas extras."
 	icon_state = "duffel-chemistry"
 	inhand_icon_state = "duffel-chemistry"
 
 /obj/item/storage/backpack/duffelbag/genetics
 	name = "geneticist's duffel bag"
-	desc = "A large duffel bag for holding extra genetic mutations."
+	desc = "Um saco grande para segurar mutações genéticas extras."
 	icon_state = "duffel-genetics"
 	inhand_icon_state = "duffel-genetics"
 
 /obj/item/storage/backpack/duffelbag/science
 	name = "scientist's duffel bag"
-	desc = "A large duffel bag for holding extra scientific components."
+	desc = "Um saco grande para segurar componentes científicos extras."
 	icon_state = "duffel-science"
 	inhand_icon_state = "duffel-sci"
 
 /obj/item/storage/backpack/duffelbag/virology
 	name = "virologist's duffel bag"
-	desc = "A large duffel bag for holding extra viral bottles."
+	desc = "Um saco grande para segurar garrafas virais."
 	icon_state = "duffel-virology"
 	inhand_icon_state = "duffel-virology"
 
 /obj/item/storage/backpack/duffelbag/sec
 	name = "security duffel bag"
-	desc = "A large duffel bag for holding extra security supplies and ammunition."
+	desc = "Uma bolsa grande para guardar suprimentos de segurança e munição."
 	icon_state = "duffel-security"
 	inhand_icon_state = "duffel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
 	name = "surgical duffel bag"
-	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools."
+	desc = "Um saco grande para segurar suprimentos extras. Este tem um material com espaço para várias ferramentas afiadas."
 
 /obj/item/storage/backpack/duffelbag/sec/surgery/PopulateContents()
 	new /obj/item/scalpel(src)
@@ -205,14 +205,14 @@
 
 /obj/item/storage/backpack/duffelbag/engineering
 	name = "industrial duffel bag"
-	desc = "A large duffel bag for holding extra tools and supplies."
+	desc = "Um saco grande para guardar ferramentas e suprimentos extras."
 	icon_state = "duffel-engineering"
 	inhand_icon_state = "duffel-eng"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/drone
 	name = "drone duffel bag"
-	desc = "A large duffel bag for holding tools and hats."
+	desc = "Um saco grande para segurar ferramentas e chapéus."
 	icon_state = "duffel-drone"
 	inhand_icon_state = "duffel-drone"
 	resistance_flags = FIRE_PROOF
@@ -228,7 +228,7 @@
 
 /obj/item/storage/backpack/duffelbag/clown
 	name = "clown's duffel bag"
-	desc = "A large duffel bag for holding lots of funny gags!"
+	desc = "Um saco grande para guardar muitas piadas engraçadas!"
 	icon_state = "duffel-clown"
 	inhand_icon_state = "duffel-clown"
 
@@ -241,7 +241,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie
 	name = "tactical duffel bag" // BUBBER EDIT CHANGE: Just a normal bag. Original: name = "suspicious looking duffel bag"
-	desc = "A large duffel bag for holding extra tactical supplies." // BUBBER EDIT CHANGE: Just a normal bag. Original: desc = "A large duffel bag for holding extra tactical supplies. It contains an oiled plastitanium zipper for maximum speed tactical zipping, and is better balanced on your back than an average duffelbag. Can hold two bulky items!"
+	desc = "Um saco grande para guardar suprimentos extras." // BUBBER EDIT CHANGE: Just a normal bag. Original: desc = "Um saco grande para guardar suprimentos extras. Contém um zíper de plastânio oleado para zíper tático de velocidade máxima, e é mais equilibrado nas costas do que uma bolsa média. Pode segurar dois itens volumosos!"
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	storage_type = /datum/storage/duffel/syndicate
@@ -254,11 +254,11 @@
 
 	// BUBBER EDIT ADDITION BEGIN: Just a normal bag.
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials, and features an oiled plastitanium zipper for maximum speed tactical zipping."
+	special_desc = "Essa mochila tem o logotipo do Sindicato escrito por dentro. Parece ser feito de materiais mais leves, mas mais resistentes, e apresenta um zíper de plastânio oleado para zíper tático de velocidade máxima."
 	// BUBBER EDIT ADDITION END: Just a normal bag.
 
 /obj/item/storage/backpack/duffelbag/syndie/hitman
-	desc = "A large duffel bag for holding extra things. There is a Nanotrasen logo on the back."
+	desc = "Um saco grande para segurar coisas extras. Há um logotipo Nanotrasen atrás."
 	icon_state = "duffel-syndieammo"
 	inhand_icon_state = "duffel-syndieammo"
 
@@ -274,19 +274,19 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/med
 	name = "medical duffel bag"
-	desc = "A large duffel bag for holding extra tactical medical supplies."
+	desc = "Uma bolsa grande para ter suprimentos médicos extra táticos."
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
 	name = "surgery duffel bag"
-	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." // BUBBER EDIT CHANGE: Just a normal bag. Original: desc = "A suspicious looking duffel bag for holding surgery tools."
+	desc = "Um saco grande para segurar suprimentos extras. Este tem um material com espaço para várias ferramentas afiadas." // BUBBER EDIT CHANGE: Just a normal bag. Original: desc = "Uma mochila suspeita para segurar ferramentas de cirurgia."
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 
 	// BUBBER EDIT ADDITION BEGIN: Just a normal bag.
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials."
+	special_desc = "Essa mochila tem o logotipo do Sindicato escrito por dentro. Parece ser feito de materiais mais leves e mais resistentes."
 	// BUBBER EDIT ADDITION END: Just a normal bag.
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery/PopulateContents()
@@ -306,13 +306,13 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo
 	name = "ammunition duffel bag"
-	desc = "A large duffel bag for holding extra weapons ammunition and supplies."
+	desc = "Um saco grande para guardar munição e suprimentos extras."
 	icon_state = "duffel-syndieammo"
 	inhand_icon_state = "duffel-syndieammo"
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/darkgygax
 	name = "\improper Dark Gygax ammunition duffel bag"
-	desc = "A large duffel bag, packed to the brim with ammunition for the scattershot exosuit weapon. Suited to equipping the standard loadout of a Dark Gygax."
+	desc = "Um saco grande, cheio de munição para a arma de exossuit. Equipado para equipar a carga padrão de um Gygax Negro."
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/darkgygax/PopulateContents()
 	new /obj/item/mecha_ammo/scattershot(src)
@@ -325,7 +325,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mauler
 	name = "\improper Mauler ammunition duffel bag"
-	desc = "A large duffel bag, packed to the brim with various exosuit ammo. Suited to equipping the standard loadout of a Dark Gygax."
+	desc = "Uma bolsa grande, cheia de várias munições de exossuit. Equipado para equipar a carga padrão de um Gygax Negro."
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo/mauler/PopulateContents()
 	new /obj/item/mecha_ammo/lmg(src)
@@ -337,7 +337,7 @@
 	new /obj/item/storage/belt/utility/syndicate(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle
-	desc = "A large duffel bag containing a medical equipment, a Donksoft LMG, a big jumbo box of riot darts, and a magboot MODsuit module."
+	desc = "Uma bolsa grande contendo um equipamento médico, um LMG Donksoft, uma grande caixa de dardos de choque, e um módulo Magboot MODsuit."
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle/PopulateContents()
 	new /obj/item/mod/module/magboot(src)
@@ -346,7 +346,7 @@
 	new /obj/item/ammo_box/foambox/riot(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med/bioterrorbundle
-	desc = "A large duffel bag containing deadly chemicals, a handheld chem sprayer, Bioterror foam grenade, a Donksoft assault rifle, box of riot grade darts, a dart pistol, and a box of syringes."
+	desc = "Uma bolsa grande contendo substâncias químicas mortais, um pulverizador portátil, granada de espuma de bioterror, um rifle de assalto Donksoft, uma caixa de dardos de grau motim, uma pistola de dardos e uma caixa de seringas."
 
 /obj/item/storage/backpack/duffelbag/syndie/med/bioterrorbundle/PopulateContents()
 	new /obj/item/reagent_containers/spray/chemsprayer/bioterror(src)
@@ -368,7 +368,7 @@
 		new /obj/item/grenade/c4/x4(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter
-	desc = "A large duffel bag containing a New Russian pyro backpack sprayer, Elite MODsuit, a Stechkin APS pistol, minibomb, ammo, and other equipment."
+	desc = "Um saco grande contendo um novo pulverizador de mochilas de piro, Elite MODsuit, uma pistola Stechkin APS, minibomba, munição e outros equipamentos."
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
@@ -394,17 +394,17 @@
 
 /obj/item/storage/backpack/henchmen
 	name = "wings"
-	desc = "Granted to the henchmen who deserve it. This probably doesn't include you."
+	desc = "Concedido aos capangas que merecem. Isso provavelmente não inclui você."
 	icon_state = "henchmen"
 	inhand_icon_state = null
 
 /obj/item/storage/backpack/duffelbag/cops
 	name = "police bag"
-	desc = "A large duffel bag for holding extra police gear."
+	desc = "Uma mochila grande para segurar equipamento policial extra."
 
 /obj/item/storage/backpack/duffelbag/mining_conscript
 	name = "mining conscription kit"
-	desc = "A duffel bag containing everything a crewmember needs to support a shaft miner in the field."
+	desc = "Uma mochila contendo tudo que um tripulante precisa para apoiar um mineiro no campo."
 	icon_state = "duffel-explorer"
 	inhand_icon_state = "duffel-explorer"
 

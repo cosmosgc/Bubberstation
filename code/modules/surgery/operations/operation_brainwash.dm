@@ -2,10 +2,10 @@
 
 /datum/surgery_operation/organ/brainwash
 	name = "brainwash"
-	desc = "Implant a directive into the patient's brain, making it their absolute priority."
+	desc = "Implantar uma diretiva no cérebro do paciente, tornando-a prioridade absoluta."
 	rnd_name = "Neural Brainwashing (Brainwash)"
-	rnd_desc = "A surgical procedure which directly implants a directive into the patient's brain, \
-		making it their absolute priority. It can be cleared using a mindshield implant."
+	rnd_desc = "Um procedimento cirúrgico que coloca diretamente uma diretiva no cérebro do paciente,\
+tornando-a prioridade absoluta. Pode ser limpo usando um implante de escudo mental."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_WIRECUTTER = 2,
@@ -68,7 +68,7 @@
 	display_results(
 		surgeon,
 		organ.owner,
-		span_notice("You screw up, bruising the brain's tissue!"),
+		span_notice("Você estraga tudo, machuca o tecido cerebral!"),
 		span_notice("[surgeon] screws up, causing brain damage!"),
 		span_notice("[surgeon] completes the surgery on [organ.owner]'s brain."),
 	)
@@ -78,8 +78,8 @@
 /datum/surgery_operation/organ/brainwash/mechanic
 	name = "reprogram"
 	rnd_name = "Neural Reprogramming (Brainwash)"
-	rnd_desc = "Install malware which directly implants a directive into the robotic patient's operating system, \
-		making it their absolute priority. It can be cleared using a mindshield implant."
+	rnd_desc = "Instale malware que implanta diretamente uma diretiva no sistema operacional do paciente robótico,\
+tornando-a prioridade absoluta. Pode ser limpo usando um implante de escudo mental."
 	implements = list(
 		TOOL_MULTITOOL = 1.15,
 		TOOL_HEMOSTAT = 2,

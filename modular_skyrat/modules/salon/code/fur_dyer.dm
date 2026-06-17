@@ -3,7 +3,7 @@
 
 /obj/item/fur_dyer
 	name = "electric fur dyer"
-	desc = "Dye that is capable of recoloring fur in a mostly permanent way."
+	desc = "Tingimento que é capaz de recolorar peles de forma permanente."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "fur_sprayer"
 	w_class = WEIGHT_CLASS_TINY
@@ -36,13 +36,13 @@
 			dye_general(target_human, user)
 
 /obj/item/fur_dyer/proc/dye_general(mob/living/carbon/human/target_human, mob/living/user)
-	var/selected_mutant_color = tgui_alert(user, "Please select which mutant color you'd like to change", "Select Color", list("One", "Two", "Three"))
+	var/selected_mutant_color = tgui_alert(user, "Por favor, selecione qual cor mutante você gostaria de mudar", "Select Color", list("One", "Two", "Three"))
 
 	if(!selected_mutant_color)
 		return
 
 	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		to_chat(user, span_danger("A red light blinks!"))
+		to_chat(user, span_danger("Uma luz vermelha pisca!"))
 		return
 
 	// BUBBERSTATION EDIT START: TGUI COLOR PICKER
@@ -87,7 +87,7 @@
 		return
 
 	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		to_chat(user, span_danger("A red light blinks!"))
+		to_chat(user, span_danger("Uma luz vermelha pisca!"))
 		return
 
 	var/selected_marking_area = user.zone_selected

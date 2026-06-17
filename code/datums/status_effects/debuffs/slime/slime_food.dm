@@ -42,7 +42,7 @@
 	if(get_dist(user, owner) > 1 && !astype(user, /mob/living/carbon)?.dna.get_mutation(/datum/mutation/olfaction))
 		return
 	if(user == feeder)
-		examine_list += span_boldnotice("Their smell reminds you of serenity and yourself.")
+		examine_list += span_boldnotice("Seu cheiro lembra a serenidade e a si mesmo.")
 	else
 		examine_list += span_boldnotice("Their smell reminds you of serenity and [feeder].")
 

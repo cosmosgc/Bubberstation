@@ -1,6 +1,6 @@
 /obj/structure/sign/clock
 	name = "wall clock"
-	desc = "It's your run-of-the-mill wall clock showing both the local Nanotrasen Standard Time and the galactic Treaty Coordinated Time. Perfect for staring at instead of working."
+	desc = "É o relógio da parede que mostra o tempo padrão local de Nanotrasen e o tempo coordenado do tratado galáctico. Perfeito para olhar em vez de trabalhar."
 	icon_state = "clock"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/clock, 32)
@@ -13,7 +13,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/clock, 32)
 
 /obj/structure/sign/calendar
 	name = "wall calendar"
-	desc = "It's an old-school wall calendar. Sure, it might be obsolete with modern technology, but it's still hard to imagine an office without one."
+	desc = "É um calendário antigo. Claro, pode ser obsoleto com a tecnologia moderna, mas ainda é difícil imaginar um escritório sem um."
 	icon_state = "calendar"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/calendar, 32)

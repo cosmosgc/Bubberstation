@@ -215,7 +215,7 @@
 	command_name = "Spit"
 	radial_icon = 'icons/obj/ore.dmi'
 	radial_icon_state = "uranium"
-	command_desc = "Ask your grub pet to spit out its ores."
+	command_desc = "Peça ao seu animal de estimação para cuspir seus minérios."
 	speech_commands = list("spit", "ores")
 
 /datum/pet_command/grub_spit/execute_action(datum/ai_controller/controller)

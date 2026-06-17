@@ -1,6 +1,6 @@
 /obj/structure/sacrificealtar
 	name = "sacrificial altar"
-	desc = "An altar designed to perform blood sacrifice for a deity. Alt-click it to sacrifice a buckled creature."
+	desc = "Um altar projetado para fazer sacrifício de sangue por uma divindade. Alt-clique para sacrificar uma criatura fivela."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "sacrificealtar"
 	anchored = TRUE
@@ -21,7 +21,7 @@
 
 /obj/structure/healingfountain
 	name = "healing fountain"
-	desc = "A fountain containing the waters of life."
+	desc = "Uma fonte contendo as águas da vida."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "fountain"
 	anchored = TRUE
@@ -34,10 +34,10 @@
 	if(.)
 		return
 	if(last_process + time_between_uses > world.time)
-		to_chat(user, span_notice("The fountain appears to be empty."))
+		to_chat(user, span_notice("A fonte parece estar vazia."))
 		return
 	last_process = world.time
-	to_chat(user, span_notice("The water feels warm and soothing as you touch it. The fountain immediately dries up shortly afterwards."))
+	to_chat(user, span_notice("A água parece quente e calmante ao tocá-la. A fonte seca imediatamente pouco depois."))
 	user.reagents.add_reagent(/datum/reagent/medicine/omnizine/godblood,20)
 	update_appearance()
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/, update_appearance)), time_between_uses)

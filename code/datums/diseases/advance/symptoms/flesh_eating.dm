@@ -10,7 +10,7 @@ Bonus
 */
 /datum/symptom/flesh_eating
 	name = "Necrotizing Fasciitis"
-	desc = "The virus aggressively attacks bone cells, causing excessive wobbliness and falling down a lot."
+	desc = "O vírus ataca agressivamente células ósseas, causando excessiva oscilação e caindo muito."
 	illness = "Jellyitis"
 	stealth = -2
 	resistance = -1
@@ -84,7 +84,7 @@ Bonus
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
-	desc = "The virus rapidly consumes infected cells, leading to heavy and widespread damage."
+	desc = "O vírus consome rapidamente células infectadas, levando a danos pesados e generalizados."
 	illness = "Premature Mummification"
 	stealth = -2
 	resistance = -2

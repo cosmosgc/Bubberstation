@@ -1,6 +1,6 @@
 /obj/item/desynchronizer //SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "desynchronizer"
-	desc = "An experimental device that can temporarily desynchronize the user from spacetime, effectively making them disappear while it's active."
+	desc = "Um dispositivo experimental que pode dessincronizar temporariamente o usuário do espaço-tempo, efetivamente fazendo-o desaparecer enquanto está ativo."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "desynchronizer"
 	inhand_icon_state = "electronic"
@@ -37,7 +37,7 @@
 	if(world.time < next_use)
 		. += span_warning("Time left to recharge: [DisplayTimeText(next_use - world.time)]")
 	. += span_notice("Alt-click to customize the duration. Current duration: [DisplayTimeText(duration)].")
-	. += span_notice("Can be used again to interrupt the effect early. The recharge time is the same as the time spent in desync.")
+	. += span_notice("Pode ser usado novamente para interromper o efeito mais cedo. O tempo de recarga é o mesmo que o tempo gasto em desinsincronização.")
 
 /obj/item/desynchronizer/click_alt(mob/living/user)
 	var/new_duration = tgui_input_number(user, "Set the duration", "Desynchronizer", duration / 10, max_duration, 5)
@@ -74,7 +74,7 @@
 
 /obj/effect/abstract/sync_holder
 	name = "desyncronized pocket"
-	desc = "A pocket in spacetime, keeping the user a fraction of a second in the future."
+	desc = "Um bolso no espaço-tempo, mantendo o usuário uma fração de segundo no futuro."
 	icon = null
 	icon_state = null
 	alpha = 0

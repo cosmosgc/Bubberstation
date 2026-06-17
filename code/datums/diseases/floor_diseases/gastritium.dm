@@ -1,7 +1,7 @@
 /// Caused by dirty food. Makes you burp out Tritium, sometimes burning hot!
 /datum/disease/gastritium
 	name = "Gastritium"
-	desc = "If left untreated, may manifest in severe Tritium heartburn."
+	desc = "Se não for tratada, pode se manifestar em grave azia de Trítio."
 	form = "Bacteria"
 	agent = "Atmobacter Polyri"
 	cure_text = /datum/reagent/consumable/milk::name
@@ -26,17 +26,17 @@
 				affected_mob.emote("burp")
 		if(3)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("Your stomach makes turbine noises..."))
+				to_chat(affected_mob, span_warning("Seu estômago faz barulho de turbina..."))
 			else if(SPT_PROB(1, seconds_per_tick))
 				affected_mob.emote("burp")
 		if(4)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("You're starting to feel like a burn chamber..."))
+				to_chat(affected_mob, span_warning("Você está começando a se sentir como uma câmara de queimadura..."))
 			else if(SPT_PROB(1, seconds_per_tick))
 				tritium_burp()
 		if(5)
 			if(SPT_PROB(1, seconds_per_tick) && affected_mob.stat == CONSCIOUS)
-				to_chat(affected_mob, span_warning("You feel like you're about to delam..."))
+				to_chat(affected_mob, span_warning("Você sente que está prestes a delamar..."))
 			else if(SPT_PROB(1, seconds_per_tick))
 				tritium_burp(hot_chance = TRUE)
 	var/change_limit = max(affected_mob.get_body_temp_heat_damage_limit() - 5 - affected_mob.get_body_temp_normal(apply_change=FALSE), 0)
@@ -49,6 +49,6 @@
 	if(hot_chance && prob(tritium_burp_hot_chance))
 		burp.set_temperature(TRITIUM_MINIMUM_BURN_TEMPERATURE)
 		if(affected_mob.stat == CONSCIOUS)
-			to_chat(affected_mob, span_warning("Your throat feels hot!"))
-	affected_mob.visible_message("burps out green gas.", visible_message_flags = EMOTE_MESSAGE)
+			to_chat(affected_mob, span_warning("Sua garganta está quente!"))
+	affected_mob.visible_message("Arrota gás verde.", visible_message_flags = EMOTE_MESSAGE)
 	affected_mob.loc.assume_air(burp)

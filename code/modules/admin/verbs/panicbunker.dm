@@ -1,6 +1,6 @@
 ADMIN_VERB(panic_bunker, R_SERVER, "Toggle Panic Bunker", "Toggles the panic bunker for the server.", ADMIN_CATEGORY_SERVER)
 	if (!CONFIG_GET(flag/sql_enabled))
-		to_chat(user, span_adminnotice("The Database is not enabled!"), confidential = TRUE)
+		to_chat(user, span_adminnotice("O banco de dados não está ativado!"), confidential = TRUE)
 		return
 
 	var/new_pb = !CONFIG_GET(flag/panic_bunker)
@@ -14,7 +14,7 @@ ADMIN_VERB(panic_bunker, R_SERVER, "Toggle Panic Bunker", "Toggles the panic bun
 		CONFIG_SET(number/panic_bunker_living, time_rec)
 		CONFIG_SET(string/panic_bunker_message, message)
 
-		var/interview_sys = tgui_alert(user, "Should the interview system be enabled? (Allows players to connect under the hour limit and force them to be manually approved to play)", "Enable interviews?", list("Enable", "Disable"))
+		var/interview_sys = tgui_alert(user, "O sistema de entrevista deve ser ativado? (Permite que os jogadores se conectem abaixo do limite de hora e os forçam a serem aprovados manualmente para jogar)", "Enable interviews?", list("Enable", "Disable"))
 		interview = interview_sys == "Enable"
 		CONFIG_SET(flag/panic_bunker_interview, interview)
 	CONFIG_SET(flag/panic_bunker, new_pb)
@@ -26,7 +26,7 @@ ADMIN_VERB(panic_bunker, R_SERVER, "Toggle Panic Bunker", "Toggles the panic bun
 
 ADMIN_VERB(toggle_interviews, R_SERVER, "Toggle PB Interviews", "Toggle whether new players will be interviewed or blocked from connecting.", ADMIN_CATEGORY_SERVER)
 	if (!CONFIG_GET(flag/panic_bunker))
-		to_chat(user, span_adminnotice("NOTE: The panic bunker is not enabled, so this change will not effect anything until it is enabled."), confidential = TRUE)
+		to_chat(user, span_adminnotice("O abrigo de pânico não está ativado, então essa mudança não fará nada até que esteja ativado."), confidential = TRUE)
 	var/new_interview = !CONFIG_GET(flag/panic_bunker_interview)
 	CONFIG_SET(flag/panic_bunker_interview, new_interview)
 	log_admin("[key_name(user)] has toggled the Panic Bunker's interview system, it is now [new_interview ? "enabled" : "disabled"].")

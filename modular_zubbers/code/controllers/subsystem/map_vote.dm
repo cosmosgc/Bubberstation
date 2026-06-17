@@ -68,7 +68,7 @@
 
 	var/list/messages = args.Copy()
 	//to_chat(world, custom_boxed_message("purple_box", vote_font("[span_bold("Map Vote")]\n<hr>[messages.Join("\n")]"))) // BUBBER EDIT CHANGE - Ranked Choice Voting
-	to_chat(world, vote_font(fieldset_block("Map Vote - Results", "[messages.Join("\n")]", "boxed_message purple_box")))
+	to_chat(world, vote_font(fieldset_block("Voto do mapa - Resultados", "[messages.Join("\n")]", "Caixa de mensagens roxas")))
 
 /datum/controller/subsystem/map_vote/update_tally_printout()
 	var/list/data = list()

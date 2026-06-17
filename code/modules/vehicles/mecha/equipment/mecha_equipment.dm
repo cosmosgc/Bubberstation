@@ -77,11 +77,11 @@
 			. = TRUE
 		if("repair")
 			ui.close() // allow watching for baddies and the ingame effects
-			chassis.balloon_alert(usr, "starting repair")
+			chassis.balloon_alert(usr, "Iniciando reparo")
 			while(do_after(usr, 1 SECONDS, chassis) && get_integrity() < max_integrity)
 				repair_damage(30)
 			if(get_integrity() == max_integrity)
-				balloon_alert(usr, "repair complete")
+				balloon_alert(usr, "reparação completa")
 			. = FALSE
 	var/result = handle_ui_act(action,params,ui,state)
 	if(result) //if handle_ui_act returned anything at all lets just return that instead
@@ -109,10 +109,10 @@
 	if(chassis.is_currently_ejecting)
 		return FALSE
 	if(chassis.equipment_disabled)
-		to_chat(chassis.occupants, span_warning("Error -- Equipment control unit is unresponsive."))
+		to_chat(chassis.occupants, span_warning("Erro, a unidade de controle não responde."))
 		return FALSE
 	if(get_integrity() <= 1)
-		to_chat(chassis.occupants, span_warning("Error -- Equipment critically damaged."))
+		to_chat(chassis.occupants, span_warning("Erro... Equipamento gravemente danificado."))
 		return FALSE
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_EQUIPMENT(type)))
 		return FALSE
@@ -178,11 +178,11 @@
 		var/list/obj/item/mecha_parts/mecha_equipment/contents = mech.equip_by_category[equipment_slot]
 		for(var/obj/equipment as anything in contents)
 			if(src.type == equipment.type)
-				to_chat(user, span_warning("You can't stack more of this item ontop itself!"))
+				to_chat(user, span_warning("Você não pode empilhar mais deste item em cima de si mesmo!"))
 				return FALSE
 
 	if(length(mech.equip_by_category[equipment_slot]) == mech.max_equip_by_category[equipment_slot])
-		to_chat(user, span_warning("This equipment slot is already full!"))
+		to_chat(user, span_warning("Este lugar já está cheio!"))
 		return FALSE
 	return TRUE
 

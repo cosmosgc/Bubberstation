@@ -21,7 +21,7 @@
 // Synth bois!
 /obj/item/bodypart/head/synth
 	name = "android head"
-	desc = "A standard base for an androids head, filled with various cameras and sensors with an optional slot for a posi-interface."
+	desc = "Uma base padrão para uma cabeça de andróides, cheia de várias câmeras e sensores com um espaço opcional para uma interface de posi."
 	inhand_icon_state = "buildpipe"
 	icon_static = BODYPART_ICON_IPC
 	icon = BODYPART_ICON_IPC
@@ -77,7 +77,7 @@
 // Restrict to Synths only to avoid Mind related issues
 /obj/item/bodypart/chest/synth
 	name = "android torso"
-	desc = "A heavily customized robotic torso designed for androids, an armored core in the center holds their logic core."
+	desc = "Um tronco robótico altamente personalizado projetado para andróides, um núcleo blindado no centro mantém seu núcleo lógico."
 	inhand_icon_state = "buildpipe"
 	icon_static = BODYPART_ICON_IPC
 	icon = BODYPART_ICON_IPC
@@ -152,7 +152,7 @@
 
 /obj/item/bodypart/arm/left/synth
 	name = "android left arm"
-	desc = "A custom limb designed for androids, customizable to a degree your wallet agrees with."
+	desc = "Um membro personalizado projetado para andróides, personalizável até certo ponto sua carteira concorda."
 	limb_id = SPECIES_SYNTH
 	attack_verb_simple = list("slapped", "punched")
 	inhand_icon_state = "buildpipe"
@@ -205,7 +205,7 @@
 
 /obj/item/bodypart/arm/right/synth
 	name = "android right arm"
-	desc = "A custom limb designed for androids, customizable to a degree your wallet agrees with."
+	desc = "Um membro personalizado projetado para andróides, personalizável até certo ponto sua carteira concorda."
 	attack_verb_simple = list("slapped", "punched")
 	inhand_icon_state = "buildpipe"
 	icon_static = BODYPART_ICON_IPC
@@ -259,7 +259,7 @@
 
 /obj/item/bodypart/leg/left/synth
 	name = "android left leg"
-	desc = "A custom leg designed for androids, customizable to a degree your wallet agrees with."
+	desc = "Uma perna personalizada projetada para androides, personalizável até certo ponto, sua carteira concorda."
 	attack_verb_simple = list("kicked", "stomped")
 	inhand_icon_state = "buildpipe"
 	icon_static = BODYPART_ICON_IPC
@@ -314,7 +314,7 @@
 
 /obj/item/bodypart/leg/right/synth
 	name = "android right leg"
-	desc = "A custom leg designed for androids, customizable to a degree your wallet agrees with."
+	desc = "Uma perna personalizada projetada para androides, personalizável até certo ponto, sua carteira concorda."
 	attack_verb_simple = list("kicked", "stomped")
 	inhand_icon_state = "buildpipe"
 	icon_static = BODYPART_ICON_IPC

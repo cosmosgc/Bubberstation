@@ -109,7 +109,7 @@
 		return
 
 	if(IS_HERETIC(user))
-		to_chat(user, span_boldwarning("You know better than to tempt forces out of your control!"))
+		to_chat(user, span_boldwarning("Você sabe melhor do que tentar forças fora de seu controle!"))
 		return TRUE
 
 	var/mob/living/carbon/human/human_user = user
@@ -122,7 +122,7 @@
 		if (their_poor_arm.dismember())
 			their_poor_arm.forceMove(src) // stored for later fishage
 	else
-		to_chat(human_user,span_danger("You pull your hand away from the hole as the eldritch energy flails, trying to latch onto existence itself!"))
+		to_chat(human_user,span_danger("Você puxa sua mão para longe do buraco enquanto o eldritch energia flails, tentando agarrar-se à própria existência!"))
 	return TRUE
 
 /obj/effect/visible_heretic_influence/attack_tk(mob/user)
@@ -132,7 +132,7 @@
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(IS_HERETIC(user))
-		to_chat(user, span_boldwarning("You know better than to tempt forces out of your control!"))
+		to_chat(user, span_boldwarning("Você sabe melhor do que tentar forças fora de seu controle!"))
 		return
 
 	var/mob/living/carbon/human/human_user = user
@@ -160,7 +160,7 @@
 	if(IS_HERETIC(user) || !ishuman(user))
 		return
 
-	. += span_userdanger("Your mind burns as you stare at the tear!")
+	. += span_userdanger("Sua mente queima enquanto olha para a lágrima!")
 	user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, 190)
 	user.add_mood_event("gates_of_mansus", /datum/mood_event/gates_of_mansus)
 
@@ -204,7 +204,7 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(being_drained)
-		loc.balloon_alert(user, "already being drained!")
+		loc.balloon_alert(user, "Já está sendo drenado!")
 	else
 		INVOKE_ASYNC(src, PROC_REF(drain_influence), user, 1)
 
@@ -236,7 +236,7 @@
 /obj/effect/heretic_influence/proc/drain_influence(mob/living/user, knowledge_to_gain, drain_speed = HERETIC_RIFT_DEFAULT_DRAIN_SPEED)
 
 	being_drained = TRUE
-	loc.balloon_alert(user, "draining influence...")
+	loc.balloon_alert(user, "Influência de drenagem...")
 
 	// Only gives you the dripping eye effect if you have faster drain speed than default
 	var/mutable_appearance/draining_overlay = mutable_appearance('icons/mob/effects/heretic_aura.dmi', "heretic_eye_dripping")
@@ -246,12 +246,12 @@
 
 	if(!do_after(user, drain_speed, src, hidden = TRUE))
 		being_drained = FALSE
-		loc.balloon_alert(user, "interrupted!")
+		loc.balloon_alert(user, "Interrompido!")
 		user.cut_overlay(draining_overlay)
 		return
 
 	// We don't need to set being_drained back since we delete after anyways
-	loc.balloon_alert(user, "influence drained")
+	loc.balloon_alert(user, "influência drenada")
 	user.cut_overlay(draining_overlay)
 
 	var/datum/antagonist/heretic/heretic_datum = GET_HERETIC(user)

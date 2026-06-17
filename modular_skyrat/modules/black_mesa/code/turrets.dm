@@ -25,7 +25,7 @@
 
 /obj/item/storage/toolbox/emergency/turret/mesa
 	name = "USMC stationary defense deployment system"
-	desc = "You feel a strange urge to hit this with a wrench."
+	desc = "Você sente uma estranha vontade de acertar isso com uma chave inglesa."
 
 /obj/item/storage/toolbox/emergency/turret/mesa/PopulateContents()
 	return null

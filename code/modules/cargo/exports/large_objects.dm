@@ -18,17 +18,17 @@
 
 /datum/export/crate/wooden
 	cost = CARGO_CRATE_VALUE / 5
-	unit_name = "large wooden crate"
+	unit_name = "Grande caixa de madeira"
 	export_types = list(/obj/structure/closet/crate/large)
 	exclude_types = list()
 
 /datum/export/crate/wooden/ore
-	unit_name = "ore box"
+	unit_name = "Caixa de minério"
 	export_types = list(/obj/structure/ore_box)
 
 /datum/export/crate/wood
 	cost = CARGO_CRATE_VALUE * 0.48
-	unit_name = "wooden crate"
+	unit_name = "Caixa de madeira"
 	export_types = list(/obj/structure/closet/crate/wooden)
 	exclude_types = list()
 
@@ -39,7 +39,7 @@
 
 /datum/export/crate/cardboard
 	cost = CARGO_CRATE_VALUE/5
-	unit_name = "cardboard box"
+	unit_name = "Caixa de papelão"
 	export_types = list(/obj/structure/closet/crate/cardboard, /obj/structure/closet/cardboard)
 
 /datum/export/reagent_dispenser
@@ -61,13 +61,13 @@
 	export_types = list(/obj/structure/reagent_dispensers/fueltank)
 
 /datum/export/reagent_dispenser/beer
-	unit_name = "beer keg"
+	unit_name = "barril de cerveja"
 	contents_cost = CARGO_CRATE_VALUE * 3.5
 	export_types = list(/obj/structure/reagent_dispensers/beerkeg)
 
 /datum/export/pipedispenser
 	cost = CARGO_CRATE_VALUE * 2.5
-	unit_name = "pipe dispenser"
+	unit_name = "Dispensador de tubos"
 	export_types = list(/obj/machinery/pipedispenser)
 
 /datum/export/emitter
@@ -77,32 +77,32 @@
 
 /datum/export/field_generator
 	cost = CARGO_CRATE_VALUE * 2.75
-	unit_name = "field generator"
+	unit_name = "Gerador de campo"
 	export_types = list(/obj/machinery/field/generator)
 
 /datum/export/tesla_coil
 	cost = CARGO_CRATE_VALUE * 2.25
-	unit_name = "tesla coil"
+	unit_name = "Bobina Tesla"
 	export_types = list(/obj/machinery/power/energy_accumulator/tesla_coil)
 
 /datum/export/supermatter
 	cost = CARGO_CRATE_VALUE * 16
-	unit_name = "supermatter shard"
+	unit_name = "Shard de supermatéria"
 	export_types = list(/obj/machinery/power/supermatter_crystal/shard)
 
 /datum/export/grounding_rod
 	cost = CARGO_CRATE_VALUE * 1.2
-	unit_name = "grounding rod"
+	unit_name = "Vara de aterramento"
 	export_types = list(/obj/machinery/power/energy_accumulator/grounding_rod)
 
 /datum/export/iv
 	cost = CARGO_CRATE_VALUE * 0.25
-	unit_name = "iv drip"
+	unit_name = "IV gotejamento"
 	export_types = list(/obj/machinery/iv_drip)
 
 /datum/export/barrier
 	cost = CARGO_CRATE_VALUE * 0.25
-	unit_name = "security barrier"
+	unit_name = "barreira de segurança"
 	export_types = list(/obj/item/grenade/barrier, /obj/structure/barricade/security)
 
 ///Maximum number of credits you can earn from selling your gas canister cause its theoritically infinite
@@ -114,7 +114,7 @@
 */
 /datum/export/gas_canister
 	cost = CARGO_CRATE_VALUE * 0.05 //Base cost of canister. You get more for nice gases inside.
-	unit_name = "Gas Canister"
+	unit_name = "Caixa de gás"
 	export_types = list(/obj/machinery/portable_atmospherics/canister)
 
 /datum/export/gas_canister/get_base_cost(obj/machinery/portable_atmospherics/canister/canister)

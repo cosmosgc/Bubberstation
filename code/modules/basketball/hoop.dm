@@ -122,7 +122,7 @@
 
 	var/mob/living/loser = baller.pulling
 	if(baller.grab_state < GRAB_AGGRESSIVE)
-		to_chat(baller, span_warning("You need a better grip to do that!"))
+		to_chat(baller, span_warning("Você precisa de um aperto melhor para fazer isso!"))
 		return
 	loser.forceMove(loc)
 	loser.Paralyze(100)

@@ -10,7 +10,7 @@
 	name = "whetstone"
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "sharpener"
-	desc = "A block that makes things sharp."
+	desc = "Um bloco que deixa as coisas afiadas."
 	force = 5
 	///Amount of uses the whetstone has. Set to -1 for functionally infinite uses.
 	var/uses = 1
@@ -25,13 +25,13 @@
 
 /obj/item/sharpener/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(uses == 0)
-		to_chat(user, span_warning("The sharpening block is too worn to use again!"))
+		to_chat(user, span_warning("O bloco de afiação está muito usado para usar novamente!"))
 		return
 	if(I.force >= max || I.throwforce >= max) //So the whetstone never reduces force or throw_force
 		to_chat(user, span_warning("[I] is much too powerful to sharpen further!"))
 		return
 	if(requires_sharpness && !I.get_sharpness())
-		to_chat(user, span_warning("You can only sharpen items that are already sharp, such as knives!"))
+		to_chat(user, span_warning("Você só pode afiar itens que já estão afiados, como facas!"))
 		return
 	if(is_type_in_list(I, list(/obj/item/melee/energy, /obj/item/dualsaber))) //You can't sharpen the photons in energy meelee weapons
 		to_chat(user, span_warning("You don't think \the [I] will be the thing getting modified if you use it on \the [src]!"))
@@ -77,7 +77,7 @@
 */
 /obj/item/sharpener/super
 	name = "super whetstone"
-	desc = "A block that will make your weapon sharper than Einstein on adderall."
+	desc = "Um bloco que tornará sua arma mais afiada que Einstein em Adderall."
 	increment = 200
 	max = 200
 	prefix = "super-sharpened"

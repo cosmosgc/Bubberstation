@@ -94,7 +94,7 @@
 		return FALSE
 
 	if(installed_nif.broken)
-		installed_nif.balloon_alert(installed_nif.linked_mob, "your NIF is broken")
+		installed_nif.balloon_alert(installed_nif.linked_mob, "Seu NIF está quebrado.")
 		return FALSE
 
 	if(cooldown && on_cooldown)
@@ -165,7 +165,7 @@
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
-	desc = "A datadisk that can be used to upload a loaded NIFSoft to the user's NIF"
+	desc = "Um disco de dados que pode ser usado para carregar um NIFSoft carregado para o NIF do usuário"
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/disks.dmi'
 	icon_state = "base_disk"
 	sticker_icon_state = null
@@ -201,7 +201,7 @@
 	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, TRUE)
 
 	if(!installed_nifsoft.parent_nif)
-		balloon_alert(target, "installation failed")
+		balloon_alert(target, "instalação falhou")
 		return FALSE
 
 	if(!reusable)
@@ -212,7 +212,7 @@
 
 /obj/item/disk/nifsoft_uploader/attack(mob/living/mob, mob/living/user, params)
 	if(mob != user && !do_after(user, 5 SECONDS, mob))
-		balloon_alert(user, "installation failed")
+		balloon_alert(user, "instalação falhou")
 		return FALSE
 
 	attempt_software_install(mob)

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/pointed/rust_construction
 	name = "Rust Formation"
-	desc = "Transforms a rusted floor into a full wall of rust. Creating a wall underneath a mob will harm it."
+	desc = "Transforma um chão enferrujado em uma parede cheia de ferrugem. Criar uma parede debaixo de uma multidão vai prejudicá-la."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon_state = "shield"
@@ -13,7 +13,7 @@
 
 	// Both of these are changed in before_cast
 	invocation = "Someone raises a wall of rust."
-	invocation_self_message = "You raise a wall of rust."
+	invocation_self_message = "Você levanta uma parede de ferrugem."
 	invocation_type = INVOCATION_EMOTE
 	spell_requirements = NONE
 
@@ -30,12 +30,12 @@
 
 /datum/action/cooldown/spell/pointed/rust_construction/is_valid_target(atom/cast_on)
 	if(!isturf(cast_on))
-		cast_on.balloon_alert(owner, "not a wall or floor!")
+		cast_on.balloon_alert(owner, "Não uma parede ou chão!")
 		return FALSE
 
 	if(!HAS_TRAIT(cast_on, TRAIT_RUSTY))
 		if(owner)
-			cast_on.balloon_alert(owner, "not rusted!")
+			cast_on.balloon_alert(owner, "Não enferrujado!")
 		return FALSE
 
 	return TRUE

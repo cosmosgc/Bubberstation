@@ -128,7 +128,7 @@
 	var/cant_speak = (HAS_TRAIT(traitor_mob, TRAIT_MUTE) || is_mime_job(assigned_role))
 	if(uplink_spawn_location == UPLINK_RADIO && cant_speak)
 		if(!silent)
-			to_chat(current, span_warning("You have been deemed ineligible for a radio uplink. Supplying standard uplink instead."))
+			to_chat(current, span_warning("Você foi considerado inelegível para um link de rádio. Fornecendo padrão uplink em vez disso."))
 		uplink_spawn_location = UPLINK_PDA
 
 	if(uplink_spawn_location != UPLINK_IMPLANT)
@@ -140,7 +140,7 @@
 		var/obj/item/implant/uplink/starting/new_implant = new(traitor_mob)
 		new_implant.implant(traitor_mob, null, silent = TRUE)
 		if(!silent)
-			to_chat(current, span_boldnotice("Your Syndicate Uplink has been cunningly implanted in you, for a small TC fee. Simply trigger the uplink to access it."))
+			to_chat(current, span_boldnotice("Seu link Syndicate Uplink foi habilmente implantado em você, por uma pequena taxa de TC. Simplesmente acionar o link para acessá-lo."))
 		add_memory(/datum/memory/key/traitor_uplink/implant, uplink_loc = "implant")
 		return new_implant
 
@@ -214,7 +214,7 @@
 
 /datum/mind/proc/announce_objectives()
 	var/obj_count = 1
-	to_chat(current, span_notice("Your current objectives:"))
+	to_chat(current, span_notice("Seus objetivos atuais:"))
 	for(var/datum/objective/objective as anything in get_all_objectives())
 		to_chat(current, "<B>[objective.objective_name] #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++

@@ -1,6 +1,6 @@
 /obj/item/mine_bot_upgrade
 	name = "minebot melee upgrade"
-	desc = "A minebot upgrade."
+	desc = "Uma atualização do robô minado."
 	icon_state = "door_electronics"
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	item_flags = NOBLUDGEON
@@ -13,7 +13,7 @@
 
 /obj/item/mine_bot_upgrade/proc/upgrade_bot(mob/living/basic/mining_drone/minebot, mob/user)
 	if(minebot.melee_damage_upper != initial(minebot.melee_damage_upper))
-		user.balloon_alert(user, "already has armor!")
+		user.balloon_alert(user, "Já tem armadura!")
 		return
 	minebot.melee_damage_lower += 7
 	minebot.melee_damage_upper += 7
@@ -38,7 +38,7 @@
 
 /obj/item/slimepotion/sentience/mining
 	name = "minebot AI upgrade"
-	desc = "Can be used to grant sentience to minebots. It's incompatible with minebot armor and melee upgrades, and will override them."
+	desc = "Pode ser usado para conceder senciência aos meus robôs. É incompatível com armadura de robô minado e upgrades melee, e irá sobrepor-los."
 	icon_state = "door_electronics"
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	sentience_type = SENTIENCE_MINEBOT
@@ -62,11 +62,11 @@
 
 /obj/item/mine_bot_upgrade/regnerative_shield
 	name = "regenerative shield"
-	desc = "Allows your minebot to tank many hits before going down!"
+	desc = "Permite que seu robô detone muitos ataques antes de cair!"
 
 /obj/item/mine_bot_upgrade/regnerative_shield/upgrade_bot(mob/living/basic/mining_drone/minebot, mob/user)
 	if(HAS_TRAIT(minebot, TRAIT_REGEN_SHIELD))
-		user.balloon_alert(minebot, "already has it!")
+		user.balloon_alert(minebot, "Já está com ele!")
 		return
 	var/static/list/shield_layers = list(
 		/obj/effect/overlay/minebot_top_shield,

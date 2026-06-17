@@ -1,7 +1,7 @@
 /mob/living/basic/construct/juggernaut
 	name = "Juggernaut"
 	real_name = "Juggernaut"
-	desc = "A massive, armored construct built to spearhead attacks and soak up enemy fire."
+	desc = "Uma construção maciça e blindada construída para atacar e absorver fogo inimigo."
 	icon_state = "juggernaut"
 	icon_living = "juggernaut"
 	maxHealth = 150

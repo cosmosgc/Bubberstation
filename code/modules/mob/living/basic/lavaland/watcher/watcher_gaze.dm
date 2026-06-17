@@ -3,7 +3,7 @@
  */
 /datum/action/cooldown/mob_cooldown/watcher_gaze
 	name = "Disorienting Gaze"
-	desc = "After a delay, flash everyone looking at you."
+	desc = "Depois de um atraso, mostre todos olhando para você."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "gaze"
 	background_icon_state = "bg_demon"
@@ -99,7 +99,7 @@
 /// Magmawing glare burns you
 /datum/action/cooldown/mob_cooldown/watcher_gaze/fire
 	name = "Searing Glare"
-	desc = "After a delay, burn and stun everyone looking at you."
+	desc = "Depois de um atraso, queime e atordoe todos olhando para você."
 
 /datum/action/cooldown/mob_cooldown/watcher_gaze/fire/apply_effect(mob/living/viewer)
 	to_chat(viewer, span_warning("[owner]'s searing glare forces you to the ground!"))
@@ -111,7 +111,7 @@
 /// Icewing glare freezes you
 /datum/action/cooldown/mob_cooldown/watcher_gaze/ice
 	name = "Cold Stare"
-	desc = "After a delay, freeze and repulse everyone looking at you."
+	desc = "Depois de um atraso, congele e repulse todos olhando para você."
 	/// Max distance to throw people looking at us
 	var/max_throw = 3
 

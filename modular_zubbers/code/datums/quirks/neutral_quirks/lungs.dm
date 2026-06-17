@@ -41,7 +41,7 @@
 
 /obj/item/clothing/accessory/breathing
 	name = "breathing dogtag"
-	desc = "Dogtag that lists what you breathe."
+	desc = "Dogtag que lista o que você respira."
 	icon_state = "allergy"
 	above_suit = FALSE
 	minimize_when_attached = TRUE
@@ -66,11 +66,11 @@
 
 /datum/quirk/equipping/lungs/nitrogen
 	name = "Nitrogen Breather"
-	desc = "You breathe nitrogen, even if you might not normally breathe it. Oxygen is poisonous."
+	desc = "Você respira nitrogênio, mesmo que normalmente não respire. O oxigênio é venenoso."
 	icon = FA_ICON_BIOHAZARD
-	medical_record_text = "Patient can only breathe nitrogen."
-	gain_text = "<span class='danger'>You suddenly have a hard time breathing anything but nitrogen."
-	lose_text = "<span class='notice'>You suddenly feel like you aren't bound to nitrogen anymore."
+	medical_record_text = "O paciente só pode respirar nitrogênio."
+	gain_text = "<span class='danger'>Você tem dificuldade em respirar menos nitrogênio."
+	lose_text = "<span class='notice'>Você de repente sente que não está mais ligado ao nitrogênio."
 	value = 0
 	forced_items = list(
 		/obj/item/clothing/mask/breath = list(ITEM_SLOT_MASK),

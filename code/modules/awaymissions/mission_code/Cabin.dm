@@ -35,7 +35,7 @@
 
 /obj/structure/firepit
 	name = "firepit"
-	desc = "Warm and toasty."
+	desc = "Quente e quente."
 	icon = 'icons/obj/fluff/fireplace.dmi'
 	icon_state = "firepit-active"
 	density = FALSE
@@ -88,7 +88,7 @@
 
 /obj/machinery/recycler/lumbermill
 	name = "lumbermill saw"
-	desc = "Faster then the cartoons!"
+	desc = "Mais rápido que os desenhos animados!"
 	obj_flags = CAN_BE_HIT | EMAGGED
 	item_recycle_sound = 'sound/items/weapons/chainsawhit.ogg'
 
@@ -102,7 +102,7 @@
 
 /obj/structure/ladder/unbreakable/rune
 	name = "\improper Teleportation Rune"
-	desc = "Could lead anywhere."
+	desc = "Pode levar a qualquer lugar."
 	icon = 'icons/obj/antags/cult/rune.dmi'
 	icon_state = "1"
 	color = rgb(0,0,255)

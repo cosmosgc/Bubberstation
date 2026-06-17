@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/maunamug
 	name = "mauna mug"
-	desc = "A drink served in a classy mug. Now with built-in heating!"
+	desc = "Uma bebida servida em uma caneca elegante. Agora com aquecimento embutido!"
 	icon = 'icons/obj/devices/mauna_mug.dmi'
 	icon_state = "maunamug"
 	base_icon_state = "maunamug"
@@ -23,9 +23,9 @@
 	. = ..()
 	. += span_notice("The status display reads: Current temperature: <b>[reagents.chem_temp]K</b> Current Charge:[cell ? "[cell.charge / cell.maxcharge * 100]%" : "No cell found"].")
 	if(open)
-		. += span_notice("The battery case is open.")
+		. += span_notice("A bateria está aberta.")
 	if(cell && cell.charge > 0)
-		. += span_notice("<b>Ctrl+Click</b> to toggle the power.")
+		. += span_notice("<b>Ctrl+ Clique</b>para mudar a energia.")
 
 /obj/item/reagent_containers/cup/maunamug/process(seconds_per_tick)
 	..()
@@ -41,7 +41,7 @@
 	update_appearance()
 	if(reagents.chem_temp >= max_temp)
 		change_power_status(FALSE)
-		audible_message(span_notice("The Mauna Mug lets out a happy beep and turns off!"))
+		audible_message(span_notice("A Mug Mauna deixa sair um bip feliz e desliga!"))
 		playsound(src, 'sound/machines/chime.ogg', 50)
 
 /obj/item/reagent_containers/cup/maunamug/Destroy()
@@ -77,10 +77,10 @@
 	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
 		return ..()
 	if(!open)
-		to_chat(user, span_warning("The battery case must be open to insert a power cell!"))
+		to_chat(user, span_warning("A bateria deve estar aberta para inserir uma célula de energia!"))
 		return ITEM_INTERACT_BLOCKING
 	if(cell)
-		to_chat(user, span_warning("There is already a power cell inside!"))
+		to_chat(user, span_warning("Já tem uma célula de energia lá dentro!"))
 		return ITEM_INTERACT_BLOCKING
 	else if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING

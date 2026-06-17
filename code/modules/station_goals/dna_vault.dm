@@ -62,7 +62,7 @@
 
 /obj/machinery/dna_vault
 	name = "DNA Vault"
-	desc = "Break glass in case of apocalypse."
+	desc = "Quebre vidro em caso de apocalipse."
 	icon = 'icons/obj/machines/dna_vault.dmi'
 	icon_state = "vault"
 	density = TRUE

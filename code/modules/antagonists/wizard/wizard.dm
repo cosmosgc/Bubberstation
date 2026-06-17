@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		return
 	if(!GLOB.wizardstart.len)
 		SSjob.send_to_late_join(owner.current)
-		to_chat(owner, "HOT INSERTION, GO GO GO")
+		to_chat(owner, "INSERÇÃO QUENTE, GO GO GO")
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/proc/create_objectives()
@@ -349,7 +349,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 
 /datum/antagonist/wizard/apprentice/imposter/greet()
 	. = ..()
-	to_chat(owner, "<B>Trick and confuse the crew to misdirect malice from your handsome original!</B>")
+	to_chat(owner, "<B>Enganar e confundir a tripulação para desviar malícia do seu belo original!</B>")
 	owner.announce_objectives()
 
 /datum/antagonist/wizard/apprentice/imposter/equip_wizard()
@@ -426,9 +426,9 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		count++
 
 	if(wizardwin)
-		parts += span_greentext("The wizard was successful!")
+		parts += span_greentext("O mago foi bem sucedido!")
 	else
-		parts += span_redtext("The wizard has failed!")
+		parts += span_redtext("O mago falhou!")
 
 	var/list/purchases = list()
 	for(var/list/log as anything in GLOB.wizard_spellbook_purchases_by_key[owner.key])

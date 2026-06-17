@@ -55,7 +55,7 @@ ADMIN_VERB(station_traits_panel, R_FUN, "Modify Station Traits", "Modify the sta
 				return TRUE
 
 			if (too_late_to_revert())
-				to_chat(usr, span_warning("It's too late to revert station traits, the round has already started!"))
+				to_chat(usr, span_warning("É tarde demais para reverter os traços da estação, a rodada já começou!"))
 				return TRUE
 
 			if (!station_trait.can_revert)
@@ -71,7 +71,7 @@ ADMIN_VERB(station_traits_panel, R_FUN, "Modify Station Traits", "Modify the sta
 			return TRUE
 		if ("setup_future_traits")
 			if (too_late_for_future_traits())
-				to_chat(usr, span_warning("It's too late to add future station traits, the round is already over!"))
+				to_chat(usr, span_warning("É tarde demais para adicionar características futuras da estação, a rodada já acabou!"))
 				return TRUE
 
 			var/list/new_future_traits = list()
@@ -101,7 +101,7 @@ ADMIN_VERB(station_traits_panel, R_FUN, "Modify Station Traits", "Modify the sta
 			return TRUE
 		if ("clear_future_traits")
 			if (!future_traits)
-				to_chat(usr, span_warning("There are no future station traits."))
+				to_chat(usr, span_warning("Não há traços futuros da estação."))
 				return TRUE
 
 			var/message = "[key_name(usr)] has cleared the station traits for next round."

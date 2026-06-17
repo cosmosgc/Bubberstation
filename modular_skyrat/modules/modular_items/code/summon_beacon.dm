@@ -1,6 +1,6 @@
 /obj/item/summon_beacon
 	name = "summoner beacon"
-	desc = "Summons a thing. Probably shouldn't use this one, though."
+	desc = "Convoca uma coisa. Mas não deveria usar esse."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "generic_delivery"
 	inhand_icon_state = "generic_delivery"
@@ -79,12 +79,12 @@
 
 /obj/item/summon_beacon/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!selected_atom)
-		balloon_alert(user, "no choice selected!")
+		balloon_alert(user, "Nenhuma escolha selecionada!")
 		return NONE
 	var/turf/target_turf = get_turf(interacting_with)
 	var/area/target_area = get_area(interacting_with)
 	if(!target_turf || !target_area || !is_type_in_list(target_area, allowed_areas))
-		balloon_alert(user, "can't call here!")
+		balloon_alert(user, "Não posso ligar aqui!")
 		return NONE
 
 	var/confirmed = tgui_alert(user, "Are you sure you want to call [initial(selected_atom.name)] here?", "Confirmation", list("Yes", "No"))
@@ -123,7 +123,7 @@
 
 /obj/item/storage/box/gas_miner_beacons
 	name = "box of gas miner delivery beacons"
-	desc = "Contains two beacons for delivery of atmospheric gas miners."
+	desc = "Contém dois sinalizadores para a entrega de mineiros de gás atmosférico."
 
 /obj/item/storage/box/gas_miner_beacons/PopulateContents()
 	new /obj/item/summon_beacon/gas_miner(src)
@@ -134,7 +134,7 @@
 
 /obj/item/summon_beacon/gas_miner
 	name = "gas miner beacon"
-	desc = "Once a gas miner type is selected, delivers a gas miner to the target location."
+	desc = "Uma vez que um mineiro de gás é selecionado, entrega um mineiro de gás para o local do alvo."
 
 	allowed_areas = list(
 		/area/station/engineering/atmos,

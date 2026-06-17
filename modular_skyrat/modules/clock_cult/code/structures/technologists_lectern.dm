@@ -2,12 +2,12 @@
 
 /obj/structure/destructible/clockwork/gear_base/technologists_lectern
 	name = "technologist's lectern"
-	desc = "A small pedestal with a glowing book floating over it.."
-	clockwork_desc = "A small pedestal, glowing with a divine energy. Used to research new abilities and objects."
+	desc = "Um pequeno pedestal com um livro brilhante flutuando sobre ele."
+	clockwork_desc = "Um pequeno pedestal, brilhando com uma energia divina. Usado para pesquisar novas habilidades e objetos."
 	base_icon_state = "lectern"
 	icon_state = "lectern"
 	anchored = TRUE
-	break_message = "<span class='warning'>The lectern collapses.</span>"
+	break_message = "<span class='warning'>O lectern desmorona.</span>"
 	can_unwrench = FALSE
 	max_integrity = 400
 	/// If the last process() found a clock cultist in range
@@ -68,7 +68,7 @@
 		notify_ghosts("A research ritual was disrupted in [get_area(src)]",
 			source = get_turf(src),
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
-			header = "Research ritual cancelled",
+			header = "Ritual de pesquisa cancelado.",
 		)
 
 	return ..()
@@ -109,7 +109,7 @@
 		return
 
 	if(!anchored)
-		balloon_alert(user, "not fastened!")
+		balloon_alert(user, "Não preso!")
 		return
 
 	ui_interact(user)
@@ -275,11 +275,11 @@
 		if(istype(nearby_turf, /turf/open/floor))
 			continue
 
-		owner.balloon_alert(owner, "not enough room!")
+		owner.balloon_alert(owner, "Não há espaço suficiente!")
 		return
 
 	if(researching)
-		owner.balloon_alert(owner, "already researching!")
+		owner.balloon_alert(owner, "Já está pesquisando!")
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(begin_research), owner, target_turf)
@@ -301,7 +301,7 @@
 	notify_ghosts("[owner] has begun a research ritual in [get_area(src)]",
 		source = src,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
-		header = "Research ritual"
+		header = "Ritual de pesquisa."
 	)
 	log_game("[owner] began a research ritual of [selected_research.name] in [get_area(src)].")
 
@@ -347,7 +347,7 @@
 	notify_ghosts("A research ritual in [get_area(src)] has been completed",
 		source = src,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
-		header = "Research ritual completed",
+		header = "Ritual de pesquisa concluído.",
 	)
 	log_game("Finished a research ritual of [selected_research.name] in [get_area(src)].")
 
@@ -412,7 +412,7 @@
 					qdel(nearby_atom)
 
 		if(11 to 20) // Spawn 4 ai-controlled marauders to fuck shit up
-			visible_message(span_warning("A group of clockwork marauders appear, before being obscured by a cloud of smoke!"))
+			visible_message(span_warning("Um grupo de saqueadores de relógios aparece, antes de ser obscurecido por uma nuvem de fumaça!"))
 
 			for(var/direction in list(NORTH, SOUTH, EAST, WEST))
 				var/turf/tile = get_step(src, direction)
@@ -445,9 +445,9 @@
 					continue
 
 				if(IS_CLOCK(living_mob))
-					to_chat(living_mob, span_brass("You feel as if something powerful is watching over you, as you feel the power in your Clockwork Slab increase."))
+					to_chat(living_mob, span_brass("Você sente como se algo poderoso estivesse cuidando de você, como você sente o poder em seu Slab Relógio aumentar."))
 				else
-					to_chat(living_mob, span_brass("You feel as if something powerful is watching over you as a low hum of machinery fills your mind."))
+					to_chat(living_mob, span_brass("Você sente como se algo poderoso estivesse cuidando de você como um zumbido baixo de máquinas enche sua mente."))
 
 
 		if(31 to 40) // Fuck up the power, but in the other way instead

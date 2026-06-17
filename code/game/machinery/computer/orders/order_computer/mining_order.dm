@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/order_console/mining
 	name = "mining equipment order console"
-	desc = "An equipment shop for miners, points collected at an ore redemption machine can be spent here."
+	desc = "Uma loja de equipamentos para mineiros, pontos coletados em uma máquina de resgate de minério podem ser gastos aqui."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "mining"
 	icon_keyboard = null
@@ -81,7 +81,7 @@
 
 /obj/item/mining_voucher
 	name = "mining voucher"
-	desc = "A token to redeem a piece of equipment. Use it on a mining equipment vendor."
+	desc = "Um símbolo para resgatar um equipamento. Use em um fornecedor de equipamentos de mineração."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "mining_voucher"
 	w_class = WEIGHT_CLASS_TINY
@@ -93,7 +93,7 @@
 
 /obj/item/card/mining_point_card
 	name = "mining point transfer card"
-	desc = "A small, reusable card for transferring mining points. Swipe your ID card over it to start the process."
+	desc = "Um pequeno cartão reutilizável para transferir pontos de mineração. Passe seu cartão de identidade para começar o processo."
 	icon_state = "data_1"
 
 	///Amount of points this card contains.
@@ -107,8 +107,8 @@
 	if(!isidcard(attacking_item))
 		return ..()
 	var/obj/item/card/id/attacking_id = attacking_item
-	balloon_alert(user, "starting transfer")
-	var/point_movement = tgui_alert(user, "To ID (from card) or to card (from ID)?", "Mining Points Transfer", list(TO_USER_ID, TO_POINT_CARD))
+	balloon_alert(user, "Iniciando transferência")
+	var/point_movement = tgui_alert(user, "Para identificação (do cartão) ou para cartão (do cartão)?", "Mining Points Transfer", list(TO_USER_ID, TO_POINT_CARD))
 	if(!point_movement)
 		return
 	var/amount = tgui_input_number(user, "How much do you want to transfer? ID Balance: [attacking_id.registered_account.mining_points], Card Balance: [points]", "Transfer Points", min_value = 0, round_value = 1)

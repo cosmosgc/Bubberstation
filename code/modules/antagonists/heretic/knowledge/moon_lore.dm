@@ -53,10 +53,10 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_moon
 	name = "Moonlight Troupe"
-	desc = "Opens up the Path of Moon to you. \
-		Allows you to transmute 2 sheets of glass and a knife into an Lunar Blade. \
-		You can only create two at a time."
-	gain_text = "Under the light of the moon the laughter echoes."
+	desc = "Abre o Caminho da Lua para você.\
+Permite que transmute 2 folhas de vidro e uma faca em uma lâmina lunar.\
+Você só pode criar dois de cada vez."
+	gain_text = "Sob a luz da lua o riso ecoa."
 	required_atoms = list(
 		/obj/item/knife = 1,
 		/obj/item/stack/sheet/glass = 2,
@@ -75,7 +75,7 @@
 	. = ..()
 
 	if(target.can_block_magic(MAGIC_RESISTANCE_MOON))
-		to_chat(target, span_danger("You hear echoing laughter from above..but it is dull and distant."))
+		to_chat(target, span_danger("Você ouve risos ecoando de cima mas é chato e distante."))
 		return
 
 	source.apply_status_effect(/datum/status_effect/moon_grasp_hide)
@@ -83,28 +83,28 @@
 	if(!iscarbon(target))
 		return
 	var/mob/living/carbon/carbon_target = target
-	to_chat(carbon_target, span_danger("You hear echoing laughter from above"))
+	to_chat(carbon_target, span_danger("Você ouve risos ecoando de cima"))
 	carbon_target.cause_hallucination(/datum/hallucination/delusion/preset/moon, "delusion/preset/moon hallucination caused by mansus grasp")
 	carbon_target.mob_mood.adjust_sanity(-30)
 
 /datum/heretic_knowledge/spell/mind_gate
 	name = "Mind Gate"
-	desc = "Grants you Mind Gate, a spell which mutes, deafens, blinds, inflicts hallucinations, \
-		confusion, oxygen loss and brain damage to its target over 10 seconds.\
-		The caster takes 20 brain damage per use."
-	gain_text = "My mind swings open like a gate, and its insight will let me perceive the truth."
+	desc = "Concede-lhe Mental Gate, um feitiço que silencia, ensurdece, cega, inflige alucinações,\
+Confusão, perda de oxigênio e dano cerebral em seu alvo em 10 segundos.\
+O caster leva 20 danos cerebrais por uso."
+	gain_text = "Minha mente se abre como um portão, e sua visão me deixará perceber a verdade."
 
 	action_to_add = /datum/action/cooldown/spell/pointed/mind_gate
 	cost = 2
 
 /datum/heretic_knowledge/moon_amulet
 	name = "Moonlight Amulet"
-	desc = "Allows you to transmute 2 sheets of glass, a heart and a tie to create a Moonlight Amulet. \
-			If the item is used on someone with low sanity they go berserk attacking everyone, \
-			if their sanity isn't low enough it decreases their mood. \
-			Wearing this will grant you the ability to see heathens through walls and make your blades harmless, they will instead directly attack their mind. \
-			Provides thermal vision and doubles the brain regen of a moon heretic while worn."
-	gain_text = "At the head of the parade he stood, the moon condensed into one mass, a reflection of the soul."
+	desc = "Permite que transmute 2 folhas de vidro, um coração e uma gravata para criar um amuleto Moonlight.\
+Se o item é usado em alguém com baixa sanidade, eles ficam furiosos atacando todos,\
+Se sua sanidade não é baixa o suficiente, diminui seu humor.\
+Usar isso lhe dará a habilidade de ver pagãos através de paredes e tornar suas lâminas inofensivas, eles atacarão diretamente sua mente.\
+Proporciona visão térmica e dobra o cérebro de um herege lunar quando usado."
+	gain_text = "À frente do desfile ele estava, a lua condensada em uma massa, um reflexo da alma."
 
 	required_atoms = list(
 		/obj/item/organ/heart = 1,
@@ -119,12 +119,12 @@
 	research_tree_icon_frame = 9
 
 /datum/heretic_knowledge/armor/moon
-	desc = "Allows you to transmute a table (or a suit), a mask and two sheets of glass to create a Resplendant Regalia. \
-			This robe will render the user fully immune to disabling effects and convert all forms of damage into brain damage, while also pacifying the user and rendering them unable to use ranged weapons. \
-			A Moonlight Amulet will be necessary to use blades while wearing it."
-	gain_text = "Trails of light and mirth flowed from every arm of this magnificent attire. \
-				The troupe twirled in irridescent cascades, dazzling onlookers with the truth they sought. \
-				I observed, basking in the light, to find my self."
+	desc = "Permite que transmute uma mesa (ou um terno), uma máscara e duas folhas de vidro para criar uma Regalia Resplendant.\
+Este roupão tornará o usuário totalmente imune aos efeitos incapacitantes e converterá todas as formas de danos em danos cerebrais, enquanto pacificando o usuário e tornando-os incapazes de usar armas variadas.\
+Um amuleto Moonlight será necessário para usar lâminas enquanto o usa."
+	gain_text = "Trilhas de luz e alegria fluiram de cada braço deste traje magnífico.\
+A trupe girava em cascatas irresponsáveis, deslumbrantes espectadores com a verdade que buscavam.\
+Eu observei, aproveitando-me da luz, para me encontrar."
 	result_atoms = list(/obj/item/clothing/suit/hooded/cultrobes/eldritch/moon)
 	research_tree_icon_state = "moon_armor"
 	required_atoms = list(
@@ -135,18 +135,18 @@
 
 /datum/heretic_knowledge/spell/moon_parade
 	name = "Lunar Parade"
-	desc = "Grants you Lunar Parade, a spell that - after a short charge - sends a carnival forward \
-		when hitting someone they are forced to join the parade and suffer hallucinations."
-	gain_text = "The music like a reflection of the soul compelled them, like moths to a flame they followed"
+	desc = "Concede-lhe Desfile Lunar, um feitiço que - após uma carga curta - envia um carnaval para a frente\
+Quando batem em alguém, são forçados a entrar no desfile e sofrer alucinações."
+	gain_text = "A música como um reflexo da alma os compeliu, como mariposas a uma chama que seguiam."
 	action_to_add = /datum/action/cooldown/spell/pointed/projectile/moon_parade
 	cost = 2
 	drafting_tier = 5
 
 /datum/heretic_knowledge/blade_upgrade/moon
 	name = "Moonlight Blade"
-	desc = "Your blade now deals brain damage, causes  random hallucinations and does sanity damage. \
-			Deals more brain damage if your victim is insane or unconscious."
-	gain_text = "His wit was sharp as a blade, cutting through the lie to bring us joy."
+	desc = "Sua lâmina agora causa danos cerebrais, causa alucinações aleatórias e causa danos à sanidade.\
+Dá mais dano cerebral se a vítima está louca ou inconsciente."
+	gain_text = "Sua inteligência era afiada como uma lâmina, cortando a mentira para nos trazer alegria."
 
 	research_tree_icon_path = 'icons/ui_icons/antags/heretic/knowledge.dmi'
 	research_tree_icon_state = "blade_upgrade_moon"
@@ -171,11 +171,11 @@
 
 /datum/heretic_knowledge/spell/moon_ringleader
 	name = "Ringleaders Rise"
-	desc = "Grants you Ringleaders Rise, an AoE spell that deals more brain damage the lower the sanity of everyone in the AoE \
-			and causes hallucinations, with those who have less sanity getting more. \
-			If their sanity is low enough this turns them insane, the spell then halves their sanity."
-	gain_text = "I grabbed his hand and we rose, those who saw the truth rose with us. \
-		The ringleader pointed up and the dim light of truth illuminated us further."
+	desc = "Concede a vocês Ringleaders Rise, um feitiço AoE que causa mais danos cerebrais quanto menor a sanidade de todos na AoE\
+e causa alucinações, com aqueles que têm menos sanidade ficando mais.\
+Se a sanidade deles é baixa o suficiente isso os torna loucos, o feitiço então diminui sua sanidade."
+	gain_text = "Agarrei a mão dele e nos levantamos. Aqueles que viram a verdade se levantaram conosco.\
+O líder apontou e a luz fraca da verdade nos iluminou ainda mais."
 
 	action_to_add = /datum/action/cooldown/spell/aoe/moon_ringleader
 	cost = 2
@@ -185,18 +185,18 @@
 
 /datum/heretic_knowledge/ultimate/moon_final
 	name = "The Last Act"
-	desc = "The ascension ritual of the Path of Moon. \
-		Bring 3 corpses with more than 50 brain damage to a transmutation rune to complete the ritual. \
-		When completed, you become a harbinger of madness gaining and aura of passive sanity decrease, \
-		crewmembers with low enough sanity will be converted into acolytes. \
-		1/5th of the crew will turn into acolytes and follow your command, they will all receive moonlight amulets."
-	gain_text = "We dived down towards the crowd, his soul splitting off in search of greater venture \
-		for where the Ringleader had started the parade, I shall continue it unto the suns demise \
-		WITNESS MY ASCENSION, THE MOON SMILES ONCE MORE AND FOREVER MORE IT SHALL!"
+	desc = "O ritual de ascensão do Caminho da Lua.\
+Traga 3 corpos com mais de 50 danos cerebrais para uma runa de transmutação para completar o ritual.\
+Quando concluído, você se torna um prenúncio de loucura ganhando e aura de diminuição passiva da sanidade,\
+Membros com pouca sanidade serão convertidos em acólitos.\
+1/5 da tripulação vai se transformar em acólitos e seguir seu comando, todos eles receberão amuletos da lua."
+	gain_text = "Nós mergulhamos para baixo em direção à multidão, sua alma se separa em busca de maior aventura\
+Para onde o líder do ringue começou o desfile, eu vou continuar até o fim dos sóis.\
+Testemunhe minha ascensão, a lua sorri cada vez mais."
 
 	ascension_achievement = /datum/award/achievement/misc/moon_ascension
-	announcement_text = "%SPOOKY% Laugh, for the ringleader %NAME% has ascended! \
-						The truth shall finally devour the lie! %SPOOKY%"
+	announcement_text = "Rir, para o líder Name subiu!\
+A verdade deve finalmente devorar a mentira! SPOOKY"
 	announcement_sound = 'sound/music/antag/heretic/ascend_moon.ogg'
 
 /datum/heretic_knowledge/ultimate/moon_final/is_valid_sacrifice(mob/living/sacrifice)
@@ -232,7 +232,7 @@
 
 	for(var/mob/living/carbon/human/crewmate as anything in lunatic_candidates)
 		if(amount_of_lunatics > max_lunatics)
-			to_chat(crewmate, span_boldwarning("You feel uneasy, as if for a brief moment something was gazing at you."))
+			to_chat(crewmate, span_boldwarning("Você se sente desconfortável, como se por um breve momento algo estivesse olhando para você."))
 			continue
 		if(attempt_conversion(crewmate, user))
 			amount_of_lunatics++
@@ -244,7 +244,7 @@
 		return FALSE
 	// Mindshielded and anti-magic folks are immune against this effect because this is a magical mind effect
 	if(HAS_MIND_TRAIT(convertee, TRAIT_UNCONVERTABLE) || convertee.can_block_magic(MAGIC_RESISTANCE))
-		to_chat(convertee, span_boldwarning("You feel shielded from something." ))
+		to_chat(convertee, span_boldwarning("Você se sente protegido de algo." ))
 		return FALSE
 
 	if(!convertee.mind)
@@ -282,7 +282,7 @@
 			continue
 		new /obj/effect/temp_visual/moon_ringleader(get_turf(carbon_view))
 		if(carbon_view.has_status_effect(/datum/status_effect/confusion))
-			to_chat(carbon_view, span_big(span_hypnophrase("YOUR HEAD RATTLES WITH A THOUSAND VOICES JOINED IN A MADDENING CACOPHONY OF SOUND AND MUSIC. EVERY FIBER OF YOUR BEING SAYS 'RUN'.")))
+			to_chat(carbon_view, span_big(span_hypnophrase("Sua cabeça ratreia com milhares de vozes unidas em uma cacofonia de som e música. Cada arquivo seu diz 'correr'.")))
 		carbon_view.adjust_confusion(2 SECONDS)
 		carbon_view.mob_mood.adjust_sanity(-20)
 
@@ -290,7 +290,7 @@
 			continue
 		// So our sanity is dead, time to fuck em up
 		if(SPT_PROB(20, seconds_per_tick))
-			to_chat(carbon_view, span_warning("it echoes through you!"))
+			to_chat(carbon_view, span_warning("ecoa através de você!"))
 		visible_hallucination_pulse(
 			center = get_turf(carbon_view),
 			radius = 7,
@@ -299,8 +299,8 @@
 		carbon_view.adjust_temp_blindness(5 SECONDS)
 		if(should_mind_explode(carbon_view))
 			to_chat(carbon_view, span_boldbig(span_red(\
-				"YOUR SENSES REEL AS YOUR MIND IS ENVELOPED BY AN OTHERWORLDLY FORCE ATTEMPTING TO REWRITE YOUR VERY BEING. \
-				YOU CANNOT EVEN BEGIN TO SCREAM BEFORE YOUR IMPLANT ACTIVATES ITS PSIONIC FAIL-SAFE PROTOCOL, TAKING YOUR HEAD WITH IT.")))
+				"Seu senso de Reel como sua mente está envolvida por outra força tentando reescrever seu próprio ser.\
+Você não pode nem começar a gritar antes que seu implante ative seu protótipo de segurança psicológica, levando sua cabeça com ele.")))
 			var/obj/item/bodypart/head/head = carbon_view.get_bodypart(BODY_ZONE_HEAD)
 			if(!head?.dismember())
 				carbon_view.gib(DROP_ALL_REMAINS)

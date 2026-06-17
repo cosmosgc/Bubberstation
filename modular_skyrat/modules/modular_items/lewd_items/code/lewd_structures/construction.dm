@@ -1,7 +1,7 @@
 ///The item used as the basis for construction kits for organic interface
 /obj/item/construction_kit
 	name = "construction kit"
-	desc = "Used for constructing various things"
+	desc = "Usado para construir várias coisas."
 	w_class = WEIGHT_CLASS_BULKY
 	obj_flags = CAN_BE_HIT
 	throwforce = 0
@@ -115,5 +115,5 @@
 		starting_colors = greyscale_colors
 	)
 	menu.ui_interact(usr)
-	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
+	to_chat(user, span_notice("Você muda a cor dos acessórios de plástico do quadro."))
 	return TRUE

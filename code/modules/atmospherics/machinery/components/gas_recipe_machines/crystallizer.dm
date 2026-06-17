@@ -8,7 +8,7 @@
 	icon_state = "crystallizer-off"
 	base_icon_state = "crystallizer"
 	name = "crystallizer"
-	desc = "Used to crystallize or solidify gases."
+	desc = "Usado para cristalizar ou solidificar gases."
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
 	max_integrity = 300
@@ -89,7 +89,7 @@
 	if(!is_operational)
 		return CLICK_ACTION_BLOCKING
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "Feche o painel!")
 		return CLICK_ACTION_BLOCKING
 	set_on(!on)
 	balloon_alert(user, "turned [on ? "on" : "off"]")

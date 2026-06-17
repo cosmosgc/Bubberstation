@@ -1,6 +1,6 @@
 /obj/item/autosurgeon/bodypart
 	name = "bodypart upgrade autosurgeon"
-	desc = "A device that will expertly replace your bodypart."
+	desc = "Um dispositivo que substituirá sua parte corporal."
 
 	var/bodypart_type = /obj/item/bodypart
 

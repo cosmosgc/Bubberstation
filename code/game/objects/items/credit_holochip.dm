@@ -1,6 +1,6 @@
 /obj/item/holochip
 	name = "credit holochip"
-	desc = "A hard-light chip encoded with an amount of credits. It is a modern replacement for physical money that can be directly converted to virtual currency and vice-versa. Keep away from magnets."
+	desc = "Um chip de luz dura codificado com uma quantidade de créditos. É um substituto moderno para dinheiro físico que pode ser convertido diretamente em moeda virtual e vice-versa. Fique longe de ímãs."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "holochip"
 	base_icon_state = "holochip"
@@ -25,7 +25,7 @@
 /obj/item/holochip/examine(mob/user)
 	. = ..()
 	. += "[span_notice("It's loaded with [credits] [MONEY_NAME_AUTOPURAL(credits)]")]\n"+\
-	span_notice("Alt-Click to split.")
+	span_notice("Alt-Click para dividir.")
 
 /obj/item/holochip/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(istype(held_item, /obj/item/holochip))
@@ -108,14 +108,14 @@
 
 	var/obj/item/holochip/merged_holochip = tool
 	credits += merged_holochip.credits
-	balloon_alert(user, "merged!")
+	balloon_alert(user, "Fusão!")
 	update_appearance()
 	qdel(merged_holochip)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/holochip/click_alt(mob/user)
 	if(loc != user)
-		to_chat(user, span_warning("You must be holding the holochip to continue!"))
+		to_chat(user, span_warning("Você deve estar segurando o holochip para continuar!"))
 		return CLICK_ACTION_BLOCKING
 	var/split_amount = tgui_input_number(user, "How many [MONEY_NAME] do you want to extract from the holochip? (Max: [credits] [MONEY_SYMBOL])", "Holochip", max_value = credits)
 	if(!split_amount || QDELETED(user) || QDELETED(src) || issilicon(user) || !usr.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH) || loc != user)

@@ -9,9 +9,9 @@
  */
 /datum/grand_finale/immortality
 	name = "Perpetuation"
-	desc = "The ultimate use of your gathered power! Share with the crew the gift, or curse, of eternal life! \
-		And why not just the crew? How about their pets too? And any other animals around here! \
-		What if nobody died ever again!?"
+	desc = "O uso final de seu poder acumulado! Compartilhe com a tripulação o dom, ou maldição, da vida eterna!\
+E por que não só a tripulação? E os animais de estimação deles também? E qualquer outro animal por aqui!\
+E se ninguém morrer de novo?"
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "asclepius_active"
 	glow_colour = COLOR_PALE_GREEN
@@ -24,7 +24,7 @@
 		new /obj/effect/temp_visual/immortality_pulse(get_turf(alive_guy))
 		if (!alive_guy.mind)
 			continue
-		to_chat(alive_guy, span_notice("You feel <b>extremely</b> healthy."))
+		to_chat(alive_guy, span_notice("Você sente<b>extremamente</b>saudável."))
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_DEATH, PROC_REF(something_died))
 
 /// Called when something passes into the great beyond, make it not do that
@@ -134,7 +134,7 @@
 /// A ghostly image of a mob showing where and what is going to respawn
 /obj/effect/spectre_of_resurrection
 	name = "spectre"
-	desc = "A frightening apparition, slowly growing more solid."
+	desc = "Uma aparição assustadora, lentamente crescendo mais sólida."
 	icon_state = "blank_white"
 	anchored = TRUE
 	layer = MOB_LAYER

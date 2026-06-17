@@ -2,14 +2,14 @@
 	name = "Spanish inquisition Flu"
 	max_stages = 3
 	spread_text = "Airborne"
-	cure_text = /datum/reagent/medicine/spaceacillin::name + " or common Flu antibodies"
+	cure_text = /datum/reagent/medicine/spaceacillin::name + "ou anticorpos gripais comuns"
 	cures = list(/datum/reagent/medicine/spaceacillin)
 	cure_chance = 5
 	agent = "1nqu1s1t10n Flu Virion"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	spreading_modifier = 0.75
-	desc = "An adaptation of the common flu, slightly more dangerous in nature. \
-		If left untreated the subject will burn to death for being a heretic."
+	desc = "Uma adaptação da gripe comum, um pouco mais perigosa na natureza.\
+Se não for tratado, o sujeito queimará até a morte por ser herege."
 	severity = DISEASE_SEVERITY_DANGEROUS
 	required_organ = ORGAN_SLOT_LUNGS
 
@@ -32,7 +32,7 @@
 			if(SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You're burning in your own skin!"))
+				to_chat(affected_mob, span_danger("Você está queimando em sua própria pele!"))
 				affected_mob.take_bodypart_damage(0, 5, updating_health = FALSE)
 
 		if(3)
@@ -42,5 +42,5 @@
 			if(SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(2.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You're burning in your own skin!"))
+				to_chat(affected_mob, span_danger("Você está queimando em sua própria pele!"))
 				affected_mob.take_bodypart_damage(0, 5, updating_health = FALSE)

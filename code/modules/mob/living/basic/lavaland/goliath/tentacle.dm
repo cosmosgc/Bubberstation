@@ -114,7 +114,7 @@
 
 /obj/item/restraints/legcuffs/goliath_tentacle
 	name = "tentacle mass"
-	desc = "A writhing tentacle constricting one of your limbs."
+	desc = "Um tentáculo contorcendo um de seus membros."
 	icon_state = "goliath_tentacle"
 	slowdown = 4
 	breakouttime = 6 SECONDS
@@ -195,7 +195,7 @@
 		return
 
 	if (!user.can_perform_action(nearest_turf))
-		nearest_turf.balloon_alert(user, "cannot reach!")
+		nearest_turf.balloon_alert(user, "Não consigo alcançar!")
 		return
 
 	held_thing.melee_attack_chain(user, src, params2list(params))

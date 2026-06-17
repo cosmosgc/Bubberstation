@@ -39,7 +39,7 @@
 /mob/proc/query_heart(attempt=1)
 	if(!client || attempt > 3)
 		return
-	if(attempt == 1 && tgui_alert(src, "Was there another character you noticed being kind this round that you would like to anonymously thank?", "<3?", list("Yes", "No"), timeout = 30 SECONDS) != "Yes")
+	if(attempt == 1 && tgui_alert(src, "Havia outro personagem que você notou sendo gentil nesta rodada que gostaria de agradecer anonimamente?", "<3?", list("Yes", "No"), timeout = 30 SECONDS) != "Yes")
 		return
 
 	var/heart_nominee
@@ -91,7 +91,7 @@
 /mob/proc/receive_heart(mob/heart_sender, duration = 24 HOURS, instant = FALSE)
 	if(!client)
 		return
-	to_chat(heart_sender, span_nicegreen("Commendation sent!"))
+	to_chat(heart_sender, span_nicegreen("Recebido!"))
 	message_admins("[key_name(heart_sender)] commended [key_name(src)] [instant ? "(instant)" : ""]")
 	log_admin("[key_name(heart_sender)] commended [key_name(src)] [instant ? "(instant)" : ""]")
 	if(instant || SSticker.current_state == GAME_STATE_FINISHED)

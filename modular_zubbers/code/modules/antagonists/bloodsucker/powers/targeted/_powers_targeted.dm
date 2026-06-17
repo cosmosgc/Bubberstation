@@ -58,7 +58,7 @@
 		// Out of Range
 		if(!(target_atom in view(target_range, owner)))
 			if(target_range > 1) // Only warn for range if it's greater than 1
-				owner.balloon_alert(owner, "out of range.")
+				owner.balloon_alert(owner, "Fora de alcance.")
 			return FALSE
 	return istype(target_atom)
 

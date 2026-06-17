@@ -6,7 +6,7 @@
  */
 /obj/item/boulder
 	name = "boulder"
-	desc = "This rocks."
+	desc = "Isso é demais."
 	icon_state = "ore"
 	icon = 'icons/obj/ore.dmi'
 	item_flags = NO_MAT_REDEMPTION | SLOWS_WHILE_IN_HAND
@@ -56,7 +56,7 @@
 	. = ..()
 	. += span_notice("This boulder would take [durability] more steps to refine or break.")
 	if(HAS_TRAIT(user, TRAIT_BOULDER_BREAKER))
-		. += span_notice("You can crush this boulder with your bare hands.")
+		. += span_notice("Você pode esmagar esta rocha com suas próprias mãos.")
 
 /obj/item/boulder/examine_more(mob/user)
 	. = ..()
@@ -128,7 +128,7 @@
 /obj/item/boulder/proc/create_platform(atom/interacting_with, mob/living/user, timer_override = null)
 	if(locate(/obj/structure/lattice/catwalk/boulder, interacting_with))
 		if(user)
-			to_chat(user, span_warning("There is already a boulder platform here!"))
+			to_chat(user, span_warning("Já tem uma plataforma de pedra aqui!"))
 		return null
 
 	var/active_platform_lifespan = platform_lifespan //Default to the assigned value.

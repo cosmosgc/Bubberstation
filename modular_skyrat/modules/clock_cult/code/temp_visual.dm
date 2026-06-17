@@ -165,7 +165,7 @@
 
 /obj/effect/temp_visual/steam
 	name = "steam"
-	desc = "Steam! It's hot. It also serves as a game distribution platform."
+	desc = "Vapor! Está quente. Também serve como plataforma de distribuição de jogos."
 	icon_state = "smoke"
 	duration = 1.5 SECONDS
 

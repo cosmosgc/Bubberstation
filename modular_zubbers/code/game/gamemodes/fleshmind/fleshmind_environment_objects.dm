@@ -37,7 +37,7 @@
  */
 /obj/structure/fleshmind/wireweed
 	name = "wireweed"
-	desc = "A strange pulsating mass of organic wires."
+	desc = "Uma estranha massa pulsante de fios orgânicos."
 	icon = 'modular_zubbers/icons/fleshmind/wireweed_floor.dmi'
 	icon_state = "wires-0"
 	base_icon_state = "wires"

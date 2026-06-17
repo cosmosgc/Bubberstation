@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/size_collar
 	name = "size collar"
-	desc = "A shiny black collar embeded with technology that allows the user to change their own size."
+	desc = "Um colar negro brilhante incorporado com tecnologia que permite ao usuário mudar seu próprio tamanho."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_black"
@@ -15,14 +15,14 @@
 /obj/item/clothing/neck/size_collar/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!warning_given)
-		if(tgui_alert(user, "This item is strictly intended as an ERP item for use in dorm rooms. Failure to respect this will result in administrative action being taken. Do you wish to continue using this item?", "A word of warning.", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "Este item é estritamente destinado como um item ERP para uso em dormitórios. Não respeitar isso resultará em ações administrativas sendo tomadas. Você deseja continuar usando este item?", "A word of warning.", list("Yes", "No")) != "Yes")
 			return FALSE
 
 		warning_given = TRUE
 
 	var/chosen_size = tgui_input_number(user, "What size percentage do you wish to set the collar to?", name, 100, CONFIG_GET(number/size_collar_maximum), CONFIG_GET(number/size_collar_minimum))
 	if(!chosen_size)
-		balloon_alert(user, "invalid size!")
+		balloon_alert(user, "Tamanho inválido!")
 		return FALSE
 
 	log_message("[src] had its target size changed to [chosen_size]% by [usr]", LOG_ATTACK)

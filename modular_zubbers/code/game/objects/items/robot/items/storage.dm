@@ -1,13 +1,13 @@
 /obj/item/borg/apparatus/paper_manipulator
 	name = "paperwork manipulation apparatus"
-	desc = "An apparatus for carrying, deploying, and manipulating sheets of paper."
+	desc = "Um aparelho para transportar, implantar e manipular folhas de papel."
 	icon_state = "borg_stack_apparatus"
 	storable = list(/obj/item/paper)
 
 //Research cyborg apparatus
 /obj/item/borg/apparatus/research
 	name = "Research manipulation gripper"
-	desc = "A simple grasping tool suited to assist in a wide array of research applications."
+	desc = "Uma simples ferramenta de apreensão adequada para ajudar em uma ampla gama de aplicações de pesquisa."
 	icon = 'modular_zubbers/icons/mob/silicon/robot_items.dmi'
 	icon_state = "gripper_sci"
 	storable = list(
@@ -39,13 +39,13 @@
 	. = ..()
 	if(stored)
 		. += "The gripper currently has [stored] secured."
-	. += span_notice(" <i>Alt-click</i> will drop the currently held item. ")
+	. += span_notice(" <i>Alt-click</i>vai largar o item atualmente mantido.")
 
 //To build funny little gadgets
 
 /obj/item/borg/apparatus/circuit_sci
 	name = "Research circuit assembly gripper"
-	desc = "A complex grasping tool used for working with circuitry."
+	desc = "Uma ferramenta de apreensão complexa usada para trabalhar com circuitos."
 	icon = 'modular_zubbers/icons/mob/silicon/robot_items.dmi'
 	icon_state = "gripper_circ"
 	storable = list(
@@ -66,18 +66,18 @@
 	. = ..()
 	if(stored)
 		. += "The gripper currently has [stored] secured."
-	. += span_notice(" <i>Alt-click</i> will drop the currently held item. ")
+	. += span_notice(" <i>Alt-click</i>vai largar o item atualmente mantido.")
 
 /obj/item/borg/apparatus/circuit_sci/pre_attack(atom/atom, mob/living/user, params) // copy and paste
 	if(istype(atom, /obj/item/ai_module) && !stored) //If an admin wants a borg to upload laws, who am I to stop them? Otherwise, we can hint that it fails
-		to_chat(user, span_warning("This circuit board doesn't seem to have standard robot apparatus pin holes. You're unable to pick it up."))
+		to_chat(user, span_warning("Esta placa de circuito não parece ter furos de pinos de robô padrão. Você é incapaz de pegar."))
 	return ..()
 
 //Illegal gripper to allow research cyborgs when hacked to do further robotics work
 //TODO: Add more functionality for them to interact with more this is an "illegal item"!
 /obj/item/borg/apparatus/illegal
 	name = "Sketchy looking gripper"
-	desc = "A tool used to expanded robotics work"
+	desc = "Uma ferramenta usada para expandir o trabalho de robótica."
 	icon_state = "connector"
 	storable = list(
 					/obj/item/mmi,
@@ -96,11 +96,11 @@
 	. = ..()
 	if(stored)
 		. += "The apparatus currently has [stored] secured."
-	. += span_notice(" <i>Alt-click</i> will drop the currently held item. ")
+	. += span_notice(" <i>Alt-click</i>vai largar o item atualmente mantido.")
 
 /obj/item/borg/apparatus/tank_manipulator
 	name = "tank manipulation apparatus"
-	desc = "An apparatus for carrying and manipulating handheld tanks."
+	desc = "Um aparelho para transportar e manipular tanques portáteis."
 	icon_state = "borg_beaker_apparatus"
 	storable = list(/obj/item/tank)
 
@@ -187,7 +187,7 @@
 //Engineering cyborg apparatus
 /obj/item/borg/apparatus/engineering
 	name = "Engineering manipulation gripper"
-	desc = "A simple grasping tool for interacting with various engineering related items, such as circuits, gas tanks, conveyor belts and more."
+	desc = "Uma simples ferramenta para interagir com vários itens relacionados à engenharia, como circuitos, tanques de gás, correias transportadoras e muito mais."
 	icon = 'modular_zubbers/icons/mob/silicon/robot_items.dmi'
 	icon_state = "gripper"
 	storable = list(
@@ -207,7 +207,7 @@
 //Mining cyborg apparatus
 /obj/item/borg/apparatus/mining
 	name = "Mining manipulation gripper"
-	desc = "A simple grasping tool suited to assist in an array of mining applications."
+	desc = "Uma simples ferramenta para ajudar em uma série de aplicações de mineração."
 	icon = 'modular_zubbers/icons/mob/silicon/robot_items.dmi'
 	icon_state = "gripper_mining"
 	storable = list(
@@ -232,4 +232,4 @@
 	. = ..()
 	if(stored)
 		. += "The gripper currently has [stored] secured."
-	. += span_notice(" <i>Alt-click</i> will drop the currently held item. ")
+	. += span_notice(" <i>Alt-click</i>vai largar o item atualmente mantido.")

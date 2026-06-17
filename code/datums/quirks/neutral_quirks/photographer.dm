@@ -1,12 +1,12 @@
 /datum/quirk/item_quirk/photographer
 	name = "Photographer"
-	desc = "You carry your camera and personal photo album everywhere you go, and your scrapbooks are legendary among your coworkers."
+	desc = "Você carrega sua câmera e álbum de fotos pessoais onde quer que vá, e seus álbuns são lendários entre seus colegas de trabalho."
 	icon = FA_ICON_CAMERA
 	value = 0
 	mob_trait = TRAIT_PHOTOGRAPHER
-	gain_text = span_notice("You know everything about photography.")
-	lose_text = span_danger("You forget how photo cameras work.")
-	medical_record_text = "Patient mentions photography as a stress-relieving hobby."
+	gain_text = span_notice("Você sabe tudo sobre fotografia.")
+	lose_text = span_danger("Esqueceu como as câmeras funcionam.")
+	medical_record_text = "O paciente menciona fotografia como um hobby de alívio de estresse."
 	mail_goodies = list(/obj/item/camera_film)
 
 /datum/quirk/item_quirk/photographer/add_unique(client/client_source)

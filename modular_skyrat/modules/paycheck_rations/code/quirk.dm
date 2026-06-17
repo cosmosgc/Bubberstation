@@ -1,11 +1,11 @@
 /datum/quirk/item_quirk/ration_system
 	name = "Ration Ticket Receiver"
-	desc = "Due to some circumstance of your life, you have enrolled in the ration tickets program, \
-		which will halve all of your paychecks in exchange for granting you ration tickets, which can be \
-		redeemed at a cargo console for food and other items."
+	desc = "Devido a alguma circunstância de sua vida, você se inscreveu no programa de tickets de ração,\
+que vai reduzir para metade todos os seus salários em troca de conceder-lhe bilhetes de ração, que pode ser\
+Redimido em um console de carga para comida e outros itens."
 	icon = FA_ICON_DONATE
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_HIDE_FROM_SCAN
-	medical_record_text = "Has enrolled in the ration ticket program."
+	medical_record_text = "Se inscreveu no programa de rações."
 	value = 0
 	hardcore_value = 0
 
@@ -34,7 +34,7 @@
 	tracked_ticket_book = WEAKREF(new_ticket_book)
 	account.payday_modifier -= 0.5
 	RegisterSignal(account, COMSIG_ON_BANK_ACCOUNT_PAYOUT, PROC_REF(make_ration_ticket))
-	to_chat(client_source.mob, span_notice("You remember to keep close hold of your ticket book, it can't be replaced if lost and all of your ration tickets are placed there!"))
+	to_chat(client_source.mob, span_notice("Lembre-se de manter perto de seu livro de bilhetes, ele não pode ser substituído se perdido e todos os seus bilhetes de ração são colocados lá!"))
 
 /// Attempts to create a ration ticket book in the card holder's hand, and failing that, the drop location of the card
 /datum/quirk/item_quirk/ration_system/proc/make_ration_ticket(datum/bank_account/account)

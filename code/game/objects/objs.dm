@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 			return
 		if(tgui_alert(usr, "Are you really sure you want to delete all objects of type [type]?",,list("Yes","No")) != "Yes")
 			return
-		if(tgui_alert(usr, "Second confirmation required. Delete?",,list("Yes","No")) != "Yes")
+		if(tgui_alert(usr, "Segunda confirmação necessária. Deletar?",,list("Yes","No")) != "Yes")
 			return
 		var/O_type = type
 		switch(action_type)
@@ -201,7 +201,7 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 						qdel(Obj)
 					CHECK_TICK
 				if(!i)
-					to_chat(usr, "No objects of this type exist")
+					to_chat(usr, "Nenum objetivo deste tipo existe.")
 					return
 				log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
 				message_admins(span_notice("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
@@ -213,7 +213,7 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 						qdel(Obj)
 					CHECK_TICK
 				if(!i)
-					to_chat(usr, "No objects of this type exist")
+					to_chat(usr, "Nenum objetivo deste tipo existe.")
 					return
 				log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
 				message_admins(span_notice("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))

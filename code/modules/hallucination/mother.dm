@@ -76,7 +76,7 @@
 	gender = FEMALE
 	image_icon = 'icons/mob/simple/simple_human.dmi'
 	name = "Your mother"
-	desc = "She is not happy."
+	desc = "Ela não está feliz."
 	image_state = ""
 
 /obj/effect/client_image_holder/hallucination/your_mother/Initialize(mapload, list/mobs_which_see_us, datum/hallucination/parent)

@@ -10,7 +10,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	name = "gravity suspension harness"
-	desc = "A bootleg derivative of common Skrellian construction equipment, manufactured and heavily used by Deep Spacer tribes, this harness employs suspensor tech to either nullify or magnify gravity around the wearer."
+	desc = "Um derivado pirata de equipamento de construção Skrellian comum, fabricado e fortemente usado por tribos Deep Spacer, este arnês emprega tecnologia suspensor para anular ou ampliar a gravidade em torno do usuário."
 	slot_flags = ITEM_SLOT_BACK
 	icon_state = "gravityharness-off"
 	worn_icon_state = "gravityharness-off"
@@ -206,7 +206,7 @@
 		if(cell_cover_open)
 			. += "The cell cover is open, exposing the battery."
 			if(!current_cell)
-				. += span_warning("The cell slot is empty, showing bare connectors.")
+				. += span_warning("A cela está vazia, mostrando conectores nus.")
 			else
 				. += "\The [current_cell] is firmly in place."
 
@@ -217,7 +217,7 @@
 	screwdriver.play_tool_sound(src, 100)
 
 	if(!screwdriver.use_tool(src, user, 1 SECONDS))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return FALSE
 
 	screwdriver.play_tool_sound(src, 100)
@@ -230,16 +230,16 @@
 		return ..()
 
 	if(!current_cell)
-		balloon_alert(user, "no cell!")
+		balloon_alert(user, "Sem celular!")
 		return
 
-	balloon_alert(user, "removing cell...")
+	balloon_alert(user, "removendo a célula...")
 	if(!do_after(user, 1.5 SECONDS, target = src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return
 
 	change_mode(MODE_GRAVOFF)
-	balloon_alert(user, "cell removed")
+	balloon_alert(user, "célula removida")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(!user.put_in_hands(current_cell))
 		current_cell.forceMove(drop_location())
@@ -258,19 +258,19 @@
 		return ..()
 
 	if(!cell_cover_open)
-		balloon_alert(user, "open the cell cover first!")
+		balloon_alert(user, "Abra a tampa da cela primeiro!")
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 
 	if(current_cell)
-		balloon_alert(user, "cell already installed!")
+		balloon_alert(user, "O celular já está instalado!")
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return ITEM_INTERACT_BLOCKING
 
 	/// Shadow realm? I'm sending you to Lake City, FL!
 	tool.moveToNullspace()
 	current_cell = tool
-	balloon_alert(user, "cell installed")
+	balloon_alert(user, "Célula instalada")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return ITEM_INTERACT_SUCCESS
 

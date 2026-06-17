@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 		return
 
 	if (!SSdbcore.Connect())
-		to_chat(usr, span_warning("Couldn't connect to the database."))
+		to_chat(usr, span_warning("Não consegui conectar ao banco de dados."))
 		return
 
 	var/datum/admins/holder = usr.client?.holder
@@ -21,11 +21,11 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 
 	switch (href_list["action"])
 		if ("add")
-			var/ckey1 = input(usr, "Put in the name of the main ckey") as null|text
+			var/ckey1 = input(usr, "Coloque em nome do ckey principal.") as null|text
 			if (!ckey1)
 				return
 
-			var/ckey2 = input(usr, "Put in the name of their alt") as null|text
+			var/ckey2 = input(usr, "Coloquem em nome de seu alt") as null|text
 			if (!ckey2)
 				return
 
@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 			QDEL_NULL(query_already_exists)
 
 			if (already_exists_row)
-				alert(usr, "Those two are already in the list of known alts!")
+				alert(usr, "Esses dois já estão na lista de alts conhecidos!")
 				return
 
 			var/datum/db_query/query_add_known_alt = SSdbcore.NewQuery({"
@@ -162,7 +162,7 @@ GLOBAL_DATUM_INIT(known_alts, /datum/known_alts, new)
 		return
 
 	if (!SSdbcore.Connect())
-		to_chat(usr, span_warning("Couldn't connect to the database."))
+		to_chat(usr, span_warning("Não consegui conectar ao banco de dados."))
 		return
 
 	var/list/known_alts_html = list()

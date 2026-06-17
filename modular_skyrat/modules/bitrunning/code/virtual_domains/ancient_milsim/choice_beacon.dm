@@ -1,8 +1,8 @@
 /obj/item/choice_beacon/ancient_milsim
 	name = "early access equipment beacon"
-	desc = "Summon a gear closet for your contributions in the early access testing. Synchronises with the current game version to give you the most up-to-date class equipment."
+	desc = "Chame um armário para suas contribuições no teste de acesso precoce. Sincroniza com a versão atual do jogo para lhe dar o equipamento de classe mais atualizado."
 	company_source = "'Time Of Valor 2' development team"
-	company_message = span_bold("Thanks, and have fun!")
+	company_message = span_bold("Obrigado, e divirtam-se!")
 
 /obj/item/choice_beacon/ancient_milsim/generate_display_names()
 	var/static/list/gear_options
@@ -13,8 +13,8 @@
 	return gear_options
 
 /obj/structure/closet/crate/secure/weapon/milsim
-	desc = "(ToV 2 Playtester Reward) UNIF Counter-Insurgency Detachment bundle: featuring equipment provided to field operators in medium-intensity firefights. <br>\
-	'VCIM (Void Combat Identification Measures) camo' Skin (Alt 1/Strobeless, Opaque Glass)."
+	desc = "Pacote de destacamentos de contra-insurgência da UNIF, com equipamento fornecido para operadores de campo em tiroteios de média intensidade.<br>\
+VCIM (Medidas de Identificação de Combate Vazio) Camo (Alt 1/Strobeless, vidro opaco)."
 
 /obj/structure/closet/crate/secure/weapon/milsim/PopulateContents()
 	. = ..()

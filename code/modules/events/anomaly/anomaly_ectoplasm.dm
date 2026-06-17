@@ -4,7 +4,7 @@
 
 /datum/round_event_control/anomaly/anomaly_ectoplasm
 	name = "Anomaly: Ectoplasmic Outburst"
-	description = "Anomaly that produces an effect of varying intensity based on how many ghosts are orbiting it."
+	description = "Anomalia que produz um efeito de intensidade variável baseado em quantos fantasmas estão orbitando-o."
 	typepath = /datum/round_event/anomaly/anomaly_ectoplasm
 	min_players = 30
 	max_occurrences = 2
@@ -50,7 +50,7 @@
 	var/ghost_override
 
 /datum/event_admin_setup/anomaly_ectoplasm/prompt_admins()
-	if(tgui_alert(usr, "Override the anomaly effect and power?", "You'll be ruining the authenticity.", list("Yes", "No")) == "Yes")
+	if(tgui_alert(usr, "Sobrepor o efeito de anomalia e poder?", "You'll be ruining the authenticity.", list("Yes", "No")) == "Yes")
 		var/list/power_values = list(ANOMALY_INTENSITY_MINOR, ANOMALY_INTENSITY_MODERATE, ANOMALY_INTENSITY_MAJOR)
 		chosen_effect = tgui_input_list(usr, "Provide effect override", "Criiiiinge.", power_values)
 		if(!chosen_effect)

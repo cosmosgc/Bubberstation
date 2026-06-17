@@ -4,7 +4,7 @@
 
 /obj/item/pipe_dispenser/bluespace
 	name = "bluespace RPD"
-	desc = "State of the art technology being tested by NT scientists; this is their only working prototype."
+	desc = "Tecnologia de ponta sendo testada por cientistas da NT, este é o único protótipo que eles trabalham."
 	icon = 'modular_zubbers/icons/obj/bsrpd.dmi'
 	icon_state = "bsrpd"
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/items/bsrpd_lefthand.dmi'
@@ -46,7 +46,7 @@
 	else
 		. += "You cannot see the charge capacity."
 
-	. += span_notice("<b>Alt-Click</b> to toggle remote piping.")
+	. += span_notice("<b>Alt-Click</b>Para alternar tubulação remota.")
 
 /obj/item/pipe_dispenser/bluespace/click_alt(mob/user)
 	remote_piping_toggle = !remote_piping_toggle

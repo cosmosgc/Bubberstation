@@ -90,7 +90,7 @@
 		if(possible_transfer_amounts.len > 1)
 			. += span_notice("Left-click or right-click in-hand to increase or decrease its transfer amount. It is currently set to [amount_per_transfer_from_this] units.")
 		else if(possible_transfer_amounts.len)
-			. += span_notice("Left-click or right-click in-hand to view its transfer amount.")
+			. += span_notice("Clique com o botão esquerdo ou com o botão direito para ver o valor da transferência.")
 	if(isliving(user) && HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
 		var/mob/living/living_user = user
 		living_user.taste_container(reagents)
@@ -162,7 +162,7 @@
 		target_mob.show_message(
 			span_userdanger("[user] splashes the contents of [src] onto you!"),
 			MSG_VISUAL,
-			span_userdanger("You feel drenched!"),
+			span_userdanger("Você se sente encharcado!"),
 		)
 
 	playsound(target, 'sound/effects/slosh.ogg', 25, TRUE)

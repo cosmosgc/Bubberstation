@@ -1,6 +1,6 @@
 /obj/item/cigarette/pipe/crackpipe
 	name = "crack pipe"
-	desc = "A slick glass pipe made for smoking one thing: crack."
+	desc = "Um tubo de vidro liso feito para fumar uma coisa: crack."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	worn_icon = 'modular_skyrat/modules/morenarcotics/icons/mask.dmi'
 	icon_state = "glass_pipeoff" //it seems like theres some unused crack pipe sprite in masks.dmi, sweet!
@@ -41,6 +41,6 @@
 			if(smoketime > 0)
 				light(lighting_text)
 			else
-				to_chat(user, span_warning("There is nothing to smoke!"))
+				to_chat(user, span_warning("Não há nada para fumar!"))
 		else
 			return ..()

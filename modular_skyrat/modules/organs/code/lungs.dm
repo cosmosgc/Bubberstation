@@ -2,7 +2,7 @@
 
 /obj/item/organ/lungs/adaptive
 	name = "debug-adaptive lungs"
-	desc = "if you have these, or see these, someone fucked up"
+	desc = "Se você tem isso, ou ver isso, alguém estragou tudo."
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
 	icon_state = "lungs_cold"
 	safe_oxygen_min = 7
@@ -12,7 +12,7 @@
 
 /obj/item/organ/lungs/adaptive/cold
 	name = "cold-adapted lungs"
-	desc = "A set of lungs adapted to low temperatures, though they are more susceptible to high temperatures"
+	desc = "Um conjunto de pulmões adaptados a baixas temperaturas, embora sejam mais suscetíveis a altas temperaturas."
 	icon_state = "lungs_cold"
 	air_mix = ICEMOON_DEFAULT_ATMOS
 	cold_level_1_threshold = 177.15
@@ -27,7 +27,7 @@
 
 /obj/item/organ/lungs/adaptive/hot
 	name = "heat-adapted lungs"
-	desc = "A set of lungs adapted to high temperatures, though they are more susceptible to low temperatures"
+	desc = "Um conjunto de pulmões adaptados a altas temperaturas, embora sejam mais suscetíveis a baixas temperaturas."
 	icon_state = "lungs_heat"
 	air_mix = LAVALAND_DEFAULT_ATMOS
 	cold_level_1_threshold = 271.15
@@ -85,7 +85,7 @@
 /obj/item/organ/lungs/toxin
 	name = "toxin-adapted lungs"
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
-	desc = "A set of lungs adapted to toxic environments, though more susceptible to extreme temperatures."
+	desc = "Um conjunto de pulmões adaptados a ambientes tóxicos, embora mais suscetíveis a temperaturas extremas."
 	icon_state = "lungs_toxin"
 	safe_plasma_max = 27
 	safe_co2_max = 27
@@ -97,7 +97,7 @@
 /obj/item/organ/lungs/oxy
 	name = "low-oxygen-adapted lungs"
 	icon = 'modular_skyrat/modules/organs/icons/lungs.dmi'
-	desc = "A set of lungs adapted to lower-pressure environments, though more susceptible to extreme temperatures."
+	desc = "Um conjunto de pulmões adaptados a ambientes de baixa pressão, embora mais suscetíveis a temperaturas extremas."
 	icon_state = "lungs_toxin"
 	safe_oxygen_min = 4
 	safe_co2_max = 21

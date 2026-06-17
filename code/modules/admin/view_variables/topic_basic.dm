@@ -69,7 +69,7 @@
 			return
 
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!", confidential = TRUE)
+			to_chat(usr, "Essa coisa não existe mais!", confidential = TRUE)
 			return
 
 		var/add_source
@@ -112,14 +112,14 @@
 		if(!usr || path == "---Components---" || path == "---Elements---")
 			return
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!")
+			to_chat(usr, "Essa coisa não existe mais!")
 			return
 		var/list/targets_to_remove_from = list(target)
 		if(mass_remove)
 			var/method = vv_subtype_prompt(target.type)
 			targets_to_remove_from = get_all_of_type(target.type, method)
 
-			if(alert(usr, "Are you sure you want to mass-delete [path] on [target.type]?", "Mass Remove Confirmation", "Yes", "No") == "No")
+			if(alert(usr, "Are you sure you want to mass-delete [path] on [target.type]?", "Mass Remover Confirmação", "Yes", "No") == "No")
 				return
 
 		for(var/datum/target_to_remove_from as anything in targets_to_remove_from)

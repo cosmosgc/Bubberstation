@@ -1,9 +1,9 @@
 /datum/religion_rites/dream_projection
 	name = "Dream Projection"
-	desc = "Astrally project your dream consciousness into the mind of one of your followers. \
-		While projecting, you are asleep, and can communicate with only and see through the eyes of the chosen follower, \
-		but cannot interact with the world in any way. The projection can be ended at any time, \
-			ends if you are woken up or attacked, and ends if the follower dies."
+	desc = "Astralmente projeta sua consciência de sonho na mente de um de seus seguidores.\
+Enquanto projeta, você está dormindo, e pode se comunicar com apenas e ver através dos olhos do seguidor escolhido,\
+mas não pode interagir com o mundo de forma alguma. A projeção pode ser terminada a qualquer momento,\
+termina se você for acordado ou atacado, e termina se o seguidor morrer."
 	favor_cost = 100
 	ritual_length = 15 SECONDS
 
@@ -22,7 +22,7 @@
 			followers += follower
 
 	if(!length(followers))
-		to_chat(user, span_warning("You have no followers to project into!"))
+		to_chat(user, span_warning("Você não tem seguidores para projetar!"))
 		return FALSE
 
 	return ..()
@@ -44,7 +44,7 @@
 		return
 
 	if(!user.apply_status_effect(/datum/status_effect/dream_projection, target))
-		to_chat(user, span_warning("You fail to fall asleep."))
+		to_chat(user, span_warning("Você não consegue dormir."))
 		refund(0.8)
 		return
 
@@ -73,7 +73,7 @@
 
 /datum/status_effect/dream_projection/on_apply()
 	if(!owner.SetSleeping(20 SECONDS))
-		to_chat(owner, span_warning("You fail to fall asleep."))
+		to_chat(owner, span_warning("Você não consegue dormir."))
 		return FALSE
 
 	. = ..()
@@ -133,20 +133,20 @@
 
 /datum/status_effect/dream_projection/proc/end_projection()
 	SIGNAL_HANDLER
-	to_chat(owner, span_warning("Your dream projection ends as your target is no longer valid."))
+	to_chat(owner, span_warning("Seu sonho de projeção termina como seu alvo não é mais válido."))
 	owner.SetSleeping(10 SECONDS)
 	qdel(src)
 
 /datum/status_effect/dream_projection/proc/interrupt_projection()
 	SIGNAL_HANDLER
-	to_chat(owner, span_warning("Your dream projection is interrupted!"))
+	to_chat(owner, span_warning("Sua projeção dos sonhos está interrompida!"))
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "gasp")
 	owner.visible_message(span_notice("[owner]'s eyes snap open as they are jolted awake!"), vision_distance = COMBAT_MESSAGE_RANGE, ignored_mobs = owner)
 	qdel(src)
 
 /datum/status_effect/dream_projection/proc/stop_projection()
 	SIGNAL_HANDLER
-	to_chat(owner, span_warning("You end your dream projection and return to your body."))
+	to_chat(owner, span_warning("Você termina sua projeção de sonhos e retorna ao seu corpo."))
 	owner.SetSleeping(10 SECONDS)
 	qdel(src)
 
@@ -179,7 +179,7 @@
 
 /datum/action/innate/stop_projection
 	name = "Stop Projection"
-	desc = "Stop astrally projecting and return to your body."
+	desc = "Pare de projetar astralmente e volte ao seu corpo."
 
 /datum/action/innate/stop_projection/Activate()
 	qdel(owner)

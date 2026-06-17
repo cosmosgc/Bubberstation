@@ -4,7 +4,7 @@
 
 /obj/machinery/mounted_machine_gun
 	name = "\improper T90 Mounted Machine Gun"
-	desc = "A high calibre mounted machine gun capable of laying down copious amounts of suppressive fire."
+	desc = "Uma metralhadora de alto calibre capaz de lançar copiosas quantidades de fogo supressor."
 	icon = 'modular_skyrat/modules/mounted_machine_gun/icons/turret.dmi'
 	icon_state = "mmg"
 	base_icon_state = "mmg"
@@ -95,22 +95,22 @@
 	if(ammo_box)
 		. += span_notice("It has [ammo_box] loaded, with [ammo_box.ammo_count()] rounds remaining.")
 	else
-		. += span_danger("It does not have an ammo box loaded!")
+		. += span_danger("Não tem uma caixa de munição carregada!")
 	. += span_notice("The cover is [cover_open ? "open" : "closed"]. <b>Alt+click</b> to [cover_open ? "close" : "open"] it.")
-	. += span_notice("Use a welder to repair it.")
+	. += span_notice("Use um soldador para repará-lo.")
 	switch(barrel_heat)
 		if(BARREL_HEAT_THRESHOLD_LOW to BARREL_HEAT_THRESHOLD_HIGH)
-			. += span_warning("The barrel looks hot.")
+			. += span_warning("O barril parece quente.")
 		if(BARREL_HEAT_THRESHOLD_HIGH to INFINITY)
-			. += span_warning("The barrel looks moulten!")
+			. += span_warning("O barril parece moulten!")
 	if(overheated)
-		. += span_danger("It is heatlocked!")
+		. += span_danger("Está travado!")
 
 /obj/machinery/mounted_machine_gun/welder_act(mob/living/user, obj/item/tool)
 	if(user.combat_mode)
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it doesn't need repairs!")
+		balloon_alert(user, "Não precisa de reparos!")
 		return TRUE
 	balloon_alert_to_viewers("repairing...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = REPAIR_WELDER_COST, volume = 100))
@@ -184,7 +184,7 @@
 	if(!can_interact(user))
 		return
 	if(!cover_open)
-		balloon_alert(user, "cover closed!")
+		balloon_alert(user, "Cobertura fechada!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!ammo_box)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -196,19 +196,19 @@
 	if(!istype(weapon, ammo_box_type))
 		return
 	if(ammo_box)
-		balloon_alert(user, "already loaded!")
+		balloon_alert(user, "Já está carregada!")
 		return
 	ammo_box = weapon
 	weapon.forceMove(src)
 	playsound(src, 'modular_skyrat/modules/mounted_machine_gun/sound/insert_ammobox.ogg', 100)
-	balloon_alert(user, "ammo box inserted!")
+	balloon_alert(user, "Caixa de munição inserida!")
 
 /obj/machinery/mounted_machine_gun/proc/remove_ammo_box(mob/living/user)
 	ammo_box.forceMove(drop_location())
 	user.put_in_hands(ammo_box)
 	ammo_box = null
 	playsound(src, 'modular_skyrat/modules/mounted_machine_gun/sound/remove_ammobox.ogg', 100)
-	balloon_alert(user, "ammo box removed!")
+	balloon_alert(user, "Caixa de munição removida!")
 	update_appearance()
 
 /obj/machinery/mounted_machine_gun/proc/toggle_cover(mob/user)
@@ -455,7 +455,7 @@
 
 /obj/item/mounted_machine_gun_folded
 	name = "\improper folded T-90 mounted machine gun"
-	desc = "A folded and unloaded mounted machine gun, ready to be deployed and used."
+	desc = "Uma metralhadora dobrada e descarregada, pronta para ser usada."
 	icon = 'modular_skyrat/modules/mounted_machine_gun/icons/turret_objects.dmi'
 	icon_state = "folded_hmg"
 	max_integrity = 250

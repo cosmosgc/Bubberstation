@@ -68,7 +68,7 @@
 	if(user.combat_mode)
 		return FALSE
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("This sign is already in perfect condition."))
+		to_chat(user, span_warning("Este sinal já está em perfeitas condições."))
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE
@@ -89,7 +89,7 @@
 		if(isnull(choice))
 			return
 		if(!Adjacent(user)) //Make sure user is adjacent still.
-			to_chat(user, span_warning("You need to stand next to the sign to change it!"))
+			to_chat(user, span_warning("Você precisa ficar ao lado do sinal para mudá-lo!"))
 			return
 		user.visible_message(span_notice("[user] begins changing [src]."), \
 			span_notice("You begin changing [src]."))
@@ -105,7 +105,7 @@
 		changedsign.atom_integrity = atom_integrity
 		qdel(src)
 		user.visible_message(span_notice("[user] finishes changing the sign."), \
-			span_notice("You finish changing the sign."))
+			span_notice("Você termina de mudar a placa."))
 		return
 	return ..()
 
@@ -125,13 +125,13 @@
 /obj/structure/sign/blank //This subtype is necessary for now because some other things (posters, picture frames, paintings) inherit from the parent type.
 	icon_state = "backing"
 	name = "sign backing"
-	desc = "A plastic sign backing, use a pen to change the decal. It can be detached from the wall with a wrench."
+	desc = "Um sinal de plástico, use uma caneta para mudar o decalque. Pode ser separado da parede com uma chave inglesa."
 	is_editable = TRUE
 	sign_change_name = "Blank Sign"
 
 /obj/item/sign
 	name = "sign backing"
-	desc = "A plastic sign backing, use a pen to change the decal. It can be placed on a wall."
+	desc = "Um sinal de plástico, use uma caneta para mudar o decalque. Pode ser colocado em uma parede."
 	icon = 'icons/obj/signs.dmi'
 	icon_state = "backing"
 	inhand_icon_state = "backing"
@@ -174,13 +174,13 @@
 	if(isnull(choice))
 		return ITEM_INTERACT_BLOCKING
 	if(!Adjacent(user)) //Make sure user is adjacent still.
-		to_chat(user, span_warning("You need to stand next to the sign to change it!"))
+		to_chat(user, span_warning("Você precisa ficar ao lado do sinal para mudá-lo!"))
 		return ITEM_INTERACT_BLOCKING
 	user.visible_message(span_notice("You begin changing [src]."))
 	if(!do_after(user, 4 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 	set_sign_type(GLOB.editable_sign_types[choice])
-	user.visible_message(span_notice("You finish changing the sign."))
+	user.visible_message(span_notice("Você termina de mudar a placa."))
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/sign/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -190,7 +190,7 @@
 	var/turf/user_turf = get_turf(user)
 	var/dir = get_dir(user_turf, target_turf)
 	if(!(dir in GLOB.cardinals))
-		balloon_alert(user, "stand in line with wall!")
+		balloon_alert(user, "Fiquem em fila com a parede!")
 		return ITEM_INTERACT_BLOCKING
 	var/obj/structure/sign/placed_sign = new sign_path(user_turf) //We place the sign on the turf the user is standing, and pixel shift it to the target wall, as below.
 	//This is to mimic how signs and other wall objects are usually placed by mappers, and so they're only visible from one side of a wall.
@@ -216,7 +216,7 @@
 	if(user.combat_mode)
 		return FALSE
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("This sign is already in perfect condition."))
+		to_chat(user, span_warning("Este sinal já está em perfeitas condições."))
 		return TRUE
 	if(!I.tool_start_check(user, amount=1))
 		return TRUE

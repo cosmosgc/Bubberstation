@@ -1,6 +1,6 @@
 /obj/item/syndie_glue
 	name = "bottle of super glue"
-	desc = "A black market brand of high strength adhesive, rarely sold to the public. Do not ingest."
+	desc = "Uma marca do mercado negro de adesivo de alta resistência, raramente vendida ao público. Não ingira."
 	icon = 'modular_skyrat/master_files/icons/obj/tools.dmi'
 	icon_state	= "glue"
 	w_class = WEIGHT_CLASS_SMALL
@@ -9,7 +9,7 @@
 
 /obj/item/syndie_glue/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!uses)
-		to_chat(user, span_warning("The bottle of glue is empty!"))
+		to_chat(user, span_warning("A garrafa de cola está vazia!"))
 		return NONE
 
 	var/obj/item/interacted = interacting_with

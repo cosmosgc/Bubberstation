@@ -1,16 +1,16 @@
 /obj/item/key
 	name = "key"
-	desc = "A small grey key."
+	desc = "Uma pequena chave cinza."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "key"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/key/atv
 	name = "ATV key"
-	desc = "A small grey key for starting and operating ATVs."
+	desc = "Uma pequena chave cinza para iniciar e operar ATVs."
 
 /obj/item/key/security
-	desc = "A keyring with a small steel key, and a rubber stun baton accessory."
+	desc = "Um chaveiro com uma pequena chave de aço, e um acessório de bastão de borracha."
 	icon_state = "keysec"
 
 /obj/item/key/security/suicide_act(mob/living/carbon/user)
@@ -24,7 +24,7 @@
 	return MANUAL_SUICIDE
 
 /obj/item/key/janitor
-	desc = "A keyring with a small steel key, and a pink fob reading \"Pussy Wagon\"."
+	desc = "Um chaveiro com uma pequena chave de aço, e uma leitura rosa fob\"Vagabunda\"."
 	icon_state = "keyjanitor"
 	icon_angle = 90
 	force = 2
@@ -82,7 +82,7 @@
 
 /obj/item/key/lasso
 	name = "bone lasso"
-	desc = "The perfect tool for directing a Goliath! If only it made them move any faster..."
+	desc = "A ferramenta perfeita para dirigir um Golias! Se isso os fizesse se moverem mais rápido..."
 	force = 12
 	icon_state = "lasso"
 	inhand_icon_state = "chain"

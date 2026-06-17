@@ -55,7 +55,7 @@
 	var/price = item.price + shipment_fee
 
 	if(!uplink.current_user)///There is no ID card on the user, or the ID card has no account
-		to_chat(user, span_warning("The uplink sparks, as it can't identify an ID card with a bank account on you."))
+		to_chat(user, span_warning("O uplink acende, como ele não pode identificar um cartão de identificação com uma conta bancária em você."))
 		return FALSE
 	var/balance = uplink?.current_user.account_balance
 

@@ -14,7 +14,7 @@ ADMIN_VERB(try_stop_delam, R_ADMIN, "Delam Emergency Stop", "Activate the delam 
 		if(go_early != "Yes")
 			return FALSE
 
-	var/double_check = tgui_alert(user, "You really sure that you want to push this?", "Reticulating Splines", list("No", "Yes"))
+	var/double_check = tgui_alert(user, "Tem certeza que quer forçar isso?", "Reticulating Splines", list("No", "Yes"))
 	if(double_check != "Yes")
 		return FALSE
 

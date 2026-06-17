@@ -5,7 +5,7 @@
  */
 /obj/item/gun/magic/wand/repulse
 	name = "rod of repulsion"
-	desc = "A wand which blasts things away from you."
+	desc = "Uma varinha que explode coisas longe de você."
 	school = SCHOOL_TRANSLOCATION
 	ammo_type = /obj/item/ammo_casing/magic/repulse
 	icon_state = "repulsionwand"

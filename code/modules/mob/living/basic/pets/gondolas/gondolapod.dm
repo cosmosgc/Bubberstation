@@ -1,7 +1,7 @@
 /mob/living/basic/pet/gondola/gondolapod
 	name = "gondola"
 	real_name = "gondola"
-	desc = "The silent walker. This one seems to be part of a delivery agency."
+	desc = "O andarilho silencioso. Este parece fazer parte de uma agência de entrega."
 	icon = 'icons/obj/supplypods.dmi'
 	icon_state = "gondola"
 	icon_living = "gondola"
@@ -47,9 +47,9 @@
 /mob/living/basic/pet/gondola/gondolapod/examine(mob/user)
 	. = ..()
 	if (contents.len)
-		. += span_notice("It looks like it hasn't made its delivery yet.")
+		. += span_notice("Parece que ainda não fez a entrega.")
 	else
-		. += span_notice("It looks like it has already made its delivery.")
+		. += span_notice("Parece que já fez sua entrega.")
 
 /mob/living/basic/pet/gondola/gondolapod/set_opened()
 	opened = TRUE
@@ -65,7 +65,7 @@
 ///Opens the gondola pod and delivers its package, one-time use as it removes all delivery-related actions.
 /datum/action/innate/deliver_gondola_package
 	name = "Deliver"
-	desc = "Open your pod and release any contents stored within."
+	desc = "Abra sua cápsula e libere qualquer conteúdo armazenado dentro."
 	button_icon = 'icons/hud/screen_gen.dmi'
 	button_icon_state = "arrow"
 	check_flags = AB_CHECK_PHASED
@@ -85,7 +85,7 @@
 ///Checks the contents of the gondola and lets them know what they're holding.
 /datum/action/innate/check_gondola_contents
 	name = "Check contents"
-	desc = "See how many items you are currently holding in your pod."
+	desc = "Veja quantos itens você está segurando na sua cápsula."
 	button_icon = 'icons/hud/implants.dmi'
 	button_icon_state = "storage"
 	check_flags = AB_CHECK_PHASED
@@ -100,5 +100,5 @@
 	if (total)
 		to_chat(gondola_owner, span_notice("You detect [total] object\s within your incredibly vast belly."))
 	else
-		to_chat(gondola_owner, span_notice("A closer look inside yourself reveals... nothing."))
+		to_chat(gondola_owner, span_notice("Uma olhada mais de perto dentro de si mesmo revela... nada."))
 	return TRUE

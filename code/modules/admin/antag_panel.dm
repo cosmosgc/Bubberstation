@@ -81,7 +81,7 @@ GLOBAL_VAR(antag_prototypes)
 /datum/mind/proc/get_special_statuses()
 	var/list/result = LAZYCOPY(special_statuses)
 	if(!current)
-		result += span_bad("No body!")
+		result += span_bad("Nenhum corpo!")
 	if(current && HAS_TRAIT(current, TRAIT_MINDSHIELD))
 		result += span_good("Mindshielded")
 	if(current && HAS_MIND_TRAIT(current, TRAIT_UNCONVERTABLE))
@@ -101,10 +101,10 @@ GLOBAL_VAR(antag_prototypes)
 
 /datum/mind/proc/traitor_panel()
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(usr, "Not before round-start!", "Alert")
+		tgui_alert(usr, "Não antes de começar!", "Alert")
 		return
 	if(QDELETED(src))
-		tgui_alert(usr, "This mind doesn't have a mob, or is deleted! For some reason!", "Edit Memory")
+		tgui_alert(usr, "Esta mente não tem uma multidão, ou está deletada! Por alguma razão!", "Edit Memory")
 		return
 
 	var/out = "<B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])":""]<br>"

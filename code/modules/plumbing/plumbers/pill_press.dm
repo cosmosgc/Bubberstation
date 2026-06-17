@@ -6,7 +6,7 @@
 ///We take a constant input of reagents, and produce a pill once a set volume is reached
 /obj/machinery/plumbing/pill_press
 	name = "chemical press"
-	desc = "A press that makes pills, patches and bottles."
+	desc = "Uma imprensa que faz pílulas, remendos e garrafas."
 	icon_state = "pill_press"
 
 	/// selected size of the product

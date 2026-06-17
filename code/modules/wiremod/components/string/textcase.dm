@@ -7,8 +7,8 @@
  * Either makes the text upper case or lower case.
  */
 /obj/item/circuit_component/textcase
-	display_name = "Text Case"
-	desc = "A component that makes its input uppercase or lowercase."
+	display_name = "Caixa de texto"
+	desc = "Um componente que faz sua entrada em maiúsculas ou minúsculas."
 	category = "String"
 
 	var/datum/port/input/option/textcase_options

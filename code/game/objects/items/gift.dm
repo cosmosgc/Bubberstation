@@ -6,7 +6,7 @@
 /// Gifts to give to players, will contain a nice toy or other fun item for them to play with.
 /obj/item/gift
 	name = "gift"
-	desc = "PRESENTS!!!! eek!"
+	desc = "APRESENTA!!! Eek!"
 	icon = 'icons/obj/storage/wrapping.dmi'
 	icon_state = "giftdeliverypackage3"
 	inhand_icon_state = "gift"
@@ -35,7 +35,7 @@
 
 /obj/item/gift/attack_self(mob/user)
 	if(HAS_MIND_TRAIT(user, TRAIT_CANNOT_OPEN_PRESENTS))
-		to_chat(user, span_warning("You're supposed to be spreading gifts, not opening them yourself!"))
+		to_chat(user, span_warning("Você deveria estar espalhando presentes, não abrindo você mesmo!"))
 		return
 
 	moveToNullspace()
@@ -106,7 +106,7 @@
 /// Gifts that typically only very OP stuff or admins or Santa Claus himself should be giving out, as they contain ANY valid subtype of `/obj/item`, including stuff like instagib rifles. Wow!
 /obj/item/gift/anything
 	name = "christmas gift"
-	desc = "It could be anything!"
+	desc = "Pode ser qualquer coisa!"
 	/// Weak reference to who this gift is for and who can open it, if that's nobody then anyone can
 	var/datum/weakref/recipient_ref = null
 
@@ -125,7 +125,7 @@
 
 	var/datum/mind/recipient = recipient_ref.resolve()
 	if(recipient && recipient != user?.mind)
-		to_chat(user, span_notice("This gift isn't for you, and you don't want to get on Santa's bad side!"))
+		to_chat(user, span_notice("Este presente não é para você, e você não quer ficar no lado ruim do Papai Noel!"))
 		return FALSE
 	return ..()
 

@@ -1,17 +1,17 @@
 //Causes fire damage to anyone not standing on a dense object.
 /datum/weather/floor_is_lava
 	name = "the floor is lava"
-	desc = "The ground turns into surprisingly cool lava, lightly damaging anything on the floor."
+	desc = "O chão se transforma em lava surpreendentemente fria, prejudicando levemente qualquer coisa no chão."
 
-	telegraph_message = span_warning("You feel the ground beneath you getting hot. Waves of heat distort the air.")
+	telegraph_message = span_warning("Você sente o chão debaixo de você ficando quente. Ondas de calor distorcem o ar.")
 	telegraph_duration = 15 SECONDS
 
-	weather_message = span_userdanger("The floor is lava! Get on top of something!")
+	weather_message = span_userdanger("O chão é lava! Em cima de algo!")
 	weather_duration_lower = 30 SECONDS
 	weather_duration_upper = 1 MINUTES
 	weather_overlay = "lava"
 
-	end_message = span_danger("The ground cools and returns to its usual form.")
+	end_message = span_danger("O solo esfria e volta à sua forma habitual.")
 	end_duration = 0 SECONDS
 
 	area_type = /area

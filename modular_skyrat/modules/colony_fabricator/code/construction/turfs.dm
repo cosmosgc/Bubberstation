@@ -2,8 +2,8 @@
 
 /turf/closed/wall/prefab_plastic
 	name = "prefabricated wall"
-	desc = "A conservatively built metal frame with plastic paneling covering a thin air-seal layer. \
-		It's a little unnerving, but its better than nothing at all."
+	desc = "Um quadro de metal construído conservadoramente com painéis de plástico cobrindo uma fina camada de selo de ar.\
+É um pouco irritante, mas é melhor do que nada."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/prefab_wall.dmi'
 	icon_state = "prefab-0"
 	base_icon_state = "prefab"
@@ -21,10 +21,10 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 
 /obj/item/stack/sheet/plastic_wall_panel
 	name = "plastic panels"
-	singular_name = "plastic panel"
-	desc = "What better material to make the walls of your soon to be home out of than sheets of flimsy plastic? \
-		Metal? What are you talking about, metal walls, in this economy? May also be used to make structures other \
-		than walls."
+	singular_name = "Painel de plástico"
+	desc = "Que melhor material para fazer as paredes do seu logo estar em casa do que folhas de plástico frágil?\
+Metal? Do que está falando, paredes de metal, nesta economia? Também pode ser usado para fazer outras estruturas.\
+Que paredes."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
 	icon_state = "sheet-plastic"
 	inhand_icon_state = "sheet-plastic"
@@ -39,28 +39,28 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 
 /obj/item/stack/sheet/plastic_wall_panel/examine(mob/user)
 	. = ..()
-	. += span_notice("You can build a prefabricated wall by right clicking on an empty floor.")
+	. += span_notice("Você pode construir uma parede pré-fabricada clicando direito em um chão vazio.")
 
 /obj/item/stack/sheet/plastic_wall_panel/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isopenturf(interacting_with))
 		return NONE
 	var/turf/open/build_on = interacting_with
 	if(isgroundlessturf(build_on))
-		user.balloon_alert(user, "can't place it here!")
+		user.balloon_alert(user, "Não posso colocá-lo aqui!")
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
-		user.balloon_alert(user, "something is blocking the tile!")
+		user.balloon_alert(user, "Algo está bloqueando o azulejo!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_amount() < 1)
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "Não há material suficiente!")
 		return ITEM_INTERACT_BLOCKING
 	if(!do_after(user, 3 SECONDS, build_on))
 		return ITEM_INTERACT_BLOCKING
 	if(build_on.is_blocked_turf())
-		user.balloon_alert(user, "something is blocking the tile!")
+		user.balloon_alert(user, "Algo está bloqueando o azulejo!")
 		return ITEM_INTERACT_BLOCKING
 	if(!use(1))
-		user.balloon_alert(user, "not enough material!")
+		user.balloon_alert(user, "Não há material suficiente!")
 		return ITEM_INTERACT_BLOCKING
 	build_on.place_on_top(walltype, flags = CHANGETURF_INHERIT_AIR)
 	return ITEM_INTERACT_SUCCESS
@@ -87,8 +87,8 @@ GLOBAL_LIST_INIT(plastic_wall_panel_recipes, list(
 
 /obj/item/stack/tile/iron/colony
 	name = "prefab floor tiles"
-	singular_name = "prefab floor tile"
-	desc = "A stack of large floor tiles that are a common sight in frontier colonies and prefab buildings."
+	singular_name = "Pisos pré-fabricados"
+	desc = "Uma pilha de grandes azulejos que são uma visão comum em colônias fronteiriças e prédios pré-fabricados."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/tiles_item.dmi'
 	icon_state = "colony_grey"
 	turf_type = /turf/open/floor/iron/colony

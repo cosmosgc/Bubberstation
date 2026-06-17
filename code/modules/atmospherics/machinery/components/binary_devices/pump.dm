@@ -13,7 +13,7 @@
 /obj/machinery/atmospherics/components/binary/pump
 	icon_state = "pump_map-3"
 	name = "gas pump"
-	desc = "A pump that moves gas by pressure."
+	desc = "Uma bomba que move gás por pressão."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -131,8 +131,8 @@
 	icon_state = "pump_on_map-5"
 
 /obj/item/circuit_component/atmos_pump
-	display_name = "Atmospheric Binary Pump"
-	desc = "The interface for communicating with a pump."
+	display_name = "Bomba de binário atmosférico"
+	desc = "A interface para se comunicar com uma bomba."
 
 	///Set the target pressure of the pump
 	var/datum/port/input/pressure_value

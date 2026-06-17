@@ -1,6 +1,6 @@
 /obj/machinery/implantchair
 	name = "mindshield implanter"
-	desc = "Used to implant occupants with mindshield implants."
+	desc = "Usado para implantar ocupantes com implantes de escudo mental."
 	icon = 'icons/obj/machines/implant_chair.dmi'
 	icon_state = "implantchair"
 	density = TRUE
@@ -156,7 +156,7 @@
 
 /obj/machinery/implantchair/genepurge
 	name = "Genetic purifier"
-	desc = "Used to purge a human genome of foreign influences."
+	desc = "Usado para purgar um genoma humano de influências estrangeiras."
 	special = TRUE
 	special_name = "Purge genome"
 	injection_cooldown = 0
@@ -173,7 +173,7 @@
 
 /obj/machinery/implantchair/brainwash
 	name = "Neural Imprinter"
-	desc = "Used to <s>indoctrinate</s> rehabilitate hardened recidivists."
+	desc = "Costumava.<s>doutrinado</s>Reabilitar reincidentes endurecidos."
 	special_name = "Imprint"
 	injection_cooldown = 3000
 	auto_inject = FALSE

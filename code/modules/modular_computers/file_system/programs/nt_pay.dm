@@ -10,7 +10,7 @@
 	filedesc = "Nanotrasen Pay System"
 	downloader_category = PROGRAM_CATEGORY_DEVICE
 	program_open_overlay = "generic"
-	extended_desc = "An application that locally (in your sector) helps to transfer money or track your expenses and profits."
+	extended_desc = "Uma aplicação que ajuda a transferir dinheiro ou rastrear suas despesas e lucros."
 	size = 2
 	tgui_id = "NtosPay"
 	program_icon = "money-bill-wave"
@@ -62,24 +62,24 @@
 /datum/computer_file/program/nt_pay/proc/_pay(token, money_to_send, mob/user)
 	var/area/user_area = get_area(user)
 	if(user_area && is_area_virtual(user_area))
-		to_chat(user, span_notice("You cannot send virtual money to real accounts."))
+		to_chat(user, span_notice("Você não pode enviar dinheiro virtual para contas reais."))
 		return NT_PAY_STATUS_NO_ACCOUNT
 
 	money_to_send = round(money_to_send)
 
 	if(IS_DEPARTMENTAL_ACCOUNT(current_user))
 		if(user)
-			to_chat(user, span_notice("The app is unable to withdraw from that card."))
+			to_chat(user, span_notice("O aplicativo é incapaz de retirar desse cartão."))
 		return NT_PAY_STATUS_DEPT_ACCOUNT
 
 	var/datum/bank_account/recipient
 	if(!token)
 		if(user)
-			to_chat(user, span_notice("You need to enter your transfer target's pay token."))
+			to_chat(user, span_notice("Você precisa inserir o pagamento do seu alvo de transferência."))
 		return NT_PAY_STATUS_INVALID_TOKEN
 	if(money_to_send <= 0)
 		if(user)
-			to_chat(user, span_notice("You need to specify how much you're sending."))
+			to_chat(user, span_notice("Precisa especificar quanto está enviando."))
 		return NT_PAY_STATUS_INVALID_MONEY
 	if(token == current_user.pay_token)
 		if(user)
@@ -94,7 +94,7 @@
 
 	if(!recipient)
 		if(user)
-			to_chat(user, span_notice("The app can't find who you're trying to pay. Did you enter the pay token right?"))
+			to_chat(user, span_notice("O aplicativo não consegue encontrar quem você está tentando pagar. Você entrou na ficha de pagamento certo?"))
 		return NT_PAY_STATUS_INVALID_TOKEN
 	if(!current_user.has_money(money_to_send) || money_to_send < 1)
 		current_user.bank_card_talk("You cannot afford it.")

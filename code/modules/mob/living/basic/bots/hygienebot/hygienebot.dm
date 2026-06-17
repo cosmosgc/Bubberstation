@@ -2,7 +2,7 @@
 
 /mob/living/basic/bot/hygienebot
 	name = "\improper Hygienebot"
-	desc = "A flying cleaning robot, he'll chase down people who can't shower properly!"
+	desc = "Um robô de limpeza voador, ele vai perseguir pessoas que não podem tomar banho corretamente!"
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "hygienebot"
 	base_icon_state = "hygienebot"

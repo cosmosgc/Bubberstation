@@ -6,12 +6,12 @@
 // Cult forge. Gives out combat weapons.
 /obj/structure/destructible/cult/item_dispenser/forge
 	name = "daemon forge"
-	desc = "A forge used in crafting the unholy weapons used by the armies of Nar'Sie."
+	desc = "Uma forja usada na fabricação das armas profanas usadas pelos exércitos de Nar'Sie."
 	cult_examine_tip = "Can be used to create Nar'Sien hardened armor and eldritch longswords."
 	icon_state = "forge"
 	light_range = 2
 	light_color = LIGHT_COLOR_LAVA
-	break_message = span_warning("The forge breaks apart into shards with a howling scream!")
+	break_message = span_warning("A forja se divide em fragmentos com um grito uivante!")
 	mansus_conversion_path = /obj/structure/destructible/eldritch_crucible
 	custom_materials = list(/datum/material/runedmetal = SHEET_MATERIAL_AMOUNT * 3)
 
@@ -51,7 +51,7 @@
 
 /obj/structure/destructible/cult/item_dispenser/forge/engine
 	name = "magma engine"
-	desc = "An arcane engine used for powering a shuttle."
+	desc = "Um motor arcano usado para ligar uma nave auxiliar."
 	debris = list()
 
 #undef NARSIE_ARMOR

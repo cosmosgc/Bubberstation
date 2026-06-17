@@ -123,7 +123,7 @@
 	name = "fire"
 	mold_color = "#e04000"
 	structure_light_color = LIGHT_COLOR_FIRE
-	examine_text = "It feels hot to the touch."
+	examine_text = "Parece quente ao toque."
 	mob_types = list(/mob/living/basic/mold/oil_shambler)
 	preferred_atmos_conditions = "co2=30;TEMP=400"
 	resistance_flags = FIRE_PROOF
@@ -152,7 +152,7 @@
 	tier = MOLD_TIER_HIGH_THREAT
 	mold_color = "#6e5100"
 	structure_light_color = LIGHT_COLOR_BROWN
-	examine_text = "It looks like it's rotting."
+	examine_text = "Parece que está podre."
 	mob_types = list(/mob/living/basic/mold/diseased_rat)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "miasma=10;TEMP=296"
@@ -188,7 +188,7 @@
 	name = "EMP"
 	mold_color = "#00caa5"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_CYAN
-	examine_text = "You can notice small sparks travelling in the vines."
+	examine_text = "Você pode notar pequenas faíscas viajando nas videiras."
 	mob_types = list(/mob/living/basic/mold/electric_mosquito)
 	spawn_cooldown = 5 SECONDS
 	preferred_atmos_conditions = "n2=30;TEMP=150"
@@ -254,7 +254,7 @@
 	name = "toxic"
 	mold_color = "#cb37f5"
 	structure_light_color = LIGHT_COLOR_LAVENDER
-	examine_text = "It feels damp and smells of rat poison."
+	examine_text = "Parece úmido e cheira a veneno de rato."
 	mob_types = list(/mob/living/basic/spider/giant/hunter)
 	preferred_atmos_conditions = "co2=80;TEMP=296"
 	resistance_flags = UNACIDABLE | ACID_PROOF
@@ -287,7 +287,7 @@
 	name = "radioactive"
 	mold_color = "#80ff00"
 	structure_light_color = LIGHT_COLOR_ELECTRIC_GREEN
-	examine_text = "It's glowing a soft green."
+	examine_text = "Está brilhando um verde suave."
 	mob_types = list(/mob/living/basic/mold/centaur)
 	preferred_atmos_conditions = "tritium=2;TEMP=296"
 	resistance_flags = ACID_PROOF | FIRE_PROOF

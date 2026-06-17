@@ -48,7 +48,7 @@
 /datum/reagent/pax/catnip
 	name = "Catnip"
 	taste_description = "grass"
-	description = "A colourless liquid that makes people more peaceful and felines happier."
+	description = "Um líquido incolor que faz as pessoas mais pacíficas e felinas mais felizes."
 	metabolization_rate = 1.75 * REAGENTS_METABOLISM
 
 /datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
@@ -65,7 +65,7 @@
 
 /datum/reagent/medicine/dermagen
 	name = "Dermagen"
-	description = "Heals scars formed by past physical trauma when applied. Minimum 10u needed, only works when applied topically."
+	description = "Cicatrizes de cura formadas por trauma físico passado quando aplicadas. Mínimo 10u necessário, só funciona quando aplicado topicamente."
 	color = "#FFEBEB"
 	ph = 6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -80,7 +80,7 @@
 	if(scarred.stat == DEAD)
 		show_message = FALSE
 	if(show_message)
-		to_chat(scarred, span_danger("The scars on your body start to fade and disappear."))
+		to_chat(scarred, span_danger("As cicatrizes em seu corpo começam a desaparecer."))
 	if(reac_volume >= DERMAGEN_SCAR_FIX_AMOUNT)
 		for(var/i in scarred.all_scars)
 			qdel(i)

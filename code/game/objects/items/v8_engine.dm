@@ -11,7 +11,7 @@
 
 /obj/item/v8_engine
 	name = "ancient engine"
-	desc = "An extremely well-preserved, massive V8 engine from the early 2000s. It seems to be missing the rest of the vehicle. There's a tiny label on the side."
+	desc = "Um motor V8 extremamente bem preservado do início dos anos 2000. Parece estar faltando o resto do veículo. Há uma etiqueta minúscula ao lado."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "v8_engine"
 	w_class = WEIGHT_CLASS_HUGE
@@ -31,7 +31,7 @@
 		return
 	playsound(src, 'sound/items/car_engine_start.ogg', vol = 75, vary = FALSE, extrarange = 3)
 	Shake(duration = ENGINE_COOLDOWN)
-	to_chat(user, span_notice("Darn thing... it's too old to keep on without retrofitting it! Without modifications, it works like it's junk."))
+	to_chat(user, span_notice("Droga... É muito velho para continuar sem retromontar! Sem modificações, funciona como lixo."))
 	COOLDOWN_START(src, engine_sound_cooldown, ENGINE_COOLDOWN)
 
 /obj/item/v8_engine/examine_more(mob/user)
@@ -43,14 +43,14 @@
 		return
 	if(user.mind.has_crafting_recipe(user = user, potential_recipe = /datum/crafting_recipe/house_edge))
 		return
-	to_chat(user, span_notice("You peer at the label on the side, reading about some unique modifications that could be made to the engine..."))
+	to_chat(user, span_notice("Você olha para o rótulo ao lado, lendo sobre algumas modificações únicas que poderiam ser feitas para o motor ..."))
 	if(do_after(user, 15 SECONDS, src))
 		user.mind.teach_crafting_recipe(/datum/crafting_recipe/house_edge)
-		to_chat(user, span_notice("You learned how to make the House Edge."))
+		to_chat(user, span_notice("Você aprendeu a fazer o House Edge."))
 
 /obj/item/house_edge
 	name = "House Edge"
-	desc = "Dangerous. Loud. Sleek. It has a built in roulette wheel. This thing could easily rip your arm off if you're not careful."
+	desc = "Perigoso. Alto. Sleek. Tem uma roda de roleta construída. Essa coisa pode facilmente arrancar seu braço se você não tiver cuidado."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "house_edge"
 	base_icon_state = "house_edge"
@@ -94,7 +94,7 @@
 	if(!COOLDOWN_FINISHED(src, fire_charge_cooldown))
 		return ITEM_INTERACT_BLOCKING
 	if(fire_charges <= 0)
-		balloon_alert(user, "no fire charges!")
+		balloon_alert(user, "Sem acusações de incêndio!")
 		return ITEM_INTERACT_BLOCKING
 	to_chat(user, span_boldnotice("You take aim at [interacting_with]..."))
 	user.add_shared_particles(/particles/bonfire)
@@ -166,7 +166,7 @@
 /// Flaming slash for the special attack at max charges.
 /obj/projectile/flaming_slash
 	name = "flaming slash"
-	desc = "Someone is about to cash out."
+	desc = "Alguém está prestes a descontar."
 	icon_state = "flaming_slash"
 	damage_type = BURN
 	armor_flag = MELEE //We're operating off of anime remote slash logic here. As such, we can treat this as a hybrid burn/brute this way.

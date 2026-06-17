@@ -2,7 +2,7 @@
 /// This is a visual-only effect that only affects the character's own view.
 /datum/action/oversized_self_view
 	name = "Toggle Self-Size View"
-	desc = "Toggle between seeing yourself at your actual size (2x) or at normal size (1x). Only you can see this change."
+	desc = "Alternar entre ver-se no seu tamanho real (2x) ou no tamanho normal (1x). Só você pode ver essa mudança."
 	button_icon = 'icons/hud/actions.dmi'
 	button_icon_state = "default"
 	background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND
@@ -59,7 +59,7 @@
 	RegisterSignal(human_owner, COMSIG_MOB_SWAP_HANDS, PROC_REF(on_appearance_update))
 
 	active = TRUE
-	to_chat(human_owner, span_notice("You now see yourself at normal size."))
+	to_chat(human_owner, span_notice("Agora você se vê em tamanho normal."))
 
 /datum/action/oversized_self_view/proc/disable_normal_view()
 	var/mob/living/carbon/human/human_owner = owner
@@ -82,7 +82,7 @@
 
 	normal_size_image = null
 	active = FALSE
-	to_chat(human_owner, span_notice("You now see yourself at your actual size."))
+	to_chat(human_owner, span_notice("Agora você se vê no seu tamanho real."))
 
 /datum/action/oversized_self_view/proc/on_z_change(mob/living/carbon/human/source)
 	SIGNAL_HANDLER

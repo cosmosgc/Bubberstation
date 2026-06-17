@@ -1,6 +1,6 @@
 /obj/item/clothing/neck/heretic_focus
 	name = "amber focus"
-	desc = "An amber focusing glass that provides a link to the world beyond. The necklace seems to twitch, but only when you look at it from the corner of your eye."
+	desc = "Um vidro âmbar focado que fornece uma ligação para o mundo além. O colar parece se contorcer, mas só quando você olha pelo canto do olho."
 	icon_state = "eldritch_necklace"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF
@@ -11,7 +11,7 @@
 
 /obj/item/clothing/neck/heretic_focus/crimson_medallion
 	name = "crimson medallion"
-	desc = "A blood-red focusing glass that provides a link to the world beyond, and worse. Its eye is constantly twitching and gazing in all directions. It almost seems to be silently screaming..."
+	desc = "Um vidro de focagem vermelho-sangue que fornece uma ligação para o mundo além, e pior. Seu olho está constantemente se contorcendo e olhando em todas as direções. Quase parece estar gritando silenciosamente..."
 	icon_state = "crimson_medallion"
 	/// The aura healing component. Used to delete it when taken off.
 	var/datum/component/component
@@ -37,7 +37,7 @@
 		team_color = pick(COLOR_CULT_RED, COLOR_GREEN)
 
 	user.add_traits(list(TRAIT_MANSUS_TOUCHED, TRAIT_BLOOD_FOUNTAIN), REF(src))
-	to_chat(user, span_alert("Your heart takes on a strange yet soothing irregular rhythm, and your blood feels significantly less viscous than it used to be. You're not sure if that's a good thing."))
+	to_chat(user, span_alert("Seu coração tem um ritmo irregular estranho, mas calmante, e seu sangue parece significativamente menos viscoso do que costumava ser. Não tem certeza se isso é bom."))
 	component = user.AddComponent( \
 		/datum/component/aura_healing, \
 		range = 3, \
@@ -58,7 +58,7 @@
 		return
 
 	if(HAS_TRAIT_FROM(user, TRAIT_MANSUS_TOUCHED, REF(src)))
-		to_chat(user, span_notice("Your heart and blood return to their regular old rhythm and flow."))
+		to_chat(user, span_notice("Seu coração e sangue retornam ao seu ritmo e fluxo normal."))
 
 	if(IS_HERETIC_OR_MONSTER(user) && active)
 		for(var/datum/action/cooldown/spell/spell_action in user.actions)
@@ -95,18 +95,18 @@
 
 	var/magic_dude
 	if(IS_CULTIST(user))
-		. += span_cult_bold("This focus will allow you to store one extra spell and halve the empowering time, alongside providing a small regenerative effect.")
+		. += span_cult_bold("Este foco permitirá que você guarde um feitiço extra e diminua o tempo de empoderamento, além de proporcionar um pequeno efeito regenerativo.")
 		magic_dude = TRUE
 	if(IS_HERETIC_OR_MONSTER(user))
-		. += span_notice("This focus will halve your spell cooldowns, alongside granting a small regenerative effect to any nearby heretics or monsters, including you.")
+		. += span_notice("Este foco vai reduzir para metade o seu feitiço, ao lado de conceder um pequeno efeito regenerativo a qualquer hereges ou monstros próximos, incluindo você.")
 		magic_dude = TRUE
 
 	if(magic_dude)
-		. += span_red("You can also squeeze it to recover a large amount of health quickly, at a cost...")
+		. += span_red("Você também pode espremê-lo para recuperar uma grande quantidade de saúde rapidamente, a um custo ...")
 
 /obj/item/clothing/neck/eldritch_amulet
 	name = "warm eldritch medallion"
-	desc = "A strange medallion. Peering through the crystalline surface, the world around you melts away. You see your own beating heart, and the pulsing of a thousand others."
+	desc = "Um medalhão estranho. Perscrutando a superfície cristalina, o mundo ao seu redor derrete. Você vê seu próprio coração batendo, e o pulsar de mil outros."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "eye_medalion"
 	w_class = WEIGHT_CLASS_SMALL
@@ -135,13 +135,13 @@
 
 /obj/item/clothing/neck/eldritch_amulet/piercing
 	name = "piercing eldritch medallion"
-	desc = "A strange medallion. Peering through the crystalline surface, the light refracts into new and terrifying spectrums of color. You see yourself, reflected off cascading mirrors, warped into impossible shapes."
+	desc = "Um medalhão estranho. Perscrutando através da superfície cristalina, a luz refrata-se em novos e aterrorizantes espectros de cor. Você se vê, refletido em espelhos em cascata, distorcido em formas impossíveis."
 	heretic_only_trait = TRAIT_XRAY_VISION
 
 // Cosmetic-only version
 /obj/item/clothing/neck/fake_heretic_amulet
 	name = "religious icon"
-	desc = "A strange medallion, which makes its wearer look like they're part of some cult."
+	desc = "Um medalhão estranho, que faz com que seu usuário pareça parte de algum culto."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "eye_medalion"
 	w_class = WEIGHT_CLASS_SMALL
@@ -149,7 +149,7 @@
 // The amulet conversion tool used by moon heretics
 /obj/item/clothing/neck/heretic_focus/moon_amulet
 	name = "moonlight amulet"
-	desc = "A piece of the mind, the soul and the moon. Gazing into it makes your head spin and hear whispers of laughter and joy."
+	desc = "Um pedaço da mente, da alma e da lua. Olhar para ele faz sua cabeça girar e ouvir sussurros de riso e alegria."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "moon_amulette"
 	w_class = WEIGHT_CLASS_SMALL
@@ -166,7 +166,7 @@
 /obj/item/clothing/neck/heretic_focus/moon_amulet/examine(mob/user)
 	. = ..()
 	if(IS_HERETIC(user))
-		. += span_notice("Wearing this amulet increases your healing speed by 50%")
+		. += span_notice("Use este amuleto aumenta sua velocidade de cura em 50%.")
 
 /obj/item/clothing/neck/heretic_focus/moon_amulet/equipped(mob/living/user, slot)
 	. = ..()
@@ -223,7 +223,7 @@
 		return FALSE
 	var/mob/living/living_user = user
 	if(!IS_HERETIC_OR_MONSTER(living_user))
-		living_user.balloon_alert(living_user, "you feel a presence watching you")
+		living_user.balloon_alert(living_user, "Você sente uma presença observando você")
 		living_user.add_mood_event("Moon Amulet Insanity", /datum/mood_event/amulet_insanity)
 		living_user.mob_mood.adjust_sanity(-50)
 		return FALSE
@@ -236,10 +236,10 @@
 		return TRUE
 	var/mob/living/carbon/human/human_target = target
 	if(IS_HERETIC_OR_MONSTER(human_target))
-		living_user.balloon_alert(living_user, "resists effects!")
+		living_user.balloon_alert(living_user, "Resista aos atos!")
 		return FALSE
 	if(human_target.has_status_effect(/datum/status_effect/moon_slept) || human_target.has_status_effect(/datum/status_effect/moon_converted))
-		human_target.balloon_alert(living_user, "causing damage!")
+		human_target.balloon_alert(living_user, "Causando danos!")
 		human_target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 25)
 		return FALSE
 	if(human_target.can_block_magic(MAGIC_RESISTANCE_MOON))
@@ -247,15 +247,15 @@
 	if(!human_target.mob_mood)
 		return FALSE
 	if(human_target.mob_mood.sanity_level < sanity_threshold)
-		human_target.balloon_alert(living_user, "their mind is too strong!")
+		human_target.balloon_alert(living_user, "A mente deles é muito forte!")
 		human_target.add_mood_event("Moon Amulet Insanity", /datum/mood_event/amulet_insanity)
 		human_target.mob_mood.adjust_sanity(-sanity_damage)
 	else
 		if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
-			human_target.balloon_alert(living_user, "their mind almost bends but something protects it!")
+			human_target.balloon_alert(living_user, "Sua mente quase se dobra, mas algo é um protegido!")
 			human_target.apply_status_effect(/datum/status_effect/moon_slept)
 			return TRUE
-		human_target.balloon_alert(living_user, "their mind bends to see the truth!")
+		human_target.balloon_alert(living_user, "Sua mente se curva para ver a verdade!")
 		human_target.apply_status_effect(/datum/status_effect/moon_converted)
 		living_user.log_message("made [human_target] insane.", LOG_GAME)
 		human_target.log_message("was driven insane by [living_user]", LOG_GAME)

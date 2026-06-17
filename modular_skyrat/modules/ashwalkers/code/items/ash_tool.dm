@@ -85,7 +85,7 @@
 
 /obj/item/chisel/ashwalker
 	name = "primitive chisel"
-	desc = "Where there is a will there is a way; the tool head of this chisel is fashioned from bone shaped when it was fresh and then left to calcify in iron rich water, to make a strong head for all your carving needs."
+	desc = "Onde há uma vontade há um caminho, a cabeça de ferramenta deste cinzel é feita de osso em forma quando era fresco e depois deixado para calcificar em ferro rico água, para fazer uma cabeça forte para todas as suas necessidades de escultura."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
 	icon_state = "chisel"
 	custom_materials = list(/datum/material/bone = SHEET_MATERIAL_AMOUNT)
@@ -104,7 +104,7 @@
 
 /obj/item/cursed_dagger
 	name = "cursed ash dagger"
-	desc = "A blunted dagger that seems to cause the shadows near it to tremble."
+	desc = "Uma adaga embotada que faz as sombras tremerem."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "crysknife"
 	inhand_icon_state = "crysknife"
@@ -113,7 +113,7 @@
 
 /obj/item/cursed_dagger/examine(mob/user)
 	. = ..()
-	. += span_notice("To be used on tendrils. It will visually change the tendril to indicate whether it has been cursed or not.")
+	. += span_notice("Para ser usado em tentáculos. Mudará visualmente o tentáculo para indicar se foi amaldiçoado ou não.")
 
 /obj/item/ash_seed
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
@@ -123,7 +123,7 @@
 
 /obj/item/ash_seed/examine(mob/user)
 	. = ..()
-	. += span_notice("In order to be planted, it is required to be on the mining level as well as on basalt.")
+	. += span_notice("Para ser plantado, é necessário estar no nível de mineração, bem como no basalto.")
 
 /obj/item/ash_seed/proc/harm_user(mob/living/user, sent_message, damage_amount)
 	to_chat(user, span_warning(sent_message))
@@ -164,12 +164,12 @@
 
 /obj/item/ash_seed/tendril
 	name = "tendril seed"
-	desc = "A horrible fleshy mass that pulse with a dark energy."
+	desc = "Uma massa carnuda horrível que pulsa com uma energia escura."
 	icon_state = "tendril_seed"
 	spawn_list = list(/mob/living/basic/mining/tendril)
 
 /obj/item/ash_seed/vent
 	name = "ore seed"
-	desc = "A horrible fleshy mass covers a boulder. It seems to slowly pulse, reacting to you near it"
+	desc = "Uma massa carnuda horrível cobre uma rocha. Parece pulsar lentamente, reagindo perto dele."
 	icon_state = "vent_seed"
 	spawn_list = list(/obj/structure/ore_vent/random)

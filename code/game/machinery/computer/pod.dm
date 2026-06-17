@@ -1,6 +1,6 @@
 /obj/machinery/computer/pod
 	name = "mass driver launch control"
-	desc = "A combined blastdoor and mass driver control unit."
+	desc = "Uma unidade de controle de porta de explosão e de massa."
 	processing_flags = START_PROCESSING_MANUALLY
 	/// Connected mass driver
 	var/obj/machinery/mass_driver/connected = null
@@ -83,7 +83,7 @@
 	if(.)
 		return
 	if(!allowed(usr))
-		to_chat(usr, span_warning("Access denied."))
+		to_chat(usr, span_warning("Acesso negado."))
 		return
 
 	switch(action)
@@ -162,9 +162,9 @@
 
 /obj/machinery/computer/pod/old/syndicate
 	name = "\improper ProComp Executive IIc"
-	desc = "The Syndicate operate on a tight budget. Operates external airlocks."
+	desc = "O Sindicato opera com um orçamento apertado. Opera câmaras de ar externas."
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/pod/old/swf
 	name = "\improper Magix System IV"
-	desc = "An arcane artifact that holds much magic. Running E-Knock 2.2: Sorcerer's Edition."
+	desc = "Um artefato arcano que contém muita magia. E-Knock 2.2: edição de feiticeiro."

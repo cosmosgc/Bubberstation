@@ -1,7 +1,7 @@
 /// Big 3x3 car only available to admins which can run people over
 /obj/vehicle/sealed/car/speedwagon
 	name = "BM Speedwagon"
-	desc = "Push it to the limit, walk along the razor's edge."
+	desc = "Empurre até o limite, caminhe pela borda da navalha."
 	icon = 'icons/obj/toys/car.dmi'
 	icon_state = "speedwagon"
 	layer = LYING_MOB_LAYER

@@ -5,7 +5,7 @@
 
 /obj/item/stack/shibari_rope
 	name = "shibari ropes"
-	desc = "Coil of bondage ropes."
+	desc = "Bobina de cordas de escravidão."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/stack/shibari_rope"
 	post_init_icon_state = "shibari_rope"
@@ -39,7 +39,7 @@
 
 /obj/item/stack/shibari_rope/glow
 	name = "glowy shibari ropes"
-	singular_name = "glowy rope"
+	singular_name = "Corda brilhante"
 	merge_type = /obj/item/stack/shibari_rope/glow
 	icon_state = "/obj/item/stack/shibari_rope/glow"
 	post_init_icon_state = "shibari_rope_glow"
@@ -134,11 +134,11 @@
 		handle_fullbody_tying(them, user)
 		return
 	else if(them.w_uniform)
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		to_chat(user, span_warning("Eles já estão usando algo nesta vaga!"))
 		return
 	them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 		span_userdanger("[user] starts tying your groin!"),\
-		span_hear("You hear ropes being tightened."))
+		span_hear("Você ouve cordas sendo apertadas."))
 	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = null
@@ -149,7 +149,7 @@
 	else
 		split_rope = split_stack(1)
 	if(!split_rope)
-		to_chat(user, span_warning("You don't have enough ropes!"))
+		to_chat(user, span_warning("Você não tem cordas suficientes!"))
 		return
 	shibari_groin = new(src)
 	shibari_groin.slowdown = slow
@@ -161,7 +161,7 @@
 		shibari_groin = null
 		them.visible_message(span_warning("[user] tied [them]'s groin!"),\
 			span_userdanger("[user] tied your groin!"),\
-			span_hear("You hear ropes being completely tightened."))
+			span_hear("Você ouve cordas sendo completamente apertadas."))
 
 
 
@@ -170,11 +170,11 @@
 		handle_fullbody_tying(them, user)
 		return
 	else if(them.w_uniform)
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		to_chat(user, span_warning("Eles já estão usando algo nesta vaga!"))
 		return
 	them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 		span_userdanger("[user] starts tying your chest!"),\
-		span_hear("You hear ropes being tightened."))
+		span_hear("Você ouve cordas sendo apertadas."))
 	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
@@ -188,17 +188,17 @@
 			shibari_body = null
 			them.visible_message(span_warning("[user] tied [them]'s chest!"),\
 				span_userdanger("[user] tied your chest!"),\
-				span_hear("You hear ropes being completely tightened."))
+				span_hear("Você ouve cordas sendo completamente apertadas."))
 	else
-		to_chat(user, span_warning("You don't have enough ropes!"))
+		to_chat(user, span_warning("Você não tem cordas suficientes!"))
 
 /obj/item/stack/shibari_rope/proc/handle_arm_tying(mob/living/carbon/human/them, mob/living/user)
 	if(them.gloves)
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		to_chat(user, span_warning("Eles já estão usando algo nesta vaga!"))
 		return
 	them.visible_message(span_warning("[user] starts tying [them]'s hands!"),\
 		span_userdanger("[user] starts tying your hands!"),\
-		span_hear("You hear ropes being tightened."))
+		span_hear("Você ouve cordas sendo apertadas."))
 	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
@@ -211,21 +211,21 @@
 			shibari_hands = null
 			them.visible_message(span_warning("[user] tied [them]'s hands!"),\
 				span_userdanger("[user] tied your hands!"),\
-				span_hear("You hear ropes being completely tightened."))
+				span_hear("Você ouve cordas sendo completamente apertadas."))
 	else
-		to_chat(user, span_warning("You don't have enough ropes!"))
+		to_chat(user, span_warning("Você não tem cordas suficientes!"))
 
 
 /obj/item/stack/shibari_rope/proc/handle_leg_tying(mob/living/carbon/human/them, mob/living/user)
 	if(them.shoes)
-		to_chat(user, span_warning("They're already wearing something on this slot!"))
+		to_chat(user, span_warning("Eles já estão usando algo nesta vaga!"))
 		return
 	if(them.bodyshape & BODYSHAPE_TAUR)
-		to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
+		to_chat(user, span_warning("Você não pode amarrá-los, eles são um taur!"))
 		return
 	them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
 		span_userdanger("[user] starts tying your feet!"),\
-		span_hear("You hear ropes being tightened."))
+		span_hear("Você ouve cordas sendo apertadas."))
 	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
@@ -238,9 +238,9 @@
 			shibari_legs = null
 			them.visible_message(span_warning("[user] tied [them]'s feet!"),\
 				span_userdanger("[user] tied your feet!"),\
-				span_hear("You hear ropes being completely tightened."))
+				span_hear("Você ouve cordas sendo completamente apertadas."))
 	else
-		to_chat(user, span_warning("You don't have enough ropes!"))
+		to_chat(user, span_warning("Você não tem cordas suficientes!"))
 
 
 /obj/item/stack/shibari_rope/proc/handle_fullbody_tying(mob/living/carbon/human/them, mob/living/user)
@@ -248,7 +248,7 @@
 		if(BODY_ZONE_CHEST)
 			them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 				span_userdanger("[user] starts tying your chest!"),\
-				span_hear("You hear ropes being tightened."))
+				span_hear("Você ouve cordas sendo apertadas."))
 			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 				return
 			var/slow = 0
@@ -271,16 +271,16 @@
 						shibari_fullbody = null
 						them.visible_message(span_warning("[user] tied [them]'s chest!"),\
 							span_userdanger("[user] tied your chest!"),\
-							span_hear("You hear ropes being completely tightened."))
+							span_hear("Você ouve cordas sendo completamente apertadas."))
 				else
-					to_chat(user, span_warning("You can't mix these types of ropes!"))
+					to_chat(user, span_warning("Você não pode misturar esses tipos de cordas!"))
 					split_rope.forceMove(get_turf(them))
 			else
-				to_chat(user, span_warning("You don't have enough ropes!"))
+				to_chat(user, span_warning("Você não tem cordas suficientes!"))
 		if(BODY_ZONE_PRECISE_GROIN)
 			them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 				span_userdanger("[user] starts tying your groin!"),\
-				span_hear("You hear ropes being tightened."))
+				span_hear("Você ouve cordas sendo apertadas."))
 			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 				return
 			var/obj/item/stack/shibari_rope/split_rope = null
@@ -306,12 +306,12 @@
 						shibari_fullbody = null
 						them.visible_message(span_warning("[user] tied [them]'s groin!"),\
 							span_userdanger("[user] tied your groin!"),\
-							span_hear("You hear ropes being completely tightened."))
+							span_hear("Você ouve cordas sendo completamente apertadas."))
 				else
-					to_chat(user, span_warning("You can't mix these type of ropes!"))
+					to_chat(user, span_warning("Você não pode misturar esse tipo de corda!"))
 					split_rope.forceMove(get_turf(them))
 			else
-				to_chat(user, span_warning("You don't have enough ropes!"))
+				to_chat(user, span_warning("Você não tem cordas suficientes!"))
 
 ///This part of code required for tightness adjustment. You can change tightness of future shibari bondage on character by clicking on ropes.
 
@@ -320,15 +320,15 @@
 		if(ROPE_TIGHTNESS_HIGH)
 			tightness = ROPE_TIGHTNESS_LOW
 			conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 25)
-			balloon_alert(user, "you slightly tightened the ropes")
+			balloon_alert(user, "Você apertou ligeiramente as cordas.")
 		if(ROPE_TIGHTNESS_LOW)
 			tightness = ROPE_TIGHTNESS_MED
 			conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 50)
-			balloon_alert(user, "you moderately tightened the ropes")
+			balloon_alert(user, "Você moderadamente apertou as cordas")
 		if(ROPE_TIGHTNESS_MED)
 			tightness = ROPE_TIGHTNESS_HIGH
 			conditional_pref_sound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 75)
-			balloon_alert(user, "you strongly tightened the ropes")
+			balloon_alert(user, "Você apertou fortemente as cordas.")
 
 #undef ROPE_TIGHTNESS_LOW
 #undef ROPE_TIGHTNESS_MED

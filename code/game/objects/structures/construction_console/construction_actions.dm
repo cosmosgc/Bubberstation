@@ -93,7 +93,7 @@
 		return
 	//Can't place two dense objects inside each other
 	if(initial(structure_path.density) && place_turf.is_blocked_turf())
-		to_chat(owner, span_warning("Location is obstructed by something. Please clear the location and try again."))
+		to_chat(owner, span_warning("A localização está obstruída por algo. Por favor, limpe o local e tente novamente."))
 		return
 	var/obj/placed_structure = new structure_path(place_turf)
 	base_console.structures[structure_name]--
@@ -125,7 +125,7 @@
 /datum/action/innate/construction/place_structure/turret/after_place(obj/placed_structure, remaining)
 	var/obj/machinery/computer/auxiliary_base/turret_controller = locate() in get_area(placed_structure)
 	if(!turret_controller)
-		to_chat(owner, span_notice("<b>Warning:</b> Aux base controller not found. Turrets might not work properly."))
+		to_chat(owner, span_notice("<b>Aviso:</b>Controlador base Aux não encontrado. Torres podem não funcionar direito."))
 		return
 
 	LAZYADD(turret_controller.turrets, WEAKREF(placed_structure))

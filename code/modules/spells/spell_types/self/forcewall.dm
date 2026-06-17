@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/forcewall
 	name = "Forcewall"
-	desc = "Create a magical barrier that only you can pass through."
+	desc = "Criar uma barreira mágica que só você pode passar."
 	button_icon_state = "shield"
 
 	sound = 'sound/effects/magic/forcewall.ogg'
@@ -30,7 +30,7 @@
 
 /datum/action/cooldown/spell/forcewall/cult
 	name = "Shield"
-	desc = "This spell creates a temporary forcefield to shield yourself and allies from incoming fire."
+	desc = "Este feitiço cria um campo de força temporário para proteger a si mesmo e aos aliados do fogo vindo."
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
 
@@ -44,7 +44,7 @@
 
 /datum/action/cooldown/spell/forcewall/mime
 	name = "Invisible Blockade"
-	desc = "Form an invisible three tile wide blockade."
+	desc = "Formem um bloqueio invisível de três telhas."
 	background_icon_state = "bg_mime"
 	overlay_icon_state = "bg_mime_border"
 	button_icon = 'icons/mob/actions/actions_mime.dmi'
@@ -59,7 +59,7 @@
 	antimagic_flags = NONE
 
 	invocation = span_notice("<b>%CASTER</b> looks as if a blockade is in front of %PRONOUN_them.")
-	invocation_self_message = span_notice("You form a blockade in front of yourself.")
+	invocation_self_message = span_notice("Você forma um bloqueio na sua frente.")
 	invocation_type = INVOCATION_EMOTE
 	spell_max_level = 1
 

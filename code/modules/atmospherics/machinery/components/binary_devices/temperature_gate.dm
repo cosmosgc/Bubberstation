@@ -1,7 +1,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate
 	icon_state = "tgate_map-3"
 	name = "temperature gate"
-	desc = "An activable gate that compares the input temperature with the interface set temperature to check if the gas can flow from the input side to the output side or not."
+	desc = "Um portão ativável que compara a temperatura de entrada com a temperatura definida pela interface para verificar se o gás pode fluir do lado de entrada para o lado de saída ou não."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional

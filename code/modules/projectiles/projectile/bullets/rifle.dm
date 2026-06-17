@@ -225,6 +225,6 @@
 	shrapnel_type = null
 	embed_type = null
 	name = "paper ball"
-	desc = "doink!"
+	desc = "Doink!"
 	damage_type = BRUTE
 	icon_state = "paperball"

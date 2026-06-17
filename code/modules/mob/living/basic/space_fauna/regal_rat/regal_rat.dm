@@ -3,7 +3,7 @@
 /// The cheesiest, most crowned rat of them all. Regent superior of all rats in maintenance... at least until someone else tries to encroach on their claim.
 /mob/living/basic/regal_rat
 	name = "feral regal rat"
-	desc = "An evolved rat, created through some strange science. They lead nearby rats with deadly efficiency to protect their kingdom."
+	desc = "Um rato evoluído, criado através de alguma ciência estranha. Eles lideram ratos próximos com eficiência mortal para proteger seu reino."
 	icon_state = "regalrat"
 	icon_living = "regalrat"
 	icon_dead = "regalrat_dead"
@@ -85,7 +85,7 @@
 		return
 
 	if(isregalrat(user))
-		. += span_warning("Who is this foolish false king? This will not stand!")
+		. += span_warning("Quem é esse tolo falso rei? Isso não vai aguentar!")
 		return
 
 	if(ismouse(user))
@@ -110,7 +110,7 @@
 	notify_ghosts(
 		"All rise for [name], ascendant to the throne in \the [get_area(src)].",
 		source = src,
-		header = "Sentient Rat Created",
+		header = "Rato Senciente Criado",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
 
@@ -198,11 +198,11 @@
 
 	var/mob/living/living_target = the_target
 	if(HAS_TRAIT_NOT_FROM(living_target, TRAIT_FAKEDEATH, SPECIES_TRAIT) || living_target.stat == DEAD)
-		balloon_alert(src, "already dead!")
+		balloon_alert(src, "Já está morto!")
 		return FALSE
 
 	if(living_target.faction_check_atom(src, exact_match = TRUE))
-		balloon_alert(src, "one of your soldiers!")
+		balloon_alert(src, "Um de seus soldados!")
 		return FALSE
 
 	return TRUE
@@ -222,7 +222,7 @@
 	visible_message(
 		span_warning("[src] starts licking [target] passionately!"),
 		span_notice("You start licking [target]..."),
-		span_warning("You hear a disgusting slurping sound..."),
+		span_warning("Você ouve um som nojento..."),
 	)
 
 	if (!do_after(src, 2 SECONDS, target, interaction_key = REGALRAT_INTERACTION))
@@ -242,7 +242,7 @@
  */
 /mob/living/basic/regal_rat/proc/cheese_heal(obj/item/target, amount, message)
 	if(health >= maxHealth)
-		balloon_alert(src, "you feel full!")
+		balloon_alert(src, "Você se sente cheio!")
 		return
 
 	to_chat(src, message)

@@ -34,7 +34,7 @@
 /datum/component/pinnable_accessory/proc/try_to_pin(obj/item/clothing/accessory/badge, mob/living/carbon/human/distinguished, mob/user)
 	var/obj/item/clothing/under/distinguished_uniform = distinguished.w_uniform
 	if(!istype(distinguished_uniform))
-		distinguished.balloon_alert(user, "no uniform to pin on!")
+		distinguished.balloon_alert(user, "Sem uniforme para prender!")
 		return
 
 	if(!badge.can_attach_accessory(distinguished_uniform, user))

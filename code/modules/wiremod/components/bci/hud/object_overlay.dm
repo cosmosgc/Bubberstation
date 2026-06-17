@@ -8,8 +8,8 @@
 #define OBJECT_OVERLAY_LIMIT 10
 
 /obj/item/circuit_component/object_overlay
-	display_name = "Object Overlay"
-	desc = "Requires a BCI shell. A component that shows an overlay on top of an object."
+	display_name = "Objeto Sobreposição"
+	desc = "Requer um escudo BCI. Um componente que mostra uma sobreposição em cima de um objeto."
 	category = "BCI"
 
 	required_shells = list(/obj/item/organ/cyberimp/bci)

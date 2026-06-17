@@ -10,7 +10,7 @@
  */
 /datum/action/cooldown/bloodsucker/gohome
 	name = "Vanishing Act"
-	desc = "As dawn aproaches, disperse into mist and return directly to your Haven.<br><b>WARNING:</b> You will drop <b>ALL</b> of your possessions if observed by mortals."
+	desc = "Como o amanhecer se aproxima, dispersem-se na névoa e retornem diretamente para seu Haven.<br><b>AVISO:</b>Você vai cair.<b>TODOS</b>de seus bens se observados por mortais."
 	button_icon_state = "power_gohome"
 	active_background_icon_state = "vamp_power_off_oneshot"
 	base_background_icon_state = "vamp_power_off_oneshot"
@@ -45,17 +45,17 @@
 		return FALSE
 	/// Have No Haven (NOTE: You only got this power if you had a haven, so this means it's destroyed)
 	if(!istype(bloodsuckerdatum_power) || !bloodsuckerdatum_power.coffin)
-		owner.balloon_alert(owner, "coffin was destroyed!")
+		owner.balloon_alert(owner, "O caixão foi destruído!")
 		return FALSE
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/gohome/ActivatePower(atom/target)
-	owner.balloon_alert(owner, "preparing to teleport...")
+	owner.balloon_alert(owner, "Preparando para teletransporte...")
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/gohome/DeactivatePower(deactivate_flags)
 	if(active && teleporting_stage != GOHOME_TELEPORT)
-		owner.balloon_alert(owner, "teleportation cancelled.")
+		owner.balloon_alert(owner, "Teletransporte cancelado.")
 		teleporting_stage = GOHOME_START
 		return . = ..(DEACTIVATE_POWER_DO_NOT_REMOVE)
 	. = ..()
@@ -83,8 +83,8 @@
 	if(!isturf(owner.loc))
 		return FALSE
 	if(!bloodsuckerdatum_power.coffin)
-		user.balloon_alert(user, "coffin destroyed!")
-		to_chat(owner, span_warning("Your coffin has been destroyed! You no longer have a destination."))
+		user.balloon_alert(user, "Caixão destruído!")
+		to_chat(owner, span_warning("Seu caixão foi destruído! Você não tem mais um destino."))
 		return FALSE
 	return TRUE
 

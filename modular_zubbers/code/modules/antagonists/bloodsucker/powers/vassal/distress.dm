@@ -1,6 +1,6 @@
 /datum/action/cooldown/bloodsucker/distress
 	name = "Distress"
-	desc = "Injure yourself, allowing you to make a desperate call for help to your Master."
+	desc = "Machuque-se, permitindo que faça um pedido desesperado de ajuda ao seu Mestre."
 	button_icon_state = "power_distress"
 	power_explanation = "Distress:\n\
 		Use this Power from anywhere and your Master Bloodsucker will instantly be alerted of your location."
@@ -16,7 +16,7 @@
 	var/turf/open/floor/target_area = get_area(owner)
 	var/datum/antagonist/ghoul/ghouldatum = owner.mind.has_antag_datum(/datum/antagonist/ghoul)
 
-	owner.balloon_alert(owner, "you call out for your master!")
+	owner.balloon_alert(owner, "Você chama pelo seu mestre!")
 	to_chat(ghouldatum.master.owner, "<span class='userdanger'>[owner], your loyal Ghoul, is desperately calling for aid at [target_area]!</span>")
 
 	var/mob/living/user = owner

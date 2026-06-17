@@ -154,7 +154,7 @@
 		source.visible_message(
 			span_warning("[user] tries to remove [source]'s [item.name]."),
 			span_userdanger("[user] tries to remove your [item.name]."),
-			blind_message = span_hear("You hear rustling."),
+			blind_message = span_hear("Você ouve barulho."),
 			ignored_mobs = user,
 		)
 	//SKYRAT EDIT CHANGE END
@@ -172,7 +172,7 @@
 				LAZYADD(victim_human.afk_thefts, new_entry)
 
 		else if(victim_human.is_blind())
-			to_chat(source, span_userdanger("You feel someone fumble with your belongings."))
+			to_chat(source, span_userdanger("Você sente alguém mexer com seus pertences."))
 
 	return TRUE
 

@@ -2,7 +2,7 @@
 
 /obj/item/sparkler
 	name = "sparkler"
-	desc = "A little stick coated with metal powder and barium nitrate, burns with a pleasing sparkle."
+	desc = "Uma pequena vara revestida com pó de metal e nitrato de bário, queima com um brilho agradável."
 	icon = 'icons/obj/holiday/holiday_misc.dmi'
 	icon_state = "sparkler"
 	w_class = WEIGHT_CLASS_TINY
@@ -61,7 +61,7 @@
 
 /obj/item/grenade/firecracker
 	name = "large firecracker"
-	desc = "Outlawed in most of the sector. Doubles as an excellent finger remover."
+	desc = "Fora da lei na maior parte do setor. Duplos como um excelente removedor de dedos."
 	icon = 'icons/obj/holiday/holiday_misc.dmi'
 	icon_state = "firecracker"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -96,7 +96,7 @@
 		icon_state = initial(icon_state) + "_[det_time]"
 		update_appearance()
 	else
-		to_chat(user, span_danger("You've already removed all of the fuse!"))
+		to_chat(user, span_danger("Você já removeu todo o fusível!"))
 
 /obj/item/grenade/firecracker/arm_grenade(mob/user, delayoverride, msg = TRUE, volume = 80)
 	log_grenade(user)

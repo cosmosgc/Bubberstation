@@ -8,7 +8,7 @@
  */
 /obj/item/circuit_component/radio
 	display_name = "Radio"
-	desc = "A component that can listen and send frequencies. If set to private, the component will only receive signals from other components attached to circuitboards with the same owner id."
+	desc = "Um componente que pode ouvir e enviar frequências. Se for privado, o componente só receberá sinais de outros componentes ligados a placas de circuito com a mesma identidade de dono."
 	category = "Action"
 
 	/// The publicity options. Controls whether it's public or private.

@@ -5,7 +5,7 @@
 
 /obj/machinery/power/emitter/energycannon
 	name = "Energy Cannon"
-	desc = "A heavy duty industrial laser."
+	desc = "Um laser industrial pesado."
 	icon = 'icons/obj/machines/engine/singularity.dmi'
 	anchored = TRUE
 	density = TRUE
@@ -25,7 +25,7 @@
 
 /obj/machinery/power/emitter/energycannon/magical
 	name = "wabbajack statue"
-	desc = "Who am I? What is my purpose in life? What do I mean by who am I?"
+	desc = "Quem sou eu? Qual é o meu propósito na vida? O que quero dizer com quem sou?"
 	projectile_type = /obj/projectile/magic/change
 	icon = 'icons/obj/machines/magic_emitter.dmi'
 	icon_state = "wabbajack_statue"
@@ -39,7 +39,7 @@
 /obj/machinery/power/emitter/energycannon/magical/Initialize(mapload)
 	. = ..()
 	if(prob(50))
-		desc = "Oh no, not again."
+		desc = "Não, de novo não."
 	update_appearance()
 
 /obj/machinery/power/emitter/energycannon/magical/update_icon_state()
@@ -71,7 +71,7 @@
 
 /obj/structure/table/abductor/wabbajack
 	name = "wabbajack altar"
-	desc = "Whether you're sleeping or waking, it's going to be quite chaotic."
+	desc = "Se estiver dormindo ou acordando, vai ser bem caótico."
 	max_integrity = 1000
 	verb_say = "chants"
 	var/obj/machinery/power/emitter/energycannon/magical/our_statue
@@ -138,14 +138,14 @@
 
 /obj/structure/table/abductor/wabbajack/proc/sleeper_dreams(mob/living/sleeper)
 	if(sleeper in sleepers)
-		to_chat(sleeper, span_revennotice("While you slumber, you have the strangest dream, like you can see yourself from the outside."))
+		to_chat(sleeper, span_revennotice("Enquanto você dorme, você tem o sonho mais estranho, como se pudesse se ver de fora."))
 		sleeper.ghostize(TRUE)
 
 /obj/structure/table/abductor/wabbajack/left
-	desc = "You sleep so it may wake."
+	desc = "Você dorme para que possa acordar."
 
 /obj/structure/table/abductor/wabbajack/right
-	desc = "It wakes so you may sleep."
+	desc = "Acorda para que possa dormir."
 
 /**
  * Bar staff, mobs with the TRAIT_GODMODE trait (as long as they stay in the shuttle)
@@ -153,7 +153,7 @@
  */
 /mob/living/basic/drone/snowflake/bardrone
 	name = "Bardrone"
-	desc = "A barkeeping drone, a robot built to tend bars."
+	desc = "Um drone de bar, um robô construído para cuidar de bares."
 	hacked = TRUE
 	shy = FALSE
 	laws = "1. Serve drinks.\n\
@@ -193,7 +193,7 @@
 		var/throwtarget = get_edge_target_turf(src, boot_dir)
 		M.Paralyze(40)
 		M.throw_at(throwtarget, 5, 1)
-		to_chat(M, span_notice("No climbing on the bar please."))
+		to_chat(M, span_notice("Sem subir no bar, por favor."))
 
 /obj/structure/table/wood/shuttle_bar/proc/is_barstaff(mob/living/user)
 	. = FALSE
@@ -271,7 +271,7 @@
 		if(I.registered_account)
 			account = I.registered_account
 		else if(!check_times[AM] || check_times[AM] < world.time) //Let's not spam the message
-			to_chat(AM, span_notice("This ID card doesn't have an owner associated with it!"))
+			to_chat(AM, span_notice("Este cartão de identidade não tem um dono associado a ele!"))
 			check_times[AM] = world.time + LUXURY_MESSAGE_COOLDOWN
 	else if(isliving(AM))
 		var/mob/living/L = AM
@@ -386,12 +386,12 @@
 
 /mob/living/basic/bear/fightpit
 	name = "fight pit bear"
-	desc = "This bear's trained through ancient Russian secrets to fear the walls of its glass prison."
+	desc = "Este urso treinou através de segredos russos antigos para temer as paredes de sua prisão de vidro."
 	environment_smash = ENVIRONMENT_SMASH_NONE
 
 /obj/effect/decal/hammerandsickle
 	name = "hammer and sickle"
-	desc = "Communism powerful force."
+	desc = "Força poderosa do comunismo."
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "communist"
 	pixel_x = -32

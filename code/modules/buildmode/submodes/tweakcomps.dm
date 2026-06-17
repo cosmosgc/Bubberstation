@@ -10,21 +10,21 @@
 	)
 
 /datum/buildmode_mode/tweakcomps/change_settings(client/target_client)
-	var/rating_to_choose = input(target_client, "Enter number of rating", "Number", "1")
+	var/rating_to_choose = input(target_client, "Digite o número de classificação.", "Number", "1")
 	rating_to_choose = text2num(rating_to_choose)
 	if(!isnum(rating_to_choose))
-		tgui_alert(target_client, "Input a number.")
+		tgui_alert(target_client, "Introduza um número.")
 		return
 
 	rating = rating_to_choose
 
 /datum/buildmode_mode/tweakcomps/handle_click(client/target_client, params, obj/machinery/object)
 	if(!ismachinery(object))
-		to_chat(target_client, span_warning("This isn't machinery!"))
+		to_chat(target_client, span_warning("Isto não é maquinaria!"))
 		return
 
 	if(!object.component_parts)
-		to_chat(target_client, span_warning("This machinery doesn't have components!"))
+		to_chat(target_client, span_warning("Esta máquina não tem componentes!"))
 		return
 
 	for(var/obj/item/stock_parts/P in object.component_parts)

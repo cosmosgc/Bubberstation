@@ -59,7 +59,7 @@
 
 /obj/machinery/satellite/meteor_shield
 	name = "\improper Meteor Shield Satellite"
-	desc = "A meteor point-defense satellite."
+	desc = "Um satélite de defesa de meteoros."
 	mode = "M-SHIELD"
 	/// the range a meteor shield sat can destroy meteors
 	var/kill_range = 14
@@ -79,15 +79,15 @@
 /obj/machinery/satellite/meteor_shield/examine(mob/user)
 	. = ..()
 	if(active)
-		. += span_notice("It is currently active. You can interact with it to shut it down.")
+		. += span_notice("Está atualmente ativo. Você pode interagir com ele para desligá-lo.")
 		if(obj_flags & EMAGGED)
-			. += span_warning("Rather than the usual sounds of beeps and pings, it produces a weird and constant hiss of white noise…")
+			. += span_warning("Ao invés dos sons habituais de sinais sonoros e pings, produz um som estranho e constante de ruído branco...")
 		else
-			. += span_notice("It emits periodic beeps and pings as it communicates with the satellite network.")
+			. += span_notice("Ele emite sinais e pings periódicos enquanto se comunica com a rede de satélites.")
 	else
-		. += span_notice("It is currently disabled. You can interact with it to set it up.")
+		. += span_notice("Está atualmente desativado. Você pode interagir com ele para configurá-lo.")
 		if(obj_flags & EMAGGED)
-			. += span_warning("But something seems off about it...?")
+			. += span_warning("Mas algo parece estranho...?")
 
 /obj/machinery/satellite/meteor_shield/proc/space_los(meteor)
 	for(var/turf/T in get_line(src,meteor))
@@ -138,16 +138,16 @@
 
 /obj/machinery/satellite/meteor_shield/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "Já emagreceram!")
 		return FALSE
 	if(!COOLDOWN_FINISHED(src, shared_emag_cooldown))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "Na refrigeração!")
 		to_chat(user, span_warning("The last satellite emagged needs [DisplayTimeText(COOLDOWN_TIMELEFT(src, shared_emag_cooldown))] to recalibrate first. Emagging another so soon could damage the satellite network."))
 		return FALSE
 	var/cooldown_applied = METEOR_SHIELD_EMAG_COOLDOWN
 	COOLDOWN_START(src, shared_emag_cooldown, cooldown_applied)
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("You access the satellite's debug mode and it begins emitting a strange signal, increasing the chance of meteor strikes."))
+	to_chat(user, span_notice("Você acessa o modo de depuração do satélite e ele começa a emitir um sinal estranho, aumentando a chance de ataques de meteoros."))
 	AddComponent(/datum/component/gps, "Corrupted Meteor Shield Attraction Signal")
 	say("Recalibrating... ETA:[DisplayTimeText(cooldown_applied)].")
 	if(active) //if we allowed inactive updates a sat could be worth -1 active meteor shields on first emag
@@ -159,12 +159,12 @@
 		change_meteor_chance(0.5)
 		emagged_active_meteor_shields--
 		if(user)
-			balloon_alert(user, "meteor probability halved")
+			balloon_alert(user, "probabilidade de meteoros pela metade.")
 		return
 	change_meteor_chance(2)
 	emagged_active_meteor_shields++
 	if(user)
-		balloon_alert(user, "meteor probability doubled")
+		balloon_alert(user, "A probabilidade do meteoro dobrou.")
 	if(emagged_active_meteor_shields > highest_emagged_threshold_reached)
 		highest_emagged_threshold_reached = emagged_active_meteor_shields
 		handle_new_emagged_shield_threshold()

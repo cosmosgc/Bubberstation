@@ -28,7 +28,7 @@
 
 /obj/item/reagent_containers/medigel
 	name = "medical gel"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "medigel"
 	inhand_icon_state = "spraycan"
@@ -99,19 +99,19 @@
 
 /obj/item/reagent_containers/medigel/libital
 	name = "medical gel (libital)"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap. This one contains libital, for treating cuts and bruises. Libital does minor liver damage. Diluted with granibitaluri."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível. Este contém libital, para tratar cortes e hematomas. Libital causa pequenos danos no fígado. Diluída com granibitaluri."
 	icon_state = "brutegel"
 	list_reagents = list(/datum/reagent/medicine/c2/libital = 24, /datum/reagent/medicine/granibitaluri = 36)
 
 /obj/item/reagent_containers/medigel/aiuri
 	name = "medical gel (aiuri)"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap. This one contains aiuri, useful for treating burns. Aiuri does minor eye damage. Diluted with granibitaluri."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível. Este contém aiuri, útil para tratar queimaduras. Aiuri causa danos oculares menores. Diluída com granibitaluri."
 	icon_state = "burngel"
 	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 24, /datum/reagent/medicine/granibitaluri = 36)
 
 /obj/item/reagent_containers/medigel/synthflesh
 	name = "medical gel (synthflesh)"
-	desc = "A medical gel applicator bottle, designed for precision application, with an unscrewable cap. This one contains synthflesh, a slightly toxic medicine capable of healing bruises, burns, and husks."
+	desc = "Um frasco aplicador de gel médico, projetado para aplicação de precisão, com uma tampa inescrevível. Este contém carne sintética, um medicamento ligeiramente tóxico capaz de curar hematomas, queimaduras e cascas."
 	icon_state = "synthgel"
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
 	list_reagents_purity = 1
@@ -122,7 +122,7 @@
 /obj/item/reagent_containers/medigel/synthflesh/examine(mob/user)
 	. = ..()
 	if(reagents.total_volume >= 60)
-		. += span_info("One full bottle can restore a corpse husked by burns.")
+		. += span_info("Uma garrafa cheia pode restaurar um cadáver descascado por queimaduras.")
 
 /obj/item/reagent_containers/medigel/synthflesh/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(iscarbon(interacting_with) && reagents?.total_volume)
@@ -135,7 +135,7 @@
 
 /obj/item/reagent_containers/medigel/sterilizine
 	name = "sterilizer gel"
-	desc = "gel bottle loaded with non-toxic sterilizer. Useful in preparation for surgery."
+	desc = "Garrafa de gel carregada com esterilizador não tóxico. Útil em preparação para cirurgia."
 	icon_state = "medigel_blue"
 	list_reagents = list(/datum/reagent/space_cleaner/sterilizine = 60)
 	custom_price = PAYCHECK_CREW * 2

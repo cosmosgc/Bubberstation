@@ -1,7 +1,7 @@
 
 /mob/living/basic/snake
 	name = "snake"
-	desc = "A slithery snake. These legless reptiles are the bane of mice and adventurers alike."
+	desc = "Uma cobra escorregadia. Esses répteis sem pernas são a ruína de ratos e aventureiros."
 	icon_state = "snake"
 	icon_living = "snake"
 	icon_dead = "snake_dead"

@@ -1,7 +1,7 @@
 /obj/item/stack/rail_track
 	name = "railroad tracks"
-	singular_name = "railroad track"
-	desc = "A primitive form of transportation. Place on any floor to start building a railroad."
+	singular_name = "Caminho de ferro"
+	desc = "Uma forma primitiva de transporte. Lugar em qualquer andar para começar a construir uma ferrovia."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "rail_item"
 	merge_type = /obj/item/stack/rail_track
@@ -25,7 +25,7 @@
 
 /obj/structure/railroad
 	name = "railroad track"
-	desc = "A primitive form of transportation. You may see some rail carts on it."
+	desc = "Uma forma primitiva de transporte. Você pode ver alguns carrinhos de trem nele."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "rail"
 	anchored = TRUE
@@ -58,7 +58,7 @@
 
 /obj/vehicle/ridden/rail_cart
 	name = "rail cart"
-	desc = "A wonderful form of locomotion. It will only ride while on tracks. It does have storage"
+	desc = "Uma forma maravilhosa de locomoção. Ele só andará enquanto estiver nos trilhos. Ele tem armazenamento."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "railcart"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
@@ -69,8 +69,8 @@
 
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
-	. += span_notice("<br><b>Alt-Click</b> to attach a rail cart to this cart.")
-	. += span_notice("<br>Filling it with <b>10 sand</b> will allow it to be used as a planter!")
+	. += span_notice("<br><b>Alt-Click</b>para anexar um carrinho de trem a este carrinho.")
+	. += span_notice("<br>Preenchendo com<b>10 areia</b>permitirá que seja usado como plantador!")
 
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()

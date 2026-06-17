@@ -1,6 +1,6 @@
 /obj/machinery/plate_press
 	name = "license plate press"
-	desc = "You know, we're making a lot of license plates for a station with literally no cars in it."
+	desc = "Estamos fazendo muitas placas para uma estação sem carros."
 	icon = 'icons/obj/machines/prison.dmi'
 	icon_state = "offline"
 	use_power = IDLE_POWER_USE
@@ -51,7 +51,7 @@
 
 	pressing = TRUE
 	update_appearance()
-	to_chat(user, span_notice("You start pressing a new license plate!"))
+	to_chat(user, span_notice("Você começa a pressionar uma nova placa!"))
 
 	if(!do_after(user, 4 SECONDS, target = src))
 		pressing = FALSE
@@ -59,7 +59,7 @@
 		return FALSE
 
 	use_energy(active_power_usage)
-	to_chat(user, span_notice("You finish pressing a new license plate!"))
+	to_chat(user, span_notice("Você acaba de pressionar uma nova placa!"))
 
 	pressing = FALSE
 	QDEL_NULL(current_plate)

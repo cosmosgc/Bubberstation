@@ -1,6 +1,6 @@
 /obj/machinery/cauldron
 	name = "stone cauldron"
-	desc = "Cooks and boils stuff the old fashioned way."
+	desc = "Cozinha e ferve coisas à moda antiga."
 	icon = 'modular_zubbers/icons/obj/machines/cauldron.dmi'
 	icon_state = "cauldron_back_off"
 	density = TRUE
@@ -49,7 +49,7 @@
 /obj/machinery/cauldron/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
+	. += span_notice("Pode ser desmontado com um<b>Pé de cabra.</b>.")
 
 	if(!in_range(user, src) && !isobserver(user))
 		. += span_warning("You're too far away to examine [src]'s contents!")
@@ -182,16 +182,16 @@
 
 	if(!anchored)
 		if(IS_EDIBLE(item))
-			balloon_alert(user, "not secured!")
+			balloon_alert(user, "Não está seguro!")
 			return ITEM_INTERACT_BLOCKING
 		return NONE
 
 	if(item.w_class <= WEIGHT_CLASS_NORMAL && !user.combat_mode && isnull(item.atom_storage))
 		if(ingredients.len >= max_n_of_items)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "Está cheio!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(item, src))
-			balloon_alert(user, "it's stuck to your hand!")
+			balloon_alert(user, "Está preso na sua mão!")
 			return ITEM_INTERACT_BLOCKING
 
 		ingredients += item
@@ -221,7 +221,7 @@
 		if(!IS_EDIBLE(tray_item))
 			continue
 		if(ingredients.len >= max_n_of_items)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "Está cheio!")
 			return TRUE
 		if(tool.atom_storage.attempt_remove(tray_item, src))
 			loaded++
@@ -243,7 +243,7 @@
 		return
 	if(user.can_perform_action(src))
 		if(!length(ingredients))
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "Está vazio!")
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		cook(user)
@@ -254,7 +254,7 @@
 	. = ..()
 
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "Não está seguro!")
 		return
 	if(operating || !user.can_perform_action(src))
 		return
@@ -263,14 +263,14 @@
 		if(isAI(user))
 			examine(user)
 		else
-			balloon_alert(user, "it's empty!")
+			balloon_alert(user, "Está vazio!")
 		return
 
 	var/choice = show_radial_menu(user, src, radial_options, require_near = TRUE)
 
 	// post choice verification
 	if(!anchored)
-		balloon_alert(user, "not secured!")
+		balloon_alert(user, "Não está seguro!")
 		return
 	if(operating || !user.can_perform_action(src))
 		return
@@ -310,7 +310,7 @@
  * * cooker - The mob that initiated the cook cycle
  */
 /obj/machinery/cauldron/proc/start(mob/cooker)
-	visible_message(span_notice("\The [src] heats up."), null, span_hear("You hear bubbling as the cauldron ignites."))
+	visible_message(span_notice("\The [src] heats up."), null, span_hear("Você ouve borbulhando enquanto o caldeirão se inflama."))
 	operating = TRUE
 	update_appearance()
 	cook_loop(cycles = 10, cooker = cooker)

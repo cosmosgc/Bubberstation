@@ -3,7 +3,7 @@
 
 /obj/item/toy/cards/deck
 	name = "deck of cards"
-	desc = "A deck of space-grade playing cards."
+	desc = "Um baralho de cartas espaciais."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "deck_nanotrasen_full"
 	w_class = WEIGHT_CLASS_SMALL
@@ -71,7 +71,7 @@
 		if(marked_color)
 			. += span_notice("The top card of the deck has a [marked_color] mark on the corner!")
 
-	. += span_notice("Click and drag the deck to yourself to pickup.") // This should be a context screentip
+	. += span_notice("Clique e arraste o convés para você mesmo.") // This should be a context screentip
 
 /obj/item/toy/cards/deck/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(src == held_item)
@@ -116,7 +116,7 @@
  */
 /obj/item/toy/cards/deck/proc/get_top_card(mob/living/user)
 	if(count_cards() == 0)
-		to_chat(user, span_warning("There are no more cards to draw!"))
+		to_chat(user, span_warning("Não há mais cartas para desenhar!"))
 		return
 	var/list/cards = fetch_card_atoms()
 	return cards[1]
@@ -211,7 +211,7 @@
 	if(!istype(thrower)) // if a mob didn't throw it (need two people to play 52 pickup)
 		return
 
-	target.visible_message(span_warning("[target] is forced to play 52 card pickup!"), span_warning("You are forced to play 52 card pickup."))
+	target.visible_message(span_warning("[target] is forced to play 52 card pickup!"), span_warning("Você é forçado a jogar 52 cartas."))
 	target.add_mood_event("lost_52_card_pickup", /datum/mood_event/lost_52_card_pickup)
 	thrower.add_mood_event("won_52_card_pickup", /datum/mood_event/won_52_card_pickup)
 	add_memory_in_range(target, 7, /datum/memory/playing_card_pickup, protagonist = thrower, deuteragonist = target, antagonist = src)
@@ -221,8 +221,8 @@
 */
 /obj/item/toy/cards/deck/syndicate
 	name = "suspicious looking deck of cards"
-	desc = "A deck of space-grade playing cards. They seem unusually rigid."
-	cardgame_desc = "suspicious card game"
+	desc = "Um baralho de cartas espaciais. Eles parecem muito rígidos."
+	cardgame_desc = "Jogo de cartas suspeito."
 	icon_state = "deck_syndicate_full"
 	deckstyle = "syndicate"
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
@@ -236,8 +236,8 @@
 /// A card shoe. For holding a lot of cards, but not for committing card-based psychological warfare (crashing people by throwing 100+ cards at them).
 /obj/item/toy/cards/deck/cardshoe
 	name = "card shoe"
-	desc = "A clear plastic card dispenser for holding a large amount of cards. For better or for worse, \
-		the dispenser is designed to prevent a haphazard scattering of cards if thrown."
+	desc = "Um distribuidor de cartão de plástico para segurar uma grande quantidade de cartões. Para o bem ou para o mal,\
+O distribuidor é projetado para evitar uma dispersão casual de cartas se jogado."
 	icon_state = "deckshoe_empty" // woe, codersprites upon thee
 	card_limit = 432 // 8 decks of 54 cards. if... you somehow need to do that much card gaming.
 	can_play_52_card_pickup = FALSE

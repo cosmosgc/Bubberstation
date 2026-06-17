@@ -1,6 +1,6 @@
 /obj/structure/signboard/holosign
 	name = "holographic sign"
-	desc = "A holographic signboard, projecting text above it."
+	desc = "Uma placa holográfica, projetando texto acima dela."
 	icon_state = "holographic_sign"
 	base_icon_state = "holographic_sign"
 	layer = ABOVE_MOB_LAYER
@@ -50,7 +50,7 @@
 /obj/structure/signboard/holosign/examine(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		. += span_warning("<br>Its locking mechanisms appear to be shorted out!")
+		. += span_warning("<br>Seus mecanismos de trava parecem ter curto-circuito!")
 	else if(registered_owner)
 		. += span_info("<br>It is locked to the ID of [span_name(registered_owner)].")
 
@@ -74,19 +74,19 @@
 
 	var/trimmed_id_name = trimtext(id.registered_name)
 	if(!trimmed_id_name)
-		balloon_alert(user, "no name on id!")
+		balloon_alert(user, "Sem nome na identidade!")
 		return ITEM_INTERACT_BLOCKING
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "lock shorted out!")
+		balloon_alert(user, "Fechamento curto!")
 		return ITEM_INTERACT_BLOCKING
 	if(registered_owner)
 		if(!check_locked(user))
 			registered_owner = null
-			balloon_alert(user, "id lock removed")
+			balloon_alert(user, "id lock removido")
 			investigate_log("([key_name(user)]) removed id lock", INVESTIGATE_SIGNBOARD)
 	else
 		registered_owner = trimmed_id_name
-		balloon_alert(user, "locked to id")
+		balloon_alert(user, "Bloqueado para identificar")
 		investigate_log("([key_name(user)]) added id lock for \"[registered_owner]\"", INVESTIGATE_SIGNBOARD)
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
@@ -120,7 +120,7 @@
 		return
 	var/new_color = sanitize_color(tgui_color_picker(user, "Set Sign Color", full_capitalize(name), current_color))
 	if(new_color && is_color_dark_with_saturation(new_color, 25))
-		balloon_alert(user, "color too dark!")
+		balloon_alert(user, "Cor muito escura!")
 		return
 	if(check_locked(user))
 		return
@@ -129,7 +129,7 @@
 		balloon_alert(user, "set color to [new_color]")
 		investigate_log("([key_name(user)]) set the color to [new_color || "(none)"]", INVESTIGATE_SIGNBOARD)
 	else
-		balloon_alert(user, "unset color")
+		balloon_alert(user, "Cor desativada")
 		investigate_log("([key_name(user)]) cleared the color", INVESTIGATE_SIGNBOARD)
 
 /obj/structure/signboard/holosign/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -137,7 +137,7 @@
 		return FALSE
 	playsound(src, SFX_SPARKS, vol = 100, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 	do_sparks(3, cardinal_only = FALSE, source = src)
-	balloon_alert(user, "lock broken")
+	balloon_alert(user, "Trava quebrada.")
 	investigate_log("was emagged by [key_name(user)] (previous owner: [registered_owner || "(none)"])", INVESTIGATE_SIGNBOARD)
 	registered_owner = null
 	obj_flags |= EMAGGED
@@ -160,8 +160,8 @@
 	update_appearance()
 
 /obj/item/circuit_component/holo_signboard
-	display_name = "Holographic Signboard"
-	desc = "Output text to a signboard, insert <br> in the message field to linebreak. Set the color to 0, 0, 0 to reset to default."
+	display_name = "Placa holográfica"
+	desc = "Texto de saída para uma tabuleta, insira<br>no campo de mensagens para quebra de linha. Ajuste a cor para 0, 0, 0 para reset para padrão."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	var/datum/port/input/message

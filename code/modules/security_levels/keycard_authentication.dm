@@ -10,7 +10,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
 /obj/machinery/keycard_auth
 	name = "keycard authentication device"
-	desc = "This device is used to trigger station functions which require more than one ID card to authenticate, or to give the Janitor access to a department."
+	desc = "Este dispositivo é usado para ativar funções da estação que requerem mais de um cartão de identificação para autenticar, ou para dar ao zelador acesso a um departamento."
 	icon = 'icons/obj/machines/keycard_auth_table.dmi'
 	icon_state = "auth_off"
 	power_channel = AREA_USAGE_ENVIRON
@@ -62,7 +62,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 	if(!isanimal_or_basicmob(user))
 		return ..()
 	if(!HAS_TRAIT(user, TRAIT_CAN_HOLD_ITEMS))
-		balloon_alert(user, "no hands!")
+		balloon_alert(user, "Sem mãos!")
 		return UI_CLOSE
 	return ..()
 
@@ -105,7 +105,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 			if(!living_user || !istype(living_user))
 				return TRUE
 			if(!COOLDOWN_FINISHED(src, access_grant_cooldown))
-				balloon_alert(usr, "on cooldown!")
+				balloon_alert(usr, "Na refrigeração!")
 				return TRUE
 			var/obj/item/card/id/advanced/card = living_user.get_idcard(hand_first = TRUE)
 			if(!card)
@@ -116,7 +116,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 					continue
 				COOLDOWN_START(src, access_grant_cooldown, ACCESS_GRANTING_COOLDOWN)
 				SEND_GLOBAL_SIGNAL(COMSIG_ON_DEPARTMENT_ACCESS, info["regions"])
-				balloon_alert(usr, "key access sent")
+				balloon_alert(usr, "Acesso da chave enviado.")
 				return
 
 /obj/machinery/keycard_auth/update_appearance(updates)

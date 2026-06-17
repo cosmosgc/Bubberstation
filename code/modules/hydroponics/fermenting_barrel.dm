@@ -1,6 +1,6 @@
 /obj/structure/fermenting_barrel
 	name = "wooden barrel"
-	desc = "A large wooden barrel. You can ferment fruits and such inside it, or just use it to hold reagents."
+	desc = "Um grande barril de madeira. Você pode fermentar frutas e tal dentro dele, ou apenas usá-lo para segurar reagentes."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrel"
 	base_icon_state = "barrel"
@@ -53,14 +53,14 @@
 		if(fruit_count)
 			. += span_notice("It contains [fruit_count] fruit\s ready to be fermented.")
 			. += span_notice("[EXAMINE_HINT("Right-click")] to take them out of [src].")
-		. += span_notice("It is currently open, letting you fill it with fruits or reagents.")
+		. += span_notice("Está aberto atualmente, deixando você preenchê-lo com frutas ou reagentes.")
 	else
-		. += span_notice("It is currently closed, letting it ferment fruits or draw reagents from its tap.")
+		. += span_notice("Está atualmente fechado, deixando fermentar frutas ou tirar reagentes de sua torneira.")
 
 /obj/structure/fermenting_barrel/attackby(obj/item/object, mob/user, list/modifiers, list/attack_modifiers)
 	if(open)
 		if(istype(object, /obj/item/food/grown) && insert_fruit(user, object))
-			balloon_alert(user, "added fruit")
+			balloon_alert(user, "frutas adicionadas")
 			return
 		if(istype(object, /obj/item/storage/bag/plants))
 			var/obj/item/storage/bag/plants/bag = object
@@ -101,7 +101,7 @@
 		return .
 
 	if(!length(contents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "Vazio!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	dump_contents()
@@ -150,16 +150,16 @@
 /// Adds the fruit to the barrel to queue the fermentation
 /obj/structure/fermenting_barrel/proc/insert_fruit(mob/user, obj/item/food/grown/fruit, obj/item/storage/bag/plants/bag = null)
 	if(reagents.total_volume + potential_volume > reagents.maximum_volume)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "Está cheio!")
 		return FALSE
 	if(!fruit.can_distill)
-		balloon_alert(user, "can't ferment this!")
+		balloon_alert(user, "Não posso fermentar isso!")
 		return FALSE
 	if(bag && !bag.atom_storage.attempt_remove(fruit, src))
-		balloon_alert(user, "can't take from bag!")
+		balloon_alert(user, "Não posso tirar do saco!")
 		return FALSE
 	else if (!user.transferItemToLoc(fruit, src))
-		balloon_alert(user, "can't take fruit!")
+		balloon_alert(user, "Não posso levar frutas!")
 		return FALSE
 	potential_volume += fruit.reagents.total_volume
 	return TRUE
@@ -206,7 +206,7 @@
 /// Lil gunpowder barrel fer pirates since it's a nice reagent holder
 /obj/structure/fermenting_barrel/gunpowder
 	name = "gunpowder barrel"
-	desc = "A large wooden barrel for holding gunpowder. You'll need to take from this to load the cannons."
+	desc = "Um grande barril de madeira para segurar pólvora. Você precisará tirar isso para carregar os canhões."
 	can_open = FALSE
 
 /obj/structure/fermenting_barrel/gunpowder/Initialize(mapload)
@@ -216,7 +216,7 @@
 /// Medieval pirates can have a barrel as a treat
 /obj/structure/fermenting_barrel/thermite
 	name = "thermite barrel"
-	desc = "A large wooden barrel for holding thermite. Use this to make a big flipping hole on walls."
+	desc = "Um grande barril de madeira para segurar termite. Use isso para fazer um grande buraco nas paredes."
 	can_open = FALSE
 
 /obj/structure/fermenting_barrel/thermite/Initialize(mapload)

@@ -1,7 +1,7 @@
 /datum/surgery_operation/basic/implant_removal
 	name = "implant removal"
-	desc = "Attempt to find and remove an implant from a patient. \
-		Any implant found will be destroyed unless an implant case is held or nearby."
+	desc = "Tente encontrar e remover um implante de um paciente.\
+Qualquer implante encontrado será destruído a menos que uma caixa de implante seja mantida ou próxima."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		TOOL_HEMOSTAT = 1,

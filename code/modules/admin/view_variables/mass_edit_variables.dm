@@ -37,7 +37,7 @@
 	var/var_value = target.vars[variable]
 
 	if(variable in GLOB.VVckey_edit)
-		to_chat(src, "It's forbidden to mass-modify ckeys. It'll crash everyone's client you dummy.", confidential = TRUE)
+		to_chat(src, "É proibido modificar ckeys em massa. Vai quebrar o cliente de todos, seu idiota.", confidential = TRUE)
 		return
 	if(variable in GLOB.VVlocked)
 		if(!check_rights(R_DEBUG))
@@ -48,14 +48,14 @@
 	if(variable in GLOB.VVpixelmovement)
 		if(!check_rights(R_DEBUG))
 			return
-		var/prompt = tgui_alert(src, "Editing this var may irreparably break tile gliding for the rest of the round. THIS CAN'T BE UNDONE", "DANGER", list("ABORT ", "Continue", " ABORT"))
+		var/prompt = tgui_alert(src, "Editando este var pode irreparavelmente quebrar deslizar azulejo para o resto da rodada. Isso não pode ser desfeito.", "DANGER", list("ABORT ", "Continue", " ABORT"))
 		if (prompt != "Continue")
 			return
 
 	default = vv_get_class(variable, var_value)
 
 	if(isnull(default))
-		to_chat(src, "Unable to determine variable type.", confidential = TRUE)
+		to_chat(src, "Incapaz de determinar o tipo variável.", confidential = TRUE)
 	else
 		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.", confidential = TRUE)
 
@@ -96,7 +96,7 @@
 
 	switch(class)
 		if(VV_RESTORE_DEFAULT)
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "Encontrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
 			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
 			for(var/thing in items)
@@ -122,7 +122,7 @@
 					for(var/V in varsvars)
 						new_value = replacetext(new_value,"\[[V]]","[target.vars[V]]")
 
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "Encontrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
 			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
 			for(var/thing in items)
@@ -150,7 +150,7 @@
 				many = FALSE
 
 			var/type = value["type"]
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "Encontrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
 			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
 			for(var/thing in items)
@@ -168,7 +168,7 @@
 				CHECK_TICK
 
 		else
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "Encontrar itens...", confidential = TRUE)
 			var/list/items = get_all_of_type(target.type, strict_type)
 			to_chat(src, "Changing [items.len] items...", confidential = TRUE)
 			for(var/thing in items)
@@ -184,10 +184,10 @@
 
 	var/count = rejected+accepted
 	if (!count)
-		to_chat(src, "No objects found", confidential = TRUE)
+		to_chat(src, "Nenhum objeto encontrado.", confidential = TRUE)
 		return
 	if (!accepted)
-		to_chat(src, "Every object rejected your edit", confidential = TRUE)
+		to_chat(src, "Cada objeto rejeitou sua edição.", confidential = TRUE)
 		return
 	if (rejected)
 		to_chat(src, "[rejected] out of [count] objects rejected your edit", confidential = TRUE)

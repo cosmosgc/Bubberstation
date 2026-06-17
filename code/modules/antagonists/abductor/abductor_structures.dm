@@ -3,7 +3,7 @@
 
 /obj/structure/bed/abductor
 	name = "resting contraption"
-	desc = "This looks similar to contraptions from Earth. Could aliens be stealing our technology?"
+	desc = "Isto parece semelhante a engenhocas da Terra. Os alienígenas podem estar roubando nossa tecnologia?"
 	icon = 'icons/obj/antags/abductor.dmi'
 	build_stack_type = /obj/item/stack/sheet/mineral/abductor
 	icon_state = "bed"
@@ -11,7 +11,7 @@
 
 /obj/structure/table_frame/abductor
 	name = "alien table frame"
-	desc = "A sturdy table frame made from alien alloy."
+	desc = "Uma estrutura de mesa robusta feita de liga alienígena."
 	icon_state = "alien_frame"
 	framestack = /obj/item/stack/sheet/mineral/abductor
 	framestackamount = 1
@@ -25,7 +25,7 @@
 
 /obj/structure/table/abductor
 	name = "alien table"
-	desc = "Advanced flat surface technology at work!"
+	desc = "Tecnologia de superfície plana avançada em ação!"
 	icon = 'icons/obj/smooth_structures/alien_table.dmi'
 	icon_state = "alien_table-0"
 	base_icon_state = "alien_table"
@@ -42,7 +42,7 @@
 
 /obj/structure/table/optable/abductor
 	name = "alien operating table"
-	desc = "Used for alien medical procedures. The surface is covered in tiny spines."
+	desc = "Usado para procedimentos médicos alienígenas. A superfície está coberta de espinhos minúsculos."
 	frame = /obj/structure/table_frame/abductor
 	buildstack = /obj/item/stack/sheet/mineral/silver
 	framestack = /obj/item/stack/sheet/mineral/abductor
@@ -69,7 +69,7 @@
 	SIGNAL_HANDLER
 	if(iscarbon(AM))
 		START_PROCESSING(SSobj, src)
-		to_chat(AM, span_danger("You feel a series of tiny pricks!"))
+		to_chat(AM, span_danger("Você sente uma série de picadinhos!"))
 
 /obj/structure/table/optable/abductor/process(seconds_per_tick)
 	. = PROCESS_KILL
@@ -86,7 +86,7 @@
 
 /obj/structure/closet/abductor
 	name = "alien locker"
-	desc = "Contains secrets of the universe."
+	desc = "Contém segredos do universo."
 	icon_state = "abductor"
 	icon_door = "abductor"
 	can_weld_shut = FALSE

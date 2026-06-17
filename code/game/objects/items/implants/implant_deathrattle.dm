@@ -111,7 +111,7 @@
 
 /obj/item/implant/deathrattle
 	name = "deathrattle implant"
-	desc = "Hope no one else dies, prepare for when they do."
+	desc = "Espero que ninguém morra, prepare-se para quando morrerem."
 
 	actions_types = null
 	allow_multiple = TRUE
@@ -133,7 +133,7 @@
 
 /obj/item/implant/deathrattle/can_be_implanted_in(mob/living/target)
 	if(!current_group)
-		balloon_alert(target, "deathrattle needs configuration!")
+		balloon_alert(target, "Deathrattle precisa de configuração!")
 		return FALSE
 	// Can be implanted in anything that's a mob. Syndicate cyborgs, talking fish, humans...
 	return TRUE
@@ -149,12 +149,12 @@
 
 /obj/item/implantcase/deathrattle
 	name = "implant case - 'Deathrattle'"
-	desc = "A glass case containing a deathrattle implant."
+	desc = "Uma caixa de vidro contendo um implante mortal."
 	imp_type = /obj/item/implant/deathrattle
 
 /obj/item/implantcase/deathrattle/lavaland
 	name = "implant case - 'Expeditionary Deathrattle'"
-	desc = "A glass case containing an expeditionary deathrattle implant. Only alerts to deaths that occur on Lavaland."
+	desc = "Uma caixa de vidro contendo um implante expedicionário. Só alertas para mortes que ocorrem em Lavaland."
 	imp_type = /obj/item/implant/deathrattle/lavaland
 
 #undef DEATHRATTLE_AREA_NOLIST

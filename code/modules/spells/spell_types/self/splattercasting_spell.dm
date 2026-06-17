@@ -1,9 +1,9 @@
 /datum/action/cooldown/spell/splattercasting
 	name = "Marrabbio's Splattercasting"
-	desc = "A spell invented by a banished wizard, who obsessed over aligning \
-		the primal essences of life and magic into one. Dramatically lowers the \
-		cooldown on all spells, but each one will cost blood, as well as it naturally \
-		draining from you. You can replenish it from your victims."
+	desc = "Um feitiço inventado por um mago banido, obcecado por alinhar\
+As essências primárias da vida e da magia em uma só. Dramaticamente baixa o\
+Refrigeração em todos os feitiços, mas cada um custará sangue, assim como naturalmente.\
+drenando de você. Você pode reabastecê-lo de suas vítimas."
 	button_icon_state = "splattercasting"
 
 	school = SCHOOL_SANGUINE
@@ -18,15 +18,15 @@
 /datum/action/cooldown/spell/splattercasting/cast(mob/living/cast_on)
 	. = ..()
 
-	to_chat(cast_on, span_green("You focus your arcane knowledge into your lifeforce, your blood simmering with new potential..."))
+	to_chat(cast_on, span_green("Você concentra seu conhecimento arcano em sua força vital, seu sangue fervendo com novo potencial..."))
 	if(!do_after(cast_on, 5 SECONDS))
-		to_chat(cast_on, span_warning("Your focus is broken, and the simmering slowly fades."))
+		to_chat(cast_on, span_warning("Seu foco está quebrado, e o ferver desaparece lentamente."))
 		return
 
 	playsound(cast_on, 'sound/effects/pope_entry.ogg', 100)
-	to_chat(cast_on, span_danger("You feel your very essense binding to your magic! A stabbing pain within \
-		brings unimaginable momentary torment as your heart stops, and your skin grows cold. You are now \
-		merely a vessel for the arcane flow. Soon, all that is left is not pain, but hunger."))
+	to_chat(cast_on, span_danger("Você sente sua ligação com sua magia! Uma dor apunhalada\
+traz um tormento momentâneo inimaginável enquanto seu coração pára, e sua pele fica fria. Agora você é.\
+Apenas um recipiente para o fluxo arcano. Logo, tudo o que resta não é dor, mas fome."))
 
 	cast_on.set_species(/datum/species/human/vampire)
 	cast_on.set_blood_volume(BLOOD_VOLUME_NORMAL) ///for predictable blood total amounts when the spell is first cast.

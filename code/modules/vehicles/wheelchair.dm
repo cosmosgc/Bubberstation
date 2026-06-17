@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/wheelchair //ported from Hippiestation (by Jujumatic)
 	name = "wheelchair"
-	desc = "A chair with big wheels. It looks like you can move in this on your own."
+	desc = "Uma cadeira com rodas grandes. Parece que você pode se mover sozinho."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "wheelchair"
 	layer = OBJ_LAYER
@@ -73,7 +73,7 @@
 	balloon_alert(user, "disassembling")
 	if(!tool.use_tool(src, user, 4 SECONDS, volume=50))
 		return ITEM_INTERACT_SUCCESS
-	to_chat(user, span_notice("You detach the wheels and deconstruct the chair."))
+	to_chat(user, span_notice("Você desliga as rodas e desconstrui a cadeira."))
 	deconstruct(disassembled = TRUE)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
@@ -129,7 +129,7 @@
 	if(bell_attached)
 		. += span_notice("There is \a [bell_attached] attached to the handle.")
 	if(bomb_attached)
-		. += span_warning("There are a pair of gas tanks attached to the frame.")
+		. += span_warning("Há um par de tanques de gás ligados ao quadro.")
 
 /obj/vehicle/ridden/wheelchair/proc/remove_bell()
 	if (!bell_attached)
@@ -150,7 +150,7 @@
 /// A reward item for obtaining 5K hardcore random points. Do not use for anything else
 /obj/vehicle/ridden/wheelchair/gold
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_AFFECT_STATISTICS
-	desc = "Damn, must've been through a lot."
+	desc = "Droga, deve ter passado por muita coisa."
 	icon_state = "gold_wheelchair"
 	overlay_icon = "gold_wheelchair_overlay"
 	max_integrity = 200
@@ -161,7 +161,7 @@
 /// Handheld wheelchair item
 /obj/item/wheelchair
 	name = "wheelchair"
-	desc = "A collapsed wheelchair that can be carried around."
+	desc = "Uma cadeira de rodas em colapso que pode ser carregada."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "wheelchair_folded"
 	inhand_icon_state = "wheelchair_folded"
@@ -191,7 +191,7 @@
 ///A reward item for obtaining 5K hardcore random points. Do not use for anything else
 /obj/item/wheelchair/gold
 	name = "gold wheelchair"
-	desc = "A collapsed, shiny wheelchair that can be carried around."
+	desc = "Uma cadeira de rodas desmoronada e brilhante que pode ser carregada."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "wheelchair_folded_gold"
 	inhand_icon_state = "wheelchair_folded_gold"

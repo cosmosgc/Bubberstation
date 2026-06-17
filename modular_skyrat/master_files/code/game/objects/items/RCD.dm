@@ -1,6 +1,6 @@
 /obj/item/construction/rcd/arcd/mattermanipulator
 	name = "matter manipulator"
-	desc = "A strange, familiar yet distinctly different analogue to the Nanotrasen standard RCD. Works at range, and can deconstruct reinforced walls. Reload using metal, glass, or plasteel."
+	desc = "Um estranho, familiar, mas distintamente diferente análogo ao RCD padrão Nanotrasen. Funciona ao alcance, e pode desconstruir paredes reforçadas. Recarregar usando metal, vidro ou plasteel."
 	icon = 'modular_skyrat/master_files/icons/obj/tools.dmi'
 	icon_state = "rcd"
 	worn_icon_state = "RCD"
@@ -32,7 +32,7 @@
 
 /obj/item/construction/plumbing/mining
 	name = "mining plumbing constructor"
-	desc = "A type of plumbing constructor designed to harvest from geysers and collect their fluids."
+	desc = "Um tipo de construtor de encanamento projetado para colher de gêiseres e coletar seus fluidos."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "plumberer_mining"
 	var/static/list/mining_design_types = list(
@@ -75,7 +75,7 @@
 
 /obj/item/construction/rcd/robotics_rcd
 	name = "Robotics RCD"
-	desc = "A modified RCD that has less storage than your usual NT RCD is and has less construction options and has lost the ability to deconstruct in favor of being more accessible for synthetic repairs. Reload using metal, glass, or plasteel."
+	desc = "Um RCD modificado que tem menos armazenamento do que o normal NT RCD é e tem menos opções de construção e perdeu a capacidade de desconstruir em favor de ser mais acessível para reparos sintéticos. Recarregar usando metal, vidro ou plasteel."
 	icon = 'modular_skyrat/master_files/icons/obj/tools.dmi'
 	icon_state = "roborcd"
 	worn_icon_state = "RCD"
@@ -87,13 +87,13 @@
 	banned_upgrades = RCD_ALL_UPGRADES
 
 /obj/item/construction/rcd/robotics_rcd/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
-	balloon_alert(user, "no deconstruction mode")
+	balloon_alert(user, "Sem modo de desconstrução")
 	return NONE
 
 //Research cyborg RCD upgrade
 /obj/item/construction/rcd/borg/robotics_rcd
 	name = "Robotics RCD"
-	desc = "A modified RCD designed specifically for synthetic repairs."
+	desc = "Um RCD modificado projetado especificamente para reparos sintéticos."
 	icon = 'modular_skyrat/master_files/icons/obj/tools.dmi'
 	icon_state = "roborcd"
 	worn_icon_state = "RCD"

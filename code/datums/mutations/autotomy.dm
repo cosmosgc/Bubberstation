@@ -1,6 +1,6 @@
 /datum/mutation/self_amputation
 	name = "Autotomy"
-	desc = "Allows a creature to voluntary discard a random appendage."
+	desc = "Permite que uma criatura descarte um apêndice aleatório."
 	quality = POSITIVE
 	text_gain_indication = span_notice("Your joints feel loose.")
 	instability = POSITIVE_INSTABILITY_MINOR
@@ -11,7 +11,7 @@
 
 /datum/action/cooldown/spell/self_amputation
 	name = "Drop a limb"
-	desc = "Concentrate to make a random limb pop right off your body."
+	desc = "Concentre-se em fazer um membro aleatório sair do seu corpo."
 	button_icon_state = "autotomy"
 
 	cooldown_time = 10 SECONDS
@@ -23,7 +23,7 @@
 /datum/action/cooldown/spell/self_amputation/cast(mob/living/carbon/cast_on)
 	. = ..()
 	if(HAS_TRAIT(cast_on, TRAIT_NODISMEMBER))
-		to_chat(cast_on, span_notice("You concentrate really hard, but nothing happens."))
+		to_chat(cast_on, span_notice("Você se concentra muito, mas nada acontece."))
 		return
 
 	var/list/parts = list()
@@ -35,7 +35,7 @@
 		parts += to_remove
 
 	if(!length(parts))
-		to_chat(cast_on, span_notice("You can't shed any more limbs!"))
+		to_chat(cast_on, span_notice("Não pode perder mais membros!"))
 		return
 
 	var/obj/item/bodypart/to_remove = pick(parts)

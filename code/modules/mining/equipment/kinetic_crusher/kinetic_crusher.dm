@@ -7,9 +7,9 @@
  */
 /obj/item/kinetic_crusher
 	name = "proto-kinetic crusher"
-	desc = "An early design of the proto-kinetic accelerator, it is little more than a combination of various mining tools cobbled together, \
-		forming a high-tech club. While it is an effective mining tool, it did little to aid any but the most skilled and/or \
-		suicidal miners against local fauna."
+	desc = "Um projeto inicial do acelerador protocinético, é pouco mais do que uma combinação de várias ferramentas de mineração juntas,\
+formando um clube de alta tecnologia. Enquanto é uma ferramenta de mineração eficaz, ele fez pouco para ajudar qualquer, mas a mais qualificada e / ou\
+mineiros suicidas contra a fauna local."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "crusher"
 	base_icon_state = "crusher"
@@ -129,9 +129,9 @@
 /obj/item/kinetic_crusher/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!LAZYLEN(trophies))
-		user.balloon_alert(user, "no trophies!")
+		user.balloon_alert(user, "Sem troféus!")
 		return ITEM_INTERACT_BLOCKING
-	user.balloon_alert(user, "trophies removed")
+	user.balloon_alert(user, "Troféus removidos")
 	tool.play_tool_sound(src)
 	for(var/obj/item/crusher_trophy/crusher_trophy as anything in trophies)
 		crusher_trophy.remove_from(src, user)
@@ -182,7 +182,7 @@
 	if(.)
 		return TRUE
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		user.balloon_alert(user, "must be wielded!")
+		user.balloon_alert(user, "Deve ser usado!")
 		return TRUE
 	return .
 
@@ -237,10 +237,10 @@
 
 /obj/item/kinetic_crusher/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
-		balloon_alert(user, "wield it first!")
+		balloon_alert(user, "Empreste primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if(interacting_with == user)
-		balloon_alert(user, "can't aim at yourself!")
+		balloon_alert(user, "Não consegue mirar em si mesmo!")
 		return ITEM_INTERACT_BLOCKING
 	fire_kinetic_blast(interacting_with, user, modifiers)
 	user.changeNext_move(CLICK_CD_MELEE)

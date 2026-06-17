@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/gunboots //admin boots that fire gunshots randomly while walking
 	name = "gunboots"
-	desc = "This is what all those research points added up to, the ultimate workplace hazard."
+	desc = "Isso é o que todas essas pesquisas somam, o maior perigo do trabalho."
 	icon_state = "jackboots"
 	inhand_icon_state = "jackboots"
 	/// What projectile do we shoot?
@@ -63,7 +63,7 @@
 	shot.def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG) // they're fired from boots after all
 	shot.aim_projectile(target, wearer)
 	if(!shot.suppressed)
-		wearer.visible_message(span_danger("[wearer]'s [name] fires \a [shot]!"), "", blind_message = span_hear("You hear a gunshot!"), vision_distance=COMBAT_MESSAGE_RANGE)
+		wearer.visible_message(span_danger("[wearer]'s [name] fires \a [shot]!"), "", blind_message = span_hear("Você ouve um tiro!"), vision_distance=COMBAT_MESSAGE_RANGE)
 	shot.fire()
 
 /obj/item/clothing/shoes/gunboots/disabler

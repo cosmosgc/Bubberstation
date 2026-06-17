@@ -128,7 +128,7 @@
 	if(!can_hack_open || !source.atom_storage.locked)
 		return NONE
 	if(!panel_open)
-		source.balloon_alert(user, "panel closed!")
+		source.balloon_alert(user, "Painel fechado!")
 		return ITEM_INTERACT_BLOCKING
 	source.balloon_alert(user, "hacking...")
 	INVOKE_ASYNC(src, PROC_REF(hack_open), source, user, tool)
@@ -160,8 +160,8 @@
 	if(source.obj_flags & EMAGGED)
 		return FALSE
 
-	source.visible_message(span_warning("Sparks fly from [source]!"), blind_message = span_hear("You hear a faint electrical spark."))
-	source.balloon_alert(user, "lock destroyed")
+	source.visible_message(span_warning("Sparks fly from [source]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
+	source.balloon_alert(user, "Trava destruída.")
 	playsound(source, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	break_lock()
 	return ITEM_INTERACT_SUCCESS

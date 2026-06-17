@@ -12,7 +12,7 @@
 ///Universal IV that can drain blood or feed reagents over a period of time from or to a replaceable container
 /obj/machinery/iv_drip
 	name = "\improper IV drip"
-	desc = "An IV drip with an advanced infusion pump that can both drain blood into and inject liquids from attached containers."
+	desc = "Um soro com uma bomba de infusão avançada que pode drenar sangue e injetar líquidos em recipientes anexados."
 	icon = 'icons/obj/medical/iv_drip.dmi'
 	icon_state = "iv_drip"
 	base_icon_state = "iv_drip"
@@ -171,13 +171,13 @@
 
 /obj/machinery/iv_drip/mouse_drop_dragged(atom/target, mob/user)
 	if(!isliving(user))
-		to_chat(user, span_warning("You can't do that!"))
+		to_chat(user, span_warning("Não pode fazer isso!"))
 		return
 	if(!get_reagents())
-		to_chat(user, span_warning("There's nothing attached to the IV drip!"))
+		to_chat(user, span_warning("Não há nada ligado ao soro!"))
 		return
 	if(!target.is_injectable(user))
-		to_chat(user, span_warning("Can't inject into this!"))
+		to_chat(user, span_warning("Não posso injetar isso!"))
 		return
 	if(attachment)
 		visible_message(span_warning("[attachment.attached_to] is detached from [src]."))
@@ -192,7 +192,7 @@
 	if(!is_type_in_typecache(tool, drip_containers) && !IS_EDIBLE(tool))
 		return NONE
 	if(reagent_container)
-		balloon_alert(user, "not empty!")
+		balloon_alert(user, "Não vazio!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
@@ -206,10 +206,10 @@
 
 /obj/machinery/iv_drip/click_alt(mob/user)
 	if(transfer_rate > MIN_IV_TRANSFER_RATE)
-		balloon_alert(user, "flow minimized")
+		balloon_alert(user, "Fluxo minimizado")
 		set_transfer_rate(MIN_IV_TRANSFER_RATE)
 	else
-		balloon_alert(user, "flow maximized")
+		balloon_alert(user, "Fluxo maximizado")
 		set_transfer_rate(MAX_IV_TRANSFER_RATE)
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	return CLICK_ACTION_SUCCESS
@@ -226,7 +226,7 @@
 	if(!(get_dist(src, attached_to) <= 1 && isturf(attached_to.loc)))
 		if(isliving(attached_to))
 			var/mob/living/carbon/attached_mob = attached_to
-			to_chat(attached_to, span_userdanger("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
+			to_chat(attached_to, span_userdanger("A agulha intravenosa foi arrancada de você, deixando uma ferida aberta!"))
 			var/list/arm_zones = shuffle(list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
 			var/obj/item/bodypart/chosen_limb = attached_mob.get_bodypart(arm_zones[1]) || attached_mob.get_bodypart(arm_zones[2]) || attached_mob.get_bodypart(BODY_ZONE_CHEST)
 			attached_mob.apply_damage(3, BRUTE, chosen_limb, wound_bonus = CANT_WOUND)
@@ -328,7 +328,7 @@
 	set src in view(1)
 
 	if(!isliving(usr))
-		to_chat(usr, span_warning("You can't do that!"))
+		to_chat(usr, span_warning("Não pode fazer isso!"))
 		return
 	if(!usr.can_perform_action(src))
 		return
@@ -347,7 +347,7 @@
 	set src in view(1)
 
 	if(!isliving(usr))
-		to_chat(usr, span_warning("You can't do that!"))
+		to_chat(usr, span_warning("Não pode fazer isso!"))
 		return
 	if(!usr.can_perform_action(src) || usr.incapacitated)
 		return
@@ -373,9 +373,9 @@
 		else
 			. += span_notice("Attached is an empty [reagent_container.name].")
 	else if(use_internal_storage)
-		. += span_notice("It has an internal chemical storage.")
+		. += span_notice("Tem um depósito químico interno.")
 	else
-		. += span_notice("No chemicals are attached.")
+		. += span_notice("Nenhum produto químico está ligado.")
 	. += span_notice("[attachment ? attachment.attached_to : "Nothing"] is connected.")
 
 /// Information and effects about where an IV drip is attached to
@@ -435,7 +435,7 @@
 
 /obj/machinery/iv_drip/saline
 	name = "saline drip"
-	desc = "An all-you-can-drip saline canister designed to supply a hospital without running out, with a scary looking pump rigged to inject saline into containers, but filling people directly might be a bad idea."
+	desc = "Uma lata de soro para abastecer um hospital sem acabar, com uma bomba assustadora para injetar soro nos recipientes, mas encher as pessoas diretamente pode ser uma má ideia."
 	icon_state = "saline"
 	base_icon_state = "saline"
 	density = TRUE
@@ -451,7 +451,7 @@
 
 /atom/movable/screen/alert/iv_connected
 	name = "IV Connected"
-	desc = "You have an IV connected to your arm. Remember to remove it or drag the IV stand with you before moving, or else it will rip out!"
+	desc = "Você tem uma intravenosa ligada ao seu braço. Lembre-se de removê-lo ou arrastar o soro com você antes de se mover, ou então ele vai rasgar!"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "iv_connected"
 

@@ -2,7 +2,7 @@
 
 /obj/item/melee/cleaving_saw
 	name = "cleaving saw"
-	desc = "This saw, effective at drawing the blood of beasts, transforms into a long cleaver that makes use of centrifugal force."
+	desc = "Esta serra, eficaz em extrair o sangue de bestas, transforma-se em um cutelo longo que faz uso de força centrífuga."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	lefthand_file = 'icons/mob/inhands/64x64_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
@@ -50,8 +50,8 @@
 /obj/item/melee/cleaving_saw/examine(mob/user)
 	. = ..()
 	. += span_notice("It is [HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE) ? "open, will cleave enemies in a wide arc and deal additional damage to fauna":"closed, and can be used for rapid consecutive attacks that cause fauna to bleed"].")
-	. += span_notice("Both modes will build up existing bleed effects, doing a burst of high damage if the bleed is built up high enough.")
-	. += span_notice("Transforming it immediately after an attack causes the next attack to come out faster.")
+	. += span_notice("Ambos os modos irão acumular efeitos de sangramento existentes, causando uma explosão de dano alto se o sangramento for elevado o suficiente.")
+	. += span_notice("Transformá-lo imediatamente após um ataque faz com que o próximo ataque saia mais rápido.")
 
 /obj/item/melee/cleaving_saw/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is [HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE) ? "closing [src] on [user.p_their()] neck" : "opening [src] into [user.p_their()] chest"]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -120,7 +120,7 @@
 
 /obj/item/knife/hunting/wildhunter
 	name = "wildhunter's butchering knife"
-	desc = "A magical knife made out of ashen stone. It was used to butcher local fauna by best hunters. Cuts everything to the simplest."
+	desc = "Uma faca mágica feita de pedra de Ashen. Foi usado para matar a fauna local pelos melhores caçadores. Corta tudo para o mais simples."
 	icon = 'icons/obj/weapons/stabby_wide.dmi'
 	inhand_icon_state = "wildhuntingknife"
 	icon_state = "wildhuntingknife"
@@ -151,7 +151,7 @@
 	var/obj/item/crusher_trophy/trophy = interacting_with
 	if(isnull(trophy.wildhunter_drop))
 		return NONE
-	balloon_alert(user, "cutting trophy...")
+	balloon_alert(user, "Cortando troféu...")
 	if(!do_after(user, 4 SECONDS, trophy))
 		return ITEM_INTERACT_BLOCKING
 	new trophy.wildhunter_drop(trophy.drop_location())

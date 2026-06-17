@@ -6,7 +6,7 @@
 //Using His Grace effectively requires extreme speed and care.
 /obj/item/his_grace
 	name = "artistic toolbox"
-	desc = "A toolbox painted bright green. Looking at it makes you feel uneasy."
+	desc = "Uma caixa de ferramentas pintada de verde brilhante. Olhar para ele te deixa desconfortável."
 	icon = 'icons/obj/storage/toolbox.dmi'
 	icon_state = "green"
 	inhand_icon_state = "toolbox_green"
@@ -40,7 +40,7 @@
 			if(awakened)
 				name = "Her Grace"
 			else if (!ascended)
-				desc = "A toolbox painted bright pink. Looking at it makes you feel uneasy."
+				desc = "Uma caixa de ferramentas pintada de rosa brilhante. Olhar para ele te deixa desconfortável."
 			icon_state = "pink"
 			inhand_icon_state = "toolbox_pink"
 			T.visible_message(span_boldwarning("[src] starts to look a little... girly?"))
@@ -49,7 +49,7 @@
 			if(awakened)
 				name = "His Grace"
 			else if (!ascended)
-				desc = "A toolbox painted bright green. Looking at it makes you feel uneasy."
+				desc = "Uma caixa de ferramentas pintada de verde brilhante. Olhar para ele te deixa desconfortável."
 			icon_state = "green"
 			inhand_icon_state = "toolbox_green"
 			T.visible_message(span_boldwarning("[src] begins to look a little more... manly?"))
@@ -192,7 +192,7 @@
 	awakened = TRUE
 	user.visible_message(span_boldwarning("[src] begins to rattle. [p_They()] thirsts."), span_his_grace("You flick [src]'s latch up. You hope this is a good idea."))
 	name = p_Their() + " Grace"
-	desc = "A bloodthirsty artifact created by a profane rite."
+	desc = "Um artefato sanguinário criado por um rito profano."
 	adjust_bloodthirst(1)
 	force_bonus = HIS_GRACE_FORCE_BONUS * LAZYLEN(contents)
 	notify_ghosts(
@@ -220,9 +220,9 @@
 	playsound(loc, 'sound/items/weapons/batonextend.ogg', 100, TRUE)
 	name = initial(name)
 	if(gender == MALE)
-		desc = "A toolbox painted bright green. Looking at it makes you feel uneasy."
+		desc = "Uma caixa de ferramentas pintada de verde brilhante. Olhar para ele te deixa desconfortável."
 	else if (gender == FEMALE)
-		desc = "A toolbox painted bright pink. Looking at it makes you feel uneasy."
+		desc = "Uma caixa de ferramentas pintada de rosa brilhante. Olhar para ele te deixa desconfortável."
 	animate(src, transform=matrix())
 	force = initial(force)
 	force_bonus = initial(force_bonus)
@@ -282,7 +282,7 @@
 				[force_bonus < 10 ? " [p_Their()] power grows.":""]</span>")
 				force_bonus = max(force_bonus, 10)
 			if(prev_bloodthirst >= HIS_GRACE_STARVING)
-				master.visible_message(span_warning("[src] is now only very hungry!"), "<span class='his_grace big'>Your bloodlust recedes.</span>")
+				master.visible_message(span_warning("[src] is now only very hungry!"), "<span class='his_grace big'>Sua sede de sangue diminui.</span>")
 		if(HIS_GRACE_HUNGRY to HIS_GRACE_FAMISHED)
 			if(HIS_GRACE_HUNGRY > prev_bloodthirst)
 				master.visible_message(span_warning("[src] is getting hungry."), "<span class='his_grace big'>You feel [src]'s hunger within you.\
@@ -305,12 +305,12 @@
 		return
 	var/mob/living/carbon/human/master = loc
 	force_bonus += ascend_bonus
-	desc = "A legendary toolbox and a distant artifact from The Age of Three Powers. On its three latches engraved are the words \"The Sun\", \"The Moon\", and \"The Stars\". The entire toolbox has the words \"The World\" engraved into its sides."
+	desc = "Uma lendária caixa de ferramentas e um artefato distante da Era dos Três Poderes. Em suas três travas gravadas estão as palavras\"O Sol\", \"A Lua\", e\"As Estrelas\"Toda a caixa de ferramentas tem as palavras\"O Mundo\"gravado em seus lados."
 	ascended = TRUE
 	update_appearance()
 	playsound(src, 'sound/effects/his_grace/his_grace_ascend.ogg', 100)
 	if(istype(master))
 		master.update_held_items()
-		master.visible_message("<span class='his_grace big bold'>Gods will be watching.</span>")
+		master.visible_message("<span class='his_grace big bold'>Os deuses estarão observando.</span>")
 		name = "[master]'s mythical toolbox of three powers"
 		master.client?.give_award(/datum/award/achievement/misc/ascension, master)

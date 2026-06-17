@@ -11,7 +11,7 @@ GLOBAL_LIST_INIT(nanopaint_supported_filetypes, zebra_typecacheof(list(\
 	filedesc = "NanoPaint"
 	downloader_category = PROGRAM_CATEGORY_DEVICE
 	program_open_overlay = "generic"
-	extended_desc = "Draw pictures on your device."
+	extended_desc = "Faça desenhos no seu dispositivo."
 	tgui_id = "NtosNanopaint"
 	program_icon = "paintbrush"
 	size = 5

@@ -1,6 +1,6 @@
 /obj/item/storage/box/foodpack
 	name = "wrapped meal container"
-	desc = "A generic brown paper food package, you aren't quite sure where this comes from."
+	desc = "Um pacote genérico de comida de papel marrom, você não tem certeza de onde isso vem."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_big"
 	illustration = null
@@ -20,7 +20,7 @@
 
 /obj/item/storage/box/foodpack/nt
 	name = "\improper NT-Combo Meal - Salisbury Steak"
-	desc = "A relatively bland package made of reflective metal foil, it has a blue sprite and the letters 'NT' printed on the top."
+	desc = "Um pacote relativamente brando feito de folha de metal refletora, tem uma imagem azul e as letras 'NT' impressas no topo."
 	icon_state = "foodpack_nt_big"
 	main_course = /obj/item/food/vendor_tray_meal
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/nt
@@ -36,7 +36,7 @@
 
 /obj/item/storage/box/foodpack/yangyu
 	name = "\improper Atatakai shokuji - Homestyle Noodles"
-	desc = "A well decorated red and white plastic package, covered in nearly incomprehensible yangyu text."
+	desc = "Um pacote de plástico vermelho e branco bem decorado, coberto de texto yangyu quase incompreensível."
 	icon_state = "foodpack_yangyu_big"
 	main_course = /obj/item/food/vendor_tray_meal/ramen
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/yangyu
@@ -52,7 +52,7 @@
 
 /obj/item/storage/box/foodpack/moth
 	name = "\improper Ration Type M - Pesto Pizza"
-	desc = "A cardboard-colored paper package with the symbol of the nomad fleet stamped upon it."
+	desc = "Um pacote de papel colorido com o símbolo da frota nômade estampado nele."
 	icon_state = "foodpack_moth_big"
 	main_course = /obj/item/food/vendor_tray_meal/pesto_pizza
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/moth
@@ -68,7 +68,7 @@
 
 /obj/item/storage/box/foodpack/tizira
 	name = "\improper Tizira Imports Pack - Moonfish Nizaya"
-	desc = "A dull, metal foil package with the colors of the Tiziran flag striped across it, as well as a stamp of legitimate origin from the Tiziran exports office."
+	desc = "Um estonteante pacote de folha de metal com as cores da bandeira Tiziran riscada através dela, bem como um selo de origem legítima do escritório de exportação Tiziran."
 	icon_state = "foodpack_tizira_big"
 	main_course = /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/tizira
@@ -77,7 +77,7 @@
 
 /obj/item/storage/box/foodpack/tizira/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<b>Now that you look at it, the origin stamp appears to be a poor imitation of the real thing!</b>")
+	. += span_notice("<b>Agora que você olha para ele, o selo de origem parece ser uma imitação pobre da coisa real!</b>")
 	return .
 
 /obj/item/storage/box/foodpack/tizira/roll

@@ -73,7 +73,7 @@
 
 /datum/objective/loot
 	var/obj/machinery/computer/piratepad_control/cargo_hold
-	explanation_text = "Acquire valuable loot and store it in the designated area."
+	explanation_text = "Adquira um saque valioso e guarde-o na área designada."
 	var/target_value = 50000
 
 
@@ -105,7 +105,7 @@
 /datum/team/pirate/roundend_report()
 	var/list/parts = list()
 
-	parts += span_header("Space Pirates were:")
+	parts += span_header("Piratas espaciais eram:")
 
 	var/all_dead = TRUE
 	for(var/datum/mind/M in members)

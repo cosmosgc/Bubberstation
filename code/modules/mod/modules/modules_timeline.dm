@@ -6,10 +6,10 @@
 ///Eradication lock - Prevents people who aren't the owner of the suit from existing on the timeline via eradicating the suit with the intruder inside
 /obj/item/mod/module/eradication_lock
 	name = "MOD eradication lock module"
-	desc = "A module which remembers the original owner of the suit, even alternate universe \
-			versions. When a non-owner enters, the eradication lock will begin eradicating the suit \
-			from the timeline... with the intruder inside. Not the way you want to go, so it turns \
-			out to be a good deterrent."
+	desc = "Um módulo que lembra o dono original do terno, até mesmo o universo alternativo.\
+Versões. Quando um não-proprietário entrar, o bloqueio de erradicação começará a erradicar o processo.\
+Da linha do tempo... com o intruso dentro. Não do jeito que você quer ir, então ele vira\
+fora ser um bom dissuasor."
 	icon_state = "eradicationlock"
 	module_type = MODULE_USABLE
 	removable = FALSE
@@ -31,7 +31,7 @@
 
 /obj/item/mod/module/eradication_lock/on_use(mob/activator)
 	true_owner_ckey = mod.wearer.ckey
-	balloon_alert(activator, "user remembered")
+	balloon_alert(activator, "usuário lembrou")
 	playsound(src, 'sound/items/pshoom/pshoom.ogg', 25, TRUE)
 	drain_power(use_energy_cost)
 
@@ -42,7 +42,7 @@
 	if(!true_owner_ckey || user.ckey == true_owner_ckey)
 		return NONE
 	if(user == mod.wearer)
-		to_chat(mod.wearer, span_userdanger("\"MODsuit compromised by timeline inhabitant! Eradicating...\""))
+		to_chat(mod.wearer, span_userdanger("\"MODsuit comprometido por habitante da linha do tempo! Erradicando...\""))
 		new /obj/structure/chrono_field(user.loc, user)
 	return MOD_CANCEL_ACTIVATE
 
@@ -51,16 +51,16 @@
 	SIGNAL_HANDLER
 
 	if(true_owner_ckey && user.ckey != true_owner_ckey)
-		to_chat(mod.wearer, span_userdanger("\"Timeline inhabitant tampering detected! Eradicating...\""))
+		to_chat(mod.wearer, span_userdanger("\"Fusão de tempo detectada! Erradicando...\""))
 		new /obj/structure/chrono_field(user.loc, user)
 		return MOD_CANCEL_REMOVAL
 
 ///Rewinder - Activating saves a point in time, after 10 seconds you will jump back to that state.
 /obj/item/mod/module/rewinder
 	name = "MOD rewinder module"
-	desc = "A module that can pull the user back through time given an anchor point to \
-			pull to. Very useful tool to get the job done, but keep in mind the suit locks for \
-			safety reasons while preparing a rewind."
+	desc = "Um módulo que pode puxar o usuário de volta através do tempo dado um ponto de âncora para\
+Puxe. Ferramenta muito útil para fazer o trabalho, mas tenha em mente as fechaduras do terno para\
+Razões de segurança enquanto prepara um retrocesso."
 	icon_state = "rewinder"
 	module_type = MODULE_USABLE
 	removable = FALSE
@@ -70,7 +70,7 @@
 	required_slots = list(ITEM_SLOT_BACK)
 
 /obj/item/mod/module/rewinder/on_use(mob/activator)
-	balloon_alert(activator, "anchor point set")
+	balloon_alert(activator, "Ponto de ancoragem definido.")
 	playsound(src, 'sound/items/modsuit/time_anchor_set.ogg', 50, TRUE)
 	//stops all mods from triggering during rewinding
 	for(var/obj/item/mod/module/module as anything in mod.modules)
@@ -88,21 +88,21 @@
 ///Signal fired when wearer attempts to activate/deactivate suits
 /obj/item/mod/module/rewinder/proc/on_activate_block(datum/source, user)
 	SIGNAL_HANDLER
-	balloon_alert(user, "not while rewinding!")
+	balloon_alert(user, "Não enquanto rebobinar!")
 	return MOD_CANCEL_ACTIVATE
 
 ///Signal fired when wearer attempts to trigger modules, if attempting while time is stopped
 /obj/item/mod/module/rewinder/proc/on_module_triggered(datum/source, mob/user)
 	SIGNAL_HANDLER
-	balloon_alert(user, "not while rewinding!")
+	balloon_alert(user, "Não enquanto rebobinar!")
 	return MOD_ABORT_USE
 
 ///Timestopper - Need I really explain? It's the wizard's time stop, but the user channels it by not moving instead of a duration.
 /obj/item/mod/module/timestopper
 	name = "MOD timestopper module"
-	desc = "A module that can halt time in a small radius around the user... for as long as they \
-			want! Great for monologues or lunch breaks. Keep in mind moving will end the stop, and the \
-			module has a hefty cooldown period to avoid reality errors."
+	desc = "Um módulo que pode parar o tempo em um pequeno raio em torno do usuário... enquanto eles\
+Quer! Ótimo para monólogos ou pausas para almoço. Tenha em mente que mover vai acabar com a parada, eo\
+O módulo tem um período de resfriamento pesado para evitar erros de realidade."
 	icon_state = "timestop"
 	module_type = MODULE_USABLE
 	removable = FALSE
@@ -115,7 +115,7 @@
 
 /obj/item/mod/module/timestopper/used(mob/activator)
 	if(timestop)
-		mod.balloon_alert(activator, "already freezing time!")
+		mod.balloon_alert(activator, "Já está congelando!")
 		return FALSE
 	return ..()
 
@@ -138,19 +138,19 @@
 ///Signal fired when wearer attempts to trigger modules, if attempting while time is stopped
 /obj/item/mod/module/timestopper/proc/on_module_triggered(datum/source)
 	SIGNAL_HANDLER
-	balloon_alert(mod.wearer, "not while stopping time!")
+	balloon_alert(mod.wearer, "Não enquanto para o tempo!")
 	return MOD_ABORT_USE
 
 ///Signal fired when wearer attempts to activate/deactivate suits, if attempting while time is stopped
 /obj/item/mod/module/timestopper/proc/on_activate_block(datum/source, user)
 	SIGNAL_HANDLER
-	balloon_alert(user, "not while stopping time!")
+	balloon_alert(user, "Não enquanto para o tempo!")
 	return MOD_CANCEL_ACTIVATE
 
 ///Timeline Jumper - Infinite phasing. needs some special effects
 /obj/item/mod/module/timeline_jumper
 	name = "MOD timeline jumper module"
-	desc = "A module used to traverse timelines, phasing the user in and out of the stream of events."
+	desc = "Um módulo usado para atravessar linhas do tempo, fazendo o usuário entrar e sair do fluxo de eventos."
 	icon_state = "timeline_jumper"
 	module_type = MODULE_USABLE
 	removable = FALSE
@@ -191,7 +191,7 @@
 /obj/item/mod/module/timeline_jumper/proc/on_activate_block(datum/source, user)
 	SIGNAL_HANDLER
 	//has to be a to_chat because you're phased out.
-	to_chat(user, span_warning("Deactivating your suit while inbetween timelines would be a very bad idea."))
+	to_chat(user, span_warning("Desativar seu terno enquanto entre linhas do tempo seria uma péssima ideia."))
 	return MOD_CANCEL_ACTIVATE
 
 ///special subtype for phased mobs.
@@ -202,9 +202,9 @@
 ///TEM - Lets you eradicate people.
 /obj/item/mod/module/tem
 	name = "MOD timestream eradication module"
-	desc = "The correction device of a fourth dimensional group outside time itself used to \
-			change the destination of a timeline. this device is capable of wiping a being from the \
-			timestream. They never are, they never were, they never will be."
+	desc = "O dispositivo de correção de um quarto grupo dimensional fora do tempo usado para\
+mudar o destino de uma linha do tempo. Este dispositivo é capaz de limpar um ser do\
+Timestream. Nunca são, nunca foram, nunca serão."
 	icon_state = "chronogun"
 	module_type = MODULE_ACTIVE
 	removable = FALSE
@@ -250,14 +250,14 @@
 /obj/item/mod/module/tem/proc/field_connect(obj/structure/chrono_field/field)
 	if(field.tem)
 		if(field.captured)
-			balloon_alert(mod.wearer, "already has connection!")
+			balloon_alert(mod.wearer, "Já tem conexão!")
 		field_disconnect(field)
 		return
 	startpos = get_turf(mod.wearer)
 	src.field = field
 	field.tem = src
 	if(field.captured)
-		balloon_alert(mod.wearer, "connection estabilished")
+		balloon_alert(mod.wearer, "Conexão estabilizada")
 
 /**
  * ### field_disconnect
@@ -272,7 +272,7 @@
 		if(field.tem == src)
 			field.tem = null
 		if(field.captured)
-			balloon_alert(mod.wearer, "connection lost!")
+			balloon_alert(mod.wearer, "Ligação perdida!")
 	field = null
 	startpos = null
 
@@ -311,7 +311,7 @@
 
 /obj/structure/chrono_field
 	name = "eradication field"
-	desc = "An aura of time-bluespace energy."
+	desc = "Uma aura de energia do espaço-tempo."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chronofield"
 	density = FALSE
@@ -379,7 +379,7 @@
 			freed_movable.forceMove(drop_location())
 		qdel(src)
 	else if(timetokill <= 0)
-		to_chat(captured, span_notice("As the last essence of your being is erased from time, you are taken back to your most enjoyable memory. You feel happy..."))
+		to_chat(captured, span_notice("Como a última essência de seu ser é apagada do tempo, você é levado de volta para sua memória mais agradável. Você se sente feliz..."))
 		var/mob/dead/observer/ghost = captured.ghostize(can_reenter_corpse = TRUE)
 		if(captured.mind)
 			if(ghost)

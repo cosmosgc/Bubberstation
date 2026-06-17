@@ -236,7 +236,7 @@
 // Used in mind linker to talk to everyone in the network.
 /datum/action/innate/linked_speech
 	name = "Mind Link Speech"
-	desc = "Send a psychic message to everyone connected to your Link."
+	desc = "Envie uma mensagem psíquica para todos ligados ao seu Link."
 	button_icon_state = "link_speech"
 	button_icon = 'icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
@@ -268,7 +268,7 @@
 		return
 
 	if(QDELETED(linker))
-		to_chat(owner, span_warning("The link seems to have been severed."))
+		to_chat(owner, span_warning("A ligação parece ter sido cortada."))
 		return
 
 	var/formatted_message = "<i><font color=[linker.chat_color]>\[[linker_parent.real_name]'s [linker.network_name]\] <b>[owner]:</b> [message]</font></i>"

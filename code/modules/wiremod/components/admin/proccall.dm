@@ -9,7 +9,7 @@
  */
 /obj/item/circuit_component/proccall
 	display_name = "Proc Call"
-	desc = "A component that calls a proc on an object."
+	desc = "Um componente que chama um processo sobre um objeto."
 	category = "Admin"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL|CIRCUIT_FLAG_ADMIN
 

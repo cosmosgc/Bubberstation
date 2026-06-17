@@ -18,7 +18,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire
 	name = "legionnaire"
-	desc = "A towering skeleton, embodying the terrifying power of Legion."
+	desc = "Um esqueleto imponente, encarnando o poder aterrorizante da Legião."
 	icon_state = "legionnaire"
 	icon_living = "legionnaire"
 	icon_aggro = "legionnaire"
@@ -33,13 +33,13 @@
 	attack_verb_simple = "slash your arms at"
 	attack_sound = 'sound/items/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
-	throw_message = "doesn't affect the sturdiness of"
+	throw_message = "Não afeta a resistência de"
 	speed = 1
 	move_to_delay = 3
 	mouse_opacity = MOUSE_OPACITY_ICON
 	mob_biotypes = MOB_ORGANIC|MOB_UNDEAD|MOB_MINING
 	death_sound = 'sound/effects/magic/curse.ogg'
-	death_message = "'s arms reach out before it falls apart onto the floor, lifeless."
+	death_message = "Os braços se estendem antes que caia no chão, sem vida."
 	loot_drop = /obj/item/crusher_trophy/legionnaire_spine
 
 	attack_action_types = list(/datum/action/innate/elite_attack/legionnaire_charge,
@@ -56,25 +56,25 @@
 /datum/action/innate/elite_attack/legionnaire_charge
 	name = "Legionnaire Charge"
 	button_icon_state = "legionnaire_charge"
-	chosen_message = span_boldwarning("You will attempt to grab your opponent and throw them.")
+	chosen_message = span_boldwarning("Você tentará agarrar seu oponente e jogá-los.")
 	chosen_attack_num = LEGIONNAIRE_CHARGE
 
 /datum/action/innate/elite_attack/head_detach
 	name = "Release Head"
 	button_icon_state = "head_detach"
-	chosen_message = span_boldwarning("You will now detach your head or kill it if it is already released.")
+	chosen_message = span_boldwarning("Agora você vai soltar sua cabeça ou matá-la se já estiver liberada.")
 	chosen_attack_num = HEAD_DETACH
 
 /datum/action/innate/elite_attack/bonfire_teleport
 	name = "Bonfire Teleport"
 	button_icon_state = "bonfire_teleport"
-	chosen_message = span_boldwarning("You will leave a bonfire.  Second use will let you swap positions with it indefinitely.  Using this move on the same tile as your active bonfire removes it.")
+	chosen_message = span_boldwarning("Você vai deixar uma fogueira. O segundo uso permitirá trocar posições com ele indefinidamente. Usando esse movimento no mesmo azulejo que sua fogueira ativa o remove.")
 	chosen_attack_num = BONFIRE_TELEPORT
 
 /datum/action/innate/elite_attack/spew_smoke
 	name = "Spew Smoke"
 	button_icon_state = "spew_smoke"
-	chosen_message = span_boldwarning("Your head will spew smoke in an area, wherever it may be.")
+	chosen_message = span_boldwarning("Sua cabeça vai vomitar fumaça em uma área, onde quer que esteja.")
 	chosen_attack_num = SPEW_SMOKE
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/OpenFire()
@@ -236,7 +236,7 @@
 //The legionnaire's head.  Basically the same as any legion head, but we have to tell our creator when we die so they can generate another head.
 /mob/living/simple_animal/hostile/asteroid/elite/legionnairehead
 	name = "legionnaire head"
-	desc = "The legionnaire's head floating by itself.  One shouldn't get too close, though once it sees you, you really don't have a choice."
+	desc = "A cabeça do legionário flutuando sozinha. Não se deve chegar muito perto, mas quando te vir, não terá escolha."
 	icon_state = "legionnaire_head"
 	icon_living = "legionnaire_head"
 	icon_aggro = "legionnaire_head"
@@ -250,11 +250,11 @@
 	attack_verb_simple = "bite at"
 	attack_sound = 'sound/effects/curse/curse1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
-	throw_message = "simply misses"
+	throw_message = "Simplesmente erra"
 	speed = 0
 	move_to_delay = 2
 	del_on_death = 1
-	death_message = "crumbles away!"
+	death_message = "Desfaz-se!"
 	faction = null
 	ranged = FALSE
 	var/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/body = null
@@ -267,7 +267,7 @@
 //The legionnaire's bonfire, which can be swapped positions with.  Also sets flammable living beings on fire when they walk over it.
 /obj/structure/legionnaire_bonfire
 	name = "bone pile"
-	desc = "A pile of bones which seems to occasionally move a little.  It's probably a good idea to smash them."
+	desc = "Uma pilha de ossos que parece se mover um pouco. Provavelmente é uma boa ideia esmagá-los."
 	icon = 'icons/obj/mining_zones/legionnaire_bonfire.dmi'
 	icon_state = "bonfire"
 	max_integrity = 100

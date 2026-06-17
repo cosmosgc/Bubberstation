@@ -1,6 +1,6 @@
 /obj/machinery/bouldertech
 	name = "bouldertech brand refining machine"
-	desc = "You shouldn't be seeing this! And bouldertech isn't even a real company!"
+	desc = "Você não deveria estar vendo isso! E a Bouldertech nem é uma empresa de verdade!"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "ore_redemption"
 	base_icon_state = "ore_redemption"
@@ -105,7 +105,7 @@
 
 	var/list/datum/reagents/booster_list = get_booster_reagents()
 	if(length(booster_list))
-		. += span_notice("This machine's output is boosted by <b>chemical intake:</b><br>")
+		. += span_notice("A saída desta máquina é impulsionada por<b>Ingestão química:</b><br>")
 		for(var/datum/reagent/increment as anything in booster_list)
 			. += span_info("&bull; [increment::name]: Provides [booster_list[increment] * 10]% Boost")
 		. += span_notice("<br>Upon being boosted successfully, \the [src] will produce [EXAMINE_HINT("[waste_chemical.name]")].")
@@ -323,10 +323,10 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "Ancore-o primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(panel_open)
-		balloon_alert(user, "close panel!")
+		balloon_alert(user, "Feche o painel!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	var/obj/item/boulder/boulder = locate(/obj/item/boulder) in src

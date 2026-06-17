@@ -75,10 +75,10 @@
 	SIGNAL_HANDLER
 
 	if(COOLDOWN_TIMELEFT(src, blood_timer) <= BLOOD_TIMER_HALWAY + 2 && COOLDOWN_TIMELEFT(src, blood_timer) >= BLOOD_TIMER_HALWAY - 2) //just about halfway
-		to_chat(owner.current, span_cult_bold("You need new blood from your Master!"))
+		to_chat(owner.current, span_cult_bold("Você precisa de sangue novo do seu Mestre!"))
 	if(!COOLDOWN_FINISHED(src, blood_timer))
 		return
-	to_chat(owner.current, span_cult_bold("You are out of blood!"))
+	to_chat(owner.current, span_cult_bold("Você está sem sangue!"))
 	to_chat(revenge_ghoul.owner.current, span_cult_bold("[owner.current] has ran out of blood and is no longer in the fold!"))
 	owner.remove_antag_datum(/datum/antagonist/ex_ghoul)
 
@@ -94,7 +94,7 @@
 /datum/reagent/blood/bloodsucker/expose_mob(mob/living/exposed_mob, methods, reac_volume, show_message, touch_protection)
 	var/datum/antagonist/ex_ghoul/former_ghoul = exposed_mob.mind.has_antag_datum(/datum/antagonist/ex_ghoul)
 	if(former_ghoul)
-		to_chat(exposed_mob, span_cult("You feel the blood restore you... You feel safe."))
+		to_chat(exposed_mob, span_cult("Você sente o sangue te restaurar... Você se sente segura."))
 		COOLDOWN_RESET(former_ghoul, blood_timer)
 		COOLDOWN_START(former_ghoul, blood_timer, BLOOD_TIMER_REQUIREMENT)
 	return ..()

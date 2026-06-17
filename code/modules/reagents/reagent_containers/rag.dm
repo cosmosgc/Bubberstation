@@ -1,6 +1,6 @@
 /obj/item/rag
 	name = "damp rag"
-	desc = "For cleaning up messes, you suppose."
+	desc = "Por limpar bagunças, você acha."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "rag"
@@ -37,7 +37,7 @@
 	if(loc != user || blood_level <= 4)
 		return
 
-	balloon_alert(user, "wringing out...")
+	balloon_alert(user, "Destruindo...")
 	if(!do_after(user, (wrings + 2) * 1 SECONDS, src))
 		return
 
@@ -52,7 +52,7 @@
 /obj/item/rag/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/reagent_containers/spray))
 		if(tool.reagents.total_volume <= 0)
-			balloon_alert(user, "spray is empty!")
+			balloon_alert(user, "O spray está vazio!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(reagents.holder_full())
@@ -87,7 +87,7 @@
 	var/log_object = "containing [reagentlist]"
 	if(!carbon_target.is_mouth_covered())
 		reagents.trans_to(carbon_target, reagents.total_volume, transferred_by = user, methods = INGEST)
-		carbon_target.visible_message(span_danger("[user] smothers \the [carbon_target] with \the [src]!"), span_userdanger("[user] smothers you with \the [src]!"), span_hear("You hear some struggling and muffled cries of surprise."))
+		carbon_target.visible_message(span_danger("[user] smothers \the [carbon_target] with \the [src]!"), span_userdanger("[user] smothers you with \the [src]!"), span_hear("Você ouve gritos de surpresa."))
 		log_combat(user, carbon_target, "smothered", src, log_object)
 	else
 		reagents.expose(carbon_target, TOUCH)

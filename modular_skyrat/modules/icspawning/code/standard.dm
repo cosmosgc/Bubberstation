@@ -8,7 +8,7 @@
 
 /obj/item/clothing/suit/armor/vest/debug
 	name = "Bluespace Tech vest"
-	desc = "A sleek piece of armour designed for Bluespace agents."
+	desc = "Uma armadura elegante projetada para agentes do espaço azul."
 	armor_type = /datum/armor/vest_debug
 	w_class = WEIGHT_CLASS_TINY
 
@@ -67,7 +67,7 @@
 
 /obj/item/storage/part_replacer/bluespace/tier4/bst
 	name = "\improper Bluespace Tech RPED"
-	desc = "A specialized bluespace RPED for technicians that can manufacture stock parts on the fly. Alt-Right-Click to manufacture parts, change settings, or clear its internal storage."
+	desc = "Um RPED de espaço azul especializado para técnicos que podem fabricar peças de estoque. Alt-Right-Click para fabricar peças, mudar configurações ou limpar seu armazenamento interno."
 	/// Whether or not auto-clear is enabled
 	var/auto_clear = TRUE
 	/// List of valid types for pick_stock_part().

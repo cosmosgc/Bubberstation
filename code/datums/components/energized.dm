@@ -113,7 +113,7 @@
 	do_sparks(4, FALSE, source)
 	playsound(parent, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	source.audible_message(span_danger("[parent] makes a loud electric crackle!"))
-	to_chat(future_tram_victim, span_userdanger("You hear a loud electric crackle!"))
+	to_chat(future_tram_victim, span_userdanger("Você ouve um barulho elétrico alto!"))
 	future_tram_victim.electrocute_act(15, parent, 1)
 	return TRUE
 

@@ -5,13 +5,13 @@
 
 /datum/scripture/slab/kindle
 	name = "Kindle"
-	desc = "Stuns and mutes a target from a short range."
+	desc = "Stuns e muda um alvo de curto alcance."
 	tip = "Stuns and mutes a target from a short range."
 	button_icon_state = "Kindle"
 	power_cost = 125
 	invocation_time = 1 SECONDS
-	invocation_text = list("Divinity, show them your light!")
-	after_use_text = "Let the power flow through you!"
+	invocation_text = list("Divindade, mostre sua luz!")
+	after_use_text = "Deixe o poder fluir através de você!"
 	slab_overlay = "volt"
 	use_time = 15 SECONDS
 	cogs_required = 1
@@ -37,7 +37,7 @@
 		addtimer(CALLBACK(hit_mob, TYPE_PROC_REF(/atom, cut_overlay), forbearance), 10 SECONDS)
 
 		hit_mob.visible_message(span_warning("[hit_mob] stares blankly, as a field of energy flows around them."), \
-									   span_userdanger("You feel a slight shock as a wave of energy flows past you."))
+									   span_userdanger("Você sente um leve choque quando uma onda de energia passa por você."))
 
 		playsound(invoker, 'sound/effects/magic/mm_hit.ogg', 50, TRUE)
 		return TRUE
@@ -56,7 +56,7 @@
 		hit_mob.say("Fwebar uloft'gib mirlig yro'fara!")
 
 		to_chat(invoker, span_warning("Some force greater than you intervenes! [hit_mob] is protected by Nar'sie!"))
-		to_chat(hit_mob, span_warning("You are protected by your faith to Nar'sie!"))
+		to_chat(hit_mob, span_warning("Você está protegido pela sua fé para Nar'sie!"))
 
 		playsound(invoker, 'sound/effects/magic/mm_hit.ogg', 50, TRUE)
 		return TRUE

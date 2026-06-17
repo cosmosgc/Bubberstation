@@ -1,7 +1,7 @@
 /// Place some grappling tentacles underfoot
 /datum/action/cooldown/mob_cooldown/goliath_tentacles
 	name = "Unleash Tentacles"
-	desc = "Unleash burrowed tentacles at a targeted location, grappling targets after a delay."
+	desc = "Solte tentáculos enterrados em um local alvo, atacando alvos após um atraso."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
@@ -36,7 +36,7 @@
 /// Place grappling tentacles around you to grab attackers
 /datum/action/cooldown/mob_cooldown/tentacle_burst
 	name = "Tentacle Burst"
-	desc = "Unleash burrowed tentacles in an area around you, grappling targets after a delay."
+	desc = "Solte tentáculos enterrados em uma área ao seu redor, atacando alvos após um atraso."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
@@ -59,7 +59,7 @@
 /// Summon a line of tentacles towards the target
 /datum/action/cooldown/mob_cooldown/tentacle_grasp
 	name = "Tentacle Grasp"
-	desc = "Unleash burrowed tentacles in a line towards a targeted location, grappling targets after a delay."
+	desc = "Solte tentáculos enterrados em uma linha em direção a um local alvo, atacando alvos após um atraso."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"

@@ -2,7 +2,7 @@
 #define PHYSGUN_EFFECTS "physgun_effects"
 /obj/item/physic_manipulation_tool
 	name = "physic gun"
-	desc = "A tool for manipulating physics of objects."
+	desc = "Uma ferramenta para manipular física de objetos."
 	icon = 'modular_zubbers/icons/obj/equipment/architector_items.dmi'
 	icon_state = "physgun_grayscale"
 	inhand_icon_state = "physgun_grayscale"
@@ -60,10 +60,10 @@
 			playsound(user, 'modular_zubbers/sound/phystools/physgun_cant_grab.ogg', 100, TRUE)
 			return
 		if(!COOLDOWN_FINISHED(src, grab_cooldown) && !handled_atom)
-			user.balloon_alert(user, "on cooldown!")
+			user.balloon_alert(user, "Na refrigeração!")
 			return
 		if(!range_check(target, user) && !handled_atom)
-			user.balloon_alert(user, "too far!")
+			user.balloon_alert(user, "Muito longe!")
 			return
 		catch_atom(target, user)
 		COOLDOWN_START(src, grab_cooldown, use_cooldown)
@@ -84,13 +84,13 @@
 
 /obj/item/physic_manipulation_tool/examine(mob/user)
 	. = ..()
-	. += span_notice("Express manual:")
-	. += span_notice("Use ALT + LMB on the device to pick color.")
-	. += span_notice("Use LMB on the object to drag the object.")
-	. += span_green("Use RMB while dragging to freeze the object.")
-	. += span_red("Use LMB while dragging to release the object.")
-	. += span_notice("Use CTRL + LMB while dragging to throw the object.")
-	. += span_notice("Use ALT + LMB while dragging to rotate object.")
+	. += span_notice("Manual expresso:")
+	. += span_notice("Use ALT + LMB no dispositivo para escolher cor.")
+	. += span_notice("Use LMB no objeto para arrastar o objeto.")
+	. += span_green("Use RMB enquanto arrasta para congelar o objeto.")
+	. += span_red("Use LMB enquanto arrasta para liberar o objeto.")
+	. += span_notice("Use CTRL + LMB enquanto arrasta para jogar o objeto.")
+	. += span_notice("Use ALT + LMB enquanto arrasta para girar o objeto.")
 
 /**
  * The movement of the dragged object.
@@ -171,7 +171,7 @@
 	. = COMSIG_MOB_CANCEL_CLICKON
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(!advanced)
-			physgun_user.balloon_alert(physgun_user, "not enough power!")
+			physgun_user.balloon_alert(physgun_user, "Não há energia suficiente!")
 			return
 		pause_atom(handled_atom)
 		return
@@ -186,7 +186,7 @@
 /obj/item/physic_manipulation_tool/proc/on_living_resist(mob/living)
 	SIGNAL_HANDLER
 	if(force_grab)
-		handled_atom.balloon_alert(handled_atom, "can't escape!")
+		handled_atom.balloon_alert(handled_atom, "Não posso escapar!")
 		return
 	if(handled_atom)
 		release_atom()
@@ -319,7 +319,7 @@
 	SIGNAL_HANDLER
 
 	if(force)
-		owner.balloon_alert(owner, "can't escape!")
+		owner.balloon_alert(owner, "Não posso escapar!")
 		return
 
 	if(!HAS_TRAIT(owner, TRAIT_PHYSGUN_PAUSE))

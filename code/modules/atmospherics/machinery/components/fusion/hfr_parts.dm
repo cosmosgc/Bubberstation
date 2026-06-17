@@ -8,7 +8,7 @@
 	base_icon_state = "core"
 
 	name = "thermomachine"
-	desc = "Heats or cools gas in connected pipes."
+	desc = "Aquece ou esfria gás em tubos conectados."
 	anchored = TRUE
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
@@ -71,21 +71,21 @@
 
 /obj/machinery/atmospherics/components/unary/hypertorus/fuel_input
 	name = "HFR fuel input port"
-	desc = "Input port for the Hypertorus Fusion Reactor, designed to take in fuels with the optimal fuel mix being a 50/50 split."
+	desc = "Porta de entrada para o reator Hypertorus Fusion, projetado para absorver combustíveis com a mistura de combustível sendo 50/50."
 	icon_state = "fuel_input"
 	base_icon_state = "fuel_input"
 	circuit = /obj/item/circuitboard/machine/HFR_fuel_input
 
 /obj/machinery/atmospherics/components/unary/hypertorus/waste_output
 	name = "HFR waste output port"
-	desc = "Waste port for the Hypertorus Fusion Reactor, designed to output the hot waste gases coming from the core of the machine."
+	desc = "Porta de lixo para o reator Hypertorus Fusion, projetado para produzir os gases de resíduos quentes vindos do núcleo da máquina."
 	icon_state = "waste_output"
 	base_icon_state = "waste_output"
 	circuit = /obj/item/circuitboard/machine/HFR_waste_output
 
 /obj/machinery/atmospherics/components/unary/hypertorus/moderator_input
 	name = "HFR moderator input port"
-	desc = "Moderator port for the Hypertorus Fusion Reactor, designed to move gases inside the machine to cool and control the flow of the reaction."
+	desc = "Porta de moderador para o reator de fusão Hypertorus, projetado para mover gases dentro da máquina para esfriar e controlar o fluxo da reação."
 	icon_state = "moderator_input"
 	base_icon_state = "moderator_input"
 	circuit = /obj/item/circuitboard/machine/HFR_moderator_input
@@ -136,7 +136,7 @@
 
 /obj/machinery/hypertorus/interface
 	name = "HFR interface"
-	desc = "Interface for the HFR to control the flow of the reaction."
+	desc = "Interface para o HFR controlar o fluxo da reação."
 	icon_state = "interface"
 	base_icon_state = "interface"
 	circuit = /obj/item/circuitboard/machine/HFR_interface
@@ -156,7 +156,7 @@
 	var/obj/machinery/atmospherics/components/unary/hypertorus/core/centre = locate() in T
 
 	if(!centre || !centre.check_part_connectivity())
-		to_chat(user, span_notice("Check all parts and then try again."))
+		to_chat(user, span_notice("Verifique todas as peças e tente novamente."))
 		return TRUE
 
 	connected_core = centre
@@ -174,7 +174,7 @@
 			ui = new(user, src, "Hypertorus", name)
 			ui.open()
 	else
-		to_chat(user, span_notice("Activate the machine first by using a multitool on the interface."))
+		to_chat(user, span_notice("Ative a máquina primeiro usando uma multitool na interface."))
 		ui.close()
 
 /obj/machinery/hypertorus/interface/proc/gas_list_to_gasid_list(list/gas_list)
@@ -376,39 +376,39 @@
 
 /obj/machinery/hypertorus/corner
 	name = "HFR corner"
-	desc = "Structural piece of the machine."
+	desc = "Um pedaço estrutural da máquina."
 	icon_state = "corner"
 	base_icon_state = "corner"
 	circuit = /obj/item/circuitboard/machine/HFR_corner
 
 /obj/item/paper/guides/jobs/atmos/hypertorus
 	name = "paper- 'Quick guide to safe handling of the HFR'"
-	default_raw_text = "<B>How to safely(TM) operate the Hypertorus</B><BR>\
-	-Build the machine as it�s shown in the main guide.<BR>\
-	-Make a 50/50 gasmix of tritium and hydrogen totalling around 2000 moles.<BR>\
-	-Start the machine, fill up the cooling loop with plasma/hypernoblium and use space or freezers to cool it.<BR>\
-	-Connect the fuel mix into the fuel injector port, allow only 1000 moles into the machine to ease the kickstart of the reaction<BR>\
-	-Set the Heat conductor to 500 when starting the reaction, reset it to 100 when power level is higher than 1<BR>\
-	-In the event of a meltdown, set the heat conductor to max and set the current damper to max. Set the fuel injection to min. \
-	If the heat output doesn�t go negative, try changing the magnetic costrictors untill heat output goes negative. \
-	Make the cooling stronger, put high heat capacity gases inside the moderator (hypernoblium will help dealing with the problem)<BR><BR>\
-	<B>Warnings:</B><BR>\
-	-You cannot dismantle the machine if the power level is over 0<BR>\
-	-You cannot power of the machine if the power level is over 0<BR>\
-	-You cannot dispose of waste gases if power level is over 5<BR>\
-	-You cannot remove gases from the fusion mix if they are not helium and antinoblium<BR>\
-	-Hypernoblium will decrease the power of the mix by a lot<BR>\
-	-Antinoblium will INCREASE the power of the mix by a lot more<BR>\
-	-High heat capacity gases are harder to heat/cool<BR>\
-	-Low heat capacity gases are easier to heat/cool<BR>\
-	-The machine consumes 50 KW per power level, reaching 350 KW at power level 6 so prepare the SM accordingly<BR>\
-	-In case of a power shortage, the fusion reaction will CONTINUE but the cooling will STOP<BR><BR>\
-	The writer of the quick guide will not be held responsible for misuses and meltdown caused by the use of the guide, \
-	use more advanced guides to understando how the various gases will act as moderators."
+	default_raw_text = "<B>Como operar o Hypertorus</B><BR>\
+-Construa a máquina como mostra no guia principal.<BR>\
+- Faça um gás 50/50 de trítio e hidrogênio totalizando cerca de 2000 toupeiras.<BR>\
+-Inicie a máquina, encha o laço de refrigeração com plasma/hipernoblium e use espaço ou freezers para esfriá-lo.<BR>\
+- Conectar a mistura de combustível na porta do injetor de combustível, permitir apenas 1000 moles na máquina para facilitar o arranque da reação<BR>\
+- Ajuste o condutor de calor para 500 quando iniciar a reação, resetá-lo para 100 quando o nível de potência é superior a 1<BR>\
+- Em caso de fusão, ajuste o condutor de calor para o máximo e ajuste o amortecedor de corrente para o máximo. Coloque a injeção de combustível no min.\
+Se a saída de calor não for negativa, tente mudar os custos magnéticos até que a saída de calor seja negativa.\
+Faça o resfriamento mais forte, coloque gases de alta capacidade de calor dentro do moderador (hipernoblium ajudará a lidar com o problema)<BR><BR>\
+	<B>Avisos:</B><BR>\
+Você não pode desmontar a máquina se o nível de energia está acima de 0<BR>\
+- Você não pode poder da máquina se o nível de potência é mais de 0<BR>\
+- Você não pode se livrar de gases se o nível de energia é mais de 5<BR>\
+- Você não pode remover gases da mistura de fusão se eles não são hélio e antinoblium<BR>\
+-Hypernoblium vai diminuir muito o poder da mistura.<BR>\
+- Antinoblium vai aumentar o poder da mistura por muito mais<BR>\
+- Gases de alta capacidade de calor são mais difíceis de aquecer/frio<BR>\
+- Gases de baixa capacidade de calor são mais fáceis de aquecer/frio<BR>\
+- A máquina consome 50 KW por nível de potência, atingindo 350 KW no nível de potência 6 então prepare o SM de acordo.<BR>\
+Em caso de falta de energia, a reação de fusão continuará, mas o resfriamento irá parar.<BR><BR>\
+O escritor do guia rápido não será responsabilizado pelos abusos e colapso causados pelo uso do guia,\
+Use guias mais avançados para entender como os vários gases agirão como moderadores."
 
 /obj/item/hfr_box
 	name = "HFR box"
-	desc = "If you see this, call the police."
+	desc = "Se vir isso, chame a polícia."
 	icon = 'icons/obj/machines/atmospherics/hypertorus.dmi'
 	icon_state = "error"
 	///What kind of box are we handling?
@@ -418,14 +418,14 @@
 
 /obj/item/hfr_box/corner
 	name = "HFR box corner"
-	desc = "Place this as the corner of your 3x3 multiblock fusion reactor"
+	desc = "Coloque isto como o canto do seu reator de fusão multibloco 3x3"
 	icon_state = "box_corner"
 	box_type = "corner"
 	part_path = /obj/machinery/hypertorus/corner
 
 /obj/item/hfr_box/body
 	name = "HFR box body"
-	desc = "Place this on the sides of the core box of your 3x3 multiblock fusion reactor"
+	desc = "Coloque isto nos lados da caixa do núcleo do seu reator de fusão multibloco 3x3"
 	box_type = "body"
 	icon_state = "box_body"
 
@@ -450,7 +450,7 @@
 
 /obj/item/hfr_box/core
 	name = "HFR box core"
-	desc = "Activate this with a multitool to deploy the full machine after setting up the other boxes"
+	desc = "Ative isso com uma multitool para implantar a máquina completa depois de configurar as outras caixas."
 	icon_state = "box_core"
 	box_type = "core"
 	part_path = /obj/machinery/atmospherics/components/unary/hypertorus/core

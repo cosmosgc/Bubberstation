@@ -43,11 +43,11 @@ SUBSYSTEM_DEF(pai)
 	var/mob/user = ui.user
 	var/datum/pai_candidate/candidate = candidates[user.ckey]
 	if(is_banned_from(user.ckey, ROLE_PAI))
-		to_chat(user, span_warning("You are banned from playing pAI!"))
+		to_chat(user, span_warning("Você está proibido de jogar pai!"))
 		ui.close()
 		return FALSE
 	if(isnull(candidate))
-		to_chat(user, span_warning("There was an error. Please resubmit."))
+		to_chat(user, span_warning("Houve um erro. Por favor, submeta novamente."))
 		ui.close()
 		return FALSE
 	switch(action)
@@ -72,10 +72,10 @@ SUBSYSTEM_DEF(pai)
 			return TRUE
 		if("withdraw")
 			if(!candidate.ready)
-				to_chat(user, span_warning("You need to submit an application before you can withdraw one."))
+				to_chat(user, span_warning("Você precisa apresentar um pedido antes de poder retirar um."))
 				return FALSE
 			candidate.ready = FALSE
-			to_chat(user, span_notice("Your pAI candidacy has been withdrawn."))
+			to_chat(user, span_notice("Sua candidatura foi retirada."))
 			return TRUE
 	return FALSE
 
@@ -99,12 +99,12 @@ SUBSYSTEM_DEF(pai)
  */
 /datum/controller/subsystem/pai/proc/submit_alert(mob/user)
 	if(submit_spam)
-		to_chat(user, span_warning("Your candidacy has been submitted, but pAI cards have been alerted too recently."))
+		to_chat(user, span_warning("Sua candidatura foi apresentada, mas os cartões foram alertados muito recentemente."))
 		return FALSE
 	submit_spam = TRUE
 	for(var/obj/item/pai_card/pai_card as anything in pai_card_list)
 		if(!pai_card.pai)
 			pai_card.alert_update()
-	to_chat(user, span_notice("Your pAI candidacy has been submitted!"))
+	to_chat(user, span_notice("Sua candidatura foi apresentada!"))
 	addtimer(VARSET_CALLBACK(src, submit_spam, FALSE), PAI_SPAM_TIME, TIMER_UNIQUE|TIMER_DELETE_ME)
 	return TRUE

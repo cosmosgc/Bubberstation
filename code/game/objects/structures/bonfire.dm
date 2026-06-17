@@ -9,7 +9,7 @@
  */
 /obj/structure/bonfire
 	name = "bonfire"
-	desc = "For grilling, broiling, charring, smoking, heating, roasting, toasting, simmering, searing, melting, and occasionally burning things."
+	desc = "Para grelhar, grelhar, carbonizar, fumar, aquecer, assar, torrar, ferver, ferver, derreter e, ocasionalmente, queimar coisas."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "bonfire"
 	light_color = LIGHT_COLOR_FIRE
@@ -43,7 +43,7 @@
 /obj/structure/bonfire/attackby(obj/item/used_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(used_item, /obj/item/stack/rods) && !can_buckle && !grill)
 		var/obj/item/stack/rods/rods = used_item
-		var/choice = tgui_alert(user, "What would you like to construct?", "Bonfire", list("Stake","Grill"))
+		var/choice = tgui_alert(user, "O que gostaria de construir?", "Bonfire", list("Stake","Grill"))
 		if(isnull(choice))
 			return
 		rods.use(1)

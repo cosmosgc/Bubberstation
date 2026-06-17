@@ -122,7 +122,7 @@
 /datum/component/experiment_handler/proc/try_run_handheld_experiment_async(datum/source, atom/target, mob/user)
 	if (selected_experiment == null && !(config_flags & EXPERIMENT_CONFIG_ALWAYS_ACTIVE))
 		if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
-			to_chat(user, span_notice("You do not have an experiment selected!"))
+			to_chat(user, span_notice("Você não tem um experimento selecionado!"))
 		return
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/research, SKILL_SPEED_MODIFIER) //SKYRAT EDIT: Research Skill (simple research)
 	if(!(config_flags & EXPERIMENT_CONFIG_IMMEDIATE_ACTION) && !do_after(user, 1 SECONDS * skill_modifier, target = target)) //SKYRAT EDIT: Research Skill (simple research)
@@ -148,7 +148,7 @@
 	if (selected_experiment == null)
 		if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 			playsound(our_scanner, 'sound/machines/buzz/buzz-sigh.ogg', 25)
-			to_chat(our_scanner, span_notice("No experiment selected!"))
+			to_chat(our_scanner, span_notice("Nenhum experimento selecionado!"))
 		return
 	var/successful_scan
 	for(var/scan_target in scanned_atoms)
@@ -156,7 +156,7 @@
 			successful_scan = TRUE
 	if(successful_scan)
 		playsound(our_scanner, 'sound/machines/ping.ogg', 25)
-		to_chat(our_scanner, span_notice("The scan succeeds."))
+		to_chat(our_scanner, span_notice("Uma varredura tem sucesso."))
 	else if(!(config_flags & EXPERIMENT_CONFIG_SILENT_FAIL))
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 25)
 		our_scanner.say("The scan did not result in anything.")

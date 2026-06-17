@@ -2,7 +2,7 @@
 
 	name = "lunar water"
 	gender = PLURAL
-	desc = "Semi-shallow water containing a variety of natural and invasive fish species."
+	desc = "Água semi-esmaltada contendo uma variedade de espécies de peixes naturais e invasores."
 
 	icon = 'icons/turf/floors/moonwater.dmi'
 	base_icon_state = "moonwater"
@@ -26,7 +26,7 @@
 /turf/open/water/moonstation/infested
 
 	name = "carp-infested deep treacherous lunar water"
-	desc = "Very dangerous lunar water. You feel like it would be a very bad idea to enter this water unprepared."
+	desc = "Água lunar muito perigosa. Você acha que seria uma péssima ideia entrar nesta água despreparada."
 
 	immerse_overlay = "immerse_deep"
 	is_swimming_tile = TRUE

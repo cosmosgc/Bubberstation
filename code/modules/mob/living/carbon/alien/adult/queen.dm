@@ -94,7 +94,7 @@
 //Queen verbs
 /datum/action/cooldown/alien/make_structure/lay_egg
 	name = "Lay Egg"
-	desc = "Lay an egg to produce huggers to impregnate prey with."
+	desc = "Coloque um ovo para produzir abraçadores para impregnar presas."
 	button_icon_state = "alien_egg"
 	plasma_cost = 75
 	made_structure_type = /obj/structure/alien/egg
@@ -106,7 +106,7 @@
 //Button to let queen choose her praetorian.
 /datum/action/cooldown/alien/promote
 	name = "Create Royal Parasite"
-	desc = "Produce a royal parasite to grant one of your children the honor of being your Praetorian."
+	desc = "Produzir um parasita real para conceder a um de seus filhos a honra de ser seu pretoriano."
 	button_icon_state = "alien_queen_promote"
 	/// The promotion only takes plasma when completed, not on activation.
 	var/promotion_plasma_cost = 500
@@ -140,12 +140,12 @@
 		return TRUE
 
 	if(!owner.get_empty_held_indexes())
-		to_chat(owner, span_warning("You must have an empty hand before preparing the parasite."))
+		to_chat(owner, span_warning("Deve ter uma mão vazia antes de preparar o parasita."))
 		return FALSE
 
 	var/obj/item/queen_promotion/new_promotion = new(owner.loc)
 	if(!owner.put_in_hands(new_promotion, del_on_fail = TRUE))
-		to_chat(owner, span_noticealien("You fail to prepare a parasite."))
+		to_chat(owner, span_noticealien("Você não consegue preparar um parasita."))
 		return FALSE
 
 	to_chat(owner, span_noticealien("Use [new_promotion] on one of your children to promote her to a Praetorian!"))
@@ -153,7 +153,7 @@
 
 /obj/item/queen_promotion
 	name = "\improper royal parasite"
-	desc = "Inject this into one of your grown children to promote her to a Praetorian!"
+	desc = "Injete isso em um de seus filhos adultos para promovê-la a um pretoriano!"
 	icon_state = "alien_medal"
 	item_flags = NOBLUDGEON | ABSTRACT | DROPDEL
 	icon = 'icons/mob/nonhuman-player/alien.dmi'
@@ -168,11 +168,11 @@
 		CRASH("[type] was created and handled by a mob ([queen]) that didn't have a promotion action associated.")
 
 	if(!isalienadult(to_promote) || isalienroyal(to_promote))
-		to_chat(queen, span_noticealien("You may only use this with your adult, non-royal children!"))
+		to_chat(queen, span_noticealien("Você só pode usar isso com seus filhos adultos e não reais!"))
 		return
 
 	if(!promotion.IsAvailable())
-		to_chat(queen, span_noticealien("You cannot promote a child right now!"))
+		to_chat(queen, span_noticealien("Você não pode promover uma criança agora!"))
 		return
 
 	if(to_promote.stat != CONSCIOUS || !to_promote.mind || !to_promote.key)
@@ -183,7 +183,7 @@
 	to_chat(queen, span_noticealien("You have promoted [to_promote] to a Praetorian!"))
 	to_promote.visible_message(
 		span_alertalien("[to_promote] begins to expand, twist and contort!"),
-		span_noticealien("The queen has granted you a promotion to Praetorian!"),
+		span_noticealien("A rainha lhe concedeu uma promoção ao pretoriano!"),
 	)
 
 	var/mob/living/carbon/alien/lucky_winner = to_promote

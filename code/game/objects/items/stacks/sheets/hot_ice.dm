@@ -2,7 +2,7 @@
 	name = "hot ice"
 	icon_state = "hot-ice"
 	inhand_icon_state = null
-	singular_name = "hot ice piece"
+	singular_name = "Gelado quente"
 	icon = 'icons/obj/stack_objects.dmi'
 	mats_per_unit = list(/datum/material/hot_ice=SHEET_MATERIAL_AMOUNT)
 	material_type = /datum/material/hot_ice

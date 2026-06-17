@@ -10,7 +10,7 @@
 
 /obj/item/glassblowing/glass_globe
 	name = "glass globe"
-	desc = "A glass bowl that is capable of carrying things."
+	desc = "Uma tigela de vidro capaz de carregar coisas."
 	icon_state = "glass_globe"
 	material_flags = MATERIAL_COLOR
 	custom_materials = list(
@@ -19,7 +19,7 @@
 
 /datum/export/glassblowing
 	cost = CARGO_CRATE_VALUE * 5
-	unit_name = "glassblowing product"
+	unit_name = "Produto de sopro de vidro"
 	export_types = list(
 		/obj/item/glassblowing/glass_lens,
 		/obj/item/glassblowing/glass_globe,
@@ -33,12 +33,12 @@
 
 /obj/item/glassblowing/glass_lens
 	name = "glass lens"
-	desc = "A convex glass lens that would make an excellent magnifying glass if it were attached to a handle."
+	desc = "Uma lente de vidro convexa que daria uma excelente lupa se estivesse presa a um cabo."
 	icon_state = "glass_lens"
 
 /obj/item/reagent_containers/cup/bowl/blowing_glass
 	name = "glass bowl"
-	desc = "A glass bowl that is capable of carrying things."
+	desc = "Uma tigela de vidro capaz de carregar coisas."
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_bowl"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT)
@@ -46,14 +46,14 @@
 
 /obj/item/reagent_containers/cup/beaker/large/blowing_glass
 	name = "glass cup"
-	desc = "A glass cup that is capable of carrying liquids."
+	desc = "Um copo de vidro capaz de transportar líquidos."
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_cup"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
 
 /obj/item/plate/blowing_glass
 	name = "glass plate"
-	desc = "A glass plate that is capable of carrying things."
+	desc = "Uma placa de vidro capaz de carregar coisas."
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_plate"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT)
@@ -61,7 +61,7 @@
 
 /obj/item/glassblowing/molten_glass
 	name = "molten glass"
-	desc = "A glob of molten glass, ready to be shaped into art."
+	desc = "Um globo de vidro fundido, pronto para ser moldado em arte."
 	icon_state = "molten_glass"
 	///the cooldown if its still molten / requires heating up
 	COOLDOWN_DECLARE(remaining_heat)
@@ -103,7 +103,7 @@
 
 /obj/item/glassblowing/blowing_rod
 	name = "blowing rod"
-	desc = "A tool that is used to hold the molten glass as well as help shape it."
+	desc = "Uma ferramenta que é usada para segurar o vidro derretido, bem como ajudar a moldá-lo."
 	icon_state = "blow_pipe_empty"
 	tool_behaviour = TOOL_BLOWROD
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
@@ -132,7 +132,7 @@
  */
 /obj/item/glassblowing/proc/get_examine_message(obj/item/glassblowing/molten_glass/glass)
 	if(COOLDOWN_FINISHED(glass, remaining_heat))
-		. += span_warning("The glass has cooled down and will require reheating to modify! ")
+		. += span_warning("O vidro esfriou e vai precisar de reaquecimento para modificar!")
 	if(glass.steps_remaining[STEP_BLOW])
 		. += "The glass requires [glass.steps_remaining[STEP_BLOW]] more blowing actions! "
 	if(glass.steps_remaining[STEP_SPIN])
@@ -359,7 +359,7 @@
 		return
 
 	if(COOLDOWN_FINISHED(glass, remaining_heat))
-		balloon_alert(user, "glass too cool!")
+		balloon_alert(user, "Vidro muito legal!")
 		return FALSE
 
 	if(in_use)
@@ -431,7 +431,7 @@
 
 	if(step_id == STEP_BLOW || step_id == STEP_SPIN)
 		if(HAS_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING))
-			balloon_alert(user, "already glassblowing!")
+			balloon_alert(user, "Já estourando!")
 			return FALSE
 
 		ADD_TRAIT(user, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)
@@ -447,11 +447,11 @@
 			used_tool = user.is_holding_item_of_type(/obj/item/glassblowing/jacks)
 
 	if(!used_tool)
-		balloon_alert(user, "need the right tool!")
+		balloon_alert(user, "Preciso da ferramenta certa!")
 		return FALSE
 
 	if(HAS_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING))
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "Já está em uso!")
 		return FALSE
 
 	ADD_TRAIT(used_tool, TRAIT_CURRENTLY_GLASSBLOWING, TRAIT_GLASSBLOWING)
@@ -483,7 +483,7 @@
 
 /obj/item/glassblowing/jacks
 	name = "jacks"
-	desc = "A tool that helps shape glass during the art process."
+	desc = "Uma ferramenta que ajuda a moldar vidros durante o processo de arte."
 	icon_state = "jacks"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 
@@ -493,7 +493,7 @@
 
 /obj/item/glassblowing/paddle
 	name = "paddle"
-	desc = "A tool that helps shape glass during the art process."
+	desc = "Uma ferramenta que ajuda a moldar vidros durante o processo de arte."
 	icon_state = "paddle"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 
@@ -503,7 +503,7 @@
 
 /obj/item/glassblowing/shears
 	name = "shears"
-	desc = "A tool that helps shape glass during the art process."
+	desc = "Uma ferramenta que ajuda a moldar vidros durante o processo de arte."
 	icon_state = "shears"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 
@@ -513,7 +513,7 @@
 
 /obj/item/glassblowing/metal_cup
 	name = "metal cup"
-	desc = "A tool that helps shape glass during the art process."
+	desc = "Uma ferramenta que ajuda a moldar vidros durante o processo de arte."
 	icon_state = "metal_cup_empty"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 	var/has_sand = FALSE

@@ -11,9 +11,9 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 	inhand_icon_state = "nukietalkie"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	desc = "Use to send a declaration of hostilities to the target, delaying your shuttle departure for 20 minutes while they prepare for your assault.  \
-			Such a brazen move will attract the attention of powerful benefactors within the Syndicate, who will supply your team with a massive amount of bonus telecrystals.  \
-			Must be used within five minutes, or your benefactors will lose interest."
+	desc = "Use para enviar uma declaração de hostilidades ao alvo, atrasando sua partida por 20 minutos enquanto se preparam para seu ataque.\
+Tal movimento descarado atrairá a atenção de poderosos benfeitores dentro do Sindicato, que fornecerão à sua equipe uma enorme quantidade de bônus telecristais.\
+Deve ser usado em cinco minutos, ou seus benfeitores perderão o interesse."
 	var/declaring_war = FALSE
 	var/uplink_type = /obj/item/uplink/nuclear
 	var/announcement_sound = 'sound/announcer/alarm/nuke_alarm.ogg'
@@ -30,13 +30,13 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		return
 
 	if(are_you_sure != "Yes")
-		to_chat(user, span_notice("On second thought, the element of surprise isn't so bad after all."))
+		to_chat(user, span_notice("Pensando bem, o elemento surpresa não é tão ruim."))
 		return
 
 	var/war_declaration = "A syndicate fringe group has declared their intent to utterly destroy [station_name()] with a nuclear device, and dares the crew to try and stop them."
 
 	declaring_war = TRUE
-	var/custom_threat = tgui_alert(user, "Do you want to customize your declaration?", "Customize?", list("Yes", "No"))
+	var/custom_threat = tgui_alert(user, "Quer personalizar sua declaração?", "Customize?", list("Yes", "No"))
 	declaring_war = FALSE
 
 	if(!check_allowed(user))
@@ -61,18 +61,18 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 
 	var/war_declaration = "A syndicate fringe group has declared their intent to utterly destroy [station_name()] with a nuclear device, and dares the crew to try and stop them."
 
-	var/custom_threat = tgui_alert(usr, "Do you want to customize the declaration?", "Customize?", list("Yes", "No"))
+	var/custom_threat = tgui_alert(usr, "Quer personalizar a declaração?", "Customize?", list("Yes", "No"))
 
 	if(custom_threat == "Yes")
 		war_declaration = tgui_input_text(usr, "Insert your custom declaration", "Declaration", max_length = MAX_MESSAGE_LEN, multiline = TRUE, encode = FALSE)
 
 	if(!war_declaration)
-		tgui_alert(usr, "Invalid war declaration.", "Poor Choice of Words")
+		tgui_alert(usr, "Declaração de guerra inválida.", "Poor Choice of Words")
 		return
 
 	for(var/obj/item/circuitboard/computer/syndicate_shuttle/board as anything in GLOB.syndicate_shuttle_boards)
 		if(board.challenge_start_time)
-			tgui_alert(usr, "War has already been declared!", "War Was Declared")
+			tgui_alert(usr, "A guerra já foi declarada!", "War Was Declared")
 			return
 
 	war_was_declared(memo = war_declaration)
@@ -80,15 +80,15 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 /obj/item/nuclear_challenge/proc/war_was_declared(mob/living/user, memo)
 	priority_announce(
 		text = memo,
-		title = "Declaration of War",
+		title = "Declaração de Guerra",
 		sound = announcement_sound,
 		has_important_message = TRUE,
 		sender_override = "Nuclear Operative Outpost",
 		color_override = "red",
 	)
 	if(user)
-		to_chat(user, "You've attracted the attention of powerful forces within the syndicate. \
-			A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
+		to_chat(user, "Você atraiu a atenção de forças poderosas dentro do sindicato.\
+Um pacote bônus de telecristais foi concedido à sua equipe. Grandes coisas esperam por você se completar a missão.")
 
 	distribute_tc()
 	CONFIG_SET(number/shuttle_refuel_delay, max(CONFIG_GET(number/shuttle_refuel_delay), CHALLENGE_SHUTTLE_DELAY))
@@ -139,29 +139,29 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 			if (C.stat != DEAD)
 				var/obj/item/stack/telecrystal/TC = new(C.drop_location(), tc_to_distribute)
 				TC.throw_at(get_step(C, C.dir), 3, 3)
-				C.visible_message(span_notice("[C] coughs up a half-digested telecrystal"),span_notice("You cough up a half-digested telecrystal!"))
+				C.visible_message(span_notice("[C] coughs up a half-digested telecrystal"),span_notice("Você tossiu um telecristal meio digerido!"))
 				break
 
 
 /obj/item/nuclear_challenge/proc/check_allowed(mob/living/user)
 	if(declaring_war)
-		to_chat(user, span_boldwarning("You are already in the process of declaring war! Make your mind up."))
+		to_chat(user, span_boldwarning("Você já está em processo de declarar guerra! Decida-se."))
 		return FALSE
 	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
-		to_chat(user, span_boldwarning("The enemy crew is too small to be worth declaring war on."))
+		to_chat(user, span_boldwarning("A tripulação inimiga é muito pequena para valer a pena declarar guerra."))
 		return FALSE
 	if(!user.onSyndieBase())
-		to_chat(user, span_boldwarning("You have to be at your base to use this."))
+		to_chat(user, span_boldwarning("Você tem que estar na sua base para usar isso."))
 		return FALSE
 	if(world.time - SSticker.round_start_time > CHALLENGE_TIME_LIMIT)
-		to_chat(user, span_boldwarning("It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand."))
+		to_chat(user, span_boldwarning("É tarde demais para declarar hostilidades. Seus benfeitores já estão ocupados com outros esquemas. Terá que se contentar com o que tem na mão."))
 		return FALSE
 	for(var/obj/item/circuitboard/computer/syndicate_shuttle/board as anything in GLOB.syndicate_shuttle_boards)
 		if(board.moved)
-			to_chat(user, span_boldwarning("The shuttle has already been moved! You have forfeit the right to declare war."))
+			to_chat(user, span_boldwarning("A nave já foi movida! Você perdeu o direito de declarar guerra."))
 			return FALSE
 		if(board.challenge_start_time)
-			to_chat(user, span_boldwarning("War has already been declared!"))
+			to_chat(user, span_boldwarning("A guerra já foi declarada!"))
 			return FALSE
 	return TRUE
 
@@ -172,12 +172,12 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 /// Subtype that does nothing but plays the war op message. Intended for debugging
 /obj/item/nuclear_challenge/literally_just_does_the_message
 	name = "\"Declaration of War\""
-	desc = "It's a Syndicate Declaration of War thing-a-majig, but it only plays the loud sound and message. Nothing else."
+	desc = "É uma Declaração de Guerra do Sindicato, mas só toca o som alto e a mensagem. Nada mais."
 	var/admin_only = TRUE
 
 /obj/item/nuclear_challenge/literally_just_does_the_message/check_allowed(mob/living/user)
 	if(admin_only && !check_rights_for(user.client, R_SPAWN|R_FUN|R_DEBUG))
-		to_chat(user, span_hypnophrase("You shouldn't have this!"))
+		to_chat(user, span_hypnophrase("Você não deveria ter isso!"))
 		return FALSE
 
 	return TRUE
@@ -185,15 +185,15 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 /obj/item/nuclear_challenge/literally_just_does_the_message/war_was_declared(mob/living/user, memo)
 #ifndef TESTING
 	// Reminder for our friends the admins
-	var/are_you_sure = tgui_alert(user, "Last second reminder that fake war declarations is a horrible idea and yes, \
-		this does the whole shebang, so be careful what you're doing.", "Don't do it", list("I'm sure", "You're right"))
+	var/are_you_sure = tgui_alert(user, "Último segundo lembrete que falsas declarações de guerra são uma péssima ideia e sim,\
+Isso faz tudo isso, então tenha cuidado com o que está fazendo.", "Don't do it", list("I'm sure", "You're right"))
 	if(are_you_sure != "I'm sure")
 		return
 #endif
 
 	priority_announce(
 		text = memo,
-		title = "Declaration of War",
+		title = "Declaração de Guerra",
 		sound = announcement_sound,
 		has_important_message = TRUE,
 		sender_override = "Nuclear Operative Outpost",

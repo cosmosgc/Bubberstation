@@ -6,7 +6,7 @@
 /mob/living/basic/heretic_summon/armsy
 	name = "Lord of the Night"
 	real_name = "Master of Decay"
-	desc = "An abomination made from dozens and dozens of severed and malformed limbs grasping onto each other."
+	desc = "Uma abominação feita de dezenas e dezenas de membros cortados e malformados agarrando-se uns aos outros."
 	icon_state = "armsy_start"
 	icon_living = "armsy_start"
 	base_icon_state = "armsy"

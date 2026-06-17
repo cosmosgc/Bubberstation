@@ -4,8 +4,8 @@
 
 /obj/item/freeze_cube
 	name = "freeze cube"
-	desc = "A block of semi-clear ice treated with chemicals to behave as a throwable weapon. \
-		Somehow, it does not transfer its freezing temperatures until it comes into contact with a living creature."
+	desc = "Um bloco de gelo semi-limpo tratado com produtos químicos para se comportar como uma arma jogável.\
+De alguma forma, ele não transfere suas temperaturas congelantes até entrar em contato com uma criatura viva."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "freeze_cube"
 	inhand_icon_state = "freeze_cube"
@@ -16,7 +16,7 @@
 
 /obj/item/freeze_cube/examine(mob/user)
 	. = ..()
-	. += span_notice("Throw this at objects or creatures to freeze them, it will boomerang back so be cautious!")
+	. += span_notice("Jogue isso em objetos ou criaturas para congelá-los, ele vai bumerangue de volta então seja cauteloso!")
 
 /obj/item/freeze_cube/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, gentle, quickstart = TRUE, throw_type_path = /datum/thrownthing)
 	. = ..()

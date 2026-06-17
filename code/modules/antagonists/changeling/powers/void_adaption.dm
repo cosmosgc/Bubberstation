@@ -1,6 +1,6 @@
 /datum/action/changeling/void_adaption
 	name = "Void Adaption"
-	desc = "We prepare our cells to resist the hostile environment outside of the station. We may freely travel wherever we wish."
+	desc = "Preparamos nossas células para resistir ao ambiente hostil fora da estação. Podemos viajar livremente onde quisermos."
 	helptext = "This ability is passive, and will automatically protect us in situations of extreme cold or vacuum, \
 		as well as removing our need to breathe oxygen, although we will still be affected by hazardous gases. \
 		While it is actively protecting us from temperature or pressure it reduces our chemical regeneration rate."

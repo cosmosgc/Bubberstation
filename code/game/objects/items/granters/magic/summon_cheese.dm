@@ -1,6 +1,6 @@
 /obj/item/book/granter/action/spell/summon_cheese
 	name = "Lusty Xenomorph Maid vol. III - Cheese Bakery"
-	desc = "Wonderful! Time for a celebration... Cheese for everyone!"
+	desc = "Maravilhoso! Hora de uma celebração... Queijo para todos!"
 	icon_state = "bookcheese"
 	action_name = "summon cheese"
 	granted_action = /datum/action/cooldown/spell/conjure/cheese

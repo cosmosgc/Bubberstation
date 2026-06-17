@@ -7,7 +7,7 @@
 	typepath = /datum/round_event/wizard/deprevolt
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "A department is turned into an independent state."
+	description = "Um departamento é transformado em um estado independente."
 	admin_setup = list(
 		/datum/event_admin_setup/listed_options/departmental_revolt,
 		/datum/event_admin_setup/question/departmental_revolt_annouce,
@@ -28,7 +28,7 @@
 
 ///which department is revolting?
 /datum/event_admin_setup/listed_options/departmental_revolt
-	input_text = "Which department should revolt?"
+	input_text = "Que departamento deveria se revoltar?"
 	normal_run_option = "Random"
 
 /datum/event_admin_setup/listed_options/departmental_revolt/get_list()
@@ -39,14 +39,14 @@
 
 /// Announce the separatist nation to the round?
 /datum/event_admin_setup/question/departmental_revolt_annouce
-	input_text = "Announce This New Independent State?"
+	input_text = "Anunciar este novo estado independente?"
 
 /datum/event_admin_setup/question/departmental_revolt_annouce/apply_to_event(datum/round_event/wizard/deprevolt/event)
 	event.announce = chosen
 
 /// Is it going to try fighting other nations?
 /datum/event_admin_setup/question/departmental_revolt_dangerous
-	input_text = "Dangerous Nation? This means they will fight other nations."
+	input_text = "Nação Perigosa? Isso significa que lutarão contra outras nações."
 
 /datum/event_admin_setup/question/departmental_revolt_dangerous/apply_to_event(datum/round_event/wizard/deprevolt/event)
 	event.dangerous_nation = chosen

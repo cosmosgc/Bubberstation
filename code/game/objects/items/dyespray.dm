@@ -1,6 +1,6 @@
 /obj/item/dyespray
 	name = "hair dye spray"
-	desc = "A spray to dye your hair any colors and gradients you'd like." // SKYRAT EDIT - Making the dyespray change hair color
+	desc = "Um spray para pintar o cabelo com as cores e gradientes que quiser." // SKYRAT EDIT - Making the dyespray change hair color
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "dyespray"
@@ -46,9 +46,9 @@
 		if(target != user)
 			to_chat(user, span_warning("[human_target] doesn't have anything that can be dyed."))
 		else
-			to_chat(user, span_warning("You have nothing to dye."))
+			to_chat(user, span_warning("Não tem nada para pintar."))
 		return
-	var/what_to_dye = tgui_alert(user, "What do you want to dye?", "Character Preference", dyables)
+	var/what_to_dye = tgui_alert(user, "O que você quer pintar?", "Character Preference", dyables)
 	if(!what_to_dye || !user.can_perform_action(src, NEED_DEXTERITY))
 		return
 
@@ -68,7 +68,7 @@
 	if(!new_grad_color || !user.can_perform_action(src, NEED_DEXTERITY) || !target.IsReachableBy(user))
 		return
 
-	to_chat(user, span_notice("You start applying the hair dye..."))
+	to_chat(user, span_notice("Você começa a aplicar a tintura de cabelo..."))
 	if(!do_after(user, 3 SECONDS, target))
 		return
 	if(what_to_dye == "Hair")
@@ -92,7 +92,7 @@
 			choices += choice_name
 	if(!length(choices))
 		return
-	var/what_to_dye = tgui_alert(user, "What do you want to dye?", "Character Preference", choices)
+	var/what_to_dye = tgui_alert(user, "O que você quer pintar?", "Character Preference", choices)
 	if(!what_to_dye || !user.can_perform_action(src, NEED_DEXTERITY))
 		return
 

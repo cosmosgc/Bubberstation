@@ -3,7 +3,7 @@
  */
 /obj/structure/falsewall
 	name = "wall"
-	desc = "A huge chunk of metal used to separate rooms."
+	desc = "Um grande pedaço de metal usado para separar quartos."
 	anchored = TRUE
 	icon = 'icons/turf/walls/false_walls.dmi'
 	icon_state = "wall-open"
@@ -96,12 +96,12 @@
 /obj/structure/falsewall/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if(!opening || !tool.tool_behaviour)
 		return ..()
-	to_chat(user, span_warning("You must wait until the door has stopped moving!"))
+	to_chat(user, span_warning("Você deve esperar até que a porta pare de se mover!"))
 	return ITEM_INTERACT_BLOCKING
 
 /obj/structure/falsewall/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!density)
-		to_chat(user, span_warning("You can't reach, close it first!"))
+		to_chat(user, span_warning("Você não pode chegar, feche primeiro!"))
 		return
 	var/turf/loc_turf = get_turf(src)
 	if(loc_turf.density)
@@ -110,7 +110,7 @@
 	if(!isfloorturf(loc_turf))
 		to_chat(user, span_warning("[src] bolts must be tightened on the floor!"))
 		return ITEM_INTERACT_SUCCESS
-	user.visible_message(span_notice("[user] tightens some bolts on the wall."), span_notice("You tighten the bolts on the wall."))
+	user.visible_message(span_notice("[user] tightens some bolts on the wall."), span_notice("Você aperta os parafusos na parede."))
 	ChangeToWall()
 	return ITEM_INTERACT_SUCCESS
 
@@ -124,11 +124,11 @@
 /obj/structure/falsewall/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(!opening)
 		return ..()
-	to_chat(user, span_warning("You must wait until the door has stopped moving!"))
+	to_chat(user, span_warning("Você deve esperar até que a porta pare de se mover!"))
 	return
 
 /obj/structure/falsewall/proc/dismantle(mob/user, disassembled=TRUE, obj/item/tool = null)
-	user.visible_message(span_notice("[user] dismantles the false wall."), span_notice("You dismantle the false wall."))
+	user.visible_message(span_notice("[user] dismantles the false wall."), span_notice("Você desmantela a parede falsa."))
 	if(tool)
 		tool.play_tool_sound(src, 100)
 	else
@@ -146,7 +146,7 @@
 	return null
 
 /obj/structure/falsewall/examine_status(mob/user) //So you can't detect falsewalls by examine.
-	to_chat(user, span_notice("The outer plating is <b>welded</b> firmly in place."))
+	to_chat(user, span_notice("O revestimento exterior é<b>Soldado.</b>Firmemente nenhum lugar."))
 	return null
 
 /obj/structure/falsewall/mouse_drop_receive(mob/living/dropping, mob/user, params)
@@ -159,7 +159,7 @@
 
 /obj/structure/falsewall/reinforced
 	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to separate rooms."
+	desc = "Um grande pedaço de metal reforçado usado para separar quartos."
 	fake_icon = 'icons/turf/walls/reinforced_wall.dmi'
 	icon_state = "reinforced_wall-open"
 	base_icon_state = "reinforced_wall"
@@ -168,7 +168,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 
 /obj/structure/falsewall/reinforced/examine_status(mob/user)
-	to_chat(user, span_notice("The outer <b>grille</b> is fully intact."))
+	to_chat(user, span_notice("O exterior<b>Grelha.</b>está totalmente intacto."))
 	return null
 
 /obj/structure/falsewall/reinforced/attackby(obj/item/tool, mob/user)
@@ -182,7 +182,7 @@
 
 /obj/structure/falsewall/uranium
 	name = "uranium wall"
-	desc = "A wall with uranium plating. This is probably a bad idea."
+	desc = "Uma parede com revestimento de urânio. Provavelmente é uma má ideia."
 	fake_icon = 'icons/turf/walls/uranium_wall.dmi'
 	icon_state = "uranium_wall-open"
 	base_icon_state = "uranium_wall"
@@ -233,7 +233,7 @@
 
 /obj/structure/falsewall/gold
 	name = "gold wall"
-	desc = "A wall with gold plating. Swag!"
+	desc = "Uma parede com revestimento de ouro. Swag!"
 	fake_icon = 'icons/turf/walls/gold_wall.dmi'
 	icon_state = "gold_wall-open"
 	base_icon_state = "gold_wall"
@@ -245,7 +245,7 @@
 
 /obj/structure/falsewall/silver
 	name = "silver wall"
-	desc = "A wall with silver plating. Shiny."
+	desc = "Uma parede com revestimento de prata. Brilhante."
 	fake_icon = 'icons/turf/walls/silver_wall.dmi'
 	icon_state = "silver_wall-open"
 	base_icon_state = "silver_wall"
@@ -257,7 +257,7 @@
 
 /obj/structure/falsewall/diamond
 	name = "diamond wall"
-	desc = "A wall with diamond plating. You monster."
+	desc = "Uma parede com chapeamento de diamante. Seu monstro."
 	fake_icon = 'icons/turf/walls/diamond_wall.dmi'
 	icon_state = "diamond_wall-open"
 	base_icon_state = "diamond_wall"
@@ -270,7 +270,7 @@
 
 /obj/structure/falsewall/plasma
 	name = "plasma wall"
-	desc = "A wall with plasma plating. This is definitely a bad idea."
+	desc = "Uma parede com revestimento de plasma. Isso é definitivamente uma má ideia."
 	fake_icon = 'icons/turf/walls/plasma_wall.dmi'
 	icon_state = "plasma_wall-open"
 	base_icon_state = "plasma_wall"
@@ -282,7 +282,7 @@
 
 /obj/structure/falsewall/bananium
 	name = "bananium wall"
-	desc = "A wall with bananium plating. Honk!"
+	desc = "Uma parede com revestimento de banânio. Honk!"
 	fake_icon = 'icons/turf/walls/bananium_wall.dmi'
 	icon_state = "bananium_wall-open"
 	base_icon_state = "bananium_wall"
@@ -295,7 +295,7 @@
 
 /obj/structure/falsewall/sandstone
 	name = "sandstone wall"
-	desc = "A wall with sandstone plating. Rough."
+	desc = "Uma parede com revestimento de arenito. Duro."
 	fake_icon = 'icons/turf/walls/sandstone_wall.dmi'
 	icon_state = "sandstone_wall-open"
 	base_icon_state = "sandstone_wall"
@@ -307,7 +307,7 @@
 
 /obj/structure/falsewall/wood
 	name = "wooden wall"
-	desc = "A wall with wooden plating. Stiff."
+	desc = "Uma parede com revestimento de madeira. Stiff."
 	fake_icon = 'icons/turf/walls/wood_wall.dmi'
 	icon_state = "wood_wall-open"
 	base_icon_state = "wood_wall"
@@ -319,7 +319,7 @@
 
 /obj/structure/falsewall/bamboo
 	name = "bamboo wall"
-	desc = "A wall with bamboo finish. Zen."
+	desc = "Uma parede com acabamento de bambu. Zen."
 	fake_icon = 'icons/turf/walls/bamboo_wall.dmi'
 	icon_state = "bamboo_wall-open"
 	base_icon_state = "bamboo_wall"
@@ -331,7 +331,7 @@
 
 /obj/structure/falsewall/iron
 	name = "rough iron wall"
-	desc = "A wall with rough metal plating."
+	desc = "Uma parede com revestimento de metal áspero."
 	fake_icon = 'icons/turf/walls/iron_wall.dmi'
 	icon_state = "iron_wall-open"
 	base_icon_state = "iron_wall"
@@ -345,7 +345,7 @@
 
 /obj/structure/falsewall/abductor
 	name = "alien wall"
-	desc = "A wall with alien alloy plating."
+	desc = "Uma parede com revestimento de liga alienígena."
 	fake_icon = 'icons/turf/walls/abductor_wall.dmi'
 	icon_state = "abductor_wall-open"
 	base_icon_state = "abductor_wall"
@@ -357,7 +357,7 @@
 
 /obj/structure/falsewall/titanium
 	name = "wall"
-	desc = "A light-weight titanium wall used in shuttles."
+	desc = "Uma parede de titânio leve usada em naves."
 	fake_icon = 'icons/turf/walls/shuttle_wall.dmi'
 	icon_state = "shuttle_wall-open"
 	base_icon_state = "shuttle_wall"
@@ -369,7 +369,7 @@
 
 /obj/structure/falsewall/plastitanium
 	name = "wall"
-	desc = "An evil wall of plasma and titanium."
+	desc = "Uma parede malvada de plasma e titânio."
 	fake_icon = 'icons/turf/walls/plastitanium_wall.dmi'
 	icon_state = "plastitanium_wall-open"
 	base_icon_state = "plastitanium_wall"
@@ -381,7 +381,7 @@
 
 /obj/structure/falsewall/material
 	name = "wall"
-	desc = "A huge chunk of material used to separate rooms."
+	desc = "Um grande pedaço de material usado para separar quartos."
 	fake_icon = 'icons/turf/walls/material_wall.dmi'
 	icon_state = "material_wall-open"
 	base_icon_state = "material_wall"

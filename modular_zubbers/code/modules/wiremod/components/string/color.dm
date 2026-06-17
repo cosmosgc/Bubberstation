@@ -1,6 +1,6 @@
 /obj/item/circuit_component/color
 	display_name = "Color"
-	desc = "A component that has a drop-down of pickable colors to change the color in chat."
+	desc = "Um componente que tem uma lista de cores para mudar a cor no chat."
 	category = "String"
 
 	/// Colors to pick from to change to, list defined in spans.dm (modular_zubber)

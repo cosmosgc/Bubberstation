@@ -1,6 +1,6 @@
 /datum/action/cooldown/alien/hide
 	name = "Hide"
-	desc = "Allows you to hide beneath tables and certain objects."
+	desc = "Permite que você se esconda sob mesas e certos objetos."
 	button_icon_state = "alien_hide"
 	plasma_cost = 0
 	/// The layer we are on while hiding
@@ -11,7 +11,7 @@
 		owner.layer = initial(owner.layer)
 		owner.visible_message(
 			span_notice("[owner] slowly peeks up from the ground..."),
-			span_noticealien("You stop hiding."),
+			span_noticealien("Pare de se esconder."),
 		)
 		ADD_TRAIT(owner, TRAIT_IGNORE_ELEVATION, ACTION_TRAIT)
 
@@ -19,7 +19,7 @@
 		owner.layer = hide_layer
 		owner.visible_message(
 			span_name("[owner] scurries to the ground!"),
-			span_noticealien("You are now hiding."),
+			span_noticealien("Agora você está se escondendo."),
 		)
 		REMOVE_TRAIT(owner, TRAIT_IGNORE_ELEVATION, ACTION_TRAIT)
 
@@ -27,7 +27,7 @@
 
 /datum/action/cooldown/alien/larva_evolve
 	name = "Evolve"
-	desc = "Evolve into a higher alien caste."
+	desc = "Evolua para uma casta alienígena superior."
 	button_icon_state = "alien_evolve_larva"
 	plasma_cost = 0
 
@@ -61,8 +61,8 @@
 		var/datum/radial_menu_choice/hunter = new()
 		hunter.name = "Hunter"
 		hunter.image  = image(icon = initial(hunter_path.icon), icon_state = initial(hunter_path.icon_state))
-		hunter.info = span_info("Hunters are the most agile caste, tasked with hunting for hosts. \
-			They are faster than a human and can even pounce, but are not much tougher than a drone.")
+		hunter.info = span_info("Caçadores são a casta mais ágil, encarregada de caçar hospedeiros.\
+Eles são mais rápidos que um humano e podem até atacar, mas não são muito mais duros que um drone.")
 
 		caste_options["Hunter"] = hunter
 
@@ -70,9 +70,9 @@
 		var/datum/radial_menu_choice/sentinel = new()
 		sentinel.name = "Sentinel"
 		sentinel.image  = image(icon = initial(sentinel_path.icon), icon_state = initial(sentinel_path.icon_state))
-		sentinel.info = span_info("Sentinels are tasked with protecting the hive. \
-			With their ranged spit, invisibility, and high health, they make formidable guardians \
-			and acceptable secondhand hunters.")
+		sentinel.info = span_info("Sentinelas são encarregados de proteger a colmeia.\
+Com seu cuspe variado, invisibilidade, e alta saúde, eles formam guardiães formidáveis\
+e aceitáveis caçadores de segunda mão.")
 
 		caste_options["Sentinel"] = sentinel
 
@@ -80,9 +80,9 @@
 		var/datum/radial_menu_choice/drone = new()
 		drone.name = "Drone"
 		drone.image  = image(icon = initial(drone_path.icon), icon_state = initial(drone_path.icon_state))
-		drone.info = span_info("Drones are the weakest and slowest of the castes, \
-			but can grow into a praetorian and then queen if no queen exists, \
-			and are vital to maintaining a hive with their resin secretion abilities.")
+		drone.info = span_info("Os drones são os mais fracos e lentos das castas,\
+Mas pode se tornar um pretoriano e rainha se nenhuma rainha existir,\
+e são vitais para manter uma colmeia com suas habilidades de secreção de resina.")
 
 		caste_options["Drone"] = drone
 

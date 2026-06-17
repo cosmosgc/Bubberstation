@@ -3,7 +3,7 @@
 // Space dolphins and manatees woo
 /mob/living/basic/dolphin
 	name = "space dolphin"
-	desc = "So long, and thanks for all the fish."
+	desc = "Adeus, e obrigado por todos os peixes."
 	icon = 'modular_zubbers/icons/mob/simple/animals.dmi'
 	icon_state = "dolphin"
 	icon_living = "dolphin"
@@ -50,7 +50,7 @@
 
 /mob/living/basic/dolphin/manatee
 	name = "space manatee"
-	desc = "Large slow sea critters. Known for being very good at operating motor vehicles."
+	desc = "Grandes criaturas marinhas lentas. Conhecido por ser muito bom em operar veículos."
 	gold_core_spawnable = NO_SPAWN
 
 	icon_state = "manatee"

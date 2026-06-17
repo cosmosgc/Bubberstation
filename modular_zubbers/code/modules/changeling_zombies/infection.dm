@@ -129,7 +129,7 @@ GLOBAL_VAR_INIT(changeling_zombies_detected,FALSE)
 				host.visible_message(
 					span_danger("[host] reforms and regenerates their [regenerated_bodypart]!"),
 					span_userdanger("You reform and regenerate your [regenerated_bodypart]!"),
-					span_hear("You hear flesh growing!"),
+					span_hear("Você ouve carne crescendo!"),
 					COMBAT_MESSAGE_RANGE
 				)
 				playsound(host, 'sound/effects/splat.ogg', 50)
@@ -160,8 +160,8 @@ GLOBAL_VAR_INIT(changeling_zombies_detected,FALSE)
 						can_cure = TRUE
 						host.visible_message(
 							span_danger("[host]'s flesh hardens and shifts around; now would be a good time to cure them!"),
-							span_userdanger("Your flesh shifts and bubbles... this can't be good."),
-							span_hear("You hear flesh growing!"),
+							span_userdanger("Sua carne muda e bolhas... isso não pode ser bom."),
+							span_hear("Você ouve carne crescendo!"),
 							COMBAT_MESSAGE_RANGE
 						)
 					host.adjust_tox_loss(round(CHANGELING_ZOMBIE_TOXINS_PER_SECOND_LIVING * seconds_per_tick * damage_multiplier,0.1))
@@ -174,7 +174,7 @@ GLOBAL_VAR_INIT(changeling_zombies_detected,FALSE)
 							host.visible_message(
 								span_danger("[host]\s [wound_area] twists and contorts violently, like something is trying to break free!"),
 								span_userdanger("Your [wound_area] twists and contorts violently! What's going on?!"),
-								span_hear("You hear flesh breaking!"),
+								span_hear("Você ouve carne quebrando!"),
 								COMBAT_MESSAGE_RANGE
 							)
 							host.emote("scream")
@@ -183,7 +183,7 @@ GLOBAL_VAR_INIT(changeling_zombies_detected,FALSE)
 					else if(current_toxin_damage > CHANGELING_ZOMBIE_TOXINS_THRESHOLD_TO_CURE*0.5)
 						host.visible_message(
 							span_warning("[host] doesn't look too good..."),
-							span_warning("You don't feel too good...")
+							span_warning("Você não se sente muito bem...")
 						)
 						host.emote("cough")
 
@@ -200,7 +200,7 @@ GLOBAL_VAR_INIT(changeling_zombies_detected,FALSE)
 
 	host.cure_husk(CHANGELING_DRAIN) //If we don't actually cure the husk, weird shit happens.
 
-	to_chat(host, span_notice("You feel an itching, both inside and outside as your tissues knit and reknit."))
+	to_chat(host, span_notice("Você sente uma coceira, dentro e fora, enquanto seus tecidos tricotam e retricotam."))
 
 	host.add_traits(
 		list(

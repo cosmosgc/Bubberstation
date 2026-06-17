@@ -73,21 +73,21 @@
 			continue
 		survival = TRUE
 	if(survival)
-		parts += span_greentext("Borers were able to survive the shift!")
+		parts += span_greentext("Borers conseguiram sobreviver ao turno!")
 	else
-		parts += span_redtext("Borers were unable to survive the shift!")
+		parts += span_redtext("Borers foram incapazes de sobreviver ao turno!")
 	if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
-		parts += span_greentext("Borers were able to produce enough eggs!")
+		parts += span_greentext("Borers foram capazes de produzir ovos suficientes!")
 	else
-		parts += span_redtext("Borers were unable to produce enough eggs!")
+		parts += span_redtext("Borers eram incapazes de produzir ovos suficientes!")
 	if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
-		parts += span_greentext("Borers were able to gather enough willing hosts!")
+		parts += span_greentext("Borers foram capazes de reunir hospedeiros dispostos o suficiente!")
 	else
-		parts += span_redtext("Borers were unable to gather enough willing hosts!")
+		parts += span_redtext("Os Borers não conseguiram reunir hospedeiros suficientes!")
 	if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
-		parts += span_greentext("Borers were able to learn enough chemicals through the blood!")
+		parts += span_greentext("Borers foram capazes de aprender produtos químicos suficientes através do sangue!")
 	else
-		parts += span_redtext("Borers were unable to learn enough chemicals through the blood!")
+		parts += span_redtext("Borers foram incapazes de aprender produtos químicos suficientes através do sangue!")
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/round_event_control/cortical_borer
@@ -97,7 +97,7 @@
 	min_players = 999
 	max_occurrences = 0 //should only ever happen once. If they were enabled, that is.
 	category = EVENT_CATEGORY_ENTITIES
-	description = "A cortical borer has appeared on station. It will also attempt to produce eggs, and will attempt to gather willing hosts and learn chemicals through the blood."
+	description = "Um furo cortical apareceu na estação. Também tentará produzir ovos, e tentará reunir hospedeiros e aprender produtos químicos através do sangue."
 
 /datum/round_event/ghost_role/cortical_borer
 	announce_when = 400
@@ -135,9 +135,9 @@
 		var/mob/living/basic/cortical_borer/spawned_cb = new /mob/living/basic/cortical_borer(vent_turf)
 		spawned_cb.ckey = new_borer.ckey
 		spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)
-		to_chat(spawned_cb, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
+		to_chat(spawned_cb, span_warning("Você é um furo cortical! Você pode temer alguém para fazê-los parar de se mover, mas certifique-se de habitá-los! Você só cresce/cura/fala quando dentro de um hospedeiro!"))
 	for(var/mob/dead_mob in GLOB.dead_mob_list)
-		to_chat(dead_mob, span_notice("The cortical borers have been selected, you are able to orbit them! Remember, they can reproduce!"))
+		to_chat(dead_mob, span_notice("Os furos corticais foram selecionados, você é capaz de orbitar eles! Lembre-se, eles podem reproduzir!"))
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer
 	name = "Cortical Borer Infestation"

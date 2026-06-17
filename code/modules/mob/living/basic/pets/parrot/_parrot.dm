@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /// Parrots! Klepto bastards that imitate your speech and hoard your shit.
 /mob/living/basic/parrot
 	name = "parrot"
-	desc = "The parrot squawks, \"They're a Parrot! BAWWK!\""
+	desc = "O papagaio grita,\"Eles são um papagaio! BAWWK!\""
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /// Returns TRUE if we started perching, FALSE otherwise.
 /mob/living/basic/parrot/proc/start_perching(atom/target)
 	if(HAS_TRAIT(src, TRAIT_PARROT_PERCHED))
-		balloon_alert(src, "already perched!")
+		balloon_alert(src, "Já empoleirado!")
 		return FALSE
 
 	if(ishuman(target))
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /// Proc that will perch us on a human. Returns TRUE if we perched, FALSE otherwise.
 /mob/living/basic/parrot/proc/perch_on_human(mob/living/carbon/human/target)
 	if(LAZYLEN(target.buckled_mobs) >= target.max_buckled_mobs)
-		balloon_alert(src, "can't perch on them!")
+		balloon_alert(src, "Não pode pousá-los!")
 		return FALSE
 
 	forceMove(get_turf(target))
@@ -294,25 +294,25 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /// Picks up an item from the ground and puts it in our claws. Returns TRUE if we picked it up, FALSE otherwise.
 /mob/living/basic/parrot/proc/steal_from_ground(obj/item/target)
 	if(!isnull(held_item))
-		balloon_alert(src, "already holding something!")
+		balloon_alert(src, "Já está segurando alguma coisa!")
 		return FALSE
 
 	if(target.w_class > WEIGHT_CLASS_SMALL)
-		balloon_alert(src, "too big to pick up!")
+		balloon_alert(src, "Muito grande para atender!")
 		return FALSE
 
 	pick_up_item(target)
 	visible_message(
 		span_notice("[src] grabs [held_item]!"),
 		span_notice("You grab [held_item]!"),
-		span_hear("You hear the sounds of wings flapping furiously."),
+		span_hear("Você ouve os sons das asas batendo furiosamente."),
 	)
 	return TRUE
 
 /// Looks for an item that we can snatch and puts it in our claws. Returns TRUE if we picked it up, FALSE otherwise.
 /mob/living/basic/parrot/proc/steal_from_mob(mob/living/carbon/victim)
 	if(!isnull(held_item))
-		balloon_alert(src, "already holding something!")
+		balloon_alert(src, "Já está segurando alguma coisa!")
 		return FALSE
 
 	for(var/obj/item/stealable in victim.held_items)
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		visible_message(
 			span_notice("[src] grabs [held_item] out of [victim]'s hand!"),
 			span_notice("You snag [held_item] out of [victim]'s hand!"),
-			span_hear("You hear the sounds of wings flapping furiously."),
+			span_hear("Você ouve os sons das asas batendo furiosamente."),
 		)
 		pick_up_item(stealable)
 		return TRUE
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 /// Handles dropping items we're holding. Gently is a special modifier we can use for special interactions.
 /mob/living/basic/parrot/proc/drop_held_item(gently = TRUE)
 	if(isnull(held_item))
-		balloon_alert(src, "nothing to drop!")
+		balloon_alert(src, "Nada para derrubar!")
 		return
 
 	if(stat != CONSCIOUS) // don't gotta do shit
@@ -392,12 +392,12 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 	if(!gently && isgrenade(held_item))
 		var/obj/item/grenade/bomb = held_item
-		balloon_alert(src, "bombs away!") // you'll likely die too so we can get away with the `!` here
+		balloon_alert(src, "Bombas lançadas!") // you'll likely die too so we can get away with the `!` here
 		bomb.forceMove(drop_location())
 		bomb.detonate()
 		return
 
-	balloon_alert(src, "dropped item")
+	balloon_alert(src, "item caído")
 	held_item.forceMove(drop_location())
 
 /mob/living/basic/parrot/Exited(atom/movable/gone, direction)

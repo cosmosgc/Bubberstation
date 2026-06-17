@@ -7,7 +7,7 @@ RSF
 #define OBJECT_OR_LIST_ELEMENT(from, input) (islist(input) ? from[input] : input)
 /obj/item/rsf
 	name = "\improper Rapid-Service-Fabricator"
-	desc = "A device used to rapidly deploy service items."
+	desc = "Um dispositivo usado para implantar rapidamente itens de serviço."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
 	inhand_icon_state = "rsf"
@@ -164,7 +164,7 @@ RSF
 
 /obj/item/rsf/cookiesynth
 	name = "Cookie Synthesizer"
-	desc = "A self-recharging device used to rapidly deploy cookies."
+	desc = "Um dispositivo de auto-recarregamento usado para implantar rapidamente cookies."
 	icon_state = "rcd"
 	base_icon_state = "rcd"
 	spent_icon_state = "rcd"
@@ -180,9 +180,9 @@ RSF
 /obj/item/rsf/cookiesynth/emag_act(mob/user, obj/item/card/emag/emag_card)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "reagent safety checker shorted out")
+		balloon_alert(user, "Verificador de segurança reagente curtou.")
 	else
-		balloon_alert(user, "reagent safety checker reset")
+		balloon_alert(user, "Reagente de segurança reset")
 	return TRUE
 
 /obj/item/rsf/cookiesynth/attack_self(mob/user)
@@ -192,10 +192,10 @@ RSF
 	if(((obj_flags & EMAGGED) || (P?.emagged)) && !toxin)
 		toxin = TRUE
 		to_dispense = /obj/item/food/cookie/sleepy
-		to_chat(user, span_alert("Cookie Synthesizer hacked."))
+		to_chat(user, span_alert("Sintetizador de biscoitos hackeado."))
 	else
 		toxin = FALSE
 		to_dispense = /obj/item/food/cookie
-		to_chat(user, span_notice("Cookie Synthesizer reset."))
+		to_chat(user, span_notice("Sintetizador de biscoitos reiniciado."))
 
 #undef OBJECT_OR_LIST_ELEMENT

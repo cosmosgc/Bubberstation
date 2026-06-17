@@ -6,7 +6,7 @@
 
 /obj/item/clothing/sextoy/dildo
 	name = "dildo"
-	desc = "A large plastic penis, much like the one in your mother's bedside drawer."
+	desc = "Um pênis de plástico grande, muito parecido com o da gaveta da sua mãe."
 	icon_state = "dildo_human"
 	base_icon_state = "dildo"
 	inhand_icon_state = "dildo_human"
@@ -44,7 +44,7 @@
 /obj/item/clothing/sextoy/dildo/examine(mob/user)
 	. = ..()
 	if(!color_changed && change_sprite)
-		. += span_notice("Alt-click to change it's designs.")
+		. += span_notice("Alt-click para mudar seus projetos.")
 
 /obj/item/clothing/sextoy/dildo/click_alt(mob/user)
 	if(color_changed)
@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/custom_dildo
 	name = "custom dildo"
-	desc = "A dildo that can be customized to your specification."
+	desc = "Um vibrador que pode ser personalizado de acordo com sua especificação."
 	icon_state = "polydildo_small"
 	base_icon_state = "polydildo"
 	inhand_icon_state = "polydildo_small"
@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/custom_dildo/examine(mob/user)
 	. = ..()
 	if(!size_changed && color_changed && change_sprite)
-		. += span_notice("Alt-click to change it's size.")
+		. += span_notice("Alt-click para mudar seu tamanho.")
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/click_alt(mob/living/user)
 	if(!color_changed)
@@ -282,7 +282,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo
 	name = "double dildo"
-	desc = "You'll have to be a real glizzy gladiator to contend with this."
+	desc = "Você terá que ser um gladiador brilhante para enfrentar isso."
 	icon_state = "dildo_double"
 	inhand_icon_state = "dildo_double"
 	worn_icon_state = "dildo_side"
@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 //button stuff
 /datum/action/item_action/take_dildo
 	name = "Take the other side of the double dildo in hand"
-	desc = "You can feel one side inside you, time to share this feeling with someone..."
+	desc = "Você pode sentir um lado dentro de você, tempo para compartilhar esse sentimento com alguém..."
 
 /datum/action/item_action/take_dildo/Trigger(trigger_flags)
 	if(!..())
@@ -439,7 +439,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo_end
 	name = "dildo side"
-	desc = "You looking so hot!"
+	desc = "Você está tão gostosa!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	icon_state = "dildo_side"
 	inhand_icon_state = null

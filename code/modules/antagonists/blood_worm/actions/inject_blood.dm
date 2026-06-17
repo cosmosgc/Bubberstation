@@ -2,7 +2,7 @@
 
 /datum/action/cooldown/mob_cooldown/blood_worm/inject
 	name = "Inject Blood"
-	desc = "Inject your blood into the damaged tissues of your host, healing them in exchange for your own health."
+	desc = "Injete seu sangue nos tecidos danificados de seu hospedeiro, curando-os em troca de sua própria saúde."
 
 	button_icon_state = "inject_blood"
 
@@ -34,7 +34,7 @@
 
 	if (worm.get_worm_health() - health_cost < minimum_health)
 		if (feedback)
-			owner.balloon_alert(owner, "out of blood!")
+			owner.balloon_alert(owner, "Sem sangue!")
 		return FALSE
 
 	return ..()
@@ -50,7 +50,7 @@
 		ignored_mobs = owner
 	)
 
-	to_chat(owner, span_notice("You inject blood into the damaged tissues of your host."))
+	to_chat(owner, span_notice("Você injeta sangue nos tecidos danificados do hospedeiro."))
 
 	worm.adjust_worm_health(-health_cost)
 
@@ -199,7 +199,7 @@
 
 /atom/movable/screen/alert/status_effect/blood_worm_transfuse
 	name = "Blood Injection"
-	desc = "The injected blood is rapidly healing your host."
+	desc = "O sangue injetado está curando rapidamente seu hospedeiro."
 	icon = 'icons/mob/actions/actions_blood_worm.dmi'
 	icon_state = "inject_blood"
 

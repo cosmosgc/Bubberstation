@@ -1,7 +1,7 @@
 // Embedded signaller used in anomalies.
 /obj/item/assembly/signaler/anomaly
 	name = "anomaly core"
-	desc = "The neutralized core of an anomaly. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia. Provavelmente seria valioso para pesquisa."
 	icon_state = "anomaly_core"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -41,7 +41,7 @@
 //Anomaly cores
 /obj/item/assembly/signaler/anomaly/pyro
 	name = "\improper pyroclastic anomaly core"
-	desc = "The neutralized core of a pyroclastic anomaly. It feels warm to the touch. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia piroclástica. Parece quente ao toque. Provavelmente seria valioso para pesquisa."
 	icon_state = "pyro_core"
 	anomaly_type = /obj/effect/anomaly/pyro
 
@@ -55,7 +55,7 @@
 
 /obj/item/assembly/signaler/anomaly/grav
 	name = "\improper gravitational anomaly core"
-	desc = "The neutralized core of a gravitational anomaly. It feels much heavier than it looks. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia gravitacional. Parece mais pesado do que parece. Provavelmente seria valioso para pesquisa."
 	icon_state = "grav_core"
 	anomaly_type = /obj/effect/anomaly/grav
 
@@ -69,7 +69,7 @@
 
 /obj/item/assembly/signaler/anomaly/flux
 	name = "\improper flux anomaly core"
-	desc = "The neutralized core of a flux anomaly. Touching it makes your skin tingle. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia de fluxo. Tocar faz sua pele formigar. Provavelmente seria valioso para pesquisa."
 	icon_state = "flux_core"
 	anomaly_type = /obj/effect/anomaly/flux
 
@@ -78,7 +78,7 @@
 
 /obj/item/assembly/signaler/anomaly/bluespace
 	name = "\improper bluespace anomaly core"
-	desc = "The neutralized core of a bluespace anomaly. It keeps phasing in and out of view. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia do espaço azul. Ele fica entrando e saindo de vista. Provavelmente seria valioso para pesquisa."
 	icon_state = "anomaly_core"
 	anomaly_type = /obj/effect/anomaly/bluespace
 	activation_cooldown = 15 SECONDS // Slightly longer than reactive teleport armor cooldown
@@ -93,7 +93,7 @@
 
 /obj/item/assembly/signaler/anomaly/vortex
 	name = "\improper vortex anomaly core"
-	desc = "The neutralized core of a vortex anomaly. It won't sit still, as if some invisible force is acting on it. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia de vórtice. Não vai ficar parado, como se alguma força invisível estivesse agindo nele. Provavelmente seria valioso para pesquisa."
 	icon_state = "vortex_core"
 	anomaly_type = /obj/effect/anomaly/bhole
 	activation_cooldown = 5 SECONDS
@@ -135,7 +135,7 @@
 
 /obj/item/assembly/signaler/anomaly/bioscrambler
 	name = "\improper bioscrambler anomaly core"
-	desc = "The neutralized core of a bioscrambler anomaly. It's squirming, as if moving. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia bioescrambler. Está se contorcendo, como se estivesse se movendo. Provavelmente seria valioso para pesquisa."
 	icon_state = "bioscrambler_core"
 	anomaly_type = /obj/effect/anomaly/bioscrambler
 	activation_cooldown = 10 SECONDS
@@ -147,7 +147,7 @@
 
 /obj/item/assembly/signaler/anomaly/hallucination
 	name = "\improper hallucination anomaly core"
-	desc = "The neutralized core of a hallucination anomaly. It seems to be moving, but it's probably your imagination. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia de alucinação. Parece estar se movendo, mas deve ser sua imaginação. Provavelmente seria valioso para pesquisa."
 	icon_state = "hallucination_core"
 	anomaly_type = /obj/effect/anomaly/hallucination
 	activation_cooldown = 10 SECONDS
@@ -157,7 +157,7 @@
 
 /obj/item/assembly/signaler/anomaly/dimensional
 	name = "\improper dimensional anomaly core"
-	desc = "The neutralized core of a dimensional anomaly. Objects reflected on its surface don't look quite right. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia dimensional. Objetos refletidos na superfície não parecem bem. Provavelmente seria valioso para pesquisa."
 	icon_state = "dimensional_core"
 	anomaly_type = /obj/effect/anomaly/dimensional
 	activation_cooldown = 15 SECONDS // A bit longer than reactive barricade armor cooldown
@@ -178,7 +178,7 @@
 
 /obj/item/assembly/signaler/anomaly/ectoplasm
 	name = "\improper ectoplasm anomaly core"
-	desc = "The neutralized core of an ectoplasmic anomaly. When you hold it close, you can hear faint murmuring from inside. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia ectoplasmática. Quando você segura perto, você pode ouvir murmúrios fracos de dentro. Provavelmente seria valioso para pesquisa."
 	icon_state = "dimensional_core"
 	anomaly_type = /obj/effect/anomaly/ectoplasm
 	activation_cooldown = 60 SECONDS // A bit longer than reactive posession armor cooldown
@@ -188,7 +188,7 @@
 
 /obj/item/assembly/signaler/anomaly/weather
 	name = "\improper weather anomaly core"
-	desc = "The neutralized core of a weather anomaly. The sound of thunder can be heard in the distance. It'd probably be valuable for research."
+	desc = "O núcleo neutralizado de uma anomalia climática. O som do trovão pode ser ouvido à distância. Provavelmente seria valioso para pesquisa."
 	icon_state = "weather_core"
 	anomaly_type = /obj/effect/anomaly/weather
 
@@ -214,7 +214,7 @@
 	new /obj/effect/temp_visual/thunderbolt(target)
 
 	for(var/mob/living/hit_mob in target)
-		to_chat(hit_mob, span_userdanger("You've been struck by lightning!"))
+		to_chat(hit_mob, span_userdanger("Você foi atingido por um raio!"))
 		hit_mob.electrocute_act(20, src, flags = SHOCK_TESLA|SHOCK_NOSTUN)
 
 	for(var/obj/hit_thing in target)

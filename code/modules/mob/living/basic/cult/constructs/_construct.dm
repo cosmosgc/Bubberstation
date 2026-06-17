@@ -15,7 +15,7 @@
 	unique_name = TRUE
 	can_buckle_to = FALSE
 	initial_language_holder = /datum/language_holder/construct
-	death_message = "collapses in a shattered heap."
+	death_message = "cai em uma pilha de pedaços."
 
 	speak_emote = list("hisses")
 	response_help_continuous = "thinks better of touching"
@@ -141,4 +141,4 @@
 /// Construct ectoplasm. Largely a placeholder, since the death drop element needs a unique list.
 /obj/item/ectoplasm/construct
 	name = "blood-red ectoplasm"
-	desc = "Has a pungent metallic smell."
+	desc = "Tem um cheiro metálico pungente."

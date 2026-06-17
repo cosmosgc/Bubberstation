@@ -1,6 +1,6 @@
 /obj/item/miningsuitupgradekit
 	name = "DIY explorer suit kit"
-	desc = "A kit containing necessary parts to turn your hat and jacket of your choice into a mining suit. Note: Uncovered limbs will remain unprotected"
+	desc = "Um kit contendo peças necessárias para transformar seu chapéu e sua jaqueta em um terno de mineração. Os membros não cobertos permanecerão desprotegidos."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "retool_kit"
 	var/helmet_uses = 1
@@ -13,16 +13,16 @@
 	if(!istype(upgraded_item))
 		return ITEM_INTERACT_BLOCKING
 	if(!istype(upgraded_item, /obj/item/clothing/suit) && !istype(upgraded_item, /obj/item/clothing/head))
-		to_chat(user, span_warning("This kit will only work for head and suit slot clothing!"))
+		to_chat(user, span_warning("Este kit só vai funcionar para a cabeça e roupa de caça-níqueis!"))
 		return ITEM_INTERACT_BLOCKING
 	if(istype(upgraded_item, /obj/item/clothing/suit) && exosuit_uses <= 0)
-		to_chat(user, span_warning("Suit part already used!"))
+		to_chat(user, span_warning("A parte do terno já foi usada!"))
 		return ITEM_INTERACT_BLOCKING
 	if(istype(upgraded_item, /obj/item/clothing/head) && helmet_uses <= 0)
-		to_chat(user, span_warning("Helmet part already used!"))
+		to_chat(user, span_warning("Capacete já usado!"))
 		return ITEM_INTERACT_BLOCKING
 	if(upgraded_item.get_armor_rating(MELEE) > 0)
-		to_chat(user, span_warning("This clothing is already armored and can't be modified!"))
+		to_chat(user, span_warning("Esta roupa já está blindada e não pode ser modificada!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(upgraded_item, /obj/item/clothing/suit))
@@ -58,7 +58,7 @@
 		return CLICK_ACTION_BLOCKING
 	seva_kit = !seva_kit
 	name = "DIY [seva_kit ? "SEVA" : "explorer"] suit kit"
-	balloon_alert(user, "mode changed!")
+	balloon_alert(user, "O modo mudou!")
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/miningsuitupgradekit/examine(mob/user)

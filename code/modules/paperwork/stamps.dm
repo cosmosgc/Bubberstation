@@ -1,6 +1,6 @@
 /obj/item/stamp
 	name = "rubber stamp"
-	desc = "A rubber stamp for stamping important documents."
+	desc = "Um carimbo de borracha para carimbar documentos importantes."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	abstract_type = /obj/item/stamp
 	worn_icon_state = "nothing"

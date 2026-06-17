@@ -10,7 +10,7 @@ Self-sustaining extracts:
 
 /obj/item/autoslime
 	name = "autoslime"
-	desc = "It resembles a normal slime extract, but seems filled with a strange, multi-colored fluid."
+	desc = "Parece um extrato normal de lodo, mas parece cheio de um estranho fluido multicolorido."
 	var/obj/item/slime_extract/extract
 	var/effect_desc = "A self-sustaining slime extract. When used, lets you choose which reaction you want."
 

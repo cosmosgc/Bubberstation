@@ -35,10 +35,10 @@
 		return NONE
 
 	if(locate(/obj/structure/closet/crate/grave) in interacting_with)
-		user.balloon_alert(user, "grave already present!")
+		user.balloon_alert(user, "O túmulo já está presente!")
 		return ITEM_INTERACT_BLOCKING
 
-	user.balloon_alert(user, "digging grave...")
+	user.balloon_alert(user, "Cavando sepultura...")
 	playsound(interacting_with, 'sound/effects/shovel_dig.ogg', 50, TRUE)
 	INVOKE_ASYNC(src, PROC_REF(perform_digging), user, interacting_with, source)
 	return ITEM_INTERACT_BLOCKING

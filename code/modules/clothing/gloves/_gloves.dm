@@ -80,11 +80,11 @@
 		return
 	if (!can_cut_with(tool))
 		return
-	balloon_alert(user, "cutting off fingertips...")
+	balloon_alert(user, "Cortando as pontas dos dedos...")
 
 	if(!do_after(user, 3 SECONDS, target=src, extra_checks = CALLBACK(src, PROC_REF(can_cut_with), tool)))
 		return
-	balloon_alert(user, "cut fingertips off")
+	balloon_alert(user, "Corte a ponta dos dedos.")
 	qdel(src)
 	user.put_in_hands(new cut_type)
 	return TRUE

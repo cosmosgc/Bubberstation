@@ -1,6 +1,6 @@
 /datum/action/innate/absorb_control
 	name = "Take Back Control"
-	desc = "Take control of your body back."
+	desc = "Assuma o controle do seu corpo de volta."
 
 	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
@@ -15,7 +15,7 @@
 
 /datum/action/innate/absorb_control/prey
 	name = "Yield Control"
-	desc = "Yield control to the body's rightful owner and go back to being absorbed."
+	desc = "Entregue o controle ao legítimo dono do corpo e volte a ser absorvido."
 
 /datum/component/absorb_control
 	dupe_mode = COMPONENT_DUPE_UNIQUE
@@ -62,7 +62,7 @@
 	PRIVATE_PROC(TRUE)
 
 	var/mob/living/puppet = parent
-	to_chat(puppet, span_userdanger("You feel your control being taken away..."))
+	to_chat(puppet, span_userdanger("Você sente seu controle sendo tirado..."))
 
 	var/mob/living/puppetmaster
 	var/mob/living/backseat

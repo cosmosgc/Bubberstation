@@ -4,7 +4,7 @@
 
 /datum/action/cooldown/bloodsucker/feed
 	name = "Feed"
-	desc = "Feed blood off of a living creature. Feeding while aggressively grabbing them will put them to sleep for a short moment."
+	desc = "Alimente sangue de uma criatura viva. Alimentá-los enquanto os agarram agressivamente os fará dormir por um breve momento."
 	button_icon_state = "power_feed"
 	power_explanation = list(
 		"Activate Feed while next to someone and you will begin to feed blood off of them.",
@@ -62,10 +62,10 @@
 		if(!ContinueActive(user, target, aggro_feed))
 			target_ref = null
 		else
-			owner.balloon_alert(owner, "already feeding!")
+			owner.balloon_alert(owner, "Já está se alimentando!")
 			return FALSE
 	if(user.is_mouth_covered() && !isplasmaman(user))
-		owner.balloon_alert(owner, "mouth covered!")
+		owner.balloon_alert(owner, "Boca coberta!")
 		return FALSE
 	//Find target, it will alert what the problem is, if any.
 	if(!find_target())
@@ -117,7 +117,7 @@
 		DeactivatePower()
 		return FALSE
 	if(istype(feed_target, /mob/living/basic/mouse))
-		to_chat(owner, span_notice("You recoil at the taste of a lesser lifeform."))
+		to_chat(owner, span_notice("Você se afasta do sabor de uma forma de vida menor."))
 		if(snobby_drinking_check())
 			var/mob/living/user = owner
 			user.add_mood_event("drankblood", /datum/mood_event/drankblood_bad)
@@ -130,7 +130,7 @@
 	owner.balloon_alert(owner, "feeding off [feed_target]...")
 	owner.face_atom(feed_target)
 	if(!do_after(owner, get_feed_start_time(), feed_target, hidden = TRUE))
-		owner.balloon_alert(owner, "feed stopped")
+		owner.balloon_alert(owner, "A comida parou.")
 		target_ref = null
 		return FALSE
 	if(check_aggro_feed(feed_target))
@@ -171,7 +171,7 @@
 			continue
 		if(IS_BLOODSUCKER(watchers) || IS_GHOUL(watchers) || HAS_TRAIT(watchers.mind, TRAIT_BLOODSUCKER_HUNTER))
 			continue
-		owner.balloon_alert(owner, "feed noticed!")
+		owner.balloon_alert(owner, "ração notada!")
 		bloodsuckerdatum_power?.give_masquerade_infraction()
 		break
 
@@ -229,13 +229,13 @@
 
 	if(!IS_BLOODSUCKER(feed_target))
 		if(feed_target.blood_volume <= BLOOD_VOLUME_BAD && warning_target_bloodvol > BLOOD_VOLUME_BAD)
-			owner.balloon_alert(owner, "your victim's blood is fatally low!")
+			owner.balloon_alert(owner, "O sangue da vítima é fatalmente baixo!")
 		else if(feed_target.blood_volume <= BLOOD_VOLUME_OKAY && warning_target_bloodvol > BLOOD_VOLUME_OKAY)
-			owner.balloon_alert(owner, "your victim's blood is dangerously low.")
+			owner.balloon_alert(owner, "O sangue da vítima é perigosamente baixo.")
 		else if(feed_target.blood_volume <= BLOOD_VOLUME_SAFE && warning_target_bloodvol > BLOOD_VOLUME_SAFE)
-			owner.balloon_alert(owner, "your victim's blood is at an unsafe level.")
+			owner.balloon_alert(owner, "O sangue da vítima está em um nível inseguro.")
 		else if(feed_target.blood_volume <= BLOOD_VOLUME_SAFE && owner.pulling != feed_target)
-			owner.balloon_alert(owner, "you cannot drink more without first getting a better grip!.")
+			owner.balloon_alert(owner, "Você não pode beber mais sem primeiro ter uma melhor aderência!")
 			DeactivatePower()
 			return
 		warning_target_bloodvol = feed_target.blood_volume
@@ -251,7 +251,7 @@
 			return
 		notified_overfeeding = TRUE
 	if(feed_target.blood_volume <= 0)
-		user.balloon_alert(owner, "no blood left!")
+		user.balloon_alert(owner, "Não sobrou sangue!")
 		DeactivatePower()
 		return
 	owner.playsound_local(get_turf(owner), 'sound/effects/singlebeat.ogg', 40, TRUE)
@@ -328,11 +328,11 @@
 	if(safe_set_target(owner.pulledby))
 		return TRUE
 	if(bloodsuckerdatum_power?.frenzied)
-		owner.balloon_alert(owner, "beast active! must grab someone to feed!")
+		owner.balloon_alert(owner, "Fera ativa! Tem que pegar alguém para se alimentar!")
 		return FALSE
 	var/mob/living/carbon/carbon = owner
 	if(iscarbon(carbon) && carbon.handcuffed)
-		owner.balloon_alert(owner, "you cannot stealthily feed while handcuffed!")
+		owner.balloon_alert(owner, "Você não pode se alimentar furtivamente enquanto algemado!")
 		return FALSE
 	var/list/close_living_mobs = list()
 	var/list/close_dead_mobs = list()
@@ -380,7 +380,7 @@
 	if(istype(target, /mob/living/basic/mouse))
 		if(snobby_drinking_check())
 			if(give_warnings)
-				owner.balloon_alert(owner, "too disgusting!")
+				owner.balloon_alert(owner, "Muito nojento!")
 			return FALSE
 		return TRUE
 	//Mice check done, only humans are otherwise allowed
@@ -390,23 +390,23 @@
 	var/mob/living/carbon/human/target_user = target
 	if(!(target_user.dna?.species) || !(target_user.mob_biotypes & MOB_ORGANIC) || HAS_TRAIT(target_user, TRAIT_NOBLOOD))
 		if(give_warnings)
-			owner.balloon_alert(owner, "no blood!")
+			owner.balloon_alert(owner, "Sem sangue!")
 		return FALSE
 	if(!target_user.can_inject(owner, BODY_ZONE_HEAD, penetration))
 		if(give_warnings)
-			owner.balloon_alert(owner, "headgear too thick!")
+			owner.balloon_alert(owner, "Cabeça grossa demais!")
 		return FALSE
 	if(!can_overfeed() && max_blood_reached(target_user))
 		if(give_warnings)
-			owner.balloon_alert(owner, "too full to drink more!")
+			owner.balloon_alert(owner, "Muito cheio para beber mais!")
 		return FALSE
 	if(!target.mind && !can_drink_from_mindless(target_user))
 		if(give_warnings)
-			owner.balloon_alert(owner, "cant drink from mindless!")
+			owner.balloon_alert(owner, "Não posso beber desmiolado!")
 		return FALSE
 	if(target_user.has_reagent(/datum/reagent/consumable/garlic, 5))
 		if(give_warnings)
-			owner.balloon_alert(owner, "too much garlic!")
+			owner.balloon_alert(owner, "Muito alho!")
 		return FALSE
 	return TRUE
 
@@ -438,7 +438,7 @@
 	if (!COOLDOWN_FINISHED(src, feed_movement_notify_cooldown))
 		return
 	COOLDOWN_START(src, feed_movement_notify_cooldown, 3 SECONDS)
-	owner.balloon_alert(owner, "you cannot move while feeding! Click the power to stop.")
+	owner.balloon_alert(owner, "Você não pode se mover enquanto se alimenta! Clique na energia para parar.")
 
 /datum/action/cooldown/bloodsucker/feed/proc/modify_blood_drunk(amount = 0)
 	for(var/datum/weakref/weakref as anything in targets_and_blood)

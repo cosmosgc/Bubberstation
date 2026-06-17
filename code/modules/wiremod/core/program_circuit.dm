@@ -4,8 +4,8 @@
  * This means they don't work like normal unremovable comps that live and die along with their shell.
  */
 /obj/item/circuit_component/mod_program
-	display_name = "Abstract Modular Program"
-	desc = "I've spent lot of time thinking how to get this to work. If you see this, I either failed or someone else did, so report it."
+	display_name = "Programa modular abstrato"
+	desc = "Passei muito tempo pensando em como fazer isso funcionar. Se você ver isso, eu falhei ou alguém falhou, então informe."
 	/**
 	 * The program that installed us into the shell/usb_port comp. Needed to avoid having too many signals for every program.
 	 * This is also the program we need to install on the modular computer if the circuit is admin-loaded.

@@ -24,7 +24,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if (!subtypes || !subtypes.len)
 		return FALSE
 	if (subtypes?.len)
-		switch(tgui_alert(usr,"Strict object type detection?", "Type detection", list("Strictly this type","This type and subtypes", "Cancel")))
+		switch(tgui_alert(usr,"Detecção de objeto restrito?", "Type detection", list("Strictly this type","This type and subtypes", "Cancel")))
 			if("Strictly this type")
 				return FALSE
 			if("This type and subtypes")
@@ -96,12 +96,12 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	L += list(var_value) //var_value could be a list
 
-	switch(tgui_alert(usr,"Would you like to associate a value with the list entry?",,list("Yes","No")))
+	switch(tgui_alert(usr,"Gostaria de associar um valor com a entrada da lista?",,list("Yes","No")))
 		if("Yes")
 			L[var_value] = mod_list_add_ass(O) //hehe
 	if (O)
 		if (O.vv_edit_var(objectvar, L) == FALSE)
-			to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+			to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 			return
 	log_world("### ListVarEdit by [src]: [(O ? O.type : "/list")] [objectvar]: ADDED=[var_value]")
 	log_admin("[key_name(src)] modified [original_name]'s [objectvar]: ADDED=[var_value]")
@@ -111,14 +111,14 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if(!check_rights(R_VAREDIT))
 		return
 	if(!istype(L, /list))
-		to_chat(src, "Not a List.", confidential = TRUE)
+		to_chat(src, "Não é uma lista.", confidential = TRUE)
 		return
 	if(isalist(L))
-		to_chat(src, "alists are currently unsupported", confidential = TRUE)
+		to_chat(src, "Alistas não são suportadas.", confidential = TRUE)
 		return
 
 	if(L.len > 1000)
-		var/confirm = tgui_alert(usr, "The list you're trying to edit is very long, continuing may crash the server.", "Warning", list("Continue", "Abort"))
+		var/confirm = tgui_alert(usr, "A lista que você está tentando editar é muito longa, continuando pode invadir o servidor.", "Warning", list("Continue", "Abort"))
 		if(confirm != "Continue")
 			return
 
@@ -133,7 +133,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 			value = "null"
 		names["#[i] [key] = [value]"] = i
 	if (!index)
-		var/variable = input("Which var?","Var") as null|anything in names + "(ADD VAR)" + "(CLEAR NULLS)" + "(CLEAR DUPES)" + "(SHUFFLE)"
+		var/variable = input("Qual var?","Var") as null|anything in names + "(ADD VAR)" + "(Núcleos de limpeza)" + "(Limpar chapas)" + "(Shuffle)"
 
 		if(variable == null)
 			return
@@ -146,7 +146,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 			L = L.Copy()
 			list_clear_nulls(L)
 			if (!O.vv_edit_var(objectvar, L))
-				to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+				to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 				return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: CLEAR NULLS")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: CLEAR NULLS")
@@ -156,7 +156,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 		if(variable == "(CLEAR DUPES)")
 			L = unique_list(L)
 			if (!O.vv_edit_var(objectvar, L))
-				to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+				to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 				return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: CLEAR DUPES")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: CLEAR DUPES")
@@ -166,7 +166,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 		if(variable == "(SHUFFLE)")
 			L = shuffle(L)
 			if (!O.vv_edit_var(objectvar, L))
-				to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+				to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 				return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: SHUFFLE")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: SHUFFLE")
@@ -180,7 +180,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	if (index == null)
 		return
 	var/assoc = 0
-	var/prompt = tgui_alert(usr, "Do you want to edit the key or its assigned value?", "Associated List", list("Key", "Assigned Value", "Cancel"))
+	var/prompt = tgui_alert(usr, "Quer editar a chave ou o valor atribuído?", "Associated List", list("Key", "Assigned Value", "Cancel"))
 	if (prompt == "Cancel")
 		return
 	if (prompt == "Assigned Value")
@@ -249,7 +249,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 			L.Cut(index, index+1)
 			if (O)
 				if (O.vv_edit_var(objectvar, L))
-					to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+					to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 					return
 			log_world("### ListVarEdit by [src]: [O.type] [objectvar]: REMOVED=[html_encode("[original_var]")]")
 			log_admin("[key_name(src)] modified [original_name]'s [objectvar]: REMOVED=[original_var]")
@@ -271,7 +271,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 				L[new_var] = old_assoc_value
 	if (O)
 		if (O.vv_edit_var(objectvar, L) == FALSE)
-			to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+			to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 			return
 	log_world("### ListVarEdit by [src]: [(O ? O.type : "/list")] [objectvar]: [original_var]=[new_var]")
 	log_admin("[key_name(src)] modified [original_name]'s [objectvar]: [original_var]=[new_var]")
@@ -324,7 +324,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	var/default = vv_get_class(variable, var_value)
 
 	if(isnull(default))
-		to_chat(src, "Unable to determine variable type.", confidential = TRUE)
+		to_chat(src, "Incapaz de determinar o tipo variável.", confidential = TRUE)
 	else
 		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.", confidential = TRUE)
 
@@ -380,7 +380,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 
 	if (O.vv_edit_var(variable, var_new) == FALSE)
-		to_chat(src, "Your edit was rejected by the object.", confidential = TRUE)
+		to_chat(src, "Sua edição foi rejeitada pelo objeto.", confidential = TRUE)
 		return
 	vv_update_display(O, "varedited", VV_MSG_EDITED)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VAR_EDIT, args)

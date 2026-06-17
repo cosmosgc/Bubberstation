@@ -22,13 +22,13 @@
 	if(key || stat)
 		return
 	if(is_banned_from(user.ckey, BAN_MOB_CONTROL))
-		to_chat(user, "Error, you are banned from taking control of player controlled mobs!")
+		to_chat(user, "Erro, você está proibido de assumir o controle das máfias controladas por jogadores!")
 		return
 	var/query = tgui_alert(user, "Become [src]?", "Take mob control", list("Yes", "No"))
 	if(!query || query == "No" || !src || QDELETED(src))
 		return
 	if(key)
-		to_chat(user, span_warning("Someone else already took this mob!"))
+		to_chat(user, span_warning("Alguém já levou essa multidão!"))
 		return
 	key = user.key
 	var/string_to_send = CONFIG_GET(string/pc_mob_text)

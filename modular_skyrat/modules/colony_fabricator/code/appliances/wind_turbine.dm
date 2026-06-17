@@ -1,9 +1,9 @@
 /obj/machinery/power/colony_wind_turbine
 	name = "miniature wind turbine"
-	desc = "A post with two special-designed vertical turbine blades attached to its sides. \
-		When placed outdoors in a planet with an atmosphere, will produce a small trickle of power \
-		for free. If there is a storm in the area the turbine is placed, the power production will \
-		multiply significantly."
+	desc = "Um poste com duas lâminas de turbina vertical especialmente projetadas ligadas aos seus lados.\
+Quando colocado ao ar livre em um planeta com uma atmosfera, irá produzir uma pequena gota de poder\
+de graça. Se houver uma tempestade na área a turbina é colocada, a produção de energia irá\
+Multiplique-se significativamente."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/wind_turbine.dmi'
 	icon_state = "turbine"
 	density = TRUE
@@ -35,9 +35,9 @@
 	. = ..()
 	var/area/turbine_area = get_area(src)
 	if(!turbine_area.outdoors)
-		. += span_notice("Its must be constructed <b>outdoors</b> to function.")
+		. += span_notice("Ela deve ser construída.<b>Ao ar livre</b>para funcionar.")
 	if(pressure_too_low)
-		. += span_notice("There must be enough atmospheric <b>pressure</b> for the turbine to spin.")
+		. += span_notice("Deve haver bastante atmosfera.<b>pressão</b>para a turbina girar.")
 
 
 /obj/machinery/power/colony_wind_turbine/process()

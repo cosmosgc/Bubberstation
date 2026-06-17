@@ -1,6 +1,6 @@
 /obj/machinery/computer/terminal/museum
 	name = "exhibit info terminal"
-	desc = "A relatively low-tech info board. Not as low-tech as an actual sign though. Appears to be quite old."
+	desc = "Uma placa de informação relativamente baixa. Não tão baixo quanto um sinal real. Parece muito velho."
 	upperinfo = "Nanotrasen Museum Exhibit Info"
 	icon_state = "plaque"
 	icon_screen = "plaque_screen"
@@ -8,7 +8,7 @@
 
 /obj/effect/replica_spawner //description and name are intact, better to make a new fluff object for stuff that is not actually ingame as an object
 	name = "replica creator"
-	desc = "This creates a fluff object that looks exactly like the input, but like obviously a replica. Do not for the love of god use with stuff that has Initialize side effects."
+	desc = "Isso cria um objeto que se parece exatamente com a entrada, mas obviamente uma réplica. Não é pelo amor de Deus usar com coisas que tem inicializar efeitos colaterais."
 	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "x2"
 	invisibility = INVISIBILITY_ABSTRACT //nope, can't see this
@@ -43,21 +43,21 @@
 
 /obj/structure/fluff/dnamod
 	name = "DNA Modifier"
-	desc = "DNA Manipulator replica. Essentially just a box of cool lights."
+	desc = "Replica do manipulador de DNA. Essencialmente só uma caixa de luzes legais."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "dnamod"
 	density = TRUE
 
 /obj/structure/fluff/preserved_borer
 	name = "preserved borer exhibit"
-	desc = "A preserved cortical borer. Probably been there long enough to not last long outside the exhibit."
+	desc = "Uma broca cortical preservada. Provavelmente esteve lá tempo suficiente para não durar muito fora da exposição."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "preservedborer"
 	density = TRUE
 
 /obj/structure/fluff/balloon_nuke
 	name = "nuclear balloon explosive"
-	desc = "You probably shouldn't stick around to see if this is inflated."
+	desc = "Não deveria ficar para ver se está inflado."
 	icon = /obj/machinery/nuclearbomb::icon
 	icon_state = /obj/machinery/nuclearbomb::icon_state
 	density = TRUE
@@ -115,7 +115,7 @@
 
 /obj/effect/smooths_with_walls
 	name = "effect that smooths with walls"
-	desc = "to supplement /turf/open/mirage."
+	desc = "para complementar a turf/aberto/miragem."
 	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "x2"
 	invisibility = INVISIBILITY_ABSTRACT
@@ -143,7 +143,7 @@
 
 /obj/item/paper/fluff/museum/numbers_on_walls
 	name = "reprimanding note"
-	default_raw_text = "Please refraim from writing the pass all over the place. I know you've the memory of a goldfish, but, like, just put it on a piece of paper, no?"
+	default_raw_text = "Por favor, refrim de escrever o passe por todo o lugar. Eu sei que você tem a memória de um peixe dourado, mas, como, apenas colocá-lo em um pedaço de papel, não?"
 
 /obj/effect/mob_spawn/corpse/human/skeleton/museum_chef
 	name = "Dead Museum Cafeteria Chef"
@@ -180,7 +180,7 @@
 	name = "museum cafeteria keycard"
 	color = COLOR_OLIVE
 	puzzle_id = "museum_cafeteria"
-	desc = "The key to the cafeteria, as the name implies."
+	desc = "A chave da cafeteria, como o nome indica."
 
 /obj/item/keycard/cafeteria/Initialize(mapload)
 	. = ..()

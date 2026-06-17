@@ -3,9 +3,9 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
 	name = "\improper Słońce Plasma Projector"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
-		Uses plasma power packs. \
-		Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
+	desc = "Uma arma desatualizada raramente vista em uso por alguns membros da CIN.\
+Usa pacotes de plasma.\
+Lança um fluxo impreciso de plasma saindo do barril magnético desde que tenha energia e o gatilho seja puxado."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "slonce"
 
@@ -32,7 +32,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine_more(mob/user)
 	. = ..()
@@ -55,9 +55,9 @@
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman
 	name = "\improper Gwiazda Plasma Sharpshooter"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. \
-		Uses plasma power packs. \
-		Fires relatively accurate globs of searing plasma."
+	desc = "Uma arma desatualizada raramente vista em uso por alguns membros da CIN.\
+Usa pacotes de plasma.\
+Incêndios de níveis relativamente precisos de plasma."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_32.dmi'
 	icon_state = "gwiazda"
 
@@ -92,8 +92,8 @@
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine(mob/user, overclocking)
 	. = ..()
 	if(overclocking)
-		. += span_notice("The weapon is glowing red and steaming!")
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+		. += span_notice("A arma está brilhando vermelho e vaporizando!")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/examine_more(mob/user)
 	. = ..()
@@ -188,7 +188,7 @@
 	playsound(src, 'modular_zubbers/sound/weapons/plasma_explosion.ogg', 100, FALSE, 20, , , , TRUE)
 	for(var/mob/living/carbon/M in orange(20, src))
 		if(!HAS_TRAIT(M, TRAIT_DEAF))
-			to_chat(M, span_warning("You hear a distant pulse of energy, as if a miniature reactor blasting out a shockwave from afar..."))
+			to_chat(M, span_warning("Você ouve um pulso de energia distante, como se um reator miniatura explodindo uma onda de choque de longe..."))
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_marksman/process(seconds_per_tick)
 	var/mob/living/carbon/wielder = ismob(loc) ? loc : null
@@ -213,7 +213,7 @@
 
 /obj/item/gun/ballistic/revolver/shotgun_revolver
 	name = "\improper Bóbr 12 GA revolver"
-	desc = "An outdated sidearm rarely seen in use by some members of the CIN. A revolver type design with a four shell cylinder. That's right, shell, this one shoots twelve guage."
+	desc = "Uma arma desatualizada raramente vista em uso por alguns membros da CIN. Um tipo de revólver com quatro cilindros. Isso mesmo, shell, este atira doze guage."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
 	recoil = SAWN_OFF_RECOIL
 	weapon_weight = WEAPON_MEDIUM

@@ -1,7 +1,7 @@
 /// Item you use on a mob to make it bigger and stronger
 /obj/item/fugu_gland
 	name = "wumborian fugu gland"
-	desc = "The key to the wumborian fugu's ability to increase its mass arbitrarily, this disgusting remnant can apply the same effect to other creatures, giving them great strength."
+	desc = "A chave para a capacidade do fugu wumboriano de aumentar sua massa arbitrariamente, este remanescente nojento pode aplicar o mesmo efeito a outras criaturas, dando-lhes grande força."
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "fugu_gland"
 	item_flags = NOBLUDGEON
@@ -24,10 +24,10 @@
 	var/mob/living/animal = interacting_with
 
 	if(animal.stat == DEAD || HAS_TRAIT(animal, TRAIT_FAKEDEATH))
-		balloon_alert(user, "it's dead!")
+		balloon_alert(user, "Está morto!")
 		return ITEM_INTERACT_BLOCKING
 	if(HAS_TRAIT(animal, TRAIT_FUGU_GLANDED))
-		balloon_alert(user, "already large!")
+		balloon_alert(user, "Já é grande!")
 		return ITEM_INTERACT_BLOCKING
 
 	ADD_TRAIT(animal, TRAIT_FUGU_GLANDED, type)

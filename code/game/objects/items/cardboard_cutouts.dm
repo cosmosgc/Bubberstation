@@ -1,7 +1,7 @@
 //Cardboard cutouts! They're man-shaped and can be colored with a crayon to look like a human in a certain outfit, although it's limited, discolored, and obvious to more than a cursory glance.
 /obj/item/cardboard_cutout
 	name = "cardboard cutout"
-	desc = "A vaguely humanoid cardboard cutout. It's completely blank."
+	desc = "Um corte de papelão vagamente humanóide. Está completamente em branco."
 	icon = 'icons/obj/art/cardboard_cutout.dmi'
 	icon_state = "cutout_basic"
 	w_class = WEIGHT_CLASS_BULKY
@@ -160,7 +160,7 @@
 	if(crayon.check_empty(user))
 		return FALSE
 	if(crayon.is_capped)
-		to_chat(user, span_warning("Take the cap off first!"))
+		to_chat(user, span_warning("Tire o boné primeiro!"))
 		return FALSE
 	return TRUE
 
@@ -224,7 +224,7 @@
 /datum/cardboard_cutout/assistant
 	name = "Assistant"
 	applied_name = "John Greytide"
-	applied_desc = "A cardboard cutout of an assistant."
+	applied_desc = "Um papelão de uma assistente."
 	mob_spawner = /obj/effect/mob_spawn/corpse/human/generic_assistant
 
 /datum/cardboard_cutout/assistant/get_name()
@@ -233,7 +233,7 @@
 /datum/cardboard_cutout/clown
 	name = "Clown"
 	applied_name = "HONK"
-	applied_desc = "A cardboard cutout of a clown. You get the feeling that it should be in a corner."
+	applied_desc = "Um papelão de palhaço. Você tem a sensação de que deve estar em um canto."
 	outfit = /datum/outfit/job/clown
 
 /datum/cardboard_cutout/clown/get_name()
@@ -242,7 +242,7 @@
 /datum/cardboard_cutout/mime
 	name = "Mime"
 	applied_name = "..."
-	applied_desc = "...(A cardboard cutout of a mime.)"
+	applied_desc = "Um papelão de um mímico."
 	outfit = /datum/outfit/job/mime
 
 /datum/cardboard_cutout/mime/get_name()
@@ -251,7 +251,7 @@
 /datum/cardboard_cutout/traitor
 	name = "Traitor"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a traitor."
+	applied_desc = "Um pedaço de papelão de um traidor."
 	outfit = /datum/outfit/traitor_cutout
 
 /datum/cardboard_cutout/traitor/get_name()
@@ -260,7 +260,7 @@
 /datum/cardboard_cutout/nuclear_operative
 	name = "Nuclear Operative"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a nuclear operative."
+	applied_desc = "Um papelão de um agente nuclear."
 	outfit = /datum/outfit/syndicate/full
 
 /datum/cardboard_cutout/nuclear_operative/get_name()
@@ -269,19 +269,19 @@
 /datum/cardboard_cutout/cultist
 	name = "Cultist"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a cultist."
+	applied_desc = "Um papelão de um cultista."
 	outfit = /datum/outfit/cult_cutout
 
 /datum/cardboard_cutout/revolutionary
 	name = "Revolutionary"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a revolutionary."
+	applied_desc = "Um papelão de um revolucionário."
 	outfit = /datum/outfit/rev_cutout
 
 /datum/cardboard_cutout/wizard
 	name = "Wizard"
 	applied_name = "wizard"
-	applied_desc = "A cardboard cutout of a wizard."
+	applied_desc = "Um papelão de um mago."
 	outfit = /datum/outfit/wizard/bookless
 
 /datum/cardboard_cutout/wizard/get_name()
@@ -290,7 +290,7 @@
 /datum/cardboard_cutout/nightmare
 	name = "Nightmare"
 	applied_name = "nightmare"
-	applied_desc = "A cardboard cutout of a nightmare."
+	applied_desc = "Um pedaço de papelão de um pesadelo."
 	species = /datum/species/shadow/nightmare
 
 /datum/cardboard_cutout/nightmare/get_name()
@@ -299,7 +299,7 @@
 /datum/cardboard_cutout/xenomorph
 	name = "Xenomorph"
 	applied_name = "alien hunter"
-	applied_desc = "A cardboard cutout of a xenomorph."
+	applied_desc = "Um corte de papelão de um xenomorfo."
 	direct_icon = 'icons/mob/nonhuman-player/alien.dmi'
 	direct_icon_state = "alienh"
 
@@ -309,7 +309,7 @@
 /datum/cardboard_cutout/xenomorph_maid
 	name = "Xenomorph Maid"
 	applied_name = "lusty xenomorph maid"
-	applied_desc = "A cardboard cutout of a xenomorph maid."
+	applied_desc = "Um papelão de uma empregada xenomorfa."
 	direct_icon = 'icons/mob/nonhuman-player/alien.dmi'
 	direct_icon_state = "maid"
 
@@ -319,7 +319,7 @@
 /datum/cardboard_cutout/ash_walker
 	name = "Ash Walker"
 	applied_name = "lizard"
-	applied_desc = "A cardboard cutout of an ash walker."
+	applied_desc = "Um pedaço de papelão de um caminhante de cinzas."
 	species = /datum/species/lizard/ashwalker
 	outfit = /datum/outfit/ashwalker/spear
 
@@ -329,7 +329,7 @@
 /datum/cardboard_cutout/death_squad
 	name = "Deathsquad Officer"
 	applied_name = "deathsquad officer"
-	applied_desc = "A cardboard cutout of a death commando."
+	applied_desc = "Um papelão de um comando mortal."
 	outfit = /datum/outfit/centcom/death_commando
 
 /datum/cardboard_cutout/death_squad/get_name()
@@ -338,57 +338,57 @@
 /datum/cardboard_cutout/ian
 	name = "Ian"
 	applied_name = "Ian"
-	applied_desc = "A cardboard cutout of the HoP's beloved corgi."
+	applied_desc = "Um recorte de papelão do amado corgi do HoP."
 	direct_icon = 'icons/mob/simple/pets.dmi'
 	direct_icon_state = "corgi"
 
 /datum/cardboard_cutout/slaughter_demon
 	name = "Slaughter Demon"
 	applied_name = "slaughter demon"
-	applied_desc = "A cardboard cutout of a slaughter demon."
+	applied_desc = "Um pedaço de papelão de um demônio assassino."
 	direct_icon = 'icons/mob/simple/demon.dmi'
 	direct_icon_state = "slaughter_demon"
 
 /datum/cardboard_cutout/laughter_demon
 	name = "Laughter Demon"
 	applied_name = "laughter demon"
-	applied_desc = "A cardboard cutout of a laughter demon."
+	applied_desc = "Um pedaço de papelão de um demônio risonho."
 	direct_icon = 'icons/mob/simple/demon.dmi'
 	direct_icon_state = "bow_demon"
 
 /datum/cardboard_cutout/security_officer
 	name = "Private Security Officer"
 	applied_name = "Private Security Officer"
-	applied_desc = "A cardboard cutout of a private security officer."
+	applied_desc = "Um papelão de um oficial de segurança particular."
 	mob_spawner = /obj/effect/mob_spawn/corpse/human/nanotrasensoldier
 
 /datum/cardboard_cutout/heretic
 	name = "Heretic"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a Heretic."
+	applied_desc = "Um recorte de papelão de um herege."
 	outfit = /datum/outfit/heretic_hallucination
 
 /datum/cardboard_cutout/changeling
 	name = "Changeling"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a Changeling."
+	applied_desc = "Um papelão de um metamorfo."
 	outfit = /datum/outfit/changeling
 
 /datum/cardboard_cutout/pirate
 	name = "Pirate"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a space pirate."
+	applied_desc = "Um papelão de um pirata espacial."
 	outfit = /datum/outfit/pirate/space/captain/cardboard
 
 /datum/cardboard_cutout/ninja
 	name = "Space Ninja"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of a space ninja."
+	applied_desc = "Um papelão de um ninja espacial."
 	outfit = /datum/outfit/ninja
 
 /datum/cardboard_cutout/abductor
 	name = "Abductor Agent"
 	applied_name = "Unknown"
-	applied_desc = "A cardboard cutout of an abductor agent."
+	applied_desc = "Um papelão de um agente sequestrador."
 	species = /datum/species/abductor
 	outfit = /datum/outfit/abductor/agent/cardboard

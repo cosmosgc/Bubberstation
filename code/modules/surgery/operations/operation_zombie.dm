@@ -1,8 +1,8 @@
 /datum/surgery_operation/limb/bionecrosis
 	name = "induce bionecrosis"
 	rnd_name = "Bionecroplasty (Necrotic Revival)"
-	desc = "Inject reagents that stimulate the growth of a Romerol tumor inside the patient's brain."
-	rnd_desc = "An experimental procedure which induces the growth of a Romerol tumor inside the patient's brain."
+	desc = "Injete reagentes que estimulam o crescimento de um tumor de Romerol dentro do cérebro do paciente."
+	rnd_desc = "Um procedimento experimental que induz o crescimento de um tumor de Romerol dentro do cérebro do paciente."
 	implements = list(
 		/obj/item/reagent_containers/syringe = 1,
 		/obj/item/pen = 3.33,

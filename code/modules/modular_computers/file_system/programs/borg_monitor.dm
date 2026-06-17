@@ -4,7 +4,7 @@
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	ui_header = "borg_mon.gif"
 	program_open_overlay = "generic"
-	extended_desc = "This program allows for remote monitoring of station cyborgs."
+	extended_desc = "Este programa permite o monitoramento remoto dos cyborgs da estação."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_ROBOTICS)
 	size = 5
@@ -39,7 +39,7 @@
 		username = "user [stored_card.registered_name]"
 	to_chat(borgo, span_userdanger("Request received from [username] for the system log file. Upload in progress."))//Damning evidence may be contained, so warn the borg
 	borgo.logevent("File request by [username]: /var/logs/syslog")
-	borgo.balloon_alert(user, "downloading logs")
+	borgo.balloon_alert(user, "Baixando logs")
 	return TRUE
 
 /datum/computer_file/program/borg_monitor/process_tick(seconds_per_tick)
@@ -50,7 +50,7 @@
 	var/turf/here = get_turf(computer)
 	var/turf/there = get_turf(DL_source)
 	if(!here.Adjacent(there))//If someone walked away, cancel the download
-		to_chat(DL_source, span_danger("Log upload failed: general connection error."))//Let the borg know the upload stopped
+		to_chat(DL_source, span_danger("O upload do log falhou: erro de conexão geral."))//Let the borg know the upload stopped
 		DL_source = null
 		DL_progress = -1
 		return
@@ -172,7 +172,7 @@
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	ui_header = "borg_mon.gif"
 	program_open_overlay = "generic"
-	extended_desc = "This program allows for remote monitoring of mission-assigned cyborgs."
+	extended_desc = "Este programa permite o monitoramento remoto de ciborgues designados pela missão."
 	program_flags = PROGRAM_ON_SYNDINET_STORE
 	download_access = null
 	circuit_comp_type = /obj/item/circuit_component/mod_program/borg_monitor/syndie
@@ -199,7 +199,7 @@
 /obj/item/circuit_component/mod_program/borg_monitor/populate_ports()
 	. = ..()
 	target_robot = add_input_port("Receiver", PORT_TYPE_ATOM)
-	set_message = add_input_port("Set Message", PORT_TYPE_STRING, trigger = PROC_REF(sanitize_borg_message))
+	set_message = add_input_port("Definir mensagem", PORT_TYPE_STRING, trigger = PROC_REF(sanitize_borg_message))
 
 /obj/item/circuit_component/mod_program/borg_monitor/proc/sanitize_borg_message(datum/port/port)
 	set_message.set_value(trim(html_encode(set_message.value), MAX_MESSAGE_LEN))

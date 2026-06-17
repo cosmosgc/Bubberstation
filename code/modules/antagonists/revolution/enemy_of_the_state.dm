@@ -29,9 +29,9 @@
 
 /datum/antagonist/enemy_of_the_state/greet()
 	. = ..()
-	to_chat(owner, span_userdanger("The revolution is dead."))
-	to_chat(owner, span_bolddanger("You're an enemy of the state to Nanotrasen. You're a loose end to the Syndicate."))
-	to_chat(owner, "<b>It's time to live out your days as an exile... Or go out in one last big bang.</b>")
+	to_chat(owner, span_userdanger("A revolução está morta."))
+	to_chat(owner, span_bolddanger("Você é um inimigo do Estado para Nanotrasen. Você é uma ponta solta para o Sindicato."))
+	to_chat(owner, "<b>É hora de viver seus dias como um exílio... Ou sair em um último Big Bang.</b>")
 	owner.announce_objectives()
 
 /datum/antagonist/enemy_of_the_state/roundend_report()

@@ -2,78 +2,78 @@
 // Offensive wizard spells
 /datum/spellbook_entry/fireball
 	name = "Fireball"
-	desc = "Fires an explosive fireball at a target. Considered a classic among all wizards."
+	desc = "Dispara uma bola de fogo explosiva em um alvo. Considerado um clássico entre todos os magos."
 	spell_type = /datum/action/cooldown/spell/pointed/projectile/fireball
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/spell_cards
 	name = "Spell Cards"
-	desc = "Blazing hot rapid-fire homing cards. Send your foes to the shadow realm with their mystical power!"
+	desc = "Cartas de fogo rápido. Envie seus inimigos para o reino das sombras com seu poder místico!"
 	spell_type = /datum/action/cooldown/spell/pointed/projectile/spell_cards
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/rod_form
 	name = "Rod Form"
-	desc = "Take on the form of an immovable rod, destroying all in your path. Purchasing this spell multiple times will also increase the rod's damage and travel range."
+	desc = "Tome a forma de uma vara imóvel, destruindo tudo em seu caminho. Comprar esse feitiço várias vezes também aumentará o dano da haste e o alcance de viagem."
 	spell_type = /datum/action/cooldown/spell/rod_form
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/disintegrate
 	name = "Smite"
-	desc = "Charges your hand with an unholy energy that can be used to cause a touched victim to violently explode."
+	desc = "Acusa sua mão com uma energia profana que pode ser usada para causar uma vítima tocada a explodir violentamente."
 	spell_type = /datum/action/cooldown/spell/touch/smite
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/summon_simians
 	name = "Summon Simians"
-	desc = "This spell reaches deep into the elemental plane of bananas (the monkey one, not the clown one), and \
-		summons primal monkeys and lesser gorillas that will promptly flip out and attack everything in sight. Fun! \
-		Their lesser, easily manipulable minds will be convinced you are one of their allies, but only for a minute. Unless you also are a monkey."
+	desc = "Este feitiço atinge profundamente o plano elementar das bananas (o macaco, não o palhaço), e\
+Invoca macacos primitivos e gorilas menores que logo vão pirar e atacar tudo que se vê. Divertido!\
+Suas mentes menores e facilmente manipuláveis estarão convencidas de que você é um dos aliados deles, mas só por um minuto. A menos que você também seja um macaco."
 	spell_type = /datum/action/cooldown/spell/conjure/simian
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/blind
 	name = "Blind"
-	desc = "Temporarily blinds a single target."
+	desc = "Cega temporariamente um único alvo."
 	spell_type = /datum/action/cooldown/spell/pointed/blind
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	cost = 1
 
 /datum/spellbook_entry/tie_shoes
 	name = "Tie Shoes"
-	desc = "This unassuming spell first unties, then knots the target's shoes. While weak at first glance, each upgrade quietens the spell, allowing it to untie laceless footwear and even summon shoes to knot!"
+	desc = "Este feitiço despretensioso primeiro desamarra, depois amarra os sapatos do alvo. Enquanto fraco à primeira vista, cada atualização acalma o feitiço, permitindo que ele desatar sapatos sem rendas e até mesmo chamar sapatos para nó!"
 	spell_type = /datum/action/cooldown/spell/pointed/untie_shoes
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	cost = 1
 
 /datum/spellbook_entry/mutate
 	name = "Mutate"
-	desc = "Causes you to turn into a hulk and gain laser vision for a short while."
+	desc = "Faz você se transformar em um Hulk e ganhar visão laser por pouco tempo."
 	spell_type = /datum/action/cooldown/spell/apply_mutations/mutate
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/fleshtostone
 	name = "Flesh to Stone"
-	desc = "Charges your hand with the power to turn victims into inert statues for a long period of time."
+	desc = "Cobra sua mão com o poder de transformar vítimas em estátuas inertes por um longo período de tempo."
 	spell_type = /datum/action/cooldown/spell/touch/flesh_to_stone
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/teslablast
 	name = "Tesla Blast"
-	desc = "Charge up a tesla arc and release it at a random nearby target! You can move freely while it charges. The arc jumps between targets and can knock them down."
+	desc = "Carregue um arco de tesla e solte-o em um alvo aleatório próximo! Você pode se mover livremente enquanto carrega. O arco salta entre os alvos e pode derrubá-los."
 	spell_type = /datum/action/cooldown/spell/charged/beam/tesla
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/lightningbolt
 	name = "Lightning Bolt"
-	desc = "Fire a lightning bolt at your foes! It will jump between targets, but can't knock them down."
+	desc = "Dispare um raio em seus inimigos! Vai pular entre os alvos, mas não pode derrubá-los."
 	spell_type = /datum/action/cooldown/spell/pointed/projectile/lightningbolt
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	cost = 1
 
 /datum/spellbook_entry/infinite_guns
 	name = "Lesser Summon Guns"
-	desc = "Why reload when you have infinite guns? Summons an unending stream of bolt action rifles that deal little damage, but will knock targets down. Requires both hands free to use. Learning this spell makes you unable to learn Arcane Barrage."
+	desc = "Por que recarregar quando você tem armas infinitas? Invoca um fluxo interminável de rifles de ação que causam pequenos danos, mas derrubarão alvos. Requer as duas mãos livres para usar. Aprender esse feitiço o torna incapaz de aprender Arcane Barrage."
 	spell_type = /datum/action/cooldown/spell/conjure_item/infinite_guns/gun
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	cost = 3
@@ -81,7 +81,7 @@
 
 /datum/spellbook_entry/arcane_barrage
 	name = "Arcane Barrage"
-	desc = "Fire a torrent of arcane energy at your foes with this (powerful) spell. Deals much more damage than Lesser Summon Guns, but won't knock targets down. Requires both hands free to use. Learning this spell makes you unable to learn Lesser Summon Gun."
+	desc = "Dispare uma torrente de energia arcana em seus inimigos com este feitiço. Faz mais estragos que armas de Invocação Menor, mas não derruba alvos. Requer as duas mãos livres para usar. Aprender esse feitiço te faz incapaz de aprender a Invocação de Menores."
 	spell_type = /datum/action/cooldown/spell/conjure_item/infinite_guns/arcane_barrage
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	cost = 3
@@ -89,77 +89,77 @@
 
 /datum/spellbook_entry/barnyard
 	name = "Barnyard Curse"
-	desc = "This spell dooms an unlucky soul to possess the speech and facial attributes of a barnyard animal."
+	desc = "Este feitiço condena uma alma azarada a possuir a fala e atributos faciais de um animal de celeiro."
 	spell_type = /datum/action/cooldown/spell/pointed/barnyardcurse
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/splattercasting
 	name = "Splattercasting"
-	desc = "Dramatically lowers the cooldown on all spells, but each one will cost blood, as well as it naturally \
-		draining from you over time. You can replenish it from your victims, specifically their necks."
+	desc = "Dramaticamente reduz o resfriamento em todos os feitiços, mas cada um custará sangue, assim como naturalmente.\
+drenando de você ao longo do tempo. Você pode reabastecê-lo de suas vítimas, especificamente seus pescoços."
 	spell_type =  /datum/action/cooldown/spell/splattercasting
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	no_coexistence_typecache = list(/datum/action/cooldown/spell/lichdom, /datum/spellbook_entry/ghostliness)
 
 /datum/spellbook_entry/sanguine_strike
 	name = "Exsanguinating Strike"
-	desc = "Sanguine spell that enchants your next weapon strike to deal more damage, heal you for damage dealt, and refill blood."
+	desc = "Sanguine soletra que encanta sua próxima arma para lidar com mais danos, curar você por danos causados, e encher de sangue."
 	spell_type =  /datum/action/cooldown/spell/sanguine_strike
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/scream_for_me
 	name = "Scream For Me"
-	desc = "Sadistic sanguine spell that inflicts numerous severe blood wounds all over the victim's body."
+	desc = "Feitiço sangüíneo sádico que inflige vários ferimentos graves de sangue no corpo da vítima."
 	spell_type =  /datum/action/cooldown/spell/touch/scream_for_me
 	cost = 1
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/staffchaos
 	name = "Staff of Chaos"
-	desc = "A capricious tool that can fire all sorts of magic without any rhyme or reason. Using it on people you care about is not recommended."
+	desc = "Uma ferramenta caprichosa que pode disparar todos os tipos de magia sem qualquer rima ou razão. Usar em pessoas que você gosta não é recomendado."
 	item_path = /obj/item/gun/magic/staff/chaos
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
-	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
+	desc = "Um artefato que cospe raios de energia que fazem o alvo se remodelar."
 	item_path = /obj/item/gun/magic/staff/change
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/mjolnir
 	name = "Mjolnir"
-	desc = "A mighty hammer on loan from Thor, God of Thunder. It crackles with barely contained power. Requires wielding it in both hands to unleash its true potential."
+	desc = "Um poderoso martelo emprestado de Thor, Deus do Trovão. Ele estala com pouco poder contido. Requer empunhar em ambas as mãos para liberar seu verdadeiro potencial."
 	item_path = /obj/item/mjollnir
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/singularity_hammer
 	name = "Singularity Hammer"
-	desc = "A hammer that creates an intensely powerful field of gravity where it strikes, pulling everything nearby to the point of impact. Requires wielding it in both hands to unleash its true potential."
+	desc = "Um martelo que cria um campo de gravidade intensamente poderoso onde ataca, puxando tudo próximo ao ponto de impacto. Requer empunhar em ambas as mãos para liberar seu verdadeiro potencial."
 	item_path = /obj/item/singularityhammer
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/spellblade
 	name = "Spellblade"
-	desc = "A sword capable of firing blasts of energy which rip targets limb from limb."
+	desc = "Uma espada capaz de disparar explosões de energia que arrancam alvos membro a membro."
 	item_path = /obj/item/gun/magic/staff/spellblade
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/highfrequencyblade
 	name = "High Frequency Blade"
-	desc = "An incredibly swift enchanted blade resonating at a frequency high enough to be able to slice through anything."
+	desc = "Uma lâmina encantada incrivelmente rápida ressoando em uma frequência alta o suficiente para ser capaz de cortar qualquer coisa."
 	item_path = /obj/item/highfrequencyblade/wizard
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 	cost = 3
 
 /datum/spellbook_entry/item/frog_contract
 	name = "Frog Contract"
-	desc = "Sign a pact with the frogs to have your own destructive pet guardian!"
+	desc = "Assine um pacto com os sapos para ter seu próprio guardião destrutivo!"
 	item_path = /obj/item/frog_contract
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 
 /datum/spellbook_entry/item/staffshrink
 	name = "Staff of Shrinking"
-	desc = "An artefact that can shrink anything for a reasonable duration. Small structures can be walked over, and small people are very vulnerable (often because their armour no longer fits)."
+	desc = "Um artefato que pode encolher qualquer coisa por uma duração razoável. Pequenas estruturas podem ser pisadas, e pessoas pequenas são muito vulneráveis (muitas vezes porque sua armadura não se encaixa mais)."
 	item_path = /obj/item/gun/magic/staff/shrink
 	category = SPELLBOOK_CATEGORY_OFFENSIVE
 

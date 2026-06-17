@@ -26,7 +26,7 @@
 
 /datum/armament_entry/hecu/utility/advanced_tools
 	name = "Powertoolbelt"
-	description = "Tool belt full of power-ful tools."
+	description = "Cinto cheio de ferramentas poderosas."
 	item_type = /obj/item/storage/belt/utility/full/powertools
 	max_purchase = 1
 	cost = 4

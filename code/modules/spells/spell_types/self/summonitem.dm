@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/summonitem
 	name = "Instant Summons"
-	desc = "This spell can be used to recall a previously marked item to your hand from anywhere in the universe."
+	desc = "Este feitiço pode ser usado para lembrar um item previamente marcado para sua mão de qualquer lugar do universo."
 	button_icon_state = "summons"
 
 	school = SCHOOL_TRANSMUTATION
@@ -53,7 +53,7 @@
 	SIGNAL_HANDLER
 
 	if(owner)
-		to_chat(owner, span_boldwarning("You sense your marked item has been destroyed!"))
+		to_chat(owner, span_boldwarning("Você sente que seu item marcado foi destruído!"))
 	unmark_item()
 
 /datum/action/cooldown/spell/summonitem/cast(mob/living/cast_on)
@@ -79,9 +79,9 @@
 	var/obj/item/potential_mark = caster.get_active_held_item()
 	if(!potential_mark)
 		if(caster.get_inactive_held_item())
-			to_chat(caster, span_warning("You must hold the desired item in your hands to mark it for recall!"))
+			to_chat(caster, span_warning("Você deve segurar o item desejado em suas mãos para marcar para se lembrar!"))
 		else
-			to_chat(caster, span_warning("You aren't holding anything that can be marked for recall!"))
+			to_chat(caster, span_warning("Você não está segurando nada que possa ser marcado para ser lembrado!"))
 		return FALSE
 
 	var/link_message = ""
@@ -178,8 +178,8 @@
 
 /datum/action/cooldown/spell/summonitem/abductor
 	name =  "Baton Recall"
-	desc = "Activating this will trigger your baton's emergency translocation protocol, \
-		recalling it to your hand. Takes a long time for the translocation crystals to reset after use."
+	desc = "Ativar isso vai ativar o protocolo de translocação de emergência do seu bastão,\
+Remetendo para sua mão. Leva muito tempo para os cristais de translocação reiniciarem após o uso."
 	sound = 'sound/effects/phasein.ogg'
 
 	school = SCHOOL_UNSET

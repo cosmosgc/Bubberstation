@@ -1,6 +1,6 @@
 ADMIN_VERB(debug_maintenance_loot, R_DEBUG, "Debug Maintenance Loot", "List all items in the game that are not in maintenance loot", ADMIN_CATEGORY_DEBUG)
 
-	var/confirm = input(user,"Are you sure you wish to debug maintenance loot? This process takes up a lot of the server's resources.","Debug Maintenance Loot","Cancel") as null|anything in list("Yes","No","Cancel")
+	var/confirm = input(user,"Tem certeza que deseja depurar o saque da manutenção? Este processo requer muitos recursos do servidor.","Debug Manutenção Loot","Cancel") as null|anything in list("Yes","No","Cancel")
 	if(confirm != "Yes")
 		return
 
@@ -24,7 +24,7 @@ ADMIN_VERB(debug_maintenance_loot, R_DEBUG, "Debug Maintenance Loot", "List all 
 
 ADMIN_VERB(simulate_maintenance_loot, R_DEBUG, "Simulate Maintenance Loot", "Simulate 100 maintenance loot spawns. Special trait modifiers NOT applied.", ADMIN_CATEGORY_DEBUG)
 
-	var/confirm = input(user,"Are you sure you wish to simulate maintenance loot? This process takes up a lot of the server's resources.","Simulate Maintenance Loot","Cancel") as null|anything in list("Yes","No","Cancel")
+	var/confirm = input(user,"Tem certeza que quer simular o saque da manutenção? Este processo requer muitos recursos do servidor.","Simular manutenção Loot","Cancel") as null|anything in list("Yes","No","Cancel")
 	if(confirm != "Yes")
 		return
 

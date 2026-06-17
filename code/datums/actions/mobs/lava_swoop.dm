@@ -5,7 +5,7 @@
 	name = "Lava Swoop"
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "lavastaff_warn"
-	desc = "Allows you to chase a target while raining lava down."
+	desc = "Permite perseguir um alvo enquanto chove lava."
 	cooldown_time = 4 SECONDS
 	/// Check to see if we are enraged
 	var/enraged = FALSE
@@ -120,7 +120,7 @@
 /datum/action/cooldown/mob_cooldown/lava_swoop/proc/lava_pools(atom/target, amount = 30, delay = 0.8)
 	if(!target)
 		return
-	target.visible_message(span_boldwarning("Lava starts to pool up around you!"))
+	target.visible_message(span_boldwarning("Lava começa a se juntar a você!"))
 
 	while(amount > 0)
 		if(QDELETED(target))
@@ -190,7 +190,7 @@
 
 /obj/effect/temp_visual/dragon_swoop
 	name = "certain death"
-	desc = "Don't just stand there, move!"
+	desc = "Não fique aí parado, mexa-se!"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "landing"
 	layer = BELOW_MOB_LAYER

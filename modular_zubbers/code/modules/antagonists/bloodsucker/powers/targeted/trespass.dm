@@ -1,12 +1,12 @@
 /datum/action/cooldown/bloodsucker/targeted/trespass
 	name = "Trespass"
-	desc = "Become mist and advance two tiles in one direction. Useful for skipping past doors and barricades."
+	desc = "Tornar-se névoa e avançar dois azulejos em uma direção. Útil para pular portas e barricadas."
 	button_icon_state = "power_tres"
 	bloodsucker_check_flags = BP_CANT_USE_IN_TORPOR
 	purchase_flags = BLOODSUCKER_CAN_BUY|GHOUL_CAN_BUY
 	bloodcost = 10
 	cooldown_time = 8 SECONDS
-	prefire_message = "Select a destination."
+	prefire_message = "Selecione um destino."
 	target_range = 2
 	var/turf/target_turf // We need to decide where we're going based on where we clicked. It's not actually the tile we clicked.
 
@@ -67,7 +67,7 @@
 
 	user.visible_message(
 		span_warning("[user]'s form dissipates into a cloud of mist!"),
-		span_notice("You disspiate into formless mist."),
+		span_notice("Você se dissipa em névoa sem forma."),
 	)
 	// Effect Origin
 	var/sound_strength = max(60, 70 - level_current * 10)

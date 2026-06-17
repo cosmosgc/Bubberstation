@@ -1,6 +1,6 @@
 /obj/structure/plasticflaps
 	name = "airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps. Definitely can't get past those. No way."
+	desc = "Pesada, hermética, flaps de plástico. Definitivamente não consigo passar por isso. De jeito nenhum."
 	gender = PLURAL
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "plasticflaps"
@@ -36,7 +36,7 @@
 
 /obj/structure/plasticflaps/kitchen
 	name = "cold room plastic flaps"
-	desc = "Light and airtight plastic flaps made to keep the cold room cold and the warm room warm."
+	desc = "Abas plásticas leves e herméticas feitas para manter a sala fria fria e quente."
 	armor_type = /datum/armor/structure_plasticflaps/kitchen
 	require_resting = FALSE
 	flaps_alpha = 150
@@ -153,7 +153,7 @@
 	add_fingerprint(user)
 	var/action = anchored ? "unscrews [src] from" : "screws [src] to"
 	var/uraction = anchored ? "unscrew [src] from" : "screw [src] to"
-	user.visible_message(span_warning("[user] [action] the floor."), span_notice("You start to [uraction] the floor..."), span_hear("You hear rustling noises."))
+	user.visible_message(span_warning("[user] [action] the floor."), span_notice("You start to [uraction] the floor..."), span_hear("Você ouve barulhos de roubo."))
 	if(!W.use_tool(src, user, 100, volume=100, extra_checks = CALLBACK(src, PROC_REF(check_anchored_state), anchored)))
 		return TRUE
 	set_anchored(!anchored)
@@ -169,7 +169,7 @@
 /obj/structure/plasticflaps/wirecutter_act(mob/living/user, obj/item/W)
 	. = ..()
 	if(!anchored)
-		user.visible_message(span_warning("[user] cuts apart [src]."), span_notice("You start to cut apart [src]."), span_hear("You hear cutting."))
+		user.visible_message(span_warning("[user] cuts apart [src]."), span_notice("You start to cut apart [src]."), span_hear("Você ouve o corte."))
 		if(W.use_tool(src, user, 50, volume=100))
 			if(anchored)
 				return TRUE

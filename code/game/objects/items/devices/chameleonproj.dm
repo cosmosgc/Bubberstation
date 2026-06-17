@@ -100,7 +100,7 @@
 /obj/item/chameleon/proc/disrupt(delete_dummy = 1)
 	if(active_dummy)
 		for(var/mob/M in active_dummy)
-			to_chat(M, span_danger("Your chameleon projector deactivates."))
+			to_chat(M, span_danger("Seu projetor camaleão desativa."))
 		do_sparks(5, FALSE, src, src)
 		eject_all()
 		if(delete_dummy)

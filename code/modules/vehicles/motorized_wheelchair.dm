@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/wheelchair/motorized
 	name = "motorized wheelchair"
-	desc = "A chair with big wheels. It seems to have a motor in it."
+	desc = "Uma cadeira com rodas grandes. Parece ter um motor nele."
 	icon_state = "motorized_wheelchair"
 	overlay_icon = "motorized_wheelchair_overlay"
 	foldabletype = null
@@ -108,7 +108,7 @@
 
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		if(power_cell)
-			to_chat(user, span_warning("There is a power cell already installed."))
+			to_chat(user, span_warning("Já tem uma célula de energia instalada."))
 			return ITEM_INTERACT_BLOCKING
 
 		tool.forceMove(src)
@@ -228,12 +228,12 @@
 		return FALSE
 
 	if (!panel_open)
-		balloon_alert(user, "panel is closed!")
+		balloon_alert(user, "O painel está fechado!")
 		return FALSE
 
 	if (!bomb_attached)
 		RegisterSignal(src, COMSIG_WHEELCHAIR_BELL_RANG, PROC_REF(on_bell_rang))
-	balloon_alert(user, "bomb implanted...?")
+	balloon_alert(user, "Bomba implantada?")
 	visible_message(span_warning("A bomb appears in [src], what the fuck?"))
 	obj_flags |= EMAGGED
 	return TRUE

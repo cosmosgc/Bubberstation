@@ -1,7 +1,7 @@
 // Basic ball gag
 /obj/item/clothing/mask/ballgag
 	name = "ball gag"
-	desc = "Prevents the wearer from speaking."
+	desc = "Evita que o usuário fale."
 	icon = 'icons/map_icons/clothing/mask.dmi'
 	icon_state = "/obj/item/clothing/mask/ballgag"
 	post_init_icon_state = "ballgag"
@@ -90,7 +90,7 @@
 // A ballgag that can choke the wearer
 /obj/item/clothing/mask/ballgag/choking
 	name = "phallic ball gag"
-	desc = "Prevents the wearer from speaking, as well as making breathing harder."
+	desc = "Evita que o usuário fale, assim como dificulta a respiração."
 	icon_state = "/obj/item/clothing/mask/ballgag/choking"
 	post_init_icon_state = "chokegag"
 	moan_volume = 40

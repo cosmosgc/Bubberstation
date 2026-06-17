@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/jaunt/shadow_walk
 	name = "Shadow Walk"
-	desc = "Grants unlimited movement in darkness."
+	desc = "Concede movimento ilimitado na escuridão."
 	background_icon_state = "bg_alien"
 	overlay_icon_state = "bg_alien_border"
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
@@ -35,7 +35,7 @@
 	var/turf/cast_turf = get_turf(owner)
 	if(cast_turf.get_lumcount() >= light_threshold)
 		if(feedback)
-			to_chat(owner, span_warning("It isn't dark enough here!"))
+			to_chat(owner, span_warning("Não está escuro o suficiente aqui!"))
 		return FALSE
 	return TRUE
 
@@ -94,7 +94,7 @@
 /obj/effect/dummy/phased_mob/shadow/phased_check(mob/living/user, direction)
 	. = ..()
 	if(. && isspaceturf(.))
-		to_chat(user, span_warning("It really would not be wise to go into space."))
+		to_chat(user, span_warning("Realmente não seria sábio ir para o espaço."))
 		return FALSE
 	if(check_light_level(.))
 		if(!light_step_warning())
@@ -134,7 +134,7 @@
 
 /obj/effect/dummy/phased_mob/shadow/proc/light_step_warning()
 	if(!light_alert_given) //Give the user a warning that they're leaving the darkness
-		balloon_alert(jaunter, "leaving the shadows...")
+		balloon_alert(jaunter, "deixando as sombras...")
 		light_alert_given = TRUE
 		COOLDOWN_START(src, light_step_cooldown, 0.75 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(reactivate_light_alert)), 1 SECONDS) //You get a .5 second window to bypass the warning before it comes back

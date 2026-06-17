@@ -1,7 +1,7 @@
 /// The loot from killing a slaughter demon - can be consumed to allow the user to blood crawl
 /obj/item/organ/heart/demon
 	name = "demon heart"
-	desc = "Still it beats furiously, emanating an aura of utter hate."
+	desc = "Ainda bate furiosamente, emanando uma aura de ódio absoluto."
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "demon_heart-on"
 	decay_factor = 0
@@ -21,13 +21,13 @@
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 
 	if(locate(/datum/action/cooldown/spell/jaunt/bloodcrawl) in user.actions)
-		to_chat(user, span_warning("...and you don't feel any different."))
+		to_chat(user, span_warning("...e você não se sente diferente."))
 		qdel(src)
 		return
 
 	user.visible_message(
 		span_warning("[user]'s eyes flare a deep crimson!"),
-		span_userdanger("You feel a strange power seep into your body... you have absorbed the demon's blood-travelling powers!"),
+		span_userdanger("Você sente um estranho poder entrar em seu corpo... você absorveu os poderes de viagem do demônio!"),
 	)
 
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
@@ -49,7 +49,7 @@
 
 /obj/effect/decal/cleanable/blood/innards
 	name = "pile of viscera"
-	desc = "A repulsive pile of guts and gore."
+	desc = "Uma pilha repulsiva de tripas e sangue."
 	gender = NEUTER
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "innards"

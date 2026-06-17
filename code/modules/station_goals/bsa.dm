@@ -45,7 +45,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"
-	desc = "Generates cannon pulse. Needs to be linked with a fusor."
+	desc = "Gera pulso de canhão. Precisa ser ligado a um fusor."
 	icon_state = "power_box"
 
 /obj/machinery/bsa/back/Initialize(mapload)
@@ -54,12 +54,12 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/back/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/bsa/front
 	name = "Bluespace Artillery Bore"
-	desc = "Do not stand in front of cannon during operation. Needs to be linked with a fusor."
+	desc = "Não fique na frente do canhão durante a operação. Precisa ser ligado a um fusor."
 	icon_state = "emitter_center"
 
 /obj/machinery/bsa/front/Initialize(mapload)
@@ -68,12 +68,12 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/front/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using a multitool."
+	desc = "Conteúdo classificado pelo Comando Naval Nanotrasen. Precisa ser ligado com as outras peças da BSA usando uma multitool."
 	icon_state = "fuel_chamber"
 	var/datum/weakref/back_ref
 	var/datum/weakref/front_ref
@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
-	desc = "Long range bluespace artillery."
+	desc = "Artilharia de longo alcance no espaço azul."
 	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
 	var/static/mutable_appearance/top_layer
@@ -240,7 +240,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	notify_ghosts(
 		"The Bluespace Artillery has been fired!",
 		source = bullseye,
-		header = "KABOOM!",
+		header = "Kaboom!",
 	)
 
 	if(!blocker)
@@ -310,7 +310,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 			if(cannon.use_energy(cannon.power_used_per_shot, force = FALSE))
 				fire(ui.user)
 			else
-				to_chat(ui.user, span_warning("Insufficient power!"))
+				to_chat(ui.user, span_warning("Poder insuficiente!"))
 			. = TRUE
 		if("recalibrate")
 			calibrate(usr)
@@ -388,7 +388,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	if(obj_flags & EMAGGED)
 		return FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "rigged to explode")
+	balloon_alert(user, "Armado para explodir.")
 	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
 	return TRUE
 */

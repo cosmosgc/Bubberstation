@@ -1,6 +1,6 @@
 /obj/item/uber_teleporter
 	name = "\improper Nihilanth's Divinity"
-	desc = "It glows harshly, the power of a portal wielding monster lays within."
+	desc = "Brilha duramente, o poder de um portal que empunha um monstro está dentro."
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
 	icon_state = "crystal_pylon"
 
@@ -25,7 +25,7 @@
 				possible_turfs += iterating_turf
 
 	if(!LAZYLEN(possible_turfs))
-		to_chat(user, span_warning("The spell matrix was unable to locate a suitable teleport destination for an unknown reason. Sorry."))
+		to_chat(user, span_warning("A matriz ortográfica foi incapaz de localizar um destino de teletransporte adequado por uma razão desconhecida. Desculpe."))
 		return
 
 	if(user.buckled)

@@ -3,7 +3,7 @@
 
 /obj/item/tcgcard
 	name = "Coder"
-	desc = "Wow, a mint condition coder card! Better tell the GitHub all about this!"
+	desc = "Uau, um cartão de código de boas condições! Melhor contar ao GitHub tudo sobre isso!"
 	icon = DEFAULT_TCG_DMI_ICON
 	icon_state = "runtime"
 	w_class = WEIGHT_CLASS_TINY
@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 		var/datum/card/template = extract_datum()
 		desc = "<i>[template.desc]</i>"
 	else
-		desc = "It's the back of a trading card... no peeking!"
+		desc = "É a parte de trás de um cartão comercial... sem espiar!"
 
 /obj/item/tcgcard/update_icon_state()
 	if(flipped)
@@ -140,7 +140,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	if(istype(item, /obj/item/tcgcard_deck))
 		var/obj/item/tcgcard_deck/old_deck = item
 		if(length(old_deck.contents) >= 30)
-			to_chat(user, span_notice("This pile has too many cards for a regular deck!"))
+			to_chat(user, span_notice("Esta pilha tem muitas cartas para um baralho normal!"))
 			return
 		user.transferItemToLoc(src, old_deck)
 		flipped = old_deck.flipped
@@ -165,10 +165,10 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	animate(src, transform = ntransform, time = 2, easing = SINE_EASING)
 
 /obj/item/tcgcard/proc/flip_card(mob/user)
-	to_chat(user, span_notice("You turn the card over."))
+	to_chat(user, span_notice("Você vira o cartão."))
 	if(!flipped)
 		name = "Trading Card"
-		desc = "It's the back of a trading card... no peeking!"
+		desc = "É a parte de trás de um cartão comercial... sem espiar!"
 		icon_state = "cardback"
 	else
 		var/datum/card/template = extract_datum()
@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
  */
 /obj/item/tcgcard_deck
 	name = "Trading Card Pile"
-	desc = "A stack of TCG cards."
+	desc = "Uma pilha de cartões de TCG."
 	icon = 'icons/obj/toys/tcgmisc.dmi'
 	icon_state = "deck_up"
 	base_icon_state = "deck"
@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	. = ..()
 	if(istype(item, /obj/item/tcgcard))
 		if(contents.len >= 30)
-			to_chat(user, span_notice("This pile has too many cards for a regular deck!"))
+			to_chat(user, span_notice("Esta pilha tem muitas cartas para um baralho normal!"))
 			return FALSE
 		var/obj/item/tcgcard/new_card = item
 		new_card.flipped = flipped
@@ -333,7 +333,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 
 /obj/item/cardpack
 	name = "Trading Card Pack: Coder"
-	desc = "Contains six complete fuckups by the coders. Report this on GitHub please!"
+	desc = "Contém seis erros completos dos codificadores. Informe isso em GitHub, por favor!"
 	icon = 'icons/obj/toys/tcgmisc.dmi'
 	icon_state = "error"
 	w_class = WEIGHT_CLASS_TINY
@@ -364,14 +364,14 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 
 /obj/item/cardpack/series_one
 	name = "Trading Card Pack: Series 1"
-	desc = "Contains six cards of varying rarity from the 2560 Core Set. Collect them all!"
+	desc = "Contém seis cartas de raridade variável do Conjunto Central 2560. Recolha todos eles!"
 	icon_state = "cardpack_series1"
 	series = "coreset2020"
 	contains_coin = 10
 
 /obj/item/cardpack/resin
 	name = "Trading Card Pack: Resin Frontier Booster Pack"
-	desc = "Contains six cards of varying rarity from the Resin Frontier set. Collect them all!"
+	desc = "Contém seis cartas de raridade variável da Fronteira de Resin. Recolha todos eles!"
 	icon_state = "cardpack_resin"
 	series = "resinfront"
 	contains_coin = 0
@@ -399,17 +399,17 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	for(var/template in cards)
 		//Makes a new card based of the series of the pack.
 		new /obj/item/tcgcard(get_turf(user), series, template)
-	to_chat(user, span_notice("Wow! Check out these cards!"))
+	to_chat(user, span_notice("Uau! Veja essas cartas!"))
 	new /obj/effect/decal/cleanable/wrapping(get_turf(user))
 	playsound(loc, 'sound/items/poster/poster_ripped.ogg', 20, TRUE)
 	if(prob(contains_coin))
-		to_chat(user, span_notice("...and it came with a flipper, too!"))
+		to_chat(user, span_notice("...e veio com uma nadadeira, também!"))
 		new /obj/item/coin/thunderdome(get_turf(user))
 	qdel(src)
 
 /obj/item/coin/thunderdome
 	name = "\improper TGC Flipper"
-	desc = "A TGC flipper, for deciding who gets to go first. Also conveniently acts as a counter, for various purposes."
+	desc = "Um TGC, por decidir quem vai primeiro. Também convenientemente age como um contador, para vários propósitos."
 	icon = 'icons/obj/toys/tcgmisc.dmi'
 	icon_state = "coin_nanotrasen"
 	custom_materials = list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT*5)
@@ -419,7 +419,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 
 /obj/item/storage/card_binder
 	name = "card binder"
-	desc = "The perfect way to keep your collection of cards safe and valuable."
+	desc = "A maneira perfeita de manter sua coleção de cartões segura e valiosa."
 	icon = 'icons/obj/toys/tcgmisc.dmi'
 	icon_state = "binder"
 	inhand_icon_state = "album"

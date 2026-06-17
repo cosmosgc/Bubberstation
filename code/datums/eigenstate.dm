@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 			target.alpha = 200
 			do_sparks(3, FALSE, target)
 
-	visible_atom.visible_message("The items shimmer and fizzle, turning a shade of violet blue.")
+	visible_atom.visible_message("Os itens brilham e falham, virando um tom de azul violeta.")
 	id_counter++
 	return TRUE
 
@@ -110,7 +110,7 @@ GLOBAL_DATUM_INIT(closet_teleport_controller, /datum/closet_teleport_controller,
 		thing_to_send.forceMove(eigen_target)
 	else
 		if(!subtle)
-			object_sent_from.balloon_alert(thing_to_send, "nothing happens!")
+			object_sent_from.balloon_alert(thing_to_send, "Nada acontece!")
 		return FALSE
 	//Create ONE set of sparks for ALL times in iteration
 	if(!subtle && spark_time != world.time)

@@ -1,11 +1,11 @@
 /datum/quirk/venomous_bite
 	name = "Venomous Bite"
-	desc = "You have a venom gland, and can bite people to inject them with a toxin of your choosing."
+	desc = "Você tem uma glândula venenosa, e pode morder pessoas para injetá-las com uma toxina de sua escolha."
 	icon = FA_ICON_TEETH_OPEN
 	value = 8
-	gain_text = span_notice("You feel a venom gland in the back of your throat.")
-	lose_text = span_warning("Your venom gland vanishes.")
-	medical_record_text = "Patient possesses a venom gland."
+	gain_text = span_notice("Sente uma glândula venenosa atrás da garganta.")
+	lose_text = span_warning("Sua glândula venenosa desaparece.")
+	medical_record_text = "O paciente possui uma glândula venenosa."
 
 /datum/quirk/venomous_bite/add(client/client_source)
 	var/datum/reagent/reagent = text2path(client_source?.prefs?.read_preference(/datum/preference/choiced/venomous_bite_venom))

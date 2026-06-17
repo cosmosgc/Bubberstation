@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger_multi/wall_mounted
 	name = "mounted multi-cell charging rack"
-	desc = "The innovative technology of a cell charging rack, but mounted neatly on a wall out of the way!"
+	desc = "A tecnologia inovadora de um suporte de carregamento de células, mas montado perfeitamente em uma parede fora do caminho!"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/cell_charger.dmi'
 	icon_state = "wall_charger"
 	base_icon_state = "wall_charger"
@@ -49,7 +49,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cell_charger_multi/wall_mounted, 29)
 
 /obj/item/wallframe/cell_charger_multi
 	name = "unmounted wall multi-cell charging rack"
-	desc = "The innovative technology of a cell charging rack, but able to be mounted neatly on a wall out of the way!"
+	desc = "A tecnologia inovadora de um suporte de carregamento de células, mas capaz de ser montado perfeitamente em uma parede fora do caminho!"
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/packed_machines.dmi'
 	icon_state = "cell_charger_packed"
 	w_class = WEIGHT_CLASS_NORMAL

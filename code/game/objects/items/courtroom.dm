@@ -4,7 +4,7 @@
 
 /obj/item/gavelhammer
 	name = "gavel"
-	desc = "Order, order! No bombs in my courthouse."
+	desc = "Ordem, ordem! Sem bombas no meu tribunal."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "gavelhammer"
 	icon_angle = -135
@@ -27,7 +27,7 @@
 
 /obj/item/gavelblock
 	name = "sound block"
-	desc = "Smack it with a gavel when the assistants get rowdy."
+	desc = "Bata com um martelo quando os assistentes ficarem agitados."
 	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "gavelblock"
 	force = 2

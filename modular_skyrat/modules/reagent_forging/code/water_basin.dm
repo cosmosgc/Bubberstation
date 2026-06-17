@@ -1,6 +1,6 @@
 /obj/structure/reagent_water_basin
 	name = "water basin"
-	desc = "A basin full of water, ready to quench the hot metal."
+	desc = "Uma bacia cheia de água, pronta para apagar o metal quente."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "water_basin"
 	anchored = TRUE
@@ -38,7 +38,7 @@
 	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || fishable)
 		return
 
-	balloon_alert(user, "the water deepens!")
+	balloon_alert(user, "A água se aprofunda!")
 	fishable = AddComponent(/datum/component/fishing_spot, /datum/fish_source/water_basin)
 
 /obj/structure/reagent_water_basin/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -59,7 +59,7 @@
 		if(!bs_crystal.use(1))
 			return
 
-		balloon_alert(user, "the water deepens!")
+		balloon_alert(user, "A água se aprofunda!")
 		fishable = AddComponent(/datum/component/fishing_spot, /datum/fish_source/water_basin)
 		return
 

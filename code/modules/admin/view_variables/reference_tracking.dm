@@ -62,7 +62,7 @@ GLOBAL_ALIST_EMPTY(reftracker_skip_typecache_b)
 
 /datum/proc/find_references(references_to_clear = INFINITY)
 	if(usr?.client)
-		if(tgui_alert(usr,"Running this will lock everything up for about 5 minutes.  Would you like to begin the search?", "Find References", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Correr isso vai trancar tudo por 5 minutos. Gostaria de começar a busca?", "Find References", list("Yes", "No")) != "Yes")
 			return
 
 	src.references_to_clear = references_to_clear

@@ -5,7 +5,7 @@
 
 /mob/living/basic/bot/dedbot
 	name = "\improper Donk Exenteration Drone" //Exenteration means ripping entrails out, ouch!
-	desc = "A bladed commercial defence drone, often called an 'Ex-Drone' or 'D.E.D.bot'. It follows a simple programmed patrol route, and slashes at anyone who doesn't have an identity implant."
+	desc = "Um drone de defesa comercial, chamado \"Ex-Drone\" ou \"D.E.D.bot\". Segue uma simples rota de patrulha programada, e corta qualquer um que não tenha um implante de identidade."
 	icon_state = "ded_drone0"
 	base_icon_state = "ded_drone"
 	req_one_access = list(ACCESS_SYNDICATE)
@@ -28,7 +28,7 @@
 	bubble_icon = "machine"
 	pass_flags = PASSMOB | PASSFLAPS
 	maximum_survivable_temperature = 360 //prone to overheating
-	possessed_message = "You are an exenteration drone. Exenterate."
+	possessed_message = "Você é um drone de exenteração. Exenterado."
 	additional_access = /datum/id_trim/away/hauntedtradingpost/boss
 	bot_mode_flags = BOT_MODE_ON | BOT_MODE_AUTOPATROL
 	mob_size = MOB_SIZE_SMALL
@@ -76,7 +76,7 @@
 
 /datum/action/cooldown/mob_cooldown/exenterate
 	name = "Exenterate"
-	desc = "Disembowel every living thing in range with your blades."
+	desc = "Estripar todas as coisas vivas ao alcance de suas lâminas."
 	button_icon = 'icons/obj/weapons/stabby.dmi'
 	button_icon_state = "huntingknife"
 	click_to_activate = FALSE

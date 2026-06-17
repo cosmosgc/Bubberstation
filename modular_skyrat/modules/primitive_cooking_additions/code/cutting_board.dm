@@ -2,7 +2,7 @@
 
 /obj/item/cutting_board
 	name = "cutting board"
-	desc = "Processing food before electricity was cool, because you can just do your regular cutting on the table next to this right?"
+	desc = "Processar comida antes da eletricidade era legal, porque você pode fazer seu corte normal na mesa ao lado disso, certo?"
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/cooking_structures.dmi'
 	icon_state = "cutting_board"
 	force = 5
@@ -48,9 +48,9 @@
 
 /obj/item/cutting_board/examine(mob/user)
 	. = ..()
-	. += span_notice("You can process food similar to a food processor by putting food on this and using a <b>knife</b> on it.")
-	. += span_notice("It can be (un)secured with <b>Right Click</b>")
-	. += span_notice("You can make it drop its item with <b>Alt Click</b>")
+	. += span_notice("Você pode processar comida semelhante a um processador de alimentos colocando comida nisso e usando um<b>Faca</b>Pode deixar.")
+	. += span_notice("Pode ser (in)seguro com<b>Clique direito</b>")
+	. += span_notice("Você pode fazê-lo largar seu item com<b>Alt Click</b>")
 	if(length(contents))
 		. += span_notice("It has [contents[1]] sitting on it.")
 
@@ -60,11 +60,11 @@
 
 /obj/item/cutting_board/click_alt(mob/user)
 	if(!length(contents))
-		balloon_alert(user, "nothing on board")
+		balloon_alert(user, "Nada a bordo.")
 		return CLICK_ACTION_BLOCKING
 
 	drop_everything_contained()
-	balloon_alert(user, "cleared board")
+	balloon_alert(user, "Placa limpa.")
 	return CLICK_ACTION_SUCCESS
 
 ///Drops all contents at the turf of the item
@@ -112,7 +112,7 @@
 
 	if(attacking_item.tool_behaviour == TOOL_KNIFE)
 		if(!length(contents))
-			balloon_alert(user, "nothing to process")
+			balloon_alert(user, "Nada para processar.")
 			return
 
 		var/datum/food_processor_process/item_process_recipe = GET_RECIPE(contents[1])
@@ -132,7 +132,7 @@
 	var/datum/food_processor_process/gotten_recipe = GET_RECIPE(attacking_item)
 	if(gotten_recipe)
 		if(length(contents))
-			balloon_alert(user, "board is full")
+			balloon_alert(user, "O tabuleiro está cheio.")
 			return
 
 		attacking_item.forceMove(src)

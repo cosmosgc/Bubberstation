@@ -1,6 +1,6 @@
 /obj/item/clothing/sextoy/fleshlight
 	name = "fleshlight"
-	desc = "What a strange flashlight."
+	desc = "Que lanterna estranha."
 	icon_state = "fleshlight_pink"
 	base_icon_state = "fleshlight"
 	inhand_icon_state = "fleshlight_pink"
@@ -30,7 +30,7 @@
 /obj/item/clothing/sextoy/fleshlight/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 
 /obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
 	. = ..()
@@ -92,14 +92,14 @@
 
 /obj/item/toy/plush/fleshlight/screws
 	name = "Chief Screws Plush"
-	desc = "An adorable blue Lizard plushie wearing a Chief Engineer's Uniform... her upturned skirt revealing a tight, pre-lubed pussy."
+	desc = "Uma adorável pelúcia azul de lagarto usando um uniforme de engenheiro chefe... sua saia virada revelando uma buceta apertada e pré-lubrificada."
 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
 	icon_state = "cescrewsplush"
 	base_icon_state = "cescrewsplush"
 
 /obj/item/toy/plush/fleshlight/screws/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to cover her up.")
+	. += span_notice("Alt-click para cobri-la.")
 
 /obj/item/toy/plush/fleshlight/screws/click_alt(mob/user)
 	user.visible_message(span_notice("[user] turns [src], hiding the hole underneath."), span_notice("You turn [src], covering her up with her little skirt."))
@@ -149,7 +149,7 @@
 	name = "bluespace fleshlight"
 	color_changed = TRUE
 	current_color = "teal"
-	desc = "Internal design based on the captain's mother."
+	desc = "Design interno baseado na mãe do capitão."
 	custom_premium_price = PAYCHECK_COMMAND * 10
 
 /obj/item/clothing/sextoy/fleshlight/bluespace/Initialize(mapload)
@@ -163,4 +163,4 @@
 /obj/item/clothing/sextoy/fleshlight/bluespace/proc/rod_johnson(obj/effect/immovablerod/target, mob/living/user)
 	user.throw_at(get_step(user,target.dir),12,4)
 	playsound(target, 'sound/effects/cartoon_sfx/cartoon_pop.ogg', 75, TRUE)
-	target.audible_message(span_danger("You hear a POP!"))
+	target.audible_message(span_danger("Você ouve um POP!"))

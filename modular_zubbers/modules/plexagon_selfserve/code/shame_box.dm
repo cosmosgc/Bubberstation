@@ -1,6 +1,6 @@
 /obj/item/storage/lockbox/timeclock
 	name = "crew equipment lockbox"
-	desc = "Holds a crew's restricted equipment while they are temporarily assigned off-duty. A service contract between Nanotrasen and Lustwish stipulates that company issued batons, masks, restraints, and other equipment are not to be used for recreational purposes. Employees may purchase recreational provisions from an approved vendor."
+	desc = "Mantém o equipamento restrito da tripulação enquanto estão temporariamente fora de serviço. Um contrato de serviço entre Nanotrasen e Lustwish estipula que a empresa emitiu bastões, máscaras, restrições, e outros equipamentos não devem ser usados para fins recreativos. Funcionários podem comprar provisões de um vendedor aprovado."
 	icon = 'modular_zubbers/icons/obj/storage/shame_box.dmi'
 	icon_state = "crewbox+l"
 	icon_locked = "crewbox+l"

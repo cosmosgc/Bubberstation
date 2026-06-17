@@ -13,16 +13,16 @@
 	)
 
 /datum/buildmode_mode/advanced/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/obj/structure/closet")
+	var/target_path = input(c, "Digite o tipo de caminho:", "Typepath", "/obj/structure/closet")
 	objholder = text2path(target_path)
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			tgui_alert(usr,"No path was selected")
+			tgui_alert(usr,"Nenhum caminho foi selecionado.")
 			return
 		else if(ispath(objholder, /area))
 			objholder = null
-			tgui_alert(usr,"That path is not allowed.")
+			tgui_alert(usr,"Esse caminho não é permitido.")
 			return
 	BM.preview_selected_item(objholder)
 
@@ -54,7 +54,7 @@
 			A.setDir(BM.build_dir)
 			log_admin("Build Mode: [key_name(c)] modified [A]'s [COORD(A)] dir to [BM.build_dir]")
 		else
-			to_chat(c, span_warning("Select object type first."))
+			to_chat(c, span_warning("Selecione o tipo de objeto primeiro."))
 	else if(right_click)
 		if(isobj(object))
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")

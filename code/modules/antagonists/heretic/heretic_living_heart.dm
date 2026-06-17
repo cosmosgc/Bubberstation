@@ -67,7 +67,7 @@
  */
 /datum/action/cooldown/track_target
 	name = "Living Heartbeat"
-	desc = "LMB: Chose one of your sacrifice targets to track. RMB: Repeats last target you chose to track."
+	desc = "Escolhi um de seus alvos de sacrifício para rastrear. Repita o último alvo que escolheu para rastrear."
 	check_flags = AB_CHECK_CONSCIOUS
 	background_icon_state = "bg_heretic"
 	button_icon = 'icons/obj/antags/eldritch.dmi'
@@ -110,7 +110,7 @@
 	var/datum/heretic_knowledge/sac_knowledge = heretic_datum.get_knowledge(/datum/heretic_knowledge/hunt_and_sacrifice)
 
 	if(!LAZYLEN(heretic_datum.sac_targets))
-		owner.balloon_alert(owner, "no targets, visit a rune!")
+		owner.balloon_alert(owner, "Sem alvos, visite uma runa!")
 		StartCooldown(1 SECONDS)
 		return TRUE
 
@@ -199,7 +199,7 @@
 	// One of us is in somewhere we shouldn't be
 	if(!our_z || !their_z)
 		// "Hell if I know"
-		balloon_message = "on another plane!"
+		balloon_message = "Em outro avião!"
 
 	// They're not on the same z-level as us
 	else if(our_z != their_z)
@@ -208,24 +208,24 @@
 			// We're on a multi-z station
 			if(is_station_level(our_z))
 				if(our_z > their_z)
-					balloon_message = "below you!"
+					balloon_message = "Abaixo de você!"
 				else
-					balloon_message = "above you!"
+					balloon_message = "Acima de você!"
 			// We're off station, they're not
 			else
-				balloon_message = "on station!"
+				balloon_message = "Na estação!"
 
 		// Mining
 		else if(is_mining_level(their_z))
-			balloon_message = "on lavaland!"
+			balloon_message = "Em Lavaland!"
 
 		// In the gateway
 		else if(is_away_level(their_z) || is_secret_level(their_z))
-			balloon_message = "beyond the gateway!"
+			balloon_message = "além do portal!"
 
 		// They're somewhere we probably can't get too - sacrifice z-level, centcom, etc
 		else
-			balloon_message = "on another plane!"
+			balloon_message = "Em outro avião!"
 
 	// They're on the same z-level as us!
 	else
@@ -245,7 +245,7 @@
 				balloon_message = "far, [dir2text(dir)]!"
 				arrow_color = COLOR_ORANGE
 			else
-				balloon_message = "very far!"
+				balloon_message = "Muito longe!"
 				arrow_color = COLOR_RED
 
 		if(owner.hud_used)
@@ -255,7 +255,7 @@
 	if(ismob(tracked_thing))
 		var/mob/tracked_mob = tracked_thing
 		if(tracked_mob.stat == DEAD)
-			balloon_message = "they're dead, " + balloon_message
+			balloon_message = "Eles estão mortos." + balloon_message
 
 	return balloon_message
 

@@ -1,6 +1,6 @@
 /obj/machinery/turretid
 	name = "turret control panel"
-	desc = "Used to control a room's automated defenses."
+	desc = "Usado para controlar as defesas automáticas de uma sala."
 	icon = 'icons/obj/machines/turret_control.dmi'
 	icon_state = "control"
 	base_icon_state = "control"
@@ -105,18 +105,18 @@
 
 	if (check_access(id))
 		if(obj_flags & EMAGGED)
-			to_chat(user, span_warning("The turret control is unresponsive!"))
+			to_chat(user, span_warning("O controle da torre não responde!"))
 			return
 
 		locked = !locked
 		to_chat(user, span_notice("You [ locked ? "lock" : "unlock"] the panel."))
 	else
-		to_chat(user, span_alert("Access denied."))
+		to_chat(user, span_alert("Acesso negado."))
 
 /obj/machinery/turretid/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	balloon_alert(user, "access analysis module shorted")
+	balloon_alert(user, "módulo de análise de acesso encurtado")
 	obj_flags |= EMAGGED
 	locked = FALSE
 	return TRUE
@@ -125,7 +125,7 @@
 	if(!ailock || isAdminGhostAI(user))
 		return attack_hand(user)
 	else
-		to_chat(user, span_warning("There seems to be a firewall preventing you from accessing this device!"))
+		to_chat(user, span_warning("Parece haver um firewall impedindo você de acessar este dispositivo!"))
 
 /obj/machinery/turretid/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -154,7 +154,7 @@
 			if(!HAS_SILICON_ACCESS(user))
 				return
 			if((obj_flags & EMAGGED) || (machine_stat & BROKEN))
-				to_chat(user, span_warning("The turret control is unresponsive!"))
+				to_chat(user, span_warning("O controle da torre não responde!"))
 				return
 			locked = !locked
 			return TRUE
@@ -206,7 +206,7 @@
 
 /obj/item/wallframe/turret_control
 	name = "turret control frame"
-	desc = "Used for building turret control panels."
+	desc = "Usado para construir painéis de controle de torre."
 	icon = 'icons/obj/machines/turret_control.dmi'
 	icon_state = "control_frame"
 	result_path = /obj/machinery/turretid

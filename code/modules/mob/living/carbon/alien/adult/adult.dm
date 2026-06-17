@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 		return FALSE
 	var/mob/living/lucky_winner = candidate
 
-	lucky_winner.audible_message(span_danger("You hear a great snapping, like the disjointing of muscle and bone."))
+	lucky_winner.audible_message(span_danger("Você ouve um grande estalo, como a desarticulação de músculos e ossos."))
 	lucky_winner.visible_message(span_danger("[src] is attempting to devour [lucky_winner]!"), \
 			span_userdanger("[src] is attempting to devour you!"))
 
@@ -142,7 +142,7 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 			span_alien("You feel a pain in your... chest? You can't get [lucky_winner] down."))
 		return TRUE
 
-	lucky_winner.audible_message(span_danger("You hear a deep groan, and a harsh snap like a mantrap."))
+	lucky_winner.audible_message(span_danger("Você ouve um gemido profundo, e um golpe duro como uma armadilha."))
 	lucky_winner.visible_message(span_danger("[src] devours [lucky_winner]!"), \
 			span_userdanger("[src] devours you!"))
 	log_combat(src, lucky_winner, "devoured")

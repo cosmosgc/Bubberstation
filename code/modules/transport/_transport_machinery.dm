@@ -120,13 +120,13 @@
 /obj/machinery/transport/proc/try_fix_machine(obj/machinery/transport/machine, mob/living/user, obj/item/tool)
 	SHOULD_CALL_PARENT(TRUE)
 
-	machine.balloon_alert(user, "percussive maintenance...")
+	machine.balloon_alert(user, "Manutenção percussiva...")
 	if(!tool.use_tool(machine, user, 7 SECONDS, volume = 50))
-		machine.balloon_alert(user, "interrupted!")
+		machine.balloon_alert(user, "Interrompido!")
 		return FALSE
 
 	playsound(src, 'sound/machines/synth/synth_yes.ogg', 75, use_reverb = TRUE)
-	machine.balloon_alert(user, "success!")
+	machine.balloon_alert(user, "Sucesso!")
 	UnregisterSignal(src, repair_signals)
 	LAZYNULL(repair_signals)
 	methods_to_fix = list()
@@ -140,7 +140,7 @@
 	if(user.combat_mode)
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it doesn't need repairs!")
+		balloon_alert(user, "Não precisa de reparos!")
 		return TRUE
 	balloon_alert(user, "repairing...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 0, volume=50))

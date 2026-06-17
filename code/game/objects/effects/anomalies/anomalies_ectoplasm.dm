@@ -1,6 +1,6 @@
 /obj/effect/anomaly/ectoplasm
 	name = "ectoplasm anomaly"
-	desc = "It looks like the souls of the damned are trying to break into the realm of the living again. How upsetting."
+	desc = "Parece que as almas dos condenados estão tentando invadir o reino dos vivos novamente. Que chato."
 	icon_state = "ectoplasm"
 	anomaly_core = /obj/item/assembly/signaler/anomaly/ectoplasm
 	lifespan = ANOMALY_COUNTDOWN_TIMER + 2 SECONDS //This one takes slightly longer, because it can run away.
@@ -22,18 +22,18 @@
 	. = ..()
 
 	if(isobserver(user))
-		. += span_info("Orbiting this anomaly will increase the size and intensity of its effects.")
+		. += span_info("Orbitar esta anomalia aumentará o tamanho e a intensidade de seus efeitos.")
 
 /obj/effect/anomaly/ectoplasm/examine_more(mob/user)
 	. = ..()
 
 	switch(effect_power)
 		if(0 to 25)
-			. += span_notice("The space around the anomaly faintly resonates. It doesn't seem very powerful at the moment.")
+			. += span_notice("O espaço ao redor da anomalia fracamente ressoa. Não parece muito poderoso no momento.")
 		if(26 to 49)
-			. += span_notice("The space around the anomaly seems to vibrate, letting out a noise that sounds like ghastly moaning. Someone should probably do something about that.")
+			. += span_notice("O espaço em torno da anomalia parece vibrar, deixando sair um barulho que soa como gemido horrível. Alguém deveria fazer algo sobre isso.")
 		if(50 to 100)
-			. += span_alert("The anomaly pulsates heavily, about to burst with unearthly energy. This can't be good.")
+			. += span_alert("A anomalia pulsa fortemente, prestes a estourar com energia extraterrestre. Isso não pode ser bom.")
 
 /obj/effect/anomaly/ectoplasm/anomalyEffect(seconds_per_tick)
 	. = ..()
@@ -83,7 +83,7 @@
 				var/mob/living/carbon/human/mob_to_infect = impacted_thing
 				mob_to_infect.ForceContractDisease(new /datum/disease/revblight(), FALSE, TRUE)
 				new /obj/effect/temp_visual/revenant(get_turf(mob_to_infect))
-				to_chat(mob_to_infect, span_revenminor("A cacophony of ghostly wailing floods your ears for a moment. The noise subsides, but a distant whispering continues echoing inside of your head..."))
+				to_chat(mob_to_infect, span_revenminor("Uma cacofonia de lamentos fantasmagóricos inunda seus ouvidos por um momento. O barulho diminui, mas um sussurro distante continua ecoando dentro de sua cabeça..."))
 
 			if(istype(impacted_thing, /obj/structure/window))
 				var/obj/structure/window/window_to_damage = impacted_thing
@@ -127,7 +127,7 @@
 
 /obj/structure/ghost_portal
 	name = "Spooky Portal"
-	desc = "A portal between our dimension and who-knows-where? It's emitting an absolutely ungodly wailing sound."
+	desc = "Um portal entre nossa dimensão e quem sabe onde? Está emitindo um som absolutamente ímpio."
 	icon = 'icons/obj/anomaly.dmi'
 	icon_state = "anom"
 	anchored = TRUE
@@ -188,7 +188,7 @@
 		if(policy)
 			to_chat(new_ghost, policy)
 		else
-			to_chat(new_ghost, span_revenboldnotice("You are a lost soul, brought back to the realm of the living. Your time on this plane is limited, and you will soon be dragged back into the void!"))
+			to_chat(new_ghost, span_revenboldnotice("Você é uma alma perdida, trazida de volta ao reino dos vivos. Seu tempo neste avião é limitado, e você logo será arrastado de volta para o vazio!"))
 		new_ghost.log_message("was returned to the living world as a ghost by an ectoplasmic anomaly.", LOG_GAME)
 
 /**
@@ -203,7 +203,7 @@
 
 /proc/cleanup_ghosts(list/delete_list)
 	for(var/mob/living/mob_to_delete as anything in delete_list)
-		mob_to_delete.visible_message(span_alert("The [mob_to_delete] wails as it is torn back into the void!"), span_alert("You let out one last wail as you are sucked back into the realm of the dead. Then suddenly, you're back in the comforting embrace of the afterlife."), span_hear("You hear ethereal wailing."))
+		mob_to_delete.visible_message(span_alert("The [mob_to_delete] wails as it is torn back into the void!"), span_alert("Você solta uma última lamentação enquanto é sugado de volta para o reino dos mortos. Então, de repente, você está de volta no abraço reconfortante da vida após a morte."), span_hear("Você ouve o choro etéreo."))
 		playsound(mob_to_delete, pick(delete_list), 50)
 		new /obj/effect/temp_visual/revenant/cracks(get_turf(mob_to_delete))
 		new /obj/effect/decal/cleanable/greenglow/ecto(get_turf(mob_to_delete))

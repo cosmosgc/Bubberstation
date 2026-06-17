@@ -3,7 +3,7 @@
 
 /obj/item/cain_and_abel
 	name = "Cain & Abel"
-	desc = "I cry I pray mon Dieu."
+	desc = "Eu choro, eu rezo, mon Dieu."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
@@ -88,11 +88,11 @@
 		return NONE
 
 	if(!check_wield(user))
-		user.balloon_alert(user, "offhand busy!")
+		user.balloon_alert(user, "Offhand ocupado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!length(current_wisps))
-		user.balloon_alert(user, "no wisps!")
+		user.balloon_alert(user, "Nada de Wisps!")
 		return ITEM_INTERACT_BLOCKING
 
 	for(var/index in 0 to (length(current_wisps) - 1))
@@ -104,7 +104,7 @@
 	if (.)
 		return
 	if(!check_wield(user))
-		user.balloon_alert(user, "offhand busy!")
+		user.balloon_alert(user, "Offhand ocupado!")
 		return TRUE
 
 /obj/item/cain_and_abel/attack(mob/living/target, mob/living/carbon/human/user)

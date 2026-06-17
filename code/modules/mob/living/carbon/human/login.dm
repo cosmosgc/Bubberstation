@@ -10,7 +10,7 @@
 		return
 
 	var/list/print_msg = list()
-	print_msg += span_userdanger("As you snap back to consciousness, you recall people messing with your stuff...")
+	print_msg += span_userdanger("Quando volta à consciência, lembra que as pessoas mexem com suas coisas...")
 
 	afk_thefts = reverse_range(afk_thefts)
 
@@ -29,7 +29,7 @@
 			print_msg += "\t[span_danger("<b>[thief_name] [theft_message] roughly [DisplayTimeText(time_since, 10)] ago.</b>")]"
 
 	if(LAZYLEN(afk_thefts) >= AFK_THEFT_MAX_MESSAGES)
-		print_msg += span_warning("There may have been more, but that's all you can remember...")
+		print_msg += span_warning("Pode ter havido mais, mas é tudo que se lembra...")
 
 	to_chat(src, boxed_message(print_msg.Join("\n")))
 	LAZYNULL(afk_thefts)

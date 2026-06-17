@@ -5,10 +5,10 @@
 	id = "organ_set_bonus_stoat"
 	tick_interval = 3 SECONDS
 	organs_needed = 4
-	bonus_activate_text = span_notice("Stoat DNA is deeply infused with you! \
-		Your instincts set in - you now feel fearless, as if you could take on any enemy, no matter the size difference.")
-	bonus_deactivate_text = span_notice("You are no longer majority stoat, \
-		and you realize larger enemies are quite intimidating after all.")
+	bonus_activate_text = span_notice("O DNA está profundamente infundido em você!\
+Seus instintos se encaixam - você se sente destemido, como se pudesse enfrentar qualquer inimigo, não importa a diferença de tamanho.")
+	bonus_deactivate_text = span_notice("Você não é mais a maioria stoat,\
+E você percebe que inimigos maiores são bem intimidantes.")
 	bonus_traits = list(TRAIT_FEARLESS, TRAIT_NOFEAR_HOLDUPS)
 	COOLDOWN_DECLARE(big_attack_dodge_cd)
 
@@ -117,7 +117,7 @@
 
 /obj/item/organ/heart/stoat
 	name = "mutated stoat-heart"
-	desc = "Stoat DNA infused into what was once a normal heart."
+	desc = "DNA de estocagem infundido no que já foi um coração normal."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/heart/stoat"
 	post_init_icon_state = "heart"
@@ -150,7 +150,7 @@
 
 /obj/item/organ/tongue/stoat
 	name = "mutated stoat-tongue"
-	desc = "Stoat DNA infused into what was once a normal tongue."
+	desc = "DNA de estocagem infundido no que já foi uma língua normal."
 	say_mod = "chirps"
 	modifies_speech = TRUE
 	icon = 'icons/map_icons/items/_item.dmi'
@@ -214,7 +214,7 @@
 
 /obj/item/organ/eyes/stoat
 	name = "mutated stoat-eyes"
-	desc = "Stoat DNA infused into what was once a normal pair of eyes."
+	desc = "DNA de estocagem infundido no que já foi um par normal de olhos."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/eyes/stoat"
 	post_init_icon_state = "eyes"
@@ -224,7 +224,7 @@
 	eye_color_right = COLOR_BLACK
 	lighting_cutoff = LIGHTING_CUTOFF_LOW
 	maxHealth = parent_type::maxHealth * 0.8 // weaker eyes
-	penlight_message = "shine green"
+	penlight_message = "Brilhe verde"
 
 /obj/item/organ/eyes/stoat/Initialize(mapload)
 	. = ..()
@@ -233,7 +233,7 @@
 
 /obj/item/organ/ears/stoat
 	name = "mutated stoat-ears"
-	desc = "Stoat DNA infused into what was once a normal pair of ears."
+	desc = "DNA de estocagem infundido no que já foi um par normal de orelhas."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/ears/stoat"
 	post_init_icon_state = "ears"
@@ -268,33 +268,33 @@
 	event_flags = MOOD_EVENT_FEAR
 
 /datum/mood_event/stoat/enemies_nearby/one
-	description = "My instincts say there's something dangerous nearby, better be careful."
+	description = "Meus instintos dizem que há algo perigoso por perto, é melhor ter cuidado."
 	mood_change = -1
 
 /datum/mood_event/stoat/enemies_nearby/multiple
-	description = "My instincts say there potential danger nearby, better be on edge."
+	description = "Meus instintos dizem que há perigo por perto, é melhor estar no limite."
 	mood_change = -3
 
 /datum/mood_event/stoat/enemies_nearby/crowd
-	description = "My instincts say there are a lot of dangerous things nearby, I need to get out of here!"
+	description = "Meus instintos dizem que há muitas coisas perigosas por perto, preciso sair daqui!"
 	mood_change = -5
 
 /datum/mood_event/stoat/alone
-	description = "There is no one nearby, my instincts are at rest. I feel at peace."
+	description = "Não há ninguém por perto, meus instintos estão em repouso. Eu me sinto em paz."
 	mood_change = 1
 
 /datum/mood_event/stoat/friendlies_nearby
 	event_flags = MOOD_EVENT_FEAR
 
 /datum/mood_event/stoat/friendlies_nearby/one
-	description = "There is only one friend nearby, my instincts are at rest."
+	description = "Só há um amigo por perto, meus instintos estão em repouso."
 
 /datum/mood_event/stoat/friendlies_nearby/multiple
-	description = "My instincts say there are too many people nearby, I feel a little on edge."
+	description = "Meus instintos dizem que há muita gente por perto, eu me sinto um pouco nervoso."
 	mood_change = -1
 
 /datum/mood_event/stoat/friendlies_nearby/crowd
-	description = "My instincts say there are too many people nearby, I need to get out of here!"
+	description = "Meus instintos dizem que há muita gente por perto, preciso sair daqui!"
 	mood_change = -3
 
 /datum/movespeed_modifier/stoat_dodge

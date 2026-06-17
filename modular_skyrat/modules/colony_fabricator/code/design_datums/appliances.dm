@@ -11,8 +11,8 @@
 
 /datum/techweb_node/colony_fabricator_appliances
 	id = TECHWEB_NODE_COLONY_APPLIANCES
-	display_name = "Colony Fabricator Appliance Designs"
-	description = "Contains all of the colony fabricator's appliance machine designs."
+	display_name = "Projeto de Eletrodomésticos para fabricantes de colônias"
+	description = "Contém todos os projetos da máquina de aparelhos da colônia."
 	design_ids = list(
 		"wall_multi_cell_rack",
 		"portable_lil_pump",

@@ -1,12 +1,12 @@
 //Radiation storms occur when the station passes through an irradiated area, and irradiate anyone not standing in protected areas (maintenance, emergency storage, etc.)
 /datum/weather/rad_storm
 	name = "radiation storm"
-	desc = "A cloud of intense radiation passes through the area dealing rad damage to those who are unprotected."
+	desc = "Uma nuvem de radiação intensa passa pela área, causando danos radicais àqueles que estão desprotegidos."
 
 	telegraph_duration = 40 SECONDS
-	telegraph_message = span_danger("The air begins to grow warm.")
+	telegraph_message = span_danger("O ar começa a aquecer.")
 
-	weather_message = span_userdanger("<i>You feel waves of heat wash over you! Find shelter!</i>")
+	weather_message = span_userdanger("<i>Sente ondas de calor sobre você! Encontrem abrigo!</i>")
 	weather_overlay = "ash_storm"
 	weather_duration_lower = 1 MINUTES
 	weather_duration_upper = 2.5 MINUTES
@@ -14,7 +14,7 @@
 	weather_sound = 'sound/announcer/alarm/bloblarm.ogg'
 
 	end_duration = 10 SECONDS
-	end_message = span_notice("The air seems to be cooling off again.")
+	end_message = span_notice("O ar parece estar esfriando novamente.")
 
 	area_type = /area
 	protected_areas = list(

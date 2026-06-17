@@ -39,7 +39,7 @@
 		modified_tame_chance += 50
 		inform_tamer = TRUE
 
-	source.balloon_alert(attacker, "eats from your hand")
+	source.balloon_alert(attacker, "Come da sua mão.")
 	if(prob(modified_tame_chance)) //note: lack of feedback message is deliberate, keep them guessing unless they're an expert!
 		on_tame(source, attacker, food, inform_tamer)
 	else
@@ -73,7 +73,7 @@
 	if(QDELETED(animal) || chosen_name == animal.name)
 		return
 	if(!chosen_name)
-		to_chat(tamer, span_warning("Please enter a valid name."))
+		to_chat(tamer, span_warning("Por favor, insira um nome válido."))
 		rename_pet(animal, tamer)
 		return
 	animal.fully_replace_character_name(animal.name, chosen_name)

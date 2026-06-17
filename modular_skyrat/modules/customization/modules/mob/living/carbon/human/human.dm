@@ -80,7 +80,7 @@
 	set desc = "Allows you to toggle which underwear should show or be hidden. Underwear will obscure genitals."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't toggle underwear visibility right now..."))
+		to_chat(usr, span_warning("Você não pode trocar a visibilidade da cueca agora..."))
 		return
 
 	var/underwear_button = underwear_visibility & UNDERWEAR_HIDE_UNDIES ? "Show underwear" : "Hide underwear"
@@ -88,7 +88,7 @@
 	var/socks_button = underwear_visibility & UNDERWEAR_HIDE_SOCKS ? "Show socks" : "Hide socks"
 	var/bra_button = underwear_visibility & UNDERWEAR_HIDE_BRA ? "Show bra" : "Hide bra"
 	var/list/choice_list = list("[underwear_button]" = "underwear", "[bra_button]" = "bra", "[undershirt_button]" = "shirt", "[socks_button]" = "socks","show all" = "show", "Hide all" = "hide")
-	var/picked_visibility = input(src, "Choose visibility setting", "Show/Hide underwear") as null|anything in choice_list
+	var/picked_visibility = input(src, "Escolha a configuração de visibilidade.", "Mostrar/Esconder roupas íntimas") as null|anything in choice_list
 	if(picked_visibility)
 		var/picked_choice = choice_list[picked_visibility]
 		switch(picked_choice)
@@ -138,7 +138,7 @@
 
 	// Stat check
 	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't do this right now..."))
+		to_chat(usr, span_warning("Não pode fazer isso agora..."))
 		return
 
 	// Only show the 'reveal all' button if we are already hiding something
@@ -186,7 +186,7 @@
 
 	// Choice to action
 	if(pick == "reveal all")
-		to_chat(usr, span_notice("You are no longer trying to hide your mutant parts."))
+		to_chat(usr, span_notice("Você não está mais tentando esconder suas partes mutantes."))
 		LAZYNULL(try_hide_mutant_parts)
 		update_body_parts()
 		return
@@ -212,7 +212,7 @@
 	set desc = "Pretend to be impaired for a defined duration."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't do this right now..."))
+		to_chat(usr, span_warning("Não pode fazer isso agora..."))
 		return
 
 	var/static/list/choices = list("drunkenness", "stuttering", "jittering")

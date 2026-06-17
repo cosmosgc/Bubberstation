@@ -2,7 +2,7 @@
 //The ash walker den consumes corpses or unconscious mobs to create ash walker eggs. For more info on those, check ghost_role_spawners.dm
 /obj/structure/lavaland/ash_walker
 	name = "necropolis tendril nest"
-	desc = "A vile tendril of corruption. It's surrounded by a nest of rapidly growing eggs..."
+	desc = "Um vil tendil de corrupção. Está cercado por um ninho de ovos crescendo rapidamente..."
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "ash_walker_nest"
 
@@ -64,7 +64,7 @@
 					deadmob = offeredmob
 				else
 					deadmob = offeredmob.get_ghost(FALSE, TRUE)
-				to_chat(deadmob, "Your body has been returned to the nest. You are being remade anew, and will awaken shortly. </br><b>Your memories will remain intact in your new body, as your soul is being salvaged</b>")
+				to_chat(deadmob, "Seu corpo foi devolvido ao ninho. Você está sendo refeito, e vai acordar em breve.</br><b>Suas memórias permanecerão intactas em seu novo corpo, como sua alma está sendo salva.</b>")
 				SEND_SOUND(deadmob, sound('sound/effects/magic/enter_blood.ogg',volume=100))
 				addtimer(CALLBACK(src, PROC_REF(remake_walker), offeredmob), 20 SECONDS)
 				offeredmob.forceMove(src)
@@ -80,7 +80,7 @@
 			var/mob/living/deliverymob = get_mob_by_key(deliverykey) //mob of said ckey
 			//there is a 40% chance that the Lava Lizard unlocks their respawn with each sacrifice
 			if(deliverymob && (deliverymob.mind?.has_antag_datum(/datum/antagonist/ashwalker)) && (deliverykey in ashies.players_spawned) && (prob(40)))
-				to_chat(deliverymob, span_warning("<b>The Necropolis is pleased with your sacrifice. You feel confident your existence after death is secure.</b>"))
+				to_chat(deliverymob, span_warning("<b>A necrópole está satisfeita com seu sacrifício. Você se sente confiante que sua existência após a morte é segura.</b>"))
 				ashies.players_spawned -= deliverykey
 			offeredmob.investigate_log("has been gibbed by the necropolis tendril.", INVESTIGATE_DEATHS)
 			offeredmob.gib(DROP_ALL_REMAINS)
@@ -102,20 +102,20 @@
 	newwalker.remove_language(/datum/language/common)
 	oldmob.mind.transfer_to(newwalker)
 	newwalker.mind.grab_ghost()
-	to_chat(newwalker, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
+	to_chat(newwalker, "<b>Você foi retirado do túmulo, com um novo corpo e um novo propósito. Glória à Necrópole!</b>")
 	playsound(get_turf(newwalker),'sound/effects/magic/exit_blood.ogg', 100, TRUE)
 	qdel(oldmob)
 
 /obj/structure/lavaland/ash_walker/proc/spawn_mob()
 	if(meat_counter >= ASH_WALKER_SPAWN_THRESHOLD)
 		new /obj/effect/mob_spawn/ghost_role/human/ash_walker(get_step(loc, pick(GLOB.alldirs)), ashies)
-		visible_message(span_danger("One of the eggs swells to an unnatural size and tumbles free. It's ready to hatch!"))
+		visible_message(span_danger("Um dos ovos incha para um tamanho anormal e cai livre. Está pronto para eclodir!"))
 		meat_counter -= ASH_WALKER_SPAWN_THRESHOLD
 		ashies.eggs_created++
 
 /obj/structure/lavaland/ash_walker_fake
 	name = "necropolis tendril nest"
-	desc = "A vile tendril of corruption. It's surrounded by a nest of rapidly growing eggs..."
+	desc = "Um vil tendil de corrupção. Está cercado por um ninho de ovos crescendo rapidamente..."
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "ash_walker_nest"
 	move_resist = INFINITY
@@ -130,7 +130,7 @@
 
 /obj/effect/collapse
 	name = "collapsing necropolis tendril"
-	desc = "Get your loot and get clear!"
+	desc = "Peguem seu dinheiro e saiam!"
 	layer = TABLE_LAYER
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "tendril"
@@ -144,7 +144,7 @@
 /obj/effect/collapse/Initialize(mapload)
 	. = ..()
 	emitted_light = new(loc)
-	visible_message(span_bolddanger("The tendril writhes in fury as the earth around it begins to crack and break apart! Get back!"))
+	visible_message(span_bolddanger("Os tentáculos se contorcem em fúria enquanto a terra ao redor começa a rachar e quebrar! Para trás!"))
 	balloon_alert_to_viewers("interact to grab loot before collapse!", vision_distance = 7)
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, FALSE, 50, TRUE, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(collapse)), 5 SECONDS)
@@ -153,17 +153,17 @@
 	var/list/examine_messages = ..()
 	if(isliving(user))
 		if(has_collected(user))
-			examine_messages += span_boldnotice("You've grabbed what you can, now get out!")
+			examine_messages += span_boldnotice("Você pegou o que podia, agora saia!")
 		else
-			examine_messages += span_boldnotice("You might have some time to grab some goodies with an open hand before it collapses!")
+			examine_messages += span_boldnotice("Você pode ter algum tempo para pegar algumas guloseimas com uma mão aberta antes que ela caia!")
 	return examine_messages
 
 /obj/effect/collapse/attack_hand(mob/living/collector, list/modifiers)
 	. = ..()
 	if(has_collected(collector))
-		to_chat(collector, span_danger("You've already gotten some loot, just get out of there with it!"))
+		to_chat(collector, span_danger("Você já conseguiu algum saque, saia daí com isso!"))
 		return
-	visible_message(span_warning("Something falls free of the tendril!"))
+	visible_message(span_warning("Algo cai livre do tentáculo!"))
 	var/obj/structure/closet/crate/necropolis/tendril/loot = new /obj/structure/closet/crate/necropolis/tendril(loc)
 	collector.start_pulling(loot)
 	collected += WEAKREF(collector)
@@ -188,7 +188,7 @@
 	for(var/mob/viewer in range(7, src))
 		shake_camera(viewer, 15, 1)
 	playsound(get_turf(src),'sound/effects/explosion/explosionfar.ogg', 200, TRUE)
-	visible_message(span_bolddanger("The tendril falls inward, the ground around it widening into a yawning chasm!"))
+	visible_message(span_bolddanger("O tentáculo cai para dentro, o chão ao seu redor se expandindo em um abismo bocejante!"))
 	for(var/turf/ground in RANGE_TURFS(2, src))
 		if(HAS_TRAIT(ground, TRAIT_NO_TERRAFORM))
 			continue

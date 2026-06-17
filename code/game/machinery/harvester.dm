@@ -1,6 +1,6 @@
 /obj/machinery/harvester
 	name = "organ harvester"
-	desc = "An advanced machine used for harvesting organs and limbs from the deceased."
+	desc = "Uma máquina avançada usada para colher órgãos e membros do falecido."
 	density = TRUE
 	icon = 'icons/obj/machines/harvester.dmi'
 	icon_state = "harvester"
@@ -101,7 +101,7 @@
 		notify_ghosts(
 			"[carbon_occupant.real_name] is about to be ground up by a malfunctioning organ harvester!",
 			source = src,
-			header = "Gruesome!",
+			header = "Horrível!",
 		)
 
 	operation_order = reverse_range(carbon_occupant.get_bodyparts())   //Chest and head are first in bodyparts, so we invert it to make them suffer more
@@ -170,7 +170,7 @@
 	obj_flags |= EMAGGED
 	allow_living = TRUE
 	allow_clothing = TRUE
-	balloon_alert(user, "lifesign scanners overloaded")
+	balloon_alert(user, "Scanners de sinais de vida sobrecarregados.")
 	return TRUE
 
 /obj/machinery/harvester/container_resist_act(mob/living/user)

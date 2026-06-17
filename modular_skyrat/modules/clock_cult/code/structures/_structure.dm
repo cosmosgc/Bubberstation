@@ -1,13 +1,13 @@
 /// The base clockwork structure. Can have an alternate desc and will show up in the list of clockwork objects.
 /obj/structure/destructible/clockwork
 	name = "meme structure"
-	desc = "Some frog or something, the fuck?"
+	desc = "Algum sapo ou algo assim, porra?"
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	icon_state = "rare_pepe"
 	anchored = TRUE
 	density = TRUE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	break_message = span_warning("Sparks fly as the brass structure shatters across the ground.") //The message shown when a structure breaks
+	break_message = span_warning("As faíscas voam enquanto a estrutura de latão se despedaça pelo chão.") //The message shown when a structure breaks
 	break_sound = 'sound/effects/magic/clockwork/anima_fragment_death.ogg' //The sound played when a structure breaks
 	debris = list(
 		/obj/structure/fluff/clockwork/alloy_shards/large = 1,

@@ -5,7 +5,7 @@
 	set name = VERB_SAY
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	//queue this message because verbs are scheduled to process after SendMaps in the tick and speech is pretty expensive when it happens.
@@ -18,7 +18,7 @@
 	set name = VERB_WHISPER
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	if(message)
@@ -39,7 +39,7 @@
 	set name = VERB_ME
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -57,7 +57,7 @@
 
 	if(filter_result && !filterproof)
 		//The filter warning message shows the sanitized message though.
-		to_chat(src, span_warning("That message contained a word prohibited in IC chat! Consider reviewing the server rules."))
+		to_chat(src, span_warning("Essa mensagem continha uma palavra proibida no bate-papo do IC! Considere rever as regras do servidor."))
 		to_chat(src, span_warning("\"[message]\""))
 		REPORT_CHAT_FILTER_TO_USER(src, filter_result)
 		log_filter("IC", message, filter_result)
@@ -76,7 +76,7 @@
 
 	if(client && !(ignore_spam || forced))
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_danger("You cannot speak IC (muted)."))
+			to_chat(src, span_danger("Você não pode falar CI."))
 			return FALSE
 		if(client.handle_spam_prevention(message, MUTE_IC))
 			return FALSE
@@ -89,9 +89,9 @@
 
 	if(!..()) // the can_speak check
 		if(HAS_MIND_TRAIT(src, TRAIT_MIMING))
-			to_chat(src, span_green("Your vow of silence prevents you from speaking!"))
+			to_chat(src, span_green("Seu voto de silêncio o impede de falar!"))
 		else
-			to_chat(src, span_warning("You find yourself unable to speak!"))
+			to_chat(src, span_warning("Você não consegue falar!"))
 		return FALSE
 
 	return TRUE
@@ -114,12 +114,12 @@
 	var/alt_name = ""
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		to_chat(usr, span_danger("A fala está desativada."))
 		return
 
 	//SKYRAT EDIT ADDITION
 	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
-		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
+		to_chat(src, "<span class='danger'>O bate-papo está mudo.</span>")
 		return
 	//SKYRAT EDIT END
 
@@ -128,12 +128,12 @@
 		return
 
 	if(jb)
-		to_chat(src, span_danger("You have been banned from deadchat."))
+		to_chat(src, span_danger("Você foi banido do bate-papo."))
 		return
 
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, span_danger("You cannot talk in deadchat (muted)."))
+			to_chat(src, span_danger("Você não pode falar em conversa fiada."))
 			return
 
 		if(SSlag_switch.measures[SLOWMODE_SAY] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES) && src == usr)

@@ -5,11 +5,11 @@
 		return
 	if(!ishuman(user) || !user.ckey)
 		return
-	balloon_alert(user, "searching under pillows...")
-	to_chat(user, span_alert("You start scouring through the sofa's pillows...."))
+	balloon_alert(user, "Procurando debaixo dos travesseiros...")
+	to_chat(user, span_alert("Você começa a vasculhar os travesseiros do sofá..."))
 	if(do_after(user, 10 SECONDS, src))
 		if(prob(10))
-			balloon_alert(user, "found something")
+			balloon_alert(user, "Encontrei algo.")
 			if(prob(1))
 				do_sparks(5, TRUE, loc, spark_type = /datum/effect_system/basic/spark_spread/quantum)
 				new /obj/item/disk/nuclear/fake(loc)

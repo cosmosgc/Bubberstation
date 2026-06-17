@@ -75,7 +75,7 @@
 	has_crit = TRUE
 	add_filter("crit_glow", 3, list("type" = "outline", "color" = COLOR_CARP_RIFT_RED, "size" = 5))
 	if(ismob(loc))
-		loc.balloon_alert(loc, "critical strike ready")
+		loc.balloon_alert(loc, "Ataque crítico pronto.")
 
 /obj/item/light_eater/proc/remove_crit()
 	if(!has_crit)

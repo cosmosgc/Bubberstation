@@ -2,8 +2,8 @@
 /// Acts as a GPS beacon & connects to station crew monitors from lavaland
 /obj/item/clothing/accessory/kheiral_cuffs
 	name = "\improper Kheiral cuffs"
-	desc = "A prototype wrist communicator powered by Kheiral Matter. When both ends are clamped to one wrist, acts as a signal range booster for your suit sensors.\n\
-		A small engraving on the inside reads, \"NOT HANDCUFFS\"."
+	desc = "Um protótipo de comunicador de pulso alimentado por Kheiral Matter. Quando ambas as extremidades são presas em um pulso, age como um reforço de alcance de sinal para seus sensores de terno.\n\
+Uma pequena gravura no interior diz,\"NÃO MÃOS\"."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "strand"
 	worn_icon = 'icons/mob/clothing/hands.dmi'
@@ -36,7 +36,7 @@
 /obj/item/clothing/accessory/kheiral_cuffs/examine(mob/user)
 	. = ..()
 	if(gps_enabled)
-		. += span_notice("The cuff's GPS signal is on.")
+		. += span_notice("O sinal do GPS da algema está ligado.")
 
 /obj/item/clothing/accessory/kheiral_cuffs/equipped(mob/user, slot, initial)
 	. = ..()
@@ -64,7 +64,7 @@
 	if(id_card)
 		gps_name = id_card.registered_name
 	AddComponent(/datum/component/gps/kheiral_cuffs, "*[gps_name]'s Kheiral Link")
-	balloon_alert(user, "gps activated")
+	balloon_alert(user, "GPS ativado")
 	ADD_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = TRUE
 
@@ -74,7 +74,7 @@
 		return
 	if(on_wrist && far_from_home)
 		return
-	balloon_alert(user, "gps de-activated") // GPS component deletes itself when we get on-Z
+	balloon_alert(user, "GPS desativado.") // GPS component deletes itself when we get on-Z
 	REMOVE_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = FALSE
 

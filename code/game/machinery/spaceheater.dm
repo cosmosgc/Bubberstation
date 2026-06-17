@@ -12,7 +12,7 @@
 	icon_state = "sheater-off"
 	base_icon_state = "sheater"
 	name = "space heater"
-	desc = "Made by Space Amish using traditional space techniques, this heater/cooler is guaranteed not to set the station on fire. Warranty void if used in engines."
+	desc = "Feito pela Space Amish usando técnicas espaciais tradicionais, este aquecedor / refrigerador é garantido para não incendiar a estação. Garantia nula se usada em motores."
 	max_integrity = 250
 	armor_type = /datum/armor/machinery_space_heater
 	circuit = /obj/item/circuitboard/machine/space_heater
@@ -100,7 +100,7 @@
 	if(cell)
 		. += "The charge meter reads [cell ? round(cell.percent(), 1) : 0]%."
 	else
-		. += span_warning("There is no power cell installed.")
+		. += span_warning("Não há nenhuma célula de energia instalada.")
 	if(in_range(user, src) || isobserver(user))
 		. += heating_examine()
 		. += span_notice("<b>Right-click</b> to toggle [on ? "off" : "on"].")
@@ -220,10 +220,10 @@
 	if(istype(tool, /obj/item/stock_parts/power_store/cell))
 		add_fingerprint(user)
 		if(!panel_open)
-			to_chat(user, span_warning("The hatch must be open to insert a power cell!"))
+			to_chat(user, span_warning("A escotilha deve estar aberta para inserir uma célula de energia!"))
 			return ITEM_INTERACT_BLOCKING
 		if(cell)
-			to_chat(user, span_warning("There is already a power cell inside!"))
+			to_chat(user, span_warning("Já tem uma célula de energia lá dentro!"))
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
@@ -309,11 +309,11 @@
 	mode = HEATER_MODE_STANDBY
 	if(!isnull(user))
 		if(QDELETED(cell))
-			balloon_alert(user, "no cell!")
+			balloon_alert(user, "Sem celular!")
 		else if(!cell.charge())
-			balloon_alert(user, "no charge!")
+			balloon_alert(user, "De graça!")
 		else if(!is_operational)
-			balloon_alert(user, "not operational!")
+			balloon_alert(user, "Não está operacional!")
 		else
 			balloon_alert(user, "turned [on ? "on" : "off"]")
 	update_appearance()
@@ -323,7 +323,7 @@
 ///For use with heating reagents in a ghetto way
 /obj/machinery/space_heater/improvised_chem_heater
 	name = "improvised chem heater"
-	desc = "A space heater fashioned to reroute heating to a water bath on top."
+	desc = "Um aquecedor feito para redirecionar o aquecimento para um banho de água em cima."
 	panel_open = TRUE //This is always open - since we've injected wires in the panel
 	//We inherit the cell from the heater prior
 	cell = null
@@ -427,7 +427,7 @@
 		return
 	if(istype(item, /obj/item/stock_parts/power_store/cell))
 		if(cell)
-			to_chat(user, span_warning("There is already a power cell inside!"))
+			to_chat(user, span_warning("Já tem uma célula de energia lá dentro!"))
 			return
 		else if(!user.transferItemToLoc(item, src))
 			return

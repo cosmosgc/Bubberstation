@@ -1,7 +1,7 @@
 //Space bears!
 /mob/living/basic/bear
 	name = "space bear"
-	desc = "You don't need to be faster than a space bear, you just need to outrun your crewmates."
+	desc = "Não precisa ser mais rápido que um urso espacial, só precisa correr mais que seus colegas."
 	icon_state = "bear"
 	icon_living = "bear"
 	icon_dead = "bear_dead"
@@ -72,19 +72,19 @@
 /mob/living/basic/bear/hudson
 	name = "Hudson"
 	gender = MALE
-	desc = "Feared outlaw, this guy is one bad news bear." //I'm sorry...
+	desc = "Temido fora da lei, esse cara é um urso de má notícia." //I'm sorry...
 
 /mob/living/basic/bear/snow
 	name = "space polar bear"
 	icon_state = "snowbear"
 	icon_living = "snowbear"
 	icon_dead = "snowbear_dead"
-	desc = "It's a polar bear, in space, but not actually in space."
+	desc = "É um urso polar, no espaço, mas não no espaço."
 
 /mob/living/basic/bear/snow/misha
 	name = "Misha"
 	real_name = "Misha"
-	desc = "Tamed and trained by the Head of Security. Only beasts are above deceit."
+	desc = "Domado e treinado pelo Chefe de Segurança. Só os animais estão acima do engano."
 	gold_core_spawnable = NO_SPAWN
 	maxHealth = 250
 	health = 250
@@ -93,7 +93,7 @@
 
 /mob/living/basic/bear/snow/ancient
 	name = "ancient polar bear"
-	desc = "A grizzled old polar bear, its hide thick enough to make it impervious to almost all weapons."
+	desc = "Um velho urso polar grizzled, sua pele grossa o suficiente para torná-lo impermeável a quase todas as armas."
 	gold_core_spawnable = NO_SPAWN
 
 /mob/living/basic/bear/snow/ancient/Initialize(mapload)
@@ -102,7 +102,7 @@
 
 /mob/living/basic/bear/russian
 	name = "combat bear"
-	desc = "A ferocious brown bear decked out in armor plating, a red star with yellow outlining details the shoulder plating."
+	desc = "Um urso marrom feroz decked para fora em revestimento de armadura, uma estrela vermelha com amarelo delineando detalhes o revestimento de ombro."
 	icon_state = "combatbear"
 	icon_living = "combatbear"
 	icon_dead = "combatbear_dead"
@@ -122,7 +122,7 @@
 	icon_state = "butterbear"
 	icon_living = "butterbear"
 	icon_dead = "butterbear_dead"
-	desc = "I can't believe its not a bear!"
+	desc = "Não acredito que não é um urso!"
 	faction = list(FACTION_NEUTRAL, FACTION_RUSSIAN)
 	obj_damage = 11
 	melee_damage_lower = 0
@@ -133,7 +133,7 @@
 	response_harm_continuous = "takes a bite out of"
 	response_harm_simple = "take a bite out of"
 	attacked_sound = 'sound/items/eatfood.ogg'
-	death_message = "loses its false life and collapses!"
+	death_message = "perde sua falsa vida e desmorona!"
 	butcher_results = list(/obj/item/food/butter = 6, /obj/item/food/meat/slab = 3, /obj/item/organ/brain = 1, /obj/item/organ/heart = 1)
 	attack_sound = 'sound/items/weapons/slap.ogg'
 	attack_vis_effect = ATTACK_EFFECT_DISARM

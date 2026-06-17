@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/applicator/patch
 	name = "patch"
-	desc = "A chemical patch for touch based applications."
+	desc = "Um patch químico para aplicações baseadas em toque."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bandaid_blank"
 	inhand_icon_state = null
@@ -20,11 +20,11 @@
 	var/obj/item/bodypart/affecting = carbon_eater.get_bodypart(check_zone(user.zone_selected))
 
 	if(!affecting)
-		to_chat(user, span_warning("The limb is missing!"))
+		to_chat(user, span_warning("O membro está faltando!"))
 		return FALSE
 
 	if(!IS_ORGANIC_LIMB(affecting))
-		to_chat(user, span_notice("Medicine won't work on an inorganic limb!"))
+		to_chat(user, span_notice("Medicina não funcionará em um membro inorgânico!"))
 		return FALSE
 
 	return TRUE
@@ -176,24 +176,24 @@
 
 /obj/item/reagent_containers/applicator/patch/libital
 	name = "libital patch (brute)"
-	desc = "A pain reliever. Does minor liver damage. Diluted with Granibitaluri."
+	desc = "Um analgésico. Faz pequenos danos no fígado. Diluída com Granibitaluri."
 	list_reagents = list(/datum/reagent/medicine/c2/libital = 2, /datum/reagent/medicine/granibitaluri = 8) //10 iterations
 	icon_state = "bandaid_brute"
 
 /obj/item/reagent_containers/applicator/patch/aiuri
 	name = "aiuri patch (burn)"
-	desc = "Helps with burn injuries. Does minor eye damage. Diluted with Granibitaluri."
+	desc = "Ajuda com queimaduras. Faz pequenos danos nos olhos. Diluída com Granibitaluri."
 	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 2, /datum/reagent/medicine/granibitaluri = 8)
 	icon_state = "bandaid_burn"
 
 /obj/item/reagent_containers/applicator/patch/fent
 	name = "unmarked patch"
-	desc = "An unmarked, unlabeled transdermal patch for you to wear!"
+	desc = "Um adesivo transdérmico sem marca para você usar!"
 	list_reagents = list(/datum/reagent/toxin/fentanyl = 2)
 
 /obj/item/reagent_containers/applicator/patch/synthflesh
 	name = "synthflesh patch"
-	desc = "Helps with brute and burn injuries. Slightly toxic. Three patches applied can restore a corpse husked by burns."
+	desc = "Ajuda com lesões brutas e queimadas. Ligeiramente tóxico. Três remendos aplicados podem restaurar um cadáver descascado por queimaduras."
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 20)
 	list_reagents_purity = 1
 	icon_state = "bandaid_both"
@@ -214,7 +214,7 @@
 
 /obj/item/reagent_containers/applicator/patch/ondansetron
 	name = "ondansetron patch"
-	desc = "Alleviates nausea. May cause drowsiness."
+	desc = "Alivia náusea. Pode causar sonolência."
 	list_reagents = list(/datum/reagent/medicine/ondansetron = 10)
 	icon_state = "bandaid_toxin"
 

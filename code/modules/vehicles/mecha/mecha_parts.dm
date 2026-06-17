@@ -42,27 +42,27 @@
 
 /obj/item/mecha_parts/part/ripley_torso
 	name = "\improper Ripley torso"
-	desc = "A torso part of Ripley APLU. Contains power unit, processing core and life support systems."
+	desc = "Parte do tronco de Ripley APLU. Contém unidade de energia, núcleo de processamento e sistemas de suporte de vida."
 	icon_state = "ripley_harness"
 
 /obj/item/mecha_parts/part/ripley_left_arm
 	name = "\improper Ripley left arm"
-	desc = "A Ripley APLU left arm. Data and power sockets are compatible with most exosuit tools."
+	desc = "Um braço esquerdo Ripley APLU. Dados e tomadas de energia são compatíveis com a maioria das ferramentas de exosuit."
 	icon_state = "ripley_l_arm"
 
 /obj/item/mecha_parts/part/ripley_right_arm
 	name = "\improper Ripley right arm"
-	desc = "A Ripley APLU right arm. Data and power sockets are compatible with most exosuit tools."
+	desc = "Um braço direito Ripley APLU. Dados e tomadas de energia são compatíveis com a maioria das ferramentas de exosuit."
 	icon_state = "ripley_r_arm"
 
 /obj/item/mecha_parts/part/ripley_left_leg
 	name = "\improper Ripley left leg"
-	desc = "A Ripley APLU left leg. Contains somewhat complex servodrives and balance maintaining systems."
+	desc = "Perna esquerda Ripley APLU. Contém servodrives complexos e sistemas de manutenção de equilíbrio."
 	icon_state = "ripley_l_leg"
 
 /obj/item/mecha_parts/part/ripley_right_leg
 	name = "\improper Ripley right leg"
-	desc = "A Ripley APLU right leg. Contains somewhat complex servodrives and balance maintaining systems."
+	desc = "Uma perna direita Ripley APLU. Contém servodrives complexos e sistemas de manutenção de equilíbrio."
 	icon_state = "ripley_r_leg"
 
 ///////// Odysseus
@@ -73,32 +73,32 @@
 
 /obj/item/mecha_parts/part/odysseus_head
 	name = "\improper Odysseus head"
-	desc = "An Odysseus head. Contains an integrated medical HUD scanner."
+	desc = "Uma cabeça de Odisseu. Contém um scanner médico integrado."
 	icon_state = "odysseus_head"
 
 /obj/item/mecha_parts/part/odysseus_torso
 	name = "\improper Odysseus torso"
-	desc="A torso part of Odysseus. Contains power unit, processing core and life support systems along with an attachment port for a mounted sleeper."
+	desc="Uma parte do tronco de Odisseu. Contém unidade de energia, núcleo de processamento e sistemas de suporte de vida juntamente com uma porta de ligação para um adormecimento montado."
 	icon_state = "odysseus_torso"
 
 /obj/item/mecha_parts/part/odysseus_left_arm
 	name = "\improper Odysseus left arm"
-	desc = "An Odysseus left arm. Data and power sockets are compatible with specialized medical equipment."
+	desc = "Um braço esquerdo de Odisseu. Dados e tomadas de energia são compatíveis com equipamentos médicos especializados."
 	icon_state = "odysseus_l_arm"
 
 /obj/item/mecha_parts/part/odysseus_right_arm
 	name = "\improper Odysseus right arm"
-	desc = "An Odysseus right arm. Data and power sockets are compatible with specialized medical equipment."
+	desc = "Um braço direito de Odisseu. Dados e tomadas de energia são compatíveis com equipamentos médicos especializados."
 	icon_state = "odysseus_r_arm"
 
 /obj/item/mecha_parts/part/odysseus_left_leg
 	name = "\improper Odysseus left leg"
-	desc = "An Odysseus left leg. Contains complex servodrives and balance maintaining systems to maintain stability for critical patients."
+	desc = "Uma perna esquerda de Odisseu. Contém servodrives complexos e sistemas de manutenção de equilíbrio para manter estabilidade para pacientes críticos."
 	icon_state = "odysseus_l_leg"
 
 /obj/item/mecha_parts/part/odysseus_right_leg
 	name = "\improper Odysseus right leg"
-	desc = "An odysseus right leg. Contains complex servodrives and balance maintaining systems to maintain stability for critical patients."
+	desc = "Uma perna direita odisseu. Contém servodrives complexos e sistemas de manutenção de equilíbrio para manter estabilidade para pacientes críticos."
 	icon_state = "odysseus_r_leg"
 
 ///////// Gygax
@@ -109,38 +109,38 @@
 
 /obj/item/mecha_parts/part/gygax_torso
 	name = "\improper Gygax torso"
-	desc = "A torso part of Gygax. Contains power unit, processing core and life support systems."
+	desc = "Uma parte do tronco de Gygax. Contém unidade de energia, núcleo de processamento e sistemas de suporte de vida."
 	icon_state = "gygax_harness"
 
 /obj/item/mecha_parts/part/gygax_head
 	name = "\improper Gygax head"
-	desc = "A Gygax head. Houses advanced surveillance and targeting sensors."
+	desc = "Uma cabeça de Gygax. Casas de vigilância avançada e sensores de alvo."
 	icon_state = "gygax_head"
 
 /obj/item/mecha_parts/part/gygax_left_arm
 	name = "\improper Gygax left arm"
-	desc = "A Gygax left arm. Data and power sockets are compatible with most exosuit tools and weapons."
+	desc = "Um braço esquerdo Gygax. Dados e tomadas de energia são compatíveis com a maioria das ferramentas e armas."
 	icon_state = "gygax_l_arm"
 
 /obj/item/mecha_parts/part/gygax_right_arm
 	name = "\improper Gygax right arm"
-	desc = "A Gygax right arm. Data and power sockets are compatible with most exosuit tools and weapons."
+	desc = "Um braço direito Gygax. Dados e tomadas de energia são compatíveis com a maioria das ferramentas e armas."
 	icon_state = "gygax_r_arm"
 
 /obj/item/mecha_parts/part/gygax_left_leg
 	name = "\improper Gygax left leg"
-	desc = "A Gygax left leg. Constructed with advanced servomechanisms and actuators to enable faster speed."
+	desc = "Uma perna esquerda Gygax. Construído com servomecanismos avançados e atuadores para permitir velocidade mais rápida."
 	icon_state = "gygax_l_leg"
 
 /obj/item/mecha_parts/part/gygax_right_leg
 	name = "\improper Gygax right leg"
-	desc = "A Gygax right leg. Constructed with advanced servomechanisms and actuators to enable faster speed."
+	desc = "Uma perna direita Gygax. Construído com servomecanismos avançados e atuadores para permitir velocidade mais rápida."
 	icon_state = "gygax_r_leg"
 
 /obj/item/mecha_parts/part/gygax_armor
 	gender = PLURAL
 	name = "\improper Gygax armor plates"
-	desc = "A set of armor plates designed for the Gygax. Designed to effectively deflect damage with a lightweight construction."
+	desc = "Um conjunto de placas de armadura projetadas para o Gygax. Projetado para desviar danos com uma construção leve."
 	icon_state = "gygax_armor"
 
 
@@ -152,38 +152,38 @@
 
 /obj/item/mecha_parts/part/durand_torso
 	name = "\improper Durand torso"
-	desc = "A torso part of Durand. Contains power unit, processing core and life support systems within a robust protective frame."
+	desc = "Uma parte do tronco de Durand. Contém unidade de energia, núcleo de processamento e sistemas de suporte de vida dentro de uma estrutura protetora robusta."
 	icon_state = "durand_harness"
 
 /obj/item/mecha_parts/part/durand_head
 	name = "\improper Durand head"
-	desc = "A Durand head. Houses advanced surveillance and targeting sensors."
+	desc = "Uma cabeça Durand. Casas de vigilância avançada e sensores de alvo."
 	icon_state = "durand_head"
 
 /obj/item/mecha_parts/part/durand_left_arm
 	name = "\improper Durand left arm"
-	desc = "A Durand left arm. Data and power sockets are compatible with most exosuit tools and weapons. Packs a really mean punch as well."
+	desc = "Um braço esquerdo Durand. Dados e tomadas de energia são compatíveis com a maioria das ferramentas e armas. É um soco muito bom também."
 	icon_state = "durand_l_arm"
 
 /obj/item/mecha_parts/part/durand_right_arm
 	name = "\improper Durand right arm"
-	desc = "A Durand right arm. Data and power sockets are compatible with most exosuit tools and weapons. Packs a really mean punch as well."
+	desc = "Um braço direito Durand. Dados e tomadas de energia são compatíveis com a maioria das ferramentas e armas. É um soco muito bom também."
 	icon_state = "durand_r_arm"
 
 /obj/item/mecha_parts/part/durand_left_leg
 	name = "\improper Durand left leg"
-	desc = "A Durand left leg. Built particularly sturdy to support the Durand's heavy weight and defensive needs."
+	desc = "Uma perna esquerda Durand. Construído especialmente resistente para apoiar o peso pesado e necessidades defensivas do Durand."
 	icon_state = "durand_l_leg"
 
 /obj/item/mecha_parts/part/durand_right_leg
 	name = "\improper Durand right leg"
-	desc = "A Durand right leg. Built particularly sturdy to support the Durand's heavy weight and defensive needs."
+	desc = "Uma perna direita Durand. Construído especialmente resistente para apoiar o peso pesado e necessidades defensivas do Durand."
 	icon_state = "durand_r_leg"
 
 /obj/item/mecha_parts/part/durand_armor
 	gender = PLURAL
 	name = "\improper Durand armor plates"
-	desc = "A set of armor plates for the Durand. Built heavy to resist an incredible amount of brute force."
+	desc = "Um conjunto de placas de armadura para o Durand. Construído pesado para resistir a uma incrível quantidade de força bruta."
 	icon_state = "durand_armor"
 
 ////////// Clarke
@@ -194,22 +194,22 @@
 
 /obj/item/mecha_parts/part/clarke_torso
 	name = "\improper Clarke torso"
-	desc = "A torso part of Clarke. Contains power unit, processing core and life support systems."
+	desc = "Uma parte do torso de Clarke. Contém unidade de energia, núcleo de processamento e sistemas de suporte de vida."
 	icon_state = "clarke_harness"
 
 /obj/item/mecha_parts/part/clarke_head
 	name = "\improper Clarke head"
-	desc = "A Clarke head. Contains an integrated diagnostic HUD scanner."
+	desc = "Uma cabeça Clarke. Contém um scanner de diagnóstico integrado."
 	icon_state = "clarke_head"
 
 /obj/item/mecha_parts/part/clarke_left_arm
 	name = "\improper Clarke left arm"
-	desc = "A Clarke left arm. Data and power sockets are compatible with most exosuit tools."
+	desc = "Um braço esquerdo da Clarke. Dados e tomadas de energia são compatíveis com a maioria das ferramentas de exosuit."
 	icon_state = "clarke_l_arm"
 
 /obj/item/mecha_parts/part/clarke_right_arm
 	name = "\improper Clarke right arm"
-	desc = "A Clarke right arm. Data and power sockets are compatible with most exosuit tools."
+	desc = "Um braço direito da Clarke. Dados e tomadas de energia são compatíveis com a maioria das ferramentas de exosuit."
 	icon_state = "clarke_r_arm"
 
 ////////// HONK
@@ -220,32 +220,32 @@
 
 /obj/item/mecha_parts/part/honker_torso
 	name = "\improper H.O.N.K torso"
-	desc = "A torso part of H.O.N.K. Contains chuckle unit, bananium core and honk support systems."
+	desc = "Uma parte do tronco de H.O.N.K. Contém unidade de rímel, núcleo de banânio e sistemas de suporte de buzina."
 	icon_state = "honker_harness"
 
 /obj/item/mecha_parts/part/honker_head
 	name = "\improper H.O.N.K head"
-	desc = "A H.O.N.K head. Appears to lack a face plate."
+	desc = "Uma cabeça de H.O.N.K. Parece que falta uma placa facial."
 	icon_state = "honker_head"
 
 /obj/item/mecha_parts/part/honker_left_arm
 	name = "\improper H.O.N.K left arm"
-	desc = "A H.O.N.K left arm. With unique sockets that accept odd weaponry designed by clown scientists."
+	desc = "Um braço esquerdo H.O.N.K. Com soquetes únicos que aceitam armas estranhas projetadas por cientistas palhaços."
 	icon_state = "honker_l_arm"
 
 /obj/item/mecha_parts/part/honker_right_arm
 	name = "\improper H.O.N.K right arm"
-	desc = "A H.O.N.K right arm. With unique sockets that accept odd weaponry designed by clown scientists."
+	desc = "Um braço direito H.O.N.K. Com soquetes únicos que aceitam armas estranhas projetadas por cientistas palhaços."
 	icon_state = "honker_r_arm"
 
 /obj/item/mecha_parts/part/honker_left_leg
 	name = "\improper H.O.N.K left leg"
-	desc = "A H.O.N.K left leg. The foot appears just large enough to fully accommodate a clown shoe."
+	desc = "Uma perna esquerda H.O.N.K. O pé parece grande o suficiente para acomodar um sapato de palhaço."
 	icon_state = "honker_l_leg"
 
 /obj/item/mecha_parts/part/honker_right_leg
 	name = "\improper H.O.N.K right leg"
-	desc = "A H.O.N.K right leg. The foot appears just large enough to fully accommodate a clown shoe."
+	desc = "Uma perna direita H.O.N.K. O pé parece grande o suficiente para acomodar um sapato de palhaço."
 	icon_state = "honker_r_leg"
 
 
@@ -257,37 +257,37 @@
 
 /obj/item/mecha_parts/part/phazon_torso
 	name="\improper Phazon torso"
-	desc="A Phazon torso part. The socket for the ectoplasmic core that powers the exosuit's unique phase drives is located in the middle."
+	desc="Uma parte do torso de Phazon. O soquete para o núcleo ectoplasmático que alimenta os impulsos de fase únicos do exosuit está localizado no meio."
 	icon_state = "phazon_harness"
 
 /obj/item/mecha_parts/part/phazon_head
 	name="\improper Phazon head"
-	desc="A Phazon head. Its sensors are carefully calibrated to provide vision and data even when the exosuit is phasing."
+	desc="Uma cabeça de Phazon. Seus sensores são cuidadosamente calibrados para fornecer visão e dados, mesmo quando o exosuit é fasing."
 	icon_state = "phazon_head"
 
 /obj/item/mecha_parts/part/phazon_left_arm
 	name="\improper Phazon left arm"
-	desc="A Phazon left arm. Several microtool arrays are located under the armor plating, which can be adjusted to the situation at hand."
+	desc="Um braço esquerdo de Phazon. Vários conjuntos de microtool estão localizados sob o revestimento da armadura, que pode ser ajustado à situação atual."
 	icon_state = "phazon_l_arm"
 
 /obj/item/mecha_parts/part/phazon_right_arm
 	name="\improper Phazon right arm"
-	desc="A Phazon right arm. Several microtool arrays are located under the armor plating, which can be adjusted to the situation at hand."
+	desc="Um braço direito de Phazon. Vários conjuntos de microtool estão localizados sob o revestimento da armadura, que pode ser ajustado à situação atual."
 	icon_state = "phazon_r_arm"
 
 /obj/item/mecha_parts/part/phazon_left_leg
 	name="\improper Phazon left leg"
-	desc="A Phazon left leg. It contains the unique phase drives that allow the exosuit to phase through solid matter when engaged."
+	desc="Uma perna esquerda de Phazon. Contém as unidades de fase únicas que permitem que o exossuit phase através de matéria sólida quando engajado."
 	icon_state = "phazon_l_leg"
 
 /obj/item/mecha_parts/part/phazon_right_leg
 	name="\improper Phazon right leg"
-	desc="A Phazon right leg. It contains the unique phase drives that allow the exosuit to phase through solid matter when engaged."
+	desc="Uma perna direita de Phazon. Contém as unidades de fase únicas que permitem que o exossuit phase através de matéria sólida quando engajado."
 	icon_state = "phazon_r_leg"
 
 /obj/item/mecha_parts/part/phazon_armor
 	name="Phazon armor"
-	desc="Phazon armor plates. They are layered with plasma to protect the pilot from the stress of phasing and have unusual properties."
+	desc="Placas de armadura Phazon. São camadas de plasma para proteger o piloto do estresse de fases e têm propriedades incomuns."
 	icon_state = "phazon_armor"
 
 // Savannah-Ivanov
@@ -298,37 +298,37 @@
 
 /obj/item/mecha_parts/part/savannah_ivanov_torso
 	name="\improper Savannah-Ivanov torso"
-	desc="A Savannah-Ivanov torso part. It's missing a huge chunk of space..."
+	desc="Uma parte do tronco de Savannah-Ivanov. Está faltando um enorme pedaço de espaço..."
 	icon_state = "savannah_ivanov_harness"
 
 /obj/item/mecha_parts/part/savannah_ivanov_head
 	name="\improper Savannah-Ivanov head"
-	desc="A Savannah-Ivanov head. It's sensors have been adjusted to support graceful landings."
+	desc="Uma cabeça de Savannah-Ivanov. Os sensores foram ajustados para suportar pousos graciosos."
 	icon_state = "savannah_ivanov_head"
 
 /obj/item/mecha_parts/part/savannah_ivanov_left_arm
 	name="\improper Savannah-Ivanov left arm"
-	desc="A Savannah-Ivanov left arm. Hidden rocket fabrication included in the wrists."
+	desc="Um braço esquerdo Savannah-Ivanov. Fabricação de foguetes escondidos incluídos nos pulsos."
 	icon_state = "savannah_ivanov_l_arm"
 
 /obj/item/mecha_parts/part/savannah_ivanov_right_arm
 	name="\improper Savannah-Ivanov right arm"
-	desc="A Savannah-Ivanov left arm. Hidden rocket fabrication included in the wrists."
+	desc="Um braço esquerdo Savannah-Ivanov. Fabricação de foguetes escondidos incluídos nos pulsos."
 	icon_state = "savannah_ivanov_r_arm"
 
 /obj/item/mecha_parts/part/savannah_ivanov_left_leg
 	name="\improper Savannah-Ivanov left leg"
-	desc="A Savannah-Ivanov left leg. In production they were designed to carry more than two passengers, so the leaping functionality was added as to not waste potential."
+	desc="Uma perna esquerda de Savannah-Ivanov. Na produção eles foram projetados para transportar mais de dois passageiros, então a funcionalidade pulando foi adicionada para não desperdiçar potencial."
 	icon_state = "savannah_ivanov_l_leg"
 
 /obj/item/mecha_parts/part/savannah_ivanov_right_leg
 	name="\improper Savannah-Ivanov right leg"
-	desc="A Savannah-Ivanov left leg. In production they were designed to carry more than two passengers, so the leaping functionality was added as to not waste potential."
+	desc="Uma perna esquerda de Savannah-Ivanov. Na produção eles foram projetados para transportar mais de dois passageiros, então a funcionalidade pulando foi adicionada para não desperdiçar potencial."
 	icon_state = "savannah_ivanov_r_leg"
 
 /obj/item/mecha_parts/part/savannah_ivanov_armor
 	name="Savannah-Ivanov armor"
-	desc="Savannah-Ivanov armor plates. They are uniquely shaped and reinforced to deal with the stresses of two pilots, grandiose leaps, and missiles."
+	desc="Placas de armadura Savannah-Ivanov. Eles são únicos e reforçados para lidar com as tensões de dois pilotos, grandes saltos, e mísseis."
 	icon_state = "savannah_ivanov_armor"
 
 ///////// Circuitboards

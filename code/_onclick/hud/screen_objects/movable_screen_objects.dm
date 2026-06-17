@@ -51,7 +51,7 @@ ADMIN_VERB(test_movable_UI, R_DEBUG, "Spawn Movable UI Object", "Spawn a movable
 	M.maptext = MAPTEXT("Movable")
 	M.maptext_width = 64
 
-	var/screen_l = input(user, "Where on the screen? (Formatted as 'X,Y' e.g: '1,1' for bottom left)","Spawn Movable UI Object") as text|null
+	var/screen_l = input(user, "Onde na tela? (Formatado como 'X,Y' por exemplo: '1,1' para baixo esquerdo)","Objeto de UI Movable Spawn") as text|null
 	if(!screen_l)
 		return
 
@@ -65,7 +65,7 @@ ADMIN_VERB(test_snap_ui, R_DEBUG, "Spawn Snap UI Object", "Spawn a snap UI objec
 	S.maptext = MAPTEXT("Snap")
 	S.maptext_width = 64
 
-	var/screen_l = input(user,"Where on the screen? (Formatted as 'X,Y' e.g: '1,1' for bottom left)","Spawn Snap UI Object") as text|null
+	var/screen_l = input(user,"Onde na tela? (Formatado como 'X,Y' por exemplo: '1,1' para baixo esquerdo)","Spawn Snap Objeto UI") as text|null
 	if(!screen_l)
 		return
 

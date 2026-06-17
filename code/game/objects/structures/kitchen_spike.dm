@@ -4,7 +4,7 @@
 	name = "meatspike frame"
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "spikeframe"
-	desc = "The frame of a meat spike."
+	desc = "O quadro de um espigão de carne."
 	density = TRUE
 	anchored = FALSE
 	max_integrity = 200
@@ -42,7 +42,7 @@
 		return TRUE
 	visible_message(span_notice("[user] slices apart \the [src]."),
 		span_notice("You cut \the [src] apart with \the [tool]."),
-		span_hear("You hear welding."))
+		span_hear("Você ouve solda."))
 	new /obj/item/stack/sheet/iron(loc, MEATSPIKE_IRONROD_REQUIREMENT)
 	qdel(src)
 	return TRUE
@@ -58,7 +58,7 @@
 	var/obj/item/stack/rods/used_rods = attacking_item
 	if(used_rods.get_amount() >= MEATSPIKE_IRONROD_REQUIREMENT)
 		used_rods.use(MEATSPIKE_IRONROD_REQUIREMENT)
-		balloon_alert(user, "meatspike built")
+		balloon_alert(user, "Meatspike construído.")
 		var/obj/structure/new_meatspike = new /obj/structure/kitchenspike(loc)
 		transfer_fingerprints_to(new_meatspike)
 		qdel(src)
@@ -93,7 +93,7 @@
 		return TRUE
 	visible_message(span_notice("[user] slices apart \the [src]."),
 		span_notice("You cut \the [src] apart with \the [tool]."),
-		span_hear("You hear welding."))
+		span_hear("Você ouve solda."))
 	new /obj/item/stack/sheet/iron(loc, MEATSPIKE_IRONROD_REQUIREMENT)
 	qdel(src)
 	return TRUE
@@ -109,7 +109,7 @@
 	var/obj/item/stack/rods/used_rods = attacking_item
 	if(used_rods.get_amount() >= MEATSPIKE_IRONROD_REQUIREMENT)
 		used_rods.use(MEATSPIKE_IRONROD_REQUIREMENT)
-		balloon_alert(user, "meatspike built")
+		balloon_alert(user, "Meatspike construído.")
 		var/obj/structure/new_meatspike = new /obj/structure/kitchenspike(loc)
 		transfer_fingerprints_to(new_meatspike)
 		qdel(src)
@@ -120,7 +120,7 @@
 	name = "meat spike"
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "spike"
-	desc = "A spike for collecting meat from animals."
+	desc = "Um pico para coletar carne de animais."
 	density = TRUE
 	anchored = TRUE
 	buckle_lying = 180
@@ -155,11 +155,11 @@
 
 /obj/structure/kitchenspike/crowbar_act(mob/living/user, obj/item/tool)
 	if(has_buckled_mobs())
-		to_chat(user, span_warning("You can't do that while something's on the spike!"))
+		to_chat(user, span_warning("Você não pode fazer isso enquanto algo está no espigão!"))
 		return TRUE
 
 	if(tool.use_tool(src, user, 2 SECONDS, volume = 100))
-		to_chat(user, span_notice("You pry the spikes out of the frame."))
+		to_chat(user, span_notice("Você tira os espinhos da moldura."))
 		deconstruct(TRUE)
 		return TRUE
 	return FALSE
@@ -190,7 +190,7 @@
 	if(buckled_mob != user)
 		buckled_mob.visible_message(span_notice("[user] tries to pull [buckled_mob] free of [src]!"),\
 			span_notice("[user] is trying to pull you off [src], opening up fresh wounds!"),\
-			span_hear("You hear a squishy wet noise."))
+			span_hear("Você ouve um barulho molhado."))
 		if(!do_after(user, 30 SECONDS, target = src))
 			if(buckled_mob?.buckled)
 				buckled_mob.visible_message(span_notice("[user] fails to free [buckled_mob]!"),\
@@ -200,11 +200,11 @@
 	else
 		buckled_mob.visible_message(span_warning("[buckled_mob] struggles to break free from [src]!"),\
 		span_notice("You struggle to break free from [src], exacerbating your wounds! (Stay still for two minutes.)"),\
-		span_hear("You hear a wet squishing noise.."))
+		span_hear("Você ouve um barulho molhado..."))
 		buckled_mob.adjust_brute_loss(30)
 		if(!do_after(buckled_mob, 2 MINUTES, target = src, hidden = TRUE))
 			if(buckled_mob?.buckled)
-				to_chat(buckled_mob, span_warning("You fail to free yourself!"))
+				to_chat(buckled_mob, span_warning("Você falhou em se libertar!"))
 			return
 	return ..()
 

@@ -1,6 +1,6 @@
 /obj/item/disk/surgery
 	name = "surgery procedure disk"
-	desc = "A disk that contains advanced surgery procedures, must be loaded into an Operating Console."
+	desc = "Um disco que contém procedimentos cirúrgicos avançados, deve ser carregado em um Console Operacional."
 	icon_state = "datadisk1"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass=SMALL_MATERIAL_AMOUNT)
 	/// List of surgical operations contained on this disk
@@ -8,7 +8,7 @@
 
 /obj/item/disk/surgery/debug
 	name = "debug surgery disk"
-	desc = "A disk that contains all existing surgery procedures."
+	desc = "Um disco que contém todos os procedimentos cirúrgicos existentes."
 	icon_state = "datadisk1"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass=SMALL_MATERIAL_AMOUNT)
 
@@ -20,7 +20,7 @@
 
 /obj/item/disk/surgery/advanced_plastic_surgery
 	name = "advanced plastic surgery disk"
-	desc = "Provides instructions on how to perform more intricate plastic surgeries."
+	desc = "Fornece instruções sobre como realizar cirurgias plásticas mais complexas."
 
 	surgeries = list(
 		/datum/surgery_operation/limb/add_plastic,
@@ -44,7 +44,7 @@
 
 /obj/item/disk/surgery/brainwashing
 	name = "brainwashing surgery disk"
-	desc = "Provides instructions on how to impress an order on a brain, making it the primary objective of the patient."
+	desc = "Fornece instruções sobre como imprimir uma ordem em um cérebro, tornando-o o objetivo principal do paciente."
 	surgeries = list(
 		/datum/surgery_operation/organ/brainwash,
 		/datum/surgery_operation/organ/brainwash/mechanic,
@@ -52,7 +52,7 @@
 
 /obj/item/disk/surgery/sleeper_protocol
 	name = "suspicious surgery disk"
-	desc = "Provides instructions on how to convert a patient into a sleeper agent for the Syndicate."
+	desc = "Fornece instruções sobre como converter um paciente em um agente adormecido para o Sindicato."
 	surgeries = list(
 		/datum/surgery_operation/organ/brainwash/sleeper,
 		/datum/surgery_operation/organ/brainwash/sleeper/mechanic,

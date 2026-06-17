@@ -7,7 +7,7 @@
 
 /mob/living/basic/bee
 	name = "bee"
-	desc = "Buzzy buzzy bee, stingy sti- Ouch!"
+	desc = "Abelhas zunidas, mesquinhas..."
 	icon_state = ""
 	icon_living = ""
 	icon = 'icons/mob/simple/bees.dmi'
@@ -91,7 +91,7 @@
 	. = ..()
 
 	if(isnull(beehome))
-		. += span_warning("This bee is homeless!")
+		. += span_warning("Esta abelha é sem-teto!")
 
 /mob/living/basic/bee/Destroy()
 	if(beehome)
@@ -209,7 +209,7 @@
 
 /mob/living/basic/bee/queen
 	name = "queen bee"
-	desc = "She's the queen of bees, BZZ BZZ!"
+	desc = "Ela é a rainha das abelhas, BZZ BZZ!"
 	icon_base = "queen"
 	is_queen = TRUE
 	ai_controller = /datum/ai_controller/basic_controller/queen_bee
@@ -218,7 +218,7 @@
 	return FALSE
 
 /mob/living/basic/bee/toxin
-	desc = "This bee is holding some sort of fluid."
+	desc = "Esta abelha está segurando algum tipo de fluido."
 
 /mob/living/basic/bee/toxin/Initialize(mapload)
 	. = ..()
@@ -241,7 +241,7 @@
 
 /obj/item/queen_bee
 	name = "queen bee"
-	desc = "She's the queen of bees, BZZ BZZ!"
+	desc = "Ela é a rainha das abelhas, BZZ BZZ!"
 	icon_state = "queen_item"
 	inhand_icon_state = ""
 	icon = 'icons/mob/simple/bees.dmi'
@@ -291,7 +291,7 @@
 		to_chat(user, span_warning("[queen] already has this chemical!"))
 		return
 	if(!(needle.reagents.has_reagent(chemical.type, 5)))
-		to_chat(user, span_warning("You don't have enough units of that chemical to modify the bee's DNA!"))
+		to_chat(user, span_warning("Você não tem unidades suficientes para modificar o DNA da abelha!"))
 		return
 	needle.reagents.remove_reagent(chemical.type, 5)
 	var/datum/reagent/bee_chem = GLOB.chemical_reagents_list[chemical.type]
@@ -313,7 +313,7 @@
 
 /obj/item/trash/bee
 	name = "bee"
-	desc = "No wonder the bees are dying out, you monster."
+	desc = "Não admira que as abelhas estejam morrendo, seu monstro."
 	icon = 'icons/mob/simple/bees.dmi'
 	icon_state = "bee_item"
 	///the reagent the bee carry
@@ -351,7 +351,7 @@
 /obj/item/trash/bee/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
 	SIGNAL_HANDLER
 	if(injector.revive_type != SENTIENCE_ORGANIC)
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "Criatura inválida!")
 		return
 	var/mob/living/basic/bee/revived_bee = new bee_type (drop_location())
 	if(beegent)

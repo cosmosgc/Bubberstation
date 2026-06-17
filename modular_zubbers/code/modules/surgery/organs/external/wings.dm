@@ -1,6 +1,6 @@
 /obj/item/organ/wings/moth
 	name = "moth wings"
-	desc = "A pair of fuzzy moth wings."
+	desc = "Um par de asas de mariposa."
 	flight_for_species = list(SPECIES_MOTH)
 	///Our associated shadow jaunt spell, for all nightmares
 	var/datum/action/cooldown/spell/touch/moth_climb/our_climb
@@ -24,7 +24,7 @@
 
 /datum/action/cooldown/spell/moth_and_dash
 	name = "Flap Wings"
-	desc = "Forces your wings to propel you forwards, though exhausting."
+	desc = "Força suas asas a propulsá-los para frente, embora exaustivo."
 	button_icon = 'icons/mob/human/species/moth/moth_wings.dmi'
 	button_icon_state = "m_moth_wings_gothic_BEHIND"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED|AB_CHECK_INCAPACITATED
@@ -46,14 +46,14 @@
 	var/datum/gas_mixture/environment = our_turf.return_air()
 
 	if(environment.return_pressure() < (HAZARD_LOW_PRESSURE))
-		to_chat(owner, span_warning("There's far too little air for your wings to work against!"))
+		to_chat(owner, span_warning("Há muito pouco ar para suas asas trabalhar contra!"))
 		return
 
 	if(owner.incapacitated)
 		return
 
 	if(!COOLDOWN_FINISHED(src, dash_cooldown))
-		to_chat(owner, span_warning("Your wings are extraordinarily tired, give them some rest!"))
+		to_chat(owner, span_warning("Suas asas estão extraordinariamente cansadas, dê-lhes algum descanso!"))
 		return
 
 	var/atom/dash_target = get_edge_target_turf(owner, owner.dir) //gets the user's direction
@@ -67,7 +67,7 @@
 		if(istype(dash_user))
 			dash_user.adjust_stamina_loss(40) //Given the risk of flying into things and crashing quite violently, you get four of these. Every one slows you down anyway.
 	else
-		to_chat(owner, span_warning("Something prevents you from dashing forward!"))
+		to_chat(owner, span_warning("Algo o impede de avançar!"))
 
 /datum/emote/living/mothic_dash
 	key = "mdash"
@@ -84,7 +84,7 @@
 
 /datum/action/cooldown/spell/touch/moth_climb
 	name = "Lift Wings"
-	desc = "Spreads your wings out to facilitate climbing, though this will be extremely tiring."
+	desc = "Abra suas asas para facilitar a escalada, embora isso seja extremamente cansativo."
 	button_icon = 'icons/mob/human/species/moth/moth_wings.dmi'
 	button_icon_state = "m_moth_wings_monarch_BEHIND"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED|AB_CHECK_INCAPACITATED
@@ -93,12 +93,12 @@
 	antimagic_flags = NONE
 
 	hand_path = /obj/item/climbing_hook/climbing_moth_wings
-	draw_message = span_notice("You outstretch your wings, ready to climb upwards.")
-	drop_message = span_notice("Your wings tuck back behind you.")
+	draw_message = span_notice("Você estende suas asas, pronto para subir.")
+	drop_message = span_notice("Suas asas estão atrás de você.")
 
 /obj/item/climbing_hook/climbing_moth_wings
 	name = "outstretched wings"
-	desc = "Useful for climbing up onto high places, though tiresome."
+	desc = "Útil para subir em lugares altos, embora cansativo."
 	icon = 'icons/mob/human/species/moth/moth_wings.dmi'
 	icon_state = "m_moth_wings_monarch_BEHIND"
 	climb_time = 2.5 SECONDS
@@ -110,7 +110,7 @@
 	var/turf/check_turf = get_turf(user)
 	var/datum/gas_mixture/environment = check_turf.return_air()
 	if(environment.return_pressure() < (HAZARD_LOW_PRESSURE))
-		to_chat(user, span_warning("There's far too little air for your wings to work against!"))
+		to_chat(user, span_warning("Há muito pouco ar para suas asas trabalhar contra!"))
 		return ITEM_INTERACT_BLOCKING
 	. = ..()
 	qdel(src)

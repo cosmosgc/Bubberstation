@@ -1,10 +1,10 @@
 /datum/bloodsucker_clan/malkavian
 	name = CLAN_MALKAVIAN
-	description = "Little is documented about Malkavians. Complete insanity is the most common theme. \n\
-		The Favorite Ghoul will suffer the same fate as the Master, while gaining the ability to tap into the madness when fighting."
+	description = "Pouco está documentado sobre Malkavians. Insanidade completa é o tema mais comum.\n\
+O Ghoul Favorito sofrerá o mesmo destino que o Mestre, enquanto ganha a habilidade de entrar na loucura ao lutar."
 	join_icon_state = "malkavian"
-	join_description = "Completely insane. You gain constant hallucinations, become a prophet with unintelligable rambling, \
-		and become the enforcer of the Masquerade code."
+	join_description = "Completamente insano. Você ganha alucinações constantes, se torna um profeta com divagações ininteligíveis,\
+e tornar-se o executor do código mascarado."
 	blood_drink_type = BLOODSUCKER_DRINK_INHUMANELY
 	/// The prob chance of a malkavian spouting a revelation.
 	var/max_madness_chance = 10
@@ -27,7 +27,7 @@
 	owner_datum.owner.current.update_sight()
 
 	bloodsuckerdatum.owner.current.playsound_local(get_turf(bloodsuckerdatum.owner.current), 'sound/music/antag/creepalert.ogg', 80, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
-	to_chat(bloodsuckerdatum.owner.current, span_hypnophrase("Welcome to the Malkavian..."))
+	to_chat(bloodsuckerdatum.owner.current, span_hypnophrase("Bem-vindo ao Malkavian..."))
 
 /datum/bloodsucker_clan/malkavian/Destroy(force)
 	UnregisterSignal(SSdcs, COMSIG_BLOODSUCKER_BROKE_MASQUERADE)
@@ -63,7 +63,7 @@
 		carbonowner.gain_trauma(/datum/brain_trauma/special/bluespace_prophet/phobetor, TRAUMA_RESILIENCE_ABSOLUTE)
 	var/datum/martial_art/psychotic_brawling/psychotic_brawling = new(null)
 	psychotic_brawling.teach(ghouldatum.owner.current, TRUE)
-	to_chat(ghouldatum.owner.current, span_notice("Additionally, you now suffer the same fate as your Master, while also gaining the ability to tap into the madness when fighting."))
+	to_chat(ghouldatum.owner.current, span_notice("Além disso, você agora sofre o mesmo destino que seu Mestre, enquanto também ganha a habilidade de entrar na loucura quando luta."))
 
 /datum/bloodsucker_clan/malkavian/favorite_ghoul_loss(datum/antagonist/bloodsucker/source, datum/antagonist/ghoul/ghouldatum)
 	var/mob/living/carbon/carbonowner = ghouldatum.owner.current

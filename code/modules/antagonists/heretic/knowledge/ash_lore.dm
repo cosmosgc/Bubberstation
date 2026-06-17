@@ -49,10 +49,10 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_ash
 	name = "Nightwatcher's Secret"
-	desc = "Opens up the Path of Ash to you. \
-		Allows you to transmute a match and a knife into an Ashen Blade. \
-		You can only create five at a time." //SKYRAT EDIT two to five
-	gain_text = "The City Guard know their watch. If you ask them at night, they may tell you about the ashy lantern."
+	desc = "Abre o Caminho de Ash para você.\
+Permite que transmute um fósforo e uma faca em uma lâmina de Ashen.\
+Você só pode criar cinco de cada vez." //SKYRAT EDIT two to five
+	gain_text = "A Guarda da Cidade conhece seu relógio. Se você perguntar à noite, eles podem falar sobre a lanterna cinza."
 	required_atoms = list(
 		/obj/item/knife = 1,
 		/obj/item/match = 1,
@@ -72,7 +72,7 @@
 	if(!target.get_organ_slot(ORGAN_SLOT_EYES))
 		return
 
-	to_chat(target, span_danger("A bright green light burns your eyes horrifically!"))
+	to_chat(target, span_danger("Uma luz verde brilhante queima seus olhos horrivelmente!"))
 	target.adjust_organ_loss(ORGAN_SLOT_EYES, 15)
 	target.set_eye_blur_if_lower(20 SECONDS)
 
@@ -89,9 +89,9 @@
 
 /datum/heretic_knowledge/spell/ash_passage
 	name = "Ashen Passage"
-	desc = "Grants you Ashen Passage, a spell that lets you phase out of reality, allowing you to traverse a short distance, passing though any walls. \
-			When empowered, it will break you out of any stuns and restraints, and will have a longer range."
-	gain_text = "He knew how to walk between the planes."
+	desc = "Concede-lhe Ashen Passage, um feitiço que te deixa sair da realidade, permitindo que você atravesse uma curta distância, passando por qualquer parede.\
+Quando for poderoso, ele vai tirá-lo de qualquer atordoamento e restrições, e terá um alcance mais longo."
+	gain_text = "Ele sabia andar entre os aviões."
 
 	action_to_add = /datum/action/cooldown/spell/jaunt/ethereal_jaunt/ash
 	cost = 2
@@ -99,22 +99,22 @@
 
 /datum/heretic_knowledge/spell/fire_blast
 	name = "Volcano Blast"
-	desc = "Grants you Volcano Blast, a spell that - after a short charge - fires off a beam of energy \
-		at a nearby enemy, setting them on fire and burning them. If they do not extinguish themselves, \
-		the beam will continue to another target. \
-		When empowered, has instant cast time and blasts enemies with more flames."
-	gain_text = "No fire was hot enough to rekindle them. No fire was bright enough to save them. No fire is eternal."
+	desc = "Concede-lhe Explosão de Vulcão, um feitiço que - após uma carga curta - dispara um feixe de energia\
+em um inimigo próximo, colocando fogo neles e queimando-os. Se eles não se extinguirem,\
+O feixe continuará para outro alvo.\
+Quando for poderoso, tem tempo de lançamento instantâneo e explode inimigos com mais chamas."
+	gain_text = "Nenhum fogo era quente o suficiente para reacendê-los. Nenhum fogo era brilhante o suficiente para salvá-los. Nenhum fogo é eterno."
 	action_to_add = /datum/action/cooldown/spell/charged/beam/fire_blast
 	cost = 2
 	research_tree_icon_frame = 7
 
 /datum/heretic_knowledge/armor/ash
-	desc = "Allows you to transmute a table (or a suit), a mask and a match to create a scorched mantle. \
-		It provides completes protection from fire, and is able to produce more flames passively. \
-		When you have enough fire, you may cast empowered versions of your ashen spells. \
-		Acts as a focus while hooded."
-	gain_text = "The Watch remain as they fell, crumbling away from sight. \
-			Yet the winds blowing through the city call them back to service, dust kicked into the air, a drifting silhouette of the fallen."
+	desc = "Permite que transmute uma mesa (ou um terno), uma máscara e um fósforo para criar um manto queimado.\
+Ele fornece proteção completa contra o fogo, e é capaz de produzir mais chamas passivamente.\
+Quando tiver fogo suficiente, pode lançar versões poderosas de seus feitiços de cinzas.\
+Atua como foco enquanto encapuza."
+	gain_text = "A Sentinela permanece enquanto eles caem, desmoronando longe da vista.\
+No entanto, os ventos soprando através da cidade chamá-los de volta ao serviço, poeira chutado para o ar, uma silhueta à deriva dos caídos."
 	result_atoms = list(/obj/item/clothing/suit/hooded/cultrobes/eldritch/ash)
 	research_tree_icon_state = "ash_armor"
 	required_atoms = list(
@@ -125,10 +125,10 @@
 
 /datum/heretic_knowledge/mad_mask
 	name = "Mask of Madness"
-	desc = "Allows you to transmute any mask, four candles, a stun baton, and a liver to create a Mask of Madness. \
-		The mask instills fear into heathens who witness it, causing stamina damage, hallucinations, and insanity. \
-		It can also be forced onto a heathen, to make them unable to take it off..."
-	gain_text = "The Nightwatcher was lost. That's what the Watch believed. Yet he walked the world, unnoticed by the masses."
+	desc = "Permite transmutar qualquer máscara, quatro velas, um bastão de choque, e um fígado para criar uma Máscara de Loucura.\
+A máscara infunde medo em pagãos que testemunham, causando danos à resistência, alucinações e insanidade.\
+Também pode ser forçado a um pagão, para fazê-los incapazes de tirá-lo..."
+	gain_text = "O Observador da Noite estava perdido. Isso é o que o Relógio acreditava. Ainda assim, ele andou pelo mundo, despercebido pelas massas."
 	required_atoms = list(
 		/obj/item/organ/liver = 1,
 		/obj/item/melee/baton/security = 1,  // Technically means a cattleprod is valid
@@ -142,9 +142,9 @@
 
 /datum/heretic_knowledge/blade_upgrade/ash
 	name = "Fiery Blade"
-	desc = "Your blade now lights enemies ablaze on attack."
-	gain_text = "He returned, blade in hand, he swung and swung as the ash fell from the skies. \
-		His city, the people he swore to watch... and watch he did, as they all burnt to cinders."
+	desc = "Sua lâmina agora ilumina inimigos em chamas no ataque."
+	gain_text = "Ele voltou, lâmina na mão, ele balançou e balançou enquanto as cinzas caíam dos céus.\
+A cidade dele, as pessoas que ele jurou vigiar... e ver como ele fazia, como todos eles queimados em cinzas."
 
 
 	research_tree_icon_path = 'icons/ui_icons/antags/heretic/knowledge.dmi'
@@ -159,11 +159,11 @@
 
 /datum/heretic_knowledge/spell/flame_birth
 	name = "Nightwatcher's Rebirth"
-	desc = "Grants you Nightwatcher's Rebirth, a spell that extinguishes you and \
-		burns all nearby heathens who are currently on fire, healing you for every victim afflicted. \
-		If any victims afflicted are in critical condition, they will also instantly die."
-	gain_text = "The fire was inescapable, and yet, life remained in his charred body. \
-		The Nightwatcher was a particular man, always watching."
+	desc = "Te concede o Renascimento do Observador Noturno, um feitiço que te extingui e\
+Queima todos os pagãos próximos que estão em chamas, curando você para cada vítima afligida.\
+Se as vítimas estão em estado crítico, elas também morrerão instantaneamente."
+	gain_text = "O fogo era inevitável, e ainda assim, a vida permaneceu em seu corpo carbonizado.\
+O Observador da Noite era um homem em particular, sempre observando."
 	action_to_add = /datum/action/cooldown/spell/aoe/fiery_rebirth
 	cost = 2
 	research_tree_icon_frame = 5
@@ -171,19 +171,19 @@
 
 /datum/heretic_knowledge/ultimate/ash_final
 	name = "Ashlord's Rite"
-	desc = "The ascension ritual of the Path of Ash. \
-		Bring 3 burning or husked corpses to a transmutation rune to complete the ritual. \
-		When completed, you become a harbinger of flames, gaining two abilites. \
-		Cascade, which causes a massive, growing ring of fire around you, \
-		and Oath of Flame, causing you to passively create a ring of flames as you walk. \
-		Some ashen spells you already knew will be empowered as well. \
-		You will also become immune to flames, space, and similar environmental hazards."
-	gain_text = "The Watch is dead, the Nightwatcher burned with it. Yet his fire burns evermore, \
-		for the Nightwatcher brought forth the rite to mankind! His gaze continues, as now I am one with the flames, \
-		WITNESS MY ASCENSION, THE ASHY LANTERN BLAZES ONCE MORE!"
+	desc = "O ritual de ascensão do Caminho de Ash.\
+Traga 3 corpos queimados ou descascados para uma runa de transmutação para completar o ritual.\
+Quando concluído, você se torna um prenúncio de chamas, ganhando dois abilites.\
+Cascata, que causa um enorme e crescente anel de fogo ao seu redor,\
+e Juramento de Chama, fazendo você criar passivamente um anel de chamas enquanto caminha.\
+Alguns feitiços de Ashen que você já sabia também serão poderosos.\
+Você também se tornará imune a chamas, espaço e riscos ambientais similares."
+	gain_text = "O Relógio está morto, o Observador da Noite queimou com ele. No entanto, seu fogo queima cada vez mais,\
+Para o Observador da Noite trouxe o rito à humanidade! Seu olhar continua, como agora estou com as chamas,\
+TESTEMUNHA MINHA ASCENSÃO, OS BLAZES LANTERNAIS MAIS UMA VEZ!"
 
 	ascension_achievement = /datum/award/achievement/misc/ash_ascension
-	announcement_text = "%SPOOKY% Fear the blaze, for the Ashlord, %NAME% has ascended! The flames shall consume all! %SPOOKY%"
+	announcement_text = "Tema o fogo, para o Ashlord, que subiu! As chamas consumirão tudo! SPOOKY"
 	announcement_sound = 'sound/music/antag/heretic/ascend_ash.ogg'
 	/// A static list of all traits we apply on ascension.
 	var/static/list/traits_to_apply = list(

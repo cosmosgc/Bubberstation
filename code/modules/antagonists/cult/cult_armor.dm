@@ -5,7 +5,7 @@
  */
 /obj/item/clothing/suit/hooded/cultrobes
 	name = "ancient cultist robes"
-	desc = "A ragged, dusty set of robes. Strange letters line the inside."
+	desc = "Um conjunto de roupão empoeirado. Cartas estranhas alinham o interior."
 	icon_state = "cultrobes"
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
@@ -36,7 +36,7 @@
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "culthood"
 	inhand_icon_state = "culthood"
-	desc = "A torn, dust-caked hood. Strange letters line the inside."
+	desc = "Um capô rasgado e coberto de pó. Cartas estranhas alinham o interior."
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEEARS
 	flags_cover = HEADCOVERSEYES
 	armor_type = /obj/item/clothing/suit/hooded/cultrobes::armor_type
@@ -53,14 +53,14 @@
  */
 /obj/item/clothing/suit/hooded/cultrobes/alt
 	name = "cultist robes"
-	desc = "An armored set of robes worn by the followers of Nar'Sie."
+	desc = "Um conjunto blindado de vestes usadas pelos seguidores de Nar'Sie."
 	icon_state = "cultrobesalt"
 	inhand_icon_state = null
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/alt
 
 /obj/item/clothing/head/hooded/cult_hoodie/alt
 	name = "cultist hood"
-	desc = "An armored hood worn by the followers of Nar'Sie."
+	desc = "Um capuz blindado usado pelos seguidores de Nar'Sie."
 	icon_state = "cult_hoodalt"
 	inhand_icon_state = null
 
@@ -79,7 +79,7 @@
  */
 /obj/item/clothing/suit/hooded/cultrobes/hardened
 	name = "\improper Nar'Sien hardened armor"
-	desc = "A heavily-armored exosuit worn by warriors of the Nar'Sien cult. It can withstand hard vacuum."
+	desc = "Um exossuit fortemente blindado usado por guerreiros do culto Nar'Sien. Pode suportar o vácuo duro."
 	icon_state = "cult_armor"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
@@ -162,7 +162,7 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/hardened
 	name = "\improper Nar'Sien hardened helmet"
-	desc = "A heavily-armored helmet worn by warriors of the Nar'Sien cult. It can withstand hard vacuum."
+	desc = "Um capacete fortemente blindado usado por guerreiros do culto Nar'Sien. Pode suportar o vácuo duro."
 	icon_state = "cult_helmet"
 	inhand_icon_state = null
 	armor_type = /obj/item/clothing/suit/hooded/cultrobes/hardened::armor_type
@@ -182,7 +182,7 @@
  */
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield
 	name = "empowered cultist armor"
-	desc = "Empowered armor which creates a powerful shield around the user."
+	desc = "Armadura poderosa que cria um escudo poderoso ao redor do usuário."
 	icon_state = "cult_armor"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
@@ -212,8 +212,8 @@
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/equipped(mob/living/user, slot)
 	..()
 	if(!IS_CULTIST(user))
-		to_chat(user, span_cult_large("\"I wouldn't advise that.\""))
-		to_chat(user, span_warning("An overwhelming sense of nausea overpowers you!"))
+		to_chat(user, span_cult_large("\"Eu não aconselharia isso.\""))
+		to_chat(user, span_warning("Uma sensação esmagadora de náusea te domina!"))
 		user.dropItemToGround(src, TRUE)
 		user.set_dizzy_if_lower(1 MINUTES)
 		user.Paralyze(100)
@@ -227,7 +227,7 @@
 
 /obj/item/clothing/head/hooded/cult_hoodie/cult_shield
 	name = "empowered cultist helmet"
-	desc = "Empowered helmet which creates a powerful shield around the user."
+	desc = "Capacete potente que cria um escudo poderoso ao redor do usuário."
 	icon_state = "cult_hoodalt"
 	armor_type = /obj/item/clothing/suit/hooded/cultrobes/cult_shield::armor_type
 
@@ -238,7 +238,7 @@
  */
 /obj/item/clothing/glasses/hud/health/night/cultblind
 	name = "zealot's blindfold"
-	desc = "May Nar'Sie guide you through the darkness and shield you from the light."
+	desc = "Que Nar'Sie te guie pela escuridão e te proteja da luz."
 	icon_state = "blindfold"
 	inhand_icon_state = "blindfold"
 	flags_cover = GLASSESCOVERSEYES

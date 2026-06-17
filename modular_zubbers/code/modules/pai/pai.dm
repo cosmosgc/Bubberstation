@@ -2,7 +2,7 @@
 /mob/living/silicon/pai/proc/pai_cryo()
 	if(incapacitated)
 		return
-	switch(alert("Are you sure you wish to wipe yourself? This will ghost you",,"Yes.","No."))
+	switch(alert("Tem certeza que quer se limpar? Isso vai te assombrar.",,"Yes.","No."))
 		if("Yes.")
 			fold_in(TRUE)
 			send_applicable_messages()

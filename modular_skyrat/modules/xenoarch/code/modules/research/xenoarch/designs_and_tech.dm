@@ -17,7 +17,7 @@
 	)
 
 /datum/design/xenoarch/tool/hammer
-	desc = "A hammer that can slowly remove debris on strange rocks."
+	desc = "Um martelo que pode lentamente remover detritos em rochas estranhas."
 
 /datum/design/xenoarch/tool/hammer/cm1
 	name = "Hammer (cm 1)"
@@ -56,19 +56,19 @@
 
 /datum/design/xenoarch/tool/brush
 	name = "Brush"
-	desc = "A brush that can slowly remove debris on a strange rock."
+	desc = "Um pincel que pode lentamente remover detritos em uma rocha estranha."
 	id = "xenoarch_brush"
 	build_path = /obj/item/xenoarch/brush
 
 /datum/design/xenoarch/tool/xeno_tape
 	name = "Xenoarch Tape Measure"
-	desc = "A tape measure used to measure the dug depth of strange rocks."
+	desc = "Uma fita métrica usada para medir a profundidade escavada de rochas estranhas."
 	id = "xenoarch_tapemeasure"
 	build_path = /obj/item/xenoarch/tape_measure
 
 /datum/design/xenoarch/tool/scanner
 	name = "Xenoarch Handheld Scanner"
-	desc = "A handheld scanner for strange rocks, capable of tagging a \"safe\" depth and maximum depth."
+	desc = "Um scanner portátil para rochas estranhas, capaz de marcar um\"Seguro.\"profundidade e profundidade máxima."
 	id = "xenoarch_handscanner"
 	build_path = /obj/item/xenoarch/handheld_scanner
 
@@ -90,7 +90,7 @@
 
 /datum/design/xenoarch/tool/advanced/recoverer
 	name = "Xenoarch Handheld Recoverer"
-	desc = "A device with the capabilities to recover items lost due to time."
+	desc = "Um dispositivo com capacidade de recuperar itens perdidos devido ao tempo."
 	id = "xenoarch_handrecoverer"
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
@@ -101,13 +101,13 @@
 
 /datum/design/xenoarch/tool/advanced/adv_hammer
 	name = "Advanced Hammer"
-	desc = "A hammer that can quickly remove debris on a strange rock and change digging depths."
+	desc = "Um martelo que pode rapidamente remover detritos em uma estranha rocha e mudar profundidades de escavação."
 	id = "xenoarch_adv_hammer"
 	build_path = /obj/item/xenoarch/hammer/adv
 
 /datum/design/xenoarch/tool/advanced/adv_brush
 	name = "Advanced Brush"
-	desc = "A brush that can quickly remove debris on a strange rock."
+	desc = "Um pincel que pode remover rapidamente detritos em uma rocha estranha."
 	id = "xenoarch_adv_brush"
 	build_path = /obj/item/xenoarch/brush/adv
 
@@ -120,19 +120,19 @@
 
 /datum/design/xenoarch/equipment/bag
 	name = "Xenoarchaeology Bag"
-	desc = "A bag that can hold about twenty-five strange rocks or relics."
+	desc = "Um saco que pode segurar 25 pedras ou relíquias estranhas."
 	id = "xenoarch_bag"
 	build_path = /obj/item/storage/bag/xenoarch
 
 /datum/design/xenoarch/equipment/belt
 	name = "Xenoarchaeology Belt"
-	desc = "A belt that can hold all of the essential tools for xenoarchaeology."
+	desc = "Um cinto que pode segurar todas as ferramentas essenciais para xenoarqueologia."
 	id = "xenoarch_belt"
 	build_path = /obj/item/storage/belt/utility/xenoarch
 
 /datum/design/xenoarch/equipment/bag_adv
 	name = "Advanced Xenoarch Bag"
-	desc = "A bag that can hold about fifty strange rocks or relics."
+	desc = "Um saco que pode segurar cerca de 50 pedras estranhas ou relíquias."
 	id = "xenoarch_bag_adv"
 	materials = list(
 		/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT,
@@ -150,33 +150,33 @@
 
 /datum/design/board/xenoarch/researcher
 	name = "Machine Design (Xenoarch Researcher)"
-	desc = "Allows for the construction of circuit boards used to build a new xenoarch researcher."
+	desc = "Permite a construção de placas de circuito usadas para construir um novo pesquisador xenoarco."
 	id = "xeno_researcher"
 	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
 
 /datum/design/board/xenoarch/scanner
 	name = "Machine Design (Xenoarch Scanner)"
-	desc = "Allows for the construction of circuit boards used to build a new xenoarch scanner."
+	desc = "Permite a construção de placas de circuito usadas para construir um novo scanner xenoarch."
 	id = "xeno_scanner"
 	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner
 
 /datum/design/board/xenoarch/recoverer
 	name = "Machine Design (Xenoarch Recoverer)"
-	desc = "Allows for the construction of circuit boards used to build a new xenoarch recoverer."
+	desc = "Permite a construção de placas de circuito usadas para construir um novo recuperador de xenoarque."
 	id = "xeno_recoverer"
 	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer
 
 /datum/design/board/xenoarch/digger
 	name = "Machine Design (Xenoarch Digger)"
-	desc = "Allows for the construction of circuit boards used to build a new xenoarch digger."
+	desc = "Permite a construção de placas de circuito usadas para construir uma nova escavadora xenoarca."
 	id = "xeno_digger"
 	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger
 
 /datum/techweb_node/basic_xenoarch
 	id = "basic_xenoarch"
 	starting_node = TRUE
-	display_name = "Basic Xenoarchaeology"
-	description = "The basic designs of xenoarchaeology."
+	display_name = "Xenoarqueologia básica"
+	description = "Os desenhos básicos da xenoarqueologia."
 	design_ids = list(
 		"hammer_cm1",
 		"hammer_cm2",
@@ -192,8 +192,8 @@
 
 /datum/techweb_node/xenoarch_storage
 	id = TECHWEB_NODE_XENOARCH_STORAGE
-	display_name = "Xenoarchaeology Storage"
-	description = "When dealing with xenoarchaeology, one may need storage."
+	display_name = "Armazém de Xenoarqueologia"
+	description = "Quando se lida com xenoarqueologia, pode-se precisar de armazenamento."
 	prereq_ids = list(TECHWEB_NODE_XENOARCH_BASIC)
 	design_ids = list(
 		"xenoarch_belt",
@@ -203,8 +203,8 @@
 
 /datum/techweb_node/xenoarch_machines
 	id = TECHWEB_NODE_XENOARCH_MACHINES
-	display_name = "Xenoarchaeology Machines"
-	description = "Sometimes, xenoarchaeology can be time consuming, perhaps machines can help?"
+	display_name = "Máquinas de Xenoarqueologia"
+	description = "Às vezes, a xenoarqueologia pode consumir tempo, talvez as máquinas possam ajudar?"
 	prereq_ids = list(TECHWEB_NODE_XENOARCH_BASIC)
 	design_ids = list(
 		"xeno_researcher",
@@ -215,8 +215,8 @@
 
 /datum/techweb_node/adv_xenoarch
 	id = TECHWEB_NODE_XENOARCH_ADVANCED
-	display_name = "Advanced Xenoarchaeology"
-	description = "After some time, those tools we used have become antiquated-- we need an upgrade."
+	display_name = "Xenoarqueologia avançada"
+	description = "Depois de algum tempo, as ferramentas que usamos tornaram-se antiquadas. Precisamos de uma atualização."
 	prereq_ids = list(TECHWEB_NODE_XENOARCH_BASIC, TECHWEB_NODE_XENOARCH_MACHINES, TECHWEB_NODE_XENOARCH_STORAGE)
 	design_ids = list(
 		"xenoarch_adv_hammer",
@@ -231,7 +231,7 @@
 
 /datum/experiment/scanning/points/xenoarch
 	name = "Advanced Xenoarchaeology Tools"
-	description = "It is possible to create even more advanced tools for xenoarchaeoloy."
+	description = "É possível criar ferramentas ainda mais avançadas para xenoarchaeoloy."
 	required_points = 10
 	required_atoms = list(
 		/obj/item/xenoarch/useless_relic = 1,

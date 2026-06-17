@@ -28,7 +28,7 @@
 	return name
 
 /datum/sortrouter_filter/proc/edit(mob/user)
-	to_chat(user, "This filter is not editable.")
+	to_chat(user, "Este filtro não é editável.")
 
 /datum/sortrouter_filter/proc/meets_conditions(atom/checking)
 
@@ -94,8 +94,8 @@
 	name = initial(name)
 	if(!currently_listening)
 		name = "awaiting item"
-		to_chat(user, "Hit the sorter with the item of choice to set the filter.")
-		sorter.balloon_alert(user, "awaiting item!")
+		to_chat(user, "Acerte o classificador com o item escolhido para definir o filtro.")
+		sorter.balloon_alert(user, "Esperando item!")
 		currently_listening = TRUE
 		RegisterSignal(sorter, COMSIG_ATOM_ATTACKBY, PROC_REF(sorter_hit))
 	else
@@ -106,7 +106,7 @@
 	currently_listening = FALSE
 	value = attacking_item.type
 	name = attacking_item.name
-	sorter.balloon_alert(user, "filter set")
+	sorter.balloon_alert(user, "conjunto de filtro")
 	UnregisterSignal(sorter, COMSIG_ATOM_ATTACKBY)
 	return COMPONENT_NO_AFTERATTACK
 

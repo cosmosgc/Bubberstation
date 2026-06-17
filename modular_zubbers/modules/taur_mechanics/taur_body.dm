@@ -220,10 +220,10 @@
 	if(!overlay.can_lay_down)
 		return
 	if(owner.resting)
-		to_chat(owner, span_notice("You have to be standing up in order to lay down properly!"))
+		to_chat(owner, span_notice("Você tem que estar de pé para se deitar direito!"))
 	if(overlay.laying_down)
 		// Rising up
-		to_chat(owner, span_notice("You start lifting your body up."))
+		to_chat(owner, span_notice("Você começa a levantar seu corpo."))
 		if(!do_after(owner, LAYDOWN_COOLDOWN))
 			return
 		if(!overlay.laying_down) // Prevent multiple standups at once
@@ -235,7 +235,7 @@
 
 		owner.SetImmobilized(0, TRUE)
 		REMOVE_TRAIT(owner, TRAIT_UNDENSE, TRAIT_SOURCE_TAURLAY)
-		to_chat(owner, span_notice("You stand up."))
+		to_chat(owner, span_notice("Levante-se."))
 	else
 		// And laying back down
 		overlay.laying_down = TRUE
@@ -245,7 +245,7 @@
 
 		owner.Immobilize(INFINITY, TRUE)
 		ADD_TRAIT(owner, TRAIT_UNDENSE, TRAIT_SOURCE_TAURLAY)
-		to_chat(owner, span_notice("You lay down."))
+		to_chat(owner, span_notice("Deite-se."))
 		if(owner.has_gravity())
 			playsound(owner, "bodyfall", 50, TRUE)
 

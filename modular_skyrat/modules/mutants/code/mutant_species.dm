@@ -181,10 +181,10 @@ GLOBAL_VAR_INIT(mutant_infection_chance, 40)
 
 /obj/item/mutant_hand/hnz_mutant_hand
 	name = "mutant claw"
-	desc = "A mutant's claw is its primary tool, capable of infecting \
-		humans, butchering all other living things to \
-		sustain the mutant, smashing open airlock doors and opening \
-		child-safe caps on bottles."
+	desc = "A garra de um mutante é sua principal ferramenta, capaz de infectar\
+humanos, matando todas as outras coisas vivas para\
+Sustentem o mutante, quebrando portas abertas e abrindo\
+Tampas de segurança para crianças em garrafas."
 	item_flags = ABSTRACT | DROPDEL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	icon = 'icons/effects/blood.dmi'

@@ -1,6 +1,6 @@
 /obj/item/wallframe/secure_safe
 	name = "secure safe frame"
-	desc = "A locked safe. It being unpowered prevents any access until placed back onto a wall."
+	desc = "Um cofre trancado. Estar sem energia impede qualquer acesso até ser colocado de volta em uma parede."
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
@@ -41,8 +41,8 @@
 		return FALSE
 
 	obj_flags |= EMAGGED
-	visible_message(span_warning("Sparks fly from [src]!"), blind_message = span_hear("You hear a faint electrical spark."))
-	balloon_alert(user, "lock destroyed")
+	visible_message(span_warning("Sparks fly from [src]!"), blind_message = span_hear("Você ouve uma fraca faísca elétrica."))
+	balloon_alert(user, "Trava destruída.")
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	stored_lock_code = null
 	atom_storage.locked = STORAGE_NOT_LOCKED
@@ -81,7 +81,7 @@
  */
 /obj/structure/secure_safe
 	name = "secure safe"
-	desc = "Excellent for securing things away from grubby hands."
+	desc = "Excelente para proteger as coisas de mãos sujas."
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
@@ -160,10 +160,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/secure_safe, 32)
  */
 /obj/structure/secure_safe/caps_spare
 	name = "captain's spare ID safe"
-	desc = "In case of emergency, do not break glass. All Captains and Acting Captains are provided with codes to access this safe. \
-		It is made out of the same material as the station's Black Box and is designed to resist all conventional weaponry. \
-		There appears to be a small amount of surface corrosion. It doesn't look like it could withstand much of an explosion.\
-		Due to the expensive material, it was made incredibly small to cut corners, leaving only enough room to fit something as slim as an ID card."
+	desc = "Em caso de emergência, não quebre vidro. Todos os Capitães e Capitães Interagentes têm códigos para acessar este cofre.\
+É feito do mesmo material que a Caixa Negra da estação e foi projetado para resistir a todas as armas convencionais.\
+Parece haver uma pequena quantidade de corrosão superficial. Não parece que suportaria uma explosão.\
+Devido ao material caro, foi feito incrivelmente pequeno para cortar curvas, deixando apenas espaço suficiente para caber algo tão fino como um cartão de identidade."
 	icon_state = "spare_safe"
 	base_icon_state = "spare_safe"
 	armor_type = /datum/armor/safe_caps_spare

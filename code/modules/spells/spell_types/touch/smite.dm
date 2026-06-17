@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/touch/smite
 	name = "Smite"
-	desc = "This spell charges your hand with an unholy energy \
-		that can be used to cause a touched victim to violently explode."
+	desc = "Este feitiço carrega sua mão com uma energia profana.\
+que pode ser usado para fazer uma vítima emocionada explodir violentamente."
 	button_icon_state = "gib"
 	sound = 'sound/effects/magic/disintegrate.ogg'
 
@@ -27,7 +27,7 @@
 	var/obj/item/bodypart/to_dismember = caster.get_holding_bodypart_of_item(hand)
 	var/did_dismember = to_dismember?.dismember()
 	caster.visible_message(
-		span_warning(did_dismember ? "The feedback blows [caster]'s arm off!" : "The feedback releases a bright flash of light!"),
+		span_warning(did_dismember ? "The feedback blows [caster]'s arm off!" : "O feedback libera um brilhante clarão de luz!"),
 		span_userdanger("The spell bounces from [victim]'s skin back into your arm!"),
 	)
 	// And do the blind (us included)
@@ -53,7 +53,7 @@
 
 /obj/item/melee/touch_attack/smite
 	name = "\improper smiting touch"
-	desc = "This hand of mine glows with an awesome power!"
+	desc = "Esta minha mão brilha com um poder incrível!"
 	icon = 'icons/obj/weapons/hand.dmi'
 	icon_state = "disintegrate"
 	inhand_icon_state = "disintegrate"

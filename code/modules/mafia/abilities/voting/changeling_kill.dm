@@ -30,7 +30,7 @@
 
 	ling_sent = TRUE
 	if(target_role.kill(game, host_role, FALSE))
-		target_role.send_message_to_player(span_userdanger("You have been killed by a Changeling!"))
+		target_role.send_message_to_player(span_userdanger("Você foi morto por um metamorfo!"))
 	game.send_message(span_danger("[host_role.body.real_name] was selected to attack [target_role.body.real_name] tonight!"), MAFIA_TEAM_MAFIA)
 	return TRUE
 

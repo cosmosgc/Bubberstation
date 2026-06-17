@@ -1,6 +1,6 @@
 /obj/item/clothing/accessory/medal
 	name = "bronze medal"
-	desc = "A bronze medal."
+	desc = "Uma medalha de bronze."
 	icon_state = "bronze"
 	custom_materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
 	resistance_flags = FIRE_PROOF
@@ -19,7 +19,7 @@
 
 /// Input a reason for the medal for the round end screen
 /obj/item/clothing/accessory/medal/proc/provide_reason(mob/living/carbon/human/distinguished, mob/user)
-	commendation_message = tgui_input_text(user, "Reason for this commendation? It will be recorded by Nanotrasen.", "Commendation", max_length = 140)
+	commendation_message = tgui_input_text(user, "Razão para este elogio? Será gravado por Nanotrasen.", "Commendation", max_length = 140)
 	return !!commendation_message
 
 /obj/item/clothing/accessory/medal/attach(obj/item/clothing/under/attach_to, mob/living/attacher)
@@ -47,74 +47,74 @@
 
 /obj/item/clothing/accessory/medal/conduct
 	name = "distinguished conduct medal"
-	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by Nanotrasen. It is often awarded by a captain to a member of his crew."
+	desc = "Uma medalha de bronze premiada por conduta distinta. Embora seja uma grande honra, este é o prêmio mais básico dado por Nanotrasen. É muitas vezes concedido por um capitão a um membro de sua tripulação."
 
 /obj/item/clothing/accessory/medal/bronze_heart
 	name = "bronze heart medal"
-	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
+	desc = "Uma medalha em forma de coração de bronze premiada por sacrifício. É muitas vezes concedido postumamente ou por ferimentos graves no cumprimento do dever."
 	icon_state = "bronze_heart"
 
 /obj/item/clothing/accessory/medal/ribbon
 	name = "ribbon"
-	desc = "A ribbon"
+	desc = "Uma fita."
 	icon_state = "cargo"
 
 /obj/item/clothing/accessory/medal/ribbon/cargo
 	name = "\"cargo tech of the shift\" award"
-	desc = "An award bestowed only upon those cargotechs who have exhibited devotion to their duty in keeping with the highest traditions of Cargonia."
+	desc = "Um prêmio concedido apenas aos técnicos de carga que demonstraram devoção ao seu dever de acordo com as mais altas tradições da Cargonia."
 
 /obj/item/clothing/accessory/medal/silver
 	name = "silver medal"
-	desc = "A silver medal."
+	desc = "Uma medalha de prata."
 	icon_state = "silver"
 	medaltype = "medal-silver"
 	custom_materials = list(/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/clothing/accessory/medal/silver/valor
 	name = "medal of valor"
-	desc = "A silver medal awarded for acts of exceptional valor."
+	desc = "Uma medalha de prata premiada por atos de valor excepcional."
 
 /obj/item/clothing/accessory/medal/silver/security
 	name = "robust security award"
-	desc = "An award for distinguished combat and sacrifice in defence of Nanotrasen's commercial interests. Often awarded to security staff."
+	desc = "Um prêmio de combate e sacrifício em defesa dos interesses comerciais de Nanotrasen. Muitas vezes concedido ao pessoal de segurança."
 
 /obj/item/clothing/accessory/medal/silver/excellence
 	name = "\proper the head of personnel award for outstanding achievement in the field of excellence"
-	desc = "Nanotrasen's dictionary defines excellence as \"the quality or condition of being excellent\". This is awarded to those rare crewmembers who fit that definition."
+	desc = "O dicionário de Nanotrasen define excelência como\"a qualidade ou condição de ser excelente\"Isso é concedido aos tripulantes raros que se encaixam nessa definição."
 
 /obj/item/clothing/accessory/medal/silver/bureaucracy
 	name = "\improper Excellence in Bureaucracy Medal"
-	desc = "Awarded for exemplary managerial services rendered while under contract with Nanotrasen."
+	desc = "Premiado por serviços gerenciais exemplares prestados sob contrato com Nanotrasen."
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
-	desc = "A prestigious golden medal."
+	desc = "Uma medalha de ouro de prestígio."
 	icon_state = "gold"
 	medaltype = "medal-gold"
 	custom_materials = list(/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/clothing/accessory/medal/med_medal
 	name = "exemplary performance medal"
-	desc = "A medal awarded to those who have shown distinguished conduct, performance, and initiative within the medical department."
+	desc = "Uma medalha concedida àqueles que mostraram distinta conduta, desempenho e iniciativa dentro do departamento médico."
 	icon_state = "med_medal"
 
 /obj/item/clothing/accessory/medal/med_medal2
 	name = "excellence in medicine medal"
-	desc = "A medal awarded to those who have shown legendary performance, competence, and initiative beyond all expectations within the medical department."
+	desc = "Uma medalha concedida àqueles que mostraram desempenho lendário, competência e iniciativa além de todas as expectativas dentro do departamento médico."
 	icon_state = "med_medal2"
 
 /obj/item/clothing/accessory/medal/gold/captain
 	name = "medal of captaincy"
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to Nanotrasen, and their undisputable authority over their crew."
+	desc = "Uma medalha de ouro concedida exclusivamente aos promovidos ao posto de capitão. Significa as responsabilidades codificadas de um capitão para Nanotrasen, e sua autoridade indiscutível sobre sua tripulação."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = "medal of exceptional heroism"
-	desc = "An extremely rare golden medal awarded only by CentCom. To receive such a medal is the highest honor and as such, very few exist. This medal is almost never awarded to anybody but commanders."
+	desc = "Uma medalha de ouro extremamente rara concedida apenas pela CentCom. Receber tal medalha é a maior honra e, como tal, muito poucos existem. Esta medalha quase nunca é concedida a ninguém além de comandantes."
 
 /obj/item/clothing/accessory/medal/plasma
 	name = "plasma medal"
-	desc = "An eccentric medal made of plasma."
+	desc = "Uma medalha excêntrica feita de plasma."
 	icon_state = "plasma"
 	medaltype = "medal-plasma"
 	custom_materials = list(/datum/material/plasma = HALF_SHEET_MATERIAL_AMOUNT)
@@ -133,11 +133,11 @@
 
 /obj/item/clothing/accessory/medal/plasma/nobel_science
 	name = "nobel sciences award"
-	desc = "A plasma medal which represents significant contributions to the field of science or engineering."
+	desc = "Uma medalha de plasma que representa contribuições significativas para o campo da ciência ou engenharia."
 
 /obj/item/clothing/accessory/medal/silver/emergency_services
 	name = "emergency services award"
-	desc = "A silver medal awarded to the outstanding emergency service workers of Nanotrasen, those who work tirelessly together through adversity to keep their crew safe and breathing in the harsh environments of outer space."
+	desc = "Uma medalha de prata concedida aos excelentes trabalhadores de emergência de Nanotrasen, aqueles que trabalham incansavelmente juntos através da adversidade para manter sua tripulação segura e respirando nos ambientes severos do espaço sideral."
 	icon_state = "emergencyservices"
 
 	/// Flavor text that is appended to the description.
@@ -150,13 +150,13 @@
 
 /obj/item/clothing/accessory/medal/silver/emergency_services/engineering
 	icon_state = "emergencyservices_engi"
-	insignia_desc = "The back of the medal bears an orange wrench."
+	insignia_desc = "A parte de trás da medalha tem uma chave laranja."
 
 /obj/item/clothing/accessory/medal/silver/emergency_services/medical
 	icon_state = "emergencyservices_med"
-	insignia_desc = "The back of the medal bears a dark blue cross."
+	insignia_desc = "A parte de trás da medalha tem uma cruz azul escura."
 
 /obj/item/clothing/accessory/medal/silver/elder_atmosian
 	name = "atmospheric mastery award"
-	desc = "Often referred to as the \"elder atmosian\" award, this medal is awarded to the exemplary scientists and technicians who push the boundaries and demonstrate mastery of atmospherics."
+	desc = "Muitas vezes referido como o\"Velho Atmosian.\"Prêmio, esta medalha é concedida aos cientistas e técnicos exemplares que ultrapassam os limites e demonstram domínio da atmosfera."
 	icon_state = "elderatmosian"

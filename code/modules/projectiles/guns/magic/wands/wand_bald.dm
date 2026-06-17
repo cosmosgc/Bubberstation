@@ -1,7 +1,7 @@
 /// Makes you bald, or emphasises your baldness
 /obj/item/gun/magic/wand/bald
 	name = "shearing rod"
-	desc = "A wand commonly used in wizard collegiate hazing, renders victims bald or draws significant attention to their baldness."
+	desc = "Uma varinha comumente usada em trotes de feiticeiro colegiado, torna as vítimas carecas ou chama significativa atenção para sua calvície."
 	school = SCHOOL_TRANSMUTATION
 	ammo_type = /obj/item/ammo_casing/magic/bald
 	icon_state = "shavingwand"

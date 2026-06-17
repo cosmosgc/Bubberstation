@@ -14,8 +14,8 @@
 //techweb nodes
 /datum/techweb_node/interdyne
 	id = TECHWEB_NODE_INTERDYNE
-	display_name = "Syndicate Technology"
-	description = "Tools used by the Syndicate."
+	display_name = "Tecnologia do Sindicato"
+	description = "Ferramentas usadas pelo Sindicato."
 	required_items_to_unlock = list(
 		/obj/item/circuitboard/machine/syndiepad,
 		/obj/item/circuitboard/computer/cargo/express/interdyne,
@@ -39,8 +39,8 @@
 
 /datum/techweb_node/encryption
 	id = TECHWEB_NODE_INTERDYNE_ENCRYPTION
-	display_name = "Advanced Syndicate Encryption"
-	description = "Provides emergency use Interdyne encryption keys in case operational comms are compromised."
+	display_name = "Criptografia de Sindicato Avançada"
+	description = "Fornece o uso de emergência Interdyne chaves de criptografia no caso de comunicações operacionais estão comprometidas."
 	required_items_to_unlock = list(
 		/obj/item/encryptionkey/headset_syndicate/interdyne
 	)
@@ -56,7 +56,7 @@
 //Circuit boards
 /datum/design/syndicate_express_console
 	name = "Syndicate Express Cargo Console"
-	desc = "The circuit board for a computer used to purchase goods on a black market."
+	desc = "A placa de circuito de um computador usado para comprar bens em um mercado negro."
 	id = "cargoconsole_syndicate"
 	build_type = AWAY_IMPRINTER
 	materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1)
@@ -68,7 +68,7 @@
 
 /datum/design/syndicate_bounty_pad
 	name = "Syndicate Bounty Pad"
-	desc = "The circuit board for a machine used to sell goods on a black market."
+	desc = "A placa de circuito de uma máquina usada para vender mercadorias em um mercado negro."
 	id = "bountypad_syndicate"
 	build_type = AWAY_IMPRINTER
 	materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1)
@@ -80,7 +80,7 @@
 
 /datum/design/syndicate_bounty_pad_console
 	name = "Syndicate Bounty Pad Console"
-	desc = "The circuit board for the computer used to control a bounty pad to sell goods on a black market."
+	desc = "A placa de circuito do computador usado para controlar uma plataforma de recompensa para vender mercadorias em um mercado negro."
 	id = "bountyconsole_syndicate"
 	build_type = AWAY_IMPRINTER
 	materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1)
@@ -92,7 +92,7 @@
 
 /datum/design/syndicate_powerator
 	name = "Syndicate Powerator"
-	desc = "The circuit board for a machine that can sell power."
+	desc = "A placa de circuito de uma máquina que pode vender energia."
 	id = "powerator_syndicate"
 	build_type = AWAY_IMPRINTER
 	materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1)
@@ -104,7 +104,7 @@
 
 /datum/design/syndicate_exofab
 	name = "Syndicate Exofab"
-	desc = "The circuit board for a standard issue exofab produced by Interdyne."
+	desc = "A placa de circuito para um exofabe de emissão padrão produzido pela Interdyne."
 	id = "exofab_syndicate"
 	build_type = AWAY_IMPRINTER
 	materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1)
@@ -117,7 +117,7 @@
 //Items
 /datum/design/syndicate_firing_pin
 	name = "Syndicate Firing Pin"
-	desc = "A Syndicate Implant restricted firing pin."
+	desc = "Um alfinete restrito ao implante."
 	id = "syndicate_firing_pin"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/silver = SMALL_MATERIAL_AMOUNT * 6, /datum/material/diamond = SMALL_MATERIAL_AMOUNT * 6, /datum/material/uranium =SMALL_MATERIAL_AMOUNT * 2)
@@ -129,7 +129,7 @@
 
 /datum/design/syndicateciv_headset
 	name = "Syndicate Headset"
-	desc = "Standard issue headset for syndicate civillians."
+	desc = "headset padrão para civis do sindicato."
 	id = "syndicate_headset"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*1)
@@ -141,7 +141,7 @@
 
 /datum/design/interdyne_key
 	name = "Interdyne Encryption Key"
-	desc = "Standard issue headset for syndicate civillians."
+	desc = "headset padrão para civis do sindicato."
 	id = "interdyne_encryption"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*1)
@@ -153,7 +153,7 @@
 
 /datum/design/cybersun_key
 	name = "Cybersun Encryption Key"
-	desc = "Standard issue headset for syndicate civillians."
+	desc = "headset padrão para civis do sindicato."
 	id = "cybersun_encryption"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*1)
@@ -167,7 +167,7 @@
 
 /obj/machinery/rnd/production/protolathe/interdyne
 	name = "Interdyne Branded Protolathe"
-	desc = "Converts raw materials into useful objects. Refurbished and updated from its previous, limited capabilities."
+	desc = "Transforma matérias-primas em objetos úteis. Renovado e atualizado de suas capacidades anteriores, limitadas."
 	circuit = /obj/item/circuitboard/machine/protolathe/interdyne
 	stripe_color = "#d40909"
 

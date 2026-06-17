@@ -2,7 +2,7 @@
 
 /obj/item/evidencebag
 	name = "evidence bag"
-	desc = "An empty evidence bag."
+	desc = "Um saco de evidências vazio."
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "evidenceobj"
 	inhand_icon_state = ""
@@ -69,6 +69,6 @@
 		to_chat(user, span_notice("[src] is empty."))
 		return
 	user.visible_message(span_notice("[user] empties [src]."), span_notice("You empty [src]."),\
-	span_hear("You hear someone rustle around in a plastic bag, and remove something."))
+	span_hear("Você ouve alguém rosnando em um saco plástico, e remove algo."))
 	playsound(src,'sound/items/evidence_bag/evidence_bag_unzip.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
 	atom_storage.remove_all()

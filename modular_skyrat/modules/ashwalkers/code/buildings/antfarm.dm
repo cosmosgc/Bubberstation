@@ -1,6 +1,6 @@
 /obj/structure/antfarm
 	name = "ant farm"
-	desc = "Though it may look natural, this was not made by ants."
+	desc = "Embora pareça natural, isso não foi feito por formigas."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/structures.dmi'
 	icon_state = "anthill"
 	density = TRUE
@@ -68,12 +68,12 @@
 /obj/structure/antfarm/examine(mob/user)
 	. = ..()
 	. += span_notice("<br>There are currently [has_ants ? "" : "no "]ants in the farm.")
-	. += span_notice("To add ants, feed the farm some food.")
+	. += span_notice("Para adicionar formigas, alimente a fazenda com comida.")
 
 /obj/structure/antfarm/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/food))
 		qdel(attacking_item)
-		balloon_alert(user, "food has been placed")
+		balloon_alert(user, "A comida foi colocada.")
 		user.mind.adjust_experience(/datum/skill/primitive, 5)
 		ant_chance++
 		if(prob(user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_PROBS_MODIFIER)))
@@ -81,7 +81,7 @@
 		return
 
 	if(istype(attacking_item, /obj/item/storage/bag/plants))
-		balloon_alert(user, "feeding the ants")
+		balloon_alert(user, "alimentando as formigas.")
 		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
 		for(var/obj/item/food/selected_food in attacking_item.contents)
 			if(!do_after(user, 1 SECONDS * skill_modifier, src))
@@ -102,4 +102,4 @@
 
 /obj/structure/antfarm/natural
 	name = "ant farm"
-	desc = "A natural ant farm."
+	desc = "Uma fazenda de formigas naturais."

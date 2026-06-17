@@ -1,6 +1,6 @@
 /obj/structure/chair/shibari_stand
 	name = "shibari stand"
-	desc = "A stand for buckling people with ropes."
+	desc = "Um posto para encurvar as pessoas com cordas."
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/structure/chair/shibari_stand"
 	post_init_icon_state = "shibari_stand"
@@ -44,7 +44,7 @@
 /obj/structure/chair/shibari_stand/examine(mob/user)
 	. = ..()
 	if(!has_buckled_mobs() && can_buckle)
-		. += span_notice("They need to be wearing <b>full-body shibari</b>, and you need to be <b>holding ropes</b>!")
+		. += span_notice("Eles precisam estar usando<b>Shibari de corpo inteiro</b>E você precisa ser<b>segurando cordas</b>!")
 
 // previously NO_DECONSTRUCT
 /obj/structure/chair/shibari_stand/wrench_act_secondary(mob/living/user, obj/item/weapon)
@@ -56,16 +56,16 @@
 		if(buckled != user)
 			buckled.visible_message(span_notice("[user] starts unbuckling [buckled] from [src]."),\
 				span_notice("[user] tries to unbuckle you from [src]."),\
-				span_hear("You hear loose ropes."))
+				span_hear("Você ouve cordas soltas."))
 			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 5 SECONDS : 10 SECONDS, buckled))
 				return FALSE
 			buckled.visible_message(span_notice("[user] unbuckles [buckled] from [src]."),\
 				span_notice("[user] unbuckles you from [src]."),\
-				span_hear("You hear loose ropes."))
+				span_hear("Você ouve cordas soltas."))
 		else
 			user.visible_message(span_notice("[user] starts unbuckling themselves from [src]."),\
 				span_notice("[user] unbuckles themselves from [src]."),\
-				span_hear("You hear loose ropes."))
+				span_hear("Você ouve cordas soltas."))
 		add_fingerprint(user)
 		if(isliving(buckled.pulledby))
 			var/mob/living/living_mob = buckled.pulledby
@@ -88,16 +88,16 @@
 
 	var/mob/living/carbon/human/hooman = buckled
 	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari/full)))
-		to_chat(user, span_warning("You'll need to completely tie their body!"))
+		to_chat(user, span_warning("Vai precisar amarrar o corpo deles!"))
 		return FALSE
 	if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
-		to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!!"))
+		to_chat(user, span_warning("Você vai precisar estar segurando cordas de shibari para amarrá-los à bancada!"))
 		return FALSE
 
 	if(buckled != user)
 		buckled.visible_message(span_warning("[user] starts tying [buckled] to \the [src]!"),\
 			span_userdanger("[user] starts tying you to \the [src]!"),\
-			span_hear("You hear ropes being tightened."))
+			span_hear("Você ouve cordas sendo apertadas."))
 		if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 5 SECONDS : 10 SECONDS, buckled))
 			return FALSE
 
@@ -105,10 +105,10 @@
 			return FALSE
 
 		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari/full)))
-			to_chat(user, span_warning("You'll need to completely tie their body!"))
+			to_chat(user, span_warning("Vai precisar amarrar o corpo deles!"))
 			return FALSE
 		if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
-			to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!"))
+			to_chat(user, span_warning("Você vai precisar estar segurando cordas shibari para amarrá-los à bancada!"))
 			return FALSE
 
 		if(buckle_mob(buckled, check_loc = check_loc))
@@ -120,12 +120,12 @@
 			add_rope_overlays(ropee.greyscale_colors, hooman?.dna?.species?.mutant_bodyparts[FEATURE_TAUR])
 			buckled.visible_message(span_warning("[user] tied [buckled] to \the [src]!"),\
 				span_userdanger("[user] tied you to \the [src]!"),\
-				span_hear("You hear ropes being completely tightened."))
+				span_hear("Você ouve cordas sendo completamente apertadas."))
 			return TRUE
 		else
 			return FALSE
 	else
-		to_chat(user, span_warning("You cannot buckle yourself to this stand, there is no way that level of self-bondage exists!"))
+		to_chat(user, span_warning("Você não pode se amarrar a esta posição, não há nenhuma maneira que o nível de auto-ligação existe!"))
 		return FALSE
 
 /obj/structure/chair/shibari_stand/atom_deconstruct(disassembled)
@@ -183,7 +183,7 @@
 
 /obj/item/restraints/handcuffs/milker/shibari
 	name = "ropes"
-	desc = "A shibari rope for restraining hands."
+	desc = "Uma corda shibari para segurar as mãos."
 	breakouttime = 2 MINUTES
 
 //Disassembling shibari stand
@@ -210,7 +210,7 @@
 		starting_colors = greyscale_colors
 	)
 	menu.ui_interact(usr)
-	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
+	to_chat(user, span_notice("Você muda a cor dos acessórios de plástico do quadro."))
 	return CLICK_ACTION_SUCCESS
 
 /obj/structure/chair/shibari_stand/examine(mob/user)

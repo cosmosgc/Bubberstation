@@ -3,8 +3,8 @@
 
 /datum/action/cooldown/spell/rod_form
 	name = "Rod Form"
-	desc = "Take on the form of an immovable rod, destroying all in your path. \
-		Purchasing this spell multiple times will also increase the rod's damage and travel range."
+	desc = "Tome a forma de uma vara imóvel, destruindo tudo em seu caminho.\
+Comprar esse feitiço várias vezes também aumentará o dano da haste e o alcance de viagem."
 	button_icon_state = "immrod"
 
 	school = SCHOOL_TRANSMUTATION
@@ -94,7 +94,7 @@
 		penetrated.visible_message(
 			span_danger("[src] hits [penetrated], but it bounces back, then vanishes!"),
 			span_userdanger("[src] hits you... but it bounces back, then vanishes!"),
-			span_danger("You hear a weak, sad, CLANG.")
+			span_danger("Você ouve um fraco, triste, CLANG.")
 			)
 		stop_travel()
 		return
@@ -102,7 +102,7 @@
 	penetrated.visible_message(
 		span_danger("[penetrated] is penetrated by an immovable rod!"),
 		span_userdanger("The [src] penetrates you!"),
-		span_danger("You hear a CLANG!"),
+		span_danger("Você ouve um clang!"),
 		)
 	penetrated.adjust_brute_loss(70 + damage_bonus)
 

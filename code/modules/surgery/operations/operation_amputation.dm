@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/amputate
 	name = "amputate limb"
 	rnd_name = "Disarticulation (Amputation)"
-	desc = "Sever a limb from a patient's body."
+	desc = "Separar um membro do corpo de um paciente."
 	operation_flags = OPERATION_MORBID | OPERATION_AFFECTS_MOOD | OPERATION_NOTABLE
 	required_bodytype = ~(BODYTYPE_ROBOTIC|BODYTYPE_PEG)
 	implements = list(

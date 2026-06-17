@@ -19,7 +19,7 @@
 	max_occurrences = 0
 	earliest_start = 45 MINUTES
 	category = EVENT_CATEGORY_SPACE
-	description = "Spawns a CME event of varied severities"
+	description = "Spawns um evento CME de gravidades variadas"
 
 /datum/round_event/cme
 	start_when = 6
@@ -36,7 +36,7 @@
 	weight = 15
 	min_players = 75
 	max_occurrences = 1
-	description = "Spawns a CME event of a unknown severity"
+	description = "Spawns um evento CME de uma gravidade desconhecida"
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
@@ -46,7 +46,7 @@
 	typepath = /datum/round_event/cme/minimal
 	weight = 0
 	max_occurrences = 0
-	description = "Spawns a CME event of minimum severity"
+	description = "Spawns um evento CME de gravidade mínima"
 
 /datum/round_event/cme/minimal
 	cme_intensity = CME_MINIMAL
@@ -56,7 +56,7 @@
 	typepath = /datum/round_event/cme/moderate
 	weight = 0
 	max_occurrences = 0
-	description = "Spawns a CME event of moderate severity"
+	description = "Um evento CME de gravidade moderada."
 
 /datum/round_event/cme/moderate
 	cme_intensity = CME_MODERATE
@@ -67,7 +67,7 @@
 	weight = 0
 	min_players = 75
 	max_occurrences = 0
-	description = "Spawns a CME event of extreme severity"
+	description = "Spawns um evento CME de extrema gravidade"
 
 /datum/round_event/cme/extreme
 	cme_intensity = CME_EXTREME
@@ -77,7 +77,7 @@
 	typepath = /datum/round_event/cme/armageddon
 	weight = 0
 	max_occurrences = 0
-	description = "Spawns a CME event of Arnageddon severity. WARNING this is round ending severe."
+	description = "Spawns um evento CME de gravidade de Arnagedon. AVISO que esta rodada termina severa."
 
 /datum/round_event/cme/armageddon
 	cme_intensity = CME_ARMAGEDDON
@@ -189,7 +189,7 @@
 */
 
 /obj/effect/cme
-	desc = "A solar ejection projection."
+	desc = "Uma projeção de ejeção solar."
 	name = "MINIMAL SOLAR EJECTION"
 	icon = 'modular_skyrat/modules/cme/icons/cme_effect.dmi'
 	icon_state = "cme_effect"

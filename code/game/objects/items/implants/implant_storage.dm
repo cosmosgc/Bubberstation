@@ -1,6 +1,6 @@
 /obj/item/implant/storage
 	name = "storage implant"
-	desc = "Stores up to two big items in a bluespace pocket."
+	desc = "Armazena até dois grandes itens no bolso do espaço azul."
 	icon_state = "storage"
 	implant_color = "r"
 	var/max_slot_stacking = 4
@@ -43,4 +43,4 @@
 	name = "implanter" // Skyrat edit , original was implanter (storage)
 	imp_type = /obj/item/implant/storage
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A Syndicate implanter used for a storage implant" // Skyrat edit
+	special_desc = "Um implante Syndicate usado para um implante de armazenamento" // Skyrat edit

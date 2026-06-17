@@ -193,7 +193,7 @@
 	do_electrocution()
 
 	if (print_message)
-		parent_as_movable.visible_message(span_danger("[parent_as_movable] delivers a powerful shock!"), span_hear("You hear a deep sharp shock!"))
+		parent_as_movable.visible_message(span_danger("[parent_as_movable] delivers a powerful shock!"), span_hear("Você ouve um choque profundo!"))
 
 /// Zap whoever is buckled to us
 /datum/component/electrified_buckle/proc/do_electrocution()

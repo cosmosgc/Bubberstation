@@ -1,6 +1,6 @@
 /obj/item/flatpack
 	name = "flatpack"
-	desc = "A box containing a compactly packed machine. Use multitool to deploy."
+	desc = "Uma caixa contendo uma máquina compacta. Use multitool para implantar."
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "flatpack"
 	density = TRUE
@@ -43,13 +43,13 @@
 		return
 
 	if(loc == user)
-		. += span_warning("You can't deploy while holding it in your hand.")
+		. += span_warning("Você não pode implantá-lo enquanto segura na mão.")
 	else if(isturf(loc))
 		var/turf/location = loc
 		if(!isopenturf(location))
-			. += span_warning("Can't deploy in this location")
+			. += span_warning("Não posso ir nesse local.")
 		else if(location.is_blocked_turf(source_atom = src))
-			. += span_warning("No space for deployment")
+			. += span_warning("Não há espaço para implantação.")
 
 /obj/item/flatpack/multitool_act(mob/living/user, obj/item/tool)
 	. = NONE
@@ -57,14 +57,14 @@
 	if(isnull(board))
 		return ITEM_INTERACT_BLOCKING
 	if(!isturf(loc))
-		balloon_alert(user, "must deploy on the floor")
+		balloon_alert(user, "Deve ir para o chão.")
 		return ITEM_INTERACT_BLOCKING
 	var/turf/location = loc
 	if(!isopenturf(location))
-		balloon_alert(user, "can't deploy here")
+		balloon_alert(user, "Não posso entrar aqui.")
 		return ITEM_INTERACT_BLOCKING
 	else if(location.is_blocked_turf(source_atom = src))
-		balloon_alert(user, "no space for deployment")
+		balloon_alert(user, "Sem espaço para implantação.")
 		return ITEM_INTERACT_BLOCKING
 	balloon_alert_to_viewers("deploying!")
 	if(!do_after(user, 1 SECONDS, target = src))
@@ -98,7 +98,7 @@
 
 /obj/structure/flatpack_cart
 	name = "flatpack cart"
-	desc = "A cart specifically made to hold flatpacks from a flatpacker, evenly distributing weight. Convenient!"
+	desc = "Um carrinho feito especificamente para segurar embalagens de um flatpacker, distribuindo uniformemente peso. Conveniente!"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "flatcart"
 	density = TRUE
@@ -156,7 +156,7 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if (length(contents) >= MAX_FLAT_PACKS)
-		balloon_alert(user, "full!")
+		balloon_alert(user, "Cheio!")
 		return ITEM_INTERACT_BLOCKING
 	if (!user.transferItemToLoc(attacking_item, src))
 		return ITEM_INTERACT_BLOCKING

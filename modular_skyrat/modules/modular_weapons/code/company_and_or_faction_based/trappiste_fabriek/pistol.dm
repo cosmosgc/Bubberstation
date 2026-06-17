@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/sol
 	name = "\improper Wespe Pistol"
-	desc = "The standard issue service pistol of TerraGov's various military branches. Uses .35 Sol and comes with an attached light."
+	desc = "A pistola de serviço padrão dos vários ramos militares de Terragov. Usa .35 Sol e vem com uma luz anexa."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "wespe"
@@ -30,7 +30,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/sol/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/pistol/sol/examine_more(mob/user)
 	. = ..()
@@ -50,7 +50,7 @@
 // Sol pistol evil gun
 
 /obj/item/gun/ballistic/automatic/pistol/sol/evil
-	desc = "The standard issue service pistol of TerraGov's various military branches. Comes with attached light. This one is painted tacticool black."
+	desc = "A pistola de serviço padrão dos vários ramos militares de Terragov. Vem com luz presa. Este é pintado de preto."
 
 	icon_state = "wespe_evil"
 
@@ -61,8 +61,8 @@
 
 /obj/item/gun/ballistic/automatic/pistol/trappiste
 	name = "\improper Skild Pistol"
-	desc = "A somewhat rare to see Trappiste pistol firing the high caliber .585 developed by the same company. \
-		Sees rare use mainly due to its tendency to cause severe wrist discomfort."
+	desc = "É um pouco raro ver a pistola Trappiste disparando o calibre .585 desenvolvido pela mesma empresa.\
+Vê uso raro principalmente devido à sua tendência a causar desconforto grave no pulso."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/trappiste_fabriek/guns32x.dmi'
 	icon_state = "skild"
@@ -86,7 +86,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/sol/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/pistol/trappiste/examine_more(mob/user)
 	. = ..()

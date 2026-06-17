@@ -5,7 +5,7 @@
 
 /obj/item/assembly/igniter
 	name = "igniter"
-	desc = "A small electronic device able to ignite combustible substances."
+	desc = "Um pequeno dispositivo eletrônico capaz de inflamar substâncias combustíveis."
 	icon_state = "igniter"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	var/datum/effect_system/basic/spark_spread/sparks
@@ -55,7 +55,7 @@
 //For the Condenser, which functions like the igniter but makes things colder.
 /obj/item/assembly/igniter/condenser
 	name = "condenser"
-	desc = "A small electronic device able to chill their surroundings."
+	desc = "Um pequeno dispositivo eletrônico capaz de acalmar seus arredores."
 	icon_state = "freezer"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*2.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 3)
 	heat = MIN_FREEZE_TEMP

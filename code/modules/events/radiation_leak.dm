@@ -1,7 +1,7 @@
 /datum/round_event_control/radiation_leak
 	name = "Radiation Leak"
-	description = "A radiation leak happens somewhere on the station, emanating radiation around a machine in the area. \
-		Engineering can stop the leak by using certain tools on it."
+	description = "Um vazamento de radiação acontece em algum lugar na estação, emanando radiação em torno de uma máquina na área.\
+A engenharia pode parar o vazamento usando certas ferramentas nele."
 	typepath = /datum/round_event/radiation_leak
 	weight = 15
 	max_occurrences = 3
@@ -153,15 +153,15 @@
 
 /// Attempts a do_after, and if successful, stops the event
 /datum/round_event/radiation_leak/proc/try_remove_radiation(obj/machinery/source, mob/living/user, obj/item/tool)
-	source.balloon_alert(user, "fixing leak...")
+	source.balloon_alert(user, "Consertando vazamento...")
 	// Fairly long do after. It shouldn't be SUPER easy to just run in and stop it.
 	// A tider can fix it if they want to soak a bunch of rads and inhale noxious fumes,
 	// but only an equipped engineer should be able to handle it painlessly.
 	if(!tool.use_tool(source, user, 30 SECONDS, amount = (tool.tool_behaviour == TOOL_WELDER ? 2 : 0), volume = 50))
-		source.balloon_alert(user, "interrupted!")
+		source.balloon_alert(user, "Interrompido!")
 		return
 
-	source.balloon_alert(user, "leak repaired")
+	source.balloon_alert(user, "Vazamento reparado.")
 	// Force end the event
 	processing = FALSE
 	end()

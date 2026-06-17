@@ -45,7 +45,7 @@
 /datum/surgery_operation/limb/subsystem_upgrade/muscled_veins
 	name = "muscled veins"
 	rnd_name = "Hydraulics Redundancy Subroutine (Muscled Veins)"
-	desc = "Add redundancies to a robotic patient's hydraulic system, allowing it to pump fluids without an engine or pump."
+	desc = "Adicione redundâncias ao sistema hidráulico de um paciente robótico, permitindo bombear fluidos sem motor ou bomba."
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/heart/muscled_veins
 
 /datum/surgery_operation/limb/subsystem_upgrade/muscled_veins/on_preop(obj/item/bodypart/limb, mob/living/surgeon, tool)
@@ -72,7 +72,7 @@
 /datum/surgery_operation/limb/subsystem_upgrade/nerve_splicing
 	name = "splice nerves"
 	rnd_name = "Reinforced Servos (Spliced Nerves)"
-	desc = "Upgrade a synthetic patient's movement servos, allowing it to better resist stuns."
+	desc = "Atualize os servos de movimento de um paciente sintético, permitindo que ele resista melhor aos choques."
 	time = 15.5 SECONDS
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/nerves/spliced
 
@@ -100,7 +100,7 @@
 /datum/surgery_operation/limb/subsystem_upgrade/nerve_grounding
 	name = "ground nerves"
 	rnd_name = "Reinforced Capacitors (Grounded Nerves)"
-	desc = "Install an additional capacitor bank designed to abdorb electrical shocks."
+	desc = "Instale um banco de capacitores adicional projetado para absorver choques elétricos."
 	time = 15.5 SECONDS
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/nerves/grounded
 
@@ -128,7 +128,7 @@
 /datum/surgery_operation/limb/subsystem_upgrade/ligament_reinforcement
 	name = "strengthen ligaments"
 	rnd_name = "Anchor Point Reinforcement (Ligament Reinforcement)"
-	desc = "Reinforce a robotic patient's limb joints to prevent dismemberment, at the cost of making nerve connections easier to interrupt."
+	desc = "Reforce as articulações dos membros de um paciente robótico para evitar o desmembramento, ao custo de facilitar as conexões nervosas."
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/ligaments/reinforced
 
 /datum/surgery_operation/limb/subsystem_upgrade/ligament_reinforcement/on_preop(obj/item/bodypart/limb, mob/living/surgeon, tool)
@@ -155,7 +155,7 @@
 /datum/surgery_operation/limb/subsystem_upgrade/cortex_folding
 	name = "cortex folding"
 	rnd_name = "Neuropathing Reinforcement (Cortex Folding)"
-	desc = "Reprogram a robotic patient's neural network in a downright eldritch programming language, giving space to non-standard neural patterns."
+	desc = "Reprogramar a rede neural de um paciente robótico em uma linguagem de programação de eldritch, dando espaço para padrões neurais não padrão."
 	operation_flags = OPERATION_AFFECTS_MOOD | OPERATION_NOTABLE | OPERATION_MORBID | OPERATION_LOCKED | OPERATION_NO_PATIENT_REQUIRED
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/cortex // Not actually applied, simply for compatibility checks
 	required_zone = BODY_ZONE_CHEST
@@ -203,7 +203,7 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("You screw up, damaging the brain!"),
+		span_warning("Você estraga tudo, prejudica o cérebro!"),
 		span_warning("[surgeon] screws up, damaging the brain!"),
 		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
 	)
@@ -214,8 +214,8 @@
 /datum/surgery_operation/limb/subsystem_upgrade/cortex_imprint
 	name = "cortex imprinting"
 	rnd_name = "Anti-Cascade 2.0 (Cortex Imprinting)"
-	desc = "Update a robotic patient's underlying operating system to a \"newer version\", improving overall performance and resilience. \
-		Shame about all the adware."
+	desc = "Atualize o sistema operacional de um paciente robótico para\"Versão mais recente\", melhorando o desempenho geral e resiliência.\
+Vergonha por todo o adware."
 	status_effect_gained = /datum/status_effect/subsystem_upgrade/cortex/imprinted
 	required_zone = BODY_ZONE_CHEST
 
@@ -246,7 +246,7 @@
 	display_results(
 		surgeon,
 		limb.owner,
-		span_warning("You screw up, damaging the brain!"),
+		span_warning("Você estraga tudo, prejudica o cérebro!"),
 		span_warning("[surgeon] screws up, damaging the brain!"),
 		span_notice("[surgeon] completes the surgery on [limb.owner]'s brain."),
 	)

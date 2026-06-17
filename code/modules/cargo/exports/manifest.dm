@@ -8,7 +8,7 @@
 // Approved manifest. 12% handling payment, up to a maximum of the max handling charge
 /datum/export/manifest_correct
 	k_elasticity = 0
-	unit_name = "approved manifest"
+	unit_name = "Manifesto aprovado"
 	export_types = list(/obj/item/paper/fluff/jobs/cargo/manifest)
 	scannable = FALSE
 
@@ -27,7 +27,7 @@
 // Correctly denied manifest. Refunds package cost plus double handling payment, up to a maximum of 2x max handling charge
 /datum/export/manifest_error_denied
 	k_elasticity = 0
-	unit_name = "correctly denied manifest"
+	unit_name = "corretamente negado manifesto"
 	export_types = list(/obj/item/paper/fluff/jobs/cargo/manifest)
 	scannable = FALSE
 
@@ -45,7 +45,7 @@
 
 // Erroneously approved manifest. Penalty charged quadruple handling payment, up to a maximum of 4x max handling charge
 /datum/export/manifest_error
-	unit_name = "erroneously approved manifest"
+	unit_name = "Manifesto erroneamente aprovado"
 	k_elasticity = 0
 	export_types = list(/obj/item/paper/fluff/jobs/cargo/manifest)
 	allow_negative_cost = TRUE
@@ -66,7 +66,7 @@
 // Erroneously denied manifest. Penalty charged quadruple handling payment, up to a maximum of 4x max handling charge
 /datum/export/manifest_correct_denied
 	k_elasticity = 0
-	unit_name = "erroneously denied manifest"
+	unit_name = "Erroneamente negado manifesto"
 	export_types = list(/obj/item/paper/fluff/jobs/cargo/manifest)
 	allow_negative_cost = TRUE
 	scannable = FALSE

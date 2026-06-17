@@ -12,7 +12,7 @@
 		owner.toggle_move_intent(owner)
 		owner.adjust_confusion_up_to(1 SECONDS, 1 SECONDS)
 		running_toggled = TRUE
-		to_chat(owner, span_warning("You know you shouldn't be running here."))
+		to_chat(owner, span_warning("Você sabe que não deveria estar correndo aqui."))
 
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/clock_interdiction)
 
@@ -24,7 +24,7 @@
 
 /atom/movable/screen/alert/status_effect/interdiction
 	name = "Interdicted"
-	desc = "I don't think I am meant to go this way."
+	desc = "Acho que não devo ir por aqui."
 	icon = 'modular_skyrat/modules/clock_cult/icons/actions_clock.dmi'
 	icon_state = "interdiction_effect" //fix later
 

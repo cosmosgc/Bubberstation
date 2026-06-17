@@ -1,7 +1,7 @@
 /// A fake nuke that actually contains beer.
 /obj/machinery/nuclearbomb/beer
 	name = "\improper Nanotrasen-brand nuclear fission explosive"
-	desc = "One of the more successful achievements of the Nanotrasen Corporate Warfare Division, their nuclear fission explosives are renowned for being cheap to produce and devastatingly effective. Signs explain that though this particular device has been decommissioned, every Nanotrasen station is equipped with an equivalent one, just in case. All Captains carefully guard the disk needed to detonate them - at least, the sign says they do. There seems to be a tap on the back."
+	desc = "Uma das conquistas mais bem sucedidas da Divisão de Guerra Corporativa Nanotrasen, seus explosivos de fissão nuclear são conhecidos por serem baratos para produzir e devastadoresmente eficazes. Sinais explicam que apesar deste dispositivo ter sido desativado, cada estação Nanotrasen está equipada com um equivalente, só por precaução. Todos os capitães guardam cuidadosamente o disco necessário para detoná-los - pelo menos, a placa diz que sim. Parece haver uma torneira na parte de trás."
 	proper_bomb = FALSE
 	/// The keg located within the beer nuke.
 	var/obj/structure/reagent_dispensers/beerkeg/keg
@@ -25,7 +25,7 @@
 	if(keg.reagents.total_volume)
 		. += span_notice("It has [keg.reagents.total_volume] unit\s left.")
 	else
-		. += span_danger("It's empty.")
+		. += span_danger("Está vazio.")
 
 /obj/machinery/nuclearbomb/beer/attackby(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
 	if(weapon.is_refillable())

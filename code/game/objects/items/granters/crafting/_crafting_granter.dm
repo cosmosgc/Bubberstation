@@ -15,5 +15,5 @@
 	icon_state = "book1"
 
 /obj/item/book/granter/crafting_recipe/dusting/recoil(mob/living/user)
-	to_chat(user, span_warning("The book turns to dust in your hands."))
+	to_chat(user, span_warning("O livro vira pó em suas mãos."))
 	qdel(src)

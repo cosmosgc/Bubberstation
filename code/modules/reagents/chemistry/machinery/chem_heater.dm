@@ -69,9 +69,9 @@
 		if(!QDELETED(beaker))
 			. += span_notice("It has a beaker of [beaker.reagents.total_volume] units capacity.")
 			if(beaker.reagents.is_reacting)
-				. += span_notice("Its contents are currently reacting.")
+				. += span_notice("Seu conteúdo está reagindo.")
 		else
-			. += span_warning("There is no beaker inserted.")
+			. += span_warning("Não há nenhum copo inserido.")
 		. += span_notice("Its heating is turned [on ? "On" : "Off"].")
 		. += span_notice("The status display reads: Heating reagents at <b>[heater_coefficient * 1000]%</b> speed.")
 		if(panel_open)
@@ -103,7 +103,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	ui_interact(user)
-	balloon_alert(user, "beaker added")
+	balloon_alert(user, "béquer adicionado")
 
 	return ITEM_INTERACT_SUCCESS
 
@@ -380,7 +380,7 @@
 //Has a lot of buffer and is upgraded
 /obj/machinery/chem_heater/debug
 	name = "Debug Reaction Chamber"
-	desc = "Now with even more buffers!"
+	desc = "Agora com ainda mais amortecedores!"
 
 /obj/machinery/chem_heater/debug/Initialize(mapload)
 	. = ..()
@@ -391,7 +391,7 @@
 
 //map load types
 /obj/machinery/chem_heater/withbuffer
-	desc = "This Reaction Chamber comes with a bit of buffer to help get you started."
+	desc = "Esta Câmara de Reação vem com um pouco de amortecedor para ajudá-lo a começar."
 
 /obj/machinery/chem_heater/withbuffer/Initialize(mapload)
 	. = ..()

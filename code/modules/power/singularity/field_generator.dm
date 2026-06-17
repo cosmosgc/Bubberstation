@@ -25,7 +25,7 @@ no power level overlay is currently in the overlays list.
 
 /obj/machinery/field/generator
 	name = "field generator"
-	desc = "A large thermal battery that projects a high amount of energy when powered."
+	desc = "Uma grande bateria térmica que projeta uma grande quantidade de energia quando alimentada."
 	icon = 'icons/obj/machines/field_generator.dmi' //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "Field_Gen"
 	anchored = FALSE
@@ -100,7 +100,7 @@ no power level overlay is currently in the overlays list.
 	user.visible_message(
 		span_notice("[user] turns on [src]."),
 		span_notice("You turn on [src]."),
-		span_hear("You hear heavy droning."))
+		span_hear("Você ouve droning pesado."))
 	turn_on()
 	investigate_log("activated by [key_name(user)].", INVESTIGATE_ENGINE)
 
@@ -148,10 +148,10 @@ no power level overlay is currently in the overlays list.
 			user.visible_message(
 				span_notice("[user] starts to weld [src] to the floor."),
 				span_notice("You start to weld \the [src] to the floor..."),
-				span_hear("You hear welding."))
+				span_hear("Você ouve solda."))
 			if(welder.use_tool(src, user, 20, volume=50) && state == FG_SECURED)
 				state = FG_WELDED
-				to_chat(user, span_notice("You weld the field generator to the floor."))
+				to_chat(user, span_notice("Você solda o gerador de campo para o chão."))
 
 		if(FG_WELDED)
 			if(!welder.tool_start_check(user, amount=1))
@@ -159,7 +159,7 @@ no power level overlay is currently in the overlays list.
 			user.visible_message(
 				span_notice("[user] starts to cut [src] free from the floor."),
 				span_notice("You start to cut \the [src] free from the floor..."),
-				span_hear("You hear welding."))
+				span_hear("Você ouve solda."))
 			if(welder.use_tool(src, user, 20, volume=50) && state == FG_WELDED)
 				state = FG_SECURED
 				to_chat(user, span_notice("You cut \the [src] free from the floor."))
@@ -252,7 +252,7 @@ no power level overlay is currently in the overlays list.
 		check_power_level()
 		return TRUE
 	else
-		visible_message(span_danger("\The [src] shuts down!"), span_hear("You hear something shutting down."))
+		visible_message(span_danger("\The [src] shuts down!"), span_hear("Você ouve algo se fechando."))
 		turn_off()
 		investigate_log("ran out of power and DEACTIVATED.", INVESTIGATE_ENGINE)
 		power = 0

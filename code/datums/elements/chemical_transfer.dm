@@ -1,6 +1,6 @@
 //the default chemical transfer messages if they aren't set
-#define DEFAULT_ATTACKER_MESSAGE span_notice("You transfer your chemicals to %VICTIM.")
-#define DEFAULT_VICTIM_MESSAGE span_userdanger("Chemicals have been transferred into you from %ATTACKER!")
+#define DEFAULT_ATTACKER_MESSAGE span_notice("Você transfere seus produtos químicos para %VICTIM.")
+#define DEFAULT_VICTIM_MESSAGE span_userdanger("Substâncias químicas foram transferidas para você de ATTACKER!")
 
 /**
  * ## chemical transfer element!

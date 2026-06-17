@@ -20,7 +20,7 @@ ADMIN_VERB(play_sound, R_SOUND, "Play Global Sound", "Play a sound to all connec
 	admin_sound.status = SOUND_STREAM
 	admin_sound.volume = vol
 
-	var/res = tgui_alert(user, "Show the title of this song to the players?", "Play Sound", list("Yes", "No", "Cancel"))
+	var/res = tgui_alert(user, "Mostrar o título desta música aos jogadores?", "Play Sound", list("Yes", "No", "Cancel"))
 	switch(res)
 		if("Yes")
 			to_chat(world, span_boldannounce("An admin played: [sound]"), confidential = TRUE)
@@ -68,7 +68,7 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 		return
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		to_chat(user, span_boldwarning("yt-dlp was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		to_chat(user, span_boldwarning("YT-DLP não foi configurado, ação indisponível"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 	var/web_sound_url = ""
 	var/stop_web_sounds = FALSE
@@ -81,14 +81,14 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 		var/stdout = output[SHELLEO_STDOUT]
 		var/stderr = output[SHELLEO_STDERR]
 		if(errorlevel)
-			to_chat(user, span_boldwarning("yt-dlp URL retrieval FAILED:"), confidential = TRUE)
+			to_chat(user, span_boldwarning("It-dlp recuperação URL falhou:"), confidential = TRUE)
 			to_chat(user, span_warning("[stderr]"), confidential = TRUE)
 			return
 		var/list/data
 		try
 			data = json_decode(stdout)
 		catch(var/exception/e)
-			to_chat(user, span_boldwarning("yt-dlp JSON parsing FAILED:"), confidential = TRUE)
+			to_chat(user, span_boldwarning("Yt-dlp JSON analisando falhou:"), confidential = TRUE)
 			to_chat(user, span_warning("[e]: [stdout]"), confidential = TRUE)
 			return
 		if (data["url"])
@@ -104,7 +104,7 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 		music_extra_data["album"] = data["album"]
 		duration = data["duration"] * 1 SECONDS
 		if (duration > 10 MINUTES)
-			if((tgui_alert(user, "This song is over 10 minutes long. Are you sure you want to play it?", "Length Warning", list("No", "Yes", "Cancel")) != "Yes"))
+			if((tgui_alert(user, "Essa música tem mais de 10 minutos. Tem certeza que quer jogar?", "Length Warning", list("No", "Yes", "Cancel")) != "Yes"))
 				return
 		var/include_song_data = tgui_alert(user, "Show the title of and link to this song to the players?\n[title]", "Song Info", list("Yes", "No", "Cancel"))
 		switch(include_song_data)
@@ -119,7 +119,7 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 				music_extra_data["album"] = "Default"
 			if("Cancel", null)
 				return
-		var/credit_yourself = tgui_alert(user, "Display who played the song?", "Credit Yourself", list("Yes", "No", "Cancel"))
+		var/credit_yourself = tgui_alert(user, "Mostrar quem tocou a música?", "Credit Yourself", list("Yes", "No", "Cancel"))
 
 		var/list/to_chat_message = list()
 
@@ -133,7 +133,7 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 				if(include_song_data == "Yes")
 					to_chat_message += span_notice("An admin played: [span_linkify(webpage_url)]")
 				else
-					to_chat_message += span_notice("An admin played a sound.")
+					to_chat_message += span_notice("Um administrador tocou um som.")
 			if("Cancel", null)
 				return
 
@@ -158,8 +158,8 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 		web_sound_url = null
 		stop_web_sounds = TRUE
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		tgui_alert(user, "The media provider returned a content URL that isn't using the HTTP or HTTPS protocol. This is a security risk and the sound will not be played.", "Security Risk", list("OK"))
-		to_chat(user, span_boldwarning("BLOCKED: Content URL not using HTTP(S) Protocol!"), confidential = TRUE)
+		tgui_alert(user, "O provedor de mídia devolveu uma URL de conteúdo que não está usando o protocolo HTTP ou HTTPS. Este é um risco de segurança e o som não será tocado.", "Security Risk", list("OK"))
+		to_chat(user, span_boldwarning("URL de conteúdo não usando protocolo HTTP!"), confidential = TRUE)
 
 		return
 	if(web_sound_url || stop_web_sounds)
@@ -193,8 +193,8 @@ ADMIN_VERB(play_web_sound, R_SOUND, "Play Internet Sound", "Play a given interne
 	if(length(web_sound_input))
 		web_sound_input = trim(web_sound_input)
 		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(user, span_boldwarning("Non-http(s) URIs are not allowed."), confidential = TRUE)
-			to_chat(user, span_warning("For youtube-dl shortcuts like ytsearch: please use the appropriate full URL from the website."), confidential = TRUE)
+			to_chat(user, span_boldwarning("URIs não são permitidas."), confidential = TRUE)
+			to_chat(user, span_warning("Para atalhos \"Youtube-dl\" como a pesquisa: use a URL completa apropriada do site."), confidential = TRUE)
 			return
 		web_sound(user.mob, web_sound_input)
 	else

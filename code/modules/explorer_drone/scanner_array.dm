@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 
 /obj/machinery/computer/exoscanner_control
 	name = "scanner array control console"
-	desc = "Controls scanner arrays to initiate scans for exodrones."
+	desc = "Controle os sensores para iniciar varreduras de exodrones."
 	circuit = /obj/item/circuitboard/computer/exoscanner_console
 	/// If scan was interrupted show a popup until dismissed.
 	var/failed_popup = FALSE
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "scanner_off"
 	base_icon_state = "scanner"
-	desc = "A sophisticated scanning array. Easily influenced by its environment."
+	desc = "Um sofisticado sistema de varredura. Facilmente influenciado pelo seu ambiente."
 	circuit = /obj/item/circuitboard/machine/exoscanner
 	///the scan power of this array to supply to scanner_controller
 	var/scan_power = 1
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 
 /datum/scan_condition/nebula
 	name = "Nebula"
-	description = "Site is within an unusually dense nebula. To reduce scanner noise, position dishes at least 15 tiles apart."
+	description = "O local está dentro de uma nebulosa invulgarmente densa. Para reduzir o ruído do scanner, posicione pratos com pelo menos 15 peças separadas."
 	var/distance = 15
 
 /datum/scan_condition/nebula/check_dish(obj/machinery/exoscanner/dish)
@@ -366,7 +366,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 
 /datum/scan_condition/pulsar
 	name = "Pulsar"
-	description = "A pulsar near the site requires dishes to be shielded from electomagnetic noise. Ensure no other machines are working near the dish."
+	description = "Um pulsar perto do local requer que os pratos sejam protegidos do ruído eletromagnético. Certifique-se de que nenhuma outra máquina está trabalhando perto do prato."
 	var/distance = 2
 
 /datum/scan_condition/pulsar/check_dish(obj/machinery/exoscanner/dish)
@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 
 /datum/scan_condition/asteroid_belt
 	name = "Asteroid Belt"
-	description = "An asteroid belt is obscuring the direct line of sight from the station to the site. Ensure the dishes are placed outside of the station z level."
+	description = "Um cinturão de asteróides está ocultando a linha de visão direta da estação até o local. Certifique-se de que os pratos sejam colocados fora do nível z da estação."
 
 /datum/scan_condition/asteroid_belt/check_dish(obj/machinery/exoscanner/dish)
 	var/turf/dish_turf = get_turf(dish)
@@ -385,7 +385,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 
 /datum/scan_condition/black_hole
 	name = "Black Hole"
-	description = "A background black hole requires you to focus the scan point precisely. Ensure the dishes are isolated from rest of the station with at least 6 walls around them."
+	description = "Um buraco negro de fundo requer que foque o ponto de varredura com precisão. Certifique-se de que os pratos são isolados do resto da estação com pelo menos 6 paredes ao redor deles."
 
 /datum/scan_condition/black_hole/check_dish(obj/machinery/exoscanner/dish)
 	var/wall_count = 0
@@ -396,7 +396,7 @@ GLOBAL_LIST_INIT(scan_conditions,init_scan_conditions())
 
 /datum/scan_condition/easy
 	name = "Easy Scan"
-	description = "This site is very easy to scan, all dish power is doubled."
+	description = "Este site é muito fácil de digitalizar, toda a potência do prato é dobrada."
 
 /datum/scan_condition/easy/check_dish(obj/machinery/exoscanner/dish)
 	return 2

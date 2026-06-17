@@ -7,7 +7,7 @@
 
 /obj/machinery/atmos_shield_gen
 	name = "atmospheric shield generator"
-	desc = "Produces an atmos shield in a line between itself and another generator with both facing the other, while active. Powered by APC. Field must not be obstructed by wall, or an atmos shield field. Will turn on after gaining power if turned off due to power loss."
+	desc = "Produz um escudo atmos em uma linha entre si e outro gerador com ambos voltados para o outro, enquanto ativos. Alimentado pela APC. Campo não deve ser obstruído por parede, ou um campo de escudo de Atmos. Vai ligar depois de ganhar energia se desligado devido à perda de energia."
 	icon = 'icons/obj/machines/atmosshieldgen.dmi'
 	base_icon_state = "atmosshield"
 	icon_state = "atmosshield"
@@ -80,7 +80,7 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("The status display reads:")
+	. += span_notice("A exibição de status diz:")
 	. += span_notice("Currently [on ? "" : "in"]active.")
 	if(locked)
 		. += span_boldwarning("LOCKED")
@@ -108,22 +108,22 @@
 
 /obj/machinery/atmos_shield_gen/screwdriver_act(mob/user, obj/item/tool)
 	if(!panel_open && locked)
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "Trancado!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/atmos_shield_gen/crowbar_act(mob/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/atmos_shield_gen/wrench_act(mob/living/user, obj/item/tool)
 	if(on)
-		balloon_alert(user, "turn off first!")
+		balloon_alert(user, "Desligue primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(locked)
-		balloon_alert(user, "unlock first!")
+		balloon_alert(user, "Desbloquear primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(default_unfasten_wrench(user, tool) && !anchored)
 		turn_off()
@@ -132,10 +132,10 @@
 /obj/machinery/atmos_shield_gen/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!anchored)
-		balloon_alert(user, "not anchored!")
+		balloon_alert(user, "Não ancorado!")
 		return
 	if(locked && !issilicon(user))
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "Trancado!")
 		return
 	toggle(user)
 
@@ -147,7 +147,7 @@
 		locked = !locked
 		balloon_alert(user, "[locked ? "" : "un"]locked!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	balloon_alert(user, "no access!")
+	balloon_alert(user, "Sem acesso!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/atmos_shield_gen/item_interaction(mob/living/user, obj/item/tool, list/modifiers)

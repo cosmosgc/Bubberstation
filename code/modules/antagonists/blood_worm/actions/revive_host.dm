@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/revive
 	name = "Revive Host"
-	desc = "Restart the blood circulation of your host, bringing them back to life."
+	desc = "Reinicie a circulação do seu hospedeiro, trazendo-os de volta à vida."
 
 	button_icon_state = "revive_host"
 
@@ -63,7 +63,7 @@
 		)
 
 	if (!host.revive())
-		host.balloon_alert(owner, "revival failed!")
+		host.balloon_alert(owner, "Reavivamento falhou!")
 		return FALSE
 
 	host.visible_message(
@@ -80,26 +80,26 @@
 		return FALSE
 	if (host.stat != DEAD)
 		if (feedback)
-			host.balloon_alert(owner, "not dead!")
+			host.balloon_alert(owner, "Não morto!")
 		return FALSE
 	if (HAS_TRAIT(host, TRAIT_HUSK))
 		if (feedback)
-			host.balloon_alert(owner, "husked!")
+			host.balloon_alert(owner, "Descascado!")
 		return FALSE
 	if (!host.get_organ_slot(ORGAN_SLOT_BRAIN))
 		if (feedback)
-			host.balloon_alert(owner, "no brain!")
+			host.balloon_alert(owner, "Sem cérebro!")
 		return FALSE
 	if (host.get_organ_loss(ORGAN_SLOT_BRAIN) >= BRAIN_DAMAGE_DEATH && !HAS_TRAIT(host, TRAIT_BRAIN_DAMAGE_NODEATH))
 		if (feedback)
-			host.balloon_alert(owner, "brain too damaged!")
+			host.balloon_alert(owner, "Cérebro muito danificado!")
 		return FALSE
 	if (host.health <= HEALTH_THRESHOLD_DEAD)
 		if (feedback)
-			host.balloon_alert(owner, "body too damaged!")
+			host.balloon_alert(owner, "Corpo muito danificado!")
 		return FALSE
 	if (!host.can_be_revived()) // Fallback, ideally caught by earlier, more descriptive checks.
 		if (feedback)
-			host.balloon_alert(owner, "unable to revive!")
+			host.balloon_alert(owner, "incapaz de reviver!")
 		return FALSE
 	return TRUE

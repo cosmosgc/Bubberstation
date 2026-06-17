@@ -1,6 +1,6 @@
 /obj/item/assembly/signaler
 	name = "remote signaling device"
-	desc = "Used to remotely activate devices. Allows for syncing when using a secure signaler on another."
+	desc = "Usado para ativar dispositivos remotamente. Permite sincronizar ao usar um sinalizador seguro em outro."
 	icon_state = "signaller"
 	inhand_icon_state = "signaler"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -99,7 +99,7 @@
 		if("signal")
 			if(cooldown_length > 0)
 				if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_SIGNALLER_SEND))
-					balloon_alert(ui.user, "recharging!")
+					balloon_alert(ui.user, "Recarregando!")
 					return
 				TIMER_COOLDOWN_START(src, COOLDOWN_SIGNALLER_SEND, cooldown_length)
 			INVOKE_ASYNC(src, PROC_REF(signal))
@@ -138,7 +138,7 @@
 	if(!ishuman(user))
 		return
 	if(TIMER_COOLDOWN_RUNNING(src, COOLDOWN_SIGNALLER_SEND))
-		balloon_alert(user, "still recharging...")
+		balloon_alert(user, "Ainda recarregando...")
 		return
 	TIMER_COOLDOWN_START(src, COOLDOWN_SIGNALLER_SEND, 1 SECONDS)
 	INVOKE_ASYNC(src, PROC_REF(signal))
@@ -214,5 +214,5 @@
 
 /obj/item/assembly/signaler/low_range
 	name = "low-power remote signaling device"
-	desc = "Used to remotely activate devices, within a small range of 9 tiles. Allows for syncing when using a secure signaler on another."
+	desc = "Usado para ativar dispositivos remotamente, dentro de uma pequena faixa de 9 peças. Permite sincronizar ao usar um sinalizador seguro em outro."
 	range = 9

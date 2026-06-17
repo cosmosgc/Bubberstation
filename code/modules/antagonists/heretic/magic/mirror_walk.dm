@@ -1,9 +1,9 @@
 /datum/action/cooldown/spell/jaunt/mirror_walk
 	name = "Mirror Walk"
-	desc = "Allows you to traverse invisibly and freely across the station within the realm of the mirror. \
-		You can only enter and exit the realm of mirrors when nearby reflective surfaces and items, \
-		such as windows, mirrors, and reflective walls or equipment. \
-		You will slowly heal damage while in this form."
+	desc = "Permite-lhe atravessar invisivelmente e livremente através da estação dentro do reino do espelho.\
+Você só pode entrar e sair do reino dos espelhos quando as superfícies refletivas próximas e itens,\
+como janelas, espelhos, paredes ou equipamentos refletores.\
+Você vai lentamente curar danos enquanto está nesta forma."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
@@ -60,7 +60,7 @@
 /datum/action/cooldown/spell/jaunt/mirror_walk/enter_jaunt(mob/living/jaunter, turf/loc_override)
 	var/atom/nearby_reflection = is_reflection_nearby(jaunter)
 	if(!nearby_reflection)
-		to_chat(jaunter, span_warning("There are no reflective surfaces nearby to enter the mirror's realm!"))
+		to_chat(jaunter, span_warning("Não há superfícies refletivas próximas para entrar no reino do espelho!"))
 		return
 
 	jaunter.Beam(nearby_reflection, icon_state = "light_beam", time = phase_out_time)
@@ -86,13 +86,13 @@
 	var/turf/phase_turf = get_turf(unjaunter)
 	var/atom/nearby_reflection = is_reflection_nearby(phase_turf)
 	if(!nearby_reflection)
-		to_chat(unjaunter, span_warning("There are no reflective surfaces nearby to exit from the mirror's realm!"))
+		to_chat(unjaunter, span_warning("Não há superfícies refletivas próximas para sair do reino do espelho!"))
 		return FALSE
 
 	// It would likely be a bad idea to teleport into an ai monitored area (ai sat)
 	var/area/phase_area = get_area(phase_turf)
 	if(phase_area.motion_monitored)
-		to_chat(unjaunter, span_warning("It's probably not a very wise idea to exit the mirror's realm here."))
+		to_chat(unjaunter, span_warning("Provavelmente não é uma boa ideia sair do reino do espelho aqui."))
 		return FALSE
 
 	nearby_reflection.Beam(phase_turf, icon_state = "light_beam", time = phase_in_time)

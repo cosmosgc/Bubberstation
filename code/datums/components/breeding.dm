@@ -63,7 +63,7 @@
 		return
 
 	if(!ready_to_breed)
-		source.balloon_alert(source, "not ready!")
+		source.balloon_alert(source, "Não está pronto!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 
 	var/turf/delivery_destination = get_turf(source)

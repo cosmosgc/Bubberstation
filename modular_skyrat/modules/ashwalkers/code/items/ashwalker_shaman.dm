@@ -1,7 +1,7 @@
 //ASH STAFF
 /obj/item/ash_staff
 	name = "staff of the ashlands"
-	desc = "A gnarly and twisted branch that is imbued with some ancient power."
+	desc = "Um ramo deformado e torcido que está imbuído de algum poder antigo."
 
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
@@ -21,7 +21,7 @@
 		return NONE
 	var/turf/target_turf = interacting_with
 	if(istype(interacting_with, /turf/open/misc/asteroid/basalt/lava_land_surface))
-		to_chat(user, span_warning("You begin to corrupt the land even further..."))
+		to_chat(user, span_warning("Você começa a corromper a terra ainda mais..."))
 		if(!do_after(user, 4 SECONDS, target = target_turf))
 			to_chat(user, span_warning("[src] had their casting cut short!"))
 			return ITEM_INTERACT_BLOCKING
@@ -42,7 +42,7 @@
 		var/obj/item/ash_staff/target_staff = I
 		target_staff.staff_time = world.time + 5 MINUTES
 		playsound(src, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
-		to_chat(user, span_notice("The tendril permits you to have more time to corrupt the world with ashes."))
+		to_chat(user, span_notice("O tentáculo lhe permite ter mais tempo para corromper o mundo com cinzas."))
 		return
 	return ..()
 

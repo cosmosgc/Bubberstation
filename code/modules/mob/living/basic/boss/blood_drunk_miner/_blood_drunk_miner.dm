@@ -11,7 +11,7 @@ Difficulty: Medium
 */
 /mob/living/basic/boss/blood_drunk_miner
 	name = "blood-drunk miner"
-	desc = "A miner destined to wander forever, engaged in an endless hunt."
+	desc = "Um mineiro destinado a vagar para sempre, envolvido em uma caçada interminável."
 	health = 900
 	maxHealth = 900
 	icon_state = "miner"
@@ -27,7 +27,7 @@ Difficulty: Medium
 	basic_mob_flags = DEL_ON_DEATH
 	default_blood_volume = BLOOD_VOLUME_NORMAL
 	gps_name = "Resonant Signal"
-	death_message = "falls to the ground, decaying into glowing particles."
+	death_message = "cai no chão, decaindo em partículas brilhantes."
 	death_sound = SFX_BODYFALL
 	move_force = MOVE_FORCE_NORMAL //Miner beeing able to just move structures like bolted doors and glass looks kinda strange
 

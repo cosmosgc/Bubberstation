@@ -1,11 +1,11 @@
 /datum/disease/revblight
 	name = "Unnatural Wasting"
-	desc = "A strange condition which causes the victim to feel as if they were wasting away, despite being otherwise (almost) perfectly healthy."
+	desc = "Uma estranha condição que faz com que a vítima se sinta como se estivesse desperdiçando, apesar de ser (quase) perfeitamente saudável."
 	form = "Condition"
 	max_stages = 5
 	stage_prob = 5
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
-	cure_text = /datum/reagent/water/holywater::name + " or rest"
+	cure_text = /datum/reagent/water/holywater::name + "Ou descansar."
 	spread_text = "None"
 	cures = list(/datum/reagent/water/holywater)
 	cure_chance = 30 //higher chance to cure, because revenants are assholes
@@ -22,7 +22,7 @@
 		affected_mob.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#1d2953")
 		if(affected_mob.dna && affected_mob.dna.species)
 			affected_mob.set_haircolor(null, override = TRUE)
-		to_chat(affected_mob, span_notice("You feel better."))
+		to_chat(affected_mob, span_notice("Você se sente melhor."))
 	..()
 
 
@@ -68,6 +68,6 @@
 				new /obj/effect/temp_visual/revenant(affected_mob.loc)
 				if(affected_mob.dna && affected_mob.dna.species)
 					affected_mob.set_haircolor("#1d2953", override = TRUE)
-				affected_mob.visible_message(span_warning("[affected_mob] looks terrifyingly gaunt..."), span_revennotice("You suddenly feel like your skin is <i>wrong</i>..."))
+				affected_mob.visible_message(span_warning("[affected_mob] looks terrifyingly gaunt..."), span_revennotice("Você de repente sente como se sua pele fosse<i>Errado.</i>..."))
 				affected_mob.add_atom_colour("#1d2953", TEMPORARY_COLOUR_PRIORITY)
 				addtimer(CALLBACK(src, PROC_REF(cure)), 10 SECONDS)

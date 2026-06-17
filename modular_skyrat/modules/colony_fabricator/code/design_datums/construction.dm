@@ -6,8 +6,8 @@
 
 /datum/techweb_node/colony_fabricator_structures
 	id = TECHWEB_NODE_COLONY_STRUCTURES
-	display_name = "Colony Fabricator Structure Designs"
-	description = "Contains all of the colony fabricator's structure designs."
+	display_name = "Projeto de estrutura de fabricantes de colônias"
+	description = "Contém todos os projetos de estrutura do fabricante da colônia."
 	design_ids = list(
 		"prefab_airlock_kit",
 		"prefab_manual_airlock_kit",

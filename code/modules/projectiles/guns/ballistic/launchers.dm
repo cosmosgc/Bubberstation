@@ -3,7 +3,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher
 	name = "break-action grenade launcher"
-	desc = "A break-action grenade launcher. Archaic by modern standards, but it still works, so who can complain?"
+	desc = "Um lançador de granadas. Archaic pelos padrões modernos, mas ainda funciona, então quem pode reclamar?"
 	icon_state = "grenade_launcher"
 	inhand_icon_state = "grenade_launcher"
 	worn_icon_state = "shotgun"
@@ -49,7 +49,7 @@
 	pin = null
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/cyborg
-	desc = "A 6-shot grenade launcher."
+	desc = "Um lançador de granadas de seis tiros."
 	name = "multi grenade launcher"
 	icon = 'icons/obj/devices/mecha_equipment.dmi'
 	icon_state = "mecha_grenadelnchr"
@@ -61,7 +61,7 @@
 
 /obj/item/gun/ballistic/automatic/gyropistol
 	name = "gyrojet pistol"
-	desc = "A prototype pistol designed to fire self propelled rockets."
+	desc = "Uma pistola protótipo projetada para disparar foguetes autopropulsores."
 	icon_state = "gyropistol"
 	fire_sound = 'sound/items/weapons/gun/general/grenade_launch.ogg'
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m75
@@ -72,10 +72,10 @@
 
 /obj/item/gun/ballistic/rocketlauncher
 	name = "\improper Dardo-RE Rocket Launcher"
-	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
-		alongside the words \"Front Toward Enemy\" are printed on the tube. Someone seems to have crossed out \
-		that last word and written \"NT\" over it at some point. A sticker near the back of the launcher warn \
-		to \"CHECK BACKBLAST CLEAR BEFORE FIRING\", whatever that means."
+	desc = "Um lança-granadas de foguetes reutilizáveis. Uma flecha apontando para a frente do lançador\
+ao lado das palavras\"Frente ao inimigo\"são impressos no tubo. Alguém parece ter riscado.\
+Essa última palavra e escrita\"NT\"em algum momento. Um adesivo perto da parte de trás do lançador avisa\
+para\"Cheque o retrovisor antes de disparar.\"O que quer que isso signifique."
 	icon = 'icons/obj/weapons/guns/wide_guns.dmi'
 	icon_state = "rocketlauncher"
 	inhand_icon_state = "rocketlauncher"
@@ -106,16 +106,16 @@
 		AddElement(/datum/element/backblast)
 
 /obj/item/gun/ballistic/rocketlauncher/unrestricted
-	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
-		alongside the words \"Front Toward Enemy\" are printed on the tube. \
-		A sticker near the back of the launcher warn to \"CHECK BACKBLAST CLEAR BEFORE FIRING\", whatever that means."
+	desc = "Um lança-granadas de foguetes reutilizáveis. Uma flecha apontando para a frente do lançador\
+ao lado das palavras\"Frente ao inimigo\"são impressos no tubo.\
+Um adesivo perto da parte de trás do lançador avisa para\"Cheque o retrovisor antes de disparar.\"O que quer que isso signifique."
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/ballistic/rocketlauncher/nobackblast
 	name = "\improper Dardo-REF Flameless Rocket Launcher"
-	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
-		alongside the words \"Front Toward Enemy\" are printed on the tube. \
-		This one has been fitted with a special backblast diverter to prevent 'friendly' fire 'accidents' during use."
+	desc = "Um lança-granadas de foguetes reutilizáveis. Uma flecha apontando para a frente do lançador\
+ao lado das palavras\"Frente ao inimigo\"são impressos no tubo.\
+Este foi equipado com um desvio especial para evitar acidentes durante o uso."
 	backblast = FALSE
 
 /obj/item/gun/ballistic/rocketlauncher/try_fire_gun(atom/target, mob/living/user, params)
@@ -157,6 +157,6 @@
 		return OXYLOSS
 
 /obj/item/gun/ballistic/rocketlauncher/unrestricted/nanotrasen
-	desc = "A reusable rocket propelled grenade launcher. The words \"Syndicate this way\" and an arrow have been written near the barrel. \
-	A sticker near the cheek rest reads, \"ENSURE AREA BEHIND IS CLEAR BEFORE FIRING\""
+	desc = "Um lança-granadas de foguetes reutilizáveis. As palavras\"Sindicar assim.\"E uma flecha foi escrita perto do barril.\
+Um adesivo perto do resto da bochecha diz,\"A área segura por trás é clara antes de disparar.\""
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/rocketlauncher/empty

@@ -2,16 +2,16 @@
 //Ancient cryogenic sleepers. Players become NT crewmen from a hundred year old space station, now on the verge of collapse.
 /obj/effect/mob_spawn/ghost_role/human/oldstation
 	name = "old cryogenics pod"
-	desc = "A humming cryo pod. You can barely recognise a uniform underneath the built up ice. The machine is attempting to wake up its occupant."
-	prompt_name = "an ancient crewman"
+	desc = "Uma cápsula criogênica. Mal se reconhece um uniforme debaixo do gelo. A máquina está tentando acordar seu ocupante."
+	prompt_name = "Um antigo tripulante."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
-	you_are_text = "You are a crewman working for Nanotrasen, stationed onboard a state of the art research station."
-	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
-	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. As you open \
-	your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod."
-	important_text = "Work as a team with your fellow survivors and do not abandon them."
+	you_are_text = "Você é um tripulante trabalhando para Nanotrasen, estacionado a bordo de uma estação de pesquisa de última geração."
+	flavour_text = "Você vagamente se lembra de correr para uma cápsula de criogenia devido a uma tempestade de radiação vindoura.\
+A última coisa que se lembra é o Programa Artificial da estação dizendo que você só dormiria por oito horas. Enquanto você abre\
+Seus olhos, tudo parece enferrujado e quebrado, uma sensação escura incha seu intestino enquanto você sai da sua cápsula."
+	important_text = "Trabalhe como uma equipe com seus companheiros sobreviventes e não os abandone."
 	outfit = /datum/outfit/oldeng
 	spawner_job_path = /datum/job/ancient_crew
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
@@ -22,9 +22,9 @@
 
 
 /obj/effect/mob_spawn/ghost_role/human/oldstation/sec
-	desc = "A humming cryo pod. You can barely recognise a security uniform underneath the built up ice. The machine is attempting to wake up its occupant."
-	prompt_name = "a security officer"
-	you_are_text = "You are a security officer working for Nanotrasen, stationed onboard a state of the art research station."
+	desc = "Uma cápsula criogênica. Mal se reconhece um uniforme de segurança debaixo do gelo. A máquina está tentando acordar seu ocupante."
+	prompt_name = "Um oficial de segurança."
+	you_are_text = "Você é um oficial de segurança trabalhando para Nanotrasen, estacionado a bordo de uma estação de pesquisa de última geração."
 	outfit = /datum/outfit/oldsec
 
 /datum/outfit/oldsec
@@ -36,9 +36,9 @@
 	r_pocket = /obj/item/restraints/handcuffs
 
 /obj/effect/mob_spawn/ghost_role/human/oldstation/eng
-	desc = "A humming cryo pod. You can barely recognise an engineering uniform underneath the built up ice. The machine is attempting to wake up its occupant."
-	prompt_name = "an engineer"
-	you_are_text = "You are an engineer working for Nanotrasen, stationed onboard a state of the art research station."
+	desc = "Uma cápsula criogênica. Mal se reconhece um uniforme de engenharia debaixo do gelo. A máquina está tentando acordar seu ocupante."
+	prompt_name = "Um engenheiro."
+	you_are_text = "Você é um engenheiro trabalhando para Nanotrasen, estacionado a bordo de uma estação de pesquisa de última geração."
 	outfit = /datum/outfit/oldeng
 
 /datum/outfit/oldeng
@@ -57,9 +57,9 @@
 	internals_slot = ITEM_SLOT_SUITSTORE
 
 /obj/effect/mob_spawn/ghost_role/human/oldstation/sci
-	desc = "A humming cryo pod. You can barely recognise a science uniform underneath the built up ice. The machine is attempting to wake up its occupant."
-	prompt_name = "a scientist"
-	you_are_text = "You are a scientist working for Nanotrasen, stationed onboard a state of the art research station."
+	desc = "Uma cápsula criogênica. Mal se reconhece um uniforme científico debaixo do gelo. A máquina está tentando acordar seu ocupante."
+	prompt_name = "Um cientista."
+	you_are_text = "Você é um cientista trabalhando para Nanotrasen, estacionado a bordo de uma estação de pesquisa de última geração."
 	outfit = /datum/outfit/oldsci
 
 /datum/outfit/oldsci
@@ -72,9 +72,9 @@
 ///asteroid comms agent
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms/space
-	you_are_text = "You are a syndicate agent, assigned to a small listening post station situated near your hated enemy's top secret research facility: Space Station 13."
-	flavour_text = "Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
-	important_text = "DO NOT abandon the base."
+	you_are_text = "Você é um agente do sindicato, designado para uma pequena estação de escuta situada perto da instalação de pesquisa secreta do inimigo odiado, Estação Espacial 13."
+	flavour_text = "Monitore a atividade inimiga o melhor que puder, e tente ser discreto. Use o equipamento de comunicação para fornecer suporte a qualquer agente de campo, e semear desinformação para tirar Nanotrasen de sua trilha. Não deixe a base cair em mãos inimigas!"
+	important_text = "Não abandone a base."
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms/space/Initialize(mapload)
 	. = ..()
@@ -86,10 +86,10 @@
 
 /obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser
 	name = "Syndicate Battlecruiser Ship Operative"
-	you_are_text = "You are a crewmember aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to follow your captain's orders, maintain the ship, and keep the power flowing."
-	important_text = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
-	prompt_name = "a battlecruiser crewmember"
+	you_are_text = "Você é um membro da tripulação a bordo do navio-chefe do sindicato, o SBC Starfury."
+	flavour_text = "Seu trabalho é seguir as ordens de seu capitão, manter a nave, e manter a energia fluindo."
+	important_text = "O arsenal não é uma loja de doces, e seu papel não é atacar a estação diretamente, deixar esse trabalho para os agentes de assalto."
+	prompt_name = "Um membro da tripulação do cruzador de batalha."
 	outfit = /datum/outfit/syndicate_empty/battlecruiser
 	spawner_job_path = /datum/job/battlecruiser_crew
 	uses = 4
@@ -104,7 +104,7 @@
 	if(!(user.ckey in antag_team.players_spawned))
 		return TRUE
 	if(!silent)
-		to_chat(user, span_boldwarning("You have already used up your chance to roll as Battlecruiser."))
+		to_chat(user, span_boldwarning("Você já usou sua chance de rolar como cruzador de batalha."))
 	return FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/special(mob/living/spawned_mob, mob/possesser)
@@ -125,10 +125,10 @@
 
 /obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/assault
 	name = "Syndicate Battlecruiser Assault Operative"
-	you_are_text = "You are an assault operative aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to follow your captain's orders, keep intruders out of the ship, and assault Space Station 13. There is an armory, multiple assault ships, and beam cannons to attack the station with."
-	important_text = "Work as a team with your fellow operatives and work out a plan of attack. If you are overwhelmed, escape back to your ship!"
-	prompt_name = "a battlecruiser operative"
+	you_are_text = "Você é um agente de assalto a bordo do navio-chefe do sindicato, o SBC Starfury."
+	flavour_text = "Seu trabalho é seguir as ordens do seu capitão, manter intrusos fora da nave, e atacar a Estação Espacial 13. Há um arsenal, várias naves de assalto, e canhões para atacar a estação."
+	important_text = "Trabalhem como uma equipe com seus colegas operacionais e organizem um plano de ataque. Se estiver sobrecarregado, fuja de volta para sua nave!"
+	prompt_name = "Um agente cruzador de batalha."
 	outfit = /datum/outfit/syndicate_empty/battlecruiser/assault
 	uses = 8
 
@@ -147,10 +147,10 @@
 
 /obj/effect/mob_spawn/ghost_role/human/syndicate/battlecruiser/captain
 	name = "Syndicate Battlecruiser Captain"
-	you_are_text = "You are the captain aboard the syndicate flagship: the SBC Starfury."
-	flavour_text = "Your job is to oversee your crew, defend the ship, and destroy Space Station 13. The ship has an armory, multiple ships, beam cannons, and multiple crewmembers to accomplish this goal."
-	important_text = "As the captain, this whole operation falls on your shoulders. Help your assault operatives detonate a nuke on the station."
-	prompt_name = "a battlecruiser captain"
+	you_are_text = "Você é o capitão a bordo do navio-chefe do sindicato: o SBC Starfury."
+	flavour_text = "Seu trabalho é supervisionar sua tripulação, defender a nave e destruir a Estação Espacial 13. A nave tem um arsenal, várias naves, canhões de feixe, e vários tripulantes para alcançar este objetivo."
+	important_text = "Como capitão, toda esta operação cai sobre seus ombros. Ajude seus agentes a detonar uma bomba nuclear na estação."
+	prompt_name = "Um capitão de guerra."
 	outfit = /datum/outfit/syndicate_empty/battlecruiser/assault/captain
 	spawner_job_path = /datum/job/battlecruiser_captain
 	antag_datum_to_give = /datum/antagonist/battlecruiser/captain
@@ -173,14 +173,14 @@
 //film studio space ruins, actors and such.
 /obj/effect/mob_spawn/ghost_role/human/actor
 	name = "cryogenics pod"
-	desc = "A humming cryo pod. You recognize the person inside as a local celebrity of sort."
-	prompt_name = "a actor"
+	desc = "Uma cápsula criogênica. Você reconhece a pessoa dentro como uma celebridade local."
+	prompt_name = "Um ator."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
-	you_are_text = "You are an actor/actress working for Sophronia Broadcasting Inc., stationed onboard the local TV studio."
-	flavour_text = "You last remember corporate told everyone to go to cryosleep for whatever reason, where did everyone else go?"
-	important_text = "Work as a team with your fellow actors and the director to make entertainment for the masses."
+	you_are_text = "Você é ator/atriz trabalhando para a Sophronia Broadcasting Inc., estacionada a bordo do estúdio de TV local."
+	flavour_text = "A última vez que se lembra, a corporação disse para todos irem dormir por algum motivo, para onde todos foram?"
+	important_text = "Trabalhe como uma equipe com seus colegas atores e o diretor para fazer entretenimento para as massas."
 	outfit = /datum/outfit/actor
 	spawner_job_path = /datum/job/ghost_role
 	allow_custom_character = ALL
@@ -198,14 +198,14 @@
 
 /obj/effect/mob_spawn/ghost_role/human/director
 	name = "cryogenics pod"
-	desc = "A humming cryo pod. You recognize the person inside as a local celebrity of sort."
-	prompt_name = "a director"
+	desc = "Uma cápsula criogênica. Você reconhece a pessoa dentro como uma celebridade local."
+	prompt_name = "Um diretor."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
-	you_are_text = "You are a director working for Sophronia Broadcasting Inc., stationed onboard the local TV studio."
-	flavour_text = "You just got hired to direct shows and entertainment for a local tv studio, make do with your team and produce something!"
-	important_text = "Work as a team with your fellow actors and the director to make entertainment for the masses."
+	you_are_text = "Você é um diretor da Sophronia Broadcasting Inc., estacionado a bordo do estúdio de TV local."
+	flavour_text = "Você foi contratado para dirigir shows e entretenimento para um estúdio de TV local, fazer com sua equipe e produzir algo!"
+	important_text = "Trabalhe como uma equipe com seus colegas atores e o diretor para fazer entretenimento para as massas."
 	outfit = /datum/outfit/actor/director
 	spawner_job_path = /datum/job/ghost_role
 	allow_custom_character = ALL

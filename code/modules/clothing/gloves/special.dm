@@ -1,7 +1,7 @@
 
 /obj/item/clothing/gloves/cargo_gauntlet
 	name = "\improper H.A.U.L. gauntlets"
-	desc = "These clunky gauntlets allow you to drag things with more confidence on them not getting nabbed from you."
+	desc = "Essas luvas desajeitadas permitem que você arraste as coisas com mais confiança neles não sendo pego de você."
 	icon_state = "haul_gauntlet"
 	greyscale_colors = "#2f2e31"
 	equip_delay_self = 3 SECONDS
@@ -28,7 +28,7 @@
 		stack_trace("Gloves already have a pull component associated with \[[pull_component.parent]\] when \[[equipper]\] is trying to equip them.")
 		QDEL_NULL(pull_component_weakref)
 
-	to_chat(equipper, span_notice("You feel the gauntlets activate as soon as you fit them on, making your pulls stronger!"))
+	to_chat(equipper, span_notice("Você sente as luvas ativadas assim que as encaixa, tornando suas puxadas mais fortes!"))
 
 	pull_component_weakref = WEAKREF(equipper.AddComponent(/datum/component/strong_pull))
 
@@ -52,7 +52,7 @@
 
 /obj/item/clothing/gloves/rapid
 	name = "Gloves of the North Star"
-	desc = "Just looking at these fills you with an urge to beat the shit out of people."
+	desc = "Só de olhar para isso te enche de vontade de bater nas pessoas."
 	icon_state = "rapid"
 	inhand_icon_state = null
 	clothing_traits = list(TRAIT_FINGERPRINT_PASSTHROUGH)
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/gloves/radio
 	name = "translation gloves"
-	desc = "A pair of electronic gloves which connect to nearby radios wirelessly. Allows for sign language users to 'speak' over comms."
+	desc = "Um par de luvas eletrônicas que se conectam a rádios próximas sem fio. Permite que usuários de linguagem de sinais falem sobre comunicações."
 	icon_state = "radio_g"
 	inhand_icon_state = null
 	clothing_traits = list(TRAIT_CAN_SIGN_ON_COMMS)
@@ -72,7 +72,7 @@
 
 /obj/item/clothing/gloves/race
 	name = "race gloves"
-	desc = "Extremely finely made gloves meant for use by sportsmen in speed-shooting competitions."
+	desc = "Luvas extremamente finamente feitas para serem usadas por desportistas em competições de tiro rápido."
 	clothing_traits = list(TRAIT_DOUBLE_TAP)
 	icon_state = "black"
 	greyscale_colors = "#2f2e31"
@@ -82,7 +82,7 @@
 	AddElement(/datum/element/adjust_fishing_difficulty, -9)
 
 /obj/item/clothing/gloves/captain
-	desc = "Regal blue gloves, with a nice gold trim, a diamond anti-shock coating, and an integrated thermal barrier. Swanky."
+	desc = "Luvas azuis regais, com uma bela guarnição de ouro, um revestimento anti-choque de diamante, e uma barreira térmica integrada. Cisne."
 	name = "captain's gloves"
 	icon_state = "captain"
 	inhand_icon_state = null
@@ -108,7 +108,7 @@
 
 /obj/item/clothing/gloves/latex
 	name = "latex gloves"
-	desc = "Cheap sterile gloves made from latex. Provides quicker carrying from a good grip."
+	desc = "Luvas estéreis baratas feitas de látex. Proporciona um transporte mais rápido de uma boa aderência."
 	icon_state = "latex"
 	inhand_icon_state = "latex_gloves"
 	greyscale_colors = null
@@ -123,7 +123,7 @@
 
 /obj/item/clothing/gloves/latex/nitrile
 	name = "nitrile gloves"
-	desc = "Pricy sterile gloves that are thicker than latex. Excellent grip ensures very fast carrying of patients along with the faster use time of various chemical related items."
+	desc = "Luvas esterilizadas que são mais grossas que látex. Excelente aderência garante um transporte rápido de pacientes junto com o tempo de uso mais rápido de vários itens químicos relacionados."
 	icon_state = "nitrile"
 	inhand_icon_state = "greyscale_gloves"
 	greyscale_colors = "#99eeff"
@@ -135,7 +135,7 @@
 
 /obj/item/clothing/gloves/latex/coroner
 	name = "coroner's gloves"
-	desc = "Black gloves made from latex with a superhydrophobic coating. Useful for picking bodies up instead of dragging blood behind."
+	desc = "Luvas pretas feitas de látex com revestimento super-hidrofóbico. Útil para pegar corpos em vez de arrastar sangue para trás."
 	icon_state = "latex_black"
 	inhand_icon_state = "greyscale_gloves"
 	greyscale_colors = "#15191a"
@@ -146,7 +146,7 @@
 
 /obj/item/clothing/gloves/tinkerer
 	name = "tinker's gloves"
-	desc = "Overdesigned engineering gloves that have automated construction subroutines dialed in, allowing for faster construction while worn."
+	desc = "Luvas de engenharia projetadas demais que têm subrotinas de construção automatizadas discadas, permitindo uma construção mais rápida enquanto usadas."
 	inhand_icon_state = "greyscale_gloves"
 	icon_state = "clockwork_gauntlets"
 	greyscale_colors = "#996e23"
@@ -161,7 +161,7 @@
 
 /obj/item/clothing/gloves/atmos
 	name = "atmospheric extrication gloves"
-	desc = "Heavy duty gloves for firefighters. These are thick, non-flammable and let you carry people faster."
+	desc = "Luvas pesadas para bombeiros. São grossas, não inflamáveis e deixam você carregar as pessoas mais rápido."
 	icon_state = "atmos"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
@@ -179,7 +179,7 @@
 ///A pair of gloves that both allow the user to fish without the need of a held fishing rod and provides athletics experience.
 /obj/item/clothing/gloves/fishing
 	name = "athletic fishing gloves"
-	desc = "A pair of gloves to fish without a fishing rod but your raw <b>athletics</b> strength. It doubles as a good workout device. <i><b>WARNING</b>: May cause injuries when catching bigger fish.</i>"
+	desc = "Um par de luvas para pescar sem uma vara de pesca mas sua crua<b>Atletismo</b>força. Dobra como um bom dispositivo de treino.<i><b>ATENÇÃO</b>Pode causar ferimentos ao pegar peixes maiores.</i>"
 	icon_state = "fishing_gloves"
 	///The current fishing minigame datum the wearer is engaged in.
 	var/datum/fishing_challenge/challenge
@@ -240,8 +240,8 @@
 	frame_state = "frame_athletic"
 	line = null
 	bait = null
-	ui_description = "A pair of gloves to fish without a fishing rod while training your athletics."
-	wiki_description = "<b>It requires the Advanced Fishing Technology Node to be researched to be printed.</b> It may hurt the user when catching larger fish."
+	ui_description = "Um par de luvas para pescar sem uma vara de pesca enquanto treina seu atletismo."
+	wiki_description = "<b>Requer que o Nó de Tecnologia de Pesca Avançada seja pesquisado para ser impresso.</b>Pode machucar o usuário quando pegar peixes maiores."
 	show_in_wiki = TRUE //Show this cool pair of gloves in the wiki.
 
 /obj/item/fishing_rod/mob_fisher/athletic/Initialize(mapload)

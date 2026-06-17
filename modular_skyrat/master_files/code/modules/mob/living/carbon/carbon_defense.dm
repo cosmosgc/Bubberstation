@@ -37,7 +37,7 @@
 			playsound(target.loc, 'sound/items/weapons/slap.ogg', 50, TRUE, ASS_SLAP_EXTRA_RANGE)
 			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
 				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
-				"You hear a slap.", ignored_mobs = list(target))
+				"Você ouve um tapa.", ignored_mobs = list(target))
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
 	return ..()

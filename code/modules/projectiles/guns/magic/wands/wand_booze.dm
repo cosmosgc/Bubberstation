@@ -5,8 +5,8 @@
 
 /obj/item/gun/magic/wand/booze
 	name = "party wand"
-	desc = "A wand which fills its target with copious amounts of alcohol. Use in moderation, unless you are \
-		trying to give someone liver damage."
+	desc = "Uma varinha que enche seu alvo com quantidades abundantes de álcool. Use com moderação, a menos que você seja\
+Tentando causar danos no fígado."
 	school = SCHOOL_CONJURATION
 	ammo_type = /obj/item/ammo_casing/magic/booze
 	icon_state = "beerwand"

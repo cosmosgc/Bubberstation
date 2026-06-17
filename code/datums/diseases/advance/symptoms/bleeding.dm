@@ -9,7 +9,7 @@
 
 /datum/symptom/bleeding
 	name = "Anticoagulant"
-	desc = "The virus prevents the body from clotting blood. Unnoticable unless the host is bleeding."
+	desc = "O vírus impede o corpo de coagular sangue. Não notável a menos que o hospedeiro esteja sangrando."
 	stealth = 1
 	resistance = -1
 	stage_speed = -3
@@ -42,9 +42,9 @@
 	for(var/datum/wound/possible_bleeding_wound as anything in carbon_host.all_wounds)
 		if(possible_bleeding_wound.blood_flow && !hidden)
 			if(4 > A.stage >= 2)
-				to_chat(carbon_host, span_warning("Your bleeding wounds start to itch."))
+				to_chat(carbon_host, span_warning("Suas feridas sangrantes começam a coçar."))
 			if(A.stage >= 4)
-				to_chat(carbon_host, span_warning("Your bleeding wounds itch like crazy as more blood leaves your body."))
+				to_chat(carbon_host, span_warning("Suas feridas sanguinárias coçam como loucos quando mais sangue sai do seu corpo."))
 			return
 
 /datum/symptom/bleeding/on_stage_change(datum/disease/advance/A)

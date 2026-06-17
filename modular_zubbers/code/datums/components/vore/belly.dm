@@ -1,6 +1,6 @@
 /obj/vore_belly
 	name = "Default Belly"
-	desc = "It's very bland!"
+	desc = "É muito sem graça!"
 
 	// Internal state
 	var/datum/component/vore/owner

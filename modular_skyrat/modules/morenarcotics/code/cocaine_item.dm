@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/crack
 	name = "crack"
-	desc = "A rock of freebase cocaine, otherwise known as crack."
+	desc = "Uma pedra de cocaína de base livre, também conhecida como crack."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crack"
 	volume = 10
@@ -9,7 +9,7 @@
 
 /obj/item/reagent_containers/crackbrick
 	name = "crack brick"
-	desc = "A brick of crack cocaine."
+	desc = "Um tijolo de cocaína."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "crackbrick"
 	volume = 40
@@ -34,7 +34,7 @@
 // Should probably give this the edible component at some point
 /obj/item/reagent_containers/cocaine
 	name = "cocaine"
-	desc = "Reenact your favorite scenes from Scarface!"
+	desc = "Refaça suas cenas favoritas de Scarface!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocaine"
 	volume = 5
@@ -79,7 +79,7 @@
 
 /obj/item/reagent_containers/cocainebrick
 	name = "cocaine brick"
-	desc = "A brick of cocaine. Good for transport!"
+	desc = "Um tijolo de cocaína. Bom para o transporte!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "cocainebrick"
 	volume = 25
@@ -112,7 +112,7 @@
 
 /datum/export/crack/crackbrick
 	cost = CARGO_CRATE_VALUE * 2.5
-	unit_name = "crack brick"
+	unit_name = "tijolo de crack"
 	export_types = list(/obj/item/reagent_containers/crackbrick)
 	include_subtypes = FALSE
 
@@ -124,6 +124,6 @@
 
 /datum/export/cocainebrick
 	cost = CARGO_CRATE_VALUE * 2
-	unit_name = "cocaine brick"
+	unit_name = "tijolo de cocaína"
 	export_types = list(/obj/item/reagent_containers/cocainebrick)
 	include_subtypes = FALSE

@@ -20,7 +20,7 @@
 
 /obj/item/electronics/airlock/examine(mob/user)
 	. = ..()
-	. += span_notice("Has a neat <i>selection menu</i> for modifying airlock access levels.")
+	. += span_notice("Tem um puro<i>menu de seleção</i>para modificar os níveis de acesso da câmara de ar.")
 
 /**
  * Create a copy of the electronics

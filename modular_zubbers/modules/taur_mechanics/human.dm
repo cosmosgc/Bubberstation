@@ -64,17 +64,17 @@
 	/// Conditions that prevent riding, with a balloon alert
 	var/cant_buckle_message
 	if (to_buckle == src)
-		cant_buckle_message = "can't ride self!"
+		cant_buckle_message = "Não posso montar sozinho!"
 	else if (body_position == LYING_DOWN)
-		cant_buckle_message = "can't ride resting!"
+		cant_buckle_message = "Não posso cavalgar descansando!"
 	else if (incapacitated)
-		cant_buckle_message = "can't mount incapacitated mobs!"
+		cant_buckle_message = "Não pode montar multidões incapacitadas!"
 	else if (INCAPACITATED_IGNORING(user, INCAPABLE_GRAB))
-		cant_buckle_message = "you are incapacitated!"
+		cant_buckle_message = "Você está incapacitado!"
 	else if (INCAPACITATED_IGNORING(to_buckle, INCAPABLE_GRAB))
-		cant_buckle_message = "rider incapacitated!"
+		cant_buckle_message = "Piloto incapacitado!"
 	else if (length(buckled_mobs))
-		cant_buckle_message = "already being ridden!"
+		cant_buckle_message = "Já está sendo montado!"
 
 	if (cant_buckle_message)
 		if (!silent)

@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/filter_blood
 	name = "blood filtration"
 	rnd_name = "Hemodialysis (Blood Filtration)"
-	desc = "Remove unwanted chemicals from a patient's bloodstream."
+	desc = "Remova produtos químicos indesejados da corrente sanguínea de um paciente."
 	implements = list(/obj/item/blood_filter = 1)
 	time = 2.5 SECONDS
 	operation_flags = OPERATION_LOOPING

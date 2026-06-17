@@ -1,6 +1,6 @@
 /obj/machinery/computer/warrant
 	name = "security warrant console"
-	desc = "Used to view outstanding warrants."
+	desc = "Costumava ver mandados pendentes."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
 	circuit = /obj/item/circuitboard/computer/warrant
@@ -87,26 +87,26 @@
 		return FALSE
 
 	if(!isliving(user) || issilicon(user))
-		to_chat(user, span_warning("ACCESS DENIED"))
+		to_chat(user, span_warning("ACESSO NEGADO"))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
 	var/mob/living/player = user
 	var/obj/item/card/id/auth = player.get_idcard(TRUE)
 	if(!auth)
-		to_chat(user, span_warning("ACCESS DENIED: No ID card detected."))
+		to_chat(user, span_warning("Nenhuma identificação detectada."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
 	var/datum/bank_account/account = auth.registered_account
 	if(!account?.account_holder || account.account_holder == "Unassigned")
-		to_chat(user, span_warning("ACCESS DENIED: No account linked to ID."))
+		to_chat(user, span_warning("Nenhuma conta ligada à identidade."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
 	var/amount = params["amount"]
 	if(!amount || !isnum(amount) || amount <= 0 || amount > warrant.fine || !account.adjust_money(-amount, "Paid fine for [target.name]"))
-		to_chat(user, span_warning("ACCESS DENIED: Invalid amount."))
+		to_chat(user, span_warning("Quantidade inválida."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
@@ -148,7 +148,7 @@
 /// Prints a bounty for a listed fine.
 /obj/machinery/computer/warrant/proc/print_bounty(mob/user, list/params)
 	if(printing)
-		balloon_alert(user, "printer busy")
+		balloon_alert(user, "impressora ocupada")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 

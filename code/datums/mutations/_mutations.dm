@@ -117,7 +117,7 @@
 		return FALSE
 	// SKYRAT EDIT ADDITION
 	if(acquirer.has_borer())
-		to_chat(acquirer, span_warning("Something inside holds dearly to your humanity!"))
+		to_chat(acquirer, span_warning("Algo dentro se prende a sua humanidade!"))
 	// SKYRAT EDIT END
 	if(species_allowed && !species_allowed.Find(acquirer.dna.species.id))
 		return FALSE
@@ -128,7 +128,7 @@
 	for(var/datum/mutation/mewtayshun as anything in acquirer.dna.mutations) //check for conflicting powers
 		if(!(mewtayshun.type in conflicts) && !(type in mewtayshun.conflicts))
 			continue
-		to_chat(acquirer, span_warning("You feel your genes resisting something."))
+		to_chat(acquirer, span_warning("Você sente seus genes resistindo a algo."))
 		return FALSE
 	owner = acquirer
 	dna = acquirer.dna

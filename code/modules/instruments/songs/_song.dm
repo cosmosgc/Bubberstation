@@ -202,7 +202,7 @@
 		return
 	compile_chords()
 	if(!length(compiled_chords))
-		to_chat(user, span_warning("Song is empty."))
+		to_chat(user, span_warning("A música está vazia."))
 		return
 	playing = TRUE
 	//we can not afford to runtime, since we are going to be doing sound channel reservations and if we runtime it means we have a channel allocation leak.

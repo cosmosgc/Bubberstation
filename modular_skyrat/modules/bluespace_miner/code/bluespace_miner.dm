@@ -5,7 +5,7 @@
 
 /obj/machinery/bluespace_miner
 	name = "bluespace miner"
-	desc = "Through the power of bluespace, it is capable of producing materials."
+	desc = "Através do poder do espaço azul, é capaz de produzir materiais."
 	icon = 'modular_skyrat/modules/bluespace_miner/icons/bluespace_miner.dmi'
 	icon_state = "miner"
 
@@ -72,18 +72,18 @@
 /obj/machinery/bluespace_miner/examine(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		. += span_warning("The safeties are turned off!")
+		. += span_warning("Os cofres estão desligados!")
 	// We don't need to run any more checks if this is functioning. Genuinely the old code is terrible
 	if(mining_stat)
 		if(mining_stat & BLUESPACE_MINER_TOO_CLOSE)
 			. += span_warning("[src] is in a suboptimal environment: TOO CLOSE TO ANOTHER BLUESPACE MINER")
 			return . // This needs relocation to fix so we won't bother with the rest
 		if(mining_stat & BLUESPACE_MINER_TOO_HOT)
-			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("TEMPERATURE TOO HIGH!"))
+			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("Temperatura muito alta!"))
 		if(mining_stat & BLUESPACE_MINER_LOW_PRESSURE)
-			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO LOW!"))
+			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("Pressão muito baixa!"))
 		else if(mining_stat & BLUESPACE_MINER_HIGH_PRESSURE)
-			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("PRESSURE TOO HIGH!"))
+			. += span_warning("[src] is in a suboptimal environment: " + span_boldwarning("Pressão muito alta!"))
 
 
 //we need to make sure we can actually print the ores out
@@ -181,7 +181,7 @@
 	if(probability_mod)
 		ore_chance[probability_mod] /= 3
 		probability_mod = null
-		balloon_alert(user, "probability change disabled")
+		balloon_alert(user, "Mudança de probabilidade desativada")
 		return TRUE
 
 	var/choice = tgui_input_list(user, "Which would you like to triple?", "Probability Change", ore_chance)
@@ -190,7 +190,7 @@
 
 	ore_chance[choice] *= 3
 	probability_mod = choice
-	balloon_alert(user, "probability change enabled")
+	balloon_alert(user, "Mudança de probabilidade ativada")
 	return TRUE
 
 /obj/machinery/bluespace_miner/crowbar_act(mob/living/user, obj/item/tool)
@@ -213,7 +213,7 @@
 
 /obj/machinery/bluespace_miner/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "already emagged!")
+		balloon_alert(user, "Já emagreceram!")
 		return FALSE
 	ore_chance += list(/obj/item/stack/sheet/mineral/bananium = 1)
 	obj_flags |= EMAGGED
@@ -222,7 +222,7 @@
 
 /obj/item/circuitboard/machine/bluespace_miner
 	name = "Bluespace Miner"
-	desc = "The bluespace miner is a machine that, when provided the correct temperature and pressure, will produce materials."
+	desc = "O mineiro do espaço azul é uma máquina que, quando fornecida a temperatura e pressão corretas, irá produzir materiais."
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/bluespace_miner
 	req_components = list(
@@ -236,7 +236,7 @@
 
 /datum/supply_pack/misc/bluespace_miner
 	name = "Bluespace Miner"
-	desc = "Nanotrasen has revolutionized the procuring of materials with bluespace-- featuring the Bluespace Miner!"
+	desc = "Nanotrasen revolucionou a aquisição de materiais com espaço azul... apresentando o Bluespace Miner!"
 	cost = CARGO_CRATE_VALUE * 50 // 10,000
 	contains = list(/obj/item/circuitboard/machine/bluespace_miner)
 	crate_name = "Bluespace Miner Circuitboard Crate"
@@ -244,7 +244,7 @@
 
 /datum/design/board/bluespace_miner
 	name = "Machine Design (Bluespace Miner)"
-	desc = "Allows for the construction of circuit boards used to build a bluespace miner."
+	desc = "Permite a construção de placas de circuito usadas para construir um mineiro do espaço azul."
 	id = "bluespace_miner"
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
 	category = list(
@@ -255,7 +255,7 @@
 /datum/techweb_node/bluespace_miner
 	id = "bluespace_miner"
 	display_name = "Bluespace Miner"
-	description = "The future is here, where we can mine ores from the great bluespace sea."
+	description = "O futuro está aqui, onde podemos minerar minérios do grande mar do espaço azul."
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	hidden = TRUE
 	experimental = TRUE

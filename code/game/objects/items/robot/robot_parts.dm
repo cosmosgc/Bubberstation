@@ -4,7 +4,7 @@
 
 /obj/item/robot_suit
 	name = "cyborg endoskeleton"
-	desc = "A complex metal backbone with standard limb sockets and pseudomuscle anchors."
+	desc = "Uma espinha dorsal metálica complexa com encaixes padrão e âncoras pseudomusculares."
 	icon = 'icons/mob/augmentation/augments.dmi'
 	icon_state = "robo_suit"
 	/// Left arm part of the endoskeleton
@@ -106,9 +106,9 @@
 	if(l_leg || r_leg || chest || l_arm || r_arm || head)
 		if(I.use_tool(src, user, 5, volume=50))
 			drop_all_parts(T)
-			to_chat(user, span_notice("You disassemble the cyborg shell."))
+			to_chat(user, span_notice("Você desmonta a concha ciborgue."))
 	else
-		to_chat(user, span_warning("There is nothing to remove from the endoskeleton!"))
+		to_chat(user, span_warning("Não há nada para remover do endoesqueleto!"))
 	update_appearance()
 
 /// Drops all included parts to the passed location
@@ -171,10 +171,10 @@
 		var/obj/item/stack/sheet/iron/M = W
 		if(!l_arm && !r_arm && !l_leg && !r_leg && !chest && !head)
 			if (!M.use(1))
-				to_chat(user, span_warning("You need one sheet of iron to start building ED-209!"))
+				to_chat(user, span_warning("Você precisa de uma folha de ferro para começar a construir ED-209!"))
 				return
 			var/obj/item/bot_assembly/ed209/assembly = new(drop_location())
-			to_chat(user, span_notice("You arm the robot frame."))
+			to_chat(user, span_notice("Você arma a armação do robô."))
 			var/held_index = user.is_holding(src)
 			qdel(src)
 			if (held_index)
@@ -232,9 +232,9 @@
 			chest = CH
 			update_appearance()
 		else if(!CH.wired)
-			to_chat(user, span_warning("You need to attach wires to it first!"))
+			to_chat(user, span_warning("Você precisa prender os fios primeiro!"))
 		else
-			to_chat(user, span_warning("You need to attach a cell to it first!"))
+			to_chat(user, span_warning("Você precisa colocar uma cela nela primeiro!"))
 
 	else if(istype(W, /obj/item/bodypart/head/robot))
 		var/obj/item/bodypart/head/robot/HD = W
@@ -251,19 +251,19 @@
 			head = HD
 			update_appearance()
 		else
-			to_chat(user, span_warning("You need to attach a flash to it first!"))
+			to_chat(user, span_warning("Você precisa colocar um flash nele primeiro!"))
 
 	else if (W.tool_behaviour == TOOL_MULTITOOL)
 		if(check_completion())
 			ui_interact(user)
 		else
-			to_chat(user, span_warning("The endoskeleton must be assembled before debugging can begin!"))
+			to_chat(user, span_warning("O endoesqueleto deve ser montado antes que a depuração comece!"))
 
 	else if(istype(W, /obj/item/mmi))
 		var/obj/item/mmi/M = W
 		if(check_completion())
 			if(!chest.cell)
-				to_chat(user, span_warning("The endoskeleton still needs a power cell!"))
+				to_chat(user, span_warning("O endoesqueleto ainda precisa de uma célula de energia!"))
 				return
 			if(!isturf(loc))
 				to_chat(user, span_warning("You can't put [M] in, the frame has to be standing on the ground to be perfectly precise!"))
@@ -321,8 +321,8 @@
 			playsound(O.loc, 'sound/mobs/non-humanoids/cyborg/liveagain.ogg', 75, TRUE)
 
 			if(O.is_antag())
-				to_chat(O, span_userdanger("You have been robotized!"))
-				to_chat(O, span_danger("You must obey your silicon laws and master AI above all else. Your objectives will consider you to be dead."))
+				to_chat(O, span_userdanger("Você foi robotizado!"))
+				to_chat(O, span_danger("Você deve obedecer suas leis de silício e dominar a IA acima de tudo. Seus objetivos o considerarão morto."))
 
 			SSblackbox.record_feedback("amount", "cyborg_birth", 1)
 			forceMove(O)
@@ -333,10 +333,10 @@
 
 			if(!locomotion)
 				O.set_lockcharge(TRUE)
-				to_chat(O, span_warning("Error: Servo motors unresponsive."))
+				to_chat(O, span_warning("Erro: os motores servo não respondem."))
 
 		else
-			to_chat(user, span_warning("The MMI must go in after everything else!"))
+			to_chat(user, span_warning("O MMI deve ir atrás de tudo!"))
 
 	else if(istype(W, /obj/item/borg/upgrade/ai))
 		var/obj/item/borg/upgrade/ai/M = W
@@ -383,7 +383,7 @@
 	var/obj/item/held_item = user.get_active_held_item()
 	if(held_item?.tool_behaviour == TOOL_MULTITOOL)
 		return ..()
-	to_chat(user, span_warning("You need a multitool to access debug settings!"))
+	to_chat(user, span_warning("Você precisa de uma multitool para acessar configurações de depuração!"))
 	return UI_CLOSE
 
 /obj/item/robot_suit/ui_state(mob/user)
@@ -435,7 +435,7 @@
 			return TRUE
 		if("set_ai")
 			if(length(active_ais(check_mind = FALSE, z = z)) <= 0)
-				to_chat(user, span_alert("No active AIs detected."))
+				to_chat(user, span_alert("Nenhuma IA ativa detetada."))
 				return
 
 			var/selected_ai = select_active_ai(user, z) // this one runs input()

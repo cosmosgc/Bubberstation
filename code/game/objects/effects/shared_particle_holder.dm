@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(shared_particles)
 //A more abstract version of particle holder not bound to a specific object
 /obj/effect/abstract/shared_particle_holder
 	name = "shared particle holder"
-	desc = "How are you reading this? Please make a bug report :)"
+	desc = "Como está lendo isso? Por favor, faça um relatório de erros:)"
 	appearance_flags = KEEP_APART|KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE|RESET_COLOR
 	vis_flags = VIS_INHERIT_PLANE
 	layer = ABOVE_ALL_MOB_LAYER

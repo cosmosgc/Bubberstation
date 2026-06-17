@@ -1,6 +1,6 @@
 /obj/item/phystool
 	name = "Toolgun"
-	desc = "Some kind of a revolver with a bluespace power cell and an anomaly core attached together."
+	desc = "Algum tipo de revólver com uma célula de energia do espaço azul e um núcleo de anomalia conectados."
 	icon = 'modular_zubbers/icons/obj/equipment/architector_items.dmi'
 	icon_state = "toolgun"
 	inhand_icon_state = "toolgun"
@@ -33,9 +33,9 @@
 
 /obj/item/phystool/examine(mob/user)
 	. = ..()
-	. += span_notice("Use ALT + LMB on the device to choose the mode.")
+	. += span_notice("Use ALT + LMB no dispositivo para escolher o modo.")
 	if(!selected_mode)
-		. += span_notice("No selected mode!")
+		. += span_notice("Nenhum modo selecionado!")
 		return
 	. += span_notice(selected_mode.desc)
 

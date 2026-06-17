@@ -1,7 +1,7 @@
 /// Remain in someones view without breaking line of sight
 /datum/action/cooldown/spell/pointed/unsettle
 	name = "Unsettle"
-	desc = "Stare directly into someone who doesn't see you. Remain in their view for a bit to stun them for 2 seconds and announce your presence to them. "
+	desc = "Olhe diretamente para alguém que não te vê. Permaneçam na visão deles para atordoá-los por 2 segundos e anunciar sua presença a eles."
 	button_icon = 'icons/mob/actions/actions_voidwalker.dmi'
 	button_icon_state = "unsettle"
 	background_icon_state = "bg_void"
@@ -25,11 +25,11 @@
 	. = ..()
 
 	if(!isliving(cast_on))
-		cast_on.balloon_alert(owner, "cannot be targeted!")
+		cast_on.balloon_alert(owner, "Não pode ser alvo!")
 		return FALSE
 
 	if(!check_if_staring(cast_on))
-		owner.balloon_alert(owner, "cannot see you!")
+		owner.balloon_alert(owner, "Não posso vê-lo!")
 		return FALSE
 
 	return .
@@ -51,10 +51,10 @@
 	SIGNAL_HANDLER
 
 	if(target.is_blind() || !(owner in view(target, world.view)))
-		owner.balloon_alert(owner, "line of sight broken!")
+		owner.balloon_alert(owner, "Linha de visão quebrada!")
 		return FALSE
 	if(in_combat)
-		owner.balloon_alert(owner, "interrupted by combat!")
+		owner.balloon_alert(owner, "Interrompido por combate!")
 		in_combat = FALSE
 	return TRUE
 

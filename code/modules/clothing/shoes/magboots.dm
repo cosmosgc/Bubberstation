@@ -3,7 +3,7 @@
 
 /obj/item/clothing/shoes/magboots
 	name = "magboots"
-	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle."
+	desc = "Botas magnéticas, frequentemente usadas durante a atividade extraveicular para garantir que o usuário permaneça seguro no veículo."
 	icon_state = "magboots0"
 	base_icon_state = "magboots"
 	inhand_icon_state = "magboots"
@@ -85,7 +85,7 @@
 
 /obj/item/clothing/shoes/magboots/advance
 	name = "advanced magboots"
-	desc = "Advanced magnetic boots that have a lighter magnetic pull, placing less burden on the wearer."
+	desc = "Botas magnéticas avançadas que têm uma tração magnética mais leve, colocando menos carga no usuário."
 	icon_state = "advmag0"
 	base_icon_state = "advmag"
 	slowdown_active = 0 // ZERO active slowdown
@@ -95,7 +95,7 @@
 
 /obj/item/clothing/shoes/magboots/syndie
 	name = "blood-red magboots"
-	desc = "Reverse-engineered magnetic boots that have a heavy magnetic pull. Property of Gorlex Marauders."
+	desc = "Botas magnéticas de engenharia reversa que têm uma tração magnética pesada. Propriedade de Gorlex Marauders."
 	icon_state = "syndiemag0"
 	base_icon_state = "syndiemag"
 	magpulse_fishing_modifier = 6

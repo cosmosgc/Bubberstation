@@ -237,7 +237,7 @@
 /datum/computer_file/program/radar/lifeline
 	filename = "lifeline"
 	filedesc = "Lifeline"
-	extended_desc = "This program allows for tracking of crew members via their suit sensors."
+	extended_desc = "Este programa permite rastrear membros da tripulação através de seus sensores de terno."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_MEDICAL)
 	program_icon = "heartbeat"
@@ -282,7 +282,7 @@
 /datum/computer_file/program/radar/custodial_locator
 	filename = "custodiallocator"
 	filedesc = "Custodial Locator"
-	extended_desc = "This program allows for tracking of custodial equipment."
+	extended_desc = "Este programa permite rastrear equipamentos de custódia."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_JANITOR)
 	program_icon = "broom"
@@ -327,7 +327,7 @@
 	filename = "fission360"
 	filedesc = "Fission360"
 	program_open_overlay = "radarsyndicate"
-	extended_desc = "This program allows for tracking of nuclear authorization disks and warheads."
+	extended_desc = "Este programa permite rastrear discos de autorização nuclear e ogivas."
 	program_flags = PROGRAM_ON_SYNDINET_STORE
 	tgui_id = "NtosRadarSyndicate"
 	program_icon = "bomb"

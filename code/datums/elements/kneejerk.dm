@@ -51,16 +51,16 @@
 	if(target_brain_damage < BRAIN_DAMAGE_MILD) //a healthy brain produces a normal reaction
 		playsound(target, 'sound/items/weapons/punchmiss.ogg', 25, TRUE, -1)
 		target.visible_message(span_danger("[target]'s leg kicks out sharply!"), \
-			span_danger("Your leg kicks out sharply!"))
+			span_danger("Sua perna chuta forte!"))
 
 	else if(target_brain_damage < BRAIN_DAMAGE_SEVERE) //a mildly damaged brain produces a delayed reaction
 		playsound(target, 'sound/items/weapons/punchmiss.ogg', 15, TRUE, -1)
 		target.visible_message(span_danger("After a moment, [target]'s leg kicks out sharply!"), \
-			span_danger("After a moment, your leg kicks out sharply!"))
+			span_danger("Depois de um momento, sua perna chuta forte!"))
 
 	else if(target_brain_damage < BRAIN_DAMAGE_DEATH) //a severely damaged brain produces a delayed + weaker reaction
 		playsound(target, 'sound/items/weapons/punchmiss.ogg', 5, TRUE, -1)
 		target.visible_message(span_danger("After a moment, [target]'s leg kicks out weakly!"), \
-			span_danger("After a moment, your leg kicks out weakly!"))
+			span_danger("Depois de um momento, sua perna chuta fracamente!"))
 
 	return

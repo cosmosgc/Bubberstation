@@ -91,7 +91,7 @@
 
 /obj/machinery/computer/shuttle/mining
 	name = "mining shuttle console"
-	desc = "Used to call and send the mining shuttle."
+	desc = "Costumava ligar e mandar a nave de mineração."
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
 	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
@@ -100,25 +100,25 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/machinery/computer/shuttle/mining/attack_hand(mob/user, list/modifiers)
 	if(is_station_level(user.z) && user.mind && IS_HEAD_REVOLUTIONARY(user) && !(user.mind in dumb_rev_heads))
-		to_chat(user, span_warning("You get a feeling that leaving the station might be a REALLY dumb idea..."))
+		to_chat(user, span_warning("Você tem a sensação de que sair da estação pode ser uma idéia muito idiota..."))
 		dumb_rev_heads += user.mind
 		return
 
 	if (HAS_TRAIT(user, TRAIT_FORBID_MINING_SHUTTLE_CONSOLE_OUTSIDE_STATION) && !is_station_level(user.z))
-		to_chat(user, span_warning("You get the feeling you shouldn't mess with this."))
+		to_chat(user, span_warning("Você tem a sensação de que não deve mexer com isso."))
 		return
 
 	if(isliving(user))
 		var/mob/living/living_user = user
 		for(var/obj/item/implant/exile/exile_implant in living_user.implants)
-			to_chat(living_user, span_warning("A warning flashes across the screen, and the shuttle controls lock in response to your exile implant."))
+			to_chat(living_user, span_warning("Um aviso passa pela tela, e a nave controla o bloqueio em resposta ao seu implante de exílio."))
 			return
 
 	return ..()
 
 /obj/machinery/computer/shuttle/mining/common
 	name = "lavaland shuttle console"
-	desc = "Used to call and send the lavaland shuttle."
+	desc = "Costumava ligar e mandar a nave auxiliar de lavaland."
 	circuit = /obj/item/circuitboard/computer/mining_shuttle/common
 	shuttleId = "mining_common"
 	possible_destinations = "commonmining_home;lavaland_common_away;landing_zone_dock;mining_public"
@@ -156,7 +156,7 @@
 
 /obj/structure/closet/crate/miningcar
 	name = "mine cart"
-	desc = "A cart for use on rails. Or off rails, if you're so inclined."
+	desc = "Um carrinho para uso em trilhos. Ou fora dos trilhos, se você está tão inclinado."
 	icon_state = "miningcar"
 	base_icon_state = "miningcar"
 	drag_slowdown = 2
@@ -180,9 +180,9 @@
 /obj/structure/closet/crate/miningcar/examine(mob/user)
 	. = ..()
 	if(on_rails)
-		. += span_notice("You can give this a bump to send it on its way, or drag it off the rails to drag it around.")
+		. += span_notice("Você pode dar um galo para enviá-lo em seu caminho, ou arrastá-lo fora dos trilhos para arrastá-lo.")
 	else
-		. += span_notice("Drag this onto a mine cart rail to set it on its way.")
+		. += span_notice("Arraste isso em um trilho de carro de mina para colocá-lo em seu caminho.")
 
 // We don't want the locked crate overlay show up.
 /obj/structure/closet/crate/miningcar/closet_update_overlays(list/new_overlays)
@@ -324,7 +324,7 @@
  * * new_destination - The turf the cart will be moved to.
  */
 /obj/structure/closet/crate/miningcar/proc/try_take_off_rails(mob/living/user, turf/open/new_destination)
-	balloon_alert(user, "removing from rails...")
+	balloon_alert(user, "Removendo dos trilhos...")
 	if(!do_after(user, 2 SECONDS, src))
 		return
 	update_rail_state(FALSE)
@@ -340,7 +340,7 @@
  * * new_destination - The turf the cart will be moved to.
  */
 /obj/structure/closet/crate/miningcar/proc/try_put_on_rails(mob/living/user, turf/open/new_destination)
-	balloon_alert(user, "putting on rails...")
+	balloon_alert(user, "Colocando trilhos...")
 	if(!do_after(user, 2 SECONDS, src))
 		return
 	var/obj/structure/minecart_rail/set_rail = locate() in new_destination
@@ -387,7 +387,7 @@
 			return
 		if(DOING_INTERACTION_WITH_TARGET(bumper, src))
 			return
-		balloon_alert(bumper, "setting off...")
+		balloon_alert(bumper, "Decolando...")
 		if(!do_after(bumper, 1.5 SECONDS, src))
 			return
 		if(QDELETED(rail) || !on_rails || !can_travel_on_turf(next_turf, movedir))
@@ -529,7 +529,7 @@
 
 /obj/structure/minecart_rail
 	name = "cart rail"
-	desc = "Carries carts along the track."
+	desc = "Carrega carrinhos ao longo da pista."
 	icon = 'icons/obj/track.dmi'
 	icon_state = "track"
 	layer = TRAM_RAIL_LAYER
@@ -549,15 +549,15 @@
 	. += rail_examine()
 
 /obj/structure/minecart_rail/proc/rail_examine()
-	return span_notice("Run a powered cable underneath it to power carts as they travel, maintaining their speed.")
+	return span_notice("Passe um cabo sob ele para carregar carros enquanto viajam, mantendo sua velocidade.")
 
 /obj/structure/minecart_rail/railbreak
 	name = "cart rail brake"
-	desc = "Stops carts in their tracks. On the tracks. You get what I mean."
+	desc = "Para carrinhos em seus trilhos. Nos trilhos. Entende o que quero dizer."
 	icon_state = "track_break"
 	can_buckle = TRUE
 	buckle_requires_restraints = TRUE
 	buckle_lying = NO_BUCKLE_LYING
 
 /obj/structure/minecart_rail/railbreak/rail_examine()
-	return span_notice("Run a powered cable underneath it to stop carts that pass over it.")
+	return span_notice("Passe um cabo sob ele para parar carrinhos que passam por cima dele.")

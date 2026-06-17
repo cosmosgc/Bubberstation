@@ -11,10 +11,10 @@
 
 /obj/item/disk/computer/virus/proc/send_virus(obj/item/modular_computer/pda/source, obj/item/modular_computer/pda/target, mob/living/user, message)
 	if(charges <= 0)
-		to_chat(user, span_notice("ERROR: Out of charges."))
+		to_chat(user, span_notice("Sem acusações."))
 		return FALSE
 	if(!target)
-		to_chat(user, span_notice("ERROR: Could not find device."))
+		to_chat(user, span_notice("Não achei o dispositivo."))
 		return FALSE
 	return TRUE
 
@@ -31,7 +31,7 @@
 	if(!.)
 		return FALSE
 
-	user.show_message(span_notice("Success!"))
+	user.show_message(span_notice("Sucesso!"))
 	charges--
 	target.honkvirus_amount = rand(15, 25)
 	return TRUE
@@ -51,7 +51,7 @@
 	var/datum/computer_file/program/messenger/app = locate() in target.stored_files
 	if(!app)
 		return FALSE
-	user.show_message(span_notice("Success!"))
+	user.show_message(span_notice("Sucesso!"))
 	charges--
 	app.alert_silenced = TRUE
 	app.ringtone = ""
@@ -71,7 +71,7 @@
 
 	var/difficulty = target.get_detomatix_difficulty()
 	if(SEND_SIGNAL(target, COMSIG_TABLET_CHECK_DETONATE) & COMPONENT_TABLET_NO_DETONATE || prob(difficulty * 15))
-		user.show_message(span_danger("ERROR: Target could not be bombed."), MSG_VISUAL)
+		user.show_message(span_danger("Alvo não pode ser bombardeado."), MSG_VISUAL)
 		charges--
 		return
 
@@ -82,14 +82,14 @@
 	var/fakejob = sanitize_name(tgui_input_text(user, "Enter a job for the rigged message.", "Forge Message", max_length = MAX_NAME_LEN), allow_numbers = TRUE)
 	if(!fakejob || source != original_host || !user.can_perform_action(source))
 		return
-	var/attach_fake_photo = tgui_alert(user, "Attach a fake photo?", "Forge Message", list("Yes", "No")) == "Yes"
+	var/attach_fake_photo = tgui_alert(user, "Anexar uma foto falsa?", "Forge Message", list("Yes", "No")) == "Yes"
 
 	var/datum/computer_file/program/messenger/app = locate() in source.stored_files
 	var/datum/computer_file/program/messenger/target_app = locate() in target.stored_files
 	if(!app || charges <= 0 || !app.send_rigged_message(user, message, list(target_app), fakename, fakejob, attach_fake_photo))
 		return FALSE
 	charges--
-	user.show_message(span_notice("Success!"))
+	user.show_message(span_notice("Sucesso!"))
 	var/reference = REF(src)
 	target.add_traits(list(TRAIT_PDA_CAN_EXPLODE, TRAIT_PDA_MESSAGE_MENU_RIGGED), reference)
 	addtimer(TRAIT_CALLBACK_REMOVE(target, TRAIT_PDA_MESSAGE_MENU_RIGGED, reference), 10 SECONDS)

@@ -1,6 +1,6 @@
 /obj/item/taperecorder
 	name = "universal recorder"
-	desc = "A device that can record to cassette tapes, and play them. It automatically translates the content in playback."
+	desc = "Um dispositivo que pode gravar em fitas cassete, e tocá-las. Ele traduz automaticamente o conteúdo na reprodução."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "taperecorder_empty"
 	inhand_icon_state = "analyzer"
@@ -45,18 +45,18 @@
 /obj/item/taperecorder/proc/readout()
 	if(mytape)
 		if(playing)
-			return span_notice("<b>PLAYING</b>")
+			return span_notice("<b>JOGADO</b>")
 		else
 			var/time = mytape.used_capacity / 10 //deciseconds / 10 = seconds
 			var/mins = round(time / 60)
 			var/secs = time - mins * 60
 			return span_notice("<b>[mins]</b>m <b>[secs]</b>s")
-	return span_notice("<b>NO TAPE INSERTED</b>")
+	return span_notice("<b>SEM FICHA INSERTADA</b>")
 
 /obj/item/taperecorder/examine(mob/user)
 	. = ..()
 	if(in_range(src, user) || isobserver(user))
-		. += span_notice("The display reads:")
+		. += span_notice("A tela diz:")
 		. += "[readout()]"
 
 /obj/item/taperecorder/click_alt(mob/user)
@@ -96,10 +96,10 @@
 
 /obj/item/taperecorder/proc/eject(mob/user)
 	if(!mytape)
-		balloon_alert(user, "no tape!")
+		balloon_alert(user, "Sem fita!")
 		return
 	if(playing)
-		balloon_alert(user, "stop the tape first!")
+		balloon_alert(user, "Pare com isso!")
 		return
 	playsound(src, 'sound/items/taperecorder/taperecorder_open.ogg', 50, FALSE)
 	balloon_alert(user, "ejected [mytape]")
@@ -129,10 +129,10 @@
 	set name = "Eject Tape"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "Não posso usar!")
 		return
 	if(!mytape)
-		balloon_alert(usr, "no tape!")
+		balloon_alert(usr, "Sem fita!")
 		return
 	eject(usr)
 
@@ -164,16 +164,16 @@
 	set name = "Start Recording"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "Não posso usar!")
 		return
 	if(!mytape || mytape.unspooled)
-		balloon_alert(usr, "no spooled tape!")
+		balloon_alert(usr, "Sem fita adesiva!")
 		return
 	if(recording)
-		balloon_alert(usr, "stop recording first!")
+		balloon_alert(usr, "Pare de gravar primeiro!")
 		return
 	if(playing)
-		balloon_alert(usr, "already playing!")
+		balloon_alert(usr, "Já está jogando!")
 		return
 
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
@@ -181,7 +181,7 @@
 	if(mytape.used_capacity < mytape.max_capacity)
 		recording = TRUE
 		become_hearing_sensitive()
-		balloon_alert(usr, "started recording")
+		balloon_alert(usr, "Começou a gravar.")
 		update_sound()
 		update_appearance()
 		var/used = mytape.used_capacity //to stop runtimes when you eject the tape
@@ -194,11 +194,11 @@
 				balloon_alert(usr, "[(max - used) / 10] second\s left")
 			sleep(1 SECONDS)
 		if(used >= max)
-			balloon_alert(usr, "tape full!")
+			balloon_alert(usr, "Fita cheia!")
 			sleep(1 SECONDS) //prevent balloon alerts layering over the top of each other
 		stop()
 	else
-		balloon_alert(usr, "tape full!")
+		balloon_alert(usr, "Fita cheia!")
 		playsound(src, 'sound/items/taperecorder/taperecorder_stop.ogg', 50, FALSE)
 
 
@@ -206,17 +206,17 @@
 	set name = "Stop"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "Não posso usar!")
 		return
 
 	if(recording)
 		playsound(src, 'sound/items/taperecorder/taperecorder_stop.ogg', 50, FALSE)
-		balloon_alert(usr, "stopped recording")
+		balloon_alert(usr, "Pare de gravar.")
 		recording = FALSE
 		lose_hearing_sensitivity()
 	else if(playing)
 		playsound(src, 'sound/items/taperecorder/taperecorder_stop.ogg', 50, FALSE)
-		balloon_alert(usr, "stopped playing")
+		balloon_alert(usr, "Pare de jogar.")
 		playing = FALSE
 	time_warned = FALSE
 	update_appearance()
@@ -226,16 +226,16 @@
 	set name = "Play Tape"
 
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "Não posso usar!")
 		return
 	if(!mytape || mytape.unspooled)
-		balloon_alert(usr, "no spooled tape!")
+		balloon_alert(usr, "Sem fita adesiva!")
 		return
 	if(recording)
-		balloon_alert(usr, "stop recording first!")
+		balloon_alert(usr, "Pare de gravar primeiro!")
 		return
 	if(playing)
-		balloon_alert(usr, "already playing!")
+		balloon_alert(usr, "Já está jogando!")
 		return
 	if(mytape.storedinfo?.len <= 0)
 		balloon_alert(usr, "[mytape] is empty!")
@@ -244,7 +244,7 @@
 	playing = TRUE
 	update_appearance()
 	update_sound()
-	balloon_alert(usr, "started playing")
+	balloon_alert(usr, "Começou a tocar.")
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
 	var/used = mytape.used_capacity //to stop runtimes when you eject the tape
 	var/max = mytape.max_capacity
@@ -254,7 +254,7 @@
 		if(playing == FALSE)
 			break
 		if(mytape.storedinfo.len < i)
-			balloon_alert(usr, "recording ended")
+			balloon_alert(usr, "A gravação terminou.")
 			stoplag(1 SECONDS) //prevents multiple balloon alerts covering each other
 			break
 		say("[mytape.storedinfo[i]]", sanitize=FALSE, message_mods = list(MODE_SEQUENTIAL = TRUE))//We want to display this properly, don't double encode
@@ -274,7 +274,7 @@
 
 /obj/item/taperecorder/attack_self(mob/user)
 	if(!mytape)
-		balloon_alert(user, "it's empty!")
+		balloon_alert(user, "Está vazio!")
 		return
 
 	update_available_icons()
@@ -299,22 +299,22 @@
 
 	var/list/transcribed_info = mytape.storedinfo
 	if(!length(transcribed_info))
-		balloon_alert(usr, "tape is empty!")
+		balloon_alert(usr, "A fita está vazia!")
 		return
 	if(!canprint)
-		balloon_alert(usr, "can't print that fast!")
+		balloon_alert(usr, "Não posso imprimir tão rápido!")
 		return
 	if(!can_use(usr))
-		balloon_alert(usr, "can't use!")
+		balloon_alert(usr, "Não posso usar!")
 		return
 	if(!mytape || mytape.unspooled)
-		balloon_alert(usr, "no spooled tape!")
+		balloon_alert(usr, "Sem fita adesiva!")
 		return
 	if(recording)
-		balloon_alert(usr, "stop recording first!")
+		balloon_alert(usr, "Pare de gravar primeiro!")
 		return
 	if(playing)
-		balloon_alert(usr, "already playing!")
+		balloon_alert(usr, "Já está jogando!")
 		return
 
 	var/transcribed_text = "<b>Transcript:</b><br><br>"
@@ -329,7 +329,7 @@
 
 		// Very unexpected. Better abort non-gracefully.
 		if(excerpt_length > MAX_PAPER_LENGTH)
-			balloon_alert(usr, "data corrupted, can't print!")
+			balloon_alert(usr, "Dados corrompidos, não posso imprimir!")
 			CRASH("Transcript entry has more than [MAX_PAPER_LENGTH] chars: [excerpt_length] chars")
 
 		// If we're going to overflow the paper's length, print the current transcribed text out first and reset to prevent us
@@ -363,7 +363,7 @@
 
 /obj/item/tape
 	name = "tape"
-	desc = "A magnetic tape that can hold up to ten minutes of content on either side."
+	desc = "Uma fita magnética que pode conter até dez minutos de conteúdo de cada lado."
 	icon_state = "tape_white"
 	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	inhand_icon_state = "analyzer"
@@ -406,7 +406,7 @@
 /obj/item/tape/examine(mob/user)
 	. = ..()
 	if(unspooled)
-		. += span_notice("It looks like the tape is unspooled. A screwdriver might fix this.")
+		. += span_notice("Parece que a fita está aberta. Uma chave de fenda pode consertar isso.")
 
 /obj/item/tape/fire_act(exposed_temperature, exposed_volume)
 	unspool()
@@ -430,13 +430,13 @@
 				if(loc != user)
 					return
 				tapeflip()
-				balloon_alert(user, "flipped tape")
+				balloon_alert(user, "Fita Virada.")
 				playsound(src, 'sound/items/taperecorder/tape_flip.ogg', 70, FALSE)
 			if("Unwind tape")
 				if(loc != user)
 					return
 				unspool()
-				balloon_alert(user, "unspooled tape")
+				balloon_alert(user, "Fita solta.")
 
 /obj/item/tape/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(prob(50))
@@ -475,11 +475,11 @@
 /obj/item/tape/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!unspooled)
 		return FALSE
-	balloon_alert(user, "respooling tape...")
+	balloon_alert(user, "Reposicionamento de fita...")
 	if(!tool.use_tool(src, user, 12 SECONDS))
-		balloon_alert(user, "respooling failed!")
+		balloon_alert(user, "A transferência falhou!")
 		return FALSE
-	balloon_alert(user, "tape respooled")
+	balloon_alert(user, "Fita rebobinada.")
 	respool()
 
 //Random colour tapes

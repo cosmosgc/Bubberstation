@@ -3,25 +3,25 @@
 /////////// thederelict items
 
 /obj/item/paper/fluff/ruins/thederelict/equipment
-	default_raw_text = "If the equipment breaks there should be enough spare parts in our engineering storage near the north east solar array."
+	default_raw_text = "Se o equipamento quebrar deve haver peças de reposição suficientes em nosso armazenamento de engenharia perto da matriz solar nordeste."
 	name = "Equipment Inventory"
 
 /obj/item/paper/fluff/ruins/thederelict/syndie_mission
 	name = "Mission Objectives"
-	default_raw_text = "The Syndicate have cunningly disguised a Syndicate Uplink as your PDA. Simply enter the code \"678 Bravo\" into the ringtone select to unlock its hidden features. <br><br><b>Objective #1</b>. Kill the God damn AI in a fire blast that it rocks the station. <b>Success!</b>  <br><b>Objective #2</b>. Escape alive. <b>Failed.</b>"
+	default_raw_text = "O Sindicato disfarçou astutamente um link de sindicato como seu PDA. Basta digitar o código.\"678 Bravo\"no toque, selecione para desbloquear suas características ocultas.<br><br><b>Objetivo #1</b>Mate a maldita IA em uma explosão de fogo que abala a estação.<b>Sucesso!</b>  <br><b>Objetivo # 2</b>Fuja vivo.<b>Falhou.</b>"
 
 /obj/item/paper/fluff/ruins/thederelict/nukie_objectives
 	name = "Objectives of a Nuclear Operative"
-	default_raw_text = "<b>Objective #1</b>: Destroy the station with a nuclear device."
+	default_raw_text = "<b>Objetivo #1</b>Destruir a estação com um dispositivo nuclear."
 
 /obj/item/paper/crumpled/bloody/ruins/thederelict/unfinished
 	name = "unfinished paper scrap"
-	desc = "Looks like someone started shakily writing a will in space common, but were interrupted by something bloody..."
-	default_raw_text = "I, Victor Belyakov, do hereby leave my _- "
+	desc = "Parece que alguém começou a escrever um testamento no espaço comum, mas foi interrompido por algo sangrento..."
+	default_raw_text = "Eu, Victor Belyakov, deixo meu..."
 
 /obj/item/paper/fluff/ruins/thederelict/vaultraider
 	name = "Vault Raider Objectives"
-	default_raw_text = "<b>Objectives #1</b>: Find out what is hidden in Kosmicheskaya Stantsiya 13s Vault"
+	default_raw_text = "<b>Objetivos #1</b>Descubra o que está escondido em Kosmicheskaya Stantsiya 13s Coult"
 
 ///The Derelict Terminals
 /obj/machinery/computer/terminal/derelict/bridge
@@ -44,7 +44,7 @@
 /// Vault controller for use on the derelict/KS13.
 /obj/machinery/computer/vaultcontroller
 	name = "vault controller"
-	desc = "It seems to be powering and controlling the vault locks."
+	desc = "Parece estar alimentando e controlando as fechaduras do cofre."
 	icon_screen = "power"
 	icon_keyboard = "power_key"
 	light_color = LIGHT_COLOR_DIM_YELLOW
@@ -61,7 +61,7 @@
 
 /obj/machinery/computer/monitor/examine(mob/user)
 	. = ..()
-	. += span_notice("It appears to be powered via a cable connector.")
+	. += span_notice("Parece ser alimentado por um conector de cabo.")
 
 //Checks for cable connection, charges if possible.
 /obj/machinery/computer/vaultcontroller/process()
@@ -174,7 +174,7 @@
 
 /obj/structure/fluff/oldturret
 	name = "broken turret"
-	desc = "An obsolete model of turret, long non-functional."
+	desc = "Um modelo obsoleto de torre, não funcional."
 	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "turretCover"
 	density = TRUE
@@ -186,7 +186,7 @@
 /// https://www.youtube.com/watch?v=FHH1vfY6HTA (new video)
 /obj/item/tape/captains_log
 	name = "captain's log"
-	desc = "A dusty old tape."
+	desc = "Uma fita velha empoeirada."
 	icon_state = "tape_blue"
 	used_capacity = 10 MINUTES // so the tape is full and can't be recorded over
 	storedinfo = list( // the captain recorded this in several segements

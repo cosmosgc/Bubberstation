@@ -1,6 +1,6 @@
 /obj/item/kinky_shocker
 	name = "kinky shocker"
-	desc = "A small toy that can weakly shock someone."
+	desc = "Um pequeno brinquedo que pode chocar alguém."
 	icon_state = "shocker_off"
 	base_icon_state = "shocker"
 	inhand_icon_state = "shocker_off"

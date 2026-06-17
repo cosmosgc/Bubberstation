@@ -3,7 +3,7 @@
  */
 /obj/item/gun/magic/wand/prank
 	name = "wand of pratfalls"
-	desc = "A comedy wand which is sure to get a laugh out of you, if not its victims."
+	desc = "Uma varinha de comédia que certamente vai rir de você, se não suas vítimas."
 	school = SCHOOL_CONJURATION
 	ammo_type = /obj/item/ammo_casing/magic/prank
 	icon_state = "bananawand"

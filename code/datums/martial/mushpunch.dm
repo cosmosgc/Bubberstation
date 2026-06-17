@@ -8,9 +8,9 @@
 
 /datum/martial_art/mushpunch/proc/charge_up_attack(mob/living/attacker, mob/living/defender)
 
-	to_chat(attacker, span_spiderbroodmother("You begin to wind up an attack..."))
+	to_chat(attacker, span_spiderbroodmother("Você começa a acabar com um ataque..."))
 	if(!do_after(attacker, 2.5 SECONDS, defender))
-		to_chat(attacker, span_spiderbroodmother("<b>Your attack was interrupted!</b>"))
+		to_chat(attacker, span_spiderbroodmother("<b>Seu ataque foi interrompido!</b>"))
 		return
 
 	var/final_damage = rand(15, 30)
@@ -22,7 +22,7 @@
 	defender.visible_message(
 		span_danger("[attacker] [atk_verb]ed [defender] with such inhuman strength that it sends [defender.p_them()] flying backwards!"), \
 		span_userdanger("You're [atk_verb]ed by [attacker] with such inhuman strength that it sends you flying backwards!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
@@ -36,8 +36,8 @@
 
 /obj/item/mushpunch
 	name = "odd mushroom"
-	desc = "<I>Sapienza Ophioglossoides</I>:An odd mushroom from the flesh of a mushroom person. \
-		It has apparently retained some innate power of its owner, as it quivers with barely-contained POWER!"
+	desc = "<I>Sapienza Ophioglossoides</I>Um cogumelo estranho da carne de um cogumelo.\
+Ele aparentemente reteve algum poder inato de seu dono, como ele treme com poder mal contido!"
 	icon = 'icons/obj/service/hydroponics/seeds.dmi'
 	icon_state = "mycelium-angel"
 

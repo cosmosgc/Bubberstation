@@ -51,14 +51,14 @@
 			talk_action.brain_ref = source
 
 		if(the_real_ling.key)
-			to_chat(the_real_ling, span_ghostalert("We detect our decoy brain has been placed within a Man-Machine Interface. \
-				We can use the \"MMI Talk\" action to command it to speak."))
+			to_chat(the_real_ling, span_ghostalert("Detectamos que nosso cérebro foi colocado dentro de uma interface homem-máquina.\
+Podemos usar o\"MMI Talk\"ação para ordená-lo a falar."))
 		else
 			the_real_ling.notify_revival("Your decoy brain has been placed in an MMI, re-enter your body to talk via it!", source = the_real_ling, flashwindow = TRUE)
 		talk_action.Grant(the_real_ling)
 
 	else if(talk_action?.owner == the_real_ling)
-		to_chat(the_real_ling, span_ghostalert("We can no longer detect our decoy brain."))
+		to_chat(the_real_ling, span_ghostalert("Não podemos mais detectar nosso cérebro isca."))
 		talk_action.Remove(the_real_ling)
 
 /// Clear up the decoy if the ling is de-linged

@@ -39,7 +39,7 @@
 /mob/living/circuit_drone/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(health == maxHealth)
-		balloon_alert(user, "already at maximum integrity!")
+		balloon_alert(user, "Já na máxima integridade!")
 		return TRUE
 	if(tool.use_tool(src, user, 1 SECONDS, volume = 50))
 		heal_overall_damage(50, 50)
@@ -47,7 +47,7 @@
 
 /obj/item/circuit_component/bot_circuit
 	display_name = "Drone"
-	desc = "Used to send movement output signals to the drone shell."
+	desc = "Costumava enviar sinais de saída de movimento para o drone."
 
 	/// The inputs to allow for the drone to move
 	var/datum/port/input/north

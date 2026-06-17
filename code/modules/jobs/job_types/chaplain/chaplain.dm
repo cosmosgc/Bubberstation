@@ -1,7 +1,7 @@
 /datum/job/chaplain
 	title = JOB_CHAPLAIN
-	description = "Hold services and funerals, cremate people, preach your \
-		religion, protect the crew against cults."
+	description = "Fazer serviços e funerais, cremar pessoas, pregar o seu\
+religião, proteger a tripulação contra cultos."
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1

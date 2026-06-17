@@ -15,8 +15,8 @@
 	playsound(src, 'sound/machines/terminal/terminal_alert.ogg', 100, vary = TRUE)
 	user.visible_message(
 		span_danger("[user] begins depowering the server!"),
-		span_notice("You start disconnecting clients..."),
-		span_danger("You hear frantic keying on a keyboard."),
+		span_notice("Você começa a desconectar clientes..."),
+		span_danger("Você ouve teclas frenéticas em um teclado."),
 	)
 
 	SEND_SIGNAL(src, COMSIG_BITRUNNER_SHUTDOWN_ALERT, user)

@@ -53,7 +53,7 @@
 
 /obj/item/attachable_soulcatcher
 	name = "Poltergeist-Type RSD"
-	desc = "This device, a polymorphic nanomachine net, wraps around objects of most sizes and allows them to function as a container for Resonance. The soul in question within the vessel is imbued much like it would be in a body or a normal Soulcatcher, perceiving the world and even speaking out of their new form. The nanomachine net of the device allows for the consciousness to somewhat manipulate their container, but any large-scale movement is out of the question."
+	desc = "Este dispositivo, uma rede de nanomáquinas polimórfica, envolve objetos da maioria dos tamanhos e permite que eles funcionem como um recipiente para ressonância. A alma em questão dentro do vaso está imbuída como se estivesse em um corpo ou um caça-almas normal, percebendo o mundo e até mesmo falando de sua nova forma. A rede de nanomáquinas do dispositivo permite que a consciência manipule um pouco seu recipiente, mas qualquer movimento em grande escala está fora de questão."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "attachable-soulcatcher"
 	w_class = WEIGHT_CLASS_SMALL
@@ -82,11 +82,11 @@
 
 /obj/item/attachable_soulcatcher/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isitem(interacting_with) || is_type_in_list(interacting_with, blacklisted_items))
-		balloon_alert(user, "incompatible!")
+		balloon_alert(user, "incompatível!")
 		return NONE
 
 	if(interacting_with.GetComponent(/datum/component/carrier/soulcatcher))
-		balloon_alert(user, "already attached!")
+		balloon_alert(user, "Já está preso!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/datum/component/carrier/soulcatcher/new_soulcatcher = interacting_with.AddComponent(/datum/component/carrier/soulcatcher/attachable)

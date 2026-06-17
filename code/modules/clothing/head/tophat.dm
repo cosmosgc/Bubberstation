@@ -2,7 +2,7 @@
 
 /obj/item/clothing/head/hats/tophat
 	name = "top-hat"
-	desc = "It's an amish looking hat."
+	desc = "É um chapéu amish."
 	icon_state = "tophat"
 	inhand_icon_state = "that"
 	dog_fashion = /datum/dog_fashion/head
@@ -38,7 +38,7 @@
 
 /obj/item/clothing/head/hats/tophat/balloon
 	name = "balloon top-hat"
-	desc = "It's a colourful looking top-hat to match your colourful personality."
+	desc = "É um chapéu colorido para combinar com sua personalidade colorida."
 	icon_state = "balloon_tophat"
 	inhand_icon_state = "balloon_that"
 	throwforce = 0

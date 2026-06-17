@@ -15,19 +15,19 @@
 		if(!overflow_server_ip)
 			message_admins("WARNING: Overflow server IP not set!")
 			return TRUE
-		to_chat_immediate(src, span_boldwarning("The round is full, please wait while you are transferred to the secondary server..."))
+		to_chat_immediate(src, span_boldwarning("A rodada está cheia, por favor espere enquanto você é transferido para o servidor secundário..."))
 		message_admins("[src] attempted to join, but the server was full and were sent to the secondary server.")
 		src << link(overflow_server_ip)
 		return FALSE
 	return TRUE
 
 /mob/dead/new_player/proc/connect_to_second_server()
-	var/choice = tgui_alert(src, "The server is currently experiencing high demand, please consider joining our secondary server.", "High Demand", list("Stay here", "Connect me!"))
+	var/choice = tgui_alert(src, "O servidor está em alta demanda, por favor, considere se juntar ao nosso servidor secundário.", "High Demand", list("Stay here", "Connect me!"))
 	if(!client)
 		return
 	if(choice != "Connect me!")
 		return
-	to_chat(client, span_notice("So long, spaceman."))
+	to_chat(client, span_notice("Até logo, homem do espaço."))
 	var/overflow_server_ip = CONFIG_GET(string/overflow_server_ip)
 	if(!overflow_server_ip)
 		message_admins("WARNING: Overflow server IP not set!")

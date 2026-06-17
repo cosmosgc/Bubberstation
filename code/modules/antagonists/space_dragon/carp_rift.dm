@@ -7,7 +7,7 @@
 
 /datum/action/innate/summon_rift
 	name = "Summon Rift"
-	desc = "Summon a rift to bring forth a horde of space carp."
+	desc = "Chame uma fenda para trazer uma horda de carpa espacial."
 	background_icon_state = "bg_default"
 	overlay_icon_state = "bg_default_border"
 	button_icon = 'icons/mob/actions/actions_space_dragon.dmi'
@@ -21,18 +21,18 @@
 	for(var/obj/structure/carp_rift/rift as anything in dragon.rift_list)
 		var/area/used_location = get_area(rift)
 		if(used_location == rift_location)
-			owner.balloon_alert(owner, "already summoned a rift here!")
+			owner.balloon_alert(owner, "Já convocaram uma fenda aqui!")
 			return
 
 	if(!(rift_location in dragon.chosen_rift_areas))
-		owner.balloon_alert(owner, "can't summon a rift here! check your objectives!")
+		owner.balloon_alert(owner, "Não posso invocar uma fenda aqui! Verifique seus objetivos!")
 		return
 
 	var/turf/rift_spawn_turf = get_turf(dragon)
 	if(isopenspaceturf(rift_spawn_turf))
-		owner.balloon_alert(dragon, "needs stable ground!")
+		owner.balloon_alert(dragon, "Precisa de solo estável!")
 		return
-	owner.balloon_alert(owner, "opening rift...")
+	owner.balloon_alert(owner, "abrindo fenda...")
 	if(!do_after(owner, 10 SECONDS, target = owner))
 		return
 	if(locate(/obj/structure/carp_rift) in owner.loc)
@@ -44,11 +44,11 @@
 	dragon.riftTimer = -1
 	new_rift.dragon = dragon
 	dragon.rift_list += new_rift
-	to_chat(owner, span_boldwarning("The rift has been summoned. Prevent the crew from destroying it at all costs!"))
+	to_chat(owner, span_boldwarning("A fenda foi convocada. Impedir a tripulação de destruí-lo a todo custo!"))
 	notify_ghosts(
 		"The Space Dragon has opened a rift!",
 		source = new_rift,
-		header = "Carp Rift Opened",
+		header = "Fenda de Carpa aberta",
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
 	ASSERT(dragon.rift_ability == src) // Badmin protection.
@@ -57,7 +57,7 @@
 /// Points towards a chosen location in which a rift can be placed
 /datum/action/innate/locate_rift
 	name = "Locate Rift"
-	desc = "Find out where a potential rift location is."
+	desc = "Descubra onde está a fenda."
 	background_icon_state = "bg_default"
 	overlay_icon_state = "bg_default_border"
 	button_icon = 'icons/mob/actions/actions_space_dragon.dmi'
@@ -69,14 +69,14 @@
 	if(!dragon_mob)
 		return
 	if(!is_station_level(dragon_mob.z))
-		dragon_mob.balloon_alert(dragon_mob, "too far offstation!")
+		dragon_mob.balloon_alert(dragon_mob, "Muito longe da estação!")
 		return
 
 	var/area/chosen_area = tgui_input_list(owner, "Select the area you'd like to be pointed towards.", "Locate Rift", dragon_datum.chosen_rift_areas)
 	if(!chosen_area)
 		return
 	if(chosen_area == get_area(dragon_mob))
-		dragon_mob.balloon_alert(dragon_mob, "already here!")
+		dragon_mob.balloon_alert(dragon_mob, "Já está aqui!")
 		return
 
 	var/turf/chosen_turf = pick(get_area_turfs(chosen_area))
@@ -111,7 +111,7 @@
  */
 /obj/structure/carp_rift
 	name = "carp rift"
-	desc = "A rift akin to the ones space carp use to travel long distances."
+	desc = "Uma fenda parecida com a que a carpa espacial usa para viajar longas distâncias."
 	armor_type = /datum/armor/structure_carp_rift
 	max_integrity = 300
 	icon = 'icons/obj/anomaly.dmi'
@@ -187,7 +187,7 @@
 	if(time_charged < max_charge)
 		. += span_notice("It seems to be [(time_charged / max_charge) * 100]% charged.")
 	else
-		. += span_warning("This one is fully charged. In this state, it is poised to transport a much larger amount of carp than normal.")
+		. += span_warning("Este está totalmente carregado. Neste estado, está preparado para transportar uma quantidade muito maior de carpa do que o normal.")
 
 	if(isobserver(user))
 		. += span_notice("It has [carp_stored] carp available to spawn as.")
@@ -199,7 +199,7 @@
 	STOP_PROCESSING(SSobj, src)
 	if(charge_state != CHARGE_COMPLETED)
 		if(dragon)
-			to_chat(dragon.owner.current, span_boldwarning("A rift has been destroyed! You have failed, and find yourself weakened."))
+			to_chat(dragon.owner.current, span_boldwarning("Uma fenda foi destruída! Você falhou, e se encontra enfraquecido."))
 			dragon.destroy_rifts()
 	dragon = null
 	return ..()
@@ -249,7 +249,7 @@
 		notify_ghosts(
 			"The carp rift can summon an additional carp!",
 			source = src,
-			header = "Carp Spawn Available",
+			header = "Carpa Spawn disponível",
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		)
 		last_carp_inc -= carp_interval
@@ -300,14 +300,14 @@
 	var/is_listed = FALSE
 	if (user.ckey in ckey_list)
 		if(carp_stored == 1)
-			to_chat(user, span_warning("You've already become a carp using this rift! Either wait for a backlog of carp spawns or until the next rift!"))
+			to_chat(user, span_warning("Você já se tornou uma carpa usando esta fenda! Ou esperar um atraso de carpas ou até a próxima fenda!"))
 			return FALSE
 		is_listed = TRUE
-	var/carp_ask = tgui_alert(user, "Become a carp?", "Carp Rift", list("Yes", "No"))
+	var/carp_ask = tgui_alert(user, "Tornar-se uma carpa?", "Carp Rift", list("Yes", "No"))
 	if(carp_ask != "Yes" || QDELETED(src) || QDELETED(user))
 		return FALSE
 	if(carp_stored <= 0)
-		to_chat(user, span_warning("The rift already summoned enough carp!"))
+		to_chat(user, span_warning("A fenda já convocou carpa suficiente!"))
 		return FALSE
 
 	if(isnull(dragon))
@@ -325,7 +325,7 @@
 	var/datum/antagonist/space_carp/carp_antag = new(src)
 	newcarp.mind.add_antag_datum(carp_antag)
 	dragon.carp += newcarp.mind
-	to_chat(newcarp, span_boldwarning("You have arrived in order to assist the space dragon with securing the rifts. Do not jeopardize the mission, and protect the rifts at all costs!"))
+	to_chat(newcarp, span_boldwarning("Você chegou para ajudar o dragão espacial a garantir as fendas. Não arrisque a missão, e proteja as fendas a todo custo!"))
 	carp_stored--
 	if(carp_stored <= 0 && charge_state < CHARGE_COMPLETED)
 		icon_state = "carp_rift"

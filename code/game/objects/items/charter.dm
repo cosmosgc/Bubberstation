@@ -2,8 +2,8 @@
 	name = "station charter"
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "charter"
-	desc = "An official document entrusting the governance of the station \
-		and surrounding space to the Captain."
+	desc = "Um documento oficial confiando o governo da estação\
+e espaço circundante para o Capitão."
 	var/used = FALSE
 	var/name_type = "station"
 
@@ -32,7 +32,7 @@
 		to_chat(user, span_warning("The crew has already settled into the shift. It probably wouldn't be good to rename the [name_type] right now."))
 		return
 	if(response_timer_id)
-		to_chat(user, span_warning("You're still waiting for approval from your employers about your proposed name change, it'd be best to wait for now."))
+		to_chat(user, span_warning("Você ainda está esperando aprovação de seus empregadores sobre sua mudança de nome proposta, seria melhor esperar por agora."))
 		return
 
 	var/new_name = tgui_input_text(user, "What do you want to name \
@@ -41,7 +41,7 @@
 		will be accepted automatically.", "Station Name", max_length = MAX_CHARTER_LEN)
 
 	if(response_timer_id)
-		to_chat(user, span_warning("You're still waiting for approval from your employers about your proposed name change, it'd be best to wait for now."))
+		to_chat(user, span_warning("Você ainda está esperando aprovação de seus empregadores sobre sua mudança de nome proposta, seria melhor esperar por agora."))
 		return
 
 	if(!new_name)
@@ -50,11 +50,11 @@
 		[new_name]", LOG_GAME)
 
 	if(standard_station_regex.Find(new_name))
-		to_chat(user, span_notice("Your name has been automatically approved."))
+		to_chat(user, span_notice("Seu nome foi automaticamente aprovado."))
 		rename_station(new_name, user.name, user.real_name, key_name(user))
 		return
 
-	to_chat(user, span_notice("Your name has been sent to your employers for approval."))
+	to_chat(user, span_notice("Seu nome foi enviado aos seus empregadores para aprovação."))
 	// Autoapproves after a certain time
 	response_timer_id = addtimer(CALLBACK(src, PROC_REF(rename_station), new_name, user.name, user.real_name, key_name(user)), approval_time, TIMER_STOPPABLE)
 	to_chat(GLOB.admins,
@@ -106,7 +106,7 @@
 	inhand_icon_state = "banner"
 	lefthand_file = 'icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/banners_righthand.dmi'
-	desc = "A cunning device used to claim ownership of celestial bodies."
+	desc = "Um engenhoso dispositivo usado para reivindicar a posse de corpos celestes."
 	w_class = WEIGHT_CLASS_HUGE
 	force = 15
 

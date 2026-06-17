@@ -9,10 +9,10 @@
 	var/release_delay = 5
 	/// Messages sent to people feeling the pulses
 	var/static/list/messages = list(
-		span_warning("You feel your conscious mind fall apart!"),
-		span_warning("Reality warps around you!"),
-		span_warning("Something's whispering around you!"),
-		span_warning("You are going insane!"),
+		span_warning("Você sente sua mente consciente desmoronar!"),
+		span_warning("A realidade te rodeia!"),
+		span_warning("Algo está sussurrando ao seu redor!"),
+		span_warning("Você está ficando louco!"),
 	)
 	///Do we spawn misleading decoys?
 	var/spawn_decoys = TRUE

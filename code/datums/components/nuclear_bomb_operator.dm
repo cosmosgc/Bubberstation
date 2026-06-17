@@ -105,7 +105,7 @@
 	potential_disky.forceMove(mob_parent)
 	disky = WEAKREF(potential_disky)
 	mob_parent.update_appearance(updates = UPDATE_ICON)
-	mob_parent.balloon_alert(mob_parent, "disk secured!")
+	mob_parent.balloon_alert(mob_parent, "Disquete seguro!")
 	on_disk_collected?.InvokeAsync(potential_disky)
 
 /// Uses the disk on clicked atom, or places it on the ground
@@ -118,7 +118,7 @@
 
 	held_disk.forceMove(attacked_target)
 	disky = null
-	mob_parent.balloon_alert(mob_parent, "disk dropped!")
+	mob_parent.balloon_alert(mob_parent, "Disco caído!")
 	mob_parent.update_appearance(updates = UPDATE_ICON)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 

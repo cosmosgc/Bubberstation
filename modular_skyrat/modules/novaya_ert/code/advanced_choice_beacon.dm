@@ -1,6 +1,6 @@
 /obj/item/advanced_choice_beacon
 	name = "advanced choice beacon"
-	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
+	desc = "Um farol que enviará o que seu coração desejar, desde que Nanotrasen o aprove."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "designator_syndicate"
 	inhand_icon_state = "nukietalkie"
@@ -60,7 +60,7 @@
 
 /obj/item/advanced_choice_beacon/nri
 	name = "\improper PSC Defense Collegium supply beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
+	desc = "Costumava pedir seus suprimentos de trabalho, usar na mão para isso!"
 
 /obj/item/advanced_choice_beacon/nri/get_available_options()
 	var/list/options = list()
@@ -78,13 +78,13 @@
 
 /obj/item/advanced_choice_beacon/nri/engineer
 	name = "\improper PSC Defense Collegium engineering supply beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
+	desc = "Costumava pedir seus suprimentos de trabalho, usar na mão para isso!"
 
 	possible_choices = list(/obj/structure/closet/crate/secure/weapon/nri/engineer/defense, /obj/structure/closet/crate/secure/weapon/nri/engineer/offense)
 
 /obj/item/advanced_choice_beacon/nri/heavy
 	name = "\improper PSC Defense Collegium heavy armaments supply beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
+	desc = "Costumava pedir seus suprimentos de trabalho, usar na mão para isso!"
 
 	possible_choices = list(/obj/structure/closet/crate/secure/weapon/nri/heavy/defense,/obj/structure/closet/crate/secure/weapon/nri/heavy/offense)
 
@@ -93,7 +93,7 @@
 
 /obj/item/storage/toolbox/emergency/turret/nri
 	name = "PSC stationary defense deployment system"
-	desc = "You feel a strange urge to hit this with a wrench."
+	desc = "Você sente uma estranha vontade de acertar isso com uma chave inglesa."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "inventory"
 	inhand_icon_state = "held"
@@ -144,7 +144,7 @@
 
 /obj/structure/closet/crate/secure/weapon/nri
 	name = "military supplies crate"
-	desc = "A secure military-grade crate. According to the markings, -as well as mixed Cyrillics-, it was shipped and provided by the Pan-Slavic Defense Collegium."
+	desc = "Uma caixa militar segura. De acordo com as marcas, bem como cirílicos mistos, foi enviado e fornecido pelo Collegium de Defesa Pan-Eslávia."
 	req_access = list(ACCESS_CENT_GENERAL)
 	var/loadout_desc = "Whoever picks this is might be busy debugging this copypasted code."
 
@@ -155,8 +155,8 @@
 //defensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense
 	name = "defensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification. \
-		Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
+	loadout_desc = "Uma variedade de suprimentos de engenharia finamente sintonizados para fortificação rápida.\
+Características barricadas, materiais de construção, tanque de combustível extra grande e autoturretas defensivas de 5,6mm."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -180,8 +180,8 @@
 //offensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense
 	name = "offensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression. \
-		Features way less barricades and building materials than its more defensive analogue, but includes Pan-Slavic-issued viscerator grenades and a combat RCD."
+	loadout_desc = "Uma variedade de suprimentos de engenharia finamente sintonizados para desfortificação de aproximação rápida e supressão de área.\
+Apresenta muito menos barricadas e materiais de construção do que seu análogo mais defensivo, mas inclui granadas de viscerador Pan-Eslávio e um RCD de combate."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -199,9 +199,9 @@
 //defensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense
 	name = "defensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications. \
-		Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines. \
-		And some bonus frag grenades."
+	loadout_desc = "Uma variedade de soldados pesados fornece finamente sintonizados para supressão de fogo estacionário e fortificações explosivas.\
+Possui uma metralhadora de calibre 50 com muita munição de sobra, bem como um monte de minas terrestres explosivas.\
+E algumas granadas de frag bônus."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense/PopulateContents()
 	new /obj/item/mounted_machine_gun_folded(src)
@@ -223,8 +223,8 @@
 //offensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense
 	name = "offensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support. \
-		Features Scarborough's standard LMG with a spare ammo box, as well as ammunition for Krinkov and PP-542."
+	loadout_desc = "Uma variedade de soldados pesados fornece finamente sintonizados para aproximação rápida e apoio de munições.\
+Características padrão LMG de Scarborough com uma caixa de munição de reposição, bem como munição para Krinkov e PP-542."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)

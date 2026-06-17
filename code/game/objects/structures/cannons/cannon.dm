@@ -5,7 +5,7 @@
 
 /obj/structure/cannon
 	name = "cannon"
-	desc = "Holemaker Deluxe: A sporty model with a good stop power. Any cannon enthusiast should be expected to start here."
+	desc = "Um modelo esportivo com um bom poder de parada. Qualquer entusiasta de canhões deve começar aqui."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/weapons/cannons.dmi'
@@ -27,7 +27,7 @@
 /obj/structure/cannon/examine(mob/user)
 	. = ..()
 	. += span_notice("[src] accepts gunpowder or welding fuel.")
-	. += span_warning("Using welding fuel will weaken the force of the projectile fired.")
+	. += span_warning("Usando combustível de solda irá enfraquecer a força do projétil disparado.")
 
 /obj/structure/cannon/proc/fire()
 	for(var/mob/shaken_mob in urange(10, src))
@@ -56,13 +56,13 @@
 
 /obj/structure/cannon/attackby(obj/item/used_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(charge_ignited)
-		balloon_alert(user, "it's gonna fire!")
+		balloon_alert(user, "Vai disparar!")
 		return
 	var/ignition_message = used_item.ignition_effect(src, user)
 
 	if(istype(used_item, /obj/item/stack/cannonball))
 		if(loaded_cannonball)
-			balloon_alert(user, "already loaded!")
+			balloon_alert(user, "Já está carregada!")
 		else
 			var/obj/item/stack/cannonball/cannoneers_balls = used_item
 			loaded_cannonball = new cannoneers_balls.type(src, 1)
@@ -113,7 +113,7 @@
 
 /obj/structure/cannon/trash
 	name = "trash cannon"
-	desc = "Okay, sure, you could call it a toolbox welded to an opened oxygen tank cabled to a skateboard, but it's a TRASH CANNON to us."
+	desc = "Certo, pode chamar de caixa de ferramentas soldada a um tanque de oxigênio aberto, mas é um CANNON para nós."
 	icon_state = "garbagegun"
 	anchored = FALSE
 	anchorable_cannon = FALSE

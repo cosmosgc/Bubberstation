@@ -15,7 +15,7 @@
 				continue
 		new_name = sanitize_name(new_name, allow_numbers = TRUE)
 		if(!new_name)
-			if(tgui_alert(revenant, "Invalid name, please pick another!", "Spooky Identity", list("Try Again", "Keep Default Name")) == "Try Again")
+			if(tgui_alert(revenant, "Nome inválido, por favor escolha outro!", "Spooky Identity", list("Try Again", "Keep Default Name")) == "Try Again")
 				continue
 			else
 				return

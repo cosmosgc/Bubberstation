@@ -66,14 +66,14 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "body",
 		SPECIES_PERK_NAME = "Leg-less",
-		SPECIES_PERK_DESC = "Ghosts lack legs and float, preventing you from falling into holes in the ground.",
+		SPECIES_PERK_DESC = "Fantasmas não têm pernas e flutuam, impedindo que caia em buracos no chão.",
 	))
 
 	to_add += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "shoe-prints",
 		SPECIES_PERK_NAME = "No Feet",
-		SPECIES_PERK_DESC = "You lack feet, therefore the ability to wear any shoes!",
+		SPECIES_PERK_DESC = "Faltam-lhe pés, portanto, a capacidade de usar sapatos!",
 	))
 
 	return to_add
@@ -148,8 +148,8 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = "ghost",
 		SPECIES_PERK_NAME = "Incorporeal",
-		SPECIES_PERK_DESC = "Ghost are able to control their body to the extent where you can willingly make yourself able \
-			to phase through anything, including your own equipment.",
+		SPECIES_PERK_DESC = "Fantasma são capazes de controlar seu corpo na medida em que você pode voluntariamente se tornar capaz\
+para passar por qualquer coisa, incluindo seu próprio equipamento.",
 	))
 
 	return to_add
@@ -163,7 +163,7 @@
  */
 /datum/action/innate/toggle_passthrough
 	name = "Toggle passthrough"
-	desc = "Toggles your ability to phase through everything, including your gear and any incompatible organs/limbs."
+	desc = "Alterna sua capacidade de passar por tudo, incluindo seu equipamento e órgãos/calços incompatíveis."
 	button_icon = 'icons/hud/actions.dmi'
 	button_icon_state = "ghost"
 
@@ -252,5 +252,5 @@
 /datum/action/innate/toggle_passthrough/proc/attempt_move(mob/source, new_loc, direct)
 	SIGNAL_HANDLER
 	if(locate(/obj/effect/blessing) in new_loc)
-		to_chat(source, span_warning("Holy energies block your path!"))
+		to_chat(source, span_warning("As energias sagradas bloqueiam seu caminho!"))
 		return COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE

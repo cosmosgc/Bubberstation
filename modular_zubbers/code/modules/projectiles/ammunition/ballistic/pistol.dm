@@ -51,7 +51,7 @@
 
 /obj/item/ntusp_conversion_kit
 	name = "NT22-HCS conversion kit"
-	desc = "A standard conversion kit for use in converting NT22-HCS magazines to be more lethal or less lethal."
+	desc = "Um kit de conversão padrão para conversão de revistas NT22-HCS para ser mais letal ou menos letal."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/usp_modkit.dmi'
 	icon_state = "modkit_ntusp"
 	w_class = WEIGHT_CLASS_TINY

@@ -4,8 +4,8 @@
 
 /datum/nifsoft/summoner/book
 	name = "Grimoire Akasha"
-	program_desc = "Grimoire Akasha is a fork of the Grimoire Caeruleam NIFSoft that is designed around giving the user access to various educational hardlight books. \
-	Due to its educational nature and miniscule size, Grimoire Akasha is typically provided for free at most NIFSoft marketplaces."
+	program_desc = "Grimoire Akasha é um garfo do Grimoire Caeruleam NIFSoft que é projetado em torno de dar ao usuário acesso a vários livros educacionais de luz dura.\
+Devido à sua natureza educacional e tamanho minúsculo, Grimoire Akasha é normalmente fornecido gratuitamente no máximo mercados NIFSoft."
 	summonable_items = list()
 	purchase_price = 0 // This is a tool intended to help out newer players.
 	max_summoned_items = 2
@@ -30,7 +30,7 @@
 
 /obj/item/book/carving_act(mob/living/user, obj/item/tool)
 	if(cannot_carve)
-		balloon_alert(user, "unable to be carved!")
+		balloon_alert(user, "incapaz de ser esculpido!")
 		return ITEM_INTERACT_BLOCKING
 
 	return ..()

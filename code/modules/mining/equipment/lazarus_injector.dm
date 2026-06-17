@@ -8,7 +8,7 @@
  */
 /obj/item/lazarus_injector
 	name = "lazarus injector"
-	desc = "An injector with a cocktail of nanomachines and chemicals, this device can seemingly raise animals from the dead, making them become friendly to the user. Unfortunately, the process is useless on higher forms of life and incredibly costly, so these were hidden in storage until an executive thought they'd be great motivation for some of their employees."
+	desc = "Um injetor com um coquetel de nanomáquinas e produtos químicos, este dispositivo pode aparentemente criar animais dos mortos, tornando-os amigáveis ao usuário. Infelizmente, o processo é inútil em formas de vida mais elevadas e incrivelmente caros, então estes foram escondidos no armazenamento até que um executivo pensou que seria uma grande motivação para alguns de seus funcionários."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "lazarus_hypo"
 	inhand_icon_state = "hypo"
@@ -35,10 +35,10 @@
 
 	var/mob/living/target_animal = target
 	if(!target_animal.compare_sentience_type(revive_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "Criatura inválida!")
 		return ITEM_INTERACT_BLOCKING
 	if(target_animal.stat != DEAD)
-		balloon_alert(user, "it's not dead!")
+		balloon_alert(user, "Não está morto!")
 		return ITEM_INTERACT_BLOCKING
 
 	target_animal.lazarus_revive(user, malfunctioning)

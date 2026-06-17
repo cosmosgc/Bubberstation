@@ -1,6 +1,6 @@
 /obj/machinery/igniter
 	name = "igniter"
-	desc = "It's useful for igniting plasma."
+	desc = "É útil para acender plasma."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "igniter0"
 	base_icon_state = "igniter"
@@ -46,7 +46,7 @@
 		return
 
 	if(!tool.tool_start_check(user, amount = 2))
-		balloon_alert(user, "not enough fuel!")
+		balloon_alert(user, "Não há combustível suficiente!")
 		return
 
 	loc.balloon_alert(user, "dismantling [src]")
@@ -134,7 +134,7 @@
 
 /obj/item/wallframe/sparker
 	name = "Sparker WallFrame"
-	desc = "An unmounted sparker. Attach it to a wall to use."
+	desc = "Uma faísca desmontada. Coloque em uma parede para usar."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "migniter"
 	result_path = /obj/machinery/sparker
@@ -143,7 +143,7 @@
 
 /obj/machinery/sparker
 	name = "mounted igniter"
-	desc = "A wall-mounted ignition device."
+	desc = "Um dispositivo de ignição montado na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "migniter"
 	base_icon_state = "migniter"
@@ -191,7 +191,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/sparker, 26)
 
 /obj/machinery/sparker/welder_act(mob/living/user, obj/item/tool)
 	if(!tool.tool_start_check(user, amount = 1))
-		balloon_alert(user, "not enough fuel!")
+		balloon_alert(user, "Não há combustível suficiente!")
 		return TRUE
 
 	loc.balloon_alert(user, "dismantling [src]")

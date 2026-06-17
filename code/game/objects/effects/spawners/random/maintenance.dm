@@ -3,7 +3,7 @@
 
 /obj/effect/spawner/random/maintenance
 	name = "maintenance loot spawner"
-	desc = "Come on Lady Luck, spawn me a pair of sunglasses."
+	desc = "Vamos, Lady Luck, me dê um par de óculos escuros."
 	icon_state = "loot"
 	remove_if_cant_spawn = FALSE //don't remove stuff from the global maint list, which other can use.
 	/// The global loot list we are going to use to spawn loot from

@@ -4,8 +4,8 @@
  * Return a list literal.
  */
 /obj/item/circuit_component/list_literal
-	display_name = "List Literal"
-	desc = "A component that creates a list from whatever input you give it."
+	display_name = "Lista Literal"
+	desc = "Um componente que cria uma lista de qualquer entrada que você dê."
 	category = "List"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 

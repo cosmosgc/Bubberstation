@@ -1,7 +1,7 @@
 //useless relics
 /obj/item/xenoarch/useless_relic
 	name = "useless relic"
-	desc = "A useless relic that can be redeemed for cargo or research points."
+	desc = "Uma relíquia inútil que pode ser resgatada por carga ou pontos de pesquisa."
 	///Used to spawn the same relic
 	var/magnified_number
 
@@ -13,19 +13,19 @@
 /obj/item/xenoarch/useless_relic/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/glassblowing/magnifying_glass))
 		if(istype(src, /obj/item/xenoarch/useless_relic/magnified))
-			balloon_alert(user, "already magnified!")
+			balloon_alert(user, "Já está ampliado!")
 			return
 
 		if(!HAS_TRAIT(user, TRAIT_XENOARCH_QUALIFIED))
-			balloon_alert(user, "needs training!") // it was very tempting to replace this with "skill issue"
+			balloon_alert(user, "Precisa de treinamento!") // it was very tempting to replace this with "Questão de habilidade"
 			return
 
-		balloon_alert(user, "starting analysis!")
+		balloon_alert(user, "Começando análise!")
 		if(!do_after(user, 5 SECONDS, target = src))
-			balloon_alert(user, "stand still!")
+			balloon_alert(user, "Fique parado!")
 			return
 
-		loc.balloon_alert(user, "magnified!")
+		loc.balloon_alert(user, "Ampliado!")
 		user.mind.adjust_experience(/datum/skill/research, 5)
 		spawn_magnified(magnified_number)
 		return
@@ -107,35 +107,35 @@
 
 /obj/item/xenoarch/useless_relic/magnified
 	name = "magnified useless relic"
-	desc = "A useless relic that can be exported through Cargo. Has been magnified."
+	desc = "Uma relíquia inútil que pode ser exportada através da carga. Foi ampliado."
 
 /datum/export/xenoarch
 	abstract_type = /datum/export/xenoarch
 
 /datum/export/xenoarch/useless_relic
 	cost = CARGO_CRATE_VALUE * 3 //600
-	unit_name = "useless relic"
+	unit_name = "relíquia inútil"
 	export_types = list(/obj/item/xenoarch/useless_relic)
 	include_subtypes = FALSE
 	k_elasticity = 0
 
 /datum/export/xenoarch/broken_item
 	cost = CARGO_CRATE_VALUE*5
-	unit_name = "broken object"
+	unit_name = "objeto quebrado"
 	export_types = list(/obj/item/xenoarch/broken_item)
 	include_subtypes = TRUE
 	k_elasticity = 0
 
 /datum/export/xenoarch/useless_relic/magnified
 	cost = CARGO_CRATE_VALUE * 6 //1200
-	unit_name = "magnified useless relic"
+	unit_name = "Relíquia inútil ampliada"
 	export_types = list(/obj/item/xenoarch/useless_relic/magnified)
 	include_subtypes = FALSE
 
 //broken items
 /obj/item/xenoarch/broken_item
 	name = "broken item"
-	desc = "An item that has been damaged, destroyed for quite some time. It is possible to recover it."
+	desc = "Um item que foi danificado, destruído por algum tempo. É possível recuperá-lo."
 
 /obj/item/xenoarch/broken_item/tech
 	name = "broken tech"
@@ -155,12 +155,12 @@
 
 /obj/item/xenoarch/broken_item/plant
 	name = "withered plant"
-	desc = "A plant that is long past its prime. It is possible to recover it."
+	desc = "Uma planta que já passou do seu auge. É possível recuperá-lo."
 	icon_state = "recover_plant"
 
 /obj/item/xenoarch/broken_item/animal
 	name = "preserved animal carcass"
-	desc = "An animal that is long past its prime. It is possible to recover it. Can be swabbed to recover its original animal's remnant DNA."
+	desc = "Um animal que já passou do seu auge. É possível recuperá-lo. Pode ser coletado para recuperar o DNA do animal original."
 	icon_state = "recover_animal"
 
 /obj/item/xenoarch/broken_item/animal/Initialize(mapload)
@@ -194,7 +194,7 @@
 
 /obj/item/xenoarch/broken_item/clothing
 	name = "petrified clothing"
-	desc = "A piece of clothing that has long since lost its beauty."
+	desc = "Uma peça de roupa que perdeu sua beleza."
 	icon_state = "recover_clothing"
 
 
@@ -227,45 +227,45 @@
 
 /obj/item/paper/fluff/xenoarch_guide
 	name = "xenoarchaeology guide - MUST READ"
-	default_raw_text = {"<b><center>Xenoarchaeology Guide</center></b><br> \
-			Let's start right from the beginning: what is Xenoarchaeology?<br> \
-			Great question! Xenoarchaeology is the study of ancient foreign bodies that are trapped within strange rocks.<br> \
-			Your goal as a xenoarchaeologist is to find these strange rocks and unearth the secrets that are held within.<br> \
-			You will find that these rocks are plentiful throughout the astronomical bodies that we typically orbit.<br> \
+	default_raw_text = {"<b><center>Guia de Xenoarqueologia</center></b><br> \
+Vamos começar do início: o que é Xenoarqueologia?<br> \
+Ótima pergunta! Xenoarqueologia é o estudo de antigos corpos estranhos que estão presos dentro de rochas estranhas.<br> \
+Seu objetivo como xenoarqueologista é encontrar essas rochas estranhas e descobrir os segredos que estão dentro.<br> \
+Descobrirá que essas rochas são abundantes em todos os corpos astronômicos que normalmente orbitamos.<br> \
 			<br> \
-			<b>Tools of the Trade</b><br> \
+			<b>Ferramentas do Comércio</b><br> \
 			<br> \
-			There are plenty of tools that are required (and some just for the quality of life for the xenoarchaeologist).<br> \
-			There are the hammers, the brushes, the tape, the belt, the bag, the handheld machines, and the machines.<br> \
-			In this line of work, the brushes and hammers will be the bread and butter.<br> \
-			They will allow you to unearth the foreign bodies held within the strange rocks.<br> \
-			The hammers (with varying depths) allow you to reach the depths in a faster manner than the brushes.<br> \
-			The brushes allow you to uncover the items within the proper depths without damaging it.<br> \
-			The tape will allow you to tag the strange rock with the current depth. Continue to examine the rock for updates.<br> \
-			The belt will allow you to store your mobile/handheld tools for easy access.<br> \
-			The bag will allow you to store and automatically pickup strange rocks and relics that you find lying on the floor.<br> \
-			The handheld machines allow you to not have to be stuck at the machines. There are only handheld scanners and recoverers.<br> \
-			The Scanner is a machine which allows you to tag the strange rock with its max and safe depth.<br> \
-			The Researcher is a machine that allows you to compile/condense relics and items into larger strange artifacts.<br> \
-			The Recoverer is a machine that allows you to recover long lost objects from broken items.<br> \
+Há muitas ferramentas que são necessárias (e algumas apenas para a qualidade de vida para o xenoarqueologista).<br> \
+Há os martelos, as escovas, a fita, o cinto, o saco, as máquinas de mão, e as máquinas.<br> \
+Nesta linha de trabalho, as escovas e martelos serão o pão e a manteiga.<br> \
+Eles permitirão que você desenterre os corpos estranhos mantidos dentro das rochas estranhas.<br> \
+Os martelos (com diferentes profundidades) permitem alcançar as profundezas de uma maneira mais rápida do que as escovas.<br> \
+As escovas permitem que você descubra os itens dentro das profundidades apropriadas sem danificá-lo.<br> \
+A fita permitirá que você marque a estranha rocha com a profundidade atual. Continue examinando a rocha para atualizações.<br> \
+O cinto permitirá que você guarde suas ferramentas móveis para fácil acesso.<br> \
+A bolsa permitirá que você armazene e recolha automaticamente pedras e relíquias estranhas que encontra deitadas no chão.<br> \
+As máquinas de mão permitem que você não tenha que ficar preso nas máquinas. Só há scanners portáteis e recuperadores.<br> \
+O Scanner é uma máquina que permite marcar a estranha rocha com sua profundidade máxima e segura.<br> \
+O Pesquisador é uma máquina que permite compilar/condenar relíquias e itens em artefatos estranhos maiores.<br> \
+O Recuperador é uma máquina que permite recuperar objetos perdidos de itens quebrados.<br> \
 			<br> \
-			<b>The Process</b><br> \
+			<b>O Processo</b><br> \
 			<br> \
-			1) Find yourself a strange rock out in the wilderness.<br> \
-			2) Go back (or stay) to the xenoarchaeology labratory.<br> \
-			3) Process the rock in the scanner (or use the handheld scanner).<br> \
-			4) Use the measuring tape on the rock.<br> \
-			5) Subtract the safe depth (SD) from the max depth (MD).<br> \
-				5a) QUESTION: What is the depth you dig <i>to</i> when the MD is 50 and the SD is 16?<br> \
-					ANSWER: 34. Just make sure to not dig 34 as there will be previous depth involved.<br> \
-			6) Subtract the current depth (CD) from the answer to step 5.<br> \
-			7) Use the hammers to dig the answer to step 6.<br> \
-			8) Once you've reached the answer to step 5, use the brush until you reveal the item.<br> \
-			9) Enjoy the use of your unearthed secret!<br> \
-				9a) If it is a useless relic, sell it or use it in the Researcher for a surprise.<br> \
-				9b) If it is a broken item, sell it or use it in the Recoverer for a surprise.<br> \
+Encontre uma rocha estranha no deserto.<br> \
+Volte para o laboratório de xenoarqueologia.<br> \
+3) Processe a rocha no scanner (ou use o scanner portátil).<br> \
+4) Use a fita métrica na rocha.<br> \
+5) Subtrair a profundidade segura (SD) da profundidade máxima (MD).<br> \
+5a) PERGUNTA:<i>para</i>Quando o médico tem 50 e o SD 16?<br> \
+Resposta: 34. Apenas certifique-se de não cavar 34 como haverá profundidade anterior envolvido.<br> \
+6) Subtrair a profundidade atual (CD) da resposta para o passo 5.<br> \
+7) Use os martelos para cavar a resposta para o passo 6.<br> \
+8) Assim que chegar à resposta ao passo 5, use o pincel até revelar o item.<br> \
+Aproveite o uso de seu segredo descoberto!<br> \
+9a) Se for uma relíquia inútil, venda-a ou use-a no Pesquisador para uma surpresa.<br> \
+9b) Se é um item quebrado, vendê-lo ou usá-lo no Recuperador para uma surpresa.<br> \
 			<br> \
-			I hope this has been helpful and I wish you great success!<br> \
+Espero que isso tenha sido útil e desejo-lhe grande sucesso!<br> \
 			<br> \
 			<i>- KB</i><br> \
-			Director of Xenoarchaeological Studies"}
+Diretor de Estudos Xenoarqueológicos"}

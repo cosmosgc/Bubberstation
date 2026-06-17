@@ -14,7 +14,7 @@
 /// The classically famous compadre to the Chief Engineer, Poly.
 /mob/living/basic/parrot/poly
 	name = "Poly"
-	desc = "Poly the Parrot. An expert on quantum cracker theory."
+	desc = "Poly, o Papagaio. Um especialista em teoria quântica de biscoitos."
 	gold_core_spawnable = NO_SPAWN
 	speech_probability_rate = 6
 
@@ -189,7 +189,7 @@
 
 /mob/living/basic/parrot/poly/ghost
 	name = "The Ghost of Poly"
-	desc = "Doomed to squawk the Earth."
+	desc = "Condenado a gritar com a Terra."
 	color = "#FFFFFF77"
 	sentience_type = SENTIENCE_BOSS //This is so players can't mindswap into ghost poly to become a literal god
 	incorporeal_move = INCORPOREAL_MOVE_BASIC
@@ -212,7 +212,7 @@
 		forceMove(get_turf(target))
 		return FALSE
 	if(ishuman(loc))
-		balloon_alert(src, "already possessing!")
+		balloon_alert(src, "Já possuiu!")
 		return FALSE
 	forceMove(target)
 	return TRUE

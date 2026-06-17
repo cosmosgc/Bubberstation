@@ -21,7 +21,7 @@
 
 /mob/living/basic/boss/blood_drunk_miner/doom
 	name = "hostile-environment miner"
-	desc = "A miner destined to hop across dimensions for all eternity, hunting anomalous creatures."
+	desc = "Um mineiro destinado a atravessar dimensões por toda a eternidade, caçando criaturas anômalas."
 	speed = 8
 	ranged_attack_cooldown_duration = 0.8 SECONDS
 	ai_controller = /datum/ai_controller/blood_drunk_miner/doom

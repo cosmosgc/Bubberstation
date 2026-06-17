@@ -1,6 +1,6 @@
 /obj/item/electropack/shockcollar
 	name = "shock collar"
-	desc = "A reinforced metal collar. It has some sort of wiring near the front."
+	desc = "Um colar de metal reforçado. Tem algum tipo de fiação perto da frente."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "shockcollar"
@@ -34,7 +34,7 @@
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
-		to_chat(user, span_warning("The collar is fastened tight! You'll need help if you want to take it off!"))
+		to_chat(user, span_warning("O colar está apertado! Vai precisar de ajuda se quiser tirar!"))
 		return
 	return ..()
 
@@ -52,7 +52,7 @@
 		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 10 SECONDS)
 		step(affected_mob, pick(GLOB.cardinals))
 
-		to_chat(affected_mob, span_danger("You feel a sharp shock from the collar!"))
+		to_chat(affected_mob, span_danger("Você sente um choque afiado do colarinho!"))
 		do_sparks(3, TRUE, affected_mob)
 
 		affected_mob.Paralyze(30)
@@ -68,7 +68,7 @@
 
 /obj/item/electropack/shockcollar/attackby(obj/item/used_item, mob/user, params) // Moves it here because on_click is being bad
 	if(istype(used_item, /obj/item/pen))
-		var/tag_input = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", tagname ? tagname : "Spot", MAX_NAME_LEN)
+		var/tag_input = stripped_input(user, "Gostaria de mudar o nome da etiqueta?", "Nomeie seu novo animal de estimação", tagname ? tagname : "Spot", MAX_NAME_LEN)
 		if(tag_input)
 			tagname = tag_input
 			name = "[initial(name)] - [tag_input]"
@@ -90,7 +90,7 @@
 
 /obj/item/electropack/shockcollar/pacify
 	name = "pacifying collar"
-	desc = "A reinforced metal collar that latches onto the wearer and prevents harmful thoughts."
+	desc = "Um colar de metal reforçado que trava no usuário e evita pensamentos nocivos."
 
 /obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

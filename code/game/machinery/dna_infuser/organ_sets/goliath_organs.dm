@@ -6,14 +6,14 @@
 /datum/status_effect/organ_set_bonus/goliath
 	id = "organ_set_bonus_goliath"
 	organs_needed = 4
-	bonus_activate_text = span_notice("goliath DNA is deeply infused with you! You can now endure walking on lava!")
-	bonus_deactivate_text = span_notice("You feel your muscle mass shrink and the tendrils around your skin wither. Your Goliath DNA is mostly gone and so is your ability to survive lava.")
+	bonus_activate_text = span_notice("DNA Golias está profundamente infundido em você! Agora você pode suportar andar em lava!")
+	bonus_deactivate_text = span_notice("Sente sua massa muscular encolhendo e os tentáculos ao redor de sua pele murchando. Seu DNA de Golias se foi, assim como sua capacidade de sobreviver à lava.")
 	bonus_traits = list(TRAIT_LAVA_IMMUNE)
 
 ///goliath eyes, simple night vision
 /obj/item/organ/eyes/night_vision/goliath
 	name = "goliath eyes"
-	desc = "goliath DNA infused into what was once some normal eyes."
+	desc = "DNA golias infundido no que já foi alguns olhos normais."
 
 	iris_overlay = null
 	icon = 'icons/map_icons/items/_item.dmi'
@@ -38,7 +38,7 @@
 ///goliath lungs! You can breathe lavaland air mix but can't breath pure O2 from a tank anymore.
 /obj/item/organ/lungs/lavaland/goliath
 	name = "mutated goliath-lungs"
-	desc = "goliath DNA infused into what was once some normal lungs."
+	desc = "DNA golias infundido no que já foi alguns pulmões normais."
 
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/lungs/lavaland/goliath"
@@ -54,7 +54,7 @@
 ///goliath brain. you can't use gloves but one of your arms becomes a tendril hammer that can be used to mine!
 /obj/item/organ/brain/goliath
 	name = "mutated goliath-brain"
-	desc = "goliath DNA infused into what was once a normal brain."
+	desc = "DNA Golias infundido no que já foi um cérebro normal."
 
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/brain/goliath"
@@ -99,7 +99,7 @@
 
 /obj/item/goliath_infuser_hammer
 	name = "tendril hammer"
-	desc = "A mass of plates held by tendrils has replaced an arm."
+	desc = "Uma massa de placas mantidas por tentáculos substituiu um braço."
 	icon = 'icons/obj/weapons/goliath_hammer.dmi'
 	icon_state = "goliath_hammer"
 	inhand_icon_state = "goliath_hammer"
@@ -166,7 +166,7 @@
 /// goliath heart gives you the ability to survive ash storms.
 /obj/item/organ/heart/goliath
 	name = "mutated goliath-heart"
-	desc = "goliath DNA infused into what was once a normal heart."
+	desc = "DNA golias infundido no que já foi um coração normal."
 
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/organ/heart/goliath"

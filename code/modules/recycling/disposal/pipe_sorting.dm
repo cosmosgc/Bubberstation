@@ -2,7 +2,7 @@
 // This is a base type, use subtypes on the map.
 /obj/structure/disposalpipe/sorting
 	name = "sorting disposal pipe"
-	desc = "An underfloor disposal pipe with a sorting mechanism."
+	desc = "Um tubo de descarte embaixo do chão com um mecanismo de triagem."
 	icon_state = "pipe-j1s"
 	initialize_dirs = DISP_DIR_RIGHT | DISP_DIR_FLIP
 
@@ -78,7 +78,7 @@
 
 // Wrap sorting junction, sorts objects destined for the mail office mail table (tomail = TRUE)
 /obj/structure/disposalpipe/sorting/wrap
-	desc = "An underfloor disposal pipe which sorts wrapped and unwrapped objects."
+	desc = "Um tubo de descarte embaixo do chão que embrulha e desembrulha objetos."
 	flip_type = /obj/structure/disposalpipe/sorting/wrap/flip
 	initialize_dirs = DISP_DIR_RIGHT | DISP_DIR_FLIP
 

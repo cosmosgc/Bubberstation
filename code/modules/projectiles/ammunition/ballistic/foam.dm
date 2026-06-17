@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/foam_dart
 	name = "foam dart"
-	desc = "It's Donk or Don't! Ages 8 and up."
+	desc = "É Donk ou não! 8 anos e mais."
 	projectile_type = /obj/projectile/bullet/foam_dart
 	caliber = CALIBER_FOAM
 	icon = 'icons/obj/weapons/guns/toy.dmi'
@@ -57,7 +57,7 @@
 
 /obj/item/ammo_casing/foam_dart/riot
 	name = "riot foam dart"
-	desc = "Whose smart idea was it to use toys as crowd control? Ages 18 and up."
+	desc = "De quem foi a ideia inteligente de usar brinquedos como controle de multidão? 18 anos e acima."
 	projectile_type = /obj/projectile/bullet/foam_dart/riot
 	icon_state = "foamdart_riot"
 	base_icon_state = "foamdart_riot"

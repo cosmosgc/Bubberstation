@@ -5,7 +5,7 @@
 /turf/open/misc/asteroid //floor piece
 	gender = PLURAL
 	name = "asteroid sand"
-	desc = "It's coarse and rough and gets everywhere."
+	desc = "É grosseiro e áspero e fica em todo lugar."
 	baseturfs = /turf/open/misc/asteroid
 	icon = 'icons/turf/floors.dmi'
 	damaged_dmi = 'icons/turf/floors.dmi'
@@ -100,7 +100,7 @@
 	if(!dug && !broken)
 		return TRUE
 	if(user)
-		balloon_alert(user, "already excavated!")
+		balloon_alert(user, "Já escavado!")
 	return FALSE
 
 ///Refills the previously dug tile
@@ -300,7 +300,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 /turf/open/misc/asteroid/snow
 	gender = PLURAL
 	name = "snow"
-	desc = "Looks cold."
+	desc = "Parece Frio."
 	icon = 'icons/turf/snow.dmi'
 	damaged_dmi = 'icons/turf/snow.dmi'
 	baseturfs = /turf/open/misc/asteroid/snow
@@ -409,7 +409,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 
 /turf/open/misc/asteroid/snow/ice
 	name = "icy snow"
-	desc = "Looks colder."
+	desc = "Parece mais frio."
 	baseturfs = /turf/open/misc/asteroid/snow/ice
 	initial_gas_mix = BURNING_COLD
 	floor_variance = 0
@@ -480,7 +480,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 /turf/open/misc/asteroid/plasma //floor piece
 	gender = PLURAL
 	name = "asteroid gravel"
-	desc = "It's coarse and rough and gets everywhere."
+	desc = "É grosseiro e áspero e fica em todo lugar."
 	baseturfs = /turf/open/misc/asteroid
 	icon = 'icons/turf/floors.dmi'
 	damaged_dmi = 'icons/turf/floors.dmi'

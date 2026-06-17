@@ -6,7 +6,7 @@
 
 /obj/structure/sauna_oven
 	name = "sauna oven"
-	desc = "A modest sauna oven with rocks. Add some fuel, pour some water and enjoy the moment."
+	desc = "Um modesto forno de sauna com pedras. Adicione um pouco de combustível, coloque um pouco de água e aproveite o momento."
 	icon = 'modular_skyrat/master_files/icons/obj/structures/sauna_oven.dmi'
 	icon_state = "sauna_oven"
 	density = TRUE
@@ -74,13 +74,13 @@
 			water_amount += 5 * SAUNA_WATER_PER_WATER_UNIT
 			return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "no water!")
+			balloon_alert(user, "Sem água!")
 			return ITEM_INTERACT_BLOCKING
 
 	else if(istype(tool, /obj/item/stack/sheet/mineral/wood))
 		var/obj/item/stack/sheet/mineral/wood/wood = tool
 		if(fuel_amount > SAUNA_MAXIMUM_FUEL)
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "Está cheio!")
 			return ITEM_INTERACT_BLOCKING
 		fuel_amount += SAUNA_LOG_FUEL * wood.amount
 		wood.use(wood.amount)

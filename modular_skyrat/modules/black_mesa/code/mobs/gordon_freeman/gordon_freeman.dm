@@ -8,7 +8,7 @@
 
 /mob/living/basic/blackmesa/xen/gordon_freeman
 	name = "\improper Gordon Freeman"
-	desc = "Gordon Freeman in the flesh. Or in the zombified form, it seems."
+	desc = "Gordon Freeman em carne e osso. Ou na forma zombiada, parece."
 	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "gordon_freeman"
 	base_icon_state = "gordon_freeman"
@@ -112,7 +112,7 @@
 
 /obj/machinery/door/puzzle/keycard/xen/freeman_boss_entry
 	name = "entry door"
-	desc = "Complete the puzzle to open this door."
+	desc = "Complete o quebra-cabeça para abrir esta porta."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_door.dmi'
 	icon_state = "resin"
 	puzzle_id = "freeman_entry"
@@ -124,14 +124,14 @@
 
 /obj/machinery/door/puzzle/keycard/xen/freeman_boss_exit
 	name = "exit door"
-	desc = "You must defeat him."
+	desc = "Você deve derrotá-lo."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_door.dmi'
 	icon_state = "resin"
 	puzzle_id = "freeman_exit"
 
 /obj/item/keycard/freeman_boss_exit
 	name = "\improper Freeman's ID card"
-	desc = "How could you do it? HOW?!!"
+	desc = "Como pôde fazer isso? Como?"
 	color = "#fffb00"
 	puzzle_id = "freeman_exit"
 

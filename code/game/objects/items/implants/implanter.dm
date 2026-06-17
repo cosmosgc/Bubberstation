@@ -3,7 +3,7 @@
  */
 /obj/item/implanter//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "implanter"
-	desc = "A sterile automatic implant injector."
+	desc = "Um injetor de implante automático estéril."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "implanter0"
 	inhand_icon_state = "syringe_0"
@@ -37,7 +37,7 @@
 
 	if(imp.implant(target, user))
 		if (target == user)
-			to_chat(user, span_notice("You implant yourself."))
+			to_chat(user, span_notice("Implante-se."))
 		else
 			target.visible_message(span_notice("[user] implants [target]."), span_notice("[user] implants you."))
 		imp = null

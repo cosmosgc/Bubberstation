@@ -65,11 +65,11 @@
 	var/healthpercent = round((atom_integrity/max_integrity) * 100, 1)
 	switch(healthpercent)
 		if(50 to 99)
-			. += span_info("It looks slightly damaged.")
+			. += span_info("Parece um pouco danificado.")
 		if(25 to 50)
-			. += span_info("It appears heavily damaged.")
+			. += span_info("Parece muito danificado.")
 		if(0 to 25)
-			. += span_warning("It's falling apart!")
+			. += span_warning("Está caindo aos pedaços!")
 
 /obj/item/shield/item_interaction(mob/living/user, obj/item/tool, list/modifiers, is_right_clicking)
 	. = ..()
@@ -109,12 +109,12 @@
 	playsound(src, shield_break_sound, 50)
 	new shield_break_leftover(get_turf(src))
 	if(isliving(loc))
-		loc.balloon_alert(loc, "shield broken!")
+		loc.balloon_alert(loc, "Escudo quebrado!")
 	return ..()
 
 /obj/item/shield/buckler
 	name = "wooden buckler"
-	desc = "A medieval wooden buckler."
+	desc = "Um escudo de madeira medieval."
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 20)
@@ -125,7 +125,7 @@
 
 /obj/item/shield/buckler/moonflower
 	name = "moonflower buckler"
-	desc = "A buckler made from a steel-cap reinforced moonflower."
+	desc = "Uma fivela feita de uma flor lunar reforçada com tampa de aço."
 	icon_state = "moonflower_buckler"
 	inhand_icon_state = "moonflower_buckler"
 	block_chance = 40
@@ -135,7 +135,7 @@
 
 /obj/item/shield/kite
 	name = "kite shield"
-	desc = "Protect your internal organs with this almond shaped shield."
+	desc = "Proteja seus órgãos internos com este escudo em forma de amêndoa."
 	icon_state = "kite"
 	inhand_icon_state = "kite"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 15)
@@ -144,7 +144,7 @@
 
 /obj/item/shield/roman
 	name = "\improper Roman shield"
-	desc = "Bears an inscription on the inside: <i>\"Romanes venio domus\"</i>."
+	desc = "Tem uma inscrição no interior:<i>\"Romanes venio domus\"</i>."
 	icon_state = "roman_shield"
 	inhand_icon_state = "roman_shield"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4.25)
@@ -153,7 +153,7 @@
 	shield_break_leftover = /obj/item/stack/sheet/iron
 
 /obj/item/shield/roman/fake
-	desc = "Bears an inscription on the inside: <i>\"Romanes venio domus\"</i>. It appears to be a bit flimsy."
+	desc = "Tem uma inscrição no interior:<i>\"Romanes venio domus\"</i>Parece um pouco frágil."
 	block_chance = 0
 	armor_type = /datum/armor/none
 	max_integrity = 30
@@ -165,7 +165,7 @@
 
 /obj/item/shield/riot
 	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder, less so bullets and laser beams."
+	desc = "Um especialista em bloquear objetos contundentes de se conectar com o torso do portador de escudo, menos balas e raios laser."
 	icon_state = "riot"
 	inhand_icon_state = "riot"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT * 4.05, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.8)
@@ -200,7 +200,7 @@
 
 /obj/item/shield/riot/flash
 	name = "strobe shield"
-	desc = "A shield with a built in, high intensity light capable of blinding and disorienting suspects. Takes regular handheld flashes as bulbs."
+	desc = "Um escudo com uma luz de alta intensidade capaz de cegar e desorientar suspeitos. Leva flashes de mão regulares como lâmpadas."
 	icon_state = "flashshield"
 	inhand_icon_state = "flashshield"
 	var/obj/item/assembly/flash/handheld/embedded_flash = /obj/item/assembly/flash/handheld
@@ -266,10 +266,10 @@
 	if(istype(attackby_item, /obj/item/assembly/flash/handheld))
 		var/obj/item/assembly/flash/handheld/flash = attackby_item
 		if(flash.burnt_out)
-			to_chat(user, span_warning("No sense replacing it with a broken bulb!"))
+			to_chat(user, span_warning("Não faz sentido substituí-lo por uma lâmpada quebrada!"))
 			return
 		else
-			to_chat(user, span_notice("You begin to replace the bulb..."))
+			to_chat(user, span_notice("Você começa a substituir a lâmpada..."))
 			if(do_after(user, 2 SECONDS, target = user))
 				if(QDELETED(flash) || flash.burnt_out)
 					return
@@ -299,11 +299,11 @@
 /obj/item/shield/riot/flash/examine(mob/user)
 	. = ..()
 	if (embedded_flash?.burnt_out)
-		. += span_info("The mounted bulb has burnt out. You can try replacing it with a new <b>flash</b>.")
+		. += span_info("A lâmpada montada queimou. Você pode tentar substituí-lo por um novo<b>flash</b>.")
 
 /obj/item/shield/energy
 	name = "combat energy shield"
-	desc = "A hardlight shield capable of reflecting blocked energy projectiles, as well as providing well-rounded defense from most all other attacks."
+	desc = "Um escudo de luz dura capaz de refletir projéteis de energia bloqueados, além de fornecer defesa bem arredondada da maioria dos outros ataques."
 	icon_state = "eshield"
 	inhand_icon_state = "eshield"
 	w_class = WEIGHT_CLASS_TINY
@@ -376,20 +376,20 @@
 	SIGNAL_HANDLER
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
 		if(send_message)
-			balloon_alert(user, "activate it first!")
+			balloon_alert(user, "Ative-o primeiro!")
 		return COMPONENT_BLOCK_ITEM_DISARM_ATTACK
 
 /obj/item/shield/energy/advanced
 	name = "advanced combat energy shield"
-	desc = "A hardlight shield capable of reflecting all energy projectiles, as well as providing well-rounded defense from most all other attacks. \
-		Often employed by Nanotrasen deathsquads."
+	desc = "Um escudo de luz dura capaz de refletir todos os projéteis de energia, bem como fornecer defesa bem arredondada da maioria dos outros ataques.\
+Muitas vezes empregadas por grupos de mortes de Nanotrasen."
 	icon_state = "advanced_eshield"
 	inhand_icon_state = "advanced_eshield"
 	reflection_probability = 100 //Guaranteed reflection
 
 /obj/item/shield/riot/tele
 	name = "telescopic shield"
-	desc = "An advanced riot shield made of lightweight materials that collapses for easy storage."
+	desc = "Um escudo de choque avançado feito de materiais leves que colapsa para fácil armazenamento."
 	icon_state = "teleriot"
 	inhand_icon_state = "teleriot"
 	worn_icon_state = "teleriot"
@@ -440,7 +440,7 @@
 	SIGNAL_HANDLER
 	if(!HAS_TRAIT(src, TRAIT_TRANSFORM_ACTIVE))
 		if(send_message)
-			balloon_alert(user, "extend it first!")
+			balloon_alert(user, "Estenda primeiro!")
 		return COMPONENT_BLOCK_ITEM_DISARM_ATTACK
 
 /datum/armor/item_shield/ballistic
@@ -451,7 +451,7 @@
 
 /obj/item/shield/ballistic
 	name = "ballistic shield"
-	desc = "A heavy shield designed for blocking projectiles, weaker to melee."
+	desc = "Um escudo pesado projetado para bloquear projéteis, mais fraco para mime."
 	icon_state = "ballistic"
 	inhand_icon_state = "ballistic"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2, /datum/material/titanium =SHEET_MATERIAL_AMOUNT)
@@ -478,7 +478,7 @@
 
 /obj/item/shield/improvised
 	name = "improvised shield"
-	desc = "A crude shield made out of several sheets of iron taped together, not very durable."
+	desc = "Um escudo cru feito de várias folhas de ferro coladas juntas, não muito durável."
 	icon_state = "improvised"
 	inhand_icon_state = "improvised"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10)

@@ -13,7 +13,7 @@
 
 /obj/item/pneumatic_cannon
 	name = "pneumatic cannon"
-	desc = "A gas-powered cannon that can fire any object loaded into it."
+	desc = "Um canhão movido a gás que pode disparar qualquer objeto carregado nele."
 	w_class = WEIGHT_CLASS_BULKY
 	force = 8 //Very heavy
 	attack_verb_continuous = list("bludgeons", "smashes", "beats")
@@ -101,7 +101,7 @@
 	. = ..()
 	var/list/out = list()
 	if(!in_range(user, src))
-		out += span_notice("You'll need to get closer to see any more.")
+		out += span_notice("Precisa se aproximar mais para ver.")
 		return
 	if(selfcharge)
 		if(length(loadedItems))
@@ -111,7 +111,7 @@
 			out += span_info("[icon2html(I, user)] It has \a [I] loaded.")
 			CHECK_TICK
 	if(!length(loadedItems))
-		out += span_info("The chamber has nothing loaded.")
+		out += span_info("A câmara não tem nada carregado.")
 	if(tank)
 		out += span_notice("[icon2html(tank, user)] It has \a [tank] mounted onto it. It could be removed with a <b>screwdriver</b>.")
 	if(needs_air == TRUE)
@@ -145,7 +145,7 @@
 				return
 			updateTank(W, 0, user)
 	else if(W.type == type)
-		to_chat(user, span_warning("You're fairly certain that putting a pneumatic cannon inside another pneumatic cannon would cause a spacetime disruption."))
+		to_chat(user, span_warning("Tem certeza que colocar um canhão pneumático dentro de outro canhão pneumático causaria uma ruptura no espaço-tempo."))
 	else if(loadedWeightClass >= maxWeightClass)
 		to_chat(user, span_warning("\The [src] can't hold any more items!"))
 	else if(isitem(W))
@@ -300,7 +300,7 @@
 
 /obj/item/pneumatic_cannon/ghetto //Obtainable by improvised methods; more gas per use, less capacity
 	name = "improvised pneumatic cannon"
-	desc = "A gas-powered, object-firing cannon made out of common parts."
+	desc = "Um canhão movido a gás, feito de peças comuns."
 	force = 5
 	maxWeightClass = 10
 	gasPerThrow = 5
@@ -343,7 +343,7 @@
 
 /obj/item/pneumatic_cannon/pie
 	name = "pie cannon"
-	desc = "Load cream pie for optimal results."
+	desc = "Carregar torta de creme para ótimos resultados."
 	force = 10
 	icon_state = "piecannon"
 	gasPerThrow = 0

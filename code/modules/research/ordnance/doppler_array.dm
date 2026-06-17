@@ -1,6 +1,6 @@
 /obj/machinery/doppler_array
 	name = "tachyon-doppler array"
-	desc = "A highly precise directional sensor array which measures the release of quants from decaying tachyons. The doppler shifting of the mirror-image formed by these quants can reveal the size, location and temporal affects of energetic disturbances within a large radius ahead of the array.\n"
+	desc = "Um sensor direcional altamente preciso que mede a liberação de quants de táquions em decomposição. O deslocamento da imagem do espelho formado por esses quants pode revelar o tamanho, localização e efeitos temporais de distúrbios energéticos dentro de um grande raio à frente da matriz.\n"
 	circuit = /obj/item/circuitboard/machine/doppler_array
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "tdoppler"
@@ -53,7 +53,7 @@
 		return NONE
 	eject_disk(user)
 	if(!user.transferItemToLoc(tool, src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "Está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 	inserted_disk = tool
 	return ITEM_INTERACT_SUCCESS

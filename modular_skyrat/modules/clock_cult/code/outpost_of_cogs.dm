@@ -28,7 +28,7 @@
 
 	for(var/mob/target as anything in GLOB.player_list)
 		if(!isnewplayer(target) && !HAS_TRAIT(target, TRAIT_DEAF) && is_station_level(target.z))
-			to_chat(target, span_brass("You hear a distant, faint clanking of cogs..."))
+			to_chat(target, span_brass("Você ouve um longínquo tilintar de engrenagens..."))
 
 	sleep(7 SECONDS)
 
@@ -46,7 +46,7 @@
 	notify_ghosts("A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.",
 		source = atom_area,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
-		header = "Portal to Reebe",
+		header = "Portal para Reebe",
 	)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reebe_station_warning), atom_area, portal), 5 MINUTES)

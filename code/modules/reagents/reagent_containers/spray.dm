@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/spray
 	name = "spray bottle"
-	desc = "A spray bottle, with an unscrewable top."
+	desc = "Uma garrafa de spray, com um top intransponível."
 	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "sprayer_large"
 	inhand_icon_state = "cleaner"
@@ -63,7 +63,7 @@
 		return FALSE
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, span_warning("Not enough left!"))
+		to_chat(user, span_warning("Não sobrou o suficiente!"))
 		return FALSE
 
 	if(adjacent && (target.density || ismob(target)))
@@ -142,7 +142,7 @@
 	set src in usr
 	if(usr.incapacitated)
 		return
-	if (tgui_alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", list("Yes", "No")) != "Yes")
+	if (tgui_alert(usr, "Tem certeza que quer esvaziar isso?", "Empty Bottle:", list("Yes", "No")) != "Yes")
 		return
 	if(isturf(usr.loc) && src.loc == usr)
 		to_chat(usr, span_notice("You empty \the [src] onto the floor."))
@@ -183,7 +183,7 @@
 //space cleaner
 /obj/item/reagent_containers/spray/cleaner
 	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	desc = "Limpador espacial sem espuma!"
 	icon_state = "cleaner"
 	volume = 100
 	list_reagents = list(/datum/reagent/space_cleaner = 100)
@@ -208,14 +208,14 @@
 /obj/item/reagent_containers/spray/spraytan
 	name = "spray tan"
 	volume = 50
-	desc = "Gyaro brand spray tan. Do not spray near eyes or other orifices."
+	desc = "Marca Gyaro bronzeado. Não pulverize perto dos olhos ou outros orifícios."
 	list_reagents = list(/datum/reagent/spraytan = 50)
 
 
 //pepperspray
 /obj/item/reagent_containers/spray/pepper
 	name = "pepperspray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
+	desc = "Fabricado por UhangInc, usado para cegar e derrubar um oponente rapidamente."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pepperspray"
 	inhand_icon_state = "pepperspray"
@@ -238,7 +238,7 @@
 //water flower
 /obj/item/reagent_containers/spray/waterflower
 	name = "water flower"
-	desc = "A seemingly innocent sunflower...with a twist."
+	desc = "Um girassol aparentemente inocente... com uma reviravolta."
 	icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	icon_state = "sunflower"
 	inhand_icon_state = "sunflower"
@@ -258,7 +258,7 @@
 ///Subtype used for the lavaland clown ruin.
 /obj/item/reagent_containers/spray/waterflower/superlube
 	name = "clown flower"
-	desc = "A delightfully devilish flower... you've got a feeling where this is going."
+	desc = "Uma flor deliciosamente diabólica... você tem a sensação de onde isso está indo."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "clownflower"
 	volume = 30
@@ -276,7 +276,7 @@
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/hacked
 	name = "nova flower"
-	desc = "This doesn't look safe at all..."
+	desc = "Isso não parece seguro..."
 	list_reagents = list(/datum/reagent/clf3 = 3)
 	volume = 3
 	generate_type = /datum/reagent/clf3
@@ -298,7 +298,7 @@
 	generate_reagents()
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/empty()
-	to_chat(usr, span_warning("You can not empty this!"))
+	to_chat(usr, span_warning("Não pode esvaziar isso!"))
 	return
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/proc/generate_reagents()
@@ -307,7 +307,7 @@
 //chemsprayer
 /obj/item/reagent_containers/spray/chemsprayer
 	name = "chem sprayer"
-	desc = "A utility used to spray large amounts of reagents in a given area."
+	desc = "Um utilitário usado para pulverizar grandes quantidades de reagentes em uma determinada área."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "chemsprayer"
 	inhand_icon_state = "chemsprayer"
@@ -340,7 +340,7 @@
 
 /obj/item/reagent_containers/spray/chemsprayer/janitor
 	name = "janitor chem sprayer"
-	desc = "A utility used to spray large amounts of cleaning reagents in a given area. It regenerates space cleaner by itself but it's unable to be fueled by normal means."
+	desc = "Um utilitário usado para pulverizar grandes quantidades de reagentes de limpeza em uma determinada área. Regenera o espaço, mas não pode ser alimentado por meios normais."
 	icon_state = "chemsprayer_janitor"
 	inhand_icon_state = "chemsprayer_janitor"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -370,7 +370,7 @@
 
 /obj/item/reagent_containers/spray/chemsprayer/party
 	name = "party popper"
-	desc = "A small device used for celebrations and annoying the janitor."
+	desc = "Um pequeno dispositivo usado para celebrações e irritar o zelador."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "party_popper"
 	inhand_icon_state = "party_popper"
@@ -397,7 +397,7 @@
 // Plant-B-Gone
 /obj/item/reagent_containers/spray/plantbgone // -- Skie
 	name = "Plant-B-Gone"
-	desc = "Kills those pesky weeds!"
+	desc = "Mata essas ervas daninhas!"
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "plantbgone"
 	inhand_icon_state = "plantbgone"
@@ -408,7 +408,7 @@
 
 /obj/item/reagent_containers/spray/syndicate
 	name = "suspicious spray bottle"
-	desc = "A spray bottle, with a high performance plastic nozzle. The color scheme makes you feel slightly uneasy."
+	desc = "Uma garrafa de spray, com um bico plástico de alto desempenho. O esquema de cores faz você se sentir um pouco desconfortável."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "sprayer_sus_8"
 	inhand_icon_state = "sprayer_sus"
@@ -454,7 +454,7 @@
 
 /obj/item/reagent_containers/spray/hercuri
 	name = "medical spray (hercuri)"
-	desc = "A medical spray bottle. This one contains hercuri, a medicine used to negate the effects of dangerous high-temperature environments. Careful not to freeze the patient!"
+	desc = "Um frasco de spray médico. Este contém hercuri, um medicamento usado para negar os efeitos de perigosos ambientes de alta temperatura. Cuidado para não congelar o paciente!"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "sprayer_med_yellow"
 	list_reagents = list(/datum/reagent/medicine/c2/hercuri = 100)

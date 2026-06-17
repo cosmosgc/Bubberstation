@@ -1,6 +1,6 @@
 /obj/machinery/abductor/experiment
 	name = "experimentation machine"
-	desc = "A large man-sized tube sporting a complex array of surgical machinery."
+	desc = "Um tubo do tamanho de um homem com uma complexa gama de máquinas cirúrgicas."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "experiment-open"
 	density = FALSE
@@ -149,11 +149,11 @@
 		sleep(0.5 SECONDS)
 		switch(text2num(type))
 			if(1)
-				to_chat(occupant, span_warning("You feel violated."))
+				to_chat(occupant, span_warning("Você se sente violada."))
 			if(2)
-				to_chat(occupant, span_warning("You feel yourself being sliced apart and put back together."))
+				to_chat(occupant, span_warning("Você se sente cortado e colocado de volta."))
 			if(3)
-				to_chat(occupant, span_warning("You feel intensely watched."))
+				to_chat(occupant, span_warning("Você se sente intensamente vigiado."))
 		sleep(0.5 SECONDS)
 		user_abductor.team.abductees += occupant.mind
 		occupant.mind.add_antag_datum(/datum/antagonist/abductee)

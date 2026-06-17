@@ -10,7 +10,7 @@
 
 /obj/item/clothing/mask/facehugger
 	name = "alien"
-	desc = "It has some sort of a tube at the end of its tail."
+	desc = "Tem algum tipo de tubo no final de sua cauda."
 	icon = 'icons/mob/nonhuman-player/alien.dmi'
 	icon_state = "facehugger"
 	base_icon_state = "facehugger"
@@ -27,7 +27,7 @@
 	// SKYRAT EDIT ADDITION START
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Scientist, Research Director")
-	special_desc = "This alien is an extremely dangerous life form capable of creating a xenomorph. You would know well not to approach without full body biological protection."
+	special_desc = "Este alienígena é uma forma de vida extremamente perigosa capaz de criar um xenomorfo. Saberia bem não se aproximar sem proteção biológica."
 	// SKYRAT EDIT ADDITION END
 	slowdown = 2
 	clothing_traits = list(TRAIT_SOFTSPOKEN)
@@ -87,7 +87,7 @@
 		if(CONSCIOUS)
 			. += span_bolddanger("[src] seems to be active!")
 	if (sterile)
-		. += span_bolddanger("It looks like the proboscis has been removed.")
+		. += span_bolddanger("Parece que o proboscis foi removido.")
 
 /obj/item/clothing/mask/facehugger/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return (exposed_temperature > 300)
@@ -311,13 +311,13 @@
 
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
-	desc = "The Research Director's pet, a domesticated and debeaked alien. Friendly, but may still try to couple with your head."
+	desc = "O animal de estimação do diretor de pesquisa, um alienígena domesticado e desviado. Amigável, mas ainda pode tentar se casar com sua cabeça."
 	sterile = TRUE
 	slowdown = 1.5 //lamarr is too fat after being fed in captivity to effectively slow people down or something
 	// SKYRAT EDIT ADDITION START: job-restricted examine text
 	special_desc_requirement = EXAMINE_CHECK_ROLE
 	special_desc_roles = list("ROLE_ALIEN")
-	special_desc = "This young one has been cruelly mutilated. It lacks the capability to fill a host with our sisters."
+	special_desc = "Este jovem foi cruelmente mutilado. Falta a capacidade de encher um anfitrião com nossas irmãs."
 	// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/mask/facehugger/dead
@@ -334,7 +334,7 @@
 
 /obj/item/clothing/mask/facehugger/toy
 	inhand_icon_state = "facehugger_inactive"
-	desc = "A toy often used to play pranks on other miners by putting it in their beds. It takes a bit to recharge after latching onto something."
+	desc = "Um brinquedo costumava brincar com outros mineiros colocando-o em suas camas. É preciso um pouco para recarregar depois de amarrar em algo."
 	real = FALSE
 	sterile = TRUE
 	tint = 3 //Makes it feel more authentic when it latches on

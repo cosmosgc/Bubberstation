@@ -70,7 +70,7 @@
 			internal_storage = equipping
 			update_inv_internal_storage()
 		else
-			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
+			to_chat(src, span_danger("Você está tentando equipar este item para um estoque não suportado. Informe isso a um programador!"))
 			return
 
 	//Call back for item being equipped to drone

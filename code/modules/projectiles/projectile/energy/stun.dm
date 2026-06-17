@@ -381,7 +381,7 @@
 /// Screen alert for being tased, clicking does a resist
 /atom/movable/screen/alert/tazed
 	name = "Tased!"
-	desc = "You're being tased! You can click this or resist to attempt to stop it, assuming you've not already collapsed."
+	desc = "Você está sendo eletrocutado! Você pode clicar nisso ou resistir para tentar detê-lo, assumindo que você ainda não entrou em colapso."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "stun"
 	clickable_glow = TRUE

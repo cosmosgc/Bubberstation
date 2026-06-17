@@ -10,7 +10,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	for(var/datum/job/job as anything in SSjob.joinable_occupations)
 		jobs += job.title
 
-	var/input_contents = input(user, "Pick a job to join as:", "Latejoin Job Selection") as null|anything in jobs
+	var/input_contents = input(user, "Escolha um trabalho para participar como:", "Latejoin Job Selection") as null|anything in jobs
 
 	if(!input_contents)
 		return
@@ -36,7 +36,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 /datum/latejoin_menu/proc/scream_at_player(mob/dead/new_player/player)
 	if(!player.jobs_menu_mounted)
-		to_chat(player, span_notice("If the late join menu isn't showing, hold CTRL while clicking the join button!"))
+		to_chat(player, span_notice("Se o menu não aparecer, segure CTRL enquanto clica no botão!"))
 
 /datum/latejoin_menu/ui_data(mob/user)
 	var/mob/dead/new_player/owner = user
@@ -145,11 +145,11 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				params["job"] = job
 
 			if(!SSticker?.IsRoundInProgress())
-				tgui_alert(owner, "The round is either not ready, or has already finished...", "Oh No!")
+				tgui_alert(owner, "A rodada ou não está pronta, ou já terminou...", "Oh No!")
 				return TRUE
 
 			if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-				tgui_alert(owner, "There is an administrative lock on entering the game for non-observers!", "Oh No!")
+				tgui_alert(owner, "Há uma trava administrativa ao entrar no jogo para não-observadores!", "Oh No!")
 				return TRUE
 
 			// SKYRAT EDIT ADDITION START - Flavourtext requirement
@@ -170,7 +170,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 			if(SSticker.queued_players.len && !(ckey(owner.key) in GLOB.admin_datums))
 				if((living_player_count() >= relevant_cap) || (owner != SSticker.queued_players[1]))
-					tgui_alert(owner, "The server is full!", "Oh No!")
+					tgui_alert(owner, "O servidor está cheio!", "Oh No!")
 					return TRUE
 
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
@@ -203,14 +203,14 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			dept_data += job_datum.title
 
 	if(dept_data.len <= 0) //Congratufuckinglations
-		tgui_alert(owner, "There are literally no random jobs available for you on this server, ahelp for assistance.", "Oh No!")
+		tgui_alert(owner, "Não há trabalhos aleatórios disponíveis para você neste servidor, ajuda para ajuda.", "Oh No!")
 		return
 
 	var/random_job
 
 	while(random_job != JOB_CHOICE_YES)
 		if(dept_data.len <= 0)
-			tgui_alert(owner, "It seems that there are no more random jobs available for you!", "Oh No!")
+			tgui_alert(owner, "Parece que não há mais trabalhos aleatórios disponíveis para você!", "Oh No!")
 			return
 
 		var/random = pick_n_take(dept_data)

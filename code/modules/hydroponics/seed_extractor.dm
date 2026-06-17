@@ -43,7 +43,7 @@
 
 /obj/machinery/seed_extractor
 	name = "seed extractor"
-	desc = "Extracts and bags seeds from produce."
+	desc = "Extratos e sacos de sementes de produtos."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "sextractor"
 	base_icon_state = "sextractor"
@@ -132,7 +132,7 @@
 					break
 				//add seed to machine. second argument is null which means just force move into the machine
 				add_seed(seed)
-		to_chat(user, span_notice("You extract some seeds."))
+		to_chat(user, span_notice("Você extrai algumas sementes."))
 		return ITEM_INTERACT_SUCCESS
 
 	if(istype(tool, /obj/item/seeds))
@@ -305,7 +305,7 @@
 						to_chat(user, span_notice("[found_seed] falls onto the floor."))
 				else
 					found_seed.forceMove(drop_location())
-					visible_message(span_notice("[found_seed] falls onto the floor."), null, span_hear("You hear a soft clatter."), COMBAT_MESSAGE_RANGE)
+					visible_message(span_notice("[found_seed] falls onto the floor."), null, span_hear("Você ouve um barulho suave."), COMBAT_MESSAGE_RANGE)
 				. = TRUE
 
 /obj/machinery/seed_extractor/ui_assets(mob/user)

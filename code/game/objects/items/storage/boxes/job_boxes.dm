@@ -3,7 +3,7 @@
 // Ordinary survival box. Every crewmember gets one of these.
 /obj/item/storage/box/survival
 	name = "survival box"
-	desc = "A box with the bare essentials of ensuring the survival of you and others."
+	desc = "Uma caixa com o essencial para garantir a sobrevivência de você e dos outros."
 	icon_state = "internals"
 	illustration = "emergencytank"
 	/// What type of mask are we going to use for this box?
@@ -25,7 +25,7 @@
 		return
 	atom_storage.max_slots += 2
 	atom_storage.max_total_storage += 4
-	desc = "An upgraded box of survival essentials, Nanotrasen must value your life a little more than usual today." // BUBBER EDIT ADDITION
+	desc = "Uma caixa atualizada de sobrevivência essencial, Nanotrasen deve valorizar sua vida um pouco mais do que o normal hoje." // BUBBER EDIT ADDITION
 	name = "premium [name]" // BUBBER EDIT CHANGE
 	icon_state = "internals_large" // BUBBER EDIT CHANGE - ORIGINAL: [icon_state]_large
 
@@ -88,7 +88,7 @@
 // Engineer survival box
 /obj/item/storage/box/survival/engineer
 	name = "extended-capacity survival box"
-	desc = "A box with the bare essentials of ensuring the survival of you and others. This one is labelled to contain an extended-capacity tank."
+	desc = "Uma caixa com o essencial para garantir a sobrevivência de você e dos outros. Este está etiquetado para conter um tanque de capacidade estendida."
 	illustration = "extendedtank"
 	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
 
@@ -99,7 +99,7 @@
 // Syndie survival box
 /obj/item/storage/box/survival/syndie
 	name = "operation-ready survival box"
-	desc = "A box with the essentials of your operation. This one is labelled to contain an extended-capacity tank and a handy guide on survival."
+	desc = "Uma caixa com o essencial de sua operação. Este está etiquetado para conter um tanque de capacidade estendida e um guia prático de sobrevivência."
 	icon_state = "syndiebox"
 	illustration = "extendedtank"
 	mask_type = /obj/item/clothing/mask/gas/syndicate
@@ -115,7 +115,7 @@
 
 /obj/item/storage/box/survival/centcom
 	name = "emergency response survival box"
-	desc = "A box with the bare essentials of ensuring the survival of your team. This one is labelled to contain a double tank."
+	desc = "Uma caixa com o essencial para garantir a sobrevivência da sua equipe. Este está etiquetado para conter um tanque duplo."
 	illustration = "extendedtank"
 	internal_type = /obj/item/tank/internals/emergency_oxygen/double
 
@@ -145,7 +145,7 @@
 
 /obj/item/storage/box/mime
 	name = "invisible box"
-	desc = "Unfortunately not large enough to trap the mime."
+	desc = "Infelizmente não é grande o suficiente para prender o mímico."
 	foldable_result = null
 	icon_state = "box"
 	inhand_icon_state = null
@@ -163,7 +163,7 @@
 
 /obj/item/storage/box/hug
 	name = "box of hugs"
-	desc = "A special box for sensitive people."
+	desc = "Uma caixa especial para pessoas sensíveis."
 	icon_state = "hugbox"
 	illustration = "heart"
 	foldable_result = null
@@ -185,19 +185,19 @@
 // clown box, we also use this for the honk bot assembly
 /obj/item/storage/box/clown
 	name = "clown box"
-	desc = "A colorful cardboard box for the clown"
+	desc = "Uma caixa de papelão colorida para o palhaço"
 	illustration = "clown"
 
 /obj/item/storage/box/clown/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/bodypart/arm/left/robot) && !istype(tool, /obj/item/bodypart/arm/right/robot))
 		return ..()
 	if(contents.len) //prevent accidently deleting contents
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "Itens dentro!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.temporarilyRemoveItemFromInventory(tool))
 		return ITEM_INTERACT_BLOCKING
 	qdel(tool)
-	loc.balloon_alert(user, "wheels added, honk!")
+	loc.balloon_alert(user, "Rodas adicionadas, buzinar!")
 	var/obj/item/bot_assembly/honkbot/assembly = new(drop_location())
 	var/held_index = user.is_holding(src)
 	qdel(src)
@@ -222,7 +222,7 @@
 //Clown survival box
 /obj/item/storage/box/survival/hug
 	name = "box of hugs"
-	desc = "A special box for sensitive people."
+	desc = "Uma caixa especial para pessoas sensíveis."
 	icon_state = "hugbox"
 	illustration = "heart"
 	foldable_result = null
@@ -258,8 +258,8 @@
 
 /obj/item/storage/box/hug/plushes
 	name = "tactical cuddle kit"
-	desc = "A lovely little box filled with soft, cute plushies, perfect for calming down people who have just suffered a traumatic event. Legend has it there's a special part of hell \
-	for Medical Officers who just take the box for themselves."
+	desc = "Uma caixinha linda cheia de pelúcias macias e fofas, perfeita para acalmar pessoas que sofreram um evento traumático. A lenda diz que há uma parte especial do inferno\
+Para os oficiais médicos que levam a caixa para si."
 
 /obj/item/storage/box/hug/plushes/PopulateContents()
 	for(var/i in 1 to 7)
@@ -277,7 +277,7 @@
 
 /obj/item/storage/box/miner_modkits
 	name = "miner modkit/trophy box"
-	desc = "Contains every modkit and trophy in the game."
+	desc = "Contém cada modkit e troféu no jogo."
 
 /obj/item/storage/box/miner_modkits/Initialize(mapload)
 	. = ..()
@@ -296,7 +296,7 @@
 
 /obj/item/storage/box/skillchips
 	name = "box of skillchips"
-	desc = "Contains one copy of every skillchip"
+	desc = "Contém uma cópia de cada chip de habilidade."
 
 /obj/item/storage/box/skillchips/PopulateContents()
 	var/list/skillchips = subtypesof(/obj/item/skillchip)
@@ -306,7 +306,7 @@
 
 /obj/item/storage/box/skillchips/science
 	name = "box of science job skillchips"
-	desc = "Contains spares of every science job skillchip."
+	desc = "Contém peças de cada habilidade científica."
 
 /obj/item/storage/box/skillchips/science/PopulateContents()
 	new/obj/item/skillchip/job/roboticist(src)
@@ -314,7 +314,7 @@
 
 /obj/item/storage/box/skillchips/engineering
 	name = "box of engineering job skillchips"
-	desc = "Contains spares of every engineering job skillchip."
+	desc = "Contém peças de todos os trabalhos de engenharia."
 
 /obj/item/storage/box/skillchips/engineering/PopulateContents()
 	new/obj/item/skillchip/job/engineer(src)

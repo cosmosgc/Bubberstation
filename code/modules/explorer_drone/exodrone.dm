@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /// Exploration drone
 /obj/item/exodrone
 	name = "exploration drone"
-	desc = "A long range, semi-autonomous exploration drone."
+	desc = "Um drone de exploração semi-autônomo de longo alcance."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "drone"
 	w_class = WEIGHT_CLASS_BULKY
@@ -351,7 +351,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 /// Exploration drone launcher
 /obj/machinery/exodrone_launcher
 	name = "exploration drone launcher"
-	desc = "A launch pad designed to send exploration drones into the great beyond."
+	desc = "Uma plataforma de lançamento projetada para enviar drones de exploração para o grande além."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "launcher"
 	/// Loaded fuel pellet.
@@ -458,7 +458,7 @@ GLOBAL_LIST_EMPTY(exodrone_launchers)
 
 /obj/item/fuel_pellet
 	name = "standard fuel pellet"
-	desc = "A compressed fuel pellet for long-distance drone flight."
+	desc = "Uma cápsula de combustível comprimido para vôo de drones de longa distância."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "fuel_basic"
 	/// The type of fuel this pellet has within.

@@ -5,7 +5,7 @@
 
 /obj/structure/signboard
 	name = "sign"
-	desc = "A foldable sign."
+	desc = "Um sinal dobrável."
 	icon = 'icons/obj/signboards.dmi'
 	icon_state = "sign"
 	base_icon_state = "sign"
@@ -54,16 +54,16 @@
 /obj/structure/signboard/examine(mob/user)
 	. = ..()
 	if(!edit_by_hand)
-		. += span_notice("You can write on the sign with a <b>pen.</b>")
+		. += span_notice("Você pode escrever na placa com um<b>Caneta.</b>")
 	if(anchored)
-		. += span_notice("It's secured to the floor, you could use a <b>wrench</b> to unsecure and move it.")
+		. += span_notice("É seguro no chão, você poderia usar um<b>Chave inglesa.</b>para não ser seguro e movê-lo.")
 	else
-		. += span_notice("It's unsecured, you could use a <b>wrench</b> to secure it in place.")
+		. += span_notice("Não é seguro, você poderia usar um<b>Chave inglesa.</b>Para garantir o lugar.")
 	if(sign_text)
-		. += span_boldnotice("\nIt currently displays the following:")
+		. += span_boldnotice("\nEle atualmente exibe o seguinte:")
 		. += span_info(html_encode(sign_text))
 	else
-		. += span_notice("\nIt's blank.")
+		. += span_notice("\nEstá em branco.")
 
 /obj/structure/signboard/update_icon_state()
 	. = ..()
@@ -88,7 +88,7 @@
 	if(.)
 		return
 	if(!edit_by_hand && !user.is_holding_item_of_type(/obj/item/pen))
-		balloon_alert(user, "need a pen!")
+		balloon_alert(user, "Preciso de uma caneta!")
 		return TRUE
 	if(try_set_text(user))
 		return TRUE
@@ -121,7 +121,7 @@
 		message_admins("[ADMIN_LOOKUPFLW(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" when writing to the sign at [ADMIN_VERBOSEJMP(src)], they may be using a disallowed term. Sign text: \"[html_encode(new_text)]\"")
 		log_admin_private("[key_name(user)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" when writing to the sign at [loc_name(src)], they may be using a disallowed term. Sign text: \"[new_text]\"")
 	if(set_text(new_text))
-		balloon_alert(user, "set text")
+		balloon_alert(user, "definir texto")
 		investigate_log("([key_name(user)]) set text to \"[sign_text || "(none)"]\"", INVESTIGATE_SIGNBOARD)
 		return TRUE
 
@@ -130,12 +130,12 @@
 	if(!sign_text || !can_interact(user) || !user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	if(!edit_by_hand && !user.is_holding_item_of_type(/obj/item/pen))
-		balloon_alert(user, "need a pen!")
+		balloon_alert(user, "Preciso de uma caneta!")
 		return
 	if(check_locked(user))
 		return
 	if(set_text(null))
-		balloon_alert(user, "cleared text")
+		balloon_alert(user, "Texto limpo")
 		investigate_log("([key_name(user)]) cleared the text", INVESTIGATE_SIGNBOARD)
 
 /obj/structure/signboard/wrench_act(mob/living/user, obj/item/tool)
@@ -161,7 +161,7 @@
 /obj/structure/signboard/proc/check_locked(mob/user, silent = FALSE)
 	. = is_locked(user)
 	if(. && !silent)
-		balloon_alert(user, "locked!")
+		balloon_alert(user, "Trancado!")
 
 /obj/structure/signboard/proc/should_display_text()
 	if(QDELETED(src) || !isturf(loc) || !sign_text)

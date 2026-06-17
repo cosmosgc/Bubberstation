@@ -1,6 +1,6 @@
 /obj/machinery/dish_drive/bullet
 	name = "bullet drive"
-	desc = "A modified verison of the dish drive, for security. Because they're lazy."
+	desc = "Uma versão modificada da unidade de prato, para segurança. Porque eles são preguiçosos."
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/bulletdrive.dmi'
 	icon_state = "synthesizer"
 	density = TRUE

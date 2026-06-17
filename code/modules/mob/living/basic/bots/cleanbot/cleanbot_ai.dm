@@ -11,7 +11,7 @@
 			"nods in appreciation towards",
 			"mops the dirt away in the path of",
 		),
-		BB_FRIENDLY_MESSAGE = "empathetically acknowledges your hardwork and tough circumstances",
+		BB_FRIENDLY_MESSAGE = "Empateticamente reconhece seu trabalho duro e circunstâncias difíceis",
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/escape_captivity/pacifist,
@@ -199,7 +199,7 @@
 
 /datum/pet_command/clean
 	command_name = "Clean"
-	command_desc = "Command a cleanbot to clean the mess."
+	command_desc = "Comande um robô limpo para limpar a bagunça."
 	requires_pointing = TRUE
 	radial_icon = 'icons/obj/service/janitor.dmi'
 	radial_icon_state = "mop"

@@ -2,15 +2,15 @@
 /datum/quirk/item_quirk/settler
 	name = "Settler"
 	//BUBBER EDIT (Changes text a bit)
-	desc = "You are from a lineage of the earliest space settlers!  You are much better at outdoorsmanship and \
-		carrying heavy equipment. You also get along great with animals. However, you are a bit on the slow side due to your small legs."
-	gain_text = span_bold("You feel like the world is your oyster!")
-	lose_text = span_danger("You think you might stay home today.")
+	desc = "Vocês são de uma linhagem dos primeiros colonizadores espaciais! Você é muito melhor ao ar livre e\
+Levando equipamento pesado. Você também se dá bem com animais. No entanto, você está um pouco lento devido às suas pequenas pernas."
+	gain_text = span_bold("Você sente que o mundo é sua ostra!")
+	lose_text = span_danger("Você acha que pode ficar em casa hoje.")
 	icon = FA_ICON_HOUSE
 	value = 4
 	mob_trait = TRAIT_SETTLER
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
-	medical_record_text = "Patient has been exposed to planetary conditions for extended periods, resulting in an excessively stout build."
+	medical_record_text = "O paciente foi exposto a condições planetárias por longos períodos, resultando em uma construção excessivamente robusta."
 	mail_goodies = list(
 		/obj/item/clothing/shoes/workboots/mining,
 		/obj/item/gps,

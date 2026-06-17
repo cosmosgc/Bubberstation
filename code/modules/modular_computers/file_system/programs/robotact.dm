@@ -2,7 +2,7 @@
 	filename = "robotact"
 	filedesc = "RoboTact"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
-	extended_desc = "A built-in app for cyborg self-management and diagnostics."
+	extended_desc = "Um aplicativo integrado para auto-gestão e diagnósticos de cyborgs."
 	ui_header = "robotact.gif" //DEBUG -- new icon before PR
 	program_open_overlay = "command"
 	program_flags = PROGRAM_HEADER
@@ -154,7 +154,7 @@
 			if(cyborg.stat == CONSCIOUS)
 				if(!cyborg.cell || !cyborg.cell.charge)
 					cyborg.visible_message(span_notice("The power warning light on [span_name("[cyborg]")] flashes urgently."), \
-						"You announce you are operating in low power mode.")
+						"Você anuncia que está operando em modo de baixa potência.")
 					playsound(cyborg, 'sound/machines/buzz/buzz-two.ogg', 50, FALSE)
 
 		if("toggleSensors")

@@ -19,10 +19,10 @@
 // Demoneye, a drug that makes you temporarily immune to fear and crit, in exchange for damaging all of your organs and making your veins explode
 /datum/reagent/drug/demoneye
 	name = "DemonEye"
-	description = "A performance enhancing drug originally developed on mars. \
-		A favorite among gangs and other outlaws on the planet, though overuse can cause terrible addiction and bodily damage."
+	description = "Uma droga de aumento de desempenho originalmente desenvolvida em Marte.\
+Um favorito entre gangues e outros foras da lei no planeta, embora o uso excessivo possa causar terrível vício e danos corporais."
 	color = "#af00be"
-	taste_description = "industrial shuttle fuel"
+	taste_description = "Combustível industrial"
 	metabolization_rate = 0.65 * REAGENTS_METABOLISM
 	ph = 7
 	overdose_threshold = 15
@@ -75,12 +75,12 @@
 	if(constant_dose_time < CONSTANT_DOSE_SAFE_LIMIT || !our_guy.blood_volume)
 		our_guy.visible_message(
 				span_danger("[our_guy]'s eyes fade from their evil looking red back to normal..."),
-				span_danger("Your vision slowly returns to normal as you lose your unnatural strength...")
+				span_danger("Sua visão lentamente volta ao normal quando perde sua força não natural...")
 		)
 	else
 		our_guy.visible_message(
 			span_danger("[our_guy]'s veins violently explode, spraying blood everywhere!"),
-			span_danger("Your veins burst from the sheer stress put on them!")
+			span_danger("Suas veias estouram por causa do estresse!")
 		)
 
 		var/obj/item/bodypart/bodypart = pick(our_guy.bodyparts)
@@ -153,7 +153,7 @@
 
 // Mood event used by demoneye, because the normal one I just didn't vibe with
 /datum/mood_event/stimulant_heavy/sundowner
-	description = "I'M FUCKING INVINCIBLE!!!!"
+	description = "Eu sou invencível!!"
 
 #undef CONSTANT_DOSE_SAFE_LIMIT
 #undef METABOLISM_END_LIMB_DAMAGE

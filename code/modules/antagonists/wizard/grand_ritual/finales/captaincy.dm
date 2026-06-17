@@ -1,7 +1,7 @@
 /// Become the official Captain of the station
 /datum/grand_finale/usurp
 	name = "Usurpation"
-	desc = "The ultimate use of your gathered power! Rewrite time such that you have been Captain of this station the whole time."
+	desc = "O uso final de seu poder acumulado! Reescreva o tempo que você tem sido o capitão desta estação o tempo todo."
 	icon = 'icons/obj/card.dmi'
 	icon_state = "card_gold"
 

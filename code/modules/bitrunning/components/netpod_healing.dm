@@ -64,6 +64,6 @@
 	name = "Embryonic Stasis"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "netpod_stasis"
-	desc = "You feel like you're in a dream."
+	desc = "Você sente como se estivesse em um sonho."
 
 #undef BASE_HEAL

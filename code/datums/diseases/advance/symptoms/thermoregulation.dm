@@ -8,7 +8,7 @@
 
 /datum/symptom/thermoregulation
 	name = "Thermoregulation"
-	desc = "The virus reacts to extreme conditions and assists the body in regulating its temperature."
+	desc = "O vírus reage a condições extremas e ajuda o corpo a regular sua temperatura."
 	stealth = 0
 	resistance = 1
 	stage_speed = -2

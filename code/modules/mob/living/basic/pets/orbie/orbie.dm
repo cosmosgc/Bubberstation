@@ -2,7 +2,7 @@
 
 /mob/living/basic/orbie
 	name = "Orbie"
-	desc = "An orb shaped hologram."
+	desc = "Um holograma em forma de esfera."
 	icon = 'icons/mob/simple/pets.dmi'
 	icon_state = "orbie"
 	icon_living = "orbie"
@@ -24,7 +24,7 @@
 	pull_force = 0
 	minimum_survivable_temperature = TCMB
 	maximum_survivable_temperature = INFINITY
-	death_message = "fades out of existence!"
+	death_message = "desaparece da existência!"
 	ai_controller = /datum/ai_controller/basic_controller/orbie
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 	///are we happy or not?

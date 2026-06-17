@@ -15,7 +15,7 @@
 		break
 
 	if(!data_tracker && !user.can_dominate_mechs)
-		to_chat(user, span_warning("You cannot interface this exosuit without tracking beacons installed."))
+		to_chat(user, span_warning("Você não pode conectar este exosuit sem rastrear sinais instalados."))
 		return
 
 	if(data_tracker || user.can_dominate_mechs)
@@ -24,7 +24,7 @@
 
 	if(user.can_dominate_mechs)
 		if(data_tracker)
-			output += span_danger("\nWarning: Tracking detected. Enter at your own risk.")
+			output += span_danger("\nAtenção, rastreamento detectado. Entre por sua conta e risco.")
 
 	if(user.can_dominate_mechs)
 		output += "\n<a href='byond://?src=[REF(user)];ai_take_control=[REF(src)]'>[span_warning("\[INITIALIZE CONTROL OVERRIDE\]")]</a>"
@@ -73,22 +73,22 @@
 			card.AI = AI
 			AI.controlled_equipment = null
 			AI.remote_control = null
-			to_chat(AI, span_notice("You have been downloaded to a mobile storage device. Wireless connection offline."))
+			to_chat(AI, span_notice("Você foi baixado para um dispositivo de armazenamento móvel. Conexão sem fio offline."))
 			to_chat(user, "[span_boldnotice("Transfer successful")]: [AI.name] ([rand(1000,9999)].exe) removed from [name] and stored within local memory.")
 			return
 
 		if(AI_MECH_HACK) //Called by AIs on the mech
 			AI.create_core_link(new /obj/structure/ai_core(AI.loc, CORE_STATE_FINISHED, AI.make_mmi()))
 			if(AI.can_dominate_mechs && LAZYLEN(occupants)) //Oh, I am sorry, were you using that?
-				to_chat(AI, span_warning("Occupants detected! Forced ejection initiated!"))
-				to_chat(occupants, span_danger("You have been forcibly ejected!"))
+				to_chat(AI, span_warning("Ocupantes detectados! Ejeção forçada iniciada!"))
+				to_chat(occupants, span_danger("Você foi expulso à força!"))
 				for(var/ejectee in occupants)
 					mob_exit(ejectee, silent = TRUE, randomstep = TRUE, forced = TRUE) //IT IS MINE, NOW. SUCK IT, RD!
 
 		if(AI_TRANS_FROM_CARD) //Using an AI card to upload to a mech.
 			AI = card.AI
 			if(!AI)
-				to_chat(user, span_warning("There is no AI currently installed on this device."))
+				to_chat(user, span_warning("Não há IA instalada neste dispositivo."))
 				return
 			if(!(mecha_flags & AI_COMPATIBLE)) //If the mech isn't compatible with an AI transfer, early return.
 				to_chat(user, span_warning("An AI cannot be installed into [src]."))
@@ -119,7 +119,7 @@
 	add_occupant(AI)
 
 	var/list/output = list()
-	output += span_bold("You have been uploaded to the exosuits onboard computer.\n")
+	output += span_bold("Você foi carregado para os exosuits a bordo do computador.\n")
 	output += "• Press the middle mouse button or the action button on your HUD panel to toggle equipment safety."
 	output += "• Clicks with safety enabled will pass AI commands as usual."
 

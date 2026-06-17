@@ -6,14 +6,14 @@
 	name = "showcase"
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "showcase_1"
-	desc = "A stand with the empty body of a cyborg bolted to it."
+	desc = "Um estande com o corpo vazio de um cyborg preso nele."
 	density = TRUE
 	anchored = TRUE
 	var/deconstruction_state = SHOWCASE_CONSTRUCTED
 
 /obj/structure/showcase/fakeid
 	name = "\improper CentCom identification console"
-	desc = "You can use this to change ID's."
+	desc = "Você pode usar isso para mudar identidades."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "computer"
 
@@ -24,7 +24,7 @@
 
 /obj/structure/showcase/fakesec
 	name = "\improper CentCom security records"
-	desc = "Used to view and edit personnel's security records."
+	desc = "Costumava ver e editar registros de segurança do pessoal."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "computer"
 
@@ -35,99 +35,99 @@
 
 /obj/structure/showcase/horrific_experiment
 	name = "horrific experiment"
-	desc = "Some sort of pod filled with blood and viscera. You swear you can see it moving..."
+	desc = "Algum tipo de cápsula cheia de sangue e vísceras. Você jura que pode vê-lo se movendo..."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "pod_g" // Please don't delete it and not notice it for months this time.
 
 /obj/structure/showcase/machinery/oldpod
 	name = "damaged cryogenic pod"
-	desc = "A damaged cryogenic pod long since lost to time, including its former occupant..."
+	desc = "Uma cápsula criogênica danificada há muito tempo perdida, incluindo seu antigo ocupante..."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper-open"
 
 /obj/structure/showcase/machinery/oldpod/used
 	name = "opened cryogenic pod"
-	desc = "A cryogenic pod that has recently discharged its occupant. The pod appears non-functional."
+	desc = "Uma cápsula criogênica que recentemente descarregou seu ocupante. A cápsula não parece funcional."
 
 /obj/structure/showcase/machinery/oldpod/used/psyker
 	name = "opened mental energizer"
-	desc = "A mental energizer that has recently discharged its occupant. The pod appears non-functional."
+	desc = "Um energizador mental que recentemente descarregou seu ocupante. A cápsula não parece funcional."
 	icon_state = "psykerpod-open"
 
 /obj/structure/showcase/cyborg/old
 	name = "Cyborg Statue"
-	desc = "An old, deactivated cyborg. Whilst once actively used to guard against intruders, it now simply intimidates them with its cold, steely gaze."
+	desc = "Um velho ciborgue desativado. Enquanto uma vez usado ativamente para proteger contra intrusos, ele agora simplesmente os intimida com seu olhar frio e duro."
 	icon = 'icons/mob/silicon/robots.dmi'
 	icon_state = "robot_old"
 	density = FALSE
 
 /obj/structure/showcase/mecha/marauder
 	name = "combat mech exhibit"
-	desc = "A stand with an empty old Nanotrasen Corporation combat mech bolted to it. It is described as the premier unit used to defend corporate interests and employees."
+	desc = "Uma barraca com um velho e vazio Mech de combate da Corporação Nanotrasen. É descrita como a unidade principal usada para defender interesses corporativos e empregados."
 	icon = 'icons/mob/rideables/mecha.dmi'
 	icon_state = "marauder"
 
 /obj/structure/showcase/mecha/ripley
 	name = "construction mech exhibit"
-	desc = "A stand with a retired construction mech bolted to it. The clamps are rated at 9300PSI. It seems to be falling apart."
+	desc = "Um estande com um mech de construção aposentado preso a ele. As pinças são classificadas em 9300 PSI. Parece que está desmoronando."
 	icon = 'icons/mob/rideables/mecha.dmi'
 	icon_state = "firefighter"
 
 /obj/structure/showcase/machinery/implanter
 	name = "\improper Nanotrasen automated mindshield implanter exhibit"
-	desc = "A flimsy model of a standard Nanotrasen automated mindshield implant machine. With secure positioning harnesses and a robotic surgical injector, brain damage and other serious medical anomalies are now up to 60% less likely!"
+	desc = "Um modelo frágil de uma máquina de implante automático de escudo mental de Nanotrasen. Com arnês de posicionamento seguro e um injetor cirúrgico robótico, danos cerebrais e outras anomalias médicas graves são agora 60% menos prováveis!"
 	icon = 'icons/obj/machines/implant_chair.dmi'
 	icon_state = "implantchair"
 
 /obj/structure/showcase/machinery/microwave
 	name = "\improper Nanotrasen-brand microwave"
-	desc = "The famous Nanotrasen-brand microwave, the multi-purpose cooking appliance every station needs! This one appears to be drawn onto a cardboard box."
+	desc = "O famoso microondas da marca Nanotrasen, o aparelho de cozinha multiuso que toda estação precisa! Este parece ser desenhado para uma caixa de papelão."
 	icon = 'icons/obj/machines/microwave.dmi'
 	icon_state = "mw_complete"
 
 /obj/structure/showcase/machinery/microwave_engineering
 	name = "\improper Nanotrasen Wave(tm) microwave"
-	desc = "Just when everyone thought Nanotrasen couldn't improve on their famous microwave, this 2563 model features Wave™! A Nanotrasen exclusive, Wave™ allows your PDA to be charged wirelessly through microwave frequencies. Because nothing says 'future' like charging your PDA while overcooking your leftovers. Nanotrasen Wave™ - Multitasking, redefined."
+	desc = "Quando todos pensaram que Nanotrasen não poderia melhorar em seu famoso microondas, este modelo 2563 apresenta WaveTM! Um exclusivo Nanotrasen, WaveTM permite que seu PDA seja carregado sem fio através de frequências de microondas. Porque nada diz \"futuro\" como carregar seu PDA enquanto cozinhou demais suas sobras. Nanotrasen WaveTM - Multitarefa, redefinida."
 	icon = 'icons/obj/machines/microwave.dmi'
 	icon_state = "engi_mw_complete"
 
 /obj/structure/showcase/machinery/cloning_pod
 	name = "cloning pod exhibit"
-	desc = "Depicts a prototype from a failed attempt at reliable cloning technology. The technology was scrapped after reports of severe mutations, wiggly ear syndrome and spontaneous tail growth. The date 11.11.2558 is engraved on the base."
+	desc = "Descreve um protótipo de uma tentativa falhada de tecnologia de clonagem confiável. A tecnologia foi descartada após relatos de mutações graves, síndrome da orelha e crescimento espontâneo da cauda. A data 11.11.2558 está gravada na base."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "pod_0"
 
 /obj/structure/showcase/perfect_employee
 	name = "'Perfect Man' employee exhibit"
-	desc = "A stand with a model of the perfect Nanotrasen Employee bolted to it. Signs indicate it is robustly genetically engineered, as well as being ruthlessly loyal."
+	desc = "Um estande com um modelo do perfeito empregado Nanotrasen afugentado. Sinais indicam que é robustamente geneticamente modificado, além de ser cruelmente leal."
 
 /obj/structure/showcase/machinery/tv
 	name = "\improper Nanotrasen corporate newsfeed"
-	desc = "A slightly battered looking TV. Various Nanotrasen infomercials play on a loop, accompanied by a jaunty tune."
+	desc = "Uma TV levemente agredida. Vários infomerciais de Nanotrasen tocam em um loop, acompanhado por uma melodia alegre."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "television"
 
 /obj/structure/showcase/machinery/signal_decrypter
 	name = "subsystem signal decrypter"
-	desc = "A strange machine that's supposedly used to help pick up and decrypt wave signals."
+	desc = "Uma máquina estranha que supostamente é usada para ajudar a captar e descodificar sinais de onda."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "processor"
 
 /obj/structure/showcase/wizard
 	name = "wizard of yendor showcase"
-	desc = "A historical figure of great importance to the wizard federation. He spent his long life learning magic, stealing artifacts, and harassing idiots with swords. May he rest forever, Rodney."
+	desc = "Uma figura histórica de grande importância para a Federação Feiticeira. Passou sua longa vida aprendendo magia, roubando artefatos, e assediando idiotas com espadas. Que descanse para sempre, Rodney."
 	icon = 'icons/mob/simple/mob.dmi'
 	icon_state = "nim"
 
 /obj/structure/showcase/machinery/rng
 	name = "byond random number generator"
-	desc = "A strange machine supposedly from another world. The Wizard Federation has been meddling with it for years."
+	desc = "Uma estranha máquina supostamente de outro mundo. A Federação Mágica tem se intrometido com isso por anos."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "processor"
 
 /obj/structure/showcase/katana
 	name = "seppuku katana"
-	desc = "Welp, only one way to recover your honour."
+	desc = "Bem, só há uma maneira de recuperar sua honra."
 	density = 0
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "katana"
@@ -140,11 +140,11 @@
 	if(anchored)
 		return FALSE
 	if(deconstruction_state == SHOWCASE_SCREWDRIVERED)
-		to_chat(user, span_notice("You screw the screws back into the showcase."))
+		to_chat(user, span_notice("Você fode os parafusos de volta para a vitrine."))
 		tool.play_tool_sound(src, 100)
 		deconstruction_state = SHOWCASE_CONSTRUCTED
 	else if (deconstruction_state == SHOWCASE_CONSTRUCTED)
-		to_chat(user, span_notice("You unscrew the screws."))
+		to_chat(user, span_notice("Você desenroscou os parafusos."))
 		tool.play_tool_sound(src, 100)
 		deconstruction_state = SHOWCASE_SCREWDRIVERED
 	return ITEM_INTERACT_SUCCESS
@@ -152,7 +152,7 @@
 /obj/structure/showcase/crowbar_act(mob/living/user, obj/item/tool)
 	if(!tool.use_tool(src, user, 2 SECONDS, volume=100))
 		return
-	to_chat(user, span_notice("You start to crowbar the showcase apart..."))
+	to_chat(user, span_notice("Você começa a se afastar da vitrine..."))
 	new /obj/item/stack/sheet/iron(drop_location(), 4)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS

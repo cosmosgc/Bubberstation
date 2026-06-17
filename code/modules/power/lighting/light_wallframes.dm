@@ -1,6 +1,6 @@
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
-	desc = "Used for building lights."
+	desc = "Usado para construir luzes."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-item"
 	result_path = /obj/structure/light_construct
@@ -12,7 +12,7 @@
 /obj/item/wallframe/light_fixture/try_build(atom/support, mob/user)
 	var/area/A = get_area(user)
 	if(A.always_unpowered)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "Não pode ficar nesta área!")
 		return FALSE
 	return ..()
 
@@ -35,29 +35,29 @@
 	var/turf/local_turf = get_turf(user)
 	var/area/local_area = get_area(user)
 	if(!isturf(user.loc) || !isfloorturf(local_turf))
-		balloon_alert(user, "cannot place here!")
+		balloon_alert(user, "Não posso ficar aqui!")
 		return
 	if(local_area.always_unpowered || !local_area.static_lighting)
-		balloon_alert(user, "cannot place in this area!")
+		balloon_alert(user, "Não pode ficar nesta área!")
 		return
 	for(var/obj/object in local_turf)
 		if(object.density && !(object.obj_flags & IGNORE_DENSITY) || object.obj_flags & BLOCKS_CONSTRUCTION)
-			balloon_alert(user, "something is in the way!")
+			balloon_alert(user, "Algo está no caminho!")
 			return
 	if(local_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
-		balloon_alert(user, "remove the floor plating!")
+		balloon_alert(user, "Remova o revestimento do chão!")
 		return
 	if(locate(/obj/structure/light_construct/floor) in local_turf)
-		balloon_alert(user, "already has a light!")
+		balloon_alert(user, "Já tem fogo!")
 		return
 	if(locate(/obj/machinery/light/floor) in local_turf)
-		balloon_alert(user, "already has a light!")
+		balloon_alert(user, "Já tem fogo!")
 		return
 
 	playsound(src.loc, 'sound/machines/click.ogg', 75, TRUE)
 	user.visible_message(span_notice("[user.name] attaches [src] to the floor."),
 		span_notice("You attach [src] to the floor."),
-		span_hear("You hear clicking."))
+		span_hear("Você ouve o clique."))
 
 	new /obj/structure/light_construct/floor(local_turf)
 	qdel(src)

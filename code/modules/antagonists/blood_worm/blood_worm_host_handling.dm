@@ -8,7 +8,7 @@
 		visible_message(
 			message = span_bolddanger("\The [src] enter[p_s()] \the [new_host]!"),
 			self_message = span_notice("You enter \the [new_host]."),
-			blind_message = span_hear("You hear a squelch.")
+			blind_message = span_hear("Você ouve um barulho.")
 		)
 
 		new /obj/effect/temp_visual/blood_worm_invade_host(get_turf(new_host), effect_name)
@@ -84,7 +84,7 @@
 
 	visible_message(
 		message = span_bolddanger("\The [src] emerge[p_s()] from \the [host]!"),
-		blind_message = span_hear("You hear a squelch."),
+		blind_message = span_hear("Você ouve um barulho."),
 		ignored_mobs = list(host, src)
 	)
 
@@ -219,7 +219,7 @@
 
 	// Ignored while possessing a host, as [carbon/proc/bleed_warn] handles it instead.
 	if (!is_possessing_host && COOLDOWN_FINISHED(src, host_bleed_alert_cooldown) && host.get_bleed_rate() > 0)
-		to_chat_self(span_userdanger("Your host is bleeding!"))
+		to_chat_self(span_userdanger("Seu anfitrião está sangrando!"))
 		COOLDOWN_START(src, host_bleed_alert_cooldown, 15 SECONDS)
 
 /mob/living/basic/blood_worm/proc/handle_host_temperature(seconds_per_tick, times_fired)
@@ -230,7 +230,7 @@
 	adjust_worm_health(-unsuitable_heat_damage * (burn_coeff ? burn_coeff : 1) * seconds_per_tick)
 
 	if (COOLDOWN_FINISHED(src, host_heat_alert_cooldown))
-		to_chat_self(span_userdanger("Your blood is burning up!"))
+		to_chat_self(span_userdanger("Seu sangue está queimando!"))
 		COOLDOWN_START(src, host_heat_alert_cooldown, 15 SECONDS)
 
 /mob/living/basic/blood_worm/proc/on_host_adjust_oxy_damage(datum/source, type, amount, forced)

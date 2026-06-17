@@ -1,7 +1,7 @@
 #define CARGO_CUT 0.05
 
 /datum/supply_pack/company_import
-	desc = "Contains one imported company item."
+	desc = "Contém um item importado da empresa."
 	group = "Company Imports"
 	order_flags = ORDER_GOODY
 	crate_type = null

@@ -4,7 +4,7 @@
 
 /turf/closed/indestructible/dungeon
 	name = "stone wall"
-	desc = "Cold stone walls. It's like a dungeon."
+	desc = "Paredes de pedra frias. É como uma masmorra."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "wall"
 	base_icon_state = "wall"
@@ -21,7 +21,7 @@
 /turf/open/floor/plating/cobblestone
 	gender = PLURAL
 	name = "cobblestone"
-	desc = "Cobbled stone that makes a permanent pathway. A bit old-fashioned."
+	desc = "Pedra empedrada que faz um caminho permanente. Um pouco antiquado."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "cobble"
 	planetary_atmos = FALSE
@@ -51,7 +51,7 @@
 
 /obj/structure/dungeon
 	name = "stone wall with a hole in it!"
-	desc = "A hole in the wall! It's small."
+	desc = "Um buraco na parede! É pequeno."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "wall-hole"
 	layer = ABOVE_MOB_LAYER
@@ -61,7 +61,7 @@
 
 /obj/structure/dungeon/doorway
 	name = "doorway"
-	desc = "A doorway fashioned into a stone wall. It's a tight fit."
+	desc = "Uma porta feita em uma parede de pedra. É um ajuste apertado."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "wall-doorway"
 	layer = ABOVE_MOB_LAYER
@@ -78,7 +78,7 @@
 
 /obj/structure/railing/stone
 	name = "stone wall"
-	desc = "Cobbled stone wall. This is pretty strong."
+	desc = "Parede de pedra empedrada. Isso é bem forte."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "cobble-wall"
 	max_integrity = 100
@@ -87,7 +87,7 @@
 	climbable = TRUE
 
 /obj/structure/railing/stone/attackby(obj/item/wrench, mob/living/user, params)
-	to_chat(user, span_notice("You frown as you realise this wall is in fact made of stone, and cannot be uprooted from the ground and dragged along with a mere wrench."))
+	to_chat(user, span_notice("Você franziu a cara ao perceber que esta parede é feita de pedra, e não pode ser arrancada do chão e arrastada junto com uma simples chave inglesa."))
 	return
 
 /obj/structure/railing/stone/left
@@ -102,7 +102,7 @@
 
 /obj/structure/mineral_door/dungeon
 	name = "wooden door"
-	desc = "A small wooden door. It probably still opens, but it's kind of small."
+	desc = "Uma pequena porta de madeira. Provavelmente ainda abre, mas é meio pequeno."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "wall-door"
 	openSound = 'sound/effects/doorcreaky.ogg'
@@ -112,7 +112,7 @@
 
 /obj/machinery/button/dungeon
 	name = "stone brick"
-	desc = "A brick that's stuck out of the wall. Huh."
+	desc = "Um tijolo que está preso na parede. Huh."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	base_icon_state = "doorctrl"
 	icon_state = "doorctrl"
@@ -123,6 +123,6 @@
 
 /obj/machinery/button/dungeon/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
-		to_chat(user, span_notice("You prod around the rim of the bricks and try and jam it in. Looks like it isn't coming out this way."))
+		to_chat(user, span_notice("Você mexe na borda dos tijolos e tenta entupir. Parece que não está saindo por aqui."))
 		return
 // Let's not open the maintenance panel of a stone brick.

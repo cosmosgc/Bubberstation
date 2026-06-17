@@ -118,4 +118,4 @@
 			consumer.dropItemToGround(stack)
 	if (consumer.put_in_hands(new_hand, del_on_fail = TRUE))
 		return
-	consumer.balloon_alert(consumer, "no free hands!")
+	consumer.balloon_alert(consumer, "Sem mãos livres!")

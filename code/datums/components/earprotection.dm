@@ -19,6 +19,6 @@
 /datum/component/wearertargeting/earprotection/proc/get_examine_tags(atom/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(protection_amount == EAR_PROTECTION_NORMAL)
-		examine_list["sound-proof"] = "It protects the ears from flashbangs and other loud noises."
+		examine_list["sound-proof"] = "Protege as orelhas de flashbangs e outros barulhos altos."
 	else if(protection_amount >= EAR_PROTECTION_HEAVY)
 		examine_list["sound-proof"] = "It provides [protection_amount == EAR_PROTECTION_FULL ? "full" : "heavy"] protection against flashbangs and other loud noises."

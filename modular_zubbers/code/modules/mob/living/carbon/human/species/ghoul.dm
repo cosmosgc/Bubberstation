@@ -101,12 +101,12 @@
 		return ..()
 
 	if (user.handcuffed)
-		to_chat(user, span_alert("You can't get a good enough grip with your hands bound."))
+		to_chat(user, span_alert("Você não consegue segurar bem as mãos."))
 		return FALSE
 
 	// Robot Arms Fail
 	if (!IS_ORGANIC_LIMB(affecting))
-		to_chat(user, "That thing is on there good. It's not coming off with a gentle tug.")
+		to_chat(user, "Aquela coisa está bem ali. Não está saindo com um rebocador gentil.")
 		return FALSE
 
 	// Pry it off...

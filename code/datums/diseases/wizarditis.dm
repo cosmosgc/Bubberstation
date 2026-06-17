@@ -2,7 +2,7 @@
 	name = "Wizarditis"
 	max_stages = 4
 	spread_text = "Airborne"
-	cure_text = /datum/reagent/consumable/ethanol/manly_dorf::name + ", abated by magical grounding"
+	cure_text = /datum/reagent/consumable/ethanol/manly_dorf::name + ", abatido pelo solo mágico"
 	cures = list(/datum/reagent/consumable/ethanol/manly_dorf)
 	cure_chance = 100
 	agent = "Rincewindus Vulgaris"
@@ -10,12 +10,12 @@
 	disease_flags = CAN_CARRY|CAN_RESIST|CURABLE
 	spreading_modifier = 0.75
 	bypasses_immunity = TRUE
-	desc = "Some speculate that this virus is the cause of the Space Wizard Federation's existence. \
-		Subjects affected show the signs of brain damage, yelling obscure sentences or total gibberish. \
-		On late stages subjects sometime express the feelings of inner power, and cite \
-		'the ability to control the forces of cosmos themselves!' \
-		A gulp of strong, manly spirits usually reverts them to normal, humanlike, condition. \
-		A form of magical grounding can help, too, but will not cure it on its own."
+	desc = "Alguns especulam que este vírus é a causa da existência da Federação do Feiticeiro Espacial.\
+Os indivíduos afetados mostram sinais de dano cerebral, gritando frases obscuras ou sem sentido.\
+Nos estágios finais, os sujeitos expressam os sentimentos de poder interior, e citam\
+a capacidade de controlar as próprias forças do cosmos!\
+Um gole de espíritos fortes e viris geralmente os reverte à condição normal, humana.\
+Uma forma mágica de aterramento pode ajudar, mas não a curará sozinha."
 	severity = DISEASE_SEVERITY_HARMFUL
 
 	/// List of random non-targeted spells to pick from to cast
@@ -59,7 +59,7 @@
 	if(stage >= 3 && SPT_PROB(0.15 * stage, seconds_per_tick))
 		var/datum/action/cooldown/spell/picked = pick(random_spells)
 		if(!picked.try_invoke(affected_mob, feedback = FALSE))
-			to_chat(affected_mob, span_danger("You feel something building up inside... but the feeling passes."))
+			to_chat(affected_mob, span_danger("Você sente algo crescendo por dentro... mas o sentimento passa."))
 			return
 
 		picked.spell_feedback(affected_mob)

@@ -10,7 +10,7 @@
 	icon = 'icons/obj/wind_turbine.dmi'
 	icon_state = "icon"
 	base_icon_state = "icon"
-	desc = "A portable wind turbine that can charge attached energy based weaponry, PDAs, and other devices. As a safety mechanism after an unprecedented amount of amputations, only charges when attached to your back / the floor."
+	desc = "Uma turbina eólica portátil que pode carregar armamento baseado em energia, PDAs e outros dispositivos. Como um mecanismo de segurança depois de uma quantidade sem precedentes de amputações, apenas cargas quando preso em suas costas / no chão."
 	worn_icon = 'icons/obj/wind_turbine.dmi'
 	worn_icon_state = "base_turbine"
 	inhand_icon_state = "wind_turbine"
@@ -204,7 +204,7 @@
 
 	if(cap)
 		. += span_info("Click it with a screwdriver to eject the [cap].")
-	. += span_info("Wrench it on a tile to anchor it and harness space wind.")
+	. += span_info("Esmagá-lo em uma telha para ancorar e aproveitar o vento espacial.")
 	. += span_info("The wind turbine is currently storing [floor(available_power / 100) / 10]kJ.")
 	if(charging)
 		. += {"[span_notice("\The [src] contains:")]
@@ -217,13 +217,13 @@
 		return FALSE
 	if(cap)
 		tool.play_tool_sound(src, 50)
-		user.balloon_alert(user, "capacitor removed")
+		user.balloon_alert(user, "Condensador removido.")
 		cap.forceMove(drop_location())
 		available_power = 0
 		cap = null
 		return TRUE
 	else
-		user.balloon_alert(user, "no capacitor!")
+		user.balloon_alert(user, "Sem capacitor!")
 		return FALSE
 
 /obj/item/portable_wind_turbine/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
@@ -246,7 +246,7 @@
 /obj/item/portable_wind_turbine/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stock_parts/capacitor))
 		if (cap)
-			balloon_alert(user, "already has a capacitor!")
+			balloon_alert(user, "Já tem um capacitor!")
 			return TRUE
 		user.transferItemToLoc(attacking_item, src)
 		cap = attacking_item
@@ -255,15 +255,15 @@
 	if(!is_type_in_typecache(attacking_item, allowed_devices))
 		return ..()
 	if(isnull(cap))
-		balloon_alert(user, "no capacitor inserted!")
+		balloon_alert(user, "Nenhum capacitor inserido!")
 		return TRUE
 	if(charging)
-		balloon_alert(user, "already charging something!")
+		balloon_alert(user, "Já está carregando alguma coisa!")
 		return TRUE
 	if(istype(attacking_item, /obj/item/gun/energy))
 		var/obj/item/gun/energy/energy_gun = attacking_item
 		if(!energy_gun.can_charge)
-			balloon_alert(user, "not rechargable!")
+			balloon_alert(user, "Não é recarregável!")
 			return TRUE
 	user.transferItemToLoc(attacking_item, src)
 	charging = attacking_item

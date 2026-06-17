@@ -2,7 +2,7 @@
 /obj/item/fish/chasm_crab
 	name = "chasm chrab"
 	fish_id = "chasm_crab"
-	desc = "The young of the lobstrosity mature in pools below the earth, eating what falls in until large enough to clamber out. Those found near the station are well-fed."
+	desc = "Os jovens da lobstrosidade amadurecem em piscinas abaixo da terra, comendo o que cai até grandes o suficiente para subir. Os encontrados perto da estação estão bem alimentados."
 	icon_state = "chrab"
 	sprite_height = 9
 	sprite_width = 8
@@ -104,7 +104,7 @@
 /obj/item/fish/chasm_crab/ice
 	name = "arctic chrab"
 	fish_id = "arctic_crab"
-	desc = "A subspecies of chasm chrabs that has adapted to the cold climate and lack of abysmal holes of the icemoon."
+	desc = "Uma subespécie de chasm chrabs que se adaptou ao clima frio e à falta de buracos abismais da lua de gelo."
 	icon_state = "arctic_chrab"
 	required_temperature_min = ICEBOX_MIN_TEMPERATURE-20
 	required_temperature_max = MIN_AQUARIUM_TEMP+15
@@ -116,7 +116,7 @@
 /obj/item/fish/boned
 	name = "unmarine bonemass"
 	fish_id = "bonemass"
-	desc = "What one could mistake for fish remains, is in reality a species that chose to discard its weak flesh a long time ago. A living fossil, in its most literal sense."
+	desc = "O que se pode confundir com os restos de peixes, é na realidade uma espécie que escolheu descartar sua carne fraca há muito tempo. Um fóssil vivo, em seu sentido mais literal."
 	icon_state = "bonemass"
 	sprite_width = 10
 	sprite_height = 7
@@ -131,7 +131,7 @@
 	fish_traits = list(/datum/fish_trait/revival, /datum/fish_trait/carnivore)
 	average_size = 70
 	average_weight = 2000
-	death_text = "%SRC stops moving." //It's dead... or is it?
+	death_text = "O SRC para de se mover." //It's dead... or is it?
 	evolution_types = list(/datum/fish_evolution/mastodon)
 	beauty = FISH_BEAUTY_UGLY
 
@@ -146,7 +146,7 @@
 	return //it's all bones and no meat.
 
 /obj/item/fish/boned/get_health_warnings(mob/user, always_deep = FALSE)
-	return list(span_deadsay("It's bones."))
+	return list(span_deadsay("São ossos."))
 
 /obj/item/fish/boned/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] swallows [src] whole! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -155,7 +155,7 @@
 	return MANUAL_SUICIDE_NONLETHAL // chance not to die
 
 /obj/item/fish/boned/proc/skeleton_appears(mob/living/user)
-	user.visible_message(span_warning("[user]'s skin melts off!"), span_boldwarning("Your skin melts off!"))
+	user.visible_message(span_warning("[user]'s skin melts off!"), span_boldwarning("Sua pele derrete!"))
 	user.spawn_gibs()
 	user.drop_everything(del_on_drop = FALSE, force = FALSE, del_if_nodrop = FALSE)
 	user.set_species(/datum/species/skeleton)
@@ -168,7 +168,7 @@
 /obj/item/fish/lavaloop
 	name = "lavaloop"
 	fish_id = "lavaloop"
-	desc = "Due to its curvature, it can be used as make-shift boomerang."
+	desc = "Devido à sua curvatura, pode ser usado como bumerangue improvisado."
 	icon_state = "lava_loop"
 	sprite_width = 3
 	sprite_height = 5
@@ -230,7 +230,7 @@
 
 /obj/item/fish/lavaloop/plasma_river
 	name = "plasmaloop"
-	desc = "A lavaloop that has evolved to survive in cold liquid plasma. Can be used as make-shift boomerang."
+	desc = "Um lavaloop que evoluiu para sobreviver em plasma líquido frio. Pode ser usado como bumerangue improvisado."
 	fish_id = "plasma_lavaloop"
 	icon_state = "plasma_loop"
 	dedicated_in_aquarium_icon_state = /obj/item/fish/lavaloop::icon_state + "_small"

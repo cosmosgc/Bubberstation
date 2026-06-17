@@ -2,7 +2,7 @@
 
 /obj/structure/tank_dispenser
 	name = "tank dispenser"
-	desc = "A simple yet bulky storage device for gas tanks."
+	desc = "Um simples e volumoso dispositivo de armazenamento para tanques de gás."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "dispenser"
 	density = TRUE
@@ -38,7 +38,7 @@
 /obj/structure/tank_dispenser/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if (!plasmatanks)
-		balloon_alert(user, "no plasma tanks!")
+		balloon_alert(user, "Sem tanques de plasma!")
 		return
 	dispense(/obj/item/tank/internals/plasma, user)
 	plasmatanks--
@@ -47,7 +47,7 @@
 /obj/structure/tank_dispenser/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if (!oxygentanks)
-		balloon_alert(user, "no oxygen tanks!")
+		balloon_alert(user, "Sem tanques de oxigênio!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	dispense(/obj/item/tank/internals/oxygen, user)
 	oxygentanks--
@@ -72,17 +72,17 @@
 		else
 			full = TRUE
 	else if(!user.combat_mode || (I.item_flags & NOBLUDGEON))
-		balloon_alert(user, "can't insert!")
+		balloon_alert(user, "Não posso inserir!")
 		return
 	else
 		return ..()
 	if(full)
-		balloon_alert(user, "it is full!")
+		balloon_alert(user, "Está cheio!")
 		return
 
 	if(!user.transferItemToLoc(I, src))
 		return
-	balloon_alert(user, "tank inserted")
+	balloon_alert(user, "Tanque inserido.")
 	update_appearance()
 
 /obj/structure/tank_dispenser/atom_deconstruct(disassembled = TRUE)
@@ -103,6 +103,6 @@
 	if (isnull(existing_tank))
 		existing_tank = new tank_type
 	receiver.put_in_hands(existing_tank)
-	balloon_alert(receiver, "tank received")
+	balloon_alert(receiver, "Tanque recebido.")
 
 #undef TANK_DISPENSER_CAPACITY

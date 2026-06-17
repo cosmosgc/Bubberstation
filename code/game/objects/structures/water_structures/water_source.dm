@@ -3,7 +3,7 @@
 	name = "Water Source"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink"
-	desc = "A sink used for washing one's hands and face. This one seems to be infinite!"
+	desc = "Uma pia usada para lavar as mãos e o rosto. Este parece ser infinito!"
 	anchored = TRUE
 	///Boolean on whether something is currently being washed, preventing multiple people from cleaning at once.
 	var/busy = FALSE
@@ -25,7 +25,7 @@
 		return
 
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Alguém já está se lavando aqui!"))
 		return
 	var/selected_area = user.parse_zone_with_bodypart(user.zone_selected)
 	var/washing_face = FALSE
@@ -47,7 +47,7 @@
 	else if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.wash_hands(CLEAN_WASH))
-			to_chat(user, span_warning("Your hands are covered by something!"))
+			to_chat(user, span_warning("Suas mãos estão cobertas por algo!"))
 			return
 	else
 		user.wash(CLEAN_WASH)
@@ -59,7 +59,7 @@
 
 /obj/structure/water_source/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(busy)
-		to_chat(user, span_warning("Someone's already washing here!"))
+		to_chat(user, span_warning("Alguém já está se lavando aqui!"))
 		return
 
 	if(attacking_item.item_flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
@@ -112,7 +112,7 @@
 
 /obj/structure/water_source/puddle //splishy splashy ^_^
 	name = "puddle"
-	desc = "A puddle used for washing one's hands and face."
+	desc = "Uma poça usada para lavar as mãos e o rosto."
 	icon_state = "puddle"
 	base_icon_state = "puddle"
 	resistance_flags = UNACIDABLE
@@ -144,10 +144,10 @@
 	if(DOING_INTERACTION_WITH_TARGET(user, src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	icon_state = "[base_icon_state]-splash"
-	balloon_alert(user, "scooping tadpoles...")
+	balloon_alert(user, "Colhendo girinos...")
 	if(do_after(user, 5 SECONDS, src))
 		playsound(loc, 'sound/effects/slosh.ogg', 15, TRUE)
-		balloon_alert(user, "got a tadpole")
+		balloon_alert(user, "Tenho um girino.")
 		var/obj/item/fish/tadpole/tadpole = new(loc)
 		tadpole.randomize_size_and_weight()
 		user.put_in_hands(tadpole)

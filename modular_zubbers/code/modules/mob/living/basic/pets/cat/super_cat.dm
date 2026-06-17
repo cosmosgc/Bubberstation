@@ -7,7 +7,7 @@
 //Super cats stronger and faster than normal cats and far more agressive.
 /mob/living/basic/pet/cat/super
 	name = "Super Cat"
-	desc = "Kitty!! Woah this one seems strong and angry!"
+	desc = "Kitty! Este parece forte e zangado!"
 	health = SUPER_KITTY_HEALTH
 	maxHealth = SUPER_KITTY_HEALTH
 	speed = 0
@@ -28,7 +28,7 @@
 /mob/living/basic/pet/cat/super/can_use_guns(obj/item/G)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_NOGUNS)) // Who am I to stop admins from making them stronger?
-		balloon_alert(src, "your paws are too soft!")
+		balloon_alert(src, "Suas patas são muito macias!")
 		return FALSE
 
 /mob/living/basic/pet/cat/super/move_into_vent(obj/machinery/atmospherics/components/ventcrawl_target)
@@ -37,7 +37,7 @@
 
 /mob/living/basic/pet/cat/super/tux //Fake runtime
 	name = "Super Tux Cat"
-	desc = "GCA- Wait something is off"
+	desc = "GCA... Espere, algo está errado."
 	gender = FEMALE
 	icon_state = "cat"
 	icon_living = "cat"
@@ -46,7 +46,7 @@
 
 /mob/living/basic/pet/cat/super/pancake
 	name = "Super Pancake Cat"
-	desc = "It's a Super Cat made out of a pancake!"
+	desc = "É um Super Gato feito de uma panqueca!"
 	icon = 'modular_zubbers/icons/mob/simple/pets.dmi'
 	icon_state = "pancake"
 	icon_living = "pancake"
@@ -55,7 +55,7 @@
 
 /mob/living/basic/pet/cat/super/original
 	name = "Super Batsy"
-	desc = "The product of alien DNA and bored geneticists."
+	desc = "Produto de DNA alienígena e geneticistas entediados."
 	gender = FEMALE
 	icon_state = "original"
 	icon_living = "original"
@@ -65,7 +65,7 @@
 
 /mob/living/basic/pet/cat/super/breadcat
 	name = "Super Bread Cat"
-	desc = "They're a cat... with a bread!"
+	desc = "Eles são um gato... com um pão!"
 	icon_state = "breadcat"
 	icon_living = "breadcat"
 	icon_dead = "breadcat_dead"
@@ -75,7 +75,7 @@
 
 /mob/living/basic/pet/cat/cak/super //Special type
 	name = "Super Keeki Cat"
-	desc = "She is a Super Cat made out of a cake of kindness."
+	desc = "Ela é uma Super Gato feito de um bolo de bondade."
 	speed = 0
 	gold_core_spawnable = FRIENDLY_SPAWN
 	faction = list(FACTION_CAT)
@@ -93,7 +93,7 @@
 // SUPER SYNDICATS!!! GET DAT MRR MRRAW DISK!!!
 /mob/living/basic/pet/cat/syndicat/super
 	name = "Super Syndie Cat"
-	desc = "OH GOD! RUN!! IT CAN SMELL THE DISK!"
+	desc = "Oh Deus! Corra! Pode cheirar a louça!"
 	speed = 0.3 // Slightly slower than a normal super cat since they have a suit
 	health = SYNDIE_SUPER_KITTY_HEALTH
 	maxHealth = SYNDIE_SUPER_KITTY_HEALTH
@@ -110,7 +110,7 @@
 /mob/living/basic/pet/cat/syndicat/super/can_use_guns(obj/item/G)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_NOGUNS)) // Who am I to stop admins from making them stronger?
-		balloon_alert(src, "your paws are too weak!")
+		balloon_alert(src, "Suas patas estão muito fracas!")
 		return FALSE
 
 /mob/living/basic/pet/cat/syndicat/super/move_into_vent(obj/machinery/atmospherics/components/ventcrawl_target)

@@ -1,6 +1,6 @@
 /datum/surgery_operation/limb/add_dental_implant
 	name = "add dental implant"
-	desc = "Implant a pill into a patient's teeth."
+	desc = "Implantar uma pílula nos dentes de um paciente."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/reagent_containers/applicator/pill = 1,
@@ -63,7 +63,7 @@
 
 /datum/surgery_operation/limb/remove_dental_implant
 	name = "remove dental implant"
-	desc = "Remove a dental implant from a patient's teeth."
+	desc = "Remova um implante dentário dos dentes de um paciente."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,

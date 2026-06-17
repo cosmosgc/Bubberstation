@@ -4,7 +4,7 @@
 
 /obj/item/organ/liver
 	name = "liver"
-	desc = "Pairing suggestion: chianti and fava beans."
+	desc = "Sugestão de par: chianti e fava feijão."
 	icon_state = "liver"
 
 	w_class = WEIGHT_CLASS_SMALL
@@ -91,31 +91,31 @@
 
 	if(HAS_MIND_TRAIT(user, TRAIT_ENTRAILS_READER) || isobserver(user))
 		if(HAS_TRAIT(src, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-			. += span_info("Fatty deposits and sprinkle residue, imply that this is the liver of someone in <em>security</em>.")
+			. += span_info("Depósitos gordos e resíduos polvilhados, implicam que este é o fígado de alguém em<em>segurança</em>.")
 		if(HAS_TRAIT(src, TRAIT_CULINARY_METABOLISM))
-			. += span_info("The high iron content and slight smell of garlic, implies that this is the liver of a <em>cook</em>.")
+			. += span_info("O alto teor de ferro e leve cheiro de alho, implica que este é o fígado de um<em>cozinhar</em>.")
 		if (HAS_TRAIT(src, TRAIT_BARTENDER_METABOLISM))
-			. += span_info("The decidedly well-used look from periods of prolonged exposure to a wide variety of alcohols, implies that this is the liver of a <em>bartender</em>.")
+			. += span_info("O olhar decididamente bem usado de períodos de exposição prolongada a uma grande variedade de álcoois, implica que este é o fígado de um<em>Barman.</em>.")
 		if(HAS_TRAIT(src, TRAIT_COMEDY_METABOLISM))
 			. += span_info("A smell of bananas, a slippery sheen and [span_clown("honking")] when depressed, implies that this is the liver of a <em>clown</em>.")
 		if(HAS_TRAIT(src, TRAIT_MEDICAL_METABOLISM))
-			. += span_info("Marks of stress and a faint whiff of medicinal alcohol, imply that this is the liver of a <em>medical worker</em>.")
+			. += span_info("Marcas de estresse e um leve cheiro de álcool medicinal, implicam que este é o fígado de um<em>Médico.</em>.")
 		if(HAS_TRAIT(src, TRAIT_ENGINEER_METABOLISM))
-			. += span_info("Signs of radiation exposure and space adaption, implies that this is the liver of an <em>engineer</em>.")
+			. += span_info("Sinais de exposição à radiação e adaptação espacial, implicam que este é o fígado de um<em>engenheiro</em>.")
 		if(HAS_TRAIT(src, TRAIT_SCIENTIST_LIVER))
-			. += span_info("Strange glowing residues, sprinklings of congealed solid plasma, and what seem to be tumors indicate this is the radiated liver of a <em>scientist</em>.")
+			. += span_info("Resíduos brilhantes estranhos, aspersões de plasma sólido congealed, e o que parecem ser tumores indicam que este é o fígado irradiado de um<em>cientista</em>.")
 		if(HAS_TRAIT(src, TRAIT_MAINTENANCE_METABOLISM))
-			. += span_info("A half-digested rat's tail (somehow), disgusting sludge, and the faint smell of Grey Bull imply this is what remains of an <em>assistant</em>'s liver.")
+			. += span_info("Uma cauda de rato meio digerida (de alguma forma), lama nojenta, e o cheiro fraco de Touro Cinzento implica que isso é o que resta de um<em>Assistente.</em>Fígado.")
 		if(HAS_TRAIT(src, TRAIT_CORONER_METABOLISM))
-			. += span_info("An aroma of pickles and sea water, along with being remarkably well-preserved, imply this is what remains of a <em>coroner</em>'s liver.")
+			. += span_info("Um aroma de picles e água do mar, junto com ser notávelmente bem preservado, implica isto é o que resta de um<em>Médico legista.</em>Fígado.")
 		if(HAS_TRAIT(src, TRAIT_HUMAN_AI_METABOLISM))
-			. += span_info("The liver appears barely human and entirely self-sufficient, implying this is what remains of a <em>human AI</em>'s liver.")
+			. += span_info("O fígado parece apenas humano e totalmente auto-suficiente, implicando que isto é o que resta de um<em>AI humano</em>Fígado.")
 
 		// royal trumps pretender royal
 		if(HAS_TRAIT(src, TRAIT_ROYAL_METABOLISM))
-			. += span_info("A rich diet of luxury food, suppleness from soft beds, implies that this is the liver of a <em>head of staff</em>.")
+			. += span_info("Uma rica dieta de comida de luxo, flexibilidade de camas macias, implica que este é o fígado de um<em>Chefe da equipe</em>.")
 		else if(HAS_TRAIT(src, TRAIT_PRETENDER_ROYAL_METABOLISM))
-			. += span_info("A diet of imitation caviar, and signs of insomnia, implies that this is the liver of <em>someone who wants to be a head of staff</em>.")
+			. += span_info("Uma dieta de imitação de caviar, e sinais de insônia, implica que este é o fígado de<em>Alguém que quer ser um chefe de equipe</em>.")
 
 /obj/item/organ/liver/before_organ_replacement(obj/item/organ/replacement)
 	. = ..()
@@ -150,20 +150,20 @@
 /obj/item/organ/liver/organ_failure(seconds_per_tick)
 	switch(failure_time/LIVER_FAILURE_STAGE_SECONDS)
 		if(1)
-			to_chat(owner, span_userdanger("You feel stabbing pain in your abdomen!"))
+			to_chat(owner, span_userdanger("Você sente dor no abdômen!"))
 		if(2)
-			to_chat(owner, span_userdanger("You feel a burning sensation in your gut!"))
+			to_chat(owner, span_userdanger("Você sente uma sensação de queimação em seu intestino!"))
 			owner.vomit(VOMIT_CATEGORY_DEFAULT)
 		if(3)
-			to_chat(owner, span_userdanger("You feel painful acid in your throat!"))
+			to_chat(owner, span_userdanger("Você sente ácido doloroso em sua garganta!"))
 			owner.vomit(VOMIT_CATEGORY_BLOOD)
 		if(4)
-			to_chat(owner, span_userdanger("Overwhelming pain knocks you out!"))
+			to_chat(owner, span_userdanger("A dor arrasa!"))
 			owner.vomit(VOMIT_CATEGORY_BLOOD, distance = rand(1,2))
 			owner.emote("Scream")
 			owner.AdjustUnconscious(2.5 SECONDS)
 		if(5)
-			to_chat(owner, span_userdanger("You feel as if your guts are about to melt!"))
+			to_chat(owner, span_userdanger("Você sente como se suas entranhas estivessem prestes a derreter!"))
 			owner.vomit(VOMIT_CATEGORY_BLOOD, distance = rand(1,3))
 			owner.emote("Scream")
 			owner.AdjustUnconscious(5 SECONDS)
@@ -225,22 +225,22 @@
 // alien livers can ignore up to 15u of toxins, but they take x3 liver damage
 /obj/item/organ/liver/alien
 	name = "alien liver" // doesnt matter for actual aliens because they dont take toxin damage
-	desc = "A liver that used to belong to a killer alien, who knows what it used to eat."
+	desc = "Um fígado que pertencia a um alienígena assassino, quem sabe o que ele costumava comer."
 	icon_state = "liver-x" // Same sprite as fly-person liver.
 	liver_resistance = 0.333 * LIVER_DEFAULT_TOX_RESISTANCE // -66%
 	toxTolerance = 15 // complete toxin immunity like xenos have would be too powerful
 
 /obj/item/organ/liver/ghost
 	name = "ghost liver"
-	desc = "Processes the last alcohol they drank in their time alive."
+	desc = "Processa o último álcool que bebem em seu tempo vivo."
 	icon_state = "liver-ghost"
 	movement_type = PHASING
 	organ_flags = parent_type::organ_flags | ORGAN_GHOST
 
 /obj/item/organ/liver/cybernetic
 	name = "basic cybernetic liver"
-	desc = "A very basic device designed to mimic the functions of a human liver. Handles toxins slightly worse than an organic liver."
-	failing_desc = "seems to be broken."
+	desc = "Um dispositivo básico projetado para imitar as funções de um fígado humano. Lida com toxinas um pouco piores que um fígado orgânico."
+	failing_desc = "Parece estar quebrado."
 	icon_state = "liver-c"
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD*0.5
@@ -260,7 +260,7 @@
 
 /obj/item/organ/liver/cybernetic/tier2
 	name = "cybernetic liver"
-	desc = "An electronic device designed to mimic the functions of a human liver. Handles toxins slightly better than an organic liver."
+	desc = "Um dispositivo eletrônico projetado para imitar as funções de um fígado humano. Lida com toxinas ligeiramente melhor que um fígado orgânico."
 	icon_state = "liver-c-u"
 	maxHealth = 1.5 * STANDARD_ORGAN_THRESHOLD
 	toxTolerance = 5 //can shrug off up to 5u of toxins
@@ -269,7 +269,7 @@
 
 /obj/item/organ/liver/cybernetic/tier3
 	name = "upgraded cybernetic liver"
-	desc = "An upgraded version of the cybernetic liver, designed to improve further upon organic livers. It is resistant to alcohol poisoning and is very robust at filtering toxins."
+	desc = "Uma versão atualizada do fígado cibernético, projetado para melhorar ainda mais os fígados orgânicos. É resistente ao envenenamento por álcool e é muito robusto em filtrar toxinas."
 	icon_state = "liver-c-u2"
 	alcohol_tolerance = ALCOHOL_RATE * 0.2
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
@@ -279,10 +279,10 @@
 
 /obj/item/organ/liver/cybernetic/surplus
 	name = "surplus prosthetic liver"
-	desc = "A very cheap prosthetic liver, mass produced for low-functioning alcoholics... It looks more like a water filter than \
-		an actual liver. \
-		Very fragile, absolutely terrible at filtering toxins and substantially weak to alcohol. \
-		Offers no protection against EMPs."
+	desc = "Um fígado protético muito barato, massa produzida para alcoólatras com baixo funcionamento... Parece mais um filtro de água.\
+Um fígado de verdade.\
+Muito frágil, absolutamente terrível em filtrar toxinas e substancialmente fraco em álcool.\
+Não oferece proteção contra PEMs."
 	icon_state = "liver-c-s"
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.35
 	alcohol_tolerance = ALCOHOL_RATE * 2 // can barely handle alcohol
@@ -297,7 +297,7 @@
 
 /obj/item/organ/liver/pod
 	name = "pod peroxisome"
-	desc = "A small plant-like organ found in podpeople responsible for filtering toxins while aiding in photosynthesis."
+	desc = "Um pequeno órgão vegetal encontrado em pod people responsável por filtrar toxinas enquanto auxilia na fotossíntese."
 	foodtype_flags = PODPERSON_ORGAN_FOODTYPES
 	color = COLOR_LIME
 
@@ -312,7 +312,7 @@
 
 /obj/item/organ/liver/snail
 	name = "snail liver"
-	desc = "A slimy liver, constantly secreting impressive volumes of lube. Usually cooked with olive oil and cilantro, and traditionally eaten under a white flag."
+	desc = "Um fígado viscoso, secretando volumes impressionantes de lubrificante. Geralmente cozinhado com azeite e coentro, e tradicionalmente comido sob uma bandeira branca."
 	icon_state = "liver-bone" // Its greyscale, so works perfectly for coloring
 	color = "#96DB00"
 	/// Speed modifier for snails who have this organ. Positive numbers make them move slower, negative numbers make them move faster.
@@ -340,7 +340,7 @@
 
 /obj/item/organ/liver/evolved
 	name = "evolved liver"
-	desc = "A more robust liver, better at everything."
+	desc = "Um fígado mais robusto, melhor em tudo."
 
 	icon_state = "evolved-liver"
 
@@ -351,7 +351,7 @@
 
 /obj/item/organ/liver/bloody
 	name = "leaky liver"
-	desc = "An extra spongy liver, only slightly better than a normal liver, but with an increased ability to replenish blood."
+	desc = "Um fígado extra esponjoso, apenas ligeiramente melhor que um fígado normal, mas com uma capacidade aumentada de reabastecer sangue."
 
 	icon_state = "leaky-liver"
 
@@ -368,7 +368,7 @@
 /// Convert all non-alcoholic drinks into alcohol
 /obj/item/organ/liver/distillery
 	name = "alcoholics delight"
-	desc = "The perfect liver, distilling non-alcoholic reagents into alcohol whenever possible."
+	desc = "O fígado perfeito, destilando reagentes não alcoólicos em álcool sempre que possível."
 
 	icon_state = "liver-distillery"
 

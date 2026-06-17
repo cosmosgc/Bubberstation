@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/pointed/terrorize
 	name = "Terrorize"
-	desc = "Project yourself into a victim's mind, inflicting them with terror buildup. \
-		Prey will become increasingly terrified. Swatting terrified prey with an open hand will \
-		scare and disorient them."
+	desc = "Projete-se na mente de uma vítima, infligindo-lhe com terror.\
+Prey ficará cada vez mais aterrorizada. Sufocando presas aterrorizadas com uma mão aberta.\
+Assustá-los e desorientá-los."
 	button_icon_state = "terrify"
 	background_icon_state = "bg_alien"
 	overlay_icon_state = "bg_alien_border"
@@ -16,7 +16,7 @@
 /datum/action/cooldown/spell/pointed/terrorize/is_valid_target(atom/cast_on)
 	. = ..()
 	if(!ishuman(cast_on))
-		cast_on.balloon_alert(owner, "cannot be terrorized!")
+		cast_on.balloon_alert(owner, "Não pode ser aterrorizado!")
 		return FALSE
 
 	var/lit_tiles = 0
@@ -30,7 +30,7 @@
 			unlit_tiles++
 
 	if(lit_tiles > unlit_tiles)
-		cast_on.balloon_alert(owner, "must be in the dark!")
+		cast_on.balloon_alert(owner, "Deve estar no escuro!")
 		return FALSE //Having a light on you will usually block this, meaning you'll probably need to get an initial hit on the victim with the light eater
 
 /datum/action/cooldown/spell/pointed/terrorize/cast(mob/living/carbon/human/cast_on)

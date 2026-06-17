@@ -6,8 +6,8 @@
 
 /obj/item/clothing/mask/gas/modulator
 	name = "modified gas mask"
-	desc = "An older model of gas mask issued for use on station to help protect against airborne hazards. This one appears to be \
-		heavily modified, and the filter assembly has been replaced with a voice modulator to make the wearer sound more robotic."
+	desc = "Um modelo antigo de máscara de gás emitido para uso na estação para ajudar a proteger contra riscos aéreos. Este parece ser\
+altamente modificado, e o conjunto de filtro foi substituído por um modulador de voz para fazer o usuário soar mais robótico."
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	max_filters = 0
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 0.55, /datum/material/glass = SMALL_MATERIAL_AMOUNT)

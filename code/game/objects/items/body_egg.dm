@@ -1,6 +1,6 @@
 /obj/item/organ/body_egg
 	name = "body egg"
-	desc = "All slimy and yuck."
+	desc = "Todo viscoso e nojento."
 	icon_state = "innards"
 	visual = TRUE
 	zone = BODY_ZONE_CHEST

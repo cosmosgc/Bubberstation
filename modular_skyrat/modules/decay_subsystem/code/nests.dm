@@ -1,6 +1,6 @@
 /obj/structure/mob_spawner
 	name = "nest"
-	desc = "A nasty looking pile of sticks and debris."
+	desc = "Uma pilha de paus e detritos."
 	icon = 'modular_skyrat/modules/decay_subsystem/icons/nests.dmi'
 	icon_state = "nest"
 	density = FALSE
@@ -135,7 +135,7 @@
 
 /obj/structure/mob_spawner/spiders
 	name = "sticky cobwebs"
-	desc = "A mush of sticky cobwebs and nasty looking eggs..."
+	desc = "Um mush de teias de aranha pegajosas e ovos feios..."
 	icon_state = "nest_spider"
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
 	monster_types = list(/mob/living/basic/spider/giant/hunter, /mob/living/basic/spider/giant/)
@@ -143,7 +143,7 @@
 
 /obj/item/spider_egg
 	name = "spider egg"
-	desc = "A white egg with something crawling around inside. Looks... fragile."
+	desc = "Um ovo branco com algo rastejando por dentro. Parece frágil."
 	icon = 'modular_skyrat/modules/decay_subsystem/icons/loot.dmi'
 	icon_state = "spider_egg"
 
@@ -158,7 +158,7 @@
 
 /obj/structure/mob_spawner/bush
 	name = "bloody bush"
-	desc = "A bush... oozing blood?"
+	desc = "Um arbusto... sangue escorrendo?"
 	icon_state = "nest_grass"
 	light_color = LIGHT_COLOR_GREEN
 	monster_types = list(/mob/living/basic/killer_tomato)
@@ -167,7 +167,7 @@
 
 /obj/structure/mob_spawner/beehive
 	name = "beehive"
-	desc = "Filled with little beings that exist only to make your life a living hell."
+	desc = "Cheio de pequenos seres que existem apenas para fazer de sua vida um inferno."
 	icon_state = "nest_bee"
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	monster_types = list(/mob/living/basic/bee)
@@ -187,7 +187,7 @@
 
 /obj/structure/mob_spawner/beehive/toxic
 	name = "oozing beehive"
-	desc = "A beehive... it looks off however, it's oozing some kind of green glowing goop."
+	desc = "Uma colmeia... parece, no entanto, está exalando algum tipo de gosma verde brilhante."
 	icon_state = "nest_bee_toxic"
 	monster_types = list(/mob/living/basic/bee/toxin)
 	max_mobs = 6
@@ -195,7 +195,7 @@
 
 /obj/structure/mob_spawner/snake
 	name = "disgusting eggs"
-	desc = "These pulsating eggs are oozing out a puss like substance..."
+	desc = "Esses ovos pulsantes estão expelindo um pus como substância..."
 	icon_state = "nest_eggs"
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	monster_types = list(/mob/living/basic/snake)
@@ -204,7 +204,7 @@
 
 /obj/structure/mob_spawner/rats
 	name = "nasty nest"
-	desc = "A nest crawling with... something!"
+	desc = "Um ninho cheio de... alguma coisa!"
 	icon_state = "nest_rats"
 	light_color = LIGHT_COLOR_GREEN
 	max_mobs = 8
@@ -214,7 +214,7 @@
 
 /obj/structure/mob_spawner/grapes
 	name = "grapevine"
-	desc = "A grapevine... with... eggs?"
+	desc = "Uma videira... com... ovos?"
 	icon_state = "nest_grapes"
 	light_color = LIGHT_COLOR_PURPLE
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)

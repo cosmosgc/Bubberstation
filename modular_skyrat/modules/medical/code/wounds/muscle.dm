@@ -99,10 +99,10 @@
 /// Moderate (Muscle Tear)
 /datum/wound/muscle/moderate
 	name = "Muscle Tear"
-	desc = "Patient's muscle has torn, causing serious pain and reduced limb functionality."
-	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
-	examine_desc = "appears unnaturallly red and swollen"
-	occur_text = "swells up, its skin turning red"
+	desc = "O músculo do paciente rompeu, causando dor grave e redução da funcionalidade dos membros."
+	treat_text = "Uma tala apertada no membro afetado, bem como muito descanso e sono."
+	examine_desc = "Parece anormalmente vermelho e inchado."
+	occur_text = "Incha, sua pele fica vermelha"
 	severity = WOUND_SEVERITY_MODERATE
 	interaction_efficiency_penalty = 1.5
 	limp_slowdown = 2
@@ -124,10 +124,10 @@
 /datum/wound/muscle/severe
 	name = "Ruptured Tendon"
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
-	desc = "Patient's tendon has been severed, causing significant pain and near uselessness of limb."
-	treat_text = "A tight splint on the affected limb, as well as plenty of rest and sleep."
-	examine_desc = "is limp and awkwardly twitching, skin swollen and red"
-	occur_text = "twists in pain and goes limp, its tendon ruptured"
+	desc = "O tendão do paciente foi cortado, causando dor significativa e quase inutilidade do membro."
+	treat_text = "Uma tala apertada no membro afetado, bem como muito descanso e sono."
+	examine_desc = "é manco e estranhamente tremendo, a pele inchada e vermelha"
+	occur_text = "torções na dor e vai mancar, seu tendão rompido"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2
 	limp_slowdown = 5

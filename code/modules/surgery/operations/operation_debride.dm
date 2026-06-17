@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/debride
 	name = "debride infected flesh"
 	rnd_name = "Debridement"
-	desc = "Remove infected or necrotic flesh from a patient's wound to promote healing."
+	desc = "Remova a carne infectada ou necrótica da ferida de um paciente para promover a cura."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCALPEL = 1.25,
@@ -50,11 +50,11 @@
 		if(-INFINITY to 1)
 			return null
 		if(1 to 2)
-			progress_text = ", preparing to remove the last remaining bits of infection"
+			progress_text = ", preparando para remover os últimos pedaços de infecção"
 		if(2 to 4)
-			progress_text = ", steadily narrowing the remaining bits of infection"
+			progress_text = ", estreitando constantemente os restantes pedaços de infecção"
 		if(5 to INFINITY)
-			progress_text = ", though there's still quite a lot to excise"
+			progress_text = ", embora ainda há muito para excisar"
 
 	return progress_text
 

@@ -41,7 +41,7 @@
 	. = ..()
 
 /datum/objective/changeling_zombie_infect
-	explanation_text = "Infect at least 5 other victims."
+	explanation_text = "Infecte pelo menos 5 outras vítimas."
 	var/required_infections = 5
 	var/total_infections = 0
 

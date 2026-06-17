@@ -5,7 +5,7 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "orebox"
 	name = "ore box"
-	desc = "A heavy wooden box, which can be filled with a lot of ores or boulders"
+	desc = "Uma caixa de madeira pesada, que pode ser cheia de muitos minérios ou pedras."
 	density = TRUE
 	pressure_resistance = 5 * ONE_ATMOSPHERE
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 4)
@@ -52,7 +52,7 @@
 	if(I.use_tool(src, user, 50, volume = 50))
 		user.visible_message(span_notice("[user] pries \the [src] apart."),
 			span_notice("You pry apart \the [src]."),
-			span_hear("You hear splitting wood."))
+			span_hear("Você ouve madeira."))
 		deconstruct(TRUE)
 		return ITEM_INTERACT_SUCCESS
 

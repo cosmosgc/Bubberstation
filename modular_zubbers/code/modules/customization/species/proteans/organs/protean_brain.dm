@@ -10,7 +10,7 @@
 
 /obj/item/organ/brain/protean
 	name = "protean core"
-	desc = "An advanced positronic brain, typically found in the core of a protean."
+	desc = "Um cérebro positrônico avançado, tipicamente encontrado no núcleo de uma proteia."
 	icon = PROTEAN_ORGAN_SPRITE
 	icon_state = "posi1"
 	zone = BODY_ZONE_CHEST
@@ -29,7 +29,7 @@
 	handle_refactory(owner.get_organ_slot(ORGAN_SLOT_STOMACH))
 	handle_orchestrator(owner.get_organ_slot(ORGAN_SLOT_HEART))
 	if(owner.stat >= HARD_CRIT && !dead)
-		to_chat(owner, span_red("Your fragile refactory withers away with your mass reduced to scraps. Someone will have to help you."))
+		to_chat(owner, span_red("Sua frágil refração se desfaz com sua massa reduzida a restos. Alguém terá que te ajudar."))
 		dead = TRUE
 		owner.revive(list(HEAL_DAMAGE, HEAL_ORGANS), TRUE, TRUE) // So we dont get dead human inside of suit
 		qdel(owner.get_organ_slot(ORGAN_SLOT_STOMACH))
@@ -44,7 +44,7 @@
 	if(isnull(organ) || !istype(organ, /obj/item/organ/stomach/protean))
 		owner.adjust_brute_loss(3, forced = TRUE)
 		if(COOLDOWN_FINISHED(src, refactory_cooldown))
-			to_chat(owner, span_warning("Your mass is slowly degrading without your refactory!"))
+			to_chat(owner, span_warning("Sua massa está lentamente degradando sem sua refração!"))
 			COOLDOWN_START(src, refactory_cooldown, 30 SECONDS)
 
 /obj/item/organ/brain/protean/proc/handle_orchestrator(obj/item/organ) // If you're missing an orchestrator, you will have trouble walking.
@@ -58,7 +58,7 @@
 	if(isnull(organ) || !istype(organ, /obj/item/organ/heart/protean))
 		owner.KnockToFloor(TRUE, TRUE, 1 SECONDS)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/protean_slowdown, multiplicative_slowdown = 2)
-		to_chat(owner, span_warning("You're struggling to walk without your orchestrator!"))
+		to_chat(owner, span_warning("Está lutando para andar sem seu orquestrador!"))
 	else
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/protean_slowdown)
 
@@ -93,7 +93,7 @@
 		return
 	var/obj/item/mod/control/pre_equipped/protean/suit = protean.species_modsuit
 	if(dead)
-		to_chat(owner, span_warning("Your mass is destroyed. You are unable to leave."))
+		to_chat(owner, span_warning("Sua massa está destruída. Você é incapaz de sair."))
 		return
 	if(!do_after(owner, 5 SECONDS, suit, IGNORE_INCAPACITATED))
 		return
@@ -130,10 +130,10 @@
 	var/obj/item/organ/liver/protean/liver = owner.get_organ_slot(ORGAN_SLOT_LIVER)
 
 	if(stomach.metal <= PROTEAN_STOMACH_FULL * 0.6 && istype(stomach))
-		to_chat(owner, span_warning("Not enough metal to heal body!"))
+		to_chat(owner, span_warning("Não há metal suficiente para curar o corpo!"))
 		return
 	if(!istype(owner.loc, /obj/item/mod/control))
-		to_chat(owner, span_warning("Not in the open. You must be inside your suit!"))
+		to_chat(owner, span_warning("Não ao ar livre. Você deve estar dentro do seu terno!"))
 		return
 	var/datum/species/protean/species = owner.dna.species
 	if(!do_after(owner, 30 SECONDS, species.species_modsuit, IGNORE_INCAPACITATED))
@@ -172,7 +172,7 @@
 /obj/item/organ/brain/protean/proc/revive()
 	dead = FALSE
 	playsound(owner, 'sound/machines/ping.ogg', 30)
-	to_chat(owner, span_warning("You have regained all your mass!"))
+	to_chat(owner, span_warning("Você recuperou toda a sua massa!"))
 	owner.fully_heal()
 	owner.remove_traits(list(TRAIT_CRITICAL_CONDITION))
 

@@ -1,7 +1,7 @@
 
 ADMIN_VERB(dsay, R_NONE, "DSay", "Speak to the dead.", ADMIN_CATEGORY_GAME, message as text)
 	if(user.prefs.muted & MUTE_DEADCHAT)
-		to_chat(user, span_danger("You cannot send DSAY messages (muted)."), confidential = TRUE)
+		to_chat(user, span_danger("Não pode enviar mensagens do DSAY."), confidential = TRUE)
 		return
 
 	if (user.handle_spam_prevention(message,MUTE_DEADCHAT))
@@ -24,7 +24,7 @@ ADMIN_VERB(dsay, R_NONE, "DSay", "Speak to the dead.", ADMIN_CATEGORY_GAME, mess
 	BLACKBOX_LOG_ADMIN_VERB("Dsay")
 
 /client/proc/get_dead_say()
-	var/msg = input(src, null, "dsay \"text\"") as text|null
+	var/msg = input(src, null, "Dsay\"texto\"") as text|null
 	if (isnull(msg))
 		return
 	SSadmin_verbs.dynamic_invoke_verb(src, /datum/admin_verb/dsay, msg)

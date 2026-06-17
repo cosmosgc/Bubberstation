@@ -64,7 +64,7 @@
 //Overload Light: Breaks a light that's online and sends out lightning bolts to all nearby people.
 /datum/action/cooldown/spell/aoe/revenant/overload
 	name = "Overload Lights"
-	desc = "Directs a large amount of essence into nearby electrical lights, causing lights to shock those nearby."
+	desc = "Dirige uma grande quantidade de essência em luzes elétricas próximas, fazendo com que as luzes choquem as próximas."
 	button_icon_state = "overload_lights"
 	cooldown_time = 20 SECONDS
 
@@ -103,7 +103,7 @@
 //Defile: Corrupts nearby stuff, unblesses floor tiles.
 /datum/action/cooldown/spell/aoe/revenant/defile
 	name = "Defile"
-	desc = "Twists and corrupts the nearby area as well as dispelling holy auras on floors."
+	desc = "Torce e corrompe a área próxima, bem como dispersar auras sagradas no chão."
 	button_icon_state = "defile"
 	cooldown_time = 15 SECONDS
 	aoe_radius = 4
@@ -165,7 +165,7 @@
 //Malfunction: Makes bad stuff happen to robots and machines.
 /datum/action/cooldown/spell/aoe/revenant/malfunction
 	name = "Malfunction"
-	desc = "Corrupts and damages nearby machines and mechanical objects."
+	desc = "Corruptos e danos máquinas próximas e objetos mecânicos."
 	button_icon_state = "malfunction"
 	cooldown_time = 20 SECONDS
 
@@ -213,7 +213,7 @@
 //Blight: Infects nearby humans and in general messes living stuff up.
 /datum/action/cooldown/spell/aoe/revenant/blight
 	name = "Blight"
-	desc = "Causes nearby living things to waste away."
+	desc = "Faz com que as coisas vivas próximas desperdicem."
 	button_icon_state = "blight"
 	cooldown_time = 20 SECONDS
 
@@ -263,8 +263,8 @@
 
 /datum/action/cooldown/spell/aoe/revenant/haunt_object
 	name = "Haunt Object"
-	desc = "Empower nearby objects to you with ghostly energy, causing them to attack nearby mortals. \
-		Items closer to you are more likely to be haunted."
+	desc = "Capacite objetos próximos com energia fantasmagórica, fazendo com que ataquem mortais próximos.\
+Itens mais próximos de você são mais propensos a serem assombrados."
 	button_icon_state = "r_haunt"
 	max_targets = 7
 	aoe_radius = 5

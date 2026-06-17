@@ -215,7 +215,7 @@
 
 /obj/structure/closet/secure_closet/brig/genpop
 	name = "genpop storage locker"
-	desc = "Used for storing the belongings of genpop's tourists visiting the locals."
+	desc = "Usado para armazenar os pertences dos turistas do Genpop visitando os locais."
 	access_choices = FALSE
 	paint_jobs = null
 

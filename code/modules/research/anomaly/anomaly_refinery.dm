@@ -12,7 +12,7 @@
  */
 /obj/machinery/research/anomaly_refinery
 	name = "anomaly refinery"
-	desc = "An advanced machine capable of implosion-compressing raw anomaly cores into finished artifacts. Also equipped with state of the art bomb prediction software."
+	desc = "Uma máquina avançada capaz de implosão comprimindo núcleos de anomalia em artefatos acabados. Também equipado com software de previsão de bomba de última geração."
 	circuit = /obj/item/circuitboard/machine/anomaly_refinery
 	icon = 'icons/obj/machines/research.dmi'
 	base_icon_state = "explosive_compressor"
@@ -135,7 +135,7 @@
 /obj/machinery/research/anomaly_refinery/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
 	if (obj_flags & EMAGGED)
-		balloon_alert(user, "already hacked!")
+		balloon_alert(user, "Já hackeou!")
 		return
 
 	obj_flags |= EMAGGED

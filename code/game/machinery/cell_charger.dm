@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger
 	name = "cell charger"
-	desc = "It charges power cells."
+	desc = "Carrega células de energia."
 	icon = 'icons/obj/machines/cell_charger.dmi'
 	icon_state = "ccharger"
 	power_channel = AREA_USAGE_EQUIP
@@ -62,7 +62,7 @@
 		to_chat(user, span_warning("[src] isn't attached to the ground!"))
 		return ITEM_INTERACT_BLOCKING
 	if(charging)
-		to_chat(user, span_warning("There is already a cell in the charger!"))
+		to_chat(user, span_warning("Já tem uma cela no carregador!"))
 		return ITEM_INTERACT_BLOCKING
 
 	var/area/charge_area = get_area(src)

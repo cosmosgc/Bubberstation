@@ -55,7 +55,7 @@
 	if(data[VORE_BELLY_KEY] != VORE_BELLY_VERSION)
 		apply_migrations(data)
 	name = permissive_sanitize_name(data["name"]) || "(Bad Name)"
-	desc = STRIP_HTML_SIMPLE(data["desc"], MAX_FLAVOR_LEN) || "(Bad Desc)"
+	desc = STRIP_HTML_SIMPLE(data["desc"], MAX_FLAVOR_LEN) || "(Desc ruim)"
 	digest_mode = GLOB.digest_modes[sanitize_text(data["digest_mode"])] || GLOB.digest_modes[DIGEST_MODE_SAFE]
 
 	can_taste = sanitize_integer(data["can_taste"], FALSE, TRUE, TRUE)
@@ -102,7 +102,7 @@
 	var/maybe_name = data["name"]
 	to_chat(usr, span_warning("Attempting to load VRDB belly '[maybe_name]'..."))
 	name = permissive_sanitize_name(maybe_name) || "(Bad Name)"
-	desc = STRIP_HTML_SIMPLE(data["desc"], MAX_FLAVOR_LEN) || "(Bad Desc)"
+	desc = STRIP_HTML_SIMPLE(data["desc"], MAX_FLAVOR_LEN) || "(Desc ruim)"
 	digest_mode = GLOB.digest_modes[sanitize_text(data["mode"])] || GLOB.digest_modes[DIGEST_MODE_SAFE]
 
 	can_taste = sanitize_integer(data["can_taste"], FALSE, TRUE, TRUE)

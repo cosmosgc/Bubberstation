@@ -72,7 +72,7 @@
 /datum/component/stun_n_cuff/proc/cuff_target(mob/living/carbon/human_target)
 	if(human_target.handcuffed)
 		var/mob/living/living_parent = parent
-		living_parent.balloon_alert(human_target, "already cuffed!")
+		living_parent.balloon_alert(human_target, "Já algemado!")
 		return
 
 	playsound(parent, 'sound/items/weapons/cablecuff.ogg', 30, TRUE)

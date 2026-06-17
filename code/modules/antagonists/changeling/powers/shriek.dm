@@ -1,7 +1,7 @@
 /datum/action/changeling/resonant_shriek
 	name = "Resonant Shriek"
-	desc = "Our lungs and vocal cords shift, allowing us to emit a noise that deafens and confuses non-changelings, causing them to lose some control over their movements. \
-		Best used to stop prey from escaping. Doesn't work well in a vacuum. Costs 20 chemicals."
+	desc = "Nossos pulmões e cordas vocais mudam, permitindo-nos emitir um ruído que ensurdece e confunde não-mudantes, fazendo com que percam algum controle sobre seus movimentos.\
+Melhor usado para impedir a presa de escapar. Não funciona bem no vácuo. Custa 20 produtos químicos."
 	helptext = "Emits a high-frequency sound that confuses and deafens humans to hamper their movement, blows out nearby lights and overloads cyborg sensors."
 	button_icon_state = "resonant_shriek"
 	category = "combat"
@@ -14,7 +14,7 @@
 /datum/action/changeling/resonant_shriek/sting_action(mob/user)
 	..()
 	if(user.movement_type & VENTCRAWLING)
-		user.balloon_alert(user, "can't shriek in pipes!")
+		user.balloon_alert(user, "Não posso gritar em canos!")
 		return FALSE
 	playsound(user, 'sound/effects/screech.ogg', 100)
 	for(var/mob/living/living in get_hearers_in_view(4, user))
@@ -34,7 +34,7 @@
 
 /datum/action/changeling/dissonant_shriek
 	name = "Technophagic Shriek"
-	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics. Breaks headsets and cameras, and can sometimes break laser weaponry, doors, and modsuits. Costs 20 chemicals."
+	desc = "Mudamos nossas cordas vocais para liberar um som de alta frequência que sobrecarrega os eletrônicos próximos. Quebra fones de ouvido e câmeras, e às vezes pode quebrar armas a laser, portas e modsuits. Custa 20 produtos químicos."
 	button_icon_state = "technophagic_shriek"
 	category = "combat"
 	chemical_cost = 20
@@ -45,11 +45,11 @@
 /datum/action/changeling/dissonant_shriek/sting_action(mob/user)
 	..()
 	if(user.movement_type & VENTCRAWLING)
-		user.balloon_alert(user, "can't shriek in pipes!")
+		user.balloon_alert(user, "Não posso gritar em canos!")
 		return FALSE
 	//BUBBER EDIT: NO PULSE IF YOU'RE ON COOLDOWN
 	if(!COOLDOWN_FINISHED(src, dissonant_shriek_cooldown))
-		user.balloon_alert(user, "throat is sore!")
+		user.balloon_alert(user, "A garganta está doendo!")
 		return FALSE
 	//BUBBER EDIT: NO PULSE IF YOU'RE ON COOLDOWN
 	empulse(get_turf(user), 2, 5, 1, emp_source = src)

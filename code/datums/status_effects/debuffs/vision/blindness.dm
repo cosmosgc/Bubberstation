@@ -71,7 +71,7 @@
 
 /atom/movable/screen/alert/status_effect/blind
 	name = "Blind"
-	desc = "You can't see! This may be caused by a genetic defect, eye trauma, being unconscious, or something covering your eyes."
+	desc = "Você não pode ver! Isso pode ser causado por um defeito genético, trauma ocular, estar inconsciente, ou algo cobrindo seus olhos."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "blind"
 
@@ -108,7 +108,7 @@
 	// If we should be deleted, give a message letting them know
 	var/mob/living/stored_owner = owner
 	if(remove_duration(2 SECONDS))
-		to_chat(stored_owner, span_green("Your eyes start to feel better!"))
+		to_chat(stored_owner, span_green("Seus olhos começam a se sentir melhor!"))
 		return
 
 	// Otherwise add a chance to let them know that it's working

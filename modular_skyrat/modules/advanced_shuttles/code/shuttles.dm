@@ -85,7 +85,7 @@
 
 /obj/machinery/computer/shuttle/arrivals
 	name = "arrivals shuttle control"
-	desc = "The terminal used to control the arrivals interlink shuttle."
+	desc = "O terminal usado para controlar as chegadas interlink shuttle."
 	shuttleId = "arrivals_shuttle"
 	possible_destinations = "arrivals_stationary;arrivals_shuttle"
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/computer.dmi'
@@ -104,7 +104,7 @@
 
 /obj/machinery/computer/shuttle/arrivals/recall
 	name = "arrivals shuttle recall terminal"
-	desc = "Use this if your friends left you behind."
+	desc = "Use isso se seus amigos te deixarem para trás."
 	possible_destinations = "arrivals_stationary;arrivals_shuttle"
 
 /*
@@ -129,7 +129,7 @@
 
 /datum/map_template/shuttle/whiteship/blueshift
 	name = "SFS Christian"
-	description = "A large corvette that seems to have come under attack by some kind of alien infestation. A true asset if it's cleared out and repaired."
+	description = "Um corvette grande que parece ter sido atacado por algum tipo de infestação alienígena. Um verdadeiro recurso se for limpo e reparado."
 	prefix = "_maps/shuttles/skyrat/"
 	port_id = "whiteship"
 	suffix = "blueshift"
@@ -139,7 +139,7 @@
 
 /datum/map_template/shuttle/whiteship/ouroboros
 	name = "JN Chasse-Galerie"
-	description = "A small Jim Nortons shuttle meant to be a mobile cafe. No hostiles onboard, but multiple corpses of Jim Nortons employees."
+	description = "Um pequeno ônibus Jim Nortons era para ser um café móvel. Nenhum inimigo a bordo, mas vários corpos de empregados de Jim Norton."
 	prefix = "_maps/shuttles/skyrat/"
 	port_id = "whiteship"
 	suffix = "ouroboros"
@@ -155,7 +155,7 @@
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 	name = "Standard Emergency Shuttle"
-	description = "Nanotrasen's standard issue emergency shuttle."
+	description = "A nave de emergência padrão de Nanotrasen."
 	occupancy_limit = 60
 
 /datum/map_template/shuttle/labour/skyrat

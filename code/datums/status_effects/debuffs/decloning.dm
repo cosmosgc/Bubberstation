@@ -13,7 +13,7 @@
 /datum/status_effect/decloning/on_apply()
 	if(owner.has_reagent(/datum/reagent/medicine/mutadone))
 		return FALSE
-	to_chat(owner, span_userdanger("You've noticed your body has begun deforming. This can't be good."))
+	to_chat(owner, span_userdanger("Você notou que seu corpo começou a deformar. Isso não pode ser bom."))
 	return TRUE
 
 /datum/status_effect/decloning/on_remove()
@@ -25,10 +25,10 @@
 		var/strike_restore = MUTADONE_HEAL * seconds_between_ticks
 
 		if(strikes_left <= 50 && strikes_left + strike_restore > 50)
-			to_chat(owner, span_notice("Controlling your muscles feels easier now."))
+			to_chat(owner, span_notice("Controlar seus músculos parece mais fácil agora."))
 			owner.remove_movespeed_modifier(/datum/movespeed_modifier/decloning)
 		else if(SPT_PROB(5, seconds_between_ticks))
-			to_chat(owner, span_warning("Your body is growing and shifting back into place."))
+			to_chat(owner, span_warning("Seu corpo está crescendo e voltando ao lugar."))
 
 		strikes_left = min(strikes_left + strike_restore, 100)
 
@@ -44,7 +44,7 @@
 
 	var/strike_reduce = 3
 	if(strikes_left > 50 && strikes_left - strike_reduce <= 50)
-		to_chat(owner, span_danger("You're having a hard time controlling your muscles."))
+		to_chat(owner, span_danger("Está tendo dificuldade em controlar seus músculos."))
 		owner.add_movespeed_modifier(/datum/movespeed_modifier/decloning)
 
 	strikes_left = max(strikes_left - strike_reduce, 0)
@@ -57,11 +57,11 @@
 			"You feel your limbs shifting around.",
 		)))
 	else if(prob(33))
-		to_chat(owner, span_danger("You are twitching uncontrollably."))
+		to_chat(owner, span_danger("Você está se contorcendo incontrolavelmente."))
 		owner.set_jitter_if_lower(30 SECONDS)
 
 	if(strikes_left == 0)
-		owner.visible_message(span_danger("[owner]'s skin turns to dust!"), span_boldwarning("Your skin turns to dust!"))
+		owner.visible_message(span_danger("[owner]'s skin turns to dust!"), span_boldwarning("Sua pele vira pó!"))
 		owner.dust()
 		return
 
@@ -76,7 +76,7 @@
 
 /atom/movable/screen/alert/status_effect/decloning
 	name = "Cellular Meltdown"
-	desc = "Your body is deforming, and doesn't feel like it's going to hold up much longer. You are going to need treatment soon."
+	desc = "Seu corpo está deformando, e não parece que vai aguentar muito mais tempo. Vai precisar de tratamento em breve."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "dna_melt"
 

@@ -62,7 +62,7 @@
 			parts += "<span class='neutraltext big'>Neutral Victory</span>"
 			parts += "<B>Mission aborted!</B>"
 
-	var/text = span_header("<br>The syndicate operatives were:")
+	var/text = span_header("<br>Os agentes do Sindicato Eram:")
 	var/purchases = ""
 	var/TC_uses = 0
 	LAZYINITLIST(GLOB.uplink_purchase_logs_by_key)
@@ -162,12 +162,12 @@
 		poll_time = 30 SECONDS,
 		ignore_category = POLL_IGNORE_SYNDICATE,
 		alert_pic = /obj/structure/sign/poster/contraband/gorlex_recruitment,
-		role_name_text = "emergency syndicate reinforcement",
+		role_name_text = "Reforço do sindicato de emergência.",
 		amount_to_pick = 1,
 	)
 
 	if(isnull(chosen_one))
-		tgui_alert(admin, "No candidates found.", "Recruitment Shortage", list("OK"))
+		tgui_alert(admin, "Nenhum candidato encontrado.", "Recruitment Shortage", list("OK"))
 		return
 
 

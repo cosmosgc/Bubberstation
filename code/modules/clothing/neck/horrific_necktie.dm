@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "eldritch_tie"
 	post_init_icon_state = null
-	desc = "The necktie is adorned with a garish pattern. It's disturbingly vivid. Somehow you feel as if it would be wrong to ever take it off. It's your friend now. You will betray it if you change it for some boring scarf."
+	desc = "A gravata está adornada com um padrão brilhante. É perturbadormente vívido. De alguma forma você sente como se fosse errado tirá-lo. É seu amigo agora. Vai traí-lo se trocar por um cachecol chato."
 	clip_on = TRUE
 	greyscale_config = null
 	greyscale_config_worn = null
@@ -73,10 +73,10 @@
 /obj/item/clothing/neck/tie/disco/attack_ghost(mob/hopeful_ghost)
 	. = ..()
 	if (!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
-		to_chat(hopeful_ghost, span_warning("Ghost roles have been temporarily disabled!"))
+		to_chat(hopeful_ghost, span_warning("Os papéis dos fantasmas foram temporariamente desativados!"))
 		return
 	if (!SSticker.HasRoundStarted())
-		to_chat(hopeful_ghost, span_warning("You cannot assume control of this until after the round has started!"))
+		to_chat(hopeful_ghost, span_warning("Você não pode assumir o controle disso até que a rodada comece!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 	became_player_controlled(hopeful_ghost)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -94,7 +94,7 @@
 /obj/item/clothing/neck/tie/disco/proc/on_deleting(datum/source, force)
 	SIGNAL_HANDLER
 	possessed_souls -= source
-	to_chat(hears_us.current, span_notice("You feel like a voice just exited your mind."))
+	to_chat(hears_us.current, span_notice("Parece que uma voz saiu da sua mente."))
 
 ///Creates the ghost itself and adds them to the list of possessed souls in the tie.
 /obj/item/clothing/neck/tie/disco/proc/create_ghost(mob/new_ghost)
@@ -127,9 +127,9 @@
 
 /mob/living/basic/tie/Login()
 	. = ..()
-	to_chat(src, span_notice("You are the horrific necktie of the person who summoned you, \
-		the only person who is able to hear you. Like a voice in their head, you are their reasoning, \
-		their second-in-command. Take good care of them."))
+	to_chat(src, span_notice("Você é a gravata horrível da pessoa que te chamou,\
+A única pessoa que é capaz de ouvi-lo. Como uma voz na cabeça deles, você é o raciocínio deles.\
+seu segundo em comando. Cuide bem deles."))
 
 /mob/living/basic/tie/Logout()
 	. = ..()

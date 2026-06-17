@@ -47,11 +47,11 @@
 		return
 
 	if(pounce_cooldown > world.time)
-		to_chat(src, span_alertalien("You are too fatigued to pounce right now!"))
+		to_chat(src, span_alertalien("Você está muito cansado para atacar agora!"))
 		return
 
 	if(!has_gravity() || !A.has_gravity())
-		to_chat(src, span_alertalien("It is unsafe to leap without gravity!"))
+		to_chat(src, span_alertalien("Não é seguro saltar sem gravidade!"))
 		//It's also extremely buggy visually, so it's balance+bugfix
 		return
 

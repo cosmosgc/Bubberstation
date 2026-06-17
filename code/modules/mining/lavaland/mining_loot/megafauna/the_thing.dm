@@ -1,6 +1,6 @@
 /datum/action/innate/brain_undeployment
 	name = "Disconnect from shell"
-	desc = "Stop controlling your shell and resume normal core operations."
+	desc = "Pare de controlar sua concha e retome as operações normais."
 	button_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "ai_core"
 
@@ -14,7 +14,7 @@
 
 /obj/item/organ/brain/cybernetic/ai
 	name = "AI-uplink brain"
-	desc = "Can be inserted into a body with NO ORGANIC INTERNAL ORGANS (robotic organs only) to allow AIs to control it. Comes with its own health sensors beacon. MUST be a humanoid or bad things happen to the consciousness."
+	desc = "Pode ser inserido em um corpo sem órgãos internos orgânicos (apenas órgãos robóticos) para permitir que os IA o controlem. Vem com seus próprios sensores de saúde. Deve ser um humanóide ou coisas ruins acontecem com a consciência."
 	can_smoothen_out = FALSE
 	/// if connected, our AI
 	var/mob/living/silicon/ai/mainframe
@@ -98,11 +98,11 @@
 	lines += "Target is currently [!HAS_TRAIT(owner, TRAIT_INCAPACITATED) ? "functional" : "incapacitated"]"
 	lines += "Estimated organic/inorganic integrity: [owner.health]"
 	if(mainframe)
-		lines += span_warning("Already occupied by another digital entity.")
+		lines += span_warning("Já ocupada por outra entidade digital.")
 	else if(connected_ai && connected_ai != user)
-		lines += span_warning("Uplink is locked by another digital entity.")
+		lines += span_warning("O link está bloqueado por outra entidade digital.")
 	else if(!is_sufficiently_augmented())
-		lines += span_warning("Organic organs detected. Robotic organs only, cannot take over.")
+		lines += span_warning("Órgãos orgânicos detectados. Só órgãos robóticos, não podem assumir.")
 	else
 		lines += "<a href='byond://?src=[REF(src)];ai_take_control=[REF(user)]'>[span_boldnotice("Take control?")]</a><br>"
 
@@ -116,13 +116,13 @@
 	if(isnull(AI))
 		return
 	if(AI.controlled_equipment)
-		to_chat(AI, span_warning("You are already loaded into an onboard computer!"))
+		to_chat(AI, span_warning("Você já está carregado em um computador de bordo!"))
 		return
 	if(!SScameras.is_visible_by_cameras(owner))
-		to_chat(AI, span_warning("Target is no longer near active cameras."))
+		to_chat(AI, span_warning("O alvo não está mais perto das câmeras."))
 		return
 	if(!isturf(AI.loc))
-		to_chat(AI, span_warning("You aren't in your core!"))
+		to_chat(AI, span_warning("Você não está no seu centro!"))
 		return
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(undeploy))
@@ -131,7 +131,7 @@
 	ADD_TRAIT(AI.mind, TRAIT_UNCONVERTABLE, REF(src))
 	ADD_TRAIT(AI, TRAIT_MIND_TEMPORARILY_GONE, REF(src))
 	AI.mind.transfer_to(owner)
-	to_chat(owner, span_boldbig("You are still considered a silicon/cyborg/AI. Follow your laws."))
+	to_chat(owner, span_boldbig("Você ainda é considerado um silício/ciborgue/AI. Siga suas leis."))
 
 /obj/item/organ/brain/cybernetic/ai/proc/deploy_init(mob/living/silicon/ai/AI)
 	//todo camera maybe
@@ -193,10 +193,10 @@
 /obj/item/organ/brain/cybernetic/ai/proc/on_organ_gain(datum/source, obj/item/organ/new_organ, special)
 	SIGNAL_HANDLER
 	if(!is_sufficiently_augmented())
-		to_chat(owner, span_danger("Connection failure. Organics detected."))
+		to_chat(owner, span_danger("Falha na conexão. Orgânica detectada."))
 		undeploy()
 
 /obj/item/organ/brain/cybernetic/ai/proc/ai_deleted(datum/source)
 	SIGNAL_HANDLER
-	to_chat(owner, span_danger("Your core has been rendered inoperable..."))
+	to_chat(owner, span_danger("Seu núcleo ficou inoperável..."))
 	undeploy()

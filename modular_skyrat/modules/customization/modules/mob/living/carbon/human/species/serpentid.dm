@@ -99,49 +99,49 @@
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = FA_ICON_SHIELD,
 		SPECIES_PERK_NAME = "Durable Chitin",
-		SPECIES_PERK_DESC = "The Giant Armored Serpentid chitin is very robust and protects them from pressure and low temperature hazards, while also providing decent brute resistance."
+		SPECIES_PERK_DESC = "A quitina Serpentida Armada Gigante é muito robusta e os protege dos riscos de pressão e baixa temperatura, enquanto também proporciona resistência bruta decente."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = FA_ICON_WEIGHT_HANGING,
 		SPECIES_PERK_NAME = "Heavy Skeleton",
-		SPECIES_PERK_DESC = "Giant Armored Serpentid are large and heavy, this makes them excellent at avoiding slipping and being grabbed."
+		SPECIES_PERK_DESC = "Serpentida Armada Gigante são grandes e pesados, isso os torna excelentes em evitar escorregar e ser pego."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 		SPECIES_PERK_ICON = FA_ICON_USER_NINJA,
 		SPECIES_PERK_NAME = "Active Camouflage",
-		SPECIES_PERK_DESC = "The cells in a Giant Armored Serpentid's body are able to camouflage themselves to an extent, making the GAS appear translucent to the naked eye."
+		SPECIES_PERK_DESC = "As células do corpo de uma Serpentida Armada Gigante são capazes de se camuflar até certo ponto, fazendo o SGA parecer translúcido a olho nu."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 		SPECIES_PERK_ICON = FA_ICON_EYE,
 		SPECIES_PERK_NAME = "Shielded Eyes",
-		SPECIES_PERK_DESC = "Giant Armored Serpentid have sensitive eyes, luckily they have eyeshields that can be used to make up for this."
+		SPECIES_PERK_DESC = "Serpentida Armada Gigante tem olhos sensíveis, felizmente eles têm escudos que podem ser usados para compensar isso."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 		SPECIES_PERK_ICON = FA_ICON_FACE_ANGRY,
 		SPECIES_PERK_NAME = "Threat Display",
-		SPECIES_PERK_DESC = "Giant Armored Serpentid are not good at communication, however, they can perform a threat display to show when they want to attack someone."
+		SPECIES_PERK_DESC = "Serpentida Armada Gigante não são bons em comunicação, no entanto, eles podem executar uma exibição de ameaça para mostrar quando querem atacar alguém."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "star-of-life",
 		SPECIES_PERK_NAME = "Custom Body",
-		SPECIES_PERK_DESC = "Giant Armored Serpentid have a non-humanoid body and can't wear most clothes."
+		SPECIES_PERK_DESC = "Serpentida Armada Gigante tem um corpo não humanoide e não pode usar a maioria das roupas."
 	))
 
 	perk_descriptions += list(list(
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = FA_ICON_TEMPERATURE_HALF,
 		SPECIES_PERK_NAME = "Cold-Blooded",
-		SPECIES_PERK_DESC = "Giant Armored Serpentid are a cold blooded species and are vulnerable to temperature changes in their environment."
+		SPECIES_PERK_DESC = "Serpentida Armada Gigante são uma espécie de sangue frio e são vulneráveis a mudanças de temperatura em seu ambiente."
 	))
 
 	return perk_descriptions
@@ -194,7 +194,7 @@
 
 /obj/item/organ/eyes/serpentid
 	name = "compound eyes"
-	desc = "Small orange orbs."
+	desc = "Pequenas esferas de laranja."
 	icon = 'modular_skyrat/modules/organs/icons/serpentid_organs.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
@@ -210,7 +210,7 @@
 	icon = 'modular_skyrat/modules/organs/icons/serpentid_organs.dmi'
 	icon_state = "lungs"
 
-	cold_message = "You can't stand the freezing cold with every breath you take!"
+	cold_message = "Você não suporta o frio congelante a cada respiração!"
 	cold_level_1_threshold = SERPENTID_COLD_THRESHOLD_1
 	cold_level_2_threshold = SERPENTID_COLD_THRESHOLD_2
 	cold_level_3_threshold = SERPENTID_COLD_THRESHOLD_3
@@ -220,7 +220,7 @@
 	cold_damage_type = BRUTE
 
 
-	hot_message = "You can't stand the searing heat with every breath you take!"
+	hot_message = "Você não suporta o calor abrasador a cada respiração!"
 	heat_level_1_threshold = SERPENTID_HEAT_THRESHOLD_1
 	heat_level_2_threshold = SERPENTID_HEAT_THRESHOLD_2
 	heat_level_3_threshold = SERPENTID_HEAT_THRESHOLD_3

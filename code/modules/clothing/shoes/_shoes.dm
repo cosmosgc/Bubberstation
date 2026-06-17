@@ -4,7 +4,7 @@
 	lefthand_file = 'icons/mob/inhands/clothing/shoes_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/shoes_righthand.dmi'
 	abstract_type = /obj/item/clothing/shoes
-	desc = "Comfortable-looking shoes."
+	desc = "Sapatos confortáveis."
 	pickup_sound = 'sound/items/handling/shoes/sneakers_pickup1.ogg'
 	drop_sound = 'sound/items/handling/shoes/sneakers_drop1.ogg'
 	equip_sound = 'sound/items/equip/sneakers_equip1.ogg'

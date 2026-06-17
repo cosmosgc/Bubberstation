@@ -1,6 +1,6 @@
 /obj/item/weldingtool/electric
 	name = "electrical welding tool"
-	desc = "An experimental welding tool capable of welding functionality through the use of electricity. The flame seems almost cold."
+	desc = "Uma ferramenta de solda experimental capaz de soldar a funcionalidade através do uso de eletricidade. A chama parece quase fria."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "elwelder"
 	light_power = 1

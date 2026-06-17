@@ -39,7 +39,7 @@
 	else if(istype(old_headgear, /obj/item/clothing/mask/chameleon/drone))
 		new_headgear = new /obj/item/clothing/head/chameleon/drone(droney)
 	else
-		to_chat(owner, span_warning("You shouldn't be able to toggle a camogear helmetmask if you're not wearing it."))
+		to_chat(owner, span_warning("Você não deveria ser capaz de mudar uma máscara de capacete de camuflagem se você não está usando."))
 		return FALSE
 	droney.dropItemToGround(target, force = TRUE)
 	droney.equip_to_slot_or_del(new_headgear, ITEM_SLOT_HEAD)

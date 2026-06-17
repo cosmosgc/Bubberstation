@@ -11,7 +11,7 @@
 
 /obj/machinery/brm
 	name = "boulder retrieval matrix"
-	desc = "A teleportation matrix used to retrieve boulders excavated by mining NODEs from ore vents."
+	desc = "Uma matriz de teletransporte usada para recuperar pedregulhos escavados pela mineração de NODEs de respiradouros de minério."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "brm"
 	base_icon_state = "brm"
@@ -123,7 +123,7 @@
 
 	var/result = pre_collect_boulder()
 	if(result == TURF_BLOCKED_BY_BOULDER)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "Sem espaço!")
 	else if(result)
 		balloon_alert(user, "teleporting...")
 	COOLDOWN_START(src, manual_teleport_cooldown, TELEPORTATION_TIME)
@@ -143,10 +143,10 @@
 	if(!COOLDOWN_FINISHED(src, manual_teleport_cooldown))
 		return FALSE
 	if(panel_open)
-		balloon_alert(user, "close panel first!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return FALSE
 	if(batch_processing)
-		balloon_alert(user, "batch still processing!")
+		balloon_alert(user, "O lote ainda está processando!")
 		return FALSE
 	playsound(src, MANUAL_TELEPORT_SOUND, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -160,7 +160,7 @@
 
 	var/result = pre_collect_boulder()
 	if(result == TURF_BLOCKED_BY_BOULDER)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "Sem espaço!")
 	else if(result)
 		balloon_alert(user, "teleporting...")
 
@@ -177,7 +177,7 @@
 
 	var/result = pre_collect_boulder()
 	if(result == TURF_BLOCKED_BY_BOULDER)
-		balloon_alert(user, "no space!")
+		balloon_alert(user, "Sem espaço!")
 	else if(result)
 		balloon_alert(user, "teleporting...")
 
@@ -190,7 +190,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "Ancore-o primeiro!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	toggle_auto_on(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -206,10 +206,10 @@
 	PRIVATE_PROC(TRUE)
 
 	if(panel_open)
-		balloon_alert(user, "close panel first!")
+		balloon_alert(user, "Feche o painel primeiro!")
 		return
 	if(!anchored)
-		balloon_alert(user, "anchor it first!")
+		balloon_alert(user, "Ancore-o primeiro!")
 		return
 	if(!is_operational || machine_stat & (BROKEN | NOPOWER))
 		return
@@ -226,7 +226,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || panel_open)
 		return
 	if(!anchored)
-		balloon_alert(user, "unanchored!")
+		balloon_alert(user, "Sem ancoração!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	toggle_auto_on(user)
@@ -239,7 +239,7 @@
 	if(!user.can_perform_action(src, ALLOW_SILICON_REACH | FORBID_TELEKINESIS_REACH))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!anchored)
-		balloon_alert(user, "unanchored!")
+		balloon_alert(user, "Sem ancoração!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	toggle_auto_on(user)

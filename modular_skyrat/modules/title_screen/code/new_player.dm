@@ -109,7 +109,7 @@
 		play_lobby_button_sound()
 		// Prevent readying up after the round has begun setting up or is already playing
 		if(SSticker.current_state >= GAME_STATE_SETTING_UP)
-			to_chat(src, span_notice("The round is starting. You cannot ready up at this time."))
+			to_chat(src, span_notice("A rodada está começando. Você não pode se preparar agora."))
 			return FALSE
 		if(CONFIG_GET(flag/min_flavor_text))
 			var/datum/preferences/preferences = client.prefs
@@ -219,7 +219,7 @@
 	if (!client || client.interviewee)
 		return
 	if(!length(GLOB.lobby_station_traits))
-		to_chat(src, span_warning("There are currently no job traits available!"))
+		to_chat(src, span_warning("Atualmente, não há traços de trabalho disponíveis!"))
 		return
 	var/list/available_lobby_station_traits = list()
 	for (var/datum/station_trait/trait as anything in GLOB.lobby_station_traits)
@@ -228,7 +228,7 @@
 		available_lobby_station_traits += trait
 
 	if(!LAZYLEN(available_lobby_station_traits))
-		to_chat(src, span_warning("There are currently no job traits available!"))
+		to_chat(src, span_warning("Atualmente, não há traços de trabalho disponíveis!"))
 		return
 
 	var/datum/station_trait/clicked_trait = tgui_input_list(src, "Select a job trait to sign up for:", "Job Traits", available_lobby_station_traits)

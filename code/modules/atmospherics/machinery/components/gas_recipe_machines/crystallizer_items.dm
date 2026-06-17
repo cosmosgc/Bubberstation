@@ -1,6 +1,6 @@
 /obj/item/hypernoblium_crystal
 	name = "Hypernoblium Crystal"
-	desc = "Crystallized oxygen and hypernoblium stored in a bottle to pressure-proof your clothes or stop reactions occurring in portable atmospheric devices."
+	desc = "Oxigênio cristalizado e hipernoblium armazenados em uma garrafa para proteger a pressão de suas roupas ou parar reações ocorrendo em dispositivos atmosféricos portáteis."
 	icon = 'icons/obj/pipes_n_cables/atmos.dmi'
 	icon_state = "hypernoblium_crystal"
 	var/uses = 1
@@ -9,7 +9,7 @@
 	var/obj/machinery/portable_atmospherics/atmos_device = interacting_with
 	var/obj/item/clothing/worn_item = interacting_with
 	if(!istype(worn_item) && !istype(atmos_device))
-		to_chat(user, span_warning("The crystal can only be used on clothing and portable atmospheric devices!"))
+		to_chat(user, span_warning("O cristal só pode ser usado em roupas e dispositivos atmosféricos portáteis!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(istype(atmos_device))
@@ -40,7 +40,7 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/nitrium_crystal
-	desc = "A weird brown crystal, it smokes when broken"
+	desc = "Um cristal marrom estranho, fuma quando quebrado."
 	name = "nitrium crystal"
 	icon = 'icons/obj/pipes_n_cables/atmos.dmi'
 	icon_state = "nitrium_crystal"

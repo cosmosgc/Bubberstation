@@ -1,7 +1,7 @@
 /obj/item/fish/sand_surfer
 	name = "sand surfer"
 	fish_id = "sand_surfer"
-	desc = "A bronze alien \"fish\" living and swimming underneath faraway sandy places."
+	desc = "Um alienígena de bronze.\"peixe\"Vivendo e nadando debaixo de lugares distantes."
 	icon_state = "sand_surfer"
 	sprite_height = 6
 	sprite_width = 6
@@ -21,7 +21,7 @@
 /obj/item/fish/sand_crab
 	name = "burrower crab"
 	fish_id = "sand_crab"
-	desc = "A sand-dwelling crustacean. It looks like a crab and tastes like a crab, but waddles like a fish."
+	desc = "Um crustáceo que vive na areia. Parece um caranguejo e tem gosto de caranguejo, mas balança como um peixe."
 	icon_state = "crab"
 	dedicated_in_aquarium_icon_state = "crab_small"
 	sprite_height = 6
@@ -52,7 +52,7 @@
 /obj/item/fish/bumpy
 	name = "bump-fish"
 	fish_id = "bumpy"
-	desc = "A misshapen fish-thing all covered in stubby little tendrils."
+	desc = "Uma coisa de peixe descontrolada coberta de tentáculos."
 	icon_state = "bumpy"
 	sprite_height = 4
 	sprite_width = 5
@@ -72,7 +72,7 @@
 /obj/item/fish/starfish
 	name = "cosmostarfish"
 	fish_id = "cosmostarfish"
-	desc = "A peculiar, gravity-defying, echinoderm-looking critter from hyperspace."
+	desc = "Uma criatura peculiar, desafiadora da gravidade e equinoderma do hiperespaço."
 	icon_state = "starfish"
 	icon_state_dead = "starfish_dead"
 	sprite_height = 3
@@ -128,7 +128,7 @@
 /obj/item/fish/baby_carp
 	name = "baby space carp"
 	fish_id = "baby_carp"
-	desc = "A juvenile spawn of the dreaded space carp. Don't let the innocent looks fool you, they're aggressive little bastards."
+	desc = "Uma cria juvenil da temida carpa espacial. Não deixe que os inocentes os enganem, eles são bastardos agressivos."
 	icon_state = "baby_carp"
 	sprite_height = 3
 	sprite_width = 5

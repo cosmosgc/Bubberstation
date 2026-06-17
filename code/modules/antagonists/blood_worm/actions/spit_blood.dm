@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/blood_worm/spit
 	name = "Spit Blood"
-	desc = "Spit corrosive blood at your target in exchange for your own health. Right-click to melt restraints while in a host."
+	desc = "Cuspa sangue corrosivo em seu alvo em troca de sua própria saúde. Clique com o botão direito para derreter amarras enquanto estiver em um hospedeiro."
 
 	button_icon_state = "spit_blood"
 
@@ -41,11 +41,11 @@
 
 	if (worm.host?.is_mouth_covered())
 		if (feedback)
-			owner.balloon_alert(owner, "mouth is covered!")
+			owner.balloon_alert(owner, "A boca está coberta!")
 		return FALSE
 	if (worm.get_worm_health() - health_cost < minimum_health)
 		if (feedback)
-			owner.balloon_alert(owner, "out of blood!")
+			owner.balloon_alert(owner, "Sem sangue!")
 		return FALSE
 
 	return ..()
@@ -87,8 +87,8 @@
 
 	owner.visible_message(
 		message = span_danger("\The [owner] spit[owner.p_s()] corrosive blood!"),
-		self_message = span_danger("You spit corrosive blood!"),
-		blind_message = span_hear("You hear spitting.")
+		self_message = span_danger("Você cuspiu sangue corrosivo!"),
+		blind_message = span_hear("Você ouve cuspir.")
 	)
 
 	spit(target, modifiers, projectile_type)
@@ -103,13 +103,13 @@
 
 	var/mob/living/basic/blood_worm/worm = src.target
 	if (worm.get_worm_health() - health_cost * burst_count < minimum_health)
-		owner.balloon_alert(owner, "out of blood!")
+		owner.balloon_alert(owner, "Sem sangue!")
 		return
 
 	owner.visible_message(
 		message = span_danger("\The [owner] spit[owner.p_s()] a burst of corrosive blood!"),
-		self_message = span_danger("You spit a burst of corrosive blood!"),
-		blind_message = span_hear("You hear spitting.")
+		self_message = span_danger("Você cuspiu uma explosão de sangue corrosivo!"),
+		blind_message = span_hear("Você ouve cuspir.")
 	)
 
 	spit(target, modifiers, burst_projectile_type, count = burst_count, spread = 10)
@@ -164,7 +164,7 @@
 		playsound(host, SFX_SIZZLE, vol = 80, vary = TRUE, ignore_walls = FALSE)
 		StartCooldown(20 SECONDS)
 	if (!something_to_melt)
-		host.balloon_alert(host, "not restrained!")
+		host.balloon_alert(host, "Não contido!")
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/proc/melt_restraints_in_slot(mob/living/carbon/human/host, slot)
 	var/obj/restraints = host.get_item_by_slot(slot)
@@ -178,7 +178,7 @@
 	host.visible_message(
 		message = span_danger("\The [host] spit[host.p_s()] corrosive blood all over \the [restraints]!"),
 		self_message = span_danger("You spit corrosive blood all over \the [restraints]!"),
-		blind_message = span_hear("You hear sizzling.")
+		blind_message = span_hear("Você ouve as brasas.")
 	)
 
 	log_combat(host, restraints, "melted", addition = "(Spit Blood)")
@@ -198,7 +198,7 @@
 
 	closet.visible_message(
 		message = span_danger("\The [closet]'s hinges overflow with corrosive blood and begin to melt!"),
-		blind_message = span_hear("You hear sizzling."),
+		blind_message = span_hear("Você ouve as brasas."),
 		ignored_mobs = host
 	)
 
@@ -225,7 +225,7 @@
 
 	cocoon.visible_message(
 		message = span_danger("\The [cocoon]'s threads begin to fall apart!"),
-		blind_message = span_hear("You hear sizzling."),
+		blind_message = span_hear("Você ouve as brasas."),
 		ignored_mobs = host
 	)
 
@@ -266,7 +266,7 @@
 	wound_bonus = 0 // Juveniles can afford to fix wounds on their hosts. This doesn't cause critical wounds. (at least not in testing)
 
 /datum/action/cooldown/mob_cooldown/blood_worm/spit/adult
-	desc = "Spit corrosive blood at your target in exchange for your own health. Right-click to melt restraints while in a host, or fire a burst while out of a host."
+	desc = "Cuspa sangue corrosivo em seu alvo em troca de sua própria saúde. Clique com o botão direito para derreter as amarras enquanto estiver em um hospedeiro, ou dispare uma explosão enquanto estiver fora de um hospedeiro."
 	health_cost = 6.5 // This is enough for 26 shots in a row at full health. (keep in mind that health is VERY important)
 	projectile_type = /obj/projectile/blood_worm_spit/adult
 	burst_projectile_type = /obj/projectile/blood_worm_spit/adult_burst

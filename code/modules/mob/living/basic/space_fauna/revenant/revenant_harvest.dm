@@ -11,11 +11,11 @@
 		return FALSE
 
 	if(draining)
-		to_chat(src, span_revenwarning("You are already siphoning the essence of a soul!"))
+		to_chat(src, span_revenwarning("Você já está sugando a essência de uma alma!"))
 		return FALSE
 
 	if(target.flags_1 & HOLOGRAM_1)
-		target.balloon_alert(src, "doesn't possess a soul!") // it's a machine generated visual
+		target.balloon_alert(src, "não possui uma alma!") // it's a machine generated visual
 		return
 
 	draining = TRUE
@@ -41,7 +41,7 @@
 	if(target.stat == CONSCIOUS)
 		to_chat(src, span_revennotice("[target_Their] soul is too strong to harvest."))
 		if(prob(10))
-			to_chat(target, span_revennotice("You feel as if you are being watched."))
+			to_chat(target, span_revennotice("Você sente como se estivesse sendo observado."))
 		return FALSE
 
 	log_combat(src, target, "started to harvest")
@@ -69,7 +69,7 @@
 	to_chat(src, span_revennotice("[target_Their] soul is weak and faltering. It's time to harvest."))
 
 	if(!do_after(src, (rand(15, 20) DECISECONDS), target, timed_action_flags = IGNORE_HELD_ITEM))
-		to_chat(src, span_revennotice("The harvest is abandoned."))
+		to_chat(src, span_revennotice("A colheita está abandonada."))
 		return FALSE
 
 	switch(essence_drained)
@@ -88,12 +88,12 @@
 
 	if(target.stat == CONSCIOUS)
 		to_chat(src, span_revenwarning("[target_Theyre] now powerful enough to fight off your draining!"))
-		to_chat(target, span_bolddanger("You feel something tugging across your body before subsiding.")) //hey, wait a minute...
+		to_chat(target, span_bolddanger("Sente algo puxando seu corpo antes de desaparecer.")) //hey, wait a minute...
 		return FALSE
 
 	to_chat(src, span_revenminor("You begin siphoning essence from [target]'s soul."))
 	if(target.stat != DEAD)
-		to_chat(target, span_warning("You feel a horribly unpleasant draining sensation as your grip on life weakens..."))
+		to_chat(target, span_warning("Você sente uma sensação de drenagem horrivelmente desagradável enquanto seu aperto na vida enfraquece..."))
 	if(target.stat == SOFT_CRIT)
 		target.Stun(46)
 
@@ -106,7 +106,7 @@
 		to_chat(src, span_revenminor("Something's wrong! [target] seems to be resisting the siphoning, leaving you vulnerable!"))
 		target.visible_message(
 			span_warning("[target] slumps onto the ground."),
-			span_revenwarning("Violet lights, dancing in your vision, receding--"),
+			span_revenwarning("Luzes violetas, dançando em sua visão, recuando..."),
 		)
 		return FALSE
 
@@ -116,7 +116,7 @@
 		if(target)
 			target.visible_message(
 				span_warning("[target] slumps onto the ground."),
-				span_revenwarning("Violet lights, dancing in your vision, receding--"),
+				span_revenwarning("Luzes violetas, dançando em sua visão, recuando..."),
 			)
 		qdel(draining_beam)
 		return FALSE
@@ -135,7 +135,7 @@
 	to_chat(src, span_revennotice("[target]'s soul has been considerably weakened and will yield no more essence for the time being."))
 	target.visible_message(
 		span_warning("[target] slumps onto the ground."),
-		span_revenwarning("Violet lights, dancing in your vision, getting clo--"),
+		span_revenwarning("Luzes violetas, dançando em sua visão, ficando..."),
 	)
 
 	LAZYADD(drained_mobs, REF(target))

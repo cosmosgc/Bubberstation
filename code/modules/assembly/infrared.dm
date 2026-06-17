@@ -1,6 +1,6 @@
 /obj/item/assembly/infra
 	name = "infrared emitter"
-	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
+	desc = "Emite um raio visível ou invisível e é acionado quando o feixe é interrompido."
 	icon_state = "infrared"
 	base_icon_state = "infrared"
 	custom_materials = list(

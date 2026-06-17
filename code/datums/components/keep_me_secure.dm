@@ -73,15 +73,15 @@
 
 	examine_list += span_boldnotice("[parent] should be secured at all times.")
 	if(is_secured())
-		examine_list += span_notice("Right now, it is.")
+		examine_list += span_notice("Agora, é.")
 	else
-		examine_list += span_warning("Right now, it isn't...")
-	examine_list += span_notice("Examine closer for more info.")
+		examine_list += span_warning("Agora, não é...")
+	examine_list += span_notice("Examine mais perto para mais informações.")
 
 /// signal sent when parent is examined more
 /datum/component/keep_me_secure/proc/on_examine_more(mob/living/source, mob/examiner, list/examine_list)
 	SIGNAL_HANDLER
 
 	examine_list += span_notice("For [parent] to be secure, it needs to be:")
-	examine_list += span_notice("1. Always on the move, and...")
-	examine_list += span_notice("2. Held or dragged by someone.")
+	examine_list += span_notice("Sempre em movimento, e...")
+	examine_list += span_notice("2. Preso ou arrastado por alguém.")

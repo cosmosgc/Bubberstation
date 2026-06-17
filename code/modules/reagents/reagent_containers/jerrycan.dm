@@ -39,7 +39,7 @@
 **/
 /obj/item/reagent_containers/cup/jerrycan
 	name = "plastic jerrycan"
-	desc = "A voluminous container made from the finest HDPE.\n\nNow with integrated Smart Cap™ technology to prevent expensive spills when handling industrial liquids."
+	desc = "Um recipiente volumoso feito do melhor HDPE.\n\nAgora com tecnologia Smart CapTM integrada para evitar derrames caros ao manusear líquidos industriais."
 	icon = 'icons/obj/medical/chemical.dmi'
 	righthand_file = 'icons/mob/inhands/items/chemistry_righthand.dmi'
 	lefthand_file = 'icons/mob/inhands/items/chemistry_lefthand.dmi'
@@ -107,14 +107,14 @@
 
 /obj/item/reagent_containers/cup/jerrycan/eznutriment
 	name = "E-Z-Nutrient™ can"
-	desc = "A large container presumably filled to the brim with 'E-Z-Nutrient'-brand plant nutrient. It can't get easier than this."
+	desc = "Um grande recipiente provavelmente cheio até a borda com nutriente de planta \"E-Z-Nutrient\". Não pode ser mais fácil do que isso."
 	label_type = LABEL_EZ_NUTRIENT
 	list_reagents = list(/datum/reagent/plantnutriment/eznutriment = 200)
 	custom_price = PAYCHECK_CREW * 1
 
 /obj/item/reagent_containers/cup/jerrycan/left4zed
 	name = "Left 4 Zed™ can"
-	desc = "A large container labled 'Left 4 Zed' plant nutrient. A good choice when the stronger stuff is unavailable."
+	desc = "Um grande recipiente labedou o nutriente da planta 'Esquerda 4 Zed'. Uma boa escolha quando as coisas mais fortes não estão disponíveis."
 	label_type = LABEL_LEFT_4_ZED
 	cap_type = CAP_GREEN
 	list_reagents = list(/datum/reagent/plantnutriment/left4zednutriment = 200)
@@ -122,14 +122,14 @@
 
 /obj/item/reagent_containers/cup/jerrycan/robustharvest
 	name = "Robust Harvest™ can"
-	desc = "A large container labled 'Robust Harvest' plant nutrient. Only trust 'Robust Harvest' for a robust yield."
+	desc = "Um grande recipiente labou o nutriente da planta 'Robust Harvest'. Só confie em 'Robust Harvest' para um rendimento robusto."
 	label_type = LABEL_ROBUST_HARVEST
 	list_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 200)
 	custom_price = PAYCHECK_CREW * 1.5
 
 /obj/item/reagent_containers/cup/jerrycan/ammonia
 	name = "NT-AG ammonia can"
-	desc = "A large container labled 'NT-AG' anhydrous ammonia. A warning label reads: Store separately from chlorine-based cleaning products!"
+	desc = "Um grande recipiente lablava amônia anidra \"NT-AG\". Uma etiqueta de aviso diz: guarde separadamente de produtos de limpeza à base de cloro!"
 	label_type = LABEL_TEXT
 	cap_type = CAP_BLUE
 	list_reagents = list(/datum/reagent/ammonia = 200)
@@ -138,34 +138,34 @@
 	name = "NT-AG diethylamine can"
 	label_type = LABEL_TEXT_OLD
 	cap_type = CAP_GREEN
-	desc = "A large container labled 'NT-AG' diethylamine. A disclaimer written in bold letters reads: FOR AGRICULTURAL USE ONLY. RESALE PROHIBITED."
+	desc = "Um grande recipiente lablava dietilamina 'NT-AG'. Um aviso escrito em letras arrojadas diz: PROIBIDO A RESABILIDADE."
 	list_reagents = list(/datum/reagent/diethylamine = 200)
 
 /obj/item/reagent_containers/cup/jerrycan/sus
 	name = "DonkCo great value phlogiston can"
 	label_type = LABEL_SUSPICIOUS_BLACK
-	desc = "A large can of phlogiston, ostensibly for removing dried out Donk-pocket™ filling from the production line."
+	desc = "Uma grande lata de phlogiston, ostensivamente para remover o enchimento seco Donk-pocketTM da linha de produção."
 	list_reagents = list(/datum/reagent/phlogiston = 200)
 
 /obj/item/reagent_containers/cup/jerrycan/oil
 	name = "oil can"
 	label_type = LABEL_INFLAMMABLE
 	cap_type = CAP_RED
-	desc = "A large can full of synthetic lubricating oil."
+	desc = "Uma grande lata cheia de óleo lubrificante sintético."
 	list_reagents = list(/datum/reagent/fuel/oil = 200)
 
 /obj/item/reagent_containers/cup/jerrycan/space_cleaner
 	name = "BLAM!™-brand non-foaming space cleaner can"
 	label_type = LABEL_SPACE_CLEANER
 	cap_type = CAP_RED
-	desc = "Stubborn stains, grease and grime got you cornered? No duty to retreat when you got BLAM!™ on your side!\nBLAM!™ - A WaffleCo product."
+	desc = "Manchas teimosas, gordura e sujeira te encurralaram? Não é preciso recuar quando tem BLAM!\nUm produto WaffleCo."
 	list_reagents = list(/datum/reagent/space_cleaner = 200)
 
 /obj/item/reagent_containers/cup/jerrycan/milk
 	name = "milk jug"
 	label_type = LABEL_NT_MINI
 	cap_type = CAP_BLUE
-	desc = "A jug of most wholesome milk."
+	desc = "Uma jarra de leite mais saudável."
 	list_reagents = list(/datum/reagent/consumable/milk = 200)
 
 

@@ -8,7 +8,7 @@ The console is located at computer/gulag_teleporter.dm
 //Gulag teleporter
 /obj/machinery/gulag_teleporter
 	name = "labor camp teleporter"
-	desc = "A bluespace teleporter used for teleporting prisoners to the labor camp."
+	desc = "Um teletransportador do espaço azul usado para teletransportar prisioneiros para o campo de trabalho."
 	icon = 'icons/obj/machines/implant_chair.dmi'
 	icon_state = "implantchair"
 	base_icon_state = "implantchair"
@@ -119,7 +119,7 @@ The console is located at computer/gulag_teleporter.dm
 
 /obj/machinery/gulag_teleporter/proc/toggle_open()
 	if(panel_open)
-		to_chat(usr, span_notice("Close the maintenance panel first."))
+		to_chat(usr, span_notice("Feche o painel de manutenção primeiro."))
 		return
 
 	if(state_open)
@@ -180,7 +180,7 @@ The console is located at computer/gulag_teleporter.dm
 /*  beacon that receives the teleported prisoner */
 /obj/structure/gulag_beacon
 	name = "labor camp bluespace beacon"
-	desc = "A receiving beacon for bluespace teleportations."
+	desc = "Um sinal receptor para teletransportações do espaço azul."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "light_on-8"
 	resistance_flags = INDESTRUCTIBLE

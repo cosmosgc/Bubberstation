@@ -206,7 +206,7 @@
 	if(prob(flinch_chance))
 		source.visible_message(
 			span_danger("[source] flinches!"),
-			span_danger("You flinch!"),
+			span_danger("Você vacilou!"),
 		)
 		INVOKE_ASYNC(src, PROC_REF(trigger_reaction))
 

@@ -2,7 +2,7 @@
 	name = "Fire Breath"
 	button_icon = 'icons/effects/magic.dmi'
 	button_icon_state = "fireball"
-	desc = "Breathe a line of flames towards the target."
+	desc = "Respire uma linha de chamas em direção ao alvo."
 	cooldown_time = 3 SECONDS
 	/// The range of the fire
 	var/fire_range = 15
@@ -82,7 +82,7 @@
 /// Shoot three lines of fire in a sort of fork pattern approximating a cone
 /datum/action/cooldown/mob_cooldown/fire_breath/cone
 	name = "Fire Cone"
-	desc = "Breathe several lines of fire directed at a target."
+	desc = "Respire várias linhas de fogo direcionadas ao alvo."
 	/// The angles relative to the target that shoot lines of fire
 	var/list/angles = list(-40, 0, 40)
 
@@ -96,7 +96,7 @@
 	name = "Mass Fire"
 	button_icon = 'icons/effects/fire.dmi'
 	button_icon_state = "light"
-	desc = "Breathe flames in all directions."
+	desc = "Respire chamas em todas as direções."
 	cooldown_time = 10.5 SECONDS
 	click_to_activate = FALSE
 	/// How many fire lines do we produce to turn a full circle?

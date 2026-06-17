@@ -19,7 +19,7 @@
 /obj/machinery/computer/prisoner/examine(mob/user)
 	. = ..()
 	if(contained_id)
-		. += span_notice("<b>Alt-click</b> to eject the ID card.")
+		. += span_notice("<b>Alt-click</b>para ejetar o cartão de identificação.")
 
 /obj/machinery/computer/prisoner/click_alt(mob/user)
 	id_eject(user)
@@ -29,7 +29,7 @@
 	if(!istype(new_id))
 		return
 	if(!isnull(contained_id))
-		balloon_alert(user, "no empty slot!")
+		balloon_alert(user, "Sem espaço vazio!")
 		return
 	if(!user.transferItemToLoc(new_id, src))
 		return
@@ -39,7 +39,7 @@
 
 /obj/machinery/computer/prisoner/proc/id_eject(mob/user)
 	if(isnull(contained_id))
-		balloon_alert(user, "no id!")
+		balloon_alert(user, "Sem identificação!")
 		return
 
 	if(!issilicon(user) && Adjacent(user))

@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/straight_jacket/shackles
 	name = "shackles"
-	desc = "Fancy shackles with a fake lock."
+	desc = "Algemas chiques com uma fechadura falsa."
 	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
@@ -71,7 +71,7 @@
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are restraining your body, though the lock appears to be made of... Plastic?"))
+		to_chat(user, span_purple("As algemas estão restringindo seu corpo, embora a fechadura pareça ser feita de... Plástico?"))
 	else
 		return
 
@@ -80,7 +80,7 @@
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are no longer restraining your body. It wasn't too hard, huh?"))
+		to_chat(user, span_purple("As algemas não estão mais restringindo seu corpo. Não foi muito difícil, hein?"))
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/used_item, mob/user, params) //That part allows reinforcing this item with normal straightjacket
@@ -98,7 +98,7 @@
 //reinforced version.
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced
 	name = "reinforced shackles"
-	desc = "Fancy shackles, but with a suspiciously sturdy lock..."
+	desc = "Algemas chiques, mas com uma fechadura suspeitamente resistente..."
 	clothing_flags = DANGEROUS_OBJECT
 	equip_delay_self = 100
 	strip_delay = 120
@@ -110,7 +110,7 @@
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are restraining your body!"))
+		to_chat(user, span_purple("As algemas estão prendendo seu corpo!"))
 	else
 		return
 
@@ -119,4 +119,4 @@
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
 	if(src == affected_mob.wear_suit)
-		to_chat(user, span_purple("The shackles are no longer restraining your body. You are free!"))
+		to_chat(user, span_purple("As algemas não estão mais restringindo seu corpo. Você está livre!"))

@@ -16,8 +16,8 @@
 
 /datum/language/xenocommon/lesser_hivemind // Parent in \code\modules\language\xenocommon.dm
 	name = "Lesser Hivemind"
-	desc = "The method with which Xenomorph Hybrids are able to communicate soundlessly over great distances is still ill-understood; \
-			whether it be via pheromones, some kind of organic radio or even just telepathy, the reality is, it just works."
+	desc = "O método com o qual os híbridos Xenomorph são capazes de se comunicar silenciosamente em grandes distâncias ainda é mal compreendido;\
+quer seja via feromônios, algum tipo de rádio orgânico ou mesmo apenas telepatia, a realidade é que funciona."
 	key = "5"
 	icon_state = "xeno"
 

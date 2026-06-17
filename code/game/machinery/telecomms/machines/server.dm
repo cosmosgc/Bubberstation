@@ -9,7 +9,7 @@
 /obj/machinery/telecomms/server
 	name = "telecommunication server"
 	icon_state = "comm_server"
-	desc = "A machine used to store data and network statistics."
+	desc = "Uma máquina usada para armazenar dados e estatísticas de rede."
 	telecomms_type = /obj/machinery/telecomms/server
 	density = TRUE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.01

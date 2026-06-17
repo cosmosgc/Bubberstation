@@ -3,9 +3,9 @@
 //standard pistol
 /obj/item/choice_beacon/syndicateoffstation
 	name = "Standard Syndicate sidearm beacon"
-	desc = "A single use beacon to deliver a weapon kit of your choice. Please use this or store it in your safe."
+	desc = "Um único farol de uso para entregar um kit de armas de sua escolha. Por favor, use isso ou guarde no cofre."
 	company_source = "Gorlex Marauders"
-	company_message = span_bold("Supply pod incoming, please stand by.")
+	company_message = span_bold("Cápsula de suprimentos chegando, aguardem.")
 
 /obj/item/choice_beacon/syndicateoffstation/generate_display_names()
 	var/static/list/selectable_gun_types = list(

@@ -6,7 +6,7 @@
 #define RANDOM_DETONATE_MAX_TIME (6 SECONDS)
 
 /obj/item/grenade/clusterbuster
-	desc = "Use of this weapon may constitute a war crime in your area, consult your local captain."
+	desc = "O uso desta arma pode constituir um crime de guerra em sua área, consulte seu capitão local."
 	name = "clusterbang"
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "clusterbang"
@@ -50,7 +50,7 @@
 //Clusterbang segment
 //////////////////////
 /obj/item/grenade/clusterbuster/segment
-	desc = "A smaller segment of a clusterbang. Better run!"
+	desc = "Um segmento menor de um grupo. Melhor correr!"
 	name = "clusterbang segment"
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "clusterbang_segment"

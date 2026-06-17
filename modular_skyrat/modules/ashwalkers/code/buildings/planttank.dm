@@ -1,6 +1,6 @@
 /obj/structure/plant_tank
 	name = "plant tank"
-	desc = "A small little glass tank that is used to grow plants; this tank promotes the nitrogen and oxygen cycle."
+	desc = "Um pequeno tanque de vidro que é usado para cultivar plantas, este tanque promove o ciclo de nitrogênio e oxigênio."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/structures.dmi'
 	icon_state = "plant_tank_e"
 	anchored = FALSE
@@ -19,11 +19,11 @@
 
 /obj/structure/plant_tank/examine(mob/user)
 	. = ..()
-	. += span_notice("<br>Use food or worm fertilizer to allow nitrogen production and carbon dioxide processing!")
+	. += span_notice("<br>Use alimentos ou fertilizantes para permitir a produção de nitrogênio e processamento de dióxido de carbono!")
 	. += span_notice("There are [operation_number] cycles left!")
 	var/datum/component/simple_farm/find_farm = GetComponent(/datum/component/simple_farm)
 	if(!find_farm)
-		. += span_notice("<br>Use five sand to allow planting!")
+		. += span_notice("<br>Use cinco areias para permitir o plantio!")
 
 /obj/structure/plant_tank/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/food) || istype(attacking_item, /obj/item/stack/worm_fertilizer))
@@ -44,7 +44,7 @@
 		return
 
 	if(istype(attacking_item, /obj/item/storage/bag/plants))
-		balloon_alert(user, "placing food inside")
+		balloon_alert(user, "Colocando comida dentro")
 		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/primitive, SKILL_SPEED_MODIFIER)
 		for(var/obj/item/food/selected_food in attacking_item.contents)
 			if(!do_after(user, 1 SECONDS * skill_modifier, src))
@@ -66,7 +66,7 @@
 
 		var/obj/item/stack/attacking_stack = attacking_item
 		if(!attacking_stack.use(5))
-			balloon_alert(user, "farms require five sand")
+			balloon_alert(user, "Fazendas exigem cinco areias.")
 			return
 
 		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 12))

@@ -2,7 +2,7 @@
 	filename = "phys_scanner"
 	filedesc = "Physical Scanner"
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
-	extended_desc = "This program allows the tablet to scan physical objects and display a data output."
+	extended_desc = "Este programa permite ao tablet digitalizar objetos físicos e exibir uma saída de dados."
 	size = 2
 	can_run_on_flags = PROGRAM_PDA
 	tgui_id = "NtosPhysScanner"

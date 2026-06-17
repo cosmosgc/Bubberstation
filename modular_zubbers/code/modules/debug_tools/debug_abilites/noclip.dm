@@ -1,6 +1,6 @@
 /datum/action/cooldown/noclip
 	name = "Toggle noclip"
-	desc = "Grand you ability move through solid objects like turfs and mobs. This also renders you unclickable by other players."
+	desc = "Grande habilidade você mover através de objetos sólidos como relvados e multidões. Isso também o torna inclicável por outros jogadores."
 	cooldown_time = 1 SECONDS
 
 	button_icon = 'icons/effects/effects.dmi'
@@ -28,7 +28,7 @@
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	owner.density = FALSE
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/noclip)
-	owner.visible_message(span_notice("[owner.name], dissolves in air. Becoming non-physical."), span_notice("You going noclip."))
+	owner.visible_message(span_notice("[owner.name], dissolves in air. Becoming non-physical."), span_notice("Você vai noclip."))
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(owner_dead), TRUE)
 	enabled = TRUE
 
@@ -37,7 +37,7 @@
 	owner.mouse_opacity = initial(owner.mouse_opacity)
 	owner.density = initial(owner.density)
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/noclip)
-	owner.visible_message(span_notice("[owner.name], becomes physical again."), span_notice("You back to normal again."))
+	owner.visible_message(span_notice("[owner.name], becomes physical again."), span_notice("Você voltou ao normal de novo."))
 	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
 	enabled = FALSE
 

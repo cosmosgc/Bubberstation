@@ -1,7 +1,7 @@
 /// A cable that can connect integrated circuits to anything with a USB port, such as computers and machines.
 /obj/item/usb_cable
 	name = "usb cable"
-	desc = "A cable that can connect integrated circuits to anything with a USB port, such as computers and machines."
+	desc = "Um cabo que pode conectar circuitos integrados a qualquer coisa com uma porta USB, como computadores e máquinas."
 	icon = 'icons/obj/science/circuits.dmi'
 	icon_state = "usb_cable"
 	inhand_icon_state = "coil_yellow"
@@ -44,7 +44,7 @@
 		return
 
 	if (prob(1))
-		balloon_alert(user, "wrong way, god damnit")
+		balloon_alert(user, "Caminho errado, droga.")
 		return TRUE
 
 	var/signal_result = SEND_SIGNAL(target, COMSIG_ATOM_USB_CABLE_TRY_ATTACH, src, user)
@@ -52,7 +52,7 @@
 	if (signal_result & COMSIG_USB_CABLE_CONNECTED_TO_CIRCUIT)
 		if (isnull(attached_circuit))
 			CRASH("Producers of COMSIG_USB_CABLE_CONNECTED_TO_CIRCUIT must set attached_circuit")
-		balloon_alert(user, "connected to circuit\nconnect to a port")
+		balloon_alert(user, "conectado ao circuito\nConectar a um porto")
 
 		playsound(src, 'sound/machines/pda_button/pda_button1.ogg', 20, TRUE)
 

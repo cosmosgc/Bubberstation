@@ -127,7 +127,7 @@
 		already_used_names += initial(result.name)
 		string_results += list("\a [initial(result.name)]")
 
-	examine_list["crafting component"] = "You think [source] could be used to make [english_list(string_results)]! Examine again to look at the details..."
+	examine_list["Componente de criação"] = "You think [source] could be used to make [english_list(string_results)]! Examine again to look at the details..."
 
 /// Alerts any examiners to the details of the recipe.
 /datum/element/slapcrafting/proc/get_examine_more_info(atom/source, mob/user, list/examine_list)
@@ -180,7 +180,7 @@
 
 	// If we did find ingredients then add them onto the list.
 	if(length(string_ingredient_list))
-		to_chat(user, span_boldnotice("Extra Ingredients:"))
+		to_chat(user, span_boldnotice("Ingredientes extras:"))
 		to_chat(user, boxed_message(span_notice(string_ingredient_list)))
 
 	var/list/tool_list = ""
@@ -194,7 +194,7 @@
 		tool_list += "\a [string]\n"
 
 	if(length(tool_list))
-		to_chat(user, span_boldnotice("Required Tools:"))
+		to_chat(user, span_boldnotice("Ferramentas necessárias:"))
 		to_chat(user, boxed_message(span_notice(tool_list)))
 
 	qdel(cur_recipe)

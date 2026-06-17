@@ -110,7 +110,7 @@
 	if(.)
 		return
 	if(!isliving(user) || !is_cultist_check(user))
-		to_chat(user, span_warning("You're pretty sure you know exactly what this is used for and you can't seem to touch it."))
+		to_chat(user, span_warning("Tem certeza de que sabe para que é usado e não consegue tocá-lo."))
 		return
 	if(!anchored)
 		to_chat(user, span_cult_italic("You need to anchor [src] to the floor first."))
@@ -210,7 +210,7 @@
 // Spooky looking door used in gateways. Or something.
 /obj/effect/gateway
 	name = "gateway"
-	desc = "You're pretty sure that abyss is staring back."
+	desc = "Você tem certeza que o abismo está olhando para trás."
 	icon = 'icons/obj/antags/cult/structures.dmi'
 	icon_state = "hole"
 	density = TRUE

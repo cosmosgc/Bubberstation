@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/revolver/ocelot
 	name = "Colt Peacemaker revolver"
-	desc = "A modified Peacemaker revolver that chambers .357 ammo. Less powerful than the regular .357, but ricochets a lot more." // We need tension...conflict. The world today has become too soft. We're living in an age where true feelings are suppressed. So we're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
+	desc = "Um revólver pacificador modificado que carrega munição .357. Menos poderoso que a .357, mas ricocheteia muito mais." // We need tension...conflict. The world today has become too soft. We'Vivendo em uma época onde sentimentos verdadeiros são suprimidos. Então nós're going to shake things up a bit. We'll create a world dripping with tension... ...a world filled with greed and suspicion, bravery and cowardice.
 	// this could probably be made funnier by reducing its damage multiplier but also making it so that every fired bullet has the wacky ricochets
 	// but that's a different plate of cookies for a different glass of milk
 	icon_state = "c38_panther"
@@ -10,7 +10,7 @@
 
 /obj/item/ammo_casing/c357/peacemaker
 	name = ".357 Peacemaker bullet casing"
-	desc = "A .357 Peacemaker bullet casing."
+	desc = "Um cartucho pacificador .357."
 	caliber = CALIBER_357
 	projectile_type = /obj/projectile/bullet/c357/peacemaker
 
@@ -40,7 +40,7 @@
 
 /obj/item/ammo_box/speedloader/c357/peacemaker
 	name = "speed loader (.357 Peacemaker)"
-	desc = "Designed to quickly reload revolvers."
+	desc = "Projetado para recarregar revólveres rapidamente."
 	icon_state = "357"
 	ammo_type = /obj/item/ammo_casing/c357/peacemaker
 	max_ammo = 7
@@ -50,7 +50,7 @@
 
 /obj/item/clothing/head/hats/sus_bowler
 	name = "odd bowler"
-	desc = "A deep black bowler. Inside the hat, there is a sleek red S, with a smaller X insignia embroidered within. On closer inspection, the brim feels oddly weighted..."
+	desc = "Um boliche preto profundo. Dentro do chapéu, há um S vermelho elegante, com uma insígnia X menor bordada dentro. Na inspeção mais próxima, a borda parece estranhamente ponderada..."
 	icon_state = "bowler"
 	force = 10
 	throwforce = 45
@@ -83,8 +83,8 @@
 
 /obj/item/gun/ballistic/automatic/pistol/robohand
 	name = "Malorian Arms 3516"
-	desc = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip. A custom Dyna-porting and \
-	direct integral cyber-interlink means only someone with a cyberarm and smartgun link can take full advantage of the pistol's features."
+	desc = "O Malorian Arms 3516 é uma pistola pesada de 14mm, com armação de titânio e alça de madeira única. Um costume Dyna-porting e\
+Interligação cibernética direta significa que apenas alguém com um cyber-arm e uma ligação smartgun podem tirar pleno proveito das características da pistola."
 	icon = 'modular_skyrat/modules/moretraitoritems/icons/3516.dmi'
 	icon_state = "3516"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -186,7 +186,7 @@
 
 /obj/item/ammo_casing/c14mm
 	name = "14mm bullet casing"
-	desc = "A 14mm bullet casing. Badass."
+	desc = "Um cartucho de 14mm. Fodão."
 	caliber = CALIBRE_14MM
 	projectile_type = /obj/projectile/bullet/c14mm
 
@@ -210,7 +210,7 @@
 
 //nullrod katana
 /obj/item/katana/weak/curator //This has the same stats as the curator's claymore
-	desc = "An ancient Katana. Forged by... Well, it doesn't really say, but surely it's authentic! And sharp to boot!"
+	desc = "Uma antiga Katana. Forjado por... Bem, realmente não diz, mas certamente é autêntico! E afiado até o fim!"
 	force = 15
 	block_chance = 30
 	armour_penetration = 5

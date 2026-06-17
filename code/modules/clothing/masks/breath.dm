@@ -1,5 +1,5 @@
 /obj/item/clothing/mask/breath
-	desc = "A close-fitting mask that can be connected to an air supply."
+	desc = "Uma máscara que pode ser conectada a um suprimento de ar."
 	name = "breath mask"
 	icon_state = "breath"
 	inhand_icon_state = "m_mask"
@@ -39,7 +39,7 @@
 		. += span_notice("Alt-click [src] to adjust it.")
 
 /obj/item/clothing/mask/breath/medical
-	desc = "A close-fitting sterile mask that can be connected to an air supply."
+	desc = "Uma máscara estéril que pode ser conectada a um suprimento de ar."
 	name = "medical mask"
 	icon_state = "medical"
 	inhand_icon_state = "m_mask"
@@ -51,7 +51,7 @@
 
 /obj/item/clothing/mask/breath/muzzle
 	name = "surgery mask"
-	desc = "To silence those pesky patients before putting them under."
+	desc = "Para silenciar esses pacientes chatos antes de colocá-los para baixo."
 	icon_state = "breathmuzzle"
 	inhand_icon_state = "breathmuzzle"
 	lefthand_file = 'icons/mob/inhands/clothing/masks_lefthand.dmi'
@@ -71,7 +71,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		if(src == carbon_user.wear_mask)
-			to_chat(user, span_warning("You need help taking this off!"))
+			to_chat(user, span_warning("Você precisa de ajuda para tirar isso!"))
 			return
 	return ..()
 

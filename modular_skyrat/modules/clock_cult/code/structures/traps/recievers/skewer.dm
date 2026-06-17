@@ -4,20 +4,20 @@
 
 /obj/item/clockwork/trap_placer/skewer
 	name = "brass skewer"
-	desc = "A spiked, brass skewer attached to a steam powered extension mechanism."
+	desc = "Um espeto de bronze ligado a um mecanismo de extensão movido a vapor."
 	icon_state = "brass_skewer_extended"
 	result_path = /obj/structure/destructible/clockwork/trap/skewer
-	clockwork_desc = "A skewer that can pierce through a target, activated by a linked trigger."
+	clockwork_desc = "Um espeto que pode atravessar um alvo, ativado por um gatilho ligado."
 
 /obj/structure/destructible/clockwork/trap/skewer
 	name = "brass skewer"
-	desc = "A spiked, brass skewer attached to a steam powered extension mechanism."
+	desc = "Um espeto de bronze ligado a um mecanismo de extensão movido a vapor."
 	icon_state = "brass_skewer"
 	component_datum = /datum/component/clockwork_trap/skewer
 	unwrench_path = /obj/item/clockwork/trap_placer/skewer
 	buckle_lying = FALSE
 	max_integrity = 40
-	clockwork_desc = "A skewer that can pierce through a target, activated by a linked trigger."
+	clockwork_desc = "Um espeto que pode atravessar um alvo, ativado por um gatilho ligado."
 	COOLDOWN_DECLARE(stab_cooldown)
 	/// If the spear is currently extended
 	var/extended = FALSE

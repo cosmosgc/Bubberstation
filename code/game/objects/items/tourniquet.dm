@@ -1,6 +1,6 @@
 /obj/item/tourniquet
 	name = "tourniquet"
-	desc = "A medical device used to stop severe bleeding from a limb."
+	desc = "Um dispositivo médico usado para parar o sangramento de um membro."
 	icon = 'icons/obj/medical/firstaid.dmi'
 	icon_state = "tourniquet"
 

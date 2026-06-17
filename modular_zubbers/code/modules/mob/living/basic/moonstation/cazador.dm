@@ -1,7 +1,7 @@
 /mob/living/basic/mining/cazador
 
 	name = "cazador"
-	desc = "You feel a little woozy..."
+	desc = "Você se sente um pouco tonto..."
 
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "cazador"
@@ -41,7 +41,7 @@
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 
-	throw_blocked_message = "does nothing to the tough carapace of"
+	throw_blocked_message = "Não faz nada com a carapaça dura de"
 
 	speed = 1
 	movement_type = FLYING
@@ -62,17 +62,17 @@
 /datum/reagent/toxin/cazador
 	name = "Cazador Venom"
 	toxpwr = 4
-	description = "An extremely toxic chemical produced by the rare cazador. Makes you feel woozy."
+	description = "Um químico extremamente tóxico produzido pelo raro caçador. Faz você se sentir tonto."
 	health_required = 10
 	liver_damage_multiplier = 0
 
 /datum/reagent/toxin/cazador/on_mob_add(mob/living/carbon/affected_mob)
 	. = ..()
-	to_chat(affected_mob, span_danger("You feel a little woozy..."))
+	to_chat(affected_mob, span_danger("Você se sente um pouco tonto..."))
 
 /obj/item/reagent_containers/cup/tube/cazador_venom
 	name = "cazador venom vial"
-	desc = "A small vial. Contains cazador venom."
+	desc = "Um pequeno frasco. Contém veneno de causador."
 	list_reagents = list(/datum/reagent/toxin/cazador = 10)
 
 /mob/living/simple_animal/hostile/cazador

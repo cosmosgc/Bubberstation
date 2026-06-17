@@ -149,7 +149,7 @@ GLOBAL_DATUM_INIT(ghost_menu, /datum/ghost_menu, new)
 
 /datum/ghost_menu/proc/tray_view(mob/dead/observer/user)
 	if(SSlag_switch.measures[DISABLE_GHOST_ZOOM_TRAY] && !user.client?.holder)
-		to_chat(user, span_notice("That verb is currently globally disabled."))
+		to_chat(user, span_notice("Esse verbo está desativado globalmente."))
 		return
 	t_ray_scan(user)
 
@@ -173,7 +173,7 @@ GLOBAL_DATUM_INIT(ghost_menu, /datum/ghost_menu, new)
 
 /datum/ghost_menu/proc/set_view(mob/dead/observer/user, new_view)
 	if(SSlag_switch.measures[DISABLE_GHOST_ZOOM_TRAY] && !user.client?.holder)
-		to_chat(user, span_notice("That verb is currently globally disabled."))
+		to_chat(user, span_notice("Esse verbo está desativado globalmente."))
 		return TRUE
 	var/max_view = user.client.prefs.unlock_content ? GHOST_MAX_VIEW_RANGE_MEMBER : GHOST_MAX_VIEW_RANGE_DEFAULT
 	if(max_view >= new_view && new_view < GHOST_MIN_VIEW_RANGE)

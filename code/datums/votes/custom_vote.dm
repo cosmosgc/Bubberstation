@@ -3,7 +3,7 @@
 
 /datum/vote/custom_vote
 	name = "Custom"
-	default_message = "Click here to start a custom vote."
+	default_message = "Clique aqui para começar uma votação personalizada."
 
 // Custom votes ares always accessible.
 /datum/vote/custom_vote/is_accessible_vote()
@@ -30,7 +30,7 @@
 	var/custom_count_method = tgui_input_list(
 		user = vote_creator,
 		message = "Single, multiple, or ranked choice?", // BUBBER EDIT CHANGE - Ranked Choice Voting - Original: "Single or multiple choice?"
-		title = "Choice Method",
+		title = "Método de escolha",
 		items = list("Single", "Multiple", "Ranked"), // BUBBER EDIT CHANGE - Ranked Choice Voting - Original: ("Single", "Multiple")
 		default = "Single",
 	)
@@ -46,7 +46,7 @@
 			var/threshold = tgui_input_number(
 				user = vote_creator,
 				message = "Set the victory threshold percentage (1-100)",
-				title = "Ranked Choice Threshold",
+				title = "Limiar de Escolha Rankeado",
 				default = 50,
 				min_value = 1,
 				max_value = 100
@@ -59,13 +59,13 @@
 			return FALSE
 		else
 			stack_trace("Got '[custom_count_method]' in create_vote() for custom voting.")
-			to_chat(vote_creator, span_boldwarning("Unknown choice method. Contact a coder."))
+			to_chat(vote_creator, span_boldwarning("Método de escolha desconhecido. Contate um programador."))
 			return FALSE
 
 	var/custom_win_method = tgui_input_list(
 		user = vote_creator,
 		message = "How should the vote winner be determined?",
-		title = "Winner Method",
+		title = "Método Vencedor",
 		items = list("Simple", "Weighted Random", "Ranked", "No Winner"), // BUBBER EDIT CHANGE - Ranked Choice Voting - Original: ("Simple", "Weighted Random", "No Winner")
 		default = "Simple",
 	)
@@ -84,7 +84,7 @@
 			return FALSE
 		else
 			stack_trace("Got '[custom_win_method]' in create_vote() for custom voting.")
-			to_chat(vote_creator, span_boldwarning("Unknown winner method. Contact a coder."))
+			to_chat(vote_creator, span_boldwarning("Método de vencedor desconhecido. Contate um programador."))
 			return FALSE
 
 	var/display_stats = tgui_alert(

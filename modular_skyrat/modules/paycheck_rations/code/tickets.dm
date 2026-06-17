@@ -1,9 +1,9 @@
 /obj/item/paper/paperslip/ration_ticket
 	name = "ration ticket - standard"
-	desc = "A little slip of paper that'll slot right into any cargo console and put your alotted food ration on the next shuttle to the station."
+	desc = "Um pequeno pedaço de papel que vai entrar em qualquer console de carga e colocar sua ração de comida no próximo transporte para a estação."
 	icon = 'modular_skyrat/modules/paycheck_rations/icons/tickets.dmi'
 	icon_state = "ticket_food"
-	default_raw_text = "Redeem this ticket in the nearest supply console to receive benefits."
+	default_raw_text = "Resgate este bilhete no console de suprimentos mais próximo para receber benefícios."
 	color = COLOR_OFF_WHITE
 	show_written_words = FALSE
 	/// The finalized list of items we send once the ticket is used, don't define here, the procs will do it
@@ -35,7 +35,7 @@
 	var/meats_choice = show_radial_menu(user, object_we_attack, radial_meat_options, require_near = TRUE)
 
 	if(!meats_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "Nenhuma seleção feita.")
 		forceMove(drop_location(object_we_attack))
 		playsound(object_we_attack, 'sound/machines/terminal/terminal_insert_disc.ogg', 50, FALSE)
 		return
@@ -67,7 +67,7 @@
 	var/produce_choice = show_radial_menu(user, object_we_attack, radial_produce_options, require_near = TRUE)
 
 	if(!produce_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "Nenhuma seleção feita.")
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
@@ -98,7 +98,7 @@
 	var/flour_choice = show_radial_menu(user, object_we_attack, radial_flour_options, require_near = TRUE)
 
 	if(!flour_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "Nenhuma seleção feita.")
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))
@@ -158,7 +158,7 @@
 
 /datum/supply_pack/custom/ration_pack
 	name = "rations order"
-	crate_name = "ration delivery crate"
+	crate_name = "Caixa de entrega de ração"
 	access = list()
 	crate_type = /obj/structure/closet/crate/cardboard
 
@@ -173,7 +173,7 @@
 
 /obj/item/paper/paperslip/ration_ticket/luxury
 	name = "ration ticket - luxury"
-	desc = "A little slip of paper that'll slot right into any cargo console and put your alotted ration of luxury goods on the next cargo shuttle to the station."
+	desc = "Um pequeno pedaço de papel que vai entrar em qualquer console de carga e colocar sua ração de bens de luxo no próximo transporte de carga para a estação."
 	icon_state = "ticket_luxury"
 
 /// Attempts to fill out the order list with items of the user's choosing, will stop in its tracks if it fails
@@ -194,7 +194,7 @@
 	var/alcohol_choice = show_radial_menu(user, object_we_attack, radial_alcohol_options, require_near = TRUE)
 
 	if(!alcohol_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "Nenhuma seleção feita.")
 		forceMove(drop_location(object_we_attack))
 		return
 
@@ -229,7 +229,7 @@
 	var/consumables_choice = show_radial_menu(user, object_we_attack, radial_consumables_options, require_near = TRUE)
 
 	if(!consumables_choice)
-		object_we_attack.balloon_alert(user, "no selection made")
+		object_we_attack.balloon_alert(user, "Nenhuma seleção feita.")
 		// Reset the list if we fail
 		items_we_deliver = list()
 		forceMove(drop_location(object_we_attack))

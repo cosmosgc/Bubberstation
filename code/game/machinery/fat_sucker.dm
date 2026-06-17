@@ -1,6 +1,6 @@
 /obj/machinery/fat_sucker
 	name = "lipid extractor"
-	desc = "Safely and efficiently extracts excess fat from a subject."
+	desc = "Segura e eficientemente extrai o excesso de gordura de um sujeito."
 	icon = 'icons/obj/machines/fat_sucker.dmi'
 	icon_state = "fat"
 	circuit = /obj/item/circuitboard/machine/fat_sucker
@@ -52,7 +52,7 @@
 
 /obj/machinery/fat_sucker/close_machine(mob/user, density_to_set = TRUE)
 	if(panel_open)
-		to_chat(user, span_warning("You need to close the maintenance hatch first!"))
+		to_chat(user, span_warning("Você precisa fechar a escotilha de manutenção primeiro!"))
 		return
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
@@ -74,7 +74,7 @@
 
 /obj/machinery/fat_sucker/container_resist_act(mob/living/user)
 	if(!free_exit || state_open)
-		to_chat(user, span_notice("The emergency release is not responding! You start pushing against the hull!"))
+		to_chat(user, span_notice("A liberação de emergência não está respondendo! Você começa a empurrar contra o casco!"))
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
 		user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
@@ -96,14 +96,14 @@
 	else if(!processing || free_exit)
 		open_machine()
 	else
-		to_chat(user, span_warning("The safety hatch has been disabled!"))
+		to_chat(user, span_warning("A porta de segurança foi desativada!"))
 
 /obj/machinery/fat_sucker/click_alt(mob/living/user)
 	if(user == occupant)
-		to_chat(user, span_warning("You can't reach the controls from inside!"))
+		to_chat(user, span_warning("Você não pode alcançar os controles de dentro!"))
 		return CLICK_ACTION_BLOCKING
 	if(!(obj_flags & EMAGGED) && !allowed(user))
-		to_chat(user, span_warning("You lack the required access."))
+		to_chat(user, span_warning("Você não tem o acesso necessário."))
 		return CLICK_ACTION_BLOCKING
 	free_exit = !free_exit
 	to_chat(user, span_notice("Safety hatch [free_exit ? "unlocked" : "locked"]."))
@@ -207,6 +207,6 @@
 		return FALSE
 	start_at = 100
 	stop_at = 0
-	to_chat(user, span_notice("You remove the access restrictions and lower the automatic ejection threshold!"))
+	to_chat(user, span_notice("Você remove as restrições de acesso e reduz o limite de ejeção automático!"))
 	obj_flags |= EMAGGED
 	return TRUE

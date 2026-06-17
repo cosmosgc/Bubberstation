@@ -1,6 +1,6 @@
 /obj/item/assembly/shock_kit
 	name = "electrohelmet assembly"
-	desc = "This appears to be made from both an electropack and a helmet."
+	desc = "Isso parece ser feito de um eletropack e um capacete."
 	icon = 'icons/obj/devices/assemblies.dmi'
 	icon_state = "shock_kit"
 	var/obj/item/clothing/head/helmet/helmet_part = null

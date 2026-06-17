@@ -1,7 +1,7 @@
 ///Beacon to launch a new mining setup when activated. For testing and speed!
 /obj/item/boulder_beacon
 	name = "boulder beacon"
-	desc = "N.T. approved boulder beacon, toss it down and you will have a full bouldertech mining station."
+	desc = "N.T. aprovou o farol de pedra, jogue-o para baixo e você terá uma estação de mineração de rocha completa."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 	/// Number of activations left on this beacon. Uses will be removed as the beacon is used and each triggers a different machine to be spawned from it.

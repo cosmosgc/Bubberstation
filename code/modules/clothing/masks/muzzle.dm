@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/muzzle
 	name = "muzzle"
-	desc = "To stop that awful noise."
+	desc = "Para parar com esse barulho horrível."
 	icon_state = "muzzle"
 	inhand_icon_state = "blindfold"
 	lefthand_file = 'icons/mob/inhands/clothing/glasses_lefthand.dmi'
@@ -17,13 +17,13 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		if(src == carbon_user.wear_mask)
-			to_chat(user, span_warning("You need help taking this off!"))
+			to_chat(user, span_warning("Você precisa de ajuda para tirar isso!"))
 			return
 	return ..()
 
 /obj/item/clothing/mask/muzzle/tape
 	name = "tape piece"
-	desc = "A piece of tape that can be put over someone's mouth."
+	desc = "Um pedaço de fita que pode ser colocado na boca de alguém."
 	worn_icon_state = "tape_piece_worn"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -53,7 +53,7 @@
 	if(harmful_strip)
 		user.apply_damage(stripping_damage, BRUTE, BODY_ZONE_HEAD)
 		INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, emote), "scream")
-		to_chat(user, span_userdanger("You feel a massive pain as hundreds of tiny spikes tear free from your face!"))
+		to_chat(user, span_userdanger("Você sente uma grande dor quando centenas de pequenos espinhos se soltam do seu rosto!"))
 
 /obj/item/clothing/mask/muzzle/tape/attack(mob/living/carbon/victim, mob/living/carbon/attacker, list/modifiers, list/attack_modifiers)
 	if(attacker.combat_mode)
@@ -64,7 +64,7 @@
 	if(!mob_can_equip(victim, ITEM_SLOT_MASK))
 		to_chat(attacker, span_notice("[victim] is already wearing somthing on their face."))
 		return
-	balloon_alert(attacker, "taping mouth...")
+	balloon_alert(attacker, "Boca tatuada...")
 	to_chat(victim, span_userdanger("[attacker] is attempting to tape your mouth closed!"))
 	if(!do_after(attacker, equip_delay_other, target = victim))
 		return
@@ -73,14 +73,14 @@
 
 /obj/item/clothing/mask/muzzle/tape/super
 	name = "super tape piece"
-	desc = "A piece of tape that can be put over someone's mouth. This one has extra strength."
+	desc = "Um pedaço de fita que pode ser colocado na boca de alguém. Este tem força extra."
 	icon_state = "/obj/item/clothing/mask/muzzle/tape/super"
 	greyscale_colors = "#4D4D4D"
 	strip_delay = 8 SECONDS
 
 /obj/item/clothing/mask/muzzle/tape/surgical
 	name = "surgical tape piece"
-	desc = "A piece of tape that can be put over someone's mouth. As long as you apply this to your patient, you won't hear their screams of pain!"
+	desc = "Um pedaço de fita que pode ser colocado na boca de alguém. Desde que aplique isso ao seu paciente, não ouvirá seus gritos de dor!"
 	icon_state = "/obj/item/clothing/mask/muzzle/tape/surgical"
 	greyscale_colors = "#70BAE7"
 	equip_delay_other = 3 SECONDS
@@ -88,7 +88,7 @@
 
 /obj/item/clothing/mask/muzzle/tape/pointy
 	name = "pointy tape piece"
-	desc = "A piece of tape that can be put over someone's mouth. Looks like it will hurt if this is ripped off."
+	desc = "Um pedaço de fita que pode ser colocado na boca de alguém. Parece que vai doer se isto for arrancado."
 	worn_icon_state = "tape_piece_spikes_worn"
 	icon = 'icons/map_icons/clothing/mask.dmi'
 	icon_state = "/obj/item/clothing/mask/muzzle/tape/pointy"
@@ -101,7 +101,7 @@
 
 /obj/item/clothing/mask/muzzle/tape/pointy/super
 	name = "super pointy tape piece"
-	desc = "A piece of tape that can be put over someone's mouth. This thing could rip your face into a thousand pieces if ripped off."
+	desc = "Um pedaço de fita que pode ser colocado na boca de alguém. Essa coisa pode rasgar seu rosto em milhares de pedaços."
 	icon_state = "/obj/item/clothing/mask/muzzle/tape/pointy/super"
 	greyscale_colors = "#8C0A00#300008"
 	strip_delay = 6 SECONDS

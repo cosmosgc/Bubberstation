@@ -115,14 +115,14 @@
 	if(positive_result)
 		used_oven.visible_message(
 			span_notice("You smell something great coming from [used_oven]."),
-			blind_message = span_notice("You smell something great..."),
+			blind_message = span_notice("Você cheira algo ótimo..."),
 			ignored_mobs = asomnia_hadders,
 		)
 		BLACKBOX_LOG_FOOD_MADE(baked_result.type)
 	else
 		used_oven.visible_message(
 			span_warning("You smell a burnt smell coming from [used_oven]."),
-			blind_message = span_warning("You smell a burnt smell..."),
+			blind_message = span_warning("Você sente cheiro de queimado..."),
 			ignored_mobs = asomnia_hadders,
 		)
 	SEND_SIGNAL(parent, COMSIG_ITEM_BAKED, baked_result)

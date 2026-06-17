@@ -1,6 +1,6 @@
 /obj/item/organ/empowered_borer_egg
 	name = "strange egg"
-	desc = "All slimy and yuck."
+	desc = "Todo viscoso e nojento."
 	icon_state = "innards" // not like you'll be seeing this anyway
 	visual = TRUE
 	zone = BODY_ZONE_CHEST
@@ -42,7 +42,7 @@
 		borer_egg.generation = generation
 		var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
 		chest.dismember()
-		owner.visible_message(span_danger("An egg explodes out of [owner]'s chest, sending gore flying everywhere!"), span_danger("An egg explodes out of your chest, giblets flying everywhere!"))
+		owner.visible_message(span_danger("An egg explodes out of [owner]'s chest, sending gore flying everywhere!"), span_danger("Um ovo explode do seu peito, cavalheiros voando por toda parte!"))
 		return
 	var/mob/dead/observer/new_borer = pick(candidates)
 	var/mob/living/basic/cortical_borer/empowered/spawned_cb = new(get_turf(owner))

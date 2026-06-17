@@ -223,7 +223,7 @@
 	victim.Immobilize(CREWMATE_SUMMON_TELEPORT_DELAY)
 	victim.AddElement(/datum/element/forced_gravity, 0)
 	victim.add_filter("teleport_glow", 2, list("type" = "outline", "color" = "#de3aff48", "size" = 2))
-	victim.visible_message(span_warning("[victim] suddenly floats up into the air!"), span_warning("You feel a tug in your chest, and are lifted upwards into the air!"))
+	victim.visible_message(span_warning("[victim] suddenly floats up into the air!"), span_warning("Você sente um puxão em seu peito, e são levantados para cima no ar!"))
 	addtimer(CALLBACK(src, PROC_REF(summon_crewmate), victim, landing_pos), CREWMATE_SUMMON_TELEPORT_DELAY)
 
 #undef CREWMATE_SUMMON_TELEPORT_DELAY

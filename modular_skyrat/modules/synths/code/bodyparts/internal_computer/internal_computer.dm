@@ -39,7 +39,7 @@
 
 /datum/action/item_action/synth/open_internal_computer
 	name = "Open persocom emulation"
-	desc = "Accesses your built-in virtual machine."
+	desc = "Acessa sua máquina virtual integrada."
 	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/item_action/synth/open_internal_computer/Trigger(trigger_flags)
@@ -145,7 +145,7 @@
 		return
 	if(isnull(id_item))
 		if(stored_id)
-			to_chat(synth, span_notice("Persocom RFID link disconnected."))
+			to_chat(synth, span_notice("Ligação RFID do Persocom desconectada."))
 		stored_id = null
 		return
 	if(istype(id_item, /obj/item/card/id))
@@ -187,9 +187,9 @@
 	var/obj/item/organ/brain/synth/robotbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(istype(robotbrain))
 		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "establishing SSH login with persocom...")
+			balloon_alert(user, "Estabelecendo login SSH com Persocom...")
 			if(do_after(user, 5 SECONDS))
-				balloon_alert(user, "connection established")
+				balloon_alert(user, "conexão estabelecida")
 				to_chat(targetmachine, span_notice("[user] establishes an SSH connection between [src] and your persocom emulation."))
 				robotbrain.internal_computer.interact(user)
 			return
@@ -198,9 +198,9 @@
 	var/obj/item/organ/brain/cybernetic/cortical/cortbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(istype(cortbrain))
 		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "establishing SSH login with persocom...")
+			balloon_alert(user, "Estabelecendo login SSH com Persocom...")
 			if(do_after(user, 5 SECONDS))
-				balloon_alert(user, "connection established")
+				balloon_alert(user, "conexão estabelecida")
 				to_chat(targetmachine, span_notice("[user] establishes an SSH connection between [src] and your persocom emulation."))
 				cortbrain.internal_computer.interact(user)
 			return
@@ -208,9 +208,9 @@
 	var/obj/item/organ/brain/cybernetic/surplus/surpbrain = targetmachine.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(istype(surpbrain))
 		if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
-			balloon_alert(user, "establishing SSH login with persocom...")
+			balloon_alert(user, "Estabelecendo login SSH com Persocom...")
 			if(do_after(user, 5 SECONDS))
-				balloon_alert(user, "connection established")
+				balloon_alert(user, "conexão estabelecida")
 				to_chat(targetmachine, span_notice("[user] establishes an SSH connection between [src] and your persocom emulation."))
 				surpbrain.internal_computer.interact(user)
 			return

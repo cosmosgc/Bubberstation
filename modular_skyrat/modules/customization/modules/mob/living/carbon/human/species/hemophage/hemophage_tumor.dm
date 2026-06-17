@@ -17,7 +17,7 @@
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	icon_state = "tumor-on"
 	base_icon_state = "tumor"
-	desc = "This pulsating organ nearly resembles a normal heart, but it's been twisted beyond any human appearance, having turned to the color of coal. The way it barely fits where the original organ was sends shivers down your spine... <i>The fact that it's what keeps them alive makes it all the more terrifying.</i>"
+	desc = "Este órgão pulsante quase se assemelha a um coração normal, mas foi distorcido além de qualquer aparência humana, tendo voltado para a cor do carvão. O jeito que mal se encaixa onde o órgão original estava...<i>O fato de que é o que os mantém vivos torna tudo mais assustador.</i>"
 	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
 	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
 	var/is_dormant = PULSATING_TUMOR_ACTIVE
@@ -84,7 +84,7 @@
 	owner.blood_volume = (owner.blood_volume * FLOATING_POINT_ERROR_AVOIDING_FACTOR - bloodloss_rate * seconds_per_tick * FLOATING_POINT_ERROR_AVOIDING_FACTOR) / FLOATING_POINT_ERROR_AVOIDING_FACTOR
 
 	if(owner.blood_volume <= BLOOD_VOLUME_SURVIVE)
-		to_chat(owner, span_danger("You ran out of blood!"))
+		to_chat(owner, span_danger("Você ficou sem sangue!"))
 		owner.investigate_log("starved to death from lack of blood caused by [src].", INVESTIGATE_DEATHS)
 		owner.death() // Owch! Ran out of blood.
 

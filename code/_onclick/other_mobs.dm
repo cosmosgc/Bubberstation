@@ -28,7 +28,7 @@
 			to_chat(src, span_warning("Your [check_arm.name] is in no condition to be used."))
 			return FALSE
 
-		to_chat(src, span_notice("You look at your arm and sigh."))
+		to_chat(src, span_notice("Você olha para o seu braço e suspira."))
 		return FALSE
 
 	return TRUE
@@ -104,7 +104,7 @@
 	if(!user.can_interact_with(src, interaction_flags_atom & INTERACT_ATOM_ALLOW_USER_LOCATION))
 		return FALSE
 	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem a destreza de fazer isso!"))
 		return FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED))
 		var/ignore_flags = NONE

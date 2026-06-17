@@ -74,9 +74,9 @@
 	if(!moving)
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
-		to_chat(user, span_notice("You start trying to escape from the pod..."))
+		to_chat(user, span_notice("Você começa a tentar escapar da cápsula..."))
 		if(do_after(user, 1 MINUTES, target = src))
-			to_chat(user, span_notice("You manage to open the pod."))
+			to_chat(user, span_notice("Você consegue abrir a cápsula."))
 			empty_pod()
 
 /obj/structure/transit_tube_pod/proc/empty_pod(atom/location)
@@ -207,7 +207,7 @@
 
 /obj/structure/transit_tube_pod/dispensed
 	name = "temporary transit tube pod"
-	desc = "Hits the skrrrt (tube station), then hits the dirt (nonexistence). You know how it is."
+	desc = "Atinge o skrrrt (estação de tubulação), então atinge a sujeira (não existência). Você sabe como é."
 	icon_state = "temppod"
 	occupied_icon_state = "temppod_occupied"
 

@@ -4,7 +4,7 @@
 */
 /datum/action/innate/clockcult/comm
 	name = "Whirring Convergence"
-	desc = "Whispered words that link to the internal cogs of us all.<br><b>Warning:</b> Nearby non-servants can still hear you."
+	desc = "Palavras sussurradas que se ligam às engrenagens internas de todos nós.<br><b>Aviso:</b>Os não-servos próximos ainda podem te ouvir."
 	button_icon_state = "linked_minds"
 
 /datum/action/innate/clockcult/comm/Activate()

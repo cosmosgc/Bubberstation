@@ -3,7 +3,7 @@
 #define LUNGE_INSTANT_RANGE 6
 /datum/action/cooldown/bloodsucker/targeted/lunge
 	name = "Predatory Lunge"
-	desc = "Spring at your target to grapple them without warning, or tear the dead's heart out. Attacks from concealment or the rear may even knock them down if strong enough."
+	desc = "Atire em seu alvo para agarrá-los sem aviso, ou arrancar o coração dos mortos. Ataques de dissimulação ou a retaguarda pode até derrubá-los se forte o suficiente."
 	button_icon_state = "power_lunge"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED|AB_CHECK_LYING|AB_CHECK_PHASED|AB_CHECK_LYING
 	purchase_flags = BLOODSUCKER_CAN_BUY|GHOUL_CAN_BUY
@@ -35,10 +35,10 @@
 		return FALSE
 	// Are we being grabbed?
 	if(user.pulledby && user.pulledby.grab_state >= GRAB_AGGRESSIVE)
-		owner.balloon_alert(user, "grabbed!")
+		owner.balloon_alert(user, "Peguei!")
 		return FALSE
 	if(user.pulling)
-		owner.balloon_alert(user, "grabbing someone!")
+		owner.balloon_alert(user, "Pegar alguém!")
 		return FALSE
 	return TRUE
 
@@ -76,7 +76,7 @@
 ///Starts processing the power and prepares the lunge by spinning, calls lunge at the end of it.
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/prepare_target_lunge(atom/target_atom)
 	START_PROCESSING(SSprocessing, src)
-	owner.balloon_alert(owner, "lunge started!")
+	owner.balloon_alert(owner, "O pulmão começou!")
 	//animate them shake
 	var/base_x = owner.base_pixel_x
 	var/base_y = owner.base_pixel_y
@@ -139,7 +139,7 @@
 		return
 	// Is my target a Monster hunter?
 	if(HAS_TRAIT(target, TRAIT_BRAWLING_KNOCKDOWN_BLOCKED))
-		user.balloon_alert(user, "pushed away!")
+		user.balloon_alert(user, "Afaste-se!")
 		target.grabbedby(user)
 		return
 
@@ -148,7 +148,7 @@
 	if(target.stat == DEAD)
 		var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(user.zone_selected))
 		if(!bodypart)
-			target.balloon_alert(user, "bodypart missing!")
+			target.balloon_alert(user, "Falta uma parte do corpo!")
 			return
 		var/datum/wound/slash/flesh/moderate/crit_wound = new
 		crit_wound.sound_effect = null
@@ -164,7 +164,7 @@
 			var/list/organs = target.get_organs_for_zone(bodypart.body_zone)
 			if(!length(organs))
 				to_chat(user, span_warning("[target] has no organs in [bodypart]!"))
-				target.balloon_alert(user, "no organs!")
+				target.balloon_alert(user, "Sem órgãos!")
 				return
 			myheart_now = pick(organs)
 

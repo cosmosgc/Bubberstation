@@ -1,6 +1,6 @@
 /obj/structure/ore_vein
 	name = "ore vein"
-	desc = "An ore vein that can mined."
+	desc = "Uma veia de minério que pode ser minada."
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "stone1"
 	base_icon_state = "stone"
@@ -44,16 +44,16 @@
 
 /obj/structure/ore_vein/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour != TOOL_MINING)
-		to_chat(user, span_notice("You need a pickaxe to mine this."))
+		to_chat(user, span_notice("Você precisa de uma picareta para minar isso."))
 		return FALSE
 	if(!ore_type)
-		to_chat(user, span_notice("There's no ore to mine!"))
+		to_chat(user, span_notice("Não há minério para o meu!"))
 		return FALSE
 	if(!ore_amount)
 		to_chat(user, span_notice("The [src] is too low quality to yield any useful amount of [ore_descriptor]."))
 		return FALSE
 	if(depleted == TRUE)
-		to_chat(user, span_notice("This ore vein is exhausted."))
+		to_chat(user, span_notice("Esta veia de minério está exausta."))
 		return FALSE
 	// Our early return checks to tell the user what went wrong.
 	to_chat(user, span_notice("You start mining the [ore_descriptor]..."))
@@ -73,11 +73,11 @@
 
 /obj/structure/ore_vein/stone
 	name = "large rocks"
-	desc = "Various types of high quality stone that could probably make a good construction material if dug up and refined."
+	desc = "Vários tipos de pedra de alta qualidade que provavelmente poderia fazer um bom material de construção se desenterrado e refinado."
 
 /obj/structure/ore_vein/iron
 	name = "rusted rocks"
-	desc = "The rusty brown color on these rocks gives away the fact they are full of iron!"
+	desc = "A cor marrom enferrujada nestas rochas dá o fato de que elas estão cheias de ferro!"
 	icon_state = "iron1"
 	base_icon_state = "iron"
 	ore_descriptor = "iron"
@@ -85,7 +85,7 @@
 
 /obj/structure/ore_vein/silver
 	name = "silvery-blue rocks"
-	desc = "These rocks have the giveaway blued-silver look of, well, raw silver."
+	desc = "Essas pedras têm o olhar azulado de prata crua."
 	icon_state = "silver1"
 	base_icon_state = "silver"
 	ore_descriptor = "silver"
@@ -93,7 +93,7 @@
 
 /obj/structure/ore_vein/gold
 	name = "gold streaked rocks"
-	desc = "Fairly normal looking rocks... aside from the streaks of shining gold running through some of them!."
+	desc = "Pedras de aparência bastante normal... além das raias de ouro brilhante correndo através de algumas delas!"
 	icon_state = "gold1"
 	base_icon_state = "gold"
 	ore_descriptor = "gold"
@@ -101,7 +101,7 @@
 
 /obj/structure/ore_vein/plasma
 	name = "plasma rich rocks"
-	desc = "Rocks with unrefined plasma visible on the outside of several... Do be careful with open flames near this."
+	desc = "Pedras com plasma não refinado visíveis no exterior de vários... Tenha cuidado com as chamas abertas perto disso."
 	icon_state = "plasma1"
 	base_icon_state = "plasma"
 	ore_descriptor = "plasma"
@@ -109,7 +109,7 @@
 
 /obj/structure/ore_vein/diamond
 	name = "diamond studded rocks"
-	desc = "While nowhere near as rare as you'd think, the diamonds studding these rocks are still both useful and valuable."
+	desc = "Embora não seja tão raro como você pensa, os diamantes que guardam essas pedras ainda são úteis e valiosos."
 	icon_state = "diamond1"
 	base_icon_state = "diamond"
 	ore_descriptor = "diamond"

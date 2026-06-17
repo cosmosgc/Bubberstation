@@ -74,13 +74,13 @@
 
 /obj/structure/holosign/wetsign
 	name = "wet floor sign"
-	desc = "The words flicker as if they mean nothing."
+	desc = "As palavras tremem como se não significassem nada."
 	icon_state = "holosign"
 	base_icon_state = "holosign"
 
 /obj/structure/holosign/barrier
 	name = "security holobarrier"
-	desc = "A strong short security holographic barrier used for crowd control and blocking crime scenes. Can only be passed by walking."
+	desc = "Uma forte barreira holográfica de segurança usada para controlar multidões e bloquear cenas de crime. Só pode ser passado andando."
 	icon_state = "holosign_sec"
 	base_icon_state = "holosign_sec"
 	pass_flags_self = PASSTABLE | PASSGRILLE | PASSGLASS | LETPASSTHROW
@@ -135,11 +135,11 @@
 
 /obj/structure/holosign/barrier/proc/open(user)
 	if(!openable)
-		balloon_alert(user, "unable!")
+		balloon_alert(user, "Impossível!")
 		return
 
 	if(!COOLDOWN_FINISHED(src, cooldown_open))
-		balloon_alert(user, "on cooldown!")
+		balloon_alert(user, "Na refrigeração!")
 		return
 
 	if(!opened)
@@ -156,7 +156,7 @@
 
 /obj/structure/holosign/barrier/wetsign
 	name = "wet floor holobarrier"
-	desc = "When it says walk it means <b>WALK!</b>"
+	desc = "Quando diz andar significa<b>Andem!</b>"
 	icon_state = "holosign_dense"
 	base_icon_state = "holosign_dense"
 	max_integrity = 1
@@ -173,7 +173,7 @@
 
 /obj/structure/holosign/barrier/engineering
 	name = "engineering holobarrier"
-	desc = "A short engineering holographic barrier used for designating hazardous zones, slightly blocks radiation. Can only be passed by walking."
+	desc = "Uma pequena barreira holográfica de engenharia usada para designar zonas perigosas, bloqueia ligeiramente a radiação. Só pode ser passado andando."
 	icon_state = "holosign_engi"
 	base_icon_state = "holosign_engi"
 	rad_insulation = RAD_LIGHT_INSULATION
@@ -181,7 +181,7 @@
 
 /obj/structure/holosign/barrier/atmos
 	name = "holofirelock"
-	desc = "A holographic barrier resembling a firelock. Though it does not prevent solid objects from passing through, gas is kept out."
+	desc = "Uma barreira holográfica parecida com uma trava de fogo. Embora não impeça que objetos sólidos passem, o gás é mantido fora."
 	icon_state = "holo_firelock"
 	base_icon_state = "holo_firelock"
 	openable = FALSE
@@ -232,7 +232,7 @@
 
 /obj/structure/holosign/barrier/cyborg
 	name = "Energy Field"
-	desc = "A fragile energy field that blocks movement. Excels at blocking lethal projectiles."
+	desc = "Um frágil campo de energia que bloqueia o movimento. Excels no bloqueio de projéteis letais."
 	density = TRUE
 	max_integrity = 10
 	allow_walk = FALSE
@@ -246,7 +246,7 @@
 
 /obj/structure/holosign/barrier/medical
 	name = "\improper PENLITE holobarrier"
-	desc = "A holobarrier that uses biometrics to detect human viruses. Denies passing to personnel with easily-detected, malicious viruses. Good for quarantines."
+	desc = "Uma barreira holográfica que usa biometria para detectar vírus humanos. Nega passar para o pessoal com vírus maliciosos facilmente detectados. Bom para quarentenas."
 	icon_state = "holo_medical"
 	base_icon_state = "holo_medical"
 	max_integrity = 1
@@ -287,7 +287,7 @@
 
 /obj/structure/holosign/barrier/cyborg/hacked
 	name = "Charged Energy Field"
-	desc = "A powerful energy field that blocks movement. Energy arcs off it."
+	desc = "Um poderoso campo de energia que bloqueia o movimento. A energia está fora dele."
 	max_integrity = 20
 	armor_type = /datum/armor/structure_holosign //Yeah no this doesn't get projectile resistance.
 	var/shockcd = 0

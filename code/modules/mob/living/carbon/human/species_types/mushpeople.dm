@@ -54,7 +54,7 @@
 /// A mushpersons mushroom cap organ
 /obj/item/organ/mushroom_cap
 	name = "mushroom cap"
-	desc = "These are yummie, no cap."
+	desc = "São gostosos, sem boné."
 
 	use_mob_sprite_as_obj_sprite = TRUE
 

@@ -49,7 +49,7 @@
 			return
 
 	// they are actually trying to shoot something
-	user.balloon_alert(user, "the safety disengages!")
+	user.balloon_alert(user, "A segurança se desliga!")
 	toggle_safeties(user)
 	return COMPONENT_CANCEL_GUN_FIRE
 

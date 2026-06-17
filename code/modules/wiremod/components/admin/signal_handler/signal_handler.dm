@@ -7,8 +7,8 @@
  * A component that registers signals on events and listens for them.
  */
 /obj/item/circuit_component/signal_handler
-	display_name = "Signal Handler"
-	desc = "A component that listens for signals on an object."
+	display_name = "Manipulador de sinal."
+	desc = "Um componente que escuta sinais em um objeto."
 	category = "Admin"
 	circuit_flags = CIRCUIT_FLAG_ADMIN|CIRCUIT_FLAG_INSTANT
 

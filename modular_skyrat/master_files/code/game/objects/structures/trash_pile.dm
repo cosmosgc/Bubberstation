@@ -2,7 +2,7 @@
 
 /obj/structure/trash_pile
 	name = "trash pile"
-	desc = "A heap of garbage, but maybe there's something interesting inside?"
+	desc = "Um monte de lixo, mas talvez haja algo interessante dentro?"
 	icon = 'modular_skyrat/master_files/icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
 	density = TRUE
@@ -41,20 +41,20 @@
 		var/atom/hidden_atom = contents[contents.len] // Get the most recent hidden thing
 		if(istype(hidden_atom, /mob/living))
 			var/mob/living/hidden_mob = hidden_atom
-			balloon_alert(user, "someone is inside!")
+			balloon_alert(user, "Alguém está lá dentro!")
 			eject_mob(hidden_mob)
 		else if (istype(hidden_atom, /obj/item))
 			var/obj/item/hidden_item = hidden_atom
-			balloon_alert(user, "found something!")
+			balloon_alert(user, "Encontrei algo!")
 			hidden_item.forceMove(src.loc)
 	else
 		// You already searched this one bruh
 		if(user.ckey in searchedby)
-			balloon_alert(user, "already searched!")
+			balloon_alert(user, "Já procurei!")
 		// You found an item!
 		else
 			produce_alpha_item()
-			balloon_alert(user, "found something!")
+			balloon_alert(user, "Encontrei algo!")
 			searchedby += user.ckey
 
 /obj/structure/trash_pile/attack_hand(mob/user)
@@ -93,7 +93,7 @@
 /obj/structure/trash_pile/proc/do_dive(mob/user)
 	if(contents.len)
 		for(var/mob/hidden_mob in contents)
-			balloon_alert(user, "already someone inside!")
+			balloon_alert(user, "Já tem alguém lá dentro!")
 			eject_mob(hidden_mob)
 			return FALSE
 	return TRUE
@@ -118,15 +118,15 @@
 /obj/structure/trash_pile/attackby(obj/item/hidden_item, mob/living/user, params)
 	if(!user.combat_mode)
 		if(can_hide_item(hidden_item))
-			balloon_alert(user, "hiding item...")
+			balloon_alert(user, "Esconder itens...")
 			if(do_after(user, hide_item_time, user))
 				if(src.loc)
 					if(user.transferItemToLoc(hidden_item, src))
-						balloon_alert(user, "item hidden")
+						balloon_alert(user, "item escondido")
 					else
-						balloon_alert(user, "it's stuck to your hand!")
+						balloon_alert(user, "Está preso na sua mão!")
 		else
-			balloon_alert(user, "it's full!")
+			balloon_alert(user, "Está cheio!")
 		return
 
 	. = ..()

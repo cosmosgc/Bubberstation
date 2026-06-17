@@ -257,10 +257,10 @@ ADMIN_VERB(debug_hallucination_weighted_list_per_type, R_DEBUG, "Show Hallucinat
 	var/list/delusion_args = list()
 	var/static/list/options = list("Yes", "No")
 	var/duration = tgui_input_number(user, "How long should it last in seconds?", "Delusion: Duration", max_value = INFINITY, min_value = 1, default = 30)
-	var/affects_us = (tgui_alert(user, "Should they see themselves as the delusion?", "Delusion: Affects us", options) == "Yes")
-	var/affects_others = (tgui_alert(user, "Should they see everyone else delusion?", "Delusion: Affects others", options) == "Yes")
-	var/skip_nearby = (tgui_alert(user, "Should the delusion only affect people outside of their view?", "Delusion: Skip in view", options) == "Yes")
-	var/play_wabbajack = (tgui_alert(user, "Play the wabbajack sound when it happens?", "Delusion: Wabbajack sound", options) == "Yes")
+	var/affects_us = (tgui_alert(user, "Eles deveriam se ver como a ilusão?", "Delusion: Affects us", options) == "Yes")
+	var/affects_others = (tgui_alert(user, "Elees deveriam ver todos os outros delírios?", "Delusion: Affects others", options) == "Yes")
+	var/skip_nearby = (tgui_alert(user, "A ilusão só deve afetar as pessoas fora de sua visão?", "Delusion: Skip in view", options) == "Yes")
+	var/play_wabbajack = (tgui_alert(user, "Tocar o som de wabbajack quanto ao descontece?", "Delusion: Wabbajack sound", options) == "Yes")
 
 	delusion_args = list(
 		chosen,
@@ -273,7 +273,7 @@ ADMIN_VERB(debug_hallucination_weighted_list_per_type, R_DEBUG, "Show Hallucinat
 	)
 
 	if(ispath(chosen, /datum/hallucination/delusion/custom))
-		var/custom_icon_file = input(user, "Pick file for custom delusion:", "Custom Delusion: File") as null|file
+		var/custom_icon_file = input(user, "Escolha o arquivo para ilusão personalizada:", "Ilusão personalizada: Arquivo") as null|file
 		if(!custom_icon_file)
 			return
 

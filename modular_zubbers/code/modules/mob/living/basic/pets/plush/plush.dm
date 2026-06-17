@@ -1,7 +1,7 @@
 // For plushmium
 /mob/living/basic/pet/plush
 	name = "plushie"
-	desc = "A living plushie!"
+	desc = "Um plushie vivo!"
 	icon = 'icons/obj/toys/plushes.dmi'
 	icon_state = "debug"
 	icon_living = "debug"
@@ -32,7 +32,7 @@
 	melee_damage_upper = 1
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
-	death_message = "lets out a faint squeak as the glint in its eyes disappears"
+	death_message = "deixa sair um gemido fraco enquanto o brilho em seus olhos desaparece."
 
 	attack_sound = 'sound/items/weapons/bite.ogg'
 
@@ -51,7 +51,7 @@
 //shell that lets people turn into the plush or poll for ghosts
 /obj/item/toy/plushie_shell
 	name = "Plushie Shell"
-	desc = "A plushie. Its eyes seem to be staring right back at you. Something isn't quite right."
+	desc = "Um plushie. Seus olhos parecem estar te encarando. Algo não está bem."
 	icon = 'icons/obj/toys/plushes.dmi'
 	icon_state = "debug"
 	var/obj/item/toy/plush/stored_plush = null
@@ -59,10 +59,10 @@
 //attacking yourself transfers your mind into the plush!
 /obj/item/toy/plushie_shell/attack_self(mob/user)
 	if(user.mind)
-		var/safety = (tgui_alert(user, "The plushie is staring back at you intensely, it seems cursed! (Permanently become a plushie)", "Hugging this is a bad idea.", list("Hug it!", "Cancel")))
+		var/safety = (tgui_alert(user, "O plushie está olhando para você intensamente, parece amaldiçoado! (Permanentemente se tornar um plushie)", "Hugging this is a bad idea.", list("Hug it!", "Cancel")))
 		if(safety == "Cancel" || !in_range(src, user))
 			return
-		to_chat(user, span_userdanger("You hug the strange plushie. You fool."))
+		to_chat(user, span_userdanger("Você abraça o estranho pelúcia. Seu tolo."))
 
 		//setup the mob
 		var/mob/living/basic/pet/plush/new_plushie = new /mob/living/basic/pet/plush(user.loc)

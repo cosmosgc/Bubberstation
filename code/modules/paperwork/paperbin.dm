@@ -2,7 +2,7 @@
 #define PAPER_OVERLAY_PIXEL_SHIFT 2
 /obj/item/paper_bin
 	name = "paper bin"
-	desc = "Contains all the paper you'll never need."
+	desc = "Contém todo o papel que nunca precisará."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paper_bin0"
 	inhand_icon_state = "sheet-metal"
@@ -54,7 +54,7 @@
 	if(!droppoint)
 		droppoint = drop_location()
 	if(collapse)
-		visible_message(span_warning("The stack of paper collapses!"))
+		visible_message(span_warning("A pilha de papel desmorona!"))
 	for(var/obj/item/paper/stacked_paper in paper_stack) //first, dump all of the paper that already exists
 		stacked_paper.forceMove(droppoint)
 		if(!stacked_paper.pixel_y)
@@ -211,12 +211,12 @@
 
 /obj/item/paper_bin/construction
 	name = "construction paper bin"
-	desc = "Contains all the paper you'll never need, IN COLOR!"
+	desc = "Contém todo o papel que você nunca vai precisar, em cor!"
 	papertype = /obj/item/paper/construction
 
 /obj/item/paper_bin/bundlenatural
 	name = "natural paper bundle"
-	desc = "A bundle of paper created using traditional methods."
+	desc = "Um pacote de papel criado usando métodos tradicionais."
 	icon_state = "paper_stack"
 	papertype = /obj/item/paper/natural
 	resistance_flags = FLAMMABLE
@@ -267,7 +267,7 @@
 
 /obj/item/paper_bin/carbon
 	name = "carbon paper bin"
-	desc = "Contains all the paper you'll ever need, in duplicate!"
+	desc = "Contém todo o papel que você vai precisar, em duplicata!"
 	icon_state = "paper_bin_carbon0"
 	papertype = /obj/item/paper/carbon
 	bin_overlay_string = "paper_bin_carbon_overlay"

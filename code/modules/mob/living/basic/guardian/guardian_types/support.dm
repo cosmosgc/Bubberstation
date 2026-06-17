@@ -7,7 +7,7 @@
 	melee_damage_upper = 15
 	playstyle_string = span_holoparasite("As a <b>support</b> type, you may right-click to heal targets. In addition, alt-clicking on an adjacent object or mob will warp them to your bluespace beacon after a short delay.")
 	creator_name = "Support"
-	creator_desc = "Does medium damage, but can heal its targets and create beacons to teleport people and things to."
+	creator_desc = "Faz danos médios, mas pode curar seus alvos e criar faróis para teletransportar pessoas e coisas."
 	creator_icon = "support"
 	/// Amount of each damage type to heal per hit
 	var/healing_amount = 5
@@ -53,7 +53,7 @@
 /// Place a beacon and then listen for clicks to teleport people to it
 /datum/action/cooldown/mob_cooldown/guardian_bluespace_beacon
 	name = "Place Bluespace Beacon"
-	desc = "Mark the ground under your feet as a teleportation point. Alt-click things to teleport them to your beacon."
+	desc = "Marque o chão sob seus pés como um ponto de teletransporte. Alt-click coisas para teletransportá-los para o seu farol."
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "the_freezer"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -78,7 +78,7 @@
 /datum/action/cooldown/mob_cooldown/guardian_bluespace_beacon/Activate(atom/movable/target)
 	var/turf/beacon_loc = owner.loc
 	if(!isfloorturf(beacon_loc))
-		owner.balloon_alert(owner, "no room!")
+		owner.balloon_alert(owner, "Não há espaço!")
 		return FALSE
 
 	if (!isnull(beacon))
@@ -91,7 +91,7 @@
 		var/mob/living/basic/guardian/guardian_owner = owner
 		beacon.add_atom_colour(guardian_owner.guardian_colour, FIXED_COLOUR_PRIORITY)
 	RegisterSignal(beacon, COMSIG_QDELETING, PROC_REF(on_beacon_deleted))
-	to_chat(src, span_bolddanger("Beacon placed! You may now warp targets and objects to it, including your user, via Alt+Click."))
+	to_chat(src, span_bolddanger("Beacon colocado! Você pode agora dobrar alvos e objetos para ele, incluindo seu usuário, via Alt+. Clique."))
 	StartCooldown()
 	return TRUE
 
@@ -115,21 +115,21 @@
 	if(!istype(target)) // Turfs
 		return FALSE
 	if (isnull(beacon))
-		source.balloon_alert(source, "no beacon!")
+		source.balloon_alert(source, "Sem sinal!")
 		return FALSE
 	if (isguardian(source))
 		var/mob/living/basic/guardian/guardian_mob = source
 		if (!guardian_mob.is_deployed())
-			source.balloon_alert(source, "manifest yourself!")
+			source.balloon_alert(source, "manifeste-se!")
 			return FALSE
 	if (!source.can_perform_action(target))
-		target.balloon_alert(source, "too far!")
+		target.balloon_alert(source, "Muito longe!")
 		return FALSE
 	if (target.anchored)
-		target.balloon_alert(source, "it won't budge!")
+		target.balloon_alert(source, "Não se mexe!")
 		return FALSE
 	if((beacon.z != target.z) && !(target.z in SSmapping.get_connected_levels(beacon.z)))
-		target.balloon_alert(source, "too far from beacon!")
+		target.balloon_alert(source, "Muito longe do farol!")
 		return FALSE
 	return TRUE
 
@@ -140,7 +140,7 @@
 	source.balloon_alert(source, "teleporting...")
 	target.visible_message(
 		span_danger("[target] starts to glow faintly!"), \
-		span_userdanger("You start to faintly glow, and you feel strangely weightless!"))
+		span_userdanger("Você começa a brilhar fracamente, e você se sente estranhamente sem peso!"))
 	if(!do_after(source, teleport_time, target))
 		return
 	new /obj/effect/temp_visual/guardian/phase/out(target.loc)
@@ -149,7 +149,7 @@
 		living_target.flash_act()
 	target.visible_message(
 		span_danger("[target] disappears in a flash of light!"), \
-		span_userdanger("Your vision is obscured by a flash of light!"), \
+		span_userdanger("Sua visão é obscurecida por um clarão de luz!"), \
 	)
 	do_teleport(target, beacon, precision = 0, channel = TELEPORT_CHANNEL_BLUESPACE)
 	new /obj/effect/temp_visual/guardian/phase(get_turf(target))
@@ -159,7 +159,7 @@
 /obj/structure/guardian_beacon
 	name = "guardian beacon"
 	icon = 'icons/turf/floors.dmi'
-	desc = "A glowing zone which acts as a beacon for teleportation."
+	desc = "Uma zona brilhante que age como um farol para teletransporte."
 	icon_state = "light_on-8"
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	density = FALSE

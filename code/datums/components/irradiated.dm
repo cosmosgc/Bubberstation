@@ -232,7 +232,7 @@
 
 /atom/movable/screen/alert/irradiated
 	name = "Irradiated"
-	desc = "You're irradiated! Heal your toxins quick, and stand under a shower to halt the incoming damage."
+	desc = "Você está irradiado! Cure suas toxinas rapidamente, e fique sob um chuveiro para parar os danos."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "irradiated"
 

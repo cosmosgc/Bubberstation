@@ -5,7 +5,7 @@
 
 /obj/machinery/biogenerator
 	name = "biogenerator"
-	desc = "Converts plants into biomass, which can be used to construct useful items."
+	desc = "Transforma plantas em biomassa, que pode ser usada para construir itens úteis."
 	icon = 'icons/obj/machines/biogenerator.dmi'
 	icon_state = "biogenerator"
 	density = TRUE
@@ -75,7 +75,7 @@
 		user.visible_message(
 			span_notice("[user.name] starts to cut \the [src] free from the floor."),
 			span_notice("You start to cut [src] free from the floor..."),
-			span_hear("You hear welding."),
+			span_hear("Você ouve solda."),
 		)
 		if(!tool.use_tool(src, user, 10 SECONDS, volume=100))
 			return FALSE
@@ -90,10 +90,10 @@
 	user.visible_message(
 		span_notice("[user.name] starts to weld \the [src] to the floor."),
 		span_notice("You start to weld [src] to the floor..."),
-		span_hear("You hear welding."),
+		span_hear("Você ouve solda."),
 	)
 	if(!tool.use_tool(src, user, 10 SECONDS, volume=100))
-		balloon_alert(user, "cancelled!")
+		balloon_alert(user, "Cancelado!")
 		return FALSE
 	welded_down = TRUE
 	to_chat(user, span_notice("You weld [src] to the floor."))
@@ -151,14 +151,14 @@
 	. = ..()
 
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:")
+		. += span_notice("A exibição de status diz:")
 		. += span_notice(" - Productivity at <b>[productivity * 100]%</b>.")
 		. += span_notice(" - Converting <b>[processed_items_per_cycle]</b> pieces of food per cycle.")
 		. += span_notice(" - Matter consumption at <b>[1 / efficiency * 100]</b>%.")
 		. += span_notice(" - Internal biomass converter capacity at <b>[max_items]</b> pieces of food, and currently holding <b>[get_content_count()] piece\s</b>.")
 
 	if(welded_down)
-		. += span_info("It's moored firmly to the floor. You can unsecure its moorings with a <b>welder</b>.")
+		. += span_info("Está ancorado firmemente no chão. Você pode não proteger suas amarras com um<b>soldador</b>.")
 
 /obj/machinery/biogenerator/update_appearance()
 	. = ..()
@@ -229,7 +229,7 @@
 
 	if(istype(tool, /obj/item/reagent_containers/cup))
 		if(panel_open)
-			to_chat(user, span_warning("Close the maintenance panel first!"))
+			to_chat(user, span_warning("Feche o painel de manutenção primeiro!"))
 			return ITEM_INTERACT_BLOCKING
 
 		insert_beaker(user, tool)

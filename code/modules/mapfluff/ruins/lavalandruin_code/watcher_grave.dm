@@ -1,14 +1,14 @@
 /obj/effect/mob_spawn/corpse/goliath/pierced
-	corpse_description = "Seems to have been pierced through the heart by a Watcher spike."
-	naive_corpse_description = "It's got a pretty big boo-boo, might need one of the large plasters."
+	corpse_description = "Parece ter sido perfurado pelo coração por um espigão."
+	naive_corpse_description = "Tem um boo-boo bem grande, talvez precise de um dos grandes gessos."
 
 /obj/effect/mob_spawn/corpse/watcher/goliath_chewed
-	corpse_description = "Prior to its death, it was badly mangled by the jaws of a Goliath."
-	naive_corpse_description = "It's all tuckered out after playing rough with a Goliath."
+	corpse_description = "Antes de sua morte, foi muito mutilado pelas mandíbulas de um Golias."
+	naive_corpse_description = "Está tudo acabado depois de jogar duro com um Golias."
 
 /obj/effect/mob_spawn/corpse/watcher/crushed
-	corpse_description = "Crushed by a rockslide, it seemed to have been scraping frantically at the rocks even as it perished."
-	naive_corpse_description = "All of those rocks probably don't make a comfortable blanket."
+	corpse_description = "Esmagado por um deslizamento de pedras, parecia ter sido raspando freneticamente nas rochas, mesmo enquanto perecia."
+	naive_corpse_description = "Todas essas pedras provavelmente não fazem um cobertor confortável."
 
 
 #define WATCHER_EGG_LIVELY_MOD 0.75
@@ -17,7 +17,7 @@
 /// Egg which hatches into a helpful pet. Or you can eat it if you want.
 /obj/item/food/egg/watcher
 	name = "watcher egg"
-	desc = "A lonely egg still pulsing with life, somehow untouched by the corruption of the Necropolis."
+	desc = "Um ovo solitário ainda pulsando com vida, de alguma forma intocado pela corrupção da necrópole."
 	icon_state = "egg_watcher"
 	chick_throw_prob = 100
 	tastes = list("ocular fluid" = 6, "loneliness" = 1)
@@ -41,15 +41,15 @@
 	new /obj/effect/spawner/random/lavaland_mob/watcher(spawn_turf)
 
 /obj/item/food/egg/watcher/examine(mob/user)
-	return ..() + span_notice("<i>Watch it more closely to see how it is doing...</i>")
+	return ..() + span_notice("<i>Veja de perto para ver como está indo...</i>")
 
 /obj/item/food/egg/watcher/examine_more(mob/user)
 	. = ..()
 	if (steps_travelled < (steps_to_hatch * WATCHER_EGG_ACTIVE_MOD))
-		return . + span_notice("Something stirs listlessly inside.")
+		return . + span_notice("Algo se agita atenciosamente lá dentro.")
 	if (steps_travelled < steps_to_hatch * WATCHER_EGG_LIVELY_MOD)
-		return . + span_notice("Something is moving actively inside.")
-	return . + span_boldnotice("It's jiggling wildly, it's about to hatch!")
+		return . + span_notice("Algo está se movendo ativamente para dentro.")
+	return . + span_boldnotice("Está balançando loucamente, está prestes a eclodir!")
 
 /// Called when we are moved, whether inside an inventory or by ourself somehow
 /obj/item/food/egg/watcher/proc/on_stepped(atom/movable/egg, atom/mover, atom/old_loc, direction)
@@ -92,7 +92,7 @@
 /// A cute pet who will occasionally attack lavaland mobs for you
 /obj/item/watcher_hatchling
 	name = "watcher hatchling"
-	desc = "A newly born watcher, apparently free of the Necropolis' corruption. Perhaps one of the last."
+	desc = "Um observador recém-nascido, aparentemente livre da corrupção da necrópole. Talvez um dos últimos."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "watcher_baby"
 	w_class = WEIGHT_CLASS_SMALL

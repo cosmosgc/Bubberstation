@@ -1,10 +1,10 @@
 //Bluespace crystals, used in telescience and when crushed it will blink you to a random turf.
 /obj/item/stack/ore/bluespace_crystal
 	name = "bluespace crystal"
-	desc = "A glowing bluespace crystal, not much is known about how they work. It looks very delicate."
+	desc = "Um brilhante cristal do espaço azul, não se sabe muito sobre como eles funcionam. Parece muito delicado."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "bluespace_crystal"
-	singular_name = "bluespace crystal"
+	singular_name = "Cristal do espaço azul"
 	dye_color = DYE_COSMIC
 	w_class = WEIGHT_CLASS_TINY
 	material_flags = MATERIAL_NO_DESCRIPTORS // Handles in-hand/thrown teleports by itself
@@ -66,7 +66,7 @@
 //Artificial bluespace crystal, doesn't give you much research.
 /obj/item/stack/ore/bluespace_crystal/artificial
 	name = "artificial bluespace crystal"
-	desc = "An artificially made bluespace crystal, it looks delicate."
+	desc = "Um cristal de espaço azul artificialmente feito, parece delicado."
 	mats_per_unit = list(/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT)
 	blink_range = 4 // Not as good as the organic stuff!
 	points = 0 //nice try
@@ -78,8 +78,8 @@
 // Polycrystals, aka stacks
 /obj/item/stack/sheet/bluespace_crystal
 	name = "bluespace polycrystal"
-	singular_name = "bluespace polycrystal"
-	desc = "A stable polycrystal, made of fused-together bluespace crystals. You could probably break one off."
+	singular_name = "Policristal do espaço azul"
+	desc = "Um policristal estável, feito de cristais de espaço azul fundidos. Você provavelmente poderia quebrar um."
 	icon_state = "polycrystal"
 	inhand_icon_state = null
 	material_flags = MATERIAL_NO_DESCRIPTORS
@@ -104,9 +104,9 @@
 	user.put_in_hands(BC)
 	use(1)
 	if(!amount)
-		to_chat(user, span_notice("You break the final crystal off."))
+		to_chat(user, span_notice("Você quebra o cristal final."))
 	else
-		to_chat(user, span_notice("You break off a crystal."))
+		to_chat(user, span_notice("Você quebra um cristal."))
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50

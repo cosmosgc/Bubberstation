@@ -1,6 +1,6 @@
 /obj/item/wallframe/fish
 	name = "fish mount"
-	desc = "The frame of a mount for trophy fish, to show off your proudest catch."
+	desc = "A armação de um monte de peixe troféu, para mostrar sua captura mais orgulhosa."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "fish_mount_item"
 	result_path = /obj/structure/fish_mount
@@ -16,7 +16,7 @@
 ///A wallmounted structure on which a fish can be attached to be used as room decoration.
 /obj/structure/fish_mount
 	name = "fish mount"
-	desc = "A mount for trophy fish, to show off your proudest catch."
+	desc = "Um monte de peixe troféu, para mostrar sua captura mais orgulhosa."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "fish_mount"
 	anchored = TRUE
@@ -60,7 +60,7 @@
 
 /obj/structure/fish_mount/screwdriver_act(mob/living/user, obj/item/item)
 	. = ..()
-	balloon_alert(user, "removing mount...")
+	balloon_alert(user, "removendo montagem...")
 	if(!item.use_tool(src, user, 3 SECONDS, volume = 50))
 		return ITEM_INTERACT_BLOCKING
 	playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -90,12 +90,12 @@
 	if(!isfish(item) || user.combat_mode)
 		return ..()
 	if(mounted_fish)
-		balloon_alert(user, "remove other fish first!")
+		balloon_alert(user, "Tire outros peixes primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if(item.flags_1 & HOLOGRAM_1)
-		balloon_alert(user, "fish not mountable!")
+		balloon_alert(user, "Peixes não montados!")
 		return ITEM_INTERACT_BLOCKING
-	balloon_alert(user, "mounting fish...")
+	balloon_alert(user, "Montando peixes...")
 	if(!do_after(user, 3 SECONDS, src) || mounted_fish)
 		return ITEM_INTERACT_BLOCKING
 	add_fish(item, catcher = user.name)
@@ -151,13 +151,13 @@
 /obj/structure/fish_mount/attack_hand_secondary(mob/living/user, list/modifiers)
 	. = ..()
 	if(!mounted_fish)
-		balloon_alert(user, "no fish mounted!")
+		balloon_alert(user, "Nenhum peixe montado!")
 	else
 		remove_fish(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/fish_mount/proc/remove_fish(mob/living/user)
-	balloon_alert(user, "removing fish...")
+	balloon_alert(user, "removendo peixes...")
 	if(!do_after(user, (persistence_loaded_fish ? 6 : 3) SECONDS, src) || !mounted_fish)
 		return
 

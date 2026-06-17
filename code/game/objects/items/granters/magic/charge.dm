@@ -2,7 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/charge
 	action_name = "charge"
 	icon_state ="bookcharge"
-	desc = "This book is made of 100% postconsumer wizard."
+	desc = "Este livro é feito de um mago 100% pós-consumo."
 	remarks = list(
 		"I feel ALIVE!",
 		"I CAN TASTE THE MANA!",

@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/cowboy
 	name = "cowboy boots"
-	desc = "A small sticker lets you know they've been inspected for snakes, It is unclear how long ago the inspection took place..."
+	desc = "Um pequeno adesivo mostra que foram inspecionados para cobras, não está claro há quanto tempo a inspeção aconteceu..."
 	icon_state = "cowboy_brown"
 	armor_type = /datum/armor/shoes_cowboy
 	custom_price = PAYCHECK_CREW
@@ -47,7 +47,7 @@
 	INVOKE_ASYNC(src, PROC_REF(handle_table_slam), source)
 
 /obj/item/clothing/shoes/cowboy/proc/handle_table_slam(mob/living/user)
-	user.say(pick("Hot damn!", "Hoo-wee!", "Got-dang!"), spans = list(SPAN_YELL), forced=TRUE)
+	user.say(pick("Droga!", "Hoo-wee!", "Got-dang!"), spans = list(SPAN_YELL), forced=TRUE)
 	user.client?.give_award(/datum/award/achievement/misc/hot_damn, user)
 
 /obj/item/clothing/shoes/cowboy/mouse_drop_receive(mob/living/target, mob/living/user, params)
@@ -72,12 +72,12 @@
 
 /obj/item/clothing/shoes/cowboy/black
 	name = "black cowboy boots"
-	desc = "You get the feeling someone might have been hanged in these boots."
+	desc = "Você acha que alguém pode ter sido enforcado com essas botas."
 	icon_state = "cowboy_black"
 
 /obj/item/clothing/shoes/cowboy/fancy
 	name = "bilton wrangler boots"
-	desc = "A pair of authentic haute couture boots from Japanifornia. You doubt they have ever been close to cattle."
+	desc = "Um par de botas de alta costura autênticas do Japão. Você duvida que eles já estiveram perto de gado."
 	icon_state = "cowboy_fancy"
 	armor_type = /datum/armor/cowboy_fancy
 
@@ -86,7 +86,7 @@
 
 /obj/item/clothing/shoes/cowboy/lizard
 	name = "lizardskin boots"
-	desc = "You can hear a faint hissing from inside the boots; you hope it is just a mournful ghost."
+	desc = "Você pode ouvir um sibilo fraco de dentro das botas, você espera que seja apenas um fantasma triste."
 	icon = 'icons/map_icons/clothing/shoes.dmi'
 	icon_state = "/obj/item/clothing/shoes/cowboy/lizard"
 	post_init_icon_state = "lizardboots"
@@ -108,13 +108,13 @@
 
 /obj/item/clothing/shoes/cowboy/lizard/masterwork
 	name = "\improper Hugs-The-Feet lizardskin boots"
-	desc = "A pair of masterfully crafted lizard skin boots. Finally a good application for the station's most bothersome inhabitants."
+	desc = "Um par de botas de pele de lagarto. Finalmente uma boa aplicação para os habitantes mais incomodados da estação."
 	greyscale_colors = "#3e76a7"
 
 /// Shoes for the nuke-ops cowboy fit
 /obj/item/clothing/shoes/cowboy/black/syndicate
 	name = "black spurred cowboy boots"
-	desc = "And they sing, oh, ain't you glad you're single? And that song ain't so very far from wrong."
+	desc = "E eles cantam, não está feliz por ser solteiro? E essa música não está muito longe de ser errada."
 	armor_type = /datum/armor/shoes_combat
 	has_spurs = TRUE
 	body_parts_covered = FEET|LEGS

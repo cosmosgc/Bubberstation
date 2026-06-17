@@ -1,6 +1,6 @@
 /obj/machinery/base_alarm
 	name = "base alarm"
-	desc = "Pull this to alert the guards!"
+	desc = "Puxe isso para alertar os guardas!"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/alarm.dmi'
 	icon_state = "alarm"
 	max_integrity = 250

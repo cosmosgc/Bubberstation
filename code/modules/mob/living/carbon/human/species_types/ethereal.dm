@@ -129,7 +129,7 @@
 		return
 	disrupted = TRUE
 	refresh_light_color(source)
-	to_chat(source, span_notice("You feel the light of your body leave you."))
+	to_chat(source, span_notice("Você sente a luz do seu corpo deixá-lo."))
 	switch(severity)
 		if(EMP_LIGHT)
 			addtimer(CALLBACK(src, PROC_REF(stop_emp), source), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) //We're out for 10 seconds
@@ -139,7 +139,7 @@
 /datum/species/ethereal/proc/hit_by_saboteur(mob/living/carbon/human/source, disrupt_duration)
 	disrupted = TRUE
 	refresh_light_color(source)
-	to_chat(source, span_warning("Something inside of you crackles in a bad way."))
+	to_chat(source, span_warning("Algo dentro de você estala de um jeito ruim."))
 	source.take_bodypart_damage(burn = 3, wound_bonus = CANT_WOUND)
 	addtimer(CALLBACK(src, PROC_REF(stop_emp), source), disrupt_duration, TIMER_UNIQUE|TIMER_OVERRIDE)
 	return TRUE
@@ -165,7 +165,7 @@
 /datum/species/ethereal/proc/stop_emp(mob/living/carbon/human/ethereal)
 	disrupted = FALSE
 	refresh_light_color(ethereal)
-	to_chat(ethereal, span_notice("You feel more energized as your shine comes back."))
+	to_chat(ethereal, span_notice("Você se sente mais energizado quando seu brilho volta."))
 
 /datum/species/ethereal/proc/handle_emag(mob/living/carbon/human/ethereal)
 	if(!emageffect)
@@ -199,7 +199,7 @@
 	powermult = 1
 	rangemult = 1
 	disrupted = TRUE
-	to_chat(ethereal, span_warning("Your shine flickers and fades."))
+	to_chat(ethereal, span_warning("Seu brilho brilha e desaparece."))
 	addtimer(CALLBACK(src, PROC_REF(stop_emp), ethereal), flare_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 
@@ -266,32 +266,32 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bolt",
 			SPECIES_PERK_NAME = "Shockingly Tasty",
-			SPECIES_PERK_DESC = "Ethereals can feed on electricity from APCs, and do not otherwise need to eat.",
+			SPECIES_PERK_DESC = "Ethereals podem se alimentar de eletricidade de APCs, e de outra forma não precisam comer.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "lightbulb",
 			SPECIES_PERK_NAME = "Disco Ball",
-			SPECIES_PERK_DESC = "Ethereals passively generate their own light.",
+			SPECIES_PERK_DESC = "Etéreos geram passivamente sua própria luz.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "gem",
 			SPECIES_PERK_NAME = "Crystal Core",
-			SPECIES_PERK_DESC = "The Ethereal's heart will encase them in crystal should they die, returning them to life after a time - \
-				at the cost of a permanent brain trauma.",
+			SPECIES_PERK_DESC = "O coração do Etéreo os envolverá em cristal se morrerem, devolvendo-os à vida depois de um tempo.\
+ao custo de um trauma cerebral permanente.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "fist-raised",
 			SPECIES_PERK_NAME = "Elemental Attacker",
-			SPECIES_PERK_DESC = "Ethereals deal burn damage with their punches instead of brute.",
+			SPECIES_PERK_DESC = "Ethereals lidam com danos causados por queimaduras com seus socos em vez de brutos.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "biohazard",
 			SPECIES_PERK_NAME = "Starving Artist",
-			SPECIES_PERK_DESC = "Ethereals take toxin damage while starving.",
+			SPECIES_PERK_DESC = "Os etéreos causam danos na toxina enquanto passam fome.",
 		),
 	)
 

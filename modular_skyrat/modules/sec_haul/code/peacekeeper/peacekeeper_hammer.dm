@@ -1,6 +1,6 @@
 /obj/item/melee/breaching_hammer
 	name = "D-4 tactical hammer"
-	desc = "A metallic-plastic composite breaching hammer, looks like a whack with this would severly harm or tire someone."
+	desc = "Um compósito metálico-plástico quebrando o martelo, parece que uma pancada com isso machucaria ou cansaria alguém."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	icon_state = "peacekeeper_hammer"
 	inhand_icon_state = "peacekeeper_hammer"
@@ -34,7 +34,7 @@
 /obj/item/melee/breaching_hammer/proc/remove_track(mob/living/carbon/human/user)
 	REMOVE_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src))
 	breaching = FALSE
-	user.balloon_alert(user, "you put your hammer down!")
+	user.balloon_alert(user, "Abaixe o martelo!")
 	breacher = null
 
 /obj/item/melee/breaching_hammer/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
@@ -56,7 +56,7 @@
 	breaching = TRUE
 	breacher = user
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/melee/breaching_hammer, breaching_loop), user, target)
-	user.balloon_alert(user, "you begin breaching the door!")
+	user.balloon_alert(user, "Você começa a invadir a porta!")
 
 /// Keeps looping until the door is breached or conditions fail
 /obj/item/melee/breaching_hammer/proc/breaching_loop(mob/living/user, obj/target)
@@ -68,6 +68,6 @@
 		target.take_damage(force * breaching_multipler)
 		playsound(target, 'sound/items/weapons/sonic_jackhammer.ogg', 70)
 		target.visible_message(span_warning("[target] begins to cave in and deform with each blow from [src]!"), span_warning("We are breaching [target]."), \
-		span_hear("you hear a thud of metal against metal."))
+		span_hear("Você ouve um som de metal contra metal."))
 		user.do_attack_animation(target, used_item = src)
 	remove_track(user)

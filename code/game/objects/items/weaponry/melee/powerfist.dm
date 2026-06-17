@@ -8,7 +8,7 @@
 
 /obj/item/melee/powerfist
 	name = "power-fist"
-	desc = "A metal gauntlet with a piston-powered ram on top for that extra 'oomph' in your punch."
+	desc = "Uma luva de metal com um aríete movido a pistão em cima para aquele extra \"oomph\" em seu soco."
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "powerfist"
 	inhand_icon_state = "powerfist"
@@ -51,11 +51,11 @@
 /obj/item/melee/powerfist/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src))
-		. += span_notice("You'll need to get closer to see any more.")
+		. += span_notice("Precisa se aproximar mais para ver.")
 		return
 	if(tank)
 		. += span_notice("[icon2html(tank, user)] It has \a [tank] mounted onto it.")
-		. += span_notice("Can be removed with a <b>screwdriver</b>.")
+		. += span_notice("Pode ser removido com um<b>Chave de fenda</b>.")
 
 	. += span_notice("Use a <b>wrench</b> to change the valve strength. Current strength is at <b>[pressure_setting_to_text(fist_pressure_setting)]</b> level.")
 
@@ -67,7 +67,7 @@
 
 /obj/item/melee/powerfist/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!tank)
-		balloon_alert(user, "no tank present")
+		balloon_alert(user, "Nenhum tanque presente.")
 		return
 	update_tank(tank, TANK_REMOVING, user)
 	return TRUE
@@ -76,7 +76,7 @@
 	if(!istype(item_to_insert, /obj/item/tank/internals))
 		return ..()
 	if(tank)
-		to_chat(user, span_notice("A tank is already present, remove it with a screwdriver first."))
+		to_chat(user, span_notice("Um tanque já está presente, remova-o com uma chave de fenda primeiro."))
 		return
 	var/obj/item/tank/internals/tank_to_insert = item_to_insert
 	if(tank_to_insert.volume <= 3)
@@ -108,7 +108,7 @@
 		to_chat(user, span_warning("\The [src] can't operate without a source of gas!"))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("You don't want to harm other living beings!"))
+		to_chat(user, span_warning("Você não quer machucar outros seres vivos!"))
 		return
 	var/turf/our_turf = get_turf(src)
 	if(!our_turf)

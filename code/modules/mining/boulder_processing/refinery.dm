@@ -5,7 +5,7 @@
  */
 /obj/machinery/bouldertech/refinery
 	name = "boulder refinery"
-	desc = "Accepts boulders and refines non-metallic ores into sheets using internal chemicals."
+	desc = "Aceita pedras e refina minérios não metálicos em folhas usando produtos químicos internos."
 	icon_state = "stacker"
 	base_icon_state = "stacker"
 	circuit = /obj/item/circuitboard/machine/refinery
@@ -109,7 +109,7 @@
  */
 /obj/machinery/bouldertech/refinery/smelter
 	name = "boulder smelter"
-	desc = "Accept boulders and refines metallic ores into sheets."
+	desc = "Aceite pedras e refine minérios metálicos em folhas."
 	icon_state = "smelter"
 	base_icon_state = "smelter"
 	light_system = OVERLAY_LIGHT

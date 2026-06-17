@@ -9,7 +9,7 @@
 	worn_icon = 'icons/mob/clothing/head/spacehelm.dmi'
 	icon_state = "spaceold"
 	inhand_icon_state = "space_helmet"
-	desc = "A special helmet with solar UV shielding to protect your eyes from harmful rays."
+	desc = "Um capacete especial com escudo solar UV para proteger seus olhos de raios nocivos."
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | STACKABLE_HELMET_EXEMPT | HEADINTERNALS
 	armor_type = /datum/armor/helmet_space
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -35,8 +35,8 @@
 	visor_toggle_up_sound = SFX_VISOR_UP
 	visor_toggle_down_sound = SFX_VISOR_DOWN
 	actions_types = list(/datum/action/item_action/adjust_visor)
-	toggle_message = "You pull your helmet's visor down."
-	alt_toggle_message = "You pull your helmet's visor up."
+	toggle_message = "Você puxa o visor do capacete para baixo."
+	alt_toggle_message = "Você puxa o visor do capacete para cima."
 	///How much this helmet affects fishing difficulty
 	var/fishing_modifier = 3
 	///Icon state applied when we get spraypainted/peppersprayed. If null, does not add the dirt component
@@ -79,7 +79,7 @@
 
 /obj/item/clothing/suit/space
 	name = "space suit"
-	desc = "A suit that protects against low pressure environments. Has a big 13 on the back."
+	desc = "Um terno que protege contra ambientes de baixa pressão. Tem um grande 13 atrás."
 	icon_state = "spaceold"
 	icon = 'icons/obj/clothing/suits/spacesuit.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
@@ -327,7 +327,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	if (user)
-		balloon_alert(user, "thermal regulator restrictions overridden")
+		balloon_alert(user, "Restrições do regulador térmico anuladas")
 		user.log_message("emagged [src], overwriting thermal regulator restrictions.", LOG_GAME)
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE

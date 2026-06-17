@@ -198,7 +198,7 @@
 /obj/golfcart_rear/examine(mob/user)
 	if (!parent)
 		. = ..()
-		. += span_warning("A lone golf cart bed must be a bad omen...")
+		. += span_warning("Um carrinho de golfe solitário deve ser um mau presságio...")
 		return
 	return parent.examine(user)
 

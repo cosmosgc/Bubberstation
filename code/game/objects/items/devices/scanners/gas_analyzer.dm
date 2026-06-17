@@ -1,5 +1,5 @@
 /obj/item/analyzer
-	desc = "A hand-held environmental scanner which reports current gas levels."
+	desc = "Um scanner ambiental portátil que relata níveis de gás atuais."
 	name = "gas analyzer"
 	custom_price = PAYCHECK_LOWER * 0.9
 	icon = 'icons/obj/devices/scanner.dmi'
@@ -222,7 +222,7 @@
 			message += span_notice("Heat Capacity: [display_energy(heat_capacity)] / K")
 			message += span_notice("Thermal Energy: [display_energy(thermal_energy)]")
 		else
-			message += airs.len > 1 ? span_notice("This node is empty!") : span_notice("[target] is empty!")
+			message += airs.len > 1 ? span_notice("Este nó está vazio!") : span_notice("[target] is empty!")
 			message += span_notice("Volume: [volume] L") // don't want to change the order volume appears in, suck it
 
 	// we let the join apply newlines so we do need handholding
@@ -230,7 +230,7 @@
 	return TRUE
 
 /obj/item/analyzer/ranged
-	desc = "A hand-held long-range environmental scanner which reports current gas levels."
+	desc = "Um scanner ambiental portátil de longo alcance que relata níveis atuais de gás."
 	name = "long-range gas analyzer"
 	icon_state = "analyzerranged"
 	worn_icon_state = "analyzer"

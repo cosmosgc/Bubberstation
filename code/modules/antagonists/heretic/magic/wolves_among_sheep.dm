@@ -5,9 +5,9 @@
  */
 /datum/action/cooldown/spell/wolves_among_sheep
 	name = "Wolves among Sheep"
-	desc = "Alters the fabric of reality, conjuring a magical arena unpassable to outsiders, \
-		all participants are trapped and immune to any form of crowd control or enviromental hazards; \
-		trapped participants are granted a Blade and are unable to leave or jaunt until they score a critical hit."
+	desc = "Altera o tecido da realidade, conjurando uma arena mágica intransponível a estranhos,\
+Todos os participantes estão presos e imunes a qualquer forma de controle da multidão ou riscos ambientais;\
+Os participantes presos recebem uma Lâmina e são incapazes de sair ou fugir até que eles atinjam um ataque crítico."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = null
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -68,7 +68,7 @@
 		// If any future coder wants to allow arenas to merge or fight like domains, feel free to implement it.
 		if(get_dist(owner, nearby_arena) <= 25)
 			if(feedback)
-				owner.balloon_alert(owner, "another arena nearby!")
+				owner.balloon_alert(owner, "Outra arena próxima!")
 			return FALSE
 
 /// Applies a visual to each turf

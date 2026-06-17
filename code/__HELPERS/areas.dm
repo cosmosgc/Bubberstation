@@ -142,13 +142,13 @@
 		if(!isnull(place.apc))
 			apc_map[place.name] = place.apc
 		if(length(apc_map) > 1) // When merging 2 or more areas make sure we arent merging their apc into 1 area
-			to_chat(creator, span_warning("Multiple APC's detected in the vicinity. only 1 is allowed."))
+			to_chat(creator, span_warning("Vários APCs foram detectados nas proximidades. Só um é permitido."))
 			return
 		areas[place.name] = place
 
 	var/area_choice = tgui_input_list(creator, "Choose an area to expand or make a new area", "Area Expansion", areas)
 	if(isnull(area_choice))
-		to_chat(creator, span_warning("No choice selected. The area remains undefined."))
+		to_chat(creator, span_warning("Nenhuma escolha selecionada. A área permanece indefinida."))
 		return
 	area_choice = areas[area_choice]
 
@@ -169,7 +169,7 @@
 
 	//we haven't done anything. let's get outta here
 	if(newA == oldA)
-		to_chat(creator, span_warning("Selected choice is same as the area your standing in. No area changes were requested."))
+		to_chat(creator, span_warning("Escolha selecionada é a mesma área onde você está. Nenhuma mudança de área foi solicitada."))
 		return
 
 	/**

@@ -1,8 +1,8 @@
 // Dopamine. Generates in character after orgasm.
 /datum/reagent/drug/aphrodisiac/dopamine
 	name = "dopamine...?"
-	description = "Pure happiness"
-	taste_description = "an indescribable, slightly sour taste. Something in it relaxes you, filling you with pleasure."
+	description = "Pura felicidade."
+	taste_description = "um sabor indescritível, ligeiramente azedo. Algo nele te relaxa, enchendo de prazer."
 	color = "#97ffee"
 	overdose_threshold = 10
 	life_pref_datum = /datum/preference/toggle/erp/aphro
@@ -19,7 +19,7 @@
 /datum/glass_style/drinking_glass/dopamine
 	required_drink_type = /datum/reagent/drug/aphrodisiac/dopamine
 	name = "dopamine"
-	desc = "Delicious flavored reagent. You feel happy even looking at it."
+	desc = "Reagente delicioso com sabor. Você se sente feliz mesmo olhando para ele."
 
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
@@ -34,7 +34,7 @@
 
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_start(mob/living/carbon/human/exposed_mob)
 	. = ..()
-	to_chat(exposed_mob, span_purple("You feel so happy!"))
+	to_chat(exposed_mob, span_purple("Você se sente tão feliz!"))
 	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_effects(mob/living/carbon/human/exposed_mob)

@@ -1,6 +1,6 @@
 /obj/item/organ/zombie_infection
 	name = "festering ooze"
-	desc = "A black web of pus and viscera."
+	desc = "Uma teia preta de pus e víscera."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_ZOMBIE
 	icon_state = "blacktumor"
@@ -52,9 +52,9 @@
 		qdel(src) // Congrats you somehow died so hard you stopped being a zombie
 
 /obj/item/organ/zombie_infection/on_find(mob/living/finder)
-	to_chat(finder, span_warning("Inside the head is a disgusting black \
-		web of pus and viscera, bound tightly around the brain like some \
-		biological harness."))
+	to_chat(finder, span_warning("Dentro da cabeça está um preto nojento.\
+Teia de pus e vísceras, amarradas firmemente ao redor do cérebro como alguns\
+Arnês biológico."))
 
 /obj/item/organ/zombie_infection/process(seconds_per_tick)
 	if(!owner)
@@ -66,15 +66,15 @@
 	if (causes_damage && !iszombie(owner) && owner.stat != DEAD)
 		owner.adjust_tox_loss(0.5 * seconds_per_tick)
 		if (SPT_PROB(5, seconds_per_tick))
-			to_chat(owner, span_danger("You feel sick..."))
+			to_chat(owner, span_danger("Você se sente mal..."))
 	if(timer_id || HAS_TRAIT(owner, TRAIT_SUICIDED) || !owner.get_organ_by_type(/obj/item/organ/brain))
 		return
 	if(owner.stat != DEAD && !converts_living)
 		return
 	if(!iszombie(owner))
-		to_chat(owner, span_cult_large("You can feel your heart stopping, but something isn't right... \
-		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
-		not even death can stop, you will rise again!"))
+		to_chat(owner, span_cult_large("Você pode sentir seu coração parando, mas algo não está certo...\
+A vida não abandonou sua forma quebrada. Você só pode sentir uma fome profunda e imutável que\
+Nem mesmo a morte pode parar, você se levantará novamente!"))
 	var/revive_time = rand(revive_time_min, revive_time_max)
 	var/flags = TIMER_STOPPABLE
 	timer_id = addtimer(CALLBACK(src, PROC_REF(zombify), owner), revive_time, flags)
@@ -127,8 +127,8 @@
 
 /obj/item/organ/zombie_infection/proc/zombie_welcome(mob/living/carbon/new_zombie)
 	if(new_zombie.client)
-		to_chat(new_zombie, span_alien("You HUNGER!"))
-		to_chat(new_zombie, span_alertalien("You are now a zombie! Do not seek to be cured, do not help any non-zombies in any way, do not harm your zombie brethren and spread the disease by killing others. You are a creature of hunger and violence."))
+		to_chat(new_zombie, span_alien("Seu caçador!"))
+		to_chat(new_zombie, span_alertalien("Você agora é um zumbi! Não procurem ser curados, não ajudem nenhum não zumbi de forma alguma, não machuquem seus irmãos zumbis e espalhem a doença matando outros. Você é uma criatura de fome e violência."))
 		playsound(new_zombie, 'sound/effects/hallucinations/far_noise.ogg', 50, 1)
 
 	new_zombie.do_jitter_animation(living_transformation_time)

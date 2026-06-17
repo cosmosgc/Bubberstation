@@ -10,7 +10,7 @@
 
 /datum/symptom/chills
 	name = "Chills"
-	desc = "The virus inhibits the body's thermoregulation, cooling the body down."
+	desc = "O vírus inibe a termorregulação do corpo, esfriando o corpo."
 	illness = "Cold Shoulder"
 	stealth = 1
 	resistance = 2

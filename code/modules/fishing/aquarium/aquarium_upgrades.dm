@@ -2,7 +2,7 @@
 /// Aquarium upgrades, can be applied to a basic aquarium to upgrade it into an advanced subtype.
 /obj/item/aquarium_upgrade
 	name = "Aquarium Upgrade"
-	desc = "An upgrade."
+	desc = "Uma atualização."
 
 	icon = 'icons/obj/aquarium/supplies.dmi'
 	icon_state = "construction_kit"
@@ -15,7 +15,7 @@
 	if(!HAS_TRAIT(interacting_with, TRAIT_IS_AQUARIUM))
 		return NONE
 	if(upgrade_from_type != interacting_with.type)
-		interacting_with.balloon_alert(user, "wrong kind of aquarium!")
+		interacting_with.balloon_alert(user, "Tipo errado de aquário!")
 		return ITEM_INTERACT_BLOCKING
 	interacting_with.balloon_alert(user, "upgrading...")
 	if(!PERFORM_ALL_TESTS(aquarium_upgrade) && !do_after(user, 5 SECONDS, interacting_with))
@@ -30,13 +30,13 @@
 
 /obj/item/aquarium_upgrade/bioelec_gen
 	name = "aquarium bioelectricity kit"
-	desc = "All the required components to allow an aquarium to harness energy bioelectric fish."
+	desc = "Todos os componentes necessários para permitir um aquário para aproveitar a energia de peixes bioelétricos."
 	icon_state = "bioelec_kit"
 	upgrade_to_type = /obj/structure/aquarium/bioelec_gen
 
 /obj/structure/aquarium/bioelec_gen
 	name = "bioelectricity generator"
-	desc = "An unconventional type of generator that boosts and harvests the energy produced by bioelectric fish."
+	desc = "Um tipo não convencional de gerador que impulsiona e colhe a energia produzida por peixes bioelétricos."
 
 	icon_state = "bioelec_map"
 	base_icon_state = "bioelec"
@@ -55,20 +55,20 @@
 
 /obj/structure/aquarium/bioelec_gen/examine(mob/user)
 	. = ..()
-	. += span_boldwarning("WARNING! WARNING! WARNING!")
-	. += span_warning("The bioelectric potential of the fish inside is magnified to dangerous levels by the generator.")
-	. += span_notice("Tesla coils are required to collect this magnified energy... and you'll want a grounding rod to protect yourself as well.")
+	. += span_boldwarning("AVISO! AVISO! AVISO!")
+	. += span_warning("O potencial bioelétrico dos peixes dentro é ampliado para níveis perigosos pelo gerador.")
+	. += span_notice("As bobinas de Tesla são necessárias para coletar esta energia ampliada... e você vai querer uma haste de aterramento para se proteger também.")
 
 /obj/item/aquarium_upgrade/bluespace_tank
 	name = "bluespace fish tank kit"
-	desc = "The required components to upgrade your portable fish tank into bottomless, handheld aquarium."
+	desc = "Os componentes necessários para atualizar seu aquário portátil para o aquário portátil sem fundo."
 	icon_state = "bluespace_kit"
 	upgrade_from_type = /obj/item/fish_tank
 	upgrade_to_type = /obj/item/fish_tank/bluespace
 
 /obj/item/fish_tank/bluespace
 	name = "bluespace fish tank"
-	desc = "All the capacity of a bulky room aquarium, squeezed in a bag-sized rectangular cuboid."
+	desc = "Toda a capacidade de um aquário volumosos, espremido em um cubóide retangular tamanho saco."
 	icon_state = "fish_tank_bluespace_map"
 	base_icon_state = "fish_tank_bluespace"
 	w_class = WEIGHT_CLASS_NORMAL

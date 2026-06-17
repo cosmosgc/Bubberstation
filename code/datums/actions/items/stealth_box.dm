@@ -1,7 +1,7 @@
 ///MGS BOX!
 /datum/action/item_action/agent_box
 	name = "Deploy Box"
-	desc = "Find inner peace, here, in the box."
+	desc = "Encontre a paz interior, aqui, na caixa."
 	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_CONSCIOUS
 	background_icon_state = "bg_agent"
 	overlay_icon_state = "bg_agent_border"
@@ -23,7 +23,7 @@
 		return FALSE
 	//Box closing from here on out.
 	if(!isturf(owner.loc)) //Don't let the player use this to escape mechs/welded closets.
-		to_chat(owner, span_warning("You need more space to activate this implant!"))
+		to_chat(owner, span_warning("Precisa de mais espaço para ativar esse implante!"))
 		return FALSE
 	if(!COOLDOWN_FINISHED(src, box_cooldown))
 		return FALSE

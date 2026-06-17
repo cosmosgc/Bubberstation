@@ -3,7 +3,7 @@
  */
 /obj/item/gun/magic/wand/levitate
 	name = "lifting rod"
-	desc = "The power of this rod lifts living creatures off the ground, potentially leaving them unable to move."
+	desc = "O poder desta vara levanta criaturas vivas do chão, potencialmente deixando-as incapazes de se mover."
 	school = SCHOOL_TRANSLOCATION
 	ammo_type = /obj/item/ammo_casing/magic/levitate
 	icon_state = "gravwand"

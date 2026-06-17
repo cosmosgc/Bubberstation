@@ -1,7 +1,7 @@
 /obj/item/stack/sheet/mineral/stone
 	name = "stone"
-	desc = "Stone brick."
-	singular_name = "stone block"
+	desc = "tijolo de pedra."
+	singular_name = "Bloco de pedra"
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "sheet-stone"
 	inhand_icon_state = "sheet-metal"
@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /datum/material/stone
 	name = "stone"
-	desc = "It's stone."
+	desc = "É pedra."
 	mat_flags = MATERIAL_CLASS_RIGID | MATERIAL_BASIC_RECIPES
 	sheet_type = /obj/item/stack/sheet/mineral/stone
 	color = "#59595a"
@@ -45,10 +45,10 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /obj/item/stack/stone
 	name = "rough stone"
-	desc = "Large chunks of uncut stone, tough enough to safely build out of... if you could manage to cut them into something usable."
+	desc = "Grandes pedaços de pedra não cortada, duro o suficiente para construir com segurança... se você pudesse cortá-los em algo utilizável."
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "stone_ore"
-	singular_name = "rough stone boulder"
+	singular_name = "Pedra bruta."
 	mats_per_unit = list(/datum/material/stone = SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/stone
 	force = 10
@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /obj/item/stack/stone/examine()
 	. = ..()
-	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
+	. += span_notice("Com um<b>Cinzel</b>ou mesmo um<b>Pickaxe</b>de algum tipo, você poderia cortar isso em<b>Blocos</b>.")
 
 /obj/item/stack/stone/attackby(obj/item/attacking_item, mob/user, params)
 	if((attacking_item.tool_behaviour != TOOL_MINING) && !(istype(attacking_item, /obj/item/chisel)))
@@ -71,8 +71,8 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /obj/item/stack/tile/mineral/stone
 	name = "stone tile"
-	singular_name = "stone floor tile"
-	desc = "A tile made of stone bricks, for that fortress look."
+	singular_name = "piso de pedra"
+	desc = "Um azulejo feito de tijolos de pedra, para aquele olhar de fortaleza."
 	icon_state = "tile_herringbone"
 	inhand_icon_state = "tile"
 	turf_type = /turf/open/floor/stone
@@ -81,12 +81,12 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	merge_type = /obj/item/stack/tile/mineral/stone
 
 /turf/open/floor/stone
-	desc = "Blocks of stone arranged in a tile-like pattern, odd, really, how it looks like real stone too, because it is!" //A play on the original description for stone tiles
+	desc = "Blocos de pedra dispostos em um padrão de azulejo, estranho, realmente, como parece pedra real também, porque é!" //A play on the original description for stone tiles
 	slowdown = -0.3
 
 /turf/closed/wall/mineral/stone
 	name = "stone wall"
-	desc = "A wall made of solid stone bricks."
+	desc = "Uma parede feita de tijolos de pedra sólida."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /turf/closed/indestructible/stone
 	name = "stone wall"
-	desc = "A wall made of unusually solid stone bricks."
+	desc = "Uma parede feita de tijolos de pedra invulgarmente sólidos."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /obj/structure/falsewall/stone
 	name = "stone wall"
-	desc = "A wall made of solid stone bricks."
+	desc = "Uma parede feita de tijolos de pedra sólida."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	icon_state = "wall-open"
 	base_icon_state = "wall"

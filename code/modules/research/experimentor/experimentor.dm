@@ -1,6 +1,6 @@
 /obj/machinery/rnd/experimentor
 	name = "\improper E.X.P.E.R.I-MENTOR"
-	desc = "Experimental Xeon Particle Entropy Reaction Infuser or something like that. Nanotrasen's new reaction infuser, with a slight less tendency to catastrophically fail than the previous model... or so they say."
+	desc = "Reação experimental de partículas Xeon Infusor ou algo assim. O novo infusor de reação de Nanotrasen, com uma leve tendência a falhar catastróficamente do que o modelo anterior... ou assim dizem."
 	icon = 'icons/obj/machines/experimentator.dmi'
 	icon_state = "h_lathe"
 	base_icon_state = "h_lathe"
@@ -147,7 +147,7 @@
 /obj/machinery/rnd/experimentor/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads:<br>")
+		. += span_notice("A exibição de status diz:<br>")
 		. += span_notice("Malfunction probability reduced by [span_bold("[malfunction_probability_coeff]")].")
 		. += span_notice("Cooldown interval between experiments at [span_bold("[cooldown]")] seconds.")
 
@@ -292,7 +292,7 @@
 				new /mob/living/basic/pet/dog/corgi(loc)
 				investigate_log("Experimentor has spawned a new corgi.", INVESTIGATE_EXPERIMENTOR)
 		if(36 to 50)
-			visible_message(span_warning("Experimentor draws the life essence of those nearby!"))
+			visible_message(span_warning("O experimentador desenha a essência da vida dos vizinhos!"))
 			for(var/mob/living/m in view(4,src))
 				to_chat(m, span_danger("You feel your flesh being torn from you, mists of blood drifting to [src]!"))
 				playsound(src, pick('sound/effects/curse/curse1.ogg', 'sound/effects/curse/curse2.ogg', 'sound/effects/curse/curse3.ogg'), 30)

@@ -9,7 +9,7 @@
  */
 /obj/item/circuit_component/compare/logic
 	display_name = "Logic"
-	desc = "A component with 'and' and 'or' capabilities."
+	desc = "Um componente com 'e' e 'ou' capacidades."
 	category = "Math"
 
 	var/datum/port/input/option/logic_options

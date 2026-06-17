@@ -5,7 +5,7 @@
 
 /mob/living/basic/netguardian
 	name = "netguardian prime"
-	desc = "The last line of defense against organic intrusion. It doesn't appear happy to see you."
+	desc = "A última linha de defesa contra intrusão orgânica. Não parece feliz em vê-lo."
 	icon = 'icons/mob/nonhuman-player/netguardian.dmi'
 	icon_state = "netguardian"
 	icon_living = "netguardian"
@@ -43,7 +43,7 @@
 
 	combat_mode = TRUE
 	speech_span = SPAN_ROBOT
-	death_message = "malfunctions!"
+	death_message = "Falhas!"
 
 	lighting_cutoff_red = 30
 	lighting_cutoff_green = 5

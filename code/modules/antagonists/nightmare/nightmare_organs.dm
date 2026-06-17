@@ -5,7 +5,7 @@
 
 /obj/item/organ/brain/shadow/nightmare
 	name = "tumorous mass"
-	desc = "A fleshy growth that was dug out of the skull of a Nightmare."
+	desc = "Um crescimento carnudo que foi tirado do crânio de um Pesadelo."
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "brain-x-d"
 	shade_color = "black, somehow"
@@ -71,12 +71,12 @@
 
 /atom/movable/screen/alert/status_effect/shadow_regeneration/nightmare
 	name = "Lightless Domain"
-	desc = "Bathed in soothing darkness you will slowly regenerate, even past the point of death. \
-		Heightened reflexes will allow you to dodge projectile weapons."
+	desc = "Banhada na escuridão calmante, você lentamente se regenera, mesmo depois do ponto da morte.\
+Reflexos aumentados permitirão que você se esquive de armas de projéteis."
 
 /obj/item/organ/heart/nightmare
 	name = "heart of darkness"
-	desc = "An alien organ that twists and writhes when exposed to light."
+	desc = "Um órgão alienígena que se contorce quando exposto à luz."
 	visual = TRUE
 	icon = 'icons/obj/medical/organs/shadow_organs.dmi'
 	icon_state = "dark_heart-on"
@@ -104,7 +104,7 @@
 
 	user.visible_message(
 		span_warning("Blood erupts from [user]'s arm as it reforms into a weapon!"),
-		span_userdanger("Icy blood pumps through your veins as your arm reforms itself!")
+		span_userdanger("Sangue gelado bombeia em suas veias enquanto seu braço se reforma!")
 	)
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	Insert(user)
@@ -143,7 +143,7 @@
 		Remove(owner, HEART_SPECIAL_SHADOWIFY)
 		old_owner.set_species(/datum/species/shadow)
 		Insert(old_owner, HEART_SPECIAL_SHADOWIFY)
-		to_chat(owner, span_userdanger("You feel the shadows invade your skin, leaping into the center of your chest! You're alive!"))
+		to_chat(owner, span_userdanger("Você sente as sombras invadirem sua pele, pulando no centro do seu peito! Você está vivo!"))
 		SEND_SOUND(owner, sound('sound/effects/ghost.ogg'))
 	owner.visible_message(span_warning("[owner] staggers to [owner.p_their()] feet!"))
 	playsound(owner, 'sound/effects/hallucinations/far_noise.ogg', 50, TRUE)

@@ -16,7 +16,7 @@
 	damage_coeff = list(BRUTE = 0.5, BURN = 2.5, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	playstyle_string = span_holoparasite("As a <b>timestop</b> type you have the ability to stop time, allowing you to move freely while your enemies and even projectiles are frozen. You are also resistant to brute damage, but weak to burn damage.")
 	creator_name = "Timestop"
-	creator_desc = "Devastating close combat attacks and high physical damage resistance, but weak to burns. Can smash through weak walls and stop time."
+	creator_desc = "Ataques de combate devastadores e alta resistência a danos físicos, mas fracos para queimaduras. Pode quebrar paredes fracas e parar o tempo."
 	creator_icon = "standard"
 
 /mob/living/basic/guardian/standard/timestop/set_summoner(mob/living/to_who, different_person = FALSE)
@@ -28,8 +28,8 @@
 ///Guardian Timestop ability
 /datum/action/cooldown/spell/timestop/guardian
 	name = "Guardian Timestop"
-	desc = "This spell stops time for everyone except for you and your master, \
-		allowing you to move freely while your enemies and even projectiles are frozen."
+	desc = "Este feitiço para o tempo de todos exceto você e seu mestre,\
+permitindo que você se mova livremente enquanto seus inimigos e até mesmo projéteis estão congelados."
 	cooldown_time = 60 SECONDS
 	spell_requirements = NONE
 	invocation_type = INVOCATION_NONE

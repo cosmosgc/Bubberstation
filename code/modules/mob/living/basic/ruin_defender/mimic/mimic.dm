@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 // Aggro when you try to open them. Will also pickup loot when spawns and drop it when dies.
 /mob/living/basic/mimic/crate
 	name = "crate"
-	desc = "A very hostile rectangular steel crate."
+	desc = "Uma caixa de aço retangular muito hostil."
 	icon = 'icons/obj/storage/crates.dmi'
 	icon_state = "crate"
 	base_icon_state = "crate"
@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 /mob/living/basic/mimic/crate/proc/toggle_open(mob/user)
 	if(locked)
 		if(user)
-			balloon_alert(user, "too stiff!")
+			balloon_alert(user, "Muito duro!")
 		return
 	if(!opened)
 		ADD_TRAIT(src, TRAIT_UNDENSE, MIMIC_TRAIT)
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 
 /datum/action/innate/mimic_lock
 	name = "Lock/Unlock"
-	desc = "Toggle preventing yourself from being opened or closed."
+	desc = "Alternar evitando que seja aberto ou fechado."
 	button_icon = 'icons/hud/radial.dmi'
 	button_icon_state = "radial_lock"
 	background_icon_state = "bg_default"
@@ -247,9 +247,9 @@ GLOBAL_LIST_INIT(animatable_blacklist, typecacheof(list(
 	var/mob/living/basic/mimic/crate/mimic = owner
 	mimic.locked = !mimic.locked
 	if(!mimic.locked)
-		to_chat(mimic, span_warning("You loosen up, allowing yourself to be opened and closed."))
+		to_chat(mimic, span_warning("Você se solta, deixando-se abrir e fechar."))
 	else
-		to_chat(mimic, span_warning("You stiffen up, preventing anyone from opening or closing you."))
+		to_chat(mimic, span_warning("Você se fortalece, impedindo que alguém abra ou feche você."))
 
 // ****************************
 // COPYING (actually imitates target object) MIMIC

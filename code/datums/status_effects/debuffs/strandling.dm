@@ -85,7 +85,7 @@
 
 /atom/movable/screen/alert/status_effect/strandling
 	name = "Choking strand"
-	desc = "Strands of Durathread are wrapped around your neck, preventing you from breathing! Click this icon to remove the strand."
+	desc = "Strands de Durathread estão enrolados em seu pescoço, impedindo que você respire! Clique neste ícone para remover o fio."
 	icon_state = "his_grace"
 	alerttooltipstyle = "hisgrace"
 	clickable_glow = TRUE

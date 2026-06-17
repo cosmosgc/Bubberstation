@@ -8,7 +8,7 @@
 */
 /obj/item/ph_booklet
 	name = "pH indicator booklet"
-	desc = "A booklet containing paper soaked in universal indicator."
+	desc = "Um papel embebido em indicador universal."
 	icon_state = "pHbooklet"
 	icon = 'icons/obj/medical/chemical.dmi'
 	item_flags = NOBLUDGEON
@@ -68,7 +68,7 @@
 */
 /obj/item/ph_paper
 	name = "pH indicator strip"
-	desc = "A piece of paper that will change colour depending on the pH of a solution."
+	desc = "Um pedaço de papel que mudará de cor dependendo do pH de uma solução."
 	icon_state = "pHpaper"
 	icon = 'icons/obj/medical/chemical.dmi'
 	item_flags = NOBLUDGEON
@@ -98,7 +98,7 @@
 */
 /obj/item/ph_meter
 	name = "Chemical Analyzer"
-	desc = "An electrode attached to a small circuit box that will display details of a solution. Can be toggled to provide a description of each of the reagents. The screen currently displays nothing."
+	desc = "Um eletrodo ligado a uma pequena caixa de circuito que exibirá detalhes de uma solução. Pode ser ativado para fornecer uma descrição de cada um dos reagentes. A tela não mostra nada no momento."
 	icon_state = "pHmeter"
 	icon = 'icons/obj/medical/chemical.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -107,10 +107,10 @@
 
 /obj/item/ph_meter/attack_self(mob/user)
 	if(scanmode == SHORTENED_CHEM_OUTPUT)
-		to_chat(user, span_notice("You switch the chemical analyzer to provide a detailed description of each reagent."))
+		to_chat(user, span_notice("Você muda o analisador químico para fornecer uma descrição detalhada de cada reagente."))
 		scanmode = DETAILED_CHEM_OUTPUT
 	else
-		to_chat(user, span_notice("You switch the chemical analyzer to not include reagent descriptions in its report."))
+		to_chat(user, span_notice("Você muda o analisador químico para não incluir descrições de reagentes no relatório."))
 		scanmode = SHORTENED_CHEM_OUTPUT
 
 /obj/item/ph_meter/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -121,7 +121,7 @@
 		return NONE
 	SEND_SIGNAL(interacting_with, COMSIG_ON_REAGENT_SCAN, user)
 	var/list/out_message = list()
-	to_chat(user, "<i>The chemistry meter beeps and displays:</i>")
+	to_chat(user, "<i>O medidor de química apita e exibe:</i>")
 	out_message += "<b>Total volume: [round(cont.volume, 0.01)] Current temperature: [round(cont.reagents.chem_temp, 0.1)]K Total pH: [round(cont.reagents.ph, 0.01)]\n"
 	out_message += "Chemicals found in [interacting_with.name]:</b>\n"
 	if(cont.reagents.is_reacting)
@@ -149,7 +149,7 @@
 
 /obj/item/burner
 	name = "burner"
-	desc = "A small table size burner used for heating up beakers."
+	desc = "Um Pequeno Queimador de Tamanho de Mesa Usado para Aquecer Copos."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "burner"
 	custom_materials = list(/datum/material/paper = HALF_SHEET_MATERIAL_AMOUNT / 2)
@@ -298,7 +298,7 @@
 
 /obj/item/thermometer
 	name = "thermometer"
-	desc = "A thermometer for checking a something's temperature."
+	desc = "Um termômetro para verificar a temperatura de algo."
 	icon_state = "thermometer"
 	icon = 'icons/obj/medical/chemical.dmi'
 	item_flags = NOBLUDGEON

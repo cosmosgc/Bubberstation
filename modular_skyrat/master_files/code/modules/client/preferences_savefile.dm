@@ -81,9 +81,9 @@
 
 	tgui_prefs_migration = save_data["tgui_prefs_migration"]
 	if(!tgui_prefs_migration && save_data["modular_version"] && save_data["modular_version"] < MODULAR_SAVEFILE_VERSION_MAX) // BUBBER EDIT - if we're missing version from migration, then the char is new. Won't be able to migrate either.
-		to_chat(parent, custom_boxed_message("red_box", span_bolddanger("PREFERENCE MIGRATION BEGINNING.\
-		\nDO NOT INTERACT WITH YOUR PREFERENCES UNTIL THIS PROCESS HAS BEEN COMPLETED.\
-		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
+		to_chat(parent, custom_boxed_message("red_box", span_bolddanger("Início da migração de preferência.\
+		\nNão interaja com suas preferências até que este processo seja concluído.\
+		\nNão desconte até que este processo tenha sido concluído.\
 		")))
 		migrate_skyrat(save_data)
 		addtimer(CALLBACK(src, PROC_REF(check_migration)), 10 SECONDS)
@@ -97,7 +97,7 @@
 
 /// Brings a savefile up to date with modular preferences. Called if savefile_needs_update_skyrat() returned a value higher than 0
 /datum/preferences/proc/update_character_skyrat(current_version, list/save_data)
-	to_chat(parent, custom_boxed_message("red_box", span_bolddanger("Updating preference values, if you don't see the second half of this message, ahelp immediately!")))
+	to_chat(parent, custom_boxed_message("red_box", span_bolddanger("Atualizando os valores de preferência, se você não ver a segunda metade desta mensagem, ajude imediatamente!")))
 	if(current_version < VERSION_GENITAL_TOGGLES)
 		// removed genital toggles, with the new choiced prefs paths as assoc
 		var/static/list/old_toggles
@@ -276,11 +276,11 @@
 			save_augments[augment_name] = "/obj/item/organ[augment_path_string_stripped]"
 		load_augments(save_augments)
 
-	to_chat(parent, custom_boxed_message("green_box", span_greentext("Updated preferences!")))
+	to_chat(parent, custom_boxed_message("green_box", span_greentext("Preferências atualizadas!")))
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
-		to_chat(parent, custom_boxed_message("red_box", span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
+		to_chat(parent, custom_boxed_message("red_box", span_redtext("Falha crítica na migração de preferência, informe imediatamente.")))
 		message_admins("PREFERENCE MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating PREFERENCES. Check runtimes.")
 
 

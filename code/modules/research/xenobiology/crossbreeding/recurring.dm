@@ -5,7 +5,7 @@ Recurring extracts:
 */
 /obj/item/slimecross/recurring
 	name = "recurring extract"
-	desc = "A tiny, glowing core, wrapped in several layers of goo."
+	desc = "Um pequeno núcleo brilhante, envolto em várias camadas de gosma."
 	effect = "recurring"
 	icon_state = "recurring"
 	abstract_type = /obj/item/slimecross/recurring

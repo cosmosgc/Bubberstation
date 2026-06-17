@@ -2,7 +2,7 @@
 // CHAINSAW
 /obj/item/chainsaw
 	name = "chainsaw"
-	desc = "A versatile power tool. Useful for limbing trees and delimbing humans."
+	desc = "Uma ferramenta elétrica versátil. Útil para cortar árvores e rebaixar humanos."
 	icon = 'icons/obj/weapons/chainsaw.dmi'
 	icon_state = "chainsaw"
 	base_icon_state = "chainsaw"
@@ -119,7 +119,7 @@
 
 	playsound(user, 'sound/items/weapons/slice.ogg', vol = 80, vary = TRUE)
 
-	target_mob.balloon_alert(user, "cutting off head...")
+	target_mob.balloon_alert(user, "Cortar a cabeça...")
 	if (!do_after(user, behead_time, target_mob, extra_checks = CALLBACK(src, PROC_REF(has_same_head), target_mob, head)))
 		return TRUE
 
@@ -140,7 +140,7 @@
 
 /obj/item/chainsaw/doomslayer
 	name = "THE GREAT COMMUNICATOR"
-	desc = span_warning("VRRRRRRR!!!")
+	desc = span_warning("VRRRRRR!!")
 	armour_penetration = 100
 	force_on = 30
 	behead_time = 2 SECONDS

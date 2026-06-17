@@ -4,7 +4,7 @@
 
 /obj/structure/cargo_shelf //Crate shelf port from Shiptest: https://github.com/shiptest-ss13/Shiptest/pull/2374
 	name = "Cargo shelf"
-	desc = "It's a shelf! For storing crates!"
+	desc = "É uma prateleira! Por guardar caixas!"
 	icon = 'modular_zubbers/icons/obj/structures.dmi'
 	icon_state = "shelf_base"
 	density = TRUE
@@ -64,7 +64,7 @@
 			return // If the user is in a strange condition, return early.
 		visible_message(span_warning("[crate] falls off of [src]!"),
 						span_notice("You manage to knock [crate] free of [src]"),
-						span_notice("You hear a thud."))
+						span_notice("Você ouve um barulho."))
 		crate.forceMove(drop_location()) // Drop the crate onto the shelf,
 		step_rand(crate, 1) // Then try to push it somewhere.
 		crate.layer = initial(crate.layer) // Reset the crate back to having the default layer, otherwise we might get strange interactions.
@@ -79,7 +79,7 @@
 /obj/structure/cargo_shelf/proc/load(obj/structure/closet/crate/crate, mob/user)
 	var/next_free = shelf_contents.Find(null) // Find the first empty slot in the shelf.
 	if(!next_free) // If we don't find an empty slot, return early.
-		balloon_alert(user, "shelf full!")
+		balloon_alert(user, "Prateleira cheia!")
 		return FALSE
 	if(do_after(user, use_delay, target = crate))
 		if(shelf_contents[next_free] != null)
@@ -103,7 +103,7 @@
 	if(!unload_turf)
 		unload_turf = get_turf(user) // If a turf somehow isn't passed into the proc, put it at the user's feet.
 	if(!unload_turf.Enter(crate)) // If moving the crate from the shelf to the desired turf would bump, don't do it! Thanks Kapu1178 for the help here. - Generic DM
-		unload_turf.balloon_alert(user, "no room!")
+		unload_turf.balloon_alert(user, "Não há espaço!")
 		return FALSE
 	if(do_after(user, use_delay, target = crate))
 		if(!shelf_contents.Find(crate))
@@ -160,14 +160,14 @@
 	name = "Cargo shelf parts"
 	icon = 'modular_zubbers/icons/obj/structures.dmi'
 	icon_state = "rack_parts"
-	desc = "Parts of a cargo shelf, for storing crates."
+	desc = "Partes de uma prateleira de carga, para armazenar caixas."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4)
 
 /obj/item/rack_parts/cargo_shelf/attack_self(mob/user)
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, span_notice("You start constructing a cargo shelf..."))
+	to_chat(user, span_notice("Você começa a construir uma prateleira de carga..."))
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
@@ -186,14 +186,14 @@
 
 /obj/item/rack_parts/gun
 	name = "gun rack parts"
-	desc = "Parts of a gun rack."
+	desc = "Partes de uma arma."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/item/rack_parts/gun/attack_self(mob/user)
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, span_notice("You start constructing a gun rack..."))
+	to_chat(user, span_notice("Você começa a construir uma arma..."))
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return
@@ -212,14 +212,14 @@
 
 /obj/item/rack_parts/shelf
 	name = "shelf parts"
-	desc = "Parts of a standard shelf."
+	desc = "Partes de uma prateleira padrão."
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 
 /obj/item/rack_parts/shelf/attack_self(mob/user)
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, span_notice("You start constructing a standard shelf..."))
+	to_chat(user, span_notice("Você começa a construir uma prateleira padrão..."))
 	if(do_after(user, 50, target = user, progress=TRUE))
 		if(!user.temporarilyRemoveItemFromInventory(src))
 			return

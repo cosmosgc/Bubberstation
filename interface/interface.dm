@@ -6,7 +6,7 @@
 
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(!wikiurl)
-		to_chat(src, span_danger("The wiki URL is not set in the server configuration."))
+		to_chat(src, span_danger("O URL wiki não está definido na configuração do servidor."))
 		return
 
 	var/query = tgui_input_text(src,
@@ -28,7 +28,7 @@
 
 	var/forumurl = CONFIG_GET(string/forumurl)
 	if(!forumurl)
-		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
+		to_chat(src, span_danger("O URL do fórum não está definido na configuração do servidor."))
 		return
 	DIRECT_OUTPUT(src, link(forumurl))
 
@@ -39,7 +39,7 @@
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(!rulesurl)
-		to_chat(src, span_danger("The rules URL is not set in the server configuration."))
+		to_chat(src, span_danger("O URL das regras não está definido na configuração do servidor."))
 		return
 	DIRECT_OUTPUT(src, link(rulesurl))
 
@@ -50,7 +50,7 @@
 
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)
-		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
+		to_chat(src, span_danger("O URL do Github não está definido na configuração do servidor."))
 		return
 	DIRECT_OUTPUT(src, link(githuburl))
 
@@ -61,7 +61,7 @@
 
 	var/configurl = CONFIG_GET(string/configurl)
 	if(!configurl)
-		to_chat(src, span_danger("The Config URL is not set in the server configuration."))
+		to_chat(src, span_danger("O URL de configuração não está definido na configuração do servidor."))
 		return
 	DIRECT_OUTPUT(src, link(configurl))
 
@@ -71,7 +71,7 @@
 
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)
-		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
+		to_chat(src, span_danger("O URL do Github não está definido na configuração do servidor."))
 		return
 
 	var/testmerge_data = GLOB.revdata.testmerge
@@ -84,7 +84,7 @@
 
 	// We still use tg_alert here because some people were concerned that if someone wanted to report that tgui wasn't working
 	// then the report issue button being tgui-based would be problematic.
-	if(tg_alert(src, message, "Report Issue", "Yes", "No") != "Yes")
+	if(tg_alert(src, message, "Relatar questão", "Yes", "No") != "Yes")
 		return
 
 	var/base_link = githuburl + "/issues/new?template=bug_report_form.yml"
@@ -135,7 +135,7 @@
 	set hidden = TRUE
 
 	if(!isliving(mob))
-		to_chat(mob, span_notice("You can only use this while you're alive!"))
+		to_chat(mob, span_notice("Você só pode usar isso enquanto estiver vivo!"))
 		return
 
 	if(!GLOB.emote_panel)

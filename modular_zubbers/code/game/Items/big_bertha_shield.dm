@@ -1,6 +1,6 @@
 /obj/item/shield/big_bertha
 	name = "Big Bertha"
-	desc = "A shield so fat and heavy, it should block just about anything, as long as you have the stamina for it."
+	desc = "Um escudo tão gordo e pesado, deve bloquear qualquer coisa, contanto que tenha resistência para isso."
 	icon = 'modular_zubbers/icons/obj/big_bertha_shield.dmi'
 	lefthand_file = 'modular_zubbers/icons/mob/inhands/big_bertha_both.dmi'
 	righthand_file = 'modular_zubbers/icons/mob/inhands/big_bertha_both.dmi'
@@ -37,7 +37,7 @@
 		owner.visible_message(
 			span_warning("The force of [attack_text] from [hitby] knocks down [owner]!"),
 			span_userdanger("The force of [attack_text] from [hitby] knocks you down!"),
-			span_notice("You hear a loud thud!"),
+			span_notice("Você ouve um barulho!"),
 			COMBAT_MESSAGE_RANGE
 		)
 		owner.Knockdown(2 SECONDS) //The shield saved you, but at what cost?

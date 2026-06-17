@@ -2,7 +2,7 @@
 
 /obj/item/organ/vocal_cords/colossus
 	name = "divine vocal cords"
-	desc = "They carry the voice of an ancient god."
+	desc = "Eles carregam a voz de um deus antigo."
 	icon_state = "voice_of_god"
 	actions_types = list(/datum/action/item_action/organ_action/colossus)
 	var/next_command = 0
@@ -29,12 +29,12 @@
 		var/mob/living/living = owner
 		if(!living.can_speak())
 			if (feedback)
-				owner.balloon_alert(owner, "can't speak!")
+				owner.balloon_alert(owner, "Não posso falar!")
 			return FALSE
 	if(check_flags & AB_CHECK_CONSCIOUS)
 		if(owner.stat)
 			if (feedback)
-				owner.balloon_alert(owner, "unconscious!")
+				owner.balloon_alert(owner, "inconsciente!")
 			return FALSE
 	return TRUE
 
@@ -79,7 +79,7 @@
 
 /obj/machinery/anomalous_crystal
 	name = "anomalous crystal"
-	desc = "A strange chunk of crystal, being in the presence of it fills you with equal parts excitement and dread."
+	desc = "Um estranho pedaço de cristal, estar na presença dele enche você de partes iguais excitação e medo."
 	var/observer_desc = "Anomalous crystals have descriptions that only observers can see. But this one hasn't been changed from the default."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "anomaly_crystal"
@@ -175,7 +175,7 @@
 	return TRUE
 
 /obj/machinery/anomalous_crystal/honk //Revives the dead, but strips and equips them as a clown
-	observer_desc = "This crystal revives targets around it as clowns. Oh, that's horrible...."
+	observer_desc = "Este cristal revive alvos ao redor como palhaços. Isso é horrível..."
 	activation_method = ACTIVATE_TOUCH
 	activation_sound = 'sound/items/bikehorn.ogg'
 	use_time = 3 SECONDS
@@ -215,7 +215,7 @@
 
 /// Transforms the area to look like a new one
 /obj/machinery/anomalous_crystal/theme_warp
-	observer_desc = "This crystal warps the area around it to a theme."
+	observer_desc = "Este cristal transforma a área em um tema."
 	activation_method = ACTIVATE_TOUCH
 	cooldown_add = 20 SECONDS
 	use_time = 5 SECONDS
@@ -246,7 +246,7 @@
 	return ..()
 
 /obj/machinery/anomalous_crystal/emitter //Generates a projectile when interacted with
-	observer_desc = "This crystal generates a projectile when activated."
+	observer_desc = "Este cristal gera um projétil quando ativado."
 	activation_method = ACTIVATE_TOUCH
 	cooldown_add = 5 SECONDS
 	var/obj/projectile/generated_projectile = /obj/projectile/colossus
@@ -262,7 +262,7 @@
 		proj.fire(dir2angle(dir))
 
 /obj/machinery/anomalous_crystal/dark_reprise //Revives anyone nearby, but turns them into shadowpeople and renders them uncloneable, so the crystal is your only hope of getting up again if you go down.
-	observer_desc = "When activated, this crystal revives anyone nearby, but turns them into Shadowpeople and makes them unclonable, making the crystal their only hope of getting up again."
+	observer_desc = "Quando ativado, este cristal revive qualquer um por perto, mas os transforma em pessoas das sombras e os torna incólume, tornando o cristal sua única esperança de se levantar novamente."
 	activation_method = ACTIVATE_TOUCH
 	activation_sound = 'sound/effects/hallucinations/growl1.ogg'
 	use_time = 3 SECONDS
@@ -294,7 +294,7 @@
 	return TRUE
 
 /obj/machinery/anomalous_crystal/helpers //Lets ghost spawn as helpful creatures that can only heal people slightly. Incredibly fragile and they can't converse with humans
-	observer_desc = "This crystal allows ghosts to turn into a fragile creature that can heal people."
+	observer_desc = "Este cristal permite que fantasmas se tornem uma criatura frágil que pode curar as pessoas."
 	activation_method = ACTIVATE_TOUCH
 	activation_sound = 'sound/effects/ghost2.ogg'
 	use_time = 5 SECONDS
@@ -307,7 +307,7 @@
 		notify_ghosts(
 			"An anomalous crystal has been activated in [get_area(src)]! This crystal can always be used by ghosts hereafter.",
 			source = src,
-			header = "Anomalous crystal activated",
+			header = "Cristal anômalo ativado.",
 			click_interact = TRUE,
 			ghost_sound = 'sound/effects/ghost2.ogg',
 		)
@@ -317,13 +317,13 @@
 	if(.)
 		return
 	if(ready_to_deploy)
-		var/be_helper = tgui_alert(usr, "Become a Lightgeist? (Warning, You can no longer be revived!)", "Lightgeist Deployment", list("Yes", "No"))
+		var/be_helper = tgui_alert(usr, "Tornar-se um Lightgeist? (Aviso, Você não pode mais ser revivido!)", "Lightgeist Deployment", list("Yes", "No"))
 		if((be_helper == "Yes") && !QDELETED(src) && isobserver(user))
 			var/mob/living/basic/lightgeist/deployable = new(get_turf(loc))
 			deployable.PossessByPlayer(user.key)
 
 /obj/machinery/anomalous_crystal/possessor //Allows you to bodyjack small animals, then exit them at your leisure, but you can only do this once per activation. Because they blow up. Also, if the bodyjacked animal dies, SO DO YOU.
-	observer_desc = "When activated, this crystal allows you to take over small animals, and then exit them at the possessors leisure. Exiting the animal kills it, and if you die while possessing the animal, you die as well."
+	observer_desc = "Quando ativado, este cristal permite que você assuma pequenos animais, e então saia deles no lazer dos possuidores. Sair do animal o mata, e se você morrer enquanto possui o animal, você morre também."
 	activation_method = ACTIVATE_TOUCH
 	use_time = 1 SECONDS
 
@@ -358,7 +358,7 @@
 
 /obj/structure/closet/stasis
 	name = "quantum entanglement stasis warp field"
-	desc = "You can hardly comprehend this thing... which is why you can't see it."
+	desc = "Você mal consegue entender essa coisa... por isso não consegue ver."
 	icon_state = null //This shouldn't even be visible, so if it DOES show up, at least nobody will notice
 	enable_door_overlay = FALSE //For obvious reasons
 	density = TRUE
@@ -409,7 +409,7 @@
 
 /datum/action/exit_possession
 	name = "Exit Possession"
-	desc = "Exits the body you are possessing. They will explode violently when this occurs."
+	desc = "Sai do corpo que está possuindo. Eles explodirão violentamente quando isso acontecer."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "exit_possession"
 

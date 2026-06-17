@@ -1,7 +1,7 @@
 //Basically the assistant suit
 /obj/item/clothing/under/plasmaman
 	name = "plasma envirosuit"
-	desc = "A special containment suit that allows plasma-based lifeforms to exist safely in an oxygenated environment, and automatically extinguishes them in a crisis. Despite being airtight, it's not spaceworthy."
+	desc = "Um traje especial de contenção que permite que formas de vida baseadas em plasma existam em segurança em um ambiente oxigenado, e automaticamente as extingue em uma crise. Apesar de ser hermético, não é digno de espaço."
 	icon_state = "plasmaman"
 	inhand_icon_state = "plasmaman"
 	icon = 'icons/obj/clothing/under/plasmaman.dmi'
@@ -54,7 +54,7 @@
 	COOLDOWN_START(src, extinguish_timer, extinguish_cooldown)
 	// Check if our (possibly other) wearer is on fire once the cooldown ends
 	addtimer(CALLBACK(src, PROC_REF(check_fire_state)), extinguish_cooldown)
-	owner.visible_message(span_warning("[owner]'s suit automatically extinguishes [owner.p_them()]!"), span_warning("Your suit automatically extinguishes you."))
+	owner.visible_message(span_warning("[owner]'s suit automatically extinguishes [owner.p_them()]!"), span_warning("Seu traje automaticamente o apaga."))
 	owner.extinguish_mob()
 	new /obj/effect/particle_effect/water(get_turf(owner))
 
@@ -63,84 +63,84 @@
 		return ..()
 
 	if (extinguishes_left == 5)
-		to_chat(user, span_notice("The inbuilt extinguisher is full."))
+		to_chat(user, span_notice("O extintor embutido está cheio."))
 		return ITEM_INTERACT_BLOCKING
 
 	extinguishes_left = 5
-	to_chat(user, span_notice("You refill the suit's built-in extinguisher, using up the cartridge."))
+	to_chat(user, span_notice("Você enche o extintor embutido, usando o cartucho."))
 	check_fire_state()
 	qdel(tool)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/extinguisher_refill
 	name = "envirosuit extinguisher cartridge"
-	desc = "A cartridge loaded with a compressed extinguisher mix, used to refill the automatic extinguisher on plasma envirosuits."
+	desc = "Um cartucho carregado com uma mistura de extintor comprimido, usado para encher o extintor automático em ambientes de plasma."
 	icon_state = "plasmarefill"
 	icon = 'icons/obj/canisters.dmi'
 
 /obj/item/clothing/under/plasmaman/cargo
 	name = "cargo plasma envirosuit"
-	desc = "A joint envirosuit used by plasmamen quartermasters and cargo techs alike, due to the logistical problems of differentiating the two with the length of their pant legs."
+	desc = "Um traje comum usado por agentes de plasma e técnicos de carga, devido aos problemas logísticos de diferenciar os dois com o comprimento de suas pernas."
 	icon_state = "cargo_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/mining
 	name = "mining plasma envirosuit"
-	desc = "An airtight khaki suit designed for operations on lavaland by plasmamen."
+	desc = "Um traje cáqui hermético projetado para operações em lavalândia por plasmamen."
 	icon_state = "explorer_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/chef
 	name = "chef's plasma envirosuit"
-	desc = "A white plasmaman envirosuit designed for culinary practices. One might question why a member of a species that doesn't need to eat would become a chef."
+	desc = "Um ambiente de homem do plasma branco projetado para práticas culinárias. Pode-se questionar porque um membro de uma espécie que não precisa comer se tornaria um chef."
 	icon_state = "chef_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/enviroslacks
 	name = "enviroslacks"
-	desc = "The pet project of a particularly posh plasmaman, this custom suit was quickly appropriated by Nanotrasen for its lawyers, and bartenders alike."
+	desc = "O projeto de um homem de plasma particularmente elegante, este terno personalizado foi rapidamente apropriado por Nanotrasen para seus advogados, e barmans iguais."
 	icon_state = "enviroslacks"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/chaplain
 	name = "chaplain's plasma envirosuit"
-	desc = "An envirosuit specially designed for only the most pious of plasmamen."
+	desc = "Um traje especialmente projetado para apenas o mais piedoso dos plasmamen."
 	icon_state = "chap_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/curator
 	name = "curator's plasma envirosuit"
-	desc = "Made out of a modified voidsuit, this suit was Nanotrasen's first solution to the *logistical problems* that come with employing plasmamen. Due to the modifications, the suit is no longer space-worthy. Despite their limitations, these suits are still in used by historian and old-styled plasmamen alike."
+	desc = "Feita de um traje vazio modificado, este terno foi a primeira solução de Nanotrasen para os * problemas logísticos * que vêm com o emprego de plasmamen. Devido às modificações, o traje não é mais digno de espaço. Apesar de suas limitações, esses trajes ainda são usados por historiadores e plasmistas."
 	icon_state = "prototype_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/janitor
 	name = "janitor's plasma envirosuit"
-	desc = "A grey and purple envirosuit designated for plasmamen janitors."
+	desc = "Um traje cinza e roxo designado para faxineiros de plasma."
 	icon_state = "janitor_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/botany
 	name = "botany envirosuit"
-	desc = "A green and blue envirosuit designed to protect plasmamen from minor plant-related injuries."
+	desc = "Um ambiente verde e azul projetado para proteger plasmamen de pequenas lesões relacionadas à planta."
 	icon_state = "botany_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/mime
 	name = "mime envirosuit"
-	desc = "It's not very colourful."
+	desc = "Não é muito colorido."
 	icon_state = "mime_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/clown
 	name = "clown envirosuit"
-	desc = "<i>'HONK!'</i>"
+	desc = "<i>HONK!</i>"
 	icon_state = "clown_envirosuit"
 	inhand_icon_state = null
 
 /obj/item/clothing/under/plasmaman/bitrunner
 	name = "bitrunner envirosuit"
-	desc = "An envirosuit specially designed for plasmamen with bad posture."
+	desc = "Uma roupa especialmente projetada para plasmamen com má postura."
 	icon_state = "bitrunner_envirosuit"
 	inhand_icon_state = null
 
@@ -150,7 +150,7 @@
 
 /obj/item/clothing/under/plasmaman/prisoner
 	name = "prisoner envirosuit"
-	desc = "An orange envirosuit identifying and protecting a criminal plasmaman. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "Um navio laranja identificando e protegendo um criminoso. Seus sensores de terno estão presos no\"Totalmente ligado.\"Posição."
 	icon_state = "prisoner_envirosuit"
 	inhand_icon_state = null
 	has_sensor = LOCKED_SENSORS
@@ -174,6 +174,6 @@
 	COOLDOWN_START(src, extinguish_timer, extinguish_cooldown)
 	// Check if our (possibly other) wearer is on fire once the cooldown ends
 	addtimer(CALLBACK(src, PROC_REF(check_fire_state)), extinguish_cooldown)
-	owner.visible_message(span_warning("[owner]'s suit spews space lube everywhere!"), span_warning("Your suit spews space lube everywhere!"))
+	owner.visible_message(span_warning("[owner]'s suit spews space lube everywhere!"), span_warning("Seu terno vomita lubrificante espacial em todo lugar!"))
 	owner.extinguish_mob()
 	do_foam(4, src, get_turf(owner), /datum/reagent/lube, 15)

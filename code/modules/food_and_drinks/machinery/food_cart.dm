@@ -1,7 +1,7 @@
 
 /obj/machinery/food_cart
 	name = "food cart"
-	desc = "A compact unpackable mobile cooking stand. Wow! When unpacked, it reminds you of those greasy gamer setups some people on NTNet have."
+	desc = "Uma cabine compacta de cozinha móvel. Uau! Quando desempacotado, isso lembra daquelas configurações gordurosas que algumas pessoas na NTNet têm."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "foodcart"
 	density = TRUE
@@ -44,11 +44,11 @@
 	. = ..()
 	if(!(machine_stat & BROKEN))
 		if(cart_griddle.machine_stat & BROKEN)
-			. += span_warning("The stand's <b>griddle</b> is completely broken!")
+			. += span_warning("O stand's<b>Griddle</b>Está completamente quebrado!")
 		else
-			. += span_notice("The stand's <b>griddle</b> is intact.")
-		. += span_notice("The stand's <b>fridge</b> seems fine.") //weirdly enough, these fridges don't break
-		. += span_notice("The stand's <b>table</b> seems fine.")
+			. += span_notice("O stand's<b>Griddle</b>está intacto.")
+		. += span_notice("O stand's<b>Geladeira</b>Parece bem.") //weirdly enough, these fridges don't break
+		. += span_notice("O stand's<b>mesa</b>Parece bem.")
 
 /obj/machinery/food_cart/proc/pack_up()
 	if(!unpacked)
@@ -65,7 +65,7 @@
 	if(unpacked)
 		return
 	if(!check_setup_place())
-		to_chat(user, span_warning("There isn't enough room to unpack here! Bad spaces were marked in red."))
+		to_chat(user, span_warning("Não há espaço para desfazer as malas aqui! Lugares ruins estavam marcados em vermelho."))
 		return
 	visible_message(span_notice("[src] expands into a full stand."))
 	set_anchored(TRUE)
@@ -133,7 +133,7 @@
 
 /obj/effect/food_cart_stand
 	name = "food cart tent"
-	desc = "Something to battle the sun, for there are no breaks for the burger flippers."
+	desc = "Algo para combater o sol, pois não há pausas para as nadadeiras de hambúrguer."
 	icon = 'icons/obj/fluff/3x3.dmi'
 	icon_state = "stand"
 	layer = ABOVE_MOB_LAYER//big mobs will still go over the tent, this is fine and cool

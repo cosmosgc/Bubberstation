@@ -135,7 +135,7 @@
 	if(ishuman(usr) && !allow_chunky)
 		var/mob/living/carbon/human/human_user = usr
 		if(human_user.check_chunky_fingers())
-			balloon_alert(human_user, "fingers are too big!")
+			balloon_alert(human_user, "Dedos são muito grandes!")
 			return TRUE
 
 	switch(action)
@@ -180,7 +180,7 @@
 				if(!new_color)
 					return
 				if(is_color_dark(new_color, 50) ) //Colors too dark are rejected
-					to_chat(user, span_warning("That color is too dark! Choose a lighter one."))
+					to_chat(user, span_warning("Essa cor é muito escura! Escolha um mais leve."))
 					new_color = null
 			set_flashlight_color(new_color)
 			return TRUE

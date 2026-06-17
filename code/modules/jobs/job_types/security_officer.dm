@@ -1,7 +1,7 @@
 /datum/job/security_officer
 	title = JOB_SECURITY_OFFICER
-	description = "Protect company assets, follow the Standard Operating \
-		Procedure, eat donuts."
+	description = "Proteja os ativos da empresa, siga a Norma Operacional\
+Procedimento, coma donuts."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_STATION
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		if(department)
 			to_chat(player_client, "<b>You have been assigned to [department]!</b>")
 		else
-			to_chat(player_client, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
+			to_chat(player_client, "<b>Você não foi designado para nenhum departamento. Patrulhe os corredores e ajude onde for necessário.</b>")
 
 	return department
 

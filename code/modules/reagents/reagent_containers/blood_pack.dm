@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/blood
 	name = "blood pack"
-	desc = "Contains blood used for transfusion. Must be attached to an IV drip."
+	desc = "Contém sangue usado para transfusão. Deve estar ligado ao soro."
 	icon = 'icons/obj/medical/bloodpack.dmi'
 	icon_state = "bloodpack"
 	volume = 200
@@ -62,14 +62,14 @@
 
 /obj/item/reagent_containers/blood/snail/examine()
 	. = ..()
-	. += span_notice("It's a bit slimy... The label indicates that this is meant for snails.")
+	. += span_notice("É um pouco viscoso... A etiqueta indica que isso é para caracóis.")
 
 /obj/item/reagent_containers/blood/podperson
 	blood_type = BLOOD_TYPE_H2O
 
 /obj/item/reagent_containers/blood/podperson/examine()
 	. = ..()
-	. += span_notice("This appears to be some very overpriced water.")
+	. += span_notice("Parece ser uma água muito cara.")
 
 // for slimepeople
 /obj/item/reagent_containers/blood/toxin
@@ -77,7 +77,7 @@
 
 /obj/item/reagent_containers/blood/toxin/examine()
 	. = ..()
-	. += span_notice("There is a toxin warning on the label. This is for slimepeople.")
+	. += span_notice("Há um aviso de toxina no rótulo. Isso é para as pessoas viscosas.")
 
 /obj/item/reagent_containers/blood/universal
 	blood_type = BLOOD_TYPE_UNIVERSAL

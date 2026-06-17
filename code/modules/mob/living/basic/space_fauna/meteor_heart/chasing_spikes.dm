@@ -1,7 +1,7 @@
 /// An ability which makes spikes come out of the ground towards your target
 /datum/action/cooldown/mob_cooldown/chasing_spikes
 	name = "impaling tendril"
-	desc = "Send a spiked subterranean tendril chasing after your target."
+	desc = "Envie um tentáculo subterrâneo espigado atrás do seu alvo."
 	button_icon = 'icons/mob/simple/meteor_heart.dmi'
 	button_icon_state = "spike"
 	cooldown_time = 10 SECONDS
@@ -35,7 +35,7 @@
 /// A spike comes out of the ground, dealing damage after a short delay
 /obj/effect/temp_visual/emerging_ground_spike
 	name = "bone spike"
-	desc = "A sharp spur of bone erupting from the ground!"
+	desc = "Um esporão afiado de osso saindo do chão!"
 	icon = 'icons/mob/simple/meteor_heart.dmi'
 	icon_state = "spike"
 	duration = 1 SECONDS

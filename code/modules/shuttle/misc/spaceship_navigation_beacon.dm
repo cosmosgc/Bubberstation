@@ -1,6 +1,6 @@
 /obj/machinery/spaceship_navigation_beacon
 	name = "radio navigation gigabeacon"
-	desc = "A device that constantly transmits its position over several different commonly used maritime navigation frequencies. Used to create shuttle navigation waypoints in unexplored or undeveloped areas."
+	desc = "Um dispositivo que transmite constantemente sua posição sobre várias frequências de navegação marítima usadas. Usado para criar passagens de navegação em áreas não exploradas ou não desenvolvidas."
 	icon = 'icons/obj/machines/navigation_beacon.dmi'
 	icon_state = "beacon_active"
 	base_icon_state = "beacon"
@@ -79,9 +79,9 @@
 	.=..()
 	. += span_notice("'[FREQ_RADIO_NAV_BEACON / 10] kHz' is printed on the side.")
 	if(locked)
-		. += span_warning("The blinking red light on the front indicates that this beacon is LOCKED.")
+		. += span_warning("A luz vermelha piscando na frente indica que este farol está trancado.")
 	else
-		. += span_notice("The blinking green light on the front indicates that this beacon is operating normally.")
+		. += span_notice("A luz verde piscando na frente indica que este farol está funcionando normalmente.")
 
 /obj/machinery/spaceship_navigation_beacon/process(seconds_per_tick)
 	if(COOLDOWN_FINISHED(src, next_automatic_message_time) && radio)
@@ -95,7 +95,7 @@
 
 /obj/item/folded_navigation_gigabeacon
 	name = "compact radio navigation gigabeacon"
-	desc = "A compact radio navigation gigabeacon, a device used to provide shuttle navigation waypoints in unexplored areas. Must be deployed before use."
+	desc = "Um gigabeacon compacto de navegação por rádio, um dispositivo usado para fornecer pontos de navegação em áreas inexploradas. Deve ser implantado antes de usá-lo."
 	icon = 'icons/obj/machines/navigation_beacon.dmi'
 	icon_state = "beacon_folded"
 
@@ -105,5 +105,5 @@
 
 /obj/item/folded_navigation_gigabeacon/examine()
 	.=..()
-	. += span_notice("The backside has instructions in various galactic languages detailing how this can be deployed <b>in hand</b> without any special tools.")
+	. += span_notice("O traseiro tem instruções em várias línguas galácticas detalhando como isso pode ser implantado.<b>na mão</b>sem nenhuma ferramenta especial.")
 	. += span_notice("'[FREQ_RADIO_NAV_BEACON / 10] kHz' is printed on the side.")

@@ -20,16 +20,16 @@
 		return
 
 	if(get_dist(change_platform, src) > 15)
-		balloon_alert(user, "out of range!")
+		balloon_alert(user, "Fora de alcance!")
 		return
 
 	id = change_platform.platform_code
-	balloon_alert(user, "platform changed")
+	balloon_alert(user, "Plataforma mudada.")
 	to_chat(user, span_notice("You change the platform ID to [change_platform.name]."))
 
 /obj/item/assembly/control/transport/call_button
 	name = "tram call button"
-	desc = "A small device used to bring trams to you."
+	desc = "Um pequeno dispositivo usado para trazer bondes para você."
 	///ID to link to allow us to link to one specific tram in the world
 	id = 0
 
@@ -80,7 +80,7 @@
 
 /obj/machinery/button/transport/tram
 	name = "tram request"
-	desc = "A button for calling the tram. It has a speakerbox in it with some internals."
+	desc = "Um botão para chamar o bonde. Tem uma caixa de som com alguns internos."
 	base_icon_state = "tram"
 	icon_state = "tram"
 	light_color = COLOR_DISPLAY_BLUE
@@ -100,7 +100,7 @@
 	if(in_range(user, src))
 		return attack_hand(user)
 	else
-		to_chat(user, span_warning("You are too far away to activate the button!"))
+		to_chat(user, span_warning("Você está muito longe para ativar o botão!"))
 
 /obj/machinery/button/transport/tram/setup_device()
 	. = ..()
@@ -110,7 +110,7 @@
 
 /obj/machinery/button/transport/tram/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a small inscription on the button...")
-	. += span_notice("THIS CALLS THE TRAM! IT DOES NOT OPERATE IT! The console on the tram tells it where to go!")
+	. += span_notice("Há uma pequena inscrição no botão...")
+	. += span_notice("Isso chama o TRAM! Não funciona! O console no bonde diz para onde ir!")
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/transport/tram, 32)

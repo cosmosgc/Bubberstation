@@ -1,6 +1,6 @@
 /datum/action/cooldown/dagger_swing
 	name = "Dagger swing"
-	desc = "Swing your daggers around."
+	desc = "Balancem suas adagas."
 	button_icon = 'icons/obj/mining_zones/artefacts.dmi'
 	button_icon_state = "cain_and_abel"
 	background_icon_state = "bg_default"
@@ -13,11 +13,11 @@
 	var/obj/item/cain_and_abel/cain_and_abel = target
 
 	if(!living_owner.is_holding(cain_and_abel))
-		owner.balloon_alert(owner, "must be held")
+		owner.balloon_alert(owner, "deve ser realizada.")
 		return FALSE
 
 	if(!cain_and_abel.check_wield(owner))
-		owner.balloon_alert(owner, "offhand busy!")
+		owner.balloon_alert(owner, "Offhand ocupado!")
 		return TRUE
 
 	living_owner.apply_status_effect(/datum/status_effect/dagger_swinging)

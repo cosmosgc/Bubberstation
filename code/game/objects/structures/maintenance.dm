@@ -3,7 +3,7 @@ as well as a location where a hidden item can sometimes be retrieved
 at the cost of risking a vicious bite.**/
 /obj/structure/moisture_trap
 	name = "moisture trap"
-	desc = "A device installed in order to control moisture in poorly ventilated areas.\nThe stagnant water inside basin seems to produce serious biofouling issues when improperly maintained.\nThis unit in particular seems to be teeming with life!\nWho thought mother Gaia could assert herself so vigorously in this sterile and desolate place?"
+	desc = "Um dispositivo instalado para controlar a umidade em áreas mal ventiladas.\nA água estagnada dentro da bacia parece produzir sérios problemas biológicos quando indevidamente mantida.\nEsta unidade em particular parece estar cheia de vida!\nQuem pensou que a mãe Gaia poderia se afirmar tão vigorosamente neste lugar estéril e desolado?"
 	icon_state = "moisture_trap"
 	anchored = TRUE
 	density = FALSE
@@ -75,7 +75,7 @@ at the cost of risking a vicious bite.**/
 	if(!CanReachInside(user))
 		to_chat(user, span_warning("You need to lie down to reach into [src]."))
 		return
-	to_chat(user, span_notice("You reach down into the cold water of the basin."))
+	to_chat(user, span_notice("Você alcança a água fria da bacia."))
 	playsound(src,'sound/effects/submerge.ogg', 25, TRUE)
 	if(!do_after(user, 2 SECONDS, target = src))
 		return
@@ -91,7 +91,7 @@ at the cost of risking a vicious bite.**/
 		bite_victim.apply_damage(30, BRUTE, affecting)
 		playsound(src,'sound/items/weapons/bite.ogg', 70, TRUE)
 		return
-	to_chat(user, span_warning("You find nothing of value..."))
+	to_chat(user, span_warning("Você não encontra nada de valor..."))
 
 /obj/structure/moisture_trap/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(iscyborg(user) || isalien(user) || !CanReachInside(user))
@@ -125,10 +125,10 @@ at the cost of risking a vicious bite.**/
 
 /obj/structure/destructible/cult/pants_altar
 	name = "strange structure"
-	desc = "What is this? Who put it on this station? And why does it emanate <span class='hypnophrase'>strange energy?</span>"
+	desc = "O que é isso? Quem colocou nesta estação? E por que emana?<span class='hypnophrase'>Energia estranha?</span>"
 	icon_state = "altar"
 	cult_examine_tip = "Even you don't understand the eldritch magic behind this."
-	break_message = span_warning("The structure shatters, leaving only a demonic screech!")
+	break_message = span_warning("A estrutura se quebra, deixando apenas um grito demoníaco!")
 	break_sound = 'sound/effects/magic/demon_dies.ogg'
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
 	light_range = 2
@@ -200,7 +200,7 @@ at the cost of risking a vicious bite.**/
 /obj/structure/destructible/cult/pants_altar/proc/pants_stagetwo()
 	status = ALTAR_STAGETWO
 	update_icon()
-	visible_message(span_warning("You start feeling nauseous..."))
+	visible_message(span_warning("Você começa a sentir náuseas..."))
 	for(var/mob/living/viewing_mob in viewers(7, src))
 		viewing_mob.set_eye_blur_if_lower(20 SECONDS)
 		viewing_mob.adjust_confusion(10 SECONDS)
@@ -210,7 +210,7 @@ at the cost of risking a vicious bite.**/
 /obj/structure/destructible/cult/pants_altar/proc/pants_stagethree()
 	status = ALTAR_STAGETHREE
 	update_icon()
-	visible_message(span_warning("You start feeling horrible..."))
+	visible_message(span_warning("Você começa a se sentir horrível..."))
 	for(var/mob/living/viewing_mob in viewers(7, src))
 		viewing_mob.set_dizzy_if_lower(20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(pants_create)), ALTAR_TIME)
@@ -237,7 +237,7 @@ at the cost of risking a vicious bite.**/
 
 /obj/item/clothing/under/pants/slacks/altar
 	name = "strange pants"
-	desc = "A pair of pants. They do not look or feel natural, and smell like fresh blood."
+	desc = "Um par de calças. Eles não parecem ou se sentem naturais, e cheiram a sangue fresco."
 	icon_state = "/obj/item/clothing/under/pants/slacks/altar"
 	greyscale_colors = "#ffffff#ffffff#ffffff"
 	flags_1 = NONE //If IS_PLAYER_COLORABLE gets added color-changing support (i.e. spraycans), these won't end up getting it too. Plus, it already has its own recolor.
@@ -253,7 +253,7 @@ at the cost of risking a vicious bite.**/
  */
 /obj/structure/steam_vent
 	name = "steam vent"
-	desc = "A device periodically filtering out moisture particles from the nearby walls and windows. It's only possible due to the moisture traps nearby."
+	desc = "Um dispositivo periodicamente filtrando partículas de umidade das paredes e janelas próximas. Só é possível devido às armadilhas de umidade nas proximidades."
 	icon_state = "steam_vent"
 	anchored = TRUE
 	density = FALSE
@@ -279,14 +279,14 @@ at the cost of risking a vicious bite.**/
 /obj/structure/steam_vent/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, steam_vent_interact))
-		balloon_alert(user, "not ready to adjust!")
+		balloon_alert(user, "Não está pronto para se ajustar!")
 		return
 	vent_active = !vent_active
 	update_icon_state()
 	if(vent_active)
-		balloon_alert(user, "vent on")
+		balloon_alert(user, "Ventilar.")
 	else
-		balloon_alert(user, "vent off")
+		balloon_alert(user, "Ventilar")
 		return
 	blow_steam()
 
@@ -303,7 +303,7 @@ at the cost of risking a vicious bite.**/
 /obj/structure/steam_vent/wrench_act_secondary(mob/living/user, obj/item/tool)
 	. = ..()
 	if(vent_active)
-		balloon_alert(user, "must be off!")
+		balloon_alert(user, "Deve ter saído!")
 		return
 	if(tool.use_tool(src, user, 3 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
@@ -334,5 +334,5 @@ at the cost of risking a vicious bite.**/
 	icon_state = "steam_vent[vent_active ? "": "_off"]"
 
 /obj/structure/steam_vent/fast
-	desc = "A device periodically filtering out moisture particles from the nearby walls and windows. It's only possible due to the moisture traps nearby. It's faster than most."
+	desc = "Um dispositivo periodicamente filtrando partículas de umidade das paredes e janelas próximas. Só é possível devido às armadilhas de umidade nas proximidades. É mais rápido que a maioria."
 	steam_speed = 10 SECONDS

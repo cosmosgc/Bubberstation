@@ -15,7 +15,7 @@
  */
 /mob/living/basic/drone
 	name = "Drone"
-	desc = "A maintenance drone, an expendable robot built to perform station repairs."
+	desc = "Um drone de manutenção, um robô descartável construído para fazer reparos na estação."
 	icon = 'icons/mob/silicon/drone.dmi'
 	icon_state = "drone_maint_grey"
 	icon_living = "drone_maint_grey"
@@ -232,21 +232,21 @@
 
 	//Hacked
 	if(hacked)
-		. += span_warning("Its display is glowing red!")
+		. += span_warning("Sua tela é vermelha brilhante!")
 
 	//Damaged
 	if(health != maxHealth)
 		if(health > maxHealth * 0.33) //Between maxHealth and about a third of maxHealth, between 30 and 10 for normal drones
-			. += span_warning("Its screws are slightly loose.")
+			. += span_warning("Seus parafusos estão ligeiramente soltos.")
 		else //otherwise, below about 33%
-			. += span_boldwarning("Its screws are very loose!")
+			. += span_boldwarning("Seus parafusos são muito soltos!")
 
 	//Dead
 	if(stat == DEAD)
 		if(client)
-			. += span_deadsay("A message repeatedly flashes on its display: \"REBOOT -- REQUIRED\".")
+			. += span_deadsay("Uma mensagem repetidamente pisca em sua tela:\"REBOOT - EXIGIDO\".")
 		else
-			. += span_deadsay("A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".")
+			. += span_deadsay("Uma mensagem repetidamente pisca em sua tela:\"ERRO - OFFLINE\".")
 
 /mob/living/basic/drone/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null) //Secbots won't hunt maintenance drones.
 	return -10
@@ -256,10 +256,10 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	Stun(70)
-	to_chat(src, span_danger("<b>ER@%R: MME^RY CO#RU9T!</b> R&$b@0tin)..."))
+	to_chat(src, span_danger("<b>MME^RY CO#RU9T!</b>R&$b@0tin)..."))
 	if(severity == 1)
 		adjust_brute_loss(heavy_emp_damage)
-		to_chat(src, span_userdanger("HeAV% DA%^MMA+G TO I/O CIR!%UUT!"))
+		to_chat(src, span_userdanger("HeAV% DA%^MMA+G TO I/O CIR!"))
 
 /mob/living/basic/drone/proc/alarm_triggered(datum/source, alarm_type, area/source_area)
 	SIGNAL_HANDLER

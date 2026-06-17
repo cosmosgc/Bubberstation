@@ -3,7 +3,7 @@
 
 /obj/machinery/flatpacker
 	name = "flatpacker"
-	desc = "It produces items using iron, glass, plastic and maybe some more."
+	desc = "Produz itens usando ferro, vidro, plástico e talvez mais."
 	icon = 'icons/obj/machines/lathes.dmi'
 	base_icon_state = "flatpacker"
 	icon_state = "flatpacker"
@@ -76,7 +76,7 @@
 	if(!in_range(user, src) && !isobserver(user))
 		return
 
-	. += span_notice("The status display reads:")
+	. += span_notice("A exibição de status diz:")
 	. += span_notice("Capable of packing up to <b>Tier [max_part_tier]</b>.")
 	. += span_notice("Storing up to <b>[materials.max_amount]</b> material units.")
 	. += span_notice("Material consumption at <b>[creation_efficiency * 100]%</b>.")
@@ -95,7 +95,7 @@
 					continue
 				LAZYADDASSOC(to_insert, get_flatpack_component_name(component), "[inserted]/[required]")
 			if(length(to_insert))
-				. += span_warning("The following components must be inserted by hand before packaging:")
+				. += span_warning("Os seguintes componentes devem ser inseridos à mão antes da embalagem:")
 				for(var/component_name in to_insert)
 					. += span_warning("[component_name]: [to_insert[component_name]].")
 
@@ -224,7 +224,7 @@
 
 	if(istype(attacking_item, /obj/item/circuitboard/machine))
 		if(busy)
-			balloon_alert(user, "busy!")
+			balloon_alert(user, "Ocupado!")
 			return ITEM_INTERACT_BLOCKING
 		if (!user.transferItemToLoc(attacking_item, src))
 			return ITEM_INTERACT_BLOCKING
@@ -249,7 +249,7 @@
 		return ITEM_INTERACT_SUCCESS
 	else if(!QDELETED(inserted_board) && (attacking_item.type in inserted_board.flatpack_components))
 		if(get_flatpack_component_count(attacking_item.type) == inserted_board.req_components[attacking_item.type])
-			balloon_alert(user, "max count reached!")
+			balloon_alert(user, "Contagem máxima atingida!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(attacking_item, src))

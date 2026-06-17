@@ -1,6 +1,6 @@
 /obj/item/melee/supermatter_sword
 	name = "supermatter sword"
-	desc = "In a station full of bad ideas, this might just be the worst."
+	desc = "Em uma estação cheia de ideias ruins, isso pode ser o pior."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "supermatter_sword_balanced"
 	inhand_icon_state = "supermatter_sword"
@@ -67,14 +67,14 @@
 /obj/item/melee/supermatter_sword/ex_act(severity, target)
 	visible_message(
 		span_danger("The blast wave smacks into [src] and rapidly flashes to ash."),
-		span_hear("You hear a loud crack as you are washed with a wave of heat.")
+		span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor.")
 	)
 	consume_everything()
 	return TRUE
 
 /obj/item/melee/supermatter_sword/acid_act()
 	visible_message(span_danger("The acid smacks into [src] and rapidly flashes to ash."),\
-	span_hear("You hear a loud crack as you are washed with a wave of heat."))
+	span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."))
 	consume_everything()
 	return TRUE
 
@@ -84,7 +84,7 @@
 	visible_message(
 		span_danger("[hitting_projectile] smacks into [source] and rapidly flashes to ash."),
 		null,
-		span_hear("You hear a loud crack as you are washed with a wave of heat."),
+		span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."),
 	)
 	consume_everything(hitting_projectile)
 	return COMPONENT_BULLET_BLOCKED
@@ -110,6 +110,6 @@
 	playsound(turf, 'sound/effects/supermatter.ogg', 50, TRUE)
 	turf.visible_message(
 		span_danger("[turf] smacks into [src] and rapidly flashes to ash."),
-		span_hear("You hear a loud crack as you are washed with a wave of heat."),
+		span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."),
 	)
 	shard.Bump(turf)

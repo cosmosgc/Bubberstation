@@ -36,7 +36,7 @@
 /mob/living/basic/alien/maid/barmaid
 	gold_core_spawnable = NO_SPAWN
 	name = "Barmaid"
-	desc = "A barmaid, a maiden found in a bar."
+	desc = "Uma garçonete, uma donzela encontrada em um bar."
 	pass_flags = PASSTABLE
 	unique_name = FALSE
 	initial_language_holder = /datum/language_holder/universal

@@ -1,7 +1,7 @@
 // Pen basetype where the icon is gotten from
 /obj/item/reagent_containers/hypospray/medipen/deforest
 	name = "non-functional Deforest autoinjector"
-	desc = "A Deforest branded autoinjector, though this one seems to be both empty and non-functional."
+	desc = "Um autoinjetor de Deforest marcado, embora este pareça vazio e não funcional."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/injectors.dmi'
 	icon_state = "default"
 	volume = 25
@@ -35,7 +35,7 @@
 			return FALSE
 
 	if(reagents.total_volume && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))) // Ignore flag should be checked first or there will be an error message.
-		to_chat(affected_mob, span_warning("You feel a tiny prick!"))
+		to_chat(affected_mob, span_warning("Você sente um pinto minúsculo!"))
 		to_chat(user, span_notice("You inject [affected_mob] with [src]."))
 		if(!stealthy)
 			playsound(affected_mob, 'sound/items/hypospray.ogg', 50, TRUE)
@@ -56,7 +56,7 @@
 // Sensory restoration, heals eyes and ears with a bit of impurity
 /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate
 	name = "occuisate sensory restoration injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to restore your vision and hearing to operation."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de reagentes para restaurar sua visão e audição."
 	base_icon_state = "occuisate"
 	icon_state = "occuisate"
 	list_reagents = list(
@@ -70,7 +70,7 @@
 // Adrenaline, fills you with determination (and also stimulants)
 /obj/item/reagent_containers/hypospray/medipen/deforest/adrenaline
 	name = "adrenaline injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to intentionally give yourself fight or flight on demand."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de reagentes para se dar intencionalmente luta ou fuga sob demanda."
 	base_icon_state = "adrenaline"
 	icon_state = "adrenaline"
 	list_reagents = list(
@@ -83,7 +83,7 @@
 // Morpital, heals a small amount of damage and kills pain for a bit
 /obj/item/reagent_containers/hypospray/medipen/deforest/morpital
 	name = "morpital regenerative stimulant injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de reagentes para dormência e reparação de pequenas quantidades de danos físicos."
 	base_icon_state = "morpital"
 	icon_state = "morpital"
 	list_reagents = list(
@@ -95,8 +95,8 @@
 // Lipital, heals more damage than morpital but doesnt work much at higher damages
 /obj/item/reagent_containers/hypospray/medipen/deforest/lipital
 	name = "lipital regenerative stimulant injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to numb pain and repair small amounts of physical damage. \
-		Works most effectively against damaged caused by brute attacks."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de reagentes para dormência e reparação de pequenas quantidades de danos físicos.\
+Funciona de forma mais eficaz contra danos causados por ataques brutais."
 	base_icon_state = "lipital"
 	icon_state = "lipital"
 	list_reagents = list(
@@ -108,8 +108,8 @@
 // Anti-poisoning injector, with a little bit of radiation healing as a treat
 /obj/item/reagent_containers/hypospray/medipen/deforest/meridine
 	name = "meridine antidote injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to serve as antidote to most galactic toxins. \
-		A warning sticker notes it should not be used if the patient is physically damaged, as it may cause complications."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de reagentes para servir como antídoto para a maioria das toxinas galácticas.\
+Um adesivo avisa que não deve ser usado se o paciente estiver fisicamente danificado, pois pode causar complicações."
 	base_icon_state = "meridine"
 	icon_state = "meridine"
 	list_reagents = list(
@@ -121,7 +121,7 @@
 // Epinephrine and helps a little bit against stuns and stamina damage
 /obj/item/reagent_containers/hypospray/medipen/deforest/synephrine
 	name = "synephrine emergency stimulant injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of reagents to stabilize critical condition and recover from stamina deficits."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de reagentes para estabilizar a condição crítica e se recuperar de déficits de resistência."
 	base_icon_state = "synephrine"
 	icon_state = "synephrine"
 	list_reagents = list(
@@ -134,7 +134,7 @@
 // Critical condition stabilizer
 /obj/item/reagent_containers/hypospray/medipen/deforest/calopine
 	name = "calopine emergency stabilizant injector"
-	desc = "A Deforest branded autoinjector, loaded with a stabilizing mix of reagents to repair critical conditions."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura estabilizadora de reagentes para reparar condições críticas."
 	base_icon_state = "calopine"
 	icon_state = "calopine"
 	list_reagents = list(
@@ -147,7 +147,7 @@
 // Coagulant, really not a whole lot more
 /obj/item/reagent_containers/hypospray/medipen/deforest/coagulants
 	name = "coagulant-S injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of coagulants to prevent and stop bleeding."
+	desc = "Um autoinjetor marca Deforest, carregado com uma mistura de coagulantes para prevenir e parar o sangramento."
 	base_icon_state = "coagulant"
 	icon_state = "coagulant"
 	list_reagents = list(
@@ -159,7 +159,7 @@
 // Stimulant centered around ondansetron
 /obj/item/reagent_containers/hypospray/medipen/deforest/krotozine
 	name = "krotozine manipulative stimulant injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of stimulants and weak healing agents."
+	desc = "Um autoinjetor de Deforest marcado, carregado com uma mistura de estimulantes e agentes curativos fracos."
 	base_icon_state = "krotozine"
 	icon_state = "krotozine"
 	list_reagents = list(
@@ -173,7 +173,7 @@
 // Stuff really good at healing burn stuff and stabilizing temps
 /obj/item/reagent_containers/hypospray/medipen/deforest/lepoturi
 	name = "lepoturi burn treatment injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to rapidly treat burns."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de medicamentos para tratar rapidamente queimaduras."
 	base_icon_state = "lepoturi"
 	icon_state = "lepoturi"
 	list_reagents = list(
@@ -186,7 +186,7 @@
 // Stabilizes a lot of stats like drowsiness, sanity, dizziness, so on
 /obj/item/reagent_containers/hypospray/medipen/deforest/psifinil
 	name = "psifinil personal recovery injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to remedy many common ailments, such as drowsiness, pain, instability, the like."
+	desc = "Um autoinjetor de Deforest marcado, carregado com uma mistura de medicamentos para remediar muitas doenças comuns, como sonolência, dor, instabilidade, coisas assim."
 	base_icon_state = "psifinil"
 	icon_state = "psifinil"
 	list_reagents = list(
@@ -198,7 +198,7 @@
 // Helps with liver failure and some drugs, also alcohol
 /obj/item/reagent_containers/hypospray/medipen/deforest/halobinin
 	name = "halobinin soberant injector"
-	desc = "A Deforest branded autoinjector, loaded with a mix of medicines to remedy the effects of liver failure and common drugs."
+	desc = "Um autoinjetor de marca Deforest, carregado com uma mistura de medicamentos para remediar os efeitos da insuficiência hepática e drogas comuns."
 	base_icon_state = "halobinin"
 	icon_state = "halobinin"
 	list_reagents = list(
@@ -211,7 +211,7 @@
 // Medpen for robots that fixes toxin damage and purges synth chems but slows them down for a bit
 /obj/item/reagent_containers/hypospray/medipen/deforest/robot_system_cleaner
 	name = "synthetic cleaner autoinjector"
-	desc = "A Deforest branded autoinjector, loaded with system cleaner for purging synthetics of reagents."
+	desc = "Um autoinjetor de marca Deforest, carregado com limpador de sistema para purgar sintéticos de reagentes."
 	base_icon_state = "robor"
 	icon_state = "robor"
 	list_reagents = list(
@@ -222,7 +222,7 @@
 // Medpen for robots that fixes brain damage but slows them down for a bit
 /obj/item/reagent_containers/hypospray/medipen/deforest/robot_liquid_solder
 	name = "synthetic smart-solder autoinjector"
-	desc = "A Deforest branded autoinjector, loaded with liquid solder to repair synthetic processor core damage."
+	desc = "Um autoinjetor de marca Deforest, carregado com solda líquida para reparar danos no núcleo do processador sintético."
 	base_icon_state = "robor_brain"
 	icon_state = "robor_brain"
 	list_reagents = list(

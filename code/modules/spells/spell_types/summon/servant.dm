@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/summon_mob
 	name = "Summon Servant"
-	desc = "This spell can be used to call your servant, whenever you need it."
+	desc = "Este feitiço pode ser usado para chamar seu servo, sempre que precisar."
 	button_icon_state = "summons"
 
 	school = SCHOOL_CONJURATION
@@ -34,7 +34,7 @@
 	. = ..()
 	if(!selected_summon)
 		if(summoning_servant)
-			owner.balloon_alert(owner, "still conjuring!")
+			owner.balloon_alert(owner, "Ainda conjurando!")
 			return SPELL_CANCEL_CAST
 		owner.balloon_alert(owner, "conjuring [servant_title]...")
 		find_servant()
@@ -51,7 +51,7 @@
 
 	var/mob/living/to_summon = summon_weakref?.resolve()
 
-	to_summon.visible_message(span_alert("[to_summon] suddenly vanishes into thin air!"), span_alert("You have been summoned to serve!"), span_hear("You hear something teleport away from nearby, off to serve..."))
+	to_summon.visible_message(span_alert("[to_summon] suddenly vanishes into thin air!"), span_alert("Você foi chamado para servir!"), span_hear("Você ouve algo se teletransportar de perto, para servir..."))
 
 	do_teleport(
 		to_summon,

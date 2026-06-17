@@ -109,7 +109,7 @@
 
 /mob/living/silicon/emp_act(severity)
 	. = ..()
-	to_chat(src, span_danger("Warning: Electromagnetic pulse detected."))
+	to_chat(src, span_danger("Aviso: pulso eletromagnético detectado."))
 	if(. & EMP_PROTECT_SELF || QDELETED(src))
 		return
 	switch(severity)
@@ -117,7 +117,7 @@
 			src.take_bodypart_damage(burn = 20)
 		if(2)
 			src.take_bodypart_damage(burn = 10)
-	to_chat(src, span_userdanger("*BZZZT*"))
+	to_chat(src, span_userdanger("BZZZT"))
 	for(var/mob/living/M in buckled_mobs)
 		if(prob(severity*50))
 			unbuckle_mob(M)

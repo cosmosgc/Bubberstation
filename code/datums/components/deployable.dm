@@ -64,7 +64,7 @@
 	if(user)
 		deploy_location = get_step(user, user.dir) //Gets spawn location for thing_to_be_deployed if there is a user
 		if(deploy_location.is_blocked_turf(TRUE, parent))
-			source.balloon_alert(user, "insufficient room to deploy here.")
+			source.balloon_alert(user, "Não há espaço suficiente para entrar aqui.")
 			return
 		new_direction = user.dir //Gets the direction for thing_to_be_deployed if there is a user
 		source.balloon_alert(user, "deploying...")

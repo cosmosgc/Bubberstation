@@ -270,7 +270,7 @@
 	action.HideFrom(src)
 
 /atom/movable/screen/button_palette
-	desc = "<b>Drag</b> buttons to move them<br><b>Shift-click</b> any button to reset it<br><b>Alt-click any button</b> to begin binding it to a key<br><b>Alt-click this</b> to reset all buttons"
+	desc = "<b>Arrastar</b>botões para movê-los<br><b>Shift-click</b>Qualquer botão para redefini-lo.<br><b>Alt-clique em qualquer botão</b>para começar a amarrá-lo a uma chave<br><b>Alt-clique nisso.</b>para reiniciar todos os botões"
 	icon = 'icons/hud/64x16_actions.dmi'
 	icon_state = "screen_gen_palette"
 	screen_loc = ui_action_palette
@@ -382,7 +382,7 @@ GLOBAL_LIST_INIT(palette_removed_matrix, list(1.4,0,0,0, 0.7,0.4,0,0, 0.4,0,0.6,
 			for(var/datum/hud/hud as anything in action.viewers)
 				var/atom/movable/screen/movable/action_button/button = action.viewers[hud]
 				hud.position_action(button, SCRN_OBJ_DEFAULT)
-		to_chat(usr, span_notice("Action button positions have been reset."))
+		to_chat(usr, span_notice("As posições dos botões de ação foram reiniciadas."))
 		return TRUE
 
 	set_expanded(!expanded)
@@ -471,20 +471,20 @@ GLOBAL_LIST_INIT(palette_removed_matrix, list(1.4,0,0,0, 0.7,0.4,0,0, 0.4,0,0.6,
 
 /atom/movable/screen/palette_scroll/down
 	name = "Scroll Down"
-	desc = "<b>Click</b> on this to scroll the actions above down"
+	desc = "<b>Clique</b>sobre isso para rolar as ações acima"
 	icon_state = "scroll_down"
 	scroll_direction = 1
 
 /atom/movable/screen/palette_scroll/up
 	name = "Scroll Up"
-	desc = "<b>Click</b> on this to scroll the actions above up"
+	desc = "<b>Clique</b>sobre isso para rolar as ações acima"
 	icon_state = "scroll_up"
 	scroll_direction = -1
 
 /// Exists so you have a place to put your buttons when you move them around
 /atom/movable/screen/action_landing
 	name = "Button Space"
-	desc = "<b>Drag and drop</b> a button into this spot<br>to add it to the group"
+	desc = "<b>Arraste e solte</b>Um botão neste lugar<br>para adicionar ao grupo"
 	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "reserved"
 	// We want our whole 32x32 space to be clickable, so dropping's forgiving

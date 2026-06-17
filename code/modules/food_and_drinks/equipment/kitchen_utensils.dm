@@ -74,7 +74,7 @@
 
 /obj/item/kitchen/fork/plastic
 	name = "plastic fork"
-	desc = "Really takes you back to highschool lunch."
+	desc = "Realmente te leva de volta ao almoço do colegial."
 	icon_state = "plastic_fork"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -90,13 +90,13 @@
 
 /obj/item/knife/kitchen
 	name = "kitchen knife"
-	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	desc = "Faca de Chef de propósito geral feita pela SpaceCook Incorporated. Garantido para ficar afiado por anos."
 
 /obj/item/knife/plastic
 	name = "plastic knife"
 	icon_state = "plastic_knife"
 	inhand_icon_state = "knife"
-	desc = "A very safe, barely sharp knife made of plastic. Good for cutting food and not much else."
+	desc = "Uma faca muito segura, mal afiada feita de plástico. Bom para cortar comida e não muito mais."
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
@@ -118,7 +118,7 @@
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "sili_knife"
 	icon_angle = 0
-	desc = "A breakthrough in synthetic engineering, this tool is a knife programmed to dull when not used for cooking purposes, and can exchange the blade for a rolling pin"
+	desc = "Um avanço na engenharia sintética, esta ferramenta é uma faca programada para embotar quando não é usada para cozinhar, e pode trocar a lâmina por um rolo de rolo"
 	force = 0
 	throwforce = 0
 	sharpness = SHARP_EDGED
@@ -158,7 +158,7 @@
 
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	desc = "Costumava derrubar o garçom."
 	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "rolling_pin"
 	worn_icon_state = "rolling_pin"
@@ -181,7 +181,7 @@
 
 /obj/item/kitchen/rollingpin/illegal
 	name = "metal rolling pin"
-	desc = "A heavy metallic rolling pin used to bash in those annoying ingredients."
+	desc = "Um pesado rolo metálico usado para bater nesses ingredientes irritantes."
 	icon_state = "metal_rolling_pin"
 	inhand_icon_state = "metal_rolling_pin"
 	force = 12
@@ -197,7 +197,7 @@
 
 /obj/item/kitchen/spoon
 	name = "spoon"
-	desc = "Just be careful your food doesn't melt the spoon first."
+	desc = "Tenha cuidado para não derreter a colher primeiro."
 	icon_state = "spoon"
 	base_icon_state = "spoon"
 	icon_angle = -90
@@ -257,7 +257,7 @@
 
 	if(target_mob.is_mouth_covered(ITEM_SLOT_HEAD) || target_mob.is_mouth_covered(ITEM_SLOT_MASK))
 		if(target_mob == user)
-			target_mob.balloon_alert(user, "can't eat with mouth covered!")
+			target_mob.balloon_alert(user, "Não posso comer com a boca coberta!")
 		else
 			target_mob.balloon_alert(user, "[target_mob.p_their()] mouth is covered!")
 		return TRUE
@@ -265,14 +265,14 @@
 	if(target_mob == user)
 		user.visible_message(
 			span_notice("[user] scoops a spoonful into [user.p_their()] mouth."),
-			span_notice("You scoop a spoonful into your mouth.")
+			span_notice("Enfia uma colher na boca.")
 		)
 
 	else
 		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "Someone" : "[user]"] forces a spoon into your face!"))
-		target_mob.balloon_alert(user, "feeding spoonful...")
+		target_mob.balloon_alert(user, "Alimentando colheres...")
 		if(!do_after(user, 3 SECONDS, target_mob))
-			target_mob.balloon_alert(user, "interrupted!")
+			target_mob.balloon_alert(user, "Interrompido!")
 			return TRUE
 
 		to_chat(target_mob, span_userdanger("[target_mob.is_blind() ? "You are forced to" : "[user] forces you to"] swallow a spoonful of something!"))
@@ -298,11 +298,11 @@
 
 	var/amount_given = reagents.trans_to(attacked_atom, reagents.maximum_volume)
 	if(amount_given >= reagents.total_volume)
-		attacked_atom.balloon_alert(user, "spoon emptied")
+		attacked_atom.balloon_alert(user, "Coler Vazia.")
 	else if(amount_given > 0)
-		attacked_atom.balloon_alert(user, "spoon partially emptied")
+		attacked_atom.balloon_alert(user, "Coler Parcialmente esvaziada")
 	else
-		attacked_atom.balloon_alert(user, "it's full!")
+		attacked_atom.balloon_alert(user, "Está cheio!")
 	return TRUE
 
 /obj/item/kitchen/spoon/pre_attack_secondary(atom/attacked_atom, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -318,9 +318,9 @@
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	if(attacked_atom.reagents.trans_to(src, reagents.maximum_volume))
-		attacked_atom.balloon_alert(user, "grabbed spoonful")
+		attacked_atom.balloon_alert(user, "Peguei uma colerada.")
 	else
-		attacked_atom.balloon_alert(user, "spoon is full!")
+		attacked_atom.balloon_alert(user, "A colher está cheia!")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/kitchen/spoon/plastic
@@ -343,7 +343,7 @@
 
 /obj/item/kitchen/spoon/soup_ladle
 	name = "ladle"
-	desc = "What is a ladle but a comically large spoon?"
+	desc = "O que é uma concha além de uma colher comicamente grande?"
 	icon_state = "ladle"
 	base_icon_state = "ladle"
 	inhand_icon_state = "spoon"
@@ -358,7 +358,7 @@
 /// Tongs, let you pick up and feed people food from further away.
 /obj/item/kitchen/tongs
 	name = "tongs"
-	desc = "So you never have to touch anything with your dirty, unwashed hands."
+	desc = "Então você nunca tem que tocar em nada com suas mãos sujas e sujas."
 	reach = 2
 	icon_state = "tongs"
 	base_icon_state = "tongs"

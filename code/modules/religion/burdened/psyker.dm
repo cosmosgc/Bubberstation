@@ -1,6 +1,6 @@
 /obj/item/organ/brain/psyker
 	name = "psyker brain"
-	desc = "This brain is blue, split into two hemispheres, and has immense psychic powers. What kind of monstrosity would use that?"
+	desc = "Este cérebro é azul, dividido em dois hemisférios, e tem imensos poderes psíquicos. Que tipo de monstruosidade usaria isso?"
 	icon_state = "brain-psyker"
 	actions_types = list(
 		/datum/action/cooldown/spell/pointed/psychic_projection,
@@ -32,7 +32,7 @@
 		return
 	if(!SPT_PROB(2, seconds_per_tick))
 		return
-	to_chat(owner, span_userdanger("Your head hurts... It can't fit your brain!"))
+	to_chat(owner, span_userdanger("Sua cabeça dói... Não cabe no seu cérebro!"))
 	owner.adjust_disgust(33 * seconds_per_tick)
 	apply_organ_damage(5 * seconds_per_tick, 199)
 
@@ -51,19 +51,19 @@
 /mob/living/carbon/human/proc/slow_psykerize()
 	if(stat == DEAD || !get_bodypart(BODY_ZONE_HEAD) || istype(get_bodypart(BODY_ZONE_HEAD), /obj/item/bodypart/head/psyker))
 		return
-	to_chat(src, span_userdanger("You feel unwell..."))
+	to_chat(src, span_userdanger("Você se sente mal..."))
 	sleep(5 SECONDS)
 	if(stat == DEAD || !get_bodypart(BODY_ZONE_HEAD))
 		return
-	to_chat(src, span_userdanger("You feel your skin ripping off!"))
+	to_chat(src, span_userdanger("Você sente sua pele arrancando!"))
 	emote("scream")
 	apply_damage(30, BRUTE, BODY_ZONE_HEAD)
 	sleep(5 SECONDS)
 	if(!psykerize())
-		to_chat(src, span_warning("The transformation subsides..."))
+		to_chat(src, span_warning("A transformação diminui..."))
 		return
 	apply_damage(50, BRUTE, BODY_ZONE_HEAD)
-	to_chat(src, span_userdanger("Your head splits open! Your brain mutates!"))
+	to_chat(src, span_userdanger("Sua cabeça se abre! Seu cérebro muta!"))
 	new /obj/effect/gibspawner/generic(drop_location(), src, get_blood_dna_list())
 	emote("scream")
 
@@ -93,7 +93,7 @@
 
 /datum/religion_rites/nullrod_transformation
 	name = "Transmogrify"
-	desc = "Your full power needs a firearm to be realized. You may transform your null rod into one."
+	desc = "Seu poder total precisa de uma arma para ser realizada. Você pode transformar sua vara nula em uma."
 	ritual_length = 10 SECONDS
 	///The rod that will be transmogrified.
 	var/obj/item/nullrod/transformation_target
@@ -104,7 +104,7 @@
 	var/mob/living/carbon/human/human_user = user
 	var/datum/brain_trauma/special/burdened/burden = human_user.has_trauma_type(/datum/brain_trauma/special/burdened)
 	if(!burden || burden.burden_level < 9)
-		to_chat(human_user, span_warning("You aren't burdened enough."))
+		to_chat(human_user, span_warning("Você não está sobrecarregado o suficiente."))
 		return FALSE
 	for(var/obj/item/possible_rod in get_turf(religious_tool))
 		if(HAS_TRAIT(possible_rod, TRAIT_NULLROD_ITEM))
@@ -118,7 +118,7 @@
 	var/obj/item/null_rod = transformation_target
 	transformation_target = null
 	if(QDELETED(null_rod) || null_rod.loc != get_turf(religious_tool))
-		to_chat(user, span_warning("Your target left the altar!"))
+		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
 	to_chat(user, span_warning("[null_rod] turns into a gun!"))
 	user.emote("smile")
@@ -128,7 +128,7 @@
 
 /obj/item/gun/ballistic/revolver/chaplain
 	name = "chaplain's revolver"
-	desc = "Holy smokes."
+	desc = "Caramba."
 	icon_state = "lucky"
 	force = 10
 	fire_sound = 'sound/items/weapons/gun/revolver/shot.ogg'
@@ -185,14 +185,14 @@
 /obj/item/gun/ballistic/revolver/chaplain/suicide_act(mob/living/user)
 	. = ..()
 	name = "Habemus Papam"
-	desc = "I announce to you a great joy."
+	desc = "Anuncio-lhe uma grande alegria."
 
 /obj/item/gun/ballistic/revolver/chaplain/attack_self(mob/living/user)
 	pray_refill(user)
 
 /obj/item/gun/ballistic/revolver/chaplain/attackby(obj/item/possibly_ammo, mob/user, list/modifiers, list/attack_modifiers)
 	if (isammocasing(possibly_ammo) || istype(possibly_ammo, /obj/item/ammo_box))
-		user.balloon_alert(user, "no manual reloads!")
+		user.balloon_alert(user, "Sem recarga manual!")
 		return
 
 	return ..()
@@ -202,11 +202,11 @@
 		return
 	var/datum/brain_trauma/special/burdened/burden = user.has_trauma_type(/datum/brain_trauma/special/burdened)
 	if(needs_burden && (!burden || burden.burden_level < 9))
-		to_chat(user, span_warning("You aren't burdened enough."))
+		to_chat(user, span_warning("Você não está sobrecarregado o suficiente."))
 		return
 	user.manual_emote("presses [user.p_their()] palms together...")
 	if(!do_after(user, 5 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return
 	user.say("#Oh great [GLOB.deity], give me the ammunition I need!", forced = "ammo prayer")
 	magazine.top_off()
@@ -215,7 +215,7 @@
 
 /datum/action/item_action/pray_refill
 	name = "Refill"
-	desc = "Perform a prayer, to refill your weapon."
+	desc = "Faça uma oração, para encher sua arma."
 
 /obj/item/ammo_box/magazine/internal/cylinder/revchap
 	name = "chaplain revolver cylinder"
@@ -225,7 +225,7 @@
 
 /obj/item/ammo_casing/c38/holy
 	name = "lucky .38 bullet casing"
-	desc = "A lucky .38 bullet casing. You feel lucky just holding it."
+	desc = "Um cartucho calibre 38 da sorte. Você se sente com sorte só segurando."
 	caliber = CALIBER_38
 	projectile_type = /obj/projectile/bullet/c38/holy
 	custom_materials = null
@@ -249,7 +249,7 @@
 
 /datum/action/cooldown/spell/pointed/psychic_projection
 	name = "Psychic Projection"
-	desc = "Project your psychics into a target to warp their view, and instill absolute terror that will cause them to fire their gun rapidly."
+	desc = "Projete seus médiuns em um alvo para distorcer sua visão, e incutir terror absoluto que os fará disparar rapidamente."
 	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
 	button_icon_state = "blind"
 	school = SCHOOL_PSYCHIC
@@ -275,10 +275,10 @@
 /datum/action/cooldown/spell/pointed/psychic_projection/cast(mob/living/cast_on)
 	. = ..()
 	if(cast_on.can_block_magic(antimagic_flags))
-		to_chat(cast_on, span_notice("Your mind feels weird, but it passes momentarily."))
-		to_chat(owner, span_warning("The spell had no effect!"))
+		to_chat(cast_on, span_notice("Sua mente está estranha, mas passa momentaneamente."))
+		to_chat(owner, span_warning("O feitiço não teve efeito!"))
 		return FALSE
-	to_chat(cast_on, span_userdanger("Your mind gets twisted!"))
+	to_chat(cast_on, span_userdanger("Sua mente fica distorcida!"))
 	cast_on.emote("scream")
 	cast_on.apply_status_effect(/datum/status_effect/psychic_projection, projection_duration)
 	return TRUE
@@ -331,7 +331,7 @@
 
 /datum/action/cooldown/spell/charged/psychic_booster
 	name = "Psychic Booster"
-	desc = "Charge up your mind to shoot firearms faster and home in on your targets. Think smarter, not harder."
+	desc = "Acuse sua mente para atirar em armas mais rápido e coloque em seus alvos. Pense melhor, não mais."
 	button_icon_state = "projectile"
 	sound = 'sound/items/weapons/gun/shotgun/rack.ogg'
 	school = SCHOOL_PSYCHIC
@@ -340,7 +340,7 @@
 	spell_max_level = 1
 	invocation_type = INVOCATION_NONE
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
-	channel_message = span_notice("You focus on your trigger fingers...")
+	channel_message = span_notice("Você se concentra nos dedos do gatilho...")
 	charge_overlay_icon = 'icons/effects/effects.dmi'
 	charge_overlay_state = "purplesparkles"
 	channel_time = 5 SECONDS
@@ -364,14 +364,14 @@
 	if(boosted)
 		return
 	boosted = TRUE
-	to_chat(owner, span_boldnotice("Your trigger fingers feel stronger."))
+	to_chat(owner, span_boldnotice("Seus dedos de gatilho parecem mais fortes."))
 	ADD_TRAIT(cast_on, TRAIT_DOUBLE_TAP, type)
 	RegisterSignal(cast_on, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE, PROC_REF(modify_projectile))
 	addtimer(CALLBACK(src, PROC_REF(stop_effects)), effect_time)
 
 /datum/action/cooldown/spell/charged/psychic_booster/proc/stop_effects()
 	boosted = FALSE
-	to_chat(owner, span_danger("Your trigger fingers feel weaker."))
+	to_chat(owner, span_danger("Seus dedos de gatilho estão mais fracos."))
 	REMOVE_TRAIT(owner, TRAIT_DOUBLE_TAP, type)
 	UnregisterSignal(owner, COMSIG_PROJECTILE_FIRER_BEFORE_FIRE)
 
@@ -391,7 +391,7 @@
 
 /datum/action/cooldown/spell/forcewall/psychic_wall
 	name = "Psychic Wall"
-	desc = "Form a psychic wall, able to deflect projectiles and prevent things from going through."
+	desc = "Formar uma parede psíquica, capaz de desviar projéteis e impedir que as coisas passem."
 	school = SCHOOL_PSYCHIC
 	cooldown_time = 30 SECONDS
 	cooldown_reduction_per_rank = 0 SECONDS

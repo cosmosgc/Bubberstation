@@ -14,12 +14,12 @@
 	if((bot_owner.bot_mode_flags & BOT_MODE_ON))
 		return TRUE
 	if(feedback)
-		bot_owner.balloon_alert(bot_owner, "power off!")
+		bot_owner.balloon_alert(bot_owner, "Desligar!")
 	return FALSE
 
 /datum/action/cooldown/mob_cooldown/bot/foam
 	name = "Foam"
-	desc = "Spread foam all around you!"
+	desc = "Espalhe espuma ao seu redor!"
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "mfoam"
 	cooldown_time = 20 SECONDS

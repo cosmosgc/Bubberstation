@@ -71,7 +71,7 @@
 			to_chat(user, span_notice("You are now disguised as the Nanotrasen engineering borg \"[friendlyName]\"."))
 			activate(user)
 		else
-			to_chat(user, span_warning("The chameleon field fizzles."))
+			to_chat(user, span_warning("O campo camaleão falha."))
 			do_sparks(3, FALSE, user)
 		remove_wibbly_filters(user)
 		animation_playing = FALSE
@@ -118,7 +118,7 @@
 /obj/item/borg_chameleon/proc/disrupt(mob/living/silicon/robot/user)
 	SIGNAL_HANDLER
 	if(active)
-		to_chat(user, span_danger("Your chameleon field deactivates."))
+		to_chat(user, span_danger("Seu campo camaleão desativa."))
 		deactivate(user)
 
 #undef ACTIVATION_COST

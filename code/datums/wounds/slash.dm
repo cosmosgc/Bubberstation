@@ -193,7 +193,7 @@
 			to_chat(user, span_warning("Your mouth is covered, you can't lick [victim]'s wounds!"))
 			return
 		if(!carbon_user.get_organ_slot(ORGAN_SLOT_TONGUE))
-			to_chat(user, span_warning("You can't lick wounds without a tongue!")) // f in chat
+			to_chat(user, span_warning("Você não pode lamber feridas sem uma língua!")) // f in chat
 			return
 
 	lick_wounds(user)
@@ -292,16 +292,16 @@
 		to_chat(user, span_green("You successfully lower the severity of [user == victim_stored ? "your" : "[victim_stored]'s"] cuts."))
 
 /datum/wound/slash/get_limb_examine_description()
-	return span_warning("The flesh on this limb appears badly lacerated.")
+	return span_warning("A carne neste membro parece muito dilacerada.")
 
 /datum/wound/slash/flesh/moderate
 	name = "Rough Abrasion"
-	desc = "Patient's skin has been badly scraped, generating moderate blood loss."
-	treat_text = "Apply bandaging or suturing to the wound. \
-		Follow up with food and a rest period."
+	desc = "A pele do paciente foi seriamente raspada, gerando perda moderada de sangue."
+	treat_text = "Aplique bandagem ou sutura na ferida.\
+Acompanhe com comida e um período de descanso."
 	treat_text_short = "Apply bandaging or suturing."
-	examine_desc = "has an open cut"
-	occur_text = "is cut open, slowly leaking blood"
+	examine_desc = "tem um corte aberto"
+	occur_text = "é cortada aberta, lentamente vazando sangue"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
 	severity = WOUND_SEVERITY_MODERATE
 	initial_flow = 1.75
@@ -311,12 +311,12 @@
 	status_effect_type = /datum/status_effect/wound/slash/flesh/moderate
 	scar_keyword = "slashmoderate"
 
-	simple_treat_text = "<b>Bandaging</b> the wound will reduce blood loss, help the wound close by itself quicker, and speed up the blood recovery period. The wound itself can be slowly <b>sutured</b> shut."
-	homemade_treat_text = "<b>Tea</b> stimulates the body's natural healing systems, slightly fastening clotting. The wound itself can be rinsed off on a sink or shower as well. Other remedies are unnecessary."
+	simple_treat_text = "<b>Enfaixamento</b>A ferida reduzirá a perda de sangue, ajudará a ferida a se fechar mais rápido e acelerará o período de recuperação do sangue. A ferida em si pode ser lenta<b>Suturado.</b>Cale-se."
+	homemade_treat_text = "<b>Chá.</b>estimula os sistemas naturais de cura do corpo, fixando levemente a coagulação. A ferida pode ser lavada em uma pia ou chuveiro também. Outros remédios são desnecessários."
 
 /datum/wound/slash/flesh/moderate/update_descriptions()
 	if(!limb.can_bleed())
-		occur_text = "is cut open"
+		occur_text = "Está cortada."
 
 /datum/wound_pregen_data/flesh_slash/abrasion
 	abstract = FALSE
@@ -327,13 +327,13 @@
 
 /datum/wound/slash/flesh/severe
 	name = "Open Laceration"
-	desc = "Patient's skin is ripped clean open, allowing significant blood loss."
-	treat_text = "Swiftly apply bandaging or suturing to the wound, \
-		or make use of blood clotting agents or cauterization. \
-		Follow up with iron supplements or saline-glucose and a rest period."
+	desc = "A pele do paciente está rasgada, permitindo perda significativa de sangue."
+	treat_text = "Aplicar rapidamente bandagem ou sutura na ferida,\
+ou fazer uso de agentes de coagulação ou cauterização.\
+Seguir com suplementos de ferro ou solução salina e um período de descanso."
 	treat_text_short = "Apply bandaging, suturing, clotting agents, or cauterization."
-	examine_desc = "has a severe cut"
-	occur_text = "is ripped open, veins spurting blood"
+	examine_desc = "tem um corte severo."
+	occur_text = "é rasgado aberto, veias jorrando sangue"
 	sound_effect = 'sound/effects/wounds/blood2.ogg'
 	severity = WOUND_SEVERITY_SEVERE
 	initial_flow = 2.75
@@ -345,8 +345,8 @@
 	scar_keyword = "slashsevere"
 	surgery_states = SURGERY_SKIN_CUT | SURGERY_VESSELS_UNCLAMPED
 
-	simple_treat_text = "<b>Bandaging</b> the wound is essential, and will reduce blood loss. Afterwards, the wound can be <b>sutured</b> shut, preferably while the patient is resting and/or grasping their wound."
-	homemade_treat_text = "Bed sheets can be ripped up to make <b>makeshift gauze</b>. <b>Flour, table salt, or salt mixed with water</b> can be applied directly to stem the flow, though unmixed salt will irritate the skin and worsen natural healing. Resting and grabbing your wound will also reduce bleeding."
+	simple_treat_text = "<b>Enfaixamento</b>A ferida é essencial, e reduzirá a perda de sangue. Depois, a ferida pode ser<b>Suturado.</b>Fechado, de preferência enquanto o paciente descansa e/ou agarra a ferida."
+	homemade_treat_text = "Lençóis podem ser rasgados para fazer<b>gaze improvisada</b>. <b>Farinha, sal de mesa ou sal misturado com água</b>Pode ser aplicado diretamente para parar o fluxo, embora o sal não misturado irrite a pele e piore a cura natural. Descansar e agarrar sua ferida também reduzirá o sangramento."
 
 /datum/wound_pregen_data/flesh_slash/laceration
 	abstract = FALSE
@@ -357,17 +357,17 @@
 
 /datum/wound/slash/flesh/severe/update_descriptions()
 	if(!limb.can_bleed())
-		occur_text = "is ripped open"
+		occur_text = "é rasgado aberto"
 
 /datum/wound/slash/flesh/critical
 	name = "Weeping Avulsion"
-	desc = "Patient's skin is completely torn open, along with significant loss of tissue. Extreme blood loss will lead to quick death without intervention."
-	treat_text = "Immediately apply bandaging or suturing to the wound, \
-		or make use of blood clotting agents or cauterization. \
-		Follow up supervised resanguination."
+	desc = "A pele do paciente está completamente rasgada, junto com perda significativa de tecido. Perda de sangue extrema levará a morte rápida sem intervenção."
+	treat_text = "Imediatamente aplique bandagem ou sutura na ferida,\
+ou fazer uso de agentes de coagulação ou cauterização.\
+Seguir a ressanguinação supervisionada."
 	treat_text_short = "Apply bandaging, suturing, clotting agents, or cauterization."
-	examine_desc = "is carved down to the bone, spraying blood wildly"
-	occur_text = "is torn open, spraying blood wildly"
+	examine_desc = "é esculpido até o osso, pulverizando sangue selvagemmente"
+	occur_text = "é rasgado aberto, borrifando sangue selvagem"
 	sound_effect = 'sound/effects/wounds/blood3.ogg'
 	severity = WOUND_SEVERITY_CRITICAL
 	initial_flow = 3.75
@@ -379,12 +379,12 @@
 	scar_keyword = "slashcritical"
 	surgery_states = SURGERY_SKIN_OPEN | SURGERY_VESSELS_UNCLAMPED
 	wound_flags = (ACCEPTS_GAUZE | MANGLES_EXTERIOR | CAN_BE_GRASPED)
-	simple_treat_text = "<b>Bandaging</b> the wound is of utmost importance, as is seeking direct medical attention - <b>Death</b> will ensue if treatment is delayed whatsoever, with lack of <b>oxygen</b> killing the patient, thus <b>Food, Iron, and saline solution</b> is always recommended after treatment. This wound will not naturally seal itself."
-	homemade_treat_text = "Bed sheets can be ripped up to make <b>makeshift gauze</b>. <b>Flour, salt, and saltwater</b> topically applied will help. Dropping to the ground and grabbing your wound will reduce blood flow."
+	simple_treat_text = "<b>Enfaixamento</b>A ferida é de extrema importância, assim como procurar assistência médica direta.<b>Morte</b>Vai acontecer se o tratamento for atrasado, com falta de<b>oxigênio</b>Matando o paciente, assim<b>Comida, Ferro e solução salina.</b>é sempre recomendado após o tratamento. Esta ferida não selará naturalmente."
+	homemade_treat_text = "Lençóis podem ser rasgados para fazer<b>gaze improvisada</b>. <b>Farinha, sal e água salgada</b>Aplicada topicamente vai ajudar. Cair no chão e agarrar sua ferida reduzirá o fluxo sanguíneo."
 
 /datum/wound/slash/flesh/critical/update_descriptions()
 	if (!limb.can_bleed())
-		occur_text = "is torn open"
+		occur_text = "é rasgado aberto"
 
 /datum/wound_pregen_data/flesh_slash/avulsion
 	abstract = FALSE
@@ -394,9 +394,9 @@
 
 /datum/wound/slash/flesh/moderate/many_cuts
 	name = "Numerous Small Slashes"
-	desc = "Patient's skin has numerous small slashes and cuts, generating moderate blood loss."
-	examine_desc = "has a ton of small cuts"
-	occur_text = "is cut numerous times, leaving many small slashes."
+	desc = "A pele do paciente tem cortes pequenos, gerando perda moderada de sangue."
+	examine_desc = "tem uma tonelada de pequenos cortes."
+	occur_text = "é cortada inúmeras vezes, deixando muitos cortes pequenos."
 
 /datum/wound_pregen_data/flesh_slash/abrasion/cuts
 	abstract = FALSE
@@ -407,12 +407,12 @@
 // Subtype for cleave (heretic spell)
 /datum/wound/slash/flesh/critical/cleave
 	name = "Burning Avulsion"
-	examine_desc = "is ruptured, spraying blood wildly"
+	examine_desc = "é rompido, borrifando sangue selvagem"
 	clot_rate = 0.01
 
 /datum/wound/slash/flesh/critical/cleave/update_descriptions()
 	if(!limb.can_bleed())
-		occur_text = "is ruptured"
+		occur_text = "Está rompido."
 
 /datum/wound_pregen_data/flesh_slash/avulsion/clear
 	abstract = FALSE

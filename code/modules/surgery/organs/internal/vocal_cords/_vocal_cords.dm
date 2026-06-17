@@ -20,14 +20,14 @@
 
 /obj/item/organ/adamantine_resonator
 	name = "adamantine resonator"
-	desc = "Fragments of adamantine exist in all golems, stemming from their origins as purely magical constructs. These are used to \"hear\" messages from their leaders."
+	desc = "Fragmentos de adamantina existem em todos os golems, decorrentes de suas origens como construções puramente mágicas. Estes estão acostumados a\"Ouvir\"Mensagens de seus líderes."
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_ADAMANTINE_RESONATOR
 	icon_state = "adamantine_resonator"
 
 /obj/item/organ/vocal_cords/adamantine
 	name = "adamantine vocal cords"
-	desc = "When adamantine resonates, it causes all nearby pieces of adamantine to resonate as well. Golems containing these formations use this to broadcast messages to nearby golems."
+	desc = "Quando a adamantina ressoa, faz com que todas as peças próximas de adamantina ressoem também. Golems contendo estas formações usam isso para transmitir mensagens para os golems próximos."
 	actions_types = list(/datum/action/item_action/organ_action/use/adamantine_vocal_cords)
 	icon_state = "adamantine_cords"
 

@@ -7,7 +7,7 @@
 	show_in_roundend = FALSE
 	hud_icon = 'modular_zubbers/icons/mob/huds/bloodsucker.dmi'
 	ui_name = "AntagInfoGhoul"
-	antag_panel_description = "You are a Ghoul, a mortal servant of a Bloodsucker."
+	antag_panel_description = "Você é um Ghoul, um servo mortal de um sanguessuga."
 
 	/// The Master Bloodsucker's antag datum.
 	var/datum/antagonist/bloodsucker/master
@@ -184,4 +184,4 @@
 	var/datum/antagonist/bloodsucker/vampire = IS_BLOODSUCKER(choice.current)
 	master = vampire
 	new_owner.add_antag_datum(src)
-	to_chat(choice, span_notice("Through divine intervention, you've gained a new ghoul!"))
+	to_chat(choice, span_notice("Através da intervenção divina, você ganhou um novo fantasma!"))

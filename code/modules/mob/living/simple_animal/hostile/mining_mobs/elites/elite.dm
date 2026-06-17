@@ -8,7 +8,7 @@
 //Elite mining mobs
 /mob/living/simple_animal/hostile/asteroid/elite
 	name = "elite"
-	desc = "An elite monster, found in one of the strange tumors on lavaland."
+	desc = "Um monstro de elite, encontrado em um dos tumores estranhos em Lavaland."
 	icon = 'icons/mob/simple/lavaland/lavaland_elites.dmi'
 	abstract_type = /mob/living/simple_animal/hostile/asteroid/elite
 	faction = list(FACTION_MINING, FACTION_BOSS)
@@ -44,7 +44,7 @@
 	if(istype(target, /obj/structure/elite_tumor))
 		var/obj/structure/elite_tumor/T = target
 		if(T.mychild == src && T.activity == TUMOR_PASSIVE)
-			var/elite_remove = tgui_alert(usr,"Re-enter the tumor?", "Despawn yourself?", list("Yes", "No"))
+			var/elite_remove = tgui_alert(usr,"Entrar de novo no tumor?", "Despawn yourself?", list("Yes", "No"))
 			if(elite_remove == "No" || QDELETED(src) || !Adjacent(T))
 				return
 			T.mychild = null
@@ -122,7 +122,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 
 /obj/structure/elite_tumor
 	name = "pulsing tumor"
-	desc = "An odd, pulsing tumor sticking out of the ground.  You feel compelled to reach out and touch it..."
+	desc = "Um tumor estranho e pulsante saindo do chão. Você se sente compelido a alcançar e tocá-lo..."
 	armor_type = /datum/armor/structure_elite_tumor
 	resistance_flags = INDESTRUCTIBLE
 	icon = 'icons/obj/mining_zones/tumor.dmi'
@@ -173,7 +173,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 			make_activator(user)
 			if(boosted)
 				mychild.playsound_local(get_turf(mychild), 'sound/effects/magic.ogg', 40, 0)
-				to_chat(mychild, "<b>Someone has activated your tumor.  You will be returned to fight shortly, get ready!</b>")
+				to_chat(mychild, "<b>Alguém ativou seu tumor. Você voltará para lutar em breve, prepare-se!</b>")
 			addtimer(CALLBACK(src, PROC_REF(return_elite)), 3 SECONDS)
 			INVOKE_ASYNC(src, PROC_REF(arena_checks))
 		if(TUMOR_INACTIVE)
@@ -191,17 +191,17 @@ While using this makes the system rely on OnFire, it still gives options for tim
 			visible_message(span_boldwarning("Something within [src] stirs..."))
 			var/mob/chosen_one = SSpolling.poll_ghosts_for_target(check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, poll_time = 5 SECONDS, checked_target = src, ignore_category = POLL_IGNORE_LAVALAND_ELITE, alert_pic = src, role_name_text = "lavaland elite")
 			if(chosen_one)
-				audible_message(span_boldwarning("The stirring sounds increase in volume!"))
+				audible_message(span_boldwarning("Os sons de agitação aumentam em volume!"))
 				elitemind = chosen_one
 				elitemind.playsound_local(get_turf(elitemind), 'sound/effects/magic.ogg', 40, 0)
-				to_chat(elitemind, "<b>You have been chosen to play as a Lavaland Elite.\nIn a few seconds, you will be summoned on Lavaland as a monster to fight your activator, in a fight to the death.\n\
-					Your attacks can be switched using the buttons on the top left of the HUD, and used by clicking on targets or tiles similar to a gun.\n\
-					While the opponent might have an upper hand with  powerful mining equipment and tools, you have great power normally limited by AI mobs.\n\
-					If you want to win, you'll have to use your powers in creative ways to ensure the kill. It's suggested you try using them all as soon as possible.\n\
-					Should you win, you'll receive extra information regarding what to do after. Good luck!</b>")
+				to_chat(elitemind, "<b>Você foi escolhido para jogar como uma Lavaland Elite.\nEm poucos segundos, você será convocado para Lavaland como um monstro para lutar contra seu ativador, em uma luta até a morte.\n\
+Seus ataques podem ser trocados usando os botões na parte superior esquerda do HUD, e usados clicando em alvos ou peças semelhantes a uma arma.\n\
+Enquanto o oponente pode ter uma vantagem com poderosos equipamentos de mineração e ferramentas, você tem grande poder normalmente limitado por grupos de IA.\n\
+Se quiser vencer, terá que usar seus poderes de maneiras criativas para garantir a morte. Sugerimos que tente usá-los o mais rápido possível.\n\
+Se ganhar, receberá mais informações sobre o que fazer depois. Boa sorte!</b>")
 				addtimer(CALLBACK(src, PROC_REF(spawn_elite), elitemind), 10 SECONDS)
 			else
-				visible_message(span_boldwarning("The stirring stops, and nothing emerges.  Perhaps try again later."))
+				visible_message(span_boldwarning("A agitação pára, e nada emerge. Talvez tente novamente mais tarde."))
 				activity = TUMOR_INACTIVE
 				clear_activator(user)
 
@@ -216,7 +216,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		notify_ghosts(
 			"\A [mychild] has been awakened in \the [get_area(src)]!",
 			source = mychild,
-			header = "Lavaland Elite awakened",
+			header = "Lavaland Elite acordou",
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		)
 	mychild.log_message("has been awakened by [key_name(activator)]!", LOG_GAME, color="#960000")
@@ -235,7 +235,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		notify_ghosts(
 			"\A [mychild] has been challenged in \the [get_area(src)]!",
 			source = mychild,
-			header = "Lavaland Elite challenged",
+			header = "Lavaland Elite desafiada",
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
 		)
 	mychild.log_message("has been challenged by [key_name(activator)]!", LOG_GAME, color="#960000")
@@ -353,19 +353,19 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		mychild.health = mychild.maxHealth
 	if(times_won == 1)
 		mychild.playsound_local(get_turf(mychild), 'sound/effects/magic.ogg', 40, 0)
-		to_chat(mychild, span_boldwarning("As the life in the activator's eyes fade, the forcefield around you dies out and you feel your power subside.\n\
-			Despite this inferno being your home, you feel as if you aren't welcome here anymore.\n\
-			Without any guidance, your purpose is now for you to decide."))
-		to_chat(mychild, "<b>Your max health has been halved, but can now heal by standing on your tumor. Note, it's your only way to heal.\n\
-			Bear in mind, if anyone interacts with your tumor, you'll be resummoned here to carry out another fight. In such a case, you will regain your full max health.\n\
-			Also, be weary of your fellow inhabitants, they likely won't be happy to see you!</b>")
-		to_chat(mychild, span_boldbig("Note that you are a lavaland monster, and thus not allied to the station. You should not cooperate or act friendly with any station crew unless under extreme circumstances!"))
+		to_chat(mychild, span_boldwarning("À medida que a vida nos olhos do ativador se desvanece, o campo de força ao seu redor se apaga e você sente seu poder diminuir.\n\
+Apesar desse inferno ser sua casa, você se sente como se não fosse mais bem-vindo aqui.\n\
+Sem nenhuma orientação, seu propósito agora é você decidir."))
+		to_chat(mychild, "<b>Sua saúde máxima foi reduzida para metade, mas agora pode se curar com seu tumor. É seu único jeito de se curar.\n\
+Lembre-se, se alguém interagir com seu tumor, você será chamado aqui para realizar outra luta. Nesse caso, recuperará sua saúde máxima.\n\
+Além disso, seja cansado de seus companheiros habitantes, eles provavelmente não vão ficar felizes em vê-lo!</b>")
+		to_chat(mychild, span_boldbig("Note que você é um monstro de lavalândia, e assim não se aliou à estação. Você não deve cooperar ou agir amigável com qualquer equipe da estação a menos que em circunstâncias extremas!"))
 
 	REMOVE_TRAIT(mychild, TRAIT_UNCONVERTABLE, INNATE_TRAIT)
 
 /obj/item/tumor_shard
 	name = "tumor shard"
-	desc = "A strange, sharp, crystal shard from an odd tumor on Lavaland.  Stabbing the corpse of a lavaland elite with this will revive them, assuming their soul still lingers.  Revived lavaland elites only have half their max health, but are completely loyal to their reviver."
+	desc = "Um estranho, afiado, fragmento de cristal de um tumor estranho em Lavaland. Esfaquear o corpo de uma elite de lavalândia com isso os reviverá, assumindo que sua alma ainda perdura. As elites de lavalândia revividas só têm metade de sua saúde máxima, mas são completamente leais ao seu revivedor."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "crevice_shard"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'

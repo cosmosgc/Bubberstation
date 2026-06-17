@@ -15,13 +15,13 @@
 	switch(rand(1, 3))
 		if(1)
 			adjust_stutter(1 MINUTES / severity)
-			to_chat(src, span_danger("Warning: Feedback loop detected in speech module."))
+			to_chat(src, span_danger("Aviso: loop de feedback detectado no módulo de fala."))
 		if(2)
 			adjust_slurring(INFINITY)
-			to_chat(src, span_danger("Warning: Audio synthesizer CPU stuck."))
+			to_chat(src, span_danger("Aviso: CPU sintetizadora de áudio presa."))
 		if(3)
 			set_derpspeech(INFINITY)
-			to_chat(src, span_danger("Warning: Vocabulary databank corrupted."))
+			to_chat(src, span_danger("Aviso: banco de dados de vocabulário corrompido."))
 	if(prob(40))
 		set_active_language(get_random_spoken_language())
 
@@ -70,7 +70,7 @@
 	if(holochassis_health < 0)
 		fold_in(force = TRUE)
 	if(amount > 0)
-		to_chat(src, span_userdanger("The impact degrades your holochassis!"))
+		to_chat(src, span_userdanger("O impacto degrada seu holochassis!"))
 	return amount
 
 /// Called when we take burn or brute damage, pass it to the shell instead

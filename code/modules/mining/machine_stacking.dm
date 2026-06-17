@@ -4,7 +4,7 @@
 	name = "stacking machine console"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "console"
-	desc = "Controls a stacking machine... in theory."
+	desc = "Controla uma máquina de empilhamento... em teoria."
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/stacking_unit_console
 	/// Connected stacking machine
@@ -33,7 +33,7 @@
 
 /obj/machinery/mineral/stacking_unit_console/multitool_act(mob/living/user, obj/item/multitool/M)
 	M.set_buffer(src)
-	balloon_alert(user, "saved to multitool buffer")
+	balloon_alert(user, "salvo em multitool buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/mineral/stacking_unit_console/ui_interact(mob/user, datum/tgui/ui)
@@ -89,7 +89,7 @@
 	name = "stacking machine"
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "stacker"
-	desc = "A machine that automatically stacks acquired materials. Controlled by a nearby console."
+	desc = "Uma máquina que empilha automaticamente materiais adquiridos. Controlado por um console próximo."
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/stacking_machine
 	input_dir = EAST

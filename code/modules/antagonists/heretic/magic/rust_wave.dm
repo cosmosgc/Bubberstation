@@ -1,9 +1,9 @@
 // Shoots out in a wave-like, what rust heretics themselves get
 /datum/action/cooldown/spell/cone/staggered/entropic_plume
 	name = "Entropic Plume"
-	desc = "Spews forth a disorienting plume that causes enemies to strike each other, \
-		briefly blinds them (increasing with range) and poisons them (decreasing with range). \
-		Also spreads rust in the path of the plume."
+	desc = "Lança uma pluma desorientadora que faz inimigos atacarem uns aos outros,\
+cega-os brevemente (aumentando com alcance) e envenena-os (aumentando com alcance).\
+Também espalha ferrugem no caminho da pluma."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -36,7 +36,7 @@
 	victim.apply_status_effect(/datum/status_effect/forced_combat/amok)
 	victim.apply_status_effect(/datum/status_effect/cloudstruck, 5 SECONDS)
 	victim.adjust_disgust(100)
-	to_chat(victim, span_boldwarning("You feel filled with a rage that is not your own!"))
+	to_chat(victim, span_boldwarning("Você se sente cheio de uma raiva que não é sua!"))
 
 /datum/action/cooldown/spell/cone/staggered/entropic_plume/calculate_cone_shape(current_level)
 	// At the first level (that isn't level 1) we will be small
@@ -70,7 +70,7 @@
 // Shoots a straight line of rusty stuff ahead of the caster, what rust monsters get
 /datum/action/cooldown/spell/basic_projectile/rust_wave
 	name = "Patron's Reach"
-	desc = "Channels energy into your hands to release a wave of rust."
+	desc = "Canaliza energia em suas mãos para liberar uma onda de ferrugem."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'

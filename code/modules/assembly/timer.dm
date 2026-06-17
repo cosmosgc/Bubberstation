@@ -1,6 +1,6 @@
 /obj/item/assembly/timer
 	name = "timer"
-	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
+	desc = "Costumava cronometrar coisas. Funciona bem com engenhocas que têm que contar para baixo. Tique-taque."
 	icon_state = "timer"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
 	assembly_behavior = ASSEMBLY_TOGGLEABLE_INPUT

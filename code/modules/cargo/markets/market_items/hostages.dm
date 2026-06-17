@@ -58,7 +58,7 @@
 	var/mob/living/mob = item
 	UnregisterSignal(mob, COMSIG_LIVING_RETURN_FROM_CAPTURE)
 	if(!mob.IsUnconscious())
-		to_chat(mob, span_boldnicegreen("You have been <u>bought</u> back to the station. Be grateful to whoever got you out of the holding facility early."))
+		to_chat(mob, span_boldnicegreen("Você foi<u>comprado</u>De volta à delegacia. Seja grato a quem te tirou da prisão mais cedo."))
 	if(!ishuman(item))
 		return ..()
 	var/mob/living/carbon/human/humie = item

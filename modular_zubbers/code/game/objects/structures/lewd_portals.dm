@@ -14,7 +14,7 @@
 
 /obj/structure/lewd_portal
 	name = "LustWish Portal"
-	desc = "A portal that people can partially fit through."
+	desc = "Um portal que as pessoas podem parcialmente passar."
 	icon = 'modular_zubbers/icons/obj/structures/lewd_portals.dmi'
 	icon_state = "portal"
 	can_buckle = TRUE
@@ -55,7 +55,7 @@
 	if(portal_mode == WALLSTUCK)
 		inspect_mode = "stuck in wall"
 	. += span_notice("Its currently in [inspect_mode] mode.")
-	. += span_notice("Right click to change modes.")
+	. += span_notice("Clique direito para mudar de modo.")
 
 /obj/structure/lewd_portal/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	if(portal_mode == GLORYHOLE)
@@ -76,13 +76,13 @@
 		var/mob/living/carbon/human/penis_inspection = M
 		var/obj/item/organ/genital/penis/penis_reference = M.get_organ_slot(ORGAN_SLOT_PENIS)
 		if(!penis_inspection.has_penis(REQUIRE_GENITAL_EXPOSED) || penis_reference?.visibility_preference == GENITAL_NEVER_SHOW)
-			balloon_alert(user, "a penis is required to operate!")
+			balloon_alert(user, "Um pênis é necessário para operar!")
 			return FALSE
 	if (!linked_portal)
-		balloon_alert(user, "portal not linked!")
+		balloon_alert(user, "Portal não conectado!")
 		return FALSE
 	if (!isnull(linked_portal.current_mob))
-		balloon_alert(user, "portal already occupied!")
+		balloon_alert(user, "Portal já ocupado!")
 		return FALSE
 	visible_message("[user] slots [M] into the [src]!")
 	return ..(M, user, check_loc = FALSE)
@@ -245,26 +245,26 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	if(isnull(linked_portal))
-		balloon_alert(user, "portal not linked")
+		balloon_alert(user, "Portal não conectado")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(!isnull(current_mob) || !isnull(linked_portal.current_mob))
-		balloon_alert(user, "portal occupied")
+		balloon_alert(user, "Portal ocupado")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(portal_mode == GLORYHOLE)
 		portal_mode = WALLSTUCK
 		linked_portal.portal_mode = WALLSTUCK
-		balloon_alert(user, "switched to stuck in wall mode")
+		balloon_alert(user, "mudou para o modo de parede.")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	else
 		portal_mode = GLORYHOLE
 		linked_portal.portal_mode = GLORYHOLE
-		balloon_alert(user, "switched to gloryhole mode")
+		balloon_alert(user, "mudou para o modo buraco da glória.")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 
 /obj/item/wallframe/lewd_portal
 	name = "Lustwish Portal Bore"
-	desc = "A device utilizing bluespace technology to transpose portions of people from one space to another."
+	desc = "Um dispositivo que utiliza tecnologia de espaço azul para transpor partes de pessoas de um espaço para outro."
 	icon = 'modular_zubbers/icons/obj/structures/lewd_portals.dmi'
 	icon_state = "device"
 	result_path = /obj/structure/lewd_portal
@@ -283,7 +283,7 @@
 	if(creation_mode == WALLSTUCK)
 		inspect_mode = "stuck in wall"
 	. += span_notice("Its currently in [inspect_mode] mode.")
-	. += span_notice("Use in hand to change modes.")
+	. += span_notice("Use na mão para mudar de modo.")
 
 /obj/item/wallframe/lewd_portal/after_attach(obj/attached_to)
 	var/obj/structure/lewd_portal/portal_result = attached_to
@@ -298,18 +298,18 @@
 
 /obj/item/wallframe/lewd_portal/attack_self(mob/user)
 	if(previous_portal)
-		balloon_alert(user, "portals must match")
+		balloon_alert(user, "Portais devem ser iguais.")
 		return
 	if(creation_mode == GLORYHOLE)
 		creation_mode = WALLSTUCK
-		balloon_alert(user, "switched to stuck in wall mode")
+		balloon_alert(user, "mudou para o modo de parede.")
 	else
 		creation_mode = GLORYHOLE
-		balloon_alert(user, "switched to gloryhole mode")
+		balloon_alert(user, "mudou para o modo buraco da glória.")
 
 /obj/lewd_portal_relay
 	name = "portal relay"
-	desc = "Someone's behind hanging out from a portal."
+	desc = "Alguém está atrás de um portal."
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
 	///Mob that this relay is connected to
@@ -331,7 +331,7 @@
 		var/obj/item/organ/genital/penis/penis_reference = owner.get_organ_slot(ORGAN_SLOT_PENIS)
 		var/penis_type = penis_reference.genital_name
 		name = LOWER_TEXT("[penis_type] penis")
-		desc = "Someone's penis hanging out from a portal."
+		desc = "O pênis de alguém saindo de um portal."
 		dir = SOUTH
 		if (owning_portal.dir == EAST || owning_portal.dir == WEST)
 			dir = REVERSE_DIR(owning_portal.dir)
@@ -376,7 +376,7 @@
 	if(!owner?.client || !SSplayer_ranks.initialized)
 		return
 	if(SSplayer_ranks.is_vetted(owner?.client, admin_bypass = FALSE))
-		. += span_greenannounce("This player has been vetted as 18+ by staff.")
+		. += span_greenannounce("Este jogador foi avaliado como 18+ pela equipe.")
 
 /obj/lewd_portal_relay/Topic(href, href_list)
 	. = ..()
@@ -461,7 +461,7 @@
 	else
 		dir = NORTH
 	to_chat(user, span_info("You flip \the [name] over."))
-	to_chat(owner, span_info("You feel your behind flip over."))
+	to_chat(owner, span_info("Você sente seu traseiro virar."))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/lewd_portal_relay/click_ctrl_shift(mob/user)

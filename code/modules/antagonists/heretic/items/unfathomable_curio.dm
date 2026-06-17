@@ -2,7 +2,7 @@
 
 /obj/item/storage/belt/unfathomable_curio
 	name = "Unfathomable Curio"
-	desc = "It. It looks backs. It looks past. It looks in. It sees. It hides. It opens."
+	desc = "Ele. Olha para trás. Parece passado. Olha para dentro. Ele vê. Ele se esconde. Abre."
 	icon_state = "unfathomable_curio"
 	worn_icon_state = "unfathomable_curio"
 	content_overlays = FALSE
@@ -32,7 +32,7 @@
 	RegisterSignal(user, COMSIG_LIVING_CHECK_BLOCK, PROC_REF(shield_reaction))
 
 	if(!IS_HERETIC(user))
-		to_chat(user, span_warning("The curio wraps around you, and you feel the beating of something dark inside it..."))
+		to_chat(user, span_warning("A curiosidade envolve você, e você sente a batida de algo escuro dentro dela..."))
 
 /obj/item/storage/belt/unfathomable_curio/dropped(mob/user)
 	. = ..()
@@ -42,7 +42,7 @@
 /obj/item/storage/belt/unfathomable_curio/proc/shield_reaction(mob/living/carbon/human/owner,
 	atom/movable/hitby,
 	damage = 0,
-	attack_text = "the attack",
+	attack_text = "O ataque.",
 	attack_type = MELEE_ATTACK,
 	armour_penetration = 0,
 	damage_type = BRUTE,
@@ -64,7 +64,7 @@
 	if(IS_HERETIC(wearer))
 		return
 
-	to_chat(wearer, span_warning("Laughter echoes in your mind...."))
+	to_chat(wearer, span_warning("Riso ecoa em sua mente..."))
 	wearer.adjust_organ_loss(ORGAN_SLOT_BRAIN, 40)
 	wearer.dropItemToGround(src, TRUE)
 	wearer.gain_trauma(pick(brain_traumas), TRAUMA_RESILIENCE_MAGIC)
@@ -76,6 +76,6 @@
 
 	user.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10, 160)
 	user.adjust_temp_blindness(5 SECONDS)
-	. += span_notice("It. It looked. IT WRAPS ITSELF AROUND ME.")
+	. += span_notice("Ele. Parecia. Ela se contorna a mim mesma.")
 
 

@@ -114,7 +114,7 @@
 
 /obj/item/clothing/under/shibari/torso
 	name = "shibari ropes"
-	desc = "Nice looking rope bondage."
+	desc = "Belo bondage."
 
 	icon_state = "/obj/item/clothing/under/shibari/torso"
 	post_init_icon_state = "shibari_body"
@@ -139,7 +139,7 @@
 
 /obj/item/clothing/under/shibari/groin
 	name = "crotch rope shibari"
-	desc = "A rope that teases the wearer's genitals."
+	desc = "Uma corda que provoca os genitais do usuário."
 	icon_state = "/obj/item/clothing/under/shibari/groin"
 	post_init_icon_state = "shibari_groin"
 
@@ -173,7 +173,7 @@
 
 /obj/item/clothing/under/shibari/full
 	name = "shibari fullbody ropes"
-	desc = "Bondage ropes that cover the whole body."
+	desc = "Cordas que cobrem todo o corpo."
 	icon_state = "/obj/item/clothing/under/shibari/full"
 	post_init_icon_state = "shibari_fullbody"
 

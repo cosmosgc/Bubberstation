@@ -13,7 +13,7 @@
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, STAMINA = 0, OXY = 1)
 	playstyle_string = span_holoparasite("As an <b>assassin</b> type you do medium damage and have no damage resistance, but can enter stealth, massively increasing the damage of your next attack and causing it to ignore armor. Stealth is broken when you attack or take damage.")
 	creator_name = "Assassin"
-	creator_desc = "Does medium damage and takes full damage, but can enter stealth, causing its next attack to do massive damage and ignore armor. However, it becomes briefly unable to recall after attacking from stealth."
+	creator_desc = "Faz danos médios e leva danos totais, mas pode entrar furtivamente, causando seu próximo ataque para causar danos maciços e ignorar armadura. No entanto, torna-se brevemente incapaz de lembrar após atacar de furtivo."
 	creator_icon = "assassin"
 	toggle_button_type = /datum/action/cooldown/guardian/toggle_mode/assassin
 	/// How long to put stealth on cooldown if we are forced out?
@@ -28,13 +28,13 @@
 	var/stealthed = has_status_effect(/datum/status_effect/guardian_stealth)
 	var/datum/action/cooldown/guardian/toggle_mode/assassin/stealth_ability = locate() in actions
 	if (stealthed)
-		to_chat(src, span_bolddanger("You exit stealth."))
+		to_chat(src, span_bolddanger("Você sai furtivamente."))
 		remove_status_effect(/datum/status_effect/guardian_stealth)
 		if(stealth_ability)
 			stealth_ability.build_all_button_icons()
 		return
 	if (!is_deployed())
-		to_chat(src, span_bolddanger("You have to be manifested to enter stealth!"))
+		to_chat(src, span_bolddanger("Você tem que se manifestar para entrar furtivamente!"))
 		return
 	apply_status_effect(/datum/status_effect/guardian_stealth)
 	if(stealth_ability)
@@ -67,7 +67,7 @@
 		basic_owner.armour_penetration = 100
 		basic_owner.wound_bonus = stealth_wound_bonus
 		basic_owner.obj_damage = 0
-	to_chat(owner, span_bolddanger("You enter stealth, empowering your next attack."))
+	to_chat(owner, span_bolddanger("Você entra furtivamente, capacitando seu próximo ataque."))
 	animate(owner, alpha = 15, time = 0.5 SECONDS)
 
 	RegisterSignals(owner, list(COMSIG_GUARDIAN_RECALLED, COMSIG_HOSTILE_POST_ATTACKINGTARGET), PROC_REF(forced_exit))

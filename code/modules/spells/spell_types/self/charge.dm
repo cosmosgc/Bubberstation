@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/charge
 	name = "Charge"
-	desc = "This spell can be used to recharge a variety of things in your hands, \
-		from magical artifacts to electrical components. A creative wizard can even use it \
-		to grant magical power to a fellow magic user."
+	desc = "Este feitiço pode ser usado para recarregar uma variedade de coisas em suas mãos,\
+De artefatos mágicos a componentes elétricos. Um mago criativo pode até usá-lo.\
+para conceder poder mágico a um outro usuário de magia."
 	button_icon_state = "charge"
 
 	sound = 'sound/effects/magic/charge.ogg'
@@ -30,16 +30,16 @@
 			pulled_has_spells = TRUE
 
 		if(pulled_has_spells)
-			to_chat(pulled_living, span_notice("You feel raw magic flowing through you. It feels good!"))
+			to_chat(pulled_living, span_notice("Você sente magia crua fluindo através de você. Isso é bom!"))
 			to_chat(cast_on, span_notice("[pulled_living] suddenly feels very warm!"))
 			return
 
-		to_chat(pulled_living, span_notice("You feel very strange for a moment, but then it passes."))
+		to_chat(pulled_living, span_notice("Você se sente muito estranho por um momento, mas depois passa."))
 
 	// Then charge their main hand item, then charge their offhand item
 	var/obj/item/to_charge = cast_on.get_active_held_item() || cast_on.get_inactive_held_item()
 	if(!to_charge)
-		to_chat(cast_on, span_notice("You feel magical power surging through your hands, but the feeling rapidly fades."))
+		to_chat(cast_on, span_notice("Você sente o poder mágico subindo através de suas mãos, mas o sentimento rapidamente desaparece."))
 		return
 
 	var/charge_return = SEND_SIGNAL(to_charge, COMSIG_ITEM_MAGICALLY_CHARGED, src, cast_on)

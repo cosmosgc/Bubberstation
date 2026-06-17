@@ -284,7 +284,7 @@
 /* Holopads */
 /obj/machinery/holopad/ai_click_alt(mob/living/silicon/ai/user)
 	if (user)
-		balloon_alert(user, "disrupted all active calls")
+		balloon_alert(user, "Interrompeu todas as chamadas ativas.")
 		add_hiddenprint(user)
 	hangup_all_calls()
 	return CLICK_ACTION_SUCCESS

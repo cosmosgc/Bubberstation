@@ -21,14 +21,14 @@
 
 		var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
 		if(!istype(M))
-			to_chat(usr, "This can only be used on instances of type /mob", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser usado em casos de tipo / mob", confidential = TRUE)
 			return
 
-		var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
+		var/new_name = stripped_input(usr,"Como você gostaria de chamar essa multidão?","Introduza um nome",M.real_name,MAX_NAME_LEN)
 
 		// If the new name is something that would be restricted by IC chat filters,
 		// give the admin a warning but allow them to do it anyway if they want.
-		if(is_ic_filtered(new_name) || is_soft_ic_filtered(new_name) && tgui_alert(usr, "Your selected name contains words restricted by IC chat filters. Confirm this new name?", "IC Chat Filter Conflict", list("Confirm", "Cancel")) == "Cancel")
+		if(is_ic_filtered(new_name) || is_soft_ic_filtered(new_name) && tgui_alert(usr, "Seu nome selecionado contém palavras restritas por filtros de chat. Confirmar este novo nome?", "IC Chat Filter Conflict", list("Confirm", "Cancel")) == "Cancel")
 			return
 
 		if( !new_name || !M )
@@ -43,7 +43,7 @@
 
 		var/atom/A = locate(href_list["rotatedatum"])
 		if(!istype(A))
-			to_chat(usr, "This can only be done to instances of type /atom", confidential = TRUE)
+			to_chat(usr, "Isso só pode ser feito em casos de tipo / atom", confidential = TRUE)
 			return
 
 		switch(href_list["rotatedir"])
@@ -62,13 +62,13 @@
 
 		var/Text = href_list["adjustDamage"]
 
-		var/amount = input("Deal how much damage to mob? (Negative values here heal)","Adjust [Text]loss",0) as num|null
+		var/amount = input("Lidar com os danos da máfia? (Valores negativos aqui curar)","Adjust [Text]loss",0) as num|null
 
 		if (isnull(amount))
 			return
 
 		if(!L)
-			to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
+			to_chat(usr, "A máfia não existe mais.", confidential = TRUE)
 			return
 
 		var/newamt

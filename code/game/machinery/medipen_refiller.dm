@@ -1,6 +1,6 @@
 /obj/machinery/medipen_refiller
 	name = "Medipen Refiller"
-	desc = "A machine that refills used medipens with chemicals."
+	desc = "Uma máquina que enche medipens usado com produtos químicos."
 	icon = 'icons/obj/machines/medipen_refiller.dmi'
 	icon_state = "medipen_refiller"
 	base_icon_state = "medipen_refiller"
@@ -68,13 +68,13 @@
 		return ITEM_INTERACT_SKIP_TO_ATTACK
 
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "already interacting!")
+		balloon_alert(user, "Já está interagindo!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(is_reagent_container(tool) && tool.is_open_container())
 		var/obj/item/reagent_containers/reagent_container = tool
 		if(!length(reagent_container.reagents.reagent_list))
-			balloon_alert(user, "nothing to transfer!")
+			balloon_alert(user, "Nada para transferir!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/units = reagent_container.reagents.trans_to(src, reagent_container.amount_per_transfer_from_this, transferred_by = user)
@@ -82,21 +82,21 @@
 			balloon_alert(user, "[units] units transferred")
 			return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "reagent storage full!")
+			balloon_alert(user, "Armazenamento de reagente completo!")
 			return ITEM_INTERACT_BLOCKING
 
 	if(istype(tool, /obj/item/reagent_containers/hypospray/medipen))
 		var/obj/item/reagent_containers/hypospray/medipen/medipen = tool
 		if(!(LAZYFIND(allowed_pens, medipen.type) || LAZYFIND(moreallowed_pens, medipen.type))) // BUBBER EDIT - Original if(!(LAZYFIND(allowed_pens, medipen.type)))
-			balloon_alert(user, "medipen incompatible!")
+			balloon_alert(user, "Medipen incompatível!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(medipen.reagents?.reagent_list.len)
-			balloon_alert(user, "medipen full!")
+			balloon_alert(user, "Medipen cheio!")
 			return ITEM_INTERACT_BLOCKING
 
 		if(!reagents.has_reagent(allowed_pens[medipen.type], 10))
-			balloon_alert(user, "not enough reagents!")
+			balloon_alert(user, "Não há reagentes suficientes!")
 			return ITEM_INTERACT_BLOCKING
 
 		add_overlay("active")

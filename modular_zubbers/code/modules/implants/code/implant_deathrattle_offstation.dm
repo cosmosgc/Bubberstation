@@ -63,7 +63,7 @@ GLOBAL_VAR_INIT(offstation_deathrattle_group, null)
 	return (RADIO_CHANNEL_SUPPLY in headset.channels) || (RADIO_CHANNEL_MEDICAL in headset.channels)
 
 /datum/offstation_deathrattle_group/proc/notify_recipient(mob/living/recipient, victim_name, victim_area, sound)
-	var/radio_prefix = span_radio("Your headset crackles with a strange, robotic voice...")
+	var/radio_prefix = span_radio("Seu fone de ouvido estala com uma voz estranha e robótica...")
 	var/death_notice = span_robot("<b>[victim_name]</b> has died at <b>[victim_area]</b>.")
 	to_chat(recipient, "[radio_prefix] \"[death_notice]\"")
 	recipient.playsound_local(get_turf(recipient), sound, vol = 75, vary = FALSE, pressure_affected = FALSE, use_reverb = FALSE)
@@ -133,12 +133,12 @@ GLOBAL_VAR_INIT(offstation_deathrattle_group, null)
 
 /obj/item/implantcase/deathrattle/offstation
 	name = "implant case - 'Off-Station Deathrattle'"
-	desc = "A glass case containing an off-station deathrattle implant."
+	desc = "Uma caixa de vidro contendo um implante de deathrattle fora de estação."
 	imp_type = /obj/item/implant/deathrattle/offstation
 
 /obj/item/storage/box/offstation_deathrattle
 	name = "boxed off-station deathrattle implant kit"
-	desc = "A quick and easy kit for a single deathrattle implant that will send a distress signal to the medical and supply channels when the user dies off-station. Perfect for miners and space hikers alike!"
+	desc = "Um kit rápido e fácil para um único implante que enviará um sinal de socorro para os canais médicos e de abastecimento quando o usuário morrer. Perfeito para mineiros e caminhantes espaciais!"
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 	icon_state = "box"
 

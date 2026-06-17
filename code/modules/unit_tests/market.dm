@@ -46,7 +46,7 @@
 
 /datum/market_item/unit_test
 	name = "Your Own Special Singularity"
-	desc = "ALL HAIL LORD SINGULOTH!!!"
+	desc = "TODOS O SENHOR SINGULOTH!!"
 	category = CATEGORY_CODERBUS
 	markets = list(/datum/market/unit_test)
 	item = /obj/singularity

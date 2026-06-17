@@ -142,7 +142,7 @@
 
 		var/timer_id = href_list["reject_cross_comms_message"]
 		if (!(timer_id in timers))
-			to_chat(usr, span_warning("It's too late!"))
+			to_chat(usr, span_warning("É tarde demais!"))
 			return
 
 		deltimer(timer_id)
@@ -281,7 +281,7 @@
 		return
 
 	if (!(timer_id in timers))
-		to_chat(usr, span_warning("It's too late!"))
+		to_chat(usr, span_warning("É tarde demais!"))
 		return
 
 	deltimer(timer_id)

@@ -5,9 +5,9 @@
 
 /obj/machinery/computer/cargo/express/interdyne
 	name = "interdyne express supply console"
-	desc = "A standard NT express console, hacked by Gorlex Industries to use \
-		their own experimental \"1100mm Rail Cannon\", made to be extra robust to prevent \
-		being emagged by the Syndicate cadets of the SSV Dauntless."
+	desc = "Um console padrão NT Express, hackeado pelas Indústrias Gorlex para usar\
+seu próprio experimental\"Canhão de trem de 1100mm\", feito para ser mais robusto para prevenir\
+sendo incomodado pelos cadetes do SSV Dauntless."
 	circuit = /obj/item/circuitboard/computer/cargo/express/interdyne
 	req_access = list(ACCESS_SYNDICATE)
 	cargo_account = ACCOUNT_INT
@@ -18,7 +18,7 @@
 
 /obj/machinery/computer/cargo/express/interdyne/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(user)
-		to_chat(user, span_notice("You try to change the routing protocols, however the machine displays a runtime error and reboots."))
+		to_chat(user, span_notice("Você tenta mudar os protocolos de roteamento, no entanto, a máquina exibe um erro de execução e reinicia."))
 	return FALSE//never let this console be emagged
 
 //Tarkons console
@@ -30,7 +30,7 @@
 /obj/machinery/computer/cargo/express/interdyne/tarkon
 	name = "tarkon express supply console"
 	landingzone = /area/ruin/space/has_grav/port_tarkon/cargo
-	desc = "A standard Tarkon express console."
+	desc = "Um console padrão expresso Tarkon."
 	circuit = /obj/item/circuitboard/computer/cargo/express/interdyne/tarkon
 	req_access = list(ACCESS_TARKON)
 	cargo_account = ACCOUNT_TAR

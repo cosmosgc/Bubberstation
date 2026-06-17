@@ -1,6 +1,6 @@
 /obj/structure/thing_boss_spike
 	name = "blades"
-	desc = "A sharp flurry of blades that have erupted from the ground."
+	desc = "Uma onda aguda de lâminas que irromperam do chão."
 	icon_state = "thingspike"
 	density = FALSE //so ai considers it
 	anchored = TRUE
@@ -90,7 +90,7 @@
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "toxin"
 	name = "acid"
-	desc = "Get out of the way!"
+	desc = "Saia do caminho!"
 	layer = FLY_LAYER
 	plane = ABOVE_GAME_PLANE
 	randomdir = FALSE
@@ -131,12 +131,12 @@
 	for(var/zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
 		var/blocked = victim.run_armor_check(zone, ACID)
 		victim.apply_damage(25, BURN, def_zone = zone, blocked = blocked)
-	to_chat(victim, span_userdanger("You are burnt by the acid!"))
+	to_chat(victim, span_userdanger("Você está queimado pelo ácido!"))
 	playsound(victim, 'sound/effects/wounds/sizzle1.ogg', vol = 50, vary = TRUE)
 	qdel(src)
 
 /obj/item/keycard/thing_boss
 	name = "Storage Room 2 Keycard"
-	desc = "A fancy keycard for storage room 2."
+	desc = "Um cartão chique para o depósito 2."
 	color = COLOR_PALE_GREEN
 	puzzle_id = "thingbosslootroom"

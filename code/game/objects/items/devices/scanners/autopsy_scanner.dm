@@ -1,6 +1,6 @@
 /obj/item/autopsy_scanner
 	name = "autopsy scanner"
-	desc = "Used in surgery to extract information from a cadaver. Can also scan the health of cadavers like an advanced health analyzer!"
+	desc = "Usado na cirurgia para extrair informações de um cadáver. Também pode escanear a saúde de cadáveres como um analisador de saúde avançado!"
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "autopsy_scanner"
 	inhand_icon_state = "autopsy_scanner"
@@ -34,7 +34,7 @@
 	// Clumsiness/brain damage check
 	if ((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))
 		user.visible_message(span_warning("[user] analyzes the floor's vitals!"), \
-							span_notice("You stupidly try to analyze the floor's vitals!"))
+							span_notice("Você estúpidamente tenta analisar os sinais vitais do chão!"))
 		to_chat(user, "[span_info("Analyzing results for The floor:\n\tOverall status: <b>Healthy</b>")]\
 				\n[span_info("Key: <font color='#00cccc'>Suffocation</font>/<font color='#00cc66'>Toxin</font>/<font color='#ffcc33'>Burn</font>/<font color='#ff3333'>Brute</font>")]\
 				\n[span_info("\tDamage specifics: <font color='#66cccc'>0</font>-<font color='#00cc66'>0</font>-<font color='#ff9933'>0</font>-<font color='#ff3333'>0</font>")]\
@@ -244,5 +244,5 @@
 	autopsy_report.add_raw_text(final_report_text, advanced_html = TRUE)
 	autopsy_report.update_appearance()
 	user.put_in_hands(autopsy_report)
-	user.balloon_alert(user, "report printed")
+	user.balloon_alert(user, "Relatório impresso")
 	return TRUE

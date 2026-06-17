@@ -2,7 +2,7 @@
 
 /obj/item/handheld_soulcatcher
 	name = "\improper Evoker-type RSD"
-	desc = "The Evoker-Type Resonance Simulation Device is a sort of 'Soulcatcher' instrument that's been designated for handheld usage. These RSDs were designed with the Medical field in mind, a tool meant to offer comfort to the temporarily-departed while their bodies are being repaired, healed, or produced. The Evoker is essentially a very specialized handheld NIF, still using the same nanomachinery for the software and hardware. This careful instrument is able to host a virtual space for a great number of Engrams for an essentially indefinite amount of time in an unlimited variety of simulations, even able to transfer them to and from a NIF. However, it's best Medical practice to not lollygag."
+	desc = "O Dispositivo de Simulação de Ressonância do Tipo Evoker é uma espécie de instrumento de captura de almas que foi designado para uso manual. Esses DSRs foram projetados com o campo médico em mente, uma ferramenta destinada a oferecer conforto aos temporariamente separados enquanto seus corpos estão sendo reparados, curados ou produzidos. O Evoker é essencialmente um NIF portátil muito especializado, ainda usando a mesma nanomáquina para o software e hardware. Este instrumento cuidadoso é capaz de hospedar um espaço virtual para um grande número de Engrams por uma quantidade essencialmente indefinida de tempo em uma variedade ilimitada de simulações, mesmo capaz de transferi-los de e para um NIF. No entanto, é a melhor prática médica para não lollygag."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
@@ -44,7 +44,7 @@
 		return TRUE
 
 	if(!target_mob.mind)
-		to_chat(user, span_warning("You are unable to remove a mind from an empty body."))
+		to_chat(user, span_warning("Você é incapaz de remover uma mente de um corpo vazio."))
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, rsd_scan_cooldown))
@@ -89,7 +89,7 @@
 	SEND_SOUND(target_mob, 'sound/announcer/notice/notice2.ogg')
 	window_flash(target_mob.client)
 
-	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes") || (tgui_alert(target_mob, "Are you sure about this?", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes"))
+	if((tgui_alert(target_mob, "Do you wish to enter [target_room]? This will remove you from your body until you leave.", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes") || (tgui_alert(target_mob, "Tem certeza disso?", name, list("Yes", "No"), 30 SECONDS, FALSE) != "Yes"))
 		COOLDOWN_START(src, rsd_scan_cooldown, RSD_ATTEMPT_COOLDOWN)
 		to_chat(user, span_warning("[target_mob] doesn't seem to want to enter."))
 		return FALSE

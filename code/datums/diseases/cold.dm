@@ -1,8 +1,8 @@
 /datum/disease/cold
 	name = "The Cold"
-	desc = "A common, mildly annoying contagion. If left untreated the subject will contract the flu."
+	desc = "Um contágio comum, levemente irritante. Se não for tratado, o sujeito contrai a gripe."
 	max_stages = 3
-	cure_text = /datum/reagent/medicine/spaceacillin::name + " or rest"
+	cure_text = /datum/reagent/medicine/spaceacillin::name + "Ou descansar."
 	cures = list(/datum/reagent/medicine/spaceacillin)
 	agent = "XY-rhinovirus"
 	viable_mobtypes = list(/mob/living/carbon/human)
@@ -29,11 +29,11 @@
 			if(SPT_PROB(0.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your throat feels sore."))
+				to_chat(affected_mob, span_danger("Sua garganta está doendo."))
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Mucous runs down the back of your throat."))
+				to_chat(affected_mob, span_danger("Mucous corre pela sua garganta."))
 			if((affected_mob.body_position == LYING_DOWN && SPT_PROB(23, seconds_per_tick)) || SPT_PROB(0.025, seconds_per_tick))  //changed FROM prob(10) until sleeping is fixed // Has sleeping been fixed yet?
-				to_chat(affected_mob, span_notice("You feel better."))
+				to_chat(affected_mob, span_notice("Você se sente melhor."))
 				cure()
 				return FALSE
 		if(3)
@@ -42,15 +42,15 @@
 			if(SPT_PROB(0.5, seconds_per_tick))
 				affected_mob.emote("cough")
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Your throat feels sore."))
+				to_chat(affected_mob, span_danger("Sua garganta está doendo."))
 			if(SPT_PROB(0.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("Mucous runs down the back of your throat."))
+				to_chat(affected_mob, span_danger("Mucous corre pela sua garganta."))
 			if(SPT_PROB(0.25, seconds_per_tick) && !LAZYFIND(affected_mob.disease_resistances, /datum/disease/flu))
 				var/datum/disease/Flu = new /datum/disease/flu()
 				affected_mob.ForceContractDisease(Flu, FALSE, TRUE)
 				cure()
 				return FALSE
 			if((affected_mob.body_position == LYING_DOWN && SPT_PROB(12.5, seconds_per_tick)) || SPT_PROB(0.005, seconds_per_tick))  //changed FROM prob(5) until sleeping is fixed
-				to_chat(affected_mob, span_notice("You feel better."))
+				to_chat(affected_mob, span_notice("Você se sente melhor."))
 				cure()
 				return FALSE

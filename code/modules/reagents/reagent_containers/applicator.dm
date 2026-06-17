@@ -1,7 +1,7 @@
 /// Generic reagent applicator type for pills and patches
 /obj/item/reagent_containers/applicator
 	name = "generic reagent applicator"
-	desc = "Report this please."
+	desc = "Informe isso, por favor."
 	abstract_type = /obj/item/reagent_containers/applicator
 	has_variable_transfer_amount = FALSE
 	/// Action string displayed in vis_message

@@ -8,7 +8,7 @@
 */
 /datum/symptom/cough
 	name = "Cough"
-	desc = "The virus irritates the throat of the host, causing occasional coughing. Each cough will try to infect bystanders who are within 1 tile of the host with the virus."
+	desc = "O vírus irrita a garganta do hospedeiro, causando tosse ocasional. Cada tosse vai tentar infectar pessoas que estão dentro de uma peça do hospedeiro com o vírus."
 	illness = "Jest Infection"
 	stealth = -1
 	resistance = 3

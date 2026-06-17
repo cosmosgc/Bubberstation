@@ -1,6 +1,6 @@
 /obj/machinery/hydroponics/soil/soilbin //Just a big ol' tub of dirt.
 	name = "soilbin"
-	desc = "I've got a box of dirt! and guess what's inside it!... Yes, dirt."
+	desc = "Tenho uma caixa de terra! E adivinhe o que tem dentro! Sim, sujeira."
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	icon_state = "soilbin"
 	gender = PLURAL
@@ -33,7 +33,7 @@
 
 /obj/machinery/hydroponics/soil/soilbin/gaia //Just a big ol' tub of glowning dirt.
 	name = "gaian soilbin"
-	desc = "I've got a box of dirt! and guess what's inside it!... Yes, dirt AND Gaia."
+	desc = "Tenho uma caixa de terra! E adivinhe o que tem dentro! Sim, sujeira e Gaia."
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	icon_state = "soilbin"
 	gender = PLURAL
@@ -83,7 +83,7 @@
 
 /obj/machinery/compostbin
 	name = "compost bin"
-	desc = "A smelly structure made of wooden slats. Dump produce in, pull usable compost out."
+	desc = "Uma estrutura fedorenta feita de lâminas de madeira. Descarte o produto, retire o composto utilizável."
 	icon = 'modular_skyrat/modules/primitive_structures/icons/storage.dmi'
 	icon_state = "compostbin"
 	base_icon_state = "compost"
@@ -267,12 +267,12 @@
 
 /datum/reagent/plantnutriment/eznutriment/compost //Basic compost (E-Z nutrients)
 	name = "Basic compost"
-	description = "Rotting plant matter, stinky."
+	description = "Planta podre, fedorenta."
 	color = "#422813"
 
 /datum/reagent/plantnutriment/eznutriment/compost/enhanced //Saltpetre and diethymix (Slightly worse than both combined)
 	name = "Fertile compost"
-	description = "Very fertile, rotting plant matter, stinky."
+	description = "Muito fértil, matéria vegetal podre, fedorento."
 	color = "#6b963b"
 
 /datum/reagent/plantnutriment/eznutriment/compost/enhanced/on_hydroponics_apply(obj/machinery/hydroponics/mytray, mob/user)
@@ -287,12 +287,12 @@
 
 /datum/reagent/plantnutriment/left4zednutriment/compost //Left for Zed
 	name = "Reactive compost"
-	description = "A rancid smelling concoction that'll really change up your plants."
+	description = "Uma mistura rançosa que vai mudar suas plantas."
 	color = "#122b29"
 
 /datum/reagent/plantnutriment/endurogrow/compost //Endurogrow: Lifespan and Endurance up, yield and potency crippled.
 	name = "Hearty compost"
-	description = "A useful compost, while it might leave your plants stronger, it'll jeopardise your fruits."
+	description = "Um composto útil, enquanto pode deixar suas plantas mais fortes, vai prejudicar suas frutas."
 	color = "#4f5010"
 
 /datum/chemical_reaction/compost
@@ -316,7 +316,7 @@
 
 /obj/item/secateurs/wooden
 	name = "primitive secateurs"
-	desc = "Some shoddy looking secateurs, they look sturdy enough to get a graft... or poke someone in both eyes at once!"
+	desc = "Alguns secateurs de mau aspecto, eles parecem resistentes o suficiente para obter um enxerto ... ou cutucar alguém em ambos os olhos de uma só vez!"
 	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "woodensecateurs"
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 6, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)

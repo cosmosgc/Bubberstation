@@ -31,16 +31,16 @@
 
 /// Swap to a different mode... if we have one
 /mob/living/basic/guardian/proc/toggle_modes()
-	to_chat(src, span_bolddanger("You don't have another mode!"))
+	to_chat(src, span_bolddanger("Você não tem outro modo!"))
 
 
 /// Turn an internal light on or off.
 /mob/living/basic/guardian/proc/toggle_light()
 	if (!light_on)
-		to_chat(src, span_notice("You activate your light."))
+		to_chat(src, span_notice("Você ativa sua luz."))
 		set_light_on(TRUE)
 	else
-		to_chat(src, span_notice("You deactivate your light."))
+		to_chat(src, span_notice("Você desativa sua luz."))
 		set_light_on(FALSE)
 
 /// Speak with our boss at a distance
@@ -69,7 +69,7 @@
 /// Speak with your guardian(s) at a distance.
 /datum/action/cooldown/mob_cooldown/guardian_comms
 	name = "Guardian Communication"
-	desc = "Communicate telepathically with your guardian."
+	desc = "Comunique-se telepaticamente com seu tutor."
 	button_icon = 'icons/hud/guardian.dmi'
 	button_icon_state = "communicate"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -106,7 +106,7 @@
 /// Tell your slacking or distracted guardian to come home.
 /datum/action/cooldown/mob_cooldown/recall_guardian
 	name = "Recall Guardian"
-	desc = "Forcibly recall your guardian."
+	desc = "Lembre-se de seu guardião."
 	button_icon = 'icons/hud/guardian.dmi'
 	button_icon_state = "recall"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -128,7 +128,7 @@
 /// Replace an annoying griefer you were paired up to with a different but probably no less annoying player.
 /datum/action/cooldown/mob_cooldown/replace_guardian
 	name = "Reset Guardian Consciousness"
-	desc = "Replaces the mind of your guardian with that of a different ghost."
+	desc = "Substitui a mente de seu guardião pela de um fantasma diferente."
 	button_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	background_icon = 'icons/hud/guardian.dmi'
@@ -167,7 +167,7 @@
 			Looks like you're stuck with it for now."))
 		StartCooldown()
 		return FALSE
-	to_chat(chosen_guardian, span_holoparasite("Your user reset you, and your body was taken over by a ghost. Looks like they weren't happy with your performance."))
+	to_chat(chosen_guardian, span_holoparasite("Seu usuário redefiniu você, e seu corpo foi tomado por um fantasma. Parece que eles não estavam felizes com sua performance."))
 	to_chat(owner, span_boldholoparasite("The personality of <font color=\"[chosen_guardian.guardian_colour]\">[chosen_guardian.theme.name]</font> has been successfully reset."))
 	message_admins("[key_name_admin(chosen_one)] has taken control of ([ADMIN_LOOKUPFLW(chosen_guardian)])")
 	chosen_guardian.ghostize(FALSE)

@@ -115,13 +115,13 @@
 /// Called when the module is selected from the TGUI, radial or the action button
 /obj/item/mod/module/proc/on_select(mob/activator)
 	if(!mod.wearer && !(allow_flags & MODULE_ALLOW_UNWORN)) //No wearer and cannot be used unworn
-		balloon_alert(activator, "not equipped!")
+		balloon_alert(activator, "Não está equipado!")
 		return
 	if(((!mod.active || mod.activating) && !(allow_flags & (MODULE_ALLOW_INACTIVE | MODULE_ALLOW_UNWORN))) || module_type == MODULE_PASSIVE) // not active
-		balloon_alert(activator, "not active!")
+		balloon_alert(activator, "Não está ativo!")
 		return
 	if(!has_required_parts(mod.mod_parts, need_active = TRUE) && !(allow_flags & MODULE_ALLOW_UNWORN)) // Doesn't have parts
-		balloon_alert(activator, "required parts inactive!")
+		balloon_alert(activator, "peças necessárias inativas!")
 		var/list/slot_strings = list()
 		for(var/slot in required_slots)
 			var/list/slot_list = parse_slot_flags(slot)
@@ -148,14 +148,14 @@
 /// Called when the module is activated
 /obj/item/mod/module/proc/activate(mob/activator)
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
-		balloon_alert(activator, "on cooldown!")
+		balloon_alert(activator, "Na refrigeração!")
 		return FALSE
 	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) // SKYRAT EDIT ADDITION: INACTIVE USE
-		balloon_alert(activator, "unpowered!")
+		balloon_alert(activator, "Sem poder!")
 		return FALSE
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
-		to_chat(activator, span_warning("You cannot activate this right now."))
+		to_chat(activator, span_warning("Você não pode ativar isso agora."))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED, mod.wearer) & MOD_ABORT_USE)
 		return FALSE
@@ -220,14 +220,14 @@
 /// Called when the module is used
 /obj/item/mod/module/proc/used(mob/activator)
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
-		balloon_alert(activator, "on cooldown!")
+		balloon_alert(activator, "Na refrigeração!")
 		return FALSE
 	if(!check_power(use_energy_cost))
-		balloon_alert(activator, "not enough charge!")
+		balloon_alert(activator, "Não há carga suficiente!")
 		return FALSE
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
-		to_chat(activator, span_warning("You cannot activate this right now."))
+		to_chat(activator, span_warning("Você não pode ativar isso agora."))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED, mod.wearer) & MOD_ABORT_USE)
 		return FALSE
@@ -470,7 +470,7 @@
 ///Anomaly Locked - Mostly just a wrapper for modules that don't need to descend from any other module but need the anomaly_locked_module component
 /obj/item/mod/module/anomaly_locked
 	name = "MOD anomaly locked module"
-	desc = "A form of a module, locked behind an anomalous core to function."
+	desc = "Uma forma de módulo, trancado atrás de um núcleo anômalo para funcionar."
 	/// Accepted types of anomaly cores.
 	var/list/accepted_anomalies = list(/obj/item/assembly/signaler/anomaly)
 	/// If this one starts with a core in.

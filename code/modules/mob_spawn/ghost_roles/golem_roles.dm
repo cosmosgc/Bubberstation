@@ -4,16 +4,16 @@
 //Golem shells: Spawns in Free Golem ships in lavaland. Ghosts become mineral golems and are advised to spread personal freedom.
 /obj/effect/mob_spawn/ghost_role/human/golem
 	name = "inert free golem shell"
-	desc = "A humanoid shape, empty, lifeless, and full of potential."
+	desc = "Uma forma humanóide, vazia, sem vida e cheia de potencial."
 	icon = 'icons/mob/shells.dmi'
 	icon_state = "shell_complete"
 	mob_species = /datum/species/golem
 	anchored = FALSE
 	move_resist = MOVE_FORCE_NORMAL
 	density = FALSE
-	prompt_name = "a free golem"
-	you_are_text = "You are a Free Golem. Your family worships The Liberator."
-	flavour_text = "In his infinite and divine wisdom, he set your clan free to travel the stars with a single declaration: \"Yeah go do whatever.\""
+	prompt_name = "Um golem livre"
+	you_are_text = "Você é um Golem Livre. Sua família adora o Libertador."
+	flavour_text = "Em sua infinita e divina sabedoria, ele libertou seu clã para viajar pelas estrelas com uma única declaração:\"Sim, vá fazer qualquer coisa.\""
 	spawner_job_path = /datum/job/free_golem
 	/// Typepath to a material to feed to the golem as soon as it is built
 	var/initial_type
@@ -55,8 +55,8 @@
 
 	if(is_station_level(new_spawn.z))
 		return
-	to_chat(new_spawn, "Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! \
-		You are generally a peaceful group unless provoked.")
+	to_chat(new_spawn, "Construa conchas de golem no autolate, e dê folhas minerais refinadas para as conchas para trazê-las à vida!\
+Você geralmente é um grupo pacífico a menos que provocado.")
 	try_keep_home(new_spawn)
 
 /// Makes free golems slow and sad on the space station
@@ -69,8 +69,8 @@
 // Subtype which can yell at other golems
 /obj/effect/mob_spawn/ghost_role/human/golem/adamantine
 	name = "dust-caked free golem shell"
-	desc = "A humanoid shape, empty, lifeless, and full of potential."
-	prompt_name = "a free golem"
+	desc = "Uma forma humanóide, vazia, sem vida e cheia de potencial."
+	prompt_name = "Um golem livre"
 
 /obj/effect/mob_spawn/ghost_role/human/golem/adamantine/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
 	. = ..()
@@ -83,9 +83,9 @@
 // Subtype which follows orders
 /obj/effect/mob_spawn/ghost_role/human/golem/servant
 	name = "inert servant golem shell"
-	prompt_name = "a servant golem"
-	you_are_text = "You are a golem."
-	flavour_text = "You are highly resistant to heat and cold as well as blunt trauma. You must consume minerals to maintain motion. You are unable to wear clothes, but can still use most tools."
+	prompt_name = "Um servo Golem"
+	you_are_text = "Você é um golem."
+	flavour_text = "Você é altamente resistente ao calor, frio e trauma contundente. Você deve consumir minerais para manter o movimento. Você é incapaz de usar roupas, mas ainda pode usar a maioria das ferramentas."
 	spawner_job_path = /datum/job/servant_golem
 	/// Weakref to the creator of this golem shell.
 	var/datum/weakref/owner_ref
@@ -121,7 +121,7 @@
 
 	if(user.combat_mode)
 		return
-	to_chat(user, span_notice("You begin prying load-bearing chunks from the completed shell."))
+	to_chat(user, span_notice("Você começa a bisbilhotar pedaços de carga da concha completa."))
 	playsound(user, 'sound/items/tools/crowbar.ogg', 70)
 
 	if(do_after(user, delay = deconstruct_time, target = src))
@@ -131,7 +131,7 @@
 		else
 			new /obj/item/stack/sheet/iron/five(get_turf(src))
 
-		to_chat(user, span_notice("The Golem crumbles in on itself!"))
+		to_chat(user, span_notice("O Golem desmorona em si mesmo!"))
 		playsound(src, 'sound/effects/rock/rock_break.ogg', 60)
 		qdel(src)
 

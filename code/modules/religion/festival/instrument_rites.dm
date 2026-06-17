@@ -1,6 +1,6 @@
 /datum/religion_rites/holy_violin
 	name = "Cogitandi Fidis"
-	desc = "Creates a holy violin that can analyze songs played from it."
+	desc = "Cria um violino sagrado que pode analisar músicas tocadas a partir dele."
 	ritual_length = 6 SECONDS
 	ritual_invocations = list("A servant of jubilee is needed ...")
 	invoke_msg = "... A great mind for musical matters!"
@@ -15,7 +15,7 @@
 
 /datum/religion_rites/portable_song_tuning
 	name = "Portable Song Tuning"
-	desc = "Empowers an instrument on the table to work as a portable altar for tuning songs. Will need to be recharged after 5 rites."
+	desc = "Capacita um instrumento na mesa para trabalhar como um altar portátil para afinar músicas. Vai precisar ser recarregado após 5 ritos."
 	ritual_length = 6 SECONDS
 	ritual_invocations = list("Allow me to bring your holy inspirations ...")
 	invoke_msg = "... And send them with the winds my tunes ride with!"
@@ -36,7 +36,7 @@
 	var/turf/tool_turf = get_turf(religious_tool)
 	instrument_target = null
 	if(QDELETED(empower_target) || !(tool_turf == empower_target.loc)) //check if the instrument is still there
-		to_chat(user, span_warning("Your target left the altar!"))
+		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
 	empower_target.visible_message(span_notice("[empower_target] glows for a moment."))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
@@ -55,7 +55,7 @@
 ///prototype for rites that tune a song.
 /datum/religion_rites/song_tuner
 	name = "Tune Song"
-	desc = "this is a prototype."
+	desc = "Este é um protótipo."
 	ritual_length = 10 SECONDS
 	favor_cost = 10
 	rite_flags = NONE
@@ -109,10 +109,10 @@
 
 /datum/religion_rites/song_tuner/evangelism
 	name = "Evangelical Hymn"
-	desc = "Spreads the word of your god, gaining favor for each non-holy listener. At the end of the song, you'll bless all listeners, improving mood."
+	desc = "Espalha a palavra de seu deus, ganhando favor para cada ouvinte não santo. No final da música, você abençoará todos os ouvintes, melhorando o humor."
 	particles_path = /particles/musical_notes/holy
-	song_invocation_message = "You've prepared a holy song!"
-	song_start_message = span_notice("This music sounds blessed!")
+	song_invocation_message = "Você preparou uma canção sagrada!"
+	song_start_message = span_notice("Essa música parece abençoada!")
 	glow_color = "#FEFFE0"
 	favor_cost = 0
 
@@ -127,10 +127,10 @@
 
 /datum/religion_rites/song_tuner/light
 	name = "Illuminating Solo"
-	desc = "Sing a bright song, lighting up the area around you. At the end of the song, you'll give some illumination to listeners."
+	desc = "Cante uma canção brilhante, iluminando a área ao seu redor. No final da música, você dará alguma iluminação para os ouvintes."
 	particles_path = /particles/musical_notes/light
-	song_invocation_message = "You've prepared a bright song!"
-	song_start_message = span_notice("This music simply glows!")
+	song_invocation_message = "Você preparou uma canção brilhante!"
+	song_start_message = span_notice("Essa música simplesmente brilha!")
 	glow_color = "#fcff44"
 	repeats_okay = FALSE
 	favor_cost = 0
@@ -149,10 +149,10 @@
 
 /datum/religion_rites/song_tuner/nullwave
 	name = "Nullwave Vibrato"
-	desc = "Sing a dull song, protecting those who listen from magic."
+	desc = "Cante uma canção chata, protegendo aqueles que ouvem da magia."
 	particles_path = /particles/musical_notes/nullwave
-	song_invocation_message = "You've prepared an antimagic song!"
-	song_start_message = span_nicegreen("This music makes you feel protected!")
+	song_invocation_message = "Você preparou uma canção antimágica!"
+	song_start_message = span_nicegreen("Essa música faz você se sentir protegido!")
 	glow_color = "#a9a9b8"
 	repeats_okay = FALSE
 
@@ -161,10 +161,10 @@
 
 /datum/religion_rites/song_tuner/pain
 	name = "Murderous Chord"
-	desc = "Sing a sharp song, cutting those around you. Works less effectively on fellow priests. At the end of the song, you'll open the wounds of all listeners."
+	desc = "Cante uma canção afiada, cortando-as ao seu redor. Funciona menos eficazmente com outros padres. No final da canção, você abrirá as feridas de todos os ouvintes."
 	particles_path = /particles/musical_notes/harm
-	song_invocation_message = "You've prepared a painful song!"
-	song_start_message = span_danger("This music cuts like a knife!")
+	song_invocation_message = "Você preparou uma canção dolorosa!"
+	song_start_message = span_danger("Essa música corta como uma faca!")
 	glow_color = "#FF4460"
 	repeats_okay = FALSE
 
@@ -181,10 +181,10 @@
 
 /datum/religion_rites/song_tuner/lullaby
 	name = "Spiritual Lullaby"
-	desc = "Sing a lullaby, tiring those around you, making them slower. At the end of the song, you'll put people who are tired enough to sleep."
+	desc = "Cante uma canção de ninar, cansando aqueles ao seu redor, tornando-os mais lentos. No final da canção, você vai colocar pessoas que estão cansadas o suficiente para dormir."
 	particles_path = /particles/musical_notes/sleepy
-	song_invocation_message = "You've prepared a sleepy song!"
-	song_start_message = span_warning("This music's making you feel drowsy...")
+	song_invocation_message = "Você preparou uma canção sonolenta!"
+	song_start_message = span_warning("Essa música está te fazendo sentir sonolento...")
 	favor_cost = 40 //actually really strong
 	glow_color = "#83F6FF"
 	repeats_okay = FALSE
@@ -211,5 +211,5 @@
 	listener.set_eye_blur_if_lower(4 SECONDS)
 
 /datum/religion_rites/song_tuner/lullaby/finish_effect(mob/living/carbon/human/listener, atom/song_source)
-	to_chat(listener, span_danger("Wow, the ending of that song was... pretty..."))
+	to_chat(listener, span_danger("O final daquela música foi..."))
 	listener.AdjustSleeping(5 SECONDS)

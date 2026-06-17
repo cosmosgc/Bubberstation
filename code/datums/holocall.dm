@@ -214,7 +214,7 @@
 
 /obj/item/disk/holodisk
 	name = "holorecord disk"
-	desc = "Stores recorder holocalls."
+	desc = "Armazena holocas de gravadores."
 	sticker_icon_state = "o_holo"
 	obj_flags = UNIQUE_RENAME
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
@@ -386,7 +386,7 @@
 
 /obj/item/disk/holodisk/donutstation/whiteship
 	name = "Blackbox Print-out #DS024"
-	desc = "A holodisk containing the last viable recording of DS024's blackbox."
+	desc = "Um holodisk contendo a última gravação viável da caixa preta da DS024."
 	preset_image_type = /datum/preset_holoimage/engineer/ce
 	preset_record_text = {"
 	NAME Geysr Shorthalt
@@ -432,7 +432,7 @@
 
 /obj/item/disk/holodisk/ruin/snowengieruin
 	name = "Blackbox Print-out #EB412"
-	desc = "A holodisk containing the last moments of EB412. There's a bloody fingerprint on it."
+	desc = "Um holodisk contendo os últimos momentos de EB412. Tem uma digital ensanguentada nela."
 	preset_image_type = /datum/preset_holoimage/engineer
 	preset_record_text = {"
 	NAME Dave Tundrale
@@ -572,7 +572,7 @@
 
 /obj/item/disk/holodisk/ruin/space/travelers_rest
 	name = "Owner's memo"
-	desc = "A holodisk containing a small memo from the previous owner, addressed to someone else."
+	desc = "Um holodisk contendo um pequeno memorando do proprietário anterior, dirigido a outra pessoa."
 	preset_image_type = /datum/preset_holoimage/engineer/atmos
 	preset_record_text = {"
 		NAME Space Adventurer

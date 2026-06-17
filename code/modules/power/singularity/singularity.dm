@@ -1,7 +1,7 @@
 /// The gravitational singularity
 /obj/singularity
 	name = "gravitational singularity"
-	desc = "A gravitational singularity."
+	desc = "Uma singularidade gravitacional."
 	icon = 'icons/obj/machines/engine/singularity.dmi'
 	icon_state = "singularity_s1"
 	anchored = TRUE
@@ -98,8 +98,8 @@
 	var/mob/living/carbon/jedi = user
 	jedi.visible_message(
 		span_danger("[jedi]'s head begins to collapse in on itself!"),
-		span_userdanger("Your head feels like it's collapsing in on itself! This was really not a good idea!"),
-		span_hear("You hear something crack and explode in gore.")
+		span_userdanger("Sua cabeça parece estar desmoronando! Não foi uma boa ideia!"),
+		span_hear("Você ouve algo quebrar e explodir em sangue.")
 		)
 	jedi.Stun(3 SECONDS)
 	new /obj/effect/gibspawner/generic(get_turf(jedi), jedi)
@@ -333,7 +333,7 @@
 	desc = "[initial(desc)] It seems to be collapsing in on itself."
 	visible_message(
 		message = span_danger("As [src] consumes [boh], it begins to collapse in on itself!"),
-		blind_message = span_hear("You hear aggressive crackling!"),
+		blind_message = span_hear("Você ouve crepitações agressivas!"),
 		vision_distance = 15,
 	)
 	playsound(loc, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, vary = TRUE, extrarange = 3, falloff_exponent = 1, frequency = -1, pressure_affected = FALSE, ignore_walls = TRUE, falloff_distance = 7)
@@ -435,7 +435,7 @@
 	for(var/mob/living/carbon/burned_mob in urange(20, src, 1))
 		burned_mob.visible_message(
 			span_warning("[burned_mob]'s skin bursts into flame!"),
-			span_userdanger("You feel an inner fire as your skin bursts into flames!")
+			span_userdanger("Você sente um fogo interior quando sua pele explode em chamas!")
 		)
 		burned_mob.adjust_fire_stacks(5)
 		burned_mob.ignite_mob()

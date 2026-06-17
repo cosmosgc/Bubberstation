@@ -2,7 +2,7 @@
 
 /obj/structure/ai_core
 	name = "\improper AI core"
-	desc = "The framework for an artificial intelligence core."
+	desc = "A estrutura para um núcleo de inteligência artificial."
 	icon = 'icons/mob/silicon/ai.dmi'
 	icon_state = "build_0"
 	base_icon_state = "build_"
@@ -95,14 +95,14 @@
 
 	switch(state)
 		if(CORE_STATE_EMPTY)
-			. += span_notice("There is a <b>slot</b> for a circuit board, the frame can be <b>melted</b> down.")
+			. += span_notice("Há um<b>slot</b>Para uma placa de circuito, o quadro pode ser<b>Derretido</b>Abaixe-se.")
 		if(CORE_STATE_CIRCUIT)
-			. += span_notice("The circuit board can be <b>screwed</b> into place or <b>pried</b> out.")
+			. += span_notice("A placa de circuito pode ser<b>Está ferrado.</b>no lugar ou<b>Invadido</b>Fora.")
 		if(CORE_STATE_SCREWED)
-			. += span_notice("The frame can be <b>wired</b>, the circuit board can be <b>unfastened</b>.")
+			. += span_notice("A moldura pode ser<b>com fio</b>A placa de circuito pode ser<b>desapertado.</b>.")
 		if(CORE_STATE_CABLED)
 			if(!core_mmi)
-				. += span_notice("There are wires which could be hooked up to an <b>MMI or positronic brain</b>, or <b>cut</b>.")
+				. += span_notice("Há fios que podem ser ligados a um<b>MMI ou cérebro positrônico</b>, ou<b>Corta.</b>.")
 			else
 				var/accept_laws = TRUE
 				if(core_mmi.laws.id != DEFAULT_AI_LAWID || !core_mmi.brainmob || !core_mmi.brainmob?.mind)
@@ -125,7 +125,7 @@
 
 /obj/structure/ai_core/latejoin_inactive
 	name = "networked AI core"
-	desc = "This AI core is connected by bluespace transmitters to NTNet, allowing for an AI personality to be downloaded to it on the fly mid-shift."
+	desc = "Este núcleo de IA está conectado por transmissores de espaço azul para NTNet, permitindo que uma personalidade de IA seja baixada para ele no meio do turno."
 	anchored = TRUE
 	state = CORE_STATE_FINISHED
 	var/available = TRUE
@@ -222,7 +222,7 @@ That prevents a few funky behaviors.
 	SHOULD_CALL_PARENT(TRUE)
 	if(istype(card))
 		if(card.flush)
-			to_chat(user, span_alert("ERROR: AI flush is in progress, cannot execute transfer protocol."))
+			to_chat(user, span_alert("O AI Flush está em andamento, não pode executar o protocolo de transferência."))
 			return FALSE
 	return TRUE
 
@@ -241,14 +241,14 @@ That prevents a few funky behaviors.
 		AI.set_control_disabled(FALSE)
 		AI.radio_enabled = TRUE
 		AI.forceMove(loc) // to replace the terminal.
-		to_chat(AI, span_notice("You have been uploaded to a stationary terminal. Remote device connection restored."))
+		to_chat(AI, span_notice("Você foi carregado para um terminal estacionário. Ligação remota restaurada."))
 		to_chat(user, "[span_boldnotice("Transfer successful")]: [AI.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
 		card.AI = null
 		AI.battery = circuit.battery
 		AI.posibrain_inside = isnull(core_mmi) || core_mmi.braintype == "Android"
 		qdel(src)
 	else //If for some reason you use an empty card on an empty AI terminal.
-		to_chat(user, span_alert("There is no AI loaded on this terminal."))
+		to_chat(user, span_alert("Não há IA carregada neste terminal."))
 
 /obj/item/circuitboard/aicore
 	name = "AI core (AI Core Board)" //Well, duh, but best to be consistent

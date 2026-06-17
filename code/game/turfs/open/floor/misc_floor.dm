@@ -174,20 +174,20 @@
 /turf/open/floor/bluespace
 	slowdown = -1
 	icon_state = "bluespace"
-	desc = "Through a series of micro-teleports these tiles let people move at incredible speeds."
+	desc = "Através de uma série de micro-teleports esses azulejos deixam as pessoas se moverem em velocidades incríveis."
 	floor_tile = /obj/item/stack/tile/bluespace
 
 
 /turf/open/floor/sepia
 	slowdown = 2
 	icon_state = "sepia"
-	desc = "Time seems to flow very slowly around these tiles."
+	desc = "O tempo parece fluir muito lentamente ao redor destes azulejos."
 	floor_tile = /obj/item/stack/tile/sepia
 
 
 /turf/open/floor/bronze
 	name = "bronze floor"
-	desc = "Some heavy bronze tiles."
+	desc = "Algumas telhas de bronze pesadas."
 	icon_state = "clockwork_floor"
 	floor_tile = /obj/item/stack/tile/bronze
 
@@ -209,7 +209,7 @@
 
 /turf/open/floor/white
 	name = "white floor"
-	desc = "A tile in a pure white color."
+	desc = "Um azulejo em uma cor branca pura."
 	icon_state = "pure_white"
 
 /turf/open/floor/black
@@ -222,7 +222,7 @@
 
 /turf/open/floor/plastic
 	name = "plastic floor"
-	desc = "Cheap, lightweight flooring. Melts easily."
+	desc = "Pisos baratos e leves. Derrete facilmente."
 	icon_state = "plastic"
 	thermal_conductivity = 0.1
 	heat_capacity = 900
@@ -234,7 +234,7 @@
 
 /turf/open/floor/eighties
 	name = "retro floor"
-	desc = "This one takes you back."
+	desc = "Este te leva de volta."
 	icon_state = "eighties"
 	floor_tile = /obj/item/stack/tile/eighties
 	rust_resistance = RUST_RESISTANCE_BASIC
@@ -244,7 +244,7 @@
 
 /turf/open/floor/eighties/red
 	name = "red retro floor"
-	desc = "Totally RED-ICAL!"
+	desc = "Totalmente vermelho!"
 	icon_state = "eightiesred"
 	floor_tile = /obj/item/stack/tile/eighties/red
 
@@ -283,12 +283,12 @@
 
 /turf/open/floor/stone
 	name = "stone brick floor"
-	desc = "Odd, really, how it looks exactly like the iron walls yet is stone instead of iron. Now, if that's really more of a complaint about\
-		the ironness of walls or the stoneness of the floors, that's really up to you. But have you really ever seen iron that dull? I mean, it\
-		makes sense for the station to have dull metal walls but we're talking how a rudimentary iron wall would be. Medieval ages didn't even\
-		use iron walls, iron walls are actually not even something that exists because iron is an expensive and not-so-great thing to build walls\
-		out of. It only makes sense in the context of space because you're trying to keep a freezing vacuum out. Is anyone following me on this? \
-		The idea of a \"rudimentary\" iron wall makes no sense at all! Is anything i'm even saying here true? Someone's gotta fact check this!"
+	desc = "Estranho, realmente, como parece exatamente com as paredes de ferro ainda é pedra em vez de ferro. Agora, se isso é realmente uma reclamação sobre\
+A ironia das paredes ou a pedra do chão, depende de você. Mas você já viu ferro tão chato? Quero dizer, ele\
+Faz sentido para a estação ter paredes de metal maçantes mas estamos falando como uma parede de ferro rudimentar seria. Idades medievais nem sequer\
+usar paredes de ferro, paredes de ferro não são, na verdade, algo que existe porque o ferro é uma coisa cara e não tão grande para construir paredes\
+Fora. Só faz sentido no contexto do espaço porque você está tentando manter um vácuo congelante fora. Alguém está me seguindo?\
+A idéia de um\"Rudimentar\"Parede de ferro não faz sentido! Algo que estou dizendo é verdade? Alguém tem que verificar isso!"
 	icon_state = "stone_floor"
 
 /turf/open/floor/stone/lavaland
@@ -297,17 +297,17 @@
 /turf/open/floor/stone/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	name = "stone brick floor"
-	desc = "Odd, really, how it looks exactly like the iron walls yet is stone instead of iron. Now, if that's really more of a complaint about\
-		the ironness of walls or the stoneness of the floors, that's really up to you. But have you really ever seen iron that dull? I mean, it\
-		makes sense for the station to have dull metal walls but we're talking how a rudimentary iron wall would be. Medieval ages didn't even\
-		use iron walls, iron walls are actually not even something that exists because iron is an expensive and not-so-great thing to build walls\
-		out of. It only makes sense in the context of space because you're trying to keep a freezing vacuum out. Is anyone following me on this? \
-		The idea of a \"rudimentary\" iron wall makes no sense at all! Is anything i'm even saying here true? Someone's gotta fact check this!"
+	desc = "Estranho, realmente, como parece exatamente com as paredes de ferro ainda é pedra em vez de ferro. Agora, se isso é realmente uma reclamação sobre\
+A ironia das paredes ou a pedra do chão, depende de você. Mas você já viu ferro tão chato? Quero dizer, ele\
+Faz sentido para a estação ter paredes de metal maçantes mas estamos falando como uma parede de ferro rudimentar seria. Idades medievais nem sequer\
+usar paredes de ferro, paredes de ferro não são, na verdade, algo que existe porque o ferro é uma coisa cara e não tão grande para construir paredes\
+Fora. Só faz sentido no contexto do espaço porque você está tentando manter um vácuo congelante fora. Alguém está me seguindo?\
+A idéia de um\"Rudimentar\"Parede de ferro não faz sentido! Algo que estou dizendo é verdade? Alguém tem que verificar isso!"
 	icon_state = "stone_floor"
 
 /turf/open/floor/vault
 	name = "strange floor"
-	desc = "You feel a strange nostalgia from looking at this..."
+	desc = "Você sente uma nostalgia estranha de olhar para isso..."
 	icon_state = "rockvault"
 	base_icon_state = "rockvault"
 
@@ -355,7 +355,7 @@
 
 /turf/open/floor/iron/tgmcemblem
 	name = "TGMC Emblem"
-	desc = "The symbol of the Terran Government."
+	desc = "O símbolo do Governo Terrano."
 	icon_state = "tgmc_emblem"
 
 /turf/open/floor/iron/tgmcemblem/center
@@ -363,7 +363,7 @@
 
 /turf/open/floor/asphalt
 	name = "asphalt"
-	desc = "Melted down oil can, in some cases, be used to pave road surfaces."
+	desc = "Óleo fundido pode, em alguns casos, ser usado para pavimentar superfícies da estrada."
 	icon_state = "asphalt"
 
 /turf/open/floor/asphalt/outdoors

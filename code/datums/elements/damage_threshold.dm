@@ -42,7 +42,7 @@
 		source.visible_message(
 			span_warning("[source] looks unharmed!"),
 			span_warning("[attack_text] deals no damage to you!"),
-			span_hear("You hear a thud."),
+			span_hear("Você ouve um barulho."),
 			COMBAT_MESSAGE_RANGE,
 		)
 		playsound(source, 'sound/items/weapons/tap.ogg', tap_vol, TRUE, -1)

@@ -1,6 +1,6 @@
 /obj/item/teleportation_scroll
 	name = "scroll of teleportation"
-	desc = "A scroll for moving around."
+	desc = "Um pergaminho para se mover."
 	icon = 'icons/obj/scrolls.dmi'
 	icon_state = "scroll"
 	worn_icon_state = "scroll"

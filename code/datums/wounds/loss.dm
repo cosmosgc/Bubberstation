@@ -13,7 +13,7 @@
 
 /datum/wound/loss
 	name = "Dismemberment Wound"
-	desc = "oof ouch!!"
+	desc = "Oof ouch!"
 
 	sound_effect = 'sound/effects/dismember.ogg'
 	severity = WOUND_SEVERITY_LOSS
@@ -61,13 +61,13 @@
 	if(outright)
 		switch(wounding_type)
 			if(WOUND_BLUNT)
-				occur_text = "is outright smashed to a gross pulp, severing it completely!"
+				occur_text = "Está completamente esmagado por uma polpa bruta, cortando-a completamente!"
 			if(WOUND_SLASH)
-				occur_text = "is outright slashed off, severing it completely!"
+				occur_text = "é completamente cortado, cortando completamente!"
 			if(WOUND_PIERCE)
-				occur_text = "is outright blasted apart, severing it completely!"
+				occur_text = "Está completamente destroçado, cortando-o completamente!"
 			if(WOUND_BURN)
-				occur_text = "is outright incinerated, falling to dust!"
+				occur_text = "Está totalmente incinerado, caindo em pó!"
 	else
 		var/bone_text = get_internal_description()
 		var/tissue_text = get_external_description()
@@ -80,6 +80,6 @@
 			if(WOUND_PIERCE)
 				occur_text = "is pierced through the last [tissue_text] holding it together, severing it completely!"
 			if(WOUND_BURN)
-				occur_text = "is completely incinerated, falling to dust!"
+				occur_text = "está completamente incinerado, caindo ao pó!"
 
 	return occur_text

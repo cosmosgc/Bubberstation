@@ -177,7 +177,7 @@ SUBSYSTEM_DEF(map_vote)
 	for(var/map_id in map_vote_cache)
 		var/datum/map_config/map = config.maplist[map_id]
 		data += "[map.map_name] - [map_vote_cache[map_id]]"
-	var/tally_msg = span_tooltip("A map's tallies are reset after it wins a vote. \
-		Otherwise, they are carried over and added onto from the next vote on the next round, \
-		until it eventually wins and is reset.", "Current Tallies")
+	var/tally_msg = span_tooltip("As contas de um mapa são reiniciadas depois que ele ganha uma votação.\
+Caso contrário, eles são carregados e adicionados a partir da próxima votação na próxima rodada,\
+até que eventualmente ganhe e seja reiniciado.", "Atual Tallies")
 	tally_printout = boxed_message("[tally_msg]<br><hr>[jointext(data, "<br>")]")

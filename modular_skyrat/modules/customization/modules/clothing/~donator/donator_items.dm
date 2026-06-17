@@ -26,7 +26,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "switchblade"
 	base_icon_state = "switchblade"
-	desc = "A sharp, concealable, spring-loaded comb."
+	desc = "Um pente afiado, ocultável, carregado com mola."
 	hitsound = 'sound/items/weapons/genhit.ogg'
 	resistance_flags = FIRE_PROOF
 	var/extended = FALSE
@@ -46,11 +46,11 @@
 /// This makes it so you have to extend it.
 /obj/item/hairbrush/switchblade/attack(mob/target, mob/user)
 	if(!extended)
-		to_chat(user, span_warning("Try extending the blade first, silly!"))
+		to_chat(user, span_warning("Tente estender a lâmina primeiro, bobo!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if(target.stat == DEAD)
-		to_chat(user, span_warning("There isn't much point brushing someone who can't appreciate it!"))
+		to_chat(user, span_warning("Não tem muito sentido escovar alguém que não pode apreciar!"))
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	brush(target, user)
@@ -66,7 +66,7 @@
 
 /obj/item/donator/transponder
 	name = "broken Helian transponder"
-	desc = "Used by Helians to communicate with their mothership, the screen is cracked and its edges scuffed. This one has seen better days."
+	desc = "Usado pelos Hélios para se comunicarem com sua nave-mãe, a tela está rachada e suas bordas arranhadas. Este já viu dias melhores."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
@@ -157,7 +157,7 @@
 // Donation reward for SQNZTB
 /obj/vehicle/ridden/wheelchair/hardlight
 	name = "hardlight wheelchair"
-	desc = "A wheelchair made out of hardlight, propulsed by miniaturized bluespace technology."
+	desc = "Uma cadeira de rodas feita de luz dura, impulsionada por tecnologia de espaço azul miniaturizada."
 	alpha = 150 // Just to help differentiate it from a real wheelchair, and to show that it's a bit squishier.
 	max_integrity = 10 //standard wheelchairs have 100, motorized 150
 	/// The projector associated with this wheelchair.
@@ -212,7 +212,7 @@
 // The actual item they will be using.
 /obj/item/holosign_creator/hardlight_wheelchair
 	name = "hardlight wheelchair emitter"
-	desc = "An emitter which projects a ridable but fragile wheelchair made out of hardlight."
+	desc = "Um emissor que projeta uma cadeira de rodas flexível mas frágil feita de luz forte."
 	icon_state = "signmaker_med"
 	holosign_type = /obj/vehicle/ridden/wheelchair/hardlight
 	max_signs = 1
@@ -220,17 +220,17 @@
 
 /obj/item/holosign_creator/hardlight_wheelchair/examine(mob/user)
 	. = ..()
-	. += span_tinynoticeital("\n<i>There's something etched on the underside of the handle, you can look again to take a closer look...</i>")
+	. += span_tinynoticeital("\n<i>Há algo gravado na parte de baixo do cabo, você pode olhar novamente para dar uma olhada mais de perto...</i>")
 
 
 /obj/item/holosign_creator/hardlight_wheelchair/examine_more(mob/user)
 	. = ..()
-	. += span_notice("<i>Etched underneath the handle is the following message:</i>\n")
-	. += span_smallnoticeital("\"I told you I would find a way to make it all easier.\" - A.H.")
+	. += span_notice("<i>Escondido sob o cabo é a seguinte mensagem:</i>\n")
+	. += span_smallnoticeital("\"Eu disse que encontraria um jeito de facilitar as coisas.\"- A.H.")
 
 /obj/item/instrument/piano_synth/headphones/catear_headphone
 	name = "Cat-Ear Headphones"
-	desc = "Merch of their Electric Guitarist Demi Galgan from the Singularity Shredders. It's heavily customizable and even comes with a holographic tail!"
+	desc = "Mercha de seu guitarrista elétrico Demi Galgan do Singularity Shredders. É altamente personalizável e até vem com uma cauda holográfica!"
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/instrument/piano_synth/headphones/catear_headphone"
 	post_init_icon_state = "catear_headphone"

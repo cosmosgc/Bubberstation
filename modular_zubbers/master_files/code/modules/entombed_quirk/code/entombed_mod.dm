@@ -1,7 +1,7 @@
 /datum/mod_theme/entombed
 	name = "fused"
-	desc = "Circumstances have rendered this protective suit into someone's second skin. Literally."
-	extended_desc = "Some great aspect of someone's past has permanently bound them to this device, for better or worse."
+	desc = "Circunstâncias transformaram esse traje protetor na segunda pele de alguém. Literalmente."
+	extended_desc = "Algum grande aspecto do passado de alguém os amarrou permanentemente a este dispositivo, para melhor ou pior."
 
 	default_skin = "standard"
 	armor_type = /datum/armor/mod_theme_civilian
@@ -20,14 +20,14 @@
 
 /obj/item/mod/module/joint_torsion/entombed
 	name = "internal joint torsion adaptation"
-	desc = "Your adaptation to life in this MODsuit shell allows you to ambulate in such a way that your movements recharge the suit's internal batteries slightly, but only while under the effect of gravity."
+	desc = "Sua adaptação à vida nesta concha MODsuit permite que você deambule de tal forma que seus movimentos recarreguem as baterias internas do terno ligeiramente, mas apenas enquanto sob o efeito da gravidade."
 	removable = FALSE
 	complexity = 0
 	power_per_step = DEFAULT_CHARGE_DRAIN * 0.4
 
 /obj/item/mod/module/plasma_stabilizer/entombed
 	name = "colony-stabilized interior seal"
-	desc = "Your colony has fully integrated the internal segments of your suit's plate into your skeleton, forming a hermetic seal between you and the outside world from which none of your atmosphere can escape. This is enough to allow your head to view the world with your helmet retracted."
+	desc = "Sua colônia integrou completamente os segmentos internos da placa de seu terno em seu esqueleto, formando um selo hermético entre você e o mundo exterior do qual nenhuma de sua atmosfera pode escapar. Isso é suficiente para permitir que sua cabeça veja o mundo com seu capacete retraído."
 	complexity = 0
 	idle_power_cost = 0
 	removable = FALSE
@@ -49,12 +49,12 @@
 	var/obj/item/mod/module/storage/inventory = locate() in src.modules
 	if (!isnull(inventory))
 		src.atom_storage.remove_all()
-		to_chat(who, span_notice("You empty out all the items from the MODsuit's storage module!"))
-		who.balloon_alert(who, "emptied out MOD storage items!")
+		to_chat(who, span_notice("Você esvazia todos os itens do módulo de armazenamento do MODsuit!"))
+		who.balloon_alert(who, "Esvaziou itens de armazenamento MOD!")
 		return TRUE
 
-	to_chat(who, span_warning("The suit seems permanently fused to their frame - you can't remove it!"))
-	who.balloon_alert(who, "can't strip a fused MODsuit!")
+	to_chat(who, span_warning("A roupa parece permanentemente fundida ao quadro. Não pode removê-lo!"))
+	who.balloon_alert(who, "Não posso tirar um traje fundido!")
 	return ..()
 
 /obj/item/mod/control/pre_equipped/entombed/retract(mob/user, obj/item/part, instant = FALSE)
@@ -65,7 +65,7 @@
 		if (tomb_quirk && tomb_quirk.deploy_locked)
 			if (istype(part, /obj/item/clothing)) // make sure it's a modsuit piece and not a module, we retract those too
 				if (!istype(part, /obj/item/clothing/head/mod)) // they can only retract the helmet, them's the sticks
-					human_user.balloon_alert(human_user, "part is fused to you - can't retract!")
+					human_user.balloon_alert(human_user, "A parte está fundida para você - não pode se retrair!")
 					playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 					return
 	return ..()
@@ -76,7 +76,7 @@
 		var/datum/quirk/equipping/entombed/tomb_quirk = human_user.get_quirk(/datum/quirk/equipping/entombed)
 		//if we're deploy_locked, just disable this functionality entirely
 		if (tomb_quirk && tomb_quirk.deploy_locked)
-			human_user.balloon_alert(human_user, "you can only retract your helmet, and only manually!")
+			human_user.balloon_alert(human_user, "Você só pode retirar seu capacete, e apenas manualmente!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return
 	return ..()

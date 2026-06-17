@@ -9,7 +9,7 @@
  */
 /mob/living/basic/blackmesa/xen/headcrab
 	name = "headcrab"
-	desc = "Don't let it latch onto your hea-... hey, that's kinda cool."
+	desc = "Ei, isso é legal."
 	icon = 'modular_skyrat/modules/black_mesa/icons/mobs.dmi'
 	icon_state = "headcrab"
 	icon_living = "headcrab"
@@ -171,4 +171,4 @@
  */
 /mob/living/basic/blackmesa/xen/headcrab/fast
 	speed = -2
-	desc = "Don't let it latch onto your hea-... hey, that's kinda cool. This one looks faster than usual."
+	desc = "Ei, isso é legal. Este parece mais rápido que o normal."

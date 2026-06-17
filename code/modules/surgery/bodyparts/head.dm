@@ -1,6 +1,6 @@
 /obj/item/bodypart/head
 	name = BODY_ZONE_HEAD
-	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
+	desc = "Não faz sentido não viver por diversão, seu cérebro fica esperto, mas sua cabeça fica burra."
 	icon = 'icons/mob/human/bodyparts.dmi'
 	icon_state = "default_human_head"
 	max_damage = LIMB_MAX_HP_CORE
@@ -131,15 +131,15 @@
 		. += span_info("There's a miserable expression on [shown_name]'s face; they must have really hated life. There's no hope of recovery.")
 	else if(brain.brainmob)
 		if(brain.brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-			. += span_info("It's leaking some kind of... clear fluid? The brain inside must be in pretty bad shape.")
+			. += span_info("Está vazando algum tipo de fluido? O cérebro lá dentro deve estar muito mal.")
 		if(brain.brainmob.key || brain.brainmob.get_ghost(FALSE, TRUE))
-			. += span_info("Its muscles are twitching slightly... It seems to have some life still in it.")
+			. += span_info("Seus músculos estão se contorcendo ligeiramente... Parece que ainda tem alguma vida nela.")
 		else
-			. += span_info("It's completely lifeless. Perhaps there'll be a chance for them later.")
+			. += span_info("É completamente sem vida. Talvez haja uma chance para eles mais tarde.")
 	else if(brain?.decoy_override)
-		. += span_info("It's completely lifeless. Perhaps there'll be a chance for them later.")
+		. += span_info("É completamente sem vida. Talvez haja uma chance para eles mais tarde.")
 	else
-		. += span_info("It's completely lifeless.")
+		. += span_info("É completamente sem vida.")
 
 	if(!(locate(/obj/item/organ/eyes) in src))
 		. += span_info("[shown_name]'s eyes have been removed.")

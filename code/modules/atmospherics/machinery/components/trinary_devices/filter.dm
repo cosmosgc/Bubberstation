@@ -3,7 +3,7 @@
 	density = FALSE
 
 	name = "gas filter"
-	desc = "Very useful for filtering gasses."
+	desc = "Muito útil para filtrar gases."
 
 	can_unwrench = TRUE
 	construction_type = /obj/item/pipe/trinary/flippable/filter
@@ -176,7 +176,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		balloon_alert(user, "turn off!")
+		balloon_alert(user, "Desliga!")
 		return FALSE
 
 // mapping

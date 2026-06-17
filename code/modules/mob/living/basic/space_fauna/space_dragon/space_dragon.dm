@@ -10,7 +10,7 @@
  */
 /mob/living/basic/space_dragon
 	name = "Space Dragon"
-	desc = "A serpentine leviathan whose flight defies all modern understanding of physics. Said to be the ultimate stage in the life cycle of the Space Carp."
+	desc = "Um leviatã serpentino cujo vôo desafia toda a compreensão moderna da física. Disse ser o estágio final do ciclo de vida da Carpa Espacial."
 	icon = 'icons/mob/nonhuman-player/spacedragon.dmi'
 	icon_state = "spacedragon"
 	icon_living = "spacedragon"
@@ -45,7 +45,7 @@
 	maptext_width = 64
 	mouse_opacity = MOUSE_OPACITY_ICON
 	death_sound = 'sound/mobs/non-humanoids/space_dragon/space_dragon_roar.ogg'
-	death_message = "screeches in agony as it collapses to the floor, its life extinguished."
+	death_message = "Esgrima em agonia enquanto cai no chão, sua vida se extinguiu."
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
 	initial_language_holder = /datum/language_holder/carp/dragon
 	can_buckle_to = FALSE
@@ -102,7 +102,7 @@
 	if(!isnull(chosen_colour))
 		return
 	if(client.get_award_status(/datum/award/achievement/misc/sharkdragon))
-		if(tgui_alert(src, "Shall you take the dragon form or the shark form?","Shark Form Unlocked", list("Dragon","Shark")) == "Shark")
+		if(tgui_alert(src, "Você deve tomar a forma de dragão ou de tubarão?","Shark Form Unlocked", list("Dragon","Shark")) == "Shark")
 			sharkify()
 	rename_dragon()
 	select_colour()
@@ -119,7 +119,7 @@
 	base_pixel_z -= 3
 	do_jitter_animation(150)
 	shark_form = TRUE
-	desc = "A piscine mutation of the fearsome leviathan whose flight defies modern physics. Said to be the other ultimate stage in the life cycle of the Space Carp."
+	desc = "Uma mutação piscina do temível leviatã cujo vôo desafia a física moderna. Disse ser o outro estágio final do ciclo de vida da Carpa Espacial."
 	icon_state = icon_state == icon_living ? "sharkdragon" : "sharkdragon_dead"
 	icon_living = "sharkdragon"
 	icon_dead = "sharkdragon_dead"
@@ -132,7 +132,7 @@
 /mob/living/basic/space_dragon/proc/rename_dragon()
 	var/chosen_name = sanitize_name(reject_bad_text(tgui_input_text(src, "What would you like your name to be?", "Choose Your Name", real_name, MAX_NAME_LEN)))
 	if(!chosen_name) // Null or empty or rejected
-		to_chat(src, span_warning("Not a valid name, please try again."))
+		to_chat(src, span_warning("Não é um nome válido, por favor tente novamente."))
 		rename_dragon()
 		return
 	to_chat(src, span_notice("Your name is now [span_name("[chosen_name]")], the feared Space Dragon."))
@@ -142,12 +142,12 @@
 /mob/living/basic/space_dragon/proc/select_colour()
 	chosen_colour = tgui_color_picker(src, "What colour would you like to be?" ,"Colour Selection", COLOR_WHITE)
 	if(!chosen_colour) // Redo proc until we get a color
-		to_chat(src, span_warning("Not a valid colour, please try again."))
+		to_chat(src, span_warning("Não é uma cor válida, por favor tente novamente."))
 		select_colour()
 		return
 	var/list/skin_hsv = rgb2hsv(chosen_colour)
 	if(skin_hsv[3] < REJECT_DARK_COLOUR_THRESHOLD)
-		to_chat(src, span_danger("Invalid colour. Your colour is not bright enough."))
+		to_chat(src, span_danger("Cor inválida. Sua cor não é brilhante o suficiente."))
 		select_colour()
 		return
 	add_atom_colour(chosen_colour, FIXED_COLOUR_PRIORITY)
@@ -190,7 +190,7 @@
 	if (target == src)
 		return COMPONENT_HOSTILE_NO_ATTACK // Easy to misclick yourself, let's not
 	if (DOING_INTERACTION(source, DOAFTER_SOURCE_SPACE_DRAGON_INTERACTION))
-		balloon_alert(source, "busy!")
+		balloon_alert(source, "Ocupado!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 	if(isfish(target))
 		INVOKE_ASYNC(src, PROC_REF(try_eat), target)
@@ -242,7 +242,7 @@
 	playsound(src, 'sound/effects/magic/demon_attack1.ogg', 40, TRUE)
 	visible_message(span_boldwarning("[src] swallows [fish] whole!"))
 	if(HAS_TRAIT(fish, TRAIT_YUCKY_FISH))
-		balloon_alert(src, "disgusting!")
+		balloon_alert(src, "Nojento!")
 		to_chat(src, span_warning("that [fish.name] tasted awful, you feel like you're about to throw up..."))
 		addtimer(CALLBACK(src, PROC_REF(barf_contents)), 3 SECONDS)
 	qdel(fish)

@@ -4,7 +4,7 @@
 
 /datum/nifsoft/action_granter/hypnosis
 	name = "Libidine Eye"
-	program_desc = "Based on the hypnotic equipment provided by the LustWish vendor, the Libidine Eye NIFSoft allows the user to ensnare others in a hypnotic trance. ((This is intended as a tool for ERP, don't use this for gameplay reasons.))"
+	program_desc = "Baseado no equipamento hipnótico fornecido pelo vendedor LustWish, a Libidina Eye NIFSoft permite que o usuário enlace outros em transe hipnótico. (Isto é destinado como uma ferramenta para ERP, não use isso por razões de jogo.)"
 	buying_category = NIFSOFT_CATEGORY_FUN
 	lewd_nifsoft = TRUE
 	purchase_price = 150
@@ -27,7 +27,7 @@
 
 	var/mob/living/carbon/human/target_human = user.pulling
 	if(!istype(target_human) || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You need to aggressively grab someone to hypnotize them."))
+		to_chat(user, span_warning("Precisa pegar alguém agressivamente para hipnotizá-los."))
 		return FALSE
 
 	if(!target_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis))

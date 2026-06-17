@@ -18,7 +18,7 @@ Nothing else in the console has ID requirements.
 */
 /obj/machinery/computer/rdconsole
 	name = "R&D Console"
-	desc = "A console used to interface with R&D tools."
+	desc = "Um console usado para interagir com ferramentas de P&D."
 	icon_screen = "rdcomp"
 	icon_keyboard = "rd_key"
 	circuit = /obj/item/circuitboard/computer/rdconsole
@@ -76,7 +76,7 @@ Nothing else in the console has ID requirements.
 
 	if(istype(tool, /obj/item/disk/tech_disk))
 		if(t_disk)
-			to_chat(user, span_warning("A technology disk is already loaded!"))
+			to_chat(user, span_warning("Um disco de tecnologia já está carregado!"))
 			return ITEM_INTERACT_BLOCKING
 
 		if(!user.transferItemToLoc(tool, src))
@@ -88,11 +88,11 @@ Nothing else in the console has ID requirements.
 		return ITEM_INTERACT_SUCCESS
 
 	if (!istype(tool, /obj/item/disk/design_disk))
-		to_chat(user, span_warning("Machine cannot accept disks in that format."))
+		to_chat(user, span_warning("A máquina não pode aceitar discos nesse formato."))
 		return ITEM_INTERACT_BLOCKING
 
 	if(d_disk)
-		to_chat(user, span_warning("A design disk is already loaded!"))
+		to_chat(user, span_warning("Um disco de design já está carregado!"))
 		return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
@@ -171,7 +171,7 @@ Nothing else in the console has ID requirements.
 	. = ..()
 	if (obj_flags & EMAGGED)
 		return
-	balloon_alert(user, "security protocols disabled")
+	balloon_alert(user, "Protocolos de segurança desativados")
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	obj_flags |= EMAGGED
 	var/obj/item/circuitboard/computer/rdconsole/board = circuit
@@ -347,12 +347,12 @@ Nothing else in the console has ID requirements.
 	switch (action)
 		if ("toggleLock")
 			if(obj_flags & EMAGGED)
-				to_chat(usr, span_boldwarning("Security protocol error: Unable to access locking protocols."))
+				to_chat(usr, span_boldwarning("Erro de protocolo de segurança: não é possível acessar protocolos de bloqueio."))
 				return TRUE
 			if(allowed(usr))
 				board.locked = !board.locked
 			else
-				to_chat(usr, span_boldwarning("Unauthorized Access."))
+				to_chat(usr, span_boldwarning("Acesso não autorizado."))
 			return TRUE
 
 		if ("researchNode")

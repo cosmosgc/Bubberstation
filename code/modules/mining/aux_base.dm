@@ -13,8 +13,8 @@
 
 /obj/machinery/computer/auxiliary_base
 	name = "auxiliary base management console"
-	desc = "Allows a deployable expedition base to be dropped from the station to a designated mining location. It can also \
-	interface with the mining shuttle at the landing site if a mobile beacon is also deployed."
+	desc = "Permite que uma base de expedição seja lançada da estação para um local de mineração designado. Pode também.\
+Interface com a nave de mineração no local de pouso se um sinalizador móvel também for implantado."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "pod_off"
 	icon_keyboard = null
@@ -129,7 +129,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
  */
 /obj/machinery/computer/auxiliary_base/proc/launch_check(mob/user)
 	if(!is_station_level(z) && shuttleId == "colony_drop")
-		to_chat(user, span_warning("You can't move the base again!"))
+		to_chat(user, span_warning("Não pode mover a base de novo!"))
 		return FALSE
 	return TRUE
 
@@ -138,7 +138,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	if(.)
 		return
 	if(!allowed(usr))
-		to_chat(usr, span_danger("Access denied."))
+		to_chat(usr, span_danger("Acesso negado."))
 		return
 
 	switch(action)
@@ -147,7 +147,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 				return
 			var/shuttle_error = SSshuttle.moveShuttle(shuttleId, params["shuttle_id"], 1)
 			if(launch_warning)
-				say("Launch sequence activated! Prepare for drop!!", spans = list(SPAN_DANGER))
+				say("Sequência de lançamento ativada! Preparar para soltar!", spans = list(SPAN_DANGER))
 				playsound(loc, 'sound/machines/warning-buzzer.ogg', 70, FALSE)
 				launch_warning = FALSE
 				blind_drop_ready = FALSE
@@ -167,10 +167,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 			var/turf/LZ = pick(all_mining_turfs) //Pick a random mining Z-level turf
 			if(!ismineralturf(LZ) && !isasteroidturf(LZ))
 			//Find a suitable mining turf. Reduces chance of landing in a bad area
-				to_chat(usr, span_warning("Landing zone scan failed. Please try again."))
+				to_chat(usr, span_warning("A varredura da zona de pouso falhou. Por favor, tente novamente."))
 				return
 			if(set_landing_zone(LZ, usr) != ZONE_SET)
-				to_chat(usr, span_warning("Landing zone unsuitable. Please recalculate."))
+				to_chat(usr, span_warning("Zona de pouso inadequada. Por favor, recalcule."))
 				return
 			blind_drop_ready = FALSE
 			return TRUE
@@ -206,7 +206,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 /obj/machinery/computer/auxiliary_base/proc/set_landing_zone(turf/T, mob/user, no_restrictions)
 	var/obj/docking_port/mobile/auxiliary_base/base_dock = locate(/obj/docking_port/mobile/auxiliary_base) in SSshuttle.mobile_docking_ports
 	if(!base_dock) //Not all maps have an Aux base. This object is useless in that case.
-		to_chat(user, span_warning("This station is not equipped with an auxiliary base. Please contact your Nanotrasen contractor."))
+		to_chat(user, span_warning("Esta estação não está equipada com uma base auxiliar. Por favor, contate seu empreiteiro Nanotrasen."))
 		return
 	if(!no_restrictions)
 		var/static/list/disallowed_turf_types = zebra_typecacheof(list(
@@ -251,7 +251,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 
 //Serves as a nice mechanic to people get ready for the launch.
 	minor_announce("Auxiliary base landing zone coordinates locked in for [A]. Launch command now available!")
-	to_chat(user, span_notice("Landing zone set."))
+	to_chat(user, span_notice("Zona de pouso pronta."))
 	return ZONE_SET
 
 /obj/item/assault_pod/mining
@@ -261,7 +261,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	inhand_icon_state = "minertalkie"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	desc = "Deploy to designate the landing zone of the auxiliary base."
+	desc = "Preparar para designar a zona de pouso da base auxiliar."
 	w_class = WEIGHT_CLASS_SMALL
 	shuttle_id = "colony_drop"
 	var/setting = FALSE
@@ -271,7 +271,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	if(setting)
 		return
 
-	to_chat(user, span_notice("You begin setting the landing zone parameters..."))
+	to_chat(user, span_notice("Você começa a definir os parâmetros da zona de pouso..."))
 	setting = TRUE
 	if(!do_after(user, 5 SECONDS, target = user)) //You get a few seconds to cancel if you do not want to drop there.
 		setting = FALSE
@@ -286,26 +286,26 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 			AB = A
 			break
 	if(!AB)
-		to_chat(user, span_warning("No auxiliary base console detected."))
+		to_chat(user, span_warning("Nenhum console auxiliar detectado."))
 		return
 
 	switch(AB.set_landing_zone(T, user, no_restrictions))
 		if(ZONE_SET)
 			qdel(src)
 		if(BAD_ZLEVEL)
-			to_chat(user, span_warning("This uplink can only be used in a designed mining zone."))
+			to_chat(user, span_warning("Este uplink só pode ser usado em uma zona de mineração projetada."))
 		if(BAD_AREA)
-			to_chat(user, span_warning("Unable to acquire a targeting lock. Find an area clear of structures or entirely within one."))
+			to_chat(user, span_warning("Incapaz de obter o alvo. Encontre uma área livre de estruturas ou completamente dentro de uma."))
 		if(BAD_COORDS)
-			to_chat(user, span_warning("Location is too close to the edge of the station's scanning range. Move several paces away and try again."))
+			to_chat(user, span_warning("A localização está muito perto do alcance da estação. Afaste-se e tente novamente."))
 		if(BAD_TURF)
-			to_chat(user, span_warning("The landing zone contains turfs unsuitable for a base. Make sure you've removed all walls and dangerous terrain from the landing zone."))
+			to_chat(user, span_warning("A zona de pouso contém relvados inadequados para uma base. Certifique-se de remover todas as paredes e terreno perigoso da zona de pouso."))
 		if(BAD_LAYER)
-			to_chat(user, span_warning("This area is not hazardous enough to justify an auxiliary base. Try again on a deeper layer."))
+			to_chat(user, span_warning("Esta área não é perigosa o suficiente para justificar uma base auxiliar. Tente novamente em uma camada mais profunda."))
 
 /obj/item/assault_pod/mining/unrestricted
 	name = "omni-locational landing field designator"
-	desc = "Allows the deployment of the mining base ANYWHERE. Use with caution."
+	desc = "Permite a implantação da base de mineração em qualquer lugar. Use com cuidado."
 	no_restrictions = TRUE
 
 
@@ -331,7 +331,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 
 /obj/structure/mining_shuttle_beacon
 	name = "mining shuttle beacon"
-	desc = "A bluespace beacon calibrated to mark a landing spot for the mining shuttle when deployed near the auxiliary mining base."
+	desc = "Um farol azul espacial calibrado para marcar um local de pouso para a nave de mineração quando implantado perto da base de mineração auxiliar."
 	anchored = FALSE
 	density = FALSE
 	var/shuttle_ID = "landing_zone_dock"
@@ -347,7 +347,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	if(.)
 		return
 	if(anchored)
-		to_chat(user, span_warning("Landing zone already set."))
+		to_chat(user, span_warning("A zona de pouso já está pronta."))
 		return
 
 	if(anti_spam_cd)
@@ -360,7 +360,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	var/turf/landing_spot = get_turf(src)
 
 	if(!is_mining_level(landing_spot.z))
-		to_chat(user, span_warning("This device is only to be used in a mining zone."))
+		to_chat(user, span_warning("Este dispositivo só pode ser usado em uma zona de mineração."))
 		return
 	var/obj/machinery/computer/auxiliary_base/aux_base_console
 	for(var/obj/machinery/computer/auxiliary_base/ABC as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/computer/auxiliary_base))
@@ -391,7 +391,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 
 			break
 	if(!Mport)
-		to_chat(user, span_warning("This station is not equipped with an appropriate mining shuttle. Please contact Nanotrasen Support."))
+		to_chat(user, span_warning("Esta estação não está equipada com uma nave de mineração apropriada. Por favor, contate o apoio de Nanotrasen."))
 		return
 
 	var/obj/docking_port/mobile/mining_shuttle
@@ -404,7 +404,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 		break
 
 	if(!mining_shuttle) //Not having a mining shuttle is a map issue
-		to_chat(user, span_warning("No mining shuttle signal detected. Please contact Nanotrasen Support."))
+		to_chat(user, span_warning("Nenhum sinal de nave auxiliar detectado. Por favor, contate o apoio de Nanotrasen."))
 		SSshuttle.stationary_docking_ports.Remove(Mport)
 		qdel(Mport)
 		return
@@ -412,24 +412,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	for(var/i in 1 to landing_turfs.len) //You land NEAR the base, not IN it.
 		var/turf/L = landing_turfs[i]
 		if(!L) //This happens at map edges
-			to_chat(user, span_warning("Unable to secure a valid docking zone. Please try again in an open area near, but not within the auxiliary mining base."))
+			to_chat(user, span_warning("Incapaz de proteger uma zona de atracação válida. Por favor, tente novamente em uma área aberta perto, mas não dentro da base de mineração auxiliar."))
 			SSshuttle.stationary_docking_ports.Remove(Mport)
 			qdel(Mport)
 			return
 		if(istype(get_area(L), /area/shuttle/auxiliary_base))
-			to_chat(user, span_warning("The mining shuttle must not land within the mining base itself."))
+			to_chat(user, span_warning("A nave de mineração não deve pousar dentro da própria base de mineração."))
 			SSshuttle.stationary_docking_ports.Remove(Mport)
 			qdel(Mport)
 			return
 
 	if(mining_shuttle.canDock(Mport) != SHUTTLE_CAN_DOCK)
-		to_chat(user, span_warning("Unable to secure a valid docking zone. Please try again in an open area near, but not within the auxiliary mining base."))
+		to_chat(user, span_warning("Incapaz de proteger uma zona de atracação válida. Por favor, tente novamente em uma área aberta perto, mas não dentro da base de mineração auxiliar."))
 		SSshuttle.stationary_docking_ports.Remove(Mport)
 		qdel(Mport)
 		return
 
 	aux_base_console.set_mining_mode() //Lets the colony park the shuttle there, now that it has a dock.
-	to_chat(user, span_notice("Mining shuttle calibration successful! Shuttle interface available at base console."))
+	to_chat(user, span_notice("Calibração da nave de mineração bem sucedida! Interface de transporte disponível no console base."))
 	set_anchored(TRUE) //Locks in place to mark the landing zone.
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
 	log_shuttle("[key_name(usr)] has registered the mining shuttle beacon at [COORD(landing_spot)].")

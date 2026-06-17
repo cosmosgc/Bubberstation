@@ -1,6 +1,6 @@
 /obj/item/lighter
 	name = "\improper Zippo lighter"
-	desc = "The zippo."
+	desc = "O zíper."
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"
 	inhand_icon_state = "zippo"
@@ -71,7 +71,7 @@
 /obj/item/lighter/examine(mob/user)
 	. = ..()
 	if(get_fuel() <= 0)
-		. += span_warning("It is out of lighter fluid! Refill it with welder fuel.")
+		. += span_warning("Está sem fluido de isqueiro! Encher com combustível de soldador.")
 	else
 		. += span_notice("It contains [get_fuel()] units of fuel out of [maximum_fuel].")
 
@@ -208,7 +208,7 @@
 	user.apply_damage(5, BURN, hitzone)
 	user.visible_message(
 		span_warning("After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn[user.p_s()] [user.p_their()] finger in the process."),
-		span_warning("You burn yourself while lighting the lighter!")
+		span_warning("Você se queima enquanto acende o isqueiro!")
 	)
 	user.add_mood_event("burnt_thumb", /datum/mood_event/burnt_thumb)
 
@@ -239,7 +239,7 @@
 		to_chat(user, span_warning("[src] has to be on to complete this task!"))
 		return FALSE
 	if(get_fuel() < amount)
-		to_chat(user, span_warning("You need more welding fuel to complete this task!"))
+		to_chat(user, span_warning("Você precisa de mais combustível de solda para completar esta tarefa!"))
 		return FALSE
 	if(heat < heat_required)
 		return FALSE
@@ -280,7 +280,7 @@
 
 /obj/item/lighter/greyscale
 	name = "cheap lighter"
-	desc = "A cheap lighter."
+	desc = "Um isqueiro barato."
 	icon_state = "lighter"
 	maximum_fuel = 3
 	fancy = FALSE
@@ -331,7 +331,7 @@
 
 /obj/item/lighter/slime
 	name = "slime zippo"
-	desc = "A specialty zippo made from slimes and industry. Has a much hotter flame than normal."
+	desc = "Um zíper especial feito de lodo e indústria. Tem uma chama muito mais quente que o normal."
 	icon_state = "slighter"
 	heat_while_on = parent_type::heat_while_on + 1000 //Blue flame is hotter, this means this does act as a welding tool.
 	light_color = LIGHT_COLOR_CYAN
@@ -342,12 +342,12 @@
 
 /obj/item/lighter/skull
 	name = "badass zippo"
-	desc = "An absolutely badass zippo lighter. Just look at that skull!"
+	desc = "Um isqueiro de zíper. Olhe para esse crânio!"
 	overlay_state = "skull"
 
 /obj/item/lighter/mime
 	name = "pale zippo"
-	desc = "In lieu of fuel, performative spirit can be used to light cigarettes."
+	desc = "Em vez de combustível, o espírito performativo pode ser usado para acender cigarros."
 	icon_state = "mlighter" //These ones don't show a flame.
 	light_color = LIGHT_COLOR_HALOGEN
 	heat_while_on = TCMB //I swear it's a real lighter dude you just can't see the flame dude I promise
@@ -364,7 +364,7 @@
 
 /obj/item/lighter/bright
 	name = "illuminative zippo"
-	desc = "Sustains an incredibly bright chemical reaction when you spark it. Avoid looking directly at the igniter when lit."
+	desc = "Sustenta uma reação química incrivelmente brilhante quando você a acende. Evite olhar diretamente para a ignição quando estiver acesa."
 	icon_state = "slighter"
 	light_color = LIGHT_COLOR_ELECTRIC_CYAN
 	overlay_state = "bright"

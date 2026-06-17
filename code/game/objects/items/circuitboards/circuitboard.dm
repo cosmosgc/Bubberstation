@@ -161,7 +161,7 @@ micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.
 /obj/item/circuitboard/machine/examine(mob/user)
 	. = ..()
 	if(!LAZYLEN(req_components))
-		. += span_info("It requires no components.")
+		. += span_info("Não requer componentes.")
 		return
 
 	var/list/nice_list = list()

@@ -2,7 +2,7 @@
 /// Wand of making objects alive
 /obj/item/gun/magic/wand/animate
 	name = "wand of animation"
-	desc = "This wand is attuned to life and will animate effected objects into destructive servants."
+	desc = "Esta varinha está sintonizada com a vida e animará objetos feitos em servos destrutivos."
 	school = SCHOOL_EVOCATION
 	ammo_type = /obj/item/ammo_casing/magic/animate
 	icon_state = "animatewand"
@@ -12,11 +12,11 @@
 
 /obj/item/gun/magic/wand/animate/zap_self(mob/living/user, suicide = FALSE)
 	. = ..()
-	to_chat(user, span_warning("You animate one of your own possessions!"))
+	to_chat(user, span_warning("Você anima um dos seus bens!"))
 	charges--
 	var/list/possessions = user.get_equipped_items()
 	if (!length(possessions))
-		to_chat(user, span_notice("...but you don't have any."))
+		to_chat(user, span_notice("...mas você não tem nenhum."))
 		return
 
 	var/obj/some_item = pick(possessions)

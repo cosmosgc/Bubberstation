@@ -3,7 +3,7 @@
 
 /obj/item/mod/module/protean_servo
 	name = "protean MOD servo module"
-	desc = "A module made for use in protean MOD suits that adds new subroutines while folded. Comes with three modes, each partially takes over MOD suit's motor functions to enhance the wearer's general movement, performing medical duties or construction tasks. Due to high computing power demand, protean can only use this module while worn by someone else."
+	desc = "Um módulo feito para uso em roupas proteicas que adicionam novas sub-rotinas enquanto dobram. Vem com três modos, cada um parcialmente assume as funções motoras do traje MOD para melhorar o movimento geral do usuário, realizar tarefas médicas ou tarefas de construção. Devido à alta demanda de energia computacional, Protean só pode usar este módulo quando usado por outra pessoa."
 	icon_state = "no_baton"
 	complexity = 3
 	use_energy_cost = DEFAULT_CHARGE_DRAIN
@@ -55,7 +55,7 @@
 
 /datum/action/cooldown/protean_servo/movement
 	name = "Enhance movement"
-	desc = "Aids your wearer's movement for few seconds but restrains their hands and makes them easier to get grabbed"
+	desc = "Ajuda o movimento de seu usuário por alguns segundos, mas restringe suas mãos e os torna mais fáceis de serem pegos."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "bci_electricity"
 
@@ -72,7 +72,7 @@
 /*
 /datum/action/cooldown/protean_servo/medical
 	name = "Enhance medical actions"
-	desc = "Aids in your wearer's surgeries, medicicine aplications and carrying patients for moderate amount of time."
+	desc = "Aids nas cirurgias do seu usuário, aplicações médicas e carregar pacientes por tempo moderado."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "bci_blood"
 
@@ -89,7 +89,7 @@
 
 /datum/action/cooldown/protean_servo/engineering
 	name = "Enhance building"
-	desc = "Aids in your wearer's construction efforts and broader actions for moderate amount of time."
+	desc = "Ajudas nos esforços de construção do seu usuário e ações mais amplas por um tempo moderado."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "bci_repair"
 
@@ -108,7 +108,7 @@
 
 /atom/movable/screen/alert/status_effect/protean_servo_movement
 	name = "Faster but clumsy"
-	desc = "Your MOD is making you faster but also easier to grab and unable to use hands."
+	desc = "Seu MOD está te tornando mais rápido, mas também mais fácil de agarrar e incapaz de usar as mãos."
 	icon = 'icons/mob/actions/actions_items.dmi'
 	icon_state = "bci_electricity"
 
@@ -146,7 +146,7 @@
 //Medical option
 /atom/movable/screen/alert/status_effect/protean_servo_medical
 	name = "Helping hand"
-	desc = "Your MOD suit is guiding your hands to speed up surgery, applying medication or carrying patients."
+	desc = "Seu traje MOD está guiando suas mãos para acelerar a cirurgia, aplicar medicação ou carregar pacientes."
 	icon = 'icons/mob/actions/actions_items.dmi'
 	icon_state = "bci_blood"
 
@@ -174,7 +174,7 @@
 //Engineering option
 /atom/movable/screen/alert/status_effect/protean_servo_engineer
 	name = "Adaptable grip"
-	desc = "Your MOD suit's gloves are adapting their shape to better handle construction and item usage."
+	desc = "As luvas do seu terno MOD estão adaptando sua forma para melhor lidar com a construção e uso de itens."
 	icon = 'icons/mob/actions/actions_items.dmi'
 	icon_state = "bci_repair"
 

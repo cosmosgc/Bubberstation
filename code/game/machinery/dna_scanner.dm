@@ -1,6 +1,6 @@
 /obj/machinery/dna_scannernew
 	name = "\improper DNA scanner"
-	desc = "It scans DNA structures."
+	desc = "Ele escaneia estruturas de DNA."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "scanner"
 	base_icon_state = "scanner"
@@ -56,7 +56,7 @@
 
 /obj/machinery/dna_scannernew/proc/toggle_open(mob/user)
 	if(panel_open)
-		to_chat(user, span_notice("Close the maintenance panel first."))
+		to_chat(user, span_notice("Feche o painel de manutenção primeiro."))
 		return
 
 	if(state_open)
@@ -64,7 +64,7 @@
 		return
 
 	else if(locked)
-		to_chat(user, span_notice("The bolts are locked down, securing the door shut."))
+		to_chat(user, span_notice("Os parafusos estão trancados, mantendo a porta fechada."))
 		return
 
 	open_machine()
@@ -172,7 +172,7 @@
 
 /obj/item/disk/data/debug
 	name = "\improper CentCom DNA disk"
-	desc = "A debug item for genetics"
+	desc = "Um item de depuração para genética."
 	custom_materials = null
 
 /obj/item/disk/data/debug/Initialize(mapload)

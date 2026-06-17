@@ -1,6 +1,6 @@
 /obj/item/organ/heart
 	name = "heart"
-	desc = "I feel bad for the heartless bastard who lost this."
+	desc = "Eu me sinto mal pelo bastardo sem coração que perdeu isso."
 	icon_state = "heart-on"
 	base_icon_state = "heart"
 
@@ -132,7 +132,7 @@
 		if(owner.can_heartattack() && Stop())
 			if(owner.stat == CONSCIOUS)
 				owner.visible_message(span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"))
-			to_chat(owner, span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"))
+			to_chat(owner, span_userdanger("Você sente uma dor terrível no peito, como se seu coração tivesse parado!"))
 		return
 
 	// Beyond deals with sound effects, so nothing needs to be done if no client
@@ -142,7 +142,7 @@
 	if(owner.stat == SOFT_CRIT)
 		if(beat != BEAT_SLOW)
 			beat = BEAT_SLOW
-			to_chat(owner, span_notice("You feel your heart slow down..."))
+			to_chat(owner, span_notice("Você sente seu coração desacelerar..."))
 			SEND_SOUND(owner, sound('sound/effects/health/slowbeat.ogg', repeat = TRUE, channel = CHANNEL_HEARTBEAT, volume = 40))
 
 	else if(owner.stat == HARD_CRIT)
@@ -172,7 +172,7 @@
 
 /obj/item/organ/heart/cursed
 	name = "cursed heart"
-	desc = "A heart that, when inserted, will force you to pump it manually."
+	desc = "Um coração que, quando inserido, forçará você a bombeá-lo manualmente."
 	icon_state = "cursedheart-off"
 	base_icon_state = "cursedheart"
 	decay_factor = 0
@@ -206,12 +206,12 @@
 
 /obj/item/organ/heart/cybernetic
 	name = "basic cybernetic heart"
-	desc = "A basic electronic device designed to mimic the functions of an organic human heart."
+	desc = "Um dispositivo eletrônico básico projetado para imitar as funções de um coração humano orgânico."
 	icon_state = "heart-c-on"
 	base_icon_state = "heart-c"
 	organ_flags = ORGAN_ROBOTIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.75 //This also hits defib timer, so a bit higher than its less important counterparts
-	failing_desc = "seems to be broken."
+	failing_desc = "Parece estar quebrado."
 	beat_noise = "a steady fsssh of hydraulics"
 	/// Whether or not we have a stabilization available. This prevents our owner from entering softcrit for an amount of time.
 	var/stabilization_available = FALSE
@@ -243,7 +243,7 @@
 		if(owner_needs_us)
 			owner.visible_message(
 				span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"),
-				span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"),
+				span_userdanger("Você sente uma dor terrível no peito, como se seu coração tivesse parado!"),
 			)
 
 /obj/item/organ/heart/cybernetic/on_life(seconds_per_tick)
@@ -280,8 +280,8 @@
 
 /obj/item/organ/heart/cybernetic/tier2
 	name = "cybernetic heart"
-	desc = "An electronic device designed to mimic the functions of an organic human heart. In case of lacerations or haemorrhaging, the heart rapidly begins self-replicating \
-		artificial blood. However, this can cause toxins to build up in the bloodstream to the imperfect replication process."
+	desc = "Um dispositivo eletrônico projetado para imitar as funções de um coração humano orgânico. Em caso de lacerações ou hemorragia, o coração rapidamente começa a se auto-replicar.\
+Sangue artificial. No entanto, isso pode causar a formação de toxinas na corrente sanguínea para o processo de replicação imperfeito."
 	icon_state = "heart-c-u-on"
 	base_icon_state = "heart-c-u"
 	maxHealth = 1.5 * STANDARD_ORGAN_THRESHOLD
@@ -291,8 +291,8 @@
 
 /obj/item/organ/heart/cybernetic/tier3
 	name = "upgraded cybernetic heart"
-	desc = "An electronic device designed to mimic the functions of an organic human heart. In case of physical trauma, the heart has temporary failsafes to maintain patient stability \
-		and mobility for a brief moment. In addition, the heart is able to safely self-replicate blood without risk of toxin buildup."
+	desc = "Um dispositivo eletrônico projetado para imitar as funções de um coração humano orgânico. Em caso de trauma físico, o coração tem segurança temporária para manter a estabilidade do paciente.\
+e mobilidade por um breve momento. Além disso, o coração é capaz de auto-replicar sangue sem risco de acúmulo de toxina."
 	icon_state = "heart-c-u2-on"
 	base_icon_state = "heart-c-u2"
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
@@ -303,8 +303,8 @@
 
 /obj/item/organ/heart/cybernetic/surplus
 	name = "surplus prosthetic heart"
-	desc = "A fragile mockery of a human heart that resembles a water pump more than an actual heart. \
-		Offers no protection against EMPs."
+	desc = "Uma frágil zombaria de um coração humano que se parece mais com uma bomba de água do que com um coração real.\
+Não oferece proteção contra PEMs."
 	icon_state = "heart-c-s-on"
 	base_icon_state = "heart-c-s"
 	maxHealth = STANDARD_ORGAN_THRESHOLD*0.5
@@ -321,7 +321,7 @@
 
 /obj/item/organ/heart/freedom
 	name = "heart of freedom"
-	desc = "This heart pumps with the passion to give... something freedom."
+	desc = "Este coração vibra com a paixão de dar... algo de liberdade."
 	organ_flags = ORGAN_ROBOTIC  //the power of freedom prevents heart attacks
 	beat_noise = "<b>THE SOUND OF FREEDOM</b>"
 	/// The cooldown until the next time this heart can give the host an adrenaline boost.
@@ -331,14 +331,14 @@
 	. = ..()
 	if(owner.health < 5 && COOLDOWN_FINISHED(src, adrenaline_cooldown))
 		COOLDOWN_START(src, adrenaline_cooldown, rand(25 SECONDS, 1 MINUTES))
-		to_chat(owner, span_userdanger("You feel yourself dying, but you refuse to give up!"))
+		to_chat(owner, span_userdanger("Você se sente morrendo, mas se recusa a desistir!"))
 		owner.heal_overall_damage(brute = 15, burn = 15, required_bodytype = BODYTYPE_ORGANIC)
 		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
 
 /obj/item/organ/heart/pod
 	name = "pod mitochondria"
-	desc = "This plant-like organ is the powerhouse of the podperson." // deliberate wording here
+	desc = "Este órgão vegetal é a potência do podper." // deliberate wording here
 	beat_noise = "the power of the podperson" // makes sense
 	foodtype_flags = PODPERSON_ORGAN_FOODTYPES
 	color = COLOR_LIME
@@ -346,7 +346,7 @@
 /// An improved version of the organic heart, with more health and more "keeping you alive" potential
 /obj/item/organ/heart/evolved
 	name = "evolved heart"
-	desc = "It beats ever strong."
+	desc = "Ele bate sempre forte."
 	icon_state = "heart-evolved-on"
 	base_icon_state = "heart-evolved"
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 1.2
@@ -368,7 +368,7 @@
 /// A weaker evolved heart, but can block magic in exchange for our organs health!
 /obj/item/organ/heart/evolved/sacred
 	name = "sacred heart"
-	desc = "Your foul magics stand no chance against the power of LOVE!!!"
+	desc = "Sua magia suja não tem chance contra o poder do AMOR!!!!"
 
 	icon_state = "heart-sacred-on"
 	base_icon_state = "heart-sacred"

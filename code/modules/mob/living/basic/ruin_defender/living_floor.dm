@@ -20,7 +20,7 @@
 
 /mob/living/basic/living_floor
 	name = "floor"
-	desc = "The floor you walk on. It looks near-impervious to damage."
+	desc = "O chão em que você anda. Parece quase impermeável a danos."
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	icon_living = "floor"

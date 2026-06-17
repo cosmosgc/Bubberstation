@@ -10,7 +10,7 @@
 
 /datum/element/gags_recolorable/proc/on_examine(atom/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += span_notice("Now utilising PPP recolouring technology, capable of absorbing paint and pigments for changing its colours!")
+	examine_text += span_notice("Agora usando a tecnologia de recoloração PPP, capaz de absorver tinta e pigmentos para mudar suas cores!")
 
 /datum/element/gags_recolorable/proc/on_item_interaction(atom/movable/source, mob/living/user, obj/item/toy/crayon/spraycan/item, modifiers)
 	SIGNAL_HANDLER
@@ -19,10 +19,10 @@
 		return NONE
 
 	if(item.is_capped)
-		user.balloon_alert(user, "take the cap off first!")
+		user.balloon_alert(user, "Tire o boné primeiro!")
 		return ITEM_INTERACT_BLOCKING
 	if(item.check_empty())
-		user.balloon_alert(user, "empty!")
+		user.balloon_alert(user, "Vazio!")
 		return ITEM_INTERACT_BLOCKING
 
 	INVOKE_ASYNC(src, PROC_REF(open_ui), user, item, source)
@@ -59,7 +59,7 @@
 
 	can.use_charges()
 	if(can.pre_noise)
-		target.audible_message(span_hear("You hear spraying."))
+		target.audible_message(span_hear("Você ouve spray."))
 		playsound(target.loc, 'sound/effects/spray.ogg', 5, TRUE, 5)
 
 	target.set_greyscale(menu.split_colors)

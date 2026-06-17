@@ -278,7 +278,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/attack_self(mob/user)
 	if(fuse_timer)
-		balloon_alert(user, "the fuse is on fire!")
+		balloon_alert(user, "O fusível está pegando fogo!")
 		return
 
 	if(!is_drainable())
@@ -316,14 +316,14 @@
 
 /obj/item/reagent_containers/cup/soda_cans/cola
 	name = "Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola. No espaço."
 	icon_state = "cola"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/tonic
 	name = "T-Borg's tonic water"
-	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
+	desc = "Quinine tem gosto engraçado, mas pelo menos manterá a Malária Espacial longe."
 	icon_state = "tonic"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/tonic = 50)
@@ -331,14 +331,14 @@
 
 /obj/item/reagent_containers/cup/soda_cans/sodawater
 	name = "soda water"
-	desc = "A can of soda water. Why not make a scotch and soda?"
+	desc = "Uma lata de água com gás. Por que não fazer um uísque com soda?"
 	icon_state = "sodawater"
 	volume = 50
 	list_reagents = list(/datum/reagent/consumable/sodawater = 50)
 
 /obj/item/reagent_containers/cup/soda_cans/lemon_lime
 	name = "orange soda"
-	desc = "You wanted ORANGE. It gave you Lemon Lime."
+	desc = "Você queria laranja. Te deu limão."
 	icon_state = "lemon-lime"
 	list_reagents = list(/datum/reagent/consumable/lemon_lime = 30)
 	drink_type = FRUIT
@@ -349,62 +349,62 @@
 
 /obj/item/reagent_containers/cup/soda_cans/sol_dry
 	name = "Sol Dry"
-	desc = "Maybe this will help your tummy feel better. Maybe not."
+	desc = "Talvez isso ajude sua barriga a se sentir melhor. Talvez não."
 	icon_state = "sol_dry"
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/space_up
 	name = "Space-Up!"
-	desc = "Tastes like a hull breach in your mouth."
+	desc = "Tem gosto de quebra de casco na boca."
 	icon_state = "space-up"
 	list_reagents = list(/datum/reagent/consumable/space_up = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/starkist
 	name = "Star-kist"
-	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
+	desc = "O sabor de uma estrela em forma líquida. E um pouco de atum...?"
 	icon_state = "starkist"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 15, /datum/reagent/consumable/orangejuice = 15)
 	drink_type = SUGAR | FRUIT | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/space_mountain_wind
 	name = "Space Mountain Wind"
-	desc = "Blows right through you like a space wind."
+	desc = "Sopra através de você como um vento espacial."
 	icon_state = "space_mountain_wind"
 	list_reagents = list(/datum/reagent/consumable/spacemountainwind = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/thirteenloko
 	name = "Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "A CMO avisou os tripulantes que o consumo de Treze Loko pode resultar em convulsões, cegueira, embriaguez ou até morte. Por favor, beba responsavelmente."
 	icon_state = "thirteen_loko"
 	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/dr_gibb
 	name = "Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors."
+	desc = "Uma deliciosa mistura de 42 sabores diferentes."
 	icon_state = "dr_gibb"
 	list_reagents = list(/datum/reagent/consumable/dr_gibb = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/pwr_game
 	name = "Pwr Game"
-	desc = "The only drink with the PWR that true gamers crave. When a gamer talks about gamerfuel, this is what they're literally referring to."
+	desc = "A única bebida que os verdadeiros jogadores desejam. Quando um jogador fala sobre gamerfuel, isso é o que eles estão literalmente se referindo."
 	icon_state = "purple_can"
 	list_reagents = list(/datum/reagent/consumable/pwr_game = 30)
 
 /obj/item/reagent_containers/cup/soda_cans/shamblers
 	name = "Shambler's juice"
-	desc = "~Shake me up some of that Shambler's Juice!~"
+	desc = "Agite-me um pouco daquele suco de Shambler!"
 	icon_state = "shamblers"
 	list_reagents = list(/datum/reagent/consumable/shamblers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/shamblers/eldritch
 	name = "Shambler's juice Eldritch Energy!"
-	desc = "~J'I'CE!~"
+	desc = "~ J'I'CE!"
 	icon_state = "shamblerseldritch"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/shamblers = 30, /datum/reagent/eldritch = 5)
@@ -412,21 +412,21 @@
 
 /obj/item/reagent_containers/cup/soda_cans/wellcheers
 	name = "Wellcheers Juice"
-	desc = "A strange purple drink, smelling of saltwater. Somewhere in the distance, you hear seagulls."
+	desc = "Uma bebida roxa estranha, cheirando a água salgada. Em algum lugar distante, você ouve gaivotas."
 	icon_state = "wellcheers"
 	list_reagents = list(/datum/reagent/consumable/wellcheers = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/grey_bull
 	name = "Grey Bull"
-	desc = "Grey Bull, it gives you gloves!"
+	desc = "Grey Bull, te dá luvas!"
 	icon_state = "energy_drink"
 	list_reagents = list(/datum/reagent/consumable/grey_bull = 20)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/monkey_energy
 	name = "Monkey Energy"
-	desc = "Unleash the ape!"
+	desc = "Soltem o macaco!"
 	icon_state = "monkey_energy"
 	inhand_icon_state = "monkey_energy"
 	volume = 50
@@ -435,27 +435,27 @@
 
 /obj/item/reagent_containers/cup/soda_cans/volt_energy
 	name = "24-Volt Energy"
-	desc = "Recharge, with 24-Volt Energy!"
+	desc = "Recarregar, com 24 volts de energia!"
 	icon_state = "volt_energy"
 	list_reagents = list(/datum/reagent/consumable/volt_energy = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/melon_soda
 	name = "Kansumi Melon Soda"
-	desc = "Japan's favourite melon soda, now available in can form!"
+	desc = "O refrigerante de melão favorito do Japão, agora disponível em forma de lata!"
 	icon_state = "melon_soda"
 	list_reagents = list(/datum/reagent/consumable/melon_soda = 30)
 	drink_type = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/cup/soda_cans/air
 	name = "canned air"
-	desc = "There is no air shortage. Do not drink."
+	desc = "Não há falta de ar. Não beba."
 	icon_state = "air"
 	list_reagents = list(/datum/reagent/nitrogen = 24, /datum/reagent/oxygen = 6)
 
 /obj/item/reagent_containers/cup/soda_cans/beer
 	name = "space beer"
-	desc = "Canned beer. In space."
+	desc = "Cerveja enlatada. No espaço."
 	icon_state = "space_beer"
 	volume = 40
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 40)
@@ -463,7 +463,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/beer/rice
 	name = "rice beer"
-	desc = "A light, rice-based lagered beer popular on Mars. Considered a hate crime against Bavarians under the Reinheitsgebot Act of 1516."
+	desc = "Uma cerveja leve à base de arroz popular em Marte. Considerado um crime de ódio contra bávaros sob a Lei Reinheitsgebot de 1516."
 	icon_state = "ebisu"
 	list_reagents = list(/datum/reagent/consumable/ethanol/rice_beer = 40)
 
@@ -474,10 +474,10 @@
 	switch(brand)
 		if("Ebisu Super Dry")
 			icon_state = "ebisu"
-			desc = "Mars' favourite rice beer brand, 200 years running."
+			desc = "A marca favorita de cerveja de arroz de Marte, 200 anos seguidos."
 		if("Shimauma Ichiban")
 			icon_state = "shimauma"
-			desc = "Mars' most middling rice beer brand. Not as popular as Ebisu, but it's comfortable in second place."
+			desc = "A marca de cerveja de arroz mais medíocre de Marte. Não tão popular quanto Ebisu, mas é confortável em segundo lugar."
 		if("Moonlabor Malt's")
 			icon_state = "moonlabor"
-			desc = "Mars' underdog rice beer brand. Popular amongst the Yakuza, for reasons unknown."
+			desc = "A marca de cerveja de arroz da Mars. Popular entre os Yakuza, por razões desconhecidas."

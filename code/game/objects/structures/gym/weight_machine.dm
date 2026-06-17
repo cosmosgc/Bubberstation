@@ -4,7 +4,7 @@
 
 /obj/structure/weightmachine
 	name = "chest press machine"
-	desc = "Just looking at this thing makes you feel tired."
+	desc = "Só de olhar para essa coisa, você se sente cansado."
 	icon = 'icons/obj/fluff/gym_equipment.dmi'
 	icon_state = "stacklifter"
 	base_icon_state = "stacklifter"
@@ -122,7 +122,7 @@
 
 /obj/structure/weightmachine/crowbar_act_secondary(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "still secured!")
+		balloon_alert(user, "Ainda seguro!")
 		return FALSE
 	tool.play_tool_sound(src)
 	balloon_alert(user, "deconstructing...")
@@ -136,7 +136,7 @@
 
 /obj/structure/weightmachine/proc/perform_workout(mob/living/user)
 	if(user.nutrition <= NUTRITION_LEVEL_STARVING)
-		user.balloon_alert(user, "too hungry to workout!")
+		user.balloon_alert(user, "Com fome demais para treinar!")
 		return
 
 	user.balloon_alert_to_viewers("[pick(more_weight)]")
@@ -231,7 +231,7 @@
 
 	pixel_shift_z = 5
 
-	drunk_message = "You raise the bar over you trying to balance it with one hand, keyword tried."
+	drunk_message = "Você levanta a barra sobre você tentando equilibrá-la com uma mão, palavra-chave tentada."
 
 #undef WORKOUT_XP
 #undef EXERCISE_STATUS_DURATION

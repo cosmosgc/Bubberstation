@@ -8,7 +8,7 @@
 /obj/machinery/telecomms/processor
 	name = "processor unit"
 	icon_state = "processor"
-	desc = "This machine is used to process large quantities of information."
+	desc = "Esta máquina é usada para processar grandes quantidades de informação."
 	telecomms_type = /obj/machinery/telecomms/processor
 	density = TRUE
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.01

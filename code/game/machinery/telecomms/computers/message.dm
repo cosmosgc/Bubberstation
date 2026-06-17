@@ -10,7 +10,7 @@
 
 /obj/machinery/computer/message_monitor
 	name = "message monitor console"
-	desc = "Used to monitor the crew's PDA messages, as well as request console messages."
+	desc = "Usado para monitorar as mensagens PDA da tripulação, bem como solicitar mensagens de console."
 	icon_screen = "comm_logs"
 	circuit = /obj/item/circuitboard/computer/message_monitor
 	light_color = LIGHT_COLOR_GREEN
@@ -59,7 +59,7 @@
 /obj/machinery/computer/message_monitor/screwdriver_act(mob/living/user, obj/item/I)
 	if(obj_flags & EMAGGED)
 		//Stops people from just unscrewing the monitor and putting it back to get the console working again.
-		to_chat(user, span_warning("It is too hot to mess with!"))
+		to_chat(user, span_warning("Está muito quente para mexer!"))
 		return TRUE
 	return ..()
 
@@ -67,7 +67,7 @@
 	if(obj_flags & EMAGGED)
 		return FALSE
 	if(isnull(linked_server))
-		to_chat(user, span_notice("A no server error appears on the screen."))
+		to_chat(user, span_notice("Um erro sem servidor aparece na tela."))
 		return FALSE
 
 	obj_flags |= EMAGGED
@@ -78,7 +78,7 @@
 	monitor_key_paper.add_raw_text("<br><br><font color='red'>£%@%(*$%&(£&?*(%&£/{}</font>")
 	var/time = 100 * length(linked_server.decryptkey)
 	addtimer(CALLBACK(src, PROC_REF(unemag_console)), time)
-	error_message = "%$&(£: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!"
+	error_message = "Erro, RestArting!<lOadiNg backUp iNput ouTput>- Não!"
 	linked_server.toggled = FALSE
 	return TRUE
 
@@ -137,11 +137,11 @@
 				return TRUE
 
 			if(linked_server.decryptkey != authPass)
-				error_message = "ALERT: Incorrect decryption key!"
+				error_message = "Chave de decodificação incorreta!"
 				return TRUE
 
 			authenticated = TRUE
-			success_message = "YOU SUCCESSFULLY LOGGED IN!"
+			success_message = "Você conseguiu entrar!"
 
 			return TRUE
 		if("link_server")
@@ -152,17 +152,17 @@
 			if(length(message_servers) > 1)
 				set_linked_server(tgui_input_list(usr, "Please select a server", "Server Selection", message_servers))
 				if(linked_server)
-					notice_message = "NOTICE: Server selected."
+					notice_message = "Servidor selecionado."
 			else if(length(message_servers) == 1)
 				set_linked_server(message_servers[1])
-				notice_message = "NOTICE: Only Single Server Detected - Server selected."
+				notice_message = "Só um servidor detectado, servidor selecionado."
 			else
-				error_message = "ALERT: No server detected."
+				error_message = "Nenhum servidor detectado."
 			screen = MSG_MON_SCREEN_MAIN
 			return TRUE
 		if("turn_server")
 			if(!is_server_responsive())
-				error_message = "ALERT: No server detected."
+				error_message = "Nenhum servidor detectado."
 				return TRUE
 
 			linked_server.toggled = !linked_server.toggled
@@ -175,11 +175,11 @@
 			return TRUE
 		if("clear_message_logs")
 			linked_server.pda_msgs = list()
-			notice_message = "NOTICE: Logs cleared."
+			notice_message = "Diário limpo."
 			return TRUE
 		if("clear_request_logs")
 			linked_server.rc_msgs = list()
-			notice_message = "NOTICE: Logs cleared."
+			notice_message = "Diário limpo."
 			return TRUE
 		if("set_key")
 			var/dkey = tgui_input_text(usr, "Please enter the decryption key", "Telecomms Decryption", max_length = 16)
@@ -187,23 +187,23 @@
 				if(linked_server.decryptkey == dkey)
 					var/newkey = tgui_input_text(usr, "Please enter the new key (3 - 16 characters max)", "New Key", max_length = 16)
 					if(length(newkey) <= 3)
-						notice_message = "NOTICE: Decryption key too short!"
+						notice_message = "Chave de decodificação muito curta!"
 					else if(newkey && newkey != "")
 						linked_server.decryptkey = newkey
-					notice_message = "NOTICE: Decryption key set."
+					notice_message = "Chave de decodificação definida."
 				else
-					error_message = "ALERT: Incorrect decryption key!"
+					error_message = "Chave de decodificação incorreta!"
 			return TRUE
 		if("return_home")
 			screen = MSG_MON_SCREEN_MAIN
 			return TRUE
 		if("delete_message")
 			linked_server.pda_msgs -= locate(params["ref"]) in linked_server.pda_msgs
-			success_message = "Log Deleted!"
+			success_message = "Diário Deletado!"
 			return TRUE
 		if("delete_request")
 			linked_server.rc_msgs -= locate(params["ref"]) in linked_server.rc_msgs
-			success_message = "Log Deleted!"
+			success_message = "Diário Deletado!"
 			return TRUE
 		if("connect_server")
 			if(linked_server)
@@ -237,10 +237,10 @@
 				sender = "UNKNOWN"
 
 			if(isnull(recipient))
-				notice_message = "NOTICE: No recipient selected!"
+				notice_message = "Nenhum destinatário selecionado!"
 				return attack_hand(usr)
 			if(isnull(message) || message == "")
-				notice_message = "NOTICE: No message entered!"
+				notice_message = "Nenhuma mensagem entrou!"
 				return attack_hand(usr)
 
 			var/datum/signal/subspace/messaging/tablet_message/signal = new(src, list(
@@ -258,7 +258,7 @@
 			var/time = 10 SECONDS * length(linked_server.decryptkey)
 			addtimer(CALLBACK(src, PROC_REF(unemag_console)), time)
 			screen = MSG_MON_SCREEN_HACKED
-			error_message = "%$&(£: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!"
+			error_message = "Erro, RestArting!<lOadiNg backUp iNput ouTput>- Não!"
 			linked_server.toggled = FALSE
 			authenticated = TRUE
 			return TRUE

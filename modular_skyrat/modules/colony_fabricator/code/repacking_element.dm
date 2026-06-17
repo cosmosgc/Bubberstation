@@ -32,7 +32,7 @@
 /datum/element/repackable/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("It can be <b>repacked</b> with <b>right click</b>.")
+	examine_list += span_notice("Pode ser.<b>Reembalado</b>com<b>clique direito</b>.")
 
 /// Checks if the user can actually interact with the structures in question, then invokes the proc to make it repack
 /datum/element/repackable/proc/on_right_click(atom/source, mob/user)

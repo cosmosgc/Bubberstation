@@ -1,11 +1,11 @@
 /datum/quirk/well_trained
 	name = "Well-Trained"
-	desc = "You absolutely love being dominated. The thought of someone with a stronger character than yours is enough to make you act up. They can snap their fingers to send you to the floor."
+	desc = "Você adora ser dominado. Pensar em alguém com um caráter mais forte que o seu é o suficiente para fazê-lo agir. Podem estalar os dedos para mandá-lo para o chão."
 	icon = "fa-sort-down"
-	medical_record_text = "Patient can be easily swayed by a sufficiently assertive individual."
+	medical_record_text = "O paciente pode ser facilmente influenciado por um indivíduo suficientemente assertivo."
 	value = 0
-	gain_text = "<span class='notice'>You feel like being someone's pet.</span>"
-	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
+	gain_text = "<span class='notice'>Você se sente como um animal de estimação.</span>"
+	lose_text = "<span class='notice'>Você não quer mais ser um animal de estimação...</span>"
 	quirk_flags = QUIRK_HIDE_FROM_SCAN | QUIRK_PROCESSES
 	erp_quirk = TRUE
 	var/mob/living/last_dom

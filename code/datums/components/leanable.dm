@@ -38,7 +38,7 @@
 	for (var/mob/living/leaner as anything in leaning_mobs)
 		leaner.stop_leaning()
 		if(fall)
-			to_chat(leaner, span_danger("You lose balance!"))
+			to_chat(leaner, span_danger("Você perdeu o equilíbrio!"))
 			leaner.Paralyze(0.5 SECONDS)
 	leaning_mobs.Cut()
 
@@ -116,7 +116,7 @@
 	// Make sure we unregister signal handlers and reset animation
 	stop_leaning()
 	// -1000 aura
-	visible_message(span_notice("[src] falls flat on [p_their()] face from losing [p_their()] balance!"), span_warning("You fall suddenly as the object you were leaning on vanishes from contact with you!"))
+	visible_message(span_notice("[src] falls flat on [p_their()] face from losing [p_their()] balance!"), span_warning("Você cai de repente quando o objeto que você estava apoiando desaparece do contato com você!"))
 	Knockdown(3 SECONDS)
 
 /mob/living/proc/stop_leaning()

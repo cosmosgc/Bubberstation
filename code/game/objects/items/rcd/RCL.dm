@@ -2,7 +2,7 @@
 
 /obj/item/rcl
 	name = "rapid pipe cleaner layer"
-	desc = "A device used to rapidly deploy pipe cleaners. It has screws on the side which can be removed to slide off the pipe cleaners. Do not use without insulation!"
+	desc = "Um dispositivo usado para implantar rapidamente limpadores de tubos. Tem parafusos do lado que podem ser removidos para deslizar dos limpadores de tubos. Não use sem isolamento!"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rcl-0"
 	inhand_icon_state = "rcl-0"
@@ -43,7 +43,7 @@
 		return FALSE
 	. = TRUE
 	if(ghetto && prob(10)) //Is it a ghetto RCL? If so, give it a 10% chance to fall apart
-		to_chat(user, span_warning("You attempt to loosen the securing screws on the side, but it falls apart!"))
+		to_chat(user, span_warning("Você tenta afrouxar os parafusos de segurança do lado, mas ele desmorona!"))
 		while(loaded.amount > 30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 			var/diff = loaded.amount % 30
 			if(diff)
@@ -56,7 +56,7 @@
 		return
 
 	tool.play_tool_sound(src)
-	to_chat(user, span_notice("You loosen the securing screws on the side, allowing you to lower the guiding edge and retrieve the wires."))
+	to_chat(user, span_notice("Você solta os parafusos de segurança do lado, permitindo que você abaixe a borda guia e recupere os fios."))
 	while(loaded.amount > 30) //There are only two kinds of situations: "nodiff" (60,90), or "diff" (31-59, 61-89)
 		var/diff = loaded.amount % 30
 		if(diff)
@@ -185,11 +185,11 @@
 	if(!isturf(user.loc))
 		return
 	if(is_empty(user, 0))
-		balloon_alert(user, "its empty!")
+		balloon_alert(user, "Está vazio!")
 		return
 
 	if(prob(2) && ghetto) //Give ghetto RCLs a 2% chance to jam, requiring it to be reactviated manually.
-		balloon_alert(user, "wires jam!")
+		balloon_alert(user, "Fios comem!")
 		active = FALSE
 		return
 	else

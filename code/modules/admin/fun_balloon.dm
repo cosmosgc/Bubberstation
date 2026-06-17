@@ -1,6 +1,6 @@
 /obj/effect/fun_balloon
 	name = "fun balloon"
-	desc = "This is going to be a laugh riot."
+	desc = "Isso vai ser uma risadinha."
 	icon = 'icons/obj/toys/balloons.dmi'
 	icon_state = "syndballoon"
 	anchored = TRUE
@@ -35,7 +35,7 @@
 // ----------- Sentience Balloon
 /obj/effect/fun_balloon/sentience
 	name = "sentience fun balloon"
-	desc = "When this pops, things are gonna get more aware around here."
+	desc = "Quando este estouro, as coisas vão ficar mais conscientes por aqui."
 	var/group_name = "a bunch of giant spiders"
 	var/effect_range = 3
 	var/antag_type = null
@@ -103,7 +103,7 @@
 		checked_targets = bodies,
 		ignore_category = POLL_IGNORE_SHUTTLE_DENIZENS,
 		alert_pic = src,
-		role_name_text = "sentience fun balloon",
+		role_name_text = "Balão de senciência divertido",
 	)
 
 	while(LAZYLEN(candidates) && LAZYLEN(bodies))
@@ -131,7 +131,7 @@
 // ----------- Scatter Balloon
 /obj/effect/fun_balloon/scatter
 	name = "scatter fun balloon"
-	desc = "When this pops, you're not going to be around here anymore."
+	desc = "Quando isso acontecer, você não estará mais por aqui."
 	var/effect_range = 5
 
 /obj/effect/fun_balloon/scatter/effect()
@@ -139,13 +139,13 @@
 		var/turf/drop_off = find_safe_turf(z)
 		new /obj/effect/temp_visual/gravpush(get_turf(dispersed_mob))
 		dispersed_mob.forceMove(drop_off)
-		dispersed_mob.balloon_alert(dispersed_mob, "pop!")
+		dispersed_mob.balloon_alert(dispersed_mob, "Pop!")
 
 // ----------- Station Crash
 // Can't think of anywhere better to put it right now
 /obj/effect/station_crash
 	name = "station crash"
-	desc = "With no survivors!"
+	desc = "Sem sobreviventes!"
 	icon = 'icons/obj/toys/balloons.dmi'
 	icon_state = "syndballoon"
 	anchored = TRUE
@@ -168,6 +168,6 @@
 
 /obj/effect/station_crash/devastating
 	name = "devastating station crash"
-	desc = "Absolute Destruction. Will crash the shuttle far into the station."
+	desc = "Destruição absoluta. Vai bater o ônibus espacial bem na estação."
 	min_crash_strength = 15
 	max_crash_strength = 25

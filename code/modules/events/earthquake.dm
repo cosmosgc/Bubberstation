@@ -4,7 +4,7 @@
 ///that aren't moved out of the epicenter area (indicated by the wobbly tiles) will not just be thrown down a z-level, but also be destroyed/maimed in the process.
 /datum/round_event_control/earthquake
 	name = "Chasmic Earthquake"
-	description = "Causes an earthquake, demolishing anything caught in the fault."
+	description = "Causa um terremoto, demolindo qualquer coisa presa na culpa."
 	typepath = /datum/round_event/earthquake
 	category = EVENT_CATEGORY_ENGINEERING
 	min_players = 20
@@ -101,7 +101,7 @@
 	notify_ghosts(
 		"The earthquake's epicenter has been located: [get_area_name(epicenter)]!",
 		source = epicenter,
-		header = "Rumble Rumble Rumble!",
+		header = "Rumble Rumble Rumble Rumble!",
 	)
 
 /datum/round_event/earthquake/tick()
@@ -134,12 +134,12 @@
 			for(var/mob/living/quake_victim in turf_to_quake)
 				quake_victim.Knockdown(7 SECONDS)
 				quake_victim.Paralyze(5 SECONDS)
-				to_chat(quake_victim, span_warning("The ground quakes violently beneath you, throwing you off your feet!"))
+				to_chat(quake_victim, span_warning("O chão treme violentamente abaixo de você, jogando-o de seus pés!"))
 
 		for(var/turf/turf_to_quake in underbelly)
 			turf_to_quake.Shake(pixelshiftx = 0.5, pixelshifty = 0.5, duration = 1 SECONDS)
 			for(var/mob/living/carbon/quake_victim in turf_to_quake)
-				to_chat(quake_victim, span_warning("Damn, I wonder what that rumbling noise is?")) ///You're about to find out
+				to_chat(quake_victim, span_warning("Droga, que barulho é esse?")) ///You're about to find out
 
 	// Step one of the destruction, which clears natural tiles out from the underbelly and does a bit of initial damage to the topside.
 	if(activeFor == end_when - 1)
@@ -186,7 +186,7 @@
 
 /// Admins can also pick the epicenter of the earthquake
 /datum/event_admin_setup/set_location/earthquake
-	input_text = "Have the epicenter be at the current location?"
+	input_text = "O epicentro está no local atual?"
 
 /datum/event_admin_setup/set_location/earthquake/apply_to_event(datum/round_event/earthquake/event)
 	event.special_spot = chosen_turf

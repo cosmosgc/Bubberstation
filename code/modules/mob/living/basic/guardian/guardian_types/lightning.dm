@@ -11,7 +11,7 @@
 	range = 7
 	playstyle_string = span_holoparasite("As a <b>lightning</b> type, you will apply lightning chains to targets on attack and have a lightning chain to your summoner. Lightning chains will shock anyone near them.")
 	creator_name = "Lightning"
-	creator_desc = "Attacks apply lightning chains to targets. Has a lightning chain to the user. Lightning chains shock everything near them, doing constant damage."
+	creator_desc = "Ataques aplicam correntes de raios aos alvos. Tem uma corrente de raios para o usuário. As correntes de raios chocam tudo perto deles, causando danos constantes."
 	creator_icon = "lightning"
 	/// Link between us and our summoner
 	var/datum/component/summoner_chain
@@ -84,8 +84,8 @@
 	target.electrocute_act(shock_damage = 0, source = "lightning chain")
 	target.visible_message(
 		span_danger("[target] was shocked by the lightning chain!"),
-		span_userdanger("You are shocked by the lightning chain!"),
-		span_hear("You hear a heavy electrical crack."),
+		span_userdanger("Você está chocado com a corrente de raios!"),
+		span_hear("Você ouve uma forte rachadura elétrica."),
 	)
 
 /// Beam definition for our lightning chain

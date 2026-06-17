@@ -1,6 +1,6 @@
 /obj/item/stack/sheet/animalhide
 	name = "hide"
-	desc = "Something went wrong."
+	desc = "Algo deu errado."
 	icon_state = "sheet-hide"
 	inhand_icon_state = null
 	novariants = TRUE
@@ -48,8 +48,8 @@
 
 /obj/item/stack/sheet/animalhide/carbon/human
 	name = "human skin"
-	desc = "The by-product of human farming."
-	singular_name = "human skin piece"
+	desc = "O subproduto da agricultura humana."
+	singular_name = "Pedaço de pele humana"
 	novariants = FALSE
 	merge_type = /obj/item/stack/sheet/animalhide/carbon/human
 
@@ -67,15 +67,15 @@ GLOBAL_LIST_INIT(human_recipes, list( \
 
 /obj/item/stack/sheet/animalhide/generic
 	name = "skin"
-	desc = "A piece of skin."
-	singular_name = "skin piece"
+	desc = "Um pedaço de pele."
+	singular_name = "pedaço de pele"
 	novariants = FALSE
 	merge_type = /obj/item/stack/sheet/animalhide/generic
 
 /obj/item/stack/sheet/animalhide/corgi
 	name = "corgi hide"
-	desc = "The by-product of corgi farming."
-	singular_name = "corgi hide piece"
+	desc = "O subproduto da agricultura de corgi."
+	singular_name = "Corgi peça de couro"
 	icon_state = "sheet-corgi"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/corgi
@@ -85,8 +85,8 @@ GLOBAL_LIST_INIT(human_recipes, list( \
 
 /obj/item/stack/sheet/animalhide/mothroach
 	name = "mothroach hide"
-	desc = "A thin layer of mothroach hide."
-	singular_name = "mothroach hide piece"
+	desc = "Uma fina camada de couro de mariposa."
+	singular_name = "A mariposa esconde a peça."
 	icon_state = "sheet-mothroach"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/mothroach
@@ -102,8 +102,8 @@ GLOBAL_LIST_INIT(gondola_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/gondola
 	name = "gondola hide"
-	desc = "The extremely valuable product of gondola hunting."
-	singular_name = "gondola hide piece"
+	desc = "O produto extremamente valioso da caça à gôndola."
+	singular_name = "Gondola, esconda a peça."
 	icon_state = "sheet-gondola"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/gondola
@@ -122,8 +122,8 @@ GLOBAL_LIST_INIT(corgi_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/cat
 	name = "cat hide"
-	desc = "The by-product of cat farming."
-	singular_name = "cat hide piece"
+	desc = "O subproduto da criação de gatos."
+	singular_name = "O gato esconde um pedaço."
 	icon_state = "sheet-cat"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/cat
@@ -133,8 +133,8 @@ GLOBAL_LIST_INIT(corgi_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/carbon/monkey
 	name = "monkey hide"
-	desc = "The by-product of monkey farming."
-	singular_name = "monkey hide piece"
+	desc = "O subproduto da agricultura de macacos."
+	singular_name = "O macaco esconde a peça."
 	icon_state = "sheet-monkey"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/carbon/monkey
@@ -154,7 +154,7 @@ GLOBAL_LIST_INIT(monkey_recipes, list ( \
 /obj/item/stack/sheet/animalhide/carbon/lizard
 	name = "lizard skin"
 	desc = "Sssssss..."
-	singular_name = "lizard skin piece"
+	singular_name = "Pele de lagarto"
 	icon_state = "sheet-lizard"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/carbon/lizard
@@ -168,8 +168,8 @@ GLOBAL_LIST_INIT(monkey_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/xeno
 	name = "alien chitin"
-	singular_name = "alien chitin piece"
-	desc = "The skin of a terrible creature."
+	singular_name = "Um pedaço de chitin alienígena."
+	desc = "A pele de uma criatura terrível."
 	icon_state = "sheet-xeno"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/xeno
@@ -188,8 +188,8 @@ GLOBAL_LIST_INIT(xeno_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/carp
 	name = "carp scales"
-	desc = "The scaly skin of a space carp. It looks quite beautiful when detached from the foul creature who once wore it."
-	singular_name = "carp scale"
+	desc = "A pele escamosa de uma carpa espacial. Fica muito bonito quando se afasta da criatura suja que uma vez usou."
+	singular_name = "Escala de carpa"
 	icon_state = "sheet-carp"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/carp
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(carp_recipes, list ( \
 
 /obj/item/xenos_claw
 	name = "alien claw"
-	desc = "The claw of a terrible creature."
+	desc = "A garra de uma criatura terrível."
 	icon = 'icons/mob/nonhuman-player/alien.dmi'
 	icon_state = "claw"
 
@@ -221,8 +221,8 @@ GLOBAL_LIST_INIT(carp_recipes, list ( \
  */
 /obj/item/stack/sheet/leather
 	name = "leather"
-	desc = "The by-product of mob grinding."
-	singular_name = "leather piece"
+	desc = "O subproduto da moagem da máfia."
+	singular_name = "pedaço de couro"
 	icon_state = "sheet-leather"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/leather
@@ -279,8 +279,8 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 /obj/item/stack/sheet/sinew
 	name = "watcher sinew"
 	icon = 'icons/obj/mining.dmi'
-	desc = "Long stringy filaments which presumably came from a watcher's wings."
-	singular_name = "watcher sinew"
+	desc = "Fios longos que provavelmente vieram das asas de um observador."
+	singular_name = "Vidente, tenebroso."
 	icon_state = "sinew"
 	novariants = TRUE
 	merge_type = /obj/item/stack/sheet/sinew
@@ -304,8 +304,8 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 
 /obj/item/stack/sheet/sinew/wolf
 	name = "wolf sinew"
-	desc = "Long stringy filaments which came from the insides of a wolf."
-	singular_name = "wolf sinew"
+	desc = "Fios longos que vieram do interior de um lobo."
+	singular_name = "Tena de lobo"
 	merge_type = /obj/item/stack/sheet/sinew/wolf
 
 GLOBAL_LIST_INIT(sinew_recipes, list ( \
@@ -320,10 +320,10 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 /*Plates*/
 /obj/item/stack/sheet/animalhide/goliath_hide
 	name = "goliath hide plates"
-	desc = "Pieces of a goliath's rocky hide, these might be able to make your suit a bit more durable to attack from the local fauna."
+	desc = "Pedaços do couro rochoso de um golias, podem tornar seu terno mais durável para atacar da fauna local."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "goliath_hide"
-	singular_name = "hide plate"
+	singular_name = "Esconda o prato."
 	max_amount = 6
 	novariants = FALSE
 	item_flags = NOBLUDGEON
@@ -334,17 +334,17 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide
 	name = "polar bear hides"
-	desc = "Pieces of a polar bear's fur, these might be able to make your suit a bit more durable to attack from the local fauna."
+	desc = "Pedaços de pele de urso polar, podem tornar seu terno mais durável para atacar da fauna local."
 	icon_state = "polar_bear_hide"
-	singular_name = "polar bear hide"
+	singular_name = "Urso polar se esconde"
 	merge_type = /obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide
 
 /obj/item/stack/sheet/animalhide/ashdrake
 	name = "ash drake hide"
-	desc = "The strong, scaled hide of an ash drake."
+	desc = "A pele forte e escalada de um dragão de cinzas."
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "dragon_hide"
-	singular_name = "drake plate"
+	singular_name = "Drake plate"
 	max_amount = 10
 	novariants = FALSE
 	item_flags = NOBLUDGEON
@@ -364,9 +364,9 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/bear
 	name = "bear hide"
-	desc = "Fuzzy pelts from a bear. Imagine how warm you could be, wrapped up in a coat of this stuff."
+	desc = "Peles fuzzy de um urso. Imagine como você poderia ser quente, embrulhado em um casaco dessas coisas."
 	icon_state = "bear_hide" //change
-	singular_name = "bear pelt"
+	singular_name = "Pele de urso."
 	merge_type = /obj/item/stack/sheet/animalhide/bear
 	novariants = FALSE
 
@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(bear_pelt_recipes, list ( \
 /obj/item/stack/sheet/animalhide/attackby(obj/item/W, mob/user, list/modifiers, list/attack_modifiers)
 	if(W.get_sharpness())
 		playsound(loc, 'sound/items/weapons/slice.ogg', 50, TRUE, -1)
-		user.visible_message(span_notice("[user] starts cutting hair off \the [src]."), span_notice("You start cutting the hair off \the [src]..."), span_hear("You hear the sound of a knife rubbing against flesh."))
+		user.visible_message(span_notice("[user] starts cutting hair off \the [src]."), span_notice("You start cutting the hair off \the [src]..."), span_hear("Você ouve o som de uma faca esfregando na carne."))
 		if(do_after(user, 5 SECONDS, target = src))
 			to_chat(user, span_notice("You cut the hair from [src.name]."))
 			new /obj/item/stack/sheet/hairlesshide(user.drop_location(), amount)
@@ -394,14 +394,14 @@ GLOBAL_LIST_INIT(bear_pelt_recipes, list ( \
 
 /obj/item/stack/sheet/animalhide/examine(mob/user)
 	. = ..()
-	. += span_notice("You can remove the hair with any sharp object.")
+	. += span_notice("Você pode remover o cabelo com qualquer objeto afiado.")
 
 //Step two - washing..... it's actually in washing machine code.
 
 /obj/item/stack/sheet/hairlesshide
 	name = "hairless hide"
-	desc = "This hide was stripped of its hair, but still needs washing and tanning."
-	singular_name = "hairless hide piece"
+	desc = "Esta pele foi despojada do cabelo, mas ainda precisa ser lavada e bronzeada."
+	singular_name = "peça de couro sem pelos"
 	icon_state = "sheet-hairlesshide"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/hairlesshide
@@ -410,13 +410,13 @@ GLOBAL_LIST_INIT(bear_pelt_recipes, list ( \
 
 /obj/item/stack/sheet/hairlesshide/examine(mob/user)
 	. = ..()
-	. += span_notice("You can clean it up by washing in the water.")
+	. += span_notice("Pode limpar lavando na água.")
 
 //Step three - drying
 /obj/item/stack/sheet/wethide
 	name = "wet hide"
-	desc = "This hide has been cleaned but still needs to be dried."
-	singular_name = "wet hide piece"
+	desc = "Esta pele foi limpa mas ainda precisa ser seca."
+	singular_name = "Um pedaço de couro molhado."
 	icon_state = "sheet-wetleather"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/wethide
@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(bear_pelt_recipes, list ( \
 
 /obj/item/stack/sheet/wethide/examine(mob/user)
 	. = ..()
-	. += span_notice("You can dry it up to make leather.")
+	. += span_notice("Pode secar para fazer couro.")
 
 /obj/item/stack/sheet/wethide/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
 	. = ..()

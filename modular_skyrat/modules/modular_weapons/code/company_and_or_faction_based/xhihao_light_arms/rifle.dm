@@ -4,8 +4,8 @@
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized
 	name = "\improper Rengo Precision Rifle"
-	desc = "A heavily modified Sakhno rifle, parts made by Xhihao light arms based around Jupiter herself. \
-		Has a higher capacity than standard Sakhno rifles, fitting eight .310 cartridges."
+	desc = "Um rifle Sakhno fortemente modificado, peças feitas por Xhihao braços leves baseados em torno de Júpiter.\
+Tem uma capacidade maior que os rifles Sakhno padrão, montando oito cartuchos .310."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/xhihao_light_arms/guns40x.dmi'
 	icon_state = "rengo"
 	worn_icon_state = "enchanted_rifle" // Not actually magical looking, just looks closest to this one
@@ -26,7 +26,7 @@
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/rifle/boltaction/sporterized/examine_more(mob/user)
 	. = ..()
@@ -45,7 +45,7 @@
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "Sakhno extended internal magazine"
-	desc = "How did you get it out?"
+	desc = "Como conseguiu tirá-lo?"
 	ammo_type = /obj/item/ammo_casing/strilka310
 	caliber = CALIBER_STRILKA310
 	max_ammo = 8
@@ -58,6 +58,6 @@
 */
 
 /obj/item/storage/toolbox/guncase/soviet/sakhno
-	desc = "A weapon's case. This one is green and looks pretty old, but is otherwise in decent condition."
+	desc = "Um caso de arma. Este é verde e parece bem velho, mas está em condições decentes."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/cases.dmi'
 	material_flags = NONE // ????? Why do these have materials enabled??

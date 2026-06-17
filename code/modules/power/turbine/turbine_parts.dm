@@ -5,7 +5,7 @@
 
 /obj/item/turbine_parts
 	name = "turbine parts"
-	desc = "you really should call an admin"
+	desc = "Você realmente deveria chamar um administrador."
 	icon = 'icons/obj/machines/engine/turbine.dmi'
 	icon_state = "inlet_compressor"
 
@@ -21,7 +21,7 @@
 		var/obj/item/stack/material = required_parts[TURBINE_UPGRADE_PART]
 		. += span_notice("Can be upgraded with [required_parts[TURBINE_UPGRADE_AMOUNT]] [initial(material.name)] sheets.")
 	else
-		. += span_notice("Is already at max tier.")
+		. += span_notice("Já está no nível máximo.")
 
 /**
  * Returns the max values of various attributes of this turbine based on its tier
@@ -71,12 +71,12 @@
 
 	var/list/required_parts = get_tier_upgrades()
 	if(!length(required_parts))
-		balloon_alert(user, "already at max tier!")
+		balloon_alert(user, "Já no nível máximo!")
 		return ITEM_INTERACT_FAILURE
 
 	var/obj/item/stack/sheet/material = attacking_item
 	if(!istype(material, required_parts[TURBINE_UPGRADE_PART]))
-		balloon_alert(user, "incorrect part!")
+		balloon_alert(user, "Parte incorreta!")
 		return ITEM_INTERACT_FAILURE
 
 	var/amount = required_parts[TURBINE_UPGRADE_AMOUNT]
@@ -90,17 +90,17 @@
 
 /obj/item/turbine_parts/compressor
 	name = "compressor part"
-	desc = "Install in a turbine engine compressor to increase its performance"
+	desc = "Instale em um compressor de turbinas para aumentar seu desempenho."
 	icon_state = "compressor_part"
 
 /obj/item/turbine_parts/rotor
 	name = "rotor part"
-	desc = "Install in a turbine engine rotor to increase its performance"
+	desc = "Instale em um rotor de turbina para aumentar seu desempenho."
 	icon_state = "rotor_part"
 
 /obj/item/turbine_parts/stator
 	name = "stator part"
-	desc = "Install in a turbine engine turbine to increase its performance"
+	desc = "Instale em uma turbina para aumentar seu desempenho."
 	icon_state = "stator_part"
 
 /obj/item/turbine_parts/stator/get_tier_value(param)

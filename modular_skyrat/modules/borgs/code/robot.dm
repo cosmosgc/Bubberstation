@@ -54,9 +54,9 @@
 	set category = "AI Commands"
 	set desc = "Select your resting pose."
 	if(!can_rest())
-		to_chat(src, span_warning("You can't do that!"))
+		to_chat(src, span_warning("Não pode fazer isso!"))
 		return
-	var/choice = tgui_alert(src, "Select resting pose", "", list("Resting", "Sitting", "Belly up"))
+	var/choice = tgui_alert(src, "Escolha a pose de descanso", "", list("Resting", "Sitting", "Belly up"))
 	switch(choice)
 		if("Resting")
 			robot_rest_style = ROBOT_REST_NORMAL
@@ -73,17 +73,17 @@
 	set name = "Lay down"
 	set category = "AI Commands"
 	if(!can_rest())
-		to_chat(src, span_warning("You can't do that!"))
+		to_chat(src, span_warning("Não pode fazer isso!"))
 		return
 	if(stat != CONSCIOUS) //Make sure we don't enable movement when not concious
 		return
 	if(robot_resting)
-		to_chat(src, span_notice("You are now getting up."))
+		to_chat(src, span_notice("Você está se levantando agora."))
 		robot_resting = FALSE
 		mobility_flags = MOBILITY_FLAGS_DEFAULT
 		on_standing_up()
 	else
-		to_chat(src, span_notice("You are now laying down."))
+		to_chat(src, span_notice("Você está agora deitado."))
 		robot_resting = robot_rest_style
 		on_lying_down()
 	update_icons()

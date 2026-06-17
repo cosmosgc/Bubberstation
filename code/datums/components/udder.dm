@@ -112,7 +112,7 @@
 /obj/item/udder/proc/handle_consumption(atom/movable/food, mob/user)
 	if(locate(food.type) in src)
 		if(user)
-			user.balloon_alert(user, "already full!")
+			user.balloon_alert(user, "Já está cheio!")
 		return
 	playsound(udder_mob.loc,'sound/items/eatfood.ogg', 50, TRUE)
 	udder_mob.visible_message(span_notice("[udder_mob] gobbles up [food]!"), span_notice("You gobble up [food]!"))
@@ -183,7 +183,7 @@
 	if(transferred)
 		user.visible_message(span_notice("[user] milks [udder_mob] using \the [milk_holder]."), span_notice("You milk [udder_mob] using \the [milk_holder]."))
 	else
-		to_chat(user, span_warning("The udder is dry. Wait a bit longer..."))
+		to_chat(user, span_warning("O úbere está seco. Espere um pouco mais..."))
 
 /**
  * # gutlunch udder subtype

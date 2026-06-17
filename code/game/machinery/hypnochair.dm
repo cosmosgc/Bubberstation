@@ -1,6 +1,6 @@
 /obj/machinery/hypnochair
 	name = "enhanced interrogation chamber"
-	desc = "A device used to perform \"enhanced interrogation\" through invasive mental conditioning."
+	desc = "Um dispositivo usado para executar\"interrogatório aprimorado\"através do condicionamento mental invasivo."
 	icon = 'icons/obj/machines/implant_chair.dmi'
 	icon_state = "hypnochair"
 	base_icon_state = "hypnochair"
@@ -95,7 +95,7 @@
 		return
 	victim = C
 	if(C.get_eye_protection() <= 0)
-		to_chat(C, span_warning("Strobing coloured lights assault you relentlessly! You're losing your ability to think straight!"))
+		to_chat(C, span_warning("Acender luzes coloridas agredi-lo implacavelmente! Você está perdendo sua habilidade de pensar direito!"))
 		C.become_blind(HYPNOCHAIR_TRAIT)
 		ADD_TRAIT(C, TRAIT_DEAF, HYPNOCHAIR_TRAIT)
 	interrogating = TRUE
@@ -112,10 +112,10 @@
 	if(SPT_PROB(5, seconds_per_tick) && !(C.get_eye_protection() > 0))
 		to_chat(C, span_hypnophrase(pick(\
 			"...blue... red... green... blue, red, green, blueredgreen[span_small("blueredgreen")]",\
-			"...pretty colors...",\
-			"...you keep hearing words, but you can't seem to understand them...",\
-			"...so peaceful...",\
-			"...an annoying buzz in your ears..."\
+			"Cores bonitas...",\
+			"...você continua ouvindo palavras, mas não consegue entendê-las...",\
+			"...tão tranquilo...",\
+			"...um zumbido irritante em seus ouvidos..."\
 		)))
 
 	use_energy(active_power_usage * seconds_per_tick)

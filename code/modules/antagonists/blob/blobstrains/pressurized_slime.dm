@@ -1,13 +1,13 @@
 //does low brute damage, oxygen damage, and stamina damage and wets tiles when damaged
 /datum/blobstrain/reagent/pressurized_slime
 	name = "Pressurized Slime"
-	description = "will do low brute and oxygen damage, high stamina damage, and makes tiles under targets very slippery."
+	description = "Vai fazer baixo dano bruto e oxigênio, alta resistência, e faz azulejos sob alvos muito escorregadios."
 	effectdesc = "will also make tiles slippery near attacked blobs."
 	analyzerdescdamage = "Does low brute and oxygen damage, high stamina damage, and makes tiles under targets very slippery, extinguishing them. Is resistant to brute attacks."
 	analyzerdesceffect = "When attacked or killed, lubricates nearby tiles, extinguishing anything on them."
 	color = "#AAAABB"
 	complementary_color = "#BBBBAA"
-	blobbernaut_message = "emits slime at"
+	blobbernaut_message = "emite lodo em"
 	message = "The blob splashes into you"
 	message_living = ", and you gasp for breath"
 	reagent = /datum/reagent/blob/pressurized_slime
@@ -21,7 +21,7 @@
 
 /datum/blobstrain/reagent/pressurized_slime/death_reaction(obj/structure/blob/B, damage_flag)
 	if(damage_flag == MELEE || damage_flag == BULLET || damage_flag == LASER)
-		B.visible_message(span_boldwarning("The blob ruptures, spraying the area with liquid!"))
+		B.visible_message(span_boldwarning("A bolha rompe, pulverizando a área com líquido!"))
 		extinguisharea(B, 50)
 
 /datum/blobstrain/reagent/pressurized_slime/proc/extinguisharea(obj/structure/blob/B, probchance)
@@ -36,7 +36,7 @@
 
 /datum/reagent/blob/pressurized_slime
 	name = "Pressurized Slime"
-	taste_description = "a sponge"
+	taste_description = "Uma esponja."
 	color = "#AAAABB"
 
 /datum/reagent/blob/pressurized_slime/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message, touch_protection, mob/eye/blob/overmind)

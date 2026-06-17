@@ -45,7 +45,7 @@
 
 	if(!silent)
 		owner.current.visible_message(span_deconversion_message("[owner.current] looks like [owner.current.p_theyve()] just reverted to [owner.current.p_their()] old faith!"), ignored_mobs = owner.current)
-		to_chat(owner.current, span_userdanger("An unfamiliar white light flashes through your mind, cleansing the taint of the Geometer and all your memories as her servant."))
+		to_chat(owner.current, span_userdanger("Uma luz branca não familiar passa pela sua mente, limpando a mancha do Geômetro e todas as suas memórias como serva dela."))
 		owner.current.log_message("has renounced the cult of Nar'Sie!", LOG_ATTACK, color=COLOR_CULT_RED)
 
 	for(var/datum/action/innate/cult/cult_buttons in owner.current.actions)
@@ -92,7 +92,7 @@
 
 /datum/antagonist/cult/on_mindshield(mob/implanter)
 	if(!silent)
-		to_chat(owner.current, span_warning("You feel something interfering with your mental conditioning, but you resist it!"))
+		to_chat(owner.current, span_warning("Sente algo interferindo no seu condicionamento mental, mas resiste!"))
 	return
 
 /datum/antagonist/cult/admin_add(datum/mind/new_owner,mob/admin)
@@ -143,7 +143,7 @@
 	. += cult_give_item(/obj/item/melee/cultblade/dagger, H)
 	if(metal)
 		. += cult_give_item(/obj/item/stack/sheet/runed_metal/ten, H)
-	to_chat(owner, "These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>")
+	to_chat(owner, "Isso vai ajudá-lo a começar o culto nesta estação. Use-os bem, e lembre-se - você não é o único.</span>")
 
 ///Attempts to make a new item and put it in a potential inventory slot in the provided mob.
 /datum/antagonist/cult/proc/cult_give_item(obj/item/item_path, mob/living/carbon/human/mob)
@@ -161,11 +161,11 @@
 
 /datum/antagonist/cult/proc/admin_give_dagger(mob/admin)
 	if(!equip_cultist(metal = FALSE))
-		to_chat(admin, span_danger("Spawning dagger failed!"))
+		to_chat(admin, span_danger("Adaga de Spawning falhou!"))
 
 /datum/antagonist/cult/proc/admin_give_metal(mob/admin)
 	if (!equip_cultist(metal = TRUE))
-		to_chat(admin, span_danger("Spawning runed metal failed!"))
+		to_chat(admin, span_danger("O metal usado falhou!"))
 
 /datum/antagonist/cult/proc/admin_take_all(mob/admin)
 	var/mob/living/current = owner.current
@@ -204,11 +204,11 @@
 			to_chat(cult_mind.current, span_cult_large("[owner.current] is your cult's Master! \
 				Follow [owner.current.p_their()] orders to the best of your ability!"))
 
-	to_chat(owner.current, span_cult_large("<span class='warningplain'>You are the cult's Master</span>. \
-		As the cult's Master, you have a unique title and loud voice when communicating, are capable of marking \
-		targets, such as a location or a noncultist, to direct the cult to them, and, finally, you are capable of \
-		summoning the entire living cult to your location <b><i>once</i></b>. Use these abilities to direct the cult \
-		to victory at any cost."))
+	to_chat(owner.current, span_cult_large("<span class='warningplain'>Você é o Mestre do culto.</span>. \
+Como Mestre do culto, você tem um título único e voz alta ao se comunicar, são capazes de marcar\
+alvos, como um local ou um não-cultista, para direcionar o culto para eles, e, finalmente, você é capaz de\
+Convocando todo o culto vivo para sua localização.<b><i>Uma vez</i></b>Use essas habilidades para dirigir o culto.\
+à vitória a qualquer custo."))
 
 	return TRUE
 
@@ -235,7 +235,7 @@
 	if(pass_role)
 		pass_role.Remove(owner.current)
 	owner.current.update_mob_action_buttons()
-	to_chat(owner.current, span_cult_large("You have been demoted from being the cult's Master, you are now a mere acolyte!"))
+	to_chat(owner.current, span_cult_large("Você foi rebaixado de ser o Mestre do culto, você agora é um mero acólito!"))
 	return TRUE
 
 ///If dead (and Narsie isn't summoned), will alert all Cultists of their death, sending their location out.

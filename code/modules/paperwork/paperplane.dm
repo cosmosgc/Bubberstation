@@ -1,6 +1,6 @@
 /obj/item/paperplane
 	name = "paper plane"
-	desc = "Paper, folded in the shape of a plane."
+	desc = "Papel, dobrado na forma de um avião."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paperplane"
 	base_icon_state = "paperplane"
@@ -28,7 +28,7 @@
 	// SKYRAT EDIT END
 
 /obj/item/paperplane/syndicate
-	desc = "Paper, masterfully folded in the shape of a plane."
+	desc = "Papel, magistralmente dobrado na forma de um avião."
 	throwforce = 20
 	hit_probability = 100
 

@@ -4,7 +4,7 @@
 /// Rise into the air and slam down, knocking people away. No real cooldown but has escalating endlag if used in quick succession.
 /datum/action/cooldown/mob_cooldown/wing_buffet
 	name = "Wing Buffet"
-	desc = "Rise into the air and release a powerful gust from your wings, blowing attackers away. Becomes more tiring if used in quick succession."
+	desc = "Levante-se no ar e solte uma rajada poderosa de suas asas, soprando atacantes para longe. Torna-se mais cansativo se usado em rápida sucessão."
 	button_icon = 'icons/effects/magic.dmi'
 	button_icon_state = "tornado"
 	cooldown_time = 1 SECONDS
@@ -74,7 +74,7 @@
 		if(candidate == owner || candidate.faction_check_atom(owner))
 			continue
 		owner.visible_message(span_boldwarning("[candidate] is knocked back by the gust!"))
-		to_chat(candidate, span_userdanger("You're knocked back by the gust!"))
+		to_chat(candidate, span_userdanger("Você foi derrubado pela rajada!"))
 		var/dir_to_target = get_dir(get_turf(owner), get_turf(candidate))
 		var/throwtarget = get_edge_target_turf(target, dir_to_target)
 		candidate.safe_throw_at(throwtarget, range = 10, speed = 1, thrower = owner)

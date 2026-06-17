@@ -29,7 +29,7 @@
 			if(tgui_alert(usr,"Are you really sure you want to delete all instances of type [deleting.type]?",,list("Yes","No")) != "Yes")
 				return
 
-			if(tgui_alert(usr,"Second confirmation required. Delete?",,list("Yes","No")) != "Yes")
+			if(tgui_alert(usr,"Segunda confirmação necessária. Deletar?",,list("Yes","No")) != "Yes")
 				return
 
 			var/O_type = deleting.type
@@ -42,7 +42,7 @@
 							qdel(Obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist")
+						to_chat(usr, "Não existem casos deste tipo.")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) ")
 					message_admins(span_notice("[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) "))
@@ -54,7 +54,7 @@
 							qdel(Obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist")
+						to_chat(usr, "Não existem casos deste tipo.")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) ")
 					message_admins(span_notice("[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) "))

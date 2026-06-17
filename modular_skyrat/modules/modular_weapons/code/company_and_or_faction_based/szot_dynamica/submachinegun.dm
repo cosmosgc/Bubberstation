@@ -2,9 +2,9 @@
 
 /obj/item/gun/ballistic/automatic/miecz
 	name = "\improper Miecz Submachine Gun"
-	desc = "A short barrel, further compacted conversion of the 'Lanca' rifle to fire pistol caliber .27-54 cartridges. \
-		Due to the intended purpose of the weapon, and less than optimal ranged performance of the projectile, it has \
-		nothing more than basic glow-sights as opposed to the ranged scope Lanca users might be used to."
+	desc = "Um pequeno barril, mais compactado conversão do rifle 'Lanca' para disparar cartuchos calibre 27-54.\
+Devido ao propósito pretendido da arma, e menor que o ideal desempenho variado do projétil, ele tem\
+Nada mais do que uma visão de brilho básica, ao contrário do alcance que os usuários de Lanca podem estar acostumados."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/szot_dynamica/guns_48.dmi'
 	icon_state = "miecz"
@@ -44,7 +44,7 @@
 
 /obj/item/gun/ballistic/automatic/miecz/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/miecz/examine_more(mob/user)
 	. = ..()

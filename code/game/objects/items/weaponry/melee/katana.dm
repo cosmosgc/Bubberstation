@@ -1,6 +1,6 @@
 /obj/item/katana
 	name = "katana"
-	desc = "Woefully underpowered in D20."
+	desc = "Pobremente subpotenciado em D20."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "katana"
 	inhand_icon_state = "katana"

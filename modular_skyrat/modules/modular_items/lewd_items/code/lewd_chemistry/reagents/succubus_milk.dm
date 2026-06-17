@@ -9,9 +9,9 @@
 
 /datum/reagent/drug/aphrodisiac/succubus_milk
 	name = "succubus milk"
-	description = "A volatile collodial mixture derived from milk that encourages mammary production via a potent estrogen mix."
+	description = "Uma mistura colodial volátil derivada do leite que incentiva a produção mamária através de uma potente mistura de estrogênio."
 	color = "#E60584"
-	taste_description = "a milky ice cream like flavour"
+	taste_description = "Um sorvete leitoso como o sabor"
 	overdose_threshold = 20
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
@@ -159,5 +159,5 @@
 /datum/chemical_reaction/succubus_milk
 	results = list(/datum/reagent/drug/aphrodisiac/succubus_milk = 8)
 	required_reagents = list(/datum/reagent/medicine/salglu_solution = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/silicon = 3, /datum/reagent/drug/aphrodisiac/crocin = 3)
-	mix_message = "the reaction gives off a mist of milk."
+	mix_message = "A reação emite uma névoa de leite."
 	erp_reaction = TRUE

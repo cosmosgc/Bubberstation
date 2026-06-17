@@ -114,7 +114,7 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, span_admin("You are too late to cancel that event"))
+			to_chat(usr, span_admin("Chegou tarde demais para cancelar o evento."))
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
@@ -122,7 +122,7 @@
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
 	if(href_list["different_event"])
 		if(!triggering)
-			to_chat(usr, span_admin("Too late to change events now!"))
+			to_chat(usr, span_admin("Tarde demais para mudar os eventos agora!"))
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] chose to have event [name] rolled into a different event.")

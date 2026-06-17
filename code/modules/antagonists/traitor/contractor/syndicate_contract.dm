@@ -175,27 +175,27 @@
 			victim.flash_act()
 			victim.adjust_confusion(1 SECONDS)
 			victim.adjust_eye_blur(5 SECONDS)
-			to_chat(victim, span_warning("You feel strange..."))
+			to_chat(victim, span_warning("Você se sente estranho..."))
 			time_until_next = 6 SECONDS
 		if(VICTIM_EXPERIENCE_FIRST_HIT)
-			to_chat(victim, span_warning("That pod did something to you..."))
+			to_chat(victim, span_warning("Aquela cápsula fez algo com você..."))
 			victim.adjust_dizzy(3.5 SECONDS)
 			time_until_next = 6.5 SECONDS
 		if(VICTIM_EXPERIENCE_SECOND_HIT)
-			to_chat(victim, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
+			to_chat(victim, span_warning("Seus quilos... Parece que vai estourar seu crânio!"))
 			victim.flash_act()
 			victim.adjust_confusion(2 SECONDS)
 			victim.adjust_eye_blur(3 SECONDS)
 			time_until_next = 3 SECONDS
 		if(VICTIM_EXPERIENCE_THIRD_HIT)
-			to_chat(victim, span_warning("Your head pounds..."))
+			to_chat(victim, span_warning("Seus quilos..."))
 			time_until_next = 10 SECONDS
 		if(VICTIM_EXPERIENCE_LAST_HIT)
 			victim.flash_act()
 			victim.Unconscious(200)
-			to_chat(victim, span_hypnophrase("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
-				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
-				so it's only a matter of time before we ship you back...\"</i>"))
+			to_chat(victim, span_hypnophrase("Um milhão de vozes ecoam em sua cabeça...<i>\"Sua mente guardava muitos segredos valiosos.\
+Nós agradecemos por fornecer. Seu valor é gasto, e você será resgatado de volta ao seu posto. Nós sempre somos pagos,\
+Então é só uma questão de tempo antes de mandá-lo de volta...\"</i>"))
 			victim.adjust_eye_blur(10 SECONDS)
 			victim.adjust_dizzy(1.5 SECONDS)
 			victim.adjust_confusion(2 SECONDS)

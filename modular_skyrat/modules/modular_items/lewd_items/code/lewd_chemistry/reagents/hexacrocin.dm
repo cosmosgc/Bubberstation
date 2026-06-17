@@ -3,9 +3,9 @@
 // Hexacrocin. Advanced aphrodisiac that can cause brain traumas.
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin
 	name = "hexacrocin"
-	description = "Chemically condensed form of basic crocin. This aphrodisiac is extremely powerful and addictive for most animals.\
-					Addiction withdrawals can cause brain damage and shortness of breath. Overdose can lead to brain traumas."
-	taste_description = "liquid desire"
+	description = "Forma química condensada de crocina básica. Este afrodisíaco é extremamente poderoso e viciante para a maioria dos animais.\
+Retiradas de vício podem causar danos cerebrais e falta de ar. Overdose pode levar a traumas cerebrais."
+	taste_description = "Desejo líquido"
 	color = "#FF2BFF"
 	overdose_threshold = 25
 	overdose_pref_datum = /datum/preference/toggle/erp/bimbofication
@@ -40,7 +40,7 @@
 	if(prob(OD_CHANCE_NO_TRAUMA) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
 		return ..()
 
-	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
+	to_chat(exposed_mob, span_purple("Sua libido está pirando! Parece que falar é muito mais difícil..."))
 	exposed_mob.gain_trauma(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_BASIC)
 	ADD_TRAIT(exposed_mob, TRAIT_BIMBO, TRAIT_LEWDCHEM)
 
@@ -48,7 +48,7 @@
 	results = list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 1)
 	required_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 6, /datum/reagent/phenol = 1)
 	required_temp = 600
-	mix_message = "The mixture rapidly condenses and darkens in color..."
+	mix_message = "A mistura condensa rapidamente e escurece em cor..."
 	erp_reaction = TRUE
 
 #undef OD_CHANCE_NO_TRAUMA

@@ -258,7 +258,7 @@
 	if(light)
 		examine_list += "It has \a [light] [is_light_removable ? "mounted on it with a few <b>screws</b>" : "permanently mounted on it"]."
 	else
-		examine_list += "It has a mounting point for a <b>seclite</b>."
+		examine_list += "Tem um ponto de montagem para um<b>Seclite</b>."
 
 /// Signal proc for [COMSIG_ATOM_UPDATE_OVERLAYS] that updates our parent with our seclite overlays, if we have some.
 /datum/component/seclite_attachable/proc/on_update_overlays(obj/item/source, list/overlays)

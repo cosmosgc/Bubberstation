@@ -1,7 +1,7 @@
 /obj/item/organ/stomach/ethereal
 	name = "biological battery"
 	icon_state = "stomach-p" //Welp. At least it's more unique in functionaliy.
-	desc = "A crystal-like organ that stores the electric charge of ethereals."
+	desc = "Um órgão tipo cristal que armazena a carga elétrica de etéreas."
 	organ_traits = list(TRAIT_NOHUNGER) // We have our own hunger mechanic.
 	/// Where the energy of the stomach is stored.
 	var/obj/item/stock_parts/power_store/cell
@@ -47,7 +47,7 @@
 	if(flags & SHOCK_ILLUSION)
 		return
 	adjust_charge(shock_damage * siemens_coeff * 2)
-	to_chat(owner, span_notice("You absorb some of the shock into your body!"))
+	to_chat(owner, span_notice("Você absorve um pouco do choque em seu corpo!"))
 
 /**Changes the energy of the crystal stomach.
 * Args:
@@ -91,7 +91,7 @@
 			carbon.clear_alert(ALERT_ETHEREAL_OVERCHARGE)
 
 /obj/item/organ/stomach/ethereal/proc/discharge_process(mob/living/carbon/carbon)
-	to_chat(carbon, span_warning("You begin to lose control over your charge!"))
+	to_chat(carbon, span_warning("Você começa a perder o controle sobre sua carga!"))
 	carbon.visible_message(span_danger("[carbon] begins to spark violently!"))
 
 	var/static/mutable_appearance/overcharge //shameless copycode from lightning spell
@@ -110,11 +110,11 @@
 		// Only a small amount of the energy gets discharged as the zap. The rest dissipates as heat. Keeps the damage and energy from the zap the same regardless of what STANDARD_CELL_CHARGE is.
 		var/discharged_energy = -adjust_charge(ETHEREAL_CHARGE_FULL - cell.charge()) * min(7500 / STANDARD_CELL_CHARGE, 1)
 		tesla_zap(source = carbon, zap_range = 2, power = discharged_energy, cutoff = 1 KILO JOULES, zap_flags = ZAP_OBJ_DAMAGE | ZAP_LOW_POWER_GEN | ZAP_ALLOW_DUPLICATES)
-		carbon.visible_message(span_danger("[carbon] violently discharges energy!"), span_warning("You violently discharge energy!"))
+		carbon.visible_message(span_danger("[carbon] violently discharges energy!"), span_warning("Você descarrega energia violentamente!"))
 
 		if(prob(10)) //chance of developing heart disease to dissuade overcharging oneself
 			carbon.apply_status_effect(/datum/status_effect/heart_attack)
-			to_chat(carbon, span_userdanger("You're pretty sure you just felt your heart stop for a second there.."))
+			to_chat(carbon, span_userdanger("Tem certeza que sentiu seu coração parar por um segundo?"))
 			carbon.playsound_local(carbon, 'sound/effects/singlebeat.ogg', 100, 0)
 
 		carbon.Paralyze(100)

@@ -1,6 +1,6 @@
 /obj/item/grenade/c4
 	name = "C-4 charge"
-	desc = "Used to put holes in specific areas without too much extra hole. A saboteur's favorite."
+	desc = "Fazia buracos em áreas específicas sem muito furo extra. O favorito de um sabotador."
 	icon_state = "plastic-explosive0"
 	inhand_icon_state = "plastic-explosive"
 	worn_icon_state = "c4"
@@ -55,7 +55,7 @@
 	return ..()
 
 /obj/item/grenade/c4/screwdriver_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("The wire panel can be accessed without a screwdriver."))
+	to_chat(user, span_notice("O painel pode ser acessado sem chave de fenda."))
 	return TRUE
 
 /obj/item/grenade/c4/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
@@ -112,7 +112,7 @@
 
 /obj/item/grenade/c4/proc/plant_c4(atom/bomb_target, mob/living/user)
 	if(bomb_target != user && HAS_TRAIT(user, TRAIT_PACIFISM) && isliving(bomb_target))
-		to_chat(user, span_warning("You don't want to harm other living beings!"))
+		to_chat(user, span_warning("Você não quer machucar outros seres vivos!"))
 		return FALSE
 
 	to_chat(user, span_notice("You start planting [src]. The timer is set to [det_time]..."))
@@ -132,7 +132,7 @@
 	notify_ghosts(
 		"[user.real_name] has planted \a [src] on [target] with a [det_time] second fuse!",
 		source = bomb_target,
-		header = "Explosive Planted",
+		header = "Explosivo plantado",
 		alert_overlay = bomb_target_image,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
 	)
@@ -183,7 +183,7 @@
 
 /obj/item/grenade/c4/x4
 	name = "X-4 charge"
-	desc = "A shaped high-explosive breaching charge. Designed to ensure user safety and wall nonsafety."
+	desc = "Um ataque de alta explosão. Projetado para garantir a segurança do usuário e a segurança da parede."
 	icon_state = "plasticx40"
 	inhand_icon_state = "plasticx4"
 	worn_icon_state = "x4"

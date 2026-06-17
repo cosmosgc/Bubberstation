@@ -39,9 +39,9 @@
 /datum/mafia_ability/heal/proc/prevent_kill(datum/source, datum/mafia_controller/game, datum/mafia_role/attacker, lynch)
 	SIGNAL_HANDLER
 	if(host_role == target_role)
-		host_role.send_message_to_player(span_warning("You were attacked last night!"))
+		host_role.send_message_to_player(span_warning("Você foi atacado ontem à noite!"))
 		return MAFIA_PREVENT_KILL
-	host_role.send_message_to_player(span_warning("The person you protected tonight was attacked!"))
+	host_role.send_message_to_player(span_warning("A pessoa que você protegeu esta noite foi atacada!"))
 	target_role.send_message_to_player(span_greentext("You were attacked last night, but [saving_message]!"))
 	return MAFIA_PREVENT_KILL
 
@@ -52,7 +52,7 @@
 /datum/mafia_ability/heal/defend
 	name = "Defend"
 	ability_action = "defend"
-	saving_message = "security fought off the attacker"
+	saving_message = "A segurança lutou contra o agressor."
 
 /datum/mafia_ability/heal/defend/prevent_kill(datum/source, datum/mafia_controller/game, datum/mafia_role/attacker, lynch)
 	. = ..()
@@ -60,6 +60,6 @@
 		return FALSE
 
 	if(attacker.kill(game, host_role, FALSE)) //you attack the attacker
-		attacker.send_message_to_player(span_userdanger("You have been ambushed by Security!"))
+		attacker.send_message_to_player(span_userdanger("Você foi emboscado pela segurança!"))
 	host_role.kill(game, attacker, FALSE) //the attacker attacks you, they were able to attack the target so they can attack you.
 	return FALSE

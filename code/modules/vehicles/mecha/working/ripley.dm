@@ -1,5 +1,5 @@
 /obj/vehicle/sealed/mecha/ripley
-	desc = "Autonomous Power Loader Unit MK-I. Designed primarily around heavy lifting, the Ripley can be outfitted with utility equipment to fill a number of roles."
+	desc = "Unidade de Carregador de Energia Autônoma MK-I. Projetado principalmente em torno de levantamento pesado, o Ripley pode ser equipado com equipamentos utilitários para preencher vários papéis."
 	name = "\improper APLU MK-I \"Ripley\""
 	icon_state = "ripley"
 	base_icon_state = "ripley"
@@ -66,7 +66,7 @@
 	laser = 5
 
 /obj/vehicle/sealed/mecha/ripley/mk2
-	desc = "Autonomous Power Loader Unit MK-II. This prototype Ripley is refitted with a pressurized cabin, trading its prior speed for atmospheric protection and armor."
+	desc = "Unidade de Carregador de Energia Autônoma MK-II. Este protótipo Ripley está equipado com uma cabine pressurizada, trocando sua velocidade prévia por proteção atmosférica e armadura."
 	name = "\improper APLU MK-II \"Ripley\""
 	icon_state = "ripleymkii"
 	base_icon_state = "ripleymkii"
@@ -92,7 +92,7 @@
 	acid = 100
 
 /obj/vehicle/sealed/mecha/ripley/paddy
-	desc = "Autonomous Power Loader Unit Subtype Paddy. A Modified MK-I Ripley design intended for light security use."
+	desc = "Unidade de Carregador de Energia Autônoma Subtipo Paddy. Um projeto modificado MK-I Ripley destinado para uso de segurança leve."
 	name = "\improper APLU \"Paddy\""
 	icon_state = "paddy"
 	base_icon_state = "paddy"
@@ -185,7 +185,7 @@
 	)
 
 /obj/vehicle/sealed/mecha/ripley/deathripley
-	desc = "OH SHIT IT'S THE DEATHSQUAD WE'RE ALL GONNA DIE"
+	desc = "Merda, é o quartel da morte que todos vamos morrer."
 	name = "\improper DEATH-RIPLEY"
 	icon_state = "deathripley"
 	base_icon_state = "deathripley"
@@ -207,7 +207,7 @@
 	)
 
 /obj/vehicle/sealed/mecha/ripley/deathripley/real
-	desc = "OH SHIT IT'S THE DEATHSQUAD WE'RE ALL GONNA DIE. FOR REAL"
+	desc = "Merda, é o quartel da morte que todos vamos morrer. De verdade"
 	equip_by_category = list(
 		MECHA_L_ARM = /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill,
 		MECHA_R_ARM = null,
@@ -217,7 +217,7 @@
 	)
 
 /obj/vehicle/sealed/mecha/ripley/mining
-	desc = "An old, dusty mining Ripley."
+	desc = "Um velho e empoeirado Ripley."
 	name = "\improper APLU \"Miner\""
 
 /obj/vehicle/sealed/mecha/ripley/mining/Initialize(mapload)
@@ -247,7 +247,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/vehicle/sealed/mecha/ripley/cargo
 	name = "\improper APLU \"Big Bess\""
-	desc = "An ailing, old, repurposed cargo hauler. Most of its equipment wires are frayed or missing and its frame is rusted."
+	desc = "Um cargueiro doente, velho e reaproveitado. A maioria de seus fios de equipamento estão desgastados ou desaparecidos e seu quadro está enferrujado."
 	icon_state = "hauler"
 	base_icon_state = "hauler"
 	silicon_icon_state = "hauler-empty"
@@ -280,7 +280,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/item/mecha_parts/mecha_equipment/ejector
 	name = "cargo compartment"
-	desc = "Holds cargo loaded with a hydraulic clamp."
+	desc = "Mantém a carga carregada com uma pinça hidráulica."
 	icon_state = "mecha_bin"
 	equipment_slot = MECHA_UTILITY
 	detachable = FALSE
@@ -366,7 +366,7 @@ GLOBAL_DATUM(cargo_ripley, /obj/vehicle/sealed/mecha/ripley/cargo)
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage
 	name = "holding cell"
-	desc = "Holds suspects loaded with a hydraulic claw."
+	desc = "Mantém suspeitos carregados com uma garra hidráulica."
 	cargo_capacity = 4
 
 /obj/item/mecha_parts/mecha_equipment/ejector/seccage/Initialize(mapload)

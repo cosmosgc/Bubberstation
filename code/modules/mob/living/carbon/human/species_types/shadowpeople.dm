@@ -77,21 +77,21 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "moon",
 			SPECIES_PERK_NAME = "Shadowborn",
-			SPECIES_PERK_DESC = "Their skin blooms in the darkness. All kinds of damage, \
-				no matter how extreme, will heal over time as long as there is no light.",
+			SPECIES_PERK_DESC = "Sua pele floresce na escuridão. Todos os tipos de danos,\
+Não importa o quão extremo, vai curar com o tempo enquanto não houver luz.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "eye",
 			SPECIES_PERK_NAME = "Nightvision",
-			SPECIES_PERK_DESC = "Their eyes are adapted to the night, and can see in the dark with no problems.",
+			SPECIES_PERK_DESC = "Seus olhos são adaptados à noite, e podem ver no escuro sem problemas.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "sun",
 			SPECIES_PERK_NAME = "Lightburn",
-			SPECIES_PERK_DESC = "Their flesh withers in the light. Any exposure to light is \
-				incredibly painful for the shadowperson, charring their skin.",
+			SPECIES_PERK_DESC = "Sua carne murcha na luz. Qualquer exposição à luz é\
+incrivelmente doloroso para a sombra, carbonizando sua pele.",
 		),
 	)
 
@@ -99,7 +99,7 @@
 
 /obj/item/organ/eyes/shadow
 	name = "burning red eyes"
-	desc = "Even without their shadowy owner, looking at these eyes gives you a sense of dread."
+	desc = "Mesmo sem seu dono sombrio, olhar para esses olhos te dá uma sensação de medo."
 	icon = 'icons/obj/medical/organs/shadow_organs.dmi'
 	iris_overlay = null
 	color_cutoffs = list(20, 10, 40)
@@ -109,7 +109,7 @@
 /// the key to none of their powers
 /obj/item/organ/brain/shadow
 	name = "shadowling tumor"
-	desc = "Something that was once a brain, before being remolded by a shadowling. It has adapted to the dark, irreversibly."
+	desc = "Algo que já foi um cérebro, antes de ser remodelado por um sombra. Adaptou-se ao escuro, irreversivelmente."
 	icon = 'icons/obj/medical/organs/shadow_organs.dmi'
 	shade_color = "grey-ish"
 
@@ -128,7 +128,7 @@
 
 	INVOKE_ASYNC(flashed, TYPE_PROC_REF(/mob, emote), "scream")
 	flashed.visible_message(span_danger("[flashed] wails in pain as a burst of light singes their flesh!"), \
-		span_danger("You wail in pain as the sudden burst of light singes your flesh!"), \
-		span_danger("Something wails in pain! It sounds like a terrifying monster! Good thing you can't see it, or you'd probably be freaking out right now."))
+		span_danger("Você chora de dor enquanto a explosão repentina de luz canta sua carne!"), \
+		span_danger("Algo chora de dor! Parece um monstro assustador! Ainda bem que não pode ver, ou estaria surtando agora."))
 
 	return FLASH_OVERRIDDEN

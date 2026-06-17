@@ -22,11 +22,11 @@
 		return FALSE
 
 	if(liquids.fire_state) //Use an extinguisher first
-		to_chat(user, span_warning("You can't scoop up anything while it's on fire!"))
+		to_chat(user, span_warning("Não pode pegar nada enquanto está pegando fogo!"))
 		return TRUE
 
 	if(liquids.height == 1)
-		to_chat(user, span_warning("The puddle is too shallow to scoop anything up!"))
+		to_chat(user, span_warning("A poça é muito rasa para pegar qualquer coisa!"))
 		return TRUE
 
 	var/free_space = reagents.maximum_volume - reagents.total_volume

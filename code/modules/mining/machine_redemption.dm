@@ -3,7 +3,7 @@
 
 /obj/machinery/mineral/ore_redemption
 	name = "ore redemption machine"
-	desc = "A machine that accepts ore and instantly transforms it into workable material sheets. Points for ore are generated based on type and can be redeemed at a mining equipment vendor."
+	desc = "Uma máquina que aceita minério e instantaneamente a transforma em folhas de material praticáveis. Pontos para minério são gerados com base no tipo e podem ser resgatados em um fornecedor de equipamentos de mineração."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "ore_redemption"
 	base_icon_state = "ore_redemption"
@@ -77,7 +77,7 @@
 /obj/machinery/mineral/ore_redemption/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += span_notice("Alt-click to rotate the input and output direction.")
+		. += span_notice("Alt-clique para girar a entrada e direção de saída.")
 
 
 /obj/machinery/mineral/ore_redemption/proc/silo_redeem_points(obj/machinery/mineral/ore_redemption/machine, container, obj/item/stack/ore/gathered_ore)
@@ -337,7 +337,7 @@
 			if(!materials.can_use_resource(user_data = ID_DATA(usr)))
 				return
 			else if(!allowed(usr)) //Check the ID inside, otherwise check the user
-				to_chat(usr, span_warning("Required access not found."))
+				to_chat(usr, span_warning("Acesso necessário não encontrado."))
 			else
 				var/datum/material/mat = locate(params["id"])
 
@@ -376,7 +376,7 @@
 					output = alloy.create_result(src)
 				unload_mineral(output)
 			else
-				to_chat(usr, span_warning("Required access not found."))
+				to_chat(usr, span_warning("Acesso necessário não encontrado."))
 			return TRUE
 
 /obj/machinery/mineral/ore_redemption/ex_act(severity, target)

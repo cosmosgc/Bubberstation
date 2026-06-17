@@ -10,7 +10,7 @@
 	name = "station tube station"
 	icon_state = "closed_station0"
 	base_icon_state = "station0"
-	desc = "The lynchpin of the transit system."
+	desc = "O linchamento do sistema de trânsito."
 	exit_delay = 1
 	enter_delay = 2
 	tube_construction = /obj/structure/c_transit_tube/station
@@ -224,7 +224,7 @@
 /obj/structure/transit_tube/station/dispenser
 	name = "station tube pod dispenser"
 	icon_state = "open_dispenser0"
-	desc = "The lynchpin of a GOOD transit system."
+	desc = "O linchamento de um bom sistema de trânsito."
 	enter_delay = 1
 	tube_construction = /obj/structure/c_transit_tube/station/dispenser
 	base_icon_state = "dispenser0"
@@ -246,7 +246,7 @@
 
 /obj/structure/transit_tube/station/dispenser/examine(mob/user)
 	. = ..()
-	. += span_notice("This station will create a pod for you to ride, no need to wait for one.")
+	. += span_notice("Esta estação vai criar uma cápsula para você montar, não precisa esperar por uma.")
 
 /obj/structure/transit_tube/station/dispenser/Bumped(atom/movable/AM)
 	if(!(istype(AM) && AM.dir == boarding_dir) || AM.anchored)
@@ -254,7 +254,7 @@
 	if(!isliving(AM))
 		if(!COOLDOWN_FINISHED(src, freight_output))
 			if(COOLDOWN_FINISHED(src, freight_message))
-				AM.visible_message(span_notice("Freight pod dispenser is recharging. Please wait."))
+				AM.visible_message(span_notice("O distribuidor está recarregando. Por favor, espere."))
 				COOLDOWN_START(src, freight_message, 10 SECONDS)
 			return
 		COOLDOWN_START(src, freight_output, 2 SECONDS)

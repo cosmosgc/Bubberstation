@@ -1,6 +1,6 @@
 /datum/mutation/harmonizing_pulses
 	name = "Harmonizing Pulses"
-	desc = "Allows the user to heal plants and creatures at the cost of pacifying themself"
+	desc = "Permite que o usuário cure plantas e criaturas ao custo de pacificar-se."
 	quality = POSITIVE
 	difficulty = 16
 	locked = TRUE
@@ -11,7 +11,7 @@
 
 /datum/action/cooldown/mob_cooldown/turtle_tree/healer/harmonizing_pulses
 	name = "Harmonizing Pulses"
-	desc = "Emit pulses that heals plants and people alike."
+	desc = "Pulso de emite que cura plantas e pessoas iguais."
 	button_icon = 'modular_zubbers/icons/mob/actions/actions.dmi'
 	button_icon_state = "harmonizing_pulses"
 	tree_range = 3

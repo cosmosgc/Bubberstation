@@ -10,7 +10,7 @@
 
 /obj/machinery/oven
 	name = "oven"
-	desc = "Why do they call it oven when you of in the cold food of out hot eat the food?"
+	desc = "Por que chamam isso de forno quando você na comida fria de fora quente come a comida?"
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "oven_off"
 	base_icon_state = "oven"
@@ -244,7 +244,7 @@
 
 /obj/machinery/oven/range
 	name = "range"
-	desc = "And Oven AND a Stove? I guess that's why it's got range!"
+	desc = "E forno e um fogão? Acho que é por isso que tem alcance!"
 	icon_state = "range_off"
 	base_icon_state = "range"
 	pass_flags_self = PASSMACHINE|PASSTABLE|LETPASSTHROW // Like the griddle, short
@@ -261,7 +261,7 @@
 
 /obj/item/plate/oven_tray
 	name = "oven tray"
-	desc = "Time to bake cookies!"
+	desc = "Hora de fazer biscoitos!"
 	icon_state = "oven_tray"
 	max_items = 6
 	biggest_w_class = WEIGHT_CLASS_BULKY
@@ -285,7 +285,7 @@
 		return NONE
 
 	if(length(contents) >= max_items)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "Está cheio!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(!istype(item, /obj/item/storage/bag/tray))

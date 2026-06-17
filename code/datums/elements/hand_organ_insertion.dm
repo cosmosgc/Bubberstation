@@ -37,7 +37,7 @@
 	user.visible_message(
 		message = span_danger("\The [user] begin[user.p_s()] inserting \the [organ] into [user.p_their()] [zone_name]!"),
 		self_message = span_danger("You begin inserting \the [organ] into your [zone_name]!"),
-		blind_message = span_hear("You hear squelching!")
+		blind_message = span_hear("Você ouve o barulho!")
 	)
 
 	user.balloon_alert(user, "inserting...")
@@ -45,7 +45,7 @@
 	playsound(user, 'sound/items/handling/surgery/organ2.ogg', vol = 80, vary = TRUE, ignore_walls = FALSE)
 
 	if (!do_after(user, insertion_time, extra_checks = CALLBACK(src, PROC_REF(can_insert_organ), user, organ)))
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "Interrompido!")
 		return
 
 	zone_name = user.parse_zone_with_bodypart(organ.zone)
@@ -53,10 +53,10 @@
 	user.visible_message(
 		message = span_danger("\The [user] insert[user.p_s()] \the [organ] into [user.p_their()] [zone_name]!"),
 		self_message = span_danger("You insert \the [organ] into your [zone_name]!"),
-		blind_message = span_hear("You hear a loud, final squelch!")
+		blind_message = span_hear("Você ouve um barulho final!")
 	)
 
-	user.balloon_alert(user, "inserted!")
+	user.balloon_alert(user, "inserido!")
 
 	playsound(user, 'sound/items/handling/surgery/organ1.ogg', vol = 80, vary = TRUE, ignore_walls = FALSE)
 	user.temporarilyRemoveItemFromInventory(organ, force = TRUE)
@@ -75,6 +75,6 @@
 		return FALSE
 
 	if (!organ.useable)
-		user.balloon_alert(user, "unusable!")
+		user.balloon_alert(user, "Inutilizável!")
 		return FALSE
 	return TRUE

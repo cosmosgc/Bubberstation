@@ -5,7 +5,7 @@
 /datum/smite/dock_pay/effect(client/user, mob/living/target)
 	. = ..()
 	if (!iscarbon(target))
-		to_chat(user, span_warning("This must be used on a carbon mob."), confidential = TRUE)
+		to_chat(user, span_warning("Isso deve ser usado em uma multidão de carbono."), confidential = TRUE)
 		return
 	var/mob/living/carbon/dude = target
 	var/obj/item/card/id/card = dude.get_idcard(TRUE)
@@ -16,9 +16,9 @@
 		to_chat(user, span_warning("[dude] does not have an ID card with an account!"), confidential = TRUE)
 		return
 	if (card.registered_account.account_balance == 0)
-		to_chat(user,  span_warning("ID Card lacks any funds. No pay to dock."))
+		to_chat(user,  span_warning("Cartão de identificação não tem fundos. Sem pagamento para atracar."))
 		return
-	var/new_cost = input("How much pay are we docking? Negative = giving money. Current balance: [card.registered_account.account_balance] [MONEY_NAME].", "BUDGET CUTS") as num|null
+	var/new_cost = input("How much pay are we docking? Negative = giving money. Current balance: [card.registered_account.account_balance] [MONEY_NAME].", "CORTOS ORÇAMENTAIS") as num|null
 	if (!new_cost)
 		return
 	if(new_cost < 0)

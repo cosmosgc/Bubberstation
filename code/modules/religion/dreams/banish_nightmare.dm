@@ -1,7 +1,7 @@
 /datum/religion_rites/banish_nightmare
 	name = "Banish Nightmare"
-	desc = "Banish the corpse of a Nightmare or its heart back from whence it came, protecting the dreams of \
-		the station and earning favor. If a heart is present, you will be rewarded with a special blessing."
+	desc = "Banir o cadáver de um Pesadelo ou seu coração de volta de onde veio, protegendo os sonhos de\
+a estação e ganhando favores. Se um coração está presente, você será recompensado com uma bênção especial."
 	favor_cost = 0
 	ritual_length = 20 SECONDS
 
@@ -27,7 +27,7 @@
 			break
 
 	if(!has_nightmare)
-		to_chat(user, span_warning("There is no corpse or heart of a Nightmare to banish!"))
+		to_chat(user, span_warning("Não há cadáver ou coração de um Pesadelo para banir!"))
 		return FALSE
 
 	return ..()
@@ -70,12 +70,12 @@
 
 /datum/mood_event/banish_nightmare
 	mood_change = 4
-	description = "I banished a nightmare and protected our dreams!"
+	description = "Eu bani um pesadelo e protegi nossos sonhos!"
 	timeout = 10 MINUTES
 
 /obj/item/organ/heart/evolved/sacred/dreamer
 	name = "blessed sacred heart"
-	desc = "Banish the shadows!"
+	desc = "Banir as sombras!"
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 1.5
 	/// Magic charges we block
 	var/charges = 3

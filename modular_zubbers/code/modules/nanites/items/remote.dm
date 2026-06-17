@@ -6,7 +6,7 @@
 
 /obj/item/nanite_remote
 	name = "nanite remote control"
-	desc = "A device that can remotely control active nanites through wireless signals."
+	desc = "Um dispositivo que pode controlar remotamente os nanites ativos através de sinais sem fio."
 	w_class = WEIGHT_CLASS_SMALL
 	req_access = list(ACCESS_ROBOTICS)
 	icon = 'modular_zubbers/icons/obj/devices/nanite_devices.dmi'
@@ -23,7 +23,7 @@
 /obj/item/nanite_remote/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += span_notice("Alt-click to unlock.")
+		. += span_notice("Alt-click para desbloquear.")
 
 /obj/item/nanite_remote/click_alt(mob/user)
 	. = ..()
@@ -35,7 +35,7 @@
 			locked = FALSE
 			update_appearance()
 		else
-			to_chat(user, span_warning("Access denied."))
+			to_chat(user, span_warning("Acesso negado."))
 
 /obj/item/nanite_remote/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
@@ -182,7 +182,7 @@
 
 /obj/item/nanite_remote/comm
 	name = "nanite communication remote"
-	desc = "A device that can send text messages to specific programs."
+	desc = "Um dispositivo que pode enviar mensagens de texto para programas específicos."
 	icon_state = "nanite_comm_remote"
 	var/comm_message = ""
 

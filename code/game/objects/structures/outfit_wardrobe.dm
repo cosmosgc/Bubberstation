@@ -3,7 +3,7 @@
 
 /obj/structure/outfit_wardrobe
 	name = "outfit wardrobe"
-	desc = "Peek in and select one of several snazzy outfits. Narnia not included."
+	desc = "Olhe e selecione uma de várias roupas elegantes. Nárnia não incluída."
 	icon = 'icons/obj/storage/closet.dmi'
 	icon_state = "fullcabinet"
 	base_icon_state = "fullcabinet"
@@ -37,7 +37,7 @@
 		return
 
 	if(one_use && HAS_TRAIT_FROM(human_user, TRAIT_WARDROBE_USED, wardrobe_id))
-		to_chat(human_user, span_notice("You already picked an outfit!"))
+		to_chat(human_user, span_notice("Você já escolheu uma roupa!"))
 		return
 
 	var/list/display_classes = list()
@@ -57,7 +57,7 @@
 		display_classes[dressup] = option
 
 	if(!length(display_classes))
-		to_chat(human_user, span_warning("There are no available outfits!"))
+		to_chat(human_user, span_warning("Não há roupas disponíveis!"))
 		return
 
 	sort_list(display_classes)

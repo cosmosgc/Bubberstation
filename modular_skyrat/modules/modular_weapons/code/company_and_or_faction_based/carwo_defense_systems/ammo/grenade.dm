@@ -19,7 +19,7 @@
 
 /obj/item/ammo_casing/c980grenade
 	name = ".980 Tydhouer practice grenade"
-	desc = "A large grenade shell that will detonate at a range given to it by the gun that fires it. Practice shells disintegrate into harmless sparks."
+	desc = "Uma grande granada que detonará em um alcance dado pela arma que a dispara. Praticar conchas se desintegram em faíscas inofensivas."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/ammo.dmi'
 	icon_state = "980_solid"
@@ -65,7 +65,7 @@
 
 /obj/item/ammo_box/c980grenade
 	name = "ammo box (.980 Tydhouer practice)"
-	desc = "A box of four .980 Tydhouer practice grenades. Instructions on the box indicate these are dummy practice rounds that will disintegrate into sparks on detonation. Neat!"
+	desc = "Uma caixa de 4.980 Tydhouer pratica granadas. As instruções na caixa indicam que são balas de treino que se desintegrarão em faíscas de detonação. Puro!"
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/ammo.dmi'
 	icon_state = "980box_solid"
@@ -82,7 +82,7 @@
 
 /obj/item/ammo_casing/c980grenade/smoke
 	name = ".980 Tydhouer smoke grenade"
-	desc = "A large grenade shell that will detonate at a range given to it by the gun that fires it. Bursts into a laser-weakening smoke cloud."
+	desc = "Uma grande granada que detonará em um alcance dado pela arma que a dispara. Explode em uma nuvem de fumaça fraca."
 
 	icon_state = "980_smoke"
 
@@ -98,7 +98,7 @@
 
 /obj/item/ammo_box/c980grenade/smoke
 	name = "ammo box (.980 Tydhouer smoke)"
-	desc = "A box of four .980 Tydhouer smoke grenades. Instructions on the box indicate these are smoke rounds that will make a small cloud of laser-dampening smoke on detonation."
+	desc = "Uma caixa de quatro.980 Tydhouer fuma granadas. As instruções na caixa indicam que são balas de fumaça que farão uma pequena nuvem de fumaça na detonação."
 
 	icon_state = "980box_smoke"
 
@@ -108,7 +108,7 @@
 
 /obj/item/ammo_casing/c980grenade/shrapnel
 	name = ".980 Tydhouer shrapnel grenade"
-	desc = "A large grenade shell that will detonate at a range given to it by the gun that fires it. Explodes into shrapnel on detonation."
+	desc = "Uma grande granada que detonará em um alcance dado pela arma que a dispara. Explode em estilhaços de detonação."
 
 	icon_state = "980_explosive"
 
@@ -135,7 +135,7 @@
 
 /obj/item/ammo_box/c980grenade/shrapnel
 	name = "ammo box (.980 Tydhouer shrapnel)"
-	desc = "A box of four .980 Tydhouer shrapnel grenades. Instructions on the box indicate these are shrapnel rounds. Its also covered in hazard signs, odd."
+	desc = "Uma caixa de quatro granadas Tydhouer. Instruções na caixa indicam que são balas de estilhaços. Também está coberto de sinais de perigo, estranho."
 
 	icon_state = "980box_explosive"
 
@@ -156,7 +156,7 @@
 
 /obj/item/ammo_casing/c980grenade/shrapnel/phosphor
 	name = ".980 Tydhouer phosphor grenade"
-	desc = "A large grenade shell that will detonate at a range given to it by the gun that fires it. Explodes into smoke and flames on detonation."
+	desc = "Uma grande granada que detonará em um alcance dado pela arma que a dispara. Explode em fumaça e chamas na detonação."
 
 	icon_state = "980_gas_alternate"
 
@@ -177,7 +177,7 @@
 
 /obj/item/ammo_box/c980grenade/shrapnel/phosphor
 	name = "ammo box (.980 Tydhouer phosphor)"
-	desc = "A box of four .980 Tydhouer phosphor grenades. Instructions on the box indicate these are incendiary explosive rounds. Its also covered in hazard signs, odd."
+	desc = "Uma caixa de quatro granadas de fósforo Tydhouer. As instruções na caixa indicam que são balas explosivas incendiárias. Também está coberto de sinais de perigo, estranho."
 
 	icon_state = "980box_gas_alternate"
 
@@ -198,7 +198,7 @@
 
 /obj/item/ammo_casing/c980grenade/riot
 	name = ".980 Tydhouer tear gas grenade"
-	desc = "A large grenade shell that will detonate at a range given to it by the gun that fires it. Bursts into a tear gas cloud."
+	desc = "Uma grande granada que detonará em um alcance dado pela arma que a dispara. Explode em uma nuvem de gás lacrimogêneo."
 
 	icon_state = "980_gas"
 
@@ -214,7 +214,7 @@
 
 /obj/item/ammo_box/c980grenade/riot
 	name = "ammo box (.980 Tydhouer tear gas)"
-	desc = "A box of four .980 Tydhouer tear gas grenades. Instructions on the box indicate these are smoke rounds that will make a small cloud of laser-dampening smoke on detonation."
+	desc = "Uma caixa de quatro granadas de gás lacrimogêneo Tydhouer. As instruções na caixa indicam que são balas de fumaça que farão uma pequena nuvem de fumaça na detonação."
 
 	icon_state = "980box_gas"
 

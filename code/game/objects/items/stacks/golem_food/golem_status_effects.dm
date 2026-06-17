@@ -23,7 +23,7 @@
 
 /atom/movable/screen/alert/status_effect/golem_status
 	name = "Metamorphic %SOMETHING%"
-	desc = "You've enjoyed a tasty meal and are now experiencing a bug."
+	desc = "Você gostou de uma refeição saborosa e agora está experimentando um inseto."
 	icon_state = "template"
 	/// Overlay we show on top of the template icon
 	var/mutable_appearance/mineral_overlay
@@ -145,7 +145,7 @@
 	mineral_name = "uranium"
 	applied_fluff = "Glowing crystals sprout from your body. You feel energised!"
 	alert_icon_state = "sheet-uranium"
-	alert_desc = "Internal radiation is providing all of your nutritional needs."
+	alert_desc = "A radiação interna está fornecendo todas as suas necessidades nutricionais."
 	filter_color = LIGHT_COLOR_GREEN
 
 /datum/status_effect/golem/uranium/on_apply()
@@ -167,7 +167,7 @@
 	mineral_name = "silver"
 	applied_fluff = "Shining plates grace your shoulders. You feel holy!"
 	alert_icon_state = "sheet-silver"
-	alert_desc = "Your body repels supernatural influences."
+	alert_desc = "Seu corpo repele influências sobrenaturais."
 	filter_color = LIGHT_COLOR_FAINT_BLUE
 
 /datum/status_effect/golem/silver/on_apply()
@@ -192,7 +192,7 @@
 	mineral_name = "plasma"
 	applied_fluff = "Plasma cooling rods sprout from your body. You can take the heat!"
 	alert_icon_state = "sheet-plasma"
-	alert_desc = "You are protected from high pressure and can convert heat damage into power."
+	alert_desc = "Você está protegido de alta pressão e pode converter danos ao calor em energia."
 	filter_color = LIGHT_COLOR_PINK
 
 /datum/status_effect/golem/plasma/on_apply()
@@ -244,7 +244,7 @@
 	mineral_name = "plasteel"
 	applied_fluff = "Plasteel plates seal you tight. You feel insulated!"
 	alert_icon_state = "sheet-plasteel"
-	alert_desc = "You are sealed against the cold, and against low pressure environments."
+	alert_desc = "Estão selados contra o frio, e contra ambientes de baixa pressão."
 	filter_color = LIGHT_COLOR_DEFAULT
 
 /datum/status_effect/golem/plasteel/on_apply()
@@ -264,7 +264,7 @@
 	mineral_name = "gold"
 	applied_fluff = "Shining plates form across your body. You feel reflective!"
 	alert_icon_state = "sheet-gold_2"
-	alert_desc = "Your shining body reflects energy weapons."
+	alert_desc = "Seu corpo brilhante reflete armas de energia."
 	filter_color = LIGHT_COLOR_DIM_YELLOW
 
 /datum/status_effect/golem/gold/on_apply()
@@ -285,7 +285,7 @@
 	applied_fluff = "Sparkling gems bend light around you. You feel stealthy!"
 	tick_interval = 0.25 SECONDS
 	alert_icon_state = "sheet-diamond"
-	alert_desc = "Light is bending around you, making you hard to see while still and faster while moving."
+	alert_desc = "A luz está se curvando em torno de você, tornando-o difícil de ver enquanto ainda e mais rápido enquanto se move."
 	filter_color = LIGHT_COLOR_ELECTRIC_CYAN
 	/// Alpha to remove per second while stood still
 	var/alpha_per_tick = 20
@@ -370,7 +370,7 @@
 	mineral_name = "titanium"
 	applied_fluff = "Titanium rings burst from your arms. You feel ready to take on the world!"
 	alert_icon_state = "sheet-titanium"
-	alert_desc = "You are more resistant to physical blows, and pack more of a punch yourself."
+	alert_desc = "Você é mais resistente a golpes físicos, e embalar mais de um soco."
 	filter_color = LIGHT_COLOR_HALOGEN
 	/// Amount to reduce brute damage by
 	var/brute_modifier = 0.8 // golems already have an innate 0.5 brute resistance - this is multiplicate on top of that
@@ -436,7 +436,7 @@
 	mineral_name = "bananium"
 	applied_fluff = "Bananium veins ooze from your crags. You feel a little funny!"
 	alert_icon_state = "sheet-bananium"
-	alert_desc = "You feel kind of funny."
+	alert_desc = "Você se sente meio estranho."
 	filter_color = LIGHT_COLOR_BRIGHT_YELLOW
 	/// The slipperiness component which we have applied
 	var/datum/component/slippery/slipperiness
@@ -485,14 +485,14 @@
 	. = ..()
 	if (!.)
 		return
-	to_chat(owner, span_notice("You start to emit a healthy glow."))
+	to_chat(owner, span_notice("Você começa a emitir um brilho saudável."))
 	lightbulb = owner.mob_light(glow_range, glow_power, glow_color)
 	owner.add_filter(LIGHTBULB_FILTER, 2, list("type" = "outline", "color" = glow_color, "alpha" = 60, "size" = 1))
 
 /datum/status_effect/golem_lightbulb/on_remove()
 	QDEL_NULL(lightbulb)
 	owner.remove_filter(LIGHTBULB_FILTER)
-	to_chat(owner, span_warning("Your glow fades."))
+	to_chat(owner, span_warning("Seu brilho desaparece."))
 	return ..()
 
 #undef LIGHTBULB_FILTER

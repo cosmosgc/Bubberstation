@@ -6,7 +6,7 @@
 
 	base_icon_state = "netpod"
 	circuit = /obj/item/circuitboard/machine/netpod
-	desc = "A link to the netverse. It has an assortment of cables to connect yourself to a virtual domain."
+	desc = "Um link para o Netverse. Tem uma variedade de cabos para se conectar a um domínio virtual."
 	icon = 'icons/obj/machines/bitrunning.dmi'
 	icon_state = "netpod"
 	max_integrity = 300
@@ -84,29 +84,29 @@
 			. += span_notice("Its hatch can be [EXAMINE_HINT("pried")] [state_open ? "closed" : "open"].")
 
 	if(isnull(server_ref?.resolve()))
-		. += span_infoplain("It's not connected to anything.")
-		. += span_infoplain("Netpods must be built within 4 tiles of a server.")
+		. += span_infoplain("Não está ligado a nada.")
+		. += span_infoplain("Netpods devem ser construídos dentro de 4 peças de um servidor.")
 		return
 
 	if(!isobserver(user))
-		. += span_infoplain("Drag yourself into the pod to engage the link.")
-		. += span_infoplain("It has limited resuscitation capabilities. Remaining in the pod can heal some injuries.")
-		. += span_infoplain("It has a security system that will alert the occupant if it is tampered with.")
+		. += span_infoplain("Arraste-se para a cápsula para ligar o link.")
+		. += span_infoplain("Tem capacidade de ressuscitação limitada. Permanecer na cápsula pode curar alguns ferimentos.")
+		. += span_infoplain("Tem um sistema de segurança que alertará o ocupante se for adulterado.")
 		if(copy_body)
-			. += span_infoplain("Occupant scanning is currently enabled, which will cause bit avatars to look like the occupant when first created.")
+			. += span_infoplain("A varredura de ocupantes está ativada, o que fará com que os avatares pareçam com o ocupante quando criado.")
 		. += span_infoplain("Alt-click to [copy_body ? "disable" : "enable"] occupant scanning.")
 
 	if(isnull(occupant))
-		. += span_infoplain("It's currently unoccupied.")
+		. += span_infoplain("Está desocupado.")
 		return
 
 	. += span_infoplain("It's currently occupied by [occupant].")
 
 	if(isobserver(user))
-		. += span_notice("As an observer, you can click this netpod to jump to its avatar.")
+		. += span_notice("Como observador, você pode clicar neste netpod para saltar para o seu avatar.")
 		return
 
-	. += span_notice("It can be pried open with a crowbar, but its safety mechanisms will alert the occupant.")
+	. += span_notice("Pode ser aberto com um pé de cabra, mas seus mecanismos de segurança alertarão o ocupante.")
 
 
 /obj/machinery/netpod/update_icon_state()

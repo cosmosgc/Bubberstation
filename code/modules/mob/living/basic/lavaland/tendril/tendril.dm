@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(tendrils, list())
 
 /mob/living/basic/mining/tendril
 	name = "necropolis tendril"
-	desc = "A vile tendril of corruption, originating deep underground."
+	desc = "Um vil tendil de corrupção, originando-se no subsolo."
 	icon = 'icons/mob/simple/lavaland/tendril.dmi'
 	icon_state = "tendril"
 	icon_living = "tendril"
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(tendrils, list())
 	attack_sound = 'sound/items/weapons/pierce.ogg'
 	attack_verb_continuous = "pierces through"
 	attack_verb_simple = "pierce through"
-	throw_blocked_message = "does nothing to the thick shell of"
+	throw_blocked_message = "Não faz nada com a casca grossa de"
 	move_resist = INFINITY
 
 	light_range = 3

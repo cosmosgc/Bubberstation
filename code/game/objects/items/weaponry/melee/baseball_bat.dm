@@ -1,6 +1,6 @@
 /obj/item/melee/baseball_bat
 	name = "baseball bat"
-	desc = "There ain't a skull in the league that can withstand a swatter."
+	desc = "Não há um crânio na liga que possa resistir a um golpe."
 	icon = 'icons/obj/weapons/bat.dmi'
 	icon_state = "baseball_bat"
 	inhand_icon_state = "baseball_bat"
@@ -38,12 +38,12 @@
 	if(!homerun_able)
 		return ..()
 	if(homerun_ready)
-		to_chat(user, span_warning("You're already ready to do a home run!"))
+		to_chat(user, span_warning("Você já está pronto para fazer um home run!"))
 		return ..()
-	to_chat(user, span_warning("You begin gathering strength..."))
+	to_chat(user, span_warning("Você começa a reunir forças..."))
 	playsound(get_turf(src), 'sound/effects/magic/lightning_chargeup.ogg', 65, TRUE)
 	if(do_after(user, 9 SECONDS, target = src))
-		to_chat(user, span_userdanger("You gather power! Time for a home run!"))
+		to_chat(user, span_userdanger("Reúna o poder! Hora de um home run!"))
 		homerun_ready = TRUE
 	return ..()
 
@@ -55,7 +55,7 @@
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
 	if(homerun_ready)
-		user.visible_message(span_userdanger("It's a home run!"))
+		user.visible_message(span_userdanger("É um home run!"))
 		if(!QDELETED(target))
 			target.throw_at(throw_target, rand(8,10), 14, user)
 		SSexplosions.medturf += throw_target
@@ -124,7 +124,7 @@
 	name = "cricket bat"
 	icon_state = "baseball_bat_brit"
 	inhand_icon_state = "baseball_bat_brit"
-	desc = pick("You've got red on you.", "You gotta know what a crumpet is to understand cricket.")
+	desc = pick("Você tem vermelho.", "Você tem que saber o que é um bolinho para entender o críquete.")
 
 /obj/item/melee/baseball_bat/proc/on_hit(atom/movable/target)
 	target.remove_filter("baseball_launch")
@@ -133,7 +133,7 @@
 
 /obj/item/melee/baseball_bat/homerun
 	name = "home run bat"
-	desc = "This thing looks dangerous... Dangerously good at baseball, that is."
+	desc = "Essa coisa parece perigosa... Perigosamente bom no beisebol."
 	icon_state = "baseball_bat_home"
 	inhand_icon_state = "baseball_bat_home"
 	homerun_able = TRUE
@@ -141,7 +141,7 @@
 
 /obj/item/melee/baseball_bat/ablative
 	name = "metal baseball bat"
-	desc = "This bat is made of highly reflective, highly armored material."
+	desc = "Este morcego é feito de material altamente reflexivo, altamente blindado."
 	icon_state = "baseball_bat_metal"
 	inhand_icon_state = "baseball_bat_metal"
 	custom_materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 3.5)

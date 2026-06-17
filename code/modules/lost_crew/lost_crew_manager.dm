@@ -121,7 +121,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 /// A box for recovered items that can only be opened by the new crewmember
 /obj/item/storage/lockbox/mind
 	name = "mind lockbox"
-	desc = "A locked box, openable only by one mind."
+	desc = "Uma caixa trancada, aberta apenas por uma mente."
 
 	/// The mind needed to unlock the box
 	var/datum/mind/mind
@@ -144,7 +144,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 	if (user.mind == mind)
 		return TRUE
 	if (!silent)
-		balloon_alert(user, "access denied!")
+		balloon_alert(user, "Acesso negado!")
 	return FALSE
 
 /obj/item/storage/lockbox/mind/toggle_locked(mob/living/user)

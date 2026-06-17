@@ -1,6 +1,6 @@
 /obj/item/implant/tracking
 	name = "tracking implant"
-	desc = "Track with this."
+	desc = "Rastreie com isso."
 	actions_types = null
 	implant_flags = IMPLANT_TYPE_SECURITY
 	hud_icon_state = "hud_imp_tracking"
@@ -58,7 +58,7 @@
 
 /obj/item/implant/tracking/c38
 	name = "TRAC implant"
-	desc = "A smaller tracking implant that supplies power for only a few minutes."
+	desc = "Um implante de rastreamento menor que fornece energia por apenas alguns minutos."
 	implant_flags = NONE
 	///How long before this implant self-deletes?
 	var/lifespan = 5 MINUTES

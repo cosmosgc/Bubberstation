@@ -1,6 +1,6 @@
 /obj/item/spellbook
 	name = "spell book"
-	desc = "An unearthly tome that glows with power."
+	desc = "Um tomo sobrenatural que brilha com poder."
 	icon = 'icons/obj/service/library.dmi'
 	icon_state ="book"
 	worn_icon_state = "book"
@@ -39,7 +39,7 @@
 /obj/item/spellbook/proc/on_magic_charge(datum/source, datum/action/cooldown/spell/spell, mob/living/caster)
 	SIGNAL_HANDLER
 
-	to_chat(caster, span_warning("Glowing red letters appear on the front cover..."))
+	to_chat(caster, span_warning("Cartas vermelhas brilhantes aparecem na capa da frente..."))
 	to_chat(caster, span_red(pick(
 		"NICE TRY BUT NO!",
 		"CLEVER BUT NOT CLEVER ENOUGH!",
@@ -67,7 +67,7 @@
 
 	if(user.mind != owner)
 		if(IS_WIZARD_APPRENTICE(user))
-			to_chat(user, span_warning("If you got caught sneaking a peek from your teacher's spellbook, you'd likely be expelled from the Wizard Academy. Better not."))
+			to_chat(user, span_warning("Se você for pego espiando o livro de feitiços do seu professor, provavelmente será expulso da Academia de Mágicos. Melhor não."))
 		else
 			to_chat(user, span_warning("[src] does not recognize you as its owner and refuses to open!"))
 		return
@@ -86,10 +86,10 @@
 			return
 		var/obj/item/antag_spawner/contract/contract = O
 		if(contract.used)
-			to_chat(user, span_warning("The contract has been used, you can't get your points back now!"))
+			to_chat(user, span_warning("O contrato foi usado, você não pode recuperar seus pontos agora!"))
 			return
 
-		to_chat(user, span_notice("You feed the contract back into the spellbook, refunding your points."))
+		to_chat(user, span_notice("Você coloca o contrato de volta no livro de feitiços, devolvendo seus pontos."))
 		uses += contract_entry.cost
 		contract_entry.times--
 		qdel(O)
@@ -103,7 +103,7 @@
 			to_chat(user, span_warning("You can't refund [O]."))
 			return
 
-		to_chat(user, span_notice("On second thought, maybe summoning a demon isn't a funny idea. You refund your points."))
+		to_chat(user, span_notice("Pensando bem, talvez convocar um demônio não seja uma ideia engraçada. Reembolse seus pontos."))
 		uses += demon_entry.cost
 		demon_entry.times--
 		qdel(O)
@@ -117,7 +117,7 @@
 			to_chat(user, span_warning("You can't refund [O]."))
 			return
 
-		to_chat(user, span_notice("On second thought, maybe summoning a demon is a bad idea. You refund your points."))
+		to_chat(user, span_notice("Pensando bem, talvez chamar um demônio seja uma má ideia. Reembolse seus pontos."))
 		uses += demon_entry.cost
 		demon_entry.times--
 		qdel(O)
@@ -178,7 +178,7 @@
 		return
 	var/mob/living/carbon/human/wizard = usr
 	if(!istype(wizard))
-		to_chat(wizard, span_warning("The book doesn't seem to listen to lower life forms."))
+		to_chat(wizard, span_warning("O livro não parece ouvir formas de vida inferiores."))
 		return FALSE
 
 	// Actions that are always available
@@ -202,7 +202,7 @@
 			return TRUE
 
 	if(uses < initial(uses))
-		to_chat(wizard, span_warning("You need to have all your spell points to do this!"))
+		to_chat(wizard, span_warning("Você precisa ter todos os seus pontos de feitiço para fazer isso!"))
 		return FALSE
 
 	// Actions that are only available if you have full spell points
@@ -231,7 +231,7 @@
 	to_buy.times++
 	if(HAS_TRAIT(user, TRAIT_SPELLS_LOTTERY))
 		if(prob(50 / to_buy.cost))
-			to_chat(user, span_notice("This spell was given to you for free!"))
+			to_chat(user, span_notice("Este feitiço lhe foi dado de graça!"))
 			return TRUE
 	uses -= to_buy.cost
 	return TRUE

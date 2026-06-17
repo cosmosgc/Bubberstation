@@ -3,7 +3,7 @@
 
 /obj/structure/sink/fuel_well
 	name = "fuel well"
-	desc = "A bubbling pool of fuel. This would probably be valuable, had bluespace technology not destroyed the need for fossil fuels 200 years ago."
+	desc = "Uma piscina borbulhante de combustível. Isso provavelmente seria valioso, se a tecnologia do espaço azul não tivesse destruído a necessidade de combustíveis fósseis há 200 anos."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "puddle-oil"
 	dispensedreagent = /datum/reagent/fuel
@@ -17,12 +17,12 @@
 /obj/structure/sink/fuel_well/attack_hand(mob/user, list/modifiers)
 	flick("puddle-oil-splash",src)
 	reagents.expose(user, TOUCH, 20) //Covers target in 20u of fuel.
-	to_chat(user, span_notice("You touch the pool of fuel, only to get fuel all over yourself. It would be wise to wash this off with water."))
+	to_chat(user, span_notice("Você toca na piscina de combustível, só para se encher de combustível. Seria sábio lavar isso com água."))
 
 /obj/structure/sink/fuel_well/attackby(obj/item/O, mob/living/user, params)
 	flick("puddle-oil-splash",src)
 	if(O.tool_behaviour == TOOL_SHOVEL) //attempt to deconstruct the puddle with a shovel //attempt to deconstruct the puddle with a shovel
-		to_chat(user, "You fill in the fuel well with soil.")
+		to_chat(user, "Você enche o combustível com solo.")
 		O.play_tool_sound(src)
 		deconstruct()
 		return 1

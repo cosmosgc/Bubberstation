@@ -3,7 +3,7 @@
 	description = "\[CLASSIFED\]. THIS INCIDENT HAS BEEN REPORTED. DO NOT CONSUME. DISPOSE OF SAFELY."
 	color = "#191dff"
 	metabolization_rate = INFINITY
-	taste_description = "spare change"
+	taste_description = "Um trocado."
 	ph = 0.5
 
 /datum/reagent/changeling_zombie_virus/expose_mob(mob/living/carbon/human/exposed_mob, methods=TOUCH, reac_volume)
@@ -13,7 +13,7 @@
 
 /obj/item/reagent_containers/cup/glass/changeling_zombie_virus
 	name = "NT-CZV vial"
-	desc = "A small bottle of the NT-CZV pathogen. Nanotrasen Bioweapons inc."
+	desc = "Uma pequena garrafa do patógeno NT-CZV. Nanotrasen Bioarmas inc."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/changeling_zombie_virus=30)

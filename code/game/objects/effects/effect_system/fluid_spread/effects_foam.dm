@@ -344,7 +344,7 @@
 	layer = EDGED_TURF_LAYER
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	name = "foamed metal"
-	desc = "A lightweight foamed metal wall that can be used as base to construct a wall."
+	desc = "Uma parede de metal leve que pode ser usada como base para construir uma parede."
 	gender = PLURAL
 	max_integrity = 20
 	can_atmos_pass = ATMOS_PASS_DENSITY
@@ -425,7 +425,7 @@
 /// Atmos Backpack Resin, transparent, prevents atmos and filters the air
 /obj/structure/foamedmetal/resin
 	name = "\improper ATMOS Resin"
-	desc = "A lightweight, transparent resin used to suffocate fires, scrub the air of toxins, and restore the air to a safe temperature. It can be used as base to construct a wall."
+	desc = "Uma resina leve e transparente usada para sufocar incêndios, esfregar o ar de toxinas e restaurar o ar a uma temperatura segura. Pode ser usado como base para construir uma parede."
 	opacity = FALSE
 	icon_state = "atmos_resin"
 	alpha = 120

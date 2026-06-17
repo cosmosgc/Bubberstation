@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/shotgun
 	name = "shotgun"
-	desc = "A traditional shotgun with wood furniture and a four-shell capacity underneath."
+	desc = "Uma espingarda tradicional com móveis de madeira e uma capacidade de quatro conchas por baixo."
 	icon_state = "shotgun"
 	worn_icon_state = null
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
@@ -43,12 +43,12 @@
 
 /obj/item/gun/ballistic/shotgun/riot //for spawn in the armory
 	name = "riot shotgun"
-	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
+	desc = "Uma espingarda resistente com uma revista mais longa e um estoque tático fixo projetado para controle não letal de motins."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	fire_delay = 8 DECISECONDS
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/riot
-	sawn_desc = "Come with me if you want to live."
+	sawn_desc = "Venha comigo se quiser viver."
 	can_be_sawn_off = TRUE
 	chambered_attack_block = TRUE // necessary for riot shotgun due to fire_delay and wanting to shoot point blank without accidental melee
 
@@ -64,8 +64,8 @@
 
 /obj/item/gun/ballistic/shotgun/china_lake
 	name = "pump-action grenade launcher"
-	desc = "A pump-action grenade launcher. Typically found in the hands of space pirate raiders. The weight leaves a lot to be desired, but the high ammo capacity makes \
-		up for the bulk."
+	desc = "Um lançador de granadas. Tipicamente encontrado nas mãos de piratas espaciais. O peso deixa muito a desejar, mas a alta capacidade de munição faz\
+Para o grosso."
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	icon_state = "china_lake"
@@ -85,7 +85,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/combat //ICON OVERRIDDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "combat shotgun"
-	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
+	desc = "Uma espingarda semi-automática com móveis táticos e capacidade de seis cartuchos embaixo."
 	icon_state = "cshotgun"
 	inhand_icon_state = "shotgun_combat"
 	projectile_damage_multiplier = 1.5
@@ -102,7 +102,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact
 	name = "compact combat shotgun"
-	desc = "A compact version of the semi automatic combat shotgun. Lower magazine capacity, but more easily carried."
+	desc = "Uma versão compacta da espingarda de combate semi-automática. Capacidade de revista mais baixa, mas mais fácil de transportar."
 	icon_state = "cshotgunc"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/com/compact
 	w_class = WEIGHT_CLASS_BULKY
@@ -120,7 +120,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube
 	name = "cycler shotgun"
-	desc = "An advanced shotgun with two separate magazine tubes, allowing you to quickly toggle between ammo types."
+	desc = "Uma espingarda avançada com dois tubos de revista separados, permitindo que você troque rapidamente entre tipos de munição."
 	icon_state = "cycler"
 	inhand_icon_state = "bulldog"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -140,7 +140,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/bounty
 	name = "bounty cycler shotgun"
-	desc = "An advanced shotgun with two separate magazine tubes. This one shows signs of bounty hunting customization, meaning it likely has a dual rubber shot/fire slug load."
+	desc = "Uma espingarda avançada com dois tubos de revista separados. Este mostra sinais de personalização de caça à recompensa, o que significa que provavelmente tem uma carga dupla de balas de borracha/fogo."
 	alt_mag_type = /obj/item/ammo_box/magazine/internal/shot/tube/fire
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/deadly
@@ -149,7 +149,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to pump it.")
+	. += span_notice("Alt-click para bombear.")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize(mapload)
 	. = ..()
@@ -173,9 +173,9 @@
 	alternate_magazine = current_mag
 	toggled = !toggled
 	if(toggled)
-		balloon_alert(user, "switched to tube B")
+		balloon_alert(user, "mudou para o tubo B.")
 	else
-		balloon_alert(user, "switched to tube A")
+		balloon_alert(user, "mudou para o tubo A.")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/click_alt(mob/living/user)
 	rack()
@@ -185,9 +185,9 @@
 
 /obj/item/gun/ballistic/shotgun/bulldog
 	name = "\improper Bulldog Shotgun"
-	desc = "A 2-round burst fire, mag-fed shotgun for combat in narrow corridors, \
-		nicknamed 'Bulldog' by boarding parties. Compatible only with specialized 8-round drum magazines. \
-		Can have a secondary magazine attached to quickly swap between ammo types, or just to keep shooting."
+	desc = "Dois tiros de fogo, espingarda de caçadeira para combate em corredores estreitos,\
+Apelidado de \"Bulldog\" por grupos de embarque. Compatível apenas com revistas de bateria especializadas.\
+Pode ter uma revista secundária para trocar rapidamente entre tipos de munição, ou apenas para continuar filmando."
 	icon_state = "bulldog"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
@@ -337,7 +337,7 @@
 
 /obj/item/gun/ballistic/shotgun/doublebarrel
 	name = "double-barreled shotgun"
-	desc = "A true classic."
+	desc = "Um verdadeiro clássico."
 	icon_state = "dshotgun"
 	base_icon_state = "dshotgun"
 	inhand_icon_state = "shotgun_db"
@@ -347,7 +347,7 @@
 	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BACK
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/dual
-	sawn_desc = "Omar's coming!"
+	sawn_desc = "Omar está vindo!"
 	obj_flags = UNIQUE_RENAME
 	rack_sound_volume = 0
 	semi_auto = TRUE
@@ -365,19 +365,19 @@
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/slugs
 	name = "hunting shotgun"
-	desc = "A hunting shotgun used by the wealthy to hunt \"game\"."
-	sawn_desc = "A sawn-off hunting shotgun. In its new state, it's remarkably less effective at hunting... anything."
+	desc = "Uma caçadeira usada pelos ricos para caçar\"Jogo\"."
+	sawn_desc = "Uma espingarda de caça serrada. Em seu novo estado, é notavelmente menos eficaz em caçar... qualquer coisa."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/dual/slugs
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/breacherslug
 	name = "breaching shotgun"
-	desc = "A normal double-barrel shotgun that has been rechambered to fit breaching shells. Useful in breaching airlocks and windows, not much else."
-	sawn_desc = "A sawn-off breaching shotgun, making for a more compact configuration while still having the same capability as before."
+	desc = "Uma espingarda de cano duplo normal que foi recambered para caber conchas quebrando. Útil em romper comportas e janelas, não muito mais."
+	sawn_desc = "Uma espingarda serrada, fazendo uma configuração mais compacta enquanto ainda tem a mesma capacidade de antes."
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/dual/breacherslug
 
 /obj/item/gun/ballistic/shotgun/hook
 	name = "hook modified sawn-off shotgun"
-	desc = "Range isn't an issue when you can bring your victim to you."
+	desc = "Range não é problema quando pode trazer sua vítima até você."
 	icon_state = "hookshotgun"
 	inhand_icon_state = "hookshotgun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -406,7 +406,7 @@
 
 /obj/item/gun/ballistic/shotgun/hook/examine(mob/user)
 	. = ..()
-	. += span_notice("Right-click to shoot the hook.")
+	. += span_notice("Clique com o botão direito para atirar o gancho.")
 
 /obj/item/gun/ballistic/shotgun/hook/try_fire_gun(atom/target, mob/living/user, params)
 	if(LAZYACCESS(params2list(params), RIGHT_CLICK))
@@ -416,7 +416,7 @@
 ///An underpowered shotgun given to Pun Pun when the station job trait roll.
 /obj/item/gun/ballistic/shotgun/monkey
 	name = "\improper Barback's Shot"
-	desc = "A chimp-sized, single-shot and break-action shotgun with an unpractical stock."
+	desc = "Uma espingarda chimpanzé do tamanho de um único tiro e break-action com um estoque impraticável."
 	icon_state = "chimp_shottie"
 	inhand_icon_state = "shotgun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -445,7 +445,7 @@
 	icon_state = "donk_musket"
 	inhand_icon_state = "donk_musket"
 	worn_icon_state = "donk_musket"
-	desc = "A large-bore boltloading firearm with a classy wooden frame. Cheap, accurate, and easy to maintain. Reload and rack after every shot."
+	desc = "Uma arma de grande calibre com uma arma de madeira elegante. Barato, preciso e fácil de manter. Recarregue e rack depois de cada tiro."
 	semi_auto = TRUE
 	alternative_caliber = CALIBER_50BMG
 	casing_ejector = TRUE

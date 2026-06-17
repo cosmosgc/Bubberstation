@@ -7,7 +7,7 @@
 
 /obj/machinery/computer/records/security
 	name = "security records console"
-	desc = "Used to view and edit personnel's security records."
+	desc = "Costumava ver e editar registros de segurança do pessoal."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
 	req_one_access = list(ACCESS_SECURITY, ACCESS_HOP)
@@ -22,7 +22,7 @@
 
 /obj/machinery/computer/records/security/laptop
 	name = "security laptop"
-	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
+	desc = "Um laptop de segurança Nanotrasen barato, funciona como um console de registros de segurança. Está trancada na mesa."
 	icon_state = "laptop"
 	icon_screen = "seclaptop"
 	icon_keyboard = "laptop_key"
@@ -30,7 +30,7 @@
 	projectiles_pass_chance = 100
 
 /obj/machinery/computer/records/security/laptop/syndie
-	desc = "A cheap, jailbroken security laptop. It functions as a security records console. It's bolted to the table."
+	desc = "Um laptop de segurança barato e quebrado. Funciona como um console de registros de segurança. Está trancada na mesa."
 	req_one_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/records/security/Initialize(mapload, obj/item/circuitboard/C)
@@ -211,7 +211,7 @@
 /obj/machinery/computer/records/security/proc/add_crime(mob/user, datum/record/crew/target, list/params)
 	var/input_name = strip_html_full(params["name"], MAX_CRIME_NAME_LEN)
 	if(!input_name)
-		to_chat(usr, span_warning("You must enter a name for the crime."))
+		to_chat(usr, span_warning("Você deve digitar um nome para o crime."))
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
@@ -340,7 +340,7 @@
 /// Handles printing records via UI. Takes the params from UI_act.
 /obj/machinery/computer/records/security/proc/print_record(mob/user, datum/record/crew/target, list/params)
 	if(printing)
-		balloon_alert(user, "printer busy")
+		balloon_alert(user, "impressora ocupada")
 		playsound(src, 'sound/machines/terminal/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
@@ -363,7 +363,7 @@
 		if("wanted")
 			var/list/crimes = target.crimes
 			if(!length(crimes))
-				balloon_alert(user, "no crimes")
+				balloon_alert(user, "Sem crimes.")
 				return FALSE
 
 			input_description += "\n\n<b>WANTED FOR:</b>"
@@ -398,8 +398,8 @@
  * Security circuit component
  */
 /obj/item/circuit_component/arrest_console_data
-	display_name = "Security Records Data"
-	desc = "Outputs the security records data, where it can then be filtered with a Select Query component"
+	display_name = "Dados dos Registros de Segurança"
+	desc = "Saídas os dados de registros de segurança, onde pode ser filtrado com um componente Select Query"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The records retrieved
@@ -461,8 +461,8 @@
 
 	records.set_output(new_table)
 /obj/item/circuit_component/arrest_console_arrest
-	display_name = "Security Records Set Status"
-	desc = "Receives a table to use to set people's arrest status. Table should be from the security records data component. If New Status port isn't set, the status will be decided by the options."
+	display_name = "Registros de segurança Status"
+	desc = "Recebe uma mesa para definir o status de prisão. A tabela deve ser do componente de dados dos registros de segurança. Se o novo status não estiver definido, o status será decidido pelas opções."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The targets to set the status of.

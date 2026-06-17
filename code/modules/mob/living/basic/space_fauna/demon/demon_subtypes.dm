@@ -74,7 +74,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, slam_cooldown))
-		to_chat(src, span_warning("Your slam ability is still on cooldown!"))
+		to_chat(src, span_warning("Sua habilidade de bater ainda está em esfriamento!"))
 		return
 
 	face_atom(attack_target)
@@ -120,7 +120,7 @@
 /mob/living/basic/demon/slaughter/laughter
 	name = "laughter demon"
 	real_name = "laughter demon"
-	desc = "A large, adorable creature covered in armor with pink bows."
+	desc = "Uma criatura grande e adorável coberta de armadura com arcos rosa."
 	speak_emote = list("giggles", "titters", "chuckles", "guffaws", "laughs")
 	response_help_continuous = "hugs"
 	attack_verb_continuous = "wildly tickles"
@@ -132,7 +132,7 @@
 
 	icon_state = "bow_demon"
 	icon_living = "bow_demon"
-	death_message = "fades out, as all of its friends are released from its prison of hugs."
+	death_message = "desaparece, como todos os seus amigos são libertados de sua prisão de abraços."
 
 	antag_type = /datum/antagonist/slaughter/laughter
 	crawl_type = /datum/action/cooldown/spell/jaunt/bloodcrawl/slaughter_demon/funny

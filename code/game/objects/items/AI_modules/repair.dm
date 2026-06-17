@@ -6,7 +6,7 @@
 
 /obj/item/ai_module/remove
 	name = "\improper 'Remove Law' AI module"
-	desc = "An AI Module for removing single laws."
+	desc = "Um Módulo de IA para remover leis únicas."
 	bypass_law_amt_check = TRUE
 	var/lawpos = 1
 
@@ -33,7 +33,7 @@
 /obj/item/ai_module/reset
 	name = "\improper 'Reset' AI module"
 	var/targetName = "name"
-	desc = "An AI Module for removing all non-core laws."
+	desc = "Um módulo IA para remover todas as leis não essenciais."
 	bypass_law_amt_check = TRUE
 
 /obj/item/ai_module/reset/handle_unique_ai()
@@ -52,7 +52,7 @@
 
 /obj/item/ai_module/reset/purge
 	name = "'Purge' AI Module"
-	desc = "An AI Module for purging all programmed laws."
+	desc = "Um Módulo IA para purgar todas as leis programadas."
 
 /obj/item/ai_module/reset/purge/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	..()

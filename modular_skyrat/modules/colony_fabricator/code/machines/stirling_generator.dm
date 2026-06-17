@@ -2,10 +2,10 @@
 
 /obj/machinery/power/stirling_generator
 	name = "stirling generator"
-	desc = "An industrial scale stirling generator. Stirling generators operate by intaking \
-		hot gasses through their inlet pipes, and being cooled by the ambient air around them. \
-		The cycling compression and expansion caused by this creates power, and this one is made \
-		to make power on the scale of small stations and outposts."
+	desc = "Um gerador de agitação industrial. Geradores Stirling operam intaking\
+Gases quentes através de seus canos de entrada, e sendo resfriado pelo ar ambiente ao redor deles.\
+A compressão e expansão causadas por isso cria energia, e esta é feita\
+Para fazer energia na escala de pequenas estações e postos avançados."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/stirling_generator/big_generator.dmi'
 	icon_state = "stirling"
 	density = TRUE
@@ -42,8 +42,8 @@
 
 /obj/machinery/power/stirling_generator/examine(mob/user)
 	. = ..()
-	. += span_notice("You can use a <b>wrench</b> with <b>Left-Click</b> to rotate the generator.")
-	. += span_notice("It will not work in a <b>vacuum</b> as it must be cooled by the gas around it.")
+	. += span_notice("Você pode usar um<b>Chave inglesa.</b>com<b>Clique à esquerda.</b>Para girar o gerador.")
+	. += span_notice("Não vai funcionar em um<b>aspirador</b>como deve ser esfriado pelo gás ao redor.")
 	. += span_notice("It is currently generating <b>[current_power_generation / 1000] kW</b> of power.")
 	. += span_notice("It has a maximum power output of <b>[max_power_output / 1000] kW</b> at a temperature difference of <b>[max_efficient_heat_difference] K</b>.")
 

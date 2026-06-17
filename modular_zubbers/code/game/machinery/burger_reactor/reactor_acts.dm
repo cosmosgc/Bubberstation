@@ -2,7 +2,7 @@
 /obj/machinery/power/rbmk2/multitool_act(mob/living/user, obj/item/multitool/tool)
 
 	if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return ITEM_INTERACT_FAILURE
 
 	wires.interact(user)
@@ -11,7 +11,7 @@
 /obj/machinery/power/rbmk2/wirecutter_act(mob/living/user, obj/item/tool)
 
 	if(!panel_open)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "Abra o painel primeiro!")
 		return ITEM_INTERACT_FAILURE
 
 	wires.interact(user)
@@ -23,7 +23,7 @@
 		force_unjam(attack_item,user,25)
 		return ITEM_INTERACT_SUCCESS
 	if(stored_rod)
-		balloon_alert(user, "remove the rod first!")
+		balloon_alert(user, "Tire a haste primeiro!")
 		return ITEM_INTERACT_FAILURE
 	if(!meltdown && default_deconstruction_crowbar(attack_item))
 		if(user)
@@ -41,7 +41,7 @@
 /obj/machinery/power/rbmk2/wrench_act(mob/living/user, obj/item/attack_item)
 
 	if(jammed)
-		balloon_alert(user, "refuses to budge!")
+		balloon_alert(user, "Se recusa a se mexer!")
 		return ITEM_INTERACT_FAILURE
 
 	toggle_active(user)
@@ -52,10 +52,10 @@
 /obj/machinery/power/rbmk2/welder_act(mob/living/user, obj/item/attack_item)
 
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "already repaired!")
+		balloon_alert(user, "Já está consertado!")
 		return ITEM_INTERACT_FAILURE
 	if (machine_stat & BROKEN)
-		balloon_alert(user, "too damaged to repair!")
+		balloon_alert(user, "Muito danificado para reparar!")
 		return ITEM_INTERACT_FAILURE
 	if(!attack_item.tool_start_check(user, amount=1))
 		return ITEM_INTERACT_FAILURE
@@ -64,9 +64,9 @@
 	if(attack_item.use_tool(src, user, 4 SECONDS, volume = 50))
 		update_integrity(min(atom_integrity + 50,max_integrity))
 		if(atom_integrity >= max_integrity)
-			balloon_alert(user, "fully repaired!")
+			balloon_alert(user, "Totalmente reparado!")
 		else
-			balloon_alert(user, "partially repaired!")
+			balloon_alert(user, "parcialmente reparado!")
 
 	return ITEM_INTERACT_SUCCESS
 
@@ -120,7 +120,7 @@
 	playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	safety = FALSE
 	obj_flags |= EMAGGED
-	balloon_alert(user, "overdrive engaged!")
+	balloon_alert(user, "Overdrive ativado!")
 
 	if(user)
 		var/turf/T = get_turf(src)

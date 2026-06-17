@@ -15,7 +15,7 @@
  */
 /obj/machinery/status_display/door_timer
 	name = "door timer"
-	desc = "A remote control for a door."
+	desc = "Um controle remoto para uma porta."
 	current_mode = SD_MESSAGE
 	req_access = list(ACCESS_SECURITY)
 	text_color = "#F44"
@@ -224,7 +224,7 @@
 	var/mob/user = usr
 
 	if(!allowed(usr))
-		to_chat(usr, span_warning("Access denied."))
+		to_chat(usr, span_warning("Acesso negado."))
 		return FALSE
 
 	switch(action)

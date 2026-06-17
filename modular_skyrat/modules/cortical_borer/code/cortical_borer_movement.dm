@@ -14,20 +14,20 @@
 
 /mob/living/basic/cortical_borer/proc/try_enter_host(mob/living/carbon/human/victim)
 	if(check_for_target_bio_protection(victim))
-		balloon_alert(src, "head too protected!")
+		balloon_alert(src, "Cabeça muito protegida!")
 		return FALSE
 	if(victim.has_borer())
-		balloon_alert(src, "already occupied")
+		balloon_alert(src, "Já ocupado.")
 		return FALSE
 	if(!do_after(src, (((upgrade_flags & BORER_FAST_BORING) && !(upgrade_flags & BORER_HIDING)) ? 3 SECONDS : 6 SECONDS), target = victim))
-		balloon_alert(src, "keep still")
+		balloon_alert(src, "Fique parado.")
 		return FALSE
 	if(get_dist(victim, src) > 1)
-		balloon_alert(src, "too far")
+		balloon_alert(src, "Muito longe.")
 		return FALSE
 	var/obj/item/organ/brain/brain = victim.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(!istype(brain))
-		balloon_alert(src, "no brain")
+		balloon_alert(src, "Sem cérebro.")
 		return FALSE
 
 	return enter_host(victim, brain)
@@ -37,7 +37,7 @@
 	forceMove(human_host)
 
 	if(!(upgrade_flags & BORER_STEALTH_MODE))
-		to_chat(human_host, span_notice("A chilling sensation goes down your spine..."))
+		to_chat(human_host, span_notice("Uma sensação de calafrio desce pela espinha..."))
 	copy_languages(human_host)
 
 	var/obj/item/organ/borer_body/borer_organ = new()
@@ -54,11 +54,11 @@
 
 /mob/living/basic/cortical_borer/proc/try_leave_host()
 	if(host_sugar())
-		balloon_alert(src, "cannot function with sugar in host")
+		balloon_alert(src, "Não pode funcionar com açúcar no hospedeiro.")
 		return TRUE // We force a cooldown over sugar
-	balloon_alert(src, "left host")
+	balloon_alert(src, "hospedeiro esquerdo")
 	if(!(upgrade_flags & BORER_STEALTH_MODE))
-		to_chat(human_host, span_notice("Something carefully tickles your inner ear..."))
+		to_chat(human_host, span_notice("Algo cuidadosamente faz cócegas no ouvido interno..."))
 	return leave_host()
 
 /mob/living/basic/cortical_borer/proc/leave_host()

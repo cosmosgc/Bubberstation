@@ -1,6 +1,6 @@
 /obj/item/implant/abductor
 	name = "recall implant"
-	desc = "Returns you to the mothership."
+	desc = "Te devolve à nave-mãe."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "implant"
 	var/obj/machinery/abductor/pad/home
@@ -14,7 +14,7 @@
 		return
 
 	if(isnull(home) && !link_pad())
-		imp_in.balloon_alert(imp_in, "no teleport pads detected!")
+		imp_in.balloon_alert(imp_in, "Nenhum teletransporte detectado!")
 		return
 
 	home.Retrieve(imp_in)

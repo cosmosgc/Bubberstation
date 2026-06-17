@@ -45,7 +45,7 @@
 				message = "You hold onto \the [victim.loc] as hard as you can, as reality distorts around you. You feel safe."
 			to_chat(victim, span_bolddanger(message))
 			continue
-		to_chat(victim, span_bolddanger("You feel reality distort for a moment..."))
+		to_chat(victim, span_bolddanger("Você sente a realidade distorcer por um momento..."))
 		if (isliving(victim))
 			var/mob/living/living_victim = victim
 			living_victim.add_mood_event("delam", /datum/mood_event/delam)
@@ -142,7 +142,7 @@
 	if(SSshuttle.emergency.mode != SHUTTLE_ESCAPE)
 		priority_announce(
 			text = "Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
-			title = "Shuttle Failure",
+			title = "Falha no transporte",
 			sound = ANNOUNCER_SHUTTLE, // SKYRAT EDIT CHANGE - Announcer Sounds - ORIGINAL: sound = 'sound/announcer/announcement/announce_dig.ogg',
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
@@ -164,7 +164,7 @@
 	for(var/mob/player as anything in GLOB.player_list)
 		if(!isdead(player))
 			var/mob/living/living_player = player
-			to_chat(player, span_bolddanger("Everything around you is resonating with a powerful energy. This can't be good."))
+			to_chat(player, span_bolddanger("Tudo ao seu redor está ressoando com uma energia poderosa. Isso não pode ser bom."))
 			living_player.add_mood_event("cascade", /datum/mood_event/cascade)
 		SEND_SOUND(player, 'sound/effects/magic/charge.ogg')
 

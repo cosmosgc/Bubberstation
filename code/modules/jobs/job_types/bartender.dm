@@ -1,6 +1,6 @@
 /datum/job/bartender
 	title = JOB_BARTENDER
-	description = "Serve booze, mix drinks, keep the crew drunk."
+	description = "Sirva bebida, misture bebidas, deixe a equipe bêbada."
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1

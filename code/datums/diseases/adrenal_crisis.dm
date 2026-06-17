@@ -2,14 +2,14 @@
 	form = "Condition"
 	name = "Adrenal Crisis"
 	max_stages = 2
-	cure_text = "Trauma (Adrenaline / \"" + /datum/reagent/determination::name + "\")"
+	cure_text = "Trauma (Adrenalina)\"" + /datum/reagent/determination::name + "\")"
 	cures = list(/datum/reagent/determination)
 	cure_chance = 10
 	agent = "Kronkaine Abuse"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	spreading_modifier = 1
-	desc = "A rare condition caused by continued abuse of Kronkaine. \
-		If left untreated the subject will suffer from lethargy, dizziness and periodic loss of consciousness."
+	desc = "Uma condição rara causada pelo abuso contínuo de Kronkaine.\
+Se não for tratado o sujeito sofrerá letargia, tontura e perda periódica de consciência."
 	severity = DISEASE_SEVERITY_MEDIUM
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
 	spread_text = "None"
@@ -24,7 +24,7 @@
 	switch(stage)
 		if(1)
 			if(SPT_PROB(2.5, seconds_per_tick))
-				to_chat(affected_mob, span_warning(pick("You feel lightheaded.", "You feel lethargic.")))
+				to_chat(affected_mob, span_warning(pick("Você se sente tonto.", "Você se sente letárgico.")))
 		if(2)
 			if(SPT_PROB(5, seconds_per_tick))
 				affected_mob.Unconscious(40)
@@ -36,4 +36,4 @@
 				affected_mob.set_dizzy_if_lower(20 SECONDS)
 
 			if(SPT_PROB(2.5, seconds_per_tick))
-				to_chat(affected_mob, span_warning(pick("You feel pain shoot down your legs!", "You feel like you are going to pass out at any moment.", "You feel really dizzy.")))
+				to_chat(affected_mob, span_warning(pick("Você sente dor derrubando suas pernas!", "Você sente que vai desmaiar a qualquer momento.", "Você está muito tonta.")))

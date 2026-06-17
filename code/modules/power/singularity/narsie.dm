@@ -10,7 +10,7 @@
 /// Nar'Sie, the God of the blood cultists
 /obj/narsie
 	name = "Nar'Sie"
-	desc = "Your mind begins to bubble and ooze as it tries to comprehend what it sees."
+	desc = "Sua mente começa a borbulhar e escorrer enquanto tenta compreender o que vê."
 	icon = 'icons/obj/antags/cult/narsie.dmi'
 	icon_state = "narsie"
 	anchored = TRUE
@@ -67,7 +67,7 @@
 		singularity_size = NARSIE_SINGULARITY_SIZE, \
 	))
 
-	send_to_playing_players(span_narsie("NAR'SIE HAS RISEN"))
+	send_to_playing_players(span_narsie("Nar'sie tem Risen"))
 	sound_to_playing_players('sound/music/antag/bloodcult/narsie_rises.ogg')
 
 	var/area/area = get_area(src)
@@ -76,7 +76,7 @@
 		notify_ghosts(
 			"Nar'Sie has risen in [area]. Reach out to the Geometer to be given a new shell for your soul.",
 			source = src,
-			header = "Nar'Sie has risen!",
+			header = "Nar'Sie subiu!",
 			click_interact = TRUE,
 			alert_overlay = alert_overlay,
 		)
@@ -123,7 +123,7 @@
 			summon_objective.summoned = FALSE
 			summon_objective.killed = TRUE
 
-	send_to_playing_players(span_narsie(span_bold(pick("Nooooo...", "Not die. How-", "Die. Mort-", "Sas tyen re-"))))
+	send_to_playing_players(span_narsie(span_bold(pick("Nooooo...", "Não morrer. Como...", "Morra. Mort...", "Sas tyen re-"))))
 	sound_to_playing_players('sound/effects/magic/demon_dies.ogg', 50)
 
 /obj/narsie/vv_get_dropdown()
@@ -140,7 +140,7 @@
 	if(!href_list[VV_HK_BEGIN_NARSIE_ROUNDEND] || !check_rights(R_FUN, show_msg = TRUE))
 		return
 
-	if(tgui_alert(usr, ADMIN_WARNING_MESSAGE, "Begin Nar'Sie Roundender", list("I'm Sure", "Abort")) != "I'm Sure")
+	if(tgui_alert(usr, ADMIN_WARNING_MESSAGE, "Comece Nar'Sie Roundender", list("I'm Sure", "Abort")) != "I'm Sure")
 		return
 
 	log_admin("[key_name(usr)] has triggered the Nar'Sie roundender.")
@@ -149,7 +149,7 @@
 /obj/narsie/attack_ghost(mob/dead/observer/user)
 	if(is_banned_from(user.ckey, ROLE_CULTIST))
 		return
-	if(tgui_alert(user, "Do you wish to become an occult harvester?", "Become Harvester?", list("Yes", "No"), timeout = 10 SECONDS) == "Yes")
+	if(tgui_alert(user, "Você deseja se tornar uma colhedora oculta?", "Become Harvester?", list("Yes", "No"), timeout = 10 SECONDS) == "Yes")
 		make_new_construct(/mob/living/basic/construct/harvester, user, cultoverride = TRUE, loc_override = loc, ghost_activated = TRUE)
 
 /obj/narsie/process()
@@ -219,12 +219,12 @@
 	if (food == old_target)
 		return
 
-	to_chat(old_target, span_cult("NAR'SIE HAS LOST INTEREST IN YOU."))
+	to_chat(old_target, span_cult("Nar'sie perdeu o interesse em você."))
 	singularity_component.target = food
 	if(ishuman(food))
-		to_chat(food, span_cult("NAR'SIE HUNGERS FOR YOUR SOUL."))
+		to_chat(food, span_cult("Nar'sie Hungers para sua alma."))
 	else
-		to_chat(food, span_cult("NAR'SIE HAS CHOSEN YOU TO LEAD HER TO HER NEXT MEAL."))
+		to_chat(food, span_cult("Nar'sie escolheu você para levá-la para sua próxima refeição."))
 
 /// Called to make Nar'Sie convert objects to cult stuff, or to eat
 /obj/narsie/proc/consume(atom/target)

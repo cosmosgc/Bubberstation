@@ -1,6 +1,6 @@
 /obj/item/gun/energy/laser/musket
 	name = "laser musket"
-	desc = "A hand-crafted laser weapon, it has a hand crank on the side to charge it up."
+	desc = "Uma arma laser feita à mão, tem uma manivela na lateral para carregar."
 	icon_state = "musket"
 	inhand_icon_state = "musket"
 	worn_icon_state = "las_musket"
@@ -32,7 +32,7 @@
 
 /obj/item/gun/energy/laser/musket/prime
 	name = "heroic laser musket"
-	desc = "A well-engineered, hand-charged laser weapon. Its capacitors hum with potential."
+	desc = "Uma arma laser bem projetada e carregada à mão. Seus capacitores sussurram com potencial."
 	icon_state = "musket_prime"
 	inhand_icon_state = "musket_prime"
 	worn_icon_state = "las_musket_prime"
@@ -48,7 +48,7 @@
 
 /obj/item/gun/energy/disabler/smoothbore
 	name = "smoothbore disabler"
-	desc = "A hand-crafted disabler, using a hard knock on an energy cell to fire the stunner laser. A lack of proper focusing means it has no accuracy whatsoever."
+	desc = "Um desativador artesanal, usando uma batida dura em uma célula de energia para disparar o laser atordoador. A falta de concentração adequada significa que não tem precisão."
 	icon_state = "smoothbore"
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/smoothbore)
 	shaded_charge = 1
@@ -84,8 +84,8 @@
 
 /obj/item/gun/energy/disabler/smoothbore/prime //much stronger than the other prime variants, so dont just put this in as maint loot
 	name = "elite smoothbore disabler"
-	desc = "An enhancement version of the smoothbore disabler pistol. Improved optics and cell type result in good accuracy and the ability to fire twice. \
-	The disabler bolts also don't dissipate upon impact with armor, unlike the previous model."
+	desc = "Uma versão melhorada da pistola desativadora. Óptica melhorada e tipo celular resultam em boa precisão e capacidade de atirar duas vezes.\
+Os parafusos também não se dissipam com impacto com armadura, ao contrário do modelo anterior."
 	icon_state = "smoothbore_prime"
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/smoothbore/prime)
 	charge_sections = 2
@@ -101,7 +101,7 @@
 
 /obj/item/gun/energy/laser/thermal //the common parent of these guns, it just shoots hard bullets, somoene might like that?
 	name = "nanite pistol"
-	desc = "A modified handcannon with a metamorphic reserve of decommissioned weaponized nanites. Spit globs of angry robots into the bad guys."
+	desc = "Um canhão modificado com uma reserva metamórfica de nanites desarmados. Cuspir bandos de robôs furiosos nos bandidos."
 	icon_state = "infernopistol"
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/nanite)
@@ -136,25 +136,25 @@
 
 /obj/item/gun/energy/laser/thermal/inferno //the magma gun
 	name = "inferno pistol"
-	desc = "A modified handcannon with a metamorphic reserve of decommissioned weaponized nanites. Spit globs of molten angry robots into the bad guys. \
-		While it doesn't manipulate temperature in and of itself, it does cause an violent eruption in anyone who is severely cold. Able to generate \
-		ammunition by manually spinning the weapon's nanite canister."
+	desc = "Um canhão modificado com uma reserva metamórfica de nanites desarmados. Cuspir bandos de robôs irritados derretidos nos bandidos.\
+Embora não manipule a temperatura em si mesma, causa uma erupção violenta em quem está severamente frio. Capaz de gerar\
+munição girando manualmente o recipiente de nanite da arma."
 	icon_state = "infernopistol"
 	light_color = COLOR_RED
 	ammo_type = list(/obj/item/ammo_casing/energy/nanite/inferno)
 
 /obj/item/gun/energy/laser/thermal/cryo //the ice gun
 	name = "cryo pistol"
-	desc = "A modified handcannon with a metamorphic reserve of decommissioned weaponized nanites. Spit shards of frozen angry robots into the bad guys. \
-		While it doesn't manipulate temperature in and of itself, it does cause an internal explosion in anyone who is severely hot. Able to generate \
-		ammunition by manually spinning the weapon's nanite canister."
+	desc = "Um canhão modificado com uma reserva metamórfica de nanites desarmados. Cuspir pedaços de robôs com raiva congelados nos bandidos.\
+Embora não manipule a temperatura em si mesma, causa uma explosão interna em quem está muito quente. Capaz de gerar\
+munição girando manualmente o recipiente de nanite da arma."
 	icon_state = "cryopistol"
 	light_color = COLOR_BLUE
 	ammo_type = list(/obj/item/ammo_casing/energy/nanite/cryo)
 
 /obj/item/gun/energy/laser/musket/repeater
 	name = "iconoclast's repeater"
-	desc = "A weapon of incredible bulk, this ratvarian repeater has been permanently severed from its stand to be carried by hand. Cumbersome, Yes - but powerful."
+	desc = "Uma arma de massa incrível, este repetidor de ratos foi permanentemente cortado de seu suporte para ser carregado à mão. Cumbersome, sim - mas poderoso."
 	icon_state = "repeater"
 	inhand_icon_state = "repeater"
 	slowdown = 1
@@ -193,17 +193,17 @@
 /obj/item/gun/energy/laser/musket/add_deep_lore()
 	AddElement(/datum/element/examine_lore, \
 		lore_hint = span_notice("You can [EXAMINE_HINT("think carefully")] to learn a little more about [src]."), \
-		lore = "The first examples of laser muskets emerged somewhat recently, even though improvised firearms have had \
-		a rich history throughout human, Mothic and Tiziran history.<br>\
+		lore = "Os primeiros exemplos de mosquetes laser surgiram recentemente, mesmo que as armas improvisadas tiveram\
+uma rica história em toda a história humana, Mothic e Tiziran.<br>\
 		<br>\
-		Laser muskets often started to emerge when conventional weaponry or ammunition started to grow scarcer, and the amount \
-		of scrap electronics and materials outpaced the speed at which engineering crews could repair structural defenses and \
-		infrastructure. They're regarded as weapons of extreme desperation, but also of unmatched grit in the face of a hopeless situation. <br>\
+Os mosquetes laser muitas vezes começaram a surgir quando armas ou munições convencionais começaram a ficar escassas, e a quantidade\
+de sucata eletrônica e materiais superou a velocidade em que as equipes de engenharia poderia reparar defesas estruturais e\
+Infraestrutura. São consideradas como armas de desespero extremo, mas também de grit incomparável diante de uma situação sem esperança.<br>\
 		<br>\
-		Constructing one of these is sometimes seen as a rite of passage amongst militia groups and rebel forces. Each one as unique \
-		as the next. <br>\
+Construir um desses é às vezes visto como um ritual de passagem entre grupos de milícias e forças rebeldes. Cada um como único\
+como o próximo.<br>\
 		<br>\
-		What will this one's name be? What history will it write? Time will surely tell." \
+Qual será o nome deste? Que história escreverá? O tempo certamente dirá." \
 	)
 
 // Thermal Pistols
@@ -211,24 +211,24 @@
 /obj/item/gun/energy/laser/thermal/add_deep_lore()
 	AddElement(/datum/element/examine_lore, \
 		lore_hint = span_notice("You can [EXAMINE_HINT("look closer")] to learn a little more about [src]."), \
-		lore = "A weapon with no name, more a pattern of design. Examples of thermal pistols vary heavily based on the \
-		manufacturer or craftsperson. However, the original inventor of the thermal pistol is largely clouded in mystery. \
-		Replica versions of the pistol were circulating long before weaponized nanites were banned by the \
-		TerraGov Subdermal Weapons Accord, and have continued to exist as a means of disposing of the self-replicating stocks \
-		of weaponized nanites.<br>\
+		lore = "Uma arma sem nome, mais um padrão de design. Exemplos de pistolas térmicas variam muito com base no\
+fabricante ou artesão. No entanto, o inventor original da pistola térmica está nublado em mistério.\
+Replica versões da pistola estavam circulando muito antes nanites armados foram banidos pelo\
+Terragov Acordo de Armas Subdérmicas, e têm continuado a existir como um meio de eliminar os estoques auto-replicantes\
+de nanites armados.<br>\
 		<br>\
-		This is an example of Nanotrasen's Viper Classic model, based on earlier models of the weapon in appearance, but using \
-		up to date nanite breeding chambers that respond to user articulation. That is, the weapons can be charged with a vigorous \
-		shake. Though most users prefer to use the custom trick triggerguard to twirl them on their finger. Mostly for showmanship. <br>\
+Este é um exemplo do modelo Viper Classic de Nanotrasen, baseado em modelos anteriores da arma na aparência, mas usando\
+Câmaras de reprodução de nanites que respondem à articulação do usuário. Isto é, as armas podem ser carregadas com um vigoroso\
+Shake. Embora a maioria dos usuários prefira usar a proteção de gatilho personalizada para virá-los em seus dedos. Principalmente para o espetáculo.<br>\
 		<br>\
-		Due to various movies and television programs, or perhaps spacer legends of fancy, the weapons are often associated with the \
-		'Space Rangers' that roam the periphery and Australicus regions of space. Polarizing tales of rugged gun fighters roaming \
-		from outpost to outpost, leaving justice, death or merely a large quantity of buzzing nanite clouds in their wake. \
-		Robber barons, frontier lawbringers. Even the occasional hard-boiled detective. These weapons are sometimes associated \
-		with cultural imagery around rugged individualism, tenacity and nonconformity, as well as a bygone age of noble warriors and \
-		ruthless villains. Using these weapons today is largely seen as a way to evoke this imagery, even if it comes across \
-		as mildly tacky. <br>\
+Devido a vários filmes e programas de televisão, ou talvez lendas espaçadas de fantasia, as armas são frequentemente associadas com o\
+\"Rangers Espaciais\" que vagam pela periferia e regiões Australicus do espaço. Contos polarizantes de caças de armas roaming\
+do posto avançado ao posto avançado, deixando justiça, morte ou apenas uma grande quantidade de nuvens nanitas zumbindo em seu rastro.\
+Barões ladrões, advogados fronteiriços. Até mesmo um detetive cozido. Essas armas às vezes são associadas.\
+com imagens culturais em torno de individualismo robusto, tenacidade e não conformidade, bem como uma era passada de nobres guerreiros e\
+Vilões cruéis. Usar estas armas hoje é visto em grande parte como uma maneira de evocar esta imagem, mesmo que se depare com\
+levemente brega.<br>\
 		<br>\
-		It isn't fully understood who started the practice of 'pairing' the pistols, though the custom has remained as long as \
-		living memory. Every thermal pistol has a mate, and it is considered ill fortune to separate them purposefully." \
+Não está totalmente compreendido quem começou a prática de \"parecer\" as pistolas, embora o costume tenha permanecido tanto tempo quanto\
+Memória viva. Cada pistola térmica tem um parceiro, e é considerada má sorte separá-los propositadamente." \
 	)

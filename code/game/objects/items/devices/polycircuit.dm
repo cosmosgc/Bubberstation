@@ -1,12 +1,12 @@
 /obj/item/stack/circuit_stack
 	name = "polycircuit aggregate"
-	desc = "A dense, overdesigned cluster of electronics which attempted to function as a multipurpose circuit electronic. Circuits can be removed from it... if you don't bleed out in the process."
+	desc = "Um denso e overdesigned cluster de eletrônica que tentou funcionar como um circuito eletrônico multiuso. Circuitos podem ser removidos dele... se você não sangrar no processo."
 	icon_state = "circuit_mess"
 	inhand_icon_state = "rods"
 	w_class = WEIGHT_CLASS_TINY
 	max_amount = 8
 	merge_type = /obj/item/stack/circuit_stack
-	singular_name = "circuit aggregate"
+	singular_name = "circuito agregado"
 	var/circuit_type = /obj/item/electronics/airlock
 	var/chosen_circuit = "airlock"
 
@@ -47,7 +47,7 @@
 			user.put_in_hands(returned_circuit)
 			use(1)
 			if(!amount)
-				to_chat(user, span_notice("You navigate the sharp edges of circuitry and remove the last board."))
+				to_chat(user, span_notice("Você navega as bordas afiadas dos circuitos e remove a última placa."))
 			else
 				to_chat(user, span_notice("You navigate the sharp edges of circuitry and remove a single board from [src]"))
 		else

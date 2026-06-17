@@ -18,7 +18,7 @@
 
 /obj/machinery/computer/arcade/minesweeper
 	name = "Minesweeper"
-	desc = "An arcade machine that generates grids. It seems that the machine sparks and screeches when a grid is generated, as if it cannot cope with the intensity of generating the grid."
+	desc = "Uma máquina arcade que gera grades. Parece que a máquina dispara e grita quando uma grade é gerada, como se ela não pudesse lidar com a intensidade de gerar a grade."
 	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade/minesweeper
 
@@ -164,20 +164,20 @@
 				to_chat(user, span_notice("[src] dispenses a ticket!"))
 				board.ticket_count -= 1
 			else
-				to_chat(user, span_notice("You don't have any stored tickets!"))
+				to_chat(user, span_notice("Você não tem nenhum bilhete guardado!"))
 			return TRUE
 
 /obj/machinery/computer/arcade/minesweeper/emag_act(mob/living/user)
 	if(obj_flags & EMAGGED)
 		return
-	desc = "An arcade machine that generates grids. It's clunking and sparking everywhere, almost as if threatening to explode at any moment!"
+	desc = "Uma máquina arcade que gera grades. Está batendo e acendendo em todo lugar, quase como se ameaçasse explodir a qualquer momento!"
 	do_sparks(5, 1, src)
 	obj_flags |= EMAGGED
 	if(board.game_status != MINESWEEPER_CONTINUE)
-		to_chat(user, span_warning("An ominous tune plays from the arcade's speakers!"))
+		to_chat(user, span_warning("Uma música ameaçadora toca dos alto-falantes do fliperama!"))
 		playsound(user, 'modular_zubbers/sound/arcade/minesweeper_emag1.ogg', 100, 0, extrarange = 3, falloff_exponent = 10)
 	else	//Can't let you do that, star fox!
-		to_chat(user, span_warning("The machine buzzes and sparks... the game has been reset!"))
+		to_chat(user, span_warning("A máquina zumbi e faíscas... o jogo foi reiniciado!"))
 		playsound(user, 'sound/machines/buzz/buzz-sigh.ogg', 100, 0, extrarange = 3, falloff_exponent = 10)	//Loud buzz
 		board.game_status = MINESWEEPER_IDLE
 
@@ -188,7 +188,7 @@
 /datum/computer_file/program/minesweeper
 	filename = "minesweeper"
 	filedesc = "Nanotrasen Micro Arcade: Minesweeper"
-	extended_desc = "A port of the classic game 'Minesweeper', redesigned to run on tablets."
+	extended_desc = "Um porto do clássico jogo \"Minesweeper\", redesenhado para rodar em tablets."
 	size = 6
 	tgui_id = "NtosMinesweeper"
 	program_icon = "gamepad"
@@ -464,7 +464,7 @@
 						new /obj/item/grenade/syndieminibomb/concussion
 
 				message_admins("[key_name_admin(user)] won emagged Minesweeper and got [itemname]!")
-				vis_msg(span_notice("[host] dispenses [itemname]!"), span_notice("You hear a chime and a clunk."))
+				vis_msg(span_notice("[host] dispenses [itemname]!"), span_notice("Você ouve um sino e um barulho."))
 			ticket_count += value
 
 		if(MINESWEEPER_DEAD)

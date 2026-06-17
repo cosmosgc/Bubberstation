@@ -1,6 +1,6 @@
 /obj/item/folder
 	name = "folder"
-	desc = "A folder."
+	desc = "Uma pasta."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
@@ -116,7 +116,7 @@
 		balloon_alert(user, "empty [src] first!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "cut apart")
+	balloon_alert(user, "Cortado.")
 	qdel(src)
 	user.put_in_hands(new /obj/item/stack/sheet/cardboard)
 	return ITEM_INTERACT_SUCCESS

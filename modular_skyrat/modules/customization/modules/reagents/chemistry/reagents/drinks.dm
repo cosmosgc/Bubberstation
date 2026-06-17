@@ -1,20 +1,20 @@
 /obj/item/reagent_containers/cup/soda_cans/skyrat/lubricola
 	name = "LubriCola"
-	desc = "The perfect lubricant for your weary gears."
+	desc = "O lubrificante perfeito para suas engrenagens cansadas."
 	icon_state = "lubricola"
 	list_reagents = list(/datum/reagent/fuel/oil = 30)
 	custom_price = PAYCHECK_LOWER * 1.2
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/welding_fizz
 	name = "Welding Fizz"
-	desc = "More energy than in an IED! Now carbonated. WARNING: Contains toxic and flammable fuels."
+	desc = "Mais energia do que em um explosivo! Agora carbonatado. ATENÇÃO: contém combustíveis tóxicos e inflamáveis."
 	icon_state = "welding_fizz"
 	list_reagents = list(/datum/reagent/fuel = 25, /datum/reagent/carbondioxide = 5)
 	custom_price = PAYCHECK_LOWER * 1.2
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/synthanolcan
 	name = "Silly Cone's Synthanol"
-	desc = "A recompiling can of synthanol."
+	desc = "Uma lata de recompilação de sintanol."
 	icon_state = "synthanolcan"
 	list_reagents = list(/datum/reagent/consumable/ethanol/synthanol = 30)
 	custom_price = PAYCHECK_CREW

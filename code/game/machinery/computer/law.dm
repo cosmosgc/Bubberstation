@@ -17,7 +17,7 @@
 		if(machine_stat & (NOPOWER|BROKEN|MAINT))
 			return
 		if(!current)
-			to_chat(user, span_alert("You haven't selected anything to transmit laws to!"))
+			to_chat(user, span_alert("Você não escolheu nada para transmitir leis!"))
 			return
 		if(!can_upload_to(current))
 			to_chat(user, span_alert("Upload failed! Check to make sure [current.name] is functioning properly."))
@@ -39,7 +39,7 @@
 
 /obj/machinery/computer/upload/ai
 	name = "\improper AI upload console"
-	desc = "Used to upload laws to the AI."
+	desc = "Costumava enviar leis para a IA."
 	circuit = /obj/item/circuitboard/computer/aiupload
 
 /obj/machinery/computer/upload/ai/Initialize(mapload)
@@ -51,7 +51,7 @@
 	current = select_active_ai(user, z, TRUE)
 
 	if (!current)
-		to_chat(user, span_alert("No active AIs detected!"))
+		to_chat(user, span_alert("Nenhuma IA ativa detectada!"))
 	else
 		to_chat(user, span_notice("[current.name] selected for law changes."))
 
@@ -65,14 +65,14 @@
 
 /obj/machinery/computer/upload/borg
 	name = "cyborg upload console"
-	desc = "Used to upload laws to Cyborgs."
+	desc = "Costumava enviar leis para Cyborgs."
 	circuit = /obj/item/circuitboard/computer/borgupload
 
 /obj/machinery/computer/upload/borg/interact(mob/user)
 	current = select_active_free_borg(user)
 
 	if(!current)
-		to_chat(user, span_alert("No active unslaved cyborgs detected."))
+		to_chat(user, span_alert("Nenhum ciborgue ativo não-escravo detectado."))
 	else
 		to_chat(user, span_notice("[current.name] selected for law changes."))
 

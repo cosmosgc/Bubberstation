@@ -51,7 +51,7 @@
 			else
 				return
 		else
-			to_chat(trimmer, span_warning("There are no restylable features there!"))
+			to_chat(trimmer, span_warning("Não há características respeitáveis lá!"))
 			return
 
 	target_organ.attempt_feature_restyle(source, trimmer, original_target, body_zone, restyle_type, style_speed)
@@ -85,7 +85,7 @@
 /// Allows for the restyling of visual organs to other styles within the same pool (if not forbidden)
 /obj/item/flesh_shears
 	name = "flesh reshaper"
-	desc = "Uses shearing action and growth inducers to reshape your coworkers external features!"
+	desc = "Usa ação de cisalhamento e indutores de crescimento para remodelar suas características externas!"
 
 	icon_state = "flesh_shaper"
 	icon = 'icons/obj/medical/surgery_tools.dmi'

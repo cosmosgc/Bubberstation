@@ -5,9 +5,9 @@
 
 /obj/machinery/materials_market
 	name = "galactic materials market"
-	desc = "This machine allows the user to buy and sell sheets of minerals \
-		across the system. Prices are known to fluxuate quite often,\
-		sometimes even within the same minute. All transactions are final."
+	desc = "Esta máquina permite ao usuário comprar e vender folhas de minerais.\
+através do sistema. Os preços são conhecidos por fluir muitas vezes,\
+Às vezes, mesmo dentro do mesmo minuto. Todas as transações são finais."
 	circuit = /obj/item/circuitboard/machine/materials_market
 	req_access = list(ACCESS_CARGO)
 	density = TRUE
@@ -46,17 +46,17 @@
 		return NONE
 
 	if(!is_operational)
-		balloon_alert(user, "no power!")
+		balloon_alert(user, "Sem energia!")
 		return ITEM_INTERACT_FAILURE
 
 	var/list/datum/material/materials = exportable.custom_materials
 	if(materials.len != 1)
-		balloon_alert(user, "alloy stacks not allowed")
+		balloon_alert(user, "pilhas de liga não são permitidas.")
 		return ITEM_INTERACT_FAILURE
 
 	var/price = SSstock_market.materials_prices[materials[1].type]
 	if(!price)
-		balloon_alert(user, "materials in stack are worthless")
+		balloon_alert(user, "Os materiais na pilha são inúteis.")
 		return ITEM_INTERACT_FAILURE
 
 	if(!user.transferItemToLoc(exportable, src))
@@ -344,7 +344,7 @@
 
 /obj/item/stock_block
 	name = "stock block"
-	desc = "A block of stock. It's worth a certain amount of money, based on a sale on the materials market. Ship it on the cargo shuttle to claim your money."
+	desc = "Um bloco de ações. Vale uma certa quantia de dinheiro, baseado em uma venda no mercado de materiais. Envie no transporte de carga para reclamar seu dinheiro."
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "stock_block"
 	/// How many credits was this worth when created?

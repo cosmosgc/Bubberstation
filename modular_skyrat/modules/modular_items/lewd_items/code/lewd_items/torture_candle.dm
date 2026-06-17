@@ -3,7 +3,7 @@
 
 /obj/item/bdsm_candle
 	name = "soy candle"
-	desc = "A candle with low melting temperature."
+	desc = "Uma vela com baixa temperatura de fusão."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -111,9 +111,9 @@
 /obj/item/bdsm_candle/examine(mob/user)
 	. = ..()
 	if(!color_changed && !lit)
-		. += span_notice("Alt-click to change it's color.")
+		. += span_notice("Alt-click para mudar sua cor.")
 	else if(lit)
-		. += span_notice("Alt-click to snuff the flame out.")
+		. += span_notice("Alt-clique para apagar a chama.")
 
 /obj/item/bdsm_candle/click_alt(mob/user)
 	if(!lit && !color_changed)

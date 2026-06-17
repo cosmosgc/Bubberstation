@@ -260,7 +260,7 @@ GLOBAL_LIST_EMPTY(chasm_fallen_mobs)
  */
 /obj/effect/abstract/chasm_storage
 	name = "chasm depths"
-	desc = "The bottom of a hole. You shouldn't be able to interact with this."
+	desc = "O fundo de um buraco. Você não deveria ser capaz de interagir com isso."
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

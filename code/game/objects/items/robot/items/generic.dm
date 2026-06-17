@@ -26,7 +26,7 @@
 
 /obj/item/borg/stun/attack(mob/living/attacked_mob, mob/living/user)
 	if(cooldown_check > world.time)
-		user.balloon_alert(user, "still recharging!")
+		user.balloon_alert(user, "Ainda recarregando!")
 		return
 	if(ishuman(attacked_mob))
 		var/mob/living/carbon/human/human = attacked_mob
@@ -64,7 +64,7 @@
 /obj/item/borg/cyborghug
 	name = "hugging module"
 	icon_state = "hugmodule"
-	desc = "For when a someone really needs a hug."
+	desc = "Para quando alguém realmente precisa de um abraço."
 	/// Hug mode
 	var/mode = HUG_MODE_NICE
 	/// Crush cooldown
@@ -89,13 +89,13 @@
 			mode = HUG_MODE_NICE
 	switch(mode)
 		if(HUG_MODE_NICE)
-			to_chat(user, span_infoplain("Power reset. Hugs!"))
+			to_chat(user, span_infoplain("Energia reiniciada. Abraços!"))
 		if(HUG_MODE_HUG)
-			to_chat(user, span_infoplain("Power increased!"))
+			to_chat(user, span_infoplain("Energia aumentada!"))
 		if(HUG_MODE_SHOCK)
-			to_chat(user, "<span class='warningplain'>BZZT. Electrifying arms...</span>")
+			to_chat(user, "<span class='warningplain'>BZZT. Armas eletrizantes...</span>")
 		if(HUG_MODE_CRUSH)
-			to_chat(user, "<span class='warningplain'>ERROR: ARM ACTUATORS OVERLOADED.</span>")
+			to_chat(user, "<span class='warningplain'>Os atuadores de braço estão sobrecarregados.</span>")
 
 /obj/item/borg/cyborghug/attack(mob/living/attacked_mob, mob/living/silicon/robot/user, list/modifiers, list/attack_modifiers)
 	if(attacked_mob == user)
@@ -256,7 +256,7 @@
 
 				target_machine.charge_cell(0.15 * STANDARD_CELL_CHARGE, user.cell)
 
-			to_chat(user, span_notice("You stop charging yourself."))
+			to_chat(user, span_notice("Pare de se acusar."))
 
 		else if(is_type_in_list(target, charge_items))
 			var/obj/item/stock_parts/power_store/cell = target
@@ -295,7 +295,7 @@
 					break
 				target.update_appearance()
 
-			to_chat(user, span_notice("You stop charging yourself."))
+			to_chat(user, span_notice("Pare de se acusar."))
 
 	else if(is_type_in_list(target, charge_items))
 		var/obj/item/stock_parts/power_store/cell = target
@@ -337,7 +337,7 @@
 
 /obj/item/harmalarm
 	name = "\improper Sonic Harm Prevention Tool"
-	desc = "Releases a harmless blast that confuses most organics. For when the harm is JUST TOO MUCH."
+	desc = "Libera uma explosão inofensiva que confunde a maioria dos orgânicos. Para quando o mal é demais."
 	icon = 'icons/obj/devices/voice.dmi'
 	icon_state = "megaphone"
 	/// Harm alarm cooldown
@@ -346,21 +346,21 @@
 /obj/item/harmalarm/emag_act(mob/user, obj/item/card/emag/emag_card)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		balloon_alert(user, "safeties shorted")
+		balloon_alert(user, "Seguranças curtas.")
 	else
-		balloon_alert(user, "safeties reset")
+		balloon_alert(user, "Seguranças reiniciadas.")
 	return TRUE
 
 /obj/item/harmalarm/attack_self(mob/user)
 	var/safety = !(obj_flags & EMAGGED)
 	if (!COOLDOWN_FINISHED(src, alarm_cooldown))
-		to_chat(user, "<font color='red'>The device is still recharging!</font>")
+		to_chat(user, "<font color='red'>O dispositivo ainda está recarregando!</font>")
 		return
 
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 		if(!robot_user.cell || robot_user.cell.charge < 1200)
-			to_chat(user, span_warning("You don't have enough charge to do this!"))
+			to_chat(user, span_warning("Você não tem carga suficiente para fazer isso!"))
 			return
 		robot_user.cell.charge -= 1000
 		if(robot_user.emagged)
@@ -370,7 +370,7 @@
 		user.visible_message(
 			"<font color='red' size='2'>[user] blares out a near-deafening siren from its speakers!</font>",
 			span_userdanger("Your siren blares around [iscyborg(user) ? "you" : "and confuses you"]!"),
-			span_danger("The siren pierces your hearing!"),
+			span_danger("A sirene perfura sua audição!"),
 		)
 		for(var/mob/living/carbon/carbon in get_hearers_in_view(9, user))
 			if(carbon.get_ear_protection() > 0)

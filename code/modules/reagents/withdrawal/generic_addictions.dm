@@ -1,7 +1,7 @@
 ///Opioids
 /datum/addiction/opioids
 	name = "opioid"
-	description = "Patient has developed a dependence on opioid substances."
+	description = "O paciente desenvolveu dependência de substâncias opioides."
 	symptoms = "Expresses a desire for painkillers, and when in withdrawl, experiences drowsiness, high blood pressure, and nausea."
 	withdrawal_stage_messages = list("I feel aches in my bodies..", "I need some pain relief...", "It aches all over...I need some opioids!")
 
@@ -28,7 +28,7 @@
 
 /datum/addiction/stimulants
 	name = "stimulant"
-	description = "Patient has developed a dependence on stimulant substances."
+	description = "O paciente desenvolveu uma dependência de substâncias estimulantes."
 	symptoms = "Expresses a desire for stimulants, and when in withdrawal, experiences fatigue, slowness, and difficulty concentrating."
 	withdrawal_stage_messages = list("You feel a bit tired...You could really use a pick me up.", "You are getting a bit woozy...", "So...Tired...")
 
@@ -53,7 +53,7 @@
 ///Alcohol
 /datum/addiction/alcohol
 	name = "alcohol"
-	description = "Patient has developed a dependence on alcohol."
+	description = "O paciente desenvolveu dependência de álcool."
 	symptoms = "Expresses a desire for alcoholic beverages, and when in withdrawal, experiences jitteriness, hallucinations, and potentially seizures."
 	withdrawal_stage_messages = list("I could use a drink...", "Maybe the bar is still open?..", "God I need a drink!")
 
@@ -75,7 +75,7 @@
 
 /datum/addiction/hallucinogens
 	name = "hallucinogen"
-	description = "Patient has developed a dependence on hallucinogenic substances."
+	description = "O paciente desenvolveu uma dependência de substâncias alucinogênicas."
 	symptoms = "Expresses a desire for hallucinogens, and when in withdrawal, experiences feelings of emptiness, difficulty seeing, and disconnection from reality."
 	withdrawal_stage_messages = list("I feel so empty...", "I wonder what the machine elves are up to?..", "I need to see the beautiful colors again!!")
 
@@ -99,7 +99,7 @@
 
 /datum/addiction/maintenance_drugs
 	name = "maintenance drug"
-	description = "Patient has developed a dependence on maintenance drugs."
+	description = "O paciente desenvolveu dependência de drogas de manutenção."
 	symptoms = "Expresses a desire for maintenance drugs, and when in withdrawal, experiences various adaptions \
 		such as light sensitivity, numbness, changes to taste, enhanced hair growth, and greater low light vision."
 	withdrawal_stage_messages = list("", "", "")
@@ -119,7 +119,7 @@
 		return
 	var/mob/living/carbon/human/affected_human = affected_carbon
 	if(affected_human.gender == MALE)
-		to_chat(affected_human, span_warning("Your chin itches."))
+		to_chat(affected_human, span_warning("Seu queixo coça."))
 		affected_human.set_facial_hairstyle("Beard (Full)", update = TRUE)
 	//Only like gross food
 	var/obj/item/organ/tongue/tongue = affected_carbon.get_organ_slot(ORGAN_SLOT_TONGUE)
@@ -133,7 +133,7 @@
 	. = ..()
 	if(!ishuman(affected_carbon))
 		return
-	to_chat(affected_carbon, span_warning("You feel yourself adapt to the darkness."))
+	to_chat(affected_carbon, span_warning("Você se sente adaptado à escuridão."))
 	var/mob/living/carbon/human/affected_human = affected_carbon
 	var/obj/item/organ/eyes/empowered_eyes = affected_human.get_organ_by_type(/obj/item/organ/eyes)
 	if(empowered_eyes)
@@ -172,7 +172,7 @@
 ///Makes you a hypochondriac - I'd like to call it hypochondria, but "I could use some hypochondria" doesn't work
 /datum/addiction/medicine
 	name = "medicine"
-	description = "Patient has developed a dependence on medicine, similar to that of Hypochondria."
+	description = "O paciente desenvolveu uma dependência da medicina, similar à da hipocondria."
 	symptoms = "Expresses a need for medication despite being otherwise healthy, and when in withdrawal, \
 		experiences coughing fits, hallucinations, and distorted health perceptions."
 	withdrawal_stage_messages = list("", "", "")
@@ -287,7 +287,7 @@
 ///Nicotine
 /datum/addiction/nicotine
 	name = "nicotine"
-	description = "Patient has developed a dependence on nicotine."
+	description = "O paciente desenvolveu uma dependência de nicotina."
 	symptoms = "Expresses a desire for nicotine products, and when in withdrawal, experiences jitteriness, coughing, and difficulty concentrating."
 	addiction_relief_treshold = MIN_NICOTINE_ADDICTION_REAGENT_AMOUNT //much less because your intake is probably from ciggies
 	withdrawal_stage_messages = list("Feel like having a smoke...", "Getting antsy. Really need a smoke now.", "I can't take it! Need a smoke NOW!")

@@ -74,11 +74,11 @@
 			return
 	// SKYRAT EDIT ADDITION
 	if(!isnull(selected_item.ckeywhitelist) && !(preferences?.parent?.ckey in selected_item.ckeywhitelist))
-		to_chat(preferences.parent, span_warning("You cannot select this item!"))
+		to_chat(preferences.parent, span_warning("Você não pode selecionar este item!"))
 		return
 
 	if(selected_item.donator_only && !SSplayer_ranks.is_donator(preferences.parent))
-		to_chat(preferences.parent, span_warning("This item is for donators only."))
+		to_chat(preferences.parent, span_warning("Este item é só para doadores."))
 		return
 	// SKYRAT EDIT END
 

@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(invalid_heirloom_types, typecacheof(list(
 
 /datum/action/mark_family_heirloom
 	name = "Mark Held Item As Heirloom"
-	desc = "Use to mark your held item as your family heirloom. Does not work on existing heirlooms."
+	desc = "Use para marcar seu item como herança de família. Não funciona em relíquias existentes."
 
 /datum/action/mark_family_heirloom/Trigger(mob/clicker, trigger_flags)
 	. = ..()
@@ -50,21 +50,21 @@ GLOBAL_LIST_INIT(invalid_heirloom_types, typecacheof(list(
 	var/datum/quirk/item_quirk/family_heirloom/quirk = locate() in living_owner.quirks
 	if (isnull(quirk))
 		stack_trace("someone has the family heirloom action without the trait... wack. [owner]")
-		owner.balloon_alert(owner, "no quirk!")
+		owner.balloon_alert(owner, "Sem caprichos!")
 		return FALSE
 
 	var/obj/item/held_item = living_owner.get_active_held_item()
 
 	if (isnull(held_item))
-		living_owner.balloon_alert(living_owner, "no held item!")
+		living_owner.balloon_alert(living_owner, "Nenhum item retido!")
 		return FALSE
 
 	if (GLOB.invalid_heirloom_types[held_item.type])
-		living_owner.balloon_alert(living_owner, "invalid item type!")
+		living_owner.balloon_alert(living_owner, "Tipo de item inválido!")
 		return FALSE
 
 	if (held_item.GetComponent(/datum/component/heirloom))
-		living_owner.balloon_alert(living_owner, "already a heirloom!")
+		living_owner.balloon_alert(living_owner, "Já é uma relíquia!")
 		return FALSE
 
 	// valid heirloom
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(invalid_heirloom_types, typecacheof(list(
 	held_item.AddComponent(/datum/component/heirloom, living_owner.mind, family_name)
 	living_owner.add_mob_memory(/datum/memory/key/quirk_heirloom, protagonist = living_owner, heirloom_name = initial(held_item.name))
 
-	owner.balloon_alert(owner, "heirloom set")
+	owner.balloon_alert(owner, "Herdeira pronta.")
 	quirk.heirloom = WEAKREF(held_item)
 	quirk.mark_action = null
 	qdel(src)

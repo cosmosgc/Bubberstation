@@ -6,7 +6,7 @@
 #define VIBE_MOOD_TIMER 30 SECONDS
 /datum/action/cooldown/mob_cooldown/bot/vibe
 	name = "Vibe"
-	desc = "Use on yourself to remove color!"
+	desc = "Use-se para remover a cor!"
 	click_to_activate = TRUE
 	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "funk"
@@ -47,12 +47,12 @@
 	owner.set_light_color(null)
 
 /datum/mood_event/depressing_party
-	description = "That was a really grim party..."
+	description = "Foi uma festa muito ruim..."
 	mood_change = -1
 	timeout = 30 SECONDS
 
 /datum/mood_event/festive_party
-	description = "That was a really fantastic party!"
+	description = "Foi uma festa fantástica!"
 	mood_change = 2
 	timeout = 30 SECONDS
 

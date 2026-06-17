@@ -4,7 +4,7 @@
 
 /obj/structure/fireplace
 	name = "fireplace"
-	desc = "A large stone brick fireplace."
+	desc = "Uma grande lareira de tijolo de pedra."
 	icon = 'icons/obj/fluff/fireplace.dmi'
 	icon_state = "fireplace"
 	density = FALSE
@@ -47,7 +47,7 @@
 
 /obj/structure/fireplace/proc/try_light(obj/item/O, mob/user)
 	if(lit)
-		to_chat(user, span_warning("It's already lit!"))
+		to_chat(user, span_warning("Já está acesa!"))
 		return FALSE
 	if(!fuel_added)
 		to_chat(user, span_warning("[src] needs some fuel to burn!"))
@@ -164,7 +164,7 @@
 	START_PROCESSING(SSobj, src)
 	burning_loop.start()
 	lit = TRUE
-	desc = "A large stone brick fireplace, warm and cozy."
+	desc = "Uma grande lareira de tijolo de pedra, quente e aconchegante."
 	flame_expiry_timer = world.time + fuel_added
 	fuel_added = 0
 	update_appearance()

@@ -1,7 +1,7 @@
 
 /datum/action/cooldown/spell/pointed/sword_fling
 	name = "Sword Fling"
-	desc = "Try to fling yourself around."
+	desc = "Tente se enrolar."
 	ranged_mousepointer = 'icons/effects/mouse_pointers/cult_target.dmi'
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_cult_border"

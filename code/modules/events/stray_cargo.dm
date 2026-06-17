@@ -6,17 +6,17 @@
 	max_occurrences = 4
 	earliest_start = 10 MINUTES
 	category = EVENT_CATEGORY_BUREAUCRATIC
-	description = "A pod containing a random supply crate lands on the station."
+	description = "Uma cápsula contendo uma caixa de suprimentos cair na estação."
 	admin_setup = list(/datum/event_admin_setup/set_location/stray_cargo, /datum/event_admin_setup/listed_options/stray_cargo)
 
 /datum/event_admin_setup/set_location/stray_cargo
-	input_text = "Aim pod at turf we're on?"
+	input_text = "Apontar pod no território em que estamos?"
 
 /datum/event_admin_setup/set_location/stray_cargo/apply_to_event(datum/round_event/stray_cargo/event)
 	event.admin_override_turf = chosen_turf
 
 /datum/event_admin_setup/listed_options/stray_cargo
-	input_text = "Choose a cargo crate to drop."
+	input_text = "Escolha uma caixa de carga para soltar."
 	normal_run_option = "Random Crate"
 
 /datum/event_admin_setup/listed_options/stray_cargo/get_list()
@@ -142,7 +142,7 @@
 	weight = 6
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
-	description = "A pod containing syndicate gear lands on the station."
+	description = "Uma cápsula contendo equipamento do sindicato aterrissa na estação."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/set_location/stray_cargo, /datum/event_admin_setup/syndicate_cargo_pod)
@@ -152,7 +152,7 @@
 	var/pack_type_override
 
 /datum/event_admin_setup/syndicate_cargo_pod/prompt_admins()
-	var/admin_selected_pack = tgui_alert(usr,"Customize Pod contents?", "Pod Contents", list("Yes", "No", "Cancel"))
+	var/admin_selected_pack = tgui_alert(usr,"Personalizar o conteúdo do pod?", "Pod Contents", list("Yes", "No", "Cancel"))
 	switch(admin_selected_pack)
 		if("Yes")
 			return override_contents()

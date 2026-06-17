@@ -1,8 +1,8 @@
 /datum/surgery_operation/organ/fix_wings
 	name = "repair wings"
 	rnd_name = "Pteroplasty (Wing Repair)"
-	desc = "Repair a patient's damaged wings to restore flight capability."
-	rnd_desc = "A surgical procedure that repairs damaged wings using Synthflesh."
+	desc = "Reparar as asas danificadas de um paciente para restaurar a capacidade de vôo."
+	rnd_desc = "Um procedimento cirúrgico que repara asas danificadas usando Synthflesh."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,

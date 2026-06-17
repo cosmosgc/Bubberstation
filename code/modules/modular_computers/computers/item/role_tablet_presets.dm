@@ -385,7 +385,7 @@
 
 /obj/item/modular_computer/pda/curator
 	name = "curator PDA"
-	desc = "A small experimental microcomputer."
+	desc = "Um pequeno microcomputador experimental."
 	icon = 'icons/obj/devices/modular_pda.dmi'
 	icon_state = "pda-library"
 	post_init_icon_state = null

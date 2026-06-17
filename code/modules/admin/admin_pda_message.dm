@@ -8,7 +8,7 @@ ADMIN_VERB(message_pda, R_ADMIN, "PDA Message", "Send a message to a user's PDA.
 		return
 
 	if(!length(GLOB.pda_messengers))
-		to_chat(usr, span_warning("ERROR: There are no users you can send a message to"))
+		to_chat(usr, span_warning("Não há usuários para quem possa enviar uma mensagem."))
 		return
 
 	var/datum/admin_pda_panel/ui = new(usr)
@@ -60,7 +60,7 @@ ADMIN_VERB(message_pda, R_ADMIN, "PDA Message", "Send a message to a user's PDA.
 					targets += messenger
 
 			if(!length(targets))
-				to_chat(usr, span_warning("ERROR: Target is unavailable."))
+				to_chat(usr, span_warning("O alvo está indisponível."))
 				return FALSE
 
 			var/datum/signal/subspace/messaging/tablet_message/signal = new(null, list(
@@ -81,7 +81,7 @@ ADMIN_VERB(message_pda, R_ADMIN, "PDA Message", "Send a message to a user's PDA.
 				signal.send_to_receivers()
 
 			if(!(force || signal.data["reject"]))
-				to_chat(usr, span_warning("ERROR: PDA message was rejected by the telecomms setup."))
+				to_chat(usr, span_warning("A mensagem PDA foi rejeitada pela instalação de telecomms."))
 				return FALSE
 
 			var/recipient = spam ? "everyone" : get_messenger_name(targets[1])

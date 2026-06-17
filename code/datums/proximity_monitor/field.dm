@@ -166,7 +166,7 @@
 //DEBUG FIELD ITEM
 /obj/item/multitool/field_debug
 	name = "strange multitool"
-	desc = "Seems to project a colored field!"
+	desc = "Parece projetar um campo colorido!"
 	apc_scanner = FALSE
 	var/operating = FALSE
 	var/range_to_use = 5

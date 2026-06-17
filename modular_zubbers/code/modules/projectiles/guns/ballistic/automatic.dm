@@ -6,7 +6,7 @@
 
 /obj/item/gun/ballistic/automatic/wt550/security
 	name = "\improper WT-551 Autorifle"
-	desc = "A heavier, bulkier automatic variant of the WT-550, and now with 99% less discombobulation! It's back, baby. Uses 4.6x30mm rounds. Recommended to hold with two hands."
+	desc = "Uma variante automática mais pesada e volumosa do WT-550, e agora com 99% menos desbobulação! Voltou, querida. Usa balas 4,6x30mm. Recomendado para segurar com duas mãos."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/wt551.dmi'
 	fire_sound = 'modular_zubbers/sound/weapons/gun/wt551/shot.ogg'
 	w_class = WEIGHT_CLASS_BULKY
@@ -18,7 +18,7 @@
 	burst_size = 1
 	actions_types = list()
 	name = "\improper NT22-HCS-MP 'Lancer'"
-	desc = "A hardlight compliance submachine gun variant designed for sustained non-lethal confrontations. It has a retractable stock included in its design, allowing for easier concealment. Without the stock, its recoil is strong enough that it needs two hands to use effectively."
+	desc = "Uma variante de submetralhadora para confrontos não letais. Tem um estoque retrátil incluído em seu projeto, permitindo uma ocultação mais fácil. Sem o estoque, seu recuo é forte o suficiente para que precise de duas mãos para usar eficazmente."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/ntmp5.dmi'
 	icon_state = "ntmp5"
 	base_icon_state = "ntmp5"
@@ -55,14 +55,14 @@
 	RegisterSignal(src, COMSIG_CLICK_CTRL, PROC_REF(on_ctrl_click_stock_toggle))
 	autofire_component = AddComponent(/datum/component/automatic_fire, fire_delay, allow_akimbo = FALSE)
 	AddElement(/datum/element/examine_lore, \
-		lore_hint = span_notice("You can " + EXAMINE_HINT("look closer") + " to learn a little more about [src]."), \
-			lore = "An adaptation of the NT22-HCS, the NT22-HCS-MP, also known as the Lancer, is a Machine Pistol refined for sustained engagement scenarios. This variant was designed for operations requiring rapid, repeatable application across multiple subjects, such as crowd suppression, access denial, riot control, and 'labour dispute resolutions'.<br>\
+		lore_hint = span_notice("Você pode." + EXAMINE_HINT("Olhe mais de perto.") + " to learn a little more about [src]."), \
+			lore = "Uma adaptação do NT22-HCS, o NT22-HCS-MP, também conhecido como Lancer, é um Pistol de Máquina refinado para cenários de engajamento sustentado. Esta variante foi projetada para operações que requerem aplicação rápida e repetitiva em vários assuntos, como supressão de multidões, negação de acesso, controle de tumultos e \"resoluções de disputa de trabalho\".<br>\
 			<br>\
-			Maintaining full compatibility with the .22HL battery packs of the Enforcer, the NT22-HCS-MP integrates an expanded energy cycling architecture capable of sustaining automatic fire. Each projectile is synthesized in real time. Reloading follows a simple sequence, designed to be familiar with those trained with regular ballistic weaponry. The bolt is retracted and locked, the battery is inserted and the bolt is then released, typically with the characteristic 'slap'.<br>\
+Mantendo total compatibilidade com as baterias .22HL do Forçador, o NT22-HCS-MP integra uma arquitetura de ciclagem de energia expandida capaz de sustentar fogo automático. Cada projétil é sintetizado em tempo real. Recarregando segue uma sequência simples, projetada para estar familiarizado com aqueles treinados com armamento balístico regular. O parafuso é retraído e travado, a bateria é inserida e o parafuso é então liberado, tipicamente com a característica 'lap'.<br>\
 			<br>\
-			.22HL rounds are accelerated to considerable velocity, which deliver significant kinetic force at the point of impact, dissipating instantly, leaving no embedded material. The increased rate of fire comes at the cost of slightly less effective bullets produced by the weapon. Nevertheless, the subjects struck by .22HL will suffer significant pain response, exhaustion and loss of voluntary motor function.<br>\
+As balas .22HL são aceleradas a uma velocidade considerável, que fornecem força cinética significativa no ponto de impacto, dissipando-se instantaneamente, sem deixar material incorporado. O aumento da taxa de fogo vem ao custo de balas ligeiramente menos eficazes produzidas pela arma. No entanto, os sujeitos atingidos por .22HL sofrerão significativa resposta à dor, exaustão e perda da função motora voluntária.<br>\
 			<br>\
-			The NT22-HCS-MP features a collapsible stock, reducing its size and allowing it to be discreetly concealed under jackets or bags. Operational guidelines recommend deployment against non-compliant subjects where verbal deterrence has failed, and escalation to lethal response is not warranted. Nevertheless, longitudinal data on cumulative .22HL exposure remains limited, a consequence of the particularly restricted circulation of post-incident reports." \
+O NT22-HCS-MP apresenta um estoque dobrável, reduzindo seu tamanho e permitindo que ele seja discretamente escondido sob jaquetas ou bolsas. Diretrizes operacionais recomendam a implantação contra indivíduos não conformes onde a dissuasão verbal falhou, e a escalada para resposta letal não é justificada. No entanto, dados longitudinais sobre exposição cumulativa de .22HL permanecem limitados, uma consequência da circulação particularmente restrita de relatórios pós-incidentes." \
 	)
 	update_fire_delay_state()
 	update_stock_state()
@@ -74,7 +74,7 @@
 /obj/item/gun/ballistic/automatic/ntmp5/proc/on_ctrl_click_stock_toggle(datum/source, mob/user)
 	SIGNAL_HANDLER
 	stock_retracted = !stock_retracted
-	balloon_alert(user, stock_retracted ? "stock retracted" : "stock extended")
+	balloon_alert(user, stock_retracted ? "Ações retiradas." : "estoque estendido")
 	playsound(src, 'sound/items/weapons/batonextend.ogg', 50, TRUE)
 	update_stock_state()
 	return CLICK_ACTION_SUCCESS

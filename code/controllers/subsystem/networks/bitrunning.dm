@@ -52,10 +52,10 @@ SUBSYSTEM_DEF(bitrunning)
 
 /obj/item/paper/paperslip/bitrunning_error
 	name = "Apology Letter"
-	desc = "Something went wrong here."
+	desc = "Algo deu errado aqui."
 
 /obj/item/paper/paperslip/bitrunning_error/Initialize(mapload)
-	default_raw_text = "Your reward for collecting the encrypted curiosity failed to arrive, please report this to technical support."
+	default_raw_text = "Sua recompensa por coletar a curiosidade criptografada não chegou, por favor, informe isso ao suporte técnico."
 	return ..()
 
 #undef REDACTED

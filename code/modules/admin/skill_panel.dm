@@ -42,12 +42,12 @@
 	switch (action)
 		if ("adj_exp")
 			var/skill = text2path(params["skill"])
-			var/number = input("Please insert the amount of experience you'd like to add/subtract:") as num|null
+			var/number = input("Por favor, insira a quantidade de experiência que gostaria de adicionar/subtrair:") as num|null
 			if (number)
 				targetmind.adjust_experience(skill, number)
 		if ("set_exp")
 			var/skill = text2path(params["skill"])
-			var/number = input("Please insert the number you want to set the player's exp to:") as num|null
+			var/number = input("Por favor, insira o número que você quer para definir exp do jogador para:") as num|null
 			if (number)
 				targetmind.set_experience(skill, number)
 		if ("set_lvl")

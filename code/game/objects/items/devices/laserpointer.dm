@@ -1,6 +1,6 @@
 /obj/item/laser_pointer
 	name = "laser pointer"
-	desc = "Don't shine it in your eyes!"
+	desc = "Não brilhe em seus olhos!"
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "pointer"
 	inhand_icon_state = "pen"
@@ -65,7 +65,7 @@
 
 /obj/item/laser_pointer/infinite_range
 	name = "infinite laser pointer"
-	desc = "Used to shine in the eyes of Cyborgs who need a bit of a push, this works through camera consoles."
+	desc = "Costumava brilhar nos olhos de Cyborgs que precisam de um empurrão, isso funciona através de consoles de câmera."
 	max_range = INFINITY
 
 /obj/item/laser_pointer/infinite_range/Initialize(mapload)
@@ -75,7 +75,7 @@
 /obj/item/laser_pointer/screwdriver_act(mob/living/user, obj/item/tool)
 	if(diode)
 		tool.play_tool_sound(src)
-		balloon_alert(user, "removed diode")
+		balloon_alert(user, "Diodo removido")
 		diode.forceMove(drop_location())
 		diode = null
 		return TRUE
@@ -86,7 +86,7 @@
 	if(tool_behaviour != TOOL_WIRECUTTER && tool_behaviour != TOOL_HEMOSTAT)
 		return ..()
 	tool.play_tool_sound(src)
-	balloon_alert(user, "removed crystal lens")
+	balloon_alert(user, "Lentes de cristal removidas")
 	crystal_lens.forceMove(drop_location())
 	crystal_lens = null
 	return ITEM_INTERACT_SUCCESS
@@ -94,7 +94,7 @@
 /obj/item/laser_pointer/attackby(obj/item/attack_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(attack_item, /obj/item/stock_parts/micro_laser))
 		if(diode)
-			balloon_alert(user, "already has a diode!")
+			balloon_alert(user, "Já tem um diodo!")
 			return
 		var/obj/item/stock_parts/attack_diode = attack_item
 		if(crystal_lens && attack_diode.rating < 3) //only tier 3 and up are small enough to fit
@@ -123,7 +123,7 @@
 
 	if(istype(attack_item, /obj/item/stack/ore/bluespace_crystal))
 		if(crystal_lens)
-			balloon_alert(user, "already has a lens!")
+			balloon_alert(user, "Já tem uma lente!")
 			return
 		//the crystal stack we're trying to install a crystal from
 		var/obj/item/stack/ore/bluespace_crystal/crystal_stack = attack_item
@@ -159,14 +159,14 @@
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		if(isnull(diode))
-			. += span_notice("The diode is missing.")
+			. += span_notice("O diodo está faltando.")
 		else
 			. += span_notice("A class <b>[diode.rating]</b> laser diode is installed. It is <i>screwed</i> in place.")
 		. += span_notice("A small display reads out that[recharge_locked ? " it is currently recharging to full, and" : ""] there is <b>[energy * 10]%</b> total charge remaining.")
 		if(crystal_lens)
 			. += span_notice("There is a <b>[crystal_lens.name]</b> fit neatly before the focus lens. It can be <i>plucked out</i> with some <i>wirecutters</i>.")
 		else if(diode) //hint at the ability to modify the pointer with a crystal only if we have a diode
-			. += span_notice("<i>You could examine it more thoroughly...</i>")
+			. += span_notice("<i>Você poderia examiná-lo mais detalhadamente...</i>")
 
 /obj/item/laser_pointer/examine_more(mob/user)
 	. = ..()
@@ -196,10 +196,10 @@
 		to_chat(user, span_notice("You point [src] at [target], but nothing happens!"))
 		return
 	if(!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem a destreza de fazer isso!"))
 		return
 	if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
-		to_chat(user, span_warning("Your fingers can't press the button!"))
+		to_chat(user, span_warning("Seus dedos não podem apertar o botão!"))
 		return
 
 	if(max_range != INFINITY)
@@ -211,7 +211,7 @@
 				to_chat(user, span_warning("You can't point with [src] through walls!"))
 				return
 			if(!((user.sight & SEE_OBJS) || (user.sight & SEE_MOBS))) //only let it work if we have xray or thermals. mesons don't count because they are easier to get.
-				to_chat(user, span_notice("You can't quite make out your target and you fail to shine at it."))
+				to_chat(user, span_notice("Você não consegue ver seu alvo e não consegue brilhar nele."))
 				return
 
 	add_fingerprint(user)
@@ -254,7 +254,7 @@
 			outmsg = span_notice("You point [src] at [target_sillycone], but [target_sillycone.p_they()] appear[target_sillycone.p_s()] to be non-functioning.")
 		if(prob(effectchance * diode.rating) && target_sillycone.flash_act(affect_silicon = TRUE))
 			target_sillycone.set_temp_blindness_if_lower(5 SECONDS)
-			to_chat(target_sillycone, span_danger("Your sensors were overloaded by a laser!"))
+			to_chat(target_sillycone, span_danger("Seus sensores foram sobrecarregados por um laser!"))
 			outmsg = span_notice("You overload [target_sillycone] by shining [src] at [target_sillycone.p_their()] sensors.")
 			log_combat(user, target_sillycone, "shone in the sensors", src)
 		else
@@ -280,13 +280,13 @@
 		if(target_felinid.body_position == STANDING_UP)
 			target_felinid.setDir(get_dir(target_felinid, targloc)) // kitty always looks at the light
 			if(prob(effectchance * diode.rating))
-				target_felinid.visible_message(span_warning("[target_felinid] makes a grab for the light!"), span_userdanger("LIGHT!"))
+				target_felinid.visible_message(span_warning("[target_felinid] makes a grab for the light!"), span_userdanger("Luz!"))
 				target_felinid.Move(targloc, get_dir(target_felinid, targloc))
 				log_combat(user, target_felinid, "moved with a laser pointer", src)
 			else
-				target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("You're briefly tempted by the shiny light..."))
+				target_felinid.visible_message(span_notice("[target_felinid] looks briefly distracted by the light."), span_warning("Você está brevemente tentado pela luz brilhante..."))
 		else
-			target_felinid.visible_message(span_notice("[target_felinid] stares at the light."), span_warning("You stare at the light..."))
+			target_felinid.visible_message(span_notice("[target_felinid] stares at the light."), span_warning("Você olha para a luz..."))
 	//The pointer is shining, change its sprite to show
 	icon_state = "pointer_[pointer_icon_state]"
 

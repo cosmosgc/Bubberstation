@@ -4,7 +4,7 @@
 
 /atom/movable/screen/alert/status_effect/agent_pinpointer
 	name = "Target Integrated Pinpointer"
-	desc = "Even stealthier than a normal implant, it points to any assassination target you have."
+	desc = "Mais furtivo que um implante normal, aponta para qualquer alvo de assassinato que tenha."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "pinon"
 

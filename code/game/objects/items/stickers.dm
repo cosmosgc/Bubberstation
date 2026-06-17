@@ -15,7 +15,7 @@
 
 /obj/item/sticker
 	name = "sticker"
-	desc = "A sticker with some strong adhesive on the back, sticks to stuff!"
+	desc = "Um adesivo com adesivo forte na parte de trás, cola nas coisas!"
 
 	icon = 'icons/obj/toys/stickers.dmi'
 
@@ -81,7 +81,7 @@
 
 	if(!isnull(user))
 		user.do_attack_animation(target, used_item = src)
-		target.balloon_alert(user, "sticker sticked")
+		target.balloon_alert(user, "adesivo colado")
 		var/mob/living/victim = target
 		if(istype(victim) && !isnull(victim.client))
 			user.log_message("stuck [src] to [key_name(victim)]", LOG_ATTACK)
@@ -123,9 +123,9 @@
 
 /obj/item/sticker/rev
 	name = "blue R sticker"
-	desc = "A sticker of FUCK THE SYSTEM, the galaxy's premiere hardcore punk band."
+	desc = "Um autocolante da banda punk da galáxia."
 	icon_state = "revhead"
-	examine_text = "There is a sticker displaying <b>FUCK THE SYSTEM</b>, the galaxy's premiere hardcore punk band."
+	examine_text = "Há um adesivo exibindo<b>Foda-se o sistema.</b>A primeira banda punk da galáxia."
 
 /obj/item/sticker/pslime
 	name = "slime plushie sticker"
@@ -156,7 +156,7 @@
 	name = "CE approved sticker"
 	icon_state = "ce_approved"
 	exclude_from_random = TRUE
-	examine_text = "There is a sticker displaying the <b>Chief Engineer's SEAL OF APPROVAL.</b>"
+	examine_text = "Há um adesivo mostrando o<b>SEAL DE HOMOLOGAÇÃO DO Engenheiro Chefe.</b>"
 
 /obj/item/sticker/clown
 	name = "clown sticker"
@@ -173,12 +173,12 @@
 /obj/item/sticker/skub
 	name = "skub sticker"
 	icon_state = "skub"
-	examine_text = "There is a sticker displaying <b>Skubtide, Stationwide!</b>"
+	examine_text = "Há um adesivo exibindo<b>Skubtide, Estação!</b>"
 
 /obj/item/sticker/anti_skub
 	name = "anti-skub sticker"
 	icon_state = "anti_skub"
-	examine_text = "There is an <b>anti-skub</b> sticker."
+	examine_text = "Há um<b>anti-skub</b>adesivo."
 
 /obj/item/sticker/syndicate
 	name = "syndicate sticker"
@@ -224,7 +224,7 @@
 /obj/item/sticker/purity_seal
 	name = "purity seal"
 	icon_state = "purity_seal_1"
-	desc =  "Looking closer, you realize it's actually a mass produced sticker. You suppose it's the holiness that counts."
+	desc =  "Olhando mais de perto, você percebe que na verdade é um adesivo produzido em massa. Você acha que é a santidade que conta."
 
 /obj/item/sticker/purity_seal/purity_seal_2
 	icon_state = "purity_seal_2"

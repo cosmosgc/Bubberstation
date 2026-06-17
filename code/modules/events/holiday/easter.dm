@@ -6,7 +6,7 @@
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
 	category = EVENT_CATEGORY_HOLIDAY
-	description = "Hides surprise filled easter eggs in maintenance."
+	description = "Esconde surpresa encheu ovos de Páscoa na manutenção."
 
 /datum/round_event/easter/announce(fake)
 	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
@@ -19,7 +19,7 @@
 	weight = 5
 	max_occurrences = 10
 	category = EVENT_CATEGORY_HOLIDAY
-	description = "Summons a wave of cute rabbits."
+	description = "Convoca uma onda de coelhos fofos."
 
 /datum/round_event/rabbitrelease/announce(fake)
 	priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", ANNOUNCER_ALIENS)
@@ -53,7 +53,7 @@
 	name = "Easter Bunny head"
 	icon_state = "bunnyhead"
 	inhand_icon_state = null
-	desc = "Considerably more cute than 'Frank'."
+	desc = "Consideravelmente mais bonito do que Frank."
 	slowdown = -0.3
 	clothing_flags = THICKMATERIAL | SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -73,14 +73,14 @@
 //Bunny bag!
 /obj/item/storage/backpack/satchel/bunnysatchel
 	name = "easter bunny satchel"
-	desc = "Good for your eyes."
+	desc = "Bom para seus olhos."
 	icon_state = "satchel_carrot"
 	inhand_icon_state = null
 
 //Egg prizes and egg spawns!
 /obj/item/surprise_egg
 	name = "wrapped egg"
-	desc = "A chocolate egg containing a little something special. Unwrap and enjoy!"
+	desc = "Um ovo de chocolate contendo algo especial. Desembrulhe e aproveite!"
 	icon_state = "egg"
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -127,7 +127,7 @@
 //Easter Recipes + food
 /obj/item/food/hotcrossbun
 	name = "hot cross bun"
-	desc = "The cross represents the Assistants that died for your sins."
+	desc = "A cruz representa os assistentes que morreram por seus pecados."
 	icon_state = "hotcrossbun"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/sugar = 1)
 	foodtypes = SUGAR | GRAIN | BREAKFAST
@@ -158,7 +158,7 @@
 
 /obj/item/food/scotchegg
 	name = "scotch egg"
-	desc = "A boiled egg wrapped in a delicious, seasoned meatball."
+	desc = "Um ovo cozido enrolado em uma deliciosa almôndega."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "scotchegg"
 	bite_consumption = 3
@@ -194,7 +194,7 @@
 
 /obj/item/food/chocolatebunny
 	name = "chocolate bunny"
-	desc = "Contains less than 10% real rabbit!"
+	desc = "Contém menos de 10% de coelho de verdade!"
 	icon_state = "chocolatebunny"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
 	crafting_complexity = FOOD_COMPLEXITY_1

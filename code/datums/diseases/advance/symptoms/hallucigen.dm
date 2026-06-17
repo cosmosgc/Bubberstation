@@ -9,7 +9,7 @@
 
 /datum/symptom/hallucigen
 	name = "Hallucigen"
-	desc = "The virus stimulates the brain, causing occasional hallucinations."
+	desc = "O vírus estimula o cérebro, causando alucinações ocasionais."
 	illness = "Paranoyance"
 	stealth = 1
 	resistance = -2

@@ -5,7 +5,7 @@
 
 /obj/structure/mecha_wreckage
 	name = "exosuit wreckage"
-	desc = "Remains of some unfortunate mecha. Completely irreparable, but perhaps something can be salvaged."
+	desc = "Restos de algum infeliz mecha. Completamente irreparável, mas talvez algo possa ser salvo."
 	icon = 'icons/mob/rideables/mecha.dmi'
 	density = TRUE
 	anchored = FALSE
@@ -53,7 +53,7 @@
 	. = ..()
 	if(!AI)
 		return
-	. += span_notice("The AI recovery beacon is active.")
+	. += span_notice("O sinal de recuperação da IA está ativo.")
 
 /obj/structure/mecha_wreckage/welder_act(mob/living/user, obj/item/I)
 	..()
@@ -102,13 +102,13 @@
 	if(interaction != AI_TRANS_TO_CARD) //AIs can only be transferred in one direction, from the wreck to the card.
 		return
 	if(!AI) //No AI in the wreck
-		to_chat(user, span_warning("No AI backups found."))
+		to_chat(user, span_warning("Nenhum backup de IA encontrado."))
 		return
 	cut_overlays() //Remove the recovery beacon overlay
 	AI.forceMove(card) //Move the dead AI to the card.
 	card.AI = AI
 	if(AI.client) //AI player is still in the dead AI and is connected
-		to_chat(AI, span_notice("The remains of your file system have been recovered on a mobile storage device."))
+		to_chat(AI, span_notice("Os restos do seu sistema de arquivos foram recuperados em um dispositivo de armazenamento móvel."))
 	else //Give the AI a heads-up that it is probably going to get fixed.
 		AI.notify_revival("You have been recovered from the wreckage!", source = card)
 	to_chat(user, "[span_boldnotice("Backup files recovered")]: [AI.name] ([rand(1000,9999)].exe) salvaged from [name] and stored within local memory.")
@@ -140,7 +140,7 @@
 /obj/structure/mecha_wreckage/mauler
 	name = "\improper Mauler wreckage"
 	icon_state = "mauler-broken"
-	desc = "The syndicate won't be very happy about this..."
+	desc = "O sindicato não ficará muito feliz com isso..."
 	welder_salvage = list(/obj/item/stack/sheet/mineral/plastitanium, /obj/item/stack/sheet/mineral/diamond, /obj/item/stack/sheet/iron, /obj/item/stack/rods)
 
 /obj/structure/mecha_wreckage/seraph
@@ -194,7 +194,7 @@
 /obj/structure/mecha_wreckage/honker
 	name = "\improper H.O.N.K wreckage"
 	icon_state = "honker-broken"
-	desc = "All is right in the universe."
+	desc = "Tudo está bem no universo."
 	welder_salvage = list(/obj/item/stack/sheet/mineral/bananium, /obj/item/grown/bananapeel, /obj/item/stack/sheet/iron)
 	parts = list(
 				/obj/item/mecha_parts/part/honker_torso,

@@ -17,7 +17,7 @@
 
 /datum/element/skill_reward/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_notice("You notice a powerful aura about this item, suggesting that only the truly experienced may wield it.")
+	examine_list += span_notice("Você nota uma poderosa aura sobre este item, sugerindo que apenas os verdadeiramente experientes podem empunhar.")
 
 /datum/element/skill_reward/proc/on_attack_hand(datum/source, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER

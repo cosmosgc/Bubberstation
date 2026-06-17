@@ -2,7 +2,7 @@
 	icon_state = "inje_map-3"
 
 	name = "air injector"
-	desc = "Has a valve and pump attached to it."
+	desc = "Tem uma válvula e uma bomba."
 
 	use_power = IDLE_POWER_USE
 	can_unwrench = TRUE
@@ -41,7 +41,7 @@
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/examine(mob/user)
 	. = ..()
-	. += span_notice("You can link it with an air sensor using a multitool.")
+	. += span_notice("Você pode ligá-lo com um sensor de ar usando uma multitool.")
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	if(istype(multi_tool.buffer, /obj/machinery/air_sensor))
@@ -50,7 +50,7 @@
 		sensor.multitool_act(user, multi_tool)
 		return ITEM_INTERACT_SUCCESS
 
-	balloon_alert(user, "injector saved in buffer")
+	balloon_alert(user, "Injetor salvo em tampão")
 	multi_tool.set_buffer(src)
 	return ITEM_INTERACT_SUCCESS
 

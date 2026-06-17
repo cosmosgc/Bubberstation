@@ -245,11 +245,11 @@
 				ShowPanel(usr, null)
 				return
 			if("job_name")
-				var/msg = input(usr, "Set the job name of this spawner.", "Job name", ESI.job_name) as text|null
+				var/msg = input(usr, "Defina o nome da desova.", "Nome do trabalho", ESI.job_name) as text|null
 				if(msg)
 					ESI.job_name = msg
 			if("flavor_text")
-				var/msg = input(usr, "Set the flavor text of this spawner.", "Flavor Text", ESI.flavor_text) as message|null
+				var/msg = input(usr, "Defina o texto do sabor desta desova.", "Texto Sabor", ESI.flavor_text) as message|null
 				if(msg)
 					ESI.flavor_text = msg
 			if("used_outfit")
@@ -265,30 +265,30 @@
 			if("prompt_players")
 				ESI.prompt_players = !ESI.prompt_players
 			if("add_ckey")
-				var/msg = input(usr, "Add allowed CKEY to the spawner.", "Add CKEY", "") as text|null
+				var/msg = input(usr, "Adicione CKEY permitido para a desova.", "Adicione CKEY", "") as text|null
 				if(msg)
 					ESI.ckey_whitelist += LOWER_TEXT(msg)
 			if("add_species")
-				var/result = input(usr, "Select a species", "Add species") as null|anything in GLOB.roundstart_races
+				var/result = input(usr, "Selecione uma espécie.", "Adicionar espécies") as null|anything in GLOB.roundstart_races
 				if(result)
 					ESI.species_whitelist += result
 			if("add_gender")
-				var/result = input(usr, "Select a gender", "Add Gender") as null|anything in list("male", "female", "plural")
+				var/result = input(usr, "Selecione um gênero.", "Adicionar gênero") as null|anything in list("male", "female", "plural")
 				if(result)
 					ESI.gender_whitelist += result
 			if("add_access")
-				var/msg = input(usr, "Add access type to the spawner(as number)", "Add Access", "") as num|null
+				var/msg = input(usr, "Adicione o tipo de acesso à desova (como número)", "Adicionar acesso", "") as num|null
 				if(msg != null)
 					if(!(msg in ESI.access_override))
 						ESI.access_override += msg
 			if("add_equip")
-				var/msg = input(usr, "Add an equipment piece, as typed path (ex. /obj/item/gun/energy/e_gun).", "Add equipment", "") as text|null
+				var/msg = input(usr, "Adicione uma peça de equipamento, como caminho digitado (ex. /obj / item / arma / energia / e  arma).", "Adicionar equipamento", "") as text|null
 				if(!isnull(msg))
 					var/typed = text2path(msg)
 					if(!isnull(typed))
 						ESI.additional_equipment += typed
 			if("set_headset")
-				var/result = input(usr, "Select a headset", "Set Headset") as null|anything in radio_typecache
+				var/result = input(usr, "Selecione um fone de ouvido", "Definir o headset") as null|anything in radio_typecache
 				if(result)
 					ESI.headset_override = result
 			if("remove_ckey")
@@ -324,7 +324,7 @@
 	if(href_list["pref"])
 		switch(href_list["pref"])
 			if("create_new_instance")
-				var/action = tgui_alert(usr, "Create a new instance, or import?", "", list("New", "Import"))
+				var/action = tgui_alert(usr, "Criar uma nova instância ou importar?", "", list("New", "Import"))
 				if(!action)
 					return
 				var/import_input

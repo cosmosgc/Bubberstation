@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(condos)
 	var/datum/turf_reservation/condo/condo_reservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1, reservation_type = /datum/turf_reservation/condo)
 	var/turf/bottom_left = condo_reservation.bottom_left_turfs[1]
 	if(!bottom_left)
-		to_chat(user, span_warning("Failed to reserve a room for you! Contact the technical concierge."))
+		to_chat(user, span_warning("Não consegui reservar um quarto para você! Contate o porteiro técnico."))
 		return
 	our_condo.load(bottom_left)
 	condo_reservation.condo_template = our_condo

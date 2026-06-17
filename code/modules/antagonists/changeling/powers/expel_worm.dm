@@ -1,6 +1,6 @@
 /datum/action/changeling_expel_worm
 	name = "Expel Worm"
-	desc = "Forcefully expel the blood worm in your body."
+	desc = "Expulse o verme do seu corpo."
 
 	background_icon_state = "bg_changeling"
 	overlay_icon_state = "bg_changeling_border"

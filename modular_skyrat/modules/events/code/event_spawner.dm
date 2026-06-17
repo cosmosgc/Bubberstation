@@ -25,10 +25,10 @@
 	if(used)
 		return
 	if(ckey_whitelist && !(LOWER_TEXT(user.ckey) in ckey_whitelist))
-		alert(user, "Sorry, This spawner is not for you!", "", "Ok")
+		alert(user, "Desculpe. Esta desova não é para você!", "", "Ok")
 		return
 	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER))
-		to_chat(user, "Error, you are banned from playing ghost roles!")
+		to_chat(user, "Erro, você está proibido de fazer papéis fantasmas!")
 		return
 	var/species_string
 	if(species_whitelist)
@@ -58,7 +58,7 @@
 		return
 	var/alias
 	if(action == "Yes with Alias")
-		var/msg = reject_bad_name(input(usr, "Set your character's alias for this role", "Alias") as text|null)
+		var/msg = reject_bad_name(input(usr, "Coloque o nome de seu personagem para este papel.", "Alias") as text|null)
 		if(!msg)
 			return
 		alias = msg

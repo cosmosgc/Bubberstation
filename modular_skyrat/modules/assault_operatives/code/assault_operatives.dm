@@ -44,7 +44,7 @@
 
 /datum/antagonist/assault_operative/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assault_operatives/sound/assault_operatives_greet.ogg', 30, 0, use_reverb = FALSE)
-	to_chat(owner, span_big("You are an assault operative!"))
+	to_chat(owner, span_big("Você é um agente de assalto!"))
 	to_chat(owner, span_red(spawn_text))
 	owner.announce_objectives()
 
@@ -155,7 +155,7 @@
 
 	if(human_target.dna.species.id == "plasmaman" )
 		human_target.set_species(/datum/species/human)
-		to_chat(human_target, span_userdanger("You are now a human!"))
+		to_chat(human_target, span_userdanger("Você agora é um humano!"))
 
 	for(var/obj/item/item in human_target.get_equipped_items(TRUE))
 		qdel(item)
@@ -223,16 +223,16 @@
 
 	switch(get_result())
 		if(ASSAULT_RESULT_WIN)
-			parts += span_greentext("Assault Operatives Major Victory!")
+			parts += span_greentext("Agressão operativa major vitória!")
 			parts += "<B>The Assault Operatives have successfully subverted and activated GoldenEye, and they all survived!</B>"
 		if(ASSAULT_RESULT_PARTIAL_WIN)
-			parts += span_greentext("Assault Operatives Minor Victory!")
+			parts += span_greentext("Agressão operativa Vitória Menor!")
 			parts += "<B>The Assault Operatives have successfully subverted and activated GoldenEye, but only some survived!</B>"
 		if(ASSAULT_RESULT_HEARTY_WIN)
-			parts += span_greentext("Assault Operatives Hearty Victory!")
+			parts += span_greentext("Agressão operativa!")
 			parts += "<B>The Assault Operatives have successfully subverted and activated GoldenEye, but they all died!</B>"
 		if(ASSAULT_RESULT_LOSS)
-			parts += span_redtext("Crew Victory!")
+			parts += span_redtext("Tripulação Vitória!")
 			parts += "<B>The Research Staff of [station_name()] have killed all of the assault operatives and stopped them activating GoldenEye!</B>"
 		if(ASSAULT_RESULT_STALEMATE)
 			parts += "<span class='neutraltext big'>Stalemate!</span>"

@@ -109,7 +109,7 @@
 	defender.visible_message(
 		span_danger("[attacker] slams [defender] into the ground!"),
 		span_userdanger("You're slammed into the ground by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
@@ -130,7 +130,7 @@
 		defender.visible_message(
 			span_danger("[attacker] kicks [defender]'s head, knocking [defender.p_them()] out!"),
 			span_userdanger("You're knocked unconscious by [attacker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			null,
 			attacker,
 		)
@@ -146,7 +146,7 @@
 		defender.visible_message(
 			span_danger("[attacker] kicks [defender] back!"),
 			span_userdanger("You're kicked back by [attacker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
@@ -167,7 +167,7 @@
 	defender.visible_message(
 		span_danger("[attacker] punches [defender]'s neck!"),
 		span_userdanger("Your neck is punched by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -186,7 +186,7 @@
 	defender.visible_message(
 		span_warning("[attacker] locks [defender] into a restraining position!"),
 		span_userdanger("You're locked into a restraining position by [attacker]!"),
-		span_hear("You hear shuffling and a muffled groan!"),
+		span_hear("Você ouve baralhar e um gemido abafado!"),
 		null,
 		attacker,
 	)
@@ -206,7 +206,7 @@
 	defender.visible_message(
 		span_danger("[attacker] strikes [defender]'s abdomen, neck and back consecutively"), \
 		span_userdanger("Your abdomen, neck and back are struck consecutively by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -240,7 +240,7 @@
 		defender.visible_message(
 			span_warning("[attacker] violently grabs [defender]!"),
 			span_userdanger("You're grabbed violently by [attacker]!"),
-			span_hear("You hear sounds of aggressive fondling!"),
+			span_hear("Você ouve sons de carinho agressivo!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
@@ -259,7 +259,7 @@
 			defender.visible_message(
 				span_danger("[attacker] snaps the neck of [defender]!"),
 				span_userdanger("Your neck is snapped by [attacker]!"),
-				span_hear("You hear a sickening snap!"),
+				span_hear("Você ouve um estalo nojento!"),
 				ignored_mobs = attacker
 			)
 			to_chat(attacker, span_danger("In a swift motion, you snap the neck of [defender]!"))
@@ -277,7 +277,7 @@
 		defender.visible_message(
 			span_danger("[attacker] leg sweeps [defender]!"),
 			span_userdanger("Your legs are sweeped by [attacker]!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			null,
 			attacker,
 		)
@@ -306,7 +306,7 @@
 	defender.visible_message(
 		span_danger("[attacker] [picked_hit_type]ed [defender]!"),
 		span_userdanger("You're [picked_hit_type]ed by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -327,7 +327,7 @@
 		defender.visible_message(
 			span_danger("[attacker] puts [defender] into a chokehold!"),
 			span_userdanger("You're put into a chokehold by [attacker]!"),
-			span_hear("You hear shuffling and a muffled groan!"),
+			span_hear("Você ouve baralhar e um gemido abafado!"),
 			null,
 			attacker,
 		)
@@ -353,7 +353,7 @@
 		defender.visible_message(
 			span_danger("[attacker] strikes [defender]'s jaw with their hand[disarmed_item ? ", disarming [defender.p_them()] of [disarmed_item]" : ""]!"),
 			span_userdanger("[attacker] strikes your jaw,[disarmed_item ? " disarming you of [disarmed_item] and" : ""] leaving you disoriented!"),
-			span_hear("You hear a sickening sound of flesh hitting flesh!"),
+			span_hear("Você ouve um som doentio de carne batendo em carne!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
@@ -367,7 +367,7 @@
 	defender.visible_message(
 		span_danger("[attacker] fails to disarm [defender]!"), \
 		span_userdanger("You're nearly disarmed by [attacker]!"),
-		span_hear("You hear a swoosh!"),
+		span_hear("Você ouve um shoosh!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)

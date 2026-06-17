@@ -6,10 +6,10 @@
 /mob/living/basic/pet/gondola
 	name = "gondola"
 	real_name = "gondola"
-	desc = "Gondola is the silent walker. \
-		Having no hands he embodies the Taoist principle of wu-wei (non-action) while his smiling \
-		facial expression shows his utter and complete acceptance of the world as it is. \
-		Its hide is extremely valuable."
+	desc = "Gondola é o andarilho silencioso.\
+Sem mãos ele encarna o princípio taoísta de wu-wei (não ação) enquanto seu sorriso\
+A expressão facial mostra sua total e completa aceitação do mundo.\
+Sua pele é extremamente valiosa."
 	icon = 'icons/mob/simple/gondolas.dmi'
 	icon_state = "gondola"
 	icon_living = "gondola"

@@ -1,15 +1,15 @@
 /// Essentially a rewritten version of Hilbert's Hotel that supports multiple map templates; and a reference to GMTower's beautiful condo system. You should play it's successor... :3
 /obj/machinery/cafe_condo_teleporter
 	name = "Matrixed Teleportation Unit"
-	desc = "A sub-divided; stable teleportation system with a unseen central processing hub."
+	desc = "Um sistema de teletransporte estável com um centro de processamento invisível."
 	icon = /obj/machinery/teleport/hub::icon
 	icon_state = /obj/machinery/teleport/hub::icon_state
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/machinery/cafe_condo_teleporter/examine(mob/user)
 	. = ..()
-	. += span_notice("You can use this to retire to a private room.")
-	. += span_warning("Beware: once all occupants exit a room; it resets.")
+	. += span_notice("Você pode usar isso para se aposentar em um quarto privado.")
+	. += span_warning("Cuidado: uma vez que todos os ocupantes saem de um quarto, ele reinicia.")
 
 /obj/machinery/cafe_condo_teleporter/attack_robot(mob/user)
 	if(user.Adjacent(src))
@@ -33,7 +33,7 @@
 		to_chat(target, span_warning("This network is only hooked up to [SHORT_REAL_LIMIT] rooms!"))
 		return
 	if((requested_condo < 1) || (requested_condo != round(requested_condo)))
-		to_chat(target, span_warning("That is not a valid room number!"))
+		to_chat(target, span_warning("Esse não é um número de quarto válido!"))
 		return
 	if(!check_target_eligibility(target))
 		return
@@ -48,7 +48,7 @@
 			return
 		// Possible the room became active after we opened this UI - just enter it with a warning.
 		if(SScondos.active_condos["[requested_condo]"])
-			to_chat(target, span_warning("The room number you requested became occupied while you were selecting! Sending you to the occupied condo..."))
+			to_chat(target, span_warning("O número do quarto que você pediu ficou ocupado enquanto você estava selecionando! Mandando você para o condomínio ocupado..."))
 			SScondos.enter_active_room(requested_condo, target)
 			return
 		chosen_condo = SScondos.condo_templates[map]

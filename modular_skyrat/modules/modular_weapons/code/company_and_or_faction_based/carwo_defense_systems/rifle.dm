@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle
 	name = "\improper Carwo-Cawil Battle Rifle"
-	desc = "A heavy battle rifle firing .40 Sol. Commonly seen in the hands of TerraGov military types. Accepts any standard TerraGov rifle magazine."
+	desc = "Um rifle de batalha pesado disparando .40 Sol. Comumente visto nas mãos dos militares de Terragov. Aceita qualquer revista padrão de rifle Terragov."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "infanterie"
@@ -54,7 +54,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/sol_rifle/examine_more(mob/user)
 	. = ..()
@@ -77,7 +77,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle/marksman
 	name = "\improper Cawil Marksman Rifle"
-	desc = "A heavy marksman rifle commonly seen in the hands of TerraGov military types. Accepts any standard TerraGov rifle magazine."
+	desc = "Um rifle de atirador pesado comumente visto nas mãos dos militares de Terragov. Aceita qualquer revista padrão de rifle Terragov."
 
 	icon_state = "elite"
 	worn_icon_state = "elite"
@@ -117,7 +117,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_rifle/machinegun
 	name = "\improper Qarad Light Machinegun"
-	desc = "A hefty machinegun commonly seen in the hands of TerraGov military types. Accepts any standard TerraGov rifle magazine."
+	desc = "Uma pesada metralhadora comumente vista nas mãos dos militares Terragov. Aceita qualquer revista padrão de rifle Terragov."
 
 	icon_state = "outomaties"
 	worn_icon_state = "outomaties"
@@ -152,7 +152,7 @@
 // Evil version of the rifle (nothing different its just black)
 
 /obj/item/gun/ballistic/automatic/sol_rifle/evil
-	desc = "A heavy battle rifle, this one seems to be painted tacticool black. Accepts any standard TerraGov rifle magazine."
+	desc = "Um rifle pesado, este parece ser pintado de preto. Aceita qualquer revista padrão de rifle Terragov."
 
 	icon_state = "infanterie_evil"
 	worn_icon_state = "infanterie_evil"

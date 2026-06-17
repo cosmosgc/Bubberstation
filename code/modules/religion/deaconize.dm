@@ -5,8 +5,8 @@
  */
 /datum/religion_rites/deaconize
 	name = "Deaconize"
-	desc = "Converts someone to your sect. They must be willing, so the first invocation will instead prompt them to join. \
-		They will gain the same holy abilities as you, this is a one-time use so make sure they are worthy!"
+	desc = "Converte alguém para sua seita. Devem estar dispostos, então a primeira invocação os levará a se juntarem.\
+Eles vão ganhar as mesmas habilidades sagradas que você, este é um uso único, então certifique-se de que eles são dignos!"
 	ritual_length = 30 SECONDS
 	ritual_invocations = list(
 		"A good, honorable person has been brought here by faith ...",
@@ -27,7 +27,7 @@
 
 /datum/religion_rites/deaconize/perform_rite(mob/living/user, atom/religious_tool)
 	if(!ismovable(religious_tool))
-		to_chat(user, span_warning("This rite requires a religious device that individuals can be buckled to."))
+		to_chat(user, span_warning("Este rito requer um dispositivo religioso para o qual os indivíduos podem ser presos."))
 		return FALSE
 	var/atom/movable/movable_reltool = religious_tool
 	if(!movable_reltool)
@@ -41,7 +41,7 @@
 	//no one invited or this is not the invited person
 	if(!potential_deacon || (possible_deacon != potential_deacon))
 		INVOKE_ASYNC(src, PROC_REF(invite_deacon), possible_deacon)
-		to_chat(user, span_notice("They have been offered the oppertunity to join our ranks. Wait for them to decide and try again."))
+		to_chat(user, span_notice("Ofereceram-lhes a oportunidade de se juntarem às nossas fileiras. Espere que decidam e tentem de novo."))
 		return FALSE
 	return ..()
 

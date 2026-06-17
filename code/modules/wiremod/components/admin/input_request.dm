@@ -8,8 +8,8 @@
  * Requests an input from someone.
  */
 /obj/item/circuit_component/input_request
-	display_name = "Input Request"
-	desc = "Converts a string into a typepath. Useful for adding components."
+	display_name = "Pedido de Entrada"
+	desc = "Converte uma string em um tipógrafo. Útil para adicionar componentes."
 	category = "Admin"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_ADMIN
 

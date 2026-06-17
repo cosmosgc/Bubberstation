@@ -8,7 +8,7 @@
  * EMAG AND SUBTYPES
  */
 /obj/item/card/emag
-	desc = "It's a card with a magnetic strip attached to some circuitry."
+	desc = "É um cartão com uma tira magnética ligada a alguns circuitos."
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
@@ -64,9 +64,9 @@
 	if(QDELETED(user))
 		return
 	if(QDELETED(src))
-		to_chat(user, span_notice("Oh, well."))
+		to_chat(user, span_notice("Oh, bem."))
 	else
-		to_chat(user, span_warning("Well, shit. Those are never coming apart now."))
+		to_chat(user, span_warning("Merda. Eles nunca vão se separar agora."))
 
 /obj/item/card/emag/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -82,7 +82,7 @@
 
 /obj/item/card/emag/bluespace
 	name = "bluespace cryptographic sequencer"
-	desc = "It's a blue card with a magnetic strip attached to some circuitry. It appears to have some sort of transmitter attached to it."
+	desc = "É um cartão azul com uma tira magnética ligada a alguns circuitos. Parece ter algum tipo de transmissor ligado a ele."
 	color = rgb(40, 130, 255)
 	prox_check = FALSE
 
@@ -91,12 +91,12 @@
 
 /obj/item/card/emag/halloween
 	name = "hack-o'-lantern"
-	desc = "It's a pumpkin with a cryptographic sequencer sticking out."
+	desc = "É uma abóbora com um sequenciador criptográfico saindo."
 	icon_state = "hack_o_lantern"
 
 /obj/item/card/emagfake
 	name = /obj/item/card/emag::name
-	desc = /obj/item/card/emag::desc + " Closer inspection shows that this card is a poorly made replica, with a \"Donk Co.\" logo stamped on the back."
+	desc = /obj/item/card/emag::desc + "Inspeção mais próxima mostra que este cartão é uma réplica mal feita, com\"Donk Co.\"Logotipo estampado na parte de trás."
 	icon = /obj/item/card/emag::icon
 	icon_state = /obj/item/card/emag::icon_state
 	worn_icon_state = /obj/item/card/emag::worn_icon_state
@@ -137,7 +137,7 @@
 	desc = /obj/item/card/emag::desc
 	obj_flags |= EMAGGED
 	if(user)
-		balloon_alert(user, "rigged to blow")
+		balloon_alert(user, "Armado para explodir")
 		log_bomber(user, "rigged to blow", src, "(emagging)")
 	return TRUE
 
@@ -170,7 +170,7 @@
  * DOORMAG
  */
 /obj/item/card/emag/doorjack
-	desc = "Commonly known as a \"doorjack\", this device is a specialized cryptographic sequencer specifically designed to override station airlock access codes. Uses self-refilling charges to hack airlocks."
+	desc = "Comumente conhecido como um\"Portinhola\"Este dispositivo é um sequenciador criptográfico especializado projetado especificamente para substituir os códigos de acesso da câmara de ar da estação. Usa cargas auto-preenchimento para hackear câmaras de ar."
 	name = "modified ID card"
 	icon_state = "doorjack"
 	worn_icon_state = "doorjack"
@@ -225,8 +225,8 @@
  */
 /obj/item/card/emag/battlecruiser
 	name = "battlecruiser coordinates upload card"
-	desc = "An ominous card that contains the location of the station, and when applied to a communications console, \
-	the ability to long-distance contact the Syndicate fleet."
+	desc = "Um cartão sinistro que contém a localização da estação, e quando aplicado em um console de comunicação,\
+A capacidade de contatar a frota sindical."
 	icon_state = "battlecruisercaller"
 	worn_icon_state = "emag"
 	///whether we have called the battlecruiser
@@ -240,7 +240,7 @@
 
 /obj/item/card/emag/battlecruiser/examine(mob/user)
 	. = ..()
-	. += span_notice("It can only be used on the communications console.")
+	. += span_notice("Só pode ser usado no console de comunicação.")
 
 /obj/item/card/emag/battlecruiser/can_emag(atom/target, mob/user)
 	if(used)

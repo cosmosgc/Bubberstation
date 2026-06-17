@@ -5,7 +5,7 @@
 
 /obj/machinery/dna_infuser
 	name = "\improper DNA infuser"
-	desc = "A defunct genetics machine for merging foreign DNA with a subject's own."
+	desc = "Uma máquina genética defunta para fundir DNA estrangeiro com o próprio sujeito."
 	icon = 'icons/obj/machines/cloning.dmi'
 	icon_state = "infuser"
 	base_icon_state = "infuser"
@@ -44,14 +44,14 @@
 		. += span_notice("Missing [span_bold("an infusion source")].")
 	else
 		. += span_notice("[span_bold(infusing_from.name)] is in the infusion slot.")
-	. += span_notice("To operate: Obtain dead creature. Depending on size, drag or drop into the infuser slot.")
-	. += span_notice("Subject enters the chamber, someone activates the machine. Voila! One of your organs has... changed!")
-	. += span_notice("Alt-click to eject the infusion source, if one is inside.")
+	. += span_notice("Obter criatura morta. Dependendo do tamanho, arraste ou caia na fenda do infusor.")
+	. += span_notice("O sujeito entra na câmara, alguém ativa a máquina. Voila! Um de seus órgãos mudou!")
+	. += span_notice("Alt-click para ejetar a fonte de infusão, se estiver dentro.")
 	if(max_tier_allowed < DNA_INFUSER_MAX_TIER)
 		. += span_boldnotice("Right now, the DNA Infuser can only infuse Tier [max_tier_allowed] entries.")
 	else
-		. += span_boldnotice("Maximum tier unlocked. All DNA entries are possible.")
-	. += span_notice("Examine further for more information.")
+		. += span_boldnotice("Nível máximo desbloqueado. Todas as entradas de DNA são possíveis.")
+	. += span_notice("Examine mais para mais informações.")
 
 /obj/machinery/dna_infuser/examine_more(mob/user)
 	. = ..()
@@ -63,13 +63,13 @@
 		toggle_open(user)
 		return
 	if(infusing)
-		balloon_alert(user, "not while it's on!")
+		balloon_alert(user, "Não enquanto está ligado!")
 		return
 	if(occupant && infusing_from)
 		if(!occupant.can_infuse(user))
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 35, vary = TRUE)
 			return
-		balloon_alert(user, "starting DNA infusion...")
+		balloon_alert(user, "Iniciando infusão de DNA...")
 		start_infuse()
 		return
 	toggle_open(user)
@@ -90,7 +90,7 @@
 		fail_title = "Overcomplexity"
 		fail_explanation = "DNA too complicated to infuse. The machine needs to infuse simpler DNA first."
 	playsound(src, 'sound/machines/blender.ogg', 50, vary = TRUE)
-	to_chat(human_occupant, span_danger("Little needles repeatedly prick you!"))
+	to_chat(human_occupant, span_danger("Agulhas pequenas repetidamente picam você!"))
 	human_occupant.take_overall_damage(10)
 	human_occupant.add_mob_memory(/datum/memory/dna_infusion, protagonist = human_occupant, deuteragonist = infusing_from, mutantlike = infusing_into.infusion_desc)
 	Shake(duration = INFUSING_TIME)
@@ -148,14 +148,14 @@
 /obj/machinery/dna_infuser/proc/toggle_open(mob/user)
 	if(panel_open)
 		if(user)
-			balloon_alert(user, "close panel first!")
+			balloon_alert(user, "Feche o painel primeiro!")
 		return
 	if(state_open)
 		close_machine()
 		return
 	else if(infusing)
 		if(user)
-			balloon_alert(user, "not while it's on!")
+			balloon_alert(user, "Não enquanto está ligado!")
 		return
 	open_machine(drop = FALSE)
 	//we set drop to false to manually call it with an allowlist
@@ -205,26 +205,26 @@
 /// Verify that the given infusion source/mob is a dead creature.
 /obj/machinery/dna_infuser/proc/is_valid_infusion(atom/movable/target, mob/user)
 	if(infusing_from)
-		balloon_alert(user, "empty the machine first!")
+		balloon_alert(user, "Esvazie a máquina primeiro!")
 		return FALSE
 	if(isliving(target))
 		var/mob/living/living_target = target
 		if(living_target.stat != DEAD)
-			balloon_alert(user, "only dead creatures!")
+			balloon_alert(user, "Somente criaturas mortas!")
 			return FALSE
 	else if(!HAS_TRAIT(target, TRAIT_VALID_DNA_INFUSION))
-		balloon_alert(user, "only creatures!")
+		balloon_alert(user, "Só criaturas!")
 		return FALSE
 	return TRUE
 
 /obj/machinery/dna_infuser/click_alt(mob/user)
 	if(infusing)
-		balloon_alert(user, "not while it's on!")
+		balloon_alert(user, "Não enquanto está ligado!")
 		return CLICK_ACTION_BLOCKING
 	if(!infusing_from)
-		balloon_alert(user, "no sample to eject!")
+		balloon_alert(user, "Nenhuma amostra para ejetar!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "ejected sample")
+	balloon_alert(user, "Amostra ejetada")
 	infusing_from.forceMove(get_turf(src))
 	infusing_from = null
 	return CLICK_ACTION_SUCCESS

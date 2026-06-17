@@ -15,7 +15,7 @@
  */
 /obj/item/circuit_component/arithmetic
 	display_name = "Arithmetic"
-	desc = "General arithmetic component with arithmetic capabilities."
+	desc = "Componente aritmética geral com capacidade aritmética."
 	category = "Math"
 
 	var/datum/port/input/option/arithmetic_option

@@ -14,7 +14,7 @@
 
 /obj/item/clothing/glasses/meson/engine
 	name = "engineering scanner goggles"
-	desc = "Goggles used by engineers. The Meson Scanner mode lets you see basic structural and terrain layouts through walls and the T-ray Scanner mode lets you see underfloor objects such as cables and pipes."
+	desc = "Óculos usados por engenheiros. O modo Meson Scanner permite que você veja estruturas básicas e layouts de terreno através das paredes e o modo T-ray Scanner permite que você veja objetos sob o chão, como cabos e tubos."
 	icon_state = "trayson-meson"
 	inhand_icon_state = "trayson-meson"
 	actions_types = list(/datum/action/item_action/toggle_mode)
@@ -151,7 +151,7 @@
 	name = "optical t-ray scanner"
 	icon_state = "trayson-t-ray"
 	inhand_icon_state = "trayson-t-ray"
-	desc = "Used by engineering staff to see underfloor objects such as cables and pipes."
+	desc = "Usado pela equipe de engenharia para ver objetos de baixo, como cabos e tubos."
 	range = 2
 	modes = list(MODE_NONE, MODE_TRAY, MODE_PIPE_CONNECTABLE, MODE_ATMOS_THERMAL) // atmos techs now finally have 3 modes on their  goggles!
 
@@ -164,12 +164,12 @@
 	name = "shuttle region scanner"
 	icon_state = "trayson-shuttle"
 	inhand_icon_state = "trayson-shuttle"
-	desc = "Used to see the boundaries of shuttle regions."
+	desc = "Costumava ver os limites das regiões de transporte."
 	modes = list(MODE_NONE, MODE_SHUTTLE)
 
 /obj/item/clothing/glasses/meson/engine/atmos_imaging
 	name = "atmospheric thermal imaging goggles"
-	desc = "Goggles used by Atmospheric Technicians to see the thermal energy of gasses in open areas."
+	desc = "Óculos usados por técnicos atmosféricos para ver a energia térmica de gases em áreas abertas."
 	icon_state = "trayson-atmospheric-thermal"
 	inhand_icon_state = "trayson-meson"
 	glass_colour_type = /datum/client_colour/glass_colour/gray
@@ -181,7 +181,7 @@
 
 /obj/item/clothing/glasses/meson/engine/admin
 	name = "admin imaging goggles"
-	desc = "Used by Nanotrasen admins to detect blueprint areas, pipes, thermal, wiring, and pipes."
+	desc = "Usado por administradores de Nanotrasen para detectar áreas de plantas, tubos, térmicas, fiação e tubos."
 	range = 7
 	modes = list(MODE_NONE, MODE_TRAY, MODE_PIPE_CONNECTABLE, MODE_ATMOS_THERMAL, MODE_AREA_BLUEPRINTS)
 

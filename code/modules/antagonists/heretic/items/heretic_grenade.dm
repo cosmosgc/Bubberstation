@@ -5,7 +5,7 @@
 
 /obj/item/grenade/chem_grenade/rust_sower
 	name = "\improper Rust sower"
-	desc = "A nifty little thing that explodes into rust. Causes borgs and mechs to get utterly obliterated"
+	desc = "Uma coisinha bonita que explode em ferrugem. Faz com que borgs e mechs fiquem completamente destruídos."
 	possible_fuse_time = list("5")
 	stage = GRENADE_READY
 	base_icon_state = "rustgrenade"
@@ -49,9 +49,9 @@
 
 /datum/reagent/heretic_rust
 	name = "Eldritch Rust"
-	description = "A slurry of viscous, chunky brown liquid."
+	description = "Uma pasta de líquido viscoso e marrom."
 	color = COLOR_CARGO_BROWN // Rust color
-	taste_description = "rotten copper"
+	taste_description = "Policial podre."
 	penetrates_skin = NONE
 	ph = 7.4
 	default_container = /obj/item/reagent_containers/cup/bottle/capsaicin

@@ -1,12 +1,12 @@
 /datum/quirk/hypnotic
 	name = "Hypnotic"
-	desc = "You are extremely captivating to people who might be suspectable to fall into a stupor"
+	desc = "Você é extremamente cativante para pessoas que podem ser suspeitas de cair em um estupor"
 	icon = FA_ICON_FACE_GRIN_HEARTS
 	value = 0
 	quirk_flags = QUIRK_HUMAN_ONLY | QUIRK_HIDE_FROM_SCAN
-	gain_text = "Your presence grows richer."
-	lose_text = "Your potent presence dulls."
-	medical_record_text = "Patient shows signs of a far richer presence then normal."
+	gain_text = "Sua presença fica mais rica."
+	lose_text = "Sua presença potente é chata."
+	medical_record_text = "O paciente mostra sinais de uma presença muito mais rica do que normal."
 	erp_quirk = TRUE
 	var/hypnotic_text
 	var/hypnotic_color

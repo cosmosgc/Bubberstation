@@ -16,10 +16,10 @@
 		return
 	if(length(client.navigation_images))
 		addtimer(CALLBACK(src, PROC_REF(cut_navigation)), world.tick_lag)
-		balloon_alert(src, "navigation path removed")
+		balloon_alert(src, "caminho de navegação removido")
 		return
 	if(!COOLDOWN_FINISHED(src, navigate_cooldown))
-		balloon_alert(src, "navigation on cooldown!")
+		balloon_alert(src, "Navegação na refrigeração!")
 		return
 	addtimer(CALLBACK(src, PROC_REF(create_navigation)), world.tick_lag)
 
@@ -42,7 +42,7 @@
 		destination_list["Nearest Way Up"] = UP
 
 	if(!length(destination_list))
-		balloon_alert(src, "no navigation signals!")
+		balloon_alert(src, "Sem sinais de navegação!")
 		return
 
 	var/platform_code = tgui_input_list(src, "Select a location", "Navigate", sort_list(destination_list))
@@ -75,7 +75,7 @@
 
 	var/list/path = get_path_to(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE)
 	if(!length(path))
-		balloon_alert(src, "no valid path with current access!")
+		balloon_alert(src, "Nenhum caminho válido com acesso atual!")
 		return
 	path |= get_turf(navigate_target)
 	for(var/i in 1 to length(path))
@@ -104,7 +104,7 @@
 	RegisterSignal(src, COMSIG_LIVING_DEATH, PROC_REF(cut_navigation))
 	if(finding_zchange)
 		RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(cut_navigation))
-	balloon_alert(src, "navigation path created")
+	balloon_alert(src, "Caminho de navegação criado")
 
 /mob/living/proc/shine_navigation()
 	for(var/i in 1 to length(client.navigation_images))

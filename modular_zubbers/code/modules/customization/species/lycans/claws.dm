@@ -1,6 +1,6 @@
 /obj/item/mutant_hand/lycan_claw
 	name = "extended claws"
-	desc = "An extended set of claws, slower but more powerful, and capable of striking structures. Worse for actual combat."
+	desc = "Um conjunto estendido de garras, mais lento, mas mais poderoso, e capaz de golpear estruturas. Pior para o combate real."
 	gender = PLURAL
 	demolition_mod = 1.5
 	armour_penetration = 10
@@ -10,7 +10,7 @@
 
 /datum/action/extend_lycan_claws
 	name = "Extend Claws"
-	desc = "Extend your claws to perform powerful, stunning blows on objects and synthetics, at the cost of anti-organic performance."
+	desc = "Estenda suas garras para realizar golpes poderosos e impressionantes em objetos e sintéticos, ao custo de desempenho anti-orgânico."
 	button_icon = 'modular_skyrat/modules/implants/icons/razorclaws.dmi'
 	button_icon_state = "wolverine"
 	var/obj/item/mutant_hand/lycan_claw/claw
@@ -30,7 +30,7 @@
 	if (!.)
 		return FALSE
 	if (HAS_TRAIT(owner, TRAIT_PACIFISM))
-		to_chat(owner, span_warning("You're scared of hurting someone with your elongated claws!"))
+		to_chat(owner, span_warning("Você tem medo de machucar alguém com suas garras alongadas!"))
 		return FALSE
 	if (!ishuman(owner))
 		return FALSE
@@ -47,7 +47,7 @@
 
 	var/obj/item/existing = human_owner.get_active_held_item()
 	if (!isnull(existing))
-		human_owner.balloon_alert(human_owner, "hand occupied!")
+		human_owner.balloon_alert(human_owner, "Mão ocupada!")
 		return FALSE
 
 	claw = new /obj/item/mutant_hand/lycan_claw()

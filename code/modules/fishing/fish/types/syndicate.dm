@@ -2,7 +2,7 @@
 /obj/item/fish/emulsijack
 	name = "toxic emulsijack"
 	fish_id = "emulsijack"
-	desc = "Ah, the terrifying emulsijack. Created in a laboratory, the only real use of this slimey, scaleless fish is for completely ruining a tank."
+	desc = "Ah, o terrível emulsijack. Criado em um laboratório, o único uso real deste peixe viscoscos, sem escala é para arruinar completamente um tanque."
 	icon_state = "emulsijack"
 	random_case_rarity = FISH_RARITY_GOOD_LUCK_FINDING_THIS
 	required_fluid_type = AQUARIUM_FLUID_ANADROMOUS
@@ -20,7 +20,7 @@
 /obj/item/fish/donkfish
 	name = "donk co. company patent donkfish"
 	fish_id = "donkfish"
-	desc = "A lab-grown donkfish. Its invention was an accident for the most part, as it was intended to be consumed in donk pockets. Unfortunately, it tastes horrible, so it has now become a pseudo-mascot."
+	desc = "Um donkfish criado no laboratório. Sua invenção foi um acidente para a maior parte, como era destinado a ser consumido em bolsos de donk. Infelizmente, tem um gosto horrível, então agora se tornou um pseudo mascote."
 	icon_state = "donkfish"
 	random_case_rarity = FISH_RARITY_VERY_RARE
 	stable_population = 4
@@ -47,8 +47,8 @@
 /obj/item/fish/jumpercable
 	name = "monocloning jumpercable"
 	fish_id = "jumpercable"
-	desc = "A surprisingly useful if nasty looking creation from the syndicate fish labs. Drop one in a tank, and \
-		watch it self-feed and multiply. Generates more and more power as a growing swarm!"
+	desc = "Uma criação surpreendentemente útil se de aparência desagradável dos laboratórios de peixes do sindicato. Jogue um em um tanque, e\
+Veja se auto-alimenta e multiplica. Gera mais e mais poder como um enxame crescente!"
 	icon_state = "jumpercable"
 	sprite_width = 16
 	sprite_height = 5
@@ -81,7 +81,7 @@
 /obj/item/fish/chainsawfish
 	name = "chainsawfish"
 	fish_id = "chainsawfish"
-	desc = "A very, very angry bioweapon, whose sole purpose is to rip and tear."
+	desc = "Uma arma biológica muito furiosa, cujo único propósito é rasgar e rasgar."
 	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "chainsawfish"
 	inhand_icon_state = "chainsawfish"
@@ -217,7 +217,7 @@
 /obj/item/fish/pike/armored
 	name = "armored pike"
 	fish_id = "armored_pike"
-	desc = "A long-bodied, metal-clad predator with a snout that almost looks like a halberd. Definitely a weapon to swing around."
+	desc = "Um predador encorpado de metal com um focinho que quase parece uma alabarda. Definitivamente uma arma para girar."
 	icon_state = "armored_pike"
 	inhand_icon_state = "armored_pike"
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "lacerates", "gores")

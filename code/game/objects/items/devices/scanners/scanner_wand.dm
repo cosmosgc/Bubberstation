@@ -6,7 +6,7 @@
 	icon_angle = -45
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	desc = "A wand that medically scans people. Inserting it into a medical kiosk makes it able to perform a health scan on the patient."
+	desc = "Uma varinha que examina medicamente as pessoas. Inserir em um quiosque médico torna capaz de fazer um exame de saúde no paciente."
 	force = 0
 	throwforce = 0
 	w_class = WEIGHT_CLASS_BULKY
@@ -22,7 +22,7 @@
 		return
 
 	if(!ishuman(M))
-		to_chat(user, span_info("You can only scan human-like, non-robotic beings."))
+		to_chat(user, span_info("Você só pode escanear seres humanos, não robóticos."))
 		selected_target = null
 		return
 
@@ -32,7 +32,7 @@
 	return
 
 /obj/item/scanner_wand/attack_self(mob/user)
-	to_chat(user, span_info("You clear the scanner's target."))
+	to_chat(user, span_info("Você limpa o alvo do scanner."))
 	selected_target = null
 
 /obj/item/scanner_wand/proc/return_patient()

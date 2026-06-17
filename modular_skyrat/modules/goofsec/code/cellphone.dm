@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(gangster_cell_phones)
 
 /obj/item/gangster_cellphone
 	name = "cell phone"
-	desc = "TODO: funny joke about the 80s, brick phones"
+	desc = "Piada engraçada sobre os anos 80, telefones de tijolos"
 	icon = 'icons/obj/antags/gang/cell_phone.dmi'
 	icon_state = "phone_off"
 	throwforce = 15 // these things are dense as fuck

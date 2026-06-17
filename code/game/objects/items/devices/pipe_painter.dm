@@ -1,6 +1,6 @@
 /obj/item/pipe_painter
 	name = "pipe painter"
-	desc = "Used for coloring pipes, unsurprisingly."
+	desc = "Usado para colorir canos, sem surpresa."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "labeler1"
 	inhand_icon_state = null

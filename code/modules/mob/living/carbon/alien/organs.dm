@@ -126,13 +126,13 @@
 	if(!owner || owner.stat == DEAD)
 		return
 	if(isalien(owner)) //Different effects for aliens than humans
-		to_chat(owner, span_userdanger("Your Queen has been struck down!"))
-		to_chat(owner, span_danger("You are struck with overwhelming agony! You feel confused, and your connection to the hivemind is severed."))
+		to_chat(owner, span_userdanger("Sua rainha foi derrubada!"))
+		to_chat(owner, span_danger("Você é atingido com agonia esmagadora! Você se sente confuso, e sua conexão com a colmeia é cortada."))
 		owner.emote("roar")
 		owner.Stun(200) //Actually just slows them down a bit.
 
 	else if(ishuman(owner)) //Humans, being more fragile, are more overwhelmed by the mental backlash.
-		to_chat(owner, span_danger("You feel a splitting pain in your head, and are struck with a wave of nausea. You cannot hear the hivemind anymore!"))
+		to_chat(owner, span_danger("Você sente uma dor na cabeça, e é atingido com uma onda de náuseas. Você não pode mais ouvir a colmeia!"))
 		owner.emote("scream")
 		owner.Paralyze(100)
 
@@ -151,7 +151,7 @@
 	recent_queen_death = FALSE
 	if(!owner) //In case the xeno is butchered or subjected to surgery after death.
 		return
-	to_chat(owner, span_noticealien("The pain of the queen's death is easing. You begin to hear the hivemind again."))
+	to_chat(owner, span_noticealien("A dor da morte da rainha está aliviando. Você começa a ouvir a colmeia novamente."))
 	owner.clear_alert(ALERT_XENO_NOQUEEN)
 
 #undef QUEEN_DEATH_DEBUFF_DURATION
@@ -237,8 +237,8 @@
 	var/stomach_text = owner ? "\the [owner]'s stomach" : "\the [src]"
 	if(prob(25))
 		play_from.audible_message(span_warning("You hear something rumbling inside [stomach_text]..."), \
-			span_warning("You hear something rumbling."), 4,\
-			self_message = span_userdanger("Something is rumbling inside your stomach!"))
+			span_warning("Você ouve algo rugindo."), 4,\
+			self_message = span_userdanger("Algo está rugindo dentro do seu estômago!"))
 
 	if(user.client)
 		user.client.move_delay = world.time + 1.5 SECONDS
@@ -298,7 +298,7 @@
 	// Failure condition
 	if(isalienadult(user))
 		play_from.visible_message(span_danger("[user] blows a hole in [stomach_text] and escapes!"), \
-			span_userdanger("As your hive's food bursts out of your stomach, one thought fills your mind. \"Oh, so this is how the other side feels\""))
+			span_userdanger("Enquanto a comida da sua colmeia sai do seu estômago, um pensamento enche sua mente.\"Então é assim que o outro lado se sente\""))
 	else // Just to be safe ya know?
 		play_from.visible_message(span_danger("[user] blows a hole in [stomach_text] and escapes!"), \
 			span_userdanger("[user] escapes from your [stomach_text]. Hell, that hurts."))

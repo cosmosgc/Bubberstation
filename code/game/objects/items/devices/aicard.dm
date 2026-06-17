@@ -1,6 +1,6 @@
 /obj/item/aicard
 	name = "intelliCard"
-	desc = "A storage device for AIs. Patent pending."
+	desc = "Um dispositivo de armazenamento para IA. Patente pendente."
 	icon = 'icons/obj/aicards.dmi'
 	icon_state = "aicard"
 	base_icon_state = "aicard"
@@ -31,14 +31,14 @@
 
 /obj/item/aicard/aitater
 	name = "intelliTater"
-	desc = "A stylish upgrade (?) to the intelliCard."
+	desc = "Um upgrade elegante (?) para o intelliCard."
 	icon_state = "aitater"
 	base_icon_state = "aitater"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
 
 /obj/item/aicard/aispook
 	name = "intelliLantern"
-	desc = "A spoOoOoky upgrade to the intelliCard."
+	desc = "Uma atualização para o cartão intelli."
 	icon_state = "aispook"
 	base_icon_state = "aispook"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
@@ -171,7 +171,7 @@
 			if(flush)
 				flush = FALSE
 			else
-				var/confirm = tgui_alert(usr, "Are you sure you want to wipe this card's memory?", name, list("Yes", "No"))
+				var/confirm = tgui_alert(usr, "Tem certeza que quer apagar a memória desse cartão?", name, list("Yes", "No"))
 				if(confirm == "Yes" && !..())
 					flush = TRUE
 					wipe_ai()
@@ -189,7 +189,7 @@
 /obj/item/aicard/proc/wipe_ai()
 	set waitfor = FALSE
 	if(AI && AI.loc == src)
-		to_chat(AI, span_userdanger("YOUR SYSTEM FILES ARE BEING WIPED!"))
+		to_chat(AI, span_userdanger("Seus arquivos do sistema estão sendo apagados!"))
 		while(AI.stat != DEAD && flush)
 			AI.adjust_oxy_loss(5)
 			AI.updatehealth()

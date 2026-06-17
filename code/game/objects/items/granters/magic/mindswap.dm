@@ -2,7 +2,7 @@
 	granted_action = /datum/action/cooldown/spell/pointed/mind_transfer
 	action_name = "mindswap"
 	icon_state ="bookmindswap"
-	desc = "This book's cover is pristine, though its pages look ragged and torn."
+	desc = "A capa deste livro é intocada, embora suas páginas pareçam rasgadas."
 	remarks = list(
 		"If you mindswap from a mouse, they will be helpless when you recover...",
 		"Wait, where am I...?",
@@ -35,19 +35,19 @@
 	var/mob/living/real_stored_swap = stored_swap_ref?.resolve()
 	if(QDELETED(real_stored_swap))
 		stored_swap_ref = WEAKREF(user)
-		to_chat(user, span_warning("For a moment you feel like you don't even know who you are anymore."))
+		to_chat(user, span_warning("Por um momento você sente que nem sabe mais quem você é."))
 		return
 	if(real_stored_swap.stat == DEAD)
 		stored_swap_ref = null
 		return
 	if(real_stored_swap == user)
-		to_chat(user, span_notice("You stare at the book some more, but there doesn't seem to be anything else to learn..."))
+		to_chat(user, span_notice("Você olha mais para o livro, mas não parece haver mais nada para aprender..."))
 		return
 
 	var/datum/action/cooldown/spell/pointed/mind_transfer/swapper = new(src)
 
 	if(swapper.swap_minds(user, real_stored_swap))
-		to_chat(user, span_warning("You're suddenly somewhere else... and someone else?!"))
+		to_chat(user, span_warning("De repente você está em outro lugar... e em outro?"))
 		to_chat(real_stored_swap, span_warning("Suddenly you're staring at [src] again... where are you, who are you?!"))
 
 	else

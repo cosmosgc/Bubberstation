@@ -1,7 +1,7 @@
 /datum/uplink_item/species_restricted/lycan_booster
 	name = "Lycanthropy Booster"
-	desc = "A highly advanced mix of nanomachines and general 'bad vibes' that will significantly boost the combat performance of your \
-	Lycan form, granting significant damage resistance, baton resistance, regeneration, and further sharpening your claws. Additionally grants you expert fitness."
+	desc = "Uma mistura altamente avançada de nanomáquinas e vibe ruim geral que irá aumentar significativamente o desempenho de combate de seu\
+Lican forma, concedendo resistência a danos significativos, resistência a bastões, regeneração, e afiando ainda mais suas garras. Além disso, lhe concede aptidão especializada."
 	cost = 15
 	item = /obj/item/lycan_booster
 	restricted_species = list(SPECIES_CURSEKIN)
@@ -9,9 +9,9 @@
 
 /obj/item/lycan_booster
 	name = "lycanthropy booster"
-	desc = "A highly advanced mix of nanomachines and general 'bad vibes' that will significantly boost the combat performance of your \
-	Lycan form, granting significant damage resistance, baton resistance, regeneration, and further sharpening your claws, along other improvements. \
-	Additionally grants you expert fitness."
+	desc = "Uma mistura altamente avançada de nanomáquinas e vibe ruim geral que irá aumentar significativamente o desempenho de combate de seu\
+Lican forma, concedendo resistência a danos significativos, resistência a bastões, regeneração, e afiando ainda mais suas garras, ao longo de outras melhorias.\
+Além disso, lhe concede aptidão especializada."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "dnainjector"
 	inhand_icon_state = "dnainjector"
@@ -31,14 +31,14 @@
 	var/mob/living/carbon/human/human_user = user
 
 	if (!istype(human_user.dna?.species, /datum/species/human/cursekin))
-		to_chat(human_user, span_warning("You get the feeling your current physiology wouldn't support this booster."))
+		to_chat(human_user, span_warning("Você tem a sensação de que sua fisiologia atual não apoiaria esse reforço."))
 		return
 
 	ADD_TRAIT(human_user, TRAIT_GAIAN_PHYSIQUE, SPECIES_TRAIT)
 
-	balloon_alert(human_user, "lycan form boosted")
-	to_chat(human_user, span_bolddanger("As you inject yourself with the serum, you begin to feel more in tune with your lycan curse than ever before. Your claws sharpen, your teeth lengthen..."))
-	to_chat(human_user, span_boldnotice("Your lycan form is now resistant to damage, batons, and immune to damage slowdown. Additionally, your unarmed attacks are far deadlier, and ridiculously strong on grabbed opponents. Consider finding gripper gloves."))
+	balloon_alert(human_user, "Forma lycan impulsionada")
+	to_chat(human_user, span_bolddanger("Quando se injeta o soro, começa a se sentir mais em sintonia com sua maldição lycan do que nunca. Suas garras afiam, seus dentes alongam..."))
+	to_chat(human_user, span_boldnotice("Sua forma de lycan agora é resistente a danos, bastões e imune a danos. Além disso, seus ataques desarmados são muito mais mortíferos, e ridiculamente fortes em oponentes agarrados. Considere encontrar luvas de garras."))
 	human_user.emote("growl")
 
 	human_user.mind?.adjust_experience(/datum/skill/athletics, SKILL_EXP_MASTER, FALSE)

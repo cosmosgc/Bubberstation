@@ -33,7 +33,7 @@ would only be recognisable with someone that had the syndicate trait.
 /obj/item/examine(mob/user)
 	. = ..()
 	if(special_desc_requirement == EXAMINE_CHECK_NONE && special_desc)
-		. += span_notice("This item could be examined further...")
+		. += span_notice("Este item poderia ser examinado mais...")
 
 /obj/item/examine_more(mob/user)
 	. = ..()
@@ -42,13 +42,13 @@ would only be recognisable with someone that had the syndicate trait.
 		switch(special_desc_requirement)
 			//Will always show if set
 			if(EXAMINE_CHECK_NONE)
-				composed_message = "You note the following: <br>"
+				composed_message = "Você nota o seguinte:<br>"
 				composed_message += special_desc
 				. += composed_message
 			//Mindshield checks
 			if(EXAMINE_CHECK_MINDSHIELD)
 				if(HAS_TRAIT(user, TRAIT_MINDSHIELD))
-					composed_message = "You note the following because of your <span class='blue'><b>mindshield</b></span>: <br>"
+					composed_message = "Você nota o seguinte por causa de seu<span class='blue'><b>Escudo mental.</b></span>: <br>"
 					composed_message += special_desc
 					. += composed_message
 			//Standard syndicate checks
@@ -60,7 +60,7 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message += special_desc
 						. += composed_message
 					else if(HAS_TRAIT(M, TRAIT_DETECTIVE))  //Useful detective!
-						composed_message = "You note the following because of your brilliant <span class='blue'><b>Detective skills</b></span>: <br>"
+						composed_message = "Você nota o seguinte por causa de seu brilhante<span class='blue'><b>Habilidades de detetive.</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
 			//As above, but with a toy desc for those looking at it
@@ -72,7 +72,7 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message += special_desc
 						. += composed_message
 					else if(HAS_TRAIT(M, TRAIT_DETECTIVE)) //Useful detective!
-						composed_message = "You note the following because of your brilliant <span class='blue'><b>detective skills</b></span>: <br>"
+						composed_message = "Você nota o seguinte por causa de seu brilhante<span class='blue'><b>Habilidades de detetive.</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
 					else
@@ -111,6 +111,6 @@ would only be recognisable with someone that had the syndicate trait.
 
 /obj/item/storage/backpack/duffelbag/syndie
 	name = "duffel bag"
-	desc = "A large duffel bag for holding extra supplies."
+	desc = "Um saco grande para guardar suprimentos extras."
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "This bag is used to store tactical equipment and is manufactured by the syndicate."
+	special_desc = "Este saco é usado para armazenar equipamentos táticos e é fabricado pelo sindicato."

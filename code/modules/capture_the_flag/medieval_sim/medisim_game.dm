@@ -52,7 +52,7 @@
 
 /obj/item/ctf_flag/red/medisim
 	name = "\improper Redfield Castle Fair Maiden"
-	desc = "Protect your maiden, and capture theirs!"
+	desc = "Proteja sua donzela, e capture a deles!"
 	icon = 'icons/obj/toys/plushes.dmi'
 	icon_state = "plushie_nuke"
 	force = 0
@@ -61,7 +61,7 @@
 
 /obj/item/ctf_flag/blue/medisim
 	name = "\improper Bluesworth Hold Fair Maiden"
-	desc = "Protect your maiden, and capture theirs!"
+	desc = "Proteja sua donzela, e capture a deles!"
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/ctf_flag/blue/medisim"
 	post_init_icon_state = "map_plushie_slime"

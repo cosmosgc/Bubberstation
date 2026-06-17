@@ -1,6 +1,6 @@
 /obj/item/borg/apparatus
 	name = "unknown storage apparatus"
-	desc = "This device seems nonfunctional."
+	desc = "Este dispositivo não parece funcional."
 	icon = 'icons/mob/silicon/robot_items.dmi'
 	icon_state = "hugmodule"
 	/// The item stored inside of this apparatus
@@ -99,7 +99,7 @@
 
 /obj/item/borg/apparatus/beaker
 	name = "beaker storage apparatus"
-	desc = "A special apparatus for carrying beakers, bottles, and test tubes without spilling their contents."
+	desc = "Um aparelho especial para carregar copos, garrafas e tubos de teste sem derramar seu conteúdo."
 	icon_state = "borg_beaker_apparatus"
 	storable = list(
 		/obj/item/reagent_containers/cup/beaker,
@@ -131,7 +131,7 @@
 		else
 			. += "Nothing."
 
-	. += span_notice(" <i>Alt-click</i> will drop the currently stored beaker. ")
+	. += span_notice(" <i>Alt-click</i>Largará o béquer atualmente armazenado.")
 
 /obj/item/borg/apparatus/beaker/update_overlays()
 	. = ..()
@@ -151,11 +151,11 @@
 
 /obj/item/borg/apparatus/beaker/extra
 	name = "secondary beaker storage apparatus"
-	desc = "A supplementary beaker storage apparatus."
+	desc = "Um aparelho suplementar de armazenamento de copos."
 
 /obj/item/borg/apparatus/beaker/service
 	name = "beverage storage apparatus"
-	desc = "A special apparatus for carrying drinks and condiment packets without spilling their contents. Will resynthesize any drinks (or other nutritional liquids) you pour out of glasses!"
+	desc = "Um aparelho especial para transportar bebidas e pacotes de condimentos sem derramar seu conteúdo. Ressintetizará qualquer bebida (ou outros líquidos nutricionais) que você derramar de copos!"
 	icon_state = "borg_beaker_apparatus"
 	storable = list(
 		/obj/item/reagent_containers/cup/glass,
@@ -186,7 +186,7 @@
 ///Used by the service borg drink apparatus upgrade, holds drink-related items
 /obj/item/borg/apparatus/beaker/drink
 	name = "secondary beverage storage apparatus"
-	desc = "A special apparatus for carrying drinks and condiment packets without spilling their contents. Will NOT resynthesize drinks unlike your standard apparatus."
+	desc = "Um aparelho especial para transportar bebidas e pacotes de condimentos sem derramar seu conteúdo. Não vai resintetizar bebidas ao contrário do seu aparelho padrão."
 	icon_state = "borg_beaker_apparatus"
 	storable = list(
 		/obj/item/reagent_containers/cup/glass,
@@ -202,7 +202,7 @@
 /// allows medical cyborgs to manipulate organs without hands
 /obj/item/borg/apparatus/organ_storage
 	name = "organ storage bag"
-	desc = "A container for holding body parts."
+	desc = "Um recipiente para guardar partes do corpo."
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "evidenceobj"
 	item_flags = SURGICAL_TOOL
@@ -234,7 +234,7 @@
 		. += organ.name
 	else
 		. += "Nothing."
-	. += span_notice(" <i>Alt-click</i> will drop the currently stored organ. ")
+	. += span_notice(" <i>Alt-click</i>vai soltar o órgão atualmente armazenado.")
 
 /obj/item/borg/apparatus/organ_storage/click_alt(mob/living/silicon/robot/user)
 	if(!stored)
@@ -249,7 +249,7 @@
 ///Apparatus to allow Engineering/Sabo borgs to manipulate any material sheets.
 /obj/item/borg/apparatus/sheet_manipulator
 	name = "material manipulation apparatus"
-	desc = "An apparatus for carrying, deploying, and manipulating sheets of material. The device can also carry custom floor tiles and various rods."
+	desc = "Um aparelho para transportar, implantar e manipular folhas de material. O dispositivo também pode carregar azulejos personalizados e várias hastes."
 	icon_state = "borg_stack_apparatus"
 	storable = list(/obj/item/stack/sheet,
 					/obj/item/stack/tile,
@@ -280,12 +280,12 @@
 	. = ..()
 	if(stored)
 		. += "The apparatus currently has [stored] secured."
-	. += span_notice(" <i>Alt-click</i> will drop the currently stored sheets. ")
+	. += span_notice(" <i>Alt-click</i>vai soltar os lençóis armazenados no momento.")
 
 ///Apparatus allowing Engineer/Sabo borgs to manipulate circuit boards and more
 /obj/item/borg/apparatus/engineering
 	name = "engineering apparatus"
-	desc = "A special apparatus for carrying and manipulating circuit boards, lights and power cells."
+	desc = "Um aparelho especial para transportar e manipular placas de circuito, luzes e células de energia."
 	icon_state = "borg_hardware_apparatus"
 	storable = list(
 		/obj/item/circuitboard,
@@ -321,22 +321,22 @@
 	. = ..()
 	if(stored)
 		. += "The apparatus currently has [stored] secured."
-	. += span_notice(" <i>Alt-click</i> will drop the currently stored item. ")
+	. += span_notice(" <i>Alt-click</i>vai soltar o item atualmente armazenado.")
 
 /obj/item/borg/apparatus/engineering/pre_attack(atom/atom, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(atom, /obj/item/ai_module) && !stored) //If an admin wants a borg to upload laws, who am I to stop them? Otherwise, we can hint that it fails
-		to_chat(user, span_warning("This circuit board doesn't seem to have standard robot apparatus pin holes. You're unable to pick it up."))
+		to_chat(user, span_warning("Esta placa de circuito não parece ter furos de pinos de robô padrão. Você é incapaz de pegar."))
 	return ..()
 
 // stops them from cell interactions with other borgos
 /obj/item/borg/apparatus/engineering/interact_with_atom(atom/movable/interacting_with, mob/living/user, list/modifiers)
 	if(iscyborg(user) && iscyborg(interacting_with))
-		balloon_alert(user, "your manipulator isn't dexterous enough to interact with this properly.")
+		balloon_alert(user, "Seu manipulador não é destrezado o suficiente para interagir com isso corretamente.")
 		return ITEM_INTERACT_FAILURE
 
 /obj/item/borg/apparatus/service
 	name = "service apparatus"
-	desc = "A special apparatus for carrying food, seeds, grafts, bowls, plates, oven trays, soup pots and paper."
+	desc = "Um aparelho especial para transportar alimentos, sementes, enxertos, tigelas, pratos, bandejas de forno, panelas de sopa e papel."
 	icon_state = "borg_service_apparatus"
 	storable = list(
 		/obj/item/food,
@@ -371,4 +371,4 @@
 	. = ..()
 	if(stored)
 		. += "The apparatus currently has [stored] secured."
-	. += span_notice("<i>Alt-click</i> will drop the currently secured item.")
+	. += span_notice("<i>Alt-click</i>vai soltar o item atualmente seguro.")

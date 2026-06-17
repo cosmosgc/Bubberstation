@@ -4,7 +4,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/ravager
 	name = "alien ravager"
-	desc = "An alien with angry red chitin, with equally intimidating looking blade-like claws in place of normal hands. That sharp tail looks like it'd probably hurt."
+	desc = "Um alienígena com chitina vermelha furiosa, com garras igualmente intimidadoras em vez de mãos normais. Essa cauda afiada parece que vai doer."
 	caste = "ravager"
 	maxHealth = 350
 	health = 350
@@ -35,7 +35,7 @@
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager
 	name = "Triple Charge Attack"
-	desc = "Allows you to charge thrice at a location, trampling any in your path."
+	desc = "Permite que você carregue três vezes em um local, pisando qualquer um em seu caminho."
 	cooldown_time = 30 SECONDS
 	charge_delay = 0.3 SECONDS
 	charge_distance = 7
@@ -55,7 +55,7 @@
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing
 	name = "Slicing Tail Sweep"
-	desc = "Throw back attackers with a swipe of your tail, slicing them with its sharpened tip."
+	desc = "Retorne os atacantes com um golpe de sua cauda, cortando-os com sua ponta afiada."
 
 	aoe_radius = 2
 
@@ -75,7 +75,7 @@
 
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die
 	name = "Endure"
-	desc = "Imbue your body with unimaginable amounts of rage (and plasma) to allow yourself to ignore all pain for a short time."
+	desc = "Incumbe seu corpo com quantidades inimagináveis de raiva (e plasma) para se permitir ignorar toda a dor por um curto período de tempo."
 	button_icon_state = "literally_too_angry"
 	plasma_cost = 250 //This requires full plasma to do, so there can be some time between armstrong moments
 	/// If the endure ability is currently active or not
@@ -86,9 +86,9 @@
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/Activate()
 	. = ..()
 	if(endure_active)
-		owner.balloon_alert(owner, "already enduring")
+		owner.balloon_alert(owner, "já durando")
 		return FALSE
-	owner.balloon_alert(owner, "endure began")
+	owner.balloon_alert(owner, "Perseverar começou")
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We numb our ability to feel pain, allowing us to fight until the very last for the next [endure_duration/10] seconds."))
 	addtimer(CALLBACK(src, PROC_REF(endure_deactivate)), endure_duration)
@@ -101,7 +101,7 @@
 
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/proc/endure_deactivate()
 	endure_active = FALSE
-	owner.balloon_alert(owner, "endure ended")
+	owner.balloon_alert(owner, "Perseverar terminou")
 	owner.remove_filter(RAVAGER_OUTLINE_EFFECT)
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, TRAIT_XENO_ABILITY_GIVEN)
 	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAIT_XENO_ABILITY_GIVEN)

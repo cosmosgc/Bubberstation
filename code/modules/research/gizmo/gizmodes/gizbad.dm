@@ -38,7 +38,7 @@
 
 /mob/living/basic/spider/robot
 	name = "robot spider"
-	desc = "Beep boop, the robot spider said."
+	desc = "Beep Boop, a aranha robô disse."
 	icon_state = "robot"
 	mob_biotypes = MOB_ROBOTIC|MOB_BUG
 
@@ -94,7 +94,7 @@
 	return
 
 /datum/gizpulse/ominous/activate(atom/movable/holder, datum/gizmodes/master, datum/gizmo_interface/interface)
-	holder.audible_message(span_hear("You hear an ominous hum."))
+	holder.audible_message(span_hear("Você ouve um zumbido sinistro."))
 
 /datum/gizpulse/thrower/grenade
 	throwables = list(

@@ -1,6 +1,6 @@
 /obj/item/t_scanner
 	name = "\improper T-ray scanner"
-	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
+	desc = "Um emissor de raios terahertz e scanner usado para detectar objetos no subsolo, como cabos e tubos."
 	custom_price = PAYCHECK_LOWER * 0.7
 	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "t-ray0"

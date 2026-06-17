@@ -111,14 +111,14 @@ GLOBAL_LIST_INIT(adventure_loot_generator_index,generate_generator_index())
 
 /obj/item/antique
 	name = "antique"
-	desc = "Valuable and completely incomprehensible."
+	desc = "Valioso e completamente incompreensível."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "antique"
 
 /// Supply pack unlocker chip
 /obj/item/trade_chip
 	name = "trade contract chip"
-	desc = "Uses the station's cargo network to contact a black market supplier, allowing the purchase of a new crate type at cargo console."
+	desc = "Usa a rede de carga da estação para contatar um fornecedor do mercado negro, permitindo a compra de um novo tipo de caixa no console de carga."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "trade_chip"
 	/// Supply pack type enabled by this chip
@@ -134,17 +134,17 @@ GLOBAL_LIST_INIT(adventure_loot_generator_index,generate_generator_index())
 /obj/item/trade_chip/proc/try_to_unlock_contract(mob/user)
 	var/datum/supply_pack/pack_singleton = SSshuttle.supply_packs[unlocked_pack_type]
 	if(!unlocked_pack_type || !pack_singleton || !(pack_singleton.order_flags & ORDER_SPECIAL))
-		to_chat(user,span_danger("This chip is invalid!"))
+		to_chat(user,span_danger("Este chip é inválido!"))
 		return
 	pack_singleton.order_flags |= ORDER_SPECIAL_ENABLED
-	to_chat(user,span_notice("Contract accepted into nanotrasen supply database."))
+	to_chat(user,span_notice("Contrato aceito no banco de dados de suprimentos nanotrasen."))
 	qdel(src)
 
 
 /// Two handed fire lance. Melts wall after short windup.
 /obj/item/firelance
 	name = "fire lance"
-	desc = "Melts everything in front of you. Takes a while to start and operate."
+	desc = "Derrete tudo na sua frente. Leva um tempo para começar e operar."
 	icon = 'icons/obj/exploration.dmi'
 	icon_state = "firelance"
 	inhand_icon_state = "firelance"

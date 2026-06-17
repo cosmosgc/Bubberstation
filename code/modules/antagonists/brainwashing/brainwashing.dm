@@ -47,7 +47,7 @@
 	return data
 
 /datum/antagonist/brainwashed/farewell()
-	to_chat(owner, span_warning("Your mind suddenly clears..."))
+	to_chat(owner, span_warning("Sua mente de repente clarea..."))
 	to_chat(owner, "<big>[span_warning("<b>You feel the weight of the Directives disappear! You no longer have to obey them.</b>")]</big>")
 	if(owner.current)
 		var/mob/living/owner_mob = owner.current
@@ -64,16 +64,16 @@
 		var/objective = tgui_input_text(admin, "Add an objective", "Brainwashing", max_length = MAX_MESSAGE_LEN)
 		if(objective)
 			objectives += objective
-	while(tgui_alert(admin, "Add another objective?", "More Brainwashing", list("Yes","No")) == "Yes")
+	while(tgui_alert(admin, "Adicionar outro objetivo?", "More Brainwashing", list("Yes","No")) == "Yes")
 
-	if(tgui_alert(admin,"Confirm Brainwashing?","Are you sure?",list("Yes","No")) == "No")
+	if(tgui_alert(admin,"Confirmar lavagem cerebral?","Are you sure?",list("Yes","No")) == "No")
 		return
 
 	if(!LAZYLEN(objectives))
 		return
 
 	if(QDELETED(C))
-		to_chat(admin, "Mob doesn't exist anymore")
+		to_chat(admin, "A máfia não existe mais.")
 		return
 
 	brainwash(C, objectives)

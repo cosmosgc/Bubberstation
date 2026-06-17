@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/shell_retreat
 	name = "Shell Retreat"
-	desc = "Retreat to your shell!"
+	desc = "Retirar para sua concha!"
 	cooldown_time = 5 SECONDS
 	click_to_activate = FALSE
 	button_icon = 'icons/mob/simple/pets.dmi'
@@ -15,7 +15,7 @@
 
 	owner.visible_message(
 		span_danger("[owner] slowly pops its head out of its shell!"),
-		span_userdanger("You pop your head out of your shell."),
+		span_userdanger("Você tira a cabeça da casca."),
 	)
 	REMOVE_TRAIT(owner, TRAIT_SHELL_RETREATED, REF(src))
 	UnregisterSignal(owner, list(COMSIG_MOVABLE_ATTEMPTED_MOVE, COMSIG_LIVING_DEATH))
@@ -24,7 +24,7 @@
 /datum/action/cooldown/mob_cooldown/shell_retreat/proc/retreat_into_shell()
 	owner.visible_message(
 		span_danger("[owner] quickly escapes into its shell!"),
-		span_userdanger("You hide in your shell.."),
+		span_userdanger("Você se esconde em sua concha..."),
 	)
 	RegisterSignals(owner, list(COMSIG_LIVING_DEATH, COMSIG_MOVABLE_ATTEMPTED_MOVE), PROC_REF(unretreat_from_shell))
 	ADD_TRAIT(owner, TRAIT_SHELL_RETREATED, REF(src))

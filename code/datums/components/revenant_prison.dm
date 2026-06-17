@@ -49,7 +49,7 @@
 
 /datum/component/revenant_prison/proc/on_parent_examine(datum/source, mob/user, list/examine_list)
 	if(istype(parent, /obj/structure/mirror))
-		examine_list += span_revenwarning("The reflection is shifting and distorted.")
+		examine_list += span_revenwarning("O reflexo está mudando e distorcido.")
 
 /datum/component/revenant_prison/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_parent_examine))

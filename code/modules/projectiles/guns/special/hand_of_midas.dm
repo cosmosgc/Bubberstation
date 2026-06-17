@@ -2,7 +2,7 @@
 
 /obj/item/gun/magic/midas_hand
 	name = "The Hand of Midas"
-	desc = "An ancient Egyptian matchlock pistol imbued with the powers of the Greek King Midas. Don't question the cultural or religious implications of this."
+	desc = "Uma antiga pistola egípcia imbuída dos poderes do rei grego Midas. Não questione as implicações culturais ou religiosas disso."
 	ammo_type = /obj/item/ammo_casing/magic/midas_round
 	icon_state = "midas_hand"
 	inhand_icon_state = "gun"
@@ -34,7 +34,7 @@
 
 /obj/item/gun/magic/midas_hand/shoot_with_empty_chamber(mob/living/user)
 	. = ..()
-	balloon_alert(user, "not enough gold")
+	balloon_alert(user, "Não há ouro suficiente.")
 
 // Siphon gold from a victim, recharging our gun & removing their Midas Blight debuff in the process.
 /obj/item/gun/magic/midas_hand/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
@@ -49,13 +49,13 @@
 
 /obj/item/gun/magic/midas_hand/proc/suck_gold(mob/living/victim, mob/living/user)
 	if(victim == user)
-		balloon_alert(user, "can't siphon from self!")
+		balloon_alert(user, "Não pode se desviar de si mesmo!")
 		return ITEM_INTERACT_BLOCKING
 	if(!victim.reagents)
 		return ITEM_INTERACT_BLOCKING
 	var/gold_amount = victim.reagents.get_reagent_amount(/datum/reagent/gold, type_check = REAGENT_SUB_TYPE)
 	if(!gold_amount)
-		balloon_alert(user, "no gold in bloodstream!")
+		balloon_alert(user, "Sem ouro na corrente sanguínea!")
 		return ITEM_INTERACT_BLOCKING
 	var/gold_beam = user.Beam(victim, icon_state = "drain_gold")
 	if(!do_after(
@@ -66,7 +66,7 @@
 		extra_checks = CALLBACK(src, PROC_REF(check_gold_range), user, victim),
 	))
 		qdel(gold_beam)
-		balloon_alert(user, "link broken!")
+		balloon_alert(user, "Ligação quebrada!")
 		return ITEM_INTERACT_BLOCKING
 	handle_gold_charges(user, gold_amount)
 	victim.reagents.remove_reagent(/datum/reagent/gold, gold_amount, include_subtypes = TRUE)
@@ -78,7 +78,7 @@
 /obj/item/gun/magic/midas_hand/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	if(charges || gold_timer)
-		balloon_alert(user, "already loaded")
+		balloon_alert(user, "já carregado")
 		return
 	if(istype(I, /obj/item/coin/gold))
 		handle_gold_charges(user, 1.5 SECONDS)
@@ -109,7 +109,7 @@
 	if(!do_after(victim, 1.5 SECONDS))
 		return SHAME
 	playsound(src, 'sound/items/weapons/gun/rifle/shot.ogg', 75, TRUE)
-	to_chat(victim, span_danger("You don't even have the time to register the gunshot by the time your body has completely converted into a golden statue."))
+	to_chat(victim, span_danger("Você nem tem tempo para registrar o tiro quando seu corpo se converte completamente em uma estátua de ouro."))
 	var/newcolors = list(rgb(206, 164, 50), rgb(146, 146, 139), rgb(28,28,28), rgb(0,0,0))
 	victim.petrify(statue_timer = INFINITY, save_brain = FALSE, colorlist = newcolors)
 	playsound(victim, 'sound/effects/coin2.ogg', 75, TRUE)
@@ -123,7 +123,7 @@
 /// Turns people into gold
 /obj/projectile/magic/midas_round
 	name = "gold pellet"
-	desc = "A typical flintlock ball, save for the fact it's made of cursed Egyptian gold."
+	desc = "Uma bola típica, exceto pelo fato de ser feita de ouro egípcio amaldiçoado."
 	damage_type = BRUTE
 	damage = 10
 	stamina = 20

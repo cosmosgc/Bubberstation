@@ -34,7 +34,7 @@
 /datum/element/gun_launches_little_guys/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("It has some serious kick to it, smaller users should take caution while firing.")
+	examine_list += span_notice("Tem um chute sério, usuários menores devem ter cuidado ao atirar.")
 
 /// Checks if the shooter is just a little guy. If so? Throw it back.
 /datum/element/gun_launches_little_guys/proc/throw_it_back(obj/item/gun/weapon, mob/living/carbon/user, atom/target, params, zone_override)

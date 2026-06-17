@@ -1,6 +1,6 @@
 /obj/vehicle/ridden/scooter
 	name = "scooter"
-	desc = "A fun way to get around."
+	desc = "Um jeito desviado de se locomover."
 	icon_state = "scooter"
 	are_legs_exposed = TRUE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 11)
@@ -14,7 +14,7 @@
 
 /obj/vehicle/ridden/scooter/wrench_act(mob/living/user, obj/item/tool)
 	..()
-	to_chat(user, span_notice("You begin to remove the handlebars..."))
+	to_chat(user, span_notice("Você começa a remover o guidão..."))
 	if(!tool.use_tool(src, user, 40, volume=50))
 		return TRUE
 	var/obj/vehicle/ridden/scooter/skateboard/improvised/skater = new(drop_location())
@@ -37,7 +37,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard
 	name = "skateboard"
-	desc = "An old, battered skateboard. It's still rideable, but probably unsafe."
+	desc = "Um velho skate batido. Ainda é montado, mas provavelmente inseguro."
 	icon_state = "skateboard"
 	density = FALSE
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10)
@@ -178,14 +178,14 @@
 	if ((skater.incapacitated || !Adjacent(skater)) && !forced)
 		return
 	if(has_buckled_mobs())
-		to_chat(skater, span_warning("You can't lift this up when somebody's on it."))
+		to_chat(skater, span_warning("Você não pode levantar isso quando alguém está nele."))
 		return
 	skater.put_in_hands(board_item)
 	qdel(src)
 
 /obj/vehicle/ridden/scooter/skateboard/pro
 	name = "skateboard"
-	desc = "An EightO brand professional skateboard. Looks a lot more stable than the average board."
+	desc = "Um skate profissional da marca 80. Parece muito mais estável do que a tábua média."
 	icon_state = "skateboard2"
 	board_item_type = /obj/item/melee/skateboard/pro
 	instability = 6
@@ -195,7 +195,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard/hoverboard
 	name = "hoverboard"
-	desc = "A blast from the past, so retro!"
+	desc = "Uma explosão do passado, tão retro!"
 	board_item_type = /obj/item/melee/skateboard/hoverboard
 	instability = 3
 	icon_state = "hoverboard_red"
@@ -214,7 +214,7 @@
 
 /obj/vehicle/ridden/scooter/skateboard/hoverboard/holyboarded
 	name = "holy skateboard"
-	desc = "A board blessed by the gods with the power to grind for our sins. Has the initials 'J.C.' on the underside."
+	desc = "Uma tábua abençoada pelos deuses com o poder de triturar nossos pecados. Tem as iniciais 'J.C.' na parte de baixo."
 	board_item_type = /obj/item/melee/skateboard/holyboard
 	instability = 3
 	icon_state = "hoverboard_holy"
@@ -228,21 +228,21 @@
 
 /obj/vehicle/ridden/scooter/skateboard/hoverboard/admin
 	name = "\improper Board Of Directors"
-	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
+	desc = "A complexidade de engenharia de uma nave espacial concentrada dentro de uma placa. Assim como caro, também."
 	board_item_type = /obj/item/melee/skateboard/hoverboard/admin
 	instability = 0
 	icon_state = "hoverboard_nt"
 
 /obj/vehicle/ridden/scooter/skateboard/improvised
 	name = "improvised skateboard"
-	desc = "An unfinished scooter which can only barely be called a skateboard. It's still rideable, but probably unsafe. Looks like you'll need to add a few rods to make handlebars."
+	desc = "Uma scooter inacabada que mal pode ser chamada de skate. Ainda é montado, mas provavelmente inseguro. Parece que você vai precisar adicionar algumas barras para fazer guidão."
 	board_item_type = /obj/item/melee/skateboard/improvised
 	instability = 12
 
 //CONSTRUCTION
 /obj/item/scooter_frame
 	name = "scooter frame"
-	desc = "A metal frame for building a scooter. Looks like you'll need to add some iron to make wheels."
+	desc = "Uma moldura de metal para construir uma scooter. Parece que vai precisar de ferro para fazer rodas."
 	icon = 'icons/mob/rideables/vehicles.dmi'
 	icon_state = "scooter_frame"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -310,7 +310,7 @@
 //Wheelys
 /obj/vehicle/ridden/scooter/skateboard/wheelys
 	name = "Wheely-Heels"
-	desc = "Uses patented retractable wheel technology. Never sacrifice speed for style - not that this provides much of either."
+	desc = "Usa tecnologia de roda retrátil patenteada. Nunca sacrifique velocidade por estilo. Não que isso forneça muito de ambos."
 	icon_state = null
 	density = FALSE
 	instability = 12
@@ -345,13 +345,13 @@
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/rollerskates
 	name = "roller skates"
-	desc = "An EightO brand pair of roller skates. Vintage, yet functional!"
+	desc = "Um par de Patins da Marca 80. Vintage, mas funcional!"
 	instability = 8
 	component_type = /datum/component/riding/vehicle/scooter/skateboard/wheelys/rollerskates
 
 /obj/vehicle/ridden/scooter/skateboard/wheelys/skishoes
 	name = "ski shoes"
-	desc = "A pair of shoes equipped with foldable skis! Very handy to move in snowy environments unimpeded."
+	desc = "Um par de sapatos equipados com esquis dobráveis! Muito útil para se mover em ambientes nevados sem obstáculos."
 	instability = 8
 	wheel_name = "skis"
 	component_type = /datum/component/riding/vehicle/scooter/skateboard/wheelys/skishoes

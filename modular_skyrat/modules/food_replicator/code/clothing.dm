@@ -1,6 +1,6 @@
 /obj/item/clothing/under/colonial
 	name = "colonial outfit"
-	desc = "Fancy white satin shirt and a pair of cotton-blend pants with a black synthleather belt."
+	desc = "Camisa de cetim branca e calças de algodão com cinto de couro sintético preto."
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
@@ -15,7 +15,7 @@
 
 /obj/item/clothing/shoes/jackboots/colonial
 	name = "colonial half-boots"
-	desc = "Good old laceless boots, with a sturdy plastic toe to, theoretically, keep your toes uncrushed."
+	desc = "Boas botas sem renda, com um dedão de plástico resistente para, teoricamente, manter os dedos dos pés abertos."
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
@@ -30,7 +30,7 @@
 
 /obj/item/clothing/neck/cloak/colonial
 	name = "colonial cloak"
-	desc = "A cloak made from heavy tarpaulin. Nigh wind- and waterproof thanks to its design."
+	desc = "Um manto feito de lona pesada. Vento próximo e à prova d'água graças ao seu design."
 	slot_flags = ITEM_SLOT_OCLOTHING|ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
@@ -48,7 +48,7 @@
 
 /obj/item/clothing/head/hats/colonial
 	name = "colonial cap"
-	desc = "A puffy cap made out of tarpaulin covered by some textile. It is sturdy and comfortable, and seems to retain its form very well."
+	desc = "Uma tampa de lona coberta por alguns tecidos. É resistente e confortável, e parece manter sua forma muito bem."
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/food_replicator/icons/clothing_digi.dmi'
@@ -65,7 +65,7 @@
 
 /obj/item/clothing/accessory/colonial_webbing
 	name = "slim colonial webbing vest"
-	desc = "A versatile individual carrying equipment, cherished by colonists and hoarders alike. Compact enough to be worn underneath bulky clothing."
+	desc = "Um versátil equipamento de transporte, apreciado por colonos e colecionadores. Compacto o suficiente para ser usado sob roupas volumosas."
 	icon = 'modular_skyrat/modules/food_replicator/icons/clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/food_replicator/icons/clothing_worn.dmi'
 	icon_state = "accessory_webbing"
@@ -82,7 +82,7 @@
 
 	if(!isnull(attach_to.atom_storage))
 		if(user)
-			attach_to.balloon_alert(user, "not compatible!")
+			attach_to.balloon_alert(user, "Não é compatível!")
 		return FALSE
 	return TRUE
 

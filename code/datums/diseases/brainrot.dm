@@ -1,14 +1,14 @@
 /datum/disease/brainrot
 	name = "Brainrot"
 	max_stages = 4
-	spread_text = "Skin contact"
+	spread_text = "Contato com a pele"
 	spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_CONTACT_FLUIDS
 	cure_text = /datum/reagent/medicine/mannitol::name
 	cures = list(/datum/reagent/medicine/mannitol)
 	agent = "Cryptococcus Cosmosis"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	cure_chance = 7.5 //higher chance to cure, since two reagents are required
-	desc = "A disease which targets brain cells, leading to brain fog - though it is otherwise non-lethal."
+	desc = "Uma doença que ataca células cerebrais, levando à neblina cerebral, embora não seja letal."
 	required_organ = ORGAN_SLOT_BRAIN
 	severity = DISEASE_SEVERITY_HARMFUL
 	bypasses_immunity = TRUE
@@ -25,7 +25,7 @@
 			if(SPT_PROB(1, seconds_per_tick))
 				affected_mob.emote("yawn")
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You don't feel like yourself."))
+				to_chat(affected_mob, span_danger("Você não se sente como você mesmo."))
 			if(SPT_PROB(2.5, seconds_per_tick))
 				affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 1, 170)
 		if(3)
@@ -36,7 +36,7 @@
 			if(SPT_PROB(5, seconds_per_tick))
 				affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 2, 170)
 				if(prob(2))
-					to_chat(affected_mob, span_danger("Your try to remember something important...but can't."))
+					to_chat(affected_mob, span_danger("Você tenta lembrar de algo importante... mas não consegue."))
 
 		if(4)
 			if(SPT_PROB(1, seconds_per_tick))
@@ -46,11 +46,11 @@
 			if(SPT_PROB(7.5, seconds_per_tick))
 				affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 3, 170)
 				if(prob(2))
-					to_chat(affected_mob, span_danger("Strange buzzing fills your head, removing all thoughts."))
+					to_chat(affected_mob, span_danger("Estranho zumbido enche sua cabeça, removendo todos os pensamentos."))
 			if(SPT_PROB(1.5, seconds_per_tick))
-				to_chat(affected_mob, span_danger("You lose consciousness..."))
+				to_chat(affected_mob, span_danger("Você perde a consciência..."))
 				affected_mob.visible_message(span_warning("[affected_mob] suddenly collapses!"), \
-											span_userdanger("You suddenly collapse!"))
+											span_userdanger("Você de repente desmorona!"))
 				affected_mob.Unconscious(rand(100, 200))
 				if(prob(1))
 					affected_mob.emote("snore")

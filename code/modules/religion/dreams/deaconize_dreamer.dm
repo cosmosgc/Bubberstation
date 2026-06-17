@@ -1,6 +1,6 @@
 /datum/religion_rites/deaconize/dreamers
-	desc = "Converts someone to your sect. They must be willing, so the first invocation will instead prompt them to join. \
-		They will gain the same holy abilities as you. You can deaconize up to three followers, so choose wisely!"
+	desc = "Converte alguém para sua seita. Devem estar dispostos, então a primeira invocação os levará a se juntarem.\
+Eles ganharão as mesmas habilidades sagradas que você. Você pode diácono até três seguidores, então escolha sabiamente!"
 	rite_flags = parent_type::rite_flags & ~RITE_ONE_TIME_USE
 
 /datum/religion_rites/deaconize/dreamers/invoke_effect(mob/living/carbon/human/user, atom/movable/religious_tool)

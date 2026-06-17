@@ -75,7 +75,7 @@ COLORED_SOFA(/obj/structure/chair/sofa, maroon, SOFA_MAROON)
 // Original icon ported from Eris(?) and updated to work here.
 /obj/structure/chair/sofa/corp
 	name = "sofa"
-	desc = "Soft and cushy."
+	desc = "Suave e confortável."
 	icon_state = "corp_sofamiddle"
 
 /obj/structure/chair/sofa/corp/left
@@ -93,7 +93,7 @@ COLORED_SOFA(/obj/structure/chair/sofa, maroon, SOFA_MAROON)
 // Ported from Skyrat
 /obj/structure/chair/sofa/bench
 	name = "bench"
-	desc = "Perfectly designed to be comfortable to sit on, and hellish to sleep on."
+	desc = "Perfeitamente projetado para ser confortável para sentar, e infernal para dormir."
 	icon = 'icons/map_icons/objects.dmi'
 	icon_state = "/obj/structure/chair/sofa/bench"
 	post_init_icon_state = "bench_middle"
@@ -125,7 +125,7 @@ COLORED_SOFA(/obj/structure/chair/sofa, maroon, SOFA_MAROON)
 // Bamboo benches
 /obj/structure/chair/sofa/bamboo
 	name = "bamboo bench"
-	desc = "A makeshift bench with a rustic aesthetic."
+	desc = "Um banco improvisado com uma estética rústica."
 	icon_state = "bamboo_sofamiddle"
 	resistance_flags = FLAMMABLE
 	max_integrity = 60

@@ -1,6 +1,6 @@
 /obj/item/bombcore/miniature/pizza
 	name = "pizza bomb"
-	desc = "Special delivery!"
+	desc = "Entrega especial!"
 	icon_state = "pizzabomb_inactive"
 	inhand_icon_state = "eshield"
 	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
@@ -8,7 +8,7 @@
 
 /obj/item/pizzabox
 	name = "pizza box"
-	desc = "A box suited for pizzas."
+	desc = "Uma caixa para pizzas."
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "pizzabox"
 	base_icon_state = "pizzabox"
@@ -170,7 +170,7 @@
 		else if(bomb)
 			if(wires.is_all_cut() && bomb_defused)
 				user.put_in_hands(bomb)
-				balloon_alert(user, "removed bomb")
+				balloon_alert(user, "Bomba removida.")
 				clear_bomb()
 				update_appearance()
 				return
@@ -181,7 +181,7 @@
 				bomb_defused = FALSE
 				log_bomber(user, "has trapped a", src, "with [bomb] set to [bomb_timer] seconds")
 				bomb.adminlog = "\The [bomb] in [src.name] that [key_name(user)] activated has detonated!"
-				balloon_alert(user, "bomb set")
+				balloon_alert(user, "Bomb set")
 				update_appearance()
 	else if(length(boxes))
 		var/obj/item/pizzabox/topbox = boxes[length(boxes)]
@@ -211,15 +211,15 @@
 					user.balloon_alert_to_viewers("oops!")
 					disperse_pizzas()
 				else
-					balloon_alert(user, "looks unstable...")
+					balloon_alert(user, "Parece instável...")
 			return ITEM_INTERACT_SUCCESS
 		else
-			balloon_alert(user, "close it first!")
+			balloon_alert(user, "Feche primeiro!")
 			return ITEM_INTERACT_FAILURE
 	else if(istype(used_item, /obj/item/food/pizza))
 		if(open)
 			if(pizza)
-				balloon_alert(user, "it's full!")
+				balloon_alert(user, "Está cheio!")
 				return ITEM_INTERACT_FAILURE
 			if(!user.transferItemToLoc(used_item, src))
 				return ITEM_INTERACT_FAILURE
@@ -232,11 +232,11 @@
 				return ITEM_INTERACT_FAILURE
 			set_wires(new /datum/wires/explosive/pizza(src))
 			register_bomb(used_item)
-			balloon_alert(user, "bomb placed")
+			balloon_alert(user, "Bomba colocada.")
 			update_appearance()
 			return ITEM_INTERACT_SUCCESS
 		else if(bomb)
-			balloon_alert(user, "already rigged!")
+			balloon_alert(user, "Já está armado!")
 			return ITEM_INTERACT_FAILURE
 	else if(IS_WRITING_UTENSIL(used_item))
 		if(open)
@@ -247,7 +247,7 @@
 		box.boxtag += tgui_input_text(user, "Write on [box]'s tag:", box, max_length = 30)
 		if(!user.can_perform_action(src))
 			return ITEM_INTERACT_FAILURE
-		balloon_alert(user, "writing box tag...")
+		balloon_alert(user, "Escrevendo etiqueta...")
 		playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 		boxtag_set = TRUE
 		update_appearance()
@@ -291,10 +291,10 @@
 		if(bomb)
 			. += span_deadsay("This pizza box contains [bomb_defused ? "an unarmed bomb" : "an armed bomb"].")
 		if(pizza && istype(pizza, /obj/item/food/pizza/margherita/robo))
-			. += span_deadsay("The pizza in this pizza box contains nanomachines.")
+			. += span_deadsay("A pizza nesta caixa de pizza contém nanomáquinas.")
 
 /obj/item/pizzabox/proc/disperse_pizzas()
-	visible_message(span_warning("The pizzas fall everywhere!"))
+	visible_message(span_warning("As pizzas caem em todo lugar!"))
 	for(var/V in boxes)
 		var/obj/item/pizzabox/P = V
 		var/fall_dir = pick(GLOB.alldirs)
@@ -389,12 +389,12 @@
 		attune_pizza(user) //pizza tag changes based on examiner
 	. = ..()
 	if(isobserver(user))
-		. += span_deadsay("This pizza box is anomalous, and will produce infinite pizza.")
+		. += span_deadsay("Esta caixa de pizza é anômala, e vai produzir pizza infinita.")
 
 /obj/item/pizzabox/infinite/attack_self(mob/living/user)
 	if(ishuman(user))
 		attune_pizza(user)
-		to_chat(user, span_notice("Another pizza immediately appears in the box, what the hell?"))
+		to_chat(user, span_notice("Outra pizza imediatamente aparece na caixa, que diabos?"))
 	return ..()
 
 /obj/item/pizzabox/infinite/proc/attune_pizza(mob/living/carbon/human/nommer) //tonight on "proc names I never thought I'd type"

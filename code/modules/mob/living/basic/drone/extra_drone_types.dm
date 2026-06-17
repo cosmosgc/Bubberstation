@@ -4,7 +4,7 @@
 */
 /mob/living/basic/drone/syndrone
 	name = "Syndrone"
-	desc = "A modified maintenance drone. This one brings with it the feeling of terror."
+	desc = "Um drone de manutenção modificado. Este traz consigo o sentimento de terror."
 	icon_state = "drone_synd"
 	icon_living = "drone_synd"
 	picked = TRUE //the appearence of syndrones is static, you don't get to change it.
@@ -37,13 +37,13 @@
 
 /obj/effect/mob_spawn/ghost_role/drone/syndrone
 	name = "syndrone shell"
-	desc = "A shell of a syndrone, a modified maintenance drone designed to infiltrate and annihilate."
+	desc = "Uma concha de uma sindrona, um drone de manutenção modificado projetado para se infiltrar e aniquilar."
 	icon_state = "syndrone_item"
 	mob_name = "syndrone"
 	mob_type = /mob/living/basic/drone/syndrone
-	prompt_name = "a syndrone"
-	you_are_text = "You are a Syndicate Maintenance Drone."
-	flavour_text = "In a prior life, you maintained a Nanotrasen Research Station. Abducted from your home, you were given some upgrades... and now serve an enemy of your former masters."
+	prompt_name = "Uma sindrona."
+	you_are_text = "Você é um Drone de Manutenção de Sindicatos."
+	flavour_text = "Em uma vida anterior, você manteve uma Estação de Pesquisa Nanotrasen. Raptado de sua casa, você recebeu algumas melhorias... e agora servir um inimigo de seus antigos mestres."
 	important_text = ""
 	spawner_job_path = /datum/job/syndrone
 
@@ -66,19 +66,19 @@
 	name = "badass syndrone shell"
 	mob_name = "badass syndrone"
 	mob_type = /mob/living/basic/drone/syndrone/badass
-	prompt_name = "a badass syndrone"
-	flavour_text = "In a prior life, you maintained a Nanotrasen Research Station. Abducted from your home, you were given some BETTER upgrades... and now serve an enemy of your former masters."
+	prompt_name = "Uma sindrona fodão."
+	flavour_text = "Em uma vida anterior, você manteve uma Estação de Pesquisa Nanotrasen. Seqüestrados de sua casa, receberam melhorias melhores... e agora servem um inimigo de seus antigos mestres."
 
 /// A drone that spawns with a chameleon hat for fashion purposes.
 /mob/living/basic/drone/snowflake
 	default_headwear = /obj/item/clothing/head/chameleon/drone
-	desc = "A maintenance drone, an expendable robot built to perform station repairs. This drone appears to have a complex holoprojector built on its 'head'."
+	desc = "Um drone de manutenção, um robô descartável construído para fazer reparos na estação. Este drone parece ter um holoprojetor complexo construído em sua \"cabeça\"."
 
 /obj/effect/mob_spawn/ghost_role/drone/snowflake
 	name = "snowflake drone shell"
-	desc = "A shell of a snowflake drone, a maintenance drone with a built in holographic projector to display hats and masks."
+	desc = "Uma concha de um drone floco de neve, um drone de manutenção com um projetor holográfico construído para exibir chapéus e máscaras."
 	mob_name = "snowflake drone"
-	prompt_name = "a drone with a holohat projector"
+	prompt_name = "Um drone com um projetor holohat"
 	mob_type = /mob/living/basic/drone/snowflake
 
 /// A free drone that people can be turned into via wabbajack.
@@ -135,16 +135,16 @@
 
 /obj/effect/mob_spawn/ghost_role/drone/derelict
 	name = "derelict drone shell"
-	desc = "A long-forgotten drone shell. It seems kind of... Space Russian."
+	desc = "Um drone há muito esquecido. Parece meio russo espacial."
 	icon = 'icons/mob/silicon/drone.dmi'
 	icon_state = "drone_maint_hat"
 	mob_name = "derelict drone"
 	mob_type = /mob/living/basic/drone/derelict
 	anchored = TRUE
-	prompt_name = "a derelict drone"
-	you_are_text = "You are a drone on Kosmicheskaya Stantsiya 13."
-	flavour_text = "Something has brought you out of hibernation, and the station is in gross disrepair."
-	important_text = "Build, repair, maintain and improve the station that housed you on activation."
+	prompt_name = "Um drone abandonado."
+	you_are_text = "Você é um drone em Kosmicheskaya Stantsiya 13."
+	flavour_text = "Algo o tirou da hibernação, e a estação está em uma situação terrível."
+	important_text = "Construir, reparar, manter e melhorar a estação que alojou você na ativação."
 	spawner_job_path = /datum/job/derelict_drone
 
 /datum/job/derelict_drone

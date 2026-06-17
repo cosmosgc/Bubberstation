@@ -1,6 +1,6 @@
 /obj/item/clothing/under/rank/expeditionary_corps
 	name = "expeditionary corps uniform"
-	desc = "A rugged uniform for those who see the worst at the edges of the galaxy."
+	desc = "Um uniforme robusto para quem vê o pior nas bordas da galáxia."
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -16,7 +16,7 @@
 
 /obj/item/storage/belt/military/expeditionary_corps
 	name = "expeditionary corps chest rig"
-	desc = "A set of tactical webbing worn by expeditionary corps."
+	desc = "Um conjunto de tramas táticas usadas pelo corpo expedicionário."
 	icon_state = "webbing_exp_corps"
 	worn_icon_state = "webbing_exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
@@ -80,7 +80,7 @@
 
 /obj/item/clothing/shoes/combat/expeditionary_corps
 	name = "expeditionary corps boots"
-	desc = "High speed, low drag combat boots."
+	desc = "Alta velocidade, botas de combate de baixa resistência."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
@@ -133,7 +133,7 @@
 
 /obj/item/storage/backpack/duffelbag/expeditionary_corps
 	name = "expeditionary corps bag"
-	desc = "A large bag for holding extra tactical supplies."
+	desc = "Um saco grande para guardar suprimentos extras."
 	icon_state = "exp_corps"
 	inhand_icon_state = "backpack"
 	icon = 'modular_skyrat/modules/exp_corps/icons/backpack.dmi'
@@ -156,7 +156,7 @@
 
 /obj/item/clothing/suit/armor/vest/expeditionary_corps
 	name = "expeditionary corps armor vest"
-	desc = "An armored vest that provides okay protection against most types of damage."
+	desc = "Um colete blindado que fornece proteção contra danos."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/armor.dmi'
 	icon_state = "exp_corps"
@@ -191,7 +191,7 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps
 	name = "expeditionary corps helmet"
-	desc = "A robust helmet worn by Expeditionary Corps troopers. Alt+click it to toggle the NV system."
+	desc = "Um capacete robusto usado por soldados do Corpo Expedicionário. Alt + clique para alternar o sistema NV."
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/helmet.dmi'
@@ -222,10 +222,10 @@
 		return
 	my_helmet.nightvision = !my_helmet.nightvision
 	if(my_helmet.nightvision)
-		to_chat(owner, span_notice("You flip the NV goggles down."))
+		to_chat(owner, span_notice("Você vira os óculos NV para baixo."))
 		my_helmet.enable_nv()
 	else
-		to_chat(owner, span_notice("You flip the NV goggles up."))
+		to_chat(owner, span_notice("Você vira os óculos NV para cima."))
 		my_helmet.disable_nv()
 	my_helmet.update_appearance()
 
@@ -256,10 +256,10 @@
 
 	nightvision = !nightvision
 	if(nightvision)
-		to_chat(user, span_notice("You flip the NV goggles down."))
+		to_chat(user, span_notice("Você vira os óculos NV para baixo."))
 		enable_nv()
 	else
-		to_chat(user, span_notice("You flip the NV goggles up."))
+		to_chat(user, span_notice("Você vira os óculos NV para cima."))
 		disable_nv()
 	update_appearance()
 	return CLICK_ACTION_SUCCESS

@@ -10,7 +10,7 @@
 
 /obj/item/clothing/suit/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor"
-	desc = "A hybrid set of space-resistant armor built on a modified mass-produced Nomex-Aerogel flight suit, polyurea coated durathread-lined light plasteel plates hinder mobility as little as possible while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	desc = "Um conjunto híbrido de armaduras resistentes ao espaço construída sobre um traje de voo Nomex-Aerogel modificado, poliureia revestida com placas de plasteel de luz revestidas com fio de poliureia dificultam a mobilidade o mínimo possível enquanto o sistema de suporte de vida a bordo ajuda o usuário em combate. A célula de energia é o que faz a armadura funcionar sem problemas, um adesivo na unidade de fonte de energia avisa qualquer um lendo para controlar os níveis de bateria."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/spacesuit.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
@@ -81,17 +81,17 @@
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain
 	name = "\improper VOSKHOD-2 powered combat armor"
-	desc = "A unique hybrid set of space-resistant armor made for high-ranking NRI operatives, built on a proprietary durathread padded, Akulan made Larr'Takh silk utility uniform. Polyurea coated hexagraphene-lined plastitanium plates hinder mobility as little as possible while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	desc = "Um conjunto híbrido único de armaduras resistentes ao espaço feita para agentes NRI de alto escalão, construído com um acolchoado de durathread proprietário, Akulan fez Larr'Takh uniforme utilitário de seda. Placas de plastitanio revestidas de poliureia com hexagrafeno dificultam a mobilidade o mínimo possível enquanto o sistema de suporte de vida a bordo ajuda o usuário em combate. A célula de energia é o que faz a armadura funcionar sem problemas, um adesivo na unidade de fonte de energia avisa qualquer um lendo para controlar os níveis de bateria."
 	icon_state = "nri_captain"
 
 /obj/item/clothing/suit/space/hev_suit/nri/medic
 	name = "\improper VOSKHOD-KH powered combat armor"
-	desc = "A hybrid set of space-resistant armor built on a modified mass-produced Dipolyester-Aerogel surgeon field jumpsuit, polyurea coated titanium plates hinder mobility as little as possible while the onboard life support system aids the user in combat and provides additional medical functions. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	desc = "Um conjunto híbrido de armaduras resistentes ao espaço construída sobre um equipamento de campo de cirurgião Dipolyester-Aerogel modificado, placas de titânio revestidas de poliureia dificultam a mobilidade o mínimo possível enquanto o sistema de suporte de vida a bordo ajuda o usuário em combate e fornece funções médicas adicionais. A célula de energia é o que faz a armadura funcionar sem problemas, um adesivo na unidade de fonte de energia avisa qualquer um lendo para controlar os níveis de bateria."
 	icon_state = "nri_medic"
 
 /obj/item/clothing/suit/space/hev_suit/nri/engineer
 	name = "\improper VOSKHOD-IN powered combat armor"
-	desc = "A hybrid set of space-resistant armor built on a modified Nanotrasen heavy-duty engineering undersuit, polyurea coated lead-lined light plasteel plates hinder mobility as little as possible and offer additional radiation protection while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	desc = "Um conjunto híbrido de armaduras resistentes ao espaço construído sobre um equipamento de engenharia Nanotrasen modificado, placas de plasteel leve revestidas de poliureia dificultam a mobilidade o mínimo possível e oferecem proteção contra radiação adicional enquanto o sistema de suporte de vida a bordo ajuda o usuário em combate. A célula de energia é o que faz a armadura funcionar sem problemas, um adesivo na unidade de fonte de energia avisa qualquer um lendo para controlar os níveis de bateria."
 	icon_state = "nri_engineer"
 
 #undef NRI_POWERUSE_HIT

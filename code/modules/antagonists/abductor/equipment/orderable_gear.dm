@@ -20,46 +20,46 @@ GLOBAL_LIST_INIT(abductor_gear, subtypesof(/datum/abductor_gear))
 
 /datum/abductor_gear/agent_helmet
 	name = "Agent Helmet"
-	description = "Abduct with style - spiky style. Prevents digital tracking."
+	description = "Raptar com estilo, estilo picante. Evita rastreamento digital."
 	id = "agent_helmet"
 	build_path = list(/obj/item/clothing/head/helmet/abductor = 1)
 
 /datum/abductor_gear/agent_vest
 	name = "Agent Vest"
-	description = "A vest outfitted with advanced stealth technology. It has two modes - combat and stealth."
+	description = "Um colete equipado com tecnologia avançada. Tem dois modos: combate e furtividade."
 	id = "agent_vest"
 	build_path = list(/obj/item/clothing/suit/armor/abductor/vest = 1)
 
 /datum/abductor_gear/radio_silencer
 	name = "Radio Silencer"
-	description = "A compact device used to shut down communications equipment."
+	description = "Um dispositivo compacto usado para desligar equipamentos de comunicação."
 	id = "radio_silencer"
 	build_path = list(/obj/item/abductor/silencer = 1)
 
 /datum/abductor_gear/science_tool
 	name = "Science Tool"
-	description = "A dual-mode tool for retrieving specimens and scanning appearances. Scanning can be done through cameras."
+	description = "Uma ferramenta de modo duplo para recuperar espécimes e escanear aparências. A varredura pode ser feita através de câmeras."
 	id = "science_tool"
 	build_path = list(/obj/item/abductor/gizmo = 1)
 
 /datum/abductor_gear/advanced_baton
 	name = "Advanced Baton"
-	description = "A quad-mode baton used for incapacitation and restraining of specimens."
+	description = "Um bastão de quatro modos usado para incapacitação e restrição de espécimes."
 	id = "advanced_baton"
 	cost = 2
 	build_path = list(/obj/item/melee/baton/abductor = 1)
 
 /datum/abductor_gear/superlingual_matrix
 	name = "Superlingual Matrix"
-	description = "A mysterious structure that allows for instant communication between users. Using it inhand will attune it to your mothership's channel. Pretty impressive until you need to eat something."
+	description = "Uma estrutura misteriosa que permite comunicação instantânea entre usuários. Usá-lo em mãos vai ajustá-lo para o canal de sua nave-mãe. Impressionante até precisar comer algo."
 	id = "superlingual_matrix"
 	build_path = list(/obj/item/organ/tongue/abductor = 1)
 	category = CATEGORY_MISC_GEAR
 
 /datum/abductor_gear/mental_interface
 	name = "Mental Interface Device"
-	description = "A dual-mode tool for directly communicating with sentient brains. It can be used to send a direct message to a target, \
-				or to send a command to a test subject with a charged gland."
+	description = "Uma ferramenta de modo duplo para se comunicar diretamente com cérebros sencientes. Pode ser usado para enviar uma mensagem direta para um alvo,\
+Ou enviar um comando para um sujeito de teste com uma glândula carregada."
 	id = "mental_interface"
 	cost = 2
 	build_path = list(/obj/item/abductor/mind_device = 1)
@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(abductor_gear, subtypesof(/datum/abductor_gear))
 
 /datum/abductor_gear/reagent_synthesizer
 	name = "Reagent Synthesizer"
-	description = "Synthesizes a variety of reagents using proto-matter."
+	description = "Sintetiza uma variedade de reagentes usando proto-matéria."
 	id = "reagent_synthesizer"
 	cost = 2
 	build_path = list(/obj/item/abductor_machine_beacon/chem_dispenser = 1)
@@ -75,8 +75,8 @@ GLOBAL_LIST_INIT(abductor_gear, subtypesof(/datum/abductor_gear))
 
 /datum/abductor_gear/shrink_ray
 	name = "Shrink Ray Blaster"
-	description = "This is a piece of frightening alien tech that enhances the magnetic pull of atoms in a localized space to temporarily make an object shrink. \
-				That or it's just space magic. Either way, it shrinks stuff."
+	description = "Este é um pedaço de tecnologia alienígena assustadora que aumenta a atração magnética de átomos em um espaço localizado para temporariamente fazer um objeto encolher.\
+Isso ou é apenas magia espacial. De qualquer forma, encolhe coisas."
 	id = "shrink_ray"
 	cost = 2
 	build_path = list(/obj/item/gun/energy/shrink_ray = 1)
@@ -84,8 +84,8 @@ GLOBAL_LIST_INIT(abductor_gear, subtypesof(/datum/abductor_gear))
 
 /datum/abductor_gear/omnitool
 	name = "Alien Omnitool"
-	description = "A handheld device with an absurd number of integrated tools. Can be used as a convenient tool replacement for either role. \
-				Right-click it to switch between medical and hacking toolsets."
+	description = "Um dispositivo portátil com um número absurdo de ferramentas integradas. Pode ser usado como um substituto conveniente para qualquer papel.\
+Clique com o botão direito para trocar entre equipamentos médicos e hacking."
 	id = "omnitool"
 	cost = 2
 	build_path = list(/obj/item/abductor/alien_omnitool = 1)
@@ -93,14 +93,14 @@ GLOBAL_LIST_INIT(abductor_gear, subtypesof(/datum/abductor_gear))
 
 /datum/abductor_gear/cow
 	name = "Spare Cow"
-	description = "Delivers a leftover specimen from an earlier abduction operation."
+	description = "Entrega uma amostra de uma operação de sequestro."
 	id = "cow"
 	build_path = list(/mob/living/basic/cow = 1, /obj/item/food/grown/wheat = 3)
 	category = CATEGORY_MISC_GEAR
 
 /datum/abductor_gear/posters
 	name = "Decorative Posters"
-	description = "Some posters, to decorate the walls of the Mothership (or even the station) with."
+	description = "Alguns cartazes, para decorar as paredes da nave-mãe (ou até mesmo a estação) com."
 	id = "poster"
 	build_path = list(/obj/item/poster/random_abductor = 2)
 	category = CATEGORY_MISC_GEAR

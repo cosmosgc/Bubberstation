@@ -1,6 +1,6 @@
 /datum/round_event_control/mass_hallucination
 	name = "Mass Hallucination"
-	description = "All crewmembers start to hallucinate the same thing."
+	description = "Todos os tripulantes começam a alucinar a mesma coisa."
 	typepath = /datum/round_event/mass_hallucination
 	weight = 10
 	max_occurrences = 2
@@ -103,13 +103,13 @@
 	var/list/admin_forced_args
 
 /datum/event_admin_setup/mass_hallucination/prompt_admins()
-	var/force = tgui_alert(usr, "Do you want to force a hallucination?", event_control.name, list("Yes", "No", "Cancel"))
+	var/force = tgui_alert(usr, "Quer forçar uma alucinação?", event_control.name, list("Yes", "No", "Cancel"))
 	if(force == "Cancel")
 		return ADMIN_CANCEL_EVENT
 	if(force != "Yes")
 		return
 
-	var/force_what = tgui_alert(usr, "Generic hallucination or Custom configured delusion? (Delusions are those which make people appear as other mobs)", event_control.name, list("Hallucination", "Custom Delusion", "Cancel"))
+	var/force_what = tgui_alert(usr, "Alucinação genérica ou ilusão personalizada? (Delusões são aquelas que fazem as pessoas aparecerem como outras multidões)", event_control.name, list("Hallucination", "Custom Delusion", "Cancel"))
 	switch(force_what)
 		if("Cancel")
 			return ADMIN_CANCEL_EVENT

@@ -2,7 +2,7 @@
 #define CLEAR_TILE_MOVE_LIMIT 20
 
 /obj/structure/grille
-	desc = "A flimsy framework of iron rods."
+	desc = "Uma estrutura frágil de barras de ferro."
 	name = "grille"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
@@ -114,7 +114,7 @@
 			var/turf/T = loc
 
 			if(repair_grille())
-				balloon_alert(user, "grille rebuilt")
+				balloon_alert(user, "Grelha reconstruída")
 			if(!clear_tile(user))
 				return FALSE
 
@@ -125,7 +125,7 @@
 			//checks if its a valid build direction
 			if(!initial(window_path.fulltile))
 				if(!valid_build_direction(loc, user.dir, is_fulltile = FALSE))
-					balloon_alert(user, "window already here!")
+					balloon_alert(user, "A janela já está aqui!")
 					return FALSE
 
 			var/obj/structure/window/WD = new window_path(T, user.dir)
@@ -151,7 +151,7 @@
 	to_chat(user, span_notice("You move [unanchored_items_on_tile == 1 ? "[last_item_moved]" : "some things"] out of the way."))
 
 	if(unanchored_items_on_tile - CLEAR_TILE_MOVE_LIMIT > 0)
-		to_chat(user, span_warning("There's still too much stuff in the way!"))
+		to_chat(user, span_warning("Ainda há muita coisa no caminho!"))
 		return FALSE
 
 	return TRUE
@@ -238,7 +238,7 @@
 			return
 		var/obj/item/stack/rods/R = W
 		user.visible_message(span_notice("[user] rebuilds the broken grille."), \
-			span_notice("You rebuild the broken grille."))
+			span_notice("Você reconstrui a grade quebrada."))
 		repair_grille()
 		R.use(1)
 		return TRUE
@@ -248,18 +248,18 @@
 		if (!broken)
 			var/obj/item/stack/ST = W
 			if (ST.get_amount() < 2)
-				to_chat(user, span_warning("You need at least two sheets of glass for that!"))
+				to_chat(user, span_warning("Você precisa de pelo menos duas folhas de vidro para isso!"))
 				return
 			var/dir_to_set = SOUTHWEST
 			if(!anchored)
 				to_chat(user, span_warning("[src] needs to be fastened to the floor first!"))
 				return
 			for(var/obj/structure/window/WINDOW in loc)
-				to_chat(user, span_warning("There is already a window there!"))
+				to_chat(user, span_warning("Já tem uma janela lá!"))
 				return
 			if(!clear_tile(user))
 				return
-			to_chat(user, span_notice("You start placing the window..."))
+			to_chat(user, span_notice("Você começa a colocar a janela..."))
 			if(do_after(user,20, target = src))
 				if(!src.loc || !anchored) //Grille broken or unanchored while waiting
 					return

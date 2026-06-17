@@ -3,7 +3,7 @@
 
 /obj/structure/bed/bdsm_bed
 	name = "bdsm bed"
-	desc = "A latex bed with D-rings on the sides. Looks comfortable."
+	desc = "Uma cama de látex com D-rings nos lados. Parece confortável."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
@@ -24,7 +24,7 @@
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return FALSE
 
-	to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
+	to_chat(user, span_notice("Você aperta o quadro no chão e começa a inflar os travesseiros de látex..."))
 	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to assemble [src]."))
 		return FALSE
@@ -81,7 +81,7 @@
 
 /obj/structure/chair/x_stand
 	name = "x stand"
-	desc = "A stand for buckling people in an X shape."
+	desc = "Um suporte para entorpecer pessoas em forma de X."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "xstand_open"
 	base_icon_state = "xstand"
@@ -153,7 +153,7 @@
 
 		buckled_mob.visible_message(span_notice("[user] unbuckles [buckled_mob] from [src]."),\
 			span_notice("[user] unbuckles you from [src]."),\
-			span_hear("You hear metal clanking."))
+			span_hear("Você ouve metal tocando."))
 
 	else
 		if(!do_after(user, 10 SECONDS, buckled_mob)) // Timer for unbuckling one mob with another mob
@@ -161,7 +161,7 @@
 			return FALSE
 
 		user.visible_message(span_notice("You unbuckle yourself from [src]."),\
-			span_hear("You hear metal clanking."))
+			span_hear("Você ouve metal tocando."))
 
 	unbuckle_mob(buckled_mob)
 
@@ -195,14 +195,14 @@
 
 		if(buckle_mob(affected_mob, check_loc = check_loc))
 			user.visible_message(span_warning("You buckle yourself to [src]!"),\
-				span_hear("You hear metal clanking."))
+				span_hear("Você ouve metal tocando."))
 
 		toggle_mode(user)
 		return TRUE
 
 	affected_mob.visible_message(span_warning("[user] starts buckling [affected_mob] to [src]!"),\
 		span_userdanger("[user] starts buckling you to [src]!"),\
-		span_hear("You hear metal clanking."))
+		span_hear("Você ouve metal tocando."))
 
 	if(!do_after(user, 5 SECONDS, affected_mob)) // Timer to buckle one mob by another
 		to_chat(user, span_warning("You fail to buckle [affected_mob] to [src]!"))
@@ -220,7 +220,7 @@
 
 	affected_mob.visible_message(span_warning("[user] buckled [affected_mob] to [src]!"),\
 		span_userdanger("[user] buckled you to [src]!"),\
-		span_hear("You hear metal clanking."))
+		span_hear("Você ouve metal tocando."))
 
 	toggle_mode(user)
 	return TRUE

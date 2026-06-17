@@ -11,7 +11,7 @@ GLOBAL_LIST_INIT(ore_probability, list(
 
 /obj/structure/spawner/ice_moon
 	name = "cave entrance"
-	desc = "A hole in the ground, filled with monsters ready to defend it."
+	desc = "Um buraco no chão, cheio de monstros prontos para defendê-lo."
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "hole"
 	faction = list(FACTION_MINING)
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(ore_probability, list(
 
 /obj/structure/spawner/ice_moon/demonic_portal
 	name = "demonic portal"
-	desc = "A portal that goes to another world, normal creatures couldn't survive there."
+	desc = "Um portal que vai para outro mundo, criaturas normais não sobreviveriam lá."
 	icon_state = "nether"
 	mob_types = list(/mob/living/basic/mining/ice_demon)
 	light_range = 1
@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(ore_probability, list(
 
 /obj/effect/collapsing_demonic_portal
 	name = "collapsing demonic portal"
-	desc = "It's slowly fading!"
+	desc = "Está desaparecendo lentamente!"
 	layer = TABLE_LAYER
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "nether"

@@ -1,6 +1,6 @@
 /obj/item/clothing/head/fedora
 	name = "fedora"
-	desc = "A really cool hat if you're a mobster. A really lame hat if you're not."
+	desc = "Um chapéu muito legal se você for um mafioso. Um chapéu muito chato se você não for."
 	icon_state = "fedora"
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
@@ -42,7 +42,7 @@
 
 /obj/item/clothing/head/fedora/beige/press
 	name = "press fedora"
-	desc = "A beige fedora with a piece of paper saying \"PRESS\" stuck in its rim."
+	desc = "Um chapéu bege com um pedaço de papel dizendo\"IMPRENSA\"preso em sua borda."
 	icon_state = "fedora_press"
 	inhand_icon_state = null
 

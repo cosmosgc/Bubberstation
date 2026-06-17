@@ -6,7 +6,7 @@
 	name = "bookcase"
 	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookempty"
-	desc = "A great place for storing knowledge."
+	desc = "Um ótimo lugar para armazenar conhecimento."
 	anchored = FALSE
 	density = TRUE
 	opacity = FALSE
@@ -96,16 +96,16 @@
 /obj/structure/bookcase/examine(mob/user)
 	. = ..()
 	if(!anchored)
-		. += span_notice("The <i>bolts</i> on the bottom are unsecured.")
+		. += span_notice("O<i>parafusos</i>no fundo não estão seguros.")
 	else
-		. += span_notice("It's secured in place with <b>bolts</b>.")
+		. += span_notice("Está seguro no lugar com<b>parafusos</b>.")
 	switch(state)
 		if(BOOKCASE_UNANCHORED)
-			. += span_notice("There's a <b>small crack</b> visible on the back panel.")
+			. += span_notice("Tem um...<b>pequena rachadura</b>visível no painel de trás.")
 		if(BOOKCASE_ANCHORED)
-			. += span_notice("There's space inside for a <i>wooden</i> shelf.")
+			. += span_notice("Há espaço dentro para um<i>madeira</i>Prateleira.")
 		if(BOOKCASE_FINISHED)
-			. += span_notice("There's a <b>small crack</b> visible on the shelf.")
+			. += span_notice("Tem um...<b>pequena rachadura</b>visível na prateleira.")
 
 /obj/structure/bookcase/set_anchored(anchorvalue)
 	. = ..()
@@ -124,13 +124,13 @@
 	if(state == BOOKCASE_UNANCHORED)
 		if(attacking_item.tool_behaviour == TOOL_WRENCH)
 			if(attacking_item.use_tool(src, user, 20, volume=50))
-				balloon_alert(user, "wrenched in place")
+				balloon_alert(user, "Arrastado no lugar.")
 				set_anchored(TRUE)
 			return
 
 		if(attacking_item.tool_behaviour == TOOL_CROWBAR)
 			if(attacking_item.use_tool(src, user, 20, volume=50))
-				balloon_alert(user, "pried apart")
+				balloon_alert(user, "Separado")
 				deconstruct(TRUE)
 			return
 		return ..()
@@ -139,17 +139,17 @@
 		if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood))
 			var/obj/item/stack/sheet/mineral/wood/W = attacking_item
 			if(W.get_amount() < 2)
-				balloon_alert(user, "not enough wood")
+				balloon_alert(user, "Não há madeira suficiente.")
 				return
 			W.use(2)
-			balloon_alert(user, "shelf added")
+			balloon_alert(user, "prateleira adicionada")
 			state = BOOKCASE_FINISHED
 			update_appearance()
 			return
 
 		if(attacking_item.tool_behaviour == TOOL_WRENCH)
 			attacking_item.play_tool_sound(src, 100)
-			balloon_alert(user, "unwrenched the frame")
+			balloon_alert(user, "Desenrosque a moldura.")
 			set_anchored(FALSE)
 			return
 		return ..()
@@ -174,10 +174,10 @@
 
 	if(attacking_item.tool_behaviour == TOOL_CROWBAR)
 		if(length(contents))
-			balloon_alert(user, "remove the books first")
+			balloon_alert(user, "Tire os livros primeiro.")
 			return
 		attacking_item.play_tool_sound(src, 100)
-		balloon_alert(user, "pried the shelf out")
+		balloon_alert(user, "Arrancou a prateleira")
 		new /obj/item/stack/sheet/mineral/wood(drop_location(), 2)
 		state = BOOKCASE_ANCHORED
 		update_appearance()

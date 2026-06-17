@@ -1,6 +1,6 @@
 /obj/item/stock_parts/power_store/cell/crank
 	name = "crank cell"
-	desc = "Go ahead, wind it up to charge it."
+	desc = "Vá em frente, dê corda para carregar."
 	icon = 'modular_skyrat/modules/new_cells/icons/power.dmi'
 	icon_state = "crankcell"
 	/// how much each crank will give the cell charge
@@ -13,7 +13,7 @@
 
 /obj/item/stock_parts/power_store/cell/crank/examine(mob/user)
 	. = ..()
-	. += span_notice("Click to start cranking the cell.")
+	. += span_notice("Clique para ligar o celular.")
 
 /obj/item/stock_parts/power_store/cell/crank/Initialize(mapload, override_maxcharge)
 	. = ..()
@@ -35,7 +35,7 @@
 
 /obj/item/stock_parts/power_store/cell/self_charge
 	name = "charging cell"
-	desc = "A special cell that will recharge itself over time."
+	desc = "Uma célula especial que se recarregará com o tempo."
 	icon = 'modular_skyrat/modules/new_cells/icons/power.dmi'
 	icon_state = "chargecell"
 	maxcharge = STANDARD_CELL_CHARGE * 2.5

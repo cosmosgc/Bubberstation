@@ -63,8 +63,8 @@ GLOBAL_LIST_EMPTY(heretic_arenas)
 			var/obj/item/melee/sickly_blade/training/new_blade = new(get_turf(human_in_range))
 			welfare_blades += new_blade
 			INVOKE_ASYNC(human_in_range, TYPE_PROC_REF(/mob, put_in_hands), new_blade)
-			to_chat(human_in_range, span_boldbig("Escape is impossible. The only way out is to defeat another participant in this battle to the death."))
-			human_in_range.balloon_alert(human_in_range, "start killing!")
+			to_chat(human_in_range, span_boldbig("Escapar é impossível. A única saída é derrotar outro participante nesta batalha até a morte."))
+			human_in_range.balloon_alert(human_in_range, "Comecem a matar!")
 		human_in_range.apply_status_effect(/datum/status_effect/arena_tracker)
 		RegisterSignal(human_in_range, COMSIG_CAN_Z_MOVE, PROC_REF(on_try_z_move))
 		RegisterSignal(human_in_range, COMSIG_LADDER_TRAVEL, PROC_REF(on_try_ladder))
@@ -76,8 +76,8 @@ GLOBAL_LIST_EMPTY(heretic_arenas)
 		mob.remove_traits(given_immunities, HERETIC_ARENA_TRAIT)
 		mob.remove_status_effect(/datum/status_effect/arena_tracker)
 		UnregisterSignal(mob, list(COMSIG_CAN_Z_MOVE, COMSIG_LADDER_TRAVEL, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_POST_TELEPORT))
-		to_chat(mob, span_boldbig("Your bloodlust is sated."))
-		mob.balloon_alert(mob, "escape the arena!")
+		to_chat(mob, span_boldbig("Sua sede de sangue está saciada."))
+		mob.balloon_alert(mob, "escapar da arena!")
 	for(var/turf/to_restore in border_walls)
 		to_restore.ChangeTurf(border_walls[to_restore])
 	for(var/obj/to_refund as anything in welfare_blades)
@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(heretic_arenas)
 
 /turf/closed/indestructible/heretic_wall
 	name = "eldritch wall"
-	desc = "A wall penning in the sheep amongst the wolves. It glows with malevolent energy - prodding it is likely unwise."
+	desc = "Uma parede pendurada nas ovelhas entre os lobos. Brilha com energia malévola, provando que é imprudente."
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "eldritch_forcewall"
 	opacity = FALSE
@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(heretic_arenas)
 	var/mob/living/living_mob = bumped_atom
 	var/atom/target = get_edge_target_turf(living_mob, get_dir(src, get_step_away(living_mob, src)))
 	living_mob.throw_at(target, 4, 5)
-	to_chat(living_mob, span_userdanger("The wall repels you with tremendous force!"))
+	to_chat(living_mob, span_userdanger("A parede repele você com força tremenda!"))
 
 /// Called when you crit somebody to update your crown
 /datum/status_effect/arena_tracker/proc/on_crit_somebody()
@@ -172,9 +172,9 @@ GLOBAL_LIST_EMPTY(heretic_arenas)
 	if(arena_victor) // No need to spam if we've already killed at least 1 person
 		return
 	if(IS_HERETIC(owner))
-		to_chat(owner, span_big(span_hypnophrase("The mansus is pleased with your performance, you may leave now.")))
+		to_chat(owner, span_big(span_hypnophrase("O Mansus está satisfeito com sua performance, pode ir agora.")))
 	else
-		to_chat(owner, span_big(span_hypnophrase("You have done well, you may leave now.")))
+		to_chat(owner, span_big(span_hypnophrase("Você fez bem, pode ir agora.")))
 	arena_victor = TRUE
 
 /**

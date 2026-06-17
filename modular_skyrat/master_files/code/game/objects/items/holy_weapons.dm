@@ -27,7 +27,7 @@
 /obj/item/clothing/suit/chaplainsuit/armor/templar/generic
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/chaplain.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/chaplain.dmi'
-	desc = "Protect the weak and defenceless, live by honor and glory, and fight for the welfare of all!"
+	desc = "Protejam os fracos e indefesos, vivam pela honra e glória, e lutem pelo bem-estar de todos!"
 	icon_state = "knight_generic"
 
 /obj/item/clothing/suit/chaplainsuit/armor/templar/generic/Initialize(mapload)
@@ -59,7 +59,7 @@
 //make chaplain version w/ unique sprite?
 /obj/item/clothing/suit/hooded/cultlain_robe
 	name = "ancient robes"
-	desc = "A ragged, dusty set of robes."
+	desc = "Um conjunto de roupão empoeirado."
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "cultrobes"
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/head/hooded/cultlain_hood
 	name = "ancient hood"
-	desc = "A torn, dust-caked hood."
+	desc = "Um capô rasgado e coberto de pó."
 	icon_state = "culthood"
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
@@ -89,7 +89,7 @@
 
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
-	desc = "A strange dagger said to be once used by a sinister group.. "
+	desc = "Uma adaga estranha que foi usada por um grupo sinistro..."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "render"
 	inhand_icon_state = "cultdagger"
@@ -101,14 +101,14 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_CHAPLAIN)
-	special_desc = "Activate it to receive the language of a forgotten cult."
+	special_desc = "Ative-o para receber a linguagem de um culto esquecido."
 	var/narsian = FALSE
 
 /obj/item/nullrod/cultdagger/attack_self(mob/user)
 	if(narsian)
 		return ..()
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, span_cult_large("\"Partake in the language of blood..\""))
+		to_chat(user, span_cult_large("\"Partilhe na linguagem do sangue.\""))
 		user.grant_language(/datum/language/narsie, source = LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
@@ -116,14 +116,14 @@
 /obj/item/nullrod/claymore/darkblade
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_CHAPLAIN)
-	special_desc = "Activate it to receive the language of a forgotten cult."
+	special_desc = "Ative-o para receber a linguagem de um culto esquecido."
 	var/narsian = FALSE
 
 /obj/item/nullrod/claymore/darkblade/attack_self(mob/user)
 	if(narsian)
 		return ..()
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, span_cult_large("\"Partake in the language of blood..\""))
+		to_chat(user, span_cult_large("\"Partilhe na linguagem do sangue.\""))
 		user.grant_language(/datum/language/narsie, source = LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
@@ -131,21 +131,21 @@
 /obj/item/nullrod/spear
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_CHAPLAIN)
-	special_desc = "Activate it to receive the language of a forgotten cult."
+	special_desc = "Ative-o para receber a linguagem de um culto esquecido."
 	var/ratvarian = FALSE
 
 /obj/item/nullrod/spear/attack_self(mob/user)
 	if(ratvarian)
 		return ..()
 	else if(user.mind?.holy_role)
-		to_chat(user, span_bigbrass("The sound of cogs permeates your head..."))
+		to_chat(user, span_bigbrass("O som das engrenagens permeia sua cabeça..."))
 		user.grant_language(/datum/language/ratvar, source = LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		ratvarian = TRUE
 
 /obj/item/nullrod/rosary
 	name = "prayer beads"
-	desc = "A set of prayer beads used by many of the more traditional religions in space"
+	desc = "Um conjunto de contas de oração usadas por muitas das religiões mais tradicionais no espaço"
 	icon = 'modular_skyrat/modules/chaplain/icons/holy_weapons.dmi'
 	icon_state = "rosary"
 	worn_icon_state = "nullrod"
@@ -164,12 +164,12 @@
 
 /obj/item/nullrod/rosary/attack(mob/living/target, mob/living/user, params)
 	if(!user.mind || !user.mind.holy_role)
-		balloon_alert(user, "not holy enough!")
+		balloon_alert(user, "Não o suficiente!")
 		return
 	if(user.combat_mode)
 		return ..()
 	if(praying)
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "Já está em uso!")
 		return
 
 	user.visible_message(span_info("[user] kneels[target == user ? null : " next to [target]"] and begins to utter a prayer to [deity_name]."), \
@@ -185,12 +185,12 @@
 		target.adjust_fire_loss(-5)
 		praying = FALSE
 	else
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		praying = FALSE
 
 /obj/item/nullrod/scythe/sickle
 	name = "damned sickle"
-	desc = "A green crescent blade, decorated with an ornamental eye. The pupil has faded..."
+	desc = "Uma lâmina verde crescente, decorada com um olho ornamental. A pupila desapareceu..."
 	icon = 'icons/obj/weapons/khopesh.dmi'
 	icon_state = "eldritch_blade"
 	inhand_icon_state = "eldritch_blade"
@@ -207,7 +207,7 @@
 
 /obj/item/nullrod/scythe/sickle/void
 	name = "crystal sickle"
-	desc = "Made of clear crystal, the blade refracts the light slightly. Purity, so close yet unattainable in this form."
+	desc = "Feito de cristal claro, a lâmina refrata ligeiramente a luz. Pureza, tão próxima mas inatingível nesta forma."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
 	worn_icon_state = "dark_blade"

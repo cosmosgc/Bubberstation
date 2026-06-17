@@ -4,7 +4,7 @@
 	filedesc = "BotKeeper"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	program_open_overlay = "robot"
-	extended_desc = "A remote controller used for giving basic commands to non-sentient robots."
+	extended_desc = "Um controlador remoto usado para dar comandos básicos a robôs não-sensíveis."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	size = 6
 	tgui_id = "NtosRoboControl"
@@ -125,13 +125,13 @@
 				playsound(get_turf(computer.ui_host()) , 'sound/machines/buzz/buzz-sigh.ogg', 25, FALSE)
 		if("changedroneaccess")
 			if(!computer || !computer.stored_id || !id_card)
-				to_chat(current_user, span_notice("No ID found, authorization failed."))
+				to_chat(current_user, span_notice("Nenhuma identificação encontrada, a autorização falhou."))
 				return
 			if(isdrone(current_user))
-				to_chat(current_user, span_notice("You can't free yourself."))
+				to_chat(current_user, span_notice("Você não pode se libertar."))
 				return
 			if(!(ACCESS_CE in id_card.access))
-				to_chat(current_user, span_notice("Required access not found on ID."))
+				to_chat(current_user, span_notice("Acesso necessário não encontrado na identidade."))
 				return
 			GLOB.drone_machine_blacklist_enabled = !GLOB.drone_machine_blacklist_enabled
 		if("ping_drones")

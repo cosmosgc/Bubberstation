@@ -1,11 +1,11 @@
 /datum/quirk/aphrodisiacal_bite
 	name = "Aphrodisiacal Bite"
-	desc = "You have a aphrodisiacal gland, and can bite people to inject them with an aphrodisiac of your choosing."
+	desc = "Você tem uma glândula afrodisíaca, e pode morder pessoas para injetá-las com um afrodisíaco de sua escolha."
 	icon = FA_ICON_ICICLES
 	value = 0
-	gain_text = span_notice("You feel a aphrodisiacal gland in the back of your throat.")
-	lose_text = span_warning("Your aphrodisiacal gland vanishes.")
-	medical_record_text = "Patient possesses an aphrodisiacal gland."
+	gain_text = span_notice("Você sente uma glândula afrodisíaca na parte de trás da sua garganta.")
+	lose_text = span_warning("Sua glândula afrodisíaca desaparece.")
+	medical_record_text = "O paciente possui uma glândula afrodisíaca."
 
 /datum/quirk/aphrodisiacal_bite/add(client/client_source)
 	var/datum/reagent/reagent = text2path(client_source?.prefs?.read_preference(/datum/preference/choiced/aphrodisiacal_bite_venom))

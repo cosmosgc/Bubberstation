@@ -1,6 +1,6 @@
 /obj/machinery/plumbing/bottler
 	name = "chemical bottler"
-	desc = "Puts reagents into containers, like bottles and beakers in the tile facing the green light spot, they will exit on the red light spot if successfully filled."
+	desc = "Coloca reagentes em contêineres, como garrafas e béqueres no azulejo voltado para o ponto de luz verde, eles vão sair no ponto de luz vermelha se preenchido com sucesso."
 	icon_state = "bottler"
 	reagents = /datum/reagents
 	layer = ABOVE_ALL_MOB_LAYER
@@ -28,7 +28,7 @@
 	. = ..()
 	. += span_notice("A small screen indicates that it will fill for [wanted_amount]u.")
 	if(!valid_output_configuration)
-		. += span_warning("A flashing notification on the screen reads: \"Output location error!\"")
+		. += span_warning("Uma notificação piscando na tela diz:\"Erro de localização de saída!\"")
 
 ///changes the tile array
 /obj/machinery/plumbing/bottler/setDir(newdir)
@@ -61,7 +61,7 @@
 /obj/machinery/plumbing/bottler/interact(mob/user)
 	. = ..()
 	if(!valid_output_configuration)
-		to_chat(user, span_warning("A flashing notification on the screen reads: \"Output location error!\""))
+		to_chat(user, span_warning("Uma notificação piscando na tela diz:\"Erro de localização de saída!\""))
 		return .
 	var/new_amount = tgui_input_number(user, "Set Amount to Fill", "Desired Amount", max_value = reagents.maximum_volume, round_value = TRUE)
 	if(!new_amount || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))

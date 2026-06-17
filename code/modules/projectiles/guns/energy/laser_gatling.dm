@@ -3,7 +3,7 @@
 //The ammo/gun is stored in a back slot item
 /obj/item/minigunpack
 	name = "backpack power source"
-	desc = "The massive external power source for the laser gatling gun."
+	desc = "A enorme fonte de energia externa para a arma laser."
 	icon = 'icons/obj/weapons/guns/minigun.dmi'
 	icon_state = "holstered"
 	inhand_icon_state = "backpack"
@@ -45,12 +45,12 @@
 				armed = TRUE
 				if(!user.put_in_hands(gun))
 					armed = FALSE
-					to_chat(user, span_warning("You need a free hand to hold the gun!"))
+					to_chat(user, span_warning("Você precisa de uma mão livre para segurar a arma!"))
 					return
 				update_appearance()
 				user.update_worn_back()
 		else
-			to_chat(user, span_warning("You are already holding the gun!"))
+			to_chat(user, span_warning("Você já está segurando a arma!"))
 	else
 		..()
 
@@ -84,7 +84,7 @@
 
 /obj/item/gun/energy/minigun
 	name = "laser gatling gun"
-	desc = "An advanced laser cannon with an incredible rate of fire. Requires a bulky backpack power source to use."
+	desc = "Um canhão laser avançado com uma incrível taxa de fogo. Requer uma fonte de energia volumosa."
 	icon = 'icons/obj/weapons/guns/minigun.dmi'
 	icon_state = "minigun_spin"
 	inhand_icon_state = "minigun"
@@ -126,7 +126,7 @@
 
 /obj/item/gun/energy/minigun/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(ammo_pack && ammo_pack.overheat >= ammo_pack.overheat_max)
-		to_chat(user, span_warning("The gun's heat sensor locked the trigger to prevent lens damage!"))
+		to_chat(user, span_warning("O sensor de calor da arma bloqueou o gatilho para evitar danos nas lentes!"))
 		return
 	. = ..()
 	if(!.)
@@ -139,12 +139,12 @@
 
 /obj/item/gun/energy/minigun/try_fire_gun(atom/target, mob/living/user, params)
 	if(!ammo_pack || ammo_pack.loc != user)
-		to_chat(user, span_warning("You need the backpack power source to fire the gun!"))
+		to_chat(user, span_warning("Você precisa da fonte de energia da mochila para disparar a arma!"))
 		return FALSE
 	return ..()
 
 /obj/item/stock_parts/power_store/cell/minigun
 	name = "gatling gun fusion core"
-	desc = "Where did these come from?"
+	desc = "De onde isso veio?"
 	maxcharge = 500 * STANDARD_CELL_CHARGE
 	chargerate = 5 * STANDARD_CELL_CHARGE

@@ -2,7 +2,7 @@
 	name = "ablative hood"
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
-	desc = "Hood hopefully belonging to an ablative trenchcoat. Includes a visor for cool-o-vision."
+	desc = "Hood pertence a uma capa ablativa. Inclui um visor para visão legal."
 	icon_state = "ablativehood"
 	flags_inv = HIDEHAIR|HIDEEARS
 	armor_type = /datum/armor/hooded_ablative
@@ -25,7 +25,7 @@
 
 /obj/item/clothing/suit/hooded/ablative
 	name = "ablative trenchcoat"
-	desc = "Experimental trenchcoat specially crafted to reflect and absorb laser and disabler shots. Don't expect it to do all that much against an axe or a shotgun, however."
+	desc = "Casaco experimental especialmente preparado para refletir e absorver laser e tiros incapacitantes. Não espere que faça tanto contra um machado ou uma espingarda."
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	icon_state = "ablativecoat"
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
@@ -51,10 +51,10 @@
 	. = ..()
 	var/mob/living/carbon/user = loc
 	ADD_TRAIT(user, TRAIT_SECURITY_HUD, HELMET_TRAIT)
-	balloon_alert(user, "hud enabled")
+	balloon_alert(user, "Hud ativado.")
 
 /obj/item/clothing/suit/hooded/ablative/on_hood_down(obj/item/clothing/head/hooded/hood)
 	var/mob/living/carbon/user = loc
 	REMOVE_TRAIT(user, TRAIT_SECURITY_HUD, HELMET_TRAIT)
-	balloon_alert(user, "hud disabled")
+	balloon_alert(user, "Hud desativado.")
 	return ..()

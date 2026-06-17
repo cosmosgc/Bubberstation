@@ -54,7 +54,7 @@
 		target_mob.balloon_alert(surgeon, "[parse_zone(body_zone)] surgery prepared")
 		return
 	prep.untrack_surgery(body_zone)
-	target_mob.balloon_alert(surgeon, "surgery cleared")
+	target_mob.balloon_alert(surgeon, "Cirurgia liberada.")
 
 /// Tracks which body zones have been prepped for surgery
 /datum/status_effect/surgery_prepped

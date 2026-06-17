@@ -2,7 +2,7 @@
 
 /obj/machinery/launchpad
 	name = "bluespace launchpad"
-	desc = "A bluespace pad able to thrust matter through bluespace, teleporting it to or from nearby locations."
+	desc = "Um espaço azul capaz de empurrar matéria através do espaço azul, teletransportando-a para ou de locais próximos."
 	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "lpad-idle"
 	base_icon_state = "lpad"
@@ -71,7 +71,7 @@
 		return
 
 	multi.set_buffer(src)
-	balloon_alert(user, "saved to buffer")
+	balloon_alert(user, "Salvo em buffer")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/launchpad/screwdriver_act(mob/living/user, obj/item/tool)
@@ -276,7 +276,7 @@
 //Starts in the briefcase. Don't spawn this directly, or it will runtime when closing.
 /obj/machinery/launchpad/briefcase
 	name = "briefcase launchpad"
-	desc = "A portable bluespace pad able to thrust matter through bluespace, teleporting it to or from nearby locations. Controlled via remote."
+	desc = "Um espaço azul portátil capaz de empurrar matéria através do espaço azul, teletransportando-a para ou de locais próximos. Controlado pelo controle remoto."
 	icon_state = "blpad-idle"
 	base_icon_state = "blpad"
 	anchored = FALSE
@@ -332,7 +332,7 @@
 
 /obj/item/launchpad_remote
 	name = "folder"
-	desc = "A folder."
+	desc = "Uma pasta."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
@@ -377,7 +377,7 @@
 
 /obj/item/launchpad_remote/proc/teleport(mob/user, obj/machinery/launchpad/pad)
 	if(QDELETED(pad))
-		to_chat(user, span_warning("ERROR: Launchpad not responding. Check launchpad integrity."))
+		to_chat(user, span_warning("Plataforma de lançamento não respondendo. Verifique a integridade da plataforma de lançamento."))
 		return
 	var/error_reason = pad.teleport_checks()
 	if(error_reason)
@@ -425,7 +425,7 @@
 			our_pad.display_name = new_name
 		if("remove")
 			. = TRUE
-			if(tgui_alert(user, "Are you sure?", "Unlink Launchpad", list("I'm Sure", "Abort")) == "I'm Sure")
+			if(tgui_alert(user, "Tem certeza?", "Unlink Launchpad", list("I'm Sure", "Abort")) == "I'm Sure")
 				pad = null
 		if("launch")
 			sending = TRUE
@@ -440,7 +440,7 @@
 
 /obj/item/circuit_component/bluespace_launchpad
 	display_name = "Bluespace Launchpad"
-	desc = "Teleports anything to and from any location on the station. Doesn't use actual GPS coordinates, but rather offsets from the launchpad itself. Can only go as far as the launchpad can go, which depends on its parts."
+	desc = "Teletransporta qualquer coisa de e para qualquer local na estação. Não usa coordenadas GPS reais, mas sim offsets da própria plataforma de lançamento. Só pode ir tão longe quanto a plataforma de lançamento pode ir, o que depende de suas partes."
 
 	var/datum/port/input/x_pos
 	var/datum/port/input/y_pos

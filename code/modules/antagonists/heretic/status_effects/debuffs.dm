@@ -80,7 +80,7 @@
 	tick_interval = 1 SECONDS
 
 /datum/status_effect/corrosion_curse/on_apply()
-	to_chat(owner, span_userdanger("Your body starts to break apart!"))
+	to_chat(owner, span_userdanger("Seu corpo começa a quebrar!"))
 	return TRUE
 
 /datum/status_effect/corrosion_curse/tick(seconds_between_ticks)
@@ -136,7 +136,7 @@
 
 /atom/movable/screen/alert/status_effect/star_mark
 	name = "Star Mark"
-	desc = "A ring above your head prevents you from entering cosmic fields or teleporting through cosmic runes..."
+	desc = "Um anel acima da cabeça o impede de entrar em campos cósmicos ou teletransportar através de runas cósmicas..."
 	icon_state = "star_mark"
 
 /datum/status_effect/star_mark/on_creation(mob/living/new_owner, mob/living/new_spell_caster)
@@ -194,7 +194,7 @@
 
 /atom/movable/screen/alert/status_effect/moon_converted
 	name = "Moon Converted"
-	desc = "THEY LIE, THEY ALL LIE!!! SLAY THEM!!! BURN THEM!!! MAKE THEM SEE THE TRUTH!!!"
+	desc = "Eles mentem, todos mentem! Matem-nos! Queimem-nos! Faça-os ver a verdade!"
 	icon_state = "lastresort"
 
 /datum/status_effect/moon_converted/on_creation()
@@ -211,8 +211,8 @@
 	owner.adjust_brute_loss(-150 + owner.mob_mood.sanity)
 	owner.adjust_fire_loss(-150 + owner.mob_mood.sanity)
 
-	to_chat(owner, span_hypnophrase(("THE MOON SHOWS YOU THE TRUTH AND THE LIARS WISH TO COVER IT, SLAY THEM ALL!!!</span>")))
-	owner.balloon_alert(owner, "they lie..THEY ALL LIE!!!")
+	to_chat(owner, span_hypnophrase(("A lua mostra-lhe a verdade e os mentirosos desejam cobri-lo, matar todos eles!</span>")))
+	owner.balloon_alert(owner, "Eles mentem... Todos eles mentem!")
 	owner.SetUnconscious(60 SECONDS, ignore_canstun = FALSE)
 	ADD_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	RegisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(update_owner_overlay))
@@ -240,7 +240,7 @@
 
 /datum/status_effect/moon_converted/on_remove()
 	// Span warning and unconscious so they realize they aren't evil anymore
-	to_chat(owner, span_warning("Your mind is cleared from the effect of the mansus, your alligiences are as they were before"))
+	to_chat(owner, span_warning("Sua mente está limpa do efeito do mansus, suas opiniões são como eram antes."))
 	REMOVE_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.AdjustUnconscious(5 SECONDS, ignore_canstun = FALSE)
 	owner.log_message("[owner] is no longer insane.", LOG_GAME)
@@ -260,13 +260,13 @@
 /datum/status_effect/moon_slept/on_apply()
 	. = owner.SetUnconscious(duration * 0.5, ignore_canstun = FALSE)
 	if(!.)
-		owner.balloon_alert(owner, "sleep resisted!")
-	to_chat(owner, span_hypnophrase(("THE MOON SHOWS YOU THE TRUTH AND THE LIARS WISH TO COVER IT, w-wait no that's not right</span>")))
-	owner.balloon_alert(owner, "they lie..wait-what are they lying about?")
+		owner.balloon_alert(owner, "O sono resistiu!")
+	to_chat(owner, span_hypnophrase(("A lua mostra a verdade e os mentirosos querem cobri-la.</span>")))
+	owner.balloon_alert(owner, "Eles mentem sobre o que estão mentindo?")
 
 /atom/movable/screen/alert/status_effect/moon_converted
 	name = "Moon Converted"
-	desc = "They LIE, SLAY ALL OF THE THEM!!! THE LIARS OF THE SUN MUST FALL!!!"
+	desc = "Eles mentem, matam todos eles! Os mentirosos do sol devem cair!"
 	icon_state = "moon_insanity"
 
 // Status effects that eldritch paintings apply
@@ -302,7 +302,7 @@
 
 /atom/movable/screen/alert/status_effect/eldritch_painting
 	name = "Rick Roll'd"
-	desc = "Fucking coders are at it again."
+	desc = "Os malditos programadores estão nisso de novo."
 	icon_state = "eldritch_painting_debug"
 
 //"The Sister and He Who Wept": /obj/structure/sign/painting/eldritch
@@ -320,7 +320,7 @@
 
 /atom/movable/screen/alert/status_effect/eldritch_painting/weeping
 	name = "The Sister and He Who Wept"
-	desc = "The weeping echos through your mind like an echo, undoing your psyche! Maybe if you look at the painting again, it won't hurt so badly..."
+	desc = "O choro ecoa através de sua mente como um eco, desfazendo sua psique! Talvez se olhar o quadro de novo, não doará tanto..."
 	icon_state = "eldritch_painting_weeping"
 
 //"The First Desire": /obj/structure/sign/painting/eldritch/desire
@@ -347,7 +347,7 @@
 	// Causes them to need to eat at 10x the normal rate
 	owner.adjust_nutrition(-hunger_rate * HUNGER_FACTOR)
 	if(SPT_PROB(10, seconds_between_ticks))
-		to_chat(owner, span_notice(pick("You can't stop thinking about raw meat...", "You **NEED** to eat someone.", "The hunger pangs are back...", "You hunger for flesh.", "You are starving!")))
+		to_chat(owner, span_notice(pick("Não consegue parar de pensar em carne crua...", "Você precisa comer alguém.", "As dores de fome voltaram...", "Você tem fome de carne.", "Você está faminto!")))
 	owner.overeatduration = max(owner.overeatduration - 200 SECONDS, 0)
 
 /datum/status_effect/eldritch_painting/desire/on_remove()
@@ -357,7 +357,7 @@
 
 /atom/movable/screen/alert/status_effect/eldritch_painting/desire
 	name = "The First Desire"
-	desc = "Your are struck with a ravenous hunger! SATIATE IT AT ANY COST! Or maybe just go stare at the painting and long for the excellent meal it promises..."
+	desc = "Sua fome está cheia de fome! Satile-o a qualquer custo! Ou talvez apenas ir olhar para a pintura e desejar a excelente refeição que promete..."
 	icon_state = "eldritch_painting_desire"
 
 /datum/status_effect/eldritch_painting/desire/permanent
@@ -389,7 +389,7 @@
 
 /atom/movable/screen/alert/status_effect/eldritch_painting/beauty
 	name = "Lady Out of Gates"
-	desc = "Your clothing obscures the beauty beneath. Remove it, and reach perfection. Or behold perfect for a brief moment of clarity in the painting you saw your ideal image in."
+	desc = "Suas roupas ocultam a beleza por baixo. Remova-o e alcance a perfeição. Ou veja perfeito para um breve momento de clareza na pintura em que viu sua imagem ideal."
 	icon_state = "eldritch_painting_beauty"
 
 // "Climb over the rusted mountain": /obj/structure/sign/painting/eldritch/rust
@@ -403,17 +403,17 @@
 	if(isnull(tile))
 		return
 
-	to_chat(owner, span_notice("You feel the decay..."))
+	to_chat(owner, span_notice("Você sente a decadência..."))
 	tile.rust_heretic_act()
 
 /atom/movable/screen/alert/status_effect/eldritch_painting/rusting
 	name = "Climb Over the Rusted Mountain"
-	desc = "Your every footfall erodes the ground beneath you! Everything crumbles away! Maybe if you looked closer at the mountain in that painting, the path might be clearer..."
+	desc = "Todos os seus passos corroem o chão abaixo de você! Tudo desmorona! Talvez se você olhasse mais de perto para a montanha naquela pintura, o caminho poderia ser mais claro..."
 	icon_state = "eldritch_painting_rust"
 
 /atom/movable/screen/alert/status_effect/eldritch_parade
 	name = "Lunar Parade"
-	desc = "You MUST ENTER THE LUNAR PARADE! FOLLOW THE LIGHTS! LET THEM GUIDE YOU!"
+	desc = "Você deve entrar na parada de almoço! Siga as luzes! Deixe-os guiá-lo!"
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "lunar_parade"
 
@@ -463,7 +463,7 @@
 		return
 	damage_received += damage_amount
 	if(damage_received >= damage_release_threshold)
-		owner.balloon_alert(owner, "you are free!")
+		owner.balloon_alert(owner, "Você está livre!")
 		qdel(src)
 
 // Blocks movement in order to make it appear like the character is transfixed to the projectile and wandering after it

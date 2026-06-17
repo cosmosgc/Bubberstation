@@ -14,7 +14,7 @@
  */
 /obj/vehicle/sealed/mecha/savannah_ivanov
 	name = "\improper Savannah-Ivanov"
-	desc = "An insanely overbulked mecha that handily crushes single-pilot opponents. The price is that you need two pilots to use it."
+	desc = "Um mecha insanamente sobrecarregado que esmaga os oponentes de um único piloto. O preço é que você precisa de dois pilotos para usá-lo."
 	icon = 'icons/mob/rideables/coop_mech.dmi'
 	base_icon_state = "savannah_ivanov"
 	icon_state = "savannah_ivanov_0_0"
@@ -87,7 +87,7 @@
 	if(!owner || !chassis || !(owner in chassis.occupants))
 		return
 	if(chassis.phasing)
-		to_chat(owner, span_warning("You're already airborne!"))
+		to_chat(owner, span_warning("Você já está no ar!"))
 		return
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_SKYFALL))
 		var/timeleft = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_SKYFALL)
@@ -96,7 +96,7 @@
 	if(skyfall_charge_level)
 		abort_skyfall()
 		return
-	chassis.balloon_alert(owner, "charging skyfall...")
+	chassis.balloon_alert(owner, "Carregando o céu caindo...")
 	INVOKE_ASYNC(src, PROC_REF(skyfall_charge_loop))
 
 /**
@@ -225,7 +225,7 @@
  * Applies cooldown and resets charge level
  */
 /datum/action/vehicle/sealed/mecha/skyfall/proc/abort_skyfall()
-	chassis.balloon_alert(owner, "skyfall aborted")
+	chassis.balloon_alert(owner, "Queda do céu abortada.")
 	S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_MISSILE_STRIKE, skyfall_charge_level * 10 SECONDS) //so aborting skyfall later in the process imposes a longer cooldown
 	skyfall_charge_level = 0
 	chassis.update_appearance(UPDATE_ICON_STATE)
@@ -284,7 +284,7 @@
  * Plus other flavor like the overlay
  */
 /datum/action/vehicle/sealed/mecha/ivanov_strike/proc/start_missile_targeting()
-	chassis.balloon_alert(owner, "missile mode on (click to target)")
+	chassis.balloon_alert(owner, "Modo míssil ligado (clique para o alvo)")
 	aiming_missile = TRUE
 	rockets_left = 3
 	RegisterSignal(chassis, COMSIG_MECHA_MELEE_CLICK, PROC_REF(on_melee_click))
@@ -351,7 +351,7 @@
 ///a simple indicator of where the skyfall is going to land.
 /obj/effect/skyfall_landingzone
 	name = "Landing Zone Indicator"
-	desc = "A holographic projection designating the landing zone of something. It's probably best to stand back."
+	desc = "Uma projeção holográfica designando a zona de pouso de algo. É melhor se afastar."
 	icon = 'icons/mob/telegraphing/telegraph_96x96.dmi'
 	icon_state = "target_largebox"
 	layer = BELOW_MOB_LAYER

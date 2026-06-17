@@ -1,6 +1,6 @@
 /obj/item/rsd_interface
 	name = "RSD Phylactery"
-	desc = "A small device inserted, typically, into inert brains. As Resonance cannot persist in what's referred to as a 'vacuum', RSDs--much like the brains and CPUs they emulate--employ cerebral white noise as a foundation for Resonance to persist in otherwise dead-quiet containers.."
+	desc = "Um pequeno dispositivo inserido, tipicamente, em cérebros inertes. Como Ressonância não pode persistir no que é chamado de 'vácuo', os DSR, como os cérebros e CPUs que emulam, empregam o ruído branco cerebral como base para a Resonância persistir em recipientes silenciosos."
 	icon = 'modular_skyrat/modules/aesthetics/implanter/implanter.dmi'
 	icon_state = "implanter1"
 	inhand_icon_state = "syringe_0"
@@ -13,7 +13,7 @@
 		return NONE
 
 	if(HAS_TRAIT(interacting_with, TRAIT_RSD_COMPATIBLE))
-		user.balloon_alert(user, "already upgraded!")
+		user.balloon_alert(user, "Já está atualizado!")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] upgrades [interacting_with] with [src]."), span_notice("You upgrade [interacting_with] to be RSD compatible."))

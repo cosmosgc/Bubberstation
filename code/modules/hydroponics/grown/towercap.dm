@@ -1,6 +1,6 @@
 /obj/item/seeds/tower
 	name = "tower-cap mycelium pack"
-	desc = "This mycelium grows into tower-cap mushrooms."
+	desc = "Este micélio se transforma em cogumelos."
 	icon_state = "mycelium-tower"
 	species = "towercap"
 	plantname = "Tower Caps"
@@ -21,7 +21,7 @@
 
 /obj/item/seeds/tower/steel
 	name = "steel-cap mycelium pack"
-	desc = "This mycelium grows into steel logs."
+	desc = "Este micélio cresce em toras de aço."
 	icon_state = "mycelium-steelcap"
 	species = "steelcap"
 	plantname = "Steel Caps"
@@ -33,7 +33,7 @@
 /obj/item/grown/log
 	seed = /obj/item/seeds/tower
 	name = "tower-cap log"
-	desc = "It's better than bad, it's good!"
+	desc = "É melhor que ruim, é bom!"
 	icon_state = "logs"
 	force = 5
 	throwforce = 5
@@ -95,7 +95,7 @@
 	if(CheckAccepted(attacking_item))
 		var/obj/item/food/grown/leaf = attacking_item
 		if(HAS_TRAIT(leaf, TRAIT_DRIED))
-			user.balloon_alert(user, "torch crafted")
+			user.balloon_alert(user, "Tocha trabalhada")
 			var/obj/item/flashlight/flare/torch/new_torch = new /obj/item/flashlight/flare/torch(user.loc)
 			user.dropItemToGround(attacking_item)
 			user.put_in_active_hand(new_torch)
@@ -103,7 +103,7 @@
 			qdel(src)
 			return
 		else
-			balloon_alert(user, "dry it first!")
+			balloon_alert(user, "Seque primeiro!")
 	else
 		return ..()
 
@@ -113,13 +113,13 @@
 /obj/item/grown/log/tree
 	seed = null
 	name = "wood log"
-	desc = "TIMMMMM-BERRRRRRRRRRR!"
+	desc = "Timmm-BERRRRRRRRRRR!"
 	plank_count = 10
 
 /obj/item/grown/log/steel
 	seed = /obj/item/seeds/tower/steel
 	name = "steel-cap log"
-	desc = "It's made of metal."
+	desc = "É feito de metal."
 	icon_state = "steellogs"
 	plank_type = /obj/item/stack/rods
 	plank_name = "rods"
@@ -129,7 +129,7 @@
 
 /obj/structure/punji_sticks
 	name = "punji sticks"
-	desc = "Don't step on this."
+	desc = "Não pise nisso."
 	icon = 'icons/obj/service/hydroponics/equipment.dmi'
 	icon_state = "punji"
 	resistance_flags = FLAMMABLE

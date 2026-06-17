@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(meteor_eyeballs)
 /// Basically just an organic floor light
 /obj/structure/meateor_fluff/eyeball
 	name = "beady eye"
-	desc = "An eyeball growing out of the ground, gross."
+	desc = "Um olho crescendo do chão, nojento."
 	icon_state = "eyeball"
 	max_integrity = 15
 	layer = ABOVE_OPEN_TURF_LAYER

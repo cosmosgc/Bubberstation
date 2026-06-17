@@ -35,7 +35,7 @@
 	if(get_turf(src) != get_turf(anchor))
 		return FALSE
 	if(!isturf(loc) && loc != card)
-		balloon_alert(src, "can't do that here")
+		balloon_alert(src, "Não posso fazer isso aqui.")
 		return FALSE
 	return TRUE
 
@@ -106,16 +106,16 @@
  */
 /mob/living/silicon/pai/proc/fold_out(force = FALSE)
 	if(holochassis_health < 0)
-		balloon_alert(src, "emitter repair incomplete")
+		balloon_alert(src, "reparo do emissor incompleto")
 		return FALSE
 	if(!can_holo && !force)
-		balloon_alert(src, "emitters are disabled")
+		balloon_alert(src, "Os emissores estão desativados.")
 		return FALSE
 	if(holoform)
 		. = fold_in(force)
 		return
 	if(!holochassis_ready)
-		balloon_alert(src, "emitters recycling...")
+		balloon_alert(src, "Reciclagem de emissores...")
 		return FALSE
 	holochassis_ready = FALSE
 	addtimer(VARSET_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_COOLDOWN)

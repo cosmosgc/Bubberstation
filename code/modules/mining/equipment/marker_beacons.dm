@@ -16,8 +16,8 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 
 /obj/item/stack/marker_beacon
 	name = "marker beacon"
-	singular_name = "marker beacon"
-	desc = "Prism-brand path illumination devices. Used by miners to mark paths and warn of danger."
+	singular_name = "Marcador de sinal"
+	desc = "Dispositivos de iluminação da marca Prism. Usado por mineiros para marcar caminhos e avisar sobre o perigo."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "marker"
 	merge_type = /obj/item/stack/marker_beacon
@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(marker_beacon_colors, sort_list(list(
 
 /obj/structure/marker_beacon
 	name = "marker beacon"
-	desc = "A Prism-brand path illumination device. It is anchored in place and glowing steadily."
+	desc = "Um dispositivo de iluminação da marca Prism. Está ancorado no lugar e brilhando constantemente."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "marker"
 	layer = BELOW_OPEN_DOOR_LAYER

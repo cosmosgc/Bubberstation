@@ -1,6 +1,6 @@
 /obj/item/stack/telecrystal
 	name = "telecrystal"
-	desc = "Covered in a web of finely engraved geometrical patterns, pulsing with suspiciously enticing energies."
+	desc = "Coberto em uma teia de padrões geométricos bem gravados, pulsando com energias suspeitas."
 	singular_name = "telecrystal"
 	icon_state = "telecrystal"
 	dye_color = DYE_SYNDICATE
@@ -38,8 +38,8 @@
 
 /obj/item/stack/sheet/telepolycrystal
 	name = "telelocational podcrystal"
-	singular_name = "telelocational podcrystal"
-	desc = "A \"somewhat\" stable chunk of telecrystal. It lacks the precision-carved tuning channels, making it useless for long-range matter teleportation."
+	singular_name = "Podcristal telelocal"
+	desc = "A\"um pouco\"pedaço estável de telecristal. Faltam os canais de ajuste esculpidos com precisão, tornando-o inútil para teletransporte de matéria de longo alcance."
 	icon_state = "telepolycrystal"
 	inhand_icon_state = null
 	full_w_class = WEIGHT_CLASS_TINY

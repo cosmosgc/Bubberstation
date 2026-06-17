@@ -1,7 +1,7 @@
 /obj/effect/shark_infested_waters
 	name = "a carp with a fricken laser rifle attached to their head"
-	desc = "An ill-tempered endangered species of territorial water carp with a laser rifle on its head. \
-	Captured and trained to kill any who attempt to cross its waters. Pretty much unkillable."
+	desc = "Uma espécie mal-humorada em extinção de carpa de água territorial com um rifle laser na cabeça.\
+Capturado e treinado para matar qualquer um que tente atravessar suas águas. Praticamente invencível."
 	icon = 'modular_zubbers/icons/effects/shark_infested_waters.dmi'
 	icon_state = "shark"
 	glide_size = 32

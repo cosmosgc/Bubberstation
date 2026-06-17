@@ -5,7 +5,7 @@
 	name = "unattached transit tube"
 	icon = 'icons/obj/pipes_n_cables/transit_tube.dmi'
 	icon_state = "straight"
-	desc = "An unattached segment of transit tube."
+	desc = "Um segmento de tubo de trânsito."
 	density = FALSE
 	layer = LOW_ITEM_LAYER //same as the built tube
 	anchored = FALSE
@@ -160,6 +160,6 @@
 	name = "unattached transit tube pod"
 	icon = 'icons/obj/pipes_n_cables/transit_tube.dmi'
 	icon_state = "pod"
-	desc = "Could probably be <b>dragged</b> into an open Transit Tube."
+	desc = "Poderia ser...<b>arrastado</b>em um tubo de trânsito aberto."
 	anchored = FALSE
 	density = FALSE

@@ -1,8 +1,8 @@
 // The rune carver, a heretic knife that can draw rune traps.
 /obj/item/melee/rune_carver
 	name = "carving knife"
-	desc = "A small knife made of cold steel, pure and perfect. Its sharpness can carve into titanium itself - \
-		but only few can evoke the dangers that lurk beneath reality."
+	desc = "Uma pequena faca feita de aço frio, pura e perfeita. Sua nitidez pode esculpir-se em titânio.\
+mas apenas poucos podem evocar os perigos que se escondem sob a realidade."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "rune_carver"
 	icon_angle = -45
@@ -50,9 +50,9 @@
 		return
 
 	. += span_notice("<b>[length(current_runes)] / [max_rune_amt]</b> total carvings have been drawn.")
-	. += span_info("The following runes can be carved:")
+	. += span_info("As seguintes runas podem ser esculpidas:")
 	for(var/obj/structure/trap/eldritch/trap as anything in subtypesof(/obj/structure/trap/eldritch))
-		var/potion_string = span_info("\tThe " + initial(trap.name) + " - " + initial(trap.carver_tip))
+		var/potion_string = span_info("\tO" + initial(trap.name) + " - " + initial(trap.carver_tip))
 		. += potion_string
 
 /obj/item/melee/rune_carver/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -69,11 +69,11 @@
  */
 /obj/item/melee/rune_carver/proc/try_carve_rune(turf/open/target_turf, mob/user)
 	if(drawing)
-		target_turf.balloon_alert(user, "already carving!")
+		target_turf.balloon_alert(user, "Já está esculpindo!")
 		return
 
 	if(locate(/obj/structure/trap/eldritch) in range(1, target_turf))
-		target_turf.balloon_alert(user, "to close to another carving!")
+		target_turf.balloon_alert(user, "para fechar outra escultura!")
 		return
 
 	for(var/datum/weakref/rune_ref as anything in current_runes)
@@ -81,7 +81,7 @@
 			current_runes -= rune_ref
 
 	if(length(current_runes) >= max_rune_amt)
-		target_turf.balloon_alert(user, "too many carvings!")
+		target_turf.balloon_alert(user, "Muitas esculturas!")
 		return
 
 	drawing = TRUE
@@ -119,7 +119,7 @@
 	target_turf.balloon_alert(user, "carving [picked_choice]...")
 	user.playsound_local(target_turf, 'sound/items/sheath.ogg', 50, TRUE)
 	if(!do_after(user, 5 SECONDS, target = target_turf))
-		target_turf.balloon_alert(user, "interrupted!")
+		target_turf.balloon_alert(user, "Interrompido!")
 		return
 
 	target_turf.balloon_alert(user, "[picked_choice] carved")
@@ -128,7 +128,7 @@
 
 /datum/action/item_action/rune_shatter
 	name = "Rune Break"
-	desc = "Destroys all runes carved by this blade."
+	desc = "Destrui todas as runas esculpidas por esta lâmina."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon_state = "rune_break"
@@ -166,7 +166,7 @@
 // The actual rune traps the knife draws.
 /obj/structure/trap/eldritch
 	name = "elder carving"
-	desc = "Collection of unknown symbols, they remind you of days long gone..."
+	desc = "Recolha de símbolos desconhecidos, eles te lembram de dias passados..."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	max_integrity = 60
 	/// A tip displayed to heretics who examine the rune carver. Explains what the rune does.
@@ -191,7 +191,7 @@
 
 /obj/structure/trap/eldritch/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/melee/rune_carver) || HAS_TRAIT(tool, TRAIT_NULLROD_ITEM))
-		loc.balloon_alert(user, "carving dispelled")
+		loc.balloon_alert(user, "Entalhe dissipado")
 		playsound(src, 'sound/items/sheath.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, ignore_walls = FALSE)
 		qdel(src)
 		return ITEM_INTERACT_SUCCESS

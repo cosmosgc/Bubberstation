@@ -1,7 +1,7 @@
 /// One use AI card which downloads a ghost as a syndicate AI to put in your MODsuit
 /obj/item/aicard/syndie
 	name = "syndiCard"
-	desc = "A storage device for AIs. Nanotrasen forgot to make the patent, so the Syndicate made their own version!"
+	desc = "Um dispositivo de armazenamento para IA. Nanotrasen esqueceu de fazer a patente, então o Sindicato fez sua própria versão!"
 	icon = 'icons/obj/aicards.dmi'
 	icon_state = "syndicard"
 	base_icon_state = "syndicard"
@@ -34,7 +34,7 @@
 
 /obj/item/aicard/syndie/loaded/examine(mob/user)
 	. = ..()
-	. += span_notice("This one has a little S.E.L.F. insignia on the back, and a label next to it that says 'Activate for one FREE aligned AI! Please attempt uplink reintegration or ask your employers for reimbursal if AI is unavailable or belligerent.")
+	. += span_notice("Este tem uma pequena insígnia S.E.L.F. na parte de trás, e um rótulo ao lado dele que diz 'Ativar para uma IA alinhada LIVRE! Por favor, tente se reinserir ou pergunte aos seus empregadores se a IA está indisponível ou beligerante.")
 
 /obj/item/aicard/syndie/loaded/attack_self(mob/user, modifiers)
 	if(!isnull(AI))
@@ -43,7 +43,7 @@
 		balloon_alert(user, "loading...")
 		return TRUE
 	finding_candidate = TRUE
-	to_chat(user, span_notice("Connecting to S.E.L.F. dispatch..."))
+	to_chat(user, span_notice("Ligando-se à S.E.L.F."))
 	procure_ai(user)
 	finding_candidate = FALSE
 	return TRUE
@@ -52,7 +52,7 @@
 /obj/item/aicard/syndie/loaded/proc/procure_ai(mob/user)
 	var/datum/antagonist/nukeop/op_datum = user.mind?.has_antag_datum(/datum/antagonist/nukeop,TRUE)
 	if(isnull(op_datum))
-		balloon_alert(user, "invalid access!")
+		balloon_alert(user, "Acesso inválido!")
 		return
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
 		check_jobban = list(ROLE_OPERATIVE, JOB_AI),
@@ -60,7 +60,7 @@
 		checked_target = src,
 		ignore_category = POLL_IGNORE_SYNDICATE,
 		alert_pic = src,
-		role_name_text = "Nuclear Operative Modsuit AI",
+		role_name_text = "Modsuit nuclear AI",
 		chat_text_border_icon = mutable_appearance(icon, "syndicard-full"),
 	)
 	on_poll_concluded(user, op_datum, chosen_one)
@@ -68,7 +68,7 @@
 /// Poll has concluded with a ghost, create the AI
 /obj/item/aicard/syndie/loaded/proc/on_poll_concluded(mob/user, datum/antagonist/nukeop/op_datum, mob/dead/observer/ghost)
 	if(!ismob(ghost))
-		to_chat(user, span_warning("Unable to connect to S.E.L.F. dispatch. Please wait and try again later or use the intelliCard on your uplink to get your points refunded."))
+		to_chat(user, span_warning("Incapaz de se conectar com a S.E.L.F. Por favor, espere e tente novamente mais tarde ou use o cartão intelli em seu uplink para obter seus pontos reembolsados."))
 		return
 
 	// pick ghost, create AI and transfer
@@ -110,7 +110,7 @@
 	. = ..()
 	if (!.)
 		return
-	visible_message(span_warning("The expended card incinerates itself."))
+	visible_message(span_warning("O cartão gasto incinera-se."))
 	do_sparks(3, cardinal_only = FALSE, source = src)
 	new /obj/effect/decal/cleanable/ash(get_turf(src))
 	qdel(src)
@@ -118,7 +118,7 @@
 /// Upgrade disk used to increase the range of a syndicate AI
 /obj/item/disk/computer/syndie_ai_upgrade
 	name = "AI interaction range upgrade"
-	desc = "A NT data chip containing information that a syndiCard AI can utilize to improve its wireless interfacing abilities. Simply slap it on top of an intelliCard, MODsuit, or AI core and watch it do its work! It's rumoured that there's something 'pretty awful' in it."
+	desc = "Um chip de dados NT contendo informações que uma IA SyndiCard pode usar para melhorar suas habilidades de interface sem fio. Basta colocá-lo em cima de um cartão intelli, MODsuit, ou núcleo IA e vê-lo fazer o seu trabalho! Há rumores de que há algo horrível nele."
 	max_capacity = 1000
 	w_class = WEIGHT_CLASS_NORMAL
 	sticker_icon_state = "o_syndicate"
@@ -131,7 +131,7 @@
 		AI = locate() in target
 	if(!AI || AI.interaction_range == INFINITY)
 		playsound(src,'sound/machines/buzz/buzz-sigh.ogg',50,FALSE)
-		to_chat(user, span_notice("Error! Incompatible object!"))
+		to_chat(user, span_notice("Erro! Objeto incompatível!"))
 		return ..()
 	AI.interaction_range += 2
 	if(AI.interaction_range > 7)

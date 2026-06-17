@@ -1,8 +1,8 @@
 // Surgical analog to manual dislocation treatment
 /datum/surgery_operation/limb/repair_dislocation
 	name = "reset dislocation"
-	desc = "Reset a dislocated bone in a patient's limb. \
-		Similar to the field procedure, but quicker and safer due to being performed in a controlled environment."
+	desc = "Reset um osso deslocado no membro de um paciente.\
+Semelhante ao procedimento de campo, mas mais rápido e seguro devido a ser realizado em um ambiente controlado."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED | OPERATION_AFFECTS_MOOD | OPERATION_STANDING_ALLOWED | OPERATION_IGNORE_CLOTHES
 	implements = list(
 		TOOL_BONESET = 1,
@@ -67,7 +67,7 @@
 
 /datum/surgery_operation/limb/repair_hairline
 	name = "repair hairline fracture"
-	desc = "Mend a hairline fracture in a patient's bone."
+	desc = "Conserte uma fraternidade no osso de um paciente."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -120,7 +120,7 @@
 
 /datum/surgery_operation/limb/reset_compound
 	name = "reset compound fracture"
-	desc = "Reset a compound fracture in a patient's bone, preparing it for proper healing."
+	desc = "Reinicie uma fratura exposta no osso de um paciente, preparando-o para uma cura adequada."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -174,7 +174,7 @@
 
 /datum/surgery_operation/limb/repair_compound
 	name = "repair compound fracture"
-	desc = "Mend a compound fracture in a patient's bone."
+	desc = "Conserte uma fraternidade exposta no osso de um paciente."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
@@ -226,7 +226,7 @@
 
 /datum/surgery_operation/limb/prepare_cranium_repair
 	name = "discard skull debris"
-	desc = "Clear away bone fragments and debris from a patient's cranial fissure in preparation for repair."
+	desc = "Limpar fragmentos ósseos e detritos da fissura craniana de um paciente em preparação para reparo."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -271,7 +271,7 @@
 
 /datum/surgery_operation/limb/repair_cranium
 	name = "repair cranium"
-	desc = "Mend a cranial fissure in a patient's skull."
+	desc = "Conserte uma fissura craniana no crânio de um paciente."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,

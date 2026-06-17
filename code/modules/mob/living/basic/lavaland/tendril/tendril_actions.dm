@@ -1,7 +1,7 @@
 /// Fires out two cross patterns of damaging tentacles which reel in anything they hit, then causes a followup attack
 /datum/action/cooldown/mob_cooldown/projectile_attack/tendril_lash
 	name = "Tentacle Lash"
-	desc = "Lash out with your tentacles in 8 directions, reeling in whatever you hit and unleashing a deadly followup attack afterwards."
+	desc = "Lash fora com seus tentáculos em 8 direções, cambaleando em qualquer que você bater e desencadeando um ataque mortal depois."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"
@@ -156,7 +156,7 @@
 /// An ability which makes spikes come out of the ground towards your target
 /datum/action/cooldown/mob_cooldown/tendril_chaser
 	name = "Impaling Spikes"
-	desc = "Send a spiked subterranean tendril chasing after your target."
+	desc = "Envie um tentáculo subterrâneo espigado atrás do seu alvo."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "spikes_stabbing"
 	background_icon_state = "bg_demon"
@@ -311,7 +311,7 @@
 
 /datum/action/cooldown/mob_cooldown/tendril_cross_spikes
 	name = "Cross Spikes"
-	desc = "Create a wave of spikes around yourself, impaling anyone caught in it."
+	desc = "Criar uma onda de picos em rasgado de si mesmo, empalando qualquer um preso nelle."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "spike"
 	background_icon_state = "bg_demon"
@@ -384,7 +384,7 @@
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/tendril_melee
 	name = "Tentacle Stab"
-	desc = "Stab nearby hostiles with long tentacles."
+	desc = "Esfaquear inimigos próximos com tentáculos longos."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_wiggle"
 	background_icon_state = "bg_demon"

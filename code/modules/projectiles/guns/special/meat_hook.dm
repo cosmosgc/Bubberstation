@@ -4,7 +4,7 @@
 /// Meat Hook
 /obj/item/gun/magic/hook
 	name = "meat hook"
-	desc = "Mid or feed."
+	desc = "Meio ou meio."
 	ammo_type = /obj/item/ammo_casing/magic/hook
 	icon_state = "hook"
 	inhand_icon_state = "hook"
@@ -21,7 +21,7 @@
 	can_muzzle_flash = FALSE
 
 /obj/item/gun/magic/hook/shoot_with_empty_chamber(mob/living/user)
-	balloon_alert(user, "not ready yet!")
+	balloon_alert(user, "Ainda não está pronto!")
 
 /obj/item/gun/magic/hook/can_trigger_gun(mob/living/user, akimbo_usage) // This isn't really a gun, so it shouldn't be checking for TRAIT_NOGUNS, a firing pin (pinless), or a trigger guard (guardless)
 	if(akimbo_usage)
@@ -47,7 +47,7 @@
 
 /obj/item/ammo_casing/magic/hook
 	name = "hook"
-	desc = "A hook."
+	desc = "Um gancho."
 	projectile_type = /obj/projectile/hook
 	caliber = CALIBER_HOOK
 	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect

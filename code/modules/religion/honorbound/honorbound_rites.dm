@@ -1,7 +1,7 @@
 ///Mostly useless funny rite for forgiving someone, making them innocent once again.
 /datum/religion_rites/forgive
 	name = "Forgive"
-	desc = "Forgives someone, making them no longer considered guilty. A kind gesture, all things considered!"
+	desc = "Perdoa alguém, fazendo-o não mais ser considerado culpado. Um gesto gentil, considerando tudo!"
 	invoke_msg = "You are absolved of sin."
 	var/mob/living/who
 
@@ -34,7 +34,7 @@
 
 /datum/religion_rites/summon_rules
 	name = "Summon Honorbound Rules"
-	desc = "Enscribes a paper with the honorbound rules and regulations."
+	desc = "Escreve um papel com as regras e regulamentos de honra."
 	invoke_msg = "Bring forth the holy writ!"
 	///paper to turn into holy writ
 	var/obj/item/paper/writ_target
@@ -56,7 +56,7 @@
 	var/turf/tool_turf = get_turf(religious_tool)
 	writ_target = null
 	if(QDELETED(autograph) || !(tool_turf == autograph.loc)) //check if the paper is still there
-		to_chat(user, span_warning("Your target left the altar!"))
+		to_chat(user, span_warning("Seu alvo deixou o altar!"))
 		return FALSE
 	autograph.visible_message(span_notice("Words magically form on [autograph]!"))
 	playsound(tool_turf, 'sound/effects/pray.ogg', 50, TRUE)
@@ -117,8 +117,8 @@
  */
 /datum/religion_rites/deaconize/crusader
 	name = "Join Crusade"
-	desc = "Converts someone to your sect. They must be willing, so the first invocation will instead prompt them to join. \
-	They will become honorbound like you, and you will gain a massive favor boost!"
+	desc = "Converte alguém para sua seita. Devem estar dispostos, então a primeira invocação os levará a se juntarem.\
+Eles se tornarão honrados como você, e você ganhará um enorme aumento de favor!"
 	ritual_length = 30 SECONDS
 	ritual_invocations = list(
 		"A good, honorable crusade against evil is required.",

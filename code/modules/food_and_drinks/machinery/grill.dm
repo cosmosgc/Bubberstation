@@ -5,7 +5,7 @@
 
 /obj/machinery/grill //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "Barbeque grill"
-	desc = "Just like the old days. Smokes items over a light heat"
+	desc = "Como nos velhos tempos. Fuma itens sobre um calor leve"
 	icon = 'icons/obj/machines/kitchen.dmi'
 	icon_state = "grill_open"
 	density = TRUE
@@ -69,9 +69,9 @@
 /obj/machinery/grill/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Add fuel via wood/coal stacks or any open container having a good fuel source")
-	. += span_notice("Monkey energy > Oil > Welding fuel > Ethanol. Others cause bad effects")
-	. += span_notice("Place any food item on top via hand to start grilling")
+	. += span_notice("Adicione combustível através de pilhas de madeira / carvão ou qualquer recipiente aberto com uma boa fonte de combustível")
+	. += span_notice("Energia de macaco > Óleo > Combustível de solda > Etanol. Outros causam efeitos ruins.")
+	. += span_notice("Coloque qualquer alimento em cima através da mão para começar a grelhar")
 
 	if(!anchored)
 		. += span_notice("It can be [EXAMINE_HINT("pried")] apart.")
@@ -99,7 +99,7 @@
 
 /obj/machinery/grill/attack_hand(mob/living/user, list/modifiers)
 	if(!QDELETED(grilled_item))
-		balloon_alert(user, "item removed")
+		balloon_alert(user, "item removido")
 		grilled_item.forceMove(drop_location())
 		update_appearance(UPDATE_ICON_STATE)
 		return TRUE
@@ -132,7 +132,7 @@
 		if(!QDELETED(grilled_item))
 			return NONE
 		if(!anchored)
-			balloon_alert(user, "anchor it first!")
+			balloon_alert(user, "Ancore-o primeiro!")
 			return ITEM_INTERACT_BLOCKING
 
 		//required for amount subtypes
@@ -149,7 +149,7 @@
 			if(!istype(stored, target_type))
 				continue
 			if(stored.amount == MAX_STACK_SIZE)
-				balloon_alert(user, "no space!")
+				balloon_alert(user, "Sem espaço!")
 				return ITEM_INTERACT_BLOCKING
 			target.merge(stored)
 			merged = TRUE
@@ -168,7 +168,7 @@
 		if(!QDELETED(grilled_item))
 			return NONE
 		if(!anchored)
-			balloon_alert(user, "anchor it first!")
+			balloon_alert(user, "Ancore-o primeiro!")
 			return ITEM_INTERACT_BLOCKING
 
 		var/transfered_amount = weapon.reagents.trans_to(src, container.amount_per_transfer_from_this)
@@ -204,21 +204,21 @@
 			to_chat(user, span_notice("You transfer [transfered_amount]u to the fuel source."))
 			return ITEM_INTERACT_SUCCESS
 
-		balloon_alert(user, "no fuel transfered!")
+		balloon_alert(user, "Nenhum combustível transferido!")
 		return ITEM_INTERACT_BLOCKING
 
 	if(IS_EDIBLE(weapon))
 		//sanity checks
 		if(!anchored)
-			balloon_alert(user, "anchor first!")
+			balloon_alert(user, "A âncora primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(HAS_TRAIT(weapon, TRAIT_NODROP))
 			return ..()
 		if(!QDELETED(grilled_item))
-			balloon_alert(user, "remove item first!")
+			balloon_alert(user, "Remova o item primeiro!")
 			return ITEM_INTERACT_BLOCKING
 		if(grill_fuel <= 0)
-			balloon_alert(user, "no fuel!")
+			balloon_alert(user, "Sem combustível!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.transferItemToLoc(weapon, src))
 			balloon_alert(user, "[weapon] is stuck in your hand!")
@@ -244,7 +244,7 @@
 
 /obj/machinery/grill/crowbar_act(mob/living/user, obj/item/tool)
 	if(anchored)
-		balloon_alert(user, "unanchor first!")
+		balloon_alert(user, "unanchor primeiro!")
 		return ITEM_INTERACT_BLOCKING
 
 	return default_deconstruction_crowbar(user, tool)

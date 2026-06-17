@@ -1,7 +1,7 @@
 /datum/surgery_operation/organ/stomach_pump
 	name = "pump stomach"
 	rnd_name = "Gastric Lavage (Stomach Pump)"
-	desc = "Manually pump a patient's stomach to induce vomiting and expel harmful chemicals."
+	desc = "Bombeie manualmente o estômago de um paciente para induzir vômitos e expelir produtos químicos nocivos."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		IMPLEMENT_HAND = 1,

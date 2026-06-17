@@ -3,7 +3,7 @@
 // Extending the existing spraycan item was more trouble than it was worth, I don't want or need this to be able to draw arbitrary shapes.
 /obj/item/traitor_spraycan
 	name = "seditious spraycan"
-	desc = "This spraycan deploys a subversive pattern containing subliminal priming agents over a 3x3 area. Contains enough primer for just one final coating."
+	desc = "Este spray pode implantar um padrão subversivo contendo agentes de priming subliminares sobre uma área 3x3. Contém primer suficiente para apenas um revestimento final."
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "deathcan"
 	worn_icon_state = "spraycan"
@@ -24,11 +24,11 @@
 		return NONE
 
 	if (expended)
-		user.balloon_alert(user, "all out of paint...")
+		user.balloon_alert(user, "Tudo sem tinta...")
 		return ITEM_INTERACT_BLOCKING
 
 	if (drawing_rune)
-		user.balloon_alert(user, "already busy!")
+		user.balloon_alert(user, "Já está ocupado!")
 		return ITEM_INTERACT_BLOCKING
 
 	if (isturf(interacting_with))
@@ -52,7 +52,7 @@
 /obj/item/traitor_spraycan/proc/try_draw_new_rune(mob/living/user, turf/target_turf)
 	for(var/turf/nearby_turf as anything in RANGE_TURFS(1, target_turf))
 		if (!isopenturf(nearby_turf) || is_type_in_typecache(nearby_turf, no_draw_turfs))
-			user.balloon_alert(user, "you need a clear 3x3 area!")
+			user.balloon_alert(user, "Você precisa de uma área 3x3 livre!")
 			return
 
 	draw_rune(user, target_turf)
@@ -86,7 +86,7 @@
 		wait_time *= 0.5
 
 	if(!do_after(user, wait_time, target, hidden = TRUE, extra_checks = CALLBACK(src, PROC_REF(adjacency_check), user, target)))
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "Interrompido!")
 		drawing_rune = FALSE
 		return FALSE
 
@@ -112,7 +112,7 @@
 			if (!try_draw_step("... finalising design...", user, rune))
 				return
 			if (!rune)
-				user.balloon_alert(user, "graffiti was destroyed!")
+				user.balloon_alert(user, "O grafite foi destruído!")
 				return
 			rune.set_stage(RUNE_STAGE_COLOURED)
 			try_complete_rune(user, rune)
@@ -121,16 +121,16 @@
 			if (!try_draw_step("... applying final coating...", user, rune))
 				return
 			if (!rune)
-				user.balloon_alert(user, "graffiti was destroyed!")
+				user.balloon_alert(user, "O grafite foi destruído!")
 				return
-			user.balloon_alert(user, "finished!")
+			user.balloon_alert(user, "Acabou!")
 			rune.set_stage(RUNE_STAGE_COMPLETE)
 			expended = TRUE
-			desc = "A suspicious looking spraycan, it's all out of paint."
+			desc = "Uma lata de spray suspeita está sem tinta."
 			SEND_SIGNAL(src, COMSIG_TRAITOR_GRAFFITI_DRAWN, rune)
 
 		if (RUNE_STAGE_COMPLETE, RUNE_STAGE_REMOVABLE)
-			user.balloon_alert(user, "all done!")
+			user.balloon_alert(user, "Tudo pronto!")
 
 /// Copying the functionality from normal spraycans, but doesn't need all the optional checks
 /obj/item/traitor_spraycan/suicide_act(mob/living/user)
@@ -149,13 +149,13 @@
 ///Checks if the user is still adjacent to the target (used for do_after extra_checks)
 /obj/item/traitor_spraycan/proc/adjacency_check(mob/user, atom/target)
 	if(!user.Adjacent(target))
-		user.balloon_alert(user, "moved too far away!")
+		user.balloon_alert(user, "Foi muito longe!")
 		return FALSE
 	return TRUE
 
 /obj/effect/decal/cleanable/traitor_rune
 	name = "syndicate graffiti"
-	desc = "It looks like it's going to be... the Syndicate logo?"
+	desc = "Parece que vai ser... o logotipo do Sindicato?"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "traitor_rune_outline"
 	pixel_x = -32
@@ -213,16 +213,16 @@
 	switch(drawn_stage)
 		if (RUNE_STAGE_OUTLINE)
 			icon_state = "traitor_rune_outline"
-			desc = "It looks like it's going to be... the Syndicate logo?"
+			desc = "Parece que vai ser... o logotipo do Sindicato?"
 
 		if (RUNE_STAGE_COLOURED, RUNE_STAGE_REMOVABLE)
 			icon_state = "traitor_rune_done"
-			desc = "A large depiction of the Syndicate logo."
+			desc = "Uma grande representação do logotipo do Sindicato."
 			clean_proof = FALSE
 
 		if (RUNE_STAGE_COMPLETE)
 			icon_state = "traitor_rune_sheen"
-			desc = "A large depiction of the Syndicate logo. It looks slippery."
+			desc = "Uma grande representação do logotipo do Sindicato. Parece escorregadio."
 			var/datum/demoralise_moods/graffiti/mood_category = new()
 			demoraliser = new(src, 7, TRUE, mood_category)
 			clean_proof = TRUE

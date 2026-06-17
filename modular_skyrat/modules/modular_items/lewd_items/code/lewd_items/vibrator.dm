@@ -9,7 +9,7 @@
 //This code huge and blocky, but we're working on update for... my god, 4 months. If you can upgrade it - do it, but don't remove or break something, test carefully. This item is insertable.
 /obj/item/clothing/sextoy/vibrator
 	name = "vibrator"
-	desc = "Woah. What an... Interesting item. I wonder what this red button does..."
+	desc = "Woah. Que... Item interessante. Imagino o que esse botão vermelho faz..."
 	icon_state = "vibrator_pink_off"
 	base_icon_state = "vibrator"
 	inhand_icon_state = "vibrator_pink"
@@ -48,7 +48,7 @@
 /obj/item/clothing/sextoy/vibrator/examine(mob/user)
 	. = ..()
 	if(!color_changed)
-		. += span_notice("Alt-click to change it's design.")
+		. += span_notice("Alt-clique para mudar seu design.")
 
 /obj/item/clothing/sextoy/vibrator/click_alt(mob/user)
 	if(color_changed)
@@ -193,13 +193,13 @@
 	toggle_mode()
 	switch(vibration_mode)
 		if(VIB_LOW)
-			to_chat(user, span_notice("Vibration mode now is low. Bzzz..."))
+			to_chat(user, span_notice("O modo de vibração agora está baixo. Bzzz..."))
 		if(VIB_MEDIUM)
-			to_chat(user, span_notice("Vibration mode now is medium. Bzzzz!"))
+			to_chat(user, span_notice("Modo de vibração agora é médio. Bzzzz!"))
 		if(VIB_HIGH)
-			to_chat(user, span_notice("Vibration mode now is high. Careful with that thing."))
+			to_chat(user, span_notice("O modo de vibração agora está alto. Cuidado com essa coisa."))
 		if(VIB_OFF)
-			to_chat(user, span_notice("Vibrator turned off. Fun's over?"))
+			to_chat(user, span_notice("O vibrador desligou. Acabou a diversão?"))
 	update_icon()
 	update_icon_state()
 

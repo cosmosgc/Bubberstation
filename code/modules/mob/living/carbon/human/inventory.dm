@@ -205,7 +205,7 @@
 			s_store = equipping
 			update_suit_storage()
 		else
-			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
+			to_chat(src, span_danger("Você está tentando equipar este item para um estoque não suportado. Informe isso a um programador!"))
 			not_handled = TRUE
 
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
@@ -331,7 +331,7 @@
 		to_chat(src, span_warning("[head] isn't airtight! You need a mask!"))
 	else
 		// Not wearing any breathing apparatus.
-		to_chat(src, span_warning("You need a mask!"))
+		to_chat(src, span_warning("Você precisa de uma máscara!"))
 
 /// Returns TRUE if the tank successfully toggles open/closed. Opens the tank only if a breathing apparatus is found.
 /mob/living/carbon/human/toggle_externals(obj/item/tank)

@@ -1,7 +1,7 @@
 /// A mini-tool used to apply label items onto something to modify its name.
 /obj/item/hand_labeler
 	name = "hand labeler"
-	desc = "A combined label printer, applicator, and remover, all in a single portable device. Designed to be easy to operate and use."
+	desc = "Uma impressora combinada, aplicador e removedor, tudo em um único dispositivo portátil. Projetado para ser fácil de operar e usar."
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "labeler0"
 	item_flags = NOBLUDGEON
@@ -59,16 +59,16 @@
 
 /obj/item/hand_labeler/proc/apply_label(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!labels_left)
-		balloon_alert(user, "no labels left!")
+		balloon_alert(user, "Sem etiquetas sobrando!")
 		return FALSE
 	if(!length(label))
-		balloon_alert(user, "no text set!")
+		balloon_alert(user, "Sem texto!")
 		return FALSE
 	if(length(interacting_with.name) + length(label) > MAX_LABEL_LEN)
-		balloon_alert(user, "label too long!")
+		balloon_alert(user, "Rotulagem longa demais!")
 		return FALSE
 	if(ismob(interacting_with))
-		interacting_with.balloon_alert(user, "can't label!")
+		interacting_with.balloon_alert(user, "Não posso rotular!")
 		return FALSE
 
 	var/cursor_x = text2num(LAZYACCESS(modifiers, ICON_X))
@@ -99,7 +99,7 @@
 		//Now let them chose the text.
 		var/str = reject_bad_text(tgui_input_text(user, "Label text", "Set Label", label, MAX_NAME_LEN))
 		if(!str || QDELETED(src) || !user.is_holding(src))
-			to_chat(user, span_warning("Invalid text!"))
+			to_chat(user, span_warning("Texto inválido!"))
 			return
 		label = str
 		to_chat(user, span_notice("You set the text to '[str]'."))
@@ -121,7 +121,7 @@
 	if(labels_left > 0)
 		. += span_notice("It looks like it could label [labels_left] more thing\s.")
 	else
-		. += span_notice("It's out of labels.")
+		. += span_notice("Está sem rótulos.")
 
 /obj/item/hand_labeler/borg
 	name = "cyborg-hand labeler"
@@ -150,7 +150,7 @@
 /obj/item/hand_labeler_refill
 	name = "hand labeler paper roll"
 	icon = 'icons/obj/service/bureaucracy.dmi'
-	desc = "A roll of paper. Use it on a hand labeler to refill it."
+	desc = "Um rolo de papel. Use-o em uma etiqueta para recarregá-lo."
 	icon_state = "labeler_refill"
 	inhand_icon_state = "electropack"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
@@ -166,7 +166,7 @@
 /// The label item applied when labelling something
 /obj/item/label
 	name = "label"
-	desc = "A strip of paper."
+	desc = "Uma tira de papel."
 	icon = 'icons/obj/toys/stickers.dmi'
 	icon_state = "label"
 	throw_range = 1
@@ -281,21 +281,21 @@
 
 	if(labeler.mode)
 		if(!length(labeler.label))
-			labeler.balloon_alert(user, "no text set!")
+			labeler.balloon_alert(user, "Sem texto!")
 			return ITEM_INTERACT_BLOCKING
 		if(labeler.label == label_name)
-			sticking_to.balloon_alert(user, "already labelled!")
+			sticking_to.balloon_alert(user, "Já rotulada!")
 			return ITEM_INTERACT_BLOCKING
 		if(length(initial(sticking_to.name)) + length(labeler.label) > MAX_LABEL_LEN)
-			sticking_to.balloon_alert(user, "label too long!")
+			sticking_to.balloon_alert(user, "Rotulagem longa demais!")
 			return ITEM_INTERACT_BLOCKING
 
 		update_label_name(labeler.label)
 		playsound(sticking_to, 'sound/items/handling/component_pickup.ogg', 20, TRUE)
-		sticking_to.balloon_alert(user, "label renamed")
+		sticking_to.balloon_alert(user, "etiqueta renomeada")
 	else
 		playsound(sticking_to, 'sound/items/poster/poster_ripped.ogg', 20, TRUE)
-		sticking_to.balloon_alert(user, "label removed")
+		sticking_to.balloon_alert(user, "rótulo removido")
 		qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
@@ -311,7 +311,7 @@
 /obj/item/label/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("It has a label with some words written on it. Use a hand labeler to remove it.")
+	examine_list += span_notice("Tem um rótulo com algumas palavras escritas nele. Use um etiquetador para removê-lo.")
 
 /// Applies a label to the name of what we're stuck to in the format of: "parent_name (label)"
 /obj/item/label/proc/apply_label()

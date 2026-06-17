@@ -40,9 +40,9 @@
 		return
 	// similar to context, we don't want a bunch of text revealing "THIS IS A DISGUISED ITEM" to everyone on examine.
 	// despite the fact that anyone can use it, we'll only show it to traitors, everyone else just has to figure it out.
-	. += span_red("There's a small button on the bottom side of it. You recognize this as a hidden <i>Chameleon Scanner 6000</i>.")
+	. += span_red("Há um pequeno botão no lado inferior. Você reconhece isso como um oculto<i>Scanner Camaleão 6000</i>.")
 	. += span_red("<b>Left click</b> will stealthily scan a target up to [scan_range] meters away and upload their getup as a custom outfit for you to use.")
-	. += span_red("<b>Right click</b> will do the same, but instantly equip the outfit you obtain.")
+	. += span_red("<b>Click direito</b>fará o mesmo, mas instantaneamente equipará o equipamento que você obter.")
 
 /obj/item/chameleon_scanner/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	return scan_target(interacting_with, user) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
@@ -87,10 +87,10 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, scan_cooldown))
-		balloon_alert(scanner, "not ready yet!")
+		balloon_alert(scanner, "Ainda não está pronto!")
 		return
 	if(get_dist(scanner, mob_copying) > scan_range)
-		balloon_alert(scanner, "too far away!")
+		balloon_alert(scanner, "Muito longe!")
 		return
 	// Very short scan timer, keep you on your toes
 	if(!do_after(scanner, 0.5 SECONDS, scanned, hidden = TRUE))
@@ -108,7 +108,7 @@
 			all_scanned_items |= thing.type
 
 	if(!length(all_scanned_items))
-		scanned.balloon_alert(scanner, "nothing to scan!")
+		scanned.balloon_alert(scanner, "Nada para escanear!")
 		return
 
 	playsound(src, 'sound/machines/ping.ogg', vol = 30, vary = TRUE, extrarange = SILENCED_SOUND_EXTRARANGE)

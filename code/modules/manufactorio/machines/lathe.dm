@@ -1,6 +1,6 @@
 /obj/machinery/power/manufacturing/lathe // this is a heavily gutted autolathe
 	name = "manufacturing lathe"
-	desc = "Lathes the set recipe until it runs out of resources. Only accepts sheets or other kinds of material stacks."
+	desc = "Torce a receita até ficar sem recursos. Só aceita lençóis ou outros tipos de pilhas de material."
 	icon_state = "lathe"
 	circuit = /obj/item/circuitboard/machine/manulathe
 	/// power cost for lathing
@@ -60,7 +60,7 @@
 	. += span_notice("It is set to print [!isnull(design) ? design.name : "nothing, set with a multitool"].")
 	if(isnull(design))
 		return
-	. += span_notice("It needs:")
+	. += span_notice("Precisa de:")
 	for(var/valid_type, amount in design.materials)
 		var/atom/ingredient = valid_type
 

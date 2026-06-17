@@ -137,7 +137,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	SIGNAL_HANDLER
 
 	if(!inserted_cell)
-		examine_list += span_danger("It does not have a cell inserted!")
+		examine_list += span_danger("Não tem uma célula inserida!")
 	else if(!inside_robot)
 		examine_list += span_notice("It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left. \
 						Ctrl+Shift+Click to remove the [inserted_cell].")

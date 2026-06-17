@@ -1,12 +1,12 @@
 /datum/quirk/item_quirk/clown_enjoyer
 	name = "Clown Enjoyer"
-	desc = "You enjoy clown antics and get a mood boost from wearing your clown pin."
+	desc = "Você gosta de palhaçadas e ganha um impulso de humor usando seu broche de palhaço."
 	icon = FA_ICON_MAP_PIN
 	value = 2
 	mob_trait = TRAIT_CLOWN_ENJOYER
-	gain_text = span_notice("You are a big enjoyer of clowns.")
-	lose_text = span_danger("The clown doesn't seem so great.")
-	medical_record_text = "Patient reports being a big enjoyer of clowns."
+	gain_text = span_notice("Você gosta muito de palhaços.")
+	lose_text = span_danger("O palhaço não parece tão bom.")
+	medical_record_text = "O paciente diz que gosta de palhaços."
 	mail_goodies = list(
 		/obj/item/bikehorn,
 		/obj/item/stamp/clown,

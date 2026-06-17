@@ -6,7 +6,7 @@
 
 /datum/action/adjust_vision
 	name = "Adjust Vision"
-	desc = "See better in the dark. Or don't. Your advanced vision allows either."
+	desc = "Ver melhor no escuro. Ou não. Sua visão avançada também permite."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "adjust_vision"
 	background_icon_state = "bg_default"

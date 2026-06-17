@@ -1,6 +1,6 @@
 /obj/item/organ/liver/synth
 	name = "reagent processing unit"
-	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
+	desc = "Um dispositivo eletrônico que processa os produtos químicos benéficos para o usuário sintético."
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "liver-ipc"
 	filterToxins = FALSE //We dont filter them, we're immune to them
@@ -19,15 +19,15 @@
 		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
 		switch(severity)
 			if(EMP_HEAVY)
-				to_chat(owner, span_warning("Alert: Critical! Reagent processing unit failure, seek maintenance immediately. Error Code: DR-1k"))
+				to_chat(owner, span_warning("Alerta: crítico! Unidade de processamento de reagente falha, procure manutenção imediatamente. Código de erro: DR-1k"))
 				apply_organ_damage(SYNTH_ORGAN_HEAVY_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
 			if(EMP_LIGHT)
-				to_chat(owner, span_warning("Alert: Reagent processing unit failure, seek maintenance for diagnostic. Error Code: DR-0k"))
+				to_chat(owner, span_warning("Alerta: falha na unidade de processamento de reagente, procure manutenção para diagnóstico. Código de erro: DR-0k"))
 				apply_organ_damage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
 
 /datum/design/synth_liver
 	name = "Reagent Processing Unit"
-	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
+	desc = "Um dispositivo eletrônico que processa os produtos químicos benéficos para o usuário sintético."
 	id = "synth_liver"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS

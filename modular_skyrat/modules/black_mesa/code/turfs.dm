@@ -24,7 +24,7 @@
 
 /turf/open/misc/xen
 	name = "strange weeds"
-	desc = "It feels soft to the touch, like a carpet... only... wet."
+	desc = "Parece macio ao toque, como um tapete... só que molhado."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	icon_state = "xen_turf"
 	baseturfs = /turf/open/misc/xen
@@ -33,7 +33,7 @@
 	planetary_atmos = TRUE
 
 /turf/open/water/beach/xen
-	desc = "It's mirky and filled with strange organisms."
+	desc = "Está cheio de organismos estranhos."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	baseturfs = /turf/open/water/beach/xen
@@ -41,7 +41,7 @@
 	planetary_atmos = TRUE
 
 /turf/open/misc/beach/coastline_t/xen
-	desc = "It's mirky and filled with strange organisms."
+	desc = "Está cheio de organismos estranhos."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	baseturfs = /turf/open/misc/beach/coastline_t/xen
@@ -49,7 +49,7 @@
 	planetary_atmos = TRUE
 
 /turf/open/misc/beach/coastline_t/sandwater_inner/xen
-	desc = "It's mirky and filled with strange organisms."
+	desc = "Está cheio de organismos estranhos."
 	name = "xen water"
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	baseturfs = /turf/open/misc/beach/coastline_t/sandwater_inner/xen
@@ -58,7 +58,7 @@
 
 /turf/open/misc/beach/coastline_b/xen
 	name = "xen water"
-	desc = "It's mirky and filled with strange organisms."
+	desc = "Está cheio de organismos estranhos."
 	icon = 'modular_skyrat/modules/black_mesa/icons/xen_turfs.dmi'
 	baseturfs = /turf/open/misc/beach/coastline_b/xen
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
@@ -105,6 +105,6 @@
 		var/datum/effect_system/basic/lightning_spread/lightning = new(unlucky_mob.loc, 5, TRUE)
 		lightning.start()
 		unlucky_mob.visible_message(span_danger("[unlucky_mob.name] is shocked by [src]!"), \
-		span_userdanger("You feel a powerful shock course through your body!"), \
-		span_hear("You hear a heavy electrical crack!"))
+		span_userdanger("Você sente um poderoso curso de choque através do seu corpo!"), \
+		span_hear("Você ouve uma forte rachadura elétrica!"))
 		playsound(unlucky_mob, SFX_SPARKS, 100, TRUE)

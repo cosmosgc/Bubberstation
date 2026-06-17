@@ -1,6 +1,6 @@
 /turf/closed/wall
 	name = "wall"
-	desc = "A huge chunk of iron used to separate rooms."
+	desc = "Um enorme pedaço de ferro usado para separar quartos."
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -81,11 +81,11 @@
 /turf/closed/wall/examine(mob/user)
 	. = ..()
 	if(initial(smoothing_flags) & SMOOTH_DIAGONAL_CORNERS)
-		. += span_notice("You could adjust its corners with a <b>wrench</b>.")
+		. += span_notice("Você poderia ajustar seus cantos com um<b>Chave inglesa.</b>.")
 	. += deconstruction_hints(user)
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
-	return span_notice("The outer plating is <b>welded</b> firmly in place.")
+	return span_notice("O revestimento exterior é<b>soldado</b>firmemente no lugar.")
 
 /turf/closed/wall/attack_tk()
 	return
@@ -166,7 +166,7 @@
 		add_dent(WALL_DENT_HIT)
 		user.visible_message(span_danger("[user] smashes \the [src]!"), \
 					span_danger("You smash \the [src]!"), \
-					span_hear("You hear a booming smash!"))
+					span_hear("Você ouve um estrondo!"))
 	return TRUE
 
 /**
@@ -190,13 +190,13 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, span_notice("You push the wall but nothing happens!"))
+	to_chat(user, span_notice("Você empurra a parede, mas nada acontece!"))
 	playsound(src, 'sound/items/weapons/genhit.ogg', 25, TRUE)
 	add_fingerprint(user)
 
 /turf/closed/wall/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Você não tem a destreza de fazer isso!"))
 		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)
@@ -215,10 +215,10 @@
 		if(!W.tool_start_check(user, amount=1))
 			return FALSE
 
-		to_chat(user, span_notice("You begin fixing dents on the wall..."))
+		to_chat(user, span_notice("Você começa a consertar as marcas na parede..."))
 		if(W.use_tool(src, user, 0, volume=100))
 			if(iswallturf(src) && LAZYLEN(dent_decals))
-				to_chat(user, span_notice("You fix some dents on the wall."))
+				to_chat(user, span_notice("Você conserta alguns amassados na parede."))
 				cut_overlay(dent_decals)
 				dent_decals.Cut()
 			return TRUE
@@ -230,10 +230,10 @@
 		if(!I.tool_start_check(user, amount=round(slicing_duration / 50), heat_required = HIGH_TEMPERATURE_REQUIRED))
 			return FALSE
 
-		to_chat(user, span_notice("You begin slicing through the outer plating..."))
+		to_chat(user, span_notice("Você começa a cortar através do revestimento exterior..."))
 		if(I.use_tool(src, user, slicing_duration, volume=100))
 			if(iswallturf(src))
-				to_chat(user, span_notice("You remove the outer plating."))
+				to_chat(user, span_notice("Você remove o revestimento externo."))
 				dismantle_wall()
 			return TRUE
 

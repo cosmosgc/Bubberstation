@@ -3,7 +3,7 @@
 	filedesc = "Plexagon Access Management"
 	downloader_category = PROGRAM_CATEGORY_EQUIPMENT
 	program_open_overlay = "id"
-	extended_desc = "Program for programming employee ID cards to access parts of the station."
+	extended_desc = "Programa de programação de cartões de identificação para acessar partes da estação."
 	download_access = list(ACCESS_COMMAND)
 	size = 8
 	tgui_id = "NtosCard"
@@ -138,7 +138,7 @@
 					contents += " [SSid_access.get_access_desc(A)]"
 
 			if(!computer.print_text(contents, "access report - [modified_id.registered_name || "Unregistered"]"))
-				to_chat(usr, span_notice("Printer is out of paper."))
+				to_chat(usr, span_notice("A impressora está sem papel."))
 				return TRUE
 			else
 				playsound(computer, 'sound/machines/terminal/terminal_on.ogg', 50, FALSE)
@@ -150,7 +150,7 @@
 				return TRUE
 			if(minor)
 				if(!(modified_id.trim?.type in job_templates))
-					to_chat(usr, span_notice("Software error: You do not have the necessary permissions to demote this card."))
+					to_chat(usr, span_notice("Erro de software: você não tem as permissões necessárias para rebaixar este cartão."))
 					return TRUE
 
 			// Set the new assignment then remove the trim.
@@ -183,7 +183,7 @@
 			new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 
 			if(!new_name)
-				to_chat(usr, span_notice("Software error: The ID card rejected the new name as it contains prohibited characters."))
+				to_chat(usr, span_notice("O cartão de identificação rejeitou o novo nome, pois contém caracteres proibidos."))
 				return TRUE
 
 			modified_id.registered_name = new_name
@@ -232,7 +232,7 @@
 				return TRUE
 
 			if(!modified_id.add_access(list(access_type), try_wildcard))
-				to_chat(usr, span_notice("ID error: ID card rejected your attempted access modification."))
+				to_chat(usr, span_notice("Erro de identificação: cartão de identificação rejeitou sua modificação de acesso."))
 				LOG_ID_ACCESS_CHANGE(user, modified_id, "failed to add [SSid_access.get_access_desc(access_type)][try_wildcard ? " with wildcard [try_wildcard]" : ""]")
 				return TRUE
 
@@ -275,7 +275,7 @@
 		if("PRG_insert_alt_id")
 			var/obj/item/card/id/alt_id = user.get_active_held_item()
 			if(!isidcard(alt_id))
-				to_chat(user, span_notice("You must hold an ID card to insert it into the secondary slot."))
+				to_chat(user, span_notice("Você deve segurar um cartão de identificação para inseri-lo na fenda secundária."))
 				return TRUE
 			computer.insert_secondary_id(alt_id, user)
 			return TRUE

@@ -1,7 +1,7 @@
 //Right now it's a structure that works off of magic, as it'd require an internal power source for what its supposed to do
 /obj/structure/liquid_pump
 	name = "portable liquid pump"
-	desc = "An industrial grade pump, capable of either siphoning or spewing liquids. Needs to be anchored first to work. Has a limited capacity internal storage."
+	desc = "Uma bomba industrial, capaz de sifonar ou vomitar líquidos. Precisa ser ancorado primeiro para trabalhar. Tem uma capacidade limitada de armazenamento interno."
 	icon = 'modular_skyrat/modules/liquids/icons/obj/structures/liquid_pump.dmi'
 	icon_state = "liquid_pump"
 	density = TRUE

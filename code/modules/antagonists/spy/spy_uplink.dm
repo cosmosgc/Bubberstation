@@ -44,7 +44,7 @@
 
 	if(!is_our_spy(user))
 		return
-	examine_list += span_notice("You recognize this as your <i>spy uplink</i>.")
+	examine_list += span_notice("Você reconhece isso como seu<i>Espionagem uplink</i>.")
 	examine_list += span_notice("- [EXAMINE_HINT("Use it in hand")] to view your bounty list.")
 	examine_list += span_notice("- [EXAMINE_HINT("Right click")] with it on a bounty target to claim it.")
 
@@ -82,10 +82,10 @@
 		if(!bounty.is_stealable(stealing))
 			continue
 		if(bounty.claimed)
-			stealing.balloon_alert(spy, "bounty already claimed!")
+			stealing.balloon_alert(spy, "A recompensa já foi reivindicada!")
 			return TRUE
 		if(DOING_INTERACTION(spy, REF(src)))
-			spy.balloon_alert(spy, "already scanning!") // Only shown if they're trying to scan two valid targets
+			spy.balloon_alert(spy, "Já está escaneando!") // Only shown if they're trying to scan two valid targets
 			return TRUE
 		SEND_SIGNAL(stealing, COMSIG_MOVABLE_SPY_STEALING, spy, bounty)
 		INVOKE_ASYNC(src, PROC_REF(start_stealing), stealing, spy, bounty)

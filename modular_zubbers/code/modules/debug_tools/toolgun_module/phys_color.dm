@@ -1,6 +1,6 @@
 /datum/phystool_mode/color_mode
 	name = "Color mode"
-	desc = "Use LMB to color an object. Use RMB to set default color. Use in hands to choose color."
+	desc = "Use LMB para colorir um objeto. Use RMB para definir a cor padrão. Use nas mãos para escolher a cor."
 
 	var/selected_color
 
@@ -13,7 +13,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.client)
-			user.balloon_alert(user, "can't color!")
+			user.balloon_alert(user, "Não posso colorir!")
 			return FALSE
 	if(!selected_color)
 		selected_color = COLOR_WHITE

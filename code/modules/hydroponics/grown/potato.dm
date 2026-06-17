@@ -1,7 +1,7 @@
 // Potato
 /obj/item/seeds/potato
 	name = "potato seed pack"
-	desc = "Boil 'em! Mash 'em! Stick 'em in a stew!"
+	desc = "Ferva-os! Mash 'em! Coloque-os em um guisado!"
 	icon_state = "seed-potato"
 	species = "potato"
 	plantname = "Potato Plants"
@@ -22,7 +22,7 @@
 /obj/item/food/grown/potato
 	seed = /obj/item/seeds/potato
 	name = "potato"
-	desc = "Boil 'em! Mash 'em! Stick 'em in a stew!"
+	desc = "Ferva-os! Mash 'em! Coloque-os em um guisado!"
 	icon_state = "potato"
 	foodtypes = VEGETABLES
 	distill_reagent = /datum/reagent/consumable/ethanol/vodka
@@ -35,7 +35,7 @@
 
 /obj/item/food/grown/potato/wedges
 	name = "potato wedges"
-	desc = "Slices of neatly cut potato."
+	desc = "Cortes de batata bem cortados."
 	icon_state = "potato_wedges"
 	bite_consumption_mod = 100
 
@@ -53,7 +53,7 @@
 // Sweet Potato
 /obj/item/seeds/potato/sweet
 	name = "sweet potato seed pack"
-	desc = "These seeds grow into sweet potato plants."
+	desc = "Estas sementes crescem em plantas de batata doce."
 	icon_state = "seed-sweetpotato"
 	species = "sweetpotato"
 	plantname = "Sweet Potato Plants"
@@ -64,7 +64,7 @@
 /obj/item/food/grown/potato/sweet
 	seed = /obj/item/seeds/potato/sweet
 	name = "sweet potato"
-	desc = "It's sweet."
+	desc = "É doce."
 	icon_state = "sweetpotato"
 	distill_reagent = /datum/reagent/consumable/ethanol/sbiten
 

@@ -1,7 +1,7 @@
 /datum/action/changeling/darkness_adaptation
 	name = "Darkness Adaptation"
-	desc = "Our skin pigmentation and eyes rapidly change to suit the darkness. \
-		Costs 15 chemicals to enable. Slows down chemical regeneration by 15% while active."
+	desc = "Nossa pigmentação da pele e olhos mudam rapidamente para se adequar à escuridão.\
+Custa 15 produtos químicos para permitir. Diminui a regeneração química em 15% enquanto ativa."
 	helptext = "Allows us to darken and change the translucency of our pigmentation, and adapt our eyes to see in dark conditions, \
 		The translucent effect works best in dark enviroments and garments. Can be toggled on and off."
 	button_icon_state = "darkness_adaptation"
@@ -33,7 +33,7 @@
 
 	cling.visible_message(
 		span_warning("[cling]'s skin suddenly starts shifting and shimmering!"),
-		span_notice("We shift our skin to adapt to the darkness."),
+		span_notice("Mudamos nossa pele para nos adaptarmos à escuridão."),
 	)
 	var/datum/antagonist/changeling/changeling_data = cling.mind?.has_antag_datum(/datum/antagonist/changeling)
 	changeling_data?.chem_recharge_slowdown -= recharge_slowdown //Slows down chem regeneration
@@ -44,7 +44,7 @@
 
 	cling.visible_message(
 		span_warning("[cling]'s skin goes from shimmering to normal."),
-		span_notice("We stop adapting our skin to the darkness."),
+		span_notice("Paramos de adaptar nossa pele à escuridão."),
 	)
 	var/datum/antagonist/changeling/changeling_data = cling.mind?.has_antag_datum(/datum/antagonist/changeling)
 	changeling_data?.chem_recharge_slowdown += recharge_slowdown

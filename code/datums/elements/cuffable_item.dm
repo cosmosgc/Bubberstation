@@ -52,7 +52,7 @@
 			to_chat(user, span_warning("[source] is already cuffed to your wrist!"))
 			return
 		if(effect.cuffed_to == user.get_inactive_hand())
-			to_chat(user, span_warning("You already have something cuffed to your opposite wrist!"))
+			to_chat(user, span_warning("Você já tem algo algemado ao seu pulso oposto!"))
 			return
 
 	if(!user.get_inactive_hand())
@@ -65,7 +65,7 @@
 	if(SEND_SIGNAL(source, COMSIG_ITEM_PRE_CUFFED_TO_MOB, user, cuffs) & BLOCK_ITEM_CUFF)
 		return
 
-	source.balloon_alert(user, "cuffing item...")
+	source.balloon_alert(user, "Algemando item...")
 	playsound(source, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user), source))
 		return
@@ -73,8 +73,8 @@
 	playsound(source, cuffs.cuffsuccesssound, 30, TRUE, -2)
 
 	if(user.apply_status_effect(/datum/status_effect/cuffed_item, source, cuffs))
-		source.balloon_alert(user, "item cuffed to wrist")
+		source.balloon_alert(user, "item algemado ao pulso")
 		return
 
-	source.balloon_alert(user, "couldn't cuff to wrist!")
+	source.balloon_alert(user, "Não podia algemar o pulso!")
 	return

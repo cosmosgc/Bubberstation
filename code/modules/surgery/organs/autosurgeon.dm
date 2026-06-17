@@ -1,7 +1,7 @@
 /obj/item/autosurgeon
 	name = "autosurgeon"
-	desc = "A device that automatically inserts an implant, skillchip or organ into the user without the hassle of extensive surgery. \
-		It has a slot to insert implants or organs and a screwdriver slot for removing accidentally added items."
+	desc = "Um dispositivo que insere automaticamente um implante, chip de habilidade ou órgão no usuário sem o incômodo de uma cirurgia extensa.\
+Tem um espaço para inserir implantes ou órgãos e uma chave de fenda para remover itens acidentalmente adicionados."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "autosurgeon"
 	inhand_icon_state = "nothing"
@@ -103,7 +103,7 @@
 				break
 
 	if (!stored_organ.Insert(target)) // insert stored organ into the user
-		balloon_alert(user, "insertion failed!")
+		balloon_alert(user, "A inserção falhou!")
 		return
 
 	stored_organ = null
@@ -148,7 +148,7 @@
 	return TRUE
 
 /obj/item/autosurgeon/medical_hud
-	desc = "A single use autosurgeon that contains a medical heads-up display augment. A screwdriver can be used to remove it, but implants can't be placed back in."
+	desc = "Um autocirurgião de uso único que contém um aumento no monitor médico. Uma chave de fenda pode ser usada para removê-la, mas implantes não podem ser colocados de volta."
 	uses = 1
 	starting_organ = /obj/item/organ/cyberimp/eyes/hud/medical
 
@@ -163,7 +163,7 @@
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/autosurgeon/syndicate/laser_arm
-	desc = "A single use autosurgeon that contains a combat arms-up laser augment. A screwdriver can be used to remove it, but implants can't be placed back in."
+	desc = "Um autocirurgião de uso único que contém um laser de combate. Uma chave de fenda pode ser usada para removê-la, mas implantes não podem ser colocados de volta."
 	uses = 1
 	starting_organ = /obj/item/organ/cyberimp/arm/toolkit/gun/laser
 
@@ -192,8 +192,8 @@
 	uses = 1
 
 /obj/item/autosurgeon/syndicate/commsagent
-	desc = "A device that automatically - painfully - inserts an implant. It seems someone's specially \
-	modified this one to only insert... tongues. Horrifying."
+	desc = "Um dispositivo que automaticamente, dolorosamente, insere um implante. Parece que alguém é especial.\
+Modificou este para inserir apenas... línguas. Horrível."
 	starting_organ = /obj/item/organ/tongue
 
 /obj/item/autosurgeon/syndicate/commsagent/Initialize(mapload)
@@ -207,6 +207,6 @@
 	uses = 1
 
 /obj/item/autosurgeon/syndicate/contraband_sechud
-	desc = "Contains a contraband SecHUD implant, undetectable by health scanners."
+	desc = "Contém um implante de contrabando, indetectável por scanners de saúde."
 	uses = 1
 	starting_organ = /obj/item/organ/cyberimp/eyes/hud/security/syndicate

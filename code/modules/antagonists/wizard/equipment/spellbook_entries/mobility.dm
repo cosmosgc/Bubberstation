@@ -2,52 +2,52 @@
 // Wizard spells that aid mobiilty(or stealth?)
 /datum/spellbook_entry/mindswap
 	name = "Mindswap"
-	desc = "Allows you to switch bodies with a target next to you. You will both fall asleep when this happens, and it will be quite obvious that you are the target's body if someone watches you do it."
+	desc = "Permite trocar de corpo com um alvo ao seu lado. Vocês dois dormirão quando isso acontecer, e será bem óbvio que você é o corpo do alvo se alguém assistir você fazer isso."
 	spell_type = /datum/action/cooldown/spell/pointed/mind_transfer
 	category = SPELLBOOK_CATEGORY_MOBILITY
 
 /datum/spellbook_entry/knock
 	name = "Knock"
-	desc = "Opens nearby doors and closets."
+	desc = "Abre portas e armários próximos."
 	spell_type = /datum/action/cooldown/spell/aoe/knock
 	category = SPELLBOOK_CATEGORY_MOBILITY
 	cost = 1
 
 /datum/spellbook_entry/blink
 	name = "Blink"
-	desc = "Randomly teleports you a short distance."
+	desc = "Teletransporta-o aleatoriamente a uma curta distância."
 	spell_type = /datum/action/cooldown/spell/teleport/radius_turf/blink
 	category = SPELLBOOK_CATEGORY_MOBILITY
 
 /datum/spellbook_entry/teleport
 	name = "Teleport"
-	desc = "Teleports you to an area of your selection."
+	desc = "Teletransporta você para uma área de sua seleção."
 	spell_type = /datum/action/cooldown/spell/teleport/area_teleport/wizard
 	category = SPELLBOOK_CATEGORY_MOBILITY
 
 /datum/spellbook_entry/jaunt
 	name = "Ethereal Jaunt"
-	desc = "Turns your form ethereal, temporarily making you invisible and able to pass through walls."
+	desc = "Torna sua forma etérea, temporariamente tornando-a invisível e capaz de atravessar paredes."
 	spell_type = /datum/action/cooldown/spell/jaunt/ethereal_jaunt
 	category = SPELLBOOK_CATEGORY_MOBILITY
 
 /datum/spellbook_entry/swap
 	name = "Swap"
-	desc = "Switch places with any living target within nine tiles. Right click to mark a secondary target. You will always swap to your primary target."
+	desc = "Troque de lugar com qualquer alvo vivo dentro de nove peças. Clique direito para marcar um alvo secundário. Você sempre vai trocar para o seu alvo principal."
 	spell_type = /datum/action/cooldown/spell/pointed/swap
 	category = SPELLBOOK_CATEGORY_MOBILITY
 	cost = 1
 
 /datum/spellbook_entry/item/warpwhistle
 	name = "Warp Whistle"
-	desc = "A strange whistle that will transport you to a distant safe place on the station. There is a window of vulnerability at the beginning of every use."
+	desc = "Um estranho apito que o levará para um lugar seguro distante na estação. Há uma janela de vulnerabilidade no início de cada uso."
 	item_path = /obj/item/warp_whistle
 	category = SPELLBOOK_CATEGORY_MOBILITY
 	cost = 1
 
 /datum/spellbook_entry/item/staffdoor
 	name = "Staff of Door Creation"
-	desc = "A particular staff that can mold solid walls into ornate doors. Useful for getting around in the absence of other transportation. Does not work on glass."
+	desc = "Uma equipe em particular que pode moldar paredes sólidas em portas ornamentadas. Útil para se locomover na ausência de outro transporte. Não funciona com vidro."
 	item_path = /obj/item/gun/magic/staff/door
 	cost = 1
 	category = SPELLBOOK_CATEGORY_MOBILITY
@@ -61,9 +61,9 @@
 
 /datum/spellbook_entry/ghostliness
 	name = "Forsake Body"
-	desc = "A necromantic spell which permanently severs your soul from your body, and partially anchors it to the material plane. \
-	In this state, you can enter a state of incorporeality, allowing you to pass through solid matter. This, however, includes \
-	most such matter on or inside of you."
+	desc = "Um feitiço necromântico que separa permanentemente sua alma de seu corpo, e parcialmente o ancora no plano material.\
+Neste estado, você pode entrar em um estado de incorporidade, permitindo que você passe por matéria sólida. Isso, no entanto, inclui\
+A maioria dessas coisas em ou dentro de você."
 	spell_type = /datum/action/cooldown/spell/ghostliness
 	category = SPELLBOOK_CATEGORY_MOBILITY
 	no_coexistence_typecache = list(/datum/spellbook_entry/lichdom, /datum/spellbook_entry/splattercasting)

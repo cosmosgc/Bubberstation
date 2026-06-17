@@ -15,7 +15,7 @@
 // the disposal outlet machine
 /obj/structure/disposaloutlet
 	name = "disposal outlet"
-	desc = "An outlet for the pneumatic disposal system."
+	desc = "Uma tomada para o sistema pneumático."
 	icon = 'icons/obj/pipes_n_cables/disposal.dmi'
 	icon_state = "outlet"
 	density = TRUE
@@ -100,19 +100,19 @@
 	. = ..()
 	switch(eject_speed)
 		if(EJECT_SPEED_SLOW)
-			. += span_info("An LED image of a turtle is displayed on the side of the outlet.")
+			. += span_info("Uma imagem LED de uma tartaruga é exibida no lado da tomada.")
 		if(EJECT_SPEED_MED)
-			. += span_info("An LED image of a bumblebee is displayed on the side of the outlet.")
+			. += span_info("Uma imagem LED de uma abelha é exibida do lado da tomada.")
 		if(EJECT_SPEED_FAST)
-			. += span_info("An LED image of a speeding bullet is displayed on the side of the outlet.")
+			. += span_info("Uma imagem LED de uma bala é exibida no lado da tomada.")
 		if(EJECT_SPEED_YEET)
-			. += span_info("An LED image of a grawlix is displayed on the side of the outlet.")
+			. += span_info("Uma imagem LED de um Grawlix é exibida no lado da tomada.")
 
 /obj/structure/disposaloutlet/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
 //if emagged it cant change the speed setting off max
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_notice("The LED display flashes an error!"))
+		to_chat(user, span_notice("O display de LED pisca um erro!"))
 	else
 		to_chat(user, span_notice("You adjust the ejection force on \the [src]."))
 		switch(eject_speed)
@@ -131,7 +131,7 @@
 	. = ..()
 	if(obj_flags & EMAGGED)
 		return
-	balloon_alert(user, "ejection force maximized")
+	balloon_alert(user, "Força de ejeção maximizada.")
 	obj_flags |= EMAGGED
 	eject_speed = EJECT_SPEED_YEET
 	eject_range = EJECT_RANGE_YEET

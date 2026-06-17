@@ -1,6 +1,6 @@
 /obj/item/organ/heart/snail
 	name = "twin gastropod hearts"
-	desc = "A primary heart normally nestled inside a gastropod's shell, and another in the owner's actual chest; necessary to maintain ample bloodflow through essentially two torsos."
+	desc = "Um coração primário normalmente aninhado dentro da concha de um gastrópode, e outro no peito real do dono, necessário para manter amplo fluxo sanguíneo através essencialmente de dois troncos."
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "heart-snail-on"
 	base_icon_state = "heart-snail"

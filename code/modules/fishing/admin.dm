@@ -34,11 +34,11 @@ ADMIN_VERB(fishing_calculator, R_DEBUG, "Fishing Calculator", "A calculator... f
 		if("recalc")
 			var/rod_type = text2path(params["rod"])
 			if(!rod_type)
-				to_chat(user, span_warning("A fishing rod is needed in order to fish."))
+				to_chat(user, span_warning("Uma vara de pesca é necessária para pescar."))
 				return
 			var/hook_type = text2path(params["hook"])
 			if(!hook_type)
-				to_chat(user, span_warning("A fishing hook is needed in order to fish."))
+				to_chat(user, span_warning("Um anzol de pesca é necessário para pescar."))
 				return
 			var/bait_type = text2path(params["bait"])
 			var/line_type = text2path(params["line"])

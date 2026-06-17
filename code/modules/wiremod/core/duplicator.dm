@@ -223,7 +223,7 @@ GLOBAL_LIST_INIT(circuit_dupe_whitelisted_types, list(
 ADMIN_VERB(load_circuit, R_VAREDIT, "Load Circuit", "Loads a circuit from a file or direct input.", ADMIN_CATEGORY_FUN)
 	var/list/errors = list()
 
-	var/option = alert(user, "Load by file or direct input?", "Load by file or string", "File", "Direct Input")
+	var/option = alert(user, "Carregar por arquivo ou entrada direta?", "Carregar por arquivo ou texto", "File", "Entrada Direta")
 	var/txt
 	switch(option)
 		if("File")
@@ -238,6 +238,6 @@ ADMIN_VERB(load_circuit, R_VAREDIT, "Load Circuit", "Loads a circuit from a file
 	circuit.load_circuit_data(txt, errors)
 
 	if(length(errors))
-		to_chat(user, span_warning("The following errors were found whilst compiling the circuit data:"))
+		to_chat(user, span_warning("Os seguintes erros foram encontrados enquanto compilavam os dados do circuito:"))
 		for(var/error in errors)
 			to_chat(user, span_warning(error))

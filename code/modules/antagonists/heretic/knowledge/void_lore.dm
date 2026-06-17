@@ -49,11 +49,11 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_void
 	name = "Glimmer of Winter"
-	desc = "Opens up the Path of Void to you. \
-		Allows you to transmute a knife in sub-zero temperatures into a Void Blade. \
-		You can only create five at a time." //SKYRAT EDIT two to five
-	gain_text = "I feel a shimmer in the air, the air around me gets colder. \
-		I start to realize the emptiness of existence. Something's watching me."
+	desc = "Abre o Caminho do Vazio para você.\
+Permite que transmute uma faca em temperaturas abaixo de zero em uma Lâmina Vazio.\
+Você só pode criar cinco de cada vez." //SKYRAT EDIT two to five
+	gain_text = "Eu sinto um brilho no ar, o ar ao meu redor fica mais frio.\
+Começo a perceber o vazio da existência. Algo está me observando."
 	required_atoms = list(/obj/item/knife = 1)
 	result_atoms = list(/obj/item/melee/sickly_blade/void)
 	research_tree_icon_path = 'icons/obj/weapons/khopesh.dmi'
@@ -63,12 +63,12 @@
 
 /datum/heretic_knowledge/limited_amount/starting/base_void/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
 	if(!isopenturf(loc))
-		loc.balloon_alert(user, "ritual failed, invalid location!")
+		loc.balloon_alert(user, "ritual falhou, localização inválida!")
 		return FALSE
 
 	var/turf/open/our_turf = loc
 	if(our_turf.GetTemperature() > T0C)
-		loc.balloon_alert(user, "ritual failed, not cold enough!")
+		loc.balloon_alert(user, "O ritual falhou, não o suficiente!")
 		return FALSE
 
 	return ..()
@@ -85,22 +85,22 @@
 
 /datum/heretic_knowledge/spell/void_phase
 	name = "Void Phase"
-	desc = "Grants you Void Phase, a long range targeted teleport spell. \
-		Additionally causes damage to heathens around your original and target destination."
-	gain_text = "The entity calls themself the Aristocrat. They effortlessly walk through air like \
-		nothing - leaving a harsh, cold breeze in their wake. They disappear, and I am left in the blizzard."
+	desc = "Concede Fase Vazio, um feitiço de teletransporte de longo alcance.\
+Além disso, causa danos aos pagãos ao redor do seu destino original e alvo."
+	gain_text = "A entidade se chama Aristocrata. Eles caminham sem esforço pelo ar como\
+Nada, deixando uma brisa forte e fria em seu rastro. Eles desaparecem, e eu fico na nevasca."
 	action_to_add = /datum/action/cooldown/spell/pointed/void_phase
 	cost = 2
 	research_tree_icon_frame = 7
 
 /datum/heretic_knowledge/spell/void_prison
 	name = "Void Prison"
-	desc = "Grants you Void Prison, a spell that places your victim into a ball, making them unable to do anything or speak. \
-		Applies void chill afterwards."
-	gain_text = "At first, I see myself, waltzing along a snow-laden street. \
-		I try to yell, grab hold of this fool and tell them to run. \
-		But the only welts made are on my own beating fist. \
-		My smiling face turns to regard me, reflecting back in glassy eyes the empty path I have been lead down."
+	desc = "Concede-lhe a Prisão Vazio, um feitiço que coloca sua vítima em uma bola, tornando-os incapazes de fazer qualquer coisa ou falar.\
+Aplica frio vazio depois."
+	gain_text = "No começo, eu me vejo, andando por uma rua cheia de neve.\
+Eu tento gritar, pegar esse idiota e dizer-lhes para correr.\
+Mas as únicas manchas feitas são por conta própria.\
+Meu rosto sorridente se volta para me olhar, refletindo de volta em olhos vidrados o caminho vazio que eu tenho sido conduzido para baixo."
 
 	action_to_add = /datum/action/cooldown/spell/pointed/void_prison
 	cost = 2
@@ -108,12 +108,12 @@
 
 /datum/heretic_knowledge/armor/void
 	name = "Hollow Weave"
-	desc = "Allows you to transmute a table (or a suit) and a mask in sub-zero temperatures to create a Hollow Weave, this armor will periodically nullify attacks and grant you a short stealth camoflage to reposition yourself. \
-			Acts as a focus while hooded."
-	gain_text = "Stepping through the cold air, I am shocked by a new sensation. \
-				Thousands of almost imperceivable threads cling to my form. \
-				I am left adrift with every step. \
-				Even as I hear the crunch of snow as I plant my foot to the ground, I feel nothing."
+	desc = "Permite que transmute uma mesa (ou um terno) e uma máscara em temperaturas abaixo de zero para criar uma Teia Oca, esta armadura irá periodicamente anular ataques e lhe conceder uma curta camuflagem furtiva para se reposicionar.\
+Atua como foco enquanto encapuza."
+	gain_text = "Passando pelo ar frio, estou chocado com uma nova sensação.\
+Milhares de fios quase imperceptíveis se agarram à minha forma.\
+Estou à deriva a cada passo.\
+Mesmo ouvindo o barulho da neve enquanto planto meu pé no chão, não sinto nada."
 	result_atoms = list(/obj/item/clothing/suit/hooded/cultrobes/eldritch/void)
 	research_tree_icon_state = "void_armor"
 	required_atoms = list(
@@ -123,21 +123,21 @@
 
 /datum/heretic_knowledge/armor/void/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
 	if(!isopenturf(loc))
-		loc.balloon_alert(user, "ritual failed, invalid location!")
+		loc.balloon_alert(user, "ritual falhou, localização inválida!")
 		return FALSE
 
 	var/turf/open/our_turf = loc
 	if(our_turf.GetTemperature() > T0C)
-		loc.balloon_alert(user, "ritual failed, not cold enough!")
+		loc.balloon_alert(user, "O ritual falhou, não o suficiente!")
 		return FALSE
 
 	return ..()
 
 /datum/heretic_knowledge/spell/void_pull
 	name = "Void Pull"
-	desc = "Grants you Void Pull, a spell that pulls all nearby heathens towards you, stunning them briefly."
-	gain_text = "All is fleeting, but what else stays? I'm close to ending what was started. \
-		The Aristocrat reveals themselves to me again. They tell me I am late. Their pull is immense, I cannot turn back."
+	desc = "Concede-lhe Pull Vazio, um feitiço que puxa todos os pagãos próximos em sua direção, atordoando-os brevemente."
+	gain_text = "Tudo é passageiro, mas o que mais fica? Estou perto de terminar o que começou.\
+O Aristocrata se revela para mim novamente. Dizem que estou atrasado. Sua atração é imensa, não posso voltar atrás."
 
 	action_to_add = /datum/action/cooldown/spell/aoe/void_pull
 	cost = 2
@@ -145,8 +145,8 @@
 
 /datum/heretic_knowledge/blade_upgrade/void
 	name = "Seeking Blade"
-	desc = "Your blade now freezes enemies. Additionally, you can now attack distant marked targets with your Void Blade, teleporting directly next to them."
-	gain_text = "Fleeting memories, fleeting feet. I mark my way with frozen blood upon the snow. Covered and forgotten."
+	desc = "Sua lâmina agora congela inimigos. Além disso, agora você pode atacar alvos distantes marcados com sua Lâmina Vazio, teletransportando diretamente ao lado deles."
+	gain_text = "Memórias fugazes, pés fugazes. Eu marco meu caminho com sangue congelado na neve. Coberto e esquecido."
 
 
 	research_tree_icon_path = 'icons/ui_icons/antags/heretic/knowledge.dmi'
@@ -172,27 +172,27 @@
 
 /datum/heretic_knowledge/spell/void_conduit
 	name = "Void Conduit"
-	desc = "Grants you Void Conduit, a spell which summons a pulsing gate to the Void itself. Every pulse breaks windows and airlocks, while afflicting Heathens with an eldritch chill and shielding Heretics against low pressure."
-	gain_text = "The hum in the still, cold air turns to a cacophonous rattle. \
-		Over the noise, there is no distinction to the clattering of window panes and the yawning knowledge that ricochets through my skull. \
-		The doors won't close. I can't keep the cold out now."
+	desc = "Concede-lhe Vazio Conduit, um feitiço que invoca um portal pulsante para o próprio Vazio. Todos os pulsos quebram janelas e comportas, enquanto afligem os Heathens com um frio de eldritch e protegem os hereges contra baixa pressão."
+	gain_text = "O zumbido no ar frio se transforma em um chocalho cacofônico.\
+Sobre o barulho, não há distinção para o barulho das janelas e o conhecimento bocejante que ricocheteia através do meu crânio.\
+As portas não fecham. Não posso manter o frio fora agora."
 	action_to_add = /datum/action/cooldown/spell/conjure/void_conduit
 	cost = 2
 	is_final_knowledge = TRUE
 
 /datum/heretic_knowledge/ultimate/void_final
 	name = "Waltz at the End of Time"
-	desc = "The ascension ritual of the Path of Void. \
-		Bring 3 corpses to a transmutation rune in sub-zero temperatures to complete the ritual. \
-		When completed, causes a violent storm of void snow \
-		to assault the station, freezing and damaging heathens. Those nearby will be silenced and frozen even quicker. \
-		Additionally, you will become immune to the effects of space."
-	gain_text = "The world falls into darkness. I stand in an empty plane, small flakes of ice fall from the sky. \
-		The Aristocrat stands before me, beckoning. We will play a waltz to the whispers of dying reality, \
-		as the world is destroyed before our eyes. The void will return all to nothing, WITNESS MY ASCENSION!"
+	desc = "O ritual de ascensão do Caminho do Vazio.\
+Traga 3 corpos para uma runa de transmutação em temperaturas abaixo de zero para completar o ritual.\
+Quando concluída, causa uma violenta tempestade de neve vazia.\
+para atacar a estação, congelando e prejudicando pagãos. Os próximos serão silenciados e congelados ainda mais rápido.\
+Além disso, você ficará imune aos efeitos do espaço."
+	gain_text = "O mundo cai na escuridão. Estou em um avião vazio, pequenos flocos de gelo caem do céu.\
+O Aristocrata está diante de mim, acenando. Tocaremos uma valsa aos sussurros da realidade moribunda,\
+como o mundo é destruído diante de nossos olhos. O vazio voltará ao nada, testemunhe minha ascensão!"
 
 	ascension_achievement = /datum/award/achievement/misc/void_ascension
-	announcement_text = "%SPOOKY% The nobleman of void %NAME% has arrived, stepping along the Waltz that ends worlds! %SPOOKY%"
+	announcement_text = "O nobre do vazio chegou, pisando ao longo da valsa que termina mundos! SPOOKY"
 	announcement_sound = 'sound/music/antag/heretic/ascend_void.ogg'
 	///soundloop for the void theme
 	var/datum/looping_sound/void_loop/sound_loop
@@ -203,12 +203,12 @@
 
 /datum/heretic_knowledge/ultimate/void_final/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
 	if(!isopenturf(loc))
-		loc.balloon_alert(user, "ritual failed, invalid location!")
+		loc.balloon_alert(user, "ritual falhou, localização inválida!")
 		return FALSE
 
 	var/turf/open/our_turf = loc
 	if(our_turf.GetTemperature() > T0C)
-		loc.balloon_alert(user, "ritual failed, not cold enough!")
+		loc.balloon_alert(user, "O ritual falhou, não o suficiente!")
 		return FALSE
 
 	return ..()

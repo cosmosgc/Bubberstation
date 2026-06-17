@@ -16,7 +16,7 @@
 	for(var/path in gen_paths)
 		var/datum/map_generator/MP = path
 		options[initial(MP.buildmode_name)] = path
-	var/type = input(c,"Select Generator Type","Type") as null|anything in options
+	var/type = input(c,"Selecione Tipo de Gerador","Type") as null|anything in options
 	if(!type)
 		return
 
@@ -25,7 +25,7 @@
 
 /datum/buildmode_mode/mapgen/handle_click(client/c, params, obj/object)
 	if(isnull(generator_path))
-		to_chat(c, span_warning("Select generator type first."))
+		to_chat(c, span_warning("Selecione o tipo de gerador primeiro."))
 		deselect_region()
 		return
 	..()
@@ -37,12 +37,12 @@
 		var/datum/map_generator/G = new generator_path
 		if(istype(G, /datum/map_generator/repair/reload_station_map))
 			if(GLOB.reloading_map)
-				to_chat(c, span_boldwarning("You are already reloading an area! Please wait for it to fully finish loading before trying to load another!"))
+				to_chat(c, span_boldwarning("Você já está recarregando uma área! Por favor, espere que termine de carregar antes de tentar carregar outro!"))
 				deselect_region()
 				return
 		G.defineRegion(cornerA, cornerB, 1)
 		highlight_region(G.map)
-		var/confirm = tgui_alert(usr,"Are you sure you want to run the map generator?", "Run generator", list("Yes", "No"))
+		var/confirm = tgui_alert(usr,"Tem certeza que quer usar o gerador de mapas?", "Run generator", list("Yes", "No"))
 		if(confirm == "Yes")
 			G.generate()
 		log_admin("Build Mode: [key_name(c)] ran the map generator '[G.buildmode_name]' in the region from [AREACOORD(cornerA)] to [AREACOORD(cornerB)]")

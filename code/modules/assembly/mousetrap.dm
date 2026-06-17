@@ -1,6 +1,6 @@
 /obj/item/assembly/mousetrap
 	name = "mousetrap"
-	desc = "A handy little spring-loaded trap for catching pesty rodents."
+	desc = "Uma pequena armadilha para pegar roedores."
 	icon_state = "mousetrap"
 	inhand_icon_state = "mousetrap"
 	custom_materials = list(/datum/material/cardboard = SHEET_MATERIAL_AMOUNT, /datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT)
@@ -86,7 +86,7 @@
 			if(ishuman(usr))
 				var/mob/living/carbon/human/user = usr
 				if((HAS_TRAIT(user, TRAIT_DUMB) || HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-					to_chat(user, span_warning("Your hand slips, setting off the trigger!"))
+					to_chat(user, span_warning("Sua mão desliza, disparando o gatilho!"))
 					pulse()
 		update_appearance()
 		playsound(loc, 'sound/items/weapons/handcuffs.ogg', 30, TRUE, -3)
@@ -136,11 +136,11 @@
 			victim.apply_damage(1, BRUTE, affecting, wound_bonus = CANT_WOUND)
 	else if(ismouse(target))
 		var/mob/living/basic/mouse/splatted = target
-		visible_message(span_bolddanger("SPLAT!"))
+		visible_message(span_bolddanger("SLAT!"))
 		splatted.splat() // mousetraps are instadeath for mice
 
 	else if(isregalrat(target))
-		visible_message(span_bolddanger("Skreeeee!")) //He's simply too large to be affected by a tiny mouse trap.
+		visible_message(span_bolddanger("Skreeee!")) //He's simply too large to be affected by a tiny mouse trap.
 
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	pulse()

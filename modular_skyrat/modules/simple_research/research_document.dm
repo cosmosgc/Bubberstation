@@ -10,7 +10,7 @@
 
 /obj/item/research_paper
 	name = "research paper"
-	desc = "Some people want to return to simpler technology, and some want to only begin researching those simple technologies."
+	desc = "Algumas pessoas querem voltar à tecnologia mais simples, e algumas querem apenas começar a pesquisar essas tecnologias simples."
 	icon = 'modular_skyrat/modules/simple_research/icons/researching.dmi'
 	icon_state = "scroll"
 	///the list of discovered items
@@ -50,7 +50,7 @@
 	var/shape_one = show_radial_menu(user, src, radial_icons_cache, require_near = TRUE)
 	to_chat(user, span_notice("You begin to [pick(thinking_list)] about the [shape_one]... and then [pick(thinking_list)] about their [pick(shape_parts)]..."))
 	if(!do_after(user, 5 SECONDS * skill_modifier, src))
-		to_chat(user, span_warning("You stopped researching."))
+		to_chat(user, span_warning("Você parou de pesquisar."))
 		return
 
 	user.mind.adjust_experience(/datum/skill/research, 5)
@@ -58,7 +58,7 @@
 	var/shape_two = show_radial_menu(user, src, radial_icons_cache, require_near = TRUE)
 	to_chat(user, span_notice("You begin to [pick(thinking_list)] about the [shape_two]... and then [pick(thinking_list)] about their [pick(shape_parts)]..."))
 	if(!do_after(user, 5 SECONDS * skill_modifier, src))
-		to_chat(user, span_warning("You stopped researching."))
+		to_chat(user, span_warning("Você parou de pesquisar."))
 		return
 
 	user.mind.adjust_experience(/datum/skill/research, 5)
@@ -66,14 +66,14 @@
 	var/shape_three = show_radial_menu(user, src, radial_icons_cache, require_near = TRUE)
 	to_chat(user, span_notice("You begin to [pick(thinking_list)] about the [shape_three]... and then [pick(thinking_list)] about their [pick(shape_parts)]..."))
 	if(!do_after(user, 5 SECONDS * skill_modifier, src))
-		to_chat(user, span_warning("You stopped researching."))
+		to_chat(user, span_warning("Você parou de pesquisar."))
 		return
 
 	user.mind.adjust_experience(/datum/skill/research, 5)
 
 	var/datum/simple_research/find_research = GLOB.simple_research["[shape_one][shape_two][shape_three]"]
 	if(!find_research)
-		to_chat(user, span_warning("You were researching a dead end!"))
+		to_chat(user, span_warning("Você estava pesquisando um beco sem saída!"))
 		return
 
 	find_research = new find_research()
@@ -104,7 +104,7 @@
 
 /obj/item/research_scrap
 	name = "research scrap"
-	desc = "Small sketches of an item are drawn on the scrap-- if you use the materials, you might be able to craft the item on the scrap!"
+	desc = "Pequenos esboços de um item são desenhados na sucata. Se você usar os materiais, você pode ser capaz de criar o item na sucata!"
 	icon = 'modular_skyrat/modules/simple_research/icons/researching.dmi'
 	icon_state = "scrap"
 	///what will be spawned

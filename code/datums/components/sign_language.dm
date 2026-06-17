@@ -140,7 +140,7 @@
 
 	var/mob/living/carbon/carbon_parent = parent
 	if(HAS_MIND_TRAIT(carbon_parent, TRAIT_MIMING))
-		to_chat(carbon_parent, span_green("You stop yourself from signing in favor of the artform of mimery!"))
+		to_chat(carbon_parent, span_green("Você se impede de assinar a favor da arte de mimery!"))
 		return COMPONENT_CANNOT_SPEAK
 
 	switch(check_signables_state())
@@ -158,15 +158,15 @@
 			return COMPONENT_IGNORE_CAN_SPEAK
 
 		if(SIGN_ARMLESS) // No arms
-			to_chat(carbon_parent, span_warning("You can't sign with no hands!"))
+			to_chat(carbon_parent, span_warning("Não pode assinar sem as mãos!"))
 			return COMPONENT_CANNOT_SPEAK
 
 		if(SIGN_ARMS_DISABLED) // Arms but they're disabled
-			to_chat(carbon_parent, span_warning("You can't sign with your hands right now!"))
+			to_chat(carbon_parent, span_warning("Não pode assinar com as mãos agora!"))
 			return COMPONENT_CANNOT_SPEAK
 
 		if(SIGN_TRAIT_BLOCKED) // Hands blocked or emote mute
-			to_chat(carbon_parent, span_warning("You can't sign at the moment!"))
+			to_chat(carbon_parent, span_warning("Não pode assinar no momento!"))
 			return COMPONENT_CANNOT_SPEAK
 
 	// Assuming none of the above fail, sign language users can speak
@@ -320,7 +320,7 @@
 		if(TONE_EMPHATIC)
 			carbon_parent.visible_message(span_bold("widens [carbon_parent.p_their()] eyes emphatically!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 		if(TONE_INQUISITIVE_EMPHATIC)
-			carbon_parent.visible_message(span_bold("wears an intense, befuddled expression!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
+			carbon_parent.visible_message(span_bold("Usa uma expressão intensa e confusa!"), visible_message_flags = EMOTE_MESSAGE|BLOCK_SELF_HIGHLIGHT_MESSAGE)
 
 
 /// Removes the tonal indicator overlay completely

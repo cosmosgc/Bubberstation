@@ -2,12 +2,12 @@
 
 /obj/structure/destructible/clockwork/gear_base/powered/prosperity_prism
 	name = "prosperity prism"
-	desc = "A prism that seems to somehow always have its gaze locked to you."
-	clockwork_desc = "A prism that will heal nearby servants of various damage types, along with purging poisons."
+	desc = "Um prisma que parece de alguma forma sempre ter seu olhar fechado para você."
+	clockwork_desc = "Um prisma que curará servos de vários tipos de danos, junto com venenos de purga."
 	icon_state = "prolonging_prism"
 	base_icon_state = "prolonging_prism"
 	anchored = TRUE
-	break_message = span_warning("The prism falls apart, smoke leaking out into the air.")
+	break_message = span_warning("O prisma desmorona, fumaça vazando para o ar.")
 	max_integrity = 150
 	minimum_power = POWER_PER_USE
 	passive_consumption = POWER_PER_USE / 2

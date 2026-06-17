@@ -252,7 +252,7 @@
 	SIGNAL_HANDLER
 
 	var/atom/atom_target = parent
-	atom_target.visible_message(span_warning("[atom_target]'s [tether_name] snaps!"), span_userdanger("Your [tether_name] snaps!"), span_hear("You hear a cable snapping."))
+	atom_target.visible_message(span_warning("[atom_target]'s [tether_name] snaps!"), span_userdanger("Your [tether_name] snaps!"), span_hear("Você ouve um cabo estalando."))
 	playsound(atom_target, 'sound/effects/snap.ogg', 50, TRUE)
 	qdel(src)
 
@@ -287,39 +287,39 @@
 		return
 
 	if (!user.can_perform_action(nearest_turf))
-		nearest_turf.balloon_alert(user, "cannot reach!")
+		nearest_turf.balloon_alert(user, "Não consigo alcançar!")
 		return
 
 	var/list/modifiers = params2list(params)
 	if(LAZYACCESS(modifiers, CTRL_CLICK))
-		location.balloon_alert(user, "cutting the tether...")
+		location.balloon_alert(user, "Cortando uma corda...")
 		if (!do_after(user, 2 SECONDS, user, (user == parent || user == tether_target) ? IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE : NONE))
 			return
 
 		qdel(src)
-		location.balloon_alert(user, "tether cut!")
+		location.balloon_alert(user, "Corte de corda!")
 		to_chat(parent, span_danger("Your [tether_name] has been cut!"))
 		return
 
 	if (LAZYACCESS(modifiers, RIGHT_CLICK))
 		if (cur_dist >= max_dist)
-			location.balloon_alert(user, "no coil remaining!")
+			location.balloon_alert(user, "Nenhuma Bobina Restante!")
 			return
 		cur_dist += 1
-		location.balloon_alert(user, "tether extended")
+		location.balloon_alert(user, "Tether estendido")
 		return
 
 	if (cur_dist <= 0)
-		location.balloon_alert(user, "too short!")
+		location.balloon_alert(user, "Muito curto!")
 		return
 
 	if (cur_dist > CEILING(get_dist(parent, tether_target), 1))
 		cur_dist -= 1
-		location.balloon_alert(user, "tether shortened")
+		location.balloon_alert(user, "Encurtado.")
 		return
 
 	if (!ismovable(parent) && !ismovable(tether_target))
-		location.balloon_alert(user, "too short!")
+		location.balloon_alert(user, "Muito curto!")
 		return
 
 	var/atom/movable/movable_parent = parent
@@ -327,15 +327,15 @@
 
 	if (istype(movable_parent) && !movable_parent.anchored && movable_parent.move_resist <= movable_target.move_force && movable_parent.Move(get_step(movable_parent.loc, get_dir(movable_parent, movable_target))))
 		cur_dist -= 1
-		location.balloon_alert(user, "tether shortened")
+		location.balloon_alert(user, "Encurtado.")
 		return
 
 	if (istype(movable_target) && !movable_target.anchored && movable_target.move_resist <= movable_parent.move_force && movable_target.Move(get_step(movable_target.loc, get_dir(movable_target, movable_parent))))
 		cur_dist -= 1
-		location.balloon_alert(user, "tether shortened")
+		location.balloon_alert(user, "Encurtado.")
 		return
 
-	location.balloon_alert(user, "too short!")
+	location.balloon_alert(user, "Muito curto!")
 
 /obj/effect/ebeam/tether
 	mouse_opacity = MOUSE_OPACITY_ICON

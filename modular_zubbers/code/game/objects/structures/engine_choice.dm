@@ -12,8 +12,8 @@
 /obj/machinery/engine_choice
 
 	name = "engine choice beacon"
-	desc = "A clusterfuck of wiring and components that somehow allows you to select the desired engine you want for the shift. \
-	Selection is permanent and cannot be reversed after deployment. Can be destroyed with a mulitool, with a considerable delay."
+	desc = "Um grupo de fios e componentes que de alguma forma permite selecionar o motor desejado para o turno.\
+A seleção é permanente e não pode ser revertida após a implantação. Pode ser destruído com um mulitool, com um atraso considerável."
 
 	icon = 'modular_zubbers/icons/obj/structures/engine_choice.dmi'
 	icon_state = "choice"

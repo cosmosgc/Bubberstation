@@ -251,13 +251,13 @@
 
 	if (href_list["printlawtext"]) // this is kinda backwards
 		if (href_list["dead"] && (!isdead(usr) && !usr.client.holder)) // do not print deadchat law notice if the user is now alive
-			to_chat(usr, span_warning("You cannot view law changes that were made while you were dead."))
+			to_chat(usr, span_warning("Você não pode ver as mudanças legais que foram feitas enquanto você estava morto."))
 			return
 		to_chat(usr, href_list["printlawtext"])
 
 	if(href_list["track"])
 		if(!can_track(href_list["track"]))
-			to_chat(src, span_info("This person is not currently on cameras."))
+			to_chat(src, span_info("Essa pessoa não está atualmente nas câmeras."))
 			return
 		var/mob/living/silicon/ai/AI
 		var/mob/living/silicon/robot/shell/shell
@@ -391,7 +391,7 @@
 
 /mob/living/silicon/proc/set_autosay() //For allowing the AI and borgs to set the radio behavior of auto announcements (state laws, arrivals).
 	if(!radio)
-		to_chat(src, span_alert("Radio not detected."))
+		to_chat(src, span_alert("Rádio não detectado."))
 		return
 
 	//Ask the user to pick a channel from what it has available.
@@ -433,11 +433,11 @@
 		return
 	sensors_on = !sensors_on
 	if (!sensors_on)
-		to_chat(src, span_notice("Sensor overlay deactivated."))
+		to_chat(src, span_notice("Sobreposição do sensor desativado."))
 		remove_sensors()
 		return
 	add_sensors()
-	to_chat(src, span_notice("Sensor overlay activated."))
+	to_chat(src, span_notice("Sobreposição do sensor ativada."))
 
 /mob/living/silicon/proc/GetPhoto(mob/user)
 	if (aicamera)

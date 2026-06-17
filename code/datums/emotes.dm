@@ -280,7 +280,7 @@
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
 			// Original: to_chat(user, span_danger("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
-			user.balloon_alert(user, "on cooldown!") // BUBBER EDIT CHANGE
+			user.balloon_alert(user, "Na refrigeração!") // BUBBER EDIT CHANGE
 		return FALSE
 	if(!user.emotes_used)
 		user.emotes_used = list()

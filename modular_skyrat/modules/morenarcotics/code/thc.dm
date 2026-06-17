@@ -28,19 +28,19 @@
 
 //shit for effects
 /datum/mood_event/stoned
-	description = span_nicegreen("You're totally baked right now...\n")
+	description = span_nicegreen("Você está totalmente chapado agora...\n")
 	mood_change = 6
 	timeout = 3 MINUTES
 
 /atom/movable/screen/alert/stoned
 	name = "Stoned"
-	desc = "You're stoned out of your mind! Woaaahh..."
+	desc = "Você está chapado! Woaaahh..."
 	icon_state = "high"
 
 //the reagent itself
 /datum/reagent/drug/thc
 	name = "THC"
-	description = "A chemical found in cannabis that serves as its main psychoactive component."
+	description = "Um químico encontrado na cannabis que serve como seu principal componente psicoativo."
 	color = "#cfa40c"
 	overdose_threshold = 30 //just gives funny effects, but doesnt hurt you; thc has no actual known overdose
 	ph = 6
@@ -48,7 +48,7 @@
 
 /datum/reagent/drug/thc/concentrated
 	name = "Concentrated THC"
-	description = "TCH in pure concentrated form"
+	description = "TCH na forma pura concentrada"
 
 /datum/reagent/drug/thc/on_mob_life(mob/living/carbon/M, seconds_per_tick, times_fired)
 	var/high_message = pick("You feel relaxed.", "You feel fucked up.", "You feel totally wrecked...")
@@ -86,5 +86,5 @@
 
 /datum/reagent/drug/thc/hash //only exists to generate hash object
 	name = "hashish"
-	description = "Concentrated cannabis extract. Delivers a much better high when used in a bong."
+	description = "Extrato de cannabis concentrado. Dá uma dose muito melhor quando usado em um cachimbo."
 	color = "#cfa40c"

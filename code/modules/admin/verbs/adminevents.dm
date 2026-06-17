@@ -10,7 +10,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_subtle_message, R_ADMIN, "Subtle Message",
 
 	msg = user.reformat_narration(msg)
 
-	target.balloon_alert(target, "you hear a voice")
+	target.balloon_alert(target, "Você ouve uma voz")
 	to_chat(target, "<i>You hear a voice in your head... <b>[msg]</i></b>", confidential = TRUE)
 
 	log_admin("SubtlePM: [key_name(user)] -> [key_name(target)] : [msg]")
@@ -33,15 +33,15 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_headset_message, R_ADMIN, "Headset Message
 	if(ishuman(target))
 		human_recipient = target
 		if(!istype(human_recipient.ears, /obj/item/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset.", confidential = TRUE)
+			to_chat(usr, "A pessoa que está tentando contatar não está usando fone de ouvido.", confidential = TRUE)
 			return
 	else if(issilicon(target))
 		silicon_recipient = target
 		if(!istype(silicon_recipient.radio, /obj/item/radio))
-			to_chat(usr, "The silicon you are trying to contact does not have a radio installed.", confidential = TRUE)
+			to_chat(usr, "O silício que você está tentando contatar não tem um rádio instalado.", confidential = TRUE)
 			return
 	else
-		to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human or /mob/living/silicon", confidential = TRUE)
+		to_chat(usr, "Isso só pode ser usado em casos de tipo / mob / vivo / carbono / humano ou / mob / vivo / silício", confidential = TRUE)
 		return
 
 	if (!sender)
@@ -59,13 +59,13 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_headset_message, R_ADMIN, "Headset Message
 
 	log_directed_talk(mob, target, input, LOG_ADMIN, "reply")
 	message_admins("[key_name_admin(src)] replied to [key_name_admin(target)]'s [sender] message with: \"[input]\"")
-	target.balloon_alert(target, "you hear a voice")
+	target.balloon_alert(target, "Você ouve uma voz")
 	to_chat(target, span_hear("You hear something crackle in your [human_recipient ? "ears" : "radio receiver"] for a moment before a voice speaks. \"Please stand by for a message from [sender == "Syndicate" ? "your benefactor" : "Central Command"]. Message as follows[sender == "Syndicate" ? ", agent." : ":"] <b>[input].</b> Message ends.\""), confidential = TRUE)
 
 	BLACKBOX_LOG_ADMIN_VERB("Headset Message")
 
 ADMIN_VERB(cmd_admin_world_narrate, R_ADMIN, "Global Narrate", "Send a direct narration to all connected players.", ADMIN_CATEGORY_EVENTS)
-	var/msg = input(user, "Message:", "Enter the text you wish to appear to everyone:") as text|null
+	var/msg = input(user, "Message:", "Digite o texto que deseja aparecer para todos:") as text|null
 	if (!msg)
 		return
 	msg = user.reformat_narration(msg)
@@ -75,10 +75,10 @@ ADMIN_VERB(cmd_admin_world_narrate, R_ADMIN, "Global Narrate", "Send a direct na
 	BLACKBOX_LOG_ADMIN_VERB("Global Narrate")
 
 ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_local_narrate, R_ADMIN, "Local Narrate", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, atom/locale in world)
-	var/range = input(user, "Range:", "Narrate to mobs within how many tiles:", 7) as num|null
+	var/range = input(user, "Range:", "Narrar para multidões dentro de quantos azulejos:", 7) as num|null
 	if(!range)
 		return
-	var/msg = input(user, "Message:", "Enter the text you wish to appear to everyone within view:") as text|null
+	var/msg = input(user, "Message:", "Digite o texto que você deseja aparecer para todos em vista:") as text|null
 	if (!msg)
 		return
 	msg = user.reformat_narration(msg)
@@ -90,7 +90,7 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_local_narrate, R_ADMIN, "Local Narrate", A
 	BLACKBOX_LOG_ADMIN_VERB("Local Narrate")
 
 ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_direct_narrate, R_ADMIN, "Direct Narrate", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/target)
-	var/msg = input(user, "Message:", "Enter the text you wish to appear to your target:") as text|null
+	var/msg = input(user, "Message:", "Digite o texto que deseja aparecer ao seu alvo:") as text|null
 
 	if( !msg )
 		return
@@ -105,14 +105,14 @@ ADMIN_VERB_AND_CONTEXT_MENU(cmd_admin_direct_narrate, R_ADMIN, "Direct Narrate",
 	BLACKBOX_LOG_ADMIN_VERB("Direct Narrate")
 
 ADMIN_VERB(cmd_admin_add_freeform_ai_law, R_ADMIN, "Add Custom AI Law", "Add a custom law to the Silicons.", ADMIN_CATEGORY_EVENTS)
-	var/input = input(user, "Please enter anything you want the AI to do. Anything. Serious.", "What?", "") as text|null
+	var/input = input(user, "Por favor, insira qualquer coisa que queira que a IA faça. Qualquer coisa. Sério.", "O quê?", "") as text|null
 	if(!input)
 		return
 
 	log_admin("Admin [key_name(user)] has added a new AI law - [input]")
 	message_admins("Admin [key_name_admin(user)] has added a new AI law - [input]")
 
-	var/show_log = tgui_alert(user, "Show ion message?", "Message", list("Yes", "No"))
+	var/show_log = tgui_alert(user, "Mostrar mensagem iônica?", "Message", list("Yes", "No"))
 	var/announce_ion_laws = (show_log == "Yes" ? 100 : 0)
 
 	var/datum/round_event/ion_storm/add_law_only/ion = new
@@ -200,7 +200,7 @@ ADMIN_VERB(delay_command_report, R_FUN, "Delay Command Report", "Prevents the ro
 
 ///Reformats a narration message. First provides a prompt asking if the user wants to reformat their message, then allows them to pick from a list of spans to use.
 /client/proc/reformat_narration(input)
-	if(tgui_alert(mob, "Set a custom text format?", "Make it snazzy!", list("Yes", "No")) == "Yes")
+	if(tgui_alert(mob, "Definir um formato de texto personalizado?", "Make it snazzy!", list("Yes", "No")) == "Yes")
 		var/text_span = tgui_input_list(mob, "Select a span!", "Immersion! Yeah!", GLOB.spanname_to_formatting)
 		if(isnull(text_span)) //In case the user just quit the prompt.
 			return text_span

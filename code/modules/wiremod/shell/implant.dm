@@ -35,7 +35,7 @@
 	var/mob/living/user = arguments[2]
 	var/force = arguments[4]
 	if(!force)
-		source.balloon_alert(user, "duplicate implant present!")
+		source.balloon_alert(user, "Implante duplicado presente!")
 		return COMPONENT_STOP_IMPLANTING
 
 /obj/item/implant/circuit/ui_host(mob/user)
@@ -44,8 +44,8 @@
 	return ..()
 
 /obj/item/circuit_component/implant_core
-	display_name = "Implant Core"
-	desc = "Controls the core operations of the implant."
+	display_name = "Implantar Núcleo"
+	desc = "Controla as operações do núcleo do implante."
 
 	/// A reference to the action button to look at charge/get info
 	var/datum/action/innate/implant_charge_action/charge_action
@@ -222,7 +222,7 @@
 		to_chat(owner, span_boldwarning("[circuit_component.parent] has no power cell."))
 	else
 		to_chat(owner, span_info("[circuit_component.parent]'s [cell.name] has <b>[cell.percent()]%</b> charge left."))
-		to_chat(owner, span_info("You can recharge it by using a cyborg recharging station."))
+		to_chat(owner, span_info("Você pode recarregar usando uma estação de recarga cyborg."))
 
 /datum/action/innate/implant_charge_action/process(seconds_per_tick)
 	build_all_button_icons(UPDATE_BUTTON_STATUS)
@@ -234,5 +234,5 @@
 
 /obj/item/implantcase/circuit
 	name = "implant case - 'Circuit'"
-	desc = "A glass case containing a circuit implant shell."
+	desc = "Uma caixa de vidro contendo uma casca de implante de circuito."
 	imp_type = /obj/item/implant/circuit

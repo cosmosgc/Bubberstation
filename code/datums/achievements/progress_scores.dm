@@ -1,7 +1,7 @@
 
 /datum/award/score/progress/fish
 	name = "Fish Species Caught"
-	desc = "How many different species of fish you've caught so far. Gotta fish 'em all."
+	desc = "Quantas espécies diferentes de peixes você pegou até agora. Tenho que pescar todos."
 	database_id = FISH_SCORE
 	var/list/early_entries_to_validate = list()
 
@@ -75,7 +75,7 @@
 
 /datum/award/score/progress/pda_themes
 	name = "Unlocked PDA Themes"
-	desc = "Any special PDA theme that you've installed on your PDA, which will then be added to your roundstart PDA on future rounds as well."
+	desc = "Qualquer tema especial de PDA que tenha instalado no seu PDA, que será adicionado ao seu PDA em rodadas futuras também."
 	database_id = PDA_THEMES_SCORE
 	track_high_scores = FALSE //This is purely personal progress
 	var/list/cheevo_icons
@@ -93,7 +93,7 @@
 	return "pda_themes_progress"
 
 /datum/award/score/progress/pda_themes/get_progress_string(progress_string)
-	return span_greenannounce(span_tooltip("You can now select it on future rounds without having to install it again", "New PDA theme unlocked : <B>[progress_string]!</B>"))
+	return span_greenannounce(span_tooltip("Agora você pode selecioná-lo em rodadas futuras sem ter que instalá-lo novamente", "New PDA theme unlocked : <B>[progress_string]!</B>"))
 
 /datum/award/score/progress/pda_themes/get_progress(datum/achievement_data/holder)
 	var/list/data = list(

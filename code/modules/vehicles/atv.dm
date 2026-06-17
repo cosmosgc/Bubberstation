@@ -1,7 +1,7 @@
 
 /obj/vehicle/ridden/atv
 	name = "all-terrain vehicle"
-	desc = "An all-terrain vehicle built for traversing rough terrain with ease. One of the few old-Earth technologies that are still relevant on most planet-bound outposts."
+	desc = "Um veículo todo-terreno construído para atravessar terreno áspero com facilidade. Uma das poucas tecnologias da Terra antiga que ainda são relevantes na maioria dos postos avançados."
 	icon_state = "atv"
 	max_integrity = 150
 	armor_type = /datum/armor/ridden_atv
@@ -77,21 +77,21 @@
 		return
 	. = TRUE
 	if(DOING_INTERACTION(user, src))
-		balloon_alert(user, "you're already repairing it!")
+		balloon_alert(user, "Você já está consertando!")
 		return
 	if(atom_integrity >= max_integrity)
-		balloon_alert(user, "it's not damaged!")
+		balloon_alert(user, "Não está danificado!")
 		return
 	if(!W.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
 		return
 	user.balloon_alert_to_viewers("started welding [src]", "started repairing [src]")
-	audible_message(span_hear("You hear welding."))
+	audible_message(span_hear("Você ouve solda."))
 	var/did_the_thing
 	while(atom_integrity < max_integrity)
 		if(W.use_tool(src, user, 2.5 SECONDS, volume=50))
 			did_the_thing = TRUE
 			atom_integrity += min(10, (max_integrity - atom_integrity))
-			audible_message(span_hear("You hear welding."))
+			audible_message(span_hear("Você ouve solda."))
 		else
 			break
 	if(did_the_thing)

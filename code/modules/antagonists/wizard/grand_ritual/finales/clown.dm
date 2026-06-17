@@ -1,7 +1,7 @@
 /// Dress the crew as magical clowns
 /datum/grand_finale/clown
 	name = "Jubilation"
-	desc = "The ultimate use of your gathered power! Rewrite time so that everyone went to clown college! Now they'll prank each other for you!"
+	desc = "O uso final de seu poder acumulado! Reescreva o tempo para que todos fossem para a faculdade de palhaços! Agora vão brincar um com o outro!"
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "clown"
 	glow_colour = "#ffff0048"

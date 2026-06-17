@@ -23,7 +23,7 @@
 
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"
-	desc = "Generates cannon pulse. Needs to be linked with a fusor."
+	desc = "Gera pulso de canhão. Precisa ser ligado a um fusor."
 	icon_state = "power_box"
 
 /obj/machinery/bsa/back/multitool_act(mob/living/user, obj/item/multitool/tool)
@@ -32,7 +32,7 @@
 
 /obj/machinery/bsa/front
 	name = "Bluespace Artillery Bore"
-	desc = "Do not stand in front of cannon during operation. Needs to be linked with a fusor."
+	desc = "Não fique na frente do canhão durante a operação. Precisa ser ligado a um fusor."
 	icon_state = "emitter_center"
 
 /obj/machinery/bsa/front/multitool_act(mob/living/user, obj/item/multitool/tool)
@@ -41,7 +41,7 @@
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using a multitool."
+	desc = "Conteúdo classificado pelo Comando Naval Nanotrasen. Precisa ser ligado com as outras peças da BSA usando uma multitool."
 	icon_state = "fuel_chamber"
 	/// Our linked back piece
 	var/datum/weakref/back_piece
@@ -110,7 +110,7 @@
  */
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
-	desc = "Long range bluespace artillery."
+	desc = "Artilharia de longo alcance no espaço azul."
 	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
 	use_power = NO_POWER_USE // We use power when we're fired.

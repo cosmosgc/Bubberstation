@@ -160,7 +160,7 @@
 		antag_memory += "<B>Syndicate Nuclear Bomb Code</B>: [code]<br>"
 		to_chat(owner.current, "The nuclear authorization code is: <B>[code]</B>")
 	else
-		to_chat(admin, span_danger("No valid nuke found!"))
+		to_chat(admin, span_danger("Nenhuma bomba nuclear encontrada!"))
 
 /datum/antagonist/nukeop/proc/give_alias()
 	if(nuke_team?.syndicate_name)

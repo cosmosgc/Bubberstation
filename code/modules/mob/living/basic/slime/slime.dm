@@ -133,7 +133,7 @@
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 	AddElement(/datum/element/ai_retaliate)
-	AddElement(/datum/element/basic_health_examine, light_damage_message = "It has some punctures in its flesh!", heavy_damage_message = span_bold("It has severe punctures and tears in its flesh!"), heavy_threshold = 0.4)
+	AddElement(/datum/element/basic_health_examine, light_damage_message = "Tem alguns furos em sua carne!", heavy_damage_message = span_bold("Tem perfurações severas e lágrimas em sua carne!"), heavy_threshold = 0.4)
 	AddElement(/datum/element/footstep, footstep_type = FOOTSTEP_MOB_SLIME)
 	AddElement(/datum/element/soft_landing)
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_SLIME, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
@@ -246,9 +246,9 @@
 			. += "It is glowing alarmingly with high levels of electrical activity."
 
 		if(SLIME_MAX_POWER)
-			. += span_boldwarning("It is radiating with massive levels of electrical activity!")
+			. += span_boldwarning("Está irradiando com níveis maciços de atividade elétrica!")
 	if(overcrowded)
-		. += span_warning("It seems too overcroweded to properly reproduce!")
+		. += span_warning("Parece muito amassado para reproduzir correto!")
 
 ///Changes the slime's current life state
 /mob/living/basic/slime/proc/set_life_stage(new_life_stage = SLIME_LIFE_STAGE_BABY, initial = FALSE)
@@ -292,7 +292,7 @@
 		return COMPONENT_HOSTILE_NO_ATTACK
 
 	if(isAI(target)) //The aI is not tasty!
-		target.balloon_alert(our_slime, "not tasty!")
+		target.balloon_alert(our_slime, "Não é gostoso!")
 		return COMPONENT_HOSTILE_NO_ATTACK
 
 	if(our_slime.buckled == target) //If you try to attack the creature you are latched on, you instead cancel feeding
@@ -363,7 +363,7 @@
 	if(selected_crossbreed_path)
 		new selected_crossbreed_path(loc)
 	else
-		visible_message(span_warning("The mutated core shudders, and collapses into a puddle, unable to maintain its form."))
+		visible_message(span_warning("O núcleo mutado treme, e cai em uma poça, incapaz de manter sua forma."))
 	qdel(src)
 
 ///Proc for slime core removal surgery, tries to remove cores from a dead slime.

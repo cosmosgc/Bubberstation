@@ -13,7 +13,7 @@
 /obj/machinery/atmospherics/components/binary/volume_pump
 	icon_state = "volpump_map-3"
 	name = "volumetric gas pump"
-	desc = "A pump that moves gas by volume."
+	desc = "Uma bomba que movimenta gás em volume."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional
@@ -162,10 +162,10 @@
 /obj/machinery/atmospherics/components/binary/volume_pump/multitool_act(mob/living/user, obj/item/I)
 	if(!overclocked)
 		overclocked = TRUE
-		to_chat(user, "The pump makes a grinding noise and air starts to hiss out as you disable its pressure limits.")
+		to_chat(user, "A bomba faz um barulho de moagem e o ar começa a assobiar enquanto você desativa seus limites de pressão.")
 	else
 		overclocked = FALSE
-		to_chat(user, "The pump quiets down as you turn its limiters back on.")
+		to_chat(user, "A bomba se acalma enquanto você liga os limitadores.")
 	update_appearance(UPDATE_ICON)
 	return TRUE
 
@@ -192,8 +192,8 @@
 	icon_state = "volpump_on_map-4"
 
 /obj/item/circuit_component/atmos_volume_pump
-	display_name = "Atmospheric Volume Pump"
-	desc = "The interface for communicating with a volume pump."
+	display_name = "Bomba de volume atmosférico"
+	desc = "A interface para se comunicar com uma bomba de volume."
 
 	///Set the transfer rate of the pump
 	var/datum/port/input/transfer_rate

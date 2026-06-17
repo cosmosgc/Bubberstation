@@ -11,7 +11,7 @@
 
 /datum/nifsoft/summoner
 	name = "Grimoire Caeruleam"
-	program_desc = "The Grimoire Caeruleam is an open-source, virtual decentralized directory of summonable objects originally developed by the Altspace Coven, a post-pagan group of witches first digitized into engrams in the year 2544. These summonable constructs, or 'Icons,' are comprised of delicate patterns of nanomachines serving as a framework and projector for hardlight; the name 'Caeruleam' referencing the blue light an Icon casts in the summoner's hand. While the Grimoire has served thousands thus far, Corporate interests have blocked all access to Icons capable of harming their assets."
+	program_desc = "O Grimoire Caeruleam é um diretório de código aberto, virtual descentralizado de objetos convocáveis originalmente desenvolvido pelo Coven Altspace, um grupo pós-pagão de bruxas digitalizado pela primeira vez em engramas no ano 2544. Essas construções convocáveis, ou \"Icons\", são compostas por padrões delicados de nanomáquinas que servem de estrutura e projetor para a luz dura; o nome \"Caeruleam\" refere-se à luz azul que um ícone lança na mão do chamador. Enquanto o Grimoire serviu milhares até agora, interesses corporativos bloquearam todo o acesso a Ícones capazes de prejudicar seus bens."
 	cooldown = TRUE
 	activation_cost = 100 // Around 1/10th the energy of a standard NIF
 	buying_category = NIFSOFT_CATEGORY_FUN
@@ -48,16 +48,16 @@
 	if(!.)
 		return FALSE
 
-	if(tgui_alert(linked_mob, "Do you wish to summon a new item or dispel an already existing item?", program_name, list("Summon", "Dispel")) == "Dispel")
+	if(tgui_alert(linked_mob, "Você deseja convocar um novo item ou dissipar um item já existente?", program_name, list("Summon", "Dispel")) == "Dispel")
 		refund_activation_cost()
 		if(!length(summoned_items))
-			linked_mob.balloon_alert(linked_mob, "you have no summoned items!")
+			linked_mob.balloon_alert(linked_mob, "Você não tem itens convocados!")
 			return FALSE
 
 		var/obj/item/choice = tgui_input_list(linked_mob, "Choose an object to desummon.", program_name, summoned_items)
 
 		if(!choice)
-			linked_mob.balloon_alert(linked_mob, "you did not choose an item!")
+			linked_mob.balloon_alert(linked_mob, "Você não escolheu um item!")
 			return FALSE
 
 		summoned_items -= choice
@@ -65,7 +65,7 @@
 		return TRUE
 
 	if(length(summoned_items) >= max_summoned_items)
-		linked_mob.balloon_alert(linked_mob, "you have the max amount of items summoned!")
+		linked_mob.balloon_alert(linked_mob, "Você tem a quantidade máxima de itens convocados!")
 		refund_activation_cost()
 		return FALSE
 
@@ -156,51 +156,51 @@
 ///A somehow wekaer version of the toy katana
 /obj/item/toy/katana/nanite
 	name = "hexblade"
-	special_desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
+	special_desc = "Um dos primeiros grupos a contribuir para o repositório de Caeruleam Grimoire foram os Duelistas Malatestan, um grupo de filósofos mercenários que buscavam se tornar mestres indiscutíveis da arte principal de cortar. Originalmente intencionado como um meio de gerar perfeitamente afiado, perfeitamente inquebrável, e perfeitamente capaz da Ação Sancionada: para cortar. No entanto, esses ícones de adereços são apenas uma mera sombra do que os Duelistas originalmente desenvolveram, a única versão do Ícone permitida pela lei interestelar para civis, normalmente visto em andares de convenções ou nas mãos daqueles que desejam lutar sem risco."
 	force = 0
 	throwforce = 0
 
 /obj/item/storage/dice/nanite
 	name = "dice set"
-	special_desc = "A gorgeous replication of a gorgeous set of dice. These were modeled after a set of dice originally in the possession of the Selenian Wargaming Society, carved from rare lunar crystals over two hundred years ago. While no one but the Prime Game Master may ever roll even a single piece from the original set, the Society has graciously donated virtual replicas to the Altspace Coven's repo, as a token of their appreciation for aid in more live-action forms of roleplay."
+	special_desc = "Uma bela replicação de um lindo conjunto de dados. Estes foram modelados após um conjunto de dados originalmente na posse da Sociedade Seleniana de Wargaming, esculpidos de raros cristais lunares há mais de duzentos anos. Enquanto ninguém além do Primeiro Mestre do Jogo pode rolar até mesmo uma única peça do set original, a Sociedade tem graciosamente doado réplicas virtuais para o repo do Altspace Coven, como um símbolo de sua apreciação pela ajuda em mais formas de ação ao vivo de roleplay."
 
 /obj/item/toy/cards/deck/nanite
 	name = "main deck"
-	special_desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing."
+	special_desc = "Outra peça de equipamento de jogo graciosamente doada da Sociedade Seleniana de Wargaming, estas cartas empregam um campo localizado de nanites quase invisíveis equipados com software avançado de rastreamento de olhos, para garantir que a exibição nas cartas não permita espiar. Além disso, mais de 500 mil variações do baralho padrão 52 são suportadas, em todas as formas conhecidas de escrita."
 
 /obj/item/toy/cards/deck/tarot/nanite
 	name = "tarot deck"
-	special_desc = "The seventy eight card deck historically used by occultists and esotericists, such as the witches of the Altspace Coven. Containing both the greater secrets of the Major Arcana and the lesser secrets of the Minor Arcana, the full deck is employed as a key tool in cartomancy; and it's said these cards are able to gain insight into the past, present, and future. People who use them for divination ask all sorts of topics, ranging from health to economic issues, but the Coven uses to use them as a guide for traversing their spiritual path, claiming that the non-physical nature of these digitally summonable cards allows readers higher sensitivity to fate itself."
+	special_desc = "O baralho de 78 cartas historicamente usado por ocultistas e esoteristas, como as bruxas do clã Altspace. Contendo os maiores segredos da Arcana Maior e os menores segredos da Arcana Menor, o baralho completo é empregado como uma ferramenta chave na caromancia, e diz-se que essas cartas são capazes de obter visão do passado, presente e futuro. As pessoas que os usam para adivinhação perguntam todos os tipos de tópicos, que vão da saúde para questões econômicas, mas o Clã usa para usá-los como um guia para atravessar seu caminho espiritual, alegando que a natureza não física desses cartões digitalmente convocáveis permite aos leitores maior sensibilidade ao próprio destino."
 
 /obj/item/toy/cards/deck/kotahi/nanite
 	name = "kotahi deck"
-	special_desc = "Kotahi in long-haul freighters! Kotahi in low orbit! Kotahi on the floor! Kotahi like never before! For nearly six hundred years, Kotahi has dominated the card gaming category as the galaxy's #1 shedding-type card game! But how do you take a brand beloved by thousands of sophonts to the next level? With the cooperation of the Selenian Wargaming Society, we've elevated Kotahi to a brand new playing field: digitally summonable Kotahi cards, for the low low cost of 200cr, Now you know why we call it number one."
+	special_desc = "Kotahi em cargueiros de longo curso! Kotahi em órbita baixa! Kotahi no chão! Kotahi como nunca antes! Por quase seiscentos anos, Kotahi dominou a categoria de jogo de cartas como o primeiro jogo de cartas da galáxia! Mas como levar uma marca amada por milhares de sofonts para o próximo nível? Com a cooperação da Sociedade Seleniana de Wargaming, elevamos Kotahi a um novo campo de jogo: cartões Kotahi digitalmente convocáveis, pelo baixo custo de 200cr, agora sabe por que chamamos de número um."
 
 /obj/item/cane/nanite
 	name = "staff"
-	special_desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
+	special_desc = "Este programa foi contribuído por um grupo de ajuda mútua, a Associação Sapient Rights Recovery, localizada em muitas regiões dos continentes orientais da Terra. As equipes ceruleanas empregam mais nanomáquinas do que hologramas, dando-lhes um núcleo sólido e ponta estável para uso pelos deficientes. Através do uso amplo de pistas sonoras para ajudar os convocadores a navegar no menu, um padrão também foi desenvolvido para indivíduos sem visão tanto por incidente, nascimento e biologia."
 
 	force = 0
 	throwforce = 0
 
 /obj/item/cane/white/nanite
 	name = "white staff"
-	special_desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
+	special_desc = "Este programa foi contribuído por um grupo de ajuda mútua, a Associação Sapient Rights Recovery, localizada em muitas regiões dos continentes orientais da Terra. As equipes ceruleanas empregam mais nanomáquinas do que hologramas, dando-lhes um núcleo sólido e ponta estável para uso pelos deficientes. Através do uso amplo de pistas sonoras para ajudar os convocadores a navegar no menu, um padrão também foi desenvolvido para indivíduos sem visão tanto por incidente, nascimento e biologia."
 
 	force = 0
 	throwforce = 0
 
 /obj/item/toy/foamblade/nanite
 	name = "armblade"
-	special_desc = "This Icon was leaked onto the Grimoire somewhat illegally. It was originally uploaded by a departing member of the Tiger Cooperative, the download text informing the summoner that this Icon was first used by the cultists for use as 'training for their biological Ascension' into shape-shifting entities. Within hours, several variants for all sorts of sapient limb configurations were forked and uploaded, this one an entirely nonlethal one."
+	special_desc = "Este Ícone foi vazado para o Grimoire ilegalmente. Foi originalmente carregado por um membro da Cooperativa Tiger, o texto de download informando o chamador de que este Ícone foi usado pela primeira vez pelos cultistas para usar como \"treinamento para sua Ascensão biológica\" em entidades metamorfosas. Em poucas horas, várias variantes para todos os tipos de configurações de membros sapientes foram bifurcadas e enviadas, esta uma totalmente não letal."
 
 /obj/item/lighter/nanite
 	name = "catchflame"
-	special_desc = "A work of art by the standards of normal Icons, this one was worked on for five continuous years by a single summoner; now known as Neophyte Inverse after adoption of the Icon by the few physically-bodied members of the Altspace Coven. The engram's work involves the use of nanites to ignite atmospheric hydrogen molecules, the blue glow from the Icon arising from perfect and complete combustion. This allows the lighter to function exactly as a normal zippo would, the description reading '...useful for lighting hearth fires, candles, and incense; try white sage if you can order some off the net, just pray it doesn't dispel engrams lol.'"
+	special_desc = "Uma obra de arte pelos padrões de Ícones normais, esta foi trabalhada por cinco anos contínuos por uma única convocadora, agora conhecida como Neophyte Inverso após a adoção do Ícone pelos poucos membros fisicamente encorpados do Coven Altspace. O trabalho do engram envolve o uso de nanites para inflamar moléculas atmosféricas de hidrogênio, o brilho azul do Ícone que surge da combustão perfeita e completa. Isso permite que o isqueiro funcione exatamente como um zíper normal faria, a descrição de leitura '...útil para acender lareiras, velas e incenso; tente sálvia branca se você puder encomendar algum fora da rede, apenas reze para não dissipar engrams lol.'"
 
 /obj/item/holocigarette/nanite
 	name = "cloudstick"
-	special_desc = "One of mankind's many attempts at ending the legacy of Big Tobacco. Contributed by a fully anonymous engram and then forked countless times into countless replications of brands and flavors, the 'Cloudstick' is more of a genre than a single Icon. Most downloadable ones even allow the summoner to change the pixelation of the smoke, to grant them a more 'detached' experience from the real thing. Several summoners report these to help them in quitting smoking, others simply commenting 'It's why I first downloaded the Catchflame.'"
+	special_desc = "Uma das muitas tentativas da humanidade de acabar com o legado do Big Tobacco. Fornecido por um engrama totalmente anônimo e bifurcado inúmeras vezes em inúmeras repetições de marcas e sabores, o 'Cloudstick' é mais um gênero do que um único ícone. A maioria dos que podem ser baixados até mesmo permitem que o chamador mude a pixelação da fumaça, para lhes conceder uma experiência mais 'detalhada' da coisa real. Vários convocadores reportam isso para ajudá-los a parar de fumar, outros simplesmente comentam: \"É por isso que eu primeiro baixei o Catchflame.\""
 
 
 #undef SUMMONED_ITEM_ALPHA

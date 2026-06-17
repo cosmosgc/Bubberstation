@@ -6,7 +6,7 @@
 
 /obj/machinery/mailsorter
 	name = "mail sorter"
-	desc = "A large mail sorting unit. Sorting mail since 1987!"
+	desc = "Uma grande unidade de triagem de correio. Ordenando correspondência desde 1987!"
 	icon = 'icons/obj/machines/mailsorter.dmi'
 	icon_state = "mailsorter"
 	base_icon_state = "mailsorter"
@@ -58,7 +58,7 @@
 	. += span_notice("There is[length(mail_list) < 100 ? " " : " no more "]space for <b>[length(mail_list) < 100 ? "[100 - length(mail_list)] " : ""]</b>envelope\s inside.")
 	. += span_notice("There [length(mail_list) >= 2 ? "are" : "is"] <b>[length(mail_list) ? length(mail_list) : "no"]</b> envelope\s inside.")
 	if(panel_open)
-		. += span_notice("Alt-click to rotate the output direction.")
+		. += span_notice("Alt-clique para girar a direção de saída.")
 
 /obj/machinery/mailsorter/Destroy()
 	QDEL_LIST(mail_list)
@@ -100,7 +100,7 @@
 	if (currentstate != STATE_IDLE)
 		return
 	if (length(mail_list) == 0)
-		to_chat(user, span_warning("There's no mail inside!"))
+		to_chat(user, span_warning("Não tem correio dentro!"))
 		return
 	var/choice = show_radial_menu(
 		user,
@@ -208,7 +208,7 @@
 			user.visible_message(span_notice("[user] loads \the [src] with \the [thingy]."), \
 			span_notice("You load \the [src] with \the [thingy]."))
 			if(length(thingy.contents))
-				to_chat(user, span_warning("Some items are refused."))
+				to_chat(user, span_warning("Alguns itens são recusados."))
 			return TRUE
 		else
 			to_chat(user, span_warning("There is nothing in \the [thingy] to put in the [src]!"))

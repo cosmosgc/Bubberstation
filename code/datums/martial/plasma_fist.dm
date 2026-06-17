@@ -50,7 +50,7 @@
 	defender.visible_message(
 		span_danger("[attacker] hits [defender] with Plasma Punch!"),
 		span_userdanger("You're hit with a Plasma Punch by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
@@ -71,7 +71,7 @@
 	defender.visible_message(
 		span_danger("[attacker] hits [defender] with THE PLASMA FIST TECHNIQUE!"),
 		span_userdanger("You're suddenly hit with THE PLASMA FIST TECHNIQUE by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
@@ -120,7 +120,7 @@
 	log_combat(user, user, "triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4] (Plasma Fist)")
 	message_admins("[key_name_admin(user)] triggered final plasma explosion with size [plasma_power], [plasma_power*2], [plasma_power*4].")
 
-	to_chat(user, span_userdanger("The explosion knocks your soul out of your body!"))
+	to_chat(user, span_userdanger("A explosão tira sua alma do seu corpo!"))
 	user.ghostize(FALSE) //prevents... horrible memes just believe me
 
 	user.apply_damage(rand(50, 70), BRUTE, wound_bonus = CANT_WOUND)
@@ -152,7 +152,7 @@
 	if(check_streak(attacker, defender))
 		return MARTIAL_ATTACK_SUCCESS
 	if(attacker == defender)//there is no disarming yourself, so we need to let plasma fist user know
-		to_chat(attacker, span_notice("You have added a disarm to your streak."))
+		to_chat(attacker, span_notice("Você adicionou um desarme à sua raia."))
 		return MARTIAL_ATTACK_FAIL
 	return MARTIAL_ATTACK_INVALID
 
@@ -178,7 +178,7 @@
 
 /obj/effect/temp_visual/plasma_soul
 	name = "plasma energy"
-	desc = "Leftover energy brought out from The Plasma Fist."
+	desc = "Restos de energia trazidos do Punho de Plasma."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "plasmasoul"
 	duration = 3 SECONDS
@@ -200,7 +200,7 @@
 /obj/effect/ebeam/plasma_fist
 	name = "plasma"
 	mouse_opacity = MOUSE_OPACITY_ICON
-	desc = "Flowing energy."
+	desc = "Energia fluindo."
 
 /datum/martial_art/plasma_fist/nobomb
 	name = "Novice Plasma Fist"

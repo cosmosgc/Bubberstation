@@ -1,12 +1,12 @@
 /datum/quirk/pseudo_respiration
 	name = "Pseudo-Respiration"
-	desc = "(Hemophage only) Despite your condition you for whatever reason still require to breathe."
+	desc = "(Somente hemofago) Apesar de sua condição você por qualquer razão que ainda precise respirar."
 	icon = FA_ICON_MASK_VENTILATOR
 	value = -2
 	quirk_flags = QUIRK_HUMAN_ONLY
-	gain_text = span_danger("You feel the urge to take a breath...")
-	lose_text = span_notice("You no longer feel the need to breathe.")
-	medical_record_text = "Patient reports the need to breathe despite their hemophagic virus."
+	gain_text = span_danger("Sente vontade de respirar...")
+	lose_text = span_notice("Você não sente mais a necessidade de respirar.")
+	medical_record_text = "O paciente relata a necessidade de respirar apesar do vírus hemofágico."
 	hardcore_value = 2
 	species_whitelist = list(SPECIES_HEMOPHAGE)
 

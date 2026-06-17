@@ -4,7 +4,7 @@
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "light-nopower"
 	base_icon_state = "light"
-	desc = "Make dark."
+	desc = "Escureça."
 	power_channel = AREA_USAGE_LIGHT
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.02
 	mouse_over_pointer = MOUSE_HAND_POINTER
@@ -69,7 +69,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 /obj/machinery/light_switch/examine(mob/user)
 	. = ..()
 	. += "It is [(machine_stat & NOPOWER) ? "unpowered" : (area.lightswitch ? "on" : "off")]."
-	. += span_notice("It's <b>screwed</b> and secured to the wall.")
+	. += span_notice("É...<b>Está ferrado.</b>e seguro na parede.")
 
 /obj/machinery/light_switch/interact(mob/user)
 	. = ..()
@@ -115,7 +115,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 
 /obj/item/wallframe/light_switch
 	name = "light switch"
-	desc = "An unmounted light switch. Attach it to a wall to use."
+	desc = "Um interruptor de luz desmontado. Coloque em uma parede para usar."
 	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "light-nopower"
 	result_path = /obj/machinery/light_switch
@@ -123,8 +123,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/light_switch, 26)
 	pixel_shift = 26
 
 /obj/item/circuit_component/light_switch
-	display_name = "Light Switch"
-	desc = "Allows to control the lights of an area."
+	display_name = "Mudança de Luz"
+	desc = "Permite controlar as luzes de uma área."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL
 
 	///If the lights should be turned on or off when the trigger is triggered.

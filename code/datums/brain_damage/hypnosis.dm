@@ -1,7 +1,7 @@
 /datum/brain_trauma/hypnosis
 	name = "Hypnosis"
-	desc = "Patient's unconscious is completely enthralled by a word or sentence, focusing their thoughts and actions on it."
-	scan_desc = "looping thought pattern"
+	desc = "O inconsciente do paciente é completamente fascinado por uma palavra ou sentença, focando seus pensamentos e ações nisso."
+	scan_desc = "Fazendo um padrão de pensamento."
 	symptoms = "Fixates on a specific word or phrase. This fixation can lead to altered behavior, \
 		such as prioritizing actions related to the phrase over other tasks while neglecting work, needs, or social interactions."
 	gain_text = ""
@@ -35,8 +35,8 @@
 			"You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",
 			"Your head hurts, but this is all you can think of. It must be vitally important.",
 	))]"))
-	to_chat(owner, span_boldwarning("You've been hypnotized by this sentence. You must follow these words. \
-		If it isn't a clear order, you can freely interpret how to do so, as long as you act like the words are your highest priority."))
+	to_chat(owner, span_boldwarning("Você foi hipnotizado por esta frase. Você deve seguir essas palavras.\
+Se não é uma ordem clara, você pode interpretar livremente como fazê-lo, desde que aja como se as palavras fossem sua prioridade máxima."))
 	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert(ALERT_HYPNOSIS, /atom/movable/screen/alert/hypnosis)
 	owner.mind.add_antag_datum(/datum/antagonist/hypnotized)
 	antagonist = owner.mind.has_antag_datum(/datum/antagonist/hypnotized)

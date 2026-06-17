@@ -1,6 +1,6 @@
 /obj/machinery/mod_installer
 	name = "modular outerwear device installator"
-	desc = "An ancient machine that mounts a MOD unit onto the occupant."
+	desc = "Uma máquina antiga que monta uma unidade MOD no ocupante."
 	icon = 'icons/obj/machines/mod_installer.dmi'
 	icon_state = "mod_installer"
 	base_icon_state = "mod_installer"
@@ -111,6 +111,6 @@
 		close_machine()
 		return
 	else if(busy)
-		balloon_alert(user, "it's locked!")
+		balloon_alert(user, "Está trancada!")
 		return
 	open_machine()

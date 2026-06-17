@@ -3,7 +3,7 @@
 
 /obj/machinery/computer/centcom_announcement
 	name = "fleet announcement console"
-	desc = "A console used for making priority Nanotrasen Command Reports."
+	desc = "Um console usado para fazer relatórios de comando Nanotrasen."
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
 	req_access = list(ACCESS_CENT_CAPTAIN)

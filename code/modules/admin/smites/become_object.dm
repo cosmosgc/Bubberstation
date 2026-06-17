@@ -23,7 +23,7 @@
 	if(isnull(desired_object) || !ispath(desired_object))
 		return FALSE //The user pressed "Cancel"
 	if(!ispath(desired_object, /atom))
-		tgui_alert(user, "ERROR: Incorrect / improper path given.")
+		tgui_alert(user, "Caminho incorreto/incorreto dado.")
 		return FALSE
 	transform_path = desired_object
 

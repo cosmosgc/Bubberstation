@@ -17,9 +17,9 @@
 	/// The poor bastard's brain
 	var/obj/item/organ/brain/brain
 	/// Message sent in chat when trauma is gained
-	var/gain_text = span_notice("You feel traumatized.")
+	var/gain_text = span_notice("Você se sente traumatizado.")
 	/// Message sent in chat when trauma is lost
-	var/lose_text = span_notice("You no longer feel traumatized.")
+	var/lose_text = span_notice("Você não se sente mais traumatizado.")
 	/// If the trauma can be gained, checked in can_gain_trauma
 	var/can_gain = TRUE
 	/// If this trauma can be gained randomly

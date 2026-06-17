@@ -1,10 +1,10 @@
 /datum/quirk/item_quirk/limper
 	name = "Limper"
-	desc = "You have a pronounced limp when you walk. This will slow you down considerably. Good thing you brought your cane."
+	desc = "Você está mancando quando anda. Isso vai atrasá-lo consideravelmente. Ainda bem que trouxe sua bengala."
 	icon = FA_ICON_PERSON_CANE
-	gain_text = span_danger("Your leg feels a bit weak.")
-	lose_text = span_notice("Your legs feel normal again.")
-	medical_record_text = "Patient appears to suffer from a weakness in the leg."
+	gain_text = span_danger("Sua perna está um pouco fraca.")
+	lose_text = span_notice("Suas pernas estão normais de novo.")
+	medical_record_text = "O paciente parece sofrer de uma fraqueza na perna."
 	value = -6
 	hardcore_value = 3
 	quirk_flags = QUIRK_HUMAN_ONLY

@@ -240,7 +240,7 @@
 /obj/machinery/atmospherics/components/ui_status(mob/user, datum/ui_state/state)
 	if(allowed(user))
 		return ..()
-	to_chat(user, span_danger("Access denied."))
+	to_chat(user, span_danger("Acesso negado."))
 	return UI_CLOSE
 
 // Tool acts
@@ -253,7 +253,7 @@
  */
 /obj/machinery/atmospherics/components/proc/crowbar_deconstruction_act(mob/living/user, obj/item/tool, internal_pressure = 0)
 	if(!panel_open)
-		balloon_alert(user, "open panel!")
+		balloon_alert(user, "Abra o painel!")
 		return ITEM_INTERACT_SUCCESS
 
 	var/unsafe_wrenching = FALSE

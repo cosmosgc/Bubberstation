@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/monkey_sentience
 	name = "monkey mind magnification helmet"
-	desc = "A fragile, circuitry embedded helmet for boosting the intelligence of a monkey to a higher level. You see several warning labels..."
+	desc = "Um frágil capacete de circuito embutido para aumentar a inteligência de um macaco para um nível mais alto. Você vê vários rótulos de aviso..."
 	icon_state = "monkeymind"
 	inhand_icon_state = null
 	strip_delay = 100
@@ -22,12 +22,12 @@
 
 /obj/item/clothing/head/helmet/monkey_sentience/examine(mob/user)
 	. = ..()
-	. += span_boldwarning("---WARNING: REMOVAL OF HELMET ON SUBJECT MAY LEAD TO:---")
-	. += span_warning("BLOOD RAGE")
-	. += span_warning("BRAIN DEATH")
-	. += span_warning("PRIMAL GENE ACTIVATION")
-	. += span_warning("GENETIC MAKEUP MASS SUSCEPTIBILITY")
-	. += span_boldnotice("Ask your CMO if mind magnification is right for you.")
+	. += span_boldwarning("A remoção do capacete em questão pode levar a...")
+	. += span_warning("RAGE SANGUE")
+	. += span_warning("MORTE Cérebro")
+	. += span_warning("ATIVAÇÃO GENE PRIMAL")
+	. += span_warning("Mass SUSCEPTIBILIDADE")
+	. += span_boldnotice("Pergunte ao seu médico se a ampliação da mente é certa para você.")
 
 /obj/item/clothing/head/helmet/monkey_sentience/update_icon_state()
 	. = ..()
@@ -41,7 +41,7 @@
 		return
 	if(!ismonkey(user) || user.ckey)
 		var/mob/living/something = user
-		to_chat(something, span_boldnotice("You feel a stabbing pain in the back of your head for a moment."))
+		to_chat(something, span_boldnotice("Sente uma dor na nuca por um momento."))
 		something.apply_damage(5, BRUTE, BODY_ZONE_HEAD, FALSE, FALSE, FALSE) // notably: no damage resist (it's in your helmet), no damage spread (it's in your helmet)
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 30, TRUE)
 		return
@@ -70,7 +70,7 @@
 
 	magnification.key = chosen.key
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
-	to_chat(magnification, span_notice("You're a mind magnified monkey! Protect your helmet with your life- if you lose it, your sentience goes with it!"))
+	to_chat(magnification, span_notice("Você é um macaco engrandecido! Proteja seu capacete com sua vida. Se você perdê-lo, sua consciência vai com ele!"))
 	var/policy = get_policy(ROLE_MONKEY_HELMET)
 	if(policy)
 		to_chat(magnification, policy)
@@ -92,7 +92,7 @@
 	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) // We removed it, now that they're back to being dumb, add the trait again.
 	if(!polling)// put on a viable head, but taken off after polling finished.
 		if(magnification.client)
-			to_chat(magnification, span_userdanger("You feel your flicker of sentience ripped away from you, as everything becomes dim..."))
+			to_chat(magnification, span_userdanger("Você sente seu brilho de sensibilidade arrancado de você, como tudo se torna escuro..."))
 			magnification.ghostize(FALSE)
 		if(prob(10))
 			switch(rand(1, 4))

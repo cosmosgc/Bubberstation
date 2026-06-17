@@ -22,7 +22,7 @@
 	var/list/message_pool = list()
 	if(suspicious_personnel)
 		if(adjacent_to_us)
-			message_pool[span_warning("You feel a tiny prick!")] = 5
+			message_pool[span_warning("Você sente um pinto minúsculo!")] = 5
 
 		var/obj/item/storage/equipped_backpack = suspicious_personnel.get_item_by_slot(ITEM_SLOT_BACK)
 		if(istype(equipped_backpack))
@@ -54,19 +54,19 @@
 
 		message_pool["[span_bold("[suspicious_personnel]")] [pick("sneezes", "coughs")]."] = 1
 
-	message_pool[span_notice("You hear something squeezing through the ducts...")] = 1
+	message_pool[span_notice("Você ouve algo apertando através dos dutos...")] = 1
 
 	message_pool[span_warning("Your [pick("arm", "leg", "back", "head")] itches.")] = 1
 	message_pool[span_warning("You feel [pick("hot", "cold", "dry", "wet", "woozy", "faint")].")] = 1
-	message_pool[span_warning("Your stomach rumbles.")] = 1
-	message_pool[span_warning("Your head hurts.")] = 1
-	message_pool[span_warning("You hear a faint buzz in your head.")] = 1
+	message_pool[span_warning("Seu estômago treme.")] = 1
+	message_pool[span_warning("Sua cabeça dói.")] = 1
+	message_pool[span_warning("Você ouve um zumbido na sua cabeça.")] = 1
 
 	if(prob(10))
-		message_pool[span_warning("Behind you.")] = 1
-		message_pool[span_warning("You hear a faint laughter.")] = 1
-		message_pool[span_warning("You hear skittering on the ceiling.")] = 1
-		message_pool[span_warning("You see an inhumanly tall silhouette moving in the distance.")] = 2
+		message_pool[span_warning("Atrás de você.")] = 1
+		message_pool[span_warning("Você ouve uma risada fraca.")] = 1
+		message_pool[span_warning("Você ouve os saltos no teto.")] = 1
+		message_pool[span_warning("Você vê uma silhueta desumanamente alta se movendo à distância.")] = 2
 
 	if(prob(30))
 		var/some_help = pick_list_replacements(HALLUCINATION_FILE, "advice")

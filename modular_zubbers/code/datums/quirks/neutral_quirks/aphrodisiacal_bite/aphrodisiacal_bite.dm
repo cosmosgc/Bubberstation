@@ -1,6 +1,6 @@
 /datum/action/cooldown/mob_cooldown/aphrodisiacal_bite
 	name = "Inject Aphrodisiac"
-	desc = "Sink your fangs into another and inject them with your aphrodisiac."
+	desc = "Enfie suas presas em outra e injete com seu afrodisíaco."
 
 	button_icon = 'modular_zubbers/icons/mob/actions/quirks/aphrodisiacal_bite.dmi'
 	button_icon_state = "aphrodisiac"
@@ -30,30 +30,30 @@
 	. = ..()
 	if (!.)
 		return
-	owner.visible_message(span_warning("[owner] bares [owner.p_their()] fangs..."), span_notice("You bare your fangs..."))
+	owner.visible_message(span_warning("[owner] bares [owner.p_their()] fangs..."), span_notice("Você desnuda suas presas..."))
 
 /datum/action/cooldown/mob_cooldown/aphrodisiacal_bite/Activate(atom/target_atom)
 	if (!isliving(target_atom))
 		return FALSE
 
 	if (astype(owner, /mob/living/carbon)?.is_mouth_covered())
-		owner.balloon_alert(owner, "mouth covered!")
+		owner.balloon_alert(owner, "Boca coberta!")
 		return FALSE
 
 	if (!owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "too far!")
+		owner.balloon_alert(owner, "Muito longe!")
 		return FALSE
 
 	if (target_atom == owner)
-		owner.balloon_alert(owner, "can't bite yourself!")
+		owner.balloon_alert(owner, "Não pode se morder!")
 		return FALSE
 
 	if(!iscarbon(target_atom))
-		owner.balloon_alert(owner, "not carbon!")
+		owner.balloon_alert(owner, "Não carbono!")
 		return FALSE
 
 	if(!astype(target_atom, /mob/living/carbon).client?.prefs.read_preference(/datum/preference/toggle/erp/aphro))
-		owner.balloon_alert(owner, "not interested!")
+		owner.balloon_alert(owner, "Não estou interessado!")
 		log_game("[key_name(owner)] tried to bite [key_name(astype(target_atom, /mob/living/carbon))] but [key_name(astype(target_atom, /mob/living/carbon))] had aphrodisiacs disabled")
 		return FALSE
 

@@ -2,7 +2,7 @@
 /obj/item/fish/holo
 	name = "holographic goldfish"
 	fish_id = "hologoldfish"
-	desc = "A holographic representation of a common goldfish, slowly flickering out, removed from its holo-habitat."
+	desc = "Uma representação holográfica de um peixe dourado comum, lentamente piscando para fora, removido de seu holo-habitat."
 	icon_state = /obj/item/fish/goldfish::icon_state
 	fish_flags = parent_type::fish_flags & ~(FISH_FLAG_SHOW_IN_CATALOG|FISH_FLAG_EXPERIMENT_SCANNABLE)
 	random_case_rarity = FISH_RARITY_NOPE
@@ -15,7 +15,7 @@
 	average_weight = /obj/item/fish/goldfish::average_weight
 	required_fluid_type = AQUARIUM_FLUID_ANADROMOUS
 	fillet_type = null
-	death_text = "%SRC gently disappears."
+	death_text = "SRC desaparece suavemente."
 	fish_traits = list(/datum/fish_trait/no_mating) //just to be sure, these shouldn't reproduce
 	beauty = /obj/item/fish/goldfish::beauty
 
@@ -48,7 +48,7 @@
 /obj/item/fish/holo/crab
 	name = "holographic crab"
 	fish_id = "holocrab"
-	desc = "A holographic represantion of a soul-crushingly soulless crab, unlike the cuter ones occasionally roaming around. It stares at you, with empty, beady eyes."
+	desc = "Uma represália holográfica de um caranguejo sem alma destroçado, ao contrário dos mais bonitos, ocasionalmente, vagando por aí. Ele olha para você, com olhos vazios."
 	icon_state = "crab"
 	dedicated_in_aquarium_icon_state = null
 	aquarium_vc_color = null
@@ -61,7 +61,7 @@
 /obj/item/fish/holo/puffer
 	name = "holographic pufferfish"
 	fish_id = "holopufferfish"
-	desc ="A holographic representation of 100% safe-to-eat pufferfish... that is, if holographic fishes were even edible."
+	desc ="Uma representação holográfica de 100% de peixe-foleiro seguro para comer... isto é, se peixes holográficos fossem comestíveis."
 	icon_state = /obj/item/fish/pufferfish::icon_state
 	dedicated_in_aquarium_icon_state = /obj/item/fish/pufferfish::dedicated_in_aquarium_icon_state
 	aquarium_vc_color = /obj/item/fish/pufferfish::aquarium_vc_color
@@ -74,7 +74,7 @@
 /obj/item/fish/holo/angel
 	name = "holographic angelfish"
 	fish_id = "holoangelfish"
-	desc = "A holographic representation of a angelfish. I got nothing snarky to say about this one."
+	desc = "Uma representação holográfica de um peixe-anjo. Não tenho nada sarcástico para dizer sobre isso."
 	icon_state = /obj/item/fish/angelfish::icon_state
 	dedicated_in_aquarium_icon_state = /obj/item/fish/angelfish::dedicated_in_aquarium_icon_state
 	aquarium_vc_color = /obj/item/fish/angelfish::aquarium_vc_color
@@ -88,7 +88,7 @@
 	name = "holographic clownfish"
 	fish_id = "holoclownfish"
 	icon_state = "holo_clownfish"
-	desc = "A holographic representation of a clownfish, or at least how they used to look like five centuries ago."
+	desc = "Uma representação holográfica de um peixe-palhaço, ou pelo menos como eles costumavam se parecer há cinco séculos."
 	dedicated_in_aquarium_icon_state = null
 	aquarium_vc_color = /obj/item/fish/clownfish::aquarium_vc_color
 	average_size = /obj/item/fish/clownfish::average_size
@@ -101,7 +101,7 @@
 /obj/item/fish/holo/checkered
 	name = "unrendered holographic fish"
 	fish_id = "checkered"
-	desc = "A checkered silhoutte of searing purple and pitch black presents itself before your eyes, like a tear in fabric of reality. It hurts to watch."
+	desc = "Uma silhuta retorcida de roxo e breu preto se apresenta diante de seus olhos, como uma lágrima em tecido de realidade. Dói ver."
 	icon_state = "checkered" //it's a meta joke, buddy.
 	dedicated_in_aquarium_icon_state = null
 	aquarium_vc_color = null
@@ -128,7 +128,7 @@
 /obj/item/fish/holo/halffish
 	name = "holographic half-fish"
 	fish_id = "halffish"
-	desc = "A holographic representation of... a fish reduced to all bones, except for its head. Isn't it supposed to be dead? Ehr, holo-dead?"
+	desc = "Uma representação holográfica de... um peixe reduzido a todos os ossos, exceto sua cabeça. Não deveria estar morto? Holo-morto?"
 	icon_state = "half_fish"
 	dedicated_in_aquarium_icon_state = null
 	aquarium_vc_color = null

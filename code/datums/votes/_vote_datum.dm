@@ -199,7 +199,7 @@
 		total_votes += choices[option]
 
 	if(total_votes <= 0)
-		return span_bold("Vote Result: Inconclusive - No Votes!")
+		return span_bold("Resultado da votação: inconclusivo - Sem votos!")
 
 	if (display_statistics)
 		returned_text += "\nResults:"

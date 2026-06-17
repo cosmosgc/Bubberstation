@@ -2,7 +2,7 @@
 //Cleanbot
 /mob/living/basic/bot/cleanbot
 	name = "\improper Cleanbot"
-	desc = "A little cleaning robot, he looks so excited!"
+	desc = "Um robô de limpeza, ele parece tão animado!"
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "cleanbot0"
 	health = 25
@@ -16,7 +16,7 @@
 	bot_type = CLEAN_BOT
 	hackables = "cleaning software"
 	additional_access = /datum/id_trim/job/janitor
-	possessed_message = "You are a cleanbot! Clean the station to the best of your ability!"
+	possessed_message = "Você é um robô limpo! Limpe a estação o melhor que puder!"
 	ai_controller = /datum/ai_controller/basic_controller/bot/cleanbot
 	path_image_color = "#993299"
 	facepaint_overlays = list("cleanbot" = FALSE, "cleanbot_highlight" = TRUE)
@@ -204,7 +204,7 @@
 /mob/living/basic/bot/cleanbot/emag_effects(mob/user)
 	if(weapon)
 		weapon.force = initial(weapon.force)
-	balloon_alert(user, "safeties disabled")
+	balloon_alert(user, "Seguranças desativadas.")
 	audible_message(span_danger("[src] buzzes oddly!"))
 
 /mob/living/basic/bot/cleanbot/explode()
@@ -265,14 +265,14 @@
 	return COMPONENT_NO_AFTERATTACK
 
 /mob/living/basic/bot/cleanbot/proc/attach_knife(mob/living/user, obj/item/used_item)
-	balloon_alert(user, "attaching knife...")
+	balloon_alert(user, "Attaching faca...")
 	if(!do_after(user, 2.5 SECONDS, target = src))
 		return
 	deputize(used_item, user)
 
 /mob/living/basic/bot/cleanbot/proc/deputize(obj/item/knife, mob/user)
 	if(!in_range(src, user) || !user.transferItemToLoc(knife, src))
-		balloon_alert(user, "couldn't attach!")
+		balloon_alert(user, "Não consegui fixar!")
 		return FALSE
 	balloon_alert(user, "attached")
 	if(!(bot_access_flags & BOT_COVER_EMAGGED))

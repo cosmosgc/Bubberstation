@@ -4,7 +4,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/bows_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/bows_righthand.dmi'
 	name = "bow"
-	desc = "Seems out-of-place in this day and age, but at least it's reliable."
+	desc = "Parece fora de lugar hoje em dia, mas pelo menos é confiável."
 	icon_state = "bow"
 	inhand_icon_state = "bow"
 	base_icon_state = "bow"
@@ -23,7 +23,7 @@
 	click_on_low_ammo = FALSE
 	must_hold_to_load = TRUE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
-	about_to_shoot_inside_mail_text = "Its bowstring is pulled back!"
+	about_to_shoot_inside_mail_text = "Seu cordão é puxado para trás!"
 	/// whether the bow is drawn back
 	var/drawn = FALSE
 
@@ -63,7 +63,7 @@
 
 /obj/item/gun/ballistic/bow/attack_self(mob/user)
 	if(!chambered)
-		balloon_alert(user, "no arrow nocked!")
+		balloon_alert(user, "Nenhuma flecha nocked!")
 		return
 	balloon_alert(user, "[drawn ? "string released" : "string drawn"]")
 	drawn = !drawn
@@ -74,7 +74,7 @@
 	if(!chambered)
 		return FALSE
 	if(!drawn)
-		to_chat(user, span_warning("Without drawing the bow, the arrow uselessly falls to the ground."))
+		to_chat(user, span_warning("Sem desenhar o arco, a flecha cai inútilmente no chão."))
 		drop_arrow()
 		return FALSE
 	return ..() //fires, removing the arrow
@@ -87,7 +87,7 @@
 /obj/item/gun/ballistic/bow/equipped(mob/user, slot, initial)
 	. = ..()
 	if(slot != ITEM_SLOT_HANDS && chambered)
-		balloon_alert(user, "the arrow falls out!")
+		balloon_alert(user, "A flecha cai!")
 		if(drawn)
 			playsound(src, 'sound/items/weapons/gun/bow/bow_fire.ogg', 25, TRUE)
 		drop_arrow()

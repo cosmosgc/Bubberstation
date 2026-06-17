@@ -128,9 +128,9 @@ Creating a chem with a low purity will make you permanently fall in love with so
 
 /datum/reagent/mkultra
 	name = "MKUltra"
-	description = "A forbidden deep red mixture that increases a person's succeptability to another's words. When taken by the creator, it will enhance the draw of their voice to those affected by it."
+	description = "Uma mistura vermelha profunda proibida que aumenta a sucessibilidade de uma pessoa às palavras de outra pessoa. Quando tomado pelo criador, ele vai melhorar o desenho de sua voz para aqueles afetados por ele."
 	color = "#660015" // rgb: , 0, 255
-	taste_description = "synthetic chocolate, a base tone of alcohol, and high notes of roses"
+	taste_description = "chocolate sintético, um tom básico de álcool, e notas altas de rosas"
 	overdose_threshold = 100 //If this is too easy to get 100u of this, then double it please.
 	metabolization_rate = REAGENTS_METABOLISM * 0.4 // It has to be slow, so there's time for the effect.
 	data = list("enthrall_ckey" = null, "enthrall_gender" = null, "enthrall_name" = null)
@@ -171,7 +171,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 			vocal_cords.Remove()
 		new_vocal_cords.Insert(mob_affected)
 		qdel(vocal_cords)
-		to_chat(mob_affected, "<span class='notice'><i>You feel your vocal chords tingle you speak in a more charasmatic and sultry tone.</i></span>")
+		to_chat(mob_affected, "<span class='notice'><i>Você sente suas cordas vocais formigar você fala em um tom mais charasmático e sensual.</i></span>")
 	else
 		mob_affected.apply_status_effect(/datum/status_effect/chem/enthrall)
 
@@ -224,7 +224,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 	metabolization_rate = 1//Mostly to manage brain damage and reduce server stress
 	if (mob_affected.ckey == enthrall_ckey && enthrall_name == mob_affected.real_name)//If the creator drinks 100u, then you get the status for someone random (They don't have the vocal chords though, so it's limited.)
 		if (!mob_affected.has_status_effect(/datum/status_effect/chem/enthrall))
-			to_chat(mob_affected, "<span class='love'><i>You are unable to resist your own charms anymore, and become a full blown narcissist.</i></span>")
+			to_chat(mob_affected, "<span class='love'><i>Você é incapaz de resistir a seus próprios encantos e se tornar um narcisista.</i></span>")
 	ADD_TRAIT(mob_affected, TRAIT_PACIFISM, "MKUltra")
 	var/datum/status_effect/chem/enthrall/enthrall_chem
 	if (!mob_affected.has_status_effect(/datum/status_effect/chem/enthrall))
@@ -252,7 +252,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 
 /datum/reagent/mkultra/proc/FallInLove(mob/living/carbon/Lover, mob/living/carbon/Love)
 	if(Lover.has_status_effect(/datum/status_effect/in_love))
-		to_chat(Lover, "<span class='warning'>You are already fully devoted to someone else!</span>")
+		to_chat(Lover, "<span class='warning'>Você já é totalmente dedicado a outra pessoa!</span>")
 		return
 	var/lewd = (Lover.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis)) && (Love.client?.prefs?.read_preference(/datum/preference/toggle/erp/hypnosis))
 	to_chat(Lover, "[(lewd?"<span class='love'>":"<span class='warning'>")]You develop a deep and sudden bond with [Love][(lewd?", your heart beginning to race as your mind filles with thoughts about them.":".")] You are determined to keep them safe and happy, and feel drawn towards them.</span>")

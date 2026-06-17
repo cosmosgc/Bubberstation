@@ -1,7 +1,7 @@
 //Programs that interact with other programs or nanites directly, or have other special purposes.
 /datum/nanite_program/viral
 	name = "Viral Replica"
-	desc = "The nanites constantly send encrypted signals attempting to forcefully copy their own programming into other nanite clusters, also overriding or disabling their cloud sync."
+	desc = "Os nanites constantemente enviam sinais criptografados tentando copiar sua própria programação para outros clusters nanites, também sobrepondo ou desativando sua sincronização na nuvem."
 	use_rate = 0.5
 	rogue_types = list(/datum/nanite_program/toxic)
 	var/pulse_cooldown = 0
@@ -28,7 +28,7 @@
 
 /datum/nanite_program/monitoring
 	name = "Monitoring"
-	desc = "The nanites monitor the host's vitals and location, sending them to the suit sensor network."
+	desc = "Os nanites monitoram os sinais vitais e a localização do hospedeiro, enviando-os para a rede de sensores."
 	rogue_types = list(/datum/nanite_program/toxic)
 
 /datum/nanite_program/monitoring/enable_passive_effect()
@@ -48,7 +48,7 @@
 
 /datum/nanite_program/self_scan
 	name = "Host Scan"
-	desc = "The nanites display a detailed readout of a body scan to the host."
+	desc = "Os nanites mostram uma leitura detalhada de uma varredura corporal para o hospedeiro."
 	unique = FALSE
 	can_trigger = TRUE
 	trigger_cost = 3
@@ -74,7 +74,7 @@
 
 /datum/nanite_program/stealth
 	name = "Stealth"
-	desc = "The nanites mask their activity from superficial scans, becoming undetectable by HUDs and non-specialized scanners."
+	desc = "Os nanites mascaram sua atividade de varreduras superficiais, tornando-se indetectáveis por HUDs e scanners não especializados."
 	rogue_types = list(/datum/nanite_program/toxic)
 	use_rate = 0.2
 
@@ -88,8 +88,8 @@
 
 /datum/nanite_program/nanite_debugging
 	name = "Nanite Debugging"
-	desc = "Enables various high-cost diagnostics in the nanites, making them able to communicate their program list to portable scanners. \
-			Doing so uses some power, slightly decreasing their replication speed."
+	desc = "Permite vários diagnósticos de alto custo nos nanites, tornando-os capazes de comunicar sua lista de programas para scanners portáteis.\
+Fazer isso usa algum poder, diminuindo ligeiramente sua velocidade de replicação."
 	rogue_types = list(/datum/nanite_program/toxic)
 	use_rate = 0.1
 
@@ -103,7 +103,7 @@
 
 /datum/nanite_program/relay
 	name = "Relay"
-	desc = "The nanites receive and relay long-range nanite signals."
+	desc = "Os nanites recebem e transmitem sinais de nanites de longo alcance."
 	rogue_types = list(/datum/nanite_program/toxic)
 
 /datum/nanite_program/relay/register_extra_settings()
@@ -139,7 +139,7 @@
 
 /datum/nanite_program/metabolic_synthesis
 	name = "Metabolic Synthesis"
-	desc = "The nanites use the metabolic cycle of the host to speed up their replication rate, using their extra nutrition as fuel."
+	desc = "Os nanites usam o ciclo metabólico do hospedeiro para acelerar sua taxa de replicação, usando sua nutrição extra como combustível."
 	use_rate = -0.5 //generates nanites
 	rogue_types = list(/datum/nanite_program/toxic)
 
@@ -156,7 +156,7 @@
 
 /datum/nanite_program/access
 	name = "Subdermal ID"
-	desc = "The nanites store the host's ID access rights in a subdermal magnetic strip. Updates when triggered, copying the host's current access."
+	desc = "Os nanites armazenam os direitos de acesso do hospedeiro em uma faixa magnética subdérmica. Atualizações quando acionado, copiando o acesso atual do hospedeiro."
 	can_trigger = TRUE
 	trigger_cost = 3
 	trigger_cooldown = 30
@@ -187,8 +187,8 @@
 
 /datum/nanite_program/spreading
 	name = "Infective Exo-Locomotion"
-	desc = "The nanites gain the ability to survive for brief periods outside of the human body, as well as the ability to start new colonies without an integration process; \
-			resulting in an extremely infective strain of nanites."
+	desc = "Os nanites ganham a capacidade de sobreviver por breves períodos fora do corpo humano, assim como a capacidade de iniciar novas colônias sem um processo de integração;\
+resultando em uma estirpe extremamente infecciosa de nanites."
 	use_rate = 1.50
 	rogue_types = list(/datum/nanite_program/aggressive_replication, /datum/nanite_program/necrotic)
 	var/spread_cooldown = 0
@@ -216,10 +216,10 @@
 
 /datum/nanite_program/nanite_sting
 	name = "Nanite Sting"
-	desc = "When triggered, builds a invisible spikes of nanites on the host's skin that \
-			can infect a nearby non-host with a copy of the host's nanites cluster \
-			that is unlinked from the cloud. \
-			Will not work on hosts or those already infected."
+	desc = "Quando acionado, constrói um espigão invisível de nanites na pele do hospedeiro que\
+pode infectar um não-hospedeiro próximo com uma cópia do grupo de nanites do hospedeiro.\
+que está desligado da nuvem.\
+Não funcionará com hospedeiros ou já infectados."
 	can_trigger = TRUE
 	trigger_cost = 15
 	trigger_cooldown = 100
@@ -233,7 +233,7 @@
 	. = ..()
 
 /datum/nanite_program/nanite_sting/on_trigger(comm_message)
-	to_chat(host_mob, span_warning("Your hands becomes sharp and prickly."))
+	to_chat(host_mob, span_warning("Suas mãos ficam afiadas e espinhosas."))
 	RegisterSignal(host_mob, COMSIG_LIVING_EARLY_UNARMED_ATTACK, PROC_REF(on_attack_hand))
 	decay_timer = addtimer(CALLBACK(src, PROC_REF(decay_sting)), 30 SECONDS, TIMER_STOPPABLE)
 
@@ -243,13 +243,13 @@
 	if(!isliving(living))
 		return
 	if(!CAN_HAVE_NANITES(living))
-		host_mob.balloon_alert(host_mob, "can't be infected!")
+		host_mob.balloon_alert(host_mob, "Não pode ser infectado!")
 		return
 	if(SEND_SIGNAL(living, COMSIG_HAS_NANITES))
-		host_mob.balloon_alert(host_mob, "already infected!")
+		host_mob.balloon_alert(host_mob, "Já infectado!")
 		return
 	if(!living.Adjacent(host_mob))
-		host_mob.balloon_alert(host_mob, "can't reach!")
+		host_mob.balloon_alert(host_mob, "Não consigo alcançar!")
 		return
 	var/chances = 100 - living.run_armor_check(host_mob.zone_selected, BIO, silent = TRUE)
 	var/success = prob(chances)
@@ -261,20 +261,20 @@
 		// SEND_SIGNAL(living, COMSIG_NANITE_SET_CLOUD, nanites.cloud_id) won't set the cloud
 		SEND_SIGNAL(living, COMSIG_NANITE_SET_CLOUD_SYNC, NANITE_CLOUD_DISABLE)
 		living.investigate_log("was infected by a nanite cluster with cloud ID [nanites.cloud_id] by [key_name(host_mob)] at [AREACOORD(living)].", INVESTIGATE_NANITES)
-		to_chat(living, span_warning("You feel a tiny prick."))
+		to_chat(living, span_warning("Você sente uma picadinha."))
 	decay_sting()
 
 /datum/nanite_program/nanite_sting/proc/decay_sting()
-	to_chat(host_mob, span_warning("Your hands no longer feel like they're covered in spines."))
+	to_chat(host_mob, span_warning("Suas mãos não parecem mais estar cobertas de espinhos."))
 	deltimer(decay_timer)
 	decay_timer = null
 	UnregisterSignal(host_mob, COMSIG_LIVING_EARLY_UNARMED_ATTACK)
 
 /datum/nanite_program/mitosis
 	name = "Mitosis"
-	desc = "The nanites gain the ability to self-replicate, using bluespace to power the process. Becomes more effective the more nanites are already in the host; \
-			For every 50 nanite volume in the host, the production rate is increased by 0.5. The replication has also a chance to corrupt the nanite programming \
-			due to copy faults - constant cloud sync is highly recommended."
+	desc = "Os nanites ganham a habilidade de se auto-replicarem, usando o espaço azul para alimentar o processo. Torna-se mais eficaz quanto mais nanites já estão no hospedeiro;\
+Para cada 50 volume de nanite no hospedeiro, a taxa de produção é aumentada em 0,5. A replicação também tem a chance de corromper a programação nanita.\
+Devido a falhas de cópia - constante sincronização nuvem é altamente recomendado."
 	use_rate = 0
 	rogue_types = list(/datum/nanite_program/toxic)
 
@@ -291,7 +291,7 @@
 
 /datum/nanite_program/dermal_button
 	name = "Dermal Button"
-	desc = "Displays a button on the host's skin, which can be used to send a signal to the nanites."
+	desc = "Mostra um botão na pele do hospedeiro, que pode ser usado para enviar um sinal para os nanites."
 	unique = FALSE
 	var/datum/action/innate/nanite_button/button
 
@@ -321,7 +321,7 @@
 /datum/nanite_program/dermal_button/proc/press()
 	if(activated)
 		host_mob.visible_message(span_notice("[host_mob] presses a button on [host_mob.p_their()] forearm."),
-								span_notice("You press the nanite button on your forearm."), null, 2)
+								span_notice("Aperte o botão nanite no antebraço."), null, 2)
 		var/datum/nanite_extra_setting/sent_code = extra_settings[NES_SENT_CODE]
 		SEND_SIGNAL(host_mob, COMSIG_NANITE_SIGNAL, sent_code.get_value(), "a [name] program")
 

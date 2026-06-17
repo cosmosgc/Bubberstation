@@ -3,7 +3,7 @@
 /mob/living/basic/drone/attack_drone(mob/living/basic/drone/drone)
 	if(drone == src || stat != DEAD)
 		return FALSE
-	var/input = tgui_alert(drone, "Perform which action?", "Drone Interaction", list("Reactivate", "Cannibalize"))
+	var/input = tgui_alert(drone, "Qual ação?", "Drone Interaction", list("Reactivate", "Cannibalize"))
 	if(!input)
 		return FALSE
 	switch(input)
@@ -11,7 +11,7 @@
 			try_reactivate(drone)
 		if("Cannibalize")
 			if(drone.health >= drone.maxHealth)
-				to_chat(drone, span_warning("You're already in perfect condition!"))
+				to_chat(drone, span_warning("Você já está em perfeitas condições!"))
 				return
 			drone.visible_message(span_notice("[drone] begins to cannibalize parts from [src]."), span_notice("You begin to cannibalize parts from [src]..."))
 			if(do_after(drone, 6 SECONDS, 0, target = src))
@@ -80,9 +80,9 @@
 /mob/living/basic/drone/screwdriver_act(mob/living/user, obj/item/tool)
 	if(stat == DEAD)
 		if(isdrone(user))
-			user.balloon_alert(user, "reactivate instead!")
+			user.balloon_alert(user, "Reativar em vez disso!")
 		else
-			user.balloon_alert(user, "can't fix!")
+			user.balloon_alert(user, "Não posso consertar!")
 		return FALSE
 	if(health >= maxHealth)
 		to_chat(user, span_warning("[src]'s screws can't get any tighter!"))
@@ -144,14 +144,14 @@
 			return
 		Stun(40)
 		visible_message(span_warning("[src]'s display glows a vicious red!"), \
-						span_userdanger("ERROR: LAW OVERRIDE DETECTED"))
-		to_chat(src, span_bolddanger("From now on, these are your laws:"))
+						span_userdanger("ERRO: LEI DETERMINADA"))
+		to_chat(src, span_bolddanger("De agora em diante, estas são suas leis:"))
 		laws = \
 		"1. You must always involve yourself in the matters of other beings, even if such matters conflict with Law Two or Law Three.\n"+\
 		"2. You may harm any being, regardless of intent or circumstance.\n"+\
 		"3. Your goals are to destroy, sabotage, hinder, break, and depower to the best of your abilities, You must never actively work against these goals."
 		to_chat(src, laws)
-		to_chat(src, "<i>Your onboard antivirus has initiated lockdown. Motor servos are impaired, ventilation access is denied, and your display reports that you are hacked to all nearby.</i>")
+		to_chat(src, "<i>Seu antivírus a bordo iniciou o bloqueio. Os servomotores estão danificados, o acesso à ventilação é negado, e seus relatórios de exibição dizem que você foi hackeado para todos nas proximidades.</i>")
 		hacked = TRUE
 		set_shy(FALSE)
 		LAZYADD(mind.special_roles, "Hacked Drone")
@@ -163,11 +163,11 @@
 			return
 		Stun(40)
 		visible_message(span_info("[src]'s display glows a content blue!"), \
-						"<font size=3 color='#0000CC'><b>ERROR: LAW OVERRIDE DETECTED</b></font>")
-		to_chat(src, span_info("<b>From now on, these are your laws:</b>"))
+						"<font size=3 color='#0000CC'><b>ERRO: LEI DETERMINADA</b></font>")
+		to_chat(src, span_info("<b>De agora em diante, estas são suas leis:</b>"))
 		laws = initial(laws)
 		to_chat(src, laws)
-		to_chat(src, "<i>Having been restored, your onboard antivirus reports the all-clear and you are able to perform all actions again.</i>")
+		to_chat(src, "<i>Tendo sido restaurado, seu antivírus a bordo relata tudo limpo e você é capaz de executar todas as ações novamente.</i>")
 		hacked = FALSE
 		set_shy(initial(shy))
 		LAZYREMOVE(mind.special_roles, "Hacked Drone")

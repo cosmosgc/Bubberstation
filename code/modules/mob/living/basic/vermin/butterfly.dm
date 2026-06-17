@@ -1,6 +1,6 @@
 /mob/living/basic/butterfly
 	name = "butterfly"
-	desc = "A colorful butterfly, how'd it get up here?"
+	desc = "Uma borboleta colorida, como chegou aqui?"
 	icon_state = "butterfly"
 	icon_living = "butterfly"
 	icon_dead = "butterfly_dead"
@@ -94,4 +94,4 @@
 
 /mob/living/basic/butterfly/lavaland/temporary/examine(mob/user)
 	. = ..()
-	. += span_notice("Something about it seems unreal...")
+	. += span_notice("Algo sobre isso parece irreal...")

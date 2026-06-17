@@ -24,7 +24,7 @@
 		self_message = "You look at [savior] [text]."
 	else
 		seen_message = "[controller.pawn] seems resigned to its fate."
-		self_message = "You resign yourself to your fate."
+		self_message = "Você se resigna ao seu destino."
 	controller.pawn.visible_message(span_notice("[seen_message]"), span_notice("[self_message]"))
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 

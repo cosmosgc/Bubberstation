@@ -1,5 +1,5 @@
 /obj/vehicle/sealed/mecha/durand
-	desc = "An aging combat exosuit utilized by the Nanotrasen corporation. Originally developed to combat hostile alien lifeforms."
+	desc = "Um exosuit de combate usado pela corporação Nanotrasen. Originalmente desenvolvido para combater formas de vida alienígenas hostis."
 	name = "\improper Durand"
 	icon_state = "durand"
 	base_icon_state = "durand"
@@ -218,7 +218,7 @@ own integrity back to max. Shield is automatically dropped if we run out of powe
 	if(switching && !signal_args[1])
 		return
 	if(!chassis.defense_mode && (!chassis.cell || chassis.cell.charge < 100)) //If it's off, and we have less than 100 units of power
-		chassis.balloon_alert(owner, "insufficient power")
+		chassis.balloon_alert(owner, "Energia insuficiente.")
 		return
 	switching = TRUE
 	chassis.defense_mode = !chassis.defense_mode

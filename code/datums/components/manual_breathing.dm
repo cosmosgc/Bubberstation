@@ -20,12 +20,12 @@
 	if(L)
 		START_PROCESSING(SSdcs, src)
 		last_breath = world.time
-		to_chat(C, span_notice("You suddenly realize you're breathing manually."))
+		to_chat(C, span_notice("De repente você percebe que está respirando manualmente."))
 
 /datum/component/manual_breathing/Destroy(force)
 	L = null
 	STOP_PROCESSING(SSdcs, src)
-	to_chat(parent, span_notice("You revert back to automatic breathing."))
+	to_chat(parent, span_notice("Você volta a respirar automaticamente."))
 	return ..()
 
 /datum/component/manual_breathing/RegisterWithParent()

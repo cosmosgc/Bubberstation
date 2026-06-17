@@ -3,7 +3,7 @@
 //Not being adjacent will cause the paddles to snap back
 /obj/machinery/defibrillator_mount
 	name = "defibrillator mount"
-	desc = "Holds defibrillators. You can grab the paddles if one is mounted."
+	desc = "Segura os desfibriladores. Pode pegar as pás se estiver montada."
 	icon = 'icons/obj/machines/defib_mount.dmi'
 	icon_state = "defibrillator_mount"
 	density = FALSE
@@ -45,9 +45,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 /obj/machinery/defibrillator_mount/examine(mob/user)
 	. = ..()
 	if(defib)
-		. += span_notice("There is a defib unit hooked up. Alt-click to remove it.")
+		. += span_notice("Há uma unidade de desfibrilação ligada. Alt-click para removê-lo.")
 		if(SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-			. += span_notice("Due to a security situation, its locking clamps can be toggled by swiping any ID.")
+			. += span_notice("Devido a uma situação de segurança, suas travas podem ser trocadas por qualquer identificação.")
 		else
 			. += span_notice("Its locking clamps can be [clamps_locked ? "dis" : ""]engaged by swiping an ID with access.")
 
@@ -75,7 +75,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 /obj/machinery/defibrillator_mount/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(!defib)
-		to_chat(user, span_warning("There's no defibrillator unit loaded!"))
+		to_chat(user, span_warning("Não há unidade de desfibrilador carregada!"))
 		return
 	if(defib.paddles.loc != defib)
 		to_chat(user, span_warning("[defib.paddles.loc == user ? "You are already" : "Someone else is"] holding [defib]'s paddles!"))
@@ -110,10 +110,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 		return
 
 	if(!item.GetID() || (!allowed(user) && SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)) //anyone can toggle the clamps in red alert!
-		to_chat(user, span_warning("Insufficient access."))
+		to_chat(user, span_warning("Acesso insuficiente."))
 		return
 	if(!defib)
-		to_chat(user, span_warning("You can't engage the clamps on a defibrillator that isn't there."))
+		to_chat(user, span_warning("Você não pode ligar as pinças em um desfibrilador que não está lá."))
 		return
 	clamps_locked = !clamps_locked
 	to_chat(user, span_notice("Clamps [clamps_locked ? "" : "dis"]engaged."))
@@ -122,7 +122,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 /obj/machinery/defibrillator_mount/multitool_act(mob/living/user, obj/item/multitool)
 	..()
 	if(!defib)
-		to_chat(user, span_warning("There isn't any defibrillator to clamp in!"))
+		to_chat(user, span_warning("Não há nenhum desfibrilador para prender!"))
 		return TRUE
 	if(!clamps_locked)
 		to_chat(user, span_warning("[src]'s clamps are disengaged!"))
@@ -145,7 +145,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 	if(user.combat_mode)
 		return ..()
 	if(defib)
-		to_chat(user, span_warning("The mount can't be deconstructed while a defibrillator unit is loaded!"))
+		to_chat(user, span_warning("A montagem não pode ser desconstruída enquanto uma unidade de desfibrilador está carregada!"))
 		..()
 		return TRUE
 	new wallframe_type(get_turf(src))
@@ -156,13 +156,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 
 /obj/machinery/defibrillator_mount/click_alt(mob/living/carbon/user)
 	if(!defib)
-		to_chat(user, span_warning("It'd be hard to remove a defib unit from a mount that has none."))
+		to_chat(user, span_warning("Seria difícil remover uma unidade de desfibrilação de uma montagem que não tem nenhuma."))
 		return CLICK_ACTION_BLOCKING
 	if(clamps_locked)
 		to_chat(user, span_warning("You try to tug out [defib], but the mount's clamps are locked tight!"))
 		return CLICK_ACTION_BLOCKING
 	if(!user.put_in_hands(defib))
-		to_chat(user, span_warning("You need a free hand!"))
+		to_chat(user, span_warning("Você precisa de uma mão livre!"))
 		user.visible_message(span_notice("[user] unhooks [defib] from [src], dropping it on the floor."), \
 		span_notice("You slide out [defib] from [src] and unhook the charging cables, dropping it on the floor."))
 	else
@@ -173,7 +173,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 
 /obj/machinery/defibrillator_mount/charging
 	name = "PENLITE defibrillator mount"
-	desc = "Holds defibrillators. You can grab the paddles if one is mounted. This PENLITE variant also allows for slow, passive recharging of the defibrillator."
+	desc = "Segura os desfibriladores. Pode pegar as pás se estiver montada. Esta variante de PENLITE também permite recarga lenta e passiva do desfibrilador."
 	icon_state = "penlite_mount"
 	use_power = IDLE_POWER_USE
 	wallframe_type = /obj/item/wallframe/defib_mount/charging
@@ -206,7 +206,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 //wallframe, for attaching the mounts easily
 /obj/item/wallframe/defib_mount
 	name = "unhooked defibrillator mount"
-	desc = "A frame for a defibrillator mount. Once placed, it can be removed with a wrench."
+	desc = "Um quadro para um desfibrilador. Uma vez colocado, pode ser removido com uma chave inglesa."
 	icon = 'icons/obj/machines/defib_mount.dmi'
 	icon_state = "defibrillator_mount"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass = SMALL_MATERIAL_AMOUNT)
@@ -216,7 +216,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 
 /obj/item/wallframe/defib_mount/charging
 	name = "unhooked PENLITE defibrillator mount"
-	desc = "A frame for a PENLITE defibrillator mount. Unlike the normal mount, it can passively recharge the unit inside."
+	desc = "Um quadro para um desfibrilador PENLITE. Ao contrário da montagem normal, ela pode recarregar passivamente a unidade dentro."
 	icon_state = "penlite_mount"
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass = SMALL_MATERIAL_AMOUNT, /datum/material/silver = SMALL_MATERIAL_AMOUNT * 0.5)
 	result_path = /obj/machinery/defibrillator_mount/charging
@@ -241,7 +241,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/defibrillator_mount, 28)
 	if(user.combat_mode)
 		return ..()
 	if(defib)
-		to_chat(user, span_warning("The mount can't be deconstructed while a defibrillator unit is loaded!"))
+		to_chat(user, span_warning("A montagem não pode ser desconstruída enquanto uma unidade de desfibrilador está carregada!"))
 		..()
 		return TRUE
 	balloon_alert(user, "deconstructing...")

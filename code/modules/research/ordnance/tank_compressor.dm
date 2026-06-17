@@ -4,7 +4,7 @@
 
 /obj/machinery/atmospherics/components/binary/tank_compressor
 	name = "Tank Compressor"
-	desc = "Heavy duty shielded air compressor designed to pressurize tanks above the safe limit."
+	desc = "Compressor de ar blindado projetado para pressurizar tanques acima do limite seguro."
 	circuit = /obj/item/circuitboard/machine/tank_compressor
 	icon = 'icons/obj/machines/research.dmi'
 	base_icon_state = "tank_compressor"
@@ -49,7 +49,7 @@
 	if(istype(tool, /obj/item/disk/computer))
 		eject_disk(user)
 		if(!user.transferItemToLoc(tool, src))
-			balloon_alert(user, "it's stuck to your hand!")
+			balloon_alert(user, "Está preso na sua mão!")
 			return ITEM_INTERACT_BLOCKING
 		inserted_disk = tool
 		return ITEM_INTERACT_SUCCESS
@@ -59,11 +59,11 @@
 
 	if(inserted_tank)
 		if(!eject_tank(user))
-			balloon_alert(user, "it's stuck inside!")
+			balloon_alert(user, "Está preso dentro!")
 			return ITEM_INTERACT_BLOCKING
 
 	if(!user.transferItemToLoc(tool, src))
-		balloon_alert(user, "it's stuck to your hand!")
+		balloon_alert(user, "Está preso na sua mão!")
 		return ITEM_INTERACT_BLOCKING
 
 	inserted_tank = tool

@@ -31,7 +31,7 @@
 /datum/hallucination/station_message/shuttle_dock/do_fake_alert()
 	priority_announce(
 		text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
-		title = "Emergency Shuttle Arrival",
+		title = "Chegada do ônibus de emergência",
 		sound = ANNOUNCER_SHUTTLEDOCK,
 		sender_override = "Emergency Shuttle Uplink Alert",
 		players = list(hallucinator),
@@ -124,7 +124,7 @@
 
 /datum/hallucination/station_message/supermatter_delam/do_fake_alert()
 	SEND_SOUND(hallucinator, 'sound/effects/magic/charge.ogg')
-	to_chat(hallucinator, span_bolddanger("You feel reality distort for a moment..."))
+	to_chat(hallucinator, span_bolddanger("Você sente a realidade distorcer por um momento..."))
 
 /datum/hallucination/station_message/clock_cult_ark
 	// Clock cult's long gone, but this stays for posterity.

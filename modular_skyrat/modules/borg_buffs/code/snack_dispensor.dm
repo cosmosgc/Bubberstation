@@ -14,7 +14,7 @@
 
 /obj/item/borg/upgrade/snack_dispenser
 	name = "Snack Dispenser Module"
-	desc = "Gives any borg the ability to dispense speciality snacks."
+	desc = "Dá a qualquer borg a habilidade de dispensar lanches especiais."
 	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
 	var/list/removed_modules = list()
 
@@ -44,7 +44,7 @@
 
 /obj/item/borg_snack_dispenser
 	name = "\improper Automated Borg Snack Dispenser"
-	desc = "Has the ability to automatically print many differnt forms of snacks. Now Lizard approved!"
+	desc = "Tem a capacidade de imprimir automaticamente muitas formas diferentes de lanches. Agora Lizard aprovou!"
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
 	/// Contains the PATH of the selected snack
@@ -77,7 +77,7 @@
 	for(var/atom/snack as anything in valid_snacks)
 		choices[initial(snack.name)] = snack
 	if(!length(choices))
-		to_chat(user, span_warning("No valid snacks in database."))
+		to_chat(user, span_warning("Nenhum lanche válido no banco de dados."))
 	if(length(choices) == 1)
 		selected_snack = choices[1]
 	else
@@ -97,7 +97,7 @@
 		to_chat(user, span_warning("[patron] has no free hands!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!selected_snack)
-		to_chat(user, span_warning("No snack selected."))
+		to_chat(user, span_warning("Nenhum lanche selecionado."))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/silicon/robot/borg = user
 	if(!istype(borg))
@@ -106,7 +106,7 @@
 		to_chat(borg, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!borg.cell.use(borg_charge_usage))
-		to_chat(borg, span_danger("Failure printing snack: power failure!"))
+		to_chat(borg, span_danger("Lanchinho de impressão: falha de energia!"))
 		return ITEM_INTERACT_BLOCKING
 	var/atom/snack = new selected_snack(src)
 	patron.put_in_hand(snack, empty_hand)
@@ -125,7 +125,7 @@
 	if(!launch_mode)
 		return NONE
 	if(!selected_snack)
-		to_chat(user, span_warning("No snack selected."))
+		to_chat(user, span_warning("Nenhum lanche selecionado."))
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/silicon/robot/borg = user
 	if(!istype(borg))
@@ -134,7 +134,7 @@
 		to_chat(borg, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
 		return ITEM_INTERACT_BLOCKING
 	if(!borg.cell.use(borg_charge_usage))
-		to_chat(borg, span_danger("Failure printing snack: power failure!"))
+		to_chat(borg, span_danger("Lanchinho de impressão: falha de energia!"))
 		return ITEM_INTERACT_BLOCKING
 	var/atom/movable/snack = new selected_snack(get_turf(src))
 	snack.throw_at(interacting_with, 7, 2, borg, TRUE, FALSE)
@@ -144,7 +144,7 @@
 
 /obj/item/food/cookie/bacon
 	name = "strip of bacon"
-	desc = "BACON!!!"
+	desc = "Bacon!"
 	icon = 'modular_skyrat/master_files/icons/obj/food/snacks.dmi'
 	icon_state = "bacon_strip"
 	foodtypes = MEAT
@@ -152,7 +152,7 @@
 
 /obj/item/food/cookie/cloth
 	name = "odd cookie"
-	desc = "A cookie that appears to be made out of... some form of cloth?"
+	desc = "Um biscoito que parece ser feito de... algum tipo de pano?"
 	icon = 'modular_skyrat/master_files/icons/obj/food/snacks.dmi'
 	icon_state = "cookie_cloth"
 	foodtypes = CLOTH

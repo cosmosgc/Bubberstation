@@ -31,7 +31,7 @@
 		update_appearance()
 		return
 	else
-		to_chat(user, span_warning("It seems that the blackbox is missing..."))
+		to_chat(user, span_warning("Parece que a caixa preta está faltando..."))
 		return
 
 /obj/machinery/blackbox_recorder/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
@@ -59,7 +59,7 @@
 
 /obj/item/blackbox
 	name = "\proper the blackbox"
-	desc = "A strange relic, capable of recording data on extradimensional vertices. It lives inside the blackbox recorder for safe keeping."
+	desc = "Uma relíquia estranha, capaz de registrar dados em vértices extradimensionais. Ele vive dentro do gravador da caixa preta para guardar em segurança."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "blackcube"
 	inhand_icon_state = "blackcube"
@@ -77,7 +77,7 @@
  */
 /obj/machinery/telecomms/message_server
 	name = "Messaging Server"
-	desc = "A machine that processes and routes PDA and request console messages."
+	desc = "Uma máquina que processa e encaminha PDA e solicita mensagens de console."
 	icon_state = "message_server"
 	telecomms_type = /obj/machinery/telecomms/message_server
 	density = TRUE
@@ -118,7 +118,7 @@
 /obj/machinery/telecomms/message_server/examine(mob/user)
 	. = ..()
 	if(calibrating)
-		. += span_warning("It's still calibrating.")
+		. += span_warning("Ainda está calibrando.")
 
 /obj/machinery/telecomms/message_server/process()
 	. = ..()

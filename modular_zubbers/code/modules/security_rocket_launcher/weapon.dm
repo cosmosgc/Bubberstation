@@ -2,8 +2,8 @@
 
 	//Text
 	name = "\improper \"VARS\" Variable Active Radar Missile System"
-	desc = "A (relatively) cheap, reusable missile launcher cooked up by the crackpots in the Nanotrasen weapons development labs meant to deal with those pesky space bandits. \
-	Uses special patented 69mm \"fire and fuhgeddaboudit\" missiles that home in on targets with large radar signatures, including walls, floors, and most importantly, people."
+	desc = "Um lançador de mísseis barato e reutilizável, preparado pelos malucos dos laboratórios de desenvolvimento de armas Nanotrasen, para lidar com esses bandidos espaciais.\
+Uso especial patenteado 69mm\"Fogo e fuhgeddaboudit\"mísseis que alojam alvos com grandes assinaturas de radar, incluindo paredes, pisos, e o mais importante, pessoas."
 	cartridge_wording = "missile"
 
 	//Icons
@@ -33,7 +33,7 @@
 
 	//The funny
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "Using a cryptographic sequencer on this should overload the radar systems."
+	special_desc = "Usar um sequenciador criptográfico deve sobrecarregar os sistemas de radar."
 
 	var/self_targeting = FALSE //emag interaction
 
@@ -133,12 +133,12 @@
 	if(!user.can_read(src, READING_CHECK_LITERACY, silent = TRUE) || !user.has_language(/datum/language/common, UNDERSTOOD_LANGUAGE))
 		if(!user.is_blind())
 			. += "<hr>You gaze at the warning label, trying to make sense of it..."
-			. += span_warning("...But you don't actually know what any of it means.")
+			. += span_warning("Mas você não sabe o que nada disso significa.")
 		return
 
 	if(!user.can_read(src, READING_CHECK_LIGHT, silent = TRUE))
 		. += "<hr>You squint at the warning label..."
-		. += span_warning("...But it's too dark to make out anything.")
+		. += span_warning("Mas está muito escuro para entender qualquer coisa.")
 		return
 
 	var/obj/item/organ/eyes/eye = user.get_organ_slot(ORGAN_SLOT_EYES)
@@ -147,13 +147,13 @@
 
 	if(eye.damage >= eye.low_threshold || user.has_status_effect(/datum/status_effect/eye_blur))
 		. += "<hr>You squint at the warning label..."
-		. += span_warning("...But it's too hard to read anything this small...")
+		. += span_warning("Mas é muito difícil ler algo tão pequeno...")
 		return
 
 	if(!warning_label)
 		warning_label = generate_warning_label()
 
-	. += span_warning("A warning label on the side reads:")
+	. += span_warning("Um rótulo de aviso do lado diz:")
 
 	. += span_danger(warning_label)
 
@@ -161,7 +161,7 @@
 	if(self_targeting)
 		return FALSE
 	self_targeting = TRUE
-	balloon_alert(user, "targeting systems tampered")
+	balloon_alert(user, "Sistema de mira adulterado.")
 	do_sparks(2, FALSE, src)
 	return TRUE
 

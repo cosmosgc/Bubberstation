@@ -6,7 +6,7 @@
  */
 /obj/item/surgery_tray
 	name = "surgery tray"
-	desc = "A DeForest-brand medical cart. It is a folding model, meaning the wheels on the bottom can be retracted and the body used as a tray."
+	desc = "Um carrinho médico da DeForest. É um modelo dobrável, o que significa que as rodas na parte inferior podem ser retraídas e o corpo usado como bandeja."
 	icon = 'icons/obj/medical/medicart.dmi'
 	icon_state = "tray"
 	w_class = WEIGHT_CLASS_BULKY
@@ -49,17 +49,17 @@
 /obj/item/surgery_tray/update_desc()
 	. = ..()
 	if(is_portable)
-		desc = "The wheels and bottom storage of this medical cart have been stowed away, \
-			leaving a cumbersome tray in its place."
+		desc = "As rodas e o depósito deste carrinho médico foram guardados,\
+deixando uma bandeja pesada em seu lugar."
 	else
 		desc = initial(desc)
 
 /obj/item/surgery_tray/examine(mob/living/carbon/human/user)
 	. = ..()
 	. += is_portable \
-		? span_notice("You can click and drag it to yourself to pick it up, then use it in your hand to make it a cart!") \
-		: span_notice("You can click and drag it to yourself to turn it into a tray!")
-	. += span_notice("The top is <b>screwed</b> on.")
+		? span_notice("Você pode clicar e arrastar para si mesmo para pegá-lo, e então usá-lo em sua mão para torná-lo um carrinho!") \
+		: span_notice("Você pode clicar e arrastar para si mesmo para transformá-lo em uma bandeja!")
+	. += span_notice("O topo é<b>Está ferrado.</b>Vamos.")
 
 /obj/item/surgery_tray/update_overlays()
 	. = ..()
@@ -125,10 +125,10 @@
 		return
 	var/turf/open/placement_turf = get_turf(user)
 	if(isgroundlessturf(placement_turf) || isclosedturf(placement_turf))
-		balloon_alert(user, "can't deploy!")
+		balloon_alert(user, "Não posso!")
 		return TRUE
 	if(!user.transferItemToLoc(src, placement_turf))
-		balloon_alert(user, "tray stuck!")
+		balloon_alert(user, "Bandeja presa!")
 		return TRUE
 	set_tray_mode(FALSE, user)
 	return
@@ -137,7 +137,7 @@
 	if(!user.can_perform_action(src, NEED_HANDS))
 		return ..()
 	if(!length(contents))
-		balloon_alert(user, "empty!")
+		balloon_alert(user, "Vazio!")
 	else
 		var/obj/item/grabbies = pick(contents)
 		if(atom_storage.remove_single(user, grabbies, drop_location()))
@@ -189,8 +189,8 @@
 
 /obj/item/surgery_tray/full/morgue
 	name = "autopsy tray"
-	desc = "A DeForest-brand surgery tray, made for use in morgues. It is a folding model, \
-		meaning the wheels on the bottom can be extended outwards, making it a cart."
+	desc = "Uma bandeja de cirurgia da DeForest, feita para uso em necrotérios. É um modelo dobrável,\
+O que significa que as rodas no fundo podem ser estendidas para fora, tornando-o um carrinho."
 	starting_items = list(
 		/obj/item/blood_filter/cruel,
 		/obj/item/bonesetter/cruel,

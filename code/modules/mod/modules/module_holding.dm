@@ -3,9 +3,9 @@
 
 /obj/item/mod/module/storage/holding
 	name = "MOD storage module of holding"
-	desc = "A prototype storage module utilizing the power of anomalous bluespace phenomena \
-		to store copious amounts of matter. Unfortunately, it suffers from the same drawbacks as its standalone counterpart, \
-		including <b>tearing catastrophic rifts in reality</b> when nested inside bluespace pockets produced through similar means."
+	desc = "Um protótipo de módulo de armazenamento utilizando o poder de fenômenos anômalos do espaço azul\
+para armazenar quantidades abundantes de matéria. Infelizmente, sofre das mesmas desvantagens que seu homólogo independente,\
+Incluindo<b>rasgando fendas catastróficas na realidade</b>Quando aninhado dentro de bolsos do espaço azul produzido por meios semelhantes."
 	icon_state = "storage_holding"
 	complexity = 4
 	storage_type = null // core-less modules should be safe to insert into bags of holding
@@ -70,7 +70,7 @@
 	if(possible_bag_bombs[suit] == HOLDING_MODULE_PREVENT_DUPLICATE_CHECK)
 		return MOD_ABORT_INSTALL
 	if(!anomalock.core)
-		balloon_alert(user, "no core!")
+		balloon_alert(user, "Sem núcleo!")
 		playsound(suit, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return MOD_ABORT_INSTALL
 	var/datum/storage/bag_of_holding/other_bag

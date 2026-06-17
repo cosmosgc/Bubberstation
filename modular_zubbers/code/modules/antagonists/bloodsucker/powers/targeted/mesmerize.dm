@@ -20,7 +20,7 @@
 	target_range = 4
 	power_activates_immediately = FALSE
 	unset_after_click = FALSE
-	prefire_message = "Whom will you subvert to your will?"
+	prefire_message = "Quem você vai subverter à sua vontade?"
 	///Our mesmerized target - Prevents several mesmerizes.
 	var/datum/weakref/target_ref
 	/// How long it takes us to mesmerize our target.
@@ -70,11 +70,11 @@
 		return FALSE
 	if(!user.get_organ_slot(ORGAN_SLOT_EYES))
 		// Cant use balloon alert, they've got no eyes!
-		to_chat(user, span_warning("You have no eyes with which to mesmerize."))
+		to_chat(user, span_warning("Você não tem olhos para hipnotizar."))
 		return FALSE
 	// Check: Eyes covered?
 	if(blocked_by_glasses && istype(user) && (user.is_eyes_covered() && level_current <= 2) || !isturf(user.loc))
-		user.balloon_alert(user, "your eyes are concealed from sight.")
+		user.balloon_alert(user, "Seus olhos estão escondidos.")
 		return FALSE
 	return TRUE
 
@@ -150,7 +150,7 @@
 	// Can't quite time it here, but oh well
 	to_chat(mesmerized_target, "[user]'s eyes look into yours, and [span_hypnophrase("you feel your mind slipping away")]...")
 	/*if(IS_MONSTERHUNTER(mesmerized_target))
-		to_chat(mesmerized_target, span_notice("You feel your eyes burn for a while, but it passes."))
+		to_chat(mesmerized_target, span_notice("Você sente seus olhos queimando por um tempo, mas passa."))
 		return*/
 	if(HAS_TRAIT_FROM_ONLY(mesmerized_target, TRAIT_NO_TRANSFORM, MESMERIZE_TRAIT))
 		owner.balloon_alert(owner, "[mesmerized_target] is already in a hypnotic gaze.")
@@ -181,7 +181,7 @@
 /datum/action/cooldown/bloodsucker/targeted/mesmerize/proc/combat_mesmerize_effects(mob/living/user, mob/living/mesmerized_target)
 	if(!ContinueActive(user, mesmerized_target))
 		StartCooldown(cooldown_time * 0.5)
-		owner.balloon_alert(owner, "failed!")
+		owner.balloon_alert(owner, "Falhou!")
 		return
 	to_chat(mesmerized_target, "[src]'s eyes look into yours, and [span_hypnophrase("your head becomes fuzzy for a moment")]...")
 	var/effect_time = combat_mesmerize_time()

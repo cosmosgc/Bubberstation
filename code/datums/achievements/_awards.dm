@@ -82,7 +82,7 @@
 
 ///Achievements are one-off awards for usually doing cool things.
 /datum/award/achievement
-	desc = "Achievement for epic people"
+	desc = "Realização para pessoas épicas"
 	icon_state = "" // This should warn contributors that do not declare an icon when contributing new achievements.
 	///How many players have earned this achievement
 	var/times_achieved = 0
@@ -135,7 +135,7 @@
 
 ///Scores are for leaderboarded things, such as killcount of a specific boss
 /datum/award/score
-	desc = "you did it sooo many times."
+	desc = "Você fez isso tantas vezes."
 	category = "Scores"
 
 	var/track_high_scores = TRUE
@@ -181,7 +181,7 @@
 ///Defining this here 'cause it's the first score a player should see in the Scores category.
 /datum/award/score/achievements_score
 	name = "Achievements Unlocked"
-	desc = "Don't worry, metagaming is all that matters."
+	desc = "Não se preocupe, Metagaming é o que importa."
 	icon_state = "elephant" //Obey the reference
 	database_id = ACHIEVEMENTS_SCORE
 

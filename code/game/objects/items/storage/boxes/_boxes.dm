@@ -1,7 +1,7 @@
 /// The common cardboard box.
 /obj/item/storage/box
 	name = "box"
-	desc = "It's just an ordinary box."
+	desc = "É só uma caixa comum."
 	icon = 'icons/obj/storage/box.dmi'
 	icon_state = "box"
 	inhand_icon_state = "syringe_kit"
@@ -45,7 +45,7 @@
 	if(!foldable_result || (flags_1 & HOLOGRAM_1))
 		return
 	if(contents.len)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "Itens dentro!")
 		return
 	if(!ispath(foldable_result))
 		return

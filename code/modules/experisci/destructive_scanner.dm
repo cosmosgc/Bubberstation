@@ -5,7 +5,7 @@
  */
 /obj/machinery/destructive_scanner
 	name = "experimental destructive scanner"
-	desc = "A much larger version of the hand-held scanner. A charred label warns about its destructive capabilities."
+	desc = "Uma versão muito maior do scanner portátil. Uma gravadora carbonizada avisa sobre suas capacidades destrutivas."
 	icon = 'icons/obj/machines/destructive_scanner.dmi'
 	icon_state = "tube_open"
 	circuit = /obj/item/circuitboard/machine/destructive_scanner
@@ -97,7 +97,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
-	balloon_alert(user, "safety sensor BIOS disabled")
+	balloon_alert(user, "Sensor de segurança BIOS desativado")
 	return TRUE
 
 /obj/machinery/destructive_scanner/update_icon_state()

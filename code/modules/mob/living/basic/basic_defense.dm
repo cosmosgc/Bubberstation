@@ -46,7 +46,7 @@
 	shover.visible_message(
 		span_danger("[shover.name] [response_disarm_continuous] [src][moved ? ", pushing [p_them()]" : ""]!"),
 		span_danger("You [response_disarm_simple] [src][moved ? ", pushing [p_them()]" : ""]!"),
-		span_hear("You hear aggressive shuffling!"),
+		span_hear("Você ouve baralhar agressivo!"),
 		COMBAT_MESSAGE_RANGE,
 		list(src),
 	)

@@ -9,7 +9,7 @@
 
 /datum/action/cooldown/guardian/check_type
 	name = "Check Type"
-	desc = "A reminder on what your abilities are."
+	desc = "Um lembrete sobre suas habilidades."
 	//this is based off of the antag ui icon, if that changes then change this too please.
 	button_icon_state = /datum/action/antag_info::button_icon_state
 	default_button_position = SCRN_OBJ_INSERT_FIRST
@@ -20,7 +20,7 @@
 
 /datum/action/cooldown/guardian/communicate
 	name = "Communicate"
-	desc = "Communicate telepathically with your user."
+	desc = "Comunique-se telepaticamente com seu usuário."
 	button_icon_state = "communicate"
 	default_button_position = ui_guardian_communication
 
@@ -29,7 +29,7 @@
 
 /datum/action/cooldown/guardian/manifest
 	name = "Manifest"
-	desc = "Spring forth into battle!"
+	desc = "Ir para a batalha!"
 	button_icon_state = "manifest"
 	default_button_position = ui_guardian_manifest
 
@@ -38,7 +38,7 @@
 
 /datum/action/cooldown/guardian/recall
 	name = "Recall"
-	desc = "Return to your user."
+	desc = "Volte para seu usuário."
 	button_icon_state = "recall"
 	default_button_position = ui_guardian_recall
 
@@ -47,7 +47,7 @@
 
 /datum/action/cooldown/guardian/toggle_light
 	name = "Toggle Light"
-	desc = "Glow like star dust."
+	desc = "Brilha como pó de estrela."
 	button_icon_state = "light"
 
 /datum/action/cooldown/guardian/toggle_light/Activate()
@@ -55,7 +55,7 @@
 
 /datum/action/cooldown/guardian/toggle_mode
 	name = "Toggle Mode"
-	desc = "Switch between ability modes."
+	desc = "Troque entre modos de habilidade."
 	button_icon_state = "toggle"
 	default_button_position = ui_guardian_special
 
@@ -64,7 +64,7 @@
 
 /datum/action/cooldown/guardian/toggle_mode/assassin
 	name = "Toggle Stealth"
-	desc = "Enter or exit stealth."
+	desc = "Entre ou saia furtivamente."
 	button_icon_state = "stealth"
 	transparent_when_unavailable = TRUE
 
@@ -73,5 +73,5 @@
 
 /datum/action/cooldown/guardian/toggle_mode/gases
 	name = "Toggle Gas"
-	desc = "Switch between possible gases."
+	desc = "Troque entre possíveis gases."
 	button_icon_state = "gases"

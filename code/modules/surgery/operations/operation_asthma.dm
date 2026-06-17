@@ -3,7 +3,7 @@
 	// google says the *actual* operation used to relieve asthma is called bronchial thermoplasty but this operation doesn't resemble that at all
 	// local doctors suggested "bronchial dilatation" instead
 	rnd_name = "Bronchial Dilatation (Asthmatic Bypass)"
-	desc = "Forcibly expand a patient's windpipe, relieving asthma symptoms."
+	desc = "Expandir a traqueia de um paciente, aliviando sintomas de asma."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP
 	implements = list(
 		TOOL_RETRACTOR = 1.25,

@@ -4,7 +4,7 @@
 	base_icon_state = "ethereal_heart"
 	beat_noise = "a pulsing crackle"
 	visual = TRUE //This is used by the ethereal species for color
-	desc = "A crystal-like organ that functions similarly to a heart for Ethereals. It can revive its owner."
+	desc = "Um órgão semelhante a um cristal que funciona como um coração para Ethereals. Pode reviver seu dono."
 
 	///Cooldown for the next time we can crystalize
 	COOLDOWN_DECLARE(crystalize_cooldown)
@@ -79,7 +79,7 @@
 	if(HAS_TRAIT(victim, TRAIT_CANNOT_CRYSTALIZE))
 		return // no reviving during mafia, or other inconvenient times.
 
-	to_chat(victim, span_nicegreen("Crystals start forming around your dead body."))
+	to_chat(victim, span_nicegreen("Cristais começam a se formar em torno do seu cadáver."))
 	victim.visible_message(span_notice("Crystals start forming around [victim]."), ignored_mobs = victim)
 
 	ADD_TRAIT(victim, TRAIT_CORPSELOCKED, SPECIES_TRAIT)
@@ -95,7 +95,7 @@
 	SIGNAL_HANDLER
 	defender.visible_message(
 		span_notice("The crystals on [defender] are gently broken off."),
-		span_notice("The crystals on your corpse are gently broken off, and will need some time to recover."),
+		span_notice("Os cristais em seu cadáver são gentilmente quebrados, e vai precisar de algum tempo para se recuperar."),
 	)
 	deltimer(crystalize_timer_id)
 	crystalize_timer_id = addtimer(CALLBACK(src, PROC_REF(crystalize), defender), CRYSTALIZE_DISARM_WAIT_TIME, TIMER_STOPPABLE) //Lets us restart the timer on disarm
@@ -109,7 +109,7 @@
 		return //Should probably not happen, but lets be safe.
 
 	if(ismob(location) || isitem(location) || iseffect(location) || HAS_TRAIT_FROM(src, TRAIT_HUSK, CHANGELING_DRAIN)) //Stops crystallization if they are eaten by a dragon, turned into a legion, consumed by his grace, etc.
-		to_chat(ethereal, span_warning("You were unable to finish your crystallization, for obvious reasons."))
+		to_chat(ethereal, span_warning("Você não conseguiu terminar sua cristalização, por razões óbvias."))
 		stop_crystalization_process(ethereal, FALSE)
 		return
 	COOLDOWN_START(src, crystalize_cooldown, INFINITY) //Prevent cheeky double-healing until we get out, this is against stupid admemery
@@ -153,14 +153,14 @@
 
 	ethereal.visible_message(
 		span_notice("The crystals on [ethereal] are completely shattered and stopped growing."),
-		span_warning("The crystals on your body have completely broken."),
+		span_warning("Os cristais em seu corpo quebraram completamente."),
 	)
 
 	stop_crystalization_process(ethereal)
 
 /obj/structure/ethereal_crystal
 	name = "ethereal resurrection crystal"
-	desc = "It seems to contain the corpse of an ethereal mending its wounds."
+	desc = "Parece conter o cadáver de um etéreo consertando suas feridas."
 	icon = 'icons/mob/effects/ethereal_crystal.dmi'
 	icon_state = "ethereal_crystal"
 	damage_deflection = 0
@@ -185,7 +185,7 @@
 		return INITIALIZE_HINT_QDEL
 	src.ethereal_heart = ethereal_heart
 	ethereal_heart.owner.visible_message(span_notice("The crystals fully encase [ethereal_heart.owner]!"))
-	to_chat(ethereal_heart.owner, span_notice("You are encased in a huge crystal!"))
+	to_chat(ethereal_heart.owner, span_notice("Você está envolto em um grande cristal!"))
 	playsound(get_turf(src), 'sound/mobs/humanoids/ethereal/ethereal_crystalization.ogg', 50)
 	var/atom/movable/possible_chair = ethereal_heart.owner.buckled
 	possible_chair?.unbuckle_mob(ethereal_heart.owner, force = TRUE)
@@ -231,7 +231,7 @@
 	var/mob/living/carbon/regenerating = ethereal_heart.owner
 
 	playsound(get_turf(regenerating), 'sound/mobs/humanoids/ethereal/ethereal_revive.ogg', 100)
-	to_chat(regenerating, span_notice("You burst out of the crystal with vigour... </span><span class='userdanger'>But at a cost."))
+	to_chat(regenerating, span_notice("Você saiu do cristal com vigor...</span><span class='userdanger'>Mas a um custo."))
 	regenerating.revive(HEAL_ALL & ~HEAL_REFRESH_ORGANS)
 
 	if(prob(10)) //10% chance for a severe trauma

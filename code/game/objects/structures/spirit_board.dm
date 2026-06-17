@@ -1,6 +1,6 @@
 /obj/structure/spirit_board
 	name = "spirit board"
-	desc = "A wooden board with letters etched into it, used in seances."
+	desc = "Uma tábua de madeira com letras gravadas nela, usada em sessões espíritas."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "spirit_board"
 	resistance_flags = FLAMMABLE
@@ -34,7 +34,7 @@
 	if(planchette)
 		. += span_notice("The planchette is currently at the letter \"[planchette]\".")
 	else
-		. += span_notice("The planchette is in the middle of the board on no particular letter.")
+		. += span_notice("A planchette está no meio do quadro em nenhuma carta em particular.")
 
 /obj/structure/spirit_board/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -59,7 +59,7 @@
 		notify_ghosts(
 			"Someone has begun playing with \a [src] in [get_area(src)]!",
 			source = src,
-			header = "Spirit board",
+			header = "Tabuleiro espiritual.",
 		)
 
 	var/new_planchette = tgui_input_list(ghost, "Choose the letter.", "Seance!", ghosty_options)
@@ -77,7 +77,7 @@
 		if(viewer.stat != CONSCIOUS && viewer.stat != DEAD) // You gotta be awake or dead to pay the toll
 			continue
 		if(viewer.is_blind())
-			to_chat(viewer, span_hear("You hear a scraping sound..."))
+			to_chat(viewer, span_hear("Você ouve um som de raspagem..."))
 		else
 			to_chat(viewer, span_notice("The planchette slowly moves... and stops at the letter \"[planchette]\"."))
 

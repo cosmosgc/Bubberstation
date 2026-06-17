@@ -35,7 +35,7 @@
 
 /obj/item/clothing/head/helmet/cin_surplus_helmet
 	name = "\improper GZ-03 combat helmet"
-	desc = "An outdated service helmet previously used by CIN military forces. The design dates back to the years leading up to CIN - TerraGov border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
+	desc = "Um capacete antiquado usado anteriormente pelas forças militares CIN. O projeto remonta aos anos que antecederam a guerra de fronteira CIN-TerraGov, e estava em serviço até o advento da armadura de propulsão VOSKHOD tornar-se padrão."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/helmet/cin_surplus_helmet"
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
@@ -117,7 +117,7 @@
 
 /obj/item/clothing/under/syndicate/rus_army/cin_surplus
 	name = "\improper CIN combat uniform"
-	desc = "A CIN designed combat uniform that can come in any number of camouflauge variations. Despite this particular design being developed in the years leading up to the CIN-TerraGov border war, the uniform is still in use by many member states to this day."
+	desc = "Uma CIN projetou uniforme de combate que pode vir em qualquer número de variações camufladas. Apesar deste projeto em particular ter sido desenvolvido nos anos anteriores à guerra de fronteira CIN-Terragov, o uniforme ainda está em uso por muitos Estados-Membros até hoje."
 	icon = 'icons/map_icons/clothing/under/_under.dmi'
 	icon_state = "/obj/item/clothing/under/syndicate/rus_army/cin_surplus"
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
@@ -157,7 +157,7 @@
 
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	name = "\improper GZ-03 armor vest"
-	desc = "An outdated armor vest previously used by CIN military forces. The design dates back to the years leading up to CIN - TerraGov border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
+	desc = "Um colete antiquado usado anteriormente pelas forças militares CIN. O projeto remonta aos anos que antecederam a guerra de fronteira CIN-TerraGov, e estava em serviço até o advento da armadura de propulsão VOSKHOD tornar-se padrão."
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
 	icon_state = "vest_basic"
@@ -198,7 +198,7 @@
 // Chest Rig
 
 /obj/item/storage/belt/military/cin_surplus
-	desc = "A tactical webbing often used by the CIN's military forces."
+	desc = "Uma trama tática frequentemente usada pelas forças militares da CIN."
 	icon = 'icons/map_icons/clothing/_clothing.dmi'
 	icon_state = "/obj/item/storage/belt/military/cin_surplus"
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
@@ -239,7 +239,7 @@
 
 /obj/item/storage/backpack/industrial/cin_surplus
 	name = "\improper CIN military backpack"
-	desc = "A rugged backpack often used by the CIN's military forces."
+	desc = "Uma mochila áspera frequentemente usada pelas forças militares da CIN."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/storage/backpack/industrial/cin_surplus"
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'

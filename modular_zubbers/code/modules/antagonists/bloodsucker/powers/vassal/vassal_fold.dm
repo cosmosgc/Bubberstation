@@ -1,6 +1,6 @@
 /datum/action/cooldown/bloodsucker/ghoul_blood
 	name = "Help Ghoul"
-	desc = "Bring an ex-Ghoul back into the fold, or create blood using a bag. RMB: Check Ghoul status."
+	desc = "Traga um ex-Ghoul de volta para a dobra, ou crie sangue usando uma bolsa. Verifique o estado de Ghoul."
 	button_icon_state = "power_torpor"
 	power_explanation = "Help Ghoul:\n\
 		Use this power while you have an ex-Ghoul grabbed to bring them back into the fold. \
@@ -27,7 +27,7 @@
 
 	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
 		if(!revenge_ghoul.ex_ghouls.len)
-			owner.balloon_alert(owner, "no ghouls!")
+			owner.balloon_alert(owner, "Sem fantasmas!")
 			return FALSE
 		return TRUE
 
@@ -35,17 +35,17 @@
 		var/mob/living/pulled_target = owner.pulling
 		var/datum/antagonist/ex_ghoul/former_ghoul = IS_EX_GHOUL(pulled_target)
 		if(!former_ghoul)
-			owner.balloon_alert(owner, "not a former ghoul!")
+			owner.balloon_alert(owner, "Não um ex-ghoul!")
 			return FALSE
 		target_ref = WEAKREF(owner.pulling)
 		return TRUE
 
 	var/blood_bag = locate(/obj/item/reagent_containers/blood) in user.held_items
 	if(!blood_bag)
-		owner.balloon_alert(owner, "blood bag needed!")
+		owner.balloon_alert(owner, "Saco de sangue necessário!")
 		return FALSE
 	if(istype(blood_bag, /obj/item/reagent_containers/blood/o_minus/bloodsucker))
-		owner.balloon_alert(owner, "already bloodsucker blood!")
+		owner.balloon_alert(owner, "Já sangue de sangue!")
 
 	bloodbag = blood_bag
 	return TRUE

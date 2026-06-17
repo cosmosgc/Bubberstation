@@ -1,7 +1,7 @@
 /datum/surgery_operation/basic/revive_synth
 	name = "reboot neural network"
 	rnd_name = "Restart Neural Network (Revival)"
-	desc = "A mechanical surgical procedure that restarts an android's neural network."
+	desc = "Um procedimento cirúrgico mecânico que reinicia a rede neural de um andróide."
 	implements = list(
 		TOOL_MULTITOOL = 1,
 		/obj/item/shockpaddles = 1.43,

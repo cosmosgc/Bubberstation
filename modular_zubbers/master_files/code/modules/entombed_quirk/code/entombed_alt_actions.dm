@@ -25,4 +25,4 @@
 						entombed_suit.deploy(user, part)
 					entombed_suit.toggle_activate(user, TRUE)
 			else
-				user.balloon_alert(usr, "their suit is already online!")
+				user.balloon_alert(usr, "O terno deles já está online!")

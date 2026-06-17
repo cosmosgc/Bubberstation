@@ -1,6 +1,6 @@
 /obj/machinery/griddle/stone
 	name = "stone griddle"
-	desc = "You could probably cook an egg on this... the griddle slab looks very unsanitary."
+	desc = "Você provavelmente poderia cozinhar um ovo sobre isso... a laje griddle parece muito anti-higiênica."
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/stone_kitchen_machines.dmi'
 	icon_state = "griddle1_off"
 	density = TRUE
@@ -21,7 +21,7 @@
 /obj/machinery/griddle/stone/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
+	. += span_notice("Pode ser desmontado com um<b>Pé de cabra.</b>.")
 
 /obj/machinery/griddle/stone/crowbar_act(mob/living/user, obj/item/tool)
 	user.balloon_alert_to_viewers("disassembling...")

@@ -7,7 +7,7 @@
 /turf/open/lava
 	name = "lava"
 	icon_state = "lava"
-	desc = "Looks painful to step in. Don't mine down."
+	desc = "Parece doloroso intervir. Não mire para baixo."
 	gender = PLURAL //"That's some lava."
 	baseturfs = /turf/open/lava //lava all the way down
 	slowdown = 2
@@ -216,14 +216,14 @@
 		var/obj/item/stack/rods/lava/R = C
 		var/obj/structure/lattice/catwalk/lava/H = locate(/obj/structure/lattice/catwalk/lava, src)
 		if(H)
-			to_chat(user, span_warning("There is already a lattice here!"))
+			to_chat(user, span_warning("Já tem uma grade aqui!"))
 			return
 		if(R.use(1))
-			to_chat(user, span_notice("You construct a lattice."))
+			to_chat(user, span_notice("Você constrói uma rede."))
 			playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 			new /obj/structure/lattice/catwalk/lava(locate(x, y, z))
 		else
-			to_chat(user, span_warning("You need one rod to build a heatproof lattice."))
+			to_chat(user, span_warning("Você precisa de uma vara para construir uma grade à prova de calor."))
 		return
 	// Light a cigarette in the lava
 	if(istype(C, /obj/item/cigarette))
@@ -394,7 +394,7 @@
 
 /turf/open/lava/plasma
 	name = "liquid plasma"
-	desc = "A flowing stream of chilled liquid plasma. You probably shouldn't get in."
+	desc = "Um fluxo de plasma líquido gelado. Você provavelmente não deveria entrar."
 	icon_state = "liquidplasma"
 	initial_gas_mix = BURNING_COLD
 	baseturfs = /turf/open/lava/plasma
@@ -475,7 +475,7 @@
 	burn_human.ignite_mob()
 	burn_human.set_species(/datum/species/plasmaman)
 	burn_human.visible_message(span_warning("[burn_human] bursts into flame as the last of [burn_human.p_their()] body is coated in fungus!"), \
-		span_userdanger("Your senses numb as what remains of your flesh sloughs off, revealing the plasma-encrusted bone beneath!"))
+		span_userdanger("Seus sentidos dormem como o que restou de sua carne desliza, revelando o osso incrustado de plasma embaixo!"))
 
 //mafia specific tame happy plasma (normal atmos, no slowdown)
 /turf/open/lava/plasma/mafia

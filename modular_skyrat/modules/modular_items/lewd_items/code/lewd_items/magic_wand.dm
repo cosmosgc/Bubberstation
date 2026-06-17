@@ -5,7 +5,7 @@
 
 /obj/item/clothing/sextoy/magic_wand
 	name = "magic wand"
-	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations"
+	desc = "Não sei onde há magia nessa coisa, mas se você pressionar o botão - faz vibrações engraçadas"
 	icon_state = "magicwand_off"
 	base_icon_state = "magicwand"
 	worn_icon_state = "magicwand"
@@ -111,7 +111,7 @@
 
 	var/message = ""
 	if(vibration_mode == MAGIC_WAND_MODE_OFF)
-		to_chat(user, span_warning("You must turn on the toy, to use it!"))
+		to_chat(user, span_warning("Você deve ligar o brinquedo, para usá-lo!"))
 		return FALSE
 
 	var/first_adjective = ""
@@ -186,7 +186,7 @@
 						"uses [src] to [vibration_mode == MAGIC_WAND_MODE_LOW ? "slowly" : ""] massage [target]'s touch sensors",
 						"uses [src] to tease [target]'s touch sensors")
 		else
-			to_chat(user, span_warning("Use the wand on their groin or chest!"))
+			to_chat(user, span_warning("Use a varinha na virilha ou no peito!"))
 			return FALSE
 
 	if(prob(30))
@@ -200,11 +200,11 @@
 
 	switch(vibration_mode)
 		if(MAGIC_WAND_MODE_LOW)
-			to_chat(user, span_notice("Vibrator mode switched to low. Bzzz..."))
+			to_chat(user, span_notice("Modo vibratório trocado para baixo. Bzzz..."))
 		if(MAGIC_WAND_MODE_MEDIUM)
-			to_chat(user, span_notice("Vibrator mode switched to medium. Bzzzz!"))
+			to_chat(user, span_notice("Modo de vibração mudou para média. Bzzzz!"))
 		if(MAGIC_WAND_MODE_HIGH)
-			to_chat(user, span_notice("Vibrator mode switched to high. Careful with that thing."))
+			to_chat(user, span_notice("O modo de vibração mudou para alto. Cuidado com essa coisa."))
 		if(MAGIC_WAND_MODE_OFF)
 			to_chat(user, span_notice("[src] is turned off. Fun time's over?"))
 

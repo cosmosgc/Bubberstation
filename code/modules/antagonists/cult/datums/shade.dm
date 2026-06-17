@@ -11,10 +11,10 @@
 
 /datum/antagonist/cult/shade/check_invoke_validity()
 	if(isnull(release_time))
-		to_chat(owner.current, span_alert("You cannot invoke runes from inside of a soulstone!"))
+		to_chat(owner.current, span_alert("Você não pode invocar runas de dentro de uma pedra de alma!"))
 		return FALSE
 
 	if(release_time + invoke_delay > world.time)
-		to_chat(owner.current, span_alert("You haven't gathered enough power to invoke runes yet. You need to remain out of your soulstone for a while longer!"))
+		to_chat(owner.current, span_alert("Você não reuniu poder suficiente para invocar runas ainda. Você precisa ficar fora da sua pedra da alma por mais um tempo!"))
 		return FALSE
 	return TRUE

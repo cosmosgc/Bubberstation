@@ -218,7 +218,7 @@
 
 /datum/surgery_operation/limb/organ_manipulation/internal
 	name = "internal organ manipulation"
-	desc = "Manipulate a patient's internal organs."
+	desc = "Manipular os órgãos internos de um paciente."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/internal/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_ORGANS_CUT
 
@@ -262,7 +262,7 @@
 // All external organ manipulation requires bones sawed
 /datum/surgery_operation/limb/organ_manipulation/external
 	name = "feature manipulation"
-	desc = "Manipulate features of the patient, such as a moth's wings or a lizard's tail."
+	desc = "Manipular características do paciente, como asas de traça ou cauda de lagarto."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/external/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_BONE_SAWED
 	any_surgery_states_blocked = SURGERY_VESSELS_UNCLAMPED

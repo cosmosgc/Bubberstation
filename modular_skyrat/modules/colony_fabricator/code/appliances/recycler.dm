@@ -1,7 +1,7 @@
 /obj/machinery/colony_recycler
 	name = "materials recycler"
-	desc = "A large crushing machine used to recycle small items inefficiently. Items are inserted by hand, rather than by belt. \
-		Mind your fingers."
+	desc = "Uma grande máquina de esmagamento usada para reciclar pequenos itens ineficientemente. Itens são inseridos à mão, ao invés de cinto.\
+Cuidado com os dedos."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/portable_machines.dmi'
 	icon_state = "recycler"
 	anchored = FALSE
@@ -49,7 +49,7 @@
 /obj/machinery/colony_recycler/examine(mob/user)
 	. = ..()
 	. += span_notice("Reclaiming <b>[amount_produced]%</b> of materials salvaged.")
-	. += span_notice("Can be <b>secured</b> with a <b>wrench</b> using <b>Right-Click</b>.")
+	. += span_notice("Pode ser<b>Seguro.</b>com um<b>Chave inglesa.</b>usando<b>Click direito</b>.")
 
 /obj/machinery/colony_recycler/wrench_act_secondary(mob/living/user, obj/item/tool)
 	default_unfasten_wrench(user, tool)

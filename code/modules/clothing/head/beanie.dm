@@ -5,7 +5,7 @@
 
 /obj/item/clothing/head/beanie
 	name = "beanie"
-	desc = "A stylish beanie. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their heads."
+	desc = "Um gorro elegante. O acessório de inverno perfeito para aqueles com um senso de moda afiado, e aqueles que não conseguem lidar com uma brisa fria em suas cabeças."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	worn_icon = 'icons/mob/clothing/head/beanie.dmi'
 	icon_state = "/obj/item/clothing/head/beanie"
@@ -48,21 +48,21 @@
 
 /obj/item/clothing/head/beanie/durathread
 	name = "durathread beanie"
-	desc = "A beanie made from durathread. Its resilient fibres provide some protection to the wearer."
+	desc = "Um gorro feito de Durathread. Suas fibras resistentes fornecem alguma proteção ao usuário."
 	icon_state = "/obj/item/clothing/head/beanie/durathread"
 	greyscale_colors = "#8291A1#8291A1"
 	armor_type = /datum/armor/beanie_durathread
 
 /obj/item/clothing/head/rasta
 	name = "rastacap"
-	desc = "Perfect for tucking in those dreadlocks."
+	desc = "Perfeito para colocar esses dreadlocks."
 	icon = 'icons/obj/clothing/head/beanie.dmi'
 	worn_icon = 'icons/mob/clothing/head/beanie.dmi'
 	icon_state = "beanierasta"
 
 /obj/item/clothing/head/waldo
 	name = "red striped bobble hat"
-	desc = "If you're going on a worldwide hike, you'll need some cold protection."
+	desc = "Se você está indo em uma caminhada mundial, você vai precisar de alguma proteção fria."
 	icon = 'icons/obj/clothing/head/beanie.dmi'
 	worn_icon = 'icons/mob/clothing/head/beanie.dmi'
 	icon_state = "waldo_hat"
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/head/beanie/black/dboy
 	name = "test subject beanie"
-	desc = "A dingy and torn black beanie. Is that slime or grease?"
+	desc = "Um gorro preto dingedo e rasgado. Isso é lama ou graxa?"
 	/// Used for the extra flavor text the d-boy himself sees
 	var/datum/weakref/beanie_owner = null
 
@@ -92,4 +92,4 @@
 /obj/item/clothing/head/beanie/black/dboy/examine(mob/user)
 	. = ..()
 	if(IS_WEAKREF_OF(user, beanie_owner))
-		. += span_purple("It's covered in otherworldly debris only your eyes have been ruined enough to see.")
+		. += span_purple("Está coberto de escombros de outro mundo só seus olhos foram arruinados o suficiente para ver.")

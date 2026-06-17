@@ -1,6 +1,6 @@
 /mob/living/basic/mining/ice_whelp
 	name = "ice whelp"
-	desc = "The offspring of an ice drake, weak in comparison but still terrifying."
+	desc = "A prole de um dragão de gelo, fraco em comparação, mas ainda aterrorizante."
 	icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi'
 	icon_state = "ice_whelp"
 	icon_living = "ice_whelp"
@@ -25,7 +25,7 @@
 
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
-	death_message = "collapses on its side."
+	death_message = "Cai de lado."
 	death_sound = 'sound/effects/magic/demon_dies.ogg'
 
 	attack_sound = 'sound/effects/magic/demon_attack1.ogg'
@@ -92,7 +92,7 @@
 ///Ash whelp, the "lava" variant of ice whelps.
 /mob/living/basic/mining/ice_whelp/ash
 	name = "ash whelp"
-	desc = "The offspring of an ash drake, weak in comparison but still terrifying."
+	desc = "A prole de um dragão de cinzas, fraca em comparação, mas ainda aterrorizante."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "ash_whelp"
 	icon_living = "ash_whelp"

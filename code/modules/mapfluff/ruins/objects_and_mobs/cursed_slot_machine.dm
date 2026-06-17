@@ -1,7 +1,7 @@
 /// Greed's slot machine: Used in the Greed ruin. Deals damage on each use, with a successful use giving a d20 of fate.
 /obj/structure/cursed_slot_machine
 	name = "greed's slot machine"
-	desc = "High stakes, high rewards."
+	desc = "Altas apostas, altas recompensas."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "slots"
 	anchored = TRUE
@@ -39,7 +39,7 @@
 
 	user.visible_message(
 		span_warning("[user] pulls [src]'s lever with a glint in [user.p_their()] eyes!"),
-		span_warning("You feel a draining as you pull the lever, but you know it'll be worth it."),
+		span_warning("Você sente uma drenagem enquanto puxa a alavanca, mas sabe que valerá a pena."),
 	)
 
 	icon_screen = "slots_screen_working"
@@ -62,7 +62,7 @@
 	var/signal_value = SEND_SIGNAL(user, COMSIG_CURSED_SLOT_MACHINE_USE, max_curse_amount)
 
 	if(!COOLDOWN_FINISHED(src, spin_cooldown) || (signal_value & SLOT_MACHINE_USE_POSTPONE))
-		to_chat(user, span_danger("The machine doesn't engage. You get the compulsion to try again in a few seconds."))
+		to_chat(user, span_danger("A máquina não liga. Você tem a compulsão de tentar novamente em poucos segundos."))
 		return FALSE
 
 	if(signal_value & SLOT_MACHINE_USE_CANCEL) // failsafe in case we don't want to let the machine be used for some reason (like if we're maxed out on curses but not getting gibbed)
@@ -91,7 +91,7 @@
 	playsound(src, 'sound/machines/lavaland/cursed_slot_machine_jackpot.ogg', 50, FALSE)
 	new prize(get_turf(src))
 	if(user)
-		to_chat(user, span_boldwarning("You've hit the jackpot!!! Laughter echoes around you as your reward appears in the machine's place."))
+		to_chat(user, span_boldwarning("Você ganhou o prêmio!! O riso ecoa ao seu redor quando sua recompensa aparece no lugar da máquina."))
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CURSED_SLOT_MACHINE_WON)
 	qdel(src)
@@ -99,7 +99,7 @@
 /// Prize given out by the cursed slot machine that will give the user one Die of Fate and then delete itself.
 /obj/structure/cursed_money
 	name = "bag of money"
-	desc = "RICH! YES! YOU KNEW IT WAS WORTH IT! YOU'RE RICH! RICH! RICH!"
+	desc = "Rico! Sim! Você sabia que valia a pena! Você é rico! Rico! Rico!"
 	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "moneybag"
 	anchored = FALSE

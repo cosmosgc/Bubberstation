@@ -1,6 +1,6 @@
 /mob/living/basic/pet/cat/cak
 	name = "Keeki"
-	desc = "She is a cat made out of cake."
+	desc = "Ela é um gato feito de bolo."
 	icon_state = "cak"
 	icon_living = "cak"
 	icon_dead = "cak_dead"
@@ -17,7 +17,7 @@
 	response_harm_simple = "take a bite out of"
 	ai_controller = /datum/ai_controller/basic_controller/cat/cake
 	attacked_sound = 'sound/items/eatfood.ogg'
-	death_message = "loses her false life and collapses!"
+	death_message = "perde sua falsa vida e cai!"
 	death_sound = SFX_BODYFALL
 	held_state = "cak"
 	can_interact_with_stove = TRUE

@@ -1,7 +1,7 @@
 #define REGEN_TIME (30 SECONDS) // () are important for order of operations. Fuck you too, byond
 /obj/item/organ/stomach/protean
 	name = "refactory"
-	desc = "An extremely fragile factory used to recycle materials and create more nanite mass. Needed to facilitate the repair process on a collapsed Protean; it can be installed as a module in the rig, or as an organ."
+	desc = "Uma fábrica extremamente frágil usada para reciclar materiais e criar mais massa nanita. Precisa facilitar o processo de reparo em uma Proteana colapsada, pode ser instalado como um módulo na plataforma, ou como um órgão."
 	icon = PROTEAN_ORGAN_SPRITE
 	icon_state = "refactory"
 	organ_flags = ORGAN_ROBOTIC | ORGAN_NANOMACHINE
@@ -67,7 +67,7 @@
 		return
 	owner.adjust_brute_loss(2, forced = TRUE)
 	if(COOLDOWN_FINISHED(src, starving_message))
-		to_chat(owner, span_warning("You are starving! You must find metal now!"))
+		to_chat(owner, span_warning("Você está faminto! Você deve encontrar metal agora!"))
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/protean_slowdown, multiplicative_slowdown = 2)
 		COOLDOWN_START(src, starving_message, 20 SECONDS)
 
@@ -85,7 +85,7 @@
 	if(istype(eating, /obj/item/food/golem_food))
 		var/obj/item/food/golem_food/food = eating
 		if(metal > (PROTEAN_STOMACH_FULL - 0.3) && food.owner.loc == owner)
-			balloon_alert(owner, "storage full!")
+			balloon_alert(owner, "Armazém cheio!")
 			return BLOCK_EAT_ATTEMPT
 
 /// If we ate a sheet of metal, add it to storage.

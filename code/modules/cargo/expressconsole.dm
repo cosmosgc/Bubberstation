@@ -3,9 +3,9 @@
 
 /obj/machinery/computer/cargo/express
 	name = "express supply console"
-	desc = "This console allows the user to purchase a package \
-		with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\".\
-		All sales are near instantaneous - please choose carefully"
+	desc = "Este console permite ao usuário comprar um pacote.\
+Com 1/40 do tempo de entrega: tornado possível pelo novo Nanotrasen\"1500mm Railgun orbital\".\
+Todas as vendas são quase instantâneas - por favor, escolha cuidadosamente"
 	icon_screen = "supply_express"
 	circuit = /obj/item/circuitboard/computer/cargo/express
 	blockade_warning = "Bluespace instability detected. Delivery impossible."
@@ -48,7 +48,7 @@
 
 	if (istype(tool, /obj/item/disk/cargo/bluespace_pod))
 		if (pod_type == /obj/structure/closet/supplypod/bluespacepod)
-			balloon_alert(user, "already upgraded!")
+			balloon_alert(user, "Já está atualizado!")
 			return ITEM_INTERACT_FAILURE
 		if(!user.temporarilyRemoveItemFromInventory(tool))
 			return ITEM_INTERACT_FAILURE
@@ -74,7 +74,7 @@
 	if(user)
 		if (emag_card)
 			user.visible_message(span_warning("[user] swipes [emag_card] through [src]!"))
-		to_chat(user, span_notice("You change the routing protocols, allowing the Supply Pod to land anywhere on the station."))
+		to_chat(user, span_notice("Você muda os protocolos de roteamento, permitindo que o módulo de suprimentos aterrisse em qualquer lugar na estação."))
 	obj_flags |= EMAGGED
 	contraband = TRUE
 	// This also sets this on the circuit board

@@ -72,7 +72,7 @@
 
 /datum/action/cooldown/alien/skyrat/sleepytime //I don't think this has a mechanical advantage but they have cool resting sprites so...
 	name = "Rest"
-	desc = "Sometimes even murder aliens need to have a little lie down."
+	desc = "Às vezes, até assassinos alienígenas precisam se deitar."
 	button_icon_state = "sleepytime"
 
 /datum/action/cooldown/alien/skyrat/sleepytime/Activate()
@@ -87,7 +87,7 @@
 
 /datum/action/cooldown/alien/skyrat/generic_evolve
 	name = "Evolve"
-	desc = "Allows us to evolve to a higher caste of our type, if there is not one already."
+	desc = "Permite-nos evoluir para uma casta superior do nosso tipo, se já não houver uma."
 	button_icon_state = "evolution"
 	/// What type this ability will turn the owner into upon completion
 	var/type_to_evolve_into
@@ -103,32 +103,32 @@
 	var/mob/living/carbon/alien/adult/skyrat/evolver = owner
 
 	if(!istype(evolver))
-		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
+		to_chat(owner, span_warning("Você não é um alienígena, não pode evoluir!"))
 		return FALSE
 
 	type_to_evolve_into = evolver.next_evolution
 	if(!type_to_evolve_into)
-		to_chat(evolver, span_bolddanger("Something is wrong... We can't evolve into anything? (This is broken report it on GitHub)"))
+		to_chat(evolver, span_bolddanger("Algo está errado... Não podemos evoluir em nada? (Isto está quebrado informe em GitHub)"))
 		CRASH("Couldn't find an evolution for [owner] ([owner.type]).")
 
 	if(!isturf(evolver.loc))
 		return FALSE
 
 	if(get_alien_type(type_to_evolve_into))
-		evolver.balloon_alert(evolver, "too many of our evolution already")
+		evolver.balloon_alert(evolver, "Muitos de nossa evolução já")
 		return FALSE
 
 	var/obj/item/organ/alien/hivenode/node = evolver.get_organ_by_type(/obj/item/organ/alien/hivenode)
 	if(!node)
-		to_chat(evolver, span_bolddanger("We can't sense our node's connection to the hive... We can't evolve!"))
+		to_chat(evolver, span_bolddanger("Não podemos sentir a conexão do nó com a colméia... Não podemos evoluir!"))
 		return FALSE
 
 	if(node.recent_queen_death)
-		to_chat(evolver, span_bolddanger("The death of our queen... We can't seem to gather the mental energy required to evolve..."))
+		to_chat(evolver, span_bolddanger("A morte de nossa rainha... Não conseguimos reunir a energia mental necessária para evoluir..."))
 		return FALSE
 
 	if(evolver.has_evolved_recently)
-		evolver.balloon_alert(evolver, "can evolve in 1.5 minutes") //Make that 1.5 variable later, but it keeps fucking up for me :(
+		evolver.balloon_alert(evolver, "Pode evoluir em 1,5 minutos.") //Make that 1.5 variable later, but it keeps fucking up for me :(
 		return FALSE
 
 	var/new_beno = new type_to_evolve_into(evolver.loc)

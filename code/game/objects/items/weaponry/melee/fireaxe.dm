@@ -5,7 +5,7 @@ GLOBAL_DATUM(bridge_axe, /obj/item/fireaxe)
  */
 /obj/item/fireaxe  // DEM AXES MAN, marker -Agouri
 	name = "fire axe"
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	desc = "Verdadeiramente, a arma de um louco. Quem pensaria em combater fogo com um machado?"
 	icon = 'icons/obj/weapons/fireaxe.dmi'
 	icon_state = "fireaxe0"
 	base_icon_state = "fireaxe"
@@ -79,7 +79,7 @@ GLOBAL_DATUM(bridge_axe, /obj/item/fireaxe)
  */
 /obj/item/fireaxe/boneaxe  // Blatant imitation of the fireaxe, but made out of bone.
 	name = "bone axe"
-	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters."
+	desc = "Um machado grande e cruel feito de várias placas de osso afiadas e amarrados. Feita de monstros, matando monstros, matando monstros."
 	icon_state = "bone_axe0"
 	base_icon_state = "bone_axe"
 	icon_angle = 180
@@ -92,7 +92,7 @@ GLOBAL_DATUM(bridge_axe, /obj/item/fireaxe)
  */
 /obj/item/fireaxe/metal_h2_axe
 	name = "metallic hydrogen axe"
-	desc = "A lightweight crowbar with an extreme sharp fire axe head attached. It trades its heft as a weapon by making it easier to carry around when holstered to suits without having to sacrifice your backpack."
+	desc = "Um pé de cabra leve com uma cabeça de machado de fogo extremamente afiada presa. Ele troca seu peso como uma arma, tornando mais fácil de carregar quando o coldre de terno sem ter que sacrificar sua mochila."
 	icon_state = "metalh2_axe0"
 	base_icon_state = "metalh2_axe"
 	icon_angle = -45
@@ -106,7 +106,7 @@ GLOBAL_DATUM(bridge_axe, /obj/item/fireaxe)
 //boarding axe
 /obj/item/fireaxe/boardingaxe
 	name = "boarding axe"
-	desc = "A hulking cleaver that feels like a burden just looking at it. Seems excellent at halving obstacles like windows, airlocks, barricades and people."
+	desc = "Um cutelo que parece um fardo só de olhar para ele. Parece excelente em reduzir para metade os obstáculos como janelas, comportas, barricadas e pessoas."
 	icon_state = "boarding_axe0"
 	base_icon_state = "boarding_axe"
 	force_unwielded = 5

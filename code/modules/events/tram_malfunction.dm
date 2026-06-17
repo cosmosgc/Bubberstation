@@ -8,7 +8,7 @@
 	max_occurrences = 3
 	earliest_start = 15 MINUTES
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Tram comes to an emergency stop, requiring engineering to reset."
+	description = "Tram chega a uma parada de emergência, exigindo engenharia para reiniciar."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 3
 

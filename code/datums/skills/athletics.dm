@@ -1,7 +1,7 @@
 /datum/skill/athletics
 	name = "Athletics"
 	title = "Athlete"
-	desc = "Twinkle twinkle little star, hit the gym and lift the bar."
+	desc = "Brilhe, brilhe, vá à academia e levante o bar."
 	// The skill value modifier effects the max duration that is possible for /datum/status_effect/exercised; The rands modifier determines block probability and crit probability while boxing against boxers
 	modifiers = list(
 		SKILL_VALUE_MODIFIER = list(

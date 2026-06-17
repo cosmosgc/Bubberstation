@@ -26,7 +26,7 @@
  */
 /obj/item/gun/magic/wand/hallucination
 	name = "wand of chaos"
-	desc = "A wand which spits bolts of hallucinogenic magic which can do almost anything, or at least make the victim think so."
+	desc = "Uma varinha que cospe raios de magia alucinogênica que pode fazer quase tudo, ou pelo menos fazer a vítima pensar assim."
 	school = SCHOOL_FORBIDDEN
 	ammo_type = /obj/item/ammo_casing/magic/hallucination
 	icon_state = "chaoswand"

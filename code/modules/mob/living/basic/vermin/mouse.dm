@@ -1,6 +1,6 @@
 /mob/living/basic/mouse
 	name = "mouse"
-	desc = "This cute little guy just loves the taste of insulated electrical cables. Isn't he adorable?"
+	desc = "Esse bonitinho adora o gosto de cabos elétricos isolados. Ele não é adorável?"
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
@@ -98,15 +98,15 @@
 	var/sameside = user.faction_check_atom(src, exact_match = TRUE)
 	if(isregalrat(user))
 		if(sameside)
-			. += span_notice("This rat serves under you.")
+			. += span_notice("Este rato serve sob você.")
 		else
 			. += span_warning("This peasant serves a different king! Strike [p_them()] down!")
 
 	else if(user != src && ismouse(user))
 		if(sameside)
-			. += span_notice("You both serve the same king.")
+			. += span_notice("Ambos servem o mesmo rei.")
 		else
-			. += span_warning("This fool serves a different king!")
+			. += span_warning("Este tolo serve um rei diferente!")
 
 /// Kills the rat and changes its icon state to be splatted (bloody).
 /mob/living/basic/mouse/proc/splat()
@@ -255,7 +255,7 @@
 		visible_message(
 			span_warning("[src] chews through \the [cable]. It's toast!"),
 			span_userdanger("As you bite deeply into [cable], you suddenly realize this may have been a bad idea."),
-			span_hear("You hear electricity crack."),
+			span_hear("Você ouve a eletricidade quebrar."),
 		)
 		// Finely toasted
 		ADD_TRAIT(src, TRAIT_BEING_SHOCKED, TRAIT_GENERIC)
@@ -290,7 +290,7 @@
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/basic/mouse/brown/tom
 	name = "Tom"
-	desc = "Jerry the cat is not amused."
+	desc = "Jerry, o gato, não está divertido."
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -315,7 +315,7 @@
 
 /mob/living/basic/mouse/rat
 	name = "rat"
-	desc = "They're a nasty, ugly, evil, disease-ridden rodent with anger issues."
+	desc = "São uns roedores nojentos, feios, malignos, com problemas de raiva."
 
 	gold_core_spawnable = HOSTILE_SPAWN
 	melee_damage_lower = 3
@@ -335,7 +335,7 @@
 /// Mice turn into food when they die
 /obj/item/food/deadmouse
 	name = "dead mouse"
-	desc = "They look like somebody dropped the bass on it. A lizard's favorite meal."
+	desc = "Parece que alguém derrubou o baixo nele. A refeição favorita de um lagarto."
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "mouse_gray_dead"
 	bite_consumption = 3
@@ -372,7 +372,7 @@
 /obj/item/food/deadmouse/proc/use_lazarus(datum/source, obj/item/lazarus_injector/injector, mob/user)
 	SIGNAL_HANDLER
 	if(injector.revive_type != SENTIENCE_ORGANIC)
-		balloon_alert(user, "invalid creature!")
+		balloon_alert(user, "Criatura inválida!")
 		return
 	var/mob/living/basic/mouse/revived_critter = new critter_type (drop_location(), FALSE, body_color)
 	revived_critter.name = name
@@ -385,12 +385,12 @@
 	var/mob/living/living_user = user
 	if(istype(living_user) && attacking_item.get_sharpness() && living_user.combat_mode)
 		if(!isturf(loc))
-			balloon_alert(user, "can't butcher here!")
+			balloon_alert(user, "Não posso matar aqui!")
 			return
 
 		balloon_alert(user, "butchering...")
 		if(!do_after(user, 0.75 SECONDS, src))
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "Interrompido!")
 			return
 
 		loc.balloon_alert(user, "butchered")
@@ -413,7 +413,7 @@
 
 /obj/item/food/deadmouse/moldy
 	name = "moldy dead mouse"
-	desc = "A dead rodent, consumed by mold and rot. There is a slim chance that a lizard might still eat it."
+	desc = "Um roedor morto, consumido por mofo e apodrecimento. Há poucas chances de um lagarto ainda comê-lo."
 	icon_state = "mouse_gray_dead"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/mold = 10)
 	foodtypes = GORE | MEAT | RAW | GROSS

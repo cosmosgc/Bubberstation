@@ -2,7 +2,7 @@
 	martial = /datum/martial_art/cqc
 	name = "old manual"
 	martial_name = "close quarters combat"
-	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat."
+	desc = "Um pequeno manual preto. Há instruções de combate táctico."
 	greet = span_bolddanger("You've mastered the basics of CQC.")
 	icon_state = "cqcmanual"
 	remarks = list(

@@ -102,7 +102,7 @@
 
 	source.heal_overall_damage(heal_amount)
 	playsound(source, 'sound/effects/magic/staff_healing.ogg', 30)
-	to_chat(source, span_danger("You feel slightly healed by your chuuni powers."))
+	to_chat(source, span_danger("Você se sente ligeiramente curado por seus poderes Chuuni."))
 
 /datum/component/chuunibyou/no_healing
 	heal_amount = 0

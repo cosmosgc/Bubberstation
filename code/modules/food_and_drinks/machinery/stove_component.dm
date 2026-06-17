@@ -147,8 +147,8 @@
 	if(!attacking_item.is_open_container())
 		return
 	if(!isnull(container))
-		to_chat(user, span_warning("You wouldn't dare try to cook two things on the same stove simultaneously. \
-			What if it cross contaminates?"))
+		to_chat(user, span_warning("Você não ousaria tentar cozinhar duas coisas no mesmo fogão simultaneamente.\
+E se a cruz contaminar?"))
 		return COMPONENT_NO_AFTERATTACK
 
 	if(user.transferItemToLoc(attacking_item, parent))

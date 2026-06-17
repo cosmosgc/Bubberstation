@@ -107,7 +107,7 @@
 	if(refill_canister && istype(attack_item, refill_canister))
 		. = ITEM_INTERACT_FAILURE
 		if (!panel_open)
-			to_chat(user, span_warning("You should probably unscrew the service panel first!"))
+			to_chat(user, span_warning("Você deveria desaparafusar o painel de serviço primeiro!"))
 		else if (!is_operational)
 			to_chat(user, span_warning("[src] does not respond."))
 		else
@@ -153,7 +153,7 @@
 	PROTECTED_PROC(TRUE)
 
 	if(!restocked)
-		to_chat(user, span_warning("There's nothing to restock!"))
+		to_chat(user, span_warning("Não há nada para reabastecer!"))
 		return
 
 	to_chat(user, span_notice("You loaded [restocked] items in [src][credits_contained > 0 ? ", and are rewarded [credits_contained] [MONEY_NAME]." : "."]"))

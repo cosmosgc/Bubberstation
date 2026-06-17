@@ -7,7 +7,7 @@
 
 /obj/structure/inflatable
 	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture. Alt+Click to deflate."
+	desc = "Uma membrana inflada. Não fure. Alt+Click para esvaziar."
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	density = TRUE
 	anchored = TRUE
@@ -136,7 +136,7 @@
 // The deployable item
 /obj/item/inflatable
 	name = "inflatable wall"
-	desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
+	desc = "Uma membrana dobrada que se expande rapidamente para uma grande forma cúbica na ativação."
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "folded_wall"
 	base_icon_state = "folded_wall"
@@ -159,7 +159,7 @@
 		to_chat(user, span_warning("[src] is too damaged to function!"))
 		return
 	if(locate(structure_type) in get_turf(user))
-		to_chat(user, span_warning("There is already a wall here!"))
+		to_chat(user, span_warning("Já tem uma parede aqui!"))
 		return
 	playsound(loc, 'sound/items/zip/zip.ogg', 75, 1)
 	to_chat(user, span_notice("You inflate [src]."))
@@ -192,7 +192,7 @@
 /obj/item/inflatable/examine(mob/user)
 	. = ..()
 	if(torn)
-		. += span_warning("It is badly torn, and cannot be used! The damage looks like it could be repaired with some <b>tape</b>.")
+		. += span_warning("Está muito rasgado, e não pode ser usado! O dano parece que poderia ser reparado com alguns<b>Fita</b>.")
 
 /obj/item/inflatable/suicide_act(mob/living/user)
 	visible_message(user, span_danger("[user] starts shoving the [src] up [user.p_their()] ass! It looks like [user.p_their()] going to pull the cord, oh shit!"))
@@ -203,7 +203,7 @@
 
 /obj/item/inflatable/door
 	name = "inflatable door"
-	desc = "A folded membrane which rapidly expands into a simple door on activation."
+	desc = "Uma membrana dobrada que se expande rapidamente em uma porta simples na ativação."
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "folded_door"
 	base_icon_state = "folded_door"
@@ -224,7 +224,7 @@
 /obj/item/storage/inflatable
 	icon = 'modular_skyrat/modules/more_briefcases/icons/briefcases.dmi'
 	name = "inflatable barrier box"
-	desc = "Contains inflatable walls and doors."
+	desc = "Contém paredes infláveis e portas."
 	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
 	storage_type = /datum/storage/inflatables_box

@@ -183,37 +183,37 @@
 		if (feedback)
 			switch(owner.stat)
 				if(SOFT_CRIT)
-					owner.balloon_alert(owner, "downed!")
+					owner.balloon_alert(owner, "Abaixado!")
 				if(DEAD)
-					owner.balloon_alert(owner, "dead!")
+					owner.balloon_alert(owner, "Morto!")
 				else
-					owner.balloon_alert(owner, "unconscious!")
+					owner.balloon_alert(owner, "inconsciente!")
 		return FALSE
 	if((check_flags & AB_CHECK_HANDS_BLOCKED) && HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED))
 		if (feedback)
-			owner.balloon_alert(owner, "hands blocked!")
+			owner.balloon_alert(owner, "Mãos bloqueadas!")
 		return FALSE
 	if((check_flags & AB_CHECK_IMMOBILE) && HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
 		if (feedback)
-			owner.balloon_alert(owner, "can't move!")
+			owner.balloon_alert(owner, "Não posso me mover!")
 		return FALSE
 	if((check_flags & AB_CHECK_INCAPACITATED) && HAS_TRAIT(owner, TRAIT_INCAPACITATED))
 		if (feedback)
-			owner.balloon_alert(owner, "incapacitated!")
+			owner.balloon_alert(owner, "incapacitado!")
 		return FALSE
 	if((check_flags & AB_CHECK_LYING) && isliving(owner))
 		var/mob/living/action_owner = owner
 		if(action_owner.body_position == LYING_DOWN)
 			if (feedback)
-				owner.balloon_alert(owner, "must stand up!")
+				owner.balloon_alert(owner, "Tem que se levantar!")
 			return FALSE
 	if((check_flags & AB_CHECK_PHASED) && HAS_TRAIT(owner, TRAIT_MAGICALLY_PHASED))
 		if (feedback)
-			owner.balloon_alert(owner, "incorporeal!")
+			owner.balloon_alert(owner, "Corporal!")
 		return FALSE
 	if((check_flags & AB_CHECK_OPEN_TURF) && !isopenturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "not enough space!")
+			owner.balloon_alert(owner, "Não há espaço suficiente!")
 		return FALSE
 	return TRUE
 

@@ -1,6 +1,6 @@
 /obj/machinery/computer/apc_control
 	name = "power flow control console"
-	desc = "Used to remotely control the flow of power to different parts of the station."
+	desc = "Usado para controlar remotamente o fluxo de energia para diferentes partes da estação."
 	icon_screen = "solar"
 	icon_keyboard = "power_key"
 	req_access = list(ACCESS_CE)
@@ -40,7 +40,7 @@
 	obj_flags |= EMAGGED
 	if (user)
 		user.log_message("emagged [src].", LOG_ATTACK, color="red")
-		balloon_alert(user, "access controller shorted")
+		balloon_alert(user, "Controlador de acesso encurtado")
 	playsound(src, SFX_SPARKS, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
 

@@ -35,7 +35,7 @@
 			lycan_brain.last_slot = target_client.prefs.savefile.get_entry("default_slot")
 		target_client.prefs.load_character(slot)
 		if (!ispath(target_client.prefs.read_preference(/datum.preference/choiced/species), current_wolf.lycanthropy_species))
-			to_chat(human_owner, span_warning("Your selected slot is not a lycan! Defaulting to simply changing your species..."))
+			to_chat(human_owner, span_warning("Seu espaço escolhido não é um lycan! Presumindo simplesmente mudar sua espécie..."))
 			target_client.prefs.load_character(lycan_brain.last_slot)
 			human_owner.set_species(current_wolf.lycanthropy_species, TRUE, TRUE, FALSE)
 			lycan_brain.last_slot = null // allows for easier switching in later procs
@@ -109,7 +109,7 @@
 	officially recognized by most polities across the orion arm. The origin for their curse may vary by Cursekin - some from a god, some from genetics - but each \
 	has the ability to transform into a terrifying beast with claws like razors."
 	render_list += "<hr>"
-	render_list += span_notice("Lycans and related may come in various forms, but each have similarities in how they function.")
+	render_list += span_notice("Lycans e parentes podem vir em várias formas, mas cada um tem semelhanças em como funcionam.")
 	render_list += span_notice("\nLycans possess [EXAMINE_HINT("exceptionally strong claws")], about as strong as a [EXAMINE_HINT("circular saw")] without the armor penetration.")
 	render_list += span_notice("\nLycans also have [EXAMINE_HINT("significant damage resistance")] to brute, and to a lesser extent, burn.")
 	render_list += span_notice("\nHowever, Lycans [EXAMINE_HINT("cannot wear any clothes")] and cannot have synthetic organs.")
@@ -118,16 +118,16 @@
 	render_list += span_notice("\nThe Lycan form can be [EXAMINE_HINT("toggled at will")], or [EXAMINE_HINT("forcefully removed")] by [EXAMINE_HINT("knocking them into hard-crit")].")
 	render_list += "<hr>"
 	render_list += span_warning("While mostly docile, tamed, and relatively weak, it is rumored that some Lycans harbor a [EXAMINE_HINT("exceptionally capable")] form of the curse. Keep an eye out for any of the following:")
-	render_list += span_warning("\n	* Extremely powerful claws")
-	render_list += span_warning("\n	* Aggressive health regeneration")
-	render_list += span_warning("\n	* Immunity to shoves and resistance to pain/stunning")
-	render_list += span_warning("\n	* The ability to shrug off any amount of pain and keep sprinting")
-	render_list += span_warning("\n	* The ability to smash down airlocks and windows with their claws")
-	render_list += span_boldwarning("\nIf you find yourself facing a Lycan with these traits, take these precautions.")
-	render_list += span_warning("\n	* Avoid physical weaponry and stamina weapons - their regeneration rapidly heals brute and stamina drain")
-	render_list += span_warning("\n	* Use silver weaponry - they deal extra burn damage")
-	render_list += span_warning("\n	* Use aerosolized silver - they cannot use internals and will burn on contact with it")
-	render_list += span_warning("\n	* Pacify the lycan - they cannot smash windows or airlocks while pacified")
+	render_list += span_warning("\nGarras extremamente poderosas")
+	render_list += span_warning("\nRegeneração agressiva da saúde")
+	render_list += span_warning("\nImunidade aos empurrões e resistência à dor/estume")
+	render_list += span_warning("\n* A habilidade de dar de ombros qualquer quantidade de dor e continuar correndo")
+	render_list += span_warning("\n* A capacidade de quebrar comportas e janelas com suas garras")
+	render_list += span_boldwarning("\nSe você se encontrar enfrentando um Lycan com essas características, tome essas precauções.")
+	render_list += span_warning("\n* Evite armas físicas e armas de resistência - sua regeneração cura rapidamente o ralo bruto e a resistência")
+	render_list += span_warning("\nUsem armas prateadas.")
+	render_list += span_warning("\n* Use prata aerossol - eles não podem usar internos e vão queimar em contato com ele")
+	render_list += span_warning("\n* Pacifique o lycan - eles não podem quebrar janelas ou câmaras de ar enquanto pacificado")
 
 	var/output = jointext(render_list, "")
 

@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		return FALSE
 
 	if(!istype(equipping, /obj/item/clothing/neck/petcollar))
-		to_chat(user, span_warning("That's not a collar."))
+		to_chat(user, span_warning("Isso não é uma coleira."))
 		return FALSE
 
 	return TRUE

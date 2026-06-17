@@ -28,13 +28,13 @@
 
 /obj/item/book/manual/wiki/security_space_law
 	name = "Corporate Regulations"
-	desc = "A set of Nanotrasen regulations for keeping law, order, and procedure followed within their space stations."
+	desc = "Um conjunto de regulamentos Nanotrasen para manter a lei, ordem e procedimento seguidos em suas estações espaciais."
 	starting_title = "Corporate Regulations"
 	page_link = "index.php?title=Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/attack_self(mob/user) // Was in /tg/ folder, moved it here, made it 100% chance to learn language since you can spam it inhand anyhow. Saves us all from carpal tunnel.
 	if(user.can_read(src) && !user.has_language(/datum/language/legalese, SPOKEN_LANGUAGE))
-		to_chat(user, span_notice("As you inhale the book's contents, you feel more sophisticated. After reading Space Law just once, you feel like you are an expert in pretending you know Latin. You can now speak Legalese."))
+		to_chat(user, span_notice("Enquanto você inala o conteúdo do livro, você se sente mais sofisticado. Depois de ler a Lei Espacial apenas uma vez, você se sente como um especialista em fingir que sabe latim. Agora você pode falar Legalese."))
 		user.grant_language(/datum/language/legalese, SPOKEN_LANGUAGE) //can speak but not understand
 	else
 		.=..()
@@ -42,11 +42,11 @@
 /obj/item/book/manual/wiki/security_space_law/display_content(mob/living/user)
 	var/wiki_url = "http://wiki.bubberstation.org"
 	if(!wiki_url)
-		user.balloon_alert(user, "this book is empty!")
+		user.balloon_alert(user, "Este livro está vazio!")
 		return
 	credit_book_to_reader(user)
 	if(user.client.byond_version < 516) //Remove this once 516 is stable
-		if(tgui_alert(user, "This book's page will open in your browser. Are you sure?", "Open The Wiki", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "A página deste livro será aberta no seu navegador. Tem certeza?", "Open The Wiki", list("Yes", "No")) != "Yes")
 			return
 		DIRECT_OUTPUT(user, link("[wiki_url]/[page_link]"))
 	else
@@ -54,7 +54,7 @@
 
 /obj/item/book/manual/wiki/security_space_law/weighted
 	name = "Corporate Regulations: Collector's Edition"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations. This one's quite heavy due to its extra pages and metal-plated cover."
+	desc = "Um conjunto de diretrizes Nanotrasen para manter a lei e a ordem em suas estações espaciais. Este é bem pesado devido às suas páginas extras e capa de metal."
 	icon = 'modular_zubbers/icons/obj/security_voucher.dmi'
 	icon_state = "SpaceLawWeighted"
 	force = 13

@@ -2,7 +2,7 @@
 	name = "factory blob"
 	icon = 'icons/mob/nonhuman-player/blob.dmi'
 	icon_state = "blob_factory"
-	desc = "A thick spire of tendrils."
+	desc = "Um espesso de tentáculos."
 	max_integrity = BLOB_FACTORY_MAX_HP
 	health_regen = BLOB_FACTORY_HP_REGEN
 	point_return = BLOB_REFUND_FACTORY_COST

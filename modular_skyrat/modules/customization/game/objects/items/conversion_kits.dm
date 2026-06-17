@@ -1,6 +1,6 @@
 /obj/item/device/custom_kit
 	name = "modification kit"
-	desc = "A box of parts for modifying a certain object."
+	desc = "Uma caixa de peças para modificar um objeto."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit"
 	/// The base object to be converted.

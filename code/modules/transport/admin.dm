@@ -26,7 +26,7 @@ ADMIN_VERB(reset_tram, R_DEBUG|R_ADMIN, "Reset Tram", "Reset a tram controller o
 
 	switch(reset_type)
 		if("Clear Tram Contents")
-			var/selection = tgui_alert(user, "Include player mobs in the clearing?", "Contents reset [selected_transport_id]", list("Contents", "Contents and Players", "Cancel"))
+			var/selection = tgui_alert(user, "Incluir grupos de jogadores na clareira?", "Contents reset [selected_transport_id]", list("Contents", "Contents and Players", "Cancel"))
 			switch(selection)
 				if("Contents")
 					broken_controller.reset_lift_contents(foreign_objects = TRUE, foreign_non_player_mobs = TRUE, consider_player_mobs = FALSE)
@@ -46,7 +46,7 @@ ADMIN_VERB(reset_tram, R_DEBUG|R_ADMIN, "Reset Tram", "Reset a tram controller o
 			broken_controller.reset_position()
 
 		if("Controller and Contents")
-			var/selection = tgui_alert(user, "Include player mobs in the clearing?", "Contents reset [selected_transport_id]", list("Contents", "Contents and Players", "Cancel"))
+			var/selection = tgui_alert(user, "Incluir grupos de jogadores na clareira?", "Contents reset [selected_transport_id]", list("Contents", "Contents and Players", "Cancel"))
 			switch(selection)
 				if("Contents")
 					message_admins("[key_name_admin(user)] performed a contents and controller reset of tram ID [selected_transport_id].")

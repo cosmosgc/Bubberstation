@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/queen
 	name = "alien queen"
-	desc = "A hulking beast of an alien, for some reason this one seems more important than the others, you should probably quit staring at it and do something."
+	desc = "Uma besta hulking de um alienígena, por alguma razão este parece mais importante do que os outros, você provavelmente deveria parar de olhar para ele e fazer algo."
 	caste = "queen"
 	maxHealth = 500
 	status_flags = NONE //can't shove or KO the queen, kiddo.
@@ -67,7 +67,7 @@
 
 /datum/action/cooldown/alien/skyrat/queen_screech
 	name = "Deafening Screech"
-	desc = "Let out a screech so deafeningly loud that anything with the ability to hear around you will likely be incapacitated for a short time."
+	desc = "Deixe um grito tão ensurdecedormente alto que qualquer coisa com a habilidade de ouvir ao seu redor provavelmente ficará incapacitada por um curto período de tempo."
 	button_icon_state = "screech"
 	cooldown_time = 5 MINUTES
 

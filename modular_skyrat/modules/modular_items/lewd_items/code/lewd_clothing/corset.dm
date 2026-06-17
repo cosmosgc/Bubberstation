@@ -2,7 +2,7 @@
 
 /obj/item/clothing/suit/corset
 	name = "corset"
-	desc = "A tight latex corset. How can anybody fit in THAT?"
+	desc = "Um espartilho de látex apertado. Como alguém pode caber nisso?"
 	icon_state = "corset"
 	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
@@ -30,11 +30,11 @@
 /obj/item/clothing/suit/corset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(laced_tight && src == user.wear_suit)
-		to_chat(user, span_purple("The corset squeezes tightly against your ribs! Breathing suddenly feels much more difficult."))
+		to_chat(user, span_purple("O espartilho aperta bem contra suas costelas! Respirar de repente parece muito mais difícil."))
 
 /obj/item/clothing/suit/corset/dropped(mob/living/carbon/human/user)
 	. = ..()
 	if(laced_tight && src == user.wear_suit)
-		to_chat(user, span_purple("Phew. Now you can breathe normally."))
+		to_chat(user, span_purple("Ufa. Agora você pode respirar normalmente."))
 
 #undef TIGHT_SLOWDOWN

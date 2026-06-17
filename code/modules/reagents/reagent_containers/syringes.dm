@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/syringe
 	name = "syringe"
-	desc = "A syringe that can hold up to 15 units."
+	desc = "Uma seringa que pode conter até 15 unidades."
 	icon = 'icons/obj/medical/syringe.dmi'
 	base_icon_state = "syringe"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -253,47 +253,47 @@
 
 /obj/item/reagent_containers/syringe/epinephrine
 	name = "syringe (epinephrine)"
-	desc = "Contains epinephrine - used to stabilize patients."
+	desc = "Contém epinefrina usada para estabilizar os pacientes."
 	list_reagents = list(/datum/reagent/medicine/epinephrine = 15)
 
 /obj/item/reagent_containers/syringe/multiver
 	name = "syringe (multiver)"
-	desc = "Contains multiver. Diluted with granibitaluri."
+	desc = "Contém multiver. Diluída com granibitaluri."
 	list_reagents = list(/datum/reagent/medicine/c2/multiver = 6, /datum/reagent/medicine/granibitaluri = 9)
 
 /obj/item/reagent_containers/syringe/calomel
 	name = "syringe (calomel)"
-	desc = "Contains calomel - a toxic drug for rapidly removing chemicals from the body."
+	desc = "Contém calomel, uma droga tóxica para remover rapidamente substâncias químicas do corpo."
 	list_reagents = list(/datum/reagent/medicine/calomel = 15)
 
 /obj/item/reagent_containers/syringe/convermol
 	name = "syringe (convermol)"
-	desc = "Contains convermol. Diluted with granibitaluri."
+	desc = "Contém convermol. Diluída com granibitaluri."
 	list_reagents = list(/datum/reagent/medicine/c2/convermol = 6, /datum/reagent/medicine/granibitaluri = 9)
 
 /obj/item/reagent_containers/syringe/antiviral
 	name = "syringe (spaceacillin)"
-	desc = "Contains antiviral agents."
+	desc = "Contém agentes antivirais."
 	list_reagents = list(/datum/reagent/medicine/spaceacillin = 15)
 
 /obj/item/reagent_containers/syringe/bioterror
 	name = "bioterror syringe"
-	desc = "Contains several paralyzing reagents."
+	desc = "Contém vários reagentes paralisantes."
 	list_reagents = list(/datum/reagent/consumable/ethanol/neurotoxin = 5, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/toxin/sodium_thiopental = 5)
 
 /obj/item/reagent_containers/syringe/calomel
 	name = "syringe (calomel)"
-	desc = "Contains calomel."
+	desc = "Contém calomel."
 	list_reagents = list(/datum/reagent/medicine/calomel = 15)
 
 /obj/item/reagent_containers/syringe/plasma
 	name = "syringe (plasma)"
-	desc = "Contains plasma."
+	desc = "Contém plasma."
 	list_reagents = list(/datum/reagent/toxin/plasma = 15)
 
 /obj/item/reagent_containers/syringe/lethal
 	name = "lethal injection syringe"
-	desc = "A syringe used for lethal injections. It can hold up to 50 units."
+	desc = "Uma seringa usada para injeções letais. Pode aguentar até 50 unidades."
 	amount_per_transfer_from_this = 50
 	has_variable_transfer_amount = FALSE
 	volume = 50
@@ -306,7 +306,7 @@
 
 /obj/item/reagent_containers/syringe/mulligan
 	name = "Mulligan"
-	desc = "A syringe used to completely change the users identity."
+	desc = "Uma seringa usada para mudar completamente a identidade dos usuários."
 	amount_per_transfer_from_this = 1
 	has_variable_transfer_amount = FALSE
 	volume = 1
@@ -314,7 +314,7 @@
 
 /obj/item/reagent_containers/syringe/gluttony
 	name = "Gluttony's Blessing"
-	desc = "A syringe recovered from a dread place. It probably isn't wise to use."
+	desc = "Uma seringa recuperada de um lugar assustador. Provavelmente não é sábio usar."
 	amount_per_transfer_from_this = 1
 	has_variable_transfer_amount = FALSE
 	volume = 1
@@ -322,7 +322,7 @@
 
 /obj/item/reagent_containers/syringe/bluespace
 	name = "bluespace syringe"
-	desc = "An advanced syringe that can hold 60 units of chemicals."
+	desc = "Uma seringa avançada que pode conter 60 unidades de produtos químicos."
 	icon_state = "bluespace_0"
 	inhand_icon_state = "bluespace_0"
 	base_icon_state = "bluespace"
@@ -334,7 +334,7 @@
 
 /obj/item/reagent_containers/syringe/piercing
 	name = "piercing syringe"
-	desc = "A diamond-tipped syringe that pierces armor when launched at high velocity. It can hold up to 10 units."
+	desc = "Uma seringa com ponta de diamante que perfura armadura quando lançada em alta velocidade. Pode aguentar até 10 unidades."
 	icon_state = "piercing_0"
 	inhand_icon_state = "piercing_0"
 	base_icon_state = "piercing"
@@ -354,7 +354,7 @@
 
 /obj/item/reagent_containers/syringe/crude
 	name = "crude syringe"
-	desc = "A crudely made syringe. The flimsy wooden construction makes it hold a minimal amounts of reagents, but its very disposable."
+	desc = "Uma seringa crua. A frágil construção de madeira faz com que tenha uma quantidade mínima de reagentes, mas é muito descartável."
 	icon_state = "crude_0"
 	base_icon_state = "crude"
 	possible_transfer_amounts = list(1,5)
@@ -380,7 +380,7 @@
 // Used by monkeys from the elemental plane of bananas. Reagents come from bungo pit, death berries, destroying angel, jupiter cups, and jumping beans.
 /obj/item/reagent_containers/syringe/crude/tribal
 	name = "tribal syringe"
-	desc = "A crudely made syringe. Smells like bananas."
+	desc = "Uma seringa crua. Cheira a banana."
 
 /obj/item/reagent_containers/syringe/crude/tribal/Initialize(mapload)
 	var/toxin_to_get = pick(/datum/reagent/toxin/bungotoxin, /datum/reagent/toxin/coniine, /datum/reagent/toxin/amanitin, /datum/reagent/consumable/liquidelectricity/enriched, /datum/reagent/ants)
@@ -395,32 +395,32 @@
 
 /obj/item/reagent_containers/syringe/spider_extract
 	name = "spider extract syringe"
-	desc = "Contains crikey juice - makes any gold core create the most deadly companions in the world."
+	desc = "Contém suco de crikey - faz qualquer núcleo de ouro criar os companheiros mais mortais do mundo."
 	list_reagents = list(/datum/reagent/spider_extract = 1)
 
 /obj/item/reagent_containers/syringe/oxandrolone
 	name = "syringe (oxandrolone)"
-	desc = "Contains oxandrolone, used to treat severe burns."
+	desc = "Contém oxandrolona, usada para tratar queimaduras graves."
 	list_reagents = list(/datum/reagent/medicine/oxandrolone = 15)
 
 /obj/item/reagent_containers/syringe/salacid
 	name = "syringe (salicylic acid)"
-	desc = "Contains salicylic acid, used to treat severe brute damage."
+	desc = "Contém ácido salicílico, usado para tratar danos graves."
 	list_reagents = list(/datum/reagent/medicine/sal_acid = 15)
 
 /obj/item/reagent_containers/syringe/penacid
 	name = "syringe (pentetic acid)"
-	desc = "Contains pentetic acid, used to reduce high levels of radiation and heal severe toxins."
+	desc = "Contém ácido pentético, usado para reduzir altos níveis de radiação e curar toxinas graves."
 	list_reagents = list(/datum/reagent/medicine/pen_acid = 15)
 
 /obj/item/reagent_containers/syringe/syriniver
 	name = "syringe (syriniver)"
-	desc = "Contains syriniver, used to treat toxins and purge chemicals.The tag on the syringe states 'Inject one time per minute'"
+	desc = "Contém syriniver, usado para tratar toxinas e purgar produtos químicos. A etiqueta na seringa diz \"Injete uma vez por minuto\"."
 	list_reagents = list(/datum/reagent/medicine/c2/syriniver = 15)
 
 /obj/item/reagent_containers/syringe/contraband
 	name = "unlabeled syringe"
-	desc = "A syringe containing some sort of unknown chemical cocktail."
+	desc = "Uma seringa contendo algum tipo de coquetel químico desconhecido."
 
 /obj/item/reagent_containers/syringe/contraband/Initialize(mapload)
 	. = ..()

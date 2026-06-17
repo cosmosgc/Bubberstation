@@ -3,7 +3,7 @@
 
 /obj/structure/disposalconstruct
 	name = "disposal pipe segment"
-	desc = "A huge pipe segment used for constructing disposal systems."
+	desc = "Um enorme segmento de tubos usado para construir sistemas de eliminação."
 	icon = 'icons/obj/pipes_n_cables/disposal.dmi'
 	icon_state = "conpipe"
 	anchored = FALSE
@@ -130,7 +130,7 @@
 					if(istype(CP, /obj/structure/disposalpipe/broken))
 						qdel(CP)
 					else
-						to_chat(user, span_warning("There is already a disposal pipe at that location!"))
+						to_chat(user, span_warning("Já tem um cano de eliminação naquele local!"))
 						return TRUE
 
 		else // Disposal or outlet
@@ -151,7 +151,7 @@
 	if(anchored)
 		var/turf/T = get_turf(src)
 		if(!is_pipe() && ((locate(/obj/machinery/disposal) in T) || ((locate(/obj/structure/disposaloutlet) in T))))
-			to_chat(user, span_warning("A disposals machine already exists here!"))
+			to_chat(user, span_warning("Uma máquina de descarte já existe aqui!"))
 			return TRUE
 
 		if(!I.tool_start_check(user, amount=1, heat_required = HIGH_TEMPERATURE_REQUIRED))
@@ -164,7 +164,7 @@
 			transfer_fingerprints_to(O)
 
 	else
-		to_chat(user, span_warning("You need to attach it to the plating first!"))
+		to_chat(user, span_warning("Você precisa colocá-lo no chapeamento primeiro!"))
 	return TRUE
 
 /obj/structure/disposalconstruct/proc/is_pipe()

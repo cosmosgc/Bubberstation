@@ -1,9 +1,9 @@
 /datum/surgery_operation/basic/viral_bonding
 	name = "viral bonding"
 	rnd_name = "Viroplasty (Viral Bonding)"
-	desc = "Force a symbiotic relationship between a patient and a virus it is infected with."
-	rnd_desc = "A surgical procedure that forces a symbiotic relationship between a virus and its host. \
-		The patient will be completely immune to the effects of the virus, but will carry and spread it to others."
+	desc = "Forçar uma relação simbiótica entre um paciente e um vírus que está infectado."
+	rnd_desc = "Um procedimento cirúrgico que força uma relação simbiótica entre um vírus e seu hospedeiro.\
+O paciente será imune aos efeitos do vírus, mas o carregará e espalhará para outros."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		TOOL_WELDER = 2,

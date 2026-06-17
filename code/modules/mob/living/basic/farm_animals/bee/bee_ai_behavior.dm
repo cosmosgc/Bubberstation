@@ -116,7 +116,7 @@
 /datum/pet_command/attack/swirl
 	command_name = "Swirl"
 	requires_pointing = TRUE
-	command_desc = "Your pets will swirl around you and attack whoever you point at!"
+	command_desc = "Seus animais vão girar em torno de você e atacar quem você apontar!"
 	speech_commands = list("swirl", "spiral", "swarm")
 	pointed_reaction = null
 	refuse_reaction = null
@@ -211,7 +211,7 @@
 
 /datum/pet_command/beehive/enter
 	command_name = "Enter beehive"
-	command_desc = "Your bees will enter their beehive."
+	command_desc = "Suas abelhas entrarão na colmeia."
 	speech_commands = list("enter", "home", "in")
 
 /datum/pet_command/beehive/enter/check_beehive_conditions(mob/living/living_pawn, obj/structure/hive)
@@ -221,7 +221,7 @@
 
 /datum/pet_command/beehive/exit
 	command_name = "Exit beehive"
-	command_desc = "Your bees will exit their beehive."
+	command_desc = "Suas abelhas sairão da colmeia."
 	speech_commands = list("exit", "leave", "out")
 
 /datum/pet_command/beehive/exit/check_beehive_conditions(mob/living/living_pawn, obj/structure/hive)
@@ -229,7 +229,7 @@
 
 /datum/pet_command/scatter
 	command_name = "Scatter"
-	command_desc = "Command your pets to scatter all around you!"
+	command_desc = "Ordene aos seus animais que se espalhem ao seu redor!"
 	speech_commands = list("disperse", "spread", "scatter")
 
 /datum/pet_command/scatter/set_command_active(mob/living/parent, mob/living/commander)

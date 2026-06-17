@@ -6,17 +6,17 @@
 
 	// Safety checks
 	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(src, span_warning("This feature requires the SQL backend to be running."))
+		to_chat(src, span_warning("Esse recurso requer que a infraestrutura SQL esteja funcionando."))
 		return
 
 	// Why this would ever be unset, who knows
 	var/prefix = CONFIG_GET(string/discordbotcommandprefix)
 	if(!prefix)
-		to_chat(src, span_warning("This feature is disabled."))
+		to_chat(src, span_warning("Este recurso está desativado."))
 		return
 
 	if(!SSdiscord || !SSdiscord.reverify_cache)
-		to_chat(src, span_warning("Wait for the Discord subsystem to finish initialising"))
+		to_chat(src, span_warning("Espere o subsistema Discórdia terminar de inicializar."))
 		return
 	var/message = ""
 	// Simple sanity check to prevent a user doing this too often

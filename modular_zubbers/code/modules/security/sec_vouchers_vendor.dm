@@ -1,7 +1,7 @@
 
 /obj/item/security_voucher
 	name = "security voucher"
-	desc = "A token to redeem a piece of equipment."
+	desc = "Um símbolo para resgatar um equipamento."
 	icon = 'modular_zubbers/icons/obj/security_voucher.dmi'
 	icon_state = "security_voucher_primary"
 	w_class = WEIGHT_CLASS_TINY
@@ -45,7 +45,7 @@
 
 /datum/voucher_set/security/primary/disabler
 	name = "Disabler"
-	description = "The standard issue energy gun of Nanotrasen security forces. Comes with it's own holster."
+	description = "A arma de energia padrão das forças de segurança Nanotrasen. Vem com o próprio coldre."
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "disabler"
 	set_items = list(
@@ -54,7 +54,7 @@
 
 /datum/voucher_set/security/primary/advanced_taser
 	name = "Hybrid Taser"
-	description = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams."
+	description = "Um taser de modo duplo projetado para disparar eletrodos de alta potência de curto alcance e feixes desativadores de longo alcance."
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "advtaser"
 	set_items = list(
@@ -63,7 +63,7 @@
 
 /datum/voucher_set/security/primary/disabler_smg
 	name = "Pepperball AGH"
-	description = "A slower firing handgun that fires 'pepperballs', which easily drop targets to the floor."
+	description = "Uma arma de fogo mais lenta que dispara \"pepperballs\", que facilmente lança alvos para o chão."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/pepperball/pepperball.dmi'
 	icon_state = "peppergun"
 	set_items = list(
@@ -73,7 +73,7 @@
 
 /datum/voucher_set/security/primary/strobe_shield
 	name = "Strobe Shield"
-	description = "A shield with a built in, high intensity light capable of blinding and disorienting suspects. Takes regular handheld flashes as bulbs."
+	description = "Um escudo com uma luz de alta intensidade capaz de cegar e desorientar suspeitos. Leva flashes de mão regulares como lâmpadas."
 	icon = 'icons/obj/weapons/shields.dmi'
 	icon_state = "flashshield"
 	set_items = list(
@@ -82,7 +82,7 @@
 
 /datum/voucher_set/security/primary/archery
 	name = "Archery Kit"
-	description = "A powerful bow, a training manual, and a quiver with non/less-than-lethal arrows. You will still need to order the fletching book from cargo if you want to make lethal arrows."
+	description = "Um arco poderoso, um manual de treinamento, e uma tremedeira com flechas não-menos-que-letais. Você ainda precisará pedir o livro da carga se quiser fazer flechas letais."
 	icon = 'icons/obj/weapons/bows/bows.dmi'
 	icon_state = "hardlightbow"
 	set_items = list(
@@ -94,7 +94,7 @@
 
 /obj/item/storage/bag/quiver/lesser/security
 	name = "security quiver"
-	desc = "A lightweight, low-capacity quiver capable of being folded into pockets, but nothing else."
+	desc = "Uma tremedeira leve e de baixa capacidade capaz de ser dobrada em bolsos, mas nada mais."
 	slot_flags = ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET|ITEM_SLOT_BELT
 
 /obj/item/storage/bag/quiver/lesser/security/PopulateContents()
@@ -107,7 +107,7 @@
 
 /obj/item/book/granter/crafting_recipe/fletching/nonlethal
 	name = "Aim for the knees, not the eyes!"
-	desc = "A manual on how to construct sub-lethal bows & arrows, how best to use them... and how to construct violins?"
+	desc = "Um manual sobre como construir arcos e flechas sub-letais, como melhor usá-los... e como construir violinos?"
 	crafting_recipe_types = list(
 		/datum/crafting_recipe/shortbow,
 		/datum/crafting_recipe/blunted_arrow,
@@ -118,7 +118,7 @@
 
 /datum/voucher_set/security/primary/nt_usp
 	name = "NT22-HCS 'Enforcer' Pistol"
-	description = "A small pistol that uses hardlight technology to synthesize bullets. Due to its low power, it doesn't have much use besides tiring out criminals."
+	description = "Uma pequena pistola que usa tecnologia de luz dura para sintetizar balas. Devido à sua baixa potência, não tem muito uso além de cansar criminosos."
 	icon = 'modular_zubbers/icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "ntusp_full"
 	set_items = list(
@@ -128,7 +128,7 @@
 
 /datum/voucher_set/security/utility/sec_projector
 	name = "Security Holobarrier Projector"
-	description = "A holographic projector that creates holographic security barriers along with holographic handcuffs."
+	description = "Um projetor holográfico que cria barreiras de segurança holográficas junto com algemas holográficas."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "signmaker_sec"
 	set_items = list(
@@ -137,7 +137,7 @@
 
 /datum/voucher_set/security/utility/lawbook
 	name = "Weighted Space Law Book"
-	description = "A special edition release of Nanotrasen Space Law. The decorative metal cover adds quite the amount of bulk... Be careful swinging it."
+	description = "Uma edição especial da Lei Espacial Nanotrasen. A cobertura de metal decorativo adiciona bastante... Cuidado com o balanço."
 	icon = 'modular_zubbers/icons/obj/security_voucher.dmi'
 	icon_state = "SpaceLawWeighted"
 	set_items = list(
@@ -156,7 +156,7 @@
 
 /datum/voucher_set/security/utility/barrier
 	name = "Barrier Grenades"
-	description = "Two barrier grenades."
+	description = "Duas granadas de barreira."
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "wallbang"
 	set_items = list(
@@ -166,7 +166,7 @@
 
 /datum/voucher_set/security/utility/stingbang
 	name = "Stingbang Grenades"
-	description = "Two stingbang grenades."
+	description = "Duas granadas."
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "timeg_locked"
 	set_items = list(
@@ -176,7 +176,7 @@
 
 /datum/voucher_set/security/utility/justice_helmet
 	name = "Helmet of Justice"
-	description = "Crime fears the helmet of justice."
+	description = "O crime teme o capacete da justiça."
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	icon_state = "justice"
 	set_items = list(
@@ -186,7 +186,7 @@
 
 /datum/voucher_set/security/utility/pinpointer_pairs
 	name = "Pinpointer Pair"
-	description = "A pair of handheld tracking devices that lock onto the other half of the matching pair."
+	description = "Um par de dispositivos de rastreamento que travam a outra metade do par."
 	icon = 'icons/obj/devices/tracker.dmi'
 	icon_state = "pinpointer"
 	set_items = list(
@@ -195,7 +195,7 @@
 
 /datum/voucher_set/security/utility/laptop
 	name = "Security Laptop"
-	description = "A laptop pre-loaded with security software."
+	description = "Um laptop pré-carregado com software de segurança."
 	icon = 'icons/obj/devices/modular_laptop.dmi'
 	icon_state = "laptop-closed"
 	set_items = list(

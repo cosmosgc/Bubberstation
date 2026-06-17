@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork/clockwork_slab
 	name = "Clockwork Slab"
-	desc = "A mechanical-looking device filled with intricate cogs that swirl to their own accord."
-	clockwork_desc = "A beautiful work of art, harnessing mechanical energy for a variety of useful powers."
+	desc = "Um dispositivo mecânico cheio de engrenagens complexas que giram por vontade própria."
+	clockwork_desc = "Uma bela obra de arte, aproveitando energia mecânica para uma variedade de poderes úteis."
 	item_flags = NOBLUDGEON
 	icon_state = "clockwork_slab"
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
 	if(!IS_CLOCK(user))
-		to_chat(user, span_warning("You cannot figure out what the device is used for!"))
+		to_chat(user, span_warning("Você não pode descobrir para que o dispositivo é usado!"))
 		return
 
 	if(active_scripture)
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 			if(scripture.type in purchased_scriptures)
 				if(invoking_scripture)
-					living_user.balloon_alert(living_user, "failed to invoke!")
+					living_user.balloon_alert(living_user, "Falhou em invocar!")
 					return FALSE
 
 				if(scripture.power_cost > GLOB.clock_power)
@@ -213,7 +213,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 			else
 				if(scripture.research_required && !(scripture.type in GLOB.clockwork_research_unlocked_scriptures))
-					living_user.balloon_alert(living_user, "research required!")
+					living_user.balloon_alert(living_user, "Pesquisa necessária!")
 					return FALSE
 
 				if(cogs >= scripture.cogs_required)

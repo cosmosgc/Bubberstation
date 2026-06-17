@@ -12,7 +12,7 @@
  */
 /obj/machinery/armament_station
 	name = "Armament Outfitting Station"
-	desc = "A versatile station for equipping your weapons."
+	desc = "Uma estação versátil para equipar suas armas."
 	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "liberationstation"
 	density = TRUE
@@ -35,7 +35,7 @@
  */
 /obj/item/armament_points_card
 	name = "armament points card"
-	desc = "A points card that can be used at an Armaments Station or Armaments Dealer."
+	desc = "Um cartão de pontos que pode ser usado em uma Estação de Armamentos ou Vendedor de Armamentos."
 	icon = 'modular_skyrat/modules/armaments/icons/armaments.dmi'
 	icon_state = "armament_card"
 	w_class = WEIGHT_CLASS_TINY

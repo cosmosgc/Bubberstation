@@ -33,7 +33,7 @@
 		source.balloon_alert(user, "need [PLANK_BARRICADE_AMOUNT] [plank] sheets!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
-	source.balloon_alert(user, "constructing barricade...")
+	source.balloon_alert(user, "Construindo barricada...")
 	playsound(source, 'sound/items/hammering_wood.ogg', 50, vary = TRUE)
 	INVOKE_ASYNC(src, PROC_REF(barricade), source, plank, user, params) //signal handlers can't have do_afters inside of them
 	return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -43,7 +43,7 @@
 	if(!do_after(user, 5 SECONDS, target = source) || !plank.use(2) || (locate(/obj/structure/barricade/wooden/crude) in source.loc))
 		return
 
-	source.balloon_alert(user, "barricade constructed")
+	source.balloon_alert(user, "Barricada construída.")
 	var/obj/structure/barricade/wooden/crude/barricade = new (source.loc)
 	barricade.add_fingerprint(user)
 

@@ -1,6 +1,6 @@
 /obj/item/shuttle_remote
 	name = "shuttle remote"
-	desc = "A remote to send away or call a shuttle."
+	desc = "Um controle remoto para enviar ou chamar uma nave auxiliar."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "shuttleremote"
 	w_class = WEIGHT_CLASS_SMALL
@@ -43,11 +43,11 @@
 	if(!istype(interacting_with, /obj/machinery/computer/shuttle))
 		return NONE
 	if(our_computer || our_port)
-		balloon_alert(user, "already linked!")
+		balloon_alert(user, "Já conectado!")
 		return ITEM_INTERACT_BLOCKING
 	var/obj/machinery/computer/shuttle/new_computer = interacting_with
 	if(new_computer.remote_ref || !new_computer.may_be_remote_controlled)
-		balloon_alert(user, "occupied signal!")
+		balloon_alert(user, "Sinal ocupado!")
 		return ITEM_INTERACT_BLOCKING
 	new_computer.remote_ref = WEAKREF(src)
 	computer_ref = WEAKREF(new_computer)
@@ -72,7 +72,7 @@
 	var/destination = null
 
 	if(home == dock || ("[our_computer.shuttleId]_custom" == dock.shuttle_id))
-		switch(tgui_alert(user, send_off_text, "Send Off Shuttle?", send_off_options))
+		switch(tgui_alert(user, send_off_text, "Enviar o transporte?", send_off_options))
 			if("Yes")
 				destination = away.shuttle_id
 	else if(away == dock)
@@ -82,7 +82,7 @@
 				send_off_text += "\n\nCustom location loaded, try to dock?"
 				send_off_options += "Send to custom"
 				break
-		switch(tgui_alert(user, send_off_text, "Call Shuttle?", send_off_options))
+		switch(tgui_alert(user, send_off_text, "Chamar o transporte?", send_off_options))
 			if("Yes")
 				destination = home.shuttle_id
 			if("Send to custom")
@@ -91,7 +91,7 @@
 	if(!destination || !can_use(user))
 		return
 	if(!our_port.canDock(SSshuttle.getDock(destination)))
-		balloon_alert(user, "destination occupied!")
+		balloon_alert(user, "Destino ocupado!")
 		return
 	transit_shuttle(user, destination)
 
@@ -110,7 +110,7 @@
 		LAZYADD(destination_names, destination_data["name"])
 		LAZYADDASSOC(destination_ids, destination_data["name"], destination_data["id"])
 	if(destination_names.len < 1)
-		balloon_alert(user, "no valid destinations!")
+		balloon_alert(user, "Não há destinos válidos!")
 		return NONE
 	var/picked_home = tgui_input_list(user, "choose which dock to designate as the shuttle's home point...", "Choose Home Dock", destination_names)
 	var/picked_away = tgui_input_list(user, "choose which dock to designate as the shuttle's away point...", "Choose Away Dock", destination_names)
@@ -125,22 +125,22 @@
 	if(!user.can_perform_action(src))
 		return FALSE
 	if(is_reserved_level(loc.z))
-		balloon_alert(user, "can't use here!")
+		balloon_alert(user, "Não posso usar aqui!")
 		return FALSE
 	if(!our_computer)
-		balloon_alert(user, "no nav computer!")
+		balloon_alert(user, "Sem computador de navegação!")
 		return FALSE
 	if(our_computer.locked)
-		balloon_alert(user, "nav computer locked!")
+		balloon_alert(user, "Computador de navegação bloqueado!")
 		return FALSE
 	if(our_port.mode != SHUTTLE_IDLE)
-		balloon_alert(user, "engines recharging!")
+		balloon_alert(user, "Motores recarregando!")
 		return FALSE
 	if(!our_port.canDock(SSshuttle.getDock(shuttle_home_id)))
-		balloon_alert(user, "home dock occupied!")
+		balloon_alert(user, "Doca de casa ocupada!")
 		return FALSE
 	if(!our_port.canDock(SSshuttle.getDock(shuttle_away_id)))
-		balloon_alert(user, "away dock occupied!")
+		balloon_alert(user, "Doca ocupada!")
 		return FALSE
 	return TRUE
 

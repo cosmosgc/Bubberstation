@@ -1,6 +1,6 @@
 /obj/item/tickle_feather
 	name = "tickling feather"
-	desc = "A rather ticklish feather that can be used in both mirth and malice."
+	desc = "Uma pena bastante sensível que pode ser usada em alegria e maldade."
 	icon_state = "feather"
 	inhand_icon_state = "feather"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -90,6 +90,6 @@
 
 //Mood boost
 /datum/mood_event/tickled
-	description = span_nicegreen("Wooh... I was tickled. It was... Funny!\n")
+	description = span_nicegreen("Wooh... Fiquei com cócegas. Foi... Engraçado!\n")
 	mood_change = 0
 	timeout = 2 MINUTES

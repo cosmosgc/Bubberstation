@@ -4,7 +4,7 @@
  */
 /obj/item/piggy_bank
 	name = "piggy bank"
-	desc = "A pig-shaped money container made of porkelain, oink. <i>Do not throw.</i>" //pun very intended.
+	desc = "Um container de dinheiro em forma de porco feito de porco, Oink.<i>Não jogue.</i>" //pun very intended.
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "piggy_bank"
 	max_integrity = 8
@@ -102,7 +102,7 @@
 	. = ..()
 	if(DOING_INTERACTION_WITH_TARGET(user, src))
 		return
-	balloon_alert(user, "rattle rattle...")
+	balloon_alert(user, "chocalho chocalho...")
 	if(!do_after(user, 0.5 SECONDS, src))
 		return
 	var/percentile = round(calculate_dosh_amount()/maximum_value * 100, 1)
@@ -110,19 +110,19 @@
 		playsound(src, SFX_RATTLE, percentile * 0.5, FALSE, FALSE)
 	switch(percentile)
 		if(0)
-			balloon_alert(user, "it's empty")
+			balloon_alert(user, "Está vazio.")
 		if(1 to 9)
-			balloon_alert(user, "it's almost empty")
+			balloon_alert(user, "Está quase vazio.")
 		if(10 to 25)
-			balloon_alert(user, "it's some cash")
+			balloon_alert(user, "É algum dinheiro.")
 		if(25 to 45)
-			balloon_alert(user, "it's plenty of cash")
+			balloon_alert(user, "É muito dinheiro.")
 		if(45 to 70)
-			balloon_alert(user, "it feels almost full")
+			balloon_alert(user, "Parece quase cheio.")
 		if(70 to 95)
-			balloon_alert(user, "it feels full")
+			balloon_alert(user, "Parece cheio.")
 		if(95 to INFINITY)
-			balloon_alert(user, "brimming with cash")
+			balloon_alert(user, "Cheio de dinheiro.")
 
 /obj/item/piggy_bank/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	var/creds_value = item.get_item_credit_value()
@@ -132,11 +132,11 @@
 	var/dosh_amount = calculate_dosh_amount()
 
 	if(dosh_amount >= maximum_value)
-		balloon_alert(user, "it's full!")
+		balloon_alert(user, "Está cheio!")
 	else if(dosh_amount + creds_value > maximum_value)
-		balloon_alert(user, "too much cash!")
+		balloon_alert(user, "Muito dinheiro!")
 	else if(!user.transferItemToLoc(item, src))
-		balloon_alert(user, "stuck in your hands!")
+		balloon_alert(user, "Preso em suas mãos!")
 	else
 		balloon_alert(user, "inserted [creds_value] creds")
 		sanitize_piggy_bank_contents_len()
@@ -151,7 +151,7 @@
 
 /obj/item/piggy_bank/museum
 	name = "Pigston Swinelord VI"
-	desc = "The museum's mascot piggy bank and favorite embezzler, known to carry donations between shifts without paying taxes. The space IRS hates him."
+	desc = "O mascote do museu e o ladrão favorito, conhecido por carregar doações entre turnos sem pagar impostos. A Receita o odeia."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/piggy_bank/museum"
 	post_init_icon_state = "piggy_bank"
@@ -166,7 +166,7 @@
 
 /obj/item/piggy_bank/vault
 	name = "vault piggy bank"
-	desc = "A pig-shaped money container made of porkelain, containing the station's emergency funds carried between shifts, oink. <i>Do not throw.</i>"
+	desc = "Um contêiner em forma de porco feito de carne de porco, contendo os fundos de emergência da estação carregados entre turnos, oink.<i>Não jogue.</i>"
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/piggy_bank/vault"
 	post_init_icon_state = "piggy_bank"

@@ -17,8 +17,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods
 	name = "iron rod"
-	desc = "Some rods. Can be used for building or something."
-	singular_name = "iron rod"
+	desc = "Algumas barras. Pode ser usado para construir ou algo assim."
+	singular_name = "Vara de ferro"
 	icon_state = "rods"
 	inhand_icon_state = "rods"
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -87,13 +87,13 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/welder_act(mob/living/user, obj/item/tool)
 	if(get_amount() < 2)
-		balloon_alert(user, "not enough rods!")
+		balloon_alert(user, "Não há bastões suficientes!")
 		return
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/sheet/iron/new_item = new(user.loc)
 		user.visible_message(
 			span_notice("[user.name] shaped [src] into iron sheets with [tool]."),
-			blind_message = span_hear("You hear welding."),
+			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
 		)
@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		var/obj/item/stack/tile/iron/two/new_item = new(user.loc)
 		user.visible_message(
 			span_notice("[user.name] shaped [src] into floor tiles with [tool]."),
-			blind_message = span_hear("You hear welding."),
+			blind_message = span_hear("Você ouve solda."),
 			vision_distance = COMBAT_MESSAGE_RANGE,
 			ignored_mobs = user
 		)
@@ -132,8 +132,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/lava
 	name = "heat resistant rod"
-	desc = "Treated, specialized iron rods. When exposed to the vacuum of space their coating breaks off, but they can hold up against the extreme heat of active lava."
-	singular_name = "heat resistant rod"
+	desc = "Barras de ferro especializadas tratadas. Quando expostos ao vácuo do espaço seu revestimento se rompe, mas eles podem resistir ao calor extremo da lava ativa."
+	singular_name = "Vara resistente ao calor"
 	icon_state = "lavarods"
 	inhand_icon_state = "rods"
 	color = "#5286b9ff"
@@ -149,8 +149,8 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 
 /obj/item/stack/rods/shuttle
 	name = "shuttle frame rods"
-	desc = "Treated, specialized iron rods suitable for the construction of shuttle frames or the expansion of existing shuttles."
-	singular_name = "shuttle frame rod"
+	desc = "Barras de ferro tratadas e especializadas adequadas para a construção de estruturas de transporte ou a expansão de naves existentes."
+	singular_name = "Transportador haste de armação"
 	icon_state = "shuttlerods"
 	mats_per_unit = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT,  /datum/material/titanium=SMALL_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/rods/shuttle

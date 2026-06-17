@@ -202,7 +202,7 @@
 /// Stops double cuff
 /datum/status_effect/cuffed_item/proc/block_item_cuff(obj/item/source, mob/cuffer, obj/item/cuffs)
 	SIGNAL_HANDLER
-	source.balloon_alert(cuffer, "cuffed to someone else!")
+	source.balloon_alert(cuffer, "Algemado a outra pessoa!")
 	return BLOCK_ITEM_CUFF
 
 ///What happens if one of the items is moved away from the mob
@@ -246,16 +246,16 @@
 		return FALSE
 
 	if(!(user.mobility_flags & MOBILITY_USE) || (user != owner && !owner.IsReachableBy(user)))
-		owner.balloon_alert(user, "can't do it right now!")
+		owner.balloon_alert(user, "Não posso fazer isso agora!")
 		return FALSE
 
 	if(user != owner)
 		owner.visible_message(span_notice("[user] tries to remove [cuffs] binding [cuffed] to [owner]"), span_warning("[user] is trying to remove [cuffs] binding [cuffed] to you."))
 
-	owner.balloon_alert(user, "removing cuffs...")
+	owner.balloon_alert(user, "Removendo algemas...")
 	playsound(owner, cuffs.cuffsound, 30, TRUE, -2)
 	if(!do_after(user, cuffs.get_handcuff_time(user) * 1.5, owner, interaction_key = interaction_key) || QDELETED(src))
-		owner.balloon_alert(user, "interrupted!")
+		owner.balloon_alert(user, "Interrompido!")
 		return FALSE
 
 	if(user != owner)
@@ -267,7 +267,7 @@
 	var/mob/living/ref_owner = owner
 	ref_cuffs.forceMove(owner.drop_location()) //This will cause the status effect to delete itself, which unsets the 'cuffs' var
 	user.put_in_hands(ref_cuffs)
-	ref_owner.balloon_alert(user, "cuffs removed from item")
+	ref_owner.balloon_alert(user, "Algemas removidas fazem item")
 
 	return TRUE
 
@@ -279,7 +279,7 @@
 ///The status alert linked to the cuffed_item status effect
 /atom/movable/screen/alert/status_effect/cuffed_item
 	name = "Cuffed Item"
-	desc = "You've an item firmly cuffed to your arm. You probably won't be accidentally dropping it somewhere anytime soon."
+	desc = "Você tem um item firmemente algemado ao seu braço. Provavelmente não o deixará cair em algum lugar tão cedo."
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	clickable_glow = TRUE
 	click_master = FALSE

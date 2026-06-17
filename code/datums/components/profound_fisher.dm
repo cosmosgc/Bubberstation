@@ -39,7 +39,7 @@
 /datum/component/profound_fisher/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	examine_list += span_info("When [EXAMINE_HINT("held")] or [EXAMINE_HINT("equipped")], [EXAMINE_HINT("right-click")] with a empty hand to open the integrated fishing rod interface.")
-	examine_list += span_tinynoticeital("To fish, you need to turn combat mode off.")
+	examine_list += span_tinynoticeital("Para pescar, você precisa desligar o modo de combate.")
 
 ///Handles replacing the fishing rod if somehow removed from the parent movable if delete_rod_when_deleted is TRUE, otherwise delete the component.
 /datum/component/profound_fisher/proc/on_rod_moved(datum/source)

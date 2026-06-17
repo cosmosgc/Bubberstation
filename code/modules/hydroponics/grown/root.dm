@@ -1,7 +1,7 @@
 // Carrot
 /obj/item/seeds/carrot
 	name = "carrot seed pack"
-	desc = "These seeds grow into carrots."
+	desc = "Estas sementes crescem em cenouras."
 	icon_state = "seed-carrot"
 	species = "carrot"
 	plantname = "Carrots"
@@ -19,7 +19,7 @@
 /obj/item/food/grown/carrot
 	seed = /obj/item/seeds/carrot
 	name = "carrot"
-	desc = "It's good for the eyes!"
+	desc = "É bom para os olhos!"
 	icon_state = "carrot"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
@@ -49,7 +49,7 @@
 // Parsnip
 /obj/item/seeds/carrot/parsnip
 	name = "parsnip seed pack"
-	desc = "These seeds grow into parsnips."
+	desc = "Estas sementes crescem em parsnips."
 	icon_state = "seed-parsnip"
 	species = "parsnip"
 	plantname = "Parsnip"
@@ -61,7 +61,7 @@
 /obj/item/food/grown/parsnip
 	seed = /obj/item/seeds/carrot/parsnip
 	name = "parsnip"
-	desc = "Closely related to carrots."
+	desc = "Relacionado com cenouras."
 	icon_state = "parsnip"
 	foodtypes = VEGETABLES
 	wine_power = 35
@@ -91,7 +91,7 @@
 // Cahn'root
 /obj/item/seeds/carrot/cahnroot
 	name = "cahn'root seed pack"
-	desc = "These seeds grow into cahn'roots."
+	desc = "Estas sementes crescem em raízes de cahn."
 	icon_state = "seed-cahn'root"
 	species = "cahn'root"
 	plantname = "Cahn'root"
@@ -108,7 +108,7 @@
 /obj/item/food/grown/cahnroot
 	seed = /obj/item/seeds/carrot/cahnroot
 	name = "cahn'root"
-	desc = "Heavily modified version of terran carrot, originally made to survive the scarciest of environments by an enterprising scientist of Moth Flotilla, Cahn'Mang."
+	desc = "Versão pesadamente modificada da cenoura terran, originalmente feita para sobreviver ao mais assustador dos ambientes por um cientista empreendedor da Moth Flotilla, Cahn'Mang."
 	icon_state = "cahn'root"
 	foodtypes = VEGETABLES
 	tastes = list("sweet dirt" = 1)
@@ -138,7 +138,7 @@
 // White-Beet
 /obj/item/seeds/whitebeet
 	name = "white-beet seed pack"
-	desc = "These seeds grow into sugary beet producing plants."
+	desc = "Estas sementes crescem em plantas produtoras de beterraba açucarada."
 	icon_state = "seed-whitebeet"
 	species = "whitebeet"
 	plantname = "White-Beet Plants"
@@ -156,7 +156,7 @@
 /obj/item/food/grown/whitebeet
 	seed = /obj/item/seeds/whitebeet
 	name = "white-beet"
-	desc = "You can't beat white-beet."
+	desc = "Você não pode vencer a abelha branca."
 	icon_state = "whitebeet"
 	bite_consumption_mod = 3
 	foodtypes = VEGETABLES
@@ -165,7 +165,7 @@
 // Red Beet
 /obj/item/seeds/redbeet
 	name = "redbeet seed pack"
-	desc = "These seeds grow into red beet producing plants."
+	desc = "Estas sementes crescem em plantas produtoras de beterraba vermelha."
 	icon_state = "seed-redbeet"
 	species = "redbeet"
 	plantname = "Red-Beet Plants"
@@ -183,7 +183,7 @@
 /obj/item/food/grown/redbeet
 	seed = /obj/item/seeds/redbeet
 	name = "red beet"
-	desc = "You can't beat red beet."
+	desc = "Você não pode vencer a beterraba vermelha."
 	icon_state = "redbeet"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES

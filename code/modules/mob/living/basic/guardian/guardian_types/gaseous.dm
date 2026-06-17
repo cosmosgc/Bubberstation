@@ -7,7 +7,7 @@
 	range = 7
 	playstyle_string = span_holoparasite("As a <b>gaseous</b> type, you have only light damage resistance, but you can expel gas in an area. In addition, your punches cause sparks, and you make your summoner inflammable.")
 	creator_name = "Gaseous"
-	creator_desc = "Creates sparks on touch and continuously expels a gas of its choice. Automatically extinguishes the user if they catch on fire."
+	creator_desc = "Cria faíscas no toque e expulsa continuamente um gás de sua escolha. Apaga automaticamente o usuário se pegar fogo."
 	creator_icon = "gaseous"
 	toggle_button_type = /datum/action/cooldown/guardian/toggle_mode/gases
 	/// Ability we use to select gases
@@ -72,7 +72,7 @@
 /// Expel a range of gases
 /datum/action/cooldown/mob_cooldown/expel_gas
 	name = "Release Gas"
-	desc = "Start or stop expelling a selected gas into the environment."
+	desc = "Comece ou pare de expulsar um gás selecionado para o ambiente."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "smoke"
 	cooldown_time = 0 SECONDS // We're here for the interface not the cooldown
@@ -122,7 +122,7 @@
 	if(isguardian(owner))
 		var/mob/living/basic/guardian/guardian_owner = owner
 		if(!guardian_owner.is_deployed())
-			to_chat(owner, span_warning("You cannot release gas without being summoned!"))
+			to_chat(owner, span_warning("Você não pode liberar o gás sem ser convocado!"))
 			return
 
 	to_chat(owner, span_bolddanger("You start releasing [picked_gas]."))
@@ -140,7 +140,7 @@
 /datum/action/cooldown/mob_cooldown/expel_gas/proc/stop_gas()
 	SIGNAL_HANDLER
 	if (!isnull(active_gas))
-		to_chat(src, span_notice("You stop releasing gas."))
+		to_chat(src, span_notice("Pare de liberar gás."))
 	active_gas = null
 	QDEL_NULL(mob_smoke)
 	UnregisterSignal(owner, COMSIG_LIVING_LIFE)

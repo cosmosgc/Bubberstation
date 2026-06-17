@@ -1,6 +1,6 @@
 /obj/machinery/primitive_stove
 	name = "stone stove"
-	desc = "You think you'll stick to just putting pots on this, the grill part looks very unsanitary."
+	desc = "Você acha que vai ficar apenas colocando panelas nisso, a parte da grelha parece muito anti-higiênica."
 	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/stone_kitchen_machines.dmi'
 	icon_state = "stove_off"
 	base_icon_state = "stove"
@@ -20,7 +20,7 @@
 /obj/machinery/primitive_stove/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It can be taken apart with a <b>crowbar</b>.")
+	. += span_notice("Pode ser desmontado com um<b>Pé de cabra.</b>.")
 
 // previously NO_DECONSTRUCTION
 /obj/machinery/primitive_stove/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)

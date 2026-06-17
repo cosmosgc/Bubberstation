@@ -1,11 +1,11 @@
 /datum/quirk/dominant_aura
 	name = "Dominant Aura"
-	desc = "You are assertive enough to command your more obedient cohorts. At a snap of your fingers, you can compel their attention-- or send them to the floor."
+	desc = "Você é assertivo o suficiente para comandar seus grupos mais obedientes. Com um estalo de seus dedos, você pode compelir a atenção deles - ou enviá-los para o chão."
 	icon = "fa-sort-up"
-	medical_record_text = "Patient displays a highly assertive personality."
+	medical_record_text = "O paciente tem uma personalidade altamente assertiva."
 	value = 0
-	gain_text = span_notice("You feel like making someone your pet.")
-	lose_text = span_notice("You feel less assertive than before.")
+	gain_text = span_notice("Você quer fazer de alguém seu animal de estimação.")
+	lose_text = span_notice("Você se sente menos assertiva do que antes.")
 	quirk_flags = QUIRK_HIDE_FROM_SCAN
 	erp_quirk = TRUE // Disables on ERP config.
 

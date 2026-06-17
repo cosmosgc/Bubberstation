@@ -61,7 +61,7 @@
 /obj/machinery/vending/custom/examine(mob/user)
 	. = ..()
 	if(linked_account)
-		. += span_warning("Machine is ID locked. Be sure to unlink before deconstructing the machine.")
+		. += span_warning("A máquina está bloqueada. Não se esqueça de desconectar antes de desconstruir a máquina.")
 
 /obj/machinery/vending/custom/Exited(obj/item/gone, direction)
 	. = ..()
@@ -163,7 +163,7 @@
 
 /obj/machinery/vending/custom/post_restock(mob/living/user, restocked)
 	if(!restocked)
-		to_chat(user, span_warning("There's nothing to restock!"))
+		to_chat(user, span_warning("Não há nada para reabastecer!"))
 		return
 
 	to_chat(user, span_notice("You loaded [restocked] items in [src]"))
@@ -171,13 +171,13 @@
 /obj/machinery/vending/custom/crowbar_act(mob/living/user, obj/item/attack_item)
 	if(linked_account)
 		visible_message(
-			span_warning("Security warning"),
-			span_warning("Unauthorized deconstruction of vending machine is prohibited. Please read the warning alert")
+			span_warning("Aviso de segurança."),
+			span_warning("A desconstrução não autorizada da máquina é proibida. Por favor, leia o alerta de alerta.")
 		)
-		if(tgui_alert(user, "Vending machine is ID locked.\
-		Deconstruction will result in an catrostrophic self destruct.\
-		If you are the owner of this machine please unlink your account with an ID swipe before proceeding.\
-		Still proceed?",
+		if(tgui_alert(user, "A máquina de venda está bloqueada.\
+A desconstrução resultará em uma autodestruição catrostrófica.\
+Se você é o dono desta máquina, por favor, desvincular sua conta com um roubo de identidade antes de prosseguir.\
+Ainda continua?",
 		"Vandalism protection protocol",
 		list("Yes", "No")) == "No")
 			return ITEM_INTERACT_FAILURE
@@ -206,7 +206,7 @@
 				speak("account unlinked.")
 				return ITEM_INTERACT_SUCCESS
 			else
-				to_chat(user, "verification failed. unlinking process has been cancelled.")
+				to_chat(user, "A verificação falhou. O processo de desconexão foi cancelado.")
 		return ITEM_INTERACT_FAILURE
 	return ..()
 
@@ -250,7 +250,7 @@
 
 /obj/machinery/vending/custom/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked_account)
-		balloon_alert(user, "no registered owner!")
+		balloon_alert(user, "Sem dono registrado!")
 		return FALSE
 	return ..()
 
@@ -278,7 +278,7 @@
 
 	var/obj/item/card/id/id_card = user.get_idcard(TRUE)
 	if(QDELETED(id_card))
-		balloon_alert(user, "no card found!")
+		balloon_alert(user, "Nenhum cartão encontrado!")
 		flick(icon_deny, src)
 		return
 
@@ -286,7 +286,7 @@
 	var/datum/bank_account/payee = id_card.registered_account
 	if(!compartmentLoadAccessCheck(user))
 		if(!payee.has_money(dispensed_item.custom_price))
-			balloon_alert(user, "insufficient funds!")
+			balloon_alert(user, "Fundos insuficientes!")
 			return
 		/// Make the transaction
 		payee.adjust_money(-dispensed_item.custom_price, , "Vending: [dispensed_item]")
@@ -310,7 +310,7 @@
 	return TRUE
 
 /obj/item/vending_refill/custom
-	machine_name = "Custom Vendor"
+	machine_name = "Vendedor Personalizado"
 	icon_state = "refill_custom"
 	custom_premium_price = PAYCHECK_CREW
 

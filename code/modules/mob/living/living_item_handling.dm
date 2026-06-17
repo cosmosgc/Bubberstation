@@ -106,7 +106,7 @@
 	var/power_throw_text = "."
 	if(power_throw > 0) //If we have anything that boosts our throw power like hulk, we use the rougher heavier variant.
 		throwsound = 'sound/items/weapons/throwhard.ogg'
-		power_throw_text = " really hard!"
+		power_throw_text = "Muito difícil!"
 	if(power_throw < 0) //if we have anything that weakens our throw power like dward, we use a slower variant.
 		throwsound = 'sound/items/weapons/throwsoft.ogg'
 		power_throw_text = " flimsily."
@@ -135,17 +135,17 @@
  */
 /mob/living/proc/give(mob/living/offered)
 	if(has_status_effect(/datum/status_effect/offering))
-		to_chat(src, span_warning("You're already offering something!"))
+		to_chat(src, span_warning("Você já está oferecendo algo!"))
 		return
 
 	if(IS_DEAD_OR_INCAP(src))
-		to_chat(src, span_warning("You're unable to offer anything in your current state!"))
+		to_chat(src, span_warning("Você não pode oferecer nada no seu estado atual!"))
 		return
 
 	var/obj/item/offered_item = get_active_held_item()
 	// if it's an abstract item, should consider it to be non-existent (unless it's a HAND_ITEM, which means it's an obj/item that is just a representation of our hand)
 	if(!offered_item || ((offered_item.item_flags & ABSTRACT) && !(offered_item.item_flags & HAND_ITEM)))
-		to_chat(src, span_warning("You're not holding anything to offer!"))
+		to_chat(src, span_warning("Você não tem nada para oferecer!"))
 		return
 
 	if(offered)
@@ -172,7 +172,7 @@
 			to_chat(src, span_warning("[offered.p_They()] can't hold anything you offer!"))
 			return
 	else if(!(locate(/mob/living) in orange(1, src)))
-		to_chat(src, span_warning("There's nobody beside you to take it!"))
+		to_chat(src, span_warning("Não há ninguém além de você para levá-lo!"))
 		return
 
 	if(offered_item.on_offered(src)) // see if the item interrupts with its own behavior
@@ -196,7 +196,7 @@
 /mob/living/proc/take(mob/living/offerer, obj/item/offered_item)
 	clear_alert("[offerer]")
 	if(IS_DEAD_OR_INCAP(src))
-		to_chat(src, span_warning("You're unable to take anything in your current state!"))
+		to_chat(src, span_warning("Você é incapaz de tomar qualquer coisa em seu estado atual!"))
 		return
 	if(get_dist(src, offerer) > 1)
 		to_chat(src, span_warning("[offerer] is out of range!"))
@@ -205,7 +205,7 @@
 		to_chat(src, span_warning("[offerer] is no longer holding the item they were offering!"))
 		return
 	if(!get_empty_held_indexes())
-		to_chat(src, span_warning("You have no empty hands!"))
+		to_chat(src, span_warning("Você não tem mãos vazias!"))
 		return
 
 	if(offered_item.on_offer_taken(offerer, src)) // see if the item has special behavior for being accepted

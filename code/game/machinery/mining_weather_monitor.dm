@@ -1,7 +1,7 @@
 /// Wall mounted mining weather tracker
 /obj/machinery/mining_weather_monitor
 	name = "barometric monitor"
-	desc = "A machine monitoring atmospheric data from mining environments. Provides warnings about incoming weather fronts."
+	desc = "Uma máquina monitorando dados atmosféricos de ambientes de mineração. Fornece avisos sobre frentes meteorológicas."
 	icon = 'icons/obj/devices/miningradio.dmi'
 	icon_state = "wallmount"
 	light_power = 1
@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 
 /obj/machinery/power/weather_tower
 	name = "doppler radar tower"
-	desc = "A tower that monitors atmospheric data from mining environments. Provides warnings about incoming weather fronts."
+	desc = "Uma torre que monitora dados atmosféricos de ambientes de mineração. Fornece avisos sobre frentes meteorológicas."
 	icon = 'icons/obj/mining_zones/terrain.dmi'
 	icon_state = "radar"
 	base_icon_state = "radar"
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 /obj/machinery/power/weather_tower/examine(mob/user)
 	. = ..()
 	if(isnull(core))
-		. += span_info("It has a slot in which you could install a weather anomaly core.")
+		. += span_info("Tem uma vaga na qual você pode instalar um núcleo de anomalia do tempo.")
 	else
 		. += span_info("It has \a [core] installed, unlocking weather control.")
 
@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(weather_towers)
 /obj/machinery/power/weather_tower/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/assembly/signaler/anomaly))
 		if(!isnull(core))
-			to_chat(user, span_warning("The weather core slot is already occupied."))
+			to_chat(user, span_warning("O centro meteorológico já está ocupado."))
 			return ITEM_INTERACT_FAILURE
 
 		if(!istype(tool, /obj/item/assembly/signaler/anomaly/weather))

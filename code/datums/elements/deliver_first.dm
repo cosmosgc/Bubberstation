@@ -47,7 +47,7 @@
 /datum/element/deliver_first/proc/on_examine(obj/structure/closet/target, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	examine_list += span_warning("An electronic delivery lock prevents this from opening until it reaches its destination, [GLOB.areas_by_type[goal_area_type]].")
-	examine_list += span_warning("This crate cannot be sold until it is opened.")
+	examine_list += span_warning("Esta caixa não pode ser vendida até ser aberta.")
 
 ///registers the signal that blocks target from opening when outside of the valid area, returns if it is now unlocked
 /datum/element/deliver_first/proc/area_check(obj/structure/closet/target)
@@ -65,7 +65,7 @@
 
 /datum/element/deliver_first/proc/on_emag(obj/structure/closet/target, mob/emagger)
 	SIGNAL_HANDLER
-	emagger.balloon_alert(emagger, "delivery lock bypassed")
+	emagger.balloon_alert(emagger, "Trava de entrega contornada")
 	remove_lock(target)
 
 ///signal called before opening target, blocks opening
@@ -78,7 +78,7 @@
 		if(opening_crate.manifest) //we don't want to send feedback if they're just tearing off the manifest
 			return BLOCK_OPEN
 	if(user)
-		target.balloon_alert(user, "access denied until delivery!")
+		target.balloon_alert(user, "Acesso negado até a entrega!")
 	if(COOLDOWN_FINISHED(src, deny_cooldown))
 		playsound(target, 'sound/machines/buzz/buzz-two.ogg', 30, TRUE)
 		COOLDOWN_START(src, deny_cooldown, DENY_SOUND_COOLDOWN)

@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 
 /obj/machinery/computer/holodeck
 	name = "holodeck control console"
-	desc = "A computer used to control a nearby holodeck."
+	desc = "Um computador usado para controlar um holodeck próximo."
 	icon_screen = "holocontrol"
 
 	//new vars
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 	if(!floorcheck()) //if any turfs in the floor of the holodeck are broken
 		emergency_shutdown()
 		damaged = TRUE
-		visible_message("The holodeck overloads!")
+		visible_message("O holodeck sobrecarrega!")
 		for(var/turf/holo_turf in linked)
 			if(prob(30))
 				do_sparks(2, 1, holo_turf)
@@ -435,13 +435,13 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 	if(obj_flags & EMAGGED)
 		return FALSE
 	if(!LAZYLEN(emag_programs))
-		balloon_alert(user, "no card swipe port!")
+		balloon_alert(user, "Sem cartão de passagem!")
 		return FALSE
 	playsound(src, SFX_SPARKS, 75, TRUE)
 	obj_flags |= EMAGGED
 	if (user)
-		balloon_alert(user, "safety protocols destroyed") // im gonna keep this once since this perfectly describes it
-		to_chat(user, span_warning("You override the safety and security protocols."))
+		balloon_alert(user, "Protocolos de segurança destruídos.") // im gonna keep this once since this perfectly describes it
+		to_chat(user, span_warning("Você anula os protocolos de segurança e segurança."))
 		user.log_message("emagged the Holodeck Control Console.", LOG_GAME)
 		message_admins("[ADMIN_LOOKUPFLW(user)] emagged the Holodeck Control Console.")
 

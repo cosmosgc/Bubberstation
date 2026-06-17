@@ -2,7 +2,7 @@
 // Implemented on Port Tarkon as standard.
 /obj/structure/wave_defence
 	name = "Emergency Backup Generator"
-	desc = "A small, rusty looking engine used to run emergency systems. Call in a Hack-C pod to begin the reboot sequence."
+	desc = "Um pequeno e enferrujado motor usado para executar sistemas de emergência. Chame uma cápsula Hack-C para iniciar a sequência de reinicialização."
 	icon = 'modular_zubbers/icons/obj/machines/wavedef.dmi'
 	icon_state = "emerg_engine"
 	base_icon_state = "emerg_engine"
@@ -32,11 +32,11 @@
 	name = "Hack-C repair pod signaller"
 	icon = 'modular_zubbers/icons/obj/machines/wavedef_items.dmi'
 	icon_state = "hackc"
-	desc = "A small tool with a bunch of ones and zeros on it. The label say 'For emergency use only!'"
+	desc = "Uma pequena ferramenta com um monte de uns e zeros nela. O rótulo diz: \"Só para uso de emergência!\""
 
 /mob/living/basic/node_drone/hackc
 	name = "Hack-C drone"
-	desc = "A lightweight version of the standard NT drones. This one has been modified for basic repairs and electrical engineering work."
+	desc = "Uma versão leve dos drones NT padrão. Este foi modificado para reparos básicos e trabalho de engenharia elétrica."
 	icon = 'modular_zubbers/icons/obj/machines/wavedef_items.dmi'
 	icon_state = "mining_node_active"
 	icon_living = "mining_node_active"
@@ -97,7 +97,7 @@
 	return TRUE
 
 /obj/structure/wave_defence/proc/pre_wave_defense(mob/user, spawn_drone = TRUE)
-	if(tgui_alert(user, excavation_warning, "Begin defending emergency engine?", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, excavation_warning, "Começar a defender o motor de emergência?", list("Yes", "No")) != "Yes")
 		return FALSE
 	if(!can_interact(user))
 		return FALSE
@@ -175,13 +175,13 @@
 		return
 
 	if(DOING_INTERACTION_WITH_TARGET(user, src))
-		balloon_alert(user, "already calling!")
+		balloon_alert(user, "Já estou ligando!")
 		return
-	balloon_alert(user, "calling pod...")
+	balloon_alert(user, "Chamando pod...")
 	playsound(src, 'sound/items/timer.ogg', 30, TRUE)
 	if(!do_after(user, 4 SECONDS, src))
 		return
-	balloon_alert(user, "engine started!")
+	balloon_alert(user, "Motor ligado!")
 
 	if(!pre_wave_defense(user, spawn_drone_on_tap))
 		return

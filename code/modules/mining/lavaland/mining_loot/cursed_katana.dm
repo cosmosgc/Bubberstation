@@ -7,7 +7,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/shard
 	name = "dark spoon shard"
-	desc = "An eerie metal shard surrounded by dark energies...of soup drinking. You probably don't think you should have been able to find this."
+	desc = "Um fragmento de metal assustador cercado por energias escuras... de beber sopa. Você provavelmente não acha que deveria ter encontrado isso."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "cursed_katana_organ"
 	organ_flags = ORGAN_ORGANIC | ORGAN_FROZEN | ORGAN_UNREMOVABLE
@@ -17,7 +17,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/attack_self(mob/user, modifiers)
 	. = ..()
-	to_chat(user, span_userdanger("The mass goes up your arm and goes inside it!"))
+	to_chat(user, span_userdanger("A massa sobe seu braço e entra nele!"))
 	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 	var/index = user.get_held_index_of_item(src)
 	swap_zone(IS_LEFT_INDEX(index) ? BODY_ZONE_L_ARM : BODY_ZONE_R_ARM)
@@ -29,7 +29,7 @@
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/katana
 	name = "dark shard"
-	desc = "An eerie metal shard surrounded by dark energies."
+	desc = "Um fragmento de metal assustador cercado por energias escuras."
 	items_to_create = list(/obj/item/cursed_katana)
 
 /obj/item/organ/cyberimp/arm/toolkit/shard/katana/Retract()
@@ -46,8 +46,8 @@
 
 /obj/item/cursed_katana
 	name = "cursed katana"
-	desc = "A katana used to seal something vile away long ago. \
-	Even with the weapon destroyed, all the pieces containing the creature have coagulated back together to find a new host."
+	desc = "Uma katana costumava selar algo vil há muito tempo.\
+Mesmo com a arma destruída, todas as peças contendo a criatura coagularam para encontrar um novo hospedeiro."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "cursed_katana"
 	icon_angle = -45
@@ -85,14 +85,14 @@
 		/datum/component/combo_attacks, \
 		combos = combo_list, \
 		max_combo_length = 4, \
-		examine_message = span_notice("<i>There seem to be inscriptions on it... you could examine them closer?</i>"), \
-		reset_message = "you return to neutral stance", \
+		examine_message = span_notice("<i>Parece que há inscrições nele... você poderia examiná-las mais de perto?</i>"), \
+		reset_message = "Você volta à posição neutra.", \
 		can_attack_callback = CALLBACK(src, PROC_REF(can_combo_attack)) \
 	)
 
 /obj/item/cursed_katana/examine(mob/user)
 	. = ..()
-	. += drew_blood ? span_nicegreen("It's sated... for now.") : span_danger("It will not be sated until it tastes blood.")
+	. += drew_blood ? span_nicegreen("Está satisfeito... por enquanto.") : span_danger("Não será saciado até provar sangue.")
 
 /obj/item/cursed_katana/dropped(mob/user)
 	. = ..()
@@ -142,7 +142,7 @@
 
 /obj/item/cursed_katana/proc/slice(mob/living/target, mob/user)
 	user.visible_message(span_warning("[user] does a wide slice!"),
-		span_notice("You do a wide slice!"))
+		span_notice("Você faz uma fatia larga!"))
 	playsound(src, 'sound/items/weapons/bladeslice.ogg', 50, TRUE)
 	user.do_item_attack_animation(target, used_item = src, animation_type = ATTACK_ANIMATION_SLASH)
 	var/turf/user_turf = get_turf(user)
@@ -162,7 +162,7 @@
 	user.SetInvisibility(INVISIBILITY_OBSERVER, id=type) // so hostile mobs cant see us or target us
 	user.add_sight(SEE_SELF) // so we can see us
 	user.visible_message(span_warning("[user] vanishes into thin air!"),
-		span_notice("You enter the dark cloak."))
+		span_notice("Você entra no manto escuro."))
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 	playsound(src, 'sound/effects/magic/smoke.ogg', 50, TRUE)
 	if(ishostile(target))
@@ -176,7 +176,7 @@
 	user.RemoveInvisibility(type)
 	user.clear_sight(SEE_SELF)
 	user.visible_message(span_warning("[user] appears from thin air!"),
-		span_notice("You exit the dark cloak."))
+		span_notice("Você sai do manto escuro."))
 	playsound(src, 'sound/effects/magic/summonitems_generic.ogg', 50, TRUE)
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))
 
@@ -221,11 +221,11 @@
 	playsound(src, 'sound/effects/glass/glassbr3.ogg', 100, TRUE)
 	shattered = TRUE
 	moveToNullspace()
-	balloon_alert(user, "katana shattered")
+	balloon_alert(user, "Katana se desfez.")
 	addtimer(CALLBACK(src, PROC_REF(coagulate), user), 45 SECONDS)
 
 /obj/item/cursed_katana/proc/coagulate(mob/user)
-	balloon_alert(user, "katana coagulated")
+	balloon_alert(user, "Katana coagulado.")
 	shattered = FALSE
 	playsound(src, 'sound/effects/magic/demon_consume.ogg', 50, TRUE)
 

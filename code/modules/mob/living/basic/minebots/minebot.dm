@@ -1,6 +1,6 @@
 /mob/living/basic/mining_drone
 	name = "\improper Nanotrasen minebot"
-	desc = "The instructions printed on the side read: This is a small robot used to support miners, can be set to search and collect loose ore, or to help fend off wildlife."
+	desc = "As instruções impressas no lado diziam: Este é um pequeno robô usado para apoiar mineiros, pode ser definido para procurar e coletar minério solto, ou para ajudar a proteger a vida selvagem."
 	gender = NEUTER
 	icon = 'icons/mob/silicon/aibots.dmi'
 	icon_state = "mining_drone"
@@ -23,7 +23,7 @@
 	speak_emote = list("states")
 	mob_biotypes = MOB_ROBOTIC
 	faction = list(FACTION_STATION, FACTION_NEUTRAL)
-	death_message = "blows apart!"
+	death_message = "Vai pelos ares!"
 	light_system = OVERLAY_LIGHT
 	light_range = 6
 	// I want this to be a bit more dim, for vibes
@@ -118,14 +118,14 @@
 	if(user.combat_mode)
 		return FALSE
 	if(combat_mode)
-		user.balloon_alert(user, "can't repair in attack mode!")
+		user.balloon_alert(user, "Não posso reparar em modo de ataque!")
 		return TRUE
 	if(maxHealth == health)
-		user.balloon_alert(user, "at full integrity!")
+		user.balloon_alert(user, "Com integridade total!")
 		return TRUE
 	if(welder.use_tool(src, user, 0, volume=40))
 		adjust_brute_loss(-15)
-		user.balloon_alert(user, "successfully repaired!")
+		user.balloon_alert(user, "Com sucesso reparado!")
 	return TRUE
 
 /mob/living/basic/mining_drone/attackby(obj/item/item_used, mob/user, list/modifiers, list/attack_modifiers)
@@ -234,7 +234,7 @@
 		target_ore.forceMove(src)
 
 /mob/living/basic/mining_drone/proc/drop_ore()
-	to_chat(src, span_notice("You dump your stored ore."))
+	to_chat(src, span_notice("Você joga seu minério armazenado."))
 	for(var/obj/item/stack/ore/dropped_item in contents)
 		dropped_item.forceMove(get_turf(src))
 

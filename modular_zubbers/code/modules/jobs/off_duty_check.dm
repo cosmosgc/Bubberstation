@@ -34,7 +34,7 @@
 
 /obj/item/duty_checker //Test item
 	name = "duty checker"
-	desc = "Checks if the mob this is used on is off-duty. You probably shouldn't see this in-game..."
+	desc = "Verifica se a multidão em que isso é usado está fora de serviço. Não deveria ver isso no jogo..."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "botpad_controller"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'

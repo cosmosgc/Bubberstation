@@ -1,6 +1,6 @@
 /obj/item/rna_extractor
 	name = "advanced virus RNA extractor"
-	desc = "A tool used to extract the RNA from viruses. Apply to skin."
+	desc = "Uma ferramenta usada para extrair o RNA de vírus. Aplicar na pele."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
 	custom_materials = list(
@@ -84,7 +84,7 @@
 
 /obj/item/rna_vial
 	name = "raw RNA vial"
-	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
+	desc = "Um frasco de vidro contendo RNA do vírus. Coloque isso no combinador para carregar a amostra."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
 	custom_materials = list(
@@ -110,7 +110,7 @@
 
 /obj/item/hnz_cure
 	name = "HNZ-1 cure vial"
-	desc = "A counter to the HNZ-1 virus, used to rapidly reverse the effects of the virus."
+	desc = "Um contador do vírus HNZ-1, usado para reverter rapidamente os efeitos do vírus."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_cure"
 	var/used = FALSE
@@ -151,7 +151,7 @@
 
 /obj/machinery/rnd/rna_recombinator
 	name = "RNA recombinator"
-	desc = "This machine is used to recombine RNA sequences from extracted vials of raw virus."
+	desc = "Esta máquina é usada para recombinar sequências de RNA de frascos extraídos de vírus cru."
 	icon = 'modular_skyrat/modules/mutants/icons/cure_machine.dmi'
 	icon_state = "h_lathe"
 	base_icon_state = "h_lathe"
@@ -334,11 +334,11 @@
 
 /datum/reagent/hnz
 	name = "HNZ-1"
-	description = "HNZ-1 is a highly experimental viral bioterror agent \
-		which causes dormant nodules to be etched into the grey matter of \
-		the subject. These nodules only become active upon death of the \
-		host, upon which, the secondary structures activate and take control \
-		of the host body."
+	description = "HNZ-1 é um bioterrorizador viral altamente experimental.\
+que faz nódulos adormecidos serem gravados na matéria cinzenta de\
+O sujeito. Estes nódulos só se tornam ativos após a morte do\
+Hospedeiro, sobre o qual, as estruturas secundárias ativam e tomam controle\
+do corpo hospedeiro."
 	color = "#191dff"
 	metabolization_rate = INFINITY
 	taste_description = "brains"
@@ -350,7 +350,7 @@
 
 /obj/item/reagent_containers/cup/bottle/hnz
 	name = "HNZ-1 bottle"
-	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
+	desc = "Uma pequena garrafa do patógeno HNZ-1. Nanotrasen Bioarmas inc."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
@@ -364,7 +364,7 @@
 
 /obj/item/storage/briefcase/virology/hnz
 	name = "\improper HNZ-1 biocontainer"
-	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
+	desc = "Uma caixa biosselada hermética contendo a substância altamente reativa, HNZ1. Apenas pessoal autorizado."
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500
 

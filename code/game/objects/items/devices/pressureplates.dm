@@ -1,6 +1,6 @@
 /obj/item/pressure_plate
 	name = "pressure plate"
-	desc = "An electronic device that triggers when stepped on."
+	desc = "Um dispositivo eletrônico que dispara quando pisado."
 	desc_controls = "Ctrl-Click to toggle the pressure plate off and on."
 	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	inhand_icon_state = "flashtool"
@@ -53,7 +53,7 @@
 		return
 	if(trigger_mob && isliving(AM))
 		var/mob/living/L = AM
-		to_chat(L, span_warning("You feel something click beneath you!"))
+		to_chat(L, span_warning("Você sente algo estalando abaixo de você!"))
 	else if(!trigger_item)
 		return
 	can_trigger = FALSE
@@ -87,7 +87,7 @@
 
 /obj/item/pressure_plate/item_ctrl_click(mob/user)
 	if(protected)
-		to_chat(user, span_warning("You can't quite seem to turn this pressure plate off..."))
+		to_chat(user, span_warning("Você não consegue desligar essa placa de pressão..."))
 		return CLICK_ACTION_BLOCKING
 	active = !active
 	if (active)

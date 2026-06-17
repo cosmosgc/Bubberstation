@@ -1,7 +1,7 @@
 // Currently unused
 /datum/action/cooldown/spell/touch/mad_touch
 	name = "Touch of Madness"
-	desc = "A touch spell that drains your enemy's sanity and knocks them down."
+	desc = "Um feitiço que drena a sanidade do inimigo e os derruba."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -24,7 +24,7 @@
 /datum/action/cooldown/spell/touch/mad_touch/on_antimagic_triggered(obj/item/melee/touch_attack/hand, atom/victim, mob/living/carbon/caster)
 	victim.visible_message(
 		span_danger("The spell bounces off of [victim]!"),
-		span_danger("The spell bounces off of you!"),
+		span_danger("O feitiço sai de você!"),
 	)
 
 /datum/action/cooldown/spell/touch/mad_touch/cast_on_hand_hit(obj/item/melee/touch_attack/hand, mob/living/carbon/human/victim, mob/living/carbon/caster)

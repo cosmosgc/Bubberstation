@@ -4,9 +4,9 @@
 
 /obj/item/clockwork/integration_cog
 	name = "integration cog"
-	desc = "A small cog that seems to spin by its own acord when left alone."
+	desc = "Uma pequena engrenagem que parece girar por sua própria corda quando deixada sozinha."
 	icon_state = "integration_cog"
-	clockwork_desc = "A sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
+	clockwork_desc = "Uma engrenagem afiada que pode cortar e ser inserida em APCs para extrair energia para sua máquina."
 	/// If this cog has been set up, meaning that it is fully initialized (after APC insertion), granting a cog to the clock cultists
 	var/set_up = FALSE
 
@@ -17,16 +17,16 @@
 
 	var/obj/machinery/power/apc/cogger_apc = attacked_atom
 	if(cogger_apc.integration_cog)
-		balloon_alert(user, "already has a cog inside!")
+		balloon_alert(user, "Já tem uma engrenagem dentro!")
 		return
 
 	if(!cogger_apc.panel_open)
 		//Cut open the panel
-		balloon_alert(user, "cutting open APC...")
+		balloon_alert(user, "Cortando APC aberto...")
 		if(!do_after(user, 5 SECONDS, target = cogger_apc))
 			return
 
-		balloon_alert(user, UNLINT("APC cut open"))
+		balloon_alert(user, UNLINT("APC corte aberto"))
 		cogger_apc.panel_open = TRUE
 		cogger_apc.update_appearance()
 		return
@@ -50,7 +50,7 @@
 		notify_ghosts("[user] has installed an integration cog into [cogger_apc]",
 			source = user,
 			notify_flags = NOTIFY_CATEGORY_NOFLASH,
-			header = "Integration cog",
+			header = "Conexão de integração",
 		)
 
 
@@ -88,7 +88,7 @@
 	if(isliving(user))
 		var/mob/living/living_user = user
 		if(integration_cog || (living_user.has_status_effect(/datum/status_effect/hallucination) && prob(HALLUCINATION_COG_CHANCE)))
-			. += span_brass("A small cogwheel is inside of it.")
+			. += span_brass("Uma pequena engrenagem está dentro dela.")
 
 		if(integration_cog && IS_CLOCK(user))
 			. += span_brass("The integration cog is [integration_cog.set_up ? "fully initialized" : "still initializing"].")
@@ -103,7 +103,7 @@
 	if(!crowbar.use_tool(src, user, 5 SECONDS))
 		return
 
-	balloon_alert(user, "pried out something, destroying it!")
+	balloon_alert(user, "Arrancou algo, destruindo-o!")
 	QDEL_NULL(integration_cog)
 
 #undef MAX_POWER_PER_COG

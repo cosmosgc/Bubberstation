@@ -2,9 +2,9 @@
 
 /obj/item/choice_beacon/blueshield
 	name = "blueshield weapon beacon"
-	desc = "A single use beacon to deliver a weapon of your choice. Please only call this in your office"
+	desc = "Um farol de uso único para entregar uma arma de sua escolha. Por favor, só ligue para o seu escritório."
 	company_source = "Sol Security Solution"
-	company_message = span_bold("Supply pod incoming, please stand by.")
+	company_message = span_bold("Cápsula de suprimentos chegando, aguardem.")
 
 /obj/item/choice_beacon/blueshield/generate_display_names()
 	var/static/list/selectable_gun_types = list(
@@ -20,9 +20,9 @@
 
 /obj/item/choice_beacon/ntc
 	name = "gunset beacon"
-	desc = "A single use beacon to deliver a gunset of your choice. Please only call this in your office"
+	desc = "Um único sinalizador de uso para entregar uma arma de sua escolha. Por favor, só ligue para o seu escritório."
 	company_source = "Trappiste Fabriek Company"
-	company_message = span_bold("Supply pod incoming, please stand by.")
+	company_message = span_bold("Cápsula de suprimentos chegando, aguardem.")
 
 /obj/item/choice_beacon/ntc/generate_display_names()
 	var/static/list/selectable_gun_types = list(
@@ -36,9 +36,9 @@
 
 /obj/item/choice_beacon/station_magistrate
 	name = "nanotrasen dignitaries weapon beacon"
-	desc = "A single use beacon to deliver a weapon of your choice. Please only call this in your office"
+	desc = "Um farol de uso único para entregar uma arma de sua escolha. Por favor, só ligue para o seu escritório."
 	company_source = "Romulus Armoury"
-	company_message = span_bold("Supply pod incoming, please stand by.")
+	company_message = span_bold("Cápsula de suprimentos chegando, aguardem.")
 
 /obj/item/choice_beacon/station_magistrate/generate_display_names()
 	var/static/list/selectable_gun_types = list(

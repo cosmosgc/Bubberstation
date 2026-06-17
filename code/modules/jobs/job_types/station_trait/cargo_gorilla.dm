@@ -1,6 +1,6 @@
 /datum/job/cargo_gorilla
 	title = JOB_CARGO_GORILLA
-	description = "Assist the supply department by moving freight and disposing of unwanted fruits."
+	description = "Ajudar o departamento de suprimentos, transportando carga e descartando frutas indesejadas."
 	faction = FACTION_STATION
 	total_positions = 0
 	spawn_positions = 0
@@ -13,7 +13,7 @@
 	mail_goodies = list(
 		/obj/item/food/grown/banana = 1,
 	)
-	rpg_title = "Beast of Burden"
+	rpg_title = "Fera do fardo"
 	allow_bureaucratic_error = FALSE
 	job_flags = STATION_TRAIT_JOB_FLAGS | JOB_ANNOUNCE_ARRIVAL | JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK |JOB_ANTAG_BLACKLISTED
 
@@ -43,6 +43,6 @@
 	gorilla_id.set_account(bank_account)
 	spawned.put_in_hands(gorilla_id, del_on_fail = TRUE)
 
-	to_chat(spawned, span_boldnotice("You are Cargorilla, a pacifist friend of the station and carrier of freight."))
-	to_chat(spawned, span_notice("You can pick up crates by clicking on them, and drop them by clicking on the ground."))
+	to_chat(spawned, span_boldnotice("Você é Cargorilla, um amigo pacifista da estação e transporte de carga."))
+	to_chat(spawned, span_notice("Você pode pegar caixas clicando neles, e derrubá-los clicando no chão."))
 	LAZYADD(spawned.mind.special_roles, "Cargorilla")

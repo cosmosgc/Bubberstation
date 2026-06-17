@@ -5,7 +5,7 @@
  */
 /obj/item/gun/magic/wand/tentacles
 	name = "restraining rod"
-	desc = "This wriggling wand binds its victims in a place for a time, although it doesn't stop them from shooting back."
+	desc = "Esta varinha se contorce prende suas vítimas em um lugar por um tempo, embora isso não os impeça de atirar de volta."
 	school = SCHOOL_CONJURATION
 	ammo_type = /obj/item/ammo_casing/magic/tentacle_staff
 	icon_state = "tentawand"
@@ -73,7 +73,7 @@
 
 /obj/effect/wizard_tentacle/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if (buckled_mob == user)
-		balloon_alert(user, "can't reach!")
+		balloon_alert(user, "Não consigo alcançar!")
 		return
 	return ..()
 
@@ -124,7 +124,7 @@
 /datum/status_effect/incapacitating/immobilized/wizard_tentacle/proc/on_helped(mob/source, mob/helping)
 	SIGNAL_HANDLER
 	if (helping == owner)
-		owner.balloon_alert(owner, "can't reach!")
+		owner.balloon_alert(owner, "Não consigo alcançar!")
 		return NONE
 	source.visible_message(span_notice("[helping] rips [source] from the tentacle's grasp!"))
 	release()

@@ -2,14 +2,14 @@
 #define REFINERY_ANOMALY_POWER_REQUIREMENT (1.21 MEGA WATTS) //This is NOT active power use. This is the amount of power it uses for a second when a bomb is detonated. This is about the same a stable SM generates in a second.
 
 /obj/machinery/research/anomaly_refinery
-	desc = "An advanced machine equipped with state of the art bomb prediction software that's capable of implosion-compressing raw anomaly cores into finished artifacts. \
-	Comes with a built-in stabilization and sound-supressant field that consumes a lot of power to prevent obnoxious shaking and sounds heard station-wide, as not to wake up any dorms users."
+	desc = "Uma máquina avançada equipada com software de previsão de bombas de última geração que é capaz de implosão-comprimindo núcleos de anomalia crus em artefatos acabados.\
+Vem com uma estabilização integrada e um campo supressor de som que consome muita energia para evitar tremores detestáveis e sons ouvidos em toda a estação, como para não acordar qualquer usuário de dormitórios."
 	var/requirement_timer
 	var/requirement_mod = 0 //0 to 100. Decreases by 1 every 5 seconds. Increased by 40 after a test.
 
 /obj/machinery/research/anomaly_refinery/examine(mob/user)
 	. = ..()
-	. += span_notice("Usage of the machine will increase the bomb range requirement for the next experiment.")
+	. += span_notice("O uso da máquina aumentará o alcance da bomba para o próximo experimento.")
 	. += span_notice("Requires <b>[display_power(REFINERY_ANOMALY_POWER_REQUIREMENT)]</b> of power in the network to use.")
 	. += span_notice("Each core refinement takes <b>[DisplayTimeText(REFINERY_ANOMALY_REFINEMENT_TIME,1)]</b> to complete.")
 

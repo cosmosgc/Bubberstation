@@ -3,18 +3,18 @@
 
 /obj/item/stack/medical/wound_recovery
 	name = "subdermal splint applicator"
-	desc = "A roll of flexible material dotted with millions of micro-scale injectors on one side. \
-		On application to a body part with a damaged bone structure, nanomachines stored within those \
-		injectors will surround the wound and form a subdermal, self healing splint. While convenient \
-		for keeping appearances and rapid healing, the nanomachines tend to leave their host particularly \
-		vulnerable to new damage for several minutes after application."
+	desc = "Um rolo de material flexível pontilhado com milhões de injetores de micro-escala de um lado.\
+Em aplicação a uma parte do corpo com uma estrutura óssea danificada, nanomáquinas armazenadas dentro desses\
+injetores cercarão a ferida e formarão uma tala subdérmica e auto-curativa. Enquanto conveniente\
+para manter aparências e cura rápida, as nanomáquinas tendem a deixar seu hospedeiro particularmente\
+vulnerável a novos danos por vários minutos após a aplicação."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "subsplint"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	inhand_icon_state = "sampler"
 	gender = PLURAL
-	singular_name = "subdermal splint applicator"
+	singular_name = "Aplicador de tala subdérmica"
 	self_delay = 10 SECONDS
 	other_delay = 5 SECONDS
 	novariants = TRUE
@@ -53,15 +53,15 @@
 		return FALSE
 	if(!LAZYLEN(limb.wounds))
 		if(!silent)
-			patient.balloon_alert(user, "no wounds!") // good problem to have imo
+			patient.balloon_alert(user, "Sem ferimentos!") // good problem to have imo
 		return FALSE
 	if(patient.has_status_effect(/datum/status_effect/vulnerable_to_damage))
 		if(!silent)
-			patient.balloon_alert(user, "still recovering from last use!")
+			patient.balloon_alert(user, "Ainda se recuperando do último uso!")
 		return FALSE
 	if(!find_suitable_wound(limb))
 		if(!silent)
-			patient.balloon_alert(user, "can't heal those!")
+			patient.balloon_alert(user, "Não posso curá-los!")
 		return FALSE
 	return TRUE
 
@@ -100,18 +100,18 @@
 	use(1)
 
 /datum/mood_event/rapid_wound_healing
-	description = "The wound is gone, but that pain was unbearable!\n"
+	description = "A ferida se foi, mas a dor foi insuportável!\n"
 	mood_change = -3
 	timeout = 5 MINUTES
 
 // Helps recover bleeding
 /obj/item/stack/medical/wound_recovery/rapid_coagulant
 	name = "rapid coagulant applicator"
-	singular_name = "rapid coagulant applicator"
-	desc = "A small device filled with a fast acting coagulant of some type. \
-		When used on a bleeding area, will nearly instantly stop all bleeding. \
-		This rapid clotting action may result in temporary vulnerability to further \
-		damage after application."
+	singular_name = "Aplicador de coagulante rápido"
+	desc = "Um pequeno dispositivo cheio de um coagulante rápido de algum tipo.\
+Quando usado em uma área de sangramento, quase instantaneamente parará todo o sangramento.\
+Esta rápida ação de coagulação pode resultar em vulnerabilidade temporária para mais\
+Danos após aplicação."
 	icon_state = "clotter"
 	inhand_icon_state = "implantcase"
 	applicable_wounds = list(
@@ -127,9 +127,9 @@
 // Helps recover burn wounds much faster, while not healing much damage directly
 /obj/item/stack/medical/ointment/red_sun
 	name = "red sun balm"
-	singular_name = "red sun balm"
-	desc = "A popular brand of ointment for handling anything under the red sun, which tends to be terrible burns. \
-		Which red sun may this be referencing? Not even the producers of the balm are sure."
+	singular_name = "Bálsamo de sol vermelho"
+	desc = "Uma marca popular de pomada para lidar com qualquer coisa sob o sol vermelho, que tende a ser queimaduras terríveis.\
+Que sol vermelho pode estar se referindo? Nem mesmo os produtores do bálsamo têm certeza."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "balm"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -158,10 +158,10 @@
 // Gauze that are especially good at treating burns, but are terrible splints
 /obj/item/stack/medical/wrap/gauze/sterilized
 	name = "sealed aseptic gauze"
-	singular_name = "sealed aseptic gauze"
-	desc = "A small roll of elastic material specially treated to be entirely sterile, and sealed in plastic just to be sure. \
-		These make excellent treatment against burn wounds, but due to their small nature are sub-par for serving as \
-		bone wound wrapping."
+	singular_name = "gaze asséptica selada."
+	desc = "Um pequeno rolo de material elástico especialmente tratado para ser totalmente estéril, e selado em plástico só para ter certeza.\
+Estes são um excelente tratamento contra queimaduras, mas devido à sua pequena natureza são sub-par para servir como\
+Ferimento ósseo embrulhado."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "burndaid"
 	inhand_icon_state = null
@@ -181,10 +181,10 @@
 // Works great at sealing bleed wounds, but does little to actually heal them
 /obj/item/stack/medical/suture/coagulant
 	name = "coagulant-F packet"
-	singular_name = "coagulant-F packet"
-	desc = "A small packet of fabricated coagulant for bleeding. Not as effective as some \
-		other methods of coagulating wounds, but is more effective than plain sutures. \
-		The downsides? It repairs less of the actual damage that's there."
+	singular_name = "Pacote F coagulante"
+	desc = "Um pequeno pacote de coagulante fabricado para sangramento. Não tão eficaz quanto alguns.\
+Outros métodos de coagular feridas, mas é mais eficaz do que suturas simples.\
+As desvantagens? Repara menos do dano real que está lá."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/stack_items.dmi'
 	icon_state = "clotter_slow"
 	inhand_icon_state = null

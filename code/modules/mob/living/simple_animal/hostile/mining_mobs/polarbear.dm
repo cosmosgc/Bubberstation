@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/asteroid/polarbear
 	name = "polar bear"
-	desc = "An aggressive animal that defends its territory with incredible power. These beasts don't run from their enemies."
+	desc = "Um animal agressivo que defende seu território com um poder incrível. Essas bestas não fogem de seus inimigos."
 	icon = 'icons/mob/simple/icemoon/icemoon_monsters.dmi'
 	icon_state = "polarbear"
 	icon_living = "polarbear"
@@ -63,5 +63,5 @@
 
 /mob/living/simple_animal/hostile/asteroid/polarbear/lesser
 	name = "magic polar bear"
-	desc = "It seems sentient somehow."
+	desc = "Parece senciente de alguma forma."
 	faction = list(FACTION_NEUTRAL)

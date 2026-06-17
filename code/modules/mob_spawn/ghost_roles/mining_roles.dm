@@ -4,15 +4,15 @@
 //Malfunctioning cryostasis sleepers: Spawns in makeshift shelters in lavaland. Ghosts become hermits with knowledge of how they got to where they are now.
 /obj/effect/mob_spawn/ghost_role/human/hermit
 	name = "malfunctioning cryostasis sleeper"
-	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
-	prompt_name = "a stranded hermit"
+	desc = "Um dorminhoco com um ocupante silhueta dentro. Sua função de estase está quebrada e provavelmente está sendo usada como cama."
+	prompt_name = "um eremita encalhado"
 	icon = 'icons/obj/mining_zones/spawners.dmi'
 	icon_state = "cryostasis_sleeper"
 	outfit = /datum/outfit/hermit
-	you_are_text = "You've been stranded in this godless prison of a planet for longer than you can remember."
-	flavour_text = "Each day you barely scrape by, and between the terrible conditions of your makeshift shelter, \
-	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
-	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
+	you_are_text = "Você está preso nesta prisão sem Deus de um planeta há mais tempo do que se lembra."
+	flavour_text = "Todos os dias você mal passa, e entre as terríveis condições de seu abrigo improvisado,\
+as criaturas hostis, e as cinzas drakes descendo do céu sem nuvens, tudo que você pode desejar é a sensação de grama macia entre seus dedos dos pés e\
+O ar fresco da Terra. Esses pensamentos são dissipados por mais uma lembrança de como você chegou aqui..."
 	spawner_job_path = /datum/job/hermit
 	allow_custom_character = ALL
 	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
@@ -61,25 +61,25 @@
 //Icebox version of hermit
 /obj/effect/mob_spawn/ghost_role/human/hermit/icemoon
 	name = "cryostasis bed"
-	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
-	prompt_name = "a grumpy old man"
+	desc = "Um dorminhoco com um ocupante silhueta dentro. Sua função de estase está quebrada e provavelmente está sendo usada como cama."
+	prompt_name = "Um velho rabugento."
 	icon = 'icons/obj/mining_zones/spawners.dmi'
 	icon_state = "cryostasis_sleeper"
 	outfit = /datum/outfit/hermit
-	you_are_text = "You've been hunting polar bears for 40 years now! What do these 'NaniteTrans' newcomers want?"
-	flavour_text = "You were fine hunting polar bears and taming wolves out here on your own, \
-		but now that there are corporate stooges around, you need to watch your step. "
+	you_are_text = "Você caça ursos polares há 40 anos! O que esses novatos da 'NaniteTrans' querem?"
+	flavour_text = "Você estava bem caçando ursos polares e domesticando lobos aqui sozinho,\
+Mas agora que há estalos corporativos por aí, você precisa ter cuidado."
 	spawner_job_path = /datum/job/hermit
 
 //beach dome
 
 /obj/effect/mob_spawn/ghost_role/human/beach
-	prompt_name = "a beach bum"
+	prompt_name = "Um vagabundo de praia."
 	name = "beach bum sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	you_are_text = "You're, like, totally a dudebro, bruh."
-	flavour_text = "Ch'yea. You came here, like, on spring break, hopin' to pick up some bangin' hot chicks, y'knaw?"
+	you_are_text = "Você é, tipo, totalmente um mano, mano."
+	flavour_text = "Ch'yea. Você veio aqui, tipo, nas férias de primavera, esperando para pegar algumas gostosas, ok?"
 	spawner_job_path = /datum/job/beach_bum
 	outfit = /datum/outfit/beachbum
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
@@ -87,8 +87,8 @@
 	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /obj/effect/mob_spawn/ghost_role/human/beach/lifeguard
-	you_are_text = "You're a spunky lifeguard!"
-	flavour_text = "It's up to you to make sure nobody drowns or gets eaten by sharks and stuff."
+	you_are_text = "Você é um salva-vidas corajoso!"
+	flavour_text = "Cabe a você garantir que ninguém se afogue ou seja comido por tubarões."
 	name = "lifeguard sleeper"
 	outfit = /datum/outfit/beachbum/lifeguard
 	allow_custom_character = NONE
@@ -121,9 +121,9 @@
 	name = "bartender sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	prompt_name = "a space bartender"
-	you_are_text = "You are a space bartender!"
-	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
+	prompt_name = "Um barman espacial."
+	you_are_text = "Você é um bartender espacial!"
+	flavour_text = "Hora de misturar bebidas e mudar vidas. Fumar drogas espaciais torna mais fácil entender o dialeto estranho de seus clientes."
 	spawner_job_path = /datum/job/space_bartender
 	outfit = /datum/outfit/spacebartender
 	allow_custom_character = ALL
@@ -150,18 +150,18 @@
 //Preserved terrarium/seed vault: Spawns in seed vault structures in lavaland. Ghosts become plantpeople and are advised to begin growing plants in the room near them.
 /obj/effect/mob_spawn/ghost_role/human/seed_vault
 	name = "preserved terrarium"
-	desc = "An ancient machine that seems to be used for storing plant matter. The glass is obstructed by a mat of vines."
+	desc = "Uma máquina antiga que parece ser usada para armazenar matéria vegetal. O vidro é obstruído por um tapete de videiras."
 	prompt_name = "lifebringer"
 	icon = 'icons/obj/mining_zones/spawners.dmi'
 	icon_state = "terrarium"
 	density = TRUE
 	mob_species = /datum/species/pod
-	you_are_text = "You are a sentient ecosystem, an example of the mastery over life that your creators possessed."
-	flavour_text = "Your masters, benevolent as they were, created uncounted seed vaults and spread them across \
-	the universe to every planet they could chart. You are in one such seed vault. \
-	Your goal is to protect the vault you are assigned to, cultivate the seeds passed onto you, \
-	and eventually bring life to this desolate planet while waiting for contact from your creators. \
-	Estimated time of last contact: Deployment, 5000 millennia ago."
+	you_are_text = "Você é um ecossistema sensível, um exemplo do domínio sobre a vida que seus criadores possuíam."
+	flavour_text = "Seus mestres, benevolentes como eles eram, criaram abóbadas de sementes incontáveis e os espalharam\
+O universo para cada planeta que eles pudessem mapear. Você está em um desses cofres de sementes.\
+Seu objetivo é proteger o cofre para o qual está designado, cultivar as sementes passadas para você,\
+e, eventualmente, trazer vida a este planeta desolado enquanto espera por contato de seus criadores.\
+Tempo estimado do último contato, implantação, 5000 milênios atrás."
 	spawner_job_path = /datum/job/lifebringer
 	restricted_species = list(/datum/species/pod) //SKYRAT EDIT ADDITION
 	random_appearance = FALSE // SKYRAT EDIT ADDITION
@@ -180,7 +180,7 @@
 
 /obj/structure/ash_walker_eggshell
 	name = "ash walker egg"
-	desc = "A man-sized yellow egg, spawned from some unfathomable creature. A humanoid silhouette lurks within. The egg shell looks resistant to temperature but otherwise rather brittle."
+	desc = "Um ovo amarelo do tamanho de um homem, gerado de uma criatura insondável. Uma silhueta humanóide se esconde por dentro. A casca do ovo parece resistente à temperatura, mas de outra forma bastante frágil."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | FREEZE_PROOF
@@ -218,18 +218,18 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker
 	name = "ash walker egg"
-	desc = "A man-sized yellow egg, spawned from some unfathomable creature. A humanoid silhouette lurks within."
-	prompt_name = "necropolis ash walker"
+	desc = "Um ovo amarelo do tamanho de um homem, gerado de uma criatura insondável. Uma silhueta humanóide se esconde por dentro."
+	prompt_name = "Necropolis Ash Walker"
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
 	mob_species = /datum/species/lizard/ashwalker
 	outfit = /datum/outfit/ashwalker
 	move_resist = MOVE_FORCE_NORMAL
 	density = FALSE
-	you_are_text = "You are an ash walker. Your tribe worships the Necropolis."
-	flavour_text = "The wastes are sacred ground, its monsters a blessed bounty. \
-	You have seen lights in the distance... they foreshadow the arrival of outsiders that seek to tear apart the Necropolis and its domain. \
-	Fresh sacrifices for your nest."
+	you_are_text = "Você é um caminhante de cinzas. Sua tribo adora a necrópole."
+	flavour_text = "Os resíduos são terrenos sagrados, seus monstros uma bendita recompensa.\
+Você viu luzes à distância... eles prefiguram a chegada de estranhos que procuram destruir a necrópole e seu domínio.\
+Sacrifícios frescos pelo seu ninho."
 	spawner_job_path = /datum/job/ash_walker
 	var/datum/team/ashwalkers/team
 	var/obj/structure/ash_walker_eggshell/eggshell
@@ -247,7 +247,7 @@
 	if(!(user.ckey in team.players_spawned))//one per person unless you get a bonus spawn
 		return TRUE
 	if(!silent)
-		to_chat(user, span_warning("You have exhausted your usefulness to the Necropolis."))
+		to_chat(user, span_warning("Você esgotou sua utilidade para a necrópole."))
 	return FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/special(mob/living/carbon/human/spawned_human, mob/mob_possessor, apply_prefs)
@@ -257,7 +257,7 @@
 	// SKYRAT EDIT ADDITION END
 	. = ..()
 	spawned_human.fully_replace_character_name(null, spawned_human.generate_random_mob_name(TRUE))
-	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
+	to_chat(spawned_human, "<b>Arraste os cadáveres de homens e animais para o seu ninho. Vai absorvê-los para criar mais do seu tipo. Invadir a estranha estrutura dos forasteiros, se for preciso. Não cause destruição desnecessária, pois sujar os resíduos com destroços feios é certo que não ganhará favores. Glória à Necrópole!</b>")
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
 
@@ -298,10 +298,10 @@
 	name = "Syndicate Bioweapon Scientist"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	prompt_name = "a syndicate science technician"
-	you_are_text = "You are a syndicate science technician, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue your research as best you can, and try to keep a low profile."
-	important_text = "The base is rigged with explosives, DO NOT abandon it or let it fall into enemy hands!"
+	prompt_name = "um técnico de ciência do sindicato."
+	you_are_text = "Você é um técnico de ciência do sindicato, empregado em uma instalação de pesquisa ultra secreta desenvolvendo armas biológicas."
+	flavour_text = "Infelizmente, seu inimigo odiado, Nanotrasen, começou a mineração neste setor. Continue sua pesquisa o melhor que puder, e tente ser discreto."
+	important_text = "A base está equipada com explosivos, não a abandone ou deixe cair em mãos inimigas!"
 	outfit = /datum/outfit/lavaland_syndicate
 	spawner_job_path = /datum/job/lavaland_syndicate
 	loadout_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
@@ -316,10 +316,10 @@
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
-	prompt_name = "a syndicate comms agent"
-	you_are_text = "You are a syndicate comms agent, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
-	important_text = "DO NOT abandon the base."
+	prompt_name = "Um agente de comunicação do sindicato."
+	you_are_text = "Você é um agente de comunicação do sindicato, empregado em uma instalação de pesquisa secreta desenvolvendo armas biológicas."
+	flavour_text = "Infelizmente, seu inimigo odiado, Nanotrasen, começou a mineração neste setor. Monitore a atividade inimiga o melhor que puder, e tente ser discreto. Use o equipamento de comunicação para fornecer suporte a qualquer agente de campo, e semear desinformação para tirar Nanotrasen de sua trilha. Não deixe a base cair em mãos inimigas!"
+	important_text = "Não abandone a base."
 	outfit = /datum/outfit/lavaland_syndicate/comms
 
 /datum/outfit/lavaland_syndicate
@@ -364,8 +364,8 @@
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms/icemoon
 	name = "Icemoon Comms Agent"
-	prompt_name = "a syndicate comms agent"
-	you_are_text = "You are a syndicate comms agent, assigned in an underground secret listening post close to your enemy's facility."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the outpost fall into enemy hands!"
-	important_text = "Do NOT let the outpost fall into enemy hands"
+	prompt_name = "Um agente de comunicação do sindicato."
+	you_are_text = "Você é um agente de comunicação do sindicato, designado em um posto secreto subterrâneo de escuta perto das instalações do seu inimigo."
+	flavour_text = "Infelizmente, seu inimigo odiado, Nanotrasen, começou a mineração neste setor. Monitore a atividade inimiga o melhor que puder, e tente ser discreto. Use o equipamento de comunicação para fornecer suporte a qualquer agente de campo, e semear desinformação para tirar Nanotrasen de sua trilha. Não deixe o posto avançado cair em mãos inimigas!"
+	important_text = "Não deixe o posto avançado cair em mãos inimigas."
 	outfit = /datum/outfit/lavaland_syndicate/comms/icemoon

@@ -4,7 +4,7 @@
 	downloader_category = PROGRAM_CATEGORY_ENGINEERING
 	ui_header = "smmon_0.gif"
 	program_open_overlay = "smmon_0"
-	extended_desc = "Crystal Integrity Monitoring System, connects to specially calibrated supermatter sensors to provide information on the status of supermatter-based engines."
+	extended_desc = "Sistema de Monitoramento de Integridade de Cristal, conectado a sensores de supermatéria especialmente calibrados para fornecer informações sobre o estado dos motores baseados em supermatéria."
 	program_flags = PROGRAM_ON_NTNET_STORE | PROGRAM_REQUIRES_NTNET
 	download_access = list(ACCESS_CONSTRUCTION)
 	size = 5

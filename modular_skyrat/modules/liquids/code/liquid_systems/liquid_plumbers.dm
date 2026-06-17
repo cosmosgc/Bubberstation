@@ -174,7 +174,7 @@
 
 /obj/machinery/plumbing/floor_pump/input
 	name = "liquid input pump"
-	desc = "Pump used to siphon liquids from a location into the plumbing pipenet."
+	desc = "Bomba usada para sugar líquidos de um local para o encanamento."
 	icon_state = "active_input"
 	base_icon_state = "active_input"
 
@@ -221,7 +221,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 
 /obj/machinery/plumbing/floor_pump/output
 	name = "liquid output pump"
-	desc = "Pump used to dump liquids out from a plumbing pipenet into a location."
+	desc = "Bomba usada para despejar líquidos de um encanamento para um local."
 	icon_state = "active_output"
 	base_icon_state = "active_output"
 
@@ -242,9 +242,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 /obj/machinery/plumbing/floor_pump/output/examine(mob/user)
 	. = ..()
 	if(over_pressure)
-		. += span_warning("The gas regulator light is blinking.")
+		. += span_warning("A luz do regulador de gás está piscando.")
 	if(over_volume)
-		. += span_warning("The liquid volume regulator light is blinking.")
+		. += span_warning("A luz do regulador de volume líquido está piscando.")
 
 /obj/machinery/plumbing/floor_pump/output/are_reagents_ready()
 	return reagents.total_volume > 0
@@ -302,7 +302,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply/
 
 /obj/item/construction/plumbing/engineering
 	name = "engineering plumbing constructor"
-	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
+	desc = "Um tipo de construtor de encanamento projetado para implantar rapidamente as máquinas necessárias para a logística em relação aos fluidos."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "plumberer_engi"
 	var/static/list/engineering_design_types = list(

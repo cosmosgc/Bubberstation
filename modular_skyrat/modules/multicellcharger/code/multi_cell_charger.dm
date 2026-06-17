@@ -1,6 +1,6 @@
 /obj/machinery/cell_charger_multi
 	name = "multi-cell charging rack"
-	desc = "A cell charging rack for multiple batteries."
+	desc = "Um rack de celular para várias baterias."
 	icon = 'modular_skyrat/modules/aesthetics/cells/cell.dmi'
 	icon_state = "cchargermulti"
 	base_icon_state = "cchargermulti"
@@ -36,7 +36,7 @@
 /obj/machinery/cell_charger_multi/click_alt(mob/user)
 	if(!can_interact(user) || !charging_batteries.len)
 		return
-	to_chat(user, span_notice("You activate the quick release as all the cells pop out!"))
+	to_chat(user, span_notice("Você ativa a liberação rápida quando todas as células saem!"))
 	for(var/i in charging_batteries)
 		removecell()
 	return CLICK_ACTION_SUCCESS
@@ -51,7 +51,7 @@
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Charging power: <b>[display_power(charge_rate, convert = FALSE)]</b> per cell.")
-	. += span_notice("Alt click it to remove all the cells at once!")
+	. += span_notice("Alt clique para remover todas as células de uma vez!")
 
 /obj/machinery/cell_charger_multi/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -205,7 +205,7 @@
 
 /datum/design/board/cell_charger_multi
 	name = "Machine Design (Multi-Cell Charger Board)"
-	desc = "The circuit board for a multi-cell charger."
+	desc = "A placa de circuito para um carregador multi-célula."
 	id = "multi_cell_charger"
 	build_path = /obj/item/circuitboard/machine/cell_charger_multi
 	category = list(

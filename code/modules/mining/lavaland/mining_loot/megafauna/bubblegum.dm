@@ -2,12 +2,12 @@
 
 /obj/item/mayhem
 	name = "mayhem in a bottle"
-	desc = "A magically infused bottle of blood, the scent of which will drive anyone nearby into a murderous frenzy."
+	desc = "Uma garrafa de sangue infundida magicamente, cujo cheiro vai levar qualquer um por perto a um frenesi assassino."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "vial"
 
 /obj/item/mayhem/attack_self(mob/user)
-	if(tgui_alert(user, "Breaking the bottle will cause nearby crewmembers to go into a murderous frenzy. Be sure you know what you are doing...", "Break the bottle?", list("Break it!", "DON'T")) != "Break it!")
+	if(tgui_alert(user, "Quebrar a garrafa fará com que os tripulantes próximos entrem em um frenesi assassino. Certifique-se de saber o que está fazendo...", "Break the bottle?", list("Break it!", "DON'T")) != "Break it!")
 		return
 
 	if(QDELETED(src) || !user.is_holding(src) || user.incapacitated)
@@ -16,7 +16,7 @@
 	for(var/mob/living/carbon/human/target in range(7, user))
 		target.apply_status_effect(/datum/status_effect/mayhem)
 
-	to_chat(user, span_notice("You shatter the bottle!"))
+	to_chat(user, span_notice("Você quebrou a garrafa!"))
 	playsound(user.loc, 'sound/effects/glass/glassbr1.ogg', 100, TRUE)
 	message_admins(span_adminnotice("[ADMIN_LOOKUPFLW(user)] has activated a bottle of mayhem!"))
 	user.log_message("activated a bottle of mayhem", LOG_ATTACK)
@@ -26,7 +26,7 @@
 
 /obj/item/clothing/suit/hooded/hostile_environment
 	name = "H.E.C.K. suit"
-	desc = "Hostile Environment Cross-Kinetic Suit: A suit designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
+	desc = "Ambiente hostil Terno Cross-Kinetic, um terno projetado para suportar a grande variedade de perigos de Lavaland. Não foi suficiente para seu último dono."
 	icon = 'icons/map_icons/clothing/suit/_suit.dmi'
 	icon_state = "/obj/item/clothing/suit/hooded/hostile_environment"
 	post_init_icon_state = "hostile_env"
@@ -75,7 +75,7 @@
 
 /obj/item/clothing/head/hooded/hostile_environment
 	name = "H.E.C.K. helmet"
-	desc = "Hostile Environment Cross-Kinetic Helmet: A helmet designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
+	desc = "Ambiente hostil Capacete Cross-Kinetic: um capacete projetado para suportar a grande variedade de perigos de Lavaland. Não foi suficiente para seu último dono."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/hooded/hostile_environment"
 	post_init_icon_state = "hostile_env"
@@ -114,11 +114,11 @@
 
 /obj/item/clothing/head/hooded/hostile_environment/equipped(mob/user, slot, initial = FALSE)
 	. = ..()
-	to_chat(user, span_notice("You feel a bloodlust. You can now butcher corpses with your bare arms."))
+	to_chat(user, span_notice("Você sente uma sede de sangue. Agora pode matar cadáveres com os braços nus."))
 
 /obj/item/clothing/head/hooded/hostile_environment/dropped(mob/user, silent = FALSE)
 	. = ..()
-	to_chat(user, span_notice("You lose your bloodlust."))
+	to_chat(user, span_notice("Você perde sua sede de sangue."))
 
 /obj/item/clothing/head/hooded/hostile_environment/proc/consume(mob/living/user, mob/living/butchered)
 	if(butchered.mob_biotypes & (MOB_ROBOTIC | MOB_SPIRIT))

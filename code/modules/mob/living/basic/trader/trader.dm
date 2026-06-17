@@ -1,6 +1,6 @@
 /mob/living/basic/trader
 	name = "Trader"
-	desc = "Come buy some!"
+	desc = "Venha comprar!"
 	unique_name = FALSE
 	icon = 'icons/mob/simple/simple_human.dmi'
 	maxHealth = 200
@@ -60,7 +60,7 @@
 
 /mob/living/basic/trader/mrbones
 	name = "Mr. Bones"
-	desc = "A skeleton merchant, he seems very humerus."
+	desc = "Um comerciante de esqueletos, ele parece muito úmero."
 	speak_emote = list("rattles")
 	speech_span = SPAN_SANS
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID

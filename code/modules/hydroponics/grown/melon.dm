@@ -1,7 +1,7 @@
 // Watermelon
 /obj/item/seeds/watermelon
 	name = "watermelon seed pack"
-	desc = "These seeds grow into watermelon plants."
+	desc = "Estas sementes crescem em plantas de melancia."
 	icon_state = "seed-watermelon"
 	species = "watermelon"
 	plantname = "Watermelon Vines"
@@ -25,7 +25,7 @@
 /obj/item/food/grown/watermelon
 	seed = /obj/item/seeds/watermelon
 	name = "watermelon"
-	desc = "It's full of watery goodness."
+	desc = "Está cheio de água boa."
 	icon_state = "watermelon"
 	inhand_icon_state = "watermelon"
 	bite_consumption_mod = 2
@@ -77,7 +77,7 @@
 // Holymelon
 /obj/item/seeds/watermelon/holy
 	name = "holymelon seed pack"
-	desc = "These seeds grow into holymelon plants."
+	desc = "Estas sementes crescem em plantas holymelon."
 	icon_state = "seed-holymelon"
 	species = "holymelon"
 	plantname = "Holy Melon Vines"
@@ -91,7 +91,7 @@
 /obj/item/food/grown/holymelon
 	seed = /obj/item/seeds/watermelon/holy
 	name = "holymelon"
-	desc = "The water within this melon has been blessed by some deity that's particularly fond of watermelon."
+	desc = "A água dentro deste melão foi abençoada por alguma divindade que gosta particularmente de melancia."
 	icon_state = "holymelon"
 	inhand_icon_state = "holymelon"
 	bite_consumption_mod = 2
@@ -157,14 +157,14 @@
 	var/mob/living/carbon/human/holy_person = mob_eating
 	if(!holy_person.mind?.holy_role || HAS_TRAIT(holy_person, TRAIT_AGEUSIA))
 		return
-	to_chat(holy_person, span_notice("Truly, a piece of heaven!"))
+	to_chat(holy_person, span_notice("Verdadeiramente, um pedaço do céu!"))
 	holy_person.add_mood_event("Divine_chew", /datum/mood_event/holy_consumption)
 	return FOOD_LIKED
 
 /// Barrel melon Seeds
 /obj/item/seeds/watermelon/barrel
 	name = "barrelmelon seed pack"
-	desc = "These seeds grow into barrelmelon plants."
+	desc = "Estas sementes crescem em plantas de melancia."
 	icon_state = "seed-barrelmelon"
 	species = "barrelmelon"
 	plantname = "Barrel Melon Vines"
@@ -179,7 +179,7 @@
 /obj/item/food/grown/barrelmelon
 	seed = /obj/item/seeds/watermelon/barrel
 	name = "barrelmelon"
-	desc = "The nutriments within this melon have been compressed and fermented into rich alcohol."
+	desc = "Os nutrientes dentro deste melão foram comprimidos e fermentados em álcool rico."
 	icon_state = "barrelmelon"
 	inhand_icon_state = "barrelmelon"
 	distill_reagent = /datum/reagent/medicine/antihol //You can call it a integer overflow.

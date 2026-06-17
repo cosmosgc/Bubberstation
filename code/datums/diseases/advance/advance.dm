@@ -18,7 +18,7 @@
 
 /datum/disease/advance
 	name = "Unknown" // We will always let our creator name our disease.
-	desc = "An engineered disease which can contain a multitude of symptoms."
+	desc = "Uma doença projetada que pode conter vários sintomas."
 	form = "Advanced Disease" // Will let med-scanners know that this disease was engineered.
 	agent = "advance microbes"
 	max_stages = 5
@@ -235,7 +235,7 @@
 		cure_chance = clamp(10 * (0.94 ** properties["resistance"]), 3.5, 12) // Capped at between -3 and 17 resistance
 		stage_prob = max(0.2 * properties["stage_rate"], 0) + 1.5
 		set_severity(round(properties["severity"]), 1)
-		cure_text = "If you can see this, something has gone wrong."
+		cure_text = "Se você pode ver isso, algo deu errado."
 	else
 		CRASH("Our properties were empty or null!")
 
@@ -257,7 +257,7 @@
 			spread_text = "Fluids"
 		if(DISEASE_SPREAD_CONTACT_SKIN)
 			update_spread_flags(DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN)
-			spread_text = "Skin contact"
+			spread_text = "Contato com a pele"
 		if(DISEASE_SPREAD_AIRBORNE)
 			update_spread_flags(DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_AIRBORNE)
 			spread_text = "Respiration"
@@ -451,13 +451,13 @@
 					found = H.ForceContractDisease(D)
 					break
 				if(!found)
-					to_chat(user, "Could not find a valid target for the disease.")
+					to_chat(user, "Não achei um alvo válido para a doença.")
 		else
 			H = target
 			if(istype(H) && D.infectable_biotypes & H.mob_biotypes)
 				H.ForceContractDisease(D)
 			else
-				to_chat(user, "Target could not be infected. Check mob biotype compatibility or resistances.")
+				to_chat(user, "Alvo não pode ser infectado. Verifique compatibilidade de biótipos ou resistências.")
 				return
 
 		message_admins("[key_name_admin(user)] has triggered a custom virus outbreak of [D.admin_details()] in [ADMIN_LOOKUPFLW(H)]")

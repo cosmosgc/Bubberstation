@@ -2,8 +2,8 @@
 #define COMP_ANIMATE_FILTER "Filter"
 
 /obj/item/circuit_component/begin_animation
-	display_name = "Begin Animation"
-	desc = "Begins an animation on the target. Create animation steps by chaining \"Animation Step\" components off of the \"Perform Animation\" port."
+	display_name = "Começar Animação"
+	desc = "Começa uma animação no alvo. Crie passos de animação, encadeando\"Passo de Animação\"componentes fora do\"Execute Animação\"Porto."
 	category = "Admin"
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL|CIRCUIT_FLAG_INSTANT|CIRCUIT_FLAG_ADMIN
 
@@ -95,8 +95,8 @@
 					filter_params[param] = step["vars"][param]
 
 /obj/item/circuit_component/animation_step
-	display_name = "Animation Step"
-	desc = "Perform a single animation step. The input of this component should be connected, directly or indirectly, to the \"Perform Animation\" port of a \"Begin Animation\" component."
+	display_name = "Passo de Animação"
+	desc = "Faça uma única etapa de animação. A entrada deste componente deve ser conectada, direta ou indiretamente, ao\"Execute Animação\"Porto de um\"Começar Animação\"Componente."
 	category = "Admin"
 
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL|CIRCUIT_FLAG_ADMIN

@@ -8,7 +8,7 @@
 
 /datum/round_event_control/mold
 	name = "Moldies"
-	description = "A mold outbreak on the station. The mold will spread across the station if not contained."
+	description = "Um surto de mofo na estação. O molde se espalhará pela estação se não for contido."
 	typepath = /datum/round_event/mold
 	max_occurrences = 1
 	earliest_start = 30 MINUTES

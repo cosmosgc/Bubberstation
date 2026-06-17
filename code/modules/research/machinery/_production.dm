@@ -1,6 +1,6 @@
 /obj/machinery/rnd/production
 	name = "technology fabricator"
-	desc = "Makes researched and prototype items with materials and energy."
+	desc = "Faz itens pesquisados e protótipos com materiais e energia."
 	/// Energy cost per full stack of materials spent. Material insertion is 40% of this.
 	active_power_usage = 0.05 * STANDARD_CELL_RATE
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
@@ -472,7 +472,7 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(busy)
-		balloon_alert(user, "busy printing!")
+		balloon_alert(user, "Impressão ocupada!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)
@@ -484,9 +484,9 @@
 	if(drop_direction == 0)
 		return CLICK_ACTION_BLOCKING
 	if(busy)
-		balloon_alert(user, "busy printing!")
+		balloon_alert(user, "Impressão ocupada!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "drop direction reset")
+	balloon_alert(user, "Reset da direção de queda")
 	drop_direction = 0
 	return CLICK_ACTION_SUCCESS
 

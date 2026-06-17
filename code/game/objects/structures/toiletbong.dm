@@ -1,6 +1,6 @@
 /obj/structure/toiletbong
 	name = "toilet bong"
-	desc = "A repurposed toilet with re-arranged piping and an attached flamethrower. Why would anyone build this?"
+	desc = "Um banheiro com tubulação e lança-chamas. Por que alguém construiria isso?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toiletbong"
 	base_icon_state = "toiletbong"
@@ -29,7 +29,7 @@
 
 	crafter.visible_message(
 		span_notice("[crafter] attaches the flamethrower to the repurposed toilet."),
-		span_notice("You attach the flamethrower to the repurposed toilet."),
+		span_notice("Você coloca o lança-chamas no banheiro reaproveitado."),
 	)
 	return ..()
 
@@ -41,10 +41,10 @@
 /obj/structure/toiletbong/attack_hand(mob/living/carbon/user)
 	. = ..()
 	if (!anchored)
-		user.balloon_alert(user, "secure it first!")
+		user.balloon_alert(user, "Segure-o primeiro!")
 		return
 	if (!LAZYLEN(contents))
-		user.balloon_alert(user, "it's empty!")
+		user.balloon_alert(user, "Está vazio!")
 		return
 	user.visible_message(span_boldnotice("[user] takes a huge drag on the [src]."))
 	if (!do_after(user, 2 SECONDS, target = src))
@@ -61,10 +61,10 @@
 		do_chem_smoke(amount = smoke_amount, holder = src, location = loc, carry = item.reagents, carry_limit = 20, smoke_type = /datum/effect_system/fluid_spread/smoke/chem/smoke_machine)
 		if (prob(5) && !(obj_flags & EMAGGED))
 			if(user.get_liked_foodtypes() & GORE)
-				user.balloon_alert(user, "a hidden treat!")
+				user.balloon_alert(user, "Um presente escondido!")
 				user.visible_message(span_danger("[user] fishes a mouse out of the pipes."))
 			else
-				to_chat(user, span_userdanger("There was something disgusting in the pipes!"))
+				to_chat(user, span_userdanger("Havia algo nojento nos canos!"))
 				user.visible_message(span_danger("[user] spits out a mouse."))
 				user.adjust_disgust(50)
 				user.vomit(VOMIT_CATEGORY_DEFAULT)
@@ -106,7 +106,7 @@
 	obj_flags |= EMAGGED
 	smokeradius = 2
 	playsound(src, 'sound/effects/fish_splash.ogg', 50)
-	balloon_alert(user, "toilet broke")
+	balloon_alert(user, "O banheiro quebrou.")
 	if (emag_card)
 		to_chat(user, span_boldwarning("The [emag_card] falls into the toilet. You fish it back out. Looks like you broke the toilet."))
 	return TRUE

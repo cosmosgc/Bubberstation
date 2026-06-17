@@ -1,6 +1,6 @@
 /mob/living/basic/pet/chinchilla
 	name = "chinchilla"
-	desc = "They're like a mouse, but Australian."
+	desc = "São como ratos, mas australianos."
 
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	held_lh = 'modular_skyrat/master_files/icons/mob/inhands/pets_held_lh.dmi'

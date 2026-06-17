@@ -2,7 +2,7 @@
 
 /obj/item/assembly/flash
 	name = "flash"
-	desc = "A powerful and versatile flashbulb device, with applications ranging from disorienting attackers to acting as visual receptors in robot production."
+	desc = "Um potente e versátil dispositivo de flashbulb, com aplicações que vão desde atacantes desorientadores até agindo como receptores visuais na produção de robôs."
 	icon = 'icons/obj/devices/flash.dmi'
 	icon_state = "flash"
 	inhand_icon_state = "flashtool"
@@ -325,7 +325,7 @@
 
 /obj/item/assembly/flash/memorizer
 	name = "memorizer"
-	desc = "If you see this, you're not likely to remember it any time soon."
+	desc = "Se você ver isso, provavelmente não se lembrará tão cedo."
 	icon_state = "memorizer"
 	inhand_icon_state = "nullrod"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
@@ -335,7 +335,7 @@
 
 /obj/item/assembly/flash/armimplant
 	name = "photon projector"
-	desc = "A high-powered photon projector implant normally used for lighting purposes, but also doubles as a flashbulb weapon. Self-repair protocols fix the flashbulb if it ever burns out."
+	desc = "Um implante de projetor fotônico de alta potência normalmente usado para iluminação, mas também é usado como uma arma de flashbulb. Protocolos de auto-reparação consertam a lâmpada se ela queimar."
 	var/flashcd = 20
 	var/overheat = 0
 	//Wearef to our arm
@@ -344,7 +344,7 @@
 /obj/item/assembly/flash/armimplant/burn_out()
 	var/obj/item/organ/cyberimp/arm/toolkit/flash/real_arm = arm.resolve()
 	if(real_arm?.owner)
-		to_chat(real_arm.owner, span_warning("Your photon projector implant overheats and deactivates!"))
+		to_chat(real_arm.owner, span_warning("Seu projetor fotônico superaquece e desativa!"))
 		real_arm.Retract()
 	overheat = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), flashcd * 2)
@@ -353,7 +353,7 @@
 	if(overheat)
 		var/obj/item/organ/cyberimp/arm/toolkit/flash/real_arm = arm.resolve()
 		if(real_arm?.owner)
-			to_chat(real_arm.owner, span_warning("Your photon projector is running too hot to be used again so quickly!"))
+			to_chat(real_arm.owner, span_warning("Seu projetor fotônico está quente demais para ser usado de novo tão rápido!"))
 		return FALSE
 	overheat = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), flashcd)
@@ -370,7 +370,7 @@
 	add_fingerprint(user)
 
 /obj/item/assembly/flash/hypnotic
-	desc = "A modified flash device, programmed to emit a sequence of subliminal flashes that can send a vulnerable target into a hypnotic trance."
+	desc = "Um dispositivo flash modificado, programado para emitir uma sequência de flashes subliminares que pode enviar um alvo vulnerável para um transe hipnótico."
 	flashing_overlay = "mindflash"
 	light_color = LIGHT_COLOR_PINK
 	cooldown = 20
@@ -396,7 +396,7 @@
 		return FALSE
 
 	if(!targeted)
-		to_chat(flashed, span_notice("Such a pretty light..."))
+		to_chat(flashed, span_notice("Que bela luz..."))
 		flashed.adjust_confusion_up_to(confusion_duration, confusion_duration * 2 * CONFUSION_STACK_MAX_MULTIPLIER)
 		flashed.adjust_dizzy_up_to(8 SECONDS, 40 SECONDS)
 		flashed.adjust_drowsiness_up_to(8 SECONDS, 40 SECONDS)
@@ -409,7 +409,7 @@
 		to_chat(flashed, "You're blinded by [src]!")
 
 	if(!flashed.hypnosis_vulnerable())
-		to_chat(flashed, span_hypnophrase("The light makes you feel oddly relaxed..."))
+		to_chat(flashed, span_hypnophrase("A luz faz você se sentir estranhamente relaxado..."))
 		flashed.adjust_confusion_up_to(confusion_duration * 2, confusion_duration * 2 * CONFUSION_STACK_MAX_MULTIPLIER)
 		flashed.adjust_dizzy_up_to(20 SECONDS, 40 SECONDS)
 		flashed.adjust_drowsiness_up_to(20 SECONDS, 40 SECONDS)

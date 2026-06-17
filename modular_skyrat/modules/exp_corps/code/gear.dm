@@ -1,7 +1,7 @@
 //Gateway Medkit, no more combat defibs!
 /obj/item/storage/medkit/expeditionary
 	name = "combat medical kit"
-	desc = "Now with 100% less bullshit."
+	desc = "Agora com 100% menos besteira."
 	icon_state = "medkit_tactical"
 	damagetype_healed = "all"
 
@@ -18,7 +18,7 @@
 //Field Medic's weapon, no more tomahawk!
 /obj/item/circular_saw/field_medic
 	name = "bone saw"
-	desc = "Did that sting? SAW-ry!"
+	desc = "Isso ardeu? Saw-ry!"
 	force = 15
 	icon_state = "bonesaw"
 	icon = 'modular_skyrat/modules/exp_corps/icons/bonesaw.dmi'
@@ -33,7 +33,7 @@
 //Pointman's riot shield. Fixable with 1 plasteel, crafting recipe for broken shield
 /obj/item/shield/riot/pointman
 	name = "pointman shield"
-	desc = "A shield fit for those that want to sprint headfirst into the unknown! Cumbersome as hell."
+	desc = "Um escudo adequado para aqueles que querem correr de cabeça para o desconhecido! Cumberso como o inferno."
 	icon_state = "riot"
 	icon = 'modular_skyrat/modules/exp_corps/icons/riot.dmi'
 	lefthand_file = 'modular_skyrat/modules/exp_corps/icons/riot_left.dmi'
@@ -72,7 +72,7 @@
 
 /obj/item/pointman_broken
 	name = "broken pointman shield"
-	desc = "Might be able to be repaired with plasteel and a welder."
+	desc = "Pode ser capaz de ser reparado com plasteel e um soldador."
 	icon_state = "riot_broken"
 	icon = 'modular_skyrat/modules/exp_corps/icons/riot.dmi'
 	w_class = WEIGHT_CLASS_BULKY
@@ -91,7 +91,7 @@
 //Marksman's throwing knife and a pouch for it
 /obj/item/knife/combat/marksman
 	name = "throwing knife"
-	desc = "Very well weighted for throwing, feels awkward to use for anything else."
+	desc = "Muito bem ponderado para jogar, é estranho usar para qualquer outra coisa."
 	icon = 'modular_skyrat/modules/exp_corps/icons/throwing.dmi'
 	icon_state = "throwing"
 	force = 12

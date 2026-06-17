@@ -18,14 +18,14 @@
 		return
 
 	if(!COOLDOWN_FINISHED(door, answer_cd))
-		to_chat(src, span_warning("Your processor is still cooling down."))
+		to_chat(src, span_warning("Seu processador ainda está esfriando."))
 		return
 
 	if(!requester.can_track(src))
-		to_chat(src, span_notice("Unable to track requester."))
+		to_chat(src, span_notice("Incapaz de rastrear o solicitante."))
 		return
 	if(door.aiControlDisabled != AI_WIRE_NORMAL)
-		to_chat(src, span_notice("Unable to access airlock"))
+		to_chat(src, span_notice("Incapaz de acessar a câmara de ar."))
 		return
 
 	COOLDOWN_START(door, answer_cd, 10 SECONDS)

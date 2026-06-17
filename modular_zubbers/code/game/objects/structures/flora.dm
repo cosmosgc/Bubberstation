@@ -3,7 +3,7 @@
 	icon_state = "bonusnt"
 	pixel_x = 0
 	name = "bonus bag pile"
-	desc = "A pile of bonus bags. Try to find one with your name on it!"
+	desc = "Uma pilha de sacos de bônus. Tente encontrar um com seu nome nele!"
 	var/gift_type = /obj/item/storage/box/papersack/millionaire_bonus
 	var/unlimited = FALSE
 	var/static/list/took_bonus
@@ -21,9 +21,9 @@
 		return
 
 	if(took_bonus[user.ckey] && !unlimited)
-		to_chat(user, span_warning("You already claimed your bonus!"))
+		to_chat(user, span_warning("Você já reclamou seu bônus!"))
 		return
-	to_chat(user, span_warning("After a bit of rummaging, you locate a bonus bag with your name on it!"))
+	to_chat(user, span_warning("Depois de um pouco de busca, você localiza um saco bônus com seu nome nele!"))
 
 	if(!unlimited)
 		took_bonus[user.ckey] = TRUE

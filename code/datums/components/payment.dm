@@ -102,7 +102,7 @@
 		return FALSE
 
 	if(physical_cash_total < total_cost)
-		to_chat(user, span_warning("Insufficient funds. Aborting."))
+		to_chat(user, span_warning("Fundos insuficientes. Abortando."))
 		return FALSE
 	for(var/obj/cash_object in counted_money)
 		qdel(cash_object)
@@ -133,18 +133,18 @@
 
 	if(!idcard)
 		if(transaction_style == PAYMENT_VENDING)
-			to_chat(user, span_warning("No card found."))
+			to_chat(user, span_warning("Nenhum cartão encontrado."))
 		return FALSE
 	if(!idcard?.registered_account)
 		switch(transaction_style)
 			if(PAYMENT_FRIENDLY)
-				to_chat(user, span_warning("There's no account detected on your ID, how mysterious!"))
+				to_chat(user, span_warning("Não há nenhuma conta detectada em sua identidade, como misterioso!"))
 			if(PAYMENT_ANGRY)
-				to_chat(user, span_warning("ARE YOU JOKING. YOU DON'T HAVE A BANK ACCOUNT ON YOUR ID YOU IDIOT."))
+				to_chat(user, span_warning("Você está brincando. Você não tem uma conta bancária na sua identidade."))
 			if(PAYMENT_CLINICAL)
-				to_chat(user, span_warning("ID Card lacks a bank account. Advancing."))
+				to_chat(user, span_warning("Cartão de identificação não tem conta bancária. Avançando."))
 			if(PAYMENT_VENDING)
-				to_chat(user, span_warning("No account found."))
+				to_chat(user, span_warning("Nenhuma conta encontrada."))
 
 		return FALSE
 
@@ -155,13 +155,13 @@
 	if(!(idcard.registered_account.has_money(total_cost)))
 		switch(transaction_style)
 			if(PAYMENT_FRIENDLY)
-				to_chat(user, span_warning("I'm so sorry... You don't seem to have enough money."))
+				to_chat(user, span_warning("Sinto muito... Você não parece ter dinheiro suficiente."))
 			if(PAYMENT_ANGRY)
-				to_chat(user, span_warning("YOU MORON. YOU ABSOLUTE BAFOON. YOU INSUFFERABLE TOOL. YOU ARE POOR."))
+				to_chat(user, span_warning("Seu idiota. Você absoluta bafoon. Você é insuportável. Você é pobre."))
 			if(PAYMENT_CLINICAL)
-				to_chat(user, span_warning("ID Card lacks funds. Aborting."))
+				to_chat(user, span_warning("Cartão de identificação não tem fundos. Abortando."))
 			if(PAYMENT_VENDING)
-				to_chat(user, span_warning("You do not possess the funds to purchase that."))
+				to_chat(user, span_warning("Você não possui fundos para comprar isso."))
 		atom_parent.balloon_alert(user, "needs [total_cost] [MONEY_NAME_AUTOPURAL(total_cost)]!")
 		return FALSE
 	target_acc.transfer_money(idcard.registered_account, total_cost, "Nanotrasen: Usage of Corporate Machinery")

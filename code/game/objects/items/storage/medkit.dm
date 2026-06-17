@@ -10,7 +10,7 @@
  */
 /obj/item/storage/medkit
 	name = "medkit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "É um kit médico de emergência para aqueles doidos."
 	icon = 'icons/obj/storage/medkit.dmi'
 	icon_state = "medkit"
 	inhand_icon_state = "medkit"
@@ -33,7 +33,7 @@
 
 /obj/item/storage/medkit/regular
 	icon_state = "medkit"
-	desc = "A first aid kit with the ability to heal common types of injuries."
+	desc = "Um kit de primeiros socorros com a habilidade de curar ferimentos comuns."
 
 /obj/item/storage/medkit/regular/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins giving [user.p_them()]self aids with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -55,7 +55,7 @@
 	icon_state = "medbriefcase"
 	inhand_icon_state = "medkit-emergency"
 	name = "emergency medkit"
-	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."
+	desc = "Um simples kit de primeiros socorros para proteger e estabilizar ferimentos graves para tratamento posterior."
 
 /obj/item/storage/medkit/emergency/PopulateContents()
 	if(empty)
@@ -74,7 +74,7 @@
 	name = "surgical medkit"
 	icon_state = "medkit_surgery"
 	inhand_icon_state = "medkit-surgical"
-	desc = "A high capacity aid kit for doctors, full of medical supplies and basic surgical equipment."
+	desc = "Um kit de alta capacidade para médicos, cheio de suprimentos médicos e equipamentos cirúrgicos básicos."
 	custom_premium_price = PAYCHECK_COMMAND * 6 // BUBBER EDIT ADDITION
 	storage_type = /datum/storage/medkit/surgery
 
@@ -96,7 +96,7 @@
 
 /obj/item/storage/medkit/surgery_syndie
 	name = "suspicous surgical medkit"
-	desc = "An suspicous coloured medkit full of advanced medical equipment."
+	desc = "Um kit médico de cor suspeito cheio de equipamentos médicos avançados."
 	icon_state = "medkit_tactical_lite"
 	inhand_icon_state = "medkit-tactical-lite"
 	damagetype_healed = HEAL_ALL_DAMAGE
@@ -126,7 +126,7 @@
 
 /obj/item/storage/medkit/ancient
 	icon_state = "oldfirstaid"
-	desc = "A first aid kit with the ability to heal common types of injuries."
+	desc = "Um kit de primeiros socorros com a habilidade de curar ferimentos comuns."
 
 /obj/item/storage/medkit/ancient/PopulateContents()
 	if(empty)
@@ -138,12 +138,12 @@
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/medkit/ancient/heirloom
-	desc = "A first aid kit with the ability to heal common types of injuries. You start thinking of the good old days just by looking at it."
+	desc = "Um kit de primeiros socorros com a habilidade de curar ferimentos comuns. Você começa a pensar nos bons velhos tempos só de olhar para ele."
 	empty = TRUE // long since been ransacked by hungry powergaming assistants breaking into med storage
 
 /obj/item/storage/medkit/fire
 	name = "burn treatment kit"
-	desc = "A specialized medical kit for when the ordnance lab <i>-spontaneously-</i> burns down."
+	desc = "Um kit médico especializado para quando o laboratório de artilharia<i>- Espontaneamente...</i>Queima."
 	icon_state = "medkit_burn"
 	inhand_icon_state = "medkit-ointment"
 	damagetype_healed = BURN
@@ -167,7 +167,7 @@
 
 /obj/item/storage/medkit/toxin
 	name = "toxin treatment kit"
-	desc = "Used to treat toxic blood content and radiation poisoning."
+	desc = "Usado para tratar conteúdo tóxico de sangue e envenenamento por radiação."
 	icon_state = "medkit_toxin"
 	inhand_icon_state = "medkit-toxin"
 	damagetype_healed = TOX
@@ -194,7 +194,7 @@
 
 /obj/item/storage/medkit/o2
 	name = "oxygen deprivation treatment kit"
-	desc = "A box full of oxygen goodies."
+	desc = "Uma caixa cheia de produtos de oxigênio."
 	icon_state = "medkit_o2"
 	inhand_icon_state = "medkit-o2"
 	damagetype_healed = OXY
@@ -218,7 +218,7 @@
 
 /obj/item/storage/medkit/brute
 	name = "brute trauma treatment kit"
-	desc = "A first aid kit for when you get toolboxed."
+	desc = "Um kit de primeiros socorros para quando for pego."
 	icon_state = "medkit_brute"
 	inhand_icon_state = "medkit-brute"
 	damagetype_healed = BRUTE
@@ -244,7 +244,7 @@
 
 /obj/item/storage/medkit/advanced
 	name = "advanced first aid kit"
-	desc = "An advanced kit to help deal with advanced wounds."
+	desc = "Um kit avançado para lidar com ferimentos avançados."
 	icon_state = "medkit_advanced"
 	inhand_icon_state = "medkit-advanced"
 	custom_premium_price = PAYCHECK_COMMAND * 6
@@ -286,7 +286,7 @@
 
 /obj/item/storage/medkit/tactical
 	name = "combat medical kit"
-	desc = "I hope you've got insurance."
+	desc = "Espero que tenha seguro."
 	icon_state = "medkit_tactical"
 	inhand_icon_state = "medkit-tactical"
 	damagetype_healed = HEAL_ALL_DAMAGE
@@ -317,7 +317,7 @@
 
 /obj/item/storage/medkit/tactical/premium
 	name = "premium combat medical kit"
-	desc = "May or may not contain traces of lead."
+	desc = "Pode ou não conter traços de chumbo."
 	icon_state = "medkit_tactical_premium"
 	inhand_icon_state = "medkit-tactical-premium"
 	storage_type = /datum/storage/medkit/tactical/premium
@@ -350,7 +350,7 @@
 
 /obj/item/storage/medkit/coroner
 	name = "compact coroner's medkit"
-	desc = "A smaller medical kit designed primarily for assisting in dissecting the deceased, rather than treating the living."
+	desc = "Um kit médico menor projetado principalmente para ajudar a dissecar o falecido, em vez de tratar os vivos."
 	icon = 'icons/obj/storage/medkit.dmi'
 	icon_state = "compact_coronerkit"
 	inhand_icon_state = "coronerkit"
@@ -374,12 +374,12 @@
 		return ..()
 	//Making a medibot!
 	if(contents.len >= 1)
-		balloon_alert(user, "items inside!")
+		balloon_alert(user, "Itens dentro!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/bot_assembly/medbot/medbot_assembly = new(drop_location())
 	medbot_assembly.set_skin(get_medbot_skin())
-	medbot_assembly.balloon_alert(user, "arm added")
+	medbot_assembly.balloon_alert(user, "Braço adicionado")
 	medbot_assembly.robot_arm = tool.type
 	medbot_assembly.medkit_type = type
 	qdel(tool)
@@ -396,7 +396,7 @@
 /// A box which takes in coolant and uses it to preserve organs and body parts
 /obj/item/storage/organbox
 	name = "organ transport box"
-	desc = "An advanced box with a cooling mechanism that uses cryostylane or other cold reagents to keep the organs or bodyparts inside preserved."
+	desc = "Uma caixa avançada com um mecanismo de resfriamento que usa criostilano ou outros reagentes frios para manter os órgãos ou partes do corpo dentro preservadas."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "organbox"
 	base_icon_state = "organbox"
@@ -492,7 +492,7 @@
 
 /obj/item/storage/test_tube_rack
 	name = "test tube rack"
-	desc = "A wooden rack for storing test tubes."
+	desc = "Uma prateleira de madeira para armazenar tubos de ensaio."
 	icon_state = "rack"
 	base_icon_state = "rack"
 	icon = 'icons/obj/medical/chemical.dmi'

@@ -7,7 +7,7 @@
 
 /obj/machinery/plumbing/acclimator
 	name = "chemical acclimator"
-	desc = "An efficient cooler and heater for the perfect showering temperature or illicit chemical factory."
+	desc = "Um refrigerador eficiente e aquecedor para a temperatura de banho perfeita ou fábrica química ilícita."
 	icon_state = "acclimator"
 	base_icon_state = "acclimator"
 	buffer = 200

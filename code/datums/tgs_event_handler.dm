@@ -20,7 +20,7 @@
 			message_admins("TGS: Deployment failed!")
 		if(TGS_EVENT_DEPLOYMENT_COMPLETE)
 			message_admins("TGS: Deployment complete!")
-			to_chat(world, span_boldannounce("Server updated, changes will be applied on the next round..."))
+			to_chat(world, span_boldannounce("Servidor atualizado, mudanças serão aplicadas na próxima rodada..."))
 		if(TGS_EVENT_WATCHDOG_DETACH)
 			message_admins("TGS restarting...")
 			reattach_timer = addtimer(CALLBACK(src, PROC_REF(LateOnReattach)), 1 MINUTES, TIMER_STOPPABLE)
@@ -35,7 +35,7 @@
 				deltimer(reattach_timer)
 				reattach_timer = null
 		if(TGS_EVENT_WATCHDOG_SHUTDOWN)
-			to_chat_immediate(world, span_boldannounce("Server is shutting down!"))
+			to_chat_immediate(world, span_boldannounce("O servidor está desligando!"))
 
 /datum/tgs_event_handler/impl/proc/LateOnReattach()
 	message_admins("Warning: TGS hasn't notified us of it coming back for a full minute! Is there a problem?")

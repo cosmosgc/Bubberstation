@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/pointed/projectile/finger_guns
 	name = "Finger Guns"
-	desc = "Shoot up to three mimed bullets from your fingers that damage and mute their targets. \
-		Can't be used if you have something in your hands."
+	desc = "Atire em três balas mímicas de seus dedos que danificam e silenciam seus alvos.\
+Não pode ser usado se tiver algo em suas mãos."
 	background_icon_state = "bg_mime"
 	overlay_icon_state = "bg_mime_border"
 	button_icon = 'icons/mob/actions/actions_mime.dmi'
@@ -13,7 +13,7 @@
 	cooldown_time = 30 SECONDS
 
 	invocation = span_notice("<b>%CASTER</b> fires %PRONOUN_their finger gun!")
-	invocation_self_message = span_danger("You fire your finger gun!")
+	invocation_self_message = span_danger("Dispare sua arma!")
 	invocation_type = INVOCATION_EMOTE
 
 	spell_requirements = SPELL_REQUIRES_HUMAN|SPELL_REQUIRES_MIME_VOW
@@ -34,11 +34,11 @@
 		var/mob/living/carbon/human/human_invoker = invoker
 		if(human_invoker.incapacitated)
 			if(feedback)
-				to_chat(human_invoker, span_warning("You can't properly point your fingers while incapacitated."))
+				to_chat(human_invoker, span_warning("Não pode apontar os dedos enquanto está incapacitado."))
 			return FALSE
 		if(human_invoker.get_active_held_item())
 			if(feedback)
-				to_chat(human_invoker, span_warning("You can't properly fire your finger guns with something in your hand."))
+				to_chat(human_invoker, span_warning("Você não pode disparar suas armas com algo na mão."))
 			return FALSE
 
 	return ..()

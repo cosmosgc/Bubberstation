@@ -1,7 +1,7 @@
 /obj/machinery/atmospherics/components/binary/pressure_valve
 	icon_state = "pvalve_map-3"
 	name = "pressure valve"
-	desc = "An activable one way valve that let gas pass through if the pressure on the input side is higher than the set pressure."
+	desc = "Uma válvula ativada que deixa o gás passar se a pressão no lado de entrada for maior que a pressão definida."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	construction_type = /obj/item/pipe/directional

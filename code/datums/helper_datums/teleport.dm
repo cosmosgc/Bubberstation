@@ -36,7 +36,7 @@
 				precision = max(rand(1,100)*interference,100)
 				if(isliving(teleatom))
 					var/mob/living/MM = teleatom
-					to_chat(MM, span_warning("The clashing pulls of bluespace interfere with your teleport!"))
+					to_chat(MM, span_warning("Os impulsos do espaço azul interferem no seu teletransporte!"))
 			
 			// if effects are not specified and not explicitly disabled, sparks
 			if((!effectin || !effectout) && !no_effects)
@@ -64,7 +64,7 @@
 	if(!forced)
 		if(!check_teleport_valid(teleatom, destturf, channel, original_destination = destination))
 			if(ismob(teleatom))
-				teleatom.balloon_alert(teleatom, "something holds you back!")
+				teleatom.balloon_alert(teleatom, "Algo te prende!")
 			return FALSE
 
 	if(SEND_SIGNAL(teleatom, COMSIG_MOVABLE_TELEPORTING, destination, channel))

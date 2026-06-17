@@ -148,10 +148,10 @@
 /// Select the sect, called from [/datum/component/religious_tool/proc/AttemptActions]
 /datum/component/religious_tool/proc/select_sect(mob/living/user, path)
 	if(user.mind.holy_role != HOLY_ROLE_HIGHPRIEST)
-		to_chat(user, span_warning("You are not the high priest, and therefore cannot select a religious sect."))
+		to_chat(user, span_warning("Você não é o sumo sacerdote e, portanto, não pode escolher uma seita religiosa."))
 		return
 	if(!user.can_perform_action(parent, FORBID_TELEKINESIS_REACH))
-		to_chat(user,span_warning("You cannot select a sect at this time."))
+		to_chat(user,span_warning("Você não pode selecionar uma seita neste momento."))
 		return
 	set_new_religious_sect(text2path(path))
 
@@ -161,13 +161,13 @@
 		if(user.mind.holy_role == HOLY_ROLE_DEACON)
 			to_chat(user, span_warning("You are merely a deacon of [GLOB.deity], and therefore cannot perform rites."))
 		else
-			to_chat(user, span_warning("You are not holy, and therefore cannot perform rites."))
+			to_chat(user, span_warning("Você não é santo e, portanto, não pode realizar rituais."))
 		return
 	if(rite_types_allowlist && !is_path_in_list(path, rite_types_allowlist))
-		to_chat(user, span_warning("This cannot perform that kind of rite."))
+		to_chat(user, span_warning("Isso não pode realizar esse tipo de ritual."))
 		return
 	if(!user.can_perform_action(parent, FORBID_TELEKINESIS_REACH))
-		to_chat(user,span_warning("You are not close enough to perform the rite."))
+		to_chat(user,span_warning("Você não está perto o suficiente para realizar o ritual."))
 		return
 	//we have a rite already, but we want to do a new one.
 	if(performing_rite && !ispath(performing_rite.type, path))
@@ -262,9 +262,9 @@
 	examine_list += span_notice("Use a [catalyst_type::name] to interact with this.")
 	if(isnull(easy_access_sect))
 		if(operation_flags & RELIGION_TOOL_SECTSELECT)
-			examine_list += span_notice("This looks like it can be used to select a sect.")
+			examine_list += span_notice("Parece que pode ser usado para selecionar uma seita.")
 			return
 	if(operation_flags & RELIGION_TOOL_SACRIFICE)//this can be moved around if things change but usually no rites == no sacrifice
-		examine_list += span_notice("Desired items can be used on this to increase favor.")
+		examine_list += span_notice("Itens desejados podem ser usados para aumentar o favor.")
 	if(easy_access_sect.rites_list && operation_flags & RELIGION_TOOL_INVOKE)
-		examine_list += span_notice("You can invoke rites from this.")
+		examine_list += span_notice("Pode invocar ritos disso.")

@@ -1,7 +1,7 @@
 /obj/machinery/transformer_rp
 	name = "\improper Automatic Robotic Factory 5000"
-	desc = "A large metallic machine with an entrance and an exit. A sign on \
-		the side reads, 'Mass robot production facility'"
+	desc = "Uma grande máquina metálica com uma entrada e uma saída. Um sinal sobre\
+O lado diz, 'Mass robot instalação de produção'"
 	icon = 'icons/obj/machines/recycling.dmi'
 	icon_state = "separator-AO1"
 	base_icon_state = "separator-AO0"
@@ -45,7 +45,7 @@
 	if(issilicon(user) || isobserver(user))
 		. += "<br>It has [stored_cyborgs] cyborgs stored."
 		if(!is_operational)
-			. += span_warning("It has no power!")
+			. += span_warning("Não tem poder!")
 			return
 		if(cooldown && cooldown_timer)
 			. += "<br>It will be ready to deploy a stored cyborg in [DisplayTimeText(max(0, cooldown_timer))]."
@@ -86,7 +86,7 @@
 	notify_ghosts("A new cyborg shell has been created at the [src]",
 		source = src,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
-		header = "New malfunctioning cyborg created!",
+		header = "Novo cyborg com defeito criado!",
 	)
 
 /obj/machinery/transformer_rp/proc/create_a_cyborg(mob/dead/observer/target_ghost)
@@ -97,7 +97,7 @@
 	if(cooldown)
 		return
 
-	var/cyborg_ask = tgui_alert(target_ghost, "Become a cyborg?", "Are you a terminator?", list("Yes", "No"))
+	var/cyborg_ask = tgui_alert(target_ghost, "Tornar-se um ciborgue?", "Are you a terminator?", list("Yes", "No"))
 	if(cyborg_ask == "No" || !src || QDELETED(src))
 		return FALSE
 

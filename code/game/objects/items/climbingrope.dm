@@ -1,6 +1,6 @@
 /obj/item/climbing_hook
 	name = "climbing hook"
-	desc = "Standard hook with rope to scale up holes. The rope is of average quality, but due to your weight amongst other factors, may not withstand extreme use."
+	desc = "Gancho padrão com corda para escalar buracos. A corda é de qualidade média, mas devido ao seu peso entre outros fatores, pode não suportar uso extremo."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "climbingrope"
 	inhand_icon_state = "crowbar_brass"
@@ -23,7 +23,7 @@
 	. = ..()
 	var/list/look_binds = user.client.prefs.key_bindings["look up"]
 	. += span_notice("Firstly, look upwards by holding <b>[english_list(look_binds, nothing_text = "(nothing bound)", and_text = " or ", comma_text = ", or ")]!</b>")
-	. += span_notice("Then, click solid ground (or lattice/catwalk) adjacent to the hole above you.")
+	. += span_notice("Então, clique em solo sólido (ou treliça/calcinha) adjacente ao buraco acima de você.")
 
 /obj/item/climbing_hook/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(HAS_TRAIT(interacting_with, TRAIT_COMBAT_MODE_SKIP_INTERACTION))
@@ -40,10 +40,10 @@
 	var/turf/user_turf = get_turf(user)
 	var/turf/trans_vertical = interacting_with.z > user.z ? GET_TURF_ABOVE(user_turf) : GET_TURF_ABOVE(interacting_with)
 	if(target_blocked(interacting_with, trans_vertical))
-		balloon_alert(user, "cant get there!")
+		balloon_alert(user, "Não consigo chegar lá!")
 		return ITEM_INTERACT_BLOCKING
 	if(get_dist(interacting_with, trans_vertical) > reach - 1) //is our rope long enough?
-		balloon_alert(user, "too far!")
+		balloon_alert(user, "Muito longe!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/away_dir = get_dir(trans_vertical, interacting_with)
@@ -92,18 +92,18 @@
 
 /obj/item/climbing_hook/emergency
 	name = "emergency climbing hook"
-	desc = "An emergency climbing hook to scale up holes."
+	desc = "Um gancho de escalada de emergência para escalar buracos."
 	climb_time = 4 SECONDS
 
 /obj/item/climbing_hook/syndicate
 	name = "suspicious climbing hook"
-	desc = "REALLY suspicious climbing hook to scale up holes. The hook has a syndicate logo engraved on it, and the rope has sinister mechanical mechanisms to assist with climbing away from nefarious activities."
+	desc = "Um gancho de escalada muito suspeito para escalar buracos. O gancho tem um logotipo do sindicato gravado nele, e a corda tem mecanismos mecânicos sinistros para ajudar a sair de atividades nefastas."
 	icon_state = "climbingrope_s"
 	climb_time = 0.75 SECONDS
 
 /obj/item/climbing_hook/infinite //debug stuff
 	name = "infinite climbing hook"
-	desc = "A plasteel hook, with rope. Upon closer inspection, the rope appears to be made out of plasteel woven into regular rope, amongst many other reinforcements."
+	desc = "Um gancho de plasteel, com corda. Após inspeção mais próxima, a corda parece ser feita de plasteel tecido em corda regular, entre muitos outros reforços."
 	climb_time = 0.1 SECONDS
 
 /obj/effect/temp_visual/climbing_hook

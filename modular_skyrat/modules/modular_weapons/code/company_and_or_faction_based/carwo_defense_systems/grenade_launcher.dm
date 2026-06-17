@@ -2,7 +2,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher
 	name = "\improper Kiboko Grenade Launcher"
-	desc = "A unique grenade launcher firing .980 grenades. A laser sight system allows its user to specify a range for the grenades it fires to detonate at."
+	desc = "Um lançador de granadas único disparando 980 granadas. Um sistema de visão laser permite que seu usuário especifique um alcance para as granadas que dispara para detonar."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/carwo_defense_systems/guns48x.dmi'
 	icon_state = "kiboko"
@@ -44,7 +44,7 @@
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine_more(mob/user)
 	. = ..()
@@ -65,7 +65,7 @@
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/examine(mob/user)
 	. = ..()
 
-	. += span_notice("With <b>Right Click</b> you can set the range that shells will detonate at.")
+	. += span_notice("Com<b>Clique direito</b>Você pode definir o alcance que as conchas irão detonar.")
 	. += span_notice("A small indicator in the sight notes the current detonation range is: <b>[target_range]</b>.")
 
 /obj/item/gun/ballistic/automatic/sol_grenade_launcher/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
@@ -74,7 +74,7 @@
 
 	var/distance_ranged = get_dist(user, interacting_with)
 	if(distance_ranged > maximum_target_range)
-		user.balloon_alert(user, "out of range")
+		user.balloon_alert(user, "fora de alcance")
 		return ITEM_INTERACT_BLOCKING
 
 	target_range = distance_ranged

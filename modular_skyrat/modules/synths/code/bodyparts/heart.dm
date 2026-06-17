@@ -1,6 +1,6 @@
 /obj/item/organ/heart/synth
 	name = "hydraulic pump engine"
-	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs. Without this, synthetics are unable to move."
+	desc = "Um dispositivo eletrônico que manipula as bombas hidráulicas, alimentando os membros robóticos. Sem isso, sintéticos são incapazes de se mover."
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "heart-ipc-on"
@@ -20,15 +20,15 @@
 		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
 		switch(severity)
 			if(EMP_HEAVY)
-				to_chat(owner, span_warning("Alert: Main hydraulic pump control has taken severe damage, seek maintenance immediately. Error code: HP300-10."))
+				to_chat(owner, span_warning("Alerta: o controle da bomba hidráulica principal sofreu danos graves, procure manutenção imediatamente. Código de erro: HP300-10."))
 				apply_organ_damage(SYNTH_ORGAN_HEAVY_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
 			if(EMP_LIGHT)
-				to_chat(owner, span_warning("Alert: Main hydraulic pump control has taken light damage, seek maintenance immediately. Error code: HP300-05."))
+				to_chat(owner, span_warning("O controle da bomba hidráulica principal sofreu danos leves, procure manutenção imediatamente. Código de erro: HP300-05."))
 				apply_organ_damage(SYNTH_ORGAN_LIGHT_EMP_DAMAGE, maxHealth, required_organ_flag = ORGAN_ROBOTIC)
 
 /datum/design/synth_heart
 	name = "Hydraulic Pump Engine"
-	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs. Without this, synthetics are unable to move."
+	desc = "Um dispositivo eletrônico que manipula as bombas hidráulicas, alimentando os membros robóticos. Sem isso, sintéticos são incapazes de se mover."
 	id = "synth_heart"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 4 SECONDS

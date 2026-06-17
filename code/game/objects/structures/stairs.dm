@@ -321,7 +321,7 @@
 
 /obj/structure/stairs_frame
 	name = "stairs frame"
-	desc = "Everything you need to call something a staircase, aside from the stuff you actually step on."
+	desc = "Tudo que você precisa para chamar algo de escada, além do que você realmente pisa."
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs_frame"
 	density = FALSE
@@ -334,7 +334,7 @@
 
 /obj/structure/stairs_frame/wood
 	name = "wooden stairs frame"
-	desc = "Everything you need to build a staircase, minus the actual stairs. This one is made of wood."
+	desc = "Tudo que você precisa para construir uma escada, menos as escadas de verdade. Este é feito de madeira."
 	frame_stack = /obj/item/stack/sheet/mineral/wood
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 10)
 
@@ -345,9 +345,9 @@
 /obj/structure/stairs_frame/examine(mob/living/carbon/human/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("The frame is anchored and can be made into proper stairs with 10 sheets of material.")
+		. += span_notice("O quadro está ancorado e pode ser feito em escadas adequadas com 10 folhas de material.")
 	else
-		. += span_notice("The frame will need to be secured with a wrench before it can be completed.")
+		. += span_notice("A moldura precisa ser segura com uma chave inglesa antes que possa ser concluída.")
 
 /obj/structure/stairs_frame/wrench_act(mob/living/user, obj/item/used_tool)
 	user.balloon_alert_to_viewers("securing stairs frame", "securing frame")
@@ -378,7 +378,7 @@
 	if(!isstack(attacked_by))
 		return ..()
 	if(!anchored)
-		user.balloon_alert(user, "secure frame first")
+		user.balloon_alert(user, "Primeiro a armação segura.")
 		return TRUE
 	var/obj/item/stack/material = attacked_by
 	if(material.stairs_type)
@@ -386,7 +386,7 @@
 			to_chat(user, span_warning("You need ten [material.name] sheets to do this!"))
 			return
 		if(locate(/obj/structure/stairs) in loc)
-			to_chat(user, span_warning("There's already stairs built here!"))
+			to_chat(user, span_warning("Já tem escadas construídas aqui!"))
 			return
 		to_chat(user, span_notice("You start adding [material] to [src]..."))
 		if(!do_after(user, 10 SECONDS, target = src) || !material.use(10) || (locate(/obj/structure/table) in loc))
@@ -394,10 +394,10 @@
 		make_new_stairs(material.stairs_type)
 	else if(istype(material, /obj/item/stack/sheet))
 		if(material.get_amount() < 10)
-			to_chat(user, span_warning("You need ten sheets to do this!"))
+			to_chat(user, span_warning("Você precisa de 10 lençóis para fazer isso!"))
 			return
 		if(locate(/obj/structure/stairs) in loc)
-			to_chat(user, span_warning("There's already stairs built here!"))
+			to_chat(user, span_warning("Já tem escadas construídas aqui!"))
 			return
 		to_chat(user, span_notice("You start adding [material] to [src]..."))
 		if(!do_after(user, 10 SECONDS, target = src) || !material.use(10) || (locate(/obj/structure/table) in loc))

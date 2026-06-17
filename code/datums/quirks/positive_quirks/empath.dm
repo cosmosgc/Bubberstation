@@ -1,11 +1,11 @@
 /datum/quirk/empath
 	name = "Empath"
-	desc = "Whether it's a sixth sense or careful study of body language, it only takes you a quick glance at someone to understand how they feel."
+	desc = "Se é um sexto sentido ou um estudo cuidadoso da linguagem corporal, só leva um rápido olhar para alguém para entender como se sente."
 	icon = FA_ICON_SMILE_BEAM
 	value = 6 // SKYRAT EDIT CHANGE - Quirk Rebalance - Original: value = 8
-	gain_text = span_notice("You feel in tune with those around you.")
-	lose_text = span_danger("You feel isolated from others.")
-	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
+	gain_text = span_notice("Você se sente em sintonia com aqueles ao seu redor.")
+	lose_text = span_danger("Você se sente isolado dos outros.")
+	medical_record_text = "O paciente é muito perceptivo e sensível a pistas sociais, ou pode ter ESP. Mais testes necessários."
 	mail_goodies = list(/obj/item/toy/foamfinger)
 
 /datum/quirk/empath/add(client/client_source)

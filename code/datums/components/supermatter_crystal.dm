@@ -60,11 +60,11 @@
 	consume_returns(damage_increase = blob.get_integrity() * 0.05)
 	if(blob.get_integrity() > 100)
 		blob.visible_message(span_danger("\The [blob] strikes at \the [atom_source] and flinches away!"),
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+			span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."))
 		blob.take_damage(100, BURN)
 	else
 		blob.visible_message(span_danger("\The [blob] strikes at \the [atom_source] and rapidly flashes to ash."),
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+			span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."))
 		consume(atom_source, blob)
 
 /datum/component/supermatter_crystal/proc/paw_hit(datum/source, mob/user, list/modifiers)
@@ -91,7 +91,7 @@
 	dust_mob(source, user, \
 	span_danger("[user] unwisely [murder] [atom_source], and [user.p_their()] body burns brilliantly before flashing into ash!"), \
 	span_userdanger("You unwisely touch [atom_source], and your vision glows brightly as your body crumbles to dust. Oops."), \
-	"simple animal attack")
+	"simples ataque animal")
 
 /datum/component/supermatter_crystal/proc/hulk_hit(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -190,7 +190,7 @@
 	if(user.dropItemToGround(item))
 		user.visible_message(span_danger("As [user] touches \the [atom_source] with \a [item], silence fills the room..."),\
 			span_userdanger("You touch \the [atom_source] with \the [item], and everything suddenly goes silent.</span>\n<span class='notice'>\The [item] flashes into dust as you flinch away from \the [atom_source]."),\
-			span_hear("Everything suddenly goes silent."))
+			span_hear("Tudo de repente se cala."))
 		user.investigate_log("has been attacked ([item]) by [key_name(user)]", INVESTIGATE_ENGINE)
 		consume(atom_source, item)
 		playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
@@ -225,10 +225,10 @@
 	if(isliving(hit_object))
 		hit_object.visible_message(span_danger("\The [hit_object] slams into \the [atom_source] inducing a resonance... [hit_object.p_their()] body starts to glow and burst into flames before flashing into dust!"),
 			span_userdanger("You slam into \the [atom_source] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\""),
-			span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+			span_hear("Você ouve um barulho extraterrestre enquanto uma onda de calor se lava sobre você."))
 	else if(isobj(hit_object) && !iseffect(hit_object))
 		hit_object.visible_message(span_danger("\The [hit_object] smacks into \the [atom_source] and rapidly flashes to ash."), null,
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+			span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."))
 	else
 		return
 
@@ -254,7 +254,7 @@
 		playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
 		poor_target.visible_message(span_danger("\The [atom_source] slams into \the [poor_target] out of nowhere inducing a resonance... [poor_target.p_their()] body starts to glow and burst into flames before flashing into dust!"),
 			span_userdanger("\The [atom_source] slams into you out of nowhere as your ears are filled with unearthly ringing. Your last thought is \"The fuck.\""),
-			span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+			span_hear("Você ouve um barulho extraterrestre enquanto uma onda de calor se lava sobre você."))
 
 	for(var/atom/movable/hit_object as anything in impacted_turf)
 		if(parent == hit_object)
@@ -266,7 +266,7 @@
 		consume(atom_source, hit_object)
 		playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
 		atom_source.visible_message(span_danger("\The [atom_source], smacks into the plating out of nowhere, reducing everything below to ash."), null,
-			span_hear("You hear a loud crack as you are washed with a wave of heat."))
+			span_hear("Você ouve um barulho alto enquanto é lavado com uma onda de calor."))
 
 /datum/component/supermatter_crystal/proc/dust_mob(datum/source, mob/living/nom, vis_msg, mob_msg, cause)
 	if(nom.incorporeal_move || HAS_TRAIT(nom, TRAIT_GODMODE)) //try to keep supermatter sliver's + hemostat's dust conditions in sync with this too
@@ -278,7 +278,7 @@
 		mob_msg = span_userdanger("You reach out and touch [atom_source]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"")
 	if(!cause)
 		cause = "contact"
-	nom.visible_message(vis_msg, mob_msg, span_hear("You hear an unearthly noise as a wave of heat washes over you."))
+	nom.visible_message(vis_msg, mob_msg, span_hear("Você ouve um barulho extraterrestre enquanto uma onda de calor se lava sobre você."))
 	atom_source.investigate_log("has been attacked ([cause]) by [key_name(nom)]", INVESTIGATE_ENGINE)
 	add_memory_in_range(atom_source, 7, /datum/memory/witness_supermatter_dusting, protagonist = nom, antagonist = atom_source)
 	playsound(get_turf(atom_source), 'sound/effects/supermatter.ogg', 50, TRUE)
@@ -310,7 +310,7 @@
 			notify_ghosts(
 				"[consumed_mob.real_name] has been dusted by [atom_source]!",
 				source = atom_source,
-				header = "Polytechnical Difficulties",
+				header = "Dificuldades Politécnicas",
 			)
 		consumed_mob.dust(force = TRUE)
 		matter_increase += 100 * object_size * 2
@@ -359,9 +359,9 @@
 			continue
 		if(near_mob in view())
 			near_mob.show_message(span_danger("As \the [atom_source] slowly stops resonating, you find your skin covered in new radiation burns."), MSG_VISUAL,
-				span_danger("The unearthly ringing subsides and you find your skin covered in new radiation burns."), MSG_AUDIBLE)
+				span_danger("O toque extraterrestre diminui e você encontra sua pele coberta de novas queimaduras de radiação."), MSG_AUDIBLE)
 		else
-			near_mob.show_message(span_hear("An unearthly ringing fills your ears, and you find your skin covered in new radiation burns."), MSG_AUDIBLE)
+			near_mob.show_message(span_hear("Um zumbido estranho enche seus ouvidos, e você encontra sua pele coberta de novas queimaduras de radiação."), MSG_AUDIBLE)
 	consume_returns(matter_increase, damage_increase)
 	var/obj/machinery/power/supermatter_crystal/our_crystal = parent
 	if(istype(our_crystal))

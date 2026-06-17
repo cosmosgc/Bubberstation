@@ -4,7 +4,7 @@
 //Comes with a handy lock to prevent them from running off.
 /obj/item/pet_carrier
 	name = "pet carrier"
-	desc = "A big white-and-blue pet carrier. Good for carrying <s>meat to the chef</s> cute animals around."
+	desc = "Um grande portador de animais de estimação branco e azul. Bom para carregar<s>carne para o chef</s>Animais bonitos por perto."
 	icon = 'icons/map_icons/items/_item.dmi'
 	icon_state = "/obj/item/pet_carrier"
 	post_init_icon_state = "pet_carrier_open"
@@ -69,7 +69,7 @@
 			var/mob/living/L = V
 			. += span_notice("It has [L] inside.")
 	else
-		. += span_notice("It has nothing inside.")
+		. += span_notice("Não tem nada dentro.")
 
 	// At some point these need to be converted to contextual screentips
 	. += span_notice("Activate it in your hand to [open ? "close" : "open"] its door. Click-drag onto floor to release its occupants.")
@@ -113,14 +113,14 @@
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
 			if(isfeline(H)) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
-				to_chat(user, span_warning("You'd need a lot of catnip and treats, plus maybe a laser pointer, for that to work."))
+				to_chat(user, span_warning("Precisaria de muito petisco e guloseimas, mais talvez um ponteiro laser, para isso funcionar."))
 			else
-				to_chat(user, span_warning("Humans, generally, do not fit into pet carriers."))
+				to_chat(user, span_warning("Humanos, geralmente, não se encaixam em portadores de animais."))
 		else
 			to_chat(user, span_warning("You get the feeling [target] isn't meant for a [name]."))
 		return ITEM_INTERACT_BLOCKING
 	if(user == target)
-		to_chat(user, span_warning("Why would you ever do that?"))
+		to_chat(user, span_warning("Por que faria isso?"))
 		return ITEM_INTERACT_BLOCKING
 	load_occupant(user, target)
 	return ITEM_INTERACT_SUCCESS
@@ -149,7 +149,7 @@
 		if(!do_after(user, rand(300, 400), target = user) || open || !locked || !(user in occupants))
 			return
 		loc.visible_message(span_warning("[user] flips the lock switch on [src] by reaching through!"), null, null, null, user)
-		to_chat(user, span_bolddanger("Bingo! The lock pops open!"))
+		to_chat(user, span_bolddanger("Bingo! A fechadura abre!"))
 		locked = FALSE
 		playsound(src, 'sound/machines/airlock/boltsup.ogg', 30, TRUE)
 		update_appearance()
@@ -225,7 +225,7 @@
 
 /obj/item/pet_carrier/biopod
 	name = "biopod"
-	desc = "Alien device used for undescribable purpose. Or carrying pets."
+	desc = "Dispositivo alienígena usado para propósito indescritível. Ou carregando animais de estimação."
 	icon = 'icons/obj/pet_carrier.dmi'
 	icon_state = "biopod_open"
 	post_init_icon_state = null
@@ -238,7 +238,7 @@
 
 /obj/item/pet_carrier/small
 	name = "small pet carrier"
-	desc = "A small pet carrier for miniature sized animals."
+	desc = "Um pequeno porta-animais para animais de tamanho miniatura."
 	icon = 'icons/obj/pet_carrier.dmi'
 	icon_state = "small_carrier_open"
 	post_init_icon_state = null
@@ -257,7 +257,7 @@
 
 /obj/item/pet_carrier/small/mouse
 	name = "small mouse carrier"
-	desc = "A small pet carrier for miniature sized animals. This looks prepared for a mouse."
+	desc = "Um pequeno porta-animais para animais de tamanho miniatura. Parece preparado para um rato."
 	icon_state = "small_carrier_occupied_unlocked"
 	open = FALSE
 

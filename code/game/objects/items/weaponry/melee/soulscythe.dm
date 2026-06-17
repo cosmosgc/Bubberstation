@@ -2,7 +2,7 @@
 
 /obj/item/soulscythe
 	name = "soulscythe"
-	desc = "An old relic of hell created by devils to establish themselves as the leadership of hell over the demons. It grows stronger while it possesses a powerful soul."
+	desc = "Uma velha relíquia do inferno criada pelos demônios para se estabelecerem como a liderança do inferno sobre os demônios. Fica mais forte enquanto possui uma alma poderosa."
 	icon = 'icons/obj/mining_zones/artefacts.dmi'
 	icon_state = "soulscythe"
 	inhand_icon_state = "soulscythe"
@@ -42,7 +42,7 @@
 
 /obj/item/soulscythe/examine(mob/user)
 	. = ..()
-	. += soul.ckey ? span_nicegreen("There is a soul inhabiting it.") : span_danger("It's dormant.")
+	. += soul.ckey ? span_nicegreen("Há uma alma habitando-a.") : span_danger("Está dormente.")
 
 /obj/item/soulscythe/attack(mob/living/attacked, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
@@ -69,10 +69,10 @@
 	if(using || soul.ckey || soul.stat)
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
-		balloon_alert(user, "you can't awaken the scythe!")
+		balloon_alert(user, "Você não pode acordar a foice!")
 		return
 	using = TRUE
-	balloon_alert(user, "you hold the scythe up...")
+	balloon_alert(user, "Você segura a foice...")
 	ADD_TRAIT(src, TRAIT_NODROP, type)
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
 		check_jobban = ROLE_PAI,
@@ -80,7 +80,7 @@
 		checked_target = src,
 		ignore_category = POLL_IGNORE_POSSESSED_BLADE,
 		alert_pic = src,
-		role_name_text = "soulscythe soul",
+		role_name_text = "almascythe alma",
 		chat_text_border_icon = src,
 	)
 	on_poll_concluded(user, chosen_one)
@@ -88,7 +88,7 @@
 /// Ghost poll has concluded and a candidate has been chosen.
 /obj/item/soulscythe/proc/on_poll_concluded(mob/living/master, mob/dead/observer/ghost)
 	if(isnull(ghost))
-		balloon_alert(master, "the scythe is dormant!")
+		balloon_alert(master, "A foice está dormente!")
 		REMOVE_TRAIT(src, TRAIT_NODROP, type)
 		using = FALSE
 		return
@@ -97,7 +97,7 @@
 	soul.copy_languages(master, LANGUAGE_MASTER) //Make sure the sword can understand and communicate with the master.
 	soul.set_allies(list("[REF(master)]"))
 	soul.set_faction(null)
-	balloon_alert(master, "the scythe glows")
+	balloon_alert(master, "A foice brilha")
 	add_overlay("soulscythe_gem")
 	density = TRUE
 	if(!ismob(loc))
@@ -110,7 +110,7 @@
 	if(!COOLDOWN_FINISHED(src, move_cooldown) || charging)
 		return
 	if(!isturf(loc))
-		balloon_alert(user, "resist out!")
+		balloon_alert(user, "Resista!")
 		COOLDOWN_START(src, move_cooldown, 1 SECONDS)
 		return
 	if(!use_blood(1, FALSE))
@@ -141,7 +141,7 @@
 /obj/item/soulscythe/proc/use_blood(amount = 0, message = TRUE)
 	if(amount > soul.get_blood_volume())
 		if(message)
-			to_chat(soul, span_warning("Not enough blood!"))
+			to_chat(soul, span_warning("Não há sangue suficiente!"))
 		return FALSE
 	soul.adjust_blood_volume(-amount)
 	return TRUE
@@ -159,11 +159,11 @@
 /obj/item/soulscythe/proc/break_out()
 	if(!use_blood(10))
 		return
-	balloon_alert(soul, "you resist...")
+	balloon_alert(soul, "Você resiste...")
 	if(!do_after(soul, 5 SECONDS, target = src, timed_action_flags = IGNORE_TARGET_LOC_CHANGE))
-		balloon_alert(soul, "interrupted!")
+		balloon_alert(soul, "Interrompido!")
 		return
-	balloon_alert(soul, "you break out")
+	balloon_alert(soul, "Você fugiu.")
 	if(ismob(loc))
 		var/mob/holder = loc
 		holder.temporarilyRemoveItemFromInventory(src)
@@ -229,9 +229,9 @@
 	animate(src)
 	charging = TRUE
 	visible_message(span_danger("[src] starts charging..."))
-	balloon_alert(soul, "you start charging...")
+	balloon_alert(soul, "Você começa a carregar...")
 	if(!do_after(soul, 2 SECONDS, target = src, timed_action_flags = IGNORE_TARGET_LOC_CHANGE))
-		balloon_alert(soul, "interrupted!")
+		balloon_alert(soul, "Interrompido!")
 		return
 	visible_message(span_danger("[src] charges at [attacked_atom]!"), span_notice("You charge at [attacked_atom]!"))
 	new /obj/effect/temp_visual/mook_dust(get_turf(src))

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/chuuni_invocations
 	name = "Chuuni Invocations"
-	desc = "Makes all your spells shout invocations, and the invocations become... stupid. You heal slightly after casting a spell."
+	desc = "Faz seus feitiços gritarem invocações, e as invocações se tornam... estúpidas. Você se cura ligeiramente depois de lançar um feitiço."
 	button_icon_state = "chuuni"
 
 	school = SCHOOL_FORBIDDEN
@@ -15,13 +15,13 @@
 /datum/action/cooldown/spell/chuuni_invocations/cast(mob/living/cast_on)
 	. = ..()
 
-	to_chat(cast_on, span_green("You focus your arcane knowledge into a slice-of-life format..."))
+	to_chat(cast_on, span_green("Você foca seu conhecimento arcano em um formato de corte de vida..."))
 	if(!do_after(cast_on, 5 SECONDS))
-		to_chat(cast_on, span_warning("Your focus is broken, and the episodic rom-com moments slowly fade."))
+		to_chat(cast_on, span_warning("Seu foco está quebrado, e os momentos episódicos da comédia se desvanecem lentamente."))
 		return
 
 	playsound(cast_on, 'sound/effects/bamf.ogg', 75, TRUE, 5)
-	to_chat(cast_on, span_danger("You feel your very essense binding to a slice-of-life format!"))
+	to_chat(cast_on, span_danger("Você sente sua ligação com uma fatia de vida!"))
 
 	cast_on.AddComponent(/datum/component/chuunibyou)
 
@@ -33,7 +33,7 @@
 			to_chat(human_cast_on, span_notice("Your [wizhat] transforms into an eyepatch."))
 			qdel(wizhat)
 		else
-			to_chat(human_cast_on, span_notice("An eyepatch pops into existence over one of your eyes."))
+			to_chat(human_cast_on, span_notice("Um eyepatch aparece sobre um de seus olhos."))
 		human_cast_on.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch/medical/chuuni(human_cast_on), ITEM_SLOT_EYES)
 
 	qdel(src)

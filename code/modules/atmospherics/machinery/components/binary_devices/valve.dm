@@ -7,7 +7,7 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 /obj/machinery/atmospherics/components/binary/valve
 	icon_state = "mvalve_map-3"
 	name = "manual valve"
-	desc = "A pipe with a valve that can be used to disable flow of gas through it."
+	desc = "Um tubo com uma válvula que pode ser usada para desativar o fluxo de gás através dele."
 	can_unwrench = TRUE
 	shift_underlay_only = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN //Intentionally no allow_silicon flag
@@ -79,7 +79,7 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	icon_state = "dvalve_map-3"
 
 	name = "digital valve"
-	desc = "A digitally controlled valve."
+	desc = "Uma válvula digitalmente controlada."
 	valve_type = DIGITAL_VALVE
 	pipe_state = "dvalve"
 
@@ -90,8 +90,8 @@ It's like a regular ol' straight pipe, but you can turn it on and off.
 	AddComponent(/datum/component/usb_port, typecacheof(list(/obj/item/circuit_component/digital_valve), only_root_path = TRUE))
 
 /obj/item/circuit_component/digital_valve
-	display_name = "Digital Valve"
-	desc = "The interface for communicating with a digital valve."
+	display_name = "Válvula Digital"
+	desc = "A interface para se comunicar com uma válvula digital."
 
 	var/obj/machinery/atmospherics/components/binary/valve/digital/attached_valve
 

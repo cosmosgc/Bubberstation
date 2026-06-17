@@ -1,7 +1,7 @@
 /// Syndicate troopers
 /mob/living/basic/trooper/syndicate
 	name = "Syndicate Operative"
-	desc = "Death to Nanotrasen."
+	desc = "Morte a Nanotrasen."
 	faction = list(ROLE_SYNDICATE)
 	corpse = /obj/effect/mob_spawn/corpse/human/syndicatesoldier
 	mob_spawner = /obj/effect/mob_spawn/corpse/human/syndicatesoldier
@@ -157,7 +157,7 @@
 ///Spawns from an emagged orion trail machine set to kill the player.
 /mob/living/basic/trooper/syndicate/ranged/smg/orion
 	name = "spaceport security"
-	desc = "Premier corporate security forces for all spaceports found along the Orion Trail."
+	desc = "Forças de segurança corporativas para todos os portos espaciais encontrados ao longo da Trilha de Orion."
 	faction = list(FACTION_ORION)
 	corpse = null
 
@@ -215,7 +215,7 @@
 
 /mob/living/basic/viscerator
 	name = "viscerator"
-	desc = "A small, twin-bladed machine capable of inflicting very deadly lacerations."
+	desc = "Uma pequena máquina de duas lâminas capaz de causar lacerações mortais."
 	icon_state = "viscerator_attack"
 	icon_living = "viscerator_attack"
 	density = FALSE
@@ -245,7 +245,7 @@
 	speak_emote = list("states")
 	bubble_icon = "syndibot"
 	gold_core_spawnable = HOSTILE_SPAWN
-	death_message = "is smashed into pieces!"
+	death_message = "é esmagado em pedaços!"
 	ai_controller = /datum/ai_controller/basic_controller/trooper/viscerator
 
 /mob/living/basic/viscerator/Initialize(mapload)

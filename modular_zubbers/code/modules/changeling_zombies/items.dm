@@ -25,7 +25,7 @@
 /obj/item/melee/arm_blade/changeling_zombie/examine(mob/user)
 	. = ..()
 	if(blood_chance <= 0)
-		. += span_warning("This variant is non-infectious.")
+		. += span_warning("Esta variante não é infecciosa.")
 	else
 		. += span_warning("Has a [blood_chance]% chance to infect when drawing blood on hit, with a [CHANGELING_ZOMBIE_REINFECT_DELAY/10] second cooldown.")
 
@@ -45,7 +45,7 @@
 	if(!prob(blood_chance))
 		return
 	if(!can_become_changeling_zombie(target_mob))
-		target_mob.balloon_alert(user, "cannot infect")
+		target_mob.balloon_alert(user, "Não pode infectar")
 		return
 	var/mob/living/carbon/human/host = target_mob
 	var/datum/component/changeling_zombie_infection/infection = host.AddComponent(/datum/component/changeling_zombie_infection)

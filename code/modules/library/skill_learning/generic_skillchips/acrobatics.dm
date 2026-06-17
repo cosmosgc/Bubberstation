@@ -1,12 +1,12 @@
 /obj/item/skillchip/acrobatics
 	name = "old F058UR7 skillchip"
-	desc = "A formerly cutting-edge skillchip that granted the user an advanced, Olympian-level degree of kinesthesics for flipping, spinning, and absolutely nothing else. \
-		It was pulled off the markets shortly after release due to users damaging the chip's integrity from excessive acrobatics, causing deadly malfunctions. It really puts the 'flop' in 'Fosbury Flop'!"
+	desc = "Um antigo chip de habilidade de ponta que concedeu ao usuário um grau avançado, nível olímpico de cinestésicos para virar, girar, e absolutamente nada mais.\
+Foi retirado do mercado pouco depois da liberação devido aos usuários danificando a integridade do chip por excesso de acrobacias, causando falhas mortais. Ele realmente coloca o 'flop' em 'Fosbury Flop'!"
 	skill_name = "Spinesthetics"
-	skill_description = "Allows you to flip and spin at an illegal and dangerous rate."
+	skill_description = "Permite virar e girar a um ritmo ilegal e perigoso."
 	skill_icon = FA_ICON_WHEELCHAIR_ALT
-	activate_message = span_notice("You suddenly have an extremely advanced and complex sense of how to spin and flip with grace.")
-	deactivate_message = span_notice("Your divine grasp of Spinesthesics disappears entirely.")
+	activate_message = span_notice("Você de repente tem um senso extremamente avançado e complexo de como girar e virar com graça.")
+	deactivate_message = span_notice("Sua compreensão divina da Spinesthesics desaparece completamente.")
 	custom_premium_price = PAYCHECK_CREW * 4
 	/// set integrity to 1 when mapping for !!FUN!!
 	max_integrity = 100
@@ -63,9 +63,9 @@
 			// WITNESS THE GORE
 			for(var/mob/living/splashed in view(2, bozo))
 				if(bozo.has_status_effect(/datum/status_effect/grouped/blindness))
-					to_chat(splashed, span_userdanger("You're splashed with something"))
+					to_chat(splashed, span_userdanger("Você está com alguma coisa."))
 				else
-					to_chat(splashed, span_userdanger("You are blinded by a shower of blood!"))
+					to_chat(splashed, span_userdanger("Você está cego por uma chuva de sangue!"))
 				splashed.Stun(1 SECONDS)
 				splashed.Knockdown(2 SECONDS)
 				splashed.set_eye_blur_if_lower(15 SECONDS)
@@ -93,7 +93,7 @@
 		if(7 to 9)
 			bozo.visible_message(
 				span_danger("[bozo] seems to short circuit!"),
-				span_userdanger("Your brain short circuits!"),
+				span_userdanger("Seu cérebro curto-circuitos!"),
 			)
 			// if they're susceptible to electrocution, confuse them
 			if(bozo.electrocute_act(15, bozo, 1, SHOCK_NOGLOVES|SHOCK_NOSTUN))
@@ -113,7 +113,7 @@
 				bozo.ignite_mob()
 				bozo.visible_message(
 					span_danger("[bozo]'s head lights up!"),
-					span_userdanger("Your head hurts so much, it feels like it's on fire!"),
+					span_userdanger("Sua cabeça dói tanto que parece que está pegando fogo!"),
 				)
 				ASYNC
 					bozo.emote("scream")
@@ -123,7 +123,7 @@
 			else
 				bozo.visible_message(
 					span_danger("[bozo]'s head starts smoking!"),
-					span_userdanger("Your brain feels like it's on fire!"),
+					span_userdanger("Seu cérebro parece estar pegando fogo!"),
 				)
 
 				// increase smokiness if already smoking
@@ -160,12 +160,12 @@
 
 /obj/item/skillchip/acrobatics/kiss
 	name = "prototype N. 807 - K1SS skillchip"
-	desc = "An idle experiment when developing skillchips led to this catastrophe. Everyone involved swore to keep it a secret until death, but it looks like someone has let loose this mistake into the world."
+	desc = "Uma experiência ociosa quando o desenvolvimento de chips de habilidade levou a esta catástrofe. Todos os envolvidos juraram manter segredo até a morte, mas parece que alguém soltou esse erro no mundo."
 	skill_name = "ERROERERROROROEROEORROER"
-	skill_description = "NULL DESCRIPTION NOT FOUND"
+	skill_description = "DESCRIÇÃO NULL NÃO ENCONTRADA"
 	skill_icon = FA_ICON_KISS_BEAM
-	activate_message = span_userdanger("This was a mistake.")
-	deactivate_message = span_userdanger("The mistake is over.")
+	activate_message = span_userdanger("Isso foi um erro.")
+	deactivate_message = span_userdanger("O erro acabou.")
 	custom_premium_price = PAYCHECK_CREW * 500
 	max_integrity = 25
 	affected_emotes = list("kiss")

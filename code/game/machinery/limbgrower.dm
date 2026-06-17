@@ -2,7 +2,7 @@
 /// See [limbgrower_designs.dm] for everything we can make.
 /obj/machinery/limbgrower
 	name = "limb grower"
-	desc = "It grows new limbs using Synthflesh."
+	desc = "Cresce novos membros usando Synthflesh."
 	icon = 'icons/obj/machines/limbgrower.dmi'
 	icon_state = "limbgrower_idleoff"
 	base_icon_state = "limbgrower"
@@ -61,7 +61,7 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	update_static_data(user)
-	balloon_alert(user, "illegal limb production enabled")
+	balloon_alert(user, "Produção ilegal de membros permitida")
 	return TRUE
 
 /obj/machinery/limbgrower/ui_interact(mob/user, datum/tgui/ui)
@@ -152,7 +152,7 @@
 	if(istype(tool, /obj/item/disk/design_disk/limbs))
 		user.visible_message(span_notice("[user] begins to load \the [tool] in \the [src]..."),
 			span_notice("You begin to load designs from \the [tool]..."),
-			span_hear("You hear the clatter of a floppy drive."))
+			span_hear("Você ouve o barulho de um drive flexível."))
 		busy = TRUE
 		var/obj/item/disk/design_disk/limbs/limb_design_disk = tool
 		if(do_after(user, 2 SECONDS, target = src))
@@ -321,7 +321,7 @@
 /obj/machinery/limbgrower/proc/check_busy(mob/user)
 	. = busy
 	if(.)
-		to_chat(user, span_warning("The limb grower is busy. Please wait for completion of previous operation."))
+		to_chat(user, span_warning("O produtor de membros está ocupado. Por favor, aguarde a conclusão da operação anterior."))
 
 /*
  * Checks our reagent list to see if a design can be built.
@@ -337,7 +337,7 @@
 	return TRUE
 
 /obj/machinery/limbgrower/fullupgrade //Inherently cheaper organ production. This is to NEVER be inherently emagged, no valids.
-	desc = "It grows new limbs using Synthflesh. This alien model seems more efficient."
+	desc = "Cresce novos membros usando Synthflesh. Este modelo alienígena parece mais eficiente."
 	circuit = /obj/item/circuitboard/machine/limbgrower/fullupgrade
 
 /obj/machinery/limbgrower/fullupgrade/Initialize(mapload)

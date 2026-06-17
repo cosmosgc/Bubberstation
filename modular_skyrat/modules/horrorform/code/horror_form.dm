@@ -1,6 +1,6 @@
 /datum/action/changeling/horror_form //Horror Form: turns the changeling into a terrifying abomination
 	name = "Horror Form"
-	desc = "We tear apart our human disguise, revealing our true form."
+	desc = "Rasgamos nosso disfarce humano, revelando nossa verdadeira forma."
 	helptext = "We will become an unstoppable force of destruction. If we die in this form, we will reach equilibrium and explode into a shower of gore! We require the absorption of at least one other human, and 15 extracts of DNA."
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	button_icon_state = "horror_form"
@@ -20,19 +20,19 @@
 
 	user.visible_message(
 		span_warning("[user] writhes and contorts, their body expanding to inhuman proportions!"), \
-		span_danger("We begin our transformation to our true form!")
+		span_danger("Começamos nossa transformação em nossa verdadeira forma!")
 	)
 
 	if(!do_after(user, 3 SECONDS, target = user, timed_action_flags = IGNORE_HELD_ITEM))
 		user.visible_message(
 			span_warning("[user]'s transformation abruptly reverts itself!"), \
-			span_warning("Our transformation has been interrupted!")
+			span_warning("Nossa transformação foi interrompida!")
 		)
 		return FALSE
 
 	user.visible_message(
 		span_warning("[user] grows into an abomination and lets out an awful scream!"), \
-		span_userdanger("We cast off our petty shell and enter our true form!")
+		span_userdanger("Tiramos nossa concha e entramos em nossa verdadeira forma!")
 	)
 
 	if(user.handcuffed)

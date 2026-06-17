@@ -30,7 +30,7 @@
 
 /obj/structure/guillotine
 	name = "guillotine"
-	desc = "A large structure used to remove the heads of traitors and treasonists."
+	desc = "Uma grande estrutura usada para remover as cabeças de traidores e traidores."
 	icon = 'icons/obj/guillotine.dmi'
 	icon_state = "guillotine_raised"
 	icon_preview = 'icons/obj/fluff/previews.dmi'
@@ -65,16 +65,16 @@
 
 /obj/structure/guillotine/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/sheet/plasteel))
-		to_chat(user, span_notice("You start repairing the guillotine with the plasteel..."))
+		to_chat(user, span_notice("Você começa a consertar a guilhotina com o plasteel..."))
 		if(blade_sharpness<10)
 			if(do_after(user,100,target=user))
 				blade_sharpness = min(10,blade_sharpness+3)
 				I.use(1)
-				to_chat(user, span_notice("You repair the guillotine with the plasteel."))
+				to_chat(user, span_notice("Você conserta a guilhotina com o plasteel."))
 			else
-				to_chat(user, span_notice("You stop repairing the guillotine with the plasteel."))
+				to_chat(user, span_notice("Pare de consertar a guilhotina com o plasteel."))
 		else
-			to_chat(user, span_warning("The guillotine is already fully repaired!"))
+			to_chat(user, span_warning("A guilhotina já está totalmente consertada!"))
 
 /obj/structure/guillotine/examine(mob/user)
 	. = ..()
@@ -94,7 +94,7 @@
 	. += span_notice(msg)
 
 	if (LAZYLEN(buckled_mobs))
-		. += span_notice("Someone appears to be strapped in. You can help them out, or you can harm them by activating the guillotine.")
+		. += span_notice("Parece que alguém está amarrado. Você pode ajudá-los, ou pode machucá-los ativando a guilhotina.")
 
 /obj/structure/guillotine/attack_hand(mob/living/user, list/modifiers)
 	add_fingerprint(user)
@@ -115,7 +115,7 @@
 			if (LAZYLEN(buckled_mobs))
 				if (user.combat_mode)
 					user.visible_message(span_warning("[user] begins to pull the lever!"),
-						                 span_warning("You begin to the pull the lever."))
+						                 span_warning("Você começa a puxar a alavanca."))
 					current_action = GUILLOTINE_ACTION_INUSE
 
 					if (do_after(user, GUILLOTINE_ACTIVATE_DELAY, target = src) && blade_status == GUILLOTINE_BLADE_RAISED)
@@ -201,7 +201,7 @@
 				if(do_after(user, 0.7 SECONDS, target = src))
 					blade_status = GUILLOTINE_BLADE_RAISED
 					user.visible_message(span_notice("[user] sharpens the large blade of the guillotine."),
-						                 span_notice("You sharpen the large blade of the guillotine."))
+						                 span_notice("Você afia a grande lâmina da guilhotina."))
 					blade_sharpness += 1
 					playsound(src, 'sound/items/unsheath.ogg', 100, TRUE)
 					return
@@ -209,10 +209,10 @@
 					blade_status = GUILLOTINE_BLADE_RAISED
 					return
 			else
-				to_chat(user, span_warning("The blade is sharp enough!"))
+				to_chat(user, span_warning("A lâmina está afiada o suficiente!"))
 				return
 		else
-			to_chat(user, span_warning("You need to raise the blade in order to sharpen it!"))
+			to_chat(user, span_warning("Você precisa levantar a lâmina para afiá-la!"))
 			return
 	else
 		return ..()
@@ -227,7 +227,7 @@
 		return FALSE // Can't decapitate non-humans
 
 	if (blade_status != GUILLOTINE_BLADE_RAISED)
-		to_chat(usr, span_warning("You need to raise the blade before buckling someone in!"))
+		to_chat(usr, span_warning("Você precisa levantar a lâmina antes de encurvar alguém!"))
 		return FALSE
 
 	return ..(M, user, check_loc = FALSE) //check_loc = FALSE to allow moving people in from adjacent turfs
@@ -267,7 +267,7 @@
 /obj/structure/guillotine/can_be_unfasten_wrench(mob/user, silent)
 	if (LAZYLEN(buckled_mobs))
 		if (!silent)
-			to_chat(user, span_warning("Can't unfasten, someone's strapped in!"))
+			to_chat(user, span_warning("Não pode soltar, alguém está amarrado!"))
 		return FAILED_UNFASTEN
 
 	if (current_action && current_action != GUILLOTINE_ACTION_WRENCH)

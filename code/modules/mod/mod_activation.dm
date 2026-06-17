@@ -53,7 +53,7 @@
 	var/deploy = check_retracted()
 	wearer.visible_message(span_notice("[wearer]'s [src] [deploy ? "deploys" : "retracts"] its parts with a mechanical hiss."),
 		span_notice("[src] [deploy ? "deploys" : "retracts"] its parts with a mechanical hiss."),
-		span_hear("You hear a mechanical hiss."))
+		span_hear("Você ouve um assobio mecânico."))
 	playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	for(var/obj/item/part as anything in get_parts())
 		if(deploy && part.loc == src)
@@ -75,7 +75,7 @@
 	if(part.loc != src)
 		if(!user)
 			return FALSE
-		balloon_alert(user, "already deployed!")
+		balloon_alert(user, "Já está pronto!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	if(part_datum.can_overslot)
 		var/obj/item/overslot = wearer.get_item_by_slot(part.slot_flags)
@@ -90,7 +90,7 @@
 		if(user)
 			wearer.visible_message(span_notice("[wearer]'s [part.name] deploy[part.p_s()] with a mechanical hiss."),
 				span_notice("[part] deploy[part.p_s()] with a mechanical hiss."),
-				span_hear("You hear a mechanical hiss."))
+				span_hear("Você ouve um assobio mecânico."))
 			playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(!active || part_datum.sealed)
 			return TRUE
@@ -99,7 +99,7 @@
 			return TRUE
 		else if(delayed_seal_part(part))
 			return TRUE
-		balloon_alert(user, "can't seal, retracting!")
+		balloon_alert(user, "Não pode selar, retrair!")
 		retract(user, part, instant = TRUE)
 	else
 		if(part_datum.overslotting)
@@ -108,7 +108,7 @@
 				wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
 		if(!user)
 			return FALSE
-		balloon_alert(user, "bodypart clothed!")
+		balloon_alert(user, "Parte do corpo vestida!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return FALSE
 
@@ -118,7 +118,7 @@
 	if(part.loc == src)
 		if(!user)
 			return FALSE
-		balloon_alert(user, "already retracted!")
+		balloon_alert(user, "Já retraído!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOD_PART_RETRACTING, user, part_datum) & MOD_CANCEL_RETRACTION)
@@ -129,7 +129,7 @@
 		if(instant)
 			seal_part(part, is_sealed = FALSE)
 		else if(!delayed_seal_part(part))
-			balloon_alert(user, "can't unseal!")
+			balloon_alert(user, "Não consigo abrir!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 	REMOVE_TRAIT(part, TRAIT_NODROP, MOD_TRAIT)
@@ -143,7 +143,7 @@
 		return TRUE
 	wearer.visible_message(span_notice("[wearer]'s [part.name] retract[part.p_s()] back into [src] with a mechanical hiss."),
 		span_notice("[part] retract[part.p_s()] back into [src] with a mechanical hiss."),
-		span_hear("You hear a mechanical hiss."))
+		span_hear("Você ouve um assobio mecânico."))
 	if (!unsealing)
 		playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return TRUE
@@ -152,22 +152,22 @@
 /obj/item/mod/control/proc/toggle_activate(mob/user, force_deactivate = FALSE)
 	if(!wearer)
 		if(!force_deactivate)
-			balloon_alert(user, "not equipped!")
+			balloon_alert(user, "Não está equipado!")
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(!force_deactivate && (SEND_SIGNAL(src, COMSIG_MOD_ACTIVATE, user) & MOD_CANCEL_ACTIVATE))
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(locked && !active && !allowed(user) && !force_deactivate)
-		balloon_alert(user, "access insufficient!")
+		balloon_alert(user, "Acessível!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(!get_charge() && !force_deactivate)
-		balloon_alert(user, "no power source!")
+		balloon_alert(user, "Sem fonte de energia!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(open && !force_deactivate)
-		balloon_alert(user, "panel open!")
+		balloon_alert(user, "Painel Alberto!")
 		playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(activating)
@@ -187,7 +187,7 @@
 	if(original_active_status)
 		if(delayed_activation())
 			playsound(src, 'sound/machines/synth/synth_no.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, frequency = 6000)
-			to_chat(wearer, span_notice("Control unit offline. Module capability removed."))
+			to_chat(wearer, span_notice("Unidade de controle desligada. Capacidade do módulo removida."))
 		else
 			activating = FALSE
 			return
@@ -203,7 +203,7 @@
 				seal_part(sealed_part, is_sealed = !get_part_datum(sealed_part).sealed)
 			if(original_active_status)
 				control_activation(is_on = TRUE)
-			to_chat(wearer, span_notice("Critical error in sealing systems. Reverting process."))
+			to_chat(wearer, span_notice("Erro crítico nos sistemas de vedação. Revertendo processo."))
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return
 		sealed_parts += part
@@ -217,7 +217,7 @@
 			activating = FALSE
 			for(var/obj/item/sealed_part as anything in sealed_parts)
 				seal_part(sealed_part, is_sealed = !get_part_datum(sealed_part).sealed)
-			to_chat(wearer, span_notice("Critical error in sealing systems. Reverting process."))
+			to_chat(wearer, span_notice("Erro crítico nos sistemas de vedação. Revertendo processo."))
 			playsound(src, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return
 

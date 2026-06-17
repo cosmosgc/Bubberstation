@@ -1,7 +1,7 @@
 //Pillow and pillow related items
 /obj/item/pillow
 	name = "pillow"
-	desc = "A soft and fluffy pillow. You can smack someone with this!"
+	desc = "Um travesseiro macio e fofo. Você pode bater em alguém com isso!"
 	icon = 'icons/obj/bed.dmi'
 	icon_state = "pillow_1_t"
 	inhand_icon_state = "pillow_t"
@@ -76,24 +76,24 @@
 /obj/item/pillow/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
 	if(!bricked && istype(attacking_item, /obj/item/stack/sheet/mineral/sandstone))
 		var/obj/item/stack/sheet/mineral/sandstone/brick = attacking_item
-		balloon_alert(user, "inserting brick...")
+		balloon_alert(user, "Inserindo tijolo...")
 		if(!do_after(user, 2 SECONDS, src))
 			return
 		if(!brick.use(1))
-			balloon_alert(user, "not enough bricks!")
+			balloon_alert(user, "Não há tijolos suficientes!")
 			return
-		balloon_alert(user, "bricked!")
+		balloon_alert(user, "Bloqueado!")
 		become_bricked()
 		return
 	if(istype(attacking_item, /obj/item/clothing/neck/pillow_tag))
 		if(!pillow_trophy)
 			user.transferItemToLoc(attacking_item, src)
 			pillow_trophy = attacking_item
-			balloon_alert(user, "honor reclaimed!")
+			balloon_alert(user, "Honra recuperada!")
 			update_appearance()
 			return
 		else
-			balloon_alert(user, "tag is intact.")
+			balloon_alert(user, "A etiqueta está intacta.")
 			return
 	return ..()
 
@@ -102,22 +102,22 @@
 	if(bricked)
 		. += span_info("[p_They()] feel[p_s()] unnaturally heavy.")
 	if(pillow_trophy)
-		. += span_notice("Alt-click to remove the tag!")
+		. += span_notice("Alt-click para remover a etiqueta!")
 
 /obj/item/pillow/click_alt(mob/user)
 	if(!user.can_hold_items(src))
 		return CLICK_ACTION_BLOCKING
 	if(!pillow_trophy)
-		balloon_alert(user, "no tag!")
+		balloon_alert(user, "Sem etiqueta!")
 		return CLICK_ACTION_BLOCKING
-	balloon_alert(user, "removing tag...")
+	balloon_alert(user, "removendo etiqueta...")
 	if(!do_after(user, 2 SECONDS, src))
 		return CLICK_ACTION_BLOCKING
 	if(last_fighter)
 		pillow_trophy.desc = "A pillow tag taken from [last_fighter] after a gruesome pillow fight."
 	user.put_in_hands(pillow_trophy)
 	pillow_trophy = null
-	balloon_alert(user, "tag removed")
+	balloon_alert(user, "Tag removida")
 	playsound(user,'sound/items/poster/poster_ripped.ogg', 50)
 	update_appearance()
 	return CLICK_ACTION_SUCCESS
@@ -129,7 +129,7 @@
 		icon_state = "pillow_[variation]"
 		inhand_icon_state = "pillow_no_t"
 	else
-		desc = "A soft and fluffy pillow. You can smack someone with this!"
+		desc = "Um travesseiro macio e fofo. Você pode bater em alguém com isso!"
 		icon_state = "pillow_[variation]_t"
 		inhand_icon_state = "pillow_t"
 
@@ -150,7 +150,7 @@
 		if(!do_after(user, 1 SECONDS, victim))
 			break
 		victim.losebreath += 1
-	victim.visible_message("[victim] manages to escape being smothered!", span_notice("You break free!"), vision_distance = COMBAT_MESSAGE_RANGE)
+	victim.visible_message("[victim] manages to escape being smothered!", span_notice("Você está livre!"), vision_distance = COMBAT_MESSAGE_RANGE)
 
 /obj/item/pillow/random
 
@@ -164,7 +164,7 @@
 
 /obj/item/clothing/suit/pillow_suit
 	name = "pillow suit"
-	desc = "Part man, part pillow. All CARNAGE!"
+	desc = "Parte homem, parte travesseiro. Todos carnage!"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|FEET
 	cold_protection = CHEST|GROIN|ARMS|LEGS //a pillow suit must be hella warm
 	allowed = list(/obj/item/pillow) //moar pillow carnage
@@ -189,7 +189,7 @@
 
 /obj/item/clothing/head/pillow_hood
 	name = "pillow hood"
-	desc = "The final piece of the pillow juggernaut"
+	desc = "O último pedaço da almofada juggernaut"
 	body_parts_covered = HEAD
 	icon = 'icons/obj/bed.dmi'
 	worn_icon = 'icons/mob/clothing/suits/pillow.dmi'
@@ -204,7 +204,7 @@
 
 /obj/item/clothing/neck/pillow_tag
 	name = "pillow tag"
-	desc = "A price tag for the pillow. It appears to have space to fill names in."
+	desc = "Um preço para o travesseiro. Parece ter espaço para preencher nomes."
 	icon = 'icons/obj/bed.dmi'
 	icon_state = "pillow_tag"
 	worn_icon = 'icons/mob/clothing/neck.dmi'
@@ -213,12 +213,12 @@
 
 /obj/item/pillow/clown
 	name = "clown pillow"
-	desc = "Daww look at that little clown!"
+	desc = "Olhe para aquele palhaço!"
 	icon_state = "pillow_5_t"
 	variation = 5
 
 /obj/item/pillow/mime
 	name = "mime pillow"
-	desc = "Daww look at that little mime!"
+	desc = "Olhe para aquele mímico!"
 	icon_state = "pillow_6_t"
 	variation = 6

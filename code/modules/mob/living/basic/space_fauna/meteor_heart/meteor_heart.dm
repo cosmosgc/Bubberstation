@@ -6,7 +6,7 @@
 
 /mob/living/basic/meteor_heart
 	name = "meteor heart"
-	desc = "A pulsing lump of flesh and bone growing directly out of the ground."
+	desc = "Um pedaço pulsante de carne e osso crescendo diretamente do solo."
 	icon = 'icons/mob/simple/meteor_heart.dmi'
 	icon_state = "heart"
 	icon_living = "heart"
@@ -90,7 +90,7 @@
 	name = "meteor heart"
 	icon = 'icons/mob/simple/meteor_heart.dmi'
 	icon_state = "heart_dying"
-	desc = "You've killed this innocent asteroid, I hope you feel happy."
+	desc = "Você matou este asteróide inocente, espero que se sinta feliz."
 	duration = 3 SECONDS
 	/// Looping heartbeat sound
 	var/datum/looping_sound/heartbeat/soundloop

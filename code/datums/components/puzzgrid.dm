@@ -300,7 +300,7 @@ ADMIN_VERB(validate_puzzgrids, R_DEBUG, "Validate Puzzgrid Config", "Validate th
 		if (populate_result != TRUE)
 			to_chat(user, span_warning("Line [line_number] in puzzgrids.txt is not formatted correctly: [populate_result]"))
 
-	to_chat(user, span_notice("Validated. If you did not see any errors, you're in the clear."))
+	to_chat(user, span_notice("Validado. Se não viu nenhum erro, está limpo."))
 
 #undef PUZZGRID_CONFIG
 #undef PUZZGRID_GROUP_COUNT

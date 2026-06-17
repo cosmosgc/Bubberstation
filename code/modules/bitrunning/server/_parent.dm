@@ -6,7 +6,7 @@
 
 	circuit = /obj/item/circuitboard/machine/quantum_server
 	density = TRUE
-	desc = "A hulking computational machine designed to fabricate virtual domains."
+	desc = "Uma máquina computacional projetada para fabricar domínios virtuais."
 	icon = 'icons/obj/machines/bitrunning.dmi'
 	base_icon_state = "qserver"
 	icon_state = "qserver"
@@ -88,7 +88,7 @@
 /obj/machinery/quantum_server/examine(mob/user)
 	. = ..()
 
-	. += span_infoplain("Can be resource intensive to run. Ensure adequate power supply.")
+	. += span_infoplain("Pode ser um recurso intensivo para correr. Certifique-se de fornecimento de energia adequado.")
 
 	. += span_notice("Its maintenance panel can be [EXAMINE_HINT("screwed")] [panel_open ? "close" : "open"].")
 	if(panel_open)
@@ -105,13 +105,13 @@
 		upgraded = TRUE
 
 	if(!upgraded)
-		. += span_notice("Its output is suboptimal. Improved components will grant domain information, reduce cooldowns and increase rewards.")
+		. += span_notice("Sua saída é subótima. Componentes melhorados darão informações de domínio, reduzirão o resfriamento e aumentarão as recompensas.")
 
 	if(!is_ready)
-		. += span_notice("It is currently cooling down. Give it a few moments.")
+		. += span_notice("Está esfriando. Espere um pouco.")
 
 	if(isobserver(user) && (obj_flags & EMAGGED))
-		. += span_notice("Ominous warning lights are blinking red. This server has been tampered with.")
+		. += span_notice("As luzes de aviso estão piscando vermelho. Este servidor foi adulterado.")
 
 
 /obj/machinery/quantum_server/emag_act(mob/user, obj/item/card/emag/emag_card)
@@ -125,7 +125,7 @@
 	threat_prob_max *= 2
 
 	add_overlay(mutable_appearance('icons/obj/machines/bitrunning.dmi', "emag_overlay"))
-	balloon_alert(user, "system jailbroken...")
+	balloon_alert(user, "Sistema de cadeia quebrado...")
 	playsound(src, 'sound/effects/sparks/sparks1.ogg', 35, vary = TRUE)
 
 
@@ -154,7 +154,7 @@
 	if(!istype(tool, /obj/item/bitrunning_debug))
 		return NONE
 
-	balloon_alert(user, "*hacker voice* i'm in")
+	balloon_alert(user, "Estou dentro")
 	obj_flags |= EMAGGED
 	glitch_chance = 0.5
 	capacitor_coefficient = 0.1
@@ -163,16 +163,16 @@
 
 /obj/machinery/quantum_server/crowbar_act(mob/living/user, obj/item/crowbar)
 	if(!is_ready)
-		balloon_alert(user, "it's scalding hot!")
+		balloon_alert(user, "Está quente!")
 		return ITEM_INTERACT_FAILURE
 	if(length(avatar_connection_refs))
-		balloon_alert(user, "all clients must disconnect!")
+		balloon_alert(user, "Todos os clientes devem se desconectar!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_crowbar(user, crowbar)
 
 /obj/machinery/quantum_server/screwdriver_act(mob/living/user, obj/item/screwdriver)
 	if(!is_ready)
-		balloon_alert(user, "it's scalding hot!")
+		balloon_alert(user, "Está quente!")
 		return ITEM_INTERACT_FAILURE
 	return default_deconstruction_screwdriver(user, screwdriver)
 

@@ -1,6 +1,6 @@
 /obj/item/nullrod/papal_staff
 	name = "papal staff"
-	desc = "A staff used by traditional bishops and popes."
+	desc = "Uma equipe usada por bispos e papas tradicionais."
 	icon = 'modular_zubbers/icons/obj/items_and_weapons.dmi'
 	icon_state = "papal_staff"
 	inhand_icon_state = "papal_staff"
@@ -14,14 +14,14 @@
 
 /obj/item/clothing/head/mitre
 	name = "papal mitre"
-	desc = "A traditional headdress, worn by bishops and popes in traditional Christianity"
+	desc = "Um headdress tradicional, usado por bispos e papas no cristianismo tradicional"
 	icon = 'modular_zubbers/icons/mob/clothing/hats.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/32x48_head.dmi'
 	icon_state = "mitre"
 
 /obj/item/clothing/suit/chaplainsuit/armor/papal
 	name = "papal robe"
-	desc = "A short cape over a cassock, worn by bishops and popes in traditional Christianity"
+	desc = "Uma capa curta sobre uma batina, usada por bispos e papas no cristianismo tradicional."
 	icon = 'modular_zubbers/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_zubbers/icons/mob/clothing/suits.dmi'
 	icon_state = "papalrobe"
@@ -50,7 +50,7 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	name = "divine lightblade"
-	desc = "A giant blade of bright and holy light, said to cut down the wicked with ease."
+	desc = "Uma lâmina gigante de luz brilhante e santa, disse para cortar os ímpios com facilidade."
 	obj_flags = UNIQUE_RENAME
 	slot_flags = ITEM_SLOT_BELT
 	item_flags = NO_BLOOD_ON_ITEM | SLOWS_WHILE_IN_HAND | IMMUTABLE_SLOW
@@ -138,9 +138,9 @@ means that you'll be forced to move carefully while it's on. Fits in pockets, an
 	if(!user.can_perform_action(src, SILENT_ADJACENCY) || hacked)
 		return
 	if(user.incapacitated || !istype(user))
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(user, "<span class='warning'>Não pode fazer isso agora!</span>")
 		return
-	if(alert("Are you sure you want to recolor your blade?", "Confirm Repaint", "Yes", "No") == "Yes")
+	if(alert("Tem certeza que quer recolorir sua lâmina?", "Confirmar Repaint", "Yes", "No") == "Yes")
 		var/energy_color_input = tgui_color_picker(usr,"","Choose Energy Color",light_color) // BUBBERSTATION EDIT: TGUI COLOR PICKER
 		if(!energy_color_input || !user.can_perform_action(src, SILENT_ADJACENCY) || hacked)
 			return

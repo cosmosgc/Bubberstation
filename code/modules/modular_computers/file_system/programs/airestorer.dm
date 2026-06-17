@@ -3,7 +3,7 @@
 	filedesc = "AI Manager & Restorer"
 	downloader_category = PROGRAM_CATEGORY_SCIENCE
 	program_open_overlay = "generic"
-	extended_desc = "Firmware Restoration Kit, capable of reconstructing damaged AI systems. Requires direct AI connection via intellicard slot."
+	extended_desc = "Firmware Restauration Kit, capaz de reconstruir sistemas de IA danificados. Requer conexão direta com IA através de um slot intellicard."
 	size = 12
 	can_run_on_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
 	download_access = list(ACCESS_RD)
@@ -25,7 +25,7 @@
 		examine_text += "It has a slot installed for an intelliCard which contains: [stored_card.name]"
 	else
 		examine_text += "It has a slot installed for an intelliCard, which appears to be occupied."
-	examine_text += span_info("Alt-click to eject the intelliCard.")
+	examine_text += span_info("Alt-clique para ejetar o cartão intelli.")
 	return examine_text
 
 /datum/computer_file/program/ai_restorer/kill_program(mob/user)
@@ -82,7 +82,7 @@
 
 	if(restoring && !forced)
 		if(user)
-			to_chat(user, span_warning("Safeties prevent you from removing the card until reconstruction is complete..."))
+			to_chat(user, span_warning("Seguranças impedem que você remova o cartão até que a reconstrução esteja completa..."))
 		return FALSE
 
 	if(user && computer.Adjacent(user))

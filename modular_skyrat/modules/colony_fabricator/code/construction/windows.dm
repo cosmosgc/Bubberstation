@@ -1,6 +1,6 @@
 /obj/structure/window/fulltile/colony_fabricator
 	name = "prefabricated window"
-	desc = "A conservatively built metal frame with a thick sheet of space-grade glass slotted into it."
+	desc = "Um quadro de metal construído conservadoramente com uma grossa folha de vidro espacial cravado nele."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/prefab_window.dmi'
 	icon_state = "prefab-0"
 	base_icon_state = "prefab"
@@ -17,18 +17,18 @@
 		return
 	var/obj/item/stack/stack_in_question = item_in_question
 	if(stack_in_question.get_amount() < 1)
-		to_chat(user, span_warning("You need at least one plastic panel for that!"))
+		to_chat(user, span_warning("Você precisa de pelo menos um painel plástico para isso!"))
 		return
 	var/dir_to_set = SOUTHWEST
 	if(!anchored)
 		to_chat(user, span_warning("[src] needs to be fastened to the floor first!"))
 		return
 	for(var/obj/structure/window/window_on_turf in loc)
-		to_chat(user, span_warning("There is already a window there!"))
+		to_chat(user, span_warning("Já tem uma janela lá!"))
 		return
 	if(!clear_tile(user))
 		return
-	to_chat(user, span_notice("You start placing the window..."))
+	to_chat(user, span_notice("Você começa a colocar a janela..."))
 	if(!do_after(user, 1 SECONDS, target = src))
 		return
 	if(!src.loc || !anchored) //Grille broken or unanchored while waiting

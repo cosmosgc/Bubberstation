@@ -1,6 +1,6 @@
 /obj/item/rolling_table_dock
 	name = "rolling table dock"
-	desc = "A collapsed roller table that can be ejected for service on the go. Must be collected or replaced after use."
+	desc = "Uma mesa de rolos colapsada que pode ser ejetada para serviço em movimento. Deve ser coletado ou substituído após o uso."
 	icon = 'icons/obj/smooth_structures/rollingtable.dmi'
 	icon_state = "rollingtable"
 	var/obj/structure/table/rolling/loaded = null
@@ -33,4 +33,4 @@
 		user.visible_message(span_notice("[user] deploys [loaded]."), balloon_alert(user, "you deploy the [loaded]."))
 		loaded = null
 	else
-		balloon_alert(user, "the dock is Empty!")
+		balloon_alert(user, "A doca está vazia!")

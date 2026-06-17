@@ -1,6 +1,6 @@
 /datum/mafia_role/obsessed
 	name = "Obsessed"
-	desc = "Lynch your obsession before you get killed at all costs!"
+	desc = "Lynch sua obsessão antes de ser morto a todo custo!"
 	win_condition = "lynch their obsession."
 	revealed_outfit = /datum/outfit/mafia/obsessed
 	team = MAFIA_TEAM_SOLO
@@ -15,7 +15,7 @@
 
 /datum/mafia_role/obsessed/New(datum/mafia_controller/game) //note: obsession is always a townie
 	. = ..()
-	desc = initial(desc) + " Obsessions are assigned on the first night."
+	desc = initial(desc) + "Obsessões são atribuídas na primeira noite."
 	RegisterSignal(game, COMSIG_MAFIA_SUNDOWN, PROC_REF(find_obsession))
 
 /datum/mafia_role/obsessed/proc/find_obsession(datum/mafia_controller/game)
@@ -53,7 +53,7 @@
 
 /datum/mafia_role/clown
 	name = "Clown"
-	desc = "If you are lynched you take down one of your voters (guilty or abstain) with you and win. HONK!"
+	desc = "Se você for linchado você derruba um de seus eleitores (culpado ou abstido) com você e ganha. HONK!"
 	win_condition = "get themselves lynched!"
 	revealed_outfit = /datum/outfit/mafia/clown
 	team = MAFIA_TEAM_SOLO

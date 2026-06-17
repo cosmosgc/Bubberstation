@@ -245,8 +245,8 @@
 
 /atom/movable/screen/alert/status_effect/shapeshifted
 	name = "Shapeshifted"
-	desc = "Your form is not your own... you're shapeshifted into another creature! \
-		A wizard could turn you back - or maybe you're stuck like this for good?"
+	desc = "Sua forma não é a sua... Você está transformado em outra criatura!\
+Um mago pode te virar de volta ou talvez você esteja preso assim para sempre?"
 	use_user_hud_icon = USER_HUD_STYLE_INHERIT
 	overlay_state = "shapeshifted"
 	clickable_glow = TRUE

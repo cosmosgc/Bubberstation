@@ -12,7 +12,7 @@ FLOOR SAFES
 //SAFES
 /obj/structure/safe
 	name = "safe"
-	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
+	desc = "Um enorme pedaço de metal com um mostrador embutido nele. Bela impressão no mostrador.\"Scarborough Arms - 2 cilindros seguros, garantido resistente à termite, resistente à explosão, e assistente resistente.\""
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "safe"
 	anchored = TRUE
@@ -80,7 +80,7 @@ FLOOR SAFES
 
 /obj/structure/safe/examine(mob/user)
 	. = ..()
-	. += span_notice("The locking mechanism gears are <b>wrenched</b> in place.")
+	. += span_notice("As engrenagens do mecanismo de travamento são<b>Estrangulada.</b>No lugar.")
 
 /obj/structure/safe/update_icon_state()
 	//uses the same icon as the captain's spare safe (therefore lockable storage) so keep it in line with that
@@ -89,20 +89,20 @@ FLOOR SAFES
 
 /obj/structure/safe/wrench_act(mob/living/user, obj/item/tool)
 	if(!open)
-		balloon_alert(user, "must be open!")
+		balloon_alert(user, "Deve estar aberto!")
 		return ITEM_INTERACT_BLOCKING
 
-	balloon_alert(user, "resetting lock...")
+	balloon_alert(user, "Reestabelecendo trava...")
 	to_chat(user, span_notice("You begin resetting the lock for [src]. You'll need to set [number_of_tumblers] numbers."))
 
 	var/list/new_tumblers = list()
 	for(var/tumbler_index in 1 to number_of_tumblers)
 		var/input_value = tgui_input_number(user, "Set tumbler #[tumbler_index] (0-99):", "Set Lock", 0, 99, 0)
 		if(isnull(input_value))
-			balloon_alert(user, "reset cancelled!")
+			balloon_alert(user, "Reset cancelado!")
 			return ITEM_INTERACT_BLOCKING
 		if(!user.can_perform_action(src))
-			balloon_alert(user, "reset interrupted!")
+			balloon_alert(user, "Reset interrompido!")
 			return ITEM_INTERACT_BLOCKING
 		new_tumblers.Add(input_value)
 
@@ -115,7 +115,7 @@ FLOOR SAFES
 	dial = 0
 	tool.play_tool_sound(src)
 	to_chat(user, span_notice("You successfully reset the lock for [src]. The new combination is: [tumblers.Join("-")]."))
-	balloon_alert(user, "lock set!")
+	balloon_alert(user, "Fechado!")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/safe/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
@@ -145,11 +145,11 @@ FLOOR SAFES
 		explosion_count++
 		switch(explosion_count)
 			if(1)
-				desc = initial(desc) + "\nIt looks a little banged up."
+				desc = initial(desc) + "\nParece um pouco machucado."
 			if(2)
-				desc = initial(desc) + "\nIt's pretty heavily damaged."
+				desc = initial(desc) + "\nEstá muito danificado."
 			if(3)
-				desc = initial(desc) + "\nThe lock seems to be broken."
+				desc = initial(desc) + "\nA fechadura parece estar quebrada."
 
 		return TRUE
 
@@ -213,7 +213,7 @@ FLOOR SAFES
 			if(open)
 				return
 			if(broken)
-				to_chat(user, span_warning("The dial will not turn, as the mechanism is destroyed!"))
+				to_chat(user, span_warning("O mostrador não vai girar, como o mecanismo é destruído!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/iterate in 1 to ticks)
@@ -234,7 +234,7 @@ FLOOR SAFES
 			if(open)
 				return
 			if(broken)
-				to_chat(user, span_warning("The dial will not turn, as the mechanism is destroyed!"))
+				to_chat(user, span_warning("O mostrador não vai girar, como o mecanismo é destruído!"))
 				return
 			var/ticks = text2num(params["num"])
 			for(var/iterate in 1 to ticks)

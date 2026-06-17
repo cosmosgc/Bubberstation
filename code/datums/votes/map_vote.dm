@@ -1,6 +1,6 @@
 /datum/vote/map_vote
 	name = "Map"
-	default_message = "Vote for next round's map!"
+	default_message = "Vote no mapa da próxima rodada!"
 	count_method = VOTE_COUNT_METHOD_SINGLE
 	winner_method = VOTE_WINNER_METHOD_NONE
 	display_statistics = FALSE
@@ -23,8 +23,8 @@
 			The map has been changed to [change_me_out.map_name]."))
 		return FALSE
 	if(length(choices) == 0)
-		to_chat(world, span_boldannounce("A map vote was called, but there are no maps to vote for! \
-			Players, complain to the admins. Admins, complain to the coders."))
+		to_chat(world, span_boldannounce("Um mapa foi chamado, mas não há mapas para votar!\
+Jogadores, reclamem com os administradores. Administração, reclame com os codificadores."))
 		return FALSE
 
 	return TRUE

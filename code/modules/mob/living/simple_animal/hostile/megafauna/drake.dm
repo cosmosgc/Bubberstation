@@ -31,7 +31,7 @@
 
 /mob/living/simple_animal/hostile/megafauna/dragon
 	name = "ash drake"
-	desc = "Guardians of the necropolis."
+	desc = "Guardiões da necrópole."
 	health = 2500
 	maxHealth = 2500
 	attack_verb_continuous = "chomps"
@@ -68,7 +68,7 @@
 	achievement_type = /datum/award/achievement/boss/drake_kill
 	crusher_achievement_type = /datum/award/achievement/boss/drake_crusher
 	score_achievement_type = /datum/award/score/drake_score
-	death_message = "collapses into a pile of bones, its flesh sloughing away."
+	death_message = "colapsa em uma pilha de ossos, sua carne escorrendo."
 	death_sound = 'sound/effects/magic/demon_dies.ogg'
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	summon_line = "ROOOOOOOOAAAAAAAAAAAR!"
@@ -222,7 +222,7 @@
 		if(istype(L, /mob/living/simple_animal/hostile/megafauna/dragon))
 			continue
 		L.adjust_fire_loss(10)
-		to_chat(L, span_userdanger("You fall directly into the pool of lava!"))
+		to_chat(L, span_userdanger("Você cai diretamente na piscina de lava!"))
 
 	// deals damage to mechs
 	for(var/obj/vehicle/sealed/mecha/M in T.contents)
@@ -236,7 +236,7 @@
 		addtimer(CALLBACK(T, TYPE_PROC_REF(/turf, ChangeTurf), reset_turf, null, CHANGETURF_INHERIT_AIR), reset_time, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/effect/temp_visual/drakewall
-	desc = "An ash drakes true flame."
+	desc = "Uma cinza deixa a verdadeira chama."
 	name = "Fire Barrier"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "light"
@@ -258,7 +258,7 @@
 	icon = 'icons/effects/magic.dmi'
 	icon_state = "fireball"
 	name = "fireball"
-	desc = "Get out of the way!"
+	desc = "Saia do caminho!"
 	layer = FLY_LAYER
 	plane = ABOVE_GAME_PLANE
 	randomdir = FALSE
@@ -297,7 +297,7 @@
 			continue
 		if(islist(flame_hit) && !flame_hit[L])
 			L.adjust_fire_loss(40)
-			to_chat(L, span_userdanger("You're hit by the drake's fire breath!"))
+			to_chat(L, span_userdanger("Você foi atingido pelo hálito de fogo do Drake!"))
 			flame_hit[L] = TRUE
 		else
 			L.adjust_fire_loss(10) //if we've already hit them, do way less damage

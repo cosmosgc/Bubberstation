@@ -4,7 +4,7 @@
 
 /datum/action/cooldown/mob_cooldown/domain
 	name = "Rat King's Domain"
-	desc = "While enabled, continuously corrupt the surrounding area to be more suitable for your rat army."
+	desc = "Embora habilitado, continuamente corromper a área circundante para ser mais adequado para o seu exército de ratos."
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
 	click_to_activate = FALSE
 	cooldown_time = 1 SECONDS
@@ -26,7 +26,7 @@
 		return FALSE
 	if (owner.movement_type & VENTCRAWLING)
 		if (feedback)
-			owner.balloon_alert(owner, "can't use while ventcrawling!")
+			owner.balloon_alert(owner, "Não posso usar enquanto ventrawling!")
 		return FALSE
 
 /datum/action/cooldown/mob_cooldown/domain/Activate(atom/target)
@@ -94,7 +94,7 @@
  */
 /datum/action/cooldown/mob_cooldown/riot
 	name = "Raise Army"
-	desc = "Raise an army out of the hordes of mice and pests crawling around the maintenance shafts."
+	desc = "Erguer um exército das hordas de ratos e pragas rastejando pelos poços de manutenção."
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
 	click_to_activate = FALSE
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -112,7 +112,7 @@
 		return FALSE
 	if (owner.movement_type & VENTCRAWLING)
 		if (feedback)
-			owner.balloon_alert(owner, "can't use while ventcrawling!")
+			owner.balloon_alert(owner, "Não posso usar enquanto ventrawling!")
 		return FALSE
 
 /datum/action/cooldown/mob_cooldown/riot/Activate(atom/target)
@@ -160,23 +160,23 @@
 
 /datum/reagent/rat_spit
 	name = "Rat Spit"
-	description = "Something coming from a rat. Dear god! Who knows where it's been!"
+	description = "Algo vindo de um rato. Santo Deus! Quem sabe onde esteve!"
 	color = "#C8C8C8"
 	metabolization_rate = 0.03 * REAGENTS_METABOLISM
-	taste_description = "something funny"
+	taste_description = "Algo engraçado."
 	overdose_threshold = 20
 
 /datum/reagent/rat_spit/on_mob_metabolize(mob/living/affected_mob)
 	. = ..()
 	if(HAS_TRAIT(affected_mob, TRAIT_AGEUSIA))
 		return
-	to_chat(affected_mob, span_notice("This food has a funny taste!"))
+	to_chat(affected_mob, span_notice("Essa comida tem um gosto engraçado!"))
 
 /datum/reagent/rat_spit/overdose_start(mob/living/affected_mob, metabolization_ratio)
 	. = ..()
 	var/mob/living/carbon/victim = affected_mob
 	if (istype(victim) && !victim.has_faction(FACTION_RAT))
-		to_chat(victim, span_userdanger("With this last sip, you feel your body convulsing horribly from the contents you've ingested. As you contemplate your actions, you sense an awakened kinship with rat-kind and their newly risen leader!"))
+		to_chat(victim, span_userdanger("Com este último gole, você sente seu corpo convulsionando horrivelmente pelo conteúdo que ingeriu. Enquanto você contempla suas ações, você sente um parentesco acordado com o tipo de rato e seu recém-nascido líder!"))
 		victim.add_faction(FACTION_RAT)
 		victim.vomit(VOMIT_CATEGORY_DEFAULT)
 	metabolization_rate = 10 * REAGENTS_METABOLISM
@@ -184,10 +184,10 @@
 /datum/reagent/rat_spit/on_mob_life(mob/living/carbon/affected_mob, metabolization_ratio)
 	. = ..()
 	if(prob(15))
-		to_chat(affected_mob, span_notice("You feel queasy!"))
+		to_chat(affected_mob, span_notice("Você está enjoado!"))
 		affected_mob.adjust_disgust(3)
 	else if(prob(10))
-		to_chat(affected_mob, span_warning("That food does not sit up well!"))
+		to_chat(affected_mob, span_warning("Essa comida não fica bem!"))
 		affected_mob.adjust_disgust(5)
 	else if(prob(5))
 		affected_mob.vomit(VOMIT_CATEGORY_DEFAULT)

@@ -29,7 +29,7 @@
 
 /datum/action/neck_chop
 	name = "Neck Chop"
-	desc = "Injures the neck, stopping the victim from speaking for a while."
+	desc = "Machuca o pescoço, impedindo a vítima de falar por um tempo."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "neckchop"
 	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_HANDS_BLOCKED|AB_CHECK_CONSCIOUS
@@ -40,17 +40,17 @@
 		return
 	var/datum/martial_art/source = target
 	if (source.streak == "neck_chop")
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Your next attack is cleared.</i></b>")
+		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Seu próximo ataque está liberado.</i></b>")
 		owner.balloon_alert(owner, "cleared")
 		source.streak = ""
 	else
-		owner.visible_message(span_danger("[owner] assumes the Neck Chop stance!"), "<b><i>Your next attack will be a Neck Chop.</i></b>")
-		owner.balloon_alert(owner, "neck chop")
+		owner.visible_message(span_danger("[owner] assumes the Neck Chop stance!"), "<b><i>Seu próximo ataque será um Pescoço.</i></b>")
+		owner.balloon_alert(owner, "pescoço costeleta")
 		source.streak = "neck_chop"
 
 /datum/action/low_sweep
 	name = "Low Sweep"
-	desc = "Trips the victim, knocking them down for a brief moment."
+	desc = "Viaja a vítima, derrubando-os por um breve momento."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "legsweep"
 	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_HANDS_BLOCKED|AB_CHECK_CONSCIOUS
@@ -61,17 +61,17 @@
 		return
 	var/datum/martial_art/source = target
 	if (source.streak == "low_sweep")
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Your next attack is cleared.</i></b>")
+		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Seu próximo ataque está liberado.</i></b>")
 		owner.balloon_alert(owner, "cleared")
 		source.streak = ""
 	else
-		owner.visible_message(span_danger("[owner] assumes the Low Sweep stance!"), "<b><i>Your next attack will be a Low Sweep.</i></b>")
-		owner.balloon_alert(owner, "low sweep")
+		owner.visible_message(span_danger("[owner] assumes the Low Sweep stance!"), "<b><i>Seu próximo ataque será um Low Sweep.</i></b>")
+		owner.balloon_alert(owner, "Varredura baixa.")
 		source.streak = "low_sweep"
 
 /datum/action/lung_punch//referred to internally as 'quick choke'
 	name = "Lung Punch"
-	desc = "Delivers a strong punch just above the victim's abdomen, constraining the lungs. The victim will be unable to breathe for a short time."
+	desc = "Dá um forte soco logo acima do abdômen da vítima, restringindo os pulmões. A vítima será incapaz de respirar por pouco tempo."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "lungpunch"
 	check_flags = AB_CHECK_INCAPACITATED|AB_CHECK_HANDS_BLOCKED|AB_CHECK_CONSCIOUS
@@ -82,18 +82,18 @@
 		return
 	var/datum/martial_art/source = target
 	if (source.streak == "quick_choke")
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Your next attack is cleared.</i></b>")
+		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Seu próximo ataque está liberado.</i></b>")
 		owner.balloon_alert(owner, "cleared")
 		source.streak = ""
 	else
-		owner.visible_message(span_danger("[owner] assumes the Lung Punch stance!"), "<b><i>Your next attack will be a Lung Punch.</i></b>")
-		owner.balloon_alert(owner, "lung punch")
+		owner.visible_message(span_danger("[owner] assumes the Lung Punch stance!"), "<b><i>Seu próximo ataque será um soco pulmonar.</i></b>")
+		owner.balloon_alert(owner, "soco pulmonar")
 		source.streak = "quick_choke"//internal name for lung punch
 
 /datum/martial_art/kaza_ruk/activate_style(mob/living/new_holder)
 	. = ..()
 	to_chat(new_holder, span_userdanger("You know the arts of [name]!"))
-	to_chat(new_holder, span_danger("Place your cursor over a move at the top of the screen to see what it does."))
+	to_chat(new_holder, span_danger("Coloque seu cursor sobre um movimento no topo da tela para ver o que ele faz."))
 	neckchop.Grant(new_holder)
 	lowsweep.Grant(new_holder)
 	lungpunch.Grant(new_holder)
@@ -139,7 +139,7 @@
 	defender.visible_message(
 		span_warning("[attacker] [sweeping_language] sweeps [defender]!"),
 		span_userdanger("Your legs are sweeped by [attacker]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		null,
 		attacker,
 	)
@@ -159,7 +159,7 @@
 	defender.visible_message(
 		span_warning("[attacker] pounds [defender] on the chest!"),
 		span_userdanger("Your chest is slammed by [attacker]! You can't breathe!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -178,7 +178,7 @@
 	defender.visible_message(
 		span_warning("[attacker] karate chops [defender]'s neck!"),
 		span_userdanger("Your neck is karate chopped by [attacker], rendering you unable to speak!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
 	)
@@ -209,7 +209,7 @@
 		defender.visible_message(
 			span_danger("[attacker] disarms [defender]!"),
 			span_userdanger("You're disarmed by [attacker]!"),
-			span_hear("You hear aggressive shuffling!"),
+			span_hear("Você ouve baralhar agressivo!"),
 			COMBAT_MESSAGE_RANGE,
 			attacker,
 		)
@@ -251,7 +251,7 @@
 	source.visible_message(
 		span_warning("[source] follows up with [kicking ? kick_language : strike_language] against [target]!"),
 		span_notice("You deliver [kicking ? kick_language : strike_language] against [target]!"),
-		span_hear("You hear a sickening sound of flesh hitting flesh!"),
+		span_hear("Você ouve um som doentio de carne batendo em carne!"),
 	)
 	if(tail_usage)
 		source.emote(kicking ? "flip" : "spin")
@@ -301,8 +301,8 @@
 
 /obj/item/clothing/gloves/kaza_ruk/sec//more obviously named, given to sec
 	name = "kaza ruk gloves"
-	desc = "These gloves seem to guide you through a non-lizardperson friendly variant of the Tiziran martial art, Kaza Ruk. \
-		You're not entirely sure how they do that. Probably nanites."
+	desc = "Estas luvas parecem guiá-lo através de uma variante amigável não-lizard person da arte marcial Tiziran, Kaza Ruk.\
+Não tem certeza de como fazem isso. Provavelmente nanites."
 	icon_state = "fightgloves"
 	greyscale_colors = "#c41e0d"
 	cold_protection = HANDS
@@ -316,7 +316,7 @@
 
 /obj/item/clothing/gloves/kaza_ruk/combatglovesplus
 	name = "combat gloves plus"
-	desc = "These tactical gloves are fireproof and electrically insulated. These gloves seem to guide you through a non-lizardperson friendly variant of the Tiziran martial art, Kaza Ruk."
+	desc = "Essas luvas táticas são à prova de fogo e eletricamente isoladas. Estas luvas parecem guiá-lo através de uma variante amigável não-lizard person da arte marcial Tiziran, Kaza Ruk."
 	icon_state = "black"
 	greyscale_colors = "#2f2e31"
 	siemens_coefficient = 0

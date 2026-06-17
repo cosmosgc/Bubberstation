@@ -1,6 +1,6 @@
 /datum/action/changeling/biodegrade
 	name = "Biodegrade"
-	desc = "Dissolves restraints or other objects preventing free movement. Costs 30 chemicals."
+	desc = "Dissolve restrições ou outros objetos impedindo a livre circulação. Custa 30 produtos químicos."
 	helptext = "This is obvious to nearby people, and can destroy standard restraints and closets. Works against grabs."
 	button_icon_state = "biodegrade"
 	category = "utility"
@@ -31,7 +31,7 @@
 		straitjacket = null
 
 	if(!handcuffs && !legcuffs && !straitjacket && !prisoner_shoes && !knotted_shoes && !some_manner_of_cage && !space_invader)
-		user.balloon_alert(user, "already free!")
+		user.balloon_alert(user, "Já está livre!")
 		return .
 	..()
 
@@ -66,8 +66,8 @@
 		log_combat(user = user, target = restraint, what_done = "melted restraining item", addition = "(biodegrade)")
 		user.visible_message(
 			span_warning("[user] spews torrents of acid onto [restraint], melting them with horrifying ease."),
-			user.balloon_alert(user, "melting restraints..."),
-			span_danger("You hear retching, then the sizzling of powerful acid, closer to the sound of hissing steam."))
+			user.balloon_alert(user, "Derreter as amarras..."),
+			span_danger("Você ouve retching, em seguida, a queima de ácido poderoso, mais perto do som do vapor sibilante."))
 		playsound(user, 'sound/items/tools/welder.ogg', 50, TRUE)
 		. = TRUE
 
@@ -98,14 +98,14 @@
 		user.visible_message(
 			span_danger("[user] spews a mist of sizzling acid onto [hapless_manhandler]... but nothing happens!"),
 			span_changeling("We prepare our escape, spraying bio-acid on our captor... [span_danger("But nothing happened?!")]"),
-			span_danger("You hear retching, then a sizzling that terminates quite abruptly.")
+			span_danger("Você ouve reticências, depois uma brasa que termina abruptamente.")
 			)
-		to_chat(hapless_manhandler, span_changeling("Our prey attempts to dissuade us with one of our biology's simplest adaptions. Quaint."))
+		to_chat(hapless_manhandler, span_changeling("Nossa presa tenta nos dissuadir com uma das mais simples adaptações de nossa biologia. Estranho."))
 		return
 	user.visible_message(
 		span_danger("[user] spews a mist of sizzling acid onto [hapless_manhandler], using the opportunity to wrestle away."),
-		user.balloon_alert(user, "dissuading captor..."),
-		span_danger("You hear retching, then sizzling, quickly muffled by a loud keening of pain."))
+		user.balloon_alert(user, "Dissuadindo o raptor..."),
+		span_danger("Você ouve reticências, em seguida, fervendo, rapidamente abafado por uma forte sensação de dor."))
 	hapless_manhandler.Stun(2 SECONDS)
 	hapless_manhandler.emote("scream")
 	hapless_manhandler.stop_pulling()

@@ -1,6 +1,6 @@
 /obj/item/storage/briefcase
 	name = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	desc = "É feito de couro falso AUTENTIC e ainda tem uma etiqueta de preço anexado. Seu dono deve ser um verdadeiro profissional."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "briefcase"
 	inhand_icon_state = "briefcase"
@@ -67,7 +67,7 @@
 	return
 
 /obj/item/storage/briefcase/sniper
-	desc = "Its label reads \"genuine hardened Captain leather\", but suspiciously has no other tags or branding. Smells like L'Air du Temps."
+	desc = "Seu rótulo diz\"genuíno endurecido Capitão couro\"Mas suspeitamente não tem outras marcas ou marcas. Cheira a L'Air du Temps."
 	force = 10
 
 /obj/item/storage/briefcase/sniper/PopulateContents()
@@ -85,7 +85,7 @@
  */
 /obj/item/storage/briefcase/secure
 	name = "secure briefcase"
-	desc = "A large briefcase with a digital locking system."
+	desc = "Uma maleta grande com um sistema de bloqueio digital."
 	icon_state = "secure"
 	base_icon_state = "secure"
 	inhand_icon_state = "sec-case"
@@ -104,7 +104,7 @@
 /// Base container used for gimmick disks.
 /obj/item/storage/briefcase/secure/digital_storage
 	name = "digi-case"
-	desc = "It's made of AUTHENTIC digital leather and has a price-tag still attached. Its owner must be a real professional."
+	desc = "É feito de couro digital AUTENTIC e ainda tem uma etiqueta de preço. Seu dono deve ser um verdadeiro profissional."
 	icon_state = "secure"
 	base_icon_state = "secure"
 	inhand_icon_state = "sec-case"
@@ -191,7 +191,7 @@
 /obj/item/storage/briefcase/gun/examine_more(mob/user)
 	. = ..()
 	if(user.is_holding(src))
-		. += span_notice("Upon closer inspection, you notice a hole in the side of the briefcase.")
+		. += span_notice("Após uma inspeção mais próxima, nota-se um buraco no lado da maleta.")
 
 /obj/item/storage/briefcase/gun/preloaded
 

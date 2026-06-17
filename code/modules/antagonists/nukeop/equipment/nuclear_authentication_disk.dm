@@ -1,7 +1,7 @@
 // DAT FUKKEN DISK.
 /obj/item/disk/nuclear
 	name = "nuclear authentication disk"
-	desc = "Better keep this safe."
+	desc = "Melhor manter isso seguro."
 	icon_state = "nucleardisk"
 	max_integrity = 250
 	sticker_icon_state = null
@@ -74,7 +74,7 @@
  */
 /obj/item/disk/nuclear/on_accidental_consumption(mob/living/carbon/M, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
 	M.visible_message(span_warning("[M] looks like [M.p_theyve()] just bitten into something important."), \
-						span_warning("Wait, is this the nuke disk?"))
+						span_warning("Espere, esse é o disco nuclear?"))
 
 	return discover_after
 
@@ -82,14 +82,14 @@
 	if(istype(weapon, /obj/item/claymore/highlander) && !fake)
 		var/obj/item/claymore/highlander/claymore = weapon
 		if(claymore.nuke_disk)
-			to_chat(user, span_notice("Wait... what?"))
+			to_chat(user, span_notice("Espere... o quê?"))
 			qdel(claymore.nuke_disk)
 			claymore.nuke_disk = null
 			return
 
 		user.visible_message(
 			span_warning("[user] captures [src]!"),
-			span_userdanger("You've got the disk! Defend it with your life!"),
+			span_userdanger("Você tem o disco! Defenda com sua vida!"),
 		)
 		forceMove(claymore)
 		claymore.nuke_disk = src
@@ -116,4 +116,4 @@
 
 /obj/item/disk/nuclear/fake/obvious
 	name = "cheap plastic imitation of the nuclear authentication disk"
-	desc = "How anyone could mistake this for the real thing is beyond you."
+	desc = "Como alguém poderia confundir isso com a coisa real está além de você."

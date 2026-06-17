@@ -7,7 +7,7 @@
 	icon_state = "navbeacon0"
 	base_icon_state = "navbeacon"
 	name = "navigation beacon"
-	desc = "A radio beacon used for bot navigation."
+	desc = "Um sinal de rádio usado para navegação bot."
 	layer = LOW_OBJ_LAYER
 	max_integrity = 500
 	armor_type = /datum/armor/machinery_navbeacon
@@ -111,7 +111,7 @@
 
 /obj/machinery/navbeacon/screwdriver_act(mob/living/user, obj/item/tool)
 	if(!panel_open && cover_locked)
-		balloon_alert(user, "hatch locked!")
+		balloon_alert(user, "Escotilha trancada!")
 		return ITEM_INTERACT_BLOCKING
 	return default_deconstruction_screwdriver(user, tool)
 
@@ -131,9 +131,9 @@
 				balloon_alert(user, "controls [controls_locked ? "locked" : "unlocked"]")
 				SStgui.update_uis(src)
 			else
-				balloon_alert(user, "access denied")
+				balloon_alert(user, "Acesso negado.")
 		else
-			balloon_alert(user, "panel open!")
+			balloon_alert(user, "Painel aberto!")
 		return
 
 	return ..()

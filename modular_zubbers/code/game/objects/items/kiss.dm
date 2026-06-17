@@ -14,7 +14,7 @@
 		user.visible_message(span_danger("[user] kisses [victim] on the lips! [victim] looks flushed!"), span_danger("You kiss [victim] on the lips!"))
 
 	if(!victim.hypnosis_vulnerable())
-		to_chat(victim, span_hypnophrase("That kiss made you feel oddly relaxed..."))
+		to_chat(victim, span_hypnophrase("Aquele beijo fez você se sentir estranhamente relaxado..."))
 		victim.adjust_confusion_up_to(10 SECONDS, 20 SECONDS)
 		victim.adjust_dizzy_up_to(20 SECONDS, 40 SECONDS)
 		victim.adjust_drowsiness_up_to(20 SECONDS, 40 SECONDS)

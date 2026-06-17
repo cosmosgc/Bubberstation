@@ -58,7 +58,7 @@
 	LoadComponent( \
 		/datum/component/itempicky, \
 		xeno_allowed_items, \
-		span_alien("Your claws lack the dexterity to hold %TARGET."), \
+		span_alien("Suas garras não têm a destreza de segurar."), \
 		CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_has_trait), src, TRAIT_ADVANCEDTOOLUSER))
 
 /mob/living/carbon/alien/proc/create_internal_organs()
@@ -136,7 +136,7 @@ Des: Removes all infected images from the alien.
 /mob/living/carbon/alien/proc/alien_evolve(mob/living/carbon/alien/new_xeno)
 	visible_message(
 		span_alertalien("[src] begins to twist and contort!"),
-		span_noticealien("You begin to evolve!"),
+		span_noticealien("Você começa a evoluir!"),
 	)
 
 	new_xeno.setDir(dir)

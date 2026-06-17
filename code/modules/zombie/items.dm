@@ -1,9 +1,9 @@
 /obj/item/mutant_hand/zombie
 	name = "zombie claw"
-	desc = "A zombie's claw is its primary tool, capable of infecting \
-		humans, butchering all other living things to \
-		sustain the zombie, smashing open airlock doors and opening \
-		child-safe caps on bottles."
+	desc = "A garra de um zumbi é sua principal ferramenta, capaz de infectar\
+humanos, matando todas as outras coisas vivas para\
+Sustente o zumbi, quebrando as portas da câmara de ar e abrindo\
+Tampas de segurança para crianças em garrafas."
 
 	hitsound = 'sound/effects/hallucinations/growl1.ogg'
 	force = 21 // Just enough to break airlocks with melee attacks

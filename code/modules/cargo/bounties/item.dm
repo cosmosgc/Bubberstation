@@ -47,7 +47,7 @@
  */
 /obj/item/bounty_voucher
 	name = "bounty voucher"
-	desc = "A certificate for ONE FREE BOUNTY of your choice! Wow!"
+	desc = "Um certificado para uma recompensa grátis de sua escolha! Uau!"
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paperslip_words"
 
@@ -62,14 +62,14 @@
 	var/choice = tgui_input_list(living_user, "Choose a bounty.", "New Bounty", subtypesof(/datum/bounty))
 	var/datum/bounty/new_chore = text2path("[choice]")
 	id.registered_account.set_bounty(new new_chore, id)
-	balloon_alert(user, "new bounty acquired!")
+	balloon_alert(user, "Nova recompensa adquirida!")
 	playsound(src, 'sound/effects/coin2.ogg', 30, TRUE)
 	qdel(src)
 
 /// As above, but it spawns a global bounty for testing.
 /obj/item/bounty_voucher/stationwide
 	name = "stationwide bounty voucher"
-	desc = "A certificate for ONE FREE BOUNTY of your choice! For everyone! Wowzers!"
+	desc = "Um certificado para uma recompensa grátis de sua escolha! Para todos! Uau!"
 	color = "#ff8800"
 
 /obj/item/bounty_voucher/stationwide/attack_self(mob/user, modifiers)
@@ -80,9 +80,9 @@
 	var/choice = tgui_input_list(living_user, "Choose a bounty.", "New Bounty", subtypesof(/datum/bounty))
 	var/datum/bounty/new_chore = text2path("[choice]")
 	if(new_chore.global_exempt)
-		to_chat(user, span_warning("Can't use that one, try another!"))
+		to_chat(user, span_warning("Não posso usar esse, tente outro!"))
 		return
 	GLOB.shared_crew_bounties += new_chore
-	balloon_alert(user, "new bounty provided to the crew!")
+	balloon_alert(user, "Nova recompensa fornecida à tripulação!")
 	playsound(src, 'sound/effects/coin2.ogg', 30, TRUE)
 	qdel(src)

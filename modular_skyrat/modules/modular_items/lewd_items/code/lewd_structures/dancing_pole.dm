@@ -1,6 +1,6 @@
 /obj/structure/stripper_pole
 	name = "stripper pole"
-	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
+	desc = "Um poste preso no teto e no chão, usado para mostrar os bens à companhia."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	icon_state = "pole_purple_off"
 	base_icon_state = "pole"
@@ -99,7 +99,7 @@
 	if(!proximity_flag)
 		return
 	if(pole_in_use)
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "Já está em uso!")
 		return
 	pole_in_use = TRUE
 	dancer = user
@@ -153,7 +153,7 @@
 	add_fingerprint(user)
 	balloon_alert(user, "disassembling...")
 	if(!do_after(user, 8 SECONDS, src))
-		balloon_alert(user, "disassembly interrupted!")
+		balloon_alert(user, "Desmontagem interrompida!")
 		return
 
 	balloon_alert(user, "disassembled")

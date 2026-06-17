@@ -6,7 +6,7 @@
 /// Steals 50 blood if they have enough. Splattercasting has one second of cooldown worth 5 blood, so 50 seconds cooldown of blood added!
 /datum/action/cooldown/spell/sanguine_strike
 	name = "Sanguine Strike"
-	desc = "Enchants your next weapon strike to deal more damage, heal you for damage dealt, and refill blood."
+	desc = "Incentiva sua próxima arma a causar mais danos, curar você por danos causados, e encher de sangue."
 	button_icon_state = "charge"
 
 	sound = 'sound/effects/magic/charge.ogg'
@@ -29,7 +29,7 @@
 	var/obj/item/to_enchant = owner.get_active_held_item() || owner.get_inactive_held_item()
 	if(!to_enchant)
 		if(feedback)
-			to_chat(owner, span_warning("You need to hold something to empower it!"))
+			to_chat(owner, span_warning("Você precisa segurar algo para empoderá-lo!"))
 		return FALSE
 	if(!to_enchant.force)
 		if(feedback)

@@ -1,6 +1,6 @@
 /obj/item/borg/upgrade/transform/ntjack
 	name = "borg module picker (Centcom)"
-	desc = "Allows you to to turn a cyborg into a experimental nanotrasen cyborg."
+	desc = "Permite transformar um cyborg em um cyborg experimental."
 	icon_state = "module_illegal"
 	new_model = /obj/item/robot_model/centcom
 
@@ -9,7 +9,7 @@
 
 /obj/item/borg/upgrade/transform/security
 	name = "borg model picker (Security)"
-	desc = "Allows you to to turn a cyborg into a Security model, shitsec abound."
+	desc = "Permite que você transforme um cyborg em um modelo de segurança."
 	icon_state = "module_security"
 	new_model = /obj/item/robot_model/security
 
@@ -18,7 +18,7 @@
 //ADVANCED ROBOTICS REPAIR
 /obj/item/borg/upgrade/healthanalyzer
 	name = "Research cyborg advanced Health Analyzer"
-	desc = "An upgrade to the Research model cyborg's standard health analyzer."
+	desc = "Uma atualização para o analisador de saúde padrão do cyborg."
 	icon_state = "module_medical"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/sci)
@@ -30,7 +30,7 @@
 //Science inducer
 /obj/item/borg/upgrade/inducer_sci
 	name = "Research integrated power inducer"
-	desc = "An integrated inducer that can charge a device's internal cell from power provided by the cyborg."
+	desc = "Um indutor integrado que pode carregar a célula interna de um dispositivo da energia fornecida pelo cyborg."
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/sci)
 	model_flags = BORG_MODEL_RESEARCH
@@ -39,7 +39,7 @@
 //Bluespace RPED
 /obj/item/borg/upgrade/brped
 	name = "Research cyborg Rapid Part Exchange Device Upgrade"
-	desc = "An upgrade to the Research model cyborg's standard RPED."
+	desc = "Uma atualização para o modelo de pesquisa cyborg padrão RPED."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/sci)
@@ -62,7 +62,7 @@
 //Upgrade for the experi scanner
 /obj/item/borg/upgrade/experi_scanner
 	name = "Research cyborg BlueSpace Experi-Scanner"
-	desc = "An upgrade to the Research model cyborg's standard health analyzer."
+	desc = "Uma atualização para o analisador de saúde padrão do cyborg."
 	icon_state = "module_general"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/sci)
@@ -73,7 +73,7 @@
 // Borg Dom Aura :)
 /obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg, mob/living/user)
 	if(borg.hasToys)
-		to_chat(usr, span_warning("This unit already has a 'recreational' module installed!"))
+		to_chat(usr, span_warning("Esta unidade já tem um módulo 'recreativo' instalado!"))
 		return FALSE
 	. = ..()
 	if(.)
@@ -90,7 +90,7 @@
 // Engineering RLD
 /obj/item/borg/upgrade/rld
 	name = "Engineering Cyborg Rapid Lighting Device Upgrade"
-	desc = "An upgrade to allow a cyborg to use a Rapid Lighting Device."
+	desc = "Uma atualização para permitir que um cyborg use um dispositivo de iluminação rápida."
 	icon_state = "module_engineer"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/janitor)
@@ -101,7 +101,7 @@
 
 /obj/item/borg/upgrade/xenoarch/adv
 	name = "Cyborg Advanced Xenoarchaeology Bag"
-	desc = "An improved bag to pick up strange rocks for science"
+	desc = "Um saco melhorado para pegar pedras estranhas para a ciência."
 	icon_state = "module_general"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner, /obj/item/robot_model/sci)
@@ -113,7 +113,7 @@
 
 /obj/item/borg/upgrade/pinpointer/vent
 	name = "Vent Pinpointer"
-	desc = "A modularized tracking device. It will locate and point to nearby vents."
+	desc = "Um dispositivo de rastreamento modularizado. Vai localizar e apontar para as saídas próximas."
 	icon_state = "module_miner"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/miner)
@@ -129,32 +129,32 @@
 			return install(pkamods, usr, FALSE)
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/railgun/cyborg
-	desc = "Portable particle accelerator. Only Usable on lavaland"
+	desc = "Acelerador de partículas portátil. Só utilizável em lavaland."
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/repeater/cyborg
-	desc = "A PKA with a three shot magazine"
+	desc = "Um PKA com uma revista de três tiros"
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/shotgun/cyborg
-	desc = "A PKA that fires three shots with a longer cooldown."
+	desc = "Um PKA que dispara três tiros com uma refrigeração mais longa."
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/glock/cyborg
-	desc = "A Snub Nosed PKA with more mode capacity but less damage and range."
+	desc = "Um Snub Nosed PKA com mais capacidade de modo mas menos danos e alcance."
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/shockwave/cyborg
-	desc = "Creates a shockwave around the user, with the same power as the base PKA."
+	desc = "Cria uma onda de choque em torno do usuário, com o mesmo poder da base PKA."
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
 /obj/item/gun/energy/recharge/kinetic_accelerator/m79/cyborg
-	desc = "Fires the same bombs used by the mining modsuit. Only usable on lavaland"
+	desc = "Dispara as mesmas bombas usadas pelo modsuit de mineração. Só utilizável em lavaland."
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
@@ -226,7 +226,7 @@
 
 /obj/item/borg/upgrade/obediencemodule
 	name = "Cyborg Obedience Module"
-	desc = "A module that greatly upgrades the ability of borgs to display affection."
+	desc = "Um módulo que melhora muito a habilidade dos borgs em demonstrar afeto."
 	icon = 'modular_skyrat/modules/borgs/icons/robot_items.dmi'
 	icon_state = "module_lust"
 	custom_price = 0
@@ -241,7 +241,7 @@
 // WellTrained Obedience Behaviour
 /obj/item/borg/upgrade/obediencemodule/action(mob/living/silicon/robot/borg, mob/living/user)
 	if(borg.hasToys)
-		to_chat(usr, span_warning("This unit already has a 'recreational' module installed!"))
+		to_chat(usr, span_warning("Esta unidade já tem um módulo 'recreativo' instalado!"))
 		return FALSE
 	. = ..()
 	if(.)
@@ -258,7 +258,7 @@
 
 /obj/item/borg/upgrade/detailer
 	name = "janitor detailing toolset"
-	desc = "Upgrades a janitor cyborgs tiling capabilities while adding the ability to modify floor decals."
+	desc = "Melhora as capacidades de tiling de um zelador cyborgs enquanto adiciona a habilidade de modificar decalques de piso."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -270,7 +270,7 @@
 
 /obj/item/borg/upgrade/cyborg_cable_coil
 	name = "integrated cable coil"
-	desc = "Condensed spooling technology allows cabling technology in janitorial modules."
+	desc = "A tecnologia condensada permite a tecnologia de cabeamento em módulos de limpeza."
 	icon_state = "module_janitor"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/janitor)
@@ -282,7 +282,7 @@
 
 /obj/item/borg/upgrade/robotics_rcd
 	name = "Research cyborg synthetic repair tool"
-	desc = "A cut down RCD designed to assist in synthetic repairs."
+	desc = "Um RCD reduzido projetado para ajudar em reparos sintéticos."
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/sci)
 	model_flags = BORG_MODEL_RESEARCH

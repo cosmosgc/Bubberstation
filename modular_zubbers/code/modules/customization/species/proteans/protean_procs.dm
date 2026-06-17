@@ -12,7 +12,7 @@
 	var/datum/species/protean/species = dna.species
 	var/obj/item/mod/control/pre_equipped/protean/suit = species.species_modsuit
 	if(incapacitated && loc != suit)
-		balloon_alert(src, "incapacitated!")
+		balloon_alert(src, "incapacitado!")
 		return
 
 	brain.replace_limbs()
@@ -40,7 +40,7 @@
 		if(!incapacitated)
 			brain.go_into_suit(forced)
 		else
-			balloon_alert(src, "incapacitated!")
+			balloon_alert(src, "incapacitado!")
 
 /mob/living/carbon/proc/low_power()
 	var/datum/species/protean/species = dna.species
@@ -48,13 +48,13 @@
 		return
 	var/obj/item/organ/stomach/protean/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!istype(stomach))
-		to_chat(src, span_warning("You are missing a stomach and can't turn on low power mode"))
+		to_chat(src, span_warning("Você está perdendo um estômago e não pode ligar o modo de baixa potência"))
 		return
 	if(loc == species.species_modsuit)
-		to_chat(src, span_notice("You can't toggle low power when in a suit form!"))
+		to_chat(src, span_notice("Você não pode alternar baixo poder quando em uma forma de terno!"))
 		return
 	if(!do_after(src, 2.5 SECONDS)) // Long enough to where our stomach can process inbetween activations
-		src.loc.balloon_alert(src, "toggle interrupted")
+		src.loc.balloon_alert(src, "alternância interrompida")
 		return
 	var/datum/status_effect/protean_low_power_mode/effect = /datum/status_effect/protean_low_power_mode/low_power
 	if(istype(has_status_effect(effect), effect))

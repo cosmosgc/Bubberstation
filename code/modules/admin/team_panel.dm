@@ -24,7 +24,7 @@
 
 /datum/admins/proc/check_teams()
 	if(!SSticker.HasRoundStarted())
-		tgui_alert(usr,"The game hasn't started yet!")
+		tgui_alert(usr,"O jogo ainda não começou!")
 		return
 
 	var/datum/browser/popup = new(usr, "teams", "Team Listing", 500, 500)
@@ -32,7 +32,7 @@
 	popup.open()
 
 /datum/admins/proc/admin_create_team(mob/user)
-	var/team_name = stripped_input(user,"Team name ?")
+	var/team_name = stripped_input(user,"Nome do time?")
 	if(!team_name)
 		return
 	var/datum/team/T = new()
@@ -43,7 +43,7 @@
 
 /datum/team/proc/admin_rename(mob/user)
 	var/old_name = name
-	var/team_name = stripped_input(user,"new team name ?","Team rename",old_name)
+	var/team_name = stripped_input(user,"Novo nome de equipe?","Equipe renomear",old_name)
 	if(!team_name)
 		return
 	name = team_name
@@ -51,7 +51,7 @@
 	log_admin("[key_name(usr)] renamed [old_name] team to [name]")
 
 /datum/team/proc/admin_communicate(mob/user)
-	var/message = input(user,"Message for the team ?","Team Message") as text|null
+	var/message = input(user,"Mensagem para a equipe?","Mensagem da Equipe") as text|null
 	if(!message)
 		return
 	for(var/datum/mind/M in members)
@@ -66,7 +66,7 @@
 	if(!GLOB.admin_objective_list)
 		generate_admin_objective_list()
 
-	var/selected_type = input("Select objective type:", "Objective type") as null|anything in GLOB.admin_objective_list
+	var/selected_type = input("Selecione o tipo objetivo:", "Tipo objetivo.") as null|anything in GLOB.admin_objective_list
 	selected_type = GLOB.admin_objective_list[selected_type]
 	if (!selected_type)
 		return
@@ -111,7 +111,7 @@
 	for(var/mob/M in GLOB.mob_list)
 		if(M.mind)
 			minds |= M.mind
-	var/datum/mind/value = input("Select new member:", "New team member", null) as null|anything in sort_names(minds)
+	var/datum/mind/value = input("Selecione novo membro:", "Novo membro da equipe", null) as null|anything in sort_names(minds)
 	if (!value)
 		return
 
@@ -128,7 +128,7 @@
 //After a bit of consideration i block team deletion if there's any members left until unified objective handling is in.
 /datum/team/proc/admin_delete(mob/user)
 	if(members.len > 0)
-		to_chat(user,"Team has members left, remove them first and make sure you know what you're doing.", confidential = TRUE)
+		to_chat(user,"A equipe tem membros saindo, remova-os primeiro e certifique-se do que está fazendo.", confidential = TRUE)
 		return
 	qdel(src)
 

@@ -1,6 +1,6 @@
 /obj/item/implantpad//SKYRAT EDIT - ICON OVERRIDDEN BY AESTHETICS - SEE MODULE
 	name = "implant pad"
-	desc = "Used to modify implants."
+	desc = "Usado para modificar implantes."
 	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "implantpad-0"
 	base_icon_state = "implantpad"
@@ -25,13 +25,13 @@
 /obj/item/implantpad/examine(mob/user)
 	. = ..()
 	if(!inserted_case)
-		. += span_info("It is currently empty.")
+		. += span_info("Está atualmente vazio.")
 		return
 
 	if(Adjacent(user))
 		. += span_info("It contains \a [inserted_case].")
 	else
-		. += span_warning("There seems to be something inside it, but you can't quite tell what from here...")
+		. += span_warning("Parece haver algo dentro, mas não dá para saber o que daqui...")
 	. += span_info("Alt-click to remove [inserted_case].")
 
 /obj/item/implantpad/Exited(atom/movable/gone, direction)
@@ -45,7 +45,7 @@
 		return ..()
 	if(!user.transferItemToLoc(attacking_item, src))
 		return
-	user.balloon_alert(user, "case inserted")
+	user.balloon_alert(user, "Caso inserido")
 	inserted_case = attacking_item
 	update_static_data_for_all_viewers()
 	update_appearance(UPDATE_ICON)
@@ -93,12 +93,12 @@
 ///Removes the implant from the pad and puts it in the user's hands if possible.
 /obj/item/implantpad/proc/remove_implant(mob/user)
 	if(!inserted_case)
-		user.balloon_alert(user, "no case inside!")
+		user.balloon_alert(user, "Nenhum caso dentro!")
 		return FALSE
 	add_fingerprint(user)
 	inserted_case.add_fingerprint(user)
 	user.put_in_hands(inserted_case)
-	user.balloon_alert(user, "case removed")
+	user.balloon_alert(user, "Caso removido")
 	update_appearance(UPDATE_ICON)
 	update_static_data_for_all_viewers()
 	return TRUE
@@ -106,15 +106,15 @@
 /// Saves the currently inserted implant's deathrattle group.
 /obj/item/implantpad/proc/save_deathrattle_group(mob/user)
 	if(!inserted_case)
-		user.balloon_alert(user, "no case inside!")
+		user.balloon_alert(user, "Nenhum caso dentro!")
 		return FALSE
 	if(!istype(inserted_case.imp, /obj/item/implant/deathrattle))
-		user.balloon_alert(user, "incompatible implant!")
+		user.balloon_alert(user, "Implante incompatível!")
 		return FALSE
 	var/obj/item/implant/deathrattle/inserted_implant = inserted_case.imp
 	var/datum/deathrattle_group/current_group = inserted_implant.current_group
 	if(!current_group)
-		user.balloon_alert(user, "no active group!")
+		user.balloon_alert(user, "Sem grupo ativo!")
 		return FALSE
 	saved_deathrattle_group = current_group
 	user.balloon_alert(user, "saved group [current_group.name]")
@@ -124,17 +124,17 @@
 /// Sets the currently inserted implant's deathrattle group to saved.
 /obj/item/implantpad/proc/set_deathrattle_group(mob/user)
 	if(!inserted_case)
-		user.balloon_alert(user, "no case inside!")
+		user.balloon_alert(user, "Nenhum caso dentro!")
 		return FALSE
 	if(!saved_deathrattle_group)
-		user.balloon_alert(user, "no saved deathrattle group!")
+		user.balloon_alert(user, "Nenhum grupo de batalha salva!")
 		return FALSE
 	if(!istype(inserted_case.imp, /obj/item/implant/deathrattle))
-		user.balloon_alert(user, "incompatible implant!")
+		user.balloon_alert(user, "Implante incompatível!")
 		return FALSE
 	var/obj/item/implant/deathrattle/inserted_implant = inserted_case.imp
 	if(!istype(saved_deathrattle_group, inserted_implant.deathrattle_group_type))
-		user.balloon_alert(user, "incompatible deathrattle group!")
+		user.balloon_alert(user, "Grupo Deathrattle incompatível!")
 		return FALSE
 	saved_deathrattle_group.register(inserted_implant)
 	user.balloon_alert(user, "registered to group [saved_deathrattle_group.name]")
@@ -145,14 +145,14 @@
 /// Initializes and saves a new deathrattle group, then registers the current implant to it.
 /obj/item/implantpad/proc/init_deathrattle_group(mob/user)
 	if(!inserted_case)
-		user.balloon_alert(user, "no case inside!")
+		user.balloon_alert(user, "Nenhum caso dentro!")
 		return FALSE
 	if(!istype(inserted_case.imp, /obj/item/implant/deathrattle))
-		user.balloon_alert(user, "incompatible implant!")
+		user.balloon_alert(user, "Implante incompatível!")
 		return FALSE
 	var/obj/item/implant/deathrattle/inserted_implant = inserted_case.imp
 	if(inserted_implant.current_group)
-		user.balloon_alert(user, "group already set!")
+		user.balloon_alert(user, "O grupo já está pronto!")
 		return FALSE
 	// init and save new group
 	saved_deathrattle_group = new inserted_implant.deathrattle_group_type

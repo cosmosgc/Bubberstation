@@ -1,7 +1,7 @@
 /// Fires a bloody beam. Brimdemon Blast!
 /datum/action/cooldown/mob_cooldown/brimbeam
 	name = "Brimstone Blast"
-	desc = "Unleash a barrage of infernal energies in the targeted direction."
+	desc = "Liberte uma barragem de energias infernais na direção alvo."
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "brimdemon_firing"
 	background_icon_state = "bg_demon"

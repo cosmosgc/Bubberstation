@@ -5,7 +5,7 @@
 
 /mob/living/basic/mining/gutlunch
 	name = "gutlunch"
-	desc = "A scavenger that eats raw ores, often found alongside ash walkers. Produces a thick, nutritious milk."
+	desc = "Um tesouro que come minérios crus, muitas vezes encontrados ao lado de caminhantes de cinzas. Produz um leite grosso e nutritivo."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "gutlunch"
 	icon_living = "gutlunch"
@@ -24,7 +24,7 @@
 	friendly_verb_continuous = "pinches"
 	friendly_verb_simple = "pinch"
 	gold_core_spawnable = FRIENDLY_SPAWN
-	death_message = "is pulped into bugmash."
+	death_message = "é mergulhado em massa."
 	greyscale_config = /datum/greyscale_config/gutlunch
 	///possible colors we can have
 	var/list/possible_colors = list(COLOR_WHITE)
@@ -52,7 +52,7 @@
 		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
 	var/obj/ore_food = locate(/obj/item/stack/ore) in target
 	if(isnull(ore_food))
-		balloon_alert(src, "no food!")
+		balloon_alert(src, "Sem comida!")
 	else
 		UnarmedAttack(ore_food, TRUE, modifiers)
 	return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN

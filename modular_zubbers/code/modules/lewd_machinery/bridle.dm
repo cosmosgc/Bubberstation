@@ -1,7 +1,7 @@
 
 /obj/item/clothing/mask/bridle
 	name = "bridle"
-	desc = "A Sunny Stables design of a leather horse bridle, complete with blinders and a bit. It's made of several leather straps and metal fittings. You can tighten or loosen the straps to make sure that the blinders and the bit stay in place."
+	desc = "Um projeto Sunny Stables de um freio de couro de cavalo, completo com ofuscantes e um pouco. É feito de várias tiras de couro e acessórios de metal. Você pode apertar ou afrouxar as alças para ter certeza de que as cegas e a parte ficam no lugar."
 	icon_state = "bridle"
 	inhand_icon_state = "sechailer"
 	icon = 'modular_zubbers/icons/obj/clothing/mask/mask.dmi'
@@ -63,9 +63,9 @@
 		return
 	straps_locked = !straps_locked
 	if(straps_locked)
-		to_chat(user, span_notice("You secure the bridle's straps."))
+		to_chat(user, span_notice("Você segura as correias do freio."))
 	else
-		to_chat(user, span_notice("You loosen the bridle's straps."))
+		to_chat(user, span_notice("Você solta as correias do freio."))
 
 /obj/item/clothing/mask/bridle/proc/get_wearer()
 	var/mob/living/carbon/wearer = istype(loc, /mob/living/carbon) ? loc : null
@@ -82,9 +82,9 @@
 	if(!user)
 		return
 	if(should_show_user_message(user))
-		to_chat(user, span_notice("The straps are too secure to adjust."))
+		to_chat(user, span_notice("As alças são muito seguras para ajustar."))
 	else
-		to_chat(user, span_warning("The straps are too secure!"))
+		to_chat(user, span_warning("As correias são muito seguras!"))
 
 /obj/item/clothing/mask/bridle/examine(mob/user)
 	. = ..()
@@ -215,7 +215,7 @@
 	if(should_show_user_message(user))
 		var/state_text
 		if(blinders_enabled && gag_enabled)
-			state_text = "blinders and bit"
+			state_text = "Cegos e bit"
 		else if(blinders_enabled)
 			state_text = "blinders"
 		else if(gag_enabled)
@@ -234,7 +234,7 @@
 	if(wearer.get_item_by_slot(ITEM_SLOT_MASK) != src)
 		return
 	if(!stripper.Adjacent(wearer))
-		wearer.balloon_alert(stripper, "can't reach!")
+		wearer.balloon_alert(stripper, "Não consigo alcançar!")
 		return
 	if(!do_after(stripper, strip_adjust_delay, wearer))
 		return
@@ -323,7 +323,7 @@
 
 /datum/action/item_action/bridle_toggle_blinders
 	name = "Toggle blinders"
-	desc = "Adjust the bridle blinders."
+	desc = "Ajuste os obturadores de freio."
 
 /datum/action/item_action/bridle_toggle_blinders/Trigger(trigger_flags)
 	if(!..())
@@ -334,7 +334,7 @@
 
 /datum/action/item_action/bridle_toggle_gag
 	name = "Toggle gag"
-	desc = "Adjust the bridle bit."
+	desc = "Ajuste o freio."
 
 /datum/action/item_action/bridle_toggle_gag/Trigger(trigger_flags)
 	if(!..())

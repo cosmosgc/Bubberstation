@@ -70,7 +70,7 @@
 	return ..()
 
 /datum/sm_delam/cascade/examine(obj/machinery/power/supermatter_crystal/sm)
-	return list(span_bolddanger("The crystal is vibrating at immense speeds, warping space around it!"))
+	return list(span_bolddanger("O cristal está vibrando em velocidades imensas, deformando o espaço ao redor dele!"))
 
 /datum/sm_delam/cascade/overlays(obj/machinery/power/supermatter_crystal/sm)
 	return list()

@@ -1,6 +1,6 @@
 /obj/structure/railing/wrestling
 	name = "wrestling ropes"
-	desc = "Ropes that are meant to go around a wrestling ring."
+	desc = "Cordas que devem dar a volta em um ringue de luta."
 	icon = 'modular_skyrat/modules/wrestlingring/icons/wrestling.dmi'
 	icon_state = "ropes"
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.5)
@@ -110,7 +110,7 @@
 /obj/structure/wrestling_corner/wirecutter_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!anchored)
-		to_chat(user, span_warning("You cut apart the turnbuckle."))
+		to_chat(user, span_warning("Você cortou o turnbuckle."))
 		tool.play_tool_sound(src, 100)
 		deconstruct()
 		return TRUE

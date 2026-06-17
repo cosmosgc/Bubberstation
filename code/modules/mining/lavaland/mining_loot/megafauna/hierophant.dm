@@ -2,7 +2,7 @@
 
 /obj/item/hierophant_club
 	name = "hierophant club"
-	desc = "The shriveled remains of the Hierophant hold some remnant of its power. It used it to beat you, but now you can set the beat."
+	desc = "Os restos encolhidos do Hierofante têm algum resto de seu poder. Usou para bater em você, mas agora você pode definir o ritmo."
 	icon_state = "hierophant_club"
 	inhand_icon_state = "hierophant_club"
 	icon_angle = -135
@@ -44,9 +44,9 @@
 /obj/item/hierophant_club/examine(mob/user)
 	. = ..()
 	if (beacon)
-		. += span_hierophant_warning("The beacon is currently detached.")
+		. += span_hierophant_warning("O sinal está desligado.")
 	else
-		. += span_hierophant_warning("There is a beacon attached at the back end of the handle.")
+		. += span_hierophant_warning("Há um farol preso na parte de trás do cabo.")
 
 /obj/item/hierophant_club/equipped(mob/user)
 	. = ..()
@@ -114,7 +114,7 @@
 
 /obj/item/hierophant_club/ui_action_click(mob/user, action)
 	if (teleporting)
-		balloon_alert(user, "already in use!")
+		balloon_alert(user, "Já está em uso!")
 		return
 
 	if (!user.is_holding(src))
@@ -126,16 +126,16 @@
 		return
 
 	if (get_dist(user, beacon) <= 2)
-		balloon_alert(user, "too close to the beacon!")
+		balloon_alert(user, "Muito perto do farol!")
 		return
 
 	var/turf/beacon_turf = get_turf(beacon)
 	if (!beacon_turf || beacon_turf.is_blocked_turf(TRUE))
-		balloon_alert(user, "the beacon is blocked!")
+		balloon_alert(user, "O sinal está bloqueado!")
 		return
 
 	if (!isturf(user.loc))
-		balloon_alert(user, "not enough room to teleport!")
+		balloon_alert(user, "Não há espaço para teletransporte!")
 		return
 
 	var/turf/user_turf = get_turf(user)
@@ -147,19 +147,19 @@
 	var/obj/effect/temp_visual/hierophant/telegraph/edge/beacon_telegraph = new /obj/effect/temp_visual/hierophant/telegraph/edge(beacon_turf)
 	if (!do_after(user, 4 SECONDS, user))
 		if (user)
-			balloon_alert(user, "interrupted!")
+			balloon_alert(user, "Interrompido!")
 		stop_teleport(user)
 		qdel(user_telegraph)
 		qdel(beacon_telegraph)
 		return
 
 	if (!beacon)
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		stop_teleport(user)
 		return
 
 	if (beacon_turf.is_blocked_turf(TRUE))
-		balloon_alert(user, "the beacon is blocked!")
+		balloon_alert(user, "O sinal está bloqueado!")
 		stop_teleport(user)
 		return
 
@@ -207,13 +207,13 @@
 /// Attempts to place a return beacon at user's feet
 /obj/item/hierophant_club/proc/deploy_beacon(mob/user)
 	if (!isopenturf(user.loc) && !isopenspaceturf(user.loc))
-		to_chat(user, span_warning("You need to be on solid ground to detach the beacon!"))
+		to_chat(user, span_warning("Você precisa estar em solo sólido para soltar o farol!"))
 		return
 
-	user.visible_message(span_hierophant_warning("[user] starts fiddling with [src]'s pommel..."), span_notice("You start detaching the hierophant beacon..."))
-	balloon_alert(user, "detaching the beacon...")
+	user.visible_message(span_hierophant_warning("[user] starts fiddling with [src]'s pommel..."), span_notice("Você começa a separar o farol hierofante..."))
+	balloon_alert(user, "Desamarrando o farol...")
 	if (!do_after(user, 5 SECONDS, user))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return
 
 	// Already dropped one
@@ -227,8 +227,8 @@
 	RegisterSignal(beacon, COMSIG_QDELETING, PROC_REF(beacon_destroyed))
 
 	user.update_mob_action_buttons()
-	user.visible_message(span_hierophant_warning("[user] places a strange machine beneath [user.p_their()] feet!"), span_hierophant("You detach the hierophant beacon, allowing you to teleport yourself and any allies to it at any time!"))
-	to_chat(user, span_hierophant("You can remove the beacon to place it again by striking it with the club."))
+	user.visible_message(span_hierophant_warning("[user] places a strange machine beneath [user.p_their()] feet!"), span_hierophant("Você descola o farol hierofante, permitindo que você se teletransporte e qualquer aliado a ele a qualquer momento!"))
+	to_chat(user, span_hierophant("Você pode remover o farol para colocá-lo novamente batendo-lo com o clube."))
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/hierophant_club/proc/beacon_destroyed(datum/source)
@@ -257,7 +257,7 @@
 /datum/action/innate/dash/hierophant/teleport(mob/user, atom/target)
 	var/dist = get_dist(user, target)
 	if(dist > HIEROPHANT_BLINK_RANGE)
-		user.balloon_alert(user, "too far!")
+		user.balloon_alert(user, "Muito longe!")
 		return FALSE
 
 	return ..()

@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/ghostliness
 	name = "Forsake Body"
-	desc = "A spell that severs your soul from your body, loosely binding it to the material plane."
+	desc = "Um feitiço que separa sua alma do seu corpo, amarrando-a vagamente ao plano material."
 	button_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 
@@ -19,7 +19,7 @@
 
 	if(!is_valid_target(owner))
 		if(feedback)
-			owner.balloon_alert(owner, "no soul!")
+			owner.balloon_alert(owner, "Nenhuma alma!")
 		return FALSE
 
 	return TRUE
@@ -31,20 +31,20 @@
 	. = ..()
 
 	if(isspirit(cast_on))
-		to_chat(cast_on, span_green("You begin to focus on loosening the bonds holding you to the material plane."))
+		to_chat(cast_on, span_green("Você começa a se concentrar em afrouxar os laços que o prendem ao avião material."))
 	else
-		to_chat(cast_on, span_green("You begin to focus on your very being, drawing it out of its corporeal vessel..."))
+		to_chat(cast_on, span_green("Você começa a se concentrar em seu próprio ser, tirando-o de sua nave corporal..."))
 	if(!do_after(cast_on, 5 SECONDS))
 		if(isspirit(cast_on))
-			to_chat(cast_on, span_warning("Your focus is broken, and you feel your material bindings snap tight once more."))
+			to_chat(cast_on, span_warning("Seu foco está quebrado, e você sente que suas ligações materiais se apertam mais uma vez."))
 		else
-			to_chat(cast_on, span_warning("Your focus is broken, and your soul snaps back into place."))
+			to_chat(cast_on, span_warning("Seu foco está quebrado, e sua alma volta ao lugar."))
 		return
 	if(isspirit(cast_on))
-		to_chat(cast_on, span_green("You successfully loosen your bonds to the material plane, and can now slip partially out of it."))
+		to_chat(cast_on, span_green("Você consegue soltar suas ligações para o avião material, e agora pode escapar parcialmente dele."))
 	else
-		to_chat(cast_on, span_danger("As the last trailing filament of your essence ceases intersection with your body, \
-		your perspective abruptly snaps to your new, ghostly figure! Your former vessel falls to the ground, vacant and devoid of volition!"))
+		to_chat(cast_on, span_danger("Como o último filamento de sua essência cessa a interseção com seu corpo,\
+Sua perspectiva se encaixa abruptamente em sua nova figura fantasmagórica! Sua antiga nave cai no chão, vazia e desprovida de vontade!"))
 		var/mob/living/carbon/human/soulless_husk = new(cast_on.drop_location())
 		soulless_husk.setDir(cast_on.dir)
 		cast_on.dna.copy_dna(soulless_husk.dna, ALL)

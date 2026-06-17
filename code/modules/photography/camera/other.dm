@@ -1,6 +1,6 @@
 /obj/item/camera/spooky
 	name = "camera obscura"
-	desc = "A polaroid camera, some say it can see ghosts!"
+	desc = "Uma câmera polaróide, alguns dizem que pode ver fantasmas!"
 	see_ghosts = CAMERA_SEE_GHOSTS_BASIC
 
 /obj/item/camera/spooky/steal_souls(list/victims)
@@ -16,17 +16,17 @@
 
 		target.visible_message(
 			span_warning("[target] violently flinches!"),
-			span_revendanger("You feel your essence draining away from having your picture taken!"),
+			span_revendanger("Você sente sua essência drenando de ter sua foto tirada!"),
 		)
 		target.apply_damage(rand(10, 15))
 
 /obj/item/camera/spooky/badmin
-	desc = "A polaroid camera, some say it can see ghosts! It seems to have an extra magnifier on the end."
+	desc = "Uma câmera polaróide, alguns dizem que pode ver fantasmas! Parece ter uma lupa extra no final."
 	see_ghosts = CAMERA_SEE_GHOSTS_ORBIT
 
 /obj/item/camera/detective
 	name = "detective's camera"
-	desc = "A silent polaroid camera with extra capacity for crime investigations."
+	desc = "Uma câmera polaróide silenciosa com capacidade extra para investigações criminais."
 	print_monochrome = TRUE
 	flash_enabled = FALSE
 	silent = TRUE

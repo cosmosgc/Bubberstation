@@ -9,13 +9,13 @@
  */
 /datum/heretic_knowledge/codex_morbus
 	name = "Codex Morbus"
-	desc = "Allows you to to combine a codex cicatrix, and a body into a Codex Morbus. \
-		It draws runes and siphons essences a bit faster. \
-		Right Click on a rune to curse crewmembers, the target's blood is required in your off hand for a curse to take effect (Best combined with Phylactery Of Damnation)."
-	gain_text = "The spine of this leather-bound tome creaks with an eerily pained sigh. \
-		To ply page from place takes considerable effort, and I dare not linger on the suggestions the book makes for longer than necessary. \
-		It speaks of coming plagues, of waiting supplicants of dead and forgotten gods, and the undoing of mortal kind. \
-		It speaks of needles to peel the skin of the world back and leaving it to fester. And it speaks to me by name."
+	desc = "Permite que você combine uma cicatrix códice, e um corpo em um Códice Morbus.\
+Ele desenha runas e suga essências um pouco mais rápido.\
+Clique em uma runa para amaldiçoar membros da tripulação, o sangue do alvo é exigido em sua mão para que uma maldição faça efeito."
+	gain_text = "A espinha desse couro range com um suspiro terrivelmente doloroso.\
+Para ply page do lugar faz um esforço considerável, e eu não ouso demorar nas sugestões que o livro faz por mais tempo do que o necessário.\
+Fala de pragas vindouras, de suplicantes de deuses mortos e esquecidos, e a ruína da espécie mortal.\
+Ele fala de agulhas para descascar a pele do mundo de volta e deixá-la apodrecer. E me fala pelo nome."
 	required_atoms = list(
 		/obj/item/codex_cicatrix = 1,
 		/mob/living/carbon/human = 1,
@@ -38,15 +38,15 @@
 
 /datum/heretic_knowledge/greaves_of_the_prophet
 	name = "Greaves Of The Prophet"
-	desc = "Allows you to combine a pair of shoes and 2 sheets of titanium or silver into a pair of Armored Greaves, they confer to the user full immunity to slips."
+	desc = "Permite combinar um par de sapatos e duas folhas de titânio ou prata em um par de Greaves blindados, eles conferem ao usuário imunidade total para escorregar."
 	gain_text = " \
-		Gristle churns into joint, a pop, and the fool twists a blackened foot from the \
-		jaws of another. At their game for centuries, this mangled tree of limbs twists, \
-		thrashing snares buried into snarling gums, seeking to shred the weight of grafted \
-		neighbors. Weighed down by lacerated feet, this canopy of rancid idiots ever seeks \
-		the undoing of its own bonds. I dread the thought of walking in their wake, but \
-		I must press on all the same. Their rhythms keep the feud fresh with indifference \
-		to barrier or border. Pulling more into their turmoil as they waltz."
+Gristle gira em conjunto, um pop, e o tolo torce um pé preto do\
+mandíbulas de outro. Em seu jogo por séculos, esta árvore mutilada de membros torce,\
+Derrubando armadilhas enterradas em gengivas roncando, procurando rasgar o peso do enxertado\
+Vizinhos. Pesado por pés lacerados, este dossel de idiotas rançosos sempre procura\
+A ruína de seus próprios laços. Eu temo a idéia de andar em seu caminho, mas\
+Eu devo pressionar do mesmo jeito. Seus ritmos mantêm a rixa fresca com indiferença\
+à barreira ou fronteira. Colocando mais em seu tumulto enquanto valsa."
 	required_atoms = list(
 		/obj/item/clothing/shoes = 1,
 		list(/obj/item/stack/sheet/mineral/titanium, /obj/item/stack/sheet/mineral/silver) = 2,
@@ -59,9 +59,9 @@
 
 /datum/heretic_knowledge/spell/opening_blast
 	name = "Wave Of Desperation"
-	desc = "Grants you Wave Of Desparation, a spell which can only be cast while restrained. \
-		It removes your restraints, repels and knocks down adjacent people, and applies the Mansus Grasp to everything nearby."
-	gain_text = "My shackles undone in dark fury, their feeble bindings crumble before my power."
+	desc = "Concede-lhe Onda de Desparação, um feitiço que só pode ser lançado enquanto está contido.\
+Ele remove suas amarras, repele e derruba pessoas adjacentes, e aplica o Mansus Grasp em tudo próximo."
+	gain_text = "Minhas algemas desfeitas em fúria escura, suas amarras fracas se desfazem diante do meu poder."
 
 	action_to_add = /datum/action/cooldown/spell/aoe/wave_of_desperation
 	cost = 2
@@ -69,11 +69,11 @@
 
 /datum/heretic_knowledge/rune_carver
 	name = "Carving Knife"
-	desc = "Allows you to transmute a knife, a shard of glass, and a piece of paper to create a Carving Knife. \
-		The Carving Knife allows you to etch difficult to see traps that trigger on heathens who walk overhead. \
-		Also makes for a handy throwing weapon."
-	gain_text = "Etched, carved... eternal. There is power hidden in everything. I can unveil it! \
-		I can carve the monolith to reveal the chains!"
+	desc = "Permite que transmute uma faca, um pedaço de vidro, e um pedaço de papel para criar uma faca esculpida.\
+A Faca de Esculpir permite que você etch difícil de ver armadilhas que desencadeiam pagãos que andam acima.\
+Também é uma arma de atirar."
+	gain_text = "Esculpida, esculpida... Eterna. Há poder escondido em tudo. Eu posso revelar!\
+Posso esculpir o monólito para revelar as correntes!"
 	required_atoms = list(
 		/obj/item/knife = 1,
 		/obj/item/shard = 1,
@@ -87,11 +87,11 @@
 
 /datum/heretic_knowledge/ether
 	name = "Ether Of The Newborn"
-	desc = "Transmutes a pool of vomit and a shard into a single use potion, drinking it will remove any sort of abnormality from your body including diseases, traumas and implants \
-		on top of restoring it to full health, at the cost of losing consciousness for an entire minute."
-	gain_text = "Vision and thought grow hazy as the fumes of this ichor swirl up to meet me. \
-		Through the haze, I find myself staring back in relief, or something grossly resembling my visage. \
-		It is this wretched thing that I consign to my fate, and whose own that I snatch through the haze of dreams. Fools that we are."
+	desc = "Transmuta uma poça de vômito e um caco em uma poção de uso único, bebendo-a irá remover qualquer tipo de anormalidade do seu corpo, incluindo doenças, traumas e implantes.\
+além de restaurá-lo à plena saúde, ao custo de perder a consciência por um minuto inteiro."
+	gain_text = "A visão e o pensamento ficam nebulosos à medida que os vapores desse ichor giram para me encontrar.\
+Através da neblina, eu me encontro olhando para trás em alívio, ou algo grosseiramente parecido com minha aparência.\
+É essa coisa miserável que eu conferi ao meu destino, e de quem eu arrebato através da névoa dos sonhos. Tolos que somos."
 	required_atoms = list(
 		/obj/item/shard = 1,
 		/obj/effect/decal/cleanable/vomit = 1,
@@ -104,15 +104,15 @@
 
 /datum/heretic_knowledge/painting
 	name = "Unsealed Arts"
-	desc = "Allows you to transmute a canvas and an additional item to create a painting. \
-			Each painting has a unique effect and recipe. Possible paintings: \
-			The Sister and He Who Wept: Requires a pair of Eyes. Clears your own mind, and curses non-heretics with hallucinations. \
-			The Feast of Desire: Requires a severed limb. Supplies you with random organs, and curses non-heretics with a hunger for flesh. \
-			Great Chaparral Over Rolling Hills: Requires any plant produce. Spreads kudzu when placed, and supplies you with poppies and harebells. \
-			Lady of the Gate: Requires any pair of Gloves. Clears your mutations, mutates non-heretics and curses them with scratching. \
-			Master of the Rusted Mountain: Requires a piece of Trash. Curses non-heretics to rust the floor they walk on."
-	gain_text = "A wind of inspiration blows through me. Beyond the veil and past the gate great works exist, yet to be painted. \
-				They yearn for mortal eyes, so I shall give them an audience."
+	desc = "Permite que transmute uma tela e um item adicional para criar uma pintura.\
+Cada pintura tem um efeito único e receita. Possíveis pinturas:\
+A irmã e aquele que chorou requer um par de olhos. Limpa sua mente, e amaldiçoa não hereges com alucinações.\
+A Festa do Desejo requer um membro cortado. Fornece órgãos aleatórios, e amaldiçoa não hereges com fome de carne.\
+Grande Chaparral Over Rolling Hills requer qualquer produto vegetal. Espalha kudzu quando colocado, e lhe fornece papoulas e lebres.\
+Requer qualquer par de luvas. Limpa suas mutações, muta não hereges e as amaldiçoa com arranhões.\
+Mestre da Montanha Rusted requer um pedaço de Lixo. Malditos não hereges para enferrujar o chão em que andam."
+	gain_text = "Um vento de inspiração sopra através de mim. Além do véu e depois do portão existem grandes obras, ainda para serem pintadas.\
+Eles anseiam por olhos mortais, então lhes darei uma audiência."
 	required_atoms = list(/obj/item/canvas = 1)
 	result_atoms = list(/obj/item/canvas)
 	cost = 2
@@ -161,5 +161,5 @@
 		)
 		return TRUE
 
-	user.balloon_alert(user, "no additional atom present!")
+	user.balloon_alert(user, "Nenhum átomo adicional presente!")
 	return FALSE

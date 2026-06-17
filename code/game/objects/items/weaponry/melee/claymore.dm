@@ -1,6 +1,6 @@
 /obj/item/claymore
 	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	desc = "Por que está olhando para isso? Comecem a matar!"
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "claymore"
 	inhand_icon_state = "claymore"
@@ -54,7 +54,7 @@
 //statistically similar to e-cutlasses
 /obj/item/claymore/cutlass
 	name = "cutlass"
-	desc = "A piratey sword used by buckaneers to \"negotiate\" the transfer of treasure."
+	desc = "Uma espada pirata usada por buckaneers para\"negociar\"a transferência do tesouro."
 	icon_state = "cutlass"
 	inhand_icon_state = "cutlass"
 	worn_icon_state = "cutlass"
@@ -71,7 +71,7 @@
 
 /obj/item/claymore/cutlass/old
 	name = "old cutlass"
-	desc = parent_type::desc + " This one seems a tad old."
+	desc = parent_type::desc + "Este parece um pouco velho."
 	force = 24
 	throwforce = 17
 	armour_penetration = 20
@@ -79,7 +79,7 @@
 
 /obj/item/claymore/carrot
 	name = "carrot sword"
-	desc = "A full-sized carrot sword. Definitely <b>not</b> good for the eyes, not anymore."
+	desc = "Uma espada de cenoura. Com certeza.<b>Não.</b>Bom para os olhos, não mais."
 	icon_state = "carrot_sword"
 	inhand_icon_state = "carrot_sword"
 	worn_icon_state = "carrot_sword"
@@ -95,7 +95,7 @@
 //bootleg claymore
 /obj/item/claymore/shortsword
 	name = "shortsword"
-	desc = "A mercenary's sword, chipped and worn from battles long gone. You could say it is a swordsman's shortsword short sword."
+	desc = "A espada de um mercenário, lascada e usada de batalhas há muito tempo. Pode-se dizer que é a espada curta de um espadachim."
 	icon_state = "shortsword"
 	inhand_icon_state = "shortsword"
 	worn_icon_state = "shortsword"
@@ -105,7 +105,7 @@
 	block_chance = 30
 
 /obj/item/claymore/highlander //ALL COMMENTS MADE REGARDING THIS SWORD MUST BE MADE IN ALL CAPS
-	desc = "<b><i>THERE CAN BE ONLY ONE, AND IT WILL BE YOU!!!</i></b>\nActivate it in your hand to point to the nearest victim."
+	desc = "<b><i>Só pode haver um, e será você!</i></b>\nAtive na sua mão para apontar para a vítima mais próxima."
 	obj_flags = CONDUCTS_ELECTRICITY
 	item_flags = DROPDEL //WOW BRO YOU LOST AN ARM, GUESS WHAT YOU DONT GET YOUR SWORD ANYMORE //I CANT BELIEVE SPOOKYDONUT WOULD BREAK THE REQUIREMENTS
 	slot_flags = null
@@ -124,7 +124,7 @@
 /obj/item/claymore/highlander/Destroy()
 	if(nuke_disk)
 		nuke_disk.forceMove(get_turf(src))
-		nuke_disk.visible_message(span_warning("The nuke disk is vulnerable!"))
+		nuke_disk.visible_message(span_warning("O disco nuclear está vulnerável!"))
 		nuke_disk = null
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -141,13 +141,13 @@
 
 /obj/item/claymore/highlander/pickup(mob/living/user)
 	. = ..()
-	to_chat(user, span_notice("The power of Scotland protects you! You are shielded from all stuns and knockdowns."))
+	to_chat(user, span_notice("O poder da Escócia protege você! Você está protegido de todos os choques e nocautes."))
 	user.ignore_slowdown(HIGHLANDER_TRAIT)
 	user.add_stun_absorption(
 		source = HIGHLANDER_TRAIT,
 		message = span_warning("%EFFECT_OWNER is protected by the power of Scotland!"),
-		self_message = span_boldwarning("The power of Scotland absorbs the stun!"),
-		examine_message = span_warning("%EFFECT_OWNER_THEYRE protected by the power of Scotland!"),
+		self_message = span_boldwarning("O poder da Escócia absorve o atordoamento!"),
+		examine_message = span_warning("EFEITO DO CAMPO Protegido pelo poder da Escócia!"),
 	)
 
 /obj/item/claymore/highlander/dropped(mob/living/user)
@@ -159,14 +159,14 @@
 	. = ..()
 	. += "It has [!notches ? "nothing" : "[notches] notches"] scratched into the blade."
 	if(nuke_disk)
-		. += span_boldwarning("It's holding the nuke disk!")
+		. += span_boldwarning("Está segurando o disco da bomba!")
 
 /obj/item/claymore/highlander/attack(mob/living/target, mob/living/user)
 	. = ..()
 	if(!QDELETED(target) && target.stat == DEAD && target.mind?.has_antag_datum(/datum/antagonist/highlander))
 		user.fully_heal() //STEAL THE LIFE OF OUR FALLEN FOES
 		add_notch(user)
-		target.visible_message(span_warning("[target] crumbles to dust beneath [user]'s blows!"), span_userdanger("As you fall, your body crumbles to dust!"))
+		target.visible_message(span_warning("[target] crumbles to dust beneath [user]'s blows!"), span_userdanger("Enquanto você cai, seu corpo desmorona em pó!"))
 		target.investigate_log("has been dusted by a highlander claymore.", INVESTIGATE_DEATHS)
 		target.dust()
 
@@ -195,43 +195,43 @@
 	switch(notches)
 		if(1)
 			to_chat(user, span_notice("Your first kill - hopefully one of many. You scratch a notch into [src]'s blade."))
-			to_chat(user, span_warning("You feel your fallen foe's soul entering your blade, restoring your wounds!"))
+			to_chat(user, span_warning("Você sente a alma do seu inimigo caído entrando em sua lâmina, restaurando suas feridas!"))
 			new_name = "notched claymore"
 		if(2)
-			to_chat(user, span_notice("Another falls before you. Another soul fuses with your own. Another notch in the blade."))
+			to_chat(user, span_notice("Outra queda antes de você. Outra alma se funde com a sua. Outro entalhe na lâmina."))
 			new_name = "double-notched claymore"
 			add_atom_colour(rgb(255, 235, 235), ADMIN_COLOUR_PRIORITY)
 		if(3)
-			to_chat(user, span_notice("You're beginning to</span> <span class='danger'><b>relish</b> the <b>thrill</b> of <b>battle.</b>"))
+			to_chat(user, span_notice("Você está começando a</span> <span class='danger'><b>Alegria</b>O<b>Emoção</b>de<b>Batalha.</b>"))
 			new_name = "triple-notched claymore"
 			add_atom_colour(rgb(255, 215, 215), ADMIN_COLOUR_PRIORITY)
 		if(4)
-			to_chat(user, span_notice("You've lost count of</span> <span class='bolddanger'>how many you've killed."))
+			to_chat(user, span_notice("Você perdeu a conta de</span> <span class='bolddanger'>Quantos você matou."))
 			new_name = "many-notched claymore"
 			add_atom_colour(rgb(255, 195, 195), ADMIN_COLOUR_PRIORITY)
 		if(5)
-			to_chat(user, span_bolddanger("Five voices now echo in your mind, cheering the slaughter."))
+			to_chat(user, span_bolddanger("Cinco vozes agora ecoam em sua mente, aplaudindo o massacre."))
 			new_name = "battle-tested claymore"
 			add_atom_colour(rgb(255, 175, 175), ADMIN_COLOUR_PRIORITY)
 		if(6)
-			to_chat(user, span_bolddanger("Is this what the vikings felt like? Visions of glory fill your head as you slay your sixth foe."))
+			to_chat(user, span_bolddanger("É assim que os Vikings se sentiam? Visões de glória enchem sua cabeça enquanto mata seu sexto inimigo."))
 			new_name = "battle-scarred claymore"
 			add_atom_colour(rgb(255, 155, 155), ADMIN_COLOUR_PRIORITY)
 		if(7)
-			to_chat(user, span_bolddanger("Kill. Butcher. <i>Conquer.</i>"))
+			to_chat(user, span_bolddanger("Matar. Açougueiro.<i>Conquistar.</i>"))
 			new_name = "vicious claymore"
 			add_atom_colour(rgb(255, 135, 135), ADMIN_COLOUR_PRIORITY)
 		if(8)
-			to_chat(user, span_userdanger("IT NEVER GETS OLD. THE <i>SCREAMING</i>. THE <i>BLOOD</i> AS IT <i>SPRAYS</i> ACROSS YOUR <i>FACE.</i>"))
+			to_chat(user, span_userdanger("Nunca fica velho. O<i>Gritando</i>O .<i>SANGUE</i>Como ele<i>SPRAYS</i>Cruze o seu<i>Cara.</i>"))
 			new_name = "bloodthirsty claymore"
 			add_atom_colour(rgb(255, 115, 115), ADMIN_COLOUR_PRIORITY)
 		if(9)
-			to_chat(user, span_userdanger("ANOTHER ONE FALLS TO YOUR BLOWS. ANOTHER WEAKLING UNFIT TO LIVE."))
+			to_chat(user, span_userdanger("Outro cai para seus sopros. Outro fraco para viver."))
 			new_name = "gore-stained claymore"
 			add_atom_colour(rgb(255, 95, 95), ADMIN_COLOUR_PRIORITY)
 		if(10)
 			user.visible_message(span_warning("[user]'s eyes light up with a vengeful fire!"), \
-			span_userdanger("YOU FEEL THE POWER OF VALHALLA FLOWING THROUGH YOU! <i>THERE CAN BE ONLY ONE!!!</i>"))
+			span_userdanger("Você sente o poder de Valhalla fluindo através de você!<i>Só pode haver um!</i>"))
 			new_name = "GORE-DRENCHED CLAYMORE OF [pick("THE WHIMSICAL SLAUGHTER", "A THOUSAND SLAUGHTERED CATTLE", "GLORY AND VALHALLA", "ANNIHILATION", "OBLITERATION")]"
 			icon_state = "claymore_gold"
 			inhand_icon_state = "cultblade"
@@ -257,7 +257,7 @@
 
 /obj/item/claymore/gladius
 	name = "gladius"
-	desc = "A short but formidable sword, favored by recently-reanimated ancient warriors."
+	desc = "Uma espada curta, mas formidável, favorecida por guerreiros antigos recentemente reanimados."
 	icon = 'icons/obj/weapons/sword.dmi'
 	icon_state = "gladius"
 	inhand_icon_state = "gladius"

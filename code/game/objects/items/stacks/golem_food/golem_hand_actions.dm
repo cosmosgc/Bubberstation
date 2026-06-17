@@ -6,7 +6,7 @@
 /// Lets you hold a gibtonite ore in one hand and shoot it like a gun
 /obj/item/gibtonite_hand
 	name = "stabilised gibtonite fist"
-	desc = "You had better launch this at something before it comes out the other end of your body."
+	desc = "É melhor lançar isso em algo antes que saia do outro lado do seu corpo."
 	icon = 'icons/obj/ore.dmi'
 	icon_state = "Gibtonite ore"
 	lefthand_file = 'icons/mob/inhands/golem_lefthand.dmi'
@@ -58,7 +58,7 @@
 /// Point at a target and teleport somewhere vaguely close to it
 /obj/item/bluespace_finger
 	name = "bluespace knot"
-	desc = "Firmly grasp reality and pull yourself to a nearby location."
+	desc = "Agarre firmemente a realidade e vá para um lugar próximo."
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "bluespace"
 	lefthand_file = 'icons/mob/inhands/golem_lefthand.dmi'
@@ -78,10 +78,10 @@
 /obj/item/bluespace_finger/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	var/turf/target_turf = get_turf(interacting_with)
 	if (get_dist(target_turf, get_turf(src)) > teleport_range)
-		balloon_alert(user, "too far!")
+		balloon_alert(user, "Muito longe!")
 		return ITEM_INTERACT_BLOCKING
 	if (target_turf.is_blocked_turf(exclude_mobs = TRUE))
-		balloon_alert(user, "no room!")
+		balloon_alert(user, "Não há espaço!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/effect/temp_visual/teleport_golem/landing_indicator = new(target_turf)

@@ -1,7 +1,7 @@
 /// Make a sticky web under yourself for area fortification
 /datum/action/cooldown/mob_cooldown/lay_web
 	name = "Spin Web"
-	desc = "Spin a web to slow down potential prey."
+	desc = "Rode uma teia para diminuir o potencial de presa."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "spider_web"
 	background_icon_state = "bg_alien"
@@ -31,19 +31,19 @@
 		return FALSE
 	if(DOING_INTERACTION(owner, DOAFTER_SOURCE_SPIDER))
 		if (feedback)
-			owner.balloon_alert(owner, "busy!")
+			owner.balloon_alert(owner, "Ocupado!")
 		return FALSE
 	if(!isturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "invalid location!")
+			owner.balloon_alert(owner, "Localização inválida!")
 		return FALSE
 	if(HAS_TRAIT(owner.loc, TRAIT_SPINNING_WEB_TURF))
 		if (feedback)
-			owner.balloon_alert(owner, "already being webbed!")
+			owner.balloon_alert(owner, "Já está sendo dobrado!")
 		return FALSE
 	if(obstructed_by_other_web())
 		if (feedback)
-			owner.balloon_alert(owner, "already webbed!")
+			owner.balloon_alert(owner, "Já está na teia!")
 		return FALSE
 	return TRUE
 
@@ -63,7 +63,7 @@
 	if(do_after(owner, webbing_time, target = spider_turf, interaction_key = DOAFTER_SOURCE_SPIDER) && owner.loc == spider_turf)
 		plant_web(spider_turf, web)
 	else
-		owner?.balloon_alert(owner, "interrupted!") // Null check because we might have been interrupted via being disintegrated
+		owner?.balloon_alert(owner, "Interrompido!") // Null check because we might have been interrupted via being disintegrated
 	REMOVE_TRAIT(spider_turf, TRAIT_SPINNING_WEB_TURF, REF(src))
 	build_all_button_icons()
 
@@ -73,7 +73,7 @@
 
 /// Variant for genetics, created webs only allow the creator passage
 /datum/action/cooldown/mob_cooldown/lay_web/genetic
-	desc = "Spin a web. Only you will be able to traverse your web easily."
+	desc = "Gire uma teia. Só você poderá atravessar sua teia facilmente."
 	cooldown_time = 4 SECONDS
 
 /datum/action/cooldown/mob_cooldown/lay_web/genetic/plant_web(turf/target_turf, obj/structure/spider/stickyweb/existing_web)
@@ -81,7 +81,7 @@
 
 /// Variant which allows webs to be stacked into walls
 /datum/action/cooldown/mob_cooldown/lay_web/sealer
-	desc = "Spin a web to slow down potential prey. Webs can be stacked to make solid structures."
+	desc = "Rode uma teia para diminuir o potencial de presa. Teias podem ser empilhadas para fazer estruturas sólidas."
 
 /datum/action/cooldown/mob_cooldown/lay_web/sealer/plant_web(turf/target_turf, obj/structure/spider/stickyweb/existing_web)
 	if (existing_web)
@@ -95,7 +95,7 @@
 
 /datum/action/cooldown/mob_cooldown/lay_web/solid_web
 	name = "Spin Solid Web"
-	desc = "Spin a web to obstruct potential prey."
+	desc = "Rode uma teia para obstruir potenciais presas."
 	button_icon_state = "spider_wall"
 	cooldown_time = 0 SECONDS
 	webbing_time = 5 SECONDS
@@ -108,7 +108,7 @@
 
 /datum/action/cooldown/mob_cooldown/lay_web/web_passage
 	name = "Spin Web Passage"
-	desc = "Spin a web passage to hide the nest from prey view."
+	desc = "Rode uma passagem para esconder o ninho da vista das presas."
 	button_icon_state = "spider_roof"
 	cooldown_time = 0 SECONDS
 	webbing_time = 4 SECONDS
@@ -121,7 +121,7 @@
 
 /datum/action/cooldown/mob_cooldown/lay_web/sticky_web
 	name = "Spin Sticky Web"
-	desc = "Spin a sticky web to trap intruders."
+	desc = "Rode uma teia pegajosa para prender intrusos."
 	button_icon_state = "spider_ropes"
 	cooldown_time = 20 SECONDS
 	webbing_time = 3 SECONDS
@@ -134,7 +134,7 @@
 
 /datum/action/cooldown/mob_cooldown/lay_web/web_spikes
 	name = "Spin Web Spikes"
-	desc = "Extrude silk spikes to dissuade invaders."
+	desc = "Extrudir espinhos de seda para dissuadir invasores."
 	button_icon_state = "spider_spikes"
 	cooldown_time = 40 SECONDS
 	webbing_time = 3 SECONDS
@@ -148,8 +148,8 @@
 /// Makes a solid statue which you can use as cover
 /datum/action/cooldown/mob_cooldown/web_effigy
 	name = "Web Effigy"
-	desc = "Shed durable webbing in the shape of your body. It is intimidating and can obstruct attackers. \
-		It will decay after some time."
+	desc = "Abriu uma teia durável na forma do seu corpo. É intimidante e pode obstruir atacantes.\
+Vai se deteriorar depois de algum tempo."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "shed_web_carcass"
 	background_icon_state = "bg_alien"
@@ -165,7 +165,7 @@
 		return FALSE
 	if(!isturf(owner.loc))
 		if (feedback)
-			owner.balloon_alert(owner, "invalid location!")
+			owner.balloon_alert(owner, "Localização inválida!")
 		return FALSE
 	return TRUE
 
@@ -175,7 +175,7 @@
 
 /datum/action/cooldown/mob_cooldown/lay_web/web_reflector
 	name = "Spin reflective silk screen"
-	desc = "Spin a web to reflect missiles from the nest."
+	desc = "Rode uma teia para refletir mísseis do ninho."
 	button_icon_state = "spider_mirror"
 	cooldown_time = 30 SECONDS
 	webbing_time = 4 SECONDS

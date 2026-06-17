@@ -5,7 +5,7 @@
 
 /obj/machinery/computer/crew
 	name = "crew monitoring console"
-	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
+	desc = "Usado para monitorar sensores ativos de saúde incorporados na maioria dos uniformes da tripulação."
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/crew
@@ -16,8 +16,8 @@
 	AddComponent(/datum/component/usb_port, typecacheof(list(/obj/item/circuit_component/medical_console_data), only_root_path = TRUE))
 
 /obj/item/circuit_component/medical_console_data
-	display_name = "Crew Monitoring Data"
-	desc = "Outputs the medical statuses of people on the crew monitoring computer, where it can then be filtered with a Select Query component."
+	display_name = "Dados de monitoramento da tripulação"
+	desc = "Saídas do status médico das pessoas no computador de monitoramento da tripulação, onde ele pode ser filtrado com um componente Select Query."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The records retrieved

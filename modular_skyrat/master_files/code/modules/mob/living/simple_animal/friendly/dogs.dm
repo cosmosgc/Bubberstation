@@ -1,6 +1,6 @@
 /mob/living/basic/pet/dog/markus
 	name = "\proper Markus"
-	desc = "The supply department's overfed yet still beloved dog."
+	desc = "O departamento de suprimentos está alimentado demais, mas ainda é um cão amado."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "markus"
 	icon_dead = "markus_dead"
@@ -63,7 +63,7 @@
 
 /mob/living/basic/pet/dog/corgi/borgi
 	name = "E-N"
-	desc = "It's a borgi."
+	desc = "É um borgi."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "borgi"
 	icon_living = "borgi"
@@ -77,7 +77,7 @@
 		/obj/item/clothing/head/costume/skyrat/en = 1,
 		/obj/item/clothing/suit/corgisuit/en = 1,
 	)
-	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
+	death_message = "Apita, suas partes mecânicas sinistram antes que o chassis desmorone em alto som."
 	gold_core_spawnable = NO_SPAWN
 	can_be_shaved = FALSE
 	ai_controller = /datum/ai_controller/basic_controller/dog/borgi
@@ -258,7 +258,7 @@
 	notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!",
 		source = target,
 		notify_flags = NOTIFY_CATEGORY_NOFLASH,
-		header = "Borgi Emagged",
+		header = "Borgi Emagrou",
 	)
 	addtimer(CALLBACK(src, PROC_REF(explode_imminent)), 50 SECONDS)
 
@@ -336,7 +336,7 @@
 
 /mob/living/basic/pet/dog/dobermann
 	name = "\improper dobermann"
-	desc = "A larger breed of dog."
+	desc = "Uma raça maior de cachorro."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "dobber"
 	icon_dead = "dobbydead"
@@ -344,7 +344,7 @@
 
 /mob/living/basic/pet/dog/pitbull
 	name = "\improper pitbull"
-	desc = "Lover of Blood. Hater of Toddlers"
+	desc = "Amante de Sangue. Ódio de crianças"
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "pitbull"
 	icon_dead = "pitbull_dead"

@@ -5,7 +5,7 @@
  */
 /obj/item/bounty_cube
 	name = "bounty cube"
-	desc = "A bundle of compressed hardlight data, containing a completed bounty. Sell this on the cargo shuttle to claim it!"
+	desc = "Um pacote de dados comprimidos, contendo uma recompensa completa. Venda isso no transporte de carga para reivindicá-lo!"
 	icon = 'icons/obj/economy.dmi'
 	icon_state = "bounty_cube"
 	///Value of the bounty that this bounty cube sells for.
@@ -53,7 +53,7 @@
 		//nag on Supply channel and reduce the speed bonus multiplier to nothing
 		var/obj/machinery/announcement_system/aas = get_announcement_system(/datum/aas_config_entry/bounty_cube_unsent, src, list(RADIO_CHANNEL_SUPPLY))
 		if (aas)
-			nag_message = aas.compile_config_message(/datum/aas_config_entry/bounty_cube_unsent, list("LOCATION" = get_area_name(src), "COST" = bounty_value), "Regular Message")
+			nag_message = aas.compile_config_message(/datum/aas_config_entry/bounty_cube_unsent, list("LOCATION" = get_area_name(src), "COST" = bounty_value), "Mensagem Regular")
 			if (speed_bonus)
 				aas.announce(/datum/aas_config_entry/bounty_cube_unsent, list("LOCATION" = get_area_name(src), "COST" = bounty_value, "BONUSLOST" = bounty_value * speed_bonus), list(RADIO_CHANNEL_SUPPLY), "When Bonus Lost")
 			else
@@ -99,13 +99,13 @@
 //for when you need a REAL bounty cube to test with and don't want to do a bounty each time your code changes
 /obj/item/bounty_cube/debug_cube
 	name = "debug bounty cube"
-	desc = "Use in-hand to set it up with a random bounty. Requires an ID it can detect with a bank account attached. \
-	This will alert Supply over the radio with your name and location, and cargo techs will be dispatched with kill on sight clearance."
+	desc = "Use na mão para montá-lo com uma recompensa aleatória. Requer uma identificação que possa detectar com uma conta bancária anexada.\
+Isso vai alertar o Fornecimento pelo rádio com o seu nome e localização, e os técnicos de carga serão enviados com morte à distância."
 	var/set_up = FALSE
 
 /obj/item/bounty_cube/debug_cube/attack_self(mob/user)
 	if(!isliving(user))
-		to_chat(user, span_warning("You aren't eligible to use this!"))
+		to_chat(user, span_warning("Você não pode usar isso!"))
 		return ..()
 
 	if(!set_up)
@@ -114,7 +114,7 @@
 			set_up(random_bounty(), squeezer.get_idcard())
 			set_up = TRUE
 			return ..()
-		to_chat(user, span_notice("It can't detect your bank account."))
+		to_chat(user, span_notice("Não pode detectar sua conta bancária."))
 
 	return ..()
 

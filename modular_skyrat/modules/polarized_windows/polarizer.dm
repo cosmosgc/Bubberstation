@@ -1,6 +1,6 @@
 /obj/item/assembly/control/polarizer
 	name = "window polarization remote controller"
-	desc = "A small electronic device able to control the polarization status of linked windows remotely."
+	desc = "Um pequeno dispositivo eletrônico capaz de controlar o status de polarização de janelas ligadas remotamente."
 	/// Whether the connected windows are meant to be polarized or not.
 	var/polarizing = FALSE
 
@@ -8,7 +8,7 @@
 /obj/item/assembly/control/polarizer/examine(mob/user)
 	. = ..()
 
-	. += span_notice("Use it <b>in your hand</b> or with a <b>multitool</b> to change its channel ID.")
+	. += span_notice("Use-o.<b>em sua mão</b>ou com um<b>Multitool</b>para mudar sua identificação do canal.")
 
 
 /obj/item/assembly/control/polarizer/multitool_act(mob/living/user)
@@ -21,7 +21,7 @@
 		return
 
 	id = "[change_id]"
-	balloon_alert(user, "id changed")
+	balloon_alert(user, "Id mudou.")
 	to_chat(user, span_notice("You change the ID to [id]."))
 
 

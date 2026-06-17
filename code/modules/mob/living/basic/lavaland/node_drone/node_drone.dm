@@ -11,7 +11,7 @@
 
 /mob/living/basic/node_drone
 	name = "NODE drone"
-	desc = "Standard in-atmosphere drone, used by Nanotrasen to operate and excavate valuable ore vents."
+	desc = "drone padrão na atmosfera, usado por Nanotrasen para operar e escavar valiosas aberturas de minério."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "mining_node_active"
 	icon_living = "mining_node_active"
@@ -65,9 +65,9 @@
 	. = ..()
 	var/sameside = user.faction_check_atom(src, exact_match = FALSE)
 	if(sameside)
-		. += span_notice("This drone is currently attached to a mineral vent. You should protect it from harm to secure the mineral vent.")
+		. += span_notice("Este drone está ligado a uma ventilação mineral. Você deve protegê-lo de danos para proteger a ventilação mineral.")
 	else
-		. += span_warning("This vile Nanotrasen trash is trying to destroy the environment. Attack it to free the mineral vent from its grasp.")
+		. += span_warning("Este vil lixo Nanotrasen está tentando destruir o meio ambiente. Atacá-lo para libertar a ventilação mineral de seu alcance.")
 
 /mob/living/basic/node_drone/update_icon_state()
 	. = ..()
@@ -123,14 +123,14 @@
 		say("I have to go now, my planet needs me.")
 		funny_ending = TRUE
 	if(success)
-		visible_message(span_notice("The drone flies away to safety as the vent is secured."))
+		visible_message(span_notice("O drone voa para segurança enquanto a ventilação está segura."))
 	else
-		visible_message(span_danger("The drone flies away after failing to open the vent!"))
+		visible_message(span_danger("O drone voa depois de não abrir a ventilação!"))
 	animate(src, pixel_z = 400, time = 2 SECONDS, easing = QUAD_EASING|EASE_IN, flags = ANIMATION_PARALLEL)
 	sleep(2 SECONDS)
 	if(funny_ending)
 		playsound(src, 'sound/effects/explosion/explosion3.ogg', 50, FALSE) //node drone died on the way back to his home planet.
-		visible_message(span_notice("...or maybe not."))
+		visible_message(span_notice("...ou talvez não."))
 	qdel(src)
 
 

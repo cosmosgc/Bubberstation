@@ -1,18 +1,18 @@
 /obj/item/clothing/mask/whistle/minigame
 	name = "referee whistle"
-	desc = "A referee whistle used to call fouls against players."
+	desc = "Um apito de árbitro costumava chamar faltas contra os jogadores."
 	actions_types = list(/datum/action/innate/timeout)
 	action_slots = ALL
 
 // should be /datum/action/item_action but it doesn't support InterceptClickOn()
 /datum/action/innate/timeout
 	name = "Call foul"
-	desc = "Puts a person in a timeout for a few seconds."
+	desc = "Coloca uma pessoa em um intervalo por alguns segundos."
 	button_icon = 'icons/obj/clothing/masks.dmi'
 	button_icon_state = "whistle"
 	click_action = TRUE
-	enable_text = span_cult("You prepare to call a foul on someone...")
-	disable_text = span_cult("You decide it was a bad call...")
+	enable_text = span_cult("Você se prepara para chamar uma falta em alguém...")
+	disable_text = span_cult("Você decide que foi uma má decisão...")
 	COOLDOWN_DECLARE(whistle_cooldown_minigame)
 
 /datum/action/innate/timeout/InterceptClickOn(mob/living/clicker, params, atom/clicked_on)

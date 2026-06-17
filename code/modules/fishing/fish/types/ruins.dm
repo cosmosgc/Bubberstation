@@ -2,7 +2,7 @@
 /obj/item/fish/mastodon
 	name = "unmarine mastodon"
 	fish_id = "mastodon"
-	desc = "A monster of exposed muscles and innards, wrapped in a fish-like skeleton. You don't remember ever seeing it on the catalog."
+	desc = "Um monstro de músculos expostos e vísceras, embrulhado em um esqueleto de peixe. Você não se lembra de ter visto no catálogo."
 	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "mastodon"
 	base_pixel_w = -16
@@ -22,7 +22,7 @@
 	breeding_timeout = 5 MINUTES
 	average_size = 180
 	average_weight = 5000
-	death_text = "%SRC stops moving."
+	death_text = "O SRC para de se mover."
 	fish_traits = list(/datum/fish_trait/heavy, /datum/fish_trait/amphibious, /datum/fish_trait/revival, /datum/fish_trait/carnivore, /datum/fish_trait/predator, /datum/fish_trait/territorial)
 	beauty = FISH_BEAUTY_BAD
 
@@ -40,7 +40,7 @@
 	return ..() * 1.2 //This should push its soft-capped (it's pretty big) price a bit above the rest
 
 /obj/item/fish/mastodon/get_health_warnings(mob/user, always_deep = FALSE)
-	return list(span_deadsay("It's bones."))
+	return list(span_deadsay("São ossos."))
 
 /obj/item/fish/mastodon/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] swallows [src] whole (somehow)! It looks like user.p_theyre()] trying to commit suicide!"))
@@ -50,7 +50,7 @@
 	return MANUAL_SUICIDE_NONLETHAL // chance not to die
 
 /obj/item/fish/mastodon/proc/skeleton_appears(mob/living/user)
-	user.visible_message(span_warning("[user]'s skin melts off!"), span_boldwarning("Your skin melts off!"))
+	user.visible_message(span_warning("[user]'s skin melts off!"), span_boldwarning("Sua pele derrete!"))
 	user.spawn_gibs()
 	user.drop_everything(del_on_drop = FALSE, force = FALSE, del_if_nodrop = FALSE)
 	user.set_species(/datum/species/skeleton)
@@ -65,7 +65,7 @@
 /obj/item/fish/soul
 	name = "soulfish"
 	fish_id = "soulfish"
-	desc = "A distant yet vaguely close critter, like a long lost relative. You feel your soul rejuvenated just from looking at it... Also, what the fuck is this shit?!"
+	desc = "Uma criatura distante, mas vagamente próxima, como um parente perdido. Você sente sua alma rejuvenescida só de olhar para ela... E que porra é essa?"
 	icon_state = "soulfish"
 	sprite_width = 7
 	sprite_height = 6
@@ -110,7 +110,7 @@
 	addtimer(CALLBACK(soulman, TYPE_PROC_REF(/mob/living, death)), 5 SECONDS, TIMER_DELETE_ME)
 	if(prob(80)) // the percentage is important.
 		soulman.PossessByPlayer(user.ckey)
-		to_chat(soulman, span_notice("You finally feel at peace."))
+		to_chat(soulman, span_notice("Finalmente se sente em paz."))
 	user.gib()
 	qdel(src)
 
@@ -132,7 +132,7 @@
 /obj/item/fish/skin_crab
 	name = "skin crab"
 	fish_id = "skin_crab"
-	desc = "<i>\"And on the eighth day, a demential mockery of both humanity and crabity was made.\"<i> Fascinating."
+	desc = "<i>\"E no oitavo dia, uma zombaria demente de humanidade e caranguejo foi feita.\"<i>Fascinante."
 	icon_state = "skin_crab"
 	sprite_width = 7
 	sprite_height = 6

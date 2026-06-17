@@ -1,7 +1,7 @@
 /obj/structure/destructible/clockwork/sigil/vitality
 	name = "vitality matrix"
-	desc = "A twisting, confusing artifact that drains the unenlightended on contact."
-	clockwork_desc = "A beautiful artifact that will drain the life of heretics placed on top of it."
+	desc = "Um artefato confuso que drena o não iluminado no contato."
+	clockwork_desc = "Um belo artefato que drenará a vida de hereges colocados sobre ele."
 	icon_state = "sigilvitality"
 	effect_stand_time = 2.5 SECONDS // You can't permastun someone with this, so you'll need to keep them grabbed + cuffed
 	idle_color = "#5e87c4"
@@ -49,12 +49,12 @@
 		affected_mob.do_jitter_animation()
 		affected_mob.death()
 		playsound(loc, 'sound/effects/magic/exit_blood.ogg', 60)
-		to_chat(affected_mob, span_clockred("The last of your life is drained away..."))
+		to_chat(affected_mob, span_clockred("O último de sua vida está esgotado..."))
 		check_special_role(affected_mob)
 		GLOB.clock_vitality += (affected_mob.client ? 30 : 10) // 100 (for clients) total in the ideal situation, since it'll take 7 pulses to go from full to crit
 		return
 
-	affected_mob.visible_message(span_clockred("[affected_mob] looks weak as the color fades from their body."), span_clockred("You feel your soul faltering..."))
+	affected_mob.visible_message(span_clockred("[affected_mob] looks weak as the color fades from their body."), span_clockred("Você sente sua alma vacilando..."))
 	GLOB.clock_vitality += (affected_mob.client ? 10 : 0) // Monkey or whatever? You get jackshit
 
 

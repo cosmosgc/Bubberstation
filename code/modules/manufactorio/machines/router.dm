@@ -1,6 +1,6 @@
 /obj/machinery/power/manufacturing/router // Basically a splitter
 	name = "manufacturing router"
-	desc = "Distributes input to 3 output directions equally. Stacks are split, and you may toggle outputs with a multitool. May not receive from other routers."
+	desc = "Distribui entrada para 3 direções de saída igualmente. As pilhas estão divididas, e você pode alternar saídas com uma multitool. Não pode receber de outros roteadores."
 	allow_mob_bump_intake = TRUE
 	icon_state = "splitter"
 	circuit = /obj/item/circuitboard/machine/manurouter
@@ -17,14 +17,14 @@
 	. = ..()
 	var/to_toggle = get_dir(src, user)
 	if(!(to_toggle in GLOB.cardinals))
-		balloon_alert(user, "stand inline!")
+		balloon_alert(user, "Fiquem em linha!")
 		return ITEM_INTERACT_FAILURE
 	if(to_toggle in disabled_dirs)
 		disabled_dirs -= to_toggle
 	else
 		disabled_dirs += to_toggle
 	update_appearance(UPDATE_OVERLAYS)
-	balloon_alert(user, "toggled output")
+	balloon_alert(user, "Saída alternada")
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/power/manufacturing/router/update_overlays()

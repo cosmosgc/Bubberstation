@@ -1,14 +1,14 @@
 /// Handles logic for ghost spawning code, visible object in game is handled by /obj/structure/alien/resin/flower_bud
 /obj/effect/mob_spawn/ghost_role/venus_human_trap
 	name = "flower bud"
-	desc = "A large pulsating plant..."
+	desc = "Uma grande planta pulsante..."
 	icon = 'icons/mob/spacevines.dmi'
 	icon_state = "bud0"
 	mob_type = /mob/living/basic/venus_human_trap
 	density = FALSE
-	prompt_name = "venus human trap"
-	you_are_text = "You are a venus human trap."
-	flavour_text = "You are a venus human trap!  Protect the kudzu at all costs, and feast on those who oppose you!"
+	prompt_name = "Venus armadilha humana"
+	you_are_text = "Você é uma armadilha humana."
+	flavour_text = "Você é uma armadilha humana! Protejam os kudzu a todo custo, e se banquetei com aqueles que se opõem a vocês!"
 	faction = list(FACTION_HOSTILE,FACTION_VINES,FACTION_PLANTS)
 	spawner_job_path = /datum/job/venus_human_trap
 	invisibility = INVISIBILITY_ABSTRACT //The flower bud structure is our visible component, we just handle logic.
@@ -41,7 +41,7 @@
 	notify_ghosts(
 		"[src] has borne fruit!",
 		source = src,
-		header = "Venus Human Trap",
+		header = "Vénus Armadilha Humana",
 		click_interact = TRUE,
 		ignore_key = POLL_IGNORE_VENUSHUMANTRAP,
 	)

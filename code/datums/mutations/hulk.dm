@@ -1,7 +1,7 @@
 //Hulk turns your skin green, makes you strong, and allows you to shrug off stun effect.
 /datum/mutation/hulk
 	name = "Hulk"
-	desc = "A poorly understood genome that causes the holder's muscles to expand, inhibit speech and gives the person a bad skin condition."
+	desc = "Um genoma mal compreendido que faz com que os músculos do suporte expandam, inibam a fala e dão à pessoa uma má condição de pele."
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
@@ -68,7 +68,7 @@
 /datum/mutation/hulk/on_life(seconds_per_tick)
 	if(owner.health < owner.crit_threshold)
 		on_losing(owner)
-		to_chat(owner, span_danger("You suddenly feel very weak."))
+		to_chat(owner, span_danger("Você de repente se sente muito fraco."))
 		qdel(src)
 
 /datum/mutation/hulk/on_losing(mob/living/carbon/human/owner)
@@ -130,19 +130,19 @@
 	log_combat(the_hulk, yeeted_person, "has started swinging by tail")
 	yeeted_person.Stun(2 SECONDS)
 	yeeted_person.visible_message(span_danger("[the_hulk] starts grasping [yeeted_person] by the tail..."), \
-					span_userdanger("[the_hulk] begins grasping your tail!"), span_hear("You hear aggressive shuffling!"), null, the_hulk)
+					span_userdanger("[the_hulk] begins grasping your tail!"), span_hear("Você ouve baralhar agressivo!"), null, the_hulk)
 	to_chat(the_hulk, span_danger("You start grasping [yeeted_person] by the tail..."))
 
 	if(!do_after(the_hulk, 2 SECONDS, yeeted_person))
 		yeeted_person.visible_message(span_danger("[yeeted_person] breaks free of [the_hulk]'s grasp!"), \
-					span_userdanger("You break free from [the_hulk]'s grasp!"), span_hear("You hear aggressive shuffling!"), null, the_hulk)
+					span_userdanger("You break free from [the_hulk]'s grasp!"), span_hear("Você ouve baralhar agressivo!"), null, the_hulk)
 		to_chat(the_hulk, span_danger("You lose your grasp on [yeeted_person]'s tail!"))
 		return
 
 	// we're officially a-go!
 	yeeted_person.Paralyze(8 SECONDS)
 	yeeted_person.visible_message(span_danger("[the_hulk] starts spinning [yeeted_person] around by [yeeted_person.p_their()] tail!"), \
-					span_userdanger("[the_hulk] starts spinning you around by your tail!"), span_hear("You hear wooshing sounds!"), null, the_hulk)
+					span_userdanger("[the_hulk] starts spinning you around by your tail!"), span_hear("Você ouve sons murmurantes!"), null, the_hulk)
 	to_chat(the_hulk, span_danger("You start spinning [yeeted_person] around by [yeeted_person.p_their()] tail!"))
 	the_hulk.emote("scream")
 	yeeted_person.emote("scream")
@@ -236,7 +236,7 @@
 	the_hulk.setDir(original_dir)
 	yeeted_person.forceMove(the_hulk.loc) // Maybe this will help with the wallthrowing bug.
 	yeeted_person.visible_message(span_danger("[the_hulk] throws [yeeted_person]!"), \
-					span_userdanger("You're thrown by [the_hulk]!"), span_hear("You hear aggressive shuffling and a loud thud!"), null, the_hulk)
+					span_userdanger("You're thrown by [the_hulk]!"), span_hear("Você ouve um barulho agressivo e um barulho alto!"), null, the_hulk)
 	to_chat(the_hulk, span_danger("You throw [yeeted_person]!"))
 	playsound(the_hulk.loc, SFX_SWING_HIT, 50, TRUE)
 	var/turf/T = get_edge_target_turf(the_hulk, the_hulk.dir)
@@ -281,7 +281,7 @@
 
 /datum/mutation/hulk/ork
 	name = "Ork"
-	desc = "A mutation caused by a mixup of hulk genes which severely impacts speech centers in owners' brains."
+	desc = "Uma mutação causada por uma mistura de genes Hulk que afeta severamente os centros de fala no cérebro dos donos."
 	text_gain_indication = span_notice("You feel significantly dumber!")
 	bodypart_color = COLOR_ASSISTANT_OLIVE
 	conflicts = list(/datum/mutation/hulk)

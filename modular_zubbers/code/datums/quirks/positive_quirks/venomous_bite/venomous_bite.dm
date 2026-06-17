@@ -4,7 +4,7 @@
 
 /datum/action/cooldown/mob_cooldown/venomous_bite
 	name = "Inject Venom"
-	desc = "Sink your fangs into another and inject them with your venom. Ineffective against those wearing armor."
+	desc = "Afunde suas presas em outra e injete seu veneno. Ineficiente contra aqueles que usam armadura."
 
 	button_icon = 'modular_zubbers/icons/mob/actions/quirks/venomous_bite.dmi'
 	button_icon_state = "venom"
@@ -32,22 +32,22 @@
 	. = ..()
 	if (!.)
 		return
-	owner.visible_message(span_warning("[owner] bares [owner.p_their()] fangs..."), span_notice("You bare your fangs..."))
+	owner.visible_message(span_warning("[owner] bares [owner.p_their()] fangs..."), span_notice("Você desnuda suas presas..."))
 
 /datum/action/cooldown/mob_cooldown/venomous_bite/Activate(atom/target_atom)
 	if (!isliving(target_atom))
 		return FALSE
 
 	if (astype(owner, /mob/living/carbon)?.is_mouth_covered())
-		owner.balloon_alert(owner, "mouth covered!")
+		owner.balloon_alert(owner, "Boca coberta!")
 		return FALSE
 
 	if (!owner.Adjacent(target_atom))
-		owner.balloon_alert(owner, "too far!")
+		owner.balloon_alert(owner, "Muito longe!")
 		return FALSE
 
 	if (target_atom == owner)
-		owner.balloon_alert(owner, "can't bite yourself!")
+		owner.balloon_alert(owner, "Não pode se morder!")
 		return FALSE
 
 	log_combat(owner, target_atom, "started to bite", null, "with venom: [reagent_typepath::name]")

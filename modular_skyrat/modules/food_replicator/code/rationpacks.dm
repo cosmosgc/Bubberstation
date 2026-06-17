@@ -1,6 +1,6 @@
 /obj/item/food/colonial_course
 	name = "undefined colonial course"
-	desc = "Something you shouldn't see. But it's edible."
+	desc = "Algo que você não deveria ver. Mas é comestível."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "borgir"
 	base_icon_state = "borgir"
@@ -26,8 +26,8 @@
 
 /obj/item/food/colonial_course/pljeskavica
 	name = "pljeskavica"
-	desc = "Freshly-printed steaming hot burger consisting of a biogenerator-produced handcraft-imitating buns, with a minced meat patty inbetween, among various vegetables and sauces.\
-		<br> Looks good <i>enough</i> for something as replicated as this. Its packaging is covered in copious amounts of information on its nutritional facts, contents and the expiry date. Sadly, it's all written in Pan-Slavic."
+	desc = "Hambúrguer quente recém-impresso, que consiste em pães imitadores de artesanato produzidos por biogerador, com carne picada entre vegetais e molhos.\
+		<br>Parece bom.<i>Chega.</i>para algo tão replicado como isso. Sua embalagem está coberta de muitas informações sobre seus fatos nutricionais, conteúdo e a data de validade. Infelizmente, está tudo escrito em Pan-Slavic."
 	trash_type = /obj/item/trash/pljeskavica
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -39,8 +39,8 @@
 
 /obj/item/food/colonial_course/nachos
 	name = "plain nachos tray"
-	desc = "A vacuum-sealed package with what seems to be a generous serving of triangular corn chips, with three sections reserved for a salsa, cheese and guacamole sauces.\
-		<br> Probably the best-looking food you can find in these rations, perhaps due to its simplicity."
+	desc = "Um pacote selado a vácuo com o que parece ser uma generosa porção de chips de milho triangular, com três seções reservadas para molhos de salsa, queijo e guacamole.\
+		<br>Provavelmente a comida mais bonita que você pode encontrar nestas rações, talvez devido à sua simplicidade."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
@@ -53,8 +53,8 @@
 
 /obj/item/food/colonial_course/blins
 	name = "condensed milk crepes"
-	desc = "A vacuum-sealed four-pack of stuffed crepes with a minimal amount of markings. There is nothing else to it, to be frank.\
-		<br> Surprisingly tasty for its looks, as long as you're not lactose intolerant, on diet, or vegan. The back of the packaging is covered in a mass of information detailing the product."
+	desc = "Um pacote de quatro crepes recheados com uma quantidade mínima de marcas. Não há mais nada nisso, para ser franco.\
+		<br>Surpreendentemente saboroso para sua aparência, contanto que você não seja intolerante à lactose, em dieta, ou vegan. A parte de trás da embalagem está coberta com uma massa de informações detalhando o produto."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/caramel = 3,
@@ -68,26 +68,26 @@
 
 /obj/item/reagent_containers/cup/glass/coffee/colonial
 	name = "colonial thermocup"
-	desc = "Technically, used to drink hot beverages. But since it's the only cup design that was available, you gotta make do. It has an instruction written on its side. \
-	<br> This particular one comes prefilled with a single serving of coffee powder."
-	special_desc = "A small instruction on the side reads: <i>\"For use in food replicators; mix water and powdered solutions in one-to-one proportions. \
-	<br> For cocoa, mix milk and powdered solution in one-to-one proportion.\"</i>"
+	desc = "Tecnicamente, costumava beber bebidas quentes. Mas já que era o único projeto que estava disponível, você tem que fazer. Tem uma instrução escrita ao seu lado.\
+	<br>Este em particular vem com uma única porção de pó de café."
+	special_desc = "Uma pequena instrução ao lado diz:<i>\"Para uso em replicadores de alimentos, misturar água e soluções em pó em proporções únicas.\
+	<br>Para cacau, misture leite e solução em pó em proporção única.\"</i>"
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	list_reagents = list(/datum/reagent/consumable/powdered_coffee = 25)
 
 /obj/item/reagent_containers/cup/glass/coffee/colonial/empty
-	desc = "Technically, used to drink hot beverages. But since it's the only cup design that was available, you gotta make do. It has an instruction written on its side."
+	desc = "Tecnicamente, costumava beber bebidas quentes. Mas já que era o único projeto que estava disponível, você tem que fazer. Tem uma instrução escrita ao seu lado."
 	list_reagents = null
 
 /obj/item/trash/pljeskavica
 	name = "pljeskavica wrapping paper"
-	desc = "Covered in sauce smearings and smaller pieces of the dish on the inside, crumpled into a ball. It's probably best to dispose of it."
+	desc = "Coberto de molho e pedaços menores do prato por dentro, amassado em uma bola. É melhor se livrar dele."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "borgir_trash"
 
 /obj/item/trash/nachos
 	name = "empty nachos tray"
-	desc = "Covered in sauce smearings and smaller pieces of the dish on the inside, a plastic food tray with not much use anymore. It's probably best to dispose of it or recycle it."
+	desc = "Coberto de molhos e pedaços menores do prato no interior, uma bandeja de plástico com pouco uso mais. É melhor se livrar dele ou reciclá-lo."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	custom_materials = list(
 		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT,
@@ -96,7 +96,7 @@
 
 /obj/item/trash/blins
 	name = "empty crepes wrapper"
-	desc = "Empty torn wrapper that used to hold something ridiculously sweet. It's probably best to recycle it."
+	desc = "Embrulho vazio rasgado que costumava segurar algo ridiculamente doce. É melhor reciclá-lo."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	custom_materials = list(
 		/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT * 0.5,
@@ -105,9 +105,9 @@
 
 /obj/item/storage/box/gum/colonial
 	name = "mixed bubblegum packet"
-	desc = "The packaging is entirely written in Pan-Slavic, with a small blurb of Sol Common. You would need to take a better look to read it, though, as it is written quite small."
-	special_desc = "Examining the small text reveals the following: <i>\"Foreign colonization ration, model J: mixed origin, adult. Bubblegum package, medicinal, recreational. <br>\
-		Do not overconsume. Certain strips contain nicotine.\"</i>"
+	desc = "A embalagem está inteiramente escrita em Pan-Slavic, com um pequeno borrão de Sol Common. Você precisaria dar uma olhada melhor para lê-lo, embora, como está escrito muito pequeno."
+	special_desc = "Examinar o pequeno texto revela o seguinte:<i>\"Ração de colonização estrangeira, modelo J: origem mista, adulto. Pacote de chiclete, medicinal, recreativo.<br>\
+Não exagere. Algumas tiras contêm nicotina.\"</i>"
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "bubblegum"
 
@@ -119,8 +119,8 @@
 
 /obj/item/storage/box/utensils
 	name = "utensils package"
-	desc = "A small package containing various utensils required for <i>human</i> consumption of various foods. \
-	In a normal situation contains a plastic fork, a plastic spoon, and two serviettes."
+	desc = "Um pequeno pacote contendo vários utensílios necessários para<i>humano</i>consumo de vários alimentos.\
+Em uma situação normal contém um garfo de plástico, uma colher de plástico, e dois guardanapos."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "utensil_box"
 	w_class = WEIGHT_CLASS_TINY
@@ -144,21 +144,21 @@
 
 /obj/item/serviette/colonial
 	name = "colonial napkin"
-	desc = "To clean all the mess. Comes with a custom <i>combined</i> design of red and blue."
+	desc = "Para limpar toda a bagunça. Vem com um costume<i>combinado</i>Design de vermelho e azul."
 	icon_state = "napkin_unused"
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	used_serviette = /obj/item/serviette_used/colonial
 
 /obj/item/serviette_used/colonial
 	name = "dirty colonial napkin"
-	desc = "No longer useful, super dirty, or soaked, or otherwise unrecognisable."
+	desc = "Não mais útil, super sujo, ou encharcado, ou de outra forma irreconhecível."
 	icon_state = "napkin_used"
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 
 /obj/item/storage/box/colonial_rations
 	name = "foreign colonization ration"
-	desc = "A freshly printed civilian MRE, or more specifically a lunchtime food package, for use in the early colonization times by the first settlers of what is now known as the NRI. <br>\
-		The lack of any imprinted dates, as well as its origin, <i>the food replicator</i>, should probably give you a good enough hint at its short, if reasonable, expiry time."
+	desc = "Um recém-impresso MRE civil, ou mais especificamente um pacote de comida para o almoço, para uso nos primeiros tempos de colonização pelos primeiros colonos do que é agora conhecido como NRI.<br>\
+A falta de datas impressas, bem como sua origem,<i>O replicador de alimentos.</i>, provavelmente deve dar-lhe uma boa dica em seu curto, se razoável, prazo de validade."
 	icon = 'modular_skyrat/modules/food_replicator/icons/rationpack.dmi'
 	icon_state = "mre_package"
 	foldable_result = null
@@ -174,13 +174,13 @@
 		if(atom_storage.locked == TRUE)
 			atom_storage.locked = FALSE
 			icon_state = "mre_package_open"
-			balloon_alert(user, "unsealed!")
+			balloon_alert(user, "Destrancada!")
 			return ..()
 		else
 			atom_storage.locked = TRUE
 			atom_storage.close_all()
 			icon_state = "mre_package"
-			balloon_alert(user, "resealed!")
+			balloon_alert(user, "Selado novamente!")
 			return
 
 /obj/item/storage/box/colonial_rations/PopulateContents()

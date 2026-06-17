@@ -29,7 +29,7 @@ In all, this is a lot like the monkey code. /N
 		user.do_attack_animation(src, ATTACK_EFFECT_BITE)
 		playsound(loc, 'sound/items/weapons/bite.ogg', 50, TRUE, -1)
 		visible_message(span_danger("[user.name] bites [src]!"), \
-						span_userdanger("[user.name] bites you!"), span_hear("You hear a chomp!"), COMBAT_MESSAGE_RANGE, user)
+						span_userdanger("[user.name] bites you!"), span_hear("Você ouve uma batida!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("You bite [src]!"))
 		adjust_brute_loss(1)
 		log_combat(user, src, "attacked")

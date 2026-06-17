@@ -15,7 +15,7 @@
 				playsound(loc, 'sound/items/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
 				apply_damage(disarm_damage / 2, STAMINA)
 				visible_message(span_danger("[user] attempts to touch [src]!"), \
-					span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
+					span_danger("[user] attempts to touch you!"), span_hear("Você ouve um shoosh!"), null, user)
 				to_chat(user, span_warning("You attempt to touch [src]!"))
 				return FALSE
 
@@ -23,7 +23,7 @@
 			Knockdown(3 SECONDS)
 			apply_damage(disarm_damage, STAMINA)
 			visible_message(span_danger("[user] knocks [src] down!"), \
-				span_userdanger("[user] knocks you down!"), span_hear("You hear aggressive shuffling follow by a loud thud!"), null, user)
+				span_userdanger("[user] knocks you down!"), span_hear("Você ouve um barulho agressivo!"), null, user)
 			to_chat(user, span_danger("You knock [src] down!"))
 			return TRUE
 
@@ -32,7 +32,7 @@
 			apply_damage(disarm_damage, STAMINA)
 			log_combat(user, src, "tackled")
 			visible_message(span_danger("[user] tackles [src] down!"), \
-							span_userdanger("[user] tackles you down!"), span_hear("You hear aggressive shuffling!"), null, user)
+							span_userdanger("[user] tackles you down!"), span_hear("Você ouve baralhar agressivo!"), null, user)
 			to_chat(user, span_danger("You tackle [src] down!"))
 
 		return TRUE
@@ -51,7 +51,7 @@
 
 		playsound(loc, 'sound/items/weapons/slice.ogg', 25, TRUE, -1)
 		visible_message(span_danger("[user] slashes at [src]!"), \
-						span_userdanger("[user] slashes at you!"), span_hear("You hear a sickening sound of a slice!"), null, user)
+						span_userdanger("[user] slashes at you!"), span_hear("Você ouve um som doentio de uma fatia!"), null, user)
 		to_chat(user, span_danger("You slash at [src]!"))
 		log_combat(user, src, "attacked")
 

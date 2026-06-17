@@ -3,7 +3,7 @@
 	icon_state = "fab-idle"
 	base_icon_state = "fab"
 	name = "exosuit fabricator"
-	desc = "Nothing is being built."
+	desc = "Nada está sendo construído."
 	density = TRUE
 	req_access = list(ACCESS_ROBOTICS)
 	circuit = /obj/item/circuitboard/machine/mechfab
@@ -143,7 +143,7 @@
 	if(!can_interact(user) || (!HAS_SILICON_ACCESS(user) && !isAdminGhostAI(user)) && !Adjacent(user))
 		return
 	if(being_built)
-		balloon_alert(user, "printing started!")
+		balloon_alert(user, "A impressão começou!")
 		return
 	var/direction = get_dir(src, over_location)
 	if(!direction)

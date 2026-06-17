@@ -2,8 +2,8 @@
 
 /obj/item/gun/ballistic/automatic/xhihao_smg
 	name = "\improper Bogseo Submachine Gun"
-	desc = "A weapon that could hardly be called a 'sub' machinegun, firing the monstrous .585 cartridge. \
-		It provides enough kick to bruise a shoulder pretty bad if used without protection."
+	desc = "Uma arma que dificilmente poderia ser chamada de metralhadora sub, disparando o monstruoso cartucho .585.\
+Dá chute suficiente para machucar um ombro se usado sem proteção."
 
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/company_and_or_faction_based/xhihao_light_arms/guns32x.dmi'
 	icon_state = "bogseo"
@@ -43,7 +43,7 @@
 
 /obj/item/gun/ballistic/automatic/xhihao_smg/examine(mob/user)
 	. = ..()
-	. += span_notice("You can <b>examine closer</b> to learn a little more about this weapon.")
+	. += span_notice("Você pode.<b>Examine mais perto.</b>para aprender um pouco mais sobre esta arma.")
 
 /obj/item/gun/ballistic/automatic/xhihao_smg/examine_more(mob/user)
 	. = ..()

@@ -1,6 +1,6 @@
 /obj/item/implant/mindshield
 	name = "mindshield implant"
-	desc = "Protects against brainwashing."
+	desc = "Protege contra lavagem cerebral."
 	actions_types = null
 
 	implant_info = "Automatically activates upon implantation. Provides protection against brainwashing."
@@ -16,7 +16,7 @@
 	if(target.mind)
 		if((SEND_SIGNAL(target.mind, COMSIG_PRE_MINDSHIELD_IMPLANT, user) & COMPONENT_MINDSHIELD_RESISTED))
 			if(!silent)
-				target.visible_message(span_warning("[target] seems to resist the implant!"), span_warning("You feel something interfering with your mental conditioning, but you resist it!"))
+				target.visible_message(span_warning("[target] seems to resist the implant!"), span_warning("Sente algo interferindo no seu condicionamento mental, mas resiste!"))
 			removed(target, TRUE)
 			qdel(src)
 			return TRUE
@@ -27,7 +27,7 @@
 	target.add_traits(list(TRAIT_MINDSHIELD, TRAIT_UNCONVERTABLE), IMPLANT_TRAIT)
 	target.sec_hud_set_implants()
 	if(!silent)
-		to_chat(target, span_notice("You feel a sense of peace and security. You are now protected from brainwashing."))
+		to_chat(target, span_notice("Você sente uma sensação de paz e segurança. Agora você está protegido de lavagem cerebral."))
 	return TRUE
 
 /obj/item/implant/mindshield/removed(mob/target, silent = FALSE, special = FALSE)
@@ -39,7 +39,7 @@
 		target.remove_traits(list(TRAIT_MINDSHIELD, TRAIT_UNCONVERTABLE), IMPLANT_TRAIT)
 		L.sec_hud_set_implants()
 	if(target.stat != DEAD && !silent)
-		to_chat(target, span_boldnotice("Your mind suddenly feels terribly vulnerable. You are no longer safe from brainwashing."))
+		to_chat(target, span_boldnotice("Sua mente de repente se sente terrivelmente vulnerável. Você não está mais seguro de lavagem cerebral."))
 	return TRUE
 
 /obj/item/implanter/mindshield
@@ -48,5 +48,5 @@
 
 /obj/item/implantcase/mindshield
 	name = "implant case - 'Mindshield'"
-	desc = "A glass case containing a mindshield implant."
+	desc = "Uma caixa de vidro contendo um implante de escudo mental."
 	imp_type = /obj/item/implant/mindshield

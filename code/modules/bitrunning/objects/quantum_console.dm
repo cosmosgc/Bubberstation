@@ -19,7 +19,7 @@
 /obj/machinery/computer/quantum_console/examine(mob/user)
 	. = ..()
 	if(!server_ref)
-		. += span_warning("Please install an quantum server in any tile next to this console.")
+		. += span_warning("Por favor, instale um servidor quântico em qualquer peça ao lado deste console.")
 
 /obj/machinery/computer/quantum_console/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()

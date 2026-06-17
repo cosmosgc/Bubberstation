@@ -77,7 +77,7 @@
 		if(is_type_in_typecache(perks, no_coexistence_typecache))
 			return FALSE
 	if(is_type_in_list(src, wizard_datum.perks))
-		to_chat(user, span_warning("This perk already learned!"))
+		to_chat(user, span_warning("Essa vantagem já aprendeu!"))
 		return FALSE
 	return TRUE
 
@@ -95,7 +95,7 @@
 	if(existing)
 		var/before_name = existing.name
 		if(!existing.level_spell())
-			to_chat(user, span_warning("This spell cannot be improved further!"))
+			to_chat(user, span_warning("Este feitiço não pode ser melhorado!"))
 			return FALSE
 
 		to_chat(user, span_notice("You have improved [before_name] into [existing.name]."))
@@ -147,7 +147,7 @@
  */
 /datum/spellbook_entry/proc/can_refund(mob/living/carbon/human/user, obj/item/spellbook/book)
 	if(HAS_TRAIT(user, TRAIT_SPELLS_LOTTERY))
-		to_chat(user, span_notice("No refund."))
+		to_chat(user, span_notice("Sem reembolso."))
 		return FALSE
 	if(!refundable)
 		return FALSE
@@ -172,7 +172,7 @@
 /datum/spellbook_entry/proc/refund_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
 	var/area/centcom/wizard_station/wizard_home = GLOB.areas_by_type[/area/centcom/wizard_station]
 	if(get_area(user) != wizard_home)
-		to_chat(user, span_warning("You can only refund spells at the wizard lair!"))
+		to_chat(user, span_warning("Você só pode devolver feitiços no covil de magos!"))
 		return -1
 
 	for(var/datum/action/cooldown/spell/to_refund in user.actions)

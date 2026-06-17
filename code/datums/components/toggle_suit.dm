@@ -43,7 +43,7 @@
 		return
 
 	if(living_user.usable_hands <= 0)
-		source.balloon_alert(living_user, "you don't have hands!")
+		source.balloon_alert(living_user, "Você não tem mãos!")
 		return
 
 	do_icon_toggle(source, living_user)

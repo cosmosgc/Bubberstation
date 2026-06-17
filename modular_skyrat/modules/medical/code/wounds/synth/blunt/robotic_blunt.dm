@@ -113,7 +113,7 @@
 	return ..()
 
 /datum/wound/blunt/robotic/get_limb_examine_description()
-	return span_warning("This limb looks loosely held together.")
+	return span_warning("Este membro parece solto.")
 
 // this wound is unaffected by cryoxadone and pyroxadone
 /datum/wound/blunt/robotic/on_xadone(power)
@@ -256,13 +256,13 @@
 		attack_direction = get_dir(victim, attacking_item)
 
 	if (!isnull(attack_direction) && prob(stagger_score * stagger_movement_chance_ratio))
-		to_chat(victim, span_warning("The force of the blow sends you reeling!"))
+		to_chat(victim, span_warning("A força do golpe te faz tremer!"))
 		var/turf/target_loc = get_step(victim, attack_direction)
 		victim.Move(target_loc)
 
 	victim.visible_message(span_warning(message), ignored_mobs = victim)
 	to_chat(victim, span_warning(self_message))
-	victim.balloon_alert(victim, "oscillation! stop moving")
+	victim.balloon_alert(victim, "oscilação! Pare de se mexer.")
 
 	victim.Shake(pixelshiftx = shift, pixelshifty = shift, duration = shake_duration)
 	var/aftershock_delay = (shake_duration * STAGGER_PERCENT_OF_SHAKE_DURATION_TO_AFTERSHOCK_DELAY)
@@ -321,7 +321,7 @@
 		message += "."
 
 	to_chat(victim, span_danger(message))
-	victim.balloon_alert(victim, "oscillation over")
+	victim.balloon_alert(victim, "oscilação sobre")
 
 	oscillating = FALSE
 

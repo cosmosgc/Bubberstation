@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 /obj/item/book/bible
 	name = "bible"
-	desc = "Apply to head repeatedly."
+	desc = "Aplicar na cabeça repetidamente."
 	icon = 'icons/obj/storage/book.dmi'
 	icon_state = "bible"
 	worn_icon_state = "bible"
@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	var/obj/structure/fluff/paper/stack/pages = new(get_turf(src))
 	pages.setDir(pick(GLOB.alldirs))
 	name = "punctured bible"
-	desc = "A memento of good luck, or perhaps divine intervention?"
+	desc = "Uma lembrança de boa sorte, ou talvez intervenção divina?"
 	icon_state = "shot"
 	if (!GLOB.bible_icon_state)
 		GLOB.bible_icon_state = "shot" // New symbol of your religion if you hadn't picked one
@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 /obj/item/book/bible/proc/make_new_altar(atom/bible_smacked, mob/user)
 	var/new_altar_area = get_turf(bible_smacked)
 
-	balloon_alert(user, "unpacking bible...")
+	balloon_alert(user, "Desempacotando a Bíblia...")
 	if(!do_after(user, 15 SECONDS, new_altar_area))
 		return
 	new /obj/structure/altar/of_gods(new_altar_area)
@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	var/mob/living/carbon/human/built_in_his_image = blessed
 	for(var/obj/item/bodypart/bodypart as anything in built_in_his_image.get_bodyparts())
 		if(!IS_ORGANIC_LIMB(bodypart))
-			balloon_alert(user, "can't heal inorganic!")
+			balloon_alert(user, "Não posso curar inorgânica!")
 			return BLESSING_IGNORED
 
 	var/heal_amt = 10
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 /obj/item/book/bible/attack(mob/living/target_mob, mob/living/carbon/human/user, list/modifiers, list/attack_modifiers, heal_mode = TRUE)
 	if(!ISADVANCEDTOOLUSER(user))
-		balloon_alert(user, "not dextrous enough!")
+		balloon_alert(user, "Não dextrous o suficiente!")
 		return
 
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
@@ -247,7 +247,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		return
 
 	if(!user.mind?.holy_role)
-		to_chat(user, span_danger("The book sizzles in your hands."))
+		to_chat(user, span_danger("O livro ferve em suas mãos."))
 		user.take_bodypart_damage(burn = 10)
 		return
 
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		return
 
 	if(user == target_mob)
-		balloon_alert(user, "can't heal yourself!")
+		balloon_alert(user, "Não pode se curar!")
 		return
 
 	var/smack_chance = DEFAULT_SMACK_CHANCE
@@ -278,7 +278,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		var/mob/living/carbon/carbon_target = target_mob
 		if(!istype(carbon_target.head, /obj/item/clothing/head/helmet))
 			carbon_target.adjust_organ_loss(ORGAN_SLOT_BRAIN, 5, 60)
-			carbon_target.balloon_alert(carbon_target, "you feel dumber!")
+			carbon_target.balloon_alert(carbon_target, "Você se sente mais idiota!")
 	target_mob.visible_message(span_danger("[user] beats [target_mob] over the head with [src]!"), \
 			span_userdanger("[user] beats [target_mob] over the head with [src]!"))
 	playsound(target_mob, SFX_PUNCH, 25, TRUE, -1)
@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 			return ITEM_INTERACT_SUCCESS
 		for(var/obj/effect/rune/nearby_runes in range(2, user))
 			nearby_runes.SetInvisibility(INVISIBILITY_NONE, id=type, priority=INVISIBILITY_PRIORITY_BASIC_ANTI_INVISIBILITY)
-		bible_smacked.balloon_alert(user, "floor smacked!")
+		bible_smacked.balloon_alert(user, "O chão bateu!")
 		return ITEM_INTERACT_SUCCESS
 
 	if(bible_smacked.reagents?.has_reagent(/datum/reagent/water)) // blesses all the water in the holder
@@ -323,7 +323,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	if(istype(bible_smacked, /obj/item/melee/cultblade/haunted) && !IS_CULTIST(user))
 		var/obj/item/melee/cultblade/haunted/sword_smacked = bible_smacked
 		if(!sword_smacked.bound)
-			sword_smacked.balloon_alert(user, "must be bound!")
+			sword_smacked.balloon_alert(user, "Deve ser amado!")
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/melee/cultblade/haunted/sword = bible_smacked
 		sword.balloon_alert(user, "exorcising...")
@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 	return NONE
 
 /obj/item/book/bible/booze
-	desc = "To be applied to the head repeatedly."
+	desc = "Para ser aplicado na cabeça repetidamente."
 
 /obj/item/book/bible/booze/Initialize(mapload)
 	. = ..()
@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 
 /obj/item/book/bible/syndicate
 	name = "syndicate tome"
-	desc = "A very ominous tome resembling a bible."
+	desc = "Um som muito sinistro que lembra uma Bíblia."
 	icon_state ="ebook"
 	item_flags = NO_BLOOD_ON_ITEM
 	throw_speed = 2
@@ -378,10 +378,10 @@ GLOBAL_LIST_INIT(bibleitemstates, list(
 		return
 	user.mind.set_holy_role(HOLY_ROLE_PRIEST)
 	uses -= 1
-	to_chat(user, span_userdanger("You try to open the book AND IT BITES YOU!"))
+	to_chat(user, span_userdanger("Você tenta abrir o livro e ele te conta!"))
 	playsound(src.loc, 'sound/effects/snap.ogg', 50, TRUE)
 	user.apply_damage(5, BRUTE, user.get_active_hand(), attacking_item = src)
-	to_chat(user, span_notice("Your name appears on the inside cover, in blood."))
+	to_chat(user, span_notice("Seu nome aparece na capa interna, em sangue."))
 	owner_name = user.real_name
 
 /obj/item/book/bible/syndicate/examine(mob/user)

@@ -7,12 +7,12 @@
 // Cult archives. Gives out utility items.
 /obj/structure/destructible/cult/item_dispenser/archives
 	name = "archives"
-	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes your skin crawl."
+	desc = "Uma mesa coberta de manuscritos arcanos e tomos em línguas desconhecidas. Olhar o texto faz sua pele rastejar."
 	cult_examine_tip = "Can be used to create zealot's blindfolds, shuttle curse orbs, and veil walker equipment."
 	icon_state = "tomealtar"
 	light_range = 1.5
 	light_color = LIGHT_COLOR_FIRE
-	break_message = span_warning("The books and tomes of the archives burn into ash as the desk shatters!")
+	break_message = span_warning("Os livros e tomos dos arquivos queimam em cinzas enquanto a mesa quebra!")
 	mansus_conversion_path = /obj/item/codex_cicatrix
 	custom_materials = list(/datum/material/runedmetal = SHEET_MATERIAL_AMOUNT * 3)
 

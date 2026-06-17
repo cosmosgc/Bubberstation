@@ -66,7 +66,7 @@
 	if (user.combat_mode)
 		switch(user.grab_state)
 			if (GRAB_PASSIVE)
-				to_chat(user, span_warning("You need a better grip to do that!"))
+				to_chat(user, span_warning("Você precisa de um aperto melhor para fazer isso!"))
 				return
 			if (GRAB_AGGRESSIVE)
 				if (gentle_push)
@@ -191,7 +191,7 @@
 		return
 	target.Knockdown(SHOVE_KNOCKDOWN_TABLE, daze_amount = 3 SECONDS)
 	target.visible_message(span_danger("[shover.name] shoves [target.name] onto \the [src]!"),
-		span_userdanger("You're shoved onto \the [src] by [shover.name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, shover)
+		span_userdanger("You're shoved onto \the [src] by [shover.name]!"), span_hear("Você ouve barulheira agressiva seguida de um barulho!"), COMBAT_MESSAGE_RANGE, shover)
 	to_chat(shover, span_danger("You shove [target.name] onto \the [src]!"))
 	target.throw_at(src, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 	log_combat(shover, target, "shoved", "onto [src] (table)[weapon ? " with [weapon]" : ""]")

@@ -1,7 +1,7 @@
 
 /obj/effect/meteor/meaty/changeling
 	name = "unsettlingly meaty meteor"
-	desc = "A tightly packed knit of flesh and skin, pulsating with life."
+	desc = "Uma malha apertada de carne e pele, pulsando com vida."
 	icon_state = "changeling"
 	heavy = FALSE
 	hits = 1 //Instantly splatters apart when it hits anything.

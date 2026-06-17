@@ -3,7 +3,7 @@
 	name = "tourist bot"
 	maxHealth = 150
 	health = 150
-	desc = "I wonder what they'll order..."
+	desc = "Eu me pergunto o que eles vão pedir..."
 	gender = NEUTER
 
 	icon = 'icons/mob/simple/tourists.dmi'

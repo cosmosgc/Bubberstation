@@ -3,13 +3,13 @@
 
 /obj/item/reagent_containers/cup/soda_cans/bubber/blood_tea
 	name = "Hemoglobin Iced Tea"
-	desc = "Kinda like that rich golfer, but it's actually blood!"
+	desc = "Como aquele golfista rico, mas na verdade é sangue!"
 	icon_state = "blood_tea"
 	list_reagents = list(/datum/reagent/consumable/icetea/blood_tea = 25, /datum/reagent/consumable/ethanol/bloodshot = 5)
 
 /obj/item/reagent_containers/cup/soda_cans/bubber/tangorine_soda
 	name = "Tang-O-Rine"
-	desc = "A refreshing blend of tangerine juice with a bubbly fizz. The soda can features a vibrant orange and green Teshari mascot."
+	desc = "Uma mistura refrescante de suco de tangerina com espumante. O refrigerante tem uma mascote Teshari verde e laranja vibrante."
 	icon_state = "tangorine_soda"
 	drink_type = SUGAR | FRUIT
 	list_reagents = list(/datum/reagent/consumable/orangejuice = 20, /datum/reagent/consumable/sodawater = 10)

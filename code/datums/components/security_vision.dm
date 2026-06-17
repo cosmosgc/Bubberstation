@@ -35,4 +35,4 @@
 		if (1 to THREAT_ASSESS_DANGEROUS)
 			examine_strings += span_notice("Assessed threat level of [threat_level]. Probably not dangerous... yet.")
 		else
-			examine_strings += span_notice("Seems to be a trustworthy individual.")
+			examine_strings += span_notice("Parece ser um indivíduo confiável.")

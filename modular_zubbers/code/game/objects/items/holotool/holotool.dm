@@ -1,6 +1,6 @@
 /obj/item/holotool
 	name = "experimental holotool"
-	desc = "A highly experimental holographic tool projector. Less efficient than its physical counterparts."
+	desc = "Um projetor de ferramentas holográficas altamente experimental. Menos eficiente que seus homólogos físicos."
 	icon = 'modular_zubbers/icons/obj/holotool.dmi'
 	icon_state = "holotool"
 	inhand_icon_state = "holotool"
@@ -52,7 +52,7 @@
 	. += span_notice("It is currently set to the [current_tool ? current_tool.name : "off"] mode.")
 	if(tool_behaviour == TOOL_MULTITOOL)
 		. += span_notice("Its buffer [buffer?.resolve() ? "contains [buffer.resolve()]." : "is empty."]")
-	. += span_info("Attack self to select tool modes.")
+	. += span_info("Atacar a si mesmo para selecionar modos de ferramenta.")
 
 // Welding tool repair is currently hardcoded and not based on tool behavior
 /obj/item/holotool/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
@@ -71,7 +71,7 @@
 		return NONE
 
 	if (!affecting.brute_dam)
-		balloon_alert(user, "limb not damaged")
+		balloon_alert(user, "membro não danificado")
 		return ITEM_INTERACT_BLOCKING
 
 	user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid == user ? user.p_their() : "[attacked_humanoid]'s"] [affecting.name]."),
@@ -166,7 +166,7 @@
 /obj/item/holotool/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
-	to_chat(user, span_danger("ZZT- ILLEGAL BLUEPRINT UNLOCKED- CONTACT !#$@^%$# NANOTRASEN SUPPORT-@*%$^%!"))
+	to_chat(user, span_danger("ZZT-ILEGAL AZLEPRINT DESLOCADO- CONTACTO!"))
 	do_sparks(5, FALSE, src)
 	obj_flags |= EMAGGED
 	return TRUE

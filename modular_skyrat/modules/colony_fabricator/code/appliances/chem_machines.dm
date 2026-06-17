@@ -2,9 +2,9 @@
 
 /obj/machinery/plumbing/synthesizer/water_synth
 	name = "water synthesizer"
-	desc = "An infinitely useful device for those finding themselves in a frontier without a stable source of water. \
-		Using a simplified version of the chemistry dispenser's synthesizer process, it can create water out of nothing \
-		but good old electricity."
+	desc = "Um dispositivo infinitamente útil para aqueles que se encontram numa fronteira sem uma fonte estável de água.\
+Usando uma versão simplificada do processo sintetizador do distribuidor de química, ele pode criar água do nada.\
+Mas a boa e velha eletricidade."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "water_synth"
 	anchored = FALSE
@@ -39,9 +39,9 @@
 
 /obj/machinery/plumbing/synthesizer/colony_hydroponics
 	name = "hydroponics chemical synthesizer"
-	desc = "An infinitely useful device for those finding themselves in a frontier without a stable source of nutrients for crops. \
-		Using a simplified version of the chemistry dispenser's synthesizer process, it can create hydroponics nutrients out of nothing \
-		but good old electricity."
+	desc = "Um dispositivo infinitamente útil para aqueles que se encontram em uma fronteira sem uma fonte estável de nutrientes para as culturas.\
+Usando uma versão simplificada do processo sintetizador do distribuidor de química, ele pode criar nutrientes hidropônicos do nada.\
+Mas a boa e velha eletricidade."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "hydro_synth"
 	anchored = FALSE
@@ -82,8 +82,8 @@
 
 /obj/machinery/chem_dispenser/frontier_appliance
 	name = "sustenance dispenser"
-	desc = "Creates and dispenses a small pre-defined set of chemicals and other liquids for the convenience of those typically on the frontier. \
-		While the machine is loved by many, it also has a reputation for making some of the worst coffees this side of the galaxy. Use at your own risk."
+	desc = "Cria e dispensa um pequeno conjunto pré-definido de produtos químicos e outros líquidos para a conveniência daqueles tipicamente na fronteira.\
+Enquanto a máquina é amada por muitos, ela também tem a reputação de fazer alguns dos piores cafés deste lado da galáxia. Use por sua conta e risco."
 	icon = 'modular_skyrat/modules/colony_fabricator/icons/chemistry_machines.dmi'
 	icon_state = "dispenser"
 	base_icon_state = "dispenser"
@@ -129,7 +129,7 @@
 
 /obj/machinery/chem_dispenser/frontier_appliance/examine(mob/user)
 	. = ..()
-	. += span_notice("It cannot be repacked, but can be deconstructed normally.")
+	. += span_notice("Não pode ser reembalado, mas pode ser desconstruído normalmente.")
 
 // Deployable item for cargo for the sustenance machine
 

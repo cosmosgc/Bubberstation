@@ -116,7 +116,7 @@
 						continue
 					player.body.forceMove(get_turf(player.assigned_landmark))
 				if(failed.len)
-					to_chat(usr, "List of players who no longer had a body (if you see this, the game is runtiming anyway so just hit \"New Game\" to end it)")
+					to_chat(usr, "Lista de jogadores que não tinham mais um corpo (se você ver isso, o jogo está correndo de qualquer maneira então basta bater\"Novo Jogo\"para acabar com isso)")
 					for(var/datum/mafia_role/fail as anything in failed)
 						to_chat(usr, fail.player_key || fail.player_pda)
 			if("debug_setup")
@@ -156,15 +156,15 @@
 			if("vote_to_start")
 				var/client/ghost_client = ui.user.client
 				if(phase != MAFIA_PHASE_SETUP)
-					to_chat(usr, span_notice("You cannot vote to start while a game is underway!"))
+					to_chat(usr, span_notice("Você não pode votar para começar enquanto um jogo está em andamento!"))
 					return
 				if(isnull(modpc))
 					if(!GLOB.mafia_signup[ghost_client.ckey])
-						to_chat(usr, span_notice("You must be signed up for this game to vote!"))
+						to_chat(usr, span_notice("Você deve estar inscrito para este jogo para votar!"))
 						return
 					if(GLOB.mafia_early_votes[ghost_client.ckey])
 						GLOB.mafia_early_votes -= ghost_client.ckey
-						to_chat(usr, span_notice("You are no longer voting to start the game early."))
+						to_chat(usr, span_notice("Você não vai mais votar para começar o jogo mais cedo."))
 					else
 						GLOB.mafia_early_votes[ghost_client.ckey] = ghost_client
 						to_chat(usr, span_notice("You vote to start the game early ([length(GLOB.mafia_early_votes)] out of [max(round(length(GLOB.mafia_signup + GLOB.pda_mafia_signup) / 2), round(MAFIA_MIN_PLAYER_COUNT / 2))])."))
@@ -172,11 +172,11 @@
 							forced_setup()
 				else
 					if(!GLOB.pda_mafia_signup[modpc])
-						to_chat(usr, span_notice("You must be signed up for this game to vote!"))
+						to_chat(usr, span_notice("Você deve estar inscrito para este jogo para votar!"))
 						return
 					if(GLOB.mafia_early_votes[modpc])
 						GLOB.mafia_early_votes -= modpc
-						to_chat(usr, span_notice("You are no longer voting to start the game early."))
+						to_chat(usr, span_notice("Você não vai mais votar para começar o jogo mais cedo."))
 					else
 						GLOB.mafia_early_votes[modpc] = modpc
 						to_chat(usr, span_notice("You vote to start the game early ([length(GLOB.mafia_early_votes)] out of [max(round(length(GLOB.mafia_signup + GLOB.pda_mafia_signup) / 2), round(MAFIA_MIN_PLAYER_COUNT / 2))])."))

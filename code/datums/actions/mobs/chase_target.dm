@@ -2,7 +2,7 @@
 	name = "Chase Target"
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	desc = "Gain a burst of speed to chase down a target."
+	desc = "Ganhar velocidade para perseguir um alvo."
 	cooldown_time = 6 SECONDS
 	/// Affects volume of the charge tell depending on the size of the mob charging
 	var/size = 1

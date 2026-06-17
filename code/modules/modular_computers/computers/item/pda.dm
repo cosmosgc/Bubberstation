@@ -120,7 +120,7 @@
 		return ..()
 	var/obj/item/disk/computer/virus/clown/installed_cartridge = inserted_disk
 	if(!installed_cartridge.charges)
-		to_chat(user, span_notice("Out of virus charges."))
+		to_chat(user, span_notice("Sem acusações de vírus."))
 		return ..()
 
 	to_chat(user, span_notice("You upload the virus to [target]!"))
@@ -160,7 +160,7 @@
 	if(!is_type_in_list(tool, contained_item))
 		return NONE
 	if(tool.w_class >= WEIGHT_CLASS_SMALL) // Anything equal to or larger than small won't work
-		user.balloon_alert(user, "too big!")
+		user.balloon_alert(user, "Muito grande!")
 		return ITEM_INTERACT_BLOCKING
 	if(!user.transferItemToLoc(tool, src))
 		return ITEM_INTERACT_BLOCKING
@@ -200,7 +200,7 @@
 
 /obj/item/modular_computer/pda/proc/swap_pen(mob/user, obj/item/tool)
 	if(inserted_item)
-		balloon_alert(user, "swapped pens")
+		balloon_alert(user, "canetas trocadas")
 		user.put_in_hands(inserted_item)
 		inserted_item = tool
 		update_appearance()
@@ -223,7 +223,7 @@
 			alt_type = MSG_AUDIBLE,
 		)
 	else
-		visible_message(span_danger("[src] explodes!"), span_warning("You hear a loud *pop*!"))
+		visible_message(span_danger("[src] explodes!"), span_warning("Você ouve um som alto!"))
 
 	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
 

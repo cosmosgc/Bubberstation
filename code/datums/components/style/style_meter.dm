@@ -1,10 +1,10 @@
 /obj/item/style_meter
 	name = "style meter attachment"
-	desc = "Attach this to a pair of glasses to install a style meter system in them. \
-		You get style points from performing stylish acts and lose them for breaking your style. \
-		The style affects the quality of your mining, with you being able to mine ore better during a good chain. \
-		A responsive data HUD gives you the ability to reflect lavaland-based projectiles by punching them with an empty hand. \
-		In addition, at high style, you are able to swap an item in your hand with one in your backpack by <b>hitting</b> one with another."
+	desc = "Coloque isso em um par de óculos para instalar um sistema de medição de estilo neles.\
+Você ganha pontos de estilo fazendo atos elegantes e os perde por quebrar seu estilo.\
+O estilo afeta a qualidade da sua mineração, com você sendo capaz de minar melhor o minério durante uma boa cadeia.\
+Um HUD de dados responsivos dá a você a capacidade de refletir projéteis baseados em lavaland batendo neles com uma mão vazia.\
+Além disso, em alto estilo, você é capaz de trocar um item em sua mão com um em sua mochila por<b>Batendo</b>um com o outro."
 	icon_state = "style_meter"
 	icon = 'icons/obj/clothing/glasses.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -28,7 +28,7 @@
 
 /obj/item/style_meter/examine(mob/user)
 	. = ..()
-	. += span_notice("You feel like a <b>multitool</b> could be used on this.")
+	. += span_notice("Você se sente como um<b>Multitool</b>Pode ser usado nisso.")
 
 /obj/item/style_meter/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!istype(interacting_with, /obj/item/clothing/glasses))
@@ -43,7 +43,7 @@
 	RegisterSignal(interacting_with, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(interacting_with, COMSIG_CLICK_ALT, PROC_REF(on_click_alt))
 	RegisterSignal(interacting_with, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL), PROC_REF(redirect_multitool))
-	balloon_alert(user, "style meter attached")
+	balloon_alert(user, "Medidor de estilo anexado")
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 	if(!iscarbon(interacting_with.loc))
 		return .
@@ -88,8 +88,8 @@
 /obj/item/style_meter/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_notice("You feel like a <b>multitool</b> could be used on this.")
-	examine_list += span_notice("<b>Alt-click</b> to remove the style meter.")
+	examine_list += span_notice("Você se sente como um<b>Multitool</b>Pode ser usado nisso.")
+	examine_list += span_notice("<b>Alt-click</b>para remover o medidor de estilo.")
 
 
 /// Signal proc to remove from glasses

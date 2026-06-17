@@ -13,7 +13,7 @@
 
 /datum/action/cooldown/mob_cooldown/the_thing/decimate
 	name = "Decimate"
-	desc = "Create spikes in a radius."
+	desc = "Criar picos em um raio."
 	button_icon = 'icons/obj/weapons/stabby.dmi'
 	button_icon_state = "huntingknife"
 	click_to_activate = FALSE
@@ -73,7 +73,7 @@
 
 /datum/action/cooldown/mob_cooldown/the_thing/big_tendrils
 	name = "Square Tendrils"
-	desc = "Create spikes in a square around the target."
+	desc = "Criar picos em um quadrado ao redor do alvo."
 	button_icon = 'icons/obj/weapons/stabby.dmi'
 	button_icon_state = "huntingknife"
 	cooldown_time = 5 SECONDS
@@ -106,7 +106,7 @@
 
 /datum/action/cooldown/mob_cooldown/the_thing/shriek
 	name = "Shriek"
-	desc = "Confuse in a radius."
+	desc = "Confuso em um raio."
 	button_icon = 'icons/obj/weapons/stabby.dmi'
 	button_icon_state = "huntingknife"
 	click_to_activate = FALSE
@@ -142,7 +142,7 @@
 
 /datum/action/cooldown/mob_cooldown/the_thing/cardinal_tendrils
 	name = "Cardinal Tendrils"
-	desc = "Create tendrils in all cardinal directions."
+	desc = "Criar tentáculos em todas as direções."
 	button_icon = 'icons/obj/weapons/stabby.dmi'
 	button_icon_state = "huntingknife"
 	cooldown_time = 10 SECONDS
@@ -183,7 +183,7 @@
 
 /datum/action/cooldown/mob_cooldown/the_thing/acid_spit
 	name = "Acid Shower"
-	desc = "Spit patches of acid in a radius around you."
+	desc = "Cuspa pedaços de ácido em um raio ao seu redor."
 	button_icon = 'icons/obj/weapons/stabby.dmi'
 	button_icon_state = "huntingknife"
 	cooldown_time = 10 SECONDS

@@ -1,9 +1,9 @@
 /datum/action/cooldown/spell/caretaker
 	name = "Caretaker’s Last Refuge"
-	desc = "Shifts you into the Caretaker's Refuge, rendering you translucent and intangible. \
-		While in the Refuge your movement is unrestricted, but you cannot use your hands or cast any spells. \
-		You cannot enter the Refuge while near other sentient beings, \
-		and you can be removed from it upon contact with antimagical artifacts."
+	desc = "Muda você para o Refúgio do Zelador, tornando você translúcido e intangível.\
+Enquanto no Refúgio seu movimento é irrestrito, mas você não pode usar suas mãos ou lançar feitiços.\
+Você não pode entrar no Refúgio enquanto se aproxima de outros seres sencientes,\
+e você pode ser removido dele em contato com artefatos antimágicos."
 	background_icon_state = "bg_heretic"
 	overlay_icon_state = "bg_heretic_border"
 	button_icon = 'icons/mob/actions/actions_ecult.dmi'
@@ -31,7 +31,7 @@
 
 	for(var/mob/living/alive in orange(5, owner))
 		if(alive.stat != DEAD && alive.client && (owner in view(alive)))
-			owner.balloon_alert(owner, "other minds nearby!")
+			owner.balloon_alert(owner, "Outras mentes próximas!")
 			return . | SPELL_CANCEL_CAST
 
 	if(!cast_on.has_status_effect(/datum/status_effect/caretaker_refuge))

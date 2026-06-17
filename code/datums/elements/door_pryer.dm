@@ -32,14 +32,14 @@
 		return NONE // It's already open numbnuts
 
 	if(DOING_INTERACTION_WITH_TARGET(attacker, target) || (!isnull(interaction_key) && DOING_INTERACTION(attacker, interaction_key)))
-		attacker.balloon_alert(attacker, "busy!")
+		attacker.balloon_alert(attacker, "Ocupado!")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	if (attacker.combat_mode)
 		return // Attack the door
 
 	if (airlock_target.locked || airlock_target.welded || airlock_target.seal)
-		airlock_target.balloon_alert(attacker, "it's sealed!")
+		airlock_target.balloon_alert(attacker, "Está selado!")
 		attacker.log_message("Tried to pry open [src], located at [loc_name(src)], but failed due to the airlock being sealed.", LOG_GAME)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -60,14 +60,14 @@
 
 	attacker.visible_message(\
 		message = span_warning("[attacker] starts forcing the [airlock_target] open!"),
-		blind_message = span_hear("You hear a metal screeching sound."),
+		blind_message = span_hear("Você ouve um barulho de metal."),
 	)
 	attacker.log_message("Started prying open [src], located at [loc_name(src)].", LOG_GAME)
 
 	playsound(airlock_target, 'sound/machines/airlock/airlock_alien_prying.ogg', 100, TRUE)
 	airlock_target.balloon_alert(attacker, "prying...")
 	if(!do_after(attacker, pry_time, airlock_target))
-		airlock_target.balloon_alert(attacker, "interrupted!")
+		airlock_target.balloon_alert(attacker, "Interrompido!")
 		attacker.log_message("Tried and failed to pry open [src], located at [loc_name(src)], due to getting interrupted.", LOG_GAME)
 		return
 	if(airlock_target.locked)

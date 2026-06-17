@@ -153,10 +153,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 		return FALSE
 
 	if(atom_integrity >= max_integrity && !(machine_stat & BROKEN))
-		balloon_alert(user, "it doesn't need repairs!")
+		balloon_alert(user, "Não precisa de reparos!")
 		return TRUE
 
-	balloon_alert(user, "repairing display...")
+	balloon_alert(user, "Reparando display...")
 	if(!tool.use_tool(src, user, 4 SECONDS, amount = 0, volume = 50))
 		return TRUE
 
@@ -173,7 +173,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 
 	if(sign_features == DISPLAY_TRAM)
 		tool.play_tool_sound(src)
-		balloon_alert(user, "set to delam")
+		balloon_alert(user, "Vamos para Delam.")
 		name = NAME_DELAM
 		desc = DESC_DELAM
 		sign_features = DISPLAY_DELAM
@@ -182,7 +182,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 		return TRUE
 	else
 		tool.play_tool_sound(src)
-		balloon_alert(user, "set to tram")
+		balloon_alert(user, "Vamos para o bonde.")
 		name = NAME_TRAM
 		desc = DESC_TRAM
 		sign_features = DISPLAY_TRAM
@@ -432,17 +432,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 			. += span_info("It has been [last_delam] shift\s since the last delamination event at this Nanotrasen facility.")
 			switch(last_delam)
 				if(0)
-					. += span_info("Let's do better today.<br/>")
+					. += span_info("Vamos fazer melhor hoje.<br/>")
 				if(1 to 5)
-					. += span_info("There's room for improvement.<br/>")
+					. += span_info("Há espaço para melhorias.<br/>")
 				if(6 to 10)
-					. += span_info("Good work!<br/>")
+					. += span_info("Bom trabalho!<br/>")
 				if(69)
-					. += span_info("Nice.<br/>")
+					. += span_info("Ótimo.<br/>")
 				else
-					. += span_info("Incredible!<br/>")
+					. += span_info("Incrível!<br/>")
 		else
-			. += span_info("The supermatter crystal has delaminated, in case you didn't notice.")
+			. += span_info("O cristal de supermatéria se delaminou, caso não tenha notado.")
 
 	if(sign_features & DISPLAY_TRAM)
 		//. += span_notice("It can be changed to display delam-free shifts with a [EXAMINE_HINT("multitool")].")
@@ -450,17 +450,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 		. += span_info("The station has had [hit_count] tram incident\s this shift.")
 		switch(hit_count)
 			if(0)
-				. += span_info("Fantastic! Champions of safety.<br/>")
+				. += span_info("Fantástico! Campeões da segurança.<br/>")
 			if(1)
-				. += span_info("Let's do better tomorrow.<br/>")
+				. += span_info("Vamos fazer melhor amanhã.<br/>")
 			if(2 to 5)
-				. += span_info("There's room for improvement.<br/>")
+				. += span_info("Há espaço para melhorias.<br/>")
 			if(6 to 10)
-				. += span_info("Good work! Nanotrasen's finest!<br/>")
+				. += span_info("Bom trabalho! O melhor de Nanotrasen!<br/>")
 			if(69)
-				. += span_info("Nice.<br/>")
+				. += span_info("Ótimo.<br/>")
 			else
-				. += span_info("Incredible! You're probably reading this from medbay.<br/>")
+				. += span_info("Incrível! Você provavelmente está lendo isso de Medbay.<br/>")
 
 #undef DISPLAY_DELAM
 #undef DISPLAY_TRAM

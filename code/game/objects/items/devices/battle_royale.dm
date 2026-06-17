@@ -26,9 +26,9 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 /// Quietly implants people with battle royale implants
 /obj/item/royale_implanter
 	name = "royale implanter"
-	desc = "Subtly implants people with rumble royale implants, \
-		preparing them to struggle for their life for the enjoyment of the Syndicate's paying audience. \
-		Implants may cause irritation at site of implantation."
+	desc = "Subtilmente implantes pessoas com rumble reale implantes,\
+Preparando-os para lutar por sua vida para o prazer da audiência paga do Sindicato.\
+Implantes podem causar irritação no local de implantação."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "nanite_hypo"
 	w_class = WEIGHT_CLASS_SMALL
@@ -43,21 +43,21 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 		remote.link_implanter(src, user)
 		return ITEM_INTERACT_SUCCESS
 	if (!linked)
-		balloon_alert(user, "no linked remote!")
+		balloon_alert(user, "Sem controle remoto ligado!")
 		return ITEM_INTERACT_BLOCKING
 	if (DOING_INTERACTION_WITH_TARGET(user, interacting_with))
-		balloon_alert(user, "busy!")
+		balloon_alert(user, "Ocupado!")
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/potential_winner = interacting_with
 	if (potential_winner.stat != CONSCIOUS)
-		balloon_alert(user, "target unconscious!")
+		balloon_alert(user, "Alvo inconsciente!")
 		return ITEM_INTERACT_BLOCKING
 	if (!potential_winner.mind)
-		balloon_alert(user, "target too boring!")
+		balloon_alert(user, "Alvo muito chato!")
 		return ITEM_INTERACT_BLOCKING
 	log_combat(user, potential_winner, "tried to implant a battle royale implant into")
 	if (!do_after(user, 1.5 SECONDS, potential_winner))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return ITEM_INTERACT_BLOCKING
 
 	var/obj/item/implant/explosive/battle_royale/encouragement_implant = new
@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 /// Activates implants implanted by linked royale implanter
 /obj/item/royale_remote
 	name = "royale remote"
-	desc = "A single use device which will activate any linked rumble royale implants, starting the show."
+	desc = "Um dispositivo de uso único que ativará qualquer implante de rumble reale ligado, começando o show."
 	icon = 'icons/obj/devices/remote.dmi'
 	icon_state = "designator_syndicate"
 	w_class = WEIGHT_CLASS_SMALL
@@ -115,11 +115,11 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 /obj/item/royale_remote/proc/link_implanter(obj/item/royale_implanter/implanter, mob/user)
 	if (implanter in linked_implanters)
 		if (user)
-			balloon_alert(user, "already linked!")
+			balloon_alert(user, "Já conectado!")
 		return
 
 	if (user)
-		balloon_alert(user, "link established")
+		balloon_alert(user, "Link estabelecido")
 
 	implanter.linked = TRUE
 	linked_implanters += implanter
@@ -237,7 +237,7 @@ GLOBAL_DATUM_INIT(battle_royale_master, /datum/battle_royale_master, new)
 			If they don't make it in five minutes, they'll be disqualified. If you see one of our players struggling to get in, do lend them a hand... or don't, if you can live with the consequences!  \n\
 			As a gesture of gratitude, we will be providing our premium broadcast to your entertainment monitors at no cost so that you can watch the excitement. \n\
 			Bystanders are advised not to intervene... but if you do, make it look good for the camera!",
-		title = "Rumble Royale Beginning",
+		title = "Rumble Royale Começando",
 		sound = 'sound/announcer/alarm/nuke_alarm.ogg',
 		has_important_message = TRUE,
 		sender_override = "Rumble Royale Pirate Broadcast Station",
@@ -267,7 +267,7 @@ GLOBAL_DATUM_INIT(battle_royale_master, /datum/battle_royale_master, new)
 			message = "[implant.imp_in.real_name] [pick(euphemisms)] [pick(condolences)]"
 		priority_announce(
 			text = message,
-			title = "Rumble Royale Casualty Report",
+			title = "Relatório de Rumble Royale",
 			sound = 'sound/announcer/notice/notice1.ogg',
 			has_important_message = TRUE,
 			sender_override = "Rumble Royale Pirate Broadcast Station",
@@ -301,7 +301,7 @@ GLOBAL_DATUM_INIT(battle_royale_master, /datum/battle_royale_master, new)
 
 	priority_announce(
 		text = message,
-		title = "Rumble Royale Winner",
+		title = "Vencedor do Rumble Royale",
 		sound = 'sound/announcer/notice/notice1.ogg',
 		has_important_message = TRUE,
 		sender_override = "Rumble Royale Pirate Broadcast Station",
@@ -316,7 +316,7 @@ GLOBAL_DATUM_INIT(battle_royale_master, /datum/battle_royale_master, new)
 /datum/battle_royale_controller/proc/limit_area()
 	priority_announce(
 		text = "We're halfway done folks! And bad news to anyone who hasn't made it to the [chosen_area]... you're out!",
-		title = "Rumble Royale Update",
+		title = "Rumble Royale Atualização",
 		sound = 'sound/announcer/notice/notice1.ogg',
 		has_important_message = TRUE,
 		sender_override = "Rumble Royale Pirate Broadcast Station",
@@ -334,7 +334,7 @@ GLOBAL_DATUM_INIT(battle_royale_master, /datum/battle_royale_master, new)
 		text = "Sorry remaining contestants, your time is up. \
 			We're sorry to announce that this edition of Royal Rumble has no winner. \n\
 			Better luck next time!",
-		title = "Rumble Royale Concluded",
+		title = "Rumble Royale Concluído",
 		sound = 'sound/announcer/notice/notice1.ogg',
 		has_important_message = TRUE,
 		sender_override = "Rumble Royale Pirate Broadcast Station",

@@ -9,7 +9,7 @@
 #define CUSTOM_SOUND_PRESET "Custom Sound"
 
 ADMIN_VERB(change_command_name, R_ADMIN, "Change Command Name", "Change the name of Central Command.", ADMIN_CATEGORY_EVENTS)
-	var/input = input(user, "Please input a new name for Central Command.", "What?", "") as text|null
+	var/input = input(user, "Por favor, insira um novo nome para o Comando Central.", "O quê?", "") as text|null
 	if(!input)
 		return
 	change_command_name(input)
@@ -100,13 +100,13 @@ ADMIN_VERB(create_command_report, R_ADMIN, "Create Command Report", "Create a co
 		if("set_report_sound")
 			if(params["picked_sound"] == CUSTOM_SOUND_PRESET)
 				played_sound = DEFAULT_ANNOUNCEMENT_SOUND // fallback by default
-				var/sound_file = input(ui_user, "Select sound file", "Upload sound") as sound|null
+				var/sound_file = input(ui_user, "Selecione o arquivo de som", "Enviar som") as sound|null
 				if(!sound_file)
-					tgui_alert(ui_user, "The custom sound could not be loaded. The standard sound will be played.", "Loading error", list("Ok"))
+					tgui_alert(ui_user, "O som personalizado não podia ser carregado. O som padrão será tocado.", "Loading error", list("Ok"))
 					return
 
 				if(!IS_SOUND_FILE(sound_file))
-					tgui_alert(ui_user, "Invalid file type. Please select a sound file.", "Loading error", list("Ok"))
+					tgui_alert(ui_user, "Tipo de arquivo inválido. Por favor, selecione um arquivo de som.", "Loading error", list("Ok"))
 					return
 
 				played_sound = sound_file
@@ -125,10 +125,10 @@ ADMIN_VERB(create_command_report, R_ADMIN, "Create Command Report", "Create a co
 			subheader = params["new_subheader"]
 		if("submit_report")
 			if(!command_name)
-				to_chat(ui_user, span_danger("You can't send a report with no command name."))
+				to_chat(ui_user, span_danger("Não pode enviar um relatório sem nome de comando."))
 				return
 			if(!params["report"])
-				to_chat(ui_user, span_danger("You can't send a report with no contents."))
+				to_chat(ui_user, span_danger("Não pode enviar um relatório sem conteúdo."))
 				return
 			command_report_content = params["report"]
 			send_announcement()

@@ -3,7 +3,7 @@
 
 /obj/item/machine_remote
 	name = "machine wand"
-	desc = "A remote for controlling machines and bots around the station."
+	desc = "Um controle remoto para máquinas e robôs ao redor da estação."
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "weakpoint_locator"
 	inhand_icon_state = "weakpoint_locator"
@@ -146,7 +146,7 @@
 ///The effect of the bug moving towards the selected machinery to mess with.
 /obj/effect/bug_moving
 	name = "bug"
-	desc = "Where da bug goin?"
+	desc = "Aonde o bicho vai?"
 	icon_state = "fly"
 	obj_flags = CAN_BE_HIT
 	max_integrity = 20

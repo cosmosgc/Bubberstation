@@ -12,7 +12,7 @@
 /obj/machinery/elevator_control_panel
 	name = "elevator panel"
 	// Fire alarm reference.
-	desc = "<i>\"In case of emergency, please use the stairs.\"</i> Thus, always use the stairs."
+	desc = "<i>\"Em caso de emergência, por favor, use as escadas.\"</i>Assim, sempre use as escadas."
 	density = FALSE
 
 	icon = 'icons/obj/wallmounts.dmi'
@@ -118,7 +118,7 @@
 		elevator_door.obj_flags |= EMAGGED
 
 	playsound(src, SFX_SPARKS, 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	balloon_alert(user, "safeties overridden")
+	balloon_alert(user, "Seguranças anuladas.")
 	return TRUE
 
 /obj/machinery/elevator_control_panel/multitool_act(mob/living/user)
@@ -126,10 +126,10 @@
 	if(!lift)
 		return
 
-	balloon_alert(user, "resetting panel...")
+	balloon_alert(user, "Reset painel...")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 	if(!do_after(user, 6 SECONDS, src))
-		balloon_alert(user, "interrupted!")
+		balloon_alert(user, "Interrompido!")
 		return TRUE
 
 	if(QDELETED(lift) || !length(lift.transport_modules))
@@ -158,7 +158,7 @@
 	reset_doors()
 
 	// Be vague about whether something was accomplished or not
-	balloon_alert(user, "panel reset")
+	balloon_alert(user, "painel reset")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, TRUE)
 
 	return TRUE
@@ -311,7 +311,7 @@
 	switch(action)
 		if("move_lift")
 			if(!allowed(usr))
-				balloon_alert(usr, "access denied!")
+				balloon_alert(usr, "Acesso negado!")
 				return
 
 			var/desired_z = params["z"]

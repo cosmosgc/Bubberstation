@@ -22,8 +22,8 @@
 	SIGNAL_HANDLER
 	if(attacker == host_role)
 		return
-	host_role.send_message_to_player(span_userdanger("You have shot a visitor!"))
-	attacker.send_message_to_player(span_userdanger("You have visited the warden!"))
+	host_role.send_message_to_player(span_userdanger("Você atirou em um visitante!"))
+	attacker.send_message_to_player(span_userdanger("Você visitou o diretor!"))
 	attacker.kill(game, host_role, lynch = FALSE)
 	return MAFIA_VISIT_INTERRUPTED
 

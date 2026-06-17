@@ -20,7 +20,7 @@
 ///Machine that lets you play roulette. Odds are pre-defined to be the same as European Roulette without the "En Prison" rule
 /obj/machinery/roulette
 	name = "Roulette Table"
-	desc = "A computerized roulette table. Swipe your ID to play or register yourself as owner!"
+	desc = "Uma mesa de roleta computadorizada. Troque sua identidade para jogar ou se registre como dono!"
 	icon = 'icons/obj/machines/roulette.dmi'
 	icon_state = "idle"
 	density = TRUE
@@ -130,7 +130,7 @@
 			playsound(src, 'sound/machines/terminal/terminal_success.ogg', 50, TRUE)
 
 		if(machine_stat & MAINT || !on || locked)
-			to_chat(user, span_notice("The machine appears to be disabled."))
+			to_chat(user, span_notice("A máquina parece estar desativada."))
 			return FALSE
 
 		if(!player_card.registered_account)
@@ -194,7 +194,7 @@
 			desc = "Owned by [player_card.registered_account.account_holder], draws directly from [user.p_their()] account."
 			my_card = player_card
 			RegisterSignal(my_card, COMSIG_QDELETING, PROC_REF(on_my_card_deleted))
-			to_chat(user, span_notice("You link the wheel to your account."))
+			to_chat(user, span_notice("Você liga a roda à sua conta."))
 			power_change()
 			return
 	return ..()
@@ -448,7 +448,7 @@
 
 /obj/item/roulette_wheel_beacon
 	name = "roulette wheel beacon"
-	desc = "N.T. approved roulette wheel beacon, toss it down and you will have a complementary roulette wheel delivered to you."
+	desc = "A N.T. aprovou o farol da roleta, jogue-o para baixo e terá uma roleta complementar entregue a você."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 	var/used

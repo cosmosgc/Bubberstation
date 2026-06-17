@@ -1,6 +1,6 @@
 /obj/structure/light_construct
 	name = "light fixture frame"
-	desc = "A light fixture under construction."
+	desc = "Uma luminária em construção."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-stage1"
 	anchored = TRUE
@@ -50,18 +50,18 @@
 	. = ..()
 	switch(stage)
 		if(LIGHT_CONSTRUCT_EMPTY)
-			. += span_notice("It's an empty frame with no wires.")
+			. += span_notice("É uma moldura vazia sem fios.")
 		if(LIGHT_CONSTRUCT_WIRED)
-			. += span_notice("It is wired, but the bolts are not screwed in.")
+			. += span_notice("Está ligado, mas os parafusos não estão presos.")
 		if(LIGHT_CONSTRUCT_CLOSED)
-			. += span_notice("The casing is closed.")
+			. += span_notice("A cápsula está fechada.")
 	if(cell_connectors)
 		if(cell)
 			. += span_notice("You see [cell] inside the casing.")
 		else
-			. += span_notice("The casing has no power cell for backup power.")
+			. += span_notice("O invólucro não tem célula de energia para reserva.")
 	else
-		. += span_danger("This casing doesn't support power cells for backup power.")
+		. += span_danger("Este invólucro não suporta células de energia para energia de reserva.")
 
 /obj/structure/light_construct/attack_hand(mob/user, list/modifiers)
 	if(!cell)
@@ -90,7 +90,7 @@
 			to_chat(user, span_warning("[tool] is stuck to your hand!"))
 			return
 		if(cell)
-			to_chat(user, span_warning("There is a power cell already installed!"))
+			to_chat(user, span_warning("Já tem uma célula de energia instalada!"))
 			return
 		if(user.temporarilyRemoveItemFromInventory(tool))
 			user.visible_message(span_notice("[user] hooks up [tool] to [src]."), \
@@ -108,12 +108,12 @@
 		if(LIGHT_CONSTRUCT_EMPTY)
 			if(tool.tool_behaviour == TOOL_WRENCH)
 				if(cell)
-					to_chat(user, span_warning("You have to remove the cell first!"))
+					to_chat(user, span_warning("Você tem que remover a cela primeiro!"))
 					return
 				to_chat(user, span_notice("You begin deconstructing [src]..."))
 				if (tool.use_tool(src, user, 30, volume=50))
 					user.visible_message(span_notice("[user.name] deconstructs [src]."), \
-						span_notice("You deconstruct [src]."), span_hear("You hear a ratchet."))
+						span_notice("You deconstruct [src]."), span_hear("Você ouve uma catraca."))
 					playsound(src, 'sound/items/deconstruct.ogg', 75, TRUE)
 					deconstruct()
 				return
@@ -130,7 +130,7 @@
 				return
 		if(LIGHT_CONSTRUCT_WIRED)
 			if(tool.tool_behaviour == TOOL_WRENCH)
-				to_chat(usr, span_warning("You have to remove the wires first!"))
+				to_chat(usr, span_warning("Você tem que remover os fios primeiro!"))
 				return
 
 			if(tool.tool_behaviour == TOOL_WIRECUTTER)
@@ -138,13 +138,13 @@
 				icon_state = "[fixture_type]-construct-stage1"
 				new /obj/item/stack/cable_coil(drop_location(), 1, "red")
 				user.visible_message(span_notice("[user.name] removes the wiring from [src]."), \
-					span_notice("You remove the wiring from [src]."), span_hear("You hear clicking."))
+					span_notice("You remove the wiring from [src]."), span_hear("Você ouve o clique."))
 				tool.play_tool_sound(src, 100)
 				return
 
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
 				user.visible_message(span_notice("[user.name] closes [src]'s casing."), \
-					span_notice("You close [src]'s casing."), span_hear("You hear screwing."))
+					span_notice("You close [src]'s casing."), span_hear("Você ouve transando."))
 				tool.play_tool_sound(src, 75)
 				switch(fixture_type)
 					if("tube")

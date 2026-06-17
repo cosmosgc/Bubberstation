@@ -6,7 +6,7 @@
 	weight = 25
 	earliest_start = 5 MINUTES
 	category = EVENT_CATEGORY_JANITORIAL
-	description = "Harmless mobs climb out of a vent."
+	description = "Máfias inofensivas saem da ventilação."
 
 /datum/round_event_control/vent_clog/can_spawn_event(players_amt, allow_magic = FALSE)
 	. = ..()
@@ -208,7 +208,7 @@
 	weight = 12
 	max_occurrences = 5
 	earliest_start = 10 MINUTES
-	description = "Dangerous mobs climb out of a vent."
+	description = "Máfias perigosas saem de uma ventilação."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 4
 
@@ -243,7 +243,7 @@
 	min_players = 15
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
-	description = "Really dangerous mobs climb out of a vent."
+	description = "Máfias perigosas saem de uma ventilação."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 6
 
@@ -273,7 +273,7 @@
 	typepath = /datum/round_event/vent_clog/strange
 	weight = 5
 	max_occurrences = 2
-	description = "Strange mobs climb out of a vent, harmfulness varies."
+	description = "Múltiplas estranhas saem de um respiradouro, a nocividade varia."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 

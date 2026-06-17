@@ -16,7 +16,7 @@ GLOBAL_VAR_INIT(temporary_flavor_text_indicator, generate_temporary_flavor_text_
 	set desc = "Allows you to set a temporary flavor text."
 
 	if(stat != CONSCIOUS)
-		to_chat(src, span_warning("You can't set your temporary flavor text now..."))
+		to_chat(src, span_warning("Você não pode definir seu texto de sabor temporário agora..."))
 		return
 
 	var/msg = tgui_input_text(src, "Set the temporary flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Temporary Flavor Text", temporary_flavor_text, max_length = MAX_FLAVOR_LEN, multiline = TRUE)
@@ -46,15 +46,15 @@ GLOBAL_VAR_INIT(temporary_flavor_text_indicator, generate_temporary_flavor_text_
 
 /datum/emote/narrate/run_emote(mob/living/user, params, type_override = null, intentional = TRUE)
 	if(GLOB.say_disabled)	// This is here to try to identify lag problems
-		to_chat(user, span_danger("Speech is currently admin-disabled."))
+		to_chat(user, span_danger("A fala está desativada."))
 		return
 
 	if(user.stat != CONSCIOUS)
-		to_chat(user, span_warning("You can't narrate right now..."))
+		to_chat(user, span_warning("Você não pode narrar agora..."))
 		return
 
 	if(user.client.prefs?.muted & MUTE_IC)
-		to_chat(user, span_danger("You are muted from sending IC messages."))
+		to_chat(user, span_danger("Você está silenciado de enviar mensagens de IC."))
 		return
 
 	var/message = tgui_input_text(user, "Input the message you would like to send as narration", "Narrate", null, MAX_MESSAGE_LEN, TRUE)
@@ -105,7 +105,7 @@ GLOBAL_VAR_INIT(temporary_flavor_text_indicator, generate_temporary_flavor_text_
 		if(!istype(target_mob))
 			return // Target was neither a hologram with an impersonation attached, or a mob
 		if(get_dist(user_mob_or_hologram.loc, target_mob.loc) > world.view)
-			to_chat(user, span_warning("Your narration was unable to be sent to your target: Too far away."))
+			to_chat(user, span_warning("Sua narração foi incapaz de ser enviada para seu alvo, muito longe."))
 			return
 		target_mob.show_message(span_cyan("[message] \n\ (Narration: [user])"), MSG_VISUAL)
 

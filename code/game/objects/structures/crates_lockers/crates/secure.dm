@@ -1,5 +1,5 @@
 /obj/structure/closet/crate/secure
-	desc = "A secure crate."
+	desc = "Uma caixa segura."
 	name = "secure crate"
 	icon_state = "securecrate"
 	base_icon_state = "securecrate"
@@ -32,38 +32,38 @@
 
 /obj/structure/closet/crate/secure/proc/boom(mob/user)
 	if(user)
-		to_chat(user, span_danger("The crate's anti-tamper system activates!"))
+		to_chat(user, span_danger("O sistema anti-tampão da caixa se ativa!"))
 		log_bomber(user, "has detonated a", src)
 	dump_contents()
 	explosion(src, heavy_impact_range = 1, light_impact_range = 5, flash_range = 5)
 	qdel(src)
 
 /obj/structure/closet/crate/secure/weapon
-	desc = "A secure weapons crate."
+	desc = "Uma caixa de armas segura."
 	name = "weapons crate"
 	icon_state = "weaponcrate"
 	base_icon_state = "weaponcrate"
 
 /obj/structure/closet/crate/secure/plasma
-	desc = "A secure plasma crate."
+	desc = "Uma caixa de plasma segura."
 	name = "plasma crate"
 	icon_state = "plasmacrate"
 	base_icon_state = "plasmacrate"
 
 /obj/structure/closet/crate/secure/gear
-	desc = "A secure gear crate."
+	desc = "Uma caixa segura."
 	name = "gear crate"
 	icon_state = "secgearcrate"
 	base_icon_state = "secgearcrate"
 
 /obj/structure/closet/crate/secure/hydroponics
-	desc = "A crate with a lock on it, painted in the scheme of the station's botanists."
+	desc = "Uma caixa com uma fechadura, pintada no esquema dos botânicos da estação."
 	name = "secure hydroponics crate"
 	icon_state = "hydrosecurecrate"
 	base_icon_state = "hydrosecurecrate"
 
 /obj/structure/closet/crate/secure/freezer //for consistency with other "freezer" closets/crates
-	desc = "An icebox with a lock on it, used to secure perishables."
+	desc = "Uma geladeira com fechadura, usada para proteger perecíveis."
 	name = "secure kitchen icebox"
 	icon_state = "kitchen_secure_crate"
 	base_icon_state = "kitchen_secure_crate"
@@ -71,7 +71,7 @@
 
 /obj/structure/closet/crate/secure/freezer/pizza
 	name = "secure pizza crate"
-	desc = "An insulated crate with a lock on it, used to secure pizza."
+	desc = "Uma caixa isolada com uma fechadura, usada para proteger pizza."
 	tamperproof = 10
 	req_access = list(ACCESS_KITCHEN)
 
@@ -100,21 +100,21 @@
 	base_icon_state = "radiation_secure"
 
 /obj/structure/closet/crate/secure/engineering
-	desc = "A crate with a lock on it, painted in the scheme of the station's engineers."
+	desc = "Uma caixa com uma fechadura, pintada no esquema dos engenheiros da estação."
 	name = "secure engineering crate"
 	icon_state = "engi_secure_crate"
 	base_icon_state = "engi_secure_crate"
 
 /obj/structure/closet/crate/secure/engineering/atmos
 	name = "secure atmospherics crate"
-	desc = "A crate with a lock on it, painted in the scheme of the station's atmospherics engineers."
+	desc = "Uma caixa com uma fechadura, pintada no esquema dos engenheiros atmosféricos da estação."
 	icon_state = "atmos_secure"
 	base_icon_state = "atmos_secure"
 
 
 /obj/structure/closet/crate/secure/science
 	name = "secure science crate"
-	desc = "A crate with a lock on it, painted in the scheme of the station's scientists."
+	desc = "Uma caixa com uma fechadura, pintada no esquema dos cientistas da estação."
 	icon_state = "scisecurecrate"
 	base_icon_state = "scisecurecrate"
 
@@ -124,7 +124,7 @@
 	base_icon_state = "robo_secure"
 
 /obj/structure/closet/crate/secure/trashcart
-	desc = "A heavy, metal trashcart with wheels. It has an electronic lock on it."
+	desc = "Um carrinho de lixo pesado com rodas. Tem uma trava eletrônica."
 	name = "secure trash cart"
 	max_integrity = 250
 	damage_deflection = 10
@@ -148,7 +148,7 @@
 
 /obj/structure/closet/crate/secure/owned
 	name = "private crate"
-	desc = "A crate cover designed to only open for who purchased its contents."
+	desc = "Uma capa de caixa projetada só para abrir para quem comprou seu conteúdo."
 	icon_state = "privatecrate"
 	base_icon_state = "privatecrate"
 	///Account of the person buying the crate if private purchasing.
@@ -162,11 +162,11 @@
 
 /obj/structure/closet/crate/secure/owned/examine(mob/user)
 	. = ..()
-	. += span_notice("It's locked with a privacy lock, and can only be unlocked by the buyer's ID.")
+	. += span_notice("Está trancada com uma fechadura de privacidade, e só pode ser desbloqueada pela identidade do comprador.")
 	// BUBBER EDIT START - show department account on examine if bought with departmental funds
 	if(department_purchase)
 		. += span_notice("This crate was purchased with departmental funds from [department_account.account_holder], and can be opened by anyone who has an ID linked to an account with a paycheck from that department.")
-		. += span_notice("Or overriden by someone with captain access.")
+		. += span_notice("Ou substituído por alguém com acesso ao capitão.")
 	// BUBBER EDIT END
 
 /obj/structure/closet/crate/secure/owned/Initialize(mapload, datum/bank_account/_buyer_account)
@@ -195,25 +195,25 @@
 						privacy_lock = FALSE
 						update_appearance()
 					else if(!silent)
-						to_chat(user, span_warning("Bank account does not match with buyer!"))
+						to_chat(user, span_warning("Conta bancária não combina com comprador!"))
 				else if(!silent)
-					to_chat(user, span_warning("No linked bank account detected!"))
+					to_chat(user, span_warning("Nenhuma conta bancária identificada!"))
 			else if(!silent)
-				to_chat(user, span_warning("No ID detected!"))
+				to_chat(user, span_warning("Nenhuma identificação detectada!"))
 		else if(!silent)
 			to_chat(user, span_warning("[src] is broken!"))
 	else ..()
 
 /obj/structure/closet/crate/secure/freezer/interdyne
 	name = "\improper Interdyne freezer"
-	desc = "This is an Interdyne Pharmaceuticals branded freezer. May or may not contain fresh organs."
+	desc = "Este é um freezer da Interdyne Pharmaceuticals. Pode ou não conter órgãos frescos."
 	icon_state = "interdynefreezer"
 	base_icon_state = "interdynefreezer"
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/structure/closet/crate/secure/freezer/interdyne/blood
 	name = "\improper Interdyne blood freezer"
-	desc = "This is an Interdyne Pharmaceuticals branded freezer. It's made to contain fresh, high-quality blood."
+	desc = "Este é um freezer da Interdyne Pharmaceuticals. É feito para conter sangue fresco e de alta qualidade."
 
 /obj/structure/closet/crate/secure/freezer/interdyne/blood/PopulateContents()
 	. = ..()
@@ -222,21 +222,21 @@
 
 /obj/structure/closet/crate/secure/freezer/donk
 	name = "\improper Donk Co. fridge"
-	desc = "A Donk Co. brand fridge, keeps your donkpockets and foam ammunition fresh!"
+	desc = "Uma geladeira da marca Donk Co., mantém seus donkpockets e munição espuma fresca!"
 	icon_state = "donkcocrate_secure"
 	base_icon_state = "donkcocrate_secure"
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/structure/closet/crate/secure/syndicate
 	name = "\improper Syndicate crate"
-	desc = "A secure crate with the Syndicate's branding on it."
+	desc = "Uma caixa segura com a marca do Sindicato nela."
 	icon_state = "syndicrate"
 	base_icon_state = "syndicrate"
 	req_access = list(ACCESS_SYNDICATE)
 
 /obj/structure/closet/crate/secure/syndicate/interdyne
 	name = "\improper Interdyne crate"
-	desc = "Crate belonging to Interdyne Pharmaceutics. Hopefully doesn't have bioweapons inside..."
+	desc = "Crate pertencente à Interdyne Pharmaceutics. Espero que não tenha armas biológicas dentro..."
 	icon_state = "interdynecrate"
 	base_icon_state = "interdynecrate"
 
@@ -247,13 +247,13 @@
 
 /obj/structure/closet/crate/secure/syndicate/self
 	name = "\improper S.E.L.F. crate"
-	desc = "A secure crate locked from the inside with a scanning panel above it and holographic display of lock's status. Sentient Engine Liberation Front engineers are quite the show-offs."
+	desc = "Uma caixa segura trancada por dentro com um painel de varredura acima dele e exibição holográfica do status da fechadura. Engenheiros da Frente de Libertação de Motores são bem exibidos."
 	icon_state = "selfcrate_secure"
 	base_icon_state = "selfcrate_secure"
 
 /obj/structure/closet/crate/secure/syndicate/mi13
 	name = "mysterious secure crate"
-	desc = "A secure crate. Lacks any obvious logos or even codes for where it arrived from, but looks like taken straight from a spy movie."
+	desc = "Uma caixa segura. Faltam logos óbvios ou até códigos de onde ele chegou, mas parece que foi tirado direto de um filme de espião."
 	icon_state = "mithirteencrate"
 	base_icon_state = "mithirteencrate"
 	open_sound_volume = 15
@@ -268,28 +268,28 @@
 	name = "\improper Cybersun crate"
 
 /obj/structure/closet/crate/secure/syndicate/cybersun/dawn
-	desc = "A secure crate from Cybersun Industries. It has distinct orange-green colouring, probably of some departament or division, but you cannot tell what is it."
+	desc = "Uma caixa segura das Indústrias Cybersun. Tem coloração laranja-verde distinta, provavelmente de algum departamento ou divisão, mas você não pode dizer o que é."
 	icon_state = "cyber_dawncrate"
 	base_icon_state = "cyber_dawncrate"
 
 /obj/structure/closet/crate/secure/syndicate/cybersun/noon
-	desc = "A secure crate from Cybersun Industries. It has distinct yellow-orange colouring, probably of some departament or division, but you cannot tell what is it."
+	desc = "Uma caixa segura das Indústrias Cybersun. Tem coloração amarela-laranja distinta, provavelmente de algum departamento ou divisão, mas você não pode dizer o que é."
 	icon_state = "cyber_nooncrate"
 	base_icon_state = "cyber_nooncrate"
 
 /obj/structure/closet/crate/secure/syndicate/cybersun/dusk
-	desc = "A secure crate from Cybersun Industries. It has distinct purple-green colouring, probably of some departament or division, but you cannot tell what is it."
+	desc = "Uma caixa segura das Indústrias Cybersun. Tem coloração roxo-verde distinta, provavelmente de algum departamento ou divisão, mas você não pode dizer o que é."
 	icon_state = "cyber_duskcrate"
 	base_icon_state = "cyber_duskcrate"
 
 /obj/structure/closet/crate/secure/syndicate/cybersun/night
-	desc = "A secure crate from Cybersun Industries. This one blatantly adorns syndicate colours. You can only guess it contains equipment for syndicate operatives."
+	desc = "Uma caixa segura das Indústrias Cybersun. Este adorna descaradamente as cores do sindicato. Você só pode imaginar que contém equipamento para agentes do sindicato."
 	icon_state = "cyber_nightcrate"
 	base_icon_state = "cyber_nightcrate"
 
 /obj/structure/closet/crate/secure/syndicate/wafflecorp
 	name = "\improper Waffle corp. crate"
-	desc = "A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads 'bringing you consecutively top five world-wide rated* breakfast since 2055. A much smaller fine print, also in cursive, clarifies: '*in years 2099-2126'... It's year 2563 now, however."
+	desc = "Um modelo muito antiquado e design de caixa de embarque com uma fechadura moderna amarrada nele, como adequado ao seu proprietário de marca, Waffle Corporation. Lettering dourado escrito em cursivo pelo logotipo diz 'trazê-lo consecutivamente top cinco mundial de classificação * café da manhã desde 2055. Uma letra muito menor, também em cursiva, esclarece: '* em anos 2099-2126'... É o ano 2563 agora, no entanto."
 	icon_state = "wafflecrate"
 	base_icon_state = "wafflecrate"
 
@@ -299,13 +299,13 @@
 	base_icon_state = "gorlexcrate"
 
 /obj/structure/closet/crate/secure/syndicate/gorlex/weapons
-	desc = "A secure weapons crate of Gorlex Marauders."
+	desc = "Uma caixa de armas de Gorlex Marauders."
 	name = "weapons crate"
 	icon_state = "gorlex_weaponcrate"
 	base_icon_state = "gorlex_weaponcrate"
 
 /obj/structure/closet/crate/secure/syndicate/gorlex/weapons/bustedlock
-	desc = "A beaten up weapon crate with Gorlex Marauders branding. Its lock looks broken."
+	desc = "Uma caixa de armas espancada com Gorlex Marauders marcando. A fechadura parece quebrada."
 	name = "damaged weapons crate"
 	secure = FALSE
 	locked = FALSE

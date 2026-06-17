@@ -19,9 +19,9 @@
 /obj/item/organ/body_egg/alien_embryo/on_find(mob/living/finder)
 	..()
 	if(stage < 5)
-		to_chat(finder, span_notice("It's small and weak, barely the size of a foetus."))
+		to_chat(finder, span_notice("É pequeno e fraco, mal do tamanho de um feto."))
 	else
-		to_chat(finder, span_notice("It's grown quite large, and writhes slightly as you look at it."))
+		to_chat(finder, span_notice("Ele cresceu bastante, e se contorce ligeiramente enquanto você olha para ele."))
 		if(prob(10))
 			attempt_grow(gib_on_success = FALSE)
 
@@ -37,24 +37,24 @@
 			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("cough")
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(owner, span_danger("Your throat feels sore."))
+				to_chat(owner, span_danger("Sua garganta está doendo."))
 			if(SPT_PROB(1, seconds_per_tick))
-				to_chat(owner, span_danger("Mucous runs down the back of your throat."))
+				to_chat(owner, span_danger("Mucous corre pela sua garganta."))
 		if(5)
 			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("sneeze")
 			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("cough")
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(owner, span_danger("Your muscles ache."))
+				to_chat(owner, span_danger("Seus músculos doem."))
 				if(prob(20))
 					owner.take_bodypart_damage(1)
 			if(SPT_PROB(2, seconds_per_tick))
-				to_chat(owner, span_danger("Your stomach hurts."))
+				to_chat(owner, span_danger("Seu estômago dói."))
 				if(prob(20))
 					owner.adjust_tox_loss(1)
 		if(6)
-			to_chat(owner, span_danger("You feel something tearing its way out of your chest..."))
+			to_chat(owner, span_danger("Sente algo arrancando seu peito..."))
 			owner.adjust_tox_loss(5 * seconds_per_tick) // Why is this [TOX]?
 
 /// Controls Xenomorph Embryo growth. If embryo is fully grown (or overgrown), stop the proc. If not, increase the stage by one and if it's not fully grown (stage 6), add a timer to do this proc again after however long the growth time variable is.
@@ -94,7 +94,7 @@
 		checked_target = src,
 		ignore_category = POLL_IGNORE_ALIEN_LARVA,
 		alert_pic = owner,
-		role_name_text = "alien larva",
+		role_name_text = "Larva alienígena",
 		chat_text_border_icon = /mob/living/carbon/alien/larva,
 	)
 	on_poll_concluded(gib_on_success, chosen_one)
@@ -131,7 +131,7 @@
 		new_xeno.RemoveInvisibility(type)
 
 	if(gib_on_success)
-		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
+		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("Você ouve matéria orgânica rasgando e rasgando!"))
 		//owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS) // SKYRAT EDIT REMOVAL - ALIEN QOL - don't ever gib host.
 		//owner.gib(DROP_ORGANS|DROP_BODYPARTS)
 		// SKYRAT EDIT ADDITION BEGIN - ALIEN QOL - You aren't getting gibbed but you aren't going to be having fun

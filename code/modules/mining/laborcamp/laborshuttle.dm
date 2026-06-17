@@ -1,6 +1,6 @@
 /obj/machinery/computer/shuttle/labor
 	name = "labor shuttle console"
-	desc = "Used to call and send the labor camp shuttle."
+	desc = "Costumava ligar e mandar a nave de trabalho."
 	circuit = /obj/item/circuitboard/computer/labor_shuttle
 	shuttleId = "laborcamp"
 	possible_destinations = "laborcamp_home;laborcamp_away"
@@ -8,7 +8,7 @@
 
 /obj/machinery/computer/shuttle/labor/one_way
 	name = "prisoner shuttle console"
-	desc = "A one-way shuttle console, used to summon the shuttle to the labor camp."
+	desc = "Um console de transporte só de ida, usado para chamar a nave para o campo de trabalho."
 	possible_destinations = "laborcamp_away"
 	circuit = /obj/item/circuitboard/computer/labor_shuttle/one_way
 	req_access = list( )
@@ -19,11 +19,11 @@
 		return FALSE
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle("laborcamp")
 	if(!M)
-		to_chat(user, span_warning("Cannot locate shuttle!"))
+		to_chat(user, span_warning("Não consigo localizar a nave auxiliar!"))
 		return FALSE
 	var/obj/docking_port/stationary/S = M.get_docked()
 	if(S?.name == "laborcamp_away")
-		to_chat(user, span_warning("Shuttle is already at the outpost!"))
+		to_chat(user, span_warning("O ônibus já está no posto avançado!"))
 		return FALSE
 	return TRUE
 

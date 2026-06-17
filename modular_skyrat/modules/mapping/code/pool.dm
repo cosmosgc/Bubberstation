@@ -29,7 +29,7 @@
  */
 /turf/open/water/overlay
 	name = "shallow water"
-	desc = "A natural body of shallow water."
+	desc = "Um corpo natural de água rasa."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
 	icon_state = "rocky"
 	baseturfs = /turf/open/water/overlay
@@ -65,7 +65,7 @@
 	swimmer.add_mood_event("hotspring", /datum/mood_event/hotspring)
 
 /datum/mood_event/hotspring
-	description = span_nicegreen("I recently had a paddle in some nice warm water! It was so refreshing!\n")
+	description = span_nicegreen("Eu recentemente tive um remo em uma boa água quente! Foi tão refrescante!\n")
 	mood_change = 4
 	timeout = 20 MINUTES
 
@@ -83,7 +83,7 @@
  */
 /turf/open/water/overlay/hotspring
 	name = "hotspring"
-	desc = "A warm, steamy swimming pool."
+	desc = "Uma piscina quente e quente."
 	icon_state = "hotspring_tile"
 	baseturfs = /turf/open/floor/plating
 	planetary_atmos = FALSE
@@ -97,7 +97,7 @@
 
 /turf/open/water/overlay/hotspring/planet
 	name = "natural hotspring"
-	desc = "A natural body of water kept warm by geothermal activity."
+	desc = "Um corpo natural de água mantido aquecido por atividade geotérmica."
 	icon_state = "hotspring"
 	baseturfs = /turf/open/water/overlay/hotspring/planet
 // Use this for indoors. It has a roof!

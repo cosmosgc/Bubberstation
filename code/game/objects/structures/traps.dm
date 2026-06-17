@@ -1,12 +1,12 @@
 /obj/structure/trap
 	name = "IT'S A TRAP"
-	desc = "Stepping on me is a guaranteed bad day."
+	desc = "Pisar em mim é um dia ruim garantido."
 	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "trap"
 	density = FALSE
 	anchored = TRUE
 	alpha = 30 //initially quite hidden when not "recharging"
-	var/flare_message = span_warning("the trap flares brightly!")
+	var/flare_message = span_warning("A armadilha acende brilhantemente!")
 	var/last_trigger = 0
 	var/time_between_triggers = 1 MINUTES
 	var/charges = INFINITY
@@ -88,7 +88,7 @@
 
 /obj/structure/trap/stun
 	name = "shock trap"
-	desc = "A trap that will shock and render you immobile. You'd better avoid it."
+	desc = "Uma armadilha que vai chocar e deixá-lo imóvel. É melhor evitar."
 	icon_state = "trap-shock"
 	var/stun_time = 10 SECONDS
 
@@ -98,7 +98,7 @@
 
 /obj/structure/trap/stun/hunter
 	name = "bounty trap"
-	desc = "A trap that only goes off when a fugitive steps on it, announcing the location and stunning the target. You'd better avoid it."
+	desc = "Uma armadilha que só explode quando um fugitivo pisa nela, anunciando o local e atordoando o alvo. É melhor evitar."
 	icon = 'icons/obj/weapons/restraints.dmi'
 	icon_state = "bounty_trap_on"
 	stun_time = 20 SECONDS
@@ -139,7 +139,7 @@
 
 /obj/item/bountytrap
 	name = "bounty trap"
-	desc = "A trap that only goes off when a fugitive steps on it, announcing the location and stunning the target. It's currently inactive."
+	desc = "Uma armadilha que só explode quando um fugitivo pisa nela, anunciando o local e atordoando o alvo. Está inativa no momento."
 	icon = 'icons/obj/weapons/restraints.dmi'
 	icon_state = "bounty_trap_off"
 	var/obj/structure/trap/stun/hunter/stored_trap
@@ -182,23 +182,23 @@
 
 /obj/structure/trap/fire
 	name = "flame trap"
-	desc = "A trap that will set you ablaze. You'd better avoid it."
+	desc = "Uma armadilha que o incendiará. É melhor evitar."
 	icon_state = "trap-fire"
 
 /obj/structure/trap/fire/trap_effect(mob/living/victim)
-	to_chat(victim, span_danger("<B>Spontaneous combustion!</B>"))
+	to_chat(victim, span_danger("<B>Combustão espontânea!</B>"))
 	victim.Paralyze(2 SECONDS)
 	new /obj/effect/hotspot(get_turf(src))
 
 /obj/structure/trap/chill
 	name = "frost trap"
-	desc = "A trap that will chill you to the bone. You'd better avoid it."
+	desc = "Uma armadilha que vai arrefecê-lo até o osso. É melhor evitar."
 	icon_state = "trap-frost"
 
 /obj/structure/trap/chill/trap_effect(mob/living/victim)
 	if(HAS_TRAIT(victim, TRAIT_RESISTCOLD))
 		return
-	to_chat(victim, span_bolddanger("You're frozen solid!"))
+	to_chat(victim, span_bolddanger("Você está congelado!"))
 	victim.Paralyze(2 SECONDS)
 	victim.adjust_bodytemperature(-300)
 	victim.apply_status_effect(/datum/status_effect/freon)
@@ -206,12 +206,12 @@
 
 /obj/structure/trap/damage
 	name = "earth trap"
-	desc = "A trap that will summon a small earthquake, just for you. You'd better avoid it."
+	desc = "Uma armadilha que invocará um pequeno terremoto, só para você. É melhor evitar."
 	icon_state = "trap-earth"
 
 
 /obj/structure/trap/damage/trap_effect(mob/living/victim)
-	to_chat(victim, span_bolddanger("The ground quakes beneath your feet!"))
+	to_chat(victim, span_bolddanger("O chão treme sob seus pés!"))
 	victim.Paralyze(10 SECONDS)
 	victim.adjust_brute_loss(35)
 	var/obj/structure/flora/rock/style_random/giant_rock = new(get_turf(src))
@@ -220,7 +220,7 @@
 
 /obj/structure/trap/ward
 	name = "divine ward"
-	desc = "A divine barrier, It looks like you could destroy it with enough effort, or wait for it to dissipate..."
+	desc = "Uma barreira divina, parece que poderia destruí-la com esforço suficiente, ou esperar que ela se dissipasse..."
 	icon_state = "ward"
 	density = TRUE
 	time_between_triggers = 2 MINUTES
@@ -231,11 +231,11 @@
 
 /obj/structure/trap/cult
 	name = "unholy trap"
-	desc = "A trap that rings with unholy energy. You think you hear... chittering?"
+	desc = "Uma armadilha que toca com energia profana. Você acha que ouve... chilrear?"
 	icon_state = "trap-cult"
 
 /obj/structure/trap/cult/trap_effect(mob/living/victim)
-	to_chat(victim, span_bolddanger("With a crack, the hostile constructs come out of hiding, stunning you!"))
+	to_chat(victim, span_bolddanger("Com uma rachadura, as construções hostis saem do esconderijo, atordoando você!"))
 	victim.electrocute_act(10, src, flags = SHOCK_NOGLOVES) // electrocute act does a message.
 	victim.Paralyze(2 SECONDS)
 	new /mob/living/basic/construct/proteon/hostile(loc)

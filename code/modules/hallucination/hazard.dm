@@ -79,10 +79,10 @@
 	return ..()
 
 /obj/effect/client_image_holder/hallucination/danger/chasm/on_hallucinator_entered(mob/living/afflicted)
-	to_chat(afflicted, span_userdanger("You fall into the chasm!"))
+	to_chat(afflicted, span_userdanger("Você cai no abismo!"))
 	afflicted.visible_message(span_warning("[afflicted] falls to the ground suddenly!"), ignored_mobs = afflicted)
 	afflicted.Paralyze(4 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), afflicted, span_notice("...It's surprisingly shallow.")), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), afflicted, span_notice("É surpreendentemente superficial.")), 1.5 SECONDS)
 	QDEL_IN(src, 3 SECONDS)
 
 /obj/effect/client_image_holder/hallucination/danger/anomaly

@@ -1,6 +1,6 @@
 /obj/item/straight_razor
 	name = "straight razor"
-	desc = "A very sharp blade, mostly used for shaving faces..."
+	desc = "Uma lâmina muito afiada, usada principalmente para barbear rostos..."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "straight_razor"
 	force = 12
@@ -26,7 +26,7 @@
 		var/mob/living/carbon/human/target_human = attacked_mob
 		var/location = user.zone_selected
 		if(!(location in list(BODY_ZONE_PRECISE_MOUTH)) && !user.combat_mode)
-			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their facial hair.\""))
+			to_chat(user, span_warning("Pare, olhe para o que está segurando e pense em si mesmo.\"Deve ser usado no cabelo facial.\""))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH && !target_human.get_bodypart(BODY_ZONE_HEAD))
 			to_chat(user, span_warning("[target_human] doesn't have a head!"))
@@ -34,14 +34,14 @@
 		if(location == BODY_ZONE_PRECISE_MOUTH)
 			var/obj/item/bodypart/head/noggin = target_human.get_bodypart(BODY_ZONE_HEAD)
 			if(!(noggin.head_flags & HEAD_FACIAL_HAIR))
-				to_chat(user, span_warning("There is no facial hair to shave!"))
+				to_chat(user, span_warning("Não há pêlos faciais para barbear!"))
 				return
 			var/covering = target_human.is_mouth_covered()
 			if(covering)
 				to_chat(user, span_warning("[covering] is in the way!"))
 				return
 			if(target_human.facial_hairstyle == "Shaved")
-				to_chat(user, span_warning("Already clean-shaven!"))
+				to_chat(user, span_warning("Já barbeado!"))
 				return
 
 			var/self_shaving = target_human == user // Shaving yourself?

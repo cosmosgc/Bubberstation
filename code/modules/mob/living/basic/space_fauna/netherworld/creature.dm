@@ -1,6 +1,6 @@
 /mob/living/basic/creature
 	name = "creature"
-	desc = "A sanity-destroying otherthing from the netherworld."
+	desc = "Uma coisa que destrói a sanidade do outro mundo."
 	icon_state = "otherthing"
 	icon_living = "otherthing"
 	icon_dead = "otherthing-dead"
@@ -18,7 +18,7 @@
 	melee_attack_cooldown = 1 SECONDS
 	faction = list(FACTION_NETHER)
 	speak_emote = list("screams")
-	death_message = "gets his head split open."
+	death_message = "Abre a cabeça dele."
 	unsuitable_atmos_damage = 0
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
@@ -69,7 +69,7 @@
 /// Jaunt spell used by creature. Can only jaunt or unjaunt if nothing can see you.
 /datum/action/cooldown/spell/jaunt/creature_teleport
 	name = "Uncanny Movement"
-	desc = "Enter or leave an alternate plane where you can travel through walls. You can only enter or emerge if unobserved."
+	desc = "Entre ou deixe um avião alternativo onde possa viajar através das paredes. Só pode entrar ou sair sem ser observado."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "blink"
 	background_icon_state = "bg_default"
@@ -92,7 +92,7 @@
 	if (!owner)
 		return SPELL_CANCEL_CAST
 	if (!do_after(owner, 6 SECONDS, target = owner.loc))
-		owner.balloon_alert(owner, "interrupted!")
+		owner.balloon_alert(owner, "Interrompido!")
 		return SPELL_CANCEL_CAST
 	return ..()
 

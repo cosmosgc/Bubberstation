@@ -1,11 +1,11 @@
 /obj/item/skillchip/job/chef
 	name = "B0RK-X3 skillchip" // bork bork bork
-	desc = "This biochip faintly smells of garlic, which is odd for something that is normally wedged inside a user's brain. Consult a dietician before use."
+	desc = "Este biochip cheira levemente a alho, o que é estranho para algo que é normalmente preso dentro do cérebro de um usuário. Consulte um nutricionista antes de usar."
 	skill_name = "Close Quarters Cooking"
-	skill_description = "A specialised form of self defence, developed by skilled sous-chef de cuisines. No man fights harder than a chef to defend his kitchen."
+	skill_description = "Uma forma especializada de auto-defesa, desenvolvida por sous-chef de cozinhas. Nenhum homem luta mais do que um chef para defender sua cozinha."
 	skill_icon = "utensils"
-	activate_message = span_notice("You can visualize how to defend your kitchen with martial arts.")
-	deactivate_message = span_notice("You forget how to control your muscles to execute kicks, slams and restraints while in a kitchen environment.")
+	activate_message = span_notice("Você pode visualizar como defender sua cozinha com artes marciais.")
+	deactivate_message = span_notice("Você esquece como controlar seus músculos para executar chutes, batidas e amarras enquanto em um ambiente de cozinha.")
 	/// The Chef CQC given by the skillchip.
 	var/datum/martial_art/cqc/under_siege/style
 

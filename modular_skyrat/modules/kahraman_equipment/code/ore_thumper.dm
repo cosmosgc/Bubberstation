@@ -2,9 +2,9 @@
 
 /obj/machinery/power/colony_ore_thumper
 	name = "ore thumper"
-	desc = "A frame with a heavy block of metal suspended atop a pipe. \
-		Must be deployed outdoors and given a wired power connection. \
-		Forces pressurized gas into the ground which brings up buried resources."
+	desc = "Um quadro com um bloco pesado de metal suspenso em cima de um tubo.\
+Deve ser colocado ao ar livre e dada uma conexão de energia com fio.\
+Forças pressurizaram o gás no solo que traz recursos enterrados."
 	icon = 'modular_skyrat/modules/kahraman_equipment/icons/ore_thumper.dmi'
 	icon_state = "thumper_idle"
 	density = TRUE
@@ -85,13 +85,13 @@
 	. = ..()
 	var/area/thumper_area = get_area(src)
 	if(!thumper_area.outdoors)
-		. += span_notice("Its must be constructed <b>outdoors</b> to function.")
+		. += span_notice("Ela deve ser construída.<b>Ao ar livre</b>para funcionar.")
 	if(!istype(get_turf(src), /turf/open/misc))
-		. += span_notice("It must be constructed on <b>suitable terrain</b>, like ash, snow, or sand.")
+		. += span_notice("Deve ser construído sobre<b>Terreno adequado</b>Como cinzas, neve ou areia.")
 	. += span_notice("It must have a powered, <b>wired connection</b> running beneath it with <b>[active_power_usage / BASE_MACHINE_ACTIVE_CONSUMPTION] kW</b> of excess power to function.")
 	. += span_notice("It will produce a box of materials after it has slammed [slam_jams_needed] times.")
 	. += span_notice("Currently, it has slammed [slam_jams] / [slam_jams_needed] times needed.")
-	. += span_notice("It will stop producing resources if there are <b>too many piles of ore</b> near it.")
+	. += span_notice("Ele vai parar de produzir recursos se houver<b>Muitas pilhas de minério.</b>Perto dele.")
 	. += span_notice("The thumper cannot work if it is <b>too close to another thumper</b>, needing <b>at least [ore_spawn_range] spaces</b> in all directions between it another thumper.")
 
 
@@ -148,10 +148,10 @@
 	var/turf/our_turf = get_turf(src)
 	var/obj/structure/cable/cable_under_us = locate() in our_turf
 	if(!cable_under_us && powernet)
-		balloon_alert(user, "not connected to wire")
+		balloon_alert(user, "não conectado ao fio")
 		return
 	if(!avail(active_power_usage))
-		balloon_alert(user, "not enough power")
+		balloon_alert(user, "Não há energia suficiente.")
 		return
 
 	thumping = TRUE
@@ -160,7 +160,7 @@
 	if(callback_tracker)
 		deltimer(callback_tracker)
 
-	balloon_alert(user, "thumper started")
+	balloon_alert(user, "Batedor começou.")
 
 	callback_tracker = addtimer(CALLBACK(src, PROC_REF(slam_it_down)), SLAM_JAM_DELAY, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
@@ -170,7 +170,7 @@
 	thumping = FALSE
 	soundloop.stop()
 	if(user)
-		balloon_alert(user, "thumper stopped")
+		balloon_alert(user, "Batedor parou.")
 
 
 /// Makes the machine slam down, producing a box of ore if it has been slamming long enough
@@ -264,9 +264,9 @@
 
 /obj/item/flatpacked_machine/ore_thumper/examine(mob/user)
 	. = ..()
-	. += span_notice("Its must be constructed <b>outdoors</b> to function.")
-	. += span_notice("It must be constructed on <b>suitable terrain</b>, like ash, snow, or sand.")
-	. += span_notice("It must have a powered, <b>wired connection</b> running beneath it to function.")
+	. += span_notice("Ela deve ser construída.<b>Ao ar livre</b>para funcionar.")
+	. += span_notice("Deve ser construído sobre<b>Terreno adequado</b>Como cinzas, neve ou areia.")
+	. += span_notice("Deve ter um motor,<b>Conexão com fio</b>Correndo por baixo dele para funcionar.")
 
 /obj/item/flatpacked_machine/ore_thumper/give_manufacturer_examine()
 	AddElement(/datum/element/manufacturer_examine, COMPANY_KAHRAMAN)

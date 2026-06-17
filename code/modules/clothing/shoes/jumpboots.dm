@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/bhop
 	name = "jump boots"
-	desc = "A specialized pair of combat boots with a built-in propulsion system for rapid forward movement."
+	desc = "Um par especializado de botas de combate com um sistema de propulsão incorporado para movimento rápido."
 	icon_state = "jetboots"
 	inhand_icon_state = null
 	resistance_flags = FIRE_PROOF
@@ -25,7 +25,7 @@
 		return
 
 	if(recharging_time > world.time)
-		to_chat(user, span_warning("The boot's internal propulsion needs to recharge still!"))
+		to_chat(user, span_warning("A propulsão interna da bota precisa recarregar ainda!"))
 		return
 
 	var/atom/target = get_edge_target_turf(user, user.dir) //gets the user's direction
@@ -37,11 +37,11 @@
 		recharging_time = world.time + recharging_rate
 	else
 		REMOVE_TRAIT(user, TRAIT_MOVE_FLOATING, LEAPING_TRAIT)
-		to_chat(user, span_warning("Something prevents you from dashing forward!"))
+		to_chat(user, span_warning("Algo o impede de avançar!"))
 
 /obj/item/clothing/shoes/bhop/rocket
 	name = "rocket boots"
-	desc = "Very special boots with built-in rocket thrusters! SHAZBOT!"
+	desc = "Botas muito especiais com propulsores de foguete embutidos! SHAZBOT!"
 	icon_state = "rocketboots"
 	inhand_icon_state = null
 	actions_types = list(/datum/action/item_action/bhop/brocket)

@@ -5,7 +5,7 @@
  */
 /obj/structure/fluff
 	name = "fluff structure"
-	desc = "Fluffier than a sheep. This shouldn't exist."
+	desc = "Mais macio que uma ovelha. Isso não deveria existir."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "minibar"
 	anchored = TRUE
@@ -31,7 +31,7 @@
  */
 /obj/structure/fluff/empty_terrarium
 	name = "empty terrarium"
-	desc = "An ancient machine that seems to be used for storing plant matter. Its hatch is ajar."
+	desc = "Uma máquina antiga que parece ser usada para armazenar matéria vegetal. A escotilha está aberta."
 	icon = 'icons/obj/mining_zones/spawners.dmi'
 	icon_state = "terrarium_open"
 	density = TRUE
@@ -41,14 +41,14 @@
  */
 /obj/structure/fluff/empty_sleeper
 	name = "empty sleeper"
-	desc = "An open sleeper. It looks as though it would be awaiting another patient, were it not broken."
+	desc = "Um dorminhoco aberto. Parece que estaria esperando outro paciente, se não estivesse quebrado."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper-open"
 
 /obj/structure/fluff/empty_sleeper/nanotrasen
 	name = "broken hypersleep chamber"
-	desc = "A Nanotrasen hypersleep chamber - this one appears broken. \
-		There are exposed bolts for easy disassembly using a wrench."
+	desc = "Uma câmara hiper-sono de Nanotrasen - esta parece quebrada.\
+Há parafusos expostos para desmontar facilmente usando uma chave inglesa."
 	icon_state = "sleeper-o"
 
 /obj/structure/fluff/empty_sleeper/syndicate
@@ -59,7 +59,7 @@
  */
 /obj/structure/fluff/empty_cryostasis_sleeper
 	name = "empty cryostasis sleeper"
-	desc = "Although comfortable, this sleeper won't function as anything but a bed ever again."
+	desc = "Embora confortável, este dorminhoco não funcionará como nada além de uma cama nunca mais."
 	icon = 'icons/obj/mining_zones/spawners.dmi'
 	icon_state = "cryostasis_sleeper_open"
 
@@ -68,7 +68,7 @@
  */
 /obj/structure/fluff/drake_statue
 	name = "drake statue"
-	desc = "A towering basalt sculpture of a proud and regal drake. Its eyes are six glowing gemstones."
+	desc = "Uma escultura de basalto de um orgulhoso e real Drake. Seus olhos são seis pedras preciosas brilhantes."
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "drake_statue"
 	pixel_x = -16
@@ -83,7 +83,7 @@
  */
 /obj/structure/fluff/shower_drain
 	name = "shower drain"
-	desc = "Ew, I think I see a hairball."
+	desc = "Acho que vi uma bola de cabelo."
 	icon = 'icons/obj/mining_zones/survival_pod.dmi'
 	icon_state = "fan_tiny"
 	plane = FLOOR_PLANE
@@ -93,13 +93,13 @@
  * A variety of statue in disrepair; parts are broken off and a gemstone is missing
  */
 /obj/structure/fluff/drake_statue/falling
-	desc = "A towering basalt sculpture of a drake. Cracks run down its surface and parts of it have fallen off."
+	desc = "Uma escultura de basalto de um Drake. As rachaduras descem pela superfície e partes dela caem."
 	icon_state = "drake_statue_falling"
 
 
 /obj/structure/fluff/bus
 	name = "bus"
-	desc = "GO TO SCHOOL. READ A BOOK."
+	desc = "Vá para a escola. Leia um livro."
 	icon = 'icons/obj/fluff/bus.dmi'
 	icon_state = null
 	density = TRUE
@@ -120,7 +120,7 @@
 
 /obj/structure/fluff/bus/passable/seat
 	name = "seat"
-	desc = "Buckle up! ...What do you mean, there's no seatbelts?!"
+	desc = "Apertem o cinto! Como assim, sem cintos?"
 	icon_state = "backseat"
 	pixel_y = 17
 	layer = OBJ_LAYER
@@ -129,7 +129,7 @@
 
 /obj/structure/fluff/bus/passable/seat/driver
 	name = "driver's seat"
-	desc = "Space Jesus is my copilot."
+	desc = "Jesus do Espaço é meu copiloto."
 	icon_state = "driverseat"
 
 /obj/structure/fluff/bus/passable/seat/driver/attack_hand(mob/user, list/modifiers)
@@ -138,7 +138,7 @@
 
 /obj/structure/fluff/paper
 	name = "dense lining of papers"
-	desc = "A lining of paper scattered across the bottom of a wall."
+	desc = "Um forro de papel espalhado pelo fundo de uma parede."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "paper"
 	deconstructible = FALSE
@@ -148,7 +148,7 @@
 
 /obj/structure/fluff/paper/stack
 	name = "dense stack of papers"
-	desc = "A stack of various papers, childish scribbles scattered across each page."
+	desc = "Uma pilha de vários papéis, rabiscos infantis espalhados por cada página."
 	icon_state = "paperstack"
 
 
@@ -161,46 +161,46 @@
 
 /obj/structure/fluff/divine/nexus
 	name = "nexus"
-	desc = "It anchors a deity to this world. It radiates an unusual aura. It looks well protected from explosive shock."
+	desc = "Ele ancora uma divindade neste mundo. Ele irradia uma aura incomum. Parece bem protegido de choque explosivo."
 	icon_state = "nexus"
 
 /obj/structure/fluff/divine/conduit
 	name = "conduit"
-	desc = "It allows a deity to extend their reach.  Their powers are just as potent near a conduit as a nexus."
+	desc = "Permite que uma divindade estenda seu alcance. Seus poderes são tão potentes quanto um nexo."
 	icon_state = "conduit"
 
 /obj/structure/fluff/divine/convertaltar
 	name = "conversion altar"
-	desc = "An altar dedicated to a deity."
+	desc = "Um altar dedicado a uma divindade."
 	icon_state = "convertaltar"
 	density = FALSE
 	can_buckle = 1
 
 /obj/structure/fluff/divine/powerpylon
 	name = "power pylon"
-	desc = "A pylon which increases the deity's rate it can influence the world."
+	desc = "Um pilar que aumenta a taxa da divindade pode influenciar o mundo."
 	icon_state = "powerpylon"
 	can_buckle = 1
 
 /obj/structure/fluff/divine/defensepylon
 	name = "defense pylon"
-	desc = "A pylon which is blessed to withstand many blows, and fire strong bolts at nonbelievers. A god can toggle it."
+	desc = "Um pilão que é abençoado para resistir a muitos golpes, e atirar parafusos fortes em incrédulos. Um deus pode mudar isso."
 	icon_state = "defensepylon"
 
 /obj/structure/fluff/divine/shrine
 	name = "shrine"
-	desc = "A shrine dedicated to a deity."
+	desc = "Um santuário dedicado a uma divindade."
 	icon_state = "shrine"
 
 /obj/structure/fluff/fokoff_sign
 	name = "crude sign"
-	desc = "A crudely-made sign with the words 'fok of' written in some sort of red paint."
+	desc = "Um sinal feito com as palavras \"fok\" escrito em algum tipo de tinta vermelha."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "fokof"
 
 /obj/structure/fluff/big_chain
 	name = "giant chain"
-	desc = "A towering link of chains leading up to the ceiling."
+	desc = "Uma enorme ligação de correntes que leva ao teto."
 	icon = 'icons/effects/32x96.dmi'
 	icon_state = "chain"
 	anchored = TRUE
@@ -211,7 +211,7 @@
 
 /obj/structure/fluff/beach_towel
 	name = "beach towel"
-	desc = "A towel decorated in various beach-themed designs."
+	desc = "Uma toalha decorada com vários desenhos de praia."
 	icon = 'icons/obj/railings.dmi'
 	icon_state = "railing"
 	density = FALSE
@@ -220,7 +220,7 @@
 
 /obj/structure/fluff/beach_umbrella
 	name = "beach umbrella"
-	desc = "A fancy umbrella designed to keep the sun off beach-goers."
+	desc = "Um guarda-chuva chique projetado para manter o sol longe da praia."
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "brella"
 	density = FALSE
@@ -250,7 +250,7 @@
 
 /obj/structure/fluff/clockwork/alloy_shards
 	name = "replicant alloy shards"
-	desc = "Broken shards of some oddly malleable metal. They occasionally move and seem to glow."
+	desc = "Cacos quebrados de metal maleável. Eles ocasionalmente se movem e parecem brilhar."
 	icon_state = "alloy_shards"
 
 /obj/structure/fluff/clockwork/alloy_shards/small
@@ -267,22 +267,22 @@
 
 /obj/structure/fluff/clockwork/blind_eye
 	name = "blind eye"
-	desc = "A heavy brass eye, its red iris fallen dark."
+	desc = "Um olho de bronze pesado, sua íris vermelha caiu escuro."
 	icon_state = "blind_eye"
 
 /obj/structure/fluff/clockwork/fallen_armor
 	name = "fallen armor"
-	desc = "Lifeless chunks of armor. They're designed in a strange way and won't fit on you."
+	desc = "Pedaços de armadura sem vida. Eles são projetados de uma forma estranha e não cabem em você."
 	icon_state = "fallen_armor"
 
 /obj/structure/fluff/clockwork/clockgolem_remains
 	name = "clockwork golem scrap"
-	desc = "A pile of scrap metal. It seems damaged beyond repair."
+	desc = "Uma pilha de sucata. Parece danificado sem conserto."
 	icon_state = "clockgolem_dead"
 
 /obj/structure/fluff/tram_rail
 	name = "tram rail"
-	desc = "Great for trams, not so great for skating."
+	desc = "Ótimo para bondes, não tão bom para patinar."
 	icon = 'icons/obj/tram/tram_rails.dmi'
 	icon_state = "rail"
 	layer = TRAM_RAIL_LAYER
@@ -321,7 +321,7 @@
 	icon_state = "anchor"
 
 /obj/structure/fluff/tram_rail/electric
-	desc = "Great for trams, not so great for skating. This one is a power rail."
+	desc = "Ótimo para bondes, não tão bom para patinar. Este é um trilho de força."
 	/// What power channel from the APC do we check for power?
 	var/power_channel = AREA_USAGE_ENVIRON
 
@@ -350,7 +350,7 @@
 
 /obj/structure/fluff/broken_canister_frame
 	name = "broken canister frame"
-	desc = "A torn apart canister. It looks like some metal can be salvaged with a wrench."
+	desc = "Uma lata rasgada. Parece que algum metal pode ser recuperado com uma chave inglesa."
 	icon_state = "broken_canister"
 	anchored = FALSE
 	density = TRUE
@@ -358,7 +358,7 @@
 
 /obj/structure/fluff/wallsign
 	name = "direction sign"
-	desc = "Now, where to go?"
+	desc = "Agora, para onde ir?"
 	density = FALSE
 	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "wallsign"

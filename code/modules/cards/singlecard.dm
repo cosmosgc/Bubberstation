@@ -1,6 +1,6 @@
 /obj/item/toy/singlecard
 	name = "card"
-	desc = "A playing card used to play card games like poker."
+	desc = "Uma carta de baralho costumava jogar jogos de cartas como pôquer."
 	icon = 'icons/obj/toys/playing_cards.dmi'
 	icon_state = "sc_Ace of Spades_nanotrasen"
 	w_class = WEIGHT_CLASS_TINY
@@ -61,11 +61,11 @@
 	if(user.is_holding(src))
 		user.visible_message(span_notice("[user] checks [user.p_their()] card."), span_notice("The card reads: [cardname]."))
 		if(blank)
-			. += span_notice("The card is blank. Write on it with a pen.")
+			. += span_notice("O cartão está em branco. Escreva com uma caneta.")
 	else if(HAS_TRAIT(user, TRAIT_XRAY_VISION))
 		. += span_notice("You scan the card with your x-ray vision and it reads: [cardname].")
 	else
-		. += span_warning("You need to have the card in your hand to check it!")
+		. += span_warning("Precisa ter o cartão na mão para verificar!")
 
 	var/marked_color = getMarkedColor(user)
 	if(marked_color)
@@ -206,7 +206,7 @@
 	if(!user.can_write(tool))
 		return NONE
 
-	var/cardtext = stripped_input(user, "What do you wish to write on the card?", "Card Writing", "", 50)
+	var/cardtext = stripped_input(user, "O que deseja escrever no cartão?", "Escrita de Cartas", "", 50)
 	if(!cardtext || !user.can_perform_action(src))
 		return ITEM_INTERACT_BLOCKING
 

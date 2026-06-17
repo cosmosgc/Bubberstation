@@ -64,7 +64,7 @@
 	report += printplayerlist(members)
 
 	if (length(objectives))
-		report += span_header("Their collective goals:")
+		report += span_header("Seus objetivos coletivos:")
 		report += print_objective_list()
 
 	report += ""

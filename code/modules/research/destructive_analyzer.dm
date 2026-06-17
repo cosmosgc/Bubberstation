@@ -9,7 +9,7 @@
  */
 /obj/machinery/rnd/destructive_analyzer
 	name = "destructive analyzer"
-	desc = "Learn science by destroying things!"
+	desc = "Aprenda ciência destruindo coisas!"
 	icon_state = "d_analyzer"
 	base_icon_state = "d_analyzer"
 	circuit = /obj/item/circuitboard/machine/destructive_analyzer
@@ -115,7 +115,7 @@
 	switch(action)
 		if("eject_item")
 			if(busy)
-				balloon_alert(user, "already busy!")
+				balloon_alert(user, "Já está ocupado!")
 				return TRUE
 			if(loaded_item)
 				unload_item()

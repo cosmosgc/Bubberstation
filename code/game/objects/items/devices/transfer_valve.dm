@@ -8,7 +8,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/bombs_righthand.dmi'
 	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	worn_icon_state = "ttv"
-	desc = "Regulates the transfer of air between two tanks."
+	desc = "Regula a transferência de ar entre dois tanques."
 	w_class = WEIGHT_CLASS_BULKY
 
 	var/obj/item/tank/tank_one
@@ -40,7 +40,7 @@
 	if(tank_two)
 		. += span_notice("A [tank_two] is attached to the secondary port.")
 	if(!tank_one || !tank_two)
-		. += span_notice("You could attach a gas tank onto the open port.")
+		. += span_notice("Você poderia colocar um tanque de gasolina na porta aberta.")
 	if(attached_device)
 		. += span_notice("A [attached_device] is attached to the fuse input.")
 	if(wired)
@@ -97,9 +97,9 @@
 		var/obj/vehicle/ridden/wheelchair/chair = interacting_with
 
 		if (chair.bomb_attached)
-			user.balloon_alert(user, "already has a TTV!")
+			user.balloon_alert(user, "Já tem um TTV!")
 			return ITEM_INTERACT_FAILURE
-		user.balloon_alert(user, "attaching TTV...")
+		user.balloon_alert(user, "Anexando TTV...")
 		if (!do_after(user, 0.5 SECONDS, chair))
 			return ITEM_INTERACT_FAILURE
 
@@ -127,17 +127,17 @@
 	else if(istype(item, /obj/item/stack/cable_coil) && !wired)
 		var/obj/item/stack/cable_coil/coil = item
 		if (coil.get_amount() < 15)
-			to_chat(user, span_warning("You need fifteen lengths of coil for this!"))
+			to_chat(user, span_warning("Você precisa de quinze comprimentos de bobina para isso!"))
 			return
 		coil.use(15)
-		to_chat(user, span_notice("You add some cables, not being really sure why. Looks like <i>backpack</i> straps."))
+		to_chat(user, span_notice("Você adiciona alguns cabos, não tendo certeza do porquê. Parece que sim.<i>mochila</i>Correias."))
 		wired = TRUE
 		slot_flags |= ITEM_SLOT_BACK
 		update_appearance()
 
 	else if(item.tool_behaviour == TOOL_WIRECUTTER && wired)
 		item.play_tool_sound(src)
-		to_chat(user, span_notice("You remove the cables."))
+		to_chat(user, span_notice("Você remove os cabos."))
 		wired = FALSE
 		slot_flags &= ~ITEM_SLOT_BACK
 		Move(drop_location())
@@ -158,7 +158,7 @@
 		tank_two = new_tank
 		to_chat(user, span_notice("You attach the [new_tank] to the transfer valve's secondary port."))
 	else
-		to_chat(user, span_warning("There are already two tanks attached, remove one first!"))
+		to_chat(user, span_warning("Já há dois tanques presos, remova um primeiro!"))
 		return FALSE
 
 	update_appearance()
@@ -169,7 +169,7 @@
 		to_chat(user, span_notice("The [A] is secured; unsecure it first."))
 		return FALSE
 	if(attached_device)
-		to_chat(user, span_warning("There is already a device attached to the valve, remove it first!"))
+		to_chat(user, span_warning("Já há um dispositivo ligado à válvula, remova-o primeiro!"))
 		return FALSE
 	if(!user.transferItemToLoc(A, src))
 		return FALSE

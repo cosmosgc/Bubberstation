@@ -16,7 +16,7 @@ ADMIN_VERB(generate_wikichem_list, R_DEBUG, "Parse Wikichems", "Parse and genera
 		max_length = MAX_MESSAGE_LEN,
 		) //95% of the time, the reagent type is a lowercase, no spaces / underscored version of the name
 	if(!input_text)
-		to_chat(user, "Input was blank!")
+		to_chat(user, "A entrada estava em branco!")
 		return
 	text2file(prefix_reaction, "[GLOB.log_directory]/chem_parse.txt")
 	var/list/names = splittext("[input_text]", ",")

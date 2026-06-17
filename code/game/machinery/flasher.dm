@@ -2,7 +2,7 @@
 
 /obj/machinery/flasher
 	name = "mounted flash"
-	desc = "A wall-mounted flashbulb device."
+	desc = "Um dispositivo de flashbulb montado na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "mflash1"
 	base_icon_state = "mflash"
@@ -83,9 +83,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 	else if (attacking_item.tool_behaviour == TOOL_WRENCH)
 		if(!bulb)
-			to_chat(user, span_notice("You start unsecuring the flasher frame..."))
+			to_chat(user, span_notice("Você começa a insegurar o flasher..."))
 			if(attacking_item.use_tool(src, user, 40, volume=50))
-				to_chat(user, span_notice("You unsecure the flasher frame."))
+				to_chat(user, span_notice("Você desencarregou o flasher."))
 				deconstruct(TRUE)
 		else
 			to_chat(user, span_warning("Remove a flashbulb from [src] first!"))
@@ -156,7 +156,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
-	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
+	desc = "Um dispositivo de iluminação portátil. Chave para ativar e desativar. Não consigo detectar movimentos lentos."
 	icon = 'icons/obj/machines/sec.dmi'
 	icon_state = "pflash1-p"
 	base_icon_state = "pflash"
@@ -211,7 +211,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/item/wallframe/flasher
 	name = "mounted flash frame"
-	desc = "Used for building wall-mounted flashers."
+	desc = "Usado para construir flashes montados na parede."
 	icon = 'icons/obj/wallmounts.dmi'
 	icon_state = "mflash_frame"
 	result_path = /obj/machinery/flasher

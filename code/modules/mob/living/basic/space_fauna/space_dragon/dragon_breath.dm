@@ -1,6 +1,6 @@
 /// A space dragon's fire breath, toasts lunch AND buffs your friends
 /datum/action/cooldown/mob_cooldown/fire_breath/carp
-	desc = "A Space Dragon's burning breath not only chars its foes, but invigorates Space Carp as well."
+	desc = "A respiração ardente de um Dragão Espacial não só queima seus inimigos, mas revigora a Carpa Espacial também."
 	fire_damage = 30
 	mech_damage = 50
 	fire_range = 20

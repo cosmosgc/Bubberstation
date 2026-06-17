@@ -5,7 +5,7 @@
 ///Pad for the Civilian Bounty Control.
 /obj/machinery/piratepad/civilian
 	name = "civilian bounty pad"
-	desc = "A machine designed to send civilian bounty targets to centcom."
+	desc = "Uma máquina projetada para enviar alvos civis para o Centcom."
 	layer = TABLE_LAYER
 	resistance_flags = FIRE_PROOF
 	circuit = /obj/item/circuitboard/machine/bountypad
@@ -28,7 +28,7 @@
 ///Computer for assigning new civilian bounties, and sending bounties for collection.
 /obj/machinery/computer/piratepad_control/civilian
 	name = "civilian bounty control terminal"
-	desc = "A console for assigning civilian bounties to inserted ID cards, and for controlling the bounty pad for export."
+	desc = "Um console para atribuir recompensas civis a cartões de identificação inseridos, e para controlar o bloco de recompensas para exportação."
 	status_report = "Ready for delivery."
 	icon_screen = "civ_bounty"
 	icon_keyboard = "id_key"
@@ -323,7 +323,7 @@
 ///Removes A stored ID card.
 /obj/machinery/computer/piratepad_control/civilian/proc/id_eject(mob/user, obj/item/target)
 	if(!target)
-		to_chat(user, span_warning("That slot is empty!"))
+		to_chat(user, span_warning("Essa vaga está vazia!"))
 		return FALSE
 	else
 		try_put_in_hand(target, user)
@@ -391,7 +391,7 @@
  */
 /obj/machinery/computer/piratepad_control/civilian/proc/print_sheet(mob/living/user)
 	if(!COOLDOWN_FINISHED(src, sheet_printer_cooldown))
-		balloon_alert(user, "printer spooling!")
+		balloon_alert(user, "Rolagem de impressora!")
 		return FALSE
 
 	var/obj/item/paper/paper = new(loc)
@@ -419,7 +419,7 @@
 ///Beacon to launch a new bounty setup when activated.
 /obj/item/civ_bounty_beacon
 	name = "civilian bounty beacon"
-	desc = "N.T. approved civilian bounty beacon, toss it down and you will have a bounty pad and computer delivered to you."
+	desc = "N.T. aprovou o sinal de recompensa civil, jogue-o para baixo e você terá um bloco de recompensa e computador entregue a você."
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 	var/uses = 2

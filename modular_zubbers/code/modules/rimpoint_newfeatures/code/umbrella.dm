@@ -125,7 +125,7 @@
 
 /obj/item/umbrella/parasol
 	name = "parasol"
-	desc = "A black laced parsol, how intricate."
+	desc = "Um parsol rendado preto, que intrincado."
 	icon = 'modular_zubbers/icons/obj/equipment/umbrella.dmi'
 	icon_state = "parasol"
 	inhand_icon_state = "parasol_closed"

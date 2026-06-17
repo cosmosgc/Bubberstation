@@ -1,7 +1,7 @@
 /// A spooky skull which heals lavaland mobs, attacks miners, and infests their bodies
 /mob/living/basic/mining/legion_brood
 	name = "legion"
-	desc = "One of many."
+	desc = "Um de muitos."
 	icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	icon_state = "legion_head"
 	icon_living = "legion_head"

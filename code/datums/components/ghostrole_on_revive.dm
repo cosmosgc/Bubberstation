@@ -19,10 +19,10 @@
 	refuse_revival_if_failed = FALSE,
 	datum/callback/on_successful_revive,
 	revive_title = "a recovered crewmember",
-	spawn_text = "Recovered Crew",
-	you_are_text = "You are a long dead crewmember, but are soon to be revived to rejoin the crew!",
-	flavor_text = "Get a job and get back to work!",
-	important_text = "Do your best to help the station. You still roll for midround antagonists."
+	spawn_text = "Equipe recuperada.",
+	you_are_text = "Você é um tripulante morto há muito tempo, mas em breve será revivido para se juntar à tripulação!",
+	flavor_text = "Arrume um emprego e volte ao trabalho!",
+	important_text = "Faça o seu melhor para ajudar a estação. Você ainda está atrás de antagonistas."
 )
 	src.refuse_revival_if_failed = refuse_revival_if_failed
 	src.on_successful_revive = on_successful_revive

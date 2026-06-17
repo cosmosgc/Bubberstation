@@ -1,7 +1,7 @@
 /obj/item/stack/light_w
 	name = "wired glass tile"
-	singular_name = "wired glass floor tile"
-	desc = "A glass tile, which is wired, somehow."
+	singular_name = "Piso de vidro com fio"
+	desc = "Uma telha de vidro, que está com fio, de alguma forma."
 	icon = 'icons/obj/tiles.dmi'
 	icon_state = "glass_wire"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -26,12 +26,12 @@
 		var/obj/item/stack/sheet/iron/M = O
 		if (M.use(1))
 			var/obj/item/L = new /obj/item/stack/tile/light(user.drop_location())
-			to_chat(user, span_notice("You make a light tile."))
+			to_chat(user, span_notice("Você faz um azulejo leve."))
 			if (!QDELETED(L))
 				L.add_fingerprint(user)
 			use(1)
 		else
-			to_chat(user, span_warning("You need one iron sheet to finish the light tile!"))
+			to_chat(user, span_warning("Você precisa de uma folha de ferro para terminar o azulejo leve!"))
 	else
 		return ..()
 

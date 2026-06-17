@@ -1,17 +1,17 @@
 
 /obj/item/holosign_creator/security
-	desc = "A holographic projector that creates holographic security barriers and restraints. You can remotely open barriers with it.\
-			Restraints are applied with the creator itself, but the projections may destabilize when exposed to EMP's, or when the captive leaves it's 9 meter range."
+	desc = "Um projetor holográfico que cria barreiras de segurança holográficas e restrições. Você pode abrir barreiras remotamente com ele.\
+Restrições são aplicadas com o próprio criador, mas as projeções podem desestabilizar quando expostas ao PEM, ou quando o prisioneiro sai, tem alcance de 9 metros."
 
 /obj/item/holosign_creator/security/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!iscarbon(interacting_with))
 		return ..()
 	var/mob/living/carbon/human = interacting_with
 	if(human.handcuffed) // is our target already handcuffed?
-		user.balloon_alert(user, "already cuffed")
+		user.balloon_alert(user, "Já algemado.")
 		return ITEM_INTERACT_BLOCKING
 	if(!human.canBeHandcuffed()) // does he actually have arms?
-		user.balloon_alert(user, "needs two hands")
+		user.balloon_alert(user, "Precisa de duas mãos.")
 		return ITEM_INTERACT_BLOCKING
 	if(DOING_INTERACTION_WITH_TARGET(user, human))
 		return ITEM_INTERACT_BLOCKING
@@ -46,7 +46,7 @@
 
 /obj/item/restraints/handcuffs/holographic
 	name = "holographic energy field"
-	desc = "A weirdly solid holographic field... how did you get this? this item gives you the permission to scream at coders."
+	desc = "Como conseguiu isso? Este item lhe dá permissão para gritar com programadores."
 	icon = 'modular_zubbers/icons/obj/holocuffs.dmi'
 	icon_state = "holocuffs"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -58,7 +58,7 @@
 
 
 /obj/item/restraints/handcuffs/holographic/used
-	desc = "A holographic projection of handcuffs, suprisingly hard to break out of"
+	desc = "Uma projeção holográfica de algemas, surpreendentemente difícil de escapar"
 	item_flags = DROPDEL
 
 /obj/item/restraints/handcuffs/holographic/proc/check_distance()
@@ -95,7 +95,7 @@
 
 /atom/movable/screen/alert/status_effect/holocuff_distance
 	name = "Holocuff Range"
-	desc = "If only I could get out of the projector's range, it'd lose control!"
+	desc = "Se eu pudesse sair do alcance do projetor, perderia o controle!"
 	icon = 'modular_zubbers/icons/obj/holocuffs.dmi'
 	icon_state = "holocuffs"
 

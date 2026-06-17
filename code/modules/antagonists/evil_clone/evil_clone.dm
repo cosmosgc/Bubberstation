@@ -35,7 +35,7 @@
 /// Kill everyone with the same name as you
 /datum/objective/accept_no_substitutes
 	name = "kill all clones"
-	explanation_text = "Ensure that nobody with a particular name that you don't remember remains alive."
+	explanation_text = "Certifique-se de que ninguém com um nome em particular que não se lembre permaneça vivo."
 	admin_grantable = TRUE
 	/// What name do we want to expunge?
 	var/target_name

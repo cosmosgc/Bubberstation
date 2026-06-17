@@ -14,7 +14,7 @@
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
-	desc = "A brain implant that infuses the user with nanites."
+	desc = "Um implante cerebral que infusa o usuário com nanites."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/nifs.dmi'
 	icon_state = "base_nif"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -266,11 +266,11 @@
 	if(!blood_drain)
 		power_usage += (blood_drain_rate * blood_conversion_rate)
 
-		balloon_alert(linked_mob, "blood draining disabled")
+		balloon_alert(linked_mob, "Sangue drenando desativado.")
 		return TRUE
 
 	power_usage -= (blood_drain_rate * blood_conversion_rate)
-	balloon_alert(linked_mob, "blood draining enabled")
+	balloon_alert(linked_mob, "Dreno de sangue ativado.")
 	return TRUE
 
 ///Checks if the NIF is able to draw blood as a power source?
@@ -298,10 +298,10 @@
 			var/random_ailment = rand(1, side_effect_risk)
 			switch(random_ailment)
 				if(1)
-					to_chat(linked_mob, span_warning("You feel sick to your stomach!"))
+					to_chat(linked_mob, span_warning("Você se sente mal do estômago!"))
 					linked_mob.adjust_disgust(25)
 				if(2)
-					to_chat(linked_mob, span_warning("You feel a wave of fatigue roll over you!"))
+					to_chat(linked_mob, span_warning("Você sente uma onda de fadiga rolar sobre você!"))
 					linked_mob.adjust_stamina_loss(50)
 
 		if(NIF_CALIBRATION_STAGE_FINISHED to INFINITY)
@@ -502,7 +502,7 @@
 
 /obj/item/storage/box/nif_ghost_box
 	name = "\improper NIF Starter Kit"
-	desc = "Contains a calibration-free NIF along with a variety of NIFSofts."
+	desc = "Contém um NIF livre de calibração junto com uma variedade de NIFSofts."
 	illustration = "disk_kit"
 
 /obj/item/storage/box/nif_ghost_box/PopulateContents()

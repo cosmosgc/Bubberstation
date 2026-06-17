@@ -1,6 +1,6 @@
 /obj/machinery/public_nanite_chamber
 	name = "public nanite chamber"
-	desc = "A device that can rapidly implant cloud-synced nanites without an external operator."
+	desc = "Um dispositivo que pode implantar rapidamente nanites sincronizados sem um operador externo."
 	circuit = /obj/item/circuitboard/machine/public_nanite_chamber
 	icon = 'icons/obj/machines/bci_implanter.dmi'
 	icon_state = "bci_implanter"
@@ -113,7 +113,7 @@
 
 /obj/machinery/public_nanite_chamber/proc/toggle_open(mob/user)
 	if(panel_open)
-		to_chat(user, span_notice("Close the maintenance panel first."))
+		to_chat(user, span_notice("Feche o painel de manutenção primeiro."))
 		return
 
 	if(state_open)
@@ -121,7 +121,7 @@
 		return
 
 	else if(locked)
-		to_chat(user, span_notice("The bolts are locked down, securing the door shut."))
+		to_chat(user, span_notice("Os parafusos estão trancados, mantendo a porta fechada."))
 		return
 
 	open_machine()
@@ -186,7 +186,7 @@
 /obj/machinery/public_nanite_chamber/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(occupant)
-		balloon_alert(user, "occupied!")
+		balloon_alert(user, "Ocupado!")
 		return ITEM_INTERACT_BLOCKING
 	return default_deconstruction_screwdriver(user, tool)
 

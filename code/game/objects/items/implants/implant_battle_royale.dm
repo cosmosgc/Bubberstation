@@ -82,7 +82,7 @@
 		return
 	if (!source.itch() || prob(80))
 		return
-	to_chat(source, span_boldwarning("You feel a lump which shouldn't be there."))
+	to_chat(source, span_boldwarning("Você sente um caroço que não deveria estar lá."))
 
 /// Start the battle royale
 /obj/item/implant/explosive/battle_royale/proc/start_battle(target_area_name, list/limited_areas)

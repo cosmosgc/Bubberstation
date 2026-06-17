@@ -1,6 +1,6 @@
 /datum/mutation/strong_legs
 	name = "Strong Legs"
-	desc = "Strengtens the calves of the subject, allowing them to leap across gaps."
+	desc = "Strengtens os bezerros do sujeito, permitindo-lhes saltar através de lacunas."
 	quality = POSITIVE
 	difficulty = 12
 	text_gain_indication = span_notice("Your leg muscles feel stronger.")
@@ -22,7 +22,7 @@
 
 /datum/action/cooldown/mob_cooldown/leap
 	name = "Leap"
-	desc = "You propel yourself into the air, allowing you to cross short gaps."
+	desc = "Você se impulsiona no ar, permitindo que cruze pequenas lacunas."
 	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = "lace"
 	cooldown_time = 10 SECONDS
@@ -99,5 +99,5 @@
 
 /obj/item/dnainjector/strong_legs
 	name = "\improper DNA injector (Strong Legs)"
-	desc = "Makes you leap like a bunny."
+	desc = "Faz você pular como um coelho."
 	add_mutations = list(/datum/mutation/strong_legs)

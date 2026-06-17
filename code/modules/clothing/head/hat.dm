@@ -6,7 +6,7 @@
 /obj/item/clothing/head/hats/centhat
 	name = "\improper CentCom hat"
 	icon_state = "centcom"
-	desc = "It's good to be emperor."
+	desc = "É bom ser imperador."
 	inhand_icon_state = "that"
 	flags_inv = 0
 	armor_type = /datum/armor/hats_centhat
@@ -23,7 +23,7 @@
 
 /obj/item/clothing/head/costume/constable
 	name = "constable helmet"
-	desc = "A British-looking helmet."
+	desc = "Um capacete britânico."
 	icon_state = "constable"
 	inhand_icon_state = null
 	custom_price = PAYCHECK_COMMAND * 1.5
@@ -33,31 +33,31 @@
 
 /obj/item/clothing/head/costume/spacepolice
 	name = "space police cap"
-	desc = "A blue cap for patrolling the daily beat."
+	desc = "Um boné azul para patrulhar a batida diária."
 	icon_state = "policecap_families"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/costume/canada
 	name = "striped red tophat"
-	desc = "It smells like fresh donut holes. / <i>Il sent comme des trous de beignets frais.</i>"
+	desc = "Cheira a rosquinhas frescas.<i>Eu mandei comme des trous de beignets frais.</i>"
 	icon_state = "canada"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/costume/redcoat
 	name = "redcoat's hat"
 	icon_state = "redcoat"
-	desc = "<i>'I guess it's a redhead.'</i>"
+	desc = "<i>Acho que é uma ruiva.</i>"
 
 /obj/item/clothing/head/costume/mailman
 	name = "mailman's hat"
 	icon_state = "mailman"
-	desc = "<i>'Right-on-time'</i> mail service head wear."
+	desc = "<i>Bem na hora.</i>Cabeça de correio."
 	clothing_traits = list(TRAIT_HATED_BY_DOGS)
 	custom_premium_price = PAYCHECK_CREW
 
 /obj/item/clothing/head/bio_hood/plague
 	name = "plague doctor's hat"
-	desc = "These were once used by plague doctors. This hat will only slightly protect you from exposure to the Pestilence."
+	desc = "Estes já foram usados por médicos praga. Este chapéu irá protegê-lo apenas ligeiramente da exposição à Pestilência."
 	icon_state = "plaguedoctor"
 	armor_type = /datum/armor/bio_hood_plague
 	flags_inv = HIDEHAIR|HIDEEARS
@@ -71,13 +71,13 @@
 
 /obj/item/clothing/head/costume/nursehat
 	name = "nurse's hat"
-	desc = "It allows quick identification of trained medical personnel."
+	desc = "Permite a identificação rápida de pessoal médico treinado."
 	icon_state = "nursehat"
 	dog_fashion = /datum/dog_fashion/head/nurse
 
 /obj/item/clothing/head/hats/bowler
 	name = "bowler-hat"
-	desc = "Gentleman, elite aboard!"
+	desc = "Cavalheiros, elite a bordo!"
 	icon_state = "bowler"
 	inhand_icon_state = null
 
@@ -101,7 +101,7 @@
 
 /obj/item/clothing/head/flatcap
 	name = "flat cap"
-	desc = "A working man's cap."
+	desc = "O boné de um trabalhador."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/flatcap"
 	post_init_icon_state = "beret_flat"
@@ -112,7 +112,7 @@
 
 /obj/item/clothing/head/cowboy
 	name = "cowboy hat"
-	desc = "Ain't nobody gonna cheat the hangman in my town."
+	desc = "Ninguém vai enganar o carrasco na minha cidade."
 	icon = 'icons/obj/clothing/head/cowboy.dmi'
 	worn_icon = 'icons/mob/clothing/head/cowboy.dmi'
 	icon_state = "cowboy_hat_brown"
@@ -148,14 +148,14 @@
 /// Bounty hunter's hat, very likely to intercept bullets
 /obj/item/clothing/head/cowboy/bounty
 	name = "bounty hunting hat"
-	desc = "Reach for the skies, pardner."
+	desc = "Alcance os céus, parceiro."
 	icon_state = "bounty_hunter"
 	worn_icon_state = "hunter"
 	deflect_chance = 50
 
 /obj/item/clothing/head/cowboy/black
 	name = "desperado hat"
-	desc = "People with ropes around their necks don't always hang."
+	desc = "Pessoas com cordas no pescoço nem sempre penduram."
 	icon_state = "cowboy_hat_black"
 	worn_icon_state = "cowboy_hat_black"
 	inhand_icon_state = "cowboy_hat_black"
@@ -166,35 +166,35 @@
 
 /obj/item/clothing/head/cowboy/white
 	name = "ten-gallon hat"
-	desc = "There are two kinds of people in the world: those with guns and those that dig. You dig?"
+	desc = "Há dois tipos de pessoas no mundo: aquelas com armas e aquelas que cavam. Entendeu?"
 	icon_state = "cowboy_hat_white"
 	worn_icon_state = "cowboy_hat_white"
 	inhand_icon_state = "cowboy_hat_white"
 
 /obj/item/clothing/head/cowboy/grey
 	name = "drifter hat"
-	desc = "The hat for an assistant with no name."
+	desc = "O chapéu para uma assistente sem nome."
 	icon_state = "cowboy_hat_grey"
 	worn_icon_state = "cowboy_hat_grey"
 	inhand_icon_state = "cowboy_hat_grey"
 
 /obj/item/clothing/head/cowboy/red
 	name = "deputy hat"
-	desc = "Don't let the garish coloration fool you. This hat has seen some terrible things."
+	desc = "Não se deixe enganar pela coloração. Este chapéu viu coisas terríveis."
 	icon_state = "cowboy_hat_red"
 	worn_icon_state = "cowboy_hat_red"
 	inhand_icon_state = "cowboy_hat_red"
 
 /obj/item/clothing/head/cowboy/brown
 	name = "sheriff hat"
-	desc = "Reach for the skies, pardner."
+	desc = "Alcance os céus, parceiro."
 	icon_state = "cowboy_hat_brown"
 	worn_icon_state = "cowboy_hat_brown"
 	inhand_icon_state = "cowboy_hat_brown"
 
 /obj/item/clothing/head/costume/santa
 	name = "santa hat"
-	desc = "On the first day of christmas my employer gave to me!"
+	desc = "No primeiro dia de Natal meu patrão me deu!"
 	icon_state = "santahatnorm"
 	inhand_icon_state = "that"
 	cold_protection = HEAD
@@ -203,7 +203,7 @@
 
 /obj/item/clothing/head/costume/santa/gags
 	name = "santa hat"
-	desc = "On the first day of christmas my employer gave to me!"
+	desc = "No primeiro dia de Natal meu patrão me deu!"
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/costume/santa/gags"
 	post_init_icon_state = "santa_hat"
@@ -214,7 +214,7 @@
 
 /obj/item/clothing/head/costume/jester
 	name = "jester hat"
-	desc = "A hat with bells, to add some merriness to the suit."
+	desc = "Um chapéu com sinos, para adicionar alguma alegria ao terno."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/costume/jester"
 	post_init_icon_state = "jester_map"
@@ -225,12 +225,12 @@
 
 /obj/item/clothing/head/costume/jesteralt
 	name = "jester hat"
-	desc = "A hat with bells, to add some merriness to the suit."
+	desc = "Um chapéu com sinos, para adicionar alguma alegria ao terno."
 	icon_state = "jester2"
 
 /obj/item/clothing/head/costume/rice_hat
 	name = "rice hat"
-	desc = "Welcome to the rice fields, motherfucker."
+	desc = "Bem-vindo aos campos de arroz, filho da puta."
 	icon_state = "rice_hat"
 	base_icon_state = "rice_hat"
 	var/reversed = FALSE
@@ -243,7 +243,7 @@
 
 /obj/item/clothing/head/costume/lizard
 	name = "lizardskin cloche hat"
-	desc = "How many lizards died to make this hat? Not enough."
+	desc = "Quantos lagartos morreram para fazer este chapéu? Não o suficiente."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/costume/lizard"
 	post_init_icon_state = "lizard_hat"
@@ -260,34 +260,34 @@
 
 /obj/item/clothing/head/costume/scarecrow_hat
 	name = "scarecrow hat"
-	desc = "A simple straw hat."
+	desc = "Um simples chapéu de palha."
 	icon_state = "scarecrow_hat"
 
 /obj/item/clothing/head/costume/pharaoh
 	name = "pharaoh hat"
-	desc = "Walk like an Egyptian."
+	desc = "Ande como um egípcio."
 	icon_state = "pharoah_hat"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/costume/nemes
 	name = "headdress of Nemes"
-	desc = "Lavish space tomb not included."
+	desc = "Uma tumba espacial não incluída."
 	icon_state = "nemes_headdress"
 
 /obj/item/clothing/head/costume/delinquent
 	name = "delinquent hat"
-	desc = "Good grief."
+	desc = "Meu Deus."
 	icon_state = "delinquent"
 
 /obj/item/clothing/head/hats/intern
 	name = "\improper CentCom Head Intern beancap"
-	desc = "A horrifying mix of beanie and softcap in CentCom green. You'd have to be pretty desperate for power over your peers to agree to wear this."
+	desc = "Uma horripilante mistura de gorro e gorro no verde CentCom. Você teria que estar desesperado por poder sobre seus colegas para concordar em usar isso."
 	icon_state = "intern_hat"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/hats/coordinator
 	name = "coordinator cap"
-	desc = "A cap for a party coordinator, stylish!."
+	desc = "Um boné para um coordenador de festas, elegante!"
 	icon_state = "capcap"
 	inhand_icon_state = "that"
 	armor_type = /datum/armor/hats_coordinator
@@ -309,14 +309,14 @@
 
 /obj/item/clothing/head/costume/weddingveil
 	name = "wedding veil"
-	desc = "A gauzy white veil."
+	desc = "Um véu branco."
 	icon_state = "weddingveil"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/hats/centcom_cap
 	name = "\improper CentCom commander cap"
 	icon_state = "centcom_cap"
-	desc = "Worn by the finest of CentCom commanders. Two faint initials lie inside the lining of the cap."
+	desc = "Usado pelos melhores comandantes da CentCom. Duas pequenas iniciais estão dentro do forro da tampa."
 	inhand_icon_state = "that"
 	flags_inv = 0
 	armor_type = /datum/armor/hats_centcom_cap
@@ -334,13 +334,13 @@
 
 /obj/item/clothing/head/fedora/human_leather
 	name = "human skin hat"
-	desc = "This will scare them. All will know my power."
+	desc = "Isso vai assustá-los. Todos conhecerão meu poder."
 	icon_state = "human_leather"
 	inhand_icon_state = null
 
 /obj/item/clothing/head/costume/ushanka
 	name = "ushanka"
-	desc = "Perfect for winter in Siberia, da?"
+	desc = "Perfeito para o inverno na Sibéria."
 	icon = 'icons/map_icons/clothing/head/_head.dmi'
 	icon_state = "/obj/item/clothing/head/costume/ushanka"
 	post_init_icon_state = "ushanka_gagdown"
@@ -363,16 +363,16 @@
 	if(earflaps)
 		icon_state = upsprite
 		inhand_icon_state = upsprite
-		to_chat(user, span_notice("You raise the ear flaps on the ushanka."))
+		to_chat(user, span_notice("Você levanta as orelhas na ushanka."))
 	else
 		icon_state = downsprite
 		inhand_icon_state = downsprite
-		to_chat(user, span_notice("You lower the ear flaps on the ushanka."))
+		to_chat(user, span_notice("Abaixe as orelhas na ushanka."))
 	earflaps = !earflaps
 
 /obj/item/clothing/head/costume/ushanka/polar
 	name = "bear hunter's ushanka"
-	desc = "Handcrafted in Siberia from real polar bears."
+	desc = "Feitos na Sibéria de ursos polares de verdade."
 	icon_state = "/obj/item/clothing/head/costume/ushanka/polar"
 	greyscale_colors = "#FCFCFD#CCCED1"
 	flags_1 = null
@@ -380,7 +380,7 @@
 /obj/item/clothing/head/costume/ushanka/sec
 	name = "security ushanka"
 	icon_state = "/obj/item/clothing/head/costume/ushanka/sec"
-	desc = "A warm and comfortable ushanka, dyed with 'all natural flavors' according to the tag."
+	desc = "Um ushanka quente e confortável, tingido com 'todos os sabores naturais' de acordo com a etiqueta."
 	greyscale_colors = "#C7B08B#A52F29"
 	armor_type = /datum/armor/cosmetic_sec
 	flags_1 = null
@@ -390,17 +390,17 @@
 
 /obj/item/clothing/head/costume/nightcap/blue
 	name = "blue nightcap"
-	desc = "A blue nightcap for all the dreamers and snoozers out there."
+	desc = "Uma bebida azul para todos os sonhadores e sonâmbulos."
 	icon_state = "sleep_blue"
 
 /obj/item/clothing/head/costume/nightcap/red
 	name = "red nightcap"
-	desc = "A red nightcap for all the sleepyheads and dozers out there."
+	desc = "Uma bebida vermelha para todos os dorminhocos e dorminhocos."
 	icon_state = "sleep_red"
 
 /obj/item/clothing/head/costume/paper_hat
 	name = "paper hat"
-	desc = "A flimsy hat made of paper."
+	desc = "Um chapéu frágil feito de papel."
 	icon_state = "paper"
 	worn_icon_state = "paper"
 	dog_fashion = /datum/dog_fashion/head
@@ -408,6 +408,6 @@
 
 /obj/item/clothing/head/costume/paper_hat/savior
 	name = "ancient paper hat"
-	desc = "An ancient hat made of paper. \"Savior of the Universe\" is spelled out on the rim in orange marker. "
+	desc = "Um chapéu antigo feito de papel.\"Salvador do Universo\"é escrito na borda em marcador laranja."
 	icon_state = "paper_savior"
 	worn_icon_state = "paper_savior"

@@ -28,13 +28,13 @@
 /// will cause your brain to fall out of your head.
 /datum/wound/cranial_fissure
 	name = "Cranial Fissure"
-	desc = "Patient's crown is agape, revealing severe damage to the skull."
-	treat_text = "Surgical reconstruction of the skull is necessary."
+	desc = "A coroa do paciente é agape, revelando danos graves no crânio."
+	treat_text = "A reconstrução cirúrgica do crânio é necessária."
 	treat_text_short = "Surgical reconstruction required."
-	examine_desc = "is split open"
-	occur_text = "is split into two separated chunks"
+	examine_desc = "Está dividido."
+	occur_text = "é dividido em dois pedaços separados"
 
-	simple_desc = "Patient's skull is split open."
+	simple_desc = "O crânio do paciente está aberto."
 	threshold_penalty = 40
 
 	severity = WOUND_SEVERITY_CRITICAL
@@ -80,7 +80,7 @@
 
 	source.visible_message(
 		span_boldwarning("[source]'s brain spills right out of [source.p_their()] head!"),
-		span_userdanger("Your brain spills right out of your head!"),
+		span_userdanger("Seu cérebro sai da sua cabeça!"),
 	)
 
 /datum/wound/cranial_fissure/try_handling(mob/living/user)
@@ -95,11 +95,11 @@
 
 	var/obj/item/organ/eyes/eyes = victim.get_organ_by_type(/obj/item/organ/eyes)
 	if (isnull(eyes))
-		victim.balloon_alert(user, "no eyes to take!")
+		victim.balloon_alert(user, "Sem olhos para tirar!")
 		return TRUE
 
 	playsound(victim, 'sound/items/handling/surgery/organ2.ogg', 50, TRUE)
-	victim.balloon_alert(user, "pulling out eyes...")
+	victim.balloon_alert(user, "Tirando os olhos...")
 	user.visible_message(
 		span_boldwarning("[user] reaches inside [victim]'s skull..."),
 		ignored_mobs = user
@@ -107,7 +107,7 @@
 	victim.show_message(
 		span_userdanger("[victim] starts to pull out your eyes!"),
 		MSG_VISUAL,
-		span_userdanger("An arm reaches inside your brain, and starts pulling on your eyes!"),
+		span_userdanger("Um braço atinge seu cérebro, e começa a puxar seus olhos!"),
 	)
 
 	if (!do_after(user, 10 SECONDS, victim, extra_checks = CALLBACK(src, PROC_REF(still_has_eyes), eyes)))
@@ -128,7 +128,7 @@
 	victim.show_message(
 		span_userdanger("[user] rips out your eyes!"),
 		MSG_VISUAL,
-		span_userdanger("You feel an arm yank from inside your head, as you feel something very important is missing!"),
+		span_userdanger("Você sente um braço puxado de dentro da sua cabeça, como você sente que algo muito importante está faltando!"),
 	)
 
 	return TRUE

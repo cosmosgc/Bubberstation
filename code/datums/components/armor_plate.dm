@@ -55,7 +55,7 @@
 			else
 				examine_list += span_notice("It's wearing a fearsome carapace entirely composed of [upgrade_name] - its pilot must be an experienced monster hunter.")
 		else
-			examine_list += span_notice("It has attachment points for strapping monster hide on for added protection.")
+			examine_list += span_notice("Tem pontos de fixação para se esconder para proteção adicional.")
 	else
 		if(amount)
 			examine_list += span_notice("It has been strengthened with [amount]/[maxamount] [upgrade_name].")
@@ -131,5 +131,5 @@
 /// Abstract armor module used just to occupy a slot and show up in the UI
 /obj/item/mecha_parts/mecha_equipment/armor/armor_plate
 	name = "abstract armor"
-	desc = "Report this to a coder if you see this!"
+	desc = "Reporte isso para um programador se você ver isso!"
 	detachable = FALSE

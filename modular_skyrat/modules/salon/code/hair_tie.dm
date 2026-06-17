@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hair_tie
 	name = "hair tie"
-	desc = "An elastic hair tie, made to hold your hair up!"
+	desc = "Uma gravata elástica, feita para segurar o cabelo!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "hairtie"
 	worn_icon = 'modular_skyrat/modules/salon/icons/items.dmi'
@@ -23,18 +23,18 @@
 
 /obj/item/clothing/head/hair_tie/scrunchie
 	name = "scrunchie"
-	desc = "An elastic hair tie, its fabric is velvet soft."
+	desc = "Uma gravata elástica, seu tecido é macio de veludo."
 	icon_state = "hairtie_scrunchie"
 
 /obj/item/clothing/head/hair_tie/plastic_beads
 	name = "colorful hair tie"
-	desc = "An elastic hair tie, adornished with colorful plastic beads."
+	desc = "Uma gravata elástica, enfeitada com colares plásticos coloridos."
 	icon_state = "hairtie_beads"
 	custom_materials = (list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT))
 
 /obj/item/clothing/head/hair_tie/syndicate
 	name = "\improper Syndicate hair tie"
-	desc = "An elastic hair tie with a metal clip, brandishing the logo of the Syndicate."
+	desc = "Uma gravata elástica com um clipe de metal, brandindo o logotipo do Sindicato."
 	icon_state = "hairtie_syndie"
 	fire_speed = 1.5 SECONDS
 	projectile_to_fire = /obj/projectile/bullet/hair_tie/syndicate
@@ -44,7 +44,7 @@
 	. = ..()
 	if(picked_hairstyle)
 		. += span_notice("Wearing it will change your hairstyle to '[picked_hairstyle]'.")
-	. += span_notice("<b>Use in hand</b> to pick a new hairstyle.")
+	. += span_notice("<b>Use na mão</b>para escolher um novo penteado.")
 	. += span_notice("<b>Alt-click</b> [src] to fling it.")
 
 /obj/item/clothing/head/hair_tie/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning, bypass_equip_delay_self, ignore_equipped, indirect_action)
@@ -55,7 +55,7 @@
 /obj/item/clothing/head/hair_tie/attack_self(mob/user)
 	var/hair_id = tgui_input_list(user, "How does your hair look when its up?", "Pick!", SSaccessories.hairstyles_list)
 	if(!hair_id || hair_id == "Bald")
-		balloon_alert(user, "error!")
+		balloon_alert(user, "Erro!")
 		return
 	balloon_alert(user, "[hair_id]")
 	picked_hairstyle = hair_id
@@ -68,7 +68,7 @@
 		return
 	user.visible_message(
 		span_notice("[user.name] ties up [user.p_their()] hair."),
-		span_notice("You tie up your hair!"),
+		span_notice("Amarre o cabelo!"),
 	)
 	actual_hairstyle = user.hairstyle
 	user.set_hairstyle(picked_hairstyle, update = TRUE)
@@ -81,14 +81,14 @@
 		return
 	user.visible_message(
 		span_notice("[user.name] takes [src] out of [user.p_their()] hair."),
-		span_notice("You let down your hair!"),
+		span_notice("Você soltou o cabelo!"),
 	)
 	user.set_hairstyle(actual_hairstyle, update = TRUE)
 	actual_hairstyle = null
 
 /obj/item/clothing/head/hair_tie/click_alt(mob/living/user)
 	if(!(user.get_slot_by_item(src) == ITEM_SLOT_HANDS))
-		balloon_alert(user, "hold in-hand!")
+		balloon_alert(user, "Segurem-se!")
 		return CLICK_ACTION_BLOCKING
 	user.visible_message(
 		span_danger("[user.name] puts [src] around [user.p_their()] fingers, beginning to flick it!"),

@@ -17,7 +17,7 @@ Use CTRL + SHIFT + LEFT CLICK to turn them on and off.
 /obj/item/clothing/suit/examine(mob/user)
 	. = ..()
 	if(!(HAS_TRAIT(src, TRAIT_NODROP)))
-		. += span_notice("Ctrl + Shift + Left Click to swap between functional (suit) and non-functional (neck) mode, to allow for things such as wearing a (nonfunctional) jacket over a piece of armor for the visual effect.")
+		. += span_notice("Ctrl + Shift + Left Clique para trocar entre o modo funcional (naipe) e não funcional (naipe), para permitir coisas como usar uma jaqueta (não funcional) sobre uma armadura para o efeito visual.")
 	else
 		only_functional = TRUE
 

@@ -51,7 +51,7 @@
 
 	var/datum/component/spy_uplink/uplink = uplink_weakref?.resolve()
 	if(isnull(uplink))
-		tgui_alert(usr, "No spy uplink!", "Mission Failed")
+		tgui_alert(usr, "Nenhum espião uplink!", "Mission Failed")
 		return
 
 	uplink.ui_interact(usr)
@@ -62,11 +62,11 @@
 
 	var/datum/component/spy_uplink/uplink = uplink_weakref?.resolve()
 	if(isnull(uplink))
-		tgui_alert(usr, "No spy uplink!", "Mission Failed")
+		tgui_alert(usr, "Nenhum espião uplink!", "Mission Failed")
 		return
 
 	uplink.handler.force_refresh()
-	tgui_alert(usr, "Bounties refreshed.", "Mission Success")
+	tgui_alert(usr, "As recompensas são renovadas.", "Mission Success")
 
 /datum/antagonist/spy/proc/admin_create_spy_uplink()
 	if(!check_rights(R_ADMIN|R_DEBUG))
@@ -81,7 +81,7 @@
 
 	var/datum/component/spy_uplink/uplink = uplink_weakref?.resolve()
 	if(isnull(uplink))
-		tgui_alert(usr, "No spy uplink!", "Mission Failed")
+		tgui_alert(usr, "Nenhum espião uplink!", "Mission Failed")
 		return
 
 	usr.client?.debug_variables(uplink.handler)
@@ -99,7 +99,7 @@
 		if(give_backup)
 			var/datum/action/backup_uplink/backup = new(src)
 			backup.Grant(spy)
-			to_chat(spy, span_boldnotice("You were unable to be supplied with an uplink, so you have been given the ability to create one yourself."))
+			to_chat(spy, span_boldnotice("Você foi incapaz de ser fornecido com um uplink, então você tem a capacidade de criar um você mesmo."))
 		return FALSE
 
 	return TRUE
@@ -214,7 +214,7 @@
 
 /datum/action/backup_uplink
 	name = "Create Uplink"
-	desc = "Fashion a PDA, Pen or Radio Headset into a swanky Spy Uplink."
+	desc = "Moda um PDA, caneta ou fone de ouvido de rádio em uma conexão espiã elegante."
 	var/list/valid_types = list(
 		/obj/item/modular_computer/pda,
 		/obj/item/pen,
@@ -235,15 +235,15 @@
 	var/mob/living/spy = usr
 	var/obj/item/held_thing = spy.get_active_held_item()
 	if(isnull(held_thing))
-		spy.balloon_alert(spy, "you need to hold something!")
+		spy.balloon_alert(spy, "Você precisa segurar alguma coisa!")
 		return
 
 	if(!is_type_in_list(held_thing, valid_types))
-		held_thing.balloon_alert(spy, "invalid item!")
+		held_thing.balloon_alert(spy, "Item inválido!")
 		return
 
 	var/datum/antagonist/spy/spy_datum = target
 	spy_datum.create_spy_uplink(spy, held_thing)
-	held_thing.balloon_alert(spy, "uplink created")
+	held_thing.balloon_alert(spy, "uplink criado")
 
 	qdel(src)

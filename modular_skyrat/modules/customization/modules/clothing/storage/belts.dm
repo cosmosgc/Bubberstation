@@ -2,7 +2,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "crusader belt"
-	desc = "Holds an assortment of equipment for whatever situation an adventurer may encounter, as well as having an attached sheath."
+	desc = "Mantém uma variedade de equipamentos para qualquer situação que um aventureiro possa encontrar, além de ter uma bainha anexa."
 	icon_state = "crusader_belt"
 	worn_icon_state = "crusader_belt"
 	inhand_icon_state = "utility"
@@ -54,10 +54,10 @@
 		return
 	var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location
 	if(!pouch)
-		pouch.balloon_alert(dumping_mob, "no pouch!")
+		pouch.balloon_alert(dumping_mob, "Sem bolsa!")
 		return //oopsie!! If we don't have a pouch! You're fucked!
 	if(locked)
-		pouch.balloon_alert(dumping_mob, "locked!")
+		pouch.balloon_alert(dumping_mob, "Trancado!")
 		return
 	pouch.atom_storage.dump_content_at(dest_object, dumping_mob)
 
@@ -94,9 +94,9 @@
 
 /obj/item/storage/belt/crusader/examine(mob/user)
 	. = ..()
-	.+= span_notice("Ctrl-click it to easily open its inventory.")
+	.+= span_notice("Clique com o botão Ctrl para abrir o inventário.")
 	if(contents.len == 2)	//If there's no sword/rod in the sheath slot it doesnt display the alt-click instruction
-		. += span_notice("Alt-click it to quickly draw the blade.")
+		. += span_notice("Alt-clique para puxar a lâmina rapidamente.")
 		return
 
 
@@ -108,7 +108,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "storage pouch"
-	desc = span_notice("Click on this to open your belt's inventory!")
+	desc = span_notice("Clique nisto para abrir o inventário do seu cinto!")
 	icon_state = "storage_pouch_icon"
 	worn_icon_state = "no_name"	//Intentionally sets the worn icon to an error
 	w_class = WEIGHT_CLASS_BULKY //Still cant put it in your bags, its technically a belt
@@ -129,7 +129,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "cowboy belt"
-	desc = "Yee haw! The holster on the side of the hip is leather stamped with swirling lines, all leading back to a deer's antlers."
+	desc = "Yee haw! O coldre do lado do quadril é de couro estampado com linhas giratórias, tudo levando de volta para as chifres de um veado."
 	icon_state = "cowboy_belt"
 	worn_icon_state = "cowboy_belt"
 	inhand_icon_state = "utility"
@@ -138,7 +138,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "medical bandolier"
-	desc = "A pocketed, pine green belt slung like a sash over the shoulder. Features numerous pockets for medicines and poisons alike. Now is coward healing time."
+	desc = "Um cinto embolsado e verde como uma faixa sobre o ombro. Possui numerosos bolsos para medicamentos e venenos. Agora é hora de cura covarde."
 	icon_state = "med_bandolier"
 	worn_icon_state = "med_bandolier"
 

@@ -5,7 +5,7 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	icon = 'icons/obj/devices/remote.dmi'
 	name = "tram remote"
-	desc = "A remote control that can be linked to a tram. This can only go well."
+	desc = "Um controle remoto que pode ser ligado a um bonde. Isso só pode dar certo."
 	w_class = WEIGHT_CLASS_TINY
 	options = RAPID_MODE
 	///desired tram destination
@@ -100,10 +100,10 @@
 ///send our selected commands to the tram
 /obj/item/assembly/control/transport/remote/activate(mob/user)
 	if(!specific_transport_id)
-		balloon_alert(user, "no tram linked!")
+		balloon_alert(user, "Nenhum bonde ligado!")
 		return
 	if(!destination)
-		balloon_alert(user, "no destination!")
+		balloon_alert(user, "Sem destino!")
 		return
 
 	SEND_SIGNAL(src, COMSIG_TRANSPORT_REQUEST, specific_transport_id, destination, options)
@@ -121,8 +121,8 @@
 	specific_transport_id = tgui_input_list(user, "Available transports", "Select a transport", transports_available)
 
 	if(specific_transport_id)
-		balloon_alert(user, "tram linked")
+		balloon_alert(user, "Trem ligado.")
 	else
-		balloon_alert(user, "link failed!")
+		balloon_alert(user, "A ligação falhou!")
 
 	update_appearance()

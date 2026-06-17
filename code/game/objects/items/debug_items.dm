@@ -4,7 +4,7 @@
 
 /obj/item/debug/human_spawner
 	name = "human spawner"
-	desc = "Spawn a human by aiming at a turf and clicking. Use in hand to change type."
+	desc = "Espalhou um humano mirando em um território e clicando. Use na mão para mudar de tipo."
 	icon = 'icons/obj/weapons/guns/magic.dmi'
 	icon_state = "nothingwand"
 	inhand_icon_state = "wand"
@@ -27,12 +27,12 @@
 
 /obj/item/debug/human_spawner/attack_self(mob/user)
 	..()
-	var/choice = input("Select a species", "Human Spawner", null) in sortTim(GLOB.species_list, GLOBAL_PROC_REF(cmp_text_asc))
+	var/choice = input("Selecione uma espécie.", "Spawner humano", null) in sortTim(GLOB.species_list, GLOBAL_PROC_REF(cmp_text_asc))
 	selected_species = GLOB.species_list[choice]
 
 /obj/item/debug/omnitool
 	name = "omnitool"
-	desc = "The original hypertool, born before them all. Use it in hand to unleash its true power."
+	desc = "O hipertool original, nascido antes de todos eles. Use-o na mão para liberar seu verdadeiro poder."
 	icon = 'icons/obj/weapons/club.dmi'
 	icon_state = "hypertool"
 	inhand_icon_state = "hypertool"
@@ -74,7 +74,7 @@
 	var/path = text2path(tgui_input_text(user, "Insert an item typepath to spawn", "ADMINS ONLY. FUCK AROUND AND FIND OUT."))
 	if(!path)
 		return
-	var/choice = tgui_alert(user, "Subtypes only?",, list("Yes", "No"))
+	var/choice = tgui_alert(user, "Apenas subtipos?",, list("Yes", "No"))
 	if(!choice)
 		return
 	if(!user.client.holder)
@@ -84,11 +84,11 @@
 		to_chat(user, span_warning("As you try to use [src], you hear strange tearing sounds, as if the coder gods were attempting to reach out and choke you themselves."))
 		playsound(src, 'sound/effects/dimensional_rend.ogg')
 		sleep(4 SECONDS)
-		var/confirmation = tgui_alert(user, "Are you certain you want to do that?", "Admins Only. Last Chance.", list("Yes", "No"))
+		var/confirmation = tgui_alert(user, "Tem certeza que quer fazer isso?", "Admins Only. Last Chance.", list("Yes", "No"))
 		if(!confirmation || confirmation == ("No"))
 			return
 		if(!user.client.holder) //safety if the admin readmined to save their ass lol.
-			to_chat(user, span_reallybig("You shouldn't have done that..."))
+			to_chat(user, span_reallybig("Você não deveria ter feito isso..."))
 			playsound(src, 'sound/mobs/non-humanoids/cyborg/borg_deathsound.ogg')
 			sleep(3 SECONDS)
 			living_user.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)

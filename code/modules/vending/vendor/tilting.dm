@@ -166,7 +166,7 @@
 			if(right_leg)
 				right_leg.receive_damage(brute = 200)
 			if(left_leg || right_leg)
-				carbon_target.visible_message(span_danger("[carbon_target]'s legs shatter with a sickening crunch!"), span_userdanger("Your legs shatter with a sickening crunch!"))
+				carbon_target.visible_message(span_danger("[carbon_target]'s legs shatter with a sickening crunch!"), span_userdanger("Suas pernas se quebram com uma crise doentia!"))
 			return TRUE
 		if(CRUSH_CRIT_PARAPLEGIC) // paralyze this binch
 			// the new paraplegic gets like 4 lines of losing their legs so skip them

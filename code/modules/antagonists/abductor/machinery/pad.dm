@@ -1,6 +1,6 @@
 /obj/machinery/abductor/pad
 	name = "Alien Telepad"
-	desc = "Use this to transport to and from the humans' habitat."
+	desc = "Use isso para transportar para e do habitat humano."
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "alien-pad-idle"
 	var/turf/teleport_target
@@ -23,7 +23,7 @@
 	for(var/mob/living/target in loc)
 		target.forceMove(teleport_target)
 		new /obj/effect/temp_visual/dir_setting/ninja(get_turf(target), target.dir)
-		to_chat(target, span_warning("The instability of the warp leaves you disoriented!"))
+		to_chat(target, span_warning("A instabilidade da dobra deixa você desorientado!"))
 		target.Stun(60)
 
 /obj/machinery/abductor/pad/proc/Retrieve(mob/living/target)

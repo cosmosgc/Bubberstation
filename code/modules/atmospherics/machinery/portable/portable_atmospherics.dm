@@ -118,7 +118,7 @@
 		if(atom_integrity >= max_integrity)
 			balloon_alert(user, "repaired")
 			return ITEM_INTERACT_SUCCESS
-		balloon_alert(user, "partially repaired...")
+		balloon_alert(user, "parcialmente reparado...")
 
 	return ITEM_INTERACT_SUCCESS
 
@@ -286,12 +286,12 @@
 		user.visible_message( \
 			"[user] disconnects [src].", \
 			span_notice("You unfasten [src] from the port."), \
-			span_hear("You hear a ratchet."))
+			span_hear("Você ouve uma catraca."))
 		update_appearance()
 		return TRUE
 	var/obj/machinery/atmospherics/components/unary/portables_connector/possible_port = locate(/obj/machinery/atmospherics/components/unary/portables_connector) in loc
 	if(!possible_port)
-		to_chat(user, span_notice("Nothing happens."))
+		to_chat(user, span_notice("Nada acontece."))
 		return FALSE
 	if(!connect(possible_port))
 		to_chat(user, span_notice("[name] failed to connect to the port."))
@@ -300,7 +300,7 @@
 	user.visible_message( \
 		"[user] connects [src].", \
 		span_notice("You fasten [src] to the port."), \
-		span_hear("You hear a ratchet."))
+		span_hear("Você ouve uma catraca."))
 	update_appearance()
 	investigate_log("was connected to [possible_port] by [key_name(user)].", INVESTIGATE_ATMOS)
 	return TRUE

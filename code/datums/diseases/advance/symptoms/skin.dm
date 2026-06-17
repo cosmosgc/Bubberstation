@@ -8,7 +8,7 @@
 */
 /datum/symptom/polyvitiligo
 	name = "Polyvitiligo"
-	desc = "The virus replaces the melanin in the skin with reactive pigment."
+	desc = "O vírus substitui a melanina na pele por pigmento reativo."
 	illness = "Chroma Imbalance"
 	stealth = -1
 	resistance = 3
@@ -33,4 +33,4 @@
 				M.reagents.add_reagent(color, 5)
 		else
 			if (prob(50)) // spam
-				M.visible_message(span_warning("[M] looks rather vibrant..."), span_notice("The colors, man, the colors..."))
+				M.visible_message(span_warning("[M] looks rather vibrant..."), span_notice("As cores, cara, as cores..."))

@@ -4,14 +4,14 @@
 /datum/quirk/sol_weakness
 	name = "Sol Weakness"
 	icon = FA_ICON_SUN
-	desc = "Your sub-species of the Hemophage virus renders you weak to Solar radiation, \
-		you will have to hide in a coffin or a closet during the day, or risk burning to a crisp. \
-		Thankfully, you will also heal your wounds at half cost in a coffin."
-	gain_text = span_warning("You feel a sudden weakness in your body, and a burning sensation on your skin. \
-		You should find a coffin to hide in during the day.")
-	lose_text = span_notice("You feel safe in Sol's embrace once more.")
-	medical_record_text = "Patient's strain of the hemophage virus is weak to sunlight. \
-		They will have to hide in a coffin or a closet during the day, or risk burning to a crisp."
+	desc = "Sua subespécie do vírus Hemofago o torna fraco para radiação solar,\
+Você terá que se esconder em um caixão ou em um armário durante o dia, ou arriscar queimar até uma batata frita.\
+Felizmente, você também vai curar suas feridas a meio custo em um caixão."
+	gain_text = span_warning("Você sente uma fraqueza súbita em seu corpo, e uma sensação de queimação em sua pele.\
+Você deveria encontrar um caixão para se esconder durante o dia.")
+	lose_text = span_notice("Você se sente segura no abraço do Sol mais uma vez.")
+	medical_record_text = "A estirpe do vírus hemofágico do paciente é fraca à luz solar.\
+Eles terão que se esconder em um caixão ou armário durante o dia, ou correr o risco de queimar em uma batata frita."
 	value = -4
 	hardcore_value = 6
 	quirk_flags = QUIRK_HIDE_FROM_SCAN | QUIRK_HUMAN_ONLY
@@ -69,10 +69,10 @@
 	quirk_holder.add_mood_event("vampsleep", /datum/mood_event/daylight_sun_scorched)
 	if(quirk_holder.blood_volume > BLOOD_VOLUME_NORMAL * 0.71) // 397.6
 		quirk_holder.blood_volume -= 5
-		sun_burn_message(span_warning("The sun burns your skin, but your blood protects you from the worst of it..."))
+		sun_burn_message(span_warning("O sol queima sua pele, mas seu sangue protege você do pior..."))
 		quirk_holder.adjust_fire_loss(1)
 		return
-	sun_burn_message(span_userdanger("THE SUN, IT BURNS!"))
+	sun_burn_message(span_userdanger("O sol, ele brilha!"))
 	quirk_holder.adjust_fire_loss(2)
 	quirk_holder.adjust_fire_stacks(1)
 	quirk_holder.ignite_mob()

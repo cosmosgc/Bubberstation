@@ -11,7 +11,7 @@
 	if(isnull(choice))
 		return
 
-	var/chosen_name = input(choice, "Enter your pAI name:", "pAI Name", "Personal AI") as text|null
+	var/chosen_name = input(choice, "Introduza o seu nome.", "PAI Nome", "AI pessoal") as text|null
 	if (isnull(chosen_name))
 		return
 

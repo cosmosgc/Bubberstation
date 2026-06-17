@@ -1,7 +1,7 @@
 // A surgery that repairs the patient's NIF
 /datum/surgery_operation/organ/repair_nif
 	name = "Repair NIF"
-	desc = "A surgical procedure that restores the integrity of an installed NIF."
+	desc = "Um procedimento cirúrgico que restaura a integridade de um NIF instalado."
 	implements = list(
 		TOOL_MULTITOOL = 1,
 		TOOL_HEMOSTAT = 2.85,

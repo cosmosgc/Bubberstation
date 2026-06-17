@@ -1,6 +1,6 @@
 /mob/living/basic/mushroom
 	name = "walking mushroom"
-	desc = "It's a massive mushroom... with legs?"
+	desc = "É um cogumelo enorme... com pernas?"
 	icon_state = "mushroom_color"
 	icon_living = "mushroom_color"
 	icon_dead = "mushroom_dead"
@@ -24,7 +24,7 @@
 
 	faction = list(FACTION_MUSHROOM)
 	speak_emote = list("squeaks")
-	death_message = "fainted!"
+	death_message = "Desmaiou!"
 
 	ai_controller = /datum/ai_controller/basic_controller/mushroom
 	var/cap_color = "#ffffff"

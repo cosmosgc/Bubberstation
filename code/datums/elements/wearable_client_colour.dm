@@ -113,10 +113,10 @@
 		return
 	if(HAS_TRAIT(clicker, TRAIT_SEE_WORN_COLOURS))
 		REMOVE_TRAIT(clicker, TRAIT_SEE_WORN_COLOURS, CLOTHING_TRAIT)
-		clicker.balloon_alert(clicker, "glasses colors disabled")
+		clicker.balloon_alert(clicker, "Cores dos óculos desactivadas")
 	else
 		ADD_TRAIT(clicker, TRAIT_SEE_WORN_COLOURS, CLOTHING_TRAIT)
-		clicker.balloon_alert(clicker, "glasses colors enabled")
+		clicker.balloon_alert(clicker, "Cores de óculos habilitadas")
 	return CLICK_ACTION_SUCCESS
 
 /datum/element/wearable_client_colour/proc/on_examine(obj/item/source, mob/user, list/examine_texts)

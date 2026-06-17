@@ -1,7 +1,7 @@
 
 /obj/item/assembly
 	name = "assembly"
-	desc = "A small electronic device that should never exist."
+	desc = "Um pequeno dispositivo eletrônico que nunca deveria existir."
 	icon = 'icons/obj/devices/new_assemblies.dmi'
 	icon_state = ""
 	obj_flags = CONDUCTS_ELECTRICITY
@@ -137,7 +137,7 @@
 
 		holder = new /obj/item/assembly_holder(drop_location())
 		holder.assemble(src, new_assembly, user)
-		holder.balloon_alert(user, "parts combined")
+		holder.balloon_alert(user, "peças combinadas")
 		return
 
 	if(istype(attacking_item, /obj/item/assembly_holder))

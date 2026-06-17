@@ -1,6 +1,6 @@
 /obj/machinery/nanite_programmer
 	name = "nanite programmer"
-	desc = "A device that can edit nanite program disks to adjust their functionality."
+	desc = "Um dispositivo que pode editar discos de programa nanites para ajustar sua funcionalidade."
 	icon = 'modular_zubbers/icons/obj/machines/nanite_machines.dmi'
 	icon_state = "nanite_programmer"
 	use_power = IDLE_POWER_USE

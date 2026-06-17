@@ -2,7 +2,7 @@
 
 /obj/effect/decal/cleanable/greenglow/waste
 	name = "caustic sludge"
-	desc = "A puddle of toxic, industrial waste. Eats through the floor if not cleaned up."
+	desc = "Uma poça de lixo tóxico e industrial. Come pelo chão se não estiver limpo."
 	icon_state = "waste_spill"
 	light_power = 1
 	beauty = -300

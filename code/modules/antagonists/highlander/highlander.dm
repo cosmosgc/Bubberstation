@@ -88,8 +88,8 @@
 	name = "\improper highlander"
 
 /datum/antagonist/highlander/robot/greet()
-	to_chat(owner, span_bolddanger("Your integrated claymore cries out for blood. Claim the lives of others, and your own will be restored!\n\
-	Activate it in your hand, and it will lead to the nearest target. Attack the nuclear authentication disk with it, and you will store it."))
+	to_chat(owner, span_bolddanger("Seu Claymore integrado clama por sangue. Reclame as vidas dos outros, e sua própria será restaurada!\n\
+Ative-o em sua mão, e ele vai levar ao alvo mais próximo. Ataque o disco de autenticação nuclear com ele, e você vai armazená-lo."))
 
 /datum/antagonist/highlander/robot/give_equipment()
 	var/mob/living/silicon/robot/robotlander = owner.current

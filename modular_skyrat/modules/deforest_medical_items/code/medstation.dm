@@ -1,8 +1,8 @@
 /obj/machinery/biogenerator/medstation
 	name = "wall med-station"
-	desc = "An advanced machine seen in frontier outposts and colonies capable of turning organic plant matter into \
-		various emergency medical supplies and injectors. You can find one of these in the medical sections of just about \
-		any frontier installation."
+	desc = "Uma máquina avançada vista em postos avançados de fronteira e colônias capazes de transformar matéria vegetal orgânica em\
+vários suprimentos médicos de emergência e injetores. Você pode encontrar um desses nas seções médicas de quase\
+Qualquer instalação de fronteira."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/medstation.dmi'
 	circuit = null
 	anchored = TRUE
@@ -42,7 +42,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/biogenerator/medstation, 29)
 
 /obj/item/wallframe/frontier_medstation
 	name = "unmounted wall med-station"
-	desc = "The innovative technology of a biogenerator to print medical supplies, but able to be mounted neatly on a wall out of the way."
+	desc = "A tecnologia inovadora de um biogerador para imprimir suprimentos médicos, mas capaz de ser montado em uma parede fora do caminho."
 	icon = 'modular_skyrat/modules/deforest_medical_items/icons/medstation.dmi'
 	icon_state = "biogenerator_parts"
 	w_class = WEIGHT_CLASS_NORMAL

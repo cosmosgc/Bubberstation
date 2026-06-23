@@ -1,0 +1,10 @@
+{
+    "obj.item.crowbar": {
+        "name": "Pé de Cabra",
+        "desc": "Uma ferramenta robusta."
+    },
+    "obj.item.wrench": {
+        "name": "Chave Inglesa",
+        "desc": "Uma ferramenta para apertar porcas."
+    }
+}

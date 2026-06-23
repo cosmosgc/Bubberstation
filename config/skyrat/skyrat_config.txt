@@ -97,12 +97,12 @@ SSDECAY_DISABLE_NESTS
 SSDECAY_INTENSITY 5
 
 ## Disables any ERP preferences for codebases that don't want it.
-#DISABLE_ERP_PREFERENCES
-#DISABLE_LEWD_ITEMS
-#ERP_EMOTES_TO_DISABLE cum
+DISABLE_ERP_PREFERENCES
+DISABLE_LEWD_ITEMS
+ERP_EMOTES_TO_DISABLE cum
 
 ## Disables mismatched parts for codebases that don't want it.
-#DISABLE_MISMATCHED_PARTS
+DISABLE_MISMATCHED_PARTS
 
 ## Do we allow consecutive catastrophic events?
 #ALLOW_CONSECUTIVE_CATASTROPIC_EVENTS

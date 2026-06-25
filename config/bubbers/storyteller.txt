@@ -1,5 +1,8 @@
 ## Default Storyteller. Comment out to enable voting.
-DEFAULT_STORYTELLER /datum/storyteller/extended
+# DEFAULT_STORYTELLER /datum/storyteller/extended
+# DEFAULT_STORYTELLER /datum/storyteller/chill
+DEFAULT_STORYTELLER /datum/storyteller/default
+
 
 ## Gamemode configurations
 

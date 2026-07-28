@@ -9,3 +9,5 @@ Dunnba = Game Admin
 BaryeQuinovy = Game Admin
 luneko = Game Admin
 Gui3854 = Game Admin
+LittlePlayer0102 = Game Admin
+LeanZin = Game Admin

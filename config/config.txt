@@ -614,10 +614,10 @@ PR_ANNOUNCEMENTS_PER_ROUND 5
 #FORBID_ADMIN_PROFILING
 
 ## Link to a HTTP server that's been set up on a server. Docker-compose file can be found in tools/tts
-TTS_HTTP_URL http://177.190.68.79:3000/tts-api/public/api
+# TTS_HTTP_URL http://177.190.68.79:3000/tts-api/public/api
 
 ## Token that can be used to prevent misuse of your TTS server that you've set up.
-TTS_HTTP_TOKEN 1111
+# TTS_HTTP_TOKEN 1111
 
 ## The maximum number of concurrent tts http requests that can be made by the server at once.
 TTS_MAX_CONCURRENT_REQUESTS 8
